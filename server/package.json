@@ -1,0 +1,48 @@
+{
+  "name": "edehr-database",
+  "version": "1.0.0",
+  "description": "The POC EdEHR database run inside a Docker container",
+  "main": "dev-server.js.js",
+  "scripts": {
+    "serve": "node index.js",
+    "serve-dev": "NODE_ENV=development DEBUG=server node index.js",
+    "test": "nyc mocha --require @babel/register test/**/*.spec.js"
+  },
+  "author": "Bryan Gilbert",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "debug": "~2.6.9",
+    "deepmerge": "^2.2.1",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "ims-lti": "file:../../ims-lti",
+    "mongoose": "^5.4.11",
+    "mongoose-unique-validator": "^2.0.2",
+    "passport": "^0.4.0",
+    "passport-custom": "^1.0.5",
+    "pluralize": "^7.0.0",
+    "session-file-store": "^1.2.0",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/polyfill": "^7.2.5",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/register": "^7.0.0",
+    "camelcase": "^5.0.0",
+    "chai": "^4.2.0",
+    "chalk": "^2.4.2",
+    "coveralls": "^3.0.2",
+    "eslint": "^5.6.0",
+    "eslint-config-prettier": "^4.0.0",
+    "mocha": "^5.2.0",
+    "nyc": "^13.2.0",
+    "prettier": "^1.16.4",
+    "should": "^13.2.3",
+    "supertest": "^3.4.2"
+  }
+}

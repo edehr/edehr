@@ -1,0 +1,121 @@
+/* ******************
+colours
+ */
+$brand-primary: #3396FF;
+$brand-primary-hover: darken( $brand-primary, 20% );
+$brand-primary-dark: #051F54;
+
+$white: #FFF;
+$grey03: #F7F9FA;
+$grey10: #E8EBED;
+$grey20: #CBCED1;
+$grey40: #858B94;
+$grey60: #4F545C;
+$grey70: #383C45;
+$grey80: #22262E;
+$black: #151A24;
+
+$toolbar-background-color: $grey70;
+$toolbar-color: $grey10;
+
+$nav-background-medium: $black;
+$nav-active: $brand-primary-dark;
+$nav-level1: $grey80;
+$nav-level2: $grey70;
+$nav-level3: $grey60;
+$nav-color-level1: $white;
+$nav-color-level2: $grey20;
+$nav-color-level3: $grey20;
+
+$dialog-header-background: $white;
+$dialog-header-content-color: $grey70;
+$dialog-wrapper-background-color: $white;
+$dialog-wrapper-color: $grey40;
+
+$system-error-background: #ffdb4a;
+$system-error-color: $black;
+
+$context-banner-background-color: #e8f2fd;
+$context-banner-color: $grey80;
+
+$border-width: 5px;
+$border1: blue;
+$border2: red;
+$border3: darkorange;
+$border4: green;
+$border5: purple;
+$border6: mediumvioletred;
+$border7: springgreen;
+
+$o-colours: (
+  a:   blue,
+  b:  red,
+  c: darkorange,
+  d: green
+);
+
+@mixin debugColor($index: a) {
+  border: 1px solid map-get($o-colours, $index);
+}
+
+
+/* ******************
+_typography.scss
+ */
+$bodyFontFamily: 'Source Sans Pro', sans-serif;
+$bodyFontSize: 14px;
+
+/* ******************
+Dimensions
+ */
+
+$mediaQueryIpadLandscape: "only screen and (max-width : 1024px)";
+$mediaQueryIpadPortrait: "only screen and (max-width : 768px)";
+
+$ehrPanelHeight: 80px;
+$contentMinHeight: 700px;
+
+$navMaxWidth: 280px;
+$navMinWidth: 235px;
+$pageWidth: 2000px;
+$panelContentPadding: 1.5rem;
+$panelHeaderPadding: 0.6rem 2rem 0.4rem;
+$panelMarginLeft: 0;
+$contentWidth: $pageWidth - $navMinWidth;
+$contentWidthInner: 980px;
+
+$navMinWidthSmall: 187px;
+$navMaxWidthSmall: 200px;
+$pageWidthSmall: 1024px;
+$panelContentPaddingSmall: 0.5rem;
+$panelHeaderPaddingSmall: 0.5rem;
+$panelMarginLeftSmall: 3px;
+$contentWidthSmall: $pageWidthSmall - $navMinWidthSmall;
+$contentWidthInnerSmall: $contentWidthSmall - 10;
+
+$navMaxWidthSmallest: 187px;
+$navMinWidthSmallest: 160px;
+$pageWidthSmallest: 768px;
+$panelContentPaddingSmallest: 3px;
+$panelHeaderPaddingSmallest: 0.5rem;
+$panelMarginLeftSmallest: 5px;
+$contentWidthSmallest: $pageWidthSmallest - $navMaxWidthSmallest;
+$contentWidthInnerSmallest: $contentWidthSmallest - 3px;
+
+/* ******************
+wrapper
+ */
+$o-wrapper-sizes: (
+  page:   1400px,
+  content:  1024px,
+  wide:   682px,
+  narrow: 342px,
+);
+
+@mixin wrapper($size: page) {
+  //margin-right: auto;
+  //margin-left: auto;
+  padding-right: 0;
+  padding-left: 0;
+  max-width: map-get($o-wrapper-sizes, $size);
+}

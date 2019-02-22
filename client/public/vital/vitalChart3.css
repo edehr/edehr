@@ -1,0 +1,21 @@
+.canvas-wrapper {
+  flex: 1 0 auto;
+  max-width: 500px;
+  padding: 10px 0 10px 0;
+  overflow-x: auto;
+  /*border: 1px dotted black;*/
+}
+canvas {
+  border: 1px dotted black;
+}
+
+.axis-wrapper {
+  flex: 0 1 auto;
+  padding: 10px 0 10px 0;
+  /*border: 1px dotted black;*/
+}
+
+.chart-wrapper {
+  display: flex;
+  margin: 1rem;
+}

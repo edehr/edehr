@@ -1,0 +1,238 @@
+@import '../definitions';
+
+/* **********
+   *
+   */
+
+//.ehr-page {
+
+  .input-fieldrow { /* used in dialog as containers, c */
+    display: flex;
+    justify-content: space-between;
+    /* margin-bottom: 3em; */
+  }
+
+  .fieldset_row_wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    // @include debugColor(c)
+  }
+
+  .fieldset_col_wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    // @include debugColor(b)
+  }
+
+  .input-fieldrow-element {
+    width: 100%;
+    //padding-right: 20px;
+  }
+
+  .fieldset_row_row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 1.25em;
+  }
+
+  .fieldset_row_row_element {
+  }
+
+  .fieldset_label {
+    display: block;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .fieldset-col {
+    padding: 0;
+    //@include debugColor(b)
+  }
+
+  li {
+    list-style-type: none;
+  }
+
+  .ehrdfe {
+    width: 100%;
+    padding-right: 20px;
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+
+  .hide-table-element {
+    display:none;
+  }
+
+  label,
+  input,
+  textarea {
+    display: inline-block;
+  }
+
+  .checkbox_label,
+  .radio_label {
+    display: inline;
+    vertical-align: top;
+    margin-left: 5px;
+  }
+  .checkbox,
+  .radio {
+    display: inline;
+    margin-right: 5px;
+  }
+
+  .label-checkbox {
+    display: inline-block;
+  }
+
+  input,
+  .input,
+  textarea {
+    padding: 5px;
+    border: 1px solid $grey20;
+    border-radius: 3px;
+    box-shadow: inset 0 1px 0 0 rgba(21, 26, 36, 0.5);
+    font-size: $bodyFontSize;
+  }
+  textarea {
+    height: 6rem;
+    width: 100%;
+  }
+
+  .input-element {
+    margin-right: 20px;
+    //@include debugColor(c)
+  }
+
+  .input-element:last-child {
+    margin-right: 0;
+  }
+
+  .input-element-full {
+    width: 100%;
+  }
+
+  .input-element-small {
+    flex: 1 0 5rem;
+  }
+  .input-element-medium {
+    flex: 2 0 15rem;
+  }
+
+  .select {
+    width: 100%;
+  }
+
+  select {
+    background: linear-gradient(180deg, rgba(203, 206, 209, 0.6) 0%, rgba(133, 139, 148, 0.6) 100%);
+    box-shadow: inset 0 1px 0 0 $white, 0 1px 2px 0 rgba(21, 26, 36, 0.2);
+    width: 100%;
+  }
+
+  .select:not(.is-multiple):not(.is-loading)::after {
+    border-color: $grey40;
+  }
+  .user_name {
+    width: 30%;
+  }
+  .user_pro {
+    width: 30%;
+  }
+  .user_unit {
+    width: 20%;
+  }
+  .user_day {
+    width: 10%;
+  }
+  .user_time {
+    width: 10%;
+  }
+
+  .full-width {
+    width: 100%;
+  }
+
+  .is-half {
+    width: 50%;
+    min-width: 50%;
+  }
+
+  .is-two-thirds {
+    width: 66%;
+    min-width: 66%;
+  }
+
+  .is-one-third {
+    width: 33%;
+    min-width: 33%;
+  }
+
+  .width-10 {
+    width: 10%;
+    min-width: 10%;
+    flex-grow: 0.1;
+  }
+  .width-20 {
+    width: 20%;
+    min-width: 20%;
+    flex-grow: 0.2;
+  }
+  .width-30 {
+    width: 30%;
+    min-width: 30%;
+    flex-grow: 0.3;
+  }
+  .width-40 {
+    width: 40%;
+    min-width: 40%;
+    flex-grow: 0.4;
+  }
+  .width-50 {
+    width: 50%;
+    min-width: 50%;
+    flex-grow: 0.5;
+  }
+  .width-60 {
+    width: 60%;
+    min-width: 60%;
+    flex-grow: 0.6;
+  }
+  .width-70 {
+    width: 70%;
+    min-width: 70%;
+    flex-grow: 0.7;
+  }
+  .width-80 {
+    width: 80%;
+    min-width: 80%;
+    flex-grow: 0.8;
+  }
+  .width-90 {
+    width: 90%;
+    min-width: 90%;
+    flex-grow: 0.9;
+  }
+
+  .bold-text {
+    font-weight: bolder;
+    color: $black;
+  }
+//}
+
+.column_table {
+  .column_label {
+    text-align: right;
+  }
+
+  .column_value {
+    min-width: 3rem;
+    max-width: 8rem;
+  }
+}
+

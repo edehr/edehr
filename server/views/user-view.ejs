@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>User Record</title>
+</head>
+
+<body>
+  <h1>POC - User Record</h1>
+  <%= user %>
+  <h4>User:</h4>
+  <ul>
+    <li>
+      <%= user.user_id %>
+    </li>
+      <li>
+        <%= user.givenName %>
+      </li>
+    <li>
+      <%= user.familyName %>
+    </li>
+    <li>
+      <%= user.lti_data %>
+    </li>
+
+  </ul>
+</body>
+
+</html>

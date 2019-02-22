@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User Records</title>
+</head>
+
+<body>
+<h1>POC - LTI Session Records</h1>
+<h4>Sessions:</h4>
+<% items.forEach(function(item) { %>
+<ul>
+    <li>user_id
+        <%= item.user_id %>
+    </li>
+    <li>
+        context_key
+        <%= user.context_id %>
+    </li>
+    <li>
+        context_label
+        <%= user.context_label %>
+    </li>
+    <li>
+        context_title
+        <%= user.context_title %>
+    </li>
+    <li>
+        context_type
+        <%= user.context_type %>
+    </li>
+    <li>
+        return_url
+        <%= user.return_url %>
+    </li>
+    <li>
+        consumer_guid
+        <%= user.consumer_guid %>
+    </li>
+    <li>
+        consumer_key
+        <%= user.consumer_key %>
+    </li>
+    <li>
+        lti_data
+        <%= user.lti_data %>
+    </li>
+    <li>
+        date
+        <%= user.date %>
+    </li>
+
+</ul>
+<% }); %>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>My Line Chart</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
+    <!--<script src="https://github.com/chartjs/Chart.js/releases/download/v2.6.0/Chart.min.js"></script>-->
+    <script src="https://chartjs-plugin-datalabels.netlify.com/chartjs-plugin-datalabels.js"></script>
+    <script src="./vitalChart2.js"></script>
+    <link rel="stylesheet" type="text/css" href="./vitalChart.css">
+  </head>
+
+  <body>
+    <div>
+      <h1>prototyping chart</h1>
+
+      <!--
+      <div id="scrollChartWrapper" class="chartWrapper">
+        <div id="scrollChartAreaWrapper" class="chartAreaWrapper">
+          <div id="scrollChartAreaWrapper2" class="chartAreaWrapper2">
+            <canvas id="chart-Test" height="150" width="1200"></canvas>
+          </div>
+        </div>
+        <canvas id="axis-Test" height="0" width="0"></canvas>
+      </div>
+      -->
+
+      <button id="doSomething">Do Something</button>
+
+      <div class="content">
+        <div class="chartWrapper">
+          <div class="chartAreaWrapper">
+            <canvas id="dateTop"></canvas>
+          </div>
+        </div>
+        <div><canvas id="dateTop2" height="100px"></canvas></div>
+        <div><canvas id="temperatureChart"></canvas></div>
+      </div>
+      <img src="wireframe.jpg" alt="wireframe" width="1024" />
+    </div>
+    <script>
+      window.onload = function() {
+        vitalChartLoad(Chart)
+      }
+      document.getElementById('doSomething').addEventListener('click', function() {
+        doSomething()
+      })
+
+    </script>
+  </body>
+</html>

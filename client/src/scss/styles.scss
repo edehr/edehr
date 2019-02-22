@@ -1,0 +1,71 @@
+/*
+Base UI on Bulma CSS framework
+https://bulma.io/
+https://bulma.io/alternative-to-bootstrap/
+https://github.com/jgthms/bulma
+Bulma is released under the MIT license.
+
+Setup bulma through this import
+@import '../../node_modules/bulma/sass/utilities/initial-variables';
+*/
+
+@import '../../node_modules/bulma/sass/utilities/initial-variables';
+@charset "utf-8";
+@import '../../node_modules/bulma/bulma';
+
+/*
+Bulma is good yet it adds negative margin to columns and
+negative padding to column.  The following over rides this.
+ */
+.columns {
+  margin: 0;
+  display: flex;
+}
+
+.column {
+  padding-left: 0;
+}
+
+.columns:not(:last-child) {
+  margin-bottom: 0;
+}
+/*
+Import the SCSS definitions.  Theses definitions are imported into
+other components, as needed.  Because the definitions are just variables
+and mixins there is no CSS code bloat.
+ */
+@import '../scss/definitions';
+
+/* *****
+Import styles
+ */
+@import '../scss/styles/typography';
+@import '../scss/styles/forms';
+
+/*
+For lack of a better place ...
+Define the styles for the left hand side components in the EHR
+ */
+.EhrPanelContent {
+  padding: $panelContentPadding;
+  @media #{$mediaQueryIpadLandscape} {
+    padding: $panelContentPaddingSmall;
+  }
+  @media #{$mediaQueryIpadPortrait} {
+    padding: $panelContentPaddingSmallest;
+  }
+  .EhrPanelContent_Inner {
+    width: $contentWidthInner;
+    @media #{$mediaQueryIpadLandscape} {
+      width: $contentWidthInnerSmall;
+    }
+    @media #{$mediaQueryIpadPortrait} {
+      width: $contentWidthInnerSmallest;
+    }
+  }
+}
+
+.spacer {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}

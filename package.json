@@ -1,0 +1,60 @@
+{
+  "name": "edehr",
+  "version": "1.0.0",
+  "author": "BCcampus {https://bccampus.ca/)",
+  "description": "This EdEhr project provides an  LTI compliant educational tool that replicates an Electronic Health Record system.",
+  "contributors": [
+    "Bryan Gilbert <bryan.gilbert@gmail.com>"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bryan-gilbert/proto-EdEHR.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bryan-gilbert/proto-EdEHR/issues"
+  },
+  "homepage": "https://github.com/bryan-gilbert/proto-EdEHR#readme",
+  "scripts": {
+    "start": "npm run start:dbjson | npm run start:server | npm run start:ehr",
+    "start:dbjson": "npm run --prefix dbjson start",
+    "start:server": "npm run --prefix server start",
+    "start:ehr": "npm run --prefix ehr start",
+    "pm2-prod": "npm run pm2-prod:dbjson | npm run pm2-prod:server | npm run pm2-prod:ehr",
+    "pm2-prod:dbjson": "npm run --prefix dbjson pm2-prod",
+    "pm2-prod:server": "npm run --prefix server pm2-prod",
+    "pm2-prod:ehr": "npm run --prefix ehr pm2-prod",
+    "build": "NODE_ENV=production webpack --progress --hide-modules",
+    "test": "nyc mocha --exit",
+    "install-all": "npm install | npm run install-db",
+    "install-db": "cd dbjson; npm run install-all"
+  },
+  "dependencies": {
+    "ajv": "^6.9.1",
+    "moment": "^2.24.0",
+    "winston": "^3.2.1"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/polyfill": "^7.2.5",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/register": "^7.0.0",
+    "camelcase": "^5.0.0",
+    "chai": "^4.2.0",
+    "chalk": "^2.4.2",
+    "coveralls": "^3.0.2",
+    "eslint": "^5.6.0",
+    "eslint-config-prettier": "^4.0.0",
+    "mocha": "^5.2.0",
+    "nyc": "^13.2.0",
+    "prettier": "^1.16.4",
+    "should": "^13.2.3",
+    "supertest": "^3.4.2"
+  }
+}

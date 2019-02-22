@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>User Records</title>
+</head>
+
+<body>
+  <h1>POC - User Records</h1>
+  <form method="post" action="/users/add">
+    <label for="name">Id</label>
+    <input type="text" name="user_id">
+
+    <label for="name">First</label>
+    <input type="text" name="givenName">
+
+    <label for="name">Last</label>
+    <input type="text" name="familyName">
+
+
+    <label for="name">LTI data</label>
+    <input type="text" name="lti_data">
+
+    <input type="submit" value="Add">
+  </form>
+  <h4>Users:</h4>
+  <% users.forEach(function(user) { %>
+  <ul>
+    <li>
+      <%= user.user_id %>
+    </li>
+      <li>
+        <%= user.givenName %>
+      </li>
+    <li>
+      <%= user.familyName %>
+    </li>
+    <li>
+      <%= user.lti_data %>
+    </li>
+
+  </ul>
+  <% }); %>
+</body>
+
+</html>

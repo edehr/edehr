@@ -1,0 +1,921 @@
+[
+{
+  "name": "patient",
+  "redirect": "demographics",
+  "label": "Patient profile",
+  "routeName": "patient",
+  "topLevel": "patient",
+  "def": {
+    "path": "/ehr",
+    "routeName": "patient",
+    "label": "Patient profile",
+    "redirect": "demographics",
+    "componentName": "Patient",
+    "dataName": "patient",
+    "fullPath": "/ehr/patient",
+    "title": "Patient",
+    "topLevel": "patient"
+  },
+  "children": [
+    {
+      "name": "demographics",
+      "label": "Demographics",
+      "routeName": "demographics",
+      "topLevel": "patient",
+      "def": {
+        "path": "/ehr/patient",
+        "routeName": "demographics",
+        "pageDataKey": "demographics",
+        "label": "Demographics",
+        "redirect": "",
+        "generateComponent": "yes",
+        "componentName": "Demographics",
+        "dataName": "demographics",
+        "fullPath": "/ehr/patient/demographics",
+        "title": "Demographics",
+        "topLevel": "patient"
+      },
+      "children": []
+    },
+    {
+      "name": "allergies",
+      "label": "Allergies",
+      "routeName": "allergies",
+      "topLevel": "patient",
+      "def": {
+        "path": "/ehr/patient",
+        "routeName": "allergies",
+        "pageDataKey": "allergies",
+        "label": "Allergies",
+        "redirect": "",
+        "generateComponent": "yes",
+        "componentName": "Allergies",
+        "dataName": "allergies",
+        "fullPath": "/ehr/patient/allergies",
+        "title": "Allergies",
+        "topLevel": "patient"
+      },
+      "children": []
+    },
+    {
+      "name": "history",
+      "redirect": "medical",
+      "label": "History",
+      "routeName": "history",
+      "topLevel": "patient",
+      "def": {
+        "path": "/ehr/patient",
+        "routeName": "history",
+        "pageDataKey": "history",
+        "label": "History",
+        "redirect": "medical",
+        "generateComponent": "yes",
+        "componentName": "History",
+        "dataName": "history",
+        "fullPath": "/ehr/patient/history",
+        "title": "History",
+        "topLevel": "patient"
+      },
+      "children": [
+        {
+          "name": "medical",
+          "label": "Medical",
+          "routeName": "medical",
+          "topLevel": "patient",
+          "def": {
+            "path": "/ehr/patient/history",
+            "routeName": "medical",
+            "pageDataKey": "medical",
+            "label": "Medical",
+            "redirect": "",
+            "generateComponent": "yes",
+            "componentName": "Medical",
+            "dataName": "medical",
+            "fullPath": "/ehr/patient/history/medical",
+            "title": "Medical",
+            "topLevel": "patient"
+          },
+          "children": []
+        },
+        {
+          "name": "psychosocial",
+          "label": "Psychosocial",
+          "routeName": "psychosocial",
+          "topLevel": "patient",
+          "def": {
+            "path": "/ehr/patient/history",
+            "routeName": "psychosocial",
+            "pageDataKey": "psychosocial",
+            "label": "Psychosocial",
+            "redirect": "",
+            "generateComponent": "yes",
+            "componentName": "Psychosocial",
+            "dataName": "psychosocial",
+            "fullPath": "/ehr/patient/history/psychosocial",
+            "title": "Psychosocial",
+            "topLevel": "patient"
+          },
+          "children": []
+        },
+        {
+          "name": "surgical",
+          "label": "Surgical",
+          "routeName": "surgical",
+          "topLevel": "patient",
+          "def": {
+            "path": "/ehr/patient/history",
+            "routeName": "surgical",
+            "pageDataKey": "surgical",
+            "label": "Surgical",
+            "redirect": "",
+            "generateComponent": "yes",
+            "componentName": "Surgical",
+            "dataName": "surgical",
+            "fullPath": "/ehr/patient/history/surgical",
+            "title": "Surgical",
+            "topLevel": "patient"
+          },
+          "children": []
+        },
+        {
+          "name": "immunization",
+          "label": "Immunization",
+          "routeName": "immunization",
+          "topLevel": "patient",
+          "def": {
+            "path": "/ehr/patient/history",
+            "routeName": "immunization",
+            "pageDataKey": "immunization",
+            "label": "Immunization",
+            "redirect": "",
+            "generateComponent": "yes",
+            "componentName": "Immunization",
+            "dataName": "immunization",
+            "fullPath": "/ehr/patient/history/immunization",
+            "title": "Immunization",
+            "topLevel": "patient"
+          },
+          "children": []
+        },
+        {
+          "name": "family-history",
+          "label": "Family history",
+          "routeName": "family-history",
+          "topLevel": "patient",
+          "def": {
+            "path": "/ehr/patient/history",
+            "routeName": "family-history",
+            "pageDataKey": "familyHistory",
+            "label": "Family history",
+            "redirect": "",
+            "generateComponent": "yes",
+            "componentName": "FamilyHistory",
+            "dataName": "familyHistory",
+            "fullPath": "/ehr/patient/history/family-history",
+            "title": "Family History",
+            "topLevel": "patient"
+          },
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "care-team",
+      "label": "Care team",
+      "routeName": "care-team",
+      "topLevel": "patient",
+      "def": {
+        "path": "/ehr/patient",
+        "routeName": "care-team",
+        "pageDataKey": "careTeam",
+        "label": "Care team",
+        "redirect": "",
+        "generateComponent": "yes",
+        "componentName": "CareTeam",
+        "dataName": "careTeam",
+        "fullPath": "/ehr/patient/care-team",
+        "title": "Care Team",
+        "topLevel": "patient"
+      },
+      "children": []
+    },
+    {
+      "name": "past-appointments",
+      "label": "Past appointments",
+      "routeName": "past-appointments",
+      "topLevel": "patient",
+      "def": {
+        "path": "/ehr/patient",
+        "routeName": "past-appointments",
+        "pageDataKey": "pastAppointments",
+        "label": "Past appointments",
+        "redirect": "",
+        "generateComponent": "yes",
+        "componentName": "PastAppointments",
+        "dataName": "pastAppointments",
+        "fullPath": "/ehr/patient/past-appointments",
+        "title": "Past Appointments",
+        "topLevel": "patient"
+      },
+      "children": []
+    }
+  ]
+},{
+  "name": "current",
+  "redirect": "visit-details",
+  "label": "Current visit",
+  "routeName": "current",
+  "topLevel": "current",
+  "def": {
+    "path": "/ehr",
+    "routeName": "current",
+    "label": "Current visit",
+    "redirect": "visit-details",
+    "componentName": "Current",
+    "dataName": "current",
+    "fullPath": "/ehr/current",
+    "title": "Current",
+    "topLevel": "current"
+  },
+  "children": [
+    {
+      "name": "visit-details",
+      "label": "Visit details",
+      "routeName": "visit-details",
+      "topLevel": "current",
+      "def": {
+        "path": "/ehr/current",
+        "routeName": "visit-details",
+        "pageDataKey": "visit",
+        "label": "Visit details",
+        "redirect": "",
+        "generateComponent": "yes",
+        "componentName": "VisitDetails",
+        "dataName": "visitDetails",
+        "fullPath": "/ehr/current/visit-details",
+        "title": "Visit Details",
+        "topLevel": "current"
+      },
+      "children": []
+    },
+    {
+      "name": "vital-signs",
+      "label": "Vital signs",
+      "routeName": "vital-signs",
+      "topLevel": "current",
+      "def": {
+        "path": "/ehr/current",
+        "routeName": "vital-signs",
+        "pageDataKey": "vitals",
+        "label": "Vital signs",
+        "redirect": "",
+        "generateComponent": "custom",
+        "componentName": "VitalSigns",
+        "dataName": "vitalSigns",
+        "fullPath": "/ehr/current/vital-signs",
+        "title": "Vital Signs",
+        "topLevel": "current"
+      },
+      "children": []
+    },
+    {
+      "name": "fluid-balance",
+      "label": "Fluid balance",
+      "routeName": "fluid-balance",
+      "topLevel": "current",
+      "def": {
+        "path": "/ehr/current",
+        "routeName": "fluid-balance",
+        "pageDataKey": "fluidBalance",
+        "label": "Fluid balance",
+        "generateComponent": "yes",
+        "componentName": "FluidBalance",
+        "dataName": "fluidBalance",
+        "fullPath": "/ehr/current/fluid-balance",
+        "title": "Fluid Balance",
+        "redirect": "",
+        "topLevel": "current"
+      },
+      "children": []
+    },
+    {
+      "name": "assessments",
+      "redirect": "neurological",
+      "label": "Assessments",
+      "routeName": "assessments",
+      "topLevel": "current",
+      "def": {
+        "path": "/ehr/current",
+        "routeName": "assessments",
+        "label": "Assessments",
+        "redirect": "neurological",
+        "componentName": "Assessments",
+        "dataName": "assessments",
+        "fullPath": "/ehr/current/assessments",
+        "title": "Assessments",
+        "topLevel": "current"
+      },
+      "children": [
+        {
+          "name": "neurological",
+          "label": "Neurological",
+          "routeName": "neurological",
+          "topLevel": "current",
+          "def": {
+            "path": "/ehr/current/assessments",
+            "routeName": "neurological",
+            "pageDataKey": "neurological",
+            "label": "Neurological",
+            "redirect": "",
+            "generateComponent": "yes",
+            "componentName": "Neurological",
+            "dataName": "neurological",
+            "fullPath": "/ehr/current/assessments/neurological",
+            "title": "Neurological",
+            "topLevel": "current"
+          },
+          "children": []
+        },
+        {
+          "name": "respiratory",
+          "label": "Respiratory",
+          "routeName": "respiratory",
+          "topLevel": "current",
+          "def": {
+            "path": "/ehr/current/assessments",
+            "routeName": "respiratory",
+            "pageDataKey": "respiratory",
+            "label": "Respiratory",
+            "redirect": "",
+            "generateComponent": "yes",
+            "componentName": "Respiratory",
+            "dataName": "respiratory",
+            "fullPath": "/ehr/current/assessments/respiratory",
+            "title": "Respiratory",
+            "topLevel": "current"
+          },
+          "children": []
+        },
+        {
+          "name": "cardiovascular",
+          "label": "Cardiovascular",
+          "routeName": "cardiovascular",
+          "topLevel": "current",
+          "def": {
+            "path": "/ehr/current/assessments",
+            "routeName": "cardiovascular",
+            "pageDataKey": "cardiovascular",
+            "label": "Cardiovascular",
+            "redirect": "",
+            "generateComponent": "yes",
+            "componentName": "Cardiovascular",
+            "dataName": "cardiovascular",
+            "fullPath": "/ehr/current/assessments/cardiovascular",
+            "title": "Cardiovascular",
+            "topLevel": "current"
+          },
+          "children": []
+        },
+        {
+          "name": "gastrointestinal",
+          "label": "Gastrointestinal",
+          "routeName": "gastrointestinal",
+          "topLevel": "current",
+          "def": {
+            "path": "/ehr/current/assessments",
+            "routeName": "gastrointestinal",
+            "pageDataKey": "gastrointestinal",
+            "label": "Gastrointestinal",
+            "redirect": "",
+            "generateComponent": "yes",
+            "componentName": "Gastrointestinal",
+            "dataName": "gastrointestinal",
+            "fullPath": "/ehr/current/assessments/gastrointestinal",
+            "title": "Gastrointestinal",
+            "topLevel": "current"
+          },
+          "children": []
+        },
+        {
+          "name": "genitourinary",
+          "label": "Genitourinary",
+          "routeName": "genitourinary",
+          "topLevel": "current",
+          "def": {
+            "path": "/ehr/current/assessments",
+            "routeName": "genitourinary",
+            "pageDataKey": "genitourinary",
+            "label": "Genitourinary",
+            "redirect": "",
+            "generateComponent": "yes",
+            "componentName": "Genitourinary",
+            "dataName": "genitourinary",
+            "fullPath": "/ehr/current/assessments/genitourinary",
+            "title": "Genitourinary",
+            "topLevel": "current"
+          },
+          "children": []
+        },
+        {
+          "name": "musculoskeletal",
+          "label": "Musculoskeletal",
+          "routeName": "musculoskeletal",
+          "topLevel": "current",
+          "def": {
+            "path": "/ehr/current/assessments",
+            "routeName": "musculoskeletal",
+            "pageDataKey": "musculoskeletal",
+            "label": "Musculoskeletal",
+            "redirect": "",
+            "generateComponent": "yes",
+            "componentName": "Musculoskeletal",
+            "dataName": "musculoskeletal",
+            "fullPath": "/ehr/current/assessments/musculoskeletal",
+            "title": "Musculoskeletal",
+            "topLevel": "current"
+          },
+          "children": []
+        },
+        {
+          "name": "pain",
+          "label": "Pain",
+          "routeName": "pain",
+          "topLevel": "current",
+          "def": {
+            "path": "/ehr/current/assessments",
+            "routeName": "pain",
+            "pageDataKey": "pain",
+            "label": "Pain",
+            "redirect": "",
+            "generateComponent": "yes",
+            "componentName": "Pain",
+            "dataName": "pain",
+            "fullPath": "/ehr/current/assessments/pain",
+            "title": "Pain",
+            "topLevel": "current"
+          },
+          "children": []
+        },
+        {
+          "name": "biopsychosocial",
+          "label": "Biopsychosocial",
+          "routeName": "biopsychosocial",
+          "topLevel": "current",
+          "def": {
+            "path": "/ehr/current/assessments",
+            "routeName": "biopsychosocial",
+            "pageDataKey": "biopsychosocial",
+            "label": "Biopsychosocial",
+            "redirect": "",
+            "generateComponent": "yes",
+            "componentName": "Biopsychosocial",
+            "dataName": "biopsychosocial",
+            "fullPath": "/ehr/current/assessments/biopsychosocial",
+            "title": "Biopsychosocial",
+            "topLevel": "current"
+          },
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "no-med",
+      "redirect": "no-med-orders",
+      "label": "Non-medication orders",
+      "routeName": "no-med",
+      "topLevel": "current",
+      "def": {
+        "path": "/ehr/current",
+        "routeName": "no-med",
+        "label": "Non-medication orders",
+        "redirect": "no-med-orders",
+        "componentName": "NoMed",
+        "dataName": "noMed",
+        "fullPath": "/ehr/current/no-med",
+        "title": "No Med",
+        "topLevel": "current"
+      },
+      "children": [
+        {
+          "name": "no-med-orders",
+          "label": "Orders",
+          "routeName": "no-med-orders",
+          "topLevel": "current",
+          "def": {
+            "path": "/ehr/current/no-med",
+            "routeName": "no-med-orders",
+            "pageDataKey": "nonmedOrders",
+            "label": "Orders",
+            "redirect": "",
+            "generateComponent": "yes",
+            "componentName": "NoMedOrders",
+            "dataName": "noMedOrders",
+            "fullPath": "/ehr/current/no-med/no-med-orders",
+            "title": "No Med Orders",
+            "topLevel": "current"
+          },
+          "children": []
+        },
+        {
+          "name": "referrals",
+          "label": "Referrals to other disciplines",
+          "routeName": "referrals",
+          "topLevel": "current",
+          "def": {
+            "path": "/ehr/current/no-med",
+            "routeName": "referrals",
+            "pageDataKey": "referrals",
+            "label": "Referrals to other disciplines",
+            "redirect": "",
+            "generateComponent": "yes",
+            "componentName": "Referrals",
+            "dataName": "referrals",
+            "fullPath": "/ehr/current/no-med/referrals",
+            "title": "Referrals",
+            "topLevel": "current"
+          },
+          "children": []
+        },
+        {
+          "name": "lab-requisitions",
+          "label": "Lab requisitions",
+          "routeName": "lab-requisitions",
+          "topLevel": "current",
+          "def": {
+            "path": "/ehr/current/no-med",
+            "routeName": "lab-requisitions",
+            "pageDataKey": "labRequisitions",
+            "label": "Lab requisitions",
+            "redirect": "",
+            "generateComponent": "yes",
+            "componentName": "LabRequisitions",
+            "dataName": "labRequisitions",
+            "fullPath": "/ehr/current/no-med/lab-requisitions",
+            "title": "Lab Requisitions",
+            "topLevel": "current"
+          },
+          "children": []
+        }
+      ]
+    },
+    {
+      "name": "meds",
+      "label": "Medication orders",
+      "routeName": "meds",
+      "topLevel": "current",
+      "def": {
+        "path": "/ehr/current",
+        "routeName": "meds",
+        "pageDataKey": "medicationOrders",
+        "label": "Medication orders",
+        "redirect": "",
+        "generateComponent": "yes",
+        "componentName": "Meds",
+        "dataName": "meds",
+        "fullPath": "/ehr/current/meds",
+        "title": "Meds",
+        "topLevel": "current"
+      },
+      "children": []
+    },
+    {
+      "name": "mar",
+      "label": "MAR",
+      "routeName": "mar",
+      "topLevel": "current",
+      "def": {
+        "path": "/ehr/current",
+        "routeName": "mar",
+        "pageDataKey": "medAdminRec",
+        "label": "MAR",
+        "redirect": "",
+        "generateComponent": "yes",
+        "componentName": "Mar",
+        "dataName": "mar",
+        "fullPath": "/ehr/current/mar",
+        "title": "Mar",
+        "topLevel": "current"
+      },
+      "children": []
+    },
+    {
+      "name": "discharge",
+      "label": "Discharge summary",
+      "routeName": "discharge",
+      "topLevel": "current",
+      "def": {
+        "path": "/ehr/current",
+        "routeName": "discharge",
+        "pageDataKey": "dischargeSummary",
+        "label": "Discharge summary",
+        "redirect": "",
+        "generateComponent": "yes",
+        "componentName": "Discharge",
+        "dataName": "discharge",
+        "fullPath": "/ehr/current/discharge",
+        "title": "Discharge",
+        "topLevel": "current"
+      },
+      "children": []
+    },
+    {
+      "name": "billing",
+      "label": "Billing",
+      "routeName": "billing",
+      "topLevel": "current",
+      "def": {
+        "path": "/ehr/current",
+        "routeName": "billing",
+        "pageDataKey": "billing",
+        "label": "Billing",
+        "redirect": "",
+        "generateComponent": "yes",
+        "componentName": "Billing",
+        "dataName": "billing",
+        "fullPath": "/ehr/current/billing",
+        "title": "Billing",
+        "topLevel": "current"
+      },
+      "children": []
+    }
+  ]
+},{
+  "name": "chart",
+  "redirect": "progress-notes",
+  "label": "Patient chart",
+  "routeName": "chart",
+  "topLevel": "chart",
+  "def": {
+    "path": "/ehr",
+    "routeName": "chart",
+    "label": "Patient chart",
+    "redirect": "progress-notes",
+    "componentName": "Chart",
+    "dataName": "chart",
+    "fullPath": "/ehr/chart",
+    "title": "Chart",
+    "topLevel": "chart"
+  },
+  "children": [
+    {
+      "name": "progress-notes",
+      "label": "Progress notes",
+      "routeName": "progress-notes",
+      "topLevel": "chart",
+      "def": {
+        "path": "/ehr/chart",
+        "routeName": "progress-notes",
+        "pageDataKey": "progressNotes",
+        "label": "Progress notes",
+        "redirect": "",
+        "generateComponent": "yes",
+        "componentName": "ProgressNotes",
+        "dataName": "progressNotes",
+        "fullPath": "/ehr/chart/progress-notes",
+        "title": "Progress Notes",
+        "topLevel": "chart"
+      },
+      "children": []
+    },
+    {
+      "name": "care-plan",
+      "label": "Interprofessional plan of care",
+      "routeName": "care-plan",
+      "topLevel": "chart",
+      "def": {
+        "path": "/ehr/chart",
+        "routeName": "care-plan",
+        "pageDataKey": "carePlan",
+        "label": "Interprofessional plan of care",
+        "redirect": "",
+        "generateComponent": "yes",
+        "componentName": "CarePlan",
+        "dataName": "carePlan",
+        "fullPath": "/ehr/chart/care-plan",
+        "title": "Care Plan",
+        "topLevel": "chart"
+      },
+      "children": []
+    },
+    {
+      "name": "reports",
+      "redirect": "consults",
+      "label": "Reports and documents",
+      "routeName": "reports",
+      "topLevel": "chart",
+      "def": {
+        "path": "/ehr/chart",
+        "routeName": "reports",
+        "label": "Reports and documents",
+        "redirect": "consults",
+        "componentName": "Reports",
+        "dataName": "reports",
+        "fullPath": "/ehr/chart/reports",
+        "title": "Reports",
+        "topLevel": "chart"
+      },
+      "children": [
+        {
+          "name": "consults",
+          "label": "Consults",
+          "routeName": "consults",
+          "topLevel": "chart",
+          "def": {
+            "path": "/ehr/chart/reports",
+            "routeName": "consults",
+            "pageDataKey": "consultants",
+            "label": "Consults",
+            "redirect": "",
+            "generateComponent": "yes",
+            "componentName": "Consults",
+            "dataName": "consults",
+            "fullPath": "/ehr/chart/reports/consults",
+            "title": "Consults",
+            "topLevel": "chart"
+          },
+          "children": []
+        },
+        {
+          "name": "lab-reports",
+          "label": "Lab reports",
+          "routeName": "lab-reports",
+          "topLevel": "chart",
+          "def": {
+            "path": "/ehr/chart/reports",
+            "routeName": "lab-reports",
+            "pageDataKey": "labResults",
+            "label": "Lab reports",
+            "redirect": "",
+            "generateComponent": "yes",
+            "componentName": "LabReports",
+            "dataName": "labReports",
+            "fullPath": "/ehr/chart/reports/lab-reports",
+            "title": "Lab Reports",
+            "topLevel": "chart"
+          },
+          "children": []
+        },
+        {
+          "name": "diagnostic-reports",
+          "label": "Diagnostic reports",
+          "routeName": "diagnostic-reports",
+          "topLevel": "chart",
+          "def": {
+            "path": "/ehr/chart/reports",
+            "routeName": "diagnostic-reports",
+            "pageDataKey": "medicalImaging",
+            "label": "Diagnostic reports",
+            "redirect": "",
+            "generateComponent": "yes",
+            "componentName": "DiagnosticReports",
+            "dataName": "diagnosticReports",
+            "fullPath": "/ehr/chart/reports/diagnostic-reports",
+            "title": "Diagnostic Reports",
+            "topLevel": "chart"
+          },
+          "children": []
+        },
+        {
+          "name": "operative-anaesthesia",
+          "label": "Operative reports and anaesthesia record",
+          "routeName": "operative-anaesthesia",
+          "topLevel": "chart",
+          "def": {
+            "path": "/ehr/chart/reports",
+            "routeName": "operative-anaesthesia",
+            "pageDataKey": "operationReports",
+            "label": "Operative reports and anaesthesia record",
+            "redirect": "",
+            "generateComponent": "yes",
+            "componentName": "OperativeAnaesthesia",
+            "dataName": "operativeAnaesthesia",
+            "fullPath": "/ehr/chart/reports/operative-anaesthesia",
+            "title": "Operative Anaesthesia",
+            "topLevel": "chart"
+          },
+          "children": []
+        }
+      ]
+    }
+  ]
+},{
+  "name": "external",
+  "redirect": "assessment-tools",
+  "label": "External resources",
+  "routeName": "external",
+  "topLevel": "external",
+  "def": {
+    "path": "/ehr",
+    "routeName": "external",
+    "label": "External resources",
+    "redirect": "assessment-tools",
+    "componentName": "External",
+    "dataName": "external",
+    "fullPath": "/ehr/external",
+    "title": "External",
+    "topLevel": "external"
+  },
+  "children": [
+    {
+      "name": "assessment-tools",
+      "label": "Standardized assessment tools",
+      "routeName": "assessment-tools",
+      "topLevel": "external",
+      "def": {
+        "path": "/ehr/external",
+        "routeName": "assessment-tools",
+        "pageDataKey": "assessmentTools",
+        "label": "Standardized assessment tools",
+        "redirect": "",
+        "generateComponent": "yes",
+        "componentName": "AssessmentTools",
+        "dataName": "assessmentTools",
+        "fullPath": "/ehr/external/assessment-tools",
+        "title": "Assessment Tools",
+        "topLevel": "external"
+      },
+      "children": []
+    },
+    {
+      "name": "code-lookup",
+      "label": "Code lookup",
+      "routeName": "code-lookup",
+      "topLevel": "external",
+      "def": {
+        "path": "/ehr/external",
+        "routeName": "code-lookup",
+        "pageDataKey": "codeLookup",
+        "label": "Code lookup",
+        "redirect": "",
+        "generateComponent": "yes",
+        "componentName": "CodeLookup",
+        "dataName": "codeLookup",
+        "fullPath": "/ehr/external/code-lookup",
+        "title": "Code Lookup",
+        "topLevel": "external"
+      },
+      "children": []
+    },
+    {
+      "name": "diagnostic-codes",
+      "label": "Diagnostic codes (ICD-10)",
+      "routeName": "diagnostic-codes",
+      "topLevel": "external",
+      "def": {
+        "path": "/ehr/external",
+        "routeName": "diagnostic-codes",
+        "pageDataKey": "diagnosticCodes",
+        "label": "Diagnostic codes (ICD-10)",
+        "redirect": "",
+        "generateComponent": "yes",
+        "componentName": "DiagnosticCodes",
+        "dataName": "diagnosticCodes",
+        "fullPath": "/ehr/external/diagnostic-codes",
+        "title": "Diagnostic Codes",
+        "topLevel": "external"
+      },
+      "children": []
+    },
+    {
+      "name": "intervention-codes",
+      "label": "Intervention codes",
+      "routeName": "intervention-codes",
+      "topLevel": "external",
+      "def": {
+        "path": "/ehr/external",
+        "routeName": "intervention-codes",
+        "pageDataKey": "interventionCodes",
+        "label": "Intervention codes",
+        "redirect": "",
+        "generateComponent": "yes",
+        "componentName": "InterventionCodes",
+        "dataName": "interventionCodes",
+        "fullPath": "/ehr/external/intervention-codes",
+        "title": "Intervention Codes",
+        "topLevel": "external"
+      },
+      "children": []
+    },
+    {
+      "name": "care-mix-group",
+      "label": "Care mix group",
+      "routeName": "care-mix-group",
+      "topLevel": "external",
+      "def": {
+        "path": "/ehr/external",
+        "routeName": "care-mix-group",
+        "pageDataKey": "careMixGroup",
+        "label": "Care mix group",
+        "redirect": "",
+        "generateComponent": "yes",
+        "componentName": "CareMixGroup",
+        "dataName": "careMixGroup",
+        "fullPath": "/ehr/external/care-mix-group",
+        "title": "Care Mix Group",
+        "topLevel": "external"
+      },
+      "children": []
+    }
+  ]
+}
+]
