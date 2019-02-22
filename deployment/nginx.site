@@ -14,7 +14,7 @@ server {
   #Strict-Transport-Security to prevent man in the middle attacks
   add_header Strict-Transport-Security "max-age=31536000";
 
-  root /opt/proto-EdEHR/client/dist/;
+  root /opt/edehr/client/dist/;
   access_log /var/log/nginx/edehr.access.log;
   error_log /var/log/nginx/edehr.error.log;
 
