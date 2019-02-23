@@ -18,7 +18,7 @@
     "ejs": "^2.6.1",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
-    "ims-lti": "file:../../ims-lti",
+    "ims-lti": "git+https://github.com/sfu/ims-lti.git",
     "mongoose": "^5.4.11",
     "mongoose-unique-validator": "^2.0.2",
     "passport": "^0.4.0",
