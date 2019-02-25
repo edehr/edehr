@@ -34,8 +34,12 @@ In terminal window 1 start the database and server
 cd database
 # start the mongodb in a docker container
 docker-compose up -d
+```
+
+```
 # start the API server
-npm run start-dev
+cd server
+npm run serve-dev
 ```
 
 In terminal window 2 start the client
