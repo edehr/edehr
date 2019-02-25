@@ -58,7 +58,7 @@ const actions = {
   },
   /**
    * support saving new or updating seed meta data
-   * (Can include ehr content but to update just a part of the ehr data use updateSeedEhrData)
+   * (Can include ehr content but to update just a part of the ehr data use updateSeedEhrProperty)
    * @param context
    * @param dataIdPlusPayload
    * @return {*}
@@ -94,9 +94,9 @@ const actions = {
    *      }
    * @return {*}
    */
-  updateSeedEhrData(context, payload) {
-    let url = composeUrl(context, API) + 'updateSeedEhrData/' + payload.id
-    console.log('updateSeedEhrData', url, payload)
+  updateSeedEhrProperty(context, payload) {
+    let url = composeUrl(context, API) + 'updateSeedEhrProperty/' + payload.id
+    console.log('updateSeedEhrProperty', url, payload)
     return helper
       .putRequest(context, url, payload)
       .then(results => {

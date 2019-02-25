@@ -36,4 +36,11 @@ describe(`${typeName} controller testing`, function() {
         done()
       })
   })
+
+  it(`${typeName} update a property in the ehr data`, function(done) {
+    let m = new SeedDataController()
+    m.should.have.property('updateSeedEhrProperty')
+    done()
+  })
+
 })

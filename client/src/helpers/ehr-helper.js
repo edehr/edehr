@@ -276,7 +276,7 @@ export default class EhrHelp {
       payload.id = _this.$store.state.seedStore.sSeedId
       payload.value = removeEmptyProperties(payload.value)
       console.log('saving seed ehr data', payload.id, JSON.stringify(payload.value))
-      return _this.$store.dispatch('seedStore/updateSeedEhrData', payload).then(() => {
+      return _this.$store.dispatch('seedStore/updateSeedEhrProperty', payload).then(() => {
         _this.$store.commit('system/setLoading', false)
       })
     } else {

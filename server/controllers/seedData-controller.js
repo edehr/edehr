@@ -7,13 +7,13 @@ export default class SeedDataController extends BaseController {
   constructor () {
     super(SeedData, '_id')
   }
-  updateSeedEhrData (id, data) {
+  updateSeedEhrProperty (id, data) {
     var propertyName = data.propertyName
     var value = data.value
-    debug(`SeedData updateSeedEhrData ${id} ehrData[${data.propertyName}] with data:`)
-    debug('updateSeedEhrData ' + JSON.stringify(value))
+    debug(`SeedData updateSeedEhrProperty ${id} ehrData[${data.propertyName}] with data:`)
+    debug('updateSeedEhrProperty ' + JSON.stringify(value))
     return this.baseFindOneQuery(id).then(model => {
-      debug('updateSeedEhrData search ' + model ? 'ok' : 'fail')
+      debug('updateSeedEhrProperty search ' + model ? 'ok' : 'fail')
       if (model) {
         if (!model.ehrData) {
           model.ehrData = {}
@@ -28,7 +28,7 @@ export default class SeedDataController extends BaseController {
 
   route () {
     const router = super.route()
-    router.put('/updateSeedEhrData/:key/', (req, res) => {
+    router.put('/updateSeedEhrProperty/:key/', (req, res) => {
       let id = req.params.key
       /*
       For example in caller:
@@ -38,8 +38,8 @@ export default class SeedDataController extends BaseController {
       }
       */
       let data = req.body
-      debug('seed-data updateSeedEhrData with key', id)
-      this.updateSeedEhrData(id, data)
+      debug('seed-data updateSeedEhrProperty with key', id)
+      this.updateSeedEhrProperty(id, data)
       .then(ok(res))
       .catch(fail(res))
     })

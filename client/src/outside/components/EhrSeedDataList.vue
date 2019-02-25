@@ -19,6 +19,9 @@
               td {{sv.description}} {{sv}}
               td {{sv._id}}
               td
+               ui-button(v-on:buttonClicked="uploadSeed", :value="sv._id")
+                  fas-icon(icon="upload")
+              td
                ui-button(v-on:buttonClicked="downloadSeed", :value="sv._id")
                   fas-icon(icon="download")
               td
@@ -28,6 +31,7 @@
                 ui-button(v-on:buttonClicked="gotoEhrWithSeed", :value="sv._id")
                   fas-icon(icon="notes-medical")
 
+      input(id="fileUploadInput", ref="fileUploadInput", type="file", accept="application/json", style="display:none", @change="importSeedFile")
     app-dialog( v-if="showingDialog", :isModal="true", @cancel="cancelDialog", @save="saveDialog")
       h3(slot="header") {{dialogHeader}}
       div(slot="body")
@@ -58,6 +62,7 @@
 import AppDialog from '../../app/components/AppDialogShell'
 import UiButton from '../../app/ui/UiButton.vue'
 import EventBus from '../../helpers/event-bus'
+import {validateSeed} from '../../helpers/ehr-utills'
 import { PAGE_DATA_REFRESH_EVENT } from '../../helpers/event-bus'
 import moment from 'moment'
 import camelcase from 'camelcase'
@@ -92,6 +97,20 @@ export default {
     },
     loadSeedDataList() {
       return this.$store.dispatch('seedStore/loadSeedDataList')
+    },
+    uploadSeed: function(event, value) {
+      this.seedId = value //event.target.value
+      this.$refs.fileUploadInput.click()
+    },
+    importSeedFile: function(event) {
+      const file = event.target.files[0]
+      const reader = new FileReader()
+      reader.onload = (function(event) {
+        let contents = event.target.result
+        let valid = validateSeed(contents)
+        console.log('file contents', valid, contents)
+      })
+      reader.readAsText(file)
     },
     downloadSeed: function (event, value) {
       this.seedId = value //event.target.value

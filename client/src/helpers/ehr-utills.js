@@ -58,6 +58,7 @@ export function ehrRemoveMarkedSeed(page) {
   // })
   return page
 }
+
 export function ehrMarkSeed(data) {
   let pageKeys = Object.keys(data)
   pageKeys.forEach(key => {
@@ -78,6 +79,16 @@ export function ehrMarkSeed(data) {
   return data
 }
 
+export function validateSeed(dataAsString) {
+  try {
+    let obj = JSON.parse(dataAsString)
+    console.log('TODO add many more checks for valid seed data')
+    return true
+  }catch(err) {
+    console.log('validateSeed: failed to parse seed data', err)
+    return false
+  }
+}
 /**
  * prepareAssignmentPageDataForSave does two things
  * 1. It removes empty properties
