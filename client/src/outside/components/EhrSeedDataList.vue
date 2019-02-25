@@ -19,6 +19,9 @@
               td {{sv.description}} {{sv}}
               td {{sv._id}}
               td
+               ui-button(v-on:buttonClicked="downloadSeed", :value="sv._id")
+                  fas-icon(icon="download")
+              td
                 ui-button(v-on:buttonClicked="showEditDialog", :value="sv._id")
                   fas-icon(icon="edit")
               td
@@ -56,6 +59,9 @@ import AppDialog from '../../app/components/AppDialogShell'
 import UiButton from '../../app/ui/UiButton.vue'
 import EventBus from '../../helpers/event-bus'
 import { PAGE_DATA_REFRESH_EVENT } from '../../helpers/event-bus'
+import moment from 'moment'
+import camelcase from 'camelcase'
+import fileDownload  from 'js-file-download'
 
 export default {
   name: 'EhrSeedDataList',
@@ -86,6 +92,19 @@ export default {
     },
     loadSeedDataList() {
       return this.$store.dispatch('seedStore/loadSeedDataList')
+    },
+    downloadSeed: function (event, value) {
+      this.seedId = value //event.target.value
+      let sSeedContent = this.$store.state.seedStore.sSeedContent
+      let lastUpdate = sSeedContent.lastUpdateDate
+      let data = this.$store.getters['seedStore/seedEhrData']
+      data = JSON.stringify(data,null,2)
+      let fName = camelcase(sSeedContent.name)
+      fName += sSeedContent.version ? '_' + sSeedContent.version : ''
+      fName += '_' + moment(lastUpdate).format('YYYY-MM-DD')
+      fName += '.json'
+      console.log('Download seed to ', fName, data)
+      fileDownload(data, fName)
     },
     gotoEhrWithSeed: function(event, value) {
       const _this = this
