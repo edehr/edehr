@@ -9,7 +9,7 @@
 ## Installation
 ```
 cd /your/development/area
-git clone https://github.com/bryan-gilbert/proto-EdEHR.git
+git clone https://github.com/BCcampus/edehr.git
 ```
 
 Next install packages
