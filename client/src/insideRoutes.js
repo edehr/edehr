@@ -1,4 +1,5 @@
 export function inside() {
+
   return [
     {
       path: '/ehr/patient',
@@ -278,11 +279,7 @@ export function inside() {
       name: 'operative-anaesthesia',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/OperativeAnaesthesia.vue'),
-      meta: {
-        layout: 'inside',
-        label: 'Operative reports and anaesthesia record',
-        topLevel: 'chart'
-      }
+      meta: { layout: 'inside', label: 'Operative reports and anaesthesia record', topLevel: 'chart' }
     },
     {
       path: '/ehr/external',

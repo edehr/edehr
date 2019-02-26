@@ -3,3 +3,8 @@
 
 ./generateComponents.sh
 ./generateEhrDefs.sh
+
+cd ../client
+npm run lint
+
+cd ../make
