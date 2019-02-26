@@ -192,22 +192,22 @@ export default {
       if (directionStr) {
         var cursor
         switch (directionStr) {
-          case 'n':
-          case 's':
-            cursor = 'ns'
-            break
-          case 'e':
-          case 'w':
-            cursor = 'ew'
-            break
-          case 'nw':
-          case 'se':
-            cursor = 'nwse'
-            break
-          case 'ne':
-          case 'sw':
-            cursor = 'nesw'
-            break
+        case 'n':
+        case 's':
+          cursor = 'ns'
+          break
+        case 'e':
+        case 'w':
+          cursor = 'ew'
+          break
+        case 'nw':
+        case 'se':
+          cursor = 'nwse'
+          break
+        case 'ne':
+        case 'sw':
+          cursor = 'nesw'
+          break
         }
         container.style.cursor = cursor + '-resize'
       } else {
