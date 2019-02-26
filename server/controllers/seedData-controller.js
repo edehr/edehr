@@ -7,9 +7,17 @@ export default class SeedDataController extends BaseController {
   constructor () {
     super(SeedData, '_id')
   }
+
+  /**
+   * Update a property inside the EHR seed data.
+   * Also see updateSeedEhrData
+   * @param id of the seed db doc
+   * @param data containing propertyName and value
+   * @return {*} updated doc
+   */
   updateSeedEhrProperty (id, data) {
-    var propertyName = data.propertyName
-    var value = data.value
+    let propertyName = data.propertyName
+    let value = data.value
     debug(`SeedData updateSeedEhrProperty ${id} ehrData[${data.propertyName}] with data:`)
     debug('updateSeedEhrProperty ' + JSON.stringify(value))
     return this.baseFindOneQuery(id).then(model => {
@@ -26,20 +34,39 @@ export default class SeedDataController extends BaseController {
     })
   }
 
+  /**
+   * Update the entire ehr seed data
+   * Also see updateSeedEhrProperty
+   * @param id of the seed db doc
+   * @param data containing propertyName and value
+   * @return {*} updated doc
+   */
+  updateSeedEhrData (id, data) {
+    debug('SeedData updateSeedEhrData '+ id +' ehrData with data: ' + JSON.stringify(data))
+    return this.baseFindOneQuery(id).then(model => {
+      debug('updateSeedEhrData search ' + model ? 'ok' : 'fail')
+      if (model) {
+        model.lastUpdateDate = Date.now()
+        model.ehrData = data
+        model.markModified('ehrData');
+        return model.save()
+      }
+    })
+  }
+
   route () {
     const router = super.route()
     router.put('/updateSeedEhrProperty/:key/', (req, res) => {
       let id = req.params.key
-      /*
-      For example in caller:
-      let data = {
-        property: 'progressNotes',
-        value: model.ehrData.progressNotes || []
-      }
-      */
       let data = req.body
-      debug('seed-data updateSeedEhrProperty with key', id)
       this.updateSeedEhrProperty(id, data)
+      .then(ok(res))
+      .catch(fail(res))
+    })
+    router.put('/updateSeedEhrData/:key/', (req, res) => {
+      let id = req.params.key
+      let data = req.body
+      this.updateSeedEhrData(id, data)
       .then(ok(res))
       .catch(fail(res))
     })
