@@ -12,12 +12,12 @@
       input(class="input", type="text", v-model="inputVal")
 
     div(v-if="def.inputType === 'fieldRowSet'", class="fieldset_row_wrapper")
-      label(class="fieldset_label") {{def.label}} &nbsp;
+      label(v-show="!!def.label", class="fieldset_label") {{def.label}} &nbsp;
       div(v-for="row in def.formFieldSet.rows", :key="row.formRow" class="fieldset_row_row" )
         ehr-dialog-form-element(v-for="fmEl in row.elements", :key="fmEl.elementKey", :inputs="inputs", :def="fmEl")
 
     div(v-if="def.inputType === 'fieldset'", class="fieldset_col_wrapper")
-      label(class="fieldset_label") {{def.label}} &nbsp;
+      label(v-show="!!def.label", class="fieldset_label") {{def.label}} &nbsp;
       div(v-for="row in def.formFieldSet.rows", :key="row.formRow" class="fieldset_row_row" )
         ehr-dialog-form-element(v-for="fmEl in row.elements", :key="fmEl.elementKey", :inputs="inputs", :def="fmEl")
 
