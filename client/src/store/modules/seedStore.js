@@ -36,6 +36,12 @@ const actions = {
       context.commit('_setSeedEhrData', ehrd)
     })
   },
+
+  /**
+   * Get the list of seeds
+   * @param context
+   * @return {*}
+   */
   loadSeedDataList(context) {
     let url = composeUrl(context, API)
     return helper.getRequest(context, url).then(response => {
@@ -47,6 +53,13 @@ const actions = {
       context.commit('_setSeedDataList', list)
     })
   },
+
+  /**
+   * Create a new ehr seed
+   * @param context
+   * @param payload
+   * @return {*}
+   */
   createSeedItem(context, payload) {
     let url = composeUrl(context, API)
     console.log('send seed data ', url, payload)
@@ -56,6 +69,7 @@ const actions = {
       return context.dispatch('loadSeedDataList')
     })
   },
+
   /**
    * support saving new or updating seed meta data
    * (Can include ehr content but to update just a part of the ehr data use updateSeedEhrProperty)
@@ -109,7 +123,31 @@ const actions = {
           return context.dispatch('loadSeedContent')
         }
       })
+  },
+
+  /**
+   * Replace the seed's ehrData
+   * @param context
+   * @param payload { ehrData, id }
+   * @return {*}
+   */
+  updateSeedEhrData(context, payload) {
+    let url = composeUrl(context, API) + 'updateSeedEhrData/' + payload.id
+    console.log('updateSeedEhrProperty', url, payload.ehrData)
+    return helper
+      .putRequest(context, url, payload.ehrData)
+      .then(results => {
+        console.log('after seed replace ehr data reload seed list')
+        return context.dispatch('loadSeedDataList')
+      })
+      .then(() => {
+        if (context.state.sSeedId) {
+          console.log('after seed replace ehr data reload current seed item')
+          return context.dispatch('loadSeedContent')
+        }
+      })
   }
+
 }
 
 const mutations = {

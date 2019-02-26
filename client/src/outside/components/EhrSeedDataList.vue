@@ -30,7 +30,7 @@
               td
                 ui-button(v-on:buttonClicked="gotoEhrWithSeed", :value="sv._id")
                   fas-icon(icon="notes-medical")
-
+      ui-agree(ref="aggreeDialog")
       input(id="fileUploadInput", ref="fileUploadInput", type="file", accept="application/json", style="display:none", @change="importSeedFile")
     app-dialog( v-if="showingDialog", :isModal="true", @cancel="cancelDialog", @save="saveDialog")
       h3(slot="header") {{dialogHeader}}
@@ -61,18 +61,17 @@
 <script>
 import AppDialog from '../../app/components/AppDialogShell'
 import UiButton from '../../app/ui/UiButton.vue'
+import UiAgree from '../../app/ui/UiAgree.vue'
 import EventBus from '../../helpers/event-bus'
-import {validateSeed} from '../../helpers/ehr-utills'
+import { setApiError, validateSeed, downloadSeedToFile } from '../../helpers/ehr-utills'
 import { PAGE_DATA_REFRESH_EVENT } from '../../helpers/event-bus'
-import moment from 'moment'
-import camelcase from 'camelcase'
-import fileDownload  from 'js-file-download'
 
 export default {
   name: 'EhrSeedDataList',
   components: {
     AppDialog,
-    UiButton
+    UiButton,
+    UiAgree
   },
   data() {
     return {
@@ -99,31 +98,42 @@ export default {
       return this.$store.dispatch('seedStore/loadSeedDataList')
     },
     uploadSeed: function(event, value) {
-      this.seedId = value //event.target.value
+      this.seedId = value
+      this.currentSeed = this.findSeed(this.seedId)
+      // console.log('upload seed for ', this.currentSeed)
       this.$refs.fileUploadInput.click()
     },
     importSeedFile: function(event) {
+      const _this = this
       const file = event.target.files[0]
       const reader = new FileReader()
+      _this.$store.commit('system/setLoading', true)
       reader.onload = (function(event) {
         let contents = event.target.result
-        let valid = validateSeed(contents)
-        console.log('file contents', valid, contents)
+        let {seedObj, invalidMsg} = validateSeed(contents)
+        if(invalidMsg) {
+          let msg = 'Upload ' + file.name + ' failed: ' + invalidMsg
+          setApiError(_this.$store, msg)
+          _this.$store.commit('system/setLoading', false)
+          return
+        }
+        let payload = {
+          id: _this.seedId,
+          ehrData: seedObj
+        }
+        return _this.$store.dispatch('seedStore/updateSeedEhrData', payload).then(() => {
+          let title = _this.currentSeed.name + ' has new seed data'
+          let msg = 'New seed data has been imported from file: ' + file.name
+          _this.$refs.aggreeDialog.showDialog(title, msg)
+          _this.$store.commit('system/setLoading', false)
+        })
       })
       reader.readAsText(file)
     },
-    downloadSeed: function (event, value) {
-      this.seedId = value //event.target.value
+    downloadSeed: function (event, seedId) {
       let sSeedContent = this.$store.state.seedStore.sSeedContent
-      let lastUpdate = sSeedContent.lastUpdateDate
       let data = this.$store.getters['seedStore/seedEhrData']
-      data = JSON.stringify(data,null,2)
-      let fName = camelcase(sSeedContent.name)
-      fName += sSeedContent.version ? '_' + sSeedContent.version : ''
-      fName += '_' + moment(lastUpdate).format('YYYY-MM-DD')
-      fName += '.json'
-      console.log('Download seed to ', fName, data)
-      fileDownload(data, fName)
+      downloadSeedToFile(seedId, sSeedContent, data)
     },
     gotoEhrWithSeed: function(event, value) {
       const _this = this
