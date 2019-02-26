@@ -4,17 +4,8 @@ import { ACTIVITY_DATA_EVENT } from './event-bus'
 import { DIALOG_INPUT_EVENT } from './event-bus'
 import { PAGE_FORM_INPUT_EVENT } from './event-bus'
 import { PAGE_DATA_REFRESH_EVENT } from './event-bus'
-import CV from '../inside/defs/current-visit'
-import PC from '../inside/defs/patient-chart'
-import PP from '../inside/defs/patient-profile'
-import ER from '../inside/defs/external-resources'
 import { removeEmptyProperties, prepareAssignmentPageDataForSave } from './ehr-utills'
-
-const pageDefsPP = PP()
-const pageDefsCV = CV()
-const pageDefsPC = PC()
-const pageDefsExt = ER()
-const pageDefs = Object.assign(pageDefsPP, pageDefsCV, pageDefsPC, pageDefsExt)
+import { pageDefs } from './ehr-defs'
 
 const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
@@ -276,7 +267,7 @@ export default class EhrHelp {
       payload.id = _this.$store.state.seedStore.sSeedId
       payload.value = removeEmptyProperties(payload.value)
       console.log('saving seed ehr data', payload.id, JSON.stringify(payload.value))
-      return _this.$store.dispatch('seedStore/updateSeedEhrData', payload).then(() => {
+      return _this.$store.dispatch('seedStore/updateSeedEhrProperty', payload).then(() => {
         _this.$store.commit('system/setLoading', false)
       })
     } else {
