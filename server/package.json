@@ -6,6 +6,7 @@
   "scripts": {
     "serve": "node index.js",
     "serve-dev": "NODE_ENV=development DEBUG=server node index.js",
+    "lint": "eslint controllers/**/*.js",
     "test": "nyc mocha --require @babel/register test/**/*.spec.js"
   },
   "author": "Bryan Gilbert",

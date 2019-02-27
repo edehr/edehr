@@ -3,7 +3,6 @@ module.exports = {
   env: {
     node: true
   },
-  extends: ['plugin:vue/essential'],
   rules: {
     "space-before-function-paren": ["warn", "always"],
     'no-console': 'off',
@@ -15,6 +14,7 @@ module.exports = {
     'no-unused-vars': ['warn', { args: 'none' }]
   },
   parserOptions: {
-    parser: 'babel-eslint'
+    parser: 'babel-eslint',
+    "sourceType": "module"
   }
 }
