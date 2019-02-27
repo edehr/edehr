@@ -3,13 +3,15 @@
     tabs
       tab(name="Today", :selected="true")
         h1 Medication Administration Records
-        div(class="classList", v-for="period in periods")
-          div {{ period.name }} {{ period.meds }}
+        div(class="periodsList", v-for="period in periods")
+          div {{ period.name }}
+          div(class="medList", v-for="med in period.meds")
+            div {{ medText(med) }}
       tab(name="Summary")
         h1 Medication Administration Summary
         div To be developed
-    div(style="display:block") {{medicationOrders}}
-    div(style="display:block") {{mars}}
+        div(style="display:block") {{medicationOrders}}
+        div(style="display:block") {{mars}}
 </template>
 
 <script>
@@ -24,11 +26,11 @@ export default {
     Tabs,
     Tab
   },
-  data() {
+  data () {
     return {
       theMedOrders: {},
       mars: {},
-      keys: ['breakfast',
+      schedules: ['breakfast',
         'midmorning',
         'lunch',
         'midafternoon',
@@ -49,26 +51,36 @@ export default {
     ehrHelp: { type: Object }
   },
   computed: {
-    medicationOrders() {
+    medicationOrders () {
       // See EhrPageForm for more on why we have currentData
       this.refresh()
       return this.theMedOrders
     }
   },
   methods: {
-    refresh() {
+    medText (med) {
+      let space = ', '
+      let extract = t => t && t.trim().length > 0 ? space + t : ''
+      let markup = med.medication
+      markup += extract(med.dose)
+      markup += extract(med.route)
+      markup += extract(med.type)
+      markup += extract(med.notes)
+      return markup
+    },
+    refresh () {
       this.theMedOrders = this.ehrHelp.getAsLoadedPageData('medicationOrders') //this.pageDataKey)
       let list = this.theMedOrders.table
-      let keys = this.keys
+      let schedules = this.schedules
       let periods = this.periods
       console.log('what is in list', list)
       if (list) {
         list.forEach(med => {
           console.log('found a med', med)
           let name = med.medication
-          keys.forEach( key => {
+          schedules.forEach( key => {
             if(med[key]) {
-              periods[key].meds.push(name)
+              periods[key].meds.push(med)
             }
           })
         })
@@ -76,17 +88,23 @@ export default {
       this.mars = this.ehrHelp.getAsLoadedPageData(this.pageDataKey)
     }
   },
-  mounted: function() {
+  mounted: function () {
     const _this = this
-    this.refreshEventHandler = function() {
+    this.refreshEventHandler = function () {
       _this.refresh()
     }
     EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
   },
-  beforeDestroy: function() {
+  beforeDestroy: function () {
     if (this.refreshEventHandler) {
       EventBus.$off(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
     }
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.medList {
+  margin-left: 30px;
+}
+</style>
