@@ -5,7 +5,7 @@ const state = {
   currentPageKey: '',
   loadingCnt: 0,
   apiError:
-    'This is an axample api error. We show this example only during development. See the store/modules/system.js file to remove this message'
+    ''
 }
 
 const getters = {}
