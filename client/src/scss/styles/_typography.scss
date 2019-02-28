@@ -1,10 +1,11 @@
 @import url("//fonts.googleapis.com/css?family=Source+Sans+Pro");
 @import "../definitions";
 
-body {
-	color: $grey60;
+body, button, input, select, textarea {
+  color: $grey60;
   font-family: $bodyFontFamily; 
   font-size: $bodyFontSize;
+  line-height: 1.4;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -27,6 +28,10 @@ h2 {
 h3, .fieldset_label {
 	font-size: 20px;
 	margin-bottom: .5em
+}
+
+p {
+	margin-bottom: 10px;
 }
 
 .icon-right {

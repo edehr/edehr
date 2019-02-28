@@ -7,7 +7,7 @@
           ul
             li 
               b {{ lastFirstMiddle }}
-            li Date of Birth: &nbsp;
+            li Date of birth: &nbsp;
               b {{ demographics.dateOfBirth }}
             li Age: &nbsp;
               b {{ demographics.personAge }}
@@ -17,7 +17,7 @@
               b to link in
         div( class="column EhrBanner__content_row--2")
           ul
-            li Code Status: &nbsp;
+            li Code status: &nbsp;
               b {{ demographics.codeStatus }}
             li PHN: &nbsp;
               b {{ demographics.phn }}
@@ -25,17 +25,17 @@
               b {{ demographics.mrn }}
             li MRP: &nbsp;
               b to link in
-            li MRP Phone: &nbsp;
+            li MRP phone: &nbsp;
               b to link in
         div( class="column EhrBanner__content_row--3")
           ul
-            li Admitting Diagnosis: &nbsp;
+            li Admitting diagnosis: &nbsp;
               b {{ visitDetails.admittingDiagnosis }}
             li Allergies: &nbsp;
               b to link in
             li Location: &nbsp;
               b {{ location }}
-            li Isolation Precautions: &nbsp;
+            li Isolation precautions: &nbsp;
               b to link in
 </template>
 
@@ -91,15 +91,17 @@ export default {
   &__content {
     display: flex;
     color: $grey60;
+    & li {
+    margin-bottom: 4px;
+    }
   }
-  &__content_row--1 {
-    flex-grow: 0.8;
-  }
-  &__content_row--2 {
-    flex-grow: 0.9;
+  &__content_row--1, &__content_row--2 {
+    flex-grow: 1;
+    padding: 0 2em .5em 0;
   }
   &__content_row--3 {
-    flex-grow: 1.5;
+    flex-grow: 2;
+    padding: 0 0 .5em 0;
   }
 }
 </style>
