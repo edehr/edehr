@@ -15,6 +15,8 @@ $grey70: #383C45;
 $grey80: #22262E;
 $black: #151A24;
 
+$red: #B8000C;
+
 $toolbar-background-color: $grey70;
 $toolbar-color: $grey10;
 
@@ -32,8 +34,8 @@ $dialog-header-content-color: $grey70;
 $dialog-wrapper-background-color: $white;
 $dialog-wrapper-color: $grey40;
 
-$system-error-background: #ffdb4a;
-$system-error-color: $black;
+$system-error-background: $red;
+$system-error-color: $white;
 
 $context-banner-background-color: #e8f2fd;
 $context-banner-color: $grey80;
