@@ -1,5 +1,5 @@
-const DEFAULT_FONT = '12px Source Sans Pro'
-const DEFAULT_DATA_FONT = '11px Source Sans Pro'
+const DEFAULT_FONT = '18px Source Sans Pro'
+const DEFAULT_DATA_FONT = '14px Source Sans Pro'
 
 const POINT_TYPES = {
   POINT: 'point',
@@ -9,28 +9,28 @@ const POINT_TYPES = {
 }
 
 export const options = {
-  pointFillColour: '#222',
+  pointFillColour: '$grey40',
   pointMediumColour: 'orange',
   pointHighColour: '#F00',
   pointLowColour: '#00F',
   invalidMaxFontColour: '#F00',
   invalidMinFontColour: '#00F',
-  textValueColor: '#222',
-  axisLineColour: '#333',
-  yAxisLabelColour: '#222',
+  textValueColor: '$grey70',
+  axisLineColour: '$grey40',
+  yAxisLabelColour: '$grey70',
 
-  gridXStepSize: 70,
+  gridXStepSize: 100,
 
   pointRadius: 5,
   pointLabelFont: DEFAULT_DATA_FONT,
-  textValueFont: DEFAULT_FONT,
+  textValueFont: DEFAULT_DATA_FONT,
   yAxisLabelFont: DEFAULT_FONT,
 
-  axisLineWidth: 0.2,
+  axisLineWidth: .5,
 
   labelOffsetX: 10,
   labelOffset: 20, // offset from left edge of canvas
-  yLabelOffset: 30, // offset from left edge of canvas
+  yLabelOffset: 45, // offset from left edge of canvas
   lineHeight: 16, // spaces drawn text
   textAlign: 'center'
 }

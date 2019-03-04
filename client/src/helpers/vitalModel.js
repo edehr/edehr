@@ -8,11 +8,11 @@ const POINT_TYPES = {
 }
 
 const vitalRanges = {
-  bloodPressure: { min: 40, max: 190, normal: { systolic: [90, 130], diastolic: [60, 85] } },
+  bloodPressure: { min: 25, max: 225, normal: { systolic: [90, 130, 140], diastolic: [60, 85, 90] } },
   oxygenSaturation: { min: 50, max: 100 },
   pulseRate: { min: 30, max: 140, normal: { adult: [59, 99] } },
-  respiratory: { min: 5, max: 40 },
-  temperature: { min: 28, max: 42 }
+  respiratory: { min: 6, max: 42 },
+  temperature: { min: 35, max: 40 }
 }
 
 let lastDay = 0
@@ -68,44 +68,6 @@ export default class VitalChart {
     })
   }
 
-  getTemperature(table) {
-    let values = table.map(element => {
-      return element.temperature
-    })
-    let min = vitalRanges.temperature.min
-    let max = vitalRanges.temperature.max
-    let chartData = {
-      label: 'Temperature',
-      labelOffsetFromBottom: 20, // vertical adjust label relative to chart bottom
-      dMin: min,
-      dMax: max,
-      gridY: {
-        scalePoints: [
-          { spv: max, clr: 'red' },
-          { spv: 40, clr: 'rgb(200,100,100)' },
-          { spv: 38, lw: 0.5, clr: 'rgb(200,100,100)' },
-          { spv: 37, clr: 'rgb(100,100,100)' },
-          { spv: 36, clr: 'rgb(100,100,100)' },
-          { spv: 35, clr: 'rgb(100,100,100)' },
-          { spv: 34, clr: 'rgb(100,100,100)' },
-          { spv: 32.5, lw: 0.5, clr: 'rgb(100,100,200)' },
-          { spv: 30, clr: 'blue' },
-          { spv: min, clr: 'blue' }
-        ]
-      },
-      gridX: {
-        steps: values.length
-      },
-      dataSet: [
-        {
-          pointStyle: POINT_TYPES.POINT,
-          values: values
-        }
-      ]
-    }
-    return chartData
-  }
-
   getDates(table) {
     let values = table.map(element => {
       return `Day ${element.day}\n${element.time}:00`
@@ -128,20 +90,64 @@ export default class VitalChart {
     return chartData
   }
 
+  getTemperature(table) {
+    let values = table.map(element => {
+      return element.temperature
+    })
+    let min = vitalRanges.temperature.min
+    let max = vitalRanges.temperature.max
+    let chartData = {
+      label: 'Temperature',
+      labelOffsetFromBottom: 20, // vertical adjust label relative to chart bottom
+      dMin: min,
+      dMax: max,
+      gridY: {
+        scalePoints: [
+          { spv: 40, clr: 'red' },
+          { spv: 39.5, clr: 'rgb(200,100,100)' },
+          { spv: 39, clr: 'rgb(200,100,100)' },
+          { spv: 38.5, clr: 'rgb(200,100,100)' },
+          { spv: 38, clr: 'rgb(200,100,100)' },
+          { spv: 37.5, clr: 'rgb(200,100,100)' },
+          { spv: 37, clr: 'rgb(200,100,100)' },
+          { spv: 36.5, clr: 'rgb(200,100,100)' },
+          { spv: 36, clr: 'rgb(200,100,100)' },
+          { spv: 35.5, clr: 'rgb(100,100,100)' },
+          { spv: 35, clr: 'blue' },
+        ]
+      },
+      gridX: {
+        steps: values.length
+      },
+      dataSet: [
+        {
+          pointStyle: POINT_TYPES.POINT,
+          values: values
+        }
+      ]
+    }
+    return chartData
+  }
+
   getBloodPressure(table) {
     let v1 = [],
       v2 = [],
       v3 = []
+    let bloodPressure = vitalRanges.bloodPressure
+    let ns = bloodPressure.normal.systolic
+    let dia = bloodPressure.normal.diastolic
+    let systolic = {min: ns[0], high1: ns[1], high2: ns[2] }
+    let diastolic = {min: dia[0], high1: dia[1], high2 : dia[2]}
     table.forEach(element => {
       let pointFillColour = options.pointFillColour
       let v = element
-      if (v.systolic < 90 || v.diastolic < 60) {
+      if (v.systolic < systolic.min || v.diastolic < diastolic.min) {
         pointFillColour = options.pointLowColour
       }
-      if (v.systolic > 130 || v.diastolic > 85) {
+      if (v.systolic > diastolic.high1 || v.diastolic > diastolic.high1) {
         pointFillColour = options.pointMediumColour
       }
-      if (v.systolic >= 140 || v.diastolic >= 90) {
+      if (v.systolic >= high2 || v.diastolic >= high3) {
         pointFillColour = options.pointHighColour
       }
       v1.push({ value: v.systolic, pointFillColour: pointFillColour })
@@ -153,23 +159,28 @@ export default class VitalChart {
     https://en.wikipedia.org/wiki/Blood_pressure
     From https://en.wikipedia.org/wiki/Pulse  pulse rate ranges from 39 to 149
     */
-    let min = vitalRanges.bloodPressure.min
-    let max = vitalRanges.bloodPressure.max
+    let min = bloodPressure.min
+    let max = bloodPressure.max
     let chartData = {
-      label: 'Blood pressure and rate',
-      labelOffsetFromBottom: 20, // vertical adjust label relative to chart bottom
+      label: 'Blood pressure/pulse',
+      labelOffsetFromBottom: 18, // vertical adjust label relative to chart bottom
       dMin: min,
       dMax: max,
       gridY: {
-        scalePoints: (function() {
-          // step by 10's
-          let pts = []
-          for (let i = max; i >= min; i -= 10) {
-            pts.push({ spv: i })
-          }
-          return pts
-        })()
+        scalePoints: [
+          { spv: 225 },
+          { spv: 200 },
+          { spv: 175 },          
+          { spv: 150, clr: '$black' },
+          { spv: 125 },
+          { spv: 100, clr: '$black' },
+          { spv: 75 },
+          { spv: 50, clr: '$black' },
+          { spv: 25 },
+        ]
       },
+
+
       gridX: {
         steps: v1.length
       },
@@ -203,20 +214,21 @@ export default class VitalChart {
     })
     let chartData = {
       label: 'Respiratory rate',
-      labelOffsetFromBottom: 20, // vertical adjust label relative to chart bottom
+      labelOffsetFromBottom: 15, // vertical adjust label relative to chart bottom
       dMin: min,
       dMax: max,
       gridY: {
         scalePoints: [
-          { spv: max, clr: 'red' },
-          { spv: 40, clr: 'rgb(200,100,100)' },
-          { spv: 35, clr: 'rgb(200,100,100)' },
-          { spv: 30, clr: 'rgb(100,100,100)' },
-          { spv: 25, clr: 'rgb(100,100,100)' },
-          { spv: 20, clr: 'rgb(100,100,100)' },
-          { spv: 15, clr: 'rgb(100,100,100)' },
-          { spv: 10, clr: 'rgb(100,100,200)' },
-          { spv: min, clr: 'blue' }
+          { spv: 42 },
+          { spv: 38 },
+          { spv: 34 },          
+          { spv: 30 },
+          { spv: 26 },
+          { spv: 22 },
+          { spv: 18 },
+          { spv: 14 },
+          { spv: 10 },
+          { spv: 6 },
         ]
       },
       gridX: {
@@ -240,7 +252,14 @@ export default class VitalChart {
       label: 'Oxygen saturation',
       chartType: POINT_TYPES.TEXT,
       noYAxisGrid: true,
-      // noYAxisLabel: false,
+      noYAxisLabel: false,
+      // gridY: {
+      //   steps: [
+      //     { spv: SP0 },
+      //     { spv: Mode },
+      //     { spv: LPM },          
+      //   ]
+      // },
       gridX: {
         steps: values.length
       },

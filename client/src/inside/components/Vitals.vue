@@ -3,13 +3,9 @@
     button(id="addData", v-on:click="addData") Add data
     tabs
       tab(name="Table")
-        h1 This tab will show a table
         div {{ vitals }}
       tab(name="Chart",:selected="true")
-        h1 Protoype vital signs chart
         vitals-chart(v-bind:vitals="vitals.table", v-bind:vitalsModel="vitalsModel")
-      tab(name="Trend")
-        h1 This tab will show something else
 </template>
 
 <script>
