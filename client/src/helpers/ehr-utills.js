@@ -1,3 +1,8 @@
+import moment from 'moment'
+import camelcase from 'camelcase'
+import fileDownload  from 'js-file-download'
+import { pageDefs } from './ehr-defs'
+
 export function getIncomingParams() {
   let search = window.location.search.substring(1)
   let params2 = {}
@@ -58,6 +63,7 @@ export function ehrRemoveMarkedSeed(page) {
   // })
   return page
 }
+
 export function ehrMarkSeed(data) {
   let pageKeys = Object.keys(data)
   pageKeys.forEach(key => {
@@ -77,6 +83,47 @@ export function ehrMarkSeed(data) {
   })
   return data
 }
+
+export function validateSeed(dataAsString) {
+  let pageKeys = Object.keys(pageDefs)
+  pageKeys.sort()
+  try {
+    let obj = JSON.parse(dataAsString)
+    let keys = Object.keys(obj)
+    if(!keys || keys.length == 0) {
+      return { invalidMsg: 'Seed data can not be empty'}
+    }
+    let badKeys = []
+    keys.forEach( key => {
+      let found = pageKeys.find( pKey => pKey === key)
+      if(!found) {
+        badKeys.push(key)
+      }
+    })
+    if(badKeys.length > 0) {
+      let extras = badKeys.join(', ')
+      return { invalidMsg: 'Data contains invalid keys: ' + extras }
+    }
+    return { seedObj: obj }
+  }catch(err) {
+    console.log('validateSeed: failed to parse seed data', err)
+    return { invalidMsg: err.message}
+  }
+}
+
+
+export function downloadSeedToFile(seedId, sSeedContent, ehrData) {
+  let lastUpdate = sSeedContent.lastUpdateDate
+  lastUpdate = moment(lastUpdate).format('YYYY-MM-DD')
+  ehrData = JSON.stringify(ehrData,null,2)
+  let fName = camelcase(sSeedContent.name)
+  fName += sSeedContent.version ? '_' + sSeedContent.version : ''
+  fName += '_' + lastUpdate
+  fName += '.json'
+  console.log('Download seed to ', fName, ehrData)
+  fileDownload(ehrData, fName, 'application/json')
+}
+
 
 /**
  * prepareAssignmentPageDataForSave does two things
