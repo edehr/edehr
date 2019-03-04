@@ -8,9 +8,9 @@ const POINT_TYPES = {
 }
 
 const vitalRanges = {
-  bloodPressure: { min: 25, max: 225 },
+  bloodPressure: { min: 25, max: 225, normal: { systolic: [90, 130, 140], diastolic: [60, 85, 90] } },
   oxygenSaturation: { min: 50, max: 100 },
-  pulseRate: { min: 30, max: 140 },
+  pulseRate: { min: 30, max: 140, normal: { adult: [59, 99] } },
   respiratory: { min: 6, max: 42 },
   temperature: { min: 35, max: 40 }
 }
@@ -133,16 +133,21 @@ export default class VitalChart {
     let v1 = [],
       v2 = [],
       v3 = []
+    let bloodPressure = vitalRanges.bloodPressure
+    let ns = bloodPressure.normal.systolic
+    let dia = bloodPressure.normal.diastolic
+    let systolic = {min: ns[0], high1: ns[1], high2: ns[2] }
+    let diastolic = {min: dia[0], high1: dia[1], high2 : dia[2]}
     table.forEach(element => {
       let pointFillColour = options.pointFillColour
       let v = element
-      if (v.systolic < 90 || v.diastolic < 60) {
+      if (v.systolic < systolic.min || v.diastolic < diastolic.min) {
         pointFillColour = options.pointLowColour
       }
-      if (v.systolic > 130 || v.diastolic > 85) {
+      if (v.systolic > diastolic.high1 || v.diastolic > diastolic.high1) {
         pointFillColour = options.pointMediumColour
       }
-      if (v.systolic >= 140 || v.diastolic >= 90) {
+      if (v.systolic >= high2 || v.diastolic >= high3) {
         pointFillColour = options.pointHighColour
       }
       v1.push({ value: v.systolic, pointFillColour: pointFillColour })
@@ -154,8 +159,8 @@ export default class VitalChart {
     https://en.wikipedia.org/wiki/Blood_pressure
     From https://en.wikipedia.org/wiki/Pulse  pulse rate ranges from 39 to 149
     */
-    let min = vitalRanges.bloodPressure.min
-    let max = vitalRanges.bloodPressure.max
+    let min = bloodPressure.min
+    let max = bloodPressure.max
     let chartData = {
       label: 'Blood pressure/pulse',
       labelOffsetFromBottom: 18, // vertical adjust label relative to chart bottom
