@@ -123,31 +123,6 @@ export default {
 <style lang="scss" scoped>
 @import '../../scss/definitions';
 
-table {
-  margin-bottom: 2em;
-  th,
-  td {
-    padding: 0.5em 0.5em 0.5em 0;
-  }
-  th {
-    border-bottom: 2px solid $grey40;
-  }
-  th,
-  .column_label {
-    color: $grey70;
-    font-size: 1em;
-  }
-  tr {
-    border-bottom: 1px solid $grey20;
-    font-size: $bodyFontSize;
-  }
-  &.table_horizontal {
-    width: 100%;
-  }
-  .table_vertical {
-  }
-}
-
 .EhrPageTable {
 }
 </style>

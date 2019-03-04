@@ -588,7 +588,7 @@ export default function() {
                 pageDataKey: 'medical',
                 dataParent: 'medical',
                 page: 'History Medical',
-                defaultValue: 'sample default value'
+                defaultValue: ''
               }
             ]
           }

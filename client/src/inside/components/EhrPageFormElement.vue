@@ -135,4 +135,24 @@ export default {
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+@import '../../scss/definitions';
+
+.assetLink a{
+  color: $grey80;
+  display: block;
+  margin-bottom: 10px;
+
+  &:after {
+    color: $grey40;
+    content: "\f15b";
+    font-family: FontAwesome;
+    margin-left: 10px;
+  };
+
+  &:hover {
+    color: $black;
+    text-decoration: underline;
+  }
+}
+</style>

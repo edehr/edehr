@@ -52,9 +52,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .EhrScratchPad {
-  margin-top: auto;
-  margin-bottom: 30px;
+  margin: 2em 0;
 
   &__bottom {
     padding: 15px;
@@ -66,5 +66,9 @@ export default {
     width: 100%;
     height: 6rem;
   }
+}
+
+.dialog-wrapper { 
+  width: 10em;
 }
 </style>

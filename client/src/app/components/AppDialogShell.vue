@@ -93,9 +93,9 @@ export default {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80%;
-  max-width: 95%;
-  max-height: 95%;
+  width: 25em;
+  max-width: 1024px;
+  max-height: 90%;
   overflow: auto;
   z-index: 999;
   background-color: $dialog-wrapper-background-color;
