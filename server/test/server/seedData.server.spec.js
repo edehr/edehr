@@ -26,8 +26,16 @@ describe(`Make server calls on ${TYPE}`, function() {
         return helper.before(done, mongoose)
       })
   })
-  let theData = Helper.sampleSeedDataSpec()
+  let theData
+  let sampleEhr
   let theId
+
+  it(`${NAME} setup sample`, function() {
+    theData = Helper.sampleSeedDataSpec()
+    should.exist(theData)
+    theData.should.have.property('ehrData')
+    theData.ehrData.should.have.property('foo')
+  })
 
   it(`create ${NAME}`, function(done) {
     let url = BASE
@@ -104,6 +112,54 @@ describe(`Make server calls on ${TYPE}`, function() {
       let sd = res.body[PROPERTY]
       sd.should.have.property('version')
       sd.version.should.equal(theData.version)
+      done()
+    })
+  })
+
+  it(`updateSeedEhrProperty ${NAME}`, function(done) {
+    let payload = {
+      propertyName: 'aNewPage',
+      value: {someProperty: 'someValue'}
+    }
+    let url = BASE + '/updateSeedEhrProperty/' +  theId
+    request(app)
+    .put(url)
+    .send(payload)
+    .set('Content-Type', 'application/json')
+    .set('Accept', 'application/json')
+    .expect(200)
+    .end(function(err, res) {
+      should.not.exist(err, url)
+      should.exist(res)
+      should.exist(res.body)
+      res.body.should.be.object
+      res.body.should.have.property('ehrData')
+      let ehrData = res.body.ehrData
+      ehrData.should.have.property('aNewPage')
+      done()
+    })
+  })
+
+  it(`updateSeedEhrData ${NAME}`, function(done) {
+    let payload = {
+      someProperty: 'someValue'
+    }
+    let url = BASE + '/updateSeedEhrData/' +  theId
+    request(app)
+    .put(url)
+    .send(payload)
+    .set('Content-Type', 'application/json')
+    .set('Accept', 'application/json')
+    .expect(200)
+    .end(function(err, res) {
+      should.not.exist(err, url)
+      should.exist(res)
+      should.exist(res.body)
+      res.body.should.be.object
+      res.body.should.have.property('ehrData')
+      let ehrData = res.body.ehrData
+      ehrData.should.have.property('someProperty')
+      ehrData.should.not.have.property('foo')
       done()
     })
   })

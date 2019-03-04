@@ -34,10 +34,10 @@ export default {
       let home = isStudent
         ? 'demographics'
         : isInstructor
-        ? 'instructor'
-        : isDevelopingContent
-        ? 'assignments'
-        : 'home'
+          ? 'instructor'
+          : isDevelopingContent
+            ? 'assignments'
+            : 'home'
       return home
     },
     fullName() {
