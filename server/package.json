@@ -4,6 +4,7 @@
   "description": "The POC EdEHR database run inside a Docker container",
   "main": "dev-server.js.js",
   "scripts": {
+    "start": "npm run serve-dev",
     "serve": "node index.js",
     "serve-dev": "NODE_ENV=development DEBUG=server node index.js",
     "lint": "eslint controllers/**/*.js",

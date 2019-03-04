@@ -95,19 +95,18 @@ export default {
     refresh() {
       let tableKey = this.tableDef.tableKey
       let pageKey = this.pageDataKey
-      console.log('EhrPageTable refresh for page table key', pageKey, tableKey)
+      // console.log('EhrPageTable refresh for page table key', pageKey, tableKey)
       let pageData = this.ehrHelp.getAsLoadedPageData(pageKey)
       // store the current data into local data property for display
       this.tableData = pageData[tableKey]
       this.transposedColumns = this.tableDef.transposedColumns
-
-      console.log('EhrPageTable refresh found data', this.tableData)
+      // console.log('EhrPageTable refresh found data', this.tableData)
     }
   },
   mounted: function() {
     const _this = this
     this.refreshEventHandler = function() {
-      console.log('EhrPageTable received page refresh event')
+      // console.log('EhrPageTable received page refresh event')
       _this.refresh()
     }
     EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)

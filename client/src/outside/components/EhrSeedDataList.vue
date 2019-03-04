@@ -138,18 +138,18 @@ export default {
     gotoEhrWithSeed: function(event, value) {
       const _this = this
       this.seedId = value //event.target.value
-      console.log('gotoEhrWithSeed with seed id', value, this.seedId)
+      // console.log('gotoEhrWithSeed with seed id', value, this.seedId)
       this.$store.commit('visit/setIsDevelopingContent', true)
       this.$store.commit('seedStore/setSeedId', this.seedId)
       this.$store.dispatch('seedStore/loadSeedContent').then(() => {
-        console.log('go to demographics')
+        // console.log('go to demographics')
         _this.$router.push({ name: 'demographics' })
         EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
       })
     },
     showEditDialog: function(event, value) {
       this.seedId = value //event.target.value
-      console.log('showEditDialog with seed id', event.target, this.seedId)
+      // console.log('showEditDialog with seed id', event.target, this.seedId)
       // clone to decouple data from storage before using in dialog
       let sData = Object.assign({}, this.findSeed(this.seedId))
       this.actionType = 'edit'
