@@ -117,34 +117,34 @@ export default {
         }
       }
       switch (this.resizeDirection) {
-        case 'n':
-          north()
-          break
-        case 's':
-          south()
-          break
-        case 'e':
-          east()
-          break
-        case 'w':
-          west()
-          break
-        case 'nw':
-          north()
-          west()
-          break
-        case 'se':
-          south()
-          east()
-          break
-        case 'ne':
-          north()
-          east()
-          break
-        case 'sw':
-          south()
-          west()
-          break
+      case 'n':
+        north()
+        break
+      case 's':
+        south()
+        break
+      case 'e':
+        east()
+        break
+      case 'w':
+        west()
+        break
+      case 'nw':
+        north()
+        west()
+        break
+      case 'se':
+        south()
+        east()
+        break
+      case 'ne':
+        north()
+        east()
+        break
+      case 'sw':
+        south()
+        west()
+        break
       }
     },
     onDragged({ el, deltaX, deltaY, offsetX, offsetY, clientX, clientY, first, last }) {

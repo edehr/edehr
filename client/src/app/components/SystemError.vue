@@ -31,18 +31,21 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/definitions';
+.closer {
+  color: transparentize($white, .4);
+  transition: 350ms;
+    &:hover {
+      color: $white;
+    }
+}
+
 .SystemError {
   background-color: $system-error-background;
   color: $system-error-color;
-  padding: 1rem;
-}
-.closer {
-  font-size: 0.5rem;
-  display: inline;
+  padding: .5rem 2rem;
+  position: relative;
 }
 .errMsg {
-  display: inline;
-  margin-left: 1rem;
-  font-size: 1.3rem;
+  font-size: 1rem;
 }
 </style>

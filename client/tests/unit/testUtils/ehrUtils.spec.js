@@ -5,6 +5,7 @@ import {
   ehrRemoveMarkedSeed,
   ehrMergeEhrData,
   prepareAssignmentPageDataForSave,
+  validateSeed,
   SEED_MARK
 } from '../../../src/helpers/ehr-utills'
 
@@ -116,6 +117,33 @@ describe('Test merging two EHR data object', () => {
   })
 })
 
+
+describe('Test support for seed import', () => {
+  it('verify validateSeed accept valid properties', (done) => {
+    let data = {demographics: {firstName: 'foo'}}
+    data = JSON.stringify(data)
+    let {invalidMsg,seedObj } = validateSeed(data)
+    should.not.exist(invalidMsg)
+    should.exist(seedObj)
+    done()
+  })
+  it('verify validateSeed catches invalid properties', (done) => {
+    let data = {invalid: {firstName: 'foo'}}
+    data = JSON.stringify(data)
+    let {invalidMsg,seedObj } = validateSeed(data)
+    should.exist(invalidMsg)
+    should.not.exist(seedObj)
+    done()
+  })
+  it('verify validateSeed catches empty object', (done) => {
+    let data = {}
+    data = JSON.stringify(data)
+    let {invalidMsg,seedObj } = validateSeed(data)
+    should.exist(invalidMsg)
+    should.not.exist(seedObj)
+    done()
+  })
+})
 function getOne() {
   return {
     aPage1: {

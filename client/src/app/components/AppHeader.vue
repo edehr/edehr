@@ -8,6 +8,13 @@
           a(:href="lmsUrl", class="navLink") {{lmsName}}
         li(v-if="showDashboard", class="navItem")
           router-link(:to="{ name: `instructor` }", class="navLink") Dashboard
+        li(v-if="showDashboard", class="navItem")
+          router-link(:to="{ name: `student` }", class="navLink subMenu") Assignment details
+          ul(class="subNavList")
+            h3 EDEHR19 - Assessments
+            p The description for the assignment would go here. 
+            li(class="subNavItem") Erin Johns health case study #2
+            li(class="subNavItem") Instructor's notes
         li(class="navItem")
           router-link(:to="{ name: `help` }", class="navLink") Help
     system-error
@@ -27,10 +34,10 @@ export default {
       let home = isStudent
         ? 'demographics'
         : isInstructor
-        ? 'instructor'
-        : isDevelopingContent
-        ? 'assignments'
-        : 'home'
+          ? 'instructor'
+          : isDevelopingContent
+            ? 'assignments'
+            : 'home'
       return home
     },
     fullName() {
@@ -61,6 +68,44 @@ export default {
   .navList {
     display: flex;
     /* default is flow in row without wrap */
+
+    .subNavList {
+      background: $white;
+      border: solid 1px $grey40;
+      border-radius: .5em;
+      box-shadow: 0 0 20px 0px $grey40;
+      color: $grey80;
+      font-size: 1em;
+      margin-left: 2em;
+      margin-top: .5em;
+      margin-right: 1em;
+      padding: 1.5em 2em;
+      position: absolute;
+      transition: all 0.5s ease;
+      /*    visibility: hidden;
+      opacity: 0;*/
+
+      &:before {
+          content: '';
+          position: absolute;
+          left: 26px;
+          top: -26px;
+          width: 0;
+          height: 0;
+          border: 14px solid transparent;
+          border-bottom-color: $white;
+      }
+
+      .subNavItem {
+        margin-top: .5em;
+      }
+    }
+
+/*    &:hover {
+      visibility: visible;
+      opacity: 1;
+      display: block;
+    }*/
   }
 
   .app-title {
