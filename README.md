@@ -45,7 +45,7 @@ npm run serve-dev
 In terminal window 2 start the client
 ```
 cd client
-npm run start-dev
+npm run start
 ```
 
 ## Run Production
