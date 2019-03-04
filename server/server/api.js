@@ -53,7 +53,7 @@ export function apiMiddle(app, config) {
 
   if (config.traceApiCalls) {
     app.use(function(req, res, next) {
-      debug(moment().format('YYYY/MM/DD, h:mm:ss.SSS a'), ' Url:', req.url)
+      debug(moment().format('YYYY/MM/DD, h:mm:ss.SSS a'), req.method, ' Url:', req.url)
       next()
     })
   }

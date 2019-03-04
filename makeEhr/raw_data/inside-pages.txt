@@ -27,7 +27,7 @@
 {path: /ehr/current/no-med}	{routeName: referrals}	{pageDataKey: referrals}	{label: Referrals to other disciplines}	{redirect: }	{generateComponent: yes}
 {path: /ehr/current/no-med}	{routeName: lab-requisitions}	{pageDataKey: labRequisitions}	{label: Lab requisitions}	{redirect: }	{generateComponent: yes}
 {path: /ehr/current}	{routeName: meds}	{pageDataKey: medicationOrders}	{label: Medication orders}	{redirect: }	{generateComponent: yes}
-{path: /ehr/current}	{routeName: mar}	{pageDataKey: medAdminRec}	{label: MAR}	{redirect: }	{generateComponent: yes}
+{path: /ehr/current}	{routeName: mar}	{pageDataKey: medAdminRec}	{label: MAR}	{redirect: }	{generateComponent: custom}
 {path: /ehr/current}	{routeName: discharge}	{pageDataKey: dischargeSummary}	{label: Discharge summary}	{redirect: }	{generateComponent: yes}
 {path: /ehr/current}	{routeName: billing}	{pageDataKey: billing}	{label: Billing}	{redirect: }	{generateComponent: yes}
 {path: /ehr}	{routeName: chart}	eCell	{label: Patient chart}	{redirect: progress-notes}	eCell

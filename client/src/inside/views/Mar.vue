@@ -1,4 +1,4 @@
-// Generated VUE file. Before modifying see docs about Vue file generation
+// Custom page for MAR
 <template lang="pug">
   div(class="ehr-page")
     ehr-panel-header {{ uiProps.pageTitle }}
@@ -6,11 +6,9 @@
         ehr-edit-controls(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey", @controlsCallback="controlsCallback")
     ehr-panel-content
       div(class="region ehr-page-content")
-        ehr-page-form(v-if="uiProps.hasForm", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey",)
-        div(v-if="uiProps.hasTable", v-for="tableDef in uiProps.tables", :key="tableDef.tableKey")
-          ehr-page-table(:tableDef="tableDef", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
+        mar-tabs(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
     div(style="display:none")
-      p This Mar page is generated.
+      p This is the Mar page
       p Label: MAR
       p Data Key: medAdminRec
       p Component name: Mar
@@ -26,6 +24,7 @@ import EhrEditControls from '../components/EhrEditControls.vue'
 import EhrPageTable from '../components/EhrPageTable'
 import EhrPageForm from '../components/EhrPageForm.vue'
 import EhrHelp from '../../helpers/ehr-helper'
+import MarTabs from '../components/MarTabs'
 
 export default {
   name: 'Mar',
@@ -34,7 +33,8 @@ export default {
     EhrPanelContent,
     EhrPageForm,
     EhrPageTable,
-    EhrEditControls
+    EhrEditControls,
+    MarTabs
   },
   data: function() {
     return {

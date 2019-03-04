@@ -195,7 +195,7 @@ function makeVueFile (def, componentTemplate) {
     .replace(/{redirect}/g, def.redirect)
     .replace(/{routeName}/g, def.routeName)
     .replace(/{path}/g, def.fullPath)
-  content = '// Generated VUE file. Before modifying see docs about Vue file generation \n' + content
+  content = '// Generated VUE file. Before modifying see docs about Vue file generation\n' + content
   var outfilename = pathUtil.join(destVueFiles, def.componentName + '.vue')
   console.log('write file with vue',outfilename)
   fs.writeFileSync(outfilename, content, 'utf8')

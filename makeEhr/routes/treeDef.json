@@ -592,7 +592,7 @@
               "pageDataKey": "medAdminRec",
               "label": "MAR",
               "redirect": "",
-              "generateComponent": "yes",
+              "generateComponent": "custom",
               "componentName": "Mar",
               "dataName": "mar",
               "fullPath": "/ehr/current/mar",

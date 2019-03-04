@@ -10,12 +10,6 @@
 import EhrPageFormElement from '../components/EhrPageFormElement.vue'
 import EventBus from '../../helpers/event-bus'
 import { PAGE_DATA_REFRESH_EVENT } from '../../helpers/event-bus'
-/*
-TODO on the History Immunization page we need a header label above all the dates.
-
-TODO The table dialogs are still under development. Tables are not displaying database values. Table's dialogs may not be working
-
- */
 
 export default {
   name: 'EhrPageForm',
