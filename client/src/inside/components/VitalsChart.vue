@@ -10,8 +10,8 @@
 <script>
 import VitalChart from '../../helpers/vitalChart'
 
-const yAxisWidth = 55
-const canvasHeight = 1000
+const yAxisWidth = 75
+const canvasHeight = 2000
 const canvasWidth = 1200
 
 export default {
@@ -64,24 +64,32 @@ export default {
       // The first number is the origin of the chart relative to the top left
       // The second number is the height of the chart
       let y = 0
-      let ht = 60
-      let space = 20
+      let ht = 80
+      let space = 40
+
+      space = 40
       vitalChart.drawChart(this.dates, y, ht)
       y += ht + space
-      space = 35
-      ht = 150
+
+      space = 60
+      ht = 250
       vitalChart.drawChart(this.temperatures, y, ht)
       y += ht + space
-      ht = 200
+
+      ht = 210
       vitalChart.drawChart(this.bloodPressure, y, ht)
       y += ht + space
-      ht = 100
+
+      ht = 250
       vitalChart.drawChart(this.respiratory, y, ht)
       y += ht + space
+
+      space = 20
       ht = 80
       vitalChart.drawChart(this.oxygen, y, ht)
-      space = 20
       y += ht + space
+
+      space = 20
       ht = 60
       vitalChart.drawChart(this.dates, y, ht)
     }
@@ -99,7 +107,7 @@ export default {
 <style scoped>
 .canvas-wrapper {
   flex: 1 0 auto;
-  max-width: 500px;
+  width: 100%;
   padding: 10px 0 10px 0;
   overflow-x: auto;
   /*border: 1px dotted black;*/
@@ -110,7 +118,7 @@ canvas {
 
 .axis-wrapper {
   flex: 0 1 auto;
-  padding: 10px 0 10px 0;
+  padding: 14px 20px 10px 0;
   /*border: 1px dotted black;*/
 }
 
