@@ -554,7 +554,7 @@ export default function () {
                 elementKey: "allergies",
                 fqn: "allergies.allergies",
                 inputType: "text",
-                label: "Allergies search",
+                label: "Allergies",
                 formColumn: "1",
                 formRow: "2",
                 pageDataKey: "allergies",
@@ -587,8 +587,7 @@ export default function () {
                 formRow: "1",
                 pageDataKey: "medical",
                 dataParent: "medical",
-                page: "History Medical",
-                defaultValue: "sample default value"
+                page: "History Medical"
               }
             ]
           }

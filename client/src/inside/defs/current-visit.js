@@ -10409,6 +10409,8 @@ export default function () {
               fqn: "biopsychosocial.table.generalComments",
               inputType: "textarea",
               label: "General comments",
+              fsetRow: "5",
+              fsetCol: "1",
               formColumn: "1",
               formRow: "7",
               pageDataKey: "biopsychosocial",
@@ -11818,6 +11820,8 @@ export default function () {
                     fqn: "biopsychosocial.table.generalComments",
                     inputType: "textarea",
                     label: "General comments",
+                    fsetRow: "5",
+                    fsetCol: "1",
                     formColumn: "1",
                     formRow: "7",
                     pageDataKey: "biopsychosocial",
@@ -13863,103 +13867,28 @@ export default function () {
                 page: "Discharge summary"
               },
               {
-                elementKey: "dischargeDay",
-                fqn: "dischargeSummary.dischargeDay",
-                inputType: "day",
-                label: "Discharge day",
-                formColumn: "1",
+                elementKey: "clinicalSummary",
+                fqn: "dischargeSummary.clinicalSummary",
+                inputType: "textarea",
+                label: "Clinical summary",
+                formColumn: "2",
                 formRow: "1",
                 pageDataKey: "dischargeSummary",
                 dataParent: "dischargeSummary",
                 page: "Discharge summary"
-              },
-              {
-                elementKey: "dischargeTime",
-                fqn: "dischargeSummary.dischargeTime",
-                inputType: "time",
-                label: "Discharge time",
-                formColumn: "1",
-                formRow: "1",
-                pageDataKey: "dischargeSummary",
-                dataParent: "dischargeSummary",
-                page: "Discharge summary"
-              },
-              {
-                elementKey: "dischargedTo",
-                fqn: "dischargeSummary.dischargedTo",
-                inputType: "select",
-                label: "Discharged to",
-                formColumn: "1",
-                formRow: "1",
-                pageDataKey: "dischargeSummary",
-                dataParent: "dischargeSummary",
-                page: "Discharge summary",
-                options: [
-                  {
-                    text: "home"
-                  },
-                  {
-                    text: "expired"
-                  },
-                  {
-                    text: "transferred"
-                  }
-                ]
-              },
-              {
-                elementKey: "dischargedTo",
-                fqn: "dischargeSummary.dischargedTo",
-                inputType: "text",
-                label: "Transferred to",
-                formColumn: "1",
-                formRow: "1",
-                pageDataKey: "dischargeSummary",
-                dataParent: "dischargeSummary",
-                page: "Discharge summary"
-              },
-              {
-                elementKey: "leavingBy",
-                fqn: "dischargeSummary.leavingBy",
-                inputType: "select",
-                label: "Leaving by",
-                formColumn: "1",
-                formRow: "1",
-                pageDataKey: "dischargeSummary",
-                dataParent: "dischargeSummary",
-                page: "Discharge summary",
-                options: [
-                  {
-                    text: "taxi"
-                  },
-                  {
-                    text: "family"
-                  },
-                  {
-                    text: "ambulance"
-                  },
-                  {
-                    text: "walk out/wheelchair"
-                  }
-                ]
-              },
-              {
-                elementKey: "codeStatus",
-                fqn: "dischargeSummary.codeStatus",
-                inputType: "text",
-                label: "Code status",
-                formColumn: "1",
-                formRow: "1",
-                pageDataKey: "dischargeSummary",
-                dataParent: "dischargeSummary",
-                page: "Discharge summary"
-              },
+              }
+            ]
+          },
+          {
+            formRow: "2",
+            elements: [
               {
                 elementKey: "dischargingPhysician/np",
                 fqn: "dischargeSummary.dischargingPhysician/np",
                 inputType: "select",
                 label: "Discharging physician/NP",
-                formColumn: "2",
-                formRow: "1",
+                formColumn: "1",
+                formRow: "2",
                 pageDataKey: "dischargeSummary",
                 dataParent: "dischargeSummary",
                 page: "Discharge summary",
@@ -13986,25 +13915,19 @@ export default function () {
                     text: "Dr. Brooks"
                   }
                 ]
-              },
-              {
-                elementKey: "clinicalSummary",
-                fqn: "dischargeSummary.clinicalSummary",
-                inputType: "textarea",
-                label: "Clinical summary",
-                formColumn: "2",
-                formRow: "1",
-                pageDataKey: "dischargeSummary",
-                dataParent: "dischargeSummary",
-                page: "Discharge summary"
-              },
+              }
+            ]
+          },
+          {
+            formRow: "3",
+            elements: [
               {
                 elementKey: "role",
                 fqn: "dischargeSummary.role",
                 inputType: "select",
                 label: "Role",
-                formColumn: "3",
-                formRow: "1",
+                formColumn: "1",
+                formRow: "3",
                 pageDataKey: "dischargeSummary",
                 dataParent: "dischargeSummary",
                 page: "Discharge summary",
@@ -14020,79 +13943,14 @@ export default function () {
             ]
           },
           {
-            formRow: "2",
-            elements: [
-              {
-                elementKey: "proceduresTreatment",
-                fqn: "dischargeSummary.proceduresTreatment",
-                inputType: "text",
-                label: "Procedures and treatment",
-                formColumn: "1",
-                formRow: "2",
-                pageDataKey: "dischargeSummary",
-                dataParent: "dischargeSummary",
-                page: "Discharge summary"
-              }
-            ]
-          },
-          {
-            formRow: "3",
-            elements: [
-              {
-                elementKey: "medicationsAdministered",
-                fqn: "dischargeSummary.medicationsAdministered",
-                inputType: "text",
-                label: "Medications administered while in care",
-                formColumn: "1",
-                formRow: "3",
-                pageDataKey: "dischargeSummary",
-                dataParent: "dischargeSummary",
-                page: "Discharge summary"
-              },
-              {
-                elementKey: "dischargeRx",
-                fqn: "dischargeSummary.dischargeRx",
-                inputType: "text",
-                label: "Discharge Rx",
-                formColumn: "2",
-                formRow: "3",
-                pageDataKey: "dischargeSummary",
-                dataParent: "dischargeSummary",
-                page: "Discharge summary"
-              }
-            ]
-          },
-          {
             formRow: "4",
             elements: [
               {
-                elementKey: "followUpAppointment",
-                fqn: "dischargeSummary.followUpAppointment",
-                inputType: "text",
-                label: "Follow up appointments",
+                elementKey: "dischargeDay",
+                fqn: "dischargeSummary.dischargeDay",
+                inputType: "day",
+                label: "Discharge day",
                 formColumn: "1",
-                formRow: "4",
-                pageDataKey: "dischargeSummary",
-                dataParent: "dischargeSummary",
-                page: "Discharge summary"
-              },
-              {
-                elementKey: "referredTo",
-                fqn: "dischargeSummary.referredTo",
-                inputType: "text",
-                label: "Referrals/receiving team",
-                formColumn: "2",
-                formRow: "4",
-                pageDataKey: "dischargeSummary",
-                dataParent: "dischargeSummary",
-                page: "Discharge summary"
-              },
-              {
-                elementKey: "labMedicalImaging",
-                fqn: "dischargeSummary.labMedicalImaging",
-                inputType: "files",
-                label: "Lab and medical imaging requisitions",
-                formColumn: "3",
                 formRow: "4",
                 pageDataKey: "dischargeSummary",
                 dataParent: "dischargeSummary",
@@ -14104,11 +13962,11 @@ export default function () {
             formRow: "5",
             elements: [
               {
-                elementKey: "dischargeDiagnosis",
-                fqn: "dischargeSummary.dischargeDiagnosis",
-                inputType: "text",
-                label: "Discharge diagnosis",
-                formColumn: "2",
+                elementKey: "dischargeTime",
+                fqn: "dischargeSummary.dischargeTime",
+                inputType: "time",
+                label: "Discharge time",
+                formColumn: "1",
                 formRow: "5",
                 pageDataKey: "dischargeSummary",
                 dataParent: "dischargeSummary",
@@ -14120,12 +13978,172 @@ export default function () {
             formRow: "6",
             elements: [
               {
+                elementKey: "dischargedTo",
+                fqn: "dischargeSummary.dischargedTo",
+                inputType: "select",
+                label: "Discharged to",
+                formColumn: "1",
+                formRow: "6",
+                pageDataKey: "dischargeSummary",
+                dataParent: "dischargeSummary",
+                page: "Discharge summary",
+                options: [
+                  {
+                    text: "home"
+                  },
+                  {
+                    text: "expired"
+                  },
+                  {
+                    text: "transferred"
+                  }
+                ]
+              },
+              {
+                elementKey: "dischargedTo",
+                fqn: "dischargeSummary.dischargedTo",
+                inputType: "text",
+                label: "Transferred to",
+                formColumn: "2",
+                formRow: "6",
+                pageDataKey: "dischargeSummary",
+                dataParent: "dischargeSummary",
+                page: "Discharge summary"
+              },
+              {
+                elementKey: "leavingBy",
+                fqn: "dischargeSummary.leavingBy",
+                inputType: "select",
+                label: "Leaving by",
+                formColumn: "3",
+                formRow: "6",
+                pageDataKey: "dischargeSummary",
+                dataParent: "dischargeSummary",
+                page: "Discharge summary",
+                options: [
+                  {
+                    text: "taxi"
+                  },
+                  {
+                    text: "family"
+                  },
+                  {
+                    text: "ambulance"
+                  },
+                  {
+                    text: "walk out/wheelchair"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            formRow: "7",
+            elements: [
+              {
+                elementKey: "proceduresTreatment",
+                fqn: "dischargeSummary.proceduresTreatment",
+                inputType: "text",
+                label: "Procedures and treatment",
+                formColumn: "1",
+                formRow: "7",
+                pageDataKey: "dischargeSummary",
+                dataParent: "dischargeSummary",
+                page: "Discharge summary"
+              }
+            ]
+          },
+          {
+            formRow: "8",
+            elements: [
+              {
+                elementKey: "medicationsAdministered",
+                fqn: "dischargeSummary.medicationsAdministered",
+                inputType: "text",
+                label: "Medications administered while in care",
+                formColumn: "1",
+                formRow: "8",
+                pageDataKey: "dischargeSummary",
+                dataParent: "dischargeSummary",
+                page: "Discharge summary"
+              },
+              {
+                elementKey: "dischargeRx",
+                fqn: "dischargeSummary.dischargeRx",
+                inputType: "text",
+                label: "Discharge Rx",
+                formColumn: "2",
+                formRow: "8",
+                pageDataKey: "dischargeSummary",
+                dataParent: "dischargeSummary",
+                page: "Discharge summary"
+              }
+            ]
+          },
+          {
+            formRow: "9",
+            elements: [
+              {
+                elementKey: "followUpAppointment",
+                fqn: "dischargeSummary.followUpAppointment",
+                inputType: "text",
+                label: "Follow up appointments",
+                formColumn: "1",
+                formRow: "9",
+                pageDataKey: "dischargeSummary",
+                dataParent: "dischargeSummary",
+                page: "Discharge summary"
+              },
+              {
+                elementKey: "referredTo",
+                fqn: "dischargeSummary.referredTo",
+                inputType: "text",
+                label: "Referrals/receiving team",
+                formColumn: "2",
+                formRow: "9",
+                pageDataKey: "dischargeSummary",
+                dataParent: "dischargeSummary",
+                page: "Discharge summary"
+              },
+              {
+                elementKey: "dischargeDiagnosis",
+                fqn: "dischargeSummary.dischargeDiagnosis",
+                inputType: "text",
+                label: "Discharge diagnosis",
+                formColumn: "3",
+                formRow: "9",
+                pageDataKey: "dischargeSummary",
+                dataParent: "dischargeSummary",
+                page: "Discharge summary"
+              }
+            ]
+          },
+          {
+            formRow: "10",
+            elements: [
+              {
+                elementKey: "labMedicalImaging",
+                fqn: "dischargeSummary.labMedicalImaging",
+                inputType: "files",
+                label: "Lab and medical imaging requisitions",
+                formColumn: "1",
+                formRow: "10",
+                pageDataKey: "dischargeSummary",
+                dataParent: "dischargeSummary",
+                page: "Discharge summary"
+              }
+            ]
+          },
+          {
+            formRow: "11",
+            elements: [
+              {
                 elementKey: "dischargePlan",
                 fqn: "dischargeSummary.dischargePlan",
                 inputType: "textarea",
                 label: "Discharge plan",
                 formColumn: "1",
-                formRow: "6",
+                formRow: "11",
                 pageDataKey: "dischargeSummary",
                 dataParent: "dischargeSummary",
                 page: "Discharge summary"
@@ -14136,7 +14154,7 @@ export default function () {
                 inputType: "textarea",
                 label: "Discharge education",
                 formColumn: "2",
-                formRow: "6",
+                formRow: "11",
                 pageDataKey: "dischargeSummary",
                 dataParent: "dischargeSummary",
                 page: "Discharge summary"
@@ -14144,7 +14162,7 @@ export default function () {
             ]
           }
         ],
-        columnsCount: 10
+        columnsCount: 3
       },
       pageData: {}
     },

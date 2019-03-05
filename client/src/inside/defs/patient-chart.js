@@ -171,13 +171,13 @@ export default function () {
       }
     },
     carePlan: {
-      pageTitle: "Care Plan",
+      pageTitle: "Interprofessional plan of care",
       pageDataKey: "carePlan",
       hasForm: true,
       page_form: {
         rows: [
           {
-            formRow: "1",
+            formRow: "3",
             elements: [
               {
                 elementKey: "goal",
@@ -186,19 +186,25 @@ export default function () {
                 label: "Goal of care",
                 formCss: "width-80",
                 formColumn: "1",
-                formRow: "1",
+                formRow: "3",
                 pageDataKey: "carePlan",
                 dataParent: "carePlan",
                 page: "Interprofessional plan of care"
-              },
+              }
+            ]
+          },
+          {
+            formRow: "4",
+            elements: [
               {
                 elementKey: "status",
                 fqn: "carePlan.status",
                 inputType: "select",
                 label: "Status",
+                tableColumn: "10",
                 formCss: "width-20",
                 formColumn: "2",
-                formRow: "1",
+                formRow: "4",
                 pageDataKey: "carePlan",
                 dataParent: "carePlan",
                 page: "Interprofessional plan of care",
@@ -215,9 +221,11 @@ export default function () {
                 ]
               }
             ]
-          }
+          },
+          null,
+          null
         ],
-        columnsCount: 2
+        columnsCount: 1
       },
       hasTable: true,
       tables: [
@@ -281,7 +289,7 @@ export default function () {
               elementKey: "clinical",
               fqn: "carePlan.table.clinical",
               inputType: "textarea",
-              label: "Clinical Issues",
+              label: "Clinical issue",
               tableColumn: "5",
               formColumn: "1",
               formRow: "2",
@@ -396,7 +404,7 @@ export default function () {
                     elementKey: "clinical",
                     fqn: "carePlan.table.clinical",
                     inputType: "textarea",
-                    label: "Clinical Issues",
+                    label: "Clinical issue",
                     tableColumn: "5",
                     formColumn: "1",
                     formRow: "2",
