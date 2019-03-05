@@ -10,7 +10,7 @@ import { pageDefs } from './ehr-defs'
 const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
 export default class EhrHelp {
-  constructor (component, store, pageKey, uiProps) {
+  constructor (component, store, pageKey) {
     // TODO clean up and remove uiProps argument and commponent
     // TODO see if the commponent reference is needed to save page form data
     // TODO make the setup of handlers optional so we can construct an helper for any situation
