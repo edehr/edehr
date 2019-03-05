@@ -1,17 +1,14 @@
 {
-  "name": "edehr-database",
-  "version": "1.0.0",
-  "description": "The POC EdEHR database run inside a Docker container",
+  "name": "edehr-server",
+  "description": "Provides the API services to the EdEHR project",
   "main": "dev-server.js.js",
   "scripts": {
-    "start": "npm run serve-dev",
-    "serve": "node index.js",
-    "serve-dev": "NODE_ENV=development DEBUG=server node index.js",
+    "start": "NODE_ENV=development DEBUG=server node index.js",
+    "start-prod": "NODE_ENV=production node index.js",
+    "start-prod-dev": "NODE_ENV=production API_URL=http://localhost:27004 CLIENT_URL=http://localhost:28000 node index.js",
     "lint": "eslint controllers/**/*.js",
     "test": "nyc mocha --require @babel/register test/**/*.spec.js"
   },
-  "author": "Bryan Gilbert",
-  "license": "MIT",
   "dependencies": {
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",
@@ -21,6 +18,7 @@
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "ims-lti": "git+https://github.com/sfu/ims-lti.git",
+    "moment": "^2.24.0",
     "mongoose": "^5.4.11",
     "mongoose-unique-validator": "^2.0.2",
     "passport": "^0.4.0",
@@ -40,10 +38,8 @@
     "chalk": "^2.4.2",
     "coveralls": "^3.0.2",
     "eslint": "^5.6.0",
-    "eslint-config-prettier": "^4.0.0",
     "mocha": "^5.2.0",
     "nyc": "^13.2.0",
-    "prettier": "^1.16.4",
     "should": "^13.2.3",
     "supertest": "^3.4.2"
   }
