@@ -1,4 +1,5 @@
 export function outside() {
+
   return [
     {
       path: '/instructor',
@@ -6,6 +7,13 @@ export function outside() {
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Instructor.vue'),
       meta: { layout: 'outside', label: 'Instructor', topLevel: 'undefined' }
+    },
+    {
+      path: '/help',
+      name: 'help',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Help.vue'),
+      meta: { layout: 'outside', label: 'Help', topLevel: 'undefined' }
     },
     {
       path: '/assignments',
@@ -19,14 +27,7 @@ export function outside() {
       name: 'developEhrData',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/DevelopEhrData.vue'),
-      meta: { layout: 'outside', label: 'DevelopEhrData', topLevel: 'undefined' }
-    },
-    {
-      path: '/help',
-      name: 'help',
-      component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Help.vue'),
-      meta: { layout: 'outside', label: 'Help', topLevel: 'undefined' }
+      meta: { layout: 'outside', label: 'Develop Ehr Data', topLevel: 'undefined' }
     }
   ]
 }

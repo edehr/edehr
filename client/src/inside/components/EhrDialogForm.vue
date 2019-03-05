@@ -31,11 +31,11 @@ export default {
   watch: {
     // whenever question changes, this function will run
     showDialog: function(newValue) {
-      console.log('UN -- FREEZEEEEEEE')
+      // console.log('UN -- FREEZEEEEEEE')
       document.body.style.position = ''
       if (newValue) {
-        console.log('When app dialog is shown freeze the body to prevent background scrolling')
-        console.log('FREEZEEEEEEE')
+        // console.log('When app dialog is shown freeze the body to prevent background scrolling')
+        // console.log('FREEZEEEEEEE')
         document.body.style.position = 'fixed'
       }
     }
@@ -97,7 +97,7 @@ export default {
     }
   },
   mounted: function() {
-    console.log('EhrDialogForm mounted', this.pageDataKey)
+    // console.log('EhrDialogForm mounted', this.pageDataKey)
     const _this = this
     let ch = this.ehrHelp.getCloseChannelHandle(this.tableKey)
     this.eventHandler = function(eData) {
@@ -108,11 +108,11 @@ export default {
   beforeDestroy: function() {
     // console.log('EhrDialogForm beforeDestroy', this.pageDataKey)
     // console.log('When app dialog is destroyed restore background scrolling')
-    console.log('UN -- FREEZEEEEEEE')
+    // console.log('UN -- FREEZEEEEEEE')
     document.body.style.position = ''
     let ch = this.ehrHelp.getCloseChannelHandle(this.tableKey)
     if (this.eventHandler) {
-      console.log('beforeDestroy, remove listener', ch)
+      // console.log('beforeDestroy, remove listener', ch)
       EventBus.$off(ch, this.eventHandler)
     }
   }

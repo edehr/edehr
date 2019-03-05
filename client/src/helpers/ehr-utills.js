@@ -23,6 +23,16 @@ export function composeUrl(context, api) {
 export function setApiError(context, msg) {
   context.commit('system/setApiError', msg, { root: true })
 }
+
+export function validTimeStr(text) {
+  return /^(|0?[0-9]|1[0-9]|2[0-3]):([0-5][0-9])$/.test(text)
+}
+
+export function validDayStr(text) {
+  return /^([0-9]?)$/.test(text)
+}
+
+
 export function composeAxiosResponseError(error, msg) {
   msg += error.response.status ? ` status: ${error.response.status}` : ''
   msg += error.response.statusText ? ` ${error.response.statusText}` : ''
@@ -33,7 +43,7 @@ export function composeAxiosResponseError(error, msg) {
 export function decoupleObject(obj) {
   if (obj) {
     let str = JSON.stringify(obj)
-    console.log('decouple object ', str)
+    // console.log('decouple object ', str)
     return JSON.parse(str)
   }
   return obj

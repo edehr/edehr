@@ -11,9 +11,12 @@ const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
 export default class EhrHelp {
   constructor(component, store, pageKey, uiProps) {
+    // TODO clean up and remove uiProps argument and commponent
     // TODO see if the commponent reference is needed to save page form data
+    // TODO make the setup of handlers optional so we can construct an helper for any situation
+    // TODO or refactor this class into a data helper and an event helper.
     debugehr('Construct helper', pageKey)
-    this.component = component
+    // this.component = component
     this.$store = store
     this.pageKey = pageKey
     this.cacheAsString = ''
@@ -47,7 +50,7 @@ export default class EhrHelp {
     EventBus.$on(ACTIVITY_DATA_EVENT, this.activityDataChangeEventHandler)
 
     this.refreshEventHandler = function(eData) {
-      console.log('ehrhelper respond to page refresh')
+      // console.log('ehrhelper respond to page refresh')
       _this.mergedProperty(pageKey)
       _this._loadTransposedColumns(pageKey)
     }
@@ -361,7 +364,7 @@ export default class EhrHelp {
     let isDevelopingContent = this.$store.state.visit.isDevelopingContent
     if (isStudent || isDevelopingContent) {
       let pd = this.getPageDefinition(this.pageKey)
-      console.log('decide to show or not this page def', prop, pd[prop], pd)
+      // console.log('decide to show or not this page def', prop, pd[prop], pd)
       show = pd[prop]
     }
     return show

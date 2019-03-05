@@ -8,7 +8,7 @@
       div(class="region ehr-page-content")
         vitals
     div(style="display:none")
-      p This Vital Signs page is generated.
+      p This is the Vital Signs page
       p Label: Vital signs
       p Data Key: vitals
       p Component name: VitalSigns
