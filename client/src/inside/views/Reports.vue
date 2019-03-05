@@ -3,7 +3,7 @@
   div(class="ehr-page")
     ehr-panel-header {{ uiProps.pageTitle }}
       div(slot="controls", v-show="showPageFormControls")
-        ehr-edit-controls(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey", @controlsCallback="controlsCallback")
+        ehr-edit-controls(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
     ehr-panel-content
       div(class="region ehr-page-content")
         ehr-page-form(v-if="uiProps.hasForm", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey",)
@@ -39,7 +39,6 @@ export default {
   data: function () {
     return {
       pageDataKey: 'undefined',
-      theData: {},
       ehrHelp: undefined
     }
   },
@@ -49,16 +48,6 @@ export default {
     },
     showPageFormControls () {
       return this.ehrHelp.showPageFormControls()
-    }
-  },
-  methods: {
-    controlsCallback (callback) {
-      callback(this.theData)
-    },
-    tableData (tableDef) {
-      // console.log('return table data', tableDef.tableKey)
-      let td = this.theData[tableDef.tableKey]
-      return td
     }
   },
   created () {

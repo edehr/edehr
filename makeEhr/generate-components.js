@@ -173,7 +173,7 @@ function getComponent(fName) {
 }
 
 function makeVueFiles (defs) {
-  const componentTemplate = getComponent('newTemplate.txt')
+  const componentTemplate = getComponent('ehrTemplate.txt')
   defs.forEach(def => {
     // console.log('def.generateComponent',  def.generateComponent)
     if (def.generateComponent !== 'custom') {

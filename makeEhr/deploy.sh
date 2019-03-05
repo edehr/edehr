@@ -21,6 +21,8 @@ case $i in
 esac
 done
 
+mkdir -p generated/vue
+mkdir -p generated/ehrDefs
 ./generateComponents.sh
 ./generateEhrDefs.sh
 
@@ -29,5 +31,4 @@ then
   echo Linting client files, including newly generated files.
   cd ../client
   npm run lint
-  cd ../make
 fi
