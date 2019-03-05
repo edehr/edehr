@@ -27,14 +27,14 @@ import EhrContextDeveloper from './EhrContextDeveloper'
 export default {
   name: 'EhrContextBanner',
   components: { EhrContextInstructor, EhrContextStudent, EhrContextDeveloper },
-  data: function() {
+  data: function () {
     return {
       showInstructor: false,
       showStudent: false,
       showSeeding: false
     }
   },
-  mounted() {
+  mounted () {
     this.showInstructor =
       this.$store.getters['visit/isInstructor'] && !this.$store.state.visit.isDevelopingContent
     this.showStudent = false // !!this.$store.getters['visit/isStudent']

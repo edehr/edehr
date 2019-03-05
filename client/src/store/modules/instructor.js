@@ -67,7 +67,7 @@ const actions = {
         })
     })
   },
-  saveEvaluationNotes(context, payload) {
+  saveEvaluationNotes (context, payload) {
     let vid = payload.activityDataId
     let body = {
       evaluationData: payload.evalNotes
@@ -81,7 +81,7 @@ const actions = {
       })
     })
   },
-  loadActivity(context, activityId) {
+  loadActivity (context, activityId) {
     // console.log('Loading activity. ', activityId)
     context.commit('setCurrentActivityId', activityId)
     let visitState = context.rootState.visit
@@ -96,7 +96,7 @@ const actions = {
       })
     })
   },
-  loadCourses(context) {
+  loadCourses (context) {
     // console.log('In instructor loadCourses')
     let visitState = context.rootState.visit
     let apiUrl = visitState.apiUrl
@@ -116,7 +116,7 @@ const actions = {
       })
     })
   },
-  loadClassList(context, activityId) {
+  loadClassList (context, activityId) {
     let visitState = context.rootState.visit
     let apiUrl = visitState.apiUrl
     return new Promise(resolve => {

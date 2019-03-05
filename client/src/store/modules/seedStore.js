@@ -25,7 +25,7 @@ const actions = {
    * @param context
    * @return {*}
    */
-  loadSeedContent(context) {
+  loadSeedContent (context) {
     let seedId = context.state.sSeedId
     let url = composeUrl(context, API) + 'get/' + seedId
     console.log('loadSeedContent', seedId, url)
@@ -42,7 +42,7 @@ const actions = {
    * @param context
    * @return {*}
    */
-  loadSeedDataList(context) {
+  loadSeedDataList (context) {
     let url = composeUrl(context, API)
     return helper.getRequest(context, url).then(response => {
       let list = response.data.seeddata
@@ -60,7 +60,7 @@ const actions = {
    * @param payload
    * @return {*}
    */
-  createSeedItem(context, payload) {
+  createSeedItem (context, payload) {
     let url = composeUrl(context, API)
     console.log('send seed data ', url, payload)
     return helper.postRequest(context, url, payload).then(results => {
@@ -77,7 +77,7 @@ const actions = {
    * @param dataIdPlusPayload
    * @return {*}
    */
-  updateSeedItem(context, dataIdPlusPayload) {
+  updateSeedItem (context, dataIdPlusPayload) {
     let id = dataIdPlusPayload.id
     let payload = dataIdPlusPayload.payload
     let url = composeUrl(context, API) + id
@@ -108,7 +108,7 @@ const actions = {
    *      }
    * @return {*}
    */
-  updateSeedEhrProperty(context, payload) {
+  updateSeedEhrProperty (context, payload) {
     let url = composeUrl(context, API) + 'updateSeedEhrProperty/' + payload.id
     console.log('updateSeedEhrProperty', url, payload)
     return helper
@@ -131,7 +131,7 @@ const actions = {
    * @param payload { ehrData, id }
    * @return {*}
    */
-  updateSeedEhrData(context, payload) {
+  updateSeedEhrData (context, payload) {
     let url = composeUrl(context, API) + 'updateSeedEhrData/' + payload.id
     console.log('updateSeedEhrProperty', url, payload.ehrData)
     return helper

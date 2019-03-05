@@ -16,7 +16,7 @@ export default {
   components: {
     EhrPageFormElement
   },
-  data: function() {
+  data: function () {
     return {
       theData: {}
     }
@@ -26,19 +26,19 @@ export default {
     ehrHelp: { type: Object }
   },
   computed: {
-    formDefs() {
+    formDefs () {
       let pageDef = this.ehrHelp
         ? this.ehrHelp.getPageDefinition(this.pageDataKey)
         : { page_form: {} }
       return pageDef.page_form
     },
-    showEditControls() {
+    showEditControls () {
       return this.ehrHelp.showEditControls()
     },
-    notEditing() {
+    notEditing () {
       return !this.ehrHelp.isEditing()
     },
-    currentData() {
+    currentData () {
       // Note this property is invoked in a div above. Then hidden from view.
       // By invoking this property theData is set (intentional side-effect)
       // and theData contains data from the database
@@ -50,7 +50,7 @@ export default {
     }
   },
   methods: {
-    formColClass: function(element) {
+    formColClass: function (element) {
       // TODO determine correct css class based on form's column count
       // 1, 2, 3, 4, 5, default
       let clses = [
@@ -68,21 +68,21 @@ export default {
       // console.log('EhrPageForm CSS based on col count', css, this.formDefs.columnsCount)
       return element.formCss ? element.formCss : css
     },
-    refresh() {
+    refresh () {
       // console.log('EhrPageForm rehresh for page key', this.pageDataKey)
       this.theData = this.ehrHelp.getAsLoadedPageData(this.pageDataKey)
       // console.log('EhrPageForm rehresh found data', this.theData)
     }
   },
-  mounted: function() {
+  mounted: function () {
     const _this = this
-    this.refreshEventHandler = function() {
+    this.refreshEventHandler = function () {
       // console.log('received page refresh event')
       _this.refresh()
     }
     EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
   },
-  beforeDestroy: function() {
+  beforeDestroy: function () {
     if (this.refreshEventHandler) {
       EventBus.$off(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
     }

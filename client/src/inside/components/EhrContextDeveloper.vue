@@ -15,7 +15,7 @@ export default {
   name: 'EhrContextDeveloper',
   components: { UiInfo },
   computed: {
-    sSeedContent() {
+    sSeedContent () {
       return this.$store.state.seedStore.sSeedContent || {}
     }
   },

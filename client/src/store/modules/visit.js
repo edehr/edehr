@@ -49,13 +49,13 @@ const getters = {
 }
 
 const actions = {
-  loadVisitInfo(context, visitId) {
+  loadVisitInfo (context, visitId) {
     // console.log('loadVisitInfo')
     return new Promise((resolve, reject) => {
       var apiUrl = context.state.apiUrl
       let url = apiUrl + '/visits/flushed/' + visitId
       // console.log('In load page ', url)
-      function invalid(msg) {
+      function invalid (msg) {
         console.log('INVALID LoadVisit', msg)
         setApiError(context, msg)
         reject(new Error(msg))
@@ -106,7 +106,7 @@ const actions = {
         })
     })
   },
-  routeEnter({ commit }) {
+  routeEnter ({ commit }) {
     commit('routeEnter')
   }
 }

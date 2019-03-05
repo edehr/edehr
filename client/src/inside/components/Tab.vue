@@ -14,12 +14,12 @@ export default {
       default: false
     }
   },
-  data() {
+  data () {
     return {
       isActive: false
     }
   },
-  mounted() {
+  mounted () {
     this.isActive = this.selected
   }
 }

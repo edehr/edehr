@@ -19,19 +19,19 @@ export default {
     UiButton,
     AppDialog
   },
-  data: function() {
+  data: function () {
     return {
       theNotes: ''
     }
   },
   computed: {
-    studentName() {
+    studentName () {
       let sInfo = this.$store.state.ehrData.sCurrentStudentInfo || {}
       return sInfo.studentName
     }
   },
   methods: {
-    loadDialog: function() {
+    loadDialog: function () {
       /*
       The containing component needs to invoke this load method when it shows
       this component/dialog. Here we get the data and store it for use in the form.
@@ -41,11 +41,11 @@ export default {
       // console.log('EhrEvaluationDialog computed eval notes =', edata)
       this.theNotes = edata
     },
-    cancelDialog: function() {
+    cancelDialog: function () {
       this.loadDialog() // reset the data for next time
       this.$emit('canceled')
     },
-    saveDialog: function() {
+    saveDialog: function () {
       // console.log('Save the evaluation notes', this.theNotes)
       this.$store.dispatch('ehrData/sendEvaluationNotes', this.theNotes).then(() => {
         this.$emit('saved')

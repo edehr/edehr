@@ -21,7 +21,7 @@ export default {
     UiButton,
     AppDialog
   },
-  data: function() {
+  data: function () {
     return {
       showingDialog: false,
       populate: true,
@@ -29,20 +29,20 @@ export default {
     }
   },
   methods: {
-    resetNotes: function() {
+    resetNotes: function () {
       let sp = this.$store.getters['ehrData/scratchData']
       console.log('EhrScratchPad reset with existing ', sp)
       this.theNotes = sp
     },
-    showDialog: function() {
+    showDialog: function () {
       this.resetNotes()
       this.showingDialog = true
     },
-    cancelDialog: function() {
+    cancelDialog: function () {
       this.resetNotes()
       this.showingDialog = false
     },
-    saveDialog: function() {
+    saveDialog: function () {
       this.showingDialog = false
       console.log('EhrScratchPad saving ', this.theNotes)
       this.$store.dispatch('ehrData/sendScratchData', this.theNotes)

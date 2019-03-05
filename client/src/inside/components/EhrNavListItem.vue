@@ -15,17 +15,17 @@ export default {
     ENList
   },
   computed: {
-    outClass() {
+    outClass () {
       var lv = this.level || 1
       return 'EhrNavListItem__level' + lv
     },
-    linkClass() {
+    linkClass () {
       var lv = this.level || 1
       return 'EhrNavListItem__link' + lv
     }
   },
   methods: {
-    routeName(path) {
+    routeName (path) {
       return path.redirect ? path.redirect : path.name
     }
   },

@@ -39,19 +39,19 @@ export default {
     UiLink,
     UiSpinner
   },
-  data: function() {
+  data: function () {
     return {
       showingSpecial: false
     }
   },
   computed: {
-    isLoading() {
+    isLoading () {
       return this.$store.state.system.isLoading
     },
-    isInstructor() {
+    isInstructor () {
       return this.$store.getters['visit/isInstructor']
     },
-    isDeveloper() {
+    isDeveloper () {
       return this.$store.getters['visit/isDeveloper']
     }
   }

@@ -12,7 +12,7 @@ export default {
     }
   },
   computed: {
-    classObject: function() {
+    classObject: function () {
       var def = {
         button: true
       }
@@ -25,7 +25,7 @@ export default {
     }
   },
   methods: {
-    buttonClicked: function(event) {
+    buttonClicked: function (event) {
       this.$emit('buttonClicked', event, this.value)
     }
   }

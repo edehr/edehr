@@ -48,7 +48,7 @@ export default {
     Datepicker,
     EhrPageFormElement
   },
-  data: function() {
+  data: function () {
     return {
       inputVal: this.computedValue,
       eventHandler: {}
@@ -60,13 +60,13 @@ export default {
     ehrHelp: { type: Object },
     initialValue: {
       // to accept any object type we provide a validator that accepts all types
-      validator: function(value) {
+      validator: function (value) {
         return true
       }
     }
   },
   computed: {
-    computedValue() {
+    computedValue () {
       // let key = this.element.elementKey
       // console.log('EhrPageFormElement initialValue', key,  this.initialValue)
       // TODO check if this approach to initialization is the best. If so the document it here...
@@ -76,19 +76,19 @@ export default {
     }
   },
   methods: {
-    showLabel() {
+    showLabel () {
       // console.log('showlabel', this.element.inputType, this.element.label)
       let hide = this.element.formOption === 'hideLabel'
       hide = hide || this.element.inputType === 'checkbox'
       hide = hide || this.element.inputType === 'assetLink'
       return !hide
     },
-    assetUrl() {
+    assetUrl () {
       let e = this.element
       let url = '/assets/' + e.assetBase + '/' + e.assetName
       return url
     },
-    assetName() {
+    assetName () {
       let e = this.element
       let name = 'wip: ' + e.label
       if (e.assetBase && e.assetName) {
@@ -96,7 +96,7 @@ export default {
       }
       return name
     },
-    refresh() {
+    refresh () {
       let pageDataKey = this.element.pageDataKey
       let pageData = this.ehrHelp.getAsLoadedPageData(pageDataKey)
       let key = this.element.elementKey
@@ -106,7 +106,7 @@ export default {
     }
   },
   watch: {
-    inputVal(val) {
+    inputVal (val) {
       if (this.notEditing) {
         // only broadcast if user is editing the form
         return
@@ -119,15 +119,15 @@ export default {
       EventBus.$emit(pfuEventChannel, { value: val, element: this.element })
     }
   },
-  mounted: function() {
+  mounted: function () {
     const _this = this
-    this.refreshEventHandler = function() {
+    this.refreshEventHandler = function () {
       // console.log('EhrPageFormElement received page refresh event')
       _this.refresh()
     }
     EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
   },
-  beforeDestroy: function() {
+  beforeDestroy: function () {
     if (this.refreshEventHandler) {
       EventBus.$off(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
     }

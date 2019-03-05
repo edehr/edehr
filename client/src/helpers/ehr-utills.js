@@ -3,7 +3,7 @@ import camelcase from 'camelcase'
 import fileDownload  from 'js-file-download'
 import { pageDefs } from './ehr-defs'
 
-export function getIncomingParams() {
+export function getIncomingParams () {
   let search = window.location.search.substring(1)
   let params2 = {}
   let parts = search.split('&')
@@ -14,33 +14,33 @@ export function getIncomingParams() {
   return params2
 }
 
-export function composeUrl(context, api) {
+export function composeUrl (context, api) {
   let visitState = context.rootState.visit
   let apiUrl = visitState.apiUrl
   return `${apiUrl}/${api}/`
 }
 
-export function setApiError(context, msg) {
+export function setApiError (context, msg) {
   context.commit('system/setApiError', msg, { root: true })
 }
 
-export function validTimeStr(text) {
+export function validTimeStr (text) {
   return /^(|0?[0-9]|1[0-9]|2[0-3]):([0-5][0-9])$/.test(text)
 }
 
-export function validDayStr(text) {
+export function validDayStr (text) {
   return /^([0-9]?)$/.test(text)
 }
 
 
-export function composeAxiosResponseError(error, msg) {
+export function composeAxiosResponseError (error, msg) {
   msg += error.response.status ? ` status: ${error.response.status}` : ''
   msg += error.response.statusText ? ` ${error.response.statusText}` : ''
   msg += error.response.data ? ` ${error.response.data}` : error.message
   return msg
 }
 
-export function decoupleObject(obj) {
+export function decoupleObject (obj) {
   if (obj) {
     let str = JSON.stringify(obj)
     // console.log('decouple object ', str)
@@ -49,7 +49,7 @@ export function decoupleObject(obj) {
   return obj
 }
 
-export function removeEmptyProperties(obj) {
+export function removeEmptyProperties (obj) {
   Object.entries(obj).forEach(([key, val]) => {
     if (val && typeof val === 'object') removeEmptyProperties(val)
     else if (val === undefined || val === null || val === '') delete obj[key]
@@ -59,7 +59,7 @@ export function removeEmptyProperties(obj) {
 
 export const SEED_MARK = 'isFromSeed'
 
-export function ehrRemoveMarkedSeed(page) {
+export function ehrRemoveMarkedSeed (page) {
   let propertyKeys = Object.keys(page)
   propertyKeys.forEach(pKey => {
     let childOne = page[pKey]
@@ -74,7 +74,7 @@ export function ehrRemoveMarkedSeed(page) {
   return page
 }
 
-export function ehrMarkSeed(data) {
+export function ehrMarkSeed (data) {
   let pageKeys = Object.keys(data)
   pageKeys.forEach(key => {
     let page = data[key]
@@ -94,7 +94,7 @@ export function ehrMarkSeed(data) {
   return data
 }
 
-export function validateSeed(dataAsString) {
+export function validateSeed (dataAsString) {
   let pageKeys = Object.keys(pageDefs)
   pageKeys.sort()
   try {
@@ -122,7 +122,7 @@ export function validateSeed(dataAsString) {
 }
 
 
-export function downloadSeedToFile(seedId, sSeedContent, ehrData) {
+export function downloadSeedToFile (seedId, sSeedContent, ehrData) {
   let lastUpdate = sSeedContent.lastUpdateDate
   lastUpdate = moment(lastUpdate).format('YYYY-MM-DD')
   ehrData = JSON.stringify(ehrData,null,2)
@@ -142,13 +142,13 @@ export function downloadSeedToFile(seedId, sSeedContent, ehrData) {
  * @param data
  * @return {*}
  */
-export function prepareAssignmentPageDataForSave(aPage) {
+export function prepareAssignmentPageDataForSave (aPage) {
   // console.log('prepareAssignmentPageDataForSave', JSON.stringify(aPage, null, 2))
   let cleanValue = removeEmptyProperties(aPage)
   cleanValue = ehrRemoveMarkedSeed(cleanValue)
   return cleanValue
 }
-export function ehrMergeEhrData(one, two) {
+export function ehrMergeEhrData (one, two) {
   one = one || {}
   two = two || {}
   let pageKeys = _ehrMergeObjectChildKeys(one, two)
@@ -169,7 +169,7 @@ export function ehrMergeEhrData(one, two) {
   results = _sortObjByKeys(results)
   return results
 
-  function _ehrMergeAtPageLevel(pgFromOne, pageFromTwo) {
+  function _ehrMergeAtPageLevel (pgFromOne, pageFromTwo) {
     let keys = _ehrMergeObjectChildKeys(pgFromOne, pageFromTwo)
     let results = {}
     keys.forEach(key => {
@@ -194,7 +194,7 @@ export function ehrMergeEhrData(one, two) {
     return results
   }
 
-  function _sortObjByKeys(obj) {
+  function _sortObjByKeys (obj) {
     let keys = Object.keys(obj)
     let results = {}
     keys.sort()
@@ -204,7 +204,7 @@ export function ehrMergeEhrData(one, two) {
     return results
   }
 
-  function _ehrMergeObjectChildKeys(obj1, obj2) {
+  function _ehrMergeObjectChildKeys (obj1, obj2) {
     let pages1 = Object.keys(obj1)
     let pages2 = Object.keys(obj2)
     let combined = pages1.concat(pages2)
@@ -212,7 +212,7 @@ export function ehrMergeEhrData(one, two) {
     return combined.filter(_uniqueFilter)
   }
 
-  function _uniqueFilter(value, index, self) {
+  function _uniqueFilter (value, index, self) {
     return self.indexOf(value) === index
   }
 }

@@ -12,7 +12,7 @@ export default {
   components: {
     UiLink
   },
-  data: function() {
+  data: function () {
     return {
       showNav: true
     }

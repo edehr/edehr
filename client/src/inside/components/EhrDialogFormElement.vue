@@ -76,7 +76,7 @@ export default {
     inputs: { type: Object },
     def: { type: Object }
   },
-  data() {
+  data () {
     return {
       inputVal: this.computedValue,
       gotHit: false,
@@ -84,12 +84,12 @@ export default {
     }
   },
   computed: {
-    computedValue() {
+    computedValue () {
       let cV = this.def.helper.getInputValue(this.def)
       console.log('computedValue', cV)
       return cV
     },
-    parentData() {
+    parentData () {
       if (this.def.parent) {
         let pVal = this.inputs[this.def.parent.elementKey]
         console.log('this.inputs', this.inputs)
@@ -98,31 +98,31 @@ export default {
       }
       return ''
     },
-    dependentPropertyChangeChannel() {
+    dependentPropertyChangeChannel () {
       if (this.def.parent) {
         // console.log('dependentPropertyChangeChannel daf.parent', this.def.parent)
         return 'radio:' + this.def.parent.elementKey
       }
       return null
     },
-    eventChannelBroadcast() {
+    eventChannelBroadcast () {
       return 'radio:' + this.def.elementKey
     }
   },
   methods: {
-    formCss: function(element) {
+    formCss: function (element) {
       return element.formCss ? element.formCss : 'noClass'
     },
-    emitGlobalClickEvent() {
+    emitGlobalClickEvent () {
       const _this = this
-      this.$nextTick(function() {
+      this.$nextTick(function () {
         // Send an event on our transmission channel with a payload containing this component's value
         let eData = { key: _this.def, value: _this.inputVal }
         // console.log('emit event',eData, _this.eventChannelBroadcast)
         EventBus.$emit(_this.eventChannelBroadcast, eData)
       })
     },
-    receiveEvent(eData) {
+    receiveEvent (eData) {
       // TODO targetValue where is this set?
       // we're receiving an event transmitted by another instance of this component. An instance
       // that has sent a message on the channel this component listens on.
@@ -130,23 +130,23 @@ export default {
       // console.log(`On channel ${this.dependentPropertyChangeChannel} from key ${eData.key} got hit? ${this.gotHit}`)
     }
   },
-  mounted: function() {
+  mounted: function () {
     const _this = this
     if (this.dependentPropertyChangeChannel) {
-      this.eventHandler = function(eData) {
+      this.eventHandler = function (eData) {
         _this.receiveEvent(eData)
       }
       EventBus.$on(this.dependentPropertyChangeChannel, this.eventHandler) // eData => { this.receiveEvent(eData) })
     }
   },
-  beforeDestroy: function() {
+  beforeDestroy: function () {
     if (this.dependentPropertyChangeChannel && this.eventHandler) {
       // console.log('beforeDestroy, remove listener',this.dependentPropertyChangeChannel)
       EventBus.$off(this.dependentPropertyChangeChannel, this.eventHandler)
     }
   },
   watch: {
-    inputVal(val) {
+    inputVal (val) {
       // console.log('watch inputValue', val, DIALOG_INPUT_EVENT)
       // Send event when any input changes. The listener (EhrHelper) will collect the changes
       // and be ready to send the changes to the server.

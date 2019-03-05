@@ -17,10 +17,10 @@ export default {
   name: 'EhrContextStudent',
   components: { UiInfo },
   computed: {
-    scratchData() {
+    scratchData () {
       return this.$store.getters['ehrData/scratchData']
     },
-    panelInfo() {
+    panelInfo () {
       let visitInfo = this.$store.state.visit.sVisitInfo || {}
       let assignment = visitInfo.assignment || {}
       let activity = visitInfo.activity || {}

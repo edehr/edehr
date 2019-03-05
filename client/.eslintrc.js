@@ -5,7 +5,7 @@ module.exports = {
   },
   extends: ['plugin:vue/essential'],
   rules: {
-    "space-before-function-paren": ["warn", "always"],
+    'space-before-function-paren': ['warn', 'always'],
     'no-console': 'off',
     semi: ['warn', 'never'],
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',

@@ -20,7 +20,7 @@ let lastTime = 8
 let cnt = 0
 
 export default class VitalChart {
-  addData(table) {
+  addData (table) {
     cnt++
     lastTime += 4
     if (lastTime > 24) {
@@ -68,7 +68,7 @@ export default class VitalChart {
     })
   }
 
-  getDates(table) {
+  getDates (table) {
     let values = table.map(element => {
       return `Day ${element.day}\n${element.time}:00`
     })
@@ -90,7 +90,7 @@ export default class VitalChart {
     return chartData
   }
 
-  getTemperature(table) {
+  getTemperature (table) {
     let values = table.map(element => {
       return element.temperature
     })
@@ -129,7 +129,7 @@ export default class VitalChart {
     return chartData
   }
 
-  getBloodPressure(table) {
+  getBloodPressure (table) {
     let v1 = [],
       v2 = [],
       v3 = []
@@ -206,7 +206,7 @@ export default class VitalChart {
     return chartData
   }
 
-  getRespiratory(table) {
+  getRespiratory (table) {
     let min = vitalRanges.respiratory.min
     let max = vitalRanges.respiratory.max
     let values = table.map(element => {
@@ -244,7 +244,7 @@ export default class VitalChart {
     return chartData
   }
 
-  getOxygen(table) {
+  getOxygen (table) {
     let values = table.map(element => {
       return `${element.oxygenSaturation}\nRA\n${element.flowRate}LPM`
     })
@@ -274,10 +274,10 @@ export default class VitalChart {
 }
 
 const helper = {
-  round_number: function(num, dec) {
+  round_number: function (num, dec) {
     return Math.round(num * Math.pow(10, dec)) / Math.pow(10, dec)
   },
-  random: function(min, max, decimals) {
+  random: function (min, max, decimals) {
     // min and max included
     decimals = decimals || 0
     let val = Math.random() * (max - min + 1) + min

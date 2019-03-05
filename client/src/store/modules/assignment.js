@@ -11,7 +11,7 @@ const state = {
 const getters = {}
 
 const actions = {
-  loadOneAssignmentThenSeed(context, id) {
+  loadOneAssignmentThenSeed (context, id) {
     let url = composeUrl(context, API) + 'get/' + id
     return helper.getRequest(context, url).then(response => {
       let assignment = response.data.assignment
@@ -28,7 +28,7 @@ const actions = {
       return context.dispatch('seedStore/loadSeedContent', null, options)
     })
   },
-  loadAssignments(context) {
+  loadAssignments (context) {
     let url = composeUrl(context, API)
     return helper.getRequest(context, url).then(response => {
       let list = response.data.assignments
@@ -40,7 +40,7 @@ const actions = {
       context.commit('setAssignmentsListing', list)
     })
   },
-  createAssignment(context, payload) {
+  createAssignment (context, payload) {
     let url = composeUrl(context, API)
     console.log('send assignment data ', url, payload)
     return helper.postRequest(context, url, payload).then(results => {
@@ -49,7 +49,7 @@ const actions = {
       return context.dispatch('loadAssignments')
     })
   },
-  updateAssignment(context, dataIdPlusPayload) {
+  updateAssignment (context, dataIdPlusPayload) {
     let id = dataIdPlusPayload.id
     let payload = dataIdPlusPayload.payload
     let url = composeUrl(context, API) + id

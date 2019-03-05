@@ -39,7 +39,7 @@ export default class PeriodDefs {
   get periodList () { return this._periodDefs}
   get periodKeys () { return this._periodKeys }
 
-  periodIndex(key) { return this._periodKeys.indexOf(key)}
+  periodIndex (key) { return this._periodKeys.indexOf(key)}
 
   clearMedications () {
     this._periodKeys.forEach(pk => {
@@ -66,7 +66,7 @@ export default class PeriodDefs {
    */
   mergeOrdersSchedules (medOrders) {
     this.clearMedications()
-    console.log('merging ', medOrders)
+    // console.log('merging ', medOrders)
     let periodDefs = this._periodDefs
     let periodKeys = this._periodKeys
     medOrders.forEach(medOrder => {
@@ -88,7 +88,6 @@ export default class PeriodDefs {
     // TODO can mergeMarAndSchedule be simplified?
     // console.log('mergeMarAndSchedule', marRecords)
     let periodDefs = this._periodDefs
-    let theDay = undefined
     let dayPeriods = []
     // sort oldest first
     marRecords.sort( (a,b) => MarEntity.compare(a, b, false) )

@@ -22,27 +22,27 @@ export default {
     EhrEvaluationPad
   },
   computed: {
-    returnButtonLabel() {
+    returnButtonLabel () {
       if (this.isStudent) {
         return 'Return to ' + this.$store.getters['visit/lmsName']
       } else {
         return 'Return to class list'
       }
     },
-    lmsName() {
+    lmsName () {
       return this.$store.getters.lmsName
     },
-    menuList() {
+    menuList () {
       // read the menu definition stored in the project root src (client/src)
       var menu = require('../../menuList.json')
       return menu
     },
-    isStudent() {
+    isStudent () {
       return this.$store.getters['visit/isStudent']
     }
   },
   methods: {
-    returnToClicked() {
+    returnToClicked () {
       if (this.isStudent) {
         // hard return to the calling LMS
         window.location = this.$store.getters['visit/returnUrl']

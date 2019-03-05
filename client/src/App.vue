@@ -15,7 +15,7 @@ export default {
   name: 'App',
   components: {},
   methods: {
-    loadData: function() {
+    loadData: function () {
       let params2 = getIncomingParams()
       // API return to url
       let apiUrl = params2['apiUrl']
@@ -70,7 +70,7 @@ export default {
           alert(err + '\nSystem Error')
         })
     },
-    _loadDeveloping(restoring) {
+    _loadDeveloping (restoring) {
       return new Promise((resolve, reject) => {
         if (!restoring) {
           return resolve()
@@ -105,7 +105,7 @@ export default {
      * @return {Promise<void>}
      * @private
      */
-    _loadApiUrl(apiUrl) {
+    _loadApiUrl (apiUrl) {
       return new Promise((resolve, reject) => {
         if (apiUrl) {
           // console.log('API url provided in query: ', apiUrl)
@@ -127,7 +127,7 @@ export default {
         resolve(apiUrl)
       })
     },
-    reloadInstructor: function() {
+    reloadInstructor: function () {
       // console.log('Page load and restore instructor')
       const _this = this
       let rUrl = localStorage.getItem('sInstructorReturnUrl')
@@ -156,19 +156,19 @@ export default {
     }
   },
   computed: {
-    layout() {
+    layout () {
       const l = (this.$route.meta.layout || DefaultLayout) + '-layout'
       // console.log('using layout ', l)
       return l
     },
-    userInfo() {
+    userInfo () {
       return this.$store.state.sUserInfo
     },
-    currentVisit() {
+    currentVisit () {
       return this.$store.state.sVisitInfo
     }
   },
-  created: function() {
+  created: function () {
     this.loadData()
   }
 }

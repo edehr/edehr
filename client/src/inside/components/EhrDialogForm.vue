@@ -23,14 +23,14 @@ export default {
     EhrDialogFormElement,
     AppDialog
   },
-  data: function() {
+  data: function () {
     return {
       showDialog: false
     }
   },
   watch: {
     // whenever question changes, this function will run
-    showDialog: function(newValue) {
+    showDialog: function (newValue) {
       // console.log('UN -- FREEZEEEEEEE')
       document.body.style.position = ''
       if (newValue) {
@@ -48,10 +48,10 @@ export default {
     errorList: { type: Array }
   },
   computed: {
-    tableKey() {
+    tableKey () {
       return this.tableDef.tableKey
     },
-    topRow() {
+    topRow () {
       // console.log('dialog get top row from ', this.tableDef)
       if (!this.tableDef.tableForm) {
         return []
@@ -61,7 +61,7 @@ export default {
       // console.log('top row ', this.tableDef, top)
       return top
     },
-    middleRange() {
+    middleRange () {
       if (!this.tableDef.tableForm) {
         return []
       }
@@ -70,7 +70,7 @@ export default {
       // console.log('middle', middle)
       return middle
     },
-    lastRow() {
+    lastRow () {
       if (!this.tableDef.tableForm) {
         return []
       }
@@ -81,31 +81,31 @@ export default {
     }
   },
   methods: {
-    formCss: function(element) {
+    formCss: function (element) {
       // return element.formCss ? element.formCss : 'noClass'
       return element.inputType + ' ' + element.elementKey
     },
-    cancelDialog: function() {
+    cancelDialog: function () {
       this.ehrHelp.cancelDialog(this.tableKey)
     },
-    saveDialog: function() {
+    saveDialog: function () {
       this.ehrHelp.saveDialog(this.pageDataKey, this.tableKey)
     },
-    receiveCloseEvent(eData) {
+    receiveCloseEvent (eData) {
       let value = eData.value
       this.showDialog = value
     }
   },
-  mounted: function() {
+  mounted: function () {
     // console.log('EhrDialogForm mounted', this.pageDataKey)
     const _this = this
     let ch = this.ehrHelp.getCloseChannelHandle(this.tableKey)
-    this.eventHandler = function(eData) {
+    this.eventHandler = function (eData) {
       _this.receiveCloseEvent(eData)
     }
     EventBus.$on(ch, this.eventHandler)
   },
-  beforeDestroy: function() {
+  beforeDestroy: function () {
     // console.log('EhrDialogForm beforeDestroy', this.pageDataKey)
     // console.log('When app dialog is destroyed restore background scrolling')
     // console.log('UN -- FREEZEEEEEEE')

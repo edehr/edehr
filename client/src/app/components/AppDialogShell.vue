@@ -51,22 +51,22 @@ export default {
     },
     errors: {
       type: Array,
-      default: function() {
+      default: function () {
         return []
       }
     }
   },
   computed: {
-    saveEnabled() {
+    saveEnabled () {
       return false
     },
-    modalClass: function() {
+    modalClass: function () {
       return {
         'modal-mask': this.isModal
       }
     }
   },
-  data() {
+  data () {
     return {}
   },
   methods: {}

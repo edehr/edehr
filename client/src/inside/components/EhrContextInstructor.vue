@@ -39,7 +39,7 @@ export default {
   name: 'EhrClassListNav',
   components: { UiButton, EhrEvaluationDialog, EhrEvaluationInput, UiInfo },
   computed: {
-    panelInfo() {
+    panelInfo () {
       let evalInfo = this.$store.state.ehrData.sCurrentStudentInfo || {}
       let evalData = this.$store.state.ehrData.sCurrentStudentData || {}
       let activity = this.$store.state.instructor.sCurrentActivity || {}
@@ -56,31 +56,31 @@ export default {
       }
       return data
     },
-    classList() {
+    classList () {
       return this.$store.state.sClassList || []
     },
-    showClassList() {
+    showClassList () {
       return true
     },
-    enablePrev() {
+    enablePrev () {
       let { indx } = this.findCurrentIndex()
       return indx > 0
     },
-    enableNext() {
+    enableNext () {
       let { list, indx } = this.findCurrentIndex()
       return indx < list.length - 1
     }
   },
   methods: {
-    findCurrentIndex() {
+    findCurrentIndex () {
       var list = this.$store.state.instructor.sClassList || []
       var id = this.$store.state.instructor.sCurrentEvaluationStudentId
-      var indx = list.findIndex(function(elem) {
+      var indx = list.findIndex(function (elem) {
         return elem._id === id
       })
       return { list, indx }
     },
-    previousStudent() {
+    previousStudent () {
       let { list, indx } = this.findCurrentIndex()
       indx--
       if (indx >= 0) {
@@ -88,7 +88,7 @@ export default {
         this.changeStudent(list, sv)
       }
     },
-    nextStudent() {
+    nextStudent () {
       let { list, indx } = this.findCurrentIndex()
       indx++
       if (indx < list.length) {
@@ -96,7 +96,7 @@ export default {
         this.changeStudent(list, sv)
       }
     },
-    changeStudent(list, sv) {
+    changeStudent (list, sv) {
       let pid = sv._id
       console.log('EhrClassListNav go to ', pid)
       this.$store.dispatch('instructor/changeCurrentEvaluationStudentId', pid).then(() => {})

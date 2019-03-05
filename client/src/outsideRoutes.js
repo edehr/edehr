@@ -1,4 +1,4 @@
-export function outside() {
+export function outside () {
 
   return [
     {
