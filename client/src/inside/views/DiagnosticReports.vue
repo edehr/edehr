@@ -36,7 +36,7 @@ export default {
     EhrPageTable,
     EhrEditControls
   },
-  data: function() {
+  data: function () {
     return {
       pageDataKey: 'medicalImaging',
       theData: {},
@@ -44,30 +44,30 @@ export default {
     }
   },
   computed: {
-    uiProps() {
+    uiProps () {
       return this.ehrHelp ? this.ehrHelp.getPageDefinition(this.pageDataKey) : {}
     },
-    showPageFormControls() {
+    showPageFormControls () {
       return this.ehrHelp.showPageFormControls()
     }
   },
   methods: {
-    controlsCallback(callback) {
+    controlsCallback (callback) {
       callback(this.theData)
     },
-    tableData(tableDef) {
+    tableData (tableDef) {
       // console.log('return table data', tableDef.tableKey)
       let td = this.theData[tableDef.tableKey]
       return td
     }
   },
-  created() {
+  created () {
     this.ehrHelp = new EhrHelp(this, this.$store, this.pageDataKey, this.uiProps)
   },
-  beforeRouteLeave(to, from, next) {
+  beforeRouteLeave (to, from, next) {
     this.ehrHelp.beforeRouteLeave(to, from, next)
   },
-  beforeDestroy: function() {
+  beforeDestroy: function () {
     this.ehrHelp.beforeDestroy(this.pageDataKey)
   }
 }

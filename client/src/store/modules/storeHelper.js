@@ -2,7 +2,7 @@ import axios from 'axios'
 import { composeAxiosResponseError, setApiError } from '../../helpers/ehr-utills'
 
 export default class StoreHelper {
-  putRequest(context, url, bodyData) {
+  putRequest (context, url, bodyData) {
     console.log('PUT to this url', url)
     return new Promise((resolve, reject) => {
       axios
@@ -18,7 +18,7 @@ export default class StoreHelper {
         })
     })
   }
-  postRequest(context, url, bodyData) {
+  postRequest (context, url, bodyData) {
     console.log('POST to this url', url)
     return new Promise((resolve, reject) => {
       axios
@@ -34,7 +34,7 @@ export default class StoreHelper {
         })
     })
   }
-  getRequest(context, url) {
+  getRequest (context, url) {
     // console.log('GET to this url', url)
     return new Promise((resolve, reject) => {
       axios

@@ -17,7 +17,7 @@ export default {
   components: {
     AppDialog
   },
-  data: function() {
+  data: function () {
     return {
       showingDialog: false
     }
@@ -26,10 +26,10 @@ export default {
     text: { type: String }
   },
   methods: {
-    buttonClicked: function() {
+    buttonClicked: function () {
       this.showingDialog = true
     },
-    cancelDialog: function() {
+    cancelDialog: function () {
       this.showingDialog = false
     }
   }

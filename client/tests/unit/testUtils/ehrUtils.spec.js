@@ -144,7 +144,7 @@ describe('Test support for seed import', () => {
     done()
   })
 })
-function getOne() {
+function getOne () {
   return {
     aPage1: {
       p1: 1,
@@ -174,7 +174,7 @@ function getOne() {
     }
   }
 }
-function getTwo() {
+function getTwo () {
   return {
     visit: {
       location: [{ location: 'in two', transferInDay: '2' }],

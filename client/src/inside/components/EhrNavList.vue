@@ -18,7 +18,7 @@ export default {
     EhrNavListItem
   },
   computed: {
-    open() {
+    open () {
       if (this.level > 1) {
         return true
       }
@@ -26,7 +26,7 @@ export default {
     }
   },
   watch: {
-    $route: function(to) {
+    $route: function (to) {
       if (to.name === this.path.name) {
         this.$store.commit('visit/topLevelMenu', this.path.topLevel)
       }
@@ -39,7 +39,7 @@ export default {
     level: { type: Number }
   },
   methods: {
-    toggle: function(event) {
+    toggle: function (event) {
       if (this.level === 1) {
         //this.open = !this.open
       }

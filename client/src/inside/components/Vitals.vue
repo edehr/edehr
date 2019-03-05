@@ -21,7 +21,7 @@ export default {
     Tab,
     VitalsChart
   },
-  data() {
+  data () {
     return {
       vitals: {
         table: []
@@ -30,11 +30,11 @@ export default {
     }
   },
   methods: {
-    addData() {
+    addData () {
       this.vitalsModel.addData(this.vitals.table)
     }
   },
-  created: function() {
+  created: function () {
     this.vitalsModel = new VitalModel()
   }
 }

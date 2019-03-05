@@ -73,7 +73,7 @@ export default {
     UiButton,
     UiAgree
   },
-  data() {
+  data () {
     return {
       showingDialog: false,
       aSeed: {},
@@ -84,31 +84,31 @@ export default {
   },
   props: {},
   computed: {
-    seedDataList() {
+    seedDataList () {
       return this.$store.state.seedStore.seedDataList
     }
   },
   methods: {
-    findSeed: function(id) {
+    findSeed: function (id) {
       return this.seedDataList.find(e => {
         return e._id === id
       })
     },
-    loadSeedDataList() {
+    loadSeedDataList () {
       return this.$store.dispatch('seedStore/loadSeedDataList')
     },
-    uploadSeed: function(event, value) {
+    uploadSeed: function (event, value) {
       this.seedId = value
       this.currentSeed = this.findSeed(this.seedId)
       // console.log('upload seed for ', this.currentSeed)
       this.$refs.fileUploadInput.click()
     },
-    importSeedFile: function(event) {
+    importSeedFile: function (event) {
       const _this = this
       const file = event.target.files[0]
       const reader = new FileReader()
       _this.$store.commit('system/setLoading', true)
-      reader.onload = (function(event) {
+      reader.onload = (function (event) {
         let contents = event.target.result
         let {seedObj, invalidMsg} = validateSeed(contents)
         if(invalidMsg) {
@@ -135,7 +135,7 @@ export default {
       let data = this.$store.getters['seedStore/seedEhrData']
       downloadSeedToFile(seedId, sSeedContent, data)
     },
-    gotoEhrWithSeed: function(event, value) {
+    gotoEhrWithSeed: function (event, value) {
       const _this = this
       this.seedId = value //event.target.value
       // console.log('gotoEhrWithSeed with seed id', value, this.seedId)
@@ -147,7 +147,7 @@ export default {
         EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
       })
     },
-    showEditDialog: function(event, value) {
+    showEditDialog: function (event, value) {
       this.seedId = value //event.target.value
       // console.log('showEditDialog with seed id', event.target, this.seedId)
       // clone to decouple data from storage before using in dialog
@@ -158,16 +158,16 @@ export default {
       this.dialogHeader = 'Edit seed data properties'
       this.showingDialog = true
     },
-    showCreateDialog: function() {
+    showCreateDialog: function () {
       this.aSeed = {}
       this.actionType = 'create'
       this.dialogHeader = 'Create a new seed for assignments'
       this.showingDialog = true
     },
-    cancelDialog: function() {
+    cancelDialog: function () {
       this.showingDialog = false
     },
-    saveDialog: function() {
+    saveDialog: function () {
       // console.log('saveDialog ', this.actionType, this.aSeed)
       let theData = this.aSeed.ehrData || '{}'
       // console.log(`Convert seed data field '${theData}' into an object`)
@@ -183,7 +183,7 @@ export default {
       }
     }
   },
-  mounted: function() {
+  mounted: function () {
     this.loadSeedDataList()
   }
 }

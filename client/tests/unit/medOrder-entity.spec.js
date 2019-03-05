@@ -43,7 +43,7 @@ describe('MedOrder', () => {
 
 })
 
-function getSample() {
+function getSample () {
   return {
     medicationOrders: {
       table:

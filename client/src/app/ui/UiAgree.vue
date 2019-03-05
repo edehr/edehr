@@ -15,7 +15,7 @@ export default {
   components: {
     AppDialog
   },
-  data: function() {
+  data: function () {
     return {
       showConfirm: false,
       title: DEFAULT_TITLE,
@@ -23,12 +23,12 @@ export default {
     }
   },
   methods: {
-    showDialog: function(title, msg) {
+    showDialog: function (title, msg) {
       this.title = title  || this.title
       this.text = msg || this.text
       this.showConfirm = true
     },
-    cancelDialog: function() {
+    cancelDialog: function () {
       this.title = DEFAULT_TITLE 
       this.msg = DEFAULT_TEXT
       this.showConfirm = false

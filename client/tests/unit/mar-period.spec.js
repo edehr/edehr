@@ -29,12 +29,3 @@ describe('PeriodDefs', () => {
     })
   })
 })
-
-function sampleDefs() {
-  // return       { breakfast: PeriodEntity { _data: { key: 'breakfast' } },
-  // midmorning: PeriodEntity { _data: { key: 'midmorning' } },
-  // lunch: PeriodEntity { _data: { key: 'lunch' } },
-  // midafternoon: PeriodEntity { _data: { key: 'midafternoon' } },
-  // dinner: PeriodEntity { _data: { key: 'dinner' } },
-  // bedtime: PeriodEntity { _data: { key: 'bedtime' } } }
-}

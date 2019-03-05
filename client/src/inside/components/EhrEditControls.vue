@@ -12,7 +12,7 @@
 export default {
   name: 'EhrEditControls',
   components: {},
-  data: function() {
+  data: function () {
     return {}
   },
   props: {
@@ -20,18 +20,18 @@ export default {
     pageDataKey: { type: String }
   },
   computed: {
-    isEditing() {
+    isEditing () {
       return this.ehrHelp.isEditing()
     }
   },
   methods: {
-    beginEdit: function() {
+    beginEdit: function () {
       this.ehrHelp.beginEdit(this.pageDataKey)
     },
-    cancelEdit: function() {
+    cancelEdit: function () {
       this.ehrHelp.cancelEdit(this.pageDataKey)
     },
-    saveEdit: function() {
+    saveEdit: function () {
       this.ehrHelp.saveEdit(this.pageDataKey)
     }
   }

@@ -27,7 +27,7 @@ export default {
   components: { SystemError },
 
   computed: {
-    home() {
+    home () {
       let isStudent = this.$store.getters['visit/isStudent']
       let isDevelopingContent = this.$store.state.visit.isDevelopingContent
       let isInstructor = this.$store.getters['visit/isInstructor']
@@ -40,16 +40,16 @@ export default {
             : 'home'
       return home
     },
-    fullName() {
+    fullName () {
       return this.$store.getters['visit/fullName']
     },
-    lmsUrl() {
+    lmsUrl () {
       return this.$store.getters['visit/returnUrl']
     },
-    lmsName() {
+    lmsName () {
       return this.$store.getters['visit/lmsName']
     },
-    showDashboard() {
+    showDashboard () {
       return this.$store.getters['visit/hasDashboard']
     }
   }

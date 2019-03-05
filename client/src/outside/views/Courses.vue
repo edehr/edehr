@@ -18,7 +18,7 @@ export default {
     }
   },
   computed: {
-    activity() {
+    activity () {
       // return this.$store.state.sActivityInfo
       console.log('TODO ... get activity data here')
       return {}

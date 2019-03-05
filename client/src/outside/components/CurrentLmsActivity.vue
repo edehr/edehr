@@ -37,13 +37,13 @@ export default {
     UiLink
   },
   computed: {
-    returnLabel() {
+    returnLabel () {
       return 'Return to ' + this.$store.getters['visit/lmsName']
     },
-    returnUrl() {
+    returnUrl () {
       return this.$store.getters['visit/returnUrl']
     },
-    activity() {
+    activity () {
       return this.$store.state.ehrData.sActivityData
     }
   }

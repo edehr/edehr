@@ -117,17 +117,17 @@
 <script>
 export default {
   name: 'EhrSpecial',
-  data() {
+  data () {
     return {}
   },
   computed: {
-    path() {
+    path () {
       return this.$route.path
     },
-    userInfo() {
+    userInfo () {
       return this.$store.state.visit.sUserInfo || {}
     },
-    ltiData() {
+    ltiData () {
       let usr = this.$store.state.visit.sUserInfo || {}
       let lti = usr.ltiData || []
       lti = lti[0]
@@ -140,86 +140,86 @@ export default {
       }
       return lti
     },
-    visitInfo() {
+    visitInfo () {
       return this.$store.state.visit.sVisitInfo || {}
     },
-    assignmentsListing() {
+    assignmentsListing () {
       return this.$store.state.assignment.assignmentsListing
     },
-    assignment() {
+    assignment () {
       var vi = this.visitInfo
       var act = vi && vi.assignment ? vi.assignment : {}
       return act
     },
-    assignmentData() {
+    assignmentData () {
       return this.$store.getters['ehrData/assignmentData']
     },
-    mergedData() {
+    mergedData () {
       return this.$store.getters['ehrData/mergedData']
     },
-    scratchData() {
+    scratchData () {
       return this.$store.getters['ehrData/scratchData']
     },
-    evaluationData() {
+    evaluationData () {
       return this.$store.getters['ehrData/evaluationData']
     },
-    sActivityData() {
+    sActivityData () {
       return this.$store.state.ehrData.sActivityData || {}
     },
-    sCurrentStudentData() {
+    sCurrentStudentData () {
       return this.$store.state.ehrData.sCurrentStudentData
     },
-    sCurrentStudentInfo() {
+    sCurrentStudentInfo () {
       return this.$store.state.ehrData.sCurrentStudentInfo
     },
-    sSeedContent() {
+    sSeedContent () {
       return this.$store.state.seedStore.sSeedContent || []
     },
-    sSeedId() {
+    sSeedId () {
       return this.$store.state.seedStore.sSeedId
     },
-    seedStoreData() {
+    seedStoreData () {
       return this.$store.getters['seedStore/seedEhrData']
     },
-    isDevelopingContent() {
+    isDevelopingContent () {
       return this.$store.state.visit.isDevelopingContent
     },
-    classList() {
+    classList () {
       return this.$store.state.instructor.sClassList || []
     },
-    sCurrentActivityId() {
+    sCurrentActivityId () {
       return this.$store.state.instructor.sCurrentActivityId || []
     },
-    sCurrentActivity() {
+    sCurrentActivity () {
       return this.$store.state.instructor.sCurrentActivity || []
     },
-    courses() {
+    courses () {
       return this.$store.state.instructor.sCourses || []
     },
-    sInstructorReturnUrl() {
+    sInstructorReturnUrl () {
       return this.$store.state.instructor.sInstructorReturnUrl
     },
-    sCurrentEvaluationStudentId() {
+    sCurrentEvaluationStudentId () {
       return this.$store.state.instructor.sCurrentEvaluationStudentId
     },
-    isInstructor() {
+    isInstructor () {
       return this.$store.getters['visit/isInstructor']
     },
-    isDeveloper() {
+    isDeveloper () {
       return this.$store.getters['visit/isDeveloper']
     },
-    apiUrl() {
+    apiUrl () {
       return this.$store.state.visit.apiUrl
     },
-    topLevelMenu() {
+    topLevelMenu () {
       return this.$store.state.visit.topLevelMenu
     },
-    isLoggedIn() {
+    isLoggedIn () {
       return this.$store.state.visit.isLoggedIn
     }
   },
   methods: {
-    skipVisitProp(prop) {
+    skipVisitProp (prop) {
       return !(prop === 'user' || prop === 'toolConsumer') // ||
       // prop === 'activity' ||
       // prop === 'assignment'

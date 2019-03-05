@@ -77,7 +77,7 @@ const getters = {
 }
 
 const actions = {
-  loadActivityData(context, options) {
+  loadActivityData (context, options) {
     let activityDataId = options.id
     console.log('Get activityData  ', activityDataId)
     let url = composeUrl(context, API_ACTIVITY) + `get/${activityDataId}`
@@ -93,7 +93,7 @@ const actions = {
     })
   },
 
-  restoreActivityData(context) {
+  restoreActivityData (context) {
     let forStudent = context.state.forStudent
     // console.log('restoreActivityData ', forStudent)
     if (forStudent) {
@@ -109,7 +109,7 @@ const actions = {
     }
   },
 
-  sendAssignmentDataUpdate(context, payload) {
+  sendAssignmentDataUpdate (context, payload) {
     let visitState = context.rootState.visit
     let apiUrl = visitState.apiUrl
     let activityDataId = context.state.sActivityData._id
@@ -134,7 +134,7 @@ const actions = {
     })
   },
 
-  sendScratchData(context, data) {
+  sendScratchData (context, data) {
     let visitState = context.rootState.visit
     let apiUrl = visitState.apiUrl
     let activityDataId = context.state.sActivityData._id
@@ -148,7 +148,7 @@ const actions = {
     })
   },
 
-  sendEvaluationNotes(context, data) {
+  sendEvaluationNotes (context, data) {
     let visitState = context.rootState.visit
     let apiUrl = visitState.apiUrl
     let activityDataId = context.state.sCurrentStudentData.activityDataId

@@ -1,4 +1,4 @@
-export function inside() {
+export function inside () {
 
   return [
     {

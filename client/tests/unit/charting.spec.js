@@ -9,14 +9,14 @@ const POINT_TYPES = {
   TEXT: 'text'
 }
 
-function getMockChartData() {
+function getMockChartData () {
   let min = 0, max = 100
   let chartData = {
     label: 'Mock',
     dMin: min,
     dMax: max,
     gridY: {
-      scalePoints: (function() {
+      scalePoints: (function () {
         // step by 10's
         let pts = []
         for (let i = max; i >= min; i -= 10) {

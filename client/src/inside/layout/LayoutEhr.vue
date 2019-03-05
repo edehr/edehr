@@ -40,13 +40,13 @@ export default {
     EhrSpecial,
     UiSpinner
   },
-  data: function() {
+  data: function () {
     return {
       showingSpecial: false
     }
   },
   computed: {
-    isLoading() {
+    isLoading () {
       return this.$store.state.system.isLoading
     }
   }

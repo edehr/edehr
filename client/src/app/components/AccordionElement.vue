@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {}
   },
   props: {
@@ -16,16 +16,16 @@ export default {
     show: { type: Boolean }
   },
   methods: {
-    beforeEnter: function(el) {
+    beforeEnter: function (el) {
       el.style.height = '0'
     },
-    enter: function(el) {
+    enter: function (el) {
       el.style.height = el.scrollHeight + 'px'
     },
-    beforeLeave: function(el) {
+    beforeLeave: function (el) {
       el.style.height = el.scrollHeight + 'px'
     },
-    leave: function(el) {
+    leave: function (el) {
       el.style.height = '0'
     }
   }

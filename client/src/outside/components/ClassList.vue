@@ -44,7 +44,7 @@ export default {
     AccordionElement,
     UiButton
   },
-  data() {
+  data () {
     return {
       show: false,
       indicator: '+'
@@ -54,24 +54,24 @@ export default {
     activity: { type: Object }
   },
   computed: {
-    assignment() {
+    assignment () {
       // console.log('What is in activity', this.activity)
       let a = this.activity.assignment || {}
       return a
     },
-    visitInfo() {
+    visitInfo () {
       return this.$store.state.visit.sVisitInfo
     },
-    classList() {
+    classList () {
       return this.$store.state.instructor.sClassList || []
     }
   },
   methods: {
-    setShow: function(value) {
+    setShow: function (value) {
       this.show = value
       this.indicator = value ? '-' : '+'
     },
-    activateActivity() {
+    activateActivity () {
       if (this.show) {
         this.setShow(false)
         return
@@ -80,7 +80,7 @@ export default {
       localStorage.setItem('activityId', activityId)
       this.loadActivity(activityId)
     },
-    loadActivity(activityId) {
+    loadActivity (activityId) {
       const _this = this
       return this.$store
         .dispatch('instructor/loadActivity', activityId)
@@ -88,12 +88,12 @@ export default {
           return this.$store.dispatch('instructor/loadClassList', activityId)
         })
         .then(() => {
-          _this.$nextTick(function() {
+          _this.$nextTick(function () {
             _this.setShow(true)
           })
         })
     },
-    goToEhr(studentVisit) {
+    goToEhr (studentVisit) {
       let studentId = studentVisit._id
       // Go to the first screen related to the assignent
       let name = '/ehr/patient/demographics' // studentVisit.assignment.ehrRoutePath
@@ -107,7 +107,7 @@ export default {
       })
     }
   },
-  mounted: function() {
+  mounted: function () {
     /*
     let myId = this.activity._id
     let storeId = localStorage.getItem('activityId')

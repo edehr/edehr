@@ -18,11 +18,11 @@ export default {
     ClassList
   },
   computed: {
-    courses() {
+    courses () {
       return this.$store.state.instructor.sCourses
     }
   },
-  mounted: function() {
+  mounted: function () {
     /*
     TODO get scroll into view working
     The following is not working. Nor is the attempt to scroll in the class list view.

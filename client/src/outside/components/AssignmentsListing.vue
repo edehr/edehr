@@ -57,7 +57,7 @@ import { getIncomingParams } from '../../helpers/ehr-utills'
 
 export default {
   name: 'AssignmentsListing',
-  data() {
+  data () {
     return {
       isRespondingToError: null,
       showingDialog: false,
@@ -71,10 +71,10 @@ export default {
   },
   components: { AppDialog, UiButton },
   computed: {
-    isDeveloper() {
+    isDeveloper () {
       return this.$store.getters['visit/isDeveloper']
     },
-    assignmentsListing() {
+    assignmentsListing () {
       let sdList = this.$store.state.seedStore.seedDataList
       let assList = this.$store.state.assignment.assignmentsListing
       assList = assList.filter(entry => entry.externalId != 'defaultNonAssignment')
@@ -90,24 +90,24 @@ export default {
       })
       return assList
     },
-    seedOptionList() {
+    seedOptionList () {
       let sdList = this.$store.state.seedStore.seedDataList
       return sdList.map(sd => {
         return { id: sd._id, name: sd.name }
       })
     },
-    activity() {
+    activity () {
       return this.$store.state.ehrData.sActivityData
     }
   },
 
   methods: {
-    findAssignment: function(id) {
+    findAssignment: function (id) {
       return this.assignmentsListing.find(e => {
         return e._id === id
       })
     },
-    showEditDialog: function(event, value) {
+    showEditDialog: function (event, value) {
       this.assignmentId = value // event.target.value
       // clone to decouple data from storage before using in dialog
       let sData = Object.assign({}, this.findAssignment(this.assignmentId))
@@ -117,17 +117,17 @@ export default {
       this.dialogHeader = 'Edit assignment properties'
       this.showingDialog = true
     },
-    showCreateDialog: function() {
+    showCreateDialog: function () {
       this.aAssignment = {}
       this.selectedSeed = ''
       this.actionType = 'create'
       this.dialogHeader = 'Create a new assignment'
       this.showingDialog = true
     },
-    cancelDialog: function() {
+    cancelDialog: function () {
       this.showingDialog = false
     },
-    saveDialog: function() {
+    saveDialog: function () {
       // console.log('saveDialog ', this.actionType, this.aSeed)
       let sId = this.selectedSeed && this.selectedSeed.length > 0 ? this.selectedSeed : null
       this.aAssignment.seedDataId = sId
@@ -146,7 +146,7 @@ export default {
         })
       }
     },
-    loadAssignments: function() {
+    loadAssignments: function () {
       const _this = this
       console.log('load assignments for AssignmentListing component')
       this.$store.commit('system/setLoading', true)
@@ -158,7 +158,7 @@ export default {
       })
     }
   },
-  mounted: function() {
+  mounted: function () {
     let params2 = getIncomingParams()
     this.isRespondingToError = params2['error']
     this.loadAssignments()

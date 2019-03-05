@@ -33,7 +33,7 @@ export default {
     EhrDialogForm,
     UiButton
   },
-  data: function() {
+  data: function () {
     return {
       tableData: [],
       transposedColumns: [],
@@ -46,10 +46,10 @@ export default {
     tableDef: { type: Object }
   },
   computed: {
-    showTableAddButton() {
+    showTableAddButton () {
       return this.ehrHelp.showTableAddButton()
     },
-    currentData() {
+    currentData () {
       // Note this property is invoked in a div above. Then hidden from view.
       // By invoking this property tableData is set (intentional side-effect)
       // and tableData contains data from the database
@@ -57,17 +57,17 @@ export default {
       // console.log('EhrPageTable current table data', this.tableData)
       return this.tableData
     },
-    tableForm() {
+    tableForm () {
       let form = this.tableDef.tableForm
       // console.log('EhrPageTable get table form', this.tableDef)
       return form
     },
-    errorList() {
+    errorList () {
       return this.ehrHelp.getErrorList(this.tableDef.tableKey)
     }
   },
   methods: {
-    tableColumnCss: function(column) {
+    tableColumnCss: function (column) {
       let hide = 'hide-table-element'
       let css = hide
       column.forEach(cell => {
@@ -78,13 +78,13 @@ export default {
       })
       return css
     },
-    tableElementCss: function(element) {
+    tableElementCss: function (element) {
       return element.tableCss ? element.tableCss : 'noClass'
     },
-    showDialog: function() {
+    showDialog: function () {
       this.ehrHelp.showDialog(this.tableDef, this.inputs)
     },
-    tableCellData: function(item, cell) {
+    tableCellData: function (item, cell) {
       let value = item[cell.elementKey]
       if (cell.inputType === 'date') {
         let mom = moment(value, 'YYYY-MM-DDTHH:mm:ss ZZ')
@@ -92,7 +92,7 @@ export default {
       }
       return value
     },
-    refresh() {
+    refresh () {
       let tableKey = this.tableDef.tableKey
       let pageKey = this.pageDataKey
       // console.log('EhrPageTable refresh for page table key', pageKey, tableKey)
@@ -103,15 +103,15 @@ export default {
       // console.log('EhrPageTable refresh found data', this.tableData)
     }
   },
-  mounted: function() {
+  mounted: function () {
     const _this = this
-    this.refreshEventHandler = function() {
+    this.refreshEventHandler = function () {
       // console.log('EhrPageTable received page refresh event')
       _this.refresh()
     }
     EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
   },
-  beforeDestroy: function() {
+  beforeDestroy: function () {
     if (this.refreshEventHandler) {
       EventBus.$off(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
     }

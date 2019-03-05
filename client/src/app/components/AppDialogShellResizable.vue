@@ -51,22 +51,22 @@ export default {
     },
     errors: {
       type: Array,
-      default: function() {
+      default: function () {
         return []
       }
     }
   },
   computed: {
-    saveEnabled() {
+    saveEnabled () {
       return false
     },
-    modalClass: function() {
+    modalClass: function () {
       return {
         'modal-mask': this.isModal
       }
     }
   },
-  data() {
+  data () {
     return {
       top: 70, // offset from top (to center need to compute dialog ht on mount)
       left: (window.innerWidth - 800) / 2, // center on open
@@ -77,7 +77,7 @@ export default {
     }
   },
   methods: {
-    onResize({ el, deltaX, deltaY, start, end, resizeDirection }) {
+    onResize ({ el, deltaX, deltaY, start, end, resizeDirection }) {
       // console.log('onResize', deltaX, deltaY, start, end, resizeDirection)
       if (start) {
         this.moused = true
@@ -94,22 +94,22 @@ export default {
       const MIN_WIDTH = 200
       const MIN_HEIGHT = 300
       const vm = this
-      function north() {
+      function north () {
         vm.height -= deltaY
         vm.height = Math.max(MIN_HEIGHT, vm.height)
         if (vm.height > MIN_HEIGHT) {
           vm.top += deltaY
         }
       }
-      function south() {
+      function south () {
         vm.height += deltaY
         vm.height = Math.max(MIN_HEIGHT, vm.height)
       }
-      function east() {
+      function east () {
         vm.width += deltaX
         vm.width = Math.max(MIN_WIDTH, vm.width)
       }
-      function west() {
+      function west () {
         vm.width -= deltaX
         vm.width = Math.max(MIN_WIDTH, vm.width)
         if (vm.width > MIN_WIDTH) {
@@ -147,7 +147,7 @@ export default {
         break
       }
     },
-    onDragged({ el, deltaX, deltaY, offsetX, offsetY, clientX, clientY, first, last }) {
+    onDragged ({ el, deltaX, deltaY, offsetX, offsetY, clientX, clientY, first, last }) {
       // console.log('on drag', deltaX, deltaY, offsetX, offsetY, clientX, clientY, first, last )
       if (first || last) {
         this.moused = first

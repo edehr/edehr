@@ -53,19 +53,19 @@ export default {
     }
   },
   computed: {
-    demographics() {
+    demographics () {
       let data = this.$store.getters['ehrData/mergedData'] || {}
       let asStored = data.demographics || {}
       let input = JSON.parse(JSON.stringify(asStored))
       return input
     },
-    visitDetails() {
+    visitDetails () {
       let data = this.$store.getters['ehrData/mergedData'] || {}
       let asStored = data.visitDetails || {}
       let input = JSON.parse(JSON.stringify(asStored))
       return input
     },
-    location() {
+    location () {
       var place = ''
       var locations = this.visitDetails.locations || []
       if (locations.length > 0) {
@@ -74,7 +74,7 @@ export default {
       }
       return place
     },
-    lastFirstMiddle() {
+    lastFirstMiddle () {
       let d = this.demographics
       let n = `${d.familyName}, ${d.givenName}`
       n += d.middleName ? ' ' + d.middleName : ''

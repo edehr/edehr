@@ -11,17 +11,17 @@
 <script>
 export default {
   name: 'Tab',
-  data() {
+  data () {
     return {
       tabs: []
     }
   },
-  created() {
+  created () {
     this.tabs = this.$children
   },
   methods: {
-    selectTab(selectedTab) {
-      this.tabs.forEach(function(tab) {
+    selectTab (selectedTab) {
+      this.tabs.forEach(function (tab) {
         tab.isActive = selectedTab.name === tab.name
       })
     }

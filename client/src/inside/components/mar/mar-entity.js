@@ -1,4 +1,4 @@
-import { setApiError, validTimeStr, validDayStr } from '../../../helpers/ehr-utills'
+import { validTimeStr, validDayStr } from '../../../helpers/ehr-utills'
 import PeriodDefs from './period-defs'
 
 const ERR_WHO = 'Must provide who administered'
@@ -103,7 +103,7 @@ export default class MarEntity {
     if(!validTimeStr(this.actualTime)) {
       errMsgList.push(ERR_WHEN)
     }
-    if (!this._data.medications || this._data.medications.length == 0) {
+    if (!this._data.medications || this._data.medications.length === 0) {
       errMsgList.push(ERR_EMPTY_MEDS)
     }
     // console.log('MarEntity validation errors',  errMsgList)
@@ -111,8 +111,8 @@ export default class MarEntity {
   }
 
   static compare (a, b, inverse) {
-    let d1 = validDayStr(a.day) ? 1 * a.day : 0
-    let d2 = validDayStr(b.day) ? 1 * b.day : 0
+    let d1 = validDayStr(a.day) ? 1 * a.day : DEFAULT_DAY
+    let d2 = validDayStr(b.day) ? 1 * b.day : DEFAULT_DAY
     let diff = d1 - d2
     let result =  diff !== 0 ? diff : MarEntity._compareTime(a.actualTime, b.actualTime)
     return inverse ? -1 * result : result

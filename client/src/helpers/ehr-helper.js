@@ -10,7 +10,7 @@ import { pageDefs } from './ehr-defs'
 const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
 export default class EhrHelp {
-  constructor(component, store, pageKey, uiProps) {
+  constructor (component, store, pageKey, uiProps) {
     // TODO clean up and remove uiProps argument and commponent
     // TODO see if the commponent reference is needed to save page form data
     // TODO make the setup of handlers optional so we can construct an helper for any situation
@@ -25,31 +25,31 @@ export default class EhrHelp {
     this._setupEventHandlers(pageKey)
   }
 
-  _setupEventHandlers(pageKey) {
+  _setupEventHandlers (pageKey) {
     const _this = this
-    this.windowUnloadHandler = function(eData) {
+    this.windowUnloadHandler = function (eData) {
       _this.beforeUnloadListener(eData)
     }
     window.addEventListener('beforeunload', this.windowUnloadHandler)
 
-    this.dialogInputChangeEventHandler = function(eData) {
+    this.dialogInputChangeEventHandler = function (eData) {
       _this._handleDialogInputChangeEvent(eData)
     }
     EventBus.$on(DIALOG_INPUT_EVENT, this.dialogInputChangeEventHandler)
-    this.pageFormInputChangeEventHandler = function(eData) {
+    this.pageFormInputChangeEventHandler = function (eData) {
       _this._handlePageFormInputChangeEvent(eData)
     }
     let pfuEventChannel = PAGE_FORM_INPUT_EVENT + pageKey
     EventBus.$on(pfuEventChannel, this.pageFormInputChangeEventHandler)
 
-    this.activityDataChangeEventHandler = function(eData) {
+    this.activityDataChangeEventHandler = function (eData) {
       eData = eData || {}
       eData.pageKey = pageKey
       _this._handleActivityDataChangeEvent(eData)
     }
     EventBus.$on(ACTIVITY_DATA_EVENT, this.activityDataChangeEventHandler)
 
-    this.refreshEventHandler = function(eData) {
+    this.refreshEventHandler = function (eData) {
       // console.log('ehrhelper respond to page refresh')
       _this.mergedProperty(pageKey)
       _this._loadTransposedColumns(pageKey)
@@ -57,7 +57,7 @@ export default class EhrHelp {
     EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
   }
 
-  _loadTransposedColumns(pageKey) {
+  _loadTransposedColumns (pageKey) {
     let pageDef = this.getPageDefinition(pageKey)
     if (pageDef && pageDef.tables) {
       pageDef.tables.forEach(table => {
@@ -70,7 +70,7 @@ export default class EhrHelp {
     }
   }
 
-  beforeDestroy(pageKey) {
+  beforeDestroy (pageKey) {
     debugehr('Before destroy', this.pageKey, pageKey)
     window.removeEventListener('beforeunload', this.windowUnloadHandler)
     EventBus.$off(DIALOG_INPUT_EVENT, this.dialogInputChangeEventHandler)
@@ -80,13 +80,13 @@ export default class EhrHelp {
   }
   /* ********************* DATA  */
 
-  getPageDefinition(pageKey) {
+  getPageDefinition (pageKey) {
     let pageDef = pageDefs[pageKey]
     // debugehr('getPageDefinition ' + pageKey, pageDef)
     return pageDef
   }
 
-  getAsLoadedPageData(pageKey) {
+  getAsLoadedPageData (pageKey) {
     let pageDef = this.getPageDefinition(pageKey)
     if (!pageDef.asLoadedData) {
       pageDef = this.prepareAsLoadedData(pageKey)
@@ -99,7 +99,7 @@ export default class EhrHelp {
    *
    * @returns {any}
    */
-  mergedProperty(pageKey) {
+  mergedProperty (pageKey) {
     if (!pageKey) {
       errorehr('Must provide page key to get mergedPropert')
       return
@@ -112,7 +112,7 @@ export default class EhrHelp {
     return pageDef.asLoadedData
   }
 
-  prepareAsLoadedData(pageKey) {
+  prepareAsLoadedData (pageKey) {
     let pageDef = this.getPageDefinition(pageKey)
     let data = this.$store.getters['ehrData/mergedData'] || {}
     console.log('prepareAsLoadedData', pageKey, data)
@@ -147,7 +147,7 @@ export default class EhrHelp {
     return pageDef
   }
 
-  getInputValue(def) {
+  getInputValue (def) {
     let inputs = this.currentDialog.inputs
     var val = inputs[def.elementKey]
     // debugehr('helper provides val for key ', val, def.key)
@@ -161,7 +161,7 @@ export default class EhrHelp {
    Place the result into uiProps.transposedColumns
    * @param uiProps
    */
-  setupColumnData(pageDef, table, pageKey) {
+  setupColumnData (pageDef, table, pageKey) {
     let theData = this.getAsLoadedPageData(pageKey)
     let dbData = Array.isArray(theData.table) ? theData.table : []
     let columns = []
@@ -199,7 +199,7 @@ export default class EhrHelp {
   }
 
   /* ********************* DIALOG  */
-  showDialog(tableDef, dialogInputs) {
+  showDialog (tableDef, dialogInputs) {
     const _this = this
     let dialog = { tableDef: tableDef, inputs: dialogInputs }
     let key = tableDef.tableKey
@@ -219,13 +219,13 @@ export default class EhrHelp {
     this._clearDialogInputs(key)
   }
 
-  cancelDialog(tableKey) {
+  cancelDialog (tableKey) {
     // debugehr('cancel dialog (indexed by tableKey)', tableKey)
     this._clearDialogInputs(tableKey)
     this._emitCloseEvent(tableKey)
   }
 
-  saveDialog(pageKey, tableKey) {
+  saveDialog (pageKey, tableKey) {
     const _this = this
     if (this._validateInputs(tableKey)) {
       // debugehr('saveDialog for page/table', pageKey, tableKey)
@@ -255,7 +255,7 @@ export default class EhrHelp {
     }
   }
 
-  _saveData(payload) {
+  _saveData (payload) {
     const _this = this
     _this.$store.commit('system/setLoading', true)
     let isStudent = this.$store.getters['visit/isStudent']
@@ -278,21 +278,21 @@ export default class EhrHelp {
     }
   }
 
-  getCloseChannelHandle(dialogKey) {
+  getCloseChannelHandle (dialogKey) {
     let channel = 'modal:' + dialogKey
     return channel
   }
 
-  getErrorList(dialogKey) {
+  getErrorList (dialogKey) {
     // debugehr('get error list for key', dialogKey)
     let d = this.dialogMap[dialogKey]
     return d ? d.errorList : []
   }
 
-  _emitCloseEvent(dialogKey) {
+  _emitCloseEvent (dialogKey) {
     let eData = { key: dialogKey, value: false }
     let channel = this.getCloseChannelHandle(dialogKey)
-    Vue.nextTick(function() {
+    Vue.nextTick(function () {
       // Send an event on our transmission channel
       // with a payload containing this false
       // debugehr('emit event', eData, 'on', channel)
@@ -300,7 +300,7 @@ export default class EhrHelp {
     })
   }
 
-  _clearDialogInputs(key) {
+  _clearDialogInputs (key) {
     // debugehr('clear dialog for key' + key)
     let d = this.dialogMap[key]
     let cells = d.tableDef.tableCells
@@ -314,7 +314,7 @@ export default class EhrHelp {
   }
 
   // TODO validation will need rework as part of the DDD refactor
-  _validateInputs(key) {
+  _validateInputs (key) {
     // debugehr('validate dialog for key' + key)
     let d = this.dialogMap[key]
     let cells = d.tableDef.tableCells
@@ -350,15 +350,15 @@ export default class EhrHelp {
    * if we want to let the application be the place to edit seed data.
    * @return {*}
    */
-  showTableAddButton() {
+  showTableAddButton () {
     return this._showControl('hasTable')
   }
 
-  showPageFormControls() {
+  showPageFormControls () {
     return this._showControl('hasForm')
   }
 
-  _showControl(prop) {
+  _showControl (prop) {
     let show = false
     let isStudent = this.$store.getters['visit/isStudent']
     let isDevelopingContent = this.$store.state.visit.isDevelopingContent
@@ -373,14 +373,14 @@ export default class EhrHelp {
    * Return true if a page form is open for edit.
    * @return {(function())|default.computed.isEditing|boolean|*}
    */
-  isEditing() {
+  isEditing () {
     return this.$store.state.system.isEditing
   }
 
   /**
    * Begin editing a page form
    */
-  beginEdit(pageKey) {
+  beginEdit (pageKey) {
     this.$store.commit('system/setCurrentPageKey', pageKey)
     this.$store.commit('system/setEditing', true)
     debugehr('beginEdit', this.pageKey, pageKey)
@@ -399,7 +399,7 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
   /**
    * Cancel the edit on a page form. Restore values from the database.
    */
-  cancelEdit() {
+  cancelEdit () {
     const _this = this
     let pageKey = this.$store.state.system.currentPageKey
     this.$store.commit('system/setLoading', true)
@@ -415,7 +415,7 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
   /**
    * Save changes made on a page form
    */
-  saveEdit() {
+  saveEdit () {
     let payload = this.pageFormData
     // let pageKey = this.$store.state.system.currentPageKey
     // debugehr('saveEdit payload', JSON.stringify(payload))
@@ -428,7 +428,7 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
    * Report if there is a page form open for edit and the data on the form has been modified
    * @return {boolean}
    */
-  unsavedData() {
+  unsavedData () {
     var isEditing = this.$store.state.system.isEditing
     var result = false
     if (isEditing) {
@@ -452,7 +452,7 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
    * @param next
    * @return {*}
    */
-  beforeRouteLeave(to, from, next) {
+  beforeRouteLeave (to, from, next) {
     // debugehr('beforeRouteLeave ...', to)
     var isEditing = this.$store.state.system.isEditing
     if (isEditing) {
@@ -474,7 +474,7 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
    * to another site
    * @param event
    */
-  beforeUnloadListener(event) {
+  beforeUnloadListener (event) {
     let e = event || window.event
     // debugehr('beforeunload ...', e)
     let unsaved = this.unsavedData()
@@ -500,7 +500,7 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
    * @param eData
    * @private
    */
-  _handleDialogInputChangeEvent(eData) {
+  _handleDialogInputChangeEvent (eData) {
     let def = eData.def
     let tableKey = def.tableKey
     let elementKey = def.elementKey
@@ -512,7 +512,7 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
     inputs[elementKey] = value
   }
 
-  _handlePageFormInputChangeEvent(eData) {
+  _handlePageFormInputChangeEvent (eData) {
     let element = eData.element
     debugehr('_handlePageFormInputChangeEvent', this.pageKey, element.pageDataKey)
     let elementKey = element.elementKey
@@ -523,7 +523,7 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
     pageData[elementKey] = value
   }
 
-  _handleActivityDataChangeEvent(eData) {
+  _handleActivityDataChangeEvent (eData) {
     debugehr('Activity data changed. Trigger a load and refresh')
     let pageKey = eData.pageKey
     this.mergedProperty(pageKey)
@@ -531,11 +531,11 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
   }
 }
 
-function debugehr(msg) {
+function debugehr (msg) {
   var args = Array.prototype.slice.call(arguments)
   args.shift()
   // console.log('EHRhlp', msg, args)
 }
-function errorehr(msg, ...args) {
+function errorehr (msg, ...args) {
   console.log('ERROR EHRhlp', msg, args)
 }

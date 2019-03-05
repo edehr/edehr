@@ -13,24 +13,24 @@ import UiButton from '../../app/ui/UiButton'
 export default {
   name: 'EhrEvaluationInput',
   components: { UiButton },
-  data: function() {
+  data: function () {
     return {
       theNotes: ''
     }
   },
   computed: {
-    asStoredEvaluationNotes() {
+    asStoredEvaluationNotes () {
       return this.$store.getters['ehrData/evaluationData']
     }
   },
   watch: {
-    asStoredEvaluationNotes: function(newData) {
+    asStoredEvaluationNotes: function (newData) {
       // console.log('watch sees new eval data')
       this.theNotes = newData
     }
   },
   methods: {
-    loadDialog: function() {
+    loadDialog: function () {
       /*
       The containing component needs to invoke this load method when it shows
       this component/dialog. Here we get the data and store it for use in the form.
@@ -40,11 +40,11 @@ export default {
       // console.log('EhrEvaluationDialog computed eval notes =', edata)
       this.theNotes = edata
     },
-    cancelEvaluationNotes: function() {
+    cancelEvaluationNotes: function () {
       this.loadDialog() // reset the data for next time
       this.$emit('canceled')
     },
-    saveEvaluationNotes: function(event) {
+    saveEvaluationNotes: function (event) {
       this.$store.dispatch('ehrData/sendEvaluationNotes', this.theNotes).then(() => {
         this.$emit(event)
       })

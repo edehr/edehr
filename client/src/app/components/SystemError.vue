@@ -13,15 +13,15 @@ export default {
   name: 'SystemError',
   components: { UiClose },
   computed: {
-    hasSystemError() {
+    hasSystemError () {
       return !!this.systemError
     },
-    systemError() {
+    systemError () {
       return this.$store.state.system.apiError
     }
   },
   methods: {
-    clearMessage() {
+    clearMessage () {
       setApiError(this.$store, '')
       // this.$store.commit('system/setApiError', '')
     }

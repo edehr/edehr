@@ -36,19 +36,19 @@ export const options = {
 }
 
 export default class VitalChart {
-  constructor(chartCanvas, axisCanvas) {
+  constructor (chartCanvas, axisCanvas) {
     this.chartCanvas = chartCanvas
     this.axisCanvas = axisCanvas
   }
 
-  clear() {
+  clear () {
     let chartContext = this.chartCanvas.getContext('2d')
     let axisContext = this.axisCanvas.getContext('2d')
     chartContext.clearRect(0, 0, this.chartCanvas.width, this.chartCanvas.height)
     axisContext.clearRect(0, 0, this.axisCanvas.width, this.axisCanvas.height)
   }
 
-  drawChart(chartData, originY, height) {
+  drawChart (chartData, originY, height) {
     let chartContext = this.chartCanvas.getContext('2d')
     let axisContext = this.axisCanvas.getContext('2d')
     this._locateChart(chartData, originY, height)
@@ -73,7 +73,7 @@ export default class VitalChart {
    * @return {*}
    * @private
    */
-  _locateChart(chartData, originY, height) {
+  _locateChart (chartData, originY, height) {
     chartData.originY = originY
     chartData.height = height
     let vScale = height / (chartData.dMax - chartData.dMin)
@@ -90,7 +90,7 @@ export default class VitalChart {
    * @param gridXStepSize
    * @private
    */
-  _drawTextSeries(context, values, originY, height, gridXStepSize) {
+  _drawTextSeries (context, values, originY, height, gridXStepSize) {
     let dy = originY
     let lineHeight = lineHeight || options.lineHeight
     // approximately center text vertically
@@ -120,7 +120,7 @@ export default class VitalChart {
     context.restore()
   }
 
-  _drawData(context, data, dataSetIndex) {
+  _drawData (context, data, dataSetIndex) {
     let dataSet = data.dataSet[dataSetIndex]
     let pointRadius = dataSet.pointRadius || options.pointRadius
     let pointStyle = dataSet.pointStyle
@@ -177,7 +177,7 @@ export default class VitalChart {
     context.restore()
   }
 
-  _drawYLabels(context, data) {
+  _drawYLabels (context, data) {
     let originY = data.originY
     let gridY = data.gridY
     let min = data.dMin
@@ -197,7 +197,7 @@ export default class VitalChart {
     context.restore()
   }
 
-  _drawYGrid(context, data) {
+  _drawYGrid (context, data) {
     let originY = data.originY
     let min = data.dMin
     let gridY = data.gridY
@@ -220,7 +220,7 @@ export default class VitalChart {
     context.restore()
   }
 
-  _drawXGrid(context, data) {
+  _drawXGrid (context, data) {
     let originY = data.originY
     let height = data.height
     let gridX = data.gridX
@@ -239,7 +239,7 @@ export default class VitalChart {
     context.restore()
   }
 
-  _yAxisLabel(context, data) {
+  _yAxisLabel (context, data) {
     let originY = data.originY
     let height = data.height
     let label = data.label
@@ -257,20 +257,20 @@ export default class VitalChart {
     context.restore()
   }
 
-  _drawPointLabel(context, value, x, y, labelOffsetX, pointFillColour, pointLabelFont) {
+  _drawPointLabel (context, value, x, y, labelOffsetX, pointFillColour, pointLabelFont) {
     context.font = pointLabelFont
     context.fillStyle = pointFillColour
     context.fillText(value, x + labelOffsetX, y)
   }
 
-  _drawPoint(context, x, y, pointFillColour, pointRadius) {
+  _drawPoint (context, x, y, pointFillColour, pointRadius) {
     context.beginPath()
     context.fillStyle = pointFillColour
     context.arc(x, y, pointRadius, 0, 2 * Math.PI)
     context.fill()
   }
 
-  _drawChevron(ctx, pointX, pointY, direction, colour) {
+  _drawChevron (ctx, pointX, pointY, direction, colour) {
     const chevronLength = 10
     const lineWidth = 2
     // draw a V rotated as per angle
