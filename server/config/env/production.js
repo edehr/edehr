@@ -1,17 +1,21 @@
 'use strict'
-
+const databaseName = 'edehr-prod'
 module.exports = {
   secure: {
     ssl: false
   },
   port: process.env.PORT || 27004,
-  apiUrl: 'http://edehr.mac/api',
-  clientUrl: 'http://142.93.148.22',
-  databaseName: 'ed-prod',
-  db: {
-    uri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.MONGODB_SERVICE_HOST || process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/' + (process.env.MONGODB_DATABASE || 'esm'),
-    acluri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.MONGODB_SERVICE_HOST || process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/esm-acl',
+  // To run prod locally with a dev client server
+  //
+  // API_URL=http://localhost:27004 CLIENT_URL=http://localhost:28000 node index.js
+  apiUrl: process.env.API_URL || 'http://142.93.148.22/api',
+  clientUrl: process.env.CLIENT_URL || 'http://142.93.148.22',
+  databaseName: databaseName,
+  database: {
+    uri: 'mongodb://localhost:27018/' + databaseName,
     options: {
+      useNewUrlParser: true,
+      useCreateIndex: true,
       user: process.env.MONGODB_USER || '',
       pass: process.env.MONGODB_PASSWORD || ''
     },

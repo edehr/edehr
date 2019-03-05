@@ -2,56 +2,42 @@
   "name": "edehr",
   "version": "1.0.0",
   "author": "BCcampus {https://bccampus.ca/)",
-  "description": "This EdEhr project provides an  LTI compliant educational tool that replicates an Electronic Health Record system.",
+  "description": "This project provides an educational tool that replicates an Electronic Health Record system within a Learning Tools Interoperability (LTI) compliant course-ware.",
   "contributors": [
     "Bryan Gilbert <bryan.gilbert@gmail.com>"
   ],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bryan-gilbert/proto-EdEHR.git"
+    "url": "git+https://github.com/BCcampus/edehr"
   },
   "bugs": {
-    "url": "https://github.com/bryan-gilbert/proto-EdEHR/issues"
+    "url": "https://github.com/BCcampus/edehr/issues"
   },
-  "homepage": "https://github.com/bryan-gilbert/proto-EdEHR#readme",
+  "homepage": "https://github.com/BCcampus/edehr#readme",
   "scripts": {
-    "start": "npm run start:dbjson | npm run start:server | npm run start:ehr",
-    "start:dbjson": "npm run --prefix dbjson start",
-    "start:server": "npm run --prefix server start",
-    "start:ehr": "npm run --prefix ehr start",
-    "pm2-prod": "npm run pm2-prod:dbjson | npm run pm2-prod:server | npm run pm2-prod:ehr",
-    "pm2-prod:dbjson": "npm run --prefix dbjson pm2-prod",
-    "pm2-prod:server": "npm run --prefix server pm2-prod",
-    "pm2-prod:ehr": "npm run --prefix ehr pm2-prod",
-    "build": "NODE_ENV=production webpack --progress --hide-modules",
-    "test": "nyc mocha --exit",
-    "install-all": "npm install | npm run install-db",
-    "install-db": "cd dbjson; npm run install-all"
-  },
-  "dependencies": {
-    "ajv": "^6.9.1",
-    "moment": "^2.24.0",
-    "winston": "^3.2.1"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ],
-  "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.2.2",
-    "@babel/polyfill": "^7.2.5",
-    "@babel/preset-env": "^7.3.1",
-    "@babel/register": "^7.0.0",
-    "camelcase": "^5.0.0",
-    "chai": "^4.2.0",
-    "chalk": "^2.4.2",
-    "coveralls": "^3.0.2",
-    "mocha": "^5.2.0",
-    "nyc": "^13.2.0",
-    "should": "^13.2.3",
-    "supertest": "^3.4.2"
+    "database-start": "cd database && docker-compose up -d",
+    "database-stop": "cd database && docker-compose down",
+
+    "start-client": "cd client && npm run start",
+    "start-server": "cd server && npm run start",
+
+    "start-prod-server": "cd server && npm run start-prod",
+
+    "build": "npm run build-client",
+    "build-client": "cd client && npm run build",
+
+    "install": "npm run install-client && npm run install-server",
+    "install-client": "cd client && npm install",
+    "install-server": "cd server && npm install",
+
+    "lint": "npm run lint-client && npm run lint-server",
+    "lint-client": "cd client && npm run lint",
+    "lint-server": "cd server && npm run lint",
+
+    "test": "npm run test-client && npm run test-server",
+    "test-client": "cd client && npm run test",
+    "test-server": "cd server && npm run test"
+
   }
 }

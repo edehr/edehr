@@ -2,9 +2,9 @@
 
 > Educational Electronic Health Record System
 
-> A BCcampus project
+> A BCcampus project 
+https://bccampus.ca
 
-> The following may need some edits ....
 
 ## Installation
 ```
@@ -12,69 +12,76 @@ cd /your/development/area
 git clone https://github.com/BCcampus/edehr.git
 ```
 
-Next install packages
+To install packages run from project root:
 ```
-npm install
-
-# install packages in both the server and client sub directories
-
-cd client
-npm install
-
-cd ../database
-npm install
+npm run install
 ```
 
 ## Run Development
 
-First install packages as described above.
-
-In terminal window 1 start the database and server
-``` bash
-cd database
-# start the mongodb in a docker container
-docker-compose up -d
+Start the database server (in docker container)
 ```
-
+npm run database-start
 ```
-# start the API server
-cd server
-npm run serve-dev
+Start the API server. From project root:
 ```
-
-In terminal window 2 start the client
+npm run start-server
 ```
-cd client
-npm run start
+In another terminal window start the client. From project root:
+```
+npm run start-client
+```
+When done stop the database server. From project root:
+```
+npm run database-stop
 ```
 
 ## Run Production
-
-First install packages as described above.
-
-In terminal window 1 start the database and server
-``` bash
-cd database
-# start the mongodb in a docker container
-docker-compse up -d
-# start the API server
-npm run start
+Build the client. From project root:
+```
+npm run build
 ```
 
-In terminal window 2 start the client
+Start the database server (in docker container)
 ```
-cd client
-npm run start
+npm run database-start
+```
+Start the API server. From project root:
+```
+npm run start-prod-server
+```
+When done stop the database server. From project root:
+```
+npm run database-stop
 ```
 
+## Lint
+Run lint on both the client and server code base. From project root:
+```
+npm run lint
+```
 
+## Test
+Run test on both the client and server code base. From project root:
+```
+npm run test
+```
 
 
 ## EHR generation
 The EHR side of the project contains almost 40 separate screens, each needs to be in the menu and routing tables.  These tasks are automated via a script in the makeEhr subdirectory.
 This script only needs to be invoked if the content of the configuration files have been 
-modified.  The source of the configuration files comes from a Google spreadsheet stored in the project GDrive. 
+modified.  The source of the configuration files comes from a Google spreadsheet stored in the project GDrive.
+After updating the raw configuration content in the ```makeEhr/raw_data``` directory run the compile script: 
 ```
 cd makeEhr
-./deploy.sh
+./deploy.sh --lint
 ```
+The ```--lint``` option can be replaced with ```-l```. Without the lint option you will need to relint all files before checkin.
+
+
+##Client
+The client is a Vue project.
+
+##API server
+The server is a Node Express application supported by a MongoDB. It depends on a LTI package.
