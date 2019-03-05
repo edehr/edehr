@@ -144,10 +144,10 @@ export default class VitalChart {
       if (v.systolic < systolic.min || v.diastolic < diastolic.min) {
         pointFillColour = options.pointLowColour
       }
-      if (v.systolic > diastolic.high1 || v.diastolic > diastolic.high1) {
+      if (v.systolic > systolic.high1 || v.diastolic > diastolic.high1) {
         pointFillColour = options.pointMediumColour
       }
-      if (v.systolic >= high2 || v.diastolic >= high3) {
+      if (v.systolic >= systolic.high2 || v.diastolic >= diastolic.high2) {
         pointFillColour = options.pointHighColour
       }
       v1.push({ value: v.systolic, pointFillColour: pointFillColour })
