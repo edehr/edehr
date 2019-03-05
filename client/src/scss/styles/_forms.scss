@@ -227,3 +227,36 @@
     color: $black;
   }
 //}
+
+.column_table {
+  .column_label {
+    text-align: right;
+  }
+
+  .column_value {
+    min-width: 3rem;
+    max-width: 8rem;
+  }
+}
+
+.z-10 {
+  z-index: 10;
+}
+
+.z-20 {
+  z-index: 20;
+}
+
+.z-30 {
+  z-index: 30;
+}
+
+.z-990 {
+  z-index: 990;
+}
+
+.z-999 {
+  z-index: 999;
+}
+
+

@@ -8,7 +8,17 @@ export default class VisitController extends BaseController {
   constructor () {
     super(ActivityData, '_id')
   }
-    updateAssignmentData (id, data) {
+
+  /**
+   *
+   * @param id
+   * @param data
+       let data = {
+        property: 'progressNotes',
+        value: activityData.assignmentData.progressNotes || []
+   * @return {*}
+   */
+  updateAssignmentData (id, data) {
     var propertyName = data.propertyName
     var value = data.value
     debug(`ActivityData update ${id} assignmentData[${data.propertyName}] with data:`)
@@ -20,11 +30,18 @@ export default class VisitController extends BaseController {
         }
         activityData.lastDate = Date.now()
         activityData.assignmentData[propertyName] = value
-        activityData.markModified('assignmentData');
+        activityData.markModified('assignmentData')
         return activityData.save()
       }
     })
   }
+
+  /**
+   *
+   * @param id
+   * @param data  Expects data.value to contain the scratch pad content
+   * @return {*}
+   */
   updateScratchData (id, data) {
     debug(`ActivityData update ${id} scratch data [${data}]`)
     var value = data.value
@@ -36,6 +53,13 @@ export default class VisitController extends BaseController {
       }
     })
   }
+
+  /**
+   *
+   * @param id
+   * @param data  Expects data.value to contain the evaluation pad content
+   * @return {*}
+   */
   updateEvaluationData (id, data) {
     debug(`ActivityData update ${id} evaluationData [${JSON.stringify(data)}]`)
     var value = data.value
@@ -53,13 +77,6 @@ export default class VisitController extends BaseController {
     const router = super.route()
     router.put('/assignment-data/:key/', (req, res) => {
       var id = req.params.key
-      /*
-      For example in caller:
-      let data = {
-        property: 'progressNotes',
-        value: activityData.assignmentData.progressNotes || []
-      }
-      */
       var data = req.body
       this.updateAssignmentData(id, data)
         .then(ok(res))
@@ -69,8 +86,8 @@ export default class VisitController extends BaseController {
       var id = req.params.key
       var data = req.body
       this.updateScratchData(id, data)
-      .then(ok(res))
-      .then(null, fail(res))
+        .then(ok(res))
+        .then(null, fail(res))
     })
     router.put('/evaluation-data/:key', (req, res) => {
       var id = req.params.key
