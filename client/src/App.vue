@@ -27,32 +27,32 @@ export default {
         ._loadApiUrl(apiUrl)
         .then(() => {
           if (!visitId) {
-            console.log('No visit id on query so check local storage storage?')
             restoring = true
             visitId = localStorage.getItem('token')
+            // console.log('No visit id on query so check local storage storage?', visitId)
           }
           if (visitId) {
-            console.log('Dispatch the load visit information', visitId)
+            // console.log('Dispatch the load visit information', visitId)
             return this.$store.dispatch('visit/loadVisitInfo', visitId)
           } else {
-            console.log('can not find a visit id so stop loading')
-            return Promise.reject('No visit id available')
+            let msg = 'No visit id available'
+            console.error(msg)
+            setApiError(this.$store, msg)
+            return Promise.reject(msg)
           }
         })
         .then(() => {
-          console.log(
-            'Is user is allowed to edit content?',
-            this.$store.getters['visit/isDeveloper']
-          )
-          if (this.$store.getters['visit/isDeveloper']) {
-            console.log('User is allowed to edit content')
+          let isDev = this.$store.getters['visit/isDeveloper']
+          console.log('Is user is allowed to edit content?',isDev)
+          if (isDev) {
+            // console.log('User is allowed to edit content')
             return _this._loadDeveloping(restoring)
           }
         })
         .then(() => {
-          console.log('Is user an instructor?')
-          if (_this.$store.getters['visit/isInstructor']) {
-            console.log('User is instructor')
+          let isIns = _this.$store.getters['visit/isInstructor']
+          console.log('Is user an instructor?', isIns)
+          if (isIns) {
             return _this.$store.dispatch('instructor/loadCourses').then(() => {
               // console.log('Page load instructor restoring?', restoring)
               if (restoring) {
@@ -108,13 +108,11 @@ export default {
     _loadApiUrl (apiUrl) {
       return new Promise((resolve, reject) => {
         if (apiUrl) {
-          // console.log('API url provided in query: ', apiUrl)
+          console.log('API url provided in query: ', apiUrl)
         } else {
-          // console.log('No API url in query')
-          // console.log('Can we use API URL from $store', apiUrl)
-          let l_apiUrl = localStorage.getItem('apiUrl')
-          let s_apiUrl = this.$store.state.visit.apiUrl
-          apiUrl = s_apiUrl || l_apiUrl
+          console.log('No API url in query')
+          apiUrl = localStorage.getItem('apiUrl')
+          console.log('Can we use API URL from local storage', apiUrl)
           if (!apiUrl) {
             let msg = 'System requires the URL to the API'
             console.error(msg)
@@ -122,7 +120,7 @@ export default {
             return reject(msg)
           }
         }
-        // console.log('Store API URL in $store', apiUrl)
+        console.log('Store API URL in $store (also stores to local storage)', apiUrl)
         this.$store.commit('visit/apiUrl', apiUrl)
         resolve(apiUrl)
       })
