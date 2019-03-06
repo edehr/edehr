@@ -22,7 +22,7 @@ const actions = {
       }
       let seedId = assignment.seedDataId
       let options = { root: true }
-      console.log('Got assignment for ', id, 'with seedDataId', seedId)
+      // console.log('Got assignment for ', id, 'with seedDataId', seedId)
       context.commit('setAssignment', assignment)
       context.commit('seedStore/setSeedId', seedId, options)
       return context.dispatch('seedStore/loadSeedContent', null, options)
@@ -33,7 +33,9 @@ const actions = {
     return helper.getRequest(context, url).then(response => {
       let list = response.data.assignments
       if (!list) {
-        console.error('ERROR the system should have assignments')
+        let msg = 'ERROR the system should have assignments'
+        console.error(msg)
+        setApiError(msg)
         return
       }
       this.assignmentsListing = list
@@ -42,10 +44,10 @@ const actions = {
   },
   createAssignment (context, payload) {
     let url = composeUrl(context, API)
-    console.log('send assignment data ', url, payload)
+    // console.log('send assignment data ', url, payload)
     return helper.postRequest(context, url, payload).then(results => {
-      let resultsData = results.data
-      console.log('assignment post responded with:', JSON.stringify(resultsData))
+      // let resultsData = results.data
+      // console.log('assignment post responded with:', JSON.stringify(resultsData))
       return context.dispatch('loadAssignments')
     })
   },
@@ -53,16 +55,18 @@ const actions = {
     let id = dataIdPlusPayload.id
     let payload = dataIdPlusPayload.payload
     let url = composeUrl(context, API) + id
-    console.log('updateAssignment', url, payload)
+    // console.log('updateAssignment', url, payload)
     return helper
       .putRequest(context, url, payload)
       .then(results => {
-        let resultsData = results.data
-        console.log('assignment post responded with:', JSON.stringify(resultsData))
+        // let resultsData = results.data
+        // console.log('assignment post responded with:', JSON.stringify(resultsData))
         return context.dispatch('loadAssignments')
       })
       .catch(err => {
-        console.log('error in update assignment ', err)
+        let msg = 'error in update assignment ' + err.message
+        console.error(msg)
+        setApiError(msg)
       })
   }
 }

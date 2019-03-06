@@ -5,7 +5,7 @@
         ehr-page-table(:tableDef="tableDef", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
       tab(name="Chart",:selected="true")
         vitals-chart(v-bind:vitals="tableData", v-bind:vitalsModel="vitalsModel")
-    div(style="display:none") {{refreshData}}
+    div(style="display:none") Vitals: {{refreshData}}
 </template>
 
 <script>
@@ -14,6 +14,8 @@ import Tab from './Tab'
 import VitalsChart from './VitalsChart'
 import VitalModel from '../../helpers/vitalModel'
 import EhrPageTable from '../components/EhrPageTable'
+import EventBus from '../../helpers/event-bus'
+import { PAGE_DATA_REFRESH_EVENT } from '../../helpers/event-bus'
 
 export default {
   name: 'home',
@@ -34,11 +36,12 @@ export default {
     }
   },
   props: {
-    pageDataKey: {type: String  }
+    pageDataKey: {type: String  },
+    ehrHelp: {type: Object}
   },
   computed: {
     uiProps () {
-      return this.ehrHelp ? this.ehrHelp.getPageDefinition(this.pageDataKey) : {}
+      return this.ehrHelp ? this.ehrHelp.getPageDefinition(this.pageDataKey) : {tables:[]}
     },
     refreshData () {
       this.refresh()
@@ -52,7 +55,7 @@ export default {
     refresh () {
       let tableKey = this.tableDef.tableKey
       let pageKey = this.pageDataKey
-      // console.log('EhrPageTable refresh for page table key', pageKey, tableKey)
+      // console.log('Vitals refresh for page table key', pageKey, tableKey)
       let pageData = this.ehrHelp.getAsLoadedPageData(pageKey)
       // store the current data into local data property for display
       this.tableData = pageData[tableKey]
@@ -60,6 +63,20 @@ export default {
   },
   created: function () {
     this.vitalsModel = new VitalModel()
+  },
+  mounted: function () {
+    const _this = this
+    this.refreshEventHandler = function () {
+      // console.log('Vitals PAGE_DATA_REFRESH_EVENT')
+      _this.refresh()
+    }
+    EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
+  },
+  beforeDestroy: function () {
+    if (this.refreshEventHandler) {
+      EventBus.$off(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
+    }
   }
+
 }
 </script>

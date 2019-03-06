@@ -115,7 +115,7 @@ export default class EhrHelp {
   prepareAsLoadedData (pageKey) {
     let pageDef = this.getPageDefinition(pageKey)
     let data = this.$store.getters['ehrData/mergedData'] || {}
-    console.log('prepareAsLoadedData', pageKey, data)
+    // console.log('prepareAsLoadedData', pageKey, data)
     let pageData = data[pageKey]
     if (!pageData) {
       let defaultPageValue = pageDef.pageData
