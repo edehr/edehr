@@ -27,6 +27,6 @@ export default {
 @import '../../scss/definitions';
 
 .contextDeveloper {
-  background-color: white;
+  background-color: $white;
 }
 </style>

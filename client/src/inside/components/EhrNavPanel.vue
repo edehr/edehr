@@ -24,10 +24,8 @@ export default {
   computed: {
     returnButtonLabel () {
       if (this.isStudent) {
-        return 'Return to ' + this.$store.getters['visit/lmsName']
-      } else {
-        return 'Return to class list'
-      }
+      return 'Send for evaluation'
+      } 
     },
     lmsName () {
       return this.$store.getters.lmsName
@@ -80,6 +78,7 @@ export default {
     color: $white;
   }
   &__button {
+    margin-bottom: 0 !important;
     width: 100%;
   }
 }

@@ -4,8 +4,8 @@
       textarea(v-model="theNotes")
     div(class="evaluation-controls")
       ui-button(v-on:buttonClicked="cancelEvaluationNotes") cancel
-      ui-button(v-on:buttonClicked="saveEvaluationNotes('saved')")  save
-      ui-button(v-on:buttonClicked="saveEvaluationNotes('saveNext')")  save and next
+      ui-button(v-on:buttonClicked="saveEvaluationNotes('saveNext')", class="is-pulled-right")  save and next
+      ui-button(v-on:buttonClicked="saveEvaluationNotes('saved')", class="is-pulled-right")  save
 </template>
 
 <script>
@@ -65,6 +65,7 @@ export default {
     textarea {
       width: 100%;
       height: 4rem;
+      margin-bottom: 1em;
     }
   }
 }

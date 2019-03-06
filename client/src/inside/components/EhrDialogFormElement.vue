@@ -29,7 +29,7 @@
       label(v-if="!(def.formOption === 'noLabel')", class="select_label") {{def.label}}
       div(class="select")
         select(v-bind:name="def.elementKey", v-model="inputVal")
-          option(disabled,value="") Please select one
+          option(disabled,value="")
           option(v-for="option in def.options", v-bind:value="option.text") {{ option.text}}
 
     div(v-if="def.inputType === 'date'", class="date_wrapper")

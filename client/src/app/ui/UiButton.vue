@@ -57,7 +57,8 @@ button,
   }
 }
 
-.button.is-light {
+.button.is-light,
+button.is-light {
   background-color: $white;
   border: 1px solid $brand-primary;
   box-sizing: border-box;
@@ -79,5 +80,8 @@ button,
     color: $white;
     cursor: default;
   }
+}
+.is-pulled-right {
+    margin-left: 1em;
 }
 </style>

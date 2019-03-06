@@ -90,4 +90,8 @@ export default {
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.page-form {
+  margin-bottom: 5em;
+}
+</style>
