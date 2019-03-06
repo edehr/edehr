@@ -8,16 +8,17 @@ const POINT_TYPES = {
   TEXT: 'text'
 }
 
+/* Need to used RGB values with colours. */
 export const options = {
-  pointFillColour: '$grey40',
-  pointMediumColour: 'orange',
+  pointFillColour: '#858B94', //'$grey40',
+  pointMediumColour: '#FFA500', //'orange',
   pointHighColour: '#F00',
   pointLowColour: '#00F',
   invalidMaxFontColour: '#F00',
   invalidMinFontColour: '#00F',
-  textValueColor: '$grey70',
-  axisLineColour: '$grey40',
-  yAxisLabelColour: '$grey70',
+  textValueColor: '#383C45', //'$grey70',
+  axisLineColour: '#858B94', //'$grey40',
+  yAxisLabelColour: '#383C45', //'$grey70',
 
   gridXStepSize: 100,
 
@@ -54,6 +55,7 @@ export default class VitalChart {
     this._locateChart(chartData, originY, height)
     if (!chartData.noYAxisLabel) {
       this._yAxisLabel(axisContext, chartData)
+      this._drawYLabels(axisContext, chartData)
     }
     if (!chartData.noYAxisGrid) {
       this._drawYGrid(chartContext, chartData)
@@ -63,6 +65,20 @@ export default class VitalChart {
     for (let i = 0; i < chartData.dataSet.length; i++) {
       this._drawData(chartContext, chartData, i)
     }
+  }
+
+  drawYLine (y) {
+    // console.log('drawYLine at', y)
+    let context = this.chartCanvas.getContext('2d')
+    let width = context.canvas.width
+    context.save()
+    context.strokeStyle = options.axisLineColour
+    context.beginPath()
+    context.lineWidth = options.axisLineWidth
+    context.moveTo(0, y)
+    context.lineTo(width, y)
+    context.stroke()
+    context.restore()
   }
 
   /**
@@ -91,7 +107,6 @@ export default class VitalChart {
    * @private
    */
   _drawTextSeries (context, values, originY, height, gridXStepSize) {
-    let dy = originY
     let lineHeight = lineHeight || options.lineHeight
     // approximately center text vertically
     let lnCnt = 0
@@ -99,7 +114,7 @@ export default class VitalChart {
       lnCnt = Math.max(lnCnt, values[i].split('\n').length)
     }
     let linesHt = lnCnt * lineHeight
-    dy += height > linesHt ? (height - linesHt) / 2 : 0
+    let dy = originY + (height > linesHt ? (height - linesHt) : 0)
     context.save()
     context.font = options.textValueFont
     context.fillStyle = options.textValueColor
@@ -133,6 +148,9 @@ export default class VitalChart {
     let vScale = data.vScale
     let height = data.height
     let gridXStepSize = options.gridXStepSize
+    // console.log('drawData with data', data.label)
+    // console.log('drawData with data', dataSet.values)
+
     if (textOnly) {
       return this._drawTextSeries(context, values, originY, height, gridXStepSize)
     }
@@ -145,6 +163,7 @@ export default class VitalChart {
     pointFillColour = pointFillColourDefault = dataSet.pointFillColour || options.pointFillColour
     // begin drawing
     context.save()
+    let px, py
     for (let i = 0; i < values.length; i++) {
       // position the point in the middle of two grid steps
       let x = (i + 1) * gridXStepSize - gridXStepSize / 2
@@ -159,17 +178,25 @@ export default class VitalChart {
         let y = originY + height
         context.fillStyle = options.invalidMinFontColour
         context.fillText(value, x, y)
+        px = py = undefined
       } else if (value > max) {
         let y = originY + height - (max - min) * vScale
         context.fillStyle = options.invalidMaxFontColour
         context.fillText(value, x, y)
+        px = py = undefined
       } else {
         let y = originY + height - (value - min) * vScale
         if (chevron) {
           this._drawChevron(context, x, y, pointStyle, pointFillColour)
         } else {
           // default to POINT_TYPES.POINT
+          context.fillStyle = pointFillColour
           this._drawPoint(context, x, y, pointFillColour, pointRadius)
+          if(px && py) {
+            this._drawDataLine(context, x, y, px, py)
+          }
+          px = x
+          py = y
         }
         this._drawPointLabel(context, value, x, y, labelOffsetX, pointFillColour, pointLabelFont)
       }
@@ -185,14 +212,28 @@ export default class VitalChart {
     let height = data.height
     let dx = options.yLabelOffset
     context.save()
-    for (let i = 0; i < gridY.scalePoints.length; i++) {
-      let scale = gridY.scalePoints[i]
-      let v = scale.spv
-      let y = originY + height - (v - min) * vScale
-      context.beginPath()
-      context.fillStyle = scale.clr || options.axisLineColour
-      context.fillText(v, dx, y)
-      context.stroke()
+    if(gridY.textMultiLineLabel) {
+      let y = originY + 10 // magic number 10 works - aligns with data content
+      let x = 50 // another magic 50 number - sets y label to left of chart label
+      context.font = options.textValueFont
+      context.fillStyle = options.textValueColor
+      context.textAlign = options.textAlign
+      let lines = gridY.textMultiLineLabel.split('\n')
+      for (let n = 0; n < lines.length; n++) {
+        let line = lines[n]
+        context.fillText(line, x, y)
+        y += options.lineHeight
+      }
+    } else {
+      for (let i = 0; i < gridY.scalePoints.length; i++) {
+        let scale = gridY.scalePoints[i]
+        let v = scale.spv
+        let y = originY + height - (v - min) * vScale
+        context.beginPath()
+        context.fillStyle = scale.clr || options.axisLineColour
+        context.fillText(v, dx, y)
+        context.stroke()
+      }
     }
     context.restore()
   }
@@ -211,6 +252,11 @@ export default class VitalChart {
       let v = scale.spv
       let y = originY + height - (v - min) * vScale
       context.beginPath()
+      if(scale.dotted) {
+        context.setLineDash(scale.dotted)
+      } else {
+        context.setLineDash([])
+      }
       context.lineWidth = scale.lw || options.axisLineWidth
       context.strokeStyle = scale.clr || options.axisLineColour
       context.moveTo(x, y)
@@ -227,6 +273,7 @@ export default class VitalChart {
     let step = options.gridXStepSize
     let y1 = originY
     let y2 = originY + height
+    // console.log('dxG', height, y1, y2)
     context.save()
     context.lineWidth = options.axisLineWidth
     context.beginPath()
@@ -261,6 +308,18 @@ export default class VitalChart {
     context.font = pointLabelFont
     context.fillStyle = pointFillColour
     context.fillText(value, x + labelOffsetX, y)
+  }
+
+  _drawDataLine  (context, x1, y1, x2, y2) {
+    context.beginPath()
+    context.save()
+    context.strokeStyle = options.axisLineColour
+    context.lineWidth = options.axisLineWidth
+    context.beginPath()
+    context.moveTo(x1, y1)
+    context.lineTo(x2, y2)
+    context.stroke()
+    context.restore()
   }
 
   _drawPoint (context, x, y, pointFillColour, pointRadius) {

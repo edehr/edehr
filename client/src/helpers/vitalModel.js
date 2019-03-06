@@ -171,11 +171,11 @@ export default class VitalChart {
           { spv: 225 },
           { spv: 200 },
           { spv: 175 },          
-          { spv: 150, clr: '$black' },
-          { spv: 125 },
-          { spv: 100, clr: '$black' },
-          { spv: 75 },
-          { spv: 50, clr: '$black' },
+          { spv: 150, dotted: [2, 6] },
+          { spv: 125, dotted: [2, 6] },
+          { spv: 100, lw: 2, dotted: [2, 6] },
+          { spv: 75, dotted: [2, 6] },
+          { spv: 50, dotted: [2, 6] },
           { spv: 25 },
         ]
       },
@@ -246,20 +246,21 @@ export default class VitalChart {
 
   getOxygen (table) {
     let values = table.map(element => {
-      return `${element.oxygenSaturation}\nRA\n${element.flowRate}LPM`
+      let flow = element.flowRate
+      let sat = element.oxygenSaturation
+      let txt = ''
+      txt += sat ? `${sat}\nRA` : ''
+      txt += flow ? `\n${flow}LPM` : ''
+      return txt
     })
     let chartData = {
       label: 'Oxygen saturation',
       chartType: POINT_TYPES.TEXT,
       noYAxisGrid: true,
       noYAxisLabel: false,
-      // gridY: {
-      //   steps: [
-      //     { spv: SP0 },
-      //     { spv: Mode },
-      //     { spv: LPM },          
-      //   ]
-      // },
+      gridY: {
+        textMultiLineLabel: 'SP0\nMode\nLPM'
+      },
       gridX: {
         steps: values.length
       },

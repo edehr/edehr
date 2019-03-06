@@ -64,12 +64,14 @@ export default {
       // The first number is the origin of the chart relative to the top left
       // The second number is the height of the chart
       let y = 0
-      let ht = 80
+      let ht = 50
       let space = 40
 
       space = 40
       vitalChart.drawChart(this.dates, y, ht)
-      y += ht + space
+      y += ht + 0
+      vitalChart.drawYLine(y)
+      y += space
 
       space = 60
       ht = 250
@@ -89,8 +91,9 @@ export default {
       vitalChart.drawChart(this.oxygen, y, ht)
       y += ht + space
 
-      space = 20
-      ht = 60
+      vitalChart.drawYLine(y)
+      y += 0
+      ht = 50
       vitalChart.drawChart(this.dates, y, ht)
     }
   },

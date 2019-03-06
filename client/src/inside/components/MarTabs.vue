@@ -45,7 +45,7 @@ export default {
   computed: {
     refreshData () {
       // See EhrPageForm for more on why we have currentData
-      console.log('MarTabs refreshData')
+      // console.log('MarTabs refreshData')
       this.refresh()
       return this.marRecords
     },
@@ -62,7 +62,7 @@ export default {
     const _this = this
     this.marHelper = new MarHelper(this.ehrHelp)
     this.refreshEventHandler = function () {
-      console.log('MarTabs PAGE_DATA_REFRESH_EVENT')
+      // console.log('MarTabs PAGE_DATA_REFRESH_EVENT')
       _this.refresh()
     }
     EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)

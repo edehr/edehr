@@ -43,7 +43,7 @@ export default {
         })
         .then(() => {
           let isDev = this.$store.getters['visit/isDeveloper']
-          console.log('Is user is allowed to edit content?',isDev)
+          // console.log('Is user is allowed to edit content?',isDev)
           if (isDev) {
             // console.log('User is allowed to edit content')
             return _this._loadDeveloping(restoring)
@@ -51,7 +51,7 @@ export default {
         })
         .then(() => {
           let isIns = _this.$store.getters['visit/isInstructor']
-          console.log('Is user an instructor?', isIns)
+          // console.log('Is user an instructor?', isIns)
           if (isIns) {
             return _this.$store.dispatch('instructor/loadCourses').then(() => {
               // console.log('Page load instructor restoring?', restoring)
@@ -75,16 +75,12 @@ export default {
         if (!restoring) {
           return resolve()
         }
-        console.log('Restore indicator says the user is refreshing page')
+        // console.log('Restore indicator says the user is refreshing page')
         let isDevelopingContent = localStorage.getItem('isDevelopingContent')
         let seedId = localStorage.getItem('seedId')
-        console.log(
-          'What is in local storage isDevelopingContent and seedId',
-          isDevelopingContent,
-          seedId
-        )
+        // console.log(`App local storage idDevCon ${isDevelopingContent} seedId ${seedId}`)
         if (isDevelopingContent && seedId) {
-          console.log('User is developing content with seed id', seedId)
+          // console.log('User is developing content with seed id', seedId)
           this.$store.commit('visit/setIsDevelopingContent', isDevelopingContent)
           this.$store.commit('seedStore/setSeedId', seedId)
           this.$store.dispatch('seedStore/loadSeedContent').then(() => {
@@ -108,11 +104,11 @@ export default {
     _loadApiUrl (apiUrl) {
       return new Promise((resolve, reject) => {
         if (apiUrl) {
-          console.log('API url provided in query: ', apiUrl)
+          // console.log('API url provided in query: ', apiUrl)
         } else {
-          console.log('No API url in query')
+          // console.log('No API url in query')
           apiUrl = localStorage.getItem('apiUrl')
-          console.log('Can we use API URL from local storage', apiUrl)
+          // console.log('Can we use API URL from local storage', apiUrl)
           if (!apiUrl) {
             let msg = 'System requires the URL to the API'
             console.error(msg)
@@ -120,7 +116,7 @@ export default {
             return reject(msg)
           }
         }
-        console.log('Store API URL in $store (also stores to local storage)', apiUrl)
+        // console.log('Store API URL in $store (also stores to local storage)', apiUrl)
         this.$store.commit('visit/apiUrl', apiUrl)
         resolve(apiUrl)
       })
