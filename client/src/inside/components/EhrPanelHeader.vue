@@ -21,7 +21,11 @@ export default {
 .EhrPanelHeader {
   background-color: $grey03;
   color: $grey60;
-  height: $ehrPanelHeight;
+  line-height: 1;
+  padding: 1.25rem 1.5rem 1.5rem;
+  .title, h1 {
+  margin-bottom: 0 !important;
+  }
   .EhrPanelHeader_Inner {
     display: flex;
     .title {

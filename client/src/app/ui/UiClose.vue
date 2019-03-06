@@ -17,14 +17,14 @@ export default {
 .button-close {
   background: none;
   border: none;
-  color: $grey60;
+  color: $grey40;
   content: 'faTimes';
   display: inline-block;
   font-size: 1.25em;
   padding: 0;
   position: absolute;
   right: 2rem;
-  top: 0;
+  top: 1rem;
   &:hover {
     color: $black;
   }

@@ -141,6 +141,7 @@ export default {
 .activity-list-header {
   background-color: $grey03;
   margin-bottom: 0;
+  cursor: pointer;
 
   .header-column {
     padding: 1rem 1.5rem;

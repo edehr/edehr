@@ -4,11 +4,11 @@
     input(v-if="element.inputType === 'text'", class="input", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
     input(v-if="element.inputType === 'day'", class="input", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
     input(v-if="element.inputType === 'time'", class="input", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
-    datepicker(v-if="element.inputType === 'date'", placeholder="Select Date", class="input", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
+    datepicker(v-if="element.inputType === 'date'", class="input", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
     textarea(v-if="element.inputType === 'textarea'", class="ehr-page-form-textarea", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
     div(v-if="element.inputType === 'select'", class="select")
       select(v-bind:name="element.elementKey", v-bind:disabled="notEditing", v-model="inputVal")
-        option(disabled,value="") Please select one
+        option(disabled,value="")
         option(v-for="option in element.options", v-bind:value="option.text") {{ option.text}}
     input(v-if="element.inputType === 'checkbox'", class="checkbox", type="checkbox", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
     label(v-if="element.inputType === 'checkbox'", class="label-checkbox", v-bind:for="element.elementKey") {{element.label}}

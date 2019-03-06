@@ -108,12 +108,6 @@ export default {
     }*/
   }
 
-  .app-title {
-    font-weight: bold;
-    font-size: 2.2rem;
-    color: white;
-  }
-
   .push {
     margin-left: auto;
   }
@@ -138,6 +132,11 @@ export default {
     &.is-active {
       text-decoration: underline;
     }
+  }
+
+  .app-title {
+    font-size: 1.25rem;
+    margin-left: 0;
   }
 }
 </style>

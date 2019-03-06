@@ -1,6 +1,6 @@
 <template lang="pug">
   div(class="outside-view home")
-    h1 Welcome to the Educational Electronic Health Record System (EddEHR)
+    h1 Welcome to the Educational Electronic Health Record System (EdEHR)
     p.
       To use this system you need to use a Learning Management System such as Moodle, Canvas, Blackboard, or any of the
       many LTI compliant learning systems. Ask you LMS administrator to configure the LMS to send a LTI
