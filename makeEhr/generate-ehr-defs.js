@@ -4,8 +4,8 @@ const RawInputToDef = require('./generators/raw-input-to-def')
 const transformer = new RawInputToDef()
 const destination = pathUtil.join(process.cwd(), 'generated', 'ehrDefs')
 const source = pathUtil.join(process.cwd(), 'raw_data')
-const sourceFiles = ['current-visit', 'patient-profile', 'patient-chart', 'external-resources']
-// const sourceFiles = ['current-visit']
+const sourceFiles = ['patient-profile', 'current-visit-1','current-visit-2', 'patient-chart', 'external-resources']
+// const sourceFiles = ['current-visit-1']
 
 main()
 

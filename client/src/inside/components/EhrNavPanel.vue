@@ -23,9 +23,11 @@ export default {
   },
   computed: {
     returnButtonLabel () {
+      let label = 'Return to LMS'
       if (this.isStudent) {
-      return 'Send for evaluation'
-      } 
+        label = 'Send for evaluation'
+      }
+      return label
     },
     lmsName () {
       return this.$store.getters.lmsName

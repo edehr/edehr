@@ -55,6 +55,7 @@ const mlFields = [
   'Helper_Text:',
   'Notes:',
   'Questions_for_the_group',
+  'Notes_Questions',
   'Mandatory'
 ]
 // Sample of multiline content:
@@ -143,10 +144,13 @@ class RawInputToDef {
       }
       let p = entry.page
       if (entry.inputType === PAGE_INPUT_TYPE) {
+        // console.log('inputtyupe', entry.inputType)
         this._pageForGroup(p, pages, entry)
       } else if (CONTAINER_INPUT_TYPES.indexOf(entry.inputType) >= 0) {
+        console.log('inputtyupe', entry.inputType, entry.fqn)
         this._topLevelContainerForGroup(pages, p, entry)
       } else if (SUBCONTAINER_INPUT_TYPES.indexOf(entry.inputType) >= 0) {
+        // console.log('inputtyupe', entry.inputType)
         this._subcontainerForGroup(pages, p, entry)
       } else {
         // entry is a regular element
@@ -180,11 +184,12 @@ class RawInputToDef {
         container[prop] = entry[prop]
       }
     })
-
     container.elements = []
     container.containerType = entry.inputType
     container.options = entry.options
+    container.tableButton = entry.tableButton
     container.containerKey = entry.elementKey
+    console.log('push container into pg.fqn', pg.fqn, 'cntId', cntId)
     pg.containers[cntId] = container
     return { pg, container }
   }
@@ -195,7 +200,7 @@ class RawInputToDef {
     let dp = container.dataParent
     let toplevel = pg.containers[dp]
     if(!toplevel)
-    console.log(entry,dp)
+    console.log('_subcontainerForGroup', entry,dp)
     toplevel.elements.push(container)
     // console.log('subcontainer now linked into ', container, toplevel)
     // connect the sub group with it top level group
@@ -209,15 +214,19 @@ class RawInputToDef {
     pg.rawElements.push(entry)
     let containerKey = entry.dataParent
     let container = pg.containers[containerKey]
-    assert.ok(
-      container && container.elements,
-      'ERROR containerKey has no container ' +
+    if (!container || ! container.elements) {
+      console.error(      'ERROR containerKey has no container "' +
         containerKey +
-        ' ' +
+        '"' +
+        '\npg: ' +
+        JSON.stringify(pg.containers) +
+        '\ncontainer: ' +
         JSON.stringify(container) +
-        ' ' +
+        '\nentry: ' +
         JSON.stringify(entry)
-    )
+      )
+    }
+    assert.ok(container && container.elements, 'Error' )
     let containerChild = {}
     containerElementProperties.forEach(prop => {
       if (entry[prop]) {
@@ -288,16 +297,19 @@ class RawInputToDef {
     console.log('Build form for page', page.label)
     Object.keys(page.containers).forEach(key => {
       let container = page.containers[key]
+      console.log('_page type fqn ', container.containerType, container.fqn)
       if (container.containerType === PAGE_FORM) {
+        // console.log('_page PAGE_FORM', container.fqn)
         uiP.hasForm = true
         // TODO change to pageForm
         uiP.page_form = this._extractPageForm(container)
       } else if (container.containerType === TABLE_ROW) {
+        console.log('_page TABLE_ROW', container.fqn)
         uiP.hasTable = true
         uiP.tables = uiP.tables || []
         let tableCells = this._pageTableCells(container)
         let tableForm = this._extractTableForm(container, tableCells)
-        assert.ok(container.options,'Need options property to set up the add button for table ' + key)
+        assert.ok(container.tableButton,'Need tableButton property to set up the add button for table ' + key)
         let reducedCells = tableCells.map(cell => {
           let nCell = Object.assign({},cell)
           if (nCell.formFieldSet) {
@@ -306,7 +318,7 @@ class RawInputToDef {
           return nCell
         })
 
-        let table = { tableKey: container.containerKey, addButtonText: container.options, tableCells: reducedCells, tableForm: tableForm }
+        let table = { tableKey: container.containerKey, addButtonText: container.tableButton, tableCells: reducedCells, tableForm: tableForm }
         uiP.tables.push(table)
       } else if (container.containerType === TABLE_COL) {
         // TODO
@@ -315,7 +327,7 @@ class RawInputToDef {
         // TODO
         console.log('TODO !!!!! sub groups ', container.containerKey)
       } else if (container.containerType === FIELDSET || container.containerType === FIELDSET_ROW) {
-        console.log(container.containerType, container.containerKey)
+        console.log('_page', container.containerType, container.containerKey)
       }
     })
   }
@@ -385,6 +397,7 @@ class RawInputToDef {
   _extractTableForm(container, tableCells) {
     let rows = []
     let tableKey = container.containerKey
+    console.log('_extractTableForm', tableKey)
     container.elements.forEach(element => {
       let formRow = element.formRow
       let cell = tableCells.find(c => element.elementKey === c.elementKey)
