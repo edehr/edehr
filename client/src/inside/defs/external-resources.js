@@ -15,7 +15,7 @@ export default function () {
                 fqn: "assessmentTools.admissions",
                 inputType: "fieldset",
                 label: "Admissions",
-                fieldset: "admissions",
+                formCss: "h2",
                 formColumn: "1",
                 formRow: "1",
                 pageDataKey: "assessmentTools",
@@ -23,10 +23,10 @@ export default function () {
                 page: "Standardized assessment tools",
                 elements: [
                   {
-                    fqn: "assessmentTools.admissions.",
+                    elementKey: "admissions1_1",
+                    fqn: "assessmentTools.admissions.admissions1_1",
                     inputType: "assetLink",
-                    label: "triage_scale.pdf (need this one)",
-                    fieldset: "admissions",
+                    label: "Triage scale",
                     fsetRow: "1",
                     fsetCol: "1",
                     pageDataKey: "assessmentTools",
@@ -35,10 +35,10 @@ export default function () {
                     assetName: "triage_scale.pdf"
                   },
                   {
-                    fqn: "assessmentTools.admissions.",
+                    elementKey: "admissions2_1",
+                    fqn: "assessmentTools.admissions.admissions2_1",
                     inputType: "assetLink",
-                    label: "patient_health_questionaire.pdf",
-                    fieldset: "admissions",
+                    label: "Patient health questionaire",
                     fsetRow: "2",
                     fsetCol: "1",
                     pageDataKey: "assessmentTools",
@@ -47,10 +47,10 @@ export default function () {
                     assetName: "patient_health_questionaire.pdf"
                   },
                   {
-                    fqn: "assessmentTools.admissions.",
+                    elementKey: "admissions3_1",
+                    fqn: "assessmentTools.admissions.admissions3_1",
                     inputType: "assetLink",
-                    label: "alcohol_consumption.pdf",
-                    fieldset: "admissions",
+                    label: "Alcohol Consumption.pdf",
                     fsetRow: "3",
                     fsetCol: "1",
                     pageDataKey: "assessmentTools",
@@ -66,8 +66,8 @@ export default function () {
                 elementKey: "painAssessment",
                 fqn: "assessmentTools.painAssessment",
                 inputType: "fieldset",
-                label: "Pain Assessment",
-                fieldset: "painAssessment",
+                label: "Pain assessment",
+                formCss: "h2",
                 formColumn: "2",
                 formRow: "1",
                 pageDataKey: "assessmentTools",
@@ -75,10 +75,10 @@ export default function () {
                 page: "Standardized assessment tools",
                 elements: [
                   {
-                    fqn: "assessmentTools.painAssessment.",
+                    elementKey: "painAssessment1_1",
+                    fqn: "assessmentTools.painAssessment.painAssessment1_1",
                     inputType: "assetLink",
-                    label: "OPQRSTUV.pdf",
-                    fieldset: "painAssessment",
+                    label: "OPQRSTUV",
                     fsetRow: "1",
                     fsetCol: "1",
                     pageDataKey: "assessmentTools",
@@ -87,10 +87,10 @@ export default function () {
                     assetName: "OPQRSTUV.pdf"
                   },
                   {
-                    fqn: "assessmentTools.painAssessment.",
+                    elementKey: "painAssessment2_1",
+                    fqn: "assessmentTools.painAssessment.painAssessment2_1",
                     inputType: "assetLink",
-                    label: "0-10_numeric_rating_scale.pdf",
-                    fieldset: "painAssessment",
+                    label: "0-10 numeric rating scale",
                     fsetRow: "2",
                     fsetCol: "1",
                     pageDataKey: "assessmentTools",
@@ -99,11 +99,10 @@ export default function () {
                     assetName: "0-10_numeric_rating_scale.pdf"
                   },
                   {
-                    elementKey: "neurological",
-                    fqn: "assessmentTools.painAssessment.neurological",
+                    elementKey: "painAssessment3_1",
+                    fqn: "assessmentTools.painAssessment.painAssessment3_1",
                     inputType: "assetLink",
                     label: "Neurological assessment",
-                    fieldset: "neurological",
                     fsetRow: "3",
                     fsetCol: "1",
                     pageDataKey: "assessmentTools",
@@ -111,10 +110,10 @@ export default function () {
                     page: "Standardized assessment tools"
                   },
                   {
-                    fqn: "assessmentTools.painAssessment.",
+                    elementKey: "painAssessment4_1",
+                    fqn: "assessmentTools.painAssessment.painAssessment4_1",
                     inputType: "assetLink",
-                    label: "glasgow scale",
-                    fieldset: "neurological",
+                    label: "Glasgow coma scale",
                     fsetRow: "4",
                     fsetCol: "1",
                     pageDataKey: "assessmentTools",
@@ -124,10 +123,10 @@ export default function () {
                     assetName: "Glasgow Coma Scale.pdf"
                   },
                   {
-                    fqn: "assessmentTools.painAssessment.",
+                    elementKey: "painAssessment5_1",
+                    fqn: "assessmentTools.painAssessment.painAssessment5_1",
                     inputType: "assetLink",
-                    label: "mini_mental_state_examination.pdf",
-                    fieldset: "neurological",
+                    label: "Mini mental state examination",
                     fsetRow: "5",
                     fsetCol: "1",
                     pageDataKey: "assessmentTools",
@@ -136,10 +135,10 @@ export default function () {
                     assetName: "mini_mental_state_examination.pdf"
                   },
                   {
-                    fqn: "assessmentTools.painAssessment.",
+                    elementKey: "painAssessment6_1",
+                    fqn: "assessmentTools.painAssessment.painAssessment6_1",
                     inputType: "assetLink",
-                    label: "richmond_agitation_scale.pdf",
-                    fieldset: "neurological",
+                    label: "Richmond agitation scale",
                     fsetRow: "6",
                     fsetCol: "1",
                     pageDataKey: "assessmentTools",
@@ -156,7 +155,7 @@ export default function () {
                 fqn: "assessmentTools.fallRisk",
                 inputType: "fieldset",
                 label: "Falls risk",
-                fieldset: "fallRisk",
+                formCss: "h2",
                 formColumn: "3",
                 formRow: "1",
                 pageDataKey: "assessmentTools",
@@ -164,10 +163,10 @@ export default function () {
                 page: "Standardized assessment tools",
                 elements: [
                   {
-                    fqn: "assessmentTools.fallRisk.",
+                    elementKey: "fallRisk1_1",
+                    fqn: "assessmentTools.fallRisk.fallRisk1_1",
                     inputType: "assetLink",
-                    label: "fall_and_injury_reduction.pdf",
-                    fieldset: "fallRisk",
+                    label: "Fall and injury reduction",
                     fsetRow: "1",
                     fsetCol: "1",
                     pageDataKey: "assessmentTools",
@@ -176,10 +175,10 @@ export default function () {
                     assetName: "fall_and_injury_reduction.pdf"
                   },
                   {
-                    fqn: "assessmentTools.fallRisk.",
+                    elementKey: "fallRisk2_1",
+                    fqn: "assessmentTools.fallRisk.fallRisk2_1",
                     inputType: "assetLink",
-                    label: "fall assessment",
-                    fieldset: "fallRisk",
+                    label: "Fall assessment",
                     fsetRow: "2",
                     fsetCol: "1",
                     pageDataKey: "assessmentTools",
@@ -189,10 +188,10 @@ export default function () {
                     assetName: "Fall Risk Assessment Tool.pdf"
                   },
                   {
-                    fqn: "assessmentTools.fallRisk.",
+                    elementKey: "fallRisk3_1",
+                    fqn: "assessmentTools.fallRisk.fallRisk3_1",
                     inputType: "assetLink",
-                    label: "risk_for_falls.pdf  (need this one)",
-                    fieldset: "fallRisk",
+                    label: "Risk for falls",
                     fsetRow: "3",
                     fsetCol: "1",
                     pageDataKey: "assessmentTools",
@@ -214,7 +213,7 @@ export default function () {
                 fqn: "assessmentTools.notes",
                 inputType: "fieldset",
                 label: "Notes",
-                fieldset: "notes",
+                formCss: "h2",
                 formColumn: "1",
                 formRow: "2",
                 pageDataKey: "assessmentTools",
@@ -222,10 +221,10 @@ export default function () {
                 page: "Standardized assessment tools",
                 elements: [
                   {
-                    fqn: "assessmentTools.notes.",
+                    elementKey: "notes1_1",
+                    fqn: "assessmentTools.notes.notes1_1",
                     inputType: "assetLink",
-                    label: "consult_note_template.pdf  (need this one)",
-                    fieldset: "notes",
+                    label: "Consult note template",
                     fsetRow: "1",
                     fsetCol: "1",
                     pageDataKey: "assessmentTools",
@@ -234,10 +233,10 @@ export default function () {
                     assetName: "consult_note_template.pdf"
                   },
                   {
-                    fqn: "assessmentTools.notes.",
+                    elementKey: "notes2_1",
+                    fqn: "assessmentTools.notes.notes2_1",
                     inputType: "assetLink",
-                    label: "referral_note_template.pdf",
-                    fieldset: "notes",
+                    label: "Referral note template",
                     fsetRow: "2",
                     fsetCol: "1",
                     pageDataKey: "assessmentTools",
@@ -254,7 +253,7 @@ export default function () {
                 fqn: "assessmentTools.educational",
                 inputType: "fieldset",
                 label: "Educational resources",
-                fieldset: "educational",
+                formCss: "h2",
                 formColumn: "2",
                 formRow: "2",
                 pageDataKey: "assessmentTools",
@@ -262,10 +261,10 @@ export default function () {
                 page: "Standardized assessment tools",
                 elements: [
                   {
-                    fqn: "assessmentTools.educational.",
+                    elementKey: "educational1_1",
+                    fqn: "assessmentTools.educational.educational1_1",
                     inputType: "assetLink",
-                    label: "COP assessment",
-                    fieldset: "educational",
+                    label: "COPD assessment",
                     fsetRow: "1",
                     fsetCol: "1",
                     pageDataKey: "assessmentTools",
@@ -275,10 +274,10 @@ export default function () {
                     assetName: "COPD assessment test.pdf"
                   },
                   {
-                    fqn: "assessmentTools.educational.",
+                    elementKey: "educational2_1",
+                    fqn: "assessmentTools.educational.educational2_1",
                     inputType: "assetLink",
-                    label: "bristol_stool_chart.pdf",
-                    fieldset: "educational",
+                    label: "Bristol stool chart",
                     fsetRow: "2",
                     fsetCol: "1",
                     pageDataKey: "assessmentTools",
@@ -295,7 +294,7 @@ export default function () {
                 fqn: "assessmentTools.wound",
                 inputType: "fieldset",
                 label: "Wound assessment",
-                fieldset: "wound",
+                formCss: "h2",
                 formColumn: "3",
                 formRow: "2",
                 pageDataKey: "assessmentTools",
@@ -303,10 +302,10 @@ export default function () {
                 page: "Standardized assessment tools",
                 elements: [
                   {
-                    fqn: "assessmentTools.wound.",
+                    elementKey: "wound1_1",
+                    fqn: "assessmentTools.wound.wound1_1",
                     inputType: "assetLink",
-                    label: "braden_scale.pdf",
-                    fieldset: "wound",
+                    label: "Braden scale",
                     fsetRow: "1",
                     fsetCol: "1",
                     pageDataKey: "assessmentTools",
@@ -328,7 +327,7 @@ export default function () {
                 fqn: "assessmentTools.medication",
                 inputType: "fieldset",
                 label: "Medication",
-                fieldset: "medication",
+                formCss: "h2",
                 formColumn: "1",
                 formRow: "3",
                 pageDataKey: "assessmentTools",
@@ -336,10 +335,10 @@ export default function () {
                 page: "Standardized assessment tools",
                 elements: [
                   {
-                    fqn: "assessmentTools.medication.",
+                    elementKey: "medication1_1",
+                    fqn: "assessmentTools.medication.medication1_1",
                     inputType: "assetLink",
-                    label: "best_possible_medication_history.pdf",
-                    fieldset: "medication",
+                    label: "Best possible medication history",
                     fsetRow: "1",
                     fsetCol: "1",
                     formColumn: ".",
@@ -365,8 +364,41 @@ export default function () {
       pageDataKey: "codeLookup",
       hasForm: true,
       page_form: {
-        rows: [],
-        columnsCount: 0
+        rows: [
+          {
+            formRow: "1",
+            elements: [
+              {
+                elementKey: "snomed",
+                fqn: "codeLookup.snomed",
+                inputType: "text",
+                label: "SnomedCT",
+                formColumn: "1",
+                formRow: "1",
+                pageDataKey: "codeLookup",
+                dataParent: "codeLookup",
+                page: "Code lookup"
+              }
+            ]
+          },
+          {
+            formRow: "2",
+            elements: [
+              {
+                elementKey: "icb",
+                fqn: "codeLookup.icb",
+                inputType: "text",
+                label: "ICB",
+                formColumn: "1",
+                formRow: "2",
+                pageDataKey: "codeLookup",
+                dataParent: "codeLookup",
+                page: "Code lookup"
+              }
+            ]
+          }
+        ],
+        columnsCount: 1
       },
       pageData: {}
     },
@@ -377,7 +409,7 @@ export default function () {
       tables: [
         {
           tableKey: "table",
-          addButtonText: "Add diagnostic code",
+          addButtonText: "Add a diagnostic code",
           tableCells: [
             {
               elementKey: "name",
@@ -440,12 +472,26 @@ export default function () {
               tableKey: "table"
             },
             {
+              elementKey: "icd10",
+              fqn: "diagnosticCodes.table.icd10",
+              inputType: "assetLink",
+              label: "ICD-10 Database",
+              tableColumn: "5",
+              formRow: "2",
+              pageDataKey: "diagnosticCodes",
+              dataParent: "diagnosticCodes.table",
+              page: "Diagnostic codes",
+              assetName: "icd-10-medical-diagnosis-codes.pdf",
+              tableKey: "table"
+            },
+            {
               elementKey: "condition",
               fqn: "diagnosticCodes.table.condition",
               inputType: "text",
               label: "Condition",
+              tableColumn: "6",
               formColumn: "1",
-              formRow: "2",
+              formRow: "3",
               pageDataKey: "diagnosticCodes",
               dataParent: "diagnosticCodes.table",
               page: "Diagnostic codes",
@@ -457,8 +503,9 @@ export default function () {
               fqn: "diagnosticCodes.table.code",
               inputType: "text",
               label: "Diagnosis code",
+              tableColumn: "7",
               formColumn: "2",
-              formRow: "2",
+              formRow: "3",
               pageDataKey: "diagnosticCodes",
               dataParent: "diagnosticCodes.table",
               page: "Diagnostic codes",
@@ -471,8 +518,9 @@ export default function () {
               fqn: "diagnosticCodes.table.type",
               inputType: "select",
               label: "Diagnosis type",
+              tableColumn: "8",
               formColumn: "3",
-              formRow: "2",
+              formRow: "3",
               pageDataKey: "diagnosticCodes",
               dataParent: "diagnosticCodes.table",
               page: "Diagnostic codes",
@@ -499,8 +547,9 @@ export default function () {
               fqn: "diagnosticCodes.table.prefix",
               inputType: "text",
               label: "Prefix",
+              tableColumn: "9",
               formColumn: "4",
-              formRow: "2",
+              formRow: "3",
               pageDataKey: "diagnosticCodes",
               dataParent: "diagnosticCodes.table",
               page: "Diagnostic codes",
@@ -513,8 +562,9 @@ export default function () {
               fqn: "diagnosticCodes.table.cluster",
               inputType: "text",
               label: "Diagnosis cluster",
+              tableColumn: "10",
               formColumn: "5",
-              formRow: "2",
+              formRow: "3",
               pageDataKey: "diagnosticCodes",
               dataParent: "diagnosticCodes.table",
               page: "Diagnostic codes",
@@ -594,12 +644,31 @@ export default function () {
                 formRow: "2",
                 elements: [
                   {
+                    elementKey: "icd10",
+                    fqn: "diagnosticCodes.table.icd10",
+                    inputType: "assetLink",
+                    label: "ICD-10 Database",
+                    tableColumn: "5",
+                    formRow: "2",
+                    pageDataKey: "diagnosticCodes",
+                    dataParent: "diagnosticCodes.table",
+                    page: "Diagnostic codes",
+                    assetName: "icd-10-medical-diagnosis-codes.pdf",
+                    tableKey: "table"
+                  }
+                ]
+              },
+              {
+                formRow: "3",
+                elements: [
+                  {
                     elementKey: "condition",
                     fqn: "diagnosticCodes.table.condition",
                     inputType: "text",
                     label: "Condition",
+                    tableColumn: "6",
                     formColumn: "1",
-                    formRow: "2",
+                    formRow: "3",
                     pageDataKey: "diagnosticCodes",
                     dataParent: "diagnosticCodes.table",
                     page: "Diagnostic codes",
@@ -611,8 +680,9 @@ export default function () {
                     fqn: "diagnosticCodes.table.code",
                     inputType: "text",
                     label: "Diagnosis code",
+                    tableColumn: "7",
                     formColumn: "2",
-                    formRow: "2",
+                    formRow: "3",
                     pageDataKey: "diagnosticCodes",
                     dataParent: "diagnosticCodes.table",
                     page: "Diagnostic codes",
@@ -625,8 +695,9 @@ export default function () {
                     fqn: "diagnosticCodes.table.type",
                     inputType: "select",
                     label: "Diagnosis type",
+                    tableColumn: "8",
                     formColumn: "3",
-                    formRow: "2",
+                    formRow: "3",
                     pageDataKey: "diagnosticCodes",
                     dataParent: "diagnosticCodes.table",
                     page: "Diagnostic codes",
@@ -653,8 +724,9 @@ export default function () {
                     fqn: "diagnosticCodes.table.prefix",
                     inputType: "text",
                     label: "Prefix",
+                    tableColumn: "9",
                     formColumn: "4",
-                    formRow: "2",
+                    formRow: "3",
                     pageDataKey: "diagnosticCodes",
                     dataParent: "diagnosticCodes.table",
                     page: "Diagnostic codes",
@@ -667,8 +739,9 @@ export default function () {
                     fqn: "diagnosticCodes.table.cluster",
                     inputType: "text",
                     label: "Diagnosis cluster",
+                    tableColumn: "10",
                     formColumn: "5",
-                    formRow: "2",
+                    formRow: "3",
                     pageDataKey: "diagnosticCodes",
                     dataParent: "diagnosticCodes.table",
                     page: "Diagnostic codes",
@@ -694,7 +767,7 @@ export default function () {
       tables: [
         {
           tableKey: "table",
-          addButtonText: "Add intervention code",
+          addButtonText: "Add an intervention code",
           tableCells: [
             {
               elementKey: "name",
@@ -1014,13 +1087,13 @@ export default function () {
       }
     },
     careMixGroup: {
-      pageTitle: "Care mix group",
+      pageTitle: "Case mix group",
       pageDataKey: "careMixGroup",
       hasTable: true,
       tables: [
         {
           tableKey: "table",
-          addButtonText: "Add care mix group",
+          addButtonText: "Add a case mix group",
           tableCells: [
             {
               elementKey: "name",
@@ -1033,7 +1106,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "careMixGroup",
               dataParent: "careMixGroup.table",
-              page: "Care mix group",
+              page: "Case mix group",
               assetBase: "?",
               tableKey: "table"
             },
@@ -1048,7 +1121,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "careMixGroup",
               dataParent: "careMixGroup.table",
-              page: "Care mix group",
+              page: "Case mix group",
               assetBase: "?",
               tableKey: "table"
             },
@@ -1063,7 +1136,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "careMixGroup",
               dataParent: "careMixGroup.table",
-              page: "Care mix group",
+              page: "Case mix group",
               assetBase: "?",
               tableKey: "table"
             },
@@ -1078,7 +1151,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "careMixGroup",
               dataParent: "careMixGroup.table",
-              page: "Care mix group",
+              page: "Case mix group",
               assetBase: "?",
               tableKey: "table"
             },
@@ -1087,11 +1160,12 @@ export default function () {
               fqn: "careMixGroup.table.clinicalCategory",
               inputType: "text",
               label: "Major clinical category",
+              tableColumn: "5",
               formColumn: "1",
               formRow: "2",
               pageDataKey: "careMixGroup",
               dataParent: "careMixGroup.table",
-              page: "Care mix group",
+              page: "Case mix group",
               tableKey: "table"
             },
             {
@@ -1099,11 +1173,12 @@ export default function () {
               fqn: "careMixGroup.table.caseMixNumber",
               inputType: "text",
               label: "Case mix number",
+              tableColumn: "6",
               formColumn: "2",
               formRow: "2",
               pageDataKey: "careMixGroup",
               dataParent: "careMixGroup.table",
-              page: "Care mix group",
+              page: "Case mix group",
               tableKey: "table"
             },
             {
@@ -1111,11 +1186,12 @@ export default function () {
               fqn: "careMixGroup.table.resourceIntensity",
               inputType: "text",
               label: "Resource intensity weight",
+              tableColumn: "7",
               formColumn: "1",
               formRow: "3",
               pageDataKey: "careMixGroup",
               dataParent: "careMixGroup.table",
-              page: "Care mix group",
+              page: "Case mix group",
               tableKey: "table"
             },
             {
@@ -1123,11 +1199,12 @@ export default function () {
               fqn: "careMixGroup.table.expectedStay",
               inputType: "text",
               label: "Expected length of stay",
+              tableColumn: "8",
               formColumn: "2",
               formRow: "3",
               pageDataKey: "careMixGroup",
               dataParent: "careMixGroup.table",
-              page: "Care mix group",
+              page: "Case mix group",
               tableKey: "table"
             },
             {
@@ -1135,11 +1212,12 @@ export default function () {
               fqn: "careMixGroup.table.analysis",
               inputType: "textarea",
               label: "Analysis",
+              tableColumn: "9",
               formColumn: "1",
               formRow: "4",
               pageDataKey: "careMixGroup",
               dataParent: "careMixGroup.table",
-              page: "Care mix group",
+              page: "Case mix group",
               tableKey: "table"
             }
           ],
@@ -1159,7 +1237,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "careMixGroup",
                     dataParent: "careMixGroup.table",
-                    page: "Care mix group",
+                    page: "Case mix group",
                     assetBase: "?",
                     tableKey: "table"
                   },
@@ -1174,7 +1252,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "careMixGroup",
                     dataParent: "careMixGroup.table",
-                    page: "Care mix group",
+                    page: "Case mix group",
                     assetBase: "?",
                     tableKey: "table"
                   },
@@ -1189,7 +1267,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "careMixGroup",
                     dataParent: "careMixGroup.table",
-                    page: "Care mix group",
+                    page: "Case mix group",
                     assetBase: "?",
                     tableKey: "table"
                   },
@@ -1204,7 +1282,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "careMixGroup",
                     dataParent: "careMixGroup.table",
-                    page: "Care mix group",
+                    page: "Case mix group",
                     assetBase: "?",
                     tableKey: "table"
                   }
@@ -1218,11 +1296,12 @@ export default function () {
                     fqn: "careMixGroup.table.clinicalCategory",
                     inputType: "text",
                     label: "Major clinical category",
+                    tableColumn: "5",
                     formColumn: "1",
                     formRow: "2",
                     pageDataKey: "careMixGroup",
                     dataParent: "careMixGroup.table",
-                    page: "Care mix group",
+                    page: "Case mix group",
                     tableKey: "table"
                   },
                   {
@@ -1230,11 +1309,12 @@ export default function () {
                     fqn: "careMixGroup.table.caseMixNumber",
                     inputType: "text",
                     label: "Case mix number",
+                    tableColumn: "6",
                     formColumn: "2",
                     formRow: "2",
                     pageDataKey: "careMixGroup",
                     dataParent: "careMixGroup.table",
-                    page: "Care mix group",
+                    page: "Case mix group",
                     tableKey: "table"
                   }
                 ]
@@ -1247,11 +1327,12 @@ export default function () {
                     fqn: "careMixGroup.table.resourceIntensity",
                     inputType: "text",
                     label: "Resource intensity weight",
+                    tableColumn: "7",
                     formColumn: "1",
                     formRow: "3",
                     pageDataKey: "careMixGroup",
                     dataParent: "careMixGroup.table",
-                    page: "Care mix group",
+                    page: "Case mix group",
                     tableKey: "table"
                   },
                   {
@@ -1259,11 +1340,12 @@ export default function () {
                     fqn: "careMixGroup.table.expectedStay",
                     inputType: "text",
                     label: "Expected length of stay",
+                    tableColumn: "8",
                     formColumn: "2",
                     formRow: "3",
                     pageDataKey: "careMixGroup",
                     dataParent: "careMixGroup.table",
-                    page: "Care mix group",
+                    page: "Case mix group",
                     tableKey: "table"
                   }
                 ]
@@ -1276,11 +1358,12 @@ export default function () {
                     fqn: "careMixGroup.table.analysis",
                     inputType: "textarea",
                     label: "Analysis",
+                    tableColumn: "9",
                     formColumn: "1",
                     formRow: "4",
                     pageDataKey: "careMixGroup",
                     dataParent: "careMixGroup.table",
-                    page: "Care mix group",
+                    page: "Case mix group",
                     tableKey: "table"
                   }
                 ]

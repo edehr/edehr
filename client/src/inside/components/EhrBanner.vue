@@ -14,7 +14,7 @@
             li Gender: &nbsp;
               b {{ demographics.gender }}
             li Weight: &nbsp;
-              b to link in
+              b &nbsp;
         div( class="column EhrBanner__content_row--2")
           ul
             li Code status: &nbsp;
@@ -36,7 +36,7 @@
             li Location: &nbsp;
               b {{ location }}
             li Isolation precautions: &nbsp;
-              b to link in
+              b &nbsp;
 </template>
 
 <script>
@@ -68,6 +68,7 @@ export default {
     location () {
       var place = ''
       var locations = this.visitDetails.locations || []
+      console.log('Fix location on banner ', this.visitDetails)
       if (locations.length > 0) {
         var now = locations[locations.length - 1]
         place = now.patientLocation
