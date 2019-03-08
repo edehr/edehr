@@ -618,32 +618,10 @@ export default function () {
                 page: "History Psychosocial"
               },
               {
-                elementKey: "exercise",
-                fqn: "psychosocial.exercise",
-                inputType: "checkbox",
-                label: "Exercise",
-                formColumn: "1",
-                formRow: "1",
-                pageDataKey: "psychosocial",
-                dataParent: "psychosocial",
-                page: "History Psychosocial"
-              },
-              {
                 elementKey: "diet",
                 fqn: "psychosocial.diet",
                 inputType: "textarea",
                 label: "Diet",
-                formColumn: "2",
-                formRow: "1",
-                pageDataKey: "psychosocial",
-                dataParent: "psychosocial",
-                page: "History Psychosocial"
-              },
-              {
-                elementKey: "exerciseFrequency",
-                fqn: "psychosocial.exerciseFrequency",
-                inputType: "text",
-                label: "Exercise frequency",
                 formColumn: "2",
                 formRow: "1",
                 pageDataKey: "psychosocial",
@@ -678,32 +656,10 @@ export default function () {
                 page: "History Psychosocial"
               },
               {
-                elementKey: "caffeineUse",
-                fqn: "psychosocial.caffeineUse",
-                inputType: "checkbox",
-                label: "Caffeine use",
-                formColumn: "1",
-                formRow: "2",
-                pageDataKey: "psychosocial",
-                dataParent: "psychosocial",
-                page: "History Psychosocial"
-              },
-              {
                 elementKey: "hobbies",
                 fqn: "psychosocial.hobbies",
                 inputType: "textarea",
                 label: "Hobbies",
-                formColumn: "2",
-                formRow: "2",
-                pageDataKey: "psychosocial",
-                dataParent: "psychosocial",
-                page: "History Psychosocial"
-              },
-              {
-                elementKey: "caffeineUseFrequency",
-                fqn: "psychosocial.caffeineUseFrequency",
-                inputType: "text",
-                label: "Caffeine use frequency",
                 formColumn: "2",
                 formRow: "2",
                 pageDataKey: "psychosocial",
@@ -718,128 +674,389 @@ export default function () {
               {
                 elementKey: "behaviours",
                 fqn: "psychosocial.behaviours",
-                inputType: "subgroup",
+                inputType: "fieldset",
                 formCss: "check_with_text_group",
                 formColumn: "1",
                 formRow: "3",
                 pageDataKey: "psychosocial",
                 dataParent: "psychosocial",
                 page: "History Psychosocial",
-                elements: [],
-                containerType: "subgroup",
-                containerKey: "behaviours"
-              },
-              {
-                elementKey: "tobaccoUse",
-                fqn: "psychosocial.tobaccoUse",
-                inputType: "checkbox",
-                label: "Tobacco use",
-                formColumn: "1",
-                formRow: "3",
-                pageDataKey: "psychosocial",
-                dataParent: "psychosocial",
-                page: "History Psychosocial",
-                helperText: "Have you used any tobacco products in the last 6 months?-NL-Have you used any tobacco products in the last 7 days?"
-              },
-              {
-                elementKey: "tobaccoUseFrequency",
-                fqn: "psychosocial.tobaccoUseFrequency",
-                inputType: "text",
-                label: "Tobacco use frequency",
-                formColumn: "2",
-                formRow: "3",
-                pageDataKey: "psychosocial",
-                dataParent: "psychosocial",
-                page: "History Psychosocial"
-              }
-            ]
-          },
-          {
-            formRow: "4",
-            elements: [
-              {
-                elementKey: "cannabisUse",
-                fqn: "psychosocial.cannabisUse",
-                inputType: "checkbox",
-                label: "Cannabis use",
-                formColumn: "1",
-                formRow: "4",
-                pageDataKey: "psychosocial",
-                dataParent: "psychosocial",
-                page: "History Psychosocial",
-                helperText: "Have you used any cannabis products in the last 6 months?-NL-Have you used any cannabis products in the last 7 days?"
-              },
-              {
-                elementKey: "cannabisUseFrequency",
-                fqn: "psychosocial.cannabisUseFrequency",
-                inputType: "text",
-                label: "Cannabis use frequency",
-                formColumn: "2",
-                formRow: "4",
-                pageDataKey: "psychosocial",
-                dataParent: "psychosocial",
-                page: "History Psychosocial"
-              }
-            ]
-          },
-          {
-            formRow: "5",
-            elements: [
-              {
-                elementKey: "alcoholUse",
-                fqn: "psychosocial.alcoholUse",
-                inputType: "checkbox",
-                label: "Alcohol use",
-                formColumn: "1",
-                formRow: "5",
-                pageDataKey: "psychosocial",
-                dataParent: "psychosocial",
-                page: "History Psychosocial",
-                helperText: "CAGE questionaire-NL-Have you ever felt that you should cut down on your drinking?-NL-Have you ever become annoyed by criticisms of your drinking?-NL-Have you ever felt guilty about your drinking?-NL-Have you ever had a morning eye opener to get rid of a hangover?"
-              },
-              {
-                elementKey: "alcoholUseFrequency",
-                fqn: "psychosocial.alcoholUseFrequency",
-                inputType: "text",
-                label: "Alcohol use frequency",
-                formColumn: "2",
-                formRow: "5",
-                pageDataKey: "psychosocial",
-                dataParent: "psychosocial",
-                page: "History Psychosocial"
-              }
-            ]
-          },
-          {
-            formRow: "6",
-            elements: [
-              {
-                elementKey: "substanceUse",
-                fqn: "psychosocial.substanceUse",
-                inputType: "checkbox",
-                label: "Substance use",
-                formColumn: "1",
-                formRow: "6",
-                pageDataKey: "psychosocial",
-                dataParent: "psychosocial",
-                page: "History Psychosocial",
-                helperText: "Have you used any substances in the last 6 months?-NL-Have you used any substances in the last 7 days?-NL-If so, make notes about which ones."
-              },
-              {
-                elementKey: "substanceUseFrequency",
-                fqn: "psychosocial.substanceUseFrequency",
-                inputType: "text",
-                label: "Substance use frequency",
-                formColumn: "2",
-                formRow: "6",
-                pageDataKey: "psychosocial",
-                dataParent: "psychosocial",
-                page: "History Psychosocial"
+                elements: [
+                  {
+                    elementKey: "exercise",
+                    fqn: "psychosocial.behaviours.exercise",
+                    inputType: "checkbox",
+                    label: "Exercise",
+                    fsetRow: "1",
+                    fsetCol: "1",
+                    pageDataKey: "psychosocial",
+                    dataParent: "psychosocial.behaviours",
+                    level2Key: "behaviours",
+                    page: "History Psychosocial",
+                    formColumn: "1"
+                  },
+                  {
+                    elementKey: "exerciseFrequency",
+                    fqn: "psychosocial.behaviours.exerciseFrequency",
+                    inputType: "text",
+                    label: "Exercise frequency",
+                    fsetRow: "1",
+                    fsetCol: "2",
+                    formOption: "hideLabel",
+                    pageDataKey: "psychosocial",
+                    dataParent: "psychosocial.behaviours",
+                    level2Key: "behaviours",
+                    page: "History Psychosocial",
+                    formColumn: "2"
+                  },
+                  {
+                    elementKey: "caffeineUse",
+                    fqn: "psychosocial.behaviours.caffeineUse",
+                    inputType: "checkbox",
+                    label: "Caffeine use",
+                    fsetRow: "2",
+                    fsetCol: "1",
+                    pageDataKey: "psychosocial",
+                    dataParent: "psychosocial.behaviours",
+                    level2Key: "behaviours",
+                    page: "History Psychosocial",
+                    formColumn: "1"
+                  },
+                  {
+                    elementKey: "caffeineUseFrequency",
+                    fqn: "psychosocial.behaviours.caffeineUseFrequency",
+                    inputType: "text",
+                    label: "Caffeine use frequency",
+                    fsetRow: "2",
+                    fsetCol: "2",
+                    formOption: "hideLabel",
+                    pageDataKey: "psychosocial",
+                    dataParent: "psychosocial.behaviours",
+                    level2Key: "behaviours",
+                    page: "History Psychosocial",
+                    formColumn: "2"
+                  },
+                  {
+                    elementKey: "tobaccoUse",
+                    fqn: "psychosocial.behaviours.tobaccoUse",
+                    inputType: "checkbox",
+                    label: "Tobacco use",
+                    fsetRow: "3",
+                    fsetCol: "1",
+                    pageDataKey: "psychosocial",
+                    dataParent: "psychosocial.behaviours",
+                    level2Key: "behaviours",
+                    page: "History Psychosocial",
+                    helperText: "Have you used any tobacco products in the last 6 months?-NL-Have you used any tobacco products in the last 7 days?",
+                    formColumn: "1"
+                  },
+                  {
+                    elementKey: "tobaccoUseFrequency",
+                    fqn: "psychosocial.behaviours.tobaccoUseFrequency",
+                    inputType: "text",
+                    label: "Tobacco use frequency",
+                    fsetRow: "3",
+                    fsetCol: "2",
+                    formOption: "hideLabel",
+                    pageDataKey: "psychosocial",
+                    dataParent: "psychosocial.behaviours",
+                    level2Key: "behaviours",
+                    page: "History Psychosocial",
+                    formColumn: "2"
+                  },
+                  {
+                    elementKey: "cannabisUse",
+                    fqn: "psychosocial.behaviours.cannabisUse",
+                    inputType: "checkbox",
+                    label: "Cannabis use",
+                    fsetRow: "4",
+                    fsetCol: "1",
+                    pageDataKey: "psychosocial",
+                    dataParent: "psychosocial.behaviours",
+                    level2Key: "behaviours",
+                    page: "History Psychosocial",
+                    helperText: "Have you used any cannabis products in the last 6 months?-NL-Have you used any cannabis products in the last 7 days?",
+                    formColumn: "1"
+                  },
+                  {
+                    elementKey: "cannabisUseFrequency",
+                    fqn: "psychosocial.behaviours.cannabisUseFrequency",
+                    inputType: "text",
+                    label: "Cannabis use frequency",
+                    fsetRow: "4",
+                    fsetCol: "2",
+                    formOption: "hideLabel",
+                    pageDataKey: "psychosocial",
+                    dataParent: "psychosocial.behaviours",
+                    level2Key: "behaviours",
+                    page: "History Psychosocial",
+                    formColumn: "2"
+                  },
+                  {
+                    elementKey: "alcoholUse",
+                    fqn: "psychosocial.behaviours.alcoholUse",
+                    inputType: "checkbox",
+                    label: "Alcohol use",
+                    fsetRow: "5",
+                    fsetCol: "1",
+                    pageDataKey: "psychosocial",
+                    dataParent: "psychosocial.behaviours",
+                    level2Key: "behaviours",
+                    page: "History Psychosocial",
+                    helperText: "CAGE questionaire-NL-Have you ever felt that you should cut down on your drinking?-NL-Have you ever become annoyed by criticisms of your drinking?-NL-Have you ever felt guilty about your drinking?-NL-Have you ever had a morning eye opener to get rid of a hangover?",
+                    formColumn: "1"
+                  },
+                  {
+                    elementKey: "alcoholUseFrequency",
+                    fqn: "psychosocial.behaviours.alcoholUseFrequency",
+                    inputType: "text",
+                    label: "Alcohol use frequency",
+                    fsetRow: "5",
+                    fsetCol: "2",
+                    formOption: "hideLabel",
+                    pageDataKey: "psychosocial",
+                    dataParent: "psychosocial.behaviours",
+                    level2Key: "behaviours",
+                    page: "History Psychosocial",
+                    formColumn: "2"
+                  },
+                  {
+                    elementKey: "substanceUse",
+                    fqn: "psychosocial.behaviours.substanceUse",
+                    inputType: "checkbox",
+                    label: "Substance use",
+                    fsetRow: "6",
+                    fsetCol: "1",
+                    pageDataKey: "psychosocial",
+                    dataParent: "psychosocial.behaviours",
+                    level2Key: "behaviours",
+                    page: "History Psychosocial",
+                    helperText: "Have you used any substances in the last 6 months?-NL-Have you used any substances in the last 7 days?-NL-If so, make notes about which ones.",
+                    formColumn: "1"
+                  },
+                  {
+                    elementKey: "substanceUseFrequency",
+                    fqn: "psychosocial.behaviours.substanceUseFrequency",
+                    inputType: "text",
+                    label: "Substance use frequency",
+                    fsetRow: "6",
+                    fsetCol: "2",
+                    formOption: "hideLabel",
+                    pageDataKey: "psychosocial",
+                    dataParent: "psychosocial.behaviours",
+                    level2Key: "behaviours",
+                    page: "History Psychosocial",
+                    formColumn: "2"
+                  }
+                ],
+                containerType: "fieldset",
+                containerKey: "behaviours",
+                formFieldSet: {
+                  rows: [
+                    {
+                      formRow: "1",
+                      elements: [
+                        {
+                          elementKey: "exercise",
+                          fqn: "psychosocial.behaviours.exercise",
+                          inputType: "checkbox",
+                          label: "Exercise",
+                          fsetRow: "1",
+                          fsetCol: "1",
+                          pageDataKey: "psychosocial",
+                          dataParent: "psychosocial.behaviours",
+                          level2Key: "behaviours",
+                          page: "History Psychosocial",
+                          formColumn: "1"
+                        },
+                        {
+                          elementKey: "exerciseFrequency",
+                          fqn: "psychosocial.behaviours.exerciseFrequency",
+                          inputType: "text",
+                          label: "Exercise frequency",
+                          fsetRow: "1",
+                          fsetCol: "2",
+                          formOption: "hideLabel",
+                          pageDataKey: "psychosocial",
+                          dataParent: "psychosocial.behaviours",
+                          level2Key: "behaviours",
+                          page: "History Psychosocial",
+                          formColumn: "2"
+                        }
+                      ]
+                    },
+                    {
+                      formRow: "2",
+                      elements: [
+                        {
+                          elementKey: "caffeineUse",
+                          fqn: "psychosocial.behaviours.caffeineUse",
+                          inputType: "checkbox",
+                          label: "Caffeine use",
+                          fsetRow: "2",
+                          fsetCol: "1",
+                          pageDataKey: "psychosocial",
+                          dataParent: "psychosocial.behaviours",
+                          level2Key: "behaviours",
+                          page: "History Psychosocial",
+                          formColumn: "1"
+                        },
+                        {
+                          elementKey: "caffeineUseFrequency",
+                          fqn: "psychosocial.behaviours.caffeineUseFrequency",
+                          inputType: "text",
+                          label: "Caffeine use frequency",
+                          fsetRow: "2",
+                          fsetCol: "2",
+                          formOption: "hideLabel",
+                          pageDataKey: "psychosocial",
+                          dataParent: "psychosocial.behaviours",
+                          level2Key: "behaviours",
+                          page: "History Psychosocial",
+                          formColumn: "2"
+                        }
+                      ]
+                    },
+                    {
+                      formRow: "3",
+                      elements: [
+                        {
+                          elementKey: "tobaccoUse",
+                          fqn: "psychosocial.behaviours.tobaccoUse",
+                          inputType: "checkbox",
+                          label: "Tobacco use",
+                          fsetRow: "3",
+                          fsetCol: "1",
+                          pageDataKey: "psychosocial",
+                          dataParent: "psychosocial.behaviours",
+                          level2Key: "behaviours",
+                          page: "History Psychosocial",
+                          helperText: "Have you used any tobacco products in the last 6 months?-NL-Have you used any tobacco products in the last 7 days?",
+                          formColumn: "1"
+                        },
+                        {
+                          elementKey: "tobaccoUseFrequency",
+                          fqn: "psychosocial.behaviours.tobaccoUseFrequency",
+                          inputType: "text",
+                          label: "Tobacco use frequency",
+                          fsetRow: "3",
+                          fsetCol: "2",
+                          formOption: "hideLabel",
+                          pageDataKey: "psychosocial",
+                          dataParent: "psychosocial.behaviours",
+                          level2Key: "behaviours",
+                          page: "History Psychosocial",
+                          formColumn: "2"
+                        }
+                      ]
+                    },
+                    {
+                      formRow: "4",
+                      elements: [
+                        {
+                          elementKey: "cannabisUse",
+                          fqn: "psychosocial.behaviours.cannabisUse",
+                          inputType: "checkbox",
+                          label: "Cannabis use",
+                          fsetRow: "4",
+                          fsetCol: "1",
+                          pageDataKey: "psychosocial",
+                          dataParent: "psychosocial.behaviours",
+                          level2Key: "behaviours",
+                          page: "History Psychosocial",
+                          helperText: "Have you used any cannabis products in the last 6 months?-NL-Have you used any cannabis products in the last 7 days?",
+                          formColumn: "1"
+                        },
+                        {
+                          elementKey: "cannabisUseFrequency",
+                          fqn: "psychosocial.behaviours.cannabisUseFrequency",
+                          inputType: "text",
+                          label: "Cannabis use frequency",
+                          fsetRow: "4",
+                          fsetCol: "2",
+                          formOption: "hideLabel",
+                          pageDataKey: "psychosocial",
+                          dataParent: "psychosocial.behaviours",
+                          level2Key: "behaviours",
+                          page: "History Psychosocial",
+                          formColumn: "2"
+                        }
+                      ]
+                    },
+                    {
+                      formRow: "5",
+                      elements: [
+                        {
+                          elementKey: "alcoholUse",
+                          fqn: "psychosocial.behaviours.alcoholUse",
+                          inputType: "checkbox",
+                          label: "Alcohol use",
+                          fsetRow: "5",
+                          fsetCol: "1",
+                          pageDataKey: "psychosocial",
+                          dataParent: "psychosocial.behaviours",
+                          level2Key: "behaviours",
+                          page: "History Psychosocial",
+                          helperText: "CAGE questionaire-NL-Have you ever felt that you should cut down on your drinking?-NL-Have you ever become annoyed by criticisms of your drinking?-NL-Have you ever felt guilty about your drinking?-NL-Have you ever had a morning eye opener to get rid of a hangover?",
+                          formColumn: "1"
+                        },
+                        {
+                          elementKey: "alcoholUseFrequency",
+                          fqn: "psychosocial.behaviours.alcoholUseFrequency",
+                          inputType: "text",
+                          label: "Alcohol use frequency",
+                          fsetRow: "5",
+                          fsetCol: "2",
+                          formOption: "hideLabel",
+                          pageDataKey: "psychosocial",
+                          dataParent: "psychosocial.behaviours",
+                          level2Key: "behaviours",
+                          page: "History Psychosocial",
+                          formColumn: "2"
+                        }
+                      ]
+                    },
+                    {
+                      formRow: "6",
+                      elements: [
+                        {
+                          elementKey: "substanceUse",
+                          fqn: "psychosocial.behaviours.substanceUse",
+                          inputType: "checkbox",
+                          label: "Substance use",
+                          fsetRow: "6",
+                          fsetCol: "1",
+                          pageDataKey: "psychosocial",
+                          dataParent: "psychosocial.behaviours",
+                          level2Key: "behaviours",
+                          page: "History Psychosocial",
+                          helperText: "Have you used any substances in the last 6 months?-NL-Have you used any substances in the last 7 days?-NL-If so, make notes about which ones.",
+                          formColumn: "1"
+                        },
+                        {
+                          elementKey: "substanceUseFrequency",
+                          fqn: "psychosocial.behaviours.substanceUseFrequency",
+                          inputType: "text",
+                          label: "Substance use frequency",
+                          fsetRow: "6",
+                          fsetCol: "2",
+                          formOption: "hideLabel",
+                          pageDataKey: "psychosocial",
+                          dataParent: "psychosocial.behaviours",
+                          level2Key: "behaviours",
+                          page: "History Psychosocial",
+                          formColumn: "2"
+                        }
+                      ]
+                    }
+                  ],
+                  columnsCount: 2
+                }
               }
             ]
           }
         ],
-        columnsCount: 5
+        columnsCount: 3
       },
       pageData: {}
     },
@@ -862,6 +1079,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "surgical",
               dataParent: "surgical.pastSurgery",
+              level2Key: "pastSurgery",
               page: "History Surgical",
               tableKey: "pastSurgery"
             },
@@ -875,6 +1093,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "surgical",
               dataParent: "surgical.pastSurgery",
+              level2Key: "pastSurgery",
               page: "History Surgical",
               tableKey: "pastSurgery"
             },
@@ -888,6 +1107,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "surgical",
               dataParent: "surgical.pastSurgery",
+              level2Key: "pastSurgery",
               page: "History Surgical",
               tableKey: "pastSurgery"
             }
@@ -907,6 +1127,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "surgical",
                     dataParent: "surgical.pastSurgery",
+                    level2Key: "pastSurgery",
                     page: "History Surgical",
                     tableKey: "pastSurgery"
                   },
@@ -920,6 +1141,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "surgical",
                     dataParent: "surgical.pastSurgery",
+                    level2Key: "pastSurgery",
                     page: "History Surgical",
                     tableKey: "pastSurgery"
                   },
@@ -933,6 +1155,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "surgical",
                     dataParent: "surgical.pastSurgery",
+                    level2Key: "pastSurgery",
                     page: "History Surgical",
                     tableKey: "pastSurgery"
                   }
@@ -953,6 +1176,7 @@ export default function () {
               label: "Appointment with",
               pageDataKey: "surgical",
               dataParent: "surgical.previous",
+              level2Key: "previous",
               page: "History Surgical",
               tableKey: "previous"
             },
@@ -963,6 +1187,7 @@ export default function () {
               label: "Appointment details",
               pageDataKey: "surgical",
               dataParent: "surgical.previous",
+              level2Key: "previous",
               page: "History Surgical",
               tableKey: "previous"
             },
@@ -976,6 +1201,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "surgical",
               dataParent: "surgical.previous",
+              level2Key: "previous",
               page: "History Surgical",
               tableKey: "previous"
             },
@@ -989,6 +1215,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "surgical",
               dataParent: "surgical.previous",
+              level2Key: "previous",
               page: "History Surgical",
               tableKey: "previous"
             },
@@ -1002,6 +1229,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "surgical",
               dataParent: "surgical.previous",
+              level2Key: "previous",
               page: "History Surgical",
               tableKey: "previous"
             }
@@ -1021,6 +1249,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "surgical",
                     dataParent: "surgical.previous",
+                    level2Key: "previous",
                     page: "History Surgical",
                     tableKey: "previous"
                   },
@@ -1034,6 +1263,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "surgical",
                     dataParent: "surgical.previous",
+                    level2Key: "previous",
                     page: "History Surgical",
                     tableKey: "previous"
                   }
@@ -1052,6 +1282,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "surgical",
                     dataParent: "surgical.previous",
+                    level2Key: "previous",
                     page: "History Surgical",
                     tableKey: "previous"
                   }
@@ -1404,6 +1635,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "careTeam",
               dataParent: "careTeam.teams",
+              level2Key: "teams",
               page: "Care team",
               tableKey: "teams"
             },
@@ -1417,6 +1649,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "careTeam",
               dataParent: "careTeam.teams",
+              level2Key: "teams",
               page: "Care team",
               tableKey: "teams"
             }
@@ -1436,6 +1669,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "careTeam",
                     dataParent: "careTeam.teams",
+                    level2Key: "teams",
                     page: "Care team",
                     tableKey: "teams"
                   },
@@ -1449,6 +1683,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "careTeam",
                     dataParent: "careTeam.teams",
+                    level2Key: "teams",
                     page: "Care team",
                     tableKey: "teams"
                   }
@@ -1482,6 +1717,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "pastAppointments",
               dataParent: "pastAppointments.encounters",
+              level2Key: "encounters",
               page: "Past appointments",
               tableKey: "encounters"
             },
@@ -1495,6 +1731,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "pastAppointments",
               dataParent: "pastAppointments.encounters",
+              level2Key: "encounters",
               page: "Past appointments",
               tableKey: "encounters"
             },
@@ -1508,6 +1745,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "pastAppointments",
               dataParent: "pastAppointments.encounters",
+              level2Key: "encounters",
               page: "Past appointments",
               tableKey: "encounters"
             },
@@ -1521,6 +1759,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "pastAppointments",
               dataParent: "pastAppointments.encounters",
+              level2Key: "encounters",
               page: "Past appointments",
               tableKey: "encounters"
             }
@@ -1540,6 +1779,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "pastAppointments",
                     dataParent: "pastAppointments.encounters",
+                    level2Key: "encounters",
                     page: "Past appointments",
                     tableKey: "encounters"
                   },
@@ -1553,6 +1793,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "pastAppointments",
                     dataParent: "pastAppointments.encounters",
+                    level2Key: "encounters",
                     page: "Past appointments",
                     tableKey: "encounters"
                   }
@@ -1571,6 +1812,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "pastAppointments",
                     dataParent: "pastAppointments.encounters",
+                    level2Key: "encounters",
                     page: "Past appointments",
                     tableKey: "encounters"
                   },
@@ -1584,6 +1826,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "pastAppointments",
                     dataParent: "pastAppointments.encounters",
+                    level2Key: "encounters",
                     page: "Past appointments",
                     tableKey: "encounters"
                   }
@@ -1607,6 +1850,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "pastAppointments",
               dataParent: "pastAppointments.outpatientAppointments",
+              level2Key: "outpatientAppointments",
               page: "Past appointments",
               tableKey: "outpatientAppointments"
             },
@@ -1620,6 +1864,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "pastAppointments",
               dataParent: "pastAppointments.outpatientAppointments",
+              level2Key: "outpatientAppointments",
               page: "Past appointments",
               tableKey: "outpatientAppointments"
             },
@@ -1633,6 +1878,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "pastAppointments",
               dataParent: "pastAppointments.outpatientAppointments",
+              level2Key: "outpatientAppointments",
               page: "Past appointments",
               tableKey: "outpatientAppointments"
             },
@@ -1646,6 +1892,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "pastAppointments",
               dataParent: "pastAppointments.outpatientAppointments",
+              level2Key: "outpatientAppointments",
               page: "Past appointments",
               tableKey: "outpatientAppointments"
             }
@@ -1665,6 +1912,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "pastAppointments",
                     dataParent: "pastAppointments.outpatientAppointments",
+                    level2Key: "outpatientAppointments",
                     page: "Past appointments",
                     tableKey: "outpatientAppointments"
                   },
@@ -1678,6 +1926,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "pastAppointments",
                     dataParent: "pastAppointments.outpatientAppointments",
+                    level2Key: "outpatientAppointments",
                     page: "Past appointments",
                     tableKey: "outpatientAppointments"
                   }
@@ -1696,6 +1945,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "pastAppointments",
                     dataParent: "pastAppointments.outpatientAppointments",
+                    level2Key: "outpatientAppointments",
                     page: "Past appointments",
                     tableKey: "outpatientAppointments"
                   },
@@ -1709,6 +1959,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "pastAppointments",
                     dataParent: "pastAppointments.outpatientAppointments",
+                    level2Key: "outpatientAppointments",
                     page: "Past appointments",
                     tableKey: "outpatientAppointments"
                   }

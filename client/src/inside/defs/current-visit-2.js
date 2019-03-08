@@ -21,6 +21,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table",
+              level2Key: "table",
               page: "Genitourinary assessment",
               tableKey: "table"
             },
@@ -33,6 +34,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table",
+              level2Key: "table",
               page: "Genitourinary assessment",
               containerType: "fieldset",
               containerKey: "pregnantGroup",
@@ -50,6 +52,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table",
+              level2Key: "table",
               page: "Genitourinary assessment",
               tableKey: "table"
             },
@@ -64,6 +67,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table",
+              level2Key: "table",
               page: "Genitourinary assessment",
               tableKey: "table"
             },
@@ -77,6 +81,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table.urinaryGroup1",
+              level2Key: "table",
               page: "Genitourinary assessment",
               tableKey: "table",
               formColumn: "1"
@@ -91,6 +96,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table.urinaryGroup1",
+              level2Key: "table",
               page: "Genitourinary assessment",
               tableKey: "table",
               formColumn: "1"
@@ -105,6 +111,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table.urinaryGroup1",
+              level2Key: "table",
               page: "Genitourinary assessment",
               tableKey: "table",
               formColumn: "1"
@@ -119,6 +126,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table.urinaryGroup1",
+              level2Key: "table",
               page: "Genitourinary assessment",
               tableKey: "table",
               formColumn: "1"
@@ -133,6 +141,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table.urinaryGroup1",
+              level2Key: "table",
               page: "Genitourinary assessment",
               tableKey: "table",
               formColumn: "1"
@@ -147,6 +156,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table.urinaryGroup1",
+              level2Key: "table",
               page: "Genitourinary assessment",
               tableKey: "table",
               formColumn: "1"
@@ -161,6 +171,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table.urinaryGroup1",
+              level2Key: "table",
               page: "Genitourinary assessment",
               tableKey: "table",
               formColumn: "1"
@@ -175,6 +186,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table.urinaryGroup1",
+              level2Key: "table",
               page: "Genitourinary assessment",
               tableKey: "table",
               formColumn: "1"
@@ -189,6 +201,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table",
+              level2Key: "table",
               page: "Genitourinary assessment",
               containerType: "fieldset",
               containerKey: "urinaryGroup1",
@@ -205,6 +218,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table.urinaryGroup2",
+              level2Key: "table",
               page: "Genitourinary assessment",
               tableKey: "table",
               formColumn: "1"
@@ -219,6 +233,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table.urinaryGroup2",
+              level2Key: "table",
               page: "Genitourinary assessment",
               tableKey: "table",
               formColumn: "1"
@@ -233,6 +248,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table.urinaryGroup2",
+              level2Key: "table",
               page: "Genitourinary assessment",
               options: [
                 {
@@ -264,6 +280,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table.urinaryGroup2",
+              level2Key: "table",
               page: "Genitourinary assessment",
               options: [
                 {
@@ -292,6 +309,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table.urinaryGroup2",
+              level2Key: "table",
               page: "Genitourinary assessment",
               options: [
                 {
@@ -312,6 +330,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table",
+              level2Key: "table",
               page: "Genitourinary assessment",
               containerType: "fieldset",
               containerKey: "urinaryGroup2",
@@ -328,6 +347,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table.foleyGroup",
+              level2Key: "table",
               page: "Genitourinary assessment",
               options: [
                 {
@@ -351,6 +371,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table",
+              level2Key: "table",
               page: "Genitourinary assessment",
               tableKey: "table"
             },
@@ -364,6 +385,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table.foleyGroup",
+              level2Key: "table",
               page: "Genitourinary assessment",
               tableKey: "table",
               formColumn: "1"
@@ -376,6 +398,7 @@ export default function () {
               tableColumn: "22",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table.foleyGroup",
+              level2Key: "table",
               page: "Genitourinary assessment",
               tableKey: "table"
             },
@@ -388,6 +411,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table",
+              level2Key: "table",
               page: "Genitourinary assessment",
               containerType: "fieldset",
               containerKey: "foleyGroup",
@@ -404,6 +428,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table.pelvicGroup",
+              level2Key: "table",
               page: "Genitourinary assessment",
               options: [
                 {
@@ -426,6 +451,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table.pelvicGroup",
+              level2Key: "table",
               page: "Genitourinary assessment",
               tableKey: "table",
               formColumn: "1"
@@ -440,6 +466,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table.pelvicGroup",
+              level2Key: "table",
               page: "Genitourinary assessment",
               tableCss: "hide-table-element",
               tableKey: "table",
@@ -455,6 +482,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table.pelvicGroup",
+              level2Key: "table",
               page: "Genitourinary assessment",
               options: [
                 {
@@ -479,6 +507,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table",
+              level2Key: "table",
               page: "Genitourinary assessment",
               containerType: "fieldset",
               containerKey: "pelvicGroup",
@@ -495,6 +524,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table.vaginal",
+              level2Key: "table",
               page: "Genitourinary assessment",
               tableKey: "table",
               formColumn: "1"
@@ -509,6 +539,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table.vaginal",
+              level2Key: "table",
               page: "Genitourinary assessment",
               tableKey: "table",
               formColumn: "1"
@@ -523,6 +554,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table.vaginal",
+              level2Key: "table",
               page: "Genitourinary assessment",
               tableKey: "table",
               formColumn: "1"
@@ -537,6 +569,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table.vaginal",
+              level2Key: "table",
               page: "Genitourinary assessment",
               tableKey: "table",
               formColumn: "1"
@@ -550,6 +583,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table",
+              level2Key: "table",
               page: "Genitourinary assessment",
               containerType: "fieldset",
               containerKey: "vaginal",
@@ -566,6 +600,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table.pregnantGroup",
+              level2Key: "table",
               page: "Genitourinary assessment",
               options: [
                 {
@@ -588,6 +623,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table.pregnantGroup",
+              level2Key: "table",
               page: "Genitourinary assessment",
               tableKey: "table",
               formColumn: "1"
@@ -602,6 +638,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table.pregnantGroup",
+              level2Key: "table",
               page: "Genitourinary assessment",
               tableKey: "table",
               formColumn: "1"
@@ -616,6 +653,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table.pregnantGroup",
+              level2Key: "table",
               page: "Genitourinary assessment",
               tableKey: "table",
               formColumn: "1"
@@ -629,6 +667,7 @@ export default function () {
               formRow: "4",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table.pregnantGroup",
+              level2Key: "table",
               page: "Genitourinary assessment",
               tableKey: "table"
             },
@@ -642,6 +681,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "genitourinary",
               dataParent: "genitourinary.table.foleyGroup",
+              level2Key: "table",
               page: "Genitourinary assessment",
               helperText: "eg. indwelling catheter",
               tableKey: "table",
@@ -664,6 +704,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "genitourinary",
                     dataParent: "genitourinary.table",
+                    level2Key: "table",
                     page: "Genitourinary assessment",
                     tableKey: "table"
                   },
@@ -678,6 +719,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "genitourinary",
                     dataParent: "genitourinary.table",
+                    level2Key: "table",
                     page: "Genitourinary assessment",
                     tableKey: "table"
                   },
@@ -692,6 +734,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "genitourinary",
                     dataParent: "genitourinary.table",
+                    level2Key: "table",
                     page: "Genitourinary assessment",
                     tableKey: "table"
                   },
@@ -706,6 +749,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "genitourinary",
                     dataParent: "genitourinary.table",
+                    level2Key: "table",
                     page: "Genitourinary assessment",
                     tableKey: "table"
                   }
@@ -724,6 +768,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "genitourinary",
                     dataParent: "genitourinary.table",
+                    level2Key: "table",
                     page: "Genitourinary assessment",
                     containerType: "fieldset",
                     containerKey: "urinaryGroup1",
@@ -744,6 +789,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "genitourinary",
                               dataParent: "genitourinary.table.urinaryGroup1",
+                              level2Key: "table",
                               page: "Genitourinary assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -763,6 +809,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "genitourinary",
                               dataParent: "genitourinary.table.urinaryGroup1",
+                              level2Key: "table",
                               page: "Genitourinary assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -782,6 +829,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "genitourinary",
                               dataParent: "genitourinary.table.urinaryGroup1",
+                              level2Key: "table",
                               page: "Genitourinary assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -801,6 +849,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "genitourinary",
                               dataParent: "genitourinary.table.urinaryGroup1",
+                              level2Key: "table",
                               page: "Genitourinary assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -820,6 +869,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "genitourinary",
                               dataParent: "genitourinary.table.urinaryGroup1",
+                              level2Key: "table",
                               page: "Genitourinary assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -839,6 +889,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "genitourinary",
                               dataParent: "genitourinary.table.urinaryGroup1",
+                              level2Key: "table",
                               page: "Genitourinary assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -858,6 +909,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "genitourinary",
                               dataParent: "genitourinary.table.urinaryGroup1",
+                              level2Key: "table",
                               page: "Genitourinary assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -877,6 +929,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "genitourinary",
                               dataParent: "genitourinary.table.urinaryGroup1",
+                              level2Key: "table",
                               page: "Genitourinary assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -895,6 +948,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "genitourinary",
                     dataParent: "genitourinary.table",
+                    level2Key: "table",
                     page: "Genitourinary assessment",
                     containerType: "fieldset",
                     containerKey: "urinaryGroup2",
@@ -915,6 +969,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "genitourinary",
                               dataParent: "genitourinary.table.urinaryGroup2",
+                              level2Key: "table",
                               page: "Genitourinary assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -934,6 +989,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "genitourinary",
                               dataParent: "genitourinary.table.urinaryGroup2",
+                              level2Key: "table",
                               page: "Genitourinary assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -953,6 +1009,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "genitourinary",
                               dataParent: "genitourinary.table.urinaryGroup2",
+                              level2Key: "table",
                               page: "Genitourinary assessment",
                               options: [
                                 {
@@ -989,6 +1046,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "genitourinary",
                               dataParent: "genitourinary.table.urinaryGroup2",
+                              level2Key: "table",
                               page: "Genitourinary assessment",
                               options: [
                                 {
@@ -1022,6 +1080,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "genitourinary",
                               dataParent: "genitourinary.table.urinaryGroup2",
+                              level2Key: "table",
                               page: "Genitourinary assessment",
                               options: [
                                 {
@@ -1049,6 +1108,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "genitourinary",
                     dataParent: "genitourinary.table",
+                    level2Key: "table",
                     page: "Genitourinary assessment",
                     containerType: "fieldset",
                     containerKey: "foleyGroup",
@@ -1069,6 +1129,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "genitourinary",
                               dataParent: "genitourinary.table.foleyGroup",
+                              level2Key: "table",
                               page: "Genitourinary assessment",
                               options: [
                                 {
@@ -1096,6 +1157,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "genitourinary",
                               dataParent: "genitourinary.table.foleyGroup",
+                              level2Key: "table",
                               page: "Genitourinary assessment",
                               helperText: "eg. indwelling catheter",
                               tableKey: "table",
@@ -1116,6 +1178,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "genitourinary",
                               dataParent: "genitourinary.table.foleyGroup",
+                              level2Key: "table",
                               page: "Genitourinary assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -1140,6 +1203,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "genitourinary",
                     dataParent: "genitourinary.table",
+                    level2Key: "table",
                     page: "Genitourinary assessment",
                     containerType: "fieldset",
                     containerKey: "pelvicGroup",
@@ -1160,6 +1224,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "genitourinary",
                               dataParent: "genitourinary.table.pelvicGroup",
+                              level2Key: "table",
                               page: "Genitourinary assessment",
                               options: [
                                 {
@@ -1187,6 +1252,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "genitourinary",
                               dataParent: "genitourinary.table.pelvicGroup",
+                              level2Key: "table",
                               page: "Genitourinary assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -1206,6 +1272,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "genitourinary",
                               dataParent: "genitourinary.table.pelvicGroup",
+                              level2Key: "table",
                               page: "Genitourinary assessment",
                               tableCss: "hide-table-element",
                               tableKey: "table",
@@ -1226,6 +1293,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "genitourinary",
                               dataParent: "genitourinary.table.pelvicGroup",
+                              level2Key: "table",
                               page: "Genitourinary assessment",
                               options: [
                                 {
@@ -1256,6 +1324,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "genitourinary",
                     dataParent: "genitourinary.table",
+                    level2Key: "table",
                     page: "Genitourinary assessment",
                     containerType: "fieldset",
                     containerKey: "vaginal",
@@ -1276,6 +1345,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "genitourinary",
                               dataParent: "genitourinary.table.vaginal",
+                              level2Key: "table",
                               page: "Genitourinary assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -1295,6 +1365,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "genitourinary",
                               dataParent: "genitourinary.table.vaginal",
+                              level2Key: "table",
                               page: "Genitourinary assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -1314,6 +1385,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "genitourinary",
                               dataParent: "genitourinary.table.vaginal",
+                              level2Key: "table",
                               page: "Genitourinary assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -1333,6 +1405,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "genitourinary",
                               dataParent: "genitourinary.table.vaginal",
+                              level2Key: "table",
                               page: "Genitourinary assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -1352,6 +1425,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "genitourinary",
                     dataParent: "genitourinary.table",
+                    level2Key: "table",
                     page: "Genitourinary assessment",
                     containerType: "fieldset",
                     containerKey: "pregnantGroup",
@@ -1372,6 +1446,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "genitourinary",
                               dataParent: "genitourinary.table.pregnantGroup",
+                              level2Key: "table",
                               page: "Genitourinary assessment",
                               options: [
                                 {
@@ -1399,6 +1474,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "genitourinary",
                               dataParent: "genitourinary.table.pregnantGroup",
+                              level2Key: "table",
                               page: "Genitourinary assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -1418,6 +1494,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "genitourinary",
                               dataParent: "genitourinary.table.pregnantGroup",
+                              level2Key: "table",
                               page: "Genitourinary assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -1437,6 +1514,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "genitourinary",
                               dataParent: "genitourinary.table.pregnantGroup",
+                              level2Key: "table",
                               page: "Genitourinary assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -1478,6 +1556,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "musculoskeletal",
               dataParent: "musculoskeletal.table",
+              level2Key: "table",
               page: "Musculoskeletal assessment",
               tableKey: "table"
             },
@@ -1492,6 +1571,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "musculoskeletal",
               dataParent: "musculoskeletal.table",
+              level2Key: "table",
               page: "Musculoskeletal assessment",
               tableKey: "table"
             },
@@ -1506,6 +1586,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "musculoskeletal",
               dataParent: "musculoskeletal.table",
+              level2Key: "table",
               page: "Musculoskeletal assessment",
               tableKey: "table"
             },
@@ -1520,6 +1601,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "musculoskeletal",
               dataParent: "musculoskeletal.table",
+              level2Key: "table",
               page: "Musculoskeletal assessment",
               tableKey: "table"
             },
@@ -1533,6 +1615,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "musculoskeletal",
               dataParent: "musculoskeletal.table",
+              level2Key: "table",
               page: "Musculoskeletal assessment",
               options: [
                 {
@@ -1554,6 +1637,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "musculoskeletal",
               dataParent: "musculoskeletal.table",
+              level2Key: "table",
               page: "Musculoskeletal assessment",
               options: [
                 {
@@ -1575,6 +1659,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "musculoskeletal",
               dataParent: "musculoskeletal.table",
+              level2Key: "table",
               page: "Musculoskeletal assessment",
               options: [
                 {
@@ -1596,6 +1681,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "musculoskeletal",
               dataParent: "musculoskeletal.table",
+              level2Key: "table",
               page: "Musculoskeletal assessment",
               options: [
                 {
@@ -1620,6 +1706,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "musculoskeletal",
               dataParent: "musculoskeletal.table",
+              level2Key: "table",
               page: "Musculoskeletal assessment",
               options: [
                 {
@@ -1644,6 +1731,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "musculoskeletal",
               dataParent: "musculoskeletal.table",
+              level2Key: "table",
               page: "Musculoskeletal assessment",
               options: [
                 {
@@ -1674,6 +1762,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "musculoskeletal",
               dataParent: "musculoskeletal.table",
+              level2Key: "table",
               page: "Musculoskeletal assessment",
               options: [
                 {
@@ -1698,6 +1787,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "musculoskeletal",
               dataParent: "musculoskeletal.table",
+              level2Key: "table",
               page: "Musculoskeletal assessment",
               options: [
                 {
@@ -1722,6 +1812,7 @@ export default function () {
               formRow: "4",
               pageDataKey: "musculoskeletal",
               dataParent: "musculoskeletal.table",
+              level2Key: "table",
               page: "Musculoskeletal assessment",
               options: [
                 {
@@ -1743,6 +1834,7 @@ export default function () {
               formRow: "4",
               pageDataKey: "musculoskeletal",
               dataParent: "musculoskeletal.table",
+              level2Key: "table",
               page: "Musculoskeletal assessment",
               options: [
                 {
@@ -1776,6 +1868,7 @@ export default function () {
               formRow: "5",
               pageDataKey: "musculoskeletal",
               dataParent: "musculoskeletal.table",
+              level2Key: "table",
               page: "Musculoskeletal assessment",
               tableKey: "table"
             }
@@ -1796,6 +1889,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "musculoskeletal",
                     dataParent: "musculoskeletal.table",
+                    level2Key: "table",
                     page: "Musculoskeletal assessment",
                     tableKey: "table"
                   },
@@ -1810,6 +1904,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "musculoskeletal",
                     dataParent: "musculoskeletal.table",
+                    level2Key: "table",
                     page: "Musculoskeletal assessment",
                     tableKey: "table"
                   },
@@ -1824,6 +1919,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "musculoskeletal",
                     dataParent: "musculoskeletal.table",
+                    level2Key: "table",
                     page: "Musculoskeletal assessment",
                     tableKey: "table"
                   },
@@ -1838,6 +1934,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "musculoskeletal",
                     dataParent: "musculoskeletal.table",
+                    level2Key: "table",
                     page: "Musculoskeletal assessment",
                     tableKey: "table"
                   }
@@ -1856,6 +1953,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "musculoskeletal",
                     dataParent: "musculoskeletal.table",
+                    level2Key: "table",
                     page: "Musculoskeletal assessment",
                     options: [
                       {
@@ -1877,6 +1975,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "musculoskeletal",
                     dataParent: "musculoskeletal.table",
+                    level2Key: "table",
                     page: "Musculoskeletal assessment",
                     options: [
                       {
@@ -1898,6 +1997,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "musculoskeletal",
                     dataParent: "musculoskeletal.table",
+                    level2Key: "table",
                     page: "Musculoskeletal assessment",
                     options: [
                       {
@@ -1919,6 +2019,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "musculoskeletal",
                     dataParent: "musculoskeletal.table",
+                    level2Key: "table",
                     page: "Musculoskeletal assessment",
                     options: [
                       {
@@ -1948,6 +2049,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "musculoskeletal",
                     dataParent: "musculoskeletal.table",
+                    level2Key: "table",
                     page: "Musculoskeletal assessment",
                     options: [
                       {
@@ -1972,6 +2074,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "musculoskeletal",
                     dataParent: "musculoskeletal.table",
+                    level2Key: "table",
                     page: "Musculoskeletal assessment",
                     options: [
                       {
@@ -2002,6 +2105,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "musculoskeletal",
                     dataParent: "musculoskeletal.table",
+                    level2Key: "table",
                     page: "Musculoskeletal assessment",
                     options: [
                       {
@@ -2026,6 +2130,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "musculoskeletal",
                     dataParent: "musculoskeletal.table",
+                    level2Key: "table",
                     page: "Musculoskeletal assessment",
                     options: [
                       {
@@ -2055,6 +2160,7 @@ export default function () {
                     formRow: "4",
                     pageDataKey: "musculoskeletal",
                     dataParent: "musculoskeletal.table",
+                    level2Key: "table",
                     page: "Musculoskeletal assessment",
                     options: [
                       {
@@ -2076,6 +2182,7 @@ export default function () {
                     formRow: "4",
                     pageDataKey: "musculoskeletal",
                     dataParent: "musculoskeletal.table",
+                    level2Key: "table",
                     page: "Musculoskeletal assessment",
                     options: [
                       {
@@ -2114,6 +2221,7 @@ export default function () {
                     formRow: "5",
                     pageDataKey: "musculoskeletal",
                     dataParent: "musculoskeletal.table",
+                    level2Key: "table",
                     page: "Musculoskeletal assessment",
                     tableKey: "table"
                   }
@@ -2148,6 +2256,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "pain",
               dataParent: "pain.table",
+              level2Key: "table",
               page: "Pain assessment",
               tableKey: "table"
             },
@@ -2160,6 +2269,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "pain",
               dataParent: "pain.table",
+              level2Key: "table",
               page: "Pain assessment",
               containerType: "fieldset",
               containerKey: "secondarySite",
@@ -2177,6 +2287,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "pain",
               dataParent: "pain.table",
+              level2Key: "table",
               page: "Pain assessment",
               tableKey: "table"
             },
@@ -2191,6 +2302,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "pain",
               dataParent: "pain.table",
+              level2Key: "table",
               page: "Pain assessment",
               tableKey: "table"
             },
@@ -2205,6 +2317,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "pain",
               dataParent: "pain.table",
+              level2Key: "table",
               page: "Pain assessment",
               tableKey: "table"
             },
@@ -2218,6 +2331,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "pain",
               dataParent: "pain.table.primarySite",
+              level2Key: "table",
               page: "Pain assessment",
               tableKey: "table",
               formColumn: "1"
@@ -2232,6 +2346,7 @@ export default function () {
               fsetCol: "2",
               pageDataKey: "pain",
               dataParent: "pain.table.primarySite",
+              level2Key: "table",
               page: "Pain assessment",
               tableKey: "table",
               formColumn: "2"
@@ -2246,6 +2361,7 @@ export default function () {
               fsetCol: "3",
               pageDataKey: "pain",
               dataParent: "pain.table.primarySite",
+              level2Key: "table",
               page: "Pain assessment",
               tableKey: "table",
               formColumn: "3"
@@ -2260,6 +2376,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "pain",
               dataParent: "pain.table.primarySite",
+              level2Key: "table",
               page: "Pain assessment",
               tableKey: "table",
               formColumn: "1"
@@ -2274,6 +2391,7 @@ export default function () {
               fsetCol: "2",
               pageDataKey: "pain",
               dataParent: "pain.table.primarySite",
+              level2Key: "table",
               page: "Pain assessment",
               tableKey: "table",
               formColumn: "2"
@@ -2288,6 +2406,7 @@ export default function () {
               fsetCol: "3",
               pageDataKey: "pain",
               dataParent: "pain.table.primarySite",
+              level2Key: "table",
               page: "Pain assessment",
               tableKey: "table",
               formColumn: "3"
@@ -2302,6 +2421,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "pain",
               dataParent: "pain.table.primarySite",
+              level2Key: "table",
               page: "Pain assessment",
               tableKey: "table",
               formColumn: "1"
@@ -2316,6 +2436,7 @@ export default function () {
               fsetCol: "2",
               pageDataKey: "pain",
               dataParent: "pain.table.primarySite",
+              level2Key: "table",
               page: "Pain assessment",
               tableKey: "table",
               formColumn: "2"
@@ -2331,6 +2452,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "pain",
               dataParent: "pain.table",
+              level2Key: "table",
               page: "Pain assessment",
               tableKey: "table"
             },
@@ -2344,6 +2466,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "pain",
               dataParent: "pain.table.primarySite",
+              level2Key: "table",
               page: "Pain assessment",
               tableKey: "table",
               formColumn: "1"
@@ -2357,6 +2480,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "pain",
               dataParent: "pain.table",
+              level2Key: "table",
               page: "Pain assessment",
               containerType: "fieldset",
               containerKey: "primarySite",
@@ -2373,6 +2497,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "pain",
               dataParent: "pain.table.secondarySite",
+              level2Key: "table",
               page: "Pain assessment"
             },
             {
@@ -2385,6 +2510,7 @@ export default function () {
               fsetCol: "2",
               pageDataKey: "pain",
               dataParent: "pain.table.secondarySite",
+              level2Key: "table",
               page: "Pain assessment"
             },
             {
@@ -2397,6 +2523,7 @@ export default function () {
               fsetCol: "3",
               pageDataKey: "pain",
               dataParent: "pain.table.secondarySite",
+              level2Key: "table",
               page: "Pain assessment"
             },
             {
@@ -2409,6 +2536,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "pain",
               dataParent: "pain.table.secondarySite",
+              level2Key: "table",
               page: "Pain assessment"
             },
             {
@@ -2421,6 +2549,7 @@ export default function () {
               fsetCol: "2",
               pageDataKey: "pain",
               dataParent: "pain.table.secondarySite",
+              level2Key: "table",
               page: "Pain assessment"
             },
             {
@@ -2433,6 +2562,7 @@ export default function () {
               fsetCol: "3",
               pageDataKey: "pain",
               dataParent: "pain.table.secondarySite",
+              level2Key: "table",
               page: "Pain assessment"
             },
             {
@@ -2445,6 +2575,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "pain",
               dataParent: "pain.table.secondarySite",
+              level2Key: "table",
               page: "Pain assessment"
             },
             {
@@ -2457,6 +2588,7 @@ export default function () {
               fsetCol: "2",
               pageDataKey: "pain",
               dataParent: "pain.table.secondarySite",
+              level2Key: "table",
               page: "Pain assessment"
             },
             {
@@ -2468,6 +2600,7 @@ export default function () {
               fsetCol: "3",
               pageDataKey: "pain",
               dataParent: "pain.table.secondarySite",
+              level2Key: "table",
               page: "Pain assessment",
               tableCss: "hide-table-element",
               tableKey: "table",
@@ -2483,6 +2616,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "pain",
               dataParent: "pain.table.secondarySite",
+              level2Key: "table",
               page: "Pain assessment"
             },
             {
@@ -2494,6 +2628,7 @@ export default function () {
               fsetCol: "3",
               pageDataKey: "pain",
               dataParent: "pain.table.primarySite",
+              level2Key: "table",
               page: "Pain assessment",
               tableCss: "hide-table-element"
             }
@@ -2514,6 +2649,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "pain",
                     dataParent: "pain.table",
+                    level2Key: "table",
                     page: "Pain assessment",
                     tableKey: "table"
                   },
@@ -2528,6 +2664,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "pain",
                     dataParent: "pain.table",
+                    level2Key: "table",
                     page: "Pain assessment",
                     tableKey: "table"
                   },
@@ -2542,6 +2679,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "pain",
                     dataParent: "pain.table",
+                    level2Key: "table",
                     page: "Pain assessment",
                     tableKey: "table"
                   },
@@ -2556,6 +2694,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "pain",
                     dataParent: "pain.table",
+                    level2Key: "table",
                     page: "Pain assessment",
                     tableKey: "table"
                   },
@@ -2570,6 +2709,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "pain",
                     dataParent: "pain.table",
+                    level2Key: "table",
                     page: "Pain assessment",
                     tableKey: "table"
                   }
@@ -2587,6 +2727,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "pain",
                     dataParent: "pain.table",
+                    level2Key: "table",
                     page: "Pain assessment",
                     containerType: "fieldset",
                     containerKey: "primarySite",
@@ -2607,6 +2748,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "pain",
                               dataParent: "pain.table.primarySite",
+                              level2Key: "table",
                               page: "Pain assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -2621,6 +2763,7 @@ export default function () {
                               fsetCol: "2",
                               pageDataKey: "pain",
                               dataParent: "pain.table.primarySite",
+                              level2Key: "table",
                               page: "Pain assessment",
                               tableKey: "table",
                               formColumn: "2"
@@ -2635,6 +2778,7 @@ export default function () {
                               fsetCol: "3",
                               pageDataKey: "pain",
                               dataParent: "pain.table.primarySite",
+                              level2Key: "table",
                               page: "Pain assessment",
                               tableKey: "table",
                               formColumn: "3"
@@ -2654,6 +2798,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "pain",
                               dataParent: "pain.table.primarySite",
+                              level2Key: "table",
                               page: "Pain assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -2668,6 +2813,7 @@ export default function () {
                               fsetCol: "2",
                               pageDataKey: "pain",
                               dataParent: "pain.table.primarySite",
+                              level2Key: "table",
                               page: "Pain assessment",
                               tableKey: "table",
                               formColumn: "2"
@@ -2682,6 +2828,7 @@ export default function () {
                               fsetCol: "3",
                               pageDataKey: "pain",
                               dataParent: "pain.table.primarySite",
+                              level2Key: "table",
                               page: "Pain assessment",
                               tableKey: "table",
                               formColumn: "3"
@@ -2701,6 +2848,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "pain",
                               dataParent: "pain.table.primarySite",
+                              level2Key: "table",
                               page: "Pain assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -2715,6 +2863,7 @@ export default function () {
                               fsetCol: "2",
                               pageDataKey: "pain",
                               dataParent: "pain.table.primarySite",
+                              level2Key: "table",
                               page: "Pain assessment",
                               tableKey: "table",
                               formColumn: "2"
@@ -2728,6 +2877,7 @@ export default function () {
                               fsetCol: "3",
                               pageDataKey: "pain",
                               dataParent: "pain.table.secondarySite",
+                              level2Key: "table",
                               page: "Pain assessment",
                               tableCss: "hide-table-element",
                               tableKey: "table",
@@ -2748,6 +2898,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "pain",
                               dataParent: "pain.table.primarySite",
+                              level2Key: "table",
                               page: "Pain assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -2772,6 +2923,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "pain",
                     dataParent: "pain.table",
+                    level2Key: "table",
                     page: "Pain assessment",
                     containerType: "fieldset",
                     containerKey: "secondarySite",
@@ -2792,6 +2944,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "pain",
                               dataParent: "pain.table.primarySite",
+                              level2Key: "table",
                               page: "Pain assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -2806,6 +2959,7 @@ export default function () {
                               fsetCol: "2",
                               pageDataKey: "pain",
                               dataParent: "pain.table.primarySite",
+                              level2Key: "table",
                               page: "Pain assessment",
                               tableKey: "table",
                               formColumn: "2"
@@ -2820,6 +2974,7 @@ export default function () {
                               fsetCol: "3",
                               pageDataKey: "pain",
                               dataParent: "pain.table.primarySite",
+                              level2Key: "table",
                               page: "Pain assessment",
                               tableKey: "table",
                               formColumn: "3"
@@ -2839,6 +2994,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "pain",
                               dataParent: "pain.table.primarySite",
+                              level2Key: "table",
                               page: "Pain assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -2853,6 +3009,7 @@ export default function () {
                               fsetCol: "2",
                               pageDataKey: "pain",
                               dataParent: "pain.table.primarySite",
+                              level2Key: "table",
                               page: "Pain assessment",
                               tableKey: "table",
                               formColumn: "2"
@@ -2867,6 +3024,7 @@ export default function () {
                               fsetCol: "3",
                               pageDataKey: "pain",
                               dataParent: "pain.table.primarySite",
+                              level2Key: "table",
                               page: "Pain assessment",
                               tableKey: "table",
                               formColumn: "3"
@@ -2886,6 +3044,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "pain",
                               dataParent: "pain.table.primarySite",
+                              level2Key: "table",
                               page: "Pain assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -2900,6 +3059,7 @@ export default function () {
                               fsetCol: "2",
                               pageDataKey: "pain",
                               dataParent: "pain.table.primarySite",
+                              level2Key: "table",
                               page: "Pain assessment",
                               tableKey: "table",
                               formColumn: "2"
@@ -2913,6 +3073,7 @@ export default function () {
                               fsetCol: "3",
                               pageDataKey: "pain",
                               dataParent: "pain.table.secondarySite",
+                              level2Key: "table",
                               page: "Pain assessment",
                               tableCss: "hide-table-element",
                               tableKey: "table",
@@ -2933,6 +3094,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "pain",
                               dataParent: "pain.table.primarySite",
+                              level2Key: "table",
                               page: "Pain assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -2974,21 +3136,23 @@ export default function () {
               formRow: "1",
               pageDataKey: "biopsychosocial",
               dataParent: "biopsychosocial.table",
+              level2Key: "table",
               page: "Biopsychosocial assessment",
               tableKey: "table"
             },
             {
-              elementKey: "restraint",
-              fqn: "biopsychosocial.table.restraint",
-              inputType: "fieldset",
-              formColumn: "3",
-              formRow: "6",
+              elementKey: "profession",
+              fqn: "biopsychosocial.table.profession",
+              inputType: "text",
+              label: "Profession",
+              tableColumn: "2",
+              formCss: "user_pro",
+              formColumn: "2",
+              formRow: "1",
               pageDataKey: "biopsychosocial",
               dataParent: "biopsychosocial.table",
+              level2Key: "table",
               page: "Biopsychosocial assessment",
-              containerType: "fieldset",
-              containerKey: "restraint",
-              tableCss: "hide-table-element",
               tableKey: "table"
             },
             {
@@ -3002,6 +3166,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "biopsychosocial",
               dataParent: "biopsychosocial.table",
+              level2Key: "table",
               page: "Biopsychosocial assessment",
               tableKey: "table"
             },
@@ -3016,20 +3181,21 @@ export default function () {
               formRow: "1",
               pageDataKey: "biopsychosocial",
               dataParent: "biopsychosocial.table",
+              level2Key: "table",
               page: "Biopsychosocial assessment",
               tableKey: "table"
             },
             {
-              elementKey: "aLabel",
-              fqn: "biopsychosocial.table.aLabel",
+              elementKey: "dvLabel",
+              fqn: "biopsychosocial.table.dvLabel",
               inputType: "form-label",
               label: "From our experience in the hospital, we know that domestic violence can be a problem. Is this a factor in your life?",
               tableColumn: "5",
-              formCss: "is-one-third",
               formColumn: "1",
               formRow: "2",
               pageDataKey: "biopsychosocial",
               dataParent: "biopsychosocial.table",
+              level2Key: "table",
               page: "Biopsychosocial assessment",
               tableCss: "hide-table-element",
               tableKey: "table"
@@ -3038,12 +3204,14 @@ export default function () {
               elementKey: "domesticViolence",
               fqn: "biopsychosocial.table.domesticViolence",
               inputType: "select",
+              label: "Domestic",
               tableColumn: "6",
               formCss: "is-one-third",
-              formColumn: "1",
-              formRow: "3",
+              formColumn: "2",
+              formRow: "2",
               pageDataKey: "biopsychosocial",
               dataParent: "biopsychosocial.table",
+              level2Key: "table",
               page: "Biopsychosocial assessment",
               options: [
                 {
@@ -3059,29 +3227,32 @@ export default function () {
               tableKey: "table"
             },
             {
-              elementKey: "aLabel",
-              fqn: "biopsychosocial.table.aLabel",
+              elementKey: "rcLabel",
+              fqn: "biopsychosocial.table.rcLabel",
               inputType: "form-label",
               label: "Would you like to speak to a social worker?",
               tableColumn: "7",
-              formCss: "is-one-third",
-              formColumn: "2",
-              formRow: "2",
+              formColumn: "1",
+              formRow: "3",
               pageDataKey: "biopsychosocial",
               dataParent: "biopsychosocial.table",
+              level2Key: "table",
               page: "Biopsychosocial assessment",
-              tableCss: "hide-table-element"
+              tableCss: "hide-table-element",
+              tableKey: "table"
             },
             {
               elementKey: "requestContact",
               fqn: "biopsychosocial.table.requestContact",
               inputType: "select",
+              label: "Request contact",
               tableColumn: "8",
               formCss: "is-one-third",
               formColumn: "2",
               formRow: "3",
               pageDataKey: "biopsychosocial",
               dataParent: "biopsychosocial.table",
+              level2Key: "table",
               page: "Biopsychosocial assessment",
               options: [
                 {
@@ -3106,6 +3277,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "biopsychosocial",
               dataParent: "biopsychosocial.table.behaviour",
+              level2Key: "table",
               page: "Biopsychosocial assessment",
               tableKey: "table",
               formColumn: "1"
@@ -3120,6 +3292,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "biopsychosocial",
               dataParent: "biopsychosocial.table.behaviour",
+              level2Key: "table",
               page: "Biopsychosocial assessment",
               tableKey: "table",
               formColumn: "1"
@@ -3134,6 +3307,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "biopsychosocial",
               dataParent: "biopsychosocial.table.behaviour",
+              level2Key: "table",
               page: "Biopsychosocial assessment",
               tableKey: "table",
               formColumn: "1"
@@ -3148,6 +3322,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "biopsychosocial",
               dataParent: "biopsychosocial.table.behaviour",
+              level2Key: "table",
               page: "Biopsychosocial assessment",
               tableKey: "table",
               formColumn: "1"
@@ -3162,6 +3337,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "biopsychosocial",
               dataParent: "biopsychosocial.table.behaviour",
+              level2Key: "table",
               page: "Biopsychosocial assessment",
               tableKey: "table",
               formColumn: "1"
@@ -3176,37 +3352,25 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "biopsychosocial",
               dataParent: "biopsychosocial.table.behaviour",
+              level2Key: "table",
               page: "Biopsychosocial assessment",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "behaviour",
-              fqn: "biopsychosocial.table.behaviour",
-              inputType: "fieldset",
-              label: "Behaviour",
-              formColumn: "1",
-              formRow: "4",
-              pageDataKey: "biopsychosocial",
-              dataParent: "biopsychosocial.table",
-              page: "Biopsychosocial assessment",
-              containerType: "fieldset",
-              containerKey: "behaviour",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
               elementKey: "uncommunicative",
-              fqn: "biopsychosocial.table.uncommunicative",
+              fqn: "biopsychosocial.table.behaviour.uncommunicative",
               inputType: "checkbox",
               label: "Uncommunicative",
               tableColumn: "15",
               fsetRow: "7",
               fsetCol: "1",
               pageDataKey: "biopsychosocial",
-              dataParent: "biopsychosocial.table",
+              dataParent: "biopsychosocial.table.behaviour",
+              level2Key: "table",
               page: "Biopsychosocial assessment",
-              tableKey: "table"
+              tableKey: "table",
+              formColumn: "1"
             },
             {
               elementKey: "none",
@@ -3218,6 +3382,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "biopsychosocial",
               dataParent: "biopsychosocial.table.hallucinations",
+              level2Key: "table",
               page: "Biopsychosocial assessment",
               tableKey: "table",
               formColumn: "1"
@@ -3232,6 +3397,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "biopsychosocial",
               dataParent: "biopsychosocial.table.hallucinations",
+              level2Key: "table",
               page: "Biopsychosocial assessment",
               tableKey: "table",
               formColumn: "1"
@@ -3246,6 +3412,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "biopsychosocial",
               dataParent: "biopsychosocial.table.hallucinations",
+              level2Key: "table",
               page: "Biopsychosocial assessment",
               tableKey: "table",
               formColumn: "1"
@@ -3260,23 +3427,10 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "biopsychosocial",
               dataParent: "biopsychosocial.table.hallucinations",
+              level2Key: "table",
               page: "Biopsychosocial assessment",
               tableKey: "table",
               formColumn: "1"
-            },
-            {
-              elementKey: "profession",
-              fqn: "biopsychosocial.table.profession",
-              inputType: "text",
-              label: "Profession",
-              tableColumn: "2",
-              formCss: "user_pro",
-              formColumn: "2",
-              formRow: "1",
-              pageDataKey: "biopsychosocial",
-              dataParent: "biopsychosocial.table",
-              page: "Biopsychosocial assessment",
-              tableKey: "table"
             },
             {
               elementKey: "suicidal",
@@ -3288,6 +3442,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "biopsychosocial",
               dataParent: "biopsychosocial.table.state",
+              level2Key: "table",
               page: "Biopsychosocial assessment",
               options: [
                 {
@@ -3313,6 +3468,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "biopsychosocial",
               dataParent: "biopsychosocial.table.state",
+              level2Key: "table",
               page: "Biopsychosocial assessment",
               options: [
                 {
@@ -3335,6 +3491,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "biopsychosocial",
               dataParent: "biopsychosocial.table.state",
+              level2Key: "table",
               page: "Biopsychosocial assessment",
               options: [
                 {
@@ -3348,28 +3505,16 @@ export default function () {
               formColumn: "1"
             },
             {
-              elementKey: "state",
-              fqn: "biopsychosocial.table.state",
-              inputType: "fieldset",
-              formColumn: "3",
-              formRow: "4",
-              pageDataKey: "biopsychosocial",
-              dataParent: "biopsychosocial.table",
-              page: "Biopsychosocial assessment",
-              containerType: "fieldset",
-              containerKey: "state",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
               elementKey: "hygieneGrooming",
               fqn: "biopsychosocial.table.hygiene.hygieneGrooming",
               inputType: "select",
+              label: "Hygiene",
               tableColumn: "23",
               fsetRow: "1",
               fsetCol: "1",
               pageDataKey: "biopsychosocial",
               dataParent: "biopsychosocial.table.hygiene",
+              level2Key: "table",
               page: "Biopsychosocial assessment",
               options: [
                 {
@@ -3392,25 +3537,10 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "biopsychosocial",
               dataParent: "biopsychosocial.table.hygiene",
+              level2Key: "table",
               page: "Biopsychosocial assessment",
               tableKey: "table",
               formColumn: "1"
-            },
-            {
-              elementKey: "hygiene",
-              fqn: "biopsychosocial.table.hygiene",
-              inputType: "fieldset",
-              label: "Hygiene and grooming",
-              formCss: "is-one-third",
-              formColumn: "1",
-              formRow: "5",
-              pageDataKey: "biopsychosocial",
-              dataParent: "biopsychosocial.table",
-              page: "Biopsychosocial assessment",
-              containerType: "fieldset",
-              containerKey: "hygiene",
-              tableCss: "hide-table-element",
-              tableKey: "table"
             },
             {
               elementKey: "supportPerson",
@@ -3422,6 +3552,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "biopsychosocial",
               dataParent: "biopsychosocial.table.support",
+              level2Key: "table",
               page: "Biopsychosocial assessment",
               tableKey: "table",
               formColumn: "1"
@@ -3436,24 +3567,10 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "biopsychosocial",
               dataParent: "biopsychosocial.table.support",
+              level2Key: "table",
               page: "Biopsychosocial assessment",
               tableKey: "table",
               formColumn: "1"
-            },
-            {
-              elementKey: "support",
-              fqn: "biopsychosocial.table.support",
-              inputType: "fieldset",
-              label: "Support",
-              formColumn: "1",
-              formRow: "6",
-              pageDataKey: "biopsychosocial",
-              dataParent: "biopsychosocial.table",
-              page: "Biopsychosocial assessment",
-              containerType: "fieldset",
-              containerKey: "support",
-              tableCss: "hide-table-element",
-              tableKey: "table"
             },
             {
               elementKey: "securityPolicePresent",
@@ -3465,6 +3582,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "biopsychosocial",
               dataParent: "biopsychosocial.table.security",
+              level2Key: "table",
               page: "Biopsychosocial assessment",
               tableKey: "table",
               formColumn: "1"
@@ -3479,23 +3597,10 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "biopsychosocial",
               dataParent: "biopsychosocial.table.security",
+              level2Key: "table",
               page: "Biopsychosocial assessment",
               tableKey: "table",
               formColumn: "1"
-            },
-            {
-              elementKey: "security",
-              fqn: "biopsychosocial.table.security",
-              inputType: "fieldset",
-              formColumn: "2",
-              formRow: "6",
-              pageDataKey: "biopsychosocial",
-              dataParent: "biopsychosocial.table",
-              page: "Biopsychosocial assessment",
-              containerType: "fieldset",
-              containerKey: "security",
-              tableCss: "hide-table-element",
-              tableKey: "table"
             },
             {
               elementKey: "patientRestrained",
@@ -3507,6 +3612,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "biopsychosocial",
               dataParent: "biopsychosocial.table.restraint",
+              level2Key: "table",
               page: "Biopsychosocial assessment",
               options: [
                 {
@@ -3529,6 +3635,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "biopsychosocial",
               dataParent: "biopsychosocial.table.restraint",
+              level2Key: "table",
               page: "Biopsychosocial assessment",
               tableKey: "table",
               formColumn: "1"
@@ -3543,6 +3650,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "biopsychosocial",
               dataParent: "biopsychosocial.table.restraint",
+              level2Key: "table",
               page: "Biopsychosocial assessment",
               tableKey: "table",
               formColumn: "1"
@@ -3557,23 +3665,120 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "biopsychosocial",
               dataParent: "biopsychosocial.table.restraint",
+              level2Key: "table",
               page: "Biopsychosocial assessment",
               tableKey: "table",
               formColumn: "1"
             },
             {
+              elementKey: "hygiene",
+              fqn: "biopsychosocial.table.hygiene",
+              inputType: "fieldset",
+              label: "Hygiene and grooming",
+              formCss: "is-one-third",
+              formColumn: "1",
+              formRow: "5",
+              pageDataKey: "biopsychosocial",
+              dataParent: "biopsychosocial.table",
+              level2Key: "table",
+              page: "Biopsychosocial assessment",
+              containerType: "fieldset",
+              containerKey: "hygiene",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
+              elementKey: "security",
+              fqn: "biopsychosocial.table.security",
+              inputType: "fieldset",
+              label: "Security",
+              formColumn: "2",
+              formRow: "6",
+              pageDataKey: "biopsychosocial",
+              dataParent: "biopsychosocial.table",
+              level2Key: "table",
+              page: "Biopsychosocial assessment",
+              containerType: "fieldset",
+              containerKey: "security",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
+              elementKey: "state",
+              fqn: "biopsychosocial.table.state",
+              inputType: "fieldset",
+              label: "State",
+              formColumn: "3",
+              formRow: "4",
+              pageDataKey: "biopsychosocial",
+              dataParent: "biopsychosocial.table",
+              level2Key: "table",
+              page: "Biopsychosocial assessment",
+              containerType: "fieldset",
+              containerKey: "state",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
               elementKey: "generalComments",
-              fqn: "biopsychosocial.table.restraint.generalComments",
+              fqn: "biopsychosocial.table.generalComments",
               inputType: "textarea",
               label: "General comments",
               tableColumn: "33",
-              fsetRow: "5",
-              fsetCol: "1",
               formColumn: "1",
               formRow: "7",
               pageDataKey: "biopsychosocial",
-              dataParent: "biopsychosocial.table.restraint",
+              dataParent: "biopsychosocial.table",
+              level2Key: "table",
               page: "Biopsychosocial assessment",
+              tableKey: "table"
+            },
+            {
+              elementKey: "support",
+              fqn: "biopsychosocial.table.support",
+              inputType: "fieldset",
+              label: "Support",
+              formColumn: "1",
+              formRow: "6",
+              pageDataKey: "biopsychosocial",
+              dataParent: "biopsychosocial.table",
+              level2Key: "table",
+              page: "Biopsychosocial assessment",
+              containerType: "fieldset",
+              containerKey: "support",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
+              elementKey: "behaviour",
+              fqn: "biopsychosocial.table.behaviour",
+              inputType: "fieldset",
+              label: "Behaviour",
+              formColumn: "1",
+              formRow: "4",
+              pageDataKey: "biopsychosocial",
+              dataParent: "biopsychosocial.table",
+              level2Key: "table",
+              page: "Biopsychosocial assessment",
+              containerType: "fieldset",
+              containerKey: "behaviour",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
+              elementKey: "restraint",
+              fqn: "biopsychosocial.table.restraint",
+              inputType: "fieldset",
+              label: "Restraint",
+              formColumn: "3",
+              formRow: "6",
+              pageDataKey: "biopsychosocial",
+              dataParent: "biopsychosocial.table",
+              level2Key: "table",
+              page: "Biopsychosocial assessment",
+              containerType: "fieldset",
+              containerKey: "restraint",
+              tableCss: "hide-table-element",
               tableKey: "table"
             },
             {
@@ -3585,6 +3790,7 @@ export default function () {
               formRow: "4",
               pageDataKey: "biopsychosocial",
               dataParent: "biopsychosocial.table",
+              level2Key: "table",
               page: "Biopsychosocial assessment",
               containerType: "fieldset",
               containerKey: "hallucinations",
@@ -3608,6 +3814,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "biopsychosocial",
                     dataParent: "biopsychosocial.table",
+                    level2Key: "table",
                     page: "Biopsychosocial assessment",
                     tableKey: "table"
                   },
@@ -3622,6 +3829,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "biopsychosocial",
                     dataParent: "biopsychosocial.table",
+                    level2Key: "table",
                     page: "Biopsychosocial assessment",
                     tableKey: "table"
                   },
@@ -3636,6 +3844,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "biopsychosocial",
                     dataParent: "biopsychosocial.table",
+                    level2Key: "table",
                     page: "Biopsychosocial assessment",
                     tableKey: "table"
                   },
@@ -3650,6 +3859,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "biopsychosocial",
                     dataParent: "biopsychosocial.table",
+                    level2Key: "table",
                     page: "Biopsychosocial assessment",
                     tableKey: "table"
                   }
@@ -3659,50 +3869,32 @@ export default function () {
                 formRow: "2",
                 elements: [
                   {
-                    elementKey: "aLabel",
-                    fqn: "biopsychosocial.table.aLabel",
+                    elementKey: "dvLabel",
+                    fqn: "biopsychosocial.table.dvLabel",
                     inputType: "form-label",
                     label: "From our experience in the hospital, we know that domestic violence can be a problem. Is this a factor in your life?",
                     tableColumn: "5",
-                    formCss: "is-one-third",
                     formColumn: "1",
                     formRow: "2",
                     pageDataKey: "biopsychosocial",
                     dataParent: "biopsychosocial.table",
+                    level2Key: "table",
                     page: "Biopsychosocial assessment",
                     tableCss: "hide-table-element",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "aLabel",
-                    fqn: "biopsychosocial.table.aLabel",
-                    inputType: "form-label",
-                    label: "From our experience in the hospital, we know that domestic violence can be a problem. Is this a factor in your life?",
-                    tableColumn: "5",
-                    formCss: "is-one-third",
-                    formColumn: "1",
-                    formRow: "2",
-                    pageDataKey: "biopsychosocial",
-                    dataParent: "biopsychosocial.table",
-                    page: "Biopsychosocial assessment",
-                    tableCss: "hide-table-element",
-                    tableKey: "table"
-                  }
-                ]
-              },
-              {
-                formRow: "3",
-                elements: [
-                  {
                     elementKey: "domesticViolence",
                     fqn: "biopsychosocial.table.domesticViolence",
                     inputType: "select",
+                    label: "Domestic",
                     tableColumn: "6",
                     formCss: "is-one-third",
-                    formColumn: "1",
-                    formRow: "3",
+                    formColumn: "2",
+                    formRow: "2",
                     pageDataKey: "biopsychosocial",
                     dataParent: "biopsychosocial.table",
+                    level2Key: "table",
                     page: "Biopsychosocial assessment",
                     options: [
                       {
@@ -3716,17 +3908,39 @@ export default function () {
                       }
                     ],
                     tableKey: "table"
+                  }
+                ]
+              },
+              {
+                formRow: "3",
+                elements: [
+                  {
+                    elementKey: "rcLabel",
+                    fqn: "biopsychosocial.table.rcLabel",
+                    inputType: "form-label",
+                    label: "Would you like to speak to a social worker?",
+                    tableColumn: "7",
+                    formColumn: "1",
+                    formRow: "3",
+                    pageDataKey: "biopsychosocial",
+                    dataParent: "biopsychosocial.table",
+                    level2Key: "table",
+                    page: "Biopsychosocial assessment",
+                    tableCss: "hide-table-element",
+                    tableKey: "table"
                   },
                   {
                     elementKey: "requestContact",
                     fqn: "biopsychosocial.table.requestContact",
                     inputType: "select",
+                    label: "Request contact",
                     tableColumn: "8",
                     formCss: "is-one-third",
                     formColumn: "2",
                     formRow: "3",
                     pageDataKey: "biopsychosocial",
                     dataParent: "biopsychosocial.table",
+                    level2Key: "table",
                     page: "Biopsychosocial assessment",
                     options: [
                       {
@@ -3755,6 +3969,7 @@ export default function () {
                     formRow: "4",
                     pageDataKey: "biopsychosocial",
                     dataParent: "biopsychosocial.table",
+                    level2Key: "table",
                     page: "Biopsychosocial assessment",
                     containerType: "fieldset",
                     containerKey: "behaviour",
@@ -3775,6 +3990,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "biopsychosocial",
                               dataParent: "biopsychosocial.table.behaviour",
+                              level2Key: "table",
                               page: "Biopsychosocial assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -3794,6 +4010,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "biopsychosocial",
                               dataParent: "biopsychosocial.table.behaviour",
+                              level2Key: "table",
                               page: "Biopsychosocial assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -3813,6 +4030,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "biopsychosocial",
                               dataParent: "biopsychosocial.table.behaviour",
+                              level2Key: "table",
                               page: "Biopsychosocial assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -3832,6 +4050,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "biopsychosocial",
                               dataParent: "biopsychosocial.table.behaviour",
+                              level2Key: "table",
                               page: "Biopsychosocial assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -3851,6 +4070,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "biopsychosocial",
                               dataParent: "biopsychosocial.table.behaviour",
+                              level2Key: "table",
                               page: "Biopsychosocial assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -3870,6 +4090,27 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "biopsychosocial",
                               dataParent: "biopsychosocial.table.behaviour",
+                              level2Key: "table",
+                              page: "Biopsychosocial assessment",
+                              tableKey: "table",
+                              formColumn: "1"
+                            }
+                          ]
+                        },
+                        {
+                          formRow: "7",
+                          elements: [
+                            {
+                              elementKey: "uncommunicative",
+                              fqn: "biopsychosocial.table.behaviour.uncommunicative",
+                              inputType: "checkbox",
+                              label: "Uncommunicative",
+                              tableColumn: "15",
+                              fsetRow: "7",
+                              fsetCol: "1",
+                              pageDataKey: "biopsychosocial",
+                              dataParent: "biopsychosocial.table.behaviour",
+                              level2Key: "table",
                               page: "Biopsychosocial assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -3889,6 +4130,7 @@ export default function () {
                     formRow: "4",
                     pageDataKey: "biopsychosocial",
                     dataParent: "biopsychosocial.table",
+                    level2Key: "table",
                     page: "Biopsychosocial assessment",
                     containerType: "fieldset",
                     containerKey: "hallucinations",
@@ -3909,6 +4151,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "biopsychosocial",
                               dataParent: "biopsychosocial.table.hallucinations",
+                              level2Key: "table",
                               page: "Biopsychosocial assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -3928,6 +4171,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "biopsychosocial",
                               dataParent: "biopsychosocial.table.hallucinations",
+                              level2Key: "table",
                               page: "Biopsychosocial assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -3947,6 +4191,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "biopsychosocial",
                               dataParent: "biopsychosocial.table.hallucinations",
+                              level2Key: "table",
                               page: "Biopsychosocial assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -3966,6 +4211,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "biopsychosocial",
                               dataParent: "biopsychosocial.table.hallucinations",
+                              level2Key: "table",
                               page: "Biopsychosocial assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -3980,10 +4226,12 @@ export default function () {
                     elementKey: "state",
                     fqn: "biopsychosocial.table.state",
                     inputType: "fieldset",
+                    label: "State",
                     formColumn: "3",
                     formRow: "4",
                     pageDataKey: "biopsychosocial",
                     dataParent: "biopsychosocial.table",
+                    level2Key: "table",
                     page: "Biopsychosocial assessment",
                     containerType: "fieldset",
                     containerKey: "state",
@@ -4004,6 +4252,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "biopsychosocial",
                               dataParent: "biopsychosocial.table.state",
+                              level2Key: "table",
                               page: "Biopsychosocial assessment",
                               options: [
                                 {
@@ -4034,6 +4283,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "biopsychosocial",
                               dataParent: "biopsychosocial.table.state",
+                              level2Key: "table",
                               page: "Biopsychosocial assessment",
                               options: [
                                 {
@@ -4061,6 +4311,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "biopsychosocial",
                               dataParent: "biopsychosocial.table.state",
+                              level2Key: "table",
                               page: "Biopsychosocial assessment",
                               options: [
                                 {
@@ -4094,6 +4345,7 @@ export default function () {
                     formRow: "5",
                     pageDataKey: "biopsychosocial",
                     dataParent: "biopsychosocial.table",
+                    level2Key: "table",
                     page: "Biopsychosocial assessment",
                     containerType: "fieldset",
                     containerKey: "hygiene",
@@ -4108,11 +4360,13 @@ export default function () {
                               elementKey: "hygieneGrooming",
                               fqn: "biopsychosocial.table.hygiene.hygieneGrooming",
                               inputType: "select",
+                              label: "Hygiene",
                               tableColumn: "23",
                               fsetRow: "1",
                               fsetCol: "1",
                               pageDataKey: "biopsychosocial",
                               dataParent: "biopsychosocial.table.hygiene",
+                              level2Key: "table",
                               page: "Biopsychosocial assessment",
                               options: [
                                 {
@@ -4140,6 +4394,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "biopsychosocial",
                               dataParent: "biopsychosocial.table.hygiene",
+                              level2Key: "table",
                               page: "Biopsychosocial assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -4164,6 +4419,7 @@ export default function () {
                     formRow: "6",
                     pageDataKey: "biopsychosocial",
                     dataParent: "biopsychosocial.table",
+                    level2Key: "table",
                     page: "Biopsychosocial assessment",
                     containerType: "fieldset",
                     containerKey: "support",
@@ -4184,6 +4440,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "biopsychosocial",
                               dataParent: "biopsychosocial.table.support",
+                              level2Key: "table",
                               page: "Biopsychosocial assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -4203,6 +4460,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "biopsychosocial",
                               dataParent: "biopsychosocial.table.support",
+                              level2Key: "table",
                               page: "Biopsychosocial assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -4217,10 +4475,12 @@ export default function () {
                     elementKey: "security",
                     fqn: "biopsychosocial.table.security",
                     inputType: "fieldset",
+                    label: "Security",
                     formColumn: "2",
                     formRow: "6",
                     pageDataKey: "biopsychosocial",
                     dataParent: "biopsychosocial.table",
+                    level2Key: "table",
                     page: "Biopsychosocial assessment",
                     containerType: "fieldset",
                     containerKey: "security",
@@ -4241,6 +4501,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "biopsychosocial",
                               dataParent: "biopsychosocial.table.security",
+                              level2Key: "table",
                               page: "Biopsychosocial assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -4260,6 +4521,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "biopsychosocial",
                               dataParent: "biopsychosocial.table.security",
+                              level2Key: "table",
                               page: "Biopsychosocial assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -4274,10 +4536,12 @@ export default function () {
                     elementKey: "restraint",
                     fqn: "biopsychosocial.table.restraint",
                     inputType: "fieldset",
+                    label: "Restraint",
                     formColumn: "3",
                     formRow: "6",
                     pageDataKey: "biopsychosocial",
                     dataParent: "biopsychosocial.table",
+                    level2Key: "table",
                     page: "Biopsychosocial assessment",
                     containerType: "fieldset",
                     containerKey: "restraint",
@@ -4298,6 +4562,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "biopsychosocial",
                               dataParent: "biopsychosocial.table.restraint",
+                              level2Key: "table",
                               page: "Biopsychosocial assessment",
                               options: [
                                 {
@@ -4325,6 +4590,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "biopsychosocial",
                               dataParent: "biopsychosocial.table.restraint",
+                              level2Key: "table",
                               page: "Biopsychosocial assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -4344,6 +4610,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "biopsychosocial",
                               dataParent: "biopsychosocial.table.restraint",
+                              level2Key: "table",
                               page: "Biopsychosocial assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -4363,35 +4630,35 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "biopsychosocial",
                               dataParent: "biopsychosocial.table.restraint",
+                              level2Key: "table",
                               page: "Biopsychosocial assessment",
                               tableKey: "table",
                               formColumn: "1"
-                            }
-                          ]
-                        },
-                        {
-                          formRow: "5",
-                          elements: [
-                            {
-                              elementKey: "generalComments",
-                              fqn: "biopsychosocial.table.restraint.generalComments",
-                              inputType: "textarea",
-                              label: "General comments",
-                              tableColumn: "33",
-                              fsetRow: "5",
-                              fsetCol: "1",
-                              formColumn: "1",
-                              formRow: "7",
-                              pageDataKey: "biopsychosocial",
-                              dataParent: "biopsychosocial.table.restraint",
-                              page: "Biopsychosocial assessment",
-                              tableKey: "table"
                             }
                           ]
                         }
                       ],
                       columnsCount: 1
                     }
+                  }
+                ]
+              },
+              {
+                formRow: "7",
+                elements: [
+                  {
+                    elementKey: "generalComments",
+                    fqn: "biopsychosocial.table.generalComments",
+                    inputType: "textarea",
+                    label: "General comments",
+                    tableColumn: "33",
+                    formColumn: "1",
+                    formRow: "7",
+                    pageDataKey: "biopsychosocial",
+                    dataParent: "biopsychosocial.table",
+                    level2Key: "table",
+                    page: "Biopsychosocial assessment",
+                    tableKey: "table"
                   }
                 ]
               }
@@ -4424,7 +4691,8 @@ export default function () {
               formRow: "1",
               pageDataKey: "nonmedOrders",
               dataParent: "nonmedOrders.table",
-              page: "nonmedOrders",
+              level2Key: "table",
+              page: "Orders",
               tableKey: "table"
             },
             {
@@ -4438,7 +4706,8 @@ export default function () {
               formRow: "1",
               pageDataKey: "nonmedOrders",
               dataParent: "nonmedOrders.table",
-              page: "nonmedOrders",
+              level2Key: "table",
+              page: "Orders",
               tableKey: "table"
             },
             {
@@ -4452,7 +4721,8 @@ export default function () {
               formRow: "1",
               pageDataKey: "nonmedOrders",
               dataParent: "nonmedOrders.table",
-              page: "nonmedOrders",
+              level2Key: "table",
+              page: "Orders",
               tableKey: "table"
             },
             {
@@ -4466,7 +4736,8 @@ export default function () {
               formRow: "1",
               pageDataKey: "nonmedOrders",
               dataParent: "nonmedOrders.table",
-              page: "nonmedOrders",
+              level2Key: "table",
+              page: "Orders",
               tableKey: "table"
             },
             {
@@ -4479,7 +4750,8 @@ export default function () {
               formRow: "2",
               pageDataKey: "nonmedOrders",
               dataParent: "nonmedOrders.table",
-              page: "nonmedOrders",
+              level2Key: "table",
+              page: "Orders",
               tableKey: "table"
             },
             {
@@ -4492,7 +4764,8 @@ export default function () {
               formRow: "2",
               pageDataKey: "nonmedOrders",
               dataParent: "nonmedOrders.table",
-              page: "nonmedOrders",
+              level2Key: "table",
+              page: "Orders",
               mandatory: "If order is filled, this is mandatory",
               tableKey: "table"
             },
@@ -4506,7 +4779,8 @@ export default function () {
               formRow: "2",
               pageDataKey: "nonmedOrders",
               dataParent: "nonmedOrders.table",
-              page: "nonmedOrders",
+              level2Key: "table",
+              page: "Orders",
               mandatory: "?",
               tableKey: "table"
             },
@@ -4520,7 +4794,8 @@ export default function () {
               formRow: "2",
               pageDataKey: "nonmedOrders",
               dataParent: "nonmedOrders.table",
-              page: "nonmedOrders",
+              level2Key: "table",
+              page: "Orders",
               mandatory: "?",
               tableKey: "table"
             },
@@ -4534,7 +4809,8 @@ export default function () {
               formRow: "3",
               pageDataKey: "nonmedOrders",
               dataParent: "nonmedOrders.table",
-              page: "nonmedOrders",
+              level2Key: "table",
+              page: "Orders",
               mandatory: "If order is filled, this is mandatory",
               tableKey: "table"
             },
@@ -4548,7 +4824,8 @@ export default function () {
               formRow: "3",
               pageDataKey: "nonmedOrders",
               dataParent: "nonmedOrders.table",
-              page: "nonmedOrders",
+              level2Key: "table",
+              page: "Orders",
               mandatory: "?",
               tableKey: "table"
             },
@@ -4562,7 +4839,8 @@ export default function () {
               formRow: "3",
               pageDataKey: "nonmedOrders",
               dataParent: "nonmedOrders.table",
-              page: "nonmedOrders",
+              level2Key: "table",
+              page: "Orders",
               mandatory: "?"
             },
             {
@@ -4575,7 +4853,8 @@ export default function () {
               formRow: "3",
               pageDataKey: "nonmedOrders",
               dataParent: "nonmedOrders.table",
-              page: "nonmedOrders",
+              level2Key: "table",
+              page: "Orders",
               mandatory: "?",
               tableKey: "table"
             },
@@ -4589,7 +4868,8 @@ export default function () {
               formRow: "4",
               pageDataKey: "nonmedOrders",
               dataParent: "nonmedOrders.table",
-              page: "nonmedOrders",
+              level2Key: "table",
+              page: "Orders",
               mandatory: "?",
               options: [
                 {
@@ -4617,7 +4897,8 @@ export default function () {
               formRow: "4",
               pageDataKey: "nonmedOrders",
               dataParent: "nonmedOrders.table",
-              page: "nonmedOrders",
+              level2Key: "table",
+              page: "Orders",
               tableKey: "table"
             },
             {
@@ -4630,7 +4911,8 @@ export default function () {
               formRow: "5",
               pageDataKey: "nonmedOrders",
               dataParent: "nonmedOrders.table",
-              page: "nonmedOrders",
+              level2Key: "table",
+              page: "Orders",
               tableKey: "table"
             }
           ],
@@ -4650,7 +4932,8 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "nonmedOrders",
                     dataParent: "nonmedOrders.table",
-                    page: "nonmedOrders",
+                    level2Key: "table",
+                    page: "Orders",
                     tableKey: "table"
                   },
                   {
@@ -4664,7 +4947,8 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "nonmedOrders",
                     dataParent: "nonmedOrders.table",
-                    page: "nonmedOrders",
+                    level2Key: "table",
+                    page: "Orders",
                     tableKey: "table"
                   },
                   {
@@ -4678,7 +4962,8 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "nonmedOrders",
                     dataParent: "nonmedOrders.table",
-                    page: "nonmedOrders",
+                    level2Key: "table",
+                    page: "Orders",
                     tableKey: "table"
                   },
                   {
@@ -4692,7 +4977,8 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "nonmedOrders",
                     dataParent: "nonmedOrders.table",
-                    page: "nonmedOrders",
+                    level2Key: "table",
+                    page: "Orders",
                     tableKey: "table"
                   }
                 ]
@@ -4710,7 +4996,8 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "nonmedOrders",
                     dataParent: "nonmedOrders.table",
-                    page: "nonmedOrders",
+                    level2Key: "table",
+                    page: "Orders",
                     tableKey: "table"
                   },
                   {
@@ -4723,7 +5010,8 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "nonmedOrders",
                     dataParent: "nonmedOrders.table",
-                    page: "nonmedOrders",
+                    level2Key: "table",
+                    page: "Orders",
                     mandatory: "If order is filled, this is mandatory",
                     tableKey: "table"
                   },
@@ -4737,7 +5025,8 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "nonmedOrders",
                     dataParent: "nonmedOrders.table",
-                    page: "nonmedOrders",
+                    level2Key: "table",
+                    page: "Orders",
                     mandatory: "?",
                     tableKey: "table"
                   },
@@ -4751,7 +5040,8 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "nonmedOrders",
                     dataParent: "nonmedOrders.table",
-                    page: "nonmedOrders",
+                    level2Key: "table",
+                    page: "Orders",
                     mandatory: "?",
                     tableKey: "table"
                   }
@@ -4770,7 +5060,8 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "nonmedOrders",
                     dataParent: "nonmedOrders.table",
-                    page: "nonmedOrders",
+                    level2Key: "table",
+                    page: "Orders",
                     mandatory: "If order is filled, this is mandatory",
                     tableKey: "table"
                   },
@@ -4784,7 +5075,8 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "nonmedOrders",
                     dataParent: "nonmedOrders.table",
-                    page: "nonmedOrders",
+                    level2Key: "table",
+                    page: "Orders",
                     mandatory: "?",
                     tableKey: "table"
                   },
@@ -4798,7 +5090,8 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "nonmedOrders",
                     dataParent: "nonmedOrders.table",
-                    page: "nonmedOrders",
+                    level2Key: "table",
+                    page: "Orders",
                     mandatory: "?",
                     tableKey: "table"
                   },
@@ -4812,7 +5105,8 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "nonmedOrders",
                     dataParent: "nonmedOrders.table",
-                    page: "nonmedOrders",
+                    level2Key: "table",
+                    page: "Orders",
                     mandatory: "?",
                     tableKey: "table"
                   }
@@ -4831,7 +5125,8 @@ export default function () {
                     formRow: "4",
                     pageDataKey: "nonmedOrders",
                     dataParent: "nonmedOrders.table",
-                    page: "nonmedOrders",
+                    level2Key: "table",
+                    page: "Orders",
                     mandatory: "?",
                     options: [
                       {
@@ -4859,7 +5154,8 @@ export default function () {
                     formRow: "4",
                     pageDataKey: "nonmedOrders",
                     dataParent: "nonmedOrders.table",
-                    page: "nonmedOrders",
+                    level2Key: "table",
+                    page: "Orders",
                     tableKey: "table"
                   }
                 ]
@@ -4877,7 +5173,8 @@ export default function () {
                     formRow: "5",
                     pageDataKey: "nonmedOrders",
                     dataParent: "nonmedOrders.table",
-                    page: "nonmedOrders",
+                    level2Key: "table",
+                    page: "Orders",
                     tableKey: "table"
                   }
                 ]
@@ -4911,6 +5208,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "referrals",
               dataParent: "referrals.table",
+              level2Key: "table",
               page: "Referrals",
               tableKey: "table"
             },
@@ -4925,6 +5223,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "referrals",
               dataParent: "referrals.table",
+              level2Key: "table",
               page: "Referrals",
               tableKey: "table"
             },
@@ -4939,6 +5238,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "referrals",
               dataParent: "referrals.table",
+              level2Key: "table",
               page: "Referrals",
               tableKey: "table"
             },
@@ -4953,6 +5253,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "referrals",
               dataParent: "referrals.table",
+              level2Key: "table",
               page: "Referrals",
               tableKey: "table"
             },
@@ -4966,6 +5267,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "referrals",
               dataParent: "referrals.table",
+              level2Key: "table",
               page: "Referrals",
               tableKey: "table"
             },
@@ -4979,6 +5281,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "referrals",
               dataParent: "referrals.table",
+              level2Key: "table",
               page: "Referrals",
               tableKey: "table"
             },
@@ -4991,6 +5294,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "referrals",
               dataParent: "referrals.table",
+              level2Key: "table",
               page: "Referrals",
               tableCss: "hide-table-element",
               tableKey: "table"
@@ -5005,6 +5309,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "referrals",
               dataParent: "referrals.table",
+              level2Key: "table",
               page: "Referrals",
               tableKey: "table"
             },
@@ -5018,6 +5323,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "referrals",
               dataParent: "referrals.table",
+              level2Key: "table",
               page: "Referrals",
               tableKey: "table"
             },
@@ -5031,6 +5337,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "referrals",
               dataParent: "referrals.table",
+              level2Key: "table",
               page: "Referrals",
               options: [
                 {
@@ -5059,6 +5366,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "referrals",
                     dataParent: "referrals.table",
+                    level2Key: "table",
                     page: "Referrals",
                     tableKey: "table"
                   },
@@ -5073,6 +5381,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "referrals",
                     dataParent: "referrals.table",
+                    level2Key: "table",
                     page: "Referrals",
                     tableKey: "table"
                   },
@@ -5087,6 +5396,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "referrals",
                     dataParent: "referrals.table",
+                    level2Key: "table",
                     page: "Referrals",
                     tableKey: "table"
                   },
@@ -5101,6 +5411,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "referrals",
                     dataParent: "referrals.table",
+                    level2Key: "table",
                     page: "Referrals",
                     tableKey: "table"
                   }
@@ -5119,6 +5430,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "referrals",
                     dataParent: "referrals.table",
+                    level2Key: "table",
                     page: "Referrals",
                     tableKey: "table"
                   },
@@ -5132,6 +5444,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "referrals",
                     dataParent: "referrals.table",
+                    level2Key: "table",
                     page: "Referrals",
                     tableKey: "table"
                   },
@@ -5144,6 +5457,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "referrals",
                     dataParent: "referrals.table",
+                    level2Key: "table",
                     page: "Referrals",
                     tableCss: "hide-table-element",
                     tableKey: "table"
@@ -5163,6 +5477,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "referrals",
                     dataParent: "referrals.table",
+                    level2Key: "table",
                     page: "Referrals",
                     tableKey: "table"
                   },
@@ -5176,6 +5491,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "referrals",
                     dataParent: "referrals.table",
+                    level2Key: "table",
                     page: "Referrals",
                     tableKey: "table"
                   },
@@ -5189,6 +5505,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "referrals",
                     dataParent: "referrals.table",
+                    level2Key: "table",
                     page: "Referrals",
                     options: [
                       {
@@ -5231,6 +5548,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "labRequisitions",
               dataParent: "labRequisitions.table",
+              level2Key: "table",
               page: "LabRequisitions",
               tableKey: "table"
             },
@@ -5245,6 +5563,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "labRequisitions",
               dataParent: "labRequisitions.table",
+              level2Key: "table",
               page: "LabRequisitions",
               tableKey: "table"
             },
@@ -5259,6 +5578,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "labRequisitions",
               dataParent: "labRequisitions.table",
+              level2Key: "table",
               page: "LabRequisitions",
               tableKey: "table"
             },
@@ -5273,6 +5593,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "labRequisitions",
               dataParent: "labRequisitions.table",
+              level2Key: "table",
               page: "LabRequisitions",
               tableKey: "table"
             },
@@ -5286,6 +5607,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "labRequisitions",
               dataParent: "labRequisitions.table",
+              level2Key: "table",
               page: "LabRequisitions",
               tableKey: "table"
             },
@@ -5299,6 +5621,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "labRequisitions",
               dataParent: "labRequisitions.table",
+              level2Key: "table",
               page: "LabRequisitions",
               tableKey: "table"
             },
@@ -5312,6 +5635,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "labRequisitions",
               dataParent: "labRequisitions.table",
+              level2Key: "table",
               page: "LabRequisitions",
               tableKey: "table"
             },
@@ -5325,6 +5649,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "labRequisitions",
               dataParent: "labRequisitions.table",
+              level2Key: "table",
               page: "LabRequisitions",
               tableKey: "table"
             },
@@ -5338,6 +5663,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "labRequisitions",
               dataParent: "labRequisitions.table",
+              level2Key: "table",
               page: "LabRequisitions",
               options: [
                 {
@@ -5372,6 +5698,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "labRequisitions",
                     dataParent: "labRequisitions.table",
+                    level2Key: "table",
                     page: "LabRequisitions",
                     tableKey: "table"
                   },
@@ -5386,6 +5713,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "labRequisitions",
                     dataParent: "labRequisitions.table",
+                    level2Key: "table",
                     page: "LabRequisitions",
                     tableKey: "table"
                   },
@@ -5400,6 +5728,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "labRequisitions",
                     dataParent: "labRequisitions.table",
+                    level2Key: "table",
                     page: "LabRequisitions",
                     tableKey: "table"
                   },
@@ -5414,6 +5743,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "labRequisitions",
                     dataParent: "labRequisitions.table",
+                    level2Key: "table",
                     page: "LabRequisitions",
                     tableKey: "table"
                   }
@@ -5432,6 +5762,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "labRequisitions",
                     dataParent: "labRequisitions.table",
+                    level2Key: "table",
                     page: "LabRequisitions",
                     tableKey: "table"
                   },
@@ -5445,6 +5776,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "labRequisitions",
                     dataParent: "labRequisitions.table",
+                    level2Key: "table",
                     page: "LabRequisitions",
                     tableKey: "table"
                   },
@@ -5458,6 +5790,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "labRequisitions",
                     dataParent: "labRequisitions.table",
+                    level2Key: "table",
                     page: "LabRequisitions",
                     tableKey: "table"
                   }
@@ -5476,6 +5809,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "labRequisitions",
                     dataParent: "labRequisitions.table",
+                    level2Key: "table",
                     page: "LabRequisitions",
                     tableKey: "table"
                   },
@@ -5489,6 +5823,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "labRequisitions",
                     dataParent: "labRequisitions.table",
+                    level2Key: "table",
                     page: "LabRequisitions",
                     options: [
                       {
@@ -5537,6 +5872,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "medicationOrders",
               dataParent: "medicationOrders.table",
+              level2Key: "table",
               page: "Medication orders",
               tableKey: "table"
             },
@@ -5551,6 +5887,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "medicationOrders",
               dataParent: "medicationOrders.table",
+              level2Key: "table",
               page: "Medication orders",
               tableKey: "table"
             },
@@ -5565,6 +5902,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "medicationOrders",
               dataParent: "medicationOrders.table",
+              level2Key: "table",
               page: "Medication orders",
               tableKey: "table"
             },
@@ -5579,6 +5917,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "medicationOrders",
               dataParent: "medicationOrders.table",
+              level2Key: "table",
               page: "Medication orders",
               tableKey: "table"
             },
@@ -5592,6 +5931,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "medicationOrders",
               dataParent: "medicationOrders.table",
+              level2Key: "table",
               page: "Medication orders",
               tableKey: "table"
             },
@@ -5604,6 +5944,7 @@ export default function () {
               fsetRow: "1",
               pageDataKey: "medicationOrders",
               dataParent: "medicationOrders.table.details",
+              level2Key: "table",
               page: "Medication orders",
               tableKey: "table"
             },
@@ -5616,6 +5957,7 @@ export default function () {
               fsetRow: "2",
               pageDataKey: "medicationOrders",
               dataParent: "medicationOrders.table.details",
+              level2Key: "table",
               page: "Medication orders",
               tableKey: "table"
             },
@@ -5628,6 +5970,7 @@ export default function () {
               fsetRow: "3",
               pageDataKey: "medicationOrders",
               dataParent: "medicationOrders.table.details",
+              level2Key: "table",
               page: "Medication orders",
               tableKey: "table"
             },
@@ -5639,6 +5982,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "medicationOrders",
               dataParent: "medicationOrders.table",
+              level2Key: "table",
               page: "Medication orders",
               containerType: "fieldset",
               containerKey: "details",
@@ -5654,6 +5998,7 @@ export default function () {
               fsetRow: "1",
               pageDataKey: "medicationOrders",
               dataParent: "medicationOrders.table.schedule",
+              level2Key: "table",
               page: "Medication orders",
               helperText: "PRN = as needed",
               options: [
@@ -5680,6 +6025,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "medicationOrders",
               dataParent: "medicationOrders.table",
+              level2Key: "table",
               page: "Medication orders",
               containerType: "fieldset",
               containerKey: "schedule",
@@ -5695,6 +6041,7 @@ export default function () {
               fsetRow: "2",
               pageDataKey: "medicationOrders",
               dataParent: "medicationOrders.table.schedule",
+              level2Key: "table",
               page: "Medication orders",
               tableKey: "table"
             },
@@ -5707,6 +6054,7 @@ export default function () {
               fsetRow: "3",
               pageDataKey: "medicationOrders",
               dataParent: "medicationOrders.table.schedule",
+              level2Key: "table",
               page: "Medication orders",
               tableKey: "table"
             },
@@ -5719,6 +6067,7 @@ export default function () {
               fsetRow: "4",
               pageDataKey: "medicationOrders",
               dataParent: "medicationOrders.table.schedule",
+              level2Key: "table",
               page: "Medication orders",
               tableKey: "table"
             },
@@ -5731,6 +6080,7 @@ export default function () {
               fsetRow: "5",
               pageDataKey: "medicationOrders",
               dataParent: "medicationOrders.table.schedule",
+              level2Key: "table",
               page: "Medication orders",
               tableKey: "table"
             },
@@ -5743,6 +6093,7 @@ export default function () {
               fsetRow: "6",
               pageDataKey: "medicationOrders",
               dataParent: "medicationOrders.table.schedule",
+              level2Key: "table",
               page: "Medication orders",
               tableKey: "table"
             },
@@ -5755,6 +6106,7 @@ export default function () {
               fsetRow: "7",
               pageDataKey: "medicationOrders",
               dataParent: "medicationOrders.table",
+              level2Key: "table",
               page: "Medication orders",
               tableKey: "table"
             },
@@ -5768,6 +6120,7 @@ export default function () {
               formRow: "4",
               pageDataKey: "medicationOrders",
               dataParent: "medicationOrders.table",
+              level2Key: "table",
               page: "Medication orders",
               tableKey: "table"
             }
@@ -5788,6 +6141,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "medicationOrders",
                     dataParent: "medicationOrders.table",
+                    level2Key: "table",
                     page: "Medication orders",
                     tableKey: "table"
                   },
@@ -5802,6 +6156,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "medicationOrders",
                     dataParent: "medicationOrders.table",
+                    level2Key: "table",
                     page: "Medication orders",
                     tableKey: "table"
                   },
@@ -5816,6 +6171,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "medicationOrders",
                     dataParent: "medicationOrders.table",
+                    level2Key: "table",
                     page: "Medication orders",
                     tableKey: "table"
                   },
@@ -5830,6 +6186,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "medicationOrders",
                     dataParent: "medicationOrders.table",
+                    level2Key: "table",
                     page: "Medication orders",
                     tableKey: "table"
                   }
@@ -5848,6 +6205,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "medicationOrders",
                     dataParent: "medicationOrders.table",
+                    level2Key: "table",
                     page: "Medication orders",
                     tableKey: "table"
                   }
@@ -5864,6 +6222,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "medicationOrders",
                     dataParent: "medicationOrders.table",
+                    level2Key: "table",
                     page: "Medication orders",
                     containerType: "fieldset",
                     containerKey: "details",
@@ -5883,6 +6242,7 @@ export default function () {
                               fsetRow: "1",
                               pageDataKey: "medicationOrders",
                               dataParent: "medicationOrders.table.details",
+                              level2Key: "table",
                               page: "Medication orders",
                               tableKey: "table"
                             }
@@ -5900,6 +6260,7 @@ export default function () {
                               fsetRow: "2",
                               pageDataKey: "medicationOrders",
                               dataParent: "medicationOrders.table.details",
+                              level2Key: "table",
                               page: "Medication orders",
                               tableKey: "table"
                             }
@@ -5917,6 +6278,7 @@ export default function () {
                               fsetRow: "3",
                               pageDataKey: "medicationOrders",
                               dataParent: "medicationOrders.table.details",
+                              level2Key: "table",
                               page: "Medication orders",
                               tableKey: "table"
                             }
@@ -5934,6 +6296,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "medicationOrders",
                     dataParent: "medicationOrders.table",
+                    level2Key: "table",
                     page: "Medication orders",
                     containerType: "fieldset",
                     containerKey: "schedule",
@@ -5953,6 +6316,7 @@ export default function () {
                               fsetRow: "1",
                               pageDataKey: "medicationOrders",
                               dataParent: "medicationOrders.table.schedule",
+                              level2Key: "table",
                               page: "Medication orders",
                               helperText: "PRN = as needed",
                               options: [
@@ -5985,6 +6349,7 @@ export default function () {
                               fsetRow: "2",
                               pageDataKey: "medicationOrders",
                               dataParent: "medicationOrders.table.schedule",
+                              level2Key: "table",
                               page: "Medication orders",
                               tableKey: "table"
                             }
@@ -6002,6 +6367,7 @@ export default function () {
                               fsetRow: "3",
                               pageDataKey: "medicationOrders",
                               dataParent: "medicationOrders.table.schedule",
+                              level2Key: "table",
                               page: "Medication orders",
                               tableKey: "table"
                             }
@@ -6019,6 +6385,7 @@ export default function () {
                               fsetRow: "4",
                               pageDataKey: "medicationOrders",
                               dataParent: "medicationOrders.table.schedule",
+                              level2Key: "table",
                               page: "Medication orders",
                               tableKey: "table"
                             }
@@ -6036,6 +6403,7 @@ export default function () {
                               fsetRow: "5",
                               pageDataKey: "medicationOrders",
                               dataParent: "medicationOrders.table.schedule",
+                              level2Key: "table",
                               page: "Medication orders",
                               tableKey: "table"
                             }
@@ -6053,6 +6421,7 @@ export default function () {
                               fsetRow: "6",
                               pageDataKey: "medicationOrders",
                               dataParent: "medicationOrders.table.schedule",
+                              level2Key: "table",
                               page: "Medication orders",
                               tableKey: "table"
                             }
@@ -6077,6 +6446,7 @@ export default function () {
                     formRow: "4",
                     pageDataKey: "medicationOrders",
                     dataParent: "medicationOrders.table",
+                    level2Key: "table",
                     page: "Medication orders",
                     tableKey: "table"
                   }
@@ -6110,6 +6480,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "medAdminRec",
               dataParent: "medAdminRec.table",
+              level2Key: "table",
               page: "Medication administration record",
               options: [
                 {
@@ -6140,6 +6511,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "medAdminRec",
               dataParent: "medAdminRec.table",
+              level2Key: "table",
               page: "Medication administration record",
               helperText: "Medication-NL-(Medication name-NL-Dose-NL-Route-NL-Frequency-NL-Notes-NL-Prescriber)",
               tableKey: "table"
@@ -6154,6 +6526,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "medAdminRec",
               dataParent: "medAdminRec.table",
+              level2Key: "table",
               page: "Medication administration record",
               options: [
                 {
@@ -6175,6 +6548,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "medAdminRec",
               dataParent: "medAdminRec.table",
+              level2Key: "table",
               page: "Medication administration record",
               options: [
                 {
@@ -6193,6 +6567,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "medAdminRec",
               dataParent: "medAdminRec.table",
+              level2Key: "table",
               page: "Medication administration record",
               options: [
                 {
@@ -6211,6 +6586,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "medAdminRec",
               dataParent: "medAdminRec.table",
+              level2Key: "table",
               page: "Medication administration record",
               tableKey: "table"
             },
@@ -6224,6 +6600,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "medAdminRec",
               dataParent: "medAdminRec.table",
+              level2Key: "table",
               page: "Medication administration record",
               tableKey: "table"
             }
@@ -6243,6 +6620,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "medAdminRec",
                     dataParent: "medAdminRec.table",
+                    level2Key: "table",
                     page: "Medication administration record",
                     options: [
                       {
@@ -6273,6 +6651,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "medAdminRec",
                     dataParent: "medAdminRec.table",
+                    level2Key: "table",
                     page: "Medication administration record",
                     helperText: "Medication-NL-(Medication name-NL-Dose-NL-Route-NL-Frequency-NL-Notes-NL-Prescriber)",
                     tableKey: "table"
@@ -6292,6 +6671,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "medAdminRec",
                     dataParent: "medAdminRec.table",
+                    level2Key: "table",
                     page: "Medication administration record",
                     options: [
                       {
@@ -6313,6 +6693,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "medAdminRec",
                     dataParent: "medAdminRec.table",
+                    level2Key: "table",
                     page: "Medication administration record",
                     options: [
                       {
@@ -6331,6 +6712,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "medAdminRec",
                     dataParent: "medAdminRec.table",
+                    level2Key: "table",
                     page: "Medication administration record",
                     options: [
                       {
@@ -6354,6 +6736,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "medAdminRec",
                     dataParent: "medAdminRec.table",
+                    level2Key: "table",
                     page: "Medication administration record",
                     tableKey: "table"
                   },
@@ -6367,6 +6750,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "medAdminRec",
                     dataParent: "medAdminRec.table",
+                    level2Key: "table",
                     page: "Medication administration record",
                     tableKey: "table"
                   }

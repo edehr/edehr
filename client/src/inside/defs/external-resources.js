@@ -32,7 +32,8 @@ export default function () {
                     pageDataKey: "assessmentTools",
                     dataParent: "assessmentTools.admissions",
                     page: "Standardized assessment tools",
-                    assetName: "triage_scale.pdf"
+                    assetName: "triage_scale.pdf",
+                    formColumn: "1"
                   },
                   {
                     elementKey: "admissions2_1",
@@ -44,7 +45,8 @@ export default function () {
                     pageDataKey: "assessmentTools",
                     dataParent: "assessmentTools.admissions",
                     page: "Standardized assessment tools",
-                    assetName: "patient_health_questionaire.pdf"
+                    assetName: "patient_health_questionaire.pdf",
+                    formColumn: "1"
                   },
                   {
                     elementKey: "admissions3_1",
@@ -56,11 +58,71 @@ export default function () {
                     pageDataKey: "assessmentTools",
                     dataParent: "assessmentTools.admissions",
                     page: "Standardized assessment tools",
-                    assetName: "alcohol_consumption.pdf"
+                    assetName: "alcohol_consumption.pdf",
+                    formColumn: "1"
                   }
                 ],
                 containerType: "fieldset",
-                containerKey: "admissions"
+                containerKey: "admissions",
+                formFieldSet: {
+                  rows: [
+                    {
+                      formRow: "1",
+                      elements: [
+                        {
+                          elementKey: "admissions1_1",
+                          fqn: "assessmentTools.admissions.admissions1_1",
+                          inputType: "assetLink",
+                          label: "Triage scale",
+                          fsetRow: "1",
+                          fsetCol: "1",
+                          pageDataKey: "assessmentTools",
+                          dataParent: "assessmentTools.admissions",
+                          page: "Standardized assessment tools",
+                          assetName: "triage_scale.pdf",
+                          formColumn: "1"
+                        }
+                      ]
+                    },
+                    {
+                      formRow: "2",
+                      elements: [
+                        {
+                          elementKey: "admissions2_1",
+                          fqn: "assessmentTools.admissions.admissions2_1",
+                          inputType: "assetLink",
+                          label: "Patient health questionaire",
+                          fsetRow: "2",
+                          fsetCol: "1",
+                          pageDataKey: "assessmentTools",
+                          dataParent: "assessmentTools.admissions",
+                          page: "Standardized assessment tools",
+                          assetName: "patient_health_questionaire.pdf",
+                          formColumn: "1"
+                        }
+                      ]
+                    },
+                    {
+                      formRow: "3",
+                      elements: [
+                        {
+                          elementKey: "admissions3_1",
+                          fqn: "assessmentTools.admissions.admissions3_1",
+                          inputType: "assetLink",
+                          label: "Alcohol Consumption.pdf",
+                          fsetRow: "3",
+                          fsetCol: "1",
+                          pageDataKey: "assessmentTools",
+                          dataParent: "assessmentTools.admissions",
+                          page: "Standardized assessment tools",
+                          assetName: "alcohol_consumption.pdf",
+                          formColumn: "1"
+                        }
+                      ]
+                    }
+                  ],
+                  columnsCount: 1
+                }
               },
               {
                 elementKey: "painAssessment",
@@ -84,7 +146,8 @@ export default function () {
                     pageDataKey: "assessmentTools",
                     dataParent: "assessmentTools.painAssessment",
                     page: "Standardized assessment tools",
-                    assetName: "OPQRSTUV.pdf"
+                    assetName: "OPQRSTUV.pdf",
+                    formColumn: "1"
                   },
                   {
                     elementKey: "painAssessment2_1",
@@ -96,7 +159,8 @@ export default function () {
                     pageDataKey: "assessmentTools",
                     dataParent: "assessmentTools.painAssessment",
                     page: "Standardized assessment tools",
-                    assetName: "0-10_numeric_rating_scale.pdf"
+                    assetName: "0-10_numeric_rating_scale.pdf",
+                    formColumn: "1"
                   },
                   {
                     elementKey: "painAssessment3_1",
@@ -107,7 +171,8 @@ export default function () {
                     fsetCol: "1",
                     pageDataKey: "assessmentTools",
                     dataParent: "assessmentTools.painAssessment",
-                    page: "Standardized assessment tools"
+                    page: "Standardized assessment tools",
+                    formColumn: "1"
                   },
                   {
                     elementKey: "painAssessment4_1",
@@ -120,7 +185,8 @@ export default function () {
                     dataParent: "assessmentTools.painAssessment",
                     page: "Standardized assessment tools",
                     assetBase: "Standardized assessment tools",
-                    assetName: "Glasgow Coma Scale.pdf"
+                    assetName: "Glasgow Coma Scale.pdf",
+                    formColumn: "1"
                   },
                   {
                     elementKey: "painAssessment5_1",
@@ -132,7 +198,8 @@ export default function () {
                     pageDataKey: "assessmentTools",
                     dataParent: "assessmentTools.painAssessment",
                     page: "Standardized assessment tools",
-                    assetName: "mini_mental_state_examination.pdf"
+                    assetName: "mini_mental_state_examination.pdf",
+                    formColumn: "1"
                   },
                   {
                     elementKey: "painAssessment6_1",
@@ -144,11 +211,125 @@ export default function () {
                     pageDataKey: "assessmentTools",
                     dataParent: "assessmentTools.painAssessment",
                     page: "Standardized assessment tools",
-                    assetName: "richmond_agitation_scale.pdf"
+                    assetName: "richmond_agitation_scale.pdf",
+                    formColumn: "1"
                   }
                 ],
                 containerType: "fieldset",
-                containerKey: "painAssessment"
+                containerKey: "painAssessment",
+                formFieldSet: {
+                  rows: [
+                    {
+                      formRow: "1",
+                      elements: [
+                        {
+                          elementKey: "painAssessment1_1",
+                          fqn: "assessmentTools.painAssessment.painAssessment1_1",
+                          inputType: "assetLink",
+                          label: "OPQRSTUV",
+                          fsetRow: "1",
+                          fsetCol: "1",
+                          pageDataKey: "assessmentTools",
+                          dataParent: "assessmentTools.painAssessment",
+                          page: "Standardized assessment tools",
+                          assetName: "OPQRSTUV.pdf",
+                          formColumn: "1"
+                        }
+                      ]
+                    },
+                    {
+                      formRow: "2",
+                      elements: [
+                        {
+                          elementKey: "painAssessment2_1",
+                          fqn: "assessmentTools.painAssessment.painAssessment2_1",
+                          inputType: "assetLink",
+                          label: "0-10 numeric rating scale",
+                          fsetRow: "2",
+                          fsetCol: "1",
+                          pageDataKey: "assessmentTools",
+                          dataParent: "assessmentTools.painAssessment",
+                          page: "Standardized assessment tools",
+                          assetName: "0-10_numeric_rating_scale.pdf",
+                          formColumn: "1"
+                        }
+                      ]
+                    },
+                    {
+                      formRow: "3",
+                      elements: [
+                        {
+                          elementKey: "painAssessment3_1",
+                          fqn: "assessmentTools.painAssessment.painAssessment3_1",
+                          inputType: "assetLink",
+                          label: "Neurological assessment",
+                          fsetRow: "3",
+                          fsetCol: "1",
+                          pageDataKey: "assessmentTools",
+                          dataParent: "assessmentTools.painAssessment",
+                          page: "Standardized assessment tools",
+                          formColumn: "1"
+                        }
+                      ]
+                    },
+                    {
+                      formRow: "4",
+                      elements: [
+                        {
+                          elementKey: "painAssessment4_1",
+                          fqn: "assessmentTools.painAssessment.painAssessment4_1",
+                          inputType: "assetLink",
+                          label: "Glasgow coma scale",
+                          fsetRow: "4",
+                          fsetCol: "1",
+                          pageDataKey: "assessmentTools",
+                          dataParent: "assessmentTools.painAssessment",
+                          page: "Standardized assessment tools",
+                          assetBase: "Standardized assessment tools",
+                          assetName: "Glasgow Coma Scale.pdf",
+                          formColumn: "1"
+                        }
+                      ]
+                    },
+                    {
+                      formRow: "5",
+                      elements: [
+                        {
+                          elementKey: "painAssessment5_1",
+                          fqn: "assessmentTools.painAssessment.painAssessment5_1",
+                          inputType: "assetLink",
+                          label: "Mini mental state examination",
+                          fsetRow: "5",
+                          fsetCol: "1",
+                          pageDataKey: "assessmentTools",
+                          dataParent: "assessmentTools.painAssessment",
+                          page: "Standardized assessment tools",
+                          assetName: "mini_mental_state_examination.pdf",
+                          formColumn: "1"
+                        }
+                      ]
+                    },
+                    {
+                      formRow: "6",
+                      elements: [
+                        {
+                          elementKey: "painAssessment6_1",
+                          fqn: "assessmentTools.painAssessment.painAssessment6_1",
+                          inputType: "assetLink",
+                          label: "Richmond agitation scale",
+                          fsetRow: "6",
+                          fsetCol: "1",
+                          pageDataKey: "assessmentTools",
+                          dataParent: "assessmentTools.painAssessment",
+                          page: "Standardized assessment tools",
+                          assetName: "richmond_agitation_scale.pdf",
+                          formColumn: "1"
+                        }
+                      ]
+                    }
+                  ],
+                  columnsCount: 1
+                }
               },
               {
                 elementKey: "fallRisk",
@@ -172,7 +353,8 @@ export default function () {
                     pageDataKey: "assessmentTools",
                     dataParent: "assessmentTools.fallRisk",
                     page: "Standardized assessment tools",
-                    assetName: "fall_and_injury_reduction.pdf"
+                    assetName: "fall_and_injury_reduction.pdf",
+                    formColumn: "1"
                   },
                   {
                     elementKey: "fallRisk2_1",
@@ -185,7 +367,8 @@ export default function () {
                     dataParent: "assessmentTools.fallRisk",
                     page: "Standardized assessment tools",
                     assetBase: "Standardized assessment tools",
-                    assetName: "Fall Risk Assessment Tool.pdf"
+                    assetName: "Fall Risk Assessment Tool.pdf",
+                    formColumn: "1"
                   },
                   {
                     elementKey: "fallRisk3_1",
@@ -197,11 +380,72 @@ export default function () {
                     pageDataKey: "assessmentTools",
                     dataParent: "assessmentTools.fallRisk",
                     page: "Standardized assessment tools",
-                    assetName: "risk_for_falls.pdf"
+                    assetName: "risk_for_falls.pdf",
+                    formColumn: "1"
                   }
                 ],
                 containerType: "fieldset",
-                containerKey: "fallRisk"
+                containerKey: "fallRisk",
+                formFieldSet: {
+                  rows: [
+                    {
+                      formRow: "1",
+                      elements: [
+                        {
+                          elementKey: "fallRisk1_1",
+                          fqn: "assessmentTools.fallRisk.fallRisk1_1",
+                          inputType: "assetLink",
+                          label: "Fall and injury reduction",
+                          fsetRow: "1",
+                          fsetCol: "1",
+                          pageDataKey: "assessmentTools",
+                          dataParent: "assessmentTools.fallRisk",
+                          page: "Standardized assessment tools",
+                          assetName: "fall_and_injury_reduction.pdf",
+                          formColumn: "1"
+                        }
+                      ]
+                    },
+                    {
+                      formRow: "2",
+                      elements: [
+                        {
+                          elementKey: "fallRisk2_1",
+                          fqn: "assessmentTools.fallRisk.fallRisk2_1",
+                          inputType: "assetLink",
+                          label: "Fall assessment",
+                          fsetRow: "2",
+                          fsetCol: "1",
+                          pageDataKey: "assessmentTools",
+                          dataParent: "assessmentTools.fallRisk",
+                          page: "Standardized assessment tools",
+                          assetBase: "Standardized assessment tools",
+                          assetName: "Fall Risk Assessment Tool.pdf",
+                          formColumn: "1"
+                        }
+                      ]
+                    },
+                    {
+                      formRow: "3",
+                      elements: [
+                        {
+                          elementKey: "fallRisk3_1",
+                          fqn: "assessmentTools.fallRisk.fallRisk3_1",
+                          inputType: "assetLink",
+                          label: "Risk for falls",
+                          fsetRow: "3",
+                          fsetCol: "1",
+                          pageDataKey: "assessmentTools",
+                          dataParent: "assessmentTools.fallRisk",
+                          page: "Standardized assessment tools",
+                          assetName: "risk_for_falls.pdf",
+                          formColumn: "1"
+                        }
+                      ]
+                    }
+                  ],
+                  columnsCount: 1
+                }
               }
             ]
           },
@@ -230,7 +474,8 @@ export default function () {
                     pageDataKey: "assessmentTools",
                     dataParent: "assessmentTools.notes",
                     page: "Standardized assessment tools",
-                    assetName: "consult_note_template.pdf"
+                    assetName: "consult_note_template.pdf",
+                    formColumn: "1"
                   },
                   {
                     elementKey: "notes2_1",
@@ -242,11 +487,53 @@ export default function () {
                     pageDataKey: "assessmentTools",
                     dataParent: "assessmentTools.notes",
                     page: "Standardized assessment tools",
-                    assetName: "referral_note_template.pdf"
+                    assetName: "referral_note_template.pdf",
+                    formColumn: "1"
                   }
                 ],
                 containerType: "fieldset",
-                containerKey: "notes"
+                containerKey: "notes",
+                formFieldSet: {
+                  rows: [
+                    {
+                      formRow: "1",
+                      elements: [
+                        {
+                          elementKey: "notes1_1",
+                          fqn: "assessmentTools.notes.notes1_1",
+                          inputType: "assetLink",
+                          label: "Consult note template",
+                          fsetRow: "1",
+                          fsetCol: "1",
+                          pageDataKey: "assessmentTools",
+                          dataParent: "assessmentTools.notes",
+                          page: "Standardized assessment tools",
+                          assetName: "consult_note_template.pdf",
+                          formColumn: "1"
+                        }
+                      ]
+                    },
+                    {
+                      formRow: "2",
+                      elements: [
+                        {
+                          elementKey: "notes2_1",
+                          fqn: "assessmentTools.notes.notes2_1",
+                          inputType: "assetLink",
+                          label: "Referral note template",
+                          fsetRow: "2",
+                          fsetCol: "1",
+                          pageDataKey: "assessmentTools",
+                          dataParent: "assessmentTools.notes",
+                          page: "Standardized assessment tools",
+                          assetName: "referral_note_template.pdf",
+                          formColumn: "1"
+                        }
+                      ]
+                    }
+                  ],
+                  columnsCount: 1
+                }
               },
               {
                 elementKey: "educational",
@@ -271,7 +558,8 @@ export default function () {
                     dataParent: "assessmentTools.educational",
                     page: "Standardized assessment tools",
                     assetBase: "Standardized assessment tools",
-                    assetName: "COPD assessment test.pdf"
+                    assetName: "COPD assessment test.pdf",
+                    formColumn: "1"
                   },
                   {
                     elementKey: "educational2_1",
@@ -283,11 +571,54 @@ export default function () {
                     pageDataKey: "assessmentTools",
                     dataParent: "assessmentTools.educational",
                     page: "Standardized assessment tools",
-                    assetName: "bristol_stool_chart.pdf"
+                    assetName: "bristol_stool_chart.pdf",
+                    formColumn: "1"
                   }
                 ],
                 containerType: "fieldset",
-                containerKey: "educational"
+                containerKey: "educational",
+                formFieldSet: {
+                  rows: [
+                    {
+                      formRow: "1",
+                      elements: [
+                        {
+                          elementKey: "educational1_1",
+                          fqn: "assessmentTools.educational.educational1_1",
+                          inputType: "assetLink",
+                          label: "COPD assessment",
+                          fsetRow: "1",
+                          fsetCol: "1",
+                          pageDataKey: "assessmentTools",
+                          dataParent: "assessmentTools.educational",
+                          page: "Standardized assessment tools",
+                          assetBase: "Standardized assessment tools",
+                          assetName: "COPD assessment test.pdf",
+                          formColumn: "1"
+                        }
+                      ]
+                    },
+                    {
+                      formRow: "2",
+                      elements: [
+                        {
+                          elementKey: "educational2_1",
+                          fqn: "assessmentTools.educational.educational2_1",
+                          inputType: "assetLink",
+                          label: "Bristol stool chart",
+                          fsetRow: "2",
+                          fsetCol: "1",
+                          pageDataKey: "assessmentTools",
+                          dataParent: "assessmentTools.educational",
+                          page: "Standardized assessment tools",
+                          assetName: "bristol_stool_chart.pdf",
+                          formColumn: "1"
+                        }
+                      ]
+                    }
+                  ],
+                  columnsCount: 1
+                }
               },
               {
                 elementKey: "wound",
@@ -311,11 +642,35 @@ export default function () {
                     pageDataKey: "assessmentTools",
                     dataParent: "assessmentTools.wound",
                     page: "Standardized assessment tools",
-                    assetName: "braden_scale.pdf"
+                    assetName: "braden_scale.pdf",
+                    formColumn: "1"
                   }
                 ],
                 containerType: "fieldset",
-                containerKey: "wound"
+                containerKey: "wound",
+                formFieldSet: {
+                  rows: [
+                    {
+                      formRow: "1",
+                      elements: [
+                        {
+                          elementKey: "wound1_1",
+                          fqn: "assessmentTools.wound.wound1_1",
+                          inputType: "assetLink",
+                          label: "Braden scale",
+                          fsetRow: "1",
+                          fsetCol: "1",
+                          pageDataKey: "assessmentTools",
+                          dataParent: "assessmentTools.wound",
+                          page: "Standardized assessment tools",
+                          assetName: "braden_scale.pdf",
+                          formColumn: "1"
+                        }
+                      ]
+                    }
+                  ],
+                  columnsCount: 1
+                }
               }
             ]
           },
@@ -341,7 +696,7 @@ export default function () {
                     label: "Best possible medication history",
                     fsetRow: "1",
                     fsetCol: "1",
-                    formColumn: ".",
+                    formColumn: "1",
                     formRow: ".",
                     pageDataKey: "assessmentTools",
                     dataParent: "assessmentTools.medication",
@@ -350,7 +705,31 @@ export default function () {
                   }
                 ],
                 containerType: "fieldset",
-                containerKey: "medication"
+                containerKey: "medication",
+                formFieldSet: {
+                  rows: [
+                    {
+                      formRow: "1",
+                      elements: [
+                        {
+                          elementKey: "medication1_1",
+                          fqn: "assessmentTools.medication.medication1_1",
+                          inputType: "assetLink",
+                          label: "Best possible medication history",
+                          fsetRow: "1",
+                          fsetCol: "1",
+                          formColumn: "1",
+                          formRow: ".",
+                          pageDataKey: "assessmentTools",
+                          dataParent: "assessmentTools.medication",
+                          page: "Standardized assessment tools",
+                          assetName: "best_possible_medication_history.pdf"
+                        }
+                      ]
+                    }
+                  ],
+                  columnsCount: 1
+                }
               }
             ]
           }
@@ -422,6 +801,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "diagnosticCodes",
               dataParent: "diagnosticCodes.table",
+              level2Key: "table",
               page: "Diagnostic codes",
               assetBase: "?",
               tableKey: "table"
@@ -437,6 +817,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "diagnosticCodes",
               dataParent: "diagnosticCodes.table",
+              level2Key: "table",
               page: "Diagnostic codes",
               assetBase: "?",
               tableKey: "table"
@@ -452,6 +833,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "diagnosticCodes",
               dataParent: "diagnosticCodes.table",
+              level2Key: "table",
               page: "Diagnostic codes",
               assetBase: "?",
               tableKey: "table"
@@ -467,6 +849,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "diagnosticCodes",
               dataParent: "diagnosticCodes.table",
+              level2Key: "table",
               page: "Diagnostic codes",
               assetBase: "?",
               tableKey: "table"
@@ -480,6 +863,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "diagnosticCodes",
               dataParent: "diagnosticCodes.table",
+              level2Key: "table",
               page: "Diagnostic codes",
               assetName: "icd-10-medical-diagnosis-codes.pdf",
               tableKey: "table"
@@ -494,6 +878,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "diagnosticCodes",
               dataParent: "diagnosticCodes.table",
+              level2Key: "table",
               page: "Diagnostic codes",
               mandatory: "yes",
               tableKey: "table"
@@ -508,6 +893,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "diagnosticCodes",
               dataParent: "diagnosticCodes.table",
+              level2Key: "table",
               page: "Diagnostic codes",
               mandatory: "yes",
               validation: "Up to 8 characters long",
@@ -523,6 +909,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "diagnosticCodes",
               dataParent: "diagnosticCodes.table",
+              level2Key: "table",
               page: "Diagnostic codes",
               mandatory: "yes",
               validation: "1 character",
@@ -552,6 +939,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "diagnosticCodes",
               dataParent: "diagnosticCodes.table",
+              level2Key: "table",
               page: "Diagnostic codes",
               mandatory: "no",
               validation: "1 character",
@@ -567,6 +955,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "diagnosticCodes",
               dataParent: "diagnosticCodes.table",
+              level2Key: "table",
               page: "Diagnostic codes",
               mandatory: "no",
               validation: "1 character",
@@ -589,6 +978,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "diagnosticCodes",
                     dataParent: "diagnosticCodes.table",
+                    level2Key: "table",
                     page: "Diagnostic codes",
                     assetBase: "?",
                     tableKey: "table"
@@ -604,6 +994,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "diagnosticCodes",
                     dataParent: "diagnosticCodes.table",
+                    level2Key: "table",
                     page: "Diagnostic codes",
                     assetBase: "?",
                     tableKey: "table"
@@ -619,6 +1010,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "diagnosticCodes",
                     dataParent: "diagnosticCodes.table",
+                    level2Key: "table",
                     page: "Diagnostic codes",
                     assetBase: "?",
                     tableKey: "table"
@@ -634,6 +1026,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "diagnosticCodes",
                     dataParent: "diagnosticCodes.table",
+                    level2Key: "table",
                     page: "Diagnostic codes",
                     assetBase: "?",
                     tableKey: "table"
@@ -652,6 +1045,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "diagnosticCodes",
                     dataParent: "diagnosticCodes.table",
+                    level2Key: "table",
                     page: "Diagnostic codes",
                     assetName: "icd-10-medical-diagnosis-codes.pdf",
                     tableKey: "table"
@@ -671,6 +1065,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "diagnosticCodes",
                     dataParent: "diagnosticCodes.table",
+                    level2Key: "table",
                     page: "Diagnostic codes",
                     mandatory: "yes",
                     tableKey: "table"
@@ -685,6 +1080,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "diagnosticCodes",
                     dataParent: "diagnosticCodes.table",
+                    level2Key: "table",
                     page: "Diagnostic codes",
                     mandatory: "yes",
                     validation: "Up to 8 characters long",
@@ -700,6 +1096,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "diagnosticCodes",
                     dataParent: "diagnosticCodes.table",
+                    level2Key: "table",
                     page: "Diagnostic codes",
                     mandatory: "yes",
                     validation: "1 character",
@@ -729,6 +1126,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "diagnosticCodes",
                     dataParent: "diagnosticCodes.table",
+                    level2Key: "table",
                     page: "Diagnostic codes",
                     mandatory: "no",
                     validation: "1 character",
@@ -744,6 +1142,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "diagnosticCodes",
                     dataParent: "diagnosticCodes.table",
+                    level2Key: "table",
                     page: "Diagnostic codes",
                     mandatory: "no",
                     validation: "1 character",
@@ -780,6 +1179,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "interventionCodes",
               dataParent: "interventionCodes.table",
+              level2Key: "table",
               page: "Intervention codes",
               assetBase: "?",
               tableKey: "table"
@@ -795,6 +1195,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "interventionCodes",
               dataParent: "interventionCodes.table",
+              level2Key: "table",
               page: "Intervention codes",
               assetBase: "?",
               tableKey: "table"
@@ -810,6 +1211,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "interventionCodes",
               dataParent: "interventionCodes.table",
+              level2Key: "table",
               page: "Intervention codes",
               assetBase: "?",
               tableKey: "table"
@@ -825,6 +1227,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "interventionCodes",
               dataParent: "interventionCodes.table",
+              level2Key: "table",
               page: "Intervention codes",
               assetBase: "?",
               tableKey: "table"
@@ -838,6 +1241,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "interventionCodes",
               dataParent: "interventionCodes.table",
+              level2Key: "table",
               page: "Intervention codes",
               assetBase: "?",
               tableCss: "hide-table-element",
@@ -854,6 +1258,7 @@ export default function () {
               formOption: "bold-text",
               pageDataKey: "interventionCodes",
               dataParent: "interventionCodes.table",
+              level2Key: "table",
               page: "Intervention codes",
               tableCss: "hide-table-element",
               tableKey: "table"
@@ -869,6 +1274,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "interventionCodes",
               dataParent: "interventionCodes.table",
+              level2Key: "table",
               page: "Intervention codes",
               tableKey: "table"
             },
@@ -883,6 +1289,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "interventionCodes",
               dataParent: "interventionCodes.table",
+              level2Key: "table",
               page: "Intervention codes",
               tableKey: "table"
             },
@@ -897,6 +1304,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "interventionCodes",
               dataParent: "interventionCodes.table",
+              level2Key: "table",
               page: "Intervention codes",
               tableKey: "table"
             },
@@ -911,6 +1319,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "interventionCodes",
               dataParent: "interventionCodes.table",
+              level2Key: "table",
               page: "Intervention codes",
               tableKey: "table"
             }
@@ -931,6 +1340,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "interventionCodes",
                     dataParent: "interventionCodes.table",
+                    level2Key: "table",
                     page: "Intervention codes",
                     assetBase: "?",
                     tableKey: "table"
@@ -946,6 +1356,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "interventionCodes",
                     dataParent: "interventionCodes.table",
+                    level2Key: "table",
                     page: "Intervention codes",
                     assetBase: "?",
                     tableKey: "table"
@@ -961,6 +1372,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "interventionCodes",
                     dataParent: "interventionCodes.table",
+                    level2Key: "table",
                     page: "Intervention codes",
                     assetBase: "?",
                     tableKey: "table"
@@ -976,6 +1388,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "interventionCodes",
                     dataParent: "interventionCodes.table",
+                    level2Key: "table",
                     page: "Intervention codes",
                     assetBase: "?",
                     tableKey: "table"
@@ -994,6 +1407,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "interventionCodes",
                     dataParent: "interventionCodes.table",
+                    level2Key: "table",
                     page: "Intervention codes",
                     assetBase: "?",
                     tableCss: "hide-table-element",
@@ -1010,6 +1424,7 @@ export default function () {
                     formOption: "bold-text",
                     pageDataKey: "interventionCodes",
                     dataParent: "interventionCodes.table",
+                    level2Key: "table",
                     page: "Intervention codes",
                     tableCss: "hide-table-element",
                     tableKey: "table"
@@ -1030,6 +1445,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "interventionCodes",
                     dataParent: "interventionCodes.table",
+                    level2Key: "table",
                     page: "Intervention codes",
                     tableKey: "table"
                   },
@@ -1044,6 +1460,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "interventionCodes",
                     dataParent: "interventionCodes.table",
+                    level2Key: "table",
                     page: "Intervention codes",
                     tableKey: "table"
                   },
@@ -1058,6 +1475,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "interventionCodes",
                     dataParent: "interventionCodes.table",
+                    level2Key: "table",
                     page: "Intervention codes",
                     tableKey: "table"
                   },
@@ -1072,6 +1490,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "interventionCodes",
                     dataParent: "interventionCodes.table",
+                    level2Key: "table",
                     page: "Intervention codes",
                     tableKey: "table"
                   }
@@ -1106,6 +1525,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "careMixGroup",
               dataParent: "careMixGroup.table",
+              level2Key: "table",
               page: "Case mix group",
               assetBase: "?",
               tableKey: "table"
@@ -1121,6 +1541,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "careMixGroup",
               dataParent: "careMixGroup.table",
+              level2Key: "table",
               page: "Case mix group",
               assetBase: "?",
               tableKey: "table"
@@ -1136,6 +1557,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "careMixGroup",
               dataParent: "careMixGroup.table",
+              level2Key: "table",
               page: "Case mix group",
               assetBase: "?",
               tableKey: "table"
@@ -1151,6 +1573,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "careMixGroup",
               dataParent: "careMixGroup.table",
+              level2Key: "table",
               page: "Case mix group",
               assetBase: "?",
               tableKey: "table"
@@ -1165,6 +1588,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "careMixGroup",
               dataParent: "careMixGroup.table",
+              level2Key: "table",
               page: "Case mix group",
               tableKey: "table"
             },
@@ -1178,6 +1602,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "careMixGroup",
               dataParent: "careMixGroup.table",
+              level2Key: "table",
               page: "Case mix group",
               tableKey: "table"
             },
@@ -1191,6 +1616,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "careMixGroup",
               dataParent: "careMixGroup.table",
+              level2Key: "table",
               page: "Case mix group",
               tableKey: "table"
             },
@@ -1204,6 +1630,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "careMixGroup",
               dataParent: "careMixGroup.table",
+              level2Key: "table",
               page: "Case mix group",
               tableKey: "table"
             },
@@ -1217,6 +1644,7 @@ export default function () {
               formRow: "4",
               pageDataKey: "careMixGroup",
               dataParent: "careMixGroup.table",
+              level2Key: "table",
               page: "Case mix group",
               tableKey: "table"
             }
@@ -1237,6 +1665,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "careMixGroup",
                     dataParent: "careMixGroup.table",
+                    level2Key: "table",
                     page: "Case mix group",
                     assetBase: "?",
                     tableKey: "table"
@@ -1252,6 +1681,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "careMixGroup",
                     dataParent: "careMixGroup.table",
+                    level2Key: "table",
                     page: "Case mix group",
                     assetBase: "?",
                     tableKey: "table"
@@ -1267,6 +1697,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "careMixGroup",
                     dataParent: "careMixGroup.table",
+                    level2Key: "table",
                     page: "Case mix group",
                     assetBase: "?",
                     tableKey: "table"
@@ -1282,6 +1713,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "careMixGroup",
                     dataParent: "careMixGroup.table",
+                    level2Key: "table",
                     page: "Case mix group",
                     assetBase: "?",
                     tableKey: "table"
@@ -1301,6 +1733,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "careMixGroup",
                     dataParent: "careMixGroup.table",
+                    level2Key: "table",
                     page: "Case mix group",
                     tableKey: "table"
                   },
@@ -1314,6 +1747,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "careMixGroup",
                     dataParent: "careMixGroup.table",
+                    level2Key: "table",
                     page: "Case mix group",
                     tableKey: "table"
                   }
@@ -1332,6 +1766,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "careMixGroup",
                     dataParent: "careMixGroup.table",
+                    level2Key: "table",
                     page: "Case mix group",
                     tableKey: "table"
                   },
@@ -1345,6 +1780,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "careMixGroup",
                     dataParent: "careMixGroup.table",
+                    level2Key: "table",
                     page: "Case mix group",
                     tableKey: "table"
                   }
@@ -1363,6 +1799,7 @@ export default function () {
                     formRow: "4",
                     pageDataKey: "careMixGroup",
                     dataParent: "careMixGroup.table",
+                    level2Key: "table",
                     page: "Case mix group",
                     tableKey: "table"
                   }

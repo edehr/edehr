@@ -1,23 +1,50 @@
 <template lang="pug">
-  div
-    label(v-if="showLabel()", v-bind:for="element.elementKey") {{element.label}}
-    input(v-if="element.inputType === 'text'", class="input", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
-    input(v-if="element.inputType === 'day'", class="input", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
-    input(v-if="element.inputType === 'time'", class="input", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
-    datepicker(v-if="element.inputType === 'date'", class="input", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
-    textarea(v-if="element.inputType === 'textarea'", class="ehr-page-form-textarea", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
-    div(v-if="element.inputType === 'select'", class="select")
+  div(:id="element.elementKey", class="ehrdfe", :class="formCss(element)")
+
+    div(v-if="element.inputType === 'label'", class="label_wrapper")
+      label(class="text_label") {{element.label}}
+
+    div(v-if="element.inputType === 'text'", class="text_input_wrapper")
+      label(v-if="!(element.formOption === 'hideLabel')", class="text_label") {{element.label}}
+      input(class="input", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
+
+    div(v-if="element.inputType === 'date'", class="date_wrapper")
+      label(v-if="!(element.formOption === 'hideLabel')", class="date_label") {{element.label}}
+      datepicker(class="input", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
+
+    div(v-if="element.inputType === 'day'", class="day_wrapper")
+      label(v-if="!(element.formOption === 'hideLabel')", class="day_label") {{element.label}}
+      input(class="input", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
+
+    div(v-if="element.inputType === 'time'", class="time_wrapper")
+      label(v-if="!(element.formOption === 'hideLabel')", class="time_label") {{element.label}}
+      input(class="input", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
+
+
+    div(v-if="element.inputType === 'textarea'", class="textarea_wrapper")
+      label(v-if="!(element.formOption === 'hideLabel')", class="textarea_label") {{element.label}}
+      textarea(class="ehr-page-form-textarea", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
+
+    div(v-if="element.inputType === 'select'", class="select_wrapper")
+      label(v-if="!(element.formOption === 'hideLabel')", class="select_label") {{element.label}}
       select(v-bind:name="element.elementKey", v-bind:disabled="notEditing", v-model="inputVal")
         option(disabled,value="")
         option(v-for="option in element.options", v-bind:value="option.text") {{ option.text}}
-    input(v-if="element.inputType === 'checkbox'", class="checkbox", type="checkbox", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
-    label(v-if="element.inputType === 'checkbox'", class="label-checkbox", v-bind:for="element.elementKey") {{element.label}}
+
+    div(v-if="element.inputType === 'checkbox'", class="checkbox_wrapper")
+      input(class="checkbox", type="checkbox", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
+      label(v-if="!(element.formOption === 'hideLabel')", class="checkbox_label") {{element.label}}
+
     div(v-if="element.inputType === 'assetLink'", class="assetLink")
-      a(:href="assetUrl()", target="_blank") {{assetName()}}
-    div(v-if="element.inputType === 'fieldset'", class="fieldset")
-      // fieldsets on page forms only support read only properties, at this time. Missing method to share theData.
-      // fieldsets on page forms lack multi-column support. Missing collection of fieldset in the generator code.
-      ehr-page-form-element(v-for="child in element.elements", v-bind:key="child.elementKey", :element="child", :ehrHelp="ehrHelp" )
+      a(:href="assetUrl()", target="_blank")
+        span {{assetName()}} &nbsp;
+        fas-icon(icon="file")
+
+    div(v-if="element.inputType === 'fieldset'", class="fieldset_col_wrapper")
+      h2(v-show="!!element.label", class="fieldset_label") {{element.label}} &nbsp;
+      div(v-for="row in element.formFieldSet.rows", :key="row.formRow" class="fieldset_row_row" )
+        div(v-for="fmEl in row.elements", :key="fmEl.elementKey", class="fieldset_row_row_element" )
+          ehr-page-form-element(:element="fmEl", :ehrHelp="ehrHelp" )
 
     div(style="display:none") {{computedValue}} {{inputVal}}
 </template>
@@ -28,20 +55,6 @@ import Datepicker from 'vuejs-datepicker'
 import EventBus from '../../helpers/event-bus'
 import { PAGE_FORM_INPUT_EVENT } from '../../helpers/event-bus'
 import { PAGE_DATA_REFRESH_EVENT } from '../../helpers/event-bus'
-/*
-TODO perhaps the markup could be a series of divs selected by inputType
-and their content could then be clean and clear markup for each of the input types.
-The way it is now is tight code but it's hard to understand.
-
-TODO date, day and time types
-
-TODO document the hideLabel value in the formOption property
-
-TODO on the Immunization and other pages there are fields that should only be active
-if the checkbox is checked. Implement the event based dependency
-that I've done in the EhrDialogFormElement
- */
-
 export default {
   name: 'EhrPageFormElement',
   components: {
@@ -76,12 +89,8 @@ export default {
     }
   },
   methods: {
-    showLabel () {
-      // console.log('showlabel', this.element.inputType, this.element.label)
-      let hide = this.element.formOption === 'hideLabel'
-      hide = hide || this.element.inputType === 'checkbox'
-      hide = hide || this.element.inputType === 'assetLink'
-      return !hide
+    formCss: function (element) {
+      return element.formCss ? element.formCss : 'noClass'
     },
     assetUrl () {
       let e = this.element
@@ -90,7 +99,7 @@ export default {
     },
     assetName () {
       let e = this.element
-      let name = 'wip: ' + e.label
+      let name = e.label
       if (e.assetBase && e.assetName) {
         name = e.label
       }
@@ -137,18 +146,10 @@ export default {
 
 <style lang="scss">
 @import '../../scss/definitions';
-
 .assetLink a{
   color: $grey80;
   display: block;
   margin-bottom: 10px;
-
-  &:after {
-    color: $grey40;
-    content: "\f15b";
-    font-family: FontAwesome;
-    margin-left: 10px;
-  };
 
   &:hover {
     color: $black;

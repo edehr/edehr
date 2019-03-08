@@ -21,6 +21,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "progressNotes",
               dataParent: "progressNotes.table",
+              level2Key: "table",
               page: "Progress notes",
               tableKey: "table"
             },
@@ -35,6 +36,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "progressNotes",
               dataParent: "progressNotes.table",
+              level2Key: "table",
               page: "Progress notes",
               tableKey: "table"
             },
@@ -49,6 +51,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "progressNotes",
               dataParent: "progressNotes.table",
+              level2Key: "table",
               page: "Progress notes",
               tableKey: "table"
             },
@@ -63,6 +66,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "progressNotes",
               dataParent: "progressNotes.table",
+              level2Key: "table",
               page: "Progress notes",
               tableKey: "table"
             },
@@ -76,6 +80,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "progressNotes",
               dataParent: "progressNotes.table",
+              level2Key: "table",
               page: "Progress notes",
               tableKey: "table"
             }
@@ -96,6 +101,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "progressNotes",
                     dataParent: "progressNotes.table",
+                    level2Key: "table",
                     page: "Progress notes",
                     tableKey: "table"
                   },
@@ -110,6 +116,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "progressNotes",
                     dataParent: "progressNotes.table",
+                    level2Key: "table",
                     page: "Progress notes",
                     tableKey: "table"
                   },
@@ -124,6 +131,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "progressNotes",
                     dataParent: "progressNotes.table",
+                    level2Key: "table",
                     page: "Progress notes",
                     tableKey: "table"
                   },
@@ -138,6 +146,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "progressNotes",
                     dataParent: "progressNotes.table",
+                    level2Key: "table",
                     page: "Progress notes",
                     tableKey: "table"
                   }
@@ -156,6 +165,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "progressNotes",
                     dataParent: "progressNotes.table",
+                    level2Key: "table",
                     page: "Progress notes",
                     tableKey: "table"
                   }
@@ -189,6 +199,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "carePlan",
               dataParent: "carePlan.table2",
+              level2Key: "table2",
               page: "Interprofessional plan of care",
               tableKey: "table2"
             },
@@ -202,6 +213,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "carePlan",
               dataParent: "carePlan.table2",
+              level2Key: "table2",
               page: "Interprofessional plan of care",
               tableKey: "table2"
             },
@@ -215,6 +227,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "carePlan",
               dataParent: "carePlan.table2",
+              level2Key: "table2",
               page: "Interprofessional plan of care",
               tableKey: "table2"
             },
@@ -228,6 +241,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "carePlan",
               dataParent: "carePlan.table2",
+              level2Key: "table2",
               page: "Interprofessional plan of care",
               tableKey: "table2"
             },
@@ -240,6 +254,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "carePlan",
               dataParent: "carePlan.table2",
+              level2Key: "table2",
               page: "Interprofessional plan of care",
               tableKey: "table2"
             },
@@ -253,6 +268,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "carePlan",
               dataParent: "carePlan.table2",
+              level2Key: "table2",
               page: "Interprofessional plan of care",
               tableKey: "table2"
             },
@@ -266,6 +282,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "carePlan",
               dataParent: "carePlan.table2",
+              level2Key: "table2",
               page: "Interprofessional plan of care",
               tableKey: "table2"
             },
@@ -279,6 +296,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "carePlan",
               dataParent: "carePlan.table2",
+              level2Key: "table2",
               page: "Interprofessional plan of care",
               tableKey: "table2"
             },
@@ -292,6 +310,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "carePlan",
               dataParent: "carePlan.table2",
+              level2Key: "table2",
               page: "Interprofessional plan of care",
               tableKey: "table2"
             },
@@ -305,6 +324,7 @@ export default function () {
               formRow: "4",
               pageDataKey: "carePlan",
               dataParent: "carePlan.table2",
+              level2Key: "table2",
               page: "Interprofessional plan of care",
               options: [
                 {
@@ -335,6 +355,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "carePlan",
                     dataParent: "carePlan.table2",
+                    level2Key: "table2",
                     page: "Interprofessional plan of care",
                     tableKey: "table2"
                   },
@@ -348,6 +369,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "carePlan",
                     dataParent: "carePlan.table2",
+                    level2Key: "table2",
                     page: "Interprofessional plan of care",
                     tableKey: "table2"
                   },
@@ -361,6 +383,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "carePlan",
                     dataParent: "carePlan.table2",
+                    level2Key: "table2",
                     page: "Interprofessional plan of care",
                     tableKey: "table2"
                   },
@@ -374,6 +397,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "carePlan",
                     dataParent: "carePlan.table2",
+                    level2Key: "table2",
                     page: "Interprofessional plan of care",
                     tableKey: "table2"
                   }
@@ -391,6 +415,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "carePlan",
                     dataParent: "carePlan.table2",
+                    level2Key: "table2",
                     page: "Interprofessional plan of care",
                     tableKey: "table2"
                   },
@@ -404,6 +429,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "carePlan",
                     dataParent: "carePlan.table2",
+                    level2Key: "table2",
                     page: "Interprofessional plan of care",
                     tableKey: "table2"
                   }
@@ -422,6 +448,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "carePlan",
                     dataParent: "carePlan.table2",
+                    level2Key: "table2",
                     page: "Interprofessional plan of care",
                     tableKey: "table2"
                   },
@@ -435,6 +462,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "carePlan",
                     dataParent: "carePlan.table2",
+                    level2Key: "table2",
                     page: "Interprofessional plan of care",
                     tableKey: "table2"
                   },
@@ -448,6 +476,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "carePlan",
                     dataParent: "carePlan.table2",
+                    level2Key: "table2",
                     page: "Interprofessional plan of care",
                     tableKey: "table2"
                   }
@@ -466,6 +495,7 @@ export default function () {
                     formRow: "4",
                     pageDataKey: "carePlan",
                     dataParent: "carePlan.table2",
+                    level2Key: "table2",
                     page: "Interprofessional plan of care",
                     options: [
                       {

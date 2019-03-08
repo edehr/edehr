@@ -34,6 +34,7 @@ const containerElementProperties = [
   'formOption',
   'pageDataKey',
   'dataParent',
+  'level2Key',
   'page',
   'defaultValue',
   'mandatory',
@@ -144,13 +145,13 @@ class RawInputToDef {
       }
       let p = entry.page
       if (entry.inputType === PAGE_INPUT_TYPE) {
-        // console.log('inputtyupe', entry.inputType)
+        console.log('inputType PAGE_INPUT_TYPE', entry.inputType, entry.fqn)
         this._pageForGroup(p, pages, entry)
       } else if (CONTAINER_INPUT_TYPES.indexOf(entry.inputType) >= 0) {
-        console.log('inputtyupe', entry.inputType, entry.fqn)
+        console.log('inputType CONTAINER_INPUT_TYPES', entry.inputType, entry.fqn)
         this._topLevelContainerForGroup(pages, p, entry)
       } else if (SUBCONTAINER_INPUT_TYPES.indexOf(entry.inputType) >= 0) {
-        // console.log('inputtyupe', entry.inputType)
+        console.log('inputType SUBCONTAINER_INPUT_TYPES', entry.inputType, entry.fqn)
         this._subcontainerForGroup(pages, p, entry)
       } else {
         // entry is a regular element
@@ -332,9 +333,37 @@ class RawInputToDef {
     })
   }
 
-  _extractPageForm(container) {
+  _extractPageForm(container, tableCells) {
     let rows = []
+    let fSetChildrem = {}
+    let topChildren=[]
     container.elements.forEach(element => {
+      let elementKey = element.elementKey
+      console.log('_extractPageForm elementKey',elementKey)
+      if (element.inputType === FIELDSET || element.inputType === FIELDSET_ROW) {
+        console.log('_extractPageForm elementKey level2Key', elementKey, element.level2Key)
+
+        let rows = []
+        element.elements.forEach(childElem => {
+          let formRow = childElem.fsetRow
+          let row = rows[formRow - 1]
+          if (!row) {
+            row = {
+              formRow: formRow,
+              elements: []
+            }
+            rows[formRow - 1] = row
+          }
+          childElem.formColumn = childElem.fsetCol
+          row.elements.push(childElem)
+        })
+        this._sortFormElements(rows)
+        let formFieldSet = {
+          rows: rows,
+          columnsCount: this._formColumnCount(rows)
+        }
+        element.formFieldSet = formFieldSet
+      }
       let formRow = element.formRow
       let row = rows[formRow - 1]
       if (!row) {
