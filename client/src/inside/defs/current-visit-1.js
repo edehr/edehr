@@ -134,6 +134,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "visit",
               dataParent: "visit.table",
+              level2Key: "table",
               page: "Visit details",
               mandatory: "yes",
               helperText: "hospital, ward #, room #, home, out patient clinic",
@@ -149,6 +150,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "visit",
               dataParent: "visit.table",
+              level2Key: "table",
               page: "Visit details",
               tableKey: "table"
             },
@@ -162,6 +164,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "visit",
               dataParent: "visit.table",
+              level2Key: "table",
               page: "Visit details",
               tableKey: "table"
             }
@@ -181,6 +184,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "visit",
                     dataParent: "visit.table",
+                    level2Key: "table",
                     page: "Visit details",
                     mandatory: "yes",
                     helperText: "hospital, ward #, room #, home, out patient clinic",
@@ -196,6 +200,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "visit",
                     dataParent: "visit.table",
+                    level2Key: "table",
                     page: "Visit details",
                     tableKey: "table"
                   },
@@ -209,6 +214,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "visit",
                     dataParent: "visit.table",
+                    level2Key: "table",
                     page: "Visit details",
                     tableKey: "table"
                   }
@@ -243,6 +249,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "vitals",
               dataParent: "vitals.table",
+              level2Key: "table",
               page: "Vital signs",
               tableKey: "table"
             },
@@ -257,6 +264,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "vitals",
               dataParent: "vitals.table",
+              level2Key: "table",
               page: "Vital signs",
               tableKey: "table"
             },
@@ -271,6 +279,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "vitals",
               dataParent: "vitals.table",
+              level2Key: "table",
               page: "Vital signs",
               tableKey: "table"
             },
@@ -284,6 +293,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "vitals",
               dataParent: "vitals.table",
+              level2Key: "table",
               page: "Vital signs",
               tableKey: "table"
             },
@@ -298,6 +308,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "vitals",
               dataParent: "vitals.table",
+              level2Key: "table",
               page: "Vital signs",
               tableKey: "table"
             },
@@ -311,6 +322,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "vitals",
               dataParent: "vitals.table",
+              level2Key: "table",
               page: "Vital signs",
               options: [
                 {
@@ -338,6 +350,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "vitals",
               dataParent: "vitals.table",
+              level2Key: "table",
               page: "Vital signs",
               tableKey: "table"
             },
@@ -351,6 +364,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "vitals",
               dataParent: "vitals.table",
+              level2Key: "table",
               page: "Vital signs",
               options: [
                 {
@@ -372,6 +386,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "vitals",
               dataParent: "vitals.table",
+              level2Key: "table",
               page: "Vital signs",
               options: [
                 {
@@ -390,6 +405,7 @@ export default function () {
               formRow: "4",
               pageDataKey: "vitals",
               dataParent: "vitals.table",
+              level2Key: "table",
               page: "Vital signs",
               tableKey: "table"
             },
@@ -403,6 +419,7 @@ export default function () {
               formRow: "4",
               pageDataKey: "vitals",
               dataParent: "vitals.table",
+              level2Key: "table",
               page: "Vital signs",
               tableKey: "table"
             },
@@ -416,6 +433,7 @@ export default function () {
               formRow: "4",
               pageDataKey: "vitals",
               dataParent: "vitals.table",
+              level2Key: "table",
               page: "Vital signs",
               options: [
                 {
@@ -440,6 +458,7 @@ export default function () {
               formRow: "5",
               pageDataKey: "vitals",
               dataParent: "vitals.table",
+              level2Key: "table",
               page: "Vital signs",
               tableKey: "table"
             },
@@ -453,6 +472,7 @@ export default function () {
               formRow: "6",
               pageDataKey: "vitals",
               dataParent: "vitals.table",
+              level2Key: "table",
               page: "Vital signs",
               tableKey: "table"
             },
@@ -466,6 +486,7 @@ export default function () {
               formRow: "6",
               pageDataKey: "vitals",
               dataParent: "vitals.table",
+              level2Key: "table",
               page: "Vital signs",
               options: [
                 {
@@ -496,6 +517,7 @@ export default function () {
               formRow: "6",
               pageDataKey: "vitals",
               dataParent: "vitals.table",
+              level2Key: "table",
               page: "Vital signs",
               tableKey: "table"
             }
@@ -516,6 +538,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "vitals",
                     dataParent: "vitals.table",
+                    level2Key: "table",
                     page: "Vital signs",
                     tableKey: "table"
                   },
@@ -530,6 +553,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "vitals",
                     dataParent: "vitals.table",
+                    level2Key: "table",
                     page: "Vital signs",
                     tableKey: "table"
                   },
@@ -544,6 +568,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "vitals",
                     dataParent: "vitals.table",
+                    level2Key: "table",
                     page: "Vital signs",
                     tableKey: "table"
                   },
@@ -558,6 +583,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "vitals",
                     dataParent: "vitals.table",
+                    level2Key: "table",
                     page: "Vital signs",
                     tableKey: "table"
                   }
@@ -576,6 +602,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "vitals",
                     dataParent: "vitals.table",
+                    level2Key: "table",
                     page: "Vital signs",
                     tableKey: "table"
                   },
@@ -589,6 +616,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "vitals",
                     dataParent: "vitals.table",
+                    level2Key: "table",
                     page: "Vital signs",
                     options: [
                       {
@@ -621,6 +649,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "vitals",
                     dataParent: "vitals.table",
+                    level2Key: "table",
                     page: "Vital signs",
                     options: [
                       {
@@ -642,6 +671,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "vitals",
                     dataParent: "vitals.table",
+                    level2Key: "table",
                     page: "Vital signs",
                     options: [
                       {
@@ -660,6 +690,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "vitals",
                     dataParent: "vitals.table",
+                    level2Key: "table",
                     page: "Vital signs",
                     tableKey: "table"
                   }
@@ -678,6 +709,7 @@ export default function () {
                     formRow: "4",
                     pageDataKey: "vitals",
                     dataParent: "vitals.table",
+                    level2Key: "table",
                     page: "Vital signs",
                     tableKey: "table"
                   },
@@ -691,6 +723,7 @@ export default function () {
                     formRow: "4",
                     pageDataKey: "vitals",
                     dataParent: "vitals.table",
+                    level2Key: "table",
                     page: "Vital signs",
                     tableKey: "table"
                   },
@@ -704,6 +737,7 @@ export default function () {
                     formRow: "4",
                     pageDataKey: "vitals",
                     dataParent: "vitals.table",
+                    level2Key: "table",
                     page: "Vital signs",
                     options: [
                       {
@@ -733,6 +767,7 @@ export default function () {
                     formRow: "5",
                     pageDataKey: "vitals",
                     dataParent: "vitals.table",
+                    level2Key: "table",
                     page: "Vital signs",
                     tableKey: "table"
                   }
@@ -751,6 +786,7 @@ export default function () {
                     formRow: "6",
                     pageDataKey: "vitals",
                     dataParent: "vitals.table",
+                    level2Key: "table",
                     page: "Vital signs",
                     tableKey: "table"
                   },
@@ -764,6 +800,7 @@ export default function () {
                     formRow: "6",
                     pageDataKey: "vitals",
                     dataParent: "vitals.table",
+                    level2Key: "table",
                     page: "Vital signs",
                     options: [
                       {
@@ -794,6 +831,7 @@ export default function () {
                     formRow: "6",
                     pageDataKey: "vitals",
                     dataParent: "vitals.table",
+                    level2Key: "table",
                     page: "Vital signs",
                     tableKey: "table"
                   }
@@ -828,6 +866,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "fluidBalance",
               dataParent: "fluidBalance.table",
+              level2Key: "table",
               page: "Fluid balance",
               tableKey: "table"
             },
@@ -842,6 +881,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "fluidBalance",
               dataParent: "fluidBalance.table",
+              level2Key: "table",
               page: "Fluid balance",
               tableKey: "table"
             },
@@ -856,6 +896,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "fluidBalance",
               dataParent: "fluidBalance.table",
+              level2Key: "table",
               page: "Fluid balance",
               tableKey: "table"
             },
@@ -870,6 +911,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "fluidBalance",
               dataParent: "fluidBalance.table",
+              level2Key: "table",
               page: "Fluid balance",
               tableKey: "table"
             },
@@ -883,6 +925,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "fluidBalance",
               dataParent: "fluidBalance.table",
+              level2Key: "table",
               page: "Fluid balance",
               tableKey: "table"
             },
@@ -896,6 +939,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "fluidBalance",
               dataParent: "fluidBalance.table",
+              level2Key: "table",
               page: "Fluid balance",
               tableKey: "table"
             }
@@ -916,6 +960,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "fluidBalance",
                     dataParent: "fluidBalance.table",
+                    level2Key: "table",
                     page: "Fluid balance",
                     tableKey: "table"
                   },
@@ -930,6 +975,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "fluidBalance",
                     dataParent: "fluidBalance.table",
+                    level2Key: "table",
                     page: "Fluid balance",
                     tableKey: "table"
                   },
@@ -944,6 +990,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "fluidBalance",
                     dataParent: "fluidBalance.table",
+                    level2Key: "table",
                     page: "Fluid balance",
                     tableKey: "table"
                   },
@@ -958,6 +1005,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "fluidBalance",
                     dataParent: "fluidBalance.table",
+                    level2Key: "table",
                     page: "Fluid balance",
                     tableKey: "table"
                   }
@@ -976,6 +1024,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "fluidBalance",
                     dataParent: "fluidBalance.table",
+                    level2Key: "table",
                     page: "Fluid balance",
                     tableKey: "table"
                   },
@@ -989,6 +1038,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "fluidBalance",
                     dataParent: "fluidBalance.table",
+                    level2Key: "table",
                     page: "Fluid balance",
                     tableKey: "table"
                   }
@@ -1023,6 +1073,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "neurological",
               dataParent: "neurological.table",
+              level2Key: "table",
               page: "Neurological assessment",
               tableKey: "table"
             },
@@ -1037,6 +1088,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "neurological",
               dataParent: "neurological.table",
+              level2Key: "table",
               page: "Neurological assessment",
               tableKey: "table"
             },
@@ -1051,6 +1103,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "neurological",
               dataParent: "neurological.table",
+              level2Key: "table",
               page: "Neurological assessment",
               tableKey: "table"
             },
@@ -1065,6 +1118,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "neurological",
               dataParent: "neurological.table",
+              level2Key: "table",
               page: "Neurological assessment",
               tableKey: "table"
             },
@@ -1078,6 +1132,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "neurological",
               dataParent: "neurological.table",
+              level2Key: "table",
               page: "Neurological assessment",
               containerType: "fieldset",
               containerKey: "status",
@@ -1094,6 +1149,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "neurological",
               dataParent: "neurological.table.status",
+              level2Key: "table",
               page: "Neurological assessment",
               tableKey: "table",
               formColumn: "1"
@@ -1108,6 +1164,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "neurological",
               dataParent: "neurological.table.status",
+              level2Key: "table",
               page: "Neurological assessment",
               tableKey: "table",
               formColumn: "1"
@@ -1122,6 +1179,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "neurological",
               dataParent: "neurological.table.status",
+              level2Key: "table",
               page: "Neurological assessment",
               tableKey: "table",
               formColumn: "1"
@@ -1136,6 +1194,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "neurological",
               dataParent: "neurological.table.status",
+              level2Key: "table",
               page: "Neurological assessment",
               tableKey: "table",
               formColumn: "1"
@@ -1150,6 +1209,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "neurological",
               dataParent: "neurological.table.status",
+              level2Key: "table",
               page: "Neurological assessment",
               tableKey: "table",
               formColumn: "1"
@@ -1164,6 +1224,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "neurological",
               dataParent: "neurological.table.status",
+              level2Key: "table",
               page: "Neurological assessment",
               tableKey: "table",
               formColumn: "1"
@@ -1178,6 +1239,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "neurological",
               dataParent: "neurological.table.status",
+              level2Key: "table",
               page: "Neurological assessment",
               tableKey: "table",
               formColumn: "1"
@@ -1192,6 +1254,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "neurological",
               dataParent: "neurological.table",
+              level2Key: "table",
               page: "Neurological assessment",
               containerType: "fieldset",
               containerKey: "glasgowComaScale",
@@ -1208,6 +1271,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "neurological",
               dataParent: "neurological.table.glasgowComaScale",
+              level2Key: "table",
               page: "Neurological assessment",
               options: [
                 {
@@ -1239,6 +1303,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "neurological",
               dataParent: "neurological.table.glasgowComaScale",
+              level2Key: "table",
               page: "Neurological assessment",
               options: [
                 {
@@ -1273,6 +1338,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "neurological",
               dataParent: "neurological.table.glasgowComaScale",
+              level2Key: "table",
               page: "Neurological assessment",
               options: [
                 {
@@ -1307,6 +1373,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "neurological",
               dataParent: "neurological.table.glasgowComaScale",
+              level2Key: "table",
               page: "Neurological assessment",
               tableKey: "table",
               formColumn: "1"
@@ -1321,6 +1388,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "neurological",
               dataParent: "neurological.table.glasgowComaScale",
+              level2Key: "table",
               page: "Neurological assessment",
               options: [
                 {
@@ -1347,6 +1415,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "neurological",
               dataParent: "neurological.table",
+              level2Key: "table",
               page: "Neurological assessment",
               containerType: "fieldRowSet",
               containerKey: "pupils",
@@ -1363,6 +1432,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "neurological",
               dataParent: "neurological.table.glasgowComaScale",
+              level2Key: "table",
               page: "Neurological assessment",
               tableKey: "table",
               formColumn: "1"
@@ -1377,6 +1447,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "neurological",
               dataParent: "neurological.table.pupils",
+              level2Key: "table",
               page: "Neurological assessment",
               options: [
                 {
@@ -1420,6 +1491,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "neurological",
               dataParent: "neurological.table.pupils",
+              level2Key: "table",
               page: "Neurological assessment",
               options: [
                 {
@@ -1445,6 +1517,7 @@ export default function () {
               fsetCol: "2",
               pageDataKey: "neurological",
               dataParent: "neurological.table.pupils",
+              level2Key: "table",
               page: "Neurological assessment",
               options: [
                 {
@@ -1487,6 +1560,7 @@ export default function () {
               fsetRow: "2",
               pageDataKey: "neurological",
               dataParent: "neurological.table.pupils",
+              level2Key: "table",
               page: "Neurological assessment",
               options: [
                 {
@@ -1511,6 +1585,7 @@ export default function () {
               fsetCol: "3",
               pageDataKey: "neurological",
               dataParent: "neurological.table.pupils",
+              level2Key: "table",
               page: "Neurological assessment",
               options: [
                 {
@@ -1532,6 +1607,7 @@ export default function () {
               fsetCol: "2",
               pageDataKey: "neurological",
               dataParent: "neurological.table.pupils",
+              level2Key: "table",
               page: "Neurological assessment",
               tableCss: "hide-table-element",
               tableKey: "table",
@@ -1548,6 +1624,7 @@ export default function () {
               formRow: "4",
               pageDataKey: "neurological",
               dataParent: "neurological.table",
+              level2Key: "table",
               page: "Neurological assessment",
               containerType: "fieldRowSet",
               containerKey: "stroke",
@@ -1565,6 +1642,7 @@ export default function () {
               formCss: "is-half",
               pageDataKey: "neurological",
               dataParent: "neurological.table.stroke",
+              level2Key: "table",
               page: "Neurological assessment",
               options: [
                 {
@@ -1594,6 +1672,7 @@ export default function () {
               formCss: "is-half",
               pageDataKey: "neurological",
               dataParent: "neurological.table.stroke",
+              level2Key: "table",
               page: "Neurological assessment",
               options: [
                 {
@@ -1620,6 +1699,7 @@ export default function () {
               formCss: "is-half",
               pageDataKey: "neurological",
               dataParent: "neurological.table.stroke",
+              level2Key: "table",
               page: "Neurological assessment",
               options: [
                 {
@@ -1646,6 +1726,7 @@ export default function () {
               formCss: "is-half",
               pageDataKey: "neurological",
               dataParent: "neurological.table.stroke",
+              level2Key: "table",
               page: "Neurological assessment",
               options: [
                 {
@@ -1675,6 +1756,7 @@ export default function () {
               formCss: "is-half",
               pageDataKey: "neurological",
               dataParent: "neurological.table.stroke",
+              level2Key: "table",
               page: "Neurological assessment",
               options: [
                 {
@@ -1701,6 +1783,7 @@ export default function () {
               formCss: "is-half",
               pageDataKey: "neurological",
               dataParent: "neurological.table.stroke",
+              level2Key: "table",
               page: "Neurological assessment",
               options: [
                 {
@@ -1730,6 +1813,7 @@ export default function () {
               formCss: "is-half",
               pageDataKey: "neurological",
               dataParent: "neurological.table.stroke",
+              level2Key: "table",
               page: "Neurological assessment",
               options: [
                 {
@@ -1762,6 +1846,7 @@ export default function () {
               formCss: "is-half",
               pageDataKey: "neurological",
               dataParent: "neurological.table.stroke",
+              level2Key: "table",
               page: "Neurological assessment",
               options: [
                 {
@@ -1788,6 +1873,7 @@ export default function () {
               formCss: "is-half",
               pageDataKey: "neurological",
               dataParent: "neurological.table.stroke",
+              level2Key: "table",
               page: "Neurological assessment",
               options: [
                 {
@@ -1820,6 +1906,7 @@ export default function () {
               formCss: "is-half",
               pageDataKey: "neurological",
               dataParent: "neurological.table.stroke",
+              level2Key: "table",
               page: "Neurological assessment",
               options: [
                 {
@@ -1849,6 +1936,7 @@ export default function () {
               formCss: "is-half",
               pageDataKey: "neurological",
               dataParent: "neurological.table.stroke",
+              level2Key: "table",
               page: "Neurological assessment",
               options: [
                 {
@@ -1881,6 +1969,7 @@ export default function () {
               formCss: "is-half",
               pageDataKey: "neurological",
               dataParent: "neurological.table.stroke",
+              level2Key: "table",
               page: "Neurological assessment",
               options: [
                 {
@@ -1910,6 +1999,7 @@ export default function () {
               formCss: "is-half",
               pageDataKey: "neurological",
               dataParent: "neurological.table.stroke",
+              level2Key: "table",
               page: "Neurological assessment",
               options: [
                 {
@@ -1942,6 +2032,7 @@ export default function () {
               formCss: "is-half",
               pageDataKey: "neurological",
               dataParent: "neurological.table.stroke",
+              level2Key: "table",
               page: "Neurological assessment",
               options: [
                 {
@@ -1968,6 +2059,7 @@ export default function () {
               formCss: "is-half",
               pageDataKey: "neurological",
               dataParent: "neurological.table.stroke",
+              level2Key: "table",
               page: "Neurological assessment",
               options: [
                 {
@@ -1994,6 +2086,7 @@ export default function () {
               formCss: "is-two-thirds",
               pageDataKey: "neurological",
               dataParent: "neurological.table",
+              level2Key: "table",
               page: "Neurological assessment",
               tableKey: "table"
             },
@@ -2009,6 +2102,7 @@ export default function () {
               formOption: "withExternalUrls",
               pageDataKey: "neurological",
               dataParent: "neurological.table",
+              level2Key: "table",
               page: "Neurological assessment",
               tableCss: "hide-table-element",
               tableKey: "table"
@@ -2030,6 +2124,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "neurological",
                     dataParent: "neurological.table",
+                    level2Key: "table",
                     page: "Neurological assessment",
                     tableKey: "table"
                   },
@@ -2044,6 +2139,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "neurological",
                     dataParent: "neurological.table",
+                    level2Key: "table",
                     page: "Neurological assessment",
                     tableKey: "table"
                   },
@@ -2058,6 +2154,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "neurological",
                     dataParent: "neurological.table",
+                    level2Key: "table",
                     page: "Neurological assessment",
                     tableKey: "table"
                   },
@@ -2072,6 +2169,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "neurological",
                     dataParent: "neurological.table",
+                    level2Key: "table",
                     page: "Neurological assessment",
                     tableKey: "table"
                   }
@@ -2090,6 +2188,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "neurological",
                     dataParent: "neurological.table",
+                    level2Key: "table",
                     page: "Neurological assessment",
                     containerType: "fieldset",
                     containerKey: "status",
@@ -2110,6 +2209,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "neurological",
                               dataParent: "neurological.table.status",
+                              level2Key: "table",
                               page: "Neurological assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -2129,6 +2229,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "neurological",
                               dataParent: "neurological.table.status",
+                              level2Key: "table",
                               page: "Neurological assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -2148,6 +2249,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "neurological",
                               dataParent: "neurological.table.status",
+                              level2Key: "table",
                               page: "Neurological assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -2167,6 +2269,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "neurological",
                               dataParent: "neurological.table.status",
+                              level2Key: "table",
                               page: "Neurological assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -2186,6 +2289,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "neurological",
                               dataParent: "neurological.table.status",
+                              level2Key: "table",
                               page: "Neurological assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -2205,6 +2309,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "neurological",
                               dataParent: "neurological.table.status",
+                              level2Key: "table",
                               page: "Neurological assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -2224,6 +2329,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "neurological",
                               dataParent: "neurological.table.status",
+                              level2Key: "table",
                               page: "Neurological assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -2244,6 +2350,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "neurological",
                     dataParent: "neurological.table",
+                    level2Key: "table",
                     page: "Neurological assessment",
                     containerType: "fieldset",
                     containerKey: "glasgowComaScale",
@@ -2264,6 +2371,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "neurological",
                               dataParent: "neurological.table.glasgowComaScale",
+                              level2Key: "table",
                               page: "Neurological assessment",
                               options: [
                                 {
@@ -2295,6 +2403,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "neurological",
                               dataParent: "neurological.table.glasgowComaScale",
+                              level2Key: "table",
                               page: "Neurological assessment",
                               options: [
                                 {
@@ -2325,6 +2434,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "neurological",
                               dataParent: "neurological.table.glasgowComaScale",
+                              level2Key: "table",
                               page: "Neurological assessment",
                               options: [
                                 {
@@ -2359,6 +2469,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "neurological",
                               dataParent: "neurological.table.glasgowComaScale",
+                              level2Key: "table",
                               page: "Neurological assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -2378,6 +2489,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "neurological",
                               dataParent: "neurological.table.glasgowComaScale",
+                              level2Key: "table",
                               page: "Neurological assessment",
                               options: [
                                 {
@@ -2417,6 +2529,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "neurological",
                               dataParent: "neurological.table.glasgowComaScale",
+                              level2Key: "table",
                               page: "Neurological assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -2443,6 +2556,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "neurological",
                     dataParent: "neurological.table",
+                    level2Key: "table",
                     page: "Neurological assessment",
                     containerType: "fieldRowSet",
                     containerKey: "pupils",
@@ -2463,6 +2577,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "neurological",
                               dataParent: "neurological.table.pupils",
+                              level2Key: "table",
                               page: "Neurological assessment",
                               options: [
                                 {
@@ -2506,6 +2621,7 @@ export default function () {
                               fsetCol: "2",
                               pageDataKey: "neurological",
                               dataParent: "neurological.table.pupils",
+                              level2Key: "table",
                               page: "Neurological assessment",
                               options: [
                                 {
@@ -2549,6 +2665,7 @@ export default function () {
                               fsetCol: "3",
                               pageDataKey: "neurological",
                               dataParent: "neurological.table.pupils",
+                              level2Key: "table",
                               page: "Neurological assessment",
                               options: [
                                 {
@@ -2576,6 +2693,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "neurological",
                               dataParent: "neurological.table.pupils",
+                              level2Key: "table",
                               page: "Neurological assessment",
                               options: [
                                 {
@@ -2600,6 +2718,7 @@ export default function () {
                               fsetRow: "2",
                               pageDataKey: "neurological",
                               dataParent: "neurological.table.pupils",
+                              level2Key: "table",
                               page: "Neurological assessment",
                               options: [
                                 {
@@ -2623,6 +2742,7 @@ export default function () {
                               fsetCol: "2",
                               pageDataKey: "neurological",
                               dataParent: "neurological.table.pupils",
+                              level2Key: "table",
                               page: "Neurological assessment",
                               tableCss: "hide-table-element",
                               tableKey: "table",
@@ -2650,6 +2770,7 @@ export default function () {
                     formRow: "4",
                     pageDataKey: "neurological",
                     dataParent: "neurological.table",
+                    level2Key: "table",
                     page: "Neurological assessment",
                     containerType: "fieldRowSet",
                     containerKey: "stroke",
@@ -2671,6 +2792,7 @@ export default function () {
                               formCss: "is-half",
                               pageDataKey: "neurological",
                               dataParent: "neurological.table.stroke",
+                              level2Key: "table",
                               page: "Neurological assessment",
                               options: [
                                 {
@@ -2700,6 +2822,7 @@ export default function () {
                               formCss: "is-half",
                               pageDataKey: "neurological",
                               dataParent: "neurological.table.stroke",
+                              level2Key: "table",
                               page: "Neurological assessment",
                               options: [
                                 {
@@ -2731,6 +2854,7 @@ export default function () {
                               formCss: "is-half",
                               pageDataKey: "neurological",
                               dataParent: "neurological.table.stroke",
+                              level2Key: "table",
                               page: "Neurological assessment",
                               options: [
                                 {
@@ -2757,6 +2881,7 @@ export default function () {
                               formCss: "is-half",
                               pageDataKey: "neurological",
                               dataParent: "neurological.table.stroke",
+                              level2Key: "table",
                               page: "Neurological assessment",
                               options: [
                                 {
@@ -2791,6 +2916,7 @@ export default function () {
                               formCss: "is-half",
                               pageDataKey: "neurological",
                               dataParent: "neurological.table.stroke",
+                              level2Key: "table",
                               page: "Neurological assessment",
                               options: [
                                 {
@@ -2817,6 +2943,7 @@ export default function () {
                               formCss: "is-half",
                               pageDataKey: "neurological",
                               dataParent: "neurological.table.stroke",
+                              level2Key: "table",
                               page: "Neurological assessment",
                               options: [
                                 {
@@ -2851,6 +2978,7 @@ export default function () {
                               formCss: "is-half",
                               pageDataKey: "neurological",
                               dataParent: "neurological.table.stroke",
+                              level2Key: "table",
                               page: "Neurological assessment",
                               options: [
                                 {
@@ -2883,6 +3011,7 @@ export default function () {
                               formCss: "is-half",
                               pageDataKey: "neurological",
                               dataParent: "neurological.table.stroke",
+                              level2Key: "table",
                               page: "Neurological assessment",
                               options: [
                                 {
@@ -2914,6 +3043,7 @@ export default function () {
                               formCss: "is-half",
                               pageDataKey: "neurological",
                               dataParent: "neurological.table.stroke",
+                              level2Key: "table",
                               page: "Neurological assessment",
                               options: [
                                 {
@@ -2946,6 +3076,7 @@ export default function () {
                               formCss: "is-half",
                               pageDataKey: "neurological",
                               dataParent: "neurological.table.stroke",
+                              level2Key: "table",
                               page: "Neurological assessment",
                               options: [
                                 {
@@ -2980,6 +3111,7 @@ export default function () {
                               formCss: "is-half",
                               pageDataKey: "neurological",
                               dataParent: "neurological.table.stroke",
+                              level2Key: "table",
                               page: "Neurological assessment",
                               options: [
                                 {
@@ -3012,6 +3144,7 @@ export default function () {
                               formCss: "is-half",
                               pageDataKey: "neurological",
                               dataParent: "neurological.table.stroke",
+                              level2Key: "table",
                               page: "Neurological assessment",
                               options: [
                                 {
@@ -3046,6 +3179,7 @@ export default function () {
                               formCss: "is-half",
                               pageDataKey: "neurological",
                               dataParent: "neurological.table.stroke",
+                              level2Key: "table",
                               page: "Neurological assessment",
                               options: [
                                 {
@@ -3078,6 +3212,7 @@ export default function () {
                               formCss: "is-half",
                               pageDataKey: "neurological",
                               dataParent: "neurological.table.stroke",
+                              level2Key: "table",
                               page: "Neurological assessment",
                               options: [
                                 {
@@ -3109,6 +3244,7 @@ export default function () {
                               formCss: "is-half",
                               pageDataKey: "neurological",
                               dataParent: "neurological.table.stroke",
+                              level2Key: "table",
                               page: "Neurological assessment",
                               options: [
                                 {
@@ -3161,6 +3297,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "respiratory",
               dataParent: "respiratory.table",
+              level2Key: "table",
               page: "Respiratory assessment",
               tableKey: "table"
             },
@@ -3175,6 +3312,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "respiratory",
               dataParent: "respiratory.table",
+              level2Key: "table",
               page: "Respiratory assessment",
               tableKey: "table"
             },
@@ -3189,6 +3327,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "respiratory",
               dataParent: "respiratory.table",
+              level2Key: "table",
               page: "Respiratory assessment",
               tableKey: "table"
             },
@@ -3203,6 +3342,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "respiratory",
               dataParent: "respiratory.table",
+              level2Key: "table",
               page: "Respiratory assessment",
               tableKey: "table"
             },
@@ -3216,6 +3356,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "respiratory",
               dataParent: "respiratory.table.airway",
+              level2Key: "table",
               page: "Respiratory assessment",
               tableKey: "table",
               formColumn: "1"
@@ -3230,6 +3371,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "respiratory",
               dataParent: "respiratory.table.airway",
+              level2Key: "table",
               page: "Respiratory assessment",
               tableKey: "table",
               formColumn: "1"
@@ -3244,6 +3386,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "respiratory",
               dataParent: "respiratory.table.airway",
+              level2Key: "table",
               page: "Respiratory assessment",
               tableKey: "table",
               formColumn: "1"
@@ -3258,6 +3401,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "respiratory",
               dataParent: "respiratory.table.airway",
+              level2Key: "table",
               page: "Respiratory assessment",
               tableKey: "table",
               formColumn: "1"
@@ -3271,6 +3415,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "respiratory",
               dataParent: "respiratory.table.airway",
+              level2Key: "table",
               page: "Respiratory assessment"
             },
             {
@@ -3283,6 +3428,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "respiratory",
               dataParent: "respiratory.table.airway",
+              level2Key: "table",
               page: "Respiratory assessment",
               tableKey: "table",
               formColumn: "1"
@@ -3297,6 +3443,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "respiratory",
               dataParent: "respiratory.table.airway",
+              level2Key: "table",
               page: "Respiratory assessment",
               tableKey: "table",
               formColumn: "1"
@@ -3311,6 +3458,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "respiratory",
               dataParent: "respiratory.table.breath",
+              level2Key: "table",
               page: "Respiratory assessment",
               options: [
                 {
@@ -3342,6 +3490,7 @@ export default function () {
               fsetCol: "2",
               pageDataKey: "respiratory",
               dataParent: "respiratory.table.breath",
+              level2Key: "table",
               page: "Respiratory assessment",
               options: [
                 {
@@ -3372,6 +3521,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "respiratory",
               dataParent: "respiratory.table",
+              level2Key: "table",
               page: "Respiratory assessment",
               containerType: "fieldset",
               containerKey: "airway",
@@ -3387,6 +3537,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "respiratory",
               dataParent: "respiratory.table",
+              level2Key: "table",
               page: "Respiratory assessment",
               containerType: "fieldset",
               containerKey: "breath",
@@ -3402,6 +3553,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "respiratory",
               dataParent: "respiratory.table.breath",
+              level2Key: "table",
               page: "Respiratory assessment",
               tableCss: "hide-table-element",
               tableKey: "table",
@@ -3417,6 +3569,7 @@ export default function () {
               fsetCol: "2",
               pageDataKey: "respiratory",
               dataParent: "respiratory.table.breath",
+              level2Key: "table",
               page: "Respiratory assessment",
               options: [
                 {
@@ -3448,6 +3601,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "respiratory",
               dataParent: "respiratory.table.breath",
+              level2Key: "table",
               page: "Respiratory assessment",
               options: [
                 {
@@ -3479,6 +3633,7 @@ export default function () {
               fsetCol: "2",
               pageDataKey: "respiratory",
               dataParent: "respiratory.table.breath",
+              level2Key: "table",
               page: "Respiratory assessment",
               options: [
                 {
@@ -3510,6 +3665,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "respiratory",
               dataParent: "respiratory.table.breath",
+              level2Key: "table",
               page: "Respiratory assessment",
               options: [
                 {
@@ -3535,6 +3691,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "respiratory",
               dataParent: "respiratory.table.breath",
+              level2Key: "table",
               page: "Respiratory assessment",
               options: [
                 {
@@ -3560,6 +3717,7 @@ export default function () {
               fsetCol: "2",
               pageDataKey: "respiratory",
               dataParent: "respiratory.table.breath",
+              level2Key: "table",
               page: "Respiratory assessment",
               options: [
                 {
@@ -3585,6 +3743,7 @@ export default function () {
               fsetCol: "2",
               pageDataKey: "respiratory",
               dataParent: "respiratory.table.breath",
+              level2Key: "table",
               page: "Respiratory assessment",
               options: [
                 {
@@ -3624,6 +3783,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "respiratory",
               dataParent: "respiratory.table.breath",
+              level2Key: "table",
               page: "Respiratory assessment",
               tableCss: "hide-table-element"
             },
@@ -3637,6 +3797,7 @@ export default function () {
               fsetCol: "2",
               pageDataKey: "respiratory",
               dataParent: "respiratory.table.breath",
+              level2Key: "table",
               page: "Respiratory assessment",
               tableKey: "table",
               formColumn: "2"
@@ -3651,6 +3812,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "respiratory",
               dataParent: "respiratory.table",
+              level2Key: "table",
               page: "Respiratory assessment",
               tableKey: "table"
             }
@@ -3671,6 +3833,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "respiratory",
                     dataParent: "respiratory.table",
+                    level2Key: "table",
                     page: "Respiratory assessment",
                     tableKey: "table"
                   },
@@ -3685,6 +3848,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "respiratory",
                     dataParent: "respiratory.table",
+                    level2Key: "table",
                     page: "Respiratory assessment",
                     tableKey: "table"
                   },
@@ -3699,6 +3863,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "respiratory",
                     dataParent: "respiratory.table",
+                    level2Key: "table",
                     page: "Respiratory assessment",
                     tableKey: "table"
                   },
@@ -3713,6 +3878,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "respiratory",
                     dataParent: "respiratory.table",
+                    level2Key: "table",
                     page: "Respiratory assessment",
                     tableKey: "table"
                   }
@@ -3730,6 +3896,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "respiratory",
                     dataParent: "respiratory.table",
+                    level2Key: "table",
                     page: "Respiratory assessment",
                     containerType: "fieldset",
                     containerKey: "airway",
@@ -3750,6 +3917,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "respiratory",
                               dataParent: "respiratory.table.airway",
+                              level2Key: "table",
                               page: "Respiratory assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -3769,6 +3937,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "respiratory",
                               dataParent: "respiratory.table.airway",
+                              level2Key: "table",
                               page: "Respiratory assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -3788,6 +3957,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "respiratory",
                               dataParent: "respiratory.table.airway",
+                              level2Key: "table",
                               page: "Respiratory assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -3807,6 +3977,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "respiratory",
                               dataParent: "respiratory.table.airway",
+                              level2Key: "table",
                               page: "Respiratory assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -3826,6 +3997,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "respiratory",
                               dataParent: "respiratory.table.airway",
+                              level2Key: "table",
                               page: "Respiratory assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -3845,6 +4017,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "respiratory",
                               dataParent: "respiratory.table.airway",
+                              level2Key: "table",
                               page: "Respiratory assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -3864,6 +4037,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "respiratory",
                               dataParent: "respiratory.table.airway",
+                              level2Key: "table",
                               page: "Respiratory assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -3883,6 +4057,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "respiratory",
                     dataParent: "respiratory.table",
+                    level2Key: "table",
                     page: "Respiratory assessment",
                     containerType: "fieldset",
                     containerKey: "breath",
@@ -3903,6 +4078,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "respiratory",
                               dataParent: "respiratory.table.breath",
+                              level2Key: "table",
                               page: "Respiratory assessment",
                               options: [
                                 {
@@ -3934,6 +4110,7 @@ export default function () {
                               fsetCol: "2",
                               pageDataKey: "respiratory",
                               dataParent: "respiratory.table.breath",
+                              level2Key: "table",
                               page: "Respiratory assessment",
                               options: [
                                 {
@@ -3969,6 +4146,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "respiratory",
                               dataParent: "respiratory.table.breath",
+                              level2Key: "table",
                               page: "Respiratory assessment",
                               tableCss: "hide-table-element",
                               tableKey: "table",
@@ -3984,6 +4162,7 @@ export default function () {
                               fsetCol: "2",
                               pageDataKey: "respiratory",
                               dataParent: "respiratory.table.breath",
+                              level2Key: "table",
                               page: "Respiratory assessment",
                               options: [
                                 {
@@ -4020,6 +4199,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "respiratory",
                               dataParent: "respiratory.table.breath",
+                              level2Key: "table",
                               page: "Respiratory assessment",
                               options: [
                                 {
@@ -4051,6 +4231,7 @@ export default function () {
                               fsetCol: "2",
                               pageDataKey: "respiratory",
                               dataParent: "respiratory.table.breath",
+                              level2Key: "table",
                               page: "Respiratory assessment",
                               options: [
                                 {
@@ -4087,6 +4268,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "respiratory",
                               dataParent: "respiratory.table.breath",
+                              level2Key: "table",
                               page: "Respiratory assessment",
                               options: [
                                 {
@@ -4112,6 +4294,7 @@ export default function () {
                               fsetCol: "2",
                               pageDataKey: "respiratory",
                               dataParent: "respiratory.table.breath",
+                              level2Key: "table",
                               page: "Respiratory assessment",
                               options: [
                                 {
@@ -4142,6 +4325,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "respiratory",
                               dataParent: "respiratory.table.breath",
+                              level2Key: "table",
                               page: "Respiratory assessment",
                               options: [
                                 {
@@ -4167,6 +4351,7 @@ export default function () {
                               fsetCol: "2",
                               pageDataKey: "respiratory",
                               dataParent: "respiratory.table.breath",
+                              level2Key: "table",
                               page: "Respiratory assessment",
                               options: [
                                 {
@@ -4211,6 +4396,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "respiratory",
                               dataParent: "respiratory.table.breath",
+                              level2Key: "table",
                               page: "Respiratory assessment",
                               tableCss: "hide-table-element",
                               tableKey: "table",
@@ -4226,6 +4412,7 @@ export default function () {
                               fsetCol: "2",
                               pageDataKey: "respiratory",
                               dataParent: "respiratory.table.breath",
+                              level2Key: "table",
                               page: "Respiratory assessment",
                               tableKey: "table",
                               formColumn: "2"
@@ -4251,6 +4438,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "respiratory",
                     dataParent: "respiratory.table",
+                    level2Key: "table",
                     page: "Respiratory assessment",
                     tableKey: "table"
                   }
@@ -4285,6 +4473,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "cardiovascular",
               dataParent: "cardiovascular.table",
+              level2Key: "table",
               page: "Cardiovascular assessment",
               tableKey: "table"
             },
@@ -4299,6 +4488,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "cardiovascular",
               dataParent: "cardiovascular.table",
+              level2Key: "table",
               page: "Cardiovascular assessment",
               tableKey: "table"
             },
@@ -4313,6 +4503,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "cardiovascular",
               dataParent: "cardiovascular.table",
+              level2Key: "table",
               page: "Cardiovascular assessment",
               tableKey: "table"
             },
@@ -4327,6 +4518,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "cardiovascular",
               dataParent: "cardiovascular.table",
+              level2Key: "table",
               page: "Cardiovascular assessment",
               tableKey: "table"
             },
@@ -4340,6 +4532,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "cardiovascular",
               dataParent: "cardiovascular.table",
+              level2Key: "table",
               page: "Cardiovascular assessment",
               options: [
                 {
@@ -4370,6 +4563,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "cardiovascular",
               dataParent: "cardiovascular.table",
+              level2Key: "table",
               page: "Cardiovascular assessment",
               options: [
                 {
@@ -4403,6 +4597,7 @@ export default function () {
               formOption: "spacer",
               pageDataKey: "cardiovascular",
               dataParent: "cardiovascular.table",
+              level2Key: "table",
               page: "Cardiovascular assessment",
               tableCss: "hide-table-element",
               tableKey: "table"
@@ -4417,6 +4612,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "cardiovascular",
               dataParent: "cardiovascular.table",
+              level2Key: "table",
               page: "Cardiovascular assessment",
               helperText: "Normal < 3 seconds-NL-Delayed > 3 seconds",
               tableCss: "hide-table-element",
@@ -4432,6 +4628,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "cardiovascular",
               dataParent: "cardiovascular.table",
+              level2Key: "table",
               page: "Cardiovascular assessment",
               tableCss: "hide-table-element",
               tableKey: "table"
@@ -4446,6 +4643,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "cardiovascular",
               dataParent: "cardiovascular.table",
+              level2Key: "table",
               page: "Cardiovascular assessment",
               tableCss: "hide-table-element",
               tableKey: "table"
@@ -4460,6 +4658,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "cardiovascular",
               dataParent: "cardiovascular.table",
+              level2Key: "table",
               page: "Cardiovascular assessment",
               tableCss: "hide-table-element",
               tableKey: "table"
@@ -4474,6 +4673,7 @@ export default function () {
               formRow: "4",
               pageDataKey: "cardiovascular",
               dataParent: "cardiovascular.table",
+              level2Key: "table",
               page: "Cardiovascular assessment",
               tableCss: "hide-table-element",
               tableKey: "table"
@@ -4488,6 +4688,7 @@ export default function () {
               formRow: "5",
               pageDataKey: "cardiovascular",
               dataParent: "cardiovascular.table",
+              level2Key: "table",
               page: "Cardiovascular assessment",
               tableCss: "hide-table-element",
               tableKey: "table"
@@ -4502,6 +4703,7 @@ export default function () {
               formRow: "6",
               pageDataKey: "cardiovascular",
               dataParent: "cardiovascular.table",
+              level2Key: "table",
               page: "Cardiovascular assessment",
               tableCss: "hide-table-element",
               tableKey: "table"
@@ -4516,6 +4718,7 @@ export default function () {
               formRow: "7",
               pageDataKey: "cardiovascular",
               dataParent: "cardiovascular.table",
+              level2Key: "table",
               page: "Cardiovascular assessment",
               tableCss: "hide-table-element",
               tableKey: "table"
@@ -4528,9 +4731,10 @@ export default function () {
               tableColumn: "16",
               formColumn: "2",
               formRow: "4",
-              formOption: "noLabel",
+              formOption: "hideLabel",
               pageDataKey: "cardiovascular",
               dataParent: "cardiovascular.table",
+              level2Key: "table",
               page: "Cardiovascular assessment",
               options: [
                 {
@@ -4550,9 +4754,10 @@ export default function () {
               tableColumn: "17",
               formColumn: "2",
               formRow: "5",
-              formOption: "noLabel",
+              formOption: "hideLabel",
               pageDataKey: "cardiovascular",
               dataParent: "cardiovascular.table",
+              level2Key: "table",
               page: "Cardiovascular assessment",
               options: [
                 {
@@ -4572,9 +4777,10 @@ export default function () {
               tableColumn: "18",
               formColumn: "2",
               formRow: "6",
-              formOption: "noLabel",
+              formOption: "hideLabel",
               pageDataKey: "cardiovascular",
               dataParent: "cardiovascular.table",
+              level2Key: "table",
               page: "Cardiovascular assessment",
               options: [
                 {
@@ -4594,9 +4800,10 @@ export default function () {
               tableColumn: "19",
               formColumn: "2",
               formRow: "7",
-              formOption: "noLabel",
+              formOption: "hideLabel",
               pageDataKey: "cardiovascular",
               dataParent: "cardiovascular.table",
+              level2Key: "table",
               page: "Cardiovascular assessment",
               options: [
                 {
@@ -4616,9 +4823,10 @@ export default function () {
               tableColumn: "20",
               formColumn: "3",
               formRow: "4",
-              formOption: "noLabel",
+              formOption: "hideLabel",
               pageDataKey: "cardiovascular",
               dataParent: "cardiovascular.table",
+              level2Key: "table",
               page: "Cardiovascular assessment",
               options: [
                 {
@@ -4641,9 +4849,10 @@ export default function () {
               tableColumn: "21",
               formColumn: "3",
               formRow: "5",
-              formOption: "noLabel",
+              formOption: "hideLabel",
               pageDataKey: "cardiovascular",
               dataParent: "cardiovascular.table",
+              level2Key: "table",
               page: "Cardiovascular assessment",
               options: [
                 {
@@ -4666,9 +4875,10 @@ export default function () {
               tableColumn: "22",
               formColumn: "3",
               formRow: "6",
-              formOption: "noLabel",
+              formOption: "hideLabel",
               pageDataKey: "cardiovascular",
               dataParent: "cardiovascular.table",
+              level2Key: "table",
               page: "Cardiovascular assessment",
               options: [
                 {
@@ -4691,9 +4901,10 @@ export default function () {
               tableColumn: "23",
               formColumn: "3",
               formRow: "7",
-              formOption: "noLabel",
+              formOption: "hideLabel",
               pageDataKey: "cardiovascular",
               dataParent: "cardiovascular.table",
+              level2Key: "table",
               page: "Cardiovascular assessment",
               options: [
                 {
@@ -4716,9 +4927,10 @@ export default function () {
               tableColumn: "24",
               formColumn: "4",
               formRow: "4",
-              formOption: "noLabel",
+              formOption: "hideLabel",
               pageDataKey: "cardiovascular",
               dataParent: "cardiovascular.table",
+              level2Key: "table",
               page: "Cardiovascular assessment",
               options: [
                 {
@@ -4747,9 +4959,10 @@ export default function () {
               tableColumn: "25",
               formColumn: "4",
               formRow: "5",
-              formOption: "noLabel",
+              formOption: "hideLabel",
               pageDataKey: "cardiovascular",
               dataParent: "cardiovascular.table",
+              level2Key: "table",
               page: "Cardiovascular assessment",
               options: [
                 {
@@ -4778,9 +4991,10 @@ export default function () {
               tableColumn: "26",
               formColumn: "4",
               formRow: "6",
-              formOption: "noLabel",
+              formOption: "hideLabel",
               pageDataKey: "cardiovascular",
               dataParent: "cardiovascular.table",
+              level2Key: "table",
               page: "Cardiovascular assessment",
               options: [
                 {
@@ -4809,9 +5023,10 @@ export default function () {
               tableColumn: "27",
               formColumn: "4",
               formRow: "7",
-              formOption: "noLabel",
+              formOption: "hideLabel",
               pageDataKey: "cardiovascular",
               dataParent: "cardiovascular.table",
+              level2Key: "table",
               page: "Cardiovascular assessment",
               options: [
                 {
@@ -4840,9 +5055,10 @@ export default function () {
               tableColumn: "28",
               formColumn: "5",
               formRow: "4",
-              formOption: "noLabel",
+              formOption: "hideLabel",
               pageDataKey: "cardiovascular",
               dataParent: "cardiovascular.table",
+              level2Key: "table",
               page: "Cardiovascular assessment",
               options: [
                 {
@@ -4862,9 +5078,10 @@ export default function () {
               tableColumn: "29",
               formColumn: "5",
               formRow: "5",
-              formOption: "noLabel",
+              formOption: "hideLabel",
               pageDataKey: "cardiovascular",
               dataParent: "cardiovascular.table",
+              level2Key: "table",
               page: "Cardiovascular assessment",
               options: [
                 {
@@ -4884,9 +5101,10 @@ export default function () {
               tableColumn: "30",
               formColumn: "5",
               formRow: "6",
-              formOption: "noLabel",
+              formOption: "hideLabel",
               pageDataKey: "cardiovascular",
               dataParent: "cardiovascular.table",
+              level2Key: "table",
               page: "Cardiovascular assessment",
               options: [
                 {
@@ -4905,9 +5123,10 @@ export default function () {
               tableColumn: "31",
               formColumn: "5",
               formRow: "7",
-              formOption: "noLabel",
+              formOption: "hideLabel",
               pageDataKey: "cardiovascular",
               dataParent: "cardiovascular.table",
+              level2Key: "table",
               page: "Cardiovascular assessment",
               options: [
                 {
@@ -4929,6 +5148,7 @@ export default function () {
               formRow: "8",
               pageDataKey: "cardiovascular",
               dataParent: "cardiovascular.table",
+              level2Key: "table",
               page: "Cardiovascular assessment",
               tableKey: "table"
             }
@@ -4949,6 +5169,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "cardiovascular",
                     dataParent: "cardiovascular.table",
+                    level2Key: "table",
                     page: "Cardiovascular assessment",
                     tableKey: "table"
                   },
@@ -4963,6 +5184,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "cardiovascular",
                     dataParent: "cardiovascular.table",
+                    level2Key: "table",
                     page: "Cardiovascular assessment",
                     tableKey: "table"
                   },
@@ -4977,6 +5199,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "cardiovascular",
                     dataParent: "cardiovascular.table",
+                    level2Key: "table",
                     page: "Cardiovascular assessment",
                     tableKey: "table"
                   },
@@ -4991,6 +5214,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "cardiovascular",
                     dataParent: "cardiovascular.table",
+                    level2Key: "table",
                     page: "Cardiovascular assessment",
                     tableKey: "table"
                   }
@@ -5009,6 +5233,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "cardiovascular",
                     dataParent: "cardiovascular.table",
+                    level2Key: "table",
                     page: "Cardiovascular assessment",
                     options: [
                       {
@@ -5039,6 +5264,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "cardiovascular",
                     dataParent: "cardiovascular.table",
+                    level2Key: "table",
                     page: "Cardiovascular assessment",
                     options: [
                       {
@@ -5077,6 +5303,7 @@ export default function () {
                     formOption: "spacer",
                     pageDataKey: "cardiovascular",
                     dataParent: "cardiovascular.table",
+                    level2Key: "table",
                     page: "Cardiovascular assessment",
                     tableCss: "hide-table-element",
                     tableKey: "table"
@@ -5091,6 +5318,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "cardiovascular",
                     dataParent: "cardiovascular.table",
+                    level2Key: "table",
                     page: "Cardiovascular assessment",
                     helperText: "Normal < 3 seconds-NL-Delayed > 3 seconds",
                     tableCss: "hide-table-element",
@@ -5106,6 +5334,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "cardiovascular",
                     dataParent: "cardiovascular.table",
+                    level2Key: "table",
                     page: "Cardiovascular assessment",
                     tableCss: "hide-table-element",
                     tableKey: "table"
@@ -5120,6 +5349,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "cardiovascular",
                     dataParent: "cardiovascular.table",
+                    level2Key: "table",
                     page: "Cardiovascular assessment",
                     tableCss: "hide-table-element",
                     tableKey: "table"
@@ -5134,6 +5364,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "cardiovascular",
                     dataParent: "cardiovascular.table",
+                    level2Key: "table",
                     page: "Cardiovascular assessment",
                     tableCss: "hide-table-element",
                     tableKey: "table"
@@ -5153,6 +5384,7 @@ export default function () {
                     formRow: "4",
                     pageDataKey: "cardiovascular",
                     dataParent: "cardiovascular.table",
+                    level2Key: "table",
                     page: "Cardiovascular assessment",
                     tableCss: "hide-table-element",
                     tableKey: "table"
@@ -5165,9 +5397,10 @@ export default function () {
                     tableColumn: "16",
                     formColumn: "2",
                     formRow: "4",
-                    formOption: "noLabel",
+                    formOption: "hideLabel",
                     pageDataKey: "cardiovascular",
                     dataParent: "cardiovascular.table",
+                    level2Key: "table",
                     page: "Cardiovascular assessment",
                     options: [
                       {
@@ -5187,9 +5420,10 @@ export default function () {
                     tableColumn: "20",
                     formColumn: "3",
                     formRow: "4",
-                    formOption: "noLabel",
+                    formOption: "hideLabel",
                     pageDataKey: "cardiovascular",
                     dataParent: "cardiovascular.table",
+                    level2Key: "table",
                     page: "Cardiovascular assessment",
                     options: [
                       {
@@ -5212,9 +5446,10 @@ export default function () {
                     tableColumn: "24",
                     formColumn: "4",
                     formRow: "4",
-                    formOption: "noLabel",
+                    formOption: "hideLabel",
                     pageDataKey: "cardiovascular",
                     dataParent: "cardiovascular.table",
+                    level2Key: "table",
                     page: "Cardiovascular assessment",
                     options: [
                       {
@@ -5243,9 +5478,10 @@ export default function () {
                     tableColumn: "28",
                     formColumn: "5",
                     formRow: "4",
-                    formOption: "noLabel",
+                    formOption: "hideLabel",
                     pageDataKey: "cardiovascular",
                     dataParent: "cardiovascular.table",
+                    level2Key: "table",
                     page: "Cardiovascular assessment",
                     options: [
                       {
@@ -5272,6 +5508,7 @@ export default function () {
                     formRow: "5",
                     pageDataKey: "cardiovascular",
                     dataParent: "cardiovascular.table",
+                    level2Key: "table",
                     page: "Cardiovascular assessment",
                     tableCss: "hide-table-element",
                     tableKey: "table"
@@ -5284,9 +5521,10 @@ export default function () {
                     tableColumn: "17",
                     formColumn: "2",
                     formRow: "5",
-                    formOption: "noLabel",
+                    formOption: "hideLabel",
                     pageDataKey: "cardiovascular",
                     dataParent: "cardiovascular.table",
+                    level2Key: "table",
                     page: "Cardiovascular assessment",
                     options: [
                       {
@@ -5306,9 +5544,10 @@ export default function () {
                     tableColumn: "21",
                     formColumn: "3",
                     formRow: "5",
-                    formOption: "noLabel",
+                    formOption: "hideLabel",
                     pageDataKey: "cardiovascular",
                     dataParent: "cardiovascular.table",
+                    level2Key: "table",
                     page: "Cardiovascular assessment",
                     options: [
                       {
@@ -5331,9 +5570,10 @@ export default function () {
                     tableColumn: "25",
                     formColumn: "4",
                     formRow: "5",
-                    formOption: "noLabel",
+                    formOption: "hideLabel",
                     pageDataKey: "cardiovascular",
                     dataParent: "cardiovascular.table",
+                    level2Key: "table",
                     page: "Cardiovascular assessment",
                     options: [
                       {
@@ -5362,9 +5602,10 @@ export default function () {
                     tableColumn: "29",
                     formColumn: "5",
                     formRow: "5",
-                    formOption: "noLabel",
+                    formOption: "hideLabel",
                     pageDataKey: "cardiovascular",
                     dataParent: "cardiovascular.table",
+                    level2Key: "table",
                     page: "Cardiovascular assessment",
                     options: [
                       {
@@ -5391,6 +5632,7 @@ export default function () {
                     formRow: "6",
                     pageDataKey: "cardiovascular",
                     dataParent: "cardiovascular.table",
+                    level2Key: "table",
                     page: "Cardiovascular assessment",
                     tableCss: "hide-table-element",
                     tableKey: "table"
@@ -5403,9 +5645,10 @@ export default function () {
                     tableColumn: "18",
                     formColumn: "2",
                     formRow: "6",
-                    formOption: "noLabel",
+                    formOption: "hideLabel",
                     pageDataKey: "cardiovascular",
                     dataParent: "cardiovascular.table",
+                    level2Key: "table",
                     page: "Cardiovascular assessment",
                     options: [
                       {
@@ -5425,9 +5668,10 @@ export default function () {
                     tableColumn: "22",
                     formColumn: "3",
                     formRow: "6",
-                    formOption: "noLabel",
+                    formOption: "hideLabel",
                     pageDataKey: "cardiovascular",
                     dataParent: "cardiovascular.table",
+                    level2Key: "table",
                     page: "Cardiovascular assessment",
                     options: [
                       {
@@ -5450,9 +5694,10 @@ export default function () {
                     tableColumn: "26",
                     formColumn: "4",
                     formRow: "6",
-                    formOption: "noLabel",
+                    formOption: "hideLabel",
                     pageDataKey: "cardiovascular",
                     dataParent: "cardiovascular.table",
+                    level2Key: "table",
                     page: "Cardiovascular assessment",
                     options: [
                       {
@@ -5481,9 +5726,10 @@ export default function () {
                     tableColumn: "30",
                     formColumn: "5",
                     formRow: "6",
-                    formOption: "noLabel",
+                    formOption: "hideLabel",
                     pageDataKey: "cardiovascular",
                     dataParent: "cardiovascular.table",
+                    level2Key: "table",
                     page: "Cardiovascular assessment",
                     options: [
                       {
@@ -5510,6 +5756,7 @@ export default function () {
                     formRow: "7",
                     pageDataKey: "cardiovascular",
                     dataParent: "cardiovascular.table",
+                    level2Key: "table",
                     page: "Cardiovascular assessment",
                     tableCss: "hide-table-element",
                     tableKey: "table"
@@ -5522,9 +5769,10 @@ export default function () {
                     tableColumn: "19",
                     formColumn: "2",
                     formRow: "7",
-                    formOption: "noLabel",
+                    formOption: "hideLabel",
                     pageDataKey: "cardiovascular",
                     dataParent: "cardiovascular.table",
+                    level2Key: "table",
                     page: "Cardiovascular assessment",
                     options: [
                       {
@@ -5544,9 +5792,10 @@ export default function () {
                     tableColumn: "23",
                     formColumn: "3",
                     formRow: "7",
-                    formOption: "noLabel",
+                    formOption: "hideLabel",
                     pageDataKey: "cardiovascular",
                     dataParent: "cardiovascular.table",
+                    level2Key: "table",
                     page: "Cardiovascular assessment",
                     options: [
                       {
@@ -5569,9 +5818,10 @@ export default function () {
                     tableColumn: "27",
                     formColumn: "4",
                     formRow: "7",
-                    formOption: "noLabel",
+                    formOption: "hideLabel",
                     pageDataKey: "cardiovascular",
                     dataParent: "cardiovascular.table",
+                    level2Key: "table",
                     page: "Cardiovascular assessment",
                     options: [
                       {
@@ -5599,9 +5849,10 @@ export default function () {
                     tableColumn: "31",
                     formColumn: "5",
                     formRow: "7",
-                    formOption: "noLabel",
+                    formOption: "hideLabel",
                     pageDataKey: "cardiovascular",
                     dataParent: "cardiovascular.table",
+                    level2Key: "table",
                     page: "Cardiovascular assessment",
                     options: [
                       {
@@ -5628,6 +5879,7 @@ export default function () {
                     formRow: "8",
                     pageDataKey: "cardiovascular",
                     dataParent: "cardiovascular.table",
+                    level2Key: "table",
                     page: "Cardiovascular assessment",
                     tableKey: "table"
                   }
@@ -5662,6 +5914,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               tableKey: "table"
             },
@@ -5674,6 +5927,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               containerType: "fieldset",
               containerKey: "bSounds",
@@ -5681,30 +5935,17 @@ export default function () {
               tableKey: "table"
             },
             {
-              elementKey: "unit",
-              fqn: "gastrointestinal.table.unit",
-              inputType: "text",
-              label: "Unit",
-              tableColumn: "3",
-              formCss: "user_unit",
-              formColumn: "3",
-              formRow: "1",
-              pageDataKey: "gastrointestinal",
-              dataParent: "gastrointestinal.table",
-              page: "Gastrointestinal assessment",
-              tableKey: "table"
-            },
-            {
               elementKey: "day",
               fqn: "gastrointestinal.table.day",
               inputType: "day",
               label: "Day",
-              tableColumn: "4",
+              tableColumn: "3",
               formCss: "user_day",
               formColumn: "4",
               formRow: "1",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               tableKey: "table"
             },
@@ -5713,12 +5954,13 @@ export default function () {
               fqn: "gastrointestinal.table.time",
               inputType: "time",
               label: "Time",
-              tableColumn: "5",
+              tableColumn: "4",
               formCss: "user_time",
               formColumn: "5",
               formRow: "1",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               tableKey: "table"
             },
@@ -5732,6 +5974,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.abdomen",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               tableKey: "table",
               formColumn: "1"
@@ -5746,6 +5989,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.abdomen",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               tableKey: "table",
               formColumn: "1"
@@ -5760,6 +6004,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.abdomen",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               tableKey: "table",
               formColumn: "1"
@@ -5774,6 +6019,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.abdomen",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               tableKey: "table",
               formColumn: "1"
@@ -5788,6 +6034,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.abdomen",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               tableKey: "table",
               formColumn: "1"
@@ -5802,6 +6049,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.abdomen",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               tableKey: "table",
               formColumn: "1"
@@ -5816,6 +6064,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.abdomen",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               options: [
                 {
@@ -5839,6 +6088,7 @@ export default function () {
               formOption: "labelWithPageRef",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.abdomen",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               tableCss: "hide-table-element",
               tableKey: "table",
@@ -5853,6 +6103,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               containerType: "fieldset",
               containerKey: "abdomen",
@@ -5869,6 +6120,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.emesis",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               options: [
                 {
@@ -5894,6 +6146,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.emesis",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               tableKey: "table",
               formColumn: "1"
@@ -5908,6 +6161,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.emesis",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               tableKey: "table",
               formColumn: "1"
@@ -5922,6 +6176,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.emesis",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               options: [
                 {
@@ -5947,6 +6202,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.emesis",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               tableKey: "table",
               formColumn: "1"
@@ -5961,6 +6217,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.emesis",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               options: [
                 {
@@ -5985,6 +6242,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               containerType: "fieldset",
               containerKey: "emesis",
@@ -6001,6 +6259,7 @@ export default function () {
               formOption: "boldLabel",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.eatingGroup",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               options: [
                 {
@@ -6023,6 +6282,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.eatingGroup",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               tableKey: "table",
               formColumn: "1"
@@ -6034,9 +6294,10 @@ export default function () {
               label: "Eating",
               formColumn: "3",
               formRow: "2",
-              formOption: "withoutLabel",
+              formOption: "hideLabel",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               containerType: "fieldset",
               containerKey: "eatingGroup",
@@ -6054,6 +6315,7 @@ export default function () {
               formRow: "1",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               tableKey: "table"
             },
@@ -6067,6 +6329,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.npoSince",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               tableKey: "table",
               formColumn: "1"
@@ -6080,6 +6343,7 @@ export default function () {
               formRow: "2",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               containerType: "fieldset",
               containerKey: "npoSince",
@@ -6096,6 +6360,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.stool",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               options: [
                 {
@@ -6133,6 +6398,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.stool",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               options: [
                 {
@@ -6155,6 +6421,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.stool",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               tableKey: "table",
               formColumn: "1"
@@ -6169,6 +6436,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.stool",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               options: [
                 {
@@ -6193,6 +6461,7 @@ export default function () {
               formRow: "4",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.stool",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               tableKey: "table"
             },
@@ -6205,6 +6474,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               containerType: "fieldset",
               containerKey: "stool",
@@ -6221,6 +6491,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.bowel",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               tableKey: "table",
               formColumn: "1"
@@ -6235,6 +6506,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.bowel",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               tableKey: "table",
               formColumn: "1"
@@ -6249,6 +6521,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.bowel",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               tableKey: "table",
               formColumn: "1"
@@ -6263,6 +6536,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.bowel",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               tableKey: "table",
               formColumn: "1"
@@ -6277,6 +6551,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.bowel",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               tableKey: "table",
               formColumn: "1"
@@ -6291,6 +6566,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.bowel",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               tableKey: "table",
               formColumn: "1"
@@ -6304,6 +6580,7 @@ export default function () {
               formRow: "3",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               containerType: "fieldset",
               containerKey: "bowel",
@@ -6320,6 +6597,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.bSounds",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               tableKey: "table",
               formColumn: "1"
@@ -6334,6 +6612,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.bSounds",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               tableKey: "table",
               formColumn: "1"
@@ -6348,6 +6627,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.bSounds",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               tableKey: "table",
               formColumn: "1"
@@ -6362,6 +6642,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.bSounds",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               tableKey: "table",
               formColumn: "1"
@@ -6376,6 +6657,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.bSounds",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               tableKey: "table",
               formColumn: "1"
@@ -6390,6 +6672,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.bSounds",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               tableKey: "table",
               formColumn: "1"
@@ -6404,6 +6687,7 @@ export default function () {
               fsetCol: "1",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.bSounds",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               tableKey: "table",
               formColumn: "1"
@@ -6419,6 +6703,7 @@ export default function () {
               formOption: "boldLabel",
               pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.npoSince",
+              level2Key: "table",
               page: "Gastrointestinal assessment",
               tableKey: "table",
               formColumn: "1"
@@ -6440,6 +6725,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "gastrointestinal",
                     dataParent: "gastrointestinal.table",
+                    level2Key: "table",
                     page: "Gastrointestinal assessment",
                     tableKey: "table"
                   },
@@ -6454,20 +6740,7 @@ export default function () {
                     formRow: "1",
                     pageDataKey: "gastrointestinal",
                     dataParent: "gastrointestinal.table",
-                    page: "Gastrointestinal assessment",
-                    tableKey: "table"
-                  },
-                  {
-                    elementKey: "unit",
-                    fqn: "gastrointestinal.table.unit",
-                    inputType: "text",
-                    label: "Unit",
-                    tableColumn: "3",
-                    formCss: "user_unit",
-                    formColumn: "3",
-                    formRow: "1",
-                    pageDataKey: "gastrointestinal",
-                    dataParent: "gastrointestinal.table",
+                    level2Key: "table",
                     page: "Gastrointestinal assessment",
                     tableKey: "table"
                   },
@@ -6476,12 +6749,13 @@ export default function () {
                     fqn: "gastrointestinal.table.day",
                     inputType: "day",
                     label: "Day",
-                    tableColumn: "4",
+                    tableColumn: "3",
                     formCss: "user_day",
                     formColumn: "4",
                     formRow: "1",
                     pageDataKey: "gastrointestinal",
                     dataParent: "gastrointestinal.table",
+                    level2Key: "table",
                     page: "Gastrointestinal assessment",
                     tableKey: "table"
                   },
@@ -6490,12 +6764,13 @@ export default function () {
                     fqn: "gastrointestinal.table.time",
                     inputType: "time",
                     label: "Time",
-                    tableColumn: "5",
+                    tableColumn: "4",
                     formCss: "user_time",
                     formColumn: "5",
                     formRow: "1",
                     pageDataKey: "gastrointestinal",
                     dataParent: "gastrointestinal.table",
+                    level2Key: "table",
                     page: "Gastrointestinal assessment",
                     tableKey: "table"
                   }
@@ -6513,6 +6788,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "gastrointestinal",
                     dataParent: "gastrointestinal.table",
+                    level2Key: "table",
                     page: "Gastrointestinal assessment",
                     containerType: "fieldset",
                     containerKey: "abdomen",
@@ -6533,6 +6809,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.abdomen",
+                              level2Key: "table",
                               page: "Gastrointestinal assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -6552,6 +6829,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.abdomen",
+                              level2Key: "table",
                               page: "Gastrointestinal assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -6571,6 +6849,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.abdomen",
+                              level2Key: "table",
                               page: "Gastrointestinal assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -6590,6 +6869,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.abdomen",
+                              level2Key: "table",
                               page: "Gastrointestinal assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -6609,6 +6889,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.abdomen",
+                              level2Key: "table",
                               page: "Gastrointestinal assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -6628,6 +6909,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.abdomen",
+                              level2Key: "table",
                               page: "Gastrointestinal assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -6647,6 +6929,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.abdomen",
+                              level2Key: "table",
                               page: "Gastrointestinal assessment",
                               options: [
                                 {
@@ -6675,6 +6958,7 @@ export default function () {
                               formOption: "labelWithPageRef",
                               pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.abdomen",
+                              level2Key: "table",
                               page: "Gastrointestinal assessment",
                               tableCss: "hide-table-element",
                               tableKey: "table",
@@ -6695,6 +6979,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "gastrointestinal",
                     dataParent: "gastrointestinal.table",
+                    level2Key: "table",
                     page: "Gastrointestinal assessment",
                     containerType: "fieldset",
                     containerKey: "emesis",
@@ -6715,6 +7000,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.emesis",
+                              level2Key: "table",
                               page: "Gastrointestinal assessment",
                               options: [
                                 {
@@ -6745,6 +7031,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.emesis",
+                              level2Key: "table",
                               page: "Gastrointestinal assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -6764,6 +7051,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.emesis",
+                              level2Key: "table",
                               page: "Gastrointestinal assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -6783,6 +7071,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.emesis",
+                              level2Key: "table",
                               page: "Gastrointestinal assessment",
                               options: [
                                 {
@@ -6813,6 +7102,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.emesis",
+                              level2Key: "table",
                               page: "Gastrointestinal assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -6832,6 +7122,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.emesis",
+                              level2Key: "table",
                               page: "Gastrointestinal assessment",
                               options: [
                                 {
@@ -6860,9 +7151,10 @@ export default function () {
                     label: "Eating",
                     formColumn: "3",
                     formRow: "2",
-                    formOption: "withoutLabel",
+                    formOption: "hideLabel",
                     pageDataKey: "gastrointestinal",
                     dataParent: "gastrointestinal.table",
+                    level2Key: "table",
                     page: "Gastrointestinal assessment",
                     containerType: "fieldset",
                     containerKey: "eatingGroup",
@@ -6883,6 +7175,7 @@ export default function () {
                               formOption: "boldLabel",
                               pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.eatingGroup",
+                              level2Key: "table",
                               page: "Gastrointestinal assessment",
                               options: [
                                 {
@@ -6910,6 +7203,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.eatingGroup",
+                              level2Key: "table",
                               page: "Gastrointestinal assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -6929,6 +7223,7 @@ export default function () {
                     formRow: "2",
                     pageDataKey: "gastrointestinal",
                     dataParent: "gastrointestinal.table",
+                    level2Key: "table",
                     page: "Gastrointestinal assessment",
                     containerType: "fieldset",
                     containerKey: "npoSince",
@@ -6950,6 +7245,7 @@ export default function () {
                               formOption: "boldLabel",
                               pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.npoSince",
+                              level2Key: "table",
                               page: "Gastrointestinal assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -6969,6 +7265,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.npoSince",
+                              level2Key: "table",
                               page: "Gastrointestinal assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -6995,6 +7292,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "gastrointestinal",
                     dataParent: "gastrointestinal.table",
+                    level2Key: "table",
                     page: "Gastrointestinal assessment",
                     containerType: "fieldset",
                     containerKey: "bowel",
@@ -7015,6 +7313,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.bowel",
+                              level2Key: "table",
                               page: "Gastrointestinal assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -7034,6 +7333,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.bowel",
+                              level2Key: "table",
                               page: "Gastrointestinal assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -7053,6 +7353,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.bowel",
+                              level2Key: "table",
                               page: "Gastrointestinal assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -7072,6 +7373,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.bowel",
+                              level2Key: "table",
                               page: "Gastrointestinal assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -7091,6 +7393,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.bowel",
+                              level2Key: "table",
                               page: "Gastrointestinal assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -7110,6 +7413,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.bowel",
+                              level2Key: "table",
                               page: "Gastrointestinal assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -7129,6 +7433,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "gastrointestinal",
                     dataParent: "gastrointestinal.table",
+                    level2Key: "table",
                     page: "Gastrointestinal assessment",
                     containerType: "fieldset",
                     containerKey: "bSounds",
@@ -7149,6 +7454,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.bSounds",
+                              level2Key: "table",
                               page: "Gastrointestinal assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -7168,6 +7474,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.bSounds",
+                              level2Key: "table",
                               page: "Gastrointestinal assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -7187,6 +7494,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.bSounds",
+                              level2Key: "table",
                               page: "Gastrointestinal assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -7206,6 +7514,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.bSounds",
+                              level2Key: "table",
                               page: "Gastrointestinal assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -7225,6 +7534,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.bSounds",
+                              level2Key: "table",
                               page: "Gastrointestinal assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -7244,6 +7554,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.bSounds",
+                              level2Key: "table",
                               page: "Gastrointestinal assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -7263,6 +7574,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.bSounds",
+                              level2Key: "table",
                               page: "Gastrointestinal assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -7282,6 +7594,7 @@ export default function () {
                     formRow: "3",
                     pageDataKey: "gastrointestinal",
                     dataParent: "gastrointestinal.table",
+                    level2Key: "table",
                     page: "Gastrointestinal assessment",
                     containerType: "fieldset",
                     containerKey: "stool",
@@ -7302,6 +7615,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.stool",
+                              level2Key: "table",
                               page: "Gastrointestinal assessment",
                               options: [
                                 {
@@ -7344,6 +7658,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.stool",
+                              level2Key: "table",
                               page: "Gastrointestinal assessment",
                               options: [
                                 {
@@ -7371,6 +7686,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.stool",
+                              level2Key: "table",
                               page: "Gastrointestinal assessment",
                               tableKey: "table",
                               formColumn: "1"
@@ -7390,6 +7706,7 @@ export default function () {
                               fsetCol: "1",
                               pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.stool",
+                              level2Key: "table",
                               page: "Gastrointestinal assessment",
                               options: [
                                 {
@@ -7414,7 +7731,7 @@ export default function () {
                 ]
               }
             ],
-            columnsCount: 5
+            columnsCount: 4
           }
         }
       ],

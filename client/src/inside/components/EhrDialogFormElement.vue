@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="ehrdfe", :class="formCss(def)")
+  div(:id="def.elementKey", class="ehrdfe", :class="formCss(def)")
 
     div(v-if="def.inputType === 'form-label'", class="label_wrapper")
       div(v-html="def.label")
@@ -8,7 +8,7 @@
       div &nbsp;
 
     div(v-if="def.inputType === 'text'", class="text_input_wrapper")
-      label {{def.label}}
+      label(v-if="!(def.formOption === 'hideLabel')", class="text_input_label") {{def.label}}
       input(class="input", type="text", v-model="inputVal")
 
     div(v-if="def.inputType === 'fieldRowSet'", class="fieldset_row_wrapper")
@@ -18,7 +18,7 @@
 
     div(v-if="def.inputType === 'fieldset'", class="fieldset_col_wrapper")
       label(v-show="!!def.label", class="fieldset_label") {{def.label}} &nbsp;
-      div(v-for="row in def.formFieldSet.rows", :key="row.formRow" class="fieldset_row_row" )
+      div(v-for="row in def.formFieldSet.rows", :key="row.formRow", class="fieldset_row_row" )
         ehr-dialog-form-element(v-for="fmEl in row.elements", :key="fmEl.elementKey", :inputs="inputs", :def="fmEl")
 
     div(v-if="def.inputType === 'checkbox'", class="checkbox_wrapper")
@@ -26,7 +26,7 @@
       label(class="checkbox_label", v-bind:for="def.elementKey") {{def.label}}
 
     div(v-if="def.inputType === 'select'", class="select_wrapper")
-      label(v-if="!(def.formOption === 'noLabel')", class="select_label") {{def.label}}
+      label(v-if="!(def.formOption === 'hideLabel')", class="select_label") {{def.label}}
       div(class="select")
         select(v-bind:name="def.elementKey", v-model="inputVal")
           option(disabled,value="")
@@ -44,7 +44,6 @@
       label {{def.label}}
       input(class="input", type="text", v-model="inputVal")
 
-
     div(v-if="def.inputType === 'textarea'", class="textarea_wrapper")
       label {{def.label}}
       textarea(v-model="inputVal")
@@ -57,14 +56,6 @@ import EhrDialogFormElement from './EhrDialogFormElement.vue'
 import EventBus from '../../helpers/event-bus'
 import { DIALOG_INPUT_EVENT } from '../../helpers/event-bus'
 import UiInfo from '../../app/ui/UiInfo'
-
-// TODO day, time types
-
-/*
-  Note that when the dialog is opened each form element definition is given a reference
-  to the ehrHelp. See ehrHelp.showDialog()
- */
-
 export default {
   name: 'EhrDialogFormElement',
   components: {
@@ -123,7 +114,7 @@ export default {
       })
     },
     receiveEvent (eData) {
-      // TODO targetValue where is this set?
+      // TODO restore the gotHit functionality that can be used to enable text boxes when a checkbox is checked
       // we're receiving an event transmitted by another instance of this component. An instance
       // that has sent a message on the channel this component listens on.
       this.gotHit = this.def.targetValue === eData.value
@@ -157,8 +148,3 @@ export default {
 }
 </script>
 
-<style scoped>
-.otherForChecklist {
-  margin-left: 1rem;
-}
-</style>
