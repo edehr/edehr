@@ -91,17 +91,18 @@ export default {
     saveDialog: function () {
       this.ehrHelp.saveDialog(this.pageDataKey, this.tableKey)
     },
-    receiveCloseEvent (eData) {
+    receiveShowHideEvent (eData) {
       let value = eData.value
       this.showDialog = value
+      // console.log('EhrDialogForm recieve show hide event', eData,  this.showDialog)
     }
   },
   mounted: function () {
     // console.log('EhrDialogForm mounted', this.pageDataKey)
     const _this = this
-    let ch = this.ehrHelp.getCloseChannelHandle(this.tableKey)
+    let ch = this.ehrHelp.getDialogEventChannel(this.tableKey)
     this.eventHandler = function (eData) {
-      _this.receiveCloseEvent(eData)
+      _this.receiveShowHideEvent(eData)
     }
     EventBus.$on(ch, this.eventHandler)
   },
@@ -110,7 +111,7 @@ export default {
     // console.log('When app dialog is destroyed restore background scrolling')
     // console.log('UN -- FREEZEEEEEEE')
     document.body.style.position = ''
-    let ch = this.ehrHelp.getCloseChannelHandle(this.tableKey)
+    let ch = this.ehrHelp.getDialogEventChannel(this.tableKey)
     if (this.eventHandler) {
       // console.log('beforeDestroy, remove listener', ch)
       EventBus.$off(ch, this.eventHandler)

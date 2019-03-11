@@ -25,7 +25,7 @@ import EhrDialogForm from '../components/EhrDialogForm.vue'
 import UiButton from '../../app/ui/UiButton.vue'
 import moment from 'moment'
 import EventBus from '../../helpers/event-bus'
-import { PAGE_DATA_REFRESH_EVENT } from '../../helpers/event-bus'
+import { PAGE_DATA_REFRESH_EVENT, SHOW_TABLE_DIALOG_EVENT } from '../../helpers/event-bus'
 
 export default {
   name: 'EhrPageTable',
@@ -82,6 +82,10 @@ export default {
       return element.tableCss ? element.tableCss : 'noClass'
     },
     showDialog: function () {
+      EventBus.$emit(SHOW_TABLE_DIALOG_EVENT)
+    },
+    showDialogHandler: function () {
+      // console.log('handle SHOW_TABLE_DIALOG_EVENT ', this.tableDef)
       this.ehrHelp.showDialog(this.tableDef, this.inputs)
     },
     tableCellData: function (item, cell) {
@@ -106,14 +110,21 @@ export default {
   mounted: function () {
     const _this = this
     this.refreshEventHandler = function () {
-      // console.log('EhrPageTable received page refresh event')
       _this.refresh()
     }
     EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
+    this.showEventHandler = function () {
+      _this.showDialogHandler()
+    }
+    EventBus.$on(SHOW_TABLE_DIALOG_EVENT, this.showEventHandler)
+
   },
   beforeDestroy: function () {
     if (this.refreshEventHandler) {
       EventBus.$off(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
+    }
+    if (this.showEventHandler) {
+      EventBus.$off(SHOW_TABLE_DIALOG_EVENT, this.showEventHandler)
     }
   }
 }
