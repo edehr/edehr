@@ -1,4 +1,5 @@
 'use strict'
+const moment = require('moment')
 const fs = require('fs')
 const assert = require('assert').strict
 const camelCase = require('camelcase')
@@ -80,7 +81,7 @@ class RawInputToDef {
    * @param contents
    * @returns {string}
    */
-  getDefinitions(contents) {
+  getDefinitions(contents, lastModifiedTime) {
     let c = contents
     c = this._zapGremlins(c)
     c = this._fixEmptyCells(c)
@@ -90,18 +91,18 @@ class RawInputToDef {
     })
     let entries = this._rawToEntries(c)
     let groups = this._groupByPages(entries)
-    let pages = this._toPages(groups)
+    let pages = this._toPages(groups, lastModifiedTime)
     return pages
   }
 
-  _toPages(masterPageDefs) {
+  _toPages(masterPageDefs, lastModifiedTime) {
     // let defs = require("../ehr_defs/patient-profile")();
     let pages = {}
     Object.values(masterPageDefs).forEach(page => {
       let uiP = {}
       uiP.pageTitle = page.label
       uiP.pageDataKey = page.elementKey
-      this._page(uiP, page)
+      this._page(uiP, page, lastModifiedTime)
       let pageData = {}
       // let pd = pageData[uiP.pageDataKey] = {}
       if (uiP.hasTable) {
@@ -214,10 +215,8 @@ class RawInputToDef {
     let { page, container } = this._topLevelContainerForGroup(pages, p, entry)
     let dp = container.dataParent
     let toplevel = page.containers[dp]
-    if(!toplevel)
-      console.log('_subcontainerForGroup', entry, dp)
     toplevel.elements.push(container)
-    console.log('subcontainer now linked into ', container, toplevel)
+    // console.log('subcontainer now linked into ', container, toplevel)
     // connect the sub group with it top level group
   }
 
@@ -307,8 +306,9 @@ class RawInputToDef {
 
   /* *************** to pages helpers ******** */
 
-  _page(uiP, page) {
+  _page(uiP, page, lastModifiedTime) {
     console.log('Build form for page', page.label)
+    uiP.generated = moment.utc(lastModifiedTime).local().format()
     Object.keys(page.containers).forEach(key => {
       let container = page.containers[key]
       console.log('_page type fqn ', container.containerType, container.fqn)

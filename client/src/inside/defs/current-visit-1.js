@@ -4,6 +4,7 @@ export default function () {
     visit: {
       pageTitle: "Visit details",
       pageDataKey: "visit",
+      generated: "2019-03-12T16:05:46-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -63,7 +64,7 @@ export default function () {
             formRow: "3",
             elements: [
               {
-                label: "Physician diagnosis",
+                label: "Physician admitting diagnosis",
                 pageDataKey: "visit",
                 elementKey: "diagnosis",
                 inputType: "textarea",
@@ -219,6 +220,7 @@ export default function () {
     vitals: {
       pageTitle: "Vital signs",
       pageDataKey: "vitals",
+      generated: "2019-03-12T16:05:46-07:00",
       hasTable: true,
       tables: [
         {
@@ -239,6 +241,19 @@ export default function () {
               tableKey: "table"
             },
             {
+              label: "Profession",
+              pageDataKey: "vitals",
+              level2Key: "table",
+              elementKey: "profession",
+              inputType: "text",
+              formRow: "1",
+              formColumn: "2",
+              tableColumn: "2",
+              dataParent: "vitals.table",
+              fqn: "vitals.table.profession",
+              tableKey: "table"
+            },
+            {
               label: "Day",
               pageDataKey: "vitals",
               level2Key: "table",
@@ -246,7 +261,7 @@ export default function () {
               inputType: "text",
               formRow: "1",
               formColumn: "3",
-              tableColumn: "1",
+              tableColumn: "3",
               dataParent: "vitals.table",
               fqn: "vitals.table.day",
               tableKey: "table"
@@ -259,7 +274,7 @@ export default function () {
               inputType: "text",
               formRow: "1",
               formColumn: "4",
-              tableColumn: "1",
+              tableColumn: "4",
               dataParent: "vitals.table",
               fqn: "vitals.table.time",
               tableKey: "table"
@@ -272,22 +287,9 @@ export default function () {
               inputType: "text",
               formRow: "2",
               formColumn: "1",
-              tableColumn: "1",
+              tableColumn: "5",
               dataParent: "vitals.table",
               fqn: "vitals.table.temperature",
-              tableKey: "table"
-            },
-            {
-              label: "Profession",
-              pageDataKey: "vitals",
-              level2Key: "table",
-              elementKey: "profession",
-              inputType: "text",
-              formRow: "1",
-              formColumn: "2",
-              tableColumn: "1",
-              dataParent: "vitals.table",
-              fqn: "vitals.table.profession",
               tableKey: "table"
             },
             {
@@ -298,7 +300,7 @@ export default function () {
               inputType: "select",
               formRow: "2",
               formColumn: "2",
-              tableColumn: "2",
+              tableColumn: "6",
               options: [
                 {
                   text: "oral"
@@ -325,7 +327,7 @@ export default function () {
               inputType: "text",
               formRow: "3",
               formColumn: "3",
-              tableColumn: "3",
+              tableColumn: "7",
               dataParent: "vitals.table",
               fqn: "vitals.table.rate",
               tableKey: "table"
@@ -338,7 +340,7 @@ export default function () {
               inputType: "select",
               formRow: "3",
               formColumn: "1",
-              tableColumn: "4",
+              tableColumn: "8",
               options: [
                 {
                   text: "regular"
@@ -359,7 +361,7 @@ export default function () {
               inputType: "select",
               formRow: "3",
               formColumn: "2",
-              tableColumn: "5",
+              tableColumn: "9",
               options: [
                 {
                   text: "peripheral"
@@ -377,7 +379,7 @@ export default function () {
               inputType: "text",
               formRow: "4",
               formColumn: "1",
-              tableColumn: "6",
+              tableColumn: "10",
               dataParent: "vitals.table",
               fqn: "vitals.table.systolic",
               tableKey: "table"
@@ -390,7 +392,7 @@ export default function () {
               inputType: "text",
               formRow: "4",
               formColumn: "2",
-              tableColumn: "7",
+              tableColumn: "11",
               dataParent: "vitals.table",
               fqn: "vitals.table.diastolic",
               tableKey: "table"
@@ -403,7 +405,7 @@ export default function () {
               inputType: "select",
               formRow: "4",
               formColumn: "3",
-              tableColumn: "8",
+              tableColumn: "12",
               options: [
                 {
                   text: "supine"
@@ -427,7 +429,7 @@ export default function () {
               inputType: "text",
               formRow: "5",
               formColumn: "1",
-              tableColumn: "9",
+              tableColumn: "13",
               dataParent: "vitals.table",
               fqn: "vitals.table.respirationRate",
               tableKey: "table"
@@ -440,7 +442,7 @@ export default function () {
               inputType: "text",
               formRow: "6",
               formColumn: "1",
-              tableColumn: "10",
+              tableColumn: "14",
               dataParent: "vitals.table",
               fqn: "vitals.table.oxygenSaturation",
               tableKey: "table"
@@ -453,7 +455,7 @@ export default function () {
               inputType: "select",
               formRow: "6",
               formColumn: "2",
-              tableColumn: "11",
+              tableColumn: "15",
               options: [
                 {
                   text: "room air"
@@ -483,7 +485,7 @@ export default function () {
               inputType: "text",
               formRow: "6",
               formColumn: "3",
-              tableColumn: "12",
+              tableColumn: "16",
               suffix: "/lpm",
               dataParent: "vitals.table",
               fqn: "vitals.table.flowRate",
@@ -516,7 +518,7 @@ export default function () {
                     inputType: "text",
                     formRow: "1",
                     formColumn: "2",
-                    tableColumn: "1",
+                    tableColumn: "2",
                     dataParent: "vitals.table",
                     fqn: "vitals.table.profession",
                     tableKey: "table"
@@ -529,7 +531,7 @@ export default function () {
                     inputType: "text",
                     formRow: "1",
                     formColumn: "3",
-                    tableColumn: "1",
+                    tableColumn: "3",
                     dataParent: "vitals.table",
                     fqn: "vitals.table.day",
                     tableKey: "table"
@@ -542,7 +544,7 @@ export default function () {
                     inputType: "text",
                     formRow: "1",
                     formColumn: "4",
-                    tableColumn: "1",
+                    tableColumn: "4",
                     dataParent: "vitals.table",
                     fqn: "vitals.table.time",
                     tableKey: "table"
@@ -560,7 +562,7 @@ export default function () {
                     inputType: "text",
                     formRow: "2",
                     formColumn: "1",
-                    tableColumn: "1",
+                    tableColumn: "5",
                     dataParent: "vitals.table",
                     fqn: "vitals.table.temperature",
                     tableKey: "table"
@@ -573,7 +575,7 @@ export default function () {
                     inputType: "select",
                     formRow: "2",
                     formColumn: "2",
-                    tableColumn: "2",
+                    tableColumn: "6",
                     options: [
                       {
                         text: "oral"
@@ -605,7 +607,7 @@ export default function () {
                     inputType: "select",
                     formRow: "3",
                     formColumn: "1",
-                    tableColumn: "4",
+                    tableColumn: "8",
                     options: [
                       {
                         text: "regular"
@@ -626,7 +628,7 @@ export default function () {
                     inputType: "select",
                     formRow: "3",
                     formColumn: "2",
-                    tableColumn: "5",
+                    tableColumn: "9",
                     options: [
                       {
                         text: "peripheral"
@@ -644,7 +646,7 @@ export default function () {
                     inputType: "text",
                     formRow: "3",
                     formColumn: "3",
-                    tableColumn: "3",
+                    tableColumn: "7",
                     dataParent: "vitals.table",
                     fqn: "vitals.table.rate",
                     tableKey: "table"
@@ -662,7 +664,7 @@ export default function () {
                     inputType: "text",
                     formRow: "4",
                     formColumn: "1",
-                    tableColumn: "6",
+                    tableColumn: "10",
                     dataParent: "vitals.table",
                     fqn: "vitals.table.systolic",
                     tableKey: "table"
@@ -675,7 +677,7 @@ export default function () {
                     inputType: "text",
                     formRow: "4",
                     formColumn: "2",
-                    tableColumn: "7",
+                    tableColumn: "11",
                     dataParent: "vitals.table",
                     fqn: "vitals.table.diastolic",
                     tableKey: "table"
@@ -688,7 +690,7 @@ export default function () {
                     inputType: "select",
                     formRow: "4",
                     formColumn: "3",
-                    tableColumn: "8",
+                    tableColumn: "12",
                     options: [
                       {
                         text: "supine"
@@ -717,7 +719,7 @@ export default function () {
                     inputType: "text",
                     formRow: "5",
                     formColumn: "1",
-                    tableColumn: "9",
+                    tableColumn: "13",
                     dataParent: "vitals.table",
                     fqn: "vitals.table.respirationRate",
                     tableKey: "table"
@@ -735,7 +737,7 @@ export default function () {
                     inputType: "text",
                     formRow: "6",
                     formColumn: "1",
-                    tableColumn: "10",
+                    tableColumn: "14",
                     dataParent: "vitals.table",
                     fqn: "vitals.table.oxygenSaturation",
                     tableKey: "table"
@@ -748,7 +750,7 @@ export default function () {
                     inputType: "select",
                     formRow: "6",
                     formColumn: "2",
-                    tableColumn: "11",
+                    tableColumn: "15",
                     options: [
                       {
                         text: "room air"
@@ -778,7 +780,7 @@ export default function () {
                     inputType: "text",
                     formRow: "6",
                     formColumn: "3",
-                    tableColumn: "12",
+                    tableColumn: "16",
                     suffix: "/lpm",
                     dataParent: "vitals.table",
                     fqn: "vitals.table.flowRate",
@@ -798,6 +800,7 @@ export default function () {
     fluidBalance: {
       pageTitle: "Fluid balance",
       pageDataKey: "fluidBalance",
+      generated: "2019-03-12T16:05:46-07:00",
       hasTable: true,
       tables: [
         {
@@ -985,6 +988,7 @@ export default function () {
     neurological: {
       pageTitle: "Neurological assessment",
       pageDataKey: "neurological",
+      generated: "2019-03-12T16:05:46-07:00",
       hasTable: true,
       tables: [
         {
@@ -3147,6 +3151,7 @@ export default function () {
     respiratory: {
       pageTitle: "Respiratory assessment",
       pageDataKey: "respiratory",
+      generated: "2019-03-12T16:05:46-07:00",
       hasTable: true,
       tables: [
         {
@@ -4303,6 +4308,7 @@ export default function () {
     cardiovascular: {
       pageTitle: "Cardiovascular assessment",
       pageDataKey: "cardiovascular",
+      generated: "2019-03-12T16:05:46-07:00",
       hasTable: true,
       tables: [
         {
@@ -5672,6 +5678,7 @@ export default function () {
     gastrointestinal: {
       pageTitle: "Gastrointestinal assessment",
       pageDataKey: "gastrointestinal",
+      generated: "2019-03-12T16:05:46-07:00",
       hasTable: true,
       tables: [
         {

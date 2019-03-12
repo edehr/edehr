@@ -4,6 +4,7 @@ export default function () {
     genitourinary: {
       pageTitle: "Genitourinary assessment",
       pageDataKey: "genitourinary",
+      generated: "2019-03-12T16:11:43-07:00",
       hasTable: true,
       tables: [
         {
@@ -1511,6 +1512,7 @@ export default function () {
     musculoskeletal: {
       pageTitle: "Musculoskeletal assessment",
       pageDataKey: "musculoskeletal",
+      generated: "2019-03-12T16:11:43-07:00",
       hasTable: true,
       tables: [
         {
@@ -2173,6 +2175,7 @@ export default function () {
     pain: {
       pageTitle: "Pain assessment",
       pageDataKey: "pain",
+      generated: "2019-03-12T16:11:43-07:00",
       hasTable: true,
       tables: [
         {
@@ -3029,6 +3032,7 @@ export default function () {
     biopsychosocial: {
       pageTitle: "Biopsychosocial assessment",
       pageDataKey: "biopsychosocial",
+      generated: "2019-03-12T16:11:43-07:00",
       hasTable: true,
       tables: [
         {
@@ -4538,6 +4542,7 @@ export default function () {
     nonmedOrders: {
       pageTitle: "Orders",
       pageDataKey: "nonmedOrders",
+      generated: "2019-03-12T16:11:43-07:00",
       hasTable: true,
       tables: [
         {
@@ -5017,6 +5022,7 @@ export default function () {
     referrals: {
       pageTitle: "Referrals to other disciplines",
       pageDataKey: "referrals",
+      generated: "2019-03-12T16:11:43-07:00",
       hasTable: true,
       tables: [
         {
@@ -5329,6 +5335,7 @@ export default function () {
     labRequisitions: {
       pageTitle: "Lab requisitions",
       pageDataKey: "labRequisitions",
+      generated: "2019-03-12T16:11:43-07:00",
       hasTable: true,
       tables: [
         {
@@ -5627,6 +5634,7 @@ export default function () {
     medicationOrders: {
       pageTitle: "Medication orders",
       pageDataKey: "medicationOrders",
+      generated: "2019-03-12T16:11:43-07:00",
       hasTable: true,
       tables: [
         {
@@ -5699,27 +5707,14 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Dose",
-              pageDataKey: "medicationOrders",
-              level2Key: "table",
-              level3Key: "details",
-              elementKey: "dose",
-              inputType: "text",
-              tableColumn: "6",
-              fsetRow: "1",
-              dataParent: "medicationOrders.table.details",
-              fqn: "medicationOrders.table.details.dose",
-              tableKey: "table"
-            },
-            {
               label: "Route",
               pageDataKey: "medicationOrders",
               level2Key: "table",
               level3Key: "details",
               elementKey: "route",
               inputType: "text",
-              tableColumn: "7",
-              fsetRow: "2",
+              tableColumn: "6",
+              fsetRow: "1",
               dataParent: "medicationOrders.table.details",
               fqn: "medicationOrders.table.details.route",
               tableKey: "table"
@@ -5732,7 +5727,7 @@ export default function () {
               elementKey: "reason",
               inputType: "text",
               tableColumn: "8",
-              fsetRow: "3",
+              fsetRow: "2",
               dataParent: "medicationOrders.table.details",
               fqn: "medicationOrders.table.details.reason",
               tableKey: "table"
@@ -5752,7 +5747,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Schedule Type",
+              label: "Schedule type",
               pageDataKey: "medicationOrders",
               level2Key: "table",
               level3Key: "schedule",
@@ -5983,32 +5978,14 @@ export default function () {
                           formRow: "1",
                           elements: [
                             {
-                              label: "Dose",
-                              pageDataKey: "medicationOrders",
-                              level2Key: "table",
-                              level3Key: "details",
-                              elementKey: "dose",
-                              inputType: "text",
-                              tableColumn: "6",
-                              fsetRow: "1",
-                              dataParent: "medicationOrders.table.details",
-                              fqn: "medicationOrders.table.details.dose",
-                              tableKey: "table"
-                            }
-                          ]
-                        },
-                        {
-                          formRow: "2",
-                          elements: [
-                            {
                               label: "Route",
                               pageDataKey: "medicationOrders",
                               level2Key: "table",
                               level3Key: "details",
                               elementKey: "route",
                               inputType: "text",
-                              tableColumn: "7",
-                              fsetRow: "2",
+                              tableColumn: "6",
+                              fsetRow: "1",
                               dataParent: "medicationOrders.table.details",
                               fqn: "medicationOrders.table.details.route",
                               tableKey: "table"
@@ -6016,7 +5993,7 @@ export default function () {
                           ]
                         },
                         {
-                          formRow: "3",
+                          formRow: "2",
                           elements: [
                             {
                               label: "Reason",
@@ -6026,7 +6003,7 @@ export default function () {
                               elementKey: "reason",
                               inputType: "text",
                               tableColumn: "8",
-                              fsetRow: "3",
+                              fsetRow: "2",
                               dataParent: "medicationOrders.table.details",
                               fqn: "medicationOrders.table.details.reason",
                               tableKey: "table"
@@ -6056,7 +6033,7 @@ export default function () {
                           formRow: "1",
                           elements: [
                             {
-                              label: "Schedule Type",
+                              label: "Schedule type",
                               pageDataKey: "medicationOrders",
                               level2Key: "table",
                               level3Key: "schedule",
@@ -6211,6 +6188,7 @@ export default function () {
     medAdminRec: {
       pageTitle: "Medication administration records",
       pageDataKey: "medAdminRec",
+      generated: "2019-03-12T16:11:43-07:00",
       hasTable: true,
       tables: [
         {
@@ -6256,7 +6234,6 @@ export default function () {
               formRow: "1",
               formColumn: "2",
               tableColumn: "2",
-              helperText: "Medication-NL-(Medication name-NL-Dose-NL-Route-NL-Frequency-NL-Notes-NL-Prescriber)",
               dataParent: "medAdminRec.table",
               fqn: "medAdminRec.table.medication",
               tableKey: "table"
@@ -6389,7 +6366,6 @@ export default function () {
                     formRow: "1",
                     formColumn: "2",
                     tableColumn: "2",
-                    helperText: "Medication-NL-(Medication name-NL-Dose-NL-Route-NL-Frequency-NL-Notes-NL-Prescriber)",
                     dataParent: "medAdminRec.table",
                     fqn: "medAdminRec.table.medication",
                     tableKey: "table"
@@ -6501,6 +6477,7 @@ export default function () {
     dischargeSummary: {
       pageTitle: "Discharge summary",
       pageDataKey: "dischargeSummary",
+      generated: "2019-03-12T16:11:43-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -6803,6 +6780,7 @@ export default function () {
     billing: {
       pageTitle: "Billing",
       pageDataKey: "billing",
+      generated: "2019-03-12T16:11:43-07:00",
       hasForm: true,
       page_form: {
         rows: [

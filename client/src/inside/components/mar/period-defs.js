@@ -123,7 +123,7 @@ export default class PeriodDefs {
         }
       }
     }
-    this._currentDay = foundDay
+    this._currentDay = Math.max(0, foundDay)
     // console.log('mergeMarAndSchedule found that this day needs a mar record: ', foundDay)
     let todaysMars = []
     marRecords.forEach(record => {

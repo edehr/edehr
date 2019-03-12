@@ -158,6 +158,9 @@ export default class EhrHelp {
     return val
   }
 
+  formatDate (d) {
+    return moment(d).format('YYYY-MM-DD HH:mm')
+  }
   /**
    Take the component's uiProps and the component's data and combine it into one table.
    Then rotates the table to place the header labels into the first column and
@@ -174,7 +177,6 @@ export default class EhrHelp {
       // console.log('the cell ', cell)
       let hdrCss = 'column_label' + (cell.tableCss ? ' ' + cell.tableCss : '')
       var entry = {
-        class: 'column_label',
         inputType: cell.inputType,
         title: cell.elementKey,
         tableCss: hdrCss,

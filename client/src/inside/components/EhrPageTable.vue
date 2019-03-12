@@ -21,6 +21,11 @@
 </template>
 
 <script>
+/*
+About the CSS in the tables.  EhrHelper inserts column_label class onto the first cell of the
+transposed tables, the header cells.
+
+*/
 import EhrDialogForm from '../components/EhrDialogForm.vue'
 import UiButton from '../../app/ui/UiButton.vue'
 import moment from 'moment'
