@@ -18,30 +18,40 @@ const SUBCONTAINER_INPUT_TYPES = [SUBGROUP, FIELDSET, FIELDSET_ROW]
 const NO_SHOW_IN_TABLE_ELEMENTS = [SPACER, FORM_LABEL, FIELDSET_ROW, FIELDSET]
 
 const containerElementProperties = [
-  'elementKey',
-  'fqn',
-  'inputType',
+  // 'page',
   'label',
-  'css',
-  'tableCss',
-  'tableColumn',
-  'fieldset',
-  'fsetRow', // fieldset row and column
-  'fsetCol',
-  'formCss',
-  'formColumn',
-  'formRow',
-  'formOption',
+
   'pageDataKey',
-  'dataParent',
   'level2Key',
-  'page',
+  'level3Key',
+  'elementKey',
+  'inputType',
+
+  'formRow',
+  'formColumn',
+  'formCSS',
+  'formOption',
+
+  'tableColumn',
+  'tableCss',
+  'addButtonText',
+
+  // fieldset row and column
+  'fsetRow',
+  'fsetCol',
+
   'defaultValue',
+  'options',
+  'suffix',
   'mandatory',
   'validation',
   'helperText',
   'assetBase',
-  'assetName'
+  'assetName',
+
+  'dataParent',
+  'fqn',
+
 ]
 // Fields may have data that spans multiple lines.
 // Replace linefeeds with a marker we can use to mark the end of each line.
@@ -53,7 +63,7 @@ const mlFields = [
   'Data_first_case_study:',
   'Data_second_case_study',
   'Label:',
-  'Helper_Text:',
+  'helperText:',
   'Notes:',
   'Questions_for_the_group',
   'Notes_Questions',
@@ -139,11 +149,11 @@ class RawInputToDef {
   _groupByPages(entries) {
     let pages = {}
     entries.forEach(entry => {
-      if (!entry.page) {
-        console.log('Why no page for this entry?', entry)
+      if (!entry.pageDataKey) {
+        console.log('Why no pageDataKey for this entry?', entry)
         return
       }
-      let p = entry.page
+      let p = entry.pageDataKey
       if (entry.inputType === PAGE_INPUT_TYPE) {
         console.log('inputType PAGE_INPUT_TYPE', entry.inputType, entry.fqn)
         this._pageForGroup(p, pages, entry)
@@ -166,20 +176,26 @@ class RawInputToDef {
     pages[p] = entry
     let pg = pages[p]
     pg.children = []
-    pg.rawElements = []
     pg.containers = {}
   }
 
-  _topLevelContainerForGroup(pages, p, entry) {
+  /**
+   *
+   * @param pages
+   * @param pageKey
+   * @param entry is a container
+   * @return {{page: *, container}}
+   * @private
+   */
+  _topLevelContainerForGroup(pages, pageKey, entry) {
     // entry is a container
-    let pg = pages[p]
-    if (!pg) {
-      console.log('ERROR container has no page', p, entry)
-    }
-    pg.rawElements.push(entry)
-    let cntId = entry.fqn
-    // let container = entry
+    let containerFQN = entry.fqn
+    // we will create a container object from the entry
     let container = {}
+    let page = pages[pageKey]
+    if (!page) {
+      console.log('ERROR cannot find page for container', pageKey, entry)
+    }
     containerElementProperties.forEach(prop => {
       if (entry[prop]) {
         container[prop] = entry[prop]
@@ -187,23 +203,21 @@ class RawInputToDef {
     })
     container.elements = []
     container.containerType = entry.inputType
-    container.options = entry.options
-    container.tableButton = entry.tableButton
     container.containerKey = entry.elementKey
-    console.log('push container into pg.fqn', pg.fqn, 'cntId', cntId)
-    pg.containers[cntId] = container
-    return { pg, container }
+    console.log('push container into page.fqn', page.fqn, 'cntId', containerFQN)
+    page.containers[containerFQN] = container
+    return { page, container }
   }
 
   _subcontainerForGroup(pages, p, entry) {
     // entry is a fieldset or other group inside a table or form
-    let { pg, container } = this._topLevelContainerForGroup(pages, p, entry)
+    let { page, container } = this._topLevelContainerForGroup(pages, p, entry)
     let dp = container.dataParent
-    let toplevel = pg.containers[dp]
+    let toplevel = page.containers[dp]
     if(!toplevel)
-    console.log('_subcontainerForGroup', entry,dp)
+      console.log('_subcontainerForGroup', entry, dp)
     toplevel.elements.push(container)
-    // console.log('subcontainer now linked into ', container, toplevel)
+    console.log('subcontainer now linked into ', container, toplevel)
     // connect the sub group with it top level group
   }
 
@@ -212,7 +226,6 @@ class RawInputToDef {
     if (!pg) {
       console.log('ERROR element has no page', p, entry)
     }
-    pg.rawElements.push(entry)
     let containerKey = entry.dataParent
     let container = pg.containers[containerKey]
     if (!container || ! container.elements) {
@@ -310,7 +323,7 @@ class RawInputToDef {
         uiP.tables = uiP.tables || []
         let tableCells = this._pageTableCells(container)
         let tableForm = this._extractTableForm(container, tableCells)
-        assert.ok(container.tableButton,'Need tableButton property to set up the add button for table ' + key)
+        assert.ok(container.addButtonText,'Need addButtonText property to set up the add button for table ' + key)
         let reducedCells = tableCells.map(cell => {
           let nCell = Object.assign({},cell)
           if (nCell.formFieldSet) {
@@ -319,7 +332,10 @@ class RawInputToDef {
           return nCell
         })
 
-        let table = { tableKey: container.containerKey, addButtonText: container.tableButton, tableCells: reducedCells, tableForm: tableForm }
+        let table = { tableKey: container.containerKey,
+          addButtonText: container.addButtonText,
+          tableCells: reducedCells,
+          tableForm: tableForm }
         uiP.tables.push(table)
       } else if (container.containerType === TABLE_COL) {
         // TODO

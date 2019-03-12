@@ -20,7 +20,9 @@ export default class PeriodDefs {
     let periodKeys = []
     if (medOrdersPageDefs && medOrdersPageDefs.tables && medOrdersPageDefs.tables.length > 0) {
       let cells = medOrdersPageDefs.tables[0].tableCells
-      let medPeriods = cells.filter(cell => cell.fieldset === SCHEDULE_FIELDSET && cell.inputType === 'checkbox')
+      console.log('PeriodDefs constructor cells', cells)
+      let medPeriods = cells.filter(cell => cell.level3Key === SCHEDULE_FIELDSET && cell.inputType === 'checkbox')
+      console.log('PeriodDefs constructor medPeriods', medPeriods)
       medPeriods.forEach(mp => {
         let k = mp.elementKey
         periodKeys.push(k)
@@ -69,10 +71,13 @@ export default class PeriodDefs {
     // console.log('merging ', medOrders)
     let periodDefs = this._periodDefs
     let periodKeys = this._periodKeys
+    console.log('mergeOrdersSchedules medOrders', medOrders)
+    console.log('mergeOrdersSchedules periodKeys', periodKeys)
     medOrders.forEach(medOrder => {
+      console.log('mergeOrdersSchedules medOrder', medOrder)
       periodKeys.forEach(pk => {
         let period = periodDefs[pk]
-        //  console.log( pk, period, medOrder[pk])
+        console.log('mergeOrdersSchedules periodKey', pk, period, medOrder[pk])
         if (medOrder.isScheduled(pk)) {
           period.addMedication(medOrder)
         }
@@ -96,7 +101,7 @@ export default class PeriodDefs {
     // If a day has MARs for all periods then select the next day.
     // 2 for the current day set up the period defs with the MAR records for the day and
     // indicate which periods need a MAR
-    let maxDay = Number.MIN_VALUE
+    let maxDay = -1
     marRecords.forEach(record => {
       let recDay = record.day
       maxDay = Math.max(recDay, maxDay)
@@ -107,7 +112,8 @@ export default class PeriodDefs {
       }
       dayPeriods[recDay][periodKey] = true
     })
-    // console.log('mergeMarAndSchedule dayPeriods', dayPeriods)
+    console.log('mergeMarAndSchedule dayPeriods', dayPeriods)
+    console.log('mergeMarAndSchedule maxDay', maxDay)
     let foundDay = -1
     for(let i = 0; foundDay < 0 && i <= maxDay; i++) {
       let flags = dayPeriods[i]
