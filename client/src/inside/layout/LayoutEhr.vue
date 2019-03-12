@@ -92,7 +92,7 @@ export default {
     min-height: $contentMinHeight;
     margin: 0;
     overflow-y: auto;
-    overflow-x: hidden;
+    overflow-x: auto;
     width: $contentWidth;
     @media #{$mediaQueryIpadLandscape} {
       width: $contentWidthSmall;
@@ -128,5 +128,17 @@ export default {
       margin-left: $panelMarginLeftSmallest;
     }
   }
+}
+
+@media(device-width: 768px) and (device-height: 1024px){
+    ::-webkit-scrollbar {
+        -webkit-appearance: none;
+        width: 7px;
+    }
+    ::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        background-color: rgba(0,0,0,.5);
+        -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+    }
 }
 </style>

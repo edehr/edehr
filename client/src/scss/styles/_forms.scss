@@ -107,6 +107,10 @@ textarea {
 textarea {
   height: 6rem;
   width: 100%;
+
+  &:disabled {
+    opacity: .4;
+  }
 }
 
 input, textarea, select, input:disabled, textarea:disabled, select:disabled, checkbox:disabled, radio:disabled, .input:disabled, .textarea:disabled, .select:disabled, .select select:disabled {
@@ -255,12 +259,13 @@ select {
 
 .column_table {
   .column_label {
+    min-width: 15em;
     text-align: right;
   }
 
   .column_value {
-    min-width: 3rem;
-    max-width: 8rem;
+    min-width: 8rem;
+    max-width: 12rem;
   }
 }
 
