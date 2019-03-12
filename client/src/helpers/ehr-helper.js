@@ -1,4 +1,5 @@
 import EventBus from './event-bus'
+import moment from 'moment'
 import Vue from 'vue'
 import { ACTIVITY_DATA_EVENT } from './event-bus'
 import { DIALOG_INPUT_EVENT } from './event-bus'
@@ -30,31 +31,38 @@ export default class EhrHelp {
     this.windowUnloadHandler = function (eData) {
       _this.beforeUnloadListener(eData)
     }
-    window.addEventListener('beforeunload', this.windowUnloadHandler)
-
     this.dialogInputChangeEventHandler = function (eData) {
       _this._handleDialogInputChangeEvent(eData)
     }
-    EventBus.$on(DIALOG_INPUT_EVENT, this.dialogInputChangeEventHandler)
     this.pageFormInputChangeEventHandler = function (eData) {
       _this._handlePageFormInputChangeEvent(eData)
     }
-    let pfuEventChannel = PAGE_FORM_INPUT_EVENT + pageKey
-    EventBus.$on(pfuEventChannel, this.pageFormInputChangeEventHandler)
-
     this.activityDataChangeEventHandler = function (eData) {
       eData = eData || {}
       eData.pageKey = pageKey
       _this._handleActivityDataChangeEvent(eData)
     }
-    EventBus.$on(ACTIVITY_DATA_EVENT, this.activityDataChangeEventHandler)
-
     this.refreshEventHandler = function (eData) {
       // console.log('ehrhelper respond to page refresh')
       _this.mergedProperty(pageKey)
       _this._loadTransposedColumns(pageKey)
     }
+
+    window.addEventListener('beforeunload', this.windowUnloadHandler)
+    EventBus.$on(DIALOG_INPUT_EVENT, this.dialogInputChangeEventHandler)
+    let pfuEventChannel = PAGE_FORM_INPUT_EVENT + pageKey
+    EventBus.$on(pfuEventChannel, this.pageFormInputChangeEventHandler)
+    EventBus.$on(ACTIVITY_DATA_EVENT, this.activityDataChangeEventHandler)
     EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
+  }
+
+  _takeDownEventHandlers (pageKey) {
+    window.removeEventListener('beforeunload', this.windowUnloadHandler)
+    EventBus.$off(DIALOG_INPUT_EVENT, this.dialogInputChangeEventHandler)
+    let pfuEventChannel = PAGE_FORM_INPUT_EVENT + pageKey
+    EventBus.$off(pfuEventChannel, this.pageFormInputChangeEventHandler)
+    EventBus.$off(ACTIVITY_DATA_EVENT, this.activityDataChangeEventHandler)
+    EventBus.$off(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
   }
 
   _loadTransposedColumns (pageKey) {
@@ -72,11 +80,7 @@ export default class EhrHelp {
 
   beforeDestroy (pageKey) {
     debugehr('Before destroy', this.pageKey, pageKey)
-    window.removeEventListener('beforeunload', this.windowUnloadHandler)
-    EventBus.$off(DIALOG_INPUT_EVENT, this.dialogInputChangeEventHandler)
-    let pfuEventChannel = PAGE_FORM_INPUT_EVENT + pageKey
-    EventBus.$off(pfuEventChannel, this.pageFormInputChangeEventHandler)
-    EventBus.$off(ACTIVITY_DATA_EVENT, this.activityDataChangeEventHandler)
+    this._takeDownEventHandlers(pageKey)
   }
   /* ********************* DATA  */
 
@@ -154,6 +158,9 @@ export default class EhrHelp {
     return val
   }
 
+  formatDate (d) {
+    return moment(d).format('YYYY-MM-DD HH:mm')
+  }
   /**
    Take the component's uiProps and the component's data and combine it into one table.
    Then rotates the table to place the header labels into the first column and
@@ -170,7 +177,6 @@ export default class EhrHelp {
       // console.log('the cell ', cell)
       let hdrCss = 'column_label' + (cell.tableCss ? ' ' + cell.tableCss : '')
       var entry = {
-        class: 'column_label',
         inputType: cell.inputType,
         title: cell.elementKey,
         tableCss: hdrCss,
@@ -204,12 +210,12 @@ export default class EhrHelp {
     let dialog = { tableDef: tableDef, inputs: dialogInputs }
     let key = tableDef.tableKey
     let eData = { key: key, value: true }
-    let channel = 'modal:' + key
-    // debugehr('showDialog for key' + key + ' tableDef', tableDef)
+    let channel = this.getDialogEventChannel(key)
+    debugehr('showDialog emit message to channel ' + channel + ' for key' + key + ' tableDef', tableDef)
     EventBus.$emit(channel, eData)
     // add this dialog to the map
     this.dialogMap[key] = dialog
-    // debugehr('set helper into each form element', tableDef.tableForm)
+    debugehr('set helper into each form element', tableDef.tableForm)
     let rows = tableDef.tableForm.rows
     rows.forEach(row => {
       row.elements.forEach(def => {
@@ -232,6 +238,7 @@ export default class EhrHelp {
       let dialog = this.dialogMap[tableKey]
       // debugehr('saveDialog', dialog, 'data', data)
       let inputs = dialog.inputs
+      inputs.createdDate = moment().format()
       // debugehr('save dialog data into ', tableKey)
       let asLoadedPageData = this.getAsLoadedPageData(pageKey)
       let table = asLoadedPageData[tableKey] || []
@@ -278,8 +285,9 @@ export default class EhrHelp {
     }
   }
 
-  getCloseChannelHandle (dialogKey) {
-    let channel = 'modal:' + dialogKey
+  getDialogEventChannel (dialogKey) {
+    const DIALOG_SHOW_HIDE_EVENT_KEY = 'modal:'
+    let channel = DIALOG_SHOW_HIDE_EVENT_KEY + dialogKey
     return channel
   }
 
@@ -291,7 +299,7 @@ export default class EhrHelp {
 
   _emitCloseEvent (dialogKey) {
     let eData = { key: dialogKey, value: false }
-    let channel = this.getCloseChannelHandle(dialogKey)
+    let channel = this.getDialogEventChannel(dialogKey)
     Vue.nextTick(function () {
       // Send an event on our transmission channel
       // with a payload containing this false

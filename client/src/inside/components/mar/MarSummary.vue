@@ -12,11 +12,12 @@
               div When: Day-{{hdr.value.day}} {{hdr.value.actualTime}}
               div Scheduled: {{hdr.value.scheduledTime}}
               div Who: {{hdr.value.whoAdministered}}
+              div Notes: {{hdr.value.comment}}
 
         tbody
           tr(v-for="row in tableBody")
             td(v-for="cell in row")
-              div {{marCellContent(cell)}}
+              div(:class="marCellStyle(cell)") {{marCellContent(cell)}}
     hr
     div(style="display:none") {{refreshProperty}}
 </template>
@@ -59,11 +60,24 @@ export default {
       let value = cell.value
       if( type === MS_MED_ORDER) {
         content = value.medication
-      }
-      if( type === MS_MAR) {
+      } else if( type === MS_MAR) {
         content = 'Yes'
+      } else {
+        content = 'NA'
       }
       return content
+    },
+    marCellStyle (cell) {
+      let style = ''
+      let type = cell.type
+      if( type === MS_MED_ORDER) {
+        style = 'medication'
+      } else if( type === MS_MAR) {
+        style = 'administered'
+      } else {
+        style = 'notApplicable'
+      }
+      return style
     },
     refresh () {
       let summary = this.marSummary
@@ -92,5 +106,14 @@ export default {
 </script>
 
 <style scoped>
+.administered {
+  color:red;
+}
+.notApplicable {
+  color:blue;
+}
+.medication {
+  color:green;
+}
 
 </style>

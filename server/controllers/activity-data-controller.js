@@ -1,3 +1,4 @@
+import moment from 'moment'
 import { ok, fail } from './utils'
 import BaseController from './base'
 import ActivityData from '../models/activity-data'
@@ -21,8 +22,9 @@ export default class VisitController extends BaseController {
   updateAssignmentData (id, data) {
     var propertyName = data.propertyName
     var value = data.value
-    debug(`ActivityData update ${id} assignmentData[${data.propertyName}] with data:`)
-    debug(JSON.stringify(data))
+    value.lastUpdate = moment().format()
+    // debug(`ActivityData update ${id} assignmentData[${data.propertyName}] with data:`)
+    // debug(JSON.stringify(value))
     return this.baseFindOneQuery(id).then(activityData => {
       if (activityData) {
         if (!activityData.assignmentData) {
