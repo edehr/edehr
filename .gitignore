@@ -27,3 +27,4 @@ makeEhr/util/camelcase-input\.txt
 **/\.nyc_output/**
 client/test/e2e/**
 prototyping/hello-world/**
+.DS_Store
