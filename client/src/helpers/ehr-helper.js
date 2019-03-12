@@ -1,4 +1,5 @@
 import EventBus from './event-bus'
+import moment from 'moment'
 import Vue from 'vue'
 import { ACTIVITY_DATA_EVENT } from './event-bus'
 import { DIALOG_INPUT_EVENT } from './event-bus'
@@ -235,6 +236,7 @@ export default class EhrHelp {
       let dialog = this.dialogMap[tableKey]
       // debugehr('saveDialog', dialog, 'data', data)
       let inputs = dialog.inputs
+      inputs.createdDate = moment().format()
       // debugehr('save dialog data into ', tableKey)
       let asLoadedPageData = this.getAsLoadedPageData(pageKey)
       let table = asLoadedPageData[tableKey] || []
