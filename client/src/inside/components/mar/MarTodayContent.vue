@@ -142,6 +142,6 @@ export default {
   flex: 1 0 20%;
 }
 .mar-column {
-  flex: 0 0 20%;
+  flex: 1 0 20%;
 }
 </style>

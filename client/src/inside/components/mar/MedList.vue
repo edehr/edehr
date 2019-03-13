@@ -1,27 +1,30 @@
 <template lang="pug">
-  div
-    div(class="medList", v-for="med in medsList")
-      div {{ med.medication }}, {{ med.dose }}, {{ med.route }}, {{ med.notes }}
-      // div Reason: {{ med.reason }}
-      // div Details: {{ med.details }}
-      // div Schedule Type: {{ med.scheduleType }}
-      // div Schedule: {{ med.scheduleTime }}
-      // div Notes: {{ med.notes }}
+  ul
+    li(class="medList", v-for="med in medsList")
+      div {{ medText(med) }}
 </template>
 
 <script>
+import MedOrder from './medOrder-entity'
+const MAX_LEN = 80
 export default {
   name: 'MedList',
   props: {
     medsList: { type: Array }
   },
   methods: {
+    medText (med) {
+      let text =  MedOrder.medOrderAsTextLine(med, MAX_LEN)
+      // console.log('MedList medText', text)
+      return text
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-  .medList {
-    margin-left: 30px;
-  }
+ul {
+  margin-left: 5px;
+  list-style: circle outside;
+}
 </style>

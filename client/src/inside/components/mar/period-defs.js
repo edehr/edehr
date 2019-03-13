@@ -20,9 +20,9 @@ export default class PeriodDefs {
     let periodKeys = []
     if (medOrdersPageDefs && medOrdersPageDefs.tables && medOrdersPageDefs.tables.length > 0) {
       let cells = medOrdersPageDefs.tables[0].tableCells
-      console.log('PeriodDefs constructor cells', cells)
+      // console.log('PeriodDefs constructor cells', cells)
       let medPeriods = cells.filter(cell => cell.level3Key === SCHEDULE_FIELDSET && cell.inputType === 'checkbox')
-      console.log('PeriodDefs constructor medPeriods', medPeriods)
+      // console.log('PeriodDefs constructor medPeriods', medPeriods)
       medPeriods.forEach(mp => {
         let k = mp.elementKey
         periodKeys.push(k)
@@ -71,13 +71,13 @@ export default class PeriodDefs {
     // console.log('merging ', medOrders)
     let periodDefs = this._periodDefs
     let periodKeys = this._periodKeys
-    console.log('mergeOrdersSchedules medOrders', medOrders)
-    console.log('mergeOrdersSchedules periodKeys', periodKeys)
+    // console.log('mergeOrdersSchedules medOrders', medOrders)
+    // console.log('mergeOrdersSchedules periodKeys', periodKeys)
     medOrders.forEach(medOrder => {
-      console.log('mergeOrdersSchedules medOrder', medOrder)
+      // console.log('mergeOrdersSchedules medOrder', medOrder)
       periodKeys.forEach(pk => {
         let period = periodDefs[pk]
-        console.log('mergeOrdersSchedules periodKey', pk, period, medOrder[pk])
+        // console.log('mergeOrdersSchedules periodKey', pk, period, medOrder[pk])
         if (medOrder.isScheduled(pk)) {
           period.addMedication(medOrder)
         }

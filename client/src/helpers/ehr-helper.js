@@ -91,10 +91,7 @@ export default class EhrHelp {
   }
 
   getAsLoadedPageData (pageKey) {
-    let pageDef = this.getPageDefinition(pageKey)
-    if (!pageDef.asLoadedData) {
-      pageDef = this.prepareAsLoadedData(pageKey)
-    }
+    let pageDef = this.prepareAsLoadedData(pageKey)
     return pageDef.asLoadedData
   }
 
@@ -145,8 +142,6 @@ export default class EhrHelp {
         })
       })
     }
-    // debugehr('prepareAsLoadedData as stored all data', data)
-    // debugehr('prepareAsLoadedData as stored page data', pageData.surgical)
     pageDef.asLoadedData = pageData
     return pageDef
   }
