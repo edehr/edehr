@@ -1,27 +1,34 @@
 <template lang="pug">
   div(class="content")
     tabs
-      tab(name="Table")
+      tab(name="Chart")
         ehr-page-table(:tableDef="tableDef", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
-      tab(name="Chart",:selected="true")
+      tab(name="Graph",:selected="true")
+        ui-button(v-on:buttonClicked="showDialog") {{ tableDef.addButtonText }}
         vitals-chart(v-bind:vitals="tableData", v-bind:vitalsModel="vitalsModel")
+        ehr-dialog-form(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey", :tableDef="tableDef", :inputs="inputs", :errorList="errorList" )
+
     div(style="display:none") Vitals: {{refreshData}}
 </template>
 
 <script>
 import Tabs from './Tabs'
 import Tab from './Tab'
+import UiButton from '../../app/ui/UiButton.vue'
 import VitalsChart from './VitalsChart'
 import VitalModel from '../../helpers/vitalModel'
 import EhrPageTable from '../components/EhrPageTable'
 import EventBus from '../../helpers/event-bus'
-import { PAGE_DATA_REFRESH_EVENT } from '../../helpers/event-bus'
+import { PAGE_DATA_REFRESH_EVENT, SHOW_TABLE_DIALOG_EVENT } from '../../helpers/event-bus'
+import EhrDialogForm from '../components/EhrDialogForm.vue'
 
 export default {
   name: 'home',
   components: {
+    EhrDialogForm,
     Tabs,
     Tab,
+    UiButton,
     EhrPageTable,
     VitalsChart
   },
@@ -32,6 +39,7 @@ export default {
       vitals: {
         table: []
       },
+      inputs: {},
       vitalsModel: {}
     }
   },
@@ -49,9 +57,15 @@ export default {
     },
     tableDef () {
       return this.uiProps.tables[0] || {}
+    },
+    errorList () {
+      return this.ehrHelp.getErrorList(this.tableDef.tableKey)
     }
   },
   methods: {
+    showDialog () {
+      EventBus.$emit(SHOW_TABLE_DIALOG_EVENT)
+    },
     refresh () {
       let tableKey = this.tableDef.tableKey
       let pageKey = this.pageDataKey

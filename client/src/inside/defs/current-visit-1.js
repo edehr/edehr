@@ -4,6 +4,7 @@ export default function () {
     visit: {
       pageTitle: "Visit details",
       pageDataKey: "visit",
+      generated: "2019-03-12T16:05:46-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -11,39 +12,36 @@ export default function () {
             formRow: "1",
             elements: [
               {
-                elementKey: "admissionDay",
-                fqn: "visit.admissionDay",
-                inputType: "day",
                 label: "Admission day",
+                pageDataKey: "visit",
+                elementKey: "admissionDay",
+                inputType: "day",
+                formRow: "1",
                 formColumn: "1",
-                formRow: "1",
-                pageDataKey: "visit",
+                mandatory: "yes",
                 dataParent: "visit",
-                page: "Visit details",
-                mandatory: "yes"
+                fqn: "visit.admissionDay"
               },
               {
-                elementKey: "admissionTime",
-                fqn: "visit.admissionTime",
-                inputType: "time",
                 label: "Admission time",
-                formColumn: "2",
-                formRow: "1",
                 pageDataKey: "visit",
+                elementKey: "admissionTime",
+                inputType: "time",
+                formRow: "1",
+                formColumn: "2",
+                mandatory: "yes",
                 dataParent: "visit",
-                page: "Visit details",
-                mandatory: "yes"
+                fqn: "visit.admissionTime"
               },
               {
-                elementKey: "consentForTreatment",
-                fqn: "visit.consentForTreatment",
-                inputType: "checkbox",
                 label: "Consent for treatment",
-                formColumn: "3",
-                formRow: "1",
                 pageDataKey: "visit",
+                elementKey: "consentForTreatment",
+                inputType: "checkbox",
+                formRow: "1",
+                formColumn: "3",
                 dataParent: "visit",
-                page: "Visit details"
+                fqn: "visit.consentForTreatment"
               }
             ]
           },
@@ -51,15 +49,14 @@ export default function () {
             formRow: "2",
             elements: [
               {
-                elementKey: "consentForBlood",
-                fqn: "visit.consentForBlood",
-                inputType: "checkbox",
                 label: "Consent for blood products",
-                formColumn: "3",
-                formRow: "2",
                 pageDataKey: "visit",
+                elementKey: "consentForBlood",
+                inputType: "checkbox",
+                formRow: "2",
+                formColumn: "3",
                 dataParent: "visit",
-                page: "Visit details"
+                fqn: "visit.consentForBlood"
               }
             ]
           },
@@ -67,28 +64,22 @@ export default function () {
             formRow: "3",
             elements: [
               {
-                elementKey: "diagnosis",
-                fqn: "visit.diagnosis",
-                inputType: "textarea",
-                label: "Physician diagnosis",
-                formCss: "is-two-thirds",
-                formColumn: "1",
-                formRow: "3",
+                label: "Physician admitting diagnosis",
                 pageDataKey: "visit",
+                elementKey: "diagnosis",
+                inputType: "textarea",
+                formRow: "3",
+                formColumn: "1",
                 dataParent: "visit",
-                page: "Visit details"
+                fqn: "visit.diagnosis"
               },
               {
-                elementKey: "status",
-                fqn: "visit.status",
-                inputType: "select",
                 label: "Admission status",
-                formColumn: "3",
-                formRow: "3",
                 pageDataKey: "visit",
-                dataParent: "visit",
-                page: "Visit details",
-                mandatory: "yes",
+                elementKey: "status",
+                inputType: "select",
+                formRow: "3",
+                formColumn: "3",
                 options: [
                   {
                     text: "Admission in progress"
@@ -111,7 +102,10 @@ export default function () {
                   {
                     text: "Discharged"
                   }
-                ]
+                ],
+                mandatory: "yes",
+                dataParent: "visit",
+                fqn: "visit.status"
               }
             ]
           }
@@ -125,47 +119,44 @@ export default function () {
           addButtonText: "Add a patient location",
           tableCells: [
             {
-              elementKey: "location",
-              fqn: "visit.table.location",
-              inputType: "text",
               label: "Patient location",
-              tableColumn: "1",
-              formColumn: "1",
-              formRow: "1",
               pageDataKey: "visit",
-              dataParent: "visit.table",
               level2Key: "table",
-              page: "Visit details",
+              elementKey: "location",
+              inputType: "text",
+              formRow: "1",
+              formColumn: "1",
+              tableColumn: "1",
               mandatory: "yes",
               helperText: "hospital, ward #, room #, home, out patient clinic",
+              dataParent: "visit.table",
+              fqn: "visit.table.location",
               tableKey: "table"
             },
             {
-              elementKey: "transferInDay",
-              fqn: "visit.table.transferInDay",
-              inputType: "day",
               label: "Transfer in day",
-              tableColumn: "2",
-              formColumn: "2",
-              formRow: "1",
               pageDataKey: "visit",
-              dataParent: "visit.table",
               level2Key: "table",
-              page: "Visit details",
+              elementKey: "transferInDay",
+              inputType: "day",
+              formRow: "1",
+              formColumn: "2",
+              tableColumn: "2",
+              dataParent: "visit.table",
+              fqn: "visit.table.transferInDay",
               tableKey: "table"
             },
             {
-              elementKey: "transferInTime",
-              fqn: "visit.table.transferInTime",
-              inputType: "time",
               label: "Transfer in time",
-              tableColumn: "3",
-              formColumn: "3",
-              formRow: "1",
               pageDataKey: "visit",
-              dataParent: "visit.table",
               level2Key: "table",
-              page: "Visit details",
+              elementKey: "transferInTime",
+              inputType: "time",
+              formRow: "1",
+              formColumn: "3",
+              tableColumn: "3",
+              dataParent: "visit.table",
+              fqn: "visit.table.transferInTime",
               tableKey: "table"
             }
           ],
@@ -175,47 +166,44 @@ export default function () {
                 formRow: "1",
                 elements: [
                   {
-                    elementKey: "location",
-                    fqn: "visit.table.location",
-                    inputType: "text",
                     label: "Patient location",
-                    tableColumn: "1",
-                    formColumn: "1",
-                    formRow: "1",
                     pageDataKey: "visit",
-                    dataParent: "visit.table",
                     level2Key: "table",
-                    page: "Visit details",
+                    elementKey: "location",
+                    inputType: "text",
+                    formRow: "1",
+                    formColumn: "1",
+                    tableColumn: "1",
                     mandatory: "yes",
                     helperText: "hospital, ward #, room #, home, out patient clinic",
+                    dataParent: "visit.table",
+                    fqn: "visit.table.location",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "transferInDay",
-                    fqn: "visit.table.transferInDay",
-                    inputType: "day",
                     label: "Transfer in day",
-                    tableColumn: "2",
-                    formColumn: "2",
-                    formRow: "1",
                     pageDataKey: "visit",
-                    dataParent: "visit.table",
                     level2Key: "table",
-                    page: "Visit details",
+                    elementKey: "transferInDay",
+                    inputType: "day",
+                    formRow: "1",
+                    formColumn: "2",
+                    tableColumn: "2",
+                    dataParent: "visit.table",
+                    fqn: "visit.table.transferInDay",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "transferInTime",
-                    fqn: "visit.table.transferInTime",
-                    inputType: "time",
                     label: "Transfer in time",
-                    tableColumn: "3",
-                    formColumn: "3",
-                    formRow: "1",
                     pageDataKey: "visit",
-                    dataParent: "visit.table",
                     level2Key: "table",
-                    page: "Visit details",
+                    elementKey: "transferInTime",
+                    inputType: "time",
+                    formRow: "1",
+                    formColumn: "3",
+                    tableColumn: "3",
+                    dataParent: "visit.table",
+                    fqn: "visit.table.transferInTime",
                     tableKey: "table"
                   }
                 ]
@@ -232,6 +220,7 @@ export default function () {
     vitals: {
       pageTitle: "Vital signs",
       pageDataKey: "vitals",
+      generated: "2019-03-12T16:05:46-07:00",
       hasTable: true,
       tables: [
         {
@@ -239,91 +228,79 @@ export default function () {
           addButtonText: "Add vital signs",
           tableCells: [
             {
-              elementKey: "name",
-              fqn: "vitals.table.name",
-              inputType: "text",
               label: "Name",
-              tableColumn: "1",
-              formCss: "user_name",
+              pageDataKey: "vitals",
+              level2Key: "table",
+              elementKey: "name",
+              inputType: "text",
+              formRow: "1",
               formColumn: "1",
-              formRow: "1",
-              pageDataKey: "vitals",
-              dataParent: "vitals.table",
-              level2Key: "table",
-              page: "Vital signs",
-              tableKey: "table"
-            },
-            {
-              elementKey: "day",
-              fqn: "vitals.table.day",
-              inputType: "text",
-              label: "Day",
               tableColumn: "1",
-              formCss: "user_day",
-              formColumn: "3",
-              formRow: "1",
-              pageDataKey: "vitals",
               dataParent: "vitals.table",
-              level2Key: "table",
-              page: "Vital signs",
+              fqn: "vitals.table.name",
               tableKey: "table"
             },
             {
-              elementKey: "time",
-              fqn: "vitals.table.time",
-              inputType: "text",
-              label: "Time",
-              tableColumn: "1",
-              formCss: "user_time",
-              formColumn: "4",
-              formRow: "1",
-              pageDataKey: "vitals",
-              dataParent: "vitals.table",
-              level2Key: "table",
-              page: "Vital signs",
-              tableKey: "table"
-            },
-            {
-              elementKey: "temperature",
-              fqn: "vitals.table.temperature",
-              inputType: "text",
-              label: "Temperature",
-              tableColumn: "1",
-              formColumn: "1",
-              formRow: "2",
-              pageDataKey: "vitals",
-              dataParent: "vitals.table",
-              level2Key: "table",
-              page: "Vital signs",
-              tableKey: "table"
-            },
-            {
-              elementKey: "profession",
-              fqn: "vitals.table.profession",
-              inputType: "text",
               label: "Profession",
-              tableColumn: "1",
-              formCss: "user_pro",
-              formColumn: "2",
-              formRow: "1",
               pageDataKey: "vitals",
-              dataParent: "vitals.table",
               level2Key: "table",
-              page: "Vital signs",
+              elementKey: "profession",
+              inputType: "text",
+              formRow: "1",
+              formColumn: "2",
+              tableColumn: "2",
+              dataParent: "vitals.table",
+              fqn: "vitals.table.profession",
               tableKey: "table"
             },
             {
-              elementKey: "source",
-              fqn: "vitals.table.source",
-              inputType: "select",
-              label: "Temperature source",
-              tableColumn: "2",
-              formColumn: "2",
-              formRow: "2",
+              label: "Day",
               pageDataKey: "vitals",
-              dataParent: "vitals.table",
               level2Key: "table",
-              page: "Vital signs",
+              elementKey: "day",
+              inputType: "text",
+              formRow: "1",
+              formColumn: "3",
+              tableColumn: "3",
+              dataParent: "vitals.table",
+              fqn: "vitals.table.day",
+              tableKey: "table"
+            },
+            {
+              label: "Time",
+              pageDataKey: "vitals",
+              level2Key: "table",
+              elementKey: "time",
+              inputType: "text",
+              formRow: "1",
+              formColumn: "4",
+              tableColumn: "4",
+              dataParent: "vitals.table",
+              fqn: "vitals.table.time",
+              tableKey: "table"
+            },
+            {
+              label: "Temperature",
+              pageDataKey: "vitals",
+              level2Key: "table",
+              elementKey: "temperature",
+              inputType: "text",
+              formRow: "2",
+              formColumn: "1",
+              tableColumn: "5",
+              dataParent: "vitals.table",
+              fqn: "vitals.table.temperature",
+              tableKey: "table"
+            },
+            {
+              label: "Temperature source",
+              pageDataKey: "vitals",
+              level2Key: "table",
+              elementKey: "source",
+              inputType: "select",
+              formRow: "2",
+              formColumn: "2",
+              tableColumn: "6",
               options: [
                 {
                   text: "oral"
@@ -338,34 +315,32 @@ export default function () {
                   text: "tympanic"
                 }
               ],
+              dataParent: "vitals.table",
+              fqn: "vitals.table.source",
               tableKey: "table"
             },
             {
-              elementKey: "rate",
-              fqn: "vitals.table.rate",
-              inputType: "text",
               label: "Pulse rate",
-              tableColumn: "3",
-              formColumn: "3",
-              formRow: "3",
               pageDataKey: "vitals",
-              dataParent: "vitals.table",
               level2Key: "table",
-              page: "Vital signs",
+              elementKey: "rate",
+              inputType: "text",
+              formRow: "3",
+              formColumn: "3",
+              tableColumn: "7",
+              dataParent: "vitals.table",
+              fqn: "vitals.table.rate",
               tableKey: "table"
             },
             {
-              elementKey: "rhythm",
-              fqn: "vitals.table.rhythm",
-              inputType: "select",
               label: "Pulse rhythm",
-              tableColumn: "4",
-              formColumn: "1",
-              formRow: "3",
               pageDataKey: "vitals",
-              dataParent: "vitals.table",
               level2Key: "table",
-              page: "Vital signs",
+              elementKey: "rhythm",
+              inputType: "select",
+              formRow: "3",
+              formColumn: "1",
+              tableColumn: "8",
               options: [
                 {
                   text: "regular"
@@ -374,67 +349,63 @@ export default function () {
                   text: "irregular"
                 }
               ],
+              dataParent: "vitals.table",
+              fqn: "vitals.table.rhythm",
               tableKey: "table"
             },
             {
-              elementKey: "strength",
-              fqn: "vitals.table.strength",
-              inputType: "select",
               label: "Pulse site",
-              tableColumn: "5",
-              formColumn: "2",
-              formRow: "3",
               pageDataKey: "vitals",
-              dataParent: "vitals.table",
               level2Key: "table",
-              page: "Vital signs",
+              elementKey: "strength",
+              inputType: "select",
+              formRow: "3",
+              formColumn: "2",
+              tableColumn: "9",
               options: [
                 {
                   text: "peripheral"
                 }
               ],
+              dataParent: "vitals.table",
+              fqn: "vitals.table.strength",
               tableKey: "table"
             },
             {
-              elementKey: "systolic",
-              fqn: "vitals.table.systolic",
-              inputType: "text",
               label: "Systolic blood pressure",
-              tableColumn: "6",
-              formColumn: "1",
-              formRow: "4",
               pageDataKey: "vitals",
-              dataParent: "vitals.table",
               level2Key: "table",
-              page: "Vital signs",
-              tableKey: "table"
-            },
-            {
-              elementKey: "diastolic",
-              fqn: "vitals.table.diastolic",
+              elementKey: "systolic",
               inputType: "text",
-              label: "Diastolic blood pressure",
-              tableColumn: "7",
-              formColumn: "2",
               formRow: "4",
-              pageDataKey: "vitals",
+              formColumn: "1",
+              tableColumn: "10",
               dataParent: "vitals.table",
-              level2Key: "table",
-              page: "Vital signs",
+              fqn: "vitals.table.systolic",
               tableKey: "table"
             },
             {
-              elementKey: "patientPosition",
-              fqn: "vitals.table.patientPosition",
-              inputType: "select",
-              label: "Patient position",
-              tableColumn: "8",
-              formColumn: "3",
-              formRow: "4",
+              label: "Diastolic blood pressure",
               pageDataKey: "vitals",
-              dataParent: "vitals.table",
               level2Key: "table",
-              page: "Vital signs",
+              elementKey: "diastolic",
+              inputType: "text",
+              formRow: "4",
+              formColumn: "2",
+              tableColumn: "11",
+              dataParent: "vitals.table",
+              fqn: "vitals.table.diastolic",
+              tableKey: "table"
+            },
+            {
+              label: "Patient position",
+              pageDataKey: "vitals",
+              level2Key: "table",
+              elementKey: "patientPosition",
+              inputType: "select",
+              formRow: "4",
+              formColumn: "3",
+              tableColumn: "12",
               options: [
                 {
                   text: "supine"
@@ -446,48 +417,45 @@ export default function () {
                   text: "standing"
                 }
               ],
+              dataParent: "vitals.table",
+              fqn: "vitals.table.patientPosition",
               tableKey: "table"
             },
             {
-              elementKey: "respirationRate",
-              fqn: "vitals.table.respirationRate",
-              inputType: "text",
               label: "Respiration rate",
-              tableColumn: "9",
-              formColumn: "1",
-              formRow: "5",
               pageDataKey: "vitals",
-              dataParent: "vitals.table",
               level2Key: "table",
-              page: "Vital signs",
-              tableKey: "table"
-            },
-            {
-              elementKey: "oxygenSaturation",
-              fqn: "vitals.table.oxygenSaturation",
+              elementKey: "respirationRate",
               inputType: "text",
-              label: "Oxygen saturation",
-              tableColumn: "10",
+              formRow: "5",
               formColumn: "1",
-              formRow: "6",
-              pageDataKey: "vitals",
+              tableColumn: "13",
               dataParent: "vitals.table",
-              level2Key: "table",
-              page: "Vital signs",
+              fqn: "vitals.table.respirationRate",
               tableKey: "table"
             },
             {
-              elementKey: "oxygenMode",
-              fqn: "vitals.table.oxygenMode",
-              inputType: "select",
-              label: "Oxygen mode",
-              tableColumn: "11",
-              formColumn: "2",
-              formRow: "6",
+              label: "Oxygen saturation",
               pageDataKey: "vitals",
-              dataParent: "vitals.table",
               level2Key: "table",
-              page: "Vital signs",
+              elementKey: "oxygenSaturation",
+              inputType: "text",
+              formRow: "6",
+              formColumn: "1",
+              tableColumn: "14",
+              dataParent: "vitals.table",
+              fqn: "vitals.table.oxygenSaturation",
+              tableKey: "table"
+            },
+            {
+              label: "Oxygen mode",
+              pageDataKey: "vitals",
+              level2Key: "table",
+              elementKey: "oxygenMode",
+              inputType: "select",
+              formRow: "6",
+              formColumn: "2",
+              tableColumn: "15",
               options: [
                 {
                   text: "room air"
@@ -505,20 +473,22 @@ export default function () {
                   text: "optiflow"
                 }
               ],
+              dataParent: "vitals.table",
+              fqn: "vitals.table.oxygenMode",
               tableKey: "table"
             },
             {
-              elementKey: "flowRate",
-              fqn: "vitals.table.flowRate",
-              inputType: "text",
               label: "Flow rate",
-              tableColumn: "12",
-              formColumn: "3",
-              formRow: "6",
               pageDataKey: "vitals",
-              dataParent: "vitals.table",
               level2Key: "table",
-              page: "Vital signs",
+              elementKey: "flowRate",
+              inputType: "text",
+              formRow: "6",
+              formColumn: "3",
+              tableColumn: "16",
+              suffix: "/lpm",
+              dataParent: "vitals.table",
+              fqn: "vitals.table.flowRate",
               tableKey: "table"
             }
           ],
@@ -528,63 +498,55 @@ export default function () {
                 formRow: "1",
                 elements: [
                   {
-                    elementKey: "name",
-                    fqn: "vitals.table.name",
-                    inputType: "text",
                     label: "Name",
-                    tableColumn: "1",
-                    formCss: "user_name",
+                    pageDataKey: "vitals",
+                    level2Key: "table",
+                    elementKey: "name",
+                    inputType: "text",
+                    formRow: "1",
                     formColumn: "1",
-                    formRow: "1",
-                    pageDataKey: "vitals",
+                    tableColumn: "1",
                     dataParent: "vitals.table",
-                    level2Key: "table",
-                    page: "Vital signs",
+                    fqn: "vitals.table.name",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "profession",
-                    fqn: "vitals.table.profession",
-                    inputType: "text",
                     label: "Profession",
-                    tableColumn: "1",
-                    formCss: "user_pro",
+                    pageDataKey: "vitals",
+                    level2Key: "table",
+                    elementKey: "profession",
+                    inputType: "text",
+                    formRow: "1",
                     formColumn: "2",
-                    formRow: "1",
-                    pageDataKey: "vitals",
+                    tableColumn: "2",
                     dataParent: "vitals.table",
-                    level2Key: "table",
-                    page: "Vital signs",
+                    fqn: "vitals.table.profession",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "day",
-                    fqn: "vitals.table.day",
-                    inputType: "text",
                     label: "Day",
-                    tableColumn: "1",
-                    formCss: "user_day",
-                    formColumn: "3",
-                    formRow: "1",
                     pageDataKey: "vitals",
-                    dataParent: "vitals.table",
                     level2Key: "table",
-                    page: "Vital signs",
+                    elementKey: "day",
+                    inputType: "text",
+                    formRow: "1",
+                    formColumn: "3",
+                    tableColumn: "3",
+                    dataParent: "vitals.table",
+                    fqn: "vitals.table.day",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "time",
-                    fqn: "vitals.table.time",
-                    inputType: "text",
                     label: "Time",
-                    tableColumn: "1",
-                    formCss: "user_time",
-                    formColumn: "4",
-                    formRow: "1",
                     pageDataKey: "vitals",
-                    dataParent: "vitals.table",
                     level2Key: "table",
-                    page: "Vital signs",
+                    elementKey: "time",
+                    inputType: "text",
+                    formRow: "1",
+                    formColumn: "4",
+                    tableColumn: "4",
+                    dataParent: "vitals.table",
+                    fqn: "vitals.table.time",
                     tableKey: "table"
                   }
                 ]
@@ -593,31 +555,27 @@ export default function () {
                 formRow: "2",
                 elements: [
                   {
-                    elementKey: "temperature",
-                    fqn: "vitals.table.temperature",
-                    inputType: "text",
                     label: "Temperature",
-                    tableColumn: "1",
-                    formColumn: "1",
-                    formRow: "2",
                     pageDataKey: "vitals",
-                    dataParent: "vitals.table",
                     level2Key: "table",
-                    page: "Vital signs",
+                    elementKey: "temperature",
+                    inputType: "text",
+                    formRow: "2",
+                    formColumn: "1",
+                    tableColumn: "5",
+                    dataParent: "vitals.table",
+                    fqn: "vitals.table.temperature",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "source",
-                    fqn: "vitals.table.source",
-                    inputType: "select",
                     label: "Temperature source",
-                    tableColumn: "2",
-                    formColumn: "2",
-                    formRow: "2",
                     pageDataKey: "vitals",
-                    dataParent: "vitals.table",
                     level2Key: "table",
-                    page: "Vital signs",
+                    elementKey: "source",
+                    inputType: "select",
+                    formRow: "2",
+                    formColumn: "2",
+                    tableColumn: "6",
                     options: [
                       {
                         text: "oral"
@@ -632,6 +590,8 @@ export default function () {
                         text: "tympanic"
                       }
                     ],
+                    dataParent: "vitals.table",
+                    fqn: "vitals.table.source",
                     tableKey: "table"
                   }
                 ]
@@ -640,17 +600,14 @@ export default function () {
                 formRow: "3",
                 elements: [
                   {
-                    elementKey: "rhythm",
-                    fqn: "vitals.table.rhythm",
-                    inputType: "select",
                     label: "Pulse rhythm",
-                    tableColumn: "4",
-                    formColumn: "1",
-                    formRow: "3",
                     pageDataKey: "vitals",
-                    dataParent: "vitals.table",
                     level2Key: "table",
-                    page: "Vital signs",
+                    elementKey: "rhythm",
+                    inputType: "select",
+                    formRow: "3",
+                    formColumn: "1",
+                    tableColumn: "8",
                     options: [
                       {
                         text: "regular"
@@ -659,39 +616,39 @@ export default function () {
                         text: "irregular"
                       }
                     ],
+                    dataParent: "vitals.table",
+                    fqn: "vitals.table.rhythm",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "strength",
-                    fqn: "vitals.table.strength",
-                    inputType: "select",
                     label: "Pulse site",
-                    tableColumn: "5",
-                    formColumn: "2",
-                    formRow: "3",
                     pageDataKey: "vitals",
-                    dataParent: "vitals.table",
                     level2Key: "table",
-                    page: "Vital signs",
+                    elementKey: "strength",
+                    inputType: "select",
+                    formRow: "3",
+                    formColumn: "2",
+                    tableColumn: "9",
                     options: [
                       {
                         text: "peripheral"
                       }
                     ],
+                    dataParent: "vitals.table",
+                    fqn: "vitals.table.strength",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "rate",
-                    fqn: "vitals.table.rate",
-                    inputType: "text",
                     label: "Pulse rate",
-                    tableColumn: "3",
-                    formColumn: "3",
-                    formRow: "3",
                     pageDataKey: "vitals",
-                    dataParent: "vitals.table",
                     level2Key: "table",
-                    page: "Vital signs",
+                    elementKey: "rate",
+                    inputType: "text",
+                    formRow: "3",
+                    formColumn: "3",
+                    tableColumn: "7",
+                    dataParent: "vitals.table",
+                    fqn: "vitals.table.rate",
                     tableKey: "table"
                   }
                 ]
@@ -700,45 +657,40 @@ export default function () {
                 formRow: "4",
                 elements: [
                   {
-                    elementKey: "systolic",
-                    fqn: "vitals.table.systolic",
-                    inputType: "text",
                     label: "Systolic blood pressure",
-                    tableColumn: "6",
-                    formColumn: "1",
-                    formRow: "4",
                     pageDataKey: "vitals",
-                    dataParent: "vitals.table",
                     level2Key: "table",
-                    page: "Vital signs",
-                    tableKey: "table"
-                  },
-                  {
-                    elementKey: "diastolic",
-                    fqn: "vitals.table.diastolic",
+                    elementKey: "systolic",
                     inputType: "text",
-                    label: "Diastolic blood pressure",
-                    tableColumn: "7",
-                    formColumn: "2",
                     formRow: "4",
-                    pageDataKey: "vitals",
+                    formColumn: "1",
+                    tableColumn: "10",
                     dataParent: "vitals.table",
-                    level2Key: "table",
-                    page: "Vital signs",
+                    fqn: "vitals.table.systolic",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "patientPosition",
-                    fqn: "vitals.table.patientPosition",
-                    inputType: "select",
-                    label: "Patient position",
-                    tableColumn: "8",
-                    formColumn: "3",
-                    formRow: "4",
+                    label: "Diastolic blood pressure",
                     pageDataKey: "vitals",
-                    dataParent: "vitals.table",
                     level2Key: "table",
-                    page: "Vital signs",
+                    elementKey: "diastolic",
+                    inputType: "text",
+                    formRow: "4",
+                    formColumn: "2",
+                    tableColumn: "11",
+                    dataParent: "vitals.table",
+                    fqn: "vitals.table.diastolic",
+                    tableKey: "table"
+                  },
+                  {
+                    label: "Patient position",
+                    pageDataKey: "vitals",
+                    level2Key: "table",
+                    elementKey: "patientPosition",
+                    inputType: "select",
+                    formRow: "4",
+                    formColumn: "3",
+                    tableColumn: "12",
                     options: [
                       {
                         text: "supine"
@@ -750,6 +702,8 @@ export default function () {
                         text: "standing"
                       }
                     ],
+                    dataParent: "vitals.table",
+                    fqn: "vitals.table.patientPosition",
                     tableKey: "table"
                   }
                 ]
@@ -758,17 +712,16 @@ export default function () {
                 formRow: "5",
                 elements: [
                   {
-                    elementKey: "respirationRate",
-                    fqn: "vitals.table.respirationRate",
-                    inputType: "text",
                     label: "Respiration rate",
-                    tableColumn: "9",
-                    formColumn: "1",
-                    formRow: "5",
                     pageDataKey: "vitals",
-                    dataParent: "vitals.table",
                     level2Key: "table",
-                    page: "Vital signs",
+                    elementKey: "respirationRate",
+                    inputType: "text",
+                    formRow: "5",
+                    formColumn: "1",
+                    tableColumn: "13",
+                    dataParent: "vitals.table",
+                    fqn: "vitals.table.respirationRate",
                     tableKey: "table"
                   }
                 ]
@@ -777,31 +730,27 @@ export default function () {
                 formRow: "6",
                 elements: [
                   {
-                    elementKey: "oxygenSaturation",
-                    fqn: "vitals.table.oxygenSaturation",
-                    inputType: "text",
                     label: "Oxygen saturation",
-                    tableColumn: "10",
-                    formColumn: "1",
-                    formRow: "6",
                     pageDataKey: "vitals",
-                    dataParent: "vitals.table",
                     level2Key: "table",
-                    page: "Vital signs",
+                    elementKey: "oxygenSaturation",
+                    inputType: "text",
+                    formRow: "6",
+                    formColumn: "1",
+                    tableColumn: "14",
+                    dataParent: "vitals.table",
+                    fqn: "vitals.table.oxygenSaturation",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "oxygenMode",
-                    fqn: "vitals.table.oxygenMode",
-                    inputType: "select",
                     label: "Oxygen mode",
-                    tableColumn: "11",
-                    formColumn: "2",
-                    formRow: "6",
                     pageDataKey: "vitals",
-                    dataParent: "vitals.table",
                     level2Key: "table",
-                    page: "Vital signs",
+                    elementKey: "oxygenMode",
+                    inputType: "select",
+                    formRow: "6",
+                    formColumn: "2",
+                    tableColumn: "15",
                     options: [
                       {
                         text: "room air"
@@ -819,20 +768,22 @@ export default function () {
                         text: "optiflow"
                       }
                     ],
+                    dataParent: "vitals.table",
+                    fqn: "vitals.table.oxygenMode",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "flowRate",
-                    fqn: "vitals.table.flowRate",
-                    inputType: "text",
                     label: "Flow rate",
-                    tableColumn: "12",
-                    formColumn: "3",
-                    formRow: "6",
                     pageDataKey: "vitals",
-                    dataParent: "vitals.table",
                     level2Key: "table",
-                    page: "Vital signs",
+                    elementKey: "flowRate",
+                    inputType: "text",
+                    formRow: "6",
+                    formColumn: "3",
+                    tableColumn: "16",
+                    suffix: "/lpm",
+                    dataParent: "vitals.table",
+                    fqn: "vitals.table.flowRate",
                     tableKey: "table"
                   }
                 ]
@@ -849,6 +800,7 @@ export default function () {
     fluidBalance: {
       pageTitle: "Fluid balance",
       pageDataKey: "fluidBalance",
+      generated: "2019-03-12T16:05:46-07:00",
       hasTable: true,
       tables: [
         {
@@ -856,91 +808,81 @@ export default function () {
           addButtonText: "Add a fluid in/out record",
           tableCells: [
             {
-              elementKey: "name",
-              fqn: "fluidBalance.table.name",
-              inputType: "text",
               label: "Name",
+              pageDataKey: "fluidBalance",
+              level2Key: "table",
+              elementKey: "name",
+              inputType: "text",
+              formRow: "1",
+              formColumn: "1",
               tableColumn: "1",
-              formCss: "user_name",
-              formColumn: "1",
-              formRow: "1",
-              pageDataKey: "fluidBalance",
               dataParent: "fluidBalance.table",
-              level2Key: "table",
-              page: "Fluid balance",
+              fqn: "fluidBalance.table.name",
               tableKey: "table"
             },
             {
-              elementKey: "profession",
-              fqn: "fluidBalance.table.profession",
-              inputType: "text",
               label: "Profession",
+              pageDataKey: "fluidBalance",
+              level2Key: "table",
+              elementKey: "profession",
+              inputType: "text",
+              formRow: "1",
+              formColumn: "2",
               tableColumn: "2",
-              formCss: "user_pro",
-              formColumn: "2",
-              formRow: "1",
-              pageDataKey: "fluidBalance",
               dataParent: "fluidBalance.table",
-              level2Key: "table",
-              page: "Fluid balance",
+              fqn: "fluidBalance.table.profession",
               tableKey: "table"
             },
             {
-              elementKey: "day",
-              fqn: "fluidBalance.table.day",
-              inputType: "day",
               label: "Day",
-              tableColumn: "3",
-              formCss: "user_day",
+              pageDataKey: "fluidBalance",
+              level2Key: "table",
+              elementKey: "day",
+              inputType: "day",
+              formRow: "1",
               formColumn: "3",
-              formRow: "1",
-              pageDataKey: "fluidBalance",
+              tableColumn: "3",
               dataParent: "fluidBalance.table",
-              level2Key: "table",
-              page: "Fluid balance",
+              fqn: "fluidBalance.table.day",
               tableKey: "table"
             },
             {
-              elementKey: "time",
-              fqn: "fluidBalance.table.time",
-              inputType: "time",
               label: "Time",
-              tableColumn: "4",
-              formCss: "user_time",
-              formColumn: "4",
+              pageDataKey: "fluidBalance",
+              level2Key: "table",
+              elementKey: "time",
+              inputType: "time",
               formRow: "1",
-              pageDataKey: "fluidBalance",
+              formColumn: "4",
+              tableColumn: "4",
               dataParent: "fluidBalance.table",
-              level2Key: "table",
-              page: "Fluid balance",
+              fqn: "fluidBalance.table.time",
               tableKey: "table"
             },
             {
-              elementKey: "fluidIn",
-              fqn: "fluidBalance.table.fluidIn",
-              inputType: "text",
               label: "Fluid In",
-              tableColumn: "5",
-              formColumn: "1",
-              formRow: "2",
               pageDataKey: "fluidBalance",
-              dataParent: "fluidBalance.table",
               level2Key: "table",
-              page: "Fluid balance",
+              elementKey: "fluidIn",
+              inputType: "text",
+              formRow: "2",
+              formColumn: "1",
+              tableColumn: "5",
+              dataParent: "fluidBalance.table",
+              fqn: "fluidBalance.table.fluidIn",
               tableKey: "table"
             },
             {
-              elementKey: "fluidOut",
-              fqn: "fluidBalance.table.fluidOut",
-              inputType: "text",
               label: "Fluid Out",
-              tableColumn: "6",
-              formColumn: "2",
-              formRow: "2",
               pageDataKey: "fluidBalance",
-              dataParent: "fluidBalance.table",
               level2Key: "table",
-              page: "Fluid balance",
+              elementKey: "fluidOut",
+              inputType: "text",
+              formRow: "2",
+              formColumn: "2",
+              tableColumn: "6",
+              dataParent: "fluidBalance.table",
+              fqn: "fluidBalance.table.fluidOut",
               tableKey: "table"
             }
           ],
@@ -950,63 +892,55 @@ export default function () {
                 formRow: "1",
                 elements: [
                   {
-                    elementKey: "name",
-                    fqn: "fluidBalance.table.name",
-                    inputType: "text",
                     label: "Name",
-                    tableColumn: "1",
-                    formCss: "user_name",
-                    formColumn: "1",
-                    formRow: "1",
                     pageDataKey: "fluidBalance",
-                    dataParent: "fluidBalance.table",
                     level2Key: "table",
-                    page: "Fluid balance",
-                    tableKey: "table"
-                  },
-                  {
-                    elementKey: "profession",
-                    fqn: "fluidBalance.table.profession",
+                    elementKey: "name",
                     inputType: "text",
+                    formRow: "1",
+                    formColumn: "1",
+                    tableColumn: "1",
+                    dataParent: "fluidBalance.table",
+                    fqn: "fluidBalance.table.name",
+                    tableKey: "table"
+                  },
+                  {
                     label: "Profession",
-                    tableColumn: "2",
-                    formCss: "user_pro",
+                    pageDataKey: "fluidBalance",
+                    level2Key: "table",
+                    elementKey: "profession",
+                    inputType: "text",
+                    formRow: "1",
                     formColumn: "2",
-                    formRow: "1",
-                    pageDataKey: "fluidBalance",
+                    tableColumn: "2",
                     dataParent: "fluidBalance.table",
-                    level2Key: "table",
-                    page: "Fluid balance",
+                    fqn: "fluidBalance.table.profession",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "day",
-                    fqn: "fluidBalance.table.day",
-                    inputType: "day",
                     label: "Day",
-                    tableColumn: "3",
-                    formCss: "user_day",
-                    formColumn: "3",
-                    formRow: "1",
                     pageDataKey: "fluidBalance",
-                    dataParent: "fluidBalance.table",
                     level2Key: "table",
-                    page: "Fluid balance",
+                    elementKey: "day",
+                    inputType: "day",
+                    formRow: "1",
+                    formColumn: "3",
+                    tableColumn: "3",
+                    dataParent: "fluidBalance.table",
+                    fqn: "fluidBalance.table.day",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "time",
-                    fqn: "fluidBalance.table.time",
-                    inputType: "time",
                     label: "Time",
-                    tableColumn: "4",
-                    formCss: "user_time",
-                    formColumn: "4",
-                    formRow: "1",
                     pageDataKey: "fluidBalance",
-                    dataParent: "fluidBalance.table",
                     level2Key: "table",
-                    page: "Fluid balance",
+                    elementKey: "time",
+                    inputType: "time",
+                    formRow: "1",
+                    formColumn: "4",
+                    tableColumn: "4",
+                    dataParent: "fluidBalance.table",
+                    fqn: "fluidBalance.table.time",
                     tableKey: "table"
                   }
                 ]
@@ -1015,31 +949,29 @@ export default function () {
                 formRow: "2",
                 elements: [
                   {
-                    elementKey: "fluidIn",
-                    fqn: "fluidBalance.table.fluidIn",
-                    inputType: "text",
                     label: "Fluid In",
-                    tableColumn: "5",
-                    formColumn: "1",
-                    formRow: "2",
                     pageDataKey: "fluidBalance",
-                    dataParent: "fluidBalance.table",
                     level2Key: "table",
-                    page: "Fluid balance",
+                    elementKey: "fluidIn",
+                    inputType: "text",
+                    formRow: "2",
+                    formColumn: "1",
+                    tableColumn: "5",
+                    dataParent: "fluidBalance.table",
+                    fqn: "fluidBalance.table.fluidIn",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "fluidOut",
-                    fqn: "fluidBalance.table.fluidOut",
-                    inputType: "text",
                     label: "Fluid Out",
-                    tableColumn: "6",
-                    formColumn: "2",
-                    formRow: "2",
                     pageDataKey: "fluidBalance",
-                    dataParent: "fluidBalance.table",
                     level2Key: "table",
-                    page: "Fluid balance",
+                    elementKey: "fluidOut",
+                    inputType: "text",
+                    formRow: "2",
+                    formColumn: "2",
+                    tableColumn: "6",
+                    dataParent: "fluidBalance.table",
+                    fqn: "fluidBalance.table.fluidOut",
                     tableKey: "table"
                   }
                 ]
@@ -1056,6 +988,7 @@ export default function () {
     neurological: {
       pageTitle: "Neurological assessment",
       pageDataKey: "neurological",
+      generated: "2019-03-12T16:05:46-07:00",
       hasTable: true,
       tables: [
         {
@@ -1063,216 +996,204 @@ export default function () {
           addButtonText: "Add a neurological assessment",
           tableCells: [
             {
-              elementKey: "name",
-              fqn: "neurological.table.name",
-              inputType: "text",
               label: "Name",
-              tableColumn: "1",
-              formCss: "user_name",
-              formColumn: "1",
-              formRow: "1",
               pageDataKey: "neurological",
-              dataParent: "neurological.table",
               level2Key: "table",
-              page: "Neurological assessment",
-              tableKey: "table"
-            },
-            {
-              elementKey: "profession",
-              fqn: "neurological.table.profession",
+              elementKey: "name",
               inputType: "text",
-              label: "Profession",
-              tableColumn: "2",
-              formCss: "user_pro",
-              formColumn: "2",
               formRow: "1",
-              pageDataKey: "neurological",
-              dataParent: "neurological.table",
-              level2Key: "table",
-              page: "Neurological assessment",
-              tableKey: "table"
-            },
-            {
-              elementKey: "day",
-              fqn: "neurological.table.day",
-              inputType: "day",
-              label: "Day",
-              tableColumn: "3",
-              formCss: "user_day",
-              formColumn: "3",
-              formRow: "1",
-              pageDataKey: "neurological",
-              dataParent: "neurological.table",
-              level2Key: "table",
-              page: "Neurological assessment",
-              tableKey: "table"
-            },
-            {
-              elementKey: "time",
-              fqn: "neurological.table.time",
-              inputType: "time",
-              label: "Time",
-              tableColumn: "4",
-              formCss: "user_time",
-              formColumn: "4",
-              formRow: "1",
-              pageDataKey: "neurological",
-              dataParent: "neurological.table",
-              level2Key: "table",
-              page: "Neurological assessment",
-              tableKey: "table"
-            },
-            {
-              elementKey: "status",
-              fqn: "neurological.table.status",
-              inputType: "fieldset",
-              label: "Status",
-              tableColumn: "5",
               formColumn: "1",
-              formRow: "2",
-              pageDataKey: "neurological",
+              tableColumn: "1",
               dataParent: "neurological.table",
+              fqn: "neurological.table.name",
+              tableKey: "table"
+            },
+            {
+              label: "Profession",
+              pageDataKey: "neurological",
               level2Key: "table",
-              page: "Neurological assessment",
+              elementKey: "profession",
+              inputType: "text",
+              formRow: "1",
+              formColumn: "2",
+              tableColumn: "2",
+              dataParent: "neurological.table",
+              fqn: "neurological.table.profession",
+              tableKey: "table"
+            },
+            {
+              label: "Day",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              elementKey: "day",
+              inputType: "day",
+              formRow: "1",
+              formColumn: "3",
+              tableColumn: "3",
+              dataParent: "neurological.table",
+              fqn: "neurological.table.day",
+              tableKey: "table"
+            },
+            {
+              label: "Time",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              elementKey: "time",
+              inputType: "time",
+              formRow: "1",
+              formColumn: "4",
+              tableColumn: "4",
+              dataParent: "neurological.table",
+              fqn: "neurological.table.time",
+              tableKey: "table"
+            },
+            {
+              label: "Status",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              elementKey: "status",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "1",
+              tableColumn: "5",
+              dataParent: "neurological.table",
+              fqn: "neurological.table.status",
               containerType: "fieldset",
               containerKey: "status",
               tableCss: "hide-table-element",
               tableKey: "table"
             },
             {
-              elementKey: "alert",
-              fqn: "neurological.table.status.alert",
-              inputType: "checkbox",
               label: "Alert",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              level3Key: "status",
+              elementKey: "alert",
+              inputType: "checkbox",
               tableColumn: "6",
               fsetRow: "1",
               fsetCol: "1",
-              pageDataKey: "neurological",
               dataParent: "neurological.table.status",
-              level2Key: "table",
-              page: "Neurological assessment",
+              fqn: "neurological.table.status.alert",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "oriented",
-              fqn: "neurological.table.status.oriented",
-              inputType: "checkbox",
               label: "Oriented",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              level3Key: "status",
+              elementKey: "oriented",
+              inputType: "checkbox",
               tableColumn: "7",
               fsetRow: "2",
               fsetCol: "1",
-              pageDataKey: "neurological",
               dataParent: "neurological.table.status",
-              level2Key: "table",
-              page: "Neurological assessment",
+              fqn: "neurological.table.status.oriented",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "confused",
-              fqn: "neurological.table.status.confused",
-              inputType: "checkbox",
               label: "Confused",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              level3Key: "status",
+              elementKey: "confused",
+              inputType: "checkbox",
               tableColumn: "8",
               fsetRow: "3",
               fsetCol: "1",
-              pageDataKey: "neurological",
               dataParent: "neurological.table.status",
-              level2Key: "table",
-              page: "Neurological assessment",
+              fqn: "neurological.table.status.confused",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "drowsy",
-              fqn: "neurological.table.status.drowsy",
-              inputType: "checkbox",
               label: "Drowsy",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              level3Key: "status",
+              elementKey: "drowsy",
+              inputType: "checkbox",
               tableColumn: "9",
               fsetRow: "4",
               fsetCol: "1",
-              pageDataKey: "neurological",
               dataParent: "neurological.table.status",
-              level2Key: "table",
-              page: "Neurological assessment",
+              fqn: "neurological.table.status.drowsy",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "unresponsive",
-              fqn: "neurological.table.status.unresponsive",
-              inputType: "checkbox",
               label: "Unresponsive",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              level3Key: "status",
+              elementKey: "unresponsive",
+              inputType: "checkbox",
               tableColumn: "10",
               fsetRow: "5",
               fsetCol: "1",
-              pageDataKey: "neurological",
               dataParent: "neurological.table.status",
-              level2Key: "table",
-              page: "Neurological assessment",
+              fqn: "neurological.table.status.unresponsive",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "dizziness",
-              fqn: "neurological.table.status.dizziness",
-              inputType: "checkbox",
               label: "Dizziness",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              level3Key: "status",
+              elementKey: "dizziness",
+              inputType: "checkbox",
               tableColumn: "11",
               fsetRow: "6",
               fsetCol: "1",
-              pageDataKey: "neurological",
               dataParent: "neurological.table.status",
-              level2Key: "table",
-              page: "Neurological assessment",
+              fqn: "neurological.table.status.dizziness",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "blurredVision",
-              fqn: "neurological.table.status.blurredVision",
-              inputType: "checkbox",
               label: "Blurred vision",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              level3Key: "status",
+              elementKey: "blurredVision",
+              inputType: "checkbox",
               tableColumn: "12",
               fsetRow: "7",
               fsetCol: "1",
-              pageDataKey: "neurological",
               dataParent: "neurological.table.status",
-              level2Key: "table",
-              page: "Neurological assessment",
+              fqn: "neurological.table.status.blurredVision",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "glasgowComaScale",
-              fqn: "neurological.table.glasgowComaScale",
-              inputType: "fieldset",
               label: "Glasgow Coma Scale",
-              tableColumn: "13",
-              formColumn: "3",
-              formRow: "2",
               pageDataKey: "neurological",
-              dataParent: "neurological.table",
               level2Key: "table",
-              page: "Neurological assessment",
+              elementKey: "glasgowComaScale",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "3",
+              tableColumn: "13",
+              dataParent: "neurological.table",
+              fqn: "neurological.table.glasgowComaScale",
               containerType: "fieldset",
               containerKey: "glasgowComaScale",
               tableCss: "hide-table-element",
               tableKey: "table"
             },
             {
-              elementKey: "eyeOpening",
-              fqn: "neurological.table.glasgowComaScale.eyeOpening",
-              inputType: "select",
               label: "Eye opening",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              level3Key: "glasgowComaScale",
+              elementKey: "eyeOpening",
+              inputType: "select",
               tableColumn: "14",
               fsetRow: "1",
               fsetCol: "1",
-              pageDataKey: "neurological",
-              dataParent: "neurological.table.glasgowComaScale",
-              level2Key: "table",
-              page: "Neurological assessment",
               options: [
                 {
                   text: "Spontaneous"
@@ -1290,21 +1211,21 @@ export default function () {
                   text: "Non testable"
                 }
               ],
+              dataParent: "neurological.table.glasgowComaScale",
+              fqn: "neurological.table.glasgowComaScale.eyeOpening",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "verbalResponse",
-              fqn: "neurological.table.glasgowComaScale.verbalResponse",
-              inputType: "select",
               label: "Verbal response",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              level3Key: "glasgowComaScale",
+              elementKey: "verbalResponse",
+              inputType: "select",
               tableColumn: "15",
               fsetRow: "2",
               fsetCol: "1",
-              pageDataKey: "neurological",
-              dataParent: "neurological.table.glasgowComaScale",
-              level2Key: "table",
-              page: "Neurological assessment",
               options: [
                 {
                   text: "Oriented"
@@ -1325,21 +1246,21 @@ export default function () {
                   text: "Non testable"
                 }
               ],
+              dataParent: "neurological.table.glasgowComaScale",
+              fqn: "neurological.table.glasgowComaScale.verbalResponse",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "bestMotorResponse",
-              fqn: "neurological.table.glasgowComaScale.bestMotorResponse",
-              inputType: "select",
               label: "Best motor response",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              level3Key: "glasgowComaScale",
+              elementKey: "bestMotorResponse",
+              inputType: "select",
               tableColumn: "16",
               fsetRow: "3",
               fsetCol: "1",
-              pageDataKey: "neurological",
-              dataParent: "neurological.table.glasgowComaScale",
-              level2Key: "table",
-              page: "Neurological assessment",
               options: [
                 {
                   text: "Obeys commands"
@@ -1360,36 +1281,36 @@ export default function () {
                   text: "Non testable"
                 }
               ],
+              dataParent: "neurological.table.glasgowComaScale",
+              fqn: "neurological.table.glasgowComaScale.bestMotorResponse",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "totalGlasgow",
-              fqn: "neurological.table.glasgowComaScale.totalGlasgow",
-              inputType: "calculated",
               label: "Total",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              level3Key: "glasgowComaScale",
+              elementKey: "totalGlasgow",
+              inputType: "calculated",
               tableColumn: "17",
               fsetRow: "4",
               fsetCol: "1",
-              pageDataKey: "neurological",
               dataParent: "neurological.table.glasgowComaScale",
-              level2Key: "table",
-              page: "Neurological assessment",
+              fqn: "neurological.table.glasgowComaScale.totalGlasgow",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "loss",
-              fqn: "neurological.table.glasgowComaScale.loss",
-              inputType: "select",
               label: "Loss of conciousness",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              level3Key: "glasgowComaScale",
+              elementKey: "loss",
+              inputType: "select",
               tableColumn: "18",
               fsetRow: "1",
               fsetCol: "1",
-              pageDataKey: "neurological",
-              dataParent: "neurological.table.glasgowComaScale",
-              level2Key: "table",
-              page: "Neurological assessment",
               options: [
                 {
                   text: "No"
@@ -1401,54 +1322,52 @@ export default function () {
                   text: "Unknown"
                 }
               ],
+              dataParent: "neurological.table.glasgowComaScale",
+              fqn: "neurological.table.glasgowComaScale.loss",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "pupils",
-              fqn: "neurological.table.pupils",
-              inputType: "fieldRowSet",
               label: "Pupils",
-              tableColumn: "18",
-              formCss: "fieldset_row",
-              formColumn: "1",
-              formRow: "3",
               pageDataKey: "neurological",
-              dataParent: "neurological.table",
               level2Key: "table",
-              page: "Neurological assessment",
+              elementKey: "pupils",
+              inputType: "fieldRowSet",
+              formRow: "3",
+              formColumn: "1",
+              tableColumn: "18",
+              dataParent: "neurological.table",
+              fqn: "neurological.table.pupils",
               containerType: "fieldRowSet",
               containerKey: "pupils",
               tableCss: "hide-table-element",
               tableKey: "table"
             },
             {
-              elementKey: "duration",
-              fqn: "neurological.table.glasgowComaScale.duration",
-              inputType: "text",
               label: "Duration",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              level3Key: "glasgowComaScale",
+              elementKey: "duration",
+              inputType: "text",
               tableColumn: "19",
               fsetRow: "2",
               fsetCol: "1",
-              pageDataKey: "neurological",
               dataParent: "neurological.table.glasgowComaScale",
-              level2Key: "table",
-              page: "Neurological assessment",
+              fqn: "neurological.table.glasgowComaScale.duration",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "leftPupilSize",
-              fqn: "neurological.table.pupils.leftPupilSize",
-              inputType: "select",
               label: "Left pupil size",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              level3Key: "pupils",
+              elementKey: "leftPupilSize",
+              inputType: "select",
               tableColumn: "19",
               fsetRow: "1",
               fsetCol: "1",
-              pageDataKey: "neurological",
-              dataParent: "neurological.table.pupils",
-              level2Key: "table",
-              page: "Neurological assessment",
               options: [
                 {
                   text: "1"
@@ -1478,21 +1397,21 @@ export default function () {
                   text: "9"
                 }
               ],
+              dataParent: "neurological.table.pupils",
+              fqn: "neurological.table.pupils.leftPupilSize",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "leftPupilResponseToLight",
-              fqn: "neurological.table.pupils.leftPupilResponseToLight",
-              inputType: "select",
               label: "Left pupil response to light",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              level3Key: "pupils",
+              elementKey: "leftPupilResponseToLight",
+              inputType: "select",
               tableColumn: "20",
               fsetRow: "2",
               fsetCol: "1",
-              pageDataKey: "neurological",
-              dataParent: "neurological.table.pupils",
-              level2Key: "table",
-              page: "Neurological assessment",
               options: [
                 {
                   text: "Brisk"
@@ -1504,21 +1423,21 @@ export default function () {
                   text: "Fixed"
                 }
               ],
+              dataParent: "neurological.table.pupils",
+              fqn: "neurological.table.pupils.leftPupilResponseToLight",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "rightPupilSize",
-              fqn: "neurological.table.pupils.rightPupilSize",
-              inputType: "select",
               label: "Right pupil size",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              level3Key: "pupils",
+              elementKey: "rightPupilSize",
+              inputType: "select",
               tableColumn: "21",
               fsetRow: "1",
               fsetCol: "2",
-              pageDataKey: "neurological",
-              dataParent: "neurological.table.pupils",
-              level2Key: "table",
-              page: "Neurological assessment",
               options: [
                 {
                   text: "1"
@@ -1548,20 +1467,20 @@ export default function () {
                   text: "9"
                 }
               ],
+              dataParent: "neurological.table.pupils",
+              fqn: "neurological.table.pupils.rightPupilSize",
               tableKey: "table",
               formColumn: "2"
             },
             {
-              elementKey: "rightPupilResponseToLight",
-              fqn: "neurological.table.pupils.rightPupilResponseToLight",
-              inputType: "select",
               label: "Right pupil response to light",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              level3Key: "pupils",
+              elementKey: "rightPupilResponseToLight",
+              inputType: "select",
               tableColumn: "22",
               fsetRow: "2",
-              pageDataKey: "neurological",
-              dataParent: "neurological.table.pupils",
-              level2Key: "table",
-              page: "Neurological assessment",
               options: [
                 {
                   text: "Brisk"
@@ -1573,20 +1492,20 @@ export default function () {
                   text: "Fixed"
                 }
               ],
+              dataParent: "neurological.table.pupils",
+              fqn: "neurological.table.pupils.rightPupilResponseToLight",
               tableKey: "table"
             },
             {
-              elementKey: "bothPupils",
-              fqn: "neurological.table.pupils.bothPupils",
-              inputType: "select",
               label: "Both pupils",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              level3Key: "pupils",
+              elementKey: "bothPupils",
+              inputType: "select",
               tableColumn: "23",
               fsetRow: "1",
               fsetCol: "3",
-              pageDataKey: "neurological",
-              dataParent: "neurological.table.pupils",
-              level2Key: "table",
-              page: "Neurological assessment",
               options: [
                 {
                   text: "Equal"
@@ -1595,55 +1514,52 @@ export default function () {
                   text: "Unequal"
                 }
               ],
+              dataParent: "neurological.table.pupils",
+              fqn: "neurological.table.pupils.bothPupils",
               tableKey: "table",
               formColumn: "3"
             },
             {
+              pageDataKey: "neurological",
+              level2Key: "table",
+              level3Key: "pupils",
               elementKey: "aSpacer",
-              fqn: "neurological.table.pupils.aSpacer",
               inputType: "spacer",
               tableColumn: "24",
               fsetRow: "2",
               fsetCol: "2",
-              pageDataKey: "neurological",
               dataParent: "neurological.table.pupils",
-              level2Key: "table",
-              page: "Neurological assessment",
+              fqn: "neurological.table.pupils.aSpacer",
               tableCss: "hide-table-element",
               tableKey: "table",
               formColumn: "2"
             },
             {
-              elementKey: "stroke",
-              fqn: "neurological.table.stroke",
-              inputType: "fieldRowSet",
               label: "Stroke Assessment",
-              tableColumn: "24",
-              formCss: "fieldset_row",
-              formColumn: "1",
-              formRow: "4",
               pageDataKey: "neurological",
-              dataParent: "neurological.table",
               level2Key: "table",
-              page: "Neurological assessment",
+              elementKey: "stroke",
+              inputType: "fieldRowSet",
+              formRow: "4",
+              formColumn: "1",
+              tableColumn: "24",
+              dataParent: "neurological.table",
+              fqn: "neurological.table.stroke",
               containerType: "fieldRowSet",
               containerKey: "stroke",
               tableCss: "hide-table-element",
               tableKey: "table"
             },
             {
-              elementKey: "levelOfConciousness",
-              fqn: "neurological.table.stroke.levelOfConciousness",
-              inputType: "select",
               label: "Level of conciousness",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              level3Key: "stroke",
+              elementKey: "levelOfConciousness",
+              inputType: "select",
               tableColumn: "25",
               fsetRow: "1",
               fsetCol: "1",
-              formCss: "is-half",
-              pageDataKey: "neurological",
-              dataParent: "neurological.table.stroke",
-              level2Key: "table",
-              page: "Neurological assessment",
               options: [
                 {
                   text: "0 = Alert; keenly responsive"
@@ -1658,22 +1574,21 @@ export default function () {
                   text: "3 = Unresponsive or responds only with reflex"
                 }
               ],
+              dataParent: "neurological.table.stroke",
+              fqn: "neurological.table.stroke.levelOfConciousness",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "bestGaze",
-              fqn: "neurological.table.stroke.bestGaze",
-              inputType: "select",
               label: "Best gaze",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              level3Key: "stroke",
+              elementKey: "bestGaze",
+              inputType: "select",
               tableColumn: "26",
               fsetRow: "1",
               fsetCol: "2",
-              formCss: "is-half",
-              pageDataKey: "neurological",
-              dataParent: "neurological.table.stroke",
-              level2Key: "table",
-              page: "Neurological assessment",
               options: [
                 {
                   text: "0 = Normal"
@@ -1685,22 +1600,21 @@ export default function () {
                   text: "2 = Forced deviation"
                 }
               ],
+              dataParent: "neurological.table.stroke",
+              fqn: "neurological.table.stroke.bestGaze",
               tableKey: "table",
               formColumn: "2"
             },
             {
-              elementKey: "levelOfConciousnessQuestions",
-              fqn: "neurological.table.stroke.levelOfConciousnessQuestions",
-              inputType: "select",
               label: "Level of conciousness questions",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              level3Key: "stroke",
+              elementKey: "levelOfConciousnessQuestions",
+              inputType: "select",
               tableColumn: "27",
               fsetRow: "2",
               fsetCol: "1",
-              formCss: "is-half",
-              pageDataKey: "neurological",
-              dataParent: "neurological.table.stroke",
-              level2Key: "table",
-              page: "Neurological assessment",
               options: [
                 {
                   text: "0 = answers two questions correctly"
@@ -1712,22 +1626,21 @@ export default function () {
                   text: "2 = Answers neither question correctly"
                 }
               ],
+              dataParent: "neurological.table.stroke",
+              fqn: "neurological.table.stroke.levelOfConciousnessQuestions",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "visual",
-              fqn: "neurological.table.stroke.visual",
-              inputType: "select",
               label: "Visual",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              level3Key: "stroke",
+              elementKey: "visual",
+              inputType: "select",
               tableColumn: "28",
               fsetRow: "2",
               fsetCol: "2",
-              formCss: "is-half",
-              pageDataKey: "neurological",
-              dataParent: "neurological.table.stroke",
-              level2Key: "table",
-              page: "Neurological assessment",
               options: [
                 {
                   text: "0 = No visual loss"
@@ -1742,22 +1655,21 @@ export default function () {
                   text: "3 = Complete paralysis of one or both sides"
                 }
               ],
+              dataParent: "neurological.table.stroke",
+              fqn: "neurological.table.stroke.visual",
               tableKey: "table",
               formColumn: "2"
             },
             {
-              elementKey: "levelOfConciousnessCommands",
-              fqn: "neurological.table.stroke.levelOfConciousnessCommands",
-              inputType: "select",
               label: "Level of conciousness commands",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              level3Key: "stroke",
+              elementKey: "levelOfConciousnessCommands",
+              inputType: "select",
               tableColumn: "29",
               fsetRow: "3",
               fsetCol: "1",
-              formCss: "is-half",
-              pageDataKey: "neurological",
-              dataParent: "neurological.table.stroke",
-              level2Key: "table",
-              page: "Neurological assessment",
               options: [
                 {
                   text: "0 = Performs both tasks correctly"
@@ -1769,22 +1681,21 @@ export default function () {
                   text: "2 = Performs neither task correctly"
                 }
               ],
+              dataParent: "neurological.table.stroke",
+              fqn: "neurological.table.stroke.levelOfConciousnessCommands",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "facialPalsy",
-              fqn: "neurological.table.stroke.facialPalsy",
-              inputType: "select",
               label: "Facial palsy",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              level3Key: "stroke",
+              elementKey: "facialPalsy",
+              inputType: "select",
               tableColumn: "30",
               fsetRow: "3",
               fsetCol: "2",
-              formCss: "is-half",
-              pageDataKey: "neurological",
-              dataParent: "neurological.table.stroke",
-              level2Key: "table",
-              page: "Neurological assessment",
               options: [
                 {
                   text: "0 = Normal symmetric movements"
@@ -1799,22 +1710,21 @@ export default function () {
                   text: "3 = Complete paralysis of one or both sides"
                 }
               ],
+              dataParent: "neurological.table.stroke",
+              fqn: "neurological.table.stroke.facialPalsy",
               tableKey: "table",
               formColumn: "2"
             },
             {
-              elementKey: "motorLeftArm",
-              fqn: "neurological.table.stroke.motorLeftArm",
-              inputType: "select",
               label: "Motor - left arm",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              level3Key: "stroke",
+              elementKey: "motorLeftArm",
+              inputType: "select",
               tableColumn: "31",
               fsetRow: "4",
               fsetCol: "1",
-              formCss: "is-half",
-              pageDataKey: "neurological",
-              dataParent: "neurological.table.stroke",
-              level2Key: "table",
-              page: "Neurological assessment",
               options: [
                 {
                   text: "0 = No drift"
@@ -1832,22 +1742,21 @@ export default function () {
                   text: "4 = No movement"
                 }
               ],
+              dataParent: "neurological.table.stroke",
+              fqn: "neurological.table.stroke.motorLeftArm",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "sensory",
-              fqn: "neurological.table.stroke.sensory",
-              inputType: "select",
               label: "Sensory",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              level3Key: "stroke",
+              elementKey: "sensory",
+              inputType: "select",
               tableColumn: "32",
               fsetRow: "4",
               fsetCol: "2",
-              formCss: "is-half",
-              pageDataKey: "neurological",
-              dataParent: "neurological.table.stroke",
-              level2Key: "table",
-              page: "Neurological assessment",
               options: [
                 {
                   text: "0 = Normal; no sensory loss"
@@ -1859,22 +1768,21 @@ export default function () {
                   text: "2 = Severe to total sensory loss"
                 }
               ],
+              dataParent: "neurological.table.stroke",
+              fqn: "neurological.table.stroke.sensory",
               tableKey: "table",
               formColumn: "2"
             },
             {
-              elementKey: "motorRightArm",
-              fqn: "neurological.table.stroke.motorRightArm",
-              inputType: "select",
               label: "Motor - right arm",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              level3Key: "stroke",
+              elementKey: "motorRightArm",
+              inputType: "select",
               tableColumn: "33",
               fsetRow: "5",
               fsetCol: "1",
-              formCss: "is-half",
-              pageDataKey: "neurological",
-              dataParent: "neurological.table.stroke",
-              level2Key: "table",
-              page: "Neurological assessment",
               options: [
                 {
                   text: "0 = No drift"
@@ -1892,22 +1800,21 @@ export default function () {
                   text: "4 = No movement"
                 }
               ],
+              dataParent: "neurological.table.stroke",
+              fqn: "neurological.table.stroke.motorRightArm",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "bestLanguage",
-              fqn: "neurological.table.stroke.bestLanguage",
-              inputType: "select",
               label: "Best language",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              level3Key: "stroke",
+              elementKey: "bestLanguage",
+              inputType: "select",
               tableColumn: "34",
               fsetRow: "5",
               fsetCol: "2",
-              formCss: "is-half",
-              pageDataKey: "neurological",
-              dataParent: "neurological.table.stroke",
-              level2Key: "table",
-              page: "Neurological assessment",
               options: [
                 {
                   text: "0 = No aphasia; normal"
@@ -1922,22 +1829,21 @@ export default function () {
                   text: "3 = Mute, global aphasia"
                 }
               ],
+              dataParent: "neurological.table.stroke",
+              fqn: "neurological.table.stroke.bestLanguage",
               tableKey: "table",
               formColumn: "2"
             },
             {
-              elementKey: "motorLeftLeg",
-              fqn: "neurological.table.stroke.motorLeftLeg",
-              inputType: "select",
               label: "Motor - left leg",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              level3Key: "stroke",
+              elementKey: "motorLeftLeg",
+              inputType: "select",
               tableColumn: "35",
               fsetRow: "6",
               fsetCol: "1",
-              formCss: "is-half",
-              pageDataKey: "neurological",
-              dataParent: "neurological.table.stroke",
-              level2Key: "table",
-              page: "Neurological assessment",
               options: [
                 {
                   text: "0 = No drift"
@@ -1955,22 +1861,21 @@ export default function () {
                   text: "4 = No movement"
                 }
               ],
+              dataParent: "neurological.table.stroke",
+              fqn: "neurological.table.stroke.motorLeftLeg",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "dysarthria",
-              fqn: "neurological.table.stroke.dysarthria",
-              inputType: "select",
               label: "Dysarthria",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              level3Key: "stroke",
+              elementKey: "dysarthria",
+              inputType: "select",
               tableColumn: "36",
               fsetRow: "6",
               fsetCol: "2",
-              formCss: "is-half",
-              pageDataKey: "neurological",
-              dataParent: "neurological.table.stroke",
-              level2Key: "table",
-              page: "Neurological assessment",
               options: [
                 {
                   text: "0 = Normal"
@@ -1985,22 +1890,21 @@ export default function () {
                   text: "3 = Mute, global aphasia"
                 }
               ],
+              dataParent: "neurological.table.stroke",
+              fqn: "neurological.table.stroke.dysarthria",
               tableKey: "table",
               formColumn: "2"
             },
             {
-              elementKey: "motorRightLeg",
-              fqn: "neurological.table.stroke.motorRightLeg",
-              inputType: "select",
               label: "Motor - right leg",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              level3Key: "stroke",
+              elementKey: "motorRightLeg",
+              inputType: "select",
               tableColumn: "37",
               fsetRow: "7",
               fsetCol: "1",
-              formCss: "is-half",
-              pageDataKey: "neurological",
-              dataParent: "neurological.table.stroke",
-              level2Key: "table",
-              page: "Neurological assessment",
               options: [
                 {
                   text: "0 = No drift"
@@ -2018,22 +1922,21 @@ export default function () {
                   text: "4 = No movement"
                 }
               ],
+              dataParent: "neurological.table.stroke",
+              fqn: "neurological.table.stroke.motorRightLeg",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "extinctionAndInattention",
-              fqn: "neurological.table.stroke.extinctionAndInattention",
-              inputType: "select",
               label: "Extinction and inattention",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              level3Key: "stroke",
+              elementKey: "extinctionAndInattention",
+              inputType: "select",
               tableColumn: "38",
               fsetRow: "7",
               fsetCol: "2",
-              formCss: "is-half",
-              pageDataKey: "neurological",
-              dataParent: "neurological.table.stroke",
-              level2Key: "table",
-              page: "Neurological assessment",
               options: [
                 {
                   text: "0 = No abnormality"
@@ -2045,22 +1948,21 @@ export default function () {
                   text: "2 = Profound hemi-inattention or extinction"
                 }
               ],
+              dataParent: "neurological.table.stroke",
+              fqn: "neurological.table.stroke.extinctionAndInattention",
               tableKey: "table",
               formColumn: "2"
             },
             {
-              elementKey: "limbAtaxia",
-              fqn: "neurological.table.stroke.limbAtaxia",
-              inputType: "select",
               label: "Limb ataxia",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              level3Key: "stroke",
+              elementKey: "limbAtaxia",
+              inputType: "select",
               tableColumn: "39",
               fsetRow: "8",
               fsetCol: "1",
-              formCss: "is-half",
-              pageDataKey: "neurological",
-              dataParent: "neurological.table.stroke",
-              level2Key: "table",
-              page: "Neurological assessment",
               options: [
                 {
                   text: "0 = Absent"
@@ -2072,38 +1974,36 @@ export default function () {
                   text: "2 = Present in two limbs"
                 }
               ],
+              dataParent: "neurological.table.stroke",
+              fqn: "neurological.table.stroke.limbAtaxia",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "comments",
-              fqn: "neurological.table.comments",
-              inputType: "textarea",
               label: "Comments",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              elementKey: "comments",
+              inputType: "textarea",
               tableColumn: "40",
               fsetRow: "9",
               fsetCol: "1",
-              formCss: "is-two-thirds",
-              pageDataKey: "neurological",
               dataParent: "neurological.table",
-              level2Key: "table",
-              page: "Neurological assessment",
+              fqn: "neurological.table.comments",
               tableKey: "table"
             },
             {
-              elementKey: "resources",
-              fqn: "neurological.table.resources",
-              inputType: "form-label",
               label: "<b>Resources</b><p>Morse Fall Score <a target=\'_blank\' href=\'https://google.ca\'>external link</a></p><p>Mini-mental state examination (MMSE) <a target=\'_blank\' href=\'https://google.ca\'>external link</a></p>",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              elementKey: "resources",
+              inputType: "form-label",
+              formOption: "withExternalUrls",
               tableColumn: "41",
               fsetRow: "9",
               fsetCol: "2",
-              formCss: "is-one-third",
-              formOption: "withExternalUrls",
-              pageDataKey: "neurological",
               dataParent: "neurological.table",
-              level2Key: "table",
-              page: "Neurological assessment",
+              fqn: "neurological.table.resources",
               tableCss: "hide-table-element",
               tableKey: "table"
             }
@@ -2114,63 +2014,55 @@ export default function () {
                 formRow: "1",
                 elements: [
                   {
-                    elementKey: "name",
-                    fqn: "neurological.table.name",
-                    inputType: "text",
                     label: "Name",
-                    tableColumn: "1",
-                    formCss: "user_name",
-                    formColumn: "1",
-                    formRow: "1",
                     pageDataKey: "neurological",
-                    dataParent: "neurological.table",
                     level2Key: "table",
-                    page: "Neurological assessment",
-                    tableKey: "table"
-                  },
-                  {
-                    elementKey: "profession",
-                    fqn: "neurological.table.profession",
+                    elementKey: "name",
                     inputType: "text",
+                    formRow: "1",
+                    formColumn: "1",
+                    tableColumn: "1",
+                    dataParent: "neurological.table",
+                    fqn: "neurological.table.name",
+                    tableKey: "table"
+                  },
+                  {
                     label: "Profession",
-                    tableColumn: "2",
-                    formCss: "user_pro",
+                    pageDataKey: "neurological",
+                    level2Key: "table",
+                    elementKey: "profession",
+                    inputType: "text",
+                    formRow: "1",
                     formColumn: "2",
-                    formRow: "1",
-                    pageDataKey: "neurological",
+                    tableColumn: "2",
                     dataParent: "neurological.table",
-                    level2Key: "table",
-                    page: "Neurological assessment",
+                    fqn: "neurological.table.profession",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "day",
-                    fqn: "neurological.table.day",
-                    inputType: "day",
                     label: "Day",
-                    tableColumn: "3",
-                    formCss: "user_day",
-                    formColumn: "3",
-                    formRow: "1",
                     pageDataKey: "neurological",
-                    dataParent: "neurological.table",
                     level2Key: "table",
-                    page: "Neurological assessment",
+                    elementKey: "day",
+                    inputType: "day",
+                    formRow: "1",
+                    formColumn: "3",
+                    tableColumn: "3",
+                    dataParent: "neurological.table",
+                    fqn: "neurological.table.day",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "time",
-                    fqn: "neurological.table.time",
-                    inputType: "time",
                     label: "Time",
-                    tableColumn: "4",
-                    formCss: "user_time",
-                    formColumn: "4",
-                    formRow: "1",
                     pageDataKey: "neurological",
-                    dataParent: "neurological.table",
                     level2Key: "table",
-                    page: "Neurological assessment",
+                    elementKey: "time",
+                    inputType: "time",
+                    formRow: "1",
+                    formColumn: "4",
+                    tableColumn: "4",
+                    dataParent: "neurological.table",
+                    fqn: "neurological.table.time",
                     tableKey: "table"
                   }
                 ]
@@ -2179,17 +2071,16 @@ export default function () {
                 formRow: "2",
                 elements: [
                   {
-                    elementKey: "status",
-                    fqn: "neurological.table.status",
-                    inputType: "fieldset",
                     label: "Status",
-                    tableColumn: "5",
-                    formColumn: "1",
-                    formRow: "2",
                     pageDataKey: "neurological",
-                    dataParent: "neurological.table",
                     level2Key: "table",
-                    page: "Neurological assessment",
+                    elementKey: "status",
+                    inputType: "fieldset",
+                    formRow: "2",
+                    formColumn: "1",
+                    tableColumn: "5",
+                    dataParent: "neurological.table",
+                    fqn: "neurological.table.status",
                     containerType: "fieldset",
                     containerKey: "status",
                     tableCss: "hide-table-element",
@@ -2200,17 +2091,17 @@ export default function () {
                           formRow: "1",
                           elements: [
                             {
-                              elementKey: "alert",
-                              fqn: "neurological.table.status.alert",
-                              inputType: "checkbox",
                               label: "Alert",
+                              pageDataKey: "neurological",
+                              level2Key: "table",
+                              level3Key: "status",
+                              elementKey: "alert",
+                              inputType: "checkbox",
                               tableColumn: "6",
                               fsetRow: "1",
                               fsetCol: "1",
-                              pageDataKey: "neurological",
                               dataParent: "neurological.table.status",
-                              level2Key: "table",
-                              page: "Neurological assessment",
+                              fqn: "neurological.table.status.alert",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -2220,17 +2111,17 @@ export default function () {
                           formRow: "2",
                           elements: [
                             {
-                              elementKey: "oriented",
-                              fqn: "neurological.table.status.oriented",
-                              inputType: "checkbox",
                               label: "Oriented",
+                              pageDataKey: "neurological",
+                              level2Key: "table",
+                              level3Key: "status",
+                              elementKey: "oriented",
+                              inputType: "checkbox",
                               tableColumn: "7",
                               fsetRow: "2",
                               fsetCol: "1",
-                              pageDataKey: "neurological",
                               dataParent: "neurological.table.status",
-                              level2Key: "table",
-                              page: "Neurological assessment",
+                              fqn: "neurological.table.status.oriented",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -2240,17 +2131,17 @@ export default function () {
                           formRow: "3",
                           elements: [
                             {
-                              elementKey: "confused",
-                              fqn: "neurological.table.status.confused",
-                              inputType: "checkbox",
                               label: "Confused",
+                              pageDataKey: "neurological",
+                              level2Key: "table",
+                              level3Key: "status",
+                              elementKey: "confused",
+                              inputType: "checkbox",
                               tableColumn: "8",
                               fsetRow: "3",
                               fsetCol: "1",
-                              pageDataKey: "neurological",
                               dataParent: "neurological.table.status",
-                              level2Key: "table",
-                              page: "Neurological assessment",
+                              fqn: "neurological.table.status.confused",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -2260,17 +2151,17 @@ export default function () {
                           formRow: "4",
                           elements: [
                             {
-                              elementKey: "drowsy",
-                              fqn: "neurological.table.status.drowsy",
-                              inputType: "checkbox",
                               label: "Drowsy",
+                              pageDataKey: "neurological",
+                              level2Key: "table",
+                              level3Key: "status",
+                              elementKey: "drowsy",
+                              inputType: "checkbox",
                               tableColumn: "9",
                               fsetRow: "4",
                               fsetCol: "1",
-                              pageDataKey: "neurological",
                               dataParent: "neurological.table.status",
-                              level2Key: "table",
-                              page: "Neurological assessment",
+                              fqn: "neurological.table.status.drowsy",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -2280,17 +2171,17 @@ export default function () {
                           formRow: "5",
                           elements: [
                             {
-                              elementKey: "unresponsive",
-                              fqn: "neurological.table.status.unresponsive",
-                              inputType: "checkbox",
                               label: "Unresponsive",
+                              pageDataKey: "neurological",
+                              level2Key: "table",
+                              level3Key: "status",
+                              elementKey: "unresponsive",
+                              inputType: "checkbox",
                               tableColumn: "10",
                               fsetRow: "5",
                               fsetCol: "1",
-                              pageDataKey: "neurological",
                               dataParent: "neurological.table.status",
-                              level2Key: "table",
-                              page: "Neurological assessment",
+                              fqn: "neurological.table.status.unresponsive",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -2300,17 +2191,17 @@ export default function () {
                           formRow: "6",
                           elements: [
                             {
-                              elementKey: "dizziness",
-                              fqn: "neurological.table.status.dizziness",
-                              inputType: "checkbox",
                               label: "Dizziness",
+                              pageDataKey: "neurological",
+                              level2Key: "table",
+                              level3Key: "status",
+                              elementKey: "dizziness",
+                              inputType: "checkbox",
                               tableColumn: "11",
                               fsetRow: "6",
                               fsetCol: "1",
-                              pageDataKey: "neurological",
                               dataParent: "neurological.table.status",
-                              level2Key: "table",
-                              page: "Neurological assessment",
+                              fqn: "neurological.table.status.dizziness",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -2320,17 +2211,17 @@ export default function () {
                           formRow: "7",
                           elements: [
                             {
-                              elementKey: "blurredVision",
-                              fqn: "neurological.table.status.blurredVision",
-                              inputType: "checkbox",
                               label: "Blurred vision",
+                              pageDataKey: "neurological",
+                              level2Key: "table",
+                              level3Key: "status",
+                              elementKey: "blurredVision",
+                              inputType: "checkbox",
                               tableColumn: "12",
                               fsetRow: "7",
                               fsetCol: "1",
-                              pageDataKey: "neurological",
                               dataParent: "neurological.table.status",
-                              level2Key: "table",
-                              page: "Neurological assessment",
+                              fqn: "neurological.table.status.blurredVision",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -2341,17 +2232,16 @@ export default function () {
                     }
                   },
                   {
-                    elementKey: "glasgowComaScale",
-                    fqn: "neurological.table.glasgowComaScale",
-                    inputType: "fieldset",
                     label: "Glasgow Coma Scale",
-                    tableColumn: "13",
-                    formColumn: "3",
-                    formRow: "2",
                     pageDataKey: "neurological",
-                    dataParent: "neurological.table",
                     level2Key: "table",
-                    page: "Neurological assessment",
+                    elementKey: "glasgowComaScale",
+                    inputType: "fieldset",
+                    formRow: "2",
+                    formColumn: "3",
+                    tableColumn: "13",
+                    dataParent: "neurological.table",
+                    fqn: "neurological.table.glasgowComaScale",
                     containerType: "fieldset",
                     containerKey: "glasgowComaScale",
                     tableCss: "hide-table-element",
@@ -2362,17 +2252,15 @@ export default function () {
                           formRow: "1",
                           elements: [
                             {
-                              elementKey: "eyeOpening",
-                              fqn: "neurological.table.glasgowComaScale.eyeOpening",
-                              inputType: "select",
                               label: "Eye opening",
+                              pageDataKey: "neurological",
+                              level2Key: "table",
+                              level3Key: "glasgowComaScale",
+                              elementKey: "eyeOpening",
+                              inputType: "select",
                               tableColumn: "14",
                               fsetRow: "1",
                               fsetCol: "1",
-                              pageDataKey: "neurological",
-                              dataParent: "neurological.table.glasgowComaScale",
-                              level2Key: "table",
-                              page: "Neurological assessment",
                               options: [
                                 {
                                   text: "Spontaneous"
@@ -2390,21 +2278,21 @@ export default function () {
                                   text: "Non testable"
                                 }
                               ],
+                              dataParent: "neurological.table.glasgowComaScale",
+                              fqn: "neurological.table.glasgowComaScale.eyeOpening",
                               tableKey: "table",
                               formColumn: "1"
                             },
                             {
-                              elementKey: "loss",
-                              fqn: "neurological.table.glasgowComaScale.loss",
-                              inputType: "select",
                               label: "Loss of conciousness",
+                              pageDataKey: "neurological",
+                              level2Key: "table",
+                              level3Key: "glasgowComaScale",
+                              elementKey: "loss",
+                              inputType: "select",
                               tableColumn: "18",
                               fsetRow: "1",
                               fsetCol: "1",
-                              pageDataKey: "neurological",
-                              dataParent: "neurological.table.glasgowComaScale",
-                              level2Key: "table",
-                              page: "Neurological assessment",
                               options: [
                                 {
                                   text: "No"
@@ -2416,6 +2304,8 @@ export default function () {
                                   text: "Unknown"
                                 }
                               ],
+                              dataParent: "neurological.table.glasgowComaScale",
+                              fqn: "neurological.table.glasgowComaScale.loss",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -2425,17 +2315,15 @@ export default function () {
                           formRow: "2",
                           elements: [
                             {
-                              elementKey: "verbalResponse",
-                              fqn: "neurological.table.glasgowComaScale.verbalResponse",
-                              inputType: "select",
                               label: "Verbal response",
+                              pageDataKey: "neurological",
+                              level2Key: "table",
+                              level3Key: "glasgowComaScale",
+                              elementKey: "verbalResponse",
+                              inputType: "select",
                               tableColumn: "15",
                               fsetRow: "2",
                               fsetCol: "1",
-                              pageDataKey: "neurological",
-                              dataParent: "neurological.table.glasgowComaScale",
-                              level2Key: "table",
-                              page: "Neurological assessment",
                               options: [
                                 {
                                   text: "Oriented"
@@ -2456,21 +2344,23 @@ export default function () {
                                   text: "Non testable"
                                 }
                               ],
+                              dataParent: "neurological.table.glasgowComaScale",
+                              fqn: "neurological.table.glasgowComaScale.verbalResponse",
                               tableKey: "table",
                               formColumn: "1"
                             },
                             {
-                              elementKey: "duration",
-                              fqn: "neurological.table.glasgowComaScale.duration",
-                              inputType: "text",
                               label: "Duration",
+                              pageDataKey: "neurological",
+                              level2Key: "table",
+                              level3Key: "glasgowComaScale",
+                              elementKey: "duration",
+                              inputType: "text",
                               tableColumn: "19",
                               fsetRow: "2",
                               fsetCol: "1",
-                              pageDataKey: "neurological",
                               dataParent: "neurological.table.glasgowComaScale",
-                              level2Key: "table",
-                              page: "Neurological assessment",
+                              fqn: "neurological.table.glasgowComaScale.duration",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -2480,17 +2370,15 @@ export default function () {
                           formRow: "3",
                           elements: [
                             {
-                              elementKey: "bestMotorResponse",
-                              fqn: "neurological.table.glasgowComaScale.bestMotorResponse",
-                              inputType: "select",
                               label: "Best motor response",
+                              pageDataKey: "neurological",
+                              level2Key: "table",
+                              level3Key: "glasgowComaScale",
+                              elementKey: "bestMotorResponse",
+                              inputType: "select",
                               tableColumn: "16",
                               fsetRow: "3",
                               fsetCol: "1",
-                              pageDataKey: "neurological",
-                              dataParent: "neurological.table.glasgowComaScale",
-                              level2Key: "table",
-                              page: "Neurological assessment",
                               options: [
                                 {
                                   text: "Obeys commands"
@@ -2511,6 +2399,8 @@ export default function () {
                                   text: "Non testable"
                                 }
                               ],
+                              dataParent: "neurological.table.glasgowComaScale",
+                              fqn: "neurological.table.glasgowComaScale.bestMotorResponse",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -2520,17 +2410,17 @@ export default function () {
                           formRow: "4",
                           elements: [
                             {
-                              elementKey: "totalGlasgow",
-                              fqn: "neurological.table.glasgowComaScale.totalGlasgow",
-                              inputType: "calculated",
                               label: "Total",
+                              pageDataKey: "neurological",
+                              level2Key: "table",
+                              level3Key: "glasgowComaScale",
+                              elementKey: "totalGlasgow",
+                              inputType: "calculated",
                               tableColumn: "17",
                               fsetRow: "4",
                               fsetCol: "1",
-                              pageDataKey: "neurological",
                               dataParent: "neurological.table.glasgowComaScale",
-                              level2Key: "table",
-                              page: "Neurological assessment",
+                              fqn: "neurological.table.glasgowComaScale.totalGlasgow",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -2546,18 +2436,16 @@ export default function () {
                 formRow: "3",
                 elements: [
                   {
-                    elementKey: "pupils",
-                    fqn: "neurological.table.pupils",
-                    inputType: "fieldRowSet",
                     label: "Pupils",
-                    tableColumn: "18",
-                    formCss: "fieldset_row",
-                    formColumn: "1",
-                    formRow: "3",
                     pageDataKey: "neurological",
-                    dataParent: "neurological.table",
                     level2Key: "table",
-                    page: "Neurological assessment",
+                    elementKey: "pupils",
+                    inputType: "fieldRowSet",
+                    formRow: "3",
+                    formColumn: "1",
+                    tableColumn: "18",
+                    dataParent: "neurological.table",
+                    fqn: "neurological.table.pupils",
                     containerType: "fieldRowSet",
                     containerKey: "pupils",
                     tableCss: "hide-table-element",
@@ -2568,17 +2456,15 @@ export default function () {
                           formRow: "1",
                           elements: [
                             {
-                              elementKey: "leftPupilSize",
-                              fqn: "neurological.table.pupils.leftPupilSize",
-                              inputType: "select",
                               label: "Left pupil size",
+                              pageDataKey: "neurological",
+                              level2Key: "table",
+                              level3Key: "pupils",
+                              elementKey: "leftPupilSize",
+                              inputType: "select",
                               tableColumn: "19",
                               fsetRow: "1",
                               fsetCol: "1",
-                              pageDataKey: "neurological",
-                              dataParent: "neurological.table.pupils",
-                              level2Key: "table",
-                              page: "Neurological assessment",
                               options: [
                                 {
                                   text: "1"
@@ -2608,21 +2494,21 @@ export default function () {
                                   text: "9"
                                 }
                               ],
+                              dataParent: "neurological.table.pupils",
+                              fqn: "neurological.table.pupils.leftPupilSize",
                               tableKey: "table",
                               formColumn: "1"
                             },
                             {
-                              elementKey: "rightPupilSize",
-                              fqn: "neurological.table.pupils.rightPupilSize",
-                              inputType: "select",
                               label: "Right pupil size",
+                              pageDataKey: "neurological",
+                              level2Key: "table",
+                              level3Key: "pupils",
+                              elementKey: "rightPupilSize",
+                              inputType: "select",
                               tableColumn: "21",
                               fsetRow: "1",
                               fsetCol: "2",
-                              pageDataKey: "neurological",
-                              dataParent: "neurological.table.pupils",
-                              level2Key: "table",
-                              page: "Neurological assessment",
                               options: [
                                 {
                                   text: "1"
@@ -2652,21 +2538,21 @@ export default function () {
                                   text: "9"
                                 }
                               ],
+                              dataParent: "neurological.table.pupils",
+                              fqn: "neurological.table.pupils.rightPupilSize",
                               tableKey: "table",
                               formColumn: "2"
                             },
                             {
-                              elementKey: "bothPupils",
-                              fqn: "neurological.table.pupils.bothPupils",
-                              inputType: "select",
                               label: "Both pupils",
+                              pageDataKey: "neurological",
+                              level2Key: "table",
+                              level3Key: "pupils",
+                              elementKey: "bothPupils",
+                              inputType: "select",
                               tableColumn: "23",
                               fsetRow: "1",
                               fsetCol: "3",
-                              pageDataKey: "neurological",
-                              dataParent: "neurological.table.pupils",
-                              level2Key: "table",
-                              page: "Neurological assessment",
                               options: [
                                 {
                                   text: "Equal"
@@ -2675,6 +2561,8 @@ export default function () {
                                   text: "Unequal"
                                 }
                               ],
+                              dataParent: "neurological.table.pupils",
+                              fqn: "neurological.table.pupils.bothPupils",
                               tableKey: "table",
                               formColumn: "3"
                             }
@@ -2684,17 +2572,15 @@ export default function () {
                           formRow: "2",
                           elements: [
                             {
-                              elementKey: "leftPupilResponseToLight",
-                              fqn: "neurological.table.pupils.leftPupilResponseToLight",
-                              inputType: "select",
                               label: "Left pupil response to light",
+                              pageDataKey: "neurological",
+                              level2Key: "table",
+                              level3Key: "pupils",
+                              elementKey: "leftPupilResponseToLight",
+                              inputType: "select",
                               tableColumn: "20",
                               fsetRow: "2",
                               fsetCol: "1",
-                              pageDataKey: "neurological",
-                              dataParent: "neurological.table.pupils",
-                              level2Key: "table",
-                              page: "Neurological assessment",
                               options: [
                                 {
                                   text: "Brisk"
@@ -2706,20 +2592,20 @@ export default function () {
                                   text: "Fixed"
                                 }
                               ],
+                              dataParent: "neurological.table.pupils",
+                              fqn: "neurological.table.pupils.leftPupilResponseToLight",
                               tableKey: "table",
                               formColumn: "1"
                             },
                             {
-                              elementKey: "rightPupilResponseToLight",
-                              fqn: "neurological.table.pupils.rightPupilResponseToLight",
-                              inputType: "select",
                               label: "Right pupil response to light",
+                              pageDataKey: "neurological",
+                              level2Key: "table",
+                              level3Key: "pupils",
+                              elementKey: "rightPupilResponseToLight",
+                              inputType: "select",
                               tableColumn: "22",
                               fsetRow: "2",
-                              pageDataKey: "neurological",
-                              dataParent: "neurological.table.pupils",
-                              level2Key: "table",
-                              page: "Neurological assessment",
                               options: [
                                 {
                                   text: "Brisk"
@@ -2731,19 +2617,21 @@ export default function () {
                                   text: "Fixed"
                                 }
                               ],
+                              dataParent: "neurological.table.pupils",
+                              fqn: "neurological.table.pupils.rightPupilResponseToLight",
                               tableKey: "table"
                             },
                             {
+                              pageDataKey: "neurological",
+                              level2Key: "table",
+                              level3Key: "pupils",
                               elementKey: "aSpacer",
-                              fqn: "neurological.table.pupils.aSpacer",
                               inputType: "spacer",
                               tableColumn: "24",
                               fsetRow: "2",
                               fsetCol: "2",
-                              pageDataKey: "neurological",
                               dataParent: "neurological.table.pupils",
-                              level2Key: "table",
-                              page: "Neurological assessment",
+                              fqn: "neurological.table.pupils.aSpacer",
                               tableCss: "hide-table-element",
                               tableKey: "table",
                               formColumn: "2"
@@ -2760,18 +2648,16 @@ export default function () {
                 formRow: "4",
                 elements: [
                   {
-                    elementKey: "stroke",
-                    fqn: "neurological.table.stroke",
-                    inputType: "fieldRowSet",
                     label: "Stroke Assessment",
-                    tableColumn: "24",
-                    formCss: "fieldset_row",
-                    formColumn: "1",
-                    formRow: "4",
                     pageDataKey: "neurological",
-                    dataParent: "neurological.table",
                     level2Key: "table",
-                    page: "Neurological assessment",
+                    elementKey: "stroke",
+                    inputType: "fieldRowSet",
+                    formRow: "4",
+                    formColumn: "1",
+                    tableColumn: "24",
+                    dataParent: "neurological.table",
+                    fqn: "neurological.table.stroke",
                     containerType: "fieldRowSet",
                     containerKey: "stroke",
                     tableCss: "hide-table-element",
@@ -2782,18 +2668,15 @@ export default function () {
                           formRow: "1",
                           elements: [
                             {
-                              elementKey: "levelOfConciousness",
-                              fqn: "neurological.table.stroke.levelOfConciousness",
-                              inputType: "select",
                               label: "Level of conciousness",
+                              pageDataKey: "neurological",
+                              level2Key: "table",
+                              level3Key: "stroke",
+                              elementKey: "levelOfConciousness",
+                              inputType: "select",
                               tableColumn: "25",
                               fsetRow: "1",
                               fsetCol: "1",
-                              formCss: "is-half",
-                              pageDataKey: "neurological",
-                              dataParent: "neurological.table.stroke",
-                              level2Key: "table",
-                              page: "Neurological assessment",
                               options: [
                                 {
                                   text: "0 = Alert; keenly responsive"
@@ -2808,22 +2691,21 @@ export default function () {
                                   text: "3 = Unresponsive or responds only with reflex"
                                 }
                               ],
+                              dataParent: "neurological.table.stroke",
+                              fqn: "neurological.table.stroke.levelOfConciousness",
                               tableKey: "table",
                               formColumn: "1"
                             },
                             {
-                              elementKey: "bestGaze",
-                              fqn: "neurological.table.stroke.bestGaze",
-                              inputType: "select",
                               label: "Best gaze",
+                              pageDataKey: "neurological",
+                              level2Key: "table",
+                              level3Key: "stroke",
+                              elementKey: "bestGaze",
+                              inputType: "select",
                               tableColumn: "26",
                               fsetRow: "1",
                               fsetCol: "2",
-                              formCss: "is-half",
-                              pageDataKey: "neurological",
-                              dataParent: "neurological.table.stroke",
-                              level2Key: "table",
-                              page: "Neurological assessment",
                               options: [
                                 {
                                   text: "0 = Normal"
@@ -2835,6 +2717,8 @@ export default function () {
                                   text: "2 = Forced deviation"
                                 }
                               ],
+                              dataParent: "neurological.table.stroke",
+                              fqn: "neurological.table.stroke.bestGaze",
                               tableKey: "table",
                               formColumn: "2"
                             }
@@ -2844,18 +2728,15 @@ export default function () {
                           formRow: "2",
                           elements: [
                             {
-                              elementKey: "levelOfConciousnessQuestions",
-                              fqn: "neurological.table.stroke.levelOfConciousnessQuestions",
-                              inputType: "select",
                               label: "Level of conciousness questions",
+                              pageDataKey: "neurological",
+                              level2Key: "table",
+                              level3Key: "stroke",
+                              elementKey: "levelOfConciousnessQuestions",
+                              inputType: "select",
                               tableColumn: "27",
                               fsetRow: "2",
                               fsetCol: "1",
-                              formCss: "is-half",
-                              pageDataKey: "neurological",
-                              dataParent: "neurological.table.stroke",
-                              level2Key: "table",
-                              page: "Neurological assessment",
                               options: [
                                 {
                                   text: "0 = answers two questions correctly"
@@ -2867,22 +2748,21 @@ export default function () {
                                   text: "2 = Answers neither question correctly"
                                 }
                               ],
+                              dataParent: "neurological.table.stroke",
+                              fqn: "neurological.table.stroke.levelOfConciousnessQuestions",
                               tableKey: "table",
                               formColumn: "1"
                             },
                             {
-                              elementKey: "visual",
-                              fqn: "neurological.table.stroke.visual",
-                              inputType: "select",
                               label: "Visual",
+                              pageDataKey: "neurological",
+                              level2Key: "table",
+                              level3Key: "stroke",
+                              elementKey: "visual",
+                              inputType: "select",
                               tableColumn: "28",
                               fsetRow: "2",
                               fsetCol: "2",
-                              formCss: "is-half",
-                              pageDataKey: "neurological",
-                              dataParent: "neurological.table.stroke",
-                              level2Key: "table",
-                              page: "Neurological assessment",
                               options: [
                                 {
                                   text: "0 = No visual loss"
@@ -2897,6 +2777,8 @@ export default function () {
                                   text: "3 = Complete paralysis of one or both sides"
                                 }
                               ],
+                              dataParent: "neurological.table.stroke",
+                              fqn: "neurological.table.stroke.visual",
                               tableKey: "table",
                               formColumn: "2"
                             }
@@ -2906,18 +2788,15 @@ export default function () {
                           formRow: "3",
                           elements: [
                             {
-                              elementKey: "levelOfConciousnessCommands",
-                              fqn: "neurological.table.stroke.levelOfConciousnessCommands",
-                              inputType: "select",
                               label: "Level of conciousness commands",
+                              pageDataKey: "neurological",
+                              level2Key: "table",
+                              level3Key: "stroke",
+                              elementKey: "levelOfConciousnessCommands",
+                              inputType: "select",
                               tableColumn: "29",
                               fsetRow: "3",
                               fsetCol: "1",
-                              formCss: "is-half",
-                              pageDataKey: "neurological",
-                              dataParent: "neurological.table.stroke",
-                              level2Key: "table",
-                              page: "Neurological assessment",
                               options: [
                                 {
                                   text: "0 = Performs both tasks correctly"
@@ -2929,22 +2808,21 @@ export default function () {
                                   text: "2 = Performs neither task correctly"
                                 }
                               ],
+                              dataParent: "neurological.table.stroke",
+                              fqn: "neurological.table.stroke.levelOfConciousnessCommands",
                               tableKey: "table",
                               formColumn: "1"
                             },
                             {
-                              elementKey: "facialPalsy",
-                              fqn: "neurological.table.stroke.facialPalsy",
-                              inputType: "select",
                               label: "Facial palsy",
+                              pageDataKey: "neurological",
+                              level2Key: "table",
+                              level3Key: "stroke",
+                              elementKey: "facialPalsy",
+                              inputType: "select",
                               tableColumn: "30",
                               fsetRow: "3",
                               fsetCol: "2",
-                              formCss: "is-half",
-                              pageDataKey: "neurological",
-                              dataParent: "neurological.table.stroke",
-                              level2Key: "table",
-                              page: "Neurological assessment",
                               options: [
                                 {
                                   text: "0 = Normal symmetric movements"
@@ -2959,6 +2837,8 @@ export default function () {
                                   text: "3 = Complete paralysis of one or both sides"
                                 }
                               ],
+                              dataParent: "neurological.table.stroke",
+                              fqn: "neurological.table.stroke.facialPalsy",
                               tableKey: "table",
                               formColumn: "2"
                             }
@@ -2968,18 +2848,15 @@ export default function () {
                           formRow: "4",
                           elements: [
                             {
-                              elementKey: "motorLeftArm",
-                              fqn: "neurological.table.stroke.motorLeftArm",
-                              inputType: "select",
                               label: "Motor - left arm",
+                              pageDataKey: "neurological",
+                              level2Key: "table",
+                              level3Key: "stroke",
+                              elementKey: "motorLeftArm",
+                              inputType: "select",
                               tableColumn: "31",
                               fsetRow: "4",
                               fsetCol: "1",
-                              formCss: "is-half",
-                              pageDataKey: "neurological",
-                              dataParent: "neurological.table.stroke",
-                              level2Key: "table",
-                              page: "Neurological assessment",
                               options: [
                                 {
                                   text: "0 = No drift"
@@ -2997,22 +2874,21 @@ export default function () {
                                   text: "4 = No movement"
                                 }
                               ],
+                              dataParent: "neurological.table.stroke",
+                              fqn: "neurological.table.stroke.motorLeftArm",
                               tableKey: "table",
                               formColumn: "1"
                             },
                             {
-                              elementKey: "sensory",
-                              fqn: "neurological.table.stroke.sensory",
-                              inputType: "select",
                               label: "Sensory",
+                              pageDataKey: "neurological",
+                              level2Key: "table",
+                              level3Key: "stroke",
+                              elementKey: "sensory",
+                              inputType: "select",
                               tableColumn: "32",
                               fsetRow: "4",
                               fsetCol: "2",
-                              formCss: "is-half",
-                              pageDataKey: "neurological",
-                              dataParent: "neurological.table.stroke",
-                              level2Key: "table",
-                              page: "Neurological assessment",
                               options: [
                                 {
                                   text: "0 = Normal; no sensory loss"
@@ -3024,6 +2900,8 @@ export default function () {
                                   text: "2 = Severe to total sensory loss"
                                 }
                               ],
+                              dataParent: "neurological.table.stroke",
+                              fqn: "neurological.table.stroke.sensory",
                               tableKey: "table",
                               formColumn: "2"
                             }
@@ -3033,18 +2911,15 @@ export default function () {
                           formRow: "5",
                           elements: [
                             {
-                              elementKey: "motorRightArm",
-                              fqn: "neurological.table.stroke.motorRightArm",
-                              inputType: "select",
                               label: "Motor - right arm",
+                              pageDataKey: "neurological",
+                              level2Key: "table",
+                              level3Key: "stroke",
+                              elementKey: "motorRightArm",
+                              inputType: "select",
                               tableColumn: "33",
                               fsetRow: "5",
                               fsetCol: "1",
-                              formCss: "is-half",
-                              pageDataKey: "neurological",
-                              dataParent: "neurological.table.stroke",
-                              level2Key: "table",
-                              page: "Neurological assessment",
                               options: [
                                 {
                                   text: "0 = No drift"
@@ -3062,22 +2937,21 @@ export default function () {
                                   text: "4 = No movement"
                                 }
                               ],
+                              dataParent: "neurological.table.stroke",
+                              fqn: "neurological.table.stroke.motorRightArm",
                               tableKey: "table",
                               formColumn: "1"
                             },
                             {
-                              elementKey: "bestLanguage",
-                              fqn: "neurological.table.stroke.bestLanguage",
-                              inputType: "select",
                               label: "Best language",
+                              pageDataKey: "neurological",
+                              level2Key: "table",
+                              level3Key: "stroke",
+                              elementKey: "bestLanguage",
+                              inputType: "select",
                               tableColumn: "34",
                               fsetRow: "5",
                               fsetCol: "2",
-                              formCss: "is-half",
-                              pageDataKey: "neurological",
-                              dataParent: "neurological.table.stroke",
-                              level2Key: "table",
-                              page: "Neurological assessment",
                               options: [
                                 {
                                   text: "0 = No aphasia; normal"
@@ -3092,6 +2966,8 @@ export default function () {
                                   text: "3 = Mute, global aphasia"
                                 }
                               ],
+                              dataParent: "neurological.table.stroke",
+                              fqn: "neurological.table.stroke.bestLanguage",
                               tableKey: "table",
                               formColumn: "2"
                             }
@@ -3101,18 +2977,15 @@ export default function () {
                           formRow: "6",
                           elements: [
                             {
-                              elementKey: "motorLeftLeg",
-                              fqn: "neurological.table.stroke.motorLeftLeg",
-                              inputType: "select",
                               label: "Motor - left leg",
+                              pageDataKey: "neurological",
+                              level2Key: "table",
+                              level3Key: "stroke",
+                              elementKey: "motorLeftLeg",
+                              inputType: "select",
                               tableColumn: "35",
                               fsetRow: "6",
                               fsetCol: "1",
-                              formCss: "is-half",
-                              pageDataKey: "neurological",
-                              dataParent: "neurological.table.stroke",
-                              level2Key: "table",
-                              page: "Neurological assessment",
                               options: [
                                 {
                                   text: "0 = No drift"
@@ -3130,22 +3003,21 @@ export default function () {
                                   text: "4 = No movement"
                                 }
                               ],
+                              dataParent: "neurological.table.stroke",
+                              fqn: "neurological.table.stroke.motorLeftLeg",
                               tableKey: "table",
                               formColumn: "1"
                             },
                             {
-                              elementKey: "dysarthria",
-                              fqn: "neurological.table.stroke.dysarthria",
-                              inputType: "select",
                               label: "Dysarthria",
+                              pageDataKey: "neurological",
+                              level2Key: "table",
+                              level3Key: "stroke",
+                              elementKey: "dysarthria",
+                              inputType: "select",
                               tableColumn: "36",
                               fsetRow: "6",
                               fsetCol: "2",
-                              formCss: "is-half",
-                              pageDataKey: "neurological",
-                              dataParent: "neurological.table.stroke",
-                              level2Key: "table",
-                              page: "Neurological assessment",
                               options: [
                                 {
                                   text: "0 = Normal"
@@ -3160,6 +3032,8 @@ export default function () {
                                   text: "3 = Mute, global aphasia"
                                 }
                               ],
+                              dataParent: "neurological.table.stroke",
+                              fqn: "neurological.table.stroke.dysarthria",
                               tableKey: "table",
                               formColumn: "2"
                             }
@@ -3169,18 +3043,15 @@ export default function () {
                           formRow: "7",
                           elements: [
                             {
-                              elementKey: "motorRightLeg",
-                              fqn: "neurological.table.stroke.motorRightLeg",
-                              inputType: "select",
                               label: "Motor - right leg",
+                              pageDataKey: "neurological",
+                              level2Key: "table",
+                              level3Key: "stroke",
+                              elementKey: "motorRightLeg",
+                              inputType: "select",
                               tableColumn: "37",
                               fsetRow: "7",
                               fsetCol: "1",
-                              formCss: "is-half",
-                              pageDataKey: "neurological",
-                              dataParent: "neurological.table.stroke",
-                              level2Key: "table",
-                              page: "Neurological assessment",
                               options: [
                                 {
                                   text: "0 = No drift"
@@ -3198,22 +3069,21 @@ export default function () {
                                   text: "4 = No movement"
                                 }
                               ],
+                              dataParent: "neurological.table.stroke",
+                              fqn: "neurological.table.stroke.motorRightLeg",
                               tableKey: "table",
                               formColumn: "1"
                             },
                             {
-                              elementKey: "extinctionAndInattention",
-                              fqn: "neurological.table.stroke.extinctionAndInattention",
-                              inputType: "select",
                               label: "Extinction and inattention",
+                              pageDataKey: "neurological",
+                              level2Key: "table",
+                              level3Key: "stroke",
+                              elementKey: "extinctionAndInattention",
+                              inputType: "select",
                               tableColumn: "38",
                               fsetRow: "7",
                               fsetCol: "2",
-                              formCss: "is-half",
-                              pageDataKey: "neurological",
-                              dataParent: "neurological.table.stroke",
-                              level2Key: "table",
-                              page: "Neurological assessment",
                               options: [
                                 {
                                   text: "0 = No abnormality"
@@ -3225,6 +3095,8 @@ export default function () {
                                   text: "2 = Profound hemi-inattention or extinction"
                                 }
                               ],
+                              dataParent: "neurological.table.stroke",
+                              fqn: "neurological.table.stroke.extinctionAndInattention",
                               tableKey: "table",
                               formColumn: "2"
                             }
@@ -3234,18 +3106,15 @@ export default function () {
                           formRow: "8",
                           elements: [
                             {
-                              elementKey: "limbAtaxia",
-                              fqn: "neurological.table.stroke.limbAtaxia",
-                              inputType: "select",
                               label: "Limb ataxia",
+                              pageDataKey: "neurological",
+                              level2Key: "table",
+                              level3Key: "stroke",
+                              elementKey: "limbAtaxia",
+                              inputType: "select",
                               tableColumn: "39",
                               fsetRow: "8",
                               fsetCol: "1",
-                              formCss: "is-half",
-                              pageDataKey: "neurological",
-                              dataParent: "neurological.table.stroke",
-                              level2Key: "table",
-                              page: "Neurological assessment",
                               options: [
                                 {
                                   text: "0 = Absent"
@@ -3257,6 +3126,8 @@ export default function () {
                                   text: "2 = Present in two limbs"
                                 }
                               ],
+                              dataParent: "neurological.table.stroke",
+                              fqn: "neurological.table.stroke.limbAtaxia",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -3280,6 +3151,7 @@ export default function () {
     respiratory: {
       pageTitle: "Respiratory assessment",
       pageDataKey: "respiratory",
+      generated: "2019-03-12T16:05:46-07:00",
       hasTable: true,
       tables: [
         {
@@ -3287,179 +3159,170 @@ export default function () {
           addButtonText: "Add a respiratory assessment",
           tableCells: [
             {
-              elementKey: "name",
-              fqn: "respiratory.table.name",
-              inputType: "text",
               label: "Name",
-              tableColumn: "1",
-              formCss: "user_name",
-              formColumn: "1",
-              formRow: "1",
               pageDataKey: "respiratory",
-              dataParent: "respiratory.table",
               level2Key: "table",
-              page: "Respiratory assessment",
-              tableKey: "table"
-            },
-            {
-              elementKey: "profession",
-              fqn: "respiratory.table.profession",
+              elementKey: "name",
               inputType: "text",
+              formRow: "1",
+              formColumn: "1",
+              tableColumn: "1",
+              dataParent: "respiratory.table",
+              fqn: "respiratory.table.name",
+              tableKey: "table"
+            },
+            {
               label: "Profession",
-              tableColumn: "2",
-              formCss: "user_pro",
+              pageDataKey: "respiratory",
+              level2Key: "table",
+              elementKey: "profession",
+              inputType: "text",
+              formRow: "1",
               formColumn: "2",
-              formRow: "1",
-              pageDataKey: "respiratory",
+              tableColumn: "2",
               dataParent: "respiratory.table",
-              level2Key: "table",
-              page: "Respiratory assessment",
+              fqn: "respiratory.table.profession",
               tableKey: "table"
             },
             {
-              elementKey: "day",
-              fqn: "respiratory.table.day",
-              inputType: "day",
               label: "Day",
-              tableColumn: "3",
-              formCss: "user_day",
+              pageDataKey: "respiratory",
+              level2Key: "table",
+              elementKey: "day",
+              inputType: "day",
+              formRow: "1",
               formColumn: "3",
-              formRow: "1",
-              pageDataKey: "respiratory",
+              tableColumn: "3",
               dataParent: "respiratory.table",
-              level2Key: "table",
-              page: "Respiratory assessment",
+              fqn: "respiratory.table.day",
               tableKey: "table"
             },
             {
-              elementKey: "time",
-              fqn: "respiratory.table.time",
-              inputType: "time",
               label: "Time",
-              tableColumn: "4",
-              formCss: "user_time",
-              formColumn: "4",
-              formRow: "1",
               pageDataKey: "respiratory",
-              dataParent: "respiratory.table",
               level2Key: "table",
-              page: "Respiratory assessment",
+              elementKey: "time",
+              inputType: "time",
+              formRow: "1",
+              formColumn: "4",
+              tableColumn: "4",
+              dataParent: "respiratory.table",
+              fqn: "respiratory.table.time",
               tableKey: "table"
             },
             {
-              elementKey: "patent",
-              fqn: "respiratory.table.airway.patent",
-              inputType: "checkbox",
               label: "Patent",
+              pageDataKey: "respiratory",
+              level2Key: "table",
+              level3Key: "airway",
+              elementKey: "patent",
+              inputType: "checkbox",
               tableColumn: "5",
               fsetRow: "1",
               fsetCol: "1",
-              pageDataKey: "respiratory",
               dataParent: "respiratory.table.airway",
-              level2Key: "table",
-              page: "Respiratory assessment",
+              fqn: "respiratory.table.airway.patent",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "obstructed",
-              fqn: "respiratory.table.airway.obstructed",
-              inputType: "checkbox",
               label: "Obstructed",
+              pageDataKey: "respiratory",
+              level2Key: "table",
+              level3Key: "airway",
+              elementKey: "obstructed",
+              inputType: "checkbox",
               tableColumn: "6",
               fsetRow: "2",
               fsetCol: "1",
-              pageDataKey: "respiratory",
               dataParent: "respiratory.table.airway",
-              level2Key: "table",
-              page: "Respiratory assessment",
+              fqn: "respiratory.table.airway.obstructed",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "oett",
-              fqn: "respiratory.table.airway.oett",
-              inputType: "checkbox",
               label: "Oral endotracheal tube",
+              pageDataKey: "respiratory",
+              level2Key: "table",
+              level3Key: "airway",
+              elementKey: "oett",
+              inputType: "checkbox",
               tableColumn: "7",
               fsetRow: "3",
               fsetCol: "1",
-              pageDataKey: "respiratory",
               dataParent: "respiratory.table.airway",
-              level2Key: "table",
-              page: "Respiratory assessment",
+              fqn: "respiratory.table.airway.oett",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "otherValue",
-              fqn: "respiratory.table.airway.otherValue",
-              inputType: "checkbox",
               label: "Other",
+              pageDataKey: "respiratory",
+              level2Key: "table",
+              level3Key: "airway",
+              elementKey: "otherValue",
+              inputType: "checkbox",
               tableColumn: "8",
               fsetRow: "4",
               fsetCol: "1",
-              pageDataKey: "respiratory",
               dataParent: "respiratory.table.airway",
-              level2Key: "table",
-              page: "Respiratory assessment",
+              fqn: "respiratory.table.airway.otherValue",
               tableKey: "table",
               formColumn: "1"
             },
             {
+              pageDataKey: "respiratory",
+              level2Key: "table",
+              level3Key: "airway",
               elementKey: "otherValue",
-              fqn: "respiratory.table.airway.otherValue",
               inputType: "text",
               tableColumn: "9",
               fsetRow: "5",
               fsetCol: "1",
-              pageDataKey: "respiratory",
               dataParent: "respiratory.table.airway",
-              level2Key: "table",
-              page: "Respiratory assessment"
+              fqn: "respiratory.table.airway.otherValue"
             },
             {
-              elementKey: "oxygenTherapy",
-              fqn: "respiratory.table.airway.oxygenTherapy",
-              inputType: "text",
               label: "Oxygen therapy",
+              pageDataKey: "respiratory",
+              level2Key: "table",
+              level3Key: "airway",
+              elementKey: "oxygenTherapy",
+              inputType: "text",
               tableColumn: "10",
               fsetRow: "6",
               fsetCol: "1",
-              pageDataKey: "respiratory",
               dataParent: "respiratory.table.airway",
-              level2Key: "table",
-              page: "Respiratory assessment",
+              fqn: "respiratory.table.airway.oxygenTherapy",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "oxygenFlow",
-              fqn: "respiratory.table.airway.oxygenFlow",
-              inputType: "text",
               label: "Oxygen flow",
+              pageDataKey: "respiratory",
+              level2Key: "table",
+              level3Key: "airway",
+              elementKey: "oxygenFlow",
+              inputType: "text",
               tableColumn: "11",
               fsetRow: "7",
               fsetCol: "1",
-              pageDataKey: "respiratory",
+              suffix: "/lpm",
               dataParent: "respiratory.table.airway",
-              level2Key: "table",
-              page: "Respiratory assessment",
+              fqn: "respiratory.table.airway.oxygenFlow",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "lul",
-              fqn: "respiratory.table.breath.lul",
-              inputType: "select",
               label: "Left upper lung",
+              pageDataKey: "respiratory",
+              level2Key: "table",
+              level3Key: "breath",
+              elementKey: "lul",
+              inputType: "select",
               tableColumn: "12",
               fsetRow: "1",
               fsetCol: "1",
-              pageDataKey: "respiratory",
-              dataParent: "respiratory.table.breath",
-              level2Key: "table",
-              page: "Respiratory assessment",
               options: [
                 {
                   text: "Normal"
@@ -3477,21 +3340,21 @@ export default function () {
                   text: "Deceased"
                 }
               ],
+              dataParent: "respiratory.table.breath",
+              fqn: "respiratory.table.breath.lul",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "rul",
-              fqn: "respiratory.table.breath.rul",
-              inputType: "select",
               label: "Right upper lung",
+              pageDataKey: "respiratory",
+              level2Key: "table",
+              level3Key: "breath",
+              elementKey: "rul",
+              inputType: "select",
               tableColumn: "13",
               fsetRow: "1",
               fsetCol: "2",
-              pageDataKey: "respiratory",
-              dataParent: "respiratory.table.breath",
-              level2Key: "table",
-              page: "Respiratory assessment",
               options: [
                 {
                   text: "Normal"
@@ -3509,68 +3372,66 @@ export default function () {
                   text: "Deceased"
                 }
               ],
+              dataParent: "respiratory.table.breath",
+              fqn: "respiratory.table.breath.rul",
               tableKey: "table",
               formColumn: "2"
             },
             {
-              elementKey: "airway",
-              fqn: "respiratory.table.airway",
-              inputType: "fieldset",
               label: "Airway",
-              formColumn: "1",
-              formRow: "2",
               pageDataKey: "respiratory",
-              dataParent: "respiratory.table",
               level2Key: "table",
-              page: "Respiratory assessment",
+              elementKey: "airway",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "1",
+              dataParent: "respiratory.table",
+              fqn: "respiratory.table.airway",
               containerType: "fieldset",
               containerKey: "airway",
               tableCss: "hide-table-element",
               tableKey: "table"
             },
             {
-              elementKey: "breath",
-              fqn: "respiratory.table.breath",
-              inputType: "fieldset",
               label: "Breath sounds",
-              formColumn: "2",
-              formRow: "2",
               pageDataKey: "respiratory",
-              dataParent: "respiratory.table",
               level2Key: "table",
-              page: "Respiratory assessment",
+              elementKey: "breath",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "2",
+              dataParent: "respiratory.table",
+              fqn: "respiratory.table.breath",
               containerType: "fieldset",
               containerKey: "breath",
               tableCss: "hide-table-element",
               tableKey: "table"
             },
             {
+              pageDataKey: "respiratory",
+              level2Key: "table",
+              level3Key: "breath",
               elementKey: "aSpacer",
-              fqn: "respiratory.table.breath.aSpacer",
               inputType: "spacer",
               tableColumn: "14",
               fsetRow: "2",
               fsetCol: "1",
-              pageDataKey: "respiratory",
               dataParent: "respiratory.table.breath",
-              level2Key: "table",
-              page: "Respiratory assessment",
+              fqn: "respiratory.table.breath.aSpacer",
               tableCss: "hide-table-element",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "rml",
-              fqn: "respiratory.table.breath.rml",
-              inputType: "select",
               label: "Right middle lung",
+              pageDataKey: "respiratory",
+              level2Key: "table",
+              level3Key: "breath",
+              elementKey: "rml",
+              inputType: "select",
               tableColumn: "15",
               fsetRow: "2",
               fsetCol: "2",
-              pageDataKey: "respiratory",
-              dataParent: "respiratory.table.breath",
-              level2Key: "table",
-              page: "Respiratory assessment",
               options: [
                 {
                   text: "Normal"
@@ -3588,21 +3449,21 @@ export default function () {
                   text: "Deceased"
                 }
               ],
+              dataParent: "respiratory.table.breath",
+              fqn: "respiratory.table.breath.rml",
               tableKey: "table",
               formColumn: "2"
             },
             {
-              elementKey: "lll",
-              fqn: "respiratory.table.breath.lll",
-              inputType: "select",
               label: "Left lower lung",
+              pageDataKey: "respiratory",
+              level2Key: "table",
+              level3Key: "breath",
+              elementKey: "lll",
+              inputType: "select",
               tableColumn: "16",
               fsetRow: "3",
               fsetCol: "1",
-              pageDataKey: "respiratory",
-              dataParent: "respiratory.table.breath",
-              level2Key: "table",
-              page: "Respiratory assessment",
               options: [
                 {
                   text: "Normal"
@@ -3620,21 +3481,21 @@ export default function () {
                   text: "Deceased"
                 }
               ],
+              dataParent: "respiratory.table.breath",
+              fqn: "respiratory.table.breath.lll",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "rll",
-              fqn: "respiratory.table.breath.rll",
-              inputType: "select",
               label: "Right lower lung",
+              pageDataKey: "respiratory",
+              level2Key: "table",
+              level3Key: "breath",
+              elementKey: "rll",
+              inputType: "select",
               tableColumn: "17",
               fsetRow: "3",
               fsetCol: "2",
-              pageDataKey: "respiratory",
-              dataParent: "respiratory.table.breath",
-              level2Key: "table",
-              page: "Respiratory assessment",
               options: [
                 {
                   text: "Normal"
@@ -3652,21 +3513,21 @@ export default function () {
                   text: "Deceased"
                 }
               ],
+              dataParent: "respiratory.table.breath",
+              fqn: "respiratory.table.breath.rll",
               tableKey: "table",
               formColumn: "2"
             },
             {
-              elementKey: "respiratoryRhythm",
-              fqn: "respiratory.table.breath.respiratoryRhythm",
-              inputType: "select",
               label: "Respiratory rhythm",
+              pageDataKey: "respiratory",
+              level2Key: "table",
+              level3Key: "breath",
+              elementKey: "respiratoryRhythm",
+              inputType: "select",
               tableColumn: "18",
               fsetRow: "4",
               fsetCol: "1",
-              pageDataKey: "respiratory",
-              dataParent: "respiratory.table.breath",
-              level2Key: "table",
-              page: "Respiratory assessment",
               options: [
                 {
                   text: "Regular"
@@ -3678,21 +3539,21 @@ export default function () {
                   text: "Paradoxical"
                 }
               ],
+              dataParent: "respiratory.table.breath",
+              fqn: "respiratory.table.breath.respiratoryRhythm",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "respiratoryDepth",
-              fqn: "respiratory.table.breath.respiratoryDepth",
-              inputType: "select",
               label: "Respiratory depth",
+              pageDataKey: "respiratory",
+              level2Key: "table",
+              level3Key: "breath",
+              elementKey: "respiratoryDepth",
+              inputType: "select",
               tableColumn: "19",
               fsetRow: "5",
               fsetCol: "1",
-              pageDataKey: "respiratory",
-              dataParent: "respiratory.table.breath",
-              level2Key: "table",
-              page: "Respiratory assessment",
               options: [
                 {
                   text: "Normal"
@@ -3704,21 +3565,21 @@ export default function () {
                   text: "Deep"
                 }
               ],
+              dataParent: "respiratory.table.breath",
+              fqn: "respiratory.table.breath.respiratoryDepth",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "cough",
-              fqn: "respiratory.table.breath.cough",
-              inputType: "select",
               label: "Cough",
+              pageDataKey: "respiratory",
+              level2Key: "table",
+              level3Key: "breath",
+              elementKey: "cough",
+              inputType: "select",
               tableColumn: "20",
               fsetRow: "4",
               fsetCol: "2",
-              pageDataKey: "respiratory",
-              dataParent: "respiratory.table.breath",
-              level2Key: "table",
-              page: "Respiratory assessment",
               options: [
                 {
                   text: "No"
@@ -3730,21 +3591,21 @@ export default function () {
                   text: "Productive"
                 }
               ],
+              dataParent: "respiratory.table.breath",
+              fqn: "respiratory.table.breath.cough",
               tableKey: "table",
               formColumn: "2"
             },
             {
-              elementKey: "sputumColour",
-              fqn: "respiratory.table.breath.sputumColour",
-              inputType: "select",
               label: "Sputum colour",
+              pageDataKey: "respiratory",
+              level2Key: "table",
+              level3Key: "breath",
+              elementKey: "sputumColour",
+              inputType: "select",
               tableColumn: "21",
               fsetRow: "5",
               fsetCol: "2",
-              pageDataKey: "respiratory",
-              dataParent: "respiratory.table.breath",
-              level2Key: "table",
-              page: "Respiratory assessment",
               options: [
                 {
                   text: "Mucoid"
@@ -3771,49 +3632,50 @@ export default function () {
                   text: "Bloody"
                 }
               ],
+              dataParent: "respiratory.table.breath",
+              fqn: "respiratory.table.breath.sputumColour",
               tableKey: "table",
               formColumn: "2"
             },
             {
+              pageDataKey: "respiratory",
+              level2Key: "table",
+              level3Key: "breath",
               elementKey: "aSpacer",
-              fqn: "respiratory.table.breath.aSpacer",
               inputType: "spacer",
               tableColumn: "22",
               fsetRow: "6",
               fsetCol: "1",
-              pageDataKey: "respiratory",
               dataParent: "respiratory.table.breath",
-              level2Key: "table",
-              page: "Respiratory assessment",
+              fqn: "respiratory.table.breath.aSpacer",
               tableCss: "hide-table-element"
             },
             {
-              elementKey: "sputumComments",
-              fqn: "respiratory.table.breath.sputumComments",
-              inputType: "text",
               label: "Sputum comments",
+              pageDataKey: "respiratory",
+              level2Key: "table",
+              level3Key: "breath",
+              elementKey: "sputumComments",
+              inputType: "text",
               tableColumn: "23",
               fsetRow: "6",
               fsetCol: "2",
-              pageDataKey: "respiratory",
               dataParent: "respiratory.table.breath",
-              level2Key: "table",
-              page: "Respiratory assessment",
+              fqn: "respiratory.table.breath.sputumComments",
               tableKey: "table",
               formColumn: "2"
             },
             {
-              elementKey: "generalComments",
-              fqn: "respiratory.table.generalComments",
-              inputType: "textarea",
               label: "General comments",
-              tableColumn: "24",
-              formColumn: "1",
-              formRow: "3",
               pageDataKey: "respiratory",
-              dataParent: "respiratory.table",
               level2Key: "table",
-              page: "Respiratory assessment",
+              elementKey: "generalComments",
+              inputType: "textarea",
+              formRow: "3",
+              formColumn: "1",
+              tableColumn: "24",
+              dataParent: "respiratory.table",
+              fqn: "respiratory.table.generalComments",
               tableKey: "table"
             }
           ],
@@ -3823,63 +3685,55 @@ export default function () {
                 formRow: "1",
                 elements: [
                   {
-                    elementKey: "name",
-                    fqn: "respiratory.table.name",
-                    inputType: "text",
                     label: "Name",
-                    tableColumn: "1",
-                    formCss: "user_name",
-                    formColumn: "1",
-                    formRow: "1",
                     pageDataKey: "respiratory",
-                    dataParent: "respiratory.table",
                     level2Key: "table",
-                    page: "Respiratory assessment",
-                    tableKey: "table"
-                  },
-                  {
-                    elementKey: "profession",
-                    fqn: "respiratory.table.profession",
+                    elementKey: "name",
                     inputType: "text",
+                    formRow: "1",
+                    formColumn: "1",
+                    tableColumn: "1",
+                    dataParent: "respiratory.table",
+                    fqn: "respiratory.table.name",
+                    tableKey: "table"
+                  },
+                  {
                     label: "Profession",
-                    tableColumn: "2",
-                    formCss: "user_pro",
+                    pageDataKey: "respiratory",
+                    level2Key: "table",
+                    elementKey: "profession",
+                    inputType: "text",
+                    formRow: "1",
                     formColumn: "2",
-                    formRow: "1",
-                    pageDataKey: "respiratory",
+                    tableColumn: "2",
                     dataParent: "respiratory.table",
-                    level2Key: "table",
-                    page: "Respiratory assessment",
+                    fqn: "respiratory.table.profession",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "day",
-                    fqn: "respiratory.table.day",
-                    inputType: "day",
                     label: "Day",
-                    tableColumn: "3",
-                    formCss: "user_day",
-                    formColumn: "3",
-                    formRow: "1",
                     pageDataKey: "respiratory",
-                    dataParent: "respiratory.table",
                     level2Key: "table",
-                    page: "Respiratory assessment",
+                    elementKey: "day",
+                    inputType: "day",
+                    formRow: "1",
+                    formColumn: "3",
+                    tableColumn: "3",
+                    dataParent: "respiratory.table",
+                    fqn: "respiratory.table.day",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "time",
-                    fqn: "respiratory.table.time",
-                    inputType: "time",
                     label: "Time",
-                    tableColumn: "4",
-                    formCss: "user_time",
-                    formColumn: "4",
-                    formRow: "1",
                     pageDataKey: "respiratory",
-                    dataParent: "respiratory.table",
                     level2Key: "table",
-                    page: "Respiratory assessment",
+                    elementKey: "time",
+                    inputType: "time",
+                    formRow: "1",
+                    formColumn: "4",
+                    tableColumn: "4",
+                    dataParent: "respiratory.table",
+                    fqn: "respiratory.table.time",
                     tableKey: "table"
                   }
                 ]
@@ -3888,16 +3742,15 @@ export default function () {
                 formRow: "2",
                 elements: [
                   {
-                    elementKey: "airway",
-                    fqn: "respiratory.table.airway",
-                    inputType: "fieldset",
                     label: "Airway",
-                    formColumn: "1",
-                    formRow: "2",
                     pageDataKey: "respiratory",
-                    dataParent: "respiratory.table",
                     level2Key: "table",
-                    page: "Respiratory assessment",
+                    elementKey: "airway",
+                    inputType: "fieldset",
+                    formRow: "2",
+                    formColumn: "1",
+                    dataParent: "respiratory.table",
+                    fqn: "respiratory.table.airway",
                     containerType: "fieldset",
                     containerKey: "airway",
                     tableCss: "hide-table-element",
@@ -3908,17 +3761,17 @@ export default function () {
                           formRow: "1",
                           elements: [
                             {
-                              elementKey: "patent",
-                              fqn: "respiratory.table.airway.patent",
-                              inputType: "checkbox",
                               label: "Patent",
+                              pageDataKey: "respiratory",
+                              level2Key: "table",
+                              level3Key: "airway",
+                              elementKey: "patent",
+                              inputType: "checkbox",
                               tableColumn: "5",
                               fsetRow: "1",
                               fsetCol: "1",
-                              pageDataKey: "respiratory",
                               dataParent: "respiratory.table.airway",
-                              level2Key: "table",
-                              page: "Respiratory assessment",
+                              fqn: "respiratory.table.airway.patent",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -3928,17 +3781,17 @@ export default function () {
                           formRow: "2",
                           elements: [
                             {
-                              elementKey: "obstructed",
-                              fqn: "respiratory.table.airway.obstructed",
-                              inputType: "checkbox",
                               label: "Obstructed",
+                              pageDataKey: "respiratory",
+                              level2Key: "table",
+                              level3Key: "airway",
+                              elementKey: "obstructed",
+                              inputType: "checkbox",
                               tableColumn: "6",
                               fsetRow: "2",
                               fsetCol: "1",
-                              pageDataKey: "respiratory",
                               dataParent: "respiratory.table.airway",
-                              level2Key: "table",
-                              page: "Respiratory assessment",
+                              fqn: "respiratory.table.airway.obstructed",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -3948,17 +3801,17 @@ export default function () {
                           formRow: "3",
                           elements: [
                             {
-                              elementKey: "oett",
-                              fqn: "respiratory.table.airway.oett",
-                              inputType: "checkbox",
                               label: "Oral endotracheal tube",
+                              pageDataKey: "respiratory",
+                              level2Key: "table",
+                              level3Key: "airway",
+                              elementKey: "oett",
+                              inputType: "checkbox",
                               tableColumn: "7",
                               fsetRow: "3",
                               fsetCol: "1",
-                              pageDataKey: "respiratory",
                               dataParent: "respiratory.table.airway",
-                              level2Key: "table",
-                              page: "Respiratory assessment",
+                              fqn: "respiratory.table.airway.oett",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -3968,17 +3821,17 @@ export default function () {
                           formRow: "4",
                           elements: [
                             {
-                              elementKey: "otherValue",
-                              fqn: "respiratory.table.airway.otherValue",
-                              inputType: "checkbox",
                               label: "Other",
+                              pageDataKey: "respiratory",
+                              level2Key: "table",
+                              level3Key: "airway",
+                              elementKey: "otherValue",
+                              inputType: "checkbox",
                               tableColumn: "8",
                               fsetRow: "4",
                               fsetCol: "1",
-                              pageDataKey: "respiratory",
                               dataParent: "respiratory.table.airway",
-                              level2Key: "table",
-                              page: "Respiratory assessment",
+                              fqn: "respiratory.table.airway.otherValue",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -3988,17 +3841,17 @@ export default function () {
                           formRow: "5",
                           elements: [
                             {
-                              elementKey: "otherValue",
-                              fqn: "respiratory.table.airway.otherValue",
-                              inputType: "checkbox",
                               label: "Other",
+                              pageDataKey: "respiratory",
+                              level2Key: "table",
+                              level3Key: "airway",
+                              elementKey: "otherValue",
+                              inputType: "checkbox",
                               tableColumn: "8",
                               fsetRow: "4",
                               fsetCol: "1",
-                              pageDataKey: "respiratory",
                               dataParent: "respiratory.table.airway",
-                              level2Key: "table",
-                              page: "Respiratory assessment",
+                              fqn: "respiratory.table.airway.otherValue",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -4008,17 +3861,17 @@ export default function () {
                           formRow: "6",
                           elements: [
                             {
-                              elementKey: "oxygenTherapy",
-                              fqn: "respiratory.table.airway.oxygenTherapy",
-                              inputType: "text",
                               label: "Oxygen therapy",
+                              pageDataKey: "respiratory",
+                              level2Key: "table",
+                              level3Key: "airway",
+                              elementKey: "oxygenTherapy",
+                              inputType: "text",
                               tableColumn: "10",
                               fsetRow: "6",
                               fsetCol: "1",
-                              pageDataKey: "respiratory",
                               dataParent: "respiratory.table.airway",
-                              level2Key: "table",
-                              page: "Respiratory assessment",
+                              fqn: "respiratory.table.airway.oxygenTherapy",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -4028,17 +3881,18 @@ export default function () {
                           formRow: "7",
                           elements: [
                             {
-                              elementKey: "oxygenFlow",
-                              fqn: "respiratory.table.airway.oxygenFlow",
-                              inputType: "text",
                               label: "Oxygen flow",
+                              pageDataKey: "respiratory",
+                              level2Key: "table",
+                              level3Key: "airway",
+                              elementKey: "oxygenFlow",
+                              inputType: "text",
                               tableColumn: "11",
                               fsetRow: "7",
                               fsetCol: "1",
-                              pageDataKey: "respiratory",
+                              suffix: "/lpm",
                               dataParent: "respiratory.table.airway",
-                              level2Key: "table",
-                              page: "Respiratory assessment",
+                              fqn: "respiratory.table.airway.oxygenFlow",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -4049,16 +3903,15 @@ export default function () {
                     }
                   },
                   {
-                    elementKey: "breath",
-                    fqn: "respiratory.table.breath",
-                    inputType: "fieldset",
                     label: "Breath sounds",
-                    formColumn: "2",
-                    formRow: "2",
                     pageDataKey: "respiratory",
-                    dataParent: "respiratory.table",
                     level2Key: "table",
-                    page: "Respiratory assessment",
+                    elementKey: "breath",
+                    inputType: "fieldset",
+                    formRow: "2",
+                    formColumn: "2",
+                    dataParent: "respiratory.table",
+                    fqn: "respiratory.table.breath",
                     containerType: "fieldset",
                     containerKey: "breath",
                     tableCss: "hide-table-element",
@@ -4069,17 +3922,15 @@ export default function () {
                           formRow: "1",
                           elements: [
                             {
-                              elementKey: "lul",
-                              fqn: "respiratory.table.breath.lul",
-                              inputType: "select",
                               label: "Left upper lung",
+                              pageDataKey: "respiratory",
+                              level2Key: "table",
+                              level3Key: "breath",
+                              elementKey: "lul",
+                              inputType: "select",
                               tableColumn: "12",
                               fsetRow: "1",
                               fsetCol: "1",
-                              pageDataKey: "respiratory",
-                              dataParent: "respiratory.table.breath",
-                              level2Key: "table",
-                              page: "Respiratory assessment",
                               options: [
                                 {
                                   text: "Normal"
@@ -4097,21 +3948,21 @@ export default function () {
                                   text: "Deceased"
                                 }
                               ],
+                              dataParent: "respiratory.table.breath",
+                              fqn: "respiratory.table.breath.lul",
                               tableKey: "table",
                               formColumn: "1"
                             },
                             {
-                              elementKey: "rul",
-                              fqn: "respiratory.table.breath.rul",
-                              inputType: "select",
                               label: "Right upper lung",
+                              pageDataKey: "respiratory",
+                              level2Key: "table",
+                              level3Key: "breath",
+                              elementKey: "rul",
+                              inputType: "select",
                               tableColumn: "13",
                               fsetRow: "1",
                               fsetCol: "2",
-                              pageDataKey: "respiratory",
-                              dataParent: "respiratory.table.breath",
-                              level2Key: "table",
-                              page: "Respiratory assessment",
                               options: [
                                 {
                                   text: "Normal"
@@ -4129,6 +3980,8 @@ export default function () {
                                   text: "Deceased"
                                 }
                               ],
+                              dataParent: "respiratory.table.breath",
+                              fqn: "respiratory.table.breath.rul",
                               tableKey: "table",
                               formColumn: "2"
                             }
@@ -4138,32 +3991,30 @@ export default function () {
                           formRow: "2",
                           elements: [
                             {
+                              pageDataKey: "respiratory",
+                              level2Key: "table",
+                              level3Key: "breath",
                               elementKey: "aSpacer",
-                              fqn: "respiratory.table.breath.aSpacer",
                               inputType: "spacer",
                               tableColumn: "14",
                               fsetRow: "2",
                               fsetCol: "1",
-                              pageDataKey: "respiratory",
                               dataParent: "respiratory.table.breath",
-                              level2Key: "table",
-                              page: "Respiratory assessment",
+                              fqn: "respiratory.table.breath.aSpacer",
                               tableCss: "hide-table-element",
                               tableKey: "table",
                               formColumn: "1"
                             },
                             {
-                              elementKey: "rml",
-                              fqn: "respiratory.table.breath.rml",
-                              inputType: "select",
                               label: "Right middle lung",
+                              pageDataKey: "respiratory",
+                              level2Key: "table",
+                              level3Key: "breath",
+                              elementKey: "rml",
+                              inputType: "select",
                               tableColumn: "15",
                               fsetRow: "2",
                               fsetCol: "2",
-                              pageDataKey: "respiratory",
-                              dataParent: "respiratory.table.breath",
-                              level2Key: "table",
-                              page: "Respiratory assessment",
                               options: [
                                 {
                                   text: "Normal"
@@ -4181,6 +4032,8 @@ export default function () {
                                   text: "Deceased"
                                 }
                               ],
+                              dataParent: "respiratory.table.breath",
+                              fqn: "respiratory.table.breath.rml",
                               tableKey: "table",
                               formColumn: "2"
                             }
@@ -4190,17 +4043,15 @@ export default function () {
                           formRow: "3",
                           elements: [
                             {
-                              elementKey: "lll",
-                              fqn: "respiratory.table.breath.lll",
-                              inputType: "select",
                               label: "Left lower lung",
+                              pageDataKey: "respiratory",
+                              level2Key: "table",
+                              level3Key: "breath",
+                              elementKey: "lll",
+                              inputType: "select",
                               tableColumn: "16",
                               fsetRow: "3",
                               fsetCol: "1",
-                              pageDataKey: "respiratory",
-                              dataParent: "respiratory.table.breath",
-                              level2Key: "table",
-                              page: "Respiratory assessment",
                               options: [
                                 {
                                   text: "Normal"
@@ -4218,21 +4069,21 @@ export default function () {
                                   text: "Deceased"
                                 }
                               ],
+                              dataParent: "respiratory.table.breath",
+                              fqn: "respiratory.table.breath.lll",
                               tableKey: "table",
                               formColumn: "1"
                             },
                             {
-                              elementKey: "rll",
-                              fqn: "respiratory.table.breath.rll",
-                              inputType: "select",
                               label: "Right lower lung",
+                              pageDataKey: "respiratory",
+                              level2Key: "table",
+                              level3Key: "breath",
+                              elementKey: "rll",
+                              inputType: "select",
                               tableColumn: "17",
                               fsetRow: "3",
                               fsetCol: "2",
-                              pageDataKey: "respiratory",
-                              dataParent: "respiratory.table.breath",
-                              level2Key: "table",
-                              page: "Respiratory assessment",
                               options: [
                                 {
                                   text: "Normal"
@@ -4250,6 +4101,8 @@ export default function () {
                                   text: "Deceased"
                                 }
                               ],
+                              dataParent: "respiratory.table.breath",
+                              fqn: "respiratory.table.breath.rll",
                               tableKey: "table",
                               formColumn: "2"
                             }
@@ -4259,17 +4112,15 @@ export default function () {
                           formRow: "4",
                           elements: [
                             {
-                              elementKey: "respiratoryRhythm",
-                              fqn: "respiratory.table.breath.respiratoryRhythm",
-                              inputType: "select",
                               label: "Respiratory rhythm",
+                              pageDataKey: "respiratory",
+                              level2Key: "table",
+                              level3Key: "breath",
+                              elementKey: "respiratoryRhythm",
+                              inputType: "select",
                               tableColumn: "18",
                               fsetRow: "4",
                               fsetCol: "1",
-                              pageDataKey: "respiratory",
-                              dataParent: "respiratory.table.breath",
-                              level2Key: "table",
-                              page: "Respiratory assessment",
                               options: [
                                 {
                                   text: "Regular"
@@ -4281,21 +4132,21 @@ export default function () {
                                   text: "Paradoxical"
                                 }
                               ],
+                              dataParent: "respiratory.table.breath",
+                              fqn: "respiratory.table.breath.respiratoryRhythm",
                               tableKey: "table",
                               formColumn: "1"
                             },
                             {
-                              elementKey: "cough",
-                              fqn: "respiratory.table.breath.cough",
-                              inputType: "select",
                               label: "Cough",
+                              pageDataKey: "respiratory",
+                              level2Key: "table",
+                              level3Key: "breath",
+                              elementKey: "cough",
+                              inputType: "select",
                               tableColumn: "20",
                               fsetRow: "4",
                               fsetCol: "2",
-                              pageDataKey: "respiratory",
-                              dataParent: "respiratory.table.breath",
-                              level2Key: "table",
-                              page: "Respiratory assessment",
                               options: [
                                 {
                                   text: "No"
@@ -4307,6 +4158,8 @@ export default function () {
                                   text: "Productive"
                                 }
                               ],
+                              dataParent: "respiratory.table.breath",
+                              fqn: "respiratory.table.breath.cough",
                               tableKey: "table",
                               formColumn: "2"
                             }
@@ -4316,17 +4169,15 @@ export default function () {
                           formRow: "5",
                           elements: [
                             {
-                              elementKey: "respiratoryDepth",
-                              fqn: "respiratory.table.breath.respiratoryDepth",
-                              inputType: "select",
                               label: "Respiratory depth",
+                              pageDataKey: "respiratory",
+                              level2Key: "table",
+                              level3Key: "breath",
+                              elementKey: "respiratoryDepth",
+                              inputType: "select",
                               tableColumn: "19",
                               fsetRow: "5",
                               fsetCol: "1",
-                              pageDataKey: "respiratory",
-                              dataParent: "respiratory.table.breath",
-                              level2Key: "table",
-                              page: "Respiratory assessment",
                               options: [
                                 {
                                   text: "Normal"
@@ -4338,21 +4189,21 @@ export default function () {
                                   text: "Deep"
                                 }
                               ],
+                              dataParent: "respiratory.table.breath",
+                              fqn: "respiratory.table.breath.respiratoryDepth",
                               tableKey: "table",
                               formColumn: "1"
                             },
                             {
-                              elementKey: "sputumColour",
-                              fqn: "respiratory.table.breath.sputumColour",
-                              inputType: "select",
                               label: "Sputum colour",
+                              pageDataKey: "respiratory",
+                              level2Key: "table",
+                              level3Key: "breath",
+                              elementKey: "sputumColour",
+                              inputType: "select",
                               tableColumn: "21",
                               fsetRow: "5",
                               fsetCol: "2",
-                              pageDataKey: "respiratory",
-                              dataParent: "respiratory.table.breath",
-                              level2Key: "table",
-                              page: "Respiratory assessment",
                               options: [
                                 {
                                   text: "Mucoid"
@@ -4379,6 +4230,8 @@ export default function () {
                                   text: "Bloody"
                                 }
                               ],
+                              dataParent: "respiratory.table.breath",
+                              fqn: "respiratory.table.breath.sputumColour",
                               tableKey: "table",
                               formColumn: "2"
                             }
@@ -4388,32 +4241,32 @@ export default function () {
                           formRow: "6",
                           elements: [
                             {
+                              pageDataKey: "respiratory",
+                              level2Key: "table",
+                              level3Key: "breath",
                               elementKey: "aSpacer",
-                              fqn: "respiratory.table.breath.aSpacer",
                               inputType: "spacer",
                               tableColumn: "14",
                               fsetRow: "2",
                               fsetCol: "1",
-                              pageDataKey: "respiratory",
                               dataParent: "respiratory.table.breath",
-                              level2Key: "table",
-                              page: "Respiratory assessment",
+                              fqn: "respiratory.table.breath.aSpacer",
                               tableCss: "hide-table-element",
                               tableKey: "table",
                               formColumn: "1"
                             },
                             {
-                              elementKey: "sputumComments",
-                              fqn: "respiratory.table.breath.sputumComments",
-                              inputType: "text",
                               label: "Sputum comments",
+                              pageDataKey: "respiratory",
+                              level2Key: "table",
+                              level3Key: "breath",
+                              elementKey: "sputumComments",
+                              inputType: "text",
                               tableColumn: "23",
                               fsetRow: "6",
                               fsetCol: "2",
-                              pageDataKey: "respiratory",
                               dataParent: "respiratory.table.breath",
-                              level2Key: "table",
-                              page: "Respiratory assessment",
+                              fqn: "respiratory.table.breath.sputumComments",
                               tableKey: "table",
                               formColumn: "2"
                             }
@@ -4429,17 +4282,16 @@ export default function () {
                 formRow: "3",
                 elements: [
                   {
-                    elementKey: "generalComments",
-                    fqn: "respiratory.table.generalComments",
-                    inputType: "textarea",
                     label: "General comments",
-                    tableColumn: "24",
-                    formColumn: "1",
-                    formRow: "3",
                     pageDataKey: "respiratory",
-                    dataParent: "respiratory.table",
                     level2Key: "table",
-                    page: "Respiratory assessment",
+                    elementKey: "generalComments",
+                    inputType: "textarea",
+                    formRow: "3",
+                    formColumn: "1",
+                    tableColumn: "24",
+                    dataParent: "respiratory.table",
+                    fqn: "respiratory.table.generalComments",
                     tableKey: "table"
                   }
                 ]
@@ -4456,6 +4308,7 @@ export default function () {
     cardiovascular: {
       pageTitle: "Cardiovascular assessment",
       pageDataKey: "cardiovascular",
+      generated: "2019-03-12T16:05:46-07:00",
       hasTable: true,
       tables: [
         {
@@ -4463,77 +4316,66 @@ export default function () {
           addButtonText: "Add a cardiovascular assessment",
           tableCells: [
             {
-              elementKey: "name",
-              fqn: "cardiovascular.table.name",
-              inputType: "text",
               label: "Name",
-              tableColumn: "1",
-              formCss: "user_name",
-              formColumn: "1",
-              formRow: "1",
               pageDataKey: "cardiovascular",
-              dataParent: "cardiovascular.table",
               level2Key: "table",
-              page: "Cardiovascular assessment",
-              tableKey: "table"
-            },
-            {
-              elementKey: "profession",
-              fqn: "cardiovascular.table.profession",
+              elementKey: "name",
               inputType: "text",
-              label: "Profession",
-              tableColumn: "2",
-              formCss: "user_pro",
-              formColumn: "2",
               formRow: "1",
-              pageDataKey: "cardiovascular",
-              dataParent: "cardiovascular.table",
-              level2Key: "table",
-              page: "Cardiovascular assessment",
-              tableKey: "table"
-            },
-            {
-              elementKey: "day",
-              fqn: "cardiovascular.table.day",
-              inputType: "day",
-              label: "Day",
-              tableColumn: "3",
-              formCss: "user_day",
-              formColumn: "3",
-              formRow: "1",
-              pageDataKey: "cardiovascular",
-              dataParent: "cardiovascular.table",
-              level2Key: "table",
-              page: "Cardiovascular assessment",
-              tableKey: "table"
-            },
-            {
-              elementKey: "time",
-              fqn: "cardiovascular.table.time",
-              inputType: "time",
-              label: "Time",
-              tableColumn: "4",
-              formCss: "user_time",
-              formColumn: "4",
-              formRow: "1",
-              pageDataKey: "cardiovascular",
-              dataParent: "cardiovascular.table",
-              level2Key: "table",
-              page: "Cardiovascular assessment",
-              tableKey: "table"
-            },
-            {
-              elementKey: "pulse",
-              fqn: "cardiovascular.table.pulse",
-              inputType: "select",
-              label: "Pulse",
-              tableColumn: "5",
               formColumn: "1",
-              formRow: "2",
-              pageDataKey: "cardiovascular",
+              tableColumn: "1",
               dataParent: "cardiovascular.table",
+              fqn: "cardiovascular.table.name",
+              tableKey: "table"
+            },
+            {
+              label: "Profession",
+              pageDataKey: "cardiovascular",
               level2Key: "table",
-              page: "Cardiovascular assessment",
+              elementKey: "profession",
+              inputType: "text",
+              formRow: "1",
+              formColumn: "2",
+              tableColumn: "2",
+              dataParent: "cardiovascular.table",
+              fqn: "cardiovascular.table.profession",
+              tableKey: "table"
+            },
+            {
+              label: "Day",
+              pageDataKey: "cardiovascular",
+              level2Key: "table",
+              elementKey: "day",
+              inputType: "day",
+              formRow: "1",
+              formColumn: "3",
+              tableColumn: "3",
+              dataParent: "cardiovascular.table",
+              fqn: "cardiovascular.table.day",
+              tableKey: "table"
+            },
+            {
+              label: "Time",
+              pageDataKey: "cardiovascular",
+              level2Key: "table",
+              elementKey: "time",
+              inputType: "time",
+              formRow: "1",
+              formColumn: "4",
+              tableColumn: "4",
+              dataParent: "cardiovascular.table",
+              fqn: "cardiovascular.table.time",
+              tableKey: "table"
+            },
+            {
+              label: "Pulse",
+              pageDataKey: "cardiovascular",
+              level2Key: "table",
+              elementKey: "pulse",
+              inputType: "select",
+              formRow: "2",
+              formColumn: "1",
+              tableColumn: "5",
               options: [
                 {
                   text: "Regular"
@@ -4551,20 +4393,19 @@ export default function () {
                   text: "Bounding"
                 }
               ],
+              dataParent: "cardiovascular.table",
+              fqn: "cardiovascular.table.pulse",
               tableKey: "table"
             },
             {
-              elementKey: "skinAppearance",
-              fqn: "cardiovascular.table.skinAppearance",
-              inputType: "select",
               label: "Skin appearance",
-              tableColumn: "6",
-              formColumn: "2",
-              formRow: "2",
               pageDataKey: "cardiovascular",
-              dataParent: "cardiovascular.table",
               level2Key: "table",
-              page: "Cardiovascular assessment",
+              elementKey: "skinAppearance",
+              inputType: "select",
+              formRow: "2",
+              formColumn: "2",
+              tableColumn: "6",
               options: [
                 {
                   text: "Normal"
@@ -4585,571 +4426,547 @@ export default function () {
                   text: "Jaundiced"
                 }
               ],
+              dataParent: "cardiovascular.table",
+              fqn: "cardiovascular.table.skinAppearance",
               tableKey: "table"
             },
             {
+              pageDataKey: "cardiovascular",
+              level2Key: "table",
               elementKey: "spacer1",
-              fqn: "cardiovascular.table.spacer1",
               inputType: "form-label",
-              tableColumn: "7",
-              formColumn: "1",
               formRow: "3",
+              formColumn: "1",
               formOption: "spacer",
-              pageDataKey: "cardiovascular",
+              tableColumn: "7",
               dataParent: "cardiovascular.table",
-              level2Key: "table",
-              page: "Cardiovascular assessment",
+              fqn: "cardiovascular.table.spacer1",
               tableCss: "hide-table-element",
               tableKey: "table"
             },
             {
-              elementKey: "labelCapRefill",
-              fqn: "cardiovascular.table.labelCapRefill",
-              inputType: "form-label",
               label: "Cap refill",
+              pageDataKey: "cardiovascular",
+              level2Key: "table",
+              elementKey: "labelCapRefill",
+              inputType: "form-label",
+              formRow: "3",
+              formColumn: "2",
               tableColumn: "8",
-              formColumn: "2",
-              formRow: "3",
-              pageDataKey: "cardiovascular",
-              dataParent: "cardiovascular.table",
-              level2Key: "table",
-              page: "Cardiovascular assessment",
               helperText: "Normal < 3 seconds-NL-Delayed > 3 seconds",
+              dataParent: "cardiovascular.table",
+              fqn: "cardiovascular.table.labelCapRefill",
               tableCss: "hide-table-element",
               tableKey: "table"
             },
             {
-              elementKey: "labelTemperature",
-              fqn: "cardiovascular.table.labelTemperature",
-              inputType: "form-label",
               label: "Temperature",
+              pageDataKey: "cardiovascular",
+              level2Key: "table",
+              elementKey: "labelTemperature",
+              inputType: "form-label",
+              formRow: "3",
+              formColumn: "3",
               tableColumn: "9",
-              formColumn: "3",
-              formRow: "3",
-              pageDataKey: "cardiovascular",
               dataParent: "cardiovascular.table",
-              level2Key: "table",
-              page: "Cardiovascular assessment",
+              fqn: "cardiovascular.table.labelTemperature",
               tableCss: "hide-table-element",
               tableKey: "table"
             },
             {
-              elementKey: "labelPeripheral",
-              fqn: "cardiovascular.table.labelPeripheral",
-              inputType: "form-label",
               label: "Peripheral edema",
+              pageDataKey: "cardiovascular",
+              level2Key: "table",
+              elementKey: "labelPeripheral",
+              inputType: "form-label",
+              formRow: "3",
+              formColumn: "4",
               tableColumn: "10",
-              formColumn: "4",
-              formRow: "3",
-              pageDataKey: "cardiovascular",
               dataParent: "cardiovascular.table",
-              level2Key: "table",
-              page: "Cardiovascular assessment",
+              fqn: "cardiovascular.table.labelPeripheral",
               tableCss: "hide-table-element",
               tableKey: "table"
             },
             {
-              elementKey: "labelNailBed",
-              fqn: "cardiovascular.table.labelNailBed",
-              inputType: "form-label",
               label: "Nail bed colour",
-              tableColumn: "11",
-              formColumn: "5",
+              pageDataKey: "cardiovascular",
+              level2Key: "table",
+              elementKey: "labelNailBed",
+              inputType: "form-label",
               formRow: "3",
-              pageDataKey: "cardiovascular",
+              formColumn: "5",
+              tableColumn: "11",
               dataParent: "cardiovascular.table",
-              level2Key: "table",
-              page: "Cardiovascular assessment",
+              fqn: "cardiovascular.table.labelNailBed",
               tableCss: "hide-table-element",
               tableKey: "table"
             },
             {
-              elementKey: "lableRight",
-              fqn: "cardiovascular.table.lableRight",
-              inputType: "form-label",
               label: "Right hand",
+              pageDataKey: "cardiovascular",
+              level2Key: "table",
+              elementKey: "lableRight",
+              inputType: "form-label",
+              formRow: "4",
+              formColumn: "1",
               tableColumn: "12",
-              formColumn: "1",
-              formRow: "4",
-              pageDataKey: "cardiovascular",
               dataParent: "cardiovascular.table",
-              level2Key: "table",
-              page: "Cardiovascular assessment",
+              fqn: "cardiovascular.table.lableRight",
               tableCss: "hide-table-element",
               tableKey: "table"
             },
             {
-              elementKey: "lableLeftHand",
-              fqn: "cardiovascular.table.lableLeftHand",
-              inputType: "form-label",
               label: "Left hand",
+              pageDataKey: "cardiovascular",
+              level2Key: "table",
+              elementKey: "lableLeftHand",
+              inputType: "form-label",
+              formRow: "5",
+              formColumn: "1",
               tableColumn: "13",
-              formColumn: "1",
-              formRow: "5",
-              pageDataKey: "cardiovascular",
               dataParent: "cardiovascular.table",
-              level2Key: "table",
-              page: "Cardiovascular assessment",
+              fqn: "cardiovascular.table.lableLeftHand",
               tableCss: "hide-table-element",
               tableKey: "table"
             },
             {
-              elementKey: "labelRightFoot",
-              fqn: "cardiovascular.table.labelRightFoot",
-              inputType: "form-label",
               label: "Right foot",
-              tableColumn: "14",
-              formColumn: "1",
-              formRow: "6",
               pageDataKey: "cardiovascular",
-              dataParent: "cardiovascular.table",
               level2Key: "table",
-              page: "Cardiovascular assessment",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
-              elementKey: "labelLeftFoot",
-              fqn: "cardiovascular.table.labelLeftFoot",
+              elementKey: "labelRightFoot",
               inputType: "form-label",
-              label: "Left foot",
-              tableColumn: "15",
+              formRow: "6",
               formColumn: "1",
-              formRow: "7",
-              pageDataKey: "cardiovascular",
+              tableColumn: "14",
               dataParent: "cardiovascular.table",
-              level2Key: "table",
-              page: "Cardiovascular assessment",
+              fqn: "cardiovascular.table.labelRightFoot",
               tableCss: "hide-table-element",
               tableKey: "table"
             },
             {
-              elementKey: "capRefillRightHand",
-              fqn: "cardiovascular.table.capRefillRightHand",
-              inputType: "select",
-              label: "Cap refill: Left hand",
-              tableColumn: "16",
-              formColumn: "2",
-              formRow: "4",
-              formOption: "hideLabel",
+              label: "Left foot",
               pageDataKey: "cardiovascular",
-              dataParent: "cardiovascular.table",
               level2Key: "table",
-              page: "Cardiovascular assessment",
-              options: [
-                {
-                  text: "Normal"
-                },
-                {
-                  text: "Delayed"
-                }
-              ],
-              tableKey: "table"
-            },
-            {
-              elementKey: "capRefillLeftHand",
-              fqn: "cardiovascular.table.capRefillLeftHand",
-              inputType: "select",
-              label: "Cap refill: Right foot",
-              tableColumn: "17",
-              formColumn: "2",
-              formRow: "5",
-              formOption: "hideLabel",
-              pageDataKey: "cardiovascular",
-              dataParent: "cardiovascular.table",
-              level2Key: "table",
-              page: "Cardiovascular assessment",
-              options: [
-                {
-                  text: "Normal"
-                },
-                {
-                  text: "Delayed"
-                }
-              ],
-              tableKey: "table"
-            },
-            {
-              elementKey: "capRefillRightFoot",
-              fqn: "cardiovascular.table.capRefillRightFoot",
-              inputType: "select",
-              label: "Cap refill: Left foot",
-              tableColumn: "18",
-              formColumn: "2",
-              formRow: "6",
-              formOption: "hideLabel",
-              pageDataKey: "cardiovascular",
-              dataParent: "cardiovascular.table",
-              level2Key: "table",
-              page: "Cardiovascular assessment",
-              options: [
-                {
-                  text: "Normal"
-                },
-                {
-                  text: "Delayed"
-                }
-              ],
-              tableKey: "table"
-            },
-            {
-              elementKey: "capRefillLeftFoot",
-              fqn: "cardiovascular.table.capRefillLeftFoot",
-              inputType: "select",
-              label: "Temperature: Right hand",
-              tableColumn: "19",
-              formColumn: "2",
+              elementKey: "labelLeftFoot",
+              inputType: "form-label",
               formRow: "7",
-              formOption: "hideLabel",
-              pageDataKey: "cardiovascular",
-              dataParent: "cardiovascular.table",
-              level2Key: "table",
-              page: "Cardiovascular assessment",
-              options: [
-                {
-                  text: "Normal"
-                },
-                {
-                  text: "Delayed"
-                }
-              ],
-              tableKey: "table"
-            },
-            {
-              elementKey: "temperatureRightHand",
-              fqn: "cardiovascular.table.temperatureRightHand",
-              inputType: "select",
-              label: "Temperature: Left hand",
-              tableColumn: "20",
-              formColumn: "3",
-              formRow: "4",
-              formOption: "hideLabel",
-              pageDataKey: "cardiovascular",
-              dataParent: "cardiovascular.table",
-              level2Key: "table",
-              page: "Cardiovascular assessment",
-              options: [
-                {
-                  text: "Warm"
-                },
-                {
-                  text: "Cool"
-                },
-                {
-                  text: "Hot"
-                }
-              ],
-              tableKey: "table"
-            },
-            {
-              elementKey: "temperatureLeftHand",
-              fqn: "cardiovascular.table.temperatureLeftHand",
-              inputType: "select",
-              label: "Temperature: Right foot",
-              tableColumn: "21",
-              formColumn: "3",
-              formRow: "5",
-              formOption: "hideLabel",
-              pageDataKey: "cardiovascular",
-              dataParent: "cardiovascular.table",
-              level2Key: "table",
-              page: "Cardiovascular assessment",
-              options: [
-                {
-                  text: "Warm"
-                },
-                {
-                  text: "Cool"
-                },
-                {
-                  text: "Hot"
-                }
-              ],
-              tableKey: "table"
-            },
-            {
-              elementKey: "temperatureRightFoot",
-              fqn: "cardiovascular.table.temperatureRightFoot",
-              inputType: "select",
-              label: "Temperature: Left foot",
-              tableColumn: "22",
-              formColumn: "3",
-              formRow: "6",
-              formOption: "hideLabel",
-              pageDataKey: "cardiovascular",
-              dataParent: "cardiovascular.table",
-              level2Key: "table",
-              page: "Cardiovascular assessment",
-              options: [
-                {
-                  text: "Warm"
-                },
-                {
-                  text: "Cool"
-                },
-                {
-                  text: "Hot"
-                }
-              ],
-              tableKey: "table"
-            },
-            {
-              elementKey: "temperatureLeftFoot",
-              fqn: "cardiovascular.table.temperatureLeftFoot",
-              inputType: "select",
-              label: "Peripheral edema: Right hand",
-              tableColumn: "23",
-              formColumn: "3",
-              formRow: "7",
-              formOption: "hideLabel",
-              pageDataKey: "cardiovascular",
-              dataParent: "cardiovascular.table",
-              level2Key: "table",
-              page: "Cardiovascular assessment",
-              options: [
-                {
-                  text: "Warm"
-                },
-                {
-                  text: "Cool"
-                },
-                {
-                  text: "Hot"
-                }
-              ],
-              tableKey: "table"
-            },
-            {
-              elementKey: "peripheralEdemaRightHand",
-              fqn: "cardiovascular.table.peripheralEdemaRightHand",
-              inputType: "select",
-              label: "Peripheral edema: Left hand",
-              tableColumn: "24",
-              formColumn: "4",
-              formRow: "4",
-              formOption: "hideLabel",
-              pageDataKey: "cardiovascular",
-              dataParent: "cardiovascular.table",
-              level2Key: "table",
-              page: "Cardiovascular assessment",
-              options: [
-                {
-                  text: "No"
-                },
-                {
-                  text: "Ankle"
-                },
-                {
-                  text: "Pedal"
-                },
-                {
-                  text: "Sacral"
-                },
-                {
-                  text: "Pitting"
-                }
-              ],
-              tableKey: "table"
-            },
-            {
-              elementKey: "peripheralEdemaLeftHand",
-              fqn: "cardiovascular.table.peripheralEdemaLeftHand",
-              inputType: "select",
-              label: "Peripheral edema: Right foot",
-              tableColumn: "25",
-              formColumn: "4",
-              formRow: "5",
-              formOption: "hideLabel",
-              pageDataKey: "cardiovascular",
-              dataParent: "cardiovascular.table",
-              level2Key: "table",
-              page: "Cardiovascular assessment",
-              options: [
-                {
-                  text: "No"
-                },
-                {
-                  text: "Ankle"
-                },
-                {
-                  text: "Pedal"
-                },
-                {
-                  text: "Sacral"
-                },
-                {
-                  text: "Pitting"
-                }
-              ],
-              tableKey: "table"
-            },
-            {
-              elementKey: "peripheralEdemaRightFoot",
-              fqn: "cardiovascular.table.peripheralEdemaRightFoot",
-              inputType: "select",
-              label: "Peripheral edema: Left foot",
-              tableColumn: "26",
-              formColumn: "4",
-              formRow: "6",
-              formOption: "hideLabel",
-              pageDataKey: "cardiovascular",
-              dataParent: "cardiovascular.table",
-              level2Key: "table",
-              page: "Cardiovascular assessment",
-              options: [
-                {
-                  text: "No"
-                },
-                {
-                  text: "Ankle"
-                },
-                {
-                  text: "Pedal"
-                },
-                {
-                  text: "Sacral"
-                },
-                {
-                  text: "Pitting"
-                }
-              ],
-              tableKey: "table"
-            },
-            {
-              elementKey: "peripheralEdemaLeftFoot",
-              fqn: "cardiovascular.table.peripheralEdemaLeftFoot",
-              inputType: "select",
-              label: "Nail bed colour: Right hand",
-              tableColumn: "27",
-              formColumn: "4",
-              formRow: "7",
-              formOption: "hideLabel",
-              pageDataKey: "cardiovascular",
-              dataParent: "cardiovascular.table",
-              level2Key: "table",
-              page: "Cardiovascular assessment",
-              options: [
-                {
-                  text: "No"
-                },
-                {
-                  text: "Ankle"
-                },
-                {
-                  text: "Pedal"
-                },
-                {
-                  text: "Sacral"
-                },
-                {
-                  text: "Pitting"
-                }
-              ],
-              tableKey: "table"
-            },
-            {
-              elementKey: "nailBedColourRightHand",
-              fqn: "cardiovascular.table.nailBedColourRightHand",
-              inputType: "select",
-              label: "Nail bed colour: Left hand",
-              tableColumn: "28",
-              formColumn: "5",
-              formRow: "4",
-              formOption: "hideLabel",
-              pageDataKey: "cardiovascular",
-              dataParent: "cardiovascular.table",
-              level2Key: "table",
-              page: "Cardiovascular assessment",
-              options: [
-                {
-                  text: "Pink"
-                },
-                {
-                  text: "Cyanotic"
-                }
-              ],
-              tableKey: "table"
-            },
-            {
-              elementKey: "nailBedColourLeftHand",
-              fqn: "cardiovascular.table.nailBedColourLeftHand",
-              inputType: "select",
-              label: "Nail bed colour: Right Foot",
-              tableColumn: "29",
-              formColumn: "5",
-              formRow: "5",
-              formOption: "hideLabel",
-              pageDataKey: "cardiovascular",
-              dataParent: "cardiovascular.table",
-              level2Key: "table",
-              page: "Cardiovascular assessment",
-              options: [
-                {
-                  text: "Pink"
-                },
-                {
-                  text: "Cyanotic"
-                }
-              ],
-              tableKey: "table"
-            },
-            {
-              elementKey: "nailBedColourRightFoot",
-              fqn: "cardiovascular.table.nailBedColourRightFoot",
-              inputType: "select",
-              label: "Nail bed colour: Left foot",
-              tableColumn: "30",
-              formColumn: "5",
-              formRow: "6",
-              formOption: "hideLabel",
-              pageDataKey: "cardiovascular",
-              dataParent: "cardiovascular.table",
-              level2Key: "table",
-              page: "Cardiovascular assessment",
-              options: [
-                {
-                  text: "Pink"
-                },
-                {
-                  text: "Cyanotic"
-                }
-              ],
-              tableKey: "table"
-            },
-            {
-              elementKey: "nailBedColourLeftFoot",
-              fqn: "cardiovascular.table.nailBedColourLeftFoot",
-              inputType: "select",
-              tableColumn: "31",
-              formColumn: "5",
-              formRow: "7",
-              formOption: "hideLabel",
-              pageDataKey: "cardiovascular",
-              dataParent: "cardiovascular.table",
-              level2Key: "table",
-              page: "Cardiovascular assessment",
-              options: [
-                {
-                  text: "Pink"
-                },
-                {
-                  text: "Cyanotic"
-                }
-              ],
-              tableKey: "table"
-            },
-            {
-              elementKey: "comments",
-              fqn: "cardiovascular.table.comments",
-              inputType: "text",
-              label: "Comments",
-              tableColumn: "32",
               formColumn: "1",
-              formRow: "8",
-              pageDataKey: "cardiovascular",
+              tableColumn: "15",
               dataParent: "cardiovascular.table",
+              fqn: "cardiovascular.table.labelLeftFoot",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
+              label: "Cap refill: Left hand",
+              pageDataKey: "cardiovascular",
               level2Key: "table",
-              page: "Cardiovascular assessment",
+              elementKey: "capRefillRightHand",
+              inputType: "select",
+              formRow: "4",
+              formColumn: "2",
+              formOption: "hideLabel",
+              tableColumn: "16",
+              options: [
+                {
+                  text: "Normal"
+                },
+                {
+                  text: "Delayed"
+                }
+              ],
+              dataParent: "cardiovascular.table",
+              fqn: "cardiovascular.table.capRefillRightHand",
+              tableKey: "table"
+            },
+            {
+              label: "Cap refill: Right foot",
+              pageDataKey: "cardiovascular",
+              level2Key: "table",
+              elementKey: "capRefillLeftHand",
+              inputType: "select",
+              formRow: "5",
+              formColumn: "2",
+              formOption: "hideLabel",
+              tableColumn: "17",
+              options: [
+                {
+                  text: "Normal"
+                },
+                {
+                  text: "Delayed"
+                }
+              ],
+              dataParent: "cardiovascular.table",
+              fqn: "cardiovascular.table.capRefillLeftHand",
+              tableKey: "table"
+            },
+            {
+              label: "Cap refill: Left foot",
+              pageDataKey: "cardiovascular",
+              level2Key: "table",
+              elementKey: "capRefillRightFoot",
+              inputType: "select",
+              formRow: "6",
+              formColumn: "2",
+              formOption: "hideLabel",
+              tableColumn: "18",
+              options: [
+                {
+                  text: "Normal"
+                },
+                {
+                  text: "Delayed"
+                }
+              ],
+              dataParent: "cardiovascular.table",
+              fqn: "cardiovascular.table.capRefillRightFoot",
+              tableKey: "table"
+            },
+            {
+              label: "Temperature: Right hand",
+              pageDataKey: "cardiovascular",
+              level2Key: "table",
+              elementKey: "capRefillLeftFoot",
+              inputType: "select",
+              formRow: "7",
+              formColumn: "2",
+              formOption: "hideLabel",
+              tableColumn: "19",
+              options: [
+                {
+                  text: "Normal"
+                },
+                {
+                  text: "Delayed"
+                }
+              ],
+              dataParent: "cardiovascular.table",
+              fqn: "cardiovascular.table.capRefillLeftFoot",
+              tableKey: "table"
+            },
+            {
+              label: "Temperature: Left hand",
+              pageDataKey: "cardiovascular",
+              level2Key: "table",
+              elementKey: "temperatureRightHand",
+              inputType: "select",
+              formRow: "4",
+              formColumn: "3",
+              formOption: "hideLabel",
+              tableColumn: "20",
+              options: [
+                {
+                  text: "Warm"
+                },
+                {
+                  text: "Cool"
+                },
+                {
+                  text: "Hot"
+                }
+              ],
+              dataParent: "cardiovascular.table",
+              fqn: "cardiovascular.table.temperatureRightHand",
+              tableKey: "table"
+            },
+            {
+              label: "Temperature: Right foot",
+              pageDataKey: "cardiovascular",
+              level2Key: "table",
+              elementKey: "temperatureLeftHand",
+              inputType: "select",
+              formRow: "5",
+              formColumn: "3",
+              formOption: "hideLabel",
+              tableColumn: "21",
+              options: [
+                {
+                  text: "Warm"
+                },
+                {
+                  text: "Cool"
+                },
+                {
+                  text: "Hot"
+                }
+              ],
+              dataParent: "cardiovascular.table",
+              fqn: "cardiovascular.table.temperatureLeftHand",
+              tableKey: "table"
+            },
+            {
+              label: "Temperature: Left foot",
+              pageDataKey: "cardiovascular",
+              level2Key: "table",
+              elementKey: "temperatureRightFoot",
+              inputType: "select",
+              formRow: "6",
+              formColumn: "3",
+              formOption: "hideLabel",
+              tableColumn: "22",
+              options: [
+                {
+                  text: "Warm"
+                },
+                {
+                  text: "Cool"
+                },
+                {
+                  text: "Hot"
+                }
+              ],
+              dataParent: "cardiovascular.table",
+              fqn: "cardiovascular.table.temperatureRightFoot",
+              tableKey: "table"
+            },
+            {
+              label: "Peripheral edema: Right hand",
+              pageDataKey: "cardiovascular",
+              level2Key: "table",
+              elementKey: "temperatureLeftFoot",
+              inputType: "select",
+              formRow: "7",
+              formColumn: "3",
+              formOption: "hideLabel",
+              tableColumn: "23",
+              options: [
+                {
+                  text: "Warm"
+                },
+                {
+                  text: "Cool"
+                },
+                {
+                  text: "Hot"
+                }
+              ],
+              dataParent: "cardiovascular.table",
+              fqn: "cardiovascular.table.temperatureLeftFoot",
+              tableKey: "table"
+            },
+            {
+              label: "Peripheral edema: Left hand",
+              pageDataKey: "cardiovascular",
+              level2Key: "table",
+              elementKey: "peripheralEdemaRightHand",
+              inputType: "select",
+              formRow: "4",
+              formColumn: "4",
+              formOption: "hideLabel",
+              tableColumn: "24",
+              options: [
+                {
+                  text: "No"
+                },
+                {
+                  text: "Ankle"
+                },
+                {
+                  text: "Pedal"
+                },
+                {
+                  text: "Sacral"
+                },
+                {
+                  text: "Pitting"
+                }
+              ],
+              dataParent: "cardiovascular.table",
+              fqn: "cardiovascular.table.peripheralEdemaRightHand",
+              tableKey: "table"
+            },
+            {
+              label: "Peripheral edema: Right foot",
+              pageDataKey: "cardiovascular",
+              level2Key: "table",
+              elementKey: "peripheralEdemaLeftHand",
+              inputType: "select",
+              formRow: "5",
+              formColumn: "4",
+              formOption: "hideLabel",
+              tableColumn: "25",
+              options: [
+                {
+                  text: "No"
+                },
+                {
+                  text: "Ankle"
+                },
+                {
+                  text: "Pedal"
+                },
+                {
+                  text: "Sacral"
+                },
+                {
+                  text: "Pitting"
+                }
+              ],
+              dataParent: "cardiovascular.table",
+              fqn: "cardiovascular.table.peripheralEdemaLeftHand",
+              tableKey: "table"
+            },
+            {
+              label: "Peripheral edema: Left foot",
+              pageDataKey: "cardiovascular",
+              level2Key: "table",
+              elementKey: "peripheralEdemaRightFoot",
+              inputType: "select",
+              formRow: "6",
+              formColumn: "4",
+              formOption: "hideLabel",
+              tableColumn: "26",
+              options: [
+                {
+                  text: "No"
+                },
+                {
+                  text: "Ankle"
+                },
+                {
+                  text: "Pedal"
+                },
+                {
+                  text: "Sacral"
+                },
+                {
+                  text: "Pitting"
+                }
+              ],
+              dataParent: "cardiovascular.table",
+              fqn: "cardiovascular.table.peripheralEdemaRightFoot",
+              tableKey: "table"
+            },
+            {
+              label: "Nail bed colour: Right hand",
+              pageDataKey: "cardiovascular",
+              level2Key: "table",
+              elementKey: "peripheralEdemaLeftFoot",
+              inputType: "select",
+              formRow: "7",
+              formColumn: "4",
+              formOption: "hideLabel",
+              tableColumn: "27",
+              options: [
+                {
+                  text: "No"
+                },
+                {
+                  text: "Ankle"
+                },
+                {
+                  text: "Pedal"
+                },
+                {
+                  text: "Sacral"
+                },
+                {
+                  text: "Pitting"
+                }
+              ],
+              dataParent: "cardiovascular.table",
+              fqn: "cardiovascular.table.peripheralEdemaLeftFoot",
+              tableKey: "table"
+            },
+            {
+              label: "Nail bed colour: Left hand",
+              pageDataKey: "cardiovascular",
+              level2Key: "table",
+              elementKey: "nailBedColourRightHand",
+              inputType: "select",
+              formRow: "4",
+              formColumn: "5",
+              formOption: "hideLabel",
+              tableColumn: "28",
+              options: [
+                {
+                  text: "Pink"
+                },
+                {
+                  text: "Cyanotic"
+                }
+              ],
+              dataParent: "cardiovascular.table",
+              fqn: "cardiovascular.table.nailBedColourRightHand",
+              tableKey: "table"
+            },
+            {
+              label: "Nail bed colour: Right Foot",
+              pageDataKey: "cardiovascular",
+              level2Key: "table",
+              elementKey: "nailBedColourLeftHand",
+              inputType: "select",
+              formRow: "5",
+              formColumn: "5",
+              formOption: "hideLabel",
+              tableColumn: "29",
+              options: [
+                {
+                  text: "Pink"
+                },
+                {
+                  text: "Cyanotic"
+                }
+              ],
+              dataParent: "cardiovascular.table",
+              fqn: "cardiovascular.table.nailBedColourLeftHand",
+              tableKey: "table"
+            },
+            {
+              label: "Nail bed colour: Left foot",
+              pageDataKey: "cardiovascular",
+              level2Key: "table",
+              elementKey: "nailBedColourRightFoot",
+              inputType: "select",
+              formRow: "6",
+              formColumn: "5",
+              formOption: "hideLabel",
+              tableColumn: "30",
+              options: [
+                {
+                  text: "Pink"
+                },
+                {
+                  text: "Cyanotic"
+                }
+              ],
+              dataParent: "cardiovascular.table",
+              fqn: "cardiovascular.table.nailBedColourRightFoot",
+              tableKey: "table"
+            },
+            {
+              pageDataKey: "cardiovascular",
+              level2Key: "table",
+              elementKey: "nailBedColourLeftFoot",
+              inputType: "select",
+              formRow: "7",
+              formColumn: "5",
+              formOption: "hideLabel",
+              tableColumn: "31",
+              options: [
+                {
+                  text: "Pink"
+                },
+                {
+                  text: "Cyanotic"
+                }
+              ],
+              dataParent: "cardiovascular.table",
+              fqn: "cardiovascular.table.nailBedColourLeftFoot",
+              tableKey: "table"
+            },
+            {
+              label: "Comments",
+              pageDataKey: "cardiovascular",
+              level2Key: "table",
+              elementKey: "comments",
+              inputType: "text",
+              formRow: "8",
+              formColumn: "1",
+              tableColumn: "32",
+              dataParent: "cardiovascular.table",
+              fqn: "cardiovascular.table.comments",
               tableKey: "table"
             }
           ],
@@ -5159,63 +4976,55 @@ export default function () {
                 formRow: "1",
                 elements: [
                   {
-                    elementKey: "name",
-                    fqn: "cardiovascular.table.name",
-                    inputType: "text",
                     label: "Name",
-                    tableColumn: "1",
-                    formCss: "user_name",
-                    formColumn: "1",
-                    formRow: "1",
                     pageDataKey: "cardiovascular",
-                    dataParent: "cardiovascular.table",
                     level2Key: "table",
-                    page: "Cardiovascular assessment",
-                    tableKey: "table"
-                  },
-                  {
-                    elementKey: "profession",
-                    fqn: "cardiovascular.table.profession",
+                    elementKey: "name",
                     inputType: "text",
+                    formRow: "1",
+                    formColumn: "1",
+                    tableColumn: "1",
+                    dataParent: "cardiovascular.table",
+                    fqn: "cardiovascular.table.name",
+                    tableKey: "table"
+                  },
+                  {
                     label: "Profession",
-                    tableColumn: "2",
-                    formCss: "user_pro",
+                    pageDataKey: "cardiovascular",
+                    level2Key: "table",
+                    elementKey: "profession",
+                    inputType: "text",
+                    formRow: "1",
                     formColumn: "2",
-                    formRow: "1",
-                    pageDataKey: "cardiovascular",
+                    tableColumn: "2",
                     dataParent: "cardiovascular.table",
-                    level2Key: "table",
-                    page: "Cardiovascular assessment",
+                    fqn: "cardiovascular.table.profession",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "day",
-                    fqn: "cardiovascular.table.day",
-                    inputType: "day",
                     label: "Day",
-                    tableColumn: "3",
-                    formCss: "user_day",
-                    formColumn: "3",
-                    formRow: "1",
                     pageDataKey: "cardiovascular",
-                    dataParent: "cardiovascular.table",
                     level2Key: "table",
-                    page: "Cardiovascular assessment",
+                    elementKey: "day",
+                    inputType: "day",
+                    formRow: "1",
+                    formColumn: "3",
+                    tableColumn: "3",
+                    dataParent: "cardiovascular.table",
+                    fqn: "cardiovascular.table.day",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "time",
-                    fqn: "cardiovascular.table.time",
-                    inputType: "time",
                     label: "Time",
-                    tableColumn: "4",
-                    formCss: "user_time",
-                    formColumn: "4",
-                    formRow: "1",
                     pageDataKey: "cardiovascular",
-                    dataParent: "cardiovascular.table",
                     level2Key: "table",
-                    page: "Cardiovascular assessment",
+                    elementKey: "time",
+                    inputType: "time",
+                    formRow: "1",
+                    formColumn: "4",
+                    tableColumn: "4",
+                    dataParent: "cardiovascular.table",
+                    fqn: "cardiovascular.table.time",
                     tableKey: "table"
                   }
                 ]
@@ -5224,17 +5033,14 @@ export default function () {
                 formRow: "2",
                 elements: [
                   {
-                    elementKey: "pulse",
-                    fqn: "cardiovascular.table.pulse",
-                    inputType: "select",
                     label: "Pulse",
-                    tableColumn: "5",
-                    formColumn: "1",
-                    formRow: "2",
                     pageDataKey: "cardiovascular",
-                    dataParent: "cardiovascular.table",
                     level2Key: "table",
-                    page: "Cardiovascular assessment",
+                    elementKey: "pulse",
+                    inputType: "select",
+                    formRow: "2",
+                    formColumn: "1",
+                    tableColumn: "5",
                     options: [
                       {
                         text: "Regular"
@@ -5252,20 +5058,19 @@ export default function () {
                         text: "Bounding"
                       }
                     ],
+                    dataParent: "cardiovascular.table",
+                    fqn: "cardiovascular.table.pulse",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "skinAppearance",
-                    fqn: "cardiovascular.table.skinAppearance",
-                    inputType: "select",
                     label: "Skin appearance",
-                    tableColumn: "6",
-                    formColumn: "2",
-                    formRow: "2",
                     pageDataKey: "cardiovascular",
-                    dataParent: "cardiovascular.table",
                     level2Key: "table",
-                    page: "Cardiovascular assessment",
+                    elementKey: "skinAppearance",
+                    inputType: "select",
+                    formRow: "2",
+                    formColumn: "2",
+                    tableColumn: "6",
                     options: [
                       {
                         text: "Normal"
@@ -5286,6 +5091,8 @@ export default function () {
                         text: "Jaundiced"
                       }
                     ],
+                    dataParent: "cardiovascular.table",
+                    fqn: "cardiovascular.table.skinAppearance",
                     tableKey: "table"
                   }
                 ]
@@ -5294,78 +5101,73 @@ export default function () {
                 formRow: "3",
                 elements: [
                   {
+                    pageDataKey: "cardiovascular",
+                    level2Key: "table",
                     elementKey: "spacer1",
-                    fqn: "cardiovascular.table.spacer1",
                     inputType: "form-label",
-                    tableColumn: "7",
+                    formRow: "3",
                     formColumn: "1",
-                    formRow: "3",
                     formOption: "spacer",
-                    pageDataKey: "cardiovascular",
+                    tableColumn: "7",
                     dataParent: "cardiovascular.table",
-                    level2Key: "table",
-                    page: "Cardiovascular assessment",
+                    fqn: "cardiovascular.table.spacer1",
                     tableCss: "hide-table-element",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "labelCapRefill",
-                    fqn: "cardiovascular.table.labelCapRefill",
-                    inputType: "form-label",
                     label: "Cap refill",
-                    tableColumn: "8",
+                    pageDataKey: "cardiovascular",
+                    level2Key: "table",
+                    elementKey: "labelCapRefill",
+                    inputType: "form-label",
+                    formRow: "3",
                     formColumn: "2",
-                    formRow: "3",
-                    pageDataKey: "cardiovascular",
-                    dataParent: "cardiovascular.table",
-                    level2Key: "table",
-                    page: "Cardiovascular assessment",
+                    tableColumn: "8",
                     helperText: "Normal < 3 seconds-NL-Delayed > 3 seconds",
+                    dataParent: "cardiovascular.table",
+                    fqn: "cardiovascular.table.labelCapRefill",
                     tableCss: "hide-table-element",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "labelTemperature",
-                    fqn: "cardiovascular.table.labelTemperature",
-                    inputType: "form-label",
                     label: "Temperature",
-                    tableColumn: "9",
+                    pageDataKey: "cardiovascular",
+                    level2Key: "table",
+                    elementKey: "labelTemperature",
+                    inputType: "form-label",
+                    formRow: "3",
                     formColumn: "3",
-                    formRow: "3",
-                    pageDataKey: "cardiovascular",
+                    tableColumn: "9",
                     dataParent: "cardiovascular.table",
-                    level2Key: "table",
-                    page: "Cardiovascular assessment",
+                    fqn: "cardiovascular.table.labelTemperature",
                     tableCss: "hide-table-element",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "labelPeripheral",
-                    fqn: "cardiovascular.table.labelPeripheral",
-                    inputType: "form-label",
                     label: "Peripheral edema",
-                    tableColumn: "10",
-                    formColumn: "4",
-                    formRow: "3",
                     pageDataKey: "cardiovascular",
-                    dataParent: "cardiovascular.table",
                     level2Key: "table",
-                    page: "Cardiovascular assessment",
+                    elementKey: "labelPeripheral",
+                    inputType: "form-label",
+                    formRow: "3",
+                    formColumn: "4",
+                    tableColumn: "10",
+                    dataParent: "cardiovascular.table",
+                    fqn: "cardiovascular.table.labelPeripheral",
                     tableCss: "hide-table-element",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "labelNailBed",
-                    fqn: "cardiovascular.table.labelNailBed",
-                    inputType: "form-label",
                     label: "Nail bed colour",
-                    tableColumn: "11",
-                    formColumn: "5",
-                    formRow: "3",
                     pageDataKey: "cardiovascular",
-                    dataParent: "cardiovascular.table",
                     level2Key: "table",
-                    page: "Cardiovascular assessment",
+                    elementKey: "labelNailBed",
+                    inputType: "form-label",
+                    formRow: "3",
+                    formColumn: "5",
+                    tableColumn: "11",
+                    dataParent: "cardiovascular.table",
+                    fqn: "cardiovascular.table.labelNailBed",
                     tableCss: "hide-table-element",
                     tableKey: "table"
                   }
@@ -5375,33 +5177,29 @@ export default function () {
                 formRow: "4",
                 elements: [
                   {
-                    elementKey: "lableRight",
-                    fqn: "cardiovascular.table.lableRight",
-                    inputType: "form-label",
                     label: "Right hand",
-                    tableColumn: "12",
-                    formColumn: "1",
-                    formRow: "4",
                     pageDataKey: "cardiovascular",
-                    dataParent: "cardiovascular.table",
                     level2Key: "table",
-                    page: "Cardiovascular assessment",
+                    elementKey: "lableRight",
+                    inputType: "form-label",
+                    formRow: "4",
+                    formColumn: "1",
+                    tableColumn: "12",
+                    dataParent: "cardiovascular.table",
+                    fqn: "cardiovascular.table.lableRight",
                     tableCss: "hide-table-element",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "capRefillRightHand",
-                    fqn: "cardiovascular.table.capRefillRightHand",
-                    inputType: "select",
                     label: "Cap refill: Left hand",
-                    tableColumn: "16",
-                    formColumn: "2",
-                    formRow: "4",
-                    formOption: "hideLabel",
                     pageDataKey: "cardiovascular",
-                    dataParent: "cardiovascular.table",
                     level2Key: "table",
-                    page: "Cardiovascular assessment",
+                    elementKey: "capRefillRightHand",
+                    inputType: "select",
+                    formRow: "4",
+                    formColumn: "2",
+                    formOption: "hideLabel",
+                    tableColumn: "16",
                     options: [
                       {
                         text: "Normal"
@@ -5410,21 +5208,20 @@ export default function () {
                         text: "Delayed"
                       }
                     ],
+                    dataParent: "cardiovascular.table",
+                    fqn: "cardiovascular.table.capRefillRightHand",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "temperatureRightHand",
-                    fqn: "cardiovascular.table.temperatureRightHand",
-                    inputType: "select",
                     label: "Temperature: Left hand",
-                    tableColumn: "20",
-                    formColumn: "3",
-                    formRow: "4",
-                    formOption: "hideLabel",
                     pageDataKey: "cardiovascular",
-                    dataParent: "cardiovascular.table",
                     level2Key: "table",
-                    page: "Cardiovascular assessment",
+                    elementKey: "temperatureRightHand",
+                    inputType: "select",
+                    formRow: "4",
+                    formColumn: "3",
+                    formOption: "hideLabel",
+                    tableColumn: "20",
                     options: [
                       {
                         text: "Warm"
@@ -5436,21 +5233,20 @@ export default function () {
                         text: "Hot"
                       }
                     ],
+                    dataParent: "cardiovascular.table",
+                    fqn: "cardiovascular.table.temperatureRightHand",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "peripheralEdemaRightHand",
-                    fqn: "cardiovascular.table.peripheralEdemaRightHand",
-                    inputType: "select",
                     label: "Peripheral edema: Left hand",
-                    tableColumn: "24",
-                    formColumn: "4",
-                    formRow: "4",
-                    formOption: "hideLabel",
                     pageDataKey: "cardiovascular",
-                    dataParent: "cardiovascular.table",
                     level2Key: "table",
-                    page: "Cardiovascular assessment",
+                    elementKey: "peripheralEdemaRightHand",
+                    inputType: "select",
+                    formRow: "4",
+                    formColumn: "4",
+                    formOption: "hideLabel",
+                    tableColumn: "24",
                     options: [
                       {
                         text: "No"
@@ -5468,21 +5264,20 @@ export default function () {
                         text: "Pitting"
                       }
                     ],
+                    dataParent: "cardiovascular.table",
+                    fqn: "cardiovascular.table.peripheralEdemaRightHand",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "nailBedColourRightHand",
-                    fqn: "cardiovascular.table.nailBedColourRightHand",
-                    inputType: "select",
                     label: "Nail bed colour: Left hand",
-                    tableColumn: "28",
-                    formColumn: "5",
-                    formRow: "4",
-                    formOption: "hideLabel",
                     pageDataKey: "cardiovascular",
-                    dataParent: "cardiovascular.table",
                     level2Key: "table",
-                    page: "Cardiovascular assessment",
+                    elementKey: "nailBedColourRightHand",
+                    inputType: "select",
+                    formRow: "4",
+                    formColumn: "5",
+                    formOption: "hideLabel",
+                    tableColumn: "28",
                     options: [
                       {
                         text: "Pink"
@@ -5491,6 +5286,8 @@ export default function () {
                         text: "Cyanotic"
                       }
                     ],
+                    dataParent: "cardiovascular.table",
+                    fqn: "cardiovascular.table.nailBedColourRightHand",
                     tableKey: "table"
                   }
                 ]
@@ -5499,33 +5296,29 @@ export default function () {
                 formRow: "5",
                 elements: [
                   {
-                    elementKey: "lableLeftHand",
-                    fqn: "cardiovascular.table.lableLeftHand",
-                    inputType: "form-label",
                     label: "Left hand",
-                    tableColumn: "13",
-                    formColumn: "1",
-                    formRow: "5",
                     pageDataKey: "cardiovascular",
-                    dataParent: "cardiovascular.table",
                     level2Key: "table",
-                    page: "Cardiovascular assessment",
+                    elementKey: "lableLeftHand",
+                    inputType: "form-label",
+                    formRow: "5",
+                    formColumn: "1",
+                    tableColumn: "13",
+                    dataParent: "cardiovascular.table",
+                    fqn: "cardiovascular.table.lableLeftHand",
                     tableCss: "hide-table-element",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "capRefillLeftHand",
-                    fqn: "cardiovascular.table.capRefillLeftHand",
-                    inputType: "select",
                     label: "Cap refill: Right foot",
-                    tableColumn: "17",
-                    formColumn: "2",
-                    formRow: "5",
-                    formOption: "hideLabel",
                     pageDataKey: "cardiovascular",
-                    dataParent: "cardiovascular.table",
                     level2Key: "table",
-                    page: "Cardiovascular assessment",
+                    elementKey: "capRefillLeftHand",
+                    inputType: "select",
+                    formRow: "5",
+                    formColumn: "2",
+                    formOption: "hideLabel",
+                    tableColumn: "17",
                     options: [
                       {
                         text: "Normal"
@@ -5534,21 +5327,20 @@ export default function () {
                         text: "Delayed"
                       }
                     ],
+                    dataParent: "cardiovascular.table",
+                    fqn: "cardiovascular.table.capRefillLeftHand",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "temperatureLeftHand",
-                    fqn: "cardiovascular.table.temperatureLeftHand",
-                    inputType: "select",
                     label: "Temperature: Right foot",
-                    tableColumn: "21",
-                    formColumn: "3",
-                    formRow: "5",
-                    formOption: "hideLabel",
                     pageDataKey: "cardiovascular",
-                    dataParent: "cardiovascular.table",
                     level2Key: "table",
-                    page: "Cardiovascular assessment",
+                    elementKey: "temperatureLeftHand",
+                    inputType: "select",
+                    formRow: "5",
+                    formColumn: "3",
+                    formOption: "hideLabel",
+                    tableColumn: "21",
                     options: [
                       {
                         text: "Warm"
@@ -5560,21 +5352,20 @@ export default function () {
                         text: "Hot"
                       }
                     ],
+                    dataParent: "cardiovascular.table",
+                    fqn: "cardiovascular.table.temperatureLeftHand",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "peripheralEdemaLeftHand",
-                    fqn: "cardiovascular.table.peripheralEdemaLeftHand",
-                    inputType: "select",
                     label: "Peripheral edema: Right foot",
-                    tableColumn: "25",
-                    formColumn: "4",
-                    formRow: "5",
-                    formOption: "hideLabel",
                     pageDataKey: "cardiovascular",
-                    dataParent: "cardiovascular.table",
                     level2Key: "table",
-                    page: "Cardiovascular assessment",
+                    elementKey: "peripheralEdemaLeftHand",
+                    inputType: "select",
+                    formRow: "5",
+                    formColumn: "4",
+                    formOption: "hideLabel",
+                    tableColumn: "25",
                     options: [
                       {
                         text: "No"
@@ -5592,21 +5383,20 @@ export default function () {
                         text: "Pitting"
                       }
                     ],
+                    dataParent: "cardiovascular.table",
+                    fqn: "cardiovascular.table.peripheralEdemaLeftHand",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "nailBedColourLeftHand",
-                    fqn: "cardiovascular.table.nailBedColourLeftHand",
-                    inputType: "select",
                     label: "Nail bed colour: Right Foot",
-                    tableColumn: "29",
-                    formColumn: "5",
-                    formRow: "5",
-                    formOption: "hideLabel",
                     pageDataKey: "cardiovascular",
-                    dataParent: "cardiovascular.table",
                     level2Key: "table",
-                    page: "Cardiovascular assessment",
+                    elementKey: "nailBedColourLeftHand",
+                    inputType: "select",
+                    formRow: "5",
+                    formColumn: "5",
+                    formOption: "hideLabel",
+                    tableColumn: "29",
                     options: [
                       {
                         text: "Pink"
@@ -5615,6 +5405,8 @@ export default function () {
                         text: "Cyanotic"
                       }
                     ],
+                    dataParent: "cardiovascular.table",
+                    fqn: "cardiovascular.table.nailBedColourLeftHand",
                     tableKey: "table"
                   }
                 ]
@@ -5623,33 +5415,29 @@ export default function () {
                 formRow: "6",
                 elements: [
                   {
-                    elementKey: "labelRightFoot",
-                    fqn: "cardiovascular.table.labelRightFoot",
-                    inputType: "form-label",
                     label: "Right foot",
-                    tableColumn: "14",
-                    formColumn: "1",
-                    formRow: "6",
                     pageDataKey: "cardiovascular",
-                    dataParent: "cardiovascular.table",
                     level2Key: "table",
-                    page: "Cardiovascular assessment",
+                    elementKey: "labelRightFoot",
+                    inputType: "form-label",
+                    formRow: "6",
+                    formColumn: "1",
+                    tableColumn: "14",
+                    dataParent: "cardiovascular.table",
+                    fqn: "cardiovascular.table.labelRightFoot",
                     tableCss: "hide-table-element",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "capRefillRightFoot",
-                    fqn: "cardiovascular.table.capRefillRightFoot",
-                    inputType: "select",
                     label: "Cap refill: Left foot",
-                    tableColumn: "18",
-                    formColumn: "2",
-                    formRow: "6",
-                    formOption: "hideLabel",
                     pageDataKey: "cardiovascular",
-                    dataParent: "cardiovascular.table",
                     level2Key: "table",
-                    page: "Cardiovascular assessment",
+                    elementKey: "capRefillRightFoot",
+                    inputType: "select",
+                    formRow: "6",
+                    formColumn: "2",
+                    formOption: "hideLabel",
+                    tableColumn: "18",
                     options: [
                       {
                         text: "Normal"
@@ -5658,21 +5446,20 @@ export default function () {
                         text: "Delayed"
                       }
                     ],
+                    dataParent: "cardiovascular.table",
+                    fqn: "cardiovascular.table.capRefillRightFoot",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "temperatureRightFoot",
-                    fqn: "cardiovascular.table.temperatureRightFoot",
-                    inputType: "select",
                     label: "Temperature: Left foot",
-                    tableColumn: "22",
-                    formColumn: "3",
-                    formRow: "6",
-                    formOption: "hideLabel",
                     pageDataKey: "cardiovascular",
-                    dataParent: "cardiovascular.table",
                     level2Key: "table",
-                    page: "Cardiovascular assessment",
+                    elementKey: "temperatureRightFoot",
+                    inputType: "select",
+                    formRow: "6",
+                    formColumn: "3",
+                    formOption: "hideLabel",
+                    tableColumn: "22",
                     options: [
                       {
                         text: "Warm"
@@ -5684,21 +5471,20 @@ export default function () {
                         text: "Hot"
                       }
                     ],
+                    dataParent: "cardiovascular.table",
+                    fqn: "cardiovascular.table.temperatureRightFoot",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "peripheralEdemaRightFoot",
-                    fqn: "cardiovascular.table.peripheralEdemaRightFoot",
-                    inputType: "select",
                     label: "Peripheral edema: Left foot",
-                    tableColumn: "26",
-                    formColumn: "4",
-                    formRow: "6",
-                    formOption: "hideLabel",
                     pageDataKey: "cardiovascular",
-                    dataParent: "cardiovascular.table",
                     level2Key: "table",
-                    page: "Cardiovascular assessment",
+                    elementKey: "peripheralEdemaRightFoot",
+                    inputType: "select",
+                    formRow: "6",
+                    formColumn: "4",
+                    formOption: "hideLabel",
+                    tableColumn: "26",
                     options: [
                       {
                         text: "No"
@@ -5716,21 +5502,20 @@ export default function () {
                         text: "Pitting"
                       }
                     ],
+                    dataParent: "cardiovascular.table",
+                    fqn: "cardiovascular.table.peripheralEdemaRightFoot",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "nailBedColourRightFoot",
-                    fqn: "cardiovascular.table.nailBedColourRightFoot",
-                    inputType: "select",
                     label: "Nail bed colour: Left foot",
-                    tableColumn: "30",
-                    formColumn: "5",
-                    formRow: "6",
-                    formOption: "hideLabel",
                     pageDataKey: "cardiovascular",
-                    dataParent: "cardiovascular.table",
                     level2Key: "table",
-                    page: "Cardiovascular assessment",
+                    elementKey: "nailBedColourRightFoot",
+                    inputType: "select",
+                    formRow: "6",
+                    formColumn: "5",
+                    formOption: "hideLabel",
+                    tableColumn: "30",
                     options: [
                       {
                         text: "Pink"
@@ -5739,6 +5524,8 @@ export default function () {
                         text: "Cyanotic"
                       }
                     ],
+                    dataParent: "cardiovascular.table",
+                    fqn: "cardiovascular.table.nailBedColourRightFoot",
                     tableKey: "table"
                   }
                 ]
@@ -5747,33 +5534,29 @@ export default function () {
                 formRow: "7",
                 elements: [
                   {
-                    elementKey: "labelLeftFoot",
-                    fqn: "cardiovascular.table.labelLeftFoot",
-                    inputType: "form-label",
                     label: "Left foot",
-                    tableColumn: "15",
-                    formColumn: "1",
-                    formRow: "7",
                     pageDataKey: "cardiovascular",
-                    dataParent: "cardiovascular.table",
                     level2Key: "table",
-                    page: "Cardiovascular assessment",
+                    elementKey: "labelLeftFoot",
+                    inputType: "form-label",
+                    formRow: "7",
+                    formColumn: "1",
+                    tableColumn: "15",
+                    dataParent: "cardiovascular.table",
+                    fqn: "cardiovascular.table.labelLeftFoot",
                     tableCss: "hide-table-element",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "capRefillLeftFoot",
-                    fqn: "cardiovascular.table.capRefillLeftFoot",
-                    inputType: "select",
                     label: "Temperature: Right hand",
-                    tableColumn: "19",
-                    formColumn: "2",
-                    formRow: "7",
-                    formOption: "hideLabel",
                     pageDataKey: "cardiovascular",
-                    dataParent: "cardiovascular.table",
                     level2Key: "table",
-                    page: "Cardiovascular assessment",
+                    elementKey: "capRefillLeftFoot",
+                    inputType: "select",
+                    formRow: "7",
+                    formColumn: "2",
+                    formOption: "hideLabel",
+                    tableColumn: "19",
                     options: [
                       {
                         text: "Normal"
@@ -5782,21 +5565,20 @@ export default function () {
                         text: "Delayed"
                       }
                     ],
+                    dataParent: "cardiovascular.table",
+                    fqn: "cardiovascular.table.capRefillLeftFoot",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "temperatureLeftFoot",
-                    fqn: "cardiovascular.table.temperatureLeftFoot",
-                    inputType: "select",
                     label: "Peripheral edema: Right hand",
-                    tableColumn: "23",
-                    formColumn: "3",
-                    formRow: "7",
-                    formOption: "hideLabel",
                     pageDataKey: "cardiovascular",
-                    dataParent: "cardiovascular.table",
                     level2Key: "table",
-                    page: "Cardiovascular assessment",
+                    elementKey: "temperatureLeftFoot",
+                    inputType: "select",
+                    formRow: "7",
+                    formColumn: "3",
+                    formOption: "hideLabel",
+                    tableColumn: "23",
                     options: [
                       {
                         text: "Warm"
@@ -5808,21 +5590,20 @@ export default function () {
                         text: "Hot"
                       }
                     ],
+                    dataParent: "cardiovascular.table",
+                    fqn: "cardiovascular.table.temperatureLeftFoot",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "peripheralEdemaLeftFoot",
-                    fqn: "cardiovascular.table.peripheralEdemaLeftFoot",
-                    inputType: "select",
                     label: "Nail bed colour: Right hand",
-                    tableColumn: "27",
-                    formColumn: "4",
-                    formRow: "7",
-                    formOption: "hideLabel",
                     pageDataKey: "cardiovascular",
-                    dataParent: "cardiovascular.table",
                     level2Key: "table",
-                    page: "Cardiovascular assessment",
+                    elementKey: "peripheralEdemaLeftFoot",
+                    inputType: "select",
+                    formRow: "7",
+                    formColumn: "4",
+                    formOption: "hideLabel",
+                    tableColumn: "27",
                     options: [
                       {
                         text: "No"
@@ -5840,20 +5621,19 @@ export default function () {
                         text: "Pitting"
                       }
                     ],
+                    dataParent: "cardiovascular.table",
+                    fqn: "cardiovascular.table.peripheralEdemaLeftFoot",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "nailBedColourLeftFoot",
-                    fqn: "cardiovascular.table.nailBedColourLeftFoot",
-                    inputType: "select",
-                    tableColumn: "31",
-                    formColumn: "5",
-                    formRow: "7",
-                    formOption: "hideLabel",
                     pageDataKey: "cardiovascular",
-                    dataParent: "cardiovascular.table",
                     level2Key: "table",
-                    page: "Cardiovascular assessment",
+                    elementKey: "nailBedColourLeftFoot",
+                    inputType: "select",
+                    formRow: "7",
+                    formColumn: "5",
+                    formOption: "hideLabel",
+                    tableColumn: "31",
                     options: [
                       {
                         text: "Pink"
@@ -5862,6 +5642,8 @@ export default function () {
                         text: "Cyanotic"
                       }
                     ],
+                    dataParent: "cardiovascular.table",
+                    fqn: "cardiovascular.table.nailBedColourLeftFoot",
                     tableKey: "table"
                   }
                 ]
@@ -5870,17 +5652,16 @@ export default function () {
                 formRow: "8",
                 elements: [
                   {
-                    elementKey: "comments",
-                    fqn: "cardiovascular.table.comments",
-                    inputType: "text",
                     label: "Comments",
-                    tableColumn: "32",
-                    formColumn: "1",
-                    formRow: "8",
                     pageDataKey: "cardiovascular",
-                    dataParent: "cardiovascular.table",
                     level2Key: "table",
-                    page: "Cardiovascular assessment",
+                    elementKey: "comments",
+                    inputType: "text",
+                    formRow: "8",
+                    formColumn: "1",
+                    tableColumn: "32",
+                    dataParent: "cardiovascular.table",
+                    fqn: "cardiovascular.table.comments",
                     tableKey: "table"
                   }
                 ]
@@ -5897,6 +5678,7 @@ export default function () {
     gastrointestinal: {
       pageTitle: "Gastrointestinal assessment",
       pageDataKey: "gastrointestinal",
+      generated: "2019-03-12T16:05:46-07:00",
       hasTable: true,
       tables: [
         {
@@ -5904,168 +5686,159 @@ export default function () {
           addButtonText: "Add a gastrointestinal assessment",
           tableCells: [
             {
-              elementKey: "name",
-              fqn: "gastrointestinal.table.name",
-              inputType: "text",
               label: "Name",
-              tableColumn: "1",
-              formCss: "user_name",
-              formColumn: "1",
-              formRow: "1",
               pageDataKey: "gastrointestinal",
-              dataParent: "gastrointestinal.table",
               level2Key: "table",
-              page: "Gastrointestinal assessment",
+              elementKey: "name",
+              inputType: "text",
+              formRow: "1",
+              formColumn: "1",
+              tableColumn: "1",
+              dataParent: "gastrointestinal.table",
+              fqn: "gastrointestinal.table.name",
               tableKey: "table"
             },
             {
-              elementKey: "bSounds",
-              fqn: "gastrointestinal.table.bSounds",
-              inputType: "fieldset",
               label: "Bowel Sounds",
-              formColumn: "2",
-              formRow: "3",
               pageDataKey: "gastrointestinal",
-              dataParent: "gastrointestinal.table",
               level2Key: "table",
-              page: "Gastrointestinal assessment",
+              elementKey: "bSounds",
+              inputType: "fieldset",
+              formRow: "3",
+              formColumn: "2",
+              dataParent: "gastrointestinal.table",
+              fqn: "gastrointestinal.table.bSounds",
               containerType: "fieldset",
               containerKey: "bSounds",
               tableCss: "hide-table-element",
               tableKey: "table"
             },
             {
-              elementKey: "day",
-              fqn: "gastrointestinal.table.day",
-              inputType: "day",
               label: "Day",
-              tableColumn: "3",
-              formCss: "user_day",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              elementKey: "day",
+              inputType: "day",
+              formRow: "1",
               formColumn: "4",
-              formRow: "1",
-              pageDataKey: "gastrointestinal",
+              tableColumn: "3",
               dataParent: "gastrointestinal.table",
-              level2Key: "table",
-              page: "Gastrointestinal assessment",
+              fqn: "gastrointestinal.table.day",
               tableKey: "table"
             },
             {
-              elementKey: "time",
-              fqn: "gastrointestinal.table.time",
-              inputType: "time",
               label: "Time",
-              tableColumn: "4",
-              formCss: "user_time",
-              formColumn: "5",
-              formRow: "1",
               pageDataKey: "gastrointestinal",
-              dataParent: "gastrointestinal.table",
               level2Key: "table",
-              page: "Gastrointestinal assessment",
+              elementKey: "time",
+              inputType: "time",
+              formRow: "1",
+              formColumn: "5",
+              tableColumn: "4",
+              dataParent: "gastrointestinal.table",
+              fqn: "gastrointestinal.table.time",
               tableKey: "table"
             },
             {
-              elementKey: "soft",
-              fqn: "gastrointestinal.table.abdomen.soft",
-              inputType: "checkbox",
               label: "Soft",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "abdomen",
+              elementKey: "soft",
+              inputType: "checkbox",
               tableColumn: "6",
               fsetRow: "1",
               fsetCol: "1",
-              pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.abdomen",
-              level2Key: "table",
-              page: "Gastrointestinal assessment",
+              fqn: "gastrointestinal.table.abdomen.soft",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "tender",
-              fqn: "gastrointestinal.table.abdomen.tender",
-              inputType: "checkbox",
               label: "Tender",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "abdomen",
+              elementKey: "tender",
+              inputType: "checkbox",
               tableColumn: "7",
               fsetRow: "2",
               fsetCol: "1",
-              pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.abdomen",
-              level2Key: "table",
-              page: "Gastrointestinal assessment",
+              fqn: "gastrointestinal.table.abdomen.tender",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "rigid",
-              fqn: "gastrointestinal.table.abdomen.rigid",
-              inputType: "checkbox",
               label: "Rigid",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "abdomen",
+              elementKey: "rigid",
+              inputType: "checkbox",
               tableColumn: "8",
               fsetRow: "3",
               fsetCol: "1",
-              pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.abdomen",
-              level2Key: "table",
-              page: "Gastrointestinal assessment",
+              fqn: "gastrointestinal.table.abdomen.rigid",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "guarding",
-              fqn: "gastrointestinal.table.abdomen.guarding",
-              inputType: "checkbox",
               label: "Guarding",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "abdomen",
+              elementKey: "guarding",
+              inputType: "checkbox",
               tableColumn: "9",
               fsetRow: "4",
               fsetCol: "1",
-              pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.abdomen",
-              level2Key: "table",
-              page: "Gastrointestinal assessment",
+              fqn: "gastrointestinal.table.abdomen.guarding",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "distended",
-              fqn: "gastrointestinal.table.abdomen.distended",
-              inputType: "checkbox",
               label: "Distended",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "abdomen",
+              elementKey: "distended",
+              inputType: "checkbox",
               tableColumn: "10",
               fsetRow: "5",
               fsetCol: "1",
-              pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.abdomen",
-              level2Key: "table",
-              page: "Gastrointestinal assessment",
+              fqn: "gastrointestinal.table.abdomen.distended",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "scars",
-              fqn: "gastrointestinal.table.abdomen.scars",
-              inputType: "checkbox",
               label: "Scars",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "abdomen",
+              elementKey: "scars",
+              inputType: "checkbox",
               tableColumn: "11",
               fsetRow: "6",
               fsetCol: "1",
-              pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.abdomen",
-              level2Key: "table",
-              page: "Gastrointestinal assessment",
+              fqn: "gastrointestinal.table.abdomen.scars",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "pain",
-              fqn: "gastrointestinal.table.abdomen.pain",
-              inputType: "select",
               label: "Abdominal pain",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "abdomen",
+              elementKey: "pain",
+              inputType: "select",
               tableColumn: "12",
               fsetRow: "7",
               fsetCol: "1",
-              pageDataKey: "gastrointestinal",
-              dataParent: "gastrointestinal.table.abdomen",
-              level2Key: "table",
-              page: "Gastrointestinal assessment",
               options: [
                 {
                   text: "Yes"
@@ -6074,54 +5847,53 @@ export default function () {
                   text: "No"
                 }
               ],
+              dataParent: "gastrointestinal.table.abdomen",
+              fqn: "gastrointestinal.table.abdomen.pain",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "aLabel",
-              fqn: "gastrointestinal.table.abdomen.aLabel",
-              inputType: "form-label",
               label: "If answered yes, please complete the pain assessent",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "abdomen",
+              elementKey: "aLabel",
+              inputType: "form-label",
+              formOption: "labelWithPageRef",
               tableColumn: "13",
               fsetRow: "8",
               fsetCol: "1",
-              formOption: "labelWithPageRef",
-              pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.abdomen",
-              level2Key: "table",
-              page: "Gastrointestinal assessment",
+              fqn: "gastrointestinal.table.abdomen.aLabel",
               tableCss: "hide-table-element",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "abdomen",
-              fqn: "gastrointestinal.table.abdomen",
-              inputType: "fieldset",
               label: "Abdomen",
-              formColumn: "1",
-              formRow: "2",
               pageDataKey: "gastrointestinal",
-              dataParent: "gastrointestinal.table",
               level2Key: "table",
-              page: "Gastrointestinal assessment",
+              elementKey: "abdomen",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "1",
+              dataParent: "gastrointestinal.table",
+              fqn: "gastrointestinal.table.abdomen",
               containerType: "fieldset",
               containerKey: "abdomen",
               tableCss: "hide-table-element",
               tableKey: "table"
             },
             {
-              elementKey: "none",
-              fqn: "gastrointestinal.table.emesis.none",
-              inputType: "select",
               label: "None",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "emesis",
+              elementKey: "none",
+              inputType: "select",
               tableColumn: "14",
               fsetRow: "1",
               fsetCol: "1",
-              pageDataKey: "gastrointestinal",
-              dataParent: "gastrointestinal.table.emesis",
-              level2Key: "table",
-              page: "Gastrointestinal assessment",
               options: [
                 {
                   text: "Need"
@@ -6133,51 +5905,51 @@ export default function () {
                   text: "Here"
                 }
               ],
+              dataParent: "gastrointestinal.table.emesis",
+              fqn: "gastrointestinal.table.emesis.none",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "nausea",
-              fqn: "gastrointestinal.table.emesis.nausea",
-              inputType: "text",
               label: "Nausea",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "emesis",
+              elementKey: "nausea",
+              inputType: "text",
               tableColumn: "15",
               fsetRow: "2",
               fsetCol: "1",
-              pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.emesis",
-              level2Key: "table",
-              page: "Gastrointestinal assessment",
+              fqn: "gastrointestinal.table.emesis.nausea",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "vomiting",
-              fqn: "gastrointestinal.table.emesis.vomiting",
-              inputType: "text",
               label: "Vomiting",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "emesis",
+              elementKey: "vomiting",
+              inputType: "text",
               tableColumn: "16",
               fsetRow: "3",
               fsetCol: "1",
-              pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.emesis",
-              level2Key: "table",
-              page: "Gastrointestinal assessment",
+              fqn: "gastrointestinal.table.emesis.vomiting",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "colour",
-              fqn: "gastrointestinal.table.emesis.colour",
-              inputType: "select",
               label: "Emesis colour",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "emesis",
+              elementKey: "colour",
+              inputType: "select",
               tableColumn: "17",
               fsetRow: "4",
               fsetCol: "1",
-              pageDataKey: "gastrointestinal",
-              dataParent: "gastrointestinal.table.emesis",
-              level2Key: "table",
-              page: "Gastrointestinal assessment",
               options: [
                 {
                   text: "Need"
@@ -6189,36 +5961,36 @@ export default function () {
                   text: "Here"
                 }
               ],
+              dataParent: "gastrointestinal.table.emesis",
+              fqn: "gastrointestinal.table.emesis.colour",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "description",
-              fqn: "gastrointestinal.table.emesis.description",
-              inputType: "text",
               label: "Description",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "emesis",
+              elementKey: "description",
+              inputType: "text",
               tableColumn: "18",
               fsetRow: "5",
               fsetCol: "1",
-              pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.emesis",
-              level2Key: "table",
-              page: "Gastrointestinal assessment",
+              fqn: "gastrointestinal.table.emesis.description",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "amount",
-              fqn: "gastrointestinal.table.emesis.amount",
-              inputType: "select",
               label: "Approximate volume",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "emesis",
+              elementKey: "amount",
+              inputType: "select",
               tableColumn: "19",
               fsetRow: "6",
               fsetCol: "1",
-              pageDataKey: "gastrointestinal",
-              dataParent: "gastrointestinal.table.emesis",
-              level2Key: "table",
-              page: "Gastrointestinal assessment",
               options: [
                 {
                   text: "Small"
@@ -6230,37 +6002,36 @@ export default function () {
                   text: "Large"
                 }
               ],
+              dataParent: "gastrointestinal.table.emesis",
+              fqn: "gastrointestinal.table.emesis.amount",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "emesis",
-              fqn: "gastrointestinal.table.emesis",
-              inputType: "fieldset",
               label: "Emesis",
-              formColumn: "2",
-              formRow: "2",
               pageDataKey: "gastrointestinal",
-              dataParent: "gastrointestinal.table",
               level2Key: "table",
-              page: "Gastrointestinal assessment",
+              elementKey: "emesis",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "2",
+              dataParent: "gastrointestinal.table",
+              fqn: "gastrointestinal.table.emesis",
               containerType: "fieldset",
               containerKey: "emesis",
               tableCss: "hide-table-element",
               tableKey: "table"
             },
             {
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "eatingGroup",
               elementKey: "eating",
-              fqn: "gastrointestinal.table.eatingGroup.eating",
               inputType: "select",
+              formOption: "boldLabel",
               tableColumn: "20",
               fsetRow: "1",
               fsetCol: "1",
-              formOption: "boldLabel",
-              pageDataKey: "gastrointestinal",
-              dataParent: "gastrointestinal.table.eatingGroup",
-              level2Key: "table",
-              page: "Gastrointestinal assessment",
               options: [
                 {
                   text: "Regular"
@@ -6269,99 +6040,95 @@ export default function () {
                   text: "Difficult"
                 }
               ],
+              dataParent: "gastrointestinal.table.eatingGroup",
+              fqn: "gastrointestinal.table.eatingGroup.eating",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "reason",
-              fqn: "gastrointestinal.table.eatingGroup.reason",
-              inputType: "text",
               label: "Reason",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "eatingGroup",
+              elementKey: "reason",
+              inputType: "text",
               tableColumn: "21",
               fsetRow: "2",
               fsetCol: "1",
-              pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.eatingGroup",
-              level2Key: "table",
-              page: "Gastrointestinal assessment",
+              fqn: "gastrointestinal.table.eatingGroup.reason",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "eatingGroup",
-              fqn: "gastrointestinal.table.eatingGroup",
-              inputType: "fieldset",
               label: "Eating",
-              formColumn: "3",
-              formRow: "2",
-              formOption: "hideLabel",
               pageDataKey: "gastrointestinal",
-              dataParent: "gastrointestinal.table",
               level2Key: "table",
-              page: "Gastrointestinal assessment",
+              elementKey: "eatingGroup",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "3",
+              formOption: "hideLabel",
+              dataParent: "gastrointestinal.table",
+              fqn: "gastrointestinal.table.eatingGroup",
               containerType: "fieldset",
               containerKey: "eatingGroup",
               tableCss: "hide-table-element",
               tableKey: "table"
             },
             {
-              elementKey: "profession",
-              fqn: "gastrointestinal.table.profession",
-              inputType: "text",
               label: "Profession",
-              tableColumn: "2",
-              formCss: "user_pro",
-              formColumn: "2",
-              formRow: "1",
               pageDataKey: "gastrointestinal",
-              dataParent: "gastrointestinal.table",
               level2Key: "table",
-              page: "Gastrointestinal assessment",
+              elementKey: "profession",
+              inputType: "text",
+              formRow: "1",
+              formColumn: "2",
+              tableColumn: "2",
+              dataParent: "gastrointestinal.table",
+              fqn: "gastrointestinal.table.profession",
               tableKey: "table"
             },
             {
-              elementKey: "npoSinceTime",
-              fqn: "gastrointestinal.table.npoSince.npoSinceTime",
-              inputType: "time",
               label: "Time",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "npoSince",
+              elementKey: "npoSinceTime",
+              inputType: "time",
               tableColumn: "23",
               fsetRow: "4",
               fsetCol: "1",
-              pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.npoSince",
-              level2Key: "table",
-              page: "Gastrointestinal assessment",
+              fqn: "gastrointestinal.table.npoSince.npoSinceTime",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "npoSince",
-              fqn: "gastrointestinal.table.npoSince",
-              inputType: "fieldset",
               label: "NPO since",
-              formColumn: "3",
-              formRow: "2",
               pageDataKey: "gastrointestinal",
-              dataParent: "gastrointestinal.table",
               level2Key: "table",
-              page: "Gastrointestinal assessment",
+              elementKey: "npoSince",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "3",
+              dataParent: "gastrointestinal.table",
+              fqn: "gastrointestinal.table.npoSince",
               containerType: "fieldset",
               containerKey: "npoSince",
               tableCss: "hide-table-element",
               tableKey: "table"
             },
             {
-              elementKey: "stoolColour",
-              fqn: "gastrointestinal.table.stool.stoolColour",
-              inputType: "select",
               label: "Stool colour",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "stool",
+              elementKey: "stoolColour",
+              inputType: "select",
               tableColumn: "24",
               fsetRow: "1",
               fsetCol: "1",
-              pageDataKey: "gastrointestinal",
-              dataParent: "gastrointestinal.table.stool",
-              level2Key: "table",
-              page: "Gastrointestinal assessment",
               options: [
                 {
                   text: "Brown"
@@ -6385,21 +6152,21 @@ export default function () {
                   text: "Dark red"
                 }
               ],
+              dataParent: "gastrointestinal.table.stool",
+              fqn: "gastrointestinal.table.stool.stoolColour",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "stoolDescription",
-              fqn: "gastrointestinal.table.stool.stoolDescription",
-              inputType: "select",
               label: "Description",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "stool",
+              elementKey: "stoolDescription",
+              inputType: "select",
               tableColumn: "25",
               fsetRow: "2",
               fsetCol: "1",
-              pageDataKey: "gastrointestinal",
-              dataParent: "gastrointestinal.table.stool",
-              level2Key: "table",
-              page: "Gastrointestinal assessment",
               options: [
                 {
                   text: "Runny"
@@ -6408,36 +6175,36 @@ export default function () {
                   text: "Hard pellets"
                 }
               ],
+              dataParent: "gastrointestinal.table.stool",
+              fqn: "gastrointestinal.table.stool.stoolDescription",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "stoolAmount",
-              fqn: "gastrointestinal.table.stool.stoolAmount",
-              inputType: "text",
               label: "Amount",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "stool",
+              elementKey: "stoolAmount",
+              inputType: "text",
               tableColumn: "26",
               fsetRow: "3",
               fsetCol: "1",
-              pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.stool",
-              level2Key: "table",
-              page: "Gastrointestinal assessment",
+              fqn: "gastrointestinal.table.stool.stoolAmount",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "stoolSource",
-              fqn: "gastrointestinal.table.stool.stoolSource",
-              inputType: "select",
               label: "Source",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "stool",
+              elementKey: "stoolSource",
+              inputType: "select",
               tableColumn: "27",
               fsetRow: "4",
               fsetCol: "1",
-              pageDataKey: "gastrointestinal",
-              dataParent: "gastrointestinal.table.stool",
-              level2Key: "table",
-              page: "Gastrointestinal assessment",
               options: [
                 {
                   text: "Observed"
@@ -6449,262 +6216,262 @@ export default function () {
                   text: "Not observed"
                 }
               ],
+              dataParent: "gastrointestinal.table.stool",
+              fqn: "gastrointestinal.table.stool.stoolSource",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "comments",
-              fqn: "gastrointestinal.table.stool.comments",
-              inputType: "textarea",
               label: "Comments",
-              tableColumn: "28",
-              formRow: "4",
               pageDataKey: "gastrointestinal",
-              dataParent: "gastrointestinal.table.stool",
               level2Key: "table",
-              page: "Gastrointestinal assessment",
+              level3Key: "stool",
+              elementKey: "comments",
+              inputType: "textarea",
+              formRow: "4",
+              tableColumn: "28",
+              dataParent: "gastrointestinal.table.stool",
+              fqn: "gastrointestinal.table.stool.comments",
               tableKey: "table"
             },
             {
-              elementKey: "stool",
-              fqn: "gastrointestinal.table.stool",
-              inputType: "fieldset",
               label: "Stool",
-              formColumn: "3",
-              formRow: "3",
               pageDataKey: "gastrointestinal",
-              dataParent: "gastrointestinal.table",
               level2Key: "table",
-              page: "Gastrointestinal assessment",
+              elementKey: "stool",
+              inputType: "fieldset",
+              formRow: "3",
+              formColumn: "3",
+              dataParent: "gastrointestinal.table",
+              fqn: "gastrointestinal.table.stool",
               containerType: "fieldset",
               containerKey: "stool",
               tableCss: "hide-table-element",
               tableKey: "table"
             },
             {
-              elementKey: "normal",
-              fqn: "gastrointestinal.table.bowel.normal",
-              inputType: "checkbox",
               label: "Normal",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "bowel",
+              elementKey: "normal",
+              inputType: "checkbox",
               tableColumn: "29",
               fsetRow: "1",
               fsetCol: "1",
-              pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.bowel",
-              level2Key: "table",
-              page: "Gastrointestinal assessment",
+              fqn: "gastrointestinal.table.bowel.normal",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "constipation",
-              fqn: "gastrointestinal.table.bowel.constipation",
-              inputType: "checkbox",
               label: "Constipation",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "bowel",
+              elementKey: "constipation",
+              inputType: "checkbox",
               tableColumn: "30",
               fsetRow: "2",
               fsetCol: "1",
-              pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.bowel",
-              level2Key: "table",
-              page: "Gastrointestinal assessment",
+              fqn: "gastrointestinal.table.bowel.constipation",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "diarrhea",
-              fqn: "gastrointestinal.table.bowel.diarrhea",
-              inputType: "checkbox",
               label: "Diarrhea",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "bowel",
+              elementKey: "diarrhea",
+              inputType: "checkbox",
               tableColumn: "31",
               fsetRow: "3",
               fsetCol: "1",
-              pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.bowel",
-              level2Key: "table",
-              page: "Gastrointestinal assessment",
+              fqn: "gastrointestinal.table.bowel.diarrhea",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "melena",
-              fqn: "gastrointestinal.table.bowel.melena",
-              inputType: "checkbox",
               label: "Melena",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "bowel",
+              elementKey: "melena",
+              inputType: "checkbox",
               tableColumn: "32",
               fsetRow: "4",
               fsetCol: "1",
-              pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.bowel",
-              level2Key: "table",
-              page: "Gastrointestinal assessment",
+              fqn: "gastrointestinal.table.bowel.melena",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "incontinent",
-              fqn: "gastrointestinal.table.bowel.incontinent",
-              inputType: "checkbox",
               label: "Incontinent",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "bowel",
+              elementKey: "incontinent",
+              inputType: "checkbox",
               tableColumn: "33",
               fsetRow: "5",
               fsetCol: "1",
-              pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.bowel",
-              level2Key: "table",
-              page: "Gastrointestinal assessment",
+              fqn: "gastrointestinal.table.bowel.incontinent",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "lastBm",
-              fqn: "gastrointestinal.table.bowel.lastBm",
-              inputType: "text",
               label: "Last BM",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "bowel",
+              elementKey: "lastBm",
+              inputType: "text",
               tableColumn: "34",
               fsetRow: "6",
               fsetCol: "1",
-              pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.bowel",
-              level2Key: "table",
-              page: "Gastrointestinal assessment",
+              fqn: "gastrointestinal.table.bowel.lastBm",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "bowel",
-              fqn: "gastrointestinal.table.bowel",
-              inputType: "fieldset",
               label: "Bowel Sounds",
-              formColumn: "1",
-              formRow: "3",
               pageDataKey: "gastrointestinal",
-              dataParent: "gastrointestinal.table",
               level2Key: "table",
-              page: "Gastrointestinal assessment",
+              elementKey: "bowel",
+              inputType: "fieldset",
+              formRow: "3",
+              formColumn: "1",
+              dataParent: "gastrointestinal.table",
+              fqn: "gastrointestinal.table.bowel",
               containerType: "fieldset",
               containerKey: "bowel",
               tableCss: "hide-table-element",
               tableKey: "table"
             },
             {
-              elementKey: "bsNone",
-              fqn: "gastrointestinal.table.bSounds.bsNone",
-              inputType: "checkbox",
               label: "None",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "bSounds",
+              elementKey: "bsNone",
+              inputType: "checkbox",
               tableColumn: "39",
               fsetRow: "1",
               fsetCol: "1",
-              pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.bSounds",
-              level2Key: "table",
-              page: "Gastrointestinal assessment",
+              fqn: "gastrointestinal.table.bSounds.bsNone",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "bsLUQ",
-              fqn: "gastrointestinal.table.bSounds.bsLUQ",
-              inputType: "checkbox",
               label: "LUQ",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "bSounds",
+              elementKey: "bsLUQ",
+              inputType: "checkbox",
               tableColumn: "40",
               fsetRow: "2",
               fsetCol: "1",
-              pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.bSounds",
-              level2Key: "table",
-              page: "Gastrointestinal assessment",
+              fqn: "gastrointestinal.table.bSounds.bsLUQ",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "bsRUQ",
-              fqn: "gastrointestinal.table.bSounds.bsRUQ",
-              inputType: "checkbox",
               label: "RUQ",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "bSounds",
+              elementKey: "bsRUQ",
+              inputType: "checkbox",
               tableColumn: "41",
               fsetRow: "3",
               fsetCol: "1",
-              pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.bSounds",
-              level2Key: "table",
-              page: "Gastrointestinal assessment",
+              fqn: "gastrointestinal.table.bSounds.bsRUQ",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "bsLLQ",
-              fqn: "gastrointestinal.table.bSounds.bsLLQ",
-              inputType: "checkbox",
               label: "LLQ",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "bSounds",
+              elementKey: "bsLLQ",
+              inputType: "checkbox",
               tableColumn: "42",
               fsetRow: "4",
               fsetCol: "1",
-              pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.bSounds",
-              level2Key: "table",
-              page: "Gastrointestinal assessment",
+              fqn: "gastrointestinal.table.bSounds.bsLLQ",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "bsRLQ",
-              fqn: "gastrointestinal.table.bSounds.bsRLQ",
-              inputType: "checkbox",
               label: "RLQ",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "bSounds",
+              elementKey: "bsRLQ",
+              inputType: "checkbox",
               tableColumn: "43",
               fsetRow: "5",
               fsetCol: "1",
-              pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.bSounds",
-              level2Key: "table",
-              page: "Gastrointestinal assessment",
+              fqn: "gastrointestinal.table.bSounds.bsRLQ",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "hypoactive",
-              fqn: "gastrointestinal.table.bSounds.hypoactive",
-              inputType: "checkbox",
               label: "Hypoactive",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "bSounds",
+              elementKey: "hypoactive",
+              inputType: "checkbox",
               tableColumn: "44",
               fsetRow: "6",
               fsetCol: "1",
-              pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.bSounds",
-              level2Key: "table",
-              page: "Gastrointestinal assessment",
+              fqn: "gastrointestinal.table.bSounds.hypoactive",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "hyperactive",
-              fqn: "gastrointestinal.table.bSounds.hyperactive",
-              inputType: "checkbox",
               label: "Hyperactive",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "bSounds",
+              elementKey: "hyperactive",
+              inputType: "checkbox",
               tableColumn: "45",
               fsetRow: "7",
               fsetCol: "1",
-              pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.bSounds",
-              level2Key: "table",
-              page: "Gastrointestinal assessment",
+              fqn: "gastrointestinal.table.bSounds.hyperactive",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              elementKey: "npoSinceDate",
-              fqn: "gastrointestinal.table.npoSince.npoSinceDate",
-              inputType: "day",
               label: "Day",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "npoSince",
+              elementKey: "npoSinceDate",
+              inputType: "day",
+              formOption: "boldLabel",
               tableColumn: "22",
               fsetRow: "3",
               fsetCol: "1",
-              formOption: "boldLabel",
-              pageDataKey: "gastrointestinal",
               dataParent: "gastrointestinal.table.npoSince",
-              level2Key: "table",
-              page: "Gastrointestinal assessment",
+              fqn: "gastrointestinal.table.npoSince.npoSinceDate",
               tableKey: "table",
               formColumn: "1"
             }
@@ -6715,63 +6482,55 @@ export default function () {
                 formRow: "1",
                 elements: [
                   {
-                    elementKey: "name",
-                    fqn: "gastrointestinal.table.name",
-                    inputType: "text",
                     label: "Name",
-                    tableColumn: "1",
-                    formCss: "user_name",
-                    formColumn: "1",
-                    formRow: "1",
                     pageDataKey: "gastrointestinal",
-                    dataParent: "gastrointestinal.table",
                     level2Key: "table",
-                    page: "Gastrointestinal assessment",
-                    tableKey: "table"
-                  },
-                  {
-                    elementKey: "profession",
-                    fqn: "gastrointestinal.table.profession",
+                    elementKey: "name",
                     inputType: "text",
+                    formRow: "1",
+                    formColumn: "1",
+                    tableColumn: "1",
+                    dataParent: "gastrointestinal.table",
+                    fqn: "gastrointestinal.table.name",
+                    tableKey: "table"
+                  },
+                  {
                     label: "Profession",
-                    tableColumn: "2",
-                    formCss: "user_pro",
+                    pageDataKey: "gastrointestinal",
+                    level2Key: "table",
+                    elementKey: "profession",
+                    inputType: "text",
+                    formRow: "1",
                     formColumn: "2",
-                    formRow: "1",
-                    pageDataKey: "gastrointestinal",
+                    tableColumn: "2",
                     dataParent: "gastrointestinal.table",
-                    level2Key: "table",
-                    page: "Gastrointestinal assessment",
+                    fqn: "gastrointestinal.table.profession",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "day",
-                    fqn: "gastrointestinal.table.day",
-                    inputType: "day",
                     label: "Day",
-                    tableColumn: "3",
-                    formCss: "user_day",
-                    formColumn: "4",
-                    formRow: "1",
                     pageDataKey: "gastrointestinal",
-                    dataParent: "gastrointestinal.table",
                     level2Key: "table",
-                    page: "Gastrointestinal assessment",
+                    elementKey: "day",
+                    inputType: "day",
+                    formRow: "1",
+                    formColumn: "4",
+                    tableColumn: "3",
+                    dataParent: "gastrointestinal.table",
+                    fqn: "gastrointestinal.table.day",
                     tableKey: "table"
                   },
                   {
-                    elementKey: "time",
-                    fqn: "gastrointestinal.table.time",
-                    inputType: "time",
                     label: "Time",
-                    tableColumn: "4",
-                    formCss: "user_time",
-                    formColumn: "5",
-                    formRow: "1",
                     pageDataKey: "gastrointestinal",
-                    dataParent: "gastrointestinal.table",
                     level2Key: "table",
-                    page: "Gastrointestinal assessment",
+                    elementKey: "time",
+                    inputType: "time",
+                    formRow: "1",
+                    formColumn: "5",
+                    tableColumn: "4",
+                    dataParent: "gastrointestinal.table",
+                    fqn: "gastrointestinal.table.time",
                     tableKey: "table"
                   }
                 ]
@@ -6780,16 +6539,15 @@ export default function () {
                 formRow: "2",
                 elements: [
                   {
-                    elementKey: "abdomen",
-                    fqn: "gastrointestinal.table.abdomen",
-                    inputType: "fieldset",
                     label: "Abdomen",
-                    formColumn: "1",
-                    formRow: "2",
                     pageDataKey: "gastrointestinal",
-                    dataParent: "gastrointestinal.table",
                     level2Key: "table",
-                    page: "Gastrointestinal assessment",
+                    elementKey: "abdomen",
+                    inputType: "fieldset",
+                    formRow: "2",
+                    formColumn: "1",
+                    dataParent: "gastrointestinal.table",
+                    fqn: "gastrointestinal.table.abdomen",
                     containerType: "fieldset",
                     containerKey: "abdomen",
                     tableCss: "hide-table-element",
@@ -6800,17 +6558,17 @@ export default function () {
                           formRow: "1",
                           elements: [
                             {
-                              elementKey: "soft",
-                              fqn: "gastrointestinal.table.abdomen.soft",
-                              inputType: "checkbox",
                               label: "Soft",
+                              pageDataKey: "gastrointestinal",
+                              level2Key: "table",
+                              level3Key: "abdomen",
+                              elementKey: "soft",
+                              inputType: "checkbox",
                               tableColumn: "6",
                               fsetRow: "1",
                               fsetCol: "1",
-                              pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.abdomen",
-                              level2Key: "table",
-                              page: "Gastrointestinal assessment",
+                              fqn: "gastrointestinal.table.abdomen.soft",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -6820,17 +6578,17 @@ export default function () {
                           formRow: "2",
                           elements: [
                             {
-                              elementKey: "tender",
-                              fqn: "gastrointestinal.table.abdomen.tender",
-                              inputType: "checkbox",
                               label: "Tender",
+                              pageDataKey: "gastrointestinal",
+                              level2Key: "table",
+                              level3Key: "abdomen",
+                              elementKey: "tender",
+                              inputType: "checkbox",
                               tableColumn: "7",
                               fsetRow: "2",
                               fsetCol: "1",
-                              pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.abdomen",
-                              level2Key: "table",
-                              page: "Gastrointestinal assessment",
+                              fqn: "gastrointestinal.table.abdomen.tender",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -6840,17 +6598,17 @@ export default function () {
                           formRow: "3",
                           elements: [
                             {
-                              elementKey: "rigid",
-                              fqn: "gastrointestinal.table.abdomen.rigid",
-                              inputType: "checkbox",
                               label: "Rigid",
+                              pageDataKey: "gastrointestinal",
+                              level2Key: "table",
+                              level3Key: "abdomen",
+                              elementKey: "rigid",
+                              inputType: "checkbox",
                               tableColumn: "8",
                               fsetRow: "3",
                               fsetCol: "1",
-                              pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.abdomen",
-                              level2Key: "table",
-                              page: "Gastrointestinal assessment",
+                              fqn: "gastrointestinal.table.abdomen.rigid",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -6860,17 +6618,17 @@ export default function () {
                           formRow: "4",
                           elements: [
                             {
-                              elementKey: "guarding",
-                              fqn: "gastrointestinal.table.abdomen.guarding",
-                              inputType: "checkbox",
                               label: "Guarding",
+                              pageDataKey: "gastrointestinal",
+                              level2Key: "table",
+                              level3Key: "abdomen",
+                              elementKey: "guarding",
+                              inputType: "checkbox",
                               tableColumn: "9",
                               fsetRow: "4",
                               fsetCol: "1",
-                              pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.abdomen",
-                              level2Key: "table",
-                              page: "Gastrointestinal assessment",
+                              fqn: "gastrointestinal.table.abdomen.guarding",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -6880,17 +6638,17 @@ export default function () {
                           formRow: "5",
                           elements: [
                             {
-                              elementKey: "distended",
-                              fqn: "gastrointestinal.table.abdomen.distended",
-                              inputType: "checkbox",
                               label: "Distended",
+                              pageDataKey: "gastrointestinal",
+                              level2Key: "table",
+                              level3Key: "abdomen",
+                              elementKey: "distended",
+                              inputType: "checkbox",
                               tableColumn: "10",
                               fsetRow: "5",
                               fsetCol: "1",
-                              pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.abdomen",
-                              level2Key: "table",
-                              page: "Gastrointestinal assessment",
+                              fqn: "gastrointestinal.table.abdomen.distended",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -6900,17 +6658,17 @@ export default function () {
                           formRow: "6",
                           elements: [
                             {
-                              elementKey: "scars",
-                              fqn: "gastrointestinal.table.abdomen.scars",
-                              inputType: "checkbox",
                               label: "Scars",
+                              pageDataKey: "gastrointestinal",
+                              level2Key: "table",
+                              level3Key: "abdomen",
+                              elementKey: "scars",
+                              inputType: "checkbox",
                               tableColumn: "11",
                               fsetRow: "6",
                               fsetCol: "1",
-                              pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.abdomen",
-                              level2Key: "table",
-                              page: "Gastrointestinal assessment",
+                              fqn: "gastrointestinal.table.abdomen.scars",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -6920,17 +6678,15 @@ export default function () {
                           formRow: "7",
                           elements: [
                             {
-                              elementKey: "pain",
-                              fqn: "gastrointestinal.table.abdomen.pain",
-                              inputType: "select",
                               label: "Abdominal pain",
+                              pageDataKey: "gastrointestinal",
+                              level2Key: "table",
+                              level3Key: "abdomen",
+                              elementKey: "pain",
+                              inputType: "select",
                               tableColumn: "12",
                               fsetRow: "7",
                               fsetCol: "1",
-                              pageDataKey: "gastrointestinal",
-                              dataParent: "gastrointestinal.table.abdomen",
-                              level2Key: "table",
-                              page: "Gastrointestinal assessment",
                               options: [
                                 {
                                   text: "Yes"
@@ -6939,6 +6695,8 @@ export default function () {
                                   text: "No"
                                 }
                               ],
+                              dataParent: "gastrointestinal.table.abdomen",
+                              fqn: "gastrointestinal.table.abdomen.pain",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -6948,18 +6706,18 @@ export default function () {
                           formRow: "8",
                           elements: [
                             {
-                              elementKey: "aLabel",
-                              fqn: "gastrointestinal.table.abdomen.aLabel",
-                              inputType: "form-label",
                               label: "If answered yes, please complete the pain assessent",
+                              pageDataKey: "gastrointestinal",
+                              level2Key: "table",
+                              level3Key: "abdomen",
+                              elementKey: "aLabel",
+                              inputType: "form-label",
+                              formOption: "labelWithPageRef",
                               tableColumn: "13",
                               fsetRow: "8",
                               fsetCol: "1",
-                              formOption: "labelWithPageRef",
-                              pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.abdomen",
-                              level2Key: "table",
-                              page: "Gastrointestinal assessment",
+                              fqn: "gastrointestinal.table.abdomen.aLabel",
                               tableCss: "hide-table-element",
                               tableKey: "table",
                               formColumn: "1"
@@ -6971,16 +6729,15 @@ export default function () {
                     }
                   },
                   {
-                    elementKey: "emesis",
-                    fqn: "gastrointestinal.table.emesis",
-                    inputType: "fieldset",
                     label: "Emesis",
-                    formColumn: "2",
-                    formRow: "2",
                     pageDataKey: "gastrointestinal",
-                    dataParent: "gastrointestinal.table",
                     level2Key: "table",
-                    page: "Gastrointestinal assessment",
+                    elementKey: "emesis",
+                    inputType: "fieldset",
+                    formRow: "2",
+                    formColumn: "2",
+                    dataParent: "gastrointestinal.table",
+                    fqn: "gastrointestinal.table.emesis",
                     containerType: "fieldset",
                     containerKey: "emesis",
                     tableCss: "hide-table-element",
@@ -6991,17 +6748,15 @@ export default function () {
                           formRow: "1",
                           elements: [
                             {
-                              elementKey: "none",
-                              fqn: "gastrointestinal.table.emesis.none",
-                              inputType: "select",
                               label: "None",
+                              pageDataKey: "gastrointestinal",
+                              level2Key: "table",
+                              level3Key: "emesis",
+                              elementKey: "none",
+                              inputType: "select",
                               tableColumn: "14",
                               fsetRow: "1",
                               fsetCol: "1",
-                              pageDataKey: "gastrointestinal",
-                              dataParent: "gastrointestinal.table.emesis",
-                              level2Key: "table",
-                              page: "Gastrointestinal assessment",
                               options: [
                                 {
                                   text: "Need"
@@ -7013,6 +6768,8 @@ export default function () {
                                   text: "Here"
                                 }
                               ],
+                              dataParent: "gastrointestinal.table.emesis",
+                              fqn: "gastrointestinal.table.emesis.none",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -7022,17 +6779,17 @@ export default function () {
                           formRow: "2",
                           elements: [
                             {
-                              elementKey: "nausea",
-                              fqn: "gastrointestinal.table.emesis.nausea",
-                              inputType: "text",
                               label: "Nausea",
+                              pageDataKey: "gastrointestinal",
+                              level2Key: "table",
+                              level3Key: "emesis",
+                              elementKey: "nausea",
+                              inputType: "text",
                               tableColumn: "15",
                               fsetRow: "2",
                               fsetCol: "1",
-                              pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.emesis",
-                              level2Key: "table",
-                              page: "Gastrointestinal assessment",
+                              fqn: "gastrointestinal.table.emesis.nausea",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -7042,17 +6799,17 @@ export default function () {
                           formRow: "3",
                           elements: [
                             {
-                              elementKey: "vomiting",
-                              fqn: "gastrointestinal.table.emesis.vomiting",
-                              inputType: "text",
                               label: "Vomiting",
+                              pageDataKey: "gastrointestinal",
+                              level2Key: "table",
+                              level3Key: "emesis",
+                              elementKey: "vomiting",
+                              inputType: "text",
                               tableColumn: "16",
                               fsetRow: "3",
                               fsetCol: "1",
-                              pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.emesis",
-                              level2Key: "table",
-                              page: "Gastrointestinal assessment",
+                              fqn: "gastrointestinal.table.emesis.vomiting",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -7062,17 +6819,15 @@ export default function () {
                           formRow: "4",
                           elements: [
                             {
-                              elementKey: "colour",
-                              fqn: "gastrointestinal.table.emesis.colour",
-                              inputType: "select",
                               label: "Emesis colour",
+                              pageDataKey: "gastrointestinal",
+                              level2Key: "table",
+                              level3Key: "emesis",
+                              elementKey: "colour",
+                              inputType: "select",
                               tableColumn: "17",
                               fsetRow: "4",
                               fsetCol: "1",
-                              pageDataKey: "gastrointestinal",
-                              dataParent: "gastrointestinal.table.emesis",
-                              level2Key: "table",
-                              page: "Gastrointestinal assessment",
                               options: [
                                 {
                                   text: "Need"
@@ -7084,6 +6839,8 @@ export default function () {
                                   text: "Here"
                                 }
                               ],
+                              dataParent: "gastrointestinal.table.emesis",
+                              fqn: "gastrointestinal.table.emesis.colour",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -7093,17 +6850,17 @@ export default function () {
                           formRow: "5",
                           elements: [
                             {
-                              elementKey: "description",
-                              fqn: "gastrointestinal.table.emesis.description",
-                              inputType: "text",
                               label: "Description",
+                              pageDataKey: "gastrointestinal",
+                              level2Key: "table",
+                              level3Key: "emesis",
+                              elementKey: "description",
+                              inputType: "text",
                               tableColumn: "18",
                               fsetRow: "5",
                               fsetCol: "1",
-                              pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.emesis",
-                              level2Key: "table",
-                              page: "Gastrointestinal assessment",
+                              fqn: "gastrointestinal.table.emesis.description",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -7113,17 +6870,15 @@ export default function () {
                           formRow: "6",
                           elements: [
                             {
-                              elementKey: "amount",
-                              fqn: "gastrointestinal.table.emesis.amount",
-                              inputType: "select",
                               label: "Approximate volume",
+                              pageDataKey: "gastrointestinal",
+                              level2Key: "table",
+                              level3Key: "emesis",
+                              elementKey: "amount",
+                              inputType: "select",
                               tableColumn: "19",
                               fsetRow: "6",
                               fsetCol: "1",
-                              pageDataKey: "gastrointestinal",
-                              dataParent: "gastrointestinal.table.emesis",
-                              level2Key: "table",
-                              page: "Gastrointestinal assessment",
                               options: [
                                 {
                                   text: "Small"
@@ -7135,6 +6890,8 @@ export default function () {
                                   text: "Large"
                                 }
                               ],
+                              dataParent: "gastrointestinal.table.emesis",
+                              fqn: "gastrointestinal.table.emesis.amount",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -7145,17 +6902,16 @@ export default function () {
                     }
                   },
                   {
-                    elementKey: "eatingGroup",
-                    fqn: "gastrointestinal.table.eatingGroup",
-                    inputType: "fieldset",
                     label: "Eating",
-                    formColumn: "3",
-                    formRow: "2",
-                    formOption: "hideLabel",
                     pageDataKey: "gastrointestinal",
-                    dataParent: "gastrointestinal.table",
                     level2Key: "table",
-                    page: "Gastrointestinal assessment",
+                    elementKey: "eatingGroup",
+                    inputType: "fieldset",
+                    formRow: "2",
+                    formColumn: "3",
+                    formOption: "hideLabel",
+                    dataParent: "gastrointestinal.table",
+                    fqn: "gastrointestinal.table.eatingGroup",
                     containerType: "fieldset",
                     containerKey: "eatingGroup",
                     tableCss: "hide-table-element",
@@ -7166,17 +6922,15 @@ export default function () {
                           formRow: "1",
                           elements: [
                             {
+                              pageDataKey: "gastrointestinal",
+                              level2Key: "table",
+                              level3Key: "eatingGroup",
                               elementKey: "eating",
-                              fqn: "gastrointestinal.table.eatingGroup.eating",
                               inputType: "select",
+                              formOption: "boldLabel",
                               tableColumn: "20",
                               fsetRow: "1",
                               fsetCol: "1",
-                              formOption: "boldLabel",
-                              pageDataKey: "gastrointestinal",
-                              dataParent: "gastrointestinal.table.eatingGroup",
-                              level2Key: "table",
-                              page: "Gastrointestinal assessment",
                               options: [
                                 {
                                   text: "Regular"
@@ -7185,6 +6939,8 @@ export default function () {
                                   text: "Difficult"
                                 }
                               ],
+                              dataParent: "gastrointestinal.table.eatingGroup",
+                              fqn: "gastrointestinal.table.eatingGroup.eating",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -7194,17 +6950,17 @@ export default function () {
                           formRow: "2",
                           elements: [
                             {
-                              elementKey: "reason",
-                              fqn: "gastrointestinal.table.eatingGroup.reason",
-                              inputType: "text",
                               label: "Reason",
+                              pageDataKey: "gastrointestinal",
+                              level2Key: "table",
+                              level3Key: "eatingGroup",
+                              elementKey: "reason",
+                              inputType: "text",
                               tableColumn: "21",
                               fsetRow: "2",
                               fsetCol: "1",
-                              pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.eatingGroup",
-                              level2Key: "table",
-                              page: "Gastrointestinal assessment",
+                              fqn: "gastrointestinal.table.eatingGroup.reason",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -7215,16 +6971,15 @@ export default function () {
                     }
                   },
                   {
-                    elementKey: "npoSince",
-                    fqn: "gastrointestinal.table.npoSince",
-                    inputType: "fieldset",
                     label: "NPO since",
-                    formColumn: "3",
-                    formRow: "2",
                     pageDataKey: "gastrointestinal",
-                    dataParent: "gastrointestinal.table",
                     level2Key: "table",
-                    page: "Gastrointestinal assessment",
+                    elementKey: "npoSince",
+                    inputType: "fieldset",
+                    formRow: "2",
+                    formColumn: "3",
+                    dataParent: "gastrointestinal.table",
+                    fqn: "gastrointestinal.table.npoSince",
                     containerType: "fieldset",
                     containerKey: "npoSince",
                     tableCss: "hide-table-element",
@@ -7235,18 +6990,18 @@ export default function () {
                           formRow: "3",
                           elements: [
                             {
-                              elementKey: "npoSinceDate",
-                              fqn: "gastrointestinal.table.npoSince.npoSinceDate",
-                              inputType: "day",
                               label: "Day",
+                              pageDataKey: "gastrointestinal",
+                              level2Key: "table",
+                              level3Key: "npoSince",
+                              elementKey: "npoSinceDate",
+                              inputType: "day",
+                              formOption: "boldLabel",
                               tableColumn: "22",
                               fsetRow: "3",
                               fsetCol: "1",
-                              formOption: "boldLabel",
-                              pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.npoSince",
-                              level2Key: "table",
-                              page: "Gastrointestinal assessment",
+                              fqn: "gastrointestinal.table.npoSince.npoSinceDate",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -7256,17 +7011,17 @@ export default function () {
                           formRow: "4",
                           elements: [
                             {
-                              elementKey: "npoSinceTime",
-                              fqn: "gastrointestinal.table.npoSince.npoSinceTime",
-                              inputType: "time",
                               label: "Time",
+                              pageDataKey: "gastrointestinal",
+                              level2Key: "table",
+                              level3Key: "npoSince",
+                              elementKey: "npoSinceTime",
+                              inputType: "time",
                               tableColumn: "23",
                               fsetRow: "4",
                               fsetCol: "1",
-                              pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.npoSince",
-                              level2Key: "table",
-                              page: "Gastrointestinal assessment",
+                              fqn: "gastrointestinal.table.npoSince.npoSinceTime",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -7284,16 +7039,15 @@ export default function () {
                 formRow: "3",
                 elements: [
                   {
-                    elementKey: "bowel",
-                    fqn: "gastrointestinal.table.bowel",
-                    inputType: "fieldset",
                     label: "Bowel Sounds",
-                    formColumn: "1",
-                    formRow: "3",
                     pageDataKey: "gastrointestinal",
-                    dataParent: "gastrointestinal.table",
                     level2Key: "table",
-                    page: "Gastrointestinal assessment",
+                    elementKey: "bowel",
+                    inputType: "fieldset",
+                    formRow: "3",
+                    formColumn: "1",
+                    dataParent: "gastrointestinal.table",
+                    fqn: "gastrointestinal.table.bowel",
                     containerType: "fieldset",
                     containerKey: "bowel",
                     tableCss: "hide-table-element",
@@ -7304,17 +7058,17 @@ export default function () {
                           formRow: "1",
                           elements: [
                             {
-                              elementKey: "normal",
-                              fqn: "gastrointestinal.table.bowel.normal",
-                              inputType: "checkbox",
                               label: "Normal",
+                              pageDataKey: "gastrointestinal",
+                              level2Key: "table",
+                              level3Key: "bowel",
+                              elementKey: "normal",
+                              inputType: "checkbox",
                               tableColumn: "29",
                               fsetRow: "1",
                               fsetCol: "1",
-                              pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.bowel",
-                              level2Key: "table",
-                              page: "Gastrointestinal assessment",
+                              fqn: "gastrointestinal.table.bowel.normal",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -7324,17 +7078,17 @@ export default function () {
                           formRow: "2",
                           elements: [
                             {
-                              elementKey: "constipation",
-                              fqn: "gastrointestinal.table.bowel.constipation",
-                              inputType: "checkbox",
                               label: "Constipation",
+                              pageDataKey: "gastrointestinal",
+                              level2Key: "table",
+                              level3Key: "bowel",
+                              elementKey: "constipation",
+                              inputType: "checkbox",
                               tableColumn: "30",
                               fsetRow: "2",
                               fsetCol: "1",
-                              pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.bowel",
-                              level2Key: "table",
-                              page: "Gastrointestinal assessment",
+                              fqn: "gastrointestinal.table.bowel.constipation",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -7344,17 +7098,17 @@ export default function () {
                           formRow: "3",
                           elements: [
                             {
-                              elementKey: "diarrhea",
-                              fqn: "gastrointestinal.table.bowel.diarrhea",
-                              inputType: "checkbox",
                               label: "Diarrhea",
+                              pageDataKey: "gastrointestinal",
+                              level2Key: "table",
+                              level3Key: "bowel",
+                              elementKey: "diarrhea",
+                              inputType: "checkbox",
                               tableColumn: "31",
                               fsetRow: "3",
                               fsetCol: "1",
-                              pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.bowel",
-                              level2Key: "table",
-                              page: "Gastrointestinal assessment",
+                              fqn: "gastrointestinal.table.bowel.diarrhea",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -7364,17 +7118,17 @@ export default function () {
                           formRow: "4",
                           elements: [
                             {
-                              elementKey: "melena",
-                              fqn: "gastrointestinal.table.bowel.melena",
-                              inputType: "checkbox",
                               label: "Melena",
+                              pageDataKey: "gastrointestinal",
+                              level2Key: "table",
+                              level3Key: "bowel",
+                              elementKey: "melena",
+                              inputType: "checkbox",
                               tableColumn: "32",
                               fsetRow: "4",
                               fsetCol: "1",
-                              pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.bowel",
-                              level2Key: "table",
-                              page: "Gastrointestinal assessment",
+                              fqn: "gastrointestinal.table.bowel.melena",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -7384,17 +7138,17 @@ export default function () {
                           formRow: "5",
                           elements: [
                             {
-                              elementKey: "incontinent",
-                              fqn: "gastrointestinal.table.bowel.incontinent",
-                              inputType: "checkbox",
                               label: "Incontinent",
+                              pageDataKey: "gastrointestinal",
+                              level2Key: "table",
+                              level3Key: "bowel",
+                              elementKey: "incontinent",
+                              inputType: "checkbox",
                               tableColumn: "33",
                               fsetRow: "5",
                               fsetCol: "1",
-                              pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.bowel",
-                              level2Key: "table",
-                              page: "Gastrointestinal assessment",
+                              fqn: "gastrointestinal.table.bowel.incontinent",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -7404,17 +7158,17 @@ export default function () {
                           formRow: "6",
                           elements: [
                             {
-                              elementKey: "lastBm",
-                              fqn: "gastrointestinal.table.bowel.lastBm",
-                              inputType: "text",
                               label: "Last BM",
+                              pageDataKey: "gastrointestinal",
+                              level2Key: "table",
+                              level3Key: "bowel",
+                              elementKey: "lastBm",
+                              inputType: "text",
                               tableColumn: "34",
                               fsetRow: "6",
                               fsetCol: "1",
-                              pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.bowel",
-                              level2Key: "table",
-                              page: "Gastrointestinal assessment",
+                              fqn: "gastrointestinal.table.bowel.lastBm",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -7425,16 +7179,15 @@ export default function () {
                     }
                   },
                   {
-                    elementKey: "bSounds",
-                    fqn: "gastrointestinal.table.bSounds",
-                    inputType: "fieldset",
                     label: "Bowel Sounds",
-                    formColumn: "2",
-                    formRow: "3",
                     pageDataKey: "gastrointestinal",
-                    dataParent: "gastrointestinal.table",
                     level2Key: "table",
-                    page: "Gastrointestinal assessment",
+                    elementKey: "bSounds",
+                    inputType: "fieldset",
+                    formRow: "3",
+                    formColumn: "2",
+                    dataParent: "gastrointestinal.table",
+                    fqn: "gastrointestinal.table.bSounds",
                     containerType: "fieldset",
                     containerKey: "bSounds",
                     tableCss: "hide-table-element",
@@ -7445,17 +7198,17 @@ export default function () {
                           formRow: "1",
                           elements: [
                             {
-                              elementKey: "bsNone",
-                              fqn: "gastrointestinal.table.bSounds.bsNone",
-                              inputType: "checkbox",
                               label: "None",
+                              pageDataKey: "gastrointestinal",
+                              level2Key: "table",
+                              level3Key: "bSounds",
+                              elementKey: "bsNone",
+                              inputType: "checkbox",
                               tableColumn: "39",
                               fsetRow: "1",
                               fsetCol: "1",
-                              pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.bSounds",
-                              level2Key: "table",
-                              page: "Gastrointestinal assessment",
+                              fqn: "gastrointestinal.table.bSounds.bsNone",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -7465,17 +7218,17 @@ export default function () {
                           formRow: "2",
                           elements: [
                             {
-                              elementKey: "bsLUQ",
-                              fqn: "gastrointestinal.table.bSounds.bsLUQ",
-                              inputType: "checkbox",
                               label: "LUQ",
+                              pageDataKey: "gastrointestinal",
+                              level2Key: "table",
+                              level3Key: "bSounds",
+                              elementKey: "bsLUQ",
+                              inputType: "checkbox",
                               tableColumn: "40",
                               fsetRow: "2",
                               fsetCol: "1",
-                              pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.bSounds",
-                              level2Key: "table",
-                              page: "Gastrointestinal assessment",
+                              fqn: "gastrointestinal.table.bSounds.bsLUQ",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -7485,17 +7238,17 @@ export default function () {
                           formRow: "3",
                           elements: [
                             {
-                              elementKey: "bsRUQ",
-                              fqn: "gastrointestinal.table.bSounds.bsRUQ",
-                              inputType: "checkbox",
                               label: "RUQ",
+                              pageDataKey: "gastrointestinal",
+                              level2Key: "table",
+                              level3Key: "bSounds",
+                              elementKey: "bsRUQ",
+                              inputType: "checkbox",
                               tableColumn: "41",
                               fsetRow: "3",
                               fsetCol: "1",
-                              pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.bSounds",
-                              level2Key: "table",
-                              page: "Gastrointestinal assessment",
+                              fqn: "gastrointestinal.table.bSounds.bsRUQ",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -7505,17 +7258,17 @@ export default function () {
                           formRow: "4",
                           elements: [
                             {
-                              elementKey: "bsLLQ",
-                              fqn: "gastrointestinal.table.bSounds.bsLLQ",
-                              inputType: "checkbox",
                               label: "LLQ",
+                              pageDataKey: "gastrointestinal",
+                              level2Key: "table",
+                              level3Key: "bSounds",
+                              elementKey: "bsLLQ",
+                              inputType: "checkbox",
                               tableColumn: "42",
                               fsetRow: "4",
                               fsetCol: "1",
-                              pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.bSounds",
-                              level2Key: "table",
-                              page: "Gastrointestinal assessment",
+                              fqn: "gastrointestinal.table.bSounds.bsLLQ",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -7525,17 +7278,17 @@ export default function () {
                           formRow: "5",
                           elements: [
                             {
-                              elementKey: "bsRLQ",
-                              fqn: "gastrointestinal.table.bSounds.bsRLQ",
-                              inputType: "checkbox",
                               label: "RLQ",
+                              pageDataKey: "gastrointestinal",
+                              level2Key: "table",
+                              level3Key: "bSounds",
+                              elementKey: "bsRLQ",
+                              inputType: "checkbox",
                               tableColumn: "43",
                               fsetRow: "5",
                               fsetCol: "1",
-                              pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.bSounds",
-                              level2Key: "table",
-                              page: "Gastrointestinal assessment",
+                              fqn: "gastrointestinal.table.bSounds.bsRLQ",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -7545,17 +7298,17 @@ export default function () {
                           formRow: "6",
                           elements: [
                             {
-                              elementKey: "hypoactive",
-                              fqn: "gastrointestinal.table.bSounds.hypoactive",
-                              inputType: "checkbox",
                               label: "Hypoactive",
+                              pageDataKey: "gastrointestinal",
+                              level2Key: "table",
+                              level3Key: "bSounds",
+                              elementKey: "hypoactive",
+                              inputType: "checkbox",
                               tableColumn: "44",
                               fsetRow: "6",
                               fsetCol: "1",
-                              pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.bSounds",
-                              level2Key: "table",
-                              page: "Gastrointestinal assessment",
+                              fqn: "gastrointestinal.table.bSounds.hypoactive",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -7565,17 +7318,17 @@ export default function () {
                           formRow: "7",
                           elements: [
                             {
-                              elementKey: "hyperactive",
-                              fqn: "gastrointestinal.table.bSounds.hyperactive",
-                              inputType: "checkbox",
                               label: "Hyperactive",
+                              pageDataKey: "gastrointestinal",
+                              level2Key: "table",
+                              level3Key: "bSounds",
+                              elementKey: "hyperactive",
+                              inputType: "checkbox",
                               tableColumn: "45",
                               fsetRow: "7",
                               fsetCol: "1",
-                              pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.bSounds",
-                              level2Key: "table",
-                              page: "Gastrointestinal assessment",
+                              fqn: "gastrointestinal.table.bSounds.hyperactive",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -7586,16 +7339,15 @@ export default function () {
                     }
                   },
                   {
-                    elementKey: "stool",
-                    fqn: "gastrointestinal.table.stool",
-                    inputType: "fieldset",
                     label: "Stool",
-                    formColumn: "3",
-                    formRow: "3",
                     pageDataKey: "gastrointestinal",
-                    dataParent: "gastrointestinal.table",
                     level2Key: "table",
-                    page: "Gastrointestinal assessment",
+                    elementKey: "stool",
+                    inputType: "fieldset",
+                    formRow: "3",
+                    formColumn: "3",
+                    dataParent: "gastrointestinal.table",
+                    fqn: "gastrointestinal.table.stool",
                     containerType: "fieldset",
                     containerKey: "stool",
                     tableCss: "hide-table-element",
@@ -7606,17 +7358,15 @@ export default function () {
                           formRow: "1",
                           elements: [
                             {
-                              elementKey: "stoolColour",
-                              fqn: "gastrointestinal.table.stool.stoolColour",
-                              inputType: "select",
                               label: "Stool colour",
+                              pageDataKey: "gastrointestinal",
+                              level2Key: "table",
+                              level3Key: "stool",
+                              elementKey: "stoolColour",
+                              inputType: "select",
                               tableColumn: "24",
                               fsetRow: "1",
                               fsetCol: "1",
-                              pageDataKey: "gastrointestinal",
-                              dataParent: "gastrointestinal.table.stool",
-                              level2Key: "table",
-                              page: "Gastrointestinal assessment",
                               options: [
                                 {
                                   text: "Brown"
@@ -7640,6 +7390,8 @@ export default function () {
                                   text: "Dark red"
                                 }
                               ],
+                              dataParent: "gastrointestinal.table.stool",
+                              fqn: "gastrointestinal.table.stool.stoolColour",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -7649,17 +7401,15 @@ export default function () {
                           formRow: "2",
                           elements: [
                             {
-                              elementKey: "stoolDescription",
-                              fqn: "gastrointestinal.table.stool.stoolDescription",
-                              inputType: "select",
                               label: "Description",
+                              pageDataKey: "gastrointestinal",
+                              level2Key: "table",
+                              level3Key: "stool",
+                              elementKey: "stoolDescription",
+                              inputType: "select",
                               tableColumn: "25",
                               fsetRow: "2",
                               fsetCol: "1",
-                              pageDataKey: "gastrointestinal",
-                              dataParent: "gastrointestinal.table.stool",
-                              level2Key: "table",
-                              page: "Gastrointestinal assessment",
                               options: [
                                 {
                                   text: "Runny"
@@ -7668,6 +7418,8 @@ export default function () {
                                   text: "Hard pellets"
                                 }
                               ],
+                              dataParent: "gastrointestinal.table.stool",
+                              fqn: "gastrointestinal.table.stool.stoolDescription",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -7677,17 +7429,17 @@ export default function () {
                           formRow: "3",
                           elements: [
                             {
-                              elementKey: "stoolAmount",
-                              fqn: "gastrointestinal.table.stool.stoolAmount",
-                              inputType: "text",
                               label: "Amount",
+                              pageDataKey: "gastrointestinal",
+                              level2Key: "table",
+                              level3Key: "stool",
+                              elementKey: "stoolAmount",
+                              inputType: "text",
                               tableColumn: "26",
                               fsetRow: "3",
                               fsetCol: "1",
-                              pageDataKey: "gastrointestinal",
                               dataParent: "gastrointestinal.table.stool",
-                              level2Key: "table",
-                              page: "Gastrointestinal assessment",
+                              fqn: "gastrointestinal.table.stool.stoolAmount",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -7697,17 +7449,15 @@ export default function () {
                           formRow: "4",
                           elements: [
                             {
-                              elementKey: "stoolSource",
-                              fqn: "gastrointestinal.table.stool.stoolSource",
-                              inputType: "select",
                               label: "Source",
+                              pageDataKey: "gastrointestinal",
+                              level2Key: "table",
+                              level3Key: "stool",
+                              elementKey: "stoolSource",
+                              inputType: "select",
                               tableColumn: "27",
                               fsetRow: "4",
                               fsetCol: "1",
-                              pageDataKey: "gastrointestinal",
-                              dataParent: "gastrointestinal.table.stool",
-                              level2Key: "table",
-                              page: "Gastrointestinal assessment",
                               options: [
                                 {
                                   text: "Observed"
@@ -7719,6 +7469,8 @@ export default function () {
                                   text: "Not observed"
                                 }
                               ],
+                              dataParent: "gastrointestinal.table.stool",
+                              fqn: "gastrointestinal.table.stool.stoolSource",
                               tableKey: "table",
                               formColumn: "1"
                             }

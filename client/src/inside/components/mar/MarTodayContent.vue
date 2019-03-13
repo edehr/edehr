@@ -3,11 +3,12 @@
     h1 Medication Administration Records
     div Today is: {{ currentDay }}
     div(class="periodsList", v-for="period in periodDefs")
-      h4 {{ period.name }}
       div(class="columns")
-        div(class="column")
+        div(class="column period-column")
+          h4 {{ period.name }}
+        div(class="column medications-column")
           med-list(:medsList="period.medsList")
-        div(class="column")
+        div(class="column mar-column")
           div(v-show="!period.hasMar")
             ui-button(v-on:buttonClicked="openMarDialog(period)") Add MAR
           div(v-show="period.hasMar")
@@ -133,5 +134,14 @@ export default {
 @import '../../../scss/definitions';
 .errorMesageList {
   color: $dialog-error-color;
+}
+.period-column {
+  flex: 0 0 20%;
+}
+.medications-column {
+  flex: 1 0 20%;
+}
+.mar-column {
+  flex: 0 0 20%;
 }
 </style>

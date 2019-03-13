@@ -18,9 +18,11 @@ function convertFile(fName) {
   let fSrc = pathUtil.join(source, fName) + '.txt'
   let fDest = pathUtil.join(destination, fName)  + '.js'
   console.log('read file ', fSrc)
+  let stats = fs.statSync(fSrc)
+  let lastModifiedTime = stats.mtime
   fs.readFile(fSrc, 'utf8', function (err, contents) {
     console.log('transform file ', fName)
-    var pages = transformer.getDefinitions(contents)
+    var pages = transformer.getDefinitions(contents, lastModifiedTime)
     var results = JSON.stringify(pages, null, 2)
     results = results.replace(/'/g, "\\'")
     // results = results.replace(/"/g, "'")
