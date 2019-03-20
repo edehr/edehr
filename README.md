@@ -72,9 +72,10 @@ npm run test
 The EHR side of the project contains almost 40 separate screens, each needs to be in the menu and routing tables.  These tasks are automated via a script in the makeEhr subdirectory.
 This script only needs to be invoked if the content of the configuration files have been 
 modified.  The source of the configuration files comes from a Google spreadsheet stored in the project GDrive.
-After updating the raw configuration content in the ```makeEhr/raw_data``` directory run the compile script: 
+After updating the raw configuration content in the ```makeEhr/raw_data``` directory install npm and then run the compile script: 
 ```
 cd makeEhr
+npm install
 ./deploy.sh --lint
 ```
 The ```--lint``` option can be replaced with ```-l```. Without the lint option you will need to relint all files before checkin.
