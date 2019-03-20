@@ -4,7 +4,7 @@ export default function () {
     progressNotes: {
       pageTitle: "Progress notes",
       pageDataKey: "progressNotes",
-      generated: "2019-03-12T11:46:32-07:00",
+      generated: "2019-03-20T15:40:49-07:00",
       hasTable: true,
       tables: [
         {
@@ -166,7 +166,7 @@ export default function () {
     carePlan: {
       pageTitle: "Interprofessional plan of care",
       pageDataKey: "carePlan",
-      generated: "2019-03-12T11:46:32-07:00",
+      generated: "2019-03-20T15:40:49-07:00",
       hasTable: true,
       tables: [
         {
@@ -495,7 +495,7 @@ export default function () {
     consultants: {
       pageTitle: "Consults",
       pageDataKey: "consultants",
-      generated: "2019-03-12T11:46:32-07:00",
+      generated: "2019-03-20T15:40:49-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -522,7 +522,7 @@ export default function () {
     labResults: {
       pageTitle: "Laboratory results",
       pageDataKey: "labResults",
-      generated: "2019-03-12T11:46:32-07:00",
+      generated: "2019-03-20T15:40:49-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -549,7 +549,7 @@ export default function () {
     medicalImaging: {
       pageTitle: "Medical imaging",
       pageDataKey: "medicalImaging",
-      generated: "2019-03-12T11:46:32-07:00",
+      generated: "2019-03-20T15:40:49-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -576,7 +576,7 @@ export default function () {
     operationReports: {
       pageTitle: "Operative reports and anaesthesia record",
       pageDataKey: "operationReports",
-      generated: "2019-03-12T11:46:32-07:00",
+      generated: "2019-03-20T15:40:49-07:00",
       hasForm: true,
       page_form: {
         rows: [
