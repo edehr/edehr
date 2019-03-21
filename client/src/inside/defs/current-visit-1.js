@@ -4,7 +4,7 @@ export default function () {
     visit: {
       pageTitle: "Visit details",
       pageDataKey: "visit",
-      generated: "2019-03-12T16:05:46-07:00",
+      generated: "2019-03-20T15:40:49-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -220,7 +220,7 @@ export default function () {
     vitals: {
       pageTitle: "Vital signs",
       pageDataKey: "vitals",
-      generated: "2019-03-12T16:05:46-07:00",
+      generated: "2019-03-20T15:40:49-07:00",
       hasTable: true,
       tables: [
         {
@@ -800,7 +800,7 @@ export default function () {
     fluidBalance: {
       pageTitle: "Fluid balance",
       pageDataKey: "fluidBalance",
-      generated: "2019-03-12T16:05:46-07:00",
+      generated: "2019-03-20T15:40:49-07:00",
       hasTable: true,
       tables: [
         {
@@ -988,7 +988,7 @@ export default function () {
     neurological: {
       pageTitle: "Neurological assessment",
       pageDataKey: "neurological",
-      generated: "2019-03-12T16:05:46-07:00",
+      generated: "2019-03-20T15:40:49-07:00",
       hasTable: true,
       tables: [
         {
@@ -3151,7 +3151,7 @@ export default function () {
     respiratory: {
       pageTitle: "Respiratory assessment",
       pageDataKey: "respiratory",
-      generated: "2019-03-12T16:05:46-07:00",
+      generated: "2019-03-20T15:40:49-07:00",
       hasTable: true,
       tables: [
         {
@@ -3314,6 +3314,21 @@ export default function () {
               formColumn: "1"
             },
             {
+              label: "Airway",
+              pageDataKey: "respiratory",
+              level2Key: "table",
+              elementKey: "airway",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "1",
+              dataParent: "respiratory.table",
+              fqn: "respiratory.table.airway",
+              containerType: "fieldset",
+              containerKey: "airway",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
               label: "Left upper lung",
               pageDataKey: "respiratory",
               level2Key: "table",
@@ -3376,36 +3391,6 @@ export default function () {
               fqn: "respiratory.table.breath.rul",
               tableKey: "table",
               formColumn: "2"
-            },
-            {
-              label: "Airway",
-              pageDataKey: "respiratory",
-              level2Key: "table",
-              elementKey: "airway",
-              inputType: "fieldset",
-              formRow: "2",
-              formColumn: "1",
-              dataParent: "respiratory.table",
-              fqn: "respiratory.table.airway",
-              containerType: "fieldset",
-              containerKey: "airway",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
-              label: "Breath sounds",
-              pageDataKey: "respiratory",
-              level2Key: "table",
-              elementKey: "breath",
-              inputType: "fieldset",
-              formRow: "2",
-              formColumn: "2",
-              dataParent: "respiratory.table",
-              fqn: "respiratory.table.breath",
-              containerType: "fieldset",
-              containerKey: "breath",
-              tableCss: "hide-table-element",
-              tableKey: "table"
             },
             {
               pageDataKey: "respiratory",
@@ -3664,6 +3649,21 @@ export default function () {
               fqn: "respiratory.table.breath.sputumComments",
               tableKey: "table",
               formColumn: "2"
+            },
+            {
+              label: "Breath sounds",
+              pageDataKey: "respiratory",
+              level2Key: "table",
+              elementKey: "breath",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "2",
+              dataParent: "respiratory.table",
+              fqn: "respiratory.table.breath",
+              containerType: "fieldset",
+              containerKey: "breath",
+              tableCss: "hide-table-element",
+              tableKey: "table"
             },
             {
               label: "General comments",
@@ -4308,7 +4308,7 @@ export default function () {
     cardiovascular: {
       pageTitle: "Cardiovascular assessment",
       pageDataKey: "cardiovascular",
-      generated: "2019-03-12T16:05:46-07:00",
+      generated: "2019-03-20T15:40:49-07:00",
       hasTable: true,
       tables: [
         {
@@ -5678,7 +5678,7 @@ export default function () {
     gastrointestinal: {
       pageTitle: "Gastrointestinal assessment",
       pageDataKey: "gastrointestinal",
-      generated: "2019-03-12T16:05:46-07:00",
+      generated: "2019-03-20T15:40:49-07:00",
       hasTable: true,
       tables: [
         {
@@ -5699,18 +5699,16 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Bowel Sounds",
+              label: "Profession",
               pageDataKey: "gastrointestinal",
               level2Key: "table",
-              elementKey: "bSounds",
-              inputType: "fieldset",
-              formRow: "3",
+              elementKey: "profession",
+              inputType: "text",
+              formRow: "1",
               formColumn: "2",
+              tableColumn: "2",
               dataParent: "gastrointestinal.table",
-              fqn: "gastrointestinal.table.bSounds",
-              containerType: "fieldset",
-              containerKey: "bSounds",
-              tableCss: "hide-table-element",
+              fqn: "gastrointestinal.table.profession",
               tableKey: "table"
             },
             {
@@ -6077,17 +6075,20 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Profession",
+              label: "Day",
               pageDataKey: "gastrointestinal",
               level2Key: "table",
-              elementKey: "profession",
-              inputType: "text",
-              formRow: "1",
-              formColumn: "2",
-              tableColumn: "2",
-              dataParent: "gastrointestinal.table",
-              fqn: "gastrointestinal.table.profession",
-              tableKey: "table"
+              level3Key: "npoSince",
+              elementKey: "npoSinceDate",
+              inputType: "day",
+              formOption: "boldLabel",
+              tableColumn: "22",
+              fsetRow: "3",
+              fsetCol: "1",
+              dataParent: "gastrointestinal.table.npoSince",
+              fqn: "gastrointestinal.table.npoSince.npoSinceDate",
+              tableKey: "table",
+              formColumn: "1"
             },
             {
               label: "Time",
@@ -6460,20 +6461,19 @@ export default function () {
               formColumn: "1"
             },
             {
-              label: "Day",
+              label: "Bowel Sounds",
               pageDataKey: "gastrointestinal",
               level2Key: "table",
-              level3Key: "npoSince",
-              elementKey: "npoSinceDate",
-              inputType: "day",
-              formOption: "boldLabel",
-              tableColumn: "22",
-              fsetRow: "3",
-              fsetCol: "1",
-              dataParent: "gastrointestinal.table.npoSince",
-              fqn: "gastrointestinal.table.npoSince.npoSinceDate",
-              tableKey: "table",
-              formColumn: "1"
+              elementKey: "bSounds",
+              inputType: "fieldset",
+              formRow: "3",
+              formColumn: "2",
+              dataParent: "gastrointestinal.table",
+              fqn: "gastrointestinal.table.bSounds",
+              containerType: "fieldset",
+              containerKey: "bSounds",
+              tableCss: "hide-table-element",
+              tableKey: "table"
             }
           ],
           tableForm: {

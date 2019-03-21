@@ -38,7 +38,7 @@
     div(v-if="element.inputType === 'assetLink'", class="assetLink")
       a(:href="assetUrl()", target="_blank")
         span {{assetName()}} &nbsp;
-        fas-icon(icon="file")
+        fas-icon(class="linkIcon", icon="file")
 
     div(v-if="element.inputType === 'fieldset'", class="fieldset_col_wrapper")
       h2(v-show="!!element.label", class="fieldset_label") {{element.label}} &nbsp;
@@ -147,7 +147,7 @@ export default {
 <style lang="scss">
 @import '../../scss/definitions';
 .assetLink a{
-  color: $grey80;
+  color: $grey60;
   display: block;
   margin-bottom: 10px;
 
