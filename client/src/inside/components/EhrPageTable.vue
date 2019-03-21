@@ -104,8 +104,8 @@ export default {
     refresh () {
       let tableKey = this.tableDef.tableKey
       let pageKey = this.pageDataKey
-      // console.log('EhrPageTable refresh for page table key', pageKey, tableKey)
       let pageData = this.ehrHelp.getAsLoadedPageData(pageKey)
+      // console.log('EhrPageTable refresh pageKey:', pageKey, 'tableKey:', tableKey, 'pageData:', pageData)
       // store the current data into local data property for display
       this.tableData = pageData[tableKey]
       this.transposedColumns = this.tableDef.transposedColumns

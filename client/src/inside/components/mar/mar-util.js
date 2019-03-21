@@ -81,16 +81,6 @@ export default class MarHelper {
     return key
   }
 
-  medText (med) {
-    let space = ', '
-    let extract = t => t && t.trim().length > 0 ? space + t : ''
-    let markup = med.medication
-    markup += extract(med.dose)
-    markup += extract(med.route)
-    markup += extract(med.type)
-    markup += extract(med.notes)
-    return markup
-  }
 
   /**
    * Dialog validation for the MAR record dialog.  Expect input to contain properties:
@@ -113,7 +103,7 @@ export default class MarHelper {
     let marTableKey = this.getMarTableKey()
     let asLoadedPageData = this.getEhrData_MarPageData()
     let table = asLoadedPageData[marTableKey] || []
-    let aMar = aMarEntity.data
+    let aMar = aMarEntity.asObjectForApi()
     console.log('saveMarDialog key:', marTableKey, ', ', aMar)
     table.push(aMar)
     let payload = {
