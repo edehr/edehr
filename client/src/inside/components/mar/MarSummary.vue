@@ -5,10 +5,10 @@
       table
         thead
           th(v-for="hdr in tableHeader")
-            div(v-show="hdr.type === MS_MED_ORDER")
+            div(v-show="hdr.type === KEY_MED_ORDER")
               div Medication
               div List
-            div(v-show="hdr.type === MS_MAR")
+            div(v-show="hdr.type === KEY_MAR")
               div When: Day-{{hdr.value.day}} {{hdr.value.actualTime}}
               div Scheduled: {{hdr.value.scheduledTime}}
               div Who: {{hdr.value.whoAdministered}}
@@ -27,7 +27,8 @@ import EventBus from '../../../helpers/event-bus'
 import { PAGE_DATA_REFRESH_EVENT } from '../../../helpers/event-bus'
 import MarRecord from './MarRecord'
 import MarSummary from './mar-summary'
-import {MS_MED_ORDER, MS_MAR} from './mar-summary'
+import { MS } from './mar-summary'
+import MarHelper from './mar-helper'
 
 export default {
   name: 'MarSummary',
@@ -38,13 +39,13 @@ export default {
     return {
       tableHeader: [],
       tableBody: [],
-      marSummary: {},
-      MS_MED_ORDER: MS_MED_ORDER,
-      MS_MAR: MS_MAR
+      marSummary: {}, // helper class
+      KEY_MED_ORDER: MS.KEY_MED_ORDER,
+      KEY_MAR: MS.KEY_MAR
     }
   },
   props: {
-    marHelper: { type: Object }
+    ehrHelp: { type: Object }
   },
   computed: {
     refreshProperty () {
@@ -54,47 +55,22 @@ export default {
     }
   },
   methods: {
-    marCellContent (cell) {
-      let content = ''
-      let type = cell.type
-      let value = cell.value
-      if( type === MS_MED_ORDER) {
-        content = value.medication
-      } else if( type === MS_MAR) {
-        content = 'Yes'
-      } else {
-        content = 'NA'
-      }
-      return content
-    },
-    marCellStyle (cell) {
-      let style = ''
-      let type = cell.type
-      if( type === MS_MED_ORDER) {
-        style = 'medication'
-      } else if( type === MS_MAR) {
-        style = 'administered'
-      } else {
-        style = 'notApplicable'
-      }
-      return style
-    },
+    marCellContent (cell) {  return this.marSummary.marCellContent(cell) },
+    marCellStyle (cell) {  return this.marSummary.marCellStyle(cell) },
     refresh () {
-      let summary = this.marSummary
-      let help = this.marHelper
-      if(help){
+      if(this.ehrHelp){
+        let help = new MarHelper(this.ehrHelp)
+        let summary = this.marSummary
         summary.summaryRefresh(help.marRecords, help.theMedOrders)
         this.tableHeader = summary.tableHeader
         this.tableBody = summary.tableBody
       }
     }
   },
-  mounted: function () {
-    const _this = this
+  created: function () {
     this.marSummary = new MarSummary()
-    this.refreshEventHandler = function () {
-      _this.refresh()
-    }
+    const _this = this
+    this.refreshEventHandler = function () { _this.refresh() }
     EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
   },
   beforeDestroy: function () {
@@ -105,13 +81,18 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss">
+@import '../../../scss/definitions';
+/* Make sure these next class names match those defined in the mar-summary MS constant */
+/* MS.CSS_CLASS_MAR */
 .administered {
   color:red;
 }
+/* MS.CSS_CLASS_NO_MAR */
 .notApplicable {
   color:blue;
 }
+/* MS.CSS_CLASS_MED */
 .medication {
   color:green;
 }

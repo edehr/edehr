@@ -1,7 +1,6 @@
 import { setApiError } from '../../../helpers/ehr-utills'
-import MedOrder from './medOrder-entity'
+import MedOrder from './med-entity'
 import MarEntity from './mar-entity'
-import PeriodDefs from './period-defs'
 
 export const MAR_PAGE_KEY = 'medAdminRec'
 export const MED_ORDERS_PAGE_KEY = 'medicationOrders'
@@ -10,19 +9,9 @@ export const SCHEDULE_FIELDSET = 'schedule'
 export default class MarHelper {
   constructor (ehrHelp) {
     this.ehrHelp = ehrHelp
-    this._marTableKey = this.getMarTableKey()
-    this._periodDefs = new PeriodDefs()
-  }
-
-  marRefresh () {
     this._theMedOrders = this.getEhrData_Orders()
     this._marRecords = this.getEhrData_MarRecords()
-    this._periodDefs.mergeOrdersSchedules(this._theMedOrders)
-    this._periodDefs.mergeMarAndSchedule(this._marRecords)
   }
-  get marTableKey () { return this._marTableKey }
-  get periodDefsList () { return this._periodDefs.periodList }
-  get periodDefinitions () { return this._periodDefs }
   get theMedOrders () { return this._theMedOrders }
   get marRecords () { return this._marRecords }
 
@@ -34,6 +23,7 @@ export default class MarHelper {
     let pageData = this.ehrHelp.getAsLoadedPageData(MED_ORDERS_PAGE_KEY)
     let pageTable = pageData.table
     let medOrders = pageTable.map(order => new MedOrder(order))
+    console.log('helper med orders', medOrders)
     return medOrders
   }
 
@@ -81,21 +71,9 @@ export default class MarHelper {
     return key
   }
 
-
-  /**
-   * Dialog validation for the MAR record dialog.  Expect input to contain properties:
-   * - who : string name of person who administers the medication
-   * - when : 24 hour clock time, optional leading 0.  0:00 === 0:00
-   * 0:00 to 23:59 is valid
-   * @param aMar
-   * @return {Array}
-   */
-  validateInputs (aMar) {
-    return Mar.validateInputs(aMar)
-  }
-
   /**
    * Create a complete MAR and save to the MAR page data.
+   * Assumes the MAR has been validated.  See MarEntity.validate()
    * @param aMarEntity
    * @return {*}
    */

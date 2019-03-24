@@ -2,7 +2,7 @@ import Vitals from '../../src/inside/components/Vitals.vue'
 import VitalModel from '../../src/helpers/vitalModel'
 import { shallowMount } from '@vue/test-utils'
 
-describe('Vitals Model', () => {
+describe.skip('Vitals Model', () => {
   let vitalsModel
   let table = []
   it('vital model', () => {
@@ -31,7 +31,7 @@ describe('Vitals Model', () => {
   })
 })
 
-describe('Vitals.vue', () => {
+describe.skip('Vitals.vue', () => {
   const wrapper = shallowMount(Vitals, {})
   it('renders Vitals', () => {
     expect(wrapper.isVueInstance()).toBeTruthy()
