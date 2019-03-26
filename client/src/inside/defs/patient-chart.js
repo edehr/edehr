@@ -4,7 +4,7 @@ export default function () {
     progressNotes: {
       pageTitle: "Progress notes",
       pageDataKey: "progressNotes",
-      generated: "2019-03-20T15:40:49-07:00",
+      generated: "2019-03-25T22:17:57-07:00",
       hasTable: true,
       tables: [
         {
@@ -166,7 +166,7 @@ export default function () {
     carePlan: {
       pageTitle: "Interprofessional plan of care",
       pageDataKey: "carePlan",
-      generated: "2019-03-20T15:40:49-07:00",
+      generated: "2019-03-25T22:17:57-07:00",
       hasTable: true,
       tables: [
         {
@@ -495,34 +495,18 @@ export default function () {
     consultants: {
       pageTitle: "Consults",
       pageDataKey: "consultants",
-      generated: "2019-03-20T15:40:49-07:00",
+      generated: "2019-03-25T22:17:57-07:00",
       hasForm: true,
       page_form: {
-        rows: [
-          {
-            formRow: "1",
-            elements: [
-              {
-                label: "Linked files",
-                pageDataKey: "consultants",
-                elementKey: "none",
-                inputType: "label",
-                formRow: "1",
-                formColumn: "1",
-                dataParent: "consultants",
-                fqn: "consultants.none"
-              }
-            ]
-          }
-        ],
-        columnsCount: 1
+        rows: [],
+        columnsCount: 0
       },
       pageData: {}
     },
     labResults: {
       pageTitle: "Laboratory results",
       pageDataKey: "labResults",
-      generated: "2019-03-20T15:40:49-07:00",
+      generated: "2019-03-25T22:17:57-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -530,14 +514,155 @@ export default function () {
             formRow: "1",
             elements: [
               {
-                label: "Linked files",
+                label: "Laboratory results",
                 pageDataKey: "labResults",
-                elementKey: "none",
-                inputType: "label",
+                elementKey: "labReport",
+                inputType: "fieldset",
                 formRow: "1",
                 formColumn: "1",
                 dataParent: "labResults",
-                fqn: "labResults.none"
+                fqn: "labResults.labReport",
+                elements: [
+                  {
+                    label: "ABG laboratory report",
+                    pageDataKey: "labResults",
+                    level3Key: "labReport",
+                    elementKey: "labReport1_1",
+                    inputType: "assetLink",
+                    fsetRow: "1",
+                    fsetCol: "1",
+                    assetBase: "Lab reports",
+                    assetName: "Day 0 ABG Laboratory Report.pdf",
+                    dataParent: "labResults.labReport",
+                    fqn: "labResults.labReport.labReport1_1",
+                    formColumn: "1"
+                  },
+                  {
+                    label: "ABG laboratory report",
+                    pageDataKey: "labResults",
+                    level3Key: "labReport",
+                    elementKey: "labReport2_1",
+                    inputType: "assetLink",
+                    fsetRow: "2",
+                    fsetCol: "1",
+                    assetBase: "Lab reports",
+                    assetName: "Day 1 ABG Laboratory Report.pdf",
+                    dataParent: "labResults.labReport",
+                    fqn: "labResults.labReport.labReport2_1",
+                    formColumn: "1"
+                  },
+                  {
+                    label: "C&S laboratory report",
+                    pageDataKey: "labResults",
+                    level3Key: "labReport",
+                    elementKey: "labReport3_1",
+                    inputType: "assetLink",
+                    fsetRow: "3",
+                    fsetCol: "1",
+                    assetBase: "Lab reports",
+                    assetName: "Day 3 C&S  Laboratory Report.pdf",
+                    dataParent: "labResults.labReport",
+                    fqn: "labResults.labReport.labReport3_1",
+                    formColumn: "1"
+                  },
+                  {
+                    label: "Final C&S laboratory report",
+                    pageDataKey: "labResults",
+                    level3Key: "labReport",
+                    elementKey: "labReport4_1",
+                    inputType: "assetLink",
+                    fsetRow: "4",
+                    fsetCol: "1",
+                    assetBase: "Lab reports",
+                    assetName: "Day 3 Final C&S Laboratory Report.pdf",
+                    dataParent: "labResults.labReport",
+                    fqn: "labResults.labReport.labReport4_1",
+                    formColumn: "1"
+                  }
+                ],
+                containerType: "fieldset",
+                containerKey: "labReport",
+                formFieldSet: {
+                  rows: [
+                    {
+                      formRow: "1",
+                      elements: [
+                        {
+                          label: "ABG laboratory report",
+                          pageDataKey: "labResults",
+                          level3Key: "labReport",
+                          elementKey: "labReport1_1",
+                          inputType: "assetLink",
+                          fsetRow: "1",
+                          fsetCol: "1",
+                          assetBase: "Lab reports",
+                          assetName: "Day 0 ABG Laboratory Report.pdf",
+                          dataParent: "labResults.labReport",
+                          fqn: "labResults.labReport.labReport1_1",
+                          formColumn: "1"
+                        }
+                      ]
+                    },
+                    {
+                      formRow: "2",
+                      elements: [
+                        {
+                          label: "ABG laboratory report",
+                          pageDataKey: "labResults",
+                          level3Key: "labReport",
+                          elementKey: "labReport2_1",
+                          inputType: "assetLink",
+                          fsetRow: "2",
+                          fsetCol: "1",
+                          assetBase: "Lab reports",
+                          assetName: "Day 1 ABG Laboratory Report.pdf",
+                          dataParent: "labResults.labReport",
+                          fqn: "labResults.labReport.labReport2_1",
+                          formColumn: "1"
+                        }
+                      ]
+                    },
+                    {
+                      formRow: "3",
+                      elements: [
+                        {
+                          label: "C&S laboratory report",
+                          pageDataKey: "labResults",
+                          level3Key: "labReport",
+                          elementKey: "labReport3_1",
+                          inputType: "assetLink",
+                          fsetRow: "3",
+                          fsetCol: "1",
+                          assetBase: "Lab reports",
+                          assetName: "Day 3 C&S  Laboratory Report.pdf",
+                          dataParent: "labResults.labReport",
+                          fqn: "labResults.labReport.labReport3_1",
+                          formColumn: "1"
+                        }
+                      ]
+                    },
+                    {
+                      formRow: "4",
+                      elements: [
+                        {
+                          label: "Final C&S laboratory report",
+                          pageDataKey: "labResults",
+                          level3Key: "labReport",
+                          elementKey: "labReport4_1",
+                          inputType: "assetLink",
+                          fsetRow: "4",
+                          fsetCol: "1",
+                          assetBase: "Lab reports",
+                          assetName: "Day 3 Final C&S Laboratory Report.pdf",
+                          dataParent: "labResults.labReport",
+                          fqn: "labResults.labReport.labReport4_1",
+                          formColumn: "1"
+                        }
+                      ]
+                    }
+                  ],
+                  columnsCount: 1
+                }
               }
             ]
           }
@@ -549,54 +674,22 @@ export default function () {
     medicalImaging: {
       pageTitle: "Medical imaging",
       pageDataKey: "medicalImaging",
-      generated: "2019-03-20T15:40:49-07:00",
+      generated: "2019-03-25T22:17:57-07:00",
       hasForm: true,
       page_form: {
-        rows: [
-          {
-            formRow: "1",
-            elements: [
-              {
-                label: "Linked files",
-                pageDataKey: "medicalImaging",
-                elementKey: "none",
-                inputType: "label",
-                formRow: "1",
-                formColumn: "1",
-                dataParent: "medicalImaging",
-                fqn: "medicalImaging.none"
-              }
-            ]
-          }
-        ],
-        columnsCount: 1
+        rows: [],
+        columnsCount: 0
       },
       pageData: {}
     },
     operationReports: {
       pageTitle: "Operative reports and anaesthesia record",
       pageDataKey: "operationReports",
-      generated: "2019-03-20T15:40:49-07:00",
+      generated: "2019-03-25T22:17:57-07:00",
       hasForm: true,
       page_form: {
-        rows: [
-          {
-            formRow: "1",
-            elements: [
-              {
-                label: "Linked files",
-                pageDataKey: "operationReports",
-                elementKey: "none",
-                inputType: "label",
-                formRow: "1",
-                formColumn: "1",
-                dataParent: "operationReports",
-                fqn: "operationReports.none"
-              }
-            ]
-          }
-        ],
-        columnsCount: 1
+        rows: [],
+        columnsCount: 0
       },
       pageData: {}
     }
