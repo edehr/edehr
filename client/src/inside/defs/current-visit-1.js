@@ -4,7 +4,7 @@ export default function () {
     visit: {
       pageTitle: "Visit details",
       pageDataKey: "visit",
-      generated: "2019-03-25T22:26:51-07:00",
+      generated: "2019-03-27T13:05:25-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -220,7 +220,7 @@ export default function () {
     vitals: {
       pageTitle: "Vital signs",
       pageDataKey: "vitals",
-      generated: "2019-03-25T22:26:51-07:00",
+      generated: "2019-03-27T13:05:25-07:00",
       hasTable: true,
       tables: [
         {
@@ -800,7 +800,7 @@ export default function () {
     fluidBalance: {
       pageTitle: "Fluid balance",
       pageDataKey: "fluidBalance",
-      generated: "2019-03-25T22:26:51-07:00",
+      generated: "2019-03-27T13:05:25-07:00",
       hasTable: true,
       tables: [
         {
@@ -988,7 +988,7 @@ export default function () {
     neurological: {
       pageTitle: "Neurological assessment",
       pageDataKey: "neurological",
-      generated: "2019-03-25T22:26:51-07:00",
+      generated: "2019-03-27T13:05:25-07:00",
       hasTable: true,
       tables: [
         {
@@ -3151,7 +3151,7 @@ export default function () {
     respiratory: {
       pageTitle: "Respiratory assessment",
       pageDataKey: "respiratory",
-      generated: "2019-03-25T22:26:51-07:00",
+      generated: "2019-03-27T13:05:25-07:00",
       hasTable: true,
       tables: [
         {
@@ -4308,7 +4308,7 @@ export default function () {
     cardiovascular: {
       pageTitle: "Cardiovascular assessment",
       pageDataKey: "cardiovascular",
-      generated: "2019-03-25T22:26:51-07:00",
+      generated: "2019-03-27T13:05:25-07:00",
       hasTable: true,
       tables: [
         {
@@ -5678,7 +5678,7 @@ export default function () {
     gastrointestinal: {
       pageTitle: "Gastrointestinal assessment",
       pageDataKey: "gastrointestinal",
-      generated: "2019-03-25T22:26:51-07:00",
+      generated: "2019-03-27T13:05:25-07:00",
       hasTable: true,
       tables: [
         {
