@@ -1,5 +1,9 @@
 #!/bin/bash
 ## chmod u+x deploy.sh
+# set to exit on error and pipe error to container script
+set -e
+set -o pipefail
+
 LINT=false
 for i in "$@"
 do

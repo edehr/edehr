@@ -110,7 +110,7 @@ class RawInputToDef {
           pageData[table.tableKey] = []
         })
       }
-      console.log('Data structure for page ' + uiP.pageDataKey + ' is ', pageData)
+      // console.log('Data structure for page ' + uiP.pageDataKey + ' is ', pageData)
       uiP.pageData = pageData
       pages[uiP.pageDataKey] = uiP
     })
@@ -156,13 +156,13 @@ class RawInputToDef {
       }
       let p = entry.pageDataKey
       if (entry.inputType === PAGE_INPUT_TYPE) {
-        console.log('inputType PAGE_INPUT_TYPE', entry.inputType, entry.fqn)
+        // console.log('inputType PAGE_INPUT_TYPE', entry.inputType, entry.fqn)
         this._pageForGroup(p, pages, entry)
       } else if (CONTAINER_INPUT_TYPES.indexOf(entry.inputType) >= 0) {
-        console.log('inputType CONTAINER_INPUT_TYPES', entry.inputType, entry.fqn)
+        // console.log('inputType CONTAINER_INPUT_TYPES', entry.inputType, entry.fqn)
         this._topLevelContainerForGroup(pages, p, entry)
       } else if (SUBCONTAINER_INPUT_TYPES.indexOf(entry.inputType) >= 0) {
-        console.log('inputType SUBCONTAINER_INPUT_TYPES', entry.inputType, entry.fqn)
+        // console.log('inputType SUBCONTAINER_INPUT_TYPES', entry.inputType, entry.fqn)
         this._subcontainerForGroup(pages, p, entry)
       } else {
         // entry is a regular element
@@ -173,7 +173,7 @@ class RawInputToDef {
   }
 
   _pageForGroup(p, pages, entry) {
-    console.log('Page:', p)
+    // console.log('Page:', p)
     pages[p] = entry
     let pg = pages[p]
     pg.children = []
@@ -205,7 +205,7 @@ class RawInputToDef {
     container.elements = []
     container.containerType = entry.inputType
     container.containerKey = entry.elementKey
-    console.log('push container into page.fqn', page.fqn, 'cntId', containerFQN)
+    // console.log('push container into page.fqn', page.fqn, 'cntId', containerFQN)
     page.containers[containerFQN] = container
     return { page, container }
   }
@@ -307,18 +307,18 @@ class RawInputToDef {
   /* *************** to pages helpers ******** */
 
   _page(uiP, page, lastModifiedTime) {
-    console.log('Build form for page', page.label)
+    // console.log('Build form for page', page.label)
     uiP.generated = moment.utc(lastModifiedTime).local().format()
     Object.keys(page.containers).forEach(key => {
       let container = page.containers[key]
-      console.log('_page type fqn ', container.containerType, container.fqn)
+      // console.log('_page type fqn ', container.containerType, container.fqn)
       if (container.containerType === PAGE_FORM) {
         // console.log('_page PAGE_FORM', container.fqn)
         uiP.hasForm = true
         // TODO change to pageForm
         uiP.page_form = this._extractPageForm(container)
       } else if (container.containerType === TABLE_ROW) {
-        console.log('_page TABLE_ROW', container.fqn)
+        // console.log('_page TABLE_ROW', container.fqn)
         uiP.hasTable = true
         uiP.tables = uiP.tables || []
         let tableCells = this._pageTableCells(container)
@@ -340,12 +340,12 @@ class RawInputToDef {
         uiP.tables.push(table)
       } else if (container.containerType === TABLE_COL) {
         // TODO
-        console.log('TODO !!!!! column tables', container.containerKey)
+        // console.log('TODO !!!!! column tables', container.containerKey)
       } else if (container.containerType === SUBGROUP) {
         // TODO
-        console.log('TODO !!!!! sub groups ', container.containerKey)
+        // console.log('TODO !!!!! sub groups ', container.containerKey)
       } else if (container.containerType === FIELDSET || container.containerType === FIELDSET_ROW) {
-        console.log('_page', container.containerType, container.containerKey)
+        // console.log('_page', container.containerType, container.containerKey)
       }
     })
   }
@@ -356,9 +356,9 @@ class RawInputToDef {
     let topChildren=[]
     container.elements.forEach(element => {
       let elementKey = element.elementKey
-      console.log('_extractPageForm elementKey',elementKey)
+      // console.log('_extractPageForm elementKey',elementKey)
       if (element.inputType === FIELDSET || element.inputType === FIELDSET_ROW) {
-        console.log('_extractPageForm elementKey level2Key', elementKey, element.level2Key)
+        // console.log('_extractPageForm elementKey level2Key', elementKey, element.level2Key)
 
         let rows = []
         element.elements.forEach(childElem => {
@@ -443,7 +443,7 @@ class RawInputToDef {
   _extractTableForm(container, tableCells) {
     let rows = []
     let tableKey = container.containerKey
-    console.log('_extractTableForm', tableKey)
+    // console.log('_extractTableForm', tableKey)
     container.elements.forEach(element => {
       let formRow = element.formRow
       let cell = tableCells.find(c => element.elementKey === c.elementKey)
@@ -470,7 +470,7 @@ class RawInputToDef {
       rows: rows,
       columnsCount: this._formColumnCount(rows)
     }
-    console.log('extracted table form for ', container.fqn)
+    // console.log('extracted table form for ', container.fqn)
     return form
   }
 

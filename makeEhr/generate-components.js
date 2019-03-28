@@ -26,7 +26,7 @@ function main () {
 function generateInsidePageDefs() {
   let fSrc = pathUtil.join(rawDataSource, insidePageRawDefFileName) + '.txt'
   let fDest = pathUtil.join(destEhrDefs, insidePageRawDefFileName)  + '.js'
-  console.log('read file ', fSrc)
+  // console.log('read file ', fSrc)
   fs.readFile(fSrc, 'utf8', function (err, contents) {
     var inputToDef = new RawPagesToDefs()
     var masterPageDefs = inputToDef.getDefinitions(contents)
@@ -35,7 +35,7 @@ function generateInsidePageDefs() {
     results = results.replace(/"/g, "'")
     // results = _fixBooleans(results)
     var modDef = 'module.exports = function () {\n  return ' + results + '\n}'
-    console.log('write file ', fDest)
+    // console.log('write file ', fDest)
     fs.writeFileSync(fDest, modDef)
     /* ****
     Have definitions ... ready to go ...
@@ -108,7 +108,7 @@ function makeRoutes (defs, layout, cPath, outfilename) {
   routes.push(parts.join(',\n'))
   routes.push('  ]\n' + '}\n')
   var pathOutput = routes.join('\n')
-  console.log('write file with routes',outfilename)
+  // console.log('write file with routes',outfilename)
   fs.writeFileSync(outfilename, pathOutput, 'utf8')
 }
 function findTreeItem (def, tree) {
@@ -149,7 +149,7 @@ function makeTree (defs, outfilename) {
     makeTreeItem(def, tree)
   })
   var txtContent = JSON.stringify(tree, null, 2)
-  console.log('write file with tree',outfilename)
+  // console.log('write file with tree',outfilename)
   fs.writeFileSync(outfilename, txtContent, 'utf8')
   return tree
 }
@@ -162,7 +162,7 @@ function makeMenu (tree, outfilename) {
   content.push(elements.join(','))
   content.push(']')
   var txtContent = content.join('\n')
-  console.log('write file with menu',outfilename)
+  // console.log('write file with menu',outfilename)
   fs.writeFileSync(outfilename, txtContent, 'utf8')
 }
 
@@ -197,6 +197,6 @@ function makeVueFile (def, componentTemplate) {
     .replace(/{path}/g, def.fullPath)
   content = '// Generated VUE file. Before modifying see docs about Vue file generation\n' + content
   var outfilename = pathUtil.join(destVueFiles, def.componentName + '.vue')
-  console.log('write file with vue',outfilename)
+  // console.log('write file with vue',outfilename)
   fs.writeFileSync(outfilename, content, 'utf8')
 }
