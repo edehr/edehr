@@ -1,7 +1,7 @@
 <template lang="pug">
   div(:id="def.elementKey", class="ehrdfe", :class="formCss(def)")
 
-    div(v-if="def.inputType === 'form-label'", class="label_wrapper")
+    div(v-if="def.inputType === 'form_label'", class="label_wrapper")
       div(v-html="def.label")
 
     div(v-if="def.inputType === 'spacer'", class="label_wrapper spacer")
