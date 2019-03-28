@@ -72,23 +72,23 @@ optiflow}"	eCell	eCell	eCell	eCell	{Assignment: Vital signs}	eCell	eCell	eCell	{
 {Page: Neurological assessment}	{Label: Dizziness}	{pageDataKey: neurological}	{level2Key: table}	{level3Key: status}	{elementKey: dizziness}	{inputType: checkbox}	eCell	eCell	eCell	eCell	{tableColumn: 11}	eCell	eCell	{fsetRow: 6}	{fsetCol: 1}	eCell	eCell	eCell	eCell	eCell	eCell	{Assignment: N/A}	eCell	eCell	eCell	{dataParent: neurological.table.status}	{fqn: neurological.table.status.dizziness}	eCell
 {Page: Neurological assessment}	{Label: Blurred vision}	{pageDataKey: neurological}	{level2Key: table}	{level3Key: status}	{elementKey: blurredVision}	{inputType: checkbox}	eCell	eCell	eCell	eCell	{tableColumn: 12}	eCell	eCell	{fsetRow: 7}	{fsetCol: 1}	eCell	eCell	eCell	eCell	eCell	eCell	{Assignment: N/A}	eCell	eCell	eCell	{dataParent: neurological.table.status}	{fqn: neurological.table.status.blurredVision}	eCell
 {Page: Neurological assessment}	{Label: Glasgow Coma Scale}	{pageDataKey: neurological}	{level2Key: table}	eCell	{elementKey: glasgowComaScale}	{inputType: fieldset}	{formRow: 2}	{formColumn: 2}	eCell	eCell	{tableColumn: 13}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{dataParent: neurological.table}	{fqn: neurological.table.glasgowComaScale}	eCell
-{Page: Neurological assessment}	{Label: Eye opening}	{pageDataKey: neurological}	{level2Key: table}	{level3Key: glasgowComaScale}	{elementKey: eyeOpening}	{inputType: select}	eCell	eCell	eCell	eCell	{tableColumn: 14}	eCell	eCell	{fsetRow: 1}	{fsetCol: 1}	eCell	"{Options: Spontaneous
-To sound
-To pressure
-None
-Non testable}"	eCell	eCell	eCell	{Data_case_study: Spontaneous}	{Assignment: N/A}	eCell	{Notes_Questions: The glasgow scale diagram mentioned in the User Stories has a different set of options. Spotaneous (4 pts) to Voice (3 pts) to Pain (2 pts) and None (1) . Non-testable is 0 points?}	eCell	{dataParent: neurological.table.glasgowComaScale}	{fqn: neurological.table.glasgowComaScale.eyeOpening}	eCell
-{Page: Neurological assessment}	{Label: Verbal response}	{pageDataKey: neurological}	{level2Key: table}	{level3Key: glasgowComaScale}	{elementKey: verbalResponse}	{inputType: select}	eCell	eCell	eCell	eCell	{tableColumn: 15}	eCell	eCell	{fsetRow: 2}	{fsetCol: 1}	eCell	"{Options: Oriented
-Confused
-Words
-Sounds
-None
-Non testable}"	eCell	eCell	eCell	{Data_case_study: Oriented}	{Assignment: N/A}	eCell	{Notes_Questions: scale 5 points to 0}	eCell	{dataParent: neurological.table.glasgowComaScale}	{fqn: neurological.table.glasgowComaScale.verbalResponse}	eCell
-{Page: Neurological assessment}	{Label: Best motor response}	{pageDataKey: neurological}	{level2Key: table}	{level3Key: glasgowComaScale}	{elementKey: bestMotorResponse}	{inputType: select}	eCell	eCell	eCell	eCell	{tableColumn: 16}	eCell	eCell	{fsetRow: 3}	{fsetCol: 1}	eCell	"{Options: Obeys commands
-Localising
-Normal flexion
-Extension
-None
-Non testable}"	eCell	eCell	eCell	{Data_case_study: Obeys commands}	{Assignment: N/A}	eCell	{Notes_Questions: Obeys commands (6 pt) Localized pain (5) Withdrawal (4) Flexion (3pts) Extension (2 pts) None (1 pt)}	eCell	{dataParent: neurological.table.glasgowComaScale}	{fqn: neurological.table.glasgowComaScale.bestMotorResponse}	eCell
+{Page: Neurological assessment}	{Label: Eye opening}	{pageDataKey: neurological}	{level2Key: table}	{level3Key: glasgowComaScale}	{elementKey: eyeOpening}	{inputType: select}	eCell	eCell	eCell	eCell	{tableColumn: 14}	eCell	eCell	{fsetRow: 1}	{fsetCol: 1}	eCell	"{Options: 0 = Spontaneous
+1 = To sound
+2 = To pressure
+3 = None
+0 = Non testable}"	eCell	eCell	eCell	{Data_case_study: Spontaneous}	{Assignment: N/A}	eCell	{Notes_Questions: The glasgow scale diagram mentioned in the User Stories has a different set of options. Spotaneous (4 pts) to Voice (3 pts) to Pain (2 pts) and None (1) . Non-testable is 0 points?}	eCell	{dataParent: neurological.table.glasgowComaScale}	{fqn: neurological.table.glasgowComaScale.eyeOpening}	eCell
+{Page: Neurological assessment}	{Label: Verbal response}	{pageDataKey: neurological}	{level2Key: table}	{level3Key: glasgowComaScale}	{elementKey: verbalResponse}	{inputType: select}	eCell	eCell	eCell	eCell	{tableColumn: 15}	eCell	eCell	{fsetRow: 2}	{fsetCol: 1}	eCell	"{Options: 5 = Oriented
+4 = Confused
+3 = Words
+2 = Sounds
+1 = None
+0 = Non testable}"	eCell	eCell	eCell	{Data_case_study: Oriented}	{Assignment: N/A}	eCell	{Notes_Questions: scale 5 points to 0}	eCell	{dataParent: neurological.table.glasgowComaScale}	{fqn: neurological.table.glasgowComaScale.verbalResponse}	eCell
+{Page: Neurological assessment}	{Label: Best motor response}	{pageDataKey: neurological}	{level2Key: table}	{level3Key: glasgowComaScale}	{elementKey: bestMotorResponse}	{inputType: select}	eCell	eCell	eCell	eCell	{tableColumn: 16}	eCell	eCell	{fsetRow: 3}	{fsetCol: 1}	eCell	"{Options: 6 = Obeys commands
+4 = Localising
+3 = Normal flexion
+2 = Extension
+1 = None
+0 = Non testable}"	eCell	eCell	eCell	{Data_case_study: Obeys commands}	{Assignment: N/A}	eCell	{Notes_Questions: Obeys commands (6 pt) Localized pain (5) Withdrawal (4) Flexion (3pts) Extension (2 pts) None (1 pt)}	eCell	{dataParent: neurological.table.glasgowComaScale}	{fqn: neurological.table.glasgowComaScale.bestMotorResponse}	eCell
 {Page: Neurological assessment}	{Label: Total}	{pageDataKey: neurological}	{level2Key: table}	{level3Key: glasgowComaScale}	{elementKey: totalGlasgow}	{inputType: calculated}	eCell	eCell	eCell	eCell	{tableColumn: 17}	eCell	eCell	{fsetRow: 4}	{fsetCol: 1}	eCell	eCell	eCell	eCell	eCell	{Data_case_study: (15 - calculated by system)}	{Assignment: N/A}	eCell	{Notes_Questions: sum the points of the above three selections}	eCell	{dataParent: neurological.table.glasgowComaScale}	{fqn: neurological.table.glasgowComaScale.totalGlasgow}	eCell
 {Page: Neurological assessment}	{Label: Loss of conciousness}	{pageDataKey: neurological}	{level2Key: table}	{level3Key: glasgowComaScale}	{elementKey: loss}	{inputType: select}	eCell	eCell	eCell	eCell	{tableColumn: 18}	eCell	eCell	{fsetRow: 1}	{fsetCol: 1}	eCell	"{Options: No
 Yes

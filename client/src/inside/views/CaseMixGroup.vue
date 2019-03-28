@@ -11,13 +11,13 @@
           ehr-page-table(:tableDef="tableDef", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey", :showTableLabel="showTableLabel")
       div Page updated: {{ ehrHelp.formatDate(uiProps.generated) }}
     div(style="display:none")
-      p This Diagnostic Reports page is generated.
-      p Label: Medical imaging
-      p Data Key: medicalImaging
-      p Component name: DiagnosticReports
+      p This Case Mix Group page is generated.
+      p Label: Case mix group
+      p Data Key: caseMixGroup
+      p Component name: CaseMixGroup
       p Redirect: 
-      p Route name: diagnostic-reports
-      p Full path: /ehr/chart/reports/diagnostic-reports
+      p Route name: case-mix-group
+      p Full path: /ehr/external/case-mix-group
       p {{uiProps}}
 </template>
 
@@ -30,7 +30,7 @@ import EhrPageForm from '../components/EhrPageForm.vue'
 import EhrHelp from '../../helpers/ehr-helper'
 
 export default {
-  name: 'DiagnosticReports',
+  name: 'CaseMixGroup',
   components: {
     EhrPanelHeader,
     EhrPanelContent,
@@ -40,7 +40,7 @@ export default {
   },
   data: function () {
     return {
-      pageDataKey: 'medicalImaging',
+      pageDataKey: 'caseMixGroup',
       ehrHelp: undefined
     }
   },

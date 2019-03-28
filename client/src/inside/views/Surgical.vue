@@ -12,7 +12,7 @@
       div Page updated: {{ ehrHelp.formatDate(uiProps.generated) }}
     div(style="display:none")
       p This Surgical page is generated.
-      p Label: Surgical
+      p Label: Surgical history
       p Data Key: surgical
       p Component name: Surgical
       p Redirect: 

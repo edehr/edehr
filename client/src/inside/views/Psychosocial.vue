@@ -12,7 +12,7 @@
       div Page updated: {{ ehrHelp.formatDate(uiProps.generated) }}
     div(style="display:none")
       p This Psychosocial page is generated.
-      p Label: Psychosocial
+      p Label: Psychosocial history
       p Data Key: psychosocial
       p Component name: Psychosocial
       p Redirect: 
