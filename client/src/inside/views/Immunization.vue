@@ -12,7 +12,7 @@
       div Page updated: {{ ehrHelp.formatDate(uiProps.generated) }}
     div(style="display:none")
       p This Immunization page is generated.
-      p Label: Immunization
+      p Label: Immunization history
       p Data Key: immunization
       p Component name: Immunization
       p Redirect: 

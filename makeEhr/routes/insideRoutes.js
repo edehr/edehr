@@ -34,28 +34,28 @@ export function inside() {
       name: 'medical',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/Medical.vue'),
-      meta: { layout: 'inside', label: 'Medical', topLevel: 'patient' }
+      meta: { layout: 'inside', label: 'Medical history', topLevel: 'patient' }
     },
     {
       path: '/ehr/patient/history/psychosocial',
       name: 'psychosocial',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/Psychosocial.vue'),
-      meta: { layout: 'inside', label: 'Psychosocial', topLevel: 'patient' }
+      meta: { layout: 'inside', label: 'Psychosocial history', topLevel: 'patient' }
     },
     {
       path: '/ehr/patient/history/surgical',
       name: 'surgical',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/Surgical.vue'),
-      meta: { layout: 'inside', label: 'Surgical', topLevel: 'patient' }
+      meta: { layout: 'inside', label: 'Surgical history', topLevel: 'patient' }
     },
     {
       path: '/ehr/patient/history/immunization',
       name: 'immunization',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/Immunization.vue'),
-      meta: { layout: 'inside', label: 'Immunization', topLevel: 'patient' }
+      meta: { layout: 'inside', label: 'Immunization history', topLevel: 'patient' }
     },
     {
       path: '/ehr/patient/history/family-history',
@@ -209,7 +209,7 @@ export function inside() {
       name: 'mar',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/Mar.vue'),
-      meta: { layout: 'inside', label: 'MAR', topLevel: 'current' }
+      meta: { layout: 'inside', label: 'Medication administration records', topLevel: 'current' }
     },
     {
       path: '/ehr/current/discharge',
@@ -272,7 +272,7 @@ export function inside() {
       name: 'diagnostic-reports',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/DiagnosticReports.vue'),
-      meta: { layout: 'inside', label: 'Diagnostic reports', topLevel: 'chart' }
+      meta: { layout: 'inside', label: 'Medical imaging', topLevel: 'chart' }
     },
     {
       path: '/ehr/chart/reports/operative-anaesthesia',
@@ -317,11 +317,11 @@ export function inside() {
       meta: { layout: 'inside', label: 'Intervention codes', topLevel: 'external' }
     },
     {
-      path: '/ehr/external/care-mix-group',
-      name: 'care-mix-group',
+      path: '/ehr/external/case-mix-group',
+      name: 'case-mix-group',
       component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/CareMixGroup.vue'),
-      meta: { layout: 'inside', label: 'Care mix group', topLevel: 'external' }
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/CaseMixGroup.vue'),
+      meta: { layout: 'inside', label: 'Case mix group', topLevel: 'external' }
     }
   ]
 }
