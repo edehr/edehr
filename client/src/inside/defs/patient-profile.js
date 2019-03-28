@@ -4,7 +4,7 @@ export default function () {
     demographics: {
       pageTitle: "Demographics",
       pageDataKey: "demographics",
-      generated: "2019-03-27T13:19:53-07:00",
+      generated: "2019-03-27T21:49:30-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -498,7 +498,7 @@ export default function () {
     allergies: {
       pageTitle: "Allergies",
       pageDataKey: "allergies",
-      generated: "2019-03-27T13:19:53-07:00",
+      generated: "2019-03-27T21:49:30-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -543,7 +543,7 @@ export default function () {
     medical: {
       pageTitle: "Medical history",
       pageDataKey: "medical",
-      generated: "2019-03-27T13:19:53-07:00",
+      generated: "2019-03-27T21:49:30-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -570,7 +570,7 @@ export default function () {
     psychosocial: {
       pageTitle: "Psychosocial history",
       pageDataKey: "psychosocial",
-      generated: "2019-03-27T13:19:53-07:00",
+      generated: "2019-03-27T21:49:30-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -1003,11 +1003,12 @@ export default function () {
     surgical: {
       pageTitle: "Surgical history",
       pageDataKey: "surgical",
-      generated: "2019-03-27T13:19:53-07:00",
+      generated: "2019-03-27T21:49:30-07:00",
       hasTable: true,
       tables: [
         {
           tableKey: "pastSurgery",
+          label: "Past surgery",
           addButtonText: "Add a past surgery",
           tableCells: [
             {
@@ -1154,6 +1155,7 @@ export default function () {
         },
         {
           tableKey: "previous",
+          label: "Previous admission",
           addButtonText: "Add a previous appointment",
           tableCells: [
             {
@@ -1377,7 +1379,7 @@ export default function () {
     immunization: {
       pageTitle: "Immunization history",
       pageDataKey: "immunization",
-      generated: "2019-03-27T13:19:53-07:00",
+      generated: "2019-03-27T21:49:30-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -1659,7 +1661,7 @@ export default function () {
     familyHistory: {
       pageTitle: "Family history",
       pageDataKey: "familyHistory",
-      generated: "2019-03-27T13:19:53-07:00",
+      generated: "2019-03-27T21:49:30-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -1686,7 +1688,7 @@ export default function () {
     careTeam: {
       pageTitle: "Care team",
       pageDataKey: "careTeam",
-      generated: "2019-03-27T13:19:53-07:00",
+      generated: "2019-03-27T21:49:30-07:00",
       hasTable: true,
       tables: [
         {
@@ -1767,11 +1769,12 @@ export default function () {
     pastAppointments: {
       pageTitle: "Past appointments",
       pageDataKey: "pastAppointments",
-      generated: "2019-03-27T13:19:53-07:00",
+      generated: "2019-03-27T21:49:30-07:00",
       hasTable: true,
       tables: [
         {
           tableKey: "encounters",
+          label: "Past encounters",
           addButtonText: "Add a past encounter",
           tableCells: [
             {
@@ -1897,6 +1900,7 @@ export default function () {
         },
         {
           tableKey: "outpatientAppointments",
+          label: "Outpatient appointments",
           addButtonText: "Add a past appointment",
           tableCells: [
             {

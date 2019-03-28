@@ -30,10 +30,38 @@ routes.push({
     import(/* webpackChunkName: "notfound" */ './outside/components/PageNotFound.vue')
 })
 
+
+/**
+ * scrollBehavior:
+ * See https://router.vuejs.org/guide/advanced/scroll-behavior.html
+ * @param to
+ * @param from
+ * @param savedPosition
+ * @return {*}
+ */
+const scrollBehavior = function (to, from, savedPosition) {
+  if (savedPosition) {
+    // savedPosition is only available for popstate navigations.
+    return savedPosition
+  } else {
+    const position = {}
+    if (to.hash) {
+      // scroll to anchor by returning the selector
+      position.selector = to.hash
+    } else {
+      // scroll to top
+      position.x = 0
+      position.y = 0
+    }
+    return position
+  }
+}
+
 const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes: routes
+  routes: routes,
+  scrollBehavior
 })
 
 router.beforeEach((to, from, next) => {

@@ -60,7 +60,7 @@ export default {
       console.log('this.$refs.refMarDialog',this.$refs.refMarDialog)
       this.$refs.refMarDialog.openMarDialog(period)
     },
-    saveMar(mar) {
+    saveMar (mar) {
       let help = new MarHelper(this.ehrHelp)
       help.saveMarDialog(mar).then(() => {
         this.$refs.refMarDialog.closeDialog()
