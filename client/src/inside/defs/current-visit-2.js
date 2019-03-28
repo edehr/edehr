@@ -4,7 +4,7 @@ export default function () {
     genitourinary: {
       pageTitle: "Genitourinary assessment",
       pageDataKey: "genitourinary",
-      generated: "2019-03-12T16:11:43-07:00",
+      generated: "2019-03-27T13:05:41-07:00",
       hasTable: true,
       tables: [
         {
@@ -186,7 +186,7 @@ export default function () {
               formColumn: "1"
             },
             {
-              label: "Urinary Symptoms",
+              label: "Urinary symptoms",
               pageDataKey: "genitourinary",
               level2Key: "table",
               elementKey: "urinaryGroup1",
@@ -446,7 +446,7 @@ export default function () {
               formColumn: "1"
             },
             {
-              label: "If answered please complete the pain assessment",
+              label: "If answered yes, please complete the pain assessment",
               pageDataKey: "genitourinary",
               level2Key: "table",
               level3Key: "pelvicGroup",
@@ -518,17 +518,17 @@ export default function () {
               formColumn: "1"
             },
             {
-              label: "Bleeing",
+              label: "Bleeding",
               pageDataKey: "genitourinary",
               level2Key: "table",
               level3Key: "vaginal",
-              elementKey: "bleeing",
+              elementKey: "bleeding",
               inputType: "checkbox",
               tableColumn: "28",
               fsetRow: "2",
               fsetCol: "1",
               dataParent: "genitourinary.table.vaginal",
-              fqn: "genitourinary.table.vaginal.bleeing",
+              fqn: "genitourinary.table.vaginal.bleeding",
               tableKey: "table",
               formColumn: "1"
             },
@@ -738,7 +738,7 @@ export default function () {
                 formRow: "2",
                 elements: [
                   {
-                    label: "Urinary Symptoms",
+                    label: "Urinary symptoms",
                     pageDataKey: "genitourinary",
                     level2Key: "table",
                     elementKey: "urinaryGroup1",
@@ -1238,7 +1238,7 @@ export default function () {
                           formRow: "3",
                           elements: [
                             {
-                              label: "If answered please complete the pain assessment",
+                              label: "If answered yes, please complete the pain assessment",
                               pageDataKey: "genitourinary",
                               level2Key: "table",
                               level3Key: "pelvicGroup",
@@ -1330,17 +1330,17 @@ export default function () {
                           formRow: "2",
                           elements: [
                             {
-                              label: "Bleeing",
+                              label: "Bleeding",
                               pageDataKey: "genitourinary",
                               level2Key: "table",
                               level3Key: "vaginal",
-                              elementKey: "bleeing",
+                              elementKey: "bleeding",
                               inputType: "checkbox",
                               tableColumn: "28",
                               fsetRow: "2",
                               fsetCol: "1",
                               dataParent: "genitourinary.table.vaginal",
-                              fqn: "genitourinary.table.vaginal.bleeing",
+                              fqn: "genitourinary.table.vaginal.bleeding",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -1512,7 +1512,7 @@ export default function () {
     musculoskeletal: {
       pageTitle: "Musculoskeletal assessment",
       pageDataKey: "musculoskeletal",
-      generated: "2019-03-12T16:11:43-07:00",
+      generated: "2019-03-27T13:05:41-07:00",
       hasTable: true,
       tables: [
         {
@@ -2175,7 +2175,7 @@ export default function () {
     pain: {
       pageTitle: "Pain assessment",
       pageDataKey: "pain",
-      generated: "2019-03-12T16:11:43-07:00",
+      generated: "2019-03-27T13:05:41-07:00",
       hasTable: true,
       tables: [
         {
@@ -3032,7 +3032,7 @@ export default function () {
     biopsychosocial: {
       pageTitle: "Biopsychosocial assessment",
       pageDataKey: "biopsychosocial",
-      generated: "2019-03-12T16:11:43-07:00",
+      generated: "2019-03-27T13:05:41-07:00",
       hasTable: true,
       tables: [
         {
@@ -4542,7 +4542,7 @@ export default function () {
     nonmedOrders: {
       pageTitle: "Orders",
       pageDataKey: "nonmedOrders",
-      generated: "2019-03-12T16:11:43-07:00",
+      generated: "2019-03-27T13:05:41-07:00",
       hasTable: true,
       tables: [
         {
@@ -5022,7 +5022,7 @@ export default function () {
     referrals: {
       pageTitle: "Referrals to other disciplines",
       pageDataKey: "referrals",
-      generated: "2019-03-12T16:11:43-07:00",
+      generated: "2019-03-27T13:05:41-07:00",
       hasTable: true,
       tables: [
         {
@@ -5335,7 +5335,7 @@ export default function () {
     labRequisitions: {
       pageTitle: "Lab requisitions",
       pageDataKey: "labRequisitions",
-      generated: "2019-03-12T16:11:43-07:00",
+      generated: "2019-03-27T13:05:41-07:00",
       hasTable: true,
       tables: [
         {
@@ -5634,7 +5634,7 @@ export default function () {
     medicationOrders: {
       pageTitle: "Medication orders",
       pageDataKey: "medicationOrders",
-      generated: "2019-03-12T16:11:43-07:00",
+      generated: "2019-03-27T13:05:41-07:00",
       hasTable: true,
       tables: [
         {
@@ -6188,7 +6188,7 @@ export default function () {
     medAdminRec: {
       pageTitle: "Medication administration records",
       pageDataKey: "medAdminRec",
-      generated: "2019-03-12T16:11:43-07:00",
+      generated: "2019-03-27T13:05:41-07:00",
       hasTable: true,
       tables: [
         {
@@ -6477,7 +6477,7 @@ export default function () {
     dischargeSummary: {
       pageTitle: "Discharge summary",
       pageDataKey: "dischargeSummary",
-      generated: "2019-03-12T16:11:43-07:00",
+      generated: "2019-03-27T13:05:41-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -6780,7 +6780,7 @@ export default function () {
     billing: {
       pageTitle: "Billing",
       pageDataKey: "billing",
-      generated: "2019-03-12T16:11:43-07:00",
+      generated: "2019-03-27T13:05:41-07:00",
       hasForm: true,
       page_form: {
         rows: [

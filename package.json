@@ -18,12 +18,9 @@
   "scripts": {
     "database-start": "cd database && docker-compose up -d",
     "database-stop": "cd database && docker-compose down",
-
     "start-client": "cd client && npm run start",
     "start-server": "cd server && npm run start",
-
     "start-prod-server": "cd server && npm run start-prod",
-
     "build": "npm run build-client",
     "build-client": "cd client && npm run build",
 
@@ -35,10 +32,8 @@
     "lint": "npm run lint-client && npm run lint-server",
     "lint-client": "cd client && npm run lint",
     "lint-server": "cd server && npm run lint",
-
     "test": "npm run test-client && npm run test-server",
     "test-client": "cd client && npm run test",
     "test-server": "cd server && npm run test"
-
   }
 }

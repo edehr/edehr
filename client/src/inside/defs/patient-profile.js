@@ -4,7 +4,7 @@ export default function () {
     demographics: {
       pageTitle: "Demographics",
       pageDataKey: "demographics",
-      generated: "2019-03-12T16:07:07-07:00",
+      generated: "2019-03-27T13:19:53-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -498,7 +498,7 @@ export default function () {
     allergies: {
       pageTitle: "Allergies",
       pageDataKey: "allergies",
-      generated: "2019-03-12T16:07:07-07:00",
+      generated: "2019-03-27T13:19:53-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -543,7 +543,7 @@ export default function () {
     medical: {
       pageTitle: "Medical history",
       pageDataKey: "medical",
-      generated: "2019-03-12T16:07:07-07:00",
+      generated: "2019-03-27T13:19:53-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -570,7 +570,7 @@ export default function () {
     psychosocial: {
       pageTitle: "Psychosocial history",
       pageDataKey: "psychosocial",
-      generated: "2019-03-12T16:07:07-07:00",
+      generated: "2019-03-27T13:19:53-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -1003,7 +1003,7 @@ export default function () {
     surgical: {
       pageTitle: "Surgical history",
       pageDataKey: "surgical",
-      generated: "2019-03-12T16:07:07-07:00",
+      generated: "2019-03-27T13:19:53-07:00",
       hasTable: true,
       tables: [
         {
@@ -1014,39 +1014,60 @@ export default function () {
               label: "Performing physician",
               pageDataKey: "surgical",
               level2Key: "pastSurgery",
+              level3Key: "pastSurgeryHeading",
               elementKey: "physician",
               inputType: "text",
-              formRow: "1",
-              formColumn: "1",
               tableColumn: "1",
-              dataParent: "surgical.pastSurgery",
-              fqn: "surgical.pastSurgery.physician",
-              tableKey: "pastSurgery"
+              fsetRow: "1",
+              fsetCol: "1",
+              dataParent: "surgical.pastSurgery.pastSurgeryHeading",
+              fqn: "surgical.pastSurgery.pastSurgeryHeading.physician",
+              tableKey: "pastSurgery",
+              formColumn: "1"
             },
             {
               label: "Surgery/procedure",
               pageDataKey: "surgical",
               level2Key: "pastSurgery",
+              level3Key: "pastSurgeryHeading",
               elementKey: "procedure",
               inputType: "text",
-              formRow: "1",
-              formColumn: "1",
               tableColumn: "2",
-              dataParent: "surgical.pastSurgery",
-              fqn: "surgical.pastSurgery.procedure",
-              tableKey: "pastSurgery"
+              fsetRow: "1",
+              fsetCol: "2",
+              dataParent: "surgical.pastSurgery.pastSurgeryHeading",
+              fqn: "surgical.pastSurgery.pastSurgeryHeading.procedure",
+              tableKey: "pastSurgery",
+              formColumn: "2"
             },
             {
               label: "Time elapsed since surgery",
               pageDataKey: "surgical",
               level2Key: "pastSurgery",
+              level3Key: "pastSurgeryHeading",
               elementKey: "timeSince",
               inputType: "text",
-              formRow: "1",
-              formColumn: "2",
               tableColumn: "3",
+              fsetRow: "1",
+              fsetCol: "3",
+              dataParent: "surgical.pastSurgery.pastSurgeryHeading",
+              fqn: "surgical.pastSurgery.pastSurgeryHeading.timeSince",
+              tableKey: "pastSurgery",
+              formColumn: "3"
+            },
+            {
+              label: "Past surgery",
+              pageDataKey: "surgical",
+              level2Key: "pastSurgery",
+              elementKey: "pastSurgeryHeading",
+              inputType: "fieldset",
+              formRow: "1",
+              formColumn: "1",
               dataParent: "surgical.pastSurgery",
-              fqn: "surgical.pastSurgery.timeSince",
+              fqn: "surgical.pastSurgery.pastSurgeryHeading",
+              containerType: "fieldset",
+              containerKey: "pastSurgeryHeading",
+              tableCss: "hide-table-element",
               tableKey: "pastSurgery"
             }
           ],
@@ -1056,48 +1077,79 @@ export default function () {
                 formRow: "1",
                 elements: [
                   {
-                    label: "Performing physician",
+                    label: "Past surgery",
                     pageDataKey: "surgical",
                     level2Key: "pastSurgery",
-                    elementKey: "physician",
-                    inputType: "text",
+                    elementKey: "pastSurgeryHeading",
+                    inputType: "fieldset",
                     formRow: "1",
                     formColumn: "1",
-                    tableColumn: "1",
                     dataParent: "surgical.pastSurgery",
-                    fqn: "surgical.pastSurgery.physician",
-                    tableKey: "pastSurgery"
-                  },
-                  {
-                    label: "Surgery/procedure",
-                    pageDataKey: "surgical",
-                    level2Key: "pastSurgery",
-                    elementKey: "procedure",
-                    inputType: "text",
-                    formRow: "1",
-                    formColumn: "1",
-                    tableColumn: "2",
-                    dataParent: "surgical.pastSurgery",
-                    fqn: "surgical.pastSurgery.procedure",
-                    tableKey: "pastSurgery"
-                  },
-                  {
-                    label: "Time elapsed since surgery",
-                    pageDataKey: "surgical",
-                    level2Key: "pastSurgery",
-                    elementKey: "timeSince",
-                    inputType: "text",
-                    formRow: "1",
-                    formColumn: "2",
-                    tableColumn: "3",
-                    dataParent: "surgical.pastSurgery",
-                    fqn: "surgical.pastSurgery.timeSince",
-                    tableKey: "pastSurgery"
+                    fqn: "surgical.pastSurgery.pastSurgeryHeading",
+                    containerType: "fieldset",
+                    containerKey: "pastSurgeryHeading",
+                    tableCss: "hide-table-element",
+                    tableKey: "pastSurgery",
+                    formFieldSet: {
+                      rows: [
+                        {
+                          formRow: "1",
+                          elements: [
+                            {
+                              label: "Performing physician",
+                              pageDataKey: "surgical",
+                              level2Key: "pastSurgery",
+                              level3Key: "pastSurgeryHeading",
+                              elementKey: "physician",
+                              inputType: "text",
+                              tableColumn: "1",
+                              fsetRow: "1",
+                              fsetCol: "1",
+                              dataParent: "surgical.pastSurgery.pastSurgeryHeading",
+                              fqn: "surgical.pastSurgery.pastSurgeryHeading.physician",
+                              tableKey: "pastSurgery",
+                              formColumn: "1"
+                            },
+                            {
+                              label: "Surgery/procedure",
+                              pageDataKey: "surgical",
+                              level2Key: "pastSurgery",
+                              level3Key: "pastSurgeryHeading",
+                              elementKey: "procedure",
+                              inputType: "text",
+                              tableColumn: "2",
+                              fsetRow: "1",
+                              fsetCol: "2",
+                              dataParent: "surgical.pastSurgery.pastSurgeryHeading",
+                              fqn: "surgical.pastSurgery.pastSurgeryHeading.procedure",
+                              tableKey: "pastSurgery",
+                              formColumn: "2"
+                            },
+                            {
+                              label: "Time elapsed since surgery",
+                              pageDataKey: "surgical",
+                              level2Key: "pastSurgery",
+                              level3Key: "pastSurgeryHeading",
+                              elementKey: "timeSince",
+                              inputType: "text",
+                              tableColumn: "3",
+                              fsetRow: "1",
+                              fsetCol: "3",
+                              dataParent: "surgical.pastSurgery.pastSurgeryHeading",
+                              fqn: "surgical.pastSurgery.pastSurgeryHeading.timeSince",
+                              tableKey: "pastSurgery",
+                              formColumn: "3"
+                            }
+                          ]
+                        }
+                      ],
+                      columnsCount: 3
+                    }
                   }
                 ]
               }
             ],
-            columnsCount: 3
+            columnsCount: 1
           }
         },
         {
@@ -1108,59 +1160,90 @@ export default function () {
               label: "Appointment with",
               pageDataKey: "surgical",
               level2Key: "previous",
+              level3Key: "previousAdmissionsHeading",
               elementKey: "with",
               inputType: "text",
-              dataParent: "surgical.previous",
-              fqn: "surgical.previous.with",
-              tableKey: "previous"
+              tableColumn: "1",
+              fsetRow: "1",
+              fsetCol: "1",
+              dataParent: "surgical.previous.previousAdmissionsHeading",
+              fqn: "surgical.previous.previousAdmissionsHeading.with",
+              tableKey: "previous",
+              formColumn: "1"
             },
             {
               label: "Appointment details",
               pageDataKey: "surgical",
               level2Key: "previous",
+              level3Key: "previousAdmissionsHeading",
               elementKey: "details",
               inputType: "text",
-              dataParent: "surgical.previous",
-              fqn: "surgical.previous.details",
-              tableKey: "previous"
+              tableColumn: "2",
+              fsetRow: "1",
+              fsetCol: "2",
+              dataParent: "surgical.previous.previousAdmissionsHeading",
+              fqn: "surgical.previous.previousAdmissionsHeading.details",
+              tableKey: "previous",
+              formColumn: "2"
             },
             {
               label: "Previous admission reason",
               pageDataKey: "surgical",
               level2Key: "previous",
+              level3Key: "previousAdmissionsHeading",
               elementKey: "previousAdmissions",
               inputType: "text",
-              formRow: "1",
-              formColumn: "1",
-              tableColumn: "1",
-              dataParent: "surgical.previous",
-              fqn: "surgical.previous.previousAdmissions",
-              tableKey: "previous"
+              tableColumn: "3",
+              fsetRow: "2",
+              fsetCol: "1",
+              dataParent: "surgical.previous.previousAdmissionsHeading",
+              fqn: "surgical.previous.previousAdmissionsHeading.previousAdmissions",
+              tableKey: "previous",
+              formColumn: "1"
             },
             {
               label: "Date",
               pageDataKey: "surgical",
               level2Key: "previous",
+              level3Key: "previousAdmissionsHeading",
               elementKey: "previousAdmissionsDate",
               inputType: "date",
-              formRow: "1",
-              formColumn: "2",
-              tableColumn: "2",
-              dataParent: "surgical.previous",
-              fqn: "surgical.previous.previousAdmissionsDate",
-              tableKey: "previous"
+              tableColumn: "4",
+              fsetRow: "2",
+              fsetCol: "2",
+              dataParent: "surgical.previous.previousAdmissionsHeading",
+              fqn: "surgical.previous.previousAdmissionsHeading.previousAdmissionsDate",
+              tableKey: "previous",
+              formColumn: "2"
             },
             {
               label: "General comments",
               pageDataKey: "surgical",
               level2Key: "previous",
+              level3Key: "previousAdmissionsHeading",
               elementKey: "comments",
               inputType: "textarea",
-              formRow: "2",
+              tableColumn: "5",
+              fsetRow: "3",
+              fsetCol: "1",
+              dataParent: "surgical.previous.previousAdmissionsHeading",
+              fqn: "surgical.previous.previousAdmissionsHeading.comments",
+              tableKey: "previous",
+              formColumn: "1"
+            },
+            {
+              label: "Previous admissions",
+              pageDataKey: "surgical",
+              level2Key: "previous",
+              elementKey: "previousAdmissionsHeading",
+              inputType: "fieldset",
+              formRow: "1",
               formColumn: "1",
-              tableColumn: "3",
               dataParent: "surgical.previous",
-              fqn: "surgical.previous.comments",
+              fqn: "surgical.previous.previousAdmissionsHeading",
+              containerType: "fieldset",
+              containerKey: "previousAdmissionsHeading",
+              tableCss: "hide-table-element",
               tableKey: "previous"
             }
           ],
@@ -1170,53 +1253,119 @@ export default function () {
                 formRow: "1",
                 elements: [
                   {
-                    label: "Previous admission reason",
+                    label: "Previous admissions",
                     pageDataKey: "surgical",
                     level2Key: "previous",
-                    elementKey: "previousAdmissions",
-                    inputType: "text",
+                    elementKey: "previousAdmissionsHeading",
+                    inputType: "fieldset",
                     formRow: "1",
                     formColumn: "1",
-                    tableColumn: "1",
                     dataParent: "surgical.previous",
-                    fqn: "surgical.previous.previousAdmissions",
-                    tableKey: "previous"
-                  },
-                  {
-                    label: "Date",
-                    pageDataKey: "surgical",
-                    level2Key: "previous",
-                    elementKey: "previousAdmissionsDate",
-                    inputType: "date",
-                    formRow: "1",
-                    formColumn: "2",
-                    tableColumn: "2",
-                    dataParent: "surgical.previous",
-                    fqn: "surgical.previous.previousAdmissionsDate",
-                    tableKey: "previous"
-                  }
-                ]
-              },
-              {
-                formRow: "2",
-                elements: [
-                  {
-                    label: "General comments",
-                    pageDataKey: "surgical",
-                    level2Key: "previous",
-                    elementKey: "comments",
-                    inputType: "textarea",
-                    formRow: "2",
-                    formColumn: "1",
-                    tableColumn: "3",
-                    dataParent: "surgical.previous",
-                    fqn: "surgical.previous.comments",
-                    tableKey: "previous"
+                    fqn: "surgical.previous.previousAdmissionsHeading",
+                    containerType: "fieldset",
+                    containerKey: "previousAdmissionsHeading",
+                    tableCss: "hide-table-element",
+                    tableKey: "previous",
+                    formFieldSet: {
+                      rows: [
+                        {
+                          formRow: "1",
+                          elements: [
+                            {
+                              label: "Appointment with",
+                              pageDataKey: "surgical",
+                              level2Key: "previous",
+                              level3Key: "previousAdmissionsHeading",
+                              elementKey: "with",
+                              inputType: "text",
+                              tableColumn: "1",
+                              fsetRow: "1",
+                              fsetCol: "1",
+                              dataParent: "surgical.previous.previousAdmissionsHeading",
+                              fqn: "surgical.previous.previousAdmissionsHeading.with",
+                              tableKey: "previous",
+                              formColumn: "1"
+                            },
+                            {
+                              label: "Appointment details",
+                              pageDataKey: "surgical",
+                              level2Key: "previous",
+                              level3Key: "previousAdmissionsHeading",
+                              elementKey: "details",
+                              inputType: "text",
+                              tableColumn: "2",
+                              fsetRow: "1",
+                              fsetCol: "2",
+                              dataParent: "surgical.previous.previousAdmissionsHeading",
+                              fqn: "surgical.previous.previousAdmissionsHeading.details",
+                              tableKey: "previous",
+                              formColumn: "2"
+                            }
+                          ]
+                        },
+                        {
+                          formRow: "2",
+                          elements: [
+                            {
+                              label: "Previous admission reason",
+                              pageDataKey: "surgical",
+                              level2Key: "previous",
+                              level3Key: "previousAdmissionsHeading",
+                              elementKey: "previousAdmissions",
+                              inputType: "text",
+                              tableColumn: "3",
+                              fsetRow: "2",
+                              fsetCol: "1",
+                              dataParent: "surgical.previous.previousAdmissionsHeading",
+                              fqn: "surgical.previous.previousAdmissionsHeading.previousAdmissions",
+                              tableKey: "previous",
+                              formColumn: "1"
+                            },
+                            {
+                              label: "Date",
+                              pageDataKey: "surgical",
+                              level2Key: "previous",
+                              level3Key: "previousAdmissionsHeading",
+                              elementKey: "previousAdmissionsDate",
+                              inputType: "date",
+                              tableColumn: "4",
+                              fsetRow: "2",
+                              fsetCol: "2",
+                              dataParent: "surgical.previous.previousAdmissionsHeading",
+                              fqn: "surgical.previous.previousAdmissionsHeading.previousAdmissionsDate",
+                              tableKey: "previous",
+                              formColumn: "2"
+                            }
+                          ]
+                        },
+                        {
+                          formRow: "3",
+                          elements: [
+                            {
+                              label: "General comments",
+                              pageDataKey: "surgical",
+                              level2Key: "previous",
+                              level3Key: "previousAdmissionsHeading",
+                              elementKey: "comments",
+                              inputType: "textarea",
+                              tableColumn: "5",
+                              fsetRow: "3",
+                              fsetCol: "1",
+                              dataParent: "surgical.previous.previousAdmissionsHeading",
+                              fqn: "surgical.previous.previousAdmissionsHeading.comments",
+                              tableKey: "previous",
+                              formColumn: "1"
+                            }
+                          ]
+                        }
+                      ],
+                      columnsCount: 2
+                    }
                   }
                 ]
               }
             ],
-            columnsCount: 2
+            columnsCount: 1
           }
         }
       ],
@@ -1228,7 +1377,7 @@ export default function () {
     immunization: {
       pageTitle: "Immunization history",
       pageDataKey: "immunization",
-      generated: "2019-03-12T16:07:07-07:00",
+      generated: "2019-03-27T13:19:53-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -1242,11 +1391,12 @@ export default function () {
                 inputType: "checkbox",
                 formRow: "1",
                 formColumn: "1",
+                tableCss: "is-one-third",
                 dataParent: "immunization",
                 fqn: "immunization.hepA"
               },
               {
-                label: "Hep A Date",
+                label: "Hep A date",
                 pageDataKey: "immunization",
                 elementKey: "hepADate",
                 inputType: "date",
@@ -1268,11 +1418,12 @@ export default function () {
                 inputType: "checkbox",
                 formRow: "2",
                 formColumn: "1",
+                tableCss: "is-one-third",
                 dataParent: "immunization",
                 fqn: "immunization.hepB"
               },
               {
-                label: "Hep B Date",
+                label: "Hep B date",
                 pageDataKey: "immunization",
                 elementKey: "hepBDate",
                 inputType: "date",
@@ -1294,11 +1445,12 @@ export default function () {
                 inputType: "checkbox",
                 formRow: "3",
                 formColumn: "1",
+                tableCss: "is-one-third",
                 dataParent: "immunization",
                 fqn: "immunization.mmr"
               },
               {
-                label: "MMR Date",
+                label: "MMR date",
                 pageDataKey: "immunization",
                 elementKey: "mmrDate",
                 inputType: "date",
@@ -1320,11 +1472,12 @@ export default function () {
                 inputType: "checkbox",
                 formRow: "4",
                 formColumn: "1",
+                tableCss: "is-one-third",
                 dataParent: "immunization",
                 fqn: "immunization.pneumococcal"
               },
               {
-                label: "Pneumococcal Date",
+                label: "Pneumococcal date",
                 pageDataKey: "immunization",
                 elementKey: "pneumococcalDate",
                 inputType: "date",
@@ -1346,11 +1499,12 @@ export default function () {
                 inputType: "checkbox",
                 formRow: "5",
                 formColumn: "1",
+                tableCss: "is-one-third",
                 dataParent: "immunization",
                 fqn: "immunization.polioDiptheriaPertussis"
               },
               {
-                label: "Polio diptheria pertussis Date",
+                label: "Polio diptheria pertussis date",
                 pageDataKey: "immunization",
                 elementKey: "polioDiptheriaPertussisDate",
                 inputType: "date",
@@ -1372,11 +1526,12 @@ export default function () {
                 inputType: "checkbox",
                 formRow: "6",
                 formColumn: "1",
+                tableCss: "is-one-third",
                 dataParent: "immunization",
                 fqn: "immunization.tb"
               },
               {
-                label: "TB Date",
+                label: "TB date",
                 pageDataKey: "immunization",
                 elementKey: "tbDate",
                 inputType: "date",
@@ -1398,11 +1553,12 @@ export default function () {
                 inputType: "checkbox",
                 formRow: "7",
                 formColumn: "1",
+                tableCss: "is-one-third",
                 dataParent: "immunization",
                 fqn: "immunization.tetanus"
               },
               {
-                label: "Tetanus Date",
+                label: "Tetanus date",
                 pageDataKey: "immunization",
                 elementKey: "tetanusDate",
                 inputType: "date",
@@ -1423,6 +1579,7 @@ export default function () {
                 inputType: "text",
                 formRow: "8",
                 formColumn: "1",
+                tableCss: "is-one-third",
                 validation: "If other is selected, this is mandatory",
                 dataParent: "immunization",
                 fqn: "immunization.other1"
@@ -1449,6 +1606,7 @@ export default function () {
                 inputType: "text",
                 formRow: "9",
                 formColumn: "1",
+                tableCss: "is-one-third",
                 validation: "If other is selected, this is mandatory",
                 dataParent: "immunization",
                 fqn: "immunization.other2"
@@ -1475,6 +1633,7 @@ export default function () {
                 inputType: "text",
                 formRow: "10",
                 formColumn: "1",
+                tableCss: "is-one-third",
                 validation: "If other is selected, this is mandatory",
                 dataParent: "immunization",
                 fqn: "immunization.other3"
@@ -1500,7 +1659,7 @@ export default function () {
     familyHistory: {
       pageTitle: "Family history",
       pageDataKey: "familyHistory",
-      generated: "2019-03-12T16:07:07-07:00",
+      generated: "2019-03-27T13:19:53-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -1527,7 +1686,7 @@ export default function () {
     careTeam: {
       pageTitle: "Care team",
       pageDataKey: "careTeam",
-      generated: "2019-03-12T16:07:07-07:00",
+      generated: "2019-03-27T13:19:53-07:00",
       hasTable: true,
       tables: [
         {
@@ -1543,6 +1702,7 @@ export default function () {
               formRow: "1",
               formColumn: "1",
               tableColumn: "1",
+              tableCss: "is-one-third",
               dataParent: "careTeam.teams",
               fqn: "careTeam.teams.name",
               tableKey: "teams"
@@ -1575,6 +1735,7 @@ export default function () {
                     formRow: "1",
                     formColumn: "1",
                     tableColumn: "1",
+                    tableCss: "is-one-third",
                     dataParent: "careTeam.teams",
                     fqn: "careTeam.teams.name",
                     tableKey: "teams"
@@ -1606,7 +1767,7 @@ export default function () {
     pastAppointments: {
       pageTitle: "Past appointments",
       pageDataKey: "pastAppointments",
-      generated: "2019-03-12T16:07:07-07:00",
+      generated: "2019-03-27T13:19:53-07:00",
       hasTable: true,
       tables: [
         {
@@ -1618,7 +1779,7 @@ export default function () {
               pageDataKey: "pastAppointments",
               level2Key: "encounters",
               elementKey: "date",
-              inputType: "text",
+              inputType: "date",
               formRow: "1",
               formColumn: "1",
               tableColumn: "1",
@@ -1676,7 +1837,7 @@ export default function () {
                     pageDataKey: "pastAppointments",
                     level2Key: "encounters",
                     elementKey: "date",
-                    inputType: "text",
+                    inputType: "date",
                     formRow: "1",
                     formColumn: "1",
                     tableColumn: "1",

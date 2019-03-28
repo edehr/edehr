@@ -13,8 +13,6 @@ const DEFAULT_DAY = 0
 function validWho (text) { return text && text.trim().length > 0 }
 function validDay (text) { return (/^([0-9]+)$/.test(text))}
 
-
-
 /*
 MAR record:
 who,
@@ -49,6 +47,14 @@ export default class MarEntity {
     }
   }
 
+  asObjectForApi () {
+    let obj = Object.assign({},this._data)
+    let medsList = this._period && this._period.medsList ? this._period.medsList : []
+    obj.medications = medsList.map(m => m.data)
+    console.log('MarEntity asObjectForApi', obj)
+    return obj
+  }
+
   set data (obj) { this._data = obj }
   get data () { return this._data }
 
@@ -72,20 +78,10 @@ export default class MarEntity {
   set medications (list) { this._data.medications = list }
   get medications () { return this._data.medications}
 
-  // // TODO add validation to set period
-  // set periodInfo (p) { this._data.periodInfo = p }
-  // // p.medsList.forEach( med => {
-  // //   this_data.medications.push(med)
-  // // })
-  // // }
-  // get periodInfo () { return this._data.periodInfo }
-  //
-
   setPeriod (period) {
-    // console.log('MarEntity set period ', period)
     this.scheduledTime = period.key
-    // copy the med list but get the inner raw data so we can store it in the db
-    this.medications = period.medsList ? period.medsList.map(m => m.data) : []
+    this._period = period
+    this._data.medications = period.medsList
   }
 
   validate () {

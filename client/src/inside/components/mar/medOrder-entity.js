@@ -12,10 +12,27 @@ export default class MedOrder {
       this.data = {
         medication: undefined,
         dose: undefined,
+        route: undefined,
         scheduleType: undefined,
         notes: undefined
       }
     }
+  }
+
+  static medOrderAsTextLine (med, maxLen) {
+    if (!med instanceof MedOrder) {
+      console.log('not MedOrder', med)
+      return 'error'
+    }
+    let space = ', '
+    let extract = t => t && t.trim().length > 0 ? space + t : ''
+    let markup = med.medication
+    markup += extract(med.dose)
+    markup += extract(med.route)
+    markup += extract(med.scheduleType)
+    markup += extract(med.scheduleTime)
+    markup += extract(med.notes)
+    return markup.length > maxLen ? markup.substr(0,maxLen) + '...' : markup
   }
 
   set data (obj) { this._data = obj }
@@ -30,6 +47,9 @@ export default class MedOrder {
 
   get dose () { return this._data.dose }
   set dose (text) { this._data.dose = text }
+
+  get route () { return this._data.route }
+  set route (text) { this._data.route = text }
 
   get scheduleType () { return this._data.scheduleType }
   set scheduleType (text) { this._data.scheduleType = text }

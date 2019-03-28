@@ -36,7 +36,6 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 1.25em;
 }
 
 .fieldset_row_row_element {
@@ -47,7 +46,6 @@
   display: block;
   font-weight: bold;
   font-size: 1.1rem;
-  margin-bottom: 1rem;
 }
 
 .fieldset-col {
@@ -145,6 +143,14 @@ input, textarea, select, input:disabled, textarea:disabled, select:disabled, che
   width: 100%
 }
 
+.text_input_wrapper, .textarea_wrapper, .select_wrapper {
+  margin-bottom: 1.25em;
+}
+
+.checkbox_wrapper {
+    margin-bottom: .625em;
+}
+
 .select {
   width: 100%;
 }
@@ -158,6 +164,8 @@ select {
     opacity: .4;
   }
 }
+
+
 
 .select:not(.is-multiple):not(.is-loading)::after {
   border-color: $grey40;
@@ -287,4 +295,11 @@ select {
 
 .z-999 {
   z-index: 999;
+}
+
+/* Very specific formatting to make forms look a little more aligned */
+
+/* genitourinary form */
+#bleeding {
+    margin-bottom: 13px;
 }
