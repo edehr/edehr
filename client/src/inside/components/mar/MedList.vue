@@ -1,11 +1,12 @@
 <template lang="pug">
-  ul
-    li(class="medList", v-for="med in medsList")
-      div {{ medText(med) }}
+  div
+    ul
+      li(class="medList", v-for="med in medsList")
+        div {{ medText(med) }}
 </template>
 
 <script>
-import MedOrder from './medOrder-entity'
+import MedOrder from './med-entity'
 const MAX_LEN = 80
 export default {
   name: 'MedList',

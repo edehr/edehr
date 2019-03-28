@@ -1,6 +1,7 @@
-import PeriodEntity from '../../src/inside/components/mar/period-entity'
-import MarEntity from '../../src/inside/components/mar/mar-entity'
-var should = require('should')
+import PeriodEntity from '../../../src/inside/components/mar/period-entity'
+import MarEntity from '../../../src/inside/components/mar/mar-entity'
+import should from 'should'
+import { getSampleMarDbDataList } from './med-test-util'
 
 let key = 'breakfast'
 let aPeriod = new PeriodEntity(key,'Breakfast')
@@ -26,13 +27,11 @@ describe('MarEntity', () => {
   })
 
   it('MarEntity set by object', () => {
-    let mar, errs, obj
-    obj = {whoAdministered:'me', day: 0, actualTime: '1:00'}
-    mar = new MarEntity(obj)
-    errs = mar.validate()
-    errs.length.should.be.equal(2)
+    let marSample = getSampleMarDbDataList()
+    let mar = new MarEntity(marSample[0])
+    let errs = mar.validate()
+    errs.length.should.be.equal(0)
   })
-
 
   it('MarEntity various invalid', () => {
     let mar = new MarEntity('', 0, '1:00','comment', aPeriod)
@@ -48,7 +47,6 @@ describe('MarEntity', () => {
     errs.length.should.be.equal(2)
   })
 
-
   it('MarEntity data', () => {
     let mar = new MarEntity('me', 0, '1:00','comment', aPeriod)
     should.exist(mar)
@@ -59,7 +57,6 @@ describe('MarEntity', () => {
     obj.should.have.property('scheduledTime')
     obj.scheduledTime.should.be.equal(aPeriod.key)
   })
-
 
   it('MarEntity sort', () => {
     let m1, m2, d
@@ -83,5 +80,15 @@ describe('MarEntity', () => {
     d = MarEntity.compare(m1, m2)
     d.should.be.lessThan(0)
   })
+
+
+  it('MarEntity asObjectForApi', () => {
+    let marSample = getSampleMarDbDataList()
+    let mar = new MarEntity(marSample[0])
+    let obj = mar.asObjectForApi()
+    should.exist(obj)
+    console.log(obj)
+  })
+
 
 })
