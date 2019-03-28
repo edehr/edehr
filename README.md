@@ -69,19 +69,25 @@ npm run test
 
 
 ## EHR generation
-The EHR side of the project contains almost 40 separate screens, each needs to be in the menu and routing tables.  These tasks are automated via a script in the makeEhr subdirectory.
-This script only needs to be invoked if the content of the configuration files have been 
-modified.  The source of the configuration files comes from a Google spreadsheet stored in the project GDrive.
-After updating the raw configuration content in the ```makeEhr/raw_data``` directory run the compile script: 
+The EHR side of the project contains almost 40 separate screens, each needs to be in the menu and routing tables.  These 
+tasks are automated via a script in the makeEhr subdirectory. This script only needs to be invoked if the content of the 
+configuration files have been modified.  The source of the configuration files comes from a Google spreadsheet stored 
+in the project GDrive.
 ```
 cd makeEhr
+npm install
 ./deploy.sh --lint
 ```
-The ```--lint``` option can be replaced with ```-l```. Without the lint option you will need to relint all files before checkin.
+The ```--lint``` option can be replaced with ```-l```. You must use this lint option before submitting files. If you are 
+making changes and then checking the results in the UI you can skip ```lint``` and get your changes into the UI faster.
+Just run the script with lint when you are done and ready to submit your code.
 
 
-##Client
+## Client
 The client is a Vue project.
 
-##API server
+## API server
 The server is a Node Express application supported by a MongoDB. It depends on a LTI package.
+
+## Database
+The MongoDB is served from a Docker image.

@@ -23,9 +23,12 @@
     "start-prod-server": "cd server && npm run start-prod",
     "build": "npm run build-client",
     "build-client": "cd client && npm run build",
-    "install": "npm run install-client && npm run install-server",
+
+    "install": "npm run install-client && npm run install-server && npm run install-maker",
     "install-client": "cd client && npm install",
     "install-server": "cd server && npm install",
+    "install-maker": "cd makeEhr && npm install",
+
     "lint": "npm run lint-client && npm run lint-server",
     "lint-client": "cd client && npm run lint",
     "lint-server": "cd server && npm run lint",
