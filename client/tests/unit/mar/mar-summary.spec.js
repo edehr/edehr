@@ -34,7 +34,7 @@ describe('MarSummary', () => {
     let row = tableBody[0]
     row.should.have.length(marRecords.length + 1/* for header */)
 
-    let cell, value, content, style
+    let cell, value, content
     cell = row[0]
     cell.should.have.property('type')
     cell.type.should.equal(MS.KEY_MED_ORDER)

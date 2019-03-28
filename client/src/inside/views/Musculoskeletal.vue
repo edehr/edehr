@@ -8,7 +8,7 @@
       div(class="region ehr-page-content")
         ehr-page-form(v-if="uiProps.hasForm", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey",)
         div(v-if="uiProps.hasTable", v-for="tableDef in uiProps.tables", :key="tableDef.tableKey")
-          ehr-page-table(:tableDef="tableDef", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
+          ehr-page-table(:tableDef="tableDef", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey", :showTableLabel="showTableLabel")
       div Page updated: {{ ehrHelp.formatDate(uiProps.generated) }}
     div(style="display:none")
       p This Musculoskeletal page is generated.
@@ -18,6 +18,7 @@
       p Redirect: 
       p Route name: musculoskeletal
       p Full path: /ehr/current/assessments/musculoskeletal
+      p {{uiProps}}
 </template>
 
 <script>
@@ -46,6 +47,10 @@ export default {
   computed: {
     uiProps () {
       return this.ehrHelp ? this.ehrHelp.getPageDefinition(this.pageDataKey) : {}
+    },
+    showTableLabel () {
+      let tbls = this.uiProps.tables || []
+      return tbls.length > 1
     },
     showPageFormControls () {
       return this.ehrHelp.showPageFormControls()

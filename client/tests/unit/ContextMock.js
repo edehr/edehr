@@ -34,7 +34,7 @@ export default class {
     this.mock.push(`[clearRect, ${x}, ${y}, ${w}, ${h}] `)
   }
 
-  setLineDash(array)
+  setLineDash (array)
   {
     this.mock.push('[setLineDash]')
   }

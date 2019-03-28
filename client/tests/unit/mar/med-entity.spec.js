@@ -44,7 +44,7 @@ describe('MedOrder', () => {
     let str
     str = MedOrder.medOrderAsTextLine(med, 30)
     should.exist(str)
-    let invalidObj = function() {}
+    let invalidObj = function () {}
     str = MedOrder.medOrderAsTextLine(invalidObj, 30)
     should.exist(str)
     str.should.equal('error')

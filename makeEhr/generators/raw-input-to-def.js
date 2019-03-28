@@ -333,6 +333,7 @@ class RawInputToDef {
         })
 
         let table = { tableKey: container.containerKey,
+          label: container.label,
           addButtonText: container.addButtonText,
           tableCells: reducedCells,
           tableForm: tableForm }

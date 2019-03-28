@@ -66,7 +66,7 @@ export function getMedOrderPageDataSample () {
   }
 }
 
-export function getSampleMarDbDataList(cnt) {
+export function getSampleMarDbDataList (cnt) {
   let sample = getMarPageDataSample()
   let sampleList = sample.medAdminRec.table
   if (cnt ) {

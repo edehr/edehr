@@ -9,6 +9,7 @@
             td(v-for="cell in column", :class="tableElementCss(cell)") {{ cell.value }}
 
     div(v-if="!tableDef.isTransposed", class="row_table")
+      h2(v-show="showTableLabel") {{tableDef.label}}
       table.table_horizontal
         thead
           tr
@@ -48,7 +49,8 @@ export default {
   props: {
     pageDataKey: { type: String },
     ehrHelp: { type: Object },
-    tableDef: { type: Object }
+    tableDef: { type: Object },
+    showTableLabel: { type: Boolean }
   },
   computed: {
     showTableAddButton () {
