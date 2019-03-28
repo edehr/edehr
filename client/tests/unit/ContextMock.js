@@ -34,6 +34,10 @@ export default class {
     this.mock.push(`[clearRect, ${x}, ${y}, ${w}, ${h}] `)
   }
 
+  setLineDash(array)
+  {
+    this.mock.push('[setLineDash]')
+  }
   stroke () {
     this.mock.push('[stroke]')
   }
