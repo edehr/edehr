@@ -4,7 +4,7 @@ export default function () {
     visit: {
       pageTitle: "Visit details",
       pageDataKey: "visit",
-      generated: "2019-03-28T09:35:30-07:00",
+      generated: "2019-03-28T14:47:17-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -220,7 +220,7 @@ export default function () {
     vitals: {
       pageTitle: "Vital signs",
       pageDataKey: "vitals",
-      generated: "2019-03-28T09:35:30-07:00",
+      generated: "2019-03-28T14:47:17-07:00",
       hasTable: true,
       tables: [
         {
@@ -800,7 +800,7 @@ export default function () {
     fluidBalance: {
       pageTitle: "Fluid balance",
       pageDataKey: "fluidBalance",
-      generated: "2019-03-28T09:35:30-07:00",
+      generated: "2019-03-28T14:47:17-07:00",
       hasTable: true,
       tables: [
         {
@@ -988,7 +988,7 @@ export default function () {
     neurological: {
       pageTitle: "Neurological assessment",
       pageDataKey: "neurological",
-      generated: "2019-03-28T09:35:30-07:00",
+      generated: "2019-03-28T14:47:17-07:00",
       hasTable: true,
       tables: [
         {
@@ -1197,19 +1197,19 @@ export default function () {
               fsetCol: "1",
               options: [
                 {
-                  text: "Spontaneous"
+                  text: "0 = Spontaneous"
                 },
                 {
-                  text: "To sound"
+                  text: "1 = To sound"
                 },
                 {
-                  text: "To pressure"
+                  text: "2 = To pressure"
                 },
                 {
-                  text: "None"
+                  text: "3 = None"
                 },
                 {
-                  text: "Non testable"
+                  text: "0 = Non testable"
                 }
               ],
               dataParent: "neurological.table.glasgowComaScale",
@@ -1229,22 +1229,22 @@ export default function () {
               fsetCol: "1",
               options: [
                 {
-                  text: "Oriented"
+                  text: "5 = Oriented"
                 },
                 {
-                  text: "Confused"
+                  text: "4 = Confused"
                 },
                 {
-                  text: "Words"
+                  text: "3 = Words"
                 },
                 {
-                  text: "Sounds"
+                  text: "2 = Sounds"
                 },
                 {
-                  text: "None"
+                  text: "1 = None"
                 },
                 {
-                  text: "Non testable"
+                  text: "0 = Non testable"
                 }
               ],
               dataParent: "neurological.table.glasgowComaScale",
@@ -1264,22 +1264,22 @@ export default function () {
               fsetCol: "1",
               options: [
                 {
-                  text: "Obeys commands"
+                  text: "6 = Obeys commands"
                 },
                 {
-                  text: "Localising"
+                  text: "4 = Localising"
                 },
                 {
-                  text: "Normal flexion"
+                  text: "3 = Normal flexion"
                 },
                 {
-                  text: "Extension"
+                  text: "2 = Extension"
                 },
                 {
-                  text: "None"
+                  text: "1 = None"
                 },
                 {
-                  text: "Non testable"
+                  text: "0 = Non testable"
                 }
               ],
               dataParent: "neurological.table.glasgowComaScale",
@@ -2269,19 +2269,19 @@ export default function () {
                               fsetCol: "1",
                               options: [
                                 {
-                                  text: "Spontaneous"
+                                  text: "0 = Spontaneous"
                                 },
                                 {
-                                  text: "To sound"
+                                  text: "1 = To sound"
                                 },
                                 {
-                                  text: "To pressure"
+                                  text: "2 = To pressure"
                                 },
                                 {
-                                  text: "None"
+                                  text: "3 = None"
                                 },
                                 {
-                                  text: "Non testable"
+                                  text: "0 = Non testable"
                                 }
                               ],
                               dataParent: "neurological.table.glasgowComaScale",
@@ -2332,22 +2332,22 @@ export default function () {
                               fsetCol: "1",
                               options: [
                                 {
-                                  text: "Oriented"
+                                  text: "5 = Oriented"
                                 },
                                 {
-                                  text: "Confused"
+                                  text: "4 = Confused"
                                 },
                                 {
-                                  text: "Words"
+                                  text: "3 = Words"
                                 },
                                 {
-                                  text: "Sounds"
+                                  text: "2 = Sounds"
                                 },
                                 {
-                                  text: "None"
+                                  text: "1 = None"
                                 },
                                 {
-                                  text: "Non testable"
+                                  text: "0 = Non testable"
                                 }
                               ],
                               dataParent: "neurological.table.glasgowComaScale",
@@ -2387,22 +2387,22 @@ export default function () {
                               fsetCol: "1",
                               options: [
                                 {
-                                  text: "Obeys commands"
+                                  text: "6 = Obeys commands"
                                 },
                                 {
-                                  text: "Localising"
+                                  text: "4 = Localising"
                                 },
                                 {
-                                  text: "Normal flexion"
+                                  text: "3 = Normal flexion"
                                 },
                                 {
-                                  text: "Extension"
+                                  text: "2 = Extension"
                                 },
                                 {
-                                  text: "None"
+                                  text: "1 = None"
                                 },
                                 {
-                                  text: "Non testable"
+                                  text: "0 = Non testable"
                                 }
                               ],
                               dataParent: "neurological.table.glasgowComaScale",
@@ -3200,7 +3200,7 @@ export default function () {
     respiratory: {
       pageTitle: "Respiratory assessment",
       pageDataKey: "respiratory",
-      generated: "2019-03-28T09:35:30-07:00",
+      generated: "2019-03-28T14:47:17-07:00",
       hasTable: true,
       tables: [
         {
@@ -4357,7 +4357,7 @@ export default function () {
     cardiovascular: {
       pageTitle: "Cardiovascular assessment",
       pageDataKey: "cardiovascular",
-      generated: "2019-03-28T09:35:30-07:00",
+      generated: "2019-03-28T14:47:17-07:00",
       hasTable: true,
       tables: [
         {
@@ -5709,7 +5709,7 @@ export default function () {
     gastrointestinal: {
       pageTitle: "Gastrointestinal assessment",
       pageDataKey: "gastrointestinal",
-      generated: "2019-03-28T09:35:30-07:00",
+      generated: "2019-03-28T14:47:17-07:00",
       hasTable: true,
       tables: [
         {

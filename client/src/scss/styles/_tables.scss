@@ -26,6 +26,9 @@ table {
     overflow-x: auto;
     width: 100%;
   }
+  .column_label {
+    max-width: 10rem;
+  }
 }
 
 .column_table {
