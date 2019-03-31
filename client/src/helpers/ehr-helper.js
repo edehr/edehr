@@ -1,12 +1,12 @@
-import EventBus from './event-bus'
 import moment from 'moment'
 import Vue from 'vue'
+import EventBus from './event-bus'
 import { ACTIVITY_DATA_EVENT } from './event-bus'
 import { DIALOG_INPUT_EVENT } from './event-bus'
 import { PAGE_FORM_INPUT_EVENT } from './event-bus'
 import { PAGE_DATA_REFRESH_EVENT } from './event-bus'
 import { removeEmptyProperties, prepareAssignmentPageDataForSave } from './ehr-utills'
-import { pageDefs } from './ehr-defs'
+import { getPageDefinition } from './ehr-defs'
 
 const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
@@ -66,7 +66,7 @@ export default class EhrHelp {
   }
 
   _loadTransposedColumns (pageKey) {
-    let pageDef = this.getPageDefinition(pageKey)
+    let pageDef = getPageDefinition(pageKey)
     if (pageDef && pageDef.tables) {
       pageDef.tables.forEach(table => {
         if (table.tableCells.length > 8) {
@@ -84,11 +84,12 @@ export default class EhrHelp {
   }
   /* ********************* DATA  */
 
-  getPageDefinition (pageKey) {
-    let pageDef = pageDefs[pageKey]
-    // debugehr('getPageDefinition ' + pageKey, pageDef)
-    return pageDef
-  }
+  // getPageDefinition (pageKey) {
+  //   let pageDef = pageDefs[pageKey]
+  //   // debugehr('getPageDefinition ' + pageKey, pageDef)
+  //   return pageDef
+  // }
+
 
   getAsLoadedPageData (pageKey) {
     let pageDef = this.prepareAsLoadedData(pageKey)
@@ -114,7 +115,7 @@ export default class EhrHelp {
   }
 
   prepareAsLoadedData (pageKey) {
-    let pageDef = this.getPageDefinition(pageKey)
+    let pageDef = getPageDefinition(pageKey)
     let data = this.$store.getters['ehrData/mergedData'] || {}
     // console.log('prepareAsLoadedData', pageKey, data)
     let pageData = data[pageKey]
@@ -201,7 +202,6 @@ export default class EhrHelp {
 
   /* ********************* DIALOG  */
   showDialog (tableDef, dialogInputs) {
-    const _this = this
     let dialog = { tableDef: tableDef, inputs: dialogInputs }
     let key = tableDef.tableKey
     let eData = { key: key, value: true }
@@ -211,13 +211,21 @@ export default class EhrHelp {
     // add this dialog to the map
     this.dialogMap[key] = dialog
     debugehr('set helper into each form element', tableDef.tableForm)
-    let rows = tableDef.tableForm.rows
+    this.attachHelperToElements(tableDef.tableForm.rows)
+    this._clearDialogInputs(key)
+  }
+
+  attachHelperToElements (rows) {
+    const _this = this
     rows.forEach(row => {
       row.elements.forEach(def => {
         def.helper = _this
+        if(def.formFieldSet) {
+          let cRows = def.formFieldSet.rows
+          _this.attachHelperToElements(cRows)
+        }
       })
     })
-    this._clearDialogInputs(key)
   }
 
   cancelDialog (tableKey) {
@@ -310,7 +318,7 @@ export default class EhrHelp {
     let inputs = d.inputs
     // TODO check that default values are working
     cells.forEach(cell => {
-      inputs[cell.elementKey] = cell.defaultValue ? cell.defaultValue(this.$store) : ''
+      inputs[cell.elementKey] = cell.defaultValue ? cell.defaultValue : '' //cell.defaultValue(this.$store) : ''
     })
     // empty the error list array
     d.errorList = []
@@ -366,7 +374,7 @@ export default class EhrHelp {
     let isStudent = this.$store.getters['visit/isStudent']
     let isDevelopingContent = this.$store.state.visit.isDevelopingContent
     if (isStudent || isDevelopingContent) {
-      let pd = this.getPageDefinition(this.pageKey)
+      let pd = getPageDefinition(this.pageKey)
       // console.log('decide to show or not this page def', prop, pd[prop], pd)
       show = pd[prop]
     }
@@ -508,19 +516,19 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
     let tableKey = def.tableKey
     let elementKey = def.elementKey
     let value = eData.value
-    // debugehr('hanlde dialog input change for key' + tableKey)
     let d = this.dialogMap[tableKey]
-    // debugehr(`On event from ${tableKey} ${elementKey} with dialog: ${d}`)
+    console.log(`handle dialog input change for key ${tableKey}`)
+    console.log(`On event from ${tableKey} ${elementKey} with dialog: ${d}`)
     let inputs = d.inputs
     inputs[elementKey] = value
   }
 
   _handlePageFormInputChangeEvent (eData) {
     let element = eData.element
-    debugehr('_handlePageFormInputChangeEvent', this.pageKey, element.pageDataKey)
     let elementKey = element.elementKey
     let value = eData.value
-    debugehr(`Input change event from ${elementKey} value: ${value}`)
+    console.log('_handlePageFormInputChangeEvent', this.pageKey, element.pageDataKey)
+    console.log(`Input change event from ${elementKey} value: ${value}`)
     let pageData = this.pageFormData.value
     // let oldVal = pageData[elementKey]
     pageData[elementKey] = value
@@ -537,7 +545,7 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
 function debugehr (msg) {
   var args = Array.prototype.slice.call(arguments)
   args.shift()
-  // console.log('EHRhlp', msg, args)
+  console.log('EHRhlp', msg, args)
 }
 function errorehr (msg, ...args) {
   console.log('ERROR EHRhlp', msg, args)

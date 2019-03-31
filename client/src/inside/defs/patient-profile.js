@@ -4,7 +4,150 @@ export default function () {
     demographics: {
       pageTitle: "Demographics",
       pageDataKey: "demographics",
-      generated: "2019-03-28T15:52:06-07:00",
+      pageChildren: [
+        {
+          label: "First name",
+          elementKey: "givenName",
+          fqn: "demographics.givenName"
+        },
+        {
+          label: "Middle name(s)",
+          elementKey: "middleName",
+          fqn: "demographics.middleName"
+        },
+        {
+          label: "Last name",
+          elementKey: "familyName",
+          fqn: "demographics.familyName"
+        },
+        {
+          label: "Preferred name",
+          elementKey: "preferredName",
+          fqn: "demographics.preferredName"
+        },
+        {
+          label: "Date of birth",
+          elementKey: "dateOfBirth",
+          fqn: "demographics.dateOfBirth"
+        },
+        {
+          label: "Age",
+          elementKey: "personAge",
+          fqn: "demographics.personAge"
+        },
+        {
+          label: "Gender",
+          elementKey: "gender",
+          fqn: "demographics.gender"
+        },
+        {
+          label: "Martial status",
+          elementKey: "martialStatus",
+          fqn: "demographics.martialStatus"
+        },
+        {
+          label: "Primary language",
+          elementKey: "languagePrimary",
+          fqn: "demographics.languagePrimary"
+        },
+        {
+          label: "Religion",
+          elementKey: "religion",
+          fqn: "demographics.religion"
+        },
+        {
+          label: "Do you identify as an indigenous person?",
+          elementKey: "indigenousIdentifyAs",
+          fqn: "demographics.indigenousIdentifyAs"
+        },
+        {
+          label: "Street address",
+          elementKey: "streetAddress",
+          fqn: "demographics.streetAddress"
+        },
+        {
+          label: "City",
+          elementKey: "city",
+          fqn: "demographics.city"
+        },
+        {
+          label: "Country",
+          elementKey: "country",
+          fqn: "demographics.country",
+          defaultValue: "Canada"
+        },
+        {
+          label: "Postal code",
+          elementKey: "postalCode",
+          fqn: "demographics.postalCode"
+        },
+        {
+          label: "No address",
+          elementKey: "noAddress",
+          fqn: "demographics.noAddress"
+        },
+        {
+          label: "Primary phone number",
+          elementKey: "phoneNumber",
+          fqn: "demographics.phoneNumber"
+        },
+        {
+          label: "Email",
+          elementKey: "emailAddress",
+          fqn: "demographics.emailAddress"
+        },
+        {
+          label: "Occupation/student",
+          elementKey: "occupationStudent",
+          fqn: "demographics.occupationStudent"
+        },
+        {
+          label: "PHN",
+          elementKey: "phn",
+          fqn: "demographics.phn"
+        },
+        {
+          label: "MRN",
+          elementKey: "mrn",
+          fqn: "demographics.mrn"
+        },
+        {
+          label: "Patient service",
+          elementKey: "patientService",
+          fqn: "demographics.patientService"
+        },
+        {
+          label: "Next of kin name",
+          elementKey: "nextOfKinName",
+          fqn: "demographics.nextOfKinName"
+        },
+        {
+          label: "Next of kin relationship",
+          elementKey: "nextOfKinRelationship",
+          fqn: "demographics.nextOfKinRelationship"
+        },
+        {
+          label: "Next of kin phone",
+          elementKey: "nextOfKinPhone",
+          fqn: "demographics.nextOfKinPhone"
+        },
+        {
+          label: "Decision maker name",
+          elementKey: "decisionMakerName",
+          fqn: "demographics.decisionMakerName"
+        },
+        {
+          label: "Decision maker relationship",
+          elementKey: "decisionMakerRelationship",
+          fqn: "demographics.decisionMakerRelationship"
+        },
+        {
+          label: "Decision maker phone",
+          elementKey: "decisionMakerPhone",
+          fqn: "demographics.decisionMakerPhone"
+        }
+      ],
+      generated: "2019-03-31T07:12:02-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -498,7 +641,20 @@ export default function () {
     allergies: {
       pageTitle: "Allergies",
       pageDataKey: "allergies",
-      generated: "2019-03-28T15:52:06-07:00",
+      pageChildren: [
+        {
+          label: "Allergies",
+          elementKey: "allergies",
+          fqn: "allergies.allergies"
+        },
+        {
+          label: "No known allergies",
+          elementKey: "hasNoAllergies",
+          fqn: "allergies.hasNoAllergies",
+          defaultValue: "TRUE"
+        }
+      ],
+      generated: "2019-03-31T07:12:02-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -543,7 +699,14 @@ export default function () {
     medical: {
       pageTitle: "Medical history",
       pageDataKey: "medical",
-      generated: "2019-03-28T15:52:06-07:00",
+      pageChildren: [
+        {
+          label: "Past medical history",
+          elementKey: "history",
+          fqn: "medical.history"
+        }
+      ],
+      generated: "2019-03-31T07:12:02-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -570,7 +733,94 @@ export default function () {
     psychosocial: {
       pageTitle: "Psychosocial history",
       pageDataKey: "psychosocial",
-      generated: "2019-03-28T15:52:06-07:00",
+      pageChildren: [
+        {
+          label: "Psychosocial history",
+          elementKey: "history",
+          fqn: "psychosocial.history"
+        },
+        {
+          label: "Diet",
+          elementKey: "diet",
+          fqn: "psychosocial.diet"
+        },
+        {
+          label: "Living situation",
+          elementKey: "livingSituation",
+          fqn: "psychosocial.livingSituation"
+        },
+        {
+          label: "Employment/school",
+          elementKey: "employmentSchool",
+          fqn: "psychosocial.employmentSchool"
+        },
+        {
+          label: "Hobbies",
+          elementKey: "hobbies",
+          fqn: "psychosocial.hobbies"
+        },
+        {
+          label: "Exercise",
+          elementKey: "exercise",
+          fqn: "psychosocial.behaviours.exercise"
+        },
+        {
+          label: "Exercise frequency",
+          elementKey: "exerciseFrequency",
+          fqn: "psychosocial.behaviours.exerciseFrequency"
+        },
+        {
+          label: "Caffeine use",
+          elementKey: "caffeineUse",
+          fqn: "psychosocial.behaviours.caffeineUse"
+        },
+        {
+          label: "Caffeine use frequency",
+          elementKey: "caffeineUseFrequency",
+          fqn: "psychosocial.behaviours.caffeineUseFrequency"
+        },
+        {
+          label: "Tobacco use",
+          elementKey: "tobaccoUse",
+          fqn: "psychosocial.behaviours.tobaccoUse"
+        },
+        {
+          label: "Tobacco use frequency",
+          elementKey: "tobaccoUseFrequency",
+          fqn: "psychosocial.behaviours.tobaccoUseFrequency"
+        },
+        {
+          label: "Cannabis use",
+          elementKey: "cannabisUse",
+          fqn: "psychosocial.behaviours.cannabisUse"
+        },
+        {
+          label: "Cannabis use frequency",
+          elementKey: "cannabisUseFrequency",
+          fqn: "psychosocial.behaviours.cannabisUseFrequency"
+        },
+        {
+          label: "Alcohol use",
+          elementKey: "alcoholUse",
+          fqn: "psychosocial.behaviours.alcoholUse"
+        },
+        {
+          label: "Alcohol use frequency",
+          elementKey: "alcoholUseFrequency",
+          fqn: "psychosocial.behaviours.alcoholUseFrequency"
+        },
+        {
+          label: "Substance use",
+          elementKey: "substanceUse",
+          fqn: "psychosocial.behaviours.substanceUse"
+        },
+        {
+          label: "Substance use frequency",
+          elementKey: "substanceUseFrequency",
+          fqn: "psychosocial.behaviours.substanceUseFrequency"
+        }
+      ],
+      generated: "2019-03-31T07:12:02-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -1003,7 +1253,49 @@ export default function () {
     surgical: {
       pageTitle: "Surgical history",
       pageDataKey: "surgical",
-      generated: "2019-03-28T15:52:06-07:00",
+      pageChildren: [
+        {
+          label: "Performing physician",
+          elementKey: "physician",
+          fqn: "surgical.pastSurgery.physician"
+        },
+        {
+          label: "Surgery/procedure",
+          elementKey: "procedure",
+          fqn: "surgical.pastSurgery.procedure"
+        },
+        {
+          label: "Time elapsed since surgery",
+          elementKey: "timeSince",
+          fqn: "surgical.pastSurgery.timeSince"
+        },
+        {
+          label: "Appointment with",
+          elementKey: "with",
+          fqn: "surgical.previous.with"
+        },
+        {
+          label: "Appointment details",
+          elementKey: "details",
+          fqn: "surgical.previous.details"
+        },
+        {
+          label: "Previous admission reason",
+          elementKey: "previousAdmissions",
+          fqn: "surgical.previous.previousAdmissions"
+        },
+        {
+          label: "Date",
+          elementKey: "previousAdmissionsDate",
+          fqn: "surgical.previous.previousAdmissionsDate"
+        },
+        {
+          label: "General comments",
+          elementKey: "comments",
+          fqn: "surgical.previous.comments"
+        }
+      ],
+      generated: "2019-03-31T07:12:02-07:00",
       hasTable: true,
       tables: [
         {
@@ -1141,7 +1433,106 @@ export default function () {
     immunization: {
       pageTitle: "Immunization history",
       pageDataKey: "immunization",
-      generated: "2019-03-28T15:52:06-07:00",
+      pageChildren: [
+        {
+          label: "Hep A",
+          elementKey: "hepA",
+          fqn: "immunization.hepA"
+        },
+        {
+          label: "Hep A date",
+          elementKey: "hepADate",
+          fqn: "immunization.hepADate"
+        },
+        {
+          label: "Hep B",
+          elementKey: "hepB",
+          fqn: "immunization.hepB"
+        },
+        {
+          label: "Hep B date",
+          elementKey: "hepBDate",
+          fqn: "immunization.hepBDate"
+        },
+        {
+          label: "MMR",
+          elementKey: "mmr",
+          fqn: "immunization.mmr"
+        },
+        {
+          label: "MMR date",
+          elementKey: "mmrDate",
+          fqn: "immunization.mmrDate"
+        },
+        {
+          label: "Pneumococcal",
+          elementKey: "pneumococcal",
+          fqn: "immunization.pneumococcal"
+        },
+        {
+          label: "Pneumococcal date",
+          elementKey: "pneumococcalDate",
+          fqn: "immunization.pneumococcalDate"
+        },
+        {
+          label: "Polio diptheria pertussis",
+          elementKey: "polioDiptheriaPertussis",
+          fqn: "immunization.polioDiptheriaPertussis"
+        },
+        {
+          label: "Polio diptheria pertussis date",
+          elementKey: "polioDiptheriaPertussisDate",
+          fqn: "immunization.polioDiptheriaPertussisDate"
+        },
+        {
+          label: "TB",
+          elementKey: "tb",
+          fqn: "immunization.tb"
+        },
+        {
+          label: "TB date",
+          elementKey: "tbDate",
+          fqn: "immunization.tbDate"
+        },
+        {
+          label: "Tetanus",
+          elementKey: "tetanus",
+          fqn: "immunization.tetanus"
+        },
+        {
+          label: "Tetanus date",
+          elementKey: "tetanusDate",
+          fqn: "immunization.tetanusDate"
+        },
+        {
+          elementKey: "other1",
+          fqn: "immunization.other1"
+        },
+        {
+          label: "Date",
+          elementKey: "otherDate1",
+          fqn: "immunization.otherDate1"
+        },
+        {
+          elementKey: "other2",
+          fqn: "immunization.other2"
+        },
+        {
+          label: "Date",
+          elementKey: "otherDate2",
+          fqn: "immunization.otherDate2"
+        },
+        {
+          elementKey: "other3",
+          fqn: "immunization.other3"
+        },
+        {
+          label: "Date",
+          elementKey: "otherDate3",
+          fqn: "immunization.otherDate3"
+        }
+      ],
+      generated: "2019-03-31T07:12:02-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -1423,7 +1814,14 @@ export default function () {
     familyHistory: {
       pageTitle: "Family history",
       pageDataKey: "familyHistory",
-      generated: "2019-03-28T15:52:06-07:00",
+      pageChildren: [
+        {
+          label: "Family medical history",
+          elementKey: "history",
+          fqn: "familyHistory.history"
+        }
+      ],
+      generated: "2019-03-31T07:12:02-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -1450,7 +1848,19 @@ export default function () {
     careTeam: {
       pageTitle: "Care team",
       pageDataKey: "careTeam",
-      generated: "2019-03-28T15:52:06-07:00",
+      pageChildren: [
+        {
+          label: "Name",
+          elementKey: "name",
+          fqn: "careTeam.teams.name"
+        },
+        {
+          label: "Profession",
+          elementKey: "profession",
+          fqn: "careTeam.teams.profession"
+        }
+      ],
+      generated: "2019-03-31T07:12:02-07:00",
       hasTable: true,
       tables: [
         {
@@ -1531,7 +1941,49 @@ export default function () {
     pastAppointments: {
       pageTitle: "Past appointments",
       pageDataKey: "pastAppointments",
-      generated: "2019-03-28T15:52:06-07:00",
+      pageChildren: [
+        {
+          label: "Date",
+          elementKey: "date",
+          fqn: "pastAppointments.encounters.date"
+        },
+        {
+          label: "Site",
+          elementKey: "site",
+          fqn: "pastAppointments.encounters.site"
+        },
+        {
+          label: "Diagnosis",
+          elementKey: "diagnosis",
+          fqn: "pastAppointments.encounters.diagnosis"
+        },
+        {
+          label: "Most responsible person",
+          elementKey: "mrp",
+          fqn: "pastAppointments.encounters.mrp"
+        },
+        {
+          label: "Date",
+          elementKey: "date",
+          fqn: "pastAppointments.outpatientAppointments.date"
+        },
+        {
+          label: "Site",
+          elementKey: "site",
+          fqn: "pastAppointments.outpatientAppointments.site"
+        },
+        {
+          label: "Reason for visit",
+          elementKey: "reasonForVisit",
+          fqn: "pastAppointments.outpatientAppointments.reasonForVisit"
+        },
+        {
+          label: "Diagnosis",
+          elementKey: "diagnosis",
+          fqn: "pastAppointments.outpatientAppointments.diagnosis"
+        }
+      ],
+      generated: "2019-03-31T07:12:02-07:00",
       hasTable: true,
       tables: [
         {

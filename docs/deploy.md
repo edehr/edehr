@@ -1,42 +1,25 @@
 # Deploy instructions
 On the server with a user that has sudo privileges
 
-Copy deployment/nginx.site into the /etc/nginx/sites-available directory.  
-Tweak as needed. Then link to make the site active. Restart nginx
+
+Install onto server
 ```
-cd /etc/nginx/sites-enabled
-ln -s ../sites-available/nginx.conf edehr
+cd /opt
+sudo git clone git@github.com:BCcampus/edehr.git
+sudo chown -R "$USER":www-data edehr/
+cd edehr
+# See main readme for reamining install and statup instructions
+```
+
+On the server tweak this project's nginx configuration file as needed.  See ```deployment/nginx.site```
+Then link into the nginx system to make the site active. Restart nginx
+```
+ln -s /opt/edehr/deployment/nginx.site /etc/nginx/sites-available/edehr.conf
+ln -s /etc/nginx/sites-available/edehr.conf /etc/nginx/sites-enabled/edehr.conf
 sudo service nginx reload
 ```
 
-Set up the repros
-```
-cd /opt
-sudo git clone https://github.com/bryan-gilbert/proto-EdEHR.git
-sudo git clone https://github.com/bryan-gilbert/ims-lti.git
-sudo chown -R "$USER":www-data proto-EdEHR/
-sudo chown -R "$USER":www-data ims-lti/
-cd proto-EdEHR/
-# the repro, at this time, has stuff in node_modules that needs to be removed
-cd node_modules
-rm -Rf *
-cd ..
-# at this time the package lock file is not stable so remove it too
-rm package-lock.json
-# import our LTI repro
-npm install ../ims-lti --save
-# install the rest
-npm install
-#run
-DEBUG=server node ./server/bin/www
-```
+In a browser test ```http://142.93.148.22/launch_lti```  (use your IP address)
 
-In a browswer test ```http://142.93.148.22/launch_lti```
-
-### ToDo
-   - Run app with PM2 so it restarts after reboot
-   - Add SSL
-   - session tracking
-   - nonce tracing
    
 

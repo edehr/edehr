@@ -36,6 +36,9 @@
       label {{def.label}}
       datepicker(v-model="inputVal")
 
+    div(v-if="def.inputType === 'calculatedValue'", class="computed_wrapper")
+      ehr-calculated-value(:inputs="inputs", :def="def")
+
     div(v-if="def.inputType === 'day'", class="day_wrapper")
       label {{def.label}}
       input(class="input", type="text", v-model="inputVal")
@@ -53,6 +56,7 @@
 <script>
 import Datepicker from 'vuejs-datepicker'
 import EhrDialogFormElement from './EhrDialogFormElement.vue'
+import EhrCalculatedValue from './EhrCalculatedValue'
 import EventBus from '../../helpers/event-bus'
 import { DIALOG_INPUT_EVENT } from '../../helpers/event-bus'
 import UiInfo from '../../app/ui/UiInfo'
@@ -60,24 +64,26 @@ export default {
   name: 'EhrDialogFormElement',
   components: {
     EhrDialogFormElement,
+    EhrCalculatedValue,
     UiInfo,
     Datepicker
   },
   props: {
+    ehrHelp: { type: Object },
     inputs: { type: Object },
     def: { type: Object }
   },
   data () {
     return {
-      inputVal: this.computedValue,
+      inputVal: this.getInputValue,
       gotHit: false,
       eventHandler: {}
     }
   },
   computed: {
-    computedValue () {
+    getInputValue () {
       let cV = this.def.helper.getInputValue(this.def)
-      console.log('computedValue', cV)
+      console.log('getInputValue', cV)
       return cV
     },
     parentData () {
@@ -138,7 +144,7 @@ export default {
   },
   watch: {
     inputVal (val) {
-      // console.log('watch inputValue', val, DIALOG_INPUT_EVENT)
+      console.log('watch inputValue', val, DIALOG_INPUT_EVENT, this.def)
       // Send event when any input changes. The listener (EhrHelper) will collect the changes
       // and be ready to send the changes to the server.
       let def = this.def

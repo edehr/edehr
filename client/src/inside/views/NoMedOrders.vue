@@ -18,7 +18,6 @@
       p Redirect: 
       p Route name: no-med-orders
       p Full path: /ehr/current/no-med/no-med-orders
-      p {{uiProps}}
 </template>
 
 <script>
@@ -28,6 +27,7 @@ import EhrEditControls from '../components/EhrEditControls.vue'
 import EhrPageTable from '../components/EhrPageTable'
 import EhrPageForm from '../components/EhrPageForm.vue'
 import EhrHelp from '../../helpers/ehr-helper'
+import { getPageDefinition } from '../../helpers/ehr-defs'
 
 export default {
   name: 'NoMedOrders',
@@ -46,7 +46,7 @@ export default {
   },
   computed: {
     uiProps () {
-      return this.ehrHelp ? this.ehrHelp.getPageDefinition(this.pageDataKey) : {}
+      return getPageDefinition(this.pageDataKey)
     },
     showTableLabel () {
       let tbls = this.uiProps.tables || []
