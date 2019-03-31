@@ -4,7 +4,89 @@ export default function () {
     assessmentTools: {
       pageTitle: "Standardized assessment tools",
       pageDataKey: "assessmentTools",
-      generated: "2019-03-28T09:37:26-07:00",
+      pageChildren: [
+        {
+          label: "Triage scale",
+          elementKey: "admissions1_1",
+          fqn: "assessmentTools.admissions.admissions1_1"
+        },
+        {
+          label: "Patient health questionaire",
+          elementKey: "admissions2_1",
+          fqn: "assessmentTools.admissions.admissions2_1"
+        },
+        {
+          label: "Alcohol Consumption.pdf",
+          elementKey: "admissions3_1",
+          fqn: "assessmentTools.admissions.admissions3_1"
+        },
+        {
+          label: "OPQRSTUV",
+          elementKey: "painAssessment1_1",
+          fqn: "assessmentTools.painAssessment.painAssessment1_1"
+        },
+        {
+          label: "0-10 numeric rating scale",
+          elementKey: "painAssessment2_1",
+          fqn: "assessmentTools.painAssessment.painAssessment2_1"
+        },
+        {
+          label: "Glasgow coma scale",
+          elementKey: "neuroAssessment1_1",
+          fqn: "assessmentTools.neuroAssessment.neuroAssessment1_1"
+        },
+        {
+          label: "Mini mental state examination",
+          elementKey: "neuroAssessment2_1",
+          fqn: "assessmentTools.neuroAssessment.neuroAssessment2_1"
+        },
+        {
+          label: "Richmond agitation scale",
+          elementKey: "neuroAssessment3_1",
+          fqn: "assessmentTools.neuroAssessment.neuroAssessment3_1"
+        },
+        {
+          label: "Fall assessment",
+          elementKey: "fallRisk1_1",
+          fqn: "assessmentTools.fallRisk.fallRisk1_1"
+        },
+        {
+          label: "Risk for falls",
+          elementKey: "fallRisk2_1",
+          fqn: "assessmentTools.fallRisk.fallRisk2_1"
+        },
+        {
+          label: "Consult note template",
+          elementKey: "notes1_1",
+          fqn: "assessmentTools.notes.notes1_1"
+        },
+        {
+          label: "Referral note template",
+          elementKey: "notes2_1",
+          fqn: "assessmentTools.notes.notes2_1"
+        },
+        {
+          label: "COPD assessment",
+          elementKey: "educational1_1",
+          fqn: "assessmentTools.educational.educational1_1"
+        },
+        {
+          label: "Bristol stool chart",
+          elementKey: "educational2_1",
+          fqn: "assessmentTools.educational.educational2_1"
+        },
+        {
+          label: "Braden scale",
+          elementKey: "wound1_1",
+          fqn: "assessmentTools.wound.wound1_1"
+        },
+        {
+          label: "Best possible medication history",
+          elementKey: "medication1_1",
+          fqn: "assessmentTools.medication.medication1_1"
+        }
+      ],
+      generated: "2019-03-31T07:12:02-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -711,7 +793,19 @@ export default function () {
     codeLookup: {
       pageTitle: "Code lookup",
       pageDataKey: "codeLookup",
-      generated: "2019-03-28T09:37:26-07:00",
+      pageChildren: [
+        {
+          label: "SnomedCT",
+          elementKey: "snomed",
+          fqn: "codeLookup.snomed"
+        },
+        {
+          label: "ICB",
+          elementKey: "icb",
+          fqn: "codeLookup.icb"
+        }
+      ],
+      generated: "2019-03-31T07:12:02-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -753,7 +847,59 @@ export default function () {
     diagnosticCodes: {
       pageTitle: "Diagnostic codes (ICD-10)",
       pageDataKey: "diagnosticCodes",
-      generated: "2019-03-28T09:37:26-07:00",
+      pageChildren: [
+        {
+          label: "Name",
+          elementKey: "name",
+          fqn: "diagnosticCodes.table.name"
+        },
+        {
+          label: "Profession",
+          elementKey: "profession",
+          fqn: "diagnosticCodes.table.profession"
+        },
+        {
+          label: "Day",
+          elementKey: "day",
+          fqn: "diagnosticCodes.table.day"
+        },
+        {
+          label: "Time",
+          elementKey: "time",
+          fqn: "diagnosticCodes.table.time"
+        },
+        {
+          label: "ICD-10 Database",
+          elementKey: "icd10",
+          fqn: "diagnosticCodes.table.icd10"
+        },
+        {
+          label: "Condition",
+          elementKey: "condition",
+          fqn: "diagnosticCodes.table.condition"
+        },
+        {
+          label: "Diagnosis code",
+          elementKey: "code",
+          fqn: "diagnosticCodes.table.code"
+        },
+        {
+          label: "Diagnosis type",
+          elementKey: "type",
+          fqn: "diagnosticCodes.table.type"
+        },
+        {
+          label: "Prefix",
+          elementKey: "prefix",
+          fqn: "diagnosticCodes.table.prefix"
+        },
+        {
+          label: "Diagnosis cluster",
+          elementKey: "cluster",
+          fqn: "diagnosticCodes.table.cluster"
+        }
+      ],
+      generated: "2019-03-31T07:12:02-07:00",
       hasTable: true,
       tables: [
         {
@@ -1104,7 +1250,58 @@ export default function () {
     interventionCodes: {
       pageTitle: "Intervention codes",
       pageDataKey: "interventionCodes",
-      generated: "2019-03-28T09:37:26-07:00",
+      pageChildren: [
+        {
+          label: "Name",
+          elementKey: "name",
+          fqn: "interventionCodes.table.name"
+        },
+        {
+          label: "Profession",
+          elementKey: "profession",
+          fqn: "interventionCodes.table.profession"
+        },
+        {
+          label: "Day",
+          elementKey: "day",
+          fqn: "interventionCodes.table.day"
+        },
+        {
+          label: "Time",
+          elementKey: "time",
+          fqn: "interventionCodes.table.time"
+        },
+        {
+          elementKey: "spacer",
+          fqn: "interventionCodes.table.spacer"
+        },
+        {
+          label: "Intervention code attributes",
+          elementKey: "label",
+          fqn: "interventionCodes.table.label"
+        },
+        {
+          label: "Intervention",
+          elementKey: "intervention",
+          fqn: "interventionCodes.table.intervention"
+        },
+        {
+          label: "Status",
+          elementKey: "status",
+          fqn: "interventionCodes.table.status"
+        },
+        {
+          label: "Laterally",
+          elementKey: "laterally",
+          fqn: "interventionCodes.table.laterally"
+        },
+        {
+          label: "Extent",
+          elementKey: "extent",
+          fqn: "interventionCodes.table.extent"
+        }
+      ],
+      generated: "2019-03-31T07:12:02-07:00",
       hasTable: true,
       tables: [
         {
@@ -1409,7 +1606,54 @@ export default function () {
     careMixGroup: {
       pageTitle: "Case mix group",
       pageDataKey: "careMixGroup",
-      generated: "2019-03-28T09:37:26-07:00",
+      pageChildren: [
+        {
+          label: "Name",
+          elementKey: "name",
+          fqn: "careMixGroup.table.name"
+        },
+        {
+          label: "Profession",
+          elementKey: "profession",
+          fqn: "careMixGroup.table.profession"
+        },
+        {
+          label: "Day",
+          elementKey: "day",
+          fqn: "careMixGroup.table.day"
+        },
+        {
+          label: "Time",
+          elementKey: "time",
+          fqn: "careMixGroup.table.time"
+        },
+        {
+          label: "Major clinical category",
+          elementKey: "clinicalCategory",
+          fqn: "careMixGroup.table.clinicalCategory"
+        },
+        {
+          label: "Case mix number",
+          elementKey: "caseMixNumber",
+          fqn: "careMixGroup.table.caseMixNumber"
+        },
+        {
+          label: "Resource intensity weight",
+          elementKey: "resourceIntensity",
+          fqn: "careMixGroup.table.resourceIntensity"
+        },
+        {
+          label: "Expected length of stay",
+          elementKey: "expectedStay",
+          fqn: "careMixGroup.table.expectedStay"
+        },
+        {
+          label: "Analysis",
+          elementKey: "analysis",
+          fqn: "careMixGroup.table.analysis"
+        }
+      ],
+      generated: "2019-03-31T07:12:02-07:00",
       hasTable: true,
       tables: [
         {

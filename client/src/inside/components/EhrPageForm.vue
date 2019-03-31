@@ -11,6 +11,7 @@
 import EhrPageFormElement from '../components/EhrPageFormElement.vue'
 import EventBus from '../../helpers/event-bus'
 import { PAGE_DATA_REFRESH_EVENT } from '../../helpers/event-bus'
+import { getPageDefinition } from '../../helpers/ehr-defs'
 
 export default {
   name: 'EhrPageForm',
@@ -28,9 +29,7 @@ export default {
   },
   computed: {
     formDefs () {
-      let pageDef = this.ehrHelp
-        ? this.ehrHelp.getPageDefinition(this.pageDataKey)
-        : { page_form: {} }
+      let pageDef = getPageDefinition(this.pageDataKey)
       return pageDef.page_form
     },
     showEditControls () {

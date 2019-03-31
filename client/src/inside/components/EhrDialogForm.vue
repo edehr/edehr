@@ -3,12 +3,12 @@
     h3(slot="header") {{ tableDef.addButtonText }}
     div(slot="body", class="region ehr-page-content")
       div(class="input-fieldrow")
-        ehr-dialog-form-element(v-for="fmEl in topRow.elements", :key="fmEl.elementKey", :inputs="inputs", :def="fmEl", class="input-fieldrow-element")
+        ehr-dialog-form-element(v-for="fmEl in topRow.elements", :key="fmEl.elementKey", :inputs="inputs", :def="fmEl", :ehrHelp="ehrHelp", class="input-fieldrow-element")
       hr
       div(v-for="row in middleRange", class="input-fieldrow")
-        ehr-dialog-form-element(v-for="fmEl in row.elements", :key="fmEl.elementKey", :inputs="inputs", :def="fmEl", class="input-fieldrow-element")
+        ehr-dialog-form-element(v-for="fmEl in row.elements", :key="fmEl.elementKey", :inputs="inputs", :def="fmEl", :ehrHelp="ehrHelp", class="input-fieldrow-element")
       div(class="input-fieldrow")
-        ehr-dialog-form-element(v-for="fmEl in lastRow.elements", :key="fmEl.elementKey", :inputs="inputs", :def="fmEl", class="input-fieldrow-element")
+        ehr-dialog-form-element(v-for="fmEl in lastRow.elements", :key="fmEl.elementKey", :inputs="inputs", :def="fmEl", :ehrHelp="ehrHelp", class="input-fieldrow-element")
     span(slot="save-button") Create and close
 </template>
 
