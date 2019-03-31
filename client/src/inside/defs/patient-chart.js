@@ -4,7 +4,34 @@ export default function () {
     progressNotes: {
       pageTitle: "Progress notes",
       pageDataKey: "progressNotes",
-      generated: "2019-03-28T14:13:10-07:00",
+      pageChildren: [
+        {
+          label: "Name",
+          elementKey: "name",
+          fqn: "progressNotes.table.name"
+        },
+        {
+          label: "Profession",
+          elementKey: "profession",
+          fqn: "progressNotes.table.profession"
+        },
+        {
+          label: "Day",
+          elementKey: "day",
+          fqn: "progressNotes.table.day"
+        },
+        {
+          label: "Time",
+          elementKey: "time",
+          fqn: "progressNotes.table.time"
+        },
+        {
+          label: "Progress notes",
+          elementKey: "notes",
+          fqn: "progressNotes.table.notes"
+        }
+      ],
+      generated: "2019-03-31T07:12:02-07:00",
       hasTable: true,
       tables: [
         {
@@ -166,7 +193,59 @@ export default function () {
     carePlan: {
       pageTitle: "Interprofessional plan of care",
       pageDataKey: "carePlan",
-      generated: "2019-03-28T14:13:10-07:00",
+      pageChildren: [
+        {
+          label: "Name",
+          elementKey: "name",
+          fqn: "carePlan.table2.name"
+        },
+        {
+          label: "Profession",
+          elementKey: "profession",
+          fqn: "carePlan.table2.profession"
+        },
+        {
+          label: "Day",
+          elementKey: "day",
+          fqn: "carePlan.table2.day"
+        },
+        {
+          label: "Time",
+          elementKey: "time",
+          fqn: "carePlan.table2.time"
+        },
+        {
+          label: "Clinical issue",
+          elementKey: "clinical",
+          fqn: "carePlan.table2.clinical"
+        },
+        {
+          label: "Details of clinical issue",
+          elementKey: "details",
+          fqn: "carePlan.table2.details"
+        },
+        {
+          label: "Goal of care",
+          elementKey: "goal",
+          fqn: "carePlan.table2.goal"
+        },
+        {
+          label: "Intervention",
+          elementKey: "interventions",
+          fqn: "carePlan.table2.interventions"
+        },
+        {
+          label: "Evaluation of intervention",
+          elementKey: "evaluation",
+          fqn: "carePlan.table2.evaluation"
+        },
+        {
+          label: "Status",
+          elementKey: "status",
+          fqn: "carePlan.table2.status"
+        }
+      ],
+      generated: "2019-03-31T07:12:02-07:00",
       hasTable: true,
       tables: [
         {
@@ -495,7 +574,8 @@ export default function () {
     consultants: {
       pageTitle: "Consults",
       pageDataKey: "consultants",
-      generated: "2019-03-28T14:13:10-07:00",
+      pageChildren: [],
+      generated: "2019-03-31T07:12:02-07:00",
       hasForm: true,
       page_form: {
         rows: [],
@@ -506,7 +586,29 @@ export default function () {
     labResults: {
       pageTitle: "Laboratory results",
       pageDataKey: "labResults",
-      generated: "2019-03-28T14:13:10-07:00",
+      pageChildren: [
+        {
+          label: "ABG laboratory report",
+          elementKey: "labReport1_1",
+          fqn: "labResults.labReport.labReport1_1"
+        },
+        {
+          label: "ABG laboratory report",
+          elementKey: "labReport2_1",
+          fqn: "labResults.labReport.labReport2_1"
+        },
+        {
+          label: "C&S laboratory report",
+          elementKey: "labReport3_1",
+          fqn: "labResults.labReport.labReport3_1"
+        },
+        {
+          label: "Final C&S laboratory report",
+          elementKey: "labReport4_1",
+          fqn: "labResults.labReport.labReport4_1"
+        }
+      ],
+      generated: "2019-03-31T07:12:02-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -674,7 +776,29 @@ export default function () {
     medicalImaging: {
       pageTitle: "Medical imaging",
       pageDataKey: "medicalImaging",
-      generated: "2019-03-28T14:13:10-07:00",
+      pageChildren: [
+        {
+          label: "Day 0 - COPD xray",
+          elementKey: "diagnosticReport1_1",
+          fqn: "medicalImaging.diagnosticReport.diagnosticReport1_1"
+        },
+        {
+          label: "Day 2 - Pneumonia xray",
+          elementKey: "diagnosticReport2_1",
+          fqn: "medicalImaging.diagnosticReport.diagnosticReport2_1"
+        },
+        {
+          label: "COPD report",
+          elementKey: "diagnosticImage1_2",
+          fqn: "medicalImaging.diagnosticImage.diagnosticImage1_2"
+        },
+        {
+          label: "Pneumonia report",
+          elementKey: "diagnosticImage2_2",
+          fqn: "medicalImaging.diagnosticImage.diagnosticImage2_2"
+        }
+      ],
+      generated: "2019-03-31T07:12:02-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -776,7 +900,8 @@ export default function () {
     operationReports: {
       pageTitle: "Operative reports and anaesthesia record",
       pageDataKey: "operationReports",
-      generated: "2019-03-28T14:13:10-07:00",
+      pageChildren: [],
+      generated: "2019-03-31T07:12:02-07:00",
       hasForm: true,
       page_form: {
         rows: [],

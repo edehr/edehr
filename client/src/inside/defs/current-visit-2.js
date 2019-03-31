@@ -4,7 +4,179 @@ export default function () {
     genitourinary: {
       pageTitle: "Genitourinary assessment",
       pageDataKey: "genitourinary",
-      generated: "2019-03-28T14:12:55-07:00",
+      pageChildren: [
+        {
+          label: "Name",
+          elementKey: "name",
+          fqn: "genitourinary.table.name"
+        },
+        {
+          label: "Profession",
+          elementKey: "profession",
+          fqn: "genitourinary.table.profession"
+        },
+        {
+          label: "Day",
+          elementKey: "day",
+          fqn: "genitourinary.table.day"
+        },
+        {
+          label: "Time",
+          elementKey: "time",
+          fqn: "genitourinary.table.time"
+        },
+        {
+          label: "None",
+          elementKey: "none",
+          fqn: "genitourinary.table.urinaryGroup1.none"
+        },
+        {
+          label: "Increased frequency",
+          elementKey: "increasedFrequency",
+          fqn: "genitourinary.table.urinaryGroup1.increasedFrequency"
+        },
+        {
+          label: "Dysuria",
+          elementKey: "dysuria",
+          fqn: "genitourinary.table.urinaryGroup1.dysuria"
+        },
+        {
+          label: "Hermaturia",
+          elementKey: "hernaturia",
+          fqn: "genitourinary.table.urinaryGroup1.hernaturia"
+        },
+        {
+          label: "Oliguria",
+          elementKey: "oliguria",
+          fqn: "genitourinary.table.urinaryGroup1.oliguria"
+        },
+        {
+          label: "Incontinence",
+          elementKey: "incontinence",
+          fqn: "genitourinary.table.urinaryGroup1.incontinence"
+        },
+        {
+          label: "Retention",
+          elementKey: "retention",
+          fqn: "genitourinary.table.urinaryGroup1.retention"
+        },
+        {
+          label: "Distention",
+          elementKey: "distention",
+          fqn: "genitourinary.table.urinaryGroup1.distention"
+        },
+        {
+          label: "Last voided day",
+          elementKey: "lastVoidedDay",
+          fqn: "genitourinary.table.urinaryGroup2.lastVoidedDay"
+        },
+        {
+          label: "Last voided time",
+          elementKey: "lastVoidedTime",
+          fqn: "genitourinary.table.urinaryGroup2.lastVoidedTime"
+        },
+        {
+          label: "Urine colour",
+          elementKey: "colour",
+          fqn: "genitourinary.table.urinaryGroup2.colour"
+        },
+        {
+          label: "Urine consistency",
+          elementKey: "consistency",
+          fqn: "genitourinary.table.urinaryGroup2.consistency"
+        },
+        {
+          label: "Diaper",
+          elementKey: "diaper",
+          fqn: "genitourinary.table.urinaryGroup2.diaper"
+        },
+        {
+          label: "Foley",
+          elementKey: "foley",
+          fqn: "genitourinary.table.foleyGroup.foley"
+        },
+        {
+          label: "Type",
+          elementKey: "foleyType",
+          fqn: "genitourinary.table.foleyGroup.foleyType"
+        },
+        {
+          label: "Size",
+          elementKey: "foleySize",
+          fqn: "genitourinary.table.foleyGroup.foleySize"
+        },
+        {
+          label: "Last catheter change",
+          elementKey: "lastChange",
+          fqn: "genitourinary.table.foleyGroup.lastChange"
+        },
+        {
+          label: "Pelvic pain",
+          elementKey: "pelvicPain",
+          fqn: "genitourinary.table.pelvicGroup.pelvicPain"
+        },
+        {
+          label: "Location",
+          elementKey: "location",
+          fqn: "genitourinary.table.pelvicGroup.location"
+        },
+        {
+          label: "If answered yes, please complete the pain assessment",
+          elementKey: "aLabel",
+          fqn: "genitourinary.table.pelvicGroup.aLabel"
+        },
+        {
+          label: "Pelvic pain source",
+          elementKey: "pelvicPainSource",
+          fqn: "genitourinary.table.pelvicGroup.pelvicPainSource"
+        },
+        {
+          label: "Discharge",
+          elementKey: "discharge",
+          fqn: "genitourinary.table.vaginal.discharge"
+        },
+        {
+          label: "Bleeding",
+          elementKey: "bleeding",
+          fqn: "genitourinary.table.vaginal.bleeding"
+        },
+        {
+          label: "Description",
+          elementKey: "description",
+          fqn: "genitourinary.table.vaginal.description"
+        },
+        {
+          label: "Last menstrual period date",
+          elementKey: "lastMenstrualPeriodDate",
+          fqn: "genitourinary.table.vaginal.lastMenstrualPeriodDate"
+        },
+        {
+          label: "Pregnant",
+          elementKey: "pregnant",
+          fqn: "genitourinary.table.pregnantGroup.pregnant"
+        },
+        {
+          label: "Gravida (number of pregnancies)",
+          elementKey: "gravida",
+          fqn: "genitourinary.table.pregnantGroup.gravida"
+        },
+        {
+          label: "Para (number of children)",
+          elementKey: "para",
+          fqn: "genitourinary.table.pregnantGroup.para"
+        },
+        {
+          label: "Living children",
+          elementKey: "livingChildren",
+          fqn: "genitourinary.table.pregnantGroup.livingChildren"
+        },
+        {
+          label: "Comments",
+          elementKey: "comments",
+          fqn: "genitourinary.table.pregnantGroup.comments"
+        }
+      ],
+      generated: "2019-03-31T07:12:02-07:00",
       hasTable: true,
       tables: [
         {
@@ -1510,7 +1682,84 @@ export default function () {
     musculoskeletal: {
       pageTitle: "Musculoskeletal assessment",
       pageDataKey: "musculoskeletal",
-      generated: "2019-03-28T14:12:55-07:00",
+      pageChildren: [
+        {
+          label: "Name",
+          elementKey: "name",
+          fqn: "musculoskeletal.table.name"
+        },
+        {
+          label: "Profession",
+          elementKey: "profession",
+          fqn: "musculoskeletal.table.profession"
+        },
+        {
+          label: "Day",
+          elementKey: "day",
+          fqn: "musculoskeletal.table.day"
+        },
+        {
+          label: "Time",
+          elementKey: "time",
+          fqn: "musculoskeletal.table.time"
+        },
+        {
+          label: "Swelling",
+          elementKey: "swelling",
+          fqn: "musculoskeletal.table.swelling"
+        },
+        {
+          label: "Pain",
+          elementKey: "pain",
+          fqn: "musculoskeletal.table.pain"
+        },
+        {
+          label: "Deformity",
+          elementKey: "deformity",
+          fqn: "musculoskeletal.table.deformity"
+        },
+        {
+          label: "Movement",
+          elementKey: "movement",
+          fqn: "musculoskeletal.table.movement"
+        },
+        {
+          label: "Sensation",
+          elementKey: "sensation",
+          fqn: "musculoskeletal.table.sensation"
+        },
+        {
+          label: "Pulse",
+          elementKey: "pulse",
+          fqn: "musculoskeletal.table.pulse"
+        },
+        {
+          label: "Colour",
+          elementKey: "colour",
+          fqn: "musculoskeletal.table.colour"
+        },
+        {
+          label: "Temp",
+          elementKey: "temp",
+          fqn: "musculoskeletal.table.temp"
+        },
+        {
+          label: "Use of ambulatory aid",
+          elementKey: "useOfAmbulatoryAid",
+          fqn: "musculoskeletal.table.useOfAmbulatoryAid"
+        },
+        {
+          label: "Type",
+          elementKey: "type",
+          fqn: "musculoskeletal.table.type"
+        },
+        {
+          label: "Comments",
+          elementKey: "comments",
+          fqn: "musculoskeletal.table.comments"
+        }
+      ],
+      generated: "2019-03-31T07:12:02-07:00",
       hasTable: true,
       tables: [
         {
@@ -2173,7 +2422,127 @@ export default function () {
     pain: {
       pageTitle: "Pain assessment",
       pageDataKey: "pain",
-      generated: "2019-03-28T14:12:55-07:00",
+      pageChildren: [
+        {
+          label: "Name",
+          elementKey: "name",
+          fqn: "pain.table.name"
+        },
+        {
+          label: "Profession",
+          elementKey: "profession",
+          fqn: "pain.table.profession"
+        },
+        {
+          label: "Day",
+          elementKey: "day",
+          fqn: "pain.table.day"
+        },
+        {
+          label: "Time",
+          elementKey: "time",
+          fqn: "pain.table.time"
+        },
+        {
+          label: "Location",
+          elementKey: "location",
+          fqn: "pain.table.primarySite.location"
+        },
+        {
+          label: "Pain intensity (0-10)",
+          elementKey: "painScale",
+          fqn: "pain.table.primarySite.painScale"
+        },
+        {
+          label: "Respiratory rate (br/min)",
+          elementKey: "respiratoryRate",
+          fqn: "pain.table.primarySite.respiratoryRate"
+        },
+        {
+          label: "Onset",
+          elementKey: "onset",
+          fqn: "pain.table.primarySite.onset"
+        },
+        {
+          label: "Type",
+          elementKey: "type",
+          fqn: "pain.table.primarySite.type"
+        },
+        {
+          label: "Alleviation & associated symptoms",
+          elementKey: "alleviationAssociatedSymptoms",
+          fqn: "pain.table.primarySite.alleviationAssociatedSymptoms"
+        },
+        {
+          label: "Radiation",
+          elementKey: "radiation",
+          fqn: "pain.table.primarySite.radiation"
+        },
+        {
+          label: "Precipitating events",
+          elementKey: "precipitatingEvents",
+          fqn: "pain.table.primarySite.precipitatingEvents"
+        },
+        {
+          elementKey: "aLabel",
+          fqn: "pain.table.primarySite.aLabel"
+        },
+        {
+          label: "Comments",
+          elementKey: "comments",
+          fqn: "pain.table.primarySite.comments"
+        },
+        {
+          label: "Location",
+          elementKey: "location",
+          fqn: "pain.table.secondarySite.location"
+        },
+        {
+          label: "Pain scale (0-10)",
+          elementKey: "painScale",
+          fqn: "pain.table.secondarySite.painScale"
+        },
+        {
+          label: "Respiratory rate (br/min)",
+          elementKey: "respiratoryRate",
+          fqn: "pain.table.secondarySite.respiratoryRate"
+        },
+        {
+          label: "Onset",
+          elementKey: "onset",
+          fqn: "pain.table.secondarySite.onset"
+        },
+        {
+          label: "Type",
+          elementKey: "type",
+          fqn: "pain.table.secondarySite.type"
+        },
+        {
+          label: "Alleviation & associated symptoms",
+          elementKey: "alleviationAssociatedSymptoms",
+          fqn: "pain.table.secondarySite.alleviationAssociatedSymptoms"
+        },
+        {
+          label: "Radiation",
+          elementKey: "radiation",
+          fqn: "pain.table.secondarySite.radiation"
+        },
+        {
+          label: "Precipitating events",
+          elementKey: "precipitatingEvents",
+          fqn: "pain.table.secondarySite.precipitatingEvents"
+        },
+        {
+          elementKey: "aLabel",
+          fqn: "pain.table.secondarySite.aLabel"
+        },
+        {
+          label: "Comments",
+          elementKey: "comments",
+          fqn: "pain.table.secondarySite.comments"
+        }
+      ],
+      generated: "2019-03-31T07:12:02-07:00",
       hasTable: true,
       tables: [
         {
@@ -3000,7 +3369,174 @@ export default function () {
     biopsychosocial: {
       pageTitle: "Biopsychosocial assessment",
       pageDataKey: "biopsychosocial",
-      generated: "2019-03-28T14:12:55-07:00",
+      pageChildren: [
+        {
+          label: "Name",
+          elementKey: "name",
+          fqn: "biopsychosocial.table.name"
+        },
+        {
+          label: "Profession",
+          elementKey: "profession",
+          fqn: "biopsychosocial.table.profession"
+        },
+        {
+          label: "Day",
+          elementKey: "day",
+          fqn: "biopsychosocial.table.day"
+        },
+        {
+          label: "Time",
+          elementKey: "time",
+          fqn: "biopsychosocial.table.time"
+        },
+        {
+          label: "From our experience in the hospital, we know that domestic violence can be a problem. Is this a factor in your life?",
+          elementKey: "dvLabel",
+          fqn: "biopsychosocial.table.dvLabel"
+        },
+        {
+          label: "Domestic",
+          elementKey: "domesticViolence",
+          fqn: "biopsychosocial.table.domesticViolence"
+        },
+        {
+          label: "Would you like to speak to a social worker?",
+          elementKey: "rcLabel",
+          fqn: "biopsychosocial.table.rcLabel"
+        },
+        {
+          label: "Request contact",
+          elementKey: "requestContact",
+          fqn: "biopsychosocial.table.requestContact"
+        },
+        {
+          label: "Calm",
+          elementKey: "calm",
+          fqn: "biopsychosocial.table.behaviour.calm"
+        },
+        {
+          label: "Cooperative",
+          elementKey: "cooperative",
+          fqn: "biopsychosocial.table.behaviour.cooperative"
+        },
+        {
+          label: "Agitated",
+          elementKey: "agitated",
+          fqn: "biopsychosocial.table.behaviour.agitated"
+        },
+        {
+          label: "Flat affect",
+          elementKey: "flat",
+          fqn: "biopsychosocial.table.behaviour.flat"
+        },
+        {
+          label: "Threatening",
+          elementKey: "threatening",
+          fqn: "biopsychosocial.table.behaviour.threatening"
+        },
+        {
+          label: "Physically agressive",
+          elementKey: "agressive",
+          fqn: "biopsychosocial.table.behaviour.agressive"
+        },
+        {
+          label: "Uncommunicative",
+          elementKey: "uncommunicative",
+          fqn: "biopsychosocial.table.behaviour.uncommunicative"
+        },
+        {
+          label: "None",
+          elementKey: "none",
+          fqn: "biopsychosocial.table.hallucinations.none"
+        },
+        {
+          label: "Visual",
+          elementKey: "visual",
+          fqn: "biopsychosocial.table.hallucinations.visual"
+        },
+        {
+          label: "Auditory",
+          elementKey: "auditory",
+          fqn: "biopsychosocial.table.hallucinations.auditory"
+        },
+        {
+          label: "Olafactory",
+          elementKey: "olafactory",
+          fqn: "biopsychosocial.table.hallucinations.olafactory"
+        },
+        {
+          label: "Suicidal",
+          elementKey: "suicidal",
+          fqn: "biopsychosocial.table.state.suicidal"
+        },
+        {
+          label: "Homicidal",
+          elementKey: "homicidal",
+          fqn: "biopsychosocial.table.state.homicidal"
+        },
+        {
+          label: "Speech",
+          elementKey: "speech",
+          fqn: "biopsychosocial.table.state.speech"
+        },
+        {
+          label: "Hygiene",
+          elementKey: "hygieneGrooming",
+          fqn: "biopsychosocial.table.hygiene.hygieneGrooming"
+        },
+        {
+          label: "Hygiene comments",
+          elementKey: "hygieneComments",
+          fqn: "biopsychosocial.table.hygiene.hygieneComments"
+        },
+        {
+          label: "Support person",
+          elementKey: "supportPerson",
+          fqn: "biopsychosocial.table.support.supportPerson"
+        },
+        {
+          label: "Support comments",
+          elementKey: "supportComments",
+          fqn: "biopsychosocial.table.support.supportComments"
+        },
+        {
+          label: "Security/police present",
+          elementKey: "securityPolicePresent",
+          fqn: "biopsychosocial.table.security.securityPolicePresent"
+        },
+        {
+          label: "Security comments",
+          elementKey: "securityComments",
+          fqn: "biopsychosocial.table.security.securityComments"
+        },
+        {
+          label: "Patient restrained",
+          elementKey: "patientRestrained",
+          fqn: "biopsychosocial.table.restraint.patientRestrained"
+        },
+        {
+          label: "Day",
+          elementKey: "restraintDay",
+          fqn: "biopsychosocial.table.restraint.restraintDay"
+        },
+        {
+          label: "Time",
+          elementKey: "restraintTime",
+          fqn: "biopsychosocial.table.restraint.restraintTime"
+        },
+        {
+          label: "Restraint comments",
+          elementKey: "restraintComments",
+          fqn: "biopsychosocial.table.restraint.restraintComments"
+        },
+        {
+          label: "General comments",
+          elementKey: "generalComments",
+          fqn: "biopsychosocial.table.generalComments"
+        }
+      ],
+      generated: "2019-03-31T07:12:02-07:00",
       hasTable: true,
       tables: [
         {
@@ -4506,7 +5042,84 @@ export default function () {
     nonmedOrders: {
       pageTitle: "Orders",
       pageDataKey: "nonmedOrders",
-      generated: "2019-03-28T14:12:55-07:00",
+      pageChildren: [
+        {
+          label: "Name",
+          elementKey: "name",
+          fqn: "nonmedOrders.table.name"
+        },
+        {
+          label: "Profession",
+          elementKey: "profession",
+          fqn: "nonmedOrders.table.profession"
+        },
+        {
+          label: "Day",
+          elementKey: "day",
+          fqn: "nonmedOrders.table.day"
+        },
+        {
+          label: "Time",
+          elementKey: "time",
+          fqn: "nonmedOrders.table.time"
+        },
+        {
+          label: "Order",
+          elementKey: "order",
+          fqn: "nonmedOrders.table.order"
+        },
+        {
+          label: "Ordered by",
+          elementKey: "orderedBy",
+          fqn: "nonmedOrders.table.orderedBy"
+        },
+        {
+          label: "Day of referral",
+          elementKey: "dayOfReferral",
+          fqn: "nonmedOrders.table.dayOfReferral"
+        },
+        {
+          label: "Details",
+          elementKey: "details",
+          fqn: "nonmedOrders.table.details"
+        },
+        {
+          label: "Start day",
+          elementKey: "startDay",
+          fqn: "nonmedOrders.table.startDay"
+        },
+        {
+          label: "Start time",
+          elementKey: "startTime",
+          fqn: "nonmedOrders.table.startTime"
+        },
+        {
+          label: "End day",
+          elementKey: "startTime",
+          fqn: "nonmedOrders.table.startTime"
+        },
+        {
+          label: "End time",
+          elementKey: "endTime",
+          fqn: "nonmedOrders.table.endTime"
+        },
+        {
+          label: "Status",
+          elementKey: "status",
+          fqn: "nonmedOrders.table.status"
+        },
+        {
+          label: "Reconciliation complete",
+          elementKey: "reconciliationComplete",
+          fqn: "nonmedOrders.table.reconciliationComplete"
+        },
+        {
+          label: "Comment",
+          elementKey: "comment",
+          fqn: "nonmedOrders.table.comment"
+        }
+      ],
+      generated: "2019-03-31T07:12:02-07:00",
       hasTable: true,
       tables: [
         {
@@ -4986,7 +5599,58 @@ export default function () {
     referrals: {
       pageTitle: "Referrals to other disciplines",
       pageDataKey: "referrals",
-      generated: "2019-03-28T14:12:55-07:00",
+      pageChildren: [
+        {
+          label: "Name",
+          elementKey: "name",
+          fqn: "referrals.table.name"
+        },
+        {
+          label: "Profession",
+          elementKey: "profession",
+          fqn: "referrals.table.profession"
+        },
+        {
+          label: "Day",
+          elementKey: "day",
+          fqn: "referrals.table.day"
+        },
+        {
+          label: "Time",
+          elementKey: "time",
+          fqn: "referrals.table.time"
+        },
+        {
+          label: "Referral name",
+          elementKey: "referralName",
+          fqn: "referrals.table.referralName"
+        },
+        {
+          label: "Referral profession",
+          elementKey: "referralProfession",
+          fqn: "referrals.table.referralProfession"
+        },
+        {
+          elementKey: "aSpacer",
+          fqn: "referrals.table.aSpacer"
+        },
+        {
+          label: "Appointment date",
+          elementKey: "appointmentDate",
+          fqn: "referrals.table.appointmentDate"
+        },
+        {
+          label: "Appointment time",
+          elementKey: "appointmentTime",
+          fqn: "referrals.table.appointmentTime"
+        },
+        {
+          label: "Status",
+          elementKey: "status",
+          fqn: "referrals.table.status"
+        }
+      ],
+      generated: "2019-03-31T07:12:02-07:00",
       hasTable: true,
       tables: [
         {
@@ -5299,7 +5963,54 @@ export default function () {
     labRequisitions: {
       pageTitle: "Lab requisitions",
       pageDataKey: "labRequisitions",
-      generated: "2019-03-28T14:12:55-07:00",
+      pageChildren: [
+        {
+          label: "Name",
+          elementKey: "name",
+          fqn: "labRequisitions.table.name"
+        },
+        {
+          label: "Profession",
+          elementKey: "profession",
+          fqn: "labRequisitions.table.profession"
+        },
+        {
+          label: "Day",
+          elementKey: "day",
+          fqn: "labRequisitions.table.day"
+        },
+        {
+          label: "Time",
+          elementKey: "time",
+          fqn: "labRequisitions.table.time"
+        },
+        {
+          label: "Requisition",
+          elementKey: "requisition",
+          fqn: "labRequisitions.table.requisition"
+        },
+        {
+          label: "Ordered",
+          elementKey: "ordered",
+          fqn: "labRequisitions.table.ordered"
+        },
+        {
+          label: "Collected",
+          elementKey: "collected",
+          fqn: "labRequisitions.table.collected"
+        },
+        {
+          label: "Report",
+          elementKey: "report",
+          fqn: "labRequisitions.table.report"
+        },
+        {
+          label: "Status",
+          elementKey: "status",
+          fqn: "labRequisitions.table.status"
+        }
+      ],
+      generated: "2019-03-31T07:12:02-07:00",
       hasTable: true,
       tables: [
         {
@@ -5598,7 +6309,84 @@ export default function () {
     medicationOrders: {
       pageTitle: "Medication orders",
       pageDataKey: "medicationOrders",
-      generated: "2019-03-28T14:12:55-07:00",
+      pageChildren: [
+        {
+          label: "Name",
+          elementKey: "name",
+          fqn: "medicationOrders.table.name"
+        },
+        {
+          label: "Profession",
+          elementKey: "profession",
+          fqn: "medicationOrders.table.profession"
+        },
+        {
+          label: "Day",
+          elementKey: "day",
+          fqn: "medicationOrders.table.day"
+        },
+        {
+          label: "Time",
+          elementKey: "time",
+          fqn: "medicationOrders.table.time"
+        },
+        {
+          label: "Medication",
+          elementKey: "medication",
+          fqn: "medicationOrders.table.medication"
+        },
+        {
+          label: "Route",
+          elementKey: "route",
+          fqn: "medicationOrders.table.details.route"
+        },
+        {
+          label: "Reason",
+          elementKey: "reason",
+          fqn: "medicationOrders.table.details.reason"
+        },
+        {
+          label: "Schedule type",
+          elementKey: "scheduleType",
+          fqn: "medicationOrders.table.schedule.scheduleType"
+        },
+        {
+          label: "With breakfast",
+          elementKey: "breakfast",
+          fqn: "medicationOrders.table.schedule.breakfast"
+        },
+        {
+          label: "Morning without food",
+          elementKey: "midmorning",
+          fqn: "medicationOrders.table.schedule.midmorning"
+        },
+        {
+          label: "With lunch",
+          elementKey: "lunch",
+          fqn: "medicationOrders.table.schedule.lunch"
+        },
+        {
+          label: "Mid afternoon without food",
+          elementKey: "midafternoon",
+          fqn: "medicationOrders.table.schedule.midafternoon"
+        },
+        {
+          label: "With dinner",
+          elementKey: "dinner",
+          fqn: "medicationOrders.table.schedule.dinner"
+        },
+        {
+          label: "At bedtime",
+          elementKey: "bedtime",
+          fqn: "medicationOrders.table.bedtime"
+        },
+        {
+          label: "Notes",
+          elementKey: "notes",
+          fqn: "medicationOrders.table.notes"
+        }
+      ],
+      generated: "2019-03-31T07:12:02-07:00",
       hasTable: true,
       tables: [
         {
@@ -6152,7 +6940,44 @@ export default function () {
     medAdminRec: {
       pageTitle: "Medication administration records",
       pageDataKey: "medAdminRec",
-      generated: "2019-03-28T14:12:55-07:00",
+      pageChildren: [
+        {
+          label: "Status",
+          elementKey: "status",
+          fqn: "medAdminRec.table.status"
+        },
+        {
+          label: "Medication",
+          elementKey: "medication",
+          fqn: "medAdminRec.table.medication"
+        },
+        {
+          label: "Yesterday",
+          elementKey: "yesterday",
+          fqn: "medAdminRec.table.yesterday"
+        },
+        {
+          label: "Today plan",
+          elementKey: "todayPlan",
+          fqn: "medAdminRec.table.todayPlan"
+        },
+        {
+          label: "Today given",
+          elementKey: "todayGiven",
+          fqn: "medAdminRec.table.todayGiven"
+        },
+        {
+          label: "Administered by",
+          elementKey: "administeredBy",
+          fqn: "medAdminRec.table.administeredBy"
+        },
+        {
+          label: "Actual time",
+          elementKey: "actualTime",
+          fqn: "medAdminRec.table.actualTime"
+        }
+      ],
+      generated: "2019-03-31T07:12:02-07:00",
       hasTable: true,
       tables: [
         {
@@ -6441,7 +7266,99 @@ export default function () {
     dischargeSummary: {
       pageTitle: "Discharge summary",
       pageDataKey: "dischargeSummary",
-      generated: "2019-03-28T14:12:55-07:00",
+      pageChildren: [
+        {
+          label: "Admission day",
+          elementKey: "admissionDay",
+          fqn: "dischargeSummary.admissionDay"
+        },
+        {
+          label: "Discharging physician/NP",
+          elementKey: "dischargingPhysician/np",
+          fqn: "dischargeSummary.dischargingPhysician/np"
+        },
+        {
+          label: "Role",
+          elementKey: "role",
+          fqn: "dischargeSummary.role"
+        },
+        {
+          label: "Discharge day",
+          elementKey: "dischargeDay",
+          fqn: "dischargeSummary.dischargeDay"
+        },
+        {
+          label: "Discharge time",
+          elementKey: "dischargeTime",
+          fqn: "dischargeSummary.dischargeTime"
+        },
+        {
+          label: "Discharged to",
+          elementKey: "dischargedTo",
+          fqn: "dischargeSummary.dischargedTo"
+        },
+        {
+          label: "Transferred to",
+          elementKey: "transferedTo",
+          fqn: "dischargeSummary.transferedTo"
+        },
+        {
+          label: "Leaving by",
+          elementKey: "leavingBy",
+          fqn: "dischargeSummary.leavingBy"
+        },
+        {
+          label: "Clinical summary",
+          elementKey: "clinicalSummary",
+          fqn: "dischargeSummary.clinicalSummary"
+        },
+        {
+          label: "Procedures and treatment",
+          elementKey: "proceduresTreatment",
+          fqn: "dischargeSummary.proceduresTreatment"
+        },
+        {
+          label: "Medications administered while in care",
+          elementKey: "medicationsAdministered",
+          fqn: "dischargeSummary.medicationsAdministered"
+        },
+        {
+          label: "Discharge Rx",
+          elementKey: "dischargeRx",
+          fqn: "dischargeSummary.dischargeRx"
+        },
+        {
+          label: "Follow up appointments",
+          elementKey: "followUpAppointment",
+          fqn: "dischargeSummary.followUpAppointment"
+        },
+        {
+          label: "Referrals/receiving team",
+          elementKey: "referredTo",
+          fqn: "dischargeSummary.referredTo"
+        },
+        {
+          label: "Discharge diagnosis",
+          elementKey: "dischargeDiagnosis",
+          fqn: "dischargeSummary.dischargeDiagnosis"
+        },
+        {
+          label: "Lab and medical imaging requisitions",
+          elementKey: "labMedicalImaging",
+          fqn: "dischargeSummary.labMedicalImaging"
+        },
+        {
+          label: "Discharge plan",
+          elementKey: "dischargePlan",
+          fqn: "dischargeSummary.dischargePlan"
+        },
+        {
+          label: "Discharge education",
+          elementKey: "dischargeEducation",
+          fqn: "dischargeSummary.dischargeEducation"
+        }
+      ],
+      generated: "2019-03-31T07:12:02-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -6744,7 +7661,24 @@ export default function () {
     billing: {
       pageTitle: "Billing",
       pageDataKey: "billing",
-      generated: "2019-03-28T14:12:55-07:00",
+      pageChildren: [
+        {
+          label: "MSP",
+          elementKey: "msp",
+          fqn: "billing.msp"
+        },
+        {
+          label: "Third party",
+          elementKey: "thirdParty",
+          fqn: "billing.thirdParty"
+        },
+        {
+          label: "Federal",
+          elementKey: "federal",
+          fqn: "billing.federal"
+        }
+      ],
+      generated: "2019-03-31T07:12:02-07:00",
       hasForm: true,
       page_form: {
         rows: [

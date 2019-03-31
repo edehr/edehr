@@ -18,7 +18,6 @@
       p Redirect: 
       p Route name: immunization
       p Full path: /ehr/patient/history/immunization
-      p {{uiProps}}
 </template>
 
 <script>
@@ -28,6 +27,7 @@ import EhrEditControls from '../components/EhrEditControls.vue'
 import EhrPageTable from '../components/EhrPageTable'
 import EhrPageForm from '../components/EhrPageForm.vue'
 import EhrHelp from '../../helpers/ehr-helper'
+import { getPageDefinition } from '../../helpers/ehr-defs'
 
 export default {
   name: 'Immunization',
@@ -46,7 +46,7 @@ export default {
   },
   computed: {
     uiProps () {
-      return this.ehrHelp ? this.ehrHelp.getPageDefinition(this.pageDataKey) : {}
+      return getPageDefinition(this.pageDataKey)
     },
     showTableLabel () {
       let tbls = this.uiProps.tables || []

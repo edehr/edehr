@@ -4,18 +4,18 @@ const fs = require('fs')
 const assert = require('assert').strict
 const camelCase = require('camelcase')
 
-const DEFAULT_KEY = 'defaultValue'
+const DEFAULT_VALUE = 'defaultValue'
 const PAGE_FORM = 'page_form'
 const TABLE_ROW = 'table_row'
-const TABLE_COL = 'table_column'
-const SUBGROUP = 'subgroup'
+// const TABLE_COL = 'table_column'
+// const SUBGROUP = 'subgroup'
 const FIELDSET = 'fieldset'
 const FIELDSET_ROW = 'fieldRowSet'
 const FORM_LABEL = 'form-label'
 const SPACER = 'spacer'
 const PAGE_INPUT_TYPE = 'page'
-const CONTAINER_INPUT_TYPES = [PAGE_FORM, TABLE_ROW, TABLE_COL]
-const SUBCONTAINER_INPUT_TYPES = [SUBGROUP, FIELDSET, FIELDSET_ROW]
+const CONTAINER_INPUT_TYPES = [PAGE_FORM, TABLE_ROW]//, TABLE_COL]
+const SUBCONTAINER_INPUT_TYPES = [FIELDSET, FIELDSET_ROW] // SUBGROUP
 const NO_SHOW_IN_TABLE_ELEMENTS = [SPACER, FORM_LABEL, FIELDSET_ROW, FIELDSET]
 
 const containerElementProperties = [
@@ -49,10 +49,25 @@ const containerElementProperties = [
   'helperText',
   'assetBase',
   'assetName',
+  'passToFunction',
 
   'dataParent',
   'fqn',
 
+]
+
+const pageChildElementProperties = [
+  'label',
+  'elementKey',
+  'fqn',
+  'defaultValue',
+  // 'suffix',
+  // 'mandatory',
+  // 'validation',
+  // 'dataCaseStudy',
+  // 'helperText',
+  'passToFunction',
+  // 'dataParent',
 ]
 // Fields may have data that spans multiple lines.
 // Replace linefeeds with a marker we can use to mark the end of each line.
@@ -73,6 +88,15 @@ const mlFields = [
 // Sample of multiline content:
 // Section	Label	Input_type	Options	Data_From	Input_format	Data_first_case_study	Data_second_case_study	Helper_Text	Mandatory	Validation	Notes	Questions_for_the_group	Element_Key	FQN	NavURL	Dependant_On_FQN
 const nlSep = '-NL-'
+
+/*
+TODO ideas for improving and documenting the generation code
+1. Put more data into the pageChildElementProperties to store these properties at the page level.
+This way we can reduce the amount of duplication between the table cells and table form elements.
+1.a create a lookup method in the helper that can retrieve data from the parent's dataChildren to find
+things like 'is this field mandatory?', 'get helper text', 'suffix'
+*/
+
 
 class RawInputToDef {
   /**
@@ -102,7 +126,8 @@ class RawInputToDef {
       let uiP = {}
       uiP.pageTitle = page.label
       uiP.pageDataKey = page.elementKey
-      this._page(uiP, page, lastModifiedTime)
+      uiP.pageChildren = page.pageChildren
+      this._pageMakeUiProperties(uiP, page, lastModifiedTime)
       let pageData = {}
       // let pd = pageData[uiP.pageDataKey] = {}
       if (uiP.hasTable) {
@@ -176,7 +201,7 @@ class RawInputToDef {
     // console.log('Page:', p)
     pages[p] = entry
     let pg = pages[p]
-    pg.children = []
+    pg.pageChildren = []
     pg.containers = {}
   }
 
@@ -192,16 +217,11 @@ class RawInputToDef {
     // entry is a container
     let containerFQN = entry.fqn
     // we will create a container object from the entry
-    let container = {}
     let page = pages[pageKey]
     if (!page) {
       console.log('ERROR cannot find page for container', pageKey, entry)
     }
-    containerElementProperties.forEach(prop => {
-      if (entry[prop]) {
-        container[prop] = entry[prop]
-      }
-    })
+    let container = this._transferProperties(entry, containerElementProperties)
     container.elements = []
     container.containerType = entry.inputType
     container.containerKey = entry.elementKey
@@ -225,6 +245,7 @@ class RawInputToDef {
     if (!pg) {
       console.log('ERROR element has no page', p, entry)
     }
+    // Place the entry into the proper container based on entry's dataParent property
     let containerKey = entry.dataParent
     let container = pg.containers[containerKey]
     if (!container || ! container.elements) {
@@ -240,33 +261,37 @@ class RawInputToDef {
       )
     }
     assert.ok(container && container.elements, 'Error' )
-    let containerChild = {}
-    containerElementProperties.forEach(prop => {
-      if (entry[prop]) {
-        containerChild[prop] = entry[prop]
-      }
-    })
-    if (entry.options) {
-      let parts = entry.options.split(nlSep)
+    let containerChild = this._transferProperties(entry, containerElementProperties)
+    // Perform per-entry tasks on the element being placed into the container
+    this._prepareDropDownOptions(entry, containerChild)
+    // Push element into container
+    container.elements.push(containerChild)
+
+    // Push page level data element onto page
+    let pageChild = this._transferProperties(entry, pageChildElementProperties)
+    pg.pageChildren.push(pageChild)
+  }
+
+  _prepareDropDownOptions(src,dest) {
+    // 1. Split options for drop down inputs ...
+    if (src.options) {
+      let parts = src.options.split(nlSep)
       let opts = parts.map(p => {
         return { text: p }
       })
-      containerChild.options = opts
+      dest.options = opts
     }
-    container.elements.push(containerChild)
-    // DATA
-    let dataChild = {
-      label: entry.label,
-      elementKey: entry.elementKey,
-      fqn: entry.fqn,
-      dataFrom: entry.dataFrom,
-      dataCaseStudy: entry.dataCaseStudy,
-      assignment: entry.assignment
-    }
-    // TODO this children property is not yet used. It'll be for seed data. Rename it when it's used.
-    pg.children.push(dataChild)
   }
 
+  _transferProperties (src, propertyList) {
+    let dest = {}
+    propertyList.forEach(prop => {
+      if (src[prop]) {
+        dest[prop] = src[prop]
+      }
+    })
+    return dest
+  }
   /**
    * The text content contains one line per entry.
    * Each line contains some key/value pairs.
@@ -306,19 +331,19 @@ class RawInputToDef {
 
   /* *************** to pages helpers ******** */
 
-  _page(uiP, page, lastModifiedTime) {
-    // console.log('Build form for page', page.label)
+  _pageMakeUiProperties(uiP, page, lastModifiedTime) {
+    // console.log('Build form for page and dialogs for tables', page.label)
     uiP.generated = moment.utc(lastModifiedTime).local().format()
     Object.keys(page.containers).forEach(key => {
       let container = page.containers[key]
-      // console.log('_page type fqn ', container.containerType, container.fqn)
+      // console.log('_pageMakeUiProperties type fqn ', container.containerType, container.fqn)
       if (container.containerType === PAGE_FORM) {
-        // console.log('_page PAGE_FORM', container.fqn)
+        // console.log('_pageMakeUiProperties PAGE_FORM', container.fqn)
         uiP.hasForm = true
         // TODO change to pageForm
         uiP.page_form = this._extractPageForm(container)
       } else if (container.containerType === TABLE_ROW) {
-        // console.log('_page TABLE_ROW', container.fqn)
+        // console.log('_pageMakeUiProperties TABLE_ROW', container.fqn)
         uiP.hasTable = true
         uiP.tables = uiP.tables || []
         let tableCells = this._pageTableCells(container)
@@ -338,14 +363,15 @@ class RawInputToDef {
           tableCells: reducedCells,
           tableForm: tableForm }
         uiP.tables.push(table)
-      } else if (container.containerType === TABLE_COL) {
-        // TODO
-        // console.log('TODO !!!!! column tables', container.containerKey)
-      } else if (container.containerType === SUBGROUP) {
-        // TODO
-        // console.log('TODO !!!!! sub groups ', container.containerKey)
+      // } else if (container.containerType === TABLE_COL) {
+      //   // TODO
+      //   // console.log('TODO !!!!! column tables', container.containerKey)
+      // } else if (container.containerType === SUBGROUP) {
+      //   // TODO
+      //   // console.log('TODO !!!!! sub groups ', container.containerKey)
       } else if (container.containerType === FIELDSET || container.containerType === FIELDSET_ROW) {
-        // console.log('_page', container.containerType, container.containerKey)
+        // no special processing needed for fieldsets here.
+        // console.log('_pageMakeUiProperties fieldset', container)
       }
     })
   }

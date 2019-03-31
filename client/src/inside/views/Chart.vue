@@ -18,7 +18,6 @@
       p Redirect: progress-notes
       p Route name: chart
       p Full path: /ehr/chart
-      p {{uiProps}}
 </template>
 
 <script>
@@ -28,6 +27,7 @@ import EhrEditControls from '../components/EhrEditControls.vue'
 import EhrPageTable from '../components/EhrPageTable'
 import EhrPageForm from '../components/EhrPageForm.vue'
 import EhrHelp from '../../helpers/ehr-helper'
+import { getPageDefinition } from '../../helpers/ehr-defs'
 
 export default {
   name: 'Chart',
@@ -46,7 +46,7 @@ export default {
   },
   computed: {
     uiProps () {
-      return this.ehrHelp ? this.ehrHelp.getPageDefinition(this.pageDataKey) : {}
+      return getPageDefinition(this.pageDataKey)
     },
     showTableLabel () {
       let tbls = this.uiProps.tables || []

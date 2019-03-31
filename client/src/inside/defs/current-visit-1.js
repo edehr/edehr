@@ -4,7 +4,54 @@ export default function () {
     visit: {
       pageTitle: "Visit details",
       pageDataKey: "visit",
-      generated: "2019-03-28T14:47:17-07:00",
+      pageChildren: [
+        {
+          label: "Admission day",
+          elementKey: "admissionDay",
+          fqn: "visit.admissionDay"
+        },
+        {
+          label: "Admission time",
+          elementKey: "admissionTime",
+          fqn: "visit.admissionTime"
+        },
+        {
+          label: "Consent for treatment",
+          elementKey: "consentForTreatment",
+          fqn: "visit.consentForTreatment"
+        },
+        {
+          label: "Consent for blood products",
+          elementKey: "consentForBlood",
+          fqn: "visit.consentForBlood"
+        },
+        {
+          label: "Admission status",
+          elementKey: "status",
+          fqn: "visit.status"
+        },
+        {
+          label: "Physician admitting diagnosis",
+          elementKey: "diagnosis",
+          fqn: "visit.diagnosis"
+        },
+        {
+          label: "Patient location",
+          elementKey: "location",
+          fqn: "visit.table.location"
+        },
+        {
+          label: "Transfer in day",
+          elementKey: "transferInDay",
+          fqn: "visit.table.transferInDay"
+        },
+        {
+          label: "Transfer in time",
+          elementKey: "transferInTime",
+          fqn: "visit.table.transferInTime"
+        }
+      ],
+      generated: "2019-03-31T07:12:02-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -220,7 +267,89 @@ export default function () {
     vitals: {
       pageTitle: "Vital signs",
       pageDataKey: "vitals",
-      generated: "2019-03-28T14:47:17-07:00",
+      pageChildren: [
+        {
+          label: "Name",
+          elementKey: "name",
+          fqn: "vitals.table.name"
+        },
+        {
+          label: "Profession",
+          elementKey: "profession",
+          fqn: "vitals.table.profession"
+        },
+        {
+          label: "Day",
+          elementKey: "day",
+          fqn: "vitals.table.day"
+        },
+        {
+          label: "Time",
+          elementKey: "time",
+          fqn: "vitals.table.time"
+        },
+        {
+          label: "Temperature",
+          elementKey: "temperature",
+          fqn: "vitals.table.temperature"
+        },
+        {
+          label: "Temperature source",
+          elementKey: "source",
+          fqn: "vitals.table.source"
+        },
+        {
+          label: "Pulse rate",
+          elementKey: "rate",
+          fqn: "vitals.table.rate"
+        },
+        {
+          label: "Pulse rhythm",
+          elementKey: "rhythm",
+          fqn: "vitals.table.rhythm"
+        },
+        {
+          label: "Pulse site",
+          elementKey: "strength",
+          fqn: "vitals.table.strength"
+        },
+        {
+          label: "Systolic blood pressure",
+          elementKey: "systolic",
+          fqn: "vitals.table.systolic"
+        },
+        {
+          label: "Diastolic blood pressure",
+          elementKey: "diastolic",
+          fqn: "vitals.table.diastolic"
+        },
+        {
+          label: "Patient position",
+          elementKey: "patientPosition",
+          fqn: "vitals.table.patientPosition"
+        },
+        {
+          label: "Respiration rate",
+          elementKey: "respirationRate",
+          fqn: "vitals.table.respirationRate"
+        },
+        {
+          label: "Oxygen saturation",
+          elementKey: "oxygenSaturation",
+          fqn: "vitals.table.oxygenSaturation"
+        },
+        {
+          label: "Oxygen mode",
+          elementKey: "oxygenMode",
+          fqn: "vitals.table.oxygenMode"
+        },
+        {
+          label: "Flow rate",
+          elementKey: "flowRate",
+          fqn: "vitals.table.flowRate"
+        }
+      ],
+      generated: "2019-03-31T07:12:02-07:00",
       hasTable: true,
       tables: [
         {
@@ -800,7 +929,39 @@ export default function () {
     fluidBalance: {
       pageTitle: "Fluid balance",
       pageDataKey: "fluidBalance",
-      generated: "2019-03-28T14:47:17-07:00",
+      pageChildren: [
+        {
+          label: "Name",
+          elementKey: "name",
+          fqn: "fluidBalance.table.name"
+        },
+        {
+          label: "Profession",
+          elementKey: "profession",
+          fqn: "fluidBalance.table.profession"
+        },
+        {
+          label: "Day",
+          elementKey: "day",
+          fqn: "fluidBalance.table.day"
+        },
+        {
+          label: "Time",
+          elementKey: "time",
+          fqn: "fluidBalance.table.time"
+        },
+        {
+          label: "Fluid In",
+          elementKey: "fluidIn",
+          fqn: "fluidBalance.table.fluidIn"
+        },
+        {
+          label: "Fluid Out",
+          elementKey: "fluidOut",
+          fqn: "fluidBalance.table.fluidOut"
+        }
+      ],
+      generated: "2019-03-31T07:12:02-07:00",
       hasTable: true,
       tables: [
         {
@@ -988,7 +1149,233 @@ export default function () {
     neurological: {
       pageTitle: "Neurological assessment",
       pageDataKey: "neurological",
-      generated: "2019-03-28T14:47:17-07:00",
+      pageChildren: [
+        {
+          label: "Name",
+          elementKey: "name",
+          fqn: "neurological.table.name"
+        },
+        {
+          label: "Profession",
+          elementKey: "profession",
+          fqn: "neurological.table.profession"
+        },
+        {
+          label: "Day",
+          elementKey: "day",
+          fqn: "neurological.table.day"
+        },
+        {
+          label: "Time",
+          elementKey: "time",
+          fqn: "neurological.table.time"
+        },
+        {
+          label: "Alert",
+          elementKey: "alert",
+          fqn: "neurological.table.status.alert"
+        },
+        {
+          label: "Oriented",
+          elementKey: "oriented",
+          fqn: "neurological.table.status.oriented"
+        },
+        {
+          label: "Confused",
+          elementKey: "confused",
+          fqn: "neurological.table.status.confused"
+        },
+        {
+          label: "Drowsy",
+          elementKey: "drowsy",
+          fqn: "neurological.table.status.drowsy"
+        },
+        {
+          label: "Unresponsive",
+          elementKey: "unresponsive",
+          fqn: "neurological.table.status.unresponsive"
+        },
+        {
+          label: "Dizziness",
+          elementKey: "dizziness",
+          fqn: "neurological.table.status.dizziness"
+        },
+        {
+          label: "Eye opening",
+          elementKey: "blurredVision",
+          fqn: "neurological.table.status.blurredVision"
+        },
+        {
+          label: "Eye opening",
+          elementKey: "eyeOpening",
+          fqn: "neurological.table.glasgowComaScale.eyeOpening",
+          passToFunction: "glasgowCalculation"
+        },
+        {
+          label: "Verbal response",
+          elementKey: "verbalResponse",
+          fqn: "neurological.table.glasgowComaScale.verbalResponse",
+          passToFunction: "glasgowCalculation"
+        },
+        {
+          label: "Best motor response",
+          elementKey: "bestMotorResponse",
+          fqn: "neurological.table.glasgowComaScale.bestMotorResponse",
+          passToFunction: "glasgowCalculation"
+        },
+        {
+          label: "Glasgow Calculation",
+          elementKey: "glasgowCalculation",
+          fqn: "neurological.table.glasgowComaScale.glasgowCalculation",
+          defaultValue: "0"
+        },
+        {
+          label: "Loss of conciousness",
+          elementKey: "loss",
+          fqn: "neurological.table.glasgowComaScale.loss"
+        },
+        {
+          label: "Duration",
+          elementKey: "duration",
+          fqn: "neurological.table.glasgowComaScale.duration"
+        },
+        {
+          label: "Left pupil size",
+          elementKey: "leftPupilSize",
+          fqn: "neurological.table.pupils.leftPupilSize"
+        },
+        {
+          label: "Left pupil response to light",
+          elementKey: "leftPupilResponseToLight",
+          fqn: "neurological.table.pupils.leftPupilResponseToLight"
+        },
+        {
+          label: "Right pupil size",
+          elementKey: "rightPupilSize",
+          fqn: "neurological.table.pupils.rightPupilSize"
+        },
+        {
+          label: "Right pupil response to light",
+          elementKey: "rightPupilResponseToLight",
+          fqn: "neurological.table.pupils.rightPupilResponseToLight"
+        },
+        {
+          label: "Both pupils",
+          elementKey: "bothPupils",
+          fqn: "neurological.table.pupils.bothPupils"
+        },
+        {
+          elementKey: "aSpacer",
+          fqn: "neurological.table.pupils.aSpacer"
+        },
+        {
+          label: "Level of conciousness",
+          elementKey: "levelOfConciousness",
+          fqn: "neurological.table.stroke.levelOfConciousness",
+          passToFunction: "strokeAssessmentCalculation"
+        },
+        {
+          label: "Best gaze",
+          elementKey: "bestGaze",
+          fqn: "neurological.table.stroke.bestGaze",
+          passToFunction: "strokeAssessmentCalculation"
+        },
+        {
+          label: "Level of conciousness questions",
+          elementKey: "levelOfConciousnessQuestions",
+          fqn: "neurological.table.stroke.levelOfConciousnessQuestions",
+          passToFunction: "strokeAssessmentCalculation"
+        },
+        {
+          label: "Visual",
+          elementKey: "visual",
+          fqn: "neurological.table.stroke.visual",
+          passToFunction: "strokeAssessmentCalculation"
+        },
+        {
+          label: "Level of conciousness commands",
+          elementKey: "levelOfConciousnessCommands",
+          fqn: "neurological.table.stroke.levelOfConciousnessCommands",
+          passToFunction: "strokeAssessmentCalculation"
+        },
+        {
+          label: "Facial palsy",
+          elementKey: "facialPalsy",
+          fqn: "neurological.table.stroke.facialPalsy",
+          passToFunction: "strokeAssessmentCalculation"
+        },
+        {
+          label: "Motor - left arm",
+          elementKey: "motorLeftArm",
+          fqn: "neurological.table.stroke.motorLeftArm",
+          passToFunction: "strokeAssessmentCalculation"
+        },
+        {
+          label: "Sensory",
+          elementKey: "sensory",
+          fqn: "neurological.table.stroke.sensory",
+          passToFunction: "strokeAssessmentCalculation"
+        },
+        {
+          label: "Motor - right arm",
+          elementKey: "motorRightArm",
+          fqn: "neurological.table.stroke.motorRightArm",
+          passToFunction: "strokeAssessmentCalculation"
+        },
+        {
+          label: "Best language",
+          elementKey: "bestLanguage",
+          fqn: "neurological.table.stroke.bestLanguage",
+          passToFunction: "strokeAssessmentCalculation"
+        },
+        {
+          label: "Motor - left leg",
+          elementKey: "motorLeftLeg",
+          fqn: "neurological.table.stroke.motorLeftLeg",
+          passToFunction: "strokeAssessmentCalculation"
+        },
+        {
+          label: "Dysarthria",
+          elementKey: "dysarthria",
+          fqn: "neurological.table.stroke.dysarthria",
+          passToFunction: "strokeAssessmentCalculation"
+        },
+        {
+          label: "Motor - right leg",
+          elementKey: "motorRightLeg",
+          fqn: "neurological.table.stroke.motorRightLeg",
+          passToFunction: "strokeAssessmentCalculation"
+        },
+        {
+          label: "Extinction and inattention",
+          elementKey: "extinctionAndInattention",
+          fqn: "neurological.table.stroke.extinctionAndInattention",
+          passToFunction: "strokeAssessmentCalculation"
+        },
+        {
+          label: "Limb ataxia",
+          elementKey: "limbAtaxia",
+          fqn: "neurological.table.stroke.limbAtaxia",
+          passToFunction: "strokeAssessmentCalculation"
+        },
+        {
+          label: "Stroke Assessment Calculation",
+          elementKey: "strokeAssessmentCalculation",
+          fqn: "neurological.table.stroke.strokeAssessmentCalculation",
+          defaultValue: "0"
+        },
+        {
+          label: "Comments",
+          elementKey: "comments",
+          fqn: "neurological.table.comments"
+        },
+        {
+          label: "<b>Resources</b><p>Morse Fall Score <a target=\'_blank\' href=\'https://google.ca\'>external link</a></p><p>Mini-mental state examination (MMSE) <a target=\'_blank\' href=\'https://google.ca\'>external link</a></p>",
+          elementKey: "resources",
+          fqn: "neurological.table.resources"
+        }
+      ],
+      generated: "2019-03-31T07:12:02-07:00",
       hasTable: true,
       tables: [
         {
@@ -1155,7 +1542,7 @@ export default function () {
               formColumn: "1"
             },
             {
-              label: "Blurred vision",
+              label: "Eye opening",
               pageDataKey: "neurological",
               level2Key: "table",
               level3Key: "status",
@@ -1197,21 +1584,22 @@ export default function () {
               fsetCol: "1",
               options: [
                 {
-                  text: "0 = Spontaneous"
+                  text: "4 = Spontaneous"
                 },
                 {
-                  text: "1 = To sound"
+                  text: "3 = To sound"
                 },
                 {
                   text: "2 = To pressure"
                 },
                 {
-                  text: "3 = None"
+                  text: "1 = None"
                 },
                 {
                   text: "0 = Non testable"
                 }
               ],
+              passToFunction: "glasgowCalculation",
               dataParent: "neurological.table.glasgowComaScale",
               fqn: "neurological.table.glasgowComaScale.eyeOpening",
               tableKey: "table",
@@ -1247,6 +1635,7 @@ export default function () {
                   text: "0 = Non testable"
                 }
               ],
+              passToFunction: "glasgowCalculation",
               dataParent: "neurological.table.glasgowComaScale",
               fqn: "neurological.table.glasgowComaScale.verbalResponse",
               tableKey: "table",
@@ -1282,23 +1671,30 @@ export default function () {
                   text: "0 = Non testable"
                 }
               ],
+              passToFunction: "glasgowCalculation",
               dataParent: "neurological.table.glasgowComaScale",
               fqn: "neurological.table.glasgowComaScale.bestMotorResponse",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              label: "Total",
+              label: "Glasgow Calculation",
               pageDataKey: "neurological",
               level2Key: "table",
               level3Key: "glasgowComaScale",
-              elementKey: "totalGlasgow",
-              inputType: "calculated",
+              elementKey: "glasgowCalculation",
+              inputType: "calculatedValue",
               tableColumn: "17",
               fsetRow: "4",
               fsetCol: "1",
+              defaultValue: "0",
+              options: [
+                {
+                  text: "=eyeOpening+verbalResponse+bestMotorResponse"
+                }
+              ],
               dataParent: "neurological.table.glasgowComaScale",
-              fqn: "neurological.table.glasgowComaScale.totalGlasgow",
+              fqn: "neurological.table.glasgowComaScale.glasgowCalculation",
               tableKey: "table",
               formColumn: "1"
             },
@@ -1577,6 +1973,7 @@ export default function () {
                   text: "3 = Unresponsive or responds only with reflex"
                 }
               ],
+              passToFunction: "strokeAssessmentCalculation",
               dataParent: "neurological.table.stroke",
               fqn: "neurological.table.stroke.levelOfConciousness",
               tableKey: "table",
@@ -1603,6 +2000,7 @@ export default function () {
                   text: "2 = Forced deviation"
                 }
               ],
+              passToFunction: "strokeAssessmentCalculation",
               dataParent: "neurological.table.stroke",
               fqn: "neurological.table.stroke.bestGaze",
               tableKey: "table",
@@ -1629,6 +2027,7 @@ export default function () {
                   text: "2 = Answers neither question correctly"
                 }
               ],
+              passToFunction: "strokeAssessmentCalculation",
               dataParent: "neurological.table.stroke",
               fqn: "neurological.table.stroke.levelOfConciousnessQuestions",
               tableKey: "table",
@@ -1658,6 +2057,7 @@ export default function () {
                   text: "3 = Complete paralysis of one or both sides"
                 }
               ],
+              passToFunction: "strokeAssessmentCalculation",
               dataParent: "neurological.table.stroke",
               fqn: "neurological.table.stroke.visual",
               tableKey: "table",
@@ -1684,6 +2084,7 @@ export default function () {
                   text: "2 = Performs neither task correctly"
                 }
               ],
+              passToFunction: "strokeAssessmentCalculation",
               dataParent: "neurological.table.stroke",
               fqn: "neurological.table.stroke.levelOfConciousnessCommands",
               tableKey: "table",
@@ -1713,6 +2114,7 @@ export default function () {
                   text: "3 = Complete paralysis of one or both sides"
                 }
               ],
+              passToFunction: "strokeAssessmentCalculation",
               dataParent: "neurological.table.stroke",
               fqn: "neurological.table.stroke.facialPalsy",
               tableKey: "table",
@@ -1745,6 +2147,7 @@ export default function () {
                   text: "4 = No movement"
                 }
               ],
+              passToFunction: "strokeAssessmentCalculation",
               dataParent: "neurological.table.stroke",
               fqn: "neurological.table.stroke.motorLeftArm",
               tableKey: "table",
@@ -1771,6 +2174,7 @@ export default function () {
                   text: "2 = Severe to total sensory loss"
                 }
               ],
+              passToFunction: "strokeAssessmentCalculation",
               dataParent: "neurological.table.stroke",
               fqn: "neurological.table.stroke.sensory",
               tableKey: "table",
@@ -1803,6 +2207,7 @@ export default function () {
                   text: "4 = No movement"
                 }
               ],
+              passToFunction: "strokeAssessmentCalculation",
               dataParent: "neurological.table.stroke",
               fqn: "neurological.table.stroke.motorRightArm",
               tableKey: "table",
@@ -1832,6 +2237,7 @@ export default function () {
                   text: "3 = Mute, global aphasia"
                 }
               ],
+              passToFunction: "strokeAssessmentCalculation",
               dataParent: "neurological.table.stroke",
               fqn: "neurological.table.stroke.bestLanguage",
               tableKey: "table",
@@ -1864,6 +2270,7 @@ export default function () {
                   text: "4 = No movement"
                 }
               ],
+              passToFunction: "strokeAssessmentCalculation",
               dataParent: "neurological.table.stroke",
               fqn: "neurological.table.stroke.motorLeftLeg",
               tableKey: "table",
@@ -1893,6 +2300,7 @@ export default function () {
                   text: "3 = Mute, global aphasia"
                 }
               ],
+              passToFunction: "strokeAssessmentCalculation",
               dataParent: "neurological.table.stroke",
               fqn: "neurological.table.stroke.dysarthria",
               tableKey: "table",
@@ -1925,6 +2333,7 @@ export default function () {
                   text: "4 = No movement"
                 }
               ],
+              passToFunction: "strokeAssessmentCalculation",
               dataParent: "neurological.table.stroke",
               fqn: "neurological.table.stroke.motorRightLeg",
               tableKey: "table",
@@ -1951,6 +2360,7 @@ export default function () {
                   text: "2 = Profound hemi-inattention or extinction"
                 }
               ],
+              passToFunction: "strokeAssessmentCalculation",
               dataParent: "neurological.table.stroke",
               fqn: "neurological.table.stroke.extinctionAndInattention",
               tableKey: "table",
@@ -1977,8 +2387,25 @@ export default function () {
                   text: "2 = Present in two limbs"
                 }
               ],
+              passToFunction: "strokeAssessmentCalculation",
               dataParent: "neurological.table.stroke",
               fqn: "neurological.table.stroke.limbAtaxia",
+              tableKey: "table",
+              formColumn: "1"
+            },
+            {
+              label: "Stroke Assessment Calculation",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              level3Key: "stroke",
+              elementKey: "strokeAssessmentCalculation",
+              inputType: "calculatedValue",
+              tableColumn: "40",
+              fsetRow: "8",
+              fsetCol: "1",
+              defaultValue: "0",
+              dataParent: "neurological.table.stroke",
+              fqn: "neurological.table.stroke.strokeAssessmentCalculation",
               tableKey: "table",
               formColumn: "1"
             },
@@ -2217,7 +2644,7 @@ export default function () {
                           formRow: "7",
                           elements: [
                             {
-                              label: "Blurred vision",
+                              label: "Eye opening",
                               pageDataKey: "neurological",
                               level2Key: "table",
                               level3Key: "status",
@@ -2269,21 +2696,22 @@ export default function () {
                               fsetCol: "1",
                               options: [
                                 {
-                                  text: "0 = Spontaneous"
+                                  text: "4 = Spontaneous"
                                 },
                                 {
-                                  text: "1 = To sound"
+                                  text: "3 = To sound"
                                 },
                                 {
                                   text: "2 = To pressure"
                                 },
                                 {
-                                  text: "3 = None"
+                                  text: "1 = None"
                                 },
                                 {
                                   text: "0 = Non testable"
                                 }
                               ],
+                              passToFunction: "glasgowCalculation",
                               dataParent: "neurological.table.glasgowComaScale",
                               fqn: "neurological.table.glasgowComaScale.eyeOpening",
                               tableKey: "table",
@@ -2350,6 +2778,7 @@ export default function () {
                                   text: "0 = Non testable"
                                 }
                               ],
+                              passToFunction: "glasgowCalculation",
                               dataParent: "neurological.table.glasgowComaScale",
                               fqn: "neurological.table.glasgowComaScale.verbalResponse",
                               tableKey: "table",
@@ -2405,6 +2834,7 @@ export default function () {
                                   text: "0 = Non testable"
                                 }
                               ],
+                              passToFunction: "glasgowCalculation",
                               dataParent: "neurological.table.glasgowComaScale",
                               fqn: "neurological.table.glasgowComaScale.bestMotorResponse",
                               tableKey: "table",
@@ -2416,17 +2846,23 @@ export default function () {
                           formRow: "4",
                           elements: [
                             {
-                              label: "Total",
+                              label: "Glasgow Calculation",
                               pageDataKey: "neurological",
                               level2Key: "table",
                               level3Key: "glasgowComaScale",
-                              elementKey: "totalGlasgow",
-                              inputType: "calculated",
+                              elementKey: "glasgowCalculation",
+                              inputType: "calculatedValue",
                               tableColumn: "17",
                               fsetRow: "4",
                               fsetCol: "1",
+                              defaultValue: "0",
+                              options: [
+                                {
+                                  text: "=eyeOpening+verbalResponse+bestMotorResponse"
+                                }
+                              ],
                               dataParent: "neurological.table.glasgowComaScale",
-                              fqn: "neurological.table.glasgowComaScale.totalGlasgow",
+                              fqn: "neurological.table.glasgowComaScale.glasgowCalculation",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -2699,6 +3135,7 @@ export default function () {
                                   text: "3 = Unresponsive or responds only with reflex"
                                 }
                               ],
+                              passToFunction: "strokeAssessmentCalculation",
                               dataParent: "neurological.table.stroke",
                               fqn: "neurological.table.stroke.levelOfConciousness",
                               tableKey: "table",
@@ -2725,6 +3162,7 @@ export default function () {
                                   text: "2 = Forced deviation"
                                 }
                               ],
+                              passToFunction: "strokeAssessmentCalculation",
                               dataParent: "neurological.table.stroke",
                               fqn: "neurological.table.stroke.bestGaze",
                               tableKey: "table",
@@ -2756,6 +3194,7 @@ export default function () {
                                   text: "2 = Answers neither question correctly"
                                 }
                               ],
+                              passToFunction: "strokeAssessmentCalculation",
                               dataParent: "neurological.table.stroke",
                               fqn: "neurological.table.stroke.levelOfConciousnessQuestions",
                               tableKey: "table",
@@ -2785,6 +3224,7 @@ export default function () {
                                   text: "3 = Complete paralysis of one or both sides"
                                 }
                               ],
+                              passToFunction: "strokeAssessmentCalculation",
                               dataParent: "neurological.table.stroke",
                               fqn: "neurological.table.stroke.visual",
                               tableKey: "table",
@@ -2816,6 +3256,7 @@ export default function () {
                                   text: "2 = Performs neither task correctly"
                                 }
                               ],
+                              passToFunction: "strokeAssessmentCalculation",
                               dataParent: "neurological.table.stroke",
                               fqn: "neurological.table.stroke.levelOfConciousnessCommands",
                               tableKey: "table",
@@ -2845,6 +3286,7 @@ export default function () {
                                   text: "3 = Complete paralysis of one or both sides"
                                 }
                               ],
+                              passToFunction: "strokeAssessmentCalculation",
                               dataParent: "neurological.table.stroke",
                               fqn: "neurological.table.stroke.facialPalsy",
                               tableKey: "table",
@@ -2882,6 +3324,7 @@ export default function () {
                                   text: "4 = No movement"
                                 }
                               ],
+                              passToFunction: "strokeAssessmentCalculation",
                               dataParent: "neurological.table.stroke",
                               fqn: "neurological.table.stroke.motorLeftArm",
                               tableKey: "table",
@@ -2908,6 +3351,7 @@ export default function () {
                                   text: "2 = Severe to total sensory loss"
                                 }
                               ],
+                              passToFunction: "strokeAssessmentCalculation",
                               dataParent: "neurological.table.stroke",
                               fqn: "neurological.table.stroke.sensory",
                               tableKey: "table",
@@ -2945,6 +3389,7 @@ export default function () {
                                   text: "4 = No movement"
                                 }
                               ],
+                              passToFunction: "strokeAssessmentCalculation",
                               dataParent: "neurological.table.stroke",
                               fqn: "neurological.table.stroke.motorRightArm",
                               tableKey: "table",
@@ -2974,6 +3419,7 @@ export default function () {
                                   text: "3 = Mute, global aphasia"
                                 }
                               ],
+                              passToFunction: "strokeAssessmentCalculation",
                               dataParent: "neurological.table.stroke",
                               fqn: "neurological.table.stroke.bestLanguage",
                               tableKey: "table",
@@ -3011,6 +3457,7 @@ export default function () {
                                   text: "4 = No movement"
                                 }
                               ],
+                              passToFunction: "strokeAssessmentCalculation",
                               dataParent: "neurological.table.stroke",
                               fqn: "neurological.table.stroke.motorLeftLeg",
                               tableKey: "table",
@@ -3040,6 +3487,7 @@ export default function () {
                                   text: "3 = Mute, global aphasia"
                                 }
                               ],
+                              passToFunction: "strokeAssessmentCalculation",
                               dataParent: "neurological.table.stroke",
                               fqn: "neurological.table.stroke.dysarthria",
                               tableKey: "table",
@@ -3077,6 +3525,7 @@ export default function () {
                                   text: "4 = No movement"
                                 }
                               ],
+                              passToFunction: "strokeAssessmentCalculation",
                               dataParent: "neurological.table.stroke",
                               fqn: "neurological.table.stroke.motorRightLeg",
                               tableKey: "table",
@@ -3103,6 +3552,7 @@ export default function () {
                                   text: "2 = Profound hemi-inattention or extinction"
                                 }
                               ],
+                              passToFunction: "strokeAssessmentCalculation",
                               dataParent: "neurological.table.stroke",
                               fqn: "neurological.table.stroke.extinctionAndInattention",
                               tableKey: "table",
@@ -3134,8 +3584,25 @@ export default function () {
                                   text: "2 = Present in two limbs"
                                 }
                               ],
+                              passToFunction: "strokeAssessmentCalculation",
                               dataParent: "neurological.table.stroke",
                               fqn: "neurological.table.stroke.limbAtaxia",
+                              tableKey: "table",
+                              formColumn: "1"
+                            },
+                            {
+                              label: "Stroke Assessment Calculation",
+                              pageDataKey: "neurological",
+                              level2Key: "table",
+                              level3Key: "stroke",
+                              elementKey: "strokeAssessmentCalculation",
+                              inputType: "calculatedValue",
+                              tableColumn: "40",
+                              fsetRow: "8",
+                              fsetCol: "1",
+                              defaultValue: "0",
+                              dataParent: "neurological.table.stroke",
+                              fqn: "neurological.table.stroke.strokeAssessmentCalculation",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -3200,7 +3667,126 @@ export default function () {
     respiratory: {
       pageTitle: "Respiratory assessment",
       pageDataKey: "respiratory",
-      generated: "2019-03-28T14:47:17-07:00",
+      pageChildren: [
+        {
+          label: "Name",
+          elementKey: "name",
+          fqn: "respiratory.table.name"
+        },
+        {
+          label: "Profession",
+          elementKey: "profession",
+          fqn: "respiratory.table.profession"
+        },
+        {
+          label: "Day",
+          elementKey: "day",
+          fqn: "respiratory.table.day"
+        },
+        {
+          label: "Time",
+          elementKey: "time",
+          fqn: "respiratory.table.time"
+        },
+        {
+          label: "Patent",
+          elementKey: "patent",
+          fqn: "respiratory.table.airway.patent"
+        },
+        {
+          label: "Obstructed",
+          elementKey: "obstructed",
+          fqn: "respiratory.table.airway.obstructed"
+        },
+        {
+          label: "Oral endotracheal tube",
+          elementKey: "oett",
+          fqn: "respiratory.table.airway.oett"
+        },
+        {
+          label: "Other",
+          elementKey: "otherValue",
+          fqn: "respiratory.table.airway.otherValue"
+        },
+        {
+          elementKey: "otherValue",
+          fqn: "respiratory.table.airway.otherValue"
+        },
+        {
+          label: "Oxygen therapy",
+          elementKey: "oxygenTherapy",
+          fqn: "respiratory.table.airway.oxygenTherapy"
+        },
+        {
+          label: "Oxygen flow",
+          elementKey: "oxygenFlow",
+          fqn: "respiratory.table.airway.oxygenFlow"
+        },
+        {
+          label: "Left upper lung",
+          elementKey: "lul",
+          fqn: "respiratory.table.breath.lul"
+        },
+        {
+          label: "Right upper lung",
+          elementKey: "rul",
+          fqn: "respiratory.table.breath.rul"
+        },
+        {
+          elementKey: "aSpacer",
+          fqn: "respiratory.table.breath.aSpacer"
+        },
+        {
+          label: "Right middle lung",
+          elementKey: "rml",
+          fqn: "respiratory.table.breath.rml"
+        },
+        {
+          label: "Left lower lung",
+          elementKey: "lll",
+          fqn: "respiratory.table.breath.lll"
+        },
+        {
+          label: "Right lower lung",
+          elementKey: "rll",
+          fqn: "respiratory.table.breath.rll"
+        },
+        {
+          label: "Respiratory rhythm",
+          elementKey: "respiratoryRhythm",
+          fqn: "respiratory.table.breath.respiratoryRhythm"
+        },
+        {
+          label: "Respiratory depth",
+          elementKey: "respiratoryDepth",
+          fqn: "respiratory.table.breath.respiratoryDepth"
+        },
+        {
+          label: "Cough",
+          elementKey: "cough",
+          fqn: "respiratory.table.breath.cough"
+        },
+        {
+          label: "Sputum colour",
+          elementKey: "sputumColour",
+          fqn: "respiratory.table.breath.sputumColour"
+        },
+        {
+          elementKey: "aSpacer",
+          fqn: "respiratory.table.breath.aSpacer"
+        },
+        {
+          label: "Sputum comments",
+          elementKey: "sputumComments",
+          fqn: "respiratory.table.breath.sputumComments"
+        },
+        {
+          label: "General comments",
+          elementKey: "generalComments",
+          fqn: "respiratory.table.generalComments"
+        }
+      ],
+      generated: "2019-03-31T07:12:02-07:00",
       hasTable: true,
       tables: [
         {
@@ -4357,7 +4943,167 @@ export default function () {
     cardiovascular: {
       pageTitle: "Cardiovascular assessment",
       pageDataKey: "cardiovascular",
-      generated: "2019-03-28T14:47:17-07:00",
+      pageChildren: [
+        {
+          label: "Name",
+          elementKey: "name",
+          fqn: "cardiovascular.table.name"
+        },
+        {
+          label: "Profession",
+          elementKey: "profession",
+          fqn: "cardiovascular.table.profession"
+        },
+        {
+          label: "Day",
+          elementKey: "day",
+          fqn: "cardiovascular.table.day"
+        },
+        {
+          label: "Time",
+          elementKey: "time",
+          fqn: "cardiovascular.table.time"
+        },
+        {
+          label: "Pulse",
+          elementKey: "pulse",
+          fqn: "cardiovascular.table.pulse"
+        },
+        {
+          label: "Skin appearance",
+          elementKey: "skinAppearance",
+          fqn: "cardiovascular.table.skinAppearance"
+        },
+        {
+          elementKey: "spacer1",
+          fqn: "cardiovascular.table.spacer1"
+        },
+        {
+          label: "Cap refill",
+          elementKey: "labelCapRefill",
+          fqn: "cardiovascular.table.labelCapRefill"
+        },
+        {
+          label: "Temperature",
+          elementKey: "labelTemperature",
+          fqn: "cardiovascular.table.labelTemperature"
+        },
+        {
+          label: "Peripheral edema",
+          elementKey: "labelPeripheral",
+          fqn: "cardiovascular.table.labelPeripheral"
+        },
+        {
+          label: "Nail bed colour",
+          elementKey: "labelNailBed",
+          fqn: "cardiovascular.table.labelNailBed"
+        },
+        {
+          label: "Right hand",
+          elementKey: "lableRight",
+          fqn: "cardiovascular.table.lableRight"
+        },
+        {
+          label: "Left hand",
+          elementKey: "lableLeftHand",
+          fqn: "cardiovascular.table.lableLeftHand"
+        },
+        {
+          label: "Right foot",
+          elementKey: "labelRightFoot",
+          fqn: "cardiovascular.table.labelRightFoot"
+        },
+        {
+          label: "Left foot",
+          elementKey: "labelLeftFoot",
+          fqn: "cardiovascular.table.labelLeftFoot"
+        },
+        {
+          label: "Cap refill: Left hand",
+          elementKey: "capRefillRightHand",
+          fqn: "cardiovascular.table.capRefillRightHand"
+        },
+        {
+          label: "Cap refill: Right foot",
+          elementKey: "capRefillLeftHand",
+          fqn: "cardiovascular.table.capRefillLeftHand"
+        },
+        {
+          label: "Cap refill: Left foot",
+          elementKey: "capRefillRightFoot",
+          fqn: "cardiovascular.table.capRefillRightFoot"
+        },
+        {
+          label: "Temperature: Right hand",
+          elementKey: "capRefillLeftFoot",
+          fqn: "cardiovascular.table.capRefillLeftFoot"
+        },
+        {
+          label: "Temperature: Left hand",
+          elementKey: "temperatureRightHand",
+          fqn: "cardiovascular.table.temperatureRightHand"
+        },
+        {
+          label: "Temperature: Right foot",
+          elementKey: "temperatureLeftHand",
+          fqn: "cardiovascular.table.temperatureLeftHand"
+        },
+        {
+          label: "Temperature: Left foot",
+          elementKey: "temperatureRightFoot",
+          fqn: "cardiovascular.table.temperatureRightFoot"
+        },
+        {
+          label: "Peripheral edema: Right hand",
+          elementKey: "temperatureLeftFoot",
+          fqn: "cardiovascular.table.temperatureLeftFoot"
+        },
+        {
+          label: "Peripheral edema: Left hand",
+          elementKey: "peripheralEdemaRightHand",
+          fqn: "cardiovascular.table.peripheralEdemaRightHand"
+        },
+        {
+          label: "Peripheral edema: Right foot",
+          elementKey: "peripheralEdemaLeftHand",
+          fqn: "cardiovascular.table.peripheralEdemaLeftHand"
+        },
+        {
+          label: "Peripheral edema: Left foot",
+          elementKey: "peripheralEdemaRightFoot",
+          fqn: "cardiovascular.table.peripheralEdemaRightFoot"
+        },
+        {
+          label: "Nail bed colour: Right hand",
+          elementKey: "peripheralEdemaLeftFoot",
+          fqn: "cardiovascular.table.peripheralEdemaLeftFoot"
+        },
+        {
+          label: "Nail bed colour: Left hand",
+          elementKey: "nailBedColourRightHand",
+          fqn: "cardiovascular.table.nailBedColourRightHand"
+        },
+        {
+          label: "Nail bed colour: Right Foot",
+          elementKey: "nailBedColourLeftHand",
+          fqn: "cardiovascular.table.nailBedColourLeftHand"
+        },
+        {
+          label: "Nail bed colour: Left foot",
+          elementKey: "nailBedColourRightFoot",
+          fqn: "cardiovascular.table.nailBedColourRightFoot"
+        },
+        {
+          elementKey: "nailBedColourLeftFoot",
+          fqn: "cardiovascular.table.nailBedColourLeftFoot"
+        },
+        {
+          label: "Comments",
+          elementKey: "comments",
+          fqn: "cardiovascular.table.comments"
+        }
+      ],
+      generated: "2019-03-31T07:12:02-07:00",
       hasTable: true,
       tables: [
         {
@@ -5709,7 +6455,209 @@ export default function () {
     gastrointestinal: {
       pageTitle: "Gastrointestinal assessment",
       pageDataKey: "gastrointestinal",
-      generated: "2019-03-28T14:47:17-07:00",
+      pageChildren: [
+        {
+          label: "Name",
+          elementKey: "name",
+          fqn: "gastrointestinal.table.name"
+        },
+        {
+          label: "Profession",
+          elementKey: "profession",
+          fqn: "gastrointestinal.table.profession"
+        },
+        {
+          label: "Day",
+          elementKey: "day",
+          fqn: "gastrointestinal.table.day"
+        },
+        {
+          label: "Time",
+          elementKey: "time",
+          fqn: "gastrointestinal.table.time"
+        },
+        {
+          label: "Soft",
+          elementKey: "soft",
+          fqn: "gastrointestinal.table.abdomen.soft"
+        },
+        {
+          label: "Tender",
+          elementKey: "tender",
+          fqn: "gastrointestinal.table.abdomen.tender"
+        },
+        {
+          label: "Rigid",
+          elementKey: "rigid",
+          fqn: "gastrointestinal.table.abdomen.rigid"
+        },
+        {
+          label: "Guarding",
+          elementKey: "guarding",
+          fqn: "gastrointestinal.table.abdomen.guarding"
+        },
+        {
+          label: "Distended",
+          elementKey: "distended",
+          fqn: "gastrointestinal.table.abdomen.distended"
+        },
+        {
+          label: "Scars",
+          elementKey: "scars",
+          fqn: "gastrointestinal.table.abdomen.scars"
+        },
+        {
+          label: "Abdominal pain",
+          elementKey: "pain",
+          fqn: "gastrointestinal.table.abdomen.pain"
+        },
+        {
+          label: "If answered yes, please complete the pain assessment",
+          elementKey: "aLabel",
+          fqn: "gastrointestinal.table.abdomen.aLabel"
+        },
+        {
+          label: "Emesis present?",
+          elementKey: "emesisPresent",
+          fqn: "gastrointestinal.table.emesis.emesisPresent"
+        },
+        {
+          label: "Nausea",
+          elementKey: "nausea",
+          fqn: "gastrointestinal.table.emesis.nausea"
+        },
+        {
+          label: "Vomiting",
+          elementKey: "vomiting",
+          fqn: "gastrointestinal.table.emesis.vomiting"
+        },
+        {
+          label: "Emesis colour",
+          elementKey: "colour",
+          fqn: "gastrointestinal.table.emesis.colour"
+        },
+        {
+          label: "Description",
+          elementKey: "description",
+          fqn: "gastrointestinal.table.emesis.description"
+        },
+        {
+          label: "Approximate volume",
+          elementKey: "amount",
+          fqn: "gastrointestinal.table.emesis.amount"
+        },
+        {
+          label: "Difficulty",
+          elementKey: "eating",
+          fqn: "gastrointestinal.table.eatingGroup.eating"
+        },
+        {
+          label: "Reason",
+          elementKey: "reason",
+          fqn: "gastrointestinal.table.eatingGroup.reason"
+        },
+        {
+          label: "NPO since day",
+          elementKey: "npoSinceDate",
+          fqn: "gastrointestinal.table.eatingGroup.npoSinceDate"
+        },
+        {
+          label: "NPO since time",
+          elementKey: "npoSinceTime",
+          fqn: "gastrointestinal.table.eatingGroup.npoSinceTime"
+        },
+        {
+          label: "Stool colour",
+          elementKey: "stoolColour",
+          fqn: "gastrointestinal.table.stool.stoolColour"
+        },
+        {
+          label: "Description",
+          elementKey: "stoolDescription",
+          fqn: "gastrointestinal.table.stool.stoolDescription"
+        },
+        {
+          label: "Amount",
+          elementKey: "stoolAmount",
+          fqn: "gastrointestinal.table.stool.stoolAmount"
+        },
+        {
+          label: "Source",
+          elementKey: "stoolSource",
+          fqn: "gastrointestinal.table.stool.stoolSource"
+        },
+        {
+          label: "Normal",
+          elementKey: "normal",
+          fqn: "gastrointestinal.table.bowel.normal"
+        },
+        {
+          label: "Constipation",
+          elementKey: "constipation",
+          fqn: "gastrointestinal.table.bowel.constipation"
+        },
+        {
+          label: "Diarrhea",
+          elementKey: "diarrhea",
+          fqn: "gastrointestinal.table.bowel.diarrhea"
+        },
+        {
+          label: "Melena",
+          elementKey: "melena",
+          fqn: "gastrointestinal.table.bowel.melena"
+        },
+        {
+          label: "Incontinent",
+          elementKey: "incontinent",
+          fqn: "gastrointestinal.table.bowel.incontinent"
+        },
+        {
+          label: "Last bowel movement",
+          elementKey: "lastBm",
+          fqn: "gastrointestinal.table.bowel.lastBm"
+        },
+        {
+          label: "None",
+          elementKey: "bsNone",
+          fqn: "gastrointestinal.table.bSounds.bsNone"
+        },
+        {
+          label: "LUQ",
+          elementKey: "bsLUQ",
+          fqn: "gastrointestinal.table.bSounds.bsLUQ"
+        },
+        {
+          label: "RUQ",
+          elementKey: "bsRUQ",
+          fqn: "gastrointestinal.table.bSounds.bsRUQ"
+        },
+        {
+          label: "LLQ",
+          elementKey: "bsLLQ",
+          fqn: "gastrointestinal.table.bSounds.bsLLQ"
+        },
+        {
+          label: "RLQ",
+          elementKey: "bsRLQ",
+          fqn: "gastrointestinal.table.bSounds.bsRLQ"
+        },
+        {
+          label: "Hypoactive",
+          elementKey: "hypoactive",
+          fqn: "gastrointestinal.table.bSounds.hypoactive"
+        },
+        {
+          label: "Hyperactive",
+          elementKey: "hyperactive",
+          fqn: "gastrointestinal.table.bSounds.hyperactive"
+        },
+        {
+          label: "Comments",
+          elementKey: "comments",
+          fqn: "gastrointestinal.table.stool.comments"
+        }
+      ],
+      generated: "2019-03-31T07:12:02-07:00",
       hasTable: true,
       tables: [
         {

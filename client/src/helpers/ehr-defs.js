@@ -35,3 +35,26 @@ export function getFieldSetCells (pageKey, tableIndex, fieldSetKey) {
   let fieldSet = cells.filter(cell => cell.level3Key === fieldSetKey && cell.inputType === 'checkbox')
   return fieldSet
 }
+
+export function getChildElements (pageKey, filterKey, filterValue, desiredProperty) {
+  let pageDef = pageDefs[pageKey]
+  let children = pageDef.pageChildren.filter( ch => ch[filterKey] === filterValue)
+  if(desiredProperty){
+    children = children.map( ch => ch[desiredProperty])
+  }
+  return children
+}
+
+export function getDefaultValue (def) {
+  let pageDataKey = def.pageDataKey
+  let elementKey = def.elementKey
+  let filterKey = 'elementKey'
+  let pd = getChildElements(pageDataKey, filterKey, elementKey, 'defaultValue')
+  let dV = ''
+  if(pd.length > 0) {
+    dV = pd[0]
+    try { dV = parseInt(dV)} catch(e) {/* do nothing */}
+  }
+  console.log('EhrHelp.getDefaultValue', elementKey, dV)
+  return dV
+}
