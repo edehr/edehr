@@ -21,6 +21,7 @@ import EhrPageTable from '../components/EhrPageTable'
 import EventBus from '../../helpers/event-bus'
 import { PAGE_DATA_REFRESH_EVENT, SHOW_TABLE_DIALOG_EVENT } from '../../helpers/event-bus'
 import EhrDialogForm from '../components/EhrDialogForm.vue'
+import { getPageDefinition } from '../../helpers/ehr-defs'
 
 export default {
   name: 'home',
@@ -49,7 +50,7 @@ export default {
   },
   computed: {
     uiProps () {
-      return this.ehrHelp ? this.ehrHelp.getPageDefinition(this.pageDataKey) : {tables:[]}
+      return getPageDefinition(this.pageDataKey)
     },
     refreshData () {
       this.refresh()

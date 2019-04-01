@@ -91,3 +91,6 @@ The server is a Node Express application supported by a MongoDB. It depends on a
 
 ## Database
 The MongoDB is served from a Docker image.
+
+## Documentation
+See the various readme files in the ```docs``` directory.

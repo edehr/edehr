@@ -1,6 +1,7 @@
 import { setApiError } from '../../../helpers/ehr-utills'
 import MedOrder from './med-entity'
 import MarEntity from './mar-entity'
+import { getPageDefinition } from '../../../helpers/ehr-defs'
 
 export const MAR_PAGE_KEY = 'medAdminRec'
 export const MED_ORDERS_PAGE_KEY = 'medicationOrders'
@@ -52,7 +53,7 @@ export default class MarHelper {
    * @return {*}
    */
   getPageDef_Mar () {
-    return this.ehrHelp.getPageDefinition(MAR_PAGE_KEY)
+    return getPageDefinition(MAR_PAGE_KEY)
   }
 
   /**
