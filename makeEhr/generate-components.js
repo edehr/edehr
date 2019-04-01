@@ -49,7 +49,7 @@ function outside () {
   const outsideDefs = require('./raw_data/outsideDefs')
   flushDefs(outsideDefs)
   var outfilename = pathUtil.join(destRouteFiles, 'outsideRoutes.js')
-  makeRoutes(outsideDefs, 'outside', './outside/views',  outfilename)
+  makeRoutes(outsideDefs, 'outside', outfilename)
 }
 
 function inside () {
@@ -66,7 +66,7 @@ function inside () {
   makeMenu(tree, outfilename)
   outfilename = pathUtil.join(destRouteFiles, 'insideRoutes.js')
   // make the routing
-  makeRoutes(insideDefs, 'inside', './inside/views', outfilename)
+  makeRoutes(insideDefs, 'inside', outfilename)
 }
 
 function flushDefs (defs, forInside) {
@@ -81,11 +81,14 @@ function flushDefs (defs, forInside) {
     // the first part past '/ehr/' is the top level menu item name ...
     if (forInside) {
       def.topLevel = def.fullPath.split('/')[2]
+      def.componentPath = def.generateComponent === 'custom' ? './inside/custom' : './inside/views'
+    } else {
+      def.componentPath = './outside/views'
     }
   })
 }
 
-function makeRoutes (defs, layout, cPath, outfilename) {
+function makeRoutes (defs, layout, outfilename) {
   var routes = []
   var s1 = '    '
   var s2 = '      '
@@ -94,13 +97,14 @@ function makeRoutes (defs, layout, cPath, outfilename) {
   routes.push('  return [')
   var parts = []
   defs.forEach(def => {
+    console.log(def.componentName, def.componentPath)
     var rt = ''
     rt += `${s1}{\n`
     rt += `${s2}path: '${def.fullPath}',\n`
     rt += `${s2}name: '${def.routeName}',\n`
     rt += `${s2}component: () =>\n`
     rt += `${s3}import(/* webpackChunkName: "chunk-[request][index]" */`
-    rt += ` '${cPath}/${def.componentName}.vue'),\n`
+    rt += ` '${def.componentPath}/${def.componentName}.vue'),\n`
     rt += `${s2}meta: { layout: '${layout}', label: '${def.label}', topLevel: '${def.topLevel}' }\n`
     rt += `${s1}}`
     parts.push(rt)
@@ -108,7 +112,7 @@ function makeRoutes (defs, layout, cPath, outfilename) {
   routes.push(parts.join(',\n'))
   routes.push('  ]\n' + '}\n')
   var pathOutput = routes.join('\n')
-  // console.log('write file with routes',outfilename)
+  console.log('write file with routes',outfilename)
   fs.writeFileSync(outfilename, pathOutput, 'utf8')
 }
 function findTreeItem (def, tree) {

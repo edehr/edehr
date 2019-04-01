@@ -14,7 +14,8 @@
     "dataName": "patient",
     "fullPath": "/ehr/patient",
     "title": "Patient",
-    "topLevel": "patient"
+    "topLevel": "patient",
+    "componentPath": "./inside/views"
   },
   "children": [
     {
@@ -33,7 +34,8 @@
         "dataName": "demographics",
         "fullPath": "/ehr/patient/demographics",
         "title": "Demographics",
-        "topLevel": "patient"
+        "topLevel": "patient",
+        "componentPath": "./inside/views"
       },
       "children": []
     },
@@ -53,7 +55,8 @@
         "dataName": "allergies",
         "fullPath": "/ehr/patient/allergies",
         "title": "Allergies",
-        "topLevel": "patient"
+        "topLevel": "patient",
+        "componentPath": "./inside/views"
       },
       "children": []
     },
@@ -74,7 +77,8 @@
         "dataName": "history",
         "fullPath": "/ehr/patient/history",
         "title": "History",
-        "topLevel": "patient"
+        "topLevel": "patient",
+        "componentPath": "./inside/views"
       },
       "children": [
         {
@@ -93,7 +97,8 @@
             "dataName": "medical",
             "fullPath": "/ehr/patient/history/medical",
             "title": "Medical",
-            "topLevel": "patient"
+            "topLevel": "patient",
+            "componentPath": "./inside/views"
           },
           "children": []
         },
@@ -113,7 +118,8 @@
             "dataName": "psychosocial",
             "fullPath": "/ehr/patient/history/psychosocial",
             "title": "Psychosocial",
-            "topLevel": "patient"
+            "topLevel": "patient",
+            "componentPath": "./inside/views"
           },
           "children": []
         },
@@ -133,7 +139,8 @@
             "dataName": "surgical",
             "fullPath": "/ehr/patient/history/surgical",
             "title": "Surgical",
-            "topLevel": "patient"
+            "topLevel": "patient",
+            "componentPath": "./inside/views"
           },
           "children": []
         },
@@ -153,7 +160,8 @@
             "dataName": "immunization",
             "fullPath": "/ehr/patient/history/immunization",
             "title": "Immunization",
-            "topLevel": "patient"
+            "topLevel": "patient",
+            "componentPath": "./inside/views"
           },
           "children": []
         },
@@ -173,7 +181,8 @@
             "dataName": "familyHistory",
             "fullPath": "/ehr/patient/history/family-history",
             "title": "Family History",
-            "topLevel": "patient"
+            "topLevel": "patient",
+            "componentPath": "./inside/views"
           },
           "children": []
         }
@@ -195,7 +204,8 @@
         "dataName": "careTeam",
         "fullPath": "/ehr/patient/care-team",
         "title": "Care Team",
-        "topLevel": "patient"
+        "topLevel": "patient",
+        "componentPath": "./inside/views"
       },
       "children": []
     },
@@ -215,7 +225,8 @@
         "dataName": "pastAppointments",
         "fullPath": "/ehr/patient/past-appointments",
         "title": "Past Appointments",
-        "topLevel": "patient"
+        "topLevel": "patient",
+        "componentPath": "./inside/views"
       },
       "children": []
     }
@@ -235,7 +246,8 @@
     "dataName": "current",
     "fullPath": "/ehr/current",
     "title": "Current",
-    "topLevel": "current"
+    "topLevel": "current",
+    "componentPath": "./inside/views"
   },
   "children": [
     {
@@ -254,7 +266,8 @@
         "dataName": "visitDetails",
         "fullPath": "/ehr/current/visit-details",
         "title": "Visit Details",
-        "topLevel": "current"
+        "topLevel": "current",
+        "componentPath": "./inside/views"
       },
       "children": []
     },
@@ -274,7 +287,8 @@
         "dataName": "vitalSigns",
         "fullPath": "/ehr/current/vital-signs",
         "title": "Vital Signs",
-        "topLevel": "current"
+        "topLevel": "current",
+        "componentPath": "./inside/custom"
       },
       "children": []
     },
@@ -294,7 +308,8 @@
         "fullPath": "/ehr/current/fluid-balance",
         "title": "Fluid Balance",
         "redirect": "",
-        "topLevel": "current"
+        "topLevel": "current",
+        "componentPath": "./inside/views"
       },
       "children": []
     },
@@ -313,7 +328,8 @@
         "dataName": "assessments",
         "fullPath": "/ehr/current/assessments",
         "title": "Assessments",
-        "topLevel": "current"
+        "topLevel": "current",
+        "componentPath": "./inside/views"
       },
       "children": [
         {
@@ -332,7 +348,8 @@
             "dataName": "neurological",
             "fullPath": "/ehr/current/assessments/neurological",
             "title": "Neurological",
-            "topLevel": "current"
+            "topLevel": "current",
+            "componentPath": "./inside/views"
           },
           "children": []
         },
@@ -352,7 +369,8 @@
             "dataName": "respiratory",
             "fullPath": "/ehr/current/assessments/respiratory",
             "title": "Respiratory",
-            "topLevel": "current"
+            "topLevel": "current",
+            "componentPath": "./inside/views"
           },
           "children": []
         },
@@ -372,7 +390,8 @@
             "dataName": "cardiovascular",
             "fullPath": "/ehr/current/assessments/cardiovascular",
             "title": "Cardiovascular",
-            "topLevel": "current"
+            "topLevel": "current",
+            "componentPath": "./inside/views"
           },
           "children": []
         },
@@ -392,7 +411,8 @@
             "dataName": "gastrointestinal",
             "fullPath": "/ehr/current/assessments/gastrointestinal",
             "title": "Gastrointestinal",
-            "topLevel": "current"
+            "topLevel": "current",
+            "componentPath": "./inside/views"
           },
           "children": []
         },
@@ -412,7 +432,8 @@
             "dataName": "genitourinary",
             "fullPath": "/ehr/current/assessments/genitourinary",
             "title": "Genitourinary",
-            "topLevel": "current"
+            "topLevel": "current",
+            "componentPath": "./inside/views"
           },
           "children": []
         },
@@ -432,7 +453,8 @@
             "dataName": "musculoskeletal",
             "fullPath": "/ehr/current/assessments/musculoskeletal",
             "title": "Musculoskeletal",
-            "topLevel": "current"
+            "topLevel": "current",
+            "componentPath": "./inside/views"
           },
           "children": []
         },
@@ -452,7 +474,8 @@
             "dataName": "pain",
             "fullPath": "/ehr/current/assessments/pain",
             "title": "Pain",
-            "topLevel": "current"
+            "topLevel": "current",
+            "componentPath": "./inside/views"
           },
           "children": []
         },
@@ -472,7 +495,8 @@
             "dataName": "biopsychosocial",
             "fullPath": "/ehr/current/assessments/biopsychosocial",
             "title": "Biopsychosocial",
-            "topLevel": "current"
+            "topLevel": "current",
+            "componentPath": "./inside/views"
           },
           "children": []
         }
@@ -493,7 +517,8 @@
         "dataName": "noMed",
         "fullPath": "/ehr/current/no-med",
         "title": "No Med",
-        "topLevel": "current"
+        "topLevel": "current",
+        "componentPath": "./inside/views"
       },
       "children": [
         {
@@ -512,7 +537,8 @@
             "dataName": "noMedOrders",
             "fullPath": "/ehr/current/no-med/no-med-orders",
             "title": "No Med Orders",
-            "topLevel": "current"
+            "topLevel": "current",
+            "componentPath": "./inside/views"
           },
           "children": []
         },
@@ -532,7 +558,8 @@
             "dataName": "referrals",
             "fullPath": "/ehr/current/no-med/referrals",
             "title": "Referrals",
-            "topLevel": "current"
+            "topLevel": "current",
+            "componentPath": "./inside/views"
           },
           "children": []
         },
@@ -552,7 +579,8 @@
             "dataName": "labRequisitions",
             "fullPath": "/ehr/current/no-med/lab-requisitions",
             "title": "Lab Requisitions",
-            "topLevel": "current"
+            "topLevel": "current",
+            "componentPath": "./inside/views"
           },
           "children": []
         }
@@ -574,7 +602,8 @@
         "dataName": "meds",
         "fullPath": "/ehr/current/meds",
         "title": "Meds",
-        "topLevel": "current"
+        "topLevel": "current",
+        "componentPath": "./inside/views"
       },
       "children": []
     },
@@ -594,7 +623,8 @@
         "dataName": "mar",
         "fullPath": "/ehr/current/mar",
         "title": "Mar",
-        "topLevel": "current"
+        "topLevel": "current",
+        "componentPath": "./inside/custom"
       },
       "children": []
     },
@@ -614,7 +644,8 @@
         "dataName": "discharge",
         "fullPath": "/ehr/current/discharge",
         "title": "Discharge",
-        "topLevel": "current"
+        "topLevel": "current",
+        "componentPath": "./inside/views"
       },
       "children": []
     },
@@ -634,7 +665,8 @@
         "dataName": "billing",
         "fullPath": "/ehr/current/billing",
         "title": "Billing",
-        "topLevel": "current"
+        "topLevel": "current",
+        "componentPath": "./inside/views"
       },
       "children": []
     }
@@ -654,7 +686,8 @@
     "dataName": "chart",
     "fullPath": "/ehr/chart",
     "title": "Chart",
-    "topLevel": "chart"
+    "topLevel": "chart",
+    "componentPath": "./inside/views"
   },
   "children": [
     {
@@ -673,7 +706,8 @@
         "dataName": "progressNotes",
         "fullPath": "/ehr/chart/progress-notes",
         "title": "Progress Notes",
-        "topLevel": "chart"
+        "topLevel": "chart",
+        "componentPath": "./inside/views"
       },
       "children": []
     },
@@ -693,7 +727,8 @@
         "dataName": "carePlan",
         "fullPath": "/ehr/chart/care-plan",
         "title": "Care Plan",
-        "topLevel": "chart"
+        "topLevel": "chart",
+        "componentPath": "./inside/views"
       },
       "children": []
     },
@@ -712,7 +747,8 @@
         "dataName": "reports",
         "fullPath": "/ehr/chart/reports",
         "title": "Reports",
-        "topLevel": "chart"
+        "topLevel": "chart",
+        "componentPath": "./inside/views"
       },
       "children": [
         {
@@ -731,7 +767,8 @@
             "dataName": "consults",
             "fullPath": "/ehr/chart/reports/consults",
             "title": "Consults",
-            "topLevel": "chart"
+            "topLevel": "chart",
+            "componentPath": "./inside/views"
           },
           "children": []
         },
@@ -751,7 +788,8 @@
             "dataName": "labReports",
             "fullPath": "/ehr/chart/reports/lab-reports",
             "title": "Lab Reports",
-            "topLevel": "chart"
+            "topLevel": "chart",
+            "componentPath": "./inside/views"
           },
           "children": []
         },
@@ -771,7 +809,8 @@
             "dataName": "diagnosticReports",
             "fullPath": "/ehr/chart/reports/diagnostic-reports",
             "title": "Diagnostic Reports",
-            "topLevel": "chart"
+            "topLevel": "chart",
+            "componentPath": "./inside/views"
           },
           "children": []
         },
@@ -791,7 +830,8 @@
             "dataName": "operativeAnaesthesia",
             "fullPath": "/ehr/chart/reports/operative-anaesthesia",
             "title": "Operative Anaesthesia",
-            "topLevel": "chart"
+            "topLevel": "chart",
+            "componentPath": "./inside/views"
           },
           "children": []
         }
@@ -813,7 +853,8 @@
     "dataName": "external",
     "fullPath": "/ehr/external",
     "title": "External",
-    "topLevel": "external"
+    "topLevel": "external",
+    "componentPath": "./inside/views"
   },
   "children": [
     {
@@ -832,7 +873,8 @@
         "dataName": "assessmentTools",
         "fullPath": "/ehr/external/assessment-tools",
         "title": "Assessment Tools",
-        "topLevel": "external"
+        "topLevel": "external",
+        "componentPath": "./inside/views"
       },
       "children": []
     },
@@ -852,7 +894,8 @@
         "dataName": "codeLookup",
         "fullPath": "/ehr/external/code-lookup",
         "title": "Code Lookup",
-        "topLevel": "external"
+        "topLevel": "external",
+        "componentPath": "./inside/views"
       },
       "children": []
     },
@@ -872,7 +915,8 @@
         "dataName": "diagnosticCodes",
         "fullPath": "/ehr/external/diagnostic-codes",
         "title": "Diagnostic Codes",
-        "topLevel": "external"
+        "topLevel": "external",
+        "componentPath": "./inside/views"
       },
       "children": []
     },
@@ -892,7 +936,8 @@
         "dataName": "interventionCodes",
         "fullPath": "/ehr/external/intervention-codes",
         "title": "Intervention Codes",
-        "topLevel": "external"
+        "topLevel": "external",
+        "componentPath": "./inside/views"
       },
       "children": []
     },
@@ -912,7 +957,8 @@
         "dataName": "caseMixGroup",
         "fullPath": "/ehr/external/case-mix-group",
         "title": "Case Mix Group",
-        "topLevel": "external"
+        "topLevel": "external",
+        "componentPath": "./inside/views"
       },
       "children": []
     }

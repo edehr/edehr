@@ -96,7 +96,7 @@ export function inside () {
       path: '/ehr/current/vital-signs',
       name: 'vital-signs',
       component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/VitalSigns.vue'),
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/custom/VitalSigns.vue'),
       meta: { layout: 'inside', label: 'Vital signs', topLevel: 'current' }
     },
     {
@@ -208,7 +208,7 @@ export function inside () {
       path: '/ehr/current/mar',
       name: 'mar',
       component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/Mar.vue'),
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/custom/Mar.vue'),
       meta: { layout: 'inside', label: 'Medication administration records', topLevel: 'current' }
     },
     {

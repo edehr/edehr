@@ -21,6 +21,7 @@ import EhrPanelHeader from '../components/EhrPanelHeader.vue'
 import EhrPanelContent from '../components/EhrPanelContent.vue'
 import EhrHelp from '../../helpers/ehr-helper'
 import Vitals from '../components/Vitals'
+import { getPageDefinition } from '../../helpers/ehr-defs'
 
 export default {
   name: 'VitalSigns',
@@ -37,7 +38,7 @@ export default {
   },
   computed: {
     uiProps () {
-      return this.ehrHelp ? this.ehrHelp.getPageDefinition(this.pageDataKey) : {}
+      return getPageDefinition(this.pageDataKey)
     }
   },
   created () {
