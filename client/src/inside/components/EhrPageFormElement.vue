@@ -50,6 +50,11 @@
 </template>
 
 <script>
+// TODO instead of all the following todos combine the table element and page form element into one component.
+// TODO the 'label' input type does not appear in the spreadsheet
+// TODO set up and test the label_form input type to also render html
+// TODO add the spacer element
+// TODO implement the fieldRowSet
 import EhrPageFormElement from '../components/EhrPageFormElement.vue'
 import Datepicker from 'vuejs-datepicker'
 import EventBus from '../../helpers/event-bus'

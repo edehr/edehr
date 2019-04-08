@@ -1,10 +1,11 @@
 const fs = require('fs')
+const md5Hex = require('md5-hex')
 const moment = require('moment')
 const pathUtil = require('path')
 const RawInputToDef = require('./generators/raw-input-to-def')
 const transformer = new RawInputToDef()
 const destination = pathUtil.join(process.cwd(), 'generated', 'ehrDefs')
-const timestampsFile = pathUtil.join(process.cwd(), 'timestampsFile.json')
+const hashMapFile = pathUtil.join(process.cwd(), 'hashMapFile.json')
 
 const source = pathUtil.join(process.cwd(), 'raw_data')
 const sourceFiles = ['patient-profile', 'current-visit-1','current-visit-2', 'patient-chart', 'external-resources']
@@ -15,8 +16,8 @@ main()
 
 function main () {
   let timeStamps = {}
-  if(fs.existsSync(timestampsFile)) {
-    let timeStampContent = fs.readFileSync(timestampsFile, 'utf8')
+  if(fs.existsSync(hashMapFile)) {
+    let timeStampContent = fs.readFileSync(hashMapFile, 'utf8')
     try {
       timeStamps = JSON.parse(timeStampContent)
     } catch (err) {
@@ -24,25 +25,26 @@ function main () {
     }
   }
   sourceFiles.forEach(fName => convertFile(fName, timeStamps))
-  fs.writeFileSync(timestampsFile, JSON.stringify(timeStamps, null, 2))
+  fs.writeFileSync(hashMapFile, JSON.stringify(timeStamps, null, 2))
 }
 
-function convertFile (fName, timeStamps) {
+function convertFile (fName, hashMap) {
   let fSrc = pathUtil.join(source, fName) + '.txt'
-  // console.log('read file ', fSrc)
-  let stats = fs.statSync(fSrc)
-  let lastModifiedTime = stats.mtime
-  let previousMTime = timeStamps[fName]
-  if (!moment(lastModifiedTime).isSame(previousMTime)) {
+  let contents = fs.readFileSync(fSrc, 'utf8')
+  let hash = md5Hex(contents)
+  let previousHash = hashMap[fName]
+  if (hash != previousHash) {
+    let stats = fs.statSync(fSrc)
+    let lastModifiedTime = stats.mtime
     console.log('GenerateEhr convert file. Process', fName)
-    processFile(fSrc, fName, lastModifiedTime, timeStamps)
+    processFile(contents, fName, lastModifiedTime)
+    hashMap[fName] = hash
   } else {
     console.log('GenerateEhr convert file. Skip', fName)
   }
 }
 
-function processFile (fSrc, fName, lastModifiedTime, timeStamps) {
-  let contents = fs.readFileSync(fSrc, 'utf8')
+function processFile (contents, fName, lastModifiedTime) {
   // console.log('transform file ', fName)
   var pages = transformer.getDefinitions(contents, lastModifiedTime)
   var results = JSON.stringify(pages, null, 2)
@@ -57,7 +59,6 @@ function processFile (fSrc, fName, lastModifiedTime, timeStamps) {
   let fDest = pathUtil.join(destination, fName) + '.js'
   // console.log('write file ', fDest)
   fs.writeFileSync(fDest, modDef.join('\n'))
-  timeStamps[fName] = lastModifiedTime
 }
 
 function _fixBooleans (contents) {
