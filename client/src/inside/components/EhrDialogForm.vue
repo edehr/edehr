@@ -125,7 +125,7 @@ export default {
 .EhrDialogForm {
   .dialog-wrapper {
     border: 1px solid $grey40;
-    padding: 2em;
+    padding: 2em 2.5em 2.5em;;
   }
 }
 </style>

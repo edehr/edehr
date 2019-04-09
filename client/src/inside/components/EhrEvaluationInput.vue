@@ -3,7 +3,7 @@
     div(class="evaluation-notes")
       textarea(v-model="theNotes")
     div(class="evaluation-controls")
-      ui-button(v-on:buttonClicked="cancelEvaluationNotes") cancel
+      ui-button(v-on:buttonClicked="cancelEvaluationNotes", v-bind:secondary="true") cancel
       ui-button(v-on:buttonClicked="saveEvaluationNotes('saveNext')", class="is-pulled-right")  save and next
       ui-button(v-on:buttonClicked="saveEvaluationNotes('saved')", class="is-pulled-right")  save
 </template>

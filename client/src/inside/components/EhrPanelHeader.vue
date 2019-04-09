@@ -22,7 +22,7 @@ export default {
   background-color: $grey03;
   color: $grey60;
   line-height: 1;
-  padding: 1.25rem 1.5rem 1.5rem;
+  padding: 1.25rem 2rem 1.5rem;
   .title, h1 {
   margin-bottom: 0 !important;
   }
