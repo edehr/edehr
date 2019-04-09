@@ -43,6 +43,7 @@ export default {
   display: inline;
   margin-left: 10px;
   .info-button {
+    background: none;
     color: $grey40;
     padding: 0;
     border: none;

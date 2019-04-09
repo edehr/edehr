@@ -10,16 +10,16 @@
       div(class="is-4 column")
         div(class="textField") Evaluating: {{ panelInfo.studentName }}
         div(class="textField") Last visit: {{ panelInfo.lastVisitDate | moment("YYYY-MM-DD h:mm a") }}
-      div(class="is-3 column")
-        div(class="columns")
-          div(class="classlist_nav_item is-2 column")
-            ui-button(v-on:buttonClicked="previousStudent", class="", :disabled="!enablePrev")
+      div(class="is-2 column")
+        div(class="columns is-pulled-right")
+          div(class="classlist_nav_item column")
+            ui-button(v-on:buttonClicked="previousStudent", class="is-pulled-right", :disabled="!enablePrev")
               span <
             //fas-icon(icon="arrow-left")
           // div(class="classlist_counter column")
           //  span 3/14
-          div(class="classlist_nav_item is-2 column")
-            ui-button(v-on:buttonClicked="nextStudent", class="", :disabled="!enableNext")
+          div(class="classlist_nav_item column")
+            ui-button(v-on:buttonClicked="nextStudent", class="is-pulled-right", :disabled="!enableNext")
               span >
             //fas-icon(icon="arrow-right")
     div(class="evaluation-label")
@@ -108,6 +108,14 @@ export default {
 <style lang="scss" scoped>
 @import '../../scss/definitions';
 
+.classlist_nav_item.column {
+  padding-right: 0;
+}
+
+.classlist_content.columns .column:last-child {
+  padding-right: 0;
+}
+
 .classlist {
   .textField {
     max-width: 30rem;
@@ -123,6 +131,7 @@ export default {
       max-width: 4rem;
     }
   }
+  
   .classlist_counter {
     max-width: 5rem;
   }

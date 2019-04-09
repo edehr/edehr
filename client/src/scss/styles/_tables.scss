@@ -6,7 +6,7 @@ table {
   }
   th,
   .column_label {
-    color: $grey70;
+    color: $grey60;
     font-size: 1em;
   }
   tr {
@@ -14,7 +14,7 @@ table {
     font-size: $bodyFontSize;
   }
   td {
-    padding: 0.5em 1em;
+    padding: 0.5em 1em 0.5em 0;
   }
   &.table_horizontal {
     width: 100%;

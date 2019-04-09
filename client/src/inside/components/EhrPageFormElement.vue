@@ -160,5 +160,10 @@ export default {
     color: $black;
     text-decoration: underline;
   }
+
+  .linkIcon {
+    color: $grey40;
+  }
+
 }
 </style>

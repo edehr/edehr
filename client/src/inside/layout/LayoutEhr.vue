@@ -73,14 +73,6 @@ export default {
     /* max-width: $navWidth; */
     min-width: $navMinWidth;
     max-width: $navMaxWidth;
-    @media #{$mediaQueryIpadLandscape} {
-      min-width: $navMinWidthSmall;
-      max-width: $navMaxWidthSmall;
-    }
-    @media #{$mediaQueryIpadPortrait} {
-      min-width: $navMinWidthSmallest;
-      max-width: $navMaxWidthSmallest;
-    }
     width: 20%; /* of page width */
     padding: 0;
     min-height: $contentMinHeight;
