@@ -50,8 +50,7 @@ export default class EhrHelp {
 
     window.addEventListener('beforeunload', this.windowUnloadHandler)
     EventBus.$on(DIALOG_INPUT_EVENT, this.dialogInputChangeEventHandler)
-    let pfuEventChannel = PAGE_FORM_INPUT_EVENT + pageKey
-    EventBus.$on(pfuEventChannel, this.pageFormInputChangeEventHandler)
+    EventBus.$on(PAGE_FORM_INPUT_EVENT, this.pageFormInputChangeEventHandler)
     EventBus.$on(ACTIVITY_DATA_EVENT, this.activityDataChangeEventHandler)
     EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
   }
@@ -59,8 +58,7 @@ export default class EhrHelp {
   _takeDownEventHandlers (pageKey) {
     window.removeEventListener('beforeunload', this.windowUnloadHandler)
     EventBus.$off(DIALOG_INPUT_EVENT, this.dialogInputChangeEventHandler)
-    let pfuEventChannel = PAGE_FORM_INPUT_EVENT + pageKey
-    EventBus.$off(pfuEventChannel, this.pageFormInputChangeEventHandler)
+    EventBus.$off(PAGE_FORM_INPUT_EVENT, this.pageFormInputChangeEventHandler)
     EventBus.$off(ACTIVITY_DATA_EVENT, this.activityDataChangeEventHandler)
     EventBus.$off(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
   }
@@ -512,7 +510,7 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
    * @private
    */
   _handleDialogInputChangeEvent (eData) {
-    let def = eData.def
+    let def = eData.element
     let tableKey = def.tableKey
     let elementKey = def.elementKey
     let value = eData.value

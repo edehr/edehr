@@ -14,7 +14,7 @@
             li Gender: &nbsp;
               b {{ demographics.gender }}
             li Weight: &nbsp;
-              b &nbsp;
+              b &nbsp;?
         div( class="column EhrBanner__content_row--2")
           ul
             li Code status: &nbsp;
@@ -24,19 +24,19 @@
             li  MRN: &nbsp;
               b {{ demographics.mrn }}
             li MRP: &nbsp;
-              b to link in
+              b {{ decisionMaker }}
             li MRP phone: &nbsp;
-              b to link in
+              b {{ demographics.decisionMakerPhone}}
         div( class="column EhrBanner__content_row--3")
           ul
             li Admitting diagnosis: &nbsp;
-              b {{ visitDetails.admittingDiagnosis }}
+              b {{ visitDetails.diagnosis }}
             li Allergies: &nbsp;
-              b to link in
+              b {{allergies.allergies}}
             li Location: &nbsp;
               b {{ location }}
             li Isolation precautions: &nbsp;
-              b &nbsp;
+              b &nbsp;?
 </template>
 
 <script>
@@ -61,17 +61,22 @@ export default {
     },
     visitDetails () {
       let data = this.$store.getters['ehrData/mergedData'] || {}
-      let asStored = data.visitDetails || {}
+      let asStored = data.visit || {}
+      let input = JSON.parse(JSON.stringify(asStored))
+      return input
+    },
+    allergies () {
+      let data = this.$store.getters['ehrData/mergedData'] || {}
+      let asStored = data.allergies || {}
       let input = JSON.parse(JSON.stringify(asStored))
       return input
     },
     location () {
       var place = ''
-      var locations = this.visitDetails.locations || []
-      console.log('Fix location on banner ', this.visitDetails)
+      var locations = this.visitDetails.table || []
       if (locations.length > 0) {
-        var now = locations[locations.length - 1]
-        place = now.patientLocation
+        var latest = locations[locations.length - 1]
+        place = latest.location
       }
       return place
     },
@@ -79,6 +84,12 @@ export default {
       let d = this.demographics
       let n = `${d.familyName}, ${d.givenName}`
       n += d.middleName ? ' ' + d.middleName : ''
+      return n
+    },
+    decisionMaker () {
+      let d = this.demographics
+      let n = d.decisionMakerName ? d.decisionMakerName : ''
+      n += d.decisionMakerRelationship ? ' (' + d.decisionMakerRelationship + ')' : ''
       return n
     }
   }

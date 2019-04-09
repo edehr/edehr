@@ -1,59 +1,64 @@
 <template lang="pug">
-  div(:id="def.elementKey", class="ehrdfe", :class="formCss(def)")
+  div(:id="element.elementKey", class="ehrdfe", :class="formCss(element)")
 
-    div(v-if="def.inputType === 'form_label'", class="label_wrapper")
-      div(v-html="def.label")
+    div(v-if="element.inputType === 'form_label'", class="label_wrapper")
+      div(v-html="element.label")
 
-    div(v-if="def.inputType === 'spacer'", class="label_wrapper spacer")
+    div(v-if="element.inputType === 'spacer'", class="label_wrapper spacer")
       div &nbsp;
 
-    div(v-if="def.inputType === 'text'", class="text_input_wrapper")
-      label(v-if="!(def.formOption === 'hideLabel')", class="text_input_label") {{def.label}}
-      input(class="input", type="text", v-model="inputVal")
+    div(v-if="element.inputType === 'text'", class="text_input_wrapper")
+      label(v-if="!(element.formOption === 'hideLabel')", class="text_input_label") {{element.label}}
+      input(class="input", v-bind:name="element.elementKey", type="text", v-model="inputVal")
 
-    div(v-if="def.inputType === 'fieldRowSet'", class="fieldset_row_wrapper")
-      label(v-show="!!def.label", class="fieldset_label") {{def.label}} &nbsp;
-      div(v-for="row in def.formFieldSet.rows", :key="row.formRow" class="fieldset_row_row" )
-        ehr-dialog-form-element(v-for="fmEl in row.elements", :key="fmEl.elementKey", :inputs="inputs", :def="fmEl")
-
-    div(v-if="def.inputType === 'fieldset'", class="fieldset_col_wrapper")
-      label(v-show="!!def.label", class="fieldset_label") {{def.label}} &nbsp;
-      div(v-for="row in def.formFieldSet.rows", :key="row.formRow", class="fieldset_row_row" )
-        ehr-dialog-form-element(v-for="fmEl in row.elements", :key="fmEl.elementKey", :inputs="inputs", :def="fmEl")
-
-    div(v-if="def.inputType === 'checkbox'", class="checkbox_wrapper")
-      input(class="checkbox", type="checkbox", v-bind:name="def.elementKey", v-model="inputVal")
-      label(class="checkbox_label", v-bind:for="def.elementKey") {{def.label}}
-
-    div(v-if="def.inputType === 'select'", class="select_wrapper")
-      label(v-if="!(def.formOption === 'hideLabel')", class="select_label") {{def.label}}
-      div(class="select")
-        select(v-bind:name="def.elementKey", v-model="inputVal")
-          option(disabled,value="")
-          option(v-for="option in def.options", v-bind:value="option.text") {{ option.text}}
-
-    div(v-if="def.inputType === 'date'", class="date_wrapper")
-      label {{def.label}}
+    div(v-if="element.inputType === 'date'", class="date_wrapper")
+      label(v-if="!(element.formOption === 'hideLabel')", class="date_label") {{element.label}}
       datepicker(v-model="inputVal")
 
-    div(v-if="def.inputType === 'calculatedValue'", class="computed_wrapper")
-      ehr-calculated-value(:inputs="inputs", :def="def")
-
-    div(v-if="def.inputType === 'day'", class="day_wrapper")
-      label {{def.label}}
+    div(v-if="element.inputType === 'day'", class="day_wrapper")
+      label(v-if="!(element.formOption === 'hideLabel')", class="day_label") {{element.label}}
       input(class="input", type="text", v-model="inputVal")
 
-    div(v-if="def.inputType === 'time'", class="time_wrapper")
-      label {{def.label}}
+    div(v-if="element.inputType === 'time'", class="time_wrapper")
+      label(v-if="!(element.formOption === 'hideLabel')", class="time_label") {{element.label}}
       input(class="input", type="text", v-model="inputVal")
 
-    div(v-if="def.inputType === 'textarea'", class="textarea_wrapper")
-      label {{def.label}}
+    div(v-if="element.inputType === 'textarea'", class="textarea_wrapper")
+      label {{element.label}}
       textarea(v-model="inputVal")
+
+    div(v-if="element.inputType === 'select'", class="select_wrapper")
+      label(v-if="!(element.formOption === 'hideLabel')", class="select_label") {{element.label}}
+      div(class="select")
+        select(v-bind:name="element.elementKey", v-model="inputVal")
+          option(disabled,value="")
+          option(v-for="option in element.options", v-bind:value="option.text") {{ option.text}}
+
+    div(v-if="element.inputType === 'checkbox'", class="checkbox_wrapper")
+      input(class="checkbox", type="checkbox", v-bind:name="element.elementKey", v-model="inputVal")
+      label(v-if="!(element.formOption === 'hideLabel')", class="checkbox_label", v-bind:for="element.elementKey") {{element.label}}
+
+    div(v-if="element.inputType === 'fieldset'", class="fieldset_col_wrapper")
+      label(v-show="!!element.label", class="fieldset_label") {{element.label}} &nbsp;
+      div(v-for="row in element.formFieldSet.rows", :key="row.formRow", class="fieldset_row_row" )
+        ehr-dialog-form-element(v-for="fmEl in row.elements", :key="fmEl.elementKey", :inputs="inputs", :element="fmEl")
+
+    div(v-if="element.inputType === 'fieldRowSet'", class="fieldset_row_wrapper")
+      label(v-show="!!element.label", class="fieldset_label") {{element.label}} &nbsp;
+      div(v-for="row in element.formFieldSet.rows", :key="row.formRow" class="fieldset_row_row" )
+        ehr-dialog-form-element(v-for="fmEl in row.elements", :key="fmEl.elementKey", :inputs="inputs", :element="fmEl")
+
+    div(v-if="element.inputType === 'calculatedValue'", class="computed_wrapper")
+      ehr-calculated-value(:inputs="inputs", :element="element")
 
 </template>
 
 <script>
+/*
+  We try to keep the markup in this file, and the related CSS, to match the sister component: EhrPageFormElement
+  These are different components because they have different behaviours. One works to edit form data and the other
+  works to create a new row in a table.
+*/
 import Datepicker from 'vuejs-datepicker'
 import EhrDialogFormElement from './EhrDialogFormElement.vue'
 import EhrCalculatedValue from './EhrCalculatedValue'
@@ -68,11 +73,6 @@ export default {
     UiInfo,
     Datepicker
   },
-  props: {
-    ehrHelp: { type: Object },
-    inputs: { type: Object },
-    def: { type: Object }
-  },
   data () {
     return {
       inputVal: this.getInputValue,
@@ -80,30 +80,37 @@ export default {
       eventHandler: {}
     }
   },
+  props: {
+    ehrHelp: { type: Object },
+    inputs: { type: Object },
+    element: { type: Object }
+  },
   computed: {
     getInputValue () {
-      let cV = this.def.helper.getInputValue(this.def)
+      // let cV = this.element.helper.getInputValue(this.element)
+      // console.log('getInputValue', cV)
+      cV = this.inputs[this.element.elementKey]
       console.log('getInputValue', cV)
       return cV
     },
     parentData () {
-      if (this.def.parent) {
-        let pVal = this.inputs[this.def.parent.elementKey]
+      if (this.element.parent) {
+        let pVal = this.inputs[this.element.parent.elementKey]
         console.log('this.inputs', this.inputs)
-        console.log('daf.parent', this.def.parent, 'pVal', pVal)
+        console.log('daf.parent', this.element.parent, 'pVal', pVal)
         return pVal
       }
       return ''
     },
     dependentPropertyChangeChannel () {
-      if (this.def.parent) {
-        // console.log('dependentPropertyChangeChannel daf.parent', this.def.parent)
-        return 'radio:' + this.def.parent.elementKey
+      if (this.element.parent) {
+        // console.log('dependentPropertyChangeChannel daf.parent', this.element.parent)
+        return 'radio:' + this.element.parent.elementKey
       }
       return null
     },
     eventChannelBroadcast () {
-      return 'radio:' + this.def.elementKey
+      return 'radio:' + this.element.elementKey
     }
   },
   methods: {
@@ -114,7 +121,7 @@ export default {
       const _this = this
       this.$nextTick(function () {
         // Send an event on our transmission channel with a payload containing this component's value
-        let eData = { key: _this.def, value: _this.inputVal }
+        let eData = { key: _this.element, value: _this.inputVal }
         // console.log('emit event',eData, _this.eventChannelBroadcast)
         EventBus.$emit(_this.eventChannelBroadcast, eData)
       })
@@ -123,7 +130,7 @@ export default {
       // TODO restore the gotHit functionality that can be used to enable text boxes when a checkbox is checked
       // we're receiving an event transmitted by another instance of this component. An instance
       // that has sent a message on the channel this component listens on.
-      this.gotHit = this.def.targetValue === eData.value
+      this.gotHit = this.element.targetValue === eData.value
       // console.log(`On channel ${this.dependentPropertyChangeChannel} from key ${eData.key} got hit? ${this.gotHit}`)
     }
   },
@@ -144,11 +151,11 @@ export default {
   },
   watch: {
     inputVal (val) {
-      console.log('watch inputValue', val, DIALOG_INPUT_EVENT, this.def)
+      console.log('watch inputValue', val, DIALOG_INPUT_EVENT, this.element)
       // Send event when any input changes. The listener (EhrHelper) will collect the changes
       // and be ready to send the changes to the server.
-      let def = this.def
-      EventBus.$emit(DIALOG_INPUT_EVENT, { value: val, def: def })
+      let element = this.element
+      EventBus.$emit(DIALOG_INPUT_EVENT, { value: val, element: element })
     }
   }
 }

@@ -3,12 +3,12 @@
     h3(slot="header") {{ tableDef.addButtonText }}
     div(slot="body", class="region ehr-page-content")
       div(class="input-fieldrow")
-        ehr-dialog-form-element(v-for="fmEl in topRow.elements", :key="fmEl.elementKey", :inputs="inputs", :def="fmEl", :ehrHelp="ehrHelp", class="input-fieldrow-element")
+        ehr-dialog-form-element(v-for="fmEl in topRow.elements", :key="fmEl.elementKey", :inputs="inputs", :element="fmEl", :ehrHelp="ehrHelp", class="input-fieldrow-element")
       hr
-      div(v-for="row in middleRange", class="input-fieldrow")
-        ehr-dialog-form-element(v-for="fmEl in row.elements", :key="fmEl.elementKey", :inputs="inputs", :def="fmEl", :ehrHelp="ehrHelp", class="input-fieldrow-element")
+      div(v-for="midRow in middleRange", class="input-fieldrow")
+        ehr-dialog-form-element(v-for="fmEl in midRow.elements", :key="fmEl.elementKey", :inputs="inputs", :element="fmEl", :ehrHelp="ehrHelp", class="input-fieldrow-element")
       div(class="input-fieldrow")
-        ehr-dialog-form-element(v-for="fmEl in lastRow.elements", :key="fmEl.elementKey", :inputs="inputs", :def="fmEl", :ehrHelp="ehrHelp", class="input-fieldrow-element")
+        ehr-dialog-form-element(v-for="fmEl in lastRow.elements", :key="fmEl.elementKey", :inputs="inputs", :element="fmEl", :ehrHelp="ehrHelp", class="input-fieldrow-element")
     span(slot="save-button") Create and close
 </template>
 
@@ -124,8 +124,11 @@ export default {
 @import '../../scss/definitions';
 .EhrDialogForm {
   .dialog-wrapper {
+    /* Moved the following styling into the AppDialogShell */
+    /*
     border: 1px solid $grey40;
-    padding: 2em 2.5em 2.5em;;
+    padding: 2em;
+    */
   }
 }
 </style>

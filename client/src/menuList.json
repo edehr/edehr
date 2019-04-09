@@ -961,6 +961,27 @@
         "componentPath": "./inside/views"
       },
       "children": []
+    },
+    {
+      "name": "test-page",
+      "label": "Test Page",
+      "routeName": "test-page",
+      "topLevel": "external",
+      "def": {
+        "path": "/ehr/external",
+        "routeName": "test-page",
+        "pageDataKey": "testPage",
+        "label": "Test Page",
+        "redirect": "",
+        "generateComponent": "yes",
+        "componentName": "TestPage",
+        "dataName": "testPage",
+        "fullPath": "/ehr/external/test-page",
+        "title": "Test Page",
+        "topLevel": "external",
+        "componentPath": "./inside/views"
+      },
+      "children": []
     }
   ]
 }

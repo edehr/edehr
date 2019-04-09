@@ -1,10 +1,18 @@
 @import '../definitions';
 
-/* **********
-   *
-   */
+/*
+The datepicker plugin has styling that needs adjustments.
+1. Need to over ride the border to display one.
+2. Need to change the position from absolute to relative so the date picker will appear within a dialog. Otherwise
+the date picker may be chopped and much of it might not be visible.
+ */
+.vdp-datepicker {
+  border: 1px solid $grey40;
+}
+.vdp-datepicker__calendar {
+  position: relative;
+}
 
-//.ehr-page {
 
 .input-fieldrow { /* used in dialog as containers, c */
   display: flex;
