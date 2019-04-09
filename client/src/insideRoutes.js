@@ -322,6 +322,13 @@ export function inside () {
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/CaseMixGroup.vue'),
       meta: { layout: 'inside', label: 'Case mix group', topLevel: 'external' }
+    },
+    {
+      path: '/ehr/external/test-page',
+      name: 'test-page',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/TestPage.vue'),
+      meta: { layout: 'inside', label: 'Test Page', topLevel: 'external' }
     }
   ]
 }

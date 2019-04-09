@@ -30,7 +30,7 @@ const containerElementProperties = [
 
   'formRow',
   'formColumn',
-  'formCSS',
+  'formCss',
   'formOption',
 
   'tableColumn',

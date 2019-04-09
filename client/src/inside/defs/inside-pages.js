@@ -352,6 +352,14 @@ module.exports = function () {
       label: 'Case mix group',
       redirect: '',
       generateComponent: 'yes'
+    },
+    {
+      path: '/ehr/external',
+      routeName: 'test-page',
+      pageDataKey: 'testPage',
+      label: 'Test Page',
+      redirect: '',
+      generateComponent: 'yes'
     }
   ]
 }

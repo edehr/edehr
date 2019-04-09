@@ -4,12 +4,14 @@ import CV2 from '../inside/defs/current-visit-2'
 import PC from '../inside/defs/patient-chart'
 import PP from '../inside/defs/patient-profile'
 import ER from '../inside/defs/external-resources'
+import TP from '../inside/defs/test-page'
 const pageDefsPP = PP()
 const pageDefsCV1 = CV1()
 const pageDefsCV2 = CV2()
 const pageDefsPC = PC()
 const pageDefsExt = ER()
-export const pageDefs = Object.assign(pageDefsPP, pageDefsCV1, pageDefsCV2, pageDefsPC, pageDefsExt)
+const pageDefsTP = TP()
+export const pageDefs = Object.assign(pageDefsPP, pageDefsCV1, pageDefsCV2, pageDefsPC, pageDefsExt, pageDefsTP)
 
 export function getPageDefinition (pageKey) {
   let pageDef = pageDefs[pageKey]

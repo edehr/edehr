@@ -16,8 +16,8 @@
   },
   "homepage": "https://github.com/BCcampus/edehr#readme",
   "scripts": {
-    "database-start": "cd database && docker-compose up -d",
-    "database-stop": "cd database && docker-compose down",
+    "start-db": "cd database && docker-compose up -d",
+    "stop-db": "cd database && docker-compose down",
     "start-client": "cd client && npm run start",
     "start-server": "cd server && npm run start",
     "start-prod-server": "cd server && npm run start-prod",

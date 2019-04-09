@@ -10,9 +10,13 @@
           router-link(:to="{ name: `instructor` }", class="navLink") Dashboard
         li(v-if="showDashboard", class="navItem")
           router-link(:to="{ name: `student` }", class="navLink subMenu") Assignment details
-          ul(class="subNavList")
-            h3 EDEHR19 - Assessments
-            p The description for the assignment would go here. 
+          ul(class="subNavList", v-show="showAssignmentDetails")
+            div(class="columns")
+              div(class="column is-11")
+                h3 EDEHR 19 - Sample
+              div(class="column is-1")
+                ui-close(v-on:close="closeDetails")
+            p The description for the assignment would go here.
             li(class="subNavItem") Erin Johns health case study #2
             li(class="subNavItem") Instructor's notes
         li(class="navItem")
@@ -21,11 +25,16 @@
 </template>
 <script>
 import SystemError from './SystemError'
+import UiClose from '../ui/UiClose'
 
 export default {
   name: 'AppHeader',
-  components: { SystemError },
-
+  components: { SystemError, UiClose },
+  data () {
+    return {
+      showAssignmentDetails: true
+    }
+  },
   computed: {
     home () {
       let isStudent = this.$store.getters['visit/isStudent']
@@ -51,6 +60,11 @@ export default {
     },
     showDashboard () {
       return this.$store.getters['visit/hasDashboard']
+    }
+  },
+  methods: {
+    closeDetails () {
+      this.showAssignmentDetails = false
     }
   }
 }

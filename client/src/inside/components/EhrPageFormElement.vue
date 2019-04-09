@@ -1,8 +1,11 @@
 <template lang="pug">
-  div(:id="element.elementKey", class="ehrdfe", :class="formCss(element)")
+  div(:id="element.elementKey", class="ehrdfe")
 
-    div(v-if="element.inputType === 'label'", class="label_wrapper")
-      label(class="text_label") {{element.label}}
+    div(v-if="element.inputType === 'form_label'", class="label_wrapper")
+      div(v-html="element.label")
+
+    div(v-if="element.inputType === 'spacer'", class="label_wrapper spacer")
+      div &nbsp;
 
     div(v-if="element.inputType === 'text'", class="text_input_wrapper")
       label(v-if="!(element.formOption === 'hideLabel')", class="text_label") {{element.label}}
@@ -20,42 +23,47 @@
       label(v-if="!(element.formOption === 'hideLabel')", class="time_label") {{element.label}}
       input(class="input", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
 
-
     div(v-if="element.inputType === 'textarea'", class="textarea_wrapper")
       label(v-if="!(element.formOption === 'hideLabel')", class="textarea_label") {{element.label}}
       textarea(class="ehr-page-form-textarea", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
 
     div(v-if="element.inputType === 'select'", class="select_wrapper")
       label(v-if="!(element.formOption === 'hideLabel')", class="select_label") {{element.label}}
-      select(v-bind:name="element.elementKey", v-bind:disabled="notEditing", v-model="inputVal")
-        option(disabled,value="")
-        option(v-for="option in element.options", v-bind:value="option.text") {{ option.text}}
+      div(class="select")
+        select(v-bind:name="element.elementKey", v-bind:disabled="notEditing", v-model="inputVal")
+          option(value="")
+          option(v-for="option in element.options", v-bind:value="option.text") {{ option.text}}
 
     div(v-if="element.inputType === 'checkbox'", class="checkbox_wrapper")
       input(class="checkbox", type="checkbox", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
-      label(v-if="!(element.formOption === 'hideLabel')", class="checkbox_label") {{element.label}}
+      label(v-if="!(element.formOption === 'hideLabel')", class="checkbox_label", v-bind:for="element.elementKey") {{element.label}}
 
     div(v-if="element.inputType === 'assetLink'", class="assetLink")
       a(:href="assetUrl()", target="_blank")
         span {{assetName()}} &nbsp;
         fas-icon(class="linkIcon", icon="file")
 
+    //div(v-if="element.inputType === 'fieldRowSet'", class="fieldset_row_wrapper")
     div(v-if="element.inputType === 'fieldset'", class="fieldset_col_wrapper")
       h2(v-show="!!element.label", class="fieldset_label") {{element.label}} &nbsp;
       div(v-for="row in element.formFieldSet.rows", :key="row.formRow" class="fieldset_row_row" )
         div(v-for="fmEl in row.elements", :key="fmEl.elementKey", class="fieldset_row_row_element" )
-          ehr-page-form-element(:element="fmEl", :ehrHelp="ehrHelp" )
+          ehr-page-form-element(:notEditing="notEditing", :element="fmEl", :ehrHelp="ehrHelp", :inputs="inputs" )
 
-    div(style="display:none") {{computedValue}} {{inputVal}}
+    div(v-if="element.inputType === 'calculatedValue'", class="computed_wrapper")
+      ehr-calculated-value(:inputs="inputs", :element="element")
+
+    div(style="display:none") cv {{computedValue}}
 </template>
 
 <script>
-// TODO instead of all the following todos combine the table element and page form element into one component.
-// TODO the 'label' input type does not appear in the spreadsheet
-// TODO set up and test the label_form input type to also render html
-// TODO add the spacer element
-// TODO implement the fieldRowSet
+/*
+  We try to keep the markup in this file, and the related CSS, to match the sister component: EhDialogFormElement.
+  These are different components because they have different behaviours. One works to edit form data and the other
+  works to create a new row in a table.
+*/
 import EhrPageFormElement from '../components/EhrPageFormElement.vue'
+import EhrCalculatedValue from './EhrCalculatedValue'
 import Datepicker from 'vuejs-datepicker'
 import EventBus from '../../helpers/event-bus'
 import { PAGE_FORM_INPUT_EVENT } from '../../helpers/event-bus'
@@ -64,6 +72,7 @@ export default {
   name: 'EhrPageFormElement',
   components: {
     Datepicker,
+    EhrCalculatedValue,
     EhrPageFormElement
   },
   data: function () {
@@ -76,21 +85,17 @@ export default {
     notEditing: { type: Boolean },
     element: { type: Object },
     ehrHelp: { type: Object },
-    initialValue: {
-      // to accept any object type we provide a validator that accepts all types
-      validator: function (value) {
-        return true
-      }
-    }
+    inputs: { type: Object }
   },
   computed: {
     computedValue () {
-      // let key = this.element.elementKey
-      // console.log('EhrPageFormElement initialValue', key,  this.initialValue)
+      let key = this.element.elementKey
+      let initialValue = this.inputs[key]
+      // console.log('EhrPageFormElement computedValue', key, initialValue)
       // TODO check if this approach to initialization is the best. If so the document it here...
       // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-      this.inputVal = this.initialValue
-      return this.initialValue
+      this.inputVal = initialValue
+      return this.inputVal
     }
   },
   methods: {
@@ -126,11 +131,8 @@ export default {
         return
       }
       // Send event when any input changes. The listener (EhrHelper) will collect the changes
-      // and be ready to send the changes to the server.
-      let pageDataKey = this.element.pageDataKey
-      let pfuEventChannel = PAGE_FORM_INPUT_EVENT + pageDataKey
-      // console.log('EhrPageFormElement watch inputValue', pfuEventChannel, val, this.element)
-      EventBus.$emit(pfuEventChannel, { value: val, element: this.element })
+      // and be ready to send the changes to the server. Calculated values also listen.
+      EventBus.$emit(PAGE_FORM_INPUT_EVENT, { value: val, element: this.element })
     }
   },
   mounted: function () {

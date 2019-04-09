@@ -3,9 +3,9 @@
     div(class="evaluation-notes")
       textarea(v-model="theNotes")
     div(class="evaluation-controls")
-      ui-button(v-on:buttonClicked="cancelEvaluationNotes", v-bind:secondary="true") cancel
-      ui-button(v-on:buttonClicked="saveEvaluationNotes('saveNext')", class="is-pulled-right")  save and next
-      ui-button(v-on:buttonClicked="saveEvaluationNotes('saved')", class="is-pulled-right")  save
+      ui-button(v-on:buttonClicked="cancelEvaluationNotes", :disabled="!enableActions", v-bind:secondary="true") cancel
+      ui-button(v-on:buttonClicked="saveEvaluationNotes('saveNext')", :disabled="!enableActions", class="is-pulled-right")  save and next
+      ui-button(v-on:buttonClicked="saveEvaluationNotes('saved')", :disabled="!enableActions", class="is-pulled-right")  save
 </template>
 
 <script>
@@ -15,30 +15,33 @@ export default {
   components: { UiButton },
   data: function () {
     return {
-      theNotes: ''
+      theNotes: '',
+      asStored: ''
     }
   },
   computed: {
+    enableActions () {
+      return this.theNotes !== this.asStored
+    },
     asStoredEvaluationNotes () {
+      console.log('EhrEvaluationInput computed asStoredEvaluationNotes')
       return this.$store.getters['ehrData/evaluationData']
     }
   },
   watch: {
     asStoredEvaluationNotes: function (newData) {
-      // console.log('watch sees new eval data')
-      this.theNotes = newData
+      console.log('EhrEvaluationInput watched')
+      this.setNotes(newData)
     }
   },
   methods: {
+    setNotes (data) {
+      this.theNotes = data
+      this.asStored = data
+    },
     loadDialog: function () {
-      /*
-      The containing component needs to invoke this load method when it shows
-      this component/dialog. Here we get the data and store it for use in the form.
-      It is also possible to use this method to restore the data to what is in the db.
-       */
-      let edata = this.$store.getters['ehrData/evaluationData']
-      // console.log('EhrEvaluationDialog computed eval notes =', edata)
-      this.theNotes = edata
+      /* restore the data to what is in the db. */
+      this.setNotes(this.$store.getters['ehrData/evaluationData'])
     },
     cancelEvaluationNotes: function () {
       this.loadDialog() // reset the data for next time

@@ -2,27 +2,29 @@
   transition(name="dialog")
     div
       div(:class="modalClass")
-      div(class="dialog-wrapper")
-        div(class="dialog-header columns")
-          div(class="dialog-header-element column is-11")
-            slot(name="header") default header
-          div(class="dialog-header-element  column is-1")
-            ui-close(v-on:close="$emit('cancel')")
-        div(class="dialog-container")
-          div(class="dialog-body")
-            slot(name="body") default body
-          div(class="dialog-footer")
-            div(class="dialog-footer-errors")
-              div(v-show="errors.length")
-                p {{ errorDirections }}
-                ul
-                  li(v-for="error in errors") {{ error }}
-            div(class="dialog-footer-content is-pulled-right")
-              ui-button(v-on:buttonClicked="$emit('cancel')", v-bind:secondary="true")
-                slot(name="cancel-button") {{ cancelButtonLabel }}
-              div(class="dialog-footer-button-space", v-show="useSave")
-              ui-button(v-on:buttonClicked="$emit('save')", v-show="useSave")
-                slot(name="save-button") {{ saveButtonLabel }}
+      div(:class="['dialog-wrapper', { moused: moused }]", ref="theDialog", v-bind:style="{ top: top + 'px', left: left + 'px'}")
+        div(class="dialog-move-bar", v-dragged="onDragged")
+        div(class="dialog-inner")
+          div(class="dialog-header columns")
+            div(class="dialog-header-element column is-11")
+              slot(name="header") default header
+            div(class="dialog-header-element  column is-1")
+              ui-close(v-on:close="$emit('cancel')")
+          div(class="dialog-container")
+            div(class="dialog-body")
+              slot(name="body") default body
+            div(class="dialog-footer")
+              div(class="dialog-footer-errors")
+                div(v-show="errors.length")
+                  p {{ errorDirections }}
+                  ul
+                    li(v-for="error in errors") {{ error }}
+              div(class="dialog-footer-content is-pulled-right")
+                ui-button(v-on:buttonClicked="$emit('cancel')", v-bind:secondary="true")
+                  slot(name="cancel-button") {{ cancelButtonLabel }}
+                div(class="dialog-footer-button-space", v-show="useSave")
+                ui-button(v-on:buttonClicked="$emit('save')", v-show="useSave")
+                  slot(name="save-button") {{ saveButtonLabel }}
 </template>
 
 <script>
@@ -67,9 +69,47 @@ export default {
     }
   },
   data () {
-    return {}
+    return {
+      moused: false,
+      top: 0,
+      left: 0
+    }
   },
-  methods: {}
+  methods: {
+    onDragged ({ el, deltaX, deltaY, offsetX, offsetY, clientX, clientY, first, last }) {
+      // Change top/left position based on drag
+      // console.log('on drag', 'deltaX, deltaY, offsetX, offsetY, clientX, clientY, first, last' )
+      // console.log('on drag', deltaX, deltaY, offsetX, offsetY, clientX, clientY, first, last )
+      if (first || last) {
+        // When drag starts 'first' exists. When drag stops 'first' does not exist.
+        // Set the is being moused flag to trigger drag styling
+        this.moused = !!first
+        return
+      }
+      this.left += deltaX
+      this.top += deltaY
+    },
+    reset () {
+      // Set the top/left position based on window and dialog dimensions
+      let d = this.$refs.theDialog
+      let ew = d.clientWidth
+      let eh = d.clientHeight
+      let ww = window.innerWidth
+      let wh = window.innerHeight
+      let mx = (ww - ew) / 2
+      let my = (wh - eh) / 2
+      // console.log('The Dialog ', ww, ew, mx, d)
+      this.left = mx
+      this.top = my
+    }
+  },
+  mounted: function () {
+    // Trigger the reset but wait until all rendering is done in case there are elements that have not yet been sized.
+    const _this = this
+    this.$nextTick(function () {
+      _this.reset()
+    })
+  }
 }
 </script>
 
@@ -89,23 +129,27 @@ export default {
 
 .dialog-wrapper {
   position: fixed;
+  /*
   // See the data properties
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  */
   min-width: 500px;
   max-width: 1024px;
   max-height: 90%;
   overflow: auto;
   z-index: 999;
   background-color: $dialog-wrapper-background-color;
-  border: solid 1px;
+  border: 1px solid $grey40;
   border-radius: 5px;
   box-sizing: border-box;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-  padding: 15px 30px;
 }
 
+.dialog-inner {
+  padding: 2rem 2.5rem 2.5rem 2.5rem;
+}
 .dialog-wrapper.moused {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
@@ -113,7 +157,11 @@ export default {
   overflow: hidden;
 }
 
-.dialog-header {
+.dialog-move-bar {
+  background-color: $grey40;
+  width: 100%;
+  height: 1rem;
+  cursor: move;
 }
 
 .dialog-header-element {

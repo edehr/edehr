@@ -21,7 +21,7 @@ npm run install
 
 Start the database server (in docker container)
 ```
-npm run database-start
+npm run start-db
 ```
 Start the API server. From project root:
 ```
