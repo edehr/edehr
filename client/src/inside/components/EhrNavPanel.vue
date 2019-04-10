@@ -1,7 +1,7 @@
 <template lang="pug">
   div(:class="$options.name")
     div(:class="`${$options.name}__top`")
-      ui-button(v-on:buttonClicked="returnToClicked", :class="`${$options.name}__button`") {{ returnButtonLabel }}
+      ehr-nav-panel-action
     ehr-nav-list(v-for="path in menuList" :key="path.name" :path="path" :level="1")
     ehr-scratch-pad(v-show="isStudent")
 </template>
@@ -9,7 +9,9 @@
 import UiLink from '../../app/ui/UiLink.vue'
 import UiButton from '../../app/ui/UiButton.vue'
 import EhrNavList from './EhrNavList'
+import EhrNavPanelAction from './EhrNavPanelAction'
 import EhrScratchPad from '../components/EhrScratchPad'
+
 
 export default {
   name: 'EhrNavPanel',
@@ -17,42 +19,16 @@ export default {
     UiButton,
     UiLink,
     EhrNavList,
+    EhrNavPanelAction,
     EhrScratchPad
   },
   computed: {
-    returnButtonLabel () {
-      let label = 'Return to LMS'
-      if (this.isStudent) {
-        label = 'Send for evaluation'
-      }
-      return label
-    },
-    lmsName () {
-      return this.$store.getters.lmsName
-    },
     menuList () {
       // read the menu definition stored in the project root src (client/src)
-      var menu = require('../../menuList.json')
-      return menu
+      return require('../../menuList.json')
     },
     isStudent () {
       return this.$store.getters['visit/isStudent']
-    }
-  },
-  methods: {
-    returnToClicked () {
-      if (this.isStudent) {
-        // hard return to the calling LMS
-        window.location = this.$store.getters['visit/returnUrl']
-      } else {
-        // stay within application and use router push
-        var pathname = this.$store.state.instructor.sInstructorReturnUrl
-        console.log(
-          'As instructor return via router push to retain veux state information',
-          pathname
-        )
-        this.$router.push({ path: pathname })
-      }
     }
   }
 }
