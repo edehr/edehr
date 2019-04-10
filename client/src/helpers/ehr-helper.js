@@ -22,11 +22,12 @@ export default class EhrHelp {
     this.pageKey = pageKey
     this.cacheAsString = ''
     this.dialogMap = {}
+    this.$store.commit('system/setCurrentPageKey', pageKey)
     this._loadTransposedColumns(pageKey)
-    this._setupEventHandlers(pageKey)
+    this._setupEventHandlers()
   }
 
-  _setupEventHandlers (pageKey) {
+  _setupEventHandlers () {
     const _this = this
     this.windowUnloadHandler = function (eData) {
       _this.beforeUnloadListener(eData)
@@ -39,13 +40,12 @@ export default class EhrHelp {
     }
     this.activityDataChangeEventHandler = function (eData) {
       eData = eData || {}
-      eData.pageKey = pageKey
       _this._handleActivityDataChangeEvent(eData)
     }
     this.refreshEventHandler = function (eData) {
       // console.log('ehrhelper respond to page refresh')
-      _this.mergedProperty(pageKey)
-      _this._loadTransposedColumns(pageKey)
+      _this._mergedProperty()
+      _this._loadTransposedColumns()
     }
 
     window.addEventListener('beforeunload', this.windowUnloadHandler)
@@ -63,7 +63,8 @@ export default class EhrHelp {
     EventBus.$off(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
   }
 
-  _loadTransposedColumns (pageKey) {
+  _loadTransposedColumns () {
+    let pageKey = this.pageKey
     let pageDef = getPageDefinition(pageKey)
     if (pageDef && pageDef.tables) {
       pageDef.tables.forEach(table => {
@@ -90,8 +91,7 @@ export default class EhrHelp {
 
 
   getAsLoadedPageData (pageKey) {
-    let pageDef = this.prepareAsLoadedData(pageKey)
-    return pageDef.asLoadedData
+    return this.$store.getters['ehrData/asLoadedDataForPageKey'](pageKey)
   }
 
   /**
@@ -99,50 +99,8 @@ export default class EhrHelp {
    *
    * @returns {any}
    */
-  mergedProperty (pageKey) {
-    if (!pageKey) {
-      errorehr('Must provide page key to get mergedPropert')
-      return
-    }
-    // debugehr('MERGED mergedProperty get for', pageKey)
-    // TODO rationalize the following side effect. Need to rework sometime to avoid such things
-    // set this.$store.state.system.currentPageKey ...
-    this.$store.commit('system/setCurrentPageKey', pageKey)
-    let pageDef = this.prepareAsLoadedData(pageKey)
-    return pageDef.asLoadedData
-  }
-
-  prepareAsLoadedData (pageKey) {
-    let pageDef = getPageDefinition(pageKey)
-    let data = this.$store.getters['ehrData/mergedData'] || {}
-    // console.log('prepareAsLoadedData', pageKey, data)
-    let pageData = data[pageKey]
-    if (!pageData) {
-      let defaultPageValue = pageDef.pageData
-      if (!defaultPageValue) {
-        defaultPageValue = {}
-        // debugehr('prepareAsLoadedData page defs did not spec a default so create one ', defaultPageValue)
-      } else {
-        // debugehr('prepareAsLoadedData page default data is ', JSON.stringify(defaultPageValue))
-      }
-      pageData = defaultPageValue
-    }
-    let formDefs = pageDef.page_form
-    if (formDefs) {
-      let rows = formDefs.rows
-      rows.forEach(row => {
-        row.elements.forEach(element => {
-          // console.log(element)
-          let defaultValue = element.defaultValue || ''
-          // TODO see about date, time, and boolean default values
-          if (!pageData[element.elementKey]) {
-            pageData[element.elementKey] = defaultValue
-          }
-        })
-      })
-    }
-    pageDef.asLoadedData = pageData
-    return pageDef
+  _mergedProperty () {
+    return this.getAsLoadedPageData(this.pageKey)
   }
 
   getInputValue (def) {
@@ -208,7 +166,7 @@ export default class EhrHelp {
     EventBus.$emit(channel, eData)
     // add this dialog to the map
     this.dialogMap[key] = dialog
-    debugehr('set helper into each form element', tableDef.tableForm)
+    // console.log('set helper into each form element', tableDef.tableForm)
     this.attachHelperToElements(tableDef.tableForm.rows)
     this._clearDialogInputs(key)
   }
@@ -390,7 +348,6 @@ export default class EhrHelp {
    * Begin editing a page form
    */
   beginEdit (pageKey) {
-    this.$store.commit('system/setCurrentPageKey', pageKey)
     this.$store.commit('system/setEditing', true)
     debugehr('beginEdit', this.pageKey, pageKey)
     let asLoadedData = this.getAsLoadedPageData(pageKey)
@@ -410,12 +367,11 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
    */
   cancelEdit () {
     const _this = this
-    let pageKey = this.$store.state.system.currentPageKey
     this.$store.commit('system/setLoading', true)
     this.$store.dispatch('ehrData/restoreActivityData').then(() => {
       _this.$store.commit('system/setEditing', false)
       _this.$store.commit('system/setLoading', false)
-      _this.mergedProperty(pageKey)
+      _this._mergedProperty()
       EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
     })
     this.pageFormData = undefined
@@ -533,9 +489,10 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
   }
 
   _handleActivityDataChangeEvent (eData) {
-    debugehr('Activity data changed. Trigger a load and refresh')
-    let pageKey = eData.pageKey
-    this.mergedProperty(pageKey)
+    // let pageKey = eData.pageKey
+    let pageKey = this.pageKey
+    console.log('Activity data changed. Trigger a load and refresh', pageKey)
+    this.getAsLoadedPageData(pageKey)
     EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
   }
 }
@@ -544,7 +501,4 @@ function debugehr (msg) {
   var args = Array.prototype.slice.call(arguments)
   args.shift()
   console.log('EHRhlp', msg, args)
-}
-function errorehr (msg, ...args) {
-  console.log('ERROR EHRhlp', msg, args)
 }

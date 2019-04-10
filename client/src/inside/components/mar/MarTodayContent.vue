@@ -57,7 +57,7 @@ export default {
   },
   methods: {
     openMarDialog (period) {
-      console.log('this.$refs.refMarDialog',this.$refs.refMarDialog)
+      // console.log('this.$refs.refMarDialog',this.$refs.refMarDialog)
       this.$refs.refMarDialog.openMarDialog(period)
     },
     saveMar (mar) {

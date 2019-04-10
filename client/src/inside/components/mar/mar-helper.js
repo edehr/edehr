@@ -10,6 +10,7 @@ export const SCHEDULE_FIELDSET = 'schedule'
 export default class MarHelper {
   constructor (ehrHelp) {
     this.ehrHelp = ehrHelp
+    this.pageData = this.ehrHelp.getAsLoadedPageData(MED_ORDERS_PAGE_KEY)
     this._theMedOrders = this.getEhrData_Orders()
     this._marRecords = this.getEhrData_MarRecords()
   }
@@ -21,10 +22,9 @@ export default class MarHelper {
    * @return {*}
    */
   getEhrData_Orders () {
-    let pageData = this.ehrHelp.getAsLoadedPageData(MED_ORDERS_PAGE_KEY)
-    let pageTable = pageData.table
+    let pageTable = this.pageData.table
     let medOrders = pageTable.map(order => new MedOrder(order))
-    console.log('helper med orders', medOrders)
+    // console.log('helper med orders', medOrders)
     return medOrders
   }
 

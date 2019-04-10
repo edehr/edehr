@@ -32,6 +32,8 @@ const actions = {
     return helper.getRequest(context, url).then(response => {
       let sd = response.data.seeddata
       let ehrd = sd.ehrData || {}
+      console.log('seedStore stash sd', sd)
+      console.log('seedStore stash ehrd', ehrd)
       context.commit('_setSeedContent', sd)
       context.commit('_setSeedEhrData', ehrd)
     })

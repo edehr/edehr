@@ -1,5 +1,7 @@
 import { validTimeStr, validDayStr } from '../../../helpers/ehr-utills'
 import PeriodDefs from './period-defs'
+import MedOrder from './med-entity'
+
 
 const ERR_WHO = 'Must provide who administered'
 const ERR_WHEN = 'Time must be 24:00 hour format'
@@ -21,68 +23,41 @@ medication
  */
 export default class MarEntity {
   constructor (whoOrObj, ...[day, when, comment, period]) {
-    this._data = {}
-    if (typeof whoOrObj ==='string') {
-      // console.log('MarEntity create from arguments')
-      this.whoAdministered = whoOrObj
-      this.day = day
-      this.actualTime = when
-      this.comment = comment
-      if(period) {
-        this.setPeriod(period)
-      }
-    } else if (typeof whoOrObj === 'object') {
+    if (typeof whoOrObj ==='string') { // from dialog
+      this._data = {}
+      // console.log('MarEntity create from dialog arguments')
+      this._data.whoAdministered = whoOrObj
+      this._data.day = day
+      this._data.actualTime = when
+      this._data.comment = comment
+      this._data.scheduledTime = period.key
+      this._period = period
+      this._data.medications = period.medsList
+    } else if (typeof whoOrObj === 'object') { // from database
       // console.log('MarEntity create from object', whoOrObj)
-      this.data = whoOrObj
-    } else {
-      // console.log('MarEntity create default')
-      this.data = {
-        whoAdministered: undefined,
-        actualTime: undefined,
-        comment: '',
-        scheduledTime: undefined,
-        day: undefined,
-        medications: []
-      }
+      this._data = whoOrObj
+      this._data.medications = this._data.medications.map( mo => new MedOrder(mo))
+      // console.log('MarEntity  this._data.medications', this._data.medications)
     }
   }
 
   asObjectForApi () {
     let obj = Object.assign({},this._data)
     let medsList = this._period && this._period.medsList ? this._period.medsList : []
-    obj.medications = medsList.map(m => m.data)
-    // console.log('MarEntity asObjectForApi', obj)
+    obj.medications = medsList.map(m => m._data)
+    console.log('MarEntity asObjectForApi', obj)
     return obj
   }
 
-  set data (obj) { this._data = obj }
+  // set data (obj) { this._data = obj }
   get data () { return this._data }
 
-  // NOTE:  can set invalid values ... so use validate to verify
-
-  set whoAdministered (text) { this._data.whoAdministered = text }
   get whoAdministered () { return this._data.whoAdministered }
-
-  set actualTime (text) { this._data.actualTime = text  }
   get actualTime () { return this._data.actualTime}
-
-  set scheduledTime (text) { this._data.scheduledTime = text  }
   get scheduledTime () { return this._data.scheduledTime}
-
-  set comment (text) { this._data.comment = text }
   get comment () { return this._data.comment }
-
-  set day (text) { this._data.day = text }
   get day () { return this._data.day}
-
-  set medications (list) { this._data.medications = list }
   get medications () { return this._data.medications}
-
-  setPeriod (period) {
-    this.scheduledTime = period.key
-    this._period = period
-    this._data.medications = period.medsList
-  }
 
   validate () {
     const _periodDefs = new PeriodDefs()

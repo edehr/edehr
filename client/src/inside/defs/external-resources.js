@@ -850,17 +850,20 @@ export default function () {
         {
           label: "Condition",
           elementKey: "condition",
-          fqn: "diagnosticCodes.table.condition"
+          fqn: "diagnosticCodes.table.condition",
+          dataCaseStudy: "COPD-NL-History of smoking-NL-Hypertension"
         },
         {
           label: "Diagnosis code",
           elementKey: "code",
-          fqn: "diagnosticCodes.table.code"
+          fqn: "diagnosticCodes.table.code",
+          dataCaseStudy: "J44.9-NL-Z86.42-NL-I10"
         },
         {
           label: "Diagnosis type",
           elementKey: "type",
-          fqn: "diagnosticCodes.table.type"
+          fqn: "diagnosticCodes.table.type",
+          dataCaseStudy: "M-NL-3-NL-3"
         },
         {
           label: "Prefix",
@@ -1267,7 +1270,8 @@ export default function () {
         {
           label: "Intervention",
           elementKey: "intervention",
-          fqn: "interventionCodes.table.intervention"
+          fqn: "interventionCodes.table.intervention",
+          dataCaseStudy: "3.GY.10.VA-NL-2.GZ.21.EA"
         },
         {
           label: "Status",

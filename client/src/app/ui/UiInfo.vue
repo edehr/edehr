@@ -3,7 +3,7 @@
     sup(:title="text")
       button(class="info-button", v-on:click="buttonClicked")
         fas-icon(class="info-icon", icon="info-circle")
-    app-dialog(:isModal="false", v-show="showingDialog", :useSave="false", @cancel="cancelDialog")
+    app-dialog(:isModal="false", ref="theDialog", :useSave="false", @cancel="cancelDialog")
       h3(slot="header") Information
       div(slot="body") {{ text }}
   
@@ -19,7 +19,6 @@ export default {
   },
   data: function () {
     return {
-      showingDialog: false
     }
   },
   props: {
@@ -28,9 +27,11 @@ export default {
   methods: {
     buttonClicked: function () {
       this.showingDialog = true
+      this.$refs.theDialog.onOpen()
     },
     cancelDialog: function () {
       this.showingDialog = false
+      this.$refs.theDialog.onClose()
     }
   }
 }

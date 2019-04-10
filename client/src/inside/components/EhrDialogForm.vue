@@ -1,15 +1,16 @@
 <template lang="pug">
-  app-dialog(:class="$options.name", v-if="showDialog", :isModal="true", @cancel="cancelDialog", @save="saveDialog", v-bind:errors="errorList")
-    h3(slot="header") {{ tableDef.addButtonText }}
-    div(slot="body", class="region ehr-page-content")
-      div(class="input-fieldrow")
-        ehr-dialog-form-element(v-for="fmEl in topRow.elements", :key="fmEl.elementKey", :inputs="inputs", :element="fmEl", :ehrHelp="ehrHelp", class="input-fieldrow-element")
-      hr
-      div(v-for="midRow in middleRange", class="input-fieldrow")
-        ehr-dialog-form-element(v-for="fmEl in midRow.elements", :key="fmEl.elementKey", :inputs="inputs", :element="fmEl", :ehrHelp="ehrHelp", class="input-fieldrow-element")
-      div(class="input-fieldrow")
-        ehr-dialog-form-element(v-for="fmEl in lastRow.elements", :key="fmEl.elementKey", :inputs="inputs", :element="fmEl", :ehrHelp="ehrHelp", class="input-fieldrow-element")
-    span(slot="save-button") Create and close
+  div
+    app-dialog(:class="$options.name", :isModal="true", ref="theDialog", @cancel="cancelDialog", @save="saveDialog", v-bind:errors="errorList")
+      h3(slot="header") {{ tableDef.addButtonText }}
+      div(slot="body", class="region ehr-page-content")
+        div(class="input-fieldrow")
+          ehr-dialog-form-element(v-for="fmEl in topRow.elements", :key="fmEl.elementKey", :inputs="inputs", :element="fmEl", :ehrHelp="ehrHelp", class="input-fieldrow-element")
+        hr
+        div(v-for="midRow in middleRange", class="input-fieldrow")
+          ehr-dialog-form-element(v-for="fmEl in midRow.elements", :key="fmEl.elementKey", :inputs="inputs", :element="fmEl", :ehrHelp="ehrHelp", class="input-fieldrow-element")
+        div(class="input-fieldrow")
+          ehr-dialog-form-element(v-for="fmEl in lastRow.elements", :key="fmEl.elementKey", :inputs="inputs", :element="fmEl", :ehrHelp="ehrHelp", class="input-fieldrow-element")
+      span(slot="save-button") Create and close
 </template>
 
 <script>
@@ -25,19 +26,6 @@ export default {
   },
   data: function () {
     return {
-      showDialog: false
-    }
-  },
-  watch: {
-    // whenever question changes, this function will run
-    showDialog: function (newValue) {
-      // console.log('UN -- FREEZEEEEEEE')
-      document.body.style.position = ''
-      if (newValue) {
-        // console.log('When app dialog is shown freeze the body to prevent background scrolling')
-        // console.log('FREEZEEEEEEE')
-        document.body.style.position = 'fixed'
-      }
     }
   },
   props: {
@@ -92,25 +80,24 @@ export default {
       this.ehrHelp.saveDialog(this.pageDataKey, this.tableKey)
     },
     receiveShowHideEvent (eData) {
-      let value = eData.value
-      this.showDialog = value
-      // console.log('EhrDialogForm recieve show hide event', eData,  this.showDialog)
+      if(eData.value) {
+        this.$refs.theDialog.onOpen()
+      } else {
+        this.$refs.theDialog.onClose()
+      }
     }
   },
   mounted: function () {
-    // console.log('EhrDialogForm mounted', this.pageDataKey)
     const _this = this
     let ch = this.ehrHelp.getDialogEventChannel(this.tableKey)
+    console.log('EhrDialogForm add listener', ch)
     this.eventHandler = function (eData) {
+      console.log('EhrDialogForm receiveShowHideEvent', ch)
       _this.receiveShowHideEvent(eData)
     }
     EventBus.$on(ch, this.eventHandler)
   },
   beforeDestroy: function () {
-    // console.log('EhrDialogForm beforeDestroy', this.pageDataKey)
-    // console.log('When app dialog is destroyed restore background scrolling')
-    // console.log('UN -- FREEZEEEEEEE')
-    document.body.style.position = ''
     let ch = this.ehrHelp.getDialogEventChannel(this.tableKey)
     if (this.eventHandler) {
       // console.log('beforeDestroy, remove listener', ch)

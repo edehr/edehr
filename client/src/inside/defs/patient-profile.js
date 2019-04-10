@@ -8,7 +8,8 @@ export default function () {
         {
           label: "First name",
           elementKey: "givenName",
-          fqn: "demographics.givenName"
+          fqn: "demographics.givenName",
+          dataCaseStudy: "Erin"
         },
         {
           label: "Middle name(s)",
@@ -18,37 +19,44 @@ export default function () {
         {
           label: "Last name",
           elementKey: "familyName",
-          fqn: "demographics.familyName"
+          fqn: "demographics.familyName",
+          dataCaseStudy: "Johns"
         },
         {
           label: "Preferred name",
           elementKey: "preferredName",
-          fqn: "demographics.preferredName"
+          fqn: "demographics.preferredName",
+          dataCaseStudy: "Erin"
         },
         {
           label: "Date of birth",
           elementKey: "dateOfBirth",
-          fqn: "demographics.dateOfBirth"
+          fqn: "demographics.dateOfBirth",
+          dataCaseStudy: "09-SEP-19##"
         },
         {
           label: "Age",
           elementKey: "personAge",
-          fqn: "demographics.personAge"
+          fqn: "demographics.personAge",
+          dataCaseStudy: "74"
         },
         {
           label: "Gender",
           elementKey: "gender",
-          fqn: "demographics.gender"
+          fqn: "demographics.gender",
+          dataCaseStudy: "Female"
         },
         {
           label: "Martial status",
           elementKey: "martialStatus",
-          fqn: "demographics.martialStatus"
+          fqn: "demographics.martialStatus",
+          dataCaseStudy: "Widow"
         },
         {
           label: "Primary language",
           elementKey: "languagePrimary",
-          fqn: "demographics.languagePrimary"
+          fqn: "demographics.languagePrimary",
+          dataCaseStudy: "English"
         },
         {
           label: "Religion",
@@ -58,53 +66,63 @@ export default function () {
         {
           label: "Do you identify as an indigenous person?",
           elementKey: "indigenousIdentifyAs",
-          fqn: "demographics.indigenousIdentifyAs"
+          fqn: "demographics.indigenousIdentifyAs",
+          dataCaseStudy: "No"
         },
         {
           label: "Street address",
           elementKey: "streetAddress",
-          fqn: "demographics.streetAddress"
+          fqn: "demographics.streetAddress",
+          dataCaseStudy: "402 Willow St."
         },
         {
           label: "City",
           elementKey: "city",
-          fqn: "demographics.city"
+          fqn: "demographics.city",
+          dataCaseStudy: "Vancouver"
         },
         {
           label: "Country",
           elementKey: "country",
           fqn: "demographics.country",
-          defaultValue: "Canada"
+          defaultValue: "Canada",
+          dataCaseStudy: "Canada"
         },
         {
           label: "Postal code",
           elementKey: "postalCode",
-          fqn: "demographics.postalCode"
+          fqn: "demographics.postalCode",
+          dataCaseStudy: "V3F 9R2"
         },
         {
           label: "No address",
           elementKey: "noAddress",
-          fqn: "demographics.noAddress"
+          fqn: "demographics.noAddress",
+          dataCaseStudy: "(Not ticked)"
         },
         {
           label: "Primary phone number",
           elementKey: "phoneNumber",
-          fqn: "demographics.phoneNumber"
+          fqn: "demographics.phoneNumber",
+          dataCaseStudy: "(778) 555-2947"
         },
         {
           label: "Email",
           elementKey: "emailAddress",
-          fqn: "demographics.emailAddress"
+          fqn: "demographics.emailAddress",
+          dataCaseStudy: "(leave empty)"
         },
         {
           label: "Occupation/student",
           elementKey: "occupationStudent",
-          fqn: "demographics.occupationStudent"
+          fqn: "demographics.occupationStudent",
+          dataCaseStudy: "Retired"
         },
         {
           label: "PHN",
           elementKey: "phn",
-          fqn: "demographics.phn"
+          fqn: "demographics.phn",
+          dataCaseStudy: "12345678"
         },
         {
           label: "MRN",
@@ -119,35 +137,41 @@ export default function () {
         {
           label: "Next of kin name",
           elementKey: "nextOfKinName",
-          fqn: "demographics.nextOfKinName"
+          fqn: "demographics.nextOfKinName",
+          dataCaseStudy: "Thomas Johns"
         },
         {
           label: "Next of kin relationship",
           elementKey: "nextOfKinRelationship",
-          fqn: "demographics.nextOfKinRelationship"
+          fqn: "demographics.nextOfKinRelationship",
+          dataCaseStudy: "Son"
         },
         {
           label: "Next of kin phone",
           elementKey: "nextOfKinPhone",
-          fqn: "demographics.nextOfKinPhone"
+          fqn: "demographics.nextOfKinPhone",
+          dataCaseStudy: "604-555-9865"
         },
         {
           label: "Decision maker name",
           elementKey: "decisionMakerName",
-          fqn: "demographics.decisionMakerName"
+          fqn: "demographics.decisionMakerName",
+          dataCaseStudy: "Thomas Johns"
         },
         {
           label: "Decision maker relationship",
           elementKey: "decisionMakerRelationship",
-          fqn: "demographics.decisionMakerRelationship"
+          fqn: "demographics.decisionMakerRelationship",
+          dataCaseStudy: "Son"
         },
         {
           label: "Decision maker phone",
           elementKey: "decisionMakerPhone",
-          fqn: "demographics.decisionMakerPhone"
+          fqn: "demographics.decisionMakerPhone",
+          dataCaseStudy: "604-555-9865"
         }
       ],
-      generated: "2019-04-10T11:07:54-07:00",
+      generated: "2019-04-10T11:47:18-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -652,10 +676,11 @@ export default function () {
           label: "No known allergies",
           elementKey: "hasNoAllergies",
           fqn: "allergies.hasNoAllergies",
-          defaultValue: "TRUE"
+          defaultValue: "TRUE",
+          dataCaseStudy: "TRUE"
         }
       ],
-      generated: "2019-04-10T11:07:54-07:00",
+      generated: "2019-04-10T11:47:18-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -708,7 +733,7 @@ export default function () {
           fqn: "medical.history"
         }
       ],
-      generated: "2019-04-10T11:07:54-07:00",
+      generated: "2019-04-10T11:47:18-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -739,57 +764,68 @@ export default function () {
         {
           label: "Psychosocial history",
           elementKey: "history",
-          fqn: "psychosocial.history"
+          fqn: "psychosocial.history",
+          dataCaseStudy: "Feels down when she thinks about her lower financial status and her advancing age, and how she is becoming more forgetful and less energetic. Often feels alone and worries about falling and not being able to alert anyone to come to her rescue. Driving is becoming hard for her."
         },
         {
           label: "Diet",
           elementKey: "diet",
-          fqn: "psychosocial.diet"
+          fqn: "psychosocial.diet",
+          dataCaseStudy: "Regular"
         },
         {
           label: "Living situation",
           elementKey: "livingSituation",
-          fqn: "psychosocial.livingSituation"
+          fqn: "psychosocial.livingSituation",
+          dataCaseStudy: "Son lives with her in her house"
         },
         {
           label: "Employment/school",
           elementKey: "employmentSchool",
-          fqn: "psychosocial.employmentSchool"
+          fqn: "psychosocial.employmentSchool",
+          dataCaseStudy: "Retired hairdresser"
         },
         {
           label: "Hobbies",
           elementKey: "hobbies",
-          fqn: "psychosocial.hobbies"
+          fqn: "psychosocial.hobbies",
+          dataCaseStudy: "Bingo, Netflix, playing Solitaire and Scrabble with friends on her iPad"
         },
         {
           label: "Exercise",
           elementKey: "exercise",
-          fqn: "psychosocial.behaviours.exercise"
+          fqn: "psychosocial.behaviours.exercise",
+          dataCaseStudy: "TRUE"
         },
         {
           label: "Exercise frequency",
           elementKey: "exerciseFrequency",
-          fqn: "psychosocial.behaviours.exerciseFrequency"
+          fqn: "psychosocial.behaviours.exerciseFrequency",
+          dataCaseStudy: "< 1 day/week"
         },
         {
           label: "Caffeine use",
           elementKey: "caffeineUse",
-          fqn: "psychosocial.behaviours.caffeineUse"
+          fqn: "psychosocial.behaviours.caffeineUse",
+          dataCaseStudy: "TRUE"
         },
         {
           label: "Caffeine use frequency",
           elementKey: "caffeineUseFrequency",
-          fqn: "psychosocial.behaviours.caffeineUseFrequency"
+          fqn: "psychosocial.behaviours.caffeineUseFrequency",
+          dataCaseStudy: "1-2 cups/day"
         },
         {
           label: "Tobacco use",
           elementKey: "tobaccoUse",
-          fqn: "psychosocial.behaviours.tobaccoUse"
+          fqn: "psychosocial.behaviours.tobaccoUse",
+          dataCaseStudy: "TRUE"
         },
         {
           label: "Tobacco use frequency",
           elementKey: "tobaccoUseFrequency",
-          fqn: "psychosocial.behaviours.tobaccoUseFrequency"
+          fqn: "psychosocial.behaviours.tobaccoUseFrequency",
+          dataCaseStudy: "History of smoking"
         },
         {
           label: "Cannabis use",
@@ -804,12 +840,14 @@ export default function () {
         {
           label: "Alcohol use",
           elementKey: "alcoholUse",
-          fqn: "psychosocial.behaviours.alcoholUse"
+          fqn: "psychosocial.behaviours.alcoholUse",
+          dataCaseStudy: "TRUE"
         },
         {
           label: "Alcohol use frequency",
           elementKey: "alcoholUseFrequency",
-          fqn: "psychosocial.behaviours.alcoholUseFrequency"
+          fqn: "psychosocial.behaviours.alcoholUseFrequency",
+          dataCaseStudy: "Social"
         },
         {
           label: "Substance use",
@@ -822,7 +860,7 @@ export default function () {
           fqn: "psychosocial.behaviours.substanceUseFrequency"
         }
       ],
-      generated: "2019-04-10T11:07:54-07:00",
+      generated: "2019-04-10T11:47:18-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -1289,7 +1327,8 @@ export default function () {
         {
           label: "Surgery/procedure",
           elementKey: "procedure",
-          fqn: "surgical.pastSurgery.procedure"
+          fqn: "surgical.pastSurgery.procedure",
+          dataCaseStudy: "Cesarean section"
         },
         {
           label: "Time elapsed since surgery",
@@ -1322,7 +1361,7 @@ export default function () {
           fqn: "surgical.previous.comments"
         }
       ],
-      generated: "2019-04-10T11:07:54-07:00",
+      generated: "2019-04-10T11:47:18-07:00",
       hasTable: true,
       tables: [
         {
@@ -1726,7 +1765,7 @@ export default function () {
           fqn: "immunization.otherDate3"
         }
       ],
-      generated: "2019-04-10T11:07:54-07:00",
+      generated: "2019-04-10T11:47:18-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -2025,7 +2064,7 @@ export default function () {
           fqn: "familyHistory.history"
         }
       ],
-      generated: "2019-04-10T11:07:54-07:00",
+      generated: "2019-04-10T11:47:18-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -2056,15 +2095,17 @@ export default function () {
         {
           label: "Name",
           elementKey: "name",
-          fqn: "careTeam.teams.name"
+          fqn: "careTeam.teams.name",
+          dataCaseStudy: "Dr. Singh-NL-Dr. Notley-NL-Jason-NL-Jackie-NL-Gurpreet-NL-Alexa-NL-Matt-NL-Serge-NL-Trache-NL-Dr. Hunnicutt-NL-Jim-NL-Gladys-NL-Herman"
         },
         {
           label: "Profession",
           elementKey: "profession",
-          fqn: "careTeam.teams.profession"
+          fqn: "careTeam.teams.profession",
+          dataCaseStudy: "Physician-NL-Physician-NL-Nurse-NL-Nurse-NL-Medical radiograpeor-NL-Medical laboratory technician-NL-Medical radiographer-NL-RN-NL-Physician-NL-RN-NL-Pysiotherapy student-NL-Resp. therapist"
         }
       ],
-      generated: "2019-04-10T11:07:54-07:00",
+      generated: "2019-04-10T11:47:18-07:00",
       hasTable: true,
       tables: [
         {
@@ -2159,35 +2200,41 @@ export default function () {
         {
           label: "Diagnosis",
           elementKey: "diagnosis",
-          fqn: "pastAppointments.encounters.diagnosis"
+          fqn: "pastAppointments.encounters.diagnosis",
+          dataCaseStudy: "(none available)"
         },
         {
           label: "Most responsible person",
           elementKey: "mrp",
-          fqn: "pastAppointments.encounters.mrp"
+          fqn: "pastAppointments.encounters.mrp",
+          dataCaseStudy: "(none available)"
         },
         {
           label: "Date",
           elementKey: "date",
-          fqn: "pastAppointments.outpatientAppointments.date"
+          fqn: "pastAppointments.outpatientAppointments.date",
+          dataCaseStudy: "1 week ago"
         },
         {
           label: "Site",
           elementKey: "site",
-          fqn: "pastAppointments.outpatientAppointments.site"
+          fqn: "pastAppointments.outpatientAppointments.site",
+          dataCaseStudy: "Clinic"
         },
         {
           label: "Reason for visit",
           elementKey: "reasonForVisit",
-          fqn: "pastAppointments.outpatientAppointments.reasonForVisit"
+          fqn: "pastAppointments.outpatientAppointments.reasonForVisit",
+          dataCaseStudy: "Shortness of breath x 24 hrs"
         },
         {
           label: "Diagnosis",
           elementKey: "diagnosis",
-          fqn: "pastAppointments.outpatientAppointments.diagnosis"
+          fqn: "pastAppointments.outpatientAppointments.diagnosis",
+          dataCaseStudy: "COPD"
         }
       ],
-      generated: "2019-04-10T11:07:54-07:00",
+      generated: "2019-04-10T11:47:18-07:00",
       hasTable: true,
       tables: [
         {

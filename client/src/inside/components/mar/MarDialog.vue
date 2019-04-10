@@ -1,28 +1,29 @@
 <template lang="pug">
-  app-dialog( v-show="showMarDialog", :isModal="true", @cancel="closeDialog", @save="saveDialog")
-    h3(slot="header") Add MAR
-    div(slot="body")
-      div
-        div Day: {{currentDay}}
-        div Period: {{activePeriod.name}}
-        div Medications:
-        med-list(:medsList="activePeriod.medsList")
-        div(class="input-fieldrow")
-          div(class="ehrdfe")
-            div(class="text_input_wrapper")
-              label Who administered
-              input(class="input", type="text", v-model="who")
-          div(class="ehrdfe")
-            div(class="text_input_wrapper")
-              label Actual time
-              input(class="input", type="text", v-model="when")
-        div(class="input-fieldrow")
-          div(class="ehrdfe")
-            label Comment
-            div(class="input-element input-element-full")
-              textarea(class="textarea",v-model="comment")
-        div(v-show="errorMesageList.length > 0", class="errorMesageList")
-          li(v-for="error in errorMesageList") {{ error }}
+  div
+    app-dialog(:isModal="true", ref="theDialog", @cancel="closeDialog", @save="saveDialog")
+      h3(slot="header") Add MAR
+      div(slot="body")
+        div
+          div Day: {{currentDay}}
+          div Period: {{activePeriod.name}}
+          div Medications:
+          med-list(:medsList="activePeriod.medsList")
+          div(class="input-fieldrow")
+            div(class="ehrdfe")
+              div(class="text_input_wrapper")
+                label Who administered
+                input(class="input", type="text", v-model="who")
+            div(class="ehrdfe")
+              div(class="text_input_wrapper")
+                label Actual time
+                input(class="input", type="text", v-model="when")
+          div(class="input-fieldrow")
+            div(class="ehrdfe")
+              label Comment
+              div(class="input-element input-element-full")
+                textarea(class="textarea",v-model="comment")
+          div(v-show="errorMesageList.length > 0", class="errorMesageList")
+            li(v-for="error in errorMesageList") {{ error }}
 </template>
 
 <script>
@@ -44,8 +45,7 @@ export default {
       when: '',
       comment: '',
       errorMesageList: [],
-      activePeriod: { name: '', medsList: [] },
-      showMarDialog: false
+      activePeriod: { name: '', medsList: [] }
     }
   },
   props: {
@@ -57,10 +57,10 @@ export default {
       console.log('MarDialog open', period)
       this.comment = this.when = this.who = ''
       this.activePeriod = period
-      this.showMarDialog = true
+      this.$refs.theDialog.onOpen()
     },
     closeDialog: function () {
-      this.showMarDialog = false
+      this.$refs.theDialog.onClose()
     },
     saveDialog: function () {
       let mar = new MarEntity(this.who, this.currentDay, this.when, this.comment, this.activePeriod)

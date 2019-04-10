@@ -64,7 +64,7 @@ const pageChildElementProperties = [
   // 'suffix',
   // 'mandatory',
   // 'validation',
-  // 'dataCaseStudy',
+  'dataCaseStudy',
   // 'helperText',
   'passToFunction',
   // 'dataParent',

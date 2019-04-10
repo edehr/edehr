@@ -23,7 +23,7 @@
           td
             ui-button(v-on:buttonClicked="showEditDialog", :value="item._id")
               fas-icon(icon="edit")
-    app-dialog( v-if="showingDialog", :isModal="true", @cancel="cancelDialog", @save="saveDialog")
+    app-dialog(:isModal="true", ref="theDialog", @cancel="cancelDialog", @save="saveDialog")
       h3(slot="header") {{dialogHeader}}
       div(slot="body")
         div
@@ -60,7 +60,6 @@ export default {
   data () {
     return {
       isRespondingToError: null,
-      showingDialog: false,
       aAssignment: {},
       dialogHeader: '',
       actionType: '',
@@ -115,17 +114,17 @@ export default {
       this.aAssignment = sData
       this.selectedSeed = sData.seedDataId || ''
       this.dialogHeader = 'Edit assignment properties'
-      this.showingDialog = true
+      this.$refs.theDialog.onOpen()
     },
     showCreateDialog: function () {
       this.aAssignment = {}
       this.selectedSeed = ''
       this.actionType = 'create'
       this.dialogHeader = 'Create a new assignment'
-      this.showingDialog = true
+      this.$refs.theDialog.onOpen()
     },
     cancelDialog: function () {
-      this.showingDialog = false
+      this.$refs.theDialog.onClose()
     },
     saveDialog: function () {
       // console.log('saveDialog ', this.actionType, this.aSeed)
@@ -134,7 +133,7 @@ export default {
       let theData = this.aAssignment || '{}'
       // console.log(`Convert seed data field '${theData}' into an object`)
       // theData = JSON.parse(theData)
-      this.showingDialog = false
+      this.$refs.theDialog.onClose()
       if (this.actionType === 'edit') {
         console.log('Assignment saving ', theData)
         let dataIdPlusPayload = { id: this.assignmentId, payload: theData }
