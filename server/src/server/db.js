@@ -7,14 +7,14 @@ export default function (config) {
     const options = config.database.options
     debug('DB URN', uri)
     mongoose
-    .connect(uri, options)
-    .then((conn) => {
-      debug('MongoDB Connected to ' + uri)
-      resolve(conn)
-    })
-    .catch(err => {
-      console.log(err)
-      reject(err)
-    })
+      .connect(uri, options)
+      .then((conn) => {
+        debug('MongoDB Connected to ' + uri)
+        resolve(conn)
+      })
+      .catch(err => {
+        console.log(err)
+        reject(err)
+      })
   })
 }

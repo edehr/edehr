@@ -2,8 +2,8 @@
 const mongoose = require('mongoose')
 const SeedData = mongoose.model('SeedData')
 
-module.exports = function() {
-  return new Promise(function(resolve, reject) {
+module.exports = function () {
+  return new Promise(function (resolve, reject) {
     console.log('Running seeding for ehr seed data')
 
     let defaultDef = {

@@ -59,13 +59,13 @@ export default class BaseController {
   read (id) {
     let self = this
     return this.baseFindOneQuery(id)
-    .populate(self.populate)
-    .then((modelInstance) => {
+      .populate(self.populate)
+      .then((modelInstance) => {
       // console.log('read(id)  ', id, 'this.modelName', this.modelName, 'modelInstance', modelInstance)
-      var response = {}
-      response[this.modelName] = modelInstance
-      return response
-    })
+        var response = {}
+        response[this.modelName] = modelInstance
+        return response
+      })
   }
 
   list () {
@@ -92,19 +92,19 @@ export default class BaseController {
     const filter = {}
     filter['toolConsumer'] = toolConsumerId
     return this.model
-    .deleteMany(filter)
-    .then(() => {
-      return {}
-    })
+      .deleteMany(filter)
+      .then(() => {
+        return {}
+      })
   }
 
   clearAll () {
     console.log('Warning removing all documents from collection ', this.model.modelName)
     return this.model
-    .deleteMany({})
-    .then(() => {
-      return {}
-    })
+      .deleteMany({})
+      .then(() => {
+        return {}
+      })
   }
 
   /**
@@ -137,14 +137,14 @@ export default class BaseController {
       var q = Object.assign({}, self.baseQ, query)
       // console.log('base.findOne q = ', q)
       self.model.findOne(q)
-      .populate(self.populate)
-      .select(fields)
-      .exec()
+        .populate(self.populate)
+        .select(fields)
+        .exec()
       // .then(self.sanitizeData)
-      .then((results) => {
-        resolve(results)
-      })
-      .catch(() => self.complete(reject, 'findone'))
+        .then((results) => {
+          resolve(results)
+        })
+        .catch(() => self.complete(reject, 'findone'))
     })
   }
 
@@ -189,23 +189,23 @@ export default class BaseController {
     // TODO remove this once the /admin route is all set up
     router.delete('/toolConsumer/:id', (req, res) => {
       this
-      .clearConsumer(req.params.id)
-      .then(ok(res))
-      .then(null, fail(res))
+        .clearConsumer(req.params.id)
+        .then(ok(res))
+        .then(null, fail(res))
     })
 
     router.delete('/all/', (req, res) => {
       this
-      .clearAll()
-      .then(ok(res))
-      .then(null, fail(res))
+        .clearAll()
+        .then(ok(res))
+        .then(null, fail(res))
     })
 
     router.delete('/:key', (req, res) => {
       this
-      .delete(req.params.key)
-      .then(ok(res))
-      .then(null, fail(res))
+        .delete(req.params.key)
+        .then(ok(res))
+        .then(null, fail(res))
     })
 
     return router

@@ -30,8 +30,8 @@ var FORCE = false
 // check if the database seeding was performed, can override
 //
 // -------------------------------------------------------------------------
-var checkIntegration = function(name, override) {
-  return new Promise(function(resolve /* reject */) {
+var checkIntegration = function (name, override) {
+  return new Promise(function (resolve /* reject */) {
     if (override) return resolve(true)
     return IntegrationModel.findOne({ module: name })
       .then(row => {
@@ -48,7 +48,7 @@ var checkIntegration = function(name, override) {
   })
 }
 
-function doIntegrations() {
+function doIntegrations () {
   return checkIntegration('consumers', false)
     .then(go => {
       if (go) {
@@ -102,7 +102,7 @@ function doIntegrations() {
     // -------------------------------------------------------------------------
   }
 }
-export default function() {
+export default function () {
   return Promise.resolve()
     .then(() => {
       if (FORCE) {

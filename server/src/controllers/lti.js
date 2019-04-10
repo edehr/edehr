@@ -19,22 +19,22 @@ const AssignmentModel = new AssignmentController()
 const VisitModel = new VisitController()
 
 export default class LTIController {
-  constructor(config) {
+  constructor (config) {
     this.config = config
   }
 
-  initializeApp(app) {
+  initializeApp (app) {
     const _this = this
     this.app = app
     app.lti = this
     return Promise.resolve().then(() => {
-      let strategy = function(req, callback) {
+      let strategy = function (req, callback) {
         _this.strategyVerify(req, callback)
       }
       passport.use('ltiStrategy', new CustomStrategy(strategy))
       // serialize the user object into the session. Provide a function that
       // receives a user object and a done(err,id) callback
-      passport.serializeUser(function(user, done) {
+      passport.serializeUser(function (user, done) {
         // console.log('SERIALIZE user', user.user_id)
         if (user && user._id) {
           let id = user._id.valueOf()
@@ -47,7 +47,7 @@ export default class LTIController {
       })
       // deserializeUser is to take the user id stored in the session and
       // go find the user object
-      passport.deserializeUser(function(id, done) {
+      passport.deserializeUser(function (id, done) {
         // console.log('DESERIALIZE id', id)
         UserModel.read(id).then(results => {
           let user = results.user
@@ -66,7 +66,7 @@ export default class LTIController {
    * @param req
    * @param callback
    */
-  strategyVerify(req, callback) {
+  strategyVerify (req, callback) {
     const _this = this
     if (!_this.validateLti(req.body, callback)) {
       return
@@ -90,7 +90,7 @@ export default class LTIController {
         .then(() => {
           var provider = new lti.Provider(ltiData, req.toolConsumer.oauth_consumer_secret)
           debug('strategyVerify validate msg with provider')
-          provider.valid_request(req, function(err, isValid) {
+          provider.valid_request(req, function (err, isValid) {
             if (err) {
               debug('stratefyVerify lti provider verify send error: ' + err.message)
               return callback(new ParameterError(err.message), null)
@@ -108,9 +108,9 @@ export default class LTIController {
     }
   }
 
-  validateLti(ltiData, callback) {
+  validateLti (ltiData, callback) {
     debug('strategyVerify validate request ')
-    function invalid(message) {
+    function invalid (message) {
       callback(new ParameterError(message))
       return false
     }
@@ -120,7 +120,7 @@ export default class LTIController {
       )
     }
     if (!ltiData.user_id) {
-      return invalid("EdEHR requires the LTI tool consumer to provide a user's id: user_id.")
+      return invalid('EdEHR requires the LTI tool consumer to provide a user\'s id: user_id.')
     }
     if (!ltiVersions().includes(ltiData.lti_version)) {
       return invalid(
@@ -135,7 +135,7 @@ export default class LTIController {
     let role = new Role(ltiData.roles)
     if (!role.isValid) {
       return invalid(
-        "EdEHR requires the LTI tool consumer to provide the user's roles. And these must be one of student, faculty, instructor or staff. " +
+        'EdEHR requires the LTI tool consumer to provide the user\'s roles. And these must be one of student, faculty, instructor or staff. ' +
           ltiData.roles
       )
     }
@@ -153,7 +153,7 @@ export default class LTIController {
     return true
   }
 
-  _findCreateUser(userId, toolConsumerId, ltiData) {
+  _findCreateUser (userId, toolConsumerId, ltiData) {
     return UserModel.findOne({
       $and: [{ user_id: userId }, { toolConsumer: toolConsumerId }]
     }).then((foundUser, r) => {
@@ -180,7 +180,7 @@ export default class LTIController {
     })
   }
 
-  updateToolConsumer(req) {
+  updateToolConsumer (req) {
     const ltiData = req.ltiData
     const toolConsumer = req.toolConsumer
     if (
@@ -206,12 +206,12 @@ export default class LTIController {
     }
   }
 
-  updateOutcomeManagement(req) {
+  updateOutcomeManagement (req) {
     return Promise.resolve(req)
     // see models/outcomes.js
   }
 
-  locateAssignment(req) {
+  locateAssignment (req) {
     var externalId = req.ltiData.custom_assignment
     req.externalId = externalId
     return AssignmentModel.locateAssignmentByExternalId(externalId).then(assignment => {
@@ -227,7 +227,7 @@ export default class LTIController {
     })
   }
 
-  updateActivity(req, results) {
+  updateActivity (req, results) {
     debug('updateActivity')
     return ActivityModel.updateCreateActivity(
       req.ltiData,
@@ -239,7 +239,7 @@ export default class LTIController {
     })
   }
 
-  updateVisit(req) {
+  updateVisit (req) {
     debug('updateVisit')
     return VisitModel.updateCreateVisit(
       req.user,
@@ -252,27 +252,27 @@ export default class LTIController {
     })
   }
 
-  _postLtiChain(req) {
+  _postLtiChain (req) {
     const _this = this
     return Promise.resolve()
-    .then(() => {
-      return _this.updateToolConsumer(req)
-    })
-    .then(() => {
-      return _this.updateOutcomeManagement(req)
-    })
-    .then(() => {
-      return _this.locateAssignment(req)
-    })
-    .then(() => {
-      return _this.updateActivity(req)
-    })
-    .then(() => {
-      return _this.updateVisit(req)
-    })
+      .then(() => {
+        return _this.updateToolConsumer(req)
+      })
+      .then(() => {
+        return _this.updateOutcomeManagement(req)
+      })
+      .then(() => {
+        return _this.locateAssignment(req)
+      })
+      .then(() => {
+        return _this.updateActivity(req)
+      })
+      .then(() => {
+        return _this.updateVisit(req)
+      })
 
   }
-  route() {
+  route () {
     const router = new Router()
     router.get('/', (req, res) => {
       res.status(200).send('OK')

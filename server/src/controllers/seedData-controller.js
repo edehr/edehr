@@ -28,7 +28,7 @@ export default class SeedDataController extends BaseController {
         }
         model.lastUpdateDate = Date.now()
         model.ehrData[propertyName] = value
-        model.markModified('ehrData');
+        model.markModified('ehrData')
         return model.save()
       }
     })
@@ -48,7 +48,7 @@ export default class SeedDataController extends BaseController {
       if (model) {
         model.lastUpdateDate = Date.now()
         model.ehrData = data
-        model.markModified('ehrData');
+        model.markModified('ehrData')
         return model.save()
       }
     })
@@ -60,15 +60,15 @@ export default class SeedDataController extends BaseController {
       let id = req.params.key
       let data = req.body
       this.updateSeedEhrProperty(id, data)
-      .then(ok(res))
-      .catch(fail(res))
+        .then(ok(res))
+        .catch(fail(res))
     })
     router.put('/updateSeedEhrData/:key/', (req, res) => {
       let id = req.params.key
       let data = req.body
       this.updateSeedEhrData(id, data)
-      .then(ok(res))
-      .catch(fail(res))
+        .then(ok(res))
+        .catch(fail(res))
     })
     return router
   }

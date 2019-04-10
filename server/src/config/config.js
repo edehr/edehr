@@ -5,7 +5,7 @@ const fs = require('fs')
 const path = require('path')
 const debug = require('debug')('server')
 export default class Config {
-  constructor(env) {
+  constructor (env) {
     this.env = env
     // Validate NODE_ENV existence
     this.validateEnvironmentVariable()
@@ -24,14 +24,14 @@ export default class Config {
     debug('configuration ready ', this.configuration)
   }
 
-  get config() {
+  get config () {
     return this.configuration
   }
 
   /**
    * Validate NODE_ENV existence
    */
-  validateEnvironmentVariable() {
+  validateEnvironmentVariable () {
     let environmentFiles = glob.sync('./config/env/' + this.env + '.js')
     if (!environmentFiles.length) {
       if (this.env) {
@@ -57,7 +57,7 @@ export default class Config {
    * Validate Secure=true parameter can actually be turned on
    * because it requires certs and key files to be available
    */
-  static validateSecureMode(config) {
+  static validateSecureMode (config) {
     if (!config.secure || config.secure.ssl !== true) {
       return true
     }

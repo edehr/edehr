@@ -15,13 +15,13 @@ export default class AssignmentController extends BaseController {
     var query = { externalId: externalId }
     debug('Assignment search for ' + externalId)
     return this.findOne(query)
-    .then((result) => {
-      if (!result) {
-        query = { externalId: DEFAULT_ASSIGNMENT_EXTERNAL_ID }
-        console.log('Could not find assignment for ' + externalId + '. Search for ' + DEFAULT_ASSIGNMENT_EXTERNAL_ID)
-        return _this.findOne(query)
-      }
-      return result
-    })
+      .then((result) => {
+        if (!result) {
+          query = { externalId: DEFAULT_ASSIGNMENT_EXTERNAL_ID }
+          console.log('Could not find assignment for ' + externalId + '. Search for ' + DEFAULT_ASSIGNMENT_EXTERNAL_ID)
+          return _this.findOne(query)
+        }
+        return result
+      })
   }
 }

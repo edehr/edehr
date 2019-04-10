@@ -23,33 +23,33 @@ export default class AdminController {
     this.app = app
     app.admin = this
     return Promise.resolve()
-    .then(() => {
-      app.use('/admin', function (req, res, next) {
-        console.log('headers ', req.headers['authorization'])
-        if (!req.headers['authorization']) {
-          console.log('No authorization in header')
-          return next('router')
-        }
-        var authHeader = req.headers['authorization']
-        try {
-          console.log("authHeader '" + authHeader + "'")
-          var parts = authHeader.split(' ')
-          console.log("the parts '", parts, "'")
-          var scheme = parts[0]
-          if (scheme !== 'Bearer') {
+      .then(() => {
+        app.use('/admin', function (req, res, next) {
+          console.log('headers ', req.headers['authorization'])
+          if (!req.headers['authorization']) {
+            console.log('No authorization in header')
             return next('router')
           }
-          var token = parts[1]
-          if (!token || token !== adminToken) {
+          var authHeader = req.headers['authorization']
+          try {
+            console.log('authHeader \'' + authHeader + '\'')
+            var parts = authHeader.split(' ')
+            console.log('the parts \'', parts, '\'')
+            var scheme = parts[0]
+            if (scheme !== 'Bearer') {
+              return next('router')
+            }
+            var token = parts[1]
+            if (!token || token !== adminToken) {
+              return next('router')
+            }
+          } catch (err) {
+            console.log('Auth header could not be parsed', err.message)
             return next('router')
           }
-        } catch (err) {
-          console.log('Auth header could not be parsed', err.message)
-          return next('router')
-        }
-        next()
+          next()
+        })
       })
-    })
   }
 
   route () {
@@ -67,20 +67,20 @@ export default class AdminController {
         return
       }
       ConsumerController.findOneConsumerByKey(consumerKey)
-      .then((toolConsumer) => {
-        if (!toolConsumer) {
-          let message = 'Unsupported consumer key ' + consumerKey
-          debug('strategyVerify ' + message)
-          res.send('no consumerKey')
-          return
-        }
-        debug('working with consumer ' + toolConsumer.tool_consumer_instance_name)
-        Visit.clearConsumer(toolConsumer._id)
-        ActivityModel.clearConsumer(toolConsumer._id)
-        UserModel.clearConsumer(toolConsumer._id)
+        .then((toolConsumer) => {
+          if (!toolConsumer) {
+            let message = 'Unsupported consumer key ' + consumerKey
+            debug('strategyVerify ' + message)
+            res.send('no consumerKey')
+            return
+          }
+          debug('working with consumer ' + toolConsumer.tool_consumer_instance_name)
+          Visit.clearConsumer(toolConsumer._id)
+          ActivityModel.clearConsumer(toolConsumer._id)
+          UserModel.clearConsumer(toolConsumer._id)
 
         // _this.app.sessionStore.clear()
-      })
+        })
       res.send('RESET')
     })
     return router

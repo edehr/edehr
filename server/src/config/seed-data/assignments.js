@@ -4,8 +4,8 @@ const Assignment = mongoose.model('Assignment')
 const SeedData = mongoose.model('SeedData')
 const debug = require('debug')('server')
 
-module.exports = function() {
-  return new Promise(function(resolve, reject) {
+module.exports = function () {
+  return new Promise(function (resolve, reject) {
     console.log('Running seeding assignments (case studies)')
 
     let defaultDef = {
@@ -18,24 +18,24 @@ module.exports = function() {
     }
 
     return SeedData.find({})
-    .then((seeds) => {
-      let aSeed = seeds[0]
-      debug('To seed assignments need at least one ehr seed object' + aSeed._id)
-      defaultDef.seedDataId = aSeed._id
-    })
-    .then(() => {
-      return Assignment.deleteMany()
-    })
-    .then(() => {
-      console.log('create default assignment', defaultDef)
-      return Assignment.create(defaultDef)
-    })
-    .then(() => {
-      return resolve()
-    })
-    .catch(err => {
-      console.error('Assignment seeding hit an error', err)
-      reject(err)
-    })
+      .then((seeds) => {
+        let aSeed = seeds[0]
+        debug('To seed assignments need at least one ehr seed object' + aSeed._id)
+        defaultDef.seedDataId = aSeed._id
+      })
+      .then(() => {
+        return Assignment.deleteMany()
+      })
+      .then(() => {
+        console.log('create default assignment', defaultDef)
+        return Assignment.create(defaultDef)
+      })
+      .then(() => {
+        return resolve()
+      })
+      .catch(err => {
+        console.error('Assignment seeding hit an error', err)
+        reject(err)
+      })
   })
 }

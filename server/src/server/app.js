@@ -5,11 +5,11 @@ import { apiMiddle, apiError } from './api.js'
 const debug = require('debug')('server')
 
 export default class EhrApp {
-  constructor() {
+  constructor () {
     this.app = express()
   }
 
-  setup(config) {
+  setup (config) {
     let app = this.app
     app.set('view engine', 'ejs')
     app.use(bodyParser.urlencoded({ extended: false }))
@@ -24,24 +24,24 @@ export default class EhrApp {
         app.use('/', api)
         return EhrApp._setupFinalMiddle(app, config)
       })
-    .then(api => {
-      debug('EhrApp setup complete')
-    })
+      .then(api => {
+        debug('EhrApp setup complete')
+      })
   }
 
-  get application() {
+  get application () {
     return this.app
   }
 
-  static _setupFinalMiddle(app, config) {
+  static _setupFinalMiddle (app, config) {
     // catch 404 and forward to error handler
-    app.use(function(req, res, next) {
+    app.use(function (req, res, next) {
       EhrApp._fourOhFour(req, res)
     })
     apiError(app, config)
   }
 
-  static _fourOhFour(req, res) {
+  static _fourOhFour (req, res) {
     let { url } = req
     var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl
     var env = process.env.NODE_ENV

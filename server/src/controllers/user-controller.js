@@ -5,7 +5,7 @@ import { ok, fail } from './utils'
 const debug = require('debug')('server')
 
 export default class UserController extends BaseController {
-  constructor(config) {
+  constructor (config) {
     super(User, '_id')
     this.config = config
   }
@@ -48,7 +48,7 @@ Listing as student is a WIP.  It is not used in the prototype. See listing as in
   listAsInstructorCourses will collect all visits the current user has made with the role of instructor.
   For each visit get the activity and associated assignment information. Collect all into a course collection.
   */
-  listAsInstructorCourses(id) {
+  listAsInstructorCourses (id) {
     debug('listAsInstructorCourses for ' + id)
     return this.baseFindOneQuery(id)
       .populate([
@@ -107,7 +107,7 @@ Listing as student is a WIP.  It is not used in the prototype. See listing as in
   }
   */
 
-  route() {
+  route () {
     const router = super.route()
     router.get('/instructor/courses/:key', (req, res) => {
       this.listAsInstructorCourses(req.params.key)

@@ -26,7 +26,7 @@ const COOKIE_SECRET = process.env.COOKIE_SECRET
 const uuid = require('uuid/v4')
 const debug = require('debug')('server')
 
-export function apiMiddle(app, config) {
+export function apiMiddle (app, config) {
   const fileStoreOptions = {}
 
   if (process.env.SESSION_DIR) {
@@ -52,7 +52,7 @@ export function apiMiddle(app, config) {
   )
 
   if (config.traceApiCalls) {
-    app.use(function(req, res, next) {
+    app.use(function (req, res, next) {
       debug(moment().format('YYYY/MM/DD, h:mm:ss.SSS a'), req.method, ' Url:', req.url)
       next()
     })
@@ -113,18 +113,18 @@ export function apiMiddle(app, config) {
     })
 }
 
-export function apiError(app, config) {
+export function apiError (app, config) {
   // error handlers
   app.use(logErrors)
   app.use(clientErrorHandler)
   app.use(errorHandler)
 
-  function logErrors(err, req, res, next) {
+  function logErrors (err, req, res, next) {
     console.error(`Error name: ${err.name} message: ${err.message}`)
     next(err)
   }
 
-  function clientErrorHandler(err, req, res, next) {
+  function clientErrorHandler (err, req, res, next) {
     // import {AssignmentMismatchError, ParameterError, SystemError} from '../utils/errors'
     if (err.name === AssignmentMismatchError.NAME()) {
       var url = config.clientUrl + '/assignments-listing?user=' + req.user._id
@@ -135,16 +135,16 @@ export function apiError(app, config) {
     }
   }
 
-  function errorHandler(err, req, res, next) {
+  function errorHandler (err, req, res, next) {
     res.status(err.status || 500)
     res.send(err.message)
   }
 }
-function setupCors(config) {
+function setupCors (config) {
   var whitelist = [] // 'http://localhost:28000', 'http://localhost:27000']
   whitelist.push(config.clientUrl)
   whitelist.push(config.apiUrl)
-  var corsOptionsDelegate = function(req, callback) {
+  var corsOptionsDelegate = function (req, callback) {
     var corsOptions
     if (whitelist.indexOf(req.header('Origin')) !== -1) {
       corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response

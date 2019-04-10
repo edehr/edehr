@@ -26,22 +26,22 @@ export function fail (res) {
     let code = 404
     let message = 'Not found'
     switch (error.name) {
-      case 'ValidationError':
-        code = 400
-        message = error.name + ' ' + error.message
-        break
-      case 'CastError' :
-        code = 500
-        message = error.name + ' ' + error.message
-        console.log('Server utils fail CastError return 500.')
-        break
-      case 'MongoError' :
-        code = 400
-        message = error.message
-        console.log('Server utils fail CastError return 500.')
-        break
-      default:
-        console.log('Server TODO enhance error reporting for name:', error.name, ' msg:', error.message)
+    case 'ValidationError':
+      code = 400
+      message = error.name + ' ' + error.message
+      break
+    case 'CastError' :
+      code = 500
+      message = error.name + ' ' + error.message
+      console.log('Server utils fail CastError return 500.')
+      break
+    case 'MongoError' :
+      code = 400
+      message = error.message
+      console.log('Server utils fail CastError return 500.')
+      break
+    default:
+      console.log('Server TODO enhance error reporting for name:', error.name, ' msg:', error.message)
     }
     // ...
     console.log(code, message)
