@@ -1,6 +1,6 @@
 <template lang="pug">
-  div(class="ui-agree")
-    app-dialog(:isModal="true", ref="theDialog", :useSave="false", @cancel="cancelDialog", cancelButtonLabel="OK")
+  div(class="ui-confirm")
+    app-dialog(:isModal="true", ref="theDialog", @save="confirmDialog", @cancel="cancelDialog", saveButtonLabel="Confirm")
       h3(slot="header") {{ title }}
       div(slot="body") {{ text }}
   
@@ -8,10 +8,13 @@
 
 <script>
 import AppDialog from '../components/AppDialogShell'
-const DEFAULT_TITLE = 'Agree'
+const CONFIRM_EVENT = 'confirm' // event emitted when user confirms
+const ABORT_EVENT = 'abort' // event emitted when user aborts
+
+const DEFAULT_TITLE = 'Confirm or cancel'
 const DEFAULT_TEXT =''
 export default {
-  name: 'UiAgree',
+  name: 'UiConfirm',
   components: {
     AppDialog
   },
@@ -27,16 +30,24 @@ export default {
       this.text = msg || this.text
       this.$refs.theDialog.onOpen()
     },
-    cancelDialog: function () {
-      this.title = DEFAULT_TITLE 
+    closeIt: function() {
+      this.title = DEFAULT_TITLE
       this.msg = DEFAULT_TEXT
       this.$refs.theDialog.onClose()
+    },
+    cancelDialog: function () {
+      this.closeIt()
+      this.$emit(ABORT_EVENT)
+    },
+    confirmDialog: function () {
+      this.closeIt()
+      this.$emit(CONFIRM_EVENT)
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.ui-agree {
+.ui-confirm {
 }
 </style>
