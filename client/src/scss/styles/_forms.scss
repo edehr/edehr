@@ -113,10 +113,6 @@ textarea {
 textarea {
   height: 6rem;
   width: 100%;
-
-  &:disabled {
-    opacity: .4;
-  }
 }
 
 input, textarea, select, input:disabled, textarea:disabled, select:disabled, checkbox:disabled, radio:disabled, .input:disabled, .textarea:disabled, .select:disabled, .select select:disabled {
@@ -129,6 +125,11 @@ input:disabled, textarea:disabled, select:disabled, checkbox:disabled, radio:dis
   background: 0;
   border: 1px solid $grey10;
   box-shadow: none;
+}
+
+/* gets rid of double border on time inputs */
+.input input {
+    border: none;
 }
 
 .input-element {

@@ -31,7 +31,7 @@ export default function () {
           fqn: "progressNotes.table.notes"
         }
       ],
-      generated: "2019-04-01T18:58:17-07:00",
+      generated: "2019-04-10T11:07:18-07:00",
       hasTable: true,
       tables: [
         {
@@ -46,6 +46,7 @@ export default function () {
               inputType: "text",
               formRow: "1",
               formColumn: "1",
+              formCss: "user_name",
               tableColumn: "1",
               dataParent: "progressNotes.table",
               fqn: "progressNotes.table.name",
@@ -59,6 +60,7 @@ export default function () {
               inputType: "text",
               formRow: "1",
               formColumn: "2",
+              formCss: "user_pro",
               tableColumn: "2",
               dataParent: "progressNotes.table",
               fqn: "progressNotes.table.profession",
@@ -72,6 +74,7 @@ export default function () {
               inputType: "day",
               formRow: "1",
               formColumn: "3",
+              formCss: "user_day",
               tableColumn: "3",
               dataParent: "progressNotes.table",
               fqn: "progressNotes.table.day",
@@ -85,6 +88,7 @@ export default function () {
               inputType: "time",
               formRow: "1",
               formColumn: "4",
+              formCss: "user_time",
               tableColumn: "4",
               dataParent: "progressNotes.table",
               fqn: "progressNotes.table.time",
@@ -117,6 +121,7 @@ export default function () {
                     inputType: "text",
                     formRow: "1",
                     formColumn: "1",
+                    formCss: "user_name",
                     tableColumn: "1",
                     dataParent: "progressNotes.table",
                     fqn: "progressNotes.table.name",
@@ -130,6 +135,7 @@ export default function () {
                     inputType: "text",
                     formRow: "1",
                     formColumn: "2",
+                    formCss: "user_pro",
                     tableColumn: "2",
                     dataParent: "progressNotes.table",
                     fqn: "progressNotes.table.profession",
@@ -143,6 +149,7 @@ export default function () {
                     inputType: "day",
                     formRow: "1",
                     formColumn: "3",
+                    formCss: "user_day",
                     tableColumn: "3",
                     dataParent: "progressNotes.table",
                     fqn: "progressNotes.table.day",
@@ -156,6 +163,7 @@ export default function () {
                     inputType: "time",
                     formRow: "1",
                     formColumn: "4",
+                    formCss: "user_time",
                     tableColumn: "4",
                     dataParent: "progressNotes.table",
                     fqn: "progressNotes.table.time",
@@ -220,11 +228,6 @@ export default function () {
           fqn: "carePlan.table2.clinical"
         },
         {
-          label: "Details of clinical issue",
-          elementKey: "details",
-          fqn: "carePlan.table2.details"
-        },
-        {
           label: "Goal of care",
           elementKey: "goal",
           fqn: "carePlan.table2.goal"
@@ -245,7 +248,7 @@ export default function () {
           fqn: "carePlan.table2.status"
         }
       ],
-      generated: "2019-04-01T18:58:17-07:00",
+      generated: "2019-04-10T11:07:18-07:00",
       hasTable: true,
       tables: [
         {
@@ -300,6 +303,7 @@ export default function () {
               formRow: "1",
               formColumn: "4",
               tableColumn: "4",
+              tableCss: "hr-table",
               dataParent: "carePlan.table2",
               fqn: "carePlan.table2.time",
               tableKey: "table2"
@@ -318,27 +322,14 @@ export default function () {
               tableKey: "table2"
             },
             {
-              label: "Details of clinical issue",
-              pageDataKey: "carePlan",
-              level2Key: "table2",
-              elementKey: "details",
-              inputType: "textarea",
-              formRow: "2",
-              formColumn: "2",
-              tableColumn: "6",
-              dataParent: "carePlan.table2",
-              fqn: "carePlan.table2.details",
-              tableKey: "table2"
-            },
-            {
               label: "Goal of care",
               pageDataKey: "carePlan",
               level2Key: "table2",
               elementKey: "goal",
-              inputType: "text",
-              formRow: "3",
-              formColumn: "1",
-              tableColumn: "7",
+              inputType: "textarea",
+              formRow: "2",
+              formColumn: "2",
+              tableColumn: "6",
               dataParent: "carePlan.table2",
               fqn: "carePlan.table2.goal",
               tableKey: "table2"
@@ -349,9 +340,9 @@ export default function () {
               level2Key: "table2",
               elementKey: "interventions",
               inputType: "textarea",
-              formRow: "4",
+              formRow: "3",
               formColumn: "1",
-              tableColumn: "8",
+              tableColumn: "7",
               dataParent: "carePlan.table2",
               fqn: "carePlan.table2.interventions",
               tableKey: "table2"
@@ -362,9 +353,9 @@ export default function () {
               level2Key: "table2",
               elementKey: "evaluation",
               inputType: "textarea",
-              formRow: "4",
+              formRow: "3",
               formColumn: "2",
-              tableColumn: "9",
+              tableColumn: "8",
               dataParent: "carePlan.table2",
               fqn: "carePlan.table2.evaluation",
               tableKey: "table2"
@@ -375,9 +366,10 @@ export default function () {
               level2Key: "table2",
               elementKey: "status",
               inputType: "select",
-              formRow: "5",
+              formRow: "4",
               formColumn: "1",
-              tableColumn: "10",
+              formCss: "is-one-third",
+              tableColumn: "9",
               options: [
                 {
                   text: "Active"
@@ -447,6 +439,7 @@ export default function () {
                     formRow: "1",
                     formColumn: "4",
                     tableColumn: "4",
+                    tableCss: "hr-table",
                     dataParent: "carePlan.table2",
                     fqn: "carePlan.table2.time",
                     tableKey: "table2"
@@ -470,16 +463,16 @@ export default function () {
                     tableKey: "table2"
                   },
                   {
-                    label: "Details of clinical issue",
+                    label: "Goal of care",
                     pageDataKey: "carePlan",
                     level2Key: "table2",
-                    elementKey: "details",
+                    elementKey: "goal",
                     inputType: "textarea",
                     formRow: "2",
                     formColumn: "2",
                     tableColumn: "6",
                     dataParent: "carePlan.table2",
-                    fqn: "carePlan.table2.details",
+                    fqn: "carePlan.table2.goal",
                     tableKey: "table2"
                   }
                 ]
@@ -488,32 +481,14 @@ export default function () {
                 formRow: "3",
                 elements: [
                   {
-                    label: "Goal of care",
-                    pageDataKey: "carePlan",
-                    level2Key: "table2",
-                    elementKey: "goal",
-                    inputType: "text",
-                    formRow: "3",
-                    formColumn: "1",
-                    tableColumn: "7",
-                    dataParent: "carePlan.table2",
-                    fqn: "carePlan.table2.goal",
-                    tableKey: "table2"
-                  }
-                ]
-              },
-              {
-                formRow: "4",
-                elements: [
-                  {
                     label: "Intervention",
                     pageDataKey: "carePlan",
                     level2Key: "table2",
                     elementKey: "interventions",
                     inputType: "textarea",
-                    formRow: "4",
+                    formRow: "3",
                     formColumn: "1",
-                    tableColumn: "8",
+                    tableColumn: "7",
                     dataParent: "carePlan.table2",
                     fqn: "carePlan.table2.interventions",
                     tableKey: "table2"
@@ -524,9 +499,9 @@ export default function () {
                     level2Key: "table2",
                     elementKey: "evaluation",
                     inputType: "textarea",
-                    formRow: "4",
+                    formRow: "3",
                     formColumn: "2",
-                    tableColumn: "9",
+                    tableColumn: "8",
                     dataParent: "carePlan.table2",
                     fqn: "carePlan.table2.evaluation",
                     tableKey: "table2"
@@ -534,7 +509,7 @@ export default function () {
                 ]
               },
               {
-                formRow: "5",
+                formRow: "4",
                 elements: [
                   {
                     label: "Status",
@@ -542,9 +517,10 @@ export default function () {
                     level2Key: "table2",
                     elementKey: "status",
                     inputType: "select",
-                    formRow: "5",
+                    formRow: "4",
                     formColumn: "1",
-                    tableColumn: "10",
+                    formCss: "is-one-third",
+                    tableColumn: "9",
                     options: [
                       {
                         text: "Active"
@@ -575,7 +551,7 @@ export default function () {
       pageTitle: "Consults",
       pageDataKey: "consultants",
       pageChildren: [],
-      generated: "2019-04-01T18:58:17-07:00",
+      generated: "2019-04-10T11:07:18-07:00",
       hasForm: true,
       page_form: {
         rows: [],
@@ -608,7 +584,7 @@ export default function () {
           fqn: "labResults.labReport.labReport4_1"
         }
       ],
-      generated: "2019-04-01T18:58:17-07:00",
+      generated: "2019-04-10T11:07:18-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -622,6 +598,7 @@ export default function () {
                 inputType: "fieldset",
                 formRow: "1",
                 formColumn: "1",
+                formCss: "h2",
                 dataParent: "labResults",
                 fqn: "labResults.labReport",
                 elements: [
@@ -798,7 +775,7 @@ export default function () {
           fqn: "medicalImaging.diagnosticImage.diagnosticImage2_2"
         }
       ],
-      generated: "2019-04-01T18:58:17-07:00",
+      generated: "2019-04-10T11:07:18-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -901,7 +878,7 @@ export default function () {
       pageTitle: "Operative reports and anaesthesia record",
       pageDataKey: "operationReports",
       pageChildren: [],
-      generated: "2019-04-01T18:58:17-07:00",
+      generated: "2019-04-10T11:07:18-07:00",
       hasForm: true,
       page_form: {
         rows: [],
