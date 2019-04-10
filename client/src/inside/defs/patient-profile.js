@@ -171,7 +171,7 @@ export default function () {
           dataCaseStudy: "604-555-9865"
         }
       ],
-      generated: "2019-04-10T11:47:18-07:00",
+      generated: "2019-04-10T12:22:10-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -680,7 +680,7 @@ export default function () {
           dataCaseStudy: "TRUE"
         }
       ],
-      generated: "2019-04-10T11:47:18-07:00",
+      generated: "2019-04-10T12:22:10-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -733,7 +733,7 @@ export default function () {
           fqn: "medical.history"
         }
       ],
-      generated: "2019-04-10T11:47:18-07:00",
+      generated: "2019-04-10T12:22:10-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -860,7 +860,7 @@ export default function () {
           fqn: "psychosocial.behaviours.substanceUseFrequency"
         }
       ],
-      generated: "2019-04-10T11:47:18-07:00",
+      generated: "2019-04-10T12:22:10-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -1361,7 +1361,7 @@ export default function () {
           fqn: "surgical.previous.comments"
         }
       ],
-      generated: "2019-04-10T11:47:18-07:00",
+      generated: "2019-04-10T12:22:10-07:00",
       hasTable: true,
       tables: [
         {
@@ -1378,8 +1378,6 @@ export default function () {
               formRow: "1",
               formColumn: "1",
               tableColumn: "1",
-              fsetRow: "1",
-              fsetCol: "1",
               dataParent: "surgical.pastSurgery",
               fqn: "surgical.pastSurgery.physician",
               tableKey: "pastSurgery"
@@ -1393,8 +1391,6 @@ export default function () {
               formRow: "1",
               formColumn: "2",
               tableColumn: "2",
-              fsetRow: "1",
-              fsetCol: "2",
               dataParent: "surgical.pastSurgery",
               fqn: "surgical.pastSurgery.procedure",
               tableKey: "pastSurgery"
@@ -1408,8 +1404,6 @@ export default function () {
               formRow: "1",
               formColumn: "3",
               tableColumn: "3",
-              fsetRow: "1",
-              fsetCol: "3",
               dataParent: "surgical.pastSurgery",
               fqn: "surgical.pastSurgery.timeSince",
               tableKey: "pastSurgery"
@@ -1429,8 +1423,6 @@ export default function () {
                     formRow: "1",
                     formColumn: "1",
                     tableColumn: "1",
-                    fsetRow: "1",
-                    fsetCol: "1",
                     dataParent: "surgical.pastSurgery",
                     fqn: "surgical.pastSurgery.physician",
                     tableKey: "pastSurgery"
@@ -1444,8 +1436,6 @@ export default function () {
                     formRow: "1",
                     formColumn: "2",
                     tableColumn: "2",
-                    fsetRow: "1",
-                    fsetCol: "2",
                     dataParent: "surgical.pastSurgery",
                     fqn: "surgical.pastSurgery.procedure",
                     tableKey: "pastSurgery"
@@ -1459,8 +1449,6 @@ export default function () {
                     formRow: "1",
                     formColumn: "3",
                     tableColumn: "3",
-                    fsetRow: "1",
-                    fsetCol: "3",
                     dataParent: "surgical.pastSurgery",
                     fqn: "surgical.pastSurgery.timeSince",
                     tableKey: "pastSurgery"
@@ -1482,12 +1470,10 @@ export default function () {
               level2Key: "previous",
               elementKey: "with",
               inputType: "text",
-              formRow: "2",
+              formRow: "1",
               formColumn: "1",
               formCss: "is-one-third",
               tableColumn: "1",
-              fsetRow: "1",
-              fsetCol: "1",
               dataParent: "surgical.previous",
               fqn: "surgical.previous.with",
               tableKey: "previous"
@@ -1498,12 +1484,10 @@ export default function () {
               level2Key: "previous",
               elementKey: "details",
               inputType: "text",
-              formRow: "2",
+              formRow: "1",
               formColumn: "2",
               formCss: "is-one-third",
               tableColumn: "2",
-              fsetRow: "1",
-              fsetCol: "2",
               dataParent: "surgical.previous",
               fqn: "surgical.previous.details",
               tableKey: "previous"
@@ -1514,12 +1498,10 @@ export default function () {
               level2Key: "previous",
               elementKey: "previousAdmissions",
               inputType: "text",
-              formRow: "3",
+              formRow: "2",
               formColumn: "1",
               formCss: "is-one-third",
               tableColumn: "3",
-              fsetRow: "2",
-              fsetCol: "1",
               dataParent: "surgical.previous",
               fqn: "surgical.previous.previousAdmissions",
               tableKey: "previous"
@@ -1530,12 +1512,10 @@ export default function () {
               level2Key: "previous",
               elementKey: "previousAdmissionsDate",
               inputType: "date",
-              formRow: "3",
+              formRow: "2",
               formColumn: "2",
               formCss: "is-one-third",
               tableColumn: "4",
-              fsetRow: "2",
-              fsetCol: "2",
               dataParent: "surgical.previous",
               fqn: "surgical.previous.previousAdmissionsDate",
               tableKey: "previous"
@@ -1546,11 +1526,9 @@ export default function () {
               level2Key: "previous",
               elementKey: "comments",
               inputType: "textarea",
-              formRow: "4",
+              formRow: "3",
               formColumn: "1",
               tableColumn: "5",
-              fsetRow: "3",
-              fsetCol: "1",
               dataParent: "surgical.previous",
               fqn: "surgical.previous.comments",
               tableKey: "previous"
@@ -1559,7 +1537,7 @@ export default function () {
           tableForm: {
             rows: [
               {
-                formRow: "2",
+                formRow: "1",
                 elements: [
                   {
                     label: "Appointment with",
@@ -1567,12 +1545,10 @@ export default function () {
                     level2Key: "previous",
                     elementKey: "with",
                     inputType: "text",
-                    formRow: "2",
+                    formRow: "1",
                     formColumn: "1",
                     formCss: "is-one-third",
                     tableColumn: "1",
-                    fsetRow: "1",
-                    fsetCol: "1",
                     dataParent: "surgical.previous",
                     fqn: "surgical.previous.with",
                     tableKey: "previous"
@@ -1583,12 +1559,10 @@ export default function () {
                     level2Key: "previous",
                     elementKey: "details",
                     inputType: "text",
-                    formRow: "2",
+                    formRow: "1",
                     formColumn: "2",
                     formCss: "is-one-third",
                     tableColumn: "2",
-                    fsetRow: "1",
-                    fsetCol: "2",
                     dataParent: "surgical.previous",
                     fqn: "surgical.previous.details",
                     tableKey: "previous"
@@ -1596,7 +1570,7 @@ export default function () {
                 ]
               },
               {
-                formRow: "3",
+                formRow: "2",
                 elements: [
                   {
                     label: "Previous admission reason",
@@ -1604,12 +1578,10 @@ export default function () {
                     level2Key: "previous",
                     elementKey: "previousAdmissions",
                     inputType: "text",
-                    formRow: "3",
+                    formRow: "2",
                     formColumn: "1",
                     formCss: "is-one-third",
                     tableColumn: "3",
-                    fsetRow: "2",
-                    fsetCol: "1",
                     dataParent: "surgical.previous",
                     fqn: "surgical.previous.previousAdmissions",
                     tableKey: "previous"
@@ -1620,12 +1592,10 @@ export default function () {
                     level2Key: "previous",
                     elementKey: "previousAdmissionsDate",
                     inputType: "date",
-                    formRow: "3",
+                    formRow: "2",
                     formColumn: "2",
                     formCss: "is-one-third",
                     tableColumn: "4",
-                    fsetRow: "2",
-                    fsetCol: "2",
                     dataParent: "surgical.previous",
                     fqn: "surgical.previous.previousAdmissionsDate",
                     tableKey: "previous"
@@ -1633,7 +1603,7 @@ export default function () {
                 ]
               },
               {
-                formRow: "4",
+                formRow: "3",
                 elements: [
                   {
                     label: "General comments",
@@ -1641,18 +1611,15 @@ export default function () {
                     level2Key: "previous",
                     elementKey: "comments",
                     inputType: "textarea",
-                    formRow: "4",
+                    formRow: "3",
                     formColumn: "1",
                     tableColumn: "5",
-                    fsetRow: "3",
-                    fsetCol: "1",
                     dataParent: "surgical.previous",
                     fqn: "surgical.previous.comments",
                     tableKey: "previous"
                   }
                 ]
-              },
-              null
+              }
             ],
             columnsCount: 2
           }
@@ -1765,7 +1732,7 @@ export default function () {
           fqn: "immunization.otherDate3"
         }
       ],
-      generated: "2019-04-10T11:47:18-07:00",
+      generated: "2019-04-10T12:22:10-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -2064,7 +2031,7 @@ export default function () {
           fqn: "familyHistory.history"
         }
       ],
-      generated: "2019-04-10T11:47:18-07:00",
+      generated: "2019-04-10T12:22:10-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -2105,7 +2072,7 @@ export default function () {
           dataCaseStudy: "Physician-NL-Physician-NL-Nurse-NL-Nurse-NL-Medical radiograpeor-NL-Medical laboratory technician-NL-Medical radiographer-NL-RN-NL-Physician-NL-RN-NL-Pysiotherapy student-NL-Resp. therapist"
         }
       ],
-      generated: "2019-04-10T11:47:18-07:00",
+      generated: "2019-04-10T12:22:10-07:00",
       hasTable: true,
       tables: [
         {
@@ -2234,7 +2201,7 @@ export default function () {
           dataCaseStudy: "COPD"
         }
       ],
-      generated: "2019-04-10T11:47:18-07:00",
+      generated: "2019-04-10T12:22:10-07:00",
       hasTable: true,
       tables: [
         {
