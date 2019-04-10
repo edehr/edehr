@@ -6,7 +6,7 @@ import assignment from './modules/assignment'
 import ehrData from './modules/ehrData'
 import system from './modules/system'
 import seedStore from './modules/seedStore'
-import createLogger from 'vuex/dist/logger'
+// import createLogger from 'vuex/dist/logger'
 
 Vue.use(Vuex)
 
@@ -22,5 +22,6 @@ export default new Vuex.Store({
     seedStore
   },
   strict: debug,
-  plugins: debug ? [createLogger()] : []
+  // Uncomment to enable a log of all storage transistions
+  // plugins: debug ? [createLogger()] : []
 })

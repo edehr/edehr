@@ -24,13 +24,13 @@ export default {
       return this.theNotes !== this.asStored
     },
     asStoredEvaluationNotes () {
-      console.log('EhrEvaluationInput computed asStoredEvaluationNotes')
+      // console.log('EhrEvaluationInput computed asStoredEvaluationNotes')
       return this.$store.getters['ehrData/evaluationData']
     }
   },
   watch: {
     asStoredEvaluationNotes: function (newData) {
-      console.log('EhrEvaluationInput watched')
+      // console.log('EhrEvaluationInput watched')
       this.setNotes(newData)
     }
   },

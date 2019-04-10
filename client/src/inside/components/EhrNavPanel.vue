@@ -10,7 +10,6 @@ import UiLink from '../../app/ui/UiLink.vue'
 import UiButton from '../../app/ui/UiButton.vue'
 import EhrNavList from './EhrNavList'
 import EhrScratchPad from '../components/EhrScratchPad'
-import EhrEvaluationPad from '../components/EhrEvaluationPad'
 
 export default {
   name: 'EhrNavPanel',
@@ -18,8 +17,7 @@ export default {
     UiButton,
     UiLink,
     EhrNavList,
-    EhrScratchPad,
-    EhrEvaluationPad
+    EhrScratchPad
   },
   computed: {
     returnButtonLabel () {

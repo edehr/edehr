@@ -42,8 +42,6 @@ export default {
       // Note this property is invoked in a div above. Then hidden from view.
       // By invoking this property theData is set (intentional side-effect)
       // and theData contains data from the database
-      // eslint-disable-next-line vue/no-side-effects-in-computed-properties
-      // this.theData = this.ehrHelp.mergedProperty(this.pageDataKey)
       this.refresh()
       // console.log('EHR Page Form: page current data', this.theData)
       return this.theData

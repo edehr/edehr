@@ -1,6 +1,6 @@
 <template lang="pug">
   transition(name="dialog")
-    div
+    div(v-show="showingDialog")
       div(:class="modalClass")
       div(:class="['dialog-wrapper', { moused: moused }]", ref="theDialog", v-bind:style="{ top: top + 'px', left: left + 'px'}")
         div(class="dialog-move-bar", v-dragged="onDragged")
@@ -71,6 +71,7 @@ export default {
   data () {
     return {
       moused: false,
+      showingDialog: false,
       top: 0,
       left: 0
     }
@@ -86,8 +87,30 @@ export default {
         this.moused = !!first
         return
       }
+      let d = this.$refs.theDialog
+      let br = d.getBoundingClientRect()
+      console.log('getBoundingClientRect', br)
       this.left += deltaX
       this.top += deltaY
+    },
+    onOpen () {
+      if (this.isModal) {
+        // console.log('FREEZEEEEEEE')
+        document.body.style.position = 'fixed'
+      }
+      // wait a tick and then reset size. This accounts for the rendering engine to completely populate the dialog
+      const _this = this
+      _this.showingDialog = true
+      this.$nextTick(function () {
+        _this.reset()
+      })
+    },
+    onClose () {
+      this.showingDialog = false
+      if (this.isModal) {
+        // console.log('UN -- FREEZEEEEEEE')
+        document.body.style.position = ''
+      }
     },
     reset () {
       // Set the top/left position based on window and dialog dimensions
@@ -98,17 +121,18 @@ export default {
       let wh = window.innerHeight
       let mx = (ww - ew) / 2
       let my = (wh - eh) / 2
-      // console.log('The Dialog ', ww, ew, mx, d)
+      // console.log('The Dialog w', ww, ew, mx, d)
+      // console.log('The Dialog h', wh, eh, my, d)
       this.left = mx
       this.top = my
     }
   },
   mounted: function () {
     // Trigger the reset but wait until all rendering is done in case there are elements that have not yet been sized.
-    const _this = this
-    this.$nextTick(function () {
-      _this.reset()
-    })
+    // const _this = this
+    // this.$nextTick(function () {
+    //   _this.reset()
+    // })
   }
 }
 </script>

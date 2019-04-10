@@ -2,7 +2,7 @@
   div(:class="$options.name")
     div(:class="`${$options.name}__bottom`")
       ui-button(v-on:buttonClicked="showDialog", :class="`${$options.name}__button`", v-bind:secondary="true") Scratch Pad
-    app-dialog( v-if="showingDialog", :isModal="false", @cancel="cancelDialog", @save="saveDialog")
+    app-dialog(:isModal="false", ref="theDialog", @cancel="cancelDialog", @save="saveDialog")
       h3(slot="header") Your private notes
       div(slot="body")
         div
@@ -23,7 +23,6 @@ export default {
   },
   data: function () {
     return {
-      showingDialog: false,
       populate: true,
       theNotes: ''
     }
@@ -36,14 +35,14 @@ export default {
     },
     showDialog: function () {
       this.resetNotes()
-      this.showingDialog = true
+      this.$refs.theDialog.onOpen()
     },
     cancelDialog: function () {
       this.resetNotes()
-      this.showingDialog = false
+      this.$refs.theDialog.onClose()
     },
     saveDialog: function () {
-      this.showingDialog = false
+      this.$refs.theDialog.onClose()
       console.log('EhrScratchPad saving ', this.theNotes)
       this.$store.dispatch('ehrData/sendScratchData', this.theNotes)
     }

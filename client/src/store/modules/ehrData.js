@@ -3,6 +3,7 @@ import EventBus from '../../helpers/event-bus'
 import { ACTIVITY_DATA_EVENT } from '../../helpers/event-bus'
 import { composeUrl, decoupleObject } from '../../helpers/ehr-utills'
 import { ehrMergeEhrData, ehrMarkSeed } from '../../helpers/ehr-utills'
+import { getPageDefinition, getDefaultValue, getDataCaseStudy } from '../../helpers/ehr-defs'
 
 const helper = new StoreHelper()
 const API_ACTIVITY = 'activity-data'
@@ -45,25 +46,68 @@ const getters = {
     // Not always sure about Vue object whether the system has proxied them and added stuff.
     // So decouple the objects ... just in case
     let ehrSeedData = decoupleObject(rootState.seedStore.ehrSeedData)
-    let studentAssignmentData = decoupleObject(state.sActivityData.assignmentData)
-    let evalAssignmentData = decoupleObject(state.sCurrentStudentData.assignmentData)
     let mData
     if (rootState.visit.isDevelopingContent === true) {
       mData = ehrSeedData
       console.log('mergedData: Develop seed', ehrSeedData)
     } else if (rootState.visit.sVisitInfo.isInstructor) {
+      let evalAssignmentData = decoupleObject(state.sCurrentStudentData.assignmentData)
       mData = ehrMergeEhrData(ehrSeedData, evalAssignmentData)
       console.log('mergedData: Instructor result', mData)
     } else {
       // mark all elements in the page arrays to allow us to
       // strip the seed data out before saving
       ehrSeedData = ehrMarkSeed(ehrSeedData)
+      let studentAssignmentData = decoupleObject(state.sActivityData.assignmentData)
       mData = ehrMergeEhrData(ehrSeedData, studentAssignmentData)
       console.log('mergedData: Student result', mData)
     }
     return mData
   },
-
+  asLoadedDataForPageKey (state, getters, rootState) {
+    return pageKey => {
+      let mergedData = getters.mergedData
+      // let pageKey = rootState.system.currentPageKey
+      let pageData = mergedData[pageKey]
+      // console.log('EhrData asLoadedDataForPageKey -=-=-=-=-=-=-=-=-=-=-=-=', pageKey, mergedData)
+      if (!pageData) {
+        let pageDef = getPageDefinition(pageKey)
+        if (!pageKey || !pageDef) {
+          // console.log('EhrData asLoadedDataForPageKey ................ too soon')
+          return {}
+        }
+        let defaultPageValue = pageDef.pageData
+        if (!defaultPageValue) {
+          defaultPageValue = {}
+          // console.log('asLoadedDataForPageKey page defs did not spec a default so create one ', defaultPageValue)
+        } else {
+          // console.log('asLoadedDataForPageKey page default data is ', JSON.stringify(defaultPageValue))
+        }
+        pageData = defaultPageValue
+        mergedData[pageKey] = defaultPageValue
+        let formDefs = pageDef.page_form
+        if (formDefs) {
+          // console.log('EhrData asLoadedDataForPageKey formDefs -=-=-=-=-=-=-=-=-=-=-=-=', pageKey)
+          let rows = formDefs.rows
+          rows.forEach(row => {
+            row.elements.forEach(element => {
+              let defaultValue = getDefaultValue(element)
+              let isDevelopingContent = rootState.visit.isDevelopingContent
+              if (isDevelopingContent) {
+                defaultValue = getDataCaseStudy(element)
+                // console.log('prepareAsLoadedData isDevelopingContent, defaultValue', isDevelopingContent, defaultValue  )
+              }
+              // TODO see about date, time, and boolean default values
+              if (!pageData[element.elementKey]) {
+                pageData[element.elementKey] = defaultValue
+              }
+            })
+          })
+        }
+      }
+      return pageData
+    }
+  },
   scratchData: state => {
     // only return for student
     // scratchData is the student's notes
@@ -171,7 +215,7 @@ const mutations = {
     state.forStudent = value
   },
   _setActivityData: (state, cData) => {
-    console.log('_setActivityData', cData)
+    // console.log('_setActivityData', cData)
     // console.log('_setActivityData\'s assignment', cData.assignment)
     state.sActivityData = cData
     EventBus.$emit(ACTIVITY_DATA_EVENT)
@@ -183,10 +227,8 @@ const mutations = {
       assignmentData: activitydata.assignmentData || {},
       lastDate: activitydata.lastDate
     }
-    console.log(
-      'set state.sCurrentStudentData.assignmentData',
-      state.sCurrentStudentData.assignmentData
-    )
+    // let sd = state.sCurrentStudentData.assignmentData
+    // console.log('set state.sCurrentStudentData.assignmentData',sd)
   },
   setCurrentStudentInfo: (state, cData) => {
     // console.log('set setCurrentStudentInfo', cData)

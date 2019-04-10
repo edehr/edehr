@@ -40,6 +40,7 @@ export default {
       tableHeader: [],
       tableBody: [],
       marSummary: {}, // helper class
+      marHelper: {},
       KEY_MED_ORDER: MS.KEY_MED_ORDER,
       KEY_MAR: MS.KEY_MAR
     }
@@ -49,6 +50,7 @@ export default {
   },
   computed: {
     refreshProperty () {
+      // console.log('MarSummary component.refreshProperty()')
       // See EhrPageForm for more on why we have refreshProperty
       this.refresh()
       return this.tableHeader
@@ -59,8 +61,9 @@ export default {
     marCellStyle (cell) {  return this.marSummary.marCellStyle(cell) },
     refresh () {
       if(this.ehrHelp){
-        let help = new MarHelper(this.ehrHelp)
         let summary = this.marSummary
+        let help = this.marHelper
+        // console.log('MarSummary component.refresh()')
         summary.summaryRefresh(help.marRecords, help.theMedOrders)
         this.tableHeader = summary.tableHeader
         this.tableBody = summary.tableBody
@@ -69,6 +72,7 @@ export default {
   },
   created: function () {
     this.marSummary = new MarSummary()
+    this.marHelper = new MarHelper(this.ehrHelp)
     const _this = this
     this.refreshEventHandler = function () { _this.refresh() }
     EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)

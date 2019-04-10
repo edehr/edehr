@@ -6,7 +6,7 @@
         ehr-edit-controls(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey", @controlsCallback="controlsCallback")
     ehr-panel-content
       div(class="region ehr-page-content")
-        mar-tabs(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
+        mar-tabs(:ehrHelp="ehrHelp")
     div(style="display:none")
       p This is the Mar page
       p Label: MAR

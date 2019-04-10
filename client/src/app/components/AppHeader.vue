@@ -9,7 +9,7 @@
         li(v-if="showDashboard", class="navItem")
           router-link(:to="{ name: `instructor` }", class="navLink") Dashboard
         li(v-if="showDashboard", class="navItem")
-          router-link(:to="{ name: `student` }", class="navLink subMenu") Assignment details
+          router-link(:to="{ name: `assignments` }", class="navLink subMenu") Assignment details
           ul(class="subNavList", v-show="showAssignmentDetails")
             div(class="columns")
               div(class="column is-11")

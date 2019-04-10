@@ -8,102 +8,122 @@ export default function () {
         {
           label: "Name",
           elementKey: "name",
-          fqn: "genitourinary.table.name"
+          fqn: "genitourinary.table.name",
+          dataCaseStudy: "Jason"
         },
         {
           label: "Profession",
           elementKey: "profession",
-          fqn: "genitourinary.table.profession"
+          fqn: "genitourinary.table.profession",
+          dataCaseStudy: "RN"
         },
         {
           label: "Day",
           elementKey: "day",
-          fqn: "genitourinary.table.day"
+          fqn: "genitourinary.table.day",
+          dataCaseStudy: "0"
         },
         {
           label: "Time",
           elementKey: "time",
-          fqn: "genitourinary.table.time"
+          fqn: "genitourinary.table.time",
+          dataCaseStudy: "0.8125"
         },
         {
           label: "None",
           elementKey: "none",
-          fqn: "genitourinary.table.urinaryGroup1.none"
+          fqn: "genitourinary.table.urinaryGroup1.none",
+          dataCaseStudy: "None"
         },
         {
           label: "Increased frequency",
           elementKey: "increasedFrequency",
-          fqn: "genitourinary.table.urinaryGroup1.increasedFrequency"
+          fqn: "genitourinary.table.urinaryGroup1.increasedFrequency",
+          dataCaseStudy: "None"
         },
         {
           label: "Dysuria",
           elementKey: "dysuria",
-          fqn: "genitourinary.table.urinaryGroup1.dysuria"
+          fqn: "genitourinary.table.urinaryGroup1.dysuria",
+          dataCaseStudy: "None"
         },
         {
           label: "Hermaturia",
           elementKey: "hernaturia",
-          fqn: "genitourinary.table.urinaryGroup1.hernaturia"
+          fqn: "genitourinary.table.urinaryGroup1.hernaturia",
+          dataCaseStudy: "None"
         },
         {
           label: "Oliguria",
           elementKey: "oliguria",
-          fqn: "genitourinary.table.urinaryGroup1.oliguria"
+          fqn: "genitourinary.table.urinaryGroup1.oliguria",
+          dataCaseStudy: "None"
         },
         {
           label: "Incontinence",
           elementKey: "incontinence",
-          fqn: "genitourinary.table.urinaryGroup1.incontinence"
+          fqn: "genitourinary.table.urinaryGroup1.incontinence",
+          dataCaseStudy: "None"
         },
         {
           label: "Retention",
           elementKey: "retention",
-          fqn: "genitourinary.table.urinaryGroup1.retention"
+          fqn: "genitourinary.table.urinaryGroup1.retention",
+          dataCaseStudy: "None"
         },
         {
           label: "Distention",
           elementKey: "distention",
-          fqn: "genitourinary.table.urinaryGroup1.distention"
+          fqn: "genitourinary.table.urinaryGroup1.distention",
+          dataCaseStudy: "None"
         },
         {
           label: "Last voided day",
           elementKey: "lastVoidedDay",
-          fqn: "genitourinary.table.urinaryGroup2.lastVoidedDay"
+          fqn: "genitourinary.table.urinaryGroup2.lastVoidedDay",
+          dataCaseStudy: "0"
         },
         {
           label: "Last voided time",
           elementKey: "lastVoidedTime",
-          fqn: "genitourinary.table.urinaryGroup2.lastVoidedTime"
+          fqn: "genitourinary.table.urinaryGroup2.lastVoidedTime",
+          dataCaseStudy: "0.666666666666667"
         },
         {
           label: "Urine colour",
           elementKey: "colour",
-          fqn: "genitourinary.table.urinaryGroup2.colour"
+          fqn: "genitourinary.table.urinaryGroup2.colour",
+          dataCaseStudy: "Pale yellow"
         },
         {
           label: "Urine consistency",
           elementKey: "consistency",
-          fqn: "genitourinary.table.urinaryGroup2.consistency"
+          fqn: "genitourinary.table.urinaryGroup2.consistency",
+          dataCaseStudy: "Clear"
         },
         {
           label: "Diaper",
           elementKey: "diaper",
-          fqn: "genitourinary.table.urinaryGroup2.diaper"
+          fqn: "genitourinary.table.urinaryGroup2.diaper",
+          dataCaseStudy: "No"
         },
         {
           label: "Foley",
           elementKey: "foley",
-          fqn: "genitourinary.table.foleyGroup.foley"
+          fqn: "genitourinary.table.foleyGroup.foley",
+          dataCaseStudy: "No"
         },
         {
           label: "Type",
           elementKey: "foleyType",
-          fqn: "genitourinary.table.foleyGroup.foleyType"
+          fqn: "genitourinary.table.foleyGroup.foleyType",
+          dataCaseStudy: "(not filled)"
         },
         {
           label: "Size",
           elementKey: "foleySize",
-          fqn: "genitourinary.table.foleyGroup.foleySize"
+          fqn: "genitourinary.table.foleyGroup.foleySize",
+          dataCaseStudy: "(not filled)"
         },
         {
           label: "Last catheter change",
@@ -113,37 +133,44 @@ export default function () {
         {
           label: "Pelvic pain",
           elementKey: "pelvicPain",
-          fqn: "genitourinary.table.pelvicGroup.pelvicPain"
+          fqn: "genitourinary.table.pelvicGroup.pelvicPain",
+          dataCaseStudy: "No"
         },
         {
           label: "Location",
           elementKey: "location",
-          fqn: "genitourinary.table.pelvicGroup.location"
+          fqn: "genitourinary.table.pelvicGroup.location",
+          dataCaseStudy: "(not filled)"
         },
         {
           label: "If answered yes, please complete the pain assessment",
           elementKey: "aLabel",
-          fqn: "genitourinary.table.pelvicGroup.aLabel"
+          fqn: "genitourinary.table.pelvicGroup.aLabel",
+          dataCaseStudy: "(not filled)"
         },
         {
           label: "Pelvic pain source",
           elementKey: "pelvicPainSource",
-          fqn: "genitourinary.table.pelvicGroup.pelvicPainSource"
+          fqn: "genitourinary.table.pelvicGroup.pelvicPainSource",
+          dataCaseStudy: "(not filled)"
         },
         {
           label: "Discharge",
           elementKey: "discharge",
-          fqn: "genitourinary.table.vaginal.discharge"
+          fqn: "genitourinary.table.vaginal.discharge",
+          dataCaseStudy: "(not filled)"
         },
         {
           label: "Bleeding",
           elementKey: "bleeding",
-          fqn: "genitourinary.table.vaginal.bleeding"
+          fqn: "genitourinary.table.vaginal.bleeding",
+          dataCaseStudy: "(not filled)"
         },
         {
           label: "Description",
           elementKey: "description",
-          fqn: "genitourinary.table.vaginal.description"
+          fqn: "genitourinary.table.vaginal.description",
+          dataCaseStudy: "(not filled)"
         },
         {
           label: "Last menstrual period date",
@@ -153,27 +180,32 @@ export default function () {
         {
           label: "Pregnant",
           elementKey: "pregnant",
-          fqn: "genitourinary.table.pregnantGroup.pregnant"
+          fqn: "genitourinary.table.pregnantGroup.pregnant",
+          dataCaseStudy: "no"
         },
         {
           label: "Gravida (number of pregnancies)",
           elementKey: "gravida",
-          fqn: "genitourinary.table.pregnantGroup.gravida"
+          fqn: "genitourinary.table.pregnantGroup.gravida",
+          dataCaseStudy: "5"
         },
         {
           label: "Para (number of children)",
           elementKey: "para",
-          fqn: "genitourinary.table.pregnantGroup.para"
+          fqn: "genitourinary.table.pregnantGroup.para",
+          dataCaseStudy: "4"
         },
         {
           label: "Living children",
           elementKey: "livingChildren",
-          fqn: "genitourinary.table.pregnantGroup.livingChildren"
+          fqn: "genitourinary.table.pregnantGroup.livingChildren",
+          dataCaseStudy: "4"
         },
         {
           label: "Comments",
           elementKey: "comments",
-          fqn: "genitourinary.table.pregnantGroup.comments"
+          fqn: "genitourinary.table.pregnantGroup.comments",
+          dataCaseStudy: "(not filled)"
         }
       ],
       generated: "2019-04-10T11:07:01-07:00",
@@ -198,7 +230,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Profession",
+              label: "Pregnancy",
               pageDataKey: "genitourinary",
               level2Key: "table",
               elementKey: "profession",
@@ -208,7 +240,10 @@ export default function () {
               formCss: "user_pro",
               tableColumn: "2",
               dataParent: "genitourinary.table",
-              fqn: "genitourinary.table.profession",
+              fqn: "genitourinary.table.pregnantGroup",
+              containerType: "fieldset",
+              containerKey: "pregnantGroup",
+              tableCss: "hide-table-element",
               tableKey: "table"
             },
             {
@@ -238,22 +273,6 @@ export default function () {
               tableCss: "hr-table",
               dataParent: "genitourinary.table",
               fqn: "genitourinary.table.time",
-              tableKey: "table"
-            },
-            {
-              label: "Urinary symptoms",
-              pageDataKey: "genitourinary",
-              level2Key: "table",
-              elementKey: "urinaryGroup1",
-              inputType: "fieldset",
-              formRow: "2",
-              formColumn: "1",
-              tableColumn: "5",
-              dataParent: "genitourinary.table",
-              fqn: "genitourinary.table.urinaryGroup1",
-              containerType: "fieldset",
-              containerKey: "urinaryGroup1",
-              tableCss: "hide-table-element",
               tableKey: "table"
             },
             {
@@ -375,6 +394,22 @@ export default function () {
               fqn: "genitourinary.table.urinaryGroup1.distention",
               tableKey: "table",
               formColumn: "1"
+            },
+            {
+              label: "Urinary symptoms",
+              pageDataKey: "genitourinary",
+              level2Key: "table",
+              elementKey: "urinaryGroup1",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "1",
+              tableColumn: "5",
+              dataParent: "genitourinary.table",
+              fqn: "genitourinary.table.urinaryGroup1",
+              containerType: "fieldset",
+              containerKey: "urinaryGroup1",
+              tableCss: "hide-table-element",
+              tableKey: "table"
             },
             {
               label: "Last voided day",
@@ -529,20 +564,18 @@ export default function () {
               formColumn: "1"
             },
             {
-              label: "Type",
+              label: "Profession",
               pageDataKey: "genitourinary",
               level2Key: "table",
-              level3Key: "foleyGroup",
-              elementKey: "foleyType",
+              elementKey: "profession",
               inputType: "text",
-              tableColumn: "20",
-              fsetRow: "2",
-              fsetCol: "1",
-              helperText: "eg. indwelling catheter",
-              dataParent: "genitourinary.table.foleyGroup",
-              fqn: "genitourinary.table.foleyGroup.foleyType",
-              tableKey: "table",
-              formColumn: "1"
+              formRow: "1",
+              formColumn: "2",
+              formCss: "user_pro",
+              tableColumn: "2",
+              dataParent: "genitourinary.table",
+              fqn: "genitourinary.table.profession",
+              tableKey: "table"
             },
             {
               label: "Size",
@@ -843,7 +876,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Pregnancy",
+              label: "Type",
               pageDataKey: "genitourinary",
               level2Key: "table",
               elementKey: "pregnantGroup",
@@ -1727,77 +1760,92 @@ export default function () {
         {
           label: "Name",
           elementKey: "name",
-          fqn: "musculoskeletal.table.name"
+          fqn: "musculoskeletal.table.name",
+          dataCaseStudy: "Jason"
         },
         {
           label: "Profession",
           elementKey: "profession",
-          fqn: "musculoskeletal.table.profession"
+          fqn: "musculoskeletal.table.profession",
+          dataCaseStudy: "RN"
         },
         {
           label: "Day",
           elementKey: "day",
-          fqn: "musculoskeletal.table.day"
+          fqn: "musculoskeletal.table.day",
+          dataCaseStudy: "0"
         },
         {
           label: "Time",
           elementKey: "time",
-          fqn: "musculoskeletal.table.time"
+          fqn: "musculoskeletal.table.time",
+          dataCaseStudy: "0.8125"
         },
         {
           label: "Swelling",
           elementKey: "swelling",
-          fqn: "musculoskeletal.table.swelling"
+          fqn: "musculoskeletal.table.swelling",
+          dataCaseStudy: "Absent"
         },
         {
           label: "Pain",
           elementKey: "pain",
-          fqn: "musculoskeletal.table.pain"
+          fqn: "musculoskeletal.table.pain",
+          dataCaseStudy: "Absent"
         },
         {
           label: "Deformity",
           elementKey: "deformity",
-          fqn: "musculoskeletal.table.deformity"
+          fqn: "musculoskeletal.table.deformity",
+          dataCaseStudy: "Absent"
         },
         {
           label: "Movement",
           elementKey: "movement",
-          fqn: "musculoskeletal.table.movement"
+          fqn: "musculoskeletal.table.movement",
+          dataCaseStudy: "Normal"
         },
         {
           label: "Sensation",
           elementKey: "sensation",
-          fqn: "musculoskeletal.table.sensation"
+          fqn: "musculoskeletal.table.sensation",
+          dataCaseStudy: "Present"
         },
         {
           label: "Pulse",
           elementKey: "pulse",
-          fqn: "musculoskeletal.table.pulse"
+          fqn: "musculoskeletal.table.pulse",
+          dataCaseStudy: "Moderate"
         },
         {
           label: "Colour",
           elementKey: "colour",
-          fqn: "musculoskeletal.table.colour"
+          fqn: "musculoskeletal.table.colour",
+          dataCaseStudy: "Flesh"
         },
         {
           label: "Temp",
           elementKey: "temp",
-          fqn: "musculoskeletal.table.temp"
+          fqn: "musculoskeletal.table.temp",
+          dataCaseStudy: "Warm"
         },
         {
           label: "Use of ambulatory aid",
           elementKey: "useOfAmbulatoryAid",
-          fqn: "musculoskeletal.table.useOfAmbulatoryAid"
+          fqn: "musculoskeletal.table.useOfAmbulatoryAid",
+          dataCaseStudy: "No"
         },
         {
           label: "Type",
           elementKey: "type",
-          fqn: "musculoskeletal.table.type"
+          fqn: "musculoskeletal.table.type",
+          dataCaseStudy: "(none selected)"
         },
         {
           label: "Comments",
           elementKey: "comments",
-          fqn: "musculoskeletal.table.comments"
+          fqn: "musculoskeletal.table.comments",
+          dataCaseStudy: "(not filled)"
         }
       ],
       generated: "2019-04-10T11:07:01-07:00",
@@ -2477,22 +2525,26 @@ export default function () {
         {
           label: "Name",
           elementKey: "name",
-          fqn: "pain.table.name"
+          fqn: "pain.table.name",
+          dataCaseStudy: "Jason"
         },
         {
           label: "Profession",
           elementKey: "profession",
-          fqn: "pain.table.profession"
+          fqn: "pain.table.profession",
+          dataCaseStudy: "RN"
         },
         {
           label: "Day",
           elementKey: "day",
-          fqn: "pain.table.day"
+          fqn: "pain.table.day",
+          dataCaseStudy: "0"
         },
         {
           label: "Time",
           elementKey: "time",
-          fqn: "pain.table.time"
+          fqn: "pain.table.time",
+          dataCaseStudy: "0.8125"
         },
         {
           label: "Location",
@@ -2502,12 +2554,14 @@ export default function () {
         {
           label: "Pain intensity (0-10)",
           elementKey: "painScale",
-          fqn: "pain.table.primarySite.painScale"
+          fqn: "pain.table.primarySite.painScale",
+          dataCaseStudy: "0"
         },
         {
           label: "Respiratory rate (br/min)",
           elementKey: "respiratoryRate",
-          fqn: "pain.table.primarySite.respiratoryRate"
+          fqn: "pain.table.primarySite.respiratoryRate",
+          dataCaseStudy: "28"
         },
         {
           label: "Onset",
@@ -2615,7 +2669,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Profession",
+              label: "Secondary pain site",
               pageDataKey: "pain",
               level2Key: "table",
               elementKey: "profession",
@@ -2625,7 +2679,10 @@ export default function () {
               formCss: "user_pro",
               tableColumn: "2",
               dataParent: "pain.table",
-              fqn: "pain.table.profession",
+              fqn: "pain.table.secondarySite",
+              containerType: "fieldset",
+              containerKey: "secondarySite",
+              tableCss: "hide-table-element",
               tableKey: "table"
             },
             {
@@ -2792,19 +2849,18 @@ export default function () {
               formColumn: "3"
             },
             {
-              label: "Comments",
+              label: "Profession",
               pageDataKey: "pain",
               level2Key: "table",
-              level3Key: "primarySite",
-              elementKey: "comments",
-              inputType: "textarea",
-              tableColumn: "14",
-              fsetRow: "4",
-              fsetCol: "1",
-              dataParent: "pain.table.primarySite",
-              fqn: "pain.table.primarySite.comments",
-              tableKey: "table",
-              formColumn: "1"
+              elementKey: "profession",
+              inputType: "text",
+              formRow: "1",
+              formColumn: "2",
+              formCss: "user_pro",
+              tableColumn: "2",
+              dataParent: "pain.table",
+              fqn: "pain.table.profession",
+              tableKey: "table"
             },
             {
               label: "Primary pain site",
@@ -2948,10 +3004,12 @@ export default function () {
               fsetRow: "4",
               fsetCol: "1",
               dataParent: "pain.table.secondarySite",
-              fqn: "pain.table.secondarySite.comments"
+              fqn: "pain.table.secondarySite.comments",
+              tableKey: "table",
+              formColumn: "1"
             },
             {
-              label: "Secondary pain site",
+              label: "Comments",
               pageDataKey: "pain",
               level2Key: "table",
               elementKey: "secondarySite",
@@ -3205,14 +3263,14 @@ export default function () {
                               label: "Comments",
                               pageDataKey: "pain",
                               level2Key: "table",
-                              level3Key: "primarySite",
+                              level3Key: "secondarySite",
                               elementKey: "comments",
                               inputType: "textarea",
-                              tableColumn: "14",
+                              tableColumn: "24",
                               fsetRow: "4",
                               fsetCol: "1",
-                              dataParent: "pain.table.primarySite",
-                              fqn: "pain.table.primarySite.comments",
+                              dataParent: "pain.table.secondarySite",
+                              fqn: "pain.table.secondarySite.comments",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -3399,14 +3457,14 @@ export default function () {
                               label: "Comments",
                               pageDataKey: "pain",
                               level2Key: "table",
-                              level3Key: "primarySite",
+                              level3Key: "secondarySite",
                               elementKey: "comments",
                               inputType: "textarea",
-                              tableColumn: "14",
+                              tableColumn: "24",
                               fsetRow: "4",
                               fsetCol: "1",
-                              dataParent: "pain.table.primarySite",
-                              fqn: "pain.table.primarySite.comments",
+                              dataParent: "pain.table.secondarySite",
+                              fqn: "pain.table.secondarySite.comments",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -3434,157 +3492,188 @@ export default function () {
         {
           label: "Name",
           elementKey: "name",
-          fqn: "biopsychosocial.table.name"
+          fqn: "biopsychosocial.table.name",
+          dataCaseStudy: "Jason"
         },
         {
           label: "Profession",
           elementKey: "profession",
-          fqn: "biopsychosocial.table.profession"
+          fqn: "biopsychosocial.table.profession",
+          dataCaseStudy: "RN"
         },
         {
           label: "Day",
           elementKey: "day",
-          fqn: "biopsychosocial.table.day"
+          fqn: "biopsychosocial.table.day",
+          dataCaseStudy: "0"
         },
         {
           label: "Time",
           elementKey: "time",
-          fqn: "biopsychosocial.table.time"
+          fqn: "biopsychosocial.table.time",
+          dataCaseStudy: "0.8125"
         },
         {
           label: "From our experience in the hospital, we know that domestic violence can be a problem. Is this a factor in your life?",
           elementKey: "domesticViolence",
-          fqn: "biopsychosocial.table.domesticViolence"
+          fqn: "biopsychosocial.table.domesticViolence",
+          dataCaseStudy: "no"
         },
         {
           label: "Would you like to speak to a social worker?",
           elementKey: "requestContact",
-          fqn: "biopsychosocial.table.requestContact"
+          fqn: "biopsychosocial.table.requestContact",
+          dataCaseStudy: "no"
         },
         {
           label: "Calm",
           elementKey: "calm",
-          fqn: "biopsychosocial.table.behaviour.calm"
+          fqn: "biopsychosocial.table.behaviour.calm",
+          dataCaseStudy: "Calm-NL-Cooperative"
         },
         {
           label: "Cooperative",
           elementKey: "cooperative",
-          fqn: "biopsychosocial.table.behaviour.cooperative"
+          fqn: "biopsychosocial.table.behaviour.cooperative",
+          dataCaseStudy: "Calm-NL-Cooperative"
         },
         {
           label: "Agitated",
           elementKey: "agitated",
-          fqn: "biopsychosocial.table.behaviour.agitated"
+          fqn: "biopsychosocial.table.behaviour.agitated",
+          dataCaseStudy: "Calm-NL-Cooperative"
         },
         {
           label: "Flat affect",
           elementKey: "flat",
-          fqn: "biopsychosocial.table.behaviour.flat"
+          fqn: "biopsychosocial.table.behaviour.flat",
+          dataCaseStudy: "Calm-NL-Cooperative"
         },
         {
           label: "Threatening",
           elementKey: "threatening",
-          fqn: "biopsychosocial.table.behaviour.threatening"
+          fqn: "biopsychosocial.table.behaviour.threatening",
+          dataCaseStudy: "Calm-NL-Cooperative"
         },
         {
           label: "Physically agressive",
           elementKey: "agressive",
-          fqn: "biopsychosocial.table.behaviour.agressive"
+          fqn: "biopsychosocial.table.behaviour.agressive",
+          dataCaseStudy: "Calm-NL-Cooperative"
         },
         {
           label: "Uncommunicative",
           elementKey: "uncommunicative",
-          fqn: "biopsychosocial.table.behaviour.uncommunicative"
+          fqn: "biopsychosocial.table.behaviour.uncommunicative",
+          dataCaseStudy: "Calm-NL-Cooperative"
         },
         {
           label: "None",
           elementKey: "none",
-          fqn: "biopsychosocial.table.hallucinations.none"
+          fqn: "biopsychosocial.table.hallucinations.none",
+          dataCaseStudy: "None"
         },
         {
           label: "Visual",
           elementKey: "visual",
-          fqn: "biopsychosocial.table.hallucinations.visual"
+          fqn: "biopsychosocial.table.hallucinations.visual",
+          dataCaseStudy: "None"
         },
         {
           label: "Auditory",
           elementKey: "auditory",
-          fqn: "biopsychosocial.table.hallucinations.auditory"
+          fqn: "biopsychosocial.table.hallucinations.auditory",
+          dataCaseStudy: "None"
         },
         {
           label: "Olafactory",
           elementKey: "olafactory",
-          fqn: "biopsychosocial.table.hallucinations.olafactory"
+          fqn: "biopsychosocial.table.hallucinations.olafactory",
+          dataCaseStudy: "None"
         },
         {
           label: "Suicidal",
           elementKey: "suicidal",
-          fqn: "biopsychosocial.table.state.suicidal"
+          fqn: "biopsychosocial.table.state.suicidal",
+          dataCaseStudy: "None"
         },
         {
           label: "Homicidal",
           elementKey: "homicidal",
-          fqn: "biopsychosocial.table.state.homicidal"
+          fqn: "biopsychosocial.table.state.homicidal",
+          dataCaseStudy: "None"
         },
         {
           label: "Speech",
           elementKey: "speech",
-          fqn: "biopsychosocial.table.state.speech"
+          fqn: "biopsychosocial.table.state.speech",
+          dataCaseStudy: "Clear and coherent"
         },
         {
           label: "Hygiene",
           elementKey: "hygieneGrooming",
-          fqn: "biopsychosocial.table.hygiene.hygieneGrooming"
+          fqn: "biopsychosocial.table.hygiene.hygieneGrooming",
+          dataCaseStudy: "Good"
         },
         {
           label: "Hygiene comments",
           elementKey: "hygieneComments",
-          fqn: "biopsychosocial.table.hygiene.hygieneComments"
+          fqn: "biopsychosocial.table.hygiene.hygieneComments",
+          dataCaseStudy: "(not filled)"
         },
         {
           label: "Support person",
           elementKey: "supportPerson",
-          fqn: "biopsychosocial.table.support.supportPerson"
+          fqn: "biopsychosocial.table.support.supportPerson",
+          dataCaseStudy: "Thomas"
         },
         {
           label: "Support comments",
           elementKey: "supportComments",
-          fqn: "biopsychosocial.table.support.supportComments"
+          fqn: "biopsychosocial.table.support.supportComments",
+          dataCaseStudy: "(not filled)"
         },
         {
           label: "Security/police present",
           elementKey: "securityPolicePresent",
-          fqn: "biopsychosocial.table.security.securityPolicePresent"
+          fqn: "biopsychosocial.table.security.securityPolicePresent",
+          dataCaseStudy: "No"
         },
         {
           label: "Security comments",
           elementKey: "securityComments",
-          fqn: "biopsychosocial.table.security.securityComments"
+          fqn: "biopsychosocial.table.security.securityComments",
+          dataCaseStudy: "(not filled)"
         },
         {
           label: "Patient restrained",
           elementKey: "patientRestrained",
-          fqn: "biopsychosocial.table.restraint.patientRestrained"
+          fqn: "biopsychosocial.table.restraint.patientRestrained",
+          dataCaseStudy: "No"
         },
         {
           label: "Day",
           elementKey: "restraintDay",
-          fqn: "biopsychosocial.table.restraint.restraintDay"
+          fqn: "biopsychosocial.table.restraint.restraintDay",
+          dataCaseStudy: "(not filled)"
         },
         {
           label: "Time",
           elementKey: "restraintTime",
-          fqn: "biopsychosocial.table.restraint.restraintTime"
+          fqn: "biopsychosocial.table.restraint.restraintTime",
+          dataCaseStudy: "(not filled)"
         },
         {
           label: "Restraint comments",
           elementKey: "restraintComments",
-          fqn: "biopsychosocial.table.restraint.restraintComments"
+          fqn: "biopsychosocial.table.restraint.restraintComments",
+          dataCaseStudy: "(not filled)"
         },
         {
           label: "General comments",
           elementKey: "generalComments",
-          fqn: "biopsychosocial.table.generalComments"
+          fqn: "biopsychosocial.table.generalComments",
+          dataCaseStudy: "(not filled)"
         }
       ],
       generated: "2019-04-10T11:07:01-07:00",
@@ -3809,21 +3898,6 @@ export default function () {
               formColumn: "1"
             },
             {
-              label: "Behaviour",
-              pageDataKey: "biopsychosocial",
-              level2Key: "table",
-              elementKey: "behaviour",
-              inputType: "fieldset",
-              formRow: "4",
-              formColumn: "1",
-              dataParent: "biopsychosocial.table",
-              fqn: "biopsychosocial.table.behaviour",
-              containerType: "fieldset",
-              containerKey: "behaviour",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
               label: "None",
               pageDataKey: "biopsychosocial",
               level2Key: "table",
@@ -3883,21 +3957,6 @@ export default function () {
               fqn: "biopsychosocial.table.hallucinations.olafactory",
               tableKey: "table",
               formColumn: "1"
-            },
-            {
-              label: "Hallucinations",
-              pageDataKey: "biopsychosocial",
-              level2Key: "table",
-              elementKey: "hallucinations",
-              inputType: "fieldset",
-              formRow: "4",
-              formColumn: "2",
-              dataParent: "biopsychosocial.table",
-              fqn: "biopsychosocial.table.hallucinations",
-              containerType: "fieldset",
-              containerKey: "hallucinations",
-              tableCss: "hide-table-element",
-              tableKey: "table"
             },
             {
               label: "Suicidal",
@@ -3971,21 +4030,6 @@ export default function () {
               fqn: "biopsychosocial.table.state.speech",
               tableKey: "table",
               formColumn: "1"
-            },
-            {
-              label: "State",
-              pageDataKey: "biopsychosocial",
-              level2Key: "table",
-              elementKey: "state",
-              inputType: "fieldset",
-              formRow: "4",
-              formColumn: "3",
-              dataParent: "biopsychosocial.table",
-              fqn: "biopsychosocial.table.state",
-              containerType: "fieldset",
-              containerKey: "state",
-              tableCss: "hide-table-element",
-              tableKey: "table"
             },
             {
               label: "Hygiene",
@@ -4076,21 +4120,6 @@ export default function () {
               formColumn: "1"
             },
             {
-              label: "Support",
-              pageDataKey: "biopsychosocial",
-              level2Key: "table",
-              elementKey: "support",
-              inputType: "fieldset",
-              formRow: "6",
-              formColumn: "1",
-              dataParent: "biopsychosocial.table",
-              fqn: "biopsychosocial.table.support",
-              containerType: "fieldset",
-              containerKey: "support",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
               label: "Security/police present",
               pageDataKey: "biopsychosocial",
               level2Key: "table",
@@ -4120,21 +4149,6 @@ export default function () {
               fqn: "biopsychosocial.table.security.securityComments",
               tableKey: "table",
               formColumn: "1"
-            },
-            {
-              label: "Security",
-              pageDataKey: "biopsychosocial",
-              level2Key: "table",
-              elementKey: "security",
-              inputType: "fieldset",
-              formRow: "6",
-              formColumn: "2",
-              dataParent: "biopsychosocial.table",
-              fqn: "biopsychosocial.table.security",
-              containerType: "fieldset",
-              containerKey: "security",
-              tableCss: "hide-table-element",
-              tableKey: "table"
             },
             {
               label: "Patient restrained",
@@ -4205,6 +4219,95 @@ export default function () {
               formColumn: "1"
             },
             {
+              label: "Hygiene and grooming",
+              pageDataKey: "biopsychosocial",
+              level2Key: "table",
+              elementKey: "hygiene",
+              inputType: "fieldset",
+              formRow: "5",
+              formColumn: "1",
+              formCss: "is-one-third",
+              dataParent: "biopsychosocial.table",
+              fqn: "biopsychosocial.table.hygiene",
+              containerType: "fieldset",
+              containerKey: "hygiene",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
+              label: "Security",
+              pageDataKey: "biopsychosocial",
+              level2Key: "table",
+              elementKey: "security",
+              inputType: "fieldset",
+              formRow: "6",
+              formColumn: "2",
+              dataParent: "biopsychosocial.table",
+              fqn: "biopsychosocial.table.security",
+              containerType: "fieldset",
+              containerKey: "security",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
+              label: "State",
+              pageDataKey: "biopsychosocial",
+              level2Key: "table",
+              elementKey: "state",
+              inputType: "fieldset",
+              formRow: "4",
+              formColumn: "3",
+              dataParent: "biopsychosocial.table",
+              fqn: "biopsychosocial.table.state",
+              containerType: "fieldset",
+              containerKey: "state",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
+              label: "General comments",
+              pageDataKey: "biopsychosocial",
+              level2Key: "table",
+              elementKey: "generalComments",
+              inputType: "textarea",
+              formRow: "7",
+              formColumn: "1",
+              tableColumn: "31",
+              dataParent: "biopsychosocial.table",
+              fqn: "biopsychosocial.table.generalComments",
+              tableKey: "table"
+            },
+            {
+              label: "Support",
+              pageDataKey: "biopsychosocial",
+              level2Key: "table",
+              elementKey: "support",
+              inputType: "fieldset",
+              formRow: "6",
+              formColumn: "1",
+              dataParent: "biopsychosocial.table",
+              fqn: "biopsychosocial.table.support",
+              containerType: "fieldset",
+              containerKey: "support",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
+              label: "Behaviour",
+              pageDataKey: "biopsychosocial",
+              level2Key: "table",
+              elementKey: "behaviour",
+              inputType: "fieldset",
+              formRow: "4",
+              formColumn: "1",
+              dataParent: "biopsychosocial.table",
+              fqn: "biopsychosocial.table.behaviour",
+              containerType: "fieldset",
+              containerKey: "behaviour",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
               label: "Restraint",
               pageDataKey: "biopsychosocial",
               level2Key: "table",
@@ -4220,16 +4323,18 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "General comments",
+              label: "Hallucinations",
               pageDataKey: "biopsychosocial",
               level2Key: "table",
-              elementKey: "generalComments",
-              inputType: "textarea",
-              formRow: "7",
-              formColumn: "1",
-              tableColumn: "31",
+              elementKey: "hallucinations",
+              inputType: "fieldset",
+              formRow: "4",
+              formColumn: "2",
               dataParent: "biopsychosocial.table",
-              fqn: "biopsychosocial.table.generalComments",
+              fqn: "biopsychosocial.table.hallucinations",
+              containerType: "fieldset",
+              containerKey: "hallucinations",
+              tableCss: "hide-table-element",
               tableKey: "table"
             }
           ],
@@ -5075,32 +5180,38 @@ export default function () {
         {
           label: "Name",
           elementKey: "name",
-          fqn: "nonmedOrders.table.name"
+          fqn: "nonmedOrders.table.name",
+          dataCaseStudy: "1) Chest xray-NL-2) ABG-NL-3) CBC, electrolytes, BUN, creatine-NL-4) Spirometry"
         },
         {
           label: "Profession",
           elementKey: "profession",
-          fqn: "nonmedOrders.table.profession"
+          fqn: "nonmedOrders.table.profession",
+          dataCaseStudy: "1) Chest xray-NL-2) ABG-NL-3) CBC, electrolytes, BUN, creatine-NL-4) Spirometry"
         },
         {
           label: "Day",
           elementKey: "day",
-          fqn: "nonmedOrders.table.day"
+          fqn: "nonmedOrders.table.day",
+          dataCaseStudy: "1) Chest xray-NL-2) ABG-NL-3) CBC, electrolytes, BUN, creatine-NL-4) Spirometry"
         },
         {
           label: "Time",
           elementKey: "time",
-          fqn: "nonmedOrders.table.time"
+          fqn: "nonmedOrders.table.time",
+          dataCaseStudy: "1) Chest xray-NL-2) ABG-NL-3) CBC, electrolytes, BUN, creatine-NL-4) Spirometry"
         },
         {
           label: "Order",
           elementKey: "order",
-          fqn: "nonmedOrders.table.order"
+          fqn: "nonmedOrders.table.order",
+          dataCaseStudy: "1) Chest xray-NL-2) ABG-NL-3) CBC, electrolytes, BUN, creatine-NL-4) Spirometry"
         },
         {
           label: "Ordered by",
           elementKey: "orderedBy",
-          fqn: "nonmedOrders.table.orderedBy"
+          fqn: "nonmedOrders.table.orderedBy",
+          dataCaseStudy: "1 - 4) Dr. Singh"
         },
         {
           label: "Day of referral",
@@ -5115,12 +5226,14 @@ export default function () {
         {
           label: "Start day",
           elementKey: "startDay",
-          fqn: "nonmedOrders.table.startDay"
+          fqn: "nonmedOrders.table.startDay",
+          dataCaseStudy: "1 - 4) 0"
         },
         {
           label: "Start time",
           elementKey: "startTime",
-          fqn: "nonmedOrders.table.startTime"
+          fqn: "nonmedOrders.table.startTime",
+          dataCaseStudy: "1 - 4) 20:00"
         },
         {
           label: "End day",
@@ -5135,7 +5248,8 @@ export default function () {
         {
           label: "Status",
           elementKey: "status",
-          fqn: "nonmedOrders.table.status"
+          fqn: "nonmedOrders.table.status",
+          dataCaseStudy: "1 - 4) Ordered"
         },
         {
           label: "Reconciliation complete",
@@ -5643,51 +5757,61 @@ export default function () {
         {
           label: "Name",
           elementKey: "name",
-          fqn: "referrals.table.name"
+          fqn: "referrals.table.name",
+          dataCaseStudy: "Dr. Singh"
         },
         {
           label: "Profession",
           elementKey: "profession",
-          fqn: "referrals.table.profession"
+          fqn: "referrals.table.profession",
+          dataCaseStudy: "Physician"
         },
         {
           label: "Day",
           elementKey: "day",
-          fqn: "referrals.table.day"
+          fqn: "referrals.table.day",
+          dataCaseStudy: "0"
         },
         {
           label: "Time",
           elementKey: "time",
-          fqn: "referrals.table.time"
+          fqn: "referrals.table.time",
+          dataCaseStudy: "0.8125"
         },
         {
           label: "Referral name",
           elementKey: "referralName",
-          fqn: "referrals.table.referralName"
+          fqn: "referrals.table.referralName",
+          dataCaseStudy: "Matt"
         },
         {
           label: "Referral profession",
           elementKey: "referralProfession",
-          fqn: "referrals.table.referralProfession"
+          fqn: "referrals.table.referralProfession",
+          dataCaseStudy: "Resp therapy"
         },
         {
           elementKey: "aSpacer",
-          fqn: "referrals.table.aSpacer"
+          fqn: "referrals.table.aSpacer",
+          dataCaseStudy: "Resp therapy"
         },
         {
           label: "Appointment date",
           elementKey: "appointmentDate",
-          fqn: "referrals.table.appointmentDate"
+          fqn: "referrals.table.appointmentDate",
+          dataCaseStudy: "0"
         },
         {
           label: "Appointment time",
           elementKey: "appointmentTime",
-          fqn: "referrals.table.appointmentTime"
+          fqn: "referrals.table.appointmentTime",
+          dataCaseStudy: "0.833333333333333"
         },
         {
           label: "Status",
           elementKey: "status",
-          fqn: "referrals.table.status"
+          fqn: "referrals.table.status",
+          dataCaseStudy: "Active"
         }
       ],
       generated: "2019-04-10T11:07:01-07:00",
@@ -6017,22 +6141,26 @@ export default function () {
         {
           label: "Name",
           elementKey: "name",
-          fqn: "labRequisitions.table.name"
+          fqn: "labRequisitions.table.name",
+          dataCaseStudy: "Dr. Singh"
         },
         {
           label: "Profession",
           elementKey: "profession",
-          fqn: "labRequisitions.table.profession"
+          fqn: "labRequisitions.table.profession",
+          dataCaseStudy: "Physician"
         },
         {
           label: "Day",
           elementKey: "day",
-          fqn: "labRequisitions.table.day"
+          fqn: "labRequisitions.table.day",
+          dataCaseStudy: "0"
         },
         {
           label: "Time",
           elementKey: "time",
-          fqn: "labRequisitions.table.time"
+          fqn: "labRequisitions.table.time",
+          dataCaseStudy: "0.8125"
         },
         {
           label: "Requisition",
@@ -6373,22 +6501,26 @@ export default function () {
         {
           label: "Name",
           elementKey: "name",
-          fqn: "medicationOrders.table.name"
+          fqn: "medicationOrders.table.name",
+          dataCaseStudy: "Dr. Singh"
         },
         {
           label: "Profession",
           elementKey: "profession",
-          fqn: "medicationOrders.table.profession"
+          fqn: "medicationOrders.table.profession",
+          dataCaseStudy: "Physician"
         },
         {
           label: "Day",
           elementKey: "day",
-          fqn: "medicationOrders.table.day"
+          fqn: "medicationOrders.table.day",
+          dataCaseStudy: "0"
         },
         {
           label: "Time",
           elementKey: "time",
-          fqn: "medicationOrders.table.time"
+          fqn: "medicationOrders.table.time",
+          dataCaseStudy: "0.8125"
         },
         {
           label: "Medication",
@@ -6592,6 +6724,20 @@ export default function () {
               tableKey: "table"
             },
             {
+              pageDataKey: "medicationOrders",
+              level2Key: "table",
+              elementKey: "schedule",
+              inputType: "fieldset",
+              formRow: "3",
+              formColumn: "2",
+              dataParent: "medicationOrders.table",
+              fqn: "medicationOrders.table.schedule",
+              containerType: "fieldset",
+              containerKey: "schedule",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
               label: "With breakfast",
               pageDataKey: "medicationOrders",
               level2Key: "table",
@@ -6654,20 +6800,6 @@ export default function () {
               fsetRow: "6",
               dataParent: "medicationOrders.table.schedule",
               fqn: "medicationOrders.table.schedule.dinner",
-              tableKey: "table"
-            },
-            {
-              pageDataKey: "medicationOrders",
-              level2Key: "table",
-              elementKey: "schedule",
-              inputType: "fieldset",
-              formRow: "3",
-              formColumn: "2",
-              dataParent: "medicationOrders.table",
-              fqn: "medicationOrders.table.schedule",
-              containerType: "fieldset",
-              containerKey: "schedule",
-              tableCss: "hide-table-element",
               tableKey: "table"
             },
             {
@@ -7350,22 +7482,26 @@ export default function () {
         {
           label: "Role",
           elementKey: "role",
-          fqn: "dischargeSummary.role"
+          fqn: "dischargeSummary.role",
+          dataCaseStudy: "registered nurse"
         },
         {
           label: "Discharge day",
           elementKey: "dischargeDay",
-          fqn: "dischargeSummary.dischargeDay"
+          fqn: "dischargeSummary.dischargeDay",
+          dataCaseStudy: "Day 1"
         },
         {
           label: "Discharge time",
           elementKey: "dischargeTime",
-          fqn: "dischargeSummary.dischargeTime"
+          fqn: "dischargeSummary.dischargeTime",
+          dataCaseStudy: "0.333333333333333"
         },
         {
           label: "Discharged to",
           elementKey: "dischargedTo",
-          fqn: "dischargeSummary.dischargedTo"
+          fqn: "dischargeSummary.dischargedTo",
+          dataCaseStudy: "home"
         },
         {
           label: "Transferred to",
@@ -7380,7 +7516,8 @@ export default function () {
         {
           label: "Clinical summary",
           elementKey: "clinicalSummary",
-          fqn: "dischargeSummary.clinicalSummary"
+          fqn: "dischargeSummary.clinicalSummary",
+          dataCaseStudy: "Patient arrived with chronic COPD in acute form-NL-Previously diagnosed with hypertension-NL-Developed bilateral gram positive cocci pneunoma (what kind of cocci? Need a lab report)-NL-Treated with intravenous antibiotics and responded well"
         },
         {
           label: "Procedures and treatment",
@@ -7420,7 +7557,8 @@ export default function () {
         {
           label: "Discharge plan",
           elementKey: "dischargePlan",
-          fqn: "dischargeSummary.dischargePlan"
+          fqn: "dischargeSummary.dischargePlan",
+          dataCaseStudy: "Patient arrived with chronic COPD in acute form-NL-Previously diagnosed with hypertension-NL-Developed bilateral gram positive cocci pneunoma-NL-Treated with intravenous antibiotics and responded well"
         },
         {
           label: "Discharge education",
@@ -7735,17 +7873,20 @@ export default function () {
         {
           label: "MSP",
           elementKey: "msp",
-          fqn: "billing.msp"
+          fqn: "billing.msp",
+          dataCaseStudy: "MSP"
         },
         {
           label: "Third party",
           elementKey: "thirdParty",
-          fqn: "billing.thirdParty"
+          fqn: "billing.thirdParty",
+          dataCaseStudy: "MSP"
         },
         {
           label: "Federal",
           elementKey: "federal",
-          fqn: "billing.federal"
+          fqn: "billing.federal",
+          dataCaseStudy: "MSP"
         }
       ],
       generated: "2019-04-10T11:07:01-07:00",

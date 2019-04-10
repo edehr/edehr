@@ -38,6 +38,7 @@ export default class MarSummary {
       medMar.push(_createElement(MS.KEY_MED_ORDER, medOrder))
       marRecords.forEach( mar => {
         let marMedications = mar.medications
+        // console.log('MarSummary.summaryRefresh marMedications', marMedications)
         let found = marMedications.find( m => m.medication === medName)
         medMar.push(found? _createElement(MS.KEY_MAR, mar) : EMPTY)
       })

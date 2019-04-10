@@ -56,7 +56,7 @@ const actions = {
       let url = apiUrl + '/visits/flushed/' + visitId
       // console.log('In load page ', url)
       function invalid (msg) {
-        console.log('INVALID LoadVisit', msg)
+        // console.error('INVALID LoadVisit', msg)
         setApiError(context, msg)
         reject(new Error(msg))
       }
@@ -87,21 +87,22 @@ const actions = {
           let a_id = visitInfo.assignment._id
           // visitInfo.activityData contains the id of the ActivityData record
           let ad_id = visitInfo.activityData
-          console.log('dispatch load active data and assignment', ad_id)
+          // console.log('dispatch load active data and assignment', ad_id)
           let options = { root: true }
           return Promise.all([
             context.dispatch('ehrData/loadActivityData', { forStudent: true, id: ad_id }, options),
             context.dispatch('assignment/loadOneAssignmentThenSeed', a_id, options)
           ]).then(() => {
-            console.log('after dispatch load active data, and assignment', ad_id)
+            // console.log('after dispatch load active data, and assignment', ad_id)
             resolve()
           })
         })
         .catch(error => {
-          console.log(error.message)
-          console.log(error.code) // Not always specified
-          console.log(error.config) // The config that was used to make the request
-          console.log(error.response) // Only available if response was received from the server
+          console.log('loadVisitInfo - error')
+          console.log('error.message', error.message)
+          console.log('error.code', error.code) // Not always specified
+          console.log('error.config', error.config) // The config that was used to make the request
+          console.log('error.response', error.response) // Only available if response was received from the server
           return invalid(error.message)
         })
     })
@@ -118,7 +119,7 @@ const mutations = {
     state.apiUrl = url
   },
   setIsDevelopingContent: (state, value) => {
-    console.log('setIsDevelopingContent', value)
+    // console.log('setIsDevelopingContent', value)
     localStorage.setItem('isDevelopingContent', value)
     state.isDevelopingContent = value
   },

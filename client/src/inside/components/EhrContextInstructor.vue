@@ -30,14 +30,13 @@
 <script>
 import UiButton from '../../app/ui/UiButton'
 import UiInfo from '../../app/ui/UiInfo'
-import EhrEvaluationDialog from './EhrEvaluationDialog'
 import EhrEvaluationInput from './EhrEvaluationInput'
 
 // TODO add student classlist counter and student list drop down
 
 export default {
   name: 'EhrClassListNav',
-  components: { UiButton, EhrEvaluationDialog, EhrEvaluationInput, UiInfo },
+  components: { UiButton, EhrEvaluationInput, UiInfo },
   computed: {
     panelInfo () {
       let evalInfo = this.$store.state.ehrData.sCurrentStudentInfo || {}

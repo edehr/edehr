@@ -32,7 +32,7 @@
                   fas-icon(icon="notes-medical")
       ui-agree(ref="aggreeDialog")
       input(id="fileUploadInput", ref="fileUploadInput", type="file", accept="application/json", style="display:none", @change="importSeedFile")
-    app-dialog( v-if="showingDialog", :isModal="true", @cancel="cancelDialog", @save="saveDialog")
+    app-dialog(:isModal="true", ref="theDialog",  @cancel="cancelDialog", @save="saveDialog")
       h3(slot="header") {{dialogHeader}}
       div(slot="body")
         div
@@ -75,7 +75,6 @@ export default {
   },
   data () {
     return {
-      showingDialog: false,
       aSeed: {},
       dialogHeader: '',
       actionType: '',
@@ -156,23 +155,23 @@ export default {
       this.aSeed = sData
       this.aSeed.ehrData = JSON.stringify(this.aSeed.ehrData, null, 2)
       this.dialogHeader = 'Edit seed data properties'
-      this.showingDialog = true
+      this.$refs.theDialog.onOpen()
     },
     showCreateDialog: function () {
       this.aSeed = {}
       this.actionType = 'create'
       this.dialogHeader = 'Create a new seed for assignments'
-      this.showingDialog = true
+      this.$refs.theDialog.onOpen()
     },
     cancelDialog: function () {
-      this.showingDialog = false
+      this.$refs.theDialog.onClose()
     },
     saveDialog: function () {
       // console.log('saveDialog ', this.actionType, this.aSeed)
       let theData = this.aSeed.ehrData || '{}'
       // console.log(`Convert seed data field '${theData}' into an object`)
       this.aSeed.ehrData = JSON.parse(theData)
-      this.showingDialog = false
+      this.$refs.theDialog.onClose()
       if (this.actionType === 'edit') {
         // console.log('Seed Data saving ', this.aSeed)
         let dataIdPlusPayload = { id: this.seedId, payload: this.aSeed }

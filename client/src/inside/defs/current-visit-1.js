@@ -8,37 +8,44 @@ export default function () {
         {
           label: "Admission day",
           elementKey: "admissionDay",
-          fqn: "visit.admissionDay"
+          fqn: "visit.admissionDay",
+          dataCaseStudy: "Day 0-NL-Day 1"
         },
         {
           label: "Admission time",
           elementKey: "admissionTime",
-          fqn: "visit.admissionTime"
+          fqn: "visit.admissionTime",
+          dataCaseStudy: "6:00-NL-10:30"
         },
         {
           label: "Consent for treatment",
           elementKey: "consentForTreatment",
-          fqn: "visit.consentForTreatment"
+          fqn: "visit.consentForTreatment",
+          dataCaseStudy: "TRUE"
         },
         {
           label: "Consent for blood products",
           elementKey: "consentForBlood",
-          fqn: "visit.consentForBlood"
+          fqn: "visit.consentForBlood",
+          dataCaseStudy: "TRUE"
         },
         {
           label: "Admission status",
           elementKey: "status",
-          fqn: "visit.status"
+          fqn: "visit.status",
+          dataCaseStudy: "Admitted-NL-Admitted"
         },
         {
           label: "Physician admitting diagnosis",
           elementKey: "diagnosis",
-          fqn: "visit.diagnosis"
+          fqn: "visit.diagnosis",
+          dataCaseStudy: "COPD-NL-Shortness of breath-NL-Dizzy"
         },
         {
           label: "Patient location",
           elementKey: "location",
-          fqn: "visit.table.location"
+          fqn: "visit.table.location",
+          dataCaseStudy: "Emergency room"
         },
         {
           label: "Transfer in day",
@@ -307,12 +314,14 @@ export default function () {
         {
           label: "Temperature",
           elementKey: "temperature",
-          fqn: "vitals.table.temperature"
+          fqn: "vitals.table.temperature",
+          dataCaseStudy: "36.5 C"
         },
         {
           label: "Temperature source",
           elementKey: "source",
-          fqn: "vitals.table.source"
+          fqn: "vitals.table.source",
+          dataCaseStudy: "Axilla"
         },
         {
           label: "Pulse site",
@@ -322,37 +331,44 @@ export default function () {
         {
           label: "Pulse rate",
           elementKey: "rate",
-          fqn: "vitals.table.rate"
+          fqn: "vitals.table.rate",
+          dataCaseStudy: "96"
         },
         {
           label: "Pulse rhythm",
           elementKey: "rhythm",
-          fqn: "vitals.table.rhythm"
+          fqn: "vitals.table.rhythm",
+          dataCaseStudy: "regular"
         },
         {
           label: "Systolic blood pressure",
           elementKey: "systolic",
-          fqn: "vitals.table.systolic"
+          fqn: "vitals.table.systolic",
+          dataCaseStudy: "180"
         },
         {
           label: "Diastolic blood pressure",
           elementKey: "diastolic",
-          fqn: "vitals.table.diastolic"
+          fqn: "vitals.table.diastolic",
+          dataCaseStudy: "90"
         },
         {
           label: "Patient position",
           elementKey: "patientPosition",
-          fqn: "vitals.table.patientPosition"
+          fqn: "vitals.table.patientPosition",
+          dataCaseStudy: "sitting"
         },
         {
           label: "Respiration rate",
           elementKey: "respirationRate",
-          fqn: "vitals.table.respirationRate"
+          fqn: "vitals.table.respirationRate",
+          dataCaseStudy: "28"
         },
         {
           label: "Oxygen saturation",
           elementKey: "oxygenSaturation",
-          fqn: "vitals.table.oxygenSaturation"
+          fqn: "vitals.table.oxygenSaturation",
+          dataCaseStudy: "0.85"
         },
         {
           label: "Oxygen mode",
@@ -1040,22 +1056,26 @@ export default function () {
         {
           label: "Name",
           elementKey: "name",
-          fqn: "fluidBalance.table.name"
+          fqn: "fluidBalance.table.name",
+          dataCaseStudy: "Jason"
         },
         {
           label: "Profession",
           elementKey: "profession",
-          fqn: "fluidBalance.table.profession"
+          fqn: "fluidBalance.table.profession",
+          dataCaseStudy: "RN"
         },
         {
           label: "Day",
           elementKey: "day",
-          fqn: "fluidBalance.table.day"
+          fqn: "fluidBalance.table.day",
+          dataCaseStudy: "0"
         },
         {
           label: "Time",
           elementKey: "time",
-          fqn: "fluidBalance.table.time"
+          fqn: "fluidBalance.table.time",
+          dataCaseStudy: "0.8125"
         },
         {
           label: "Fluid In",
@@ -1270,22 +1290,26 @@ export default function () {
         {
           label: "Name",
           elementKey: "name",
-          fqn: "neurological.table.name"
+          fqn: "neurological.table.name",
+          dataCaseStudy: "Jason"
         },
         {
           label: "Profession",
           elementKey: "profession",
-          fqn: "neurological.table.profession"
+          fqn: "neurological.table.profession",
+          dataCaseStudy: "RN"
         },
         {
           label: "Day",
           elementKey: "day",
-          fqn: "neurological.table.day"
+          fqn: "neurological.table.day",
+          dataCaseStudy: "0"
         },
         {
           label: "Time",
           elementKey: "time",
-          fqn: "neurological.table.time"
+          fqn: "neurological.table.time",
+          dataCaseStudy: "0.8125"
         },
         {
           label: "Alert",
@@ -1295,12 +1319,14 @@ export default function () {
         {
           label: "Oriented",
           elementKey: "oriented",
-          fqn: "neurological.table.status.oriented"
+          fqn: "neurological.table.status.oriented",
+          dataCaseStudy: "TRUE"
         },
         {
           label: "Confused",
           elementKey: "confused",
-          fqn: "neurological.table.status.confused"
+          fqn: "neurological.table.status.confused",
+          dataCaseStudy: "TRUE"
         },
         {
           label: "Drowsy",
@@ -1326,64 +1352,76 @@ export default function () {
           label: "Eye opening",
           elementKey: "eyeOpening",
           fqn: "neurological.table.glasgowComaScale.eyeOpening",
+          dataCaseStudy: "Spontaneous",
           passToFunction: "glasgowCalculation"
         },
         {
           label: "Verbal response",
           elementKey: "verbalResponse",
           fqn: "neurological.table.glasgowComaScale.verbalResponse",
+          dataCaseStudy: "Oriented",
           passToFunction: "glasgowCalculation"
         },
         {
           label: "Best motor response",
           elementKey: "bestMotorResponse",
           fqn: "neurological.table.glasgowComaScale.bestMotorResponse",
+          dataCaseStudy: "Obeys commands",
           passToFunction: "glasgowCalculation"
         },
         {
           label: "Glasgow calculation",
           elementKey: "glasgowCalculation",
           fqn: "neurological.table.glasgowComaScale.glasgowCalculation",
-          defaultValue: "0"
+          defaultValue: "0",
+          dataCaseStudy: "(15 - calculated by system)"
         },
         {
           label: "Loss of conciousness",
           elementKey: "loss",
-          fqn: "neurological.table.glasgowComaScale.loss"
+          fqn: "neurological.table.glasgowComaScale.loss",
+          dataCaseStudy: "No"
         },
         {
           label: "Duration",
           elementKey: "duration",
-          fqn: "neurological.table.glasgowComaScale.duration"
+          fqn: "neurological.table.glasgowComaScale.duration",
+          dataCaseStudy: "No"
         },
         {
           label: "Left pupil size",
           elementKey: "leftPupilSize",
-          fqn: "neurological.table.pupils.leftPupilSize"
+          fqn: "neurological.table.pupils.leftPupilSize",
+          dataCaseStudy: "2"
         },
         {
           label: "Left pupil response to light",
           elementKey: "leftPupilResponseToLight",
-          fqn: "neurological.table.pupils.leftPupilResponseToLight"
+          fqn: "neurological.table.pupils.leftPupilResponseToLight",
+          dataCaseStudy: "Brisk"
         },
         {
           label: "Right pupil size",
           elementKey: "rightPupilSize",
-          fqn: "neurological.table.pupils.rightPupilSize"
+          fqn: "neurological.table.pupils.rightPupilSize",
+          dataCaseStudy: "2"
         },
         {
           label: "Right pupil response to light",
           elementKey: "rightPupilResponseToLight",
-          fqn: "neurological.table.pupils.rightPupilResponseToLight"
+          fqn: "neurological.table.pupils.rightPupilResponseToLight",
+          dataCaseStudy: "Brisk"
         },
         {
           label: "Both pupils",
           elementKey: "bothPupils",
-          fqn: "neurological.table.pupils.bothPupils"
+          fqn: "neurological.table.pupils.bothPupils",
+          dataCaseStudy: "Equal"
         },
         {
           elementKey: "aSpacer",
-          fqn: "neurological.table.pupils.aSpacer"
+          fqn: "neurological.table.pupils.aSpacer",
+          dataCaseStudy: "Equal"
         },
         {
           label: "Level of conciousness",
@@ -1484,12 +1522,14 @@ export default function () {
         {
           label: "Comments",
           elementKey: "comments",
-          fqn: "neurological.table.comments"
+          fqn: "neurological.table.comments",
+          dataCaseStudy: "(no comments)"
         },
         {
           label: "<b>Resources</b><p><a target=\"_blank\" href=\"/assets/standardized-assessment-tools/Morse-Fall-Scale-score.png\">Morse Fall Score </a></br><a target=\"_blank\" href=\"/assets/standardized-assessment-tools/mini-mental-health-screen.pdf\">Mini-mental state examination (MMSE)</a></p>",
           elementKey: "resources",
-          fqn: "neurological.table.resources"
+          fqn: "neurological.table.resources",
+          dataCaseStudy: "(no comments)"
         }
       ],
       generated: "2019-04-10T11:06:37-07:00",
@@ -3840,27 +3880,32 @@ export default function () {
         {
           label: "Name",
           elementKey: "name",
-          fqn: "respiratory.table.name"
+          fqn: "respiratory.table.name",
+          dataCaseStudy: "Jason"
         },
         {
           label: "Profession",
           elementKey: "profession",
-          fqn: "respiratory.table.profession"
+          fqn: "respiratory.table.profession",
+          dataCaseStudy: "RN"
         },
         {
           label: "Day",
           elementKey: "day",
-          fqn: "respiratory.table.day"
+          fqn: "respiratory.table.day",
+          dataCaseStudy: "0"
         },
         {
           label: "Time",
           elementKey: "time",
-          fqn: "respiratory.table.time"
+          fqn: "respiratory.table.time",
+          dataCaseStudy: "0.8125"
         },
         {
           label: "Patent",
           elementKey: "patent",
-          fqn: "respiratory.table.airway.patent"
+          fqn: "respiratory.table.airway.patent",
+          dataCaseStudy: "TRUE"
         },
         {
           label: "Obstructed",
@@ -3894,65 +3939,78 @@ export default function () {
         {
           label: "Left upper lung",
           elementKey: "lul",
-          fqn: "respiratory.table.breath.lul"
+          fqn: "respiratory.table.breath.lul",
+          dataCaseStudy: "Normal"
         },
         {
           label: "Right upper lung",
           elementKey: "rul",
-          fqn: "respiratory.table.breath.rul"
+          fqn: "respiratory.table.breath.rul",
+          dataCaseStudy: "Normal"
         },
         {
           elementKey: "aSpacer",
-          fqn: "respiratory.table.breath.aSpacer"
+          fqn: "respiratory.table.breath.aSpacer",
+          dataCaseStudy: "Normal"
         },
         {
           label: "Right middle lung",
           elementKey: "rml",
-          fqn: "respiratory.table.breath.rml"
+          fqn: "respiratory.table.breath.rml",
+          dataCaseStudy: "Decreased"
         },
         {
           label: "Left lower lung",
           elementKey: "lll",
-          fqn: "respiratory.table.breath.lll"
+          fqn: "respiratory.table.breath.lll",
+          dataCaseStudy: "Decreased"
         },
         {
           label: "Right lower lung",
           elementKey: "rll",
-          fqn: "respiratory.table.breath.rll"
+          fqn: "respiratory.table.breath.rll",
+          dataCaseStudy: "Decreased"
         },
         {
           label: "Respiratory rhythm",
           elementKey: "respiratoryRhythm",
-          fqn: "respiratory.table.breath.respiratoryRhythm"
+          fqn: "respiratory.table.breath.respiratoryRhythm",
+          dataCaseStudy: "Regular"
         },
         {
           label: "Respiratory depth",
           elementKey: "respiratoryDepth",
-          fqn: "respiratory.table.breath.respiratoryDepth"
+          fqn: "respiratory.table.breath.respiratoryDepth",
+          dataCaseStudy: "Shallow"
         },
         {
           label: "Cough",
           elementKey: "cough",
-          fqn: "respiratory.table.breath.cough"
+          fqn: "respiratory.table.breath.cough",
+          dataCaseStudy: "No"
         },
         {
           label: "Sputum colour",
           elementKey: "sputumColour",
-          fqn: "respiratory.table.breath.sputumColour"
+          fqn: "respiratory.table.breath.sputumColour",
+          dataCaseStudy: "(nothing selected)"
         },
         {
           elementKey: "aSpacer",
-          fqn: "respiratory.table.breath.aSpacer"
+          fqn: "respiratory.table.breath.aSpacer",
+          dataCaseStudy: "Normal"
         },
         {
           label: "Sputum comments",
           elementKey: "sputumComments",
-          fqn: "respiratory.table.breath.sputumComments"
+          fqn: "respiratory.table.breath.sputumComments",
+          dataCaseStudy: "(no notes)"
         },
         {
           label: "General comments",
           elementKey: "generalComments",
-          fqn: "respiratory.table.generalComments"
+          fqn: "respiratory.table.generalComments",
+          dataCaseStudy: "(no notes)"
         }
       ],
       generated: "2019-04-10T11:06:37-07:00",
@@ -4124,21 +4182,6 @@ export default function () {
               formColumn: "1"
             },
             {
-              label: "Airway",
-              pageDataKey: "respiratory",
-              level2Key: "table",
-              elementKey: "airway",
-              inputType: "fieldset",
-              formRow: "2",
-              formColumn: "1",
-              dataParent: "respiratory.table",
-              fqn: "respiratory.table.airway",
-              containerType: "fieldset",
-              containerKey: "airway",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
               label: "Left upper lung",
               pageDataKey: "respiratory",
               level2Key: "table",
@@ -4201,6 +4244,36 @@ export default function () {
               fqn: "respiratory.table.breath.rul",
               tableKey: "table",
               formColumn: "2"
+            },
+            {
+              label: "Airway",
+              pageDataKey: "respiratory",
+              level2Key: "table",
+              elementKey: "airway",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "1",
+              dataParent: "respiratory.table",
+              fqn: "respiratory.table.airway",
+              containerType: "fieldset",
+              containerKey: "airway",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
+              label: "Breath sounds",
+              pageDataKey: "respiratory",
+              level2Key: "table",
+              elementKey: "breath",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "2",
+              dataParent: "respiratory.table",
+              fqn: "respiratory.table.breath",
+              containerType: "fieldset",
+              containerKey: "breath",
+              tableCss: "hide-table-element",
+              tableKey: "table"
             },
             {
               pageDataKey: "respiratory",
@@ -4460,21 +4533,6 @@ export default function () {
               fqn: "respiratory.table.breath.sputumComments",
               tableKey: "table",
               formColumn: "2"
-            },
-            {
-              label: "Breath sounds",
-              pageDataKey: "respiratory",
-              level2Key: "table",
-              elementKey: "breath",
-              inputType: "fieldset",
-              formRow: "2",
-              formColumn: "2",
-              dataParent: "respiratory.table",
-              fqn: "respiratory.table.breath",
-              containerType: "fieldset",
-              containerKey: "breath",
-              tableCss: "hide-table-element",
-              tableKey: "table"
             },
             {
               label: "General comments",
@@ -5130,56 +5188,67 @@ export default function () {
         {
           label: "Name",
           elementKey: "name",
-          fqn: "cardiovascular.table.name"
+          fqn: "cardiovascular.table.name",
+          dataCaseStudy: "Jason"
         },
         {
           label: "Profession",
           elementKey: "profession",
-          fqn: "cardiovascular.table.profession"
+          fqn: "cardiovascular.table.profession",
+          dataCaseStudy: "RN"
         },
         {
           label: "Day",
           elementKey: "day",
-          fqn: "cardiovascular.table.day"
+          fqn: "cardiovascular.table.day",
+          dataCaseStudy: "0"
         },
         {
           label: "Time",
           elementKey: "time",
-          fqn: "cardiovascular.table.time"
+          fqn: "cardiovascular.table.time",
+          dataCaseStudy: "0.8125"
         },
         {
           label: "Pulse",
           elementKey: "pulse",
-          fqn: "cardiovascular.table.pulse"
+          fqn: "cardiovascular.table.pulse",
+          dataCaseStudy: "Regular"
         },
         {
           label: "Skin appearance",
           elementKey: "skinAppearance",
-          fqn: "cardiovascular.table.skinAppearance"
+          fqn: "cardiovascular.table.skinAppearance",
+          dataCaseStudy: "Normal"
         },
         {
           elementKey: "spacer1",
-          fqn: "cardiovascular.table.spacer1"
+          fqn: "cardiovascular.table.spacer1",
+          dataCaseStudy: "Normal"
         },
         {
           label: "Cap refill",
           elementKey: "labelCapRefill",
-          fqn: "cardiovascular.table.labelCapRefill"
+          fqn: "cardiovascular.table.labelCapRefill",
+          dataCaseStudy: "Normal"
         },
         {
           label: "Temperature",
           elementKey: "labelTemperature",
-          fqn: "cardiovascular.table.labelTemperature"
+          fqn: "cardiovascular.table.labelTemperature",
+          dataCaseStudy: "Normal"
         },
         {
           label: "Peripheral edema",
           elementKey: "labelPeripheral",
-          fqn: "cardiovascular.table.labelPeripheral"
+          fqn: "cardiovascular.table.labelPeripheral",
+          dataCaseStudy: "Normal"
         },
         {
           label: "Nail bed colour",
           elementKey: "labelNailBed",
-          fqn: "cardiovascular.table.labelNailBed"
+          fqn: "cardiovascular.table.labelNailBed",
+          dataCaseStudy: "Normal"
         },
         {
           label: "Right hand",
@@ -5194,96 +5263,115 @@ export default function () {
         {
           label: "Right foot",
           elementKey: "labelRightFoot",
-          fqn: "cardiovascular.table.labelRightFoot"
+          fqn: "cardiovascular.table.labelRightFoot",
+          dataCaseStudy: "Normal"
         },
         {
           label: "Left foot",
           elementKey: "labelLeftFoot",
-          fqn: "cardiovascular.table.labelLeftFoot"
+          fqn: "cardiovascular.table.labelLeftFoot",
+          dataCaseStudy: "Normal"
         },
         {
           label: "Cap refill: Left hand",
           elementKey: "capRefillRightHand",
-          fqn: "cardiovascular.table.capRefillRightHand"
+          fqn: "cardiovascular.table.capRefillRightHand",
+          dataCaseStudy: "Normal"
         },
         {
           label: "Cap refill: Right foot",
           elementKey: "capRefillLeftHand",
-          fqn: "cardiovascular.table.capRefillLeftHand"
+          fqn: "cardiovascular.table.capRefillLeftHand",
+          dataCaseStudy: "Normal"
         },
         {
           label: "Cap refill: Left foot",
           elementKey: "capRefillRightFoot",
-          fqn: "cardiovascular.table.capRefillRightFoot"
+          fqn: "cardiovascular.table.capRefillRightFoot",
+          dataCaseStudy: "Normal"
         },
         {
           label: "Temperature: Right hand",
           elementKey: "capRefillLeftFoot",
-          fqn: "cardiovascular.table.capRefillLeftFoot"
+          fqn: "cardiovascular.table.capRefillLeftFoot",
+          dataCaseStudy: "Normal"
         },
         {
           label: "Temperature: Left hand",
           elementKey: "temperatureRightHand",
-          fqn: "cardiovascular.table.temperatureRightHand"
+          fqn: "cardiovascular.table.temperatureRightHand",
+          dataCaseStudy: "Warm"
         },
         {
           label: "Temperature: Right foot",
           elementKey: "temperatureLeftHand",
-          fqn: "cardiovascular.table.temperatureLeftHand"
+          fqn: "cardiovascular.table.temperatureLeftHand",
+          dataCaseStudy: "Warm"
         },
         {
           label: "Temperature: Left foot",
           elementKey: "temperatureRightFoot",
-          fqn: "cardiovascular.table.temperatureRightFoot"
+          fqn: "cardiovascular.table.temperatureRightFoot",
+          dataCaseStudy: "Warm"
         },
         {
           label: "Peripheral edema: Right hand",
           elementKey: "temperatureLeftFoot",
-          fqn: "cardiovascular.table.temperatureLeftFoot"
+          fqn: "cardiovascular.table.temperatureLeftFoot",
+          dataCaseStudy: "Warm"
         },
         {
           label: "Peripheral edema: Left hand",
           elementKey: "peripheralEdemaRightHand",
-          fqn: "cardiovascular.table.peripheralEdemaRightHand"
+          fqn: "cardiovascular.table.peripheralEdemaRightHand",
+          dataCaseStudy: "No"
         },
         {
           label: "Peripheral edema: Right foot",
           elementKey: "peripheralEdemaLeftHand",
-          fqn: "cardiovascular.table.peripheralEdemaLeftHand"
+          fqn: "cardiovascular.table.peripheralEdemaLeftHand",
+          dataCaseStudy: "No"
         },
         {
           label: "Peripheral edema: Left foot",
           elementKey: "peripheralEdemaRightFoot",
-          fqn: "cardiovascular.table.peripheralEdemaRightFoot"
+          fqn: "cardiovascular.table.peripheralEdemaRightFoot",
+          dataCaseStudy: "No"
         },
         {
           label: "Nail bed colour: Right hand",
           elementKey: "peripheralEdemaLeftFoot",
-          fqn: "cardiovascular.table.peripheralEdemaLeftFoot"
+          fqn: "cardiovascular.table.peripheralEdemaLeftFoot",
+          dataCaseStudy: "No"
         },
         {
           label: "Nail bed colour: Left hand",
           elementKey: "nailBedColourRightHand",
-          fqn: "cardiovascular.table.nailBedColourRightHand"
+          fqn: "cardiovascular.table.nailBedColourRightHand",
+          dataCaseStudy: "Pink"
         },
         {
           label: "Nail bed colour: Right Foot",
           elementKey: "nailBedColourLeftHand",
-          fqn: "cardiovascular.table.nailBedColourLeftHand"
+          fqn: "cardiovascular.table.nailBedColourLeftHand",
+          dataCaseStudy: "Pink"
         },
         {
           label: "Nail bed colour: Left foot",
           elementKey: "nailBedColourRightFoot",
-          fqn: "cardiovascular.table.nailBedColourRightFoot"
+          fqn: "cardiovascular.table.nailBedColourRightFoot",
+          dataCaseStudy: "Pink"
         },
         {
           elementKey: "nailBedColourLeftFoot",
-          fqn: "cardiovascular.table.nailBedColourLeftFoot"
+          fqn: "cardiovascular.table.nailBedColourLeftFoot",
+          dataCaseStudy: "Pink"
         },
         {
           label: "Comments",
           elementKey: "comments",
-          fqn: "cardiovascular.table.comments"
+          fqn: "cardiovascular.table.comments",
+          dataCaseStudy: "(blank)"
         }
       ],
       generated: "2019-04-10T11:06:37-07:00",
@@ -6668,67 +6756,80 @@ export default function () {
         {
           label: "Name",
           elementKey: "name",
-          fqn: "gastrointestinal.table.name"
+          fqn: "gastrointestinal.table.name",
+          dataCaseStudy: "Jason"
         },
         {
           label: "Profession",
           elementKey: "profession",
-          fqn: "gastrointestinal.table.profession"
+          fqn: "gastrointestinal.table.profession",
+          dataCaseStudy: "RN"
         },
         {
           label: "Day",
           elementKey: "day",
-          fqn: "gastrointestinal.table.day"
+          fqn: "gastrointestinal.table.day",
+          dataCaseStudy: "0"
         },
         {
           label: "Time",
           elementKey: "time",
-          fqn: "gastrointestinal.table.time"
+          fqn: "gastrointestinal.table.time",
+          dataCaseStudy: "0.8125"
         },
         {
           label: "Soft",
           elementKey: "soft",
-          fqn: "gastrointestinal.table.abdomen.soft"
+          fqn: "gastrointestinal.table.abdomen.soft",
+          dataCaseStudy: "Soft"
         },
         {
           label: "Tender",
           elementKey: "tender",
-          fqn: "gastrointestinal.table.abdomen.tender"
+          fqn: "gastrointestinal.table.abdomen.tender",
+          dataCaseStudy: "Soft"
         },
         {
           label: "Rigid",
           elementKey: "rigid",
-          fqn: "gastrointestinal.table.abdomen.rigid"
+          fqn: "gastrointestinal.table.abdomen.rigid",
+          dataCaseStudy: "Soft"
         },
         {
           label: "Guarding",
           elementKey: "guarding",
-          fqn: "gastrointestinal.table.abdomen.guarding"
+          fqn: "gastrointestinal.table.abdomen.guarding",
+          dataCaseStudy: "Soft"
         },
         {
           label: "Distended",
           elementKey: "distended",
-          fqn: "gastrointestinal.table.abdomen.distended"
+          fqn: "gastrointestinal.table.abdomen.distended",
+          dataCaseStudy: "Soft"
         },
         {
           label: "Scars",
           elementKey: "scars",
-          fqn: "gastrointestinal.table.abdomen.scars"
+          fqn: "gastrointestinal.table.abdomen.scars",
+          dataCaseStudy: "Soft"
         },
         {
           label: "Abdominal pain",
           elementKey: "pain",
-          fqn: "gastrointestinal.table.abdomen.pain"
+          fqn: "gastrointestinal.table.abdomen.pain",
+          dataCaseStudy: "No"
         },
         {
           label: "If answered yes, please complete the <a href=\"/assets/standardized-assessment-tools/numeric-rating-scale.pdf\">pain assessment</a>.",
           elementKey: "aLabel",
-          fqn: "gastrointestinal.table.abdomen.aLabel"
+          fqn: "gastrointestinal.table.abdomen.aLabel",
+          dataCaseStudy: "No"
         },
         {
           label: "Emesis present?",
           elementKey: "emesisPresent",
-          fqn: "gastrointestinal.table.emesis.emesisPresent"
+          fqn: "gastrointestinal.table.emesis.emesisPresent",
+          dataCaseStudy: "(nothing selected)"
         },
         {
           label: "Nausea",
@@ -6743,37 +6844,44 @@ export default function () {
         {
           label: "Emesis colour",
           elementKey: "colour",
-          fqn: "gastrointestinal.table.emesis.colour"
+          fqn: "gastrointestinal.table.emesis.colour",
+          dataCaseStudy: "(nothing selected)"
         },
         {
           label: "Description",
           elementKey: "description",
-          fqn: "gastrointestinal.table.emesis.description"
+          fqn: "gastrointestinal.table.emesis.description",
+          dataCaseStudy: "(nothing entered)"
         },
         {
           label: "Approximate volume",
           elementKey: "amount",
-          fqn: "gastrointestinal.table.emesis.amount"
+          fqn: "gastrointestinal.table.emesis.amount",
+          dataCaseStudy: "(nothing selected)"
         },
         {
           label: "Difficulty",
           elementKey: "eating",
-          fqn: "gastrointestinal.table.eatingGroup.eating"
+          fqn: "gastrointestinal.table.eatingGroup.eating",
+          dataCaseStudy: "Regular"
         },
         {
           label: "Reason",
           elementKey: "reason",
-          fqn: "gastrointestinal.table.eatingGroup.reason"
+          fqn: "gastrointestinal.table.eatingGroup.reason",
+          dataCaseStudy: "(nothing entered)"
         },
         {
           label: "NPO since day",
           elementKey: "npoSinceDate",
-          fqn: "gastrointestinal.table.eatingGroup.npoSinceDate"
+          fqn: "gastrointestinal.table.eatingGroup.npoSinceDate",
+          dataCaseStudy: "(nothing entered)"
         },
         {
           label: "NPO since time",
           elementKey: "npoSinceTime",
-          fqn: "gastrointestinal.table.eatingGroup.npoSinceTime"
+          fqn: "gastrointestinal.table.eatingGroup.npoSinceTime",
+          dataCaseStudy: "(nothing entered)"
         },
         {
           label: "Weight loss",
@@ -6788,22 +6896,26 @@ export default function () {
         {
           label: "Stool colour",
           elementKey: "stoolColour",
-          fqn: "gastrointestinal.table.stool.stoolColour"
+          fqn: "gastrointestinal.table.stool.stoolColour",
+          dataCaseStudy: "Brown"
         },
         {
           label: "Description",
           elementKey: "stoolDescription",
-          fqn: "gastrointestinal.table.stool.stoolDescription"
+          fqn: "gastrointestinal.table.stool.stoolDescription",
+          dataCaseStudy: "(nothing entered)"
         },
         {
           label: "Amount",
           elementKey: "stoolAmount",
-          fqn: "gastrointestinal.table.stool.stoolAmount"
+          fqn: "gastrointestinal.table.stool.stoolAmount",
+          dataCaseStudy: "(nothing entered)"
         },
         {
           label: "Source",
           elementKey: "stoolSource",
-          fqn: "gastrointestinal.table.stool.stoolSource"
+          fqn: "gastrointestinal.table.stool.stoolSource",
+          dataCaseStudy: "As per patient observed"
         },
         {
           label: "Normal",
@@ -6813,47 +6925,56 @@ export default function () {
         {
           label: "Constipation",
           elementKey: "constipation",
-          fqn: "gastrointestinal.table.bowel.constipation"
+          fqn: "gastrointestinal.table.bowel.constipation",
+          dataCaseStudy: "(nothing entered)"
         },
         {
           label: "Diarrhea",
           elementKey: "diarrhea",
-          fqn: "gastrointestinal.table.bowel.diarrhea"
+          fqn: "gastrointestinal.table.bowel.diarrhea",
+          dataCaseStudy: "(nothing entered)"
         },
         {
           label: "Melena",
           elementKey: "melena",
-          fqn: "gastrointestinal.table.bowel.melena"
+          fqn: "gastrointestinal.table.bowel.melena",
+          dataCaseStudy: "(nothing entered)"
         },
         {
           label: "Incontinent",
           elementKey: "incontinent",
-          fqn: "gastrointestinal.table.bowel.incontinent"
+          fqn: "gastrointestinal.table.bowel.incontinent",
+          dataCaseStudy: "(nothing entered)"
         },
         {
           label: "None",
           elementKey: "bsNone",
-          fqn: "gastrointestinal.table.bSounds.bsNone"
+          fqn: "gastrointestinal.table.bSounds.bsNone",
+          dataCaseStudy: "LUQ, RUQ, LLQ, RLQ"
         },
         {
           label: "LUQ",
           elementKey: "bsLUQ",
-          fqn: "gastrointestinal.table.bSounds.bsLUQ"
+          fqn: "gastrointestinal.table.bSounds.bsLUQ",
+          dataCaseStudy: "LUQ, RUQ, LLQ, RLQ"
         },
         {
           label: "RUQ",
           elementKey: "bsRUQ",
-          fqn: "gastrointestinal.table.bSounds.bsRUQ"
+          fqn: "gastrointestinal.table.bSounds.bsRUQ",
+          dataCaseStudy: "LUQ, RUQ, LLQ, RLQ"
         },
         {
           label: "LLQ",
           elementKey: "bsLLQ",
-          fqn: "gastrointestinal.table.bSounds.bsLLQ"
+          fqn: "gastrointestinal.table.bSounds.bsLLQ",
+          dataCaseStudy: "LUQ, RUQ, LLQ, RLQ"
         },
         {
           label: "RLQ",
           elementKey: "bsRLQ",
-          fqn: "gastrointestinal.table.bSounds.bsRLQ"
+          fqn: "gastrointestinal.table.bSounds.bsRLQ",
+          dataCaseStudy: "LUQ, RUQ, LLQ, RLQ"
         },
         {
           label: "Hypoactive",
@@ -6868,7 +6989,8 @@ export default function () {
         {
           label: "Comments",
           elementKey: "comments",
-          fqn: "gastrointestinal.table.stool.comments"
+          fqn: "gastrointestinal.table.stool.comments",
+          dataCaseStudy: "(nothing entered)"
         }
       ],
       generated: "2019-04-10T11:06:37-07:00",
@@ -6893,7 +7015,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Profession",
+              label: "Bowel sounds",
               pageDataKey: "gastrointestinal",
               level2Key: "table",
               elementKey: "profession",
@@ -6903,7 +7025,10 @@ export default function () {
               formCss: "user_pro",
               tableColumn: "2",
               dataParent: "gastrointestinal.table",
-              fqn: "gastrointestinal.table.profession",
+              fqn: "gastrointestinal.table.bSounds",
+              containerType: "fieldset",
+              containerKey: "bSounds",
+              tableCss: "hide-table-element",
               tableKey: "table"
             },
             {
@@ -7275,7 +7400,7 @@ export default function () {
               formColumn: "1"
             },
             {
-              label: "NPO since time",
+              label: "Profession",
               pageDataKey: "gastrointestinal",
               level2Key: "table",
               level3Key: "eatingGroup",
@@ -7669,19 +7794,19 @@ export default function () {
               formColumn: "1"
             },
             {
-              label: "Bowel sounds",
+              label: "NPO since time",
               pageDataKey: "gastrointestinal",
               level2Key: "table",
-              elementKey: "bSounds",
-              inputType: "fieldset",
-              formRow: "3",
-              formColumn: "3",
-              dataParent: "gastrointestinal.table",
-              fqn: "gastrointestinal.table.bSounds",
-              containerType: "fieldset",
-              containerKey: "bSounds",
-              tableCss: "hide-table-element",
-              tableKey: "table"
+              level3Key: "eatingGroup",
+              elementKey: "npoSinceTime",
+              inputType: "time",
+              tableColumn: "23",
+              fsetRow: "4",
+              fsetCol: "1",
+              dataParent: "gastrointestinal.table.eatingGroup",
+              fqn: "gastrointestinal.table.eatingGroup.npoSinceTime",
+              tableKey: "table",
+              formColumn: "1"
             }
           ],
           tableForm: {

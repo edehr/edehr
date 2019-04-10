@@ -89,10 +89,11 @@ export default {
       return element.tableCss ? element.tableCss : 'noClass'
     },
     showDialog: function () {
-      EventBus.$emit(SHOW_TABLE_DIALOG_EVENT)
+      // console.log('EhrPageTable showDialog ', this.tableDef)
+      this.ehrHelp.showDialog(this.tableDef, this.inputs)
     },
     showDialogHandler: function () {
-      // console.log('handle SHOW_TABLE_DIALOG_EVENT ', this.tableDef)
+      // console.log('EhrPageTable showDialogHandler ', this.tableDef)
       this.ehrHelp.showDialog(this.tableDef, this.inputs)
     },
     tableCellData: function (item, cell) {
