@@ -45,7 +45,9 @@ table {
   width: auto;
 }
 
-
+.hr-table, .content table td.hr-table, .content table th.hr-table {
+  border-bottom: 1px solid $grey40;
+}
 
 
 /*

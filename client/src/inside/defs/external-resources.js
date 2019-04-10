@@ -81,7 +81,7 @@ export default function () {
           fqn: "assessmentTools.medication.medication1_1"
         }
       ],
-      generated: "2019-04-08T11:09:04-07:00",
+      generated: "2019-04-10T11:07:37-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -777,7 +777,7 @@ export default function () {
           fqn: "codeLookup.icf"
         }
       ],
-      generated: "2019-04-08T11:09:04-07:00",
+      generated: "2019-04-10T11:07:37-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -843,7 +843,7 @@ export default function () {
           fqn: "diagnosticCodes.table.time"
         },
         {
-          label: "ICD-10 Database",
+          label: "ICD-10 database",
           elementKey: "icd10",
           fqn: "diagnosticCodes.table.icd10"
         },
@@ -873,7 +873,7 @@ export default function () {
           fqn: "diagnosticCodes.table.cluster"
         }
       ],
-      generated: "2019-04-08T11:09:04-07:00",
+      generated: "2019-04-10T11:07:37-07:00",
       hasTable: true,
       tables: [
         {
@@ -941,7 +941,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "ICD-10 Database",
+              label: "ICD-10 database",
               pageDataKey: "diagnosticCodes",
               level2Key: "table",
               elementKey: "icd10",
@@ -1114,7 +1114,7 @@ export default function () {
                 formRow: "2",
                 elements: [
                   {
-                    label: "ICD-10 Database",
+                    label: "ICD-10 database",
                     pageDataKey: "diagnosticCodes",
                     level2Key: "table",
                     elementKey: "icd10",
@@ -1285,7 +1285,7 @@ export default function () {
           fqn: "interventionCodes.table.extent"
         }
       ],
-      generated: "2019-04-08T11:09:04-07:00",
+      generated: "2019-04-10T11:07:37-07:00",
       hasTable: true,
       tables: [
         {
@@ -1347,6 +1347,7 @@ export default function () {
               formColumn: "4",
               formCss: "user_time",
               tableColumn: "4",
+              tableCss: "hr-table",
               assetBase: "?",
               dataParent: "interventionCodes.table",
               fqn: "interventionCodes.table.time",
@@ -1497,6 +1498,7 @@ export default function () {
                     formColumn: "4",
                     formCss: "user_time",
                     tableColumn: "4",
+                    tableCss: "hr-table",
                     assetBase: "?",
                     dataParent: "interventionCodes.table",
                     fqn: "interventionCodes.table.time",
@@ -1657,7 +1659,7 @@ export default function () {
           fqn: "caseMixGroup.table.analysis"
         }
       ],
-      generated: "2019-04-08T11:09:04-07:00",
+      generated: "2019-04-10T11:07:37-07:00",
       hasTable: true,
       tables: [
         {
@@ -1719,6 +1721,7 @@ export default function () {
               formColumn: "4",
               formCss: "user_time",
               tableColumn: "4",
+              tableCss: "hr-table",
               assetBase: "?",
               dataParent: "caseMixGroup.table",
               fqn: "caseMixGroup.table.time",
@@ -1732,6 +1735,7 @@ export default function () {
               inputType: "text",
               formRow: "2",
               formColumn: "1",
+              formCss: "is-one-third",
               tableColumn: "5",
               dataParent: "caseMixGroup.table",
               fqn: "caseMixGroup.table.clinicalCategory",
@@ -1745,6 +1749,7 @@ export default function () {
               inputType: "text",
               formRow: "2",
               formColumn: "2",
+              formCss: "is-one-third",
               tableColumn: "6",
               dataParent: "caseMixGroup.table",
               fqn: "caseMixGroup.table.caseMixNumber",
@@ -1758,6 +1763,7 @@ export default function () {
               inputType: "text",
               formRow: "3",
               formColumn: "1",
+              formCss: "is-one-third",
               tableColumn: "7",
               dataParent: "caseMixGroup.table",
               fqn: "caseMixGroup.table.resourceIntensity",
@@ -1771,6 +1777,7 @@ export default function () {
               inputType: "text",
               formRow: "3",
               formColumn: "2",
+              formCss: "is-one-third",
               tableColumn: "8",
               dataParent: "caseMixGroup.table",
               fqn: "caseMixGroup.table.expectedStay",
@@ -1850,6 +1857,7 @@ export default function () {
                     formColumn: "4",
                     formCss: "user_time",
                     tableColumn: "4",
+                    tableCss: "hr-table",
                     assetBase: "?",
                     dataParent: "caseMixGroup.table",
                     fqn: "caseMixGroup.table.time",
@@ -1868,6 +1876,7 @@ export default function () {
                     inputType: "text",
                     formRow: "2",
                     formColumn: "1",
+                    formCss: "is-one-third",
                     tableColumn: "5",
                     dataParent: "caseMixGroup.table",
                     fqn: "caseMixGroup.table.clinicalCategory",
@@ -1881,6 +1890,7 @@ export default function () {
                     inputType: "text",
                     formRow: "2",
                     formColumn: "2",
+                    formCss: "is-one-third",
                     tableColumn: "6",
                     dataParent: "caseMixGroup.table",
                     fqn: "caseMixGroup.table.caseMixNumber",
@@ -1899,6 +1909,7 @@ export default function () {
                     inputType: "text",
                     formRow: "3",
                     formColumn: "1",
+                    formCss: "is-one-third",
                     tableColumn: "7",
                     dataParent: "caseMixGroup.table",
                     fqn: "caseMixGroup.table.resourceIntensity",
@@ -1912,6 +1923,7 @@ export default function () {
                     inputType: "text",
                     formRow: "3",
                     formColumn: "2",
+                    formCss: "is-one-third",
                     tableColumn: "8",
                     dataParent: "caseMixGroup.table",
                     fqn: "caseMixGroup.table.expectedStay",

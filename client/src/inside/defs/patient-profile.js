@@ -147,7 +147,7 @@ export default function () {
           fqn: "demographics.decisionMakerPhone"
         }
       ],
-      generated: "2019-04-01T18:58:17-07:00",
+      generated: "2019-04-10T11:07:54-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -363,6 +363,7 @@ export default function () {
                 inputType: "text",
                 formRow: "5",
                 formColumn: "1",
+                formCss: "is-two-thirds",
                 dataParent: "demographics",
                 fqn: "demographics.streetAddress"
               },
@@ -654,7 +655,7 @@ export default function () {
           defaultValue: "TRUE"
         }
       ],
-      generated: "2019-04-01T18:58:17-07:00",
+      generated: "2019-04-10T11:07:54-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -685,6 +686,7 @@ export default function () {
                 inputType: "text",
                 formRow: "2",
                 formColumn: "1",
+                formCss: "is-one-third",
                 validation: "one of these two need to be filled",
                 dataParent: "allergies",
                 fqn: "allergies.allergies"
@@ -706,7 +708,7 @@ export default function () {
           fqn: "medical.history"
         }
       ],
-      generated: "2019-04-01T18:58:17-07:00",
+      generated: "2019-04-10T11:07:54-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -820,7 +822,7 @@ export default function () {
           fqn: "psychosocial.behaviours.substanceUseFrequency"
         }
       ],
-      generated: "2019-04-01T18:58:17-07:00",
+      generated: "2019-04-10T11:07:54-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -893,6 +895,7 @@ export default function () {
                 inputType: "fieldset",
                 formRow: "3",
                 formColumn: "1",
+                formCss: "check_with_text_group",
                 dataParent: "psychosocial",
                 fqn: "psychosocial.behaviours",
                 elements: [
@@ -902,6 +905,7 @@ export default function () {
                     level2Key: "behaviours",
                     elementKey: "exercise",
                     inputType: "checkbox",
+                    formCss: "is-one-quarter",
                     fsetRow: "1",
                     fsetCol: "1",
                     dataParent: "psychosocial.behaviours",
@@ -914,6 +918,7 @@ export default function () {
                     level2Key: "behaviours",
                     elementKey: "exerciseFrequency",
                     inputType: "text",
+                    formCss: "is-one-third",
                     formOption: "hideLabel",
                     fsetRow: "1",
                     fsetCol: "2",
@@ -927,6 +932,7 @@ export default function () {
                     level2Key: "behaviours",
                     elementKey: "caffeineUse",
                     inputType: "checkbox",
+                    formCss: "is-one-quarter",
                     fsetRow: "2",
                     fsetCol: "1",
                     dataParent: "psychosocial.behaviours",
@@ -939,6 +945,7 @@ export default function () {
                     level2Key: "behaviours",
                     elementKey: "caffeineUseFrequency",
                     inputType: "text",
+                    formCss: "is-one-third",
                     formOption: "hideLabel",
                     fsetRow: "2",
                     fsetCol: "2",
@@ -952,6 +959,7 @@ export default function () {
                     level2Key: "behaviours",
                     elementKey: "tobaccoUse",
                     inputType: "checkbox",
+                    formCss: "is-one-quarter",
                     fsetRow: "3",
                     fsetCol: "1",
                     helperText: "Have you used any tobacco products in the last 6 months?-NL-Have you used any tobacco products in the last 7 days?",
@@ -965,6 +973,7 @@ export default function () {
                     level2Key: "behaviours",
                     elementKey: "tobaccoUseFrequency",
                     inputType: "text",
+                    formCss: "is-one-third",
                     formOption: "hideLabel",
                     fsetRow: "3",
                     fsetCol: "2",
@@ -978,6 +987,7 @@ export default function () {
                     level2Key: "behaviours",
                     elementKey: "cannabisUse",
                     inputType: "checkbox",
+                    formCss: "is-one-quarter",
                     fsetRow: "4",
                     fsetCol: "1",
                     helperText: "Have you used any cannabis products in the last 6 months?-NL-Have you used any cannabis products in the last 7 days?",
@@ -991,6 +1001,7 @@ export default function () {
                     level2Key: "behaviours",
                     elementKey: "cannabisUseFrequency",
                     inputType: "text",
+                    formCss: "is-one-third",
                     formOption: "hideLabel",
                     fsetRow: "4",
                     fsetCol: "2",
@@ -1004,6 +1015,7 @@ export default function () {
                     level2Key: "behaviours",
                     elementKey: "alcoholUse",
                     inputType: "checkbox",
+                    formCss: "is-one-quarter",
                     fsetRow: "5",
                     fsetCol: "1",
                     helperText: "CAGE questionaire-NL-Have you ever felt that you should cut down on your drinking?-NL-Have you ever become annoyed by criticisms of your drinking?-NL-Have you ever felt guilty about your drinking?-NL-Have you ever had a morning eye opener to get rid of a hangover?",
@@ -1017,6 +1029,7 @@ export default function () {
                     level2Key: "behaviours",
                     elementKey: "alcoholUseFrequency",
                     inputType: "text",
+                    formCss: "is-one-third",
                     formOption: "hideLabel",
                     fsetRow: "5",
                     fsetCol: "2",
@@ -1030,6 +1043,7 @@ export default function () {
                     level2Key: "behaviours",
                     elementKey: "substanceUse",
                     inputType: "checkbox",
+                    formCss: "is-one-quarter",
                     fsetRow: "6",
                     fsetCol: "1",
                     helperText: "Have you used any substances in the last 6 months?-NL-Have you used any substances in the last 7 days?-NL-If so, make notes about which ones.",
@@ -1043,6 +1057,7 @@ export default function () {
                     level2Key: "behaviours",
                     elementKey: "substanceUseFrequency",
                     inputType: "text",
+                    formCss: "is-one-third",
                     formOption: "hideLabel",
                     fsetRow: "6",
                     fsetCol: "2",
@@ -1064,6 +1079,7 @@ export default function () {
                           level2Key: "behaviours",
                           elementKey: "exercise",
                           inputType: "checkbox",
+                          formCss: "is-one-quarter",
                           fsetRow: "1",
                           fsetCol: "1",
                           dataParent: "psychosocial.behaviours",
@@ -1076,6 +1092,7 @@ export default function () {
                           level2Key: "behaviours",
                           elementKey: "exerciseFrequency",
                           inputType: "text",
+                          formCss: "is-one-third",
                           formOption: "hideLabel",
                           fsetRow: "1",
                           fsetCol: "2",
@@ -1094,6 +1111,7 @@ export default function () {
                           level2Key: "behaviours",
                           elementKey: "caffeineUse",
                           inputType: "checkbox",
+                          formCss: "is-one-quarter",
                           fsetRow: "2",
                           fsetCol: "1",
                           dataParent: "psychosocial.behaviours",
@@ -1106,6 +1124,7 @@ export default function () {
                           level2Key: "behaviours",
                           elementKey: "caffeineUseFrequency",
                           inputType: "text",
+                          formCss: "is-one-third",
                           formOption: "hideLabel",
                           fsetRow: "2",
                           fsetCol: "2",
@@ -1124,6 +1143,7 @@ export default function () {
                           level2Key: "behaviours",
                           elementKey: "tobaccoUse",
                           inputType: "checkbox",
+                          formCss: "is-one-quarter",
                           fsetRow: "3",
                           fsetCol: "1",
                           helperText: "Have you used any tobacco products in the last 6 months?-NL-Have you used any tobacco products in the last 7 days?",
@@ -1137,6 +1157,7 @@ export default function () {
                           level2Key: "behaviours",
                           elementKey: "tobaccoUseFrequency",
                           inputType: "text",
+                          formCss: "is-one-third",
                           formOption: "hideLabel",
                           fsetRow: "3",
                           fsetCol: "2",
@@ -1155,6 +1176,7 @@ export default function () {
                           level2Key: "behaviours",
                           elementKey: "cannabisUse",
                           inputType: "checkbox",
+                          formCss: "is-one-quarter",
                           fsetRow: "4",
                           fsetCol: "1",
                           helperText: "Have you used any cannabis products in the last 6 months?-NL-Have you used any cannabis products in the last 7 days?",
@@ -1168,6 +1190,7 @@ export default function () {
                           level2Key: "behaviours",
                           elementKey: "cannabisUseFrequency",
                           inputType: "text",
+                          formCss: "is-one-third",
                           formOption: "hideLabel",
                           fsetRow: "4",
                           fsetCol: "2",
@@ -1186,6 +1209,7 @@ export default function () {
                           level2Key: "behaviours",
                           elementKey: "alcoholUse",
                           inputType: "checkbox",
+                          formCss: "is-one-quarter",
                           fsetRow: "5",
                           fsetCol: "1",
                           helperText: "CAGE questionaire-NL-Have you ever felt that you should cut down on your drinking?-NL-Have you ever become annoyed by criticisms of your drinking?-NL-Have you ever felt guilty about your drinking?-NL-Have you ever had a morning eye opener to get rid of a hangover?",
@@ -1199,6 +1223,7 @@ export default function () {
                           level2Key: "behaviours",
                           elementKey: "alcoholUseFrequency",
                           inputType: "text",
+                          formCss: "is-one-third",
                           formOption: "hideLabel",
                           fsetRow: "5",
                           fsetCol: "2",
@@ -1217,6 +1242,7 @@ export default function () {
                           level2Key: "behaviours",
                           elementKey: "substanceUse",
                           inputType: "checkbox",
+                          formCss: "is-one-quarter",
                           fsetRow: "6",
                           fsetCol: "1",
                           helperText: "Have you used any substances in the last 6 months?-NL-Have you used any substances in the last 7 days?-NL-If so, make notes about which ones.",
@@ -1230,6 +1256,7 @@ export default function () {
                           level2Key: "behaviours",
                           elementKey: "substanceUseFrequency",
                           inputType: "text",
+                          formCss: "is-one-third",
                           formOption: "hideLabel",
                           fsetRow: "6",
                           fsetCol: "2",
@@ -1295,7 +1322,7 @@ export default function () {
           fqn: "surgical.previous.comments"
         }
       ],
-      generated: "2019-04-01T18:58:17-07:00",
+      generated: "2019-04-10T11:07:54-07:00",
       hasTable: true,
       tables: [
         {
@@ -1309,6 +1336,8 @@ export default function () {
               level2Key: "pastSurgery",
               elementKey: "physician",
               inputType: "text",
+              formRow: "1",
+              formColumn: "1",
               tableColumn: "1",
               fsetRow: "1",
               fsetCol: "1",
@@ -1322,6 +1351,8 @@ export default function () {
               level2Key: "pastSurgery",
               elementKey: "procedure",
               inputType: "text",
+              formRow: "1",
+              formColumn: "2",
               tableColumn: "2",
               fsetRow: "1",
               fsetCol: "2",
@@ -1335,6 +1366,8 @@ export default function () {
               level2Key: "pastSurgery",
               elementKey: "timeSince",
               inputType: "text",
+              formRow: "1",
+              formColumn: "3",
               tableColumn: "3",
               fsetRow: "1",
               fsetCol: "3",
@@ -1344,8 +1377,59 @@ export default function () {
             }
           ],
           tableForm: {
-            rows: [],
-            columnsCount: 0
+            rows: [
+              {
+                formRow: "1",
+                elements: [
+                  {
+                    label: "Performing physician",
+                    pageDataKey: "surgical",
+                    level2Key: "pastSurgery",
+                    elementKey: "physician",
+                    inputType: "text",
+                    formRow: "1",
+                    formColumn: "1",
+                    tableColumn: "1",
+                    fsetRow: "1",
+                    fsetCol: "1",
+                    dataParent: "surgical.pastSurgery",
+                    fqn: "surgical.pastSurgery.physician",
+                    tableKey: "pastSurgery"
+                  },
+                  {
+                    label: "Surgery/procedure",
+                    pageDataKey: "surgical",
+                    level2Key: "pastSurgery",
+                    elementKey: "procedure",
+                    inputType: "text",
+                    formRow: "1",
+                    formColumn: "2",
+                    tableColumn: "2",
+                    fsetRow: "1",
+                    fsetCol: "2",
+                    dataParent: "surgical.pastSurgery",
+                    fqn: "surgical.pastSurgery.procedure",
+                    tableKey: "pastSurgery"
+                  },
+                  {
+                    label: "Time elapsed since surgery",
+                    pageDataKey: "surgical",
+                    level2Key: "pastSurgery",
+                    elementKey: "timeSince",
+                    inputType: "text",
+                    formRow: "1",
+                    formColumn: "3",
+                    tableColumn: "3",
+                    fsetRow: "1",
+                    fsetCol: "3",
+                    dataParent: "surgical.pastSurgery",
+                    fqn: "surgical.pastSurgery.timeSince",
+                    tableKey: "pastSurgery"
+                  }
+                ]
+              }
+            ],
+            columnsCount: 3
           }
         },
         {
@@ -1359,6 +1443,9 @@ export default function () {
               level2Key: "previous",
               elementKey: "with",
               inputType: "text",
+              formRow: "2",
+              formColumn: "1",
+              formCss: "is-one-third",
               tableColumn: "1",
               fsetRow: "1",
               fsetCol: "1",
@@ -1372,6 +1459,9 @@ export default function () {
               level2Key: "previous",
               elementKey: "details",
               inputType: "text",
+              formRow: "2",
+              formColumn: "2",
+              formCss: "is-one-third",
               tableColumn: "2",
               fsetRow: "1",
               fsetCol: "2",
@@ -1385,6 +1475,9 @@ export default function () {
               level2Key: "previous",
               elementKey: "previousAdmissions",
               inputType: "text",
+              formRow: "3",
+              formColumn: "1",
+              formCss: "is-one-third",
               tableColumn: "3",
               fsetRow: "2",
               fsetCol: "1",
@@ -1398,6 +1491,9 @@ export default function () {
               level2Key: "previous",
               elementKey: "previousAdmissionsDate",
               inputType: "date",
+              formRow: "3",
+              formColumn: "2",
+              formCss: "is-one-third",
               tableColumn: "4",
               fsetRow: "2",
               fsetCol: "2",
@@ -1411,6 +1507,8 @@ export default function () {
               level2Key: "previous",
               elementKey: "comments",
               inputType: "textarea",
+              formRow: "4",
+              formColumn: "1",
               tableColumn: "5",
               fsetRow: "3",
               fsetCol: "1",
@@ -1420,8 +1518,104 @@ export default function () {
             }
           ],
           tableForm: {
-            rows: [],
-            columnsCount: 0
+            rows: [
+              {
+                formRow: "2",
+                elements: [
+                  {
+                    label: "Appointment with",
+                    pageDataKey: "surgical",
+                    level2Key: "previous",
+                    elementKey: "with",
+                    inputType: "text",
+                    formRow: "2",
+                    formColumn: "1",
+                    formCss: "is-one-third",
+                    tableColumn: "1",
+                    fsetRow: "1",
+                    fsetCol: "1",
+                    dataParent: "surgical.previous",
+                    fqn: "surgical.previous.with",
+                    tableKey: "previous"
+                  },
+                  {
+                    label: "Appointment details",
+                    pageDataKey: "surgical",
+                    level2Key: "previous",
+                    elementKey: "details",
+                    inputType: "text",
+                    formRow: "2",
+                    formColumn: "2",
+                    formCss: "is-one-third",
+                    tableColumn: "2",
+                    fsetRow: "1",
+                    fsetCol: "2",
+                    dataParent: "surgical.previous",
+                    fqn: "surgical.previous.details",
+                    tableKey: "previous"
+                  }
+                ]
+              },
+              {
+                formRow: "3",
+                elements: [
+                  {
+                    label: "Previous admission reason",
+                    pageDataKey: "surgical",
+                    level2Key: "previous",
+                    elementKey: "previousAdmissions",
+                    inputType: "text",
+                    formRow: "3",
+                    formColumn: "1",
+                    formCss: "is-one-third",
+                    tableColumn: "3",
+                    fsetRow: "2",
+                    fsetCol: "1",
+                    dataParent: "surgical.previous",
+                    fqn: "surgical.previous.previousAdmissions",
+                    tableKey: "previous"
+                  },
+                  {
+                    label: "Date",
+                    pageDataKey: "surgical",
+                    level2Key: "previous",
+                    elementKey: "previousAdmissionsDate",
+                    inputType: "date",
+                    formRow: "3",
+                    formColumn: "2",
+                    formCss: "is-one-third",
+                    tableColumn: "4",
+                    fsetRow: "2",
+                    fsetCol: "2",
+                    dataParent: "surgical.previous",
+                    fqn: "surgical.previous.previousAdmissionsDate",
+                    tableKey: "previous"
+                  }
+                ]
+              },
+              {
+                formRow: "4",
+                elements: [
+                  {
+                    label: "General comments",
+                    pageDataKey: "surgical",
+                    level2Key: "previous",
+                    elementKey: "comments",
+                    inputType: "textarea",
+                    formRow: "4",
+                    formColumn: "1",
+                    tableColumn: "5",
+                    fsetRow: "3",
+                    fsetCol: "1",
+                    dataParent: "surgical.previous",
+                    fqn: "surgical.previous.comments",
+                    tableKey: "previous"
+                  }
+                ]
+              },
+              null
+            ],
+            columnsCount: 2
           }
         }
       ],
@@ -1532,7 +1726,7 @@ export default function () {
           fqn: "immunization.otherDate3"
         }
       ],
-      generated: "2019-04-01T18:58:17-07:00",
+      generated: "2019-04-10T11:07:54-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -1546,7 +1740,7 @@ export default function () {
                 inputType: "checkbox",
                 formRow: "1",
                 formColumn: "1",
-                tableCss: "is-one-third",
+                tableCss: "is-one-quarter",
                 dataParent: "immunization",
                 fqn: "immunization.hepA"
               },
@@ -1558,6 +1752,7 @@ export default function () {
                 formRow: "1",
                 formColumn: "2",
                 formOption: "hideLabel",
+                tableCss: "is-one-third",
                 dataParent: "immunization",
                 fqn: "immunization.hepADate"
               }
@@ -1573,7 +1768,7 @@ export default function () {
                 inputType: "checkbox",
                 formRow: "2",
                 formColumn: "1",
-                tableCss: "is-one-third",
+                tableCss: "is-one-quarter",
                 dataParent: "immunization",
                 fqn: "immunization.hepB"
               },
@@ -1585,6 +1780,7 @@ export default function () {
                 formRow: "2",
                 formColumn: "2",
                 formOption: "hideLabel",
+                tableCss: "is-one-third",
                 dataParent: "immunization",
                 fqn: "immunization.hepBDate"
               }
@@ -1600,7 +1796,7 @@ export default function () {
                 inputType: "checkbox",
                 formRow: "3",
                 formColumn: "1",
-                tableCss: "is-one-third",
+                tableCss: "is-one-quarter",
                 dataParent: "immunization",
                 fqn: "immunization.mmr"
               },
@@ -1612,6 +1808,7 @@ export default function () {
                 formRow: "3",
                 formColumn: "2",
                 formOption: "hideLabel",
+                tableCss: "is-one-third",
                 dataParent: "immunization",
                 fqn: "immunization.mmrDate"
               }
@@ -1627,7 +1824,7 @@ export default function () {
                 inputType: "checkbox",
                 formRow: "4",
                 formColumn: "1",
-                tableCss: "is-one-third",
+                tableCss: "is-one-quarter",
                 dataParent: "immunization",
                 fqn: "immunization.pneumococcal"
               },
@@ -1639,6 +1836,7 @@ export default function () {
                 formRow: "4",
                 formColumn: "2",
                 formOption: "hideLabel",
+                tableCss: "is-one-third",
                 dataParent: "immunization",
                 fqn: "immunization.pneumococcalDate"
               }
@@ -1654,7 +1852,7 @@ export default function () {
                 inputType: "checkbox",
                 formRow: "5",
                 formColumn: "1",
-                tableCss: "is-one-third",
+                tableCss: "is-one-quarter",
                 dataParent: "immunization",
                 fqn: "immunization.polioDiptheriaPertussis"
               },
@@ -1666,6 +1864,7 @@ export default function () {
                 formRow: "5",
                 formColumn: "2",
                 formOption: "hideLabel",
+                tableCss: "is-one-third",
                 dataParent: "immunization",
                 fqn: "immunization.polioDiptheriaPertussisDate"
               }
@@ -1681,7 +1880,7 @@ export default function () {
                 inputType: "checkbox",
                 formRow: "6",
                 formColumn: "1",
-                tableCss: "is-one-third",
+                tableCss: "is-one-quarter",
                 dataParent: "immunization",
                 fqn: "immunization.tb"
               },
@@ -1693,6 +1892,7 @@ export default function () {
                 formRow: "6",
                 formColumn: "2",
                 formOption: "hideLabel",
+                tableCss: "is-one-third",
                 dataParent: "immunization",
                 fqn: "immunization.tbDate"
               }
@@ -1708,7 +1908,7 @@ export default function () {
                 inputType: "checkbox",
                 formRow: "7",
                 formColumn: "1",
-                tableCss: "is-one-third",
+                tableCss: "is-one-quarter",
                 dataParent: "immunization",
                 fqn: "immunization.tetanus"
               },
@@ -1720,6 +1920,7 @@ export default function () {
                 formRow: "7",
                 formColumn: "2",
                 formOption: "hideLabel",
+                tableCss: "is-one-third",
                 dataParent: "immunization",
                 fqn: "immunization.tetanusDate"
               }
@@ -1734,7 +1935,7 @@ export default function () {
                 inputType: "text",
                 formRow: "8",
                 formColumn: "1",
-                tableCss: "is-one-third",
+                tableCss: "is-one-quarter",
                 validation: "If other is selected, this is mandatory",
                 dataParent: "immunization",
                 fqn: "immunization.other1"
@@ -1747,6 +1948,7 @@ export default function () {
                 formRow: "8",
                 formColumn: "2",
                 formOption: "hideLabel",
+                tableCss: "is-one-third",
                 dataParent: "immunization",
                 fqn: "immunization.otherDate1"
               }
@@ -1761,7 +1963,7 @@ export default function () {
                 inputType: "text",
                 formRow: "9",
                 formColumn: "1",
-                tableCss: "is-one-third",
+                tableCss: "is-one-quarter",
                 validation: "If other is selected, this is mandatory",
                 dataParent: "immunization",
                 fqn: "immunization.other2"
@@ -1774,6 +1976,7 @@ export default function () {
                 formRow: "9",
                 formColumn: "2",
                 formOption: "hideLabel",
+                tableCss: "is-one-third",
                 dataParent: "immunization",
                 fqn: "immunization.otherDate2"
               }
@@ -1788,7 +1991,7 @@ export default function () {
                 inputType: "text",
                 formRow: "10",
                 formColumn: "1",
-                tableCss: "is-one-third",
+                tableCss: "is-one-quarter",
                 validation: "If other is selected, this is mandatory",
                 dataParent: "immunization",
                 fqn: "immunization.other3"
@@ -1801,6 +2004,7 @@ export default function () {
                 formRow: "10",
                 formColumn: "2",
                 formOption: "hideLabel",
+                tableCss: "is-one-third",
                 dataParent: "immunization",
                 fqn: "immunization.otherDate3"
               }
@@ -1821,7 +2025,7 @@ export default function () {
           fqn: "familyHistory.history"
         }
       ],
-      generated: "2019-04-01T18:58:17-07:00",
+      generated: "2019-04-10T11:07:54-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -1860,7 +2064,7 @@ export default function () {
           fqn: "careTeam.teams.profession"
         }
       ],
-      generated: "2019-04-01T18:58:17-07:00",
+      generated: "2019-04-10T11:07:54-07:00",
       hasTable: true,
       tables: [
         {
@@ -1983,7 +2187,7 @@ export default function () {
           fqn: "pastAppointments.outpatientAppointments.diagnosis"
         }
       ],
-      generated: "2019-04-01T18:58:17-07:00",
+      generated: "2019-04-10T11:07:54-07:00",
       hasTable: true,
       tables: [
         {
