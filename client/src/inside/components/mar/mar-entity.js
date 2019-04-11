@@ -22,9 +22,9 @@ when,
 medication
  */
 export default class MarEntity {
-  constructor (whoOrObj, ...[day, when, comment, period]) {
+  constructor (whoOrObj, ...[day, when, comment, period = {}]) {
+    this._data = {}
     if (typeof whoOrObj ==='string') { // from dialog
-      this._data = {}
       // console.log('MarEntity create from dialog arguments')
       this._data.whoAdministered = whoOrObj
       this._data.day = day

@@ -3,11 +3,11 @@ const mongoose = require('mongoose')
 const ObjectID = require('mongodb').ObjectID
 import HMAC_SHA1 from '../../node_modules/ims-lti/src/hmac-sha1'
 
-import LTIController from '../../controllers/lti'
+import LTIController from '../../src/controllers/lti'
 import Helper from '../helper'
 const helper = new Helper()
-const { ltiVersions, LTI_BASIC } = require('../../utils/lti')
-import Assignment from '../../models/assignment'
+const { ltiVersions, LTI_BASIC } = require('../../src/utils/lti')
+import Assignment from '../../src/models/assignment'
 
 let seedData = { foo: 'bar' }
 let assignmentKey = '59'

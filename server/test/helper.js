@@ -1,11 +1,11 @@
-import Consumer from '../models/consumer'
-import Assignment from '../models/assignment'
-import User from '../models/user'
-import Activity from '../models/activity'
-import Role from '../controllers/roles'
+import Consumer from '../src/models/consumer'
+import Assignment from '../src/models/assignment'
+import User from '../src/models/user'
+import Activity from '../src/models/activity'
+import Role from '../src/controllers/roles'
 const ObjectID = require('mongodb').ObjectID
-const { ltiVersions, LTI_BASIC } = require('../utils/lti')
-import { DEFAULT_ASSIGNMENT_EXTERNAL_ID } from '../controllers/assignment-controller'
+const { ltiVersions, LTI_BASIC } = require('../src/utils/lti')
+import { DEFAULT_ASSIGNMENT_EXTERNAL_ID } from '../src/controllers/assignment-controller'
 
 process.on('unhandledRejection', function(error, promise) {
   console.error('UNHANDLED REJECTION', error.stack)

@@ -1,7 +1,7 @@
 var should = require('should')
 import Helper from '../helper'
 const helper = new Helper()
-import Role from '../../controllers/roles'
+import Role from '../../src/controllers/roles'
 
 const typeName = 'Role'
 const collectionName = 'roles'

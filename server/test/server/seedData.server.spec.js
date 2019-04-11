@@ -3,8 +3,8 @@ const request = require('supertest')
 const mongoose = require('mongoose')
 import Helper from '../helper'
 const helper = new Helper()
-import EhrApp from '../../server/app'
-import Config from '../../config/config'
+import EhrApp from '../../src/server/app'
+import Config from '../../src/config/config'
 
 const config = new Config('test')
 const configuration = config.config

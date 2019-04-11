@@ -2,8 +2,8 @@ var should = require('should')
 const mongoose = require('mongoose')
 import Helper from '../helper'
 const helper = new Helper()
-import SeedDataController from '../../controllers/seedData-controller'
-import Model from '../../models/seed-data'
+import SeedDataController from '../../src/controllers/seedData-controller'
+// import Model from '../../models/seed-data'
 
 const typeName = 'SeedDataController'
 const modelName = 'SeedData'

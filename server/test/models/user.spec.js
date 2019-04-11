@@ -1,6 +1,6 @@
 var should = require('should')
 const mongoose = require('mongoose')
-import User from '../../models/user'
+import User from '../../src/models/user'
 import Helper from '../helper'
 const helper = new Helper()
 

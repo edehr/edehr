@@ -11,10 +11,10 @@ export default class Config {
     this.validateEnvironmentVariable()
 
     // Get the default config
-    let defaultConfig = require(path.join(process.cwd(), 'config/env/default'))
+    let defaultConfig = require(path.join(process.cwd(), 'src/config/env/default'))
 
     // Get the current config
-    let environmentConfig = require(path.join(process.cwd(), 'config/env/', this.env)) || {}
+    let environmentConfig = require(path.join(process.cwd(), 'src/config/env/', this.env)) || {}
 
     // Merge config files
     this.configuration = Object.assign(defaultConfig, environmentConfig)
@@ -32,7 +32,7 @@ export default class Config {
    * Validate NODE_ENV existence
    */
   validateEnvironmentVariable () {
-    let environmentFiles = glob.sync('./config/env/' + this.env + '.js')
+    let environmentFiles = glob.sync('./src/config/env/' + this.env + '.js')
     if (!environmentFiles.length) {
       if (this.env) {
         console.error(
