@@ -2,10 +2,10 @@ var should = require('should')
 const mongoose = require('mongoose')
 import Helper from '../helper'
 const helper = new Helper()
-import ActivityController from '../../controllers/activity-controller'
-import Activity from '../../models/activity'
-import Consumer from '../../models/consumer'
-import Assignment from '../../models/assignment'
+import ActivityController from '../../src/controllers/activity-controller'
+import Activity from '../../src/models/activity'
+// import Consumer from '../../models/consumer'
+// import Assignment from '../../models/assignment'
 
 const typeName = 'ActivityController'
 const modelName = 'Activity'

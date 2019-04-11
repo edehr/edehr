@@ -3,11 +3,11 @@ const mongoose = require('mongoose')
 const ObjectID = require('mongodb').ObjectID
 import Helper from '../helper'
 const helper = new Helper()
-import VisitController from '../../controllers/visit-controller'
-import Model from '../../models/user'
+import VisitController from '../../src/controllers/visit-controller'
+// import Model from '../../models/user'
 
 const typeName = 'VisitController'
-const modelName = 'Visit'
+// const modelName = 'Visit'
 
 // Use following to leave results in test database for inspection
 // helper.setClear(false)

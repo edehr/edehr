@@ -1,7 +1,7 @@
 var should = require('should')
 const mongoose = require('mongoose')
 const ObjectID = require('mongodb').ObjectID
-import Consumer from '../../models/consumer'
+import Consumer from '../../src/models/consumer'
 import Helper from '../helper'
 const helper = new Helper()
 

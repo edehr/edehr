@@ -1,7 +1,7 @@
 var should = require('should')
 var request = require('supertest');
-import EhrApp from '../../server/app';
-import Config from '../../config/config'
+import EhrApp from '../../src/server/app';
+import Config from '../../src/config/config'
 
 const config = new Config('test')
 const configuration = config.config

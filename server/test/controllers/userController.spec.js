@@ -3,8 +3,8 @@ const mongoose = require('mongoose')
 const ObjectID = require('mongodb').ObjectID
 import Helper from '../helper'
 const helper = new Helper()
-import UserController from '../../controllers/user-controller'
-import Model from '../../models/user'
+import UserController from '../../src/controllers/user-controller'
+import Model from '../../src/models/user'
 
 const typeName = 'UserController'
 const modelName = 'User'

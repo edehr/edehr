@@ -1,6 +1,6 @@
 var should = require('should')
-import { ok, fail } from '../../controllers/utils'
-import { ltiVersions } from '../../utils/lti'
+import { ok, fail } from '../../src/controllers/utils'
+import { ltiVersions } from '../../src/utils/lti'
 
 /* global describe it */
 describe('utils helper file', function() {

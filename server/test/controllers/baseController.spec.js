@@ -2,10 +2,10 @@ var should = require('should')
 const mongoose = require('mongoose')
 const MongoClient = require('mongodb').MongoClient
 const ObjectID = require('mongodb').ObjectID
+import BaseController from '../../src/controllers/base'
+import Model from '../../src/models/seed-data'
 import Helper from '../helper'
 const helper = new Helper()
-import BaseController from '../../controllers/base'
-import Model from '../../models/seed-data'
 
 const typeName = 'BaseController'
 const modelName = 'Seed'

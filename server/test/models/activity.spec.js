@@ -3,13 +3,13 @@ const mongoose = require('mongoose')
 const ObjectID = require('mongodb').ObjectID
 import Helper from '../helper'
 const helper = new Helper()
-import Model from '../../models/activity'
-import Consumer from '../../models/consumer'
-import Assignment from '../../models/assignment'
+import Model from '../../src/models/activity'
+// import Consumer from '../../models/consumer'
+// import Assignment from '../../models/assignment'
 
 const typeName = 'Activity'
-const collectionName = 'activties'
-let seedData = { foo: 'bar' }
+// const collectionName = 'activties'
+// let seedData = { foo: 'bar' }
 
 /* global describe it */
 describe(`${typeName} mongoose schema testing`, function() {

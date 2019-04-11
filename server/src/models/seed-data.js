@@ -14,6 +14,6 @@ const Schema = new mongoose.Schema(
   { minimize: false } // need this to get default empty object
 )
 
-const SeedData = mongoose.model('SeedData', Schema)
+const SeedData = mongoose.models.SeedData || mongoose.model('SeedData', Schema)
 
 export default SeedData

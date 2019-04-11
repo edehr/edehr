@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const ObjectID = require('mongodb').ObjectID
 import Helper from '../helper'
 const helper = new Helper()
-import Model from '../../models/seed-data'
+import Model from '../../src/models/seed-data'
 
 const typeName = 'SeedData'
 const collectionName = 'seeddatas'

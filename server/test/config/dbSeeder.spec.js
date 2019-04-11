@@ -1,12 +1,12 @@
 var should = require('should')
 const mongoose = require('mongoose')
-import IntegrationController from '../../controllers/integration-controller'
+import IntegrationController from '../../src/controllers/integration-controller'
 const IntegrationModel = new IntegrationController()
-import dbSeeder from '../../config/lib/dbSeeder'
+import dbSeeder from '../../src/config/lib/dbSeeder'
 import Helper from '../helper'
-import fs from 'fs'
+// import fs from 'fs'
 
-require('../../models/seed-data')
+// require('../../src/models/seed-data')
 const helper = new Helper()
 
 /* global describe it */
