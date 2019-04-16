@@ -26,13 +26,13 @@ export default function () {
           fqn: "progressNotes.table.time"
         },
         {
-          label: "Progress notes",
-          elementKey: "notes",
-          fqn: "progressNotes.table.notes",
+          label: "Progress note",
+          elementKey: "note",
+          fqn: "progressNotes.table.note",
           dataCaseStudy: "Erin Johns is 74 years old. She is widowed with four children, one of whom lives at home with her in their original family home. Two of Erins children live within a one-hour drive from her, and one lives a three-hour flight away. She also has 10 grandchildren and one great grandchild. Erin describes herself as a non-smoker, but she smoked socially when she was in her early twenties for about five years. She is a retired hairdresser."
         }
       ],
-      generated: "2019-04-10T11:07:18-07:00",
+      generated: "2019-04-16T09:41:06-07:00",
       hasTable: true,
       tables: [
         {
@@ -96,16 +96,16 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Progress notes",
+              label: "Progress note",
               pageDataKey: "progressNotes",
               level2Key: "table",
-              elementKey: "notes",
+              elementKey: "note",
               inputType: "textarea",
               formRow: "2",
               formColumn: "1",
-              tableColumn: "6",
+              tableColumn: "5",
               dataParent: "progressNotes.table",
-              fqn: "progressNotes.table.notes",
+              fqn: "progressNotes.table.note",
               tableKey: "table"
             }
           ],
@@ -176,16 +176,16 @@ export default function () {
                 formRow: "2",
                 elements: [
                   {
-                    label: "Progress notes",
+                    label: "Progress note",
                     pageDataKey: "progressNotes",
                     level2Key: "table",
-                    elementKey: "notes",
+                    elementKey: "note",
                     inputType: "textarea",
                     formRow: "2",
                     formColumn: "1",
-                    tableColumn: "6",
+                    tableColumn: "5",
                     dataParent: "progressNotes.table",
-                    fqn: "progressNotes.table.notes",
+                    fqn: "progressNotes.table.note",
                     tableKey: "table"
                   }
                 ]
@@ -249,7 +249,7 @@ export default function () {
           fqn: "carePlan.table2.status"
         }
       ],
-      generated: "2019-04-10T11:07:18-07:00",
+      generated: "2019-04-16T09:41:06-07:00",
       hasTable: true,
       tables: [
         {
@@ -304,7 +304,6 @@ export default function () {
               formRow: "1",
               formColumn: "4",
               tableColumn: "4",
-              tableCss: "hr-table",
               dataParent: "carePlan.table2",
               fqn: "carePlan.table2.time",
               tableKey: "table2"
@@ -440,7 +439,6 @@ export default function () {
                     formRow: "1",
                     formColumn: "4",
                     tableColumn: "4",
-                    tableCss: "hr-table",
                     dataParent: "carePlan.table2",
                     fqn: "carePlan.table2.time",
                     tableKey: "table2"
@@ -552,7 +550,7 @@ export default function () {
       pageTitle: "Consults",
       pageDataKey: "consultants",
       pageChildren: [],
-      generated: "2019-04-10T11:07:18-07:00",
+      generated: "2019-04-16T09:41:06-07:00",
       hasForm: true,
       page_form: {
         rows: [],
@@ -585,7 +583,7 @@ export default function () {
           fqn: "labResults.labReport.labReport4_1"
         }
       ],
-      generated: "2019-04-10T11:07:18-07:00",
+      generated: "2019-04-16T09:41:06-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -611,8 +609,8 @@ export default function () {
                     inputType: "assetLink",
                     fsetRow: "1",
                     fsetCol: "1",
-                    assetBase: "Lab reports",
-                    assetName: "Day 0 ABG Laboratory Report.pdf",
+                    assetBase: "lab-reports",
+                    assetName: "day-0-abg-laboratory-report.pdf",
                     dataParent: "labResults.labReport",
                     fqn: "labResults.labReport.labReport1_1",
                     formColumn: "1"
@@ -625,8 +623,8 @@ export default function () {
                     inputType: "assetLink",
                     fsetRow: "2",
                     fsetCol: "1",
-                    assetBase: "Lab reports",
-                    assetName: "Day 1 ABG Laboratory Report.pdf",
+                    assetBase: "lab-reports",
+                    assetName: "day-1-abg-laboratory-report.pdf",
                     dataParent: "labResults.labReport",
                     fqn: "labResults.labReport.labReport2_1",
                     formColumn: "1"
@@ -639,8 +637,8 @@ export default function () {
                     inputType: "assetLink",
                     fsetRow: "3",
                     fsetCol: "1",
-                    assetBase: "Lab reports",
-                    assetName: "Day 3 C&S  Laboratory Report.pdf",
+                    assetBase: "lab-reports",
+                    assetName: "day-3-c-s-laboratory-report.pdf",
                     dataParent: "labResults.labReport",
                     fqn: "labResults.labReport.labReport3_1",
                     formColumn: "1"
@@ -653,8 +651,8 @@ export default function () {
                     inputType: "assetLink",
                     fsetRow: "4",
                     fsetCol: "1",
-                    assetBase: "Lab reports",
-                    assetName: "Day 3 Final C&S Laboratory Report.pdf",
+                    assetBase: "lab-reports",
+                    assetName: "day-3-final-c-s-laboratory-report.pdf",
                     dataParent: "labResults.labReport",
                     fqn: "labResults.labReport.labReport4_1",
                     formColumn: "1"
@@ -675,8 +673,8 @@ export default function () {
                           inputType: "assetLink",
                           fsetRow: "1",
                           fsetCol: "1",
-                          assetBase: "Lab reports",
-                          assetName: "Day 0 ABG Laboratory Report.pdf",
+                          assetBase: "lab-reports",
+                          assetName: "day-0-abg-laboratory-report.pdf",
                           dataParent: "labResults.labReport",
                           fqn: "labResults.labReport.labReport1_1",
                           formColumn: "1"
@@ -694,8 +692,8 @@ export default function () {
                           inputType: "assetLink",
                           fsetRow: "2",
                           fsetCol: "1",
-                          assetBase: "Lab reports",
-                          assetName: "Day 1 ABG Laboratory Report.pdf",
+                          assetBase: "lab-reports",
+                          assetName: "day-1-abg-laboratory-report.pdf",
                           dataParent: "labResults.labReport",
                           fqn: "labResults.labReport.labReport2_1",
                           formColumn: "1"
@@ -713,8 +711,8 @@ export default function () {
                           inputType: "assetLink",
                           fsetRow: "3",
                           fsetCol: "1",
-                          assetBase: "Lab reports",
-                          assetName: "Day 3 C&S  Laboratory Report.pdf",
+                          assetBase: "lab-reports",
+                          assetName: "day-3-c-s-laboratory-report.pdf",
                           dataParent: "labResults.labReport",
                           fqn: "labResults.labReport.labReport3_1",
                           formColumn: "1"
@@ -732,8 +730,8 @@ export default function () {
                           inputType: "assetLink",
                           fsetRow: "4",
                           fsetCol: "1",
-                          assetBase: "Lab reports",
-                          assetName: "Day 3 Final C&S Laboratory Report.pdf",
+                          assetBase: "lab-reports",
+                          assetName: "day-3-final-c-s-laboratory-report.pdf",
                           dataParent: "labResults.labReport",
                           fqn: "labResults.labReport.labReport4_1",
                           formColumn: "1"
@@ -776,7 +774,7 @@ export default function () {
           fqn: "medicalImaging.diagnosticImage.diagnosticImage2_2"
         }
       ],
-      generated: "2019-04-10T11:07:18-07:00",
+      generated: "2019-04-16T09:41:06-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -784,7 +782,6 @@ export default function () {
             formRow: "1",
             elements: [
               {
-                label: "Medical imaging",
                 pageDataKey: "medicalImaging",
                 elementKey: "diagnosticReport",
                 inputType: "fieldset",
@@ -801,8 +798,8 @@ export default function () {
                     inputType: "assetLink",
                     fsetRow: "1",
                     fsetCol: "1",
-                    assetBase: "Diagnostic test results",
-                    assetName: "Xray report for COPD day 0.pdf",
+                    assetBase: "diagnostic-test-results",
+                    assetName: "xray-report-for-copd-day-0.pdf",
                     dataParent: "medicalImaging.diagnosticReport",
                     fqn: "medicalImaging.diagnosticReport.diagnosticReport1_1",
                     formColumn: "1"
@@ -815,8 +812,8 @@ export default function () {
                     inputType: "assetLink",
                     fsetRow: "2",
                     fsetCol: "1",
-                    assetBase: "Diagnostic test results",
-                    assetName: "Xray report for Pneumonia day 2.pdf",
+                    assetBase: "diagnostic-test-results",
+                    assetName: "xray-report-for-pneumonia-day-2.pdf",
                     dataParent: "medicalImaging.diagnosticReport",
                     fqn: "medicalImaging.diagnosticReport.diagnosticReport2_1",
                     formColumn: "1"
@@ -837,8 +834,8 @@ export default function () {
                           inputType: "assetLink",
                           fsetRow: "1",
                           fsetCol: "1",
-                          assetBase: "Diagnostic test results",
-                          assetName: "Xray report for COPD day 0.pdf",
+                          assetBase: "diagnostic-test-results",
+                          assetName: "xray-report-for-copd-day-0.pdf",
                           dataParent: "medicalImaging.diagnosticReport",
                           fqn: "medicalImaging.diagnosticReport.diagnosticReport1_1",
                           formColumn: "1"
@@ -856,8 +853,8 @@ export default function () {
                           inputType: "assetLink",
                           fsetRow: "2",
                           fsetCol: "1",
-                          assetBase: "Diagnostic test results",
-                          assetName: "Xray report for Pneumonia day 2.pdf",
+                          assetBase: "diagnostic-test-results",
+                          assetName: "xray-report-for-pneumonia-day-2.pdf",
                           dataParent: "medicalImaging.diagnosticReport",
                           fqn: "medicalImaging.diagnosticReport.diagnosticReport2_1",
                           formColumn: "1"
@@ -879,7 +876,7 @@ export default function () {
       pageTitle: "Operative reports and anaesthesia record",
       pageDataKey: "operationReports",
       pageChildren: [],
-      generated: "2019-04-10T11:07:18-07:00",
+      generated: "2019-04-16T09:41:06-07:00",
       hasForm: true,
       page_form: {
         rows: [],

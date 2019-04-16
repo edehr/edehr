@@ -30,7 +30,7 @@ export default {
       this.text = msg || this.text
       this.$refs.theDialog.onOpen()
     },
-    closeIt: function() {
+    closeIt: function () {
       this.title = DEFAULT_TITLE
       this.msg = DEFAULT_TEXT
       this.$refs.theDialog.onClose()

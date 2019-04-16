@@ -4,11 +4,6 @@ table {
     border-bottom: 2px solid $grey40;
     padding: 0.5em 0.5em 0.5em 0;
   }
-  th,
-  .column_label {
-    color: $grey60;
-    font-size: 1em;
-  }
   tr {
     border-bottom: 1px solid $grey20;
     font-size: $bodyFontSize;
@@ -29,6 +24,13 @@ table {
   .column_label {
     max-width: 10rem;
   }
+}
+
+th,
+.content table thead th,
+.column_label {
+  color: $grey60;
+  font-size: 1em;
 }
 
 .column_table {
