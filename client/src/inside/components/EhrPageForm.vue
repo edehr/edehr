@@ -1,5 +1,5 @@
 <template lang="pug">
-  div
+  div(class="ehr-page-form")
     div(:class="row.classList", class="columns", v-for="row in formDefs.rows", v-bind:key="row.rowNumber")
       div(class="column", :class="[formColClass(element)]", v-for="element in row.elements", v-bind:key="element.elementKey")
         ehr-page-form-element(:notEditing="notEditing", :element="element", :ehrHelp="ehrHelp" :inputs="theData")

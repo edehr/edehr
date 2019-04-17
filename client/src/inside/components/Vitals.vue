@@ -1,12 +1,12 @@
 <template lang="pug">
   div(class="content")
     tabs
-      tab(name="Chart")
-        ehr-page-table(:tableDef="tableDef", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
       tab(name="Graph",:selected="true")
         ui-button(v-on:buttonClicked="showDialog") {{ tableDef.addButtonText }}
         vitals-chart(v-bind:vitals="tableData", v-bind:vitalsModel="vitalsModel")
         ehr-dialog-form(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey", :tableDef="tableDef", :inputs="inputs", :errorList="errorList" )
+      tab(name="Chart")
+        ehr-page-table(:tableDef="tableDef", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
 
     div(style="display:none") Vitals: {{refreshData}}
 </template>

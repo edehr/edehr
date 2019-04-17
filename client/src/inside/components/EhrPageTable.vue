@@ -1,5 +1,5 @@
 <template lang="pug">
-  div
+  div(class="ehr-page-table")
     div(v-show="showTableAddButton")
       ui-button(v-on:buttonClicked="showDialog") {{ tableDef.addButtonText }}
     div(v-if="tableDef.isTransposed", class="column_table")
