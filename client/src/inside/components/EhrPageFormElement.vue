@@ -13,8 +13,9 @@
 
     div(v-if="element.inputType === 'date'", class="date_wrapper")
       label(v-if="!(element.formOption === 'hideLabel')", class="date_label") {{element.label}}
-      datepicker(class="d-picker", typeable="true", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
+      datepicker(class="d-picker", typeable, v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
         div(v-if="(element.formOption === 'hideLabel')", slot="beforeCalendarHeader", class="datepicker-header") {{element.label}}
+
     div(v-if="element.inputType === 'day'", class="day_wrapper")
       label(v-if="!(element.formOption === 'hideLabel')", class="day_label") {{element.label}}
       input(class="input", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
