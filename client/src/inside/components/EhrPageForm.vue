@@ -89,7 +89,7 @@ export default {
 </script>
 
 <style lang="scss">
-.page-form {
+.ehr-page-form {
   margin-bottom: 5em;
 }
 </style>
