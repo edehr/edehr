@@ -104,9 +104,9 @@
       table.table
         thead
           tr
-            th.name(title="Name") EdEHR Assignment Name
+            th.name(title="Name") EdEHR assignment name
             th.description(title="Description") Description
-            th.external(title="External Id") Assignment External Id
+            th.external(title="External Id") Assignment external id
         tbody
           tr(v-for="item in assignmentsListing")
             td.name {{ item.name }}

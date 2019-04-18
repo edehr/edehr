@@ -10,9 +10,9 @@
     div(class="activity-list-body")
       accordion-element(theme="grayTheme", :show="show")
         div(class="classlist-header")
-          div(class="classlist-header-item") Student analytics placeholder
+          div(class="classlist-header-item") Student analytics
             fas-icon(class="icon-right", icon="download")
-          div(class="classlist-header-item") Evaluation notes placeholder
+          div(class="classlist-header-item") Evaluation notes
             fas-icon(class="icon-right", icon="download")
         div(class="classlist-body")
           table.table

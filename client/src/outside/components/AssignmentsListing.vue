@@ -1,6 +1,6 @@
 <template lang="pug">
   div(:class="$options.name")
-    h1 Ed EHR Assignments
+    h1 EdEHR assignments
     div(v-if="isRespondingToError")
       p Error: {{ isRespondingToError }}
       p Your LMS is asking for "{{ activity.custom_assignment }}".
@@ -10,10 +10,10 @@
     table.table
       thead
         tr
-          th(title="Name") EdEHR Assignment Name
+          th(title="Name") EdEHR assignment name
           th(title="Description") Description
-          th(title="External Id") Assignment External Id
-          th(v-show="isDeveloper", title="Seed Data") Seed Data
+          th(title="External Id") Assignment external id
+          th(v-show="isDeveloper", title="Seed Data") Seed data
       tbody
         tr(v-for="item in assignmentsListing")
           td {{ item.name }}

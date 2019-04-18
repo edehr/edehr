@@ -1,29 +1,29 @@
 <template lang="pug">
   div
-    h1 Current LMS Activity
+    h1 Current LMS activity
     table.table
       thead
         tr
           th Name
           th Value
       tbody
-        tr
-          td Course Name
+        tl
+          td Course name
           td {{ activity.context_title }}
         tr
-          td Course Label
+          td Course label
           td {{ activity.context_label }}
         tr
-          td Course Id
+          td Course id
           td {{ activity.context_id }}
         tr
-          td Activity Name
+          td Activity name
           td {{ activity.resource_link_title }}
         tr
-          td Activity Description
+          td Activity description
           td {{ activity.resource_link_description }}
         tr
-          td Activity Id
+          td Activity id
           td {{ activity.resource_link_id }}
 </template>
 
