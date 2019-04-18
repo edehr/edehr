@@ -13,6 +13,14 @@ the date picker may be chopped and much of it might not be visible.
   position: relative;
 }
 
+.form-row-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-element-wrapper {
+  width: 100%;
+}
 
 .input-fieldrow { /* used in dialog as containers, c */
   display: flex;
