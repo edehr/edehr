@@ -65,15 +65,6 @@ function doIntegrations () {
       }
     })
     .then(() => {
-      return checkIntegration('assignments')
-    })
-    .then(go => {
-      debug('Seed assignments? ', go)
-      if (go) {
-        return require('../seed-data/assignments')(true)
-      }
-    })
-    .then(() => {
       debug('DONE integrations')
     })
     .catch(err => {
@@ -102,10 +93,11 @@ function doIntegrations () {
     // -------------------------------------------------------------------------
   }
 }
-export default function () {
+export default function (forceSeeding) {
+  let f = forceSeeding ? forceSeeding : FORCE
   return Promise.resolve()
     .then(() => {
-      if (FORCE) {
+      if (f) {
         return IntegrationModel.clearAll()
       }
     })

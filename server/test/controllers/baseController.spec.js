@@ -20,9 +20,9 @@ describe(`${typeName} controller testing`, function() {
     helper.before(done, mongoose)
   })
 
-  after(function(done) {
-    helper.afterTests(done, mongoose, collectionName)
-  })
+  // after(function(done) {
+  //   helper.afterTests(done, mongoose, collectionName)
+  // })
 
   it(`${typeName} be valid with model and key`, function(done) {
     let m = new BaseController(Model, 'user_id')
@@ -38,6 +38,7 @@ describe(`${typeName} controller testing`, function() {
   it(`${typeName} create a ${modelName}`, function(done) {
     let m = new BaseController(Model, 'name')
     let data = {
+      toolConsumer: new ObjectID('56955ca46063c5600627f393'),
       name: '1234',
       description: 'a test seed',
       ehrData: { foo: 'bar' }

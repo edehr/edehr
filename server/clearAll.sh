@@ -30,6 +30,7 @@ curl -X DELETE http://localhost:${PORT}/activity-data/all | json_pp
 if [[ "$ALL" == "true" ]]
 then
   echo Clean everything
+  curl -X DELETE http://localhost:${PORT}/seed-data/all | json_pp
   curl -X DELETE http://localhost:${PORT}/consumers/all | json_pp
   curl -X DELETE http://localhost:${PORT}/assignments/all | json_pp
   curl -X DELETE http://localhost:${PORT}/integrations/all | json_pp

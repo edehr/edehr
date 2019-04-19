@@ -2,6 +2,7 @@
 const mongoose = require('mongoose')
 const Assignment = mongoose.model('Assignment')
 const SeedData = mongoose.model('SeedData')
+const Consumer = mongoose.model('Consumer')
 const debug = require('debug')('server')
 
 module.exports = function () {
@@ -11,10 +12,8 @@ module.exports = function () {
     let defaultDef = {
       externalId: 'defaultNonAssignment',
       name: 'Default Non Assignment',
-      description:
-        'This assignment is the default assignment that has no seed data and brings the user to the page that lists which assignments are available.',
-      ehrRoutePath: '/assignments-listing',
-      ehrRouteName: 'assignments-listing'
+      description: 'This assignment is the default assignment that has no seed data',
+      ehrRoutePath: ''
     }
 
     return SeedData.find({})
@@ -22,6 +21,12 @@ module.exports = function () {
         let aSeed = seeds[0]
         debug('To seed assignments need at least one ehr seed object' + aSeed._id)
         defaultDef.seedDataId = aSeed._id
+        return Consumer.find({})
+      })
+      .then((consumers) => {
+        let aConsumer = consumers[0]
+        debug('To create assignments need consumer' + aConsumer._id)
+        defaultDef.toolConsumer = aConsumer._id
       })
       .then(() => {
         return Assignment.deleteMany()

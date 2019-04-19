@@ -131,11 +131,9 @@ export default {
       let usr = this.$store.state.visit.sUserInfo || {}
       let lti = usr.ltiData || []
       lti = lti[0]
-      // console.log('this is lti data before attempt to parse', lti)
       try {
         lti = JSON.parse(lti)
       } catch (error) {
-        console.log('Could not parse lti data ', lti)
         lti = usr.ltiData || []
       }
       return lti

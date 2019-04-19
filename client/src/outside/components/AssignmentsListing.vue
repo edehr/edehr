@@ -37,6 +37,11 @@
                 label External Id
                 input(class="input", type="text", v-model="aAssignment.externalId")
             div(class="ehrdfe")
+              div(class="text_input_wrapper")
+                label Landing Page
+                input(class="input", type="text", v-model="aAssignment.ehrRoutePath")
+
+            div(class="ehrdfe")
               div(class="input-element")
                 label Seed data {{selectedSeed}}
                 select(v-model="selectedSeed")
@@ -76,8 +81,7 @@ export default {
     assignmentsListing () {
       let sdList = this.$store.state.seedStore.seedDataList
       let assList = this.$store.state.assignment.assignmentsListing
-      assList = assList.filter(entry => entry.externalId != 'defaultNonAssignment')
-
+      //assList = assList.filter(entry => entry.externalId != 'defaultNonAssignment')
       assList.forEach(ass => {
         ass.seedDataObj = {}
         if (ass.seedDataId) {
@@ -110,6 +114,7 @@ export default {
       this.assignmentId = value // event.target.value
       // clone to decouple data from storage before using in dialog
       let sData = Object.assign({}, this.findAssignment(this.assignmentId))
+      sData.ehrRoutePath = sData.ehrRoutePath || '/ehr/patient/demographics'
       this.actionType = 'edit'
       this.aAssignment = sData
       this.selectedSeed = sData.seedDataId || ''
@@ -129,8 +134,9 @@ export default {
     saveDialog: function () {
       // console.log('saveDialog ', this.actionType, this.aSeed)
       let sId = this.selectedSeed && this.selectedSeed.length > 0 ? this.selectedSeed : null
-      this.aAssignment.seedDataId = sId
-      let theData = this.aAssignment || '{}'
+      let theData = this.aAssignment
+      theData.seedDataId = sId
+      theData.toolConsumer = this.$store.state.visit.sVisitInfo.toolConsumer._id
       // console.log(`Convert seed data field '${theData}' into an object`)
       // theData = JSON.parse(theData)
       this.$refs.theDialog.onClose()
@@ -140,7 +146,7 @@ export default {
         this.$store.dispatch('assignment/updateAssignment', dataIdPlusPayload)
       } else if (this.actionType === 'create') {
         // console.log('Seed Data saving ', this.aSeed)
-        this.$store.dispatch('assignment/createAssignment', this.aAssignment).then(() => {
+        this.$store.dispatch('assignment/createAssignment', theData).then(() => {
           console.log('update assignment completed')
         })
       }

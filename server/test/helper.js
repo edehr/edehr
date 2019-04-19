@@ -5,7 +5,6 @@ import Activity from '../src/models/activity'
 import Role from '../src/controllers/roles'
 const ObjectID = require('mongodb').ObjectID
 const { ltiVersions, LTI_BASIC } = require('../src/utils/lti')
-import { DEFAULT_ASSIGNMENT_EXTERNAL_ID } from '../src/controllers/assignment-controller'
 
 process.on('unhandledRejection', function(error, promise) {
   console.error('UNHANDLED REJECTION', error.stack)
@@ -110,19 +109,22 @@ export default class Helper {
 
   static sampleSeedDataSpec() {
     return {
+      toolConsumer: new ObjectID('56955ca46063c5600627f393'),
       name: 'test seed data object',
       description: 'an object with seed data',
       ehrData: Default.seedData
     }
   }
 
-  static sampleAssignmentSpec(seedDataId, externalId) {
+  static sampleAssignmentSpec(seedDataId, externalId, consumer) {
     // if empty use something that works and ObjectID
+    let consumerId = consumer ? consumer._id : new ObjectID('56955ca46063c5600627f393')
     seedDataId = seedDataId || '56955ca46063c5600627f393'
     if(typeof  seedDataId === 'string') {
       seedDataId = new ObjectID(seedDataId)
     }
     return {
+      toolConsumer: consumerId,
       externalId: externalId || '59',
       name: 'test assignment',
       description: 'an assignment',
@@ -209,13 +211,6 @@ export default class Helper {
     return model.save()
   }
 
-  static createDefaultAssignment() {
-    // use any valid id for seed
-    let seedId = '56955ca46063c5600627f393'
-    let data = Helper.sampleAssignmentSpec(seedId, DEFAULT_ASSIGNMENT_EXTERNAL_ID)
-    const model = new Assignment(data)
-    return model.save(data)
-  }
 
   static createActivity(consumer, assignment) {
     const model = new Activity(Helper.sampleActivity(consumer, assignment))

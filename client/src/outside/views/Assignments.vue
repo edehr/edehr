@@ -1,7 +1,7 @@
 <template lang="pug">
   div
     assignments-listing
-    current-lms-activity
+    // current-lms-activity
 </template>
 
 <script>

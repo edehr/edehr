@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 import { Router } from 'express'
 import pluralize from 'pluralize'
 import {ok, fail} from './utils'
-import {ParameterError} from '../utils/errors'
+import {SystemError} from '../utils/errors'
 
 const MAX_RESULTS = 100
 // var emptyPromise = function (t) {return new Promise (function (r, e) { r (t); }); };
@@ -42,7 +42,7 @@ export default class BaseController {
 
   baseFilter (id) {
     if (!mongoose.Types.ObjectId.isValid(id)) {
-      throw new ParameterError('Invalid id: ' + id)
+      throw new SystemError('Invalid id: ' + id)
     }
     var filter = {}
     filter[this.key] = id

@@ -168,17 +168,18 @@ export default {
     },
     saveDialog: function () {
       // console.log('saveDialog ', this.actionType, this.aSeed)
-      let theData = this.aSeed.ehrData || '{}'
+      let theData = this.aSeed
+      theData.toolConsumer = this.$store.state.visit.sVisitInfo.toolConsumer._id
       // console.log(`Convert seed data field '${theData}' into an object`)
-      this.aSeed.ehrData = JSON.parse(theData)
+      // theData.ehrData = JSON.parse(theData)
       this.$refs.theDialog.onClose()
       if (this.actionType === 'edit') {
-        // console.log('Seed Data saving ', this.aSeed)
-        let dataIdPlusPayload = { id: this.seedId, payload: this.aSeed }
+        console.log('Seed Data saving ', theData)
+        let dataIdPlusPayload = { id: this.seedId, payload: theData }
         this.$store.dispatch('seedStore/updateSeedItem', dataIdPlusPayload)
       } else if (this.actionType === 'create') {
         // console.log('Seed Data saving ', this.aSeed)
-        this.$store.dispatch('seedStore/createSeedItem', this.aSeed)
+        this.$store.dispatch('seedStore/createSeedItem', theData)
       }
     }
   },
