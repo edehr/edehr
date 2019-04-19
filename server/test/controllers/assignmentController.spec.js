@@ -1,7 +1,6 @@
 var should = require('should')
 const mongoose = require('mongoose')
 import AssignmentController from '../../src/controllers/assignment-controller'
-import { DEFAULT_ASSIGNMENT_EXTERNAL_ID } from '../../src/controllers/assignment-controller'
 import Model from '../../src/models/seed-data'
 import Helper from '../helper'
 const helper = new Helper()
@@ -10,31 +9,27 @@ const typeName = 'AssignmentController'
 const modelName = 'Assignment'
 const collectionName = 'assignments'
 
-// Use following to leave results in test database for inspection
-// helper.setClear(false)
 
 /* global describe it */
-describe(`${typeName} controller testing`, function() {
-  before(function(done) {
+describe(`${typeName} controller testing`, function () {
+  before(function (done) {
     helper.before(done, mongoose)
   })
 
-  after(function(done) {
-    helper.afterTests(done, mongoose, collectionName)
-  })
-
-  it(`${typeName} be valid with model and key`, function(done) {
-    let m = new AssignmentController(Model, 'user_id')
-    m.should.have.property('locateAssignmentByExternalId')
+  it(`${typeName} be valid with model and key`, function (done) {
+    let m = new AssignmentController()
+    m.should.have.property('locateAssignmentForStudent')
     done()
   })
 
   let seedData = { foo: 'bar' }
   let key = '1'
+  let toolConsumerId
 
-  it(`${typeName} create model`, function(done) {
+  it(`${typeName} create model`, function (done) {
     let m = new AssignmentController()
     let data = Helper.sampleAssignmentSpec(undefined, key)
+    toolConsumerId = data.toolConsumer
     m.create(data)
       .then(doc => {
         should.exist(doc)
@@ -47,9 +42,9 @@ describe(`${typeName} controller testing`, function() {
       })
   })
 
-  it(`${typeName} use locateAssignmentByExternalId`, function(done) {
-    let m = new AssignmentController(Model, 'name')
-    m.locateAssignmentByExternalId(key)
+  it(`${typeName} use locateAssignmentForStudent`, function (done) {
+    let m = new AssignmentController()
+    m.locateAssignmentForStudent(key, toolConsumerId)
       .then(doc => {
         // console.log('results', doc)
         should.exist(doc)
@@ -61,20 +56,4 @@ describe(`${typeName} controller testing`, function() {
       })
   })
 
-  it(`${typeName} ask for assignment that doesn't exist`, function(done) {
-    let m = new AssignmentController(Model, 'name')
-    let data = Helper.sampleAssignmentSpec(undefined, DEFAULT_ASSIGNMENT_EXTERNAL_ID)
-    m.create(data)
-      .then(doc => {
-        should.exist(doc)
-      })
-      .then(() => {
-        return m.locateAssignmentByExternalId('999')
-      })
-      .then(defaultDoc => {
-        should.exist(defaultDoc)
-        defaultDoc.externalId.should.equal(DEFAULT_ASSIGNMENT_EXTERNAL_ID)
-        done()
-      })
-  })
 })

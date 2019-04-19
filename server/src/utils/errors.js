@@ -1,39 +1,43 @@
+class EdEhrError extends Error {
+  constructor (message, errorData) {
+    super(...arguments)
+    this.type = 'EdEhrError'
+    this.message = message
+    this.errorData = errorData
+  }
+}
 
-class ParameterError extends Error {
-  constructor (message) {
+class ParameterError extends EdEhrError {
+  constructor (message, errorData) {
     super(...arguments)
     this.name = 'ParameterError'
     this.status = 400
-    this.message = message
     // console.log('In constructor for error PE')
   }
 }
 
-class AssignmentMismatchError extends Error {
-  constructor (message) {
+class AssignmentMismatchError extends EdEhrError {
+  constructor (message, errorData) {
     super(...arguments)
     this.name = AssignmentMismatchError.NAME()
     this.status = 400
-    this.message = message
   }
   static NAME () { return 'AssignmentMismatchError' }
 }
 
-class ConfigurationChangeError extends Error {
-  constructor (message) {
+class ConfigurationChangeError extends EdEhrError {
+  constructor (message, errorData) {
     super(...arguments)
     this.name = 'ConfigurationChangeError'
     this.status = 400
-    this.message = message
   }
 }
 
-class SystemError extends Error {
-  constructor (message) {
+class SystemError extends EdEhrError {
+  constructor (message, errorData) {
     super(...arguments)
     this.name = 'SystemError'
     this.status = 500
-    this.message = message
   }
 }
 

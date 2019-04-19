@@ -41,9 +41,11 @@ export function apiMiddle (app, config) {
     session({
       genid: req => {
         // debug('Inside the session middleware req.sessionID ' + req.sessionID)
-        return uuid()
+        let guid = uuid()
+        // debug('------------------ SESSION genid ' + guid)
+        return guid
       },
-      cookie: { sameSite: 'lax' },
+      cookie: { sameSite: 'lax', maxAge: 60000 * 24 },
       store: app.sessionStore,
       secret: COOKIE_SECRET,
       resave: false,
@@ -51,6 +53,7 @@ export function apiMiddle (app, config) {
     })
   )
 
+  // config.traceApiCalls = true
   if (config.traceApiCalls) {
     app.use(function (req, res, next) {
       debug(moment().format('YYYY/MM/DD, h:mm:ss.SSS a'), req.method, ' Url:', req.url)
@@ -62,7 +65,7 @@ export function apiMiddle (app, config) {
   const admin = new AdminController()
   const act = new ActivityController()
   const acc = new ActivityDataController()
-  const as = new AssignmentController()
+  const as = new AssignmentController(config)
   const cc = new ConsumerController()
   const lti = new LTIController(config)
   const ic = new IntegrationController()
@@ -73,7 +76,7 @@ export function apiMiddle (app, config) {
   return Promise.resolve()
     .then(() => {
       if (config.seedDB) {
-        console.log('seeding')
+        debug('seeding is enabled')
         return dbSeeder()
       }
     })
@@ -127,17 +130,20 @@ export function apiError (app, config) {
   function clientErrorHandler (err, req, res, next) {
     // import {AssignmentMismatchError, ParameterError, SystemError} from '../utils/errors'
     if (err.name === AssignmentMismatchError.NAME()) {
-      var url = config.clientUrl + '/assignments-listing?user=' + req.user._id
-      url += '&error=' + err.message
-      res.redirect(url)
+      err.message += ' -- AssignmentMismatchError'
+      let status = 400
+      res.status(status)
+      res.render('server-errors/error', {errMessage: err.message, status: status, errorData: err.errorData})
     } else {
       next(err)
     }
   }
 
   function errorHandler (err, req, res, next) {
-    res.status(err.status || 500)
-    res.send(err.message)
+    let status = err.status || 500
+    let errorData = err.errorData || {}
+    res.status(status)
+    res.render('server-errors/error', {errMessage: err.message, status: status, errorData: errorData})
   }
 }
 function setupCors (config) {

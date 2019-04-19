@@ -51,7 +51,9 @@ export default class EhrApp {
     } else {
       var msg = 'Could not find "' + fullUrl + '". Environment: ' + env
       debug(msg)
-      res.status(404).send(msg)
+      res.status(404)
+      res.render('error', {errMessage: msg})
+
     }
   }
 }

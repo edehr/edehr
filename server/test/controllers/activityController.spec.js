@@ -20,9 +20,9 @@ describe(`${typeName} controller testing`, function() {
     helper.before(done, mongoose)
   })
 
-  after(function(done) {
-    helper.afterDropDatabase(done, mongoose)
-  })
+  // after(function(done) {
+  //   helper.afterDropDatabase(done, mongoose)
+  // })
 
   it(`${typeName} be valid with model and key`, function(done) {
     let m = new ActivityController(Activity)

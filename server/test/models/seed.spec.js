@@ -26,8 +26,8 @@ describe(`${typeName} mongoose schema testing`, function() {
       done()
     })
   })
-
   let sampleData = {
+    toolConsumer: new ObjectID('56955ca46063c5600627f393'),
     name: '1234',
     description: 'a test seed',
     version: '1.0',

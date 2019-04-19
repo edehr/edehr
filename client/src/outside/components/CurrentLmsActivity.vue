@@ -44,7 +44,7 @@ export default {
       return this.$store.getters['visit/returnUrl']
     },
     activity () {
-      return this.$store.state.ehrData.sActivityData
+      return this.$store.state.instructor.sCurrentActivity || {}
     }
   }
 }

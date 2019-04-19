@@ -10,15 +10,15 @@ const { ltiVersions, LTI_BASIC } = require('../../src/utils/lti')
 import Assignment from '../../src/models/assignment'
 
 let seedData = { foo: 'bar' }
-let assignmentKey = '59'
+let assignmentKey = '599'
 
 helper.setClear(false)
 /* global describe it */
-describe('LTI controller testing', function() {
-  before(function(done) {
+describe('LTI controller testing', function () {
+  before(function (done) {
     helper.before(done, mongoose)
   })
-  after(function(done) {
+  after(function (done) {
     helper.afterDropDatabase(done, mongoose)
   })
 
@@ -26,21 +26,17 @@ describe('LTI controller testing', function() {
   let oauth_consumer_key
   let oauth_consumer_secret
   let theAssignment
-  it('Create a tool consumer for testing ', function(done) {
-    const assignment = new Assignment(Helper.sampleAssignmentSpec(undefined, assignmentKey))
+  it('Create a tool consumer for testing ', function (done) {
     Helper.createConsumer().then(doc => {
       theConsumer = doc
       oauth_consumer_key = theConsumer.oauth_consumer_key
       oauth_consumer_secret = theConsumer.oauth_consumer_secret
+      const assignment = new Assignment(Helper.sampleAssignmentSpec(undefined, assignmentKey, theConsumer))
       assignment
         .save()
-        .then(doc => {
-          // console.log('created an assignment', doc)
-          theAssignment = doc
-          return Helper.createDefaultAssignment()
-        })
-        .then(doc => {
-          console.log('created default assignment', doc)
+        .then(ament => {
+          // console.log('created an assignment', ament)
+          theAssignment = ament
           done()
         })
     })
@@ -50,7 +46,7 @@ describe('LTI controller testing', function() {
     clientUrl: 'some/url'
   }
   let ltiController
-  it('create LTI controller', function(done) {
+  it('create LTI controller', function (done) {
     ltiController = new LTIController(config)
     should.exist(ltiController)
 
@@ -65,27 +61,23 @@ describe('LTI controller testing', function() {
     done()
   })
 
-  it('validate lti data', function(done) {
-    function expectErrorCallback(error) {
-      should.exist(error)
-      error.should.have.property('name')
-      error.should.have.property('message')
-      error.name.should.equal('ParameterError')
-      console.log(error.message)
+  it('validate lti data', function (done) {
+    function expectNoErrorCallback (error) {
+      should.not.exist(error)
       done()
     }
     let ltiData = Helper.sampleValidLtiData()
-    let result = ltiController.validateLti(ltiData, expectErrorCallback)
+    let result = ltiController.validateLti(ltiData, expectNoErrorCallback)
     should.ok(result)
     done()
   })
 
-  it('validate invalid lti data', function(done) {
-    function expectErrorCallback(error) {
+  it('validate invalid lti data', function (done) {
+    function expectErrorCallback (error) {
       should.exist(error)
       error.should.have.property('name')
       error.should.have.property('message')
-      error.name.should.equal('ParameterError')
+      error.name.should.equal('AssignmentMismatchError')
       // console.log(error.message)
       done()
     }
@@ -106,7 +98,8 @@ describe('LTI controller testing', function() {
       oauth_customer_key: 'key',
       oauth_signature_method: 'HMAC-SHA1',
       oauth_timestamp: Math.round(Date.now() / 1000),
-      oauth_nonce: Date.now() + Math.random() * 100
+      oauth_nonce: Date.now() + Math.random() * 100,
+      custom_assignment: theAssignment.externalId
     })
     req = {
       url: 'http://example.org/test',
@@ -124,7 +117,7 @@ describe('LTI controller testing', function() {
     const signature = signer.build_signature(req, req.body, oauth_consumer_secret)
     req.body.oauth_signature = signature
 
-    ltiController.strategyVerify(req, function(err, user) {
+    ltiController.strategyVerify(req, function (err, user) {
       should.not.exist(err)
       should.exist(user)
       user.should.have.property('user_id')
@@ -135,8 +128,9 @@ describe('LTI controller testing', function() {
     })
   })
 
-  it('lti _postLtiChain', function(done) {
+  it('lti _postLtiChain', function (done) {
     let result = ltiController._postLtiChain(req).then(() => {
+      console.log('after post LIT')
       should.exist(req.visit)
       should.exist(req.activity)
       should.exist(req.assignment)
@@ -146,5 +140,9 @@ describe('LTI controller testing', function() {
       // console.log('after _postLtiChain ')
       done()
     })
+      .catch(err => {
+        console.log('Error .... ', err)
+        done()
+      })
   })
 })
