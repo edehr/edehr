@@ -1,9 +1,10 @@
 <template lang="pug">
   div(class="outside-view")
-    h1 This is an help page
+    h1 Help
     div
       p.
-        Will need to insert help content here
+        This prototype project has not yet developed any help pages for the EdEHR itself, as an application. You can read
+        documentation about the project <a href="https://bryan-gilbert.github.io/edehr/">here</a>
 </template>
 
 <style lang="scss" scoped>

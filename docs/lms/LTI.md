@@ -2,9 +2,16 @@
 
 > LTI is the glue between the learning tool and this EdEHR
 
+The following illustrates some of the data in a LTI message.  When a user clicks a link
+in a LMS that is associated with a LTI connection a HTTP POST message is 
+sent to the server with the following data. If the message is valid the
+receiver will process the message, create any user accounts it needs to,
+create any assignments it needs to and then redirect the user to the 
+course ware application. (The user doesn't see any of this magic.)
+
 ## LTI system
 
-```json
+```
 "ext_lms":"moodle-2",
 "launch_presentation_document_target":"window",
 "launch_presentation_locale":"en",
@@ -22,7 +29,7 @@
 
 ## LTI User
 
-```json
+```
 "ext_user_username":"instr",
 "lis_person_contact_email_primary":"instr@example.com",
 "lis_person_name_family":"Goodall",
@@ -34,7 +41,7 @@
 ```
 
 ## LTI Activities
-```json
+```
 "context_id":"4",
 "context_label":"EdEhr Poc",
 "context_title":"A Proof of Concept Course",
@@ -50,12 +57,12 @@
 
 
 ## LTI OAuth
-```json
+```
 "oauth_callback":"about:blank",
 "oauth_consumer_key":"edehrkey",
-"oauth_nonce":"74fc7fe55b6428c7a7921b62eee2c994",
+"oauth_nonce":"...",
 "oauth_signature_method":"HMAC-SHA1",
-"oauth_signature":"Vj3YigJcKTXsKkvwgm6R9rgfDwA="
+"oauth_signature":"...="
 "oauth_timestamp":"1555513154",
 "oauth_version":"1.0",
 ```
