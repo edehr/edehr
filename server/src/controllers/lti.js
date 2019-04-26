@@ -50,7 +50,6 @@ let PROPS_CONTEXT = [
   'lis_course_section_sourcedid',
   'resource_link_description',
   'resource_link_id',
-  'resource_link_id',
   'resource_link_title',
   'roles',
 ]

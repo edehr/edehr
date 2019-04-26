@@ -6,11 +6,11 @@ import Role from '../src/controllers/roles'
 const ObjectID = require('mongodb').ObjectID
 const { ltiVersions, LTI_BASIC } = require('../src/utils/lti')
 
-process.on('unhandledRejection', function(error, promise) {
+process.on('unhandledRejection', function (error, promise) {
   console.error('UNHANDLED REJECTION', error.stack)
 })
 
-process.on('uncaughtException', function(error) {
+process.on('uncaughtException', function (error) {
   console.error('UNCAUGHT EXCEPTION', error, error.stack)
 })
 
@@ -26,21 +26,21 @@ let Default = {
 }
 
 export default class Helper {
-  constructor() {
+  constructor () {
     this.clear = true
   }
-  setClear(bool) {
+  setClear (bool) {
     this.clear = bool
   }
 
-  before(done, mongoose) {
+  before (done, mongoose) {
     this.beforeDropDatabase(mongoose)
-    .then( () => {
-      done()
-    })
+      .then( () => {
+        done()
+      })
   }
 
-  beforeDropDatabase(mongoose) {
+  beforeDropDatabase (mongoose) {
     mongoose.set('useCreateIndex', true)
     mongoose.connect(
       'mongodb://localhost:27018/unittest',
@@ -48,24 +48,24 @@ export default class Helper {
     )
     const db = mongoose.connection
     db.on('error', console.error.bind(console, 'connection error'))
-    console.log('Begin connection to ' + DatabaseName);
-    return db.once('open', function() {
-      console.log('We are connected to test database!');
-      mongoose.connection.db.dropDatabase(function(err) {
+    console.log('Begin connection to ' + DatabaseName)
+    return db.once('open', function () {
+      console.log('We are connected to test database!')
+      mongoose.connection.db.dropDatabase(function (err) {
         console.log('dropped '+DatabaseName+' dropDatabase')
       })
     })
   }
-  afterTests(done, mongoose, collection) {
-    function close() {
-      mongoose.connection.close(function() {
+  afterTests (done, mongoose, collection) {
+    function close () {
+      mongoose.connection.close(function () {
         // console.log('Close test database!');
         done()
       })
     }
     if (this.clear) {
       // console.log(`drop collection ${collection}!`);
-      mongoose.connection.db.dropCollection(collection, function(err) {
+      mongoose.connection.db.dropCollection(collection, function (err) {
         // console.log(`dropped collection ${collection}!`);
         close()
       })
@@ -74,16 +74,16 @@ export default class Helper {
     }
   }
 
-  afterDropDatabase(done, mongoose) {
-    function close() {
-      mongoose.connection.close(function() {
+  afterDropDatabase (done, mongoose) {
+    function close () {
+      mongoose.connection.close(function () {
         // console.log('Close test database!');
         done()
       })
     }
     if (this.clear) {
       // console.log(`drop collection ${collection}!`);
-      mongoose.connection.db.dropDatabase(function(err) {
+      mongoose.connection.db.dropDatabase(function (err) {
         console.log('dropped dropDatabase')
         close()
       })
@@ -92,7 +92,7 @@ export default class Helper {
     }
   }
 
-  static sampleActivity(consumer, assignment) {
+  static sampleActivity (consumer, assignment) {
     return {
       toolConsumer: consumer._id,
       resource_link_id: '346',
@@ -107,7 +107,24 @@ export default class Helper {
   }
 
 
-  static sampleSeedDataSpec() {
+  static sampleActivityData (consumerId, visitId) {
+    return {
+      toolConsumer: consumerId,
+      visit: visitId
+    }
+  }
+
+  /**
+   * Generates a random ObjectId
+   * @return {*}
+   */
+  static sampleObjectId () {
+    let suffix = Math.floor(Math.random() * 1000) + 1
+    let id = '56955ca46063c5600627f' + ('000' + suffix).slice(-3)
+    return new ObjectID(id)
+  }
+
+  static sampleSeedDataSpec () {
     return {
       toolConsumer: new ObjectID('56955ca46063c5600627f393'),
       name: 'test seed data object',
@@ -116,7 +133,8 @@ export default class Helper {
     }
   }
 
-  static sampleAssignmentSpec(seedDataId, externalId, consumer) {
+
+  static sampleAssignmentSpec (seedDataId, externalId, consumer) {
     // if empty use something that works and ObjectID
     let consumerId = consumer ? consumer._id : new ObjectID('56955ca46063c5600627f393')
     seedDataId = seedDataId || '56955ca46063c5600627f393'
@@ -134,7 +152,7 @@ export default class Helper {
     }
   }
 
-  static sampleUserSpec(consumer, user_id) {
+  static sampleUserSpec (consumer, user_id) {
     let consumerId = consumer ? consumer._id : new ObjectID('56955ca46063c5600627f393')
     let uId = user_id || DefaultUserId
     return {
@@ -143,7 +161,7 @@ export default class Helper {
     }
   }
 
-  static sampleConsumerSpec() {
+  static sampleConsumerSpec () {
     return {
       lti_version: ltiVersions()[0],
       oauth_consumer_key: Default.oauth_consumer_key,
@@ -156,7 +174,7 @@ export default class Helper {
     }
   }
 
-  static sampleValidLtiData() {
+  static sampleValidLtiData () {
     let ltiData = {
       resource_link_id: '1234',
       user_id: DefaultUserId,
@@ -173,7 +191,7 @@ export default class Helper {
     return ltiData
   }
 
-  static sampleVisit(consumer, user, activity, assignment, role, ltiData) {
+  static sampleVisit (consumer, user, activity, assignment, role, ltiData) {
     let theRole = role ? role : new Role('Student')
     let theLTI = ltiData ? ltiData : {
       launch_presentation_return_url: Default.launch_presentation_return_url
@@ -192,19 +210,19 @@ export default class Helper {
     return data
   }
 
-  static createConsumer() {
+  static createConsumer () {
     const model = new Consumer(Helper.sampleConsumerSpec())
     return model.save()
   }
 
-  static createUser(consumer, user_id) {
+  static createUser (consumer, user_id) {
     should.exist(consumer)
     const model = new User(Helper.sampleUserSpec(consumer, user_id))
     return model.save()
   }
 
 
-  static createAssignment(externalId, seedId) {
+  static createAssignment (externalId, seedId) {
     externalId = externalId || '59'
     seedId = seedId || '56955ca46063c5600627f393'
     const model = new Assignment(Helper.sampleAssignmentSpec(seedId,externalId))
@@ -212,7 +230,7 @@ export default class Helper {
   }
 
 
-  static createActivity(consumer, assignment) {
+  static createActivity (consumer, assignment) {
     const model = new Activity(Helper.sampleActivity(consumer, assignment))
     return model.save()
   }

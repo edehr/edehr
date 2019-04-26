@@ -19,20 +19,14 @@ const ActivityDataSchema = new mongoose.Schema({
   assignmentData: {type: Object}, // place for student's data
   evaluationData: {type: Object}, //place for instructor to mark the work
   scratchData: {type: Object}, // place for student to add notes
+  submitted: { type: Boolean, default: false},
+  evaluated: { type: Boolean, default: false},
   createDate: {type: Date, default: Date.now},
   lastDate: {type: Date, default: Date.now},
 }, {
   toObject: { virtuals: true },
   toJSON: { virtuals: true }
 })
-
-// ActivityDataSchema.virtual('mergedData')
-// .get(function () {
-//   var aData = this.assignmentData || {}
-//   var sData = this.seedData || {}
-//   var mergedData = merge(sData, aData)
-//   return mergedData
-// })
 
 const ActivityData = mongoose.model('ActivityData', ActivityDataSchema)
 

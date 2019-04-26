@@ -1,9 +1,9 @@
 'use strict'
 
-var mongoose = require('mongoose')
-var chalk = require('chalk')
+const mongoose = require('mongoose')
+const chalk = require('chalk')
 
-var schemas = [
+const schemas = [
   'activities',
   'visits',
   'visitdatas',
@@ -11,29 +11,30 @@ var schemas = [
   'users'
 ]
 
-var dropSchema = function (name) {
-  return new Promise(function (resolve, reject) {
-    let col = mongoose.connection.collections[name]
-    if(col) {
-      col.drop(function (/* err */) {
+const dropSchema = function (name) {
+  return new Promise(((resolve, reject) => {
+    const col = mongoose.connection.collections[name]
+    if (col) {
+      col.drop((/* err */) => {
         //
         // do not care about errors
         //
         resolve(true)
       })
     }
-  })
+  }))
 }
 
 module.exports = function (doDrop) {
-  return new Promise(function (resolve, reject) {
-    if (!doDrop) return resolve(true)
-    else {
-      console.log(chalk.bold.red('Warning:  Dropping Schemas !!!'))
-      var allDropPromises = schemas.map(function (schemaName) {
-        return dropSchema(schemaName)
-      })
-      Promise.all(allDropPromises).then(resolve, reject)
+  return new Promise(((resolve, reject) => {
+    if (!doDrop) {
+      return resolve(true)
     }
-  })
+
+    console.log(chalk.bold.red('Warning:  Dropping Schemas !!!'))
+    const allDropPromises = schemas.map(schemaName => {
+      return dropSchema(schemaName)
+    })
+    Promise.all(allDropPromises).then(resolve, reject)
+  }))
 }

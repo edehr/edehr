@@ -78,4 +78,16 @@ describe(`${typeName} controller testing`, function() {
       done()
     })
   })
+
+  it(`${typeName} use findActivity`, function(done) {
+    let m = new ActivityController(Activity, 'name')
+    m.findActivity(theActivity._id).then(doc => {
+      // console.log('findActivity results', doc)
+      // should.exist(doc)
+      doc.should.have.property('assignment')
+      doc.assignment.should.have.property('seedDataId')
+      done()
+    })
+  })
+
 })
