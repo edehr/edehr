@@ -1,4 +1,4 @@
-# Technical Architecture #
+# Technical Architecture
 
 About the EdEHR project
 
@@ -9,7 +9,7 @@ will build on existing research and development completed by an interest group f
 In support of the requirement for health professional graduates to be competent in using electronic health records in 
 an inter-professional setting, the goal of this project is to develop a solution that can be piloted and evaluated by interested institutions.
 
-<https://bccampus.ca/2018/01/23/bccampus-launches-the-educational-electronic-health-record-system-project-in-b-c/>
+[https://bccampus.ca/2018/01/23/bccampus-launches-the-educational-electronic-health-record-system-project-in-b-c/](https://bccampus.ca/2018/01/23/bccampus-launches-the-educational-electronic-health-record-system-project-in-b-c/)
 
 Application structure
 
@@ -46,7 +46,7 @@ Agile tasks - Github
 
 Documentation: Markdown
 
-Source Control:  Github  git@github.com:BCcampus/edehr.git  or <https://github.com/BCcampus/edehr.git>
+Source Control:  Github  git@github.com:BCcampus/edehr.git  or [https://github.com/BCcampus/edehr.git](https://github.com/BCcampus/edehr.git)
 
 Developers should fork the main repo and submit squashed PRs
 
@@ -55,7 +55,6 @@ Defect tracking: Github
 ----
 
 ## Coding ##
-<a href="#toc">Top</a>
 
 Client side UI framework: Vue.js
 
@@ -65,19 +64,18 @@ Coding standards
 
 For Javascript use ESLint rules as defined in project
 
-
 CSS
 
 Bulma CSS framework. It’s simple, 100% responsive, modern and open source. It doesn’t depend on javascript.
 
-* <https://bulma.io/>
-* <https://bulma.io/documentation/overview/>
+* [https://bulma.io/](https://bulma.io/)
+* [https://bulma.io/documentation/overview/](https://bulma.io/documentation/overview/)
 
 SCSS
 
 Use SCSS rather than SASS because SCSS is a superset of CSS and all CSS content is valid SCSS. While CSS is not valid in SASS files.
 
-<http://sass-lang.com/>
+[http://sass-lang.com/](http://sass-lang.com/)
 
 Strive to be DRY so use SCSS variables and mixins when possible
 
@@ -114,21 +112,16 @@ This section is a work in progress
 Consider the following for performance testing
 
 - BURP for security testing
-- <https://www.blazemeter.com/blog/open-source-load-testing-tools-which-one-should-you-use>
-- JMeter <https://jmeter.apache.org/usermanual/get-started.html>
-- Selinium. <https://www.seleniumhq.org/>
-- BrowserStack. <https://www.browserstack.com/>
-- <https://www.browserstack.com/pricing>. $29/m
-- JEST <https://jestjs.io/>
+- [https://www.blazemeter.com/blog/open-source-load-testing-tools-which-one-should-you-use](https://www.blazemeter.com/blog/open-source-load-testing-tools-which-one-should-you-use)
+- JMeter [https://jmeter.apache.org/usermanual/get-started.html](https://jmeter.apache.org/usermanual/get-started.html)
+- Selinium. [https://www.seleniumhq.org/](https://www.seleniumhq.org/)
+- BrowserStack. [https://www.browserstack.com/](https://www.browserstack.com/)
+- [https://www.browserstack.com/pricing](https://www.browserstack.com/pricing). $29/m
+- JEST [https://jestjs.io/](https://jestjs.io/)
 
 ----
 
 ## CI CD ##
-
-This section is a work in progress
-
-CI CD
-
 - Continuous Integration: automated testing as part of the development lifecycle
 - Continuous Delivery: incrementally add value on a continuous basis.
 - Project is not dependent on any particular version of linux. Debian, Ubunto, etc are all fine.
@@ -154,26 +147,32 @@ Production
 
 ### Docker containerization
 
-It’s desirable to containerize the application for ease of deployment and management but this task will be considered again after proof of concepts are complete.
+This project has containerize access to the database and may still containerize access to the server API.
 
 ### Automation of testing
 
-Jenkins is a tool for automating a series of steps to take code from the development environment and place it into the production environment. Along the way Jenkins can run automated helper and validation tasks. For example, Jenkins can automatically run all tests and only promote the code to the production environment if the tests pass.
+Jenkins is a tool for automating a series of steps to take code from the development environment and place it into the 
+production environment. Along the way Jenkins can run automated helper and validation tasks. For example, Jenkins can 
+automatically run all tests and only promote the code to the production environment if the tests pass.
 
 ----
 
 ### Interoperability LTI ###
-This section is a work in progress
 
-Learning Tools Interoperability (LTI) is a standard created by the IMS Global Learning Consortium that links content and resources to learning platforms.  Its primary purpose is to connect learning systems such as a learning management system (LMS) with external service tools in a standard way across learning systems. The standard describes the connecting system as an LTI Tool Consumer and the connected tool as an LTI Tool Provider.
+Learning Tools Interoperability (LTI) is a standard created by the IMS Global Learning Consortium that links content and 
+to learning platforms.  Its primary purpose is to connect learning systems such as a learning management system (LMS) 
+with external service tools in a standard way across learning systems. The standard describes the connecting system as 
+an LTI Tool Consumer and the connected tool as an LTI Tool Provider.
 
-With LTI we hope that our MVP prototype can use any LMS  (e.g. Canvas or Moodle) to provide the system for managing students, instructors, classes and etc.  The LMS will be configured to communicate with our EdEHR through LTI v1.2 protocol.  Essentially, this protocol provides a means for the LMS user to access special portions of the EdEHR.  For example, students can be presented with a set of links to assignments or instructors can have a set of links to courses.
+With LTI we hope that our MVP prototype can use any LMS  (e.g. Canvas or Moodle) to provide the system for managing 
+students, instructors, classes and etc.  The LMS will be configured to communicate with our EdEHR through LTI v1.2 
+protocol.  Essentially, this protocol provides a means for the LMS user to access special portions of the EdEHR.  
+For example, students can be presented with a set of links to assignments or instructors can have a set of links to 
+courses.
 
 ----
 
 ### Document management, upload ###
-This section is a work in progress
-
 Status: Do Later
 
 Multer to support multi-part document uploads
@@ -183,29 +182,24 @@ Seperately mounted disk for storage outside of application code space
 ----
 
 ### Authorization ###
-This section is a work in progress
-explain ...
-Authorization will be provided by LMS via LTI
+Authorization is provided by LMS via LTI
 
 ----
 
 ### Media Attachments ###
-This section is a work in progress
-
 Status: Do Later
 
 Assuming this is not a core requirement for MVP. If  it is a core requirement then look into Kaltura for video content.  This is the tool used in ComPAIR. 
 
-<https://corp.kaltura.com/>
+[https://corp.kaltura.com/](https://corp.kaltura.com/)
 
 Also see the BCCampus story about Kaltura
 
-<https://bccampus.ca/2013/05/23/wrangling-videos-in-one-location-just-got-a-lot-easier-with-kaltura/>
+[https://bccampus.ca/2013/05/23/wrangling-videos-in-one-location-just-got-a-lot-easier-with-kaltura/](https://bccampus.ca/2013/05/23/wrangling-videos-in-one-location-just-got-a-lot-easier-with-kaltura/))
 
 ----
 
 ### Email system ###
-This section is a work in progress
 
 Status: Do Later
 
@@ -218,10 +212,8 @@ To be considered after LTI and LMS research.  Perhaps the email function can be 
 ----
 
 ### Learning Analytics ###
-This section is a work in progress
-
 
 Status: Do Later
 
-- Look at Experience API (xAPI) at <https://xapi.com>  Do this after LMS and LTI because the LMS ought to provide analytics.
+- Look at Experience API (xAPI) at [https://xapi.com](https://xapi.com)  Do this after LMS and LTI because the LMS ought to provide analytics.
 - Google Analytics. Oh hold pending answers around privacy policies.

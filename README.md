@@ -1,9 +1,14 @@
 # EdEHR
 
-> Educational Electronic Health Record System
+> Educational Electronic Health Record System: a [BCcampus](https://bccampus.ca) project
 
-> A BCcampus project 
-https://bccampus.ca
+See documentation in the ```docs``` directory.  To run a local documentation server use this command 
+```
+yarn docs:dev
+```
+Then visit  [http://localhost:8080/edehr](http://localhost:8080/edehr)
+
+Or see the compiled documents [here](https://bryan-gilbert.github.io/edehr/)
 
 
 ## Installation
@@ -44,11 +49,11 @@ npm run build
 
 Start the database server (in docker container)
 ```
-npm run database-start
+npm run start-db
 ```
 Start the API server. From project root:
 ```
-npm run start-prod-server
+npm run start-server:prod
 ```
 When done stop the database server. From project root:
 ```
@@ -69,28 +74,14 @@ npm run test
 
 
 ## EHR generation
-The EHR side of the project contains almost 40 separate screens, each needs to be in the menu and routing tables.  These 
+The EHR side of the project contains almost 40 separate screens, each needs to be listed in the menu and routing tables.  These 
 tasks are automated via a script in the makeEhr subdirectory. This script only needs to be invoked if the content of the 
 configuration files have been modified.  The source of the configuration files comes from a Google spreadsheet stored 
 in the project GDrive.
 ```
 cd makeEhr
-npm install
 ./deploy.sh --lint
 ```
 The ```--lint``` option can be replaced with ```-l```. You must use this lint option before submitting files. If you are 
 making changes and then checking the results in the UI you can skip ```lint``` and get your changes into the UI faster.
 Just run the script with lint when you are done and ready to submit your code.
-
-
-## Client
-The client is a Vue project.
-
-## API server
-The server is a Node Express application supported by a MongoDB. It depends on a LTI package.
-
-## Database
-The MongoDB is served from a Docker image.
-
-## Documentation
-See the various readme files in the ```docs``` directory.
