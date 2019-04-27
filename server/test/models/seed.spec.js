@@ -9,18 +9,18 @@ const typeName = 'SeedData'
 const collectionName = 'seeddatas'
 
 /* global describe it */
-describe(`${typeName} mongoose schema testing`, function() {
-  before(function(done) {
+describe(`${typeName} mongoose schema testing`, function () {
+  before(function (done) {
     helper.before(done, mongoose)
   })
 
-  after(function(done) {
+  after(function (done) {
     helper.afterTests(done, mongoose, collectionName)
   })
 
-  it(`${typeName} create without name is not allowed`, function(done) {
+  it(`${typeName} create without name is not allowed`, function (done) {
     let m = new Model()
-    m.validate(function(err) {
+    m.validate(function (err) {
       // console.log('Expect error: ', err)
       should.exist(err)
       done()
@@ -34,7 +34,7 @@ describe(`${typeName} mongoose schema testing`, function() {
     ehrData: { foo: 'bar' }
   }
 
-  it(`${typeName} can save one`, function(done) {
+  it(`${typeName} can save one`, function (done) {
     const newUser = new Model(sampleData)
     newUser
       .save()
@@ -47,8 +47,8 @@ describe(`${typeName} mongoose schema testing`, function() {
       })
   })
 
-  it(`${typeName} can find one`, function(done) {
-    Model.findOne({ name: '1234' }, function(err, doc) {
+  it(`${typeName} can find one`, function (done) {
+    Model.findOne({ name: '1234' }, function (err, doc) {
       // console.log('results', doc)
       should.exist(doc)
       should.not.exist(err)

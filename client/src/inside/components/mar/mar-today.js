@@ -23,13 +23,20 @@ export default class MarToday {
     // Step 3
     let mOrders = medOrders // in future filter this list to only include active prescriptions
     pdList.forEach(pk => {
+      // console.log('For pk look for orders', pk)
       mOrders.forEach( mo => {
+        // console.log('For pk look at mo.isScheduled', pk, mo)
         if (mo.isScheduled(pk.key)) {
+          // console.log('$$$$$$$$$$$$$$ For pk mo.isScheduled so add it to pk', pk, mo)
           pk.addMedication(mo)
         }
       })
     })
     let pdListFiltered = pdList.filter ( pk => pk.hasMedications())
+    if(pdListFiltered.length === 0) {
+      console.log('Done (No periods have medications)')
+      return pdListFiltered
+    }
 
     // Step 4
     if(!marRecords || marRecords.length === 0) {
@@ -51,6 +58,7 @@ export default class MarToday {
 
     // Step 7
     marRecsFiltered.forEach( mar =>  {
+      // console.log('MarToday filter list', pdListFiltered, 'to find ', mar.scheduledTime)
       let pk = pdListFiltered.find( pk => pk.key === mar.scheduledTime )
       pk.marRecord = mar
     })

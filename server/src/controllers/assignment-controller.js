@@ -17,7 +17,6 @@ export default class AssignmentController extends BaseController {
   }
 
   locateAssignmentForStudent (externalId, toolConsumerId) {
-    const _this = this
     // let externalId = ltiData.custom_assignment
     let query = this._composeQuery(externalId, toolConsumerId)
     debug('Assignment search for ' + JSON.stringify(query))

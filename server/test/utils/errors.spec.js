@@ -13,12 +13,12 @@ let names = ['AssignmentMismatchError', 'SystemError', 'ConfigurationChangeError
 let codes = [400, 500, 400, 400]
 
 /* global describe it */
-describe('custom error classes', function() {
+describe('custom error classes', function () {
   for (let i = 0; i < classes.length; i++) {
     let obj = classes[i]
     let name = names[i]
     let code = codes[i]
-    it(name, function(done) {
+    it(name, function (done) {
       should.exist(obj)
       let err = new obj(message)
       should.exist(err)

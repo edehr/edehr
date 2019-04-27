@@ -1,10 +1,13 @@
 import BaseController from './base'
 import Activity from '../models/activity'
 import Visit from '../models/visit'
-import {AssignmentMismatchError} from '../utils/errors'
 import {ok, fail} from './utils'
 const debug = require('debug')('server')
 
+/*
+resource_link_id 	required 	unique id referencing the link, or "placement", of the app in the consumer. If an app was added twice to the same class, each placement would send a different id, and should be considered a unique "launch". For example, if the provider were a chat room app, then each resource_link_id would be a separate room.
+
+ */
 export default class ActivityController extends BaseController {
   constructor () {
     super(Activity, '_id')

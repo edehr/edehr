@@ -1,6 +1,5 @@
 var should = require('should')
 const mongoose = require('mongoose')
-const MongoClient = require('mongodb').MongoClient
 const ObjectID = require('mongodb').ObjectID
 import BaseController from '../../src/controllers/base'
 import Model from '../../src/models/seed-data'
@@ -9,14 +8,13 @@ const helper = new Helper()
 
 const typeName = 'BaseController'
 const modelName = 'Seed'
-const collectionName = 'seeddatas'
 
 // Use following to leave results in test database for inspection
 // helper.setClear(false)
 
 /* global describe it */
-describe(`${typeName} controller testing`, function() {
-  before(function(done) {
+describe(`${typeName} controller testing`, function () {
+  before(function (done) {
     helper.before(done, mongoose)
   })
 
@@ -24,7 +22,7 @@ describe(`${typeName} controller testing`, function() {
   //   helper.afterTests(done, mongoose, collectionName)
   // })
 
-  it(`${typeName} be valid with model and key`, function(done) {
+  it(`${typeName} be valid with model and key`, function (done) {
     let m = new BaseController(Model, 'user_id')
     m.should.have.property('baseFindOneQuery')
     m.should.have.property('read')
@@ -35,7 +33,7 @@ describe(`${typeName} controller testing`, function() {
     done()
   })
 
-  it(`${typeName} create a ${modelName}`, function(done) {
+  it(`${typeName} create a ${modelName}`, function (done) {
     let m = new BaseController(Model, 'name')
     let data = {
       toolConsumer: new ObjectID('56955ca46063c5600627f393'),
@@ -56,7 +54,7 @@ describe(`${typeName} controller testing`, function() {
       })
   })
 
-  it(`${typeName} use findOne`, function(done) {
+  it(`${typeName} use findOne`, function (done) {
     let m = new BaseController(Model, 'name')
     m.findOne({ name: '1234' })
       .then(doc => {
@@ -71,7 +69,7 @@ describe(`${typeName} controller testing`, function() {
       })
   })
 
-  it(`${typeName} create, read, then delete model`, function(done) {
+  it(`${typeName} create, read, then delete model`, function (done) {
     let m = new BaseController(Model, '_id')
     let key = 'testing2'
     let data = {

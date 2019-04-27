@@ -7,7 +7,7 @@
     "start-prod": "NODE_ENV=production node index.js",
     "start.dev": "nodemon -L NODE_ENV=development DEBUG=server node index.js",
     "start-prod-dev": "NODE_ENV=production API_URL=http://localhost:27004 CLIENT_URL=http://localhost:28000 node index.js",
-    "lint": "eslint controllers/**/*.js",
+    "lint": "eslint --fix src/**/*.js && eslint --fix test/**/*.js",
     "test": "nyc mocha --require @babel/register test/**/*.spec.js"
   },
   "dependencies": {

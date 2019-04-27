@@ -1,14 +1,11 @@
-var should = require('should')
-import Helper from '../helper'
-const helper = new Helper()
+const should = require('should')
 import Role from '../../src/controllers/roles'
 
 const typeName = 'Role'
-const collectionName = 'roles'
 
 /* global describe it */
-describe(`${typeName} testing`, function() {
-  it(`${typeName} create empty not valid`, function() {
+describe(`${typeName} testing`, function () {
+  it(`${typeName} create empty not valid`, function () {
     let m = new Role()
     should.exist(m)
     m.should.have.property('isValid')
@@ -19,13 +16,13 @@ describe(`${typeName} testing`, function() {
     m.should.have.property('isDeveloper')
   })
 
-  it(`${typeName} create student`, function() {
+  it(`${typeName} create student`, function () {
     let m = new Role('Student')
     should.ok(m.isStudent)
     should.ok(m.isValid)
   })
 
-  it(`${typeName} create instructor`, function() {
+  it(`${typeName} create instructor`, function () {
     let r = ['Instructor', 'Faculty', 'Staff']
     for (let i = 0; i < r.length; i++) {
       let m = new Role(r[i])
@@ -34,7 +31,7 @@ describe(`${typeName} testing`, function() {
     }
   })
 
-  it(`${typeName} create admin`, function() {
+  it(`${typeName} create admin`, function () {
     let r = ['Administrator', 'SysAdmin']
     for (let i = 0; i < r.length; i++) {
       let m = new Role(r[i])
@@ -43,7 +40,7 @@ describe(`${typeName} testing`, function() {
     }
   })
 
-  it(`${typeName} create content developer`, function() {
+  it(`${typeName} create content developer`, function () {
     let r = ['ContentDeveloper', 'AccountAdmin', 'Creator']
     for (let i = 0; i < r.length; i++) {
       let m = new Role(r[i])
@@ -52,7 +49,7 @@ describe(`${typeName} testing`, function() {
     }
   })
 
-  it(`${typeName} create mixed roles`, function() {
+  it(`${typeName} create mixed roles`, function () {
     let r = ['ContentDeveloper', 'Administrator', 'Instructor'].join(', ')
     let m = new Role(r)
     should.ok(m.isInstructor, 'instructor')

@@ -13,7 +13,6 @@ const lti = require('ims-lti')
 const passport = require('passport')
 const { ltiVersions, LTI_BASIC } = require('../utils/lti')
 const UserModel = new UserController()
-const ConsumerModel = new ConsumerController()
 const ActivityModel = new ActivityController()
 const AssignmentModel = new AssignmentController()
 const VisitModel = new VisitController()
@@ -49,7 +48,6 @@ let PROPS_CONTEXT = [
   'launch_presentation_return_url',
   'lis_course_section_sourcedid',
   'resource_link_description',
-  'resource_link_id',
   'resource_link_id',
   'resource_link_title',
   'roles',
@@ -345,7 +343,6 @@ export default class LTIController {
       res.status(200).send('OK')
     })
     router.post('/', passport.authenticate('ltiStrategy'), (req, res, next) => {
-      const _this = this
       req.errors = []
       debug('have authenticated user. Now process the lti launch request')
       this._postLtiChain(req)

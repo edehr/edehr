@@ -5,7 +5,6 @@ import VisitController from '../controllers/visit-controller'
 const debug = require('debug')('server')
 
 const UserModel = new UserController()
-const ConsumerModel = new ConsumerController()
 const ActivityModel = new ActivityController()
 const Visit = new VisitController()
 
@@ -54,7 +53,6 @@ export default class AdminController {
 
   route () {
     const router = new Router()
-    const _this = this
 
     router.get('/', function (req, res) {
       res.status(200).send('hello admin')

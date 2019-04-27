@@ -3,8 +3,8 @@ import { ok, fail } from '../../src/controllers/utils'
 import { ltiVersions } from '../../src/utils/lti'
 
 /* global describe it */
-describe('utils helper file', function() {
-  it('lit versions', function(done) {
+describe('utils helper file', function () {
+  it('lit versions', function (done) {
     should.exist(ltiVersions)
     let versions = ltiVersions()
     versions.should.be.an.Array()
@@ -14,10 +14,10 @@ describe('utils helper file', function() {
     done()
   })
 
-  it('ok function', function(done) {
+  it('ok function', function (done) {
     should.exist(ok)
     let res = {
-      json: function(data) {
+      json: function (data) {
         res.data = JSON.stringify(data)
       }
     }
@@ -28,14 +28,14 @@ describe('utils helper file', function() {
     done()
   })
 
-  it('fail function', function(done) {
+  it('fail function', function (done) {
     should.exist(fail)
     let res = {
-      status: function(code) {
+      status: function (code) {
         res.code = code
         return this
       },
-      send: function(message) {
+      send: function (message) {
         res.message = message
         return this
       }

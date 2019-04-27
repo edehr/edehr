@@ -5,7 +5,7 @@ import ActivityData from '../models/activity-data'
 
 const debug = require('debug')('server')
 
-export default class VisitController extends BaseController {
+export default class ActivityDataController extends BaseController {
   constructor () {
     super(ActivityData, '_id')
   }
@@ -51,6 +51,7 @@ export default class VisitController extends BaseController {
       if (activityData) {
         activityData.lastDate = Date.now()
         activityData.scratchData = value
+        activityData.markModified('scratchData')
         return activityData.save()
       }
     })
@@ -70,13 +71,41 @@ export default class VisitController extends BaseController {
         // only set the last date when the student is updating the record
         // activityData.lastDate = Date.now()
         activityData.evaluationData = value
+        activityData.markModified('evaluationData')
         return activityData.save()
       }
     })
   }
 
+  helperBoolVal (id, property, value) {
+    return this.baseFindOneQuery(id).then(activityData => {
+      if (activityData) {
+        activityData.lastDate = Date.now()
+        activityData[property] = value
+        return activityData.save()
+      }
+    })
+  }
+
+  assignmentSubmitted (id, data) {
+    let value = data.value === true
+    return this.helperBoolVal(id, 'submitted', value)
+  }
+
+  assignmentEvaluated (id, data) {
+    let value = data.value === true
+    return this.helperBoolVal(id, 'evaluated', value)
+  }
+
   route () {
     const router = super.route()
+    router.put('/submitted/:key/', (req, res) => {
+      var id = req.params.key
+      var data = req.body
+      this.assignmentSubmitted(id, data)
+        .then(ok(res))
+        .then(null, fail(res))
+    })
     router.put('/assignment-data/:key/', (req, res) => {
       var id = req.params.key
       var data = req.body
