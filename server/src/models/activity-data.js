@@ -1,5 +1,4 @@
 import mongoose from 'mongoose'
-import merge from 'deepmerge'
 const ObjectId = mongoose.Schema.Types.ObjectId
 
 /*

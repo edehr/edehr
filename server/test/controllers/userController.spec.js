@@ -7,7 +7,6 @@ import UserController from '../../src/controllers/user-controller'
 import Model from '../../src/models/user'
 
 const typeName = 'UserController'
-const modelName = 'User'
 
 // Use following to leave results in test database for inspection
 // helper.setClear(false)
@@ -23,7 +22,7 @@ describe(`${typeName} controller testing`, function () {
   })
 
   it(`${typeName} create controller `, function (done) {
-    let m = new UserController()
+    new UserController()
     done()
   })
 

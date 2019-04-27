@@ -1,6 +1,5 @@
-var should = require('should')
+const should = require('should')
 const mongoose = require('mongoose')
-const ObjectID = require('mongodb').ObjectID
 import Helper from '../helper'
 const helper = new Helper()
 import VisitController from '../../src/controllers/visit-controller'
@@ -26,7 +25,6 @@ describe(`${typeName} controller testing`, function () {
   let theAssignment
   let theActivity
   let theUser
-  let seedData = {foo: 'bar'}
   let visitId
 
   it('Create a tool consumer for testing ', function (done) {

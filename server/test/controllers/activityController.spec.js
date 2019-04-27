@@ -8,15 +8,13 @@ import Activity from '../../src/models/activity'
 // import Assignment from '../../models/assignment'
 
 const typeName = 'ActivityController'
-const modelName = 'Activity'
-let seedData = { foo: 'bar' }
 
 // Use following to leave results in test database for inspection
 helper.setClear(false)
 
 /* global describe it */
-describe(`${typeName} controller testing`, function() {
-  before(function(done) {
+describe(`${typeName} controller testing`, function () {
+  before(function (done) {
     helper.before(done, mongoose)
   })
 
@@ -24,7 +22,7 @@ describe(`${typeName} controller testing`, function() {
   //   helper.afterDropDatabase(done, mongoose)
   // })
 
-  it(`${typeName} be valid with model and key`, function(done) {
+  it(`${typeName} be valid with model and key`, function (done) {
     let m = new ActivityController(Activity)
     m.should.have.property('updateCreateActivity')
     m.should.have.property('listClassList')
@@ -34,7 +32,7 @@ describe(`${typeName} controller testing`, function() {
 
   let theConsumer
   let theAssignment
-  it('Create a tool consumer for testing ', function(done) {
+  it('Create a tool consumer for testing ', function (done) {
     Helper
       .createConsumer()
       .then(doc => {
@@ -48,7 +46,7 @@ describe(`${typeName} controller testing`, function() {
   })
 
   let theActivity
-  it(`${typeName} create model`, function(done) {
+  it(`${typeName} create model`, function (done) {
     let m = new ActivityController(Activity)
     let data = Helper.sampleActivity(theConsumer, theAssignment)
     m.create(data).then(doc => {
@@ -58,7 +56,7 @@ describe(`${typeName} controller testing`, function() {
     })
   })
 
-  it(`${typeName} use findActivity`, function(done) {
+  it(`${typeName} use findActivity`, function (done) {
     let m = new ActivityController(Activity, 'name')
     m.findActivity(theActivity._id).then(doc => {
       // console.log('findActivity results', doc)
@@ -69,7 +67,7 @@ describe(`${typeName} controller testing`, function() {
     })
   })
 
-  it(`${typeName} findActivity with id that doesn't exist`, function(done) {
+  it(`${typeName} findActivity with id that doesn't exist`, function (done) {
     let m = new ActivityController(Activity, 'name')
     // use an id from the wrong type of object to cause a fail
     m.findActivity(theConsumer._id).then(doc => {
@@ -79,7 +77,7 @@ describe(`${typeName} controller testing`, function() {
     })
   })
 
-  it(`${typeName} use findActivity`, function(done) {
+  it(`${typeName} use findActivity`, function (done) {
     let m = new ActivityController(Activity, 'name')
     m.findActivity(theActivity._id).then(doc => {
       // console.log('findActivity results', doc)

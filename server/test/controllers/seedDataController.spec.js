@@ -7,7 +7,6 @@ import SeedDataController from '../../src/controllers/seedData-controller'
 
 const typeName = 'SeedDataController'
 const modelName = 'SeedData'
-const collectionName = 'seeddatas'
 
 /* global describe it */
 describe(`${typeName} controller testing`, function () {
@@ -65,7 +64,6 @@ describe(`${typeName} controller testing`, function () {
     controller.should.have.property('updateSeedEhrData')
     should.exist(seedObj)
     seedObj.should.have.property('_id')
-    let ehrData = sampleEhrData.ehrData
     let id = seedObj._id
     let newEhrData = {
       someProperty: 'someValue'

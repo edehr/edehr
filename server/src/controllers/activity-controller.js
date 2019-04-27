@@ -1,7 +1,6 @@
 import BaseController from './base'
 import Activity from '../models/activity'
 import Visit from '../models/visit'
-import {AssignmentMismatchError} from '../utils/errors'
 import {ok, fail} from './utils'
 const debug = require('debug')('server')
 

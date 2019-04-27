@@ -1,15 +1,12 @@
-var should = require('should')
+const should = require('should')
 const mongoose = require('mongoose')
-const ObjectID = require('mongodb').ObjectID
 import HMAC_SHA1 from '../../node_modules/ims-lti/src/hmac-sha1'
 
 import LTIController from '../../src/controllers/lti'
 import Helper from '../helper'
 const helper = new Helper()
-const { ltiVersions, LTI_BASIC } = require('../../src/utils/lti')
 import Assignment from '../../src/models/assignment'
 
-let seedData = { foo: 'bar' }
 let assignmentKey = '599'
 
 helper.setClear(false)
@@ -114,8 +111,7 @@ describe('LTI controller testing', function () {
     }
     let signer = new HMAC_SHA1()
     //sign the fake request
-    const signature = signer.build_signature(req, req.body, oauth_consumer_secret)
-    req.body.oauth_signature = signature
+    req.body.oauth_signature = signer.build_signature(req, req.body, oauth_consumer_secret)
 
     ltiController.strategyVerify(req, function (err, user) {
       should.not.exist(err)
@@ -129,7 +125,7 @@ describe('LTI controller testing', function () {
   })
 
   it('lti _postLtiChain', function (done) {
-    let result = ltiController._postLtiChain(req).then(() => {
+    ltiController._postLtiChain(req).then(() => {
       console.log('after post LIT')
       should.exist(req.visit)
       should.exist(req.activity)

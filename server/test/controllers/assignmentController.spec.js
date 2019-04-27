@@ -1,13 +1,11 @@
 var should = require('should')
 const mongoose = require('mongoose')
 import AssignmentController from '../../src/controllers/assignment-controller'
-import Model from '../../src/models/seed-data'
 import Helper from '../helper'
 const helper = new Helper()
 
 const typeName = 'AssignmentController'
 const modelName = 'Assignment'
-const collectionName = 'assignments'
 
 
 /* global describe it */
@@ -22,7 +20,6 @@ describe(`${typeName} controller testing`, function () {
     done()
   })
 
-  let seedData = { foo: 'bar' }
   let key = '1'
   let toolConsumerId
 

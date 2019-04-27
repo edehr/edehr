@@ -3,10 +3,8 @@ const mongoose = require('mongoose')
 import Helper from '../helper'
 const helper = new Helper()
 import ActivityDataController from '../../src/controllers/activity-data-controller'
-import ActivityData from '../../src/models/activity-data'
 
 const typeName = 'ActivityDataController'
-const modelName = 'ActivityData'
 
 // Use following to leave results in test database for inspection
 helper.setClear(false)

@@ -1,6 +1,5 @@
 var should = require('should')
 const mongoose = require('mongoose')
-const ObjectID = require('mongodb').ObjectID
 import Helper from '../helper'
 const helper = new Helper()
 import Model from '../../src/models/activity-data'

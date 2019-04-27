@@ -15,13 +15,13 @@ const IntegrationModel = new IntegrationController()
 const helper = new Helper()
 
 /* global describe it */
-describe(' db seeding test', function() {
-  before(function(done) {
+describe(' db seeding test', function () {
+  before(function (done) {
     helper.before(done, mongoose)
   })
 
   let name = 'another collection'
-  it('Integrations find on empty collection', function(done) {
+  it('Integrations find on empty collection', function (done) {
     IntegrationModel.findOne({ module: name }).then(result => {
       // console.log('found: ', result)
       should.not.exist(result)
@@ -29,8 +29,7 @@ describe(' db seeding test', function() {
     })
   })
 
-  it('Integration create', function(done) {
-    let m = new IntegrationController()
+  it('Integration create', function (done) {
     IntegrationModel.create({ module: name })
       .then(doc => {
         should.exist(doc)
@@ -42,7 +41,7 @@ describe(' db seeding test', function() {
       })
   })
 
-  it('Integrations find after create', function(done) {
+  it('Integrations find after create', function (done) {
     IntegrationModel.findOne({ module: name }).then(result => {
       // console.log('found: ', result)
       should.exist(result)
@@ -50,7 +49,7 @@ describe(' db seeding test', function() {
     })
   })
 
-  it('Seed the sb', function(done) {
+  it('Seed the sb', function (done) {
     dbSeeder()
       .then(() => {
         console.log('done unit testing seeding')

@@ -15,9 +15,9 @@ const BASE = '/api/assignments'
 const BASE_SEED_DATA = '/api/seed-data'
 const ehrApp = new EhrApp()
 
-describe(`Make server calls on ${TYPE}`, function() {
+describe(`Make server calls on ${TYPE}`, function () {
   let app
-  before(function(done) {
+  before(function (done) {
     ehrApp
       .setup(configuration)
       .then(() => {
@@ -31,27 +31,27 @@ describe(`Make server calls on ${TYPE}`, function() {
   let theSampleSeedData = Helper.sampleSeedDataSpec()
   let theId, theSeedId
 
-  it(`create seedData`, function(done) {
+  it('create seedData', function (done) {
     let url = BASE_SEED_DATA
     request(app)
-    .post(url)
-    .send(theSampleSeedData)
-    .set('Content-Type', 'application/json')
-    .set('Accept', 'application/json')
-    .expect(200)
-    .end(function(err, res) {
-      should.not.exist(err, url)
-      should.exist(res)
-      should.exist(res.body)
-      let obj = res.body
-      obj.should.have.property('_id')
-      console.log('created', obj._id)
-      theSeedId = obj._id
-      done()
-    })
+      .post(url)
+      .send(theSampleSeedData)
+      .set('Content-Type', 'application/json')
+      .set('Accept', 'application/json')
+      .expect(200)
+      .end(function (err, res) {
+        should.not.exist(err, url)
+        should.exist(res)
+        should.exist(res.body)
+        let obj = res.body
+        obj.should.have.property('_id')
+        console.log('created', obj._id)
+        theSeedId = obj._id
+        done()
+      })
   })
 
-  it(`create ${NAME}`, function(done) {
+  it(`create ${NAME}`, function (done) {
     let url = BASE
     if(theSeedId) {
       theData.seedDataId = theSeedId
@@ -62,7 +62,7 @@ describe(`Make server calls on ${TYPE}`, function() {
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json')
       .expect(200)
-      .end(function(err, res) {
+      .end(function (err, res) {
         should.not.exist(err, url)
         should.exist(res)
         should.exist(res.body)
@@ -73,14 +73,14 @@ describe(`Make server calls on ${TYPE}`, function() {
       })
   })
 
-  it(`get ${NAME} list`, function(done) {
+  it(`get ${NAME} list`, function (done) {
     let url = BASE
     let property = 'assignments'
     request(app)
       .get(url)
       .expect('Content-Type', /json/)
       .expect(200)
-      .end(function(err, res) {
+      .end(function (err, res) {
         should.not.exist(err)
         should.exist(res)
         should.exist(res.body)
@@ -98,42 +98,42 @@ describe(`Make server calls on ${TYPE}`, function() {
       })
   })
 
-  it(`find ${NAME} by id`, function(done) {
+  it(`find ${NAME} by id`, function (done) {
     let url = BASE + '/get/' + theId
     request(app)
-    .get(url)
-    .expect('Content-Type', /json/)
-    .expect(200)
-    .end(function (err, res) {
-      should.not.exist(err, url)
-      should.exist(res)
-      should.exist(res.body)
-      res.body.should.be.object
-      res.body.should.have.property(PROPERTY)
-      done();
-    });
+      .get(url)
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .end(function (err, res) {
+        should.not.exist(err, url)
+        should.exist(res)
+        should.exist(res.body)
+        res.body.should.be.object
+        res.body.should.have.property(PROPERTY)
+        done()
+      })
   })
 
-  it(`update ${NAME}`, function(done) {
+  it(`update ${NAME}`, function (done) {
     theData.name = '2.0'
     let url = BASE + '/' + theId
     request(app)
-    .put(url)
-    .send(theData)
-    .set('Content-Type', 'application/json')
-    .set('Accept', 'application/json')
-    .expect(200)
-    .end(function(err, res) {
-      should.not.exist(err, url)
-      should.exist(res)
-      should.exist(res.body)
-      res.body.should.be.object
-      res.body.should.have.property(PROPERTY)
-      let sd = res.body[PROPERTY]
-      sd.should.have.property('name')
-      sd.name.should.equal(theData.name)
-      done()
-    })
+      .put(url)
+      .send(theData)
+      .set('Content-Type', 'application/json')
+      .set('Accept', 'application/json')
+      .expect(200)
+      .end(function (err, res) {
+        should.not.exist(err, url)
+        should.exist(res)
+        should.exist(res.body)
+        res.body.should.be.object
+        res.body.should.have.property(PROPERTY)
+        let sd = res.body[PROPERTY]
+        sd.should.have.property('name')
+        sd.name.should.equal(theData.name)
+        done()
+      })
   })
 
 })
