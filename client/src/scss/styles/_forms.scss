@@ -13,6 +13,14 @@ the date picker may be chopped and much of it might not be visible.
   position: relative;
 }
 
+.form-row-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-element-wrapper {
+  width: 100%;
+}
 
 .input-fieldrow { /* used in dialog as containers, c */
   display: flex;
@@ -65,9 +73,10 @@ li {
   list-style-type: none;
 }
 
-.ehrdfe {
+.ehrdfe,
+.form-element-wrapper {
   width: 100%;
-  padding-right: 20px;
+  margin-right: 20px;
   &:last-child {
     padding-right: 0;
   }
@@ -270,6 +279,10 @@ select {
   width: 90%;
   min-width: 90%;
   flex-grow: 0.9;
+}
+
+.ehr-page-form {
+  margin-bottom: 8em;
 }
 
 .bold-text {

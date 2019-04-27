@@ -1,7 +1,7 @@
 <template lang="pug">
   div(class="ehr-page-form")
-    div(:class="row.classList", class="columns", v-for="row in formDefs.rows", v-bind:key="row.rowNumber")
-      div(class="column", :class="[formColClass(element)]", v-for="element in row.elements", v-bind:key="element.elementKey")
+    div(class="form-row-wrapper", v-for="row in formDefs.rows", v-bind:key="row.rowNumber") {{row.classList}}
+      div(class="form-element-wrapper", v-bind:class="cssFromDefs(element)", v-for="element in row.elements", v-bind:key="element.elementKey")
         ehr-page-form-element(:notEditing="notEditing", :element="element", :ehrHelp="ehrHelp" :inputs="theData")
     div Assignment last saved: {{ theData.lastUpdate }}
     div(style="display:none") {{currentData}}
@@ -48,6 +48,10 @@ export default {
     }
   },
   methods: {
+    cssFromDefs: function (element) {
+      return element.formCss ? element.formCss : 'noClass'
+      // return element.inputType + ' ' + element.elementKey
+    },
     formColClass: function (element) {
       // TODO determine correct css class based on form's column count
       // 1, 2, 3, 4, 5, default

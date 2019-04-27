@@ -3,13 +3,13 @@
     app-dialog(:class="$options.name", :isModal="true", ref="theDialog", @cancel="cancelDialog", @save="saveDialog", v-bind:errors="errorList")
       h3(slot="header") {{ tableDef.addButtonText }}
       div(slot="body", class="region ehr-page-content")
-        div(class="input-fieldrow")
-          ehr-dialog-form-element(v-for="fmEl in topRow.elements", :key="fmEl.elementKey", :inputs="inputs", :element="fmEl", :ehrHelp="ehrHelp", class="input-fieldrow-element")
-        hr
-        div(v-for="midRow in middleRange", class="input-fieldrow")
-          ehr-dialog-form-element(v-for="fmEl in midRow.elements", :key="fmEl.elementKey", :inputs="inputs", :element="fmEl", :ehrHelp="ehrHelp", class="input-fieldrow-element")
-        div(class="input-fieldrow")
-          ehr-dialog-form-element(v-for="fmEl in lastRow.elements", :key="fmEl.elementKey", :inputs="inputs", :element="fmEl", :ehrHelp="ehrHelp", class="input-fieldrow-element")
+        div(class="form-row-wrapper")
+          div(class="form-element-wrapper", v-bind:class="cssFromDefs(element)", v-for="element in topRow.elements", v-bind:key="element.elementKey")
+            ehr-dialog-form-element(:inputs="inputs", :element="element", :ehrHelp="ehrHelp")
+        hr(v-if="hasNameProfRow")
+        div(class="form-row-wrapper", v-for="row in middleRange")
+          div(class="form-element-wrapper", v-bind:class="cssFromDefs(element)", v-for="element in row.elements", v-bind:key="element.elementKey")
+            ehr-dialog-form-element(:inputs="inputs", :element="element", :ehrHelp="ehrHelp")
       span(slot="save-button") Create and close
 </template>
 
@@ -39,39 +39,30 @@ export default {
     tableKey () {
       return this.tableDef.tableKey
     },
+    hasNameProfRow () {
+      // Does the first row in the dialog fit the Name, Profession,.... pattern ...
+      let top = this.topRow.elements
+      // TODO perhaps also check for certain elements ....
+      return top.length === 4
+    },
+    tableRows () {
+      return this.tableDef.tableForm ? this.tableDef.tableForm.rows : []
+    },
     topRow () {
-      // console.log('dialog get top row from ', this.tableDef)
-      if (!this.tableDef.tableForm) {
-        return []
-      }
-      let rows = this.tableDef.tableForm.rows
+      let rows = this.tableRows
       let top = rows.length > 0 ? rows[0] : []
-      // console.log('top row ', this.tableDef, top)
       return top
     },
     middleRange () {
-      if (!this.tableDef.tableForm) {
-        return []
-      }
-      let rows = this.tableDef.tableForm.rows
-      let middle = rows.length > 2 ? rows.slice(1, rows.length - 1) : []
-      // console.log('middle', middle)
+      let rows = this.tableRows
+      let middle = rows.length > 1 ? rows.slice(1, rows.length) : []
       return middle
     },
-    lastRow () {
-      if (!this.tableDef.tableForm) {
-        return []
-      }
-      let rows = this.tableDef.tableForm.rows
-      let last = rows.length > 1 ? rows[rows.length - 1] : []
-      // console.log('last row ', last)
-      return last
-    }
   },
   methods: {
-    formCss: function (element) {
-      // return element.formCss ? element.formCss : 'noClass'
-      return element.inputType + ' ' + element.elementKey
+    cssFromDefs: function (element) {
+      return element.formCss ? element.formCss : 'noClass'
+      // return element.inputType + ' ' + element.elementKey
     },
     cancelDialog: function () {
       this.ehrHelp.cancelDialog(this.tableKey)

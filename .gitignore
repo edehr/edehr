@@ -29,3 +29,4 @@ makeEhr/util/camelcase-input\.txt
 client/test/e2e/**
 prototyping/hello-world/**
 .DS_Store
+docs/.vuepress/dist/**
