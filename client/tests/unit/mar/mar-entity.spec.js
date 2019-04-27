@@ -6,7 +6,7 @@ import { getSampleMarDbDataList } from './med-test-util'
 let key = 'breakfast'
 let aPeriod = new PeriodEntity(key,'Breakfast')
 
-describe('MarEntity', () => {
+describe.skip('MarEntity', () => {
   it('MarEntity', () => {
     let mar = new MarEntity()
     should.exist(mar)

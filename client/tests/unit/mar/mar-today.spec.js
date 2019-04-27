@@ -5,7 +5,7 @@ import { getSampleMedOrderDbDataList } from './med-test-util'
 import { getSampleMarDbDataList } from './med-test-util'
 import should from 'should'
 
-describe('MarToday', () => {
+describe.skip('MarToday', () => {
   it('MarToday', () => {
     let mOrders = []
     let marRecords = []
