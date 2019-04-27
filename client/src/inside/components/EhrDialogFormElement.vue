@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(:id="element.elementKey", class="ehrdfe", :class="formCss(element)")
+  div(:id="element.elementKey", class="ehrdfe")
 
     div(v-if="element.inputType === 'form_label'", class="label_wrapper")
       div(v-html="element.label")
