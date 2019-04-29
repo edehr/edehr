@@ -2,9 +2,12 @@
   div(class="outside-view")
     h1 Help
     div
+      p. 
+        This project is in development and is not connectedhas not yet developed any help pages for the EdEHR itself, as an application.
+      p.  
+        Having trouble with the app or need help with your assignment? Contact your instructor for help.
       p.
-        This prototype project has not yet developed any help pages for the EdEHR itself, as an application. You can read
-        documentation about the project <a href="https://bryan-gilbert.github.io/edehr/">here</a>
+        You can also <a href="https://bryan-gilbert.github.io/edehr/">read project documentation</a>.
 </template>
 
 <style lang="scss" scoped>
