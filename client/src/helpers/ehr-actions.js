@@ -8,15 +8,16 @@ export default class EhrActions {
   }
 
   getNavPanelActionLabel () {
-    let label = 'Return to LMS'
-    if (this.isStudent) {
+    let lmsName = this.$store.getters['visit/lmsName']
+    let label = 'Return to ' + lmsName
+    if (this.navPanelActionNeedsConfirmation()) {
       label = 'Send for evaluation'
     }
     return label
   }
 
   navPanelActionNeedsConfirmation () {
-    return this.isStudent()
+    return this.isStudent() && !this.submitted()
   }
 
   navPanelActionConfirmOptions () {
@@ -29,20 +30,24 @@ export default class EhrActions {
 
   invokeNavPanelAction () {
     if (this.isStudent()) {
+      if (!this.submitted()) {
+        this.$store.dispatch('ehrData/sendSubmitted', true)
+      }
       // hard return to the calling LMS
       window.location = this.$store.getters['visit/returnUrl']
     } else {
       // stay within application and use router push
       var pathname = this.$store.state.instructor.sInstructorReturnUrl
-      console.log(
-        'As instructor return via router push to retain veux state information',
-        pathname
-      )
+      // console.log(`go to ${pathname} via router push to retain veux state information`)
       this.$router.push({ path: pathname })
     }
   }
   isStudent () {
     return this.$store.getters['visit/isStudent']
+  }
+
+  submitted () {
+    return this.$store.getters['ehrData/submitted']
   }
 
   lmsName () {

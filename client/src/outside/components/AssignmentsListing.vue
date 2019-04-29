@@ -36,14 +36,14 @@
               div(class="text_input_wrapper")
                 label External Id
                 input(class="input", type="text", v-model="aAssignment.externalId")
-            div(class="ehrdfe")
-              div(class="text_input_wrapper")
-                label Landing Page
-                input(class="input", type="text", v-model="aAssignment.ehrRoutePath")
+            //div(class="ehrdfe")
+            //  div(class="text_input_wrapper")
+            //    label Landing Page
+            //    input(class="input", type="text", v-model="aAssignment.ehrRoutePath")
 
             div(class="ehrdfe")
               div(class="input-element")
-                label Seed data {{selectedSeed}}
+                label Seed data
                 select(v-model="selectedSeed")
                   option(disabled,value="")
                   option(v-for="seed in seedOptionList", v-bind:value="seed.id", :selected="seed.selected") {{ seed.name}} {{seed.selected}}

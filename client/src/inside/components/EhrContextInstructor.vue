@@ -56,7 +56,10 @@ export default {
       return data
     },
     classList () {
-      return this.$store.state.sClassList || []
+      return this.$store.state.instructor.sClassList || []
+    },
+    currentStudentId () {
+      return this.$store.state.instructor.sCurrentEvaluationStudentId
     },
     showClassList () {
       return true
@@ -72,9 +75,9 @@ export default {
   },
   methods: {
     findCurrentIndex () {
-      var list = this.$store.state.instructor.sClassList || []
-      var id = this.$store.state.instructor.sCurrentEvaluationStudentId
-      var indx = list.findIndex(function (elem) {
+      let list = this.classList // this.$store.state.instructor.sClassList || []
+      let id = this.currentStudentId // this.$store.state.instructor.sCurrentEvaluationStudentId
+      let indx = list.findIndex(function (elem) {
         return elem._id === id
       })
       return { list, indx }

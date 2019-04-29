@@ -32,7 +32,7 @@ export default {
   components: { SystemError, UiClose },
   data () {
     return {
-      showAssignmentDetails: true
+      showAssignmentDetails: false
     }
   },
   computed: {
@@ -152,5 +152,10 @@ export default {
     font-size: 1.25rem;
     margin-left: 0;
   }
+}
+
+.isInstructorClass .apphdr {
+  background: darkslateblue;
+  /*color: black;*/
 }
 </style>

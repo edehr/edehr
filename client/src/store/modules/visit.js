@@ -23,8 +23,7 @@ const getters = {
     return vi ? vi.isInstructor || vi.isDeveloper : false
   },
   isStudent: state => {
-    var vi = state.sVisitInfo
-    return vi ? vi.isStudent : false
+    return state.sVisitInfo.isStudent
   },
   lmsName: state => {
     if (state.sVisitInfo && state.sVisitInfo.toolConsumer) {

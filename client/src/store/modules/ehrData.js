@@ -29,8 +29,7 @@ const getters = {
     By the documentation getters['visit/isInstructor'] should work but it doesn't
     So use the direct access of rootstate ...
      */
-    let isInstructor = rootState.visit.sVisitInfo.isInstructor
-    if (isInstructor) {
+    if (rootState.visit.isInstructor) {
       console.log(
         'Using current student from class list assignment data',
         state.sCurrentStudentData
@@ -50,7 +49,7 @@ const getters = {
     if (rootState.visit.isDevelopingContent === true) {
       mData = ehrSeedData
       console.log('mergedData: Develop seed', ehrSeedData)
-    } else if (rootState.visit.sVisitInfo.isInstructor) {
+    } else if (rootState.visit.isInstructor) {
       let evalAssignmentData = decoupleObject(state.sCurrentStudentData.assignmentData)
       mData = ehrMergeEhrData(ehrSeedData, evalAssignmentData)
       console.log('mergedData: Instructor result', mData)
@@ -108,10 +107,19 @@ const getters = {
       return pageData
     }
   },
-  scratchData: state => {
+  scratchData: (state, getters, rootState) => {
     // only return for student
     // scratchData is the student's notes
-    return state.sActivityData.scratchData
+    if (rootState.visit.isStudent) {
+      return state.sActivityData.scratchData
+    }
+    return {}
+  },
+  submitted: state => {
+    return state.sActivityData.submitted
+  },
+  evaluated: state => {
+    return state.sActivityData.evaluated
   },
 
   evaluationData: state => {
@@ -120,6 +128,19 @@ const getters = {
   }
 }
 
+const helpers = {
+  sendActivityData (context, activityDataId, data, parameter) {
+    let visitState = context.rootState.visit
+    let apiUrl = visitState.apiUrl
+    let url = `${apiUrl}/activity-data/${parameter}/${activityDataId}`
+    console.log('ActivityData send ', url)
+    return helper.putRequest(context, url, { value: data }).then(results => {
+      let activityData = results.data
+      context.commit('_setActivityData', activityData)
+      return activityData
+    })
+  }
+}
 const actions = {
   loadActivityData (context, options) {
     let activityDataId = options.id
@@ -179,17 +200,24 @@ const actions = {
   },
 
   sendScratchData (context, data) {
-    let visitState = context.rootState.visit
-    let apiUrl = visitState.apiUrl
     let activityDataId = context.state.sActivityData._id
-    // console.log('sendScratchData scratch, apiUrl ', activityDataId, apiUrl)
-    let url = `${apiUrl}/activity-data/scratch-data/${activityDataId}`
-    return helper.putRequest(context, url, { value: data }).then(results => {
-      let activityData = results.data
-      // console.log('ehrData commit activityData with new scratchData', JSON.stringify(activityData.scratchData))
-      context.commit('_setActivityData', activityData)
-      return activityData
-    })
+    helpers.sendActivityData(context, activityDataId, data, 'scratch-data')
+  },
+
+  sendUnsubmit (context, activityDataId) {
+    let data = { value: false }
+    helpers.sendActivityData(context, activityDataId, data, 'submitted')
+  },
+
+  sendSubmitted (context, data) {
+    let activityDataId = context.state.sActivityData._id
+    helpers.sendActivityData(context, activityDataId, data, 'submitted')
+  },
+
+  sendEvaluated (context, data) {
+    let activityDataId = data.activityDataId
+    let newState = data.evaluated
+    helpers.sendActivityData(context, activityDataId, newState, 'evaluated')
   },
 
   sendEvaluationNotes (context, data) {

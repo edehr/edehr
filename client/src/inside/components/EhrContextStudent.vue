@@ -8,6 +8,8 @@
           ui-info(:text="panelInfo.activityDescription")
         div(class="textField") Assignment: {{ panelInfo.assignmentName}}
           ui-info(:text="panelInfo.assignmentDescription")
+        div(class="textField") Submitted: {{ submitted }}
+        div(class="textField") Evaluated: {{ evaluated }}
 </template>
 
 <script>
@@ -19,6 +21,12 @@ export default {
   computed: {
     scratchData () {
       return this.$store.getters['ehrData/scratchData']
+    },
+    submitted () {
+      return this.$store.getters['ehrData/submitted']
+    },
+    evaluated () {
+      return this.$store.getters['ehrData/evaluated']
     },
     panelInfo () {
       let visitInfo = this.$store.state.visit.sVisitInfo || {}

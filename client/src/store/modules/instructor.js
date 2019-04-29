@@ -56,7 +56,7 @@ const actions = {
       context
         .dispatch(
           'ehrData/loadActivityData',
-          { forStudent: false, id: sv.activityData },
+          { forStudent: false, id: sv.activityData._id },
           { root: true }
         )
         .then(() => {
