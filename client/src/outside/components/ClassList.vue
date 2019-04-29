@@ -3,8 +3,9 @@
     div(class="activity-list-header columns", v-on:click="activateActivity")
       div(class="header-column is-10 column")
         h3(class="header-item", :title="activity._id") {{ activity.resource_link_title }}
-        div(class="header-item") {{ activity.resource_link_description }}
-        div(class="header-item") {{ assignment.name }}  (LMS configuration: assignment={{ assignment.externalId }} )
+        div(class="header-item") Description: {{ activity.resource_link_description }}
+        div(class="header-item") Assignment: {{ assignment.name }}  (LMS configuration: assignment={{ assignment.externalId }} )
+        div(class="header-item") Description: {{ assignment.description }}
       div(class="header-column is-2 column")
         div(class="header-item header-icon") {{ indicator }}
     div(class="activity-list-body")
@@ -19,19 +20,25 @@
             thead
               tr
                 th Student name
-                th Student ID
-                th Date submitted
+                th Email
+                th Submitted
                 th Evaluation notes
-                th Status
+                th Evaluated
             tbody
-              tr(v-for="sv in classList")
+              tr(v-for="sv in classList", v-on:click="changeStudent(sv)")
                 td
                   div(:id="`ref-${sv._id}`",  :ref="`ref-${sv._id}`") {{ sv.user.fullName }}
-                td {{ sv.user.user_id }}
-                td some date
+                td {{ sv.user.emailPrimary }}
+                td {{ sv.activityData.submitted ? "Yes" : "No"}}
+                td {{ sv.activityData.evaluationData }}
+                td {{ sv.activityData.evaluated ? "Yes" : "No" }}
                 td
-                  ui-button(v-on:buttonClicked="goToEhr(sv)") Evaluate in EHR {{sv.assignment.ehrRouteName}}
-                td Status
+                  span(v-if="sv.activityData.submitted && !sv.activityData.evaluated")
+                    ui-button(v-on:buttonClicked="goToEhr(sv)") Evaluate in EHR {{sv.assignment.ehrRouteName}}
+                    span &nbsp;
+                    ui-button(v-on:buttonClicked="unsubmit(sv)") Unsubmit
+                  span(v-if="sv.activityData.submitted") &nbsp;
+                    ui-button(v-on:buttonClicked="markEvaluated(sv)") {{ evaluatedButtonText(sv) }}
 </template>
 
 <script>
@@ -56,13 +63,17 @@ export default {
   computed: {
     assignment () {
       // console.log('What is in activity', this.activity)
-      let a = this.activity.assignment || {}
-      return a
+      return this.activity.assignment || {}
     },
     visitInfo () {
       return this.$store.state.visit.sVisitInfo
     },
     classList () {
+      /*
+      The class list contains a list of 'populated visit records. When a visit record, sv,  is populated
+      it contains the ActivityData, (sv.activityData) (for the student), the assignment (sv.assignment)
+      and the user record (sv.user)
+      */
       return this.$store.state.instructor.sClassList || []
     }
   },
@@ -93,6 +104,34 @@ export default {
           })
         })
     },
+    unsubmit (sv) {
+      let activityDataId = sv.activityData._id
+      this.$store.dispatch('ehrData/sendUnsubmit', activityDataId)
+        .then( () => {
+        /*
+        Normally, after we dispatch a message to the server the routine is to let the Vuex reactive system
+        handle the updated data. But here we are dealing with a class list comprised of student visit records
+        that have nested objects inside. One of these objects is the Activity Data which holds the "submitted"
+        value.  The dispatch only updates the activity data object and not the object, the visit, that this
+        class list is looking at. So, here is a special case where we directly update the client side memory
+        to keep the display in sync. Note that the dispatch returns a promise and we can only get into the .then()
+        side if the dispatch was successful.
+        This also applies to evaluated.
+        */
+          sv.activityData.submitted = false
+        })
+    },
+    markEvaluated (sv) {
+      const newState = ! sv.activityData.evaluated
+      let data = { activityDataId: sv.activityData._id, evaluated: newState }
+      this.$store.dispatch('ehrData/sendEvaluated', data)
+        .then( () => {
+        /*
+        See comment in unsubmit
+        */
+          // sv.activityData.evaluated = newState
+        })
+    },
     goToEhr (studentVisit) {
       let studentId = studentVisit._id
       // Go to the first screen related to the assignent
@@ -105,6 +144,13 @@ export default {
         // console.log('go to ehr with ', name)
         this.$router.push(name)
       })
+    },
+    changeStudent (sv) {
+      let pid = sv._id
+      this.$store.dispatch('instructor/changeCurrentEvaluationStudentId', pid)
+    },
+    evaluatedButtonText(sv) {
+      return sv.activityData.evaluated ? 'Reevaludate' : 'Evaluate'
     }
   },
   mounted: function () {

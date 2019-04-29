@@ -100,29 +100,36 @@ export default class ActivityDataController extends BaseController {
   route () {
     const router = super.route()
     router.put('/submitted/:key/', (req, res) => {
-      var id = req.params.key
-      var data = req.body
+      const id = req.params.key
+      const data = req.body
       this.assignmentSubmitted(id, data)
         .then(ok(res))
         .then(null, fail(res))
     })
+    router.put('/evaluated/:key/', (req, res) => {
+      const id = req.params.key
+      const data = req.body
+      this.assignmentEvaluated(id, data)
+        .then(ok(res))
+        .then(null, fail(res))
+    })
     router.put('/assignment-data/:key/', (req, res) => {
-      var id = req.params.key
-      var data = req.body
+      const id = req.params.key
+      const data = req.body
       this.updateAssignmentData(id, data)
         .then(ok(res))
         .then(null, fail(res))
     })
     router.put('/scratch-data/:key/', (req, res) => {
-      var id = req.params.key
-      var data = req.body
+      const id = req.params.key
+      const data = req.body
       this.updateScratchData(id, data)
         .then(ok(res))
         .then(null, fail(res))
     })
     router.put('/evaluation-data/:key', (req, res) => {
-      var id = req.params.key
-      var data = req.body
+      const id = req.params.key
+      const data = req.body
       this.updateEvaluationData(id, data)
         .then(ok(res))
         .then(null, fail(res))

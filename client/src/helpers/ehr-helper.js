@@ -328,8 +328,10 @@ export default class EhrHelp {
   _showControl (prop) {
     let show = false
     let isStudent = this.$store.getters['visit/isStudent']
+    let submitted = this.$store.getters['ehrData/submitted']
+    let studentCanEdit = isStudent && !submitted
     let isDevelopingContent = this.$store.state.visit.isDevelopingContent
-    if (isStudent || isDevelopingContent) {
+    if (studentCanEdit || isDevelopingContent) {
       let pd = getPageDefinition(this.pageKey)
       // console.log('decide to show or not this page def', prop, pd[prop], pd)
       show = pd[prop]

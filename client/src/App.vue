@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :class="appCssClass">
     <component :is="layout"> <router-view /> </component>
   </div>
 </template>
@@ -151,9 +151,18 @@ export default {
   },
   computed: {
     layout () {
-      const l = (this.$route.meta.layout || DefaultLayout) + '-layout'
-      // console.log('using layout ', l)
-      return l
+      return (this.$route.meta.layout || DefaultLayout) + '-layout'
+    },
+    appCssClass () {
+      let css = []
+      if (this.$store.state.visit.isStudent) {
+        css.push('isStudentClass')
+      }
+      // if (this.$store.state.visit.isInstructor) {
+      if (this.$store.getters['visit/isInstructor']) {
+        css.push('isInstructorClass')
+      }
+      return css.join(' ')
     },
     userInfo () {
       return this.$store.state.sUserInfo

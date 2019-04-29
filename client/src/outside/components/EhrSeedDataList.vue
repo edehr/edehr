@@ -1,6 +1,6 @@
 <template lang="pug">
   div(id="seedDataList", class="seedData-list")
-    h1 Seed Data
+    h1 EHR Assignment Seed Data
     div
       ui-button(v-on:buttonClicked="showCreateDialog") Create new seed
     div(class="seedData-list-body")
@@ -11,25 +11,22 @@
               th Name
               th Version
               th Description
-              th Seed Id
+              // th Seed Id
           tbody
             tr(v-for="sv in seedDataList")
               td {{sv.name}}
               td {{sv.version}}
-              td {{sv.description}} {{sv}}
-              td {{sv._id}}
-              td
+              td {{sv.description}}
+              // td {{sv._id}}
+              td(class="seed-actions")
                ui-button(v-on:buttonClicked="uploadSeed", :value="sv._id")
-                  fas-icon(icon="upload")
-              td
+                fas-icon(icon="upload")
                ui-button(v-on:buttonClicked="downloadSeed", :value="sv._id")
-                  fas-icon(icon="download")
-              td
-                ui-button(v-on:buttonClicked="showEditDialog", :value="sv._id")
-                  fas-icon(icon="edit")
-              td
-                ui-button(v-on:buttonClicked="gotoEhrWithSeed", :value="sv._id")
-                  fas-icon(icon="notes-medical")
+                fas-icon(icon="download")
+               ui-button(v-on:buttonClicked="showEditDialog", :value="sv._id")
+                fas-icon(icon="edit")
+               ui-button(v-on:buttonClicked="gotoEhrWithSeed", :value="sv._id")
+                fas-icon(icon="notes-medical")
       ui-agree(ref="aggreeDialog")
       input(id="fileUploadInput", ref="fileUploadInput", type="file", accept="application/json", style="display:none", @change="importSeedFile")
     app-dialog(:isModal="true", ref="theDialog",  @cancel="cancelDialog", @save="saveDialog")
@@ -236,6 +233,12 @@ export default {
   .table {
     overflow: hidden;
     width: 100%;
+  }
+  .seed-actions .button{
+    margin-right: 0.5rem;
+  }
+  .seed-actions .button:last-of-type {
+    margin-right: 0;
   }
 }
 </style>
