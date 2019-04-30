@@ -88,7 +88,7 @@ export default class LTIController {
         UserModel.read(id).then(results => {
           let user = results.user
           debug('LTI deserializeUser result ' + (user ? user.user_id : 'none'))
-          debug('deserializeUser user', user)
+          // debug('deserializeUser user', user)
           done(null, user)
         })
       })
