@@ -20,7 +20,7 @@ import VitalsChart from './VitalsChart'
 import VitalModel from '../../helpers/vitalModel'
 import EhrPageTable from '../components/EhrPageTable'
 import EventBus from '../../helpers/event-bus'
-import { PAGE_DATA_REFRESH_EVENT, SHOW_TABLE_DIALOG_EVENT } from '../../helpers/event-bus'
+import { PAGE_DATA_REFRESH_EVENT } from '../../helpers/event-bus'
 import EhrDialogForm from '../components/EhrDialogForm.vue'
 import { getPageDefinition } from '../../helpers/ehr-defs'
 

@@ -32,6 +32,8 @@ import UiButton from '../../app/ui/UiButton.vue'
 import moment from 'moment'
 import EventBus from '../../helpers/event-bus'
 import { PAGE_DATA_REFRESH_EVENT, SHOW_TABLE_DIALOG_EVENT } from '../../helpers/event-bus'
+import { formatDateStr } from '../../helpers/ehr-utills'
+
 
 export default {
   name: 'EhrPageTable',
@@ -100,7 +102,7 @@ export default {
       let value = item[cell.elementKey]
       if (cell.inputType === 'date') {
         let mom = moment(value, 'YYYY-MM-DDTHH:mm:ss ZZ')
-        if (mom.isValid()) value = mom.format('DD MMM YYYY')
+        if (mom.isValid()) value = formatDateStr(value) //mom.format('DD MMM YYYY')
       }
       return value
     },

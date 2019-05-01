@@ -21,6 +21,7 @@
               tr
                 th Student name
                 th Email
+                th Last Update
                 th Submitted
                 th Evaluation notes
                 th Evaluated
@@ -29,6 +30,7 @@
                 td
                   div(:id="`ref-${sv._id}`",  :ref="`ref-${sv._id}`") {{ sv.user.fullName }}
                 td {{ sv.user.emailPrimary }}
+                td {{ lastUpdate(sv) }}
                 td {{ sv.activityData.submitted ? "Yes" : "No"}}
                 td {{ sv.activityData.evaluationData }}
                 td {{ sv.activityData.evaluated ? "Yes" : "No" }}
@@ -44,6 +46,7 @@
 <script>
 import AccordionElement from '../../app/components/AccordionElement'
 import UiButton from '../../app/ui/UiButton.vue'
+import { formatTimeStr } from '../../helpers/ehr-utills'
 
 export default {
   name: 'ActivityList',
@@ -54,7 +57,8 @@ export default {
   data () {
     return {
       show: false,
-      indicator: '+'
+      indicator: '+',
+      classList: []
     }
   },
   props: {
@@ -67,14 +71,6 @@ export default {
     },
     visitInfo () {
       return this.$store.state.visit.sVisitInfo
-    },
-    classList () {
-      /*
-      The class list contains a list of 'populated visit records. When a visit record, sv,  is populated
-      it contains the ActivityData, (sv.activityData) (for the student), the assignment (sv.assignment)
-      and the user record (sv.user)
-      */
-      return this.$store.state.instructor.sClassList || []
     }
   },
   methods: {
@@ -98,7 +94,8 @@ export default {
         .then(() => {
           return this.$store.dispatch('instructor/loadClassList', activityId)
         })
-        .then(() => {
+        .then((classList) => {
+          _this.classList = classList
           _this.$nextTick(function () {
             _this.setShow(true)
           })
@@ -131,6 +128,9 @@ export default {
         */
           // sv.activityData.evaluated = newState
         })
+    },
+    lastUpdate (sv) {
+      return formatTimeStr(sv.activityData.lastUpdate)
     },
     goToEhr (studentVisit) {
       let studentId = studentVisit._id

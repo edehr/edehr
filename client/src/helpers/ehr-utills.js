@@ -32,6 +32,13 @@ export function validDayStr (text) {
   return /^([0-9]?)$/.test(text)
 }
 
+export function formatDateStr (dateStrFromDb) {
+  return moment(dateStrFromDb).format('DD MMM YYYY')
+}
+
+export function formatTimeStr (dateStrFromDb) {
+  return moment(dateStrFromDb).format('YYYY-MM-DD h:mm a')
+}
 
 export function composeAxiosResponseError (error, msg) {
   msg += error.response.status ? ` status: ${error.response.status}` : ''
@@ -124,7 +131,7 @@ export function validateSeed (dataAsString) {
 
 export function downloadSeedToFile (seedId, sSeedContent, ehrData) {
   let lastUpdate = sSeedContent.lastUpdateDate
-  lastUpdate = moment(lastUpdate).format('YYYY-MM-DD')
+  lastUpdate = formatDateStr(lastUpdate)
   ehrData = JSON.stringify(ehrData,null,2)
   let fName = camelcase(sSeedContent.name)
   fName += sSeedContent.version ? '_' + sSeedContent.version : ''
