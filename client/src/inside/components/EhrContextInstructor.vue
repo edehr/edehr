@@ -9,7 +9,7 @@
           ui-info(:text="panelInfo.assignmentDescription")
       div(class="is-4 column")
         div(class="textField") Evaluating: {{ panelInfo.studentName }}
-        div(class="textField") Last visit: {{ panelInfo.lastVisitDate | moment("YYYY-MM-DD h:mm a") }}
+        div(class="textField") Last visit: {{ formatTime(panelInfo.lastVisitDate) }}
       div(class="is-2 column")
         div(class="columns is-pulled-right")
           div(class="classlist_nav_item column")
@@ -24,13 +24,14 @@
             //fas-icon(icon="arrow-right")
     div(class="evaluation-label")
       div(class="textField") Evaluation notes
-      ehr-evaluation-input(ref="evaluationNoteComponent", v-on:saveNext="nextStudent")
+      ehr-evaluation-input(ref="evaluationNoteComponent", v-on:saveNext="nextStudent", :disabled="!enableNext")
 </template>
 
 <script>
 import UiButton from '../../app/ui/UiButton'
 import UiInfo from '../../app/ui/UiInfo'
 import EhrEvaluationInput from './EhrEvaluationInput'
+import { formatTimeStr } from '../../helpers/ehr-utills'
 
 // TODO add student classlist counter and student list drop down
 
@@ -74,6 +75,9 @@ export default {
     }
   },
   methods: {
+    formatTime ( dStr ) {
+      return formatTimeStr(dStr)
+    },
     findCurrentIndex () {
       let list = this.classList // this.$store.state.instructor.sClassList || []
       let id = this.currentStudentId // this.$store.state.instructor.sCurrentEvaluationStudentId

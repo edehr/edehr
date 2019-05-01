@@ -6,6 +6,10 @@
           router-link(:to="{ name: `${home}` }", class="navLink app-title") Educational Electronic Health Record - {{ fullName }}
         li(class="navItem push")
           a(:href="lmsUrl", class="navLink") {{lmsName}}
+        li(v-if="isInstructor", class="navItem")
+          span Is student show C & D
+        li(v-if="isStudent", class="navItem")
+          span Is student show E & f
         li(v-if="showDashboard", class="navItem")
           router-link(:to="{ name: `instructor` }", class="navLink") Dashboard
         li(v-if="showDashboard", class="navItem")
@@ -59,7 +63,16 @@ export default {
       return this.$store.getters['visit/lmsName']
     },
     showDashboard () {
-      return this.$store.getters['visit/hasDashboard']
+      return this.isInstructor || this.isDeveloper
+    },
+    isInstructor () {
+      return this.$store.getters['visit/isInstructor']
+    },
+    isDeveloper () {
+      return this.$store.getters['visit/isDeveloper']
+    },
+    isStudent () {
+      return this.$store.getters['visit/isStudent']
     }
   },
   methods: {

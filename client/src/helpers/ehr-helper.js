@@ -5,7 +5,7 @@ import { ACTIVITY_DATA_EVENT } from './event-bus'
 import { DIALOG_INPUT_EVENT } from './event-bus'
 import { PAGE_FORM_INPUT_EVENT } from './event-bus'
 import { PAGE_DATA_REFRESH_EVENT } from './event-bus'
-import { removeEmptyProperties, prepareAssignmentPageDataForSave } from './ehr-utills'
+import { removeEmptyProperties, prepareAssignmentPageDataForSave, formatTimeStr } from './ehr-utills'
 import { getPageDefinition } from './ehr-defs'
 
 const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
@@ -111,7 +111,7 @@ export default class EhrHelp {
   }
 
   formatDate (d) {
-    return moment(d).format('YYYY-MM-DD HH:mm')
+    return formatTimeStr(d)
   }
   /**
    Take the component's uiProps and the component's data and combine it into one table.
