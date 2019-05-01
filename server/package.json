@@ -3,7 +3,7 @@
   "description": "Provides the API services to the EdEHR project",
   "main": "dev-server.js.js",
   "scripts": {
-    "start-do": "API_URL=http://42.93.148.22/api CLIENT_URL=http://142.93.148.22 PORT=27004  npm run start",
+    "start-do": "API_URL=http://142.93.148.22/api CLIENT_URL=http://142.93.148.22 PORT=27004  npm run start",
     "start-mac": "API_URL=http://edehr.mac/api CLIENT_URL=http://edehr.mac npm run start",
     "start": "NODE_ENV=development DEBUG=server node index.js",
     "start-prod": "NODE_ENV=production node index.js",
