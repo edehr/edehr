@@ -149,7 +149,7 @@ export default {
       let pid = sv._id
       this.$store.dispatch('instructor/changeCurrentEvaluationStudentId', pid)
     },
-    evaluatedButtonText(sv) {
+    evaluatedButtonText (sv) {
       return sv.activityData.evaluated ? 'Reevaludate' : 'Evaluate'
     }
   },

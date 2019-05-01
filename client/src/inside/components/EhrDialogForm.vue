@@ -71,6 +71,7 @@ export default {
       this.ehrHelp.saveDialog(this.pageDataKey, this.tableKey)
     },
     receiveShowHideEvent (eData) {
+      // console.log('EhrDialogForm rcv show hide', this.inputs)
       if(eData.value) {
         this.$refs.theDialog.onOpen()
       } else {
@@ -81,9 +82,9 @@ export default {
   mounted: function () {
     const _this = this
     let ch = this.ehrHelp.getDialogEventChannel(this.tableKey)
-    console.log('EhrDialogForm add listener', ch)
+    // console.log('EhrDialogForm add listener', ch)
     this.eventHandler = function (eData) {
-      console.log('EhrDialogForm receiveShowHideEvent', ch)
+      // console.log('EhrDialogForm receiveShowHideEvent', ch)
       _this.receiveShowHideEvent(eData)
     }
     EventBus.$on(ch, this.eventHandler)

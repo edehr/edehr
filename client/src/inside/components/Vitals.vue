@@ -2,9 +2,10 @@
   div(class="content")
     tabs
       tab(name="Graph",:selected="true")
-        ui-button(v-on:buttonClicked="showDialog") {{ tableDef.addButtonText }}
+        div(v-show="showTableAddButton")
+          ui-button(v-on:buttonClicked="showDialog") {{ tableDef.addButtonText }}
         vitals-chart(v-bind:vitals="tableData", v-bind:vitalsModel="vitalsModel")
-        ehr-dialog-form(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey", :tableDef="tableDef", :inputs="inputs", :errorList="errorList" )
+        ehr-dialog-form(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey", :tableDef="tableDef", :inputs="dialogInputs", :errorList="errorList" )
       tab(name="Chart")
         ehr-page-table(:tableDef="tableDef", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
 
@@ -40,7 +41,7 @@ export default {
       vitals: {
         table: []
       },
-      inputs: {},
+      dialogInputs: {},
       vitalsModel: {}
     }
   },
@@ -49,6 +50,9 @@ export default {
     ehrHelp: {type: Object}
   },
   computed: {
+    showTableAddButton () {
+      return this.ehrHelp.showTableAddButton()
+    },
     uiProps () {
       return getPageDefinition(this.pageDataKey)
     },
@@ -65,7 +69,9 @@ export default {
   },
   methods: {
     showDialog () {
-      EventBus.$emit(SHOW_TABLE_DIALOG_EVENT)
+      // console.log('Vitals Chart tab showDialogHandler ', this.dialogInputs)
+      this.ehrHelp.showDialog(this.tableDef, this.dialogInputs)
+      // EventBus.$emit(SHOW_TABLE_DIALOG_EVENT)
     },
     refresh () {
       let tableKey = this.tableDef.tableKey

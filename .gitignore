@@ -15,7 +15,7 @@ ehr/dev/**
 
 client/tests/e2e/reports/
 client/dist/**
-**\.DS_Store
+**/.DS_Store
 
 client/selenium-debug\.log
 

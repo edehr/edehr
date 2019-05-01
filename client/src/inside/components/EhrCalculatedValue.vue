@@ -1,5 +1,7 @@
 <template lang="pug">
-  label(class="calculated_value") {{element.label}}: &nbsp; {{value}}
+  label(class="calculated_value")
+    span(v-html="element.label")
+    span : &nbsp; {{value}}
 </template>
 
 <script>

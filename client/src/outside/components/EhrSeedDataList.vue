@@ -19,13 +19,13 @@
               td {{sv.description}}
               // td {{sv._id}}
               td(class="seed-actions")
-               ui-button(v-on:buttonClicked="uploadSeed", :value="sv._id")
+               ui-button(v-on:buttonClicked="uploadSeed(sv)")
                 fas-icon(icon="upload")
-               ui-button(v-on:buttonClicked="downloadSeed", :value="sv._id")
+               ui-button(v-on:buttonClicked="downloadSeed(sv)", class="dwn")
                 fas-icon(icon="download")
-               ui-button(v-on:buttonClicked="showEditDialog", :value="sv._id")
+               ui-button(v-on:buttonClicked="showEditDialog(sv)")
                 fas-icon(icon="edit")
-               ui-button(v-on:buttonClicked="gotoEhrWithSeed", :value="sv._id")
+               ui-button(v-on:buttonClicked="gotoEhrWithSeed(sv)")
                 fas-icon(icon="notes-medical")
       ui-agree(ref="aggreeDialog")
       input(id="fileUploadInput", ref="fileUploadInput", type="file", accept="application/json", style="display:none", @change="importSeedFile")
@@ -52,6 +52,8 @@
               label EHR Data
               div(class="input-element input-element-full")
                 textarea(class="textarea",v-model="aSeed.ehrData")
+          div(v-show="errorMesageList.length > 0", class="errorMesageList")
+            li(v-for="error in errorMesageList") {{ error }}
 
 </template>
 
@@ -73,6 +75,7 @@ export default {
   data () {
     return {
       aSeed: {},
+      errorMesageList: [],
       dialogHeader: '',
       actionType: '',
       seedId: ''
@@ -93,8 +96,8 @@ export default {
     loadSeedDataList () {
       return this.$store.dispatch('seedStore/loadSeedDataList')
     },
-    uploadSeed: function (event, value) {
-      this.seedId = value
+    uploadSeed (sv) {
+      this.seedId = sv._id
       this.currentSeed = this.findSeed(this.seedId)
       // console.log('upload seed for ', this.currentSeed)
       this.$refs.fileUploadInput.click()
@@ -126,14 +129,16 @@ export default {
       })
       reader.readAsText(file)
     },
-    downloadSeed: function (event, seedId) {
-      let sSeedContent = this.$store.state.seedStore.sSeedContent
-      let data = this.$store.getters['seedStore/seedEhrData']
-      downloadSeedToFile(seedId, sSeedContent, data)
+    downloadSeed (sv) {
+      this.seedId = sv._id
+      // console.log('download seed for ', this.seedId)
+      let sSeedContent = this.findSeed(this.seedId)
+      let data = sSeedContent.ehrData
+      downloadSeedToFile(this.seedId, sSeedContent, data)
     },
-    gotoEhrWithSeed: function (event, value) {
+    gotoEhrWithSeed (sv) {
       const _this = this
-      this.seedId = value //event.target.value
+      this.seedId = sv._id
       // console.log('gotoEhrWithSeed with seed id', value, this.seedId)
       this.$store.commit('visit/setIsDevelopingContent', true)
       this.$store.commit('seedStore/setSeedId', this.seedId)
@@ -143,14 +148,16 @@ export default {
         EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
       })
     },
-    showEditDialog: function (event, value) {
-      this.seedId = value //event.target.value
-      // console.log('showEditDialog with seed id', event.target, this.seedId)
+    showEditDialog (sv) {
+      this.seedId = sv._id
+      // console.log('showEditDialog with seed id', this.seedId)
       // clone to decouple data from storage before using in dialog
+      this.errorMesageList = []
       let sData = Object.assign({}, this.findSeed(this.seedId))
       this.actionType = 'edit'
       this.aSeed = sData
       this.aSeed.ehrData = JSON.stringify(this.aSeed.ehrData, null, 2)
+      console.log('what is in aSeed', this.aSeed)
       this.dialogHeader = 'Edit seed data properties'
       this.$refs.theDialog.onOpen()
     },
@@ -168,7 +175,12 @@ export default {
       let theData = this.aSeed
       theData.toolConsumer = this.$store.state.visit.sVisitInfo.toolConsumer._id
       // console.log(`Convert seed data field '${theData}' into an object`)
-      // theData.ehrData = JSON.parse(theData)
+      try {
+        theData.ehrData = JSON.parse(theData.ehrData)
+      } catch(error) {
+        this.errorMesageList.push('Error parsing the ehr data ' + error)
+        return
+      }
       this.$refs.theDialog.onClose()
       if (this.actionType === 'edit') {
         console.log('Seed Data saving ', theData)

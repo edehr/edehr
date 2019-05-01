@@ -84,10 +84,10 @@ export default class LTIController {
       // deserializeUser is to take the user id stored in the session and
       // go find the user object
       passport.deserializeUser(function (id, done) {
-        debug('---------------------- DESERIALIZE id', id)
+        // debug('---------------------- DESERIALIZE id', id)
         UserModel.read(id).then(results => {
           let user = results.user
-          debug('LTI deserializeUser result ' + (user ? user.user_id : 'none'))
+          // debug('LTI deserializeUser result ' + (user ? user.user_id : 'none'))
           // debug('deserializeUser user', user)
           done(null, user)
         })
