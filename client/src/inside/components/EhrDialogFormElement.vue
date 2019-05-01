@@ -89,9 +89,9 @@ export default {
   computed: {
     getInputValue () {
       // let cV = this.element.helper.getInputValue(this.element)
-      // console.log('getInputValue', cV)
-      cV = this.inputs[this.element.elementKey]
-      console.log('getInputValue', cV)
+      // console.log('getInputValue key:', this.element.elementKey)
+      let cV = this.inputs[this.element.elementKey]
+      // console.log('getInputValue val:', cV)
       return cV
     },
     parentData () {

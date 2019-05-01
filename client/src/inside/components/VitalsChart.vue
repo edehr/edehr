@@ -69,7 +69,7 @@ export default {
 
       space = 40
       vitalChart.drawChart(this.dates, y, ht)
-      y += ht + 0
+      y += ht
       vitalChart.drawYLine(y)
       y += space
 

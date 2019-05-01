@@ -268,10 +268,12 @@ export default class EhrHelp {
   }
 
   _clearDialogInputs (key) {
-    // debugehr('clear dialog for key' + key)
+    // debugehr('clear dialog for key ', key)
     let d = this.dialogMap[key]
     let cells = d.tableDef.tableCells
     let inputs = d.inputs
+    // debugehr('clear dialog inputs', inputs)
+    // debugehr('clear dialog cells', cells)
     // TODO check that default values are working
     cells.forEach(cell => {
       inputs[cell.elementKey] = cell.defaultValue ? cell.defaultValue : '' //cell.defaultValue(this.$store) : ''
