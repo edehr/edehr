@@ -1,7 +1,8 @@
 <template lang="pug">
   div
-    ui-button(v-on:buttonClicked="npButtonClicked", :class="`${$options.name}__button`") {{ npButtonLabel }}
-    ui-confirm(ref="confirmDialog", v-on:confirm="proceed")
+    div(v-if="isStudent")
+      ui-button(v-on:buttonClicked="npButtonClicked", :class="`${$options.name}__button`") {{ npButtonLabel }}
+      ui-confirm(ref="confirmDialog", v-on:confirm="proceed")
 </template>
 <script>
 import UiButton from '../../app/ui/UiButton.vue'

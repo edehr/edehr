@@ -70,7 +70,9 @@ export default class VitalChart {
 
   getDates (table) {
     let values = table.map(element => {
-      return `Day ${element.day}\n${element.time}:00`
+      let day = element.day || 'x'
+      let time = element.time || 'xx'
+      return `Day ${day}\n${time}:00`
     })
     let chartData = {
       chartType: POINT_TYPES.TEXT,

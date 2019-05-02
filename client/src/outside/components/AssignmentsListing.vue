@@ -7,6 +7,9 @@
       p Adjust your LMS to use an assignment from the listing below
     div(v-show="isDeveloper")
       ui-button(v-on:buttonClicked="showCreateDialog") Create new assignment
+      span &nbsp;
+      ui-link(:to="{ name: `developEhrData` }") Manage Ehr Data
+
     table.table
       thead
         tr
@@ -58,6 +61,7 @@
 <script>
 import AppDialog from '../../app/components/AppDialogShell'
 import UiButton from '../../app/ui/UiButton.vue'
+import UiLink from '../../app/ui/UiLink.vue'
 import { getIncomingParams } from '../../helpers/ehr-utills'
 
 export default {
@@ -73,7 +77,7 @@ export default {
       selectedSeed: ''
     }
   },
-  components: { AppDialog, UiButton },
+  components: { AppDialog, UiButton, UiLink },
   computed: {
     isDeveloper () {
       return this.$store.getters['visit/isDeveloper']
