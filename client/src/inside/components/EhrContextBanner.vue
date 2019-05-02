@@ -8,14 +8,13 @@
           div(class="header-item header-icon")
             fas-icon(icon="angle-double-down", v-show="!show")
             fas-icon(icon="angle-double-up", v-show="show")
-      accordion-element(theme="grayTheme", :show="show")
+      div(v-show="show")
         ehr-context-instructor(v-show="showInstructor")
         ehr-context-student(v-show="showStudent")
         ehr-context-developer(v-show="showSeeding")
 </template>
 
 <script>
-import AccordionElement from '../../app/components/AccordionElement'
 import EhrContextInstructor from './EhrContextInstructor'
 import EhrContextStudent from './EhrContextStudent'
 import EhrContextDeveloper from './EhrContextDeveloper'
@@ -23,7 +22,7 @@ import StoreHelper from '../../helpers/store-helper'
 
 export default {
   name: 'EhrContextBanner',
-  components: { AccordionElement, EhrContextInstructor, EhrContextStudent, EhrContextDeveloper },
+  components: { EhrContextInstructor, EhrContextStudent, EhrContextDeveloper },
   data: function () {
     return {
       show: false,
@@ -48,7 +47,7 @@ export default {
   mounted () {
     this.showStudent = StoreHelper.isStudent(this)
     this.showInstructor = StoreHelper.isInstructor(this)
-    this.showSeeding = StoreHelper.isDeveloper(this)
+    // this.showSeeding = StoreHelper.isDeveloper(this)
   }
 }
 </script>

@@ -4,7 +4,7 @@
       textarea(v-model="theNotes")
     div(class="evaluation-controls")
       ui-button(v-on:buttonClicked="cancelEvaluationNotes", :disabled="!enableActions", v-bind:secondary="true") cancel
-      ui-button(v-on:buttonClicked="saveEvaluationNotes('saveNext')", :disabled="!enableActions", class="is-pulled-right")  save and next
+      ui-button(v-on:buttonClicked="saveEvaluationNotes('saveNext')", :disabled="disableNext", class="is-pulled-right")  save and next
       ui-button(v-on:buttonClicked="saveEvaluationNotes('saved')", :disabled="!enableActions", class="is-pulled-right")  save
 </template>
 
@@ -19,14 +19,23 @@ export default {
       asStored: ''
     }
   },
+  props: {
+    enableNext: { type: Boolean }
+  },
   computed: {
     enableActions () {
       return this.theNotes !== this.asStored
+    },
+    disableNext () {
+      return !(this.enableActions && this.enableNext)
     },
     asStoredEvaluationNotes () {
       // console.log('EhrEvaluationInput computed asStoredEvaluationNotes')
       return this.$store.getters['ehrData/evaluationData']
     }
+  },
+  mounted: function (){
+    this.loadDialog()
   },
   watch: {
     asStoredEvaluationNotes: function (newData) {
