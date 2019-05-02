@@ -2,8 +2,8 @@
   div(id="activityList", class="activity-list")
     div(class="activity-list-header columns", v-on:click="activateActivity")
       div(class="header-column is-10 column")
-        h3(class="header-item", :title="activity._id") {{ activity.resource_link_title }}
-        div(class="header-item") Description: {{ activity.resource_link_description }}
+        h3(class="header-item", :title="activity._id") LMS: {{ activity.resource_link_title }}
+        div(class="header-item") LMS Description: {{ activity.resource_link_description }}
         div(class="header-item") Assignment: {{ assignment.name }}  (LMS configuration: assignment={{ assignment.externalId }} )
         div(class="header-item") Description: {{ assignment.description }}
       div(class="header-column is-2 column")

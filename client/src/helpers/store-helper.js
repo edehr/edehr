@@ -52,6 +52,27 @@ class StoreHelperWorker {
     return component.$store.dispatch('instructor/loadClassList', activityId)
   }
 
+  getPanelData (component) {
+    let visitInfo = component.$store.state.visit.sVisitInfo || {}
+    let assignment = visitInfo.assignment || {}
+    let activity = visitInfo.activity || {}
+    let name = component.$store.state.visit.sUserInfo.fullName
+    // console.log('assignment', JSON.stringify(assignment))
+    // console.log('visitInfo', JSON.stringify(visitInfo, null, 2))
+    // console.log('activity', JSON.stringify(activity, null, 2))
+    // sActivityData provides the seed and current assignment data
+    // let sActivityData = this.$store.state.ehrData.sActivityData || {}
+    // console.log('sActivityData', JSON.stringify(sActivityData, null, 2))
+    let data = {
+      studentName: name,
+      courseTitle: activity.context_title,
+      activityTitle: activity.resource_link_title,
+      activityDescription: activity.resource_link_description,
+      assignmentName: assignment.name,
+      assignmentDescription: assignment.description
+    }
+    return data
+  }
 }
 
 const StoreHelper = new StoreHelperWorker()
