@@ -47,6 +47,7 @@
 import AccordionElement from '../../app/components/AccordionElement'
 import UiButton from '../../app/ui/UiButton.vue'
 import { formatTimeStr } from '../../helpers/ehr-utills'
+import StoreHelper from '../../helpers/store-helper'
 
 export default {
   name: 'ActivityList',
@@ -89,12 +90,12 @@ export default {
     },
     loadActivity (activityId) {
       const _this = this
-      return this.$store
-        .dispatch('instructor/loadActivity', activityId)
+      return StoreHelper.dispatchLoadActivity(this, activityId)
         .then(() => {
-          return this.$store.dispatch('instructor/loadClassList', activityId)
+          return StoreHelper.dispatchLoadClassList(this, activityId)
         })
         .then((classList) => {
+          console.log('ClassList have classlist ', classList)
           _this.classList = classList
           _this.$nextTick(function () {
             _this.setShow(true)
@@ -135,19 +136,18 @@ export default {
     goToEhr (studentVisit) {
       let studentId = studentVisit._id
       // Go to the first screen related to the assignent
-      let name = '/ehr/patient/demographics' // studentVisit.assignment.ehrRoutePath
-      // console.log('Store the pathname for the instructor to return here ', window.location.pathname)
-      this.$store.commit('visit/setIsDevelopingContent', false)
-      this.$store.commit('instructor/setInstructorReturnUrl', window.location.pathname)
+      let name = '/ehr/patient/demographics'
+      StoreHelper.setIsDevelopingContent(this,false)
+      StoreHelper.setInstructorReturnUrl(this, window.location.pathname)
       // console.log('Store the current student id that is being evaluated ', studentId)
-      this.$store.dispatch('instructor/changeCurrentEvaluationStudentId', studentId).then(() => {
-        // console.log('go to ehr with ', name)
+      StoreHelper.dispatchChangeCurrentEvaluationStudentId(this, this.classList, studentId).then(() => {
+        console.log('go to ehr with ', name)
         this.$router.push(name)
       })
     },
     changeStudent (sv) {
       let pid = sv._id
-      this.$store.dispatch('instructor/changeCurrentEvaluationStudentId', pid)
+      StoreHelper.dispatchChangeCurrentEvaluationStudentId(this, this.classList, pid)
     },
     evaluatedButtonText (sv) {
       return sv.activityData.evaluated ? 'Reevaludate' : 'Evaluate'

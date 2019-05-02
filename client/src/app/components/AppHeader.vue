@@ -30,7 +30,7 @@
 <script>
 import SystemError from './SystemError'
 import UiClose from '../ui/UiClose'
-
+import StoreHelper from '../../helpers/store-helper'
 export default {
   name: 'AppHeader',
   components: { SystemError, UiClose },
@@ -54,25 +54,25 @@ export default {
       return home
     },
     fullName () {
-      return this.$store.getters['visit/fullName']
+      return StoreHelper.fullName(this)
     },
     lmsUrl () {
-      return this.$store.getters['visit/returnUrl']
+      return StoreHelper.lmsUrl(this)
     },
     lmsName () {
-      return this.$store.getters['visit/lmsName']
+      return StoreHelper.lmsName(this)
+    },
+    isInstructor () {
+      return StoreHelper.isInstructor(this)
+    },
+    isDeveloper () {
+      return StoreHelper.isDeveloper(this)
+    },
+    isStudent () {
+      return StoreHelper.isStudent(this)
     },
     showDashboard () {
       return this.isInstructor || this.isDeveloper
-    },
-    isInstructor () {
-      return this.$store.getters['visit/isInstructor']
-    },
-    isDeveloper () {
-      return this.$store.getters['visit/isDeveloper']
-    },
-    isStudent () {
-      return this.$store.getters['visit/isStudent']
     }
   },
   methods: {

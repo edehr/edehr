@@ -27,13 +27,15 @@ const getters = {
 }
 
 const actions = {
-  changeCurrentEvaluationStudentId: (context, currentId) => {
+  changeCurrentEvaluationStudentId: (context, data) => {
     return new Promise(resolve => {
+      let rootOpt = { root: true }
+      let currentId = data.studentId
+      let classList = data.classList
       // TODO store the id in localstorage to support page refresh
       context.commit('setCurrentEvaluationStudentId', currentId)
-      var classList = context.state.sClassList
-      console.log('changeCurrentEvaluationStudentId', currentId, ' classList: ', classList)
-      var sv // a student's visit information
+      // console.log('changeCurrentEvaluationStudentId', currentId, ' classList: ', classList)
+      let sv // a student's visit information
       if (currentId && classList) {
         sv = classList.find(elem => {
           return elem._id === currentId
@@ -51,18 +53,13 @@ const actions = {
         assignmentDescription: sva.description
       }
       // console.log('setCurrentStudentInfo: ', currentStudentInfo)
-      context.commit('ehrData/setCurrentStudentInfo', currentStudentInfo, { root: true })
+      context.commit('ehrData/setCurrentStudentInfo', currentStudentInfo, rootOpt)
       // sv.activityData is the id of the activity data record
-      context
-        .dispatch(
-          'ehrData/loadActivityData',
-          { forStudent: false, id: sv.activityData._id },
-          { root: true }
-        )
+      let activityOpt = { forStudent: false, id: sv.activityData._id }
+      let dispatchRoute = 'ehrData/loadActivityData'
+      context.dispatch(dispatchRoute, activityOpt, rootOpt)
         .then(() => {
           EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
-        })
-        .then(() => {
           resolve(currentStudentInfo)
         })
     })

@@ -94,17 +94,17 @@ export default class LTIController {
       })
       app.use(passport.initialize())
       app.use(passport.session())
-      var myLogger = function (req, res, next) {
-        console.log('LOGGED')
-        // console.log('Request Type:    ', req.method)
-        // console.log('Request URL:     ', req.originalUrl)
-        console.log('Request headers:   ', req.headers)
-        console.log('Request session:   ', req.session)
-        // console.log('Request _passport: ', req._passport.session )
-        // console.log('Request cookie: ', req.cookie)
-        // console.log('Request user:    ', (req.user ? req.user._id : ''))
-        next()
-      }
+      // let myLogger = function (req, res, next) {
+      //   console.log('LOGGED')
+      //   // console.log('Request Type:    ', req.method)
+      //   // console.log('Request URL:     ', req.originalUrl)
+      //   console.log('Request headers:   ', req.headers)
+      //   console.log('Request session:   ', req.session)
+      //   // console.log('Request _passport: ', req._passport.session )
+      //   // console.log('Request cookie: ', req.cookie)
+      //   // console.log('Request user:    ', (req.user ? req.user._id : ''))
+      //   next()
+      // }
       // app.use(myLogger)
     })
   }
