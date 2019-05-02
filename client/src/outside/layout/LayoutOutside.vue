@@ -5,13 +5,6 @@
       app-header
     main(class="outside-main")
       div(name="mainContent", class="outside-content")
-        div(class="outside-nav")
-          div(class="nv-item", v-show="isInstructor")
-            ui-link(:to="{ name: 'instructor' }") Instructor
-          div(class="nv-item")
-            ui-link(:to="{ name: `assignments` }") Assignments
-          div(class="nv-item", v-show="isDeveloper")
-            ui-link(:to="{ name: `developEhrData` }") Develop Ehr Data
         div(class="section")
           slot
     slot(name="outside-footer", class="outside-footer")

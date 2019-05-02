@@ -6,14 +6,13 @@
           router-link(:to="{ name: `${home}` }", class="navLink app-title") Educational Electronic Health Record - {{ fullName }}
         li(class="navItem push")
           a(:href="lmsUrl", class="navLink") {{lmsName}}
-        li(v-if="isInstructor", class="navItem")
-          span Is student show C & D
         li(v-if="isStudent", class="navItem")
           span Is student show E & f
         li(v-if="showDashboard", class="navItem")
           router-link(:to="{ name: `instructor` }", class="navLink") Dashboard
         li(v-if="showDashboard", class="navItem")
-          router-link(:to="{ name: `assignments` }", class="navLink subMenu") Assignment details
+          router-link(:to="{ name: `assignments` }", class="navLink subMenu") Assignments
+        li(v-if="isStudent", class="navItem")
           ul(class="subNavList", v-show="showAssignmentDetails")
             div(class="columns")
               div(class="column is-11")

@@ -80,6 +80,7 @@ export default {
       let pageData = this.ehrHelp.getAsLoadedPageData(pageKey)
       // store the current data into local data property for display
       this.tableData = pageData[tableKey]
+      this.tableData.reverse()
     }
   },
   created: function () {

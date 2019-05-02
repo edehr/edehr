@@ -2,7 +2,7 @@
   div(class="as-instructor")
     div(class="courses", v-for="course in courses")
       div(class="course-header")
-        h1 Instructor Dashboard
+        h1 Dashboard
         h2(class="course-header-item") {{ course.label }} - {{ course.name }} (Id: {{ course.id }})
       div(class="activities", v-for="activity in course.activities")
         div(:ref="`activity-${activity._id}`")
