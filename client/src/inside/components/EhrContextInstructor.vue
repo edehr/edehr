@@ -32,6 +32,7 @@ import UiButton from '../../app/ui/UiButton'
 import UiInfo from '../../app/ui/UiInfo'
 import EhrEvaluationInput from './EhrEvaluationInput'
 import { formatTimeStr } from '../../helpers/ehr-utills'
+import StoreHelper from '../../helpers/store-helper'
 
 // TODO add student classlist counter and student list drop down
 
@@ -105,7 +106,7 @@ export default {
     changeStudent (list, sv) {
       let pid = sv._id
       console.log('EhrClassListNav go to ', pid)
-      this.$store.dispatch('instructor/changeCurrentEvaluationStudentId', pid).then(() => {})
+      StoreHelper.dispatchChangeCurrentEvaluationStudentId(this, list, pid)
     }
   }
 }

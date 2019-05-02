@@ -8,6 +8,7 @@
 import { getIncomingParams } from './helpers/ehr-utills'
 import { setApiError } from './helpers/ehr-utills'
 import EventBus from './helpers/event-bus'
+import StoreHelper from './helpers/store-helper'
 import { PAGE_DATA_REFRESH_EVENT } from './helpers/event-bus'
 const DefaultLayout = 'outside'
 
@@ -16,6 +17,7 @@ export default {
   components: {},
   methods: {
     loadData: function () {
+
       let params2 = getIncomingParams()
       // API return to url
       let apiUrl = params2['apiUrl']
@@ -42,7 +44,7 @@ export default {
           }
         })
         .then(() => {
-          let isDev = this.$store.getters['visit/isDeveloper']
+          let isDev = StoreHelper.isDeveloper(this)
           // console.log('Is user is allowed to edit content?',isDev)
           if (isDev) {
             // console.log('User is allowed to edit content')
@@ -140,10 +142,10 @@ export default {
             // console.log('Page load and restore class list', activityId)
             return _this.$store.dispatch('instructor/loadClassList', activityId)
           })
-          .then(() => {
+          .then((classList) => {
             // console.log('Page load and restore last student for evaluation', studentId)
             if (studentId) {
-              return _this.$store.dispatch('instructor/changeCurrentEvaluationStudentId', studentId)
+              return StoreHelper.dispatchChangeCurrentEvaluationStudentId(this, classList, studentId)
             }
           })
       }

@@ -115,6 +115,8 @@
 </template>
 
 <script>
+import StoreHelper from '../../helpers/store-helper'
+
 export default {
   name: 'EhrSpecial',
   data () {
@@ -201,10 +203,10 @@ export default {
       return this.$store.state.instructor.sCurrentEvaluationStudentId
     },
     isInstructor () {
-      return this.$store.getters['visit/isInstructor']
+      return StoreHelper.isInstructor(this)
     },
     isDeveloper () {
-      return this.$store.getters['visit/isDeveloper']
+      return StoreHelper.isDeveloper(this)
     },
     apiUrl () {
       return this.$store.state.visit.apiUrl

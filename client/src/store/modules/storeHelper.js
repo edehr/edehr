@@ -2,6 +2,15 @@ import axios from 'axios'
 import { composeAxiosResponseError, setApiError } from '../../helpers/ehr-utills'
 
 export default class StoreHelper {
+
+  instoreIsInstructor (rootState) {
+    return rootState.visit.sVisitInfo.isInstructor
+  }
+
+  instoreIsDevContent (rootState) {
+    return rootState.visit.isDevelopingContent
+  }
+
   putRequest (context, url, bodyData) {
     console.log('PUT to this url', url)
     return new Promise((resolve, reject) => {

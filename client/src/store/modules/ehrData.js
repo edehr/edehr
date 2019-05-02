@@ -29,11 +29,8 @@ const getters = {
     By the documentation getters['visit/isInstructor'] should work but it doesn't
     So use the direct access of rootstate ...
      */
-    if (rootState.visit.isInstructor) {
-      console.log(
-        'Using current student from class list assignment data',
-        state.sCurrentStudentData
-      )
+    if (helper.instoreIsInstructor(rootState)) {
+      console.log('Using current student from class list ', state.sCurrentStudentData)
       return state.sCurrentStudentData.assignmentData
     } else {
       console.log('Using students assignment data')
@@ -46,10 +43,10 @@ const getters = {
     // So decouple the objects ... just in case
     let ehrSeedData = decoupleObject(rootState.seedStore.ehrSeedData)
     let mData
-    if (rootState.visit.isDevelopingContent === true) {
+    if (helper.instoreIsDevContent(rootState)) {
       mData = ehrSeedData
       console.log('mergedData: Develop seed', ehrSeedData)
-    } else if (rootState.visit.isInstructor) {
+    } else if (helper.instoreIsInstructor(rootState)) {
       let evalAssignmentData = decoupleObject(state.sCurrentStudentData.assignmentData)
       mData = ehrMergeEhrData(ehrSeedData, evalAssignmentData)
       console.log('mergedData: Instructor result', mData)
@@ -141,6 +138,7 @@ const helpers = {
     })
   }
 }
+
 const actions = {
   loadActivityData (context, options) {
     let activityDataId = options.id
