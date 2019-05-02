@@ -41,6 +41,18 @@ export default function () {
           dataCaseStudy: "74"
         },
         {
+          label: "Height",
+          elementKey: "height",
+          fqn: "demographics.height",
+          dataCaseStudy: "157"
+        },
+        {
+          label: "Weight",
+          elementKey: "weight",
+          fqn: "demographics.weight",
+          dataCaseStudy: "63"
+        },
+        {
           label: "Gender",
           elementKey: "gender",
           fqn: "demographics.gender",
@@ -171,7 +183,7 @@ export default function () {
           dataCaseStudy: "604-555-9865"
         }
       ],
-      generated: "2019-04-10T12:22:10-07:00",
+      generated: "2019-05-02T12:20:47-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -252,12 +264,42 @@ export default function () {
             formRow: "3",
             elements: [
               {
+                label: "Height",
+                pageDataKey: "demographics",
+                elementKey: "height",
+                inputType: "text",
+                formRow: "3",
+                formColumn: "1",
+                formCss: "is-one-third",
+                suffix: "cm",
+                dataParent: "demographics",
+                fqn: "demographics.height"
+              },
+              {
+                label: "Weight",
+                pageDataKey: "demographics",
+                elementKey: "weight",
+                inputType: "text",
+                formRow: "3",
+                formColumn: "2",
+                formCss: "is-one-third",
+                suffix: "kg",
+                dataParent: "demographics",
+                fqn: "demographics.weight"
+              }
+            ]
+          },
+          {
+            formRow: "4",
+            elements: [
+              {
                 label: "Gender",
                 pageDataKey: "demographics",
                 elementKey: "gender",
                 inputType: "select",
-                formRow: "3",
+                formRow: "4",
                 formColumn: "1",
+                formCss: "is-one-third",
                 options: [
                   {
                     text: "Unknown"
@@ -290,8 +332,9 @@ export default function () {
                 pageDataKey: "demographics",
                 elementKey: "martialStatus",
                 inputType: "select",
-                formRow: "3",
+                formRow: "4",
                 formColumn: "2",
+                formCss: "is-one-third",
                 options: [
                   {
                     text: "Married"
@@ -318,14 +361,14 @@ export default function () {
             ]
           },
           {
-            formRow: "4",
+            formRow: "5",
             elements: [
               {
                 label: "Primary language",
                 pageDataKey: "demographics",
                 elementKey: "languagePrimary",
                 inputType: "select",
-                formRow: "4",
+                formRow: "5",
                 formColumn: "1",
                 options: [
                   {
@@ -352,7 +395,7 @@ export default function () {
                 pageDataKey: "demographics",
                 elementKey: "religion",
                 inputType: "text",
-                formRow: "4",
+                formRow: "5",
                 formColumn: "2",
                 dataParent: "demographics",
                 fqn: "demographics.religion"
@@ -362,7 +405,7 @@ export default function () {
                 pageDataKey: "demographics",
                 elementKey: "indigenousIdentifyAs",
                 inputType: "select",
-                formRow: "4",
+                formRow: "5",
                 formColumn: "3",
                 options: [
                   {
@@ -378,14 +421,14 @@ export default function () {
             ]
           },
           {
-            formRow: "5",
+            formRow: "6",
             elements: [
               {
                 label: "Street address",
                 pageDataKey: "demographics",
                 elementKey: "streetAddress",
                 inputType: "text",
-                formRow: "5",
+                formRow: "6",
                 formColumn: "1",
                 formCss: "is-two-thirds",
                 dataParent: "demographics",
@@ -396,7 +439,7 @@ export default function () {
                 pageDataKey: "demographics",
                 elementKey: "city",
                 inputType: "text",
-                formRow: "5",
+                formRow: "6",
                 formColumn: "3",
                 dataParent: "demographics",
                 fqn: "demographics.city"
@@ -404,14 +447,14 @@ export default function () {
             ]
           },
           {
-            formRow: "6",
+            formRow: "7",
             elements: [
               {
                 label: "Country",
                 pageDataKey: "demographics",
                 elementKey: "country",
                 inputType: "text",
-                formRow: "6",
+                formRow: "7",
                 formColumn: "1",
                 defaultValue: "Canada",
                 dataParent: "demographics",
@@ -422,7 +465,7 @@ export default function () {
                 pageDataKey: "demographics",
                 elementKey: "postalCode",
                 inputType: "text",
-                formRow: "6",
+                formRow: "7",
                 formColumn: "2",
                 dataParent: "demographics",
                 fqn: "demographics.postalCode"
@@ -432,7 +475,7 @@ export default function () {
                 pageDataKey: "demographics",
                 elementKey: "noAddress",
                 inputType: "checkbox",
-                formRow: "6",
+                formRow: "7",
                 formColumn: "3",
                 dataParent: "demographics",
                 fqn: "demographics.noAddress"
@@ -440,14 +483,14 @@ export default function () {
             ]
           },
           {
-            formRow: "7",
+            formRow: "8",
             elements: [
               {
                 label: "Primary phone number",
                 pageDataKey: "demographics",
                 elementKey: "phoneNumber",
                 inputType: "text",
-                formRow: "7",
+                formRow: "8",
                 formColumn: "1",
                 dataParent: "demographics",
                 fqn: "demographics.phoneNumber"
@@ -457,7 +500,7 @@ export default function () {
                 pageDataKey: "demographics",
                 elementKey: "emailAddress",
                 inputType: "text",
-                formRow: "7",
+                formRow: "8",
                 formColumn: "2",
                 dataParent: "demographics",
                 fqn: "demographics.emailAddress"
@@ -467,7 +510,7 @@ export default function () {
                 pageDataKey: "demographics",
                 elementKey: "occupationStudent",
                 inputType: "text",
-                formRow: "7",
+                formRow: "8",
                 formColumn: "3",
                 dataParent: "demographics",
                 fqn: "demographics.occupationStudent"
@@ -475,14 +518,14 @@ export default function () {
             ]
           },
           {
-            formRow: "8",
+            formRow: "9",
             elements: [
               {
                 label: "PHN",
                 pageDataKey: "demographics",
                 elementKey: "phn",
                 inputType: "text",
-                formRow: "8",
+                formRow: "9",
                 formColumn: "1",
                 dataParent: "demographics",
                 fqn: "demographics.phn"
@@ -492,7 +535,7 @@ export default function () {
                 pageDataKey: "demographics",
                 elementKey: "mrn",
                 inputType: "text",
-                formRow: "8",
+                formRow: "9",
                 formColumn: "2",
                 dataParent: "demographics",
                 fqn: "demographics.mrn"
@@ -502,7 +545,7 @@ export default function () {
                 pageDataKey: "demographics",
                 elementKey: "patientService",
                 inputType: "text",
-                formRow: "8",
+                formRow: "9",
                 formColumn: "3",
                 dataParent: "demographics",
                 fqn: "demographics.patientService"
@@ -510,14 +553,14 @@ export default function () {
             ]
           },
           {
-            formRow: "9",
+            formRow: "10",
             elements: [
               {
                 label: "Next of kin name",
                 pageDataKey: "demographics",
                 elementKey: "nextOfKinName",
                 inputType: "text",
-                formRow: "9",
+                formRow: "10",
                 formColumn: "1",
                 dataParent: "demographics",
                 fqn: "demographics.nextOfKinName"
@@ -527,7 +570,7 @@ export default function () {
                 pageDataKey: "demographics",
                 elementKey: "nextOfKinRelationship",
                 inputType: "select",
-                formRow: "9",
+                formRow: "10",
                 formColumn: "2",
                 options: [
                   {
@@ -584,7 +627,7 @@ export default function () {
                 pageDataKey: "demographics",
                 elementKey: "nextOfKinPhone",
                 inputType: "text",
-                formRow: "9",
+                formRow: "10",
                 formColumn: "3",
                 dataParent: "demographics",
                 fqn: "demographics.nextOfKinPhone"
@@ -592,14 +635,14 @@ export default function () {
             ]
           },
           {
-            formRow: "10",
+            formRow: "11",
             elements: [
               {
                 label: "Decision maker name",
                 pageDataKey: "demographics",
                 elementKey: "decisionMakerName",
                 inputType: "text",
-                formRow: "10",
+                formRow: "11",
                 formColumn: "1",
                 dataParent: "demographics",
                 fqn: "demographics.decisionMakerName"
@@ -609,7 +652,7 @@ export default function () {
                 pageDataKey: "demographics",
                 elementKey: "decisionMakerRelationship",
                 inputType: "select",
-                formRow: "10",
+                formRow: "11",
                 formColumn: "2",
                 options: [
                   {
@@ -651,7 +694,7 @@ export default function () {
                 pageDataKey: "demographics",
                 elementKey: "decisionMakerPhone",
                 inputType: "text",
-                formRow: "10",
+                formRow: "11",
                 formColumn: "3",
                 dataParent: "demographics",
                 fqn: "demographics.decisionMakerPhone"
@@ -680,7 +723,7 @@ export default function () {
           dataCaseStudy: "TRUE"
         }
       ],
-      generated: "2019-04-10T12:22:10-07:00",
+      generated: "2019-05-02T12:20:47-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -733,7 +776,7 @@ export default function () {
           fqn: "medical.history"
         }
       ],
-      generated: "2019-04-10T12:22:10-07:00",
+      generated: "2019-05-02T12:20:47-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -860,7 +903,7 @@ export default function () {
           fqn: "psychosocial.behaviours.substanceUseFrequency"
         }
       ],
-      generated: "2019-04-10T12:22:10-07:00",
+      generated: "2019-05-02T12:20:47-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -1361,7 +1404,7 @@ export default function () {
           fqn: "surgical.previous.comments"
         }
       ],
-      generated: "2019-04-10T12:22:10-07:00",
+      generated: "2019-05-02T12:20:47-07:00",
       hasTable: true,
       tables: [
         {
@@ -1732,7 +1775,7 @@ export default function () {
           fqn: "immunization.otherDate3"
         }
       ],
-      generated: "2019-04-10T12:22:10-07:00",
+      generated: "2019-05-02T12:20:47-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -2031,7 +2074,7 @@ export default function () {
           fqn: "familyHistory.history"
         }
       ],
-      generated: "2019-04-10T12:22:10-07:00",
+      generated: "2019-05-02T12:20:47-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -2072,7 +2115,7 @@ export default function () {
           dataCaseStudy: "Physician-NL-Physician-NL-Nurse-NL-Nurse-NL-Medical radiograpeor-NL-Medical laboratory technician-NL-Medical radiographer-NL-RN-NL-Physician-NL-RN-NL-Pysiotherapy student-NL-Resp. therapist"
         }
       ],
-      generated: "2019-04-10T12:22:10-07:00",
+      generated: "2019-05-02T12:20:47-07:00",
       hasTable: true,
       tables: [
         {
@@ -2201,7 +2244,7 @@ export default function () {
           dataCaseStudy: "COPD"
         }
       ],
-      generated: "2019-04-10T12:22:10-07:00",
+      generated: "2019-05-02T12:20:47-07:00",
       hasTable: true,
       tables: [
         {

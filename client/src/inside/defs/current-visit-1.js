@@ -58,7 +58,7 @@ export default function () {
           fqn: "visit.table.transferInTime"
         }
       ],
-      generated: "2019-04-17T23:06:54-07:00",
+      generated: "2019-05-02T12:22:22-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -382,7 +382,7 @@ export default function () {
           fqn: "vitals.table.flowRate"
         }
       ],
-      generated: "2019-04-17T23:06:54-07:00",
+      generated: "2019-05-02T12:22:22-07:00",
       hasTable: true,
       tables: [
         {
@@ -485,6 +485,7 @@ export default function () {
               formColumn: "1",
               formCss: "is-one-third",
               tableColumn: "7",
+              suffix: "Celcius",
               dataParent: "vitals.table",
               fqn: "vitals.table.temperature",
               tableKey: "table"
@@ -808,6 +809,7 @@ export default function () {
                     formColumn: "1",
                     formCss: "is-one-third",
                     tableColumn: "7",
+                    suffix: "Celcius",
                     dataParent: "vitals.table",
                     fqn: "vitals.table.temperature",
                     tableKey: "table"
@@ -1089,7 +1091,7 @@ export default function () {
           fqn: "fluidBalance.table.fluidOut"
         }
       ],
-      generated: "2019-04-17T23:06:54-07:00",
+      generated: "2019-05-02T12:22:22-07:00",
       hasTable: true,
       tables: [
         {
@@ -1533,7 +1535,7 @@ export default function () {
           dataCaseStudy: "(no comments)"
         }
       ],
-      generated: "2019-04-17T23:06:54-07:00",
+      generated: "2019-05-02T12:22:22-07:00",
       hasTable: true,
       tables: [
         {
@@ -4042,7 +4044,7 @@ export default function () {
           dataCaseStudy: "(no notes)"
         }
       ],
-      generated: "2019-04-17T23:06:54-07:00",
+      generated: "2019-05-02T12:22:22-07:00",
       hasTable: true,
       tables: [
         {
@@ -5405,7 +5407,7 @@ export default function () {
           dataCaseStudy: "(blank)"
         }
       ],
-      generated: "2019-04-17T23:06:54-07:00",
+      generated: "2019-05-02T12:22:22-07:00",
       hasTable: true,
       tables: [
         {
@@ -7025,7 +7027,7 @@ export default function () {
           dataCaseStudy: "(nothing entered)"
         }
       ],
-      generated: "2019-04-17T23:06:54-07:00",
+      generated: "2019-05-02T12:22:22-07:00",
       hasTable: true,
       tables: [
         {
@@ -7708,7 +7710,8 @@ export default function () {
               elementKey: "bowel",
               inputType: "fieldset",
               formRow: "3",
-              formColumn: "2",
+              formColumn: "1",
+              formCss: "is-one-third",
               dataParent: "gastrointestinal.table",
               fqn: "gastrointestinal.table.bowel",
               containerType: "fieldset",
@@ -7829,7 +7832,8 @@ export default function () {
               elementKey: "bSounds",
               inputType: "fieldset",
               formRow: "3",
-              formColumn: "3",
+              formColumn: "2",
+              formCss: "is-one-third",
               dataParent: "gastrointestinal.table",
               fqn: "gastrointestinal.table.bSounds",
               containerType: "fieldset",
@@ -8600,7 +8604,8 @@ export default function () {
                     elementKey: "bowel",
                     inputType: "fieldset",
                     formRow: "3",
-                    formColumn: "2",
+                    formColumn: "1",
+                    formCss: "is-one-third",
                     dataParent: "gastrointestinal.table",
                     fqn: "gastrointestinal.table.bowel",
                     containerType: "fieldset",
@@ -8721,7 +8726,8 @@ export default function () {
                     elementKey: "bSounds",
                     inputType: "fieldset",
                     formRow: "3",
-                    formColumn: "3",
+                    formColumn: "2",
+                    formCss: "is-one-third",
                     dataParent: "gastrointestinal.table",
                     fqn: "gastrointestinal.table.bSounds",
                     containerType: "fieldset",

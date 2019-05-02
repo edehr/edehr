@@ -16,7 +16,7 @@ export default function () {
           fqn: "assessmentTools.admissions.admissions2_1"
         },
         {
-          label: "Alcohol Consumption.pdf",
+          label: "Alcohol consumption",
           elementKey: "admissions3_1",
           fqn: "assessmentTools.admissions.admissions3_1"
         },
@@ -81,7 +81,7 @@ export default function () {
           fqn: "assessmentTools.medication.medication1_1"
         }
       ],
-      generated: "2019-04-10T11:07:37-07:00",
+      generated: "2019-05-02T12:23:39-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -128,7 +128,7 @@ export default function () {
                     formColumn: "1"
                   },
                   {
-                    label: "Alcohol Consumption.pdf",
+                    label: "Alcohol consumption",
                     pageDataKey: "assessmentTools",
                     level3Key: "admissions",
                     elementKey: "admissions3_1",
@@ -188,7 +188,7 @@ export default function () {
                       formRow: "3",
                       elements: [
                         {
-                          label: "Alcohol Consumption.pdf",
+                          label: "Alcohol consumption",
                           pageDataKey: "assessmentTools",
                           level3Key: "admissions",
                           elementKey: "admissions3_1",
@@ -777,7 +777,7 @@ export default function () {
           fqn: "codeLookup.icf"
         }
       ],
-      generated: "2019-04-10T11:07:37-07:00",
+      generated: "2019-05-02T12:23:39-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -876,7 +876,7 @@ export default function () {
           fqn: "diagnosticCodes.table.cluster"
         }
       ],
-      generated: "2019-04-10T11:07:37-07:00",
+      generated: "2019-05-02T12:23:39-07:00",
       hasTable: true,
       tables: [
         {
@@ -1289,7 +1289,7 @@ export default function () {
           fqn: "interventionCodes.table.extent"
         }
       ],
-      generated: "2019-04-10T11:07:37-07:00",
+      generated: "2019-05-02T12:23:39-07:00",
       hasTable: true,
       tables: [
         {
@@ -1663,7 +1663,7 @@ export default function () {
           fqn: "caseMixGroup.table.analysis"
         }
       ],
-      generated: "2019-04-10T11:07:37-07:00",
+      generated: "2019-05-02T12:23:39-07:00",
       hasTable: true,
       tables: [
         {
