@@ -142,12 +142,12 @@ const helpers = {
 const actions = {
   loadActivityData (context, options) {
     let activityDataId = options.id
-    console.log('Get activityData  ', activityDataId)
+    // console.log('Get activityData  ', activityDataId)
     let url = composeUrl(context, API_ACTIVITY) + `get/${activityDataId}`
     return helper.getRequest(context, url).then(response => {
       let ad = response.data.activitydata
       context.commit('_setForStudent', options.forStudent)
-      console.log('Got activity information ', ad)
+      // console.log('Got activity information ', ad)
       if (options.forStudent) {
         context.commit('_setActivityData', ad)
       } else {

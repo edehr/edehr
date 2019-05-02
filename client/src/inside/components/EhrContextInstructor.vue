@@ -9,22 +9,20 @@
           ui-info(:text="panelInfo.assignmentDescription")
       div(class="is-4 column")
         div(class="textField") Evaluating: {{ panelInfo.studentName }}
-        div(class="textField") Last visit: {{ formatTime(panelInfo.lastVisitDate) }}
+        div(class="textField") Student last visit: {{ formatTime(panelInfo.lastVisitDate) }}
       div(class="is-2 column")
         div(class="columns is-pulled-right")
           div(class="classlist_nav_item column")
             ui-button(v-on:buttonClicked="previousStudent", class="is-pulled-right", :disabled="!enablePrev")
               span <
             //fas-icon(icon="arrow-left")
-          // div(class="classlist_counter column")
-          //  span 3/14
           div(class="classlist_nav_item column")
             ui-button(v-on:buttonClicked="nextStudent", class="is-pulled-right", :disabled="!enableNext")
               span >
             //fas-icon(icon="arrow-right")
     div(class="evaluation-label")
       div(class="textField") Evaluation notes
-      ehr-evaluation-input(ref="evaluationNoteComponent", v-on:saveNext="nextStudent", :disabled="!enableNext")
+      ehr-evaluation-input(ref="evaluationNoteComponent", v-on:saveNext="nextStudent", :enableNext="enableNext")
 </template>
 
 <script>
@@ -58,7 +56,14 @@ export default {
       return data
     },
     classList () {
-      return this.$store.state.instructor.sClassList || []
+      /*
+      Filter the class list to only show records for students who have submitted their work
+       */
+      let list = this.$store.state.instructor.sClassList || []
+      list = list.filter( sv => {
+        return sv.activityData.submitted
+      })
+      return list
     },
     currentStudentId () {
       return this.$store.state.instructor.sCurrentEvaluationStudentId
@@ -67,12 +72,13 @@ export default {
       return true
     },
     enablePrev () {
-      let { indx } = this.findCurrentIndex()
-      return indx > 0
+      let { index } = this.findCurrentIndex()
+      return index > 0
     },
     enableNext () {
-      let { list, indx } = this.findCurrentIndex()
-      return indx < list.length - 1
+      let { list, index } = this.findCurrentIndex()
+      // console.log('enableNext', index, list)
+      return index + 1 < list.length
     }
   },
   methods: {
@@ -80,26 +86,27 @@ export default {
       return formatTimeStr(dStr)
     },
     findCurrentIndex () {
-      let list = this.classList // this.$store.state.instructor.sClassList || []
-      let id = this.currentStudentId // this.$store.state.instructor.sCurrentEvaluationStudentId
-      let indx = list.findIndex(function (elem) {
+      let list = this.classList
+      let id = this.currentStudentId
+      let index = list.findIndex(function (elem) {
         return elem._id === id
       })
-      return { list, indx }
+      // console.log('findCurrentIndex', id, ' index:', index, list)
+      return { list, index }
     },
     previousStudent () {
-      let { list, indx } = this.findCurrentIndex()
-      indx--
-      if (indx >= 0) {
-        let sv = list[indx]
+      let { list, index } = this.findCurrentIndex()
+      index--
+      if (index >= 0) {
+        let sv = list[index]
         this.changeStudent(list, sv)
       }
     },
     nextStudent () {
-      let { list, indx } = this.findCurrentIndex()
-      indx++
-      if (indx < list.length) {
-        let sv = list[indx]
+      let { list, index } = this.findCurrentIndex()
+      index++
+      if (index < list.length) {
+        let sv = list[index]
         this.changeStudent(list, sv)
       }
     },

@@ -21,10 +21,11 @@
               tr
                 th Student name
                 th Email
-                th Last Update
-                th Submitted
+                th Student last update
+                th Submission status
+                th &nbsp;
                 th Evaluation notes
-                th Evaluated
+                th Evaluation status
             tbody
               tr(v-for="sv in classList", v-on:click="changeStudent(sv)")
                 td
@@ -32,15 +33,18 @@
                 td {{ sv.user.emailPrimary }}
                 td {{ lastUpdate(sv) }}
                 td {{ sv.activityData.submitted ? "Yes" : "No"}}
+                  span(v-if="sv.activityData.submitted && !sv.activityData.evaluated")
+                    span &nbsp;
+                    ui-button(v-on:buttonClicked="unsubmit(sv)", v-bind:secondary="true", :title="unsubmitTool") {{unsubmitText}}
+                td
+                  span &nbsp;
+                  span(v-if="sv.activityData.submitted && !sv.activityData.evaluated")
+                    ui-button(v-on:buttonClicked="goToEhr(sv)", title="View and evaluate in the EHR")
+                      fas-icon(icon="notes-medical")
                 td {{ sv.activityData.evaluationData }}
                 td {{ sv.activityData.evaluated ? "Yes" : "No" }}
-                td
-                  span(v-if="sv.activityData.submitted && !sv.activityData.evaluated")
-                    ui-button(v-on:buttonClicked="goToEhr(sv)") Evaluate in EHR {{sv.assignment.ehrRouteName}}
-                    span &nbsp;
-                    ui-button(v-on:buttonClicked="unsubmit(sv)") Unsubmit
-                  span(v-if="sv.activityData.submitted") &nbsp;
-                    ui-button(v-on:buttonClicked="markEvaluated(sv)") {{ evaluatedButtonText(sv) }}
+                  span(v-if="showEvaluateAction(sv)") &nbsp;
+                    ui-button(v-on:buttonClicked="markEvaluated(sv)", v-bind:secondary="true", :title="evaluatedButtonTooltip(sv)") {{ evaluatedButtonText(sv) }}
 </template>
 
 <script>
@@ -59,6 +63,8 @@ export default {
     return {
       show: false,
       indicator: '+',
+      unsubmitText: 'Unsubmit',
+      unsubmitTool: 'Give the student a chance to edit their work',
       classList: []
     }
   },
@@ -67,7 +73,6 @@ export default {
   },
   computed: {
     assignment () {
-      // console.log('What is in activity', this.activity)
       return this.activity.assignment || {}
     },
     visitInfo () {
@@ -75,6 +80,15 @@ export default {
     }
   },
   methods: {
+    evaluatedButtonText (sv) {
+      return sv.activityData.evaluated ? 'Take back from student' : 'Send to student'
+    },
+    evaluatedButtonTooltip (sv) {
+      return sv.activityData.evaluated ? 'I want to edit the evaluation notes' : 'Evaluation is done. Let the student see the evaluation notes.'
+    },
+    showEvaluateAction (sv) {
+      return sv.activityData.submitted && sv.activityData.evaluationData
+    },
     setShow: function (value) {
       this.show = value
       this.indicator = value ? '-' : '+'
@@ -131,7 +145,7 @@ export default {
         })
     },
     lastUpdate (sv) {
-      return formatTimeStr(sv.activityData.lastUpdate)
+      return formatTimeStr(sv.activityData.lastDate)
     },
     goToEhr (studentVisit) {
       let studentId = studentVisit._id
@@ -148,9 +162,6 @@ export default {
     changeStudent (sv) {
       let pid = sv._id
       StoreHelper.dispatchChangeCurrentEvaluationStudentId(this, this.classList, pid)
-    },
-    evaluatedButtonText (sv) {
-      return sv.activityData.evaluated ? 'Reevaludate' : 'Evaluate'
     }
   },
   mounted: function () {

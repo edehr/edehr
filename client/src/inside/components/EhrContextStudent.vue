@@ -10,6 +10,7 @@
           ui-info(:text="panelInfo.assignmentDescription")
         div(class="textField") Submitted: {{ submitted }}
         div(class="textField") Evaluated: {{ evaluated }}
+        div(class="textField") Evaluation Notes: {{ evaluationNotes }}
 </template>
 
 <script>
@@ -20,13 +21,20 @@ export default {
   components: { UiInfo },
   computed: {
     scratchData () {
-      return this.$store.getters['ehrData/scratchData']
+      let ad = this.panelInfo.activityData
+      return ad.scratchData
     },
     submitted () {
-      return this.$store.getters['ehrData/submitted']
+      let ad = this.panelInfo.activityData
+      return ad.submitted
     },
     evaluated () {
-      return this.$store.getters['ehrData/evaluated']
+      let ad = this.panelInfo.activityData
+      return ad.evaluated
+    },
+    evaluationNotes () {
+      let ad = this.panelInfo.activityData
+      return ad.evaluated  ? ad.evaluationData : 'Not available'
     },
     panelInfo () {
       return StoreHelper.getPanelData(this)

@@ -56,6 +56,7 @@ class StoreHelperWorker {
     let visitInfo = component.$store.state.visit.sVisitInfo || {}
     let assignment = visitInfo.assignment || {}
     let activity = visitInfo.activity || {}
+    let activityData = component.$store.state.ehrData.sActivityData
     let name = component.$store.state.visit.sUserInfo.fullName
     // console.log('assignment', JSON.stringify(assignment))
     // console.log('visitInfo', JSON.stringify(visitInfo, null, 2))
@@ -69,7 +70,8 @@ class StoreHelperWorker {
       activityTitle: activity.resource_link_title,
       activityDescription: activity.resource_link_description,
       assignmentName: assignment.name,
-      assignmentDescription: assignment.description
+      assignmentDescription: assignment.description,
+      activityData: activityData
     }
     return data
   }
