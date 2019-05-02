@@ -6,12 +6,16 @@
           router-link(:to="{ name: `${home}` }", class="navLink app-title") Educational Electronic Health Record - {{ fullName }}
         li(class="navItem push")
           a(:href="lmsUrl", class="navLink") {{lmsName}}
-        li(v-if="isStudent", class="navItem")
-          span Is student show E & f
         li(v-if="showDashboard", class="navItem")
           router-link(:to="{ name: `instructor` }", class="navLink") Dashboard
         li(v-if="showDashboard", class="navItem")
           router-link(:to="{ name: `assignments` }", class="navLink subMenu") Assignments
+        li(class="navItem")
+          router-link(:to="{ name: `help` }", class="navLink") Help
+    system-error
+</template>
+<script>
+/*
         li(v-if="isStudent", class="navItem")
           ul(class="subNavList", v-show="showAssignmentDetails")
             div(class="columns")
@@ -22,11 +26,8 @@
             p The description for the assignment would go here.
             li(class="subNavItem") Erin Johns health case study #2
             li(class="subNavItem") Instructor's notes
-        li(class="navItem")
-          router-link(:to="{ name: `help` }", class="navLink") Help
-    system-error
-</template>
-<script>
+
+ */
 import SystemError from './SystemError'
 import UiClose from '../ui/UiClose'
 import StoreHelper from '../../helpers/store-helper'
