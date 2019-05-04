@@ -105,12 +105,12 @@ const getters = {
     }
   },
   scratchData: (state, getters, rootState) => {
-    // only return for student
+    // TODO only return for student
     // scratchData is the student's notes
-    if (rootState.visit.isStudent) {
-      return state.sActivityData.scratchData
-    }
-    return {}
+    // if (rootState.visit.isStudent) {
+    return state.sActivityData.scratchData
+    // }
+    // return ''
   },
   submitted: state => {
     return state.sActivityData.submitted
