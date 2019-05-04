@@ -57,7 +57,7 @@ export default {
       let rows = this.tableRows
       let middle = rows.length > 1 ? rows.slice(1, rows.length) : []
       return middle
-    },
+    }
   },
   methods: {
     cssFromDefs: function (element) {
