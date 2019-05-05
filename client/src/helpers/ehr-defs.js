@@ -19,7 +19,7 @@ export function getPageDefinition (pageKey) {
   return pageDef
 }
 
-export function getTableElements( tableDef ) {
+export function getTableElements ( tableDef ) {
   let all =  []
   if (tableDef.tableForm) {
     tableDef.tableForm.rows.forEach( (row) => {
