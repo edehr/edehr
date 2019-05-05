@@ -6,7 +6,9 @@
       table.table_vertical
         tbody
           tr(v-for="column in transposedColumns", :class="tableColumnCss(column)")
-            td(v-for="cell in column", :class="tableElementCss(cell)") {{ cell.value }}
+            td(:class="transposeLabelCss(column)")
+              span(v-html="transposeLabel(column).value")
+            td(v-for="cell in transposeData(column)", :class="tableElementCss(cell)") {{ cell.value }}
 
     div(v-if="!tableDef.isTransposed", class="row_table")
       h2(v-show="showTableLabel") {{tableDef.label}}
@@ -76,6 +78,17 @@ export default {
     }
   },
   methods: {
+    transposeLabel (column) {
+      return column[0]
+    },
+    transposeLabelCss (column) {
+      let cell = column[0]
+      let css = cell.tableCss ? cell.tableCss : 'noClass'
+      return css
+    },
+    transposeData (column) {
+      return column.slice(1,column.length)
+    },
     tableColumnCss: function (column) {
       let hide = 'hide-table-element'
       let css = hide

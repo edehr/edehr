@@ -11,12 +11,11 @@ const TABLE_ROW = 'table_row'
 // const SUBGROUP = 'subgroup'
 const FIELDSET = 'fieldset'
 const FIELDSET_ROW = 'fieldRowSet'
-const FORM_LABEL = 'form-label'
 const SPACER = 'spacer'
 const PAGE_INPUT_TYPE = 'page'
 const CONTAINER_INPUT_TYPES = [PAGE_FORM, TABLE_ROW]//, TABLE_COL]
 const SUBCONTAINER_INPUT_TYPES = [FIELDSET, FIELDSET_ROW] // SUBGROUP
-const NO_SHOW_IN_TABLE_ELEMENTS = [SPACER, FORM_LABEL, FIELDSET_ROW, FIELDSET]
+const NO_SHOW_IN_TABLE_ELEMENTS = [SPACER, FIELDSET_ROW, FIELDSET]
 
 const containerElementProperties = [
   // 'page',
