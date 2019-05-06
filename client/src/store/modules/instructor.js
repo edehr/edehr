@@ -138,6 +138,12 @@ const mutations = {
      */
     state.sClassList = list
   },
+  updateActivityData: (state, options) => {
+    let svId = options.sv._id
+    let sv = state.sClassList.find( (elem) => elem._id === svId)
+    sv.activityData = options.activityData
+    console.log('updated AD in sv', sv.activityData)
+  },
   setCurrentActivityId: (state, id) => {
     state.sCurrentActivityId = id
   },
