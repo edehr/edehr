@@ -1,7 +1,7 @@
 <template lang="pug">
   div
-    div(v-if="isStudent")
-      ui-button(v-on:buttonClicked="npButtonClicked", :class="`${$options.name}__button`") {{ npButtonLabel }}
+    div(v-if="showNavAction")
+      ui-button(v-on:buttonClicked="npButtonClicked", :disabled="disableNavAction") {{ npButtonLabel }}
       ui-confirm(ref="confirmDialog", v-on:confirm="proceed")
 </template>
 <script>
@@ -28,8 +28,11 @@ export default {
       // read the menu definition stored in the project root src (client/src)
       return require('../../menuList.json')
     },
-    isStudent () {
+    showNavAction () {
       return this.$store.getters['visit/isStudent']
+    },
+    disableNavAction () {
+      return this.$store.state.system.isEditing
     }
   },
   methods: {
