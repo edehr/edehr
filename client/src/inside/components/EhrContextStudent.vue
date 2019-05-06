@@ -50,4 +50,7 @@ export default {
 .contextStudent {
   background-color: white;
 }
+  .contextStudent_content {
+    margin: 0 0 1rem 2rem;
+  }
 </style>
