@@ -4,9 +4,9 @@
       div(class="is-6 column")
         div(class="textField") Course: {{ panelInfo.courseTitle}}
         div(class="textField") Activity: {{ panelInfo.activityTitle}}
-          ui-info(:text="panelInfo.activityDescription")
+          ui-info(:title="panelInfo.activityTitle", :text="panelInfo.activityDescription")
         div(class="textField") Assignment: {{ panelInfo.assignmentName}}
-          ui-info(:text="panelInfo.assignmentDescription")
+          ui-info(:title="panelInfo.assignmentName", :text="panelInfo.assignmentDescription")
       div(class="is-4 column")
         div(class="textField") Evaluating: {{ panelInfo.studentName }}
         div(class="textField") Student last visit: {{ formatTime(panelInfo.lastVisitDate) }}

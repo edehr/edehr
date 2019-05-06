@@ -4,7 +4,7 @@
       button(class="info-button", v-on:click="buttonClicked")
         fas-icon(class="info-icon", icon="info-circle")
     app-dialog(:isModal="false", ref="theDialog", :useSave="false", @cancel="cancelDialog")
-      h3(slot="header") Information
+      h3(slot="header") {{ title }}
       div(slot="body") {{ text }}
   
 </template>
@@ -22,6 +22,7 @@ export default {
     }
   },
   props: {
+    title: { type: String },
     text: { type: String }
   },
   methods: {
