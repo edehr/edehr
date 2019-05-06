@@ -160,15 +160,15 @@ export default class EhrHelp {
   showDialog (tableDef, dialogInputs) {
     let dialog = { tableDef: tableDef, inputs: dialogInputs }
     let key = tableDef.tableKey
+    this.dialogMap[key] = dialog
+    // add this dialog to the map
+    // console.log('set helper into each form element', tableDef.tableForm)
+    this.attachHelperToElements(tableDef.tableForm.rows)
+    this._clearDialogInputs(key)
     let eData = { key: key, value: true }
     let channel = this.getDialogEventChannel(key)
     debugehr('showDialog emit message to channel ' + channel + ' for key' + key + ' tableDef', tableDef)
     EventBus.$emit(channel, eData)
-    // add this dialog to the map
-    this.dialogMap[key] = dialog
-    // console.log('set helper into each form element', tableDef.tableForm)
-    this.attachHelperToElements(tableDef.tableForm.rows)
-    this._clearDialogInputs(key)
   }
 
   attachHelperToElements (rows) {

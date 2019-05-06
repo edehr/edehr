@@ -58,7 +58,7 @@ export default function () {
           fqn: "visit.table.transferInTime"
         }
       ],
-      generated: "2019-04-17T23:06:54-07:00",
+      generated: "2019-05-05T07:36:15-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -382,7 +382,7 @@ export default function () {
           fqn: "vitals.table.flowRate"
         }
       ],
-      generated: "2019-04-17T23:06:54-07:00",
+      generated: "2019-05-05T07:36:15-07:00",
       hasTable: true,
       tables: [
         {
@@ -485,6 +485,7 @@ export default function () {
               formColumn: "1",
               formCss: "is-one-third",
               tableColumn: "7",
+              suffix: "Celcius",
               dataParent: "vitals.table",
               fqn: "vitals.table.temperature",
               tableKey: "table"
@@ -808,6 +809,7 @@ export default function () {
                     formColumn: "1",
                     formCss: "is-one-third",
                     tableColumn: "7",
+                    suffix: "Celcius",
                     dataParent: "vitals.table",
                     fqn: "vitals.table.temperature",
                     tableKey: "table"
@@ -1089,7 +1091,7 @@ export default function () {
           fqn: "fluidBalance.table.fluidOut"
         }
       ],
-      generated: "2019-04-17T23:06:54-07:00",
+      generated: "2019-05-05T07:36:15-07:00",
       hasTable: true,
       tables: [
         {
@@ -1380,13 +1382,13 @@ export default function () {
         {
           label: "Loss of conciousness",
           elementKey: "loss",
-          fqn: "neurological.table.glasgowComaScale.loss",
+          fqn: "neurological.table.conciousness.loss",
           dataCaseStudy: "No"
         },
         {
           label: "Duration",
           elementKey: "duration",
-          fqn: "neurological.table.glasgowComaScale.duration",
+          fqn: "neurological.table.conciousness.duration",
           dataCaseStudy: "No"
         },
         {
@@ -1533,7 +1535,7 @@ export default function () {
           dataCaseStudy: "(no comments)"
         }
       ],
-      generated: "2019-04-17T23:06:54-07:00",
+      generated: "2019-05-05T07:36:15-07:00",
       hasTable: true,
       tables: [
         {
@@ -1870,7 +1872,7 @@ export default function () {
               label: "Loss of conciousness",
               pageDataKey: "neurological",
               level2Key: "table",
-              level3Key: "glasgowComaScale",
+              level3Key: "conciousness",
               elementKey: "loss",
               inputType: "select",
               tableColumn: "18",
@@ -1887,8 +1889,8 @@ export default function () {
                   text: "Unknown"
                 }
               ],
-              dataParent: "neurological.table.glasgowComaScale",
-              fqn: "neurological.table.glasgowComaScale.loss",
+              dataParent: "neurological.table.conciousness",
+              fqn: "neurological.table.conciousness.loss",
               tableKey: "table",
               formColumn: "1"
             },
@@ -1928,15 +1930,15 @@ export default function () {
               label: "Duration",
               pageDataKey: "neurological",
               level2Key: "table",
-              level3Key: "glasgowComaScale",
+              level3Key: "conciousness",
               elementKey: "duration",
               inputType: "text",
               tableColumn: "19",
               tableCss: "hr-table",
               fsetRow: "2",
               fsetCol: "1",
-              dataParent: "neurological.table.glasgowComaScale",
-              fqn: "neurological.table.glasgowComaScale.duration",
+              dataParent: "neurological.table.conciousness",
+              fqn: "neurological.table.conciousness.duration",
               tableKey: "table",
               formColumn: "1"
             },
@@ -2637,6 +2639,8 @@ export default function () {
               formRow: "5",
               formColumn: "1",
               formCss: "is-one-third",
+              tableColumn: "42",
+              tableCss: "hideLabel",
               fsetRow: "8",
               fsetCol: "2",
               dataParent: "neurological.table",
@@ -2926,32 +2930,6 @@ export default function () {
                               fqn: "neurological.table.glasgowComaScale.eyeOpening",
                               tableKey: "table",
                               formColumn: "1"
-                            },
-                            {
-                              label: "Loss of conciousness",
-                              pageDataKey: "neurological",
-                              level2Key: "table",
-                              level3Key: "glasgowComaScale",
-                              elementKey: "loss",
-                              inputType: "select",
-                              tableColumn: "18",
-                              fsetRow: "1",
-                              fsetCol: "1",
-                              options: [
-                                {
-                                  text: "No"
-                                },
-                                {
-                                  text: "Yes"
-                                },
-                                {
-                                  text: "Unknown"
-                                }
-                              ],
-                              dataParent: "neurological.table.glasgowComaScale",
-                              fqn: "neurological.table.glasgowComaScale.loss",
-                              tableKey: "table",
-                              formColumn: "1"
                             }
                           ]
                         },
@@ -2991,22 +2969,6 @@ export default function () {
                               passToFunction: "glasgowCalculation",
                               dataParent: "neurological.table.glasgowComaScale",
                               fqn: "neurological.table.glasgowComaScale.verbalResponse",
-                              tableKey: "table",
-                              formColumn: "1"
-                            },
-                            {
-                              label: "Duration",
-                              pageDataKey: "neurological",
-                              level2Key: "table",
-                              level3Key: "glasgowComaScale",
-                              elementKey: "duration",
-                              inputType: "text",
-                              tableColumn: "19",
-                              tableCss: "hr-table",
-                              fsetRow: "2",
-                              fsetCol: "1",
-                              dataParent: "neurological.table.glasgowComaScale",
-                              fqn: "neurological.table.glasgowComaScale.duration",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -3083,7 +3045,7 @@ export default function () {
                           ]
                         }
                       ],
-                      columnsCount: 2
+                      columnsCount: 1
                     }
                   },
                   {
@@ -3102,8 +3064,61 @@ export default function () {
                     tableCss: "hide-table-element",
                     tableKey: "table",
                     formFieldSet: {
-                      rows: [],
-                      columnsCount: 0
+                      rows: [
+                        {
+                          formRow: "1",
+                          elements: [
+                            {
+                              label: "Loss of conciousness",
+                              pageDataKey: "neurological",
+                              level2Key: "table",
+                              level3Key: "conciousness",
+                              elementKey: "loss",
+                              inputType: "select",
+                              tableColumn: "18",
+                              fsetRow: "1",
+                              fsetCol: "1",
+                              options: [
+                                {
+                                  text: "No"
+                                },
+                                {
+                                  text: "Yes"
+                                },
+                                {
+                                  text: "Unknown"
+                                }
+                              ],
+                              dataParent: "neurological.table.conciousness",
+                              fqn: "neurological.table.conciousness.loss",
+                              tableKey: "table",
+                              formColumn: "1"
+                            }
+                          ]
+                        },
+                        {
+                          formRow: "2",
+                          elements: [
+                            {
+                              label: "Duration",
+                              pageDataKey: "neurological",
+                              level2Key: "table",
+                              level3Key: "conciousness",
+                              elementKey: "duration",
+                              inputType: "text",
+                              tableColumn: "19",
+                              tableCss: "hr-table",
+                              fsetRow: "2",
+                              fsetCol: "1",
+                              dataParent: "neurological.table.conciousness",
+                              fqn: "neurological.table.conciousness.duration",
+                              tableKey: "table",
+                              formColumn: "1"
+                            }
+                          ]
+                        }
+                      ],
+                      columnsCount: 1
                     }
                   }
                 ]
@@ -3889,6 +3904,8 @@ export default function () {
                     formRow: "5",
                     formColumn: "1",
                     formCss: "is-one-third",
+                    tableColumn: "42",
+                    tableCss: "hideLabel",
                     fsetRow: "8",
                     fsetCol: "2",
                     dataParent: "neurological.table",
@@ -4042,7 +4059,7 @@ export default function () {
           dataCaseStudy: "(no notes)"
         }
       ],
-      generated: "2019-04-17T23:06:54-07:00",
+      generated: "2019-05-05T07:36:15-07:00",
       hasTable: true,
       tables: [
         {
@@ -4200,21 +4217,6 @@ export default function () {
               formColumn: "1"
             },
             {
-              label: "Airway",
-              pageDataKey: "respiratory",
-              level2Key: "table",
-              elementKey: "airway",
-              inputType: "fieldset",
-              formRow: "2",
-              formColumn: "1",
-              dataParent: "respiratory.table",
-              fqn: "respiratory.table.airway",
-              containerType: "fieldset",
-              containerKey: "airway",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
               label: "Left upper lung",
               pageDataKey: "respiratory",
               level2Key: "table",
@@ -4279,6 +4281,21 @@ export default function () {
               formColumn: "2"
             },
             {
+              label: "Airway",
+              pageDataKey: "respiratory",
+              level2Key: "table",
+              elementKey: "airway",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "1",
+              dataParent: "respiratory.table",
+              fqn: "respiratory.table.airway",
+              containerType: "fieldset",
+              containerKey: "airway",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
               pageDataKey: "respiratory",
               level2Key: "table",
               level3Key: "breath",
@@ -4289,6 +4306,36 @@ export default function () {
               fsetCol: "1",
               dataParent: "respiratory.table.breath",
               fqn: "respiratory.table.breath.aSpacer",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
+              label: "Sputum",
+              pageDataKey: "respiratory",
+              level2Key: "table",
+              elementKey: "sputum",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "3",
+              dataParent: "respiratory.table",
+              fqn: "respiratory.table.sputum",
+              containerType: "fieldset",
+              containerKey: "sputum",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
+              label: "Breath sounds",
+              pageDataKey: "respiratory",
+              level2Key: "table",
+              elementKey: "breath",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "2",
+              dataParent: "respiratory.table",
+              fqn: "respiratory.table.breath",
+              containerType: "fieldset",
+              containerKey: "breath",
               tableCss: "hide-table-element",
               tableKey: "table"
             },
@@ -4443,21 +4490,6 @@ export default function () {
               formColumn: "1"
             },
             {
-              label: "Breath sounds",
-              pageDataKey: "respiratory",
-              level2Key: "table",
-              elementKey: "breath",
-              inputType: "fieldset",
-              formRow: "2",
-              formColumn: "2",
-              dataParent: "respiratory.table",
-              fqn: "respiratory.table.breath",
-              containerType: "fieldset",
-              containerKey: "breath",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
               label: "Cough",
               pageDataKey: "respiratory",
               level2Key: "table",
@@ -4550,21 +4582,6 @@ export default function () {
               fqn: "respiratory.table.sputum.sputumComments",
               tableKey: "table",
               formColumn: "1"
-            },
-            {
-              label: "Sputum",
-              pageDataKey: "respiratory",
-              level2Key: "table",
-              elementKey: "sputum",
-              inputType: "fieldset",
-              formRow: "2",
-              formColumn: "3",
-              dataParent: "respiratory.table",
-              fqn: "respiratory.table.sputum",
-              containerType: "fieldset",
-              containerKey: "sputum",
-              tableCss: "hide-table-element",
-              tableKey: "table"
             },
             {
               label: "General comments",
@@ -5405,7 +5422,7 @@ export default function () {
           dataCaseStudy: "(blank)"
         }
       ],
-      generated: "2019-04-17T23:06:54-07:00",
+      generated: "2019-05-05T07:36:15-07:00",
       hasTable: true,
       tables: [
         {
@@ -7021,11 +7038,11 @@ export default function () {
         {
           label: "Comments",
           elementKey: "comments",
-          fqn: "gastrointestinal.table.stool.comments",
+          fqn: "gastrointestinal.table.comments",
           dataCaseStudy: "(nothing entered)"
         }
       ],
-      generated: "2019-04-17T23:06:54-07:00",
+      generated: "2019-05-05T07:36:15-07:00",
       hasTable: true,
       tables: [
         {
@@ -7203,37 +7220,6 @@ export default function () {
               formColumn: "1"
             },
             {
-              label: "If answered yes, please complete the <a href=\"/assets/standardized-assessment-tools/numeric-rating-scale.pdf\">pain assessment</a>.",
-              pageDataKey: "gastrointestinal",
-              level2Key: "table",
-              level3Key: "abdomen",
-              elementKey: "aLabel",
-              inputType: "form_label",
-              formOption: "labelWithPageRef",
-              tableCss: "hr-table",
-              fsetRow: "8",
-              fsetCol: "1",
-              dataParent: "gastrointestinal.table.abdomen",
-              fqn: "gastrointestinal.table.abdomen.aLabel",
-              tableKey: "table",
-              formColumn: "1"
-            },
-            {
-              label: "Abdomen",
-              pageDataKey: "gastrointestinal",
-              level2Key: "table",
-              elementKey: "abdomen",
-              inputType: "fieldset",
-              formRow: "2",
-              formColumn: "1",
-              dataParent: "gastrointestinal.table",
-              fqn: "gastrointestinal.table.abdomen",
-              containerType: "fieldset",
-              containerKey: "abdomen",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
               label: "Emesis present?",
               pageDataKey: "gastrointestinal",
               level2Key: "table",
@@ -7361,21 +7347,6 @@ export default function () {
               formColumn: "1"
             },
             {
-              label: "Emesis",
-              pageDataKey: "gastrointestinal",
-              level2Key: "table",
-              elementKey: "emesis",
-              inputType: "fieldset",
-              formRow: "2",
-              formColumn: "2",
-              dataParent: "gastrointestinal.table",
-              fqn: "gastrointestinal.table.emesis",
-              containerType: "fieldset",
-              containerKey: "emesis",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
               label: "Difficulty",
               pageDataKey: "gastrointestinal",
               level2Key: "table",
@@ -7445,19 +7416,66 @@ export default function () {
               formColumn: "1"
             },
             {
-              label: "Weight loss",
+              label: "If answered yes, please complete the <a href=\"/assets/standardized-assessment-tools/numeric-rating-scale.pdf\">pain assessment</a>.",
               pageDataKey: "gastrointestinal",
               level2Key: "table",
-              level3Key: "eatingGroup",
-              elementKey: "weightLoss",
-              inputType: "select",
-              tableColumn: "22",
-              fsetRow: "5",
+              level3Key: "abdomen",
+              elementKey: "aLabel",
+              inputType: "form_label",
+              formOption: "labelWithPageRef",
+              tableCss: "hr-table",
+              fsetRow: "8",
               fsetCol: "1",
-              dataParent: "gastrointestinal.table.eatingGroup",
-              fqn: "gastrointestinal.table.eatingGroup.weightLoss",
+              dataParent: "gastrointestinal.table.abdomen",
+              fqn: "gastrointestinal.table.abdomen.aLabel",
               tableKey: "table",
               formColumn: "1"
+            },
+            {
+              label: "Abdomen",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              elementKey: "abdomen",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "1",
+              dataParent: "gastrointestinal.table",
+              fqn: "gastrointestinal.table.abdomen",
+              containerType: "fieldset",
+              containerKey: "abdomen",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
+              label: "Emesis",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              elementKey: "emesis",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "2",
+              dataParent: "gastrointestinal.table",
+              fqn: "gastrointestinal.table.emesis",
+              containerType: "fieldset",
+              containerKey: "emesis",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
+              label: "Bowel sounds",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              elementKey: "bSounds",
+              inputType: "fieldset",
+              formRow: "3",
+              formColumn: "2",
+              formCss: "is-one-third",
+              dataParent: "gastrointestinal.table",
+              fqn: "gastrointestinal.table.bSounds",
+              containerType: "fieldset",
+              containerKey: "bSounds",
+              tableCss: "hide-table-element",
+              tableKey: "table"
             },
             {
               label: "Eating",
@@ -7476,6 +7494,52 @@ export default function () {
               tableKey: "table"
             },
             {
+              label: "Bowel",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              elementKey: "bowel",
+              inputType: "fieldset",
+              formRow: "3",
+              formColumn: "1",
+              formCss: "is-one-third",
+              dataParent: "gastrointestinal.table",
+              fqn: "gastrointestinal.table.bowel",
+              containerType: "fieldset",
+              containerKey: "bowel",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
+              label: "Stool",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              elementKey: "stool",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "1",
+              dataParent: "gastrointestinal.table",
+              fqn: "gastrointestinal.table.stool",
+              containerType: "fieldset",
+              containerKey: "stool",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
+              label: "Weight loss",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "eatingGroup",
+              elementKey: "weightLoss",
+              inputType: "select",
+              tableColumn: "22",
+              fsetRow: "5",
+              fsetCol: "1",
+              dataParent: "gastrointestinal.table.eatingGroup",
+              fqn: "gastrointestinal.table.eatingGroup.weightLoss",
+              tableKey: "table",
+              formColumn: "1"
+            },
+            {
               label: "Last bowel movement",
               pageDataKey: "gastrointestinal",
               level2Key: "table",
@@ -7484,7 +7548,7 @@ export default function () {
               inputType: "text",
               tableColumn: "23",
               tableCss: "hr-table",
-              fsetRow: "6",
+              fsetRow: "1",
               fsetCol: "1",
               dataParent: "gastrointestinal.table.stool",
               fqn: "gastrointestinal.table.stool.lastBm",
@@ -7499,7 +7563,7 @@ export default function () {
               elementKey: "stoolColour",
               inputType: "select",
               tableColumn: "24",
-              fsetRow: "1",
+              fsetRow: "2",
               fsetCol: "1",
               options: [
                 {
@@ -7537,7 +7601,7 @@ export default function () {
               elementKey: "stoolDescription",
               inputType: "select",
               tableColumn: "25",
-              fsetRow: "2",
+              fsetRow: "3",
               fsetCol: "1",
               options: [
                 {
@@ -7560,7 +7624,7 @@ export default function () {
               elementKey: "stoolAmount",
               inputType: "text",
               tableColumn: "26",
-              fsetRow: "3",
+              fsetRow: "4",
               fsetCol: "1",
               dataParent: "gastrointestinal.table.stool",
               fqn: "gastrointestinal.table.stool.stoolAmount",
@@ -7576,7 +7640,7 @@ export default function () {
               inputType: "select",
               tableColumn: "27",
               tableCss: "hr-table",
-              fsetRow: "4",
+              fsetRow: "5",
               fsetCol: "1",
               options: [
                 {
@@ -7593,37 +7657,6 @@ export default function () {
               fqn: "gastrointestinal.table.stool.stoolSource",
               tableKey: "table",
               formColumn: "1"
-            },
-            {
-              label: "Comments",
-              pageDataKey: "gastrointestinal",
-              level2Key: "table",
-              level3Key: "stool",
-              elementKey: "comments",
-              inputType: "textarea",
-              formRow: "4",
-              formColumn: "1",
-              tableColumn: "40",
-              fsetRow: "8",
-              fsetCol: "1",
-              dataParent: "gastrointestinal.table.stool",
-              fqn: "gastrointestinal.table.stool.comments",
-              tableKey: "table"
-            },
-            {
-              label: "Stool",
-              pageDataKey: "gastrointestinal",
-              level2Key: "table",
-              elementKey: "stool",
-              inputType: "fieldset",
-              formRow: "2",
-              formColumn: "1",
-              dataParent: "gastrointestinal.table",
-              fqn: "gastrointestinal.table.stool",
-              containerType: "fieldset",
-              containerKey: "stool",
-              tableCss: "hide-table-element",
-              tableKey: "table"
             },
             {
               label: "Normal",
@@ -7700,21 +7733,6 @@ export default function () {
               fqn: "gastrointestinal.table.bowel.incontinent",
               tableKey: "table",
               formColumn: "1"
-            },
-            {
-              label: "Bowel",
-              pageDataKey: "gastrointestinal",
-              level2Key: "table",
-              elementKey: "bowel",
-              inputType: "fieldset",
-              formRow: "3",
-              formColumn: "2",
-              dataParent: "gastrointestinal.table",
-              fqn: "gastrointestinal.table.bowel",
-              containerType: "fieldset",
-              containerKey: "bowel",
-              tableCss: "hide-table-element",
-              tableKey: "table"
             },
             {
               label: "None",
@@ -7823,18 +7841,18 @@ export default function () {
               formColumn: "1"
             },
             {
-              label: "Bowel sounds",
+              label: "Comments",
               pageDataKey: "gastrointestinal",
               level2Key: "table",
-              elementKey: "bSounds",
-              inputType: "fieldset",
-              formRow: "3",
-              formColumn: "3",
+              elementKey: "comments",
+              inputType: "textarea",
+              formRow: "4",
+              formColumn: "1",
+              tableColumn: "40",
+              fsetRow: "8",
+              fsetCol: "1",
               dataParent: "gastrointestinal.table",
-              fqn: "gastrointestinal.table.bSounds",
-              containerType: "fieldset",
-              containerKey: "bSounds",
-              tableCss: "hide-table-element",
+              fqn: "gastrointestinal.table.comments",
               tableKey: "table"
             }
           ],
@@ -8114,6 +8132,27 @@ export default function () {
                           formRow: "1",
                           elements: [
                             {
+                              label: "Last bowel movement",
+                              pageDataKey: "gastrointestinal",
+                              level2Key: "table",
+                              level3Key: "stool",
+                              elementKey: "lastBm",
+                              inputType: "text",
+                              tableColumn: "23",
+                              tableCss: "hr-table",
+                              fsetRow: "1",
+                              fsetCol: "1",
+                              dataParent: "gastrointestinal.table.stool",
+                              fqn: "gastrointestinal.table.stool.lastBm",
+                              tableKey: "table",
+                              formColumn: "1"
+                            }
+                          ]
+                        },
+                        {
+                          formRow: "2",
+                          elements: [
+                            {
                               label: "Stool colour",
                               pageDataKey: "gastrointestinal",
                               level2Key: "table",
@@ -8121,7 +8160,7 @@ export default function () {
                               elementKey: "stoolColour",
                               inputType: "select",
                               tableColumn: "24",
-                              fsetRow: "1",
+                              fsetRow: "2",
                               fsetCol: "1",
                               options: [
                                 {
@@ -8154,7 +8193,7 @@ export default function () {
                           ]
                         },
                         {
-                          formRow: "2",
+                          formRow: "3",
                           elements: [
                             {
                               label: "Description",
@@ -8164,7 +8203,7 @@ export default function () {
                               elementKey: "stoolDescription",
                               inputType: "select",
                               tableColumn: "25",
-                              fsetRow: "2",
+                              fsetRow: "3",
                               fsetCol: "1",
                               options: [
                                 {
@@ -8182,7 +8221,7 @@ export default function () {
                           ]
                         },
                         {
-                          formRow: "3",
+                          formRow: "4",
                           elements: [
                             {
                               label: "Amount",
@@ -8192,7 +8231,7 @@ export default function () {
                               elementKey: "stoolAmount",
                               inputType: "text",
                               tableColumn: "26",
-                              fsetRow: "3",
+                              fsetRow: "4",
                               fsetCol: "1",
                               dataParent: "gastrointestinal.table.stool",
                               fqn: "gastrointestinal.table.stool.stoolAmount",
@@ -8202,7 +8241,7 @@ export default function () {
                           ]
                         },
                         {
-                          formRow: "4",
+                          formRow: "5",
                           elements: [
                             {
                               label: "Source",
@@ -8213,7 +8252,7 @@ export default function () {
                               inputType: "select",
                               tableColumn: "27",
                               tableCss: "hr-table",
-                              fsetRow: "4",
+                              fsetRow: "5",
                               fsetCol: "1",
                               options: [
                                 {
@@ -8232,51 +8271,7 @@ export default function () {
                               formColumn: "1"
                             }
                           ]
-                        },
-                        {
-                          formRow: "6",
-                          elements: [
-                            {
-                              label: "Last bowel movement",
-                              pageDataKey: "gastrointestinal",
-                              level2Key: "table",
-                              level3Key: "stool",
-                              elementKey: "lastBm",
-                              inputType: "text",
-                              tableColumn: "23",
-                              tableCss: "hr-table",
-                              fsetRow: "6",
-                              fsetCol: "1",
-                              dataParent: "gastrointestinal.table.stool",
-                              fqn: "gastrointestinal.table.stool.lastBm",
-                              tableKey: "table",
-                              formColumn: "1"
-                            }
-                          ]
-                        },
-                        {
-                          formRow: "8",
-                          elements: [
-                            {
-                              label: "Comments",
-                              pageDataKey: "gastrointestinal",
-                              level2Key: "table",
-                              level3Key: "stool",
-                              elementKey: "comments",
-                              inputType: "textarea",
-                              formRow: "4",
-                              formColumn: "1",
-                              tableColumn: "40",
-                              fsetRow: "8",
-                              fsetCol: "1",
-                              dataParent: "gastrointestinal.table.stool",
-                              fqn: "gastrointestinal.table.stool.comments",
-                              tableKey: "table"
-                            }
-                          ]
-                        },
-                        null,
-                        null
+                        }
                       ],
                       columnsCount: 1
                     }
@@ -8600,7 +8595,8 @@ export default function () {
                     elementKey: "bowel",
                     inputType: "fieldset",
                     formRow: "3",
-                    formColumn: "2",
+                    formColumn: "1",
+                    formCss: "is-one-third",
                     dataParent: "gastrointestinal.table",
                     fqn: "gastrointestinal.table.bowel",
                     containerType: "fieldset",
@@ -8721,7 +8717,8 @@ export default function () {
                     elementKey: "bSounds",
                     inputType: "fieldset",
                     formRow: "3",
-                    formColumn: "3",
+                    formColumn: "2",
+                    formCss: "is-one-third",
                     dataParent: "gastrointestinal.table",
                     fqn: "gastrointestinal.table.bSounds",
                     containerType: "fieldset",
@@ -8874,6 +8871,26 @@ export default function () {
                       ],
                       columnsCount: 1
                     }
+                  }
+                ]
+              },
+              {
+                formRow: "4",
+                elements: [
+                  {
+                    label: "Comments",
+                    pageDataKey: "gastrointestinal",
+                    level2Key: "table",
+                    elementKey: "comments",
+                    inputType: "textarea",
+                    formRow: "4",
+                    formColumn: "1",
+                    tableColumn: "40",
+                    fsetRow: "8",
+                    fsetCol: "1",
+                    dataParent: "gastrointestinal.table",
+                    fqn: "gastrointestinal.table.comments",
+                    tableKey: "table"
                   }
                 ]
               }

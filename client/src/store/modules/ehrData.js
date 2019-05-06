@@ -105,12 +105,12 @@ const getters = {
     }
   },
   scratchData: (state, getters, rootState) => {
-    // only return for student
+    // TODO only return for student
     // scratchData is the student's notes
-    if (rootState.visit.isStudent) {
-      return state.sActivityData.scratchData
-    }
-    return {}
+    // if (rootState.visit.isStudent) {
+    return state.sActivityData.scratchData
+    // }
+    // return ''
   },
   submitted: state => {
     return state.sActivityData.submitted
@@ -199,25 +199,30 @@ const actions = {
 
   sendScratchData (context, data) {
     let activityDataId = context.state.sActivityData._id
-    helpers.sendActivityData(context, activityDataId, data, 'scratch-data')
+    return helpers.sendActivityData(context, activityDataId, data, 'scratch-data')
   },
 
-  sendUnsubmit (context, activityDataId) {
-    let data = { value: false }
-    helpers.sendActivityData(context, activityDataId, data, 'submitted')
+  sendSubmitOverride (context, data) {
+    return helpers.sendActivityData(context, data.activityDataId, data.value, 'submitted')
   },
 
   sendSubmitted (context, data) {
     let activityDataId = context.state.sActivityData._id
-    helpers.sendActivityData(context, activityDataId, data, 'submitted')
+    return helpers.sendActivityData(context, activityDataId, data, 'submitted')
   },
 
   sendEvaluated (context, data) {
     let activityDataId = data.activityDataId
     let newState = data.evaluated
-    helpers.sendActivityData(context, activityDataId, newState, 'evaluated')
+    return helpers.sendActivityData(context, activityDataId, newState, 'evaluated')
   },
 
+  /**
+   * Returns promise that resolves to updated activity data
+   * @param context
+   * @param data
+   * @return {*}
+   */
   sendEvaluationNotes (context, data) {
     let visitState = context.rootState.visit
     let apiUrl = visitState.apiUrl

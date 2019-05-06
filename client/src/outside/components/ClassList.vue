@@ -118,30 +118,20 @@ export default {
     },
     unsubmit (sv) {
       let activityDataId = sv.activityData._id
-      this.$store.dispatch('ehrData/sendUnsubmit', activityDataId)
-        .then( () => {
-        /*
-        Normally, after we dispatch a message to the server the routine is to let the Vuex reactive system
-        handle the updated data. But here we are dealing with a class list comprised of student visit records
-        that have nested objects inside. One of these objects is the Activity Data which holds the "submitted"
-        value.  The dispatch only updates the activity data object and not the object, the visit, that this
-        class list is looking at. So, here is a special case where we directly update the client side memory
-        to keep the display in sync. Note that the dispatch returns a promise and we can only get into the .then()
-        side if the dispatch was successful.
-        This also applies to evaluated.
-        */
-          sv.activityData.submitted = false
+      let data = { activityDataId: activityDataId, value: false }
+      this.$store.dispatch('ehrData/sendSubmitOverride', data)
+        .then((activityData) => {
+          let options = {sv: sv, activityData: activityData}
+          this.$store.commit('instructor/updateActivityData', options)
         })
     },
     markEvaluated (sv) {
       const newState = ! sv.activityData.evaluated
       let data = { activityDataId: sv.activityData._id, evaluated: newState }
       this.$store.dispatch('ehrData/sendEvaluated', data)
-        .then( () => {
-        /*
-        See comment in unsubmit
-        */
-          // sv.activityData.evaluated = newState
+        .then((activityData) => {
+          let options = {sv: sv, activityData: activityData}
+          this.$store.commit('instructor/updateActivityData', options)
         })
     },
     lastUpdate (sv) {

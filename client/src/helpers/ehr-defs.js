@@ -19,6 +19,24 @@ export function getPageDefinition (pageKey) {
   return pageDef
 }
 
+export function getTableElements ( tableDef ) {
+  let all =  []
+  if (tableDef.tableForm) {
+    tableDef.tableForm.rows.forEach( (row) => {
+      row.elements.forEach( (element) => {
+        all.push(element)
+        if (element.formFieldSet)  {
+          element.formFieldSet.rows.forEach( (frow) => {
+            frow.elements.forEach( (felement) => {
+              all.push(felement)
+            })
+          })
+        }
+      })
+    })
+  }
+  return all
+}
 export function getTableCells (pageKey, tableIndex) {
   let cells
   let pageDef = pageDefs[pageKey]

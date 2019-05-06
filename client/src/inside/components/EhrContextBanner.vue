@@ -28,14 +28,18 @@ export default {
       show: false,
       indicator: '+',
       activity: {},
-      showInstructor: false,
-      showStudent: false,
       showSeeding: false
     }
   },
   computed: {
     panelInfo () {
       return StoreHelper.getPanelData(this)
+    },
+    showStudent () {
+      return StoreHelper.isStudent(this)
+    },
+    showInstructor () {
+      return StoreHelper.isInstructor(this)
     }
   },
   methods: {
@@ -43,11 +47,6 @@ export default {
       this.show = !this.show
       this.indicator = this.show ? '-' : '+'
     }
-  },
-  mounted () {
-    this.showStudent = StoreHelper.isStudent(this)
-    this.showInstructor = StoreHelper.isInstructor(this)
-    // this.showSeeding = StoreHelper.isDeveloper(this)
   }
 }
 </script>
@@ -64,6 +63,14 @@ export default {
   }
   @media #{$mediaQueryIpadPortrait} {
     padding: $panelHeaderPaddingSmallest;
+  }
+  .context-header {
+    padding: 0;
+    margin: 0;
+
+    h3 {
+      margin: 0 0 0 1rem;
+    }
   }
 }
 .prototypingContainer {

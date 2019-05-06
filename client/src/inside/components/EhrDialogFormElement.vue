@@ -1,55 +1,55 @@
 <template lang="pug">
-  div(:id="element.elementKey", class="ehrdfe")
+  div(:id="key", class="ehrdfe")
 
-    div(v-if="element.inputType === 'form_label'", class="label_wrapper")
-      div(v-html="element.label")
+    div(v-if="inputType === 'form_label'", class="label_wrapper")
+      div(v-html="label")
 
-    div(v-if="element.inputType === 'spacer'", class="label_wrapper spacer")
+    div(v-if="inputType === 'spacer'", class="label_wrapper spacer")
       div &nbsp;
 
-    div(v-if="element.inputType === 'text'", class="text_input_wrapper")
-      label(v-if="!(element.formOption === 'hideLabel')", class="text_input_label") {{element.label}}
-      input(class="input", v-bind:name="element.elementKey", type="text", v-model="inputVal")
+    div(v-if="inputType === 'text'", class="text_input_wrapper")
+      label(v-if="!hideLabel", class="text_input_label") {{label}}
+      input(class="input", v-bind:name="key", type="text", v-model="inputVal")
 
-    div(v-if="element.inputType === 'date'", class="date_wrapper")
-      label(v-if="!(element.formOption === 'hideLabel')", class="date_label") {{element.label}}
+    div(v-if="inputType === 'date'", class="date_wrapper")
+      label(v-if="!hideLabel", class="date_label") {{label}}
       datepicker(class="d-picker", typeable, v-model="inputVal")
-        div(v-if="(element.formOption === 'hideLabel')", slot="beforeCalendarHeader", class="datepicker-header") {{element.label}}
+        div(v-if="hideLabel", slot="beforeCalendarHeader", class="datepicker-header") {{label}}
 
-    div(v-if="element.inputType === 'day'", class="day_wrapper")
-      label(v-if="!(element.formOption === 'hideLabel')", class="day_label") {{element.label}}
+    div(v-if="inputType === 'day'", class="day_wrapper")
+      label(v-if="!hideLabel", class="day_label") {{label}}
       input(class="input", type="text", v-model="inputVal")
 
-    div(v-if="element.inputType === 'time'", class="time_wrapper")
-      label(v-if="!(element.formOption === 'hideLabel')", class="time_label") {{element.label}}
+    div(v-if="inputType === 'time'", class="time_wrapper")
+      label(v-if="!hideLabel", class="time_label") {{label}}
       input(class="input", type="text", v-model="inputVal")
 
-    div(v-if="element.inputType === 'textarea'", class="textarea_wrapper")
-      label {{element.label}}
+    div(v-if="inputType === 'textarea'", class="textarea_wrapper")
+      label {{label}}
       textarea(v-model="inputVal")
 
-    div(v-if="element.inputType === 'select'", class="select_wrapper")
-      label(v-if="!(element.formOption === 'hideLabel')", class="select_label") {{element.label}}
+    div(v-if="inputType === 'select'", class="select_wrapper")
+      label(v-if="!hideLabel", class="select_label") {{label}}
       div(class="select")
-        select(v-bind:name="element.elementKey", v-model="inputVal")
+        select(v-bind:name="key", v-model="inputVal")
           option(disabled,value="")
           option(v-for="option in element.options", v-bind:value="option.text") {{ option.text}}
 
-    div(v-if="element.inputType === 'checkbox'", class="checkbox_wrapper")
-      input(class="checkbox", type="checkbox", v-bind:name="element.elementKey", v-model="inputVal")
-      label(v-if="!(element.formOption === 'hideLabel')", class="checkbox_label", v-bind:for="element.elementKey") {{element.label}}
+    div(v-if="inputType === 'checkbox'", class="checkbox_wrapper")
+      input(class="checkbox", type="checkbox", v-bind:name="key", v-model="inputVal")
+      label(v-if="!hideLabel", class="checkbox_label", v-bind:for="key") {{label}}
 
-    div(v-if="element.inputType === 'fieldset'", class="fieldset_col_wrapper")
-      label(v-show="!!element.label", class="fieldset_label") {{element.label}} &nbsp;
+    div(v-if="inputType === 'fieldset'", class="fieldset_col_wrapper")
+      label(v-show="!!label", class="fieldset_label") {{label}} &nbsp;
       div(v-for="row in element.formFieldSet.rows", :key="row.formRow", class="fieldset_row_row" )
-        ehr-dialog-form-element(v-for="fmEl in row.elements", :key="fmEl.elementKey", :inputs="inputs", :element="fmEl")
+        ehr-dialog-form-element(v-for="fmEl in row.elements", :key="fmEl.elementKey", :inputs="inputs", :element="fmEl", :ehrHelp="ehrHelp")
 
-    div(v-if="element.inputType === 'fieldRowSet'", class="fieldset_row_wrapper")
-      label(v-show="!!element.label", class="fieldset_label") {{element.label}} &nbsp;
+    div(v-if="inputType === 'fieldRowSet'", class="fieldset_row_wrapper")
+      label(v-show="!!label", class="fieldset_label") {{label}} &nbsp;
       div(v-for="row in element.formFieldSet.rows", :key="row.formRow" class="fieldset_row_row" )
-        ehr-dialog-form-element(v-for="fmEl in row.elements", :key="fmEl.elementKey", :inputs="inputs", :element="fmEl")
+        ehr-dialog-form-element(v-for="fmEl in row.elements", :key="fmEl.elementKey", :inputs="inputs", :element="fmEl", :ehrHelp="ehrHelp")
 
-    div(v-if="element.inputType === 'calculatedValue'", class="computed_wrapper")
+    div(v-if="inputType === 'calculatedValue'", class="computed_wrapper")
       ehr-calculated-value(:inputs="inputs", :element="element")
 
 </template>
@@ -66,6 +66,7 @@ import EhrCalculatedValue from './EhrCalculatedValue'
 import EventBus from '../../helpers/event-bus'
 import { DIALOG_INPUT_EVENT } from '../../helpers/event-bus'
 import UiInfo from '../../app/ui/UiInfo'
+
 export default {
   name: 'EhrDialogFormElement',
   components: {
@@ -76,8 +77,12 @@ export default {
   },
   data () {
     return {
-      inputVal: this.getInputValue,
+      inputVal: '',
       gotHit: false,
+      key: '',
+      label: '',
+      inputType: '',
+      hideLabel: false,
       eventHandler: {}
     }
   },
@@ -87,13 +92,6 @@ export default {
     element: { type: Object }
   },
   computed: {
-    getInputValue () {
-      // let cV = this.element.helper.getInputValue(this.element)
-      // console.log('getInputValue key:', this.element.elementKey)
-      let cV = this.inputs[this.element.elementKey]
-      // console.log('getInputValue val:', cV)
-      return cV
-    },
     parentData () {
       if (this.element.parent) {
         let pVal = this.inputs[this.element.parent.elementKey]
@@ -111,7 +109,10 @@ export default {
       return null
     },
     eventChannelBroadcast () {
-      return 'radio:' + this.element.elementKey
+      return 'radio:' + this.key
+    },
+    tableEventKey () {
+      return this.ehrHelp.getDialogEventChannel(this.element.tableKey)
     }
   },
   methods: {
@@ -133,10 +134,27 @@ export default {
       // that has sent a message on the channel this component listens on.
       this.gotHit = this.element.targetValue === eData.value
       // console.log(`On channel ${this.dependentPropertyChangeChannel} from key ${eData.key} got hit? ${this.gotHit}`)
+    },
+    receiveShowHideEvent (eData) {
+      if(eData.value) {
+        console.log('EhrDialogFormElement on show re-init initial value', this.key, eData.value)
+        this.inputVal = this.inputs[this.key]
+      }
     }
   },
   mounted: function () {
     const _this = this
+    this.key = this.element.elementKey
+    this.label = this.element.label
+    this.inputType = this.element.inputType
+    this.hideLabel = this.element.formOption === 'hideLabel'
+    // Don't initialize value here because that would trigger the watch and that only works once the dialog is visible
+    // this.inputVal = this.inputs[this.key]
+    this.tableEventHandler = function (eData) {
+      _this.receiveShowHideEvent(eData)
+    }
+    EventBus.$on(this.tableEventKey, this.tableEventHandler)
+
     if (this.dependentPropertyChangeChannel) {
       this.eventHandler = function (eData) {
         _this.receiveEvent(eData)
@@ -145,8 +163,10 @@ export default {
     }
   },
   beforeDestroy: function () {
+    if (this.tableEventHandler) {
+      EventBus.$off(this.tableEventKey, this.tableEventHandler)
+    }
     if (this.dependentPropertyChangeChannel && this.eventHandler) {
-      // console.log('beforeDestroy, remove listener',this.dependentPropertyChangeChannel)
       EventBus.$off(this.dependentPropertyChangeChannel, this.eventHandler)
     }
   },
