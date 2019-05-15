@@ -167,7 +167,7 @@ input:disabled, textarea:disabled, select:disabled, checkbox:disabled, radio:dis
   width: 100%
 }
 
-.text_input_wrapper, .textarea_wrapper, .select_wrapper, .date_wrapper {
+.text_input_wrapper, .textarea_wrapper, .select_wrapper, .date_wrapper, .day_wrapper, .time_wrapper {
   margin-bottom: 1.25em;
 }
 
@@ -214,70 +214,58 @@ select {
 
 .is-half {
   width: 50%;
-  min-width: 50%;
 }
 
 .is-two-thirds {
   width: 66%;
-  min-width: 66%;
 }
 
 .is-one-third {
   width: 33%;
-  min-width: 33%;
 }
 
 .width-10 {
   width: 10%;
-  min-width: 10%;
   flex-grow: 0.1;
 }
 
 .width-20 {
   width: 20%;
-  min-width: 20%;
   flex-grow: 0.2;
 }
 
 .width-30 {
   width: 30%;
-  min-width: 30%;
   flex-grow: 0.3;
 }
 
 .width-40 {
   width: 40%;
-  min-width: 40%;
   flex-grow: 0.4;
 }
 
 .width-50 {
   width: 50%;
-  min-width: 50%;
   flex-grow: 0.5;
 }
 
 .width-60 {
   width: 60%;
-  min-width: 60%;
   flex-grow: 0.6;
 }
 
 .width-70 {
   width: 70%;
-  min-width: 70%;
   flex-grow: 0.7;
 }
 
 .width-80 {
   width: 80%;
-  min-width: 80%;
   flex-grow: 0.8;
 }
 
 .width-90 {
   width: 90%;
-  min-width: 90%;
   flex-grow: 0.9;
 }
 
