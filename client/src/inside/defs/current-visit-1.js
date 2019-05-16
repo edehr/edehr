@@ -58,7 +58,7 @@ export default function () {
           fqn: "visit.table.transferInTime"
         }
       ],
-      generated: "2019-05-15T11:03:40-07:00",
+      generated: "2019-05-16T15:16:57-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -302,12 +302,12 @@ export default function () {
           fqn: "vitals.table.entryTime"
         },
         {
-          label: "Day",
+          label: "Vital taken day",
           elementKey: "day",
           fqn: "vitals.table.day"
         },
         {
-          label: "Time",
+          label: "Vital taken time",
           elementKey: "time",
           fqn: "vitals.table.time"
         },
@@ -382,7 +382,7 @@ export default function () {
           fqn: "vitals.table.flowRate"
         }
       ],
-      generated: "2019-05-15T11:03:40-07:00",
+      generated: "2019-05-16T15:16:57-07:00",
       hasTable: true,
       tables: [
         {
@@ -447,7 +447,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Day",
+              label: "Vital taken day",
               pageDataKey: "vitals",
               level2Key: "table",
               elementKey: "day",
@@ -461,7 +461,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Time",
+              label: "Vital taken time",
               pageDataKey: "vitals",
               level2Key: "table",
               elementKey: "time",
@@ -503,16 +503,16 @@ export default function () {
               tableCss: "hr-table",
               options: [
                 {
-                  text: "oral"
+                  text: "Oral"
                 },
                 {
-                  text: "axilla"
+                  text: "Axilla"
                 },
                 {
-                  text: "rectal"
+                  text: "Rectal"
                 },
                 {
-                  text: "tympanic"
+                  text: "Tympanic"
                 }
               ],
               dataParent: "vitals.table",
@@ -531,7 +531,7 @@ export default function () {
               tableColumn: "9",
               options: [
                 {
-                  text: "peripheral"
+                  text: "Peripheral"
                 }
               ],
               dataParent: "vitals.table",
@@ -565,10 +565,10 @@ export default function () {
               tableCss: "hr-table",
               options: [
                 {
-                  text: "regular"
+                  text: "Regular"
                 },
                 {
-                  text: "irregular"
+                  text: "Irregular"
                 }
               ],
               dataParent: "vitals.table",
@@ -613,13 +613,13 @@ export default function () {
               tableCss: "hr-table",
               options: [
                 {
-                  text: "supine"
+                  text: "Supine"
                 },
                 {
-                  text: "sitting"
+                  text: "Sitting"
                 },
                 {
-                  text: "standing"
+                  text: "Standing"
                 }
               ],
               dataParent: "vitals.table",
@@ -664,19 +664,19 @@ export default function () {
               tableColumn: "17",
               options: [
                 {
-                  text: "room air"
+                  text: "Room air"
                 },
                 {
-                  text: "nasal prongs"
+                  text: "Nasal prongs"
                 },
                 {
-                  text: "simple face mask"
+                  text: "Simple face mask"
                 },
                 {
-                  text: "rebreathing face mask"
+                  text: "Rebreathing face mask"
                 },
                 {
-                  text: "optiflow"
+                  text: "Optiflow"
                 }
               ],
               dataParent: "vitals.table",
@@ -766,7 +766,7 @@ export default function () {
                 formRow: "2",
                 elements: [
                   {
-                    label: "Day",
+                    label: "Vital taken day",
                     pageDataKey: "vitals",
                     level2Key: "table",
                     elementKey: "day",
@@ -780,7 +780,7 @@ export default function () {
                     tableKey: "table"
                   },
                   {
-                    label: "Time",
+                    label: "Vital taken time",
                     pageDataKey: "vitals",
                     level2Key: "table",
                     elementKey: "time",
@@ -827,16 +827,16 @@ export default function () {
                     tableCss: "hr-table",
                     options: [
                       {
-                        text: "oral"
+                        text: "Oral"
                       },
                       {
-                        text: "axilla"
+                        text: "Axilla"
                       },
                       {
-                        text: "rectal"
+                        text: "Rectal"
                       },
                       {
-                        text: "tympanic"
+                        text: "Tympanic"
                       }
                     ],
                     dataParent: "vitals.table",
@@ -860,7 +860,7 @@ export default function () {
                     tableColumn: "9",
                     options: [
                       {
-                        text: "peripheral"
+                        text: "Peripheral"
                       }
                     ],
                     dataParent: "vitals.table",
@@ -894,10 +894,10 @@ export default function () {
                     tableCss: "hr-table",
                     options: [
                       {
-                        text: "regular"
+                        text: "Regular"
                       },
                       {
-                        text: "irregular"
+                        text: "Irregular"
                       }
                     ],
                     dataParent: "vitals.table",
@@ -947,13 +947,13 @@ export default function () {
                     tableCss: "hr-table",
                     options: [
                       {
-                        text: "supine"
+                        text: "Supine"
                       },
                       {
-                        text: "sitting"
+                        text: "Sitting"
                       },
                       {
-                        text: "standing"
+                        text: "Standing"
                       }
                     ],
                     dataParent: "vitals.table",
@@ -1008,19 +1008,19 @@ export default function () {
                     tableColumn: "17",
                     options: [
                       {
-                        text: "room air"
+                        text: "Room air"
                       },
                       {
-                        text: "nasal prongs"
+                        text: "Nasal prongs"
                       },
                       {
-                        text: "simple face mask"
+                        text: "Simple face mask"
                       },
                       {
-                        text: "rebreathing face mask"
+                        text: "Rebreathing face mask"
                       },
                       {
-                        text: "optiflow"
+                        text: "Optiflow"
                       }
                     ],
                     dataParent: "vitals.table",
@@ -1091,7 +1091,7 @@ export default function () {
           fqn: "fluidBalance.table.fluidOut"
         }
       ],
-      generated: "2019-05-15T11:03:40-07:00",
+      generated: "2019-05-16T15:16:57-07:00",
       hasTable: true,
       tables: [
         {
@@ -1535,7 +1535,7 @@ export default function () {
           defaultValue: "0"
         }
       ],
-      generated: "2019-05-15T11:03:40-07:00",
+      generated: "2019-05-16T15:16:57-07:00",
       hasTable: true,
       tables: [
         {
@@ -4059,7 +4059,7 @@ export default function () {
           dataCaseStudy: "(no notes)"
         }
       ],
-      generated: "2019-05-15T11:03:40-07:00",
+      generated: "2019-05-16T15:16:57-07:00",
       hasTable: true,
       tables: [
         {
@@ -5422,7 +5422,7 @@ export default function () {
           dataCaseStudy: "(blank)"
         }
       ],
-      generated: "2019-05-15T11:03:40-07:00",
+      generated: "2019-05-16T15:16:57-07:00",
       hasTable: true,
       tables: [
         {
@@ -7032,7 +7032,7 @@ export default function () {
           dataCaseStudy: "(nothing entered)"
         }
       ],
-      generated: "2019-05-15T11:03:40-07:00",
+      generated: "2019-05-16T15:16:57-07:00",
       hasTable: true,
       tables: [
         {

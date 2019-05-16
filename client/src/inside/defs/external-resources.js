@@ -16,7 +16,7 @@ export default function () {
           fqn: "assessmentTools.admissions.admissions2_1"
         },
         {
-          label: "Alcohol Consumption.pdf",
+          label: "Alcohol consumption",
           elementKey: "admissions3_1",
           fqn: "assessmentTools.admissions.admissions3_1"
         },
@@ -81,7 +81,7 @@ export default function () {
           fqn: "assessmentTools.medication.medication1_1"
         }
       ],
-      generated: "2019-04-10T11:07:37-07:00",
+      generated: "2019-05-16T15:16:01-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -128,7 +128,7 @@ export default function () {
                     formColumn: "1"
                   },
                   {
-                    label: "Alcohol Consumption.pdf",
+                    label: "Alcohol consumption",
                     pageDataKey: "assessmentTools",
                     level3Key: "admissions",
                     elementKey: "admissions3_1",
@@ -188,7 +188,7 @@ export default function () {
                       formRow: "3",
                       elements: [
                         {
-                          label: "Alcohol Consumption.pdf",
+                          label: "Alcohol consumption",
                           pageDataKey: "assessmentTools",
                           level3Key: "admissions",
                           elementKey: "admissions3_1",
@@ -777,7 +777,7 @@ export default function () {
           fqn: "codeLookup.icf"
         }
       ],
-      generated: "2019-04-10T11:07:37-07:00",
+      generated: "2019-05-16T15:16:01-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -791,7 +791,7 @@ export default function () {
                 inputType: "text",
                 formRow: "1",
                 formColumn: "1",
-                formCss: "is-one-half",
+                formCss: "is-half",
                 dataParent: "codeLookup",
                 fqn: "codeLookup.snomed"
               }
@@ -807,7 +807,7 @@ export default function () {
                 inputType: "text",
                 formRow: "2",
                 formColumn: "1",
-                formCss: "is-one-half",
+                formCss: "is-half",
                 dataParent: "codeLookup",
                 fqn: "codeLookup.icf"
               }
@@ -876,7 +876,7 @@ export default function () {
           fqn: "diagnosticCodes.table.cluster"
         }
       ],
-      generated: "2019-04-10T11:07:37-07:00",
+      generated: "2019-05-16T15:16:01-07:00",
       hasTable: true,
       tables: [
         {
@@ -907,7 +907,7 @@ export default function () {
               formRow: "1",
               formColumn: "2",
               formCss: "user_pro",
-              tableColumn: "2",
+              tableColumn: "1",
               assetBase: "?",
               dataParent: "diagnosticCodes.table",
               fqn: "diagnosticCodes.table.profession",
@@ -922,7 +922,7 @@ export default function () {
               formRow: "1",
               formColumn: "3",
               formCss: "user_day",
-              tableColumn: "3",
+              tableColumn: "1",
               assetBase: "?",
               dataParent: "diagnosticCodes.table",
               fqn: "diagnosticCodes.table.day",
@@ -937,7 +937,7 @@ export default function () {
               formRow: "1",
               formColumn: "4",
               formCss: "user_time",
-              tableColumn: "4",
+              tableColumn: "1",
               assetBase: "?",
               dataParent: "diagnosticCodes.table",
               fqn: "diagnosticCodes.table.time",
@@ -950,7 +950,7 @@ export default function () {
               elementKey: "icd10",
               inputType: "assetLink",
               formRow: "2",
-              tableColumn: "5",
+              tableColumn: "2",
               assetBase: "static-databases",
               assetName: "icd-10-medical-diagnosis-codes.pdf",
               dataParent: "diagnosticCodes.table",
@@ -965,7 +965,7 @@ export default function () {
               inputType: "text",
               formRow: "3",
               formColumn: "1",
-              tableColumn: "6",
+              tableColumn: "3",
               mandatory: "yes",
               dataParent: "diagnosticCodes.table",
               fqn: "diagnosticCodes.table.condition",
@@ -979,7 +979,7 @@ export default function () {
               inputType: "text",
               formRow: "3",
               formColumn: "2",
-              tableColumn: "7",
+              tableColumn: "4",
               mandatory: "yes",
               validation: "Up to 8 characters long",
               dataParent: "diagnosticCodes.table",
@@ -994,7 +994,7 @@ export default function () {
               inputType: "select",
               formRow: "3",
               formColumn: "3",
-              tableColumn: "8",
+              tableColumn: "5",
               options: [
                 {
                   text: "M"
@@ -1023,7 +1023,7 @@ export default function () {
               inputType: "text",
               formRow: "3",
               formColumn: "4",
-              tableColumn: "9",
+              tableColumn: "6",
               mandatory: "no",
               validation: "1 character",
               dataParent: "diagnosticCodes.table",
@@ -1038,7 +1038,7 @@ export default function () {
               inputType: "text",
               formRow: "3",
               formColumn: "5",
-              tableColumn: "10",
+              tableColumn: "7",
               mandatory: "no",
               validation: "1 character",
               dataParent: "diagnosticCodes.table",
@@ -1075,7 +1075,7 @@ export default function () {
                     formRow: "1",
                     formColumn: "2",
                     formCss: "user_pro",
-                    tableColumn: "2",
+                    tableColumn: "1",
                     assetBase: "?",
                     dataParent: "diagnosticCodes.table",
                     fqn: "diagnosticCodes.table.profession",
@@ -1090,7 +1090,7 @@ export default function () {
                     formRow: "1",
                     formColumn: "3",
                     formCss: "user_day",
-                    tableColumn: "3",
+                    tableColumn: "1",
                     assetBase: "?",
                     dataParent: "diagnosticCodes.table",
                     fqn: "diagnosticCodes.table.day",
@@ -1105,7 +1105,7 @@ export default function () {
                     formRow: "1",
                     formColumn: "4",
                     formCss: "user_time",
-                    tableColumn: "4",
+                    tableColumn: "1",
                     assetBase: "?",
                     dataParent: "diagnosticCodes.table",
                     fqn: "diagnosticCodes.table.time",
@@ -1123,7 +1123,7 @@ export default function () {
                     elementKey: "icd10",
                     inputType: "assetLink",
                     formRow: "2",
-                    tableColumn: "5",
+                    tableColumn: "2",
                     assetBase: "static-databases",
                     assetName: "icd-10-medical-diagnosis-codes.pdf",
                     dataParent: "diagnosticCodes.table",
@@ -1143,7 +1143,7 @@ export default function () {
                     inputType: "text",
                     formRow: "3",
                     formColumn: "1",
-                    tableColumn: "6",
+                    tableColumn: "3",
                     mandatory: "yes",
                     dataParent: "diagnosticCodes.table",
                     fqn: "diagnosticCodes.table.condition",
@@ -1157,7 +1157,7 @@ export default function () {
                     inputType: "text",
                     formRow: "3",
                     formColumn: "2",
-                    tableColumn: "7",
+                    tableColumn: "4",
                     mandatory: "yes",
                     validation: "Up to 8 characters long",
                     dataParent: "diagnosticCodes.table",
@@ -1172,7 +1172,7 @@ export default function () {
                     inputType: "select",
                     formRow: "3",
                     formColumn: "3",
-                    tableColumn: "8",
+                    tableColumn: "5",
                     options: [
                       {
                         text: "M"
@@ -1201,7 +1201,7 @@ export default function () {
                     inputType: "text",
                     formRow: "3",
                     formColumn: "4",
-                    tableColumn: "9",
+                    tableColumn: "6",
                     mandatory: "no",
                     validation: "1 character",
                     dataParent: "diagnosticCodes.table",
@@ -1216,7 +1216,7 @@ export default function () {
                     inputType: "text",
                     formRow: "3",
                     formColumn: "5",
-                    tableColumn: "10",
+                    tableColumn: "7",
                     mandatory: "no",
                     validation: "1 character",
                     dataParent: "diagnosticCodes.table",
@@ -1289,7 +1289,7 @@ export default function () {
           fqn: "interventionCodes.table.extent"
         }
       ],
-      generated: "2019-04-10T11:07:37-07:00",
+      generated: "2019-05-16T15:16:01-07:00",
       hasTable: true,
       tables: [
         {
@@ -1320,7 +1320,7 @@ export default function () {
               formRow: "1",
               formColumn: "2",
               formCss: "user_pro",
-              tableColumn: "2",
+              tableColumn: "1",
               assetBase: "?",
               dataParent: "interventionCodes.table",
               fqn: "interventionCodes.table.profession",
@@ -1335,7 +1335,7 @@ export default function () {
               formRow: "1",
               formColumn: "3",
               formCss: "user_day",
-              tableColumn: "3",
+              tableColumn: "1",
               assetBase: "?",
               dataParent: "interventionCodes.table",
               fqn: "interventionCodes.table.day",
@@ -1350,7 +1350,7 @@ export default function () {
               formRow: "1",
               formColumn: "4",
               formCss: "user_time",
-              tableColumn: "4",
+              tableColumn: "1",
               tableCss: "hr-table",
               assetBase: "?",
               dataParent: "interventionCodes.table",
@@ -1394,7 +1394,7 @@ export default function () {
               formRow: "3",
               formColumn: "1",
               formCss: "width-70",
-              tableColumn: "5",
+              tableColumn: "2",
               dataParent: "interventionCodes.table",
               fqn: "interventionCodes.table.intervention",
               tableKey: "table"
@@ -1408,7 +1408,7 @@ export default function () {
               formRow: "3",
               formColumn: "2",
               formCss: "width-10",
-              tableColumn: "6",
+              tableColumn: "3",
               dataParent: "interventionCodes.table",
               fqn: "interventionCodes.table.status",
               tableKey: "table"
@@ -1422,7 +1422,7 @@ export default function () {
               formRow: "3",
               formColumn: "3",
               formCss: "width-10",
-              tableColumn: "7",
+              tableColumn: "4",
               dataParent: "interventionCodes.table",
               fqn: "interventionCodes.table.laterally",
               tableKey: "table"
@@ -1436,7 +1436,7 @@ export default function () {
               formRow: "3",
               formColumn: "4",
               formCss: "width-10",
-              tableColumn: "8",
+              tableColumn: "5",
               dataParent: "interventionCodes.table",
               fqn: "interventionCodes.table.extent",
               tableKey: "table"
@@ -1471,7 +1471,7 @@ export default function () {
                     formRow: "1",
                     formColumn: "2",
                     formCss: "user_pro",
-                    tableColumn: "2",
+                    tableColumn: "1",
                     assetBase: "?",
                     dataParent: "interventionCodes.table",
                     fqn: "interventionCodes.table.profession",
@@ -1486,7 +1486,7 @@ export default function () {
                     formRow: "1",
                     formColumn: "3",
                     formCss: "user_day",
-                    tableColumn: "3",
+                    tableColumn: "1",
                     assetBase: "?",
                     dataParent: "interventionCodes.table",
                     fqn: "interventionCodes.table.day",
@@ -1501,7 +1501,7 @@ export default function () {
                     formRow: "1",
                     formColumn: "4",
                     formCss: "user_time",
-                    tableColumn: "4",
+                    tableColumn: "1",
                     tableCss: "hr-table",
                     assetBase: "?",
                     dataParent: "interventionCodes.table",
@@ -1555,7 +1555,7 @@ export default function () {
                     formRow: "3",
                     formColumn: "1",
                     formCss: "width-70",
-                    tableColumn: "5",
+                    tableColumn: "2",
                     dataParent: "interventionCodes.table",
                     fqn: "interventionCodes.table.intervention",
                     tableKey: "table"
@@ -1569,7 +1569,7 @@ export default function () {
                     formRow: "3",
                     formColumn: "2",
                     formCss: "width-10",
-                    tableColumn: "6",
+                    tableColumn: "3",
                     dataParent: "interventionCodes.table",
                     fqn: "interventionCodes.table.status",
                     tableKey: "table"
@@ -1583,7 +1583,7 @@ export default function () {
                     formRow: "3",
                     formColumn: "3",
                     formCss: "width-10",
-                    tableColumn: "7",
+                    tableColumn: "4",
                     dataParent: "interventionCodes.table",
                     fqn: "interventionCodes.table.laterally",
                     tableKey: "table"
@@ -1597,7 +1597,7 @@ export default function () {
                     formRow: "3",
                     formColumn: "4",
                     formCss: "width-10",
-                    tableColumn: "8",
+                    tableColumn: "5",
                     dataParent: "interventionCodes.table",
                     fqn: "interventionCodes.table.extent",
                     tableKey: "table"
@@ -1663,7 +1663,7 @@ export default function () {
           fqn: "caseMixGroup.table.analysis"
         }
       ],
-      generated: "2019-04-10T11:07:37-07:00",
+      generated: "2019-05-16T15:16:01-07:00",
       hasTable: true,
       tables: [
         {
