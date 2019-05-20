@@ -212,10 +212,10 @@ export default class VitalChart {
     let height = data.height
     let dx = options.yLabelOffset
     context.save()
+    context.font = options.textValueFont
     if(gridY.textMultiLineLabel) {
       let y = originY + 10 // magic number 10 works - aligns with data content
       let x = 50 // another magic 50 number - sets y label to left of chart label
-      context.font = options.textValueFont
       context.fillStyle = options.textValueColor
       context.textAlign = options.textAlign
       let lines = gridY.textMultiLineLabel.split('\n')
