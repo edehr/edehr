@@ -2,29 +2,32 @@
   transition(name="dialog")
     div(v-show="showingDialog")
       div(:class="modalClass")
-      div(:class="['dialog-wrapper', { moused: moused }]", ref="theDialog", v-bind:style="{ top: top + 'px', left: left + 'px'}")
-        div(class="dialog-move-bar", v-dragged="onDragged")
-        div(class="dialog-inner")
-          div(class="dialog-header columns")
-            div(class="dialog-header-element column is-11")
-              slot(name="header") default header
-            div(class="dialog-header-element  column is-1")
-              ui-close(v-on:close="$emit('cancel')")
-          div(class="dialog-container")
+      div(class="dialog-wrapper", :class="moused", ref="theDialog", v-bind:style="{ top: top + 'px', left: left + 'px'}")
+        div(class="dialog-header")
+          div(class="dialog-move-bar", v-dragged="onDragged")
+          div(class="dialog-header-inner")
+            div(class="columns")
+              div(class="dialog-header-element column is-11")
+                slot(name="header") default header
+              div(class="dialog-header-element  column is-1")
+                ui-close(v-on:close="$emit('cancel')")
+        div(class="dialog-container")
+          div(class="dialog-inner")
             div(class="dialog-body")
               slot(name="body") default body
-            div(class="dialog-footer")
-              div(class="dialog-footer-errors")
-                div(v-show="errors.length")
-                  p {{ errorDirections }}
-                  ul
-                    li(v-for="error in errors") {{ error }}
-              div(class="dialog-footer-content is-pulled-right")
-                ui-button(v-on:buttonClicked="$emit('cancel')", v-bind:secondary="true")
-                  slot(name="cancel-button") {{ cancelButtonLabel }}
-                div(class="dialog-footer-button-space", v-show="useSave")
-                ui-button(v-on:buttonClicked="$emit('save')", v-show="useSave")
-                  slot(name="save-button") {{ saveButtonLabel }}
+        div(class="dialog-footer")
+          div(class="dialog-footer-inner")
+            div(class="dialog-footer-errors")
+              div(v-show="errors.length")
+                p {{ errorDirections }}
+                ul
+                  li(v-for="error in errors") {{ error }}
+            div(class="dialog-footer-content is-pulled-right")
+              ui-button(v-on:buttonClicked="$emit('cancel')", v-bind:secondary="true")
+                slot(name="cancel-button") {{ cancelButtonLabel }}
+              div(class="dialog-footer-button-space", v-show="useSave")
+              ui-button(v-on:buttonClicked="$emit('save')", v-show="useSave")
+                slot(name="save-button") {{ saveButtonLabel }}
 </template>
 
 <script>
@@ -153,16 +156,9 @@ export default {
 
 .dialog-wrapper {
   position: fixed;
-  /*
-  // See the data properties
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  */
+  /*   For top and see the data properties */
   min-width: 500px;
   max-width: 1024px;
-  max-height: 90%;
-  overflow: auto;
   z-index: 999;
   background-color: $dialog-wrapper-background-color;
   border: 1px solid $grey40;
@@ -171,6 +167,17 @@ export default {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
+.dialog-header, .dialog-footer {
+  height: 10vh
+}
+.dialog-container {
+  overflow-y: auto;
+  height: calc( 90vh - 20vh )
+}
+
+.dialog-header-inner, .dialog-footer-inner {
+  padding: 1.0rem 2.5rem 1rem 2.5rem
+}
 .dialog-inner {
   padding: 2rem 2.5rem 2.5rem 2.5rem;
 }
@@ -178,13 +185,13 @@ export default {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 .dialog-container {
-  overflow: hidden;
+  /*overflow: hidden;*/
 }
 
 .dialog-move-bar {
   background-color: $grey40;
   width: 100%;
-  height: 1rem;
+  height: 1vh;
   cursor: move;
 }
 
@@ -197,7 +204,7 @@ export default {
 }
 
 .dialog-footer {
-  margin-top: 30px;
+  /*margin-top: 30px;*/
   align-items: flex-end;
   .dialog-footer-content {
     flex-grow: 1;
