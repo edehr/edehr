@@ -6,6 +6,9 @@ module.exports = {
     description: 'TODO add and use description',
     keywords: 'TODO add and use keywords'
   },
+  ehr: {
+    defaultAssignmentDescription: 'This is a automatically generated assignment.'
+  },
   // TODO use ... Session Cookie settings
   sessionCookie: {
     // session expiration is set by default to 24 hours

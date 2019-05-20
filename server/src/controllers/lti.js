@@ -1,9 +1,4 @@
 import { Router } from 'express'
-import UserController from '../controllers/user-controller'
-import ConsumerController from '../controllers/consumer-controller'
-import ActivityController from '../controllers/activity-controller'
-import AssignmentController from '../controllers/assignment-controller'
-import VisitController from './visit-controller'
 import Role from './roles'
 import { ParameterError, AssignmentMismatchError, SystemError } from '../utils/errors'
 
@@ -12,10 +7,6 @@ const CustomStrategy = require('passport-custom')
 const lti = require('ims-lti')
 const passport = require('passport')
 const { ltiVersions, LTI_BASIC } = require('../utils/lti')
-const UserModel = new UserController()
-const ActivityModel = new ActivityController()
-const AssignmentModel = new AssignmentController()
-const VisitModel = new VisitController()
 
 const PROPS_CONSUMER = [
   'tool_consumer_instance_guid',
@@ -54,8 +45,13 @@ let PROPS_CONTEXT = [
 ]
 
 export default class LTIController {
-  constructor (config) {
+  constructor (config, cc) {
     this.config = config
+    this.assignmentController = cc.assignmentController
+    this.visitController = cc.visitController
+    this.activityController = cc.activityController
+    this.userController = cc.userController
+    this.consumerController = cc.consumerController
   }
 
   initializeApp (app) {
@@ -85,7 +81,7 @@ export default class LTIController {
       // go find the user object
       passport.deserializeUser(function (id, done) {
         // debug('---------------------- DESERIALIZE id', id)
-        UserModel.read(id).then(results => {
+        _this.userController.read(id).then(results => {
           let user = results.user
           // debug('LTI deserializeUser result ' + (user ? user.user_id : 'none'))
           // debug('deserializeUser user', user)
@@ -125,7 +121,7 @@ export default class LTIController {
     try {
       var consumerKey = ltiData['oauth_consumer_key']
       debug('strategyVerify find consumer by key ' + consumerKey)
-      ConsumerController.findOneConsumerByKey(consumerKey)
+      _this.consumerController.findOneConsumerByKey(consumerKey)
         .then(toolConsumer => {
           // Grave error to not have found a tool consumer
           if (!toolConsumer) {
@@ -204,7 +200,8 @@ export default class LTIController {
   }
 
   _findCreateUser (userId, toolConsumerId, ltiData) {
-    return UserModel.findOne({
+    const _this = this
+    return this.userController.findOne({
       $and: [{ user_id: userId }, { toolConsumer: toolConsumerId }]
     }).then((foundUser, r) => {
       if (foundUser) {
@@ -222,7 +219,7 @@ export default class LTIController {
         ltiData: [JSON.stringify(ltiData)],
         toolConsumer: toolConsumerId
       }
-      return UserModel.create(user).then((newUser, r) => {
+      return _this.userController.create(user).then((newUser, r) => {
         // create returns a structure with the new user inside
         debug('created new user ' + newUser._id)
         return newUser
@@ -262,11 +259,12 @@ export default class LTIController {
   }
 
   locateAssignment (req) {
+    const _this = this
     let externalId = req.ltiData.custom_assignment
     req.externalId = externalId
     let role = new Role(req.ltiData.roles)
     let toolConsumerId = req.toolConsumer._id
-    return AssignmentModel.locateAssignmentForStudent(externalId, toolConsumerId)
+    return this.assignmentController.locateAssignmentForStudent(externalId, toolConsumerId)
       .then(assignment => {
         if (!assignment) {
           if (role.isStudent) {
@@ -276,8 +274,10 @@ export default class LTIController {
           }
           let ltiData = req.ltiData
           let title = ltiData.resource_link_title
-          let description = ltiData.resource_link_description
-          return AssignmentModel.createAssignment(externalId, toolConsumerId, title, description)
+          // Get the default description for assignments from config.
+          // The resource_link_description is used to describe the activity and using it for the
+          // assignment too is confusing.
+          return _this.assignmentController.createAssignment(externalId, toolConsumerId, title)
         }
         return assignment
       })
@@ -290,7 +290,7 @@ export default class LTIController {
     debug('updateActivity ' + JSON.stringify(req.assignment))
     if (req.assignment) {
       debug('updateActivity with assignment')
-      return ActivityModel.updateCreateActivity(
+      return this.activityController.updateCreateActivity(
         req.ltiData,
         req.toolConsumer._id,
         req.assignment
@@ -304,7 +304,7 @@ export default class LTIController {
   updateVisit (req) {
     debug('updateVisit')
     if(req.activity) {
-      return VisitModel.updateCreateVisit(
+      return this.visitController.updateCreateVisit(
         req.user,
         req.toolConsumer,
         req.activity,

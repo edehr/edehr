@@ -66,11 +66,18 @@ export function apiMiddle (app, config) {
   const act = new ActivityController()
   const acc = new ActivityDataController()
   const as = new AssignmentController(config)
-  const cc = new ConsumerController()
-  const lti = new LTIController(config)
-  const ic = new IntegrationController()
-  const uc = new UserController(config)
   const vc = new VisitController()
+  const cc = new ConsumerController()
+  const uc = new UserController(config)
+  const lcc = {
+    activityController: act,
+    assignmentController : as,
+    consumerController : cc,
+    userController: uc,
+    visitController: vc
+  }
+  const lti = new LTIController(config, lcc)
+  const ic = new IntegrationController()
   const sd = new SeedDataController()
 
   return Promise.resolve()
