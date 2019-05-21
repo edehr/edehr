@@ -34,6 +34,8 @@ export default class PeriodDefs {
 
   get periodList () { return this._periodList}
 
+  get keyNameList () { return this._periodList.map( e => { return {key: e.key, name: e.name }})}
+
   findPeriod (key) {
     return this._periodList.find(pk => pk.key === key)
   }

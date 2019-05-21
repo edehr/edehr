@@ -639,13 +639,13 @@
         "pageDataKey": "dischargeSummary",
         "label": "Discharge summary",
         "redirect": "",
-        "generateComponent": "yes",
+        "generateComponent": "custom",
         "componentName": "Discharge",
         "dataName": "discharge",
         "fullPath": "/ehr/current/discharge",
         "title": "Discharge",
         "topLevel": "current",
-        "componentPath": "./inside/views"
+        "componentPath": "./inside/custom"
       },
       "children": []
     },

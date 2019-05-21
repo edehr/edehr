@@ -215,7 +215,7 @@ export function inside () {
       path: '/ehr/current/discharge',
       name: 'discharge',
       component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/Discharge.vue'),
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/custom/Discharge.vue'),
       meta: { layout: 'inside', label: 'Discharge summary', topLevel: 'current' }
     },
     {
