@@ -12,12 +12,7 @@ const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
 export default class EhrHelp {
   constructor (component, store, pageKey) {
-    // TODO clean up and remove uiProps argument and commponent
-    // TODO see if the commponent reference is needed to save page form data
-    // TODO make the setup of handlers optional so we can construct an helper for any situation
-    // TODO or refactor this class into a data helper and an event helper.
     debugehr('Construct helper', pageKey)
-    // this.component = component
     this.$store = store
     this.pageKey = pageKey
     this.cacheAsString = ''
@@ -105,7 +100,7 @@ export default class EhrHelp {
 
   getInputValue (def) {
     let inputs = this.currentDialog.inputs
-    var val = inputs[def.elementKey]
+    let val = inputs[def.elementKey]
     // debugehr('helper provides val for key ', val, def.key)
     return val
   }
@@ -114,11 +109,13 @@ export default class EhrHelp {
     return formatTimeStr(d)
   }
   /**
-   Take the component's uiProps and the component's data and combine it into one table.
+   Take the component's definition data and the component's data and combine it into one table.
    Then rotates the table to place the header labels into the first column and
    each following row in a column.
-   Place the result into uiProps.transposedColumns
-   * @param uiProps
+   Place the result into table.transposedColumns
+   * @param pageDef
+   * @param table
+   * @param pageKey
    */
   setupColumnData (pageDef, table, pageKey) {
     let theData = this.getAsLoadedPageData(pageKey)
@@ -128,7 +125,7 @@ export default class EhrHelp {
     table.tableCells.forEach(cell => {
       // console.log('the cell ', cell)
       let hdrCss = 'column_label' + (cell.tableCss ? ' ' + cell.tableCss : '')
-      var entry = {
+      let entry = {
         inputType: cell.inputType,
         title: cell.elementKey,
         tableCss: hdrCss,
@@ -141,8 +138,8 @@ export default class EhrHelp {
       row = []
       table.tableCells.forEach(cell => {
         let valCss = 'column_value' + (cell.tableCss ? ' ' + cell.tableCss : '')
-        var v = item[cell.elementKey]
-        var entry = {
+        let v = item[cell.elementKey]
+        let entry = {
           tableCss: valCss,
           title: v,
           value: v
@@ -151,13 +148,14 @@ export default class EhrHelp {
       })
       columns.push(row)
     })
-    var transpose = columns[0].map((col, i) => columns.map(row => row[i]))
+    let transpose = columns[0].map((col, i) => columns.map(row => row[i]))
     table.isTransposed = true
     table.transposedColumns = transpose
   }
 
   /* ********************* DIALOG  */
   showDialog (tableDef, dialogInputs) {
+    this._setEditing (true)
     let dialog = { tableDef: tableDef, inputs: dialogInputs }
     let key = tableDef.tableKey
     this.dialogMap[key] = dialog
@@ -201,7 +199,7 @@ export default class EhrHelp {
       // debugehr('save dialog data into ', tableKey)
       let asLoadedPageData = this.getAsLoadedPageData(pageKey)
       let table = asLoadedPageData[tableKey] || []
-      // var modifiedValue = data[tableKey] || []
+      // let modifiedValue = data[tableKey] || []
       // modifiedValue = modifiedValue ? JSON.parse(JSON.stringify(modifiedValue)) : []
       // modifiedValue.push(inputs)
       table.push(inputs)
@@ -214,30 +212,55 @@ export default class EhrHelp {
       this._saveData(payload).then(() => {
         _this._emitCloseEvent(tableKey)
       })
-      // this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload).then(() => {
-      //   _this._emitCloseEvent(tableKey)
-      //   _this.$store.commit('system/setLoading', false)
-      // })
     }
   }
 
+  _setLoading (flag) {
+    this.$store.commit('system/setLoading', flag)
+  }
+
+  _setEditing (flag) {
+    this.$store.commit('system/setEditing', flag)
+  }
+
+  _isStudent () {
+    return this.$store.getters['visit/isStudent']
+  }
+
+  _isDevelopingContent () {
+    return this.$store.state.visit.isDevelopingContent
+  }
+
+  _isSubmitted () {
+    return this.$store.getters['ehrData/submitted']
+  }
+
+  /**
+   * Return true if a page form is open for edit.
+   * @return {(function())|default.computed.isEditing|boolean|*}
+   */
+  isEditing () {
+    return this.$store.state.system.isEditing
+  }
+
+
   _saveData (payload) {
     const _this = this
-    _this.$store.commit('system/setLoading', true)
-    let isStudent = this.$store.getters['visit/isStudent']
-    let isDevelopingContent = this.$store.state.visit.isDevelopingContent
+    _this._setLoading(true)
+    let isStudent = this._isStudent()
+    let isDevelopingContent = this._isDevelopingContent()
     if (isStudent) {
       console.log('saving assignment data', payload)
       payload.value = prepareAssignmentPageDataForSave(payload.value)
       return _this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload).then(() => {
-        _this.$store.commit('system/setLoading', false)
+        _this._setLoading(false)
       })
     } else if (isDevelopingContent) {
       payload.id = _this.$store.state.seedStore.sSeedId
       payload.value = removeEmptyProperties(payload.value)
       console.log('saving seed ehr data', payload.id, JSON.stringify(payload.value))
       return _this.$store.dispatch('seedStore/updateSeedEhrProperty', payload).then(() => {
-        _this.$store.commit('system/setLoading', false)
+        _this._setLoading(false)
       })
     } else {
       return Promise.reject('Coding error using _saveData out of context')
@@ -257,6 +280,7 @@ export default class EhrHelp {
   }
 
   _emitCloseEvent (dialogKey) {
+    const _this = this
     let eData = { key: dialogKey, value: false }
     let channel = this.getDialogEventChannel(dialogKey)
     Vue.nextTick(function () {
@@ -264,6 +288,7 @@ export default class EhrHelp {
       // with a payload containing this false
       // debugehr('emit event', eData, 'on', channel)
       EventBus.$emit(channel, eData)
+      _this._setEditing (false)
     })
   }
 
@@ -296,9 +321,9 @@ export default class EhrHelp {
       }
       if (cell.validationRules) {
         cell.validationRules.forEach(rule => {
-          var value = inputs[cell.elementKey]
+          let value = inputs[cell.elementKey]
           if (rule.required && value.length === 0) {
-            var msg = cell.label + ' is required'
+            let msg = cell.label + ' is required'
             debugehr('validateInput', msg)
             d.errorList.push(msg)
           }
@@ -329,10 +354,10 @@ export default class EhrHelp {
 
   _showControl (prop) {
     let show = false
-    let isStudent = this.$store.getters['visit/isStudent']
-    let submitted = this.$store.getters['ehrData/submitted']
+    let isStudent = this._isStudent()
+    let submitted = this._isSubmitted()
     let studentCanEdit = isStudent && !submitted
-    let isDevelopingContent = this.$store.state.visit.isDevelopingContent
+    let isDevelopingContent = this._isDevelopingContent()
     if (studentCanEdit || isDevelopingContent) {
       let pd = getPageDefinition(this.pageKey)
       // console.log('decide to show or not this page def', prop, pd[prop], pd)
@@ -340,19 +365,12 @@ export default class EhrHelp {
     }
     return show
   }
-  /**
-   * Return true if a page form is open for edit.
-   * @return {(function())|default.computed.isEditing|boolean|*}
-   */
-  isEditing () {
-    return this.$store.state.system.isEditing
-  }
 
   /**
    * Begin editing a page form
    */
   beginEdit (pageKey) {
-    this.$store.commit('system/setEditing', true)
+    this._setEditing (true)
     debugehr('beginEdit', this.pageKey, pageKey)
     let asLoadedData = this.getAsLoadedPageData(pageKey)
     let cacheData = JSON.stringify(asLoadedData)
@@ -371,10 +389,10 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
    */
   cancelEdit () {
     const _this = this
-    this.$store.commit('system/setLoading', true)
+    this._setLoading(true)
     this.$store.dispatch('ehrData/restoreActivityData').then(() => {
-      _this.$store.commit('system/setEditing', false)
-      _this.$store.commit('system/setLoading', false)
+      _this._setEditing (false)
+      _this._setLoading(false)
       _this._mergedProperty()
       EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
     })
@@ -386,10 +404,8 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
    */
   saveEdit () {
     let payload = this.pageFormData
-    // let pageKey = this.$store.state.system.currentPageKey
-    // debugehr('saveEdit payload', JSON.stringify(payload))
     this._saveData(payload).then(() => {
-      this.$store.commit('system/setEditing', false)
+      this._setEditing (false)
     })
   }
 
@@ -398,14 +414,19 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
    * @return {boolean}
    */
   unsavedData () {
-    var isEditing = this.$store.state.system.isEditing
-    var result = false
+    let isEditing = this.isEditing()
+    let result = false
     if (isEditing) {
-      let currentData = JSON.stringify(this.pageFormData.value)
-      let cacheData = this.pageFormData.cacheData
-      debugehr('current data', currentData)
-      debugehr('cacheAsString', cacheData)
-      result = cacheData !== currentData
+      if (this.pageFormData) {
+        let currentData = JSON.stringify(this.pageFormData.value)
+        let cacheData = this.pageFormData.cacheData
+        debugehr('current data', currentData)
+        debugehr('cacheAsString', cacheData)
+        result = cacheData !== currentData
+      } else {
+        // a page dialog is open.
+        result = true
+      }
     }
     debugehr('unsaved data?', isEditing, result)
     return result
@@ -423,7 +444,7 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
    */
   beforeRouteLeave (to, from, next) {
     // debugehr('beforeRouteLeave ...', to)
-    var isEditing = this.$store.state.system.isEditing
+    let isEditing = this.isEditing()
     if (isEditing) {
       let unsaved = this.unsavedData()
       // debugehr('beforeRouteLeave ...', unsaved)
@@ -433,7 +454,7 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
           return next(false)
         }
       }
-      this.$store.commit('system/setEditing', false)
+      this._setEditing (false)
     }
     next()
   }
@@ -502,7 +523,7 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
 }
 
 function debugehr (msg) {
-  var args = Array.prototype.slice.call(arguments)
+  let args = Array.prototype.slice.call(arguments)
   args.shift()
   console.log('EHRhlp', msg, args)
 }
