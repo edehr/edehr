@@ -8,8 +8,9 @@ export default class ConsumerController extends BaseController {
   }
 
   initializeApp (KEY) {
+    const _this = this
     return new Promise(function (resolve /* reject */) {
-      ConsumerController.findOneConsumerByKey(KEY)
+      _this.findOneConsumerByKey(KEY)
         .then((found) => {
           debug('Initialize consumer and look for default '+ KEY)
           if (found) {
@@ -22,7 +23,7 @@ export default class ConsumerController extends BaseController {
     })
   }
 
-  static findOneConsumerByKey (key) {
+  findOneConsumerByKey (key) {
     return Consumer.find({oauth_consumer_key: key})
       .then((found) => {
         if (found && found.length > 0) {

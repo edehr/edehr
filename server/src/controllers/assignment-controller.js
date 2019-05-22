@@ -7,8 +7,10 @@ const debug = require('debug')('server')
 const sd = new SeedDataController()
 
 export default class AssignmentController extends BaseController {
-  constructor () {
+  constructor (config) {
     super(Assignment, '_id')
+    this.config = config
+    this.description = config.ehr.defaultAssignmentDescription
   }
 
   _composeQuery (externalId, toolConsumerId) {
@@ -23,7 +25,7 @@ export default class AssignmentController extends BaseController {
     return this.findOne(query)
   }
 
-  createAssignment (externalId, toolConsumerId, resource_link_title, resource_link_description) {
+  createAssignment (externalId, toolConsumerId, resource_link_title) {
     return sd.findOne({toolConsumer: toolConsumerId})
       .then((seed) => {
         if (!seed) {
@@ -33,7 +35,7 @@ export default class AssignmentController extends BaseController {
           toolConsumer: toolConsumerId,
           externalId: externalId,
           name: resource_link_title,
-          description: resource_link_description,
+          description: this.description,
           ehrRoutePath: '',
           seedDataId: seed._id
         }

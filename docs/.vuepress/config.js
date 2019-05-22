@@ -56,7 +56,8 @@ module.exports = {
         title: 'Custom Pages',
         children: [
           '/inside-custom/',
-          '/inside-custom/Med-Admin-Records.md'
+          '/inside-custom/Med-Admin-Records.md',
+          '/inside-custom/Summary-table.md'
         ]
       },
       {

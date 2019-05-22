@@ -1,10 +1,13 @@
-// Generated VUE file. Before modifying see docs about Vue file generation
+// Custom page for Discharge Summary
 <template lang="pug">
   div(class="ehr-page")
     ehr-panel-header {{ uiProps.pageTitle }}
       div(slot="controls", v-show="showPageFormControls")
         ehr-edit-controls(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
     ehr-panel-content
+      div(v-for="key in summaries")
+        ehr-summary-table(:summaryKey="key", :ehrHelp="ehrHelp")
+      hr
       div(class="region ehr-page-content")
         ehr-page-form(v-if="uiProps.hasForm", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey",)
         div(v-if="uiProps.hasTable", v-for="tableDef in uiProps.tables", :key="tableDef.tableKey")
@@ -28,10 +31,13 @@ import EhrPageTable from '../components/EhrPageTable'
 import EhrPageForm from '../components/EhrPageForm.vue'
 import EhrHelp from '../../helpers/ehr-helper'
 import { getPageDefinition } from '../../helpers/ehr-defs'
+import EhrSummaryTable from '../components/EhrSummaryTable.vue'
+import { ESK_Referrals, ESK_LabReqs, ESK_Procedures, ESK_DischargeProcedures, ESK_Medications, ESK_MARS } from '../../helpers/ehr-summary-table'
 
 export default {
   name: 'Discharge',
   components: {
+    EhrSummaryTable,
     EhrPanelHeader,
     EhrPanelContent,
     EhrPageForm,
@@ -40,6 +46,7 @@ export default {
   },
   data: function () {
     return {
+      summaries: [ESK_Referrals, ESK_Medications, ESK_MARS, ESK_Procedures, ESK_DischargeProcedures, ESK_LabReqs],
       pageDataKey: 'dischargeSummary',
       ehrHelp: undefined
     }

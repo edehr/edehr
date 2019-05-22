@@ -41,12 +41,12 @@
 
     div(v-if="inputType === 'fieldset'", class="fieldset_col_wrapper")
       label(v-show="!!label", class="fieldset_label") {{label}} &nbsp;
-      div(v-for="row in element.formFieldSet.rows", :key="row.formRow", class="fieldset_row_row" )
+      div(v-for="row in element.formFieldSet.rows", :key="row.formRow",  v-bind:class="cssFromDefs(element)", class="fieldset_row_row" )
         ehr-dialog-form-element(v-for="fmEl in row.elements", :key="fmEl.elementKey", :inputs="inputs", :element="fmEl", :ehrHelp="ehrHelp")
 
     div(v-if="inputType === 'fieldRowSet'", class="fieldset_row_wrapper")
       label(v-show="!!label", class="fieldset_label") {{label}} &nbsp;
-      div(v-for="row in element.formFieldSet.rows", :key="row.formRow" class="fieldset_row_row" )
+      div(v-for="row in element.formFieldSet.rows", :key="row.formRow",  v-bind:class="cssFromDefs(element)",  class="fieldset_row_row" )
         ehr-dialog-form-element(v-for="fmEl in row.elements", :key="fmEl.elementKey", :inputs="inputs", :element="fmEl", :ehrHelp="ehrHelp")
 
     div(v-if="inputType === 'calculatedValue'", class="computed_wrapper")
@@ -116,8 +116,9 @@ export default {
     }
   },
   methods: {
-    formCss: function (element) {
+    cssFromDefs: function (element) {
       return element.formCss ? element.formCss : 'noClass'
+      // return element.inputType + ' ' + element.elementKey
     },
     emitGlobalClickEvent () {
       const _this = this

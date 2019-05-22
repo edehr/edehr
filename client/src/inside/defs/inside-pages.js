@@ -237,7 +237,7 @@ module.exports = function () {
       pageDataKey: 'dischargeSummary',
       label: 'Discharge summary',
       redirect: '',
-      generateComponent: 'yes'
+      generateComponent: 'custom'
     },
     {
       path: '/ehr/current',
