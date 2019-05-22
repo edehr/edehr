@@ -131,6 +131,8 @@ export default {
 }
 
 .classlist {
+  padding-left: 20px;
+
   .textField {
     max-width: 30rem;
     white-space: nowrap;

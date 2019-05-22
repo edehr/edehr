@@ -11,40 +11,33 @@
     div(class="activity-list-body")
       accordion-element(theme="grayTheme", :show="show")
         div(class="classlist-header")
-          div(class="classlist-header-item") Student analytics
-            fas-icon(class="icon-right", icon="download")
           div(class="classlist-header-item") Evaluation notes
             fas-icon(class="icon-right", icon="download")
         div(class="classlist-body")
           table.table
             thead
               tr
-                th Student name
-                th Email
-                th Student last update
-                th Submission status
-                th &nbsp;
+                th Student
+                th Submitted
                 th Evaluation notes
-                th Evaluation status
+                th Status
+                th
             tbody
               tr(v-for="sv in classList", v-on:click="changeStudent(sv)")
                 td
                   div(:id="`ref-${sv._id}`",  :ref="`ref-${sv._id}`") {{ sv.user.fullName }}
-                td {{ sv.user.emailPrimary }}
                 td {{ lastUpdate(sv) }}
-                td {{ sv.activityData.submitted ? "Yes" : "No"}}
+                td {{ sv.activityData.evaluationData }}
+                td {{ statusText(sv) }}
+                td.actions
                   span(v-if="sv.activityData.submitted && !sv.activityData.evaluated")
                     span &nbsp;
                     ui-button(v-on:buttonClicked="unsubmit(sv)", v-bind:secondary="true", :title="unsubmitTool") {{unsubmitText}}
-                td
-                  span &nbsp;
                   span(v-if="sv.activityData.submitted && !sv.activityData.evaluated")
-                    ui-button(v-on:buttonClicked="goToEhr(sv)", title="View and evaluate in the EHR")
-                      fas-icon(icon="notes-medical")
-                td {{ sv.activityData.evaluationData }}
-                td {{ sv.activityData.evaluated ? "Yes" : "No" }}
+                    ui-button(v-on:buttonClicked="goToEhr(sv)", v-bind:secondary="true", title="View and evaluate in the EHR") Evaluate student work
                   span(v-if="showEvaluateAction(sv)") &nbsp;
                     ui-button(v-on:buttonClicked="markEvaluated(sv)", v-bind:secondary="true", :title="evaluatedButtonTooltip(sv)") {{ evaluatedButtonText(sv) }}
+
 </template>
 
 <script>
@@ -63,8 +56,8 @@ export default {
     return {
       show: false,
       indicator: '+',
-      unsubmitText: 'Unsubmit',
-      unsubmitTool: 'Give the student a chance to edit their work',
+      unsubmitText: 'Send back for edits',
+      unsubmitTool: 'Send back for edits',
       classList: []
     }
   },
@@ -81,10 +74,13 @@ export default {
   },
   methods: {
     evaluatedButtonText (sv) {
-      return sv.activityData.evaluated ? 'Take back from student' : 'Send to student'
+      return sv.activityData.evaluated ? 'Take back from student' : 'Send evaluation to student'
     },
     evaluatedButtonTooltip (sv) {
       return sv.activityData.evaluated ? 'I want to edit the evaluation notes' : 'Evaluation is done. Let the student see the evaluation notes.'
+    },
+    showEvaluateLabel (sv) {
+      return sv.activityData.evaluated
     },
     showEvaluateAction (sv) {
       return sv.activityData.submitted && sv.activityData.evaluationData
@@ -92,6 +88,12 @@ export default {
     setShow: function (value) {
       this.show = value
       this.indicator = value ? '-' : '+'
+    },
+    statusText (sv) {
+      let result = sv.activityData.submitted ? "Submitted and waiting for evaluation" : "Not submitted"
+      
+      result = sv.activityData.evaluated ? "Evaluated" : result
+      return result
     },
     activateActivity () {
       if (this.show) {
@@ -187,6 +189,7 @@ export default {
 }
 .activity-list-header {
   background-color: $grey03;
+  border: 1px solid rgba(255, 255, 255, 0);
   margin-bottom: 0;
   cursor: pointer;
 
@@ -226,8 +229,26 @@ export default {
     overflow: hidden;
   }
   .table {
+    margin-bottom: 0;
     overflow: hidden;
     width: 100%;
+    button {
+      margin-bottom: 0;
+    }
+    tr:last-child {
+      border-bottom: 0;
+    }
+    td.actions {
+      text-align: right;
+      & button {
+        margin-left: 20px;
+      }
+    }
   }
+}
+.activity-list:hover .activity-list-header {
+  background-color: $brand-primary-light;
+  box-sizing: border-box;
+  border: 1px solid $brand-primary;
 }
 </style>
