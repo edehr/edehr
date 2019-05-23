@@ -71,9 +71,10 @@ export default {
       return element.formCss ? element.formCss : css
     },
     refresh () {
-      // console.log('EhrPageForm rehresh for page key', this.pageDataKey)
-      this.theData = this.ehrHelp.getAsLoadedPageData(this.pageDataKey)
-      // console.log('EhrPageForm rehresh found data', this.theData)
+      let d = this.ehrHelp.getAsLoadedPageData(this.pageDataKey)
+      // console.log('EhrPageForm refresh for page key', this.pageDataKey)
+      // console.log('EhrPageForm refresh found data', d)
+      this.theData = d
     }
   },
   mounted: function () {

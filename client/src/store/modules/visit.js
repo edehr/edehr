@@ -87,7 +87,7 @@ const actions = {
           // visitInfo.activityData contains the id of the ActivityData record
           let ad_id = visitInfo.activityData
           // console.log('dispatch load active data and assignment', ad_id)
-          console.log('load visit a_id, ad_id, visitInfo', a_id, ad_id, visitInfo)
+          // console.log('load visit a_id, ad_id, visitInfo', a_id, ad_id, visitInfo)
           let options = { root: true }
           return Promise.all([
             context.dispatch('ehrData/loadActivityData', { forStudent: true, id: ad_id }, options),

@@ -12,7 +12,7 @@ const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
 export default class EhrHelp {
   constructor (component, store, pageKey) {
-    debugehr('Construct helper', pageKey)
+    // console.log('Construct helper', pageKey)
     this.$store = store
     this.pageKey = pageKey
     this.cacheAsString = ''
@@ -73,14 +73,14 @@ export default class EhrHelp {
   }
 
   beforeDestroy (pageKey) {
-    debugehr('Before destroy', this.pageKey, pageKey)
+    // console.log('Before destroy', this.pageKey, pageKey)
     this._takeDownEventHandlers(pageKey)
   }
   /* ********************* DATA  */
 
   // getPageDefinition (pageKey) {
   //   let pageDef = pageDefs[pageKey]
-  //   // debugehr('getPageDefinition ' + pageKey, pageDef)
+  //   // console.log('getPageDefinition ' + pageKey, pageDef)
   //   return pageDef
   // }
 
@@ -101,7 +101,7 @@ export default class EhrHelp {
   getInputValue (def) {
     let inputs = this.currentDialog.inputs
     let val = inputs[def.elementKey]
-    // debugehr('helper provides val for key ', val, def.key)
+    // console.log('helper provides val for key ', val, def.key)
     return val
   }
 
@@ -165,7 +165,7 @@ export default class EhrHelp {
     this._clearDialogInputs(key)
     let eData = { key: key, value: true }
     let channel = this.getDialogEventChannel(key)
-    debugehr('showDialog emit message to channel ' + channel + ' for key' + key + ' tableDef', tableDef)
+    // console.log('showDialog emit message to channel ' + channel + ' for key' + key + ' tableDef', tableDef)
     EventBus.$emit(channel, eData)
   }
 
@@ -183,7 +183,7 @@ export default class EhrHelp {
   }
 
   cancelDialog (tableKey) {
-    // debugehr('cancel dialog (indexed by tableKey)', tableKey)
+    // console.log('cancel dialog (indexed by tableKey)', tableKey)
     this._clearDialogInputs(tableKey)
     this._emitCloseEvent(tableKey)
   }
@@ -191,19 +191,19 @@ export default class EhrHelp {
   saveDialog (pageKey, tableKey) {
     const _this = this
     if (this._validateInputs(tableKey)) {
-      // debugehr('saveDialog for page/table', pageKey, tableKey)
+      // console.log('saveDialog for page/table', pageKey, tableKey)
       let dialog = this.dialogMap[tableKey]
-      // debugehr('saveDialog', dialog, 'data', data)
+      // console.log('saveDialog', dialog, 'data', data)
       let inputs = dialog.inputs
       inputs.createdDate = moment().format()
-      // debugehr('save dialog data into ', tableKey)
+      // console.log('save dialog data into ', tableKey)
       let asLoadedPageData = this.getAsLoadedPageData(pageKey)
       let table = asLoadedPageData[tableKey] || []
       // let modifiedValue = data[tableKey] || []
       // modifiedValue = modifiedValue ? JSON.parse(JSON.stringify(modifiedValue)) : []
       // modifiedValue.push(inputs)
       table.push(inputs)
-      // debugehr('storing this: ', asLoadedPageData, tableKey, dialog.tableKey)
+      // console.log('storing this: ', asLoadedPageData, tableKey, dialog.tableKey)
       // Prepare a payload to tell the API which property inside the assignment data to change
       let payload = {
         propertyName: pageKey,
@@ -250,7 +250,7 @@ export default class EhrHelp {
     let isStudent = this._isStudent()
     let isDevelopingContent = this._isDevelopingContent()
     if (isStudent) {
-      console.log('saving assignment data', payload)
+      // console.log('saving assignment data', payload)
       payload.value = prepareAssignmentPageDataForSave(payload.value)
       return _this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload).then(() => {
         _this._setLoading(false)
@@ -258,7 +258,7 @@ export default class EhrHelp {
     } else if (isDevelopingContent) {
       payload.id = _this.$store.state.seedStore.sSeedId
       payload.value = removeEmptyProperties(payload.value)
-      console.log('saving seed ehr data', payload.id, JSON.stringify(payload.value))
+      // console.log('saving seed ehr data', payload.id, JSON.stringify(payload.value))
       return _this.$store.dispatch('seedStore/updateSeedEhrProperty', payload).then(() => {
         _this._setLoading(false)
       })
@@ -274,7 +274,7 @@ export default class EhrHelp {
   }
 
   getErrorList (dialogKey) {
-    // debugehr('get error list for key', dialogKey)
+    // console.log('get error list for key', dialogKey)
     let d = this.dialogMap[dialogKey]
     return d ? d.errorList : []
   }
@@ -286,19 +286,19 @@ export default class EhrHelp {
     Vue.nextTick(function () {
       // Send an event on our transmission channel
       // with a payload containing this false
-      // debugehr('emit event', eData, 'on', channel)
+      // console.log('emit event', eData, 'on', channel)
       EventBus.$emit(channel, eData)
       _this._setEditing (false)
     })
   }
 
   _clearDialogInputs (key) {
-    // debugehr('clear dialog for key ', key)
+    // console.log('clear dialog for key ', key)
     let d = this.dialogMap[key]
     let cells = d.tableDef.tableCells
     let inputs = d.inputs
-    // debugehr('clear dialog inputs', inputs)
-    // debugehr('clear dialog cells', cells)
+    // console.log('clear dialog inputs', inputs)
+    // console.log('clear dialog cells', cells)
     // TODO check that default values are working
     cells.forEach(cell => {
       inputs[cell.elementKey] = cell.defaultValue ? cell.defaultValue : '' //cell.defaultValue(this.$store) : ''
@@ -309,11 +309,11 @@ export default class EhrHelp {
 
   // TODO validation will need rework as part of the DDD refactor
   _validateInputs (key) {
-    // debugehr('validate dialog for key' + key)
+    // console.log('validate dialog for key' + key)
     let d = this.dialogMap[key]
     let cells = d.tableDef.tableCells
     let inputs = d.inputs
-    // debugehr('what is in the inputs? ', inputs)
+    // console.log('what is in the inputs? ', inputs)
     d.errorList = []
     cells.forEach(cell => {
       if (cell.type === 'text') {
@@ -324,7 +324,7 @@ export default class EhrHelp {
           let value = inputs[cell.elementKey]
           if (rule.required && value.length === 0) {
             let msg = cell.label + ' is required'
-            debugehr('validateInput', msg)
+            console.log('validateInput', msg)
             d.errorList.push(msg)
           }
         })
@@ -371,7 +371,7 @@ export default class EhrHelp {
    */
   beginEdit (pageKey) {
     this._setEditing (true)
-    debugehr('beginEdit', this.pageKey, pageKey)
+    // console.log('beginEdit', this.pageKey, pageKey)
     let asLoadedData = this.getAsLoadedPageData(pageKey)
     let cacheData = JSON.stringify(asLoadedData)
     this.pageFormData = {
@@ -420,15 +420,15 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
       if (this.pageFormData) {
         let currentData = JSON.stringify(this.pageFormData.value)
         let cacheData = this.pageFormData.cacheData
-        debugehr('current data', currentData)
-        debugehr('cacheAsString', cacheData)
+        // console.log('current data', currentData)
+        // console.log('cacheAsString', cacheData)
         result = cacheData !== currentData
       } else {
         // a page dialog is open.
         result = true
       }
     }
-    debugehr('unsaved data?', isEditing, result)
+    // console.log('unsaved data?', isEditing, result)
     return result
   }
 
@@ -443,11 +443,11 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
    * @return {*}
    */
   beforeRouteLeave (to, from, next) {
-    // debugehr('beforeRouteLeave ...', to)
+    // console.log('beforeRouteLeave ...', to)
     let isEditing = this.isEditing()
     if (isEditing) {
       let unsaved = this.unsavedData()
-      // debugehr('beforeRouteLeave ...', unsaved)
+      // console.log('beforeRouteLeave ...', unsaved)
       if (unsaved) {
         if (!window.confirm(LEAVE_PROMPT)) {
           // unsaved data and the user wants to stay
@@ -466,9 +466,9 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
    */
   beforeUnloadListener (event) {
     let e = event || window.event
-    // debugehr('beforeunload ...', e)
+    // console.log('beforeunload ...', e)
     let unsaved = this.unsavedData()
-    // debugehr('beforeunload ...', unsaved)
+    // console.log('beforeunload ...', unsaved)
     if (unsaved) {
       // according to specs use preventDefault too.
       e.preventDefault()
@@ -496,8 +496,8 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
     let elementKey = def.elementKey
     let value = eData.value
     let d = this.dialogMap[tableKey]
-    console.log(`handle dialog input change for key ${tableKey}`)
-    console.log(`On event from ${tableKey} ${elementKey} with dialog: ${d}`)
+    // console.log(`handle dialog input change for key ${tableKey}`)
+    // console.log(`On event from ${tableKey} ${elementKey} with dialog: ${d}`)
     let inputs = d.inputs
     inputs[elementKey] = value
   }
@@ -506,8 +506,8 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
     let element = eData.element
     let elementKey = element.elementKey
     let value = eData.value
-    console.log('_handlePageFormInputChangeEvent', this.pageKey, element.pageDataKey)
-    console.log(`Input change event from ${elementKey} value: ${value}`)
+    // console.log('_handlePageFormInputChangeEvent', this.pageKey, element.pageDataKey)
+    // console.log(`Input change event from ${elementKey} value: ${value}`)
     let pageData = this.pageFormData.value
     // let oldVal = pageData[elementKey]
     pageData[elementKey] = value
@@ -515,15 +515,9 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
 
   _handleActivityDataChangeEvent (eData) {
     // let pageKey = eData.pageKey
-    let pageKey = this.pageKey
-    console.log('Activity data changed. Trigger a load and refresh', pageKey)
-    this.getAsLoadedPageData(pageKey)
+    // let pageKey = this.pageKey
+    // console.log('Activity data changed. Trigger a load and refresh', pageKey)
+    // this.getAsLoadedPageData(pageKey)
     EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
   }
-}
-
-function debugehr (msg) {
-  let args = Array.prototype.slice.call(arguments)
-  args.shift()
-  console.log('EHRhlp', msg, args)
 }

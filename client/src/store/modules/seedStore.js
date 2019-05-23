@@ -28,12 +28,12 @@ const actions = {
   loadSeedContent (context) {
     let seedId = context.state.sSeedId
     let url = composeUrl(context, API) + 'get/' + seedId
-    console.log('loadSeedContent', seedId, url)
+    // console.log('loadSeedContent', seedId, url)
     return helper.getRequest(context, url).then(response => {
       let sd = response.data.seeddata
       let ehrd = sd.ehrData || {}
-      console.log('seedStore stash sd', sd)
-      console.log('seedStore stash ehrd', ehrd)
+      // console.log('seedStore stash sd', sd)
+      // console.log('seedStore stash ehrd', ehrd)
       context.commit('_setSeedContent', sd)
       context.commit('_setSeedEhrData', ehrd)
     })
@@ -64,10 +64,10 @@ const actions = {
    */
   createSeedItem (context, payload) {
     let url = composeUrl(context, API)
-    console.log('send seed data ', url, payload)
+    // console.log('send seed data ', url, payload)
     return helper.postRequest(context, url, payload).then(results => {
-      let resultsData = results.data
-      console.log('assignment commit seed data with new data', JSON.stringify(resultsData))
+      // let resultsData = results.data
+      // console.log('assignment commit seed data with new data', JSON.stringify(resultsData))
       return context.dispatch('loadSeedDataList')
     })
   },
@@ -83,17 +83,17 @@ const actions = {
     let id = dataIdPlusPayload.id
     let payload = dataIdPlusPayload.payload
     let url = composeUrl(context, API) + id
-    console.log('updateSeedData', url, payload)
+    // console.log('updateSeedData', url, payload)
     return helper
       .putRequest(context, url, payload)
       .then(results => {
         // let resultsData = results.data
-        console.log('after seed update reload seed list')
+        // console.log('after seed update reload seed list')
         return context.dispatch('loadSeedDataList')
       })
       .then(() => {
         if (context.state.sSeedId) {
-          console.log('after seed update reload current seed item')
+          // console.log('after seed update reload current seed item')
           return context.dispatch('loadSeedContent')
         }
       })
@@ -112,16 +112,16 @@ const actions = {
    */
   updateSeedEhrProperty (context, payload) {
     let url = composeUrl(context, API) + 'updateSeedEhrProperty/' + payload.id
-    console.log('updateSeedEhrProperty', url, payload)
+    // console.log('updateSeedEhrProperty', url, payload)
     return helper
       .putRequest(context, url, payload)
       .then(results => {
-        console.log('after seed update ehr data reload seed list')
+        // console.log('after seed update ehr data reload seed list')
         return context.dispatch('loadSeedDataList')
       })
       .then(() => {
         if (context.state.sSeedId) {
-          console.log('after seed update ehr data reload current seed item')
+          // console.log('after seed update ehr data reload current seed item')
           return context.dispatch('loadSeedContent')
         }
       })
@@ -135,16 +135,16 @@ const actions = {
    */
   updateSeedEhrData (context, payload) {
     let url = composeUrl(context, API) + 'updateSeedEhrData/' + payload.id
-    console.log('updateSeedEhrProperty', url, payload.ehrData)
+    // console.log('updateSeedEhrProperty', url, payload.ehrData)
     return helper
       .putRequest(context, url, payload.ehrData)
       .then(results => {
-        console.log('after seed replace ehr data reload seed list')
+        // console.log('after seed replace ehr data reload seed list')
         return context.dispatch('loadSeedDataList')
       })
       .then(() => {
         if (context.state.sSeedId) {
-          console.log('after seed replace ehr data reload current seed item')
+          // console.log('after seed replace ehr data reload current seed item')
           return context.dispatch('loadSeedContent')
         }
       })
@@ -158,11 +158,11 @@ const mutations = {
     state.sSeedId = seedId
   },
   _setSeedContent: (state, value) => {
-    console.log('setting seed content ', value)
+    // console.log('setting seed content ', value)
     state.sSeedContent = value
   },
   _setSeedEhrData: (state, value) => {
-    console.log('setting seed data _setSeedEhrData ', value)
+    // console.log('setting seed data _setSeedEhrData ', value)
     state.ehrSeedData = value
   },
   _setSeedDataList: (state, list) => {
