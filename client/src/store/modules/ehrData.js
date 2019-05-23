@@ -43,41 +43,55 @@ const getters = {
     // So decouple the objects ... just in case
     let ehrSeedData = decoupleObject(rootState.seedStore.ehrSeedData)
     let mData
+    const debug = false
     if (helper.instoreIsDevContent(rootState)) {
       mData = ehrSeedData
-      console.log('mergedData: Develop seed', ehrSeedData)
+      if(debug) {
+        console.log('EhrData mergedData -=-=-=-=-=-=-=-=-=-=-=-= Develop seed', ehrSeedData)
+      }
     } else if (helper.instoreIsInstructor(rootState)) {
       let evalAssignmentData = decoupleObject(state.sCurrentStudentData.assignmentData)
+      if(debug) {
+        console.log('EhrData mergedData -=-=-=-=-=-=-=-=-=-=-=-= ehrSeedData', ehrSeedData)
+        console.log('EhrData mergedData -=-=-=-=-=-=-=-=-=-=-=-= sCurrentStudentData.assignmentData', evalAssignmentData)
+        console.log('EhrData mergedData -=-=-=-=-=-=-=-=-=-=-=-= Instructor result', mData)
+      }
       mData = ehrMergeEhrData(ehrSeedData, evalAssignmentData)
-      console.log('mergedData: Instructor result', mData)
     } else {
       // mark all elements in the page arrays to allow us to
       // strip the seed data out before saving
       ehrSeedData = ehrMarkSeed(ehrSeedData)
       let studentAssignmentData = decoupleObject(state.sActivityData.assignmentData)
       mData = ehrMergeEhrData(ehrSeedData, studentAssignmentData)
-      console.log('mergedData: Student result', mData)
+      if(debug) {
+        console.log('EhrData mergedData -=-=-=-=-=-=-=-=-=-=-=-= ehrSeedData', ehrSeedData)
+        console.log('EhrData mergedData -=-=-=-=-=-=-=-=-=-=-=-= studentAssignmentData', studentAssignmentData)
+        console.log('EhrData mergedData -=-=-=-=-=-=-=-=-=-=-=-= Student result', mData)
+      }
     }
     return mData
   },
   asLoadedDataForPageKey (state, getters, rootState) {
+    const debug = false
     return pageKey => {
       let mergedData = getters.mergedData
       // let pageKey = rootState.system.currentPageKey
       let pageData = mergedData[pageKey]
-      // console.log('EhrData asLoadedDataForPageKey -=-=-=-=-=-=-=-=-=-=-=-=', pageKey, mergedData)
+      if(debug) console.log('EhrData asLoadedDataForPageKey -=-=-=-=-=-=-=-=-=-=-=-= key and page data:', pageKey, pageData)
       if (!pageData) {
         let pageDef = getPageDefinition(pageKey)
         if (!pageKey || !pageDef) {
-          // console.log('EhrData asLoadedDataForPageKey ................ too soon')
+          if(debug) console.log('EhrData asLoadedDataForPageKey ................ too soon')
           return {}
         }
-        let defaultPageValue = pageDef.pageData
+        // Decouple default page def from original or else any editing will also affect the defined default.
+        // We need to keep the defined default clean so we can use it to restore a page after a canceled edit.
+        let defaultPageValue = decoupleObject(pageDef.pageData)
         if (!defaultPageValue) {
           defaultPageValue = {}
-          // console.log('asLoadedDataForPageKey page defs did not spec a default so create one ', defaultPageValue)
+          if(debug) console.log('asLoadedDataForPageKey page defs did not spec a default so create one ', defaultPageValue)
         } else {
-          // console.log('asLoadedDataForPageKey page default data is ', JSON.stringify(defaultPageValue))
+          if(debug) console.log('asLoadedDataForPageKey page default data is ', JSON.stringify(defaultPageValue))
         }
         pageData = defaultPageValue
         mergedData[pageKey] = defaultPageValue
@@ -173,22 +187,18 @@ const actions = {
   },
 
   sendAssignmentDataUpdate (context, payload) {
-    let visitState = context.rootState.visit
-    let apiUrl = visitState.apiUrl
-    let activityDataId = context.state.sActivityData._id
-    console.log(
-      'sendAssignmentDataUpdate activityDataId, apiUrl, property: ',
-      activityDataId,
-      apiUrl,
-      payload.propertyName
-    )
-    let url = `${apiUrl}/activity-data/assignment-data/${activityDataId}`
     // Update the contents of the current visit's activityData.assignmentData.
     // Payload must have form similar to
     // let payload = {
-    //   property: 'progressNotes',
+    //   propertyName: 'progressNotes',
     //   value: value
     // }
+    let visitState = context.rootState.visit
+    let apiUrl = visitState.apiUrl
+    let adi = context.state.sActivityData._id
+    // let pn = payload.propertyName
+    // console.log('sendAssignmentDataUpdate activityDataId, apiUrl, property: ', adi, apiUrl, pn)
+    let url = `${apiUrl}/activity-data/assignment-data/${adi}`
     return helper.putRequest(context, url, payload).then(results => {
       let activityData = results.data
       // console.log('ehrData commit activityData with new assignmentData', JSON.stringify(activityData.assignmentData))

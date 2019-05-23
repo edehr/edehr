@@ -58,7 +58,7 @@ export default function () {
           fqn: "visit.table.transferInTime"
         }
       ],
-      generated: "2019-05-16T15:16:57-07:00",
+      generated: "2019-05-23T13:52:36-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -282,22 +282,22 @@ export default function () {
       pageDataKey: "vitals",
       pageChildren: [
         {
-          label: "Name",
+          label: "Entered by name",
           elementKey: "name",
           fqn: "vitals.table.name"
         },
         {
-          label: "Profession",
+          label: "Entered by profession",
           elementKey: "profession",
           fqn: "vitals.table.profession"
         },
         {
-          label: "Entry day",
+          label: "Entered on day",
           elementKey: "entryDay",
           fqn: "vitals.table.entryDay"
         },
         {
-          label: "Entry time",
+          label: "Entered at time",
           elementKey: "entryTime",
           fqn: "vitals.table.entryTime"
         },
@@ -382,7 +382,7 @@ export default function () {
           fqn: "vitals.table.flowRate"
         }
       ],
-      generated: "2019-05-16T15:16:57-07:00",
+      generated: "2019-05-23T13:52:36-07:00",
       hasTable: true,
       tables: [
         {
@@ -390,7 +390,7 @@ export default function () {
           addButtonText: "Add vital signs",
           tableCells: [
             {
-              label: "Name",
+              label: "Entered by name",
               pageDataKey: "vitals",
               level2Key: "table",
               elementKey: "name",
@@ -404,7 +404,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Profession",
+              label: "Entered by profession",
               pageDataKey: "vitals",
               level2Key: "table",
               elementKey: "profession",
@@ -418,7 +418,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Entry day",
+              label: "Entered on day",
               pageDataKey: "vitals",
               level2Key: "table",
               elementKey: "entryDay",
@@ -432,7 +432,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Entry time",
+              label: "Entered at time",
               pageDataKey: "vitals",
               level2Key: "table",
               elementKey: "entryTime",
@@ -704,7 +704,7 @@ export default function () {
                 formRow: "1",
                 elements: [
                   {
-                    label: "Name",
+                    label: "Entered by name",
                     pageDataKey: "vitals",
                     level2Key: "table",
                     elementKey: "name",
@@ -718,7 +718,7 @@ export default function () {
                     tableKey: "table"
                   },
                   {
-                    label: "Profession",
+                    label: "Entered by profession",
                     pageDataKey: "vitals",
                     level2Key: "table",
                     elementKey: "profession",
@@ -732,7 +732,7 @@ export default function () {
                     tableKey: "table"
                   },
                   {
-                    label: "Entry day",
+                    label: "Entered on day",
                     pageDataKey: "vitals",
                     level2Key: "table",
                     elementKey: "entryDay",
@@ -746,7 +746,7 @@ export default function () {
                     tableKey: "table"
                   },
                   {
-                    label: "Entry time",
+                    label: "Entered at time",
                     pageDataKey: "vitals",
                     level2Key: "table",
                     elementKey: "entryTime",
@@ -1057,25 +1057,25 @@ export default function () {
       pageDataKey: "fluidBalance",
       pageChildren: [
         {
-          label: "Name",
+          label: "Entered by name",
           elementKey: "name",
           fqn: "fluidBalance.table.name",
           dataCaseStudy: "Jason"
         },
         {
-          label: "Profession",
+          label: "Entered by profession",
           elementKey: "profession",
           fqn: "fluidBalance.table.profession",
           dataCaseStudy: "RN"
         },
         {
-          label: "Day",
+          label: "Entered on day",
           elementKey: "day",
           fqn: "fluidBalance.table.day",
           dataCaseStudy: "0"
         },
         {
-          label: "Time",
+          label: "Entered at time",
           elementKey: "time",
           fqn: "fluidBalance.table.time",
           dataCaseStudy: "0.8125"
@@ -1091,7 +1091,7 @@ export default function () {
           fqn: "fluidBalance.table.fluidOut"
         }
       ],
-      generated: "2019-05-16T15:16:57-07:00",
+      generated: "2019-05-23T13:52:36-07:00",
       hasTable: true,
       tables: [
         {
@@ -1099,7 +1099,7 @@ export default function () {
           addButtonText: "Add a fluid in/out record",
           tableCells: [
             {
-              label: "Name",
+              label: "Entered by name",
               pageDataKey: "fluidBalance",
               level2Key: "table",
               elementKey: "name",
@@ -1113,7 +1113,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Profession",
+              label: "Entered by profession",
               pageDataKey: "fluidBalance",
               level2Key: "table",
               elementKey: "profession",
@@ -1127,7 +1127,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Day",
+              label: "Entered on day",
               pageDataKey: "fluidBalance",
               level2Key: "table",
               elementKey: "day",
@@ -1141,7 +1141,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Time",
+              label: "Entered at time",
               pageDataKey: "fluidBalance",
               level2Key: "table",
               elementKey: "time",
@@ -1188,7 +1188,7 @@ export default function () {
                 formRow: "1",
                 elements: [
                   {
-                    label: "Name",
+                    label: "Entered by name",
                     pageDataKey: "fluidBalance",
                     level2Key: "table",
                     elementKey: "name",
@@ -1202,7 +1202,7 @@ export default function () {
                     tableKey: "table"
                   },
                   {
-                    label: "Profession",
+                    label: "Entered by profession",
                     pageDataKey: "fluidBalance",
                     level2Key: "table",
                     elementKey: "profession",
@@ -1216,7 +1216,7 @@ export default function () {
                     tableKey: "table"
                   },
                   {
-                    label: "Day",
+                    label: "Entered on day",
                     pageDataKey: "fluidBalance",
                     level2Key: "table",
                     elementKey: "day",
@@ -1230,7 +1230,7 @@ export default function () {
                     tableKey: "table"
                   },
                   {
-                    label: "Time",
+                    label: "Entered at time",
                     pageDataKey: "fluidBalance",
                     level2Key: "table",
                     elementKey: "time",
@@ -1291,25 +1291,25 @@ export default function () {
       pageDataKey: "neurological",
       pageChildren: [
         {
-          label: "Name",
+          label: "Entered by name",
           elementKey: "name",
           fqn: "neurological.table.name",
           dataCaseStudy: "Jason"
         },
         {
-          label: "Profession",
+          label: "Entered by profession",
           elementKey: "profession",
           fqn: "neurological.table.profession",
           dataCaseStudy: "RN"
         },
         {
-          label: "Day",
+          label: "Entered on day",
           elementKey: "day",
           fqn: "neurological.table.day",
           dataCaseStudy: "0"
         },
         {
-          label: "Time",
+          label: "Entered at time",
           elementKey: "time",
           fqn: "neurological.table.time",
           dataCaseStudy: "0.8125"
@@ -1535,7 +1535,7 @@ export default function () {
           defaultValue: "0"
         }
       ],
-      generated: "2019-05-16T15:16:57-07:00",
+      generated: "2019-05-23T13:52:36-07:00",
       hasTable: true,
       tables: [
         {
@@ -1544,7 +1544,7 @@ export default function () {
           addButtonText: "Add a neurological assessment",
           tableCells: [
             {
-              label: "Name",
+              label: "Entered by name",
               pageDataKey: "neurological",
               level2Key: "table",
               elementKey: "name",
@@ -1558,7 +1558,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Profession",
+              label: "Entered by profession",
               pageDataKey: "neurological",
               level2Key: "table",
               elementKey: "profession",
@@ -1572,7 +1572,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Day",
+              label: "Entered on day",
               pageDataKey: "neurological",
               level2Key: "table",
               elementKey: "day",
@@ -1586,7 +1586,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Time",
+              label: "Entered at time",
               pageDataKey: "neurological",
               level2Key: "table",
               elementKey: "time",
@@ -2054,6 +2054,22 @@ export default function () {
               formColumn: "2"
             },
             {
+              label: "<b>Resources</b><p><a target=\"_blank\" href=\"/assets/standardized-assessment-tools/Morse-Fall-Scale-score.png\">Morse Fall Score </a></br><a target=\"_blank\" href=\"/assets/standardized-assessment-tools/mini-mental-health-screen.pdf\">Mini-mental state examination (MMSE)</a></p>",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              elementKey: "resources",
+              inputType: "form_label",
+              formRow: "4",
+              formColumn: "1",
+              formCss: "is-one-third",
+              tableCss: "hideLabel",
+              fsetRow: "3",
+              fsetCol: "3",
+              dataParent: "neurological.table",
+              fqn: "neurological.table.resources",
+              tableKey: "table"
+            },
+            {
               label: "Right pupil response to light",
               pageDataKey: "neurological",
               level2Key: "table",
@@ -2130,27 +2146,10 @@ export default function () {
               formColumn: "1",
               formCss: "is-two-thirds",
               tableColumn: "28",
-              fsetRow: "8",
+              fsetRow: "3",
               fsetCol: "1",
               dataParent: "neurological.table",
               fqn: "neurological.table.comments",
-              tableKey: "table"
-            },
-            {
-              label: "<b>Resources</b><p><a target=\"_blank\" href=\"/assets/standardized-assessment-tools/Morse-Fall-Scale-score.png\">Morse Fall Score </a></br><a target=\"_blank\" href=\"/assets/standardized-assessment-tools/mini-mental-health-screen.pdf\">Mini-mental state examination (MMSE)</a></p>",
-              pageDataKey: "neurological",
-              level2Key: "table",
-              elementKey: "resources",
-              inputType: "form_label",
-              formRow: "4",
-              formColumn: "1",
-              formCss: "is-one-third",
-              tableColumn: "29",
-              tableCss: "hideLabel",
-              fsetRow: "8",
-              fsetCol: "2",
-              dataParent: "neurological.table",
-              fqn: "neurological.table.resources",
               tableKey: "table"
             },
             {
@@ -2162,7 +2161,7 @@ export default function () {
               formRow: "5",
               formColumn: "1",
               formCss: "fieldset_row",
-              tableColumn: "30",
+              tableColumn: "29",
               dataParent: "neurological.table",
               fqn: "neurological.table.stroke",
               containerType: "fieldset",
@@ -2178,7 +2177,7 @@ export default function () {
               elementKey: "levelOfConciousness",
               inputType: "select",
               formCss: "is-one-third",
-              tableColumn: "31",
+              tableColumn: "30",
               fsetRow: "1",
               fsetCol: "1",
               options: [
@@ -2209,7 +2208,7 @@ export default function () {
               elementKey: "levelOfConciousnessQuestions",
               inputType: "select",
               formCss: "is-one-third",
-              tableColumn: "32",
+              tableColumn: "31",
               fsetRow: "1",
               fsetCol: "2",
               options: [
@@ -2237,7 +2236,7 @@ export default function () {
               elementKey: "levelOfConciousnessCommands",
               inputType: "select",
               formCss: "is-one-third",
-              tableColumn: "33",
+              tableColumn: "32",
               tableCss: "hr-table",
               fsetRow: "1",
               fsetCol: "3",
@@ -2266,7 +2265,7 @@ export default function () {
               elementKey: "motorLeftArm",
               inputType: "select",
               formCss: "is-one-third",
-              tableColumn: "34",
+              tableColumn: "33",
               fsetRow: "2",
               fsetCol: "1",
               options: [
@@ -2300,7 +2299,7 @@ export default function () {
               elementKey: "motorRightArm",
               inputType: "select",
               formCss: "is-one-third",
-              tableColumn: "35",
+              tableColumn: "34",
               fsetRow: "2",
               fsetCol: "2",
               options: [
@@ -2334,7 +2333,7 @@ export default function () {
               elementKey: "motorLeftLeg",
               inputType: "select",
               formCss: "is-one-third",
-              tableColumn: "36",
+              tableColumn: "35",
               fsetRow: "3",
               fsetCol: "1",
               options: [
@@ -2368,7 +2367,7 @@ export default function () {
               elementKey: "motorRightLeg",
               inputType: "select",
               formCss: "is-one-third",
-              tableColumn: "37",
+              tableColumn: "36",
               fsetRow: "3",
               fsetCol: "2",
               options: [
@@ -2402,7 +2401,7 @@ export default function () {
               elementKey: "limbAtaxia",
               inputType: "select",
               formCss: "is-one-third",
-              tableColumn: "38",
+              tableColumn: "37",
               tableCss: "hr-table",
               fsetRow: "3",
               fsetCol: "3",
@@ -2431,7 +2430,7 @@ export default function () {
               elementKey: "bestGaze",
               inputType: "select",
               formCss: "is-one-third",
-              tableColumn: "39",
+              tableColumn: "38",
               fsetRow: "4",
               fsetCol: "1",
               options: [
@@ -2459,7 +2458,7 @@ export default function () {
               elementKey: "visual",
               inputType: "select",
               formCss: "is-one-third",
-              tableColumn: "40",
+              tableColumn: "39",
               fsetRow: "4",
               fsetCol: "2",
               options: [
@@ -2490,7 +2489,7 @@ export default function () {
               elementKey: "facialPalsy",
               inputType: "select",
               formCss: "is-one-third",
-              tableColumn: "41",
+              tableColumn: "40",
               fsetRow: "4",
               fsetCol: "3",
               options: [
@@ -2521,7 +2520,7 @@ export default function () {
               elementKey: "sensory",
               inputType: "select",
               formCss: "is-one-third",
-              tableColumn: "42",
+              tableColumn: "41",
               fsetRow: "5",
               fsetCol: "1",
               options: [
@@ -2549,7 +2548,7 @@ export default function () {
               elementKey: "bestLanguage",
               inputType: "select",
               formCss: "is-one-third",
-              tableColumn: "43",
+              tableColumn: "42",
               fsetRow: "5",
               fsetCol: "2",
               options: [
@@ -2580,7 +2579,7 @@ export default function () {
               elementKey: "dysarthria",
               inputType: "select",
               formCss: "is-one-third",
-              tableColumn: "44",
+              tableColumn: "43",
               fsetRow: "5",
               fsetCol: "3",
               options: [
@@ -2608,7 +2607,7 @@ export default function () {
               elementKey: "extinctionAndInattention",
               inputType: "select",
               formCss: "is-one-third",
-              tableColumn: "45",
+              tableColumn: "44",
               tableCss: "hr-table",
               fsetRow: "6",
               fsetCol: "1",
@@ -2637,7 +2636,7 @@ export default function () {
               elementKey: "strokeAssessmentCalculation",
               inputType: "calculatedValue",
               formCss: "is-one-third",
-              tableColumn: "46",
+              tableColumn: "45",
               tableCss: "hr-table",
               fsetRow: "7",
               fsetCol: "1",
@@ -2654,7 +2653,7 @@ export default function () {
                 formRow: "1",
                 elements: [
                   {
-                    label: "Name",
+                    label: "Entered by name",
                     pageDataKey: "neurological",
                     level2Key: "table",
                     elementKey: "name",
@@ -2668,7 +2667,7 @@ export default function () {
                     tableKey: "table"
                   },
                   {
-                    label: "Profession",
+                    label: "Entered by profession",
                     pageDataKey: "neurological",
                     level2Key: "table",
                     elementKey: "profession",
@@ -2682,7 +2681,7 @@ export default function () {
                     tableKey: "table"
                   },
                   {
-                    label: "Day",
+                    label: "Entered on day",
                     pageDataKey: "neurological",
                     level2Key: "table",
                     elementKey: "day",
@@ -2696,7 +2695,7 @@ export default function () {
                     tableKey: "table"
                   },
                   {
-                    label: "Time",
+                    label: "Entered at time",
                     pageDataKey: "neurological",
                     level2Key: "table",
                     elementKey: "time",
@@ -3350,7 +3349,7 @@ export default function () {
                     formColumn: "1",
                     formCss: "is-two-thirds",
                     tableColumn: "28",
-                    fsetRow: "8",
+                    fsetRow: "3",
                     fsetCol: "1",
                     dataParent: "neurological.table",
                     fqn: "neurological.table.comments",
@@ -3365,10 +3364,9 @@ export default function () {
                     formRow: "4",
                     formColumn: "1",
                     formCss: "is-one-third",
-                    tableColumn: "29",
                     tableCss: "hideLabel",
-                    fsetRow: "8",
-                    fsetCol: "2",
+                    fsetRow: "3",
+                    fsetCol: "3",
                     dataParent: "neurological.table",
                     fqn: "neurological.table.resources",
                     tableKey: "table"
@@ -3387,7 +3385,7 @@ export default function () {
                     formRow: "5",
                     formColumn: "1",
                     formCss: "fieldset_row",
-                    tableColumn: "30",
+                    tableColumn: "29",
                     dataParent: "neurological.table",
                     fqn: "neurological.table.stroke",
                     containerType: "fieldset",
@@ -3407,7 +3405,7 @@ export default function () {
                               elementKey: "levelOfConciousness",
                               inputType: "select",
                               formCss: "is-one-third",
-                              tableColumn: "31",
+                              tableColumn: "30",
                               fsetRow: "1",
                               fsetCol: "1",
                               options: [
@@ -3438,7 +3436,7 @@ export default function () {
                               elementKey: "levelOfConciousnessQuestions",
                               inputType: "select",
                               formCss: "is-one-third",
-                              tableColumn: "32",
+                              tableColumn: "31",
                               fsetRow: "1",
                               fsetCol: "2",
                               options: [
@@ -3466,7 +3464,7 @@ export default function () {
                               elementKey: "levelOfConciousnessCommands",
                               inputType: "select",
                               formCss: "is-one-third",
-                              tableColumn: "33",
+                              tableColumn: "32",
                               tableCss: "hr-table",
                               fsetRow: "1",
                               fsetCol: "3",
@@ -3500,7 +3498,7 @@ export default function () {
                               elementKey: "motorLeftArm",
                               inputType: "select",
                               formCss: "is-one-third",
-                              tableColumn: "34",
+                              tableColumn: "33",
                               fsetRow: "2",
                               fsetCol: "1",
                               options: [
@@ -3534,7 +3532,7 @@ export default function () {
                               elementKey: "motorRightArm",
                               inputType: "select",
                               formCss: "is-one-third",
-                              tableColumn: "35",
+                              tableColumn: "34",
                               fsetRow: "2",
                               fsetCol: "2",
                               options: [
@@ -3573,7 +3571,7 @@ export default function () {
                               elementKey: "motorLeftLeg",
                               inputType: "select",
                               formCss: "is-one-third",
-                              tableColumn: "36",
+                              tableColumn: "35",
                               fsetRow: "3",
                               fsetCol: "1",
                               options: [
@@ -3607,7 +3605,7 @@ export default function () {
                               elementKey: "motorRightLeg",
                               inputType: "select",
                               formCss: "is-one-third",
-                              tableColumn: "37",
+                              tableColumn: "36",
                               fsetRow: "3",
                               fsetCol: "2",
                               options: [
@@ -3641,7 +3639,7 @@ export default function () {
                               elementKey: "limbAtaxia",
                               inputType: "select",
                               formCss: "is-one-third",
-                              tableColumn: "38",
+                              tableColumn: "37",
                               tableCss: "hr-table",
                               fsetRow: "3",
                               fsetCol: "3",
@@ -3675,7 +3673,7 @@ export default function () {
                               elementKey: "bestGaze",
                               inputType: "select",
                               formCss: "is-one-third",
-                              tableColumn: "39",
+                              tableColumn: "38",
                               fsetRow: "4",
                               fsetCol: "1",
                               options: [
@@ -3703,7 +3701,7 @@ export default function () {
                               elementKey: "visual",
                               inputType: "select",
                               formCss: "is-one-third",
-                              tableColumn: "40",
+                              tableColumn: "39",
                               fsetRow: "4",
                               fsetCol: "2",
                               options: [
@@ -3734,7 +3732,7 @@ export default function () {
                               elementKey: "facialPalsy",
                               inputType: "select",
                               formCss: "is-one-third",
-                              tableColumn: "41",
+                              tableColumn: "40",
                               fsetRow: "4",
                               fsetCol: "3",
                               options: [
@@ -3770,7 +3768,7 @@ export default function () {
                               elementKey: "sensory",
                               inputType: "select",
                               formCss: "is-one-third",
-                              tableColumn: "42",
+                              tableColumn: "41",
                               fsetRow: "5",
                               fsetCol: "1",
                               options: [
@@ -3798,7 +3796,7 @@ export default function () {
                               elementKey: "bestLanguage",
                               inputType: "select",
                               formCss: "is-one-third",
-                              tableColumn: "43",
+                              tableColumn: "42",
                               fsetRow: "5",
                               fsetCol: "2",
                               options: [
@@ -3829,7 +3827,7 @@ export default function () {
                               elementKey: "dysarthria",
                               inputType: "select",
                               formCss: "is-one-third",
-                              tableColumn: "44",
+                              tableColumn: "43",
                               fsetRow: "5",
                               fsetCol: "3",
                               options: [
@@ -3862,7 +3860,7 @@ export default function () {
                               elementKey: "extinctionAndInattention",
                               inputType: "select",
                               formCss: "is-one-third",
-                              tableColumn: "45",
+                              tableColumn: "44",
                               tableCss: "hr-table",
                               fsetRow: "6",
                               fsetCol: "1",
@@ -3896,7 +3894,7 @@ export default function () {
                               elementKey: "strokeAssessmentCalculation",
                               inputType: "calculatedValue",
                               formCss: "is-one-third",
-                              tableColumn: "46",
+                              tableColumn: "45",
                               tableCss: "hr-table",
                               fsetRow: "7",
                               fsetCol: "1",
@@ -3928,25 +3926,25 @@ export default function () {
       pageDataKey: "respiratory",
       pageChildren: [
         {
-          label: "Name",
+          label: "Entered by name",
           elementKey: "name",
           fqn: "respiratory.table.name",
           dataCaseStudy: "Jason"
         },
         {
-          label: "Profession",
+          label: "Entered by profession",
           elementKey: "profession",
           fqn: "respiratory.table.profession",
           dataCaseStudy: "RN"
         },
         {
-          label: "Day",
+          label: "Entered on day",
           elementKey: "day",
           fqn: "respiratory.table.day",
           dataCaseStudy: "0"
         },
         {
-          label: "Time",
+          label: "Entered at time",
           elementKey: "time",
           fqn: "respiratory.table.time",
           dataCaseStudy: "0.8125"
@@ -4059,7 +4057,7 @@ export default function () {
           dataCaseStudy: "(no notes)"
         }
       ],
-      generated: "2019-05-16T15:16:57-07:00",
+      generated: "2019-05-23T13:52:36-07:00",
       hasTable: true,
       tables: [
         {
@@ -4067,7 +4065,7 @@ export default function () {
           addButtonText: "Add a respiratory assessment",
           tableCells: [
             {
-              label: "Name",
+              label: "Entered by name",
               pageDataKey: "respiratory",
               level2Key: "table",
               elementKey: "name",
@@ -4081,7 +4079,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Profession",
+              label: "Entered by profession",
               pageDataKey: "respiratory",
               level2Key: "table",
               elementKey: "profession",
@@ -4095,7 +4093,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Day",
+              label: "Entered on day",
               pageDataKey: "respiratory",
               level2Key: "table",
               elementKey: "day",
@@ -4109,7 +4107,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Time",
+              label: "Entered at time",
               pageDataKey: "respiratory",
               level2Key: "table",
               elementKey: "time",
@@ -4217,21 +4215,6 @@ export default function () {
               formColumn: "1"
             },
             {
-              label: "Airway",
-              pageDataKey: "respiratory",
-              level2Key: "table",
-              elementKey: "airway",
-              inputType: "fieldset",
-              formRow: "2",
-              formColumn: "1",
-              dataParent: "respiratory.table",
-              fqn: "respiratory.table.airway",
-              containerType: "fieldset",
-              containerKey: "airway",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
               label: "Left upper lung",
               pageDataKey: "respiratory",
               level2Key: "table",
@@ -4296,6 +4279,21 @@ export default function () {
               formColumn: "2"
             },
             {
+              label: "Airway",
+              pageDataKey: "respiratory",
+              level2Key: "table",
+              elementKey: "airway",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "1",
+              dataParent: "respiratory.table",
+              fqn: "respiratory.table.airway",
+              containerType: "fieldset",
+              containerKey: "airway",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
               pageDataKey: "respiratory",
               level2Key: "table",
               level3Key: "breath",
@@ -4306,6 +4304,36 @@ export default function () {
               fsetCol: "1",
               dataParent: "respiratory.table.breath",
               fqn: "respiratory.table.breath.aSpacer",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
+              label: "Sputum",
+              pageDataKey: "respiratory",
+              level2Key: "table",
+              elementKey: "sputum",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "3",
+              dataParent: "respiratory.table",
+              fqn: "respiratory.table.sputum",
+              containerType: "fieldset",
+              containerKey: "sputum",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
+              label: "Breath sounds",
+              pageDataKey: "respiratory",
+              level2Key: "table",
+              elementKey: "breath",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "2",
+              dataParent: "respiratory.table",
+              fqn: "respiratory.table.breath",
+              containerType: "fieldset",
+              containerKey: "breath",
               tableCss: "hide-table-element",
               tableKey: "table"
             },
@@ -4460,21 +4488,6 @@ export default function () {
               formColumn: "1"
             },
             {
-              label: "Breath sounds",
-              pageDataKey: "respiratory",
-              level2Key: "table",
-              elementKey: "breath",
-              inputType: "fieldset",
-              formRow: "2",
-              formColumn: "2",
-              dataParent: "respiratory.table",
-              fqn: "respiratory.table.breath",
-              containerType: "fieldset",
-              containerKey: "breath",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
               label: "Cough",
               pageDataKey: "respiratory",
               level2Key: "table",
@@ -4569,21 +4582,6 @@ export default function () {
               formColumn: "1"
             },
             {
-              label: "Sputum",
-              pageDataKey: "respiratory",
-              level2Key: "table",
-              elementKey: "sputum",
-              inputType: "fieldset",
-              formRow: "2",
-              formColumn: "3",
-              dataParent: "respiratory.table",
-              fqn: "respiratory.table.sputum",
-              containerType: "fieldset",
-              containerKey: "sputum",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
               label: "General comments",
               pageDataKey: "respiratory",
               level2Key: "table",
@@ -4603,7 +4601,7 @@ export default function () {
                 formRow: "1",
                 elements: [
                   {
-                    label: "Name",
+                    label: "Entered by name",
                     pageDataKey: "respiratory",
                     level2Key: "table",
                     elementKey: "name",
@@ -4617,7 +4615,7 @@ export default function () {
                     tableKey: "table"
                   },
                   {
-                    label: "Profession",
+                    label: "Entered by profession",
                     pageDataKey: "respiratory",
                     level2Key: "table",
                     elementKey: "profession",
@@ -4631,7 +4629,7 @@ export default function () {
                     tableKey: "table"
                   },
                   {
-                    label: "Day",
+                    label: "Entered on day",
                     pageDataKey: "respiratory",
                     level2Key: "table",
                     elementKey: "day",
@@ -4645,7 +4643,7 @@ export default function () {
                     tableKey: "table"
                   },
                   {
-                    label: "Time",
+                    label: "Entered at time",
                     pageDataKey: "respiratory",
                     level2Key: "table",
                     elementKey: "time",
@@ -5232,25 +5230,25 @@ export default function () {
       pageDataKey: "cardiovascular",
       pageChildren: [
         {
-          label: "Name",
+          label: "Entered by name",
           elementKey: "name",
           fqn: "cardiovascular.table.name",
           dataCaseStudy: "Jason"
         },
         {
-          label: "Profession",
+          label: "Entered by profession",
           elementKey: "profession",
           fqn: "cardiovascular.table.profession",
           dataCaseStudy: "RN"
         },
         {
-          label: "Day",
+          label: "Entered on day",
           elementKey: "day",
           fqn: "cardiovascular.table.day",
           dataCaseStudy: "0"
         },
         {
-          label: "Time",
+          label: "Entered at time",
           elementKey: "time",
           fqn: "cardiovascular.table.time",
           dataCaseStudy: "0.8125"
@@ -5422,7 +5420,7 @@ export default function () {
           dataCaseStudy: "(blank)"
         }
       ],
-      generated: "2019-05-16T15:16:57-07:00",
+      generated: "2019-05-23T13:52:36-07:00",
       hasTable: true,
       tables: [
         {
@@ -5430,7 +5428,7 @@ export default function () {
           addButtonText: "Add a cardiovascular assessment",
           tableCells: [
             {
-              label: "Name",
+              label: "Entered by name",
               pageDataKey: "cardiovascular",
               level2Key: "table",
               elementKey: "name",
@@ -5444,7 +5442,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Profession",
+              label: "Entered by profession",
               pageDataKey: "cardiovascular",
               level2Key: "table",
               elementKey: "profession",
@@ -5458,7 +5456,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Day",
+              label: "Entered on day",
               pageDataKey: "cardiovascular",
               level2Key: "table",
               elementKey: "day",
@@ -5472,7 +5470,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Time",
+              label: "Entered at time",
               pageDataKey: "cardiovascular",
               level2Key: "table",
               elementKey: "time",
@@ -6094,7 +6092,7 @@ export default function () {
                 formRow: "1",
                 elements: [
                   {
-                    label: "Name",
+                    label: "Entered by name",
                     pageDataKey: "cardiovascular",
                     level2Key: "table",
                     elementKey: "name",
@@ -6108,7 +6106,7 @@ export default function () {
                     tableKey: "table"
                   },
                   {
-                    label: "Profession",
+                    label: "Entered by profession",
                     pageDataKey: "cardiovascular",
                     level2Key: "table",
                     elementKey: "profession",
@@ -6122,7 +6120,7 @@ export default function () {
                     tableKey: "table"
                   },
                   {
-                    label: "Day",
+                    label: "Entered on day",
                     pageDataKey: "cardiovascular",
                     level2Key: "table",
                     elementKey: "day",
@@ -6136,7 +6134,7 @@ export default function () {
                     tableKey: "table"
                   },
                   {
-                    label: "Time",
+                    label: "Entered at time",
                     pageDataKey: "cardiovascular",
                     level2Key: "table",
                     elementKey: "time",
@@ -6802,25 +6800,25 @@ export default function () {
       pageDataKey: "gastrointestinal",
       pageChildren: [
         {
-          label: "Name",
+          label: "Entered by name",
           elementKey: "name",
           fqn: "gastrointestinal.table.name",
           dataCaseStudy: "Jason"
         },
         {
-          label: "Profession",
+          label: "Entered by profession",
           elementKey: "profession",
           fqn: "gastrointestinal.table.profession",
           dataCaseStudy: "RN"
         },
         {
-          label: "Day",
+          label: "Entered on day",
           elementKey: "day",
           fqn: "gastrointestinal.table.day",
           dataCaseStudy: "0"
         },
         {
-          label: "Time",
+          label: "Entered at time",
           elementKey: "time",
           fqn: "gastrointestinal.table.time",
           dataCaseStudy: "0.8125"
@@ -6911,8 +6909,8 @@ export default function () {
         },
         {
           label: "NPO since day",
-          elementKey: "npoSinceDate",
-          fqn: "gastrointestinal.table.eatingGroup.npoSinceDate",
+          elementKey: "npoSinceDay",
+          fqn: "gastrointestinal.table.eatingGroup.npoSinceDay",
           dataCaseStudy: "(nothing entered)"
         },
         {
@@ -7032,7 +7030,7 @@ export default function () {
           dataCaseStudy: "(nothing entered)"
         }
       ],
-      generated: "2019-05-16T15:16:57-07:00",
+      generated: "2019-05-23T13:52:36-07:00",
       hasTable: true,
       tables: [
         {
@@ -7040,7 +7038,7 @@ export default function () {
           addButtonText: "Add a gastrointestinal assessment",
           tableCells: [
             {
-              label: "Name",
+              label: "Entered by name",
               pageDataKey: "gastrointestinal",
               level2Key: "table",
               elementKey: "name",
@@ -7054,7 +7052,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Profession",
+              label: "Entered by profession",
               pageDataKey: "gastrointestinal",
               level2Key: "table",
               elementKey: "profession",
@@ -7068,7 +7066,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Day",
+              label: "Entered on day",
               pageDataKey: "gastrointestinal",
               level2Key: "table",
               elementKey: "day",
@@ -7082,7 +7080,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Time",
+              label: "Entered at time",
               pageDataKey: "gastrointestinal",
               level2Key: "table",
               elementKey: "time",
@@ -7210,37 +7208,6 @@ export default function () {
               formColumn: "1"
             },
             {
-              label: "If answered yes, please complete the <a href=\"/assets/standardized-assessment-tools/numeric-rating-scale.pdf\">pain assessment</a>.",
-              pageDataKey: "gastrointestinal",
-              level2Key: "table",
-              level3Key: "abdomen",
-              elementKey: "aLabel",
-              inputType: "form_label",
-              formOption: "labelWithPageRef",
-              tableCss: "hr-table",
-              fsetRow: "8",
-              fsetCol: "1",
-              dataParent: "gastrointestinal.table.abdomen",
-              fqn: "gastrointestinal.table.abdomen.aLabel",
-              tableKey: "table",
-              formColumn: "1"
-            },
-            {
-              label: "Abdomen",
-              pageDataKey: "gastrointestinal",
-              level2Key: "table",
-              elementKey: "abdomen",
-              inputType: "fieldset",
-              formRow: "2",
-              formColumn: "1",
-              dataParent: "gastrointestinal.table",
-              fqn: "gastrointestinal.table.abdomen",
-              containerType: "fieldset",
-              containerKey: "abdomen",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
               label: "Emesis present?",
               pageDataKey: "gastrointestinal",
               level2Key: "table",
@@ -7341,21 +7308,6 @@ export default function () {
               formColumn: "1"
             },
             {
-              label: "Emesis",
-              pageDataKey: "gastrointestinal",
-              level2Key: "table",
-              elementKey: "emesis",
-              inputType: "fieldset",
-              formRow: "2",
-              formColumn: "2",
-              dataParent: "gastrointestinal.table",
-              fqn: "gastrointestinal.table.emesis",
-              containerType: "fieldset",
-              containerKey: "emesis",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
               label: "Difficulty",
               pageDataKey: "gastrointestinal",
               level2Key: "table",
@@ -7398,13 +7350,13 @@ export default function () {
               pageDataKey: "gastrointestinal",
               level2Key: "table",
               level3Key: "eatingGroup",
-              elementKey: "npoSinceDate",
+              elementKey: "npoSinceDay",
               inputType: "day",
               tableColumn: "18",
               fsetRow: "3",
               fsetCol: "1",
               dataParent: "gastrointestinal.table.eatingGroup",
-              fqn: "gastrointestinal.table.eatingGroup.npoSinceDate",
+              fqn: "gastrointestinal.table.eatingGroup.npoSinceDay",
               tableKey: "table",
               formColumn: "1"
             },
@@ -7425,6 +7377,21 @@ export default function () {
               formColumn: "1"
             },
             {
+              label: "Abdomen",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              elementKey: "abdomen",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "1",
+              dataParent: "gastrointestinal.table",
+              fqn: "gastrointestinal.table.abdomen",
+              containerType: "fieldset",
+              containerKey: "abdomen",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
               label: "Weight loss",
               pageDataKey: "gastrointestinal",
               level2Key: "table",
@@ -7436,6 +7403,37 @@ export default function () {
               fsetCol: "1",
               dataParent: "gastrointestinal.table.eatingGroup",
               fqn: "gastrointestinal.table.eatingGroup.weightLoss",
+              tableKey: "table",
+              formColumn: "1"
+            },
+            {
+              label: "Emesis",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              elementKey: "emesis",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "2",
+              dataParent: "gastrointestinal.table",
+              fqn: "gastrointestinal.table.emesis",
+              containerType: "fieldset",
+              containerKey: "emesis",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
+              label: "If answered yes, please complete the <a href=\"/assets/standardized-assessment-tools/numeric-rating-scale.pdf\">pain assessment</a>.",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "abdomen",
+              elementKey: "aLabel",
+              inputType: "form_label",
+              formOption: "labelWithPageRef",
+              tableCss: "hr-table",
+              fsetRow: "8",
+              fsetCol: "1",
+              dataParent: "gastrointestinal.table.abdomen",
+              fqn: "gastrointestinal.table.abdomen.aLabel",
               tableKey: "table",
               formColumn: "1"
             },
@@ -7452,6 +7450,53 @@ export default function () {
               fqn: "gastrointestinal.table.eatingGroup",
               containerType: "fieldset",
               containerKey: "eatingGroup",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
+              label: "Bowel sounds",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              elementKey: "bSounds",
+              inputType: "fieldset",
+              formRow: "3",
+              formColumn: "2",
+              formCss: "is-one-third",
+              dataParent: "gastrointestinal.table",
+              fqn: "gastrointestinal.table.bSounds",
+              containerType: "fieldset",
+              containerKey: "bSounds",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
+              label: "Bowel",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              elementKey: "bowel",
+              inputType: "fieldset",
+              formRow: "3",
+              formColumn: "1",
+              formCss: "is-one-third",
+              dataParent: "gastrointestinal.table",
+              fqn: "gastrointestinal.table.bowel",
+              containerType: "fieldset",
+              containerKey: "bowel",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
+              label: "Stool",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              elementKey: "stool",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "1",
+              dataParent: "gastrointestinal.table",
+              fqn: "gastrointestinal.table.stool",
+              containerType: "fieldset",
+              containerKey: "stool",
               tableCss: "hide-table-element",
               tableKey: "table"
             },
@@ -7575,21 +7620,6 @@ export default function () {
               formColumn: "1"
             },
             {
-              label: "Stool",
-              pageDataKey: "gastrointestinal",
-              level2Key: "table",
-              elementKey: "stool",
-              inputType: "fieldset",
-              formRow: "2",
-              formColumn: "1",
-              dataParent: "gastrointestinal.table",
-              fqn: "gastrointestinal.table.stool",
-              containerType: "fieldset",
-              containerKey: "stool",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
               label: "Normal",
               pageDataKey: "gastrointestinal",
               level2Key: "table",
@@ -7664,22 +7694,6 @@ export default function () {
               fqn: "gastrointestinal.table.bowel.incontinent",
               tableKey: "table",
               formColumn: "1"
-            },
-            {
-              label: "Bowel",
-              pageDataKey: "gastrointestinal",
-              level2Key: "table",
-              elementKey: "bowel",
-              inputType: "fieldset",
-              formRow: "3",
-              formColumn: "1",
-              formCss: "is-one-third",
-              dataParent: "gastrointestinal.table",
-              fqn: "gastrointestinal.table.bowel",
-              containerType: "fieldset",
-              containerKey: "bowel",
-              tableCss: "hide-table-element",
-              tableKey: "table"
             },
             {
               label: "None",
@@ -7788,22 +7802,6 @@ export default function () {
               formColumn: "1"
             },
             {
-              label: "Bowel sounds",
-              pageDataKey: "gastrointestinal",
-              level2Key: "table",
-              elementKey: "bSounds",
-              inputType: "fieldset",
-              formRow: "3",
-              formColumn: "2",
-              formCss: "is-one-third",
-              dataParent: "gastrointestinal.table",
-              fqn: "gastrointestinal.table.bSounds",
-              containerType: "fieldset",
-              containerKey: "bSounds",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
               label: "Comments",
               pageDataKey: "gastrointestinal",
               level2Key: "table",
@@ -7825,7 +7823,7 @@ export default function () {
                 formRow: "1",
                 elements: [
                   {
-                    label: "Name",
+                    label: "Entered by name",
                     pageDataKey: "gastrointestinal",
                     level2Key: "table",
                     elementKey: "name",
@@ -7839,7 +7837,7 @@ export default function () {
                     tableKey: "table"
                   },
                   {
-                    label: "Profession",
+                    label: "Entered by profession",
                     pageDataKey: "gastrointestinal",
                     level2Key: "table",
                     elementKey: "profession",
@@ -7853,7 +7851,7 @@ export default function () {
                     tableKey: "table"
                   },
                   {
-                    label: "Day",
+                    label: "Entered on day",
                     pageDataKey: "gastrointestinal",
                     level2Key: "table",
                     elementKey: "day",
@@ -7867,7 +7865,7 @@ export default function () {
                     tableKey: "table"
                   },
                   {
-                    label: "Time",
+                    label: "Entered at time",
                     pageDataKey: "gastrointestinal",
                     level2Key: "table",
                     elementKey: "time",
@@ -8452,13 +8450,13 @@ export default function () {
                               pageDataKey: "gastrointestinal",
                               level2Key: "table",
                               level3Key: "eatingGroup",
-                              elementKey: "npoSinceDate",
+                              elementKey: "npoSinceDay",
                               inputType: "day",
                               tableColumn: "18",
                               fsetRow: "3",
                               fsetCol: "1",
                               dataParent: "gastrointestinal.table.eatingGroup",
-                              fqn: "gastrointestinal.table.eatingGroup.npoSinceDate",
+                              fqn: "gastrointestinal.table.eatingGroup.npoSinceDay",
                               tableKey: "table",
                               formColumn: "1"
                             }

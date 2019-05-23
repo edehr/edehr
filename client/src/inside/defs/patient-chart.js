@@ -6,22 +6,22 @@ export default function () {
       pageDataKey: "progressNotes",
       pageChildren: [
         {
-          label: "Name",
+          label: "Entered by name",
           elementKey: "name",
           fqn: "progressNotes.table.name"
         },
         {
-          label: "Profession",
+          label: "Entered by profession",
           elementKey: "profession",
           fqn: "progressNotes.table.profession"
         },
         {
-          label: "Day",
+          label: "Entered on day",
           elementKey: "day",
           fqn: "progressNotes.table.day"
         },
         {
-          label: "Time",
+          label: "Entered at time",
           elementKey: "time",
           fqn: "progressNotes.table.time"
         },
@@ -32,7 +32,7 @@ export default function () {
           dataCaseStudy: "Erin Johns is 74 years old. She is widowed with four children, one of whom lives at home with her in their original family home. Two of Erins children live within a one-hour drive from her, and one lives a three-hour flight away. She also has 10 grandchildren and one great grandchild. Erin describes herself as a non-smoker, but she smoked socially when she was in her early twenties for about five years. She is a retired hairdresser."
         }
       ],
-      generated: "2019-04-16T09:41:06-07:00",
+      generated: "2019-05-23T13:53:46-07:00",
       hasTable: true,
       tables: [
         {
@@ -40,7 +40,7 @@ export default function () {
           addButtonText: "Add a progress note",
           tableCells: [
             {
-              label: "Name",
+              label: "Entered by name",
               pageDataKey: "progressNotes",
               level2Key: "table",
               elementKey: "name",
@@ -54,7 +54,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Profession",
+              label: "Entered by profession",
               pageDataKey: "progressNotes",
               level2Key: "table",
               elementKey: "profession",
@@ -68,7 +68,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Day",
+              label: "Entered on day",
               pageDataKey: "progressNotes",
               level2Key: "table",
               elementKey: "day",
@@ -82,7 +82,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Time",
+              label: "Entered at time",
               pageDataKey: "progressNotes",
               level2Key: "table",
               elementKey: "time",
@@ -115,7 +115,7 @@ export default function () {
                 formRow: "1",
                 elements: [
                   {
-                    label: "Name",
+                    label: "Entered by name",
                     pageDataKey: "progressNotes",
                     level2Key: "table",
                     elementKey: "name",
@@ -129,7 +129,7 @@ export default function () {
                     tableKey: "table"
                   },
                   {
-                    label: "Profession",
+                    label: "Entered by profession",
                     pageDataKey: "progressNotes",
                     level2Key: "table",
                     elementKey: "profession",
@@ -143,7 +143,7 @@ export default function () {
                     tableKey: "table"
                   },
                   {
-                    label: "Day",
+                    label: "Entered on day",
                     pageDataKey: "progressNotes",
                     level2Key: "table",
                     elementKey: "day",
@@ -157,7 +157,7 @@ export default function () {
                     tableKey: "table"
                   },
                   {
-                    label: "Time",
+                    label: "Entered at time",
                     pageDataKey: "progressNotes",
                     level2Key: "table",
                     elementKey: "time",
@@ -204,22 +204,22 @@ export default function () {
       pageDataKey: "carePlan",
       pageChildren: [
         {
-          label: "Name",
+          label: "Entered by name",
           elementKey: "name",
           fqn: "carePlan.table2.name"
         },
         {
-          label: "Profession",
+          label: "Entered by profession",
           elementKey: "profession",
           fqn: "carePlan.table2.profession"
         },
         {
-          label: "Day",
+          label: "Entered on day",
           elementKey: "day",
           fqn: "carePlan.table2.day"
         },
         {
-          label: "Time",
+          label: "Entered at time",
           elementKey: "time",
           fqn: "carePlan.table2.time"
         },
@@ -249,7 +249,7 @@ export default function () {
           fqn: "carePlan.table2.status"
         }
       ],
-      generated: "2019-04-16T09:41:06-07:00",
+      generated: "2019-05-23T13:53:46-07:00",
       hasTable: true,
       tables: [
         {
@@ -257,7 +257,7 @@ export default function () {
           addButtonText: "Add a care plan",
           tableCells: [
             {
-              label: "Name",
+              label: "Entered by name",
               pageDataKey: "carePlan",
               level2Key: "table2",
               elementKey: "name",
@@ -270,7 +270,7 @@ export default function () {
               tableKey: "table2"
             },
             {
-              label: "Profession",
+              label: "Entered by profession",
               pageDataKey: "carePlan",
               level2Key: "table2",
               elementKey: "profession",
@@ -283,7 +283,7 @@ export default function () {
               tableKey: "table2"
             },
             {
-              label: "Day",
+              label: "Entered on day",
               pageDataKey: "carePlan",
               level2Key: "table2",
               elementKey: "day",
@@ -296,7 +296,7 @@ export default function () {
               tableKey: "table2"
             },
             {
-              label: "Time",
+              label: "Entered at time",
               pageDataKey: "carePlan",
               level2Key: "table2",
               elementKey: "time",
@@ -392,7 +392,7 @@ export default function () {
                 formRow: "1",
                 elements: [
                   {
-                    label: "Name",
+                    label: "Entered by name",
                     pageDataKey: "carePlan",
                     level2Key: "table2",
                     elementKey: "name",
@@ -405,7 +405,7 @@ export default function () {
                     tableKey: "table2"
                   },
                   {
-                    label: "Profession",
+                    label: "Entered by profession",
                     pageDataKey: "carePlan",
                     level2Key: "table2",
                     elementKey: "profession",
@@ -418,7 +418,7 @@ export default function () {
                     tableKey: "table2"
                   },
                   {
-                    label: "Day",
+                    label: "Entered on day",
                     pageDataKey: "carePlan",
                     level2Key: "table2",
                     elementKey: "day",
@@ -431,7 +431,7 @@ export default function () {
                     tableKey: "table2"
                   },
                   {
-                    label: "Time",
+                    label: "Entered at time",
                     pageDataKey: "carePlan",
                     level2Key: "table2",
                     elementKey: "time",
@@ -550,7 +550,7 @@ export default function () {
       pageTitle: "Consults",
       pageDataKey: "consultants",
       pageChildren: [],
-      generated: "2019-04-16T09:41:06-07:00",
+      generated: "2019-05-23T13:53:46-07:00",
       hasForm: true,
       page_form: {
         rows: [],
@@ -583,7 +583,7 @@ export default function () {
           fqn: "labResults.labReport.labReport4_1"
         }
       ],
-      generated: "2019-04-16T09:41:06-07:00",
+      generated: "2019-05-23T13:53:46-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -774,7 +774,7 @@ export default function () {
           fqn: "medicalImaging.diagnosticImage.diagnosticImage2_2"
         }
       ],
-      generated: "2019-04-16T09:41:06-07:00",
+      generated: "2019-05-23T13:53:46-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -876,7 +876,7 @@ export default function () {
       pageTitle: "Operative reports and anaesthesia record",
       pageDataKey: "operationReports",
       pageChildren: [],
-      generated: "2019-04-16T09:41:06-07:00",
+      generated: "2019-05-23T13:53:46-07:00",
       hasForm: true,
       page_form: {
         rows: [],

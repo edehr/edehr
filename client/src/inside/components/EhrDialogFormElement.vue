@@ -95,8 +95,8 @@ export default {
     parentData () {
       if (this.element.parent) {
         let pVal = this.inputs[this.element.parent.elementKey]
-        console.log('this.inputs', this.inputs)
-        console.log('daf.parent', this.element.parent, 'pVal', pVal)
+        // console.log('this.inputs', this.inputs)
+        // console.log('daf.parent', this.element.parent, 'pVal', pVal)
         return pVal
       }
       return ''
@@ -138,7 +138,7 @@ export default {
     },
     receiveShowHideEvent (eData) {
       if(eData.value) {
-        console.log('EhrDialogFormElement on show re-init initial value', this.key, eData.value)
+        // console.log('EhrDialogFormElement on show re-init initial value', this.key, eData.value)
         this.inputVal = this.inputs[this.key]
       }
     }
@@ -173,7 +173,7 @@ export default {
   },
   watch: {
     inputVal (val) {
-      console.log('watch inputValue', val, DIALOG_INPUT_EVENT, this.element)
+      // console.log('watch inputValue', val, DIALOG_INPUT_EVENT, this.element)
       // Send event when any input changes. The listener (EhrHelper) will collect the changes
       // and be ready to send the changes to the server.
       let element = this.element

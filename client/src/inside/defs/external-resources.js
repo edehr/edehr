@@ -81,7 +81,7 @@ export default function () {
           fqn: "assessmentTools.medication.medication1_1"
         }
       ],
-      generated: "2019-05-16T15:16:01-07:00",
+      generated: "2019-05-23T13:54:30-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -777,7 +777,7 @@ export default function () {
           fqn: "codeLookup.icf"
         }
       ],
-      generated: "2019-05-16T15:16:01-07:00",
+      generated: "2019-05-23T13:54:30-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -823,22 +823,22 @@ export default function () {
       pageDataKey: "diagnosticCodes",
       pageChildren: [
         {
-          label: "Name",
+          label: "Entered by name",
           elementKey: "name",
           fqn: "diagnosticCodes.table.name"
         },
         {
-          label: "Profession",
+          label: "Entered by profession",
           elementKey: "profession",
           fqn: "diagnosticCodes.table.profession"
         },
         {
-          label: "Day",
+          label: "Entered on day",
           elementKey: "day",
           fqn: "diagnosticCodes.table.day"
         },
         {
-          label: "Time",
+          label: "Entered at time",
           elementKey: "time",
           fqn: "diagnosticCodes.table.time"
         },
@@ -876,7 +876,7 @@ export default function () {
           fqn: "diagnosticCodes.table.cluster"
         }
       ],
-      generated: "2019-05-16T15:16:01-07:00",
+      generated: "2019-05-23T13:54:30-07:00",
       hasTable: true,
       tables: [
         {
@@ -884,7 +884,7 @@ export default function () {
           addButtonText: "Add a diagnostic code",
           tableCells: [
             {
-              label: "Name",
+              label: "Entered by name",
               pageDataKey: "diagnosticCodes",
               level2Key: "table",
               elementKey: "name",
@@ -899,7 +899,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Profession",
+              label: "Entered by profession",
               pageDataKey: "diagnosticCodes",
               level2Key: "table",
               elementKey: "profession",
@@ -914,7 +914,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Day",
+              label: "Entered on day",
               pageDataKey: "diagnosticCodes",
               level2Key: "table",
               elementKey: "day",
@@ -929,7 +929,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Time",
+              label: "Entered at time",
               pageDataKey: "diagnosticCodes",
               level2Key: "table",
               elementKey: "time",
@@ -1052,7 +1052,7 @@ export default function () {
                 formRow: "1",
                 elements: [
                   {
-                    label: "Name",
+                    label: "Entered by name",
                     pageDataKey: "diagnosticCodes",
                     level2Key: "table",
                     elementKey: "name",
@@ -1067,7 +1067,7 @@ export default function () {
                     tableKey: "table"
                   },
                   {
-                    label: "Profession",
+                    label: "Entered by profession",
                     pageDataKey: "diagnosticCodes",
                     level2Key: "table",
                     elementKey: "profession",
@@ -1082,7 +1082,7 @@ export default function () {
                     tableKey: "table"
                   },
                   {
-                    label: "Day",
+                    label: "Entered on day",
                     pageDataKey: "diagnosticCodes",
                     level2Key: "table",
                     elementKey: "day",
@@ -1097,7 +1097,7 @@ export default function () {
                     tableKey: "table"
                   },
                   {
-                    label: "Time",
+                    label: "Entered at time",
                     pageDataKey: "diagnosticCodes",
                     level2Key: "table",
                     elementKey: "time",
@@ -1239,22 +1239,22 @@ export default function () {
       pageDataKey: "interventionCodes",
       pageChildren: [
         {
-          label: "Name",
+          label: "Entered by name",
           elementKey: "name",
           fqn: "interventionCodes.table.name"
         },
         {
-          label: "Profession",
+          label: "Entered by profession",
           elementKey: "profession",
           fqn: "interventionCodes.table.profession"
         },
         {
-          label: "Day",
+          label: "Entered on day",
           elementKey: "day",
           fqn: "interventionCodes.table.day"
         },
         {
-          label: "Time",
+          label: "Entered at time",
           elementKey: "time",
           fqn: "interventionCodes.table.time"
         },
@@ -1289,7 +1289,7 @@ export default function () {
           fqn: "interventionCodes.table.extent"
         }
       ],
-      generated: "2019-05-16T15:16:01-07:00",
+      generated: "2019-05-23T13:54:30-07:00",
       hasTable: true,
       tables: [
         {
@@ -1297,7 +1297,7 @@ export default function () {
           addButtonText: "Add an intervention code",
           tableCells: [
             {
-              label: "Name",
+              label: "Entered by name",
               pageDataKey: "interventionCodes",
               level2Key: "table",
               elementKey: "name",
@@ -1312,7 +1312,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Profession",
+              label: "Entered by profession",
               pageDataKey: "interventionCodes",
               level2Key: "table",
               elementKey: "profession",
@@ -1327,7 +1327,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Day",
+              label: "Entered on day",
               pageDataKey: "interventionCodes",
               level2Key: "table",
               elementKey: "day",
@@ -1342,7 +1342,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Time",
+              label: "Entered at time",
               pageDataKey: "interventionCodes",
               level2Key: "table",
               elementKey: "time",
@@ -1448,7 +1448,7 @@ export default function () {
                 formRow: "1",
                 elements: [
                   {
-                    label: "Name",
+                    label: "Entered by name",
                     pageDataKey: "interventionCodes",
                     level2Key: "table",
                     elementKey: "name",
@@ -1463,7 +1463,7 @@ export default function () {
                     tableKey: "table"
                   },
                   {
-                    label: "Profession",
+                    label: "Entered by profession",
                     pageDataKey: "interventionCodes",
                     level2Key: "table",
                     elementKey: "profession",
@@ -1478,7 +1478,7 @@ export default function () {
                     tableKey: "table"
                   },
                   {
-                    label: "Day",
+                    label: "Entered on day",
                     pageDataKey: "interventionCodes",
                     level2Key: "table",
                     elementKey: "day",
@@ -1493,7 +1493,7 @@ export default function () {
                     tableKey: "table"
                   },
                   {
-                    label: "Time",
+                    label: "Entered at time",
                     pageDataKey: "interventionCodes",
                     level2Key: "table",
                     elementKey: "time",
@@ -1618,22 +1618,22 @@ export default function () {
       pageDataKey: "caseMixGroup",
       pageChildren: [
         {
-          label: "Name",
+          label: "Entered by name",
           elementKey: "name",
           fqn: "caseMixGroup.table.name"
         },
         {
-          label: "Profession",
+          label: "Entered by profession",
           elementKey: "profession",
           fqn: "caseMixGroup.table.profession"
         },
         {
-          label: "Day",
+          label: "Entered on day",
           elementKey: "day",
           fqn: "caseMixGroup.table.day"
         },
         {
-          label: "Time",
+          label: "Entered at time",
           elementKey: "time",
           fqn: "caseMixGroup.table.time"
         },
@@ -1663,7 +1663,7 @@ export default function () {
           fqn: "caseMixGroup.table.analysis"
         }
       ],
-      generated: "2019-05-16T15:16:01-07:00",
+      generated: "2019-05-23T13:54:30-07:00",
       hasTable: true,
       tables: [
         {
@@ -1671,7 +1671,7 @@ export default function () {
           addButtonText: "Add a case mix group",
           tableCells: [
             {
-              label: "Name",
+              label: "Entered by name",
               pageDataKey: "caseMixGroup",
               level2Key: "table",
               elementKey: "name",
@@ -1686,7 +1686,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Profession",
+              label: "Entered by profession",
               pageDataKey: "caseMixGroup",
               level2Key: "table",
               elementKey: "profession",
@@ -1701,7 +1701,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Day",
+              label: "Entered on day",
               pageDataKey: "caseMixGroup",
               level2Key: "table",
               elementKey: "day",
@@ -1716,7 +1716,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Time",
+              label: "Entered at time",
               pageDataKey: "caseMixGroup",
               level2Key: "table",
               elementKey: "time",
@@ -1807,7 +1807,7 @@ export default function () {
                 formRow: "1",
                 elements: [
                   {
-                    label: "Name",
+                    label: "Entered by name",
                     pageDataKey: "caseMixGroup",
                     level2Key: "table",
                     elementKey: "name",
@@ -1822,7 +1822,7 @@ export default function () {
                     tableKey: "table"
                   },
                   {
-                    label: "Profession",
+                    label: "Entered by profession",
                     pageDataKey: "caseMixGroup",
                     level2Key: "table",
                     elementKey: "profession",
@@ -1837,7 +1837,7 @@ export default function () {
                     tableKey: "table"
                   },
                   {
-                    label: "Day",
+                    label: "Entered on day",
                     pageDataKey: "caseMixGroup",
                     level2Key: "table",
                     elementKey: "day",
@@ -1852,7 +1852,7 @@ export default function () {
                     tableKey: "table"
                   },
                   {
-                    label: "Time",
+                    label: "Entered at time",
                     pageDataKey: "caseMixGroup",
                     level2Key: "table",
                     elementKey: "time",
