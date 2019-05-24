@@ -6,8 +6,7 @@
       many LTI compliant learning systems. Ask you LMS administrator to configure the LMS to send a LTI
       request to this server at '/launch_lti' along with a prearranged key and secret.
     p.
-      For complete instructions see the project README on github
-    a(href="https://github.com/BCcampus/edehr") github
+      For complete instructions see <a href="https://github.com/BCcampus/edehr"">the project README on github</a>
 </template>
 
 <script>
