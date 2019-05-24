@@ -33,6 +33,10 @@ export default class MedOrder {
   get route () { return this._data.route }
   get notes () { return this._data.notes }
 
+  asObjectForApi () {
+    let obj = Object.assign({},this._data)
+    return obj
+  }
   isScheduled (periodKey) {
     /*
     The data imported from the db has a field for each schedule period. If this property exists and is true then
