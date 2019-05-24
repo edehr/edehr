@@ -1,12 +1,15 @@
 <template lang="pug">
   div(class="mar-today-content")
-    h1 Medication Administration Records
-    div Today is: &nbsp; {{ currentDay }}
-    div(class="periodsList", v-for="period in schedule", :key="period.key") {{period.name}}
+    h1 Medication Administration Records For Day {{ currentDay }}
+    div(class="columns")
+      div(class="column period-column")
+        h4 Medication schedule
+      div(class="column mar-column")
+        h4 Medications administered
+    div(class="periodsList", v-for="period in schedule", :key="period.key")
       div(class="columns")
         div(class="column period-column")
-          h4 {{ period.name }}
-        div(class="column medications-column")
+          h5 {{ period.name }}
           med-list(:medsList="period.medsList")
         div(class="column mar-column")
           div(v-show="!period.hasMar()")
@@ -51,7 +54,7 @@ export default {
     refreshData () {
       // See EhrPageForm for more on why we have currentData
       this.refresh()
-      console.log('MarTodayContent refreshData', this.schedule)
+      // console.log('MarTodayContent refreshData', this.schedule)
       return this.schedule
     }
   },
@@ -98,12 +101,9 @@ export default {
   color: $dialog-error-color;
 }
 .period-column {
-  flex: 0 0 20%;
-}
-.medications-column {
-  flex: 1 0 20%;
+  flex: 0 0 50%;
 }
 .mar-column {
-  flex: 1 0 20%;
+  flex: 1 0 50%;
 }
 </style>

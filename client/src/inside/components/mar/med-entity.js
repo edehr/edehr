@@ -9,7 +9,7 @@ export default class MedOrder {
     this._data = medOrObj
   }
 
-  static medOrderAsTextLine (med, maxLen) {
+  static medOrderAsTextLine (med) {
     if (!(med instanceof MedOrder)) {
       console.log('MedOrder.medOrderAsTextLine: input is not a MedOrder', med)
       return 'error'
@@ -18,11 +18,11 @@ export default class MedOrder {
     let extract = t => t && t.trim().length > 0 ? space + t : ''
     let markup = med.medication
     // markup += extract(med.dose)
-    markup += extract(med.route)
-    markup += extract(med.scheduleType)
-    markup += extract(med.scheduleTime)
-    markup += extract(med.notes)
-    return markup.length > maxLen ? markup.substr(0,maxLen) + '...' : markup
+    markup += extract(med._data.route)
+    // markup += extract(med._data.scheduleType)
+    // markup += extract(med._data.scheduleTime)
+    markup += extract(med._data.reason)
+    return markup
   }
 
   // NOTE:  There is no validation. We assume the medication order
@@ -31,6 +31,7 @@ export default class MedOrder {
 
   get medication () { return this._data.medication }
   get route () { return this._data.route }
+  get reason () { return this._data.reason }
   get notes () { return this._data.notes }
 
   asObjectForApi () {

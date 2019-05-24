@@ -90,9 +90,9 @@ export default {
       this.indicator = value ? '-' : '+'
     },
     statusText (sv) {
-      let result = sv.activityData.submitted ? "Submitted and waiting for evaluation" : "Not submitted"
+      let result = sv.activityData.submitted ? 'Submitted and waiting for evaluation' : 'Not submitted'
       
-      result = sv.activityData.evaluated ? "Evaluated" : result
+      result = sv.activityData.evaluated ? 'Evaluated' : result
       return result
     },
     activateActivity () {
