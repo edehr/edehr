@@ -4,6 +4,7 @@ colours
 $brand-primary: #3396FF;
 $brand-primary-hover: darken( $brand-primary, 20% );
 $brand-primary-dark: #051F54;
+$brand-primary-light: #e8f2fd;
 
 $white: #FFF;
 $grey03: #F7F9FA;
@@ -39,7 +40,7 @@ $system-error-color: $white;
 
 $dialog-error-color: $red;
 
-$context-banner-background-color: #e8f2fd;
+$context-banner-background-color: $brand-primary-light;
 $context-banner-color: $grey80;
 
 $border-width: 5px;

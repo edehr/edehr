@@ -11,7 +11,7 @@ export default class EhrActions {
     let lmsName = this.$store.getters['visit/lmsName']
     let label = 'Return to ' + lmsName
     if (this.navPanelActionNeedsConfirmation()) {
-      label = 'Send for evaluation'
+      label = 'Submit for evaluation'
     }
     return label
   }
@@ -22,9 +22,8 @@ export default class EhrActions {
 
   navPanelActionConfirmOptions () {
     let options = {}
-    options.title ='Mark assignment ready for evaluation'
-    options.msg = 'You agree that you are finished working on this assignment and it is ready for evaluation. ' +
-      'Once you click through you can no longer edit this assignment.'
+    options.title ='Submit assignment'
+    options.msg = 'By submitting this assignment, you are sending it to your instructor for marking. You will not be able to edit it after sending. Are you sure you want to submit?'
     return options
   }
 
