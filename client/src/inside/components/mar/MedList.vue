@@ -1,13 +1,13 @@
 <template lang="pug">
-  div
-    ul
-      li(class="medList", v-for="med in medsList")
-        div {{ medText(med) }}
+  ul
+    li(class="medList", v-for="med in medsList")
+      span medication: {{ med.medication }}, &nbsp;
+      span route: {{ med.route }}, &nbsp;
+      span reason: {{ med.reason }}
 </template>
 
 <script>
 import MedOrder from './med-entity'
-const MAX_LEN = 80
 export default {
   name: 'MedList',
   props: {
@@ -15,7 +15,7 @@ export default {
   },
   methods: {
     medText (med) {
-      let text =  MedOrder.medOrderAsTextLine(med, MAX_LEN)
+      let text =  MedOrder.medOrderAsTextLine(med)
       // console.log('MedList medText', text)
       return text
     }
@@ -24,8 +24,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-ul {
-  margin-left: 5px;
-  list-style: circle outside;
+ul li {
+  margin-left: 0;
+  list-style: square inside;
 }
 </style>

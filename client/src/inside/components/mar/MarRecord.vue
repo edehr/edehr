@@ -1,10 +1,8 @@
 <template lang="pug">
   div
-    div Administered by: {{ record.whoAdministered }}
-    div Scheduled for: {{ record.scheduledTime }}
-    div Actual time: {{ record.actualTime }}
-    div Medications:
-      med-list(class="medList", :medsList="record.medications")
+    div By: {{ record.whoAdministered }} &nbsp; At: {{ record.actualTime }}
+    med-list(class="medList", :medsList="record.medications")
+    div {{ record.comment }}
 </template>
 
 <script>
@@ -24,6 +22,6 @@ export default {
 
 <style lang="scss" scoped>
   .medList {
-    margin-left: 20px;
+    margin-left: 0;
   }
 </style>
