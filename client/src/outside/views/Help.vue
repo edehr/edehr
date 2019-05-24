@@ -3,7 +3,7 @@
     h1 Help
     div
       p. 
-        This project is in development and is not connectedhas not yet developed any help pages for the EdEHR itself, as an application.
+        This project is in development and has not yet developed any help pages for students and instructors using the EdEHR.
       p.  
         Having trouble with the app or need help with your assignment? Contact your instructor for help.
       p.

@@ -1,7 +1,7 @@
 <template lang="pug">
   div
     app-dialog(:isModal="true", ref="theDialog", @cancel="closeDialog", @save="saveDialog")
-      h3(slot="header") Add MAR
+      h3(slot="header") Add a record of medication administration
       div(slot="body")
         div
           div Day: {{currentDay}}
