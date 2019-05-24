@@ -44,8 +44,9 @@ export default class MarEntity {
   asObjectForApi () {
     let obj = Object.assign({},this._data)
     let medsList = this._period && this._period.medsList ? this._period.medsList : []
-    obj.medications = medsList.map(m => m._data)
-    console.log('MarEntity asObjectForApi', obj)
+    // console.log('MarEntity medsList', medsList)
+    obj.medications = medsList.map(m => m.asObjectForApi())
+    // console.log('MarEntity asObjectForApi', obj)
     return obj
   }
 
