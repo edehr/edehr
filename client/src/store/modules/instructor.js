@@ -59,6 +59,7 @@ const actions = {
       let dispatchRoute = 'ehrData/loadActivityData'
       context.dispatch(dispatchRoute, activityOpt, rootOpt)
         .then(() => {
+          console.log('changeCurrentEvaluationStudentId emit PAGE_DATA_REFRESH_EVENT')
           EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
           resolve(currentStudentInfo)
         })

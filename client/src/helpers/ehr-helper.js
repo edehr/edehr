@@ -514,10 +514,7 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
   }
 
   _handleActivityDataChangeEvent (eData) {
-    // let pageKey = eData.pageKey
-    // let pageKey = this.pageKey
-    // console.log('Activity data changed. Trigger a load and refresh', pageKey)
-    // this.getAsLoadedPageData(pageKey)
+    console.log('Activity data changed. Trigger a load and refresh', this.pageKey)
     EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
   }
 }

@@ -19,12 +19,14 @@ export default class MarSummary {
     this._body = []
   }
   summaryRefresh (marRecords, medOrders) {
+    let db = false
+    let db2 = false
     const EMPTY = _createElement(MS.KEY_EMPTY,{})
     // sort newest first
     marRecords.sort( (a,b) => MarEntity.compare(a, b, true) )
 
     // Compose the table header ....
-    // console.log('MarSummary refresh', marRecords, medOrders)
+    if(db) console.log('MarSummary refresh', marRecords, medOrders)
     let hdr = []
     hdr.push(_createElement(MS.KEY_MED_ORDER, 'medications'))
     marRecords.forEach( mar => hdr.push(_createElement(MS.KEY_MAR, mar)) )
@@ -34,11 +36,12 @@ export default class MarSummary {
     let body = []
     medOrders.forEach( medOrder => {
       let medName = medOrder.medication
+      if(db2) console.log('MarSummary.summaryRefresh medOrder', medOrder)
       let medMar = []
       medMar.push(_createElement(MS.KEY_MED_ORDER, medOrder))
       marRecords.forEach( mar => {
         let marMedications = mar.medications
-        // console.log('MarSummary.summaryRefresh marMedications', marMedications)
+        if(db2) console.log('MarSummary.summaryRefresh marMedications', marMedications)
         let found = marMedications.find( m => m.medication === medName)
         medMar.push(found? _createElement(MS.KEY_MAR, mar) : EMPTY)
       })
