@@ -1,23 +1,21 @@
 <template lang="pug">
   div
-    h1 Medication Administration Summary
-    div
-      table
-        thead
-          th(v-for="hdr in tableHeader")
-            div(v-show="hdr.type === KEY_MED_ORDER")
-              div Medication
-              div List
-            div(v-show="hdr.type === KEY_MAR")
-              div When: Day-{{hdr.value.day}} {{hdr.value.actualTime}}
-              div Scheduled: {{hdr.value.scheduledTime}}
-              div Who: {{hdr.value.whoAdministered}}
-              div Notes: {{hdr.value.comment}}
+    table
+      thead
+        th(v-for="hdr in tableHeader")
+          div(v-show="hdr.type === KEY_MED_ORDER")
+            div Medication
+            div List
+          div(v-show="hdr.type === KEY_MAR")
+            div Day {{hdr.value.day}} {{hdr.value.actualTime}}
+            div {{hdr.value.scheduledTime}}
+            div {{hdr.value.whoAdministered}}
+            div {{hdr.value.comment}}
 
-        tbody
-          tr(v-for="row in tableBody")
-            td(v-for="cell in row")
-              div(:class="marCellStyle(cell)") {{marCellContent(cell)}}
+      tbody
+        tr(v-for="row in tableBody")
+          td(v-for="cell in row")
+            div(:class="marCellStyle(cell)") {{marCellContent(cell)}}
     hr
     div(style="display:none") {{refreshProperty}}
 </template>

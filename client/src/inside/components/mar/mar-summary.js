@@ -56,6 +56,8 @@ export default class MarSummary {
     let value = cell.value
     if( type === MS.KEY_MED_ORDER) {
       content = value.medication
+      content += value.route ? ', ' + value.route : ''
+      content += value.reason ? ', ' + value.reason : ''
     } else if( type === MS.KEY_MAR) {
       content = MS.DISPLAYED_WHEN_MAR
     } else {

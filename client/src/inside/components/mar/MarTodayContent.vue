@@ -1,9 +1,8 @@
 <template lang="pug">
   div(class="mar-today-content")
-    h1 Medication Administration Records For Day {{ currentDay }}
     div(class="columns")
       div(class="column period-column")
-        h4 Medication schedule
+        h4 Medication order
       div(class="column mar-column")
         h4 Medications administered
     div(class="periodsList", v-for="period in schedule", :key="period.key")
@@ -29,7 +28,6 @@ import UiButton from '../../../app/ui/UiButton'
 import MarRecord from './MarRecord'
 import MarDialog from './MarDialog'
 import MarHelper from './mar-helper'
-import MarToday from './mar-today'
 
 export default {
   name: 'MarTodayContent',
@@ -43,12 +41,12 @@ export default {
     return {
       showMarDialog: false,
       schedule: [],
-      marToday: {}, // helper class
       currentDay: 0
     }
   },
   props: {
-    ehrHelp: { type: Object }
+    ehrHelp: { type: Object },
+    marToday: { type: Object }
   },
   computed: {
     refreshData () {
@@ -79,7 +77,6 @@ export default {
     }
   },
   created: function () {
-    this.marToday = new MarToday()
     const _this = this
     this.refreshEventHandler = function () { _this.refresh() }
     EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
