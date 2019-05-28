@@ -14,8 +14,8 @@
 
       tbody
         tr(v-for="row in tableBody")
-          td(v-for="cell in row")
-            div(:class="marCellStyle(cell)") {{marCellContent(cell)}}
+          td(v-for="(cell, index) in row", :class="tdStyle(cell, index, row)")
+            div(:class="marCellStyle(cell, index, row)") {{marCellContent(cell)}}
     hr
 </template>
 
@@ -46,17 +46,39 @@ export default {
     ehrHelp: { type: Object }
   },
   methods: {
-    marCellContent (cell) {  return this.marSummary.marCellContent(cell) },
-    marCellStyle (cell) {  return this.marSummary.marCellStyle(cell) },
+    marCellContent (cell) {
+      return this.marSummary.marCellContent(cell)
+    },
+    marCellStyle (cell, index, row) {
+      return this.marSummary.marCellStyle(cell)
+    },
+    tdStyle (cell, index, row) {
+      // We want to put a break between the days so find when the day changes.
+      // This assumes the sort order is largest (newest) day is first.
+      let style = ''
+      if (index + 1 < row.length) {
+        let nextCell = row[index+1]
+        let cellDay = cell.value.day
+        let nextDay = nextCell.value.day
+        // console.log('cellDay nextDay',cellDay, nextDay)
+        if (nextDay < cellDay) {
+          style = 'dayBreak'
+        }
+      }
+      return style
+    },
     refreshContent () {
       if(this.ehrHelp){
         let summary = this.marSummary
         let help = this.marHelper
         help.refreshMarData()
         summary.summaryRefresh(help.marRecords, help.theMedOrders)
-        console.log('MarSummary component.refresh()', summary)
+        // console.log('MarSummary component.refresh()', summary)
         this.tableHeader = summary.tableHeader
         this.tableBody = summary.tableBody
+        // console.log('MarSummary component.refresh() summary.tableBody', summary.tableBody)
+        // reset the previous day value stored for provide visual day break styles
+        this.prevDay = undefined
       }
     }
   },
@@ -91,4 +113,7 @@ export default {
   color:green;
 }
 
+.dayBreak {
+  border-right: 1px solid black !important;
+}
 </style>

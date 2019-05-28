@@ -35,7 +35,7 @@ export default class MarEntity {
       this._data.medications = period.medsList
     } else if (typeof whoOrObj === 'object') { // from database
       // console.log('MarEntity create from object', whoOrObj)
-      this._data = whoOrObj
+      this._data = whoOrObj._data ? whoOrObj._data : whoOrObj
       this._data.medications = this._data.medications.map( mo => new MedOrder(mo))
       // console.log('MarEntity  this._data.medications', this._data.medications)
     }

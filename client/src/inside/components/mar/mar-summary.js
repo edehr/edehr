@@ -41,8 +41,11 @@ export default class MarSummary {
       medMar.push(_createElement(MS.KEY_MED_ORDER, medOrder))
       marRecords.forEach( mar => {
         let marMedications = mar.medications
-        if(db2) console.log('MarSummary.summaryRefresh marMedications', marMedications)
-        let found = marMedications.find( m => m.medication === medName)
+        if(db2) console.log('MarSummary.summaryRefresh mar', mar, marMedications)
+        let found = marMedications.find( m => {
+          if(db2) console.log('m.medication === medName',m.constructor.name, m._data, medName)
+          return m.medication === medName
+        })
         medMar.push(found? _createElement(MS.KEY_MAR, mar) : EMPTY)
       })
       body.push(medMar)
@@ -71,6 +74,7 @@ export default class MarSummary {
   marCellStyle (cell) {
     let style = ''
     let type = cell.type
+    // console.log('marCellStyle', cell.type, cell.value)
     if( type === MS.KEY_MED_ORDER) {
       style = MS.CSS_CLASS_MED
     } else if( type === MS.KEY_MAR) {

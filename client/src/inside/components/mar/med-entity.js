@@ -6,7 +6,7 @@
 
 export default class MedOrder {
   constructor (medOrObj) {
-    this._data = medOrObj
+    this._data = medOrObj && medOrObj._data ? medOrObj._data : medOrObj
   }
 
   static medOrderAsTextLine (med) {
