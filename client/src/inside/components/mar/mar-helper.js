@@ -46,6 +46,8 @@ export default class MarHelper {
   getEhrData_MarRecords () {
     let marTableKey = this.getMarTableKey()
     let raw = this.getEhrData_MarPageData()[marTableKey] || []
+    // raw = Object.assign({}, raw)
+    // console.log('getEhrData_MarRecords', JSON.stringify(raw))
     let records = raw.map( m => new MarEntity(m))
     records.sort( (a,b) => MarEntity.compare(a, b) )
     return records
@@ -86,7 +88,7 @@ export default class MarHelper {
     let asLoadedPageData = this.getEhrData_MarPageData()
     let table = asLoadedPageData[marTableKey] || []
     let aMar = aMarEntity.asObjectForApi()
-    console.log('saveMarDialog key:', marTableKey, ', ', aMar)
+    // console.log('saveMarDialog key:', marTableKey, ', ', aMar)
     table.push(aMar)
     let payload = {
       propertyName: MAR_PAGE_KEY,
