@@ -19,14 +19,10 @@
               td {{sv.description}}
               // td {{sv._id}}
               td(class="seed-actions")
-               ui-button(v-on:buttonClicked="uploadSeed(sv)")
-                fas-icon(icon="upload")
-               ui-button(v-on:buttonClicked="downloadSeed(sv)", class="dwn")
-                fas-icon(icon="download")
-               ui-button(v-on:buttonClicked="showEditDialog(sv)")
-                fas-icon(icon="edit")
-               ui-button(v-on:buttonClicked="gotoEhrWithSeed(sv)")
-                fas-icon(icon="notes-medical")
+               ui-button(v-on:buttonClicked="uploadSeed(sv)", v-bind:secondary="true") Upload
+               ui-button(v-on:buttonClicked="downloadSeed(sv)", , v-bind:secondary="true", class="dwn") Download
+               ui-button(v-on:buttonClicked="showEditDialog(sv)", v-bind:secondary="true") Edit
+               ui-button(v-on:buttonClicked="gotoEhrWithSeed(sv)") View
       ui-agree(ref="aggreeDialog")
       input(id="fileUploadInput", ref="fileUploadInput", type="file", accept="application/json", style="display:none", @change="importSeedFile")
     app-dialog(:isModal="true", ref="theDialog",  @cancel="cancelDialog", @save="saveDialog")

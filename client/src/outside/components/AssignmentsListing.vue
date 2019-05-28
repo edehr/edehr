@@ -8,7 +8,7 @@
     div(v-show="isDeveloper")
       ui-button(v-on:buttonClicked="showCreateDialog") Create new assignment
       span &nbsp;
-      ui-link(:to="{ name: `developEhrData` }") Manage Ehr Data
+      ui-link(:to="{ name: `developEhrData` }") Manage EHR data
 
     table.table
       thead
