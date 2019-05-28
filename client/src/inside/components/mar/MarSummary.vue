@@ -1,25 +1,22 @@
 <template lang="pug">
   div
-    h1 Medication Administration Summary
-    div
-      table
-        thead
-          th(v-for="hdr in tableHeader")
-            div(v-show="hdr.type === KEY_MED_ORDER")
-              div Medication
-              div List
-            div(v-show="hdr.type === KEY_MAR")
-              div When: Day-{{hdr.value.day}} {{hdr.value.actualTime}}
-              div Scheduled: {{hdr.value.scheduledTime}}
-              div Who: {{hdr.value.whoAdministered}}
-              div Notes: {{hdr.value.comment}}
+    table
+      thead
+        th(v-for="hdr in tableHeader")
+          div(v-show="hdr.type === KEY_MED_ORDER")
+            div Medication
+            div List
+          div(v-show="hdr.type === KEY_MAR")
+            div Day {{hdr.value.day}} {{hdr.value.actualTime}}
+            div {{hdr.value.scheduledTime}}
+            div {{hdr.value.whoAdministered}}
+            div {{hdr.value.comment}}
 
-        tbody
-          tr(v-for="row in tableBody")
-            td(v-for="cell in row")
-              div(:class="marCellStyle(cell)") {{marCellContent(cell)}}
+      tbody
+        tr(v-for="row in tableBody")
+          td(v-for="cell in row")
+            div(:class="marCellStyle(cell)") {{marCellContent(cell)}}
     hr
-    div(style="display:none") {{refreshProperty}}
 </template>
 
 <script>
@@ -48,23 +45,16 @@ export default {
   props: {
     ehrHelp: { type: Object }
   },
-  computed: {
-    refreshProperty () {
-      // console.log('MarSummary component.refreshProperty()')
-      // See EhrPageForm for more on why we have refreshProperty
-      this.refresh()
-      return this.tableHeader
-    }
-  },
   methods: {
     marCellContent (cell) {  return this.marSummary.marCellContent(cell) },
     marCellStyle (cell) {  return this.marSummary.marCellStyle(cell) },
-    refresh () {
+    refreshContent () {
       if(this.ehrHelp){
         let summary = this.marSummary
         let help = this.marHelper
-        // console.log('MarSummary component.refresh()')
+        help.refreshMarData()
         summary.summaryRefresh(help.marRecords, help.theMedOrders)
+        console.log('MarSummary component.refresh()', summary)
         this.tableHeader = summary.tableHeader
         this.tableBody = summary.tableBody
       }
@@ -74,7 +64,7 @@ export default {
     this.marSummary = new MarSummary()
     this.marHelper = new MarHelper(this.ehrHelp)
     const _this = this
-    this.refreshEventHandler = function () { _this.refresh() }
+    this.refreshEventHandler = function () { _this.refreshContent() }
     EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
   },
   beforeDestroy: function () {

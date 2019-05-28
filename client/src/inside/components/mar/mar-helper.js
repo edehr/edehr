@@ -10,13 +10,16 @@ export const SCHEDULE_FIELDSET = 'schedule'
 export default class MarHelper {
   constructor (ehrHelp) {
     this.ehrHelp = ehrHelp
-    this.pageData = this.ehrHelp.getAsLoadedPageData(MED_ORDERS_PAGE_KEY)
-    this._theMedOrders = this.getEhrData_Orders()
-    this._marRecords = this.getEhrData_MarRecords()
+    this.refreshMarData()
   }
   get theMedOrders () { return this._theMedOrders }
   get marRecords () { return this._marRecords }
 
+  refreshMarData () {
+    this.pageData = this.ehrHelp.getAsLoadedPageData(MED_ORDERS_PAGE_KEY)
+    this._theMedOrders = this.getEhrData_Orders()
+    this._marRecords = this.getEhrData_MarRecords()
+  }
   /**
    * Get the medication orders current page data
    * @return {*}

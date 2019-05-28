@@ -8,6 +8,8 @@ export default class MarToday {
 
   getTodaysSchedule (marRecords, medOrders) {
     /*   See the Algorithm in the MAR Readme */
+    let db = false
+    let db2 = false
 
     // Step 1
     let pDefs = new PeriodDefs()
@@ -16,31 +18,32 @@ export default class MarToday {
 
     // Step 2
     if(!medOrders || medOrders.length === 0) {
-      console.log('Done (There are no periods needing a MAR. The Today page is empty)')
+      if(db) console.log('getTodaysSchedule: Done (There are no periods needing a MAR. The Today page is empty)')
       return pdList
     }
+    if(db) console.log('getTodaysSchedule: medOrders', medOrders)
 
     // Step 3
     let mOrders = medOrders // in future filter this list to only include active prescriptions
     pdList.forEach(pk => {
-      // console.log('For pk look for orders', pk)
+      if(db) console.log('getTodaysSchedule: For pk look for orders', pk)
       mOrders.forEach( mo => {
-        // console.log('For pk look at mo.isScheduled', pk, mo)
+        if(db2) console.log('getTodaysSchedule: For pk look at mo.isScheduled', pk, mo)
         if (mo.isScheduled(pk.key)) {
-          // console.log('$$$$$$$$$$$$$$ For pk mo.isScheduled so add it to pk', pk, mo)
+          if(db2) console.log('getTodaysSchedule: For pk mo.isScheduled so add it to pk', pk, mo)
           pk.addMedication(mo)
         }
       })
     })
     let pdListFiltered = pdList.filter ( pk => pk.hasMedications())
     if(pdListFiltered.length === 0) {
-      console.log('Done (No periods have medications)')
+      if(db) console.log('getTodaysSchedule: Done (No periods have medications)')
       return pdListFiltered
     }
 
     // Step 4
     if(!marRecords || marRecords.length === 0) {
-      console.log('Done (No MAR records so all the periods with scheduled medications need a MAR)')
+      if(db) console.log('getTodaysSchedule: Done (No MAR records so all the periods with scheduled medications need a MAR)')
       return pdListFiltered
     }
 
@@ -52,7 +55,7 @@ export default class MarToday {
 
     // Step 6
     if(marRecsFiltered.length === 0) {
-      console.log('Done (No MAR records for current day so all the periods with scheduled medications need a MAR)')
+      if(db) console.log('getTodaysSchedule: Done (No MAR records for current day so all the periods with scheduled medications need a MAR)')
       return pdListFiltered
     }
 
@@ -67,7 +70,7 @@ export default class MarToday {
     let mCnt = 0
     pdListFiltered.forEach ( pk => mCnt += pk.hasMar() ? 1 : 0 )
     if (mCnt === pdListFiltered.length) {
-      console.log('If all periods have a marRec so advance to next day')
+      if(db) console.log('getTodaysSchedule: If all periods have a marRec so advance to next day')
       this._cDay += 1
       pdListFiltered.forEach ( pk => pk.marRecord = undefined )
     }

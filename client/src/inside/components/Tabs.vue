@@ -9,6 +9,9 @@
 </template>
 
 <script>
+import EventBus from '../../helpers/event-bus'
+import { PAGE_DATA_REFRESH_EVENT } from '../../helpers/event-bus'
+
 export default {
   name: 'Tab',
   data () {
@@ -24,6 +27,9 @@ export default {
       this.tabs.forEach(function (tab) {
         tab.isActive = selectedTab.name === tab.name
       })
+      // emit the page refresh event so the newly selected tab can process a refresh event and load its content
+      console.log('Tab change emit PAGE_DATA_REFRESH_EVENT')
+      EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
     }
   }
 }
