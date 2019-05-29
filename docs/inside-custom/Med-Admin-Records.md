@@ -1,9 +1,6 @@
 # Medication Administration Records - MAR
 
-> Special section of the EdEHR dealing with medication orders and the administration of medications.
-
-Unlike most of the EdEHR, the MAR page is highly customized and complex. The medication and scheduling 
-data on the MAR is pulled from the Medication Orders page.
+> The MAR page is highly customized and complex page that tracks the administration of medications that were entered on the medication orders page. Medication and scheduling details are brought in and compared to the actual medications and time that they were administered.
 
 ## Schedule Periods -- PeriodDefs
 In this prototype EdEHR we had the challenge to define when a medication is scheduled. For the 
@@ -20,7 +17,7 @@ Inputs spreadsheet. See the ```PeriodDefs``` class for the algorithm used to con
 periods based on the definitions.
 
 Much of the logic is based on this set of time periods.  Each singular time period is called a ```PeriodDef``` 
-The set is called ```PeriodDefs```
+The set is plural and called ```PeriodDefs```
 
 ## Medication Orders
 
@@ -49,13 +46,13 @@ let sampleMedicationOrder = {
 ### Medication Order - Active Status
 
 In a professional EHR the medication order has the concept of being active or not. Sometimes this is managed by setting a start
-date and end date. This prototype makes no attempt to manage this status yet the algorithm below shows how
+date and end date. This prototype makes no attempt to manage this status, yet the algorithm below shows how
 this might play.
 
 ## MAR
 
 A MAR is a record of the administration of a set of medications. Each record contains 
-- who administered the medication(s)
+- who administered the medication
 - the scheduled time for the medication to be administered (one key from from the set of ```PeriodDefs```)
 - the actual time administered (24hr clock)
 - a list of the medication orders that have been administered in the past
@@ -98,28 +95,23 @@ let sample = {
 
 ## MAR page
 
-The MAR page has two tabs: Current Day and Summary (see the code for the actual names).
+MAR is an acronym for Medication Administration Record. The MAR page has two tabs: Today and Summary.
 
+## MAR Today
+
+The Today tab contains a list of medications that are due to be administered to the patient today. It is organized by general time periods of a day. This list currently ranges from breakfast to bedtime, but in the future should be from 00:00 to 24:00. A time period will only be displayed if there is a medication scheduled for that time.
+
+Each time period is displayed with (and only displayed if there is available) the associated medication list and administration status. If a medication order is scheduled, but has not yet been given, an "Add administation record" button will be available for the user to enter the needed data. The button will only be shown for the first period of the day that lacks an administration record.
 
 ## MAR Summary
 
-The summary tab contains a table listing of all medication records, as found in the current data as 
-stored for the Medications Orders page, combined with all the MARs (stored as data for this MAR page).
+The summary tab holds every given and missed medication administration. It matches and pulls from the entered data on the Medications Orders page, and is combined with each medication administration record (stored as data for this MAR page).
 
-For each medication the table displays a yes or no under the MAR. 
+Each medication will have a status of given or not given for each MAR. 
 
 We can see a challenge as the number of active days in the assignment grows beyond a few days. For this prototype we
 ignore this problem yet it needs to be addressed for a larger system.  One option is to place an afordance like a filter on the page
 to select MARs for a particular day.
-
-## MAR Current Day
-
-The Current Day tab shows the list of scheduled periods from 00:00 to 24:00. But only if there is at least one medication scheduled to be 
-administered for the period. If a period has medications then it is displayed.
-
-Each period shows its name, medication list and its MAR status. If there is a MAR in the current data for the period (and
-current day) then display the MAR. Else display a "Add MAR" button. But only display one Add MAR button on the first period
-of the day that lacks a MAR.
 
 ## Algorithm to collate Medication Orders and MARs into Periods
 
@@ -155,5 +147,5 @@ of the day that lacks a MAR.
    > This situation happens when the last day is full
    
 > If we reach this point then the current day has at least one scheduled period that has some medications prescribed and no
-MAR record. Display as per described above (Mar Current Day)
+MAR record. Display as per described above (MAR Current Day)
    

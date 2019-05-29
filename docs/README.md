@@ -1,6 +1,6 @@
 # EdEHR
 
-> Educational Electronic Health Record System: a [BCcampus](https://bccampus.ca) project
+> Educational Electronic Health Record: a [BCcampus](https://bccampus.ca) project
 
 Project documents can be viewed [here](https://bryan-gilbert.github.io/edehr/)
 
@@ -49,19 +49,18 @@ When an instructor accesses the application via a link in a LMS they are taken t
 management pages.  Here they can view class lists, see the status of student's work, and evaluate
 the work within the EHR.
 
-When a user who has content editing permissions enters the app they are also taken to the
+When a user with content editing permissions enters the app, they are taken to the
 assignment management pages.  They are permitted to edit assignments and seed data.
 
 See [assignment management system](/outside/)
 
-### Electronic health record system
+### Electronic Health Record
 
-In the center of the application (the inside) is a
+In the center of the application (the inside) is an
 [electronic health record system](/inside/) (EHR) scaled to suit the learning environment.
 
-When a student accesses a EdEHR link in a LMS they are taken to the EHR where they use this application
-in a manner similar to a nurse, doctor, pharmacist or other medical practitioner would use a real life EHR. 
-Of course, they have been given an assignment to complete within the EHR.  The student can 
+A student can access the EHR via a LMS link. The EHR similuates the interaction a nurse, doctor, pharmacist or other medical practitioner would have using a professional EHR. 
+Students will have been given an assignment to complete within the EHR.  The student can 
 reenter the application any number of times to complete the assignment and they can make edits
 until they submit their work.  After this they can only view their work.  At this point the instructor
 can evaluate the student's work and leave comments.
@@ -119,10 +118,3 @@ Todo: Add a header to code files.  Question: should the author's name be the dev
 * [https://github.com/bcgov/BC-Policy-Framework-For-GitHub/tree/master/BC-Open-Source-Development-Employee-Guide](https://github.com/bcgov/BC-Policy-Framework-For-GitHub/tree/master/BC-Open-Source-Development-Employee-Guide)
 * [https://github.com/bcgov/BC-Policy-Framework-For-GitHub/blob/master/BC-Open-Source-Development-Employee-Guide/Licenses.md](https://github.com/bcgov/BC-Policy-Framework-For-GitHub/blob/master/BC-Open-Source-Development-Employee-Guide/Licenses.md)
 * [https://github.com/BCcampus/opentextbooks/blob/dev/README.md#copyright-and-license](https://github.com/BCcampus/opentextbooks/blob/dev/README.md#copyright-and-license) 
-
-
-
-
-
-
-

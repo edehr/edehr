@@ -4,4 +4,5 @@
 
 - Vital Signs
 - Medical Administration Records (MAR)
+- Discharge Summary
 

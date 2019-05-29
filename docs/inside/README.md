@@ -5,9 +5,9 @@
 ![EHR-screenshot]
 
 ## EHR 'Inside' Entity relationship diagram
-The schema on the left reflects what a normal EHR schema might look like.  It illustrates only a few tables of a real EHR that would have 100's or even 1,000's of tables.
+The schema on the left reflects what a professional EHR schema might look like.  It illustrates only a few tables of a professional EHR that could have 100's or even 1,000's of tables.
 
-Since the EdEHR only tracks one small encounter it can take a completely EdEHR approach and store the entire EHR data in a single structured text file. It can then store incremental deltas for each stage of the scripted assignment
+Because the EdEHR tracks only one small encounter, all of the EHR data can be stored in a single structured text file. Incremental deltas (version control) can then be stored for each stage of the scripted assignment
 
 [EdEHR-ER-EHR]: ../images/EdEHR-ER-EHR.png "EHR-ER"
 [EHR-screenshot]: ../images/EHR-screenshot.png "EHR"
