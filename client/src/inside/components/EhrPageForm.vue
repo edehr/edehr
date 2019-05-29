@@ -3,7 +3,7 @@
     div(class="form-row-wrapper", v-for="row in formDefs.rows", v-bind:key="row.rowNumber") {{row.classList}}
       div(class="form-element-wrapper", v-bind:class="cssFromDefs(element)", v-for="element in row.elements", v-bind:key="element.elementKey")
         ehr-page-form-element(:notEditing="notEditing", :element="element", :ehrHelp="ehrHelp" :inputs="theData")
-    div Assignment last saved: {{ theData.lastUpdate }}
+    div(class="assignment-save") Assignment last saved: {{ theData.lastUpdate }}
     div(style="display:none") {{currentData}}
 </template>
 
@@ -95,6 +95,10 @@ export default {
 
 <style lang="scss">
 .ehr-page-form {
-  margin-bottom: 5em;
+  margin-bottom: .5em;
+}
+
+.assignment-save{
+  margin-top: 5em;
 }
 </style>

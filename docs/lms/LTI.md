@@ -1,13 +1,17 @@
-# Learning Tools Interoperability LTI
+# Learning Tools Interoperability (LTI)
 
-> LTI is the glue between the learning tool and this EdEHR
+> LTI is the glue between the learning tool and the EdEHR.
 
 The following illustrates some of the data in a LTI message.  When a user clicks a link
-in a LMS that is associated with a LTI connection a HTTP POST message is 
-sent to the server with the following data. If the message is valid the
-receiver will process the message, create any user accounts it needs to,
-create any assignments it needs to and then redirect the user to the 
-course ware application. (The user doesn't see any of this magic.)
+in a LMS that is associated with a LTI connection, a HTTP POST message is 
+sent to the server with the following data: If the message is valid the
+receiver will:
+- process the message
+- create any user accounts it needs to
+- create any assignments it needs to 
+- redirect the user to the course ware application. 
+
+(The user doesn't see any of this magic.)
 
 ## LTI system
 

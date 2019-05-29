@@ -1,6 +1,6 @@
 # Courses, Activities, Assignments, and Seeds
 
-> What roles does each of these objects play in the EdEHR?
+> What roles do each of these objects play in the EdEHR?
 
 > All objects belong to a single tool consumer.  
 

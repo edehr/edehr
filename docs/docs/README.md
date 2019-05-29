@@ -39,7 +39,7 @@ public directory when the documentation is published.
 
 ## Publish
 
-To publish the documentation to the publicly available github pages repository just run the ```docDeploy.sh``` script
+To publish the documentation to the publicly available Github pages repository run the ```docDeploy.sh``` script
 in the root directory of this project.  
 
 Public docs are currently placed here [https://bryan-gilbert.github.io/edehr/](https://bryan-gilbert.github.io/edehr/)

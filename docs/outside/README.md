@@ -10,8 +10,8 @@ When an instructor accesses the application, via a link in a LMS, they are taken
 management pages.  Here they can view class lists, see the status of student's work, and evaluate
 the work within the EHR.
 
-When a user who has content editing permissions enters the app they are also taken to the
-assignment management pages.  They can edit assignments and seed data.
+When a user who has content editing permissions enters the app they are taken to the
+assignment management pages.  Here they can edit assignments and seed data.
 
 A student can only see the assignment after an instructor or content editor has first established the activity in the EdEHR.
 
@@ -34,11 +34,11 @@ when an instructor or content editor first uses a activity in the LMS.  Until an
 users will see an error page.
 
 When the activity record is created the system searches for any existing assignments that have the 'external id' specified
-in the LTI message.  If none is found then a new assignment record is created for this external id and a default empty seed
+in the LTI message.  If none is found, then a new assignment record is created for this external id and a default empty seed
 is attached.
 
 Normally, someone will set up the system with a set of assignments (along with rich EHR seed content). They will inform the
-LMS administrator what 'external id'
+LMS administrator of the 'external id'.
  
 ## EHR 'Outside' Entity Relationship Diagram
 
@@ -51,10 +51,10 @@ Also see the EHR ('Inside') Entity Relationship Diagram
 
 ## EdEHR Assignment
 
-An assignment is based on a case study text and is augmented with educational assists.   The case study provides a textual 
+An assignment is based on a case study text and is augmented with educational assists.  The case study provides a textual 
 description of the scenario, technical data and links to external resources (educational aids).
 
-In the future an assignment may optionally have notes and resources provided by the course instructor.
+In the future, an assignment may optionally have notes and resources provided by the course instructor.
 
 Students complete their assignment inside the EdEHR.  The system provides a scratch pad for students to record their temporary notes.
 

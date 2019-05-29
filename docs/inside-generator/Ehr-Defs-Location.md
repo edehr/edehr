@@ -3,32 +3,32 @@
 > Where does a UI element go?  How does it look? Does it have any special traits?
 
 The Inputs spreadsheet configuration system lets us define 
-- where elements appear on the page, table or dialog
+- the layout of elements within a page, table or dialog
    - For elements on page forms *or* on a dialog associated with a table see ```formRow, formColumn, formCss, formOption```
    - For elements on tables see ```tableColum, tableCss```
    - For elements that are nested inside a fieldset see ```fsetRow, fsetCol```
-- whether they have special styling
-- whether they have any special traits
+- special styling
+- special traits
 
 
 ## Location
 
 ### formRow, formColumn
-Sets the row and column within the fieldset
+Sets the row and column within the fieldset.
 
 ## tableColumn
 Sets the order of elements as they will appear in the table. This property would be better named: ```tablePosition``` because
-it applies whether the table is horizontal or vertical  
+it applies to both horizontal and vertical tables.
 
 ### fsetRow, fsetCol
-Sets the row and column within the fieldset
+Sets the row and column within the fieldset.
 
 ## Styling
 ### formCss
-If present the content in this property is added as a CSS class to the element as it appears in dialogs or page forms. 
+If present, the content in this property is added as a CSS class to the element as it appears in dialogs or page forms. 
 
 ### tableCss
-If present the content in this property is added as a CSS class to the element as it appears in tables
+If present, the content in this property is added as a CSS class to the element as it appears in tables
 
 ## Special traits
 
@@ -40,5 +40,3 @@ that opens the dialog. This ```addButtonText``` is the text displayed in this bu
 ### formOption
 This property allows special behaviours to be implement. For example, text and select inputs may have ```hideLabel``` which 
 causes the UI to hide the label associated with the input element.
-
-

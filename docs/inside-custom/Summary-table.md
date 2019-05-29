@@ -2,24 +2,24 @@
 
 > A component that displays a subset of columns from a table with an optional filter.
 
-For the Discharge Summary Page we need to show a series of tables based on data from the patient's chart.
-Each table can be identified by it's fully qualified name (FQN) as well as the list of columns.   Yet the columns
-must be contained in the table so we only need their FQN's relative to the table's FQN.
+The Discharge Summary Page shows a a summary of tabular data based on the patient's chart.
+Each table can be identified by it's fully qualified name (FQN) as well as the list of columns.  Each column
+must be contained within the table so only FQN's relative to the table's FQN are needed.
 
-For example in the ```medicationOrders.table``` table we need the following
+For example, in the ```medicationOrders.table``` table the following data is required:
 - medication
 - route
 - schedule.*
 
-Note in this case we're wanting all the fields inside the schedule fieldset.  We don't want to make the list
-explicit because the contents of the fieldset may change over time. At the moment this fieldset contains:
+All of the fields should be inside the schedule fieldset.  The list is not made
+explicit because the contents of the fieldset may change over time. At the moment, this fieldset contains:
 - schedule.startDayFood
 - schedule.startDay
 - schedule.midDayFood
 - schedule.midDay
 - schedule.endDayFood
 
-Note at this time there is no status type of field on this table.
+There is no status type of field on this table.
 
 Another example is the Procedures and Treatments section which pulls from the ```nonmedOrders``` table
 Pull
