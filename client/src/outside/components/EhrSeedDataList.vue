@@ -161,7 +161,7 @@ export default {
       this.$refs.theDialog.onOpen()
     },
     showCreateDialog: function () {
-      this.aSeed = { version: '1.0', ehrData: {} }
+      this.aSeed = { version: '1.0', ehrData: '{}' }
       this.errorMesageList = []
       this.actionType = 'create'
       this.dialogHeader = 'Create a new seed for assignments'
