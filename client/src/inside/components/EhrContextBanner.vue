@@ -9,9 +9,9 @@
             fas-icon(icon="angle-double-down", v-show="!show")
             fas-icon(icon="angle-double-up", v-show="show")
       div(v-show="show")
-        ehr-context-instructor(v-show="showInstructor")
-        ehr-context-student(v-show="showStudent")
-        ehr-context-developer(v-show="showSeeding")
+        ehr-context-instructor(v-if="showInstructor")
+        ehr-context-student(v-if="showStudent")
+        ehr-context-developer(v-if="showSeeding")
 </template>
 
 <script>
@@ -46,6 +46,11 @@ export default {
     toggleShow: function () {
       this.show = !this.show
       this.indicator = this.show ? '-' : '+'
+    }
+  },
+  mounted: function() {
+    if (StoreHelper.isInstructor(this)){
+      this.show = true
     }
   }
 }

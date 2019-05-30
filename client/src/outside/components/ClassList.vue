@@ -62,7 +62,8 @@ export default {
     }
   },
   props: {
-    activity: { type: Object }
+    activity: { type: Object },
+    index: { type: Number}
   },
   computed: {
     assignment () {
@@ -157,6 +158,13 @@ export default {
     }
   },
   mounted: function () {
+    if (this.index === 0) {
+      const _this = this
+      this.$nextTick(function () {
+        _this.activateActivity()
+      })
+
+    }
     /*
     let myId = this.activity._id
     let storeId = localStorage.getItem('activityId')

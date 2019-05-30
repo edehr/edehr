@@ -1,21 +1,22 @@
 <template lang="pug">
   div(class="as-instructor")
+    bread-crumb(currentPage="instructor")
     div(class="courses", v-for="course in courses")
       div(class="course-header")
         h1 Dashboard
         h2(class="course-header-item") {{ course.label }} - {{ course.name }} (Id: {{ course.id }})
-      div(class="activities", v-for="activity in course.activities")
+      div(class="activities", v-for="(activity, index) in course.activities")
         div(:ref="`activity-${activity._id}`")
-          class-list(:activity="activity")
+          class-list(:activity="activity", :index="index")
 </template>
 
 <script>
 import ClassList from './ClassList'
-
+import BreadCrumb from './BreadCrumb'
 export default {
   name: 'AsInstructor',
   components: {
-    ClassList
+    ClassList, BreadCrumb
   },
   computed: {
     courses () {

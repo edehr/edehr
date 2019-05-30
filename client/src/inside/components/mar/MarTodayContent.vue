@@ -1,22 +1,25 @@
 <template lang="pug">
   div(class="mar-today-content")
-    div(class="columns")
-      div(class="column period-column")
-        h4 Medication order
-      div(class="column mar-column")
-        h4 Medications administered
-    div(class="periodsList", v-for="period in schedule", :key="period.key")
+    div(v-if="schedule.length === 0")
+      h4 No medications ordered
+    div(v-else)
       div(class="columns")
         div(class="column period-column")
-          h5 {{ period.name }}
-          med-list(:medsList="period.medsList")
+          h4 Medication order
         div(class="column mar-column")
-          div(v-show="!period.hasMar()")
-            ui-button(v-on:buttonClicked="openMarDialog(period)") Add MAR
-          div(v-show="period.hasMar()")
-            mar-record(:record="period.marRecord || {}")
-      hr
-    mar-dialog(ref="refMarDialog", :currentDay="currentDay", v-on:saveMar="saveMar")
+          h4 Medications administered
+      div(class="periodsList", v-for="period in schedule", :key="period.key")
+        div(class="columns")
+          div(class="column period-column")
+            h5 {{ period.name }}
+            med-list(:medsList="period.medsList")
+          div(class="column mar-column")
+            div(v-show="!period.hasMar()")
+              ui-button(v-on:buttonClicked="openMarDialog(period)") Add MAR
+            div(v-show="period.hasMar()")
+              mar-record(:record="period.marRecord || {}")
+        hr
+      mar-dialog(ref="refMarDialog", :currentDay="currentDay", v-on:saveMar="saveMar")
     div(style="display:none") refreshData: {{refreshData}}
 </template>
 
