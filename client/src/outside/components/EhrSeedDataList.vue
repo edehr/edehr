@@ -1,5 +1,6 @@
 <template lang="pug">
   div(id="seedDataList", class="seedData-list")
+    bread-crumb(currentPage="developEhrData")
     h1 EHR Assignment Seed Data
     div
       ui-button(v-on:buttonClicked="showCreateDialog") Create new seed
@@ -60,13 +61,15 @@ import UiAgree from '../../app/ui/UiAgree.vue'
 import EventBus from '../../helpers/event-bus'
 import { setApiError, validateSeed, downloadSeedToFile } from '../../helpers/ehr-utills'
 import { PAGE_DATA_REFRESH_EVENT } from '../../helpers/event-bus'
+import BreadCrumb from './BreadCrumb'
 
 export default {
   name: 'EhrSeedDataList',
   components: {
     AppDialog,
     UiButton,
-    UiAgree
+    UiAgree,
+    BreadCrumb
   },
   data () {
     return {
@@ -158,7 +161,8 @@ export default {
       this.$refs.theDialog.onOpen()
     },
     showCreateDialog: function () {
-      this.aSeed = {}
+      this.aSeed = { version: '1.0', ehrData: {} }
+      this.errorMesageList = []
       this.actionType = 'create'
       this.dialogHeader = 'Create a new seed for assignments'
       this.$refs.theDialog.onOpen()

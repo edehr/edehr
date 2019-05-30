@@ -1,5 +1,6 @@
 <template lang="pug">
   div(class="as-instructor")
+    bread-crumb(currentPage="instructor")
     div(class="courses", v-for="course in courses")
       div(class="course-header")
         h1 Dashboard
@@ -11,11 +12,11 @@
 
 <script>
 import ClassList from './ClassList'
-
+import BreadCrumb from './BreadCrumb'
 export default {
   name: 'AsInstructor',
   components: {
-    ClassList
+    ClassList, BreadCrumb
   },
   computed: {
     courses () {

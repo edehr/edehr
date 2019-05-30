@@ -1,5 +1,6 @@
 <template lang="pug">
   div(:class="$options.name")
+    bread-crumb(currentPage="assignments")
     h1 EdEHR assignments
     div(v-if="isRespondingToError")
       p Error: {{ isRespondingToError }}
@@ -7,8 +8,8 @@
       p Adjust your LMS to use an assignment from the listing below
     div(v-show="isDeveloper")
       ui-button(v-on:buttonClicked="showCreateDialog") Create new assignment
-      span &nbsp;
-      ui-link(:to="{ name: `developEhrData` }") Manage EHR data
+      //span &nbsp;
+      //ui-link(:to="{ name: `developEhrData` }") Manage EHR data
 
     table.table
       thead
@@ -63,6 +64,7 @@ import AppDialog from '../../app/components/AppDialogShell'
 import UiButton from '../../app/ui/UiButton.vue'
 import UiLink from '../../app/ui/UiLink.vue'
 import { getIncomingParams } from '../../helpers/ehr-utills'
+import BreadCrumb from './BreadCrumb'
 
 export default {
   name: 'AssignmentsListing',
@@ -77,7 +79,7 @@ export default {
       selectedSeed: ''
     }
   },
-  components: { AppDialog, UiButton, UiLink },
+  components: { AppDialog, UiButton, UiLink, BreadCrumb },
   computed: {
     isDeveloper () {
       return this.$store.getters['visit/isDeveloper']
