@@ -19,7 +19,7 @@ export default class MarToday {
     // Step 2
     if(!medOrders || medOrders.length === 0) {
       if(db) console.log('getTodaysSchedule: Done (There are no periods needing a MAR. The Today page is empty)')
-      return pdList
+      return []
     }
     if(db) console.log('getTodaysSchedule: medOrders', medOrders)
 
