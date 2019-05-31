@@ -17,7 +17,7 @@ Undifferentiated
 Prefer not to say}"	eCell	{Mandatory: yes}	eCell	{Data_From: case}	{Data_case_study: Female}	{Assignment: N/A}	eCell	eCell	eCell	{dataParent: demographics}	{fqn: demographics.gender}
 {Page: Demographics}	{Label: Martial status}	{pageDataKey: demographics}	eCell	eCell	{elementKey: martialStatus}	{inputType: select}	{formRow: 4}	{formColumn: 2}	{formCss: is-one-third}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Options: Married
 Single
-Life partner
+Life partner 
 Divorced
 Separated
 Widowed}"	eCell	eCell	eCell	{Data_From: case}	{Data_case_study: Widow}	{Assignment: N/A}	eCell	eCell	eCell	{dataParent: demographics}	{fqn: demographics.martialStatus}
