@@ -18,6 +18,12 @@ export default function () {
           dataCaseStudy: "6:00-NL-10:30"
         },
         {
+          label: "Admission status",
+          elementKey: "status",
+          fqn: "visit.status",
+          dataCaseStudy: "Admitted-NL-Admitted"
+        },
+        {
           label: "Consent for treatment",
           elementKey: "consentForTreatment",
           fqn: "visit.consentForTreatment",
@@ -28,12 +34,6 @@ export default function () {
           elementKey: "consentForBlood",
           fqn: "visit.consentForBlood",
           dataCaseStudy: "TRUE"
-        },
-        {
-          label: "Admission status",
-          elementKey: "status",
-          fqn: "visit.status",
-          dataCaseStudy: "Admitted-NL-Admitted"
         },
         {
           label: "Physician admitting diagnosis",
@@ -56,9 +56,19 @@ export default function () {
           label: "Transfer in time",
           elementKey: "transferInTime",
           fqn: "visit.table.transferInTime"
+        },
+        {
+          label: "Transfer out day",
+          elementKey: "transferOutDay",
+          fqn: "visit.table.transferOutDay"
+        },
+        {
+          label: "Transfer out time",
+          elementKey: "transferOutTime",
+          fqn: "visit.table.transferOutTime"
         }
       ],
-      generated: "2019-05-23T13:52:36-07:00",
+      generated: "2019-05-30T23:17:32-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -88,6 +98,41 @@ export default function () {
                 mandatory: "yes",
                 dataParent: "visit",
                 fqn: "visit.admissionTime"
+              },
+              {
+                label: "Admission status",
+                pageDataKey: "visit",
+                elementKey: "status",
+                inputType: "select",
+                formRow: "1",
+                formColumn: "3",
+                formCss: "is-one-third",
+                options: [
+                  {
+                    text: "Admission in progress"
+                  },
+                  {
+                    text: "Admitted"
+                  },
+                  {
+                    text: "Inpatient"
+                  },
+                  {
+                    text: "Outpatient"
+                  },
+                  {
+                    text: "Surgical day care"
+                  },
+                  {
+                    text: "Discharge pending"
+                  },
+                  {
+                    text: "Discharged"
+                  }
+                ],
+                mandatory: "yes",
+                dataParent: "visit",
+                fqn: "visit.status"
               }
             ]
           },
@@ -131,46 +176,11 @@ export default function () {
                 formCss: "is-two-thirds",
                 dataParent: "visit",
                 fqn: "visit.diagnosis"
-              },
-              {
-                label: "Admission status",
-                pageDataKey: "visit",
-                elementKey: "status",
-                inputType: "select",
-                formRow: "3",
-                formColumn: "3",
-                formCss: "is-one-third",
-                options: [
-                  {
-                    text: "Admission in progress"
-                  },
-                  {
-                    text: "Admitted"
-                  },
-                  {
-                    text: "Inpatient"
-                  },
-                  {
-                    text: "Outpatient"
-                  },
-                  {
-                    text: "Surgical day care"
-                  },
-                  {
-                    text: "Discharge pending"
-                  },
-                  {
-                    text: "Discharged"
-                  }
-                ],
-                mandatory: "yes",
-                dataParent: "visit",
-                fqn: "visit.status"
               }
             ]
           }
         ],
-        columnsCount: 2
+        columnsCount: 3
       },
       hasTable: true,
       tables: [
@@ -217,6 +227,32 @@ export default function () {
               tableColumn: "3",
               dataParent: "visit.table",
               fqn: "visit.table.transferInTime",
+              tableKey: "table"
+            },
+            {
+              label: "Transfer out day",
+              pageDataKey: "visit",
+              level2Key: "table",
+              elementKey: "transferOutDay",
+              inputType: "day",
+              formRow: "1",
+              formColumn: "4",
+              tableColumn: "4",
+              dataParent: "visit.table",
+              fqn: "visit.table.transferOutDay",
+              tableKey: "table"
+            },
+            {
+              label: "Transfer out time",
+              pageDataKey: "visit",
+              level2Key: "table",
+              elementKey: "transferOutTime",
+              inputType: "time",
+              formRow: "1",
+              formColumn: "5",
+              tableColumn: "5",
+              dataParent: "visit.table",
+              fqn: "visit.table.transferOutTime",
               tableKey: "table"
             }
           ],
@@ -265,11 +301,37 @@ export default function () {
                     dataParent: "visit.table",
                     fqn: "visit.table.transferInTime",
                     tableKey: "table"
+                  },
+                  {
+                    label: "Transfer out day",
+                    pageDataKey: "visit",
+                    level2Key: "table",
+                    elementKey: "transferOutDay",
+                    inputType: "day",
+                    formRow: "1",
+                    formColumn: "4",
+                    tableColumn: "4",
+                    dataParent: "visit.table",
+                    fqn: "visit.table.transferOutDay",
+                    tableKey: "table"
+                  },
+                  {
+                    label: "Transfer out time",
+                    pageDataKey: "visit",
+                    level2Key: "table",
+                    elementKey: "transferOutTime",
+                    inputType: "time",
+                    formRow: "1",
+                    formColumn: "5",
+                    tableColumn: "5",
+                    dataParent: "visit.table",
+                    fqn: "visit.table.transferOutTime",
+                    tableKey: "table"
                   }
                 ]
               }
             ],
-            columnsCount: 3
+            columnsCount: 5
           }
         }
       ],
@@ -382,7 +444,7 @@ export default function () {
           fqn: "vitals.table.flowRate"
         }
       ],
-      generated: "2019-05-23T13:52:36-07:00",
+      generated: "2019-05-30T23:17:32-07:00",
       hasTable: true,
       tables: [
         {
@@ -1091,7 +1153,7 @@ export default function () {
           fqn: "fluidBalance.table.fluidOut"
         }
       ],
-      generated: "2019-05-23T13:52:36-07:00",
+      generated: "2019-05-30T23:17:32-07:00",
       hasTable: true,
       tables: [
         {
@@ -1535,7 +1597,7 @@ export default function () {
           defaultValue: "0"
         }
       ],
-      generated: "2019-05-23T13:52:36-07:00",
+      generated: "2019-05-30T23:17:32-07:00",
       hasTable: true,
       tables: [
         {
@@ -1834,10 +1896,13 @@ export default function () {
                   text: "3 = Normal flexion"
                 },
                 {
-                  text: "4 = Localising"
+                  text: "4 = Abnormal flexion"
                 },
                 {
-                  text: "5 = Obeys commands"
+                  text: "5 = Localising"
+                },
+                {
+                  text: "6 = Obeys commands"
                 }
               ],
               passToFunction: "glasgowCalculation",
@@ -2054,22 +2119,6 @@ export default function () {
               formColumn: "2"
             },
             {
-              label: "<b>Resources</b><p><a target=\"_blank\" href=\"/assets/standardized-assessment-tools/Morse-Fall-Scale-score.png\">Morse Fall Score </a></br><a target=\"_blank\" href=\"/assets/standardized-assessment-tools/mini-mental-health-screen.pdf\">Mini-mental state examination (MMSE)</a></p>",
-              pageDataKey: "neurological",
-              level2Key: "table",
-              elementKey: "resources",
-              inputType: "form_label",
-              formRow: "4",
-              formColumn: "1",
-              formCss: "is-one-third",
-              tableCss: "hideLabel",
-              fsetRow: "3",
-              fsetCol: "3",
-              dataParent: "neurological.table",
-              fqn: "neurological.table.resources",
-              tableKey: "table"
-            },
-            {
               label: "Right pupil response to light",
               pageDataKey: "neurological",
               level2Key: "table",
@@ -2150,6 +2199,22 @@ export default function () {
               fsetCol: "1",
               dataParent: "neurological.table",
               fqn: "neurological.table.comments",
+              tableKey: "table"
+            },
+            {
+              label: "<b>Resources</b><p><a target=\"_blank\" href=\"/assets/standardized-assessment-tools/Morse-Fall-Scale-score.png\">Morse Fall Score </a></br><a target=\"_blank\" href=\"/assets/standardized-assessment-tools/mini-mental-health-screen.pdf\">Mini-mental state examination (MMSE)</a></p>",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              elementKey: "resources",
+              inputType: "form_label",
+              formRow: "4",
+              formColumn: "1",
+              formCss: "is-one-third",
+              tableCss: "hideLabel",
+              fsetRow: "3",
+              fsetCol: "3",
+              dataParent: "neurological.table",
+              fqn: "neurological.table.resources",
               tableKey: "table"
             },
             {
@@ -3002,10 +3067,13 @@ export default function () {
                                   text: "3 = Normal flexion"
                                 },
                                 {
-                                  text: "4 = Localising"
+                                  text: "4 = Abnormal flexion"
                                 },
                                 {
-                                  text: "5 = Obeys commands"
+                                  text: "5 = Localising"
+                                },
+                                {
+                                  text: "6 = Obeys commands"
                                 }
                               ],
                               passToFunction: "glasgowCalculation",
@@ -4057,7 +4125,7 @@ export default function () {
           dataCaseStudy: "(no notes)"
         }
       ],
-      generated: "2019-05-23T13:52:36-07:00",
+      generated: "2019-05-30T23:17:32-07:00",
       hasTable: true,
       tables: [
         {
@@ -4215,6 +4283,21 @@ export default function () {
               formColumn: "1"
             },
             {
+              label: "Airway",
+              pageDataKey: "respiratory",
+              level2Key: "table",
+              elementKey: "airway",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "1",
+              dataParent: "respiratory.table",
+              fqn: "respiratory.table.airway",
+              containerType: "fieldset",
+              containerKey: "airway",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
               label: "Left upper lung",
               pageDataKey: "respiratory",
               level2Key: "table",
@@ -4279,21 +4362,6 @@ export default function () {
               formColumn: "2"
             },
             {
-              label: "Airway",
-              pageDataKey: "respiratory",
-              level2Key: "table",
-              elementKey: "airway",
-              inputType: "fieldset",
-              formRow: "2",
-              formColumn: "1",
-              dataParent: "respiratory.table",
-              fqn: "respiratory.table.airway",
-              containerType: "fieldset",
-              containerKey: "airway",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
               pageDataKey: "respiratory",
               level2Key: "table",
               level3Key: "breath",
@@ -4304,36 +4372,6 @@ export default function () {
               fsetCol: "1",
               dataParent: "respiratory.table.breath",
               fqn: "respiratory.table.breath.aSpacer",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
-              label: "Sputum",
-              pageDataKey: "respiratory",
-              level2Key: "table",
-              elementKey: "sputum",
-              inputType: "fieldset",
-              formRow: "2",
-              formColumn: "3",
-              dataParent: "respiratory.table",
-              fqn: "respiratory.table.sputum",
-              containerType: "fieldset",
-              containerKey: "sputum",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
-              label: "Breath sounds",
-              pageDataKey: "respiratory",
-              level2Key: "table",
-              elementKey: "breath",
-              inputType: "fieldset",
-              formRow: "2",
-              formColumn: "2",
-              dataParent: "respiratory.table",
-              fqn: "respiratory.table.breath",
-              containerType: "fieldset",
-              containerKey: "breath",
               tableCss: "hide-table-element",
               tableKey: "table"
             },
@@ -4488,6 +4526,21 @@ export default function () {
               formColumn: "1"
             },
             {
+              label: "Breath sounds",
+              pageDataKey: "respiratory",
+              level2Key: "table",
+              elementKey: "breath",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "2",
+              dataParent: "respiratory.table",
+              fqn: "respiratory.table.breath",
+              containerType: "fieldset",
+              containerKey: "breath",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
               label: "Cough",
               pageDataKey: "respiratory",
               level2Key: "table",
@@ -4580,6 +4633,21 @@ export default function () {
               fqn: "respiratory.table.sputum.sputumComments",
               tableKey: "table",
               formColumn: "1"
+            },
+            {
+              label: "Sputum",
+              pageDataKey: "respiratory",
+              level2Key: "table",
+              elementKey: "sputum",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "3",
+              dataParent: "respiratory.table",
+              fqn: "respiratory.table.sputum",
+              containerType: "fieldset",
+              containerKey: "sputum",
+              tableCss: "hide-table-element",
+              tableKey: "table"
             },
             {
               label: "General comments",
@@ -5266,11 +5334,6 @@ export default function () {
           dataCaseStudy: "Normal"
         },
         {
-          elementKey: "spacer1",
-          fqn: "cardiovascular.table.spacer1",
-          dataCaseStudy: "Normal"
-        },
-        {
           label: "Cap refill",
           elementKey: "labelCapRefill",
           fqn: "cardiovascular.table.labelCapRefill",
@@ -5420,7 +5483,7 @@ export default function () {
           dataCaseStudy: "(blank)"
         }
       ],
-      generated: "2019-05-23T13:52:36-07:00",
+      generated: "2019-05-30T23:17:32-07:00",
       hasTable: true,
       tables: [
         {
@@ -5492,7 +5555,7 @@ export default function () {
               inputType: "select",
               formRow: "2",
               formColumn: "1",
-              formCss: "is_one_third",
+              formCss: "is-one-third",
               tableColumn: "5",
               options: [
                 {
@@ -5523,7 +5586,7 @@ export default function () {
               inputType: "select",
               formRow: "2",
               formColumn: "2",
-              formCss: "is_one_third",
+              formCss: "is-one-third",
               tableColumn: "6",
               tableCss: "hr-table",
               options: [
@@ -5551,19 +5614,6 @@ export default function () {
               tableKey: "table"
             },
             {
-              pageDataKey: "cardiovascular",
-              level2Key: "table",
-              elementKey: "spacer1",
-              inputType: "form_label",
-              formRow: "3",
-              formColumn: "1",
-              formOption: "spacer",
-              tableColumn: "7",
-              dataParent: "cardiovascular.table",
-              fqn: "cardiovascular.table.spacer1",
-              tableKey: "table"
-            },
-            {
               label: "Cap refill",
               pageDataKey: "cardiovascular",
               level2Key: "table",
@@ -5571,7 +5621,7 @@ export default function () {
               inputType: "form_label",
               formRow: "3",
               formColumn: "2",
-              tableColumn: "8",
+              tableColumn: "7",
               helperText: "Normal < 3 seconds-NL-Delayed > 3 seconds",
               dataParent: "cardiovascular.table",
               fqn: "cardiovascular.table.labelCapRefill",
@@ -5585,7 +5635,7 @@ export default function () {
               inputType: "form_label",
               formRow: "3",
               formColumn: "3",
-              tableColumn: "9",
+              tableColumn: "8",
               dataParent: "cardiovascular.table",
               fqn: "cardiovascular.table.labelTemperature",
               tableKey: "table"
@@ -5598,7 +5648,7 @@ export default function () {
               inputType: "form_label",
               formRow: "3",
               formColumn: "4",
-              tableColumn: "10",
+              tableColumn: "9",
               dataParent: "cardiovascular.table",
               fqn: "cardiovascular.table.labelPeripheral",
               tableKey: "table"
@@ -5611,7 +5661,7 @@ export default function () {
               inputType: "form_label",
               formRow: "3",
               formColumn: "5",
-              tableColumn: "11",
+              tableColumn: "10",
               dataParent: "cardiovascular.table",
               fqn: "cardiovascular.table.labelNailBed",
               tableKey: "table"
@@ -5624,7 +5674,7 @@ export default function () {
               inputType: "form_label",
               formRow: "4",
               formColumn: "1",
-              tableColumn: "12",
+              tableColumn: "11",
               dataParent: "cardiovascular.table",
               fqn: "cardiovascular.table.labelRight",
               tableKey: "table"
@@ -5637,7 +5687,7 @@ export default function () {
               inputType: "form_label",
               formRow: "5",
               formColumn: "1",
-              tableColumn: "13",
+              tableColumn: "12",
               dataParent: "cardiovascular.table",
               fqn: "cardiovascular.table.labelLeftHand",
               tableKey: "table"
@@ -5650,7 +5700,7 @@ export default function () {
               inputType: "form_label",
               formRow: "6",
               formColumn: "1",
-              tableColumn: "14",
+              tableColumn: "13",
               dataParent: "cardiovascular.table",
               fqn: "cardiovascular.table.labelRightFoot",
               tableKey: "table"
@@ -5663,7 +5713,7 @@ export default function () {
               inputType: "form_label",
               formRow: "7",
               formColumn: "1",
-              tableColumn: "15",
+              tableColumn: "14",
               tableCss: "hr-table",
               dataParent: "cardiovascular.table",
               fqn: "cardiovascular.table.labelLeftFoot",
@@ -5678,7 +5728,7 @@ export default function () {
               formRow: "4",
               formColumn: "2",
               formOption: "hideLabel",
-              tableColumn: "16",
+              tableColumn: "15",
               options: [
                 {
                   text: "Normal < 3 seconds"
@@ -5700,7 +5750,7 @@ export default function () {
               formRow: "5",
               formColumn: "2",
               formOption: "hideLabel",
-              tableColumn: "17",
+              tableColumn: "16",
               options: [
                 {
                   text: "Normal < 3 seconds"
@@ -5722,7 +5772,7 @@ export default function () {
               formRow: "6",
               formColumn: "2",
               formOption: "hideLabel",
-              tableColumn: "18",
+              tableColumn: "17",
               options: [
                 {
                   text: "Normal < 3 seconds"
@@ -5744,7 +5794,7 @@ export default function () {
               formRow: "7",
               formColumn: "2",
               formOption: "hideLabel",
-              tableColumn: "19",
+              tableColumn: "18",
               tableCss: "hr-table",
               options: [
                 {
@@ -5767,7 +5817,7 @@ export default function () {
               formRow: "4",
               formColumn: "3",
               formOption: "hideLabel",
-              tableColumn: "20",
+              tableColumn: "19",
               options: [
                 {
                   text: "Warm"
@@ -5792,7 +5842,7 @@ export default function () {
               formRow: "5",
               formColumn: "3",
               formOption: "hideLabel",
-              tableColumn: "21",
+              tableColumn: "20",
               options: [
                 {
                   text: "Warm"
@@ -5817,7 +5867,7 @@ export default function () {
               formRow: "6",
               formColumn: "3",
               formOption: "hideLabel",
-              tableColumn: "22",
+              tableColumn: "21",
               options: [
                 {
                   text: "Warm"
@@ -5842,7 +5892,7 @@ export default function () {
               formRow: "7",
               formColumn: "3",
               formOption: "hideLabel",
-              tableColumn: "23",
+              tableColumn: "22",
               tableCss: "hr-table",
               options: [
                 {
@@ -5868,7 +5918,7 @@ export default function () {
               formRow: "4",
               formColumn: "4",
               formOption: "hideLabel",
-              tableColumn: "24",
+              tableColumn: "23",
               options: [
                 {
                   text: "No"
@@ -5899,7 +5949,7 @@ export default function () {
               formRow: "5",
               formColumn: "4",
               formOption: "hideLabel",
-              tableColumn: "25",
+              tableColumn: "24",
               options: [
                 {
                   text: "No"
@@ -5930,7 +5980,7 @@ export default function () {
               formRow: "6",
               formColumn: "4",
               formOption: "hideLabel",
-              tableColumn: "26",
+              tableColumn: "25",
               options: [
                 {
                   text: "No"
@@ -5961,7 +6011,7 @@ export default function () {
               formRow: "7",
               formColumn: "4",
               formOption: "hideLabel",
-              tableColumn: "27",
+              tableColumn: "26",
               tableCss: "hr-table",
               options: [
                 {
@@ -5993,7 +6043,7 @@ export default function () {
               formRow: "4",
               formColumn: "5",
               formOption: "hideLabel",
-              tableColumn: "28",
+              tableColumn: "27",
               options: [
                 {
                   text: "Pink"
@@ -6015,7 +6065,7 @@ export default function () {
               formRow: "5",
               formColumn: "5",
               formOption: "hideLabel",
-              tableColumn: "29",
+              tableColumn: "28",
               options: [
                 {
                   text: "Pink"
@@ -6037,7 +6087,7 @@ export default function () {
               formRow: "6",
               formColumn: "5",
               formOption: "hideLabel",
-              tableColumn: "30",
+              tableColumn: "29",
               options: [
                 {
                   text: "Pink"
@@ -6058,7 +6108,7 @@ export default function () {
               formRow: "7",
               formColumn: "5",
               formOption: "hideLabel",
-              tableColumn: "31",
+              tableColumn: "30",
               tableCss: "hr-table",
               options: [
                 {
@@ -6080,7 +6130,7 @@ export default function () {
               inputType: "textarea",
               formRow: "8",
               formColumn: "1",
-              tableColumn: "32",
+              tableColumn: "31",
               dataParent: "cardiovascular.table",
               fqn: "cardiovascular.table.comments",
               tableKey: "table"
@@ -6161,7 +6211,7 @@ export default function () {
                     inputType: "select",
                     formRow: "2",
                     formColumn: "1",
-                    formCss: "is_one_third",
+                    formCss: "is-one-third",
                     tableColumn: "5",
                     options: [
                       {
@@ -6192,7 +6242,7 @@ export default function () {
                     inputType: "select",
                     formRow: "2",
                     formColumn: "2",
-                    formCss: "is_one_third",
+                    formCss: "is-one-third",
                     tableColumn: "6",
                     tableCss: "hr-table",
                     options: [
@@ -6225,19 +6275,6 @@ export default function () {
                 formRow: "3",
                 elements: [
                   {
-                    pageDataKey: "cardiovascular",
-                    level2Key: "table",
-                    elementKey: "spacer1",
-                    inputType: "form_label",
-                    formRow: "3",
-                    formColumn: "1",
-                    formOption: "spacer",
-                    tableColumn: "7",
-                    dataParent: "cardiovascular.table",
-                    fqn: "cardiovascular.table.spacer1",
-                    tableKey: "table"
-                  },
-                  {
                     label: "Cap refill",
                     pageDataKey: "cardiovascular",
                     level2Key: "table",
@@ -6245,7 +6282,7 @@ export default function () {
                     inputType: "form_label",
                     formRow: "3",
                     formColumn: "2",
-                    tableColumn: "8",
+                    tableColumn: "7",
                     helperText: "Normal < 3 seconds-NL-Delayed > 3 seconds",
                     dataParent: "cardiovascular.table",
                     fqn: "cardiovascular.table.labelCapRefill",
@@ -6259,7 +6296,7 @@ export default function () {
                     inputType: "form_label",
                     formRow: "3",
                     formColumn: "3",
-                    tableColumn: "9",
+                    tableColumn: "8",
                     dataParent: "cardiovascular.table",
                     fqn: "cardiovascular.table.labelTemperature",
                     tableKey: "table"
@@ -6272,7 +6309,7 @@ export default function () {
                     inputType: "form_label",
                     formRow: "3",
                     formColumn: "4",
-                    tableColumn: "10",
+                    tableColumn: "9",
                     dataParent: "cardiovascular.table",
                     fqn: "cardiovascular.table.labelPeripheral",
                     tableKey: "table"
@@ -6285,7 +6322,7 @@ export default function () {
                     inputType: "form_label",
                     formRow: "3",
                     formColumn: "5",
-                    tableColumn: "11",
+                    tableColumn: "10",
                     dataParent: "cardiovascular.table",
                     fqn: "cardiovascular.table.labelNailBed",
                     tableKey: "table"
@@ -6303,7 +6340,7 @@ export default function () {
                     inputType: "form_label",
                     formRow: "4",
                     formColumn: "1",
-                    tableColumn: "12",
+                    tableColumn: "11",
                     dataParent: "cardiovascular.table",
                     fqn: "cardiovascular.table.labelRight",
                     tableKey: "table"
@@ -6317,7 +6354,7 @@ export default function () {
                     formRow: "4",
                     formColumn: "2",
                     formOption: "hideLabel",
-                    tableColumn: "16",
+                    tableColumn: "15",
                     options: [
                       {
                         text: "Normal < 3 seconds"
@@ -6339,7 +6376,7 @@ export default function () {
                     formRow: "4",
                     formColumn: "3",
                     formOption: "hideLabel",
-                    tableColumn: "20",
+                    tableColumn: "19",
                     options: [
                       {
                         text: "Warm"
@@ -6364,7 +6401,7 @@ export default function () {
                     formRow: "4",
                     formColumn: "4",
                     formOption: "hideLabel",
-                    tableColumn: "24",
+                    tableColumn: "23",
                     options: [
                       {
                         text: "No"
@@ -6395,7 +6432,7 @@ export default function () {
                     formRow: "4",
                     formColumn: "5",
                     formOption: "hideLabel",
-                    tableColumn: "28",
+                    tableColumn: "27",
                     options: [
                       {
                         text: "Pink"
@@ -6421,7 +6458,7 @@ export default function () {
                     inputType: "form_label",
                     formRow: "5",
                     formColumn: "1",
-                    tableColumn: "13",
+                    tableColumn: "12",
                     dataParent: "cardiovascular.table",
                     fqn: "cardiovascular.table.labelLeftHand",
                     tableKey: "table"
@@ -6435,7 +6472,7 @@ export default function () {
                     formRow: "5",
                     formColumn: "2",
                     formOption: "hideLabel",
-                    tableColumn: "17",
+                    tableColumn: "16",
                     options: [
                       {
                         text: "Normal < 3 seconds"
@@ -6457,7 +6494,7 @@ export default function () {
                     formRow: "5",
                     formColumn: "3",
                     formOption: "hideLabel",
-                    tableColumn: "21",
+                    tableColumn: "20",
                     options: [
                       {
                         text: "Warm"
@@ -6482,7 +6519,7 @@ export default function () {
                     formRow: "5",
                     formColumn: "4",
                     formOption: "hideLabel",
-                    tableColumn: "25",
+                    tableColumn: "24",
                     options: [
                       {
                         text: "No"
@@ -6513,7 +6550,7 @@ export default function () {
                     formRow: "5",
                     formColumn: "5",
                     formOption: "hideLabel",
-                    tableColumn: "29",
+                    tableColumn: "28",
                     options: [
                       {
                         text: "Pink"
@@ -6539,7 +6576,7 @@ export default function () {
                     inputType: "form_label",
                     formRow: "6",
                     formColumn: "1",
-                    tableColumn: "14",
+                    tableColumn: "13",
                     dataParent: "cardiovascular.table",
                     fqn: "cardiovascular.table.labelRightFoot",
                     tableKey: "table"
@@ -6553,7 +6590,7 @@ export default function () {
                     formRow: "6",
                     formColumn: "2",
                     formOption: "hideLabel",
-                    tableColumn: "18",
+                    tableColumn: "17",
                     options: [
                       {
                         text: "Normal < 3 seconds"
@@ -6575,7 +6612,7 @@ export default function () {
                     formRow: "6",
                     formColumn: "3",
                     formOption: "hideLabel",
-                    tableColumn: "22",
+                    tableColumn: "21",
                     options: [
                       {
                         text: "Warm"
@@ -6600,7 +6637,7 @@ export default function () {
                     formRow: "6",
                     formColumn: "4",
                     formOption: "hideLabel",
-                    tableColumn: "26",
+                    tableColumn: "25",
                     options: [
                       {
                         text: "No"
@@ -6631,7 +6668,7 @@ export default function () {
                     formRow: "6",
                     formColumn: "5",
                     formOption: "hideLabel",
-                    tableColumn: "30",
+                    tableColumn: "29",
                     options: [
                       {
                         text: "Pink"
@@ -6657,7 +6694,7 @@ export default function () {
                     inputType: "form_label",
                     formRow: "7",
                     formColumn: "1",
-                    tableColumn: "15",
+                    tableColumn: "14",
                     tableCss: "hr-table",
                     dataParent: "cardiovascular.table",
                     fqn: "cardiovascular.table.labelLeftFoot",
@@ -6672,7 +6709,7 @@ export default function () {
                     formRow: "7",
                     formColumn: "2",
                     formOption: "hideLabel",
-                    tableColumn: "19",
+                    tableColumn: "18",
                     tableCss: "hr-table",
                     options: [
                       {
@@ -6695,7 +6732,7 @@ export default function () {
                     formRow: "7",
                     formColumn: "3",
                     formOption: "hideLabel",
-                    tableColumn: "23",
+                    tableColumn: "22",
                     tableCss: "hr-table",
                     options: [
                       {
@@ -6721,7 +6758,7 @@ export default function () {
                     formRow: "7",
                     formColumn: "4",
                     formOption: "hideLabel",
-                    tableColumn: "27",
+                    tableColumn: "26",
                     tableCss: "hr-table",
                     options: [
                       {
@@ -6752,7 +6789,7 @@ export default function () {
                     formRow: "7",
                     formColumn: "5",
                     formOption: "hideLabel",
-                    tableColumn: "31",
+                    tableColumn: "30",
                     tableCss: "hr-table",
                     options: [
                       {
@@ -6779,7 +6816,7 @@ export default function () {
                     inputType: "textarea",
                     formRow: "8",
                     formColumn: "1",
-                    tableColumn: "32",
+                    tableColumn: "31",
                     dataParent: "cardiovascular.table",
                     fqn: "cardiovascular.table.comments",
                     tableKey: "table"
@@ -7030,7 +7067,7 @@ export default function () {
           dataCaseStudy: "(nothing entered)"
         }
       ],
-      generated: "2019-05-23T13:52:36-07:00",
+      generated: "2019-05-30T23:17:32-07:00",
       hasTable: true,
       tables: [
         {
@@ -7208,6 +7245,37 @@ export default function () {
               formColumn: "1"
             },
             {
+              label: "If answered yes, please complete the <a href=\"/assets/standardized-assessment-tools/numeric-rating-scale.pdf\">pain assessment</a>.",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "abdomen",
+              elementKey: "aLabel",
+              inputType: "form_label",
+              formOption: "labelWithPageRef",
+              tableCss: "hr-table",
+              fsetRow: "8",
+              fsetCol: "1",
+              dataParent: "gastrointestinal.table.abdomen",
+              fqn: "gastrointestinal.table.abdomen.aLabel",
+              tableKey: "table",
+              formColumn: "1"
+            },
+            {
+              label: "Abdomen",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              elementKey: "abdomen",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "1",
+              dataParent: "gastrointestinal.table",
+              fqn: "gastrointestinal.table.abdomen",
+              containerType: "fieldset",
+              containerKey: "abdomen",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
               label: "Emesis present?",
               pageDataKey: "gastrointestinal",
               level2Key: "table",
@@ -7308,6 +7376,21 @@ export default function () {
               formColumn: "1"
             },
             {
+              label: "Emesis",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              elementKey: "emesis",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "2",
+              dataParent: "gastrointestinal.table",
+              fqn: "gastrointestinal.table.emesis",
+              containerType: "fieldset",
+              containerKey: "emesis",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
               label: "Difficulty",
               pageDataKey: "gastrointestinal",
               level2Key: "table",
@@ -7377,21 +7460,6 @@ export default function () {
               formColumn: "1"
             },
             {
-              label: "Abdomen",
-              pageDataKey: "gastrointestinal",
-              level2Key: "table",
-              elementKey: "abdomen",
-              inputType: "fieldset",
-              formRow: "2",
-              formColumn: "1",
-              dataParent: "gastrointestinal.table",
-              fqn: "gastrointestinal.table.abdomen",
-              containerType: "fieldset",
-              containerKey: "abdomen",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
               label: "Weight loss",
               pageDataKey: "gastrointestinal",
               level2Key: "table",
@@ -7403,37 +7471,6 @@ export default function () {
               fsetCol: "1",
               dataParent: "gastrointestinal.table.eatingGroup",
               fqn: "gastrointestinal.table.eatingGroup.weightLoss",
-              tableKey: "table",
-              formColumn: "1"
-            },
-            {
-              label: "Emesis",
-              pageDataKey: "gastrointestinal",
-              level2Key: "table",
-              elementKey: "emesis",
-              inputType: "fieldset",
-              formRow: "2",
-              formColumn: "2",
-              dataParent: "gastrointestinal.table",
-              fqn: "gastrointestinal.table.emesis",
-              containerType: "fieldset",
-              containerKey: "emesis",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
-              label: "If answered yes, please complete the <a href=\"/assets/standardized-assessment-tools/numeric-rating-scale.pdf\">pain assessment</a>.",
-              pageDataKey: "gastrointestinal",
-              level2Key: "table",
-              level3Key: "abdomen",
-              elementKey: "aLabel",
-              inputType: "form_label",
-              formOption: "labelWithPageRef",
-              tableCss: "hr-table",
-              fsetRow: "8",
-              fsetCol: "1",
-              dataParent: "gastrointestinal.table.abdomen",
-              fqn: "gastrointestinal.table.abdomen.aLabel",
               tableKey: "table",
               formColumn: "1"
             },
@@ -7450,53 +7487,6 @@ export default function () {
               fqn: "gastrointestinal.table.eatingGroup",
               containerType: "fieldset",
               containerKey: "eatingGroup",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
-              label: "Bowel sounds",
-              pageDataKey: "gastrointestinal",
-              level2Key: "table",
-              elementKey: "bSounds",
-              inputType: "fieldset",
-              formRow: "3",
-              formColumn: "2",
-              formCss: "is-one-third",
-              dataParent: "gastrointestinal.table",
-              fqn: "gastrointestinal.table.bSounds",
-              containerType: "fieldset",
-              containerKey: "bSounds",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
-              label: "Bowel",
-              pageDataKey: "gastrointestinal",
-              level2Key: "table",
-              elementKey: "bowel",
-              inputType: "fieldset",
-              formRow: "3",
-              formColumn: "1",
-              formCss: "is-one-third",
-              dataParent: "gastrointestinal.table",
-              fqn: "gastrointestinal.table.bowel",
-              containerType: "fieldset",
-              containerKey: "bowel",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
-              label: "Stool",
-              pageDataKey: "gastrointestinal",
-              level2Key: "table",
-              elementKey: "stool",
-              inputType: "fieldset",
-              formRow: "2",
-              formColumn: "1",
-              dataParent: "gastrointestinal.table",
-              fqn: "gastrointestinal.table.stool",
-              containerType: "fieldset",
-              containerKey: "stool",
               tableCss: "hide-table-element",
               tableKey: "table"
             },
@@ -7620,6 +7610,21 @@ export default function () {
               formColumn: "1"
             },
             {
+              label: "Stool",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              elementKey: "stool",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "1",
+              dataParent: "gastrointestinal.table",
+              fqn: "gastrointestinal.table.stool",
+              containerType: "fieldset",
+              containerKey: "stool",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
               label: "Normal",
               pageDataKey: "gastrointestinal",
               level2Key: "table",
@@ -7694,6 +7699,22 @@ export default function () {
               fqn: "gastrointestinal.table.bowel.incontinent",
               tableKey: "table",
               formColumn: "1"
+            },
+            {
+              label: "Bowel",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              elementKey: "bowel",
+              inputType: "fieldset",
+              formRow: "3",
+              formColumn: "1",
+              formCss: "is-one-third",
+              dataParent: "gastrointestinal.table",
+              fqn: "gastrointestinal.table.bowel",
+              containerType: "fieldset",
+              containerKey: "bowel",
+              tableCss: "hide-table-element",
+              tableKey: "table"
             },
             {
               label: "None",
@@ -7800,6 +7821,22 @@ export default function () {
               fqn: "gastrointestinal.table.bSounds.hyperactive",
               tableKey: "table",
               formColumn: "1"
+            },
+            {
+              label: "Bowel sounds",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              elementKey: "bSounds",
+              inputType: "fieldset",
+              formRow: "3",
+              formColumn: "2",
+              formCss: "is-one-third",
+              dataParent: "gastrointestinal.table",
+              fqn: "gastrointestinal.table.bSounds",
+              containerType: "fieldset",
+              containerKey: "bSounds",
+              tableCss: "hide-table-element",
+              tableKey: "table"
             },
             {
               label: "Comments",
