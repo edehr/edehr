@@ -352,13 +352,19 @@ export default class EhrHelp {
     return this._showControl('hasForm')
   }
 
+  showPageCustomControls () {
+    return this._canEdit()
+  }
+
+  _canEdit () {
+    let studentCanEdit = this._isStudent() && !this._isSubmitted()
+    return studentCanEdit || this._isDevelopingContent()
+  }
+
+
   _showControl (prop) {
     let show = false
-    let isStudent = this._isStudent()
-    let submitted = this._isSubmitted()
-    let studentCanEdit = isStudent && !submitted
-    let isDevelopingContent = this._isDevelopingContent()
-    if (studentCanEdit || isDevelopingContent) {
+    if (this._canEdit()) {
       let pd = getPageDefinition(this.pageKey)
       // console.log('decide to show or not this page def', prop, pd[prop], pd)
       show = pd[prop]

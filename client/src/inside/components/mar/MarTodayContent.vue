@@ -14,7 +14,7 @@
             h5 {{ period.name }}
             med-list(:medsList="period.medsList")
           div(class="column mar-column")
-            div(v-show="!period.hasMar()")
+            div(v-show="showButton(period)")
               ui-button(v-on:buttonClicked="openMarDialog(period)") Add MAR
             div(v-show="period.hasMar()")
               mar-record(:record="period.marRecord || {}")
@@ -63,6 +63,9 @@ export default {
     openMarDialog (period) {
       // console.log('this.$refs.refMarDialog',this.$refs.refMarDialog)
       this.$refs.refMarDialog.openMarDialog(period)
+    },
+    showButton (period) {
+      return this.ehrHelp.showPageCustomControls() && !period.hasMar()
     },
     saveMar (mar) {
       let help = new MarHelper(this.ehrHelp)
