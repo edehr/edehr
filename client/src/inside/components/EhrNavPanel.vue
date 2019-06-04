@@ -55,7 +55,13 @@ export default {
   }
   &__button {
     margin-bottom: 0 !important;
-    width: 100%;
+    width: 100%;  
   }
 }
+
+.EhrNavPanel button.button {
+    width: 100%;
+    margin-bottom: 0;
+}
+
 </style>

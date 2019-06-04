@@ -8,8 +8,7 @@
       p Adjust your LMS to use an assignment from the listing below
     div(v-show="isDeveloper")
       ui-button(v-on:buttonClicked="showCreateDialog") Create new assignment
-      //span &nbsp;
-      //ui-link(:to="{ name: `developEhrData` }") Manage EHR data
+      ui-link(:to="{ name: `developEhrData` }", v-bind:secondary="true", class="second-option") Manage EHR data
 
     table.table
       thead
@@ -199,5 +198,8 @@ export default {
       border-color: $grey03;
     }
   }
+}
+.second-option {
+  margin: 0 1.25em;
 }
 </style>

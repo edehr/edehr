@@ -1,8 +1,6 @@
 <template lang="pug">
   div
-    ui-link(class="breadcrumb", v-show="show('instructor')", :to="{ name: `instructor` }") Course activities
-    ui-link(class="breadcrumb", v-show="show('assignments')", :to="{ name: `assignments` }") Manage Assignments
-    ui-link(class="breadcrumb", v-show="show('developEhrData')", :to="{ name: `developEhrData` }") Manage EHR data
+    ui-link(class="breadcrumb", v-show="show('assignments')", :to="{ name: `assignments` }") < Back to assignments
 </template>
 
 <script>
