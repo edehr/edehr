@@ -1,7 +1,7 @@
 <template lang="pug">
   div(id="seedDataList", class="seedData-list")
     bread-crumb(currentPage="developEhrData")
-    h1 EHR Assignment Seed Data
+    h1 EHR assignment seed data
     div
       ui-button(v-on:buttonClicked="showCreateDialog") Create new seed
     div(class="seedData-list-body")
@@ -246,11 +246,16 @@ export default {
     overflow: hidden;
     width: 100%;
   }
-  .seed-actions .button{
-    margin-right: 0.5rem;
-  }
-  .seed-actions .button:last-of-type {
-    margin-right: 0;
+  .seed-actions {
+    min-width: 340px;
+
+    .button {
+      margin-right: 0.5rem;
+
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
   }
 }
 </style>
