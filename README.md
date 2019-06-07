@@ -4,7 +4,7 @@
 
 See documentation in the ```docs``` directory.  To run a local documentation server use this command 
 ```
-yarn docs:dev
+npm run docs:dev
 ```
 Then visit  [http://localhost:8080/edehr](http://localhost:8080/edehr)
 
