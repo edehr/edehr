@@ -1,12 +1,33 @@
 const should = require('should')
 const mongoose = require('mongoose')
 import HMAC_SHA1 from '../../node_modules/ims-lti/src/hmac-sha1'
-
+import AssignmentController from '../../src/controllers/assignment-controller'
+import ActivityController from '../../src/controllers/activity-controller'
+import VisitController from '../../src/controllers/visit-controller'
+import UserController from '../../src/controllers/user-controller'
+import ConsumerController from '../../src/controllers/consumer-controller'
+import SeedDataController from '../../src/controllers/seedData-controller'
 import LTIController from '../../src/controllers/lti'
 import Helper from '../helper'
-const helper = new Helper()
+import Config from '../../src/config/config'
 import Assignment from '../../src/models/assignment'
 
+const helper = new Helper()
+const config = new Config('test')
+const configuration = config.config
+const act = new ActivityController()
+const as = new AssignmentController(configuration)
+const vc = new VisitController()
+const cc = new ConsumerController()
+const uc = new UserController(configuration)
+const sc = new SeedDataController()
+const lcc = {
+  activityController: act,
+  assignmentController: as,
+  consumerController: cc,
+  userController: uc,
+  visitController: vc
+}
 let assignmentKey = '599'
 
 helper.setClear(false)
@@ -44,7 +65,7 @@ describe('LTI controller testing', function () {
   }
   let ltiController
   it('create LTI controller', function (done) {
-    ltiController = new LTIController(config)
+    ltiController = new LTIController(configuration, lcc)
     should.exist(ltiController)
 
     ltiController.should.have.property('route')
@@ -69,7 +90,7 @@ describe('LTI controller testing', function () {
     done()
   })
 
-  it('validate invalid lti data', function (done) {
+  it('invalid lti data', function (done) {
     function expectErrorCallback (error) {
       should.exist(error)
       error.should.have.property('name')
