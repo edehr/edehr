@@ -4,8 +4,8 @@ export const MS = {
   KEY_MED_ORDER:'medOrder',
   KEY_EMPTY:'empty',
   KEY_MAR:'mar',
-  DISPLAYED_WHEN_MAR:'Yes',
-  DISPLAYED_WHEN_NO_MAR:'NA',
+  DISPLAYED_WHEN_MAR:'Administered',
+  DISPLAYED_WHEN_NO_MAR:'Not scheduled',
   CSS_CLASS_MED:'medication',
   CSS_CLASS_MAR:'administered',
   CSS_CLASS_NO_MAR:'notApplicable'

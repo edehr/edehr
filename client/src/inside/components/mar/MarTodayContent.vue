@@ -5,20 +5,22 @@
     div(v-else)
       div(class="columns")
         div(class="column period-column")
+          h4 Time
+        div(class="column med-order-column")
           h4 Medication order
         div(class="column mar-column")
-          h4 Medications administered
+          h4 Administration
       div(class="periodsList", v-for="period in schedule", :key="period.key")
         div(class="columns")
           div(class="column period-column")
-            h5 {{ period.name }}
+            p {{ period.name }}
+          div(class="column med-order-column")           
             med-list(:medsList="period.medsList")
           div(class="column mar-column")
             div(v-show="showButton(period)")
-              ui-button(v-on:buttonClicked="openMarDialog(period)") Add MAR
+              ui-button(v-on:buttonClicked="openMarDialog(period)", v-bind:secondary="true") Add MAR
             div(v-show="period.hasMar()")
               mar-record(:record="period.marRecord || {}")
-        hr
       mar-dialog(ref="refMarDialog", :currentDay="currentDay", v-on:saveMar="saveMar")
     div(style="display:none") refreshData: {{refreshData}}
 </template>
@@ -104,9 +106,11 @@ export default {
   color: $dialog-error-color;
 }
 .period-column {
-  flex: 0 0 50%;
+  flex: 0 0 20%;
 }
-.mar-column {
-  flex: 1 0 50%;
+.periodsList {
+  border-bottom: 1px solid $grey40;
+  margin-bottom: 2em;
+  padding-bottom: 2em;
 }
 </style>

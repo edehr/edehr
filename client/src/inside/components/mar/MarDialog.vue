@@ -4,14 +4,13 @@
       h3(slot="header") Add a record of medication administration
       div(slot="body")
         div
-          div Day: {{currentDay}}
-          div Period: {{activePeriod.name}}
-          div Medications:
+          div Day {{currentDay}} - {{activePeriod.name}}
+          div 
           med-list(:medsList="activePeriod.medsList")
           div(class="input-fieldrow")
             div(class="ehrdfe")
               div(class="text_input_wrapper")
-                label Who administered
+                label Administered by
                 input(class="input", type="text", v-model="who")
             div(class="ehrdfe")
               div(class="text_input_wrapper")
