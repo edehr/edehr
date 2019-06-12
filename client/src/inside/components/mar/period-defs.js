@@ -27,6 +27,7 @@ export default class PeriodDefs {
         // { key: k, name: mp.label, marRecord: {}, hasMar: false }
       })
     } else {
+      // TODO the setApiError needs a component context to get the store. The following is broken
       setApiError(MED_ORDERS_PAGE_KEY + ' can not find table')
     }
     this._periodList = periodList

@@ -35,7 +35,7 @@ const actions = {
       if (!list) {
         let msg = 'ERROR the system should have assignments'
         console.error(msg)
-        setApiError(msg)
+        setApiError(context, msg)
         return
       }
       this.assignmentsListing = list
@@ -66,7 +66,7 @@ const actions = {
       .catch(err => {
         let msg = 'error in update assignment ' + err.message
         console.error(msg)
-        setApiError(msg)
+        setApiError(context, msg)
       })
   }
 }

@@ -4,8 +4,8 @@ const state = {
   isEditing: false,
   currentPageKey: '',
   loadingCnt: 0,
-  apiError:
-    ''
+  apiError: '',
+  sysMessage: ''
 }
 
 const getters = {}
@@ -29,6 +29,12 @@ const mutations = {
   },
   setCurrentPageKey: (state, pageKey) => {
     state.currentPageKey = pageKey
+  },
+  setSystemMessage: (state, msg) => {
+    if (msg) {
+      console.error('System message:', msg)
+    }
+    state.sysMessage = msg
   },
   setApiError: (state, error) => {
     if (error) {

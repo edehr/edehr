@@ -68,7 +68,7 @@ export default function () {
           fqn: "visit.table.transferOutTime"
         }
       ],
-      generated: "2019-05-30T23:17:32-07:00",
+      generated: "2019-06-04T12:32:37-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -444,7 +444,7 @@ export default function () {
           fqn: "vitals.table.flowRate"
         }
       ],
-      generated: "2019-05-30T23:17:32-07:00",
+      generated: "2019-06-04T12:32:37-07:00",
       hasTable: true,
       tables: [
         {
@@ -1153,7 +1153,7 @@ export default function () {
           fqn: "fluidBalance.table.fluidOut"
         }
       ],
-      generated: "2019-05-30T23:17:32-07:00",
+      generated: "2019-06-04T12:32:37-07:00",
       hasTable: true,
       tables: [
         {
@@ -1597,7 +1597,7 @@ export default function () {
           defaultValue: "0"
         }
       ],
-      generated: "2019-05-30T23:17:32-07:00",
+      generated: "2019-06-04T12:32:37-07:00",
       hasTable: true,
       tables: [
         {
@@ -4125,7 +4125,7 @@ export default function () {
           dataCaseStudy: "(no notes)"
         }
       ],
-      generated: "2019-05-30T23:17:32-07:00",
+      generated: "2019-06-04T12:32:37-07:00",
       hasTable: true,
       tables: [
         {
@@ -4555,7 +4555,7 @@ export default function () {
                   text: "No"
                 },
                 {
-                  text: "Nonreproductive"
+                  text: "Nonproductive"
                 },
                 {
                   text: "Productive"
@@ -5180,7 +5180,7 @@ export default function () {
                                   text: "No"
                                 },
                                 {
-                                  text: "Nonreproductive"
+                                  text: "Nonproductive"
                                 },
                                 {
                                   text: "Productive"
@@ -5483,7 +5483,7 @@ export default function () {
           dataCaseStudy: "(blank)"
         }
       ],
-      generated: "2019-05-30T23:17:32-07:00",
+      generated: "2019-06-04T12:32:37-07:00",
       hasTable: true,
       tables: [
         {
@@ -7067,7 +7067,7 @@ export default function () {
           dataCaseStudy: "(nothing entered)"
         }
       ],
-      generated: "2019-05-30T23:17:32-07:00",
+      generated: "2019-06-04T12:32:37-07:00",
       hasTable: true,
       tables: [
         {

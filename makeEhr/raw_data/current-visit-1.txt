@@ -235,7 +235,7 @@ Shallow
 Deep}"	eCell	eCell	eCell	{Data_case_study: Shallow}	{Assignment: N/A}	eCell	eCell	eCell	{dataParent: respiratory.table.breath}	{fqn: respiratory.table.breath.respiratoryDepth}
 {Page: Respiratory assessment}	{Label: Sputum}	{pageDataKey: respiratory}	{level2Key: table}	eCell	{elementKey: sputum}	{inputType: fieldset}	{formRow: 2}	{formColumn: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Assignment: N/A}	eCell	eCell	eCell	{dataParent: respiratory.table}	{fqn: respiratory.table.sputum}
 {Page: Respiratory assessment}	{Label: Cough}	{pageDataKey: respiratory}	{level2Key: table}	{level3Key: sputum}	{elementKey: cough}	{inputType: select}	eCell	eCell	eCell	eCell	{tableColumn: 19}	eCell	eCell	{fsetRow: 1}	{fsetCol: 1}	eCell	"{Options: No
-Nonreproductive
+Nonproductive
 Productive}"	eCell	eCell	eCell	{Data_case_study: No}	{Assignment: N/A}	eCell	eCell	eCell	{dataParent: respiratory.table.sputum}	{fqn: respiratory.table.sputum.cough}
 {Page: Respiratory assessment}	{Label: Sputum colour}	{pageDataKey: respiratory}	{level2Key: table}	{level3Key: sputum}	{elementKey: sputumColour}	{inputType: select}	eCell	eCell	eCell	eCell	{tableColumn: 20}	eCell	eCell	{fsetRow: 2}	{fsetCol: 1}	eCell	"{Options: Mucoid
 Purulent
