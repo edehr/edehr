@@ -8,6 +8,7 @@
 import { getIncomingParams } from './helpers/ehr-utills'
 import { setApiError } from './helpers/ehr-utills'
 import EventBus from './helpers/event-bus'
+import Text from './helpers/ehr-text'
 import StoreHelper from './helpers/store-helper'
 import { PAGE_DATA_REFRESH_EVENT } from './helpers/event-bus'
 const DefaultLayout = 'outside'
@@ -37,9 +38,7 @@ export default {
             // console.log('Dispatch the load visit information', visitId)
             return this.$store.dispatch('visit/loadVisitInfo', visitId)
           } else {
-            let msg = 'No visit id available'
-            console.error(msg)
-            setApiError(this.$store, msg)
+            setApiError(this, Text.MISSING_VISIT_ID)
             return Promise.reject(msg)
           }
         })
@@ -112,9 +111,7 @@ export default {
           apiUrl = localStorage.getItem('apiUrl')
           // console.log('Can we use API URL from local storage', apiUrl)
           if (!apiUrl) {
-            let msg = 'System requires the URL to the API'
-            console.error(msg)
-            setApiError(this.$store, msg)
+            setApiError(this, Text.MISSING_API_URL)
             return reject(msg)
           }
         }

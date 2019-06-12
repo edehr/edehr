@@ -72,7 +72,7 @@ export default class MarHelper {
       let table = marsPageDef.tables[0]
       key = table.tableKey
     } catch (err) {
-      setApiError(err)
+      setApiError(this.ehrHelp.component, err)
     }
     return key
   }

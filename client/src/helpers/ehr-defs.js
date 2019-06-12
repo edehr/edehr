@@ -49,6 +49,7 @@ export function getTableCells (pageKey, tableIndex) {
 export function getFieldSetCells (pageKey, tableIndex, fieldSetKey) {
   let cells = getTableCells(pageKey, tableIndex)
   if(!cells) {
+    // TODO the setApiError needs a component context to get the store. The following is broken
     setApiError(pageKey + ' can not find table cells that support tableIndex', tableIndex)
     return
   }

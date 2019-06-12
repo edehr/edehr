@@ -30,6 +30,14 @@ class StoreHelperWorker {
     return component.$store.getters['visit/isStudent']
   }
 
+  isSubmitted (component) {
+    return component.$store.getters['ehrData/submitted']
+  }
+  isEvaluated (component) {
+    let activityData = component.$store.state.ehrData.sActivityData
+    return activityData.evaluated
+  }
+
   setIsDevelopingContent (component, state) {
     component.$store.commit('visit/setIsDevelopingContent', state)
   }

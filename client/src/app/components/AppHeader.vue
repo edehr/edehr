@@ -12,7 +12,7 @@
           router-link(:to="{ name: `assignments` }", class="navLink subMenu") Assignments
         li(class="navItem")
           router-link(:to="{ name: `help` }", class="navLink") Help
-    system-error
+    system-message
 </template>
 <script>
 /*
@@ -28,12 +28,12 @@
             li(class="subNavItem") Instructor's notes
 
  */
-import SystemError from './SystemError'
+import SystemMessage from './SystemMessage'
 import UiClose from '../ui/UiClose'
 import StoreHelper from '../../helpers/store-helper'
 export default {
   name: 'AppHeader',
-  components: { SystemError, UiClose },
+  components: { SystemMessage, UiClose },
   data () {
     return {
       showAssignmentDetails: false
