@@ -62,7 +62,7 @@ export default {
     width: 100%;
   }
   &__main {
-    color: $grey60;
+    color: $grey80;
     background-color: $white;
     display: flex;
     overflow: hidden;

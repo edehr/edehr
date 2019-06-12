@@ -1,7 +1,6 @@
 <template lang="pug">
   div
-    div By: {{ record.whoAdministered }} &nbsp; At: {{ record.actualTime }}
-    med-list(class="medList", :medsList="record.medications")
+    div {{ record.actualTime }} by {{ record.whoAdministered }}
     div {{ record.comment }}
 </template>
 
