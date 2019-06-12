@@ -21,7 +21,13 @@ export function composeUrl (context, api) {
 }
 
 export function setApiError (context, msg) {
+  context = context.$store || context
   context.commit('system/setApiError', msg, { root: true })
+}
+
+export function setSystemMessage (context, msg) {
+  context = context.$store || context
+  context.commit('system/setSystemMessage', msg, { root: true })
 }
 
 export function validTimeStr (text) {
