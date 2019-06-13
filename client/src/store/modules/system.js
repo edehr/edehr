@@ -31,9 +31,6 @@ const mutations = {
     state.currentPageKey = pageKey
   },
   setSystemMessage: (state, msg) => {
-    if (msg) {
-      console.error('System message:', msg)
-    }
     state.sysMessage = msg
   },
   setApiError: (state, error) => {
