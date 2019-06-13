@@ -36,8 +36,9 @@
           option(v-for="option in element.options", v-bind:value="option.text") {{ option.text}}
 
     div(v-if="inputType === 'checkbox'", class="checkbox_wrapper")
-      input(class="checkbox", type="checkbox", v-bind:name="key", v-model="inputVal")
-      label(v-if="!hideLabel", class="checkbox_label", v-bind:for="key") {{label}}
+      label(v-if="!hideLabel", class="checkbox_label")
+        input(class="checkbox", type="checkbox", v-model="inputVal")
+        span {{label}}
 
     div(v-if="inputType === 'fieldset'", class="fieldset_col_wrapper")
       label(v-show="!!label", class="fieldset_label") {{label}} &nbsp;

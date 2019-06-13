@@ -36,8 +36,9 @@
           option(v-for="option in element.options", v-bind:value="option.text") {{ option.text}}
 
     div(v-if="element.inputType === 'checkbox'", class="checkbox_wrapper")
-      input(class="checkbox", type="checkbox", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
-      label(v-if="!(element.formOption === 'hideLabel')", class="checkbox_label", v-bind:for="element.elementKey") {{element.label}}
+      label(v-if="!(element.formOption === 'hideLabel')", class="checkbox_label")
+        input(class="checkbox", type="checkbox", v-bind:disabled="notEditing", v-model="inputVal")
+        span {{element.label}}
 
     div(v-if="element.inputType === 'assetLink'", class="assetLink")
       a(:href="assetUrl()", target="_blank")
