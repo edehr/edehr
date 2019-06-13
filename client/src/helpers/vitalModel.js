@@ -19,7 +19,7 @@ let lastDay = 0
 let lastTime = 8
 let cnt = 0
 
-export default class VitalChart {
+export default class VitalModel {
   addData (table) {
     cnt++
     lastTime += 4

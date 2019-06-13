@@ -3,7 +3,7 @@
     div(class="chart-wrapper")
       div(class="axis-wrapper")
         canvas(id="axisCanvas", :width="axisCanvasWidth", :height="axisCanvasHeight")
-      div(class="canvas-wrapper")
+      div(id="chartWrapper", class="canvas-wrapper")
         canvas(id="chartCanvas", :width="chartCanvasWidth", :height="chartCanvasHeight")
 </template>
 
@@ -12,7 +12,7 @@ import VitalChart from '../../helpers/vitalChart'
 
 const yAxisWidth = 75
 const canvasHeight = 2000
-const canvasWidth = 1200
+const canvasWidth = 8200
 
 export default {
   name: 'VitalsChart',
@@ -95,6 +95,14 @@ export default {
       y += 0
       ht = 50
       vitalChart.drawChart(this.dates, y, ht)
+
+      // force the chart to scroll to the beginning of the data.
+      let chartWrapper = document.getElementById('chartWrapper')
+      chartWrapper.scrollLeft = 0
+      // chartWrapper.addEventListener('scroll', function (e) {
+      //   let scrollLeft = chartWrapper.scrollLeft
+      //   console.log('chartWrapper scrollLeft', scrollLeft)
+      // })
     }
   },
   mounted: function () {
