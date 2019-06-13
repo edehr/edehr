@@ -1,22 +1,24 @@
 <template lang="pug">
   div
-    table
+    table.mar-summary
       thead
+        th 
+          h4 Status
+        th 
+          h4 Medication order
         th(v-for="hdr in tableHeader")
           div(v-show="hdr.type === KEY_MED_ORDER")
-            div Medication
-            div List
           div(v-show="hdr.type === KEY_MAR")
-            div Day {{hdr.value.day}} {{hdr.value.actualTime}}
+            div Day {{hdr.value.day}} - {{hdr.value.actualTime}}
             div {{hdr.value.scheduledTime}}
             div {{hdr.value.whoAdministered}}
             div {{hdr.value.comment}}
 
       tbody
         tr(v-for="row in tableBody")
+          td status
           td(v-for="(cell, index) in row", :class="tdStyle(cell, index, row)")
             div(:class="marCellStyle(cell, index, row)") {{marCellContent(cell)}}
-    hr
 </template>
 
 <script>
@@ -100,17 +102,17 @@ export default {
 <style lang="scss">
 @import '../../../scss/definitions';
 /* Make sure these next class names match those defined in the mar-summary MS constant */
-/* MS.CSS_CLASS_MAR */
-.administered {
-  color:red;
-}
+
 /* MS.CSS_CLASS_NO_MAR */
-.notApplicable {
-  color:blue;
+thead {
+  border-bottom: 1px solid $grey80;
 }
-/* MS.CSS_CLASS_MED */
-.medication {
-  color:green;
+table.mar-summary {
+  margin: 1.25em 0;
+}
+
+.notApplicable {
+  color: $grey40;
 }
 
 .dayBreak {
