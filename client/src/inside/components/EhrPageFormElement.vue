@@ -8,28 +8,28 @@
       div &nbsp;
 
     div(v-if="element.inputType === 'text'", class="text_input_wrapper")
-      label(v-if="!(element.formOption === 'hideLabel')", class="text_label") {{element.label}}
+      label(v-if="!(element.formOption === 'hideLabel')", class="text_label", v-html="element.label")
       input(class="input", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
 
     div(v-if="element.inputType === 'date'", class="date_wrapper")
-      label(v-if="!(element.formOption === 'hideLabel')", class="date_label") {{element.label}}
+      label(v-if="!(element.formOption === 'hideLabel')", class="date_label", v-html="element.label")
       datepicker(class="d-picker", typeable, v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
         div(v-if="(element.formOption === 'hideLabel')", slot="beforeCalendarHeader", class="datepicker-header") {{element.label}}
 
     div(v-if="element.inputType === 'day'", class="day_wrapper")
-      label(v-if="!(element.formOption === 'hideLabel')", class="day_label") {{element.label}}
+      label(v-if="!(element.formOption === 'hideLabel')", class="day_label", v-html="element.label")
       input(class="input", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
 
     div(v-if="element.inputType === 'time'", class="time_wrapper")
-      label(v-if="!(element.formOption === 'hideLabel')", class="time_label") {{element.label}}
+      label(v-if="!(element.formOption === 'hideLabel')", class="time_label", v-html="element.label")
       input(class="input", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
 
     div(v-if="element.inputType === 'textarea'", class="textarea_wrapper")
-      label(v-if="!(element.formOption === 'hideLabel')", class="textarea_label") {{element.label}}
+      label(v-if="!(element.formOption === 'hideLabel')", class="textarea_label", v-html="element.label")
       textarea(class="ehr-page-form-textarea", v-bind:disabled="notEditing", v-bind:name="element.elementKey", v-model="inputVal")
 
     div(v-if="element.inputType === 'select'", class="select_wrapper")
-      label(v-if="!(element.formOption === 'hideLabel')", class="select_label") {{element.label}}
+      label(v-if="!(element.formOption === 'hideLabel')", class="select_label", v-html="element.label")
       div(class="select")
         select(v-bind:name="element.elementKey", v-bind:disabled="notEditing", v-model="inputVal")
           option(value="")
@@ -47,7 +47,7 @@
 
     //div(v-if="element.inputType === 'fieldRowSet'", class="fieldset_row_wrapper")
     div(v-if="element.inputType === 'fieldset'", class="fieldset_col_wrapper")
-      h2(v-show="!!element.label", class="fieldset_label") {{element.label}} &nbsp;
+      h2(v-show="!!element.label", class="fieldset_label", v-html="element.label") &nbsp;
       div(v-for="row in element.formFieldSet.rows", :key="row.formRow" class="fieldset_row_row" )
         div(v-for="fmEl in row.elements", :key="fmEl.elementKey", class="fieldset_row_row_element" )
           ehr-page-form-element(:notEditing="notEditing", :element="fmEl", :ehrHelp="ehrHelp", :inputs="inputs" )

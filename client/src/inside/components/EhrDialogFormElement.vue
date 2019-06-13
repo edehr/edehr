@@ -8,20 +8,20 @@
       div &nbsp;
 
     div(v-if="inputType === 'text'", class="text_input_wrapper")
-      label(v-if="!hideLabel", class="text_input_label") {{label}}
+      label(v-if="!hideLabel", class="text_input_label", v-html="label")
       input(class="input", v-bind:name="key", type="text", v-model="inputVal")
 
     div(v-if="inputType === 'date'", class="date_wrapper")
-      label(v-if="!hideLabel", class="date_label") {{label}}
+      label(v-if="!hideLabel", class="date_label", v-html="label")
       datepicker(class="d-picker", typeable, v-model="inputVal")
         div(v-if="hideLabel", slot="beforeCalendarHeader", class="datepicker-header") {{label}}
 
     div(v-if="inputType === 'day'", class="day_wrapper")
-      label(v-if="!hideLabel", class="day_label") {{label}}
+      label(v-if="!hideLabel", class="day_label", v-html="label")
       input(class="input", type="text", v-model="inputVal")
 
     div(v-if="inputType === 'time'", class="time_wrapper")
-      label(v-if="!hideLabel", class="time_label") {{label}}
+      label(v-if="!hideLabel", class="time_label", v-html="label")
       input(class="input", type="text", v-model="inputVal")
 
     div(v-if="inputType === 'textarea'", class="textarea_wrapper")
@@ -29,7 +29,7 @@
       textarea(v-model="inputVal")
 
     div(v-if="inputType === 'select'", class="select_wrapper")
-      label(v-if="!hideLabel", class="select_label") {{label}}
+      label(v-if="!hideLabel", class="select_label", v-html="label")
       div(class="select")
         select(v-bind:name="key", v-model="inputVal")
           option(disabled,value="")
@@ -41,7 +41,7 @@
         span {{label}}
 
     div(v-if="inputType === 'fieldset'", class="fieldset_col_wrapper")
-      label(v-show="!!label", class="fieldset_label") {{label}} &nbsp;
+      label(v-show="!!label", class="fieldset_label", v-html="label") &nbsp;
       div(v-for="row in element.formFieldSet.rows", :key="row.formRow" class="fieldset_row_row" )
         div(v-for="fmEl in row.elements", :key="fmEl.elementKey", class="fieldset_row_row_element" )
           ehr-dialog-form-element(:element="fmEl", :ehrHelp="ehrHelp", :inputs="inputs" )
