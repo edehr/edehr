@@ -42,8 +42,9 @@
 
     div(v-if="element.inputType === 'assetLink'", class="assetLink")
       a(:href="assetUrl()", target="_blank")
-        span {{assetName()}} &nbsp;
-        fas-icon(class="linkIcon", icon="file")
+        fas-icon(class="linkIcon", icon="file-pdf")
+        span {{assetName()}} 
+
 
     //div(v-if="element.inputType === 'fieldRowSet'", class="fieldset_row_wrapper")
     div(v-if="element.inputType === 'fieldset'", class="fieldset_col_wrapper")
@@ -167,6 +168,7 @@ export default {
 
   .linkIcon {
     color: $grey40;
+    margin-right: 5px;
   }
 
 }

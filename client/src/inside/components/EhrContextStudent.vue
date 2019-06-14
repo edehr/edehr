@@ -48,7 +48,7 @@ export default {
 @import '../../scss/definitions';
 
 .contextStudent {
-  background-color: white;
+  background-color: inherit;
 }
   .contextStudent_content {
     margin: 0 0 1rem 2rem;
