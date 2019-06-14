@@ -20,7 +20,6 @@ import {
   faCheckCircle,
   faTimesCircle,
   faTimes,
-  faFile,
   faEdit,
   faClock,
   faInfoCircle,
@@ -30,12 +29,13 @@ import {
   faAngleDoubleUp,
   faNotesMedical,
   faUpload,
-  faDownload
+  faDownload,
+  faFilePdf
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-library.add(faCheckCircle, faTimesCircle, faTimes, faFile, faEdit, faDownload, faUpload)
+library.add(faCheckCircle, faTimesCircle, faTimes, faEdit, faDownload, faUpload)
 library.add(faClock, faInfoCircle, faArrowRight, faArrowLeft, faNotesMedical)
-library.add(faAngleDoubleDown, faAngleDoubleUp)
+library.add(faAngleDoubleDown, faAngleDoubleUp, faFilePdf)
 // IN CODE sample usage is:
 // fas-icon(icon="download")
 Vue.component('fas-icon', FontAwesomeIcon)

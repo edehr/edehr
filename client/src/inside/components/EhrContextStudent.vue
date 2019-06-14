@@ -46,11 +46,4 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/definitions';
-
-.contextStudent {
-  background-color: white;
-}
-  .contextStudent_content {
-    margin: 0 0 1rem 2rem;
-  }
 </style>

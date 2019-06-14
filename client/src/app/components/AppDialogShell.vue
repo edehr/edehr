@@ -168,8 +168,10 @@ export default {
 }
 
 .dialog-header, .dialog-footer {
-  height: 10vh
+  background-color: $grey03;
+  height: 60px;
 }
+
 .dialog-container {
   overflow-y: auto;
   height: calc( 90vh - 20vh )

@@ -28,6 +28,7 @@ footer {
   padding: 20px;
   text-align: center;
   p {
+    color: $white;
     margin-bottom: 0;
   }
   a {

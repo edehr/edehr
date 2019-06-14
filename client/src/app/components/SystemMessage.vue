@@ -1,15 +1,12 @@
 <template lang="pug">
   div(v-show="showMessage", class="wrapper" :class="msgClass")
-    ul(class="navList")
-      li(class="navItem")
-        button(v-on:click="clearMessage", class="button closer")
-          fas-icon(class="icon-right", icon="times")
-      li(class="navItem")
-        div(class="message-title") {{systemMsg}}
+    div(class="message-title") {{systemMsg}}
+      ui-close(v-on:click="clearMessage", class="flash-close")
 </template>
 
 <script>
 import UiClose from '../ui/UiClose'
+import UiButton from '../ui/UiButton'
 import { setApiError, setSystemMessage } from '../../helpers/ehr-utills'
 import { Text } from '../../helpers/ehr-text'
 import StoreHelper from '../../helpers/store-helper'
@@ -79,38 +76,31 @@ export default {
 <style lang="scss" scoped>
 @import '../../scss/definitions';
 
+
 .systemMessage {
-  background-color: $system-message-background;
-  color: $system-message-color;
+  background-color: $info;
+  color: $system-message-text;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+}
+.message-title {
+  font-weight: bold;
+  font-size: 1em;
 }
 /* If api error exists then change the background color */
 .apiError {
-  background-color: $system-error-background;
-  color: $system-error-color;
+  background-color: $error;
+  color: $system-message-text;
 }
 
 .wrapper {
   padding: 10px 20px;
 }
-.navList {
-  display: flex;
-  font-size: 1.25em;
-}
 
-.message-title {
-  margin-left: 1rem;
-}
-
-.closer {
-  padding: 0;
-  height: 1.6rem;
-  background: none;
-  border: none;
-  color: transparentize($white, .4);
-  transition: 350ms;
-  &:hover {
-    color: $white;
-  }
+.flash-close {
+  color: $white;
+  top: 0;
 }
 
 </style>

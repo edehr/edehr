@@ -103,7 +103,7 @@ export default {
   /*border: 1px solid red;*/
 }
 .errorMesageList {
-  color: $dialog-error-color;
+  color: $error;
 }
 .period-column {
   flex: 0 0 20%;
