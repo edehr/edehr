@@ -45,7 +45,9 @@ export default function () {
           label: "Patient location",
           elementKey: "location",
           fqn: "visit.table.location",
-          dataCaseStudy: "Emergency room"
+          helperText: "hospital, ward #, room #, home, out patient clinic",
+          dataCaseStudy: "Emergency room",
+          helperHtml: "<p>hospital, ward #, room #, home, out patient clinic</p>"
         },
         {
           label: "Transfer in day",
@@ -68,7 +70,7 @@ export default function () {
           fqn: "visit.table.transferOutTime"
         }
       ],
-      generated: "2019-06-04T12:32:37-07:00",
+      generated: "2019-06-13T07:40:16-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -83,7 +85,6 @@ export default function () {
                 formRow: "1",
                 formColumn: "1",
                 formCss: "is-one-third",
-                mandatory: "yes",
                 dataParent: "visit",
                 fqn: "visit.admissionDay"
               },
@@ -95,7 +96,6 @@ export default function () {
                 formRow: "1",
                 formColumn: "2",
                 formCss: "is-one-third",
-                mandatory: "yes",
                 dataParent: "visit",
                 fqn: "visit.admissionTime"
               },
@@ -130,7 +130,6 @@ export default function () {
                     text: "Discharged"
                   }
                 ],
-                mandatory: "yes",
                 dataParent: "visit",
                 fqn: "visit.status"
               }
@@ -197,8 +196,6 @@ export default function () {
               formRow: "1",
               formColumn: "1",
               tableColumn: "1",
-              mandatory: "yes",
-              helperText: "hospital, ward #, room #, home, out patient clinic",
               dataParent: "visit.table",
               fqn: "visit.table.location",
               tableKey: "table"
@@ -270,8 +267,6 @@ export default function () {
                     formRow: "1",
                     formColumn: "1",
                     tableColumn: "1",
-                    mandatory: "yes",
-                    helperText: "hospital, ward #, room #, home, out patient clinic",
                     dataParent: "visit.table",
                     fqn: "visit.table.location",
                     tableKey: "table"
@@ -377,6 +372,7 @@ export default function () {
           label: "Temperature",
           elementKey: "temperature",
           fqn: "vitals.table.temperature",
+          suffix: "Celcius",
           dataCaseStudy: "36.5 C"
         },
         {
@@ -441,10 +437,11 @@ export default function () {
         {
           label: "Flow rate",
           elementKey: "flowRate",
-          fqn: "vitals.table.flowRate"
+          fqn: "vitals.table.flowRate",
+          suffix: "/lpm"
         }
       ],
-      generated: "2019-06-04T12:32:37-07:00",
+      generated: "2019-06-13T07:40:16-07:00",
       hasTable: true,
       tables: [
         {
@@ -547,7 +544,6 @@ export default function () {
               formColumn: "1",
               formCss: "is-one-third",
               tableColumn: "7",
-              suffix: "Celcius",
               dataParent: "vitals.table",
               fqn: "vitals.table.temperature",
               tableKey: "table"
@@ -754,7 +750,6 @@ export default function () {
               formRow: "7",
               formColumn: "3",
               tableColumn: "18",
-              suffix: "/lpm",
               dataParent: "vitals.table",
               fqn: "vitals.table.flowRate",
               tableKey: "table"
@@ -871,7 +866,6 @@ export default function () {
                     formColumn: "1",
                     formCss: "is-one-third",
                     tableColumn: "7",
-                    suffix: "Celcius",
                     dataParent: "vitals.table",
                     fqn: "vitals.table.temperature",
                     tableKey: "table"
@@ -1098,7 +1092,6 @@ export default function () {
                     formRow: "7",
                     formColumn: "3",
                     tableColumn: "18",
-                    suffix: "/lpm",
                     dataParent: "vitals.table",
                     fqn: "vitals.table.flowRate",
                     tableKey: "table"
@@ -1153,7 +1146,7 @@ export default function () {
           fqn: "fluidBalance.table.fluidOut"
         }
       ],
-      generated: "2019-06-04T12:32:37-07:00",
+      generated: "2019-06-13T07:40:16-07:00",
       hasTable: true,
       tables: [
         {
@@ -1436,9 +1429,9 @@ export default function () {
         },
         {
           label: "<b>Glasgow Coma Scale calculation</b>",
+          defaultValue: "0",
           elementKey: "glasgowCalculation",
           fqn: "neurological.table.glasgowComaScale.glasgowCalculation",
-          defaultValue: "0",
           dataCaseStudy: "(15 - calculated by system)"
         },
         {
@@ -1592,12 +1585,12 @@ export default function () {
         },
         {
           label: "<b>Stroke assessment calculation</b>",
+          defaultValue: "0",
           elementKey: "strokeAssessmentCalculation",
-          fqn: "neurological.table.stroke.strokeAssessmentCalculation",
-          defaultValue: "0"
+          fqn: "neurological.table.stroke.strokeAssessmentCalculation"
         }
       ],
-      generated: "2019-06-04T12:32:37-07:00",
+      generated: "2019-06-13T07:40:16-07:00",
       hasTable: true,
       tables: [
         {
@@ -1828,7 +1821,6 @@ export default function () {
                   text: "4 = Spontaneous"
                 }
               ],
-              passToFunction: "glasgowCalculation",
               dataParent: "neurological.table.glasgowComaScale",
               fqn: "neurological.table.glasgowComaScale.eyeOpening",
               tableKey: "table",
@@ -1864,7 +1856,6 @@ export default function () {
                   text: "5 = Oriented"
                 }
               ],
-              passToFunction: "glasgowCalculation",
               dataParent: "neurological.table.glasgowComaScale",
               fqn: "neurological.table.glasgowComaScale.verbalResponse",
               tableKey: "table",
@@ -1905,7 +1896,6 @@ export default function () {
                   text: "6 = Obeys commands"
                 }
               ],
-              passToFunction: "glasgowCalculation",
               dataParent: "neurological.table.glasgowComaScale",
               fqn: "neurological.table.glasgowComaScale.bestMotorResponse",
               tableKey: "table",
@@ -2119,6 +2109,22 @@ export default function () {
               formColumn: "2"
             },
             {
+              label: "<b>Resources</b><p><a target=\"_blank\" href=\"/assets/standardized-assessment-tools/Morse-Fall-Scale-score.png\">Morse Fall Score </a></br><a target=\"_blank\" href=\"/assets/standardized-assessment-tools/mini-mental-health-screen.pdf\">Mini-mental state examination (MMSE)</a></p>",
+              pageDataKey: "neurological",
+              level2Key: "table",
+              elementKey: "resources",
+              inputType: "form_label",
+              formRow: "4",
+              formColumn: "1",
+              formCss: "is-one-third",
+              tableCss: "hideLabel",
+              fsetRow: "3",
+              fsetCol: "3",
+              dataParent: "neurological.table",
+              fqn: "neurological.table.resources",
+              tableKey: "table"
+            },
+            {
               label: "Right pupil response to light",
               pageDataKey: "neurological",
               level2Key: "table",
@@ -2202,22 +2208,6 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "<b>Resources</b><p><a target=\"_blank\" href=\"/assets/standardized-assessment-tools/Morse-Fall-Scale-score.png\">Morse Fall Score </a></br><a target=\"_blank\" href=\"/assets/standardized-assessment-tools/mini-mental-health-screen.pdf\">Mini-mental state examination (MMSE)</a></p>",
-              pageDataKey: "neurological",
-              level2Key: "table",
-              elementKey: "resources",
-              inputType: "form_label",
-              formRow: "4",
-              formColumn: "1",
-              formCss: "is-one-third",
-              tableCss: "hideLabel",
-              fsetRow: "3",
-              fsetCol: "3",
-              dataParent: "neurological.table",
-              fqn: "neurological.table.resources",
-              tableKey: "table"
-            },
-            {
               label: "Stroke Assessment",
               pageDataKey: "neurological",
               level2Key: "table",
@@ -2259,7 +2249,6 @@ export default function () {
                   text: "3 = Unresponsive or responds only with reflex"
                 }
               ],
-              passToFunction: "strokeAssessmentCalculation",
               dataParent: "neurological.table.stroke",
               fqn: "neurological.table.stroke.levelOfConciousness",
               tableKey: "table",
@@ -2287,7 +2276,6 @@ export default function () {
                   text: "2 = Answers neither question correctly"
                 }
               ],
-              passToFunction: "strokeAssessmentCalculation",
               dataParent: "neurological.table.stroke",
               fqn: "neurological.table.stroke.levelOfConciousnessQuestions",
               tableKey: "table",
@@ -2316,7 +2304,6 @@ export default function () {
                   text: "2 = Performs neither task correctly"
                 }
               ],
-              passToFunction: "strokeAssessmentCalculation",
               dataParent: "neurological.table.stroke",
               fqn: "neurological.table.stroke.levelOfConciousnessCommands",
               tableKey: "table",
@@ -2350,7 +2337,6 @@ export default function () {
                   text: "4 = No movement"
                 }
               ],
-              passToFunction: "strokeAssessmentCalculation",
               dataParent: "neurological.table.stroke",
               fqn: "neurological.table.stroke.motorLeftArm",
               tableKey: "table",
@@ -2384,7 +2370,6 @@ export default function () {
                   text: "4 = No movement"
                 }
               ],
-              passToFunction: "strokeAssessmentCalculation",
               dataParent: "neurological.table.stroke",
               fqn: "neurological.table.stroke.motorRightArm",
               tableKey: "table",
@@ -2418,7 +2403,6 @@ export default function () {
                   text: "4 = No movement"
                 }
               ],
-              passToFunction: "strokeAssessmentCalculation",
               dataParent: "neurological.table.stroke",
               fqn: "neurological.table.stroke.motorLeftLeg",
               tableKey: "table",
@@ -2452,7 +2436,6 @@ export default function () {
                   text: "4 = No movement"
                 }
               ],
-              passToFunction: "strokeAssessmentCalculation",
               dataParent: "neurological.table.stroke",
               fqn: "neurological.table.stroke.motorRightLeg",
               tableKey: "table",
@@ -2481,7 +2464,6 @@ export default function () {
                   text: "2 = Present in two limbs"
                 }
               ],
-              passToFunction: "strokeAssessmentCalculation",
               dataParent: "neurological.table.stroke",
               fqn: "neurological.table.stroke.limbAtaxia",
               tableKey: "table",
@@ -2509,7 +2491,6 @@ export default function () {
                   text: "2 = Forced deviation"
                 }
               ],
-              passToFunction: "strokeAssessmentCalculation",
               dataParent: "neurological.table.stroke",
               fqn: "neurological.table.stroke.bestGaze",
               tableKey: "table",
@@ -2540,7 +2521,6 @@ export default function () {
                   text: "3 = Complete paralysis of one or both sides"
                 }
               ],
-              passToFunction: "strokeAssessmentCalculation",
               dataParent: "neurological.table.stroke",
               fqn: "neurological.table.stroke.visual",
               tableKey: "table",
@@ -2571,7 +2551,6 @@ export default function () {
                   text: "3 = Complete paralysis of one or both sides"
                 }
               ],
-              passToFunction: "strokeAssessmentCalculation",
               dataParent: "neurological.table.stroke",
               fqn: "neurological.table.stroke.facialPalsy",
               tableKey: "table",
@@ -2599,7 +2578,6 @@ export default function () {
                   text: "2 = Severe to total sensory loss"
                 }
               ],
-              passToFunction: "strokeAssessmentCalculation",
               dataParent: "neurological.table.stroke",
               fqn: "neurological.table.stroke.sensory",
               tableKey: "table",
@@ -2630,7 +2608,6 @@ export default function () {
                   text: "3 = Mute, global aphasia"
                 }
               ],
-              passToFunction: "strokeAssessmentCalculation",
               dataParent: "neurological.table.stroke",
               fqn: "neurological.table.stroke.bestLanguage",
               tableKey: "table",
@@ -2658,7 +2635,6 @@ export default function () {
                   text: "2 = Severe dysarthria"
                 }
               ],
-              passToFunction: "strokeAssessmentCalculation",
               dataParent: "neurological.table.stroke",
               fqn: "neurological.table.stroke.dysarthria",
               tableKey: "table",
@@ -2687,7 +2663,6 @@ export default function () {
                   text: "2 = Profound hemi-inattention or extinction"
                 }
               ],
-              passToFunction: "strokeAssessmentCalculation",
               dataParent: "neurological.table.stroke",
               fqn: "neurological.table.stroke.extinctionAndInattention",
               tableKey: "table",
@@ -2989,7 +2964,6 @@ export default function () {
                                   text: "4 = Spontaneous"
                                 }
                               ],
-                              passToFunction: "glasgowCalculation",
                               dataParent: "neurological.table.glasgowComaScale",
                               fqn: "neurological.table.glasgowComaScale.eyeOpening",
                               tableKey: "table",
@@ -3030,7 +3004,6 @@ export default function () {
                                   text: "5 = Oriented"
                                 }
                               ],
-                              passToFunction: "glasgowCalculation",
                               dataParent: "neurological.table.glasgowComaScale",
                               fqn: "neurological.table.glasgowComaScale.verbalResponse",
                               tableKey: "table",
@@ -3076,7 +3049,6 @@ export default function () {
                                   text: "6 = Obeys commands"
                                 }
                               ],
-                              passToFunction: "glasgowCalculation",
                               dataParent: "neurological.table.glasgowComaScale",
                               fqn: "neurological.table.glasgowComaScale.bestMotorResponse",
                               tableKey: "table",
@@ -3490,7 +3462,6 @@ export default function () {
                                   text: "3 = Unresponsive or responds only with reflex"
                                 }
                               ],
-                              passToFunction: "strokeAssessmentCalculation",
                               dataParent: "neurological.table.stroke",
                               fqn: "neurological.table.stroke.levelOfConciousness",
                               tableKey: "table",
@@ -3518,7 +3489,6 @@ export default function () {
                                   text: "2 = Answers neither question correctly"
                                 }
                               ],
-                              passToFunction: "strokeAssessmentCalculation",
                               dataParent: "neurological.table.stroke",
                               fqn: "neurological.table.stroke.levelOfConciousnessQuestions",
                               tableKey: "table",
@@ -3547,7 +3517,6 @@ export default function () {
                                   text: "2 = Performs neither task correctly"
                                 }
                               ],
-                              passToFunction: "strokeAssessmentCalculation",
                               dataParent: "neurological.table.stroke",
                               fqn: "neurological.table.stroke.levelOfConciousnessCommands",
                               tableKey: "table",
@@ -3586,7 +3555,6 @@ export default function () {
                                   text: "4 = No movement"
                                 }
                               ],
-                              passToFunction: "strokeAssessmentCalculation",
                               dataParent: "neurological.table.stroke",
                               fqn: "neurological.table.stroke.motorLeftArm",
                               tableKey: "table",
@@ -3620,7 +3588,6 @@ export default function () {
                                   text: "4 = No movement"
                                 }
                               ],
-                              passToFunction: "strokeAssessmentCalculation",
                               dataParent: "neurological.table.stroke",
                               fqn: "neurological.table.stroke.motorRightArm",
                               tableKey: "table",
@@ -3659,7 +3626,6 @@ export default function () {
                                   text: "4 = No movement"
                                 }
                               ],
-                              passToFunction: "strokeAssessmentCalculation",
                               dataParent: "neurological.table.stroke",
                               fqn: "neurological.table.stroke.motorLeftLeg",
                               tableKey: "table",
@@ -3693,7 +3659,6 @@ export default function () {
                                   text: "4 = No movement"
                                 }
                               ],
-                              passToFunction: "strokeAssessmentCalculation",
                               dataParent: "neurological.table.stroke",
                               fqn: "neurological.table.stroke.motorRightLeg",
                               tableKey: "table",
@@ -3722,7 +3687,6 @@ export default function () {
                                   text: "2 = Present in two limbs"
                                 }
                               ],
-                              passToFunction: "strokeAssessmentCalculation",
                               dataParent: "neurological.table.stroke",
                               fqn: "neurological.table.stroke.limbAtaxia",
                               tableKey: "table",
@@ -3755,7 +3719,6 @@ export default function () {
                                   text: "2 = Forced deviation"
                                 }
                               ],
-                              passToFunction: "strokeAssessmentCalculation",
                               dataParent: "neurological.table.stroke",
                               fqn: "neurological.table.stroke.bestGaze",
                               tableKey: "table",
@@ -3786,7 +3749,6 @@ export default function () {
                                   text: "3 = Complete paralysis of one or both sides"
                                 }
                               ],
-                              passToFunction: "strokeAssessmentCalculation",
                               dataParent: "neurological.table.stroke",
                               fqn: "neurological.table.stroke.visual",
                               tableKey: "table",
@@ -3817,7 +3779,6 @@ export default function () {
                                   text: "3 = Complete paralysis of one or both sides"
                                 }
                               ],
-                              passToFunction: "strokeAssessmentCalculation",
                               dataParent: "neurological.table.stroke",
                               fqn: "neurological.table.stroke.facialPalsy",
                               tableKey: "table",
@@ -3850,7 +3811,6 @@ export default function () {
                                   text: "2 = Severe to total sensory loss"
                                 }
                               ],
-                              passToFunction: "strokeAssessmentCalculation",
                               dataParent: "neurological.table.stroke",
                               fqn: "neurological.table.stroke.sensory",
                               tableKey: "table",
@@ -3881,7 +3841,6 @@ export default function () {
                                   text: "3 = Mute, global aphasia"
                                 }
                               ],
-                              passToFunction: "strokeAssessmentCalculation",
                               dataParent: "neurological.table.stroke",
                               fqn: "neurological.table.stroke.bestLanguage",
                               tableKey: "table",
@@ -3909,7 +3868,6 @@ export default function () {
                                   text: "2 = Severe dysarthria"
                                 }
                               ],
-                              passToFunction: "strokeAssessmentCalculation",
                               dataParent: "neurological.table.stroke",
                               fqn: "neurological.table.stroke.dysarthria",
                               tableKey: "table",
@@ -3943,7 +3901,6 @@ export default function () {
                                   text: "2 = Profound hemi-inattention or extinction"
                                 }
                               ],
-                              passToFunction: "strokeAssessmentCalculation",
                               dataParent: "neurological.table.stroke",
                               fqn: "neurological.table.stroke.extinctionAndInattention",
                               tableKey: "table",
@@ -4046,7 +4003,8 @@ export default function () {
         {
           label: "Flow rate",
           elementKey: "flowRate",
-          fqn: "respiratory.table.airway.flowRate"
+          fqn: "respiratory.table.airway.flowRate",
+          suffix: "/lpm"
         },
         {
           label: "Left upper lung",
@@ -4125,7 +4083,7 @@ export default function () {
           dataCaseStudy: "(no notes)"
         }
       ],
-      generated: "2019-06-04T12:32:37-07:00",
+      generated: "2019-06-13T07:40:16-07:00",
       hasTable: true,
       tables: [
         {
@@ -4276,26 +4234,10 @@ export default function () {
               tableCss: "hr-table",
               fsetRow: "6",
               fsetCol: "1",
-              suffix: "/lpm",
               dataParent: "respiratory.table.airway",
               fqn: "respiratory.table.airway.flowRate",
               tableKey: "table",
               formColumn: "1"
-            },
-            {
-              label: "Airway",
-              pageDataKey: "respiratory",
-              level2Key: "table",
-              elementKey: "airway",
-              inputType: "fieldset",
-              formRow: "2",
-              formColumn: "1",
-              dataParent: "respiratory.table",
-              fqn: "respiratory.table.airway",
-              containerType: "fieldset",
-              containerKey: "airway",
-              tableCss: "hide-table-element",
-              tableKey: "table"
             },
             {
               label: "Left upper lung",
@@ -4362,6 +4304,21 @@ export default function () {
               formColumn: "2"
             },
             {
+              label: "Airway",
+              pageDataKey: "respiratory",
+              level2Key: "table",
+              elementKey: "airway",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "1",
+              dataParent: "respiratory.table",
+              fqn: "respiratory.table.airway",
+              containerType: "fieldset",
+              containerKey: "airway",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
               pageDataKey: "respiratory",
               level2Key: "table",
               level3Key: "breath",
@@ -4372,6 +4329,36 @@ export default function () {
               fsetCol: "1",
               dataParent: "respiratory.table.breath",
               fqn: "respiratory.table.breath.aSpacer",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
+              label: "Sputum",
+              pageDataKey: "respiratory",
+              level2Key: "table",
+              elementKey: "sputum",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "3",
+              dataParent: "respiratory.table",
+              fqn: "respiratory.table.sputum",
+              containerType: "fieldset",
+              containerKey: "sputum",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
+              label: "Breath sounds",
+              pageDataKey: "respiratory",
+              level2Key: "table",
+              elementKey: "breath",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "2",
+              dataParent: "respiratory.table",
+              fqn: "respiratory.table.breath",
+              containerType: "fieldset",
+              containerKey: "breath",
               tableCss: "hide-table-element",
               tableKey: "table"
             },
@@ -4526,21 +4513,6 @@ export default function () {
               formColumn: "1"
             },
             {
-              label: "Breath sounds",
-              pageDataKey: "respiratory",
-              level2Key: "table",
-              elementKey: "breath",
-              inputType: "fieldset",
-              formRow: "2",
-              formColumn: "2",
-              dataParent: "respiratory.table",
-              fqn: "respiratory.table.breath",
-              containerType: "fieldset",
-              containerKey: "breath",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
               label: "Cough",
               pageDataKey: "respiratory",
               level2Key: "table",
@@ -4633,21 +4605,6 @@ export default function () {
               fqn: "respiratory.table.sputum.sputumComments",
               tableKey: "table",
               formColumn: "1"
-            },
-            {
-              label: "Sputum",
-              pageDataKey: "respiratory",
-              level2Key: "table",
-              elementKey: "sputum",
-              inputType: "fieldset",
-              formRow: "2",
-              formColumn: "3",
-              dataParent: "respiratory.table",
-              fqn: "respiratory.table.sputum",
-              containerType: "fieldset",
-              containerKey: "sputum",
-              tableCss: "hide-table-element",
-              tableKey: "table"
             },
             {
               label: "General comments",
@@ -4861,7 +4818,6 @@ export default function () {
                               tableCss: "hr-table",
                               fsetRow: "6",
                               fsetCol: "1",
-                              suffix: "/lpm",
                               dataParent: "respiratory.table.airway",
                               fqn: "respiratory.table.airway.flowRate",
                               tableKey: "table",
@@ -5337,7 +5293,9 @@ export default function () {
           label: "Cap refill",
           elementKey: "labelCapRefill",
           fqn: "cardiovascular.table.labelCapRefill",
-          dataCaseStudy: "Normal"
+          helperText: "Normal < 3 seconds\nDelayed > 3 seconds",
+          dataCaseStudy: "Normal",
+          helperHtml: "<p>Normal < 3 seconds</p>\n<p>Delayed > 3 seconds</p>"
         },
         {
           label: "Temperature",
@@ -5483,7 +5441,7 @@ export default function () {
           dataCaseStudy: "(blank)"
         }
       ],
-      generated: "2019-06-04T12:32:37-07:00",
+      generated: "2019-06-13T07:40:16-07:00",
       hasTable: true,
       tables: [
         {
@@ -5622,7 +5580,6 @@ export default function () {
               formRow: "3",
               formColumn: "2",
               tableColumn: "7",
-              helperText: "Normal < 3 seconds-NL-Delayed > 3 seconds",
               dataParent: "cardiovascular.table",
               fqn: "cardiovascular.table.labelCapRefill",
               tableKey: "table"
@@ -6283,7 +6240,6 @@ export default function () {
                     formRow: "3",
                     formColumn: "2",
                     tableColumn: "7",
-                    helperText: "Normal < 3 seconds-NL-Delayed > 3 seconds",
                     dataParent: "cardiovascular.table",
                     fqn: "cardiovascular.table.labelCapRefill",
                     tableKey: "table"
@@ -7067,7 +7023,7 @@ export default function () {
           dataCaseStudy: "(nothing entered)"
         }
       ],
-      generated: "2019-06-04T12:32:37-07:00",
+      generated: "2019-06-13T07:40:16-07:00",
       hasTable: true,
       tables: [
         {
@@ -7245,37 +7201,6 @@ export default function () {
               formColumn: "1"
             },
             {
-              label: "If answered yes, please complete the <a href=\"/assets/standardized-assessment-tools/numeric-rating-scale.pdf\">pain assessment</a>.",
-              pageDataKey: "gastrointestinal",
-              level2Key: "table",
-              level3Key: "abdomen",
-              elementKey: "aLabel",
-              inputType: "form_label",
-              formOption: "labelWithPageRef",
-              tableCss: "hr-table",
-              fsetRow: "8",
-              fsetCol: "1",
-              dataParent: "gastrointestinal.table.abdomen",
-              fqn: "gastrointestinal.table.abdomen.aLabel",
-              tableKey: "table",
-              formColumn: "1"
-            },
-            {
-              label: "Abdomen",
-              pageDataKey: "gastrointestinal",
-              level2Key: "table",
-              elementKey: "abdomen",
-              inputType: "fieldset",
-              formRow: "2",
-              formColumn: "1",
-              dataParent: "gastrointestinal.table",
-              fqn: "gastrointestinal.table.abdomen",
-              containerType: "fieldset",
-              containerKey: "abdomen",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
               label: "Emesis present?",
               pageDataKey: "gastrointestinal",
               level2Key: "table",
@@ -7376,21 +7301,6 @@ export default function () {
               formColumn: "1"
             },
             {
-              label: "Emesis",
-              pageDataKey: "gastrointestinal",
-              level2Key: "table",
-              elementKey: "emesis",
-              inputType: "fieldset",
-              formRow: "2",
-              formColumn: "2",
-              dataParent: "gastrointestinal.table",
-              fqn: "gastrointestinal.table.emesis",
-              containerType: "fieldset",
-              containerKey: "emesis",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
               label: "Difficulty",
               pageDataKey: "gastrointestinal",
               level2Key: "table",
@@ -7460,6 +7370,21 @@ export default function () {
               formColumn: "1"
             },
             {
+              label: "Abdomen",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              elementKey: "abdomen",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "1",
+              dataParent: "gastrointestinal.table",
+              fqn: "gastrointestinal.table.abdomen",
+              containerType: "fieldset",
+              containerKey: "abdomen",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
               label: "Weight loss",
               pageDataKey: "gastrointestinal",
               level2Key: "table",
@@ -7471,6 +7396,37 @@ export default function () {
               fsetCol: "1",
               dataParent: "gastrointestinal.table.eatingGroup",
               fqn: "gastrointestinal.table.eatingGroup.weightLoss",
+              tableKey: "table",
+              formColumn: "1"
+            },
+            {
+              label: "Emesis",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              elementKey: "emesis",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "2",
+              dataParent: "gastrointestinal.table",
+              fqn: "gastrointestinal.table.emesis",
+              containerType: "fieldset",
+              containerKey: "emesis",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
+              label: "If answered yes, please complete the <a href=\"/assets/standardized-assessment-tools/numeric-rating-scale.pdf\">pain assessment</a>.",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              level3Key: "abdomen",
+              elementKey: "aLabel",
+              inputType: "form_label",
+              formOption: "labelWithPageRef",
+              tableCss: "hr-table",
+              fsetRow: "8",
+              fsetCol: "1",
+              dataParent: "gastrointestinal.table.abdomen",
+              fqn: "gastrointestinal.table.abdomen.aLabel",
               tableKey: "table",
               formColumn: "1"
             },
@@ -7487,6 +7443,53 @@ export default function () {
               fqn: "gastrointestinal.table.eatingGroup",
               containerType: "fieldset",
               containerKey: "eatingGroup",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
+              label: "Bowel sounds",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              elementKey: "bSounds",
+              inputType: "fieldset",
+              formRow: "3",
+              formColumn: "2",
+              formCss: "is-one-third",
+              dataParent: "gastrointestinal.table",
+              fqn: "gastrointestinal.table.bSounds",
+              containerType: "fieldset",
+              containerKey: "bSounds",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
+              label: "Bowel",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              elementKey: "bowel",
+              inputType: "fieldset",
+              formRow: "3",
+              formColumn: "1",
+              formCss: "is-one-third",
+              dataParent: "gastrointestinal.table",
+              fqn: "gastrointestinal.table.bowel",
+              containerType: "fieldset",
+              containerKey: "bowel",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
+              label: "Stool",
+              pageDataKey: "gastrointestinal",
+              level2Key: "table",
+              elementKey: "stool",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "1",
+              dataParent: "gastrointestinal.table",
+              fqn: "gastrointestinal.table.stool",
+              containerType: "fieldset",
+              containerKey: "stool",
               tableCss: "hide-table-element",
               tableKey: "table"
             },
@@ -7610,21 +7613,6 @@ export default function () {
               formColumn: "1"
             },
             {
-              label: "Stool",
-              pageDataKey: "gastrointestinal",
-              level2Key: "table",
-              elementKey: "stool",
-              inputType: "fieldset",
-              formRow: "2",
-              formColumn: "1",
-              dataParent: "gastrointestinal.table",
-              fqn: "gastrointestinal.table.stool",
-              containerType: "fieldset",
-              containerKey: "stool",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
               label: "Normal",
               pageDataKey: "gastrointestinal",
               level2Key: "table",
@@ -7699,22 +7687,6 @@ export default function () {
               fqn: "gastrointestinal.table.bowel.incontinent",
               tableKey: "table",
               formColumn: "1"
-            },
-            {
-              label: "Bowel",
-              pageDataKey: "gastrointestinal",
-              level2Key: "table",
-              elementKey: "bowel",
-              inputType: "fieldset",
-              formRow: "3",
-              formColumn: "1",
-              formCss: "is-one-third",
-              dataParent: "gastrointestinal.table",
-              fqn: "gastrointestinal.table.bowel",
-              containerType: "fieldset",
-              containerKey: "bowel",
-              tableCss: "hide-table-element",
-              tableKey: "table"
             },
             {
               label: "None",
@@ -7821,22 +7793,6 @@ export default function () {
               fqn: "gastrointestinal.table.bSounds.hyperactive",
               tableKey: "table",
               formColumn: "1"
-            },
-            {
-              label: "Bowel sounds",
-              pageDataKey: "gastrointestinal",
-              level2Key: "table",
-              elementKey: "bSounds",
-              inputType: "fieldset",
-              formRow: "3",
-              formColumn: "2",
-              formCss: "is-one-third",
-              dataParent: "gastrointestinal.table",
-              fqn: "gastrointestinal.table.bSounds",
-              containerType: "fieldset",
-              containerKey: "bSounds",
-              tableCss: "hide-table-element",
-              tableKey: "table"
             },
             {
               label: "Comments",

@@ -10,7 +10,7 @@ const helper = new Helper()
 const typeName = 'AssignmentController'
 const modelName = 'Assignment'
 
-function makeAssignmentController() {
+function makeAssignmentController () {
   return new AssignmentController(configuration)
 }
 

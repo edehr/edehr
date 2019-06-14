@@ -8,37 +8,40 @@
       div &nbsp;
 
     div(v-if="inputType === 'text'", class="text_input_wrapper")
-      label(v-if="!hideLabel", class="text_input_label", v-html="label")
+      ehr-page-form-label(:showLabel="showLabel", css="text_label", :label="label", :helperText="helperText", :helperHtml="helperHtml")
       input(class="input", v-bind:name="key", type="text", v-model="inputVal")
+      div {{suffix }}
 
     div(v-if="inputType === 'date'", class="date_wrapper")
-      label(v-if="!hideLabel", class="date_label", v-html="label")
+      ehr-page-form-label(:showLabel="showLabel", css="date_label", :label="label", :helperText="helperText", :helperHtml="helperHtml")
       datepicker(class="d-picker", typeable, v-model="inputVal")
-        div(v-if="hideLabel", slot="beforeCalendarHeader", class="datepicker-header") {{label}}
+        div(v-if="!showLabel", slot="beforeCalendarHeader", class="datepicker-header") {{label}}
 
     div(v-if="inputType === 'day'", class="day_wrapper")
-      label(v-if="!hideLabel", class="day_label", v-html="label")
+      ehr-page-form-label(:showLabel="showLabel", css="day_label", :label="label", :helperText="helperText", :helperHtml="helperHtml")
       input(class="input", type="text", v-model="inputVal")
 
     div(v-if="inputType === 'time'", class="time_wrapper")
-      label(v-if="!hideLabel", class="time_label", v-html="label")
+      ehr-page-form-label(:showLabel="showLabel", css="time_label", :label="label", :helperText="helperText", :helperHtml="helperHtml")
       input(class="input", type="text", v-model="inputVal")
 
     div(v-if="inputType === 'textarea'", class="textarea_wrapper")
-      label {{label}}
+      ehr-page-form-label(:showLabel="showLabel", css="textarea_label", :label="label", :helperText="helperText", :helperHtml="helperHtml")
       textarea(v-model="inputVal")
 
     div(v-if="inputType === 'select'", class="select_wrapper")
-      label(v-if="!hideLabel", class="select_label", v-html="label")
+      ehr-page-form-label(:showLabel="showLabel", css="select_label", :label="label", :helperText="helperText", :helperHtml="helperHtml")
       div(class="select")
         select(v-bind:name="key", v-model="inputVal")
           option(disabled,value="")
           option(v-for="option in element.options", v-bind:value="option.text") {{ option.text}}
 
     div(v-if="inputType === 'checkbox'", class="checkbox_wrapper")
-      label(v-if="!hideLabel", class="checkbox_label")
+      label(v-if="showLabel", class="checkbox_label")
         input(class="checkbox", type="checkbox", v-model="inputVal")
         span {{label}}
+        ui-info(v-if="helperText", :title="label", :html="helperHtml", :text="helperText")
+
 
     div(v-if="inputType === 'fieldset'", class="fieldset_col_wrapper")
       label(v-show="!!label", class="fieldset_label", v-html="label") &nbsp;
@@ -60,28 +63,35 @@
 */
 import Datepicker from 'vuejs-datepicker'
 import EhrDialogFormElement from './EhrDialogFormElement.vue'
+import EhrPageFormLabel from '../components/EhrPageFormLabel.vue'
 import EhrCalculatedValue from './EhrCalculatedValue'
 import EventBus from '../../helpers/event-bus'
 import { DIALOG_INPUT_EVENT } from '../../helpers/event-bus'
 import UiInfo from '../../app/ui/UiInfo'
+import {getPageChildElement} from '../../helpers/ehr-defs'
 
 export default {
   name: 'EhrDialogFormElement',
   components: {
     EhrDialogFormElement,
+    EhrPageFormLabel,
     EhrCalculatedValue,
     UiInfo,
     Datepicker
   },
   data () {
     return {
-      inputVal: '',
+      child: {},
+      eventHandler: {},
       gotHit: false,
+      helperHtml: '',
+      helperText: '',
+      showLabel: true,
+      inputType: '',
+      inputVal: '',
       key: '',
       label: '',
-      inputType: '',
-      hideLabel: false,
-      eventHandler: {}
+      suffix: ''
     }
   },
   props: {
@@ -143,10 +153,19 @@ export default {
   },
   mounted: function () {
     const _this = this
-    this.key = this.element.elementKey
-    this.label = this.element.label
-    this.inputType = this.element.inputType
-    this.hideLabel = this.element.formOption === 'hideLabel'
+    const element = this.element
+    this.key = element.elementKey
+    this.label = element.label
+    this.inputType = element.inputType
+    this.showLabel = !(element.formOption === 'hideLabel')
+    // there is a child element for most elements. Exceptions include fieldsets
+    let child = getPageChildElement(element.pageDataKey, element.elementKey)
+    if (!child ) {
+      child = {}
+    }
+    this.suffix = child.suffix
+    this.helperText = child.helperText
+    this.helperHtml = child.helperHtml
     // Don't initialize value here because that would trigger the watch and that only works once the dialog is visible
     // this.inputVal = this.inputs[this.key]
     this.tableEventHandler = function (eData) {

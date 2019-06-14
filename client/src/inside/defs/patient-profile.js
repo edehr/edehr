@@ -42,16 +42,18 @@ export default function () {
         },
         {
           label: "Height",
+          defaultValue: "157",
           elementKey: "height",
           fqn: "demographics.height",
-          defaultValue: "157",
+          suffix: "cm",
           dataCaseStudy: "157"
         },
         {
           label: "Weight",
+          defaultValue: "63",
           elementKey: "weight",
           fqn: "demographics.weight",
-          defaultValue: "63",
+          suffix: "kg",
           dataCaseStudy: "63"
         },
         {
@@ -97,9 +99,9 @@ export default function () {
         },
         {
           label: "Country",
+          defaultValue: "Canada",
           elementKey: "country",
           fqn: "demographics.country",
-          defaultValue: "Canada",
           dataCaseStudy: "Canada"
         },
         {
@@ -185,7 +187,7 @@ export default function () {
           dataCaseStudy: "604-555-9865"
         }
       ],
-      generated: "2019-05-30T23:18:11-07:00",
+      generated: "2019-06-13T07:40:16-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -199,7 +201,6 @@ export default function () {
                 inputType: "text",
                 formRow: "1",
                 formColumn: "1",
-                mandatory: "yes",
                 dataParent: "demographics",
                 fqn: "demographics.familyName"
               },
@@ -210,7 +211,6 @@ export default function () {
                 inputType: "text",
                 formRow: "1",
                 formColumn: "2",
-                mandatory: "yes",
                 dataParent: "demographics",
                 fqn: "demographics.givenName"
               },
@@ -256,7 +256,6 @@ export default function () {
                 inputType: "text",
                 formRow: "2",
                 formColumn: "3",
-                mandatory: "yes",
                 dataParent: "demographics",
                 fqn: "demographics.personAge"
               }
@@ -274,7 +273,6 @@ export default function () {
                 formColumn: "1",
                 formCss: "is-one-third",
                 defaultValue: "157",
-                suffix: "cm",
                 dataParent: "demographics",
                 fqn: "demographics.height"
               },
@@ -287,7 +285,6 @@ export default function () {
                 formColumn: "2",
                 formCss: "is-one-third",
                 defaultValue: "63",
-                suffix: "kg",
                 dataParent: "demographics",
                 fqn: "demographics.weight"
               }
@@ -327,7 +324,6 @@ export default function () {
                     text: "Prefer not to say"
                   }
                 ],
-                mandatory: "yes",
                 dataParent: "demographics",
                 fqn: "demographics.gender"
               },
@@ -721,13 +717,13 @@ export default function () {
         },
         {
           label: "No known allergies",
+          defaultValue: "TRUE",
           elementKey: "hasNoAllergies",
           fqn: "allergies.hasNoAllergies",
-          defaultValue: "TRUE",
           dataCaseStudy: "TRUE"
         }
       ],
-      generated: "2019-05-30T23:18:11-07:00",
+      generated: "2019-06-13T07:40:16-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -742,7 +738,6 @@ export default function () {
                 formRow: "1",
                 formColumn: "1",
                 defaultValue: "TRUE",
-                validation: "one of these two need to be filled",
                 dataParent: "allergies",
                 fqn: "allergies.hasNoAllergies"
               }
@@ -759,7 +754,6 @@ export default function () {
                 formRow: "2",
                 formColumn: "1",
                 formCss: "is-one-third",
-                validation: "one of these two need to be filled",
                 dataParent: "allergies",
                 fqn: "allergies.allergies"
               }
@@ -780,7 +774,7 @@ export default function () {
           fqn: "medical.history"
         }
       ],
-      generated: "2019-05-30T23:18:11-07:00",
+      generated: "2019-06-13T07:40:16-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -866,7 +860,9 @@ export default function () {
           label: "Tobacco use",
           elementKey: "tobaccoUse",
           fqn: "psychosocial.behaviours.tobaccoUse",
-          dataCaseStudy: "TRUE"
+          helperText: "Have you used any tobacco products in the last 6 months?\nHave you used any tobacco products in the last 7 days?",
+          dataCaseStudy: "TRUE",
+          helperHtml: "<p>Have you used any tobacco products in the last 6 months?</p>\n<p>Have you used any tobacco products in the last 7 days?</p>"
         },
         {
           label: "Tobacco use frequency",
@@ -877,7 +873,9 @@ export default function () {
         {
           label: "Cannabis use",
           elementKey: "cannabisUse",
-          fqn: "psychosocial.behaviours.cannabisUse"
+          fqn: "psychosocial.behaviours.cannabisUse",
+          helperText: "Have you used any cannabis products in the last 6 months?\nHave you used any cannabis products in the last 7 days?",
+          helperHtml: "<p>Have you used any cannabis products in the last 6 months?</p>\n<p>Have you used any cannabis products in the last 7 days?</p>"
         },
         {
           label: "Cannabis use frequency",
@@ -888,7 +886,9 @@ export default function () {
           label: "Alcohol use",
           elementKey: "alcoholUse",
           fqn: "psychosocial.behaviours.alcoholUse",
-          dataCaseStudy: "TRUE"
+          helperText: "CAGE questionaire\nHave you ever felt that you should cut down on your drinking?\nHave you ever become annoyed by criticisms of your drinking?\nHave you ever felt guilty about your drinking?\nHave you ever had a morning eye opener to get rid of a hangover?",
+          dataCaseStudy: "TRUE",
+          helperHtml: "<p>CAGE questionaire</p>\n<p>Have you ever felt that you should cut down on your drinking?</p>\n<p>Have you ever become annoyed by criticisms of your drinking?</p>\n<p>Have you ever felt guilty about your drinking?</p>\n<p>Have you ever had a morning eye opener to get rid of a hangover?</p>"
         },
         {
           label: "Alcohol use frequency",
@@ -899,7 +899,9 @@ export default function () {
         {
           label: "Substance use",
           elementKey: "substanceUse",
-          fqn: "psychosocial.behaviours.substanceUse"
+          fqn: "psychosocial.behaviours.substanceUse",
+          helperText: "Have you used any substances in the last 6 months?\nHave you used any substances in the last 7 days?\nIf so, make notes about which ones.",
+          helperHtml: "<p>Have you used any substances in the last 6 months?</p>\n<p>Have you used any substances in the last 7 days?</p>\n<p>If so, make notes about which ones.</p>"
         },
         {
           label: "Substance use frequency",
@@ -907,7 +909,7 @@ export default function () {
           fqn: "psychosocial.behaviours.substanceUseFrequency"
         }
       ],
-      generated: "2019-05-30T23:18:11-07:00",
+      generated: "2019-06-13T07:40:16-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -1047,7 +1049,6 @@ export default function () {
                     formCss: "is-one-quarter",
                     fsetRow: "3",
                     fsetCol: "1",
-                    helperText: "Have you used any tobacco products in the last 6 months?-NL-Have you used any tobacco products in the last 7 days?",
                     dataParent: "psychosocial.behaviours",
                     fqn: "psychosocial.behaviours.tobaccoUse",
                     formColumn: "1"
@@ -1075,7 +1076,6 @@ export default function () {
                     formCss: "is-one-quarter",
                     fsetRow: "4",
                     fsetCol: "1",
-                    helperText: "Have you used any cannabis products in the last 6 months?-NL-Have you used any cannabis products in the last 7 days?",
                     dataParent: "psychosocial.behaviours",
                     fqn: "psychosocial.behaviours.cannabisUse",
                     formColumn: "1"
@@ -1103,7 +1103,6 @@ export default function () {
                     formCss: "is-one-quarter",
                     fsetRow: "5",
                     fsetCol: "1",
-                    helperText: "CAGE questionaire-NL-Have you ever felt that you should cut down on your drinking?-NL-Have you ever become annoyed by criticisms of your drinking?-NL-Have you ever felt guilty about your drinking?-NL-Have you ever had a morning eye opener to get rid of a hangover?",
                     dataParent: "psychosocial.behaviours",
                     fqn: "psychosocial.behaviours.alcoholUse",
                     formColumn: "1"
@@ -1131,7 +1130,6 @@ export default function () {
                     formCss: "is-one-quarter",
                     fsetRow: "6",
                     fsetCol: "1",
-                    helperText: "Have you used any substances in the last 6 months?-NL-Have you used any substances in the last 7 days?-NL-If so, make notes about which ones.",
                     dataParent: "psychosocial.behaviours",
                     fqn: "psychosocial.behaviours.substanceUse",
                     formColumn: "1"
@@ -1231,7 +1229,6 @@ export default function () {
                           formCss: "is-one-quarter",
                           fsetRow: "3",
                           fsetCol: "1",
-                          helperText: "Have you used any tobacco products in the last 6 months?-NL-Have you used any tobacco products in the last 7 days?",
                           dataParent: "psychosocial.behaviours",
                           fqn: "psychosocial.behaviours.tobaccoUse",
                           formColumn: "1"
@@ -1264,7 +1261,6 @@ export default function () {
                           formCss: "is-one-quarter",
                           fsetRow: "4",
                           fsetCol: "1",
-                          helperText: "Have you used any cannabis products in the last 6 months?-NL-Have you used any cannabis products in the last 7 days?",
                           dataParent: "psychosocial.behaviours",
                           fqn: "psychosocial.behaviours.cannabisUse",
                           formColumn: "1"
@@ -1297,7 +1293,6 @@ export default function () {
                           formCss: "is-one-quarter",
                           fsetRow: "5",
                           fsetCol: "1",
-                          helperText: "CAGE questionaire-NL-Have you ever felt that you should cut down on your drinking?-NL-Have you ever become annoyed by criticisms of your drinking?-NL-Have you ever felt guilty about your drinking?-NL-Have you ever had a morning eye opener to get rid of a hangover?",
                           dataParent: "psychosocial.behaviours",
                           fqn: "psychosocial.behaviours.alcoholUse",
                           formColumn: "1"
@@ -1330,7 +1325,6 @@ export default function () {
                           formCss: "is-one-quarter",
                           fsetRow: "6",
                           fsetCol: "1",
-                          helperText: "Have you used any substances in the last 6 months?-NL-Have you used any substances in the last 7 days?-NL-If so, make notes about which ones.",
                           dataParent: "psychosocial.behaviours",
                           fqn: "psychosocial.behaviours.substanceUse",
                           formColumn: "1"
@@ -1408,7 +1402,7 @@ export default function () {
           fqn: "surgical.previous.comments"
         }
       ],
-      generated: "2019-05-30T23:18:11-07:00",
+      generated: "2019-06-13T07:40:16-07:00",
       hasTable: true,
       tables: [
         {
@@ -1779,7 +1773,7 @@ export default function () {
           fqn: "immunization.otherDate3"
         }
       ],
-      generated: "2019-05-30T23:18:11-07:00",
+      generated: "2019-06-13T07:40:16-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -1989,7 +1983,6 @@ export default function () {
                 formRow: "8",
                 formColumn: "1",
                 tableCss: "is-one-quarter",
-                validation: "If other is selected, this is mandatory",
                 dataParent: "immunization",
                 fqn: "immunization.other1"
               },
@@ -2017,7 +2010,6 @@ export default function () {
                 formRow: "9",
                 formColumn: "1",
                 tableCss: "is-one-quarter",
-                validation: "If other is selected, this is mandatory",
                 dataParent: "immunization",
                 fqn: "immunization.other2"
               },
@@ -2045,7 +2037,6 @@ export default function () {
                 formRow: "10",
                 formColumn: "1",
                 tableCss: "is-one-quarter",
-                validation: "If other is selected, this is mandatory",
                 dataParent: "immunization",
                 fqn: "immunization.other3"
               },
@@ -2078,7 +2069,7 @@ export default function () {
           fqn: "familyHistory.history"
         }
       ],
-      generated: "2019-05-30T23:18:11-07:00",
+      generated: "2019-06-13T07:40:16-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -2119,7 +2110,7 @@ export default function () {
           dataCaseStudy: "Physician-NL-Physician-NL-Nurse-NL-Nurse-NL-Medical radiograpeor-NL-Medical laboratory technician-NL-Medical radiographer-NL-RN-NL-Physician-NL-RN-NL-Pysiotherapy student-NL-Resp. therapist"
         }
       ],
-      generated: "2019-05-30T23:18:11-07:00",
+      generated: "2019-06-13T07:40:16-07:00",
       hasTable: true,
       tables: [
         {
@@ -2248,7 +2239,7 @@ export default function () {
           dataCaseStudy: "COPD"
         }
       ],
-      generated: "2019-05-30T23:18:11-07:00",
+      generated: "2019-06-13T07:40:16-07:00",
       hasTable: true,
       tables: [
         {

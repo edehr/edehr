@@ -8,7 +8,7 @@
 import { getIncomingParams } from './helpers/ehr-utills'
 import { setApiError } from './helpers/ehr-utills'
 import EventBus from './helpers/event-bus'
-import Text from './helpers/ehr-text'
+import { Text } from './helpers/ehr-text'
 import StoreHelper from './helpers/store-helper'
 import { PAGE_DATA_REFRESH_EVENT } from './helpers/event-bus'
 const DefaultLayout = 'outside'

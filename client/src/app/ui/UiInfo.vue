@@ -5,7 +5,7 @@
         fas-icon(class="info-icon", icon="info-circle")
     app-dialog(:isModal="false", ref="theDialog", :useSave="false", @cancel="cancelDialog")
       h3(slot="header") {{ title }}
-      div(slot="body") {{ text }}
+      div(slot="body", v-html="content")
   
 </template>
 
@@ -22,8 +22,14 @@ export default {
     }
   },
   props: {
+    html: { type: String },
     title: { type: String },
     text: { type: String }
+  },
+  computed: {
+    content() {
+      return this.html ? this.html : this.text
+    }
   },
   methods: {
     buttonClicked: function () {

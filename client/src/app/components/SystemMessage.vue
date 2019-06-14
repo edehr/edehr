@@ -1,12 +1,11 @@
 <template lang="pug">
   div(v-show="showMessage", class="wrapper" :class="msgClass")
     div(class="message-title") {{systemMsg}}
-      ui-close(v-on:click="clearMessage", class="flash-close")
+      ui-close(v-on:close="clearMessage", class="flash-close")
 </template>
 
 <script>
 import UiClose from '../ui/UiClose'
-import UiButton from '../ui/UiButton'
 import { setApiError, setSystemMessage } from '../../helpers/ehr-utills'
 import { Text } from '../../helpers/ehr-text'
 import StoreHelper from '../../helpers/store-helper'

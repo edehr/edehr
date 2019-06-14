@@ -105,7 +105,7 @@ export default {
 }
 
 function sampleData () {
-  function addRow(day, time, temp, rate, systolic, diastolic, resp, oxy) {
+  function addRow (day, time, temp, rate, systolic, diastolic, resp, oxy) {
     return {
       name: 'B',
       profession: 'n',
