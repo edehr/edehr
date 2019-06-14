@@ -86,24 +86,12 @@ export default {
     overflow-y: auto;
     overflow-x: auto;
     width: $contentWidth;
-    @media #{$mediaQueryIpadLandscape} {
-      width: $contentWidthSmall;
-    }
-    @media #{$mediaQueryIpadPortrait} {
-      width: $contentWidthSmallest;
-    }
   }
   &__content_banner {
     background-color: $grey10;
     color: $grey60;
     padding: 0;
     margin-left: $panelMarginLeft;
-    @media #{$mediaQueryIpadLandscape} {
-      margin-left: $panelMarginLeftSmall;
-    }
-    @media #{$mediaQueryIpadPortrait} {
-      margin-left: $panelMarginLeftSmallest;
-    }
   }
   &__content_banner_content {
     padding: 0;
@@ -113,12 +101,6 @@ export default {
     padding: 0;
     width: 100%;
     margin-left: $panelMarginLeft;
-    @media #{$mediaQueryIpadLandscape} {
-      margin-left: $panelMarginLeftSmall;
-    }
-    @media #{$mediaQueryIpadPortrait} {
-      margin-left: $panelMarginLeftSmallest;
-    }
   }
 }
 

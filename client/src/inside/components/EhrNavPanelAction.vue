@@ -55,5 +55,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-/* @import '../../scss/definitions'; */
+@import '../../scss/definitions'; 
+
+.EhrNavPanel .button {
+  width: 100%;
+  margin-bottom: 0;
+}
 </style>

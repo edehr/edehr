@@ -60,23 +60,8 @@ export default {
 @import '../../scss/definitions';
 
 .EhrContextBanner {
-  padding: $panelHeaderPadding;
   background: $context-banner-background-color;
   color: $context-banner-color;
-  @media #{$mediaQueryIpadLandscape} {
-    padding: $panelHeaderPaddingSmall;
-  }
-  @media #{$mediaQueryIpadPortrait} {
-    padding: $panelHeaderPaddingSmallest;
-  }
-  .context-header {
-    padding: 0;
-    margin: 0;
-
-    h3 {
-      margin: 0 0 0 1rem;
-    }
-  }
 }
 .prototypingContainer {
   ul {

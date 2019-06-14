@@ -49,20 +49,8 @@ Define the styles for the left hand side components in the EHR
  */
 .EhrPanelContent {
   padding: $panelContentPadding;
-  @media #{$mediaQueryIpadLandscape} {
-    padding: $panelContentPaddingSmall;
-  }
-  @media #{$mediaQueryIpadPortrait} {
-    padding: $panelContentPaddingSmallest;
-  }
   .EhrPanelContent_Inner {
     width: $contentWidthInner;
-    @media #{$mediaQueryIpadLandscape} {
-      width: $contentWidthInnerSmall;
-    }
-    @media #{$mediaQueryIpadPortrait} {
-      width: $contentWidthInnerSmallest;
-    }
   }
 }
 

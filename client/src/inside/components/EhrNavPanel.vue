@@ -37,6 +37,12 @@ export default {
 <style lang="scss" scoped>
 @import '../../scss/definitions';
 
+.EhrNavPanel .button {
+  width: 100%;
+  margin-bottom: 0;
+  color: red;
+}
+
 .EhrNavPanel {
   background-color: $nav-background-medium;
   height: 100%;
@@ -59,9 +65,6 @@ export default {
   }
 }
 
-.EhrNavPanel button.button {
-    width: 100%;
-    margin-bottom: 0;
-}
+
 
 </style>

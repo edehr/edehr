@@ -51,7 +51,7 @@ button,
   }
 
   &:disabled {
-    background-color: $grey20;
+    background-color: $grey60;
     color: $white;
     cursor: default;
   }

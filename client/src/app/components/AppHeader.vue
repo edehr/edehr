@@ -1,9 +1,10 @@
 <template lang="pug">
   header(class="apphdr")
+    system-message
     div(class="wrapper")
       ul(class="navList")
         li(class="navItem")
-          router-link(:to="{ name: `${home}` }", class="navLink app-title") Educational Electronic Health Record - {{ fullName }}
+          router-link(:to="{ name: `${home}` }", class="navLink app-title") Educational Electronic Health Record
         li(class="navItem push")
           a(:href="lmsUrl", class="navLink") {{lmsName}}
         li(v-if="showDashboard", class="navItem")
@@ -12,7 +13,6 @@
           router-link(:to="{ name: `assignments` }", class="navLink subMenu") Assignments
         li(class="navItem")
           router-link(:to="{ name: `help` }", class="navLink") Help
-    system-message
 </template>
 <script>
 /*
@@ -136,33 +136,30 @@ export default {
   }
 
   .push {
-    margin-left: auto;
+    margin-left: 100px;
   }
 
-  /*  .navItem {
-    margin-right: 1em;
-  }*/
+  .navItem:not(:first-child) {
+    padding-top: 5px;
+  }
 
   .navLink {
+    color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
     font-weight: bold;
     font-size: 1.2rem;
     margin-left: 3em;
 
-    &,
-    &:visited {
-      color: inherit;
-    }
-
     &:focus,
     &:hover,
     &.is-active {
-      text-decoration: underline;
+      color: rgba(255, 255, 255, 1);
+      transition: 350ms ease-out;
     }
   }
 
   .app-title {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     margin-left: 0;
   }
 }
