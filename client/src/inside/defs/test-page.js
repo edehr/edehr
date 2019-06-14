@@ -190,7 +190,7 @@ export default function () {
           fqn: "testPage.table.ttfieldset.ttfcalculatedValue"
         }
       ],
-      generated: "2019-04-08T19:39:23-07:00",
+      generated: "2019-05-23T15:40:13-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -248,7 +248,6 @@ export default function () {
                     text: "2 = No"
                   }
                 ],
-                passToFunction: "tcalculated",
                 dataParent: "testPage",
                 fqn: "testPage.tselect"
               },
@@ -351,7 +350,6 @@ export default function () {
                         text: "2 = No"
                       }
                     ],
-                    passToFunction: "pfcalculatedValue",
                     dataParent: "testPage.tffieldset",
                     fqn: "testPage.tffieldset.pfselect",
                     formColumn: "1"
@@ -483,7 +481,6 @@ export default function () {
                               text: "2 = No"
                             }
                           ],
-                          passToFunction: "pfcalculatedValue",
                           dataParent: "testPage.tffieldset",
                           fqn: "testPage.tffieldset.pfselect",
                           formColumn: "1"
@@ -654,7 +651,6 @@ export default function () {
                   text: "2 = No"
                 }
               ],
-              passToFunction: "ttcalculatedValue",
               dataParent: "testPage.table",
               fqn: "testPage.table.ttselect",
               tableKey: "table"
@@ -804,7 +800,6 @@ export default function () {
                   text: "2 = No"
                 }
               ],
-              passToFunction: "ttfcalculatedValue",
               dataParent: "testPage.table.ttfieldset",
               fqn: "testPage.table.ttfieldset.ttfselect",
               tableKey: "table",
@@ -971,7 +966,6 @@ export default function () {
                         text: "2 = No"
                       }
                     ],
-                    passToFunction: "ttcalculatedValue",
                     dataParent: "testPage.table",
                     fqn: "testPage.table.ttselect",
                     tableKey: "table"
@@ -1108,7 +1102,6 @@ export default function () {
                                   text: "2 = No"
                                 }
                               ],
-                              passToFunction: "ttfcalculatedValue",
                               dataParent: "testPage.table.ttfieldset",
                               fqn: "testPage.table.ttfieldset.ttfselect",
                               tableKey: "table",

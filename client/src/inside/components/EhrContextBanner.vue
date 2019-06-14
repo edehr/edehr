@@ -48,7 +48,7 @@ export default {
       this.indicator = this.show ? '-' : '+'
     }
   },
-  mounted: function() {
+  mounted: function () {
     if (StoreHelper.isInstructor(this)){
       this.show = true
     }

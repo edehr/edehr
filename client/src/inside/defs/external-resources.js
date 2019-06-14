@@ -81,7 +81,7 @@ export default function () {
           fqn: "assessmentTools.medication.medication1_1"
         }
       ],
-      generated: "2019-05-23T13:54:30-07:00",
+      generated: "2019-06-13T07:40:16-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -777,7 +777,7 @@ export default function () {
           fqn: "codeLookup.icf"
         }
       ],
-      generated: "2019-05-23T13:54:30-07:00",
+      generated: "2019-06-13T07:40:16-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -876,7 +876,7 @@ export default function () {
           fqn: "diagnosticCodes.table.cluster"
         }
       ],
-      generated: "2019-05-23T13:54:30-07:00",
+      generated: "2019-06-13T07:40:16-07:00",
       hasTable: true,
       tables: [
         {
@@ -966,7 +966,6 @@ export default function () {
               formRow: "3",
               formColumn: "1",
               tableColumn: "3",
-              mandatory: "yes",
               dataParent: "diagnosticCodes.table",
               fqn: "diagnosticCodes.table.condition",
               tableKey: "table"
@@ -980,8 +979,6 @@ export default function () {
               formRow: "3",
               formColumn: "2",
               tableColumn: "4",
-              mandatory: "yes",
-              validation: "Up to 8 characters long",
               dataParent: "diagnosticCodes.table",
               fqn: "diagnosticCodes.table.code",
               tableKey: "table"
@@ -1009,8 +1006,6 @@ export default function () {
                   text: "3"
                 }
               ],
-              mandatory: "yes",
-              validation: "1 character",
               dataParent: "diagnosticCodes.table",
               fqn: "diagnosticCodes.table.type",
               tableKey: "table"
@@ -1024,8 +1019,6 @@ export default function () {
               formRow: "3",
               formColumn: "4",
               tableColumn: "6",
-              mandatory: "no",
-              validation: "1 character",
               dataParent: "diagnosticCodes.table",
               fqn: "diagnosticCodes.table.prefix",
               tableKey: "table"
@@ -1039,8 +1032,6 @@ export default function () {
               formRow: "3",
               formColumn: "5",
               tableColumn: "7",
-              mandatory: "no",
-              validation: "1 character",
               dataParent: "diagnosticCodes.table",
               fqn: "diagnosticCodes.table.cluster",
               tableKey: "table"
@@ -1144,7 +1135,6 @@ export default function () {
                     formRow: "3",
                     formColumn: "1",
                     tableColumn: "3",
-                    mandatory: "yes",
                     dataParent: "diagnosticCodes.table",
                     fqn: "diagnosticCodes.table.condition",
                     tableKey: "table"
@@ -1158,8 +1148,6 @@ export default function () {
                     formRow: "3",
                     formColumn: "2",
                     tableColumn: "4",
-                    mandatory: "yes",
-                    validation: "Up to 8 characters long",
                     dataParent: "diagnosticCodes.table",
                     fqn: "diagnosticCodes.table.code",
                     tableKey: "table"
@@ -1187,8 +1175,6 @@ export default function () {
                         text: "3"
                       }
                     ],
-                    mandatory: "yes",
-                    validation: "1 character",
                     dataParent: "diagnosticCodes.table",
                     fqn: "diagnosticCodes.table.type",
                     tableKey: "table"
@@ -1202,8 +1188,6 @@ export default function () {
                     formRow: "3",
                     formColumn: "4",
                     tableColumn: "6",
-                    mandatory: "no",
-                    validation: "1 character",
                     dataParent: "diagnosticCodes.table",
                     fqn: "diagnosticCodes.table.prefix",
                     tableKey: "table"
@@ -1217,8 +1201,6 @@ export default function () {
                     formRow: "3",
                     formColumn: "5",
                     tableColumn: "7",
-                    mandatory: "no",
-                    validation: "1 character",
                     dataParent: "diagnosticCodes.table",
                     fqn: "diagnosticCodes.table.cluster",
                     tableKey: "table"
@@ -1289,7 +1271,7 @@ export default function () {
           fqn: "interventionCodes.table.extent"
         }
       ],
-      generated: "2019-05-23T13:54:30-07:00",
+      generated: "2019-06-13T07:40:16-07:00",
       hasTable: true,
       tables: [
         {
@@ -1663,7 +1645,7 @@ export default function () {
           fqn: "caseMixGroup.table.analysis"
         }
       ],
-      generated: "2019-05-23T13:54:30-07:00",
+      generated: "2019-06-13T07:40:16-07:00",
       hasTable: true,
       tables: [
         {

@@ -42,13 +42,11 @@ const containerElementProperties = [
 
   'defaultValue',
   'options',
-  'suffix',
-  'mandatory',
-  'validation',
-  'helperText',
+  // 'mandatory',
+  // 'validation',
   'assetBase',
   'assetName',
-  'passToFunction',
+  // 'passToFunction',
 
   'dataParent',
   'fqn',
@@ -57,14 +55,15 @@ const containerElementProperties = [
 
 const pageChildElementProperties = [
   'label',
+  'defaultValue',
   'elementKey',
   'fqn',
-  'defaultValue',
+  'helperText',
+  'suffix',
   // 'suffix',
   // 'mandatory',
   // 'validation',
   'dataCaseStudy',
-  // 'helperText',
   'passToFunction',
   // 'dataParent',
 ]
@@ -268,6 +267,7 @@ class RawInputToDef {
 
     // Push page level data element onto page
     let pageChild = this._transferProperties(entry, pageChildElementProperties)
+    this._prepareHelperText(entry, pageChild)
     pg.pageChildren.push(pageChild)
   }
 
@@ -279,6 +279,20 @@ class RawInputToDef {
         return { text: p }
       })
       dest.options = opts
+    }
+  }
+
+  _prepareHelperText(src, dest) {
+    if (src.helperText) {
+      let text = []
+      let html = []
+      let parts = src.helperText.split(nlSep)
+      parts.forEach(p => {
+        text.push(p)
+        html.push('<p>' + p + '</p>')
+      })
+      dest.helperHtml = html.join('\n')
+      dest.helperText = text.join('\n')
     }
   }
 

@@ -1,6 +1,6 @@
 <template lang="pug">
-  div(:class="$options.name")
-    div(:class="`${$options.name}__top`")
+  div(class="EhrNavPanel")
+    div(class="EhrNavPanel__top")
       ehr-nav-panel-action
     ehr-nav-list(v-for="path in menuList" :key="path.name" :path="path" :level="1")
     ehr-scratch-pad(v-show="isStudent")
@@ -52,16 +52,6 @@ export default {
 
   &__top {
     padding: 15px;
-  }
-  &__bottom {
-    padding: 15px;
-  }
-  a {
-    color: $white;
-  }
-  &__button {
-    margin-bottom: 0 !important;
-    width: 100%;  
   }
 }
 

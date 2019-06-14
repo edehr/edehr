@@ -66,6 +66,10 @@ export function getChildElements (pageKey, filterKey, filterValue, desiredProper
   return children
 }
 
+export function getPageChildElement (pageKey, key) {
+  return pageDefs[pageKey].pageChildren.find( ch => ch['elementKey'] === key)
+}
+
 export function getDefaultValue (def) {
   if (def.defaultValue) {
     return def.defaultValue
