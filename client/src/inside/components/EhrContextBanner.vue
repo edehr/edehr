@@ -1,17 +1,20 @@
 <template lang="pug">
-  div(class="EhrContextBanner EhrPanelContent")
-    div(class="EhrContextBanner_Inner EhrPanelContent_Inner")
-      div(class="context-header columns", v-on:click="toggleShow")
-        div(class="header-column is-10 column")
-          h3(class="header-item", :title="panelInfo.courseTitle") {{ panelInfo.courseTitle }} - {{ panelInfo.activityTitle }}
-        div(class="header-column is-2 column")
-          div(class="header-item header-icon")
-            fas-icon(icon="angle-double-down", v-show="!show")
-            fas-icon(icon="angle-double-up", v-show="show")
-      div(v-show="show")
-        ehr-context-instructor(v-if="showInstructor")
-        ehr-context-student(v-if="showStudent")
-        ehr-context-developer(v-if="showSeeding")
+  div
+    div(v-if="showStudent")
+      ehr-context-student
+    div(v-else)
+      div(class="EhrContextBanner EhrPanelContent")
+        div(class="EhrPanelContent_Inner")
+          div(class="context-header columns", v-on:click="toggleShow")
+            div(class="header-column is-10 column")
+              h3(class="header-item", :title="panelInfo.courseTitle") {{ panelInfo.courseTitle }} - {{ panelInfo.activityTitle }}
+            div(class="header-column is-2 column")
+              div(class="header-item header-icon")
+                fas-icon(icon="angle-double-down", v-show="!show")
+                fas-icon(icon="angle-double-up", v-show="show")
+          div(v-show="show")
+            ehr-context-instructor(v-if="showInstructor")
+            ehr-context-developer(v-if="showSeeding")
 </template>
 
 <script>
@@ -27,8 +30,7 @@ export default {
     return {
       show: false,
       indicator: '+',
-      activity: {},
-      showSeeding: false
+      activity: {}
     }
   },
   computed: {
@@ -40,6 +42,9 @@ export default {
     },
     showInstructor () {
       return StoreHelper.isInstructor(this)
+    },
+    showSeeding () {
+      return false
     }
   },
   methods: {
@@ -60,20 +65,9 @@ export default {
 @import '../../scss/definitions';
 
 .EhrContextBanner {
-  background: $context-banner-background-color;
-  color: $context-banner-color;
-}
-.prototypingContainer {
-  ul {
-    display: inline;
-  }
-  li {
-    display: inline;
-    margin-left: 1rem;
-  }
-  input {
-    display: inline-block;
-    margin-right: 5px;
+
+  .header-column {
+    padding: 0; // override bulma column padding
   }
 }
 </style>

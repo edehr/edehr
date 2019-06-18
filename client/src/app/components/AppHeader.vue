@@ -11,32 +11,23 @@
           router-link(:to="{ name: `instructor` }", class="navLink") Dashboard
         li(v-if="showDashboard", class="navItem")
           router-link(:to="{ name: `assignments` }", class="navLink subMenu") Assignments
+        li(v-if="showAssignmentActivation", class="navItem")
+          div(class="navLink activationItem", v-on:click="toggleShowAssignmentDetails()") Details
+          div(v-show="showingAssignmentDetails", class="activationContent")
+            ehr-header-item(type="assignment")
         li(class="navItem")
           router-link(:to="{ name: `help` }", class="navLink") Help
 </template>
 <script>
-/*
-        li(v-if="isStudent", class="navItem")
-          ul(class="subNavList", v-show="showAssignmentDetails")
-            div(class="columns")
-              div(class="column is-11")
-                h3 EDEHR 19 - Sample
-              div(class="column is-1")
-                ui-close(v-on:close="closeDetails")
-            p The description for the assignment would go here.
-            li(class="subNavItem") Erin Johns health case study #2
-            li(class="subNavItem") Instructor's notes
-
- */
 import SystemMessage from './SystemMessage'
-import UiClose from '../ui/UiClose'
+import EhrHeaderItem from '../../inside/components/EhrHeaderItem'
 import StoreHelper from '../../helpers/store-helper'
 export default {
   name: 'AppHeader',
-  components: { SystemMessage, UiClose },
+  components: { SystemMessage, EhrHeaderItem },
   data () {
     return {
-      showAssignmentDetails: false
+      showingAssignmentDetails: false
     }
   },
   computed: {
@@ -73,11 +64,20 @@ export default {
     },
     showDashboard () {
       return this.isInstructor || this.isDeveloper
+    },
+    showAssignmentActivation () {
+      return this.isStudent
     }
   },
   methods: {
-    closeDetails () {
-      this.showAssignmentDetails = false
+    showAssignmentDetails () {
+      this.showingAssignmentDetails = true
+    },
+    hideAssignmentDetails () {
+      this.showingAssignmentDetails = false
+    },
+    toggleShowAssignmentDetails () {
+      this.showingAssignmentDetails = !this.showingAssignmentDetails
     }
   }
 }
@@ -158,14 +158,26 @@ export default {
     }
   }
 
+  .activationItem {
+    cursor: pointer;
+  }
+
+  .activationContent {
+    width: 30rem;
+    border-radius: 5px;
+    border: 1px solid $grey60;
+
+    /*height: 100px;*/
+    position: absolute;
+    z-index: 10;
+    background-color: $white;
+    color: $grey80;
+  }
+
   .app-title {
     font-size: 1.5rem;
     margin-left: 0;
   }
 }
 
-.isInstructorClass .apphdr {
-  background: darkslateblue;
-  /*color: black;*/
-}
 </style>

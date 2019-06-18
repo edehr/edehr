@@ -1,16 +1,7 @@
 <template lang="pug">
   div(class="contextStudent")
-    div(class="contextStudent_content columns")
-      div(class="is-6 column")
-        div(class="textField") Student: {{ panelInfo.studentName }}
-        div(class="textField") Course: {{ panelInfo.courseTitle}}
-        div(class="textField") Activity: {{ panelInfo.activityTitle}}
-          ui-info(:title="panelInfo.activityTitle", :text="panelInfo.activityDescription")
-        div(class="textField") Assignment: {{ panelInfo.assignmentName}}
-          ui-info(:title="panelInfo.assignmentName", :text="panelInfo.assignmentDescription")
-        div(class="textField") Submitted: {{ submitted }}
-        div(class="textField") Evaluated: {{ evaluated }}
-        div(class="textField") Evaluation Notes: {{ evaluationNotes }}
+    div(v-if="isEvaluated", class="EhrContextBanner EhrPanelContent")
+      div Evaluation Notes: {{ evaluationNotes }}
 </template>
 
 <script>
@@ -28,9 +19,8 @@ export default {
       let ad = this.panelInfo.activityData
       return ad.submitted
     },
-    evaluated () {
-      let ad = this.panelInfo.activityData
-      return ad.evaluated
+    isEvaluated () {
+      return this.panelInfo.activityData.evaluated
     },
     evaluationNotes () {
       let ad = this.panelInfo.activityData

@@ -54,6 +54,12 @@ Define the styles for the left hand side components in the EHR
   }
 }
 
+.EhrContextBanner {
+  background: $context-banner-background-color;
+  color: $context-banner-color;
+  padding: 0.5rem 1rem; // override EhrPanelContent padding
+}
+
 .spacer {
   margin-left: 0.5em;
   margin-right: 0.5em;
