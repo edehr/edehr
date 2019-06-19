@@ -70,7 +70,7 @@ export default function () {
           fqn: "visit.table.transferOutTime"
         }
       ],
-      generated: "2019-06-13T07:40:16-07:00",
+      generated: "2019-06-19T07:41:24-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -441,7 +441,7 @@ export default function () {
           suffix: "/lpm"
         }
       ],
-      generated: "2019-06-13T07:40:16-07:00",
+      generated: "2019-06-19T07:41:24-07:00",
       hasTable: true,
       tables: [
         {
@@ -1146,7 +1146,7 @@ export default function () {
           fqn: "fluidBalance.table.fluidOut"
         }
       ],
-      generated: "2019-06-13T07:40:16-07:00",
+      generated: "2019-06-19T07:41:24-07:00",
       hasTable: true,
       tables: [
         {
@@ -1590,7 +1590,7 @@ export default function () {
           fqn: "neurological.table.stroke.strokeAssessmentCalculation"
         }
       ],
-      generated: "2019-06-13T07:40:16-07:00",
+      generated: "2019-06-19T07:41:24-07:00",
       hasTable: true,
       tables: [
         {
@@ -4083,7 +4083,7 @@ export default function () {
           dataCaseStudy: "(no notes)"
         }
       ],
-      generated: "2019-06-13T07:40:16-07:00",
+      generated: "2019-06-19T07:41:24-07:00",
       hasTable: true,
       tables: [
         {
@@ -5441,7 +5441,7 @@ export default function () {
           dataCaseStudy: "(blank)"
         }
       ],
-      generated: "2019-06-13T07:40:16-07:00",
+      generated: "2019-06-19T07:41:24-07:00",
       hasTable: true,
       tables: [
         {
@@ -7023,7 +7023,7 @@ export default function () {
           dataCaseStudy: "(nothing entered)"
         }
       ],
-      generated: "2019-06-13T07:40:16-07:00",
+      generated: "2019-06-19T07:41:24-07:00",
       hasTable: true,
       tables: [
         {
@@ -7454,7 +7454,7 @@ export default function () {
               inputType: "fieldset",
               formRow: "3",
               formColumn: "2",
-              formCss: "is-one-third",
+              formCss: "is-one-quarter",
               dataParent: "gastrointestinal.table",
               fqn: "gastrointestinal.table.bSounds",
               containerType: "fieldset",
@@ -7470,7 +7470,7 @@ export default function () {
               inputType: "fieldset",
               formRow: "3",
               formColumn: "1",
-              formCss: "is-one-third",
+              formCss: "is-one-quarter",
               dataParent: "gastrointestinal.table",
               fqn: "gastrointestinal.table.bowel",
               containerType: "fieldset",
@@ -8513,7 +8513,7 @@ export default function () {
                     inputType: "fieldset",
                     formRow: "3",
                     formColumn: "1",
-                    formCss: "is-one-third",
+                    formCss: "is-one-quarter",
                     dataParent: "gastrointestinal.table",
                     fqn: "gastrointestinal.table.bowel",
                     containerType: "fieldset",
@@ -8635,7 +8635,7 @@ export default function () {
                     inputType: "fieldset",
                     formRow: "3",
                     formColumn: "2",
-                    formCss: "is-one-third",
+                    formCss: "is-one-quarter",
                     dataParent: "gastrointestinal.table",
                     fqn: "gastrointestinal.table.bSounds",
                     containerType: "fieldset",

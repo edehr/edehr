@@ -32,12 +32,12 @@ export default function () {
           dataCaseStudy: "Erin Johns is 74 years old. She is widowed with four children, one of whom lives at home with her in their original family home. Two of Erins children live within a one-hour drive from her, and one lives a three-hour flight away. She also has 10 grandchildren and one great grandchild. Erin describes herself as a non-smoker, but she smoked socially when she was in her early twenties for about five years. She is a retired hairdresser."
         }
       ],
-      generated: "2019-06-13T07:40:16-07:00",
+      generated: "2019-06-19T07:41:09-07:00",
       hasTable: true,
       tables: [
         {
           tableKey: "table",
-          addButtonText: "Add a progress note",
+          addButtonText: "Add an encounter note",
           tableCells: [
             {
               label: "Entered by name",
@@ -249,7 +249,7 @@ export default function () {
           fqn: "carePlan.table2.status"
         }
       ],
-      generated: "2019-06-13T07:40:16-07:00",
+      generated: "2019-06-19T07:41:09-07:00",
       hasTable: true,
       tables: [
         {
@@ -550,7 +550,7 @@ export default function () {
       pageTitle: "Consults",
       pageDataKey: "consultants",
       pageChildren: [],
-      generated: "2019-06-13T07:40:16-07:00",
+      generated: "2019-06-19T07:41:09-07:00",
       hasForm: true,
       page_form: {
         rows: [],
@@ -583,7 +583,7 @@ export default function () {
           fqn: "labResults.labReport.labReport4_1"
         }
       ],
-      generated: "2019-06-13T07:40:16-07:00",
+      generated: "2019-06-19T07:41:09-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -754,33 +754,115 @@ export default function () {
       pageDataKey: "medicalImaging",
       pageChildren: [
         {
-          label: "Day 0 - COPD xray",
-          elementKey: "diagnosticReport1_1",
-          fqn: "medicalImaging.diagnosticReport.diagnosticReport1_1"
+          label: "Day 0",
+          elementKey: "day1_1",
+          fqn: "medicalImaging.day.day1_1"
         },
         {
-          label: "Day 2 - Pneumonia xray",
-          elementKey: "diagnosticReport2_1",
-          fqn: "medicalImaging.diagnosticReport.diagnosticReport2_1"
+          label: "Day 2",
+          elementKey: "day2_1",
+          fqn: "medicalImaging.day.day2_1"
+        },
+        {
+          label: "COPD xray",
+          elementKey: "diagnosticReport1_2",
+          fqn: "medicalImaging.diagnosticReport.diagnosticReport1_2"
+        },
+        {
+          label: "Pneumonia xray",
+          elementKey: "diagnosticReport2_2",
+          fqn: "medicalImaging.diagnosticReport.diagnosticReport2_2"
         },
         {
           label: "COPD report",
-          elementKey: "diagnosticImage1_2",
-          fqn: "medicalImaging.diagnosticImage.diagnosticImage1_2"
+          elementKey: "diagnosticImage1_3",
+          fqn: "medicalImaging.diagnosticImage.diagnosticImage1_3"
         },
         {
           label: "Pneumonia report",
-          elementKey: "diagnosticImage2_2",
-          fqn: "medicalImaging.diagnosticImage.diagnosticImage2_2"
+          elementKey: "diagnosticImage2_3",
+          fqn: "medicalImaging.diagnosticImage.diagnosticImage2_3"
         }
       ],
-      generated: "2019-06-13T07:40:16-07:00",
+      generated: "2019-06-19T07:41:09-07:00",
       hasForm: true,
       page_form: {
         rows: [
           {
             formRow: "1",
             elements: [
+              {
+                pageDataKey: "medicalImaging",
+                elementKey: "day",
+                inputType: "fieldset",
+                formRow: "1",
+                formColumn: "1",
+                dataParent: "medicalImaging",
+                fqn: "medicalImaging.day",
+                elements: [
+                  {
+                    label: "Day 0",
+                    pageDataKey: "medicalImaging",
+                    level3Key: "day",
+                    elementKey: "day1_1",
+                    fsetRow: "1",
+                    fsetCol: "1",
+                    dataParent: "medicalImaging.day",
+                    fqn: "medicalImaging.day.day1_1",
+                    formColumn: "1"
+                  },
+                  {
+                    label: "Day 2",
+                    pageDataKey: "medicalImaging",
+                    level3Key: "day",
+                    elementKey: "day2_1",
+                    fsetRow: "2",
+                    fsetCol: "1",
+                    dataParent: "medicalImaging.day",
+                    fqn: "medicalImaging.day.day2_1",
+                    formColumn: "1"
+                  }
+                ],
+                containerType: "fieldset",
+                containerKey: "day",
+                formFieldSet: {
+                  rows: [
+                    {
+                      formRow: "1",
+                      elements: [
+                        {
+                          label: "Day 0",
+                          pageDataKey: "medicalImaging",
+                          level3Key: "day",
+                          elementKey: "day1_1",
+                          fsetRow: "1",
+                          fsetCol: "1",
+                          dataParent: "medicalImaging.day",
+                          fqn: "medicalImaging.day.day1_1",
+                          formColumn: "1"
+                        }
+                      ]
+                    },
+                    {
+                      formRow: "2",
+                      elements: [
+                        {
+                          label: "Day 2",
+                          pageDataKey: "medicalImaging",
+                          level3Key: "day",
+                          elementKey: "day2_1",
+                          fsetRow: "2",
+                          fsetCol: "1",
+                          dataParent: "medicalImaging.day",
+                          fqn: "medicalImaging.day.day2_1",
+                          formColumn: "1"
+                        }
+                      ]
+                    }
+                  ],
+                  columnsCount: 1
+                }
+              },
               {
                 pageDataKey: "medicalImaging",
                 elementKey: "diagnosticReport",
@@ -791,32 +873,32 @@ export default function () {
                 fqn: "medicalImaging.diagnosticReport",
                 elements: [
                   {
-                    label: "Day 0 - COPD xray",
+                    label: "COPD xray",
                     pageDataKey: "medicalImaging",
                     level3Key: "diagnosticReport",
-                    elementKey: "diagnosticReport1_1",
+                    elementKey: "diagnosticReport1_2",
                     inputType: "assetLink",
                     fsetRow: "1",
-                    fsetCol: "1",
+                    fsetCol: "2",
                     assetBase: "diagnostic-test-results",
                     assetName: "xray-report-for-copd-day-0.pdf",
                     dataParent: "medicalImaging.diagnosticReport",
-                    fqn: "medicalImaging.diagnosticReport.diagnosticReport1_1",
-                    formColumn: "1"
+                    fqn: "medicalImaging.diagnosticReport.diagnosticReport1_2",
+                    formColumn: "2"
                   },
                   {
-                    label: "Day 2 - Pneumonia xray",
+                    label: "Pneumonia xray",
                     pageDataKey: "medicalImaging",
                     level3Key: "diagnosticReport",
-                    elementKey: "diagnosticReport2_1",
+                    elementKey: "diagnosticReport2_2",
                     inputType: "assetLink",
                     fsetRow: "2",
-                    fsetCol: "1",
+                    fsetCol: "2",
                     assetBase: "diagnostic-test-results",
                     assetName: "xray-report-for-pneumonia-day-2.pdf",
                     dataParent: "medicalImaging.diagnosticReport",
-                    fqn: "medicalImaging.diagnosticReport.diagnosticReport2_1",
-                    formColumn: "1"
+                    fqn: "medicalImaging.diagnosticReport.diagnosticReport2_2",
+                    formColumn: "2"
                   }
                 ],
                 containerType: "fieldset",
@@ -827,18 +909,18 @@ export default function () {
                       formRow: "1",
                       elements: [
                         {
-                          label: "Day 0 - COPD xray",
+                          label: "COPD xray",
                           pageDataKey: "medicalImaging",
                           level3Key: "diagnosticReport",
-                          elementKey: "diagnosticReport1_1",
+                          elementKey: "diagnosticReport1_2",
                           inputType: "assetLink",
                           fsetRow: "1",
-                          fsetCol: "1",
+                          fsetCol: "2",
                           assetBase: "diagnostic-test-results",
                           assetName: "xray-report-for-copd-day-0.pdf",
                           dataParent: "medicalImaging.diagnosticReport",
-                          fqn: "medicalImaging.diagnosticReport.diagnosticReport1_1",
-                          formColumn: "1"
+                          fqn: "medicalImaging.diagnosticReport.diagnosticReport1_2",
+                          formColumn: "2"
                         }
                       ]
                     },
@@ -846,18 +928,18 @@ export default function () {
                       formRow: "2",
                       elements: [
                         {
-                          label: "Day 2 - Pneumonia xray",
+                          label: "Pneumonia xray",
                           pageDataKey: "medicalImaging",
                           level3Key: "diagnosticReport",
-                          elementKey: "diagnosticReport2_1",
+                          elementKey: "diagnosticReport2_2",
                           inputType: "assetLink",
                           fsetRow: "2",
-                          fsetCol: "1",
+                          fsetCol: "2",
                           assetBase: "diagnostic-test-results",
                           assetName: "xray-report-for-pneumonia-day-2.pdf",
                           dataParent: "medicalImaging.diagnosticReport",
-                          fqn: "medicalImaging.diagnosticReport.diagnosticReport2_1",
-                          formColumn: "1"
+                          fqn: "medicalImaging.diagnosticReport.diagnosticReport2_2",
+                          formColumn: "2"
                         }
                       ]
                     }
@@ -868,7 +950,7 @@ export default function () {
             ]
           }
         ],
-        columnsCount: 1
+        columnsCount: 2
       },
       pageData: {}
     },
@@ -876,7 +958,7 @@ export default function () {
       pageTitle: "Operative reports and anaesthesia record",
       pageDataKey: "operationReports",
       pageChildren: [],
-      generated: "2019-06-13T07:40:16-07:00",
+      generated: "2019-06-19T07:41:09-07:00",
       hasForm: true,
       page_form: {
         rows: [],

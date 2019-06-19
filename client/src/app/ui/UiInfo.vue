@@ -27,7 +27,7 @@ export default {
     text: { type: String }
   },
   computed: {
-    content() {
+    content () {
       return this.html ? this.html : this.text
     }
   },
