@@ -210,7 +210,7 @@ export default function () {
           dataCaseStudy: "(not filled)"
         }
       ],
-      generated: "2019-06-13T07:40:16-07:00",
+      generated: "2019-06-19T07:43:42-07:00",
       hasTable: true,
       tables: [
         {
@@ -1847,7 +1847,7 @@ export default function () {
           dataCaseStudy: "(not filled)"
         }
       ],
-      generated: "2019-06-13T07:40:16-07:00",
+      generated: "2019-06-19T07:43:42-07:00",
       hasTable: true,
       tables: [
         {
@@ -2638,7 +2638,7 @@ export default function () {
           fqn: "pain.table.secondarySite.comments"
         }
       ],
-      generated: "2019-06-13T07:40:16-07:00",
+      generated: "2019-06-19T07:43:42-07:00",
       hasTable: true,
       tables: [
         {
@@ -3617,7 +3617,7 @@ export default function () {
           dataCaseStudy: "(not filled)"
         }
       ],
-      generated: "2019-06-13T07:40:16-07:00",
+      generated: "2019-06-19T07:43:42-07:00",
       hasTable: true,
       tables: [
         {
@@ -5177,7 +5177,7 @@ export default function () {
           fqn: "nonmedOrders.table.reconciliationComplete"
         }
       ],
-      generated: "2019-06-13T07:40:16-07:00",
+      generated: "2019-06-19T07:43:42-07:00",
       hasTable: true,
       tables: [
         {
@@ -5716,7 +5716,7 @@ export default function () {
           dataCaseStudy: "Active"
         }
       ],
-      generated: "2019-06-13T07:40:16-07:00",
+      generated: "2019-06-19T07:43:42-07:00",
       hasTable: true,
       tables: [
         {
@@ -6054,19 +6054,14 @@ export default function () {
           label: "Collected (day)",
           elementKey: "collected",
           fqn: "labRequisitions.table.collected"
-        },
-        {
-          label: "Status",
-          elementKey: "status",
-          fqn: "labRequisitions.table.status"
         }
       ],
-      generated: "2019-06-13T07:40:16-07:00",
+      generated: "2019-06-19T07:43:42-07:00",
       hasTable: true,
       tables: [
         {
           tableKey: "table",
-          addButtonText: "Add a requisition",
+          addButtonText: "Add a lab requisition",
           tableCells: [
             {
               label: "Entered by name",
@@ -6130,7 +6125,7 @@ export default function () {
               pageDataKey: "labRequisitions",
               level2Key: "table",
               elementKey: "requisition",
-              inputType: "text",
+              inputType: "assetLink",
               formRow: "2",
               formColumn: "1",
               tableColumn: "5",
@@ -6162,34 +6157,6 @@ export default function () {
               tableColumn: "7",
               dataParent: "labRequisitions.table",
               fqn: "labRequisitions.table.collected",
-              tableKey: "table"
-            },
-            {
-              label: "Status",
-              pageDataKey: "labRequisitions",
-              level2Key: "table",
-              elementKey: "status",
-              inputType: "select",
-              formRow: "3",
-              formColumn: "1",
-              formCss: "is-one-third",
-              tableColumn: "8",
-              options: [
-                {
-                  text: "Ordered"
-                },
-                {
-                  text: "In progress"
-                },
-                {
-                  text: "Pending"
-                },
-                {
-                  text: "Complete"
-                }
-              ],
-              dataParent: "labRequisitions.table",
-              fqn: "labRequisitions.table.status",
               tableKey: "table"
             }
           ],
@@ -6265,7 +6232,7 @@ export default function () {
                     pageDataKey: "labRequisitions",
                     level2Key: "table",
                     elementKey: "requisition",
-                    inputType: "text",
+                    inputType: "assetLink",
                     formRow: "2",
                     formColumn: "1",
                     tableColumn: "5",
@@ -6297,39 +6264,6 @@ export default function () {
                     tableColumn: "7",
                     dataParent: "labRequisitions.table",
                     fqn: "labRequisitions.table.collected",
-                    tableKey: "table"
-                  }
-                ]
-              },
-              {
-                formRow: "3",
-                elements: [
-                  {
-                    label: "Status",
-                    pageDataKey: "labRequisitions",
-                    level2Key: "table",
-                    elementKey: "status",
-                    inputType: "select",
-                    formRow: "3",
-                    formColumn: "1",
-                    formCss: "is-one-third",
-                    tableColumn: "8",
-                    options: [
-                      {
-                        text: "Ordered"
-                      },
-                      {
-                        text: "In progress"
-                      },
-                      {
-                        text: "Pending"
-                      },
-                      {
-                        text: "Complete"
-                      }
-                    ],
-                    dataParent: "labRequisitions.table",
-                    fqn: "labRequisitions.table.status",
                     tableKey: "table"
                   }
                 ]
@@ -6424,7 +6358,7 @@ export default function () {
           fqn: "medicationOrders.table.notes"
         }
       ],
-      generated: "2019-06-13T07:40:16-07:00",
+      generated: "2019-06-19T07:43:42-07:00",
       hasTable: true,
       tables: [
         {
@@ -6510,7 +6444,7 @@ export default function () {
               inputType: "select",
               formRow: "2",
               formColumn: "2",
-              formCss: "is-one-third",
+              formCss: "is-one-quarter",
               tableColumn: "3",
               tableCss: "hr-table",
               options: [
@@ -6766,7 +6700,7 @@ export default function () {
                     inputType: "select",
                     formRow: "2",
                     formColumn: "2",
-                    formCss: "is-one-third",
+                    formCss: "is-one-quarter",
                     tableColumn: "3",
                     tableCss: "hr-table",
                     options: [
@@ -7025,7 +6959,7 @@ export default function () {
           helperHtml: "<p>Enter time delivered or say if not delivered.</p>"
         }
       ],
-      generated: "2019-06-13T07:40:16-07:00",
+      generated: "2019-06-19T07:43:42-07:00",
       hasTable: true,
       tables: [
         {
@@ -7385,7 +7319,7 @@ export default function () {
           fqn: "dischargeSummary.dischargeEducation"
         }
       ],
-      generated: "2019-06-13T07:40:16-07:00",
+      generated: "2019-06-19T07:43:42-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -7608,7 +7542,7 @@ export default function () {
           dataCaseStudy: "MSP"
         }
       ],
-      generated: "2019-06-13T07:40:16-07:00",
+      generated: "2019-06-19T07:43:42-07:00",
       hasForm: true,
       page_form: {
         rows: [

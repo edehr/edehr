@@ -81,7 +81,7 @@ export default function () {
           fqn: "assessmentTools.medication.medication1_1"
         }
       ],
-      generated: "2019-06-13T07:40:16-07:00",
+      generated: "2019-06-19T07:41:01-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -767,7 +767,7 @@ export default function () {
       pageDataKey: "codeLookup",
       pageChildren: [
         {
-          label: "SnomedCT",
+          label: "<a href=\"/assets/static-databases/snowmed-ct.csv\" target=\"_blank\">SnomedCT</a>",
           elementKey: "snomed",
           fqn: "codeLookup.snomed"
         },
@@ -777,7 +777,7 @@ export default function () {
           fqn: "codeLookup.icf"
         }
       ],
-      generated: "2019-06-13T07:40:16-07:00",
+      generated: "2019-06-19T07:41:01-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -785,7 +785,7 @@ export default function () {
             formRow: "1",
             elements: [
               {
-                label: "SnomedCT",
+                label: "<a href=\"/assets/static-databases/snowmed-ct.csv\" target=\"_blank\">SnomedCT</a>",
                 pageDataKey: "codeLookup",
                 elementKey: "snomed",
                 inputType: "text",
@@ -843,7 +843,7 @@ export default function () {
           fqn: "diagnosticCodes.table.time"
         },
         {
-          label: "ICD-10 database",
+          label: "<a href=\"/assets/static-databases/icd-10-medical-diagnosis-codes.pdf\" target=\"_blank\">ICD-10 database</a>",
           elementKey: "icd10",
           fqn: "diagnosticCodes.table.icd10"
         },
@@ -876,7 +876,7 @@ export default function () {
           fqn: "diagnosticCodes.table.cluster"
         }
       ],
-      generated: "2019-06-13T07:40:16-07:00",
+      generated: "2019-06-19T07:41:01-07:00",
       hasTable: true,
       tables: [
         {
@@ -944,12 +944,13 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "ICD-10 database",
+              label: "<a href=\"/assets/static-databases/icd-10-medical-diagnosis-codes.pdf\" target=\"_blank\">ICD-10 database</a>",
               pageDataKey: "diagnosticCodes",
               level2Key: "table",
               elementKey: "icd10",
-              inputType: "assetLink",
+              inputType: "text",
               formRow: "2",
+              formColumn: "1",
               tableColumn: "2",
               assetBase: "static-databases",
               assetName: "icd-10-medical-diagnosis-codes.pdf",
@@ -1108,12 +1109,13 @@ export default function () {
                 formRow: "2",
                 elements: [
                   {
-                    label: "ICD-10 database",
+                    label: "<a href=\"/assets/static-databases/icd-10-medical-diagnosis-codes.pdf\" target=\"_blank\">ICD-10 database</a>",
                     pageDataKey: "diagnosticCodes",
                     level2Key: "table",
                     elementKey: "icd10",
-                    inputType: "assetLink",
+                    inputType: "text",
                     formRow: "2",
+                    formColumn: "1",
                     tableColumn: "2",
                     assetBase: "static-databases",
                     assetName: "icd-10-medical-diagnosis-codes.pdf",
@@ -1271,7 +1273,7 @@ export default function () {
           fqn: "interventionCodes.table.extent"
         }
       ],
-      generated: "2019-06-13T07:40:16-07:00",
+      generated: "2019-06-19T07:41:01-07:00",
       hasTable: true,
       tables: [
         {
@@ -1645,7 +1647,7 @@ export default function () {
           fqn: "caseMixGroup.table.analysis"
         }
       ],
-      generated: "2019-06-13T07:40:16-07:00",
+      generated: "2019-06-19T07:41:01-07:00",
       hasTable: true,
       tables: [
         {
