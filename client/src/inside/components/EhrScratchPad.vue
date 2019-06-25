@@ -1,7 +1,12 @@
 <template lang="pug">
   div(:class="$options.name")
     div(:class="`${$options.name}__bottom`")
-      ui-button(v-on:buttonClicked="showDialog", :class="`${$options.name}__button`", v-bind:secondary="true") Scratch Pad
+      ui-button(v-on:buttonClicked="showDialog", :class="`${$options.name}__button`", 
+
+      v-bind:secondary="true") 
+        fas-icon(class="icon-left", icon="sticky-note") 
+        span Scratch pad
+
     app-dialog(:isModal="false", ref="theDialog", @cancel="cancelDialog", @save="saveDialog")
       h3(slot="header") Your private notes
       div(slot="body")
