@@ -210,7 +210,7 @@ export default function () {
           dataCaseStudy: "(not filled)"
         }
       ],
-      generated: "2019-06-19T07:43:42-07:00",
+      generated: "2019-06-24T18:15:16-07:00",
       hasTable: true,
       tables: [
         {
@@ -232,18 +232,17 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Pregnancy",
+              label: "Entered by profession",
               pageDataKey: "genitourinary",
               level2Key: "table",
-              elementKey: "pregnantGroup",
-              inputType: "fieldset",
-              formRow: "3",
-              formColumn: "3",
-              tableCss: "hr-table hide-table-element",
+              elementKey: "profession",
+              inputType: "text",
+              formRow: "1",
+              formColumn: "2",
+              formCss: "user_pro",
+              tableColumn: "2",
               dataParent: "genitourinary.table",
-              fqn: "genitourinary.table.pregnantGroup",
-              containerType: "fieldset",
-              containerKey: "pregnantGroup",
+              fqn: "genitourinary.table.profession",
               tableKey: "table"
             },
             {
@@ -273,6 +272,22 @@ export default function () {
               tableCss: "hr-table",
               dataParent: "genitourinary.table",
               fqn: "genitourinary.table.time",
+              tableKey: "table"
+            },
+            {
+              label: "Urinary symptoms",
+              pageDataKey: "genitourinary",
+              level2Key: "table",
+              elementKey: "urinaryGroup1",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "1",
+              tableColumn: "5",
+              dataParent: "genitourinary.table",
+              fqn: "genitourinary.table.urinaryGroup1",
+              containerType: "fieldset",
+              containerKey: "urinaryGroup1",
+              tableCss: "hide-table-element",
               tableKey: "table"
             },
             {
@@ -394,22 +409,6 @@ export default function () {
               fqn: "genitourinary.table.urinaryGroup1.distention",
               tableKey: "table",
               formColumn: "1"
-            },
-            {
-              label: "Urinary symptoms",
-              pageDataKey: "genitourinary",
-              level2Key: "table",
-              elementKey: "urinaryGroup1",
-              inputType: "fieldset",
-              formRow: "2",
-              formColumn: "1",
-              tableColumn: "5",
-              dataParent: "genitourinary.table",
-              fqn: "genitourinary.table.urinaryGroup1",
-              containerType: "fieldset",
-              containerKey: "urinaryGroup1",
-              tableCss: "hide-table-element",
-              tableKey: "table"
             },
             {
               label: "Last voided day",
@@ -564,18 +563,19 @@ export default function () {
               formColumn: "1"
             },
             {
-              label: "Entered by profession",
+              label: "Type",
               pageDataKey: "genitourinary",
               level2Key: "table",
-              elementKey: "profession",
+              level3Key: "foleyGroup",
+              elementKey: "foleyType",
               inputType: "text",
-              formRow: "1",
-              formColumn: "2",
-              formCss: "user_pro",
-              tableColumn: "2",
-              dataParent: "genitourinary.table",
-              fqn: "genitourinary.table.profession",
-              tableKey: "table"
+              tableColumn: "20",
+              fsetRow: "2",
+              fsetCol: "1",
+              dataParent: "genitourinary.table.foleyGroup",
+              fqn: "genitourinary.table.foleyGroup.foleyType",
+              tableKey: "table",
+              formColumn: "1"
             },
             {
               label: "Size",
@@ -661,6 +661,21 @@ export default function () {
               formColumn: "1"
             },
             {
+              label: "If answered yes, please complete the pain assessment",
+              pageDataKey: "genitourinary",
+              level2Key: "table",
+              level3Key: "pelvicGroup",
+              elementKey: "aLabel",
+              inputType: "form_label",
+              tableColumn: "25",
+              fsetRow: "3",
+              fsetCol: "1",
+              dataParent: "genitourinary.table.pelvicGroup",
+              fqn: "genitourinary.table.pelvicGroup.aLabel",
+              tableKey: "table",
+              formColumn: "1"
+            },
+            {
               label: "Pelvic pain source",
               pageDataKey: "genitourinary",
               level2Key: "table",
@@ -683,21 +698,6 @@ export default function () {
               ],
               dataParent: "genitourinary.table.pelvicGroup",
               fqn: "genitourinary.table.pelvicGroup.pelvicPainSource",
-              tableKey: "table",
-              formColumn: "1"
-            },
-            {
-              label: "If answered yes, please complete the pain assessment",
-              pageDataKey: "genitourinary",
-              level2Key: "table",
-              level3Key: "pelvicGroup",
-              elementKey: "aLabel",
-              inputType: "form_label",
-              tableColumn: "25",
-              fsetRow: "3",
-              fsetCol: "1",
-              dataParent: "genitourinary.table.pelvicGroup",
-              fqn: "genitourinary.table.pelvicGroup.aLabel",
               tableKey: "table",
               formColumn: "1"
             },
@@ -876,19 +876,19 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Type",
+              label: "Pregnancy",
               pageDataKey: "genitourinary",
               level2Key: "table",
-              level3Key: "foleyGroup",
-              elementKey: "foleyType",
-              inputType: "text",
-              tableColumn: "20",
-              fsetRow: "2",
-              fsetCol: "1",
-              dataParent: "genitourinary.table.foleyGroup",
-              fqn: "genitourinary.table.foleyGroup.foleyType",
-              tableKey: "table",
-              formColumn: "1"
+              elementKey: "pregnantGroup",
+              inputType: "fieldset",
+              formRow: "3",
+              formColumn: "3",
+              tableCss: "hr-table hide-table-element",
+              dataParent: "genitourinary.table",
+              fqn: "genitourinary.table.pregnantGroup",
+              containerType: "fieldset",
+              containerKey: "pregnantGroup",
+              tableKey: "table"
             }
           ],
           tableForm: {
@@ -1847,7 +1847,7 @@ export default function () {
           dataCaseStudy: "(not filled)"
         }
       ],
-      generated: "2019-06-19T07:43:42-07:00",
+      generated: "2019-06-24T18:15:16-07:00",
       hasTable: true,
       tables: [
         {
@@ -2638,7 +2638,7 @@ export default function () {
           fqn: "pain.table.secondarySite.comments"
         }
       ],
-      generated: "2019-06-19T07:43:42-07:00",
+      generated: "2019-06-24T18:15:16-07:00",
       hasTable: true,
       tables: [
         {
@@ -2660,18 +2660,17 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Secondary pain site",
+              label: "Entered by profession",
               pageDataKey: "pain",
               level2Key: "table",
-              elementKey: "secondarySite",
-              inputType: "fieldset",
-              formRow: "3",
-              formColumn: "1",
-              tableCss: "hr-table hide-table-element",
+              elementKey: "profession",
+              inputType: "text",
+              formRow: "1",
+              formColumn: "2",
+              formCss: "user_pro",
+              tableColumn: "2",
               dataParent: "pain.table",
-              fqn: "pain.table.secondarySite",
-              containerType: "fieldset",
-              containerKey: "secondarySite",
+              fqn: "pain.table.profession",
               tableKey: "table"
             },
             {
@@ -2826,18 +2825,19 @@ export default function () {
               formColumn: "2"
             },
             {
-              label: "Entered by profession",
+              label: "Comments",
               pageDataKey: "pain",
               level2Key: "table",
-              elementKey: "profession",
-              inputType: "text",
-              formRow: "1",
-              formColumn: "2",
-              formCss: "user_pro",
-              tableColumn: "2",
-              dataParent: "pain.table",
-              fqn: "pain.table.profession",
-              tableKey: "table"
+              level3Key: "primarySite",
+              elementKey: "comments",
+              inputType: "textarea",
+              tableColumn: "13",
+              fsetRow: "4",
+              fsetCol: "1",
+              dataParent: "pain.table.primarySite",
+              fqn: "pain.table.primarySite.comments",
+              tableKey: "table",
+              formColumn: "1"
             },
             {
               label: "Primary pain site",
@@ -2971,22 +2971,22 @@ export default function () {
               fsetRow: "4",
               fsetCol: "1",
               dataParent: "pain.table.secondarySite",
-              fqn: "pain.table.secondarySite.comments",
-              tableKey: "table",
-              formColumn: "1"
+              fqn: "pain.table.secondarySite.comments"
             },
             {
-              label: "Comments",
+              label: "Secondary pain site",
               pageDataKey: "pain",
               level2Key: "table",
-              level3Key: "primarySite",
-              elementKey: "comments",
-              inputType: "textarea",
-              tableColumn: "13",
-              fsetRow: "4",
-              fsetCol: "1",
-              dataParent: "pain.table.primarySite",
-              fqn: "pain.table.primarySite.comments"
+              elementKey: "secondarySite",
+              inputType: "fieldset",
+              formRow: "3",
+              formColumn: "1",
+              tableCss: "hr-table hide-table-element",
+              dataParent: "pain.table",
+              fqn: "pain.table.secondarySite",
+              containerType: "fieldset",
+              containerKey: "secondarySite",
+              tableKey: "table"
             }
           ],
           tableForm: {
@@ -3216,14 +3216,14 @@ export default function () {
                               label: "Comments",
                               pageDataKey: "pain",
                               level2Key: "table",
-                              level3Key: "secondarySite",
+                              level3Key: "primarySite",
                               elementKey: "comments",
                               inputType: "textarea",
-                              tableColumn: "22",
+                              tableColumn: "13",
                               fsetRow: "4",
                               fsetCol: "1",
-                              dataParent: "pain.table.secondarySite",
-                              fqn: "pain.table.secondarySite.comments",
+                              dataParent: "pain.table.primarySite",
+                              fqn: "pain.table.primarySite.comments",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -3398,14 +3398,14 @@ export default function () {
                               label: "Comments",
                               pageDataKey: "pain",
                               level2Key: "table",
-                              level3Key: "secondarySite",
+                              level3Key: "primarySite",
                               elementKey: "comments",
                               inputType: "textarea",
-                              tableColumn: "22",
+                              tableColumn: "13",
                               fsetRow: "4",
                               fsetCol: "1",
-                              dataParent: "pain.table.secondarySite",
-                              fqn: "pain.table.secondarySite.comments",
+                              dataParent: "pain.table.primarySite",
+                              fqn: "pain.table.primarySite.comments",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -3617,7 +3617,7 @@ export default function () {
           dataCaseStudy: "(not filled)"
         }
       ],
-      generated: "2019-06-19T07:43:42-07:00",
+      generated: "2019-06-24T18:15:16-07:00",
       hasTable: true,
       tables: [
         {
@@ -3772,6 +3772,21 @@ export default function () {
               formColumn: "1"
             },
             {
+              label: "Hygiene and grooming",
+              pageDataKey: "biopsychosocial",
+              level2Key: "table",
+              elementKey: "hygiene",
+              inputType: "fieldset",
+              formRow: "2",
+              formColumn: "3",
+              dataParent: "biopsychosocial.table",
+              fqn: "biopsychosocial.table.hygiene",
+              containerType: "fieldset",
+              containerKey: "hygiene",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
               label: "Calm",
               pageDataKey: "biopsychosocial",
               level2Key: "table",
@@ -3878,6 +3893,21 @@ export default function () {
               formColumn: "1"
             },
             {
+              label: "Behaviour",
+              pageDataKey: "biopsychosocial",
+              level2Key: "table",
+              elementKey: "behaviour",
+              inputType: "fieldset",
+              formRow: "3",
+              formColumn: "1",
+              dataParent: "biopsychosocial.table",
+              fqn: "biopsychosocial.table.behaviour",
+              containerType: "fieldset",
+              containerKey: "behaviour",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
               label: "None",
               pageDataKey: "biopsychosocial",
               level2Key: "table",
@@ -3908,21 +3938,6 @@ export default function () {
               formColumn: "1"
             },
             {
-              label: "Hygiene and grooming",
-              pageDataKey: "biopsychosocial",
-              level2Key: "table",
-              elementKey: "hygiene",
-              inputType: "fieldset",
-              formRow: "2",
-              formColumn: "3",
-              dataParent: "biopsychosocial.table",
-              fqn: "biopsychosocial.table.hygiene",
-              containerType: "fieldset",
-              containerKey: "hygiene",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
               label: "Auditory",
               pageDataKey: "biopsychosocial",
               level2Key: "table",
@@ -3936,96 +3951,6 @@ export default function () {
               fqn: "biopsychosocial.table.hallucinations.auditory",
               tableKey: "table",
               formColumn: "1"
-            },
-            {
-              label: "Behaviour",
-              pageDataKey: "biopsychosocial",
-              level2Key: "table",
-              elementKey: "behaviour",
-              inputType: "fieldset",
-              formRow: "3",
-              formColumn: "1",
-              dataParent: "biopsychosocial.table",
-              fqn: "biopsychosocial.table.behaviour",
-              containerType: "fieldset",
-              containerKey: "behaviour",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
-              label: "Restraint",
-              pageDataKey: "biopsychosocial",
-              level2Key: "table",
-              elementKey: "restraint",
-              inputType: "fieldset",
-              formRow: "4",
-              formColumn: "3",
-              dataParent: "biopsychosocial.table",
-              fqn: "biopsychosocial.table.restraint",
-              containerType: "fieldset",
-              containerKey: "restraint",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
-              label: "Hallucinations",
-              pageDataKey: "biopsychosocial",
-              level2Key: "table",
-              elementKey: "hallucinations",
-              inputType: "fieldset",
-              formRow: "3",
-              formColumn: "2",
-              dataParent: "biopsychosocial.table",
-              fqn: "biopsychosocial.table.hallucinations",
-              containerType: "fieldset",
-              containerKey: "hallucinations",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
-              label: "Security",
-              pageDataKey: "biopsychosocial",
-              level2Key: "table",
-              elementKey: "security",
-              inputType: "fieldset",
-              formRow: "4",
-              formColumn: "2",
-              dataParent: "biopsychosocial.table",
-              fqn: "biopsychosocial.table.security",
-              containerType: "fieldset",
-              containerKey: "security",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
-              label: "Support",
-              pageDataKey: "biopsychosocial",
-              level2Key: "table",
-              elementKey: "support",
-              inputType: "fieldset",
-              formRow: "4",
-              formColumn: "1",
-              dataParent: "biopsychosocial.table",
-              fqn: "biopsychosocial.table.support",
-              containerType: "fieldset",
-              containerKey: "support",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
-              label: "Psychological state",
-              pageDataKey: "biopsychosocial",
-              level2Key: "table",
-              elementKey: "state",
-              inputType: "fieldset",
-              formRow: "3",
-              formColumn: "3",
-              dataParent: "biopsychosocial.table",
-              fqn: "biopsychosocial.table.state",
-              containerType: "fieldset",
-              containerKey: "state",
-              tableCss: "hide-table-element",
-              tableKey: "table"
             },
             {
               label: "Olafactory",
@@ -4042,6 +3967,21 @@ export default function () {
               fqn: "biopsychosocial.table.hallucinations.olafactory",
               tableKey: "table",
               formColumn: "1"
+            },
+            {
+              label: "Hallucinations",
+              pageDataKey: "biopsychosocial",
+              level2Key: "table",
+              elementKey: "hallucinations",
+              inputType: "fieldset",
+              formRow: "3",
+              formColumn: "2",
+              dataParent: "biopsychosocial.table",
+              fqn: "biopsychosocial.table.hallucinations",
+              containerType: "fieldset",
+              containerKey: "hallucinations",
+              tableCss: "hide-table-element",
+              tableKey: "table"
             },
             {
               label: "Suicidal",
@@ -4117,6 +4057,21 @@ export default function () {
               formColumn: "1"
             },
             {
+              label: "Psychological state",
+              pageDataKey: "biopsychosocial",
+              level2Key: "table",
+              elementKey: "state",
+              inputType: "fieldset",
+              formRow: "3",
+              formColumn: "3",
+              dataParent: "biopsychosocial.table",
+              fqn: "biopsychosocial.table.state",
+              containerType: "fieldset",
+              containerKey: "state",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
               label: "Support person",
               pageDataKey: "biopsychosocial",
               level2Key: "table",
@@ -4148,6 +4103,21 @@ export default function () {
               formColumn: "1"
             },
             {
+              label: "Support",
+              pageDataKey: "biopsychosocial",
+              level2Key: "table",
+              elementKey: "support",
+              inputType: "fieldset",
+              formRow: "4",
+              formColumn: "1",
+              dataParent: "biopsychosocial.table",
+              fqn: "biopsychosocial.table.support",
+              containerType: "fieldset",
+              containerKey: "support",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
               label: "Security/police present",
               pageDataKey: "biopsychosocial",
               level2Key: "table",
@@ -4177,6 +4147,21 @@ export default function () {
               fqn: "biopsychosocial.table.security.securityComments",
               tableKey: "table",
               formColumn: "1"
+            },
+            {
+              label: "Security",
+              pageDataKey: "biopsychosocial",
+              level2Key: "table",
+              elementKey: "security",
+              inputType: "fieldset",
+              formRow: "4",
+              formColumn: "2",
+              dataParent: "biopsychosocial.table",
+              fqn: "biopsychosocial.table.security",
+              containerType: "fieldset",
+              containerKey: "security",
+              tableCss: "hide-table-element",
+              tableKey: "table"
             },
             {
               label: "Patient restrained",
@@ -4246,6 +4231,21 @@ export default function () {
               fqn: "biopsychosocial.table.restraint.restraintComments",
               tableKey: "table",
               formColumn: "1"
+            },
+            {
+              label: "Restraint",
+              pageDataKey: "biopsychosocial",
+              level2Key: "table",
+              elementKey: "restraint",
+              inputType: "fieldset",
+              formRow: "4",
+              formColumn: "3",
+              dataParent: "biopsychosocial.table",
+              fqn: "biopsychosocial.table.restraint",
+              containerType: "fieldset",
+              containerKey: "restraint",
+              tableCss: "hide-table-element",
+              tableKey: "table"
             },
             {
               label: "General comments",
@@ -5129,41 +5129,9 @@ export default function () {
           dataCaseStudy: "1 - 4) Dr. Singh"
         },
         {
-          label: "Day of referral",
-          elementKey: "dayOfReferral",
-          fqn: "nonmedOrders.table.dayOfReferral"
-        },
-        {
-          label: "Details",
-          elementKey: "details",
-          fqn: "nonmedOrders.table.details"
-        },
-        {
-          label: "Start day",
-          elementKey: "startDay",
-          fqn: "nonmedOrders.table.startDay",
-          dataCaseStudy: "1 - 4) 0"
-        },
-        {
-          label: "Start time",
-          elementKey: "startTime",
-          fqn: "nonmedOrders.table.startTime",
-          dataCaseStudy: "1 - 4) 20:00"
-        },
-        {
-          label: "End day",
-          elementKey: "endDay",
-          fqn: "nonmedOrders.table.endDay"
-        },
-        {
-          label: "End time",
-          elementKey: "endTime",
-          fqn: "nonmedOrders.table.endTime"
-        },
-        {
-          label: "Comment",
-          elementKey: "comment",
-          fqn: "nonmedOrders.table.comment"
+          label: "Reason",
+          elementKey: "reason",
+          fqn: "nonmedOrders.table.reason"
         },
         {
           label: "Status",
@@ -5172,12 +5140,12 @@ export default function () {
           dataCaseStudy: "1 - 4) Ordered"
         },
         {
-          label: "Reconciliation complete",
-          elementKey: "reconciliationComplete",
-          fqn: "nonmedOrders.table.reconciliationComplete"
+          label: "Comment",
+          elementKey: "comment",
+          fqn: "nonmedOrders.table.comment"
         }
       ],
-      generated: "2019-06-19T07:43:42-07:00",
+      generated: "2019-06-24T18:15:16-07:00",
       hasTable: true,
       tables: [
         {
@@ -5249,6 +5217,7 @@ export default function () {
               inputType: "text",
               formRow: "2",
               formColumn: "1",
+              formCss: "is-two-thirds",
               tableColumn: "5",
               dataParent: "nonmedOrders.table",
               fqn: "nonmedOrders.table.order",
@@ -5262,89 +5231,24 @@ export default function () {
               inputType: "text",
               formRow: "2",
               formColumn: "2",
+              formCss: "is-one-third",
               tableColumn: "6",
               dataParent: "nonmedOrders.table",
               fqn: "nonmedOrders.table.orderedBy",
               tableKey: "table"
             },
             {
-              label: "Day of referral",
+              label: "Reason",
               pageDataKey: "nonmedOrders",
               level2Key: "table",
-              elementKey: "dayOfReferral",
-              inputType: "day",
-              formRow: "2",
-              formColumn: "3",
-              tableColumn: "7",
-              dataParent: "nonmedOrders.table",
-              fqn: "nonmedOrders.table.dayOfReferral",
-              tableKey: "table"
-            },
-            {
-              label: "Details",
-              pageDataKey: "nonmedOrders",
-              level2Key: "table",
-              elementKey: "details",
-              inputType: "textarea",
-              formRow: "2",
-              formColumn: "4",
-              tableColumn: "8",
-              tableCss: "hr-table",
-              dataParent: "nonmedOrders.table",
-              fqn: "nonmedOrders.table.details",
-              tableKey: "table"
-            },
-            {
-              label: "Start day",
-              pageDataKey: "nonmedOrders",
-              level2Key: "table",
-              elementKey: "startDay",
-              inputType: "day",
+              elementKey: "reason",
+              inputType: "text",
               formRow: "3",
               formColumn: "1",
-              tableColumn: "9",
+              formCss: "is-two-thirds",
+              tableColumn: "7",
               dataParent: "nonmedOrders.table",
-              fqn: "nonmedOrders.table.startDay",
-              tableKey: "table"
-            },
-            {
-              label: "Start time",
-              pageDataKey: "nonmedOrders",
-              level2Key: "table",
-              elementKey: "startTime",
-              inputType: "time",
-              formRow: "3",
-              formColumn: "2",
-              tableColumn: "10",
-              dataParent: "nonmedOrders.table",
-              fqn: "nonmedOrders.table.startTime",
-              tableKey: "table"
-            },
-            {
-              label: "End day",
-              pageDataKey: "nonmedOrders",
-              level2Key: "table",
-              elementKey: "endDay",
-              inputType: "day",
-              formRow: "3",
-              formColumn: "3",
-              tableColumn: "11",
-              dataParent: "nonmedOrders.table",
-              fqn: "nonmedOrders.table.endDay",
-              tableKey: "table"
-            },
-            {
-              label: "End time",
-              pageDataKey: "nonmedOrders",
-              level2Key: "table",
-              elementKey: "endTime",
-              inputType: "time",
-              formRow: "3",
-              formColumn: "4",
-              tableColumn: "12",
-              tableCss: "hr-table",
-              dataParent: "nonmedOrders.table",
-              fqn: "nonmedOrders.table.endTime",
+              fqn: "nonmedOrders.table.reason",
               tableKey: "table"
             },
             {
@@ -5353,9 +5257,10 @@ export default function () {
               level2Key: "table",
               elementKey: "status",
               inputType: "select",
-              formRow: "4",
-              formColumn: "1",
-              tableColumn: "13",
+              formRow: "3",
+              formColumn: "2",
+              formCss: "is-one-third",
+              tableColumn: "8",
               tableCss: "hr-table",
               options: [
                 {
@@ -5369,23 +5274,13 @@ export default function () {
                 },
                 {
                   text: "Completed"
+                },
+                {
+                  text: "Discontinued"
                 }
               ],
               dataParent: "nonmedOrders.table",
               fqn: "nonmedOrders.table.status",
-              tableKey: "table"
-            },
-            {
-              label: "Reconciliation complete",
-              pageDataKey: "nonmedOrders",
-              level2Key: "table",
-              elementKey: "reconciliationComplete",
-              inputType: "checkbox",
-              formRow: "4",
-              formColumn: "2",
-              tableColumn: "14",
-              dataParent: "nonmedOrders.table",
-              fqn: "nonmedOrders.table.reconciliationComplete",
               tableKey: "table"
             },
             {
@@ -5394,9 +5289,9 @@ export default function () {
               level2Key: "table",
               elementKey: "comment",
               inputType: "textarea",
-              formRow: "5",
+              formRow: "4",
               formColumn: "1",
-              tableColumn: "15",
+              tableColumn: "9",
               tableCss: "hr-table",
               dataParent: "nonmedOrders.table",
               fqn: "nonmedOrders.table.comment",
@@ -5478,6 +5373,7 @@ export default function () {
                     inputType: "text",
                     formRow: "2",
                     formColumn: "1",
+                    formCss: "is-two-thirds",
                     tableColumn: "5",
                     dataParent: "nonmedOrders.table",
                     fqn: "nonmedOrders.table.order",
@@ -5491,36 +5387,10 @@ export default function () {
                     inputType: "text",
                     formRow: "2",
                     formColumn: "2",
+                    formCss: "is-one-third",
                     tableColumn: "6",
                     dataParent: "nonmedOrders.table",
                     fqn: "nonmedOrders.table.orderedBy",
-                    tableKey: "table"
-                  },
-                  {
-                    label: "Day of referral",
-                    pageDataKey: "nonmedOrders",
-                    level2Key: "table",
-                    elementKey: "dayOfReferral",
-                    inputType: "day",
-                    formRow: "2",
-                    formColumn: "3",
-                    tableColumn: "7",
-                    dataParent: "nonmedOrders.table",
-                    fqn: "nonmedOrders.table.dayOfReferral",
-                    tableKey: "table"
-                  },
-                  {
-                    label: "Details",
-                    pageDataKey: "nonmedOrders",
-                    level2Key: "table",
-                    elementKey: "details",
-                    inputType: "textarea",
-                    formRow: "2",
-                    formColumn: "4",
-                    tableColumn: "8",
-                    tableCss: "hr-table",
-                    dataParent: "nonmedOrders.table",
-                    fqn: "nonmedOrders.table.details",
                     tableKey: "table"
                   }
                 ]
@@ -5529,72 +5399,29 @@ export default function () {
                 formRow: "3",
                 elements: [
                   {
-                    label: "Start day",
+                    label: "Reason",
                     pageDataKey: "nonmedOrders",
                     level2Key: "table",
-                    elementKey: "startDay",
-                    inputType: "day",
+                    elementKey: "reason",
+                    inputType: "text",
                     formRow: "3",
                     formColumn: "1",
-                    tableColumn: "9",
+                    formCss: "is-two-thirds",
+                    tableColumn: "7",
                     dataParent: "nonmedOrders.table",
-                    fqn: "nonmedOrders.table.startDay",
+                    fqn: "nonmedOrders.table.reason",
                     tableKey: "table"
                   },
-                  {
-                    label: "Start time",
-                    pageDataKey: "nonmedOrders",
-                    level2Key: "table",
-                    elementKey: "startTime",
-                    inputType: "time",
-                    formRow: "3",
-                    formColumn: "2",
-                    tableColumn: "10",
-                    dataParent: "nonmedOrders.table",
-                    fqn: "nonmedOrders.table.startTime",
-                    tableKey: "table"
-                  },
-                  {
-                    label: "End day",
-                    pageDataKey: "nonmedOrders",
-                    level2Key: "table",
-                    elementKey: "endDay",
-                    inputType: "day",
-                    formRow: "3",
-                    formColumn: "3",
-                    tableColumn: "11",
-                    dataParent: "nonmedOrders.table",
-                    fqn: "nonmedOrders.table.endDay",
-                    tableKey: "table"
-                  },
-                  {
-                    label: "End time",
-                    pageDataKey: "nonmedOrders",
-                    level2Key: "table",
-                    elementKey: "endTime",
-                    inputType: "time",
-                    formRow: "3",
-                    formColumn: "4",
-                    tableColumn: "12",
-                    tableCss: "hr-table",
-                    dataParent: "nonmedOrders.table",
-                    fqn: "nonmedOrders.table.endTime",
-                    tableKey: "table"
-                  }
-                ]
-              },
-              {
-                formRow: "4",
-                elements: [
                   {
                     label: "Status",
                     pageDataKey: "nonmedOrders",
                     level2Key: "table",
                     elementKey: "status",
                     inputType: "select",
-                    formRow: "4",
-                    formColumn: "1",
-                    tableColumn: "13",
+                    formRow: "3",
+                    formColumn: "2",
+                    formCss: "is-one-third",
+                    tableColumn: "8",
                     tableCss: "hr-table",
                     options: [
                       {
@@ -5608,29 +5435,19 @@ export default function () {
                       },
                       {
                         text: "Completed"
+                      },
+                      {
+                        text: "Discontinued"
                       }
                     ],
                     dataParent: "nonmedOrders.table",
                     fqn: "nonmedOrders.table.status",
                     tableKey: "table"
-                  },
-                  {
-                    label: "Reconciliation complete",
-                    pageDataKey: "nonmedOrders",
-                    level2Key: "table",
-                    elementKey: "reconciliationComplete",
-                    inputType: "checkbox",
-                    formRow: "4",
-                    formColumn: "2",
-                    tableColumn: "14",
-                    dataParent: "nonmedOrders.table",
-                    fqn: "nonmedOrders.table.reconciliationComplete",
-                    tableKey: "table"
                   }
                 ]
               },
               {
-                formRow: "5",
+                formRow: "4",
                 elements: [
                   {
                     label: "Comment",
@@ -5638,9 +5455,9 @@ export default function () {
                     level2Key: "table",
                     elementKey: "comment",
                     inputType: "textarea",
-                    formRow: "5",
+                    formRow: "4",
                     formColumn: "1",
-                    tableColumn: "15",
+                    tableColumn: "9",
                     tableCss: "hr-table",
                     dataParent: "nonmedOrders.table",
                     fqn: "nonmedOrders.table.comment",
@@ -5716,7 +5533,7 @@ export default function () {
           dataCaseStudy: "Active"
         }
       ],
-      generated: "2019-06-19T07:43:42-07:00",
+      generated: "2019-06-24T18:15:16-07:00",
       hasTable: true,
       tables: [
         {
@@ -6056,7 +5873,7 @@ export default function () {
           fqn: "labRequisitions.table.collected"
         }
       ],
-      generated: "2019-06-19T07:43:42-07:00",
+      generated: "2019-06-24T18:15:16-07:00",
       hasTable: true,
       tables: [
         {
@@ -6311,6 +6128,11 @@ export default function () {
           fqn: "medicationOrders.table.medication"
         },
         {
+          label: "Dose",
+          elementKey: "dose",
+          fqn: "medicationOrders.table.dose"
+        },
+        {
           label: "Route",
           elementKey: "route",
           fqn: "medicationOrders.table.route"
@@ -6326,26 +6148,29 @@ export default function () {
           fqn: "medicationOrders.table.endMeds"
         },
         {
-          label: "Schedule",
+          label: "Schedule type",
           elementKey: "scheduleType",
-          fqn: "medicationOrders.table.scheduleType",
-          helperText: "PRN = as needed",
-          helperHtml: "<p>PRN = as needed</p>"
+          fqn: "medicationOrders.table.scheduleType"
         },
         {
           label: "Morning",
-          elementKey: "startDayFood",
-          fqn: "medicationOrders.table.schedule.startDayFood"
+          elementKey: "startDay",
+          fqn: "medicationOrders.table.scheduleTime.startDay"
         },
         {
           label: "Mid day",
-          elementKey: "midDayFood",
-          fqn: "medicationOrders.table.schedule.midDayFood"
+          elementKey: "midDay",
+          fqn: "medicationOrders.table.scheduleTime.midDay"
         },
         {
           label: "Bedtime",
-          elementKey: "midDay",
-          fqn: "medicationOrders.table.schedule.midDay"
+          elementKey: "endDay",
+          fqn: "medicationOrders.table.scheduleTime.endDay"
+        },
+        {
+          label: "Instructions",
+          elementKey: "instructions",
+          fqn: "medicationOrders.table.instructions"
         },
         {
           label: "Reason",
@@ -6358,7 +6183,7 @@ export default function () {
           fqn: "medicationOrders.table.notes"
         }
       ],
-      generated: "2019-06-19T07:43:42-07:00",
+      generated: "2019-06-24T18:15:16-07:00",
       hasTable: true,
       tables: [
         {
@@ -6377,6 +6202,20 @@ export default function () {
               tableColumn: "1",
               dataParent: "medicationOrders.table",
               fqn: "medicationOrders.table.name",
+              tableKey: "table"
+            },
+            {
+              label: "Entered by profession",
+              pageDataKey: "medicationOrders",
+              level2Key: "table",
+              elementKey: "profession",
+              inputType: "text",
+              formRow: "1",
+              formColumn: "2",
+              formCss: "user_pro",
+              tableColumn: "1",
+              dataParent: "medicationOrders.table",
+              fqn: "medicationOrders.table.profession",
               tableKey: "table"
             },
             {
@@ -6409,20 +6248,6 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "Entered by profession",
-              pageDataKey: "medicationOrders",
-              level2Key: "table",
-              elementKey: "profession",
-              inputType: "text",
-              formRow: "1",
-              formColumn: "2",
-              formCss: "user_pro",
-              tableColumn: "1",
-              dataParent: "medicationOrders.table",
-              fqn: "medicationOrders.table.profession",
-              tableKey: "table"
-            },
-            {
               label: "<a href=\"/assets/static-databases/drug.txt\" target=\"_blank\">Medication</a>",
               pageDataKey: "medicationOrders",
               level2Key: "table",
@@ -6437,14 +6262,28 @@ export default function () {
               tableKey: "table"
             },
             {
+              label: "Dose",
+              pageDataKey: "medicationOrders",
+              level2Key: "table",
+              elementKey: "dose",
+              inputType: "text",
+              formRow: "2",
+              formColumn: "2",
+              formCss: "is-one-third",
+              tableColumn: "2",
+              dataParent: "medicationOrders.table",
+              fqn: "medicationOrders.table.dose",
+              tableKey: "table"
+            },
+            {
               label: "Route",
               pageDataKey: "medicationOrders",
               level2Key: "table",
               elementKey: "route",
               inputType: "select",
-              formRow: "2",
-              formColumn: "2",
-              formCss: "is-one-quarter",
+              formRow: "3",
+              formColumn: "1",
+              formCss: "is-one-third",
               tableColumn: "3",
               tableCss: "hr-table",
               options: [
@@ -6487,7 +6326,8 @@ export default function () {
               elementKey: "startMeds",
               inputType: "day",
               formRow: "3",
-              formColumn: "1",
+              formColumn: "2",
+              formCss: "is-one-third",
               tableColumn: "4",
               dataParent: "medicationOrders.table",
               fqn: "medicationOrders.table.startMeds",
@@ -6500,77 +6340,29 @@ export default function () {
               elementKey: "endMeds",
               inputType: "day",
               formRow: "3",
-              formColumn: "2",
+              formColumn: "3",
+              formCss: "is-one-third",
               tableColumn: "5",
               dataParent: "medicationOrders.table",
               fqn: "medicationOrders.table.endMeds",
               tableKey: "table"
             },
             {
-              pageDataKey: "medicationOrders",
-              level2Key: "table",
-              elementKey: "schedule",
-              inputType: "fieldset",
-              formRow: "3",
-              formColumn: "4",
-              dataParent: "medicationOrders.table",
-              fqn: "medicationOrders.table.schedule",
-              containerType: "fieldset",
-              containerKey: "schedule",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
-              label: "Morning",
-              pageDataKey: "medicationOrders",
-              level2Key: "table",
-              level3Key: "schedule",
-              elementKey: "startDayFood",
-              inputType: "checkbox",
-              fsetRow: "1",
-              dataParent: "medicationOrders.table.schedule",
-              fqn: "medicationOrders.table.schedule.startDayFood",
-              tableKey: "table"
-            },
-            {
-              label: "Mid day",
-              pageDataKey: "medicationOrders",
-              level2Key: "table",
-              level3Key: "schedule",
-              elementKey: "midDayFood",
-              inputType: "checkbox",
-              fsetRow: "2",
-              dataParent: "medicationOrders.table.schedule",
-              fqn: "medicationOrders.table.schedule.midDayFood",
-              tableKey: "table"
-            },
-            {
-              label: "Bedtime",
-              pageDataKey: "medicationOrders",
-              level2Key: "table",
-              level3Key: "schedule",
-              elementKey: "midDay",
-              inputType: "checkbox",
-              fsetRow: "3",
-              dataParent: "medicationOrders.table.schedule",
-              fqn: "medicationOrders.table.schedule.midDay",
-              tableKey: "table"
-            },
-            {
-              label: "Schedule",
+              label: "Schedule type",
               pageDataKey: "medicationOrders",
               level2Key: "table",
               elementKey: "scheduleType",
               inputType: "select",
-              formRow: "3",
-              formColumn: "3",
+              formRow: "4",
+              formColumn: "1",
+              formCss: "is-one-third",
               tableColumn: "6",
               options: [
                 {
                   text: "Scheduled"
                 },
                 {
-                  text: "PRN"
+                  text: "PRN (as needed)"
                 },
                 {
                   text: "Once"
@@ -6584,14 +6376,80 @@ export default function () {
               tableKey: "table"
             },
             {
+              label: "Morning",
+              pageDataKey: "medicationOrders",
+              level2Key: "table",
+              level3Key: "scheduleTime",
+              elementKey: "startDay",
+              inputType: "checkbox",
+              fsetRow: "1",
+              dataParent: "medicationOrders.table.scheduleTime",
+              fqn: "medicationOrders.table.scheduleTime.startDay",
+              tableKey: "table"
+            },
+            {
+              label: "Mid day",
+              pageDataKey: "medicationOrders",
+              level2Key: "table",
+              level3Key: "scheduleTime",
+              elementKey: "midDay",
+              inputType: "checkbox",
+              fsetRow: "2",
+              dataParent: "medicationOrders.table.scheduleTime",
+              fqn: "medicationOrders.table.scheduleTime.midDay",
+              tableKey: "table"
+            },
+            {
+              label: "Bedtime",
+              pageDataKey: "medicationOrders",
+              level2Key: "table",
+              level3Key: "scheduleTime",
+              elementKey: "endDay",
+              inputType: "checkbox",
+              fsetRow: "3",
+              dataParent: "medicationOrders.table.scheduleTime",
+              fqn: "medicationOrders.table.scheduleTime.endDay",
+              tableKey: "table"
+            },
+            {
+              label: "Schedule time",
+              pageDataKey: "medicationOrders",
+              level2Key: "table",
+              elementKey: "scheduleTime",
+              inputType: "fieldset",
+              formRow: "4",
+              formColumn: "2",
+              formCss: "is-one-third",
+              tableColumn: "7",
+              tableCss: "hr-table hide-table-element",
+              dataParent: "medicationOrders.table",
+              fqn: "medicationOrders.table.scheduleTime",
+              containerType: "fieldset",
+              containerKey: "scheduleTime",
+              tableKey: "table"
+            },
+            {
+              label: "Instructions",
+              pageDataKey: "medicationOrders",
+              level2Key: "table",
+              elementKey: "instructions",
+              inputType: "text",
+              formRow: "5",
+              formColumn: "1",
+              tableColumn: "8",
+              dataParent: "medicationOrders.table",
+              fqn: "medicationOrders.table.instructions",
+              tableKey: "table"
+            },
+            {
               label: "Reason",
               pageDataKey: "medicationOrders",
               level2Key: "table",
               elementKey: "reason",
               inputType: "text",
-              formRow: "4",
+              formRow: "6",
               formColumn: "1",
-              tableColumn: "7",
+              tableColumn: "9",
               tableCss: "hr-table",
               dataParent: "medicationOrders.table",
               fqn: "medicationOrders.table.reason",
@@ -6603,9 +6461,9 @@ export default function () {
               level2Key: "table",
               elementKey: "notes",
               inputType: "textarea",
-              formRow: "5",
+              formRow: "7",
               formColumn: "1",
-              tableColumn: "8",
+              tableColumn: "10",
               dataParent: "medicationOrders.table",
               fqn: "medicationOrders.table.notes",
               tableKey: "table"
@@ -6693,14 +6551,33 @@ export default function () {
                     tableKey: "table"
                   },
                   {
+                    label: "Dose",
+                    pageDataKey: "medicationOrders",
+                    level2Key: "table",
+                    elementKey: "dose",
+                    inputType: "text",
+                    formRow: "2",
+                    formColumn: "2",
+                    formCss: "is-one-third",
+                    tableColumn: "2",
+                    dataParent: "medicationOrders.table",
+                    fqn: "medicationOrders.table.dose",
+                    tableKey: "table"
+                  }
+                ]
+              },
+              {
+                formRow: "3",
+                elements: [
+                  {
                     label: "Route",
                     pageDataKey: "medicationOrders",
                     level2Key: "table",
                     elementKey: "route",
                     inputType: "select",
-                    formRow: "2",
-                    formColumn: "2",
-                    formCss: "is-one-quarter",
+                    formRow: "3",
+                    formColumn: "1",
+                    formCss: "is-one-third",
                     tableColumn: "3",
                     tableCss: "hr-table",
                     options: [
@@ -6735,12 +6612,7 @@ export default function () {
                     dataParent: "medicationOrders.table",
                     fqn: "medicationOrders.table.route",
                     tableKey: "table"
-                  }
-                ]
-              },
-              {
-                formRow: "3",
-                elements: [
+                  },
                   {
                     label: "Start day",
                     pageDataKey: "medicationOrders",
@@ -6748,7 +6620,8 @@ export default function () {
                     elementKey: "startMeds",
                     inputType: "day",
                     formRow: "3",
-                    formColumn: "1",
+                    formColumn: "2",
+                    formCss: "is-one-third",
                     tableColumn: "4",
                     dataParent: "medicationOrders.table",
                     fqn: "medicationOrders.table.startMeds",
@@ -6761,27 +6634,34 @@ export default function () {
                     elementKey: "endMeds",
                     inputType: "day",
                     formRow: "3",
-                    formColumn: "2",
+                    formColumn: "3",
+                    formCss: "is-one-third",
                     tableColumn: "5",
                     dataParent: "medicationOrders.table",
                     fqn: "medicationOrders.table.endMeds",
                     tableKey: "table"
-                  },
+                  }
+                ]
+              },
+              {
+                formRow: "4",
+                elements: [
                   {
-                    label: "Schedule",
+                    label: "Schedule type",
                     pageDataKey: "medicationOrders",
                     level2Key: "table",
                     elementKey: "scheduleType",
                     inputType: "select",
-                    formRow: "3",
-                    formColumn: "3",
+                    formRow: "4",
+                    formColumn: "1",
+                    formCss: "is-one-third",
                     tableColumn: "6",
                     options: [
                       {
                         text: "Scheduled"
                       },
                       {
-                        text: "PRN"
+                        text: "PRN (as needed)"
                       },
                       {
                         text: "Once"
@@ -6795,17 +6675,20 @@ export default function () {
                     tableKey: "table"
                   },
                   {
+                    label: "Schedule time",
                     pageDataKey: "medicationOrders",
                     level2Key: "table",
-                    elementKey: "schedule",
+                    elementKey: "scheduleTime",
                     inputType: "fieldset",
-                    formRow: "3",
-                    formColumn: "4",
+                    formRow: "4",
+                    formColumn: "2",
+                    formCss: "is-one-third",
+                    tableColumn: "7",
+                    tableCss: "hr-table hide-table-element",
                     dataParent: "medicationOrders.table",
-                    fqn: "medicationOrders.table.schedule",
+                    fqn: "medicationOrders.table.scheduleTime",
                     containerType: "fieldset",
-                    containerKey: "schedule",
-                    tableCss: "hide-table-element",
+                    containerKey: "scheduleTime",
                     tableKey: "table",
                     formFieldSet: {
                       rows: [
@@ -6816,12 +6699,12 @@ export default function () {
                               label: "Morning",
                               pageDataKey: "medicationOrders",
                               level2Key: "table",
-                              level3Key: "schedule",
-                              elementKey: "startDayFood",
+                              level3Key: "scheduleTime",
+                              elementKey: "startDay",
                               inputType: "checkbox",
                               fsetRow: "1",
-                              dataParent: "medicationOrders.table.schedule",
-                              fqn: "medicationOrders.table.schedule.startDayFood",
+                              dataParent: "medicationOrders.table.scheduleTime",
+                              fqn: "medicationOrders.table.scheduleTime.startDay",
                               tableKey: "table"
                             }
                           ]
@@ -6833,12 +6716,12 @@ export default function () {
                               label: "Mid day",
                               pageDataKey: "medicationOrders",
                               level2Key: "table",
-                              level3Key: "schedule",
-                              elementKey: "midDayFood",
+                              level3Key: "scheduleTime",
+                              elementKey: "midDay",
                               inputType: "checkbox",
                               fsetRow: "2",
-                              dataParent: "medicationOrders.table.schedule",
-                              fqn: "medicationOrders.table.schedule.midDayFood",
+                              dataParent: "medicationOrders.table.scheduleTime",
+                              fqn: "medicationOrders.table.scheduleTime.midDay",
                               tableKey: "table"
                             }
                           ]
@@ -6850,12 +6733,12 @@ export default function () {
                               label: "Bedtime",
                               pageDataKey: "medicationOrders",
                               level2Key: "table",
-                              level3Key: "schedule",
-                              elementKey: "midDay",
+                              level3Key: "scheduleTime",
+                              elementKey: "endDay",
                               inputType: "checkbox",
                               fsetRow: "3",
-                              dataParent: "medicationOrders.table.schedule",
-                              fqn: "medicationOrders.table.schedule.midDay",
+                              dataParent: "medicationOrders.table.scheduleTime",
+                              fqn: "medicationOrders.table.scheduleTime.endDay",
                               tableKey: "table"
                             }
                           ]
@@ -6867,7 +6750,25 @@ export default function () {
                 ]
               },
               {
-                formRow: "4",
+                formRow: "5",
+                elements: [
+                  {
+                    label: "Instructions",
+                    pageDataKey: "medicationOrders",
+                    level2Key: "table",
+                    elementKey: "instructions",
+                    inputType: "text",
+                    formRow: "5",
+                    formColumn: "1",
+                    tableColumn: "8",
+                    dataParent: "medicationOrders.table",
+                    fqn: "medicationOrders.table.instructions",
+                    tableKey: "table"
+                  }
+                ]
+              },
+              {
+                formRow: "6",
                 elements: [
                   {
                     label: "Reason",
@@ -6875,9 +6776,9 @@ export default function () {
                     level2Key: "table",
                     elementKey: "reason",
                     inputType: "text",
-                    formRow: "4",
+                    formRow: "6",
                     formColumn: "1",
-                    tableColumn: "7",
+                    tableColumn: "9",
                     tableCss: "hr-table",
                     dataParent: "medicationOrders.table",
                     fqn: "medicationOrders.table.reason",
@@ -6886,7 +6787,7 @@ export default function () {
                 ]
               },
               {
-                formRow: "5",
+                formRow: "7",
                 elements: [
                   {
                     label: "Notes",
@@ -6894,9 +6795,9 @@ export default function () {
                     level2Key: "table",
                     elementKey: "notes",
                     inputType: "textarea",
-                    formRow: "5",
+                    formRow: "7",
                     formColumn: "1",
-                    tableColumn: "8",
+                    tableColumn: "10",
                     dataParent: "medicationOrders.table",
                     fqn: "medicationOrders.table.notes",
                     tableKey: "table"
@@ -6917,9 +6818,14 @@ export default function () {
       pageDataKey: "medAdminRec",
       pageChildren: [
         {
-          label: "Status",
-          elementKey: "status",
-          fqn: "medAdminRec.table.status"
+          label: "Medication status",
+          elementKey: "medStatus",
+          fqn: "medAdminRec.table.medStatus"
+        },
+        {
+          label: "Administration status",
+          elementKey: "adminStatus",
+          fqn: "medAdminRec.table.adminStatus"
         },
         {
           label: "Medication",
@@ -6959,7 +6865,7 @@ export default function () {
           helperHtml: "<p>Enter time delivered or say if not delivered.</p>"
         }
       ],
-      generated: "2019-06-19T07:43:42-07:00",
+      generated: "2019-06-24T18:15:16-07:00",
       hasTable: true,
       tables: [
         {
@@ -6967,10 +6873,10 @@ export default function () {
           addButtonText: "Add an administration record",
           tableCells: [
             {
-              label: "Status",
+              label: "Medication status",
               pageDataKey: "medAdminRec",
               level2Key: "table",
-              elementKey: "status",
+              elementKey: "medStatus",
               inputType: "select",
               formRow: "1",
               formColumn: "1",
@@ -6978,9 +6884,6 @@ export default function () {
               options: [
                 {
                   text: "Active"
-                },
-                {
-                  text: "PRN"
                 },
                 {
                   text: "Hold"
@@ -6993,7 +6896,34 @@ export default function () {
                 }
               ],
               dataParent: "medAdminRec.table",
-              fqn: "medAdminRec.table.status",
+              fqn: "medAdminRec.table.medStatus",
+              tableKey: "table"
+            },
+            {
+              label: "Administration status",
+              pageDataKey: "medAdminRec",
+              level2Key: "table",
+              elementKey: "adminStatus",
+              inputType: "select",
+              formRow: "1",
+              formColumn: "2",
+              tableColumn: "2",
+              options: [
+                {
+                  text: "Administered"
+                },
+                {
+                  text: "Refused"
+                },
+                {
+                  text: "Missed"
+                },
+                {
+                  text: "Skipped"
+                }
+              ],
+              dataParent: "medAdminRec.table",
+              fqn: "medAdminRec.table.adminStatus",
               tableKey: "table"
             },
             {
@@ -7002,9 +6932,9 @@ export default function () {
               level2Key: "table",
               elementKey: "medication",
               inputType: "text",
-              formRow: "1",
-              formColumn: "2",
-              tableColumn: "2",
+              formRow: "2",
+              formColumn: "1",
+              tableColumn: "3",
               dataParent: "medAdminRec.table",
               fqn: "medAdminRec.table.medication",
               tableKey: "table"
@@ -7015,6 +6945,9 @@ export default function () {
               level2Key: "table",
               elementKey: "route",
               inputType: "text",
+              formRow: "2",
+              formColumn: "2",
+              tableColumn: "4",
               dataParent: "medAdminRec.table",
               fqn: "medAdminRec.table.route",
               tableKey: "table"
@@ -7025,9 +6958,9 @@ export default function () {
               level2Key: "table",
               elementKey: "yesterday",
               inputType: "calculated",
-              formRow: "2",
+              formRow: "3",
               formColumn: "1",
-              tableColumn: "3",
+              tableColumn: "5",
               options: [
                 {
                   text: "[Yesterday\'s day]"
@@ -7046,9 +6979,9 @@ export default function () {
               level2Key: "table",
               elementKey: "todayPlan",
               inputType: "text",
-              formRow: "2",
+              formRow: "3",
               formColumn: "2",
-              tableColumn: "4",
+              tableColumn: "6",
               options: [
                 {
                   text: "[Today\'s day] plan"
@@ -7064,9 +6997,9 @@ export default function () {
               level2Key: "table",
               elementKey: "todayGiven",
               inputType: "text",
-              formRow: "2",
+              formRow: "3",
               formColumn: "3",
-              tableColumn: "5",
+              tableColumn: "7",
               options: [
                 {
                   text: "[Today\'s day] given"
@@ -7082,9 +7015,9 @@ export default function () {
               level2Key: "table",
               elementKey: "administeredBy",
               inputType: "text",
-              formRow: "3",
+              formRow: "4",
               formColumn: "1",
-              tableColumn: "6",
+              tableColumn: "8",
               dataParent: "medAdminRec.table",
               fqn: "medAdminRec.table.administeredBy",
               tableKey: "table"
@@ -7095,9 +7028,9 @@ export default function () {
               level2Key: "table",
               elementKey: "actualTime",
               inputType: "text",
-              formRow: "3",
+              formRow: "4",
               formColumn: "2",
-              tableColumn: "7",
+              tableColumn: "9",
               dataParent: "medAdminRec.table",
               fqn: "medAdminRec.table.actualTime",
               tableKey: "table"
@@ -7109,10 +7042,10 @@ export default function () {
                 formRow: "1",
                 elements: [
                   {
-                    label: "Status",
+                    label: "Medication status",
                     pageDataKey: "medAdminRec",
                     level2Key: "table",
-                    elementKey: "status",
+                    elementKey: "medStatus",
                     inputType: "select",
                     formRow: "1",
                     formColumn: "1",
@@ -7120,9 +7053,6 @@ export default function () {
                     options: [
                       {
                         text: "Active"
-                      },
-                      {
-                        text: "PRN"
                       },
                       {
                         text: "Hold"
@@ -7135,20 +7065,34 @@ export default function () {
                       }
                     ],
                     dataParent: "medAdminRec.table",
-                    fqn: "medAdminRec.table.status",
+                    fqn: "medAdminRec.table.medStatus",
                     tableKey: "table"
                   },
                   {
-                    label: "Medication",
+                    label: "Administration status",
                     pageDataKey: "medAdminRec",
                     level2Key: "table",
-                    elementKey: "medication",
-                    inputType: "text",
+                    elementKey: "adminStatus",
+                    inputType: "select",
                     formRow: "1",
                     formColumn: "2",
                     tableColumn: "2",
+                    options: [
+                      {
+                        text: "Administered"
+                      },
+                      {
+                        text: "Refused"
+                      },
+                      {
+                        text: "Missed"
+                      },
+                      {
+                        text: "Skipped"
+                      }
+                    ],
                     dataParent: "medAdminRec.table",
-                    fqn: "medAdminRec.table.medication",
+                    fqn: "medAdminRec.table.adminStatus",
                     tableKey: "table"
                   }
                 ]
@@ -7157,14 +7101,45 @@ export default function () {
                 formRow: "2",
                 elements: [
                   {
+                    label: "Medication",
+                    pageDataKey: "medAdminRec",
+                    level2Key: "table",
+                    elementKey: "medication",
+                    inputType: "text",
+                    formRow: "2",
+                    formColumn: "1",
+                    tableColumn: "3",
+                    dataParent: "medAdminRec.table",
+                    fqn: "medAdminRec.table.medication",
+                    tableKey: "table"
+                  },
+                  {
+                    label: "Route",
+                    pageDataKey: "medAdminRec",
+                    level2Key: "table",
+                    elementKey: "route",
+                    inputType: "text",
+                    formRow: "2",
+                    formColumn: "2",
+                    tableColumn: "4",
+                    dataParent: "medAdminRec.table",
+                    fqn: "medAdminRec.table.route",
+                    tableKey: "table"
+                  }
+                ]
+              },
+              {
+                formRow: "3",
+                elements: [
+                  {
                     label: "Yesterday",
                     pageDataKey: "medAdminRec",
                     level2Key: "table",
                     elementKey: "yesterday",
                     inputType: "calculated",
-                    formRow: "2",
+                    formRow: "3",
                     formColumn: "1",
-                    tableColumn: "3",
+                    tableColumn: "5",
                     options: [
                       {
                         text: "[Yesterday\'s day]"
@@ -7183,9 +7158,9 @@ export default function () {
                     level2Key: "table",
                     elementKey: "todayPlan",
                     inputType: "text",
-                    formRow: "2",
+                    formRow: "3",
                     formColumn: "2",
-                    tableColumn: "4",
+                    tableColumn: "6",
                     options: [
                       {
                         text: "[Today\'s day] plan"
@@ -7201,9 +7176,9 @@ export default function () {
                     level2Key: "table",
                     elementKey: "todayGiven",
                     inputType: "text",
-                    formRow: "2",
+                    formRow: "3",
                     formColumn: "3",
-                    tableColumn: "5",
+                    tableColumn: "7",
                     options: [
                       {
                         text: "[Today\'s day] given"
@@ -7216,7 +7191,7 @@ export default function () {
                 ]
               },
               {
-                formRow: "3",
+                formRow: "4",
                 elements: [
                   {
                     label: "Administered by",
@@ -7224,9 +7199,9 @@ export default function () {
                     level2Key: "table",
                     elementKey: "administeredBy",
                     inputType: "text",
-                    formRow: "3",
+                    formRow: "4",
                     formColumn: "1",
-                    tableColumn: "6",
+                    tableColumn: "8",
                     dataParent: "medAdminRec.table",
                     fqn: "medAdminRec.table.administeredBy",
                     tableKey: "table"
@@ -7237,9 +7212,9 @@ export default function () {
                     level2Key: "table",
                     elementKey: "actualTime",
                     inputType: "text",
-                    formRow: "3",
+                    formRow: "4",
                     formColumn: "2",
-                    tableColumn: "7",
+                    tableColumn: "9",
                     dataParent: "medAdminRec.table",
                     fqn: "medAdminRec.table.actualTime",
                     tableKey: "table"
@@ -7319,7 +7294,7 @@ export default function () {
           fqn: "dischargeSummary.dischargeEducation"
         }
       ],
-      generated: "2019-06-19T07:43:42-07:00",
+      generated: "2019-06-24T18:15:16-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -7542,7 +7517,7 @@ export default function () {
           dataCaseStudy: "MSP"
         }
       ],
-      generated: "2019-06-19T07:43:42-07:00",
+      generated: "2019-06-24T18:15:16-07:00",
       hasForm: true,
       page_form: {
         rows: [
