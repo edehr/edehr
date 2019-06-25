@@ -3,8 +3,6 @@
     table.mar-summary
       thead
         th 
-          h4 Status
-        th 
           h4 Medication order
         th(v-for="hdr in tableHeader")
           div(v-show="hdr.type === KEY_MED_ORDER")
@@ -16,7 +14,6 @@
 
       tbody
         tr(v-for="row in tableBody")
-          td status
           td(v-for="(cell, index) in row", :class="tdStyle(cell, index, row)")
             div(:class="marCellStyle(cell, index, row)") {{marCellContent(cell)}}
 </template>
