@@ -5,9 +5,9 @@
 </template>
 
 <script>
-import EventBus from '../../helpers/event-bus'
-import { DIALOG_INPUT_EVENT, PAGE_FORM_INPUT_EVENT } from '../../helpers/event-bus'
-import { ehrCalculateProperty } from '../../helpers/ehr-calcs'
+import EventBus from '../../../helpers/event-bus'
+import { DIALOG_INPUT_EVENT, PAGE_FORM_INPUT_EVENT } from '../../../helpers/event-bus'
+import { ehrCalculateProperty } from '../../../helpers/ehr-calcs'
 
 export default {
   name: 'EhrComputedNumber',

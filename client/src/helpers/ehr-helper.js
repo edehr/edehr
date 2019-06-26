@@ -155,7 +155,7 @@ export default class EhrHelp {
 
   /* ********************* DIALOG  */
   showDialog (tableDef, dialogInputs) {
-    this._setEditing (true)
+    // this._setEditing (fals)
     let dialog = { tableDef: tableDef, inputs: dialogInputs }
     let key = tableDef.tableKey
     this.dialogMap[key] = dialog
@@ -280,7 +280,6 @@ export default class EhrHelp {
   }
 
   _emitCloseEvent (dialogKey) {
-    const _this = this
     let eData = { key: dialogKey, value: false }
     let channel = this.getDialogEventChannel(dialogKey)
     Vue.nextTick(function () {
@@ -288,7 +287,6 @@ export default class EhrHelp {
       // with a payload containing this false
       // console.log('emit event', eData, 'on', channel)
       EventBus.$emit(channel, eData)
-      _this._setEditing (false)
     })
   }
 

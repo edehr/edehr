@@ -360,6 +360,14 @@ module.exports = function () {
       label: 'Test Page',
       redirect: '',
       generateComponent: 'yes'
+    },
+    {
+      path: '/ehr/external',
+      routeName: 'test-table',
+      pageDataKey: 'testTable',
+      label: 'Test Table',
+      redirect: '',
+      generateComponent: 'yes'
     }
   ]
 }

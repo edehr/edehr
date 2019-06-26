@@ -6,191 +6,116 @@ export default function () {
       pageDataKey: "testPage",
       pageChildren: [
         {
-          label: "Page ptext",
+          label: "<b>a form <i>label</i></b>",
+          elementKey: "pform_label",
+          fqn: "testPage.pform_label"
+        },
+        {
+          label: "spacer",
+          elementKey: "pspacer",
+          fqn: "testPage.pspacer"
+        },
+        {
+          label: "text",
           elementKey: "ptext",
           fqn: "testPage.ptext"
         },
         {
-          label: "Page ttestarea",
-          elementKey: "ttestarea",
-          fqn: "testPage.ttestarea"
+          label: "checkbox",
+          elementKey: "pcheckbox",
+          fqn: "testPage.pcheckbox",
+          helperText: "a checkbox iinput",
+          helperHtml: "<p>a checkbox iinput</p>"
         },
         {
-          label: "Page tselect",
-          elementKey: "tselect",
-          fqn: "testPage.tselect",
-          passToFunction: "tcalculated"
+          label: "text",
+          elementKey: "ptextpcheckbox",
+          fqn: "testPage.ptextpcheckbox",
+          helperText: "a text input",
+          helperHtml: "<p>a text input</p>"
         },
         {
-          label: "Page tdate",
-          elementKey: "tdate",
-          fqn: "testPage.tdate"
+          label: "assetLink",
+          elementKey: "passetLink",
+          fqn: "testPage.passetLink"
         },
         {
-          label: "Page tcheck",
-          elementKey: "tcheck",
-          fqn: "testPage.tcheck"
+          label: "select",
+          elementKey: "pselect",
+          fqn: "testPage.pselect",
+          passToFunction: "p-cValue1"
         },
         {
-          label: "<b>a form <i>label</i></b>",
-          elementKey: "tlabel",
-          fqn: "testPage.tlabel"
+          label: "select",
+          elementKey: "pselect2",
+          fqn: "testPage.pselect2",
+          passToFunction: "p-cValue1"
         },
         {
-          label: "Page tspacer",
-          elementKey: "tspacer",
-          fqn: "testPage.tspacer"
+          label: "calculatedValue",
+          elementKey: "p-cValue1",
+          fqn: "testPage.p-cValue1",
+          helperText: "a calculated value based on the select \'pselect1\' on this page",
+          helperHtml: "<p>a calculated value based on the select \'pselect1\' on this page</p>"
         },
         {
-          label: "Page tasset",
-          elementKey: "tasset",
-          fqn: "testPage.tasset"
+          label: "checkset",
+          elementKey: "pcheckset",
+          fqn: "testPage.pcheckset"
         },
         {
-          label: "Page tcalculated",
-          elementKey: "tcalculated",
-          fqn: "testPage.tcalculated"
+          label: "textarea",
+          elementKey: "ptextarea",
+          fqn: "testPage.ptextarea"
         },
         {
-          label: "Page pftext",
-          elementKey: "pftext",
-          fqn: "testPage.tffieldset.pftext"
+          label: "text",
+          elementKey: "ptext1",
+          fqn: "testPage.pfieldset1.ptext1"
         },
         {
-          label: "Page pftextarea",
-          elementKey: "pftextarea",
-          fqn: "testPage.tffieldset.pftextarea"
+          label: "textarea",
+          elementKey: "ptextarea1",
+          fqn: "testPage.pfieldset1.ptextarea1"
         },
         {
-          label: "Page pfselect",
-          elementKey: "pfselect",
-          fqn: "testPage.tffieldset.pfselect",
-          passToFunction: "pfcalculatedValue"
+          label: "select",
+          elementKey: "pselect1",
+          fqn: "testPage.pfieldset1.pselect1",
+          passToFunction: "p-cValue2"
         },
         {
-          label: "Page pfdate",
-          elementKey: "pfdate",
-          fqn: "testPage.tffieldset.pfdate"
+          label: "date",
+          elementKey: "pdate1",
+          fqn: "testPage.pfieldset1.pdate1"
         },
         {
-          label: "Page pfcheckbox",
-          elementKey: "pfcheckbox",
-          fqn: "testPage.tffieldset.pfcheckbox"
-        },
-        {
-          label: "<b>a form <i>label</i></b>",
-          elementKey: "pfform_label",
-          fqn: "testPage.tffieldset.pfform_label"
-        },
-        {
-          label: "Page pfspacer",
-          elementKey: "pfspacer",
-          fqn: "testPage.tffieldset.pfspacer"
-        },
-        {
-          label: "Page pfassetLink",
-          elementKey: "pfassetLink",
-          fqn: "testPage.tffieldset.pfassetLink"
-        },
-        {
-          label: "Page pfcalculatedValue",
-          elementKey: "pfcalculatedValue",
-          fqn: "testPage.tffieldset.pfcalculatedValue"
-        },
-        {
-          label: "Table tttext",
-          elementKey: "tttext",
-          fqn: "testPage.table.tttext"
-        },
-        {
-          label: "Table tttextarea",
-          elementKey: "tttextarea",
-          fqn: "testPage.table.tttextarea"
-        },
-        {
-          label: "Table ttselect",
-          elementKey: "ttselect",
-          fqn: "testPage.table.ttselect",
-          passToFunction: "ttcalculatedValue"
-        },
-        {
-          label: "Table ttdate",
-          elementKey: "ttdate",
-          fqn: "testPage.table.ttdate"
-        },
-        {
-          label: "Table ttcheckbox",
-          elementKey: "ttcheckbox",
-          fqn: "testPage.table.ttcheckbox"
+          label: "checkbox",
+          elementKey: "pcheckbox2",
+          fqn: "testPage.pfieldset2.pcheckbox2"
         },
         {
           label: "<b>a form <i>label</i></b>",
-          elementKey: "ttform_label",
-          fqn: "testPage.table.ttform_label"
+          elementKey: "pform_label2",
+          fqn: "testPage.pfieldset2.pform_label2"
         },
         {
-          label: "Table ttspacer",
-          elementKey: "ttspacer",
-          fqn: "testPage.table.ttspacer"
+          label: "spacer",
+          elementKey: "pspacer2",
+          fqn: "testPage.pfieldset2.pspacer2"
         },
         {
-          label: "Table ttassetLink",
-          elementKey: "ttassetLink",
-          fqn: "testPage.table.ttassetLink"
+          label: "assetLink",
+          elementKey: "passetLink2",
+          fqn: "testPage.pfieldset2.passetLink2"
         },
         {
-          label: "Table ttcalculatedValue",
-          elementKey: "ttcalculatedValue",
-          fqn: "testPage.table.ttcalculatedValue"
-        },
-        {
-          label: "Table ttftext",
-          elementKey: "ttftext",
-          fqn: "testPage.table.ttfieldset.ttftext"
-        },
-        {
-          label: "Table ttftextarea",
-          elementKey: "ttftextarea",
-          fqn: "testPage.table.ttfieldset.ttftextarea"
-        },
-        {
-          label: "Table ttfselect",
-          elementKey: "ttfselect",
-          fqn: "testPage.table.ttfieldset.ttfselect",
-          passToFunction: "ttfcalculatedValue"
-        },
-        {
-          label: "Table ttfdate",
-          elementKey: "ttfdate",
-          fqn: "testPage.table.ttfieldset.ttfdate"
-        },
-        {
-          label: "Table ttfcheckbox",
-          elementKey: "ttfcheckbox",
-          fqn: "testPage.table.ttfieldset.ttfcheckbox"
-        },
-        {
-          label: "<b>a form <i>label</i></b>",
-          elementKey: "ttfform_label",
-          fqn: "testPage.table.ttfieldset.ttfform_label"
-        },
-        {
-          label: "Table ttfspacer",
-          elementKey: "ttfspacer",
-          fqn: "testPage.table.ttfieldset.ttfspacer"
-        },
-        {
-          label: "Table ttfassetLink",
-          elementKey: "ttfassetLink",
-          fqn: "testPage.table.ttfieldset.ttfassetLink"
-        },
-        {
-          label: "Table ttfcalculatedValue",
-          elementKey: "ttfcalculatedValue",
-          fqn: "testPage.table.ttfieldset.ttfcalculatedValue"
+          label: "calculatedValue",
+          elementKey: "p-cValue2",
+          fqn: "testPage.pfieldset2.p-cValue2"
         }
       ],
-      generated: "2019-06-19T07:40:39-07:00",
+      generated: "2019-06-26T07:10:16-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -198,35 +123,34 @@ export default function () {
             formRow: "1",
             elements: [
               {
-                label: "Page ptext",
+                label: "<b>a form <i>label</i></b>",
+                pageDataKey: "testPage",
+                elementKey: "pform_label",
+                inputType: "form_label",
+                formRow: "1",
+                formColumn: "1",
+                dataParent: "testPage",
+                fqn: "testPage.pform_label"
+              },
+              {
+                label: "spacer",
+                pageDataKey: "testPage",
+                elementKey: "pspacer",
+                inputType: "spacer",
+                formRow: "1",
+                formColumn: "2",
+                dataParent: "testPage",
+                fqn: "testPage.pspacer"
+              },
+              {
+                label: "text",
                 pageDataKey: "testPage",
                 elementKey: "ptext",
                 inputType: "text",
                 formRow: "1",
-                formColumn: "1",
-                formCss: "test_text_class",
-                dataParent: "testPage",
-                fqn: "testPage.ptext"
-              },
-              {
-                label: "Page tspacer",
-                pageDataKey: "testPage",
-                elementKey: "tspacer",
-                inputType: "spacer",
-                formRow: "1",
-                formColumn: "1",
-                dataParent: "testPage",
-                fqn: "testPage.tspacer"
-              },
-              {
-                label: "<b>a form <i>label</i></b>",
-                pageDataKey: "testPage",
-                elementKey: "tlabel",
-                inputType: "form_label",
-                formRow: "1",
                 formColumn: "3",
                 dataParent: "testPage",
-                fqn: "testPage.tlabel"
+                fqn: "testPage.ptext"
               }
             ]
           },
@@ -234,54 +158,36 @@ export default function () {
             formRow: "2",
             elements: [
               {
-                label: "Page tselect",
+                label: "checkbox",
                 pageDataKey: "testPage",
-                elementKey: "tselect",
-                inputType: "select",
-                formRow: "2",
-                formColumn: "1",
-                options: [
-                  {
-                    text: "1 = Yes"
-                  },
-                  {
-                    text: "2 = No"
-                  }
-                ],
-                dataParent: "testPage",
-                fqn: "testPage.tselect"
-              },
-              {
-                label: "Page tcheck",
-                pageDataKey: "testPage",
-                elementKey: "tcheck",
+                elementKey: "pcheckbox",
                 inputType: "checkbox",
                 formRow: "2",
-                formColumn: "2",
+                formColumn: "1",
                 dataParent: "testPage",
-                fqn: "testPage.tcheck"
+                fqn: "testPage.pcheckbox"
               },
               {
-                label: "Page tasset",
+                label: "text",
                 pageDataKey: "testPage",
-                elementKey: "tasset",
+                elementKey: "ptextpcheckbox",
+                inputType: "text",
+                formRow: "2",
+                formColumn: "2",
+                dataParent: "testPage",
+                fqn: "testPage.ptextpcheckbox"
+              },
+              {
+                label: "assetLink",
+                pageDataKey: "testPage",
+                elementKey: "passetLink",
                 inputType: "assetLink",
                 formRow: "2",
-                formColumn: "2",
-                assetBase: "Standardized assessment tools",
-                assetName: "OPQRSTUV.pdf",
-                dataParent: "testPage",
-                fqn: "testPage.tasset"
-              },
-              {
-                label: "Page tcalculated",
-                pageDataKey: "testPage",
-                elementKey: "tcalculated",
-                inputType: "calculatedValue",
-                formRow: "2",
                 formColumn: "3",
+                assetBase: "standardized-assessment-tools",
+                assetName: "the-canadian-ed-triage-and-acuity-scale.gif",
                 dataParent: "testPage",
-                fqn: "testPage.tcalculated"
+                fqn: "testPage.passetLink"
               }
             ]
           },
@@ -289,58 +195,128 @@ export default function () {
             formRow: "3",
             elements: [
               {
-                label: "Page tdate",
+                label: "select",
                 pageDataKey: "testPage",
-                elementKey: "tdate",
-                inputType: "date",
+                elementKey: "pselect",
+                inputType: "select",
                 formRow: "3",
                 formColumn: "1",
-                formCss: "is-one-third",
+                options: [
+                  {
+                    text: "1=a"
+                  },
+                  {
+                    text: "2=b"
+                  },
+                  {
+                    text: "3=c"
+                  }
+                ],
                 dataParent: "testPage",
-                fqn: "testPage.tdate"
+                fqn: "testPage.pselect"
               },
               {
-                label: "Page tffieldset",
+                label: "select",
                 pageDataKey: "testPage",
-                elementKey: "tffieldset",
-                inputType: "fieldset",
+                elementKey: "pselect2",
+                inputType: "select",
                 formRow: "3",
                 formColumn: "2",
-                formCss: "is-two-thirds",
+                options: [
+                  {
+                    text: "1=a"
+                  },
+                  {
+                    text: "2=b"
+                  },
+                  {
+                    text: "3=c"
+                  }
+                ],
                 dataParent: "testPage",
-                fqn: "testPage.tffieldset",
+                fqn: "testPage.pselect2"
+              },
+              {
+                label: "calculatedValue",
+                pageDataKey: "testPage",
+                elementKey: "p-cValue1",
+                inputType: "calculatedValue",
+                formRow: "3",
+                formColumn: "3",
+                dataParent: "testPage",
+                fqn: "testPage.p-cValue1"
+              }
+            ]
+          },
+          {
+            formRow: "4",
+            elements: [
+              {
+                label: "checkset",
+                pageDataKey: "testPage",
+                elementKey: "pcheckset",
+                inputType: "checkset",
+                formRow: "4",
+                formColumn: "1",
+                options: [
+                  {
+                    text: "check1=check option 1"
+                  },
+                  {
+                    text: "check2=check option 2"
+                  },
+                  {
+                    text: "other=another option"
+                  },
+                  {
+                    text: "all=all options are selectable"
+                  }
+                ],
+                dataParent: "testPage",
+                fqn: "testPage.pcheckset"
+              },
+              {
+                label: "fieldset",
+                pageDataKey: "testPage",
+                elementKey: "pfieldset1",
+                inputType: "fieldset",
+                formRow: "4",
+                formColumn: "2",
+                dataParent: "testPage",
+                fqn: "testPage.pfieldset1",
                 elements: [
                   {
-                    label: "Page pftext",
+                    label: "text",
                     pageDataKey: "testPage",
-                    level3Key: "tffieldset",
-                    elementKey: "pftext",
+                    level3Key: "pfieldset1",
+                    elementKey: "ptext1",
                     inputType: "text",
+                    formOption: "hideLabel",
                     fsetRow: "1",
                     fsetCol: "1",
-                    dataParent: "testPage.tffieldset",
-                    fqn: "testPage.tffieldset.pftext",
+                    dataParent: "testPage.pfieldset1",
+                    fqn: "testPage.pfieldset1.ptext1",
                     formColumn: "1"
                   },
                   {
-                    label: "Page pftextarea",
+                    label: "textarea",
                     pageDataKey: "testPage",
-                    level3Key: "tffieldset",
-                    elementKey: "pftextarea",
+                    level3Key: "pfieldset1",
+                    elementKey: "ptextarea1",
                     inputType: "textarea",
-                    fsetRow: "5",
+                    fsetRow: "2",
                     fsetCol: "1",
-                    dataParent: "testPage.tffieldset",
-                    fqn: "testPage.tffieldset.pftextarea",
+                    dataParent: "testPage.pfieldset1",
+                    fqn: "testPage.pfieldset1.ptextarea1",
                     formColumn: "1"
                   },
                   {
-                    label: "Page pfselect",
+                    label: "select",
                     pageDataKey: "testPage",
-                    level3Key: "tffieldset",
-                    elementKey: "pfselect",
+                    level3Key: "pfieldset1",
+                    elementKey: "pselect1",
                     inputType: "select",
-                    fsetRow: "2",
+                    fsetRow: "3",
                     fsetCol: "1",
                     options: [
                       {
@@ -350,115 +326,42 @@ export default function () {
                         text: "2 = No"
                       }
                     ],
-                    dataParent: "testPage.tffieldset",
-                    fqn: "testPage.tffieldset.pfselect",
+                    dataParent: "testPage.pfieldset1",
+                    fqn: "testPage.pfieldset1.pselect1",
                     formColumn: "1"
                   },
                   {
-                    label: "Page pfdate",
+                    label: "date",
                     pageDataKey: "testPage",
-                    level3Key: "tffieldset",
-                    elementKey: "pfdate",
+                    level3Key: "pfieldset1",
+                    elementKey: "pdate1",
                     inputType: "date",
                     fsetRow: "4",
-                    fsetCol: "2",
-                    dataParent: "testPage.tffieldset",
-                    fqn: "testPage.tffieldset.pfdate",
-                    formColumn: "2"
-                  },
-                  {
-                    label: "Page pfcheckbox",
-                    pageDataKey: "testPage",
-                    level3Key: "tffieldset",
-                    elementKey: "pfcheckbox",
-                    inputType: "checkbox",
-                    fsetRow: "1",
-                    fsetCol: "2",
-                    dataParent: "testPage.tffieldset",
-                    fqn: "testPage.tffieldset.pfcheckbox",
-                    formColumn: "2"
-                  },
-                  {
-                    label: "<b>a form <i>label</i></b>",
-                    pageDataKey: "testPage",
-                    level3Key: "tffieldset",
-                    elementKey: "pfform_label",
-                    inputType: "form_label",
-                    fsetRow: "3",
-                    fsetCol: "2",
-                    dataParent: "testPage.tffieldset",
-                    fqn: "testPage.tffieldset.pfform_label",
-                    formColumn: "2"
-                  },
-                  {
-                    label: "Page pfspacer",
-                    pageDataKey: "testPage",
-                    level3Key: "tffieldset",
-                    elementKey: "pfspacer",
-                    inputType: "spacer",
-                    fsetRow: "3",
                     fsetCol: "1",
-                    dataParent: "testPage.tffieldset",
-                    fqn: "testPage.tffieldset.pfspacer",
+                    dataParent: "testPage.pfieldset1",
+                    fqn: "testPage.pfieldset1.pdate1",
                     formColumn: "1"
-                  },
-                  {
-                    label: "Page pfassetLink",
-                    pageDataKey: "testPage",
-                    level3Key: "tffieldset",
-                    elementKey: "pfassetLink",
-                    inputType: "assetLink",
-                    fsetRow: "4",
-                    fsetCol: "1",
-                    assetBase: "Standardized assessment tools",
-                    assetName: "OPQRSTUV.pdf",
-                    dataParent: "testPage.tffieldset",
-                    fqn: "testPage.tffieldset.pfassetLink",
-                    formColumn: "1"
-                  },
-                  {
-                    label: "Page pfcalculatedValue",
-                    pageDataKey: "testPage",
-                    level3Key: "tffieldset",
-                    elementKey: "pfcalculatedValue",
-                    inputType: "calculatedValue",
-                    fsetRow: "2",
-                    fsetCol: "2",
-                    dataParent: "testPage.tffieldset",
-                    fqn: "testPage.tffieldset.pfcalculatedValue",
-                    formColumn: "2"
                   }
                 ],
                 containerType: "fieldset",
-                containerKey: "tffieldset",
+                containerKey: "pfieldset1",
                 formFieldSet: {
                   rows: [
                     {
                       formRow: "1",
                       elements: [
                         {
-                          label: "Page pftext",
+                          label: "text",
                           pageDataKey: "testPage",
-                          level3Key: "tffieldset",
-                          elementKey: "pftext",
+                          level3Key: "pfieldset1",
+                          elementKey: "ptext1",
                           inputType: "text",
+                          formOption: "hideLabel",
                           fsetRow: "1",
                           fsetCol: "1",
-                          dataParent: "testPage.tffieldset",
-                          fqn: "testPage.tffieldset.pftext",
+                          dataParent: "testPage.pfieldset1",
+                          fqn: "testPage.pfieldset1.ptext1",
                           formColumn: "1"
-                        },
-                        {
-                          label: "Page pfcheckbox",
-                          pageDataKey: "testPage",
-                          level3Key: "tffieldset",
-                          elementKey: "pfcheckbox",
-                          inputType: "checkbox",
-                          fsetRow: "1",
-                          fsetCol: "2",
-                          dataParent: "testPage.tffieldset",
-                          fqn: "testPage.tffieldset.pfcheckbox",
-                          formColumn: "2"
                         }
                       ]
                     },
@@ -466,12 +369,29 @@ export default function () {
                       formRow: "2",
                       elements: [
                         {
-                          label: "Page pfselect",
+                          label: "textarea",
                           pageDataKey: "testPage",
-                          level3Key: "tffieldset",
-                          elementKey: "pfselect",
-                          inputType: "select",
+                          level3Key: "pfieldset1",
+                          elementKey: "ptextarea1",
+                          inputType: "textarea",
                           fsetRow: "2",
+                          fsetCol: "1",
+                          dataParent: "testPage.pfieldset1",
+                          fqn: "testPage.pfieldset1.ptextarea1",
+                          formColumn: "1"
+                        }
+                      ]
+                    },
+                    {
+                      formRow: "3",
+                      elements: [
+                        {
+                          label: "select",
+                          pageDataKey: "testPage",
+                          level3Key: "pfieldset1",
+                          elementKey: "pselect1",
+                          inputType: "select",
+                          fsetRow: "3",
                           fsetCol: "1",
                           options: [
                             {
@@ -481,50 +401,9 @@ export default function () {
                               text: "2 = No"
                             }
                           ],
-                          dataParent: "testPage.tffieldset",
-                          fqn: "testPage.tffieldset.pfselect",
+                          dataParent: "testPage.pfieldset1",
+                          fqn: "testPage.pfieldset1.pselect1",
                           formColumn: "1"
-                        },
-                        {
-                          label: "Page pfcalculatedValue",
-                          pageDataKey: "testPage",
-                          level3Key: "tffieldset",
-                          elementKey: "pfcalculatedValue",
-                          inputType: "calculatedValue",
-                          fsetRow: "2",
-                          fsetCol: "2",
-                          dataParent: "testPage.tffieldset",
-                          fqn: "testPage.tffieldset.pfcalculatedValue",
-                          formColumn: "2"
-                        }
-                      ]
-                    },
-                    {
-                      formRow: "3",
-                      elements: [
-                        {
-                          label: "Page pfspacer",
-                          pageDataKey: "testPage",
-                          level3Key: "tffieldset",
-                          elementKey: "pfspacer",
-                          inputType: "spacer",
-                          fsetRow: "3",
-                          fsetCol: "1",
-                          dataParent: "testPage.tffieldset",
-                          fqn: "testPage.tffieldset.pfspacer",
-                          formColumn: "1"
-                        },
-                        {
-                          label: "<b>a form <i>label</i></b>",
-                          pageDataKey: "testPage",
-                          level3Key: "tffieldset",
-                          elementKey: "pfform_label",
-                          inputType: "form_label",
-                          fsetRow: "3",
-                          fsetCol: "2",
-                          dataParent: "testPage.tffieldset",
-                          fqn: "testPage.tffieldset.pfform_label",
-                          formColumn: "2"
                         }
                       ]
                     },
@@ -532,30 +411,167 @@ export default function () {
                       formRow: "4",
                       elements: [
                         {
-                          label: "Page pfassetLink",
+                          label: "date",
                           pageDataKey: "testPage",
-                          level3Key: "tffieldset",
-                          elementKey: "pfassetLink",
+                          level3Key: "pfieldset1",
+                          elementKey: "pdate1",
+                          inputType: "date",
+                          fsetRow: "4",
+                          fsetCol: "1",
+                          dataParent: "testPage.pfieldset1",
+                          fqn: "testPage.pfieldset1.pdate1",
+                          formColumn: "1"
+                        }
+                      ]
+                    }
+                  ],
+                  columnsCount: 1
+                }
+              },
+              {
+                label: "fieldset",
+                pageDataKey: "testPage",
+                elementKey: "pfieldset2",
+                inputType: "fieldset",
+                formRow: "4",
+                formColumn: "3",
+                dataParent: "testPage",
+                fqn: "testPage.pfieldset2",
+                elements: [
+                  {
+                    label: "checkbox",
+                    pageDataKey: "testPage",
+                    level3Key: "pfieldset2",
+                    elementKey: "pcheckbox2",
+                    inputType: "checkbox",
+                    fsetRow: "1",
+                    fsetCol: "1",
+                    dataParent: "testPage.pfieldset2",
+                    fqn: "testPage.pfieldset2.pcheckbox2",
+                    formColumn: "1"
+                  },
+                  {
+                    label: "<b>a form <i>label</i></b>",
+                    pageDataKey: "testPage",
+                    level3Key: "pfieldset2",
+                    elementKey: "pform_label2",
+                    inputType: "form_label",
+                    fsetRow: "2",
+                    fsetCol: "1",
+                    dataParent: "testPage.pfieldset2",
+                    fqn: "testPage.pfieldset2.pform_label2",
+                    formColumn: "1"
+                  },
+                  {
+                    label: "spacer",
+                    pageDataKey: "testPage",
+                    level3Key: "pfieldset2",
+                    elementKey: "pspacer2",
+                    inputType: "spacer",
+                    fsetRow: "3",
+                    fsetCol: "1",
+                    dataParent: "testPage.pfieldset2",
+                    fqn: "testPage.pfieldset2.pspacer2",
+                    formColumn: "1"
+                  },
+                  {
+                    label: "assetLink",
+                    pageDataKey: "testPage",
+                    level3Key: "pfieldset2",
+                    elementKey: "passetLink2",
+                    inputType: "assetLink",
+                    fsetRow: "4",
+                    fsetCol: "1",
+                    assetBase: "standardized-assessment-tools",
+                    assetName: "the-canadian-ed-triage-and-acuity-scale.gif",
+                    dataParent: "testPage.pfieldset2",
+                    fqn: "testPage.pfieldset2.passetLink2",
+                    formColumn: "1"
+                  },
+                  {
+                    label: "calculatedValue",
+                    pageDataKey: "testPage",
+                    level3Key: "pfieldset2",
+                    elementKey: "p-cValue2",
+                    inputType: "calculatedValue",
+                    fsetRow: "5",
+                    fsetCol: "1",
+                    dataParent: "testPage.pfieldset2",
+                    fqn: "testPage.pfieldset2.p-cValue2",
+                    formColumn: "1"
+                  }
+                ],
+                containerType: "fieldset",
+                containerKey: "pfieldset2",
+                formFieldSet: {
+                  rows: [
+                    {
+                      formRow: "1",
+                      elements: [
+                        {
+                          label: "checkbox",
+                          pageDataKey: "testPage",
+                          level3Key: "pfieldset2",
+                          elementKey: "pcheckbox2",
+                          inputType: "checkbox",
+                          fsetRow: "1",
+                          fsetCol: "1",
+                          dataParent: "testPage.pfieldset2",
+                          fqn: "testPage.pfieldset2.pcheckbox2",
+                          formColumn: "1"
+                        }
+                      ]
+                    },
+                    {
+                      formRow: "2",
+                      elements: [
+                        {
+                          label: "<b>a form <i>label</i></b>",
+                          pageDataKey: "testPage",
+                          level3Key: "pfieldset2",
+                          elementKey: "pform_label2",
+                          inputType: "form_label",
+                          fsetRow: "2",
+                          fsetCol: "1",
+                          dataParent: "testPage.pfieldset2",
+                          fqn: "testPage.pfieldset2.pform_label2",
+                          formColumn: "1"
+                        }
+                      ]
+                    },
+                    {
+                      formRow: "3",
+                      elements: [
+                        {
+                          label: "spacer",
+                          pageDataKey: "testPage",
+                          level3Key: "pfieldset2",
+                          elementKey: "pspacer2",
+                          inputType: "spacer",
+                          fsetRow: "3",
+                          fsetCol: "1",
+                          dataParent: "testPage.pfieldset2",
+                          fqn: "testPage.pfieldset2.pspacer2",
+                          formColumn: "1"
+                        }
+                      ]
+                    },
+                    {
+                      formRow: "4",
+                      elements: [
+                        {
+                          label: "assetLink",
+                          pageDataKey: "testPage",
+                          level3Key: "pfieldset2",
+                          elementKey: "passetLink2",
                           inputType: "assetLink",
                           fsetRow: "4",
                           fsetCol: "1",
-                          assetBase: "Standardized assessment tools",
-                          assetName: "OPQRSTUV.pdf",
-                          dataParent: "testPage.tffieldset",
-                          fqn: "testPage.tffieldset.pfassetLink",
+                          assetBase: "standardized-assessment-tools",
+                          assetName: "the-canadian-ed-triage-and-acuity-scale.gif",
+                          dataParent: "testPage.pfieldset2",
+                          fqn: "testPage.pfieldset2.passetLink2",
                           formColumn: "1"
-                        },
-                        {
-                          label: "Page pfdate",
-                          pageDataKey: "testPage",
-                          level3Key: "tffieldset",
-                          elementKey: "pfdate",
-                          inputType: "date",
-                          fsetRow: "4",
-                          fsetCol: "2",
-                          dataParent: "testPage.tffieldset",
-                          fqn: "testPage.tffieldset.pfdate",
-                          formColumn: "2"
                         }
                       ]
                     },
@@ -563,86 +579,378 @@ export default function () {
                       formRow: "5",
                       elements: [
                         {
-                          label: "Page pftextarea",
+                          label: "calculatedValue",
                           pageDataKey: "testPage",
-                          level3Key: "tffieldset",
-                          elementKey: "pftextarea",
-                          inputType: "textarea",
+                          level3Key: "pfieldset2",
+                          elementKey: "p-cValue2",
+                          inputType: "calculatedValue",
                           fsetRow: "5",
                           fsetCol: "1",
-                          dataParent: "testPage.tffieldset",
-                          fqn: "testPage.tffieldset.pftextarea",
+                          dataParent: "testPage.pfieldset2",
+                          fqn: "testPage.pfieldset2.p-cValue2",
                           formColumn: "1"
                         }
                       ]
                     }
                   ],
-                  columnsCount: 2
+                  columnsCount: 1
                 }
               }
             ]
           },
           {
-            formRow: "4",
+            formRow: "5",
             elements: [
               {
-                label: "Page ttestarea",
+                label: "textarea",
                 pageDataKey: "testPage",
-                elementKey: "ttestarea",
+                elementKey: "ptextarea",
                 inputType: "textarea",
-                formRow: "4",
+                formRow: "5",
                 formColumn: "1",
                 formCss: "full-width",
                 dataParent: "testPage",
-                fqn: "testPage.ttestarea"
+                fqn: "testPage.ptextarea"
               }
             ]
           }
         ],
-        columnsCount: 4
+        columnsCount: 3
       },
+      pageData: {}
+    },
+    testTable: {
+      pageTitle: "Test Table",
+      pageDataKey: "testTable",
+      pageChildren: [
+        {
+          label: "<b>a form <i>label</i></b>",
+          elementKey: "pform_label",
+          fqn: "testTable.table.pform_label"
+        },
+        {
+          label: "spacer",
+          elementKey: "pspacer",
+          fqn: "testTable.table.pspacer"
+        },
+        {
+          label: "text",
+          elementKey: "ptext",
+          fqn: "testTable.table.ptext"
+        },
+        {
+          label: "checkbox",
+          elementKey: "pcheckbox",
+          fqn: "testTable.table.pcheckbox",
+          helperText: "a checkbox iinput",
+          helperHtml: "<p>a checkbox iinput</p>"
+        },
+        {
+          label: "text",
+          elementKey: "ptextpcheckbox",
+          fqn: "testTable.table.ptextpcheckbox",
+          helperText: "a text input",
+          helperHtml: "<p>a text input</p>"
+        },
+        {
+          label: "assetLink",
+          elementKey: "passetLink",
+          fqn: "testTable.table.passetLink"
+        },
+        {
+          label: "select",
+          elementKey: "pselect",
+          fqn: "testTable.table.pselect",
+          passToFunction: "p-cValue1"
+        },
+        {
+          label: "select",
+          elementKey: "pselect2",
+          fqn: "testTable.table.pselect2",
+          passToFunction: "p-cValue1"
+        },
+        {
+          label: "calculatedValue",
+          elementKey: "p-cValue1",
+          fqn: "testTable.table.p-cValue1",
+          helperText: "a calculated value based on the select \'pselect1\' on this page",
+          helperHtml: "<p>a calculated value based on the select \'pselect1\' on this page</p>"
+        },
+        {
+          label: "checkset",
+          elementKey: "pcheckset",
+          fqn: "testTable.table.pcheckset"
+        },
+        {
+          label: "textarea",
+          elementKey: "ptextarea",
+          fqn: "testTable.table.ptextarea"
+        },
+        {
+          label: "text",
+          elementKey: "ptext1",
+          fqn: "testTable.table.pfieldset1.ptext1"
+        },
+        {
+          label: "textarea",
+          elementKey: "ptextarea1",
+          fqn: "testTable.table.pfieldset1.ptextarea1"
+        },
+        {
+          label: "select",
+          elementKey: "pselect1",
+          fqn: "testTable.table.pfieldset1.pselect1",
+          passToFunction: "p-cValue2"
+        },
+        {
+          label: "date",
+          elementKey: "pdate1",
+          fqn: "testTable.table.pfieldset1.pdate1"
+        },
+        {
+          label: "checkbox",
+          elementKey: "pcheckbox2",
+          fqn: "testTable.table.pfieldset2.pcheckbox2"
+        },
+        {
+          label: "<b>a form <i>label</i></b>",
+          elementKey: "pform_label2",
+          fqn: "testTable.table.pfieldset2.pform_label2"
+        },
+        {
+          label: "spacer",
+          elementKey: "pspacer2",
+          fqn: "testTable.table.pfieldset2.pspacer2"
+        },
+        {
+          label: "assetLink",
+          elementKey: "passetLink2",
+          fqn: "testTable.table.pfieldset2.passetLink2"
+        },
+        {
+          label: "p-cValue2",
+          elementKey: "p-cValue2",
+          fqn: "testTable.table.pfieldset2.p-cValue2"
+        }
+      ],
+      generated: "2019-06-26T07:10:16-07:00",
       hasTable: true,
       tables: [
         {
           tableKey: "table",
-          label: "Table table",
+          label: "table",
           addButtonText: "Add a row",
           tableCells: [
             {
-              label: "Table tttext",
-              pageDataKey: "testPage",
+              label: "<b>a form <i>label</i></b>",
+              pageDataKey: "testTable",
               level2Key: "table",
-              elementKey: "tttext",
-              inputType: "text",
+              elementKey: "pform_label",
+              inputType: "form_label",
               formRow: "1",
               formColumn: "1",
-              tableColumn: "1",
-              dataParent: "testPage.table",
-              fqn: "testPage.table.tttext",
+              dataParent: "testTable.table",
+              fqn: "testTable.table.pform_label",
               tableKey: "table"
             },
             {
-              label: "Table tttextarea",
-              pageDataKey: "testPage",
+              label: "fieldset",
+              pageDataKey: "testTable",
               level2Key: "table",
-              elementKey: "tttextarea",
-              inputType: "textarea",
+              elementKey: "pfieldset2",
+              inputType: "fieldset",
+              formRow: "4",
+              formColumn: "3",
+              dataParent: "testTable.table",
+              fqn: "testTable.table.pfieldset2",
+              containerType: "fieldset",
+              containerKey: "pfieldset2",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
+              label: "text",
+              pageDataKey: "testTable",
+              level2Key: "table",
+              elementKey: "ptext",
+              inputType: "text",
+              formRow: "1",
+              formColumn: "3",
+              dataParent: "testTable.table",
+              fqn: "testTable.table.ptext",
+              tableKey: "table"
+            },
+            {
+              label: "checkbox",
+              pageDataKey: "testTable",
+              level2Key: "table",
+              elementKey: "pcheckbox",
+              inputType: "checkbox",
+              formRow: "2",
+              formColumn: "1",
+              dataParent: "testTable.table",
+              fqn: "testTable.table.pcheckbox",
+              tableKey: "table"
+            },
+            {
+              label: "text",
+              pageDataKey: "testTable",
+              level2Key: "table",
+              elementKey: "ptextpcheckbox",
+              inputType: "text",
+              formRow: "2",
+              formColumn: "2",
+              dataParent: "testTable.table",
+              fqn: "testTable.table.ptextpcheckbox",
+              tableKey: "table"
+            },
+            {
+              label: "assetLink",
+              pageDataKey: "testTable",
+              level2Key: "table",
+              elementKey: "passetLink",
+              inputType: "assetLink",
+              formRow: "2",
+              formColumn: "3",
+              assetBase: "standardized-assessment-tools",
+              assetName: "the-canadian-ed-triage-and-acuity-scale.gif",
+              dataParent: "testTable.table",
+              fqn: "testTable.table.passetLink",
+              tableKey: "table"
+            },
+            {
+              label: "select",
+              pageDataKey: "testTable",
+              level2Key: "table",
+              elementKey: "pselect",
+              inputType: "select",
+              formRow: "3",
+              formColumn: "1",
+              options: [
+                {
+                  text: "1=a"
+                },
+                {
+                  text: "2=b"
+                },
+                {
+                  text: "3=c"
+                }
+              ],
+              dataParent: "testTable.table",
+              fqn: "testTable.table.pselect",
+              tableKey: "table"
+            },
+            {
+              label: "select",
+              pageDataKey: "testTable",
+              level2Key: "table",
+              elementKey: "pselect2",
+              inputType: "select",
+              formRow: "3",
+              formColumn: "2",
+              options: [
+                {
+                  text: "1=a"
+                },
+                {
+                  text: "2=b"
+                },
+                {
+                  text: "3=c"
+                }
+              ],
+              dataParent: "testTable.table",
+              fqn: "testTable.table.pselect2",
+              tableKey: "table"
+            },
+            {
+              label: "calculatedValue",
+              pageDataKey: "testTable",
+              level2Key: "table",
+              elementKey: "p-cValue1",
+              inputType: "calculatedValue",
+              formRow: "3",
+              formColumn: "3",
+              dataParent: "testTable.table",
+              fqn: "testTable.table.p-cValue1",
+              tableKey: "table"
+            },
+            {
+              label: "checkset",
+              pageDataKey: "testTable",
+              level2Key: "table",
+              elementKey: "pcheckset",
+              inputType: "checkset",
               formRow: "4",
               formColumn: "1",
-              tableColumn: "2",
-              dataParent: "testPage.table",
-              fqn: "testPage.table.tttextarea",
+              options: [
+                {
+                  text: "check1=check option 1"
+                },
+                {
+                  text: "check2=check option 2"
+                },
+                {
+                  text: "other=another option"
+                },
+                {
+                  text: "all=all options are selectable"
+                }
+              ],
+              dataParent: "testTable.table",
+              fqn: "testTable.table.pcheckset",
               tableKey: "table"
             },
             {
-              label: "Table ttselect",
-              pageDataKey: "testPage",
+              label: "textarea",
+              pageDataKey: "testTable",
               level2Key: "table",
-              elementKey: "ttselect",
-              inputType: "select",
-              formRow: "2",
+              elementKey: "ptextarea",
+              inputType: "textarea",
+              formRow: "5",
               formColumn: "1",
-              tableColumn: "3",
+              formCss: "full-width",
+              dataParent: "testTable.table",
+              fqn: "testTable.table.ptextarea",
+              tableKey: "table"
+            },
+            {
+              label: "spacer",
+              pageDataKey: "testTable",
+              level2Key: "table",
+              elementKey: "pspacer",
+              inputType: "spacer",
+              formRow: "1",
+              formColumn: "2",
+              dataParent: "testTable.table",
+              fqn: "testTable.table.pspacer",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
+              label: "textarea",
+              pageDataKey: "testTable",
+              level2Key: "table",
+              level3Key: "pfieldset1",
+              elementKey: "ptextarea1",
+              inputType: "textarea",
+              fsetRow: "2",
+              fsetCol: "1",
+              dataParent: "testTable.table.pfieldset1",
+              fqn: "testTable.table.pfieldset1.ptextarea1",
+              tableKey: "table",
+              formColumn: "1"
+            },
+            {
+              label: "select",
+              pageDataKey: "testTable",
+              level2Key: "table",
+              level3Key: "pfieldset1",
+              elementKey: "pselect1",
+              inputType: "select",
+              fsetRow: "3",
+              fsetCol: "1",
               options: [
                 {
                   text: "1 = Yes"
@@ -651,252 +959,127 @@ export default function () {
                   text: "2 = No"
                 }
               ],
-              dataParent: "testPage.table",
-              fqn: "testPage.table.ttselect",
-              tableKey: "table"
-            },
-            {
-              label: "Table ttdate",
-              pageDataKey: "testPage",
-              level2Key: "table",
-              elementKey: "ttdate",
-              inputType: "date",
-              formRow: "3",
-              formColumn: "1",
-              tableColumn: "4",
-              dataParent: "testPage.table",
-              fqn: "testPage.table.ttdate",
-              tableKey: "table"
-            },
-            {
-              label: "Table ttcheckbox",
-              pageDataKey: "testPage",
-              level2Key: "table",
-              elementKey: "ttcheckbox",
-              inputType: "checkbox",
-              formRow: "2",
-              formColumn: "2",
-              tableColumn: "5",
-              dataParent: "testPage.table",
-              fqn: "testPage.table.ttcheckbox",
-              tableKey: "table"
-            },
-            {
-              label: "<b>a form <i>label</i></b>",
-              pageDataKey: "testPage",
-              level2Key: "table",
-              elementKey: "ttform_label",
-              inputType: "form_label",
-              formRow: "1",
-              formColumn: "3",
-              tableColumn: "6",
-              dataParent: "testPage.table",
-              fqn: "testPage.table.ttform_label",
-              tableKey: "table"
-            },
-            {
-              label: "Table ttspacer",
-              pageDataKey: "testPage",
-              level2Key: "table",
-              elementKey: "ttspacer",
-              inputType: "spacer",
-              formRow: "1",
-              formColumn: "1",
-              tableColumn: "7",
-              dataParent: "testPage.table",
-              fqn: "testPage.table.ttspacer",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
-              label: "Table ttassetLink",
-              pageDataKey: "testPage",
-              level2Key: "table",
-              elementKey: "ttassetLink",
-              inputType: "assetLink",
-              formRow: "2",
-              formColumn: "2",
-              tableColumn: "8",
-              assetBase: "Standardized assessment tools",
-              assetName: "OPQRSTUV.pdf",
-              dataParent: "testPage.table",
-              fqn: "testPage.table.ttassetLink",
-              tableKey: "table"
-            },
-            {
-              label: "Table ttcalculatedValue",
-              pageDataKey: "testPage",
-              level2Key: "table",
-              elementKey: "ttcalculatedValue",
-              inputType: "calculatedValue",
-              formRow: "2",
-              formColumn: "3",
-              tableColumn: "9",
-              dataParent: "testPage.table",
-              fqn: "testPage.table.ttcalculatedValue",
-              tableKey: "table"
-            },
-            {
-              label: "Table ttfieldset",
-              pageDataKey: "testPage",
-              level2Key: "table",
-              elementKey: "ttfieldset",
-              inputType: "fieldset",
-              formRow: "3",
-              formColumn: "2",
-              tableColumn: "10",
-              dataParent: "testPage.table",
-              fqn: "testPage.table.ttfieldset",
-              containerType: "fieldset",
-              containerKey: "ttfieldset",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
-              label: "Table ttftext",
-              pageDataKey: "testPage",
-              level2Key: "table",
-              level3Key: "ttfieldset",
-              elementKey: "ttftext",
-              inputType: "text",
-              tableColumn: "11",
-              fsetRow: "1",
-              fsetCol: "1",
-              dataParent: "testPage.table.ttfieldset",
-              fqn: "testPage.table.ttfieldset.ttftext",
+              dataParent: "testTable.table.pfieldset1",
+              fqn: "testTable.table.pfieldset1.pselect1",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              label: "Table ttftextarea",
-              pageDataKey: "testPage",
+              label: "date",
+              pageDataKey: "testTable",
               level2Key: "table",
-              level3Key: "ttfieldset",
-              elementKey: "ttftextarea",
-              inputType: "textarea",
-              tableColumn: "12",
+              level3Key: "pfieldset1",
+              elementKey: "pdate1",
+              inputType: "date",
+              fsetRow: "4",
+              fsetCol: "1",
+              dataParent: "testTable.table.pfieldset1",
+              fqn: "testTable.table.pfieldset1.pdate1",
+              tableKey: "table",
+              formColumn: "1"
+            },
+            {
+              label: "fieldset",
+              pageDataKey: "testTable",
+              level2Key: "table",
+              elementKey: "pfieldset1",
+              inputType: "fieldset",
+              formRow: "4",
+              formColumn: "2",
+              dataParent: "testTable.table",
+              fqn: "testTable.table.pfieldset1",
+              containerType: "fieldset",
+              containerKey: "pfieldset1",
+              tableCss: "hide-table-element",
+              tableKey: "table"
+            },
+            {
+              label: "checkbox",
+              pageDataKey: "testTable",
+              level2Key: "table",
+              level3Key: "pfieldset2",
+              elementKey: "pcheckbox2",
+              inputType: "checkbox",
+              fsetRow: "1",
+              fsetCol: "1",
+              dataParent: "testTable.table.pfieldset2",
+              fqn: "testTable.table.pfieldset2.pcheckbox2",
+              tableKey: "table",
+              formColumn: "1"
+            },
+            {
+              label: "<b>a form <i>label</i></b>",
+              pageDataKey: "testTable",
+              level2Key: "table",
+              level3Key: "pfieldset2",
+              elementKey: "pform_label2",
+              inputType: "form_label",
+              fsetRow: "2",
+              fsetCol: "1",
+              dataParent: "testTable.table.pfieldset2",
+              fqn: "testTable.table.pfieldset2.pform_label2",
+              tableKey: "table",
+              formColumn: "1"
+            },
+            {
+              label: "spacer",
+              pageDataKey: "testTable",
+              level2Key: "table",
+              level3Key: "pfieldset2",
+              elementKey: "pspacer2",
+              inputType: "spacer",
+              fsetRow: "3",
+              fsetCol: "1",
+              dataParent: "testTable.table.pfieldset2",
+              fqn: "testTable.table.pfieldset2.pspacer2",
+              tableCss: "hide-table-element",
+              tableKey: "table",
+              formColumn: "1"
+            },
+            {
+              label: "assetLink",
+              pageDataKey: "testTable",
+              level2Key: "table",
+              level3Key: "pfieldset2",
+              elementKey: "passetLink2",
+              inputType: "assetLink",
+              fsetRow: "4",
+              fsetCol: "1",
+              assetBase: "standardized-assessment-tools",
+              assetName: "the-canadian-ed-triage-and-acuity-scale.gif",
+              dataParent: "testTable.table.pfieldset2",
+              fqn: "testTable.table.pfieldset2.passetLink2",
+              tableKey: "table",
+              formColumn: "1"
+            },
+            {
+              label: "p-cValue2",
+              pageDataKey: "testTable",
+              level2Key: "table",
+              level3Key: "pfieldset2",
+              elementKey: "p-cValue2",
+              inputType: "calculatedValue",
               fsetRow: "5",
               fsetCol: "1",
-              dataParent: "testPage.table.ttfieldset",
-              fqn: "testPage.table.ttfieldset.ttftextarea",
+              dataParent: "testTable.table.pfieldset2",
+              fqn: "testTable.table.pfieldset2.p-cValue2",
               tableKey: "table",
               formColumn: "1"
             },
             {
-              label: "Table ttfselect",
-              pageDataKey: "testPage",
+              label: "text",
+              pageDataKey: "testTable",
               level2Key: "table",
-              level3Key: "ttfieldset",
-              elementKey: "ttfselect",
-              inputType: "select",
-              tableColumn: "13",
-              fsetRow: "2",
-              fsetCol: "1",
-              options: [
-                {
-                  text: "1 = Yes"
-                },
-                {
-                  text: "2 = No"
-                }
-              ],
-              dataParent: "testPage.table.ttfieldset",
-              fqn: "testPage.table.ttfieldset.ttfselect",
-              tableKey: "table",
-              formColumn: "1"
-            },
-            {
-              label: "Table ttfdate",
-              pageDataKey: "testPage",
-              level2Key: "table",
-              level3Key: "ttfieldset",
-              elementKey: "ttfdate",
-              inputType: "date",
-              tableColumn: "14",
-              fsetRow: "4",
-              fsetCol: "2",
-              dataParent: "testPage.table.ttfieldset",
-              fqn: "testPage.table.ttfieldset.ttfdate",
-              tableKey: "table",
-              formColumn: "2"
-            },
-            {
-              label: "Table ttfcheckbox",
-              pageDataKey: "testPage",
-              level2Key: "table",
-              level3Key: "ttfieldset",
-              elementKey: "ttfcheckbox",
-              inputType: "checkbox",
-              tableColumn: "15",
+              level3Key: "pfieldset1",
+              elementKey: "ptext1",
+              inputType: "text",
+              formOption: "hideLabel",
               fsetRow: "1",
-              fsetCol: "2",
-              dataParent: "testPage.table.ttfieldset",
-              fqn: "testPage.table.ttfieldset.ttfcheckbox",
-              tableKey: "table",
-              formColumn: "2"
-            },
-            {
-              label: "<b>a form <i>label</i></b>",
-              pageDataKey: "testPage",
-              level2Key: "table",
-              level3Key: "ttfieldset",
-              elementKey: "ttfform_label",
-              inputType: "form_label",
-              tableColumn: "16",
-              fsetRow: "3",
-              fsetCol: "2",
-              dataParent: "testPage.table.ttfieldset",
-              fqn: "testPage.table.ttfieldset.ttfform_label",
-              tableKey: "table",
-              formColumn: "2"
-            },
-            {
-              label: "Table ttfspacer",
-              pageDataKey: "testPage",
-              level2Key: "table",
-              level3Key: "ttfieldset",
-              elementKey: "ttfspacer",
-              inputType: "spacer",
-              tableColumn: "17",
-              fsetRow: "3",
               fsetCol: "1",
-              dataParent: "testPage.table.ttfieldset",
-              fqn: "testPage.table.ttfieldset.ttfspacer",
-              tableCss: "hide-table-element",
+              dataParent: "testTable.table.pfieldset1",
+              fqn: "testTable.table.pfieldset1.ptext1",
               tableKey: "table",
               formColumn: "1"
-            },
-            {
-              label: "Table ttfassetLink",
-              pageDataKey: "testPage",
-              level2Key: "table",
-              level3Key: "ttfieldset",
-              elementKey: "ttfassetLink",
-              inputType: "assetLink",
-              tableColumn: "18",
-              fsetRow: "4",
-              fsetCol: "1",
-              assetBase: "Standardized assessment tools",
-              assetName: "OPQRSTUV.pdf",
-              dataParent: "testPage.table.ttfieldset",
-              fqn: "testPage.table.ttfieldset.ttfassetLink",
-              tableKey: "table",
-              formColumn: "1"
-            },
-            {
-              label: "Table ttfcalculatedValue",
-              pageDataKey: "testPage",
-              level2Key: "table",
-              level3Key: "ttfieldset",
-              elementKey: "ttfcalculatedValue",
-              inputType: "calculatedValue",
-              tableColumn: "19",
-              fsetRow: "2",
-              fsetCol: "2",
-              dataParent: "testPage.table.ttfieldset",
-              fqn: "testPage.table.ttfieldset.ttfcalculatedValue",
-              tableKey: "table",
-              formColumn: "2"
             }
           ],
           tableForm: {
@@ -905,43 +1088,40 @@ export default function () {
                 formRow: "1",
                 elements: [
                   {
-                    label: "Table tttext",
-                    pageDataKey: "testPage",
+                    label: "<b>a form <i>label</i></b>",
+                    pageDataKey: "testTable",
                     level2Key: "table",
-                    elementKey: "tttext",
-                    inputType: "text",
+                    elementKey: "pform_label",
+                    inputType: "form_label",
                     formRow: "1",
                     formColumn: "1",
-                    tableColumn: "1",
-                    dataParent: "testPage.table",
-                    fqn: "testPage.table.tttext",
+                    dataParent: "testTable.table",
+                    fqn: "testTable.table.pform_label",
                     tableKey: "table"
                   },
                   {
-                    label: "Table ttspacer",
-                    pageDataKey: "testPage",
+                    label: "spacer",
+                    pageDataKey: "testTable",
                     level2Key: "table",
-                    elementKey: "ttspacer",
+                    elementKey: "pspacer",
                     inputType: "spacer",
                     formRow: "1",
-                    formColumn: "1",
-                    tableColumn: "7",
-                    dataParent: "testPage.table",
-                    fqn: "testPage.table.ttspacer",
+                    formColumn: "2",
+                    dataParent: "testTable.table",
+                    fqn: "testTable.table.pspacer",
                     tableCss: "hide-table-element",
                     tableKey: "table"
                   },
                   {
-                    label: "<b>a form <i>label</i></b>",
-                    pageDataKey: "testPage",
+                    label: "text",
+                    pageDataKey: "testTable",
                     level2Key: "table",
-                    elementKey: "ttform_label",
-                    inputType: "form_label",
+                    elementKey: "ptext",
+                    inputType: "text",
                     formRow: "1",
                     formColumn: "3",
-                    tableColumn: "6",
-                    dataParent: "testPage.table",
-                    fqn: "testPage.table.ttform_label",
+                    dataParent: "testTable.table",
+                    fqn: "testTable.table.ptext",
                     tableKey: "table"
                   }
                 ]
@@ -950,65 +1130,41 @@ export default function () {
                 formRow: "2",
                 elements: [
                   {
-                    label: "Table ttselect",
-                    pageDataKey: "testPage",
+                    label: "checkbox",
+                    pageDataKey: "testTable",
                     level2Key: "table",
-                    elementKey: "ttselect",
-                    inputType: "select",
-                    formRow: "2",
-                    formColumn: "1",
-                    tableColumn: "3",
-                    options: [
-                      {
-                        text: "1 = Yes"
-                      },
-                      {
-                        text: "2 = No"
-                      }
-                    ],
-                    dataParent: "testPage.table",
-                    fqn: "testPage.table.ttselect",
-                    tableKey: "table"
-                  },
-                  {
-                    label: "Table ttcheckbox",
-                    pageDataKey: "testPage",
-                    level2Key: "table",
-                    elementKey: "ttcheckbox",
+                    elementKey: "pcheckbox",
                     inputType: "checkbox",
                     formRow: "2",
-                    formColumn: "2",
-                    tableColumn: "5",
-                    dataParent: "testPage.table",
-                    fqn: "testPage.table.ttcheckbox",
+                    formColumn: "1",
+                    dataParent: "testTable.table",
+                    fqn: "testTable.table.pcheckbox",
                     tableKey: "table"
                   },
                   {
-                    label: "Table ttassetLink",
-                    pageDataKey: "testPage",
+                    label: "text",
+                    pageDataKey: "testTable",
                     level2Key: "table",
-                    elementKey: "ttassetLink",
+                    elementKey: "ptextpcheckbox",
+                    inputType: "text",
+                    formRow: "2",
+                    formColumn: "2",
+                    dataParent: "testTable.table",
+                    fqn: "testTable.table.ptextpcheckbox",
+                    tableKey: "table"
+                  },
+                  {
+                    label: "assetLink",
+                    pageDataKey: "testTable",
+                    level2Key: "table",
+                    elementKey: "passetLink",
                     inputType: "assetLink",
                     formRow: "2",
-                    formColumn: "2",
-                    tableColumn: "8",
-                    assetBase: "Standardized assessment tools",
-                    assetName: "OPQRSTUV.pdf",
-                    dataParent: "testPage.table",
-                    fqn: "testPage.table.ttassetLink",
-                    tableKey: "table"
-                  },
-                  {
-                    label: "Table ttcalculatedValue",
-                    pageDataKey: "testPage",
-                    level2Key: "table",
-                    elementKey: "ttcalculatedValue",
-                    inputType: "calculatedValue",
-                    formRow: "2",
                     formColumn: "3",
-                    tableColumn: "9",
-                    dataParent: "testPage.table",
-                    fqn: "testPage.table.ttcalculatedValue",
+                    assetBase: "standardized-assessment-tools",
+                    assetName: "the-canadian-ed-triage-and-acuity-scale.gif",
+                    dataParent: "testTable.table",
+                    fqn: "testTable.table.passetLink",
                     tableKey: "table"
                   }
                 ]
@@ -1017,31 +1173,106 @@ export default function () {
                 formRow: "3",
                 elements: [
                   {
-                    label: "Table ttdate",
-                    pageDataKey: "testPage",
+                    label: "select",
+                    pageDataKey: "testTable",
                     level2Key: "table",
-                    elementKey: "ttdate",
-                    inputType: "date",
+                    elementKey: "pselect",
+                    inputType: "select",
                     formRow: "3",
                     formColumn: "1",
-                    tableColumn: "4",
-                    dataParent: "testPage.table",
-                    fqn: "testPage.table.ttdate",
+                    options: [
+                      {
+                        text: "1=a"
+                      },
+                      {
+                        text: "2=b"
+                      },
+                      {
+                        text: "3=c"
+                      }
+                    ],
+                    dataParent: "testTable.table",
+                    fqn: "testTable.table.pselect",
                     tableKey: "table"
                   },
                   {
-                    label: "Table ttfieldset",
-                    pageDataKey: "testPage",
+                    label: "select",
+                    pageDataKey: "testTable",
                     level2Key: "table",
-                    elementKey: "ttfieldset",
-                    inputType: "fieldset",
+                    elementKey: "pselect2",
+                    inputType: "select",
                     formRow: "3",
                     formColumn: "2",
-                    tableColumn: "10",
-                    dataParent: "testPage.table",
-                    fqn: "testPage.table.ttfieldset",
+                    options: [
+                      {
+                        text: "1=a"
+                      },
+                      {
+                        text: "2=b"
+                      },
+                      {
+                        text: "3=c"
+                      }
+                    ],
+                    dataParent: "testTable.table",
+                    fqn: "testTable.table.pselect2",
+                    tableKey: "table"
+                  },
+                  {
+                    label: "calculatedValue",
+                    pageDataKey: "testTable",
+                    level2Key: "table",
+                    elementKey: "p-cValue1",
+                    inputType: "calculatedValue",
+                    formRow: "3",
+                    formColumn: "3",
+                    dataParent: "testTable.table",
+                    fqn: "testTable.table.p-cValue1",
+                    tableKey: "table"
+                  }
+                ]
+              },
+              {
+                formRow: "4",
+                elements: [
+                  {
+                    label: "checkset",
+                    pageDataKey: "testTable",
+                    level2Key: "table",
+                    elementKey: "pcheckset",
+                    inputType: "checkset",
+                    formRow: "4",
+                    formColumn: "1",
+                    options: [
+                      {
+                        text: "check1=check option 1"
+                      },
+                      {
+                        text: "check2=check option 2"
+                      },
+                      {
+                        text: "other=another option"
+                      },
+                      {
+                        text: "all=all options are selectable"
+                      }
+                    ],
+                    dataParent: "testTable.table",
+                    fqn: "testTable.table.pcheckset",
+                    tableKey: "table"
+                  },
+                  {
+                    label: "fieldset",
+                    pageDataKey: "testTable",
+                    level2Key: "table",
+                    elementKey: "pfieldset1",
+                    inputType: "fieldset",
+                    formRow: "4",
+                    formColumn: "2",
+                    dataParent: "testTable.table",
+                    fqn: "testTable.table.pfieldset1",
                     containerType: "fieldset",
-                    containerKey: "ttfieldset",
+                    containerKey: "pfieldset1",
                     tableCss: "hide-table-element",
                     tableKey: "table",
                     formFieldSet: {
@@ -1050,34 +1281,19 @@ export default function () {
                           formRow: "1",
                           elements: [
                             {
-                              label: "Table ttftext",
-                              pageDataKey: "testPage",
+                              label: "text",
+                              pageDataKey: "testTable",
                               level2Key: "table",
-                              level3Key: "ttfieldset",
-                              elementKey: "ttftext",
+                              level3Key: "pfieldset1",
+                              elementKey: "ptext1",
                               inputType: "text",
-                              tableColumn: "11",
+                              formOption: "hideLabel",
                               fsetRow: "1",
                               fsetCol: "1",
-                              dataParent: "testPage.table.ttfieldset",
-                              fqn: "testPage.table.ttfieldset.ttftext",
+                              dataParent: "testTable.table.pfieldset1",
+                              fqn: "testTable.table.pfieldset1.ptext1",
                               tableKey: "table",
                               formColumn: "1"
-                            },
-                            {
-                              label: "Table ttfcheckbox",
-                              pageDataKey: "testPage",
-                              level2Key: "table",
-                              level3Key: "ttfieldset",
-                              elementKey: "ttfcheckbox",
-                              inputType: "checkbox",
-                              tableColumn: "15",
-                              fsetRow: "1",
-                              fsetCol: "2",
-                              dataParent: "testPage.table.ttfieldset",
-                              fqn: "testPage.table.ttfieldset.ttfcheckbox",
-                              tableKey: "table",
-                              formColumn: "2"
                             }
                           ]
                         },
@@ -1085,14 +1301,32 @@ export default function () {
                           formRow: "2",
                           elements: [
                             {
-                              label: "Table ttfselect",
-                              pageDataKey: "testPage",
+                              label: "textarea",
+                              pageDataKey: "testTable",
                               level2Key: "table",
-                              level3Key: "ttfieldset",
-                              elementKey: "ttfselect",
-                              inputType: "select",
-                              tableColumn: "13",
+                              level3Key: "pfieldset1",
+                              elementKey: "ptextarea1",
+                              inputType: "textarea",
                               fsetRow: "2",
+                              fsetCol: "1",
+                              dataParent: "testTable.table.pfieldset1",
+                              fqn: "testTable.table.pfieldset1.ptextarea1",
+                              tableKey: "table",
+                              formColumn: "1"
+                            }
+                          ]
+                        },
+                        {
+                          formRow: "3",
+                          elements: [
+                            {
+                              label: "select",
+                              pageDataKey: "testTable",
+                              level2Key: "table",
+                              level3Key: "pfieldset1",
+                              elementKey: "pselect1",
+                              inputType: "select",
+                              fsetRow: "3",
                               fsetCol: "1",
                               options: [
                                 {
@@ -1102,61 +1336,10 @@ export default function () {
                                   text: "2 = No"
                                 }
                               ],
-                              dataParent: "testPage.table.ttfieldset",
-                              fqn: "testPage.table.ttfieldset.ttfselect",
+                              dataParent: "testTable.table.pfieldset1",
+                              fqn: "testTable.table.pfieldset1.pselect1",
                               tableKey: "table",
                               formColumn: "1"
-                            },
-                            {
-                              label: "Table ttfcalculatedValue",
-                              pageDataKey: "testPage",
-                              level2Key: "table",
-                              level3Key: "ttfieldset",
-                              elementKey: "ttfcalculatedValue",
-                              inputType: "calculatedValue",
-                              tableColumn: "19",
-                              fsetRow: "2",
-                              fsetCol: "2",
-                              dataParent: "testPage.table.ttfieldset",
-                              fqn: "testPage.table.ttfieldset.ttfcalculatedValue",
-                              tableKey: "table",
-                              formColumn: "2"
-                            }
-                          ]
-                        },
-                        {
-                          formRow: "3",
-                          elements: [
-                            {
-                              label: "Table ttfspacer",
-                              pageDataKey: "testPage",
-                              level2Key: "table",
-                              level3Key: "ttfieldset",
-                              elementKey: "ttfspacer",
-                              inputType: "spacer",
-                              tableColumn: "17",
-                              fsetRow: "3",
-                              fsetCol: "1",
-                              dataParent: "testPage.table.ttfieldset",
-                              fqn: "testPage.table.ttfieldset.ttfspacer",
-                              tableCss: "hide-table-element",
-                              tableKey: "table",
-                              formColumn: "1"
-                            },
-                            {
-                              label: "<b>a form <i>label</i></b>",
-                              pageDataKey: "testPage",
-                              level2Key: "table",
-                              level3Key: "ttfieldset",
-                              elementKey: "ttfform_label",
-                              inputType: "form_label",
-                              tableColumn: "16",
-                              fsetRow: "3",
-                              fsetCol: "2",
-                              dataParent: "testPage.table.ttfieldset",
-                              fqn: "testPage.table.ttfieldset.ttfform_label",
-                              tableKey: "table",
-                              formColumn: "2"
                             }
                           ]
                         },
@@ -1164,36 +1347,117 @@ export default function () {
                           formRow: "4",
                           elements: [
                             {
-                              label: "Table ttfassetLink",
-                              pageDataKey: "testPage",
+                              label: "date",
+                              pageDataKey: "testTable",
                               level2Key: "table",
-                              level3Key: "ttfieldset",
-                              elementKey: "ttfassetLink",
-                              inputType: "assetLink",
-                              tableColumn: "18",
+                              level3Key: "pfieldset1",
+                              elementKey: "pdate1",
+                              inputType: "date",
                               fsetRow: "4",
                               fsetCol: "1",
-                              assetBase: "Standardized assessment tools",
-                              assetName: "OPQRSTUV.pdf",
-                              dataParent: "testPage.table.ttfieldset",
-                              fqn: "testPage.table.ttfieldset.ttfassetLink",
+                              dataParent: "testTable.table.pfieldset1",
+                              fqn: "testTable.table.pfieldset1.pdate1",
                               tableKey: "table",
                               formColumn: "1"
-                            },
+                            }
+                          ]
+                        }
+                      ],
+                      columnsCount: 1
+                    }
+                  },
+                  {
+                    label: "fieldset",
+                    pageDataKey: "testTable",
+                    level2Key: "table",
+                    elementKey: "pfieldset2",
+                    inputType: "fieldset",
+                    formRow: "4",
+                    formColumn: "3",
+                    dataParent: "testTable.table",
+                    fqn: "testTable.table.pfieldset2",
+                    containerType: "fieldset",
+                    containerKey: "pfieldset2",
+                    tableCss: "hide-table-element",
+                    tableKey: "table",
+                    formFieldSet: {
+                      rows: [
+                        {
+                          formRow: "1",
+                          elements: [
                             {
-                              label: "Table ttfdate",
-                              pageDataKey: "testPage",
+                              label: "checkbox",
+                              pageDataKey: "testTable",
                               level2Key: "table",
-                              level3Key: "ttfieldset",
-                              elementKey: "ttfdate",
-                              inputType: "date",
-                              tableColumn: "14",
-                              fsetRow: "4",
-                              fsetCol: "2",
-                              dataParent: "testPage.table.ttfieldset",
-                              fqn: "testPage.table.ttfieldset.ttfdate",
+                              level3Key: "pfieldset2",
+                              elementKey: "pcheckbox2",
+                              inputType: "checkbox",
+                              fsetRow: "1",
+                              fsetCol: "1",
+                              dataParent: "testTable.table.pfieldset2",
+                              fqn: "testTable.table.pfieldset2.pcheckbox2",
                               tableKey: "table",
-                              formColumn: "2"
+                              formColumn: "1"
+                            }
+                          ]
+                        },
+                        {
+                          formRow: "2",
+                          elements: [
+                            {
+                              label: "<b>a form <i>label</i></b>",
+                              pageDataKey: "testTable",
+                              level2Key: "table",
+                              level3Key: "pfieldset2",
+                              elementKey: "pform_label2",
+                              inputType: "form_label",
+                              fsetRow: "2",
+                              fsetCol: "1",
+                              dataParent: "testTable.table.pfieldset2",
+                              fqn: "testTable.table.pfieldset2.pform_label2",
+                              tableKey: "table",
+                              formColumn: "1"
+                            }
+                          ]
+                        },
+                        {
+                          formRow: "3",
+                          elements: [
+                            {
+                              label: "spacer",
+                              pageDataKey: "testTable",
+                              level2Key: "table",
+                              level3Key: "pfieldset2",
+                              elementKey: "pspacer2",
+                              inputType: "spacer",
+                              fsetRow: "3",
+                              fsetCol: "1",
+                              dataParent: "testTable.table.pfieldset2",
+                              fqn: "testTable.table.pfieldset2.pspacer2",
+                              tableCss: "hide-table-element",
+                              tableKey: "table",
+                              formColumn: "1"
+                            }
+                          ]
+                        },
+                        {
+                          formRow: "4",
+                          elements: [
+                            {
+                              label: "assetLink",
+                              pageDataKey: "testTable",
+                              level2Key: "table",
+                              level3Key: "pfieldset2",
+                              elementKey: "passetLink2",
+                              inputType: "assetLink",
+                              fsetRow: "4",
+                              fsetCol: "1",
+                              assetBase: "standardized-assessment-tools",
+                              assetName: "the-canadian-ed-triage-and-acuity-scale.gif",
+                              dataParent: "testTable.table.pfieldset2",
+                              fqn: "testTable.table.pfieldset2.passetLink2",
+                              tableKey: "table",
+                              formColumn: "1"
                             }
                           ]
                         },
@@ -1201,48 +1465,47 @@ export default function () {
                           formRow: "5",
                           elements: [
                             {
-                              label: "Table ttftextarea",
-                              pageDataKey: "testPage",
+                              label: "p-cValue2",
+                              pageDataKey: "testTable",
                               level2Key: "table",
-                              level3Key: "ttfieldset",
-                              elementKey: "ttftextarea",
-                              inputType: "textarea",
-                              tableColumn: "12",
+                              level3Key: "pfieldset2",
+                              elementKey: "p-cValue2",
+                              inputType: "calculatedValue",
                               fsetRow: "5",
                               fsetCol: "1",
-                              dataParent: "testPage.table.ttfieldset",
-                              fqn: "testPage.table.ttfieldset.ttftextarea",
+                              dataParent: "testTable.table.pfieldset2",
+                              fqn: "testTable.table.pfieldset2.p-cValue2",
                               tableKey: "table",
                               formColumn: "1"
                             }
                           ]
                         }
                       ],
-                      columnsCount: 2
+                      columnsCount: 1
                     }
                   }
                 ]
               },
               {
-                formRow: "4",
+                formRow: "5",
                 elements: [
                   {
-                    label: "Table tttextarea",
-                    pageDataKey: "testPage",
+                    label: "textarea",
+                    pageDataKey: "testTable",
                     level2Key: "table",
-                    elementKey: "tttextarea",
+                    elementKey: "ptextarea",
                     inputType: "textarea",
-                    formRow: "4",
+                    formRow: "5",
                     formColumn: "1",
-                    tableColumn: "2",
-                    dataParent: "testPage.table",
-                    fqn: "testPage.table.tttextarea",
+                    formCss: "full-width",
+                    dataParent: "testTable.table",
+                    fqn: "testTable.table.ptextarea",
                     tableKey: "table"
                   }
                 ]
               }
             ],
-            columnsCount: 4
+            columnsCount: 3
           }
         }
       ],

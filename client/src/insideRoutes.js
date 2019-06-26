@@ -329,6 +329,13 @@ export function inside () {
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/TestPage.vue'),
       meta: { layout: 'inside', label: 'Test Page', topLevel: 'external' }
+    },
+    {
+      path: '/ehr/external/test-table',
+      name: 'test-table',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/TestTable.vue'),
+      meta: { layout: 'inside', label: 'Test Table', topLevel: 'external' }
     }
   ]
 }

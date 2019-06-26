@@ -45,3 +45,4 @@
 {path: /ehr/external}	{routeName: intervention-codes}	{pageDataKey: interventionCodes}	{label: Intervention codes}	{redirect: }	{generateComponent: yes}
 {path: /ehr/external}	{routeName: case-mix-group}	{pageDataKey: caseMixGroup}	{label: Case mix group}	{redirect: }	{generateComponent: yes}
 {path: /ehr/external}	{routeName: test-page}	{pageDataKey: testPage}	{label: Test Page}	{redirect: }	{generateComponent: yes}
+{path: /ehr/external}	{routeName: test-table}	{pageDataKey: testTable}	{label: Test Table}	{redirect: }	{generateComponent: yes}
