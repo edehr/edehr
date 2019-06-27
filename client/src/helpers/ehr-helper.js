@@ -6,7 +6,7 @@ import { DIALOG_INPUT_EVENT } from './event-bus'
 import { PAGE_FORM_INPUT_EVENT } from './event-bus'
 import { PAGE_DATA_REFRESH_EVENT } from './event-bus'
 import { removeEmptyProperties, prepareAssignmentPageDataForSave, formatTimeStr } from './ehr-utills'
-import { getPageDefinition } from './ehr-defs'
+import { getPageDefinition, getDefaultValue } from './ehr-defs'
 
 const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
@@ -299,7 +299,11 @@ export default class EhrHelp {
     // console.log('clear dialog cells', cells)
     // TODO check that default values are working
     cells.forEach(cell => {
-      inputs[cell.elementKey] = cell.defaultValue ? cell.defaultValue : '' //cell.defaultValue(this.$store) : ''
+      let dV = getDefaultValue(cell.pageDataKey, cell.elementKey)
+      if (dV) {
+        // console.log('load table cell with default value', cell, dV)
+        inputs[cell.elementKey] = dV
+      }
     })
     // empty the error list array
     d.errorList = []

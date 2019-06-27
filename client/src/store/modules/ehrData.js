@@ -77,9 +77,10 @@ const getters = {
       let mergedData = getters.mergedData
       // let pageKey = rootState.system.currentPageKey
       let pageData = mergedData[pageKey]
+      let pageDef = getPageDefinition(pageKey)
+      let isDevelopingContent = rootState.visit.isDevelopingContent
       if(debug) console.log('EhrData asLoadedDataForPageKey -=-=-=-=-=-=-=-=-=-=-=-= key and page data:', pageKey, pageData)
       if (!pageData) {
-        let pageDef = getPageDefinition(pageKey)
         if (!pageKey || !pageDef) {
           if(debug) console.log('EhrData asLoadedDataForPageKey ................ too soon')
           return {}
@@ -93,27 +94,35 @@ const getters = {
         } else {
           if(debug) console.log('asLoadedDataForPageKey page default data is ', JSON.stringify(defaultPageValue))
         }
-        pageData = defaultPageValue
-        mergedData[pageKey] = defaultPageValue
-        let formDefs = pageDef.page_form
-        if (formDefs) {
-          // console.log('EhrData asLoadedDataForPageKey formDefs -=-=-=-=-=-=-=-=-=-=-=-=', pageKey)
-          let rows = formDefs.rows
-          rows.forEach(row => {
-            row.elements.forEach(element => {
-              let defaultValue = getDefaultValue(element)
-              let isDevelopingContent = rootState.visit.isDevelopingContent
-              if (isDevelopingContent) {
-                defaultValue = getDataCaseStudy(element)
-                // console.log('prepareAsLoadedData isDevelopingContent, defaultValue', isDevelopingContent, defaultValue  )
-              }
-              // TODO see about date, time, and boolean default values
-              if (!pageData[element.elementKey]) {
-                pageData[element.elementKey] = defaultValue
-              }
-            })
-          })
+        pageData = mergedData[pageKey] = defaultPageValue
+      }
+      function loadDef (pageDataKey, elementKey, pageData) {
+        let defaultValue = getDefaultValue(pageDataKey, elementKey)
+        if (isDevelopingContent) {
+          defaultValue = getDataCaseStudy(pageDataKey, elementKey)
+          // console.log('prepareAsLoadedData isDevelopingContent, defaultValue', isDevelopingContent, defaultValue  )
         }
+        // TODO see about date, time, and boolean default values
+        if (!pageData[elementKey]) {
+          // console.log('prepareAsLoadedData ', elementKey, defaultValue  )
+          pageData[elementKey] = defaultValue
+        }
+      }
+
+      let formDefs = pageDef.page_form
+      if (formDefs) {
+        // console.log('EhrData asLoadedDataForPageKey formDefs -=-=-=-=-=-=-=-=-=-=-=-=', pageKey)
+        let rows = formDefs.rows
+        rows.forEach(row => {
+          row.elements.forEach(element => {
+            loadDef(pageKey, element.elementKey, pageData)
+            if (element.elements) {
+              element.elements.forEach(subElement => {
+                loadDef(pageKey, subElement.elementKey, pageData)
+              })
+            }
+          })
+        })
       }
       return pageData
     }

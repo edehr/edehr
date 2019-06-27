@@ -16,12 +16,14 @@ export default function () {
           fqn: "testPage.pspacer"
         },
         {
-          label: "text",
+          label: "text w def",
+          defaultValue: "default content",
           elementKey: "ptext",
           fqn: "testPage.ptext"
         },
         {
           label: "checkbox",
+          defaultValue: "TRUE",
           elementKey: "pcheckbox",
           fqn: "testPage.pcheckbox",
           helperText: "a checkbox iinput",
@@ -29,6 +31,7 @@ export default function () {
         },
         {
           label: "text",
+          dependantOn: "pcheckbox",
           elementKey: "ptextpcheckbox",
           fqn: "testPage.ptextpcheckbox",
           helperText: "a text input",
@@ -60,6 +63,7 @@ export default function () {
         },
         {
           label: "checkset",
+          defaultValue: "check1,all",
           elementKey: "pcheckset",
           fqn: "testPage.pcheckset"
         },
@@ -85,14 +89,20 @@ export default function () {
           passToFunction: "p-cValue2"
         },
         {
-          label: "date",
-          elementKey: "pdate1",
-          fqn: "testPage.pfieldset1.pdate1"
+          label: "calculatedValue",
+          elementKey: "p-cValue2",
+          fqn: "testPage.pfieldset1.p-cValue2"
         },
         {
           label: "checkbox",
           elementKey: "pcheckbox2",
           fqn: "testPage.pfieldset2.pcheckbox2"
+        },
+        {
+          label: "text",
+          dependantOn: "pcheckbox2",
+          elementKey: "ptext2",
+          fqn: "testPage.pfieldset2.ptext2"
         },
         {
           label: "<b>a form <i>label</i></b>",
@@ -110,12 +120,12 @@ export default function () {
           fqn: "testPage.pfieldset2.passetLink2"
         },
         {
-          label: "calculatedValue",
-          elementKey: "p-cValue2",
-          fqn: "testPage.pfieldset2.p-cValue2"
+          label: "date",
+          elementKey: "pdate2",
+          fqn: "testPage.pfieldset2.pdate2"
         }
       ],
-      generated: "2019-06-26T07:10:16-07:00",
+      generated: "2019-06-27T16:03:34-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -143,7 +153,7 @@ export default function () {
                 fqn: "testPage.pspacer"
               },
               {
-                label: "text",
+                label: "text w def",
                 pageDataKey: "testPage",
                 elementKey: "ptext",
                 inputType: "text",
@@ -331,15 +341,15 @@ export default function () {
                     formColumn: "1"
                   },
                   {
-                    label: "date",
+                    label: "calculatedValue",
                     pageDataKey: "testPage",
                     level3Key: "pfieldset1",
-                    elementKey: "pdate1",
-                    inputType: "date",
+                    elementKey: "p-cValue2",
+                    inputType: "calculatedValue",
                     fsetRow: "4",
                     fsetCol: "1",
                     dataParent: "testPage.pfieldset1",
-                    fqn: "testPage.pfieldset1.pdate1",
+                    fqn: "testPage.pfieldset1.p-cValue2",
                     formColumn: "1"
                   }
                 ],
@@ -411,15 +421,15 @@ export default function () {
                       formRow: "4",
                       elements: [
                         {
-                          label: "date",
+                          label: "calculatedValue",
                           pageDataKey: "testPage",
                           level3Key: "pfieldset1",
-                          elementKey: "pdate1",
-                          inputType: "date",
+                          elementKey: "p-cValue2",
+                          inputType: "calculatedValue",
                           fsetRow: "4",
                           fsetCol: "1",
                           dataParent: "testPage.pfieldset1",
-                          fqn: "testPage.pfieldset1.pdate1",
+                          fqn: "testPage.pfieldset1.p-cValue2",
                           formColumn: "1"
                         }
                       ]
@@ -451,12 +461,24 @@ export default function () {
                     formColumn: "1"
                   },
                   {
+                    label: "text",
+                    pageDataKey: "testPage",
+                    level3Key: "pfieldset2",
+                    elementKey: "ptext2",
+                    inputType: "text",
+                    fsetRow: "2",
+                    fsetCol: "1",
+                    dataParent: "testPage.pfieldset2",
+                    fqn: "testPage.pfieldset2.ptext2",
+                    formColumn: "1"
+                  },
+                  {
                     label: "<b>a form <i>label</i></b>",
                     pageDataKey: "testPage",
                     level3Key: "pfieldset2",
                     elementKey: "pform_label2",
                     inputType: "form_label",
-                    fsetRow: "2",
+                    fsetRow: "3",
                     fsetCol: "1",
                     dataParent: "testPage.pfieldset2",
                     fqn: "testPage.pfieldset2.pform_label2",
@@ -468,7 +490,7 @@ export default function () {
                     level3Key: "pfieldset2",
                     elementKey: "pspacer2",
                     inputType: "spacer",
-                    fsetRow: "3",
+                    fsetRow: "4",
                     fsetCol: "1",
                     dataParent: "testPage.pfieldset2",
                     fqn: "testPage.pfieldset2.pspacer2",
@@ -480,7 +502,7 @@ export default function () {
                     level3Key: "pfieldset2",
                     elementKey: "passetLink2",
                     inputType: "assetLink",
-                    fsetRow: "4",
+                    fsetRow: "5",
                     fsetCol: "1",
                     assetBase: "standardized-assessment-tools",
                     assetName: "the-canadian-ed-triage-and-acuity-scale.gif",
@@ -489,15 +511,15 @@ export default function () {
                     formColumn: "1"
                   },
                   {
-                    label: "calculatedValue",
+                    label: "date",
                     pageDataKey: "testPage",
                     level3Key: "pfieldset2",
-                    elementKey: "p-cValue2",
-                    inputType: "calculatedValue",
-                    fsetRow: "5",
+                    elementKey: "pdate2",
+                    inputType: "date",
+                    fsetRow: "6",
                     fsetCol: "1",
                     dataParent: "testPage.pfieldset2",
-                    fqn: "testPage.pfieldset2.p-cValue2",
+                    fqn: "testPage.pfieldset2.pdate2",
                     formColumn: "1"
                   }
                 ],
@@ -526,15 +548,15 @@ export default function () {
                       formRow: "2",
                       elements: [
                         {
-                          label: "<b>a form <i>label</i></b>",
+                          label: "text",
                           pageDataKey: "testPage",
                           level3Key: "pfieldset2",
-                          elementKey: "pform_label2",
-                          inputType: "form_label",
+                          elementKey: "ptext2",
+                          inputType: "text",
                           fsetRow: "2",
                           fsetCol: "1",
                           dataParent: "testPage.pfieldset2",
-                          fqn: "testPage.pfieldset2.pform_label2",
+                          fqn: "testPage.pfieldset2.ptext2",
                           formColumn: "1"
                         }
                       ]
@@ -543,15 +565,15 @@ export default function () {
                       formRow: "3",
                       elements: [
                         {
-                          label: "spacer",
+                          label: "<b>a form <i>label</i></b>",
                           pageDataKey: "testPage",
                           level3Key: "pfieldset2",
-                          elementKey: "pspacer2",
-                          inputType: "spacer",
+                          elementKey: "pform_label2",
+                          inputType: "form_label",
                           fsetRow: "3",
                           fsetCol: "1",
                           dataParent: "testPage.pfieldset2",
-                          fqn: "testPage.pfieldset2.pspacer2",
+                          fqn: "testPage.pfieldset2.pform_label2",
                           formColumn: "1"
                         }
                       ]
@@ -560,12 +582,29 @@ export default function () {
                       formRow: "4",
                       elements: [
                         {
+                          label: "spacer",
+                          pageDataKey: "testPage",
+                          level3Key: "pfieldset2",
+                          elementKey: "pspacer2",
+                          inputType: "spacer",
+                          fsetRow: "4",
+                          fsetCol: "1",
+                          dataParent: "testPage.pfieldset2",
+                          fqn: "testPage.pfieldset2.pspacer2",
+                          formColumn: "1"
+                        }
+                      ]
+                    },
+                    {
+                      formRow: "5",
+                      elements: [
+                        {
                           label: "assetLink",
                           pageDataKey: "testPage",
                           level3Key: "pfieldset2",
                           elementKey: "passetLink2",
                           inputType: "assetLink",
-                          fsetRow: "4",
+                          fsetRow: "5",
                           fsetCol: "1",
                           assetBase: "standardized-assessment-tools",
                           assetName: "the-canadian-ed-triage-and-acuity-scale.gif",
@@ -576,18 +615,18 @@ export default function () {
                       ]
                     },
                     {
-                      formRow: "5",
+                      formRow: "6",
                       elements: [
                         {
-                          label: "calculatedValue",
+                          label: "date",
                           pageDataKey: "testPage",
                           level3Key: "pfieldset2",
-                          elementKey: "p-cValue2",
-                          inputType: "calculatedValue",
-                          fsetRow: "5",
+                          elementKey: "pdate2",
+                          inputType: "date",
+                          fsetRow: "6",
                           fsetCol: "1",
                           dataParent: "testPage.pfieldset2",
-                          fqn: "testPage.pfieldset2.p-cValue2",
+                          fqn: "testPage.pfieldset2.pdate2",
                           formColumn: "1"
                         }
                       ]
@@ -634,12 +673,14 @@ export default function () {
           fqn: "testTable.table.pspacer"
         },
         {
-          label: "text",
+          label: "text w def",
+          defaultValue: "default content",
           elementKey: "ptext",
           fqn: "testTable.table.ptext"
         },
         {
           label: "checkbox",
+          defaultValue: "TRUE",
           elementKey: "pcheckbox",
           fqn: "testTable.table.pcheckbox",
           helperText: "a checkbox iinput",
@@ -647,6 +688,7 @@ export default function () {
         },
         {
           label: "text",
+          dependantOn: "pcheckbox",
           elementKey: "ptextpcheckbox",
           fqn: "testTable.table.ptextpcheckbox",
           helperText: "a text input",
@@ -678,6 +720,7 @@ export default function () {
         },
         {
           label: "checkset",
+          defaultValue: "check1,other",
           elementKey: "pcheckset",
           fqn: "testTable.table.pcheckset"
         },
@@ -703,14 +746,20 @@ export default function () {
           passToFunction: "p-cValue2"
         },
         {
-          label: "date",
-          elementKey: "pdate1",
-          fqn: "testTable.table.pfieldset1.pdate1"
+          label: "calculatedValue",
+          elementKey: "p-cValue2",
+          fqn: "testTable.table.pfieldset1.p-cValue2"
         },
         {
           label: "checkbox",
           elementKey: "pcheckbox2",
           fqn: "testTable.table.pfieldset2.pcheckbox2"
+        },
+        {
+          label: "text",
+          dependantOn: "pcheckbox2",
+          elementKey: "ptext2",
+          fqn: "testTable.table.pfieldset2.ptext2"
         },
         {
           label: "<b>a form <i>label</i></b>",
@@ -728,12 +777,12 @@ export default function () {
           fqn: "testTable.table.pfieldset2.passetLink2"
         },
         {
-          label: "p-cValue2",
-          elementKey: "p-cValue2",
-          fqn: "testTable.table.pfieldset2.p-cValue2"
+          label: "date",
+          elementKey: "pdate2",
+          fqn: "testTable.table.pfieldset2.pdate2"
         }
       ],
-      generated: "2019-06-26T07:10:16-07:00",
+      generated: "2019-06-27T16:03:34-07:00",
       hasTable: true,
       tables: [
         {
@@ -769,7 +818,7 @@ export default function () {
               tableKey: "table"
             },
             {
-              label: "text",
+              label: "text w def",
               pageDataKey: "testTable",
               level2Key: "table",
               elementKey: "ptext",
@@ -965,16 +1014,16 @@ export default function () {
               formColumn: "1"
             },
             {
-              label: "date",
+              label: "calculatedValue",
               pageDataKey: "testTable",
               level2Key: "table",
               level3Key: "pfieldset1",
-              elementKey: "pdate1",
-              inputType: "date",
+              elementKey: "p-cValue2",
+              inputType: "calculatedValue",
               fsetRow: "4",
               fsetCol: "1",
               dataParent: "testTable.table.pfieldset1",
-              fqn: "testTable.table.pfieldset1.pdate1",
+              fqn: "testTable.table.pfieldset1.p-cValue2",
               tableKey: "table",
               formColumn: "1"
             },
@@ -1008,13 +1057,27 @@ export default function () {
               formColumn: "1"
             },
             {
+              label: "text",
+              pageDataKey: "testTable",
+              level2Key: "table",
+              level3Key: "pfieldset2",
+              elementKey: "ptext2",
+              inputType: "text",
+              fsetRow: "2",
+              fsetCol: "1",
+              dataParent: "testTable.table.pfieldset2",
+              fqn: "testTable.table.pfieldset2.ptext2",
+              tableKey: "table",
+              formColumn: "1"
+            },
+            {
               label: "<b>a form <i>label</i></b>",
               pageDataKey: "testTable",
               level2Key: "table",
               level3Key: "pfieldset2",
               elementKey: "pform_label2",
               inputType: "form_label",
-              fsetRow: "2",
+              fsetRow: "3",
               fsetCol: "1",
               dataParent: "testTable.table.pfieldset2",
               fqn: "testTable.table.pfieldset2.pform_label2",
@@ -1028,7 +1091,7 @@ export default function () {
               level3Key: "pfieldset2",
               elementKey: "pspacer2",
               inputType: "spacer",
-              fsetRow: "3",
+              fsetRow: "4",
               fsetCol: "1",
               dataParent: "testTable.table.pfieldset2",
               fqn: "testTable.table.pfieldset2.pspacer2",
@@ -1043,7 +1106,7 @@ export default function () {
               level3Key: "pfieldset2",
               elementKey: "passetLink2",
               inputType: "assetLink",
-              fsetRow: "4",
+              fsetRow: "5",
               fsetCol: "1",
               assetBase: "standardized-assessment-tools",
               assetName: "the-canadian-ed-triage-and-acuity-scale.gif",
@@ -1053,16 +1116,16 @@ export default function () {
               formColumn: "1"
             },
             {
-              label: "p-cValue2",
+              label: "date",
               pageDataKey: "testTable",
               level2Key: "table",
               level3Key: "pfieldset2",
-              elementKey: "p-cValue2",
-              inputType: "calculatedValue",
-              fsetRow: "5",
+              elementKey: "pdate2",
+              inputType: "date",
+              fsetRow: "6",
               fsetCol: "1",
               dataParent: "testTable.table.pfieldset2",
-              fqn: "testTable.table.pfieldset2.p-cValue2",
+              fqn: "testTable.table.pfieldset2.pdate2",
               tableKey: "table",
               formColumn: "1"
             },
@@ -1113,7 +1176,7 @@ export default function () {
                     tableKey: "table"
                   },
                   {
-                    label: "text",
+                    label: "text w def",
                     pageDataKey: "testTable",
                     level2Key: "table",
                     elementKey: "ptext",
@@ -1347,16 +1410,16 @@ export default function () {
                           formRow: "4",
                           elements: [
                             {
-                              label: "date",
+                              label: "calculatedValue",
                               pageDataKey: "testTable",
                               level2Key: "table",
                               level3Key: "pfieldset1",
-                              elementKey: "pdate1",
-                              inputType: "date",
+                              elementKey: "p-cValue2",
+                              inputType: "calculatedValue",
                               fsetRow: "4",
                               fsetCol: "1",
                               dataParent: "testTable.table.pfieldset1",
-                              fqn: "testTable.table.pfieldset1.pdate1",
+                              fqn: "testTable.table.pfieldset1.p-cValue2",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -1405,16 +1468,16 @@ export default function () {
                           formRow: "2",
                           elements: [
                             {
-                              label: "<b>a form <i>label</i></b>",
+                              label: "text",
                               pageDataKey: "testTable",
                               level2Key: "table",
                               level3Key: "pfieldset2",
-                              elementKey: "pform_label2",
-                              inputType: "form_label",
+                              elementKey: "ptext2",
+                              inputType: "text",
                               fsetRow: "2",
                               fsetCol: "1",
                               dataParent: "testTable.table.pfieldset2",
-                              fqn: "testTable.table.pfieldset2.pform_label2",
+                              fqn: "testTable.table.pfieldset2.ptext2",
                               tableKey: "table",
                               formColumn: "1"
                             }
@@ -1424,13 +1487,32 @@ export default function () {
                           formRow: "3",
                           elements: [
                             {
+                              label: "<b>a form <i>label</i></b>",
+                              pageDataKey: "testTable",
+                              level2Key: "table",
+                              level3Key: "pfieldset2",
+                              elementKey: "pform_label2",
+                              inputType: "form_label",
+                              fsetRow: "3",
+                              fsetCol: "1",
+                              dataParent: "testTable.table.pfieldset2",
+                              fqn: "testTable.table.pfieldset2.pform_label2",
+                              tableKey: "table",
+                              formColumn: "1"
+                            }
+                          ]
+                        },
+                        {
+                          formRow: "4",
+                          elements: [
+                            {
                               label: "spacer",
                               pageDataKey: "testTable",
                               level2Key: "table",
                               level3Key: "pfieldset2",
                               elementKey: "pspacer2",
                               inputType: "spacer",
-                              fsetRow: "3",
+                              fsetRow: "4",
                               fsetCol: "1",
                               dataParent: "testTable.table.pfieldset2",
                               fqn: "testTable.table.pfieldset2.pspacer2",
@@ -1441,7 +1523,7 @@ export default function () {
                           ]
                         },
                         {
-                          formRow: "4",
+                          formRow: "5",
                           elements: [
                             {
                               label: "assetLink",
@@ -1450,7 +1532,7 @@ export default function () {
                               level3Key: "pfieldset2",
                               elementKey: "passetLink2",
                               inputType: "assetLink",
-                              fsetRow: "4",
+                              fsetRow: "5",
                               fsetCol: "1",
                               assetBase: "standardized-assessment-tools",
                               assetName: "the-canadian-ed-triage-and-acuity-scale.gif",
@@ -1462,19 +1544,19 @@ export default function () {
                           ]
                         },
                         {
-                          formRow: "5",
+                          formRow: "6",
                           elements: [
                             {
-                              label: "p-cValue2",
+                              label: "date",
                               pageDataKey: "testTable",
                               level2Key: "table",
                               level3Key: "pfieldset2",
-                              elementKey: "p-cValue2",
-                              inputType: "calculatedValue",
-                              fsetRow: "5",
+                              elementKey: "pdate2",
+                              inputType: "date",
+                              fsetRow: "6",
                               fsetCol: "1",
                               dataParent: "testTable.table.pfieldset2",
-                              fqn: "testTable.table.pfieldset2.p-cValue2",
+                              fqn: "testTable.table.pfieldset2.pdate2",
                               tableKey: "table",
                               formColumn: "1"
                             }

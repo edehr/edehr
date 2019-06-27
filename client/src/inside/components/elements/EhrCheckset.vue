@@ -3,7 +3,7 @@
     ehr-page-form-label(:showLabel="showLabel", css="checkset_label", :label="label", :helperText="helperText", :helperHtml="helperHtml")
     div(v-for="option in checkOptions")
       label
-        input(class="checkbox", type="checkbox",  v-bind:disabled="notEditing", :value="option.prop", v-model="checkValues")
+        input(class="checkbox", type="checkbox",  v-bind:disabled="disabled", :value="option.prop", v-model="checkValues")
         span {{ option.text}}
     div(style="display:none") computedInitialValue {{computedInitialValue}}
 </template>
@@ -13,6 +13,7 @@ import EhrCommon from './EhrCommonElement'
 import { setApiError } from '../../../helpers/ehr-utills'
 import EventBus from '../../../helpers/event-bus'
 import { PAGE_FORM_INPUT_EVENT, DIALOG_INPUT_EVENT } from '../../../helpers/event-bus'
+import camelcase from 'camelcase'
 
 export default {
   name: 'EhrDialogFormElement',
@@ -57,15 +58,7 @@ export default {
       // used by this.setup
       let result = true
       let opts = this.element.options
-      if(opts) {
-        opts.forEach(opt => {
-          let parts = opt.text.split('=')
-          if(parts.length !== 2) {
-            setApiError(this, 'The checkset '+ this.key + '  must be defined as a list of prop=text values')
-            result = false
-          }
-        })
-      } else {
+      if(!opts || opts.length === 0) {
         setApiError(this, 'The checkset '+ this.key + ' definition is missing the options property')
         result = false
       }
@@ -88,6 +81,10 @@ export default {
         let prop,text
         this.element.options.forEach(opt => {
           [prop, text] = opt.text.split('=')
+          if (!text) {
+            text = prop
+            prop = camelcase(prop)
+          }
           this.checkOptions.push({
             prop: prop,
             text: text

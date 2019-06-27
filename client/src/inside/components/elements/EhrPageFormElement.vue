@@ -65,20 +65,13 @@
 </template>
 
 <script>
-/*
-  We try to keep the markup in this file, and the related CSS, to match the sister component: EhDialogFormElement.
-  These are different components because they have different behaviours. One works to edit form data and the other
-  works to create a new row in a table.
-*/
+import DatePicker from 'vuejs-datepicker'
 import EhrPageFormElement from './EhrPageFormElement.vue'
 // import the common component with the .vue extension so that the base component doesn't need to have a template sectopm
 import EhrCommon from './EhrCommonElement.vue'
 import EhrCalculatedValue from './EhrCalculatedValue'
 import EhrCheckSet from './EhrCheckset'
-import DatePicker from 'vuejs-datepicker'
 import UiInfo from '../../../app/ui/UiInfo'
-import EventBus from '../../../helpers/event-bus'
-import { PAGE_FORM_INPUT_EVENT } from '../../../helpers/event-bus'
 
 export default {
   name: 'EhrPageFormElement',
@@ -92,19 +85,6 @@ export default {
     UiInfo
   },
   // for props see EhrCommon
-  methods: {
-  },
-  watch: {
-    inputVal (val) {
-      if (this.notEditing) {
-        // only broadcast if user is editing the form
-        return
-      }
-      // Send event when any input changes. The listener (EhrHelper) will collect the changes
-      // and be ready to send the changes to the server. Calculated values also listen.
-      EventBus.$emit(PAGE_FORM_INPUT_EVENT, { value: val, element: this.element })
-    }
-  }
 }
 </script>
 

@@ -40,7 +40,7 @@ const containerElementProperties = [
   'fsetRow',
   'fsetCol',
 
-  'defaultValue',
+  // 'defaultValue',
   'options',
   // 'mandatory',
   // 'validation',
@@ -55,6 +55,7 @@ const containerElementProperties = [
 
 const pageChildElementProperties = [
   'label',
+  'dependantOn',
   'defaultValue',
   'elementKey',
   'fqn',

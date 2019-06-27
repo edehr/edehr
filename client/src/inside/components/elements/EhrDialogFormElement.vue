@@ -9,36 +9,36 @@
 
     div(v-if="inputType === 'text'", class="text_input_wrapper")
       ehr-page-form-label(:showLabel="showLabel", css="text_label", :label="label", :helperText="helperText", :helperHtml="helperHtml")
-      input(class="input", v-bind:disabled="notEditing", v-bind:name="key", v-model="inputVal")
+      input(class="input", v-bind:disabled="disabled", v-bind:name="key", v-model="inputVal")
       div {{suffix }}
 
     div(v-if="inputType === 'date'", class="date_wrapper")
       ehr-page-form-label(:showLabel="showLabel", css="date_label", :label="label", :helperText="helperText", :helperHtml="helperHtml")
-      date-picker(class="d-picker", typeable, v-bind:disabled="notEditing", v-bind:name="key", v-model="inputVal")
+      date-picker(class="d-picker", typeable, v-bind:disabled="disabled", v-bind:name="key", v-model="inputVal")
         div(v-if="!showLabel", slot="beforeCalendarHeader", class="datepicker-header") {{label}}
 
     div(v-if="inputType === 'day'", class="day_wrapper")
       ehr-page-form-label(:showLabel="showLabel", css="day_label", :label="label", :helperText="helperText", :helperHtml="helperHtml")
-      input(class="input", v-bind:disabled="notEditing", v-bind:name="key", v-model="inputVal")
+      input(class="input", v-bind:disabled="disabled", v-bind:name="key", v-model="inputVal")
 
     div(v-if="inputType === 'time'", class="time_wrapper")
       ehr-page-form-label(:showLabel="showLabel", css="time_label", :label="label", :helperText="helperText", :helperHtml="helperHtml")
-      input(class="input", type="text", v-bind:disabled="notEditing", v-bind:name="key", v-model="inputVal")
+      input(class="input", type="text", v-bind:disabled="disabled", v-bind:name="key", v-model="inputVal")
 
     div(v-if="inputType === 'textarea'", class="textarea_wrapper")
       ehr-page-form-label(:showLabel="showLabel", css="textarea_label", :label="label", :helperText="helperText", :helperHtml="helperHtml")
-      textarea(class="ehr-page-form-textarea", v-bind:disabled="notEditing", v-bind:name="key", v-model="inputVal")
+      textarea(class="ehr-page-form-textarea", v-bind:disabled="disabled", v-bind:name="key", v-model="inputVal")
 
     div(v-if="inputType === 'select'", class="select_wrapper")
       ehr-page-form-label(:showLabel="showLabel", css="select_label", :label="label", :helperText="helperText", :helperHtml="helperHtml")
       div(class="select")
-        select(v-bind:name="key", v-bind:disabled="notEditing", v-model="inputVal")
+        select(v-bind:name="key", v-bind:disabled="disabled", v-model="inputVal")
           option(value="")
           option(v-for="option in element.options", v-bind:value="option.text") {{ option.text}}
 
     div(v-if="inputType === 'checkbox'", class="checkbox_wrapper")
       label(v-if="showLabel", class="checkbox_label")
-        input(class="checkbox", type="checkbox", v-bind:disabled="notEditing", v-model="inputVal")
+        input(class="checkbox", type="checkbox", v-bind:disabled="disabled", v-model="inputVal", v-on:change="dependantClickEvent()")
         span {{label}}
         ui-info(v-if="helperText", :title="label", :html="helperHtml", :text="helperText")
 
@@ -47,39 +47,31 @@
         fas-icon(class="linkIcon", icon="file-pdf")
         span {{assetName()}}
 
-
     div(v-if="inputType === 'fieldset'", class="fieldset_col_wrapper")
       h2(v-show="!!label", class="fieldset_label", v-html="label") &nbsp;
       div(v-for="row in element.formFieldSet.rows", :key="row.formRow" class="fieldset_row_row" )
         div(v-for="fmEl in row.elements", :key="fmEl.elementKey", class="fieldset_row_row_element" )
-          ehr-dialog-form-element(:notEditing="notEditing", :element="fmEl", :ehrHelp="ehrHelp", :inputs="inputs", :isPageElement=isPageElement, :isDialogElement=isDialogElement)
+          ehr-dialog-form-element(:notEditing="notEditing", :element="fmEl", :ehrHelp="ehrHelp", :inputs="inputs", :isPageElement="isPageElement", :isDialogElement="isDialogElement")
 
     div(v-if="inputType === 'calculatedValue'", class="computed_wrapper")
       ehr-calculated-value(:inputs="inputs", :element="element")
 
     div(v-if="inputType === 'checkset'", class="checkset_wrapper")
-      ehr-check-set(:element="element", :ehrHelp="ehrHelp", :inputs="inputs", v-bind:notEditing="notEditing", :isPageElement=isPageElement, :isDialogElement=isDialogElement)
+      ehr-check-set(:element="element", :ehrHelp="ehrHelp", :inputs="inputs", v-bind:notEditing="notEditing", :isPageElement="isPageElement", :isDialogElement="isDialogElement")
 
-    div(style="display:none") cv {{computedInitialValue}}
+    div(style="display:none") cv {{computedInitialValue}} {{dependantOnValue}}
 
 </template>
 
 <script>
-/*
-  We try to keep the markup in this file, and the related CSS, to match the sister component: EhrPageFormElement
-  These are different components because they have different behaviours. One works to edit form data and the other
-  works to create a new row in a table.
-*/
 import DatePicker from 'vuejs-datepicker'
 import EhrDialogFormElement from './EhrDialogFormElement.vue'
-// import the common component with the .vue extension so that the base component doesn't need to have a template sectopm
+// import the common component with the .vue extension so that the base component doesn't need to have a template section
 import EhrCommon from './EhrCommonElement.vue'
 import EhrCalculatedValue from './EhrCalculatedValue'
 import EhrCheckSet from './EhrCheckset'
-
-import EventBus from '../../../helpers/event-bus'
-import { DIALOG_INPUT_EVENT } from '../../../helpers/event-bus'
 import UiInfo from '../../../app/ui/UiInfo'
+
 
 export default {
   name: 'EhrDialogFormElement',
@@ -92,36 +84,12 @@ export default {
     EhrDialogFormElement,
     UiInfo
   },
-  // for props see EhrCommon
+  // for data, props, etc see EhrCommon
   methods: {
-    setup () {
-      this.eventChannelBroadcast = 'radio:' + this.key
-    },
-    emitGlobalClickEvent () {
-      const _this = this
-      this.$nextTick(function () {
-        // Send an event on our transmission channel with a payload containing this component's value
-        let eData = { key: _this.element, value: _this.inputVal }
-        // console.log('emit event',eData, _this.eventChannelBroadcast)
-        EventBus.$emit(_this.eventChannelBroadcast, eData)
-      })
-    },
     dialogShowHideEvent (eData) {
       if(eData.value) {
         // console.log('EhrDialogFormElement on show re-init initial value', this.key, eData.value)
         this.setInitialValue(this.inputs[this.key])
-        // this.inputVal = this.inputs[this.key]
-      }
-    }
-  },
-  watch: {
-    inputVal (val) {
-      // console.log('watch inputValue', val, DIALOG_INPUT_EVENT, this.element)
-      // Send event when any input changes. The listener (EhrHelper) will collect the changes
-      // and be ready to send the changes to the server.
-      if (this.dialogIsOpen) {
-        let element = this.element
-        EventBus.$emit(DIALOG_INPUT_EVENT, {value: val, element: element})
       }
     }
   }
