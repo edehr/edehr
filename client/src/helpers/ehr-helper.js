@@ -299,11 +299,9 @@ export default class EhrHelp {
     // console.log('clear dialog cells', cells)
     // TODO check that default values are working
     cells.forEach(cell => {
-      let dV = getDefaultValue(cell.pageDataKey, cell.elementKey)
-      if (dV) {
-        // console.log('load table cell with default value', cell, dV)
-        inputs[cell.elementKey] = dV
-      }
+      let dV = getDefaultValue(cell.pageDataKey, cell.elementKey) || ''
+      // console.log('load table cell with default value', cell, dV)
+      inputs[cell.elementKey] = dV
     })
     // empty the error list array
     d.errorList = []

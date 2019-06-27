@@ -210,7 +210,7 @@ export default function () {
           dataCaseStudy: "(not filled)"
         }
       ],
-      generated: "2019-06-27T16:03:34-07:00",
+      generated: "2019-06-27T16:26:02-07:00",
       hasTable: true,
       tables: [
         {
@@ -1847,7 +1847,7 @@ export default function () {
           dataCaseStudy: "(not filled)"
         }
       ],
-      generated: "2019-06-27T16:03:34-07:00",
+      generated: "2019-06-27T16:26:02-07:00",
       hasTable: true,
       tables: [
         {
@@ -2638,7 +2638,7 @@ export default function () {
           fqn: "pain.table.secondarySite.comments"
         }
       ],
-      generated: "2019-06-27T16:03:34-07:00",
+      generated: "2019-06-27T16:26:02-07:00",
       hasTable: true,
       tables: [
         {
@@ -3617,7 +3617,7 @@ export default function () {
           dataCaseStudy: "(not filled)"
         }
       ],
-      generated: "2019-06-27T16:03:34-07:00",
+      generated: "2019-06-27T16:26:02-07:00",
       hasTable: true,
       tables: [
         {
@@ -5145,7 +5145,7 @@ export default function () {
           fqn: "nonmedOrders.table.comment"
         }
       ],
-      generated: "2019-06-27T16:03:34-07:00",
+      generated: "2019-06-27T16:26:02-07:00",
       hasTable: true,
       tables: [
         {
@@ -5533,7 +5533,7 @@ export default function () {
           dataCaseStudy: "Active"
         }
       ],
-      generated: "2019-06-27T16:03:34-07:00",
+      generated: "2019-06-27T16:26:02-07:00",
       hasTable: true,
       tables: [
         {
@@ -5873,7 +5873,7 @@ export default function () {
           fqn: "labRequisitions.table.collected"
         }
       ],
-      generated: "2019-06-27T16:03:34-07:00",
+      generated: "2019-06-27T16:26:02-07:00",
       hasTable: true,
       tables: [
         {
@@ -6155,17 +6155,17 @@ export default function () {
         {
           label: "Morning",
           elementKey: "startDay",
-          fqn: "medicationOrders.table.scheduleTime.startDay"
+          fqn: "medicationOrders.table.schedule.startDay"
         },
         {
           label: "Mid day",
           elementKey: "midDay",
-          fqn: "medicationOrders.table.scheduleTime.midDay"
+          fqn: "medicationOrders.table.schedule.midDay"
         },
         {
           label: "Bedtime",
           elementKey: "endDay",
-          fqn: "medicationOrders.table.scheduleTime.endDay"
+          fqn: "medicationOrders.table.schedule.endDay"
         },
         {
           label: "Instructions",
@@ -6183,7 +6183,7 @@ export default function () {
           fqn: "medicationOrders.table.notes"
         }
       ],
-      generated: "2019-06-27T16:03:34-07:00",
+      generated: "2019-06-27T16:26:02-07:00",
       hasTable: true,
       tables: [
         {
@@ -6351,36 +6351,36 @@ export default function () {
               label: "Bedtime",
               pageDataKey: "medicationOrders",
               level2Key: "table",
-              level3Key: "scheduleTime",
+              level3Key: "schedule",
               elementKey: "endDay",
               inputType: "checkbox",
               fsetRow: "3",
-              dataParent: "medicationOrders.table.scheduleTime",
-              fqn: "medicationOrders.table.scheduleTime.endDay",
+              dataParent: "medicationOrders.table.schedule",
+              fqn: "medicationOrders.table.schedule.endDay",
               tableKey: "table"
             },
             {
               label: "Morning",
               pageDataKey: "medicationOrders",
               level2Key: "table",
-              level3Key: "scheduleTime",
+              level3Key: "schedule",
               elementKey: "startDay",
               inputType: "checkbox",
               fsetRow: "1",
-              dataParent: "medicationOrders.table.scheduleTime",
-              fqn: "medicationOrders.table.scheduleTime.startDay",
+              dataParent: "medicationOrders.table.schedule",
+              fqn: "medicationOrders.table.schedule.startDay",
               tableKey: "table"
             },
             {
               label: "Mid day",
               pageDataKey: "medicationOrders",
               level2Key: "table",
-              level3Key: "scheduleTime",
+              level3Key: "schedule",
               elementKey: "midDay",
               inputType: "checkbox",
               fsetRow: "2",
-              dataParent: "medicationOrders.table.scheduleTime",
-              fqn: "medicationOrders.table.scheduleTime.midDay",
+              dataParent: "medicationOrders.table.schedule",
+              fqn: "medicationOrders.table.schedule.midDay",
               tableKey: "table"
             },
             {
@@ -6415,7 +6415,7 @@ export default function () {
               label: "Schedule time",
               pageDataKey: "medicationOrders",
               level2Key: "table",
-              elementKey: "scheduleTime",
+              elementKey: "schedule",
               inputType: "fieldset",
               formRow: "4",
               formColumn: "2",
@@ -6423,9 +6423,9 @@ export default function () {
               tableColumn: "7",
               tableCss: "hr-table hide-table-element",
               dataParent: "medicationOrders.table",
-              fqn: "medicationOrders.table.scheduleTime",
+              fqn: "medicationOrders.table.schedule",
               containerType: "fieldset",
-              containerKey: "scheduleTime",
+              containerKey: "schedule",
               tableKey: "table"
             },
             {
@@ -6678,7 +6678,7 @@ export default function () {
                     label: "Schedule time",
                     pageDataKey: "medicationOrders",
                     level2Key: "table",
-                    elementKey: "scheduleTime",
+                    elementKey: "schedule",
                     inputType: "fieldset",
                     formRow: "4",
                     formColumn: "2",
@@ -6686,9 +6686,9 @@ export default function () {
                     tableColumn: "7",
                     tableCss: "hr-table hide-table-element",
                     dataParent: "medicationOrders.table",
-                    fqn: "medicationOrders.table.scheduleTime",
+                    fqn: "medicationOrders.table.schedule",
                     containerType: "fieldset",
-                    containerKey: "scheduleTime",
+                    containerKey: "schedule",
                     tableKey: "table",
                     formFieldSet: {
                       rows: [
@@ -6699,12 +6699,12 @@ export default function () {
                               label: "Morning",
                               pageDataKey: "medicationOrders",
                               level2Key: "table",
-                              level3Key: "scheduleTime",
+                              level3Key: "schedule",
                               elementKey: "startDay",
                               inputType: "checkbox",
                               fsetRow: "1",
-                              dataParent: "medicationOrders.table.scheduleTime",
-                              fqn: "medicationOrders.table.scheduleTime.startDay",
+                              dataParent: "medicationOrders.table.schedule",
+                              fqn: "medicationOrders.table.schedule.startDay",
                               tableKey: "table"
                             }
                           ]
@@ -6716,12 +6716,12 @@ export default function () {
                               label: "Mid day",
                               pageDataKey: "medicationOrders",
                               level2Key: "table",
-                              level3Key: "scheduleTime",
+                              level3Key: "schedule",
                               elementKey: "midDay",
                               inputType: "checkbox",
                               fsetRow: "2",
-                              dataParent: "medicationOrders.table.scheduleTime",
-                              fqn: "medicationOrders.table.scheduleTime.midDay",
+                              dataParent: "medicationOrders.table.schedule",
+                              fqn: "medicationOrders.table.schedule.midDay",
                               tableKey: "table"
                             }
                           ]
@@ -6733,12 +6733,12 @@ export default function () {
                               label: "Bedtime",
                               pageDataKey: "medicationOrders",
                               level2Key: "table",
-                              level3Key: "scheduleTime",
+                              level3Key: "schedule",
                               elementKey: "endDay",
                               inputType: "checkbox",
                               fsetRow: "3",
-                              dataParent: "medicationOrders.table.scheduleTime",
-                              fqn: "medicationOrders.table.scheduleTime.endDay",
+                              dataParent: "medicationOrders.table.schedule",
+                              fqn: "medicationOrders.table.schedule.endDay",
                               tableKey: "table"
                             }
                           ]
@@ -6865,7 +6865,7 @@ export default function () {
           helperHtml: "<p>Enter time delivered or say if not delivered.</p>"
         }
       ],
-      generated: "2019-06-27T16:03:34-07:00",
+      generated: "2019-06-27T16:26:02-07:00",
       hasTable: true,
       tables: [
         {
@@ -7294,7 +7294,7 @@ export default function () {
           fqn: "dischargeSummary.dischargeEducation"
         }
       ],
-      generated: "2019-06-27T16:03:34-07:00",
+      generated: "2019-06-27T16:26:02-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -7517,7 +7517,7 @@ export default function () {
           dataCaseStudy: "MSP"
         }
       ],
-      generated: "2019-06-27T16:03:34-07:00",
+      generated: "2019-06-27T16:26:02-07:00",
       hasForm: true,
       page_form: {
         rows: [
