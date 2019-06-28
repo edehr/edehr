@@ -112,9 +112,9 @@ export default function () {
         },
         {
           label: "No address",
+          defaultValue: "FALSE",
           elementKey: "noAddress",
-          fqn: "demographics.noAddress",
-          dataCaseStudy: "(Not ticked)"
+          fqn: "demographics.noAddress"
         },
         {
           label: "Primary phone number",
@@ -125,8 +125,7 @@ export default function () {
         {
           label: "Email",
           elementKey: "emailAddress",
-          fqn: "demographics.emailAddress",
-          dataCaseStudy: "(leave empty)"
+          fqn: "demographics.emailAddress"
         },
         {
           label: "Occupation/student",
@@ -187,7 +186,7 @@ export default function () {
           dataCaseStudy: "604-555-9865"
         }
       ],
-      generated: "2019-06-27T16:03:34-07:00",
+      generated: "2019-06-28T07:00:47-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -720,7 +719,7 @@ export default function () {
           dataCaseStudy: "TRUE"
         }
       ],
-      generated: "2019-06-27T16:03:34-07:00",
+      generated: "2019-06-28T07:00:47-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -770,7 +769,7 @@ export default function () {
           fqn: "medical.history"
         }
       ],
-      generated: "2019-06-27T16:03:34-07:00",
+      generated: "2019-06-28T07:00:47-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -836,6 +835,7 @@ export default function () {
         },
         {
           label: "Exercise frequency",
+          dependantOn: "exercise",
           elementKey: "exerciseFrequency",
           fqn: "psychosocial.behaviours.exerciseFrequency",
           dataCaseStudy: "< 1 day/week"
@@ -848,6 +848,7 @@ export default function () {
         },
         {
           label: "Caffeine use frequency",
+          dependantOn: "caffeineUse",
           elementKey: "caffeineUseFrequency",
           fqn: "psychosocial.behaviours.caffeineUseFrequency",
           dataCaseStudy: "1-2 cups/day"
@@ -862,6 +863,7 @@ export default function () {
         },
         {
           label: "Tobacco use frequency",
+          dependantOn: "tobaccoUse",
           elementKey: "tobaccoUseFrequency",
           fqn: "psychosocial.behaviours.tobaccoUseFrequency",
           dataCaseStudy: "History of smoking"
@@ -875,6 +877,7 @@ export default function () {
         },
         {
           label: "Cannabis use frequency",
+          dependantOn: "cannabisUse",
           elementKey: "cannabisUseFrequency",
           fqn: "psychosocial.behaviours.cannabisUseFrequency"
         },
@@ -888,6 +891,7 @@ export default function () {
         },
         {
           label: "Alcohol use frequency",
+          dependantOn: "alcoholUse",
           elementKey: "alcoholUseFrequency",
           fqn: "psychosocial.behaviours.alcoholUseFrequency",
           dataCaseStudy: "Social"
@@ -901,11 +905,12 @@ export default function () {
         },
         {
           label: "Substance use frequency",
+          dependantOn: "substanceUse",
           elementKey: "substanceUseFrequency",
           fqn: "psychosocial.behaviours.substanceUseFrequency"
         }
       ],
-      generated: "2019-06-27T16:03:34-07:00",
+      generated: "2019-06-28T07:00:47-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -1398,7 +1403,7 @@ export default function () {
           fqn: "surgical.previous.comments"
         }
       ],
-      generated: "2019-06-27T16:03:34-07:00",
+      generated: "2019-06-28T07:00:47-07:00",
       hasTable: true,
       tables: [
         {
@@ -1678,6 +1683,7 @@ export default function () {
         },
         {
           label: "Hep A date",
+          dependantOn: "hepA",
           elementKey: "hepADate",
           fqn: "immunization.hepADate"
         },
@@ -1688,6 +1694,7 @@ export default function () {
         },
         {
           label: "Hep B date",
+          dependantOn: "hepB",
           elementKey: "hepBDate",
           fqn: "immunization.hepBDate"
         },
@@ -1698,6 +1705,7 @@ export default function () {
         },
         {
           label: "MMR date",
+          dependantOn: "mmr",
           elementKey: "mmrDate",
           fqn: "immunization.mmrDate"
         },
@@ -1708,6 +1716,7 @@ export default function () {
         },
         {
           label: "Pneumococcal date",
+          dependantOn: "pneumococcal",
           elementKey: "pneumococcalDate",
           fqn: "immunization.pneumococcalDate"
         },
@@ -1718,6 +1727,7 @@ export default function () {
         },
         {
           label: "Polio diptheria pertussis date",
+          dependantOn: "polioDiptheriaPertussis",
           elementKey: "polioDiptheriaPertussisDate",
           fqn: "immunization.polioDiptheriaPertussisDate"
         },
@@ -1728,6 +1738,7 @@ export default function () {
         },
         {
           label: "TB date",
+          dependantOn: "tb",
           elementKey: "tbDate",
           fqn: "immunization.tbDate"
         },
@@ -1738,6 +1749,7 @@ export default function () {
         },
         {
           label: "Tetanus date",
+          dependantOn: "tetanus",
           elementKey: "tetanusDate",
           fqn: "immunization.tetanusDate"
         },
@@ -1769,7 +1781,7 @@ export default function () {
           fqn: "immunization.otherDate3"
         }
       ],
-      generated: "2019-06-27T16:03:34-07:00",
+      generated: "2019-06-28T07:00:47-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -2065,7 +2077,7 @@ export default function () {
           fqn: "familyHistory.history"
         }
       ],
-      generated: "2019-06-27T16:03:34-07:00",
+      generated: "2019-06-28T07:00:47-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -2106,7 +2118,7 @@ export default function () {
           dataCaseStudy: "Physician-NL-Physician-NL-Nurse-NL-Nurse-NL-Medical radiograpeor-NL-Medical laboratory technician-NL-Medical radiographer-NL-RN-NL-Physician-NL-RN-NL-Pysiotherapy student-NL-Resp. therapist"
         }
       ],
-      generated: "2019-06-27T16:03:34-07:00",
+      generated: "2019-06-28T07:00:47-07:00",
       hasTable: true,
       tables: [
         {
@@ -2235,7 +2247,7 @@ export default function () {
           dataCaseStudy: "COPD"
         }
       ],
-      generated: "2019-06-27T16:03:34-07:00",
+      generated: "2019-06-28T07:00:47-07:00",
       hasTable: true,
       tables: [
         {
