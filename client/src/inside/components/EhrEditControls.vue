@@ -10,7 +10,6 @@
 </template>
 
 <script>
-import UiButton from '../../app/ui/UiButton'
 
 export default {
   name: 'EhrEditControls',

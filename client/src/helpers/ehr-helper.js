@@ -6,7 +6,7 @@ import { DIALOG_INPUT_EVENT } from './event-bus'
 import { PAGE_FORM_INPUT_EVENT } from './event-bus'
 import { PAGE_DATA_REFRESH_EVENT } from './event-bus'
 import { removeEmptyProperties, prepareAssignmentPageDataForSave, formatTimeStr } from './ehr-utills'
-import { getPageDefinition } from './ehr-defs'
+import { getPageDefinition, getDefaultValue } from './ehr-defs'
 
 const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
@@ -155,7 +155,7 @@ export default class EhrHelp {
 
   /* ********************* DIALOG  */
   showDialog (tableDef, dialogInputs) {
-    this._setEditing (true)
+    // this._setEditing (fals)
     let dialog = { tableDef: tableDef, inputs: dialogInputs }
     let key = tableDef.tableKey
     this.dialogMap[key] = dialog
@@ -280,7 +280,6 @@ export default class EhrHelp {
   }
 
   _emitCloseEvent (dialogKey) {
-    const _this = this
     let eData = { key: dialogKey, value: false }
     let channel = this.getDialogEventChannel(dialogKey)
     Vue.nextTick(function () {
@@ -288,7 +287,6 @@ export default class EhrHelp {
       // with a payload containing this false
       // console.log('emit event', eData, 'on', channel)
       EventBus.$emit(channel, eData)
-      _this._setEditing (false)
     })
   }
 
@@ -301,7 +299,9 @@ export default class EhrHelp {
     // console.log('clear dialog cells', cells)
     // TODO check that default values are working
     cells.forEach(cell => {
-      inputs[cell.elementKey] = cell.defaultValue ? cell.defaultValue : '' //cell.defaultValue(this.$store) : ''
+      let dV = getDefaultValue(cell.pageDataKey, cell.elementKey) || ''
+      // console.log('load table cell with default value', cell, dV)
+      inputs[cell.elementKey] = dV
     })
     // empty the error list array
     d.errorList = []

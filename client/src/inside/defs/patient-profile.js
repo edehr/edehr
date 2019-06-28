@@ -187,7 +187,7 @@ export default function () {
           dataCaseStudy: "604-555-9865"
         }
       ],
-      generated: "2019-06-13T07:40:16-07:00",
+      generated: "2019-06-27T16:03:34-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -272,7 +272,6 @@ export default function () {
                 formRow: "3",
                 formColumn: "1",
                 formCss: "is-one-third",
-                defaultValue: "157",
                 dataParent: "demographics",
                 fqn: "demographics.height"
               },
@@ -284,7 +283,6 @@ export default function () {
                 formRow: "3",
                 formColumn: "2",
                 formCss: "is-one-third",
-                defaultValue: "63",
                 dataParent: "demographics",
                 fqn: "demographics.weight"
               }
@@ -456,7 +454,6 @@ export default function () {
                 inputType: "text",
                 formRow: "7",
                 formColumn: "1",
-                defaultValue: "Canada",
                 dataParent: "demographics",
                 fqn: "demographics.country"
               },
@@ -723,7 +720,7 @@ export default function () {
           dataCaseStudy: "TRUE"
         }
       ],
-      generated: "2019-06-13T07:40:16-07:00",
+      generated: "2019-06-27T16:03:34-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -737,7 +734,6 @@ export default function () {
                 inputType: "checkbox",
                 formRow: "1",
                 formColumn: "1",
-                defaultValue: "TRUE",
                 dataParent: "allergies",
                 fqn: "allergies.hasNoAllergies"
               }
@@ -774,7 +770,7 @@ export default function () {
           fqn: "medical.history"
         }
       ],
-      generated: "2019-06-13T07:40:16-07:00",
+      generated: "2019-06-27T16:03:34-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -909,7 +905,7 @@ export default function () {
           fqn: "psychosocial.behaviours.substanceUseFrequency"
         }
       ],
-      generated: "2019-06-13T07:40:16-07:00",
+      generated: "2019-06-27T16:03:34-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -1402,7 +1398,7 @@ export default function () {
           fqn: "surgical.previous.comments"
         }
       ],
-      generated: "2019-06-13T07:40:16-07:00",
+      generated: "2019-06-27T16:03:34-07:00",
       hasTable: true,
       tables: [
         {
@@ -1773,7 +1769,7 @@ export default function () {
           fqn: "immunization.otherDate3"
         }
       ],
-      generated: "2019-06-13T07:40:16-07:00",
+      generated: "2019-06-27T16:03:34-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -2069,7 +2065,7 @@ export default function () {
           fqn: "familyHistory.history"
         }
       ],
-      generated: "2019-06-13T07:40:16-07:00",
+      generated: "2019-06-27T16:03:34-07:00",
       hasForm: true,
       page_form: {
         rows: [
@@ -2110,7 +2106,7 @@ export default function () {
           dataCaseStudy: "Physician-NL-Physician-NL-Nurse-NL-Nurse-NL-Medical radiograpeor-NL-Medical laboratory technician-NL-Medical radiographer-NL-RN-NL-Physician-NL-RN-NL-Pysiotherapy student-NL-Resp. therapist"
         }
       ],
-      generated: "2019-06-13T07:40:16-07:00",
+      generated: "2019-06-27T16:03:34-07:00",
       hasTable: true,
       tables: [
         {
@@ -2239,7 +2235,7 @@ export default function () {
           dataCaseStudy: "COPD"
         }
       ],
-      generated: "2019-06-13T07:40:16-07:00",
+      generated: "2019-06-27T16:03:34-07:00",
       hasTable: true,
       tables: [
         {

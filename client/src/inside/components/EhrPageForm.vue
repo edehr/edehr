@@ -2,13 +2,13 @@
   div(class="ehr-page-form")
     div(class="form-row-wrapper", v-for="row in formDefs.rows", v-bind:key="row.rowNumber") {{row.classList}}
       div(class="form-element-wrapper", v-bind:class="cssFromDefs(element)", v-for="element in row.elements", v-bind:key="element.elementKey")
-        ehr-page-form-element(:notEditing="notEditing", :element="element", :ehrHelp="ehrHelp" :inputs="theData")
+        ehr-dialog-form-element(:notEditing="notEditing", :element="element", :ehrHelp="ehrHelp", :inputs="theData", isPageElement=true)
     div(class="assignment-save") Assignment last saved: {{ theData.lastUpdate }}
     div(style="display:none") {{currentData}}
 </template>
 
 <script>
-import EhrPageFormElement from '../components/EhrPageFormElement.vue'
+import EhrDialogFormElement from '../components/elements/EhrDialogFormElement.vue'
 import EventBus from '../../helpers/event-bus'
 import { PAGE_DATA_REFRESH_EVENT } from '../../helpers/event-bus'
 import { getPageDefinition } from '../../helpers/ehr-defs'
@@ -16,7 +16,7 @@ import { getPageDefinition } from '../../helpers/ehr-defs'
 export default {
   name: 'EhrPageForm',
   components: {
-    EhrPageFormElement
+    EhrDialogFormElement
   },
   data: function () {
     return {

@@ -982,6 +982,27 @@
         "componentPath": "./inside/views"
       },
       "children": []
+    },
+    {
+      "name": "test-table",
+      "label": "Test Table",
+      "routeName": "test-table",
+      "topLevel": "external",
+      "def": {
+        "path": "/ehr/external",
+        "routeName": "test-table",
+        "pageDataKey": "testTable",
+        "label": "Test Table",
+        "redirect": "",
+        "generateComponent": "yes",
+        "componentName": "TestTable",
+        "dataName": "testTable",
+        "fullPath": "/ehr/external/test-table",
+        "title": "Test Table",
+        "topLevel": "external",
+        "componentPath": "./inside/views"
+      },
+      "children": []
     }
   ]
 }

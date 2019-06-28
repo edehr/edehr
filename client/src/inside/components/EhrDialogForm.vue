@@ -5,17 +5,17 @@
       div(slot="body", class="region ehr-page-content")
         div(class="form-row-wrapper")
           div(class="form-element-wrapper", v-bind:class="cssFromDefs(element)", v-for="element in topRow.elements", v-bind:key="element.elementKey")
-            ehr-dialog-form-element(:inputs="inputs", :element="element", :ehrHelp="ehrHelp")
+            ehr-dialog-form-element(:inputs="inputs", :element="element", :ehrHelp="ehrHelp", isDialogElement=true)
         hr(v-if="hasNameProfRow")
         div(class="form-row-wrapper", v-for="row in middleRange")
           div(class="form-element-wrapper", v-bind:class="cssFromDefs(element)", v-for="element in row.elements", v-bind:key="element.elementKey")
-            ehr-dialog-form-element(:inputs="inputs", :element="element", :ehrHelp="ehrHelp")
+            ehr-dialog-form-element(:inputs="inputs", :element="element", :ehrHelp="ehrHelp", isDialogElement=true)
       span(slot="save-button") Create and close
 </template>
 
 <script>
 import AppDialog from '../../app/components/AppDialogShell'
-import EhrDialogFormElement from '../components/EhrDialogFormElement.vue'
+import EhrDialogFormElement from '../components/elements/EhrDialogFormElement.vue'
 import EventBus from '../../helpers/event-bus'
 
 export default {

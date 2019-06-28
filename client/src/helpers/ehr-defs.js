@@ -70,41 +70,25 @@ export function getPageChildElement (pageKey, key) {
   return pageDefs[pageKey].pageChildren.find( ch => ch['elementKey'] === key)
 }
 
-export function getDefaultValue (def) {
-  if (def.defaultValue) {
-    return def.defaultValue
-  }
-  let pageDataKey = def.pageDataKey
-  let elementKey = def.elementKey
+export function getDefaultValue (pageDataKey, elementKey) {
   let filterKey = 'elementKey'
   let pd = getChildElements(pageDataKey, filterKey, elementKey, 'defaultValue')
   let dV = ''
   if(pd.length > 0) {
     dV = pd[0] || ''
-    // if (!Number.isNaN(dV)) {
-    //   console.log('Parse as int ', Number.isNaN(dV), dV)
-    //   dV = Number.parseInt(dV)
-    // }
+    dV = (dV.toLowerCase() === 'true') ? true : ((dV.toLowerCase() === 'false') ? false : dV)
   }
   // console.log('EhrDefs.getDefaultValue', elementKey, dV)
-  def.defaultValue = dV
   return dV
 }
 
-export function getDataCaseStudy (def) {
-  if (def.dataCaseStudy) {
-    return def.dataCaseStudy
-  }
-  let pageDataKey = def.pageDataKey
-  let elementKey = def.elementKey
+export function getDataCaseStudy (pageDataKey, elementKey) {
   let filterKey = 'elementKey'
   let pd = getChildElements(pageDataKey, filterKey, elementKey, 'dataCaseStudy')
   let dV = ''
   if(pd.length > 0) {
     dV = pd[0]
-    // try { dV = parseInt(dV)} catch(e) {/* do nothing */}
   }
   // console.log('EhrDefs.getDataCaseStudy', elementKey, dV)
-  def.dataCaseStudy = dV
   return dV
 }
