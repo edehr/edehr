@@ -109,7 +109,7 @@ const getters = {
         }
       }
 
-      let formDefs = pageDef.page_form
+      let formDefs = pageDef.pageForm
       if (formDefs) {
         // console.log('EhrData asLoadedDataForPageKey formDefs -=-=-=-=-=-=-=-=-=-=-=-=', pageKey)
         let rows = formDefs.rows

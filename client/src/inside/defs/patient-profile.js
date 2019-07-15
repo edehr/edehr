@@ -60,18 +60,78 @@ export default function () {
           label: "Gender",
           elementKey: "gender",
           fqn: "demographics.gender",
+          options: [
+            {
+              text: "Unknown"
+            },
+            {
+              text: "Female"
+            },
+            {
+              text: "Male"
+            },
+            {
+              text: "Transgender female"
+            },
+            {
+              text: "Transgender male"
+            },
+            {
+              text: "Undifferentiated"
+            },
+            {
+              text: "Prefer not to say"
+            }
+          ],
           dataCaseStudy: "Female"
         },
         {
           label: "Martial status",
           elementKey: "martialStatus",
           fqn: "demographics.martialStatus",
+          options: [
+            {
+              text: "Married"
+            },
+            {
+              text: "Single"
+            },
+            {
+              text: "Life partner"
+            },
+            {
+              text: "Divorced"
+            },
+            {
+              text: "Separated"
+            },
+            {
+              text: "Widowed"
+            }
+          ],
           dataCaseStudy: "Widow"
         },
         {
           label: "Primary language",
           elementKey: "languagePrimary",
           fqn: "demographics.languagePrimary",
+          options: [
+            {
+              text: "English"
+            },
+            {
+              text: "French"
+            },
+            {
+              text: "Spanish"
+            },
+            {
+              text: "German"
+            },
+            {
+              text: "Chinese"
+            }
+          ],
           dataCaseStudy: "English"
         },
         {
@@ -83,6 +143,14 @@ export default function () {
           label: "Do you identify as an indigenous person?",
           elementKey: "indigenousIdentifyAs",
           fqn: "demographics.indigenousIdentifyAs",
+          options: [
+            {
+              text: "Yes"
+            },
+            {
+              text: "No"
+            }
+          ],
           dataCaseStudy: "No"
         },
         {
@@ -159,6 +227,53 @@ export default function () {
           label: "Next of kin relationship",
           elementKey: "nextOfKinRelationship",
           fqn: "demographics.nextOfKinRelationship",
+          options: [
+            {
+              text: "Wife"
+            },
+            {
+              text: "Husband"
+            },
+            {
+              text: "Mother"
+            },
+            {
+              text: "Father"
+            },
+            {
+              text: "Guardian"
+            },
+            {
+              text: "Sister"
+            },
+            {
+              text: "Brother"
+            },
+            {
+              text: "Daughter"
+            },
+            {
+              text: "Son"
+            },
+            {
+              text: "Aunt"
+            },
+            {
+              text: "Uncle"
+            },
+            {
+              text: "Grandmother"
+            },
+            {
+              text: "Grandfather"
+            },
+            {
+              text: "Friend"
+            },
+            {
+              text: "Other"
+            }
+          ],
           dataCaseStudy: "Son"
         },
         {
@@ -177,6 +292,38 @@ export default function () {
           label: "Decision maker relationship",
           elementKey: "decisionMakerRelationship",
           fqn: "demographics.decisionMakerRelationship",
+          options: [
+            {
+              text: "Spouse"
+            },
+            {
+              text: "Child"
+            },
+            {
+              text: "Parent"
+            },
+            {
+              text: "Sibling"
+            },
+            {
+              text: "Grandparent"
+            },
+            {
+              text: "Grandchild"
+            },
+            {
+              text: "Friend"
+            },
+            {
+              text: "Anyone else related by partnership"
+            },
+            {
+              text: "Public guardian and trustee employee"
+            },
+            {
+              text: "Other"
+            }
+          ],
           dataCaseStudy: "Son"
         },
         {
@@ -186,42 +333,36 @@ export default function () {
           dataCaseStudy: "604-555-9865"
         }
       ],
-      generated: "2019-06-28T07:00:47-07:00",
+      generated: "2019-07-10T07:40:50-07:00",
       hasForm: true,
-      page_form: {
+      pageForm: {
         rows: [
           {
             formRow: "1",
             elements: [
               {
-                label: "Last name",
-                pageDataKey: "demographics",
                 elementKey: "familyName",
+                label: "Last name",
                 inputType: "text",
                 formRow: "1",
                 formColumn: "1",
-                dataParent: "demographics",
-                fqn: "demographics.familyName"
+                dataParent: "demographics"
               },
               {
-                label: "First name",
-                pageDataKey: "demographics",
                 elementKey: "givenName",
+                label: "First name",
                 inputType: "text",
                 formRow: "1",
                 formColumn: "2",
-                dataParent: "demographics",
-                fqn: "demographics.givenName"
+                dataParent: "demographics"
               },
               {
-                label: "Middle name(s)",
-                pageDataKey: "demographics",
                 elementKey: "middleName",
+                label: "Middle name(s)",
                 inputType: "text",
                 formRow: "1",
                 formColumn: "3",
-                dataParent: "demographics",
-                fqn: "demographics.middleName"
+                dataParent: "demographics"
               }
             ]
           },
@@ -229,34 +370,28 @@ export default function () {
             formRow: "2",
             elements: [
               {
-                label: "Preferred name",
-                pageDataKey: "demographics",
                 elementKey: "preferredName",
+                label: "Preferred name",
                 inputType: "text",
                 formRow: "2",
                 formColumn: "1",
-                dataParent: "demographics",
-                fqn: "demographics.preferredName"
+                dataParent: "demographics"
               },
               {
-                label: "Date of birth",
-                pageDataKey: "demographics",
                 elementKey: "dateOfBirth",
+                label: "Date of birth",
                 inputType: "text",
                 formRow: "2",
                 formColumn: "2",
-                dataParent: "demographics",
-                fqn: "demographics.dateOfBirth"
+                dataParent: "demographics"
               },
               {
-                label: "Age",
-                pageDataKey: "demographics",
                 elementKey: "personAge",
+                label: "Age",
                 inputType: "text",
                 formRow: "2",
                 formColumn: "3",
-                dataParent: "demographics",
-                fqn: "demographics.personAge"
+                dataParent: "demographics"
               }
             ]
           },
@@ -264,26 +399,22 @@ export default function () {
             formRow: "3",
             elements: [
               {
-                label: "Height",
-                pageDataKey: "demographics",
                 elementKey: "height",
+                label: "Height",
                 inputType: "text",
                 formRow: "3",
                 formColumn: "1",
                 formCss: "is-one-third",
-                dataParent: "demographics",
-                fqn: "demographics.height"
+                dataParent: "demographics"
               },
               {
-                label: "Weight",
-                pageDataKey: "demographics",
                 elementKey: "weight",
+                label: "Weight",
                 inputType: "text",
                 formRow: "3",
                 formColumn: "2",
                 formCss: "is-one-third",
-                dataParent: "demographics",
-                fqn: "demographics.weight"
+                dataParent: "demographics"
               }
             ]
           },
@@ -291,69 +422,22 @@ export default function () {
             formRow: "4",
             elements: [
               {
-                label: "Gender",
-                pageDataKey: "demographics",
                 elementKey: "gender",
+                label: "Gender",
                 inputType: "select",
                 formRow: "4",
                 formColumn: "1",
                 formCss: "is-one-third",
-                options: [
-                  {
-                    text: "Unknown"
-                  },
-                  {
-                    text: "Female"
-                  },
-                  {
-                    text: "Male"
-                  },
-                  {
-                    text: "Transgender female"
-                  },
-                  {
-                    text: "Transgender male"
-                  },
-                  {
-                    text: "Undifferentiated"
-                  },
-                  {
-                    text: "Prefer not to say"
-                  }
-                ],
-                dataParent: "demographics",
-                fqn: "demographics.gender"
+                dataParent: "demographics"
               },
               {
-                label: "Martial status",
-                pageDataKey: "demographics",
                 elementKey: "martialStatus",
+                label: "Martial status",
                 inputType: "select",
                 formRow: "4",
                 formColumn: "2",
                 formCss: "is-one-third",
-                options: [
-                  {
-                    text: "Married"
-                  },
-                  {
-                    text: "Single"
-                  },
-                  {
-                    text: "Life partner"
-                  },
-                  {
-                    text: "Divorced"
-                  },
-                  {
-                    text: "Separated"
-                  },
-                  {
-                    text: "Widowed"
-                  }
-                ],
-                dataParent: "demographics",
-                fqn: "demographics.martialStatus"
+                dataParent: "demographics"
               }
             ]
           },
@@ -361,59 +445,28 @@ export default function () {
             formRow: "5",
             elements: [
               {
-                label: "Primary language",
-                pageDataKey: "demographics",
                 elementKey: "languagePrimary",
+                label: "Primary language",
                 inputType: "select",
                 formRow: "5",
                 formColumn: "1",
-                options: [
-                  {
-                    text: "English"
-                  },
-                  {
-                    text: "French"
-                  },
-                  {
-                    text: "Spanish"
-                  },
-                  {
-                    text: "German"
-                  },
-                  {
-                    text: "Chinese"
-                  }
-                ],
-                dataParent: "demographics",
-                fqn: "demographics.languagePrimary"
+                dataParent: "demographics"
               },
               {
-                label: "Religion",
-                pageDataKey: "demographics",
                 elementKey: "religion",
+                label: "Religion",
                 inputType: "text",
                 formRow: "5",
                 formColumn: "2",
-                dataParent: "demographics",
-                fqn: "demographics.religion"
+                dataParent: "demographics"
               },
               {
-                label: "Do you identify as an indigenous person?",
-                pageDataKey: "demographics",
                 elementKey: "indigenousIdentifyAs",
+                label: "Do you identify as an indigenous person?",
                 inputType: "select",
                 formRow: "5",
                 formColumn: "3",
-                options: [
-                  {
-                    text: "Yes"
-                  },
-                  {
-                    text: "No"
-                  }
-                ],
-                dataParent: "demographics",
-                fqn: "demographics.indigenousIdentifyAs"
+                dataParent: "demographics"
               }
             ]
           },
@@ -421,25 +474,21 @@ export default function () {
             formRow: "6",
             elements: [
               {
-                label: "Street address",
-                pageDataKey: "demographics",
                 elementKey: "streetAddress",
+                label: "Street address",
                 inputType: "text",
                 formRow: "6",
                 formColumn: "1",
                 formCss: "is-two-thirds",
-                dataParent: "demographics",
-                fqn: "demographics.streetAddress"
+                dataParent: "demographics"
               },
               {
-                label: "City",
-                pageDataKey: "demographics",
                 elementKey: "city",
+                label: "City",
                 inputType: "text",
                 formRow: "6",
                 formColumn: "3",
-                dataParent: "demographics",
-                fqn: "demographics.city"
+                dataParent: "demographics"
               }
             ]
           },
@@ -447,34 +496,28 @@ export default function () {
             formRow: "7",
             elements: [
               {
-                label: "Country",
-                pageDataKey: "demographics",
                 elementKey: "country",
+                label: "Country",
                 inputType: "text",
                 formRow: "7",
                 formColumn: "1",
-                dataParent: "demographics",
-                fqn: "demographics.country"
+                dataParent: "demographics"
               },
               {
-                label: "Postal code",
-                pageDataKey: "demographics",
                 elementKey: "postalCode",
+                label: "Postal code",
                 inputType: "text",
                 formRow: "7",
                 formColumn: "2",
-                dataParent: "demographics",
-                fqn: "demographics.postalCode"
+                dataParent: "demographics"
               },
               {
-                label: "No address",
-                pageDataKey: "demographics",
                 elementKey: "noAddress",
+                label: "No address",
                 inputType: "checkbox",
                 formRow: "7",
                 formColumn: "3",
-                dataParent: "demographics",
-                fqn: "demographics.noAddress"
+                dataParent: "demographics"
               }
             ]
           },
@@ -482,34 +525,28 @@ export default function () {
             formRow: "8",
             elements: [
               {
-                label: "Primary phone number",
-                pageDataKey: "demographics",
                 elementKey: "phoneNumber",
+                label: "Primary phone number",
                 inputType: "text",
                 formRow: "8",
                 formColumn: "1",
-                dataParent: "demographics",
-                fqn: "demographics.phoneNumber"
+                dataParent: "demographics"
               },
               {
-                label: "Email",
-                pageDataKey: "demographics",
                 elementKey: "emailAddress",
+                label: "Email",
                 inputType: "text",
                 formRow: "8",
                 formColumn: "2",
-                dataParent: "demographics",
-                fqn: "demographics.emailAddress"
+                dataParent: "demographics"
               },
               {
-                label: "Occupation/student",
-                pageDataKey: "demographics",
                 elementKey: "occupationStudent",
+                label: "Occupation/student",
                 inputType: "text",
                 formRow: "8",
                 formColumn: "3",
-                dataParent: "demographics",
-                fqn: "demographics.occupationStudent"
+                dataParent: "demographics"
               }
             ]
           },
@@ -517,34 +554,28 @@ export default function () {
             formRow: "9",
             elements: [
               {
-                label: "PHN",
-                pageDataKey: "demographics",
                 elementKey: "phn",
+                label: "PHN",
                 inputType: "text",
                 formRow: "9",
                 formColumn: "1",
-                dataParent: "demographics",
-                fqn: "demographics.phn"
+                dataParent: "demographics"
               },
               {
-                label: "MRN",
-                pageDataKey: "demographics",
                 elementKey: "mrn",
+                label: "MRN",
                 inputType: "text",
                 formRow: "9",
                 formColumn: "2",
-                dataParent: "demographics",
-                fqn: "demographics.mrn"
+                dataParent: "demographics"
               },
               {
-                label: "Patient service",
-                pageDataKey: "demographics",
                 elementKey: "patientService",
+                label: "Patient service",
                 inputType: "text",
                 formRow: "9",
                 formColumn: "3",
-                dataParent: "demographics",
-                fqn: "demographics.patientService"
+                dataParent: "demographics"
               }
             ]
           },
@@ -552,81 +583,28 @@ export default function () {
             formRow: "10",
             elements: [
               {
-                label: "Next of kin name",
-                pageDataKey: "demographics",
                 elementKey: "nextOfKinName",
+                label: "Next of kin name",
                 inputType: "text",
                 formRow: "10",
                 formColumn: "1",
-                dataParent: "demographics",
-                fqn: "demographics.nextOfKinName"
+                dataParent: "demographics"
               },
               {
-                label: "Next of kin relationship",
-                pageDataKey: "demographics",
                 elementKey: "nextOfKinRelationship",
+                label: "Next of kin relationship",
                 inputType: "select",
                 formRow: "10",
                 formColumn: "2",
-                options: [
-                  {
-                    text: "Wife"
-                  },
-                  {
-                    text: "Husband"
-                  },
-                  {
-                    text: "Mother"
-                  },
-                  {
-                    text: "Father"
-                  },
-                  {
-                    text: "Guardian"
-                  },
-                  {
-                    text: "Sister"
-                  },
-                  {
-                    text: "Brother"
-                  },
-                  {
-                    text: "Daughter"
-                  },
-                  {
-                    text: "Son"
-                  },
-                  {
-                    text: "Aunt"
-                  },
-                  {
-                    text: "Uncle"
-                  },
-                  {
-                    text: "Grandmother"
-                  },
-                  {
-                    text: "Grandfather"
-                  },
-                  {
-                    text: "Friend"
-                  },
-                  {
-                    text: "Other"
-                  }
-                ],
-                dataParent: "demographics",
-                fqn: "demographics.nextOfKinRelationship"
+                dataParent: "demographics"
               },
               {
-                label: "Next of kin phone",
-                pageDataKey: "demographics",
                 elementKey: "nextOfKinPhone",
+                label: "Next of kin phone",
                 inputType: "text",
                 formRow: "10",
                 formColumn: "3",
-                dataParent: "demographics",
-                fqn: "demographics.nextOfKinPhone"
+                dataParent: "demographics"
               }
             ]
           },
@@ -634,73 +612,34 @@ export default function () {
             formRow: "11",
             elements: [
               {
-                label: "Decision maker name",
-                pageDataKey: "demographics",
                 elementKey: "decisionMakerName",
+                label: "Decision maker name",
                 inputType: "text",
                 formRow: "11",
                 formColumn: "1",
-                dataParent: "demographics",
-                fqn: "demographics.decisionMakerName"
+                dataParent: "demographics"
               },
               {
-                label: "Decision maker relationship",
-                pageDataKey: "demographics",
                 elementKey: "decisionMakerRelationship",
+                label: "Decision maker relationship",
                 inputType: "select",
                 formRow: "11",
                 formColumn: "2",
-                options: [
-                  {
-                    text: "Spouse"
-                  },
-                  {
-                    text: "Child"
-                  },
-                  {
-                    text: "Parent"
-                  },
-                  {
-                    text: "Sibling"
-                  },
-                  {
-                    text: "Grandparent"
-                  },
-                  {
-                    text: "Grandchild"
-                  },
-                  {
-                    text: "Friend"
-                  },
-                  {
-                    text: "Anyone else related by partnership"
-                  },
-                  {
-                    text: "Public guardian and trustee employee"
-                  },
-                  {
-                    text: "Other"
-                  }
-                ],
-                dataParent: "demographics",
-                fqn: "demographics.decisionMakerRelationship"
+                dataParent: "demographics"
               },
               {
-                label: "Decision maker phone",
-                pageDataKey: "demographics",
                 elementKey: "decisionMakerPhone",
+                label: "Decision maker phone",
                 inputType: "text",
                 formRow: "11",
                 formColumn: "3",
-                dataParent: "demographics",
-                fqn: "demographics.decisionMakerPhone"
+                dataParent: "demographics"
               }
             ]
           }
         ],
         columnsCount: 3
-      },
-      pageData: {}
+      }
     },
     allergies: {
       pageTitle: "Allergies",
@@ -719,22 +658,20 @@ export default function () {
           dataCaseStudy: "TRUE"
         }
       ],
-      generated: "2019-06-28T07:00:47-07:00",
+      generated: "2019-07-10T07:40:50-07:00",
       hasForm: true,
-      page_form: {
+      pageForm: {
         rows: [
           {
             formRow: "1",
             elements: [
               {
-                label: "No known allergies",
-                pageDataKey: "allergies",
                 elementKey: "hasNoAllergies",
+                label: "No known allergies",
                 inputType: "checkbox",
                 formRow: "1",
                 formColumn: "1",
-                dataParent: "allergies",
-                fqn: "allergies.hasNoAllergies"
+                dataParent: "allergies"
               }
             ]
           },
@@ -742,22 +679,19 @@ export default function () {
             formRow: "2",
             elements: [
               {
-                label: "Allergies",
-                pageDataKey: "allergies",
                 elementKey: "allergies",
+                label: "Allergies",
                 inputType: "text",
                 formRow: "2",
                 formColumn: "1",
                 formCss: "is-one-third",
-                dataParent: "allergies",
-                fqn: "allergies.allergies"
+                dataParent: "allergies"
               }
             ]
           }
         ],
         columnsCount: 1
-      },
-      pageData: {}
+      }
     },
     medical: {
       pageTitle: "Medical history",
@@ -769,29 +703,26 @@ export default function () {
           fqn: "medical.history"
         }
       ],
-      generated: "2019-06-28T07:00:47-07:00",
+      generated: "2019-07-10T07:40:50-07:00",
       hasForm: true,
-      page_form: {
+      pageForm: {
         rows: [
           {
             formRow: "1",
             elements: [
               {
-                label: "Past medical history",
-                pageDataKey: "medical",
                 elementKey: "history",
+                label: "Past medical history",
                 inputType: "textarea",
                 formRow: "1",
                 formColumn: "1",
-                dataParent: "medical",
-                fqn: "medical.history"
+                dataParent: "medical"
               }
             ]
           }
         ],
         columnsCount: 1
-      },
-      pageData: {}
+      }
     },
     psychosocial: {
       pageTitle: "Psychosocial history",
@@ -838,6 +769,7 @@ export default function () {
           dependantOn: "exercise",
           elementKey: "exerciseFrequency",
           fqn: "psychosocial.behaviours.exerciseFrequency",
+          formOption: "hideLabel",
           dataCaseStudy: "< 1 day/week"
         },
         {
@@ -851,6 +783,7 @@ export default function () {
           dependantOn: "caffeineUse",
           elementKey: "caffeineUseFrequency",
           fqn: "psychosocial.behaviours.caffeineUseFrequency",
+          formOption: "hideLabel",
           dataCaseStudy: "1-2 cups/day"
         },
         {
@@ -866,6 +799,7 @@ export default function () {
           dependantOn: "tobaccoUse",
           elementKey: "tobaccoUseFrequency",
           fqn: "psychosocial.behaviours.tobaccoUseFrequency",
+          formOption: "hideLabel",
           dataCaseStudy: "History of smoking"
         },
         {
@@ -879,7 +813,8 @@ export default function () {
           label: "Cannabis use frequency",
           dependantOn: "cannabisUse",
           elementKey: "cannabisUseFrequency",
-          fqn: "psychosocial.behaviours.cannabisUseFrequency"
+          fqn: "psychosocial.behaviours.cannabisUseFrequency",
+          formOption: "hideLabel"
         },
         {
           label: "Alcohol use",
@@ -894,6 +829,7 @@ export default function () {
           dependantOn: "alcoholUse",
           elementKey: "alcoholUseFrequency",
           fqn: "psychosocial.behaviours.alcoholUseFrequency",
+          formOption: "hideLabel",
           dataCaseStudy: "Social"
         },
         {
@@ -907,45 +843,40 @@ export default function () {
           label: "Substance use frequency",
           dependantOn: "substanceUse",
           elementKey: "substanceUseFrequency",
-          fqn: "psychosocial.behaviours.substanceUseFrequency"
+          fqn: "psychosocial.behaviours.substanceUseFrequency",
+          formOption: "hideLabel"
         }
       ],
-      generated: "2019-06-28T07:00:47-07:00",
+      generated: "2019-07-10T07:40:50-07:00",
       hasForm: true,
-      page_form: {
+      pageForm: {
         rows: [
           {
             formRow: "1",
             elements: [
               {
-                label: "Psychosocial history",
-                pageDataKey: "psychosocial",
                 elementKey: "history",
+                label: "Psychosocial history",
                 inputType: "textarea",
                 formRow: "1",
                 formColumn: "1",
-                dataParent: "psychosocial",
-                fqn: "psychosocial.history"
+                dataParent: "psychosocial"
               },
               {
-                label: "Diet",
-                pageDataKey: "psychosocial",
                 elementKey: "diet",
+                label: "Diet",
                 inputType: "textarea",
                 formRow: "1",
                 formColumn: "2",
-                dataParent: "psychosocial",
-                fqn: "psychosocial.diet"
+                dataParent: "psychosocial"
               },
               {
-                label: "Living situation",
-                pageDataKey: "psychosocial",
                 elementKey: "livingSituation",
+                label: "Living situation",
                 inputType: "textarea",
                 formRow: "1",
                 formColumn: "3",
-                dataParent: "psychosocial",
-                fqn: "psychosocial.livingSituation"
+                dataParent: "psychosocial"
               }
             ]
           },
@@ -953,24 +884,20 @@ export default function () {
             formRow: "2",
             elements: [
               {
-                label: "Employment/school",
-                pageDataKey: "psychosocial",
                 elementKey: "employmentSchool",
+                label: "Employment/school",
                 inputType: "textarea",
                 formRow: "2",
                 formColumn: "1",
-                dataParent: "psychosocial",
-                fqn: "psychosocial.employmentSchool"
+                dataParent: "psychosocial"
               },
               {
-                label: "Hobbies",
-                pageDataKey: "psychosocial",
                 elementKey: "hobbies",
+                label: "Hobbies",
                 inputType: "textarea",
                 formRow: "2",
                 formColumn: "2",
-                dataParent: "psychosocial",
-                fqn: "psychosocial.hobbies"
+                dataParent: "psychosocial"
               }
             ]
           },
@@ -978,211 +905,32 @@ export default function () {
             formRow: "3",
             elements: [
               {
-                pageDataKey: "psychosocial",
                 elementKey: "behaviours",
                 inputType: "fieldset",
                 formRow: "3",
                 formColumn: "1",
                 formCss: "check_with_text_group",
                 dataParent: "psychosocial",
-                fqn: "psychosocial.behaviours",
-                elements: [
-                  {
-                    label: "Exercise",
-                    pageDataKey: "psychosocial",
-                    level2Key: "behaviours",
-                    elementKey: "exercise",
-                    inputType: "checkbox",
-                    formCss: "is-one-quarter",
-                    fsetRow: "1",
-                    fsetCol: "1",
-                    dataParent: "psychosocial.behaviours",
-                    fqn: "psychosocial.behaviours.exercise",
-                    formColumn: "1"
-                  },
-                  {
-                    label: "Exercise frequency",
-                    pageDataKey: "psychosocial",
-                    level2Key: "behaviours",
-                    elementKey: "exerciseFrequency",
-                    inputType: "text",
-                    formCss: "is-one-third",
-                    formOption: "hideLabel",
-                    fsetRow: "1",
-                    fsetCol: "2",
-                    dataParent: "psychosocial.behaviours",
-                    fqn: "psychosocial.behaviours.exerciseFrequency",
-                    formColumn: "2"
-                  },
-                  {
-                    label: "Caffeine use",
-                    pageDataKey: "psychosocial",
-                    level2Key: "behaviours",
-                    elementKey: "caffeineUse",
-                    inputType: "checkbox",
-                    formCss: "is-one-quarter",
-                    fsetRow: "2",
-                    fsetCol: "1",
-                    dataParent: "psychosocial.behaviours",
-                    fqn: "psychosocial.behaviours.caffeineUse",
-                    formColumn: "1"
-                  },
-                  {
-                    label: "Caffeine use frequency",
-                    pageDataKey: "psychosocial",
-                    level2Key: "behaviours",
-                    elementKey: "caffeineUseFrequency",
-                    inputType: "text",
-                    formCss: "is-one-third",
-                    formOption: "hideLabel",
-                    fsetRow: "2",
-                    fsetCol: "2",
-                    dataParent: "psychosocial.behaviours",
-                    fqn: "psychosocial.behaviours.caffeineUseFrequency",
-                    formColumn: "2"
-                  },
-                  {
-                    label: "Tobacco use",
-                    pageDataKey: "psychosocial",
-                    level2Key: "behaviours",
-                    elementKey: "tobaccoUse",
-                    inputType: "checkbox",
-                    formCss: "is-one-quarter",
-                    fsetRow: "3",
-                    fsetCol: "1",
-                    dataParent: "psychosocial.behaviours",
-                    fqn: "psychosocial.behaviours.tobaccoUse",
-                    formColumn: "1"
-                  },
-                  {
-                    label: "Tobacco use frequency",
-                    pageDataKey: "psychosocial",
-                    level2Key: "behaviours",
-                    elementKey: "tobaccoUseFrequency",
-                    inputType: "text",
-                    formCss: "is-one-third",
-                    formOption: "hideLabel",
-                    fsetRow: "3",
-                    fsetCol: "2",
-                    dataParent: "psychosocial.behaviours",
-                    fqn: "psychosocial.behaviours.tobaccoUseFrequency",
-                    formColumn: "2"
-                  },
-                  {
-                    label: "Cannabis use",
-                    pageDataKey: "psychosocial",
-                    level2Key: "behaviours",
-                    elementKey: "cannabisUse",
-                    inputType: "checkbox",
-                    formCss: "is-one-quarter",
-                    fsetRow: "4",
-                    fsetCol: "1",
-                    dataParent: "psychosocial.behaviours",
-                    fqn: "psychosocial.behaviours.cannabisUse",
-                    formColumn: "1"
-                  },
-                  {
-                    label: "Cannabis use frequency",
-                    pageDataKey: "psychosocial",
-                    level2Key: "behaviours",
-                    elementKey: "cannabisUseFrequency",
-                    inputType: "text",
-                    formCss: "is-one-third",
-                    formOption: "hideLabel",
-                    fsetRow: "4",
-                    fsetCol: "2",
-                    dataParent: "psychosocial.behaviours",
-                    fqn: "psychosocial.behaviours.cannabisUseFrequency",
-                    formColumn: "2"
-                  },
-                  {
-                    label: "Alcohol use",
-                    pageDataKey: "psychosocial",
-                    level2Key: "behaviours",
-                    elementKey: "alcoholUse",
-                    inputType: "checkbox",
-                    formCss: "is-one-quarter",
-                    fsetRow: "5",
-                    fsetCol: "1",
-                    dataParent: "psychosocial.behaviours",
-                    fqn: "psychosocial.behaviours.alcoholUse",
-                    formColumn: "1"
-                  },
-                  {
-                    label: "Alcohol use frequency",
-                    pageDataKey: "psychosocial",
-                    level2Key: "behaviours",
-                    elementKey: "alcoholUseFrequency",
-                    inputType: "text",
-                    formCss: "is-one-third",
-                    formOption: "hideLabel",
-                    fsetRow: "5",
-                    fsetCol: "2",
-                    dataParent: "psychosocial.behaviours",
-                    fqn: "psychosocial.behaviours.alcoholUseFrequency",
-                    formColumn: "2"
-                  },
-                  {
-                    label: "Substance use",
-                    pageDataKey: "psychosocial",
-                    level2Key: "behaviours",
-                    elementKey: "substanceUse",
-                    inputType: "checkbox",
-                    formCss: "is-one-quarter",
-                    fsetRow: "6",
-                    fsetCol: "1",
-                    dataParent: "psychosocial.behaviours",
-                    fqn: "psychosocial.behaviours.substanceUse",
-                    formColumn: "1"
-                  },
-                  {
-                    label: "Substance use frequency",
-                    pageDataKey: "psychosocial",
-                    level2Key: "behaviours",
-                    elementKey: "substanceUseFrequency",
-                    inputType: "text",
-                    formCss: "is-one-third",
-                    formOption: "hideLabel",
-                    fsetRow: "6",
-                    fsetCol: "2",
-                    dataParent: "psychosocial.behaviours",
-                    fqn: "psychosocial.behaviours.substanceUseFrequency",
-                    formColumn: "2"
-                  }
-                ],
-                containerType: "fieldset",
-                containerKey: "behaviours",
                 formFieldSet: {
                   rows: [
                     {
                       formRow: "1",
                       elements: [
                         {
-                          label: "Exercise",
-                          pageDataKey: "psychosocial",
-                          level2Key: "behaviours",
                           elementKey: "exercise",
+                          label: "Exercise",
                           inputType: "checkbox",
-                          formCss: "is-one-quarter",
                           fsetRow: "1",
-                          fsetCol: "1",
-                          dataParent: "psychosocial.behaviours",
-                          fqn: "psychosocial.behaviours.exercise",
-                          formColumn: "1"
+                          formCss: "is-one-quarter",
+                          dataParent: "psychosocial.behaviours"
                         },
                         {
-                          label: "Exercise frequency",
-                          pageDataKey: "psychosocial",
-                          level2Key: "behaviours",
                           elementKey: "exerciseFrequency",
+                          label: "Exercise frequency",
                           inputType: "text",
-                          formCss: "is-one-third",
-                          formOption: "hideLabel",
                           fsetRow: "1",
-                          fsetCol: "2",
-                          dataParent: "psychosocial.behaviours",
-                          fqn: "psychosocial.behaviours.exerciseFrequency",
-                          formColumn: "2"
+                          formCss: "is-one-third",
+                          dataParent: "psychosocial.behaviours"
                         }
                       ]
                     },
@@ -1190,31 +938,20 @@ export default function () {
                       formRow: "2",
                       elements: [
                         {
-                          label: "Caffeine use",
-                          pageDataKey: "psychosocial",
-                          level2Key: "behaviours",
                           elementKey: "caffeineUse",
+                          label: "Caffeine use",
                           inputType: "checkbox",
-                          formCss: "is-one-quarter",
                           fsetRow: "2",
-                          fsetCol: "1",
-                          dataParent: "psychosocial.behaviours",
-                          fqn: "psychosocial.behaviours.caffeineUse",
-                          formColumn: "1"
+                          formCss: "is-one-quarter",
+                          dataParent: "psychosocial.behaviours"
                         },
                         {
-                          label: "Caffeine use frequency",
-                          pageDataKey: "psychosocial",
-                          level2Key: "behaviours",
                           elementKey: "caffeineUseFrequency",
+                          label: "Caffeine use frequency",
                           inputType: "text",
-                          formCss: "is-one-third",
-                          formOption: "hideLabel",
                           fsetRow: "2",
-                          fsetCol: "2",
-                          dataParent: "psychosocial.behaviours",
-                          fqn: "psychosocial.behaviours.caffeineUseFrequency",
-                          formColumn: "2"
+                          formCss: "is-one-third",
+                          dataParent: "psychosocial.behaviours"
                         }
                       ]
                     },
@@ -1222,31 +959,20 @@ export default function () {
                       formRow: "3",
                       elements: [
                         {
-                          label: "Tobacco use",
-                          pageDataKey: "psychosocial",
-                          level2Key: "behaviours",
                           elementKey: "tobaccoUse",
+                          label: "Tobacco use",
                           inputType: "checkbox",
-                          formCss: "is-one-quarter",
                           fsetRow: "3",
-                          fsetCol: "1",
-                          dataParent: "psychosocial.behaviours",
-                          fqn: "psychosocial.behaviours.tobaccoUse",
-                          formColumn: "1"
+                          formCss: "is-one-quarter",
+                          dataParent: "psychosocial.behaviours"
                         },
                         {
-                          label: "Tobacco use frequency",
-                          pageDataKey: "psychosocial",
-                          level2Key: "behaviours",
                           elementKey: "tobaccoUseFrequency",
+                          label: "Tobacco use frequency",
                           inputType: "text",
-                          formCss: "is-one-third",
-                          formOption: "hideLabel",
                           fsetRow: "3",
-                          fsetCol: "2",
-                          dataParent: "psychosocial.behaviours",
-                          fqn: "psychosocial.behaviours.tobaccoUseFrequency",
-                          formColumn: "2"
+                          formCss: "is-one-third",
+                          dataParent: "psychosocial.behaviours"
                         }
                       ]
                     },
@@ -1254,31 +980,20 @@ export default function () {
                       formRow: "4",
                       elements: [
                         {
-                          label: "Cannabis use",
-                          pageDataKey: "psychosocial",
-                          level2Key: "behaviours",
                           elementKey: "cannabisUse",
+                          label: "Cannabis use",
                           inputType: "checkbox",
-                          formCss: "is-one-quarter",
                           fsetRow: "4",
-                          fsetCol: "1",
-                          dataParent: "psychosocial.behaviours",
-                          fqn: "psychosocial.behaviours.cannabisUse",
-                          formColumn: "1"
+                          formCss: "is-one-quarter",
+                          dataParent: "psychosocial.behaviours"
                         },
                         {
-                          label: "Cannabis use frequency",
-                          pageDataKey: "psychosocial",
-                          level2Key: "behaviours",
                           elementKey: "cannabisUseFrequency",
+                          label: "Cannabis use frequency",
                           inputType: "text",
-                          formCss: "is-one-third",
-                          formOption: "hideLabel",
                           fsetRow: "4",
-                          fsetCol: "2",
-                          dataParent: "psychosocial.behaviours",
-                          fqn: "psychosocial.behaviours.cannabisUseFrequency",
-                          formColumn: "2"
+                          formCss: "is-one-third",
+                          dataParent: "psychosocial.behaviours"
                         }
                       ]
                     },
@@ -1286,31 +1001,20 @@ export default function () {
                       formRow: "5",
                       elements: [
                         {
-                          label: "Alcohol use",
-                          pageDataKey: "psychosocial",
-                          level2Key: "behaviours",
                           elementKey: "alcoholUse",
+                          label: "Alcohol use",
                           inputType: "checkbox",
-                          formCss: "is-one-quarter",
                           fsetRow: "5",
-                          fsetCol: "1",
-                          dataParent: "psychosocial.behaviours",
-                          fqn: "psychosocial.behaviours.alcoholUse",
-                          formColumn: "1"
+                          formCss: "is-one-quarter",
+                          dataParent: "psychosocial.behaviours"
                         },
                         {
-                          label: "Alcohol use frequency",
-                          pageDataKey: "psychosocial",
-                          level2Key: "behaviours",
                           elementKey: "alcoholUseFrequency",
+                          label: "Alcohol use frequency",
                           inputType: "text",
-                          formCss: "is-one-third",
-                          formOption: "hideLabel",
                           fsetRow: "5",
-                          fsetCol: "2",
-                          dataParent: "psychosocial.behaviours",
-                          fqn: "psychosocial.behaviours.alcoholUseFrequency",
-                          formColumn: "2"
+                          formCss: "is-one-third",
+                          dataParent: "psychosocial.behaviours"
                         }
                       ]
                     },
@@ -1318,31 +1022,20 @@ export default function () {
                       formRow: "6",
                       elements: [
                         {
-                          label: "Substance use",
-                          pageDataKey: "psychosocial",
-                          level2Key: "behaviours",
                           elementKey: "substanceUse",
+                          label: "Substance use",
                           inputType: "checkbox",
-                          formCss: "is-one-quarter",
                           fsetRow: "6",
-                          fsetCol: "1",
-                          dataParent: "psychosocial.behaviours",
-                          fqn: "psychosocial.behaviours.substanceUse",
-                          formColumn: "1"
+                          formCss: "is-one-quarter",
+                          dataParent: "psychosocial.behaviours"
                         },
                         {
-                          label: "Substance use frequency",
-                          pageDataKey: "psychosocial",
-                          level2Key: "behaviours",
                           elementKey: "substanceUseFrequency",
+                          label: "Substance use frequency",
                           inputType: "text",
-                          formCss: "is-one-third",
-                          formOption: "hideLabel",
                           fsetRow: "6",
-                          fsetCol: "2",
-                          dataParent: "psychosocial.behaviours",
-                          fqn: "psychosocial.behaviours.substanceUseFrequency",
-                          formColumn: "2"
+                          formCss: "is-one-third",
+                          dataParent: "psychosocial.behaviours"
                         }
                       ]
                     }
@@ -1354,8 +1047,7 @@ export default function () {
           }
         ],
         columnsCount: 3
-      },
-      pageData: {}
+      }
     },
     surgical: {
       pageTitle: "Surgical history",
@@ -1403,52 +1095,32 @@ export default function () {
           fqn: "surgical.previous.comments"
         }
       ],
-      generated: "2019-06-28T07:00:47-07:00",
+      generated: "2019-07-10T07:40:50-07:00",
       hasTable: true,
       tables: [
         {
+          pageDataKey: "surgical",
           tableKey: "pastSurgery",
           label: "Past surgery",
           addButtonText: "Add a past surgery",
           tableCells: [
             {
-              label: "Performing physician",
-              pageDataKey: "surgical",
-              level2Key: "pastSurgery",
               elementKey: "physician",
-              inputType: "text",
-              formRow: "1",
-              formColumn: "1",
+              label: "Performing physician",
               tableColumn: "1",
-              dataParent: "surgical.pastSurgery",
-              fqn: "surgical.pastSurgery.physician",
-              tableKey: "pastSurgery"
+              inputType: "text"
             },
             {
-              label: "Surgery/procedure",
-              pageDataKey: "surgical",
-              level2Key: "pastSurgery",
               elementKey: "procedure",
-              inputType: "text",
-              formRow: "1",
-              formColumn: "2",
+              label: "Surgery/procedure",
               tableColumn: "2",
-              dataParent: "surgical.pastSurgery",
-              fqn: "surgical.pastSurgery.procedure",
-              tableKey: "pastSurgery"
+              inputType: "text"
             },
             {
-              label: "Time elapsed since surgery",
-              pageDataKey: "surgical",
-              level2Key: "pastSurgery",
               elementKey: "timeSince",
-              inputType: "text",
-              formRow: "1",
-              formColumn: "3",
+              label: "Time elapsed since surgery",
               tableColumn: "3",
-              dataParent: "surgical.pastSurgery",
-              fqn: "surgical.pastSurgery.timeSince",
-              tableKey: "pastSurgery"
+              inputType: "text"
             }
           ],
           tableForm: {
@@ -1457,42 +1129,30 @@ export default function () {
                 formRow: "1",
                 elements: [
                   {
-                    label: "Performing physician",
-                    pageDataKey: "surgical",
-                    level2Key: "pastSurgery",
                     elementKey: "physician",
+                    label: "Performing physician",
                     inputType: "text",
                     formRow: "1",
                     formColumn: "1",
-                    tableColumn: "1",
                     dataParent: "surgical.pastSurgery",
-                    fqn: "surgical.pastSurgery.physician",
                     tableKey: "pastSurgery"
                   },
                   {
-                    label: "Surgery/procedure",
-                    pageDataKey: "surgical",
-                    level2Key: "pastSurgery",
                     elementKey: "procedure",
+                    label: "Surgery/procedure",
                     inputType: "text",
                     formRow: "1",
                     formColumn: "2",
-                    tableColumn: "2",
                     dataParent: "surgical.pastSurgery",
-                    fqn: "surgical.pastSurgery.procedure",
                     tableKey: "pastSurgery"
                   },
                   {
-                    label: "Time elapsed since surgery",
-                    pageDataKey: "surgical",
-                    level2Key: "pastSurgery",
                     elementKey: "timeSince",
+                    label: "Time elapsed since surgery",
                     inputType: "text",
                     formRow: "1",
                     formColumn: "3",
-                    tableColumn: "3",
                     dataParent: "surgical.pastSurgery",
-                    fqn: "surgical.pastSurgery.timeSince",
                     tableKey: "pastSurgery"
                   }
                 ]
@@ -1502,78 +1162,40 @@ export default function () {
           }
         },
         {
+          pageDataKey: "surgical",
           tableKey: "previous",
           label: "Previous admission",
           addButtonText: "Add a previous appointment",
           tableCells: [
             {
-              label: "Appointment with",
-              pageDataKey: "surgical",
-              level2Key: "previous",
               elementKey: "with",
-              inputType: "text",
-              formRow: "1",
-              formColumn: "1",
-              formCss: "is-one-third",
+              label: "Appointment with",
               tableColumn: "1",
-              dataParent: "surgical.previous",
-              fqn: "surgical.previous.with",
-              tableKey: "previous"
+              inputType: "text"
             },
             {
-              label: "Appointment details",
-              pageDataKey: "surgical",
-              level2Key: "previous",
               elementKey: "details",
-              inputType: "text",
-              formRow: "1",
-              formColumn: "2",
-              formCss: "is-one-third",
+              label: "Appointment details",
               tableColumn: "2",
-              dataParent: "surgical.previous",
-              fqn: "surgical.previous.details",
-              tableKey: "previous"
+              inputType: "text"
             },
             {
-              label: "Previous admission reason",
-              pageDataKey: "surgical",
-              level2Key: "previous",
               elementKey: "previousAdmissions",
-              inputType: "text",
-              formRow: "2",
-              formColumn: "1",
-              formCss: "is-one-third",
+              label: "Previous admission reason",
               tableColumn: "3",
-              dataParent: "surgical.previous",
-              fqn: "surgical.previous.previousAdmissions",
-              tableKey: "previous"
+              inputType: "text"
             },
             {
-              label: "Date",
-              pageDataKey: "surgical",
-              level2Key: "previous",
               elementKey: "previousAdmissionsDate",
-              inputType: "date",
-              formRow: "2",
-              formColumn: "2",
-              formCss: "is-one-third",
+              label: "Date",
               tableColumn: "4",
-              dataParent: "surgical.previous",
-              fqn: "surgical.previous.previousAdmissionsDate",
-              tableKey: "previous"
+              inputType: "date"
             },
             {
-              label: "General comments",
-              pageDataKey: "surgical",
-              level2Key: "previous",
               elementKey: "comments",
-              inputType: "textarea",
-              formRow: "3",
-              formColumn: "1",
+              label: "General comments",
               tableColumn: "5",
-              dataParent: "surgical.previous",
-              fqn: "surgical.previous.comments",
-              tableKey: "previous"
+              inputType: "textarea"
             }
           ],
           tableForm: {
@@ -1582,31 +1204,23 @@ export default function () {
                 formRow: "1",
                 elements: [
                   {
-                    label: "Appointment with",
-                    pageDataKey: "surgical",
-                    level2Key: "previous",
                     elementKey: "with",
+                    label: "Appointment with",
                     inputType: "text",
                     formRow: "1",
                     formColumn: "1",
                     formCss: "is-one-third",
-                    tableColumn: "1",
                     dataParent: "surgical.previous",
-                    fqn: "surgical.previous.with",
                     tableKey: "previous"
                   },
                   {
-                    label: "Appointment details",
-                    pageDataKey: "surgical",
-                    level2Key: "previous",
                     elementKey: "details",
+                    label: "Appointment details",
                     inputType: "text",
                     formRow: "1",
                     formColumn: "2",
                     formCss: "is-one-third",
-                    tableColumn: "2",
                     dataParent: "surgical.previous",
-                    fqn: "surgical.previous.details",
                     tableKey: "previous"
                   }
                 ]
@@ -1615,31 +1229,23 @@ export default function () {
                 formRow: "2",
                 elements: [
                   {
-                    label: "Previous admission reason",
-                    pageDataKey: "surgical",
-                    level2Key: "previous",
                     elementKey: "previousAdmissions",
+                    label: "Previous admission reason",
                     inputType: "text",
                     formRow: "2",
                     formColumn: "1",
                     formCss: "is-one-third",
-                    tableColumn: "3",
                     dataParent: "surgical.previous",
-                    fqn: "surgical.previous.previousAdmissions",
                     tableKey: "previous"
                   },
                   {
-                    label: "Date",
-                    pageDataKey: "surgical",
-                    level2Key: "previous",
                     elementKey: "previousAdmissionsDate",
+                    label: "Date",
                     inputType: "date",
                     formRow: "2",
                     formColumn: "2",
                     formCss: "is-one-third",
-                    tableColumn: "4",
                     dataParent: "surgical.previous",
-                    fqn: "surgical.previous.previousAdmissionsDate",
                     tableKey: "previous"
                   }
                 ]
@@ -1648,16 +1254,12 @@ export default function () {
                 formRow: "3",
                 elements: [
                   {
-                    label: "General comments",
-                    pageDataKey: "surgical",
-                    level2Key: "previous",
                     elementKey: "comments",
+                    label: "General comments",
                     inputType: "textarea",
                     formRow: "3",
                     formColumn: "1",
-                    tableColumn: "5",
                     dataParent: "surgical.previous",
-                    fqn: "surgical.previous.comments",
                     tableKey: "previous"
                   }
                 ]
@@ -1666,11 +1268,7 @@ export default function () {
             columnsCount: 2
           }
         }
-      ],
-      pageData: {
-        pastSurgery: [],
-        previous: []
-      }
+      ]
     },
     immunization: {
       pageTitle: "Immunization history",
@@ -1685,7 +1283,8 @@ export default function () {
           label: "Hep A date",
           dependantOn: "hepA",
           elementKey: "hepADate",
-          fqn: "immunization.hepADate"
+          fqn: "immunization.hepADate",
+          formOption: "hideLabel"
         },
         {
           label: "Hep B",
@@ -1696,7 +1295,8 @@ export default function () {
           label: "Hep B date",
           dependantOn: "hepB",
           elementKey: "hepBDate",
-          fqn: "immunization.hepBDate"
+          fqn: "immunization.hepBDate",
+          formOption: "hideLabel"
         },
         {
           label: "MMR",
@@ -1707,7 +1307,8 @@ export default function () {
           label: "MMR date",
           dependantOn: "mmr",
           elementKey: "mmrDate",
-          fqn: "immunization.mmrDate"
+          fqn: "immunization.mmrDate",
+          formOption: "hideLabel"
         },
         {
           label: "Pneumococcal",
@@ -1718,7 +1319,8 @@ export default function () {
           label: "Pneumococcal date",
           dependantOn: "pneumococcal",
           elementKey: "pneumococcalDate",
-          fqn: "immunization.pneumococcalDate"
+          fqn: "immunization.pneumococcalDate",
+          formOption: "hideLabel"
         },
         {
           label: "Polio diptheria pertussis",
@@ -1729,7 +1331,8 @@ export default function () {
           label: "Polio diptheria pertussis date",
           dependantOn: "polioDiptheriaPertussis",
           elementKey: "polioDiptheriaPertussisDate",
-          fqn: "immunization.polioDiptheriaPertussisDate"
+          fqn: "immunization.polioDiptheriaPertussisDate",
+          formOption: "hideLabel"
         },
         {
           label: "TB",
@@ -1740,7 +1343,8 @@ export default function () {
           label: "TB date",
           dependantOn: "tb",
           elementKey: "tbDate",
-          fqn: "immunization.tbDate"
+          fqn: "immunization.tbDate",
+          formOption: "hideLabel"
         },
         {
           label: "Tetanus",
@@ -1751,7 +1355,8 @@ export default function () {
           label: "Tetanus date",
           dependantOn: "tetanus",
           elementKey: "tetanusDate",
-          fqn: "immunization.tetanusDate"
+          fqn: "immunization.tetanusDate",
+          formOption: "hideLabel"
         },
         {
           elementKey: "other1",
@@ -1760,7 +1365,8 @@ export default function () {
         {
           label: "Date",
           elementKey: "otherDate1",
-          fqn: "immunization.otherDate1"
+          fqn: "immunization.otherDate1",
+          formOption: "hideLabel"
         },
         {
           elementKey: "other2",
@@ -1769,7 +1375,8 @@ export default function () {
         {
           label: "Date",
           elementKey: "otherDate2",
-          fqn: "immunization.otherDate2"
+          fqn: "immunization.otherDate2",
+          formOption: "hideLabel"
         },
         {
           elementKey: "other3",
@@ -1778,38 +1385,32 @@ export default function () {
         {
           label: "Date",
           elementKey: "otherDate3",
-          fqn: "immunization.otherDate3"
+          fqn: "immunization.otherDate3",
+          formOption: "hideLabel"
         }
       ],
-      generated: "2019-06-28T07:00:47-07:00",
+      generated: "2019-07-10T07:40:50-07:00",
       hasForm: true,
-      page_form: {
+      pageForm: {
         rows: [
           {
             formRow: "1",
             elements: [
               {
-                label: "Hep A",
-                pageDataKey: "immunization",
                 elementKey: "hepA",
+                label: "Hep A",
                 inputType: "checkbox",
                 formRow: "1",
                 formColumn: "1",
-                tableCss: "is-one-quarter",
-                dataParent: "immunization",
-                fqn: "immunization.hepA"
+                dataParent: "immunization"
               },
               {
-                label: "Hep A date",
-                pageDataKey: "immunization",
                 elementKey: "hepADate",
+                label: "Hep A date",
                 inputType: "date",
                 formRow: "1",
                 formColumn: "2",
-                formOption: "hideLabel",
-                tableCss: "is-one-third",
-                dataParent: "immunization",
-                fqn: "immunization.hepADate"
+                dataParent: "immunization"
               }
             ]
           },
@@ -1817,27 +1418,20 @@ export default function () {
             formRow: "2",
             elements: [
               {
-                label: "Hep B",
-                pageDataKey: "immunization",
                 elementKey: "hepB",
+                label: "Hep B",
                 inputType: "checkbox",
                 formRow: "2",
                 formColumn: "1",
-                tableCss: "is-one-quarter",
-                dataParent: "immunization",
-                fqn: "immunization.hepB"
+                dataParent: "immunization"
               },
               {
-                label: "Hep B date",
-                pageDataKey: "immunization",
                 elementKey: "hepBDate",
+                label: "Hep B date",
                 inputType: "date",
                 formRow: "2",
                 formColumn: "2",
-                formOption: "hideLabel",
-                tableCss: "is-one-third",
-                dataParent: "immunization",
-                fqn: "immunization.hepBDate"
+                dataParent: "immunization"
               }
             ]
           },
@@ -1845,27 +1439,20 @@ export default function () {
             formRow: "3",
             elements: [
               {
-                label: "MMR",
-                pageDataKey: "immunization",
                 elementKey: "mmr",
+                label: "MMR",
                 inputType: "checkbox",
                 formRow: "3",
                 formColumn: "1",
-                tableCss: "is-one-quarter",
-                dataParent: "immunization",
-                fqn: "immunization.mmr"
+                dataParent: "immunization"
               },
               {
-                label: "MMR date",
-                pageDataKey: "immunization",
                 elementKey: "mmrDate",
+                label: "MMR date",
                 inputType: "date",
                 formRow: "3",
                 formColumn: "2",
-                formOption: "hideLabel",
-                tableCss: "is-one-third",
-                dataParent: "immunization",
-                fqn: "immunization.mmrDate"
+                dataParent: "immunization"
               }
             ]
           },
@@ -1873,27 +1460,20 @@ export default function () {
             formRow: "4",
             elements: [
               {
-                label: "Pneumococcal",
-                pageDataKey: "immunization",
                 elementKey: "pneumococcal",
+                label: "Pneumococcal",
                 inputType: "checkbox",
                 formRow: "4",
                 formColumn: "1",
-                tableCss: "is-one-quarter",
-                dataParent: "immunization",
-                fqn: "immunization.pneumococcal"
+                dataParent: "immunization"
               },
               {
-                label: "Pneumococcal date",
-                pageDataKey: "immunization",
                 elementKey: "pneumococcalDate",
+                label: "Pneumococcal date",
                 inputType: "date",
                 formRow: "4",
                 formColumn: "2",
-                formOption: "hideLabel",
-                tableCss: "is-one-third",
-                dataParent: "immunization",
-                fqn: "immunization.pneumococcalDate"
+                dataParent: "immunization"
               }
             ]
           },
@@ -1901,27 +1481,20 @@ export default function () {
             formRow: "5",
             elements: [
               {
-                label: "Polio diptheria pertussis",
-                pageDataKey: "immunization",
                 elementKey: "polioDiptheriaPertussis",
+                label: "Polio diptheria pertussis",
                 inputType: "checkbox",
                 formRow: "5",
                 formColumn: "1",
-                tableCss: "is-one-quarter",
-                dataParent: "immunization",
-                fqn: "immunization.polioDiptheriaPertussis"
+                dataParent: "immunization"
               },
               {
-                label: "Polio diptheria pertussis date",
-                pageDataKey: "immunization",
                 elementKey: "polioDiptheriaPertussisDate",
+                label: "Polio diptheria pertussis date",
                 inputType: "date",
                 formRow: "5",
                 formColumn: "2",
-                formOption: "hideLabel",
-                tableCss: "is-one-third",
-                dataParent: "immunization",
-                fqn: "immunization.polioDiptheriaPertussisDate"
+                dataParent: "immunization"
               }
             ]
           },
@@ -1929,27 +1502,20 @@ export default function () {
             formRow: "6",
             elements: [
               {
-                label: "TB",
-                pageDataKey: "immunization",
                 elementKey: "tb",
+                label: "TB",
                 inputType: "checkbox",
                 formRow: "6",
                 formColumn: "1",
-                tableCss: "is-one-quarter",
-                dataParent: "immunization",
-                fqn: "immunization.tb"
+                dataParent: "immunization"
               },
               {
-                label: "TB date",
-                pageDataKey: "immunization",
                 elementKey: "tbDate",
+                label: "TB date",
                 inputType: "date",
                 formRow: "6",
                 formColumn: "2",
-                formOption: "hideLabel",
-                tableCss: "is-one-third",
-                dataParent: "immunization",
-                fqn: "immunization.tbDate"
+                dataParent: "immunization"
               }
             ]
           },
@@ -1957,27 +1523,20 @@ export default function () {
             formRow: "7",
             elements: [
               {
-                label: "Tetanus",
-                pageDataKey: "immunization",
                 elementKey: "tetanus",
+                label: "Tetanus",
                 inputType: "checkbox",
                 formRow: "7",
                 formColumn: "1",
-                tableCss: "is-one-quarter",
-                dataParent: "immunization",
-                fqn: "immunization.tetanus"
+                dataParent: "immunization"
               },
               {
-                label: "Tetanus date",
-                pageDataKey: "immunization",
                 elementKey: "tetanusDate",
+                label: "Tetanus date",
                 inputType: "date",
                 formRow: "7",
                 formColumn: "2",
-                formOption: "hideLabel",
-                tableCss: "is-one-third",
-                dataParent: "immunization",
-                fqn: "immunization.tetanusDate"
+                dataParent: "immunization"
               }
             ]
           },
@@ -1985,26 +1544,19 @@ export default function () {
             formRow: "8",
             elements: [
               {
-                pageDataKey: "immunization",
                 elementKey: "other1",
                 inputType: "text",
                 formRow: "8",
                 formColumn: "1",
-                tableCss: "is-one-quarter",
-                dataParent: "immunization",
-                fqn: "immunization.other1"
+                dataParent: "immunization"
               },
               {
-                label: "Date",
-                pageDataKey: "immunization",
                 elementKey: "otherDate1",
+                label: "Date",
                 inputType: "date",
                 formRow: "8",
                 formColumn: "2",
-                formOption: "hideLabel",
-                tableCss: "is-one-third",
-                dataParent: "immunization",
-                fqn: "immunization.otherDate1"
+                dataParent: "immunization"
               }
             ]
           },
@@ -2012,26 +1564,19 @@ export default function () {
             formRow: "9",
             elements: [
               {
-                pageDataKey: "immunization",
                 elementKey: "other2",
                 inputType: "text",
                 formRow: "9",
                 formColumn: "1",
-                tableCss: "is-one-quarter",
-                dataParent: "immunization",
-                fqn: "immunization.other2"
+                dataParent: "immunization"
               },
               {
-                label: "Date",
-                pageDataKey: "immunization",
                 elementKey: "otherDate2",
+                label: "Date",
                 inputType: "date",
                 formRow: "9",
                 formColumn: "2",
-                formOption: "hideLabel",
-                tableCss: "is-one-third",
-                dataParent: "immunization",
-                fqn: "immunization.otherDate2"
+                dataParent: "immunization"
               }
             ]
           },
@@ -2039,33 +1584,25 @@ export default function () {
             formRow: "10",
             elements: [
               {
-                pageDataKey: "immunization",
                 elementKey: "other3",
                 inputType: "text",
                 formRow: "10",
                 formColumn: "1",
-                tableCss: "is-one-quarter",
-                dataParent: "immunization",
-                fqn: "immunization.other3"
+                dataParent: "immunization"
               },
               {
-                label: "Date",
-                pageDataKey: "immunization",
                 elementKey: "otherDate3",
+                label: "Date",
                 inputType: "date",
                 formRow: "10",
                 formColumn: "2",
-                formOption: "hideLabel",
-                tableCss: "is-one-third",
-                dataParent: "immunization",
-                fqn: "immunization.otherDate3"
+                dataParent: "immunization"
               }
             ]
           }
         ],
         columnsCount: 2
-      },
-      pageData: {}
+      }
     },
     familyHistory: {
       pageTitle: "Family history",
@@ -2077,29 +1614,26 @@ export default function () {
           fqn: "familyHistory.history"
         }
       ],
-      generated: "2019-06-28T07:00:47-07:00",
+      generated: "2019-07-10T07:40:50-07:00",
       hasForm: true,
-      page_form: {
+      pageForm: {
         rows: [
           {
             formRow: "1",
             elements: [
               {
-                label: "Family medical history",
-                pageDataKey: "familyHistory",
                 elementKey: "history",
+                label: "Family medical history",
                 inputType: "textarea",
                 formRow: "1",
                 formColumn: "1",
-                dataParent: "familyHistory",
-                fqn: "familyHistory.history"
+                dataParent: "familyHistory"
               }
             ]
           }
         ],
         columnsCount: 1
-      },
-      pageData: {}
+      }
     },
     careTeam: {
       pageTitle: "Care team",
@@ -2118,39 +1652,25 @@ export default function () {
           dataCaseStudy: "Physician-NL-Physician-NL-Nurse-NL-Nurse-NL-Medical radiograpeor-NL-Medical laboratory technician-NL-Medical radiographer-NL-RN-NL-Physician-NL-RN-NL-Pysiotherapy student-NL-Resp. therapist"
         }
       ],
-      generated: "2019-06-28T07:00:47-07:00",
+      generated: "2019-07-10T07:40:50-07:00",
       hasTable: true,
       tables: [
         {
+          pageDataKey: "careTeam",
           tableKey: "teams",
           addButtonText: "Add a care team member",
           tableCells: [
             {
-              label: "Name",
-              pageDataKey: "careTeam",
-              level2Key: "teams",
               elementKey: "name",
-              inputType: "text",
-              formRow: "1",
-              formColumn: "1",
+              label: "Name",
               tableColumn: "1",
-              tableCss: "is-one-third",
-              dataParent: "careTeam.teams",
-              fqn: "careTeam.teams.name",
-              tableKey: "teams"
+              inputType: "text"
             },
             {
-              label: "Profession",
-              pageDataKey: "careTeam",
-              level2Key: "teams",
               elementKey: "profession",
-              inputType: "text",
-              formRow: "1",
-              formColumn: "2",
+              label: "Profession",
               tableColumn: "2",
-              dataParent: "careTeam.teams",
-              fqn: "careTeam.teams.profession",
-              tableKey: "teams"
+              inputType: "text"
             }
           ],
           tableForm: {
@@ -2159,30 +1679,21 @@ export default function () {
                 formRow: "1",
                 elements: [
                   {
-                    label: "Name",
-                    pageDataKey: "careTeam",
-                    level2Key: "teams",
                     elementKey: "name",
+                    label: "Name",
                     inputType: "text",
                     formRow: "1",
                     formColumn: "1",
-                    tableColumn: "1",
-                    tableCss: "is-one-third",
                     dataParent: "careTeam.teams",
-                    fqn: "careTeam.teams.name",
                     tableKey: "teams"
                   },
                   {
-                    label: "Profession",
-                    pageDataKey: "careTeam",
-                    level2Key: "teams",
                     elementKey: "profession",
+                    label: "Profession",
                     inputType: "text",
                     formRow: "1",
                     formColumn: "2",
-                    tableColumn: "2",
                     dataParent: "careTeam.teams",
-                    fqn: "careTeam.teams.profession",
                     tableKey: "teams"
                   }
                 ]
@@ -2191,10 +1702,7 @@ export default function () {
             columnsCount: 2
           }
         }
-      ],
-      pageData: {
-        teams: []
-      }
+      ]
     },
     pastAppointments: {
       pageTitle: "Past appointments",
@@ -2247,65 +1755,38 @@ export default function () {
           dataCaseStudy: "COPD"
         }
       ],
-      generated: "2019-06-28T07:00:47-07:00",
+      generated: "2019-07-10T07:40:50-07:00",
       hasTable: true,
       tables: [
         {
+          pageDataKey: "pastAppointments",
           tableKey: "encounters",
           label: "Past encounters",
           addButtonText: "Add a past encounter",
           tableCells: [
             {
-              label: "Date",
-              pageDataKey: "pastAppointments",
-              level2Key: "encounters",
               elementKey: "date",
-              inputType: "date",
-              formRow: "1",
-              formColumn: "1",
+              label: "Date",
               tableColumn: "1",
-              dataParent: "pastAppointments.encounters",
-              fqn: "pastAppointments.encounters.date",
-              tableKey: "encounters"
+              inputType: "date"
             },
             {
-              label: "Site",
-              pageDataKey: "pastAppointments",
-              level2Key: "encounters",
               elementKey: "site",
-              inputType: "text",
-              formRow: "1",
-              formColumn: "2",
+              label: "Site",
               tableColumn: "2",
-              dataParent: "pastAppointments.encounters",
-              fqn: "pastAppointments.encounters.site",
-              tableKey: "encounters"
+              inputType: "text"
             },
             {
-              label: "Diagnosis",
-              pageDataKey: "pastAppointments",
-              level2Key: "encounters",
               elementKey: "diagnosis",
-              inputType: "text",
-              formRow: "2",
-              formColumn: "1",
+              label: "Diagnosis",
               tableColumn: "3",
-              dataParent: "pastAppointments.encounters",
-              fqn: "pastAppointments.encounters.diagnosis",
-              tableKey: "encounters"
+              inputType: "text"
             },
             {
-              label: "Most responsible person",
-              pageDataKey: "pastAppointments",
-              level2Key: "encounters",
               elementKey: "mrp",
-              inputType: "text",
-              formRow: "2",
-              formColumn: "2",
+              label: "Most responsible person",
               tableColumn: "4",
-              dataParent: "pastAppointments.encounters",
-              fqn: "pastAppointments.encounters.mrp",
-              tableKey: "encounters"
+              inputType: "text"
             }
           ],
           tableForm: {
@@ -2314,29 +1795,21 @@ export default function () {
                 formRow: "1",
                 elements: [
                   {
-                    label: "Date",
-                    pageDataKey: "pastAppointments",
-                    level2Key: "encounters",
                     elementKey: "date",
+                    label: "Date",
                     inputType: "date",
                     formRow: "1",
                     formColumn: "1",
-                    tableColumn: "1",
                     dataParent: "pastAppointments.encounters",
-                    fqn: "pastAppointments.encounters.date",
                     tableKey: "encounters"
                   },
                   {
-                    label: "Site",
-                    pageDataKey: "pastAppointments",
-                    level2Key: "encounters",
                     elementKey: "site",
+                    label: "Site",
                     inputType: "text",
                     formRow: "1",
                     formColumn: "2",
-                    tableColumn: "2",
                     dataParent: "pastAppointments.encounters",
-                    fqn: "pastAppointments.encounters.site",
                     tableKey: "encounters"
                   }
                 ]
@@ -2345,29 +1818,21 @@ export default function () {
                 formRow: "2",
                 elements: [
                   {
-                    label: "Diagnosis",
-                    pageDataKey: "pastAppointments",
-                    level2Key: "encounters",
                     elementKey: "diagnosis",
+                    label: "Diagnosis",
                     inputType: "text",
                     formRow: "2",
                     formColumn: "1",
-                    tableColumn: "3",
                     dataParent: "pastAppointments.encounters",
-                    fqn: "pastAppointments.encounters.diagnosis",
                     tableKey: "encounters"
                   },
                   {
-                    label: "Most responsible person",
-                    pageDataKey: "pastAppointments",
-                    level2Key: "encounters",
                     elementKey: "mrp",
+                    label: "Most responsible person",
                     inputType: "text",
                     formRow: "2",
                     formColumn: "2",
-                    tableColumn: "4",
                     dataParent: "pastAppointments.encounters",
-                    fqn: "pastAppointments.encounters.mrp",
                     tableKey: "encounters"
                   }
                 ]
@@ -2377,61 +1842,34 @@ export default function () {
           }
         },
         {
+          pageDataKey: "pastAppointments",
           tableKey: "outpatientAppointments",
           label: "Outpatient appointments",
           addButtonText: "Add a past appointment",
           tableCells: [
             {
-              label: "Date",
-              pageDataKey: "pastAppointments",
-              level2Key: "outpatientAppointments",
               elementKey: "date",
-              inputType: "text",
-              formRow: "1",
-              formColumn: "1",
+              label: "Date",
               tableColumn: "1",
-              dataParent: "pastAppointments.outpatientAppointments",
-              fqn: "pastAppointments.outpatientAppointments.date",
-              tableKey: "outpatientAppointments"
+              inputType: "text"
             },
             {
-              label: "Site",
-              pageDataKey: "pastAppointments",
-              level2Key: "outpatientAppointments",
               elementKey: "site",
-              inputType: "text",
-              formRow: "1",
-              formColumn: "2",
+              label: "Site",
               tableColumn: "2",
-              dataParent: "pastAppointments.outpatientAppointments",
-              fqn: "pastAppointments.outpatientAppointments.site",
-              tableKey: "outpatientAppointments"
+              inputType: "text"
             },
             {
-              label: "Reason for visit",
-              pageDataKey: "pastAppointments",
-              level2Key: "outpatientAppointments",
               elementKey: "reasonForVisit",
-              inputType: "text",
-              formRow: "2",
-              formColumn: "1",
+              label: "Reason for visit",
               tableColumn: "3",
-              dataParent: "pastAppointments.outpatientAppointments",
-              fqn: "pastAppointments.outpatientAppointments.reasonForVisit",
-              tableKey: "outpatientAppointments"
+              inputType: "text"
             },
             {
-              label: "Diagnosis",
-              pageDataKey: "pastAppointments",
-              level2Key: "outpatientAppointments",
               elementKey: "diagnosis",
-              inputType: "text",
-              formRow: "2",
-              formColumn: "2",
+              label: "Diagnosis",
               tableColumn: "4",
-              dataParent: "pastAppointments.outpatientAppointments",
-              fqn: "pastAppointments.outpatientAppointments.diagnosis",
-              tableKey: "outpatientAppointments"
+              inputType: "text"
             }
           ],
           tableForm: {
@@ -2440,29 +1878,21 @@ export default function () {
                 formRow: "1",
                 elements: [
                   {
-                    label: "Date",
-                    pageDataKey: "pastAppointments",
-                    level2Key: "outpatientAppointments",
                     elementKey: "date",
+                    label: "Date",
                     inputType: "text",
                     formRow: "1",
                     formColumn: "1",
-                    tableColumn: "1",
                     dataParent: "pastAppointments.outpatientAppointments",
-                    fqn: "pastAppointments.outpatientAppointments.date",
                     tableKey: "outpatientAppointments"
                   },
                   {
-                    label: "Site",
-                    pageDataKey: "pastAppointments",
-                    level2Key: "outpatientAppointments",
                     elementKey: "site",
+                    label: "Site",
                     inputType: "text",
                     formRow: "1",
                     formColumn: "2",
-                    tableColumn: "2",
                     dataParent: "pastAppointments.outpatientAppointments",
-                    fqn: "pastAppointments.outpatientAppointments.site",
                     tableKey: "outpatientAppointments"
                   }
                 ]
@@ -2471,29 +1901,21 @@ export default function () {
                 formRow: "2",
                 elements: [
                   {
-                    label: "Reason for visit",
-                    pageDataKey: "pastAppointments",
-                    level2Key: "outpatientAppointments",
                     elementKey: "reasonForVisit",
+                    label: "Reason for visit",
                     inputType: "text",
                     formRow: "2",
                     formColumn: "1",
-                    tableColumn: "3",
                     dataParent: "pastAppointments.outpatientAppointments",
-                    fqn: "pastAppointments.outpatientAppointments.reasonForVisit",
                     tableKey: "outpatientAppointments"
                   },
                   {
-                    label: "Diagnosis",
-                    pageDataKey: "pastAppointments",
-                    level2Key: "outpatientAppointments",
                     elementKey: "diagnosis",
+                    label: "Diagnosis",
                     inputType: "text",
                     formRow: "2",
                     formColumn: "2",
-                    tableColumn: "4",
                     dataParent: "pastAppointments.outpatientAppointments",
-                    fqn: "pastAppointments.outpatientAppointments.diagnosis",
                     tableKey: "outpatientAppointments"
                   }
                 ]
@@ -2502,11 +1924,7 @@ export default function () {
             columnsCount: 2
           }
         }
-      ],
-      pageData: {
-        encounters: [],
-        outpatientAppointments: []
-      }
+      ]
     }
   }
 }
