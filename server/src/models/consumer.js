@@ -1,7 +1,8 @@
 import mongoose from 'mongoose'
+import uniqueValidator from 'mongoose-unique-validator'
 
 const Schema = new mongoose.Schema({
-  oauth_consumer_key: { type: String, required: [true, 'Require consumer key'] },
+  oauth_consumer_key: { type: String, required: [true, 'Require consumer key'], unique: true },
   oauth_consumer_secret: { type: String, required: [true, 'Require consumer secret'] },
   lti_version: {type: String},
   tool_consumer_info_product_family_code: {type: String},
@@ -12,6 +13,8 @@ const Schema = new mongoose.Schema({
   createDate: {type: Date, default: Date.now},
   lastUpdateDate: {type: Date, default: Date.now}
 })
+
+Schema.plugin(uniqueValidator)
 
 const Consumer = mongoose.model('Consumer', Schema)
 

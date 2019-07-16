@@ -1,5 +1,7 @@
 import BaseController from './base'
 import SeedData from '../models/seed-data'
+import { Text }  from '../config/text'
+import { NotAllowedError } from '../utils/errors'
 import {ok, fail} from './utils'
 const debug = require('debug')('server')
 
@@ -23,6 +25,9 @@ export default class SeedDataController extends BaseController {
     return this.baseFindOneQuery(id).then(model => {
       debug('updateSeedEhrProperty search ' + model ? 'ok' : 'fail')
       if (model) {
+        if (model.isDefault) {
+          throw new NotAllowedError(Text.SEED_NOT_ALLOWED_TO_EDIT_DEFAULT)
+        }
         if (!model.ehrData) {
           model.ehrData = {}
         }
@@ -46,6 +51,9 @@ export default class SeedDataController extends BaseController {
     return this.baseFindOneQuery(id).then(model => {
       debug('updateSeedEhrData search ' + model ? 'ok' : 'fail')
       if (model) {
+        if (model.isDefault) {
+          throw new NotAllowedError(Text.SEED_NOT_ALLOWED_TO_EDIT_DEFAULT)
+        }
         model.lastUpdateDate = Date.now()
         model.ehrData = data
         model.markModified('ehrData')

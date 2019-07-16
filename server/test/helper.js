@@ -1,10 +1,14 @@
+import supertest from 'supertest'
 import Consumer from '../src/models/consumer'
+import ConsumerController from '../src/controllers/consumer-controller'
 import Assignment from '../src/models/assignment'
 import User from '../src/models/user'
 import Activity from '../src/models/activity'
 import Role from '../src/controllers/roles'
 const ObjectID = require('mongodb').ObjectID
 const { ltiVersions, LTI_BASIC } = require('../src/utils/lti')
+
+const consumerController = new ConsumerController()
 
 process.on('unhandledRejection', function (error, promise) {
   console.error('UNHANDLED REJECTION', error.stack)
@@ -154,18 +158,21 @@ export default class Helper {
 
   static sampleUserSpec (consumer, user_id) {
     let consumerId = consumer ? consumer._id : new ObjectID('56955ca46063c5600627f393')
+    let consumerKey = consumer ? consumer.oauth_consumer_key : 'sampleKey'
     let uId = user_id || DefaultUserId
     return {
       toolConsumer: consumerId,
-      user_id: uId
+      consumerKey: consumerKey,
+      user_id: uId,
+      fullName: 'Fred Tester'
     }
   }
 
-  static sampleConsumerSpec () {
+  static sampleConsumerSpec (oauth_consumer_key, oauth_consumer_secret) {
     return {
       lti_version: ltiVersions()[0],
-      oauth_consumer_key: Default.oauth_consumer_key,
-      oauth_consumer_secret: Default.oauth_consumer_secret,
+      oauth_consumer_key: oauth_consumer_key || Default.oauth_consumer_key,
+      oauth_consumer_secret: oauth_consumer_secret ||  Default.oauth_consumer_secret,
       tool_consumer_instance_name: Default.tool_consumer_instance_name,
       tool_consumer_info_product_family_code: 'Test',
       tool_consumer_info_version: '0.0',
@@ -174,21 +181,24 @@ export default class Helper {
     }
   }
 
-  static sampleValidLtiData () {
-    let ltiData = {
+  static sampleValidLtiData (oauth_consumer_key, oauth_consumer_secret) {
+    return {
       resource_link_id: '1234',
       user_id: DefaultUserId,
+      lis_person_name_given: 'Fred',
+      lis_person_name_family: 'Flintstones',
+      lis_person_name_full: 'Fred Flintstone',
+      lis_person_contact_email_primary: 'fred@thecaves.ca',
       lti_version: ltiVersions()[0],
       lti_message_type: LTI_BASIC,
       roles: 'student',
-      oauth_consumer_key: Default.oauth_consumer_key,
-      oauth_consumer_secret: Default.oauth_consumer_secret,
+      oauth_consumer_key: oauth_consumer_key || Default.oauth_consumer_key,
+      oauth_consumer_secret: oauth_consumer_secret ||  Default.oauth_consumer_secret,
       context_id: 'some context id',
       custom_assignment: Default.custom_assignment,
       tool_consumer_instance_name: Default.tool_consumer_instance_name,
       launch_presentation_return_url: Default.launch_presentation_return_url
     }
-    return ltiData
   }
 
   static sampleVisit (consumer, user, activity, assignment, role, ltiData) {
@@ -199,7 +209,9 @@ export default class Helper {
 
     let data = {
       toolConsumer: consumer._id,
+      consumerKey: consumer.oauth_consumer_key,
       user: user._id,
+      userName: user.fullName,
       activity: activity._id,
       assignment: assignment._id,
       isStudent: theRole.isStudent,
@@ -210,9 +222,8 @@ export default class Helper {
     return data
   }
 
-  static createConsumer () {
-    const model = new Consumer(Helper.sampleConsumerSpec())
-    return model.save()
+  static createConsumer  (oauth_consumer_key, oauth_consumer_secret) {
+    return consumerController.createWithSeed(Helper.sampleConsumerSpec(oauth_consumer_key, oauth_consumer_secret))
   }
 
   static createUser (consumer, user_id) {
@@ -234,4 +245,30 @@ export default class Helper {
     const model = new Activity(Helper.sampleActivity(consumer, assignment))
     return model.save()
   }
+
+
+
+  static getUrlAuth (app, url, adminToken) {
+    return supertest(app)
+      .get(url)
+      .set({ Authorization: 'Bearer ' + adminToken })
+  }
+
+
+  static postUrlAuth (app, url, adminToken, theData) {
+    return supertest(app)
+      .post(url)
+      .send(theData)
+      .set({ Authorization: 'Bearer ' + adminToken })
+      .set('Content-Type', 'application/json')
+      .set('Accept', 'application/json')
+  }
+
+  static consoleRes (res) {
+    console.log('res.headers', res.headers)
+    console.log('res.status', res.status)
+    console.log('res.text', res.text)
+    console.log('res.body', res.body)
+  }
+
 }

@@ -17,9 +17,9 @@ describe(`${typeName} controller testing`, function () {
     helper.before(done, mongoose)
   })
 
-  after(function (done) {
-    helper.afterDropDatabase(done, mongoose)
-  })
+  // after(function (done) {
+  //   helper.afterDropDatabase(done, mongoose)
+  // })
 
   let theConsumer
   let theAssignment
@@ -74,6 +74,8 @@ describe(`${typeName} controller testing`, function () {
     m.create(data)
       .then(doc => {
         should.exist(doc)
+        // console.log('created visit record', doc)
+        visitId = doc._id
         done()
       })
   })
@@ -81,7 +83,7 @@ describe(`${typeName} controller testing`, function () {
   /*
   Test the /visits/flushed/visitKey API
    */
-  it.skip(`${typeName} findVisit`, function (done) {
+  it(`${typeName} findVisit`, function (done) {
     let m = new VisitController()
     m.should.have.property('findVisit')
     m.findVisit(visitId)

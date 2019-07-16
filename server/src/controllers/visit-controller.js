@@ -58,13 +58,16 @@ export default class VisitController extends BaseController {
           debugvc('Create a new visit record')
           let data = {
             toolConsumer: toolConsumer._id,
+            consumerKey: toolConsumer.oauth_consumer_key,
             user: user._id,
+            userName: user.fullName,
             activity: activity._id,
             assignment: assignment._id,
             isStudent: role.isStudent,
             isInstructor: role.isInstructor,
             // TODO use the actual incoming role to set isDeveloper
             isDeveloper: role.isInstructor,
+            ltiData: [JSON.stringify(ltiData)],
             // isDeveloper: role.isDeveloper,
             returnUrl: ltiData.launch_presentation_return_url
           }
@@ -92,10 +95,10 @@ export default class VisitController extends BaseController {
                 debugvc('Push visit record into user as instructor visit')
                 user.asInstructorVisits.push(visit)
               }
-              if (role.isStudent) {
-                debugvc('Push visit record into user as student visit')
-                user.asStudentVisits.push(visit)
-              }
+              // if (role.isStudent) {
+              //   debugvc('Push visit record into user as student visit')
+              //   user.asStudentVisits.push(visit)
+              // }
               return user.save()
             })
         }

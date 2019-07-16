@@ -1,9 +1,6 @@
 'use strict'
 const databaseName = 'edehr-prod'
 module.exports = {
-  secure: {
-    ssl: false
-  },
   port: process.env.PORT || 27004,
   // To run prod locally with a dev client server
   //

@@ -17,7 +17,12 @@ module.exports = {
   databaseName: databaseName,
   database: {
     uri: 'mongodb://localhost:27018/' + databaseName,
-    options: {useNewUrlParser: true, useCreateIndex: true},
+    options: {
+      useNewUrlParser: true,
+      useCreateIndex: true,
+      user: process.env.MONGODB_USER || '',
+      pass: process.env.MONGODB_PASSWORD || ''
+    },
     // Enable mongoose debug mode
     debug: process.env.MONGODB_DEBUG || false
   },

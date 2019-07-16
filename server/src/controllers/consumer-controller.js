@@ -1,10 +1,35 @@
 import BaseController from './base'
+import { Text }  from '../config/text'
 import Consumer from '../models/consumer'
+import SeedDataController from './seedData-controller'
+
 const debug = require('debug')('server')
+const sd = new SeedDataController()
 
 export default class ConsumerController extends BaseController {
   constructor () {
     super(Consumer, '_id')
+  }
+
+  createWithSeed (data) {
+    let theConsumer
+    return this.model
+      .create(data)
+      .then((toolConsumer) => {
+        theConsumer = toolConsumer
+        let seedDef = {
+          toolConsumer: toolConsumer._id,
+          name: Text.DEFAULT_SEED_NAME(toolConsumer.oauth_consumer_key),
+          description: Text.DEFAULT_SEED_DESCRIPTION,
+          version: '1',
+          isDefault: true,
+          ehrData: {}
+        }
+        return sd.create(seedDef)
+      })
+      .then( () => {
+        return theConsumer
+      })
   }
 
   initializeApp (KEY) {

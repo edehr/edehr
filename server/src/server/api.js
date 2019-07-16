@@ -17,23 +17,18 @@ import SeedDataController from '../controllers/seedData-controller'
 // Sessions and session cookies
 // express-session stores session data here on the server and only puts session id in the cookie
 const session = require('express-session')
-// store session in files for now. Later could scale and store in the database
 const FileStore = require('session-file-store')(session)
-const COOKIE_SECRET = process.env.COOKIE_SECRET
-  ? process.env.COOKIE_SECRET
-  : 'this is the secret for the session cookie'
-// session ids
 const uuid = require('uuid/v4')
+
 const debug = require('debug')('server')
 
 export function apiMiddle (app, config) {
   const fileStoreOptions = {}
-
-  if (process.env.SESSION_DIR) {
-    fileStoreOptions.path = process.env.SESSION_DIR
+  if (config.sessionPath) {
+    fileStoreOptions.path = config.sessionPath
   }
-  if (process.env.TIMETOLIVE) {
-    fileStoreOptions.ttl = process.env.TIMETOLIVE
+  if (config.sessionTTL) {
+    fileStoreOptions.ttl = config.sessionTTL
   }
   app.sessionStore = new FileStore(fileStoreOptions)
 
@@ -45,9 +40,10 @@ export function apiMiddle (app, config) {
         // debug('------------------ SESSION genid ' + guid)
         return guid
       },
-      cookie: { sameSite: 'lax', maxAge: 60000 * 24 },
+      cookie: { sameSite: 'lax', httpOnly: true, maxAge: 60000 * 24 },
+      name: 'EdEhr.cookie',
       store: app.sessionStore,
-      secret: COOKIE_SECRET,
+      secret: config.cookieSecret,
       resave: false,
       saveUninitialized: false
     })
@@ -140,7 +136,7 @@ export function apiError (app, config) {
       err.message += ' -- AssignmentMismatchError'
       let status = 400
       res.status(status)
-      res.render('server-errors/error', {errMessage: err.message, status: status, errorData: err.errorData})
+      res.render('server-errors/error', {message: err.message, status: status, errorData: err.errorData})
     } else {
       next(err)
     }
@@ -150,9 +146,10 @@ export function apiError (app, config) {
     let status = err.status || 500
     let errorData = err.errorData || {}
     res.status(status)
-    res.render('server-errors/error', {errMessage: err.message, status: status, errorData: errorData})
+    res.render('server-errors/error', {message: err.message, status: status, errorData: errorData})
   }
 }
+
 function setupCors (config) {
   var whitelist = [] // 'http://localhost:28000', 'http://localhost:27000']
   whitelist.push(config.clientUrl)

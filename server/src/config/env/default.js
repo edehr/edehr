@@ -1,15 +1,20 @@
 'use strict'
+import { Text } from '../text'
 
 module.exports = {
+  secure: {
+    ssl: false
+  },
+  defaultConsumerKey: 'edehrkey',
   app: {
-    title: 'Ed EHR',
+    title: Text.APP_TITLE,
     description: 'TODO add and use description',
     keywords: 'TODO add and use keywords'
   },
   ehr: {
-    defaultAssignmentDescription: 'This is a automatically generated assignment.'
+    defaultAssignmentDescription: Text.DEFAULT_ASSIGNMENT_DESCRIPTION
   },
-  // TODO use ... Session Cookie settings
+  // TODO stop using sessions and session cookies
   sessionCookie: {
     // session expiration is set by default to 24 hours
     maxAge: 24 * (60 * 60 * 1000),
@@ -21,13 +26,10 @@ module.exports = {
     // in HTTPS mode.
     secure: false
   },
-  // sessionSecret should be changed for security measures and concerns
-  // sessionSecret: 'MEAN',
-  // sessionKey is set to the generic sessionId key used by PHP applications
-  // for obsecurity reasons
-  // sessionKey: 'sessionId',
-  // sessionCollection: 'sessions',
-  // logo: 'logo.png',
+  cookieSecret: process.env.COOKIE_SECRET || 'this is the secret for the session cookie',
+  // https://www.npmjs.com/package/session-file-store
+  sessionTTL: process.env.TIMETOLIVE || 3600,
+  sessionPath: process.env.SESSION_DIR || '.sessions',
   favicon: 'favicon.ico'
 }
 
