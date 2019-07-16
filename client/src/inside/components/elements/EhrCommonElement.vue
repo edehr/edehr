@@ -22,7 +22,8 @@ export default {
       key: '',
       label: '',
       showLabel: true,
-      suffix: ''
+      suffix: '',
+      options: ''
     }
   },
   props: {
@@ -31,9 +32,12 @@ export default {
     element: { type: Object },
     notEditing: { type: Boolean },
     isPageElement: { type: Boolean},
-    isDialogElement: { type: Boolean}
+    dialogTableKey: { type: String}
   },
   computed: {
+    pageDataKey () {
+      return this.ehrHelp.getPageKey()
+    },
     computedInitialValue () {
       let key = this.key
       let initialValue = this.inputs[key]
@@ -50,12 +54,12 @@ export default {
   },
   methods: {
     assetUrl () {
-      let e = this.element
+      let e = this.pageChildElement
       let url = '/assets/' + e.assetBase + '/' + e.assetName
       return url
     },
     assetName () {
-      let e = this.element
+      let e = this.pageChildElement
       let name = e.label
       if (e.assetBase && e.assetName) {
         name = e.label
@@ -63,7 +67,7 @@ export default {
       return name
     },
     refreshPage () {
-      let pageDataKey = this.element.pageDataKey
+      let pageDataKey = this.pageDataKey
       let pageData = this.ehrHelp.getAsLoadedPageData(pageDataKey)
       let value = pageData[this.key]
       this.setInitialValue(value)
@@ -95,14 +99,13 @@ export default {
         this.setInitialValue('')
       }
     },
-    dependantPropertySetUp (elementDef) {
+    dependantPropertySetUp () {
       const _this = this
-      const element = this.element
       this.eventChannelBroadcast = 'radio:' + this.key
-      const dKey = this.dependantOnKey = elementDef.dependantOn
+      const dKey = this.dependantOnKey = this.pageChildElement.dependantOn
       if (dKey) {
         // get default value of the other element and coerce to be boolean
-        const dependantDefault = getDefaultValue(element.pageDataKey, dKey)
+        const dependantDefault = getDefaultValue(this.pageDataKey, dKey)
         this.dependantOnValue = !!dependantDefault
         this.dependentPropertyChangeChannel = 'radio:' + dKey
         this.dependentEventHandler = function (eData) {
@@ -116,12 +119,12 @@ export default {
       this.key = element.elementKey
       this.label = element.label
       this.inputType = element.inputType
-      this.showLabel = !(element.formOption === 'hideLabel')
-      let elementDef = getPageChildElement(element.pageDataKey, element.elementKey) || {}
-      this.helperText = elementDef.helperText
-      this.helperHtml = elementDef.helperHtml
-      this.suffix = elementDef.suffix
-      return elementDef
+      let pageChildElement = this.pageChildElement = getPageChildElement(this.pageDataKey, element.elementKey) || {}
+      this.showLabel = !(pageChildElement.formOption === 'hideLabel')
+      this.helperText = pageChildElement.helperText
+      this.helperHtml = pageChildElement.helperHtml
+      this.suffix = pageChildElement.suffix
+      this.options = pageChildElement.options
     },
     setupEventHandlers () {
       const _this = this
@@ -132,8 +135,8 @@ export default {
         EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.pageRefreshEventHandler)
       }
 
-      if (this.isDialogElement) {
-        this.dialogEventKey = this.ehrHelp.getDialogEventChannel(this.element.tableKey)
+      if (this.dialogTableKey) {
+        this.dialogEventKey = this.ehrHelp.getDialogEventChannel(this.dialogTableKey)
         this.dialogEventHandler = function (eData) {
           _this.dialogIsOpen = eData.value
           if (_this.dialogShowHideEvent) {
@@ -148,12 +151,12 @@ export default {
     },
   },
   mounted: function () {
+    this.setupCommon()
+    this.setupEventHandlers()
+    this.dependantPropertySetUp()
     if (this.setup) {
       this.setup()
     }
-    const elementDef = this.setupCommon()
-    this.setupEventHandlers()
-    this.dependantPropertySetUp(elementDef)
   },
   beforeDestroy: function () {
     if (this.pageRefreshEventHandler) {
@@ -177,7 +180,7 @@ export default {
         // and be ready to send the changes to the server. Calculated values also listen.
         EventBus.$emit(PAGE_FORM_INPUT_EVENT, {value: val, element: this.element})
       }
-      if (this.isDialogElement) {
+      if (this.dialogTableKey) {
         if (this.dialogIsOpen) {
           let element = this.element
           EventBus.$emit(DIALOG_INPUT_EVENT, {value: val, element: element})

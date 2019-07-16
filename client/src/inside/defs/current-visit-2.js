@@ -287,7 +287,7 @@ export default function () {
           dataCaseStudy: "(not filled)"
         }
       ],
-      generated: "2019-07-10T07:40:50-07:00",
+      generated: "2019-07-15T11:26:37-07:00",
       hasTable: true,
       tables: [
         {
@@ -317,6 +317,7 @@ export default function () {
               elementKey: "time",
               label: "Entered at time",
               tableColumn: "4",
+              tableCss: "hr-table",
               inputType: "time"
             },
             {
@@ -324,7 +325,7 @@ export default function () {
               label: "Urinary symptoms",
               tableColumn: "5",
               inputType: "fieldset",
-              tableCss: "hide-table-element"
+              tableCss: "undefinedhide-table-element"
             },
             {
               elementKey: "none",
@@ -1247,7 +1248,7 @@ export default function () {
           dataCaseStudy: "(not filled)"
         }
       ],
-      generated: "2019-07-10T07:40:50-07:00",
+      generated: "2019-07-15T11:26:37-07:00",
       hasTable: true,
       tables: [
         {
@@ -1277,6 +1278,7 @@ export default function () {
               elementKey: "time",
               label: "Entered at time",
               tableColumn: "4",
+              tableCss: "hr-table",
               inputType: "time"
             },
             {
@@ -1639,7 +1641,7 @@ export default function () {
           fqn: "pain.table.secondarySite.comments"
         }
       ],
-      generated: "2019-07-10T07:40:50-07:00",
+      generated: "2019-07-15T11:26:37-07:00",
       hasTable: true,
       tables: [
         {
@@ -1669,6 +1671,7 @@ export default function () {
               elementKey: "time",
               label: "Entered at time",
               tableColumn: "4",
+              tableCss: "hr-table",
               inputType: "time"
             },
             {
@@ -1711,12 +1714,14 @@ export default function () {
               elementKey: "radiation",
               label: "Radiation",
               tableColumn: "11",
+              tableCss: "is-one-third",
               inputType: "text"
             },
             {
               elementKey: "precipitatingEvents",
               label: "Precipitating events",
               tableColumn: "12",
+              tableCss: "is-one-third",
               inputType: "text"
             },
             {
@@ -1765,12 +1770,14 @@ export default function () {
               elementKey: "radiation",
               label: "Radiation",
               tableColumn: "20",
+              tableCss: "is-one-third",
               inputType: "text"
             },
             {
               elementKey: "precipitatingEvents",
               label: "Precipitating events",
               tableColumn: "21",
+              tableCss: "is-one-third",
               inputType: "text"
             },
             {
@@ -2311,7 +2318,7 @@ export default function () {
           dataCaseStudy: "(not filled)"
         }
       ],
-      generated: "2019-07-10T07:40:50-07:00",
+      generated: "2019-07-15T11:26:37-07:00",
       hasTable: true,
       tables: [
         {
@@ -2341,6 +2348,7 @@ export default function () {
               elementKey: "time",
               label: "Entered at time",
               tableColumn: "4",
+              tableCss: "hr-table",
               inputType: "time"
             },
             {
@@ -2353,6 +2361,7 @@ export default function () {
               elementKey: "requestContact",
               label: "Would you like to speak to a social worker?",
               tableColumn: "6",
+              tableCss: "hr-table",
               inputType: "select"
             },
             {
@@ -2365,6 +2374,7 @@ export default function () {
               elementKey: "hygieneComments",
               label: "Hygiene comments",
               tableColumn: "8",
+              tableCss: "hr-table",
               inputType: "textarea"
             },
             {
@@ -2407,6 +2417,7 @@ export default function () {
               elementKey: "uncommunicative",
               label: "Uncommunicative",
               tableColumn: "15",
+              tableCss: "hr-table",
               inputType: "checkbox"
             },
             {
@@ -2431,6 +2442,7 @@ export default function () {
               elementKey: "olafactory",
               label: "Olafactory",
               tableColumn: "19",
+              tableCss: "hr-table",
               inputType: "checkbox"
             },
             {
@@ -2449,6 +2461,7 @@ export default function () {
               elementKey: "speech",
               label: "Speech",
               tableColumn: "22",
+              tableCss: "hr-table",
               inputType: "select"
             },
             {
@@ -2461,6 +2474,7 @@ export default function () {
               elementKey: "supportComments",
               label: "Support comments",
               tableColumn: "24",
+              tableCss: "hr-table",
               inputType: "textarea"
             },
             {
@@ -2473,6 +2487,7 @@ export default function () {
               elementKey: "securityComments",
               label: "Security comments",
               tableColumn: "26",
+              tableCss: "hr-table",
               inputType: "textarea"
             },
             {
@@ -2497,6 +2512,7 @@ export default function () {
               elementKey: "restraintComments",
               label: "Restraint comments",
               tableColumn: "30",
+              tableCss: "hr-table",
               inputType: "textarea"
             },
             {
@@ -3092,7 +3108,7 @@ export default function () {
           fqn: "nonmedOrders.table.comment"
         }
       ],
-      generated: "2019-07-10T07:40:50-07:00",
+      generated: "2019-07-15T11:26:37-07:00",
       hasTable: true,
       tables: [
         {
@@ -3122,6 +3138,7 @@ export default function () {
               elementKey: "time",
               label: "Entered at time",
               tableColumn: "4",
+              tableCss: "hr-table",
               inputType: "time"
             },
             {
@@ -3146,12 +3163,14 @@ export default function () {
               elementKey: "status",
               label: "Status",
               tableColumn: "8",
+              tableCss: "hr-table",
               inputType: "select"
             },
             {
               elementKey: "comment",
               label: "Comment",
               tableColumn: "9",
+              tableCss: "hr-table",
               inputType: "textarea"
             }
           ],
@@ -3339,7 +3358,7 @@ export default function () {
           dataCaseStudy: "Active"
         }
       ],
-      generated: "2019-07-10T07:40:50-07:00",
+      generated: "2019-07-15T11:26:37-07:00",
       hasTable: true,
       tables: [
         {
@@ -3369,6 +3388,7 @@ export default function () {
               elementKey: "time",
               label: "Entered at time",
               tableColumn: "1",
+              tableCss: "hr-table",
               inputType: "time"
             },
             {
@@ -3381,6 +3401,7 @@ export default function () {
               elementKey: "referralProfession",
               label: "Referral profession",
               tableColumn: "3",
+              tableCss: "hr-table",
               inputType: "text"
             },
             {
@@ -3554,7 +3575,7 @@ export default function () {
           fqn: "labRequisitions.table.collected"
         }
       ],
-      generated: "2019-07-10T07:40:50-07:00",
+      generated: "2019-07-15T11:26:37-07:00",
       hasTable: true,
       tables: [
         {
@@ -3584,6 +3605,7 @@ export default function () {
               elementKey: "time",
               label: "Entered at time",
               tableColumn: "4",
+              tableCss: "hr-table",
               inputType: "time"
             },
             {
@@ -3822,7 +3844,7 @@ export default function () {
           fqn: "medicationOrders.table.notes"
         }
       ],
-      generated: "2019-07-10T07:40:50-07:00",
+      generated: "2019-07-15T11:26:37-07:00",
       hasTable: true,
       tables: [
         {
@@ -3846,6 +3868,7 @@ export default function () {
               elementKey: "time",
               label: "Entered at time",
               tableColumn: "1",
+              tableCss: "hr-table",
               inputType: "time"
             },
             {
@@ -3870,6 +3893,7 @@ export default function () {
               elementKey: "route",
               label: "Route",
               tableColumn: "3",
+              tableCss: "hr-table",
               inputType: "select"
             },
             {
@@ -3894,8 +3918,8 @@ export default function () {
               elementKey: "schedule",
               label: "Schedule time",
               tableColumn: "7",
-              inputType: "fieldset",
-              tableCss: "hide-table-element"
+              tableCss: "hr-table hide-table-element",
+              inputType: "fieldset"
             },
             {
               elementKey: "instructions",
@@ -3907,6 +3931,7 @@ export default function () {
               elementKey: "reason",
               label: "Reason",
               tableColumn: "9",
+              tableCss: "hr-table",
               inputType: "text"
             },
             {
@@ -4238,7 +4263,7 @@ export default function () {
           helperHtml: "<p>Enter time delivered or say if not delivered.</p>"
         }
       ],
-      generated: "2019-07-10T07:40:50-07:00",
+      generated: "2019-07-15T11:26:37-07:00",
       hasTable: true,
       tables: [
         {
@@ -4530,7 +4555,7 @@ export default function () {
           fqn: "dischargeSummary.dischargeEducation"
         }
       ],
-      generated: "2019-07-10T07:40:50-07:00",
+      generated: "2019-07-15T11:26:37-07:00",
       hasForm: true,
       pageForm: {
         rows: [
@@ -4685,7 +4710,7 @@ export default function () {
           dataCaseStudy: "MSP"
         }
       ],
-      generated: "2019-07-10T07:40:50-07:00",
+      generated: "2019-07-15T11:26:37-07:00",
       hasForm: true,
       pageForm: {
         rows: [

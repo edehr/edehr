@@ -7,7 +7,7 @@
     ehr-panel-content
       div(v-for="key in summaries")
         ehr-summary-table(:summaryKey="key", :ehrHelp="ehrHelp")
-      hr
+        hr
       div(class="region ehr-page-content")
         ehr-page-form(v-if="uiProps.hasForm", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey",)
         div(v-if="uiProps.hasTable", v-for="tableDef in uiProps.tables", :key="tableDef.tableKey")

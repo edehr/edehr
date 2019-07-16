@@ -11,13 +11,18 @@ const pageDefsCV2 = CV2()
 const pageDefsPC = PC()
 const pageDefsExt = ER()
 const pageDefsTP = TP()
-export const pageDefs = Object.assign(pageDefsPP, pageDefsCV1, pageDefsCV2, pageDefsPC, pageDefsExt, pageDefsTP)
+const pageDefs = Object.assign(pageDefsPP, pageDefsCV1, pageDefsCV2, pageDefsPC, pageDefsExt, pageDefsTP)
 
 export function getPageDefinition (pageKey) {
-  let pageDef = pageDefs[pageKey]
-  // debugehr('getPageDefinition ' + pageKey, pageDef)
-  return pageDef
+  return pageDefs[pageKey]
 }
+
+export function getAllPageKeys () {
+  let pageKeys = Object.keys(pageDefs)
+  pageKeys.sort()
+  return pageKeys
+}
+
 
 export function getTableElements ( tableDef ) {
   let all =  []
@@ -37,17 +42,27 @@ export function getTableElements ( tableDef ) {
   }
   return all
 }
-export function getTableCells (pageKey, tableIndex) {
+export function getTableCellsByIndex (pageKey, tableIndex) {
   let cells
-  let pageDef = pageDefs[pageKey]
+  const pageDef = getPageDefinition(pageKey)
   if (pageDef && pageDef.tables && pageDef.tables.length > tableIndex) {
     cells = pageDef.tables[tableIndex].tableCells
   }
   return cells
 }
 
+export function getTableCellsByTableKey (pageKey, tableKey) {
+  let tableCells
+  const pageDef = getPageDefinition(pageKey)
+  if (pageDef.tables) {
+    let table = pageDef.tables.find(tbl => { return tbl.tableKey === tableKey })
+    tableCells = table.tableCells
+  }
+  return tableCells
+}
+
 export function getFieldSetCells (pageKey, tableIndex, fieldSetKey) {
-  let cells = getTableCells(pageKey, tableIndex)
+  let cells = getTableCellsByIndex(pageKey, tableIndex)
   if(!cells) {
     // TODO the setApiError needs a component context to get the store. The following is broken
     setApiError(pageKey + ' can not find table cells that support tableIndex', tableIndex)
@@ -91,4 +106,10 @@ export function getDataCaseStudy (pageDataKey, elementKey) {
   }
   // console.log('EhrDefs.getDataCaseStudy', elementKey, dV)
   return dV
+}
+
+export function getMedOrderSchedule  (MED_ORDERS_PAGE_KEY, SCHEDULE_FIELDSET) {
+  let cells = getTableCellsByIndex(MED_ORDERS_PAGE_KEY, 0)
+  let medPeriods = cells.filter(cell => cell.level3Key === SCHEDULE_FIELDSET && cell.inputType === 'checkbox')
+  return medPeriods
 }

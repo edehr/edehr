@@ -83,6 +83,7 @@ const tableCellProperties = [
   'elementKey',
   'label',
   'tableColumn',
+  'tableCss',
   'inputType',
 ]
 

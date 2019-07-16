@@ -4,7 +4,7 @@ import EventBus from './event-bus'
 import { ACTIVITY_DATA_EVENT } from './event-bus'
 import { DIALOG_INPUT_EVENT } from './event-bus'
 import { PAGE_FORM_INPUT_EVENT } from './event-bus'
-import { PAGE_DATA_REFRESH_EVENT } from './event-bus'
+import { PAGE_DATA_REFRESH_EVENT, TABLE_DATA_REFRESH_EVENT } from './event-bus'
 import { removeEmptyProperties, prepareAssignmentPageDataForSave, formatTimeStr } from './ehr-utills'
 import { getPageDefinition, getDefaultValue } from './ehr-defs'
 
@@ -12,15 +12,21 @@ const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
 export default class EhrHelp {
   constructor (component, store, pageKey) {
-    // console.log('Construct helper', pageKey)
+    console.log('Construct helper', pageKey)
     this.$store = store
     this.pageKey = pageKey
-    this.cacheAsString = ''
-    this.dialogMap = {}
     this.$store.commit('system/setCurrentPageKey', pageKey)
-    this._loadTransposedColumns(pageKey)
+    this.activeTableKey = ''
+    this.dialogMap = {}
+    this._setupTableStackDefs()
     this._setupEventHandlers()
+    // wait until components are set up and then refresh table data
+    component.$nextTick( () => this._refreshTables() )
   }
+
+  getPageKey () { return this.pageKey }
+  getPageDef () { return getPageDefinition(this.pageKey) }
+  getActiveTableKey () { return this.activeTableKey }
 
   _setupEventHandlers () {
     const _this = this
@@ -38,10 +44,11 @@ export default class EhrHelp {
       _this._handleActivityDataChangeEvent(eData)
     }
     this.refreshEventHandler = function (eData) {
-      // console.log('ehrhelper respond to page refresh')
+      console.log('ehrhelper respond to page refresh', _this.pageKey)
       _this._mergedProperty()
-      _this._loadTransposedColumns()
+      _this._refreshTables()
     }
+
 
     window.addEventListener('beforeunload', this.windowUnloadHandler)
     EventBus.$on(DIALOG_INPUT_EVENT, this.dialogInputChangeEventHandler)
@@ -58,18 +65,138 @@ export default class EhrHelp {
     EventBus.$off(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
   }
 
+  _refreshTables () {
+    this._loadTransposedColumns()
+    this._loadStackData()
+    // console.log('emit TABLE_DATA_REFRESH_EVENT ')
+    EventBus.$emit(TABLE_DATA_REFRESH_EVENT)
+  }
+
+  _setupTableStackDefs () {
+    /*
+    For each table on the page, create a table definition that has "stacked" elements.
+    Each table definitions has an array of cells. Each cell specifies the column to place the
+    data.  A stack is a group of cells with the same column.  So, for example, if a table has
+    5 elements with columns 1,1,2,3,3 respectively then the stack defintion will have 3 stacks
+    where the first and last have two elements each.
+    We also track the first cell in the column and call it 'primary'. This can be used to
+    define the stack's column header.
+     */
+    let pageKey = this.pageKey
+    let pageDef = getPageDefinition(pageKey)
+    if (pageDef && pageDef.tables) {
+      pageDef.tables.forEach(tableDef => {
+        let stacks = {}
+        tableDef.tableCells.forEach((cell) => {
+          let stack = stacks[cell.tableColumn]
+          if (!stack) {
+            stack = stacks[cell.tableColumn] = {
+              primary: cell,
+              cells: []
+            }
+          }
+          stack.cells.push(cell)
+        })
+        tableDef.stacks = Object.values(stacks)
+        tableDef.isTransposed = tableDef.isStacked = false
+        if (tableDef.stacks.length > 8) {
+          tableDef.isTransposed = true
+          tableDef.transposedColumns = []
+        } else {
+          tableDef.isStacked = true
+        }
+      })
+    }
+  }
+  _loadStackData () {
+    // see _setupTableStackDefs
+    let pageKey = this.pageKey
+    let theData = this.getAsLoadedPageData(pageKey)
+    let pageDef = getPageDefinition(pageKey)
+    if (pageDef && pageDef.tables) {
+      pageDef.tables.forEach(tableDef => {
+        const tableKey = tableDef.tableKey
+        let dbData = Array.isArray(theData[tableKey]) ? theData[tableKey] : []
+        // console.log('load stacked with data ', dbData)
+        let stackedData = []
+        dbData.forEach(dbRowData => {
+          let tblRow = []
+          tableDef.stacks.forEach(stack => {
+            let dStack = {}
+            stack.cells.forEach( cell => {
+              const key = cell.elementKey
+              const value = dbRowData[key]
+              dStack[key] = {cellDef: cell, value: value}
+            })
+            tblRow.push(dStack)
+          })
+          stackedData.push(tblRow)
+        })
+        // console.log('tblRows', tblRows)
+        tableDef.stackedData=stackedData
+      })
+    }
+  }
+
   _loadTransposedColumns () {
     let pageKey = this.pageKey
     let pageDef = getPageDefinition(pageKey)
     if (pageDef && pageDef.tables) {
-      pageDef.tables.forEach(table => {
-        if (table.tableCells.length > 8) {
-          // console.log('transpose table', table)
-          this.setupColumnData(pageDef, table, pageKey)
-          // console.log('transposed table', table.transposedColumns)
+      pageDef.tables.forEach(tableDef => {
+        if (tableDef.isTransposed) {
+          // console.log('transpose tableDef', tableDef)
+          this.setupColumnData(pageDef, tableDef, pageKey)
+          // console.log('transposed table', tableDef.transposedColumns)
         }
       })
     }
+  }
+
+  /**
+   Take the component's definition data and the component's data and combine it into one table.
+   Then rotates the table to place the header labels into the first column and
+   each following row in a column.
+   Place the result into table.transposedColumns
+   * @param pageDef
+   * @param table
+   * @param pageKey
+   */
+  setupColumnData (pageDef, table, pageKey) {
+    let theData = this.getAsLoadedPageData(pageKey)
+    const tableKey = table.tableKey
+    let dbData = Array.isArray(theData[tableKey]) ? theData[tableKey] : []
+    let columns = []
+    let row = []
+    table.tableCells.forEach(cell => {
+      // console.log('the cell ', cell)
+      // let hdrCss = 'column_label' + (cell.tableCss ? ' ' + cell.tableCss : '')
+      // let entry = {
+      //   inputType: cell.inputType,
+      //   title: cell.elementKey,
+      //   tableCss: hdrCss,
+      //   value: cell.label
+      // }
+      row.push({cellDef: cell, value: cell.label})
+      // row.push(entry)
+    })
+    columns.push(row)
+    dbData.forEach(item => {
+      row = []
+      table.tableCells.forEach(cell => {
+        // let valCss = 'column_value' + (cell.tableCss ? ' ' + cell.tableCss : '')
+        let value = item[cell.elementKey]
+        // let entry = {
+        //   tableCss: valCss,
+        //   title: value,
+        //   value: value
+        // }
+        // {cellDef: cell, value: value}
+        row.push({cellDef: cell, value: value})
+      })
+      columns.push(row)
+    })
+    let transpose = columns[0].map((col, i) => columns.map(row => row[i]))
+    table.transposedColumns = transpose
   }
 
   beforeDestroy (pageKey) {
@@ -77,13 +204,6 @@ export default class EhrHelp {
     this._takeDownEventHandlers(pageKey)
   }
   /* ********************* DATA  */
-
-  // getPageDefinition (pageKey) {
-  //   let pageDef = pageDefs[pageKey]
-  //   // console.log('getPageDefinition ' + pageKey, pageDef)
-  //   return pageDef
-  // }
-
 
   getAsLoadedPageData (pageKey) {
     return this.$store.getters['ehrData/asLoadedDataForPageKey'](pageKey)
@@ -108,56 +228,12 @@ export default class EhrHelp {
   formatDate (d) {
     return formatTimeStr(d)
   }
-  /**
-   Take the component's definition data and the component's data and combine it into one table.
-   Then rotates the table to place the header labels into the first column and
-   each following row in a column.
-   Place the result into table.transposedColumns
-   * @param pageDef
-   * @param table
-   * @param pageKey
-   */
-  setupColumnData (pageDef, table, pageKey) {
-    let theData = this.getAsLoadedPageData(pageKey)
-    let dbData = Array.isArray(theData.table) ? theData.table : []
-    let columns = []
-    let row = []
-    table.tableCells.forEach(cell => {
-      // console.log('the cell ', cell)
-      let hdrCss = 'column_label' + (cell.tableCss ? ' ' + cell.tableCss : '')
-      let entry = {
-        inputType: cell.inputType,
-        title: cell.elementKey,
-        tableCss: hdrCss,
-        value: cell.label
-      }
-      row.push(entry)
-    })
-    columns.push(row)
-    dbData.forEach(item => {
-      row = []
-      table.tableCells.forEach(cell => {
-        let valCss = 'column_value' + (cell.tableCss ? ' ' + cell.tableCss : '')
-        let v = item[cell.elementKey]
-        let entry = {
-          tableCss: valCss,
-          title: v,
-          value: v
-        }
-        row.push(entry)
-      })
-      columns.push(row)
-    })
-    let transpose = columns[0].map((col, i) => columns.map(row => row[i]))
-    table.isTransposed = true
-    table.transposedColumns = transpose
-  }
 
   /* ********************* DIALOG  */
   showDialog (tableDef, dialogInputs) {
     // this._setEditing (fals)
     let dialog = { tableDef: tableDef, inputs: dialogInputs }
-    let key = tableDef.tableKey
+    let key = this.activeTableKey = tableDef.tableKey
     this.dialogMap[key] = dialog
     // add this dialog to the map
     // console.log('set helper into each form element', tableDef.tableForm)
@@ -182,14 +258,18 @@ export default class EhrHelp {
     })
   }
 
-  cancelDialog (tableKey) {
+  cancelDialog () {
+    const tableKey = this.activeTableKey
     // console.log('cancel dialog (indexed by tableKey)', tableKey)
     this._clearDialogInputs(tableKey)
     this._emitCloseEvent(tableKey)
+    this.activeTableKey = ''
   }
 
-  saveDialog (pageKey, tableKey) {
+  saveDialog () {
     const _this = this
+    const pageKey = this.pageKey
+    const tableKey = this.activeTableKey
     if (this._validateInputs(tableKey)) {
       // console.log('saveDialog for page/table', pageKey, tableKey)
       let dialog = this.dialogMap[tableKey]
@@ -198,12 +278,13 @@ export default class EhrHelp {
       inputs.createdDate = moment().format()
       // console.log('save dialog data into ', tableKey)
       let asLoadedPageData = this.getAsLoadedPageData(pageKey)
-      let table = asLoadedPageData[tableKey] || []
-      // let modifiedValue = data[tableKey] || []
-      // modifiedValue = modifiedValue ? JSON.parse(JSON.stringify(modifiedValue)) : []
-      // modifiedValue.push(inputs)
+      let table = asLoadedPageData[tableKey]
+      if (!table) {
+        table = []
+        asLoadedPageData[tableKey] = table
+      }
       table.push(inputs)
-      // console.log('storing this: ', asLoadedPageData, tableKey, dialog.tableKey)
+      // console.log('storing this: asLoadedPageData', asLoadedPageData, 'table', table, tableKey, dialog.tableKey)
       // Prepare a payload to tell the API which property inside the assignment data to change
       let payload = {
         propertyName: pageKey,
@@ -293,13 +374,15 @@ export default class EhrHelp {
   _clearDialogInputs (key) {
     // console.log('clear dialog for key ', key)
     let d = this.dialogMap[key]
+    const pageDataKey = d.tableDef.pageDataKey
+    // console.log('dialog', d)
     let cells = d.tableDef.tableCells
     let inputs = d.inputs
     // console.log('clear dialog inputs', inputs)
     // console.log('clear dialog cells', cells)
     // TODO check that default values are working
     cells.forEach(cell => {
-      let dV = getDefaultValue(cell.pageDataKey, cell.elementKey) || ''
+      let dV = getDefaultValue(pageDataKey, cell.elementKey) || ''
       // console.log('load table cell with default value', cell, dV)
       inputs[cell.elementKey] = dV
     })
@@ -426,8 +509,6 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
       if (this.pageFormData) {
         let currentData = JSON.stringify(this.pageFormData.value)
         let cacheData = this.pageFormData.cacheData
-        // console.log('current data', currentData)
-        // console.log('cacheAsString', cacheData)
         result = cacheData !== currentData
       } else {
         // a page dialog is open.
@@ -498,7 +579,7 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
    */
   _handleDialogInputChangeEvent (eData) {
     let def = eData.element
-    let tableKey = def.tableKey
+    let tableKey = this.activeTableKey
     let elementKey = def.elementKey
     let value = eData.value
     let d = this.dialogMap[tableKey]

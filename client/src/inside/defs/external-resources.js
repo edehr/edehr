@@ -111,7 +111,7 @@ export default function () {
           assetName: "best_possible_medication.pdf"
         }
       ],
-      generated: "2019-07-10T07:38:20-07:00",
+      generated: "2019-07-15T11:26:37-07:00",
       hasForm: true,
       pageForm: {
         rows: [
@@ -428,7 +428,7 @@ export default function () {
           fqn: "codeLookup.icf"
         }
       ],
-      generated: "2019-07-10T07:38:20-07:00",
+      generated: "2019-07-15T11:26:37-07:00",
       hasForm: true,
       pageForm: {
         rows: [
@@ -544,7 +544,7 @@ export default function () {
           fqn: "diagnosticCodes.table.cluster"
         }
       ],
-      generated: "2019-07-10T07:38:20-07:00",
+      generated: "2019-07-15T11:26:37-07:00",
       hasTable: true,
       tables: [
         {
@@ -791,7 +791,7 @@ export default function () {
           fqn: "interventionCodes.table.extent"
         }
       ],
-      generated: "2019-07-10T07:38:20-07:00",
+      generated: "2019-07-15T11:26:37-07:00",
       hasTable: true,
       tables: [
         {
@@ -821,6 +821,7 @@ export default function () {
               elementKey: "time",
               label: "Entered at time",
               tableColumn: "1",
+              tableCss: "hr-table",
               inputType: "time"
             },
             {
@@ -1024,7 +1025,7 @@ export default function () {
           fqn: "caseMixGroup.table.analysis"
         }
       ],
-      generated: "2019-07-10T07:38:20-07:00",
+      generated: "2019-07-15T11:26:37-07:00",
       hasTable: true,
       tables: [
         {
@@ -1054,6 +1055,7 @@ export default function () {
               elementKey: "time",
               label: "Entered at time",
               tableColumn: "4",
+              tableCss: "hr-table",
               inputType: "time"
             },
             {

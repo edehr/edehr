@@ -333,7 +333,7 @@ export default function () {
           dataCaseStudy: "604-555-9865"
         }
       ],
-      generated: "2019-07-10T07:40:50-07:00",
+      generated: "2019-07-15T11:26:37-07:00",
       hasForm: true,
       pageForm: {
         rows: [
@@ -658,7 +658,7 @@ export default function () {
           dataCaseStudy: "TRUE"
         }
       ],
-      generated: "2019-07-10T07:40:50-07:00",
+      generated: "2019-07-15T11:26:37-07:00",
       hasForm: true,
       pageForm: {
         rows: [
@@ -703,7 +703,7 @@ export default function () {
           fqn: "medical.history"
         }
       ],
-      generated: "2019-07-10T07:40:50-07:00",
+      generated: "2019-07-15T11:26:37-07:00",
       hasForm: true,
       pageForm: {
         rows: [
@@ -847,7 +847,7 @@ export default function () {
           formOption: "hideLabel"
         }
       ],
-      generated: "2019-07-10T07:40:50-07:00",
+      generated: "2019-07-15T11:26:37-07:00",
       hasForm: true,
       pageForm: {
         rows: [
@@ -1095,7 +1095,7 @@ export default function () {
           fqn: "surgical.previous.comments"
         }
       ],
-      generated: "2019-07-10T07:40:50-07:00",
+      generated: "2019-07-15T11:26:37-07:00",
       hasTable: true,
       tables: [
         {
@@ -1389,7 +1389,7 @@ export default function () {
           formOption: "hideLabel"
         }
       ],
-      generated: "2019-07-10T07:40:50-07:00",
+      generated: "2019-07-15T11:26:37-07:00",
       hasForm: true,
       pageForm: {
         rows: [
@@ -1614,7 +1614,7 @@ export default function () {
           fqn: "familyHistory.history"
         }
       ],
-      generated: "2019-07-10T07:40:50-07:00",
+      generated: "2019-07-15T11:26:37-07:00",
       hasForm: true,
       pageForm: {
         rows: [
@@ -1652,7 +1652,7 @@ export default function () {
           dataCaseStudy: "Physician-NL-Physician-NL-Nurse-NL-Nurse-NL-Medical radiograpeor-NL-Medical laboratory technician-NL-Medical radiographer-NL-RN-NL-Physician-NL-RN-NL-Pysiotherapy student-NL-Resp. therapist"
         }
       ],
-      generated: "2019-07-10T07:40:50-07:00",
+      generated: "2019-07-15T11:26:37-07:00",
       hasTable: true,
       tables: [
         {
@@ -1664,6 +1664,7 @@ export default function () {
               elementKey: "name",
               label: "Name",
               tableColumn: "1",
+              tableCss: "is-one-third",
               inputType: "text"
             },
             {
@@ -1755,7 +1756,7 @@ export default function () {
           dataCaseStudy: "COPD"
         }
       ],
-      generated: "2019-07-10T07:40:50-07:00",
+      generated: "2019-07-15T11:26:37-07:00",
       hasTable: true,
       tables: [
         {

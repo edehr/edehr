@@ -1,5 +1,4 @@
-import { setApiError } from '../../../helpers/ehr-utills'
-import { getPageDefinition } from '../../../helpers/ehr-defs'
+import { getMedOrderSchedule } from '../../../helpers/ehr-defs'
 import { SCHEDULE_FIELDSET, MED_ORDERS_PAGE_KEY } from './mar-helper'
 import PeriodEntity from './period-entity'
 
@@ -14,23 +13,8 @@ import PeriodEntity from './period-entity'
 
 export default class PeriodDefs {
   constructor () {
-    let medOrdersPageDefs = getPageDefinition(MED_ORDERS_PAGE_KEY)
-    let periodList = []
-    if (medOrdersPageDefs && medOrdersPageDefs.tables && medOrdersPageDefs.tables.length > 0) {
-      let cells = medOrdersPageDefs.tables[0].tableCells
-      // console.log('PeriodDefs constructor cells', cells)
-      let medPeriods = cells.filter(cell => cell.level3Key === SCHEDULE_FIELDSET && cell.inputType === 'checkbox')
-      // console.log('PeriodDefs constructor medPeriods', medPeriods)
-      medPeriods.forEach(mp => {
-        let k = mp.elementKey
-        periodList.push(new PeriodEntity(k, mp.label))
-        // { key: k, name: mp.label, marRecord: {}, hasMar: false }
-      })
-    } else {
-      // TODO the setApiError needs a component context to get the store. The following is broken
-      setApiError(MED_ORDERS_PAGE_KEY + ' can not find table')
-    }
-    this._periodList = periodList
+    let medPeriods = getMedOrderSchedule(MED_ORDERS_PAGE_KEY, SCHEDULE_FIELDSET)
+    this._periodList = medPeriods.map( (mp) => new PeriodEntity(mp.elementKey, mp.label))
   }
 
   get periodList () { return this._periodList}

@@ -1,7 +1,7 @@
 import moment from 'moment'
 import camelcase from 'camelcase'
 import fileDownload  from 'js-file-download'
-import { pageDefs } from './ehr-defs'
+import { getAllPageKeys } from './ehr-defs'
 
 export function getIncomingParams () {
   let search = window.location.search.substring(1)
@@ -108,8 +108,7 @@ export function ehrMarkSeed (data) {
 }
 
 export function validateSeed (dataAsString) {
-  let pageKeys = Object.keys(pageDefs)
-  pageKeys.sort()
+  let pageKeys = getAllPageKeys()
   try {
     let obj = JSON.parse(dataAsString)
     let keys = Object.keys(obj)

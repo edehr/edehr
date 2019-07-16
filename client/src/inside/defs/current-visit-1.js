@@ -93,7 +93,7 @@ export default function () {
           fqn: "visit.table.transferOutTime"
         }
       ],
-      generated: "2019-07-11T07:58:42-07:00",
+      generated: "2019-07-15T17:54:53-07:00",
       hasForm: true,
       pageForm: {
         rows: [
@@ -433,7 +433,7 @@ export default function () {
           suffix: "/lpm"
         }
       ],
-      generated: "2019-07-11T07:58:42-07:00",
+      generated: "2019-07-15T17:54:53-07:00",
       hasTable: true,
       tables: [
         {
@@ -463,6 +463,7 @@ export default function () {
               elementKey: "entryTime",
               label: "Entered at time",
               tableColumn: "4",
+              tableCss: "hr-table",
               inputType: "text"
             },
             {
@@ -475,6 +476,7 @@ export default function () {
               elementKey: "time",
               label: "Vital taken time",
               tableColumn: "6",
+              tableCss: "hr-table",
               inputType: "text"
             },
             {
@@ -487,6 +489,7 @@ export default function () {
               elementKey: "source",
               label: "Temperature source",
               tableColumn: "8",
+              tableCss: "hr-table",
               inputType: "select"
             },
             {
@@ -505,6 +508,7 @@ export default function () {
               elementKey: "rhythm",
               label: "Pulse rhythm",
               tableColumn: "11",
+              tableCss: "hr-table",
               inputType: "select"
             },
             {
@@ -523,6 +527,7 @@ export default function () {
               elementKey: "patientPosition",
               label: "Patient position",
               tableColumn: "14",
+              tableCss: "hr-table",
               inputType: "select"
             },
             {
@@ -806,7 +811,7 @@ export default function () {
           fqn: "fluidBalance.table.fluidOut"
         }
       ],
-      generated: "2019-07-11T07:58:42-07:00",
+      generated: "2019-07-15T17:54:53-07:00",
       hasTable: true,
       tables: [
         {
@@ -836,6 +841,7 @@ export default function () {
               elementKey: "time",
               label: "Entered at time",
               tableColumn: "4",
+              tableCss: "hr-table",
               inputType: "time"
             },
             {
@@ -1535,7 +1541,7 @@ export default function () {
           fqn: "neurological.table.stroke.strokeAssessmentCalculation"
         }
       ],
-      generated: "2019-07-11T07:58:42-07:00",
+      generated: "2019-07-15T17:54:53-07:00",
       hasTable: true,
       tables: [
         {
@@ -1566,6 +1572,7 @@ export default function () {
               elementKey: "time",
               label: "Entered at time",
               tableColumn: "4",
+              tableCss: "hr-table",
               inputType: "time"
             },
             {
@@ -1573,7 +1580,7 @@ export default function () {
               label: "Status",
               tableColumn: "5",
               inputType: "fieldset",
-              tableCss: "hide-table-element"
+              tableCss: "undefinedhide-table-element"
             },
             {
               elementKey: "alert",
@@ -1615,6 +1622,7 @@ export default function () {
               elementKey: "blurredVision",
               label: "Eye opening",
               tableColumn: "12",
+              tableCss: "hr-table",
               inputType: "checkbox"
             },
             {
@@ -1622,7 +1630,7 @@ export default function () {
               label: "Glasgow Coma Scale",
               tableColumn: "13",
               inputType: "fieldset",
-              tableCss: "hide-table-element"
+              tableCss: "undefinedhide-table-element"
             },
             {
               elementKey: "eyeOpening",
@@ -1640,12 +1648,14 @@ export default function () {
               elementKey: "bestMotorResponse",
               label: "Best motor response",
               tableColumn: "16",
+              tableCss: "hr-table",
               inputType: "select"
             },
             {
               elementKey: "glasgowCalculation",
               label: "<b>Glasgow Coma Scale calculation</b>",
               tableColumn: "17",
+              tableCss: "hr-table",
               inputType: "calculatedValue"
             },
             {
@@ -1653,7 +1663,7 @@ export default function () {
               label: "Conciousness",
               tableColumn: "18",
               inputType: "fieldset",
-              tableCss: "hide-table-element"
+              tableCss: "undefinedhide-table-element"
             },
             {
               elementKey: "loss",
@@ -1665,6 +1675,7 @@ export default function () {
               elementKey: "duration",
               label: "Duration",
               tableColumn: "20",
+              tableCss: "hr-table",
               inputType: "text"
             },
             {
@@ -1672,7 +1683,7 @@ export default function () {
               label: "Pupils",
               tableColumn: "21",
               inputType: "fieldset",
-              tableCss: "hide-table-element"
+              tableCss: "undefinedhide-table-element"
             },
             {
               elementKey: "leftPupilSize",
@@ -1702,13 +1713,14 @@ export default function () {
               elementKey: "bothPupils",
               label: "Both pupils",
               tableColumn: "26",
+              tableCss: "hr-table",
               inputType: "select"
             },
             {
               elementKey: "aSpacer",
               tableColumn: "27",
               inputType: "spacer",
-              tableCss: "hide-table-element"
+              tableCss: "undefinedhide-table-element"
             },
             {
               elementKey: "comments",
@@ -1721,7 +1733,7 @@ export default function () {
               label: "Stroke Assessment",
               tableColumn: "29",
               inputType: "fieldset",
-              tableCss: "hide-table-element"
+              tableCss: "undefinedhide-table-element"
             },
             {
               elementKey: "levelOfConciousness",
@@ -1739,6 +1751,7 @@ export default function () {
               elementKey: "levelOfConciousnessCommands",
               label: "Level of conciousness commands",
               tableColumn: "32",
+              tableCss: "hr-table",
               inputType: "select"
             },
             {
@@ -1769,6 +1782,7 @@ export default function () {
               elementKey: "limbAtaxia",
               label: "Limb ataxia",
               tableColumn: "37",
+              tableCss: "hr-table",
               inputType: "select"
             },
             {
@@ -1811,12 +1825,14 @@ export default function () {
               elementKey: "extinctionAndInattention",
               label: "Extinction and inattention",
               tableColumn: "44",
+              tableCss: "hr-table",
               inputType: "select"
             },
             {
               elementKey: "strokeAssessmentCalculation",
               label: "<b>Stroke assessment calculation</b>",
               tableColumn: "45",
+              tableCss: "hr-table",
               inputType: "calculatedValue"
             }
           ],
@@ -2679,7 +2695,7 @@ export default function () {
           dataCaseStudy: "(no notes)"
         }
       ],
-      generated: "2019-07-11T07:58:42-07:00",
+      generated: "2019-07-15T17:54:53-07:00",
       hasTable: true,
       tables: [
         {
@@ -2709,6 +2725,7 @@ export default function () {
               elementKey: "time",
               label: "Entered at time",
               tableColumn: "4",
+              tableCss: "hr-table",
               inputType: "time"
             },
             {
@@ -2733,6 +2750,7 @@ export default function () {
               elementKey: "otherValue",
               label: "Other",
               tableColumn: "8",
+              tableCss: "hr-table",
               inputType: "checkbox"
             },
             {
@@ -2745,6 +2763,7 @@ export default function () {
               elementKey: "flowRate",
               label: "Flow rate",
               tableColumn: "10",
+              tableCss: "hr-table",
               inputType: "text"
             },
             {
@@ -2763,7 +2782,7 @@ export default function () {
               elementKey: "aSpacer",
               tableColumn: "13",
               inputType: "spacer",
-              tableCss: "hide-table-element"
+              tableCss: "undefinedhide-table-element"
             },
             {
               elementKey: "rml",
@@ -2781,6 +2800,7 @@ export default function () {
               elementKey: "rll",
               label: "Right lower lung",
               tableColumn: "16",
+              tableCss: "hr-table",
               inputType: "select"
             },
             {
@@ -2793,6 +2813,7 @@ export default function () {
               elementKey: "respiratoryDepth",
               label: "Respiratory depth",
               tableColumn: "18",
+              tableCss: "hr-table",
               inputType: "select"
             },
             {
@@ -2811,12 +2832,13 @@ export default function () {
               elementKey: "aSpacer",
               tableColumn: "21",
               inputType: "spacer",
-              tableCss: "hide-table-element"
+              tableCss: "undefinedhide-table-element"
             },
             {
               elementKey: "sputumComments",
               label: "Sputum comments",
               tableColumn: "22",
+              tableCss: "hr-table",
               inputType: "text"
             },
             {
@@ -3566,7 +3588,7 @@ export default function () {
           dataCaseStudy: "(blank)"
         }
       ],
-      generated: "2019-07-11T07:58:42-07:00",
+      generated: "2019-07-15T17:54:53-07:00",
       hasTable: true,
       tables: [
         {
@@ -3596,6 +3618,7 @@ export default function () {
               elementKey: "time",
               label: "Entered at time",
               tableColumn: "4",
+              tableCss: "hr-table",
               inputType: "time"
             },
             {
@@ -3608,6 +3631,7 @@ export default function () {
               elementKey: "skinAppearance",
               label: "Skin appearance",
               tableColumn: "6",
+              tableCss: "hr-table",
               inputType: "select"
             },
             {
@@ -3656,6 +3680,7 @@ export default function () {
               elementKey: "labelLeftFoot",
               label: "Left foot",
               tableColumn: "14",
+              tableCss: "hr-table",
               inputType: "form_label"
             },
             {
@@ -3680,6 +3705,7 @@ export default function () {
               elementKey: "capRefillLeftFoot",
               label: "Temperature: Right hand",
               tableColumn: "18",
+              tableCss: "hr-table",
               inputType: "select"
             },
             {
@@ -3704,6 +3730,7 @@ export default function () {
               elementKey: "temperatureLeftFoot",
               label: "Peripheral edema: Right hand",
               tableColumn: "22",
+              tableCss: "hr-table",
               inputType: "select"
             },
             {
@@ -3728,6 +3755,7 @@ export default function () {
               elementKey: "peripheralEdemaLeftFoot",
               label: "Nail bed colour: Right hand",
               tableColumn: "26",
+              tableCss: "hr-table",
               inputType: "select"
             },
             {
@@ -3751,6 +3779,7 @@ export default function () {
             {
               elementKey: "nailBedColourLeftFoot",
               tableColumn: "30",
+              tableCss: "hr-table",
               inputType: "select"
             },
             {
@@ -4394,7 +4423,7 @@ export default function () {
           dataCaseStudy: "(nothing entered)"
         }
       ],
-      generated: "2019-07-11T07:58:42-07:00",
+      generated: "2019-07-15T17:54:53-07:00",
       hasTable: true,
       tables: [
         {
@@ -4424,6 +4453,7 @@ export default function () {
               elementKey: "time",
               label: "Entered at time",
               tableColumn: "4",
+              tableCss: "hr-table",
               inputType: "time"
             },
             {
@@ -4442,6 +4472,7 @@ export default function () {
               elementKey: "aLabel",
               label: "If answered yes, please complete the <a href=\"/assets/standardized-assessment-tools/numeric-rating-scale.pdf\">pain assessment</a>.",
               tableColumn: "7",
+              tableCss: "hr-table",
               inputType: "form_label"
             },
             {
@@ -4466,6 +4497,7 @@ export default function () {
               elementKey: "amount",
               label: "Approximate volume",
               tableColumn: "11",
+              tableCss: "hr-table",
               inputType: "select"
             },
             {
@@ -4490,6 +4522,7 @@ export default function () {
               elementKey: "npoSinceTime",
               label: "NPO since time",
               tableColumn: "15",
+              tableCss: "hr-table",
               inputType: "time"
             },
             {
@@ -4502,6 +4535,7 @@ export default function () {
               elementKey: "lastBm",
               label: "Last bowel movement",
               tableColumn: "17",
+              tableCss: "hr-table",
               inputType: "text"
             },
             {
@@ -4526,6 +4560,7 @@ export default function () {
               elementKey: "stoolSource",
               label: "Source",
               tableColumn: "21",
+              tableCss: "hr-table",
               inputType: "select"
             },
             {

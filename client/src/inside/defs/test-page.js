@@ -175,7 +175,7 @@ export default function () {
           fqn: "testPage.pfieldset2.pdate2"
         }
       ],
-      generated: "2019-07-13T21:10:39-07:00",
+      generated: "2019-07-15T17:54:53-07:00",
       hasForm: true,
       pageForm: {
         rows: [
@@ -669,7 +669,7 @@ export default function () {
           ]
         }
       ],
-      generated: "2019-07-13T21:10:39-07:00",
+      generated: "2019-07-15T17:54:53-07:00",
       hasTable: true,
       tables: [
         {
@@ -1091,6 +1091,7 @@ export default function () {
               elementKey: "time",
               label: "Entered at time",
               tableColumn: "2",
+              tableCss: "hr-table",
               inputType: "time"
             },
             {
@@ -1103,6 +1104,7 @@ export default function () {
               elementKey: "referralProfession",
               label: "Referral profession",
               tableColumn: "3",
+              tableCss: "hr-table",
               inputType: "text"
             },
             {
