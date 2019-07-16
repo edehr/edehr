@@ -36,14 +36,6 @@ const containerElementProperties = [
   'fsetRow',
   'fsetCol',
 
-  // 'defaultValue',
-  'options',
-  // 'mandatory',
-  // 'validation',
-  'assetBase',
-  'assetName',
-  // 'passToFunction',
-
   'dataParent',
   'fqn',
 
@@ -324,36 +316,29 @@ class RawInputToDef {
     page.generated = moment.utc(lastModifiedTime).local().format()
     Object.keys(group.containers).forEach(key => {
       let container = group.containers[key]
+      let tableKey = container.containerKey
       if (container.containerType === PAGE_FORM_INPUT) {
         page.hasForm = true
-        page.pageForm = this._extractTableForm(container)
+        page.pageForm = this._extractTableForm(container, tableKey)
       } else if (container.containerType === TABLE_ROW) {
         page.hasTable = true
         page.tables = page.tables || []
-        let tableCells = this._pageTableCells(container)
-        let tableForm = this._extractTableForm(container, tableCells)
+        let tableCells = this._extractTableCells(container)
+        let tableForm = this._extractTableForm(container, tableKey)
         assert.ok(container.addButtonText,'Need addButtonText property to set up the add button for table ' + key)
-        let reducedCells = tableCells.map(cell => {
-          let nCell = Object.assign({},cell)
-          if (nCell.formFieldSet) {
-            delete nCell.formFieldSet
-          }
-          return nCell
-        })
-
         let table = {
           pageDataKey: page.pageDataKey,
           tableKey: container.containerKey,
           label: container.label,
           addButtonText: container.addButtonText,
-          tableCells: reducedCells,
+          tableCells: tableCells,
           tableForm: tableForm }
         page.tables.push(table)
       }
     })
   }
 
-  _pageTableCells(container) {
+  _extractTableCells(container) {
     let tableCells = []
     container.elements.forEach(element => {
       if (SUBCONTAINER_INPUT_TYPES.indexOf(element.inputType) >= 0) {
@@ -365,7 +350,7 @@ class RawInputToDef {
       let cell = this._transferProperties(element, tableCellProperties)
       tableCells.push(cell)
     })
-    // remove any cells that are not positioned in the table
+    // Only keep cells that have a position in the table
     tableCells = tableCells.filter( (cell) => cell.tableColumn !== undefined)
     tableCells.sort((a, b) => a.tableColumn - b.tableColumn )
     tableCells.forEach( (cell) => {
@@ -376,53 +361,29 @@ class RawInputToDef {
     return tableCells
   }
 
-  _extractTableForm(container) {
-    let rows = []
-    let tableKey = container.containerKey
+  _extractTableForm(container, tableKey) {
+    // start with object to contain the form rows.
+    let rows = {}
     container.elements.forEach(element => {
-      let cell = this._transferProperties(element, formElementProperties)
-      // let cell = element //tableCells ? tableCells.find(c => element.elementKey === c.elementKey) : element
-      // assert.ok(cell, 'Must have a table cell to match with form cell ' + element.elementKey)
-      cell.tableKey = tableKey
-      let row = this.getRow(element, rows)
-      row.elements.push(cell)
-      if (SUBCONTAINER_INPUT_TYPES.indexOf(element.inputType) >= 0) {
-        cell.formFieldSet = this._extractFieldSet(element, tableKey)
-        // delete element.elements
+      // NOTE that elements should have either but not both formRow and fsetRow
+      let formRow = element.formRow || element.fsetRow
+      if(formRow) {
+        let cell = this._transferProperties(element, formElementProperties)
+        cell.tableKey = tableKey
+        // get the current row indexed by the definition
+        let row = rows[formRow - 1]
+        if (!row) { // create row is needed
+          rows[formRow - 1] = row = {formRow: formRow, elements: []}
+        }
+        row.elements.push(cell)
+        if (SUBCONTAINER_INPUT_TYPES.indexOf(element.inputType) >= 0) {
+          cell.formFieldSet = this._extractTableForm(element, tableKey)
+        }
       }
     })
-    return this._sortFormElements(rows)
-  }
-
-  _extractFieldSet(fieldset, tableKey) {
-    let rows = []
-    fieldset.elements.forEach(element => {
-      let cell = this._transferProperties(element, formElementProperties)
-      // let cell = element // tableCells ? tableCells.find(c => element.elementKey === c.elementKey) : element
-      let row = this.getRow(element, rows)
-      cell.tableKey = tableKey
-      // cell.formColumn = element.fsetCol
-      row.elements.push(cell)
-    })
-    return this._sortFormElements(rows)
-  }
-
-  getRow (element, rows) {
-    let formRow = element.formRow || element.fsetRow
-    let row = rows[formRow - 1]
-    if (!row) {
-      row = {
-        formRow: formRow,
-        elements: []
-      }
-      rows[formRow - 1] = row
-    }
-    return row
-  }
-
-
-  _sortFormElements(rows) {
-    // sort the rows
+    // convert the object to array. This means allows the formRow indices to be any number and even skip rows.
+    rows = Object.values(rows)
+    // sort the rows based on their index
     rows.sort((a, b) => a.formRow - b.formRow)
     // sort the columns within a row
     rows.forEach(row => {
