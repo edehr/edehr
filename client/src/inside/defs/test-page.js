@@ -175,7 +175,7 @@ export default function () {
           fqn: "testPage.pfieldset2.pdate2"
         }
       ],
-      generated: "2019-07-15T17:54:53-07:00",
+      generated: "2019-07-16T07:59:51-07:00",
       hasForm: true,
       pageForm: {
         rows: [
@@ -669,7 +669,7 @@ export default function () {
           ]
         }
       ],
-      generated: "2019-07-15T17:54:53-07:00",
+      generated: "2019-07-16T07:59:51-07:00",
       hasTable: true,
       tables: [
         {
@@ -694,6 +694,7 @@ export default function () {
               elementKey: "ptextpcheckbox",
               label: "text",
               tableColumn: "3",
+              tableCss: "hr-table",
               inputType: "text"
             },
             {
@@ -724,6 +725,7 @@ export default function () {
               elementKey: "ptextarea",
               label: "textarea",
               tableColumn: "6",
+              tableCss: "hr-table",
               inputType: "textarea"
             },
             {
@@ -753,25 +755,25 @@ export default function () {
             {
               elementKey: "pcheckbox2",
               label: "checkbox",
-              tableColumn: "11",
+              tableColumn: "12",
               inputType: "checkbox"
             },
             {
               elementKey: "ptext2",
               label: "text",
-              tableColumn: "12",
+              tableColumn: "13",
               inputType: "text"
             },
             {
               elementKey: "pform_label2",
               label: "<b>a form <i>label</i></b>",
-              tableColumn: "13",
+              tableColumn: "14",
               inputType: "form_label"
             },
             {
               elementKey: "pdate2",
               label: "date",
-              tableColumn: "14",
+              tableColumn: "15",
               inputType: "date"
             }
           ],
@@ -1046,13 +1048,13 @@ export default function () {
                 ]
               },
               {
-                formRow: "5",
+                formRow: "6",
                 elements: [
                   {
                     elementKey: "ptextarea",
                     label: "textarea",
                     inputType: "textarea",
-                    formRow: "5",
+                    formRow: "6",
                     formColumn: "1",
                     formCss: "full-width",
                     dataParent: "testTable.table",

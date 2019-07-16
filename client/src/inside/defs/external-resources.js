@@ -111,7 +111,7 @@ export default function () {
           assetName: "best_possible_medication.pdf"
         }
       ],
-      generated: "2019-07-15T11:26:37-07:00",
+      generated: "2019-07-16T10:13:42-07:00",
       hasForm: true,
       pageForm: {
         rows: [
@@ -403,8 +403,21 @@ export default function () {
                 formCss: "h2",
                 dataParent: "assessmentTools",
                 formFieldSet: {
-                  rows: [],
-                  columnsCount: 0
+                  rows: [
+                    {
+                      formRow: "1",
+                      elements: [
+                        {
+                          elementKey: "medication1_1",
+                          label: "Best possible medication history",
+                          inputType: "assetLink",
+                          fsetRow: "1",
+                          dataParent: "assessmentTools.medication"
+                        }
+                      ]
+                    }
+                  ],
+                  columnsCount: 1
                 }
               }
             ]
@@ -428,7 +441,7 @@ export default function () {
           fqn: "codeLookup.icf"
         }
       ],
-      generated: "2019-07-15T11:26:37-07:00",
+      generated: "2019-07-16T10:13:42-07:00",
       hasForm: true,
       pageForm: {
         rows: [
@@ -544,7 +557,7 @@ export default function () {
           fqn: "diagnosticCodes.table.cluster"
         }
       ],
-      generated: "2019-07-15T11:26:37-07:00",
+      generated: "2019-07-16T10:13:42-07:00",
       hasTable: true,
       tables: [
         {
@@ -791,7 +804,7 @@ export default function () {
           fqn: "interventionCodes.table.extent"
         }
       ],
-      generated: "2019-07-15T11:26:37-07:00",
+      generated: "2019-07-16T10:13:42-07:00",
       hasTable: true,
       tables: [
         {
@@ -1025,7 +1038,7 @@ export default function () {
           fqn: "caseMixGroup.table.analysis"
         }
       ],
-      generated: "2019-07-15T11:26:37-07:00",
+      generated: "2019-07-16T10:13:42-07:00",
       hasTable: true,
       tables: [
         {
