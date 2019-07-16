@@ -37,7 +37,7 @@ export default {
           EventBus.$emit(PAGE_FORM_INPUT_EVENT, {value: newVal, element: this.element})
         }
       }
-      if (this.isDialogElement) {
+      if (this.dialogTableKey) {
         if (this.dialogIsOpen) {
           // only broadcast if dialog is open
           let newVal = val.join(',')
@@ -57,7 +57,7 @@ export default {
     validate () {
       // used by this.setup
       let result = true
-      let opts = this.element.options
+      let opts = this.options
       if(!opts || opts.length === 0) {
         setApiError(this, 'The checkset '+ this.key + ' definition is missing the options property')
         result = false
@@ -79,7 +79,7 @@ export default {
       if (this.validate()) {
         this.checkOptions = []
         let prop,text
-        this.element.options.forEach(opt => {
+        this.options.forEach(opt => {
           [prop, text] = opt.text.split('=')
           if (!text) {
             text = prop

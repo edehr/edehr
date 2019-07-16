@@ -1,19 +1,15 @@
 'use strict'
 const moment = require('moment')
-const fs = require('fs')
 const assert = require('assert').strict
 const camelCase = require('camelcase')
 
-const DEFAULT_VALUE = 'defaultValue'
-const PAGE_FORM = 'page_form'
+const PAGE_FORM_INPUT = 'page_form'
 const TABLE_ROW = 'table_row'
-// const TABLE_COL = 'table_column'
-// const SUBGROUP = 'subgroup'
 const FIELDSET = 'fieldset'
 const FIELDSET_ROW = 'fieldRowSet'
 const SPACER = 'spacer'
 const PAGE_INPUT_TYPE = 'page'
-const CONTAINER_INPUT_TYPES = [PAGE_FORM, TABLE_ROW]//, TABLE_COL]
+const CONTAINER_INPUT_TYPES = [PAGE_FORM_INPUT, TABLE_ROW]//, TABLE_COL]
 const SUBCONTAINER_INPUT_TYPES = [FIELDSET, FIELDSET_ROW] // SUBGROUP
 const NO_SHOW_IN_TABLE_ELEMENTS = [SPACER, FIELDSET_ROW, FIELDSET]
 
@@ -61,13 +57,37 @@ const pageChildElementProperties = [
   'fqn',
   'helperText',
   'suffix',
-  // 'suffix',
+  'options',
+  'assetBase',
+  'assetName',
+  'formOption',
   // 'mandatory',
   // 'validation',
   'dataCaseStudy',
   'passToFunction',
   // 'dataParent',
 ]
+
+const formElementProperties = [
+  'elementKey',
+  'label',
+  'inputType',
+  'formRow',
+  'fsetRow',
+  'formColumn',
+  'formCss',
+  'dataParent'
+]
+
+const tableCellProperties = [
+  'elementKey',
+  'label',
+  'tableColumn',
+  'tableCss',
+  'inputType',
+]
+
+
 // Fields may have data that spans multiple lines.
 // Replace linefeeds with a marker we can use to mark the end of each line.
 // Use labels as found in the inputs spreadsheet before they are converted to camelCase
@@ -118,52 +138,27 @@ class RawInputToDef {
     return pages
   }
 
-  _toPages(masterPageDefs, lastModifiedTime) {
-    // let defs = require("../ehr_defs/patient-profile")();
+  /**
+   * STEP 3
+   * Take the grouped pages and make them into page definitions with page forms and tables (with dialogs)
+   * @param groups
+   * @param lastModifiedTime
+   * @private
+   */
+  _toPages(groups, lastModifiedTime) {
     let pages = {}
-    Object.values(masterPageDefs).forEach(page => {
-      let uiP = {}
-      uiP.pageTitle = page.label
-      uiP.pageDataKey = page.elementKey
-      uiP.pageChildren = page.pageChildren
-      this._pageMakeUiProperties(uiP, page, lastModifiedTime)
-      let pageData = {}
-      // let pd = pageData[uiP.pageDataKey] = {}
-      if (uiP.hasTable) {
-        uiP.tables.forEach(table => {
-          pageData[table.tableKey] = []
-        })
-      }
-      // console.log('Data structure for page ' + uiP.pageDataKey + ' is ', pageData)
-      uiP.pageData = pageData
-      pages[uiP.pageDataKey] = uiP
+    Object.values(groups).forEach(group => {
+      let page = {}
+      page.pageTitle = group.label
+      page.pageDataKey = group.elementKey
+      page.pageChildren = group.pageChildren
+      this._pageMakeUiProperties(page, group, lastModifiedTime)
+      pages[page.pageDataKey] = page
     })
     return pages
   }
-  // TODO day, time types
 
   /* *************** definition helpers ******** */
-  // TODO implement some default value functions to support stuff like the following
-  /*
-      defaultValue: function($store) {
-      return $store.state.visit.sUserInfo.fullName
-      },
-      validationRules: [{ required: true }]
-      defaultValue: function($store) {
-      return 'Nurse'
-      }
-      defaultValue: function() {
-      return moment().format('DD MMM')
-      }
-      defaultValue: function($store) {
-      return moment().format('HH:mm')
-      }
-      defaultValue: function($store) {
-      return 'Random: ' + getPhrase(4)
-      },
-   */
-
-  // TODO implement dependent form elements. E.g. checkbox enable text box. See EhrDialogFormElement parent
 
   /**
    * STEP 2
@@ -172,51 +167,40 @@ class RawInputToDef {
    * @param entries
    */
   _groupByPages(entries) {
-    let pages = {}
+    let groups = {}
     entries.forEach(entry => {
       if (!entry.pageDataKey) {
         console.log('Why no pageDataKey for this entry?', entry)
         return
       }
-      let p = entry.pageDataKey
+      let pKey = entry.pageDataKey
       if (entry.inputType === PAGE_INPUT_TYPE) {
         // console.log('inputType PAGE_INPUT_TYPE', entry.inputType, entry.fqn)
-        this._pageForGroup(p, pages, entry)
+        this._pageForGroup(groups, pKey, entry)
       } else if (CONTAINER_INPUT_TYPES.indexOf(entry.inputType) >= 0) {
         // console.log('inputType CONTAINER_INPUT_TYPES', entry.inputType, entry.fqn)
-        this._topLevelContainerForGroup(pages, p, entry)
+        this._topLevelContainerForGroup(groups, pKey, entry)
       } else if (SUBCONTAINER_INPUT_TYPES.indexOf(entry.inputType) >= 0) {
-        // console.log('inputType SUBCONTAINER_INPUT_TYPES', entry.inputType, entry.fqn)
-        this._subcontainerForGroup(pages, p, entry)
+        this._subcontainerForGroup(groups, pKey, entry)
       } else {
         // entry is a regular element
-        this._elementForGroup(pages, p, entry)
+        this._elementForGroup(groups, pKey, entry)
       }
     })
-    return pages
+    return groups
   }
 
-  _pageForGroup(p, pages, entry) {
+  _pageForGroup(groups, pKey, entry) {
     // console.log('Page:', p)
-    pages[p] = entry
-    let pg = pages[p]
+    groups[pKey] = entry
+    let pg = groups[pKey]
     pg.pageChildren = []
     pg.containers = {}
   }
 
-  /**
-   *
-   * @param pages
-   * @param pageKey
-   * @param entry is a container
-   * @return {{page: *, container}}
-   * @private
-   */
-  _topLevelContainerForGroup(pages, pageKey, entry) {
-    // entry is a container
+  _topLevelContainerForGroup(groups, pageKey, entry) {
     let containerFQN = entry.fqn
-    // we will create a container object from the entry
-    let page = pages[pageKey]
+    let page = groups[pageKey]
     if (!page) {
       console.log('ERROR cannot find page for container', pageKey, entry)
     }
@@ -224,14 +208,13 @@ class RawInputToDef {
     container.elements = []
     container.containerType = entry.inputType
     container.containerKey = entry.elementKey
-    // console.log('push container into page.fqn', page.fqn, 'cntId', containerFQN)
     page.containers[containerFQN] = container
     return { page, container }
   }
 
-  _subcontainerForGroup(pages, p, entry) {
+  _subcontainerForGroup(groups, pageKey, entry) {
     // entry is a fieldset or other group inside a table or form
-    let { page, container } = this._topLevelContainerForGroup(pages, p, entry)
+    let { page, container } = this._topLevelContainerForGroup(groups, pageKey, entry)
     let dp = container.dataParent
     let toplevel = page.containers[dp]
     toplevel.elements.push(container)
@@ -239,27 +222,17 @@ class RawInputToDef {
     // connect the sub group with it top level group
   }
 
-  _elementForGroup(pages, p, entry) {
-    let pg = pages[p]
+  _elementForGroup(groups, pKey, entry) {
+    let pg = groups[pKey]
     if (!pg) {
-      console.log('ERROR element has no page', p, entry)
+      console.log('ERROR element has no page', pKey, entry)
     }
     // Place the entry into the proper container based on entry's dataParent property
     let containerKey = entry.dataParent
+
     let container = pg.containers[containerKey]
-    if (!container || ! container.elements) {
-      console.error(      'ERROR containerKey has no container "' +
-        containerKey +
-        '"' +
-        '\npg: ' +
-        JSON.stringify(pg.containers) +
-        '\ncontainer: ' +
-        JSON.stringify(container) +
-        '\nentry: ' +
-        JSON.stringify(entry)
-      )
-    }
-    assert.ok(container && container.elements, 'Error' )
+    assert.ok(container && container.elements, 'ERROR containerKey has no container ' + containerKey )
+
     let containerChild = this._transferProperties(entry, containerElementProperties)
     // Perform per-entry tasks on the element being placed into the container
     this._prepareDropDownOptions(entry, containerChild)
@@ -268,6 +241,7 @@ class RawInputToDef {
 
     // Push page level data element onto page
     let pageChild = this._transferProperties(entry, pageChildElementProperties)
+    this._prepareDropDownOptions(entry, pageChild)
     this._prepareHelperText(entry, pageChild)
     pg.pageChildren.push(pageChild)
   }
@@ -345,21 +319,17 @@ class RawInputToDef {
 
   /* *************** to pages helpers ******** */
 
-  _pageMakeUiProperties(uiP, page, lastModifiedTime) {
-    // console.log('Build form for page and dialogs for tables', page.label)
-    uiP.generated = moment.utc(lastModifiedTime).local().format()
-    Object.keys(page.containers).forEach(key => {
-      let container = page.containers[key]
-      // console.log('_pageMakeUiProperties type fqn ', container.containerType, container.fqn)
-      if (container.containerType === PAGE_FORM) {
-        // console.log('_pageMakeUiProperties PAGE_FORM', container.fqn)
-        uiP.hasForm = true
-        // TODO change to pageForm
-        uiP.page_form = this._extractPageForm(container)
+  _pageMakeUiProperties(page, group, lastModifiedTime) {
+    // console.log('Build form for page and dialogs for tables', page)
+    page.generated = moment.utc(lastModifiedTime).local().format()
+    Object.keys(group.containers).forEach(key => {
+      let container = group.containers[key]
+      if (container.containerType === PAGE_FORM_INPUT) {
+        page.hasForm = true
+        page.pageForm = this._extractTableForm(container)
       } else if (container.containerType === TABLE_ROW) {
-        // console.log('_pageMakeUiProperties TABLE_ROW', container.fqn)
-        uiP.hasTable = true
-        uiP.tables = uiP.tables || []
+        page.hasTable = true
+        page.tables = page.tables || []
         let tableCells = this._pageTableCells(container)
         let tableForm = this._extractTableForm(container, tableCells)
         assert.ok(container.addButtonText,'Need addButtonText property to set up the add button for table ' + key)
@@ -371,75 +341,85 @@ class RawInputToDef {
           return nCell
         })
 
-        let table = { tableKey: container.containerKey,
+        let table = {
+          pageDataKey: page.pageDataKey,
+          tableKey: container.containerKey,
           label: container.label,
           addButtonText: container.addButtonText,
           tableCells: reducedCells,
           tableForm: tableForm }
-        uiP.tables.push(table)
-      // } else if (container.containerType === TABLE_COL) {
-      //   // TODO
-      //   // console.log('TODO !!!!! column tables', container.containerKey)
-      // } else if (container.containerType === SUBGROUP) {
-      //   // TODO
-      //   // console.log('TODO !!!!! sub groups ', container.containerKey)
-      } else if (container.containerType === FIELDSET || container.containerType === FIELDSET_ROW) {
-        // no special processing needed for fieldsets here.
-        // console.log('_pageMakeUiProperties fieldset', container)
+        page.tables.push(table)
       }
     })
   }
 
-  _extractPageForm(container, tableCells) {
-    let rows = []
-    let fSetChildrem = {}
-    let topChildren=[]
+  _pageTableCells(container) {
+    let tableCells = []
     container.elements.forEach(element => {
-      let elementKey = element.elementKey
-      // console.log('_extractPageForm elementKey',elementKey)
-      if (element.inputType === FIELDSET || element.inputType === FIELDSET_ROW) {
-        // console.log('_extractPageForm elementKey level2Key', elementKey, element.level2Key)
-
-        let rows = []
-        element.elements.forEach(childElem => {
-          let formRow = childElem.fsetRow
-          let row = rows[formRow - 1]
-          if (!row) {
-            row = {
-              formRow: formRow,
-              elements: []
-            }
-            rows[formRow - 1] = row
-          }
-          childElem.formColumn = childElem.fsetCol
-          row.elements.push(childElem)
+      if (SUBCONTAINER_INPUT_TYPES.indexOf(element.inputType) >= 0) {
+        element.elements.forEach(child => {
+          let cellChild = this._transferProperties(child, tableCellProperties)
+          tableCells.push(cellChild)
         })
-        this._sortFormElements(rows)
-        let formFieldSet = {
-          rows: rows,
-          columnsCount: this._formColumnCount(rows)
-        }
-        element.formFieldSet = formFieldSet
       }
-      let formRow = element.formRow
-      let row = rows[formRow - 1]
-      if (!row) {
-        row = {
-          formRow: formRow,
-          elements: []
-        }
-        rows[formRow - 1] = row
-      }
-      row.elements.push(element)
+      let cell = this._transferProperties(element, tableCellProperties)
+      tableCells.push(cell)
     })
-    this._sortFormElements(rows)
-    let form = {
-      rows: rows,
-      // TODO column count in client code not here: adjust form column layout dependant on actual # of cols
-      columnsCount: this._formColumnCount(rows)
-    }
-    return form
+    // remove any cells that are not positioned in the table
+    tableCells = tableCells.filter( (cell) => cell.tableColumn !== undefined)
+    tableCells.sort((a, b) => a.tableColumn - b.tableColumn )
+    tableCells.forEach( (cell) => {
+      if (NO_SHOW_IN_TABLE_ELEMENTS.indexOf(cell.inputType) >= 0) {
+        cell.tableCss += (cell.tableCss ? ' ' : '') + 'hide-table-element'
+      }
+    })
+    return tableCells
   }
+
+  _extractTableForm(container) {
+    let rows = []
+    let tableKey = container.containerKey
+    container.elements.forEach(element => {
+      let cell = this._transferProperties(element, formElementProperties)
+      // let cell = element //tableCells ? tableCells.find(c => element.elementKey === c.elementKey) : element
+      // assert.ok(cell, 'Must have a table cell to match with form cell ' + element.elementKey)
+      cell.tableKey = tableKey
+      let row = this.getRow(element, rows)
+      row.elements.push(cell)
+      if (SUBCONTAINER_INPUT_TYPES.indexOf(element.inputType) >= 0) {
+        cell.formFieldSet = this._extractFieldSet(element, tableKey)
+        // delete element.elements
+      }
+    })
+    return this._sortFormElements(rows)
+  }
+
+  _extractFieldSet(fieldset, tableKey) {
+    let rows = []
+    fieldset.elements.forEach(element => {
+      let cell = this._transferProperties(element, formElementProperties)
+      // let cell = element // tableCells ? tableCells.find(c => element.elementKey === c.elementKey) : element
+      let row = this.getRow(element, rows)
+      cell.tableKey = tableKey
+      // cell.formColumn = element.fsetCol
+      row.elements.push(cell)
+    })
+    return this._sortFormElements(rows)
+  }
+
+  getRow (element, rows) {
+    let formRow = element.formRow || element.fsetRow
+    let row = rows[formRow - 1]
+    if (!row) {
+      row = {
+        formRow: formRow,
+        elements: []
+      }
+      rows[formRow - 1] = row
+    }
+    return row
+  }
+
 
   _sortFormElements(rows) {
     // sort the rows
@@ -448,96 +428,14 @@ class RawInputToDef {
     rows.forEach(row => {
       row.elements.sort((a, b) => a.formColumn - b.formColumn)
     })
-  }
-
-  _formColumnCount(rows) {
     let cnt = 0
     rows.forEach(row => {
       cnt = Math.max(cnt, row.elements.length)
     })
-    return cnt
-  }
-
-  _pageTableCells(container) {
-    let tableCells = []
-    container.elements.forEach(element => {
-      if (element.inputType === FIELDSET || element.inputType === FIELDSET_ROW) {
-        element.elements.forEach(child => {
-          tableCells.push(child)
-        })
-      }
-      tableCells.push(element)
-    })
-    // sort by tableColumn
-    tableCells.sort((a, b) => a.tableColumn - b.tableColumn)
-    tableCells.forEach( (cell) => {
-      let cI = cell.inputType
-      if (NO_SHOW_IN_TABLE_ELEMENTS.indexOf(cI) >= 0) {
-        let tableCss = (cell.tableCss ? cell.tableCss + ' ' : '') + 'hide-table-element'
-        cell.tableCss = tableCss
-      }
-    })
-    return tableCells
-  }
-
-  _extractTableForm(container, tableCells) {
-    let rows = []
-    let tableKey = container.containerKey
-    // console.log('_extractTableForm', tableKey)
-    container.elements.forEach(element => {
-      let formRow = element.formRow
-      let cell = tableCells.find(c => element.elementKey === c.elementKey)
-      assert.ok(cell, 'Must have a table cell to match with form cell ' + element.elementKey)
-      let row = rows[formRow - 1]
-      if (!row) {
-        row = {
-          formRow: formRow,
-          elements: []
-        }
-        rows[formRow - 1] = row
-      }
-      cell.tableKey = tableKey
-      row.elements.push(cell)
-      if (element.inputType === FIELDSET || element.inputType === FIELDSET_ROW) {
-        // console.log('fieldset ', element.inputType)
-        let formFieldSet = this._extractFieldSet(element, tableCells, tableKey)
-        element.formFieldSet = formFieldSet
-        delete element.elements
-      }
-    })
-    this._sortFormElements(rows)
-    let form = {
+    return {
       rows: rows,
-      columnsCount: this._formColumnCount(rows)
+      columnsCount: cnt
     }
-    // console.log('extracted table form for ', container.fqn)
-    return form
-  }
-
-  _extractFieldSet(fieldset, tableCells, tableKey) {
-    let rows = []
-    fieldset.elements.forEach(element => {
-      let formRow = element.fsetRow
-      let cell = tableCells.find(c => element.elementKey === c.elementKey)
-      assert.ok(cell, 'Must have a table cell to match with fieldset cell ' + element.elementKey)
-      let row = rows[formRow - 1]
-      if (!row) {
-        row = {
-          formRow: formRow,
-          elements: []
-        }
-        rows[formRow - 1] = row
-      }
-      cell.tableKey = tableKey
-      cell.formColumn = element.fsetCol
-      row.elements.push(cell)
-    })
-    this._sortFormElements(rows)
-    let formFieldSet = {
-      rows: rows,
-      columnsCount: this._formColumnCount(rows)
-    }
-    return formFieldSet
   }
 
   /* *************** UTILITIES ******** */

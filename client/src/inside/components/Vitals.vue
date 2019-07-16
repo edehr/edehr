@@ -7,9 +7,9 @@
         input(class="checkbox", type="checkbox", v-model="showingSpecial")
         span show sample data
         vitals-chart(v-bind:vitals="tableData", v-bind:vitalsModel="vitalsModel")
-        ehr-dialog-form(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey", :tableDef="tableDef", :inputs="dialogInputs", :errorList="errorList" )
+        ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDef", :inputs="dialogInputs", :errorList="errorList" )
       tab(name="Chart")
-        ehr-page-table(:tableDef="tableDef", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
+        ehr-page-table(:tableDef="tableDef", :ehrHelp="ehrHelp")
 
     div(style="display:none") Vitals: {{refreshData}}
 </template>
@@ -49,7 +49,6 @@ export default {
     }
   },
   props: {
-    pageDataKey: {type: String  },
     ehrHelp: {type: Object}
   },
   computed: {
@@ -57,7 +56,8 @@ export default {
       return this.ehrHelp.showTableAddButton()
     },
     uiProps () {
-      return getPageDefinition(this.pageDataKey)
+      let pageKey = this.ehrHelp.getPageKey()
+      return getPageDefinition(pageKey)
     },
     refreshData () {
       this.refresh()
@@ -77,13 +77,19 @@ export default {
       // EventBus.$emit(SHOW_TABLE_DIALOG_EVENT)
     },
     refresh () {
-      let tableKey = this.tableDef.tableKey
-      let pageKey = this.pageDataKey
-      // console.log('Vitals refresh for page table key', pageKey, tableKey)
-      let pageData = this.ehrHelp.getAsLoadedPageData(pageKey)
-      // store the current data into local data property for display
-      this.tableData = this.showingSpecial ? sampleData() :  pageData[tableKey]
-      this.tableData.reverse()
+      if (this.showingSpecial) {
+        this.tableData = sampleData()
+      } else {
+        let tableKey = this.tableDef.tableKey
+        let pageKey = this.ehrHelp.getPageKey()
+        console.log('Vitals refresh for page table key', pageKey, tableKey)
+        let pageData = this.ehrHelp.getAsLoadedPageData(pageKey)
+        let tableData = pageData[tableKey] || []
+        // store the current data into local data property for display
+        this.tableData = tableData
+        console.log('Vitals page and table data', pageData, this.tableData)
+        this.tableData.reverse()
+      }
     }
   },
   created: function () {

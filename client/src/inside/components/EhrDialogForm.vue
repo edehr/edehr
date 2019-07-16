@@ -5,11 +5,11 @@
       div(slot="body", class="region ehr-page-content")
         div(class="form-row-wrapper")
           div(class="form-element-wrapper", v-bind:class="cssFromDefs(element)", v-for="element in topRow.elements", v-bind:key="element.elementKey")
-            ehr-dialog-form-element(:inputs="inputs", :element="element", :ehrHelp="ehrHelp", isDialogElement=true)
+            ehr-dialog-form-element(:inputs="inputs", :element="element", :ehrHelp="ehrHelp", :dialogTableKey="tableKey")
         hr(v-if="hasNameProfRow")
         div(class="form-row-wrapper", v-for="row in middleRange")
           div(class="form-element-wrapper", v-bind:class="cssFromDefs(element)", v-for="element in row.elements", v-bind:key="element.elementKey")
-            ehr-dialog-form-element(:inputs="inputs", :element="element", :ehrHelp="ehrHelp", isDialogElement=true)
+            ehr-dialog-form-element(:inputs="inputs", :element="element", :ehrHelp="ehrHelp", :dialogTableKey="tableKey")
       span(slot="save-button") Create and close
 </template>
 
@@ -29,7 +29,6 @@ export default {
     }
   },
   props: {
-    pageDataKey: { type: String },
     ehrHelp: { type: Object },
     tableDef: { type: Object },
     inputs: { type: Object },
@@ -38,6 +37,9 @@ export default {
   computed: {
     tableKey () {
       return this.tableDef.tableKey
+    },
+    pageDataKey () {
+      return this.ehrHelp.getPageKey()
     },
     hasNameProfRow () {
       // Does the first row in the dialog fit the Name, Profession,.... pattern ...
@@ -65,10 +67,10 @@ export default {
       // return element.inputType + ' ' + element.elementKey
     },
     cancelDialog: function () {
-      this.ehrHelp.cancelDialog(this.tableKey)
+      this.ehrHelp.cancelDialog()
     },
     saveDialog: function () {
-      this.ehrHelp.saveDialog(this.pageDataKey, this.tableKey)
+      this.ehrHelp.saveDialog()
     },
     receiveShowHideEvent (eData) {
       // console.log('EhrDialogForm rcv show hide', this.inputs)
@@ -81,6 +83,7 @@ export default {
   },
   mounted: function () {
     const _this = this
+    console.log('mount dialog', this.pageDataKey)
     let ch = this.ehrHelp.getDialogEventChannel(this.tableKey)
     // console.log('EhrDialogForm add listener', ch)
     this.eventHandler = function (eData) {

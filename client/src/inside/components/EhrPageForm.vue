@@ -24,13 +24,15 @@ export default {
     }
   },
   props: {
-    pageDataKey: { type: String },
     ehrHelp: { type: Object }
   },
   computed: {
+    pageDataKey () {
+      return this.ehrHelp.getPageKey()
+    },
     formDefs () {
       let pageDef = getPageDefinition(this.pageDataKey)
-      return pageDef.page_form
+      return pageDef.pageForm
     },
     showEditControls () {
       return this.ehrHelp.showEditControls()

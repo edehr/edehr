@@ -1,5 +1,5 @@
 
-import { getPageDefinition } from './ehr-defs'
+import { getTableCellsByTableKey } from './ehr-defs'
 import PeriodDefs from '../inside/components/mar/period-defs'
 
 export const ESK_Medications = 'Discharge medication orders'
@@ -134,26 +134,21 @@ export default class EhrSummaryHelp {
     // console.log('EhrSummaryHelp summaryKey', summaryKey, def)
     summary.pageKey = def.pageKey
     summary.tableKey = def.tableKey
-    let pageDef = getPageDefinition(def.pageKey)
-    let tables = pageDef.tables
-    let table = tables.find( tbl => { return tbl.tableKey === def.tableKey })
-    let tableCells = table.tableCells
+    let tCells = getTableCellsByTableKey(def.pageKey, def.tableKey)
     let tableColumns = []
     def.columnKeys.forEach( key => {
-      let cell = tableCells.find( c => c.elementKey === key)
+      let cell = tCells.find( c => c.elementKey === key)
       if (cell) {
         cell = {label: cell.label, inputType: cell.inputType, elementKey: cell.elementKey}
         tableColumns.push(cell)
       }
     })
     summary.tableColumns = tableColumns
-    // console.log('EhrSummaryHelp tableColumns', tableColumns, tableCells)
 
     let pageData = ehrHelp.getAsLoadedPageData(def.pageKey)
-    let tableData = pageData[def.tableKey]
+    let tableData = pageData[def.tableKey] || []
     tableData = tableData.filter( data => { return def.filter(data)} )
     tableData = tableData.map( data => {
-      // console.log('EhrSummaryHelp tableData: data ', data, tableCells)
       let result = {}
       def.columnKeys.forEach( key => {
         result[key] = def.customGetters[key] ? def.customGetters[key](key, data) : data[key]

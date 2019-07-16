@@ -19,7 +19,8 @@ export default function () {
           label: "text w def",
           defaultValue: "default content",
           elementKey: "ptext",
-          fqn: "testPage.ptext"
+          fqn: "testPage.ptext",
+          suffix: "lb"
         },
         {
           label: "checkbox",
@@ -40,18 +41,42 @@ export default function () {
         {
           label: "assetLink",
           elementKey: "passetLink",
-          fqn: "testPage.passetLink"
+          fqn: "testPage.passetLink",
+          assetBase: "standardized-assessment-tools",
+          assetName: "the-canadian-ed-triage-and-acuity-scale.gif"
         },
         {
           label: "select",
           elementKey: "pselect",
           fqn: "testPage.pselect",
+          options: [
+            {
+              text: "1=a"
+            },
+            {
+              text: "2=b"
+            },
+            {
+              text: "3=c"
+            }
+          ],
           passToFunction: "p-cValue1"
         },
         {
           label: "select",
           elementKey: "pselect2",
           fqn: "testPage.pselect2",
+          options: [
+            {
+              text: "1=a"
+            },
+            {
+              text: "2=b"
+            },
+            {
+              text: "3=c"
+            }
+          ],
           passToFunction: "p-cValue1"
         },
         {
@@ -65,7 +90,21 @@ export default function () {
           label: "checkset",
           defaultValue: "check1,all",
           elementKey: "pcheckset",
-          fqn: "testPage.pcheckset"
+          fqn: "testPage.pcheckset",
+          options: [
+            {
+              text: "check1=check option 1"
+            },
+            {
+              text: "check2=check option 2"
+            },
+            {
+              text: "other=another option"
+            },
+            {
+              text: "all=all options are selectable"
+            }
+          ]
         },
         {
           label: "textarea",
@@ -75,7 +114,8 @@ export default function () {
         {
           label: "text",
           elementKey: "ptext1",
-          fqn: "testPage.pfieldset1.ptext1"
+          fqn: "testPage.pfieldset1.ptext1",
+          formOption: "hideLabel"
         },
         {
           label: "textarea",
@@ -86,6 +126,14 @@ export default function () {
           label: "select",
           elementKey: "pselect1",
           fqn: "testPage.pfieldset1.pselect1",
+          options: [
+            {
+              text: "1 = Yes"
+            },
+            {
+              text: "2 = No"
+            }
+          ],
           passToFunction: "p-cValue2"
         },
         {
@@ -117,7 +165,9 @@ export default function () {
         {
           label: "assetLink",
           elementKey: "passetLink2",
-          fqn: "testPage.pfieldset2.passetLink2"
+          fqn: "testPage.pfieldset2.passetLink2",
+          assetBase: "standardized-assessment-tools",
+          assetName: "the-canadian-ed-triage-and-acuity-scale.gif"
         },
         {
           label: "date",
@@ -125,42 +175,36 @@ export default function () {
           fqn: "testPage.pfieldset2.pdate2"
         }
       ],
-      generated: "2019-06-27T16:03:34-07:00",
+      generated: "2019-07-15T17:54:53-07:00",
       hasForm: true,
-      page_form: {
+      pageForm: {
         rows: [
           {
             formRow: "1",
             elements: [
               {
-                label: "<b>a form <i>label</i></b>",
-                pageDataKey: "testPage",
                 elementKey: "pform_label",
+                label: "<b>a form <i>label</i></b>",
                 inputType: "form_label",
                 formRow: "1",
                 formColumn: "1",
-                dataParent: "testPage",
-                fqn: "testPage.pform_label"
+                dataParent: "testPage"
               },
               {
-                label: "spacer",
-                pageDataKey: "testPage",
                 elementKey: "pspacer",
+                label: "spacer",
                 inputType: "spacer",
                 formRow: "1",
                 formColumn: "2",
-                dataParent: "testPage",
-                fqn: "testPage.pspacer"
+                dataParent: "testPage"
               },
               {
-                label: "text w def",
-                pageDataKey: "testPage",
                 elementKey: "ptext",
+                label: "text w def",
                 inputType: "text",
                 formRow: "1",
                 formColumn: "3",
-                dataParent: "testPage",
-                fqn: "testPage.ptext"
+                dataParent: "testPage"
               }
             ]
           },
@@ -168,36 +212,28 @@ export default function () {
             formRow: "2",
             elements: [
               {
-                label: "checkbox",
-                pageDataKey: "testPage",
                 elementKey: "pcheckbox",
+                label: "checkbox",
                 inputType: "checkbox",
                 formRow: "2",
                 formColumn: "1",
-                dataParent: "testPage",
-                fqn: "testPage.pcheckbox"
+                dataParent: "testPage"
               },
               {
-                label: "text",
-                pageDataKey: "testPage",
                 elementKey: "ptextpcheckbox",
+                label: "text",
                 inputType: "text",
                 formRow: "2",
                 formColumn: "2",
-                dataParent: "testPage",
-                fqn: "testPage.ptextpcheckbox"
+                dataParent: "testPage"
               },
               {
-                label: "assetLink",
-                pageDataKey: "testPage",
                 elementKey: "passetLink",
+                label: "assetLink",
                 inputType: "assetLink",
                 formRow: "2",
                 formColumn: "3",
-                assetBase: "standardized-assessment-tools",
-                assetName: "the-canadian-ed-triage-and-acuity-scale.gif",
-                dataParent: "testPage",
-                fqn: "testPage.passetLink"
+                dataParent: "testPage"
               }
             ]
           },
@@ -205,56 +241,28 @@ export default function () {
             formRow: "3",
             elements: [
               {
-                label: "select",
-                pageDataKey: "testPage",
                 elementKey: "pselect",
+                label: "select",
                 inputType: "select",
                 formRow: "3",
                 formColumn: "1",
-                options: [
-                  {
-                    text: "1=a"
-                  },
-                  {
-                    text: "2=b"
-                  },
-                  {
-                    text: "3=c"
-                  }
-                ],
-                dataParent: "testPage",
-                fqn: "testPage.pselect"
+                dataParent: "testPage"
               },
               {
-                label: "select",
-                pageDataKey: "testPage",
                 elementKey: "pselect2",
+                label: "select",
                 inputType: "select",
                 formRow: "3",
                 formColumn: "2",
-                options: [
-                  {
-                    text: "1=a"
-                  },
-                  {
-                    text: "2=b"
-                  },
-                  {
-                    text: "3=c"
-                  }
-                ],
-                dataParent: "testPage",
-                fqn: "testPage.pselect2"
+                dataParent: "testPage"
               },
               {
-                label: "calculatedValue",
-                pageDataKey: "testPage",
                 elementKey: "p-cValue1",
+                label: "calculatedValue",
                 inputType: "calculatedValue",
                 formRow: "3",
                 formColumn: "3",
-                dataParent: "testPage",
-                fqn: "testPage.p-cValue1"
+                dataParent: "testPage"
               }
             ]
           },
@@ -262,116 +270,31 @@ export default function () {
             formRow: "4",
             elements: [
               {
-                label: "checkset",
-                pageDataKey: "testPage",
                 elementKey: "pcheckset",
+                label: "checkset",
                 inputType: "checkset",
                 formRow: "4",
                 formColumn: "1",
-                options: [
-                  {
-                    text: "check1=check option 1"
-                  },
-                  {
-                    text: "check2=check option 2"
-                  },
-                  {
-                    text: "other=another option"
-                  },
-                  {
-                    text: "all=all options are selectable"
-                  }
-                ],
-                dataParent: "testPage",
-                fqn: "testPage.pcheckset"
+                dataParent: "testPage"
               },
               {
-                label: "fieldset",
-                pageDataKey: "testPage",
                 elementKey: "pfieldset1",
+                label: "fieldset",
                 inputType: "fieldset",
                 formRow: "4",
                 formColumn: "2",
                 dataParent: "testPage",
-                fqn: "testPage.pfieldset1",
-                elements: [
-                  {
-                    label: "text",
-                    pageDataKey: "testPage",
-                    level3Key: "pfieldset1",
-                    elementKey: "ptext1",
-                    inputType: "text",
-                    formOption: "hideLabel",
-                    fsetRow: "1",
-                    fsetCol: "1",
-                    dataParent: "testPage.pfieldset1",
-                    fqn: "testPage.pfieldset1.ptext1",
-                    formColumn: "1"
-                  },
-                  {
-                    label: "textarea",
-                    pageDataKey: "testPage",
-                    level3Key: "pfieldset1",
-                    elementKey: "ptextarea1",
-                    inputType: "textarea",
-                    fsetRow: "2",
-                    fsetCol: "1",
-                    dataParent: "testPage.pfieldset1",
-                    fqn: "testPage.pfieldset1.ptextarea1",
-                    formColumn: "1"
-                  },
-                  {
-                    label: "select",
-                    pageDataKey: "testPage",
-                    level3Key: "pfieldset1",
-                    elementKey: "pselect1",
-                    inputType: "select",
-                    fsetRow: "3",
-                    fsetCol: "1",
-                    options: [
-                      {
-                        text: "1 = Yes"
-                      },
-                      {
-                        text: "2 = No"
-                      }
-                    ],
-                    dataParent: "testPage.pfieldset1",
-                    fqn: "testPage.pfieldset1.pselect1",
-                    formColumn: "1"
-                  },
-                  {
-                    label: "calculatedValue",
-                    pageDataKey: "testPage",
-                    level3Key: "pfieldset1",
-                    elementKey: "p-cValue2",
-                    inputType: "calculatedValue",
-                    fsetRow: "4",
-                    fsetCol: "1",
-                    dataParent: "testPage.pfieldset1",
-                    fqn: "testPage.pfieldset1.p-cValue2",
-                    formColumn: "1"
-                  }
-                ],
-                containerType: "fieldset",
-                containerKey: "pfieldset1",
                 formFieldSet: {
                   rows: [
                     {
                       formRow: "1",
                       elements: [
                         {
-                          label: "text",
-                          pageDataKey: "testPage",
-                          level3Key: "pfieldset1",
                           elementKey: "ptext1",
+                          label: "text",
                           inputType: "text",
-                          formOption: "hideLabel",
                           fsetRow: "1",
-                          fsetCol: "1",
-                          dataParent: "testPage.pfieldset1",
-                          fqn: "testPage.pfieldset1.ptext1",
-                          formColumn: "1"
+                          dataParent: "testPage.pfieldset1"
                         }
                       ]
                     },
@@ -379,16 +302,11 @@ export default function () {
                       formRow: "2",
                       elements: [
                         {
-                          label: "textarea",
-                          pageDataKey: "testPage",
-                          level3Key: "pfieldset1",
                           elementKey: "ptextarea1",
+                          label: "textarea",
                           inputType: "textarea",
                           fsetRow: "2",
-                          fsetCol: "1",
-                          dataParent: "testPage.pfieldset1",
-                          fqn: "testPage.pfieldset1.ptextarea1",
-                          formColumn: "1"
+                          dataParent: "testPage.pfieldset1"
                         }
                       ]
                     },
@@ -396,24 +314,11 @@ export default function () {
                       formRow: "3",
                       elements: [
                         {
-                          label: "select",
-                          pageDataKey: "testPage",
-                          level3Key: "pfieldset1",
                           elementKey: "pselect1",
+                          label: "select",
                           inputType: "select",
                           fsetRow: "3",
-                          fsetCol: "1",
-                          options: [
-                            {
-                              text: "1 = Yes"
-                            },
-                            {
-                              text: "2 = No"
-                            }
-                          ],
-                          dataParent: "testPage.pfieldset1",
-                          fqn: "testPage.pfieldset1.pselect1",
-                          formColumn: "1"
+                          dataParent: "testPage.pfieldset1"
                         }
                       ]
                     },
@@ -421,16 +326,11 @@ export default function () {
                       formRow: "4",
                       elements: [
                         {
-                          label: "calculatedValue",
-                          pageDataKey: "testPage",
-                          level3Key: "pfieldset1",
                           elementKey: "p-cValue2",
+                          label: "calculatedValue",
                           inputType: "calculatedValue",
                           fsetRow: "4",
-                          fsetCol: "1",
-                          dataParent: "testPage.pfieldset1",
-                          fqn: "testPage.pfieldset1.p-cValue2",
-                          formColumn: "1"
+                          dataParent: "testPage.pfieldset1"
                         }
                       ]
                     }
@@ -439,108 +339,23 @@ export default function () {
                 }
               },
               {
-                label: "fieldset",
-                pageDataKey: "testPage",
                 elementKey: "pfieldset2",
+                label: "fieldset",
                 inputType: "fieldset",
                 formRow: "4",
                 formColumn: "3",
                 dataParent: "testPage",
-                fqn: "testPage.pfieldset2",
-                elements: [
-                  {
-                    label: "checkbox",
-                    pageDataKey: "testPage",
-                    level3Key: "pfieldset2",
-                    elementKey: "pcheckbox2",
-                    inputType: "checkbox",
-                    fsetRow: "1",
-                    fsetCol: "1",
-                    dataParent: "testPage.pfieldset2",
-                    fqn: "testPage.pfieldset2.pcheckbox2",
-                    formColumn: "1"
-                  },
-                  {
-                    label: "text",
-                    pageDataKey: "testPage",
-                    level3Key: "pfieldset2",
-                    elementKey: "ptext2",
-                    inputType: "text",
-                    fsetRow: "2",
-                    fsetCol: "1",
-                    dataParent: "testPage.pfieldset2",
-                    fqn: "testPage.pfieldset2.ptext2",
-                    formColumn: "1"
-                  },
-                  {
-                    label: "<b>a form <i>label</i></b>",
-                    pageDataKey: "testPage",
-                    level3Key: "pfieldset2",
-                    elementKey: "pform_label2",
-                    inputType: "form_label",
-                    fsetRow: "3",
-                    fsetCol: "1",
-                    dataParent: "testPage.pfieldset2",
-                    fqn: "testPage.pfieldset2.pform_label2",
-                    formColumn: "1"
-                  },
-                  {
-                    label: "spacer",
-                    pageDataKey: "testPage",
-                    level3Key: "pfieldset2",
-                    elementKey: "pspacer2",
-                    inputType: "spacer",
-                    fsetRow: "4",
-                    fsetCol: "1",
-                    dataParent: "testPage.pfieldset2",
-                    fqn: "testPage.pfieldset2.pspacer2",
-                    formColumn: "1"
-                  },
-                  {
-                    label: "assetLink",
-                    pageDataKey: "testPage",
-                    level3Key: "pfieldset2",
-                    elementKey: "passetLink2",
-                    inputType: "assetLink",
-                    fsetRow: "5",
-                    fsetCol: "1",
-                    assetBase: "standardized-assessment-tools",
-                    assetName: "the-canadian-ed-triage-and-acuity-scale.gif",
-                    dataParent: "testPage.pfieldset2",
-                    fqn: "testPage.pfieldset2.passetLink2",
-                    formColumn: "1"
-                  },
-                  {
-                    label: "date",
-                    pageDataKey: "testPage",
-                    level3Key: "pfieldset2",
-                    elementKey: "pdate2",
-                    inputType: "date",
-                    fsetRow: "6",
-                    fsetCol: "1",
-                    dataParent: "testPage.pfieldset2",
-                    fqn: "testPage.pfieldset2.pdate2",
-                    formColumn: "1"
-                  }
-                ],
-                containerType: "fieldset",
-                containerKey: "pfieldset2",
                 formFieldSet: {
                   rows: [
                     {
                       formRow: "1",
                       elements: [
                         {
-                          label: "checkbox",
-                          pageDataKey: "testPage",
-                          level3Key: "pfieldset2",
                           elementKey: "pcheckbox2",
+                          label: "checkbox",
                           inputType: "checkbox",
                           fsetRow: "1",
-                          fsetCol: "1",
-                          dataParent: "testPage.pfieldset2",
-                          fqn: "testPage.pfieldset2.pcheckbox2",
-                          formColumn: "1"
+                          dataParent: "testPage.pfieldset2"
                         }
                       ]
                     },
@@ -548,16 +363,11 @@ export default function () {
                       formRow: "2",
                       elements: [
                         {
-                          label: "text",
-                          pageDataKey: "testPage",
-                          level3Key: "pfieldset2",
                           elementKey: "ptext2",
+                          label: "text",
                           inputType: "text",
                           fsetRow: "2",
-                          fsetCol: "1",
-                          dataParent: "testPage.pfieldset2",
-                          fqn: "testPage.pfieldset2.ptext2",
-                          formColumn: "1"
+                          dataParent: "testPage.pfieldset2"
                         }
                       ]
                     },
@@ -565,16 +375,11 @@ export default function () {
                       formRow: "3",
                       elements: [
                         {
-                          label: "<b>a form <i>label</i></b>",
-                          pageDataKey: "testPage",
-                          level3Key: "pfieldset2",
                           elementKey: "pform_label2",
+                          label: "<b>a form <i>label</i></b>",
                           inputType: "form_label",
                           fsetRow: "3",
-                          fsetCol: "1",
-                          dataParent: "testPage.pfieldset2",
-                          fqn: "testPage.pfieldset2.pform_label2",
-                          formColumn: "1"
+                          dataParent: "testPage.pfieldset2"
                         }
                       ]
                     },
@@ -582,16 +387,11 @@ export default function () {
                       formRow: "4",
                       elements: [
                         {
-                          label: "spacer",
-                          pageDataKey: "testPage",
-                          level3Key: "pfieldset2",
                           elementKey: "pspacer2",
+                          label: "spacer",
                           inputType: "spacer",
                           fsetRow: "4",
-                          fsetCol: "1",
-                          dataParent: "testPage.pfieldset2",
-                          fqn: "testPage.pfieldset2.pspacer2",
-                          formColumn: "1"
+                          dataParent: "testPage.pfieldset2"
                         }
                       ]
                     },
@@ -599,18 +399,11 @@ export default function () {
                       formRow: "5",
                       elements: [
                         {
-                          label: "assetLink",
-                          pageDataKey: "testPage",
-                          level3Key: "pfieldset2",
                           elementKey: "passetLink2",
+                          label: "assetLink",
                           inputType: "assetLink",
                           fsetRow: "5",
-                          fsetCol: "1",
-                          assetBase: "standardized-assessment-tools",
-                          assetName: "the-canadian-ed-triage-and-acuity-scale.gif",
-                          dataParent: "testPage.pfieldset2",
-                          fqn: "testPage.pfieldset2.passetLink2",
-                          formColumn: "1"
+                          dataParent: "testPage.pfieldset2"
                         }
                       ]
                     },
@@ -618,16 +411,11 @@ export default function () {
                       formRow: "6",
                       elements: [
                         {
-                          label: "date",
-                          pageDataKey: "testPage",
-                          level3Key: "pfieldset2",
                           elementKey: "pdate2",
+                          label: "date",
                           inputType: "date",
                           fsetRow: "6",
-                          fsetCol: "1",
-                          dataParent: "testPage.pfieldset2",
-                          fqn: "testPage.pfieldset2.pdate2",
-                          formColumn: "1"
+                          dataParent: "testPage.pfieldset2"
                         }
                       ]
                     }
@@ -641,22 +429,19 @@ export default function () {
             formRow: "5",
             elements: [
               {
-                label: "textarea",
-                pageDataKey: "testPage",
                 elementKey: "ptextarea",
+                label: "textarea",
                 inputType: "textarea",
                 formRow: "5",
                 formColumn: "1",
                 formCss: "full-width",
-                dataParent: "testPage",
-                fqn: "testPage.ptextarea"
+                dataParent: "testPage"
               }
             ]
           }
         ],
         columnsCount: 3
-      },
-      pageData: {}
+      }
     },
     testTable: {
       pageTitle: "Test Table",
@@ -697,18 +482,42 @@ export default function () {
         {
           label: "assetLink",
           elementKey: "passetLink",
-          fqn: "testTable.table.passetLink"
+          fqn: "testTable.table.passetLink",
+          assetBase: "standardized-assessment-tools",
+          assetName: "the-canadian-ed-triage-and-acuity-scale.gif"
         },
         {
           label: "select",
           elementKey: "pselect",
           fqn: "testTable.table.pselect",
+          options: [
+            {
+              text: "1=a"
+            },
+            {
+              text: "2=b"
+            },
+            {
+              text: "3=c"
+            }
+          ],
           passToFunction: "p-cValue1"
         },
         {
           label: "select",
           elementKey: "pselect2",
           fqn: "testTable.table.pselect2",
+          options: [
+            {
+              text: "1=a"
+            },
+            {
+              text: "2=b"
+            },
+            {
+              text: "3=c"
+            }
+          ],
           passToFunction: "p-cValue1"
         },
         {
@@ -722,7 +531,21 @@ export default function () {
           label: "checkset",
           defaultValue: "check1,other",
           elementKey: "pcheckset",
-          fqn: "testTable.table.pcheckset"
+          fqn: "testTable.table.pcheckset",
+          options: [
+            {
+              text: "check1=check option 1"
+            },
+            {
+              text: "check2=check option 2"
+            },
+            {
+              text: "other=another option"
+            },
+            {
+              text: "all=all options are selectable"
+            }
+          ]
         },
         {
           label: "textarea",
@@ -732,7 +555,8 @@ export default function () {
         {
           label: "text",
           elementKey: "ptext1",
-          fqn: "testTable.table.pfieldset1.ptext1"
+          fqn: "testTable.table.pfieldset1.ptext1",
+          formOption: "hideLabel"
         },
         {
           label: "textarea",
@@ -743,6 +567,14 @@ export default function () {
           label: "select",
           elementKey: "pselect1",
           fqn: "testTable.table.pfieldset1.pselect1",
+          options: [
+            {
+              text: "1 = Yes"
+            },
+            {
+              text: "2 = No"
+            }
+          ],
           passToFunction: "p-cValue2"
         },
         {
@@ -774,375 +606,173 @@ export default function () {
         {
           label: "assetLink",
           elementKey: "passetLink2",
-          fqn: "testTable.table.pfieldset2.passetLink2"
+          fqn: "testTable.table.pfieldset2.passetLink2",
+          assetBase: "standardized-assessment-tools",
+          assetName: "the-canadian-ed-triage-and-acuity-scale.gif"
         },
         {
           label: "date",
           elementKey: "pdate2",
           fqn: "testTable.table.pfieldset2.pdate2"
+        },
+        {
+          label: "Entered by name",
+          elementKey: "name",
+          fqn: "testTable.stacked.name"
+        },
+        {
+          label: "Entered by profession",
+          elementKey: "profession",
+          fqn: "testTable.stacked.profession"
+        },
+        {
+          label: "Entered on day",
+          elementKey: "day",
+          fqn: "testTable.stacked.day"
+        },
+        {
+          label: "Entered at time",
+          elementKey: "time",
+          fqn: "testTable.stacked.time"
+        },
+        {
+          label: "Referral name",
+          elementKey: "referralName",
+          fqn: "testTable.stacked.referralName"
+        },
+        {
+          label: "Referral profession",
+          elementKey: "referralProfession",
+          fqn: "testTable.stacked.referralProfession"
+        },
+        {
+          label: "Appointment date",
+          elementKey: "appointmentDate",
+          fqn: "testTable.stacked.appointmentDate"
+        },
+        {
+          label: "Appointment time",
+          elementKey: "appointmentTime",
+          fqn: "testTable.stacked.appointmentTime"
+        },
+        {
+          label: "Status",
+          elementKey: "status",
+          fqn: "testTable.stacked.status",
+          options: [
+            {
+              text: "Active"
+            },
+            {
+              text: "Discharged"
+            }
+          ]
         }
       ],
-      generated: "2019-06-27T16:03:34-07:00",
+      generated: "2019-07-15T17:54:53-07:00",
       hasTable: true,
       tables: [
         {
+          pageDataKey: "testTable",
           tableKey: "table",
           label: "table",
           addButtonText: "Add a row",
           tableCells: [
             {
-              label: "<b>a form <i>label</i></b>",
-              pageDataKey: "testTable",
-              level2Key: "table",
-              elementKey: "pform_label",
-              inputType: "form_label",
-              formRow: "1",
-              formColumn: "1",
-              dataParent: "testTable.table",
-              fqn: "testTable.table.pform_label",
-              tableKey: "table"
-            },
-            {
-              label: "fieldset",
-              pageDataKey: "testTable",
-              level2Key: "table",
-              elementKey: "pfieldset2",
-              inputType: "fieldset",
-              formRow: "4",
-              formColumn: "3",
-              dataParent: "testTable.table",
-              fqn: "testTable.table.pfieldset2",
-              containerType: "fieldset",
-              containerKey: "pfieldset2",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
-              label: "text w def",
-              pageDataKey: "testTable",
-              level2Key: "table",
-              elementKey: "ptext",
-              inputType: "text",
-              formRow: "1",
-              formColumn: "3",
-              dataParent: "testTable.table",
-              fqn: "testTable.table.ptext",
-              tableKey: "table"
-            },
-            {
-              label: "checkbox",
-              pageDataKey: "testTable",
-              level2Key: "table",
               elementKey: "pcheckbox",
-              inputType: "checkbox",
-              formRow: "2",
-              formColumn: "1",
-              dataParent: "testTable.table",
-              fqn: "testTable.table.pcheckbox",
-              tableKey: "table"
-            },
-            {
-              label: "text",
-              pageDataKey: "testTable",
-              level2Key: "table",
-              elementKey: "ptextpcheckbox",
-              inputType: "text",
-              formRow: "2",
-              formColumn: "2",
-              dataParent: "testTable.table",
-              fqn: "testTable.table.ptextpcheckbox",
-              tableKey: "table"
-            },
-            {
-              label: "assetLink",
-              pageDataKey: "testTable",
-              level2Key: "table",
-              elementKey: "passetLink",
-              inputType: "assetLink",
-              formRow: "2",
-              formColumn: "3",
-              assetBase: "standardized-assessment-tools",
-              assetName: "the-canadian-ed-triage-and-acuity-scale.gif",
-              dataParent: "testTable.table",
-              fqn: "testTable.table.passetLink",
-              tableKey: "table"
-            },
-            {
-              label: "select",
-              pageDataKey: "testTable",
-              level2Key: "table",
-              elementKey: "pselect",
-              inputType: "select",
-              formRow: "3",
-              formColumn: "1",
-              options: [
-                {
-                  text: "1=a"
-                },
-                {
-                  text: "2=b"
-                },
-                {
-                  text: "3=c"
-                }
-              ],
-              dataParent: "testTable.table",
-              fqn: "testTable.table.pselect",
-              tableKey: "table"
-            },
-            {
-              label: "select",
-              pageDataKey: "testTable",
-              level2Key: "table",
-              elementKey: "pselect2",
-              inputType: "select",
-              formRow: "3",
-              formColumn: "2",
-              options: [
-                {
-                  text: "1=a"
-                },
-                {
-                  text: "2=b"
-                },
-                {
-                  text: "3=c"
-                }
-              ],
-              dataParent: "testTable.table",
-              fqn: "testTable.table.pselect2",
-              tableKey: "table"
-            },
-            {
-              label: "calculatedValue",
-              pageDataKey: "testTable",
-              level2Key: "table",
-              elementKey: "p-cValue1",
-              inputType: "calculatedValue",
-              formRow: "3",
-              formColumn: "3",
-              dataParent: "testTable.table",
-              fqn: "testTable.table.p-cValue1",
-              tableKey: "table"
-            },
-            {
-              label: "checkset",
-              pageDataKey: "testTable",
-              level2Key: "table",
-              elementKey: "pcheckset",
-              inputType: "checkset",
-              formRow: "4",
-              formColumn: "1",
-              options: [
-                {
-                  text: "check1=check option 1"
-                },
-                {
-                  text: "check2=check option 2"
-                },
-                {
-                  text: "other=another option"
-                },
-                {
-                  text: "all=all options are selectable"
-                }
-              ],
-              dataParent: "testTable.table",
-              fqn: "testTable.table.pcheckset",
-              tableKey: "table"
-            },
-            {
-              label: "textarea",
-              pageDataKey: "testTable",
-              level2Key: "table",
-              elementKey: "ptextarea",
-              inputType: "textarea",
-              formRow: "5",
-              formColumn: "1",
-              formCss: "full-width",
-              dataParent: "testTable.table",
-              fqn: "testTable.table.ptextarea",
-              tableKey: "table"
-            },
-            {
-              label: "spacer",
-              pageDataKey: "testTable",
-              level2Key: "table",
-              elementKey: "pspacer",
-              inputType: "spacer",
-              formRow: "1",
-              formColumn: "2",
-              dataParent: "testTable.table",
-              fqn: "testTable.table.pspacer",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
-              label: "textarea",
-              pageDataKey: "testTable",
-              level2Key: "table",
-              level3Key: "pfieldset1",
-              elementKey: "ptextarea1",
-              inputType: "textarea",
-              fsetRow: "2",
-              fsetCol: "1",
-              dataParent: "testTable.table.pfieldset1",
-              fqn: "testTable.table.pfieldset1.ptextarea1",
-              tableKey: "table",
-              formColumn: "1"
-            },
-            {
-              label: "select",
-              pageDataKey: "testTable",
-              level2Key: "table",
-              level3Key: "pfieldset1",
-              elementKey: "pselect1",
-              inputType: "select",
-              fsetRow: "3",
-              fsetCol: "1",
-              options: [
-                {
-                  text: "1 = Yes"
-                },
-                {
-                  text: "2 = No"
-                }
-              ],
-              dataParent: "testTable.table.pfieldset1",
-              fqn: "testTable.table.pfieldset1.pselect1",
-              tableKey: "table",
-              formColumn: "1"
-            },
-            {
-              label: "calculatedValue",
-              pageDataKey: "testTable",
-              level2Key: "table",
-              level3Key: "pfieldset1",
-              elementKey: "p-cValue2",
-              inputType: "calculatedValue",
-              fsetRow: "4",
-              fsetCol: "1",
-              dataParent: "testTable.table.pfieldset1",
-              fqn: "testTable.table.pfieldset1.p-cValue2",
-              tableKey: "table",
-              formColumn: "1"
-            },
-            {
-              label: "fieldset",
-              pageDataKey: "testTable",
-              level2Key: "table",
-              elementKey: "pfieldset1",
-              inputType: "fieldset",
-              formRow: "4",
-              formColumn: "2",
-              dataParent: "testTable.table",
-              fqn: "testTable.table.pfieldset1",
-              containerType: "fieldset",
-              containerKey: "pfieldset1",
-              tableCss: "hide-table-element",
-              tableKey: "table"
-            },
-            {
               label: "checkbox",
-              pageDataKey: "testTable",
-              level2Key: "table",
-              level3Key: "pfieldset2",
-              elementKey: "pcheckbox2",
-              inputType: "checkbox",
-              fsetRow: "1",
-              fsetCol: "1",
-              dataParent: "testTable.table.pfieldset2",
-              fqn: "testTable.table.pfieldset2.pcheckbox2",
-              tableKey: "table",
-              formColumn: "1"
+              tableColumn: "1",
+              inputType: "checkbox"
             },
             {
+              elementKey: "ptext",
+              label: "text w def",
+              tableColumn: "2",
+              inputType: "text"
+            },
+            {
+              elementKey: "ptextpcheckbox",
               label: "text",
-              pageDataKey: "testTable",
-              level2Key: "table",
-              level3Key: "pfieldset2",
-              elementKey: "ptext2",
-              inputType: "text",
-              fsetRow: "2",
-              fsetCol: "1",
-              dataParent: "testTable.table.pfieldset2",
-              fqn: "testTable.table.pfieldset2.ptext2",
-              tableKey: "table",
-              formColumn: "1"
+              tableColumn: "3",
+              inputType: "text"
             },
             {
-              label: "<b>a form <i>label</i></b>",
-              pageDataKey: "testTable",
-              level2Key: "table",
-              level3Key: "pfieldset2",
-              elementKey: "pform_label2",
-              inputType: "form_label",
-              fsetRow: "3",
-              fsetCol: "1",
-              dataParent: "testTable.table.pfieldset2",
-              fqn: "testTable.table.pfieldset2.pform_label2",
-              tableKey: "table",
-              formColumn: "1"
+              elementKey: "pselect",
+              label: "select",
+              tableColumn: "4",
+              inputType: "select"
             },
             {
-              label: "spacer",
-              pageDataKey: "testTable",
-              level2Key: "table",
-              level3Key: "pfieldset2",
-              elementKey: "pspacer2",
-              inputType: "spacer",
-              fsetRow: "4",
-              fsetCol: "1",
-              dataParent: "testTable.table.pfieldset2",
-              fqn: "testTable.table.pfieldset2.pspacer2",
-              tableCss: "hide-table-element",
-              tableKey: "table",
-              formColumn: "1"
+              elementKey: "pselect2",
+              label: "select",
+              tableColumn: "4",
+              inputType: "select"
             },
             {
-              label: "assetLink",
-              pageDataKey: "testTable",
-              level2Key: "table",
-              level3Key: "pfieldset2",
-              elementKey: "passetLink2",
-              inputType: "assetLink",
-              fsetRow: "5",
-              fsetCol: "1",
-              assetBase: "standardized-assessment-tools",
-              assetName: "the-canadian-ed-triage-and-acuity-scale.gif",
-              dataParent: "testTable.table.pfieldset2",
-              fqn: "testTable.table.pfieldset2.passetLink2",
-              tableKey: "table",
-              formColumn: "1"
+              elementKey: "p-cValue1",
+              label: "calculatedValue",
+              tableColumn: "4",
+              inputType: "calculatedValue"
             },
             {
-              label: "date",
-              pageDataKey: "testTable",
-              level2Key: "table",
-              level3Key: "pfieldset2",
-              elementKey: "pdate2",
-              inputType: "date",
-              fsetRow: "6",
-              fsetCol: "1",
-              dataParent: "testTable.table.pfieldset2",
-              fqn: "testTable.table.pfieldset2.pdate2",
-              tableKey: "table",
-              formColumn: "1"
+              elementKey: "pcheckset",
+              label: "checkset",
+              tableColumn: "5",
+              inputType: "checkset"
             },
             {
-              label: "text",
-              pageDataKey: "testTable",
-              level2Key: "table",
-              level3Key: "pfieldset1",
+              elementKey: "ptextarea",
+              label: "textarea",
+              tableColumn: "6",
+              inputType: "textarea"
+            },
+            {
               elementKey: "ptext1",
-              inputType: "text",
-              formOption: "hideLabel",
-              fsetRow: "1",
-              fsetCol: "1",
-              dataParent: "testTable.table.pfieldset1",
-              fqn: "testTable.table.pfieldset1.ptext1",
-              tableKey: "table",
-              formColumn: "1"
+              label: "text",
+              tableColumn: "7",
+              inputType: "text"
+            },
+            {
+              elementKey: "ptextarea1",
+              label: "textarea",
+              tableColumn: "8",
+              inputType: "textarea"
+            },
+            {
+              elementKey: "pselect1",
+              label: "select",
+              tableColumn: "9",
+              inputType: "select"
+            },
+            {
+              elementKey: "p-cValue2",
+              label: "calculatedValue",
+              tableColumn: "10",
+              inputType: "calculatedValue"
+            },
+            {
+              elementKey: "pcheckbox2",
+              label: "checkbox",
+              tableColumn: "11",
+              inputType: "checkbox"
+            },
+            {
+              elementKey: "ptext2",
+              label: "text",
+              tableColumn: "12",
+              inputType: "text"
+            },
+            {
+              elementKey: "pform_label2",
+              label: "<b>a form <i>label</i></b>",
+              tableColumn: "13",
+              inputType: "form_label"
+            },
+            {
+              elementKey: "pdate2",
+              label: "date",
+              tableColumn: "14",
+              inputType: "date"
             }
           ],
           tableForm: {
@@ -1151,40 +781,30 @@ export default function () {
                 formRow: "1",
                 elements: [
                   {
-                    label: "<b>a form <i>label</i></b>",
-                    pageDataKey: "testTable",
-                    level2Key: "table",
                     elementKey: "pform_label",
+                    label: "<b>a form <i>label</i></b>",
                     inputType: "form_label",
                     formRow: "1",
                     formColumn: "1",
                     dataParent: "testTable.table",
-                    fqn: "testTable.table.pform_label",
                     tableKey: "table"
                   },
                   {
-                    label: "spacer",
-                    pageDataKey: "testTable",
-                    level2Key: "table",
                     elementKey: "pspacer",
+                    label: "spacer",
                     inputType: "spacer",
                     formRow: "1",
                     formColumn: "2",
                     dataParent: "testTable.table",
-                    fqn: "testTable.table.pspacer",
-                    tableCss: "hide-table-element",
                     tableKey: "table"
                   },
                   {
-                    label: "text w def",
-                    pageDataKey: "testTable",
-                    level2Key: "table",
                     elementKey: "ptext",
+                    label: "text w def",
                     inputType: "text",
                     formRow: "1",
                     formColumn: "3",
                     dataParent: "testTable.table",
-                    fqn: "testTable.table.ptext",
                     tableKey: "table"
                   }
                 ]
@@ -1193,41 +813,30 @@ export default function () {
                 formRow: "2",
                 elements: [
                   {
-                    label: "checkbox",
-                    pageDataKey: "testTable",
-                    level2Key: "table",
                     elementKey: "pcheckbox",
+                    label: "checkbox",
                     inputType: "checkbox",
                     formRow: "2",
                     formColumn: "1",
                     dataParent: "testTable.table",
-                    fqn: "testTable.table.pcheckbox",
                     tableKey: "table"
                   },
                   {
-                    label: "text",
-                    pageDataKey: "testTable",
-                    level2Key: "table",
                     elementKey: "ptextpcheckbox",
+                    label: "text",
                     inputType: "text",
                     formRow: "2",
                     formColumn: "2",
                     dataParent: "testTable.table",
-                    fqn: "testTable.table.ptextpcheckbox",
                     tableKey: "table"
                   },
                   {
-                    label: "assetLink",
-                    pageDataKey: "testTable",
-                    level2Key: "table",
                     elementKey: "passetLink",
+                    label: "assetLink",
                     inputType: "assetLink",
                     formRow: "2",
                     formColumn: "3",
-                    assetBase: "standardized-assessment-tools",
-                    assetName: "the-canadian-ed-triage-and-acuity-scale.gif",
                     dataParent: "testTable.table",
-                    fqn: "testTable.table.passetLink",
                     tableKey: "table"
                   }
                 ]
@@ -1236,61 +845,30 @@ export default function () {
                 formRow: "3",
                 elements: [
                   {
-                    label: "select",
-                    pageDataKey: "testTable",
-                    level2Key: "table",
                     elementKey: "pselect",
+                    label: "select",
                     inputType: "select",
                     formRow: "3",
                     formColumn: "1",
-                    options: [
-                      {
-                        text: "1=a"
-                      },
-                      {
-                        text: "2=b"
-                      },
-                      {
-                        text: "3=c"
-                      }
-                    ],
                     dataParent: "testTable.table",
-                    fqn: "testTable.table.pselect",
                     tableKey: "table"
                   },
                   {
-                    label: "select",
-                    pageDataKey: "testTable",
-                    level2Key: "table",
                     elementKey: "pselect2",
+                    label: "select",
                     inputType: "select",
                     formRow: "3",
                     formColumn: "2",
-                    options: [
-                      {
-                        text: "1=a"
-                      },
-                      {
-                        text: "2=b"
-                      },
-                      {
-                        text: "3=c"
-                      }
-                    ],
                     dataParent: "testTable.table",
-                    fqn: "testTable.table.pselect2",
                     tableKey: "table"
                   },
                   {
-                    label: "calculatedValue",
-                    pageDataKey: "testTable",
-                    level2Key: "table",
                     elementKey: "p-cValue1",
+                    label: "calculatedValue",
                     inputType: "calculatedValue",
                     formRow: "3",
                     formColumn: "3",
                     dataParent: "testTable.table",
-                    fqn: "testTable.table.p-cValue1",
                     tableKey: "table"
                   }
                 ]
@@ -1299,44 +877,21 @@ export default function () {
                 formRow: "4",
                 elements: [
                   {
-                    label: "checkset",
-                    pageDataKey: "testTable",
-                    level2Key: "table",
                     elementKey: "pcheckset",
+                    label: "checkset",
                     inputType: "checkset",
                     formRow: "4",
                     formColumn: "1",
-                    options: [
-                      {
-                        text: "check1=check option 1"
-                      },
-                      {
-                        text: "check2=check option 2"
-                      },
-                      {
-                        text: "other=another option"
-                      },
-                      {
-                        text: "all=all options are selectable"
-                      }
-                    ],
                     dataParent: "testTable.table",
-                    fqn: "testTable.table.pcheckset",
                     tableKey: "table"
                   },
                   {
-                    label: "fieldset",
-                    pageDataKey: "testTable",
-                    level2Key: "table",
                     elementKey: "pfieldset1",
+                    label: "fieldset",
                     inputType: "fieldset",
                     formRow: "4",
                     formColumn: "2",
                     dataParent: "testTable.table",
-                    fqn: "testTable.table.pfieldset1",
-                    containerType: "fieldset",
-                    containerKey: "pfieldset1",
-                    tableCss: "hide-table-element",
                     tableKey: "table",
                     formFieldSet: {
                       rows: [
@@ -1344,19 +899,12 @@ export default function () {
                           formRow: "1",
                           elements: [
                             {
-                              label: "text",
-                              pageDataKey: "testTable",
-                              level2Key: "table",
-                              level3Key: "pfieldset1",
                               elementKey: "ptext1",
+                              label: "text",
                               inputType: "text",
-                              formOption: "hideLabel",
                               fsetRow: "1",
-                              fsetCol: "1",
                               dataParent: "testTable.table.pfieldset1",
-                              fqn: "testTable.table.pfieldset1.ptext1",
-                              tableKey: "table",
-                              formColumn: "1"
+                              tableKey: "table"
                             }
                           ]
                         },
@@ -1364,18 +912,12 @@ export default function () {
                           formRow: "2",
                           elements: [
                             {
-                              label: "textarea",
-                              pageDataKey: "testTable",
-                              level2Key: "table",
-                              level3Key: "pfieldset1",
                               elementKey: "ptextarea1",
+                              label: "textarea",
                               inputType: "textarea",
                               fsetRow: "2",
-                              fsetCol: "1",
                               dataParent: "testTable.table.pfieldset1",
-                              fqn: "testTable.table.pfieldset1.ptextarea1",
-                              tableKey: "table",
-                              formColumn: "1"
+                              tableKey: "table"
                             }
                           ]
                         },
@@ -1383,26 +925,12 @@ export default function () {
                           formRow: "3",
                           elements: [
                             {
-                              label: "select",
-                              pageDataKey: "testTable",
-                              level2Key: "table",
-                              level3Key: "pfieldset1",
                               elementKey: "pselect1",
+                              label: "select",
                               inputType: "select",
                               fsetRow: "3",
-                              fsetCol: "1",
-                              options: [
-                                {
-                                  text: "1 = Yes"
-                                },
-                                {
-                                  text: "2 = No"
-                                }
-                              ],
                               dataParent: "testTable.table.pfieldset1",
-                              fqn: "testTable.table.pfieldset1.pselect1",
-                              tableKey: "table",
-                              formColumn: "1"
+                              tableKey: "table"
                             }
                           ]
                         },
@@ -1410,18 +938,12 @@ export default function () {
                           formRow: "4",
                           elements: [
                             {
-                              label: "calculatedValue",
-                              pageDataKey: "testTable",
-                              level2Key: "table",
-                              level3Key: "pfieldset1",
                               elementKey: "p-cValue2",
+                              label: "calculatedValue",
                               inputType: "calculatedValue",
                               fsetRow: "4",
-                              fsetCol: "1",
                               dataParent: "testTable.table.pfieldset1",
-                              fqn: "testTable.table.pfieldset1.p-cValue2",
-                              tableKey: "table",
-                              formColumn: "1"
+                              tableKey: "table"
                             }
                           ]
                         }
@@ -1430,18 +952,12 @@ export default function () {
                     }
                   },
                   {
-                    label: "fieldset",
-                    pageDataKey: "testTable",
-                    level2Key: "table",
                     elementKey: "pfieldset2",
+                    label: "fieldset",
                     inputType: "fieldset",
                     formRow: "4",
                     formColumn: "3",
                     dataParent: "testTable.table",
-                    fqn: "testTable.table.pfieldset2",
-                    containerType: "fieldset",
-                    containerKey: "pfieldset2",
-                    tableCss: "hide-table-element",
                     tableKey: "table",
                     formFieldSet: {
                       rows: [
@@ -1449,18 +965,12 @@ export default function () {
                           formRow: "1",
                           elements: [
                             {
-                              label: "checkbox",
-                              pageDataKey: "testTable",
-                              level2Key: "table",
-                              level3Key: "pfieldset2",
                               elementKey: "pcheckbox2",
+                              label: "checkbox",
                               inputType: "checkbox",
                               fsetRow: "1",
-                              fsetCol: "1",
                               dataParent: "testTable.table.pfieldset2",
-                              fqn: "testTable.table.pfieldset2.pcheckbox2",
-                              tableKey: "table",
-                              formColumn: "1"
+                              tableKey: "table"
                             }
                           ]
                         },
@@ -1468,18 +978,12 @@ export default function () {
                           formRow: "2",
                           elements: [
                             {
-                              label: "text",
-                              pageDataKey: "testTable",
-                              level2Key: "table",
-                              level3Key: "pfieldset2",
                               elementKey: "ptext2",
+                              label: "text",
                               inputType: "text",
                               fsetRow: "2",
-                              fsetCol: "1",
                               dataParent: "testTable.table.pfieldset2",
-                              fqn: "testTable.table.pfieldset2.ptext2",
-                              tableKey: "table",
-                              formColumn: "1"
+                              tableKey: "table"
                             }
                           ]
                         },
@@ -1487,18 +991,12 @@ export default function () {
                           formRow: "3",
                           elements: [
                             {
-                              label: "<b>a form <i>label</i></b>",
-                              pageDataKey: "testTable",
-                              level2Key: "table",
-                              level3Key: "pfieldset2",
                               elementKey: "pform_label2",
+                              label: "<b>a form <i>label</i></b>",
                               inputType: "form_label",
                               fsetRow: "3",
-                              fsetCol: "1",
                               dataParent: "testTable.table.pfieldset2",
-                              fqn: "testTable.table.pfieldset2.pform_label2",
-                              tableKey: "table",
-                              formColumn: "1"
+                              tableKey: "table"
                             }
                           ]
                         },
@@ -1506,19 +1004,12 @@ export default function () {
                           formRow: "4",
                           elements: [
                             {
-                              label: "spacer",
-                              pageDataKey: "testTable",
-                              level2Key: "table",
-                              level3Key: "pfieldset2",
                               elementKey: "pspacer2",
+                              label: "spacer",
                               inputType: "spacer",
                               fsetRow: "4",
-                              fsetCol: "1",
                               dataParent: "testTable.table.pfieldset2",
-                              fqn: "testTable.table.pfieldset2.pspacer2",
-                              tableCss: "hide-table-element",
-                              tableKey: "table",
-                              formColumn: "1"
+                              tableKey: "table"
                             }
                           ]
                         },
@@ -1526,20 +1017,12 @@ export default function () {
                           formRow: "5",
                           elements: [
                             {
-                              label: "assetLink",
-                              pageDataKey: "testTable",
-                              level2Key: "table",
-                              level3Key: "pfieldset2",
                               elementKey: "passetLink2",
+                              label: "assetLink",
                               inputType: "assetLink",
                               fsetRow: "5",
-                              fsetCol: "1",
-                              assetBase: "standardized-assessment-tools",
-                              assetName: "the-canadian-ed-triage-and-acuity-scale.gif",
                               dataParent: "testTable.table.pfieldset2",
-                              fqn: "testTable.table.pfieldset2.passetLink2",
-                              tableKey: "table",
-                              formColumn: "1"
+                              tableKey: "table"
                             }
                           ]
                         },
@@ -1547,18 +1030,12 @@ export default function () {
                           formRow: "6",
                           elements: [
                             {
-                              label: "date",
-                              pageDataKey: "testTable",
-                              level2Key: "table",
-                              level3Key: "pfieldset2",
                               elementKey: "pdate2",
+                              label: "date",
                               inputType: "date",
                               fsetRow: "6",
-                              fsetCol: "1",
                               dataParent: "testTable.table.pfieldset2",
-                              fqn: "testTable.table.pfieldset2.pdate2",
-                              tableKey: "table",
-                              formColumn: "1"
+                              tableKey: "table"
                             }
                           ]
                         }
@@ -1572,16 +1049,13 @@ export default function () {
                 formRow: "5",
                 elements: [
                   {
-                    label: "textarea",
-                    pageDataKey: "testTable",
-                    level2Key: "table",
                     elementKey: "ptextarea",
+                    label: "textarea",
                     inputType: "textarea",
                     formRow: "5",
                     formColumn: "1",
                     formCss: "full-width",
                     dataParent: "testTable.table",
-                    fqn: "testTable.table.ptextarea",
                     tableKey: "table"
                   }
                 ]
@@ -1589,11 +1063,176 @@ export default function () {
             ],
             columnsCount: 3
           }
+        },
+        {
+          pageDataKey: "testTable",
+          tableKey: "stacked",
+          addButtonText: "Add a referral",
+          tableCells: [
+            {
+              elementKey: "name",
+              label: "Entered by name",
+              tableColumn: "1",
+              inputType: "text"
+            },
+            {
+              elementKey: "profession",
+              label: "Entered by profession",
+              tableColumn: "1",
+              inputType: "text"
+            },
+            {
+              elementKey: "day",
+              label: "Entered on day",
+              tableColumn: "2",
+              inputType: "day"
+            },
+            {
+              elementKey: "time",
+              label: "Entered at time",
+              tableColumn: "2",
+              tableCss: "hr-table",
+              inputType: "time"
+            },
+            {
+              elementKey: "referralName",
+              label: "Referral name",
+              tableColumn: "3",
+              inputType: "text"
+            },
+            {
+              elementKey: "referralProfession",
+              label: "Referral profession",
+              tableColumn: "3",
+              tableCss: "hr-table",
+              inputType: "text"
+            },
+            {
+              elementKey: "appointmentDate",
+              label: "Appointment date",
+              tableColumn: "4",
+              inputType: "date"
+            },
+            {
+              elementKey: "appointmentTime",
+              label: "Appointment time",
+              tableColumn: "4",
+              inputType: "time"
+            },
+            {
+              elementKey: "status",
+              label: "Status",
+              tableColumn: "5",
+              inputType: "select"
+            }
+          ],
+          tableForm: {
+            rows: [
+              {
+                formRow: "1",
+                elements: [
+                  {
+                    elementKey: "name",
+                    label: "Entered by name",
+                    inputType: "text",
+                    formRow: "1",
+                    formColumn: "1",
+                    formCss: "user_name",
+                    dataParent: "testTable.stacked",
+                    tableKey: "stacked"
+                  },
+                  {
+                    elementKey: "profession",
+                    label: "Entered by profession",
+                    inputType: "text",
+                    formRow: "1",
+                    formColumn: "2",
+                    formCss: "user_pro",
+                    dataParent: "testTable.stacked",
+                    tableKey: "stacked"
+                  },
+                  {
+                    elementKey: "day",
+                    label: "Entered on day",
+                    inputType: "day",
+                    formRow: "1",
+                    formColumn: "3",
+                    formCss: "user_day",
+                    dataParent: "testTable.stacked",
+                    tableKey: "stacked"
+                  },
+                  {
+                    elementKey: "time",
+                    label: "Entered at time",
+                    inputType: "time",
+                    formRow: "1",
+                    formColumn: "4",
+                    formCss: "user_time",
+                    dataParent: "testTable.stacked",
+                    tableKey: "stacked"
+                  }
+                ]
+              },
+              {
+                formRow: "2",
+                elements: [
+                  {
+                    elementKey: "referralName",
+                    label: "Referral name",
+                    inputType: "text",
+                    formRow: "2",
+                    formColumn: "1",
+                    dataParent: "testTable.stacked",
+                    tableKey: "stacked"
+                  },
+                  {
+                    elementKey: "referralProfession",
+                    label: "Referral profession",
+                    inputType: "text",
+                    formRow: "2",
+                    formColumn: "2",
+                    dataParent: "testTable.stacked",
+                    tableKey: "stacked"
+                  }
+                ]
+              },
+              {
+                formRow: "3",
+                elements: [
+                  {
+                    elementKey: "appointmentDate",
+                    label: "Appointment date",
+                    inputType: "date",
+                    formRow: "3",
+                    formColumn: "1",
+                    dataParent: "testTable.stacked",
+                    tableKey: "stacked"
+                  },
+                  {
+                    elementKey: "appointmentTime",
+                    label: "Appointment time",
+                    inputType: "time",
+                    formRow: "3",
+                    formColumn: "2",
+                    dataParent: "testTable.stacked",
+                    tableKey: "stacked"
+                  },
+                  {
+                    elementKey: "status",
+                    label: "Status",
+                    inputType: "select",
+                    formRow: "3",
+                    formColumn: "3",
+                    dataParent: "testTable.stacked",
+                    tableKey: "stacked"
+                  }
+                ]
+              }
+            ],
+            columnsCount: 4
+          }
         }
-      ],
-      pageData: {
-        table: []
-      }
+      ]
     }
   }
 }

@@ -5,7 +5,8 @@
     table(v-show="hasData")
       thead
         tr
-          th(v-for="column in tableColumns", :title="column.label") {{ column.label }}
+          th(v-for="column in tableColumns", :title="column.label")
+            span(v-html="column.label")
       tbody
         tr(v-for="rowData in tableData")
           td(v-for="column in tableColumns", :class="column.tableCss")

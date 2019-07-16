@@ -34,7 +34,7 @@
       div(class="select")
         select(v-bind:name="key", v-bind:disabled="disabled", v-model="inputVal")
           option(value="")
-          option(v-for="option in element.options", v-bind:value="option.text") {{ option.text}}
+          option(v-for="option in options", v-bind:value="option.text") {{ option.text}}
 
     div(v-if="inputType === 'checkbox'", class="checkbox_wrapper")
       label(v-if="showLabel", class="checkbox_label")
@@ -51,13 +51,13 @@
       h2(v-show="!!label", class="fieldset_label", v-html="label") &nbsp;
       div(v-for="row in element.formFieldSet.rows", :key="row.formRow" class="fieldset_row_row" )
         div(v-for="fmEl in row.elements", :key="fmEl.elementKey", class="fieldset_row_row_element" )
-          ehr-dialog-form-element(:notEditing="notEditing", :element="fmEl", :ehrHelp="ehrHelp", :inputs="inputs", :isPageElement="isPageElement", :isDialogElement="isDialogElement")
+          ehr-dialog-form-element(:notEditing="notEditing", :element="fmEl", :ehrHelp="ehrHelp", :inputs="inputs", :isPageElement="isPageElement", :dialogTableKey="dialogTableKey")
 
     div(v-if="inputType === 'calculatedValue'", class="computed_wrapper")
-      ehr-calculated-value(:inputs="inputs", :element="element")
+      ehr-calculated-value(:element="element", :ehrHelp="ehrHelp", :inputs="inputs", )
 
     div(v-if="inputType === 'checkset'", class="checkset_wrapper")
-      ehr-check-set(:element="element", :ehrHelp="ehrHelp", :inputs="inputs", v-bind:notEditing="notEditing", :isPageElement="isPageElement", :isDialogElement="isDialogElement")
+      ehr-check-set(:element="element", :ehrHelp="ehrHelp", :inputs="inputs", v-bind:notEditing="notEditing", :isPageElement="isPageElement", :dialogTableKey="dialogTableKey")
 
     div(style="display:none") cv {{computedInitialValue}} {{dependantOnValue}}
 

@@ -12,6 +12,7 @@ import { ehrCalculateProperty } from '../../../helpers/ehr-calcs'
 export default {
   name: 'EhrComputedNumber',
   props: {
+    ehrHelp: { type: Object },
     inputs: {type: Object}, // dialog values
     element: {type: Object} // cell definition
   },
@@ -23,7 +24,7 @@ export default {
   },
   methods: {
     receiveEvent (eData) {
-      let pageDataKey = this.element.pageDataKey
+      let pageDataKey = this.ehrHelp.getPageKey()
       let elementKey = this.element.elementKey
       let value = ehrCalculateProperty(pageDataKey, elementKey, this.inputs)
       // console.log('EhrComputedValue ', elementKey, value)
