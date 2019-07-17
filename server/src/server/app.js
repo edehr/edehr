@@ -3,6 +3,7 @@ import bodyParser from 'body-parser'
 import db from './db'
 import { apiMiddle, apiError } from './api.js'
 const debug = require('debug')('server')
+const helmet = require('helmet')
 
 export default class EhrApp {
   constructor () {
@@ -11,7 +12,8 @@ export default class EhrApp {
 
   setup (config) {
     let app = this.app
-    app.set('view engine', 'ejs')
+    app.use(helmet())
+    app.set('view engine', 'pug')
     app.use(bodyParser.urlencoded({ extended: false }))
     app.use(bodyParser.json())
     return db(config)
@@ -43,16 +45,17 @@ export default class EhrApp {
 
   static _fourOhFour (req, res) {
     let { url } = req
+    let status = 404
     var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl
     var env = process.env.NODE_ENV
     if (url.includes('favicon')) {
       debug('Another request for the favicon')
-      res.status(404).send('No favicon')
+      res.status(status).send('No favicon')
     } else {
       var msg = 'Could not find "' + fullUrl + '". Environment: ' + env
       debug(msg)
-      res.status(404)
-      res.render('error', {errMessage: msg})
+      res.status(status)
+      res.render('server-errors/error', {message: msg, status: status})
 
     }
   }

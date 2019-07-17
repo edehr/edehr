@@ -136,4 +136,21 @@ describe(`Make server calls on ${TYPE}`, function () {
       })
   })
 
+  it(`create ${NAME}`, function (done) {
+    let url = BASE
+    if(theSeedId) {
+      theData.seedDataId = theSeedId
+    }
+    request(app)
+      .post(url)
+      .send(theData)
+      .set('Content-Type', 'application/json')
+      .set('Accept', 'application/json')
+      .expect(200)
+      .end(function (err, res) {
+        // console.log('Creating a second assignment with the same external id should fail.', err, res.body)
+        should.exist(err, url)
+        done()
+      })
+  })
 })

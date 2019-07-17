@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import Role from './roles'
 import { ParameterError, AssignmentMismatchError, SystemError } from '../utils/errors'
+import { Text } from '../config/text'
 
 const debug = require('debug')('server')
 const CustomStrategy = require('passport-custom')
@@ -142,7 +143,7 @@ export default class LTIController {
             }
             let userId = ltiData['user_id']
             debug('strategyVerify find userId: ' + userId + ' consumer: ' + consumerKey)
-            _this._findCreateUser(userId, req.toolConsumer._id, ltiData).then(user => {
+            _this._findCreateUser(userId, req.toolConsumer, ltiData).then(user => {
               callback(null, user)
             })
           })
@@ -161,48 +162,38 @@ export default class LTIController {
       return false
     }
     if (!ltiData.resource_link_id) {
-      return invalid(
-        'EdEHR requires the LTI tool consumer to provide a resource link id: resource_link_id'
-      )
+      return invalid(Text.EdEHR_REQUIRES_RESOURCE)
     }
     if (!ltiData.user_id) {
-      return invalid('EdEHR requires the LTI tool consumer to provide a user\'s id: user_id.')
+      return invalid(Text.EdEHR_REQUIRES_USER)
     }
     if (!ltiVersions().includes(ltiData.lti_version)) {
-      return invalid(
-        'EdEHR requires the LTI tool consumer to use the LTI 1.0 or 1.1 specification.'
-      )
+      return invalid(Text.EdEHR_REQUIRES_LTI)
     }
     if (ltiData.lti_message_type !== LTI_BASIC) {
-      return invalid(
-        'EdEHR requires the LTI tool consumer to send a basic lti launch request. lti_message_type = ' + LTI_BASIC
-      )
+      return invalid(Text.EdEHR_REQUIRES_TYPE(LTI_BASIC))
     }
     let role = new Role(ltiData.roles)
     if (!role.isValid) {
-      return invalid(
-        'EdEHR requires the LTI tool consumer to provide the user\'s roles. And these must be one of student, faculty, instructor or staff. ' +
-          ltiData.roles
-      )
+      return invalid(Text.EdEHR_REQUIRES_ROLE)
     }
     if (!ltiData['oauth_consumer_key']) {
-      return invalid('Must provide consumer key')
+      return invalid(Text.EdEHR_REQUIRES_KEY)
     }
     if (!ltiData['context_id']) {
-      return invalid('EdEHR requires the LTI tool consumer to provide a resource context_id')
+      return invalid(Text.EdEHR_REQUIRES_CONTEXT)
     }
     if (!ltiData['custom_assignment']) {
-      let msg = 'EdEHR requires the LTI tool consumer to provide a custom assignment paramater named "custom_assignment"'
-      callback(_this._createAssignmentMismatchError(ltiData, msg))
+      callback(_this._createAssignmentMismatchError(ltiData, Text.EdEHR_REQUIRES_CUSTOM))
       return false
     }
     return true
   }
 
-  _findCreateUser (userId, toolConsumerId, ltiData) {
+  _findCreateUser (userId, toolConsumer, ltiData) {
     const _this = this
     return this.userController.findOne({
-      $and: [{ user_id: userId }, { toolConsumer: toolConsumerId }]
+      $and: [{ user_id: userId }, { toolConsumer: toolConsumer._id }]
     }).then((foundUser, r) => {
       if (foundUser) {
         debug('Found user ' + foundUser._id)
@@ -216,8 +207,9 @@ export default class LTIController {
         familyName: ltiData.lis_person_name_family,
         fullName: ltiData.lis_person_name_full,
         emailPrimary: ltiData.lis_person_contact_email_primary,
-        ltiData: [JSON.stringify(ltiData)],
-        toolConsumer: toolConsumerId
+        // ltiData: [JSON.stringify(ltiData)],
+        consumerKey: toolConsumer.oauth_consumer_key,
+        toolConsumer: toolConsumer._id
       }
       return _this.userController.create(user).then((newUser, r) => {
         // create returns a structure with the new user inside
@@ -263,12 +255,14 @@ export default class LTIController {
     let externalId = req.ltiData.custom_assignment
     req.externalId = externalId
     let role = new Role(req.ltiData.roles)
-    let toolConsumerId = req.toolConsumer._id
+    let toolConsumer = req.toolConsumer
+    let toolConsumerId = toolConsumer._id
+    console.log('in locat assignent with ', toolConsumerId)
     return this.assignmentController.locateAssignmentForStudent(externalId, toolConsumerId)
       .then(assignment => {
         if (!assignment) {
           if (role.isStudent) {
-            let msg = 'Could not locate assignment for ' + externalId + ' tool: ' + toolConsumerId
+            let msg = Text.EdEHR_ASSIGNMENT_MISMATCH(toolConsumer.oauth_consumer_key, toolConsumer._id, externalId)
             debug('locateAssignment ' + msg)
             throw this._createAssignmentMismatchError(req.ltiData, msg)
           }
@@ -277,7 +271,7 @@ export default class LTIController {
           // Get the default description for assignments from config.
           // The resource_link_description is used to describe the activity and using it for the
           // assignment too is confusing.
-          return _this.assignmentController.createAssignment(externalId, toolConsumerId, title)
+          return _this.assignmentController.createAssignment(externalId, toolConsumer, title)
         }
         return assignment
       })
@@ -316,26 +310,59 @@ export default class LTIController {
     }
   }
 
+  composeLtiNextUrl (req) {
+    const toolConsumer = req.toolConsumer
+    if (!req.visit) {
+      throw new SystemError(Text.EdEHR_MISSING_VISIT(toolConsumer.oauth_consumer_key, toolConsumer._id) )
+    }
+    let visit = req.visit
+    let port = req.get('port') ? ':' + req.get('port') : ''
+    let apiUrl = encodeURIComponent(req.protocol + '://' + req.get('host') + port + '/api')
+    let route = req.assignment.ehrRoutePath || '/ehr'
+
+    if (visit.isInstructor) {
+      debug('Route to instructor page ' + JSON.stringify(req.ltiData, null, 2))
+      route = '/instructor'
+    }
+    let url = this.config.clientUrl + route + '?visit=' + visit._id + '&apiUrl=' + apiUrl
+    if (req.errors.length > 0) {
+      let errs = req.errors.join('-')
+      url += '&error=' + errs
+    }
+    req.ltiNextUrl = url
+    return req
+  }
+
   _postLtiChain (req) {
     const _this = this
+    const db = true
     return Promise.resolve()
       .then(() => {
+        if (db) console.log('Do update tool')
         return _this.updateToolConsumer(req)
       })
       .then(() => {
+        if (db) console.log('Do updateOutcomeManagement')
         return _this.updateOutcomeManagement(req)
       })
       .then(() => {
+        if (db) console.log('Do locateAssignment')
         return _this.locateAssignment(req)
       })
       .then(() => {
+        if (db) console.log('Do update activity')
         return _this.updateActivity(req)
       })
       .then(() => {
+        if (db) console.log('Do updateVisit')
         return _this.updateVisit(req)
       })
-
+      .then(() => {
+        if (db) console.log('Do composeLtiNextUrl')
+        return _this.composeLtiNextUrl(req)
+      })
   }
+
   route () {
     const router = new Router()
     router.get('/', (req, res) => {
@@ -345,24 +372,8 @@ export default class LTIController {
       req.errors = []
       debug('have authenticated user. Now process the lti launch request')
       this._postLtiChain(req)
-        .then(() => {
-          if (!req.visit) {
-            throw new SystemError('Missing visit while preparing to redirect')
-          }
-          var visit = req.visit
-          var port = req.get('port') ? ':' + req.get('port') : ''
-          var apiUrl = encodeURIComponent(req.protocol + '://' + req.get('host') + port + '/api')
-          var route = req.assignment.ehrRoutePath || '/ehr'
-
-          if (visit.isInstructor) {
-            debug('Route to instructor page ' + JSON.stringify(req.ltiData, null, 2))
-            route = '/instructor'
-          }
-          var url = this.config.clientUrl + route + '?visit=' + visit._id + '&apiUrl=' + apiUrl
-          if (req.errors.length > 0) {
-            var errs = req.errors.join('-')
-            url += '&error=' + errs
-          }
+        .then((req) => {
+          let url = req.ltiNextUrl
           debug(`ready to redirect to the ehr ${url}`)
           res.redirect(url)
         })

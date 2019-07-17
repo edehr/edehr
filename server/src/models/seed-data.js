@@ -7,6 +7,7 @@ const Schema = new mongoose.Schema(
   {
     toolConsumer: {type: ObjectId, ref: 'Consumer', required: true},
     name: { type: String, required: true },
+    isDefault: { type: Boolean, default: false },
     description: { type: String },
     version: { type: String },
     ehrData: { type: Object, default: {} },

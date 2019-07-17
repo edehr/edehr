@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import uniqueValidator from 'mongoose-unique-validator'
 const ObjectId = mongoose.Schema.Types.ObjectId
 
 const Schema = new mongoose.Schema({
@@ -9,6 +10,8 @@ const Schema = new mongoose.Schema({
   ehrRoutePath: { type: String },
   seedDataId: {type: mongoose.Schema.Types.ObjectId, ref: 'SeedData', required: true}
 })
+
+Schema.plugin(uniqueValidator)
 
 const Assignment = mongoose.model('Assignment', Schema)
 

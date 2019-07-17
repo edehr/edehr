@@ -41,6 +41,13 @@ class SystemError extends EdEhrError {
   }
 }
 
+class NotAllowedError extends EdEhrError {
+  constructor (message, errorData) {
+    super(...arguments)
+    this.name = 'SystemError'
+    this.status = 500
+  }
+}
 
 /*
 Possible other error classes. To use consider setting the name and/or status properties
@@ -91,7 +98,8 @@ module.exports = {
   // NonceError,
   // OutcomeResponseError
   AssignmentMismatchError,
-  SystemError,
   ConfigurationChangeError,
-  ParameterError
+  NotAllowedError,
+  ParameterError,
+  SystemError
 }
