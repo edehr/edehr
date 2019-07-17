@@ -1,11 +1,14 @@
 'use strict'
 
-var mongoose = require('mongoose')
-var Consumer = mongoose.model('Consumer')
-const {ltiVersions} = require('../../utils/lti')
+import mongoose from 'mongoose'
+import ConsumerController from '../../mcr/consumer/consumer-controller'
+
+const Consumer = mongoose.model('Consumer')
+const {ltiVersions} = require('../../mcr/lti/lti-defs')
 const KEY = 'edehrkey'
 const SECRET = 'edehrsecret'
 const debug = require('debug')('server')
+const cc = new ConsumerController()
 
 module.exports = function () {
   return new Promise(function (resolve, reject) {
@@ -22,7 +25,7 @@ module.exports = function () {
           tool_consumer_instance_guid: 'Moodle-Local-EdEHRPrototype',
           tool_consumer_instance_name: 'Moodle Local EdEHRPrototype'
         }
-        Consumer.create(def)
+        cc.createWithSeed(def)
           .then((response, reject) => {
             // console.log('save results', response, reject)
             resolve()
