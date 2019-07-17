@@ -1,4 +1,4 @@
-import IntegrationController from '../../controllers/integration-controller'
+import IntegrationController from '../../mcr/integration/integration-controller'
 const IntegrationModel = new IntegrationController()
 const debug = require('debug')('server')
 
@@ -55,15 +55,15 @@ function doIntegrations () {
         return require('../seed-data/consumers')(true)
       }
     })
-    .then(() => {
-      return checkIntegration('ehrseed')
-    })
-    .then(go => {
-      debug('Seed ehr seed data? ', go)
-      if (go) {
-        return require('../seed-data/ehrSeeds')(true)
-      }
-    })
+    // .then(() => {
+    //   return checkIntegration('ehrseed')
+    // })
+    // .then(go => {
+    //   debug('Seed ehr seed data? ', go)
+    //   if (go) {
+    //     return require('../seed-data/ehrSeeds')(true)
+    //   }
+    // })
     .then(() => {
       debug('DONE integrations')
     })

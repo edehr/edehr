@@ -9,6 +9,7 @@ server/bin/sessions/**
 dbjson/db\.json
 temp/**
 **/sessions/**
+**/.sessions/**
 ehr/dist/**
 ehr/dev/**
 **/trash/**
