@@ -40,6 +40,7 @@ const actions = {
       }
       this.assignmentsListing = list
       context.commit('setAssignmentsListing', list)
+      return list
     })
   },
   createAssignment (context, payload) {

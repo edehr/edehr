@@ -128,6 +128,10 @@ input:disabled, textarea:disabled, select:disabled, checkbox:disabled, radio:dis
   box-shadow: none;
 }
 
+.is-invalid {
+  border: 1px solid red;
+}
+
 /* gets rid of double border on time inputs */
 .input input {
     border: none;

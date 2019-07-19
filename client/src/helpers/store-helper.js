@@ -5,6 +5,8 @@ class StoreHelperWorker {
     this.shc = new Vue()
   }
 
+  /* **********   General  ************** */
+
 
   toolConsumerId (component) {
     let sVisitInfo = component.$store.state.visit.sVisitInfo
@@ -38,6 +40,10 @@ class StoreHelperWorker {
     return activityData.evaluated
   }
 
+  setLoading (component, value) {
+    component.$store.commit('system/setLoading', value)
+  }
+
   setIsDevelopingContent (component, state) {
     component.$store.commit('visit/setIsDevelopingContent', state)
   }
@@ -50,6 +56,10 @@ class StoreHelperWorker {
     return component.$store.dispatch('instructor/changeCurrentEvaluationStudentId', data)
   }
 
+  /* **********   Activity  ************** */
+  getCurrentActivity (component) {
+    return component.$store.state.ehrData.sActivityData
+  }
   // returns promise that resolves to activity
   dispatchLoadActivity ( component, activityId) {
     return component.$store.dispatch('instructor/loadActivity', activityId)
@@ -60,6 +70,56 @@ class StoreHelperWorker {
     return component.$store.dispatch('instructor/loadClassList', activityId)
   }
 
+  /* **********   Assignments  ************** */
+  loadAssignmentAndSeedLists (component) {
+    console.log('load assignments for AssignmentListing component')
+    const _this = this
+    _this.setLoading(component, true)
+    return Promise.all([
+      component.$store.dispatch('seedStore/loadSeedDataList'),
+      component.$store.dispatch('assignment/loadAssignments')
+    ]).then(() => {
+      _this.setLoading(component, false)
+    })
+
+  }
+  // returns promise that resolves to assignment list
+  updateAssignment (component, assignmentId, assignmentData) {
+    console.log('Assignment update ', assignmentId, assignmentData)
+    let dataIdPlusPayload = { id: assignmentId, payload: assignmentData }
+    return component.$store.dispatch('assignment/updateAssignment', dataIdPlusPayload)
+  }
+
+  // returns promise that resolves to assignment list
+  createAssignment (component, assignmentData) {
+    console.log('Assignment save ', this.aSeed)
+    return component.$store.dispatch('assignment/createAssignment', assignmentData)
+  }
+
+  getAssignmentsList (component) {
+    return component.$store.state.assignment.assignmentsListing
+  }
+
+  /* **********   Seed Data  ************** */
+
+  updateSeed (component, seedId, theData) {
+    console.log('Seed Data update ', seedId, theData)
+    let dataIdPlusPayload = { id: seedId, payload: theData }
+    return component.$store.dispatch('seedStore/updateSeedItem', dataIdPlusPayload)
+  }
+
+  createSeed (component, seedData) {
+    console.log('Seed create ', seedData)
+    return component.$store.dispatch('seedStore/createSeedItem', seedData)
+  }
+
+  getSeedDataList (component) {
+    return component.$store.state.seedStore.seedDataList
+  }
+
+  /* ************* EHR Context
+
+   */
   getPanelData (component) {
     let visitInfo = component.$store.state.visit.sVisitInfo || {}
     let assignment = visitInfo.assignment || {}
