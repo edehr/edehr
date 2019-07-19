@@ -11,7 +11,7 @@ export default class AssignmentController extends BaseController {
   constructor (config) {
     super(Assignment, '_id')
     this.config = config
-    this.description = config.ehr.defaultAssignmentDescription
+    this.defaultAssignmentDescription = config.ehr.defaultAssignmentDescription
   }
 
   _composeQuery (externalId, toolConsumerId) {
@@ -45,7 +45,7 @@ export default class AssignmentController extends BaseController {
           toolConsumer: toolConsumer._id,
           externalId: externalId,
           name: resource_link_title,
-          description: this.description,
+          description: this.defaultAssignmentDescription,
           ehrRoutePath: '',
           seedDataId: seed._id
         }

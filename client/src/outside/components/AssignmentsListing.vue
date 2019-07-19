@@ -5,65 +5,42 @@
     div(v-if="isRespondingToError")
       p Error: {{ isRespondingToError }}
       p Your LMS is asking for "{{ activity.custom_assignment }}".
-      p Adjust your LMS to use an assignment from the listing below
+      p Adjust your Learning Management System to use an assignment from the listing below
     div(v-show="isDeveloper")
       ui-button(v-on:buttonClicked="showCreateDialog") Create new assignment
-      ui-link(:to="{ name: `developEhrData` }", v-bind:secondary="true", class="second-option") Manage EHR data
+      span &nbsp;
+      ui-button(v-on:buttonClicked="manageEhrData", :secondary="true") Manage EHR data
+
+      //ui-link(:to="{ name: `developEhrData` }", v-bind:secondary="true", class="second-option") Manage EHR data
 
     table.table
       thead
         tr
-          th(title="Name") EdEHR assignment name
+          th(title="Name") Assignment name
           th(title="Description") Description
-          th(title="External Id") Assignment external id
+          th(title="External Id") External id
+          th(title="ROute") Route
           th(v-show="isDeveloper", title="Seed Data") Seed data
       tbody
         tr(v-for="item in assignmentsListing")
           td {{ item.name }}
           td {{ item.description}}
           td {{ item.externalId}}
+          td {{ item.ehrRoutePath}}
           td(v-show="isDeveloper") {{ item.seedDataObj.name }}
           td
             ui-button(v-on:buttonClicked="showEditDialog", :value="item._id")
               fas-icon(icon="edit")
-    app-dialog(:isModal="true", ref="theDialog", @cancel="cancelDialog", @save="saveDialog")
-      h3(slot="header") {{dialogHeader}}
-      div(slot="body")
-        div
-          div(class="input-fieldrow")
-            div(class="ehrdfe")
-              div(class="text_input_wrapper")
-                label Name
-                input(class="input", type="text", v-model="aAssignment.name")
-            div(class="ehrdfe")
-              div(class="text_input_wrapper")
-                label External Id
-                input(class="input", type="text", v-model="aAssignment.externalId")
-            //div(class="ehrdfe")
-            //  div(class="text_input_wrapper")
-            //    label Landing Page
-            //    input(class="input", type="text", v-model="aAssignment.ehrRoutePath")
-
-            div(class="ehrdfe")
-              div(class="input-element")
-                label Seed data
-                select(v-model="selectedSeed")
-                  option(disabled,value="")
-                  option(v-for="seed in seedOptionList", v-bind:value="seed.id", :selected="seed.selected") {{ seed.name}} {{seed.selected}}
-          div(class="input-fieldrow")
-            div(class="ehrdfe")
-              div(class="input-element input-element-full")
-                label Description
-                textarea(class="textarea",v-model="aAssignment.description")
-
+    assignments-dialog(ref="theDialog")
 </template>
 
 <script>
-import AppDialog from '../../app/components/AppDialogShell'
 import UiButton from '../../app/ui/UiButton.vue'
 import UiLink from '../../app/ui/UiLink.vue'
+import StoreHelper from '../../helpers/store-helper'
 import { getIncomingParams } from '../../helpers/ehr-utills'
 import BreadCrumb from './BreadCrumb'
+import AssignmentsDialog from './AssignmentsDialog'
 
 export default {
   name: 'AssignmentsListing',
@@ -71,6 +48,7 @@ export default {
     return {
       isRespondingToError: null,
       aAssignment: {},
+      errorList: [],
       dialogHeader: '',
       actionType: '',
       assignmentId: '',
@@ -78,15 +56,14 @@ export default {
       selectedSeed: ''
     }
   },
-  components: { AppDialog, UiButton, UiLink, BreadCrumb },
+  components: { AssignmentsDialog, UiButton, UiLink, BreadCrumb },
   computed: {
     isDeveloper () {
-      return this.$store.getters['visit/isDeveloper']
+      return StoreHelper.isDeveloper(this)
     },
     assignmentsListing () {
-      let sdList = this.$store.state.seedStore.seedDataList
-      let assList = this.$store.state.assignment.assignmentsListing
-      //assList = assList.filter(entry => entry.externalId != 'defaultNonAssignment')
+      let sdList = StoreHelper.getSeedDataList(this)
+      let assList = StoreHelper.getAssignmentsList(this)
       assList.forEach(ass => {
         ass.seedDataObj = {}
         if (ass.seedDataId) {
@@ -99,107 +76,41 @@ export default {
       return assList
     },
     seedOptionList () {
-      let sdList = this.$store.state.seedStore.seedDataList
+      let sdList = StoreHelper.getSeedDataList(this)
       return sdList.map(sd => {
         return { id: sd._id, name: sd.name }
       })
     },
     activity () {
-      return this.$store.state.ehrData.sActivityData
+      return StoreHelper.getCurrentActivity(this)
     }
   },
 
   methods: {
+    manageEhrData: function () {
+      this.$router.push('developEhrData')
+    },
     findAssignment: function (id) {
       return this.assignmentsListing.find(e => {
         return e._id === id
       })
     },
-    showEditDialog: function (event, value) {
-      this.assignmentId = value // event.target.value
-      // clone to decouple data from storage before using in dialog
-      let sData = Object.assign({}, this.findAssignment(this.assignmentId))
-      sData.ehrRoutePath = sData.ehrRoutePath || '/ehr/patient/demographics'
-      this.actionType = 'edit'
-      this.aAssignment = sData
-      this.selectedSeed = sData.seedDataId || ''
-      this.dialogHeader = 'Edit assignment properties'
-      this.$refs.theDialog.onOpen()
+    showEditDialog: function (event, assignmentId) {
+      let assignmentData = Object.assign({}, this.findAssignment(assignmentId))
+      this.$refs.theDialog.showDialog(assignmentData)
     },
     showCreateDialog: function () {
-      this.aAssignment = {}
-      this.selectedSeed = ''
-      this.actionType = 'create'
-      this.dialogHeader = 'Create a new assignment'
-      this.$refs.theDialog.onOpen()
-    },
-    cancelDialog: function () {
-      this.$refs.theDialog.onClose()
-    },
-    saveDialog: function () {
-      // console.log('saveDialog ', this.actionType, this.aSeed)
-      let sId = this.selectedSeed && this.selectedSeed.length > 0 ? this.selectedSeed : null
-      let theData = this.aAssignment
-      theData.seedDataId = sId
-      theData.toolConsumer = this.$store.state.visit.sVisitInfo.toolConsumer._id
-      // console.log(`Convert seed data field '${theData}' into an object`)
-      // theData = JSON.parse(theData)
-      this.$refs.theDialog.onClose()
-      if (this.actionType === 'edit') {
-        console.log('Assignment saving ', theData)
-        let dataIdPlusPayload = { id: this.assignmentId, payload: theData }
-        this.$store.dispatch('assignment/updateAssignment', dataIdPlusPayload)
-      } else if (this.actionType === 'create') {
-        // console.log('Seed Data saving ', this.aSeed)
-        this.$store.dispatch('assignment/createAssignment', theData).then(() => {
-          console.log('update assignment completed')
-        })
-      }
-    },
-    loadAssignments: function () {
-      const _this = this
-      console.log('load assignments for AssignmentListing component')
-      this.$store.commit('system/setLoading', true)
-      Promise.all([
-        _this.$store.dispatch('seedStore/loadSeedDataList'),
-        _this.$store.dispatch('assignment/loadAssignments')
-      ]).then(() => {
-        _this.$store.commit('system/setLoading', false)
-      })
+      this.$refs.theDialog.showDialog()
     }
   },
   mounted: function () {
     let params2 = getIncomingParams()
     this.isRespondingToError = params2['error']
-    this.loadAssignments()
+    StoreHelper.loadAssignmentAndSeedLists(this)
   }
 }
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/definitions';
-
-.AssignmentsListing {
-}
-.seedDataPop {
-  background: $grey10;
-}
-.tooltip {
-  &.popover {
-    .popover-inner {
-      background: $grey03;
-      color: $black;
-      padding: 24px;
-      border-radius: 5px;
-      box-shadow: 0 5px 30px rgba($black, 0.1);
-    }
-
-    .popover-arrow {
-      border-color: $grey03;
-    }
-  }
-}
-.second-option {
-  margin: 0 1.25em;
-}
+//@import '../../scss/definitions';
 </style>
