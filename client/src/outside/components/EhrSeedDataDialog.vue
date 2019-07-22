@@ -27,8 +27,8 @@
             div(v-for="err in errorList") {{ err }}
           hr
           div(class="technical")
-            div {{ seedId}}
-            div Show Advanced
+            div(v-if="showAdvanced") {{ seedId}}
+            div Show Advanced &nbsp;
               input( type="checkbox", v-model="showAdvanced")
     ui-confirm(ref="confirmDialog", v-on:confirm="proceedWithSave")
 
@@ -66,7 +66,7 @@ export default {
       ehrDataString: '',
       actionType: '',
       seedId: '',
-      showAdvanced: true
+      showAdvanced: false
     }
   },
   props: {},
@@ -102,7 +102,7 @@ export default {
       } catch(error) {
         results.err = error.message
       }
-      console.log('parseEhr', results)
+      // console.log('parseEhr', results)
       return results
     },
     clearInputs: function () {
@@ -137,7 +137,7 @@ export default {
       this.$refs.theDialog.onClose()
     },
     saveDialog: function () {
-      console.log('saveDialog ', this.actionType, this.name)
+      // console.log('saveDialog ', this.actionType, this.name)
       if (this.errorList.length > 0) {
         this.$refs.confirmDialog.showDialog(CONFIRM_TITLE, CONFIRM_MSG)
       } else {

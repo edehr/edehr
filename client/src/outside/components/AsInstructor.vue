@@ -6,7 +6,7 @@
         h2(class="course-header-item") {{ course.label }} - {{ course.name }} (Id: {{ course.id }})
       div(class="activities", v-for="(activity, index) in course.activities")
         div(:ref="`activity-${activity._id}`")
-          class-list(:activity="activity", :index="index")
+          class-list(:activityId="activity._id", :index="index")
 </template>
 
 <script>

@@ -13,6 +13,7 @@
               th Version
               th Description
               th EHR Pages
+              th Assignments
               // th Seed Id
           tbody
             tr(v-for="sv in seedDataList")
@@ -20,6 +21,7 @@
               td {{sv.version}}
               td {{sv.description}}
               td {{ ehrPages(sv) }}
+              td {{ sv.aList }}
               // td {{sv._id}}
               td(v-if="!sv.isDefault",class="seed-actions")
                ui-button(v-on:buttonClicked="uploadSeed(sv)", v-bind:secondary="true") Upload
@@ -44,7 +46,7 @@ import { PAGE_DATA_REFRESH_EVENT } from '../../helpers/event-bus'
 const TEXT = {
   AGREE_TITLE: (seedName) => `${seedName} has new seed data`,
   AGREE_MSG: (fileName) => `New seed data has been imported from file: ${fileName}`,
-  FAIL_IMPORT: (fileName, msg) => `Upload ${fileName} failed: ${invalidMsg}`
+  FAIL_IMPORT: (fileName, msg) => `Upload ${fileName} failed: ${msg}`
 }
 
 export default {
@@ -67,7 +69,15 @@ export default {
   props: {},
   computed: {
     seedDataList () {
-      return StoreHelper.getSeedDataList(this)
+      let sdList = StoreHelper.getSeedDataList(this)
+      let assList = StoreHelper.getAssignmentsList(this)
+      sdList.forEach(seed => {
+        let filtered = assList.filter( a => a.seedDataId === seed._id)
+        let aList = filtered.map( a => a.name )
+        console.log('sss', seed, aList)
+        seed.aList = aList.join(', ')
+      })
+      return sdList
     }
   },
   methods: {
@@ -77,7 +87,6 @@ export default {
       })
     },
     ehrPages ( sv) {
-      console.log('ehrpages', sv.ehrData)
       let pages = ''
       if ( sv.ehrData ) {
         let keys = Object.keys(sv.ehrData)
@@ -94,20 +103,20 @@ export default {
       // console.log('upload seed for ', this.currentSeed)
       this.$refs.fileUploadInput.click()
     },
-    _importContents (contents) {
+    _importContents (contents, fileName) {
       let {seedObj, invalidMsg} = validateSeed(contents)
       if(invalidMsg) {
-        setApiError(this, FAIL_IMPORT(file.name, invalidMsg))
+        setApiError(this, TEXT.FAIL_IMPORT(fileName, invalidMsg))
         StoreHelper.setLoading(this, false)
         return
       }
       let payload = {
-        id: _this.seedId,
+        id: this.seedId,
         ehrData: seedObj
       }
-      return _this.$store.dispatch('seedStore/updateSeedEhrData', payload).then(() => {
-        let title = AGREE_TITLE(this.currentSeed.name)
-        let msg = AGREE_MSG(file.name)
+      return this.$store.dispatch('seedStore/updateSeedEhrData', payload).then(() => {
+        let title = TEXT.AGREE_TITLE(this.currentSeed.name)
+        let msg = TEXT.AGREE_MSG(fileName)
         this.$refs.aggreeDialog.showDialog(title, msg)
         StoreHelper.setLoading(this, false)
       })
@@ -120,7 +129,7 @@ export default {
       StoreHelper.setLoading(this, true)
       reader.onload = (function (event) {
         let contents = event.target.result
-        return _this._importContents(content)
+        return _this._importContents(contents, file.name)
       })
       reader.readAsText(file)
     },

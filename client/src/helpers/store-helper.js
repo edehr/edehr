@@ -83,6 +83,19 @@ class StoreHelperWorker {
     })
 
   }
+
+  findAssignment (component, toolConsumerId, externalId) {
+    console.log('Assignment findAssignment ', toolConsumerId, externalId)
+    let payload = {toolConsumerId: toolConsumerId, externalId: externalId}
+    return component.$store.dispatch('assignment/findAssignment', payload)
+  }
+
+
+  loadAssignment (component, id) {
+    console.log('Assignment Load ', id)
+    return component.$store.dispatch('assignment/loadAssignment', id)
+  }
+
   // returns promise that resolves to assignment list
   updateAssignment (component, assignmentId, assignmentData) {
     console.log('Assignment update ', assignmentId, assignmentData)
@@ -92,7 +105,7 @@ class StoreHelperWorker {
 
   // returns promise that resolves to assignment list
   createAssignment (component, assignmentData) {
-    console.log('Assignment save ', this.aSeed)
+    console.log('Assignment save ', assignmentData)
     return component.$store.dispatch('assignment/createAssignment', assignmentData)
   }
 
