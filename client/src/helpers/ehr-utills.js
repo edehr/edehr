@@ -2,6 +2,7 @@ import moment from 'moment'
 import camelcase from 'camelcase'
 import fileDownload  from 'js-file-download'
 import { getAllPageKeys } from './ehr-defs'
+import TEXT from './ehr-text'
 
 export function getIncomingParams () {
   let search = window.location.search.substring(1)
@@ -107,13 +108,22 @@ export function ehrMarkSeed (data) {
   return data
 }
 
-export function validateSeed (dataAsString) {
+export function validateSeedFileContents (dataAsString) {
   let pageKeys = getAllPageKeys()
   try {
     let obj = JSON.parse(dataAsString)
-    let keys = Object.keys(obj)
+    if (!obj.license) {
+      return { invalidMsg: TEXT.SEED_MUST_HAVE_LICENSE}
+    }
+    if (!obj.license.includes(TEXT.LICENSE_TEXT)) {
+      return { invalidMsg: TEXT.LICENSE_MUST_BE }
+    }
+    if (!obj.ehrData) {
+      return { invalidMsg: TEXT.SEED_MUST_HAVE_EHRDATA}
+    }
+    let keys = Object.keys(obj.ehrData)
     if(!keys || keys.length == 0) {
-      return { invalidMsg: 'Seed data can not be empty'}
+      return { invalidMsg: TEXT.EHRDATA_CAN_NOT_BE_EMPTY}
     }
     let badKeys = []
     keys.forEach( key => {
@@ -124,11 +134,11 @@ export function validateSeed (dataAsString) {
     })
     if(badKeys.length > 0) {
       let extras = badKeys.join(', ')
-      return { invalidMsg: 'Data contains invalid keys: ' + extras }
+      return { invalidMsg: TEXT.EHRDATA_HAS_INVALID_PAGES(extra)}
     }
     return { seedObj: obj }
   }catch(err) {
-    console.log('validateSeed: failed to parse seed data', err)
+    console.log('validateSeedFileContents: failed to parse seed data', err)
     return { invalidMsg: err.message}
   }
 }
@@ -137,13 +147,18 @@ export function validateSeed (dataAsString) {
 export function downloadSeedToFile (seedId, sSeedContent, ehrData) {
   let lastUpdate = sSeedContent.lastUpdateDate
   lastUpdate = formatDateStr(lastUpdate)
-  ehrData = JSON.stringify(ehrData,null,2)
   let fName = camelcase(sSeedContent.name)
   fName += sSeedContent.version ? '_' + sSeedContent.version : ''
   fName += '_' + lastUpdate
   fName += '.json'
+  let data = {
+    license: TEXT.LICENSE_FULL_TEXT,
+    ehrData: ehrData,
+    fileName: fName
+  }
+  data = JSON.stringify(data,null,2)
   console.log('Download seed to ', fName, ehrData)
-  fileDownload(ehrData, fName, 'application/json')
+  fileDownload(data, fName, 'application/json')
 }
 
 
