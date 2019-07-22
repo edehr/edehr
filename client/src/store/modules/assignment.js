@@ -28,6 +28,28 @@ const actions = {
       return context.dispatch('seedStore/loadSeedContent', null, options)
     })
   },
+
+  findAssignment (context, payload) {
+    let {toolConsumerId, externalId} = payload
+    let url = composeUrl(context, API) + 'consumer/' + toolConsumerId + '/externalId/' + externalId
+    console.log('findAssignment URL', url)
+    return helper.getRequest(context, url).then(response => {
+      console.log('findAssignment response', response)
+      return response.data
+    })
+  },
+  loadAssignment (context, id) {
+    let url = composeUrl(context, API) + 'get/' + id
+    return helper.getRequest(context, url).then(response => {
+      let assignment = response.data.assignment
+      if (!assignment) {
+        let msg = 'ERROR the could not get assignment ' + id
+        setApiError(context, msg)
+        return
+      }
+      return assignment
+    })
+  },
   loadAssignments (context) {
     let url = composeUrl(context, API)
     return helper.getRequest(context, url).then(response => {
@@ -65,7 +87,7 @@ const actions = {
         return context.dispatch('loadAssignments')
       })
       .catch(err => {
-        let msg = 'error in update assignment ' + err.message
+        let msg = 'error in update assignment ' + err
         console.error(msg)
         setApiError(context, msg)
       })

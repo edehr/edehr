@@ -257,7 +257,7 @@ export default class LTIController {
     let role = new Role(req.ltiData.roles)
     let toolConsumer = req.toolConsumer
     let toolConsumerId = toolConsumer._id
-    console.log('in locat assignent with ', toolConsumerId)
+    console.log('in locate assignent with ', toolConsumerId, externalId)
     return this.assignmentController.locateAssignmentForStudent(externalId, toolConsumerId)
       .then(assignment => {
         if (!assignment) {

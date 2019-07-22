@@ -2,7 +2,7 @@
   div(id="activityList", class="activity-list")
     div(class="activity-list-header columns", v-on:click="activateActivity")
       div(class="header-column is-10 column")
-        h3(:title="activity._id") {{ activity.resource_link_title }}
+        h3(:title="activityId") {{ activity.resource_link_title }}
         p LMS description: {{ activity.resource_link_description }}
         p Assignment name: {{ assignment.name }} (LMS configuration: assignment={{ assignment.externalId }} )
         p Assignment description: {{ assignment.description }}
@@ -58,20 +58,17 @@ export default {
       indicator: '+',
       unsubmitText: 'Send back for edits',
       unsubmitTool: 'Send back for edits',
-      classList: []
+      classList: [],
+      activity: {},
+      assignment: {}
     }
   },
   props: {
-    activity: { type: Object },
+    activityId: { type: String },
+    // activity: { type: Object },
     index: { type: Number}
   },
   computed: {
-    assignment () {
-      return this.activity.assignment || {}
-    },
-    visitInfo () {
-      return this.$store.state.visit.sVisitInfo
-    }
   },
   methods: {
     evaluatedButtonText (sv) {
@@ -101,14 +98,29 @@ export default {
         this.setShow(false)
         return
       }
-      let activityId = this.activity._id
-      localStorage.setItem('activityId', activityId)
-      this.loadActivity(activityId)
+      this.loadActivity(this.activityId)
     },
     loadActivity (activityId) {
+      console.log('ClassList loadActivity')
       const _this = this
       return StoreHelper.dispatchLoadActivity(this, activityId)
-        .then(() => {
+        .then((theActivity) => {
+          console.log('ClassList got the activity ', theActivity)
+          _this.activity = theActivity
+          console.log('ClassList load the assignment ', theActivity.assignment)
+          return StoreHelper.loadAssignment(this, theActivity.assignment)
+        })
+        .then((theAssignment) => {
+          console.log('ClassList have assignment ', theAssignment)
+          _this.assignment = theAssignment
+          let externalId = theAssignment.externalId
+          let consumer = theAssignment.toolConsumer
+          console.log('ClassList find assignment by external id', consumer, externalId)
+          return StoreHelper.findAssignment(this, consumer, externalId)
+        })
+        .then((theAssignment) => {
+          console.log('ClassList did we find the assignment by externalId? ', theAssignment)
+          console.log('see issue #286 https://github.com/BCcampus/edehr/issues/286')
           return StoreHelper.dispatchLoadClassList(this, activityId)
         })
         .then((classList) => {

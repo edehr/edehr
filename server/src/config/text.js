@@ -1,6 +1,6 @@
 export const Text = {
   APP_TITLE: 'Ed EHR',
-  DEFAULT_SEED_NAME: (key) => `Default EHR assignment data for consumer: ${key}`,
+  DEFAULT_SEED_NAME: (key) => `Default EHR data for: ${key}`,
   DEFAULT_SEED_DESCRIPTION: 'This ehr data seed can not be modified. It is the default seed used when an assignment is created',
   SEED_NOT_ALLOWED_TO_EDIT_DEFAULT: 'Can not edit the default seed',
 

@@ -3,6 +3,7 @@ import Assignment from '../assignment/assignment'
 import SeedDataController from '../seed/seedData-controller'
 import { SystemError } from '../common/errors'
 import { Text } from '../../config/text'
+import {ok, fail} from '../common/utils'
 
 const debug = require('debug')('server')
 const sd = new SeedDataController()
@@ -52,7 +53,7 @@ export default class AssignmentController extends BaseController {
         return this.create(data)
       })
   }
-  locateDefaultAssignment(toolConsumerId) {
+  locateDefaultAssignment (toolConsumerId) {
     const _this = this
     let query = this._composeQuery(DEFAULT_ASSIGNMENT_EXTERNAL_ID, toolConsumerId)
     debug('Default assignment search ' + JSON.stringify(query))
@@ -106,5 +107,16 @@ export default class AssignmentController extends BaseController {
           resolve(activity)
         })
     })
+  }
+
+  route () {
+    const router = super.route()
+    router.get('/consumer/:tool/externalId/:key', (req, res) => {
+      this
+        .locateAssignmentForStudent(req.params.key, req.params.tool)
+        .then(ok(res))
+        .then(null, fail(res))
+    })
+    return router
   }
 }

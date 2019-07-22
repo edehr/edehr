@@ -27,7 +27,7 @@ export default class ConsumerController extends BaseController {
         theConsumer = toolConsumer
         let seedDef = {
           toolConsumer: toolConsumer._id,
-          name: Text.DEFAULT_SEED_NAME(toolConsumer.oauth_consumer_key),
+          name: Text.DEFAULT_SEED_NAME(toolConsumer.tool_consumer_instance_name),
           description: Text.DEFAULT_SEED_DESCRIPTION,
           version: '1',
           isDefault: true,
