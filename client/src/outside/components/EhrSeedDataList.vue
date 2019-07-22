@@ -40,7 +40,7 @@ import UiAgree from '../../app/ui/UiAgree.vue'
 import EhrSeedDataDialog from './EhrSeedDataDialog'
 import StoreHelper from '../../helpers/store-helper'
 import EventBus from '../../helpers/event-bus'
-import { setApiError, validateSeed, downloadSeedToFile } from '../../helpers/ehr-utills'
+import { setApiError, validateSeedFileContents, downloadSeedToFile } from '../../helpers/ehr-utills'
 import { PAGE_DATA_REFRESH_EVENT } from '../../helpers/event-bus'
 
 const TEXT = {
@@ -104,7 +104,7 @@ export default {
       this.$refs.fileUploadInput.click()
     },
     _importContents (contents, fileName) {
-      let {seedObj, invalidMsg} = validateSeed(contents)
+      let {seedObj, invalidMsg} = validateSeedFileContents(contents)
       if(invalidMsg) {
         setApiError(this, TEXT.FAIL_IMPORT(fileName, invalidMsg))
         StoreHelper.setLoading(this, false)
