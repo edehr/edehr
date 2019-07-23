@@ -5,9 +5,10 @@ import {
   ehrRemoveMarkedSeed,
   ehrMergeEhrData,
   prepareAssignmentPageDataForSave,
-  validateSeed,
+  validateSeedFileContents,
   SEED_MARK
 } from '../../../src/helpers/ehr-utills'
+import { Text } from '../../../src/helpers/ehr-text'
 
 describe('Test ehr utils', () => {
   it('Remove Empty Properties', () => {
@@ -117,28 +118,36 @@ describe('Test merging two EHR data object', () => {
   })
 })
 
+function composeData(ehrData) {
+  let data = {
+    license: Text.LICENSE_FULL_TEXT,
+    ehrData: ehrData,
+    fileName: 'somefilename'
+  }
+  return JSON.stringify(data,null,2)
+}
 
 describe('Test support for seed import', () => {
-  it('verify validateSeed accept valid properties', (done) => {
-    let data = {demographics: {firstName: 'foo'}}
-    data = JSON.stringify(data)
-    let {invalidMsg,seedObj } = validateSeed(data)
+  it('verify validateSeedFileContents accept valid properties', (done) => {
+    let ehrData = {demographics: {firstName: 'foo'}}
+    let data = composeData(ehrData)
+    let {invalidMsg,seedObj } = validateSeedFileContents(data)
     should.not.exist(invalidMsg)
     should.exist(seedObj)
     done()
   })
-  it('verify validateSeed catches invalid properties', (done) => {
-    let data = {invalid: {firstName: 'foo'}}
-    data = JSON.stringify(data)
-    let {invalidMsg,seedObj } = validateSeed(data)
+  it('verify validateSeedFileContents catches invalid properties', (done) => {
+    let ehrData = {invalid: {firstName: 'foo'}}
+    let data = composeData(ehrData)
+    let {invalidMsg,seedObj } = validateSeedFileContents(data)
     should.exist(invalidMsg)
     should.not.exist(seedObj)
     done()
   })
-  it('verify validateSeed catches empty object', (done) => {
-    let data = {}
-    data = JSON.stringify(data)
-    let {invalidMsg,seedObj } = validateSeed(data)
+  it('verify validateSeedFileContents catches empty object', (done) => {
+    let ehrData = {}
+    let data = composeData(ehrData)
+    let {invalidMsg,seedObj } = validateSeedFileContents(data)
     should.exist(invalidMsg)
     should.not.exist(seedObj)
     done()
