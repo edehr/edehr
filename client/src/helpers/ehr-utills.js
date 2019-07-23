@@ -2,7 +2,7 @@ import moment from 'moment'
 import camelcase from 'camelcase'
 import fileDownload  from 'js-file-download'
 import { getAllPageKeys } from './ehr-defs'
-import TEXT from './ehr-text'
+import { Text } from './ehr-text'
 
 export function getIncomingParams () {
   let search = window.location.search.substring(1)
@@ -113,17 +113,17 @@ export function validateSeedFileContents (dataAsString) {
   try {
     let obj = JSON.parse(dataAsString)
     if (!obj.license) {
-      return { invalidMsg: TEXT.SEED_MUST_HAVE_LICENSE}
+      return { invalidMsg: Text.SEED_MUST_HAVE_LICENSE}
     }
-    if (!obj.license.includes(TEXT.LICENSE_TEXT)) {
-      return { invalidMsg: TEXT.LICENSE_MUST_BE }
+    if (!obj.license.includes(Text.LICENSE_TEXT)) {
+      return { invalidMsg: Text.LICENSE_MUST_BE }
     }
     if (!obj.ehrData) {
-      return { invalidMsg: TEXT.SEED_MUST_HAVE_EHRDATA}
+      return { invalidMsg: Text.SEED_MUST_HAVE_EHRDATA}
     }
     let keys = Object.keys(obj.ehrData)
     if(!keys || keys.length == 0) {
-      return { invalidMsg: TEXT.EHRDATA_CAN_NOT_BE_EMPTY}
+      return { invalidMsg: Text.EHRDATA_CAN_NOT_BE_EMPTY}
     }
     let badKeys = []
     keys.forEach( key => {
@@ -134,7 +134,7 @@ export function validateSeedFileContents (dataAsString) {
     })
     if(badKeys.length > 0) {
       let extras = badKeys.join(', ')
-      return { invalidMsg: TEXT.EHRDATA_HAS_INVALID_PAGES(extra)}
+      return { invalidMsg: Text.EHRDATA_HAS_INVALID_PAGES(extras)}
     }
     return { seedObj: obj }
   }catch(err) {
@@ -152,7 +152,7 @@ export function downloadSeedToFile (seedId, sSeedContent, ehrData) {
   fName += '_' + lastUpdate
   fName += '.json'
   let data = {
-    license: TEXT.LICENSE_FULL_TEXT,
+    license: Text.LICENSE_FULL_TEXT,
     ehrData: ehrData,
     fileName: fName
   }
