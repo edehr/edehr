@@ -1,0 +1,30 @@
+{
+  "demographics": {
+    "city": "Vancouver",
+    "country": "Canada",
+    "dateOfBirth": "09-SEP-19##",
+    "decisionMakerName": "Thomas Johns",
+    "decisionMakerPhone": "604-555-9865",
+    "decisionMakerRelationship": "Son",
+    "familyName": "Johns",
+    "gender": "Female",
+    "givenName": "Erin",
+    "height": "157",
+    "indigenousIdentifyAs": "No",
+    "languagePrimary": "English",
+    "martialStatus": "Widow",
+    "middleName": "Joe Student",
+    "nextOfKinName": "Thomas Johns",
+    "nextOfKinPhone": "604-555-9865",
+    "nextOfKinRelationship": "Son",
+    "noAddress": false,
+    "occupationStudent": "Retired",
+    "personAge": "74",
+    "phn": "12345678",
+    "phoneNumber": "(778) 555-2947",
+    "postalCode": "V3F 9R2",
+    "preferredName": "Erin",
+    "streetAddress": "402 Willow St.",
+    "weight": "63"
+  }
+}

@@ -1,4 +1,5 @@
-import should from 'should'
+const should = require('should')
+// import should from 'should'
 import {
   removeEmptyProperties,
   ehrMarkSeed,
@@ -7,10 +8,11 @@ import {
   prepareAssignmentPageDataForSave,
   validateSeedFileContents,
   SEED_MARK
-} from '../../../src/helpers/ehr-utills'
-import { Text } from '../../../src/helpers/ehr-text'
+} from '../ehr-utills'
+import { Text } from '../ehr-text'
+//
+describe('Test seed marking', () => {
 
-describe('Test ehr utils', () => {
   it('Remove Empty Properties', () => {
     let one = getOne()
     should.exist(one.aPage1)
@@ -24,13 +26,14 @@ describe('Test ehr utils', () => {
     one.aPage1.should.not.have.property('nullProp')
     should.not.exist(one.aPage1.emptyProp)
   })
-})
 
-describe('Test seed marking', () => {
   it('Mark seed', () => {
     let one = getOne()
     one = ehrMarkSeed(one)
-    // console.log('marked one', one)
+    should.exist(one.visit.location)
+    one.visit.location.should.have.length(1)
+    let v = one.visit.location[0]
+    v.should.have.property(SEED_MARK)
     let two = getTwo()
     let pages = ehrMergeEhrData(one, two)
     // verify we get pages from one or the other or both
@@ -41,10 +44,6 @@ describe('Test seed marking', () => {
     // confirm that arrays are merged
     pages.visit.should.have.property('location')
     pages.visit.location.should.have.length(2)
-
-    let v = pages.visit.location[0]
-    v.should.have.property(SEED_MARK)
-    // console.log('merged object', JSON.stringify(pages, null, 2))
   })
 
   it('Remove Marked Properties', () => {
@@ -118,15 +117,6 @@ describe('Test merging two EHR data object', () => {
   })
 })
 
-function composeData(ehrData) {
-  let data = {
-    license: Text.LICENSE_FULL_TEXT,
-    ehrData: ehrData,
-    fileName: 'somefilename'
-  }
-  return JSON.stringify(data,null,2)
-}
-
 describe('Test support for seed import', () => {
   it('verify validateSeedFileContents accept valid properties', (done) => {
     let ehrData = {demographics: {firstName: 'foo'}}
@@ -153,6 +143,17 @@ describe('Test support for seed import', () => {
     done()
   })
 })
+
+function composeData (ehrData) {
+  let data = {
+    license: Text.LICENSE_FULL_TEXT,
+    ehrData: ehrData,
+    fileName: 'somefilename'
+  }
+  return JSON.stringify(data,null,2)
+}
+
+
 function getOne () {
   return {
     aPage1: {

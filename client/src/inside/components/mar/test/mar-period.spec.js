@@ -1,4 +1,4 @@
-import PeriodEntity from '../../../src/inside/components/mar/period-entity'
+import PeriodEntity from '../../mar/period-entity'
 import { getSampleMedOrderEntity } from './med-test-util'
 import should from 'should'
 

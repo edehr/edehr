@@ -1,5 +1,5 @@
-import PeriodEntity from '../../../src/inside/components/mar/period-entity'
-import MarEntity from '../../../src/inside/components/mar/mar-entity'
+import PeriodEntity from '../../mar/period-entity'
+import MarEntity from '../../mar/mar-entity'
 import should from 'should'
 import { getSampleMarDbDataList } from './med-test-util'
 

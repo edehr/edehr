@@ -1,4 +1,4 @@
-import PeriodDefs from '../../../src/inside/components/mar/period-defs'
+import PeriodDefs from '../../mar/period-defs'
 import should from 'should'
 
 describe('PeriodDefs', () => {

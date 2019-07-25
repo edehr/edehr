@@ -8,7 +8,7 @@ import { getPageDefinition, getDefaultValue, getDataCaseStudy } from '../../help
 const helper = new StoreHelper()
 const API_ACTIVITY = 'activity-data'
 
-const state = {
+export const state = {
   /*
   sActivityData is a db model object containing the student's assignment work, scratch pad, instructors evaluation notes, etc
    */
@@ -23,17 +23,18 @@ const state = {
   sCurrentStudentData: {}
 }
 
-const getters = {
+export const getters = {
   assignmentData: (state, getters, rootState) => {
+    const debug = false
     /*
     By the documentation getters['visit/isInstructor'] should work but it doesn't
     So use the direct access of rootstate ...
      */
     if (helper.instoreIsInstructor(rootState)) {
-      console.log('Using current student from class list ', state.sCurrentStudentData)
+      if(debug) console.log('Using current student from class list ', state.sCurrentStudentData)
       return state.sCurrentStudentData.assignmentData
     } else {
-      console.log('Using students assignment data')
+      if(debug) console.log('Using students assignment data')
       // assignmentData is the data without seed
       return state.sActivityData.assignmentData
     }
@@ -52,7 +53,7 @@ const getters = {
     } else if (helper.instoreIsInstructor(rootState)) {
       let evalAssignmentData = decoupleObject(state.sCurrentStudentData.assignmentData)
       if(debug) {
-        console.log('EhrData mergedData -=-=-=-=-=-=-=-=-=-=-=-= ehrSeedData', ehrSeedData)
+        console.log('EhrData mergedData -=-=-=-=-=-=-=-=-=-=-=-= Instructor ehrSeedData', ehrSeedData)
         console.log('EhrData mergedData -=-=-=-=-=-=-=-=-=-=-=-= sCurrentStudentData.assignmentData', evalAssignmentData)
         console.log('EhrData mergedData -=-=-=-=-=-=-=-=-=-=-=-= Instructor result', mData)
       }
@@ -64,7 +65,7 @@ const getters = {
       let studentAssignmentData = decoupleObject(state.sActivityData.assignmentData)
       mData = ehrMergeEhrData(ehrSeedData, studentAssignmentData)
       if(debug) {
-        console.log('EhrData mergedData -=-=-=-=-=-=-=-=-=-=-=-= ehrSeedData', ehrSeedData)
+        console.log('EhrData mergedData -=-=-=-=-=-=-=-=-=-=-=-= Student ehrSeedData', ehrSeedData)
         console.log('EhrData mergedData -=-=-=-=-=-=-=-=-=-=-=-= studentAssignmentData', studentAssignmentData)
         console.log('EhrData mergedData -=-=-=-=-=-=-=-=-=-=-=-= Student result', mData)
       }
@@ -260,7 +261,7 @@ const actions = {
   }
 }
 
-const mutations = {
+export const mutations = {
   _setForStudent: (state, value) => {
     state.forStudent = value
   },

@@ -1,4 +1,4 @@
-import MedOrder from '../../../src/inside/components/mar/med-entity'
+import MedOrder from '../../mar/med-entity'
 
 export function getSampleMedOrderEntity () {
   return new MedOrder(getSampleMedOrderDbDataList()[0])

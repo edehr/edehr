@@ -71,8 +71,31 @@ export function removeEmptyProperties (obj) {
   return obj
 }
 
+/**
+ *
+ * @param file  https://developer.mozilla.org/en-US/docs/Web/API/File
+ * @return {Promise<any>}
+ */
+export function readFile (file) {
+  return new Promise( (resolve) => {
+    const reader = new FileReader()
+    reader.onload = (function (event) {
+      let contents = event.target.result
+      return resolve(contents)
+    })
+    reader.readAsText(file)
+  })
+}
+
+/* ********************************************************************************* */
 export const SEED_MARK = 'isFromSeed'
 
+/**
+ * Extract the data that has been entered by the student in preparation for sending this
+ * to the server as an update.
+ * @param page
+ * @return {*}
+ */
 export function ehrRemoveMarkedSeed (page) {
   let propertyKeys = Object.keys(page)
   propertyKeys.forEach(pKey => {
@@ -88,6 +111,14 @@ export function ehrRemoveMarkedSeed (page) {
   return page
 }
 
+/**
+ * Iterate through all the pages and then through all the children. If the child is an array
+ * then iterate through this array and mark each object.  This way when a student adds new rows to
+ * table data we can determine which rows came from the seed and which rows were added.
+ * This is important when we want to send an update back to the server.
+ * @param data
+ * @return {*}
+ */
 export function ehrMarkSeed (data) {
   let pageKeys = Object.keys(data)
   pageKeys.forEach(key => {
@@ -108,6 +139,12 @@ export function ehrMarkSeed (data) {
   return data
 }
 
+/**
+ * Exported for testing
+ * @param dataAsString
+ * @return {*}
+ * @private
+ */
 export function validateSeedFileContents (dataAsString) {
   let pageKeys = getAllPageKeys()
   try {
@@ -122,7 +159,7 @@ export function validateSeedFileContents (dataAsString) {
       return { invalidMsg: Text.SEED_MUST_HAVE_EHRDATA}
     }
     let keys = Object.keys(obj.ehrData)
-    if(!keys || keys.length == 0) {
+    if(!keys || keys.length === 0) {
       return { invalidMsg: Text.EHRDATA_CAN_NOT_BE_EMPTY}
     }
     let badKeys = []
@@ -143,6 +180,26 @@ export function validateSeedFileContents (dataAsString) {
   }
 }
 
+/**
+ * 
+ * @param component to access the $store
+ * @param seedId 
+ * @param contents from reading a seed data file
+ * @return {Promise<any>}
+ */
+export function importSeedData (component, seedId, contents) {
+  return new Promise( (resolve, reject) => {
+    let {seedObj, invalidMsg} = validateSeedFileContents(contents)
+    if (invalidMsg) { return reject(invalidMsg) }
+    let payload = {
+      id: seedId,
+      ehrData: seedObj.ehrData
+    }
+    return component.$store.dispatch('seedStore/updateSeedEhrData', payload).then(() => {
+      return resolve()
+    })
+  })
+}
 
 export function downloadSeedToFile (seedId, sSeedContent, ehrData) {
   let lastUpdate = sSeedContent.lastUpdateDate

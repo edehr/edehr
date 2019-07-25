@@ -3,7 +3,10 @@ const helper = new StoreHelper()
 import { composeUrl } from '../../helpers/ehr-utills'
 const API = 'seed-data'
 
-const state = {
+// exporting elements so they can be accessed in unit tests.
+// working code should only use the default exported module.
+
+export const state = {
   seedDataList: [],
   // Seed content is only used during editing of assignment seed data.
   // It will contain the metadata (name, version, description) plus the actual seedData
@@ -12,7 +15,7 @@ const state = {
   ehrSeedData: {}
 }
 
-const getters = {
+export const getters = {
   seedEhrData: state => {
     return state.ehrSeedData || {}
   }
@@ -152,7 +155,7 @@ const actions = {
 
 }
 
-const mutations = {
+export const mutations = {
   setSeedId: (state, seedId) => {
     localStorage.setItem('seedId', seedId)
     state.sSeedId = seedId

@@ -1,4 +1,4 @@
-import MedOrder from '../../../src/inside/components/mar/med-entity'
+import MedOrder from '../../mar/med-entity'
 import { getMedOrderPageDataSample, SAMPLE1_MED } from './med-test-util'
 import should from 'should'
 
