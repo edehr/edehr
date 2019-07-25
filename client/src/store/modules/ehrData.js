@@ -3,7 +3,7 @@ import EventBus from '../../helpers/event-bus'
 import { ACTIVITY_DATA_EVENT } from '../../helpers/event-bus'
 import { composeUrl, decoupleObject } from '../../helpers/ehr-utills'
 import { ehrMergeEhrData, ehrMarkSeed } from '../../helpers/ehr-utills'
-import { getPageDefinition, getDefaultValue, getDataCaseStudy } from '../../helpers/ehr-defs'
+import { getAllPageKeys, getPageDefinition, getDefaultValue, getDataCaseStudy } from '../../helpers/ehr-defs'
 
 const helper = new StoreHelper()
 const API_ACTIVITY = 'activity-data'
@@ -65,12 +65,30 @@ export const getters = {
       let studentAssignmentData = decoupleObject(state.sActivityData.assignmentData)
       mData = ehrMergeEhrData(ehrSeedData, studentAssignmentData)
       if(debug) {
-        console.log('EhrData mergedData -=-=-=-=-=-=-=-=-=-=-=-= Student ehrSeedData', ehrSeedData)
-        console.log('EhrData mergedData -=-=-=-=-=-=-=-=-=-=-=-= studentAssignmentData', studentAssignmentData)
-        console.log('EhrData mergedData -=-=-=-=-=-=-=-=-=-=-=-= Student result', mData)
+        console.log('EhrData mergedData -=-=-=-=-=-=-=-=-=-=-=-= Student ehrSeedData', JSON.stringify(ehrSeedData))
+        console.log('EhrData mergedData -=-=-=-=-=-=-=-=-=-=-=-= studentAssignmentData', JSON.stringify(studentAssignmentData))
+        console.log('EhrData mergedData -=-=-=-=-=-=-=-=-=-=-=-= Student result', JSON.stringify(mData))
       }
     }
     return mData
+  },
+  hasDataForPageKey (state, getters, rootState) {
+    const pageKeys = getAllPageKeys()
+    const mergedData = getters.mergedData
+    const seedData = rootState.seedStore.ehrSeedData
+    const instructorData = state.sCurrentStudentData.assignmentData
+    const studentData = state.sActivityData.assignmentData
+    let results = {}
+    pageKeys.forEach( key => {
+      results[key] = {
+        pagekey: key
+      }
+      if (mergedData) results[key].hasMerged = !! mergedData[key]
+      if (seedData) results[key].hasSeed = !! seedData[key]
+      if (instructorData) results[key].hasInstructor = !! instructorData[key]
+      if (studentData) results[key].hasStudent = !! studentData[key]
+    })
+    return results
   },
   asLoadedDataForPageKey (state, getters, rootState) {
     const debug = false

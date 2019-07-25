@@ -4,6 +4,7 @@ import { getPageDefinition, getAllPageKeys } from '../../../helpers/ehr-defs'
 import { mutations as dMutations, state as dState, getters as dGetters} from '../ehrData'
 import { mutations as sMutations, state as sState, getters as sGetters} from '../seedStore'
 
+import {createActivityData, getObjFromFile, SEED} from './store-test-helper'
 const should = require('should')
 
 describe('Test ehr defs', () => {
@@ -50,46 +51,82 @@ describe('Test ehrData store mutations', () => {
     let data = dGetters.assignmentData(dState, dGetters, rootState)
     should.exist(data)
   })
+})
 
-  // rootState.visit.sVisitInfo.isInstructor
-  // rootState.visit.isDevelopingContent
-  // rootState.seedStore.ehrSeedData
-  // dState.sCurrentStudentData.assignmentData
-  // dState.sActivityData.assignmentData
-
+describe('Test ehrData merged data', () => {
   it('test getter mergedData as dev', () => {
     let rootState = createRootState()
     rootState.visit.isDevelopingContent = true
-    let seed = getObjFromFile('seed-data1.json')
-    sMutations._setSeedEhrData(sState, seed)
+    sMutations._setSeedEhrData(sState, SEED)
     should.exist(sState.ehrSeedData)
     rootState.seedStore.ehrSeedData = sState.ehrSeedData
     let mSeed = dGetters.mergedData(dState, dGetters, rootState)
     should.exist(mSeed)
   })
 
-  //rootState.seedStore.ehrSeedData = seed
-  // let cData = {foo:"bar"}
-  // let rootState = {}
-  // rootState.visit = {
-  //   sVisitInfo: {isInstructor: true},
-  //   isDevelopingContent: false
-  // }
-  // rootState.seedStore = {}
-  // dGetters.mergedData(dState, dGetters, rootState)
-  // should.exist(dState.sCurrentStudentInfo)
-  // should.exist(dState.sCurrentStudentInfo.foo)
-  // })
+  it('test getter mergedData as instructor', () => {
+    let rootState = createRootState()
+    rootState.visit.sVisitInfo.isInstructor = true
+    // state.sCurrentStudentData.assignmentData
+    let student = getObjFromFile('student-data1.json')
+    sMutations._setSeedEhrData(sState, SEED)
+    dMutations._setCurrentStudentData(dState, student)
+    should.exist(sState.ehrSeedData)
+    should.exist(dState.sCurrentStudentData.assignmentData)
+    let mSeed = dGetters.mergedData(dState, dGetters, rootState)
+    should.exist(mSeed)
+  })
 
-
+  it('test getter mergedData as student', () => {
+    let rootState = createRootState()
+    let student = getObjFromFile('student-data1.json')
+    sMutations._setSeedEhrData(sState, SEED)
+    rootState.seedStore.ehrSeedData = sState.ehrSeedData
+    dMutations._setActivityData(dState, student)
+    should.exist(sState.ehrSeedData)
+    should.exist(dState.sActivityData)
+    let mSeed = dGetters.mergedData(dState, dGetters, rootState)
+    should.exist(mSeed)
+  })
 })
 
+describe('Test ehrData dataExists tests', () => {
+  it('test dataExists as dev', () => {
+    let rootState = createRootState()
+    rootState.visit.isDevelopingContent = true
+    sMutations._setSeedEhrData(sState, SEED)
+    should.exist(sState.ehrSeedData)
+    rootState.seedStore.ehrSeedData = sState.ehrSeedData
+    let mSeed = dGetters.mergedData(dState, dGetters, rootState)
+    should.exist(mSeed)
+  })
 
-function getObjFromFile (fName) {
-  const seedFN = path.resolve(__dirname, fName)
-  let content = fs.readFileSync(seedFN, 'utf8')
-  return JSON.parse(content)
-}
+  it.skip('test dataExists as instructor', () => {
+    let rootState = createRootState()
+    rootState.visit.sVisitInfo.isInstructor = true
+    // state.sCurrentStudentData.assignmentData
+    let student = getObjFromFile('student-data1.json')
+    sMutations._setSeedEhrData(sState, SEED)
+    dMutations._setCurrentStudentData(dState, student)
+    should.exist(sState.ehrSeedData)
+    should.exist(dState.sCurrentStudentData.assignmentData)
+    let mSeed = dGetters.mergedData(dState, dGetters, rootState)
+    should.exist(mSeed)
+  })
+
+  it.skip('test dataExists as student', () => {
+    let rootState = createRootState()
+    let student = getObjFromFile('student-data1.json')
+    sMutations._setSeedEhrData(sState, SEED)
+    rootState.seedStore.ehrSeedData = sState.ehrSeedData
+    dMutations._setActivityData(dState, student)
+    should.exist(sState.ehrSeedData)
+    should.exist(dState.sActivityData)
+    let mSeed = dGetters.mergedData(dState, dGetters, rootState)
+    should.exist(mSeed)
+  })
+})
+
 function createRootState () {
   return {
     seedStore: {},
@@ -99,13 +136,5 @@ function createRootState () {
         isInstructor: false
       }
     }
-  }
-}
-function createActivityData () {
-  return {
-    evaluated: false,
-    submitted: false,
-    scratchData: undefined,
-    assignmentData: {}
   }
 }

@@ -1,0 +1,94 @@
+{
+  "allergies": {
+    "allergies": "asdasd",
+    "hasNoAllergies": false,
+    "lastUpdate": "2019-07-25T10:02:07-07:00"
+  },
+  "demographics": {
+    "city": "Vancouver",
+    "country": "Canada",
+    "dateOfBirth": "09-SEP-19##",
+    "decisionMakerName": "Thomas Johns",
+    "decisionMakerPhone": "604-555-9865",
+    "decisionMakerRelationship": "Son",
+    "familyName": "Johns",
+    "gender": "Female",
+    "givenName": "Seeded",
+    "height": "157",
+    "indigenousIdentifyAs": "No",
+    "languagePrimary": "English",
+    "martialStatus": "Widow",
+    "nextOfKinName": "Thomas Johns",
+    "nextOfKinPhone": "604-555-9865",
+    "nextOfKinRelationship": "Son",
+    "occupationStudent": "Retired",
+    "personAge": "74",
+    "phn": "12345678",
+    "phoneNumber": "(778) 555-2947",
+    "postalCode": "V3F 9R2",
+    "preferredName": "Erin",
+    "streetAddress": "402 Willow St.",
+    "weight": "63"
+  },
+  "medical": {
+    "history": "some med history",
+    "lastUpdate": "2019-07-25T10:02:19-07:00"
+  },
+  "neurological": {
+    "table": [
+      {
+        "name": "instructor",
+        "profession": "seed editor",
+        "day": "8",
+        "time": "9",
+        "alert": true,
+        "oriented": true,
+        "verbalResponse": "1 = None",
+        "bestMotorResponse": "2 = Extension",
+        "glasgowCalculation": 3,
+        "loss": "Yes",
+        "duration": "2",
+        "leftPupilSize": "2",
+        "leftPupilResponseToLight": "Brisk",
+        "rightPupilSize": "4",
+        "rightPupilResponseToLight": "Sluggish",
+        "bothPupils": "Equal",
+        "levelOfConciousnessQuestions": "1 = Answers one question correctly",
+        "limbAtaxia": "1 = Present in one limb",
+        "strokeAssessmentCalculation": 2,
+        "createdDate": "2019-07-25T10:04:34-07:00",
+        "isFromSeed": true
+      }
+    ]
+  },
+  "nonmedOrders": {
+    "lastUpdate": "2019-07-25T10:07:47-07:00",
+    "table": [
+      {
+        "name": "Ins",
+        "profession": "seed",
+        "day": "0",
+        "time": "9",
+        "order": "Foo",
+        "orderedBy": "gg",
+        "reason": "because",
+        "status": "Ordered",
+        "comment": "more info",
+        "createdDate": "2019-07-25T10:06:35-07:00",
+        "isFromSeed": true
+      },
+      {
+        "name": "joe",
+        "profession": "student",
+        "day": "1",
+        "time": "2",
+        "order": "Foobar",
+        "orderedBy": "me",
+        "reason": "help",
+        "status": "Cancelled",
+        "comment": "no info",
+        "createdDate": "2019-07-25T10:07:47-07:00"
+      }
+    ]
+  }
+}
