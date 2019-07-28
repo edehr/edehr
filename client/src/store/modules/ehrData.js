@@ -1,8 +1,8 @@
 import StoreHelper from './storeHelper'
 import EventBus from '../../helpers/event-bus'
 import { ACTIVITY_DATA_EVENT } from '../../helpers/event-bus'
-import { composeUrl, decoupleObject } from '../../helpers/ehr-utills'
-import { ehrMergeEhrData, ehrMarkSeed } from '../../helpers/ehr-utills'
+import { composeUrl, decoupleObject } from '../../helpers/ehr-utils'
+import { ehrMergeEhrData, ehrMarkSeed } from '../../helpers/ehr-utils'
 import { getAllPageKeys, getPageDefinition, getDefaultValue, getDataCaseStudy } from '../../helpers/ehr-defs'
 
 const helper = new StoreHelper()
@@ -72,7 +72,8 @@ export const getters = {
     }
     return mData
   },
-  hasDataForPageKey (state, getters, rootState) {
+  hasDataForPagesList (state, getters, rootState) {
+    // console.log('hasDataForPagesList')
     const pageKeys = getAllPageKeys()
     const mergedData = getters.mergedData
     const seedData = rootState.seedStore.ehrSeedData

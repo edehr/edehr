@@ -1,4 +1,4 @@
-import { setApiError } from './ehr-utills'
+import { setApiError } from './ehr-utils'
 import CV1 from '../inside/defs/current-visit-1'
 import CV2 from '../inside/defs/current-visit-2'
 import PC from '../inside/defs/patient-chart'

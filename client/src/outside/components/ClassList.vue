@@ -43,7 +43,7 @@
 <script>
 import AccordionElement from '../../app/components/AccordionElement'
 import UiButton from '../../app/ui/UiButton.vue'
-import { formatTimeStr } from '../../helpers/ehr-utills'
+import { formatTimeStr } from '../../helpers/ehr-utils'
 import StoreHelper from '../../helpers/store-helper'
 
 export default {

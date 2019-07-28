@@ -1,5 +1,5 @@
 import axios from 'axios' // '../node_modules/axios/dist/axios.min'
-import { setApiError } from '../../helpers/ehr-utills'
+import { setApiError } from '../../helpers/ehr-utils'
 
 const state = {
   apiUrl: '',

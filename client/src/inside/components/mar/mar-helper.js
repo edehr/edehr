@@ -1,4 +1,4 @@
-import { setApiError } from '../../../helpers/ehr-utills'
+import { setApiError } from '../../../helpers/ehr-utils'
 import MedOrder from './med-entity'
 import MarEntity from './mar-entity'
 import { getPageDefinition } from '../../../helpers/ehr-defs'

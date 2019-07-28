@@ -40,7 +40,7 @@ import UiAgree from '../../app/ui/UiAgree.vue'
 import EhrSeedDataDialog from './EhrSeedDataDialog'
 import StoreHelper from '../../helpers/store-helper'
 import EventBus from '../../helpers/event-bus'
-import { setApiError, readFile, importSeedData, downloadSeedToFile } from '../../helpers/ehr-utills'
+import { setApiError, readFile, importSeedData, downloadSeedToFile } from '../../helpers/ehr-utils'
 import { PAGE_DATA_REFRESH_EVENT } from '../../helpers/event-bus'
 
 const TEXT = {

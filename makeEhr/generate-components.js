@@ -23,7 +23,7 @@ function main () {
  * generating function.
  *
  */
-function generateInsidePageDefs() {
+function generateInsidePageDefs () {
   let fSrc = pathUtil.join(rawDataSource, insidePageRawDefFileName) + '.txt'
   let fDest = pathUtil.join(destEhrDefs, insidePageRawDefFileName)  + '.js'
   // console.log('read file ', fSrc)
@@ -31,8 +31,8 @@ function generateInsidePageDefs() {
     var inputToDef = new RawPagesToDefs()
     var masterPageDefs = inputToDef.getDefinitions(contents)
     var results = JSON.stringify(masterPageDefs, null, 2)
-    results = results.replace(/'/g, "\\'")
-    results = results.replace(/"/g, "'")
+    results = results.replace(/'/g, '\\\'')
+    results = results.replace(/"/g, '\'')
     // results = _fixBooleans(results)
     var modDef = 'module.exports = function () {\n  return ' + results + '\n}'
     // console.log('write file ', fDest)
@@ -138,6 +138,7 @@ function makeTreeItem (def, tree) {
     item.redirect = def.redirect
   }
   item.label = def.label
+  item.pageDataKey = def.pageDataKey
   item.routeName = def.routeName
   item.topLevel = def.topLevel
   item.def = def
@@ -170,7 +171,7 @@ function makeMenu (tree, outfilename) {
   fs.writeFileSync(outfilename, txtContent, 'utf8')
 }
 
-function getComponent(fName) {
+function getComponent (fName) {
   let templateFileName = pathUtil.join(__dirname, source, fName)
   let componentTemplate = fs.readFileSync(templateFileName, 'utf8')
   return componentTemplate

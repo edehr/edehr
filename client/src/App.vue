@@ -5,8 +5,7 @@
 </template>
 
 <script>
-import { getIncomingParams } from './helpers/ehr-utills'
-import { setApiError } from './helpers/ehr-utills'
+import { getIncomingParams, setApiError } from './helpers/ehr-utils'
 import EventBus from './helpers/event-bus'
 import { Text } from './helpers/ehr-text'
 import StoreHelper from './helpers/store-helper'

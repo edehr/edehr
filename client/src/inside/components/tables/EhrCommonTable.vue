@@ -1,7 +1,7 @@
 
 <script>
 import moment from 'moment'
-import { formatDateStr } from '../../../helpers/ehr-utills'
+import { formatDateStr } from '../../../helpers/ehr-utils'
 import EventBus from '../../../helpers/event-bus'
 import { TABLE_DATA_REFRESH_EVENT } from '../../../helpers/event-bus'
 

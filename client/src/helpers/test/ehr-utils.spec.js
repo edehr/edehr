@@ -8,7 +8,7 @@ import {
   prepareAssignmentPageDataForSave,
   validateSeedFileContents,
   SEED_MARK
-} from '../ehr-utills'
+} from '../ehr-utils'
 import { Text } from '../ehr-text'
 //
 describe('Test seed marking', () => {

@@ -93,7 +93,7 @@ export default function () {
           fqn: "visit.table.transferOutTime"
         }
       ],
-      generated: "2019-07-15T17:54:53-07:00",
+      generated: "2019-07-27T14:16:07-07:00",
       hasForm: true,
       pageForm: {
         rows: [
@@ -433,7 +433,7 @@ export default function () {
           suffix: "/lpm"
         }
       ],
-      generated: "2019-07-15T17:54:53-07:00",
+      generated: "2019-07-27T14:16:07-07:00",
       hasTable: true,
       tables: [
         {
@@ -811,7 +811,7 @@ export default function () {
           fqn: "fluidBalance.table.fluidOut"
         }
       ],
-      generated: "2019-07-15T17:54:53-07:00",
+      generated: "2019-07-27T14:16:07-07:00",
       hasTable: true,
       tables: [
         {
@@ -1541,7 +1541,7 @@ export default function () {
           fqn: "neurological.table.stroke.strokeAssessmentCalculation"
         }
       ],
-      generated: "2019-07-15T17:54:53-07:00",
+      generated: "2019-07-27T14:16:07-07:00",
       hasTable: true,
       tables: [
         {
@@ -2695,7 +2695,7 @@ export default function () {
           dataCaseStudy: "(no notes)"
         }
       ],
-      generated: "2019-07-15T17:54:53-07:00",
+      generated: "2019-07-27T14:16:07-07:00",
       hasTable: true,
       tables: [
         {
@@ -3168,7 +3168,7 @@ export default function () {
       ]
     },
     cardiovascular: {
-      pageTitle: "Cardiovascular assessment",
+      pageTitle: "Cardiovascular",
       pageDataKey: "cardiovascular",
       pageChildren: [
         {
@@ -3588,7 +3588,7 @@ export default function () {
           dataCaseStudy: "(blank)"
         }
       ],
-      generated: "2019-07-15T17:54:53-07:00",
+      generated: "2019-07-27T14:16:07-07:00",
       hasTable: true,
       tables: [
         {
@@ -4122,7 +4122,7 @@ export default function () {
       ]
     },
     gastrointestinal: {
-      pageTitle: "Gastrointestinal assessment",
+      pageTitle: "Gastrointestinal",
       pageDataKey: "gastrointestinal",
       pageChildren: [
         {
@@ -4423,7 +4423,7 @@ export default function () {
           dataCaseStudy: "(nothing entered)"
         }
       ],
-      generated: "2019-07-15T17:54:53-07:00",
+      generated: "2019-07-27T14:16:07-07:00",
       hasTable: true,
       tables: [
         {

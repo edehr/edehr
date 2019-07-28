@@ -1,6 +1,6 @@
 import StoreHelper from './storeHelper'
 const helper = new StoreHelper()
-import { composeUrl } from '../../helpers/ehr-utills'
+import { composeUrl } from '../../helpers/ehr-utils'
 const API = 'seed-data'
 
 // exporting elements so they can be accessed in unit tests.

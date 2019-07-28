@@ -23,6 +23,7 @@
           {
             "name": "demographics",
             "label": "Demographics",
+            "pageDataKey": "demographics",
             "routeName": "demographics",
             "topLevel": "patient",
             "def": {
@@ -44,6 +45,7 @@
           {
             "name": "allergies",
             "label": "Allergies",
+            "pageDataKey": "allergies",
             "routeName": "allergies",
             "topLevel": "patient",
             "def": {
@@ -71,7 +73,6 @@
             "def": {
               "path": "/ehr/patient",
               "routeName": "history",
-              "pageDataKey": "history",
               "label": "History",
               "redirect": "medical",
               "generateComponent": "yes",
@@ -86,6 +87,7 @@
               {
                 "name": "medical",
                 "label": "Medical history",
+                "pageDataKey": "medical",
                 "routeName": "medical",
                 "topLevel": "patient",
                 "def": {
@@ -107,6 +109,7 @@
               {
                 "name": "psychosocial",
                 "label": "Psychosocial history",
+                "pageDataKey": "psychosocial",
                 "routeName": "psychosocial",
                 "topLevel": "patient",
                 "def": {
@@ -128,6 +131,7 @@
               {
                 "name": "surgical",
                 "label": "Surgical history",
+                "pageDataKey": "surgical",
                 "routeName": "surgical",
                 "topLevel": "patient",
                 "def": {
@@ -149,6 +153,7 @@
               {
                 "name": "immunization",
                 "label": "Immunization history",
+                "pageDataKey": "immunization",
                 "routeName": "immunization",
                 "topLevel": "patient",
                 "def": {
@@ -170,6 +175,7 @@
               {
                 "name": "family-history",
                 "label": "Family history",
+                "pageDataKey": "familyHistory",
                 "routeName": "family-history",
                 "topLevel": "patient",
                 "def": {
@@ -193,6 +199,7 @@
           {
             "name": "care-team",
             "label": "Care team",
+            "pageDataKey": "careTeam",
             "routeName": "care-team",
             "topLevel": "patient",
             "def": {
@@ -214,6 +221,7 @@
           {
             "name": "past-appointments",
             "label": "Past appointments",
+            "pageDataKey": "pastAppointments",
             "routeName": "past-appointments",
             "topLevel": "patient",
             "def": {
@@ -256,6 +264,7 @@
           {
             "name": "visit-details",
             "label": "Visit details",
+            "pageDataKey": "visit",
             "routeName": "visit-details",
             "topLevel": "current",
             "def": {
@@ -277,6 +286,7 @@
           {
             "name": "vital-signs",
             "label": "Vital signs",
+            "pageDataKey": "vitals",
             "routeName": "vital-signs",
             "topLevel": "current",
             "def": {
@@ -298,6 +308,7 @@
           {
             "name": "fluid-balance",
             "label": "Fluid balance",
+            "pageDataKey": "fluidBalance",
             "routeName": "fluid-balance",
             "topLevel": "current",
             "def": {
@@ -337,14 +348,15 @@
             "children": [
               {
                 "name": "neurological",
-                "label": "Neurological",
+                "label": "Neurological assessment",
+                "pageDataKey": "neurological",
                 "routeName": "neurological",
                 "topLevel": "current",
                 "def": {
                   "path": "/ehr/current/assessments",
                   "routeName": "neurological",
                   "pageDataKey": "neurological",
-                  "label": "Neurological",
+                  "label": "Neurological assessment",
                   "redirect": "",
                   "generateComponent": "yes",
                   "componentName": "Neurological",
@@ -358,14 +370,15 @@
               },
               {
                 "name": "respiratory",
-                "label": "Respiratory",
+                "label": "Respiratory assessment",
+                "pageDataKey": "respiratory",
                 "routeName": "respiratory",
                 "topLevel": "current",
                 "def": {
                   "path": "/ehr/current/assessments",
                   "routeName": "respiratory",
                   "pageDataKey": "respiratory",
-                  "label": "Respiratory",
+                  "label": "Respiratory assessment",
                   "redirect": "",
                   "generateComponent": "yes",
                   "componentName": "Respiratory",
@@ -380,6 +393,7 @@
               {
                 "name": "cardiovascular",
                 "label": "Cardiovascular",
+                "pageDataKey": "cardiovascular",
                 "routeName": "cardiovascular",
                 "topLevel": "current",
                 "def": {
@@ -401,6 +415,7 @@
               {
                 "name": "gastrointestinal",
                 "label": "Gastrointestinal",
+                "pageDataKey": "gastrointestinal",
                 "routeName": "gastrointestinal",
                 "topLevel": "current",
                 "def": {
@@ -421,14 +436,15 @@
               },
               {
                 "name": "genitourinary",
-                "label": "Genitourinary",
+                "label": "Genitourinary assessment",
+                "pageDataKey": "genitourinary",
                 "routeName": "genitourinary",
                 "topLevel": "current",
                 "def": {
                   "path": "/ehr/current/assessments",
                   "routeName": "genitourinary",
                   "pageDataKey": "genitourinary",
-                  "label": "Genitourinary",
+                  "label": "Genitourinary assessment",
                   "redirect": "",
                   "generateComponent": "yes",
                   "componentName": "Genitourinary",
@@ -442,14 +458,15 @@
               },
               {
                 "name": "musculoskeletal",
-                "label": "Musculoskeletal",
+                "label": "Musculoskeletal assessment",
+                "pageDataKey": "musculoskeletal",
                 "routeName": "musculoskeletal",
                 "topLevel": "current",
                 "def": {
                   "path": "/ehr/current/assessments",
                   "routeName": "musculoskeletal",
                   "pageDataKey": "musculoskeletal",
-                  "label": "Musculoskeletal",
+                  "label": "Musculoskeletal assessment",
                   "redirect": "",
                   "generateComponent": "yes",
                   "componentName": "Musculoskeletal",
@@ -463,14 +480,15 @@
               },
               {
                 "name": "pain",
-                "label": "Pain",
+                "label": "Pain assessment",
+                "pageDataKey": "pain",
                 "routeName": "pain",
                 "topLevel": "current",
                 "def": {
                   "path": "/ehr/current/assessments",
                   "routeName": "pain",
                   "pageDataKey": "pain",
-                  "label": "Pain",
+                  "label": "Pain assessment",
                   "redirect": "",
                   "generateComponent": "yes",
                   "componentName": "Pain",
@@ -485,6 +503,7 @@
               {
                 "name": "biopsychosocial",
                 "label": "Biopsychosocial",
+                "pageDataKey": "biopsychosocial",
                 "routeName": "biopsychosocial",
                 "topLevel": "current",
                 "def": {
@@ -527,6 +546,7 @@
               {
                 "name": "no-med-orders",
                 "label": "Orders",
+                "pageDataKey": "nonmedOrders",
                 "routeName": "no-med-orders",
                 "topLevel": "current",
                 "def": {
@@ -548,6 +568,7 @@
               {
                 "name": "referrals",
                 "label": "Referrals to other disciplines",
+                "pageDataKey": "referrals",
                 "routeName": "referrals",
                 "topLevel": "current",
                 "def": {
@@ -569,6 +590,7 @@
               {
                 "name": "lab-requisitions",
                 "label": "Lab requisitions",
+                "pageDataKey": "labRequisitions",
                 "routeName": "lab-requisitions",
                 "topLevel": "current",
                 "def": {
@@ -592,6 +614,7 @@
           {
             "name": "meds",
             "label": "Medication orders",
+            "pageDataKey": "medicationOrders",
             "routeName": "meds",
             "topLevel": "current",
             "def": {
@@ -613,6 +636,7 @@
           {
             "name": "mar",
             "label": "Medication administration records",
+            "pageDataKey": "medAdminRec",
             "routeName": "mar",
             "topLevel": "current",
             "def": {
@@ -634,6 +658,7 @@
           {
             "name": "discharge",
             "label": "Discharge summary",
+            "pageDataKey": "dischargeSummary",
             "routeName": "discharge",
             "topLevel": "current",
             "def": {
@@ -655,6 +680,7 @@
           {
             "name": "billing",
             "label": "Billing",
+            "pageDataKey": "billing",
             "routeName": "billing",
             "topLevel": "current",
             "def": {
@@ -697,6 +723,7 @@
           {
             "name": "progress-notes",
             "label": "Progress notes",
+            "pageDataKey": "progressNotes",
             "routeName": "progress-notes",
             "topLevel": "chart",
             "def": {
@@ -718,6 +745,7 @@
           {
             "name": "care-plan",
             "label": "Interprofessional plan of care",
+            "pageDataKey": "carePlan",
             "routeName": "care-plan",
             "topLevel": "chart",
             "def": {
@@ -758,12 +786,13 @@
               {
                 "name": "consults",
                 "label": "Consults",
+                "pageDataKey": "consults",
                 "routeName": "consults",
                 "topLevel": "chart",
                 "def": {
                   "path": "/ehr/chart/reports",
                   "routeName": "consults",
-                  "pageDataKey": "consultants",
+                  "pageDataKey": "consults",
                   "label": "Consults",
                   "redirect": "",
                   "generateComponent": "yes",
@@ -778,14 +807,15 @@
               },
               {
                 "name": "lab-reports",
-                "label": "Lab reports",
+                "label": "Laboratory results",
+                "pageDataKey": "labResults",
                 "routeName": "lab-reports",
                 "topLevel": "chart",
                 "def": {
                   "path": "/ehr/chart/reports",
                   "routeName": "lab-reports",
                   "pageDataKey": "labResults",
-                  "label": "Lab reports",
+                  "label": "Laboratory results",
                   "redirect": "",
                   "generateComponent": "yes",
                   "componentName": "LabReports",
@@ -800,6 +830,7 @@
               {
                 "name": "diagnostic-reports",
                 "label": "Medical imaging",
+                "pageDataKey": "medicalImaging",
                 "routeName": "diagnostic-reports",
                 "topLevel": "chart",
                 "def": {
@@ -821,6 +852,7 @@
               {
                 "name": "operative-anaesthesia",
                 "label": "Operative reports and anaesthesia record",
+                "pageDataKey": "operationReports",
                 "routeName": "operative-anaesthesia",
                 "topLevel": "chart",
                 "def": {
@@ -865,6 +897,7 @@
           {
             "name": "assessment-tools",
             "label": "Standardized assessment tools",
+            "pageDataKey": "assessmentTools",
             "routeName": "assessment-tools",
             "topLevel": "external",
             "def": {
@@ -886,6 +919,7 @@
           {
             "name": "code-lookup",
             "label": "Code lookup",
+            "pageDataKey": "codeLookup",
             "routeName": "code-lookup",
             "topLevel": "external",
             "def": {
@@ -907,6 +941,7 @@
           {
             "name": "diagnostic-codes",
             "label": "Diagnostic codes (ICD-10)",
+            "pageDataKey": "diagnosticCodes",
             "routeName": "diagnostic-codes",
             "topLevel": "external",
             "def": {
@@ -928,6 +963,7 @@
           {
             "name": "intervention-codes",
             "label": "Intervention codes",
+            "pageDataKey": "interventionCodes",
             "routeName": "intervention-codes",
             "topLevel": "external",
             "def": {
@@ -949,6 +985,7 @@
           {
             "name": "case-mix-group",
             "label": "Case mix group",
+            "pageDataKey": "caseMixGroup",
             "routeName": "case-mix-group",
             "topLevel": "external",
             "def": {
@@ -970,6 +1007,7 @@
           {
             "name": "test-page",
             "label": "Test Page",
+            "pageDataKey": "testPage",
             "routeName": "test-page",
             "topLevel": "external",
             "def": {
@@ -991,6 +1029,7 @@
           {
             "name": "test-table",
             "label": "Test Table",
+            "pageDataKey": "testTable",
             "routeName": "test-table",
             "topLevel": "external",
             "def": {

@@ -6,7 +6,7 @@
 
 <script>
 import UiClose from '../ui/UiClose'
-import { setApiError, setSystemMessage } from '../../helpers/ehr-utills'
+import { setApiError, setSystemMessage } from '../../helpers/ehr-utils'
 import { Text } from '../../helpers/ehr-text'
 import StoreHelper from '../../helpers/store-helper'
 import EventBus from '../../helpers/event-bus'

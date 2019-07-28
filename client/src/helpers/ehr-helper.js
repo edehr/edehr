@@ -5,7 +5,7 @@ import { ACTIVITY_DATA_EVENT } from './event-bus'
 import { DIALOG_INPUT_EVENT } from './event-bus'
 import { PAGE_FORM_INPUT_EVENT } from './event-bus'
 import { PAGE_DATA_REFRESH_EVENT, TABLE_DATA_REFRESH_EVENT } from './event-bus'
-import { removeEmptyProperties, prepareAssignmentPageDataForSave, formatTimeStr } from './ehr-utills'
+import { removeEmptyProperties, prepareAssignmentPageDataForSave, formatTimeStr } from './ehr-utils'
 import { getPageDefinition, getDefaultValue } from './ehr-defs'
 
 const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
@@ -209,6 +209,10 @@ export default class EhrHelp {
     return this.$store.getters['ehrData/asLoadedDataForPageKey'](pageKey)
   }
 
+  getHasDataForPagesList () {
+    let hasDataForPagesList = store.getters['ehrData/hasDataForPagesList']
+    return hasDataForPagesList
+  }
   /**
    * Get and return the merged (seed + student's work) for the current page
    *

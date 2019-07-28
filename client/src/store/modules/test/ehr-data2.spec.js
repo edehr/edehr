@@ -1,8 +1,6 @@
-import fs from 'fs'
-import path from 'path'
 import { getPageDefinition, getAllPageKeys } from '../../../helpers/ehr-defs'
 import { mutations as dMutations, state as dState, getters as dGetters} from '../ehrData'
-import { mutations as sMutations, state as sState, getters as sGetters} from '../seedStore'
+import { mutations as sMutations, state as sState } from '../seedStore'
 
 import {createActivityData, getObjFromFile, SEED} from './store-test-helper'
 const should = require('should')

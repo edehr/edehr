@@ -12,7 +12,7 @@
       div Page updated: {{ ehrHelp.formatDate(uiProps.generated) }}
     div(style="display:none")
       p This Neurological page is generated.
-      p Label: Neurological
+      p Label: Neurological assessment
       p Data Key: neurological
       p Component name: Neurological
       p Redirect: 

@@ -13,7 +13,7 @@
     div(style="display:none")
       p This History page is generated.
       p Label: History
-      p Data Key: history
+      p Data Key: undefined
       p Component name: History
       p Redirect: medical
       p Route name: history
@@ -40,7 +40,7 @@ export default {
   },
   data: function () {
     return {
-      pageDataKey: 'history',
+      pageDataKey: 'undefined',
       ehrHelp: undefined
     }
   },

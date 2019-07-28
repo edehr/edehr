@@ -33,9 +33,7 @@ export default {
     }
   },
   props: {
-    path: {
-      type: Object
-    },
+    path: { type: Object },
     level: { type: Number }
   },
   methods: {

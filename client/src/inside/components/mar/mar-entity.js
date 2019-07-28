@@ -1,4 +1,4 @@
-import { validTimeStr, validDayStr } from '../../../helpers/ehr-utills'
+import { validTimeStr, validDayStr } from '../../../helpers/ehr-utils'
 import PeriodDefs from './period-defs'
 import MedOrder from './med-entity'
 

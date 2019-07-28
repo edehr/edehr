@@ -25,7 +25,6 @@ module.exports = function () {
     {
       path: '/ehr/patient',
       routeName: 'history',
-      pageDataKey: 'history',
       label: 'History',
       redirect: 'medical',
       generateComponent: 'yes'
@@ -125,7 +124,7 @@ module.exports = function () {
       path: '/ehr/current/assessments',
       routeName: 'neurological',
       pageDataKey: 'neurological',
-      label: 'Neurological',
+      label: 'Neurological assessment',
       redirect: '',
       generateComponent: 'yes'
     },
@@ -133,7 +132,7 @@ module.exports = function () {
       path: '/ehr/current/assessments',
       routeName: 'respiratory',
       pageDataKey: 'respiratory',
-      label: 'Respiratory',
+      label: 'Respiratory assessment',
       redirect: '',
       generateComponent: 'yes'
     },
@@ -157,7 +156,7 @@ module.exports = function () {
       path: '/ehr/current/assessments',
       routeName: 'genitourinary',
       pageDataKey: 'genitourinary',
-      label: 'Genitourinary',
+      label: 'Genitourinary assessment',
       redirect: '',
       generateComponent: 'yes'
     },
@@ -165,7 +164,7 @@ module.exports = function () {
       path: '/ehr/current/assessments',
       routeName: 'musculoskeletal',
       pageDataKey: 'musculoskeletal',
-      label: 'Musculoskeletal',
+      label: 'Musculoskeletal assessment',
       redirect: '',
       generateComponent: 'yes'
     },
@@ -173,7 +172,7 @@ module.exports = function () {
       path: '/ehr/current/assessments',
       routeName: 'pain',
       pageDataKey: 'pain',
-      label: 'Pain',
+      label: 'Pain assessment',
       redirect: '',
       generateComponent: 'yes'
     },
@@ -278,7 +277,7 @@ module.exports = function () {
     {
       path: '/ehr/chart/reports',
       routeName: 'consults',
-      pageDataKey: 'consultants',
+      pageDataKey: 'consults',
       label: 'Consults',
       redirect: '',
       generateComponent: 'yes'
@@ -287,7 +286,7 @@ module.exports = function () {
       path: '/ehr/chart/reports',
       routeName: 'lab-reports',
       pageDataKey: 'labResults',
-      label: 'Lab reports',
+      label: 'Laboratory results',
       redirect: '',
       generateComponent: 'yes'
     },

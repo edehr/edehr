@@ -38,7 +38,7 @@
 import UiButton from '../../app/ui/UiButton.vue'
 import UiLink from '../../app/ui/UiLink.vue'
 import StoreHelper from '../../helpers/store-helper'
-import { getIncomingParams } from '../../helpers/ehr-utills'
+import { getIncomingParams } from '../../helpers/ehr-utils'
 import BreadCrumb from './BreadCrumb'
 import AssignmentsDialog from './AssignmentsDialog'
 

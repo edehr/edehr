@@ -65,12 +65,12 @@ describe('Test ehrData asLoadedDataForPageKey', () => {
   })
 })
 
-describe('Test ehrData hasDataForPageKey', () => {
-  it('store hasDataForPageKey ', () => {
+describe('Test ehrData hasDataForPagesList', () => {
+  it('store hasDataForPagesList ', () => {
     store.commit('seedStore/_setSeedEhrData', SEED)
     store.commit('visit/setVisitInfo', studentVisit())
     store.commit('ehrData/_setActivityData', activityData(1))
-    let hasData = store.getters['ehrData/hasDataForPageKey']
+    let hasData = store.getters['ehrData/hasDataForPagesList']
     let p
     p = hasData.demographics
     should(p.hasSeed).equals(true)
@@ -80,12 +80,11 @@ describe('Test ehrData hasDataForPageKey', () => {
     should(p.hasSeed).equals(false)
     should(p.hasInstructor).equals(false)
     should(p.hasStudent).equals(true)
-    // TODO build out this test.  Look for data case study data in the seed
   })
-  it('store hasDataForPageKey ', () => {
+  it('store hasDataForPagesList ', () => {
     store.commit('seedStore/_setSeedEhrData', SEED)
     store.commit('visit/setVisitInfo', developerVisit())
-    let hasData = store.getters['ehrData/hasDataForPageKey']
+    let hasData = store.getters['ehrData/hasDataForPagesList']
     let p
     p = hasData.demographics
     should(p.hasSeed).equals(true)
