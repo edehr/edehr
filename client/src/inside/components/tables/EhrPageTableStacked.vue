@@ -1,13 +1,16 @@
 <template lang="pug">
-  table.table_horizontal
-    thead
-      tr
-        th(v-for="stack in stacks", :class="tableColumnCss(stack)" :title="columnTitle(stack)")
-          span(v-html="columnTitle(stack)")
-    tbody
-      tr(v-for="tblRow in stackedData")
-        td(v-for="stack in tblRow", :class="getCellCss(stack)")
-          div(v-for="cell in stack") {{ getCellData(cell) }} &nbsp;
+  div
+    div(v-if="!hasData") No data
+    div(v-else)
+      table.table_horizontal
+        thead
+          tr
+            th(v-for="stack in stacks", :class="tableColumnCss(stack)" :title="columnTitle(stack)")
+              span(v-html="columnTitle(stack)")
+        tbody
+          tr(v-for="tblRow in stackedData")
+            td(v-for="stack in tblRow", :class="getCellCss(stack)")
+              div(v-for="cell in stack") {{ getCellData(cell) }} &nbsp;
 </template>
 
 <script>
@@ -26,6 +29,9 @@ export default {
     }
   },
   computed: {
+    hasData () {
+      return this.stackedData.length > 0
+    },
     stacks () { return this.tableDef.stacks}
   },
   methods: {

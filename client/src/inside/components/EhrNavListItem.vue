@@ -30,13 +30,16 @@ export default {
     },
     hasDataColour () {
       let colour = ''
+      const D = 'green'
+      const S = 'orange'
+      const X = ''
       let hd = this.hasData
       if (StoreHelper.isStudent(this)) {
-        colour = hd.hasStudent ? 'green' : ''
+        colour = hd.hasStudent ? D : X
       } else if (StoreHelper.isInstructor(this)) {
-        colour = hd.hasInstructor ? 'green' : ''
+        colour = hd.hasInstructor ? D : (hd.hasSeed ? S : X)
       } else if (StoreHelper.isDeveloper(this)) {
-        colour = hd.hasSeed ? 'green' : ''
+        colour = hd.hasSeed ? D : X
       }
       return colour
     },

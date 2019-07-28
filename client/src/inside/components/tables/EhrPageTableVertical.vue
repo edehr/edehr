@@ -1,10 +1,13 @@
 <template lang="pug">
-  table.table_vertical
-    tbody
-      tr(v-for="column in transposedColumns", :class="tableColumnCss(column)")
-        td(:class="transposeLabelCss(column)")
-          span(v-html="transposeLabel(column).value")
-        td(v-for="cell in transposeData(column)", :class="transposeValueCss(cell)") {{ getCellData(cell) }}
+  div
+    div(v-if="!hasData") No data
+    div(v-else)
+      table.table_vertical
+        tbody
+          tr(v-for="column in transposedColumns", :class="tableColumnCss(column)")
+            td(:class="transposeLabelCss(column)")
+              span(v-html="transposeLabel(column).value")
+            td(v-for="cell in transposeData(column)", :class="transposeValueCss(cell)") {{ getCellData(cell) }}
 </template>
 
 <script>
@@ -16,6 +19,11 @@ export default {
   data: function () {
     return {
       transposedColumns: []
+    }
+  },
+  computed: {
+    hasData () {
+      return this.transposedColumns.length > 0 && this.transposedColumns[0].length > 1
     }
   },
   methods: {
