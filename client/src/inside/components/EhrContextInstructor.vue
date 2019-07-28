@@ -29,7 +29,7 @@
 import UiButton from '../../app/ui/UiButton'
 import UiInfo from '../../app/ui/UiInfo'
 import EhrEvaluationInput from './EhrEvaluationInput'
-import { formatTimeStr } from '../../helpers/ehr-utills'
+import { formatTimeStr } from '../../helpers/ehr-utils'
 import StoreHelper from '../../helpers/store-helper'
 
 // TODO add student classlist counter and student list drop down

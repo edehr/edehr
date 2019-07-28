@@ -1,14 +1,14 @@
 import StoreHelper from './storeHelper'
 import EventBus from '../../helpers/event-bus'
 import { ACTIVITY_DATA_EVENT } from '../../helpers/event-bus'
-import { composeUrl, decoupleObject } from '../../helpers/ehr-utills'
-import { ehrMergeEhrData, ehrMarkSeed } from '../../helpers/ehr-utills'
-import { getPageDefinition, getDefaultValue, getDataCaseStudy } from '../../helpers/ehr-defs'
+import { composeUrl, decoupleObject } from '../../helpers/ehr-utils'
+import { ehrMergeEhrData, ehrMarkSeed } from '../../helpers/ehr-utils'
+import { getAllPageKeys, getPageDefinition, getDefaultValue, getDataCaseStudy } from '../../helpers/ehr-defs'
 
 const helper = new StoreHelper()
 const API_ACTIVITY = 'activity-data'
 
-const state = {
+export const state = {
   /*
   sActivityData is a db model object containing the student's assignment work, scratch pad, instructors evaluation notes, etc
    */
@@ -23,17 +23,18 @@ const state = {
   sCurrentStudentData: {}
 }
 
-const getters = {
+export const getters = {
   assignmentData: (state, getters, rootState) => {
+    const debug = false
     /*
     By the documentation getters['visit/isInstructor'] should work but it doesn't
     So use the direct access of rootstate ...
      */
     if (helper.instoreIsInstructor(rootState)) {
-      console.log('Using current student from class list ', state.sCurrentStudentData)
+      if(debug) console.log('Using current student from class list ', state.sCurrentStudentData)
       return state.sCurrentStudentData.assignmentData
     } else {
-      console.log('Using students assignment data')
+      if(debug) console.log('Using students assignment data')
       // assignmentData is the data without seed
       return state.sActivityData.assignmentData
     }
@@ -52,7 +53,7 @@ const getters = {
     } else if (helper.instoreIsInstructor(rootState)) {
       let evalAssignmentData = decoupleObject(state.sCurrentStudentData.assignmentData)
       if(debug) {
-        console.log('EhrData mergedData -=-=-=-=-=-=-=-=-=-=-=-= ehrSeedData', ehrSeedData)
+        console.log('EhrData mergedData -=-=-=-=-=-=-=-=-=-=-=-= Instructor ehrSeedData', ehrSeedData)
         console.log('EhrData mergedData -=-=-=-=-=-=-=-=-=-=-=-= sCurrentStudentData.assignmentData', evalAssignmentData)
         console.log('EhrData mergedData -=-=-=-=-=-=-=-=-=-=-=-= Instructor result', mData)
       }
@@ -64,12 +65,31 @@ const getters = {
       let studentAssignmentData = decoupleObject(state.sActivityData.assignmentData)
       mData = ehrMergeEhrData(ehrSeedData, studentAssignmentData)
       if(debug) {
-        console.log('EhrData mergedData -=-=-=-=-=-=-=-=-=-=-=-= ehrSeedData', ehrSeedData)
-        console.log('EhrData mergedData -=-=-=-=-=-=-=-=-=-=-=-= studentAssignmentData', studentAssignmentData)
-        console.log('EhrData mergedData -=-=-=-=-=-=-=-=-=-=-=-= Student result', mData)
+        console.log('EhrData mergedData -=-=-=-=-=-=-=-=-=-=-=-= Student ehrSeedData', JSON.stringify(ehrSeedData))
+        console.log('EhrData mergedData -=-=-=-=-=-=-=-=-=-=-=-= studentAssignmentData', JSON.stringify(studentAssignmentData))
+        console.log('EhrData mergedData -=-=-=-=-=-=-=-=-=-=-=-= Student result', JSON.stringify(mData))
       }
     }
     return mData
+  },
+  hasDataForPagesList (state, getters, rootState) {
+    // console.log('hasDataForPagesList')
+    const pageKeys = getAllPageKeys()
+    const mergedData = getters.mergedData
+    const seedData = rootState.seedStore.ehrSeedData
+    const instructorData = state.sCurrentStudentData.assignmentData
+    const studentData = state.sActivityData.assignmentData
+    let results = {}
+    pageKeys.forEach( key => {
+      results[key] = {
+        pagekey: key
+      }
+      if (mergedData) results[key].hasMerged = !! mergedData[key]
+      if (seedData) results[key].hasSeed = !! seedData[key]
+      if (instructorData) results[key].hasInstructor = !! instructorData[key]
+      if (studentData) results[key].hasStudent = !! studentData[key]
+    })
+    return results
   },
   asLoadedDataForPageKey (state, getters, rootState) {
     const debug = false
@@ -260,7 +280,7 @@ const actions = {
   }
 }
 
-const mutations = {
+export const mutations = {
   _setForStudent: (state, value) => {
     state.forStudent = value
   },

@@ -10,7 +10,7 @@
 
 <script>
 import EhrCommon from './EhrCommonElement'
-import { setApiError } from '../../../helpers/ehr-utills'
+import { setApiError } from '../../../helpers/ehr-utils'
 import EventBus from '../../../helpers/event-bus'
 import { PAGE_FORM_INPUT_EVENT, DIALOG_INPUT_EVENT } from '../../../helpers/event-bus'
 import camelcase from 'camelcase'

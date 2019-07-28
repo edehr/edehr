@@ -118,14 +118,14 @@ export function inside () {
       name: 'neurological',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/Neurological.vue'),
-      meta: { layout: 'inside', label: 'Neurological', topLevel: 'current' }
+      meta: { layout: 'inside', label: 'Neurological assessment', topLevel: 'current' }
     },
     {
       path: '/ehr/current/assessments/respiratory',
       name: 'respiratory',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/Respiratory.vue'),
-      meta: { layout: 'inside', label: 'Respiratory', topLevel: 'current' }
+      meta: { layout: 'inside', label: 'Respiratory assessment', topLevel: 'current' }
     },
     {
       path: '/ehr/current/assessments/cardiovascular',
@@ -146,21 +146,21 @@ export function inside () {
       name: 'genitourinary',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/Genitourinary.vue'),
-      meta: { layout: 'inside', label: 'Genitourinary', topLevel: 'current' }
+      meta: { layout: 'inside', label: 'Genitourinary assessment', topLevel: 'current' }
     },
     {
       path: '/ehr/current/assessments/musculoskeletal',
       name: 'musculoskeletal',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/Musculoskeletal.vue'),
-      meta: { layout: 'inside', label: 'Musculoskeletal', topLevel: 'current' }
+      meta: { layout: 'inside', label: 'Musculoskeletal assessment', topLevel: 'current' }
     },
     {
       path: '/ehr/current/assessments/pain',
       name: 'pain',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/Pain.vue'),
-      meta: { layout: 'inside', label: 'Pain', topLevel: 'current' }
+      meta: { layout: 'inside', label: 'Pain assessment', topLevel: 'current' }
     },
     {
       path: '/ehr/current/assessments/biopsychosocial',
@@ -265,7 +265,7 @@ export function inside () {
       name: 'lab-reports',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/LabReports.vue'),
-      meta: { layout: 'inside', label: 'Lab reports', topLevel: 'chart' }
+      meta: { layout: 'inside', label: 'Laboratory results', topLevel: 'chart' }
     },
     {
       path: '/ehr/chart/reports/diagnostic-reports',

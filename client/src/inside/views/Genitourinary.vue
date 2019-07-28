@@ -12,7 +12,7 @@
       div Page updated: {{ ehrHelp.formatDate(uiProps.generated) }}
     div(style="display:none")
       p This Genitourinary page is generated.
-      p Label: Genitourinary
+      p Label: Genitourinary assessment
       p Data Key: genitourinary
       p Component name: Genitourinary
       p Redirect: 

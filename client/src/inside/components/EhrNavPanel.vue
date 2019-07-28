@@ -30,6 +30,12 @@ export default {
     isStudent () {
       return this.$store.getters['visit/isStudent']
     }
+  },
+  provide: {
+    pageDataList () {
+      let hasDataForPagesList = this.$store.getters['ehrData/hasDataForPagesList']
+      return hasDataForPagesList
+    }
   }
 }
 </script>

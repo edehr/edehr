@@ -22,7 +22,7 @@
 <script>
 import moment from 'moment'
 import EhrSummaryHelp from '../../helpers/ehr-summary-table'
-import { formatDateStr } from '../../helpers/ehr-utills'
+import { formatDateStr } from '../../helpers/ehr-utils'
 import EventBus from '../../helpers/event-bus'
 import { PAGE_DATA_REFRESH_EVENT } from '../../helpers/event-bus'
 

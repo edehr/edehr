@@ -12,7 +12,7 @@
       div Page updated: {{ ehrHelp.formatDate(uiProps.generated) }}
     div(style="display:none")
       p This Musculoskeletal page is generated.
-      p Label: Musculoskeletal
+      p Label: Musculoskeletal assessment
       p Data Key: musculoskeletal
       p Component name: Musculoskeletal
       p Redirect: 

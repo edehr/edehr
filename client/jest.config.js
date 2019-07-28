@@ -9,7 +9,7 @@ module.exports = {
     '^@/(.*)$': '<rootDir>/src/$1'
   },
   snapshotSerializers: ['jest-serializer-vue'],
-  testMatch: ['**/tests/unit/**/*.spec.(js|jsx|ts|tsx)|**/vue/**/*.spec.(js|jsx|ts|tsx)'],
+  testMatch: ['<rootDir>/src/**/*.spec.js'],
   testURL: 'http://localhost/',
   collectCoverage: false,
   collectCoverageFrom: [

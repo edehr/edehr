@@ -13,7 +13,7 @@
     div(style="display:none")
       p This Consults page is generated.
       p Label: Consults
-      p Data Key: consultants
+      p Data Key: consults
       p Component name: Consults
       p Redirect: 
       p Route name: consults
@@ -40,7 +40,7 @@ export default {
   },
   data: function () {
     return {
-      pageDataKey: 'consultants',
+      pageDataKey: 'consults',
       ehrHelp: undefined
     }
   },

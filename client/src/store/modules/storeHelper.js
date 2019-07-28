@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { composeAxiosResponseError, setApiError } from '../../helpers/ehr-utills'
+import { composeAxiosResponseError, setApiError } from '../../helpers/ehr-utils'
 
 export default class StoreHelper {
 

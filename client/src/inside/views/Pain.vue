@@ -12,7 +12,7 @@
       div Page updated: {{ ehrHelp.formatDate(uiProps.generated) }}
     div(style="display:none")
       p This Pain page is generated.
-      p Label: Pain
+      p Label: Pain assessment
       p Data Key: pain
       p Component name: Pain
       p Redirect: 

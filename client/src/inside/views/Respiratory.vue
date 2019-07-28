@@ -12,7 +12,7 @@
       div Page updated: {{ ehrHelp.formatDate(uiProps.generated) }}
     div(style="display:none")
       p This Respiratory page is generated.
-      p Label: Respiratory
+      p Label: Respiratory assessment
       p Data Key: respiratory
       p Component name: Respiratory
       p Redirect: 

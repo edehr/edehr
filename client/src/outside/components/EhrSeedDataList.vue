@@ -40,7 +40,7 @@ import UiAgree from '../../app/ui/UiAgree.vue'
 import EhrSeedDataDialog from './EhrSeedDataDialog'
 import StoreHelper from '../../helpers/store-helper'
 import EventBus from '../../helpers/event-bus'
-import { setApiError, validateSeedFileContents, downloadSeedToFile } from '../../helpers/ehr-utills'
+import { setApiError, readFile, importSeedData, downloadSeedToFile } from '../../helpers/ehr-utils'
 import { PAGE_DATA_REFRESH_EVENT } from '../../helpers/event-bus'
 
 const TEXT = {
@@ -103,35 +103,27 @@ export default {
       // console.log('upload seed for ', this.currentSeed)
       this.$refs.fileUploadInput.click()
     },
-    _importContents (contents, fileName) {
-      let {seedObj, invalidMsg} = validateSeedFileContents(contents)
-      if(invalidMsg) {
-        setApiError(this, TEXT.FAIL_IMPORT(fileName, invalidMsg))
-        StoreHelper.setLoading(this, false)
-        return
-      }
-      let payload = {
-        id: this.seedId,
-        ehrData: seedObj
-      }
-      return this.$store.dispatch('seedStore/updateSeedEhrData', payload).then(() => {
-        let title = TEXT.AGREE_TITLE(this.currentSeed.name)
-        let msg = TEXT.AGREE_MSG(fileName)
-        this.$refs.aggreeDialog.showDialog(title, msg)
-        StoreHelper.setLoading(this, false)
-      })
-
-    },
     importSeedFile (event) {
-      const _this = this
+      const component = this
+      const seedId = this.seedId
+      const seedName = this.currentSeed.name
+      const dialog = this.$refs.aggreeDialog
       const file = event.target.files[0]
-      const reader = new FileReader()
-      StoreHelper.setLoading(this, true)
-      reader.onload = (function (event) {
-        let contents = event.target.result
-        return _this._importContents(contents, file.name)
+      const fileName = file.name
+      StoreHelper.setLoading(component, true)
+      return readFile().then( (contents) => {
+        return importSeedData(component, seedId, contents)
+          .then(result => {
+            let title = TEXT.AGREE_TITLE(seedName)
+            let msg = TEXT.AGREE_MSG(fileName)
+            dialog.showDialog(title, msg)
+            StoreHelper.setLoading(component, false)
+          })
+          .catch( err => {
+            setApiError(component, TEXT.FAIL_IMPORT(fileName, err))
+            StoreHelper.setLoading(component, false)
+          })
       })
-      reader.readAsText(file)
     },
     downloadSeed (sv) {
       this.seedId = sv._id

@@ -1,6 +1,6 @@
 import StoreHelper from './storeHelper'
 const helper = new StoreHelper()
-import { composeUrl, setApiError } from '../../helpers/ehr-utills'
+import { composeUrl, setApiError } from '../../helpers/ehr-utils'
 const API = 'assignments'
 
 const state = {
