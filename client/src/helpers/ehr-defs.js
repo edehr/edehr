@@ -56,11 +56,12 @@ export function getTableCellsByTableKey (pageKey, tableKey) {
   const pageDef = getPageDefinition(pageKey)
   if (pageDef.tables) {
     let table = pageDef.tables.find(tbl => { return tbl.tableKey === tableKey })
-    tableCells = table.tableCells
+    if (table) tableCells = table.tableCells
   }
   return tableCells
 }
 
+//TODO remove this apparently unused function
 export function getFieldSetCells (pageKey, tableIndex, fieldSetKey) {
   let cells = getTableCellsByIndex(pageKey, tableIndex)
   if(!cells) {
@@ -108,8 +109,9 @@ export function getDataCaseStudy (pageDataKey, elementKey) {
   return dV
 }
 
-export function getMedOrderSchedule  (MED_ORDERS_PAGE_KEY, SCHEDULE_FIELDSET) {
-  let cells = getTableCellsByIndex(MED_ORDERS_PAGE_KEY, 0)
-  let medPeriods = cells.filter(cell => cell.level3Key === SCHEDULE_FIELDSET && cell.inputType === 'checkbox')
+export function getMedOrderSchedule  (pageKey) {
+  let pageDef = pageDefs[pageKey]
+  let medPeriods = pageDef.medSchedule
+  // console.log('getMedOrderSchedule', pageKey, medPeriods)
   return medPeriods
 }

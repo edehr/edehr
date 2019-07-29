@@ -4,13 +4,11 @@
       thead
         th 
           h4 Medication order
-        th(v-for="hdr in tableHeader")
-          div(v-show="hdr.type === KEY_MED_ORDER")
-          div(v-show="hdr.type === KEY_MAR")
-            div Day {{hdr.value.day}} - {{hdr.value.actualTime}}
-            div {{hdr.value.scheduledTime}}
-            div {{hdr.value.whoAdministered}}
-            div {{hdr.value.comment}}
+        th(v-for="(cell, index) in tableHeader", :class="tdStyle(cell, index, tableHeader)")
+          div Day {{cell.value.day}} - {{cell.value.actualTime}}
+          div {{cell.value.scheduledTime}}
+          div {{cell.value.whoAdministered}}
+          div {{cell.value.comment}}
 
       tbody
         tr(v-for="row in tableBody")

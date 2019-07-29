@@ -1,5 +1,5 @@
 import { getMedOrderSchedule } from '../../../helpers/ehr-defs'
-import { SCHEDULE_FIELDSET, MED_ORDERS_PAGE_KEY } from './mar-helper'
+import { MED_ORDERS_PAGE_KEY } from './mar-helper'
 import PeriodEntity from './period-entity'
 
 /**
@@ -13,7 +13,7 @@ import PeriodEntity from './period-entity'
 
 export default class PeriodDefs {
   constructor () {
-    let medPeriods = getMedOrderSchedule(MED_ORDERS_PAGE_KEY, SCHEDULE_FIELDSET)
+    let medPeriods = getMedOrderSchedule(MED_ORDERS_PAGE_KEY)
     this._periodList = medPeriods.map( (mp) => new PeriodEntity(mp.elementKey, mp.label))
   }
 

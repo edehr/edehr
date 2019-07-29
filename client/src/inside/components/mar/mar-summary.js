@@ -28,7 +28,6 @@ export default class MarSummary {
     // Compose the table header ....
     if(db) console.log('MarSummary refresh', marRecords, medOrders)
     let hdr = []
-    hdr.push(_createElement(MS.KEY_MED_ORDER, 'medications'))
     marRecords.forEach( mar => hdr.push(_createElement(MS.KEY_MAR, mar)) )
     this._header = hdr
 
