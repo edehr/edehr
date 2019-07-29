@@ -1,4 +1,5 @@
 /* ****************** COLOUR ****************** */
+
 $brand-primary: #3396FF;
 $brand-primary-hover: darken( $brand-primary, 20% );
 $brand-primary-dark: #051F54;
@@ -15,8 +16,17 @@ $grey80: #22262E;
 $black: #151A24;
 
 $red: #B8000C;
+$green-light: #7ED321;
 $green: #8dd03e;
 $blue: #3396FF;
+
+
+
+/* ****************** TYPOGRAPHY ****************** */
+
+$bodyFontFamily: 'Source Sans Pro', sans-serif;
+$bodyFontSize: 14px;
+
 
 
 /* ****************** NAVIGATION ****************** */
@@ -34,6 +44,7 @@ $nav-color-level2: $grey20;
 $nav-color-level3: $grey20;
 
 
+
 /* ****************** MESSAGING ****************** */
 
 $info: $blue;
@@ -42,11 +53,8 @@ $error: $red;
 
 $system-message-text: $white;
 
-
-
 $context-banner-background-color: $brand-primary-light;
 $context-banner-color: $grey80;
-
 
 $dialog-header-background: $white;
 $dialog-header-content-color: $grey70;
@@ -74,15 +82,8 @@ $o-colours: (
 }
 
 
-/* ******************
-_typography.scss
- */
-$bodyFontFamily: 'Source Sans Pro', sans-serif;
-$bodyFontSize: 14px;
 
-/* ******************
-Dimensions
- */
+/* ****************** DIMENSIONS ****************** */
 
 $mediaQueryIpadLandscape: "only screen and (max-width : 1024px)";
 $mediaQueryIpadPortrait: "only screen and (max-width : 768px)";
@@ -118,9 +119,10 @@ $panelMarginLeftSmallest: 5px;
 $contentWidthSmallest: $pageWidthSmallest - $navMaxWidthSmallest;
 $contentWidthInnerSmallest: $contentWidthSmallest - 3px;
 
-/* ******************
-wrapper
- */
+
+
+/* ****************** WRAPPER ****************** */
+
 $o-wrapper-sizes: (
   page:   1400px,
   content:  1024px,
