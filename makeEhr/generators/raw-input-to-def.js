@@ -57,6 +57,7 @@ const pageChildElementProperties = [
   // 'validation',
   'dataCaseStudy',
   'passToFunction',
+  'specialProperties'
   // 'dataParent',
 ]
 
@@ -144,6 +145,7 @@ class RawInputToDef {
       page.pageTitle = group.label
       page.pageDataKey = group.elementKey
       page.pageChildren = group.pageChildren
+      page.medSchedule = group.medSchedule
       this._pageMakeUiProperties(page, group, lastModifiedTime)
       pages[page.pageDataKey] = page
     })
@@ -235,6 +237,7 @@ class RawInputToDef {
     let pageChild = this._transferProperties(entry, pageChildElementProperties)
     this._prepareDropDownOptions(entry, pageChild)
     this._prepareHelperText(entry, pageChild)
+    this._prepareSpecialProperties(entry, pageChild, pg)
     pg.pageChildren.push(pageChild)
   }
 
@@ -260,6 +263,15 @@ class RawInputToDef {
       })
       dest.helperHtml = html.join('\n')
       dest.helperText = text.join('\n')
+    }
+  }
+
+  _prepareSpecialProperties (src, dest, page) {
+    if (src.specialProperties === 'marScheduleOption') {
+      if (!page.medSchedule) page.medSchedule = []
+      page.medSchedule.push(dest)
+      console.log('marScheduleOption', page.medSchedule)
+      // dest.specialProperties = src.specialProperties
     }
   }
 
@@ -484,6 +496,7 @@ class RawInputToDef {
     // eslint-disable-next-line no-control-regex
     return contents.replace(/[^\x00-\x7F]/g, '')
   }
+
 }
 
 module.exports = RawInputToDef

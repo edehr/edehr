@@ -136,6 +136,7 @@ export default {
       margin-top: 5px;
     }
 
+    // Here is a fiddle that can be used to play with these circles.
     // https://jsfiddle.net/bgil2012/26ufnke8/10/
     $green1: rgba(175, 227, 185, 0.98);
     $green2: rgba(2, 201, 72, 0.9);

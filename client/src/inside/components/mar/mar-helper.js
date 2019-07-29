@@ -5,7 +5,6 @@ import { getPageDefinition } from '../../../helpers/ehr-defs'
 
 export const MAR_PAGE_KEY = 'medAdminRec'
 export const MED_ORDERS_PAGE_KEY = 'medicationOrders'
-export const SCHEDULE_FIELDSET = 'schedule'
 
 export default class MarHelper {
   constructor (ehrHelp) {
@@ -17,6 +16,10 @@ export default class MarHelper {
 
   refreshMarData () {
     this.pageData = this.ehrHelp.getAsLoadedPageData(MED_ORDERS_PAGE_KEY)
+    if (!this.pageData || !this.pageData.table) {
+      // console.log('call to refreshMarData before system is set up. There will be another call in a sec')
+      return
+    }
     this._theMedOrders = this.getEhrData_Orders()
     this._marRecords = this.getEhrData_MarRecords()
   }
@@ -90,6 +93,7 @@ export default class MarHelper {
     let aMar = aMarEntity.asObjectForApi()
     // console.log('saveMarDialog key:', marTableKey, ', ', aMar)
     table.push(aMar)
+    asLoadedPageData[marTableKey] = table
     let payload = {
       propertyName: MAR_PAGE_KEY,
       value: asLoadedPageData
