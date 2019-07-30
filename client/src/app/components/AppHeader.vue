@@ -12,8 +12,8 @@
         li(v-if="showDashboard", class="navItem")
           router-link(:to="{ name: `assignments` }", class="navLink subMenu") Assignments
         li(v-if="showAssignmentActivation", class="navItem")
-          div(class="navLink activationItem", v-on:click="toggleShowAssignmentDetails()") Details
-          div(v-show="showingAssignmentDetails", class="activationContent")
+          div(class="navLink activationItem", v-on:click="toggleShowAssignmentDetails()") Assignment details
+          div(v-show="showingAssignmentDetails", class="activationContent subNavList")
             ehr-header-item(type="assignment")
         li(class="navItem")
           router-link(:to="{ name: `help` }", class="navLink") Help

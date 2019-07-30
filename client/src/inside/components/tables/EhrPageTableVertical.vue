@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    div(v-if="!hasData") No data
+    div(v-if="!hasData") There are no records or reports for the patient.
     div(v-else)
       table.table_vertical
         tbody

@@ -65,9 +65,14 @@ export default {
 @import '../../scss/definitions';
 
 .EhrContextBanner {
+  padding: 0;
 
   .header-column {
     padding: 0; // override bulma column padding
   }
+}
+
+.EhrPanelContent {
+  padding: 1.75rem 2rem 1rem 2rem;
 }
 </style>
