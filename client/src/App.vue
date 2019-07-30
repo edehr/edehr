@@ -76,7 +76,7 @@ export default {
           return resolve()
         }
         // console.log('Restore indicator says the user is refreshing page')
-        let isDevelopingContent = localStorage.getItem('isDevelopingContent')
+        let isDevelopingContent = 'true' === localStorage.getItem('isDevelopingContent')
         let seedId = localStorage.getItem('seedId')
         // console.log(`App local storage idDevCon ${isDevelopingContent} seedId ${seedId}`)
         if (isDevelopingContent && seedId) {

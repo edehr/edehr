@@ -13,13 +13,10 @@ export default {
     currentPage: {type: String}
   },
   computed: {
-    isDeveloper () {
-      return this.$store.getters['visit/isDeveloper']
-    }
   },
   methods: {
     show (ref) {
-      console.log('show? ', this.currentPage, ref, ref !== this.currentPage)
+      // console.log('BreadCrumb show? ', this.currentPage, ref, ref !== this.currentPage)
       return ref !== this.currentPage
     }
   }

@@ -31,16 +31,18 @@ export default {
     },
     hasDataColour () {
       let colour = ''
-      const D = 'new-info'
-      const S = 'old-info'
-      const X = ''
+      const NEW_INFO = 'new-info'
+      const OLD_INFO = 'old-info'
+      const NONE = ''
       let hd = this.hasData
       if (StoreHelper.isStudent(this)) {
-        colour = hd.hasStudent ? D : X
+        colour = hd.hasStudent ? NEW_INFO : NONE
+      } else if (StoreHelper.isDevelopingContent(this)) {
+        colour = hd.hasSeed ? NEW_INFO : NONE
       } else if (StoreHelper.isInstructor(this)) {
-        colour = hd.hasInstructor ? D : (hd.hasSeed ? S : X)
-      } else if (StoreHelper.isDeveloper(this)) {
-        colour = hd.hasSeed ? D : X
+        // check for developing content first because instructor can do both.
+        // TODO consider adding a state "isEvaluating" to compliment isInstructor
+        colour = hd.hasInstructor ? NEW_INFO : (hd.hasSeed ? OLD_INFO : NONE)
       }
       return colour
     },

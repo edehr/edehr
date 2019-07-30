@@ -56,14 +56,11 @@ export default {
     isInstructor () {
       return StoreHelper.isInstructor(this)
     },
-    isDeveloper () {
-      return StoreHelper.isDeveloper(this)
-    },
     isStudent () {
       return StoreHelper.isStudent(this)
     },
     showDashboard () {
-      return this.isInstructor || this.isDeveloper
+      return this.isInstructor
     },
     showAssignmentActivation () {
       return this.isStudent

@@ -205,9 +205,6 @@ export default {
     isInstructor () {
       return StoreHelper.isInstructor(this)
     },
-    isDeveloper () {
-      return StoreHelper.isDeveloper(this)
-    },
     apiUrl () {
       return this.$store.state.visit.apiUrl
     },

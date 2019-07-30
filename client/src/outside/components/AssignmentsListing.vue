@@ -6,7 +6,7 @@
       p Error: {{ isRespondingToError }}
       p Your LMS is asking for "{{ activity.custom_assignment }}".
       p Adjust your Learning Management System to use an assignment from the listing below
-    div(v-show="isDeveloper")
+    div(v-show="isDevelopingContent")
       ui-button(v-on:buttonClicked="showCreateDialog") Create new assignment
       span &nbsp;
       ui-button(v-on:buttonClicked="manageEhrData", :secondary="true") Manage EHR data
@@ -20,14 +20,14 @@
           th(title="Description") Description
           th(title="External Id") External id
           th(title="ROute") Route
-          th(v-show="isDeveloper", title="Seed Data") Seed data
+          th(v-show="isDevelopingContent", title="Seed Data") Seed data
       tbody
         tr(v-for="item in assignmentsListing")
           td {{ item.name }}
           td {{ item.description}}
           td {{ item.externalId}}
           td {{ item.ehrRoutePath}}
-          td(v-show="isDeveloper") {{ item.seedDataObj.name }}
+          td(v-show="isDevelopingContent") {{ item.seedDataObj.name }}
           td
             ui-button(v-on:buttonClicked="showEditDialog", :value="item._id")
               fas-icon(icon="edit")
@@ -58,8 +58,8 @@ export default {
   },
   components: { AssignmentsDialog, UiButton, UiLink, BreadCrumb },
   computed: {
-    isDeveloper () {
-      return StoreHelper.isDeveloper(this)
+    isDevelopingContent () {
+      return StoreHelper.isDevelopingContent(this)
     },
     assignmentsListing () {
       let sdList = StoreHelper.getSeedDataList(this)

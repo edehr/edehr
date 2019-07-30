@@ -7,6 +7,10 @@
       div(name="mainContent", class="outside-content")
         div(class="section")
           slot
+          div(v-if="isDeveloper")
+            div(style="display:none") Is developing content: {{ isDevelopingContent }}
+            input(type="checkbox", v-model="developContent" )
+            label &nbsp; Develop content
     slot(name="outside-footer", class="outside-footer")
       app-footer
     input(class="checkbox", type="checkbox", v-model="showingSpecial")
@@ -19,6 +23,7 @@ import AppHeader from '../../app/components/AppHeader.vue'
 import AppFooter from '../../app/components/AppFooter.vue'
 import OutPanelNav from '../components/OutPanelNav.vue'
 import EhrSpecial from '../../inside/components/EhrSpecial.vue'
+import StoreHelper from '../../helpers/store-helper'
 import UiLink from '../../app/ui/UiLink.vue'
 import UiSpinner from '../../app/ui/UiSpinner'
 
@@ -34,21 +39,37 @@ export default {
   },
   data: function () {
     return {
-      showingSpecial: false
+      showingSpecial: false,
+      developContent: false
+    }
+  },
+  watch: {
+    developContent: function () {
+      // when the model changes due to user action in the UI or in the next method update the store
+      console.log('LayoutOutside watch developContent', this.developContent)
+      StoreHelper.setIsDevelopingContent(this, this.developContent)
+    },
+    isDevelopingContent: function () {
+      // console.log('LayoutOutside watch isDevelopingContent', this.isDevelopingContent)
+      this.developContent = this.isDevelopingContent
     }
   },
   computed: {
-    isLoading () {
-      return this.$store.state.system.isLoading
-    },
-    isInstructor () {
-      return this.$store.getters['visit/isInstructor']
+    isDevelopingContent () {
+      return StoreHelper.isDevelopingContent(this)
     },
     isDeveloper () {
-      return this.$store.getters['visit/isDeveloper']
+      return StoreHelper.isDeveloper(this)
+    },
+    isLoading () {
+      return this.$store.state.system.isLoading
     }
-  }
-}
+  },
+  mounted: function () {
+    // when mounted initialize the local model
+    console.log('LayoutOutside mounted, isDevelopingContent', this.isDevelopingContent)
+    this.developContent = this.isDevelopingContent
+  }}
 </script>
 
 <style lang="scss" scoped>
