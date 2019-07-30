@@ -1,13 +1,10 @@
 <template lang="pug">
-  div(class="headerItem")
+  div
     div(v-if="isAssignment")
-      div(class="textField") Student: {{ panelInfo.studentName }}
-      div(class="textField") Course: {{ panelInfo.courseTitle}}
-      div(class="textField") Activity: {{ panelInfo.activityTitle}}
-        div(class="subDetail") {{ panelInfo.activityDescription}}
-      div(class="textField") Assignment: {{ panelInfo.assignmentName}}
-        div(class="subDetail") {{ panelInfo.assignmentDescription}}
-
+      h3 {{ panelInfo.courseTitle}} - {{ panelInfo.assignmentName}}
+      h4 {{ panelInfo.activityTitle}}
+      p {{ panelInfo.activityDescription}}
+      p {{ panelInfo.assignmentDescription}}
 </template>
 
 <script>
@@ -36,16 +33,5 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/definitions';
-.headerItem {
-  padding: 2rem;
 
-  .textField {
-    font-size: 1.2rem;
-  }
-
-  .subDetail {
-    font-size: 1rem;
-    margin-left: 1rem;
-  }
-}
 </style>

@@ -1,7 +1,11 @@
 <template lang="pug">
   div(class="contextStudent")
-    div(v-if="isEvaluated", class="EhrContextBanner EhrPanelContent")
-      div Evaluation Notes: {{ evaluationNotes }}
+    div(v-if="isEvaluated", class="EhrContextBanner")
+      div(class="EhrPanelContent")
+        h3 {{ panelInfo.courseTitle}} - {{ panelInfo.assignmentName}}
+        p Student (This is temp. For dev only): {{ panelInfo.studentName }}
+        p {{ panelInfo.instructorName }}
+        p Evaluation: {{ evaluationNotes }}
 </template>
 
 <script>
