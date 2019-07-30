@@ -2,8 +2,9 @@
   div(class="EhrNavListItem")
     ui-link(:to="{ name: routeName(path) }", :class="levelClass")
       div(:class="linkClass", class="linkElement columns")
-        div(class="linkLabel column") {{ path.label }}
-        div(class="linkHasData circle column is-pulled-right", :class="hasDataColour") &nbsp;
+        div(class="linkLabel") {{ path.label }}
+        fas-icon(class="icon-right", icon="times", :class="hasDataColour")
+        fas-icon(class="icon-right", icon="circle", :class="hasDataColour")
 </template>
 
 <script>
@@ -30,8 +31,8 @@ export default {
     },
     hasDataColour () {
       let colour = ''
-      const D = 'green'
-      const S = 'orange'
+      const D = 'new-info'
+      const S = 'old-info'
       const X = ''
       let hd = this.hasData
       if (StoreHelper.isStudent(this)) {
@@ -70,94 +71,91 @@ export default {
 <style lang="scss" scoped>
   @import '../../scss/definitions';
 
-  .EhrNavListItem {
-    margin-top: 1px;
-    &__level1,
-    &__level2,
-    &__level3 {
-      display: flex;
-      align-items: center;
-    }
-    &__level1,
-    &__level2 {
-      & a {
-        color: $grey20;
-      }
-    }
-    .router-link-active {
-      background-color: $nav-active;
-    }
-    &__level1 {
-      color: $nav-color-level1;
-      background-color: $nav-level1;
-      font-size: 18px;
-      height: 40px;
-      & a {
-        color: $nav-color-level1;
-      }
-    }
-    &__level2 {
-      color: $nav-color-level2;
-      background-color: $nav-level2;
-      height: 30px;
-      & a {
-      }
-    }
-    &__level3 {
-      color: $nav-color-level3;
-      background-color: $nav-level3;
-      height: 30px;
-      & a {
-        color: $nav-color-level3;
-      }
-    }
-    &__link1 {
-      margin-left: 15px;
-      & a {
-        color: $nav-color-level3;
-      }
-    }
-    &__link2 {
-      margin-left: 15px;
-    }
-    &__link3 {
-      margin-left: 30px;
-    }
+.linkElement.columns:last-child {
+  margin-bottom: 0;
+}
 
-    .linkElement {
-      width: 100%;
-    }
-    .linkLabel {
-      width: 80%;
-    }
-    .linkHasData {
-      padding: 0;
-      margin-right: 1rem;
-      margin-top: 5px;
-    }
+.EhrNavListItem {
+  margin-top: 1px;
+  &__level1,
+  &__level2,
+  &__level3 {
+    display: flex;
+    align-items: center;
+  }
 
-    // Here is a fiddle that can be used to play with these circles.
-    // https://jsfiddle.net/bgil2012/26ufnke8/10/
-    $green1: rgba(175, 227, 185, 0.98);
-    $green2: rgba(2, 201, 72, 0.9);
-    $orange1: rgba(254, 235, 220, 0.86);
-    $orange2: rgba(250, 116, 0, 1);
-    $radius: 20px;
-    $off-centerx: $radius * 0.4;
-    $off-centery: $radius * 0.4;
-
-    .circle {
-      border-radius: 50%;
-      max-height: $radius;
-      position: relative;
-      max-width: $radius;
-    }
-
-    .green {
-      background-image: radial-gradient(circle at $off-centerx $off-centery, $green1 0%,  $green2 100%);
-    }
-    .orange {
-      background-image: radial-gradient(circle at $off-centerx $off-centery, $orange1 0%,  $orange2 100%);
+  &__level1,
+  &__level2 {
+    & a {
+      color: $grey20;
     }
   }
+  .router-link-active {
+    background-color: $nav-active;
+  }
+
+  &__level1 {
+    color: $nav-color-level1;
+    background-color: $nav-level1;
+    font-size: 18px;
+    height: 40px;
+    & a {
+      color: $nav-color-level1;
+    }
+  }
+
+  &__level2 {
+    color: $nav-color-level2;
+    background-color: $nav-level2;
+    height: 30px;
+    & a {
+    }
+  }
+
+  &__level3 {
+    color: $nav-color-level3;
+    background-color: $nav-level3;
+    height: 30px;
+    & a {
+      color: $nav-color-level3;
+    }
+  }
+
+  &__link1 {
+    margin-left: 15px;
+    & a {
+      color: $nav-color-level3;
+    }
+  }
+
+  &__link2 {
+    margin-left: 15px;
+  }
+
+  &__link3 {
+    margin-left: 30px;
+  }
+
+  .linkElement {
+    width: 100%;
+  }
+
+  .linkLabel {
+    width: 90%;
+  }
+
+  .new-info {
+    color: $red;
+    content: 'faTimes';
+    font-size: 1em;
+    margin-top: 3px;
+  }
+
+  .old-info {
+    color: $green;
+    content: 'faCircle';
+    font-size: 1em;
+    margin-top: 3px;
+  }
+}
 </style>

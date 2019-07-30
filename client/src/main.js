@@ -22,6 +22,7 @@ import {
   faTimes,
   faEdit,
   faClock,
+  faCircle,
   faInfoCircle,
   faArrowRight,
   faArrowLeft,
@@ -34,7 +35,7 @@ import {
   faStickyNote
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-library.add(faCheckCircle, faTimesCircle, faTimes, faEdit, faDownload, faUpload)
+library.add(faCheckCircle, faCircle, faTimesCircle, faTimes, faEdit, faDownload, faUpload)
 library.add(faClock, faInfoCircle, faArrowRight, faArrowLeft, faNotesMedical)
 library.add(faAngleDoubleDown, faAngleDoubleUp, faFilePdf, faStickyNote)
 // IN CODE sample usage is:
