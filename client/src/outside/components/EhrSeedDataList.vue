@@ -74,7 +74,6 @@ export default {
       sdList.forEach(seed => {
         let filtered = assList.filter( a => a.seedDataId === seed._id)
         let aList = filtered.map( a => a.name )
-        console.log('sss', seed, aList)
         seed.aList = aList.join(', ')
       })
       return sdList
@@ -136,7 +135,6 @@ export default {
       const _this = this
       this.seedId = sv._id
       // console.log('gotoEhrWithSeed with seed id', value, this.seedId)
-      StoreHelper.setIsDevelopingContent(this, true)
       this.$store.commit('seedStore/setSeedId', this.seedId)
       this.$store.dispatch('seedStore/loadSeedContent').then(() => {
         // console.log('go to demographics')

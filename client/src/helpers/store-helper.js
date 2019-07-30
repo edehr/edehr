@@ -32,6 +32,10 @@ class StoreHelperWorker {
     return component.$store.getters['visit/isStudent']
   }
 
+  isDevelopingContent (component) {
+    return component.$store.state.visit.isDevelopingContent
+  }
+
   isSubmitted (component) {
     return component.$store.getters['ehrData/submitted']
   }
@@ -72,7 +76,7 @@ class StoreHelperWorker {
 
   /* **********   Assignments  ************** */
   loadAssignmentAndSeedLists (component) {
-    console.log('load assignments for AssignmentListing component')
+    // console.log('load assignments for AssignmentListing component')
     const _this = this
     _this.setLoading(component, true)
     return Promise.all([

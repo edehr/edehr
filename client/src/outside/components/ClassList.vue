@@ -156,7 +156,6 @@ export default {
       let studentId = studentVisit._id
       // Go to the first screen related to the assignent
       let name = '/ehr/patient/demographics'
-      StoreHelper.setIsDevelopingContent(this,false)
       StoreHelper.setInstructorReturnUrl(this, window.location.pathname)
       // console.log('Store the current student id that is being evaluated ', studentId)
       StoreHelper.dispatchChangeCurrentEvaluationStudentId(this, this.classList, studentId).then(() => {

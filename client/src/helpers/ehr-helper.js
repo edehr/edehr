@@ -12,7 +12,7 @@ const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
 export default class EhrHelp {
   constructor (component, store, pageKey) {
-    console.log('Construct helper', pageKey)
+    // console.log('Construct helper', pageKey)
     this.$store = store
     this.pageKey = pageKey
     this.$store.commit('system/setCurrentPageKey', pageKey)
