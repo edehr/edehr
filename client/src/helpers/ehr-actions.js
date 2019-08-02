@@ -1,5 +1,3 @@
-
-
 export default class EhrActions {
   constructor (store, router) {
     this.$store = store
@@ -11,7 +9,7 @@ export default class EhrActions {
     let lmsName = this.$store.getters['visit/lmsName']
     let label = 'Return to ' + lmsName
     if (this.navPanelActionNeedsConfirmation()) {
-      label = 'Submit for evaluation'
+      label = 'Send for evaluation'
     }
     return label
   }
@@ -22,8 +20,8 @@ export default class EhrActions {
 
   navPanelActionConfirmOptions () {
     let options = {}
-    options.title ='Submit assignment'
-    options.msg = 'By submitting this assignment, you are sending it to your instructor for marking. You will not be able to edit it after sending. Are you sure you want to submit?'
+    options.title ='Send assignment to your instructor for evaluation'
+    options.msg = 'You are unable to edit your assignment after submission. Are you sure you want to send?'
     return options
   }
 
