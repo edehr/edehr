@@ -9,8 +9,8 @@
           slot
           div(v-if="isDeveloper")
             div(style="display:none") Is developing content: {{ isDevelopingContent }}
-            input(type="checkbox", v-model="developContent" )
-            label &nbsp; Develop content
+            input(type="checkbox", id="develop-content", v-model="developContent" )
+            label(for="develop-content") Develop content
     slot(name="outside-footer", class="outside-footer")
       app-footer
     input(class="checkbox", type="checkbox", v-model="showingSpecial")

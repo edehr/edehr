@@ -12,8 +12,9 @@
               th Name
               th Version
               th Description
-              th EHR Pages
+              th Seeded pages
               th Assignments
+              th
               // th Seed Id
           tbody
             tr(v-for="sv in seedDataList")
@@ -203,15 +204,12 @@ export default {
     overflow: hidden;
     width: 100%;
   }
-  .seed-actions {
-    min-width: 340px;
+  td.seed-actions {
+    min-width: 360px;
+    padding-right: 0;
 
-    .button {
-      margin-right: 0.5rem;
-
-      &:last-of-type {
-        margin-right: 0;
-      }
+    button.button {
+      margin-bottom: 0;
     }
   }
 }

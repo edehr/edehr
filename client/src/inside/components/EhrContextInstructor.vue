@@ -1,28 +1,25 @@
 <template lang="pug">
   div(class="classlist", v-show="showClassList")
     div(class="classlist_content columns")
-      div(class="is-6 column")
+      div(class="is-4 column")
         div(class="textField") Course: {{ panelInfo.courseTitle}}
         div(class="textField") Activity: {{ panelInfo.activityTitle}}
           ui-info(:title="panelInfo.activityTitle", :text="panelInfo.activityDescription")
         div(class="textField") Assignment: {{ panelInfo.assignmentName}}
           ui-info(:title="panelInfo.assignmentName", :text="panelInfo.assignmentDescription")
       div(class="is-4 column")
-        div(class="textField") Evaluating: {{ panelInfo.studentName }}
-        div(class="textField") Student last visit: {{ formatTime(panelInfo.lastVisitDate) }}
-      div(class="is-2 column")
+        div(class="textField") Student: {{ panelInfo.studentName }}
+        div(class="textField") Student's last visit: {{ formatTime(panelInfo.lastVisitDate) }}
+      div(class="is-4 column")
         div(class="columns is-pulled-right")
-          div(class="classlist_nav_item column")
-            ui-button(v-on:buttonClicked="previousStudent", class="is-pulled-right", :disabled="!enablePrev")
-              span <
-            //fas-icon(icon="arrow-left")
-          div(class="classlist_nav_item column")
-            ui-button(v-on:buttonClicked="nextStudent", class="is-pulled-right", :disabled="!enableNext")
-              span >
-            //fas-icon(icon="arrow-right")
-    div(class="evaluation-label")
-      div(class="textField") Evaluation notes
-      ehr-evaluation-input(ref="evaluationNoteComponent", v-on:saveNext="nextStudent", :enableNext="enableNext")
+          ui-button(v-on:buttonClicked="previousStudent", class="is-pulled-right is-light", :disabled="!enablePrev")
+            fas-icon(icon="faAngleLeft", class="icon-left") 
+            span Previous
+          ui-button(v-on:buttonClicked="nextStudent", class="is-pulled-right is-light", :disabled="!enableNext")
+            fas-icon(icon="faAngleRight", class="icon-left") 
+            span Next
+    div(class="textField") Evaluation notes
+    ehr-evaluation-input(ref="evaluationNoteComponent", v-on:saveNext="nextStudent", :enableNext="enableNext")
 </template>
 
 <script>
@@ -131,7 +128,6 @@ export default {
 }
 
 .classlist {
-  padding-left: 20px;
 
   .textField {
     max-width: 30rem;
@@ -143,8 +139,7 @@ export default {
   .classlist_nav_item {
     overflow: hidden;
     button {
-      width: 2rem;
-      max-width: 4rem;
+      width: 5rem;
     }
   }
   

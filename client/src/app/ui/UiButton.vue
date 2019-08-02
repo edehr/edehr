@@ -51,7 +51,7 @@ button,
   }
 
   &:disabled {
-    background-color: $grey60;
+    background-color: $grey40;
     color: $white;
     cursor: default;
   }
@@ -76,12 +76,16 @@ button.is-light {
   }
 
   &:disabled {
-    background-color: $grey20;
+    background-color: $grey40;
     color: $white;
     cursor: default;
   }
 }
 .is-pulled-right {
     margin-left: 1em;
+}
+
+button + button {
+    margin-left: 15px;
 }
 </style>
