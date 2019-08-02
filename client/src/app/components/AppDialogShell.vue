@@ -3,31 +3,24 @@
     div(v-show="showingDialog")
       div(:class="modalClass")
       div(class="dialog-wrapper", :class="moused", ref="theDialog", v-bind:style="{ top: top + 'px', left: left + 'px'}")
+        div(class="dialog-move-bar", v-dragged="onDragged")
         div(class="dialog-header")
-          div(class="dialog-move-bar", v-dragged="onDragged")
-          div(class="dialog-header-inner")
-            div(class="columns")
-              div(class="dialog-header-element column is-11")
-                slot(name="header") default header
-              div(class="dialog-header-element  column is-1")
-                ui-close(v-on:close="$emit('cancel')")
-        div(class="dialog-container")
-          div(class="dialog-inner")
-            div(class="dialog-body")
-              slot(name="body") default body
+          slot(name="header") default header
+          ui-close(v-on:close="$emit('cancel')")
+        div(class="dialog-body")
+          slot(name="body") default body
         div(class="dialog-footer")
-          div(class="dialog-footer-inner")
-            div(class="dialog-footer-errors")
-              div(v-show="errors.length")
-                p {{ errorDirections }}
-                ul
-                  li(v-for="error in errors") {{ error }}
-            div(class="dialog-footer-content is-pulled-right")
-              ui-button(v-on:buttonClicked="$emit('cancel')", v-bind:secondary="true")
-                slot(name="cancel-button") {{ cancelButtonLabel }}
-              div(class="dialog-footer-button-space", v-show="useSave")
-              ui-button(v-on:buttonClicked="$emit('save')", v-show="useSave")
-                slot(name="save-button") {{ saveButtonLabel }}
+          div(class="dialog-footer-errors")
+            div(v-show="errors.length")
+              p {{ errorDirections }}
+              ul
+                li(v-for="error in errors") {{ error }}
+          div(class="dialog-footer-content is-pulled-right")
+            ui-button(v-on:buttonClicked="$emit('cancel')", v-bind:secondary="true")
+              slot(name="cancel-button") {{ cancelButtonLabel }}
+            div(class="dialog-footer-button-space", v-show="useSave")
+            ui-button(v-on:buttonClicked="$emit('save')", v-show="useSave")
+              slot(name="save-button") {{ saveButtonLabel }}
 </template>
 
 <script>
@@ -167,27 +160,8 @@ export default {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
-.dialog-header, .dialog-footer {
-  background-color: $grey03;
-  height: 60px;
-}
-
-.dialog-container {
-  overflow-y: auto;
-  height: calc( 90vh - 20vh )
-}
-
-.dialog-header-inner, .dialog-footer-inner {
-  padding: 1.0rem 2.5rem 1rem 2.5rem
-}
-.dialog-inner {
-  padding: 2rem 2.5rem 2.5rem 2.5rem;
-}
 .dialog-wrapper.moused {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-}
-.dialog-container {
-  /*overflow: hidden;*/
 }
 
 .dialog-move-bar {
@@ -197,12 +171,16 @@ export default {
   cursor: move;
 }
 
-.dialog-header-element {
-  padding: 0;
+.dialog-header, .dialog-footer {
+  background-color: $grey03;
+  height: 60px;
+  padding: 1em 2em;
 }
+
 .dialog-body {
-  /*margin: 20px 0;*/
-  /*width: 100%;*/
+  overflow-y: auto;
+  max-height: calc( 90vh - 20vh );
+  padding: 1.5rem 2rem 2rem 2rem;
 }
 
 .dialog-footer {
