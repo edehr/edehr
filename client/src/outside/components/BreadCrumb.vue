@@ -1,6 +1,5 @@
 <template lang="pug">
-  div
-    ui-link(class="breadcrumb", v-show="show('assignments')", :to="{ name: `assignments` }") < Back to assignments
+  ui-link(class="breadcrumb", v-show="show('assignments')", :to="{ name: `assignments` }") < Back to assignments
 </template>
 
 <script>
@@ -25,7 +24,8 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/definitions';
-.breadcrumb {
-  margin-right: 1rem;
+.breadcrumb {    
+  display: block;
+  margin: 0 0 1rem 0;
 }
 </style>

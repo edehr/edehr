@@ -1,7 +1,7 @@
 <template lang="pug">
   footer
     div(class="wrapper" v-if="showNav")
-      p Except where otherwise noted, content on this site is licensed under a Creative Commons Attribution 4.0 International License.
+      p Except where otherwise noted, content on this site is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.
 </template>
 
 <script>

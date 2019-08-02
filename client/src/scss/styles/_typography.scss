@@ -53,6 +53,15 @@ p {
 	margin-right: 5px;
 }
 
-.errorMesageList {
+.icon-group {
+    position: absolute;
+    right: 0;
+}
+
+.errorMesageList, .error-listing {
     color: red;
+}
+
+.error-listing {
+	margin-top: 1em;
 }

@@ -1,14 +1,13 @@
 <template lang="pug">
   div(:class="$options.name")
     bread-crumb(currentPage="assignments")
-    h1 EdEHR assignments
+    h1 Assignments
     div(v-if="isRespondingToError")
       p Error: {{ isRespondingToError }}
       p Your LMS is asking for "{{ activity.custom_assignment }}".
-      p Adjust your Learning Management System to use an assignment from the listing below
+      p Adjust your Learning Management System to use an assignment from the list below
     div(v-show="isDevelopingContent")
-      ui-button(v-on:buttonClicked="showCreateDialog") Create new assignment
-      span &nbsp;
+      ui-button(v-on:buttonClicked="showCreateDialog") Create a new assignment
       ui-button(v-on:buttonClicked="manageEhrData", :secondary="true") Manage EHR data
 
       //ui-link(:to="{ name: `developEhrData` }", v-bind:secondary="true", class="second-option") Manage EHR data

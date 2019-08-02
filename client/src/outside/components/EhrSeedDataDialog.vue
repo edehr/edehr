@@ -28,8 +28,9 @@
           hr
           div(class="technical")
             div(v-if="showAdvanced") {{ seedId}}
-            div Show Advanced &nbsp;
-              input( type="checkbox", v-model="showAdvanced")
+            label( for="show-advanced") Show advanced
+              input( type="checkbox" name="show-advanced" id="show-advanced" v-model="showAdvanced")
+            
     ui-confirm(ref="confirmDialog", v-on:confirm="proceedWithSave")
 
 </template>
@@ -48,7 +49,7 @@ const ERRORS = {
   EHR_REQUIRED: 'Seed EHR data seed is required',
   EHR_INVALID: (msg) => `Seed EHR data seed is invalid. ${msg}`
 }
-const CONFIRM_TITLE = 'Force Save EHR Seed?'
+const CONFIRM_TITLE = 'Force save EHR seed?'
 const CONFIRM_MSG = 'The data you have entered has errors. Are you sure you want to save anyways?'
 
 const EDIT_ACTION= 'edit'
