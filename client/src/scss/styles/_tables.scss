@@ -9,8 +9,12 @@ table {
     border-bottom: 1px solid $grey20;
     font-size: $bodyFontSize;
   }
-  td {
-    padding: 0.5em 1em 0.5em 0;
+  th, td {
+    padding: 0.5em 1em 0.5em 0 !important;
+
+    &:last-child {
+      padding-right: 0;
+    }
   }
   &.table_horizontal {
     width: 100%;
@@ -43,6 +47,7 @@ th,
 .row_table {
     margin-bottom: 8em;
 }
+
 .stacked_table {
   margin-bottom: 8em;
 }
@@ -55,10 +60,7 @@ th,
   border-bottom: 1px solid $grey40;
 }
 
-
-/*
-
-.canvas-wrapper[data-v-5baa5a88] {
+/* .canvas-wrapper[data-v-5baa5a88] {
     -webkit-box-flex: 1;
     -ms-flex: 1 0 auto;
     flex: 1 0 auto;

@@ -1,20 +1,17 @@
 <template lang="pug">
-  div
-    div(v-if="showStudent")
-      ehr-context-student
-    div(v-else)
-      div(class="EhrContextBanner EhrPanelContent")
-        div(class="EhrPanelContent_Inner")
-          div(class="context-header columns", v-on:click="toggleShow")
-            div(class="header-column is-10 column")
-              h3(class="header-item", :title="panelInfo.courseTitle") {{ panelInfo.courseTitle }} - {{ panelInfo.activityTitle }}
-            div(class="header-column is-2 column")
-              div(class="header-item header-icon")
-                fas-icon(icon="angle-double-down", v-show="!show")
-                fas-icon(icon="angle-double-up", v-show="show")
-          div(v-show="show")
-            ehr-context-instructor(v-if="showInstructor")
-            ehr-context-developer(v-if="showSeeding")
+  div(v-if="showStudent")
+    ehr-context-student
+  div(v-else)
+    div(class="EhrContextBanner EhrPanelContent")
+      div(class="EhrPanelContent_Inner")
+        div(class="context-header columns", v-on:click="toggleShow")
+            h3(class="header-item", :title="panelInfo.courseTitle") {{ panelInfo.courseTitle }} - {{ panelInfo.activityTitle }}
+            div(class="icon-group")
+              fas-icon(icon="plus", v-show="!show")
+              fas-icon(icon="minus", v-show="show")
+        div(v-show="show")
+          ehr-context-instructor(v-if="showInstructor")
+          ehr-context-developer(v-if="showSeeding")
 </template>
 
 <script>
@@ -73,6 +70,7 @@ export default {
 }
 
 .EhrPanelContent {
+  border-bottom: 1px solid $grey40;
   padding: 1.75rem 2rem 1rem 2rem;
 }
 </style>
