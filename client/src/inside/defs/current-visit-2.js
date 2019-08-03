@@ -15,30 +15,40 @@ export default function () {
           label: "Entered by profession",
           elementKey: "profession",
           fqn: "genitourinary.table.profession",
+          assetBase: "standardized-assessment-tools",
+          assetName: "the-canadian-ed-triage-and-acuity-scale.gif",
           dataCaseStudy: "RN"
         },
         {
           label: "Entered on day",
           elementKey: "day",
           fqn: "genitourinary.table.day",
+          assetBase: "standardized-assessment-tools",
+          assetName: "patient-health-questionnaire.pdf",
           dataCaseStudy: "0"
         },
         {
           label: "Entered at time",
           elementKey: "time",
           fqn: "genitourinary.table.time",
+          assetBase: "standardized-assessment-tools",
+          assetName: "audit.pdf",
           dataCaseStudy: "0.8125"
         },
         {
           label: "None",
           elementKey: "none",
           fqn: "genitourinary.table.urinaryGroup1.none",
+          assetBase: "standardized-assessment-tools",
+          assetName: "opqrstuv.pdf",
           dataCaseStudy: "None"
         },
         {
           label: "Increased frequency",
           elementKey: "increasedFrequency",
           fqn: "genitourinary.table.urinaryGroup1.increasedFrequency",
+          assetBase: "standardized-assessment-tools",
+          assetName: "numeric-rating-scale.pdf",
           dataCaseStudy: "None"
         },
         {
@@ -51,18 +61,24 @@ export default function () {
           label: "Hermaturia",
           elementKey: "hernaturia",
           fqn: "genitourinary.table.urinaryGroup1.hernaturia",
+          assetBase: "standardized-assessment-tools",
+          assetName: "glasgow-coma-scale.pdf",
           dataCaseStudy: "None"
         },
         {
           label: "Oliguria",
           elementKey: "oliguria",
           fqn: "genitourinary.table.urinaryGroup1.oliguria",
+          assetBase: "standardized-assessment-tools",
+          assetName: "mini-mental-health-screen.pdf",
           dataCaseStudy: "None"
         },
         {
           label: "Incontinence",
           elementKey: "incontinence",
           fqn: "genitourinary.table.urinaryGroup1.incontinence",
+          assetBase: "standardized-assessment-tools",
+          assetName: "richmond-agitation-sedation-scale-rass.pdf",
           dataCaseStudy: "None"
         },
         {
@@ -75,6 +91,8 @@ export default function () {
           label: "Distention",
           elementKey: "distention",
           fqn: "genitourinary.table.urinaryGroup1.distention",
+          assetBase: "standardized-assessment-tools",
+          assetName: "fall-risk-assessment-tool.pdf",
           dataCaseStudy: "None"
         },
         {
@@ -87,6 +105,8 @@ export default function () {
           label: "Last voided time",
           elementKey: "lastVoidedTime",
           fqn: "genitourinary.table.urinaryGroup2.lastVoidedTime",
+          assetBase: "standardized-assessment-tools",
+          assetName: "consultation-form.pdf",
           dataCaseStudy: "0.666666666666667"
         },
         {
@@ -130,6 +150,8 @@ export default function () {
               text: "Other"
             }
           ],
+          assetBase: "standardized-assessment-tools",
+          assetName: "copd-assessment-test.pdf",
           dataCaseStudy: "Clear"
         },
         {
@@ -144,6 +166,8 @@ export default function () {
               text: "No"
             }
           ],
+          assetBase: "standardized-assessment-tools",
+          assetName: "bristol-stool-chart.pdf",
           dataCaseStudy: "No"
         },
         {
@@ -158,6 +182,8 @@ export default function () {
               text: "No"
             }
           ],
+          assetBase: "standardized-assessment-tools",
+          assetName: "braden-scale.pdf",
           dataCaseStudy: "No"
         },
         {
@@ -172,6 +198,8 @@ export default function () {
           label: "Size",
           elementKey: "foleySize",
           fqn: "genitourinary.table.foleyGroup.foleySize",
+          assetBase: "standardized-assessment-tools",
+          assetName: "best_possible_medication.pdf",
           dataCaseStudy: "(not filled)"
         },
         {
@@ -226,24 +254,29 @@ export default function () {
           label: "Discharge",
           elementKey: "discharge",
           fqn: "genitourinary.table.vaginal.discharge",
+          assetBase: "?",
           dataCaseStudy: "(not filled)"
         },
         {
           label: "Bleeding",
           elementKey: "bleeding",
           fqn: "genitourinary.table.vaginal.bleeding",
+          assetBase: "?",
           dataCaseStudy: "(not filled)"
         },
         {
           label: "Description",
           elementKey: "description",
           fqn: "genitourinary.table.vaginal.description",
+          assetBase: "?",
           dataCaseStudy: "(not filled)"
         },
         {
           label: "Last menstrual period date",
           elementKey: "lastMenstrualPeriodDate",
-          fqn: "genitourinary.table.vaginal.lastMenstrualPeriodDate"
+          fqn: "genitourinary.table.vaginal.lastMenstrualPeriodDate",
+          assetBase: "static-databases",
+          assetName: "icd-10-medical-diagnosis-codes.pdf"
         },
         {
           label: "Pregnant",
@@ -287,7 +320,7 @@ export default function () {
           dataCaseStudy: "(not filled)"
         }
       ],
-      generated: "2019-07-29T11:12:21-07:00",
+      generated: "2019-08-02T17:59:37-07:00",
       hasTable: true,
       tables: [
         {
@@ -440,12 +473,6 @@ export default function () {
               label: "Location",
               tableColumn: "24",
               inputType: "text"
-            },
-            {
-              elementKey: "aLabel",
-              label: "If answered yes, please complete the pain assessment",
-              tableColumn: "25",
-              inputType: "form_label"
             },
             {
               elementKey: "pelvicPainSource",
@@ -1048,24 +1075,28 @@ export default function () {
           label: "Entered by name",
           elementKey: "name",
           fqn: "musculoskeletal.table.name",
+          assetBase: "?",
           dataCaseStudy: "Jason"
         },
         {
           label: "Entered by profession",
           elementKey: "profession",
           fqn: "musculoskeletal.table.profession",
+          assetBase: "?",
           dataCaseStudy: "RN"
         },
         {
           label: "Entered on day",
           elementKey: "day",
           fqn: "musculoskeletal.table.day",
+          assetBase: "?",
           dataCaseStudy: "0"
         },
         {
           label: "Entered at time",
           elementKey: "time",
           fqn: "musculoskeletal.table.time",
+          assetBase: "?",
           dataCaseStudy: "0.8125"
         },
         {
@@ -1199,6 +1230,7 @@ export default function () {
               text: "Cold"
             }
           ],
+          assetBase: "?",
           dataCaseStudy: "Warm"
         },
         {
@@ -1213,6 +1245,7 @@ export default function () {
               text: "No"
             }
           ],
+          assetBase: "?",
           dataCaseStudy: "No"
         },
         {
@@ -1239,16 +1272,18 @@ export default function () {
               text: "Other"
             }
           ],
+          assetBase: "?",
           dataCaseStudy: "(none selected)"
         },
         {
           label: "Comments",
           elementKey: "comments",
           fqn: "musculoskeletal.table.comments",
+          assetBase: "?",
           dataCaseStudy: "(not filled)"
         }
       ],
-      generated: "2019-07-29T11:12:21-07:00",
+      generated: "2019-08-02T17:59:37-07:00",
       hasTable: true,
       tables: [
         {
@@ -1641,7 +1676,7 @@ export default function () {
           fqn: "pain.table.secondarySite.comments"
         }
       ],
-      generated: "2019-07-29T11:12:21-07:00",
+      generated: "2019-08-02T17:59:37-07:00",
       hasTable: true,
       tables: [
         {
@@ -2318,7 +2353,7 @@ export default function () {
           dataCaseStudy: "(not filled)"
         }
       ],
-      generated: "2019-07-29T11:12:21-07:00",
+      generated: "2019-08-02T17:59:37-07:00",
       hasTable: true,
       tables: [
         {
@@ -3108,7 +3143,7 @@ export default function () {
           fqn: "nonmedOrders.table.comment"
         }
       ],
-      generated: "2019-07-29T11:12:21-07:00",
+      generated: "2019-08-02T17:59:37-07:00",
       hasTable: true,
       tables: [
         {
@@ -3296,49 +3331,44 @@ export default function () {
       pageDataKey: "referrals",
       pageChildren: [
         {
-          label: "Entered by name",
+          label: "Entered",
           elementKey: "name",
           fqn: "referrals.table.name",
           dataCaseStudy: "Dr. Singh"
         },
         {
-          label: "Entered by profession",
           elementKey: "profession",
           fqn: "referrals.table.profession",
           dataCaseStudy: "Physician"
         },
         {
-          label: "Entered on day",
           elementKey: "day",
           fqn: "referrals.table.day",
           dataCaseStudy: "0"
         },
         {
-          label: "Entered at time",
           elementKey: "time",
           fqn: "referrals.table.time",
           dataCaseStudy: "0.8125"
         },
         {
-          label: "Referral name",
+          label: "Referral",
           elementKey: "referralName",
           fqn: "referrals.table.referralName",
           dataCaseStudy: "Matt"
         },
         {
-          label: "Referral profession",
           elementKey: "referralProfession",
           fqn: "referrals.table.referralProfession",
           dataCaseStudy: "Resp therapy"
         },
         {
-          label: "Appointment date",
+          label: "Appointment",
           elementKey: "appointmentDate",
           fqn: "referrals.table.appointmentDate",
           dataCaseStudy: "0"
         },
         {
-          label: "Appointment time",
           elementKey: "appointmentTime",
           fqn: "referrals.table.appointmentTime",
           dataCaseStudy: "0.833333333333333"
@@ -3358,7 +3388,7 @@ export default function () {
           dataCaseStudy: "Active"
         }
       ],
-      generated: "2019-07-29T11:12:21-07:00",
+      generated: "2019-08-02T17:59:37-07:00",
       hasTable: true,
       tables: [
         {
@@ -3368,58 +3398,53 @@ export default function () {
           tableCells: [
             {
               elementKey: "name",
-              label: "Entered by name",
+              label: "Entered",
               tableColumn: "1",
               inputType: "text"
             },
             {
               elementKey: "profession",
-              label: "Entered by profession",
               tableColumn: "1",
               inputType: "text"
             },
             {
               elementKey: "day",
-              label: "Entered on day",
               tableColumn: "1",
               inputType: "day"
             },
             {
               elementKey: "time",
-              label: "Entered at time",
               tableColumn: "1",
               tableCss: "hr-table",
               inputType: "time"
             },
             {
               elementKey: "referralName",
-              label: "Referral name",
+              label: "Referral",
               tableColumn: "2",
               inputType: "text"
             },
             {
               elementKey: "referralProfession",
-              label: "Referral profession",
-              tableColumn: "3",
+              tableColumn: "2",
               tableCss: "hr-table",
               inputType: "text"
             },
             {
               elementKey: "appointmentDate",
-              label: "Appointment date",
-              tableColumn: "4",
+              label: "Appointment",
+              tableColumn: "3",
               inputType: "date"
             },
             {
               elementKey: "appointmentTime",
-              label: "Appointment time",
-              tableColumn: "5",
+              tableColumn: "3",
               inputType: "time"
             },
             {
               elementKey: "status",
               label: "Status",
-              tableColumn: "6",
+              tableColumn: "4",
               inputType: "select"
             }
           ],
@@ -3430,7 +3455,7 @@ export default function () {
                 elements: [
                   {
                     elementKey: "name",
-                    label: "Entered by name",
+                    label: "Entered",
                     inputType: "text",
                     formRow: "1",
                     formColumn: "1",
@@ -3440,7 +3465,6 @@ export default function () {
                   },
                   {
                     elementKey: "profession",
-                    label: "Entered by profession",
                     inputType: "text",
                     formRow: "1",
                     formColumn: "2",
@@ -3450,7 +3474,6 @@ export default function () {
                   },
                   {
                     elementKey: "day",
-                    label: "Entered on day",
                     inputType: "day",
                     formRow: "1",
                     formColumn: "3",
@@ -3460,7 +3483,6 @@ export default function () {
                   },
                   {
                     elementKey: "time",
-                    label: "Entered at time",
                     inputType: "time",
                     formRow: "1",
                     formColumn: "4",
@@ -3475,7 +3497,7 @@ export default function () {
                 elements: [
                   {
                     elementKey: "referralName",
-                    label: "Referral name",
+                    label: "Referral",
                     inputType: "text",
                     formRow: "2",
                     formColumn: "1",
@@ -3484,7 +3506,6 @@ export default function () {
                   },
                   {
                     elementKey: "referralProfession",
-                    label: "Referral profession",
                     inputType: "text",
                     formRow: "2",
                     formColumn: "2",
@@ -3498,7 +3519,7 @@ export default function () {
                 elements: [
                   {
                     elementKey: "appointmentDate",
-                    label: "Appointment date",
+                    label: "Appointment",
                     inputType: "date",
                     formRow: "3",
                     formColumn: "1",
@@ -3507,7 +3528,6 @@ export default function () {
                   },
                   {
                     elementKey: "appointmentTime",
-                    label: "Appointment time",
                     inputType: "time",
                     formRow: "3",
                     formColumn: "2",
@@ -3575,7 +3595,7 @@ export default function () {
           fqn: "labRequisitions.table.collected"
         }
       ],
-      generated: "2019-07-29T11:12:21-07:00",
+      generated: "2019-08-02T17:59:37-07:00",
       hasTable: true,
       tables: [
         {
@@ -3867,7 +3887,7 @@ export default function () {
           specialProperties: "marScheduleOption"
         }
       ],
-      generated: "2019-07-29T11:12:21-07:00",
+      generated: "2019-08-02T17:59:37-07:00",
       hasTable: true,
       tables: [
         {
@@ -3928,50 +3948,50 @@ export default function () {
             {
               elementKey: "endMeds",
               label: "End day",
-              tableColumn: "5",
+              tableColumn: "4",
               inputType: "day"
             },
             {
               elementKey: "scheduleType",
               label: "Schedule type",
-              tableColumn: "6",
+              tableColumn: "5",
               inputType: "select"
             },
             {
               elementKey: "startDay",
               label: "Morning",
-              tableColumn: "7",
+              tableColumn: "5",
               inputType: "checkbox"
             },
             {
               elementKey: "midDay",
               label: "Mid day",
-              tableColumn: "7",
+              tableColumn: "5",
               inputType: "checkbox"
             },
             {
               elementKey: "endDay",
               label: "Bedtime",
-              tableColumn: "7",
+              tableColumn: "5",
               inputType: "checkbox"
             },
             {
               elementKey: "schedule",
               label: "Schedule time",
-              tableColumn: "7",
+              tableColumn: "5",
               tableCss: "hr-table hide-table-element",
               inputType: "fieldset"
             },
             {
               elementKey: "instructions",
               label: "Instructions",
-              tableColumn: "8",
+              tableColumn: "6",
               inputType: "text"
             },
             {
               elementKey: "reason",
               label: "Reason",
-              tableColumn: "9",
+              tableColumn: "7",
               tableCss: "hr-table",
               inputType: "text"
             },
@@ -4304,7 +4324,7 @@ export default function () {
           helperHtml: "<p>Enter time delivered or say if not delivered.</p>"
         }
       ],
-      generated: "2019-07-29T11:12:21-07:00",
+      generated: "2019-08-02T17:59:37-07:00",
       hasTable: true,
       tables: [
         {
@@ -4597,7 +4617,7 @@ export default function () {
           fqn: "dischargeSummary.dischargeEducation"
         }
       ],
-      generated: "2019-07-29T11:12:21-07:00",
+      generated: "2019-08-02T17:59:37-07:00",
       hasForm: true,
       pageForm: {
         rows: [
@@ -4633,6 +4653,7 @@ export default function () {
                 inputType: "select",
                 formRow: "2",
                 formColumn: "2",
+                formCss: "is--one-third",
                 dataParent: "dischargeSummary",
                 tableKey: "pageForm"
               },
@@ -4642,6 +4663,7 @@ export default function () {
                 inputType: "select",
                 formRow: "2",
                 formColumn: "3",
+                formCss: "is-one-third",
                 dataParent: "dischargeSummary",
                 tableKey: "pageForm"
               }
@@ -4752,7 +4774,7 @@ export default function () {
           dataCaseStudy: "MSP"
         }
       ],
-      generated: "2019-07-29T11:12:21-07:00",
+      generated: "2019-08-02T17:59:37-07:00",
       hasForm: true,
       pageForm: {
         rows: [
