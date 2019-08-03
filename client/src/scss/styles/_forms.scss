@@ -214,17 +214,22 @@ select {
 }
 
 .is-half {
-  width: 50%;
-  min-width: 50%;
+  max-width: 50%;
+  flex: 1 0 50%;
 }
 
 .is-two-thirds {
-  width: 66%;
-  min-width: 66%;
+  max-width: 66%;
+  flex: 1 0 66%;
 }
 
 .is-one-third {
-  width: 31%;
+  max-width: 31%;
+  flex: 1 0 31%;
+}
+.is-one-quarter {
+  max-width: 25%;
+  flex: 1 0 25%;
 }
 
 .width-10 {
