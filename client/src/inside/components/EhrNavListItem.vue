@@ -3,8 +3,8 @@
     ui-link(:to="{ name: routeName(path) }", :class="levelClass")
       div(:class="linkClass", class="linkElement columns")
         div(class="linkLabel") {{ path.label }}
-        fas-icon(class="icon-right", icon="times", :class="hasDataColour")
-        fas-icon(class="icon-right", icon="circle", :class="hasDataColour")
+        div(class="is-pulled-right", :class="hasDataColour") &nbsp;
+        //fas-icon(class="icon-right green-circle", :class="hasDataColour")
 </template>
 
 <script>
@@ -31,12 +31,12 @@ export default {
     },
     hasDataColour () {
       let colour = ''
-      const NEW_INFO = 'new-info'
-      const OLD_INFO = 'old-info'
+      const NEW_INFO = 'circle green-circle' //'new-info'
+      const OLD_INFO = 'circle empty-circle'
       const NONE = ''
       let hd = this.hasData
       if (StoreHelper.isStudent(this)) {
-        colour = hd.hasStudent ? NEW_INFO : NONE
+        colour = hd.hasStudent ? NEW_INFO : hd.hasSeed ? OLD_INFO : NONE
       } else if (StoreHelper.isDevelopingContent(this)) {
         colour = hd.hasSeed ? NEW_INFO : NONE
       } else if (StoreHelper.isInstructor(this)) {
@@ -44,6 +44,7 @@ export default {
         // TODO consider adding a state "isEvaluating" to compliment isInstructor
         colour = hd.hasInstructor ? NEW_INFO : (hd.hasSeed ? OLD_INFO : NONE)
       }
+      console.log('hasDataColor', hd, colour)
       return colour
     },
     levelClass () {
@@ -145,19 +146,35 @@ export default {
   .linkLabel {
     width: 90%;
   }
-
+/*
   .new-info {
-    color: $red;
+    color: $green;
     content: 'faTimes';
     font-size: 1em;
     margin-top: 3px;
   }
 
   .old-info {
-    color: $green;
+    // color: $green;
     content: 'faCircle';
     font-size: 1em;
     margin-top: 3px;
+  }
+*/
+  .circle {
+    border-radius: 50%;
+    max-height: $radius;
+    position: relative;
+    max-width: $radius;
+    width: $radius;
+  }
+
+  .empty-circle {
+    border: 2px solid $green2;
+  }
+
+  .green-circle {
+    background-image: $green-radial;
   }
 }
 </style>
