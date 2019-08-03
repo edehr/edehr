@@ -14,11 +14,6 @@
                 label External Id
                 input(class="input", type="text", v-model="externalId", :class="{ 'is-invalid': !validExternalId }")
             div(class="ehrdfe")
-              div(class="text_input_wrapper")
-                label Landing Page (**)
-                input(class="input", type="text", v-model="ehrRoutePath")
-
-            div(class="ehrdfe")
               div(class="input-element")
                 label Seed data
                 select(v-model="selectedSeed", :class="{ 'is-invalid': !validSeed }")

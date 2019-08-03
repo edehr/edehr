@@ -18,15 +18,15 @@
           th(title="Name") Assignment name
           th(title="Description") Description
           th(title="External Id") External id
-          th(title="ROute") Route
-          th(v-show="isDevelopingContent", title="Seed Data") Seed data
+          // th(title="Route") Route
+          th(title="Seed Data") Seed data
       tbody
         tr(v-for="item in assignmentsListing")
           td {{ item.name }}
           td {{ item.description}}
           td {{ item.externalId}}
-          td {{ item.ehrRoutePath}}
-          td(v-show="isDevelopingContent") {{ item.seedDataObj.name }}
+          // td {{ item.ehrRoutePath}}
+          td {{ item.seedDataObj.name }}
           td
             ui-button(v-on:buttonClicked="showEditDialog", :value="item._id")
               fas-icon(icon="edit")
