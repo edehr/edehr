@@ -50,7 +50,7 @@
     div(v-if="inputType === 'fieldset'", class="fieldset_col_wrapper")
       h2(v-show="!!label", class="fieldset_label", v-html="label") &nbsp;
       div(v-for="row in element.formFieldSet.rows", :key="row.formRow" class="fieldset_row_row" )
-        div(v-for="fmEl in row.elements", :key="fmEl.elementKey", class="fieldset_row_row_element" )
+        div(v-for="fmEl in row.elements", :key="fmEl.elementKey", class="fieldset_row_row_element", :class="cssFromDefs(fmEl)" )
           ehr-dialog-form-element(:notEditing="notEditing", :element="fmEl", :ehrHelp="ehrHelp", :inputs="inputs", :isPageElement="isPageElement", :dialogTableKey="dialogTableKey")
 
     div(v-if="inputType === 'calculatedValue'", class="computed_wrapper")
@@ -86,6 +86,9 @@ export default {
   },
   // for data, props, etc see EhrCommon
   methods: {
+    cssFromDefs: function (element) {
+      return element.formCss ? element.formCss : 'noClass'
+    },
     dialogShowHideEvent (eData) {
       if(eData.value) {
         // console.log('EhrDialogFormElement on show re-init initial value', this.key, eData.value)

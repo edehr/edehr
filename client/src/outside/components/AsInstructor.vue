@@ -1,8 +1,8 @@
 <template lang="pug">
   div(class="as-instructor")
+    h1 Dashboard
     div(class="courses", v-for="course in courses")
       div(class="course-header")
-        h1 Dashboard
         h2(class="course-header-item") {{ course.label }} - {{ course.name }} (Id: {{ course.id }})
       div(class="activities", v-for="(activity, index) in course.activities")
         div(:ref="`activity-${activity._id}`")

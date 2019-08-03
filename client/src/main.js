@@ -30,8 +30,6 @@ import {
   faInfoCircle,
   faArrowRight,
   faArrowLeft,
-  faAngleDoubleDown,
-  faAngleDoubleUp,
   faNotesMedical,
   faUpload,
   faDownload,

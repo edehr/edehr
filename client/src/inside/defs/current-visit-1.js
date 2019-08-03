@@ -9,13 +9,13 @@ export default function () {
           label: "Admission day",
           elementKey: "admissionDay",
           fqn: "visit.admissionDay",
-          dataCaseStudy: "Day 0-NL-Day 1"
+          dataCaseStudy: "Day 0"
         },
         {
           label: "Admission time",
           elementKey: "admissionTime",
           fqn: "visit.admissionTime",
-          dataCaseStudy: "6:00-NL-10:30"
+          dataCaseStudy: "0.25"
         },
         {
           label: "Admission status",
@@ -44,7 +44,7 @@ export default function () {
               text: "Discharged"
             }
           ],
-          dataCaseStudy: "Admitted-NL-Admitted"
+          dataCaseStudy: "Admitted"
         },
         {
           label: "Consent for treatment",
@@ -62,7 +62,7 @@ export default function () {
           label: "Physician admitting diagnosis",
           elementKey: "diagnosis",
           fqn: "visit.diagnosis",
-          dataCaseStudy: "COPD-NL-Shortness of breath-NL-Dizzy"
+          dataCaseStudy: "COPD, shortness of breath, dizzy"
         },
         {
           label: "Patient location",
@@ -93,7 +93,7 @@ export default function () {
           fqn: "visit.table.transferOutTime"
         }
       ],
-      generated: "2019-07-27T14:16:07-07:00",
+      generated: "2019-08-02T18:00:42-07:00",
       hasForm: true,
       pageForm: {
         rows: [
@@ -433,7 +433,7 @@ export default function () {
           suffix: "/lpm"
         }
       ],
-      generated: "2019-07-27T14:16:07-07:00",
+      generated: "2019-08-02T18:00:42-07:00",
       hasTable: true,
       tables: [
         {
@@ -811,7 +811,7 @@ export default function () {
           fqn: "fluidBalance.table.fluidOut"
         }
       ],
-      generated: "2019-07-27T14:16:07-07:00",
+      generated: "2019-08-02T18:00:42-07:00",
       hasTable: true,
       tables: [
         {
@@ -1541,7 +1541,7 @@ export default function () {
           fqn: "neurological.table.stroke.strokeAssessmentCalculation"
         }
       ],
-      generated: "2019-07-27T14:16:07-07:00",
+      generated: "2019-08-02T18:00:42-07:00",
       hasTable: true,
       tables: [
         {
@@ -2122,7 +2122,7 @@ export default function () {
                               label: "Left pupil size",
                               inputType: "select",
                               fsetRow: "1",
-                              formCss: "is-one-quarter",
+                              formCss: "is-one-third",
                               dataParent: "neurological.table.pupils",
                               tableKey: "table"
                             },
@@ -2131,7 +2131,7 @@ export default function () {
                               label: "Right pupil size",
                               inputType: "select",
                               fsetRow: "1",
-                              formCss: "is-one-quarter",
+                              formCss: "is-one-third",
                               dataParent: "neurological.table.pupils",
                               tableKey: "table"
                             },
@@ -2140,7 +2140,7 @@ export default function () {
                               label: "Both pupils",
                               inputType: "select",
                               fsetRow: "1",
-                              formCss: "is-one-quarter",
+                              formCss: "is-one-third",
                               dataParent: "neurological.table.pupils",
                               tableKey: "table"
                             }
@@ -2154,7 +2154,7 @@ export default function () {
                               label: "Left pupil response to light",
                               inputType: "select",
                               fsetRow: "2",
-                              formCss: "is-one-quarter",
+                              formCss: "is-one-third",
                               dataParent: "neurological.table.pupils",
                               tableKey: "table"
                             },
@@ -2163,7 +2163,7 @@ export default function () {
                               label: "Right pupil response to light",
                               inputType: "select",
                               fsetRow: "2",
-                              formCss: "is-one-quarter",
+                              formCss: "is-one-third",
                               dataParent: "neurological.table.pupils",
                               tableKey: "table"
                             },
@@ -2171,6 +2171,7 @@ export default function () {
                               elementKey: "aSpacer",
                               inputType: "spacer",
                               fsetRow: "2",
+                              formCss: "is-one-third",
                               dataParent: "neurological.table.pupils",
                               tableKey: "table"
                             }
@@ -2695,7 +2696,7 @@ export default function () {
           dataCaseStudy: "(no notes)"
         }
       ],
-      generated: "2019-07-27T14:16:07-07:00",
+      generated: "2019-08-02T18:00:42-07:00",
       hasTable: true,
       tables: [
         {
@@ -3245,6 +3246,11 @@ export default function () {
           dataCaseStudy: "Normal"
         },
         {
+          elementKey: "aSpacer",
+          fqn: "cardiovascular.table.aSpacer",
+          dataCaseStudy: "Normal"
+        },
+        {
           label: "Cap refill",
           elementKey: "labelCapRefill",
           fqn: "cardiovascular.table.labelCapRefill",
@@ -3588,7 +3594,7 @@ export default function () {
           dataCaseStudy: "(blank)"
         }
       ],
-      generated: "2019-07-27T14:16:07-07:00",
+      generated: "2019-08-02T18:00:42-07:00",
       hasTable: true,
       tables: [
         {
@@ -3864,6 +3870,14 @@ export default function () {
               {
                 formRow: "3",
                 elements: [
+                  {
+                    elementKey: "aSpacer",
+                    inputType: "spacer",
+                    formRow: "3",
+                    formColumn: "1",
+                    dataParent: "cardiovascular.table",
+                    tableKey: "table"
+                  },
                   {
                     elementKey: "labelCapRefill",
                     label: "Cap refill",
@@ -4423,7 +4437,7 @@ export default function () {
           dataCaseStudy: "(nothing entered)"
         }
       ],
-      generated: "2019-07-27T14:16:07-07:00",
+      generated: "2019-08-02T18:00:42-07:00",
       hasTable: true,
       tables: [
         {
@@ -4466,107 +4480,101 @@ export default function () {
               elementKey: "pain",
               label: "Abdominal pain",
               tableColumn: "6",
-              inputType: "select"
-            },
-            {
-              elementKey: "aLabel",
-              label: "If answered yes, please complete the <a href=\"/assets/standardized-assessment-tools/numeric-rating-scale.pdf\">pain assessment</a>.",
-              tableColumn: "7",
               tableCss: "hr-table",
-              inputType: "form_label"
+              inputType: "select"
             },
             {
               elementKey: "emesisPresent",
               label: "Emesis present?",
-              tableColumn: "8",
+              tableColumn: "7",
               inputType: "select"
             },
             {
               elementKey: "colour",
               label: "Emesis colour",
-              tableColumn: "9",
+              tableColumn: "8",
               inputType: "select"
             },
             {
               elementKey: "description",
               label: "Description",
-              tableColumn: "10",
+              tableColumn: "9",
               inputType: "text"
             },
             {
               elementKey: "amount",
               label: "Approximate volume",
-              tableColumn: "11",
+              tableColumn: "10",
               tableCss: "hr-table",
               inputType: "select"
             },
             {
               elementKey: "eating",
               label: "Difficulty",
-              tableColumn: "12",
+              tableColumn: "11",
               inputType: "select"
             },
             {
               elementKey: "reason",
               label: "Reason",
-              tableColumn: "13",
+              tableColumn: "12",
               inputType: "text"
             },
             {
               elementKey: "npoSinceDay",
               label: "NPO since day",
-              tableColumn: "14",
+              tableColumn: "13",
               inputType: "day"
             },
             {
               elementKey: "npoSinceTime",
               label: "NPO since time",
-              tableColumn: "15",
+              tableColumn: "14",
               tableCss: "hr-table",
               inputType: "time"
             },
             {
               elementKey: "weightLoss",
               label: "Weight loss",
-              tableColumn: "16",
+              tableColumn: "15",
               inputType: "select"
             },
             {
-              elementKey: "lastBm",
-              label: "Last bowel movement",
-              tableColumn: "17",
-              tableCss: "hr-table",
-              inputType: "text"
+              elementKey: "stool",
+              label: "Stool",
+              tableColumn: "16",
+              inputType: "fieldset",
+              tableCss: "undefinedhide-table-element"
             },
             {
               elementKey: "stoolColour",
               label: "Stool colour",
-              tableColumn: "18",
+              tableColumn: "17",
               inputType: "select"
             },
             {
               elementKey: "stoolDescription",
               label: "Description",
-              tableColumn: "19",
+              tableColumn: "18",
               inputType: "select"
             },
             {
               elementKey: "stoolAmount",
               label: "Amount",
-              tableColumn: "20",
+              tableColumn: "19",
               inputType: "text"
             },
             {
               elementKey: "stoolSource",
               label: "Source",
-              tableColumn: "21",
+              tableColumn: "20",
               tableCss: "hr-table",
               inputType: "select"
             },
             {
               elementKey: "bowel",
               label: "Bowel",
-              tableColumn: "22",
+              tableColumn: "21",
               inputType: "checkset"
             },
             {
