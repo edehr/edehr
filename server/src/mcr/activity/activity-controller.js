@@ -51,9 +51,10 @@ export default class ActivityController extends BaseController {
       .populate('bookids', '-_id -__v')
      */
     return Visit.find({ $and: [ {isStudent: true }, {activity: _id} ] })
-      .populate('activityData')
-      .populate('assignment')
-      .populate('user')
+      .populate('activityData', 'submitted evaluated assignmentData')
+      .populate('assignment', 'externalId name description seedDataId ehrRoutePath')
+      .populate('user', 'givenName familyName fullName emailPrimary')
+      .select('userName lastVisitDate')
       .then((visits) => {
         return {classList: visits}
       })

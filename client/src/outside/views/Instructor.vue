@@ -1,15 +1,16 @@
 <template lang="pug">
   div
-    as-instructor
+    h1 Dashboard
+    course-list
 </template>
 
 <script>
-import AsInstructor from '../components/AsInstructor'
+import CourseList from '../components/CourseList'
 
 export default {
   name: 'Instructor',
   components: {
-    AsInstructor
+    CourseList
   }
 }
 </script>

@@ -5,7 +5,7 @@
     div(class="EhrContextBanner EhrPanelContent")
       div(class="EhrPanelContent_Inner")
         div(class="context-header columns", v-on:click="toggleShow")
-            h3(class="header-item", :title="panelInfo.courseTitle") {{ panelInfo.courseTitle }} - {{ panelInfo.activityTitle }}
+            h3(class="header-item", :title="panelInfo.courseTitle") {{ panelInfo.courseTitle }}
             div(class="icon-group")
               fas-icon(icon="plus", v-show="!show")
               fas-icon(icon="minus", v-show="show")

@@ -10,11 +10,6 @@ const Schema = new mongoose.Schema({
   familyName: { type: String },
   fullName: { type: String },
   emailPrimary: {type: String},
-  /* If needed include the LTI data used to create this user. Omit otherwise because it's long. */
-  // ltiData: [ { type: String } ],
-  /* see if we need to track the student visits here in the user record. Better to just query the visit table? */
-  // asStudentVisits: [{type: mongoose.Schema.Types.ObjectId, ref: 'Visit'}],
-  asInstructorVisits: [{type: mongoose.Schema.Types.ObjectId, ref: 'Visit'}],
   createDate: {type: Date, default: Date.now}
 })
 

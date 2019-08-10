@@ -3,6 +3,7 @@
     h1 Manage seed data
     div
       ui-button(v-on:buttonClicked="showCreateDialog") Create new seed
+      ui-button(v-on:buttonClicked="downloadAll") Download all
     div(class="seedData-list-body")
       div(class="classlist-body")
         table.table
@@ -40,7 +41,7 @@ import UiAgree from '../../app/ui/UiAgree.vue'
 import EhrSeedDataDialog from './EhrSeedDataDialog'
 import StoreHelper from '../../helpers/store-helper'
 import EventBus from '../../helpers/event-bus'
-import { setApiError, readFile, importSeedData, downloadSeedToFile } from '../../helpers/ehr-utils'
+import { setApiError, readFile, importSeedData, downloadSeedToFile, downObjectToFile } from '../../helpers/ehr-utils'
 import { PAGE_DATA_REFRESH_EVENT } from '../../helpers/event-bus'
 
 const TEXT = {
@@ -130,6 +131,13 @@ export default {
       let sSeedContent = this.findSeed(this.seedId)
       let data = sSeedContent.ehrData
       downloadSeedToFile(this.seedId, sSeedContent, data)
+    },
+    downloadAll () {
+      StoreHelper.loadSeedLists(this)
+        .then ( (sdList) => {
+          let filtered = sdList[0].filter( (seed) => !seed.isDefault)
+          downObjectToFile('EdEHR-seed-list.json', filtered)
+        })
     },
     gotoEhrWithSeed (sv) {
       const _this = this

@@ -132,9 +132,12 @@ export default {
       if (activityId) {
         // console.log('Page load and restore last activity', activityId)
         // no need to set localStorage because we are reloading from the value in localStorage
-        return this.$store
-          .dispatch('instructor/loadActivity', activityId)
-          .then(() => {
+        return StoreHelper.dispatchLoadCurrentActivity(this, activityId)
+          .then((activity) => {
+            if (!activity) {
+              localStorage.removeItem('activityId')
+              return
+            }
             // console.log('Page load and restore class list', activityId)
             return _this.$store.dispatch('instructor/loadClassList', activityId)
           })

@@ -44,8 +44,14 @@ class StoreHelperWorker {
     return activityData.evaluated
   }
 
-  setLoading (component, value) {
-    component.$store.commit('system/setLoading', value)
+  setLoading (context, value) {
+    let rt = undefined
+    if (context.$store) {
+      context = context.$store
+    } else {
+      rt = { root: true }
+    }
+    context.commit('system/setLoading', value, rt)
   }
 
   setIsDevelopingContent (component, state) {
@@ -68,6 +74,9 @@ class StoreHelperWorker {
   dispatchLoadActivity ( component, activityId) {
     return component.$store.dispatch('instructor/loadActivity', activityId)
   }
+  dispatchLoadCurrentActivity ( component, activityId) {
+    return component.$store.dispatch('instructor/loadCurrentActivity', activityId)
+  }
 
   // returns promise that resolves to class list
   dispatchLoadClassList ( component, activityId) {
@@ -76,40 +85,37 @@ class StoreHelperWorker {
 
   /* **********   Assignments  ************** */
   loadAssignmentAndSeedLists (component) {
-    // console.log('load assignments for AssignmentListing component')
-    const _this = this
-    _this.setLoading(component, true)
     return Promise.all([
       component.$store.dispatch('seedStore/loadSeedDataList'),
       component.$store.dispatch('assignment/loadAssignments')
-    ]).then(() => {
-      _this.setLoading(component, false)
-    })
-
+    ])
+  }
+  loadAssignmentList (component) {
+    return component.$store.dispatch('assignment/loadAssignments')
   }
 
   findAssignment (component, toolConsumerId, externalId) {
-    console.log('Assignment findAssignment ', toolConsumerId, externalId)
+    // console.log('Assignment findAssignment ', toolConsumerId, externalId)
     let payload = {toolConsumerId: toolConsumerId, externalId: externalId}
     return component.$store.dispatch('assignment/findAssignment', payload)
   }
 
 
   loadAssignment (component, id) {
-    console.log('Assignment Load ', id)
+    // console.log('Assignment Load ', id)
     return component.$store.dispatch('assignment/loadAssignment', id)
   }
 
   // returns promise that resolves to assignment list
   updateAssignment (component, assignmentId, assignmentData) {
-    console.log('Assignment update ', assignmentId, assignmentData)
+    // console.log('Assignment update ', assignmentId, assignmentData)
     let dataIdPlusPayload = { id: assignmentId, payload: assignmentData }
     return component.$store.dispatch('assignment/updateAssignment', dataIdPlusPayload)
   }
 
   // returns promise that resolves to assignment list
   createAssignment (component, assignmentData) {
-    console.log('Assignment save ', assignmentData)
+    // console.log('Assignment save ', assignmentData)
     return component.$store.dispatch('assignment/createAssignment', assignmentData)
   }
 
@@ -119,14 +125,20 @@ class StoreHelperWorker {
 
   /* **********   Seed Data  ************** */
 
+  loadSeedLists (component) {
+    return Promise.all([
+      component.$store.dispatch('seedStore/loadSeedDataList'),
+    ])
+  }
+
   updateSeed (component, seedId, theData) {
-    console.log('Seed Data update ', seedId, theData)
+    // console.log('Seed Data update ', seedId, theData)
     let dataIdPlusPayload = { id: seedId, payload: theData }
     return component.$store.dispatch('seedStore/updateSeedItem', dataIdPlusPayload)
   }
 
   createSeed (component, seedData) {
-    console.log('Seed create ', seedData)
+    // console.log('Seed create ', seedData)
     return component.$store.dispatch('seedStore/createSeedItem', seedData)
   }
 
