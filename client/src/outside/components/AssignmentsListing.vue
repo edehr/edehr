@@ -8,18 +8,19 @@
       p Adjust your Learning Management System to use an assignment from the list below
     div(v-show="isDevelopingContent")
       ui-button(v-on:buttonClicked="showCreateDialog") Create a new assignment
-      ui-button(v-on:buttonClicked="manageEhrData", :secondary="true") Manage EHR data
+      ui-button(v-on:buttonClicked="manageEhrData", :secondary="true") Manage seed data
 
-      //ui-link(:to="{ name: `developEhrData` }", v-bind:secondary="true", class="second-option") Manage EHR data
+      //ui-link(:to="{ name: `developEhrData` }", v-bind:secondary="true", class="second-option") Manage seed data
 
     table.table
       thead
         tr
-          th(title="Name") Assignment name
+          th(title="Name", style="min-width: 170px") Assignment name
           th(title="Description") Description
-          th(title="External Id") External id
+          th(title="External Id", style="min-width: 110px") External id
           // th(title="Route") Route
-          th(title="Seed Data") Seed data
+          th(title="Seed Data", style="min-width: 170px") Seed name
+          th
       tbody
         tr(v-for="item in assignmentsListing")
           td {{ item.name }}

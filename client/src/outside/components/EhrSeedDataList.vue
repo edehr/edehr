@@ -1,7 +1,6 @@
 <template lang="pug">
   div(id="seedDataList", class="seedData-list")
-    bread-crumb(currentPage="developEhrData")
-    h1 EHR assignment seed data
+    h1 Manage seed data
     div
       ui-button(v-on:buttonClicked="showCreateDialog") Create new seed
     div(class="seedData-list-body")
@@ -9,13 +8,13 @@
         table.table
           thead
             tr
-              th Name
+              th(title="Name", style="min-width: 170px") Seed name
               th Version
               th Description
-              th Seeded pages
-              th Assignments
+              th Pages with seed data
+              th Assignments using this seed
               th
-              // th Seed Id
+              // th Seed id
           tbody
             tr(v-for="sv in seedDataList")
               td {{sv.name}}
