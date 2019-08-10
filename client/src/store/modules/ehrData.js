@@ -1,11 +1,10 @@
-import StoreHelper from './storeHelper'
+import InstoreHelper from './instoreHelper'
 import EventBus from '../../helpers/event-bus'
 import { ACTIVITY_DATA_EVENT } from '../../helpers/event-bus'
 import { composeUrl, decoupleObject } from '../../helpers/ehr-utils'
 import { ehrMergeEhrData, ehrMarkSeed } from '../../helpers/ehr-utils'
 import { getAllPageKeys, getPageDefinition, getDefaultValue, getDataCaseStudy } from '../../helpers/ehr-defs'
 
-const helper = new StoreHelper()
 const API_ACTIVITY = 'activity-data'
 
 export const state = {
@@ -30,7 +29,7 @@ export const getters = {
     By the documentation getters['visit/isInstructor'] should work but it doesn't
     So use the direct access of rootstate ...
      */
-    if (helper.instoreIsInstructor(rootState)) {
+    if (InstoreHelper.instoreIsInstructor(rootState)) {
       if(debug) console.log('Using current student from class list ', state.sCurrentStudentData)
       return state.sCurrentStudentData.assignmentData
     } else {
@@ -45,12 +44,12 @@ export const getters = {
     let ehrSeedData = decoupleObject(rootState.seedStore.ehrSeedData)
     let mData
     const debug = false
-    if (helper.instoreIsDevContent(rootState)) {
+    if (InstoreHelper.instoreIsDevContent(rootState)) {
       mData = ehrSeedData
       if(debug) {
         console.log('EhrData mergedData -=-=-=-=-=-=-=-=-=-=-=-= Develop seed', ehrSeedData)
       }
-    } else if (helper.instoreIsInstructor(rootState)) {
+    } else if (InstoreHelper.instoreIsInstructor(rootState)) {
       let evalAssignmentData = decoupleObject(state.sCurrentStudentData.assignmentData)
       if(debug) {
         console.log('EhrData mergedData -=-=-=-=-=-=-=-=-=-=-=-= Instructor ehrSeedData', ehrSeedData)
@@ -174,7 +173,7 @@ const helpers = {
     let apiUrl = visitState.apiUrl
     let url = `${apiUrl}/activity-data/${parameter}/${activityDataId}`
     console.log('ActivityData send ', url)
-    return helper.putRequest(context, url, { value: data }).then(results => {
+    return InstoreHelper.putRequest(context, url, { value: data }).then(results => {
       let activityData = results.data
       context.commit('_setActivityData', activityData)
       return activityData
@@ -187,7 +186,7 @@ const actions = {
     let activityDataId = options.id
     // console.log('Get activityData  ', activityDataId)
     let url = composeUrl(context, API_ACTIVITY) + `get/${activityDataId}`
-    return helper.getRequest(context, url).then(response => {
+    return InstoreHelper.getRequest(context, url).then(response => {
       let ad = response.data.activitydata
       context.commit('_setForStudent', options.forStudent)
       // console.log('Got activity information ', ad)
@@ -207,7 +206,7 @@ const actions = {
       let apiUrl = visitState.apiUrl
       let activityDataId = context.state.sActivityData._id
       let url = `${apiUrl}/activity-data/get/${activityDataId}`
-      return helper.getRequest(context, url).then(response => {
+      return InstoreHelper.getRequest(context, url).then(response => {
         let ad = response.data.activitydata
         // console.log('Got activity information ', ad)
         context.commit('_setActivityData', ad)
@@ -228,7 +227,7 @@ const actions = {
     // let pn = payload.propertyName
     // console.log('sendAssignmentDataUpdate activityDataId, apiUrl, property: ', adi, apiUrl, pn)
     let url = `${apiUrl}/activity-data/assignment-data/${adi}`
-    return helper.putRequest(context, url, payload).then(results => {
+    return InstoreHelper.putRequest(context, url, payload).then(results => {
       let activityData = results.data
       // console.log('ehrData commit activityData with new assignmentData', JSON.stringify(activityData.assignmentData))
       context.commit('_setActivityData', activityData)
@@ -268,7 +267,7 @@ const actions = {
     let activityDataId = context.state.sCurrentStudentData.activityDataId
     // console.log('sendEvaluationNotes activityDataId, apiUrl, data ', activityDataId, apiUrl, JSON.stringify(data))
     let url = `${apiUrl}/activity-data/evaluation-data/${activityDataId}`
-    return helper.putRequest(context, url, { value: data }).then(results => {
+    return InstoreHelper.putRequest(context, url, { value: data }).then(results => {
       let activityData = results.data
       console.log(
         'ehrData update current student data with new evaluation data',

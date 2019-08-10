@@ -32,19 +32,15 @@ export default class VisitController extends BaseController {
    * @return {*}
    */
   updateCreateVisit (user, toolConsumer, activity, assignment, ltiData) {
-    debugvc('Update Create Visit')
-    var role = new Role(ltiData.roles)
+    let role = new Role(ltiData.roles)
     let filter = {
       $and: [
         {user: user._id},
-        {activity: activity._id},
-        {toolConsumer: toolConsumer._id},
-        {isStudent: role.isStudent},
-        {isInstructor: role.isInstructor},
-        {isDeveloper: role.isDeveloper}
+        {activity: activity._id}
       ]
     }
-    var theVisit
+    debugvc('Update Create Visit ' + JSON.stringify(filter, null, 2))
+    let theVisit
     return Visit.findOne(filter)
       .then((visit) => {
         if (visit) {
@@ -87,19 +83,6 @@ export default class VisitController extends BaseController {
             .then((activityData) => {
               theVisit.activityData = activityData
               return theVisit.save()
-            })
-            .then((visit) => {
-              // return the updated visit
-              theVisit = visit
-              if (role.isInstructor) {
-                debugvc('Push visit record into user as instructor visit')
-                user.asInstructorVisits.push(visit)
-              }
-              // if (role.isStudent) {
-              //   debugvc('Push visit record into user as student visit')
-              //   user.asStudentVisits.push(visit)
-              // }
-              return user.save()
             })
         }
       })

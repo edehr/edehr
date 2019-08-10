@@ -202,15 +202,19 @@ export function importSeedData (component, seedId, contents) {
 }
 
 export function downloadSeedToFile (seedId, sSeedContent, ehrData) {
-  let lastUpdate = sSeedContent.lastUpdateDate
-  lastUpdate = formatDateStr(lastUpdate)
-  let fName = camelcase(sSeedContent.name)
-  fName += sSeedContent.version ? '_' + sSeedContent.version : ''
-  fName += '_' + lastUpdate
-  fName += '.json'
+  let lastUpdate = formatDateStr(sSeedContent.lastUpdateDate)
+  let name = sSeedContent.name
+  let ver = sSeedContent.version
+  let fName = camelcase(name)
+    + (ver ? '_' + ver : '')
+    + '_' + lastUpdate
+    + '.json'
   let data = {
+    id: seedId,
     license: Text.LICENSE_FULL_TEXT,
     ehrData: ehrData,
+    name: name,
+    version: ver,
     fileName: fName
   }
   data = JSON.stringify(data,null,2)
@@ -218,6 +222,11 @@ export function downloadSeedToFile (seedId, sSeedContent, ehrData) {
   fileDownload(data, fName, 'application/json')
 }
 
+export function downObjectToFile (fileName, object) {
+  let data = JSON.stringify(object,null,2)
+  console.log('Download object to file ', fileName, data)
+  fileDownload(data, fileName, 'application/json')
+}
 
 /**
  * prepareAssignmentPageDataForSave does two things

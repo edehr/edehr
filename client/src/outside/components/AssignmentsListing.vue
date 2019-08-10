@@ -8,7 +8,8 @@
       p Adjust your Learning Management System to use an assignment from the list below
     div(v-show="isDevelopingContent")
       ui-button(v-on:buttonClicked="showCreateDialog") Create a new assignment
-      ui-button(v-on:buttonClicked="manageEhrData", :secondary="true") Manage seed data
+      ui-button(v-on:buttonClicked="manageEhrData", :secondary="true") Manage EHR data
+      ui-button(v-on:buttonClicked="downloadAll") Download all
 
       //ui-link(:to="{ name: `developEhrData` }", v-bind:secondary="true", class="second-option") Manage seed data
 
@@ -38,7 +39,7 @@
 import UiButton from '../../app/ui/UiButton.vue'
 import UiLink from '../../app/ui/UiLink.vue'
 import StoreHelper from '../../helpers/store-helper'
-import { getIncomingParams } from '../../helpers/ehr-utils'
+import { getIncomingParams, downObjectToFile } from '../../helpers/ehr-utils'
 import BreadCrumb from './BreadCrumb'
 import AssignmentsDialog from './AssignmentsDialog'
 
@@ -90,6 +91,13 @@ export default {
     manageEhrData: function () {
       this.$router.push('developEhrData')
     },
+    downloadAll () {
+      StoreHelper.loadAssignmentList(this)
+        .then ( (aList) => {
+          downObjectToFile('EdEHR-assignments-list.json', aList)
+        })
+    },
+
     findAssignment: function (id) {
       return this.assignmentsListing.find(e => {
         return e._id === id

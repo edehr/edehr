@@ -1,74 +1,50 @@
 <template lang="pug">
-  div(id="activityList", class="activity-list")
-    div(class="activity-list-header columns", v-on:click="activateActivity")
-      div(class="header-column is-10 column")
-        h3(:title="activityId") {{ activity.resource_link_title }}
-        p LMS description: {{ activity.resource_link_description }}
-        p Assignment name: {{ assignment.name }} (LMS configuration: assignment={{ assignment.externalId }} )
-        p Assignment description: {{ assignment.description }}
-      div(class="header-column is-2 column")
-        div(class="icon-group")
-          fas-icon(icon="plus", v-show="!show")
-          fas-icon(icon="minus", v-show="show")
-    div(class="activity-list-body")
-      accordion-element(theme="grayTheme", :show="show")
-        div(class="classlist-header")
-          div(class="classlist-header-item") Evaluation notes
-            fas-icon(class="icon-right", icon="download")
-        div(class="classlist-body")
-          table.table
-            thead
-              tr
-                th Student
-                th Submitted
-                th Evaluation notes
-                th Status
-                th
-            tbody
-              tr(v-for="sv in classList", v-on:click="changeStudent(sv)")
-                td
-                  div(:id="`ref-${sv._id}`",  :ref="`ref-${sv._id}`") {{ sv.user.fullName }}
-                td {{ lastUpdate(sv) }}
-                td {{ sv.activityData.evaluationData }}
-                td {{ statusText(sv) }}
-                td.actions
-                  span(v-if="sv.activityData.submitted && !sv.activityData.evaluated")
-                    span &nbsp;
-                    ui-button(v-on:buttonClicked="unsubmit(sv)", v-bind:secondary="true", :title="unsubmitTool") {{unsubmitText}}
-                  span(v-if="sv.activityData.submitted && !sv.activityData.evaluated")
-                    ui-button(v-on:buttonClicked="goToEhr(sv)", v-bind:secondary="true", title="View and evaluate in the EHR") Evaluate student work
-                  span(v-if="showEvaluateAction(sv)") &nbsp;
-                    ui-button(v-on:buttonClicked="markEvaluated(sv)", v-bind:secondary="true", :title="evaluatedButtonTooltip(sv)") {{ evaluatedButtonText(sv) }}
+  div
+    div(class="classlist-body")
+      table.table
+        thead
+          tr
+            th Student
+            th Submitted
+            th Evaluation notes
+            th Status
+            th
+        tbody
+          tr(v-for="sv in classList", v-on:click="changeStudent(sv)")
+            td
+              div(:id="`ref-${sv._id}`",  :ref="`ref-${sv._id}`") {{ sv.user.fullName }}
+            td {{ lastUpdate(sv) }}
+            td {{ sv.activityData.evaluationData }}
+            td {{ statusText(sv) }}
+            td.actions
+              span(v-if="sv.activityData.submitted && !sv.activityData.evaluated")
+                span &nbsp;
+                ui-button(v-on:buttonClicked="unsubmit(sv)", v-bind:secondary="true", :title="unsubmitTool") {{unsubmitText}}
+              span(v-if="sv.activityData.submitted && !sv.activityData.evaluated")
+                ui-button(v-on:buttonClicked="goToEhr(sv)", v-bind:secondary="true", title="View and evaluate in the EHR") Evaluate student work
+              span(v-if="showEvaluateAction(sv)") &nbsp;
+                ui-button(v-on:buttonClicked="markEvaluated(sv)", v-bind:secondary="true", :title="evaluatedButtonTooltip(sv)") {{ evaluatedButtonText(sv) }}
 
 </template>
 
 <script>
-import AccordionElement from '../../app/components/AccordionElement'
-import UiButton from '../../app/ui/UiButton.vue'
 import { formatTimeStr } from '../../helpers/ehr-utils'
 import StoreHelper from '../../helpers/store-helper'
+import UiButton from '../../app/ui/UiButton.vue'
 
 export default {
   name: 'ActivityList',
   components: {
-    AccordionElement,
     UiButton
   },
   data () {
     return {
-      show: false,
-      indicator: '+',
       unsubmitText: 'Send back for edits',
-      unsubmitTool: 'Send back for edits',
-      classList: [],
-      activity: {},
-      assignment: {}
+      unsubmitTool: 'Send back for edits'
     }
   },
   props: {
-    activityId: { type: String },
-    // activity: { type: Object },
-    index: { type: Number}
+    classList: { type: Array }
   },
   computed: {
   },
@@ -85,53 +61,11 @@ export default {
     showEvaluateAction (sv) {
       return sv.activityData.submitted && sv.activityData.evaluationData
     },
-    setShow: function (value) {
-      this.show = value
-      this.indicator = value ? '-' : '+'
-    },
     statusText (sv) {
       let result = sv.activityData.submitted ? 'Submitted and waiting for evaluation' : 'Not submitted'
       
       result = sv.activityData.evaluated ? 'Evaluated' : result
       return result
-    },
-    activateActivity () {
-      if (this.show) {
-        this.setShow(false)
-        return
-      }
-      this.loadActivity(this.activityId)
-    },
-    loadActivity (activityId) {
-      console.log('ClassList loadActivity')
-      const _this = this
-      return StoreHelper.dispatchLoadActivity(this, activityId)
-        .then((theActivity) => {
-          console.log('ClassList got the activity ', theActivity)
-          _this.activity = theActivity
-          console.log('ClassList load the assignment ', theActivity.assignment)
-          return StoreHelper.loadAssignment(this, theActivity.assignment)
-        })
-        .then((theAssignment) => {
-          console.log('ClassList have assignment ', theAssignment)
-          _this.assignment = theAssignment
-          let externalId = theAssignment.externalId
-          let consumer = theAssignment.toolConsumer
-          console.log('ClassList find assignment by external id', consumer, externalId)
-          return StoreHelper.findAssignment(this, consumer, externalId)
-        })
-        .then((theAssignment) => {
-          console.log('ClassList did we find the assignment by externalId? ', theAssignment)
-          console.log('see issue #286 https://github.com/BCcampus/edehr/issues/286')
-          return StoreHelper.dispatchLoadClassList(this, activityId)
-        })
-        .then((classList) => {
-          console.log('ClassList have classlist ', classList)
-          _this.classList = classList
-          _this.$nextTick(function () {
-            _this.setShow(true)
-          })
-        })
     },
     unsubmit (sv) {
       let activityDataId = sv.activityData._id
@@ -169,78 +103,12 @@ export default {
       let pid = sv._id
       StoreHelper.dispatchChangeCurrentEvaluationStudentId(this, this.classList, pid)
     }
-  },
-  mounted: function () {
-    if (this.index === 0) {
-      const _this = this
-      this.$nextTick(function () {
-        _this.activateActivity()
-      })
-
-    }
-    /*
-    let myId = this.activity._id
-    let storeId = localStorage.getItem('activityId')
-    if (storeId === myId) {
-      // TODO  see notes in AsInstructor view regaring scrolling
-      this.loadActivity(storeId).then(() => {
-        let list = this.classList
-        if (list && list.length > 0) {
-          let lastStudent = list[list.length - 1]
-          let id = `ref-${lastStudent._id}`
-          const _this = this
-          this.$nextTick(function() {
-            // console.log('Look for element with id', id)
-            let elem = document.getElementById(id)
-            // console.log('scroll to ', elem)
-            _this.$scrollTo(elem)
-          })
-        }
-      })
-    }
-    */
   }
 }
 </script>
 
 <style lang="scss" scoped>
 @import '../../scss/definitions';
-.activity-list {
-  padding: 0;
-}
-.activity-list-header {
-  background-color: $grey03;
-  border: 1px solid rgba(255, 255, 255, 0);
-  margin-bottom: 0;
-  cursor: pointer;
-
-  .header-column {
-    padding: 1rem 1.5rem;
-    position: relative;
-
-    p {
-      margin-bottom: .5rem;
-    }
-
-    .icon-group {
-    right: 20px;
-    }
-  }
-  .header-item {
-    display: block;
-  }
-  .header-icon {
-    font-size: 2rem;
-    font-weight: bold;
-    text-align: right;
-  }
-}
-
-.activity-list-body {
-  background-color: $grey10;
-  overflow: hidden;
-  margin-bottom: 0;
-
   .classlist-header {
     padding: 0.5rem 1.5rem;
     background-color: $grey10;
@@ -275,10 +143,5 @@ export default {
       }
     }
   }
-}
-.activity-list:hover .activity-list-header {
-  background-color: $brand-primary-light;
-  box-sizing: border-box;
-  border: 1px solid $brand-primary;
-}
+
 </style>

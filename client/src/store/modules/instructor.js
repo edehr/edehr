@@ -1,6 +1,4 @@
-import axios from 'axios' // '../node_modules/axios/dist/axios.min'
-import StoreHelper from './storeHelper'
-const helper = new StoreHelper()
+import InstoreHelper from './instoreHelper'
 import EventBus from '../../helpers/event-bus'
 import { PAGE_DATA_REFRESH_EVENT } from '../../helpers/event-bus'
 
@@ -15,8 +13,8 @@ const state = {
 
 const getters = {
   currentEvaluationStudent: state => {
-    var currentId = state.sCurrentEvaluationStudentId
-    var classList = state.sClassList
+    let currentId = state.sCurrentEvaluationStudentId
+    let classList = state.sClassList
     if (currentId && classList) {
       return classList.find(elem => {
         return elem._id === currentId
@@ -32,7 +30,6 @@ const actions = {
       let rootOpt = { root: true }
       let currentId = data.studentId
       let classList = data.classList
-      // TODO store the id in localstorage to support page refresh
       context.commit('setCurrentEvaluationStudentId', currentId)
       // console.log('changeCurrentEvaluationStudentId', currentId, ' classList: ', classList)
       let sv // a student's visit information
@@ -73,26 +70,36 @@ const actions = {
     let url = `${context.state.apiUrl}/activity-data/evaluation-data/${vid}`
     // console.log('store save eval notes ', url, body)
     return new Promise(resolve => {
-      helper.putRequest(context, url, body).then(results => {
+      InstoreHelper.putRequest(context, url, body).then(results => {
         let evaluationData = results.data
         resolve(evaluationData)
       })
     })
   },
-  loadActivity (context, activityId) {
+  loadCurrentActivity (context, activityId) {
     // console.log('Loading activity. ', activityId)
     context.commit('setCurrentActivityId', activityId)
     let visitState = context.rootState.visit
     let apiUrl = visitState.apiUrl
     let url = `${apiUrl}/activities/get/${activityId}`
-    return new Promise(resolve => {
-      axios.get(url).then(response => {
-        // console.log('load activity', response.data)
-        var activity = response.data['activity']
-        context.commit('setCurrentActivity', activity)
-        resolve(activity)
+    return InstoreHelper.getRequest(context, url)
+      .then(response => {
+        let activity = response.data['activity']
+        if (activity)  {
+          context.commit('setCurrentActivity', activity)
+        }
+        return activity
       })
-    })
+  },
+  loadActivity (context, activityId) {
+    let visitState = context.rootState.visit
+    let apiUrl = visitState.apiUrl
+    let url = `${apiUrl}/activities/get/${activityId}`
+    return InstoreHelper.getRequest(context, url)
+      .then(response => {
+        let activity = response.data['activity']
+        return activity
+      })
   },
   loadCourses (context) {
     // console.log('In instructor loadCourses')
@@ -101,32 +108,26 @@ const actions = {
     let userId = visitState.sUserInfo._id
     let url = `${apiUrl}/users/instructor/courses/${userId}`
     // console.log('In instructor loadCourses ', url)
-    return new Promise(resolve => {
-      axios.get(url).then(response => {
-        var courses = response.data['courses']
+    return InstoreHelper.getRequest(context, url)
+      .then(response => {
+        let courses = response.data['courses']
         // console.log('load courses', response.data)
         // console.log('load courses', courses)
         context.commit('setCourses', courses)
-        courses.forEach(course => {
-          // console.log('a course ', course)
-        })
-        resolve(courses)
+        return courses
       })
-    })
   },
   loadClassList (context, activityId) {
     let visitState = context.rootState.visit
     let apiUrl = visitState.apiUrl
-    return new Promise(resolve => {
-      let url = `${apiUrl}/activities/class/${activityId}`
-      // console.log('In load instructor activities data ', url)
-      axios.get(url).then(response => {
+    let url = `${apiUrl}/activities/class/${activityId}`
+    return InstoreHelper.getRequest(context, url)
+      .then(response => {
         // console.log('load activities', response.data)
-        var classList = response.data['classList']
+        let classList = response.data['classList']
         context.commit('setClassList', classList)
-        resolve(classList)
+        return classList
       })
-    })
   }
 }
 

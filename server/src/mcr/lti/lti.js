@@ -321,7 +321,7 @@ export default class LTIController {
     let route = req.assignment.ehrRoutePath || '/ehr'
 
     if (visit.isInstructor) {
-      debug('Route to instructor page ' + JSON.stringify(req.ltiData, null, 2))
+      debug('Route to instructor page ')// + JSON.stringify(req.ltiData, null, 2))
       route = '/instructor'
     }
     let url = this.config.clientUrl + route + '?visit=' + visit._id + '&apiUrl=' + apiUrl

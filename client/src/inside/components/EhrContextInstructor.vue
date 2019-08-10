@@ -2,7 +2,7 @@
   div(class="classlist", v-show="showClassList")
     div(class="classlist_content columns")
       div(class="is-4 column")
-        div(class="textField") Course: {{ panelInfo.courseTitle}}
+        // div(class="textField") Course: {{ panelInfo.courseTitle}}
         div(class="textField") Activity: {{ panelInfo.activityTitle}}
           ui-info(:title="panelInfo.activityTitle", :text="panelInfo.activityDescription")
         div(class="textField") Assignment: {{ panelInfo.assignmentName}}
@@ -13,11 +13,11 @@
       div(class="is-4 column")
         div(class="columns is-pulled-right")
           ui-button(v-on:buttonClicked="previousStudent", class="is-pulled-right is-light", :disabled="!enablePrev")
-            fas-icon(icon="faAngleLeft", class="icon-left") 
+            fas-icon(icon="angle-left", class="icon-left")
             span Previous
           ui-button(v-on:buttonClicked="nextStudent", class="is-pulled-right is-light", :disabled="!enableNext")
-            fas-icon(icon="faAngleRight", class="icon-left") 
-            span Next
+            span Next &nbsp;
+            fas-icon(icon="angle-right", class="icon-left")
     div(class="textField") Evaluation notes
     ehr-evaluation-input(ref="evaluationNoteComponent", v-on:saveNext="nextStudent", :enableNext="enableNext")
 </template>
@@ -36,21 +36,7 @@ export default {
   components: { UiButton, EhrEvaluationInput, UiInfo },
   computed: {
     panelInfo () {
-      let evalInfo = this.$store.state.ehrData.sCurrentStudentInfo || {}
-      let evalData = this.$store.state.ehrData.sCurrentStudentData || {}
-      let activity = this.$store.state.instructor.sCurrentActivity || {}
-      let data = {
-        studentName: evalInfo.studentName,
-        studentId: evalInfo.studentName,
-        courseTitle: activity.context_title,
-        activityTitle: activity.resource_link_title,
-        activityDescription: activity.resource_link_description,
-        lastVisitDate: evalData.lastDate || {},
-        assignmentData: evalData.assignmentData,
-        assignmentName: evalInfo.assignmentName,
-        assignmentDescription: evalInfo.assignmentDescription
-      }
-      return data
+      return StoreHelper.getPanelData(this)
     },
     classList () {
       /*
