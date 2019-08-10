@@ -7,11 +7,11 @@
           div(class="input-fieldrow")
             div(class="ehrdfe")
               div(class="text_input_wrapper")
-                label Name
+                label Assignment name
                 input(class="input", type="text", v-model="assignmentName", :class="{ 'is-invalid': !validName }")
             div(class="ehrdfe")
               div(class="text_input_wrapper")
-                label External Id
+                label External id
                 input(class="input", type="text", v-model="externalId", :class="{ 'is-invalid': !validExternalId }")
             div(class="ehrdfe")
               div(class="input-element")

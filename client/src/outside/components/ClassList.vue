@@ -7,7 +7,9 @@
         p Assignment name: {{ assignment.name }} (LMS configuration: assignment={{ assignment.externalId }} )
         p Assignment description: {{ assignment.description }}
       div(class="header-column is-2 column")
-        div(class="header-item header-icon") {{ indicator }}
+        div(class="icon-group")
+          fas-icon(icon="plus", v-show="!show")
+          fas-icon(icon="minus", v-show="show")
     div(class="activity-list-body")
       accordion-element(theme="grayTheme", :show="show")
         div(class="classlist-header")
@@ -214,9 +216,14 @@ export default {
 
   .header-column {
     padding: 1rem 1.5rem;
+    position: relative;
 
     p {
       margin-bottom: .5rem;
+    }
+
+    .icon-group {
+    right: 20px;
     }
   }
   .header-item {
