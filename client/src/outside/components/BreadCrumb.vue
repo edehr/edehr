@@ -1,5 +1,5 @@
 <template lang="pug">
-  ui-link(class="breadcrumb", v-show="show('assignments')", :to="{ name: `assignments` }") < Back to assignments
+  ui-link(class="breadcrumb", v-show="show('assignments')", :name="'assignments'") < Back to assignments
 </template>
 
 <script>
