@@ -10,9 +10,6 @@
       ui-button(v-on:buttonClicked="showCreateDialog") Create a new assignment
       ui-button(v-on:buttonClicked="manageEhrData", :secondary="true") Manage EHR data
       ui-button(v-on:buttonClicked="downloadAll") Download all
-
-      //ui-link(:to="{ name: `developEhrData` }", v-bind:secondary="true", class="second-option") Manage seed data
-
     table.table
       thead
         tr
@@ -28,7 +25,8 @@
           td {{ item.description}}
           td {{ item.externalId}}
           // td {{ item.ehrRoutePath}}
-          td {{ item.seedDataObj.name }}
+          td
+            ui-link(:name="'developEhrData'", :params="{seedId: item.seedDataObj._id}") {{ item.seedDataObj.name }}
           td
             ui-button(v-on:buttonClicked="showEditDialog", :value="item._id")
               fas-icon(icon="edit")
@@ -75,12 +73,6 @@ export default {
         }
       })
       return assList
-    },
-    seedOptionList () {
-      let sdList = StoreHelper.getSeedDataList(this)
-      return sdList.map(sd => {
-        return { id: sd._id, name: sd.name }
-      })
     },
     activity () {
       return StoreHelper.getCurrentActivity(this)

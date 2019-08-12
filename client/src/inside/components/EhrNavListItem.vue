@@ -1,6 +1,6 @@
 <template lang="pug">
   div(class="EhrNavListItem")
-    ui-link(:to="{ name: routeName(path) }", :class="levelClass")
+    ui-link(:name="routeName(path)", :class="levelClass")
       div(:class="linkClass", class="linkElement columns")
         div(class="linkLabel") {{ path.label }}
         div(class="is-pulled-right", :class="hasDataColour") &nbsp;

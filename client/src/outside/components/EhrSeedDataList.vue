@@ -17,7 +17,7 @@
               th
               // th Seed id
           tbody
-            tr(v-for="sv in seedDataList")
+            tr(v-for="sv in seedDataList", :class="rowClass(sv)")
               td {{sv.name}}
               td {{sv.version}}
               td {{sv.description}}
@@ -81,6 +81,10 @@ export default {
     }
   },
   methods: {
+    rowClass: function (sv) {
+      let selected = sv._id === this.$route.params.seedId
+      return selected ? 'selected' : ''
+    },
     findSeed: function (id) {
       return this.seedDataList.find(e => {
         return e._id === id
@@ -206,6 +210,9 @@ export default {
     border: 1px solid $grey20;
     box-sizing: border-box;
     overflow: hidden;
+  }
+  .selected {
+    background-color: $grey10;
   }
   .table {
     overflow: hidden;

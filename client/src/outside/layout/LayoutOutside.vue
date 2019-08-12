@@ -21,7 +21,6 @@
 <script>
 import AppHeader from '../../app/components/AppHeader.vue'
 import AppFooter from '../../app/components/AppFooter.vue'
-import OutPanelNav from '../components/OutPanelNav.vue'
 import EhrSpecial from '../../inside/components/EhrSpecial.vue'
 import StoreHelper from '../../helpers/store-helper'
 import UiLink from '../../app/ui/UiLink.vue'
@@ -30,7 +29,6 @@ import UiSpinner from '../../app/ui/UiSpinner'
 export default {
   name: 'LayoutOutside',
   components: {
-    OutPanelNav,
     AppFooter,
     AppHeader,
     EhrSpecial,

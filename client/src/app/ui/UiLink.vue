@@ -1,14 +1,21 @@
 <template lang="pug">
-  router-link(:to="to", class="is-link")
+  router-link(:to="destination", class="is-link")
     slot
 </template>
 
 <script>
+
 export default {
   name: 'UiLink',
   props: {
-    to: {
-      type: Object
+    name: { type: String },
+    params: { type: Object }
+  },
+  computed: {
+    destination () {
+      let d =  {name: this.name}
+      if (this.params) d.params = this.params
+      return d
     }
   }
 }
