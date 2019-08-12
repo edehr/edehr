@@ -22,7 +22,10 @@
               td {{sv.version}}
               td {{sv.description}}
               td {{ ehrPages(sv) }}
-              td {{ sv.aList }}
+              td
+                div(v-for="assignment in assignmentList(sv)")
+                  ui-link(:name="'assignments'", :params="{assignmentId: assignment._id}") {{ assignment.name }}
+
               // td {{sv._id}}
               td(v-if="!sv.isDefault",class="seed-actions")
                ui-button(v-on:buttonClicked="uploadSeed(sv)", v-bind:secondary="true") Upload
@@ -37,6 +40,7 @@
 <script>
 import BreadCrumb from './BreadCrumb'
 import UiButton from '../../app/ui/UiButton.vue'
+import UiLink from '../../app/ui/UiLink.vue'
 import UiAgree from '../../app/ui/UiAgree.vue'
 import EhrSeedDataDialog from './EhrSeedDataDialog'
 import StoreHelper from '../../helpers/store-helper'
@@ -55,6 +59,7 @@ export default {
   components: {
     EhrSeedDataDialog,
     UiButton,
+    UiLink,
     UiAgree,
     BreadCrumb
   },
@@ -70,20 +75,18 @@ export default {
   props: {},
   computed: {
     seedDataList () {
-      let sdList = StoreHelper.getSeedDataList(this)
-      let assList = StoreHelper.getAssignmentsList(this)
-      sdList.forEach(seed => {
-        let filtered = assList.filter( a => a.seedDataId === seed._id)
-        let aList = filtered.map( a => a.name )
-        seed.aList = aList.join(', ')
-      })
-      return sdList
-    }
+      return StoreHelper.getSeedDataList(this)
+    },
   },
   methods: {
     rowClass: function (sv) {
       let selected = sv._id === this.$route.params.seedId
       return selected ? 'selected' : ''
+    },
+    assignmentList: function (seed) {
+      let assList = StoreHelper.getAssignmentsList(this)
+      let filtered = assList.filter( a => a.seedDataId === seed._id)
+      return filtered
     },
     findSeed: function (id) {
       return this.seedDataList.find(e => {
@@ -210,9 +213,6 @@ export default {
     border: 1px solid $grey20;
     box-sizing: border-box;
     overflow: hidden;
-  }
-  .selected {
-    background-color: $grey10;
   }
   .table {
     overflow: hidden;

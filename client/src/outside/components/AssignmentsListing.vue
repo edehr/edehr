@@ -20,7 +20,7 @@
           th(title="Seed Data", style="min-width: 170px") Seed name
           th
       tbody
-        tr(v-for="item in assignmentsListing")
+        tr(v-for="item in assignmentsListing", :class="rowClass(item)")
           td {{ item.name }}
           td {{ item.description}}
           td {{ item.externalId}}
@@ -80,6 +80,10 @@ export default {
   },
 
   methods: {
+    rowClass: function (item) {
+      let selected = item._id === this.$route.params.assignmentId
+      return selected ? 'selected' : ''
+    },
     manageEhrData: function () {
       this.$router.push('developEhrData')
     },
