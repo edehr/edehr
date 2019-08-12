@@ -4,7 +4,8 @@
       div(class="header-column is-10 column")
         h3(:title="activityId") {{ activity.resource_link_title }}
         p LMS description: {{ activity.resource_link_description }}
-        p Assignment name: {{ assignment.name }}
+        p Assignment name:
+          ui-link(:name="'assignments'", :params="{assignmentId: assignment._id}") {{ assignment.name }}
         p Assignment description: {{ assignment.description }}
         p LMS configuration: assignment={{ assignment.externalId }}
       div(class="header-column is-2 column")
@@ -25,12 +26,14 @@
 import ClassList from './ClassList'
 import AccordionElement from '../../app/components/AccordionElement'
 import StoreHelper from '../../helpers/store-helper'
+import UiLink from '../../app/ui/UiLink.vue'
 
 export default {
   name: 'Activity',
   components: {
     AccordionElement,
-    ClassList
+    ClassList,
+    UiLink
   },
   props: {
     activityId: { type: String },
