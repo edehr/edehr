@@ -15,8 +15,8 @@
 import EhrPanelHeader from '../../components/EhrPanelHeader.vue'
 import EhrPanelContent from '../../components/EhrPanelContent.vue'
 import EhrPageElement from './EhrPageElement'
-import EhrHelp from '../../../helpers/ehr-helper'
-import { getPageDefinition } from '../../../helpers/ehr-defs'
+import EhrHelpV2 from './ehr-helper'
+import EhrDefs from '../../../helpers/ehr-defs-grid'
 import EventBus from '../../../helpers/event-bus'
 import { PAGE_DATA_REFRESH_EVENT } from '../../../helpers/event-bus'
 
@@ -39,10 +39,10 @@ export default {
   },
   computed: {
     pageDef () {
-      return getPageDefinition(this.pageDataKey)
+      return EhrDefs.getPageDefinition(this.pageDataKey)
     },
     pageElements () {
-      return this.pageDef.pageElements
+      return EhrDefs.getPageElements(this.pageDataKey)
     },
     currentData () {
       // Note this property is invoked in a div above. Then hidden from view.
@@ -62,7 +62,7 @@ export default {
     }
   },
   created () {
-    this.ehrHelp = new EhrHelp(this, this.$store, this.pageDataKey, this.uiProps)
+    this.ehrHelp = new EhrHelpV2(this, this.$store, this.pageDataKey, this.uiProps)
   },
   mounted: function () {
     const _this = this

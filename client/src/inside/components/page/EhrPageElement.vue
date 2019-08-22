@@ -1,20 +1,18 @@
 <template lang="pug">
-  div pelem
+  div
     ehr-page-form(v-if="element.isPageForm", :form="element", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey", :theData="theData")
-    div(v-else) ?Else page element {{ element}}
+    ehr-page-table(v-else, :tableDef="element", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey", :theData="theData")
 </template>
 
 <script>
 import EhrDialogForm from './EhrDialogForm.vue'
-import EhrTableStacked from './EhrTableStacked'
-import EhrTableVertical from './EhrTableVertical'
+import EhrPageTable from './EhrPageTable'
 import EhrPageForm from './EhrPageForm'
 
 
 export default {
   components: {
-    EhrTableStacked,
-    EhrTableVertical,
+    EhrPageTable,
     EhrPageForm,
     EhrDialogForm
   },

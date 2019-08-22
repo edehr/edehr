@@ -1,23 +1,22 @@
 <template lang="pug">
   div(class="ehr-page-table")
-    div(v-show="showTableAddButton")
+    div(v-if="showTableAddButton")
       ui-button(v-on:buttonClicked="showDialog") {{ tableDef.addButtonText }}
     div(v-if="isVertical", class="column_table")
       ehr-table-vertical(:ehrHelp="ehrHelp", :tableDef="tableDef")
     div(v-if="isStacked", class="stacked_table")
-      h2(v-show="showTableLabel") {{tableDef.label}}
+      h2(v-show="tableDef.label") {{tableDef.label}}
       ehr-table-stacked(:ehrHelp="ehrHelp", :tableDef="tableDef")
+
+    div(v-for="group in tableDef.form.ehr_groups")
+      div {{group}}
+      hr
 
     ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDef", :inputs="inputs", :errorList="errorList" )
     //div(style="display:none") {{currentData}}
 </template>
 
 <script>
-/*
-    About the CSS in the tables.  EhrHelper inserts column_label class onto the first cell of the
-    transposed tables, the header cells.
-
-    */
 import EhrDialogForm from './EhrDialogForm.vue'
 import EhrTableStacked from './EhrTableStacked'
 import EhrTableVertical from './EhrTableVertical'
@@ -41,18 +40,19 @@ export default {
   },
   props: {
     ehrHelp: { type: Object },
-    tableDef: { type: Object },
-    showTableLabel: { type: Boolean }
+    pageDataKey: {type: String },
+    theData: { type: Object },
+    tableDef: { type: Object, default: function () {return {}} }
   },
   computed: {
     isVertical () {
       return this.tableDef.isTransposed
     },
     isStacked () {
-      return this.tableDef.isStacked
+      return true // TODO this.tableDef.isStacked
     },
     showTableAddButton () {
-      return this.ehrHelp.showTableAddButton()
+      return true // TODO this.ehrHelp.showTableAddButton()
     },
     tableForm () {
       let form = this.tableDef.tableForm
@@ -66,11 +66,11 @@ export default {
   methods: {
     showDialog: function () {
       // console.log('EhrPageTable showDialog ', this.tableDef)
-      this.ehrHelp.showDialog(this.tableDef, this.inputs)
+      this.ehrHelp.showDialog(this.tableDef, this.theData)
     },
     showDialogHandler: function () {
       // console.log('EhrPageTable showDialogHandler ', this.tableDef)
-      this.ehrHelp.showDialog(this.tableDef, this.inputs)
+      this.ehrHelp.showDialog(this.tableDef, this.theData)
     }
   },
   mounted: function () {
@@ -90,8 +90,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '../../scss/definitions';
-
-  .EhrPageTable {
-  }
 </style>

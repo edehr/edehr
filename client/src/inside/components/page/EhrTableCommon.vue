@@ -37,7 +37,7 @@ export default {
   mounted: function () {
     const _this = this
     this.refreshEventHandler = function () {
-      // console.log('receive TABLE_DATA_REFRESH_EVENT')
+      console.log('receive TABLE_DATA_REFRESH_EVENT')
       _this.refresh()
     }
     EventBus.$on(TABLE_DATA_REFRESH_EVENT, this.refreshEventHandler)

@@ -1,6 +1,6 @@
 <template lang="pug">
-  div
-    h2(v-if="subgroup.label") {{ subgroup.label }}
+  div(class="ehr-subgroup-wrapper")
+    h4(v-if="subgroup.label") {{ subgroup.label }}
     div(v-for="child in subgroup.sgChildren")
       ehr-form-element(:elementKey="child", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey", :theData="theData")
 </template>
@@ -34,3 +34,10 @@ export default {
 }
 </script>
 
+<style lang="scss">
+  @import '../../../scss/definitions';
+  .ehr-subgroup-wrapper {
+    background-color: #cccccc;
+    border: 1px solid #3b3108;
+  }
+</style>

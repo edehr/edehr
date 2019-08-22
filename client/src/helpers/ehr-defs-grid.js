@@ -20,7 +20,6 @@ class EhrDefsWorker {
   }
   getPageDefinition (pageKey) {
     let pd =  this.pageDefs[pageKey]
-    // console.log('V2 - getPageDefinition for ', pageKey, pd)
     return pd
   }
   getAllPageKeys () {
@@ -29,63 +28,19 @@ class EhrDefsWorker {
     return pageKeys
   }
 
+  getPageElements (pageKey) {
+    let pd = this.getPageDefinition(pageKey)
+    return pd.pageElements
+  }
+
   getPageForms (pageKey) {
-    let pd = this.pageDefs[pageKey]
-    return pd.pageForm
+    let elements = this.getPageElements(pageKey)
+    return Object.values(elements).filter( e => e.isPageForm)
   }
 
   getPageTables (pageKey) {
-    let pd = this.pageDefs[pageKey]
-    return pd.tables
-  }
-
-  getTableElements ( tableDef ) {
-    let all =  []
-    if (tableDef.tableForm) {
-      tableDef.tableForm.rows.forEach( (row) => {
-        row.elements.forEach( (element) => {
-          all.push(element)
-          if (element.formFieldSet)  {
-            element.formFieldSet.rows.forEach( (frow) => {
-              frow.elements.forEach( (felement) => {
-                all.push(felement)
-              })
-            })
-          }
-        })
-      })
-    }
-    return all
-  }
-  getTableCellsByIndex (pageKey, tableIndex) {
-    let cells
-    const pageDef = this.getPageDefinition(pageKey)
-    if (pageDef && pageDef.tables && pageDef.tables.length > tableIndex) {
-      cells = pageDef.tables[tableIndex].tableCells
-    }
-    return cells
-  }
-
-  getTableCellsByTableKey (pageKey, tableKey) {
-    let tableCells
-    const pageDef = this.getPageDefinition(pageKey)
-    if (pageDef.tables) {
-      let table = pageDef.tables.find(tbl => { return tbl.tableKey === tableKey })
-      if (table) tableCells = table.tableCells
-    }
-    return tableCells
-  }
-
-  //TODO remove this apparently unused function
-  getFieldSetCells (pageKey, tableIndex, fieldSetKey) {
-    let cells = this.getTableCellsByIndex(pageKey, tableIndex)
-    if(!cells) {
-      // TODO the setApiError needs a component context to get the store. The following is broken
-      setApiError(pageKey + ' can not find table cells that support tableIndex', tableIndex)
-      return
-    }
-    let fieldSet = cells.filter(cell => cell.level3Key === fieldSetKey && cell.inputType === 'checkbox')
-    return fieldSet
+    let elements = this.getPageElements(pageKey)
+    return Object.values(elements).filter( (e) => {return e.isTable})
   }
 
   getChildElements (pageKey, filterKey, filterValue, desiredProperty) {
