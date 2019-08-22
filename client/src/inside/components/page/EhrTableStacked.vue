@@ -14,11 +14,11 @@
 </template>
 
 <script>
-import EhrCommonTableGrid from './EhrCommonTableGrid'
+import EhrTableCommon from './EhrTableCommon'
 
 export default {
   name: 'EhrPageTableStackedGrid',
-  extends: EhrCommonTableGrid,
+  extends: EhrTableCommon,
   data: function () {
     return {
       // stackedData contains an array (of rows).

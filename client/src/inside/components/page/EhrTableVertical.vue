@@ -11,11 +11,11 @@
 </template>
 
 <script>
-import EhrCommonTableGrid from './EhrCommonTableGrid'
+import EhrTableCommon from './EhrTableCommon'
 
 export default {
   name: 'EhrPageTableVerticalGrid',
-  extends: EhrCommonTableGrid,
+  extends: EhrTableCommon,
   data: function () {
     return {
       transposedColumns: []

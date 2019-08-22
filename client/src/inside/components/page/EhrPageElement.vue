@@ -6,15 +6,15 @@
 
 <script>
 import EhrDialogForm from './EhrDialogForm.vue'
-import EhrPageTableStacked from '../tables/EhrPageTableStackedGrid'
-import EhrPageTableVertical from '../tables/EhrPageTableVerticalGrid'
+import EhrTableStacked from './EhrTableStacked'
+import EhrTableVertical from './EhrTableVertical'
 import EhrPageForm from './EhrPageForm'
 
 
 export default {
   components: {
-    EhrPageTableStacked,
-    EhrPageTableVertical,
+    EhrTableStacked,
+    EhrTableVertical,
     EhrPageForm,
     EhrDialogForm
   },
