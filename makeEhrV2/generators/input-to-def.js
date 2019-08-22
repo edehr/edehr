@@ -198,6 +198,7 @@ class RawInputToDef {
 
   _elementForPage (pages, entry) {
     let page = pages[entry.pN]
+    let pElement = page.pageElementsByNumber[entry.fN]
     let form = this._findForm(page, entry.fN)
     let groups = form.ehr_groups
     let group = groups[entry.gN]
@@ -223,14 +224,13 @@ class RawInputToDef {
       group.gChildren[cnt+1] = entry.elementKey
     }
 
-    if (form.isTableForm) {
+    if (pElement.isTable) {
+      let table = pElement
       // *********** table element
       let index = entry.tableColumn
       if (index && entry.elementKey) {
-        let formKey = form.formKey
-        let table = page.tables[formKey]
         if (!table.ehr_list[index]) {
-          // *********** make table list property
+          // *********** make stack for table at this index
           table.ehr_list[index] = {
             label: entry.tableLabel,
             ehr_list_index: index,
@@ -289,6 +289,8 @@ class RawInputToDef {
       } else if (element.isTable) {
         let groups = _this._objToArray(element.form.ehr_groups, _aGroup)
         element.form.ehr_groups = groups
+        let list = _this._objToArray(element.ehr_list)
+        element.ehr_list = list
       }
       pageElementsByKey[element.elementKey] = element
     })

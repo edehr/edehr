@@ -2,20 +2,21 @@
     app-dialog(:isModal="true", ref="theDialog", @cancel="cancelDialog", @save="saveDialog", v-bind:errors="errorList")
       h3(slot="header") {{ tableDef.addButtonText }}
       div(slot="body", class="ehr-page-content")
-        div(:class="cssFromDefs(group)", v-for="group in groups", :key="group.elementKey") Group: {{ group }}
-            // ehr-dialog-form-element(:inputs="inputs", :element="element", :ehrHelp="ehrHelp", :dialogTableKey="tableKey")
+        ehr-group(v-for="group in groups", :group="group", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey", :theData="inputs")
       span(slot="save-button") Create and close
 </template>
 
 <script>
 import AppDialog from '../../../app/components/AppDialogShell'
 import EhrDialogFormElement from '../elements/EhrDialogFormElement'
+import EhrGroup from './EhrGroup'
 import EventBus from '../../../helpers/event-bus'
 
 export default {
   name: 'EhrDialogForm',
   components: {
     EhrDialogFormElement,
+    EhrGroup,
     AppDialog
   },
   data: function () {
@@ -36,7 +37,7 @@ export default {
       return this.ehrHelp.getPageKey()
     },
     groups () {
-      return this.tableDef.tableForm ? this.tableDef.tableForm.ehr_groups : []
+      return this.tableDef.form ? this.tableDef.form.ehr_groups : []
     }
   },
   methods: {

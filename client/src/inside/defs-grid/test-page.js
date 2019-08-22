@@ -605,7 +605,108 @@ export default function () {
           isTable: true,
           label: 'Test table 1',
           addButtonText: 'Add a row to the test table',
-          ehr_list: {},
+          ehr_list: [
+            {
+              label: 'A bool',
+              ehr_list_index: '1',
+              items: [
+                'e4'
+              ]
+            },
+            {
+              label: 'A text',
+              ehr_list_index: '2',
+              items: [
+                'e3'
+              ]
+            },
+            {
+              label: 'Text',
+              ehr_list_index: '3',
+              items: [
+                'e5'
+              ]
+            },
+            {
+              label: 'Set',
+              ehr_list_index: '4',
+              items: [
+                'e10'
+              ]
+            },
+            {
+              label: 'Stack1',
+              ehr_list_index: '5',
+              items: [
+                'e7',
+                'e8',
+                'p-cValue1'
+              ]
+            },
+            {
+              label: 'Long text',
+              ehr_list_index: '6',
+              items: [
+                'e11'
+              ]
+            },
+            {
+              label: 'Text',
+              ehr_list_index: '7',
+              items: [
+                'g1'
+              ]
+            },
+            {
+              label: 'Long',
+              ehr_list_index: '8',
+              items: [
+                'g2'
+              ]
+            },
+            {
+              label: 'Select',
+              ehr_list_index: '9',
+              items: [
+                'g3'
+              ]
+            },
+            {
+              label: 'Calculated',
+              ehr_list_index: '10',
+              items: [
+                'p-cValue2'
+              ]
+            },
+            {
+              label: 'Bool',
+              ehr_list_index: '12',
+              items: [
+                'g4'
+              ]
+            },
+            {
+              label: 'Text',
+              ehr_list_index: '13',
+              items: [
+                'g5'
+              ]
+            },
+            {
+              label: 'Lable',
+              ehr_list_index: '14',
+              items: [
+                'g6'
+              ]
+            },
+            {
+              label: 'Date',
+              ehr_list_index: '15',
+              items: [
+                'g9'
+              ]
+            }
+          ],
           form: {
             elementKey: 'table1',
             label: 'Test table 1',
@@ -673,7 +774,37 @@ export default function () {
           isTable: true,
           label: 'Stacked table',
           addButtonText: 'Add a referral',
-          ehr_list: {},
+          ehr_list: [
+            {
+              ehr_list_index: '1',
+              items: [
+                'record_header'
+              ]
+            },
+            {
+              label: 'Referral',
+              ehr_list_index: '3',
+              items: [
+                'referralName',
+                'referralProfession'
+              ]
+            },
+            {
+              label: 'Appointment',
+              ehr_list_index: '4',
+              items: [
+                'appointmentDate',
+                'appointmentTime'
+              ]
+            },
+            {
+              label: 'Status',
+              ehr_list_index: '5',
+              items: [
+                'status'
+              ]
+            }
+          ],
           form: {
             elementKey: 'stacked',
             label: 'Stacked table',

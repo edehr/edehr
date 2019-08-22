@@ -1,7 +1,8 @@
 <template lang="pug">
   div
-    div(v-if="!hasData") There are no records or reports for the patient.
-    div(v-else)
+    <!--div(v-if="!hasData") There are no records or reports for the patient.-->
+    <!--div(v-else)-->
+    div
       table.table_horizontal
         thead
           tr
@@ -32,14 +33,14 @@ export default {
     hasData () {
       return this.stackedData.length > 0
     },
-    stacks () { return this.tableDef.stacks}
+    stacks () { return this.tableDef.ehr_list}
   },
   methods: {
     columnTitle: function (stack) {
-      return stack.primary ? stack.primary.label : 'not sure'
+      return stack.label
     },
     tableColumnCss: function (stack) {
-      return stack.primary ? stack.primary.tableCss : 'stackedColumn'
+      return stack.tableCss
     },
     refresh () {
       const tableDef = this.tableDef

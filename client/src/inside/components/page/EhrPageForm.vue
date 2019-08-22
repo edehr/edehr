@@ -1,6 +1,6 @@
 <template lang="pug">
-  div(class="ehr-page-form") pForm
-    h2(v-if="form.label") FL {{ form.label }}
+  div(class="ehr-page-form")
+    h2(v-if="form.label") {{ form.label }}
     div(slot="controls", v-show="showPageFormControls")
       ehr-edit-controls(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
     ehr-group(v-for="group in groups", :group="group", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey", :theData="theData")
@@ -52,8 +52,10 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .ehr-page-form {
+  background-color: #87ceeb;
+  padding: 5px;
   margin-bottom: .5em;
 }
 

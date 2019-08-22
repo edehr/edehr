@@ -42,6 +42,7 @@ export default {
     },
     inputType () { return this.element.inputType },
     label () { return this.element.label },
+    key() { return this.element.elementKey },
 
     computedInitialValue () {
       let key = this.elementKey
