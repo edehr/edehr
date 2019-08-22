@@ -1,15 +1,18 @@
 // Generated VUE file. Before modifying see docs about Vue file generation
 <template lang="pug">
   div(class="ehr-page")
-    ehr-panel-header {{ uiProps.pageTitle }}
-      div(slot="controls", v-show="showPageFormControls")
-        ehr-edit-controls(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
-    ehr-panel-content
-      div(class="region ehr-page-content")
-        ehr-page-form(v-if="uiProps.hasForm", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey",)
-        div(v-if="uiProps.hasTable", v-for="tableDef in uiProps.tables", :key="tableDef.tableKey")
-          ehr-page-table(:tableDef="tableDef", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey", :showTableLabel="showTableLabel")
-      div Page updated: {{ ehrHelp.formatDate(uiProps.generated) }}
+    div(v-if="isV2")
+      ehr-page(:pageDataKey="pageDataKey")
+    div(v-else)
+      ehr-panel-header {{ uiProps.pageTitle }}
+        div(slot="controls", v-show="showPageFormControls")
+          ehr-edit-controls(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
+      ehr-panel-content
+        div(class="region ehr-page-content")
+          ehr-page-form(v-if="uiProps.hasForm", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey",)
+          div(v-if="uiProps.hasTable", v-for="tableDef in uiProps.tables", :key="tableDef.tableKey")
+            ehr-page-table(:tableDef="tableDef", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey", :showTableLabel="showTableLabel")
+        div Page updated: {{ ehrHelp.formatDate(uiProps.generated) }}
     div(style="display:none")
       p This History page is generated.
       p Label: History
@@ -25,6 +28,7 @@ import EhrPanelHeader from '../components/EhrPanelHeader.vue'
 import EhrPanelContent from '../components/EhrPanelContent.vue'
 import EhrEditControls from '../components/EhrEditControls.vue'
 import EhrPageTable from '../components/EhrPageTable'
+import EhrPage from '../components/page/EhrPage'
 import EhrPageForm from '../components/EhrPageForm.vue'
 import EhrHelp from '../../helpers/ehr-helper'
 import { getPageDefinition } from '../../helpers/ehr-defs'
@@ -34,6 +38,7 @@ export default {
   components: {
     EhrPanelHeader,
     EhrPanelContent,
+    EhrPage,
     EhrPageForm,
     EhrPageTable,
     EhrEditControls
@@ -47,6 +52,9 @@ export default {
   computed: {
     uiProps () {
       return getPageDefinition(this.pageDataKey)
+    },
+    isV2 () {
+      return this.uiProps.isV2
     },
     showTableLabel () {
       let tbls = this.uiProps.tables || []
