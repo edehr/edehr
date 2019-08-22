@@ -1,6 +1,6 @@
 
 <script>
-import {getPageChildElement, getDefaultValue} from '../../../helpers/ehr-defs'
+import {getDefaultValue} from '../../../helpers/ehr-defs'
 import EhrPageFormLabel from './EhrPageFormLabel.vue'
 import EhrDefs from '../../../helpers/ehr-defs-grid'
 import EventBus from '../../../helpers/event-bus'
@@ -8,7 +8,6 @@ import UiInfo from '../../../app/ui/UiInfo'
 import { PAGE_DATA_REFRESH_EVENT, PAGE_FORM_INPUT_EVENT, DIALOG_INPUT_EVENT } from '../../../helpers/event-bus'
 
 export default {
-  name: 'EhrCommonElement',
   components: {
     EhrPageFormLabel,
     UiInfo
@@ -38,11 +37,12 @@ export default {
   },
   computed: {
     element () {
+      // console.log('EhrCommonElement get element', this.pageDataKey, this.elementKey)
       return EhrDefs.getPageChildElement(this.pageDataKey, this.elementKey)
     },
     inputType () { return this.element.inputType },
     label () { return this.element.label },
-    key() { return this.element.elementKey },
+    key () { return this.element.elementKey },
 
     computedInitialValue () {
       let key = this.elementKey

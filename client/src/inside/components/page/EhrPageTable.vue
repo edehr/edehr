@@ -8,9 +8,9 @@
       h2(v-show="tableDef.label") {{tableDef.label}}
       ehr-table-stacked(:ehrHelp="ehrHelp", :tableDef="tableDef")
 
-    div(v-for="group in tableDef.form.ehr_groups")
-      div {{group}}
-      hr
+    <!--div(v-for="group in tableDef.form.ehr_groups")-->
+      <!--div {{group}}-->
+      <!--hr-->
 
     ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDef", :inputs="inputs", :errorList="errorList" )
     //div(style="display:none") {{currentData}}
