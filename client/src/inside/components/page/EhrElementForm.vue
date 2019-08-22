@@ -9,7 +9,7 @@
         span {{assetName()}}
 
     div(v-else-if="isType('calculatedValue')", class="computed_wrapper")
-      ehr-calculated-value(:element="element", :ehrHelp="ehrHelp", :theData="theData", )
+      ehr-element-calculated(:element="element", :ehrHelp="ehrHelp", :theData="theData", )
 
     div(v-else-if="isType('checkbox')", class="checkbox_wrapper")
       label(v-if="showLabel", class="checkbox_label")
@@ -18,7 +18,7 @@
         ui-info(v-if="helperText", :title="label", :html="helperHtml", :text="helperText")
 
     div(v-else-if="isType('checkset')", class="checkset_wrapper")
-      ehr-check-set(:element="element", :ehrHelp="ehrHelp", :theData="theData", v-bind:notEditing="notEditing", :isPageElement="isPageElement", :dialogTableKey="dialogTableKey")
+      ehr-element-checkset(:elementKey="elementKey", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey", :theData="theData", v-bind:notEditing="notEditing", :isPageElement="isPageElement", :dialogTableKey="dialogTableKey")
 
     div(v-else-if="isType('date')", class="date_wrapper")
       ehr-page-form-label(:showLabel="showLabel", css="date_label", :label="label", :helperText="helperText", :helperHtml="helperHtml")
@@ -58,14 +58,16 @@
 
 <script>
 // import the common component with the .vue extension so that the base component doesn't need to have a template section
-import EhrCommon from './EhrCommonElement.vue'
-import EhrCalculatedValue from './EhrCalculatedValue'
+import EhrElementCommon from './EhrElementCommon.vue'
+import EhrElementCalculated from './EhrElementCalculated'
+import EhrElementCheckset from './EhrElementCheckset'
 import DatePicker from 'vuejs-datepicker'
 
 export default {
-  extends: EhrCommon,
+  extends: EhrElementCommon,
   components: {
-    EhrCalculatedValue,
+    EhrElementCalculated,
+    EhrElementCheckset,
     DatePicker
   },
   props: {

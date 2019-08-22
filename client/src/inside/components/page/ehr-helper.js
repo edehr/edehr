@@ -99,14 +99,14 @@ export default class EhrHelpV2 {
     // see _setupTableStackDefs
     let pageKey = this.pageKey
     let theData = this.getAsLoadedPageData(pageKey)
-    let pageDef = this.getPageDef()
+    // let pageDef = this.getPageDef()
     let tables = this.getPageTables()
-    console.log('load stack data for page', pageKey, tables, theData)
+    // console.log('load stack data for page', pageKey, tables, theData)
     if (tables.length > 0) {
       tables.forEach((tableDef) => {
         const tableKey = tableDef.tableKey
         let dbData = Array.isArray(theData[tableKey]) ? theData[tableKey] : []
-        console.log('load stacked with data ', dbData)
+        // console.log('load stacked with data ', dbData)
         let stackedData = []
         dbData.forEach(dbRowData => {
           let tblRow = []
@@ -122,7 +122,7 @@ export default class EhrHelpV2 {
           stackedData.push(tblRow)
         })
         tableDef.stackedData = stackedData
-        console.log('load stackedData', tableDef)
+        // console.log('load stackedData', tableDef)
       })
     }
   }
@@ -377,7 +377,7 @@ export default class EhrHelpV2 {
   _clearDialogInputs (key) {
     console.log('clear dialog for key ', key)
     let d = this.dialogMap[key]
-    const pageDataKey = d.tableDef.pageDataKey
+    // const pageDataKey = d.tableDef.pageDataKey
     console.log('dialog', d)
     // TODO clear inputs for groups
     console.log(' TODO clear inputs for groups')

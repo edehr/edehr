@@ -3,20 +3,21 @@
     h3(v-if="group.label") {{ group.label }}
     div(v-for="child in group.gChildren", class="ehr-group-for")
       ehr-sub-group(v-if="isSubgroup(child)", :subgroup="child", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey", :theData="theData")
-      ehr-form-element(v-else, :elementKey="child", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey", :theData="theData")
+      ehr-element-form(v-else-if="child", :elementKey="child", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey", :theData="theData")
+      div(v-else) This group has an undefined element
 </template>
 
 <script>
 import EhrEditControls from '../../components/EhrEditControls.vue'
 import EhrSubGroup from './EhrSubGroup'
-import EhrFormElement from './EhrFormElement'
+import EhrElementForm from './EhrElementForm'
 
 export default {
   name: 'EhrPageForm',
   components: {
     EhrEditControls,
     EhrSubGroup,
-    EhrFormElement
+    EhrElementForm
   },
   data: function () {
     return {
@@ -33,7 +34,7 @@ export default {
   },
   methods: {
     isSubgroup (element) {
-      return typeof element === 'object'
+      return element !== null && (typeof element === 'object')
     },
   },
 }
