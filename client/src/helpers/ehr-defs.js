@@ -1,4 +1,5 @@
 import { setApiError } from './ehr-utils'
+import EhrDefs from './ehr-defs-grid'
 import CV1 from '../inside/defs/current-visit-1'
 import CV2 from '../inside/defs/current-visit-2'
 import PC from '../inside/defs/patient-chart'
@@ -14,7 +15,10 @@ const pageDefsTP = TP()
 const pageDefs = Object.assign(pageDefsPP, pageDefsCV1, pageDefsCV2, pageDefsPC, pageDefsExt, pageDefsTP)
 
 export function getPageDefinition (pageKey) {
-  return pageDefs[pageKey]
+  // return page def from V2 if available otherwise fall back on V1
+  let pd = EhrDefs.getPageDefinition(pageKey)
+  pd = pd ? pd : pageDefs[pageKey]
+  return pd
 }
 
 export function getAllPageKeys () {
