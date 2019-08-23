@@ -49,7 +49,7 @@ export default {
       // By invoking this property theData is set (intentional side-effect)
       // and theData contains data from the database
       this.refresh()
-      // console.log('EHR Page Form: page current data', this.theData)
+      console.log('EHR Page Form: page current data', this.pageDataKey, this.theData)
       return this.theData
     }
   },

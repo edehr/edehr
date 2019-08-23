@@ -227,6 +227,7 @@ const actions = {
     // let pn = payload.propertyName
     // console.log('sendAssignmentDataUpdate activityDataId, apiUrl, property: ', adi, apiUrl, pn)
     let url = `${apiUrl}/activity-data/assignment-data/${adi}`
+    console.log('sendAssignmentDataUpdate', payload)
     return InstoreHelper.putRequest(context, url, payload).then(results => {
       let activityData = results.data
       // console.log('ehrData commit activityData with new assignmentData', JSON.stringify(activityData.assignmentData))

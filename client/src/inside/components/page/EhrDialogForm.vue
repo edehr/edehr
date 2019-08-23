@@ -2,7 +2,7 @@
     app-dialog(:isModal="true", ref="theDialog", @cancel="cancelDialog", @save="saveDialog", v-bind:errors="errorList")
       h3(slot="header") {{ tableDef.addButtonText }}
       div(slot="body", class="ehr-page-content")
-        ehr-group(v-for="group in groups", :group="group", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey", :theData="inputs")
+        ehr-group(v-for="group in groups", :key="group.gIndex", :group="group", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey", :theData="inputs")
       span(slot="save-button") Create and close
 </template>
 
@@ -19,6 +19,7 @@ export default {
     EhrGroup,
     AppDialog
   },
+  inject: [ 'isPageElement', 'pageDataKey' ],
   data: function () {
     return {
     }
@@ -32,9 +33,6 @@ export default {
   computed: {
     tableKey () {
       return this.tableDef.tableKey
-    },
-    pageDataKey () {
-      return this.ehrHelp.getPageKey()
     },
     groups () {
       return this.tableDef.form ? this.tableDef.form.ehr_groups : []

@@ -44,6 +44,12 @@ export default {
     theData: { type: Object },
     tableDef: { type: Object, default: function () {return {}} }
   },
+  provide () {
+    return {
+      isPageElement: false,
+      pageDataKey: this.pageDataKey
+    }
+  },
   computed: {
     isVertical () {
       return this.tableDef.isTransposed

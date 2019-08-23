@@ -8,9 +8,6 @@ const PAGE_FORM = 'page_form'
 const TABLE_FORM = 'table_form'
 const ehrGroup = 'ehr_group'
 const ehrSubgroup = 'ehr_subgroup'
-const SPACER = 'spacer'
-const NO_SHOW_IN_TABLE_ELEMENTS = [ SPACER ]
-const CONTAINER_INPUT_TYPES = [PAGE_FORM, TABLE_FORM ]
 
 const pageChildElementProperties = [
   'elementKey',
@@ -127,7 +124,7 @@ class RawInputToDef {
     console.log('Page:', pKey)
     let page = rawHelper._transferProperties(entry, pageProperties)
     page.isV2 = true
-    page.pageChildren = {}
+    page.pageChildren = []
     page.pageElementsByNumber = {}
     groups[pKey] = page
   }
@@ -211,7 +208,7 @@ class RawInputToDef {
     rawHelper._prepareHelperText(entry, pageChild)
     rawHelper._prepareSpecialProperties(entry, pageChild, page)
     // *********** place page child in page
-    page.pageChildren[pageChild.elementKey] = pageChild
+    page.pageChildren.push(pageChild)
 
     // *********** form element
     if (entry.sgN) {
@@ -251,28 +248,12 @@ class RawInputToDef {
       let page2 = rawHelper._transferProperties(page1, pageProperties2)
       page2.generated = moment.utc(lastModifiedTime).local().format()
       page2.pageElements = this._toForms(page1)
-      // page2.tables = this._toTables(page1, page2.forms)
       pages2[page2.pageDataKey] = page2
     })
     return pages2
   }
 
-  _toTables(page1, forms2) {
-    // final work on tables .. mainly convert objects to arrays. May add sorting in future
-    const _this = this
-    function _aTable(table) {
-      let list = _this._objToArray(table.ehr_list)
-      table.ehr_list = list
-      table.tableForm = forms2[table.tableKey]
-      forms2[table.tableKey] = undefined
-      return table
-    }
-    let tables = this._objToArray(page1.tables, _aTable)
-    return tables
-
-  }
-
-  _toForms(page1) {
+  _toForms (page1) {
     // final work on forms .. mainly convert objects to arrays. May add sorting in future
     const _this = this
     function _aGroup (group) {
@@ -291,13 +272,18 @@ class RawInputToDef {
         element.form.ehr_groups = groups
         let list = _this._objToArray(element.ehr_list)
         element.ehr_list = list
+        this._formInputs(page1, form)
       }
       pageElementsByKey[element.elementKey] = element
     })
     return pageElementsByKey
   }
 
-  _objToArray(obj, middle) {
+  _formInputs (page, form) {
+
+  }
+  
+  _objToArray (obj, middle) {
     // convert obj to array and optionally perform addition work via the middle function
     let array = []
     Object.values(obj).forEach(part => {
@@ -309,7 +295,7 @@ class RawInputToDef {
 
   /* *************** definition helpers ******** */
 
-  _validateEntry(entry) {
+  _validateEntry (entry) {
     assert(entry.pN, 'Why no page number for this entry?', entry)
     if(entry.inputType === PAGE_INPUT_TYPE) return
     assert(entry.fN, 'Why no form number for this entry?', entry)
@@ -322,7 +308,7 @@ class RawInputToDef {
 
   }
 
-  _makeFQN(page, entry) {
+  _makeFQN (page, entry) {
     return page.elementKey + '.' + entry.elementKey
   }
 }

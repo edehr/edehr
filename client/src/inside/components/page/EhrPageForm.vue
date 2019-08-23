@@ -3,7 +3,7 @@
     h2(v-if="form.label") {{ form.label }}
     div(slot="controls", v-show="showPageFormControls")
       ehr-edit-controls(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
-    ehr-group(v-for="group in groups", :group="group", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey", :theData="theData")
+    ehr-group(v-for="group in groups", :group="group", :ehrHelp="ehrHelp", :theData="theData")
 </template>
 
 <script>
@@ -15,6 +15,12 @@ export default {
   components: {
     EhrEditControls,
     EhrGroup,
+  },
+  provide () {
+    return {
+      isPageElement: true,
+      pageDataKey: this.pageDataKey
+    }
   },
   data: function () {
     return {

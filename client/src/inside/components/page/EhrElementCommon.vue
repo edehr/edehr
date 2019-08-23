@@ -12,6 +12,7 @@ export default {
     EhrPageFormLabel,
     UiInfo
   },
+  inject: [ 'isPageElement', 'pageDataKey' ],
   data: function () {
     return {
       dialogIsOpen: false,
@@ -28,11 +29,10 @@ export default {
   props: {
     elementKey: {type: String },
     ehrHelp: { type: Object },
-    pageDataKey: {type: String },
     theData: { type: Object },
     // inputs: { type: Object },
     //element: { type: Object },
-    isPageElement: { type: Boolean},
+    // isPageElement: { type: Boolean},
     dialogTableKey: { type: String}
   },
   computed: {
@@ -41,7 +41,7 @@ export default {
       return EhrDefs.getPageChildElement(this.pageDataKey, this.elementKey)
     },
     inputType () { return this.element.inputType },
-    label () { return this.element.label },
+    label () { return this.element.label + ' ' + this.element.elementKey},
     key () { return this.element.elementKey },
 
     computedInitialValue () {
@@ -184,6 +184,7 @@ export default {
         }
         // Send event when any input changes. The listener (EhrHelper) will collect the changes
         // and be ready to send the changes to the server. Calculated values also listen.
+        console.log('broadcast PAGE_FORM_INPUT_EVENT ', val, this.elementKey)
         EventBus.$emit(PAGE_FORM_INPUT_EVENT, {value: val, element: this.element})
       }
       if (this.dialogTableKey) {

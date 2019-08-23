@@ -7,7 +7,9 @@
 <script>
 import EventBus from '../../../helpers/event-bus'
 import { DIALOG_INPUT_EVENT, PAGE_FORM_INPUT_EVENT } from '../../../helpers/event-bus'
-import { ehrCalculateProperty } from '../../../helpers/ehr-calcs'
+import { ehrCalculateProperty } from './ehr-calcs'
+
+let db = false
 
 export default {
   name: 'EhrComputedNumber',
@@ -26,8 +28,9 @@ export default {
     receiveEvent (eData) {
       let pageDataKey = this.ehrHelp.getPageKey()
       let elementKey = this.element.elementKey
+      if (db) console.log('EhrComputedValue ', elementKey, this.theData)
       let value = ehrCalculateProperty(pageDataKey, elementKey, this.theData)
-      // console.log('EhrComputedValue ', elementKey, value)
+      if (db) console.log('EhrComputedValue ', elementKey, value)
       // put value into the inputs so the dialog save can preserve the result
       this.theData[elementKey] = value
       // put into component data to be rendered
