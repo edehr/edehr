@@ -6,22 +6,22 @@ export default function () {
       pIndex: '40',
       isV2: true,
       hasGridForm: true,
-      pageChildren: {
-        pform_label: {
+      pageChildren: [
+        {
           elementKey: 'pform_label',
           formIndex: '1',
           inputType: 'form_label',
           label: '<b>a form <i>label</i></b>',
           fqn: 'testPage.pform_label'
         },
-        pspacer: {
+        {
           elementKey: 'pspacer',
           formIndex: '1',
           inputType: 'spacer',
           label: 'spacer',
           fqn: 'testPage.pspacer'
         },
-        ptext: {
+        {
           elementKey: 'ptext',
           defaultValue: 'default content',
           formIndex: '1',
@@ -30,7 +30,7 @@ export default function () {
           suffix: 'lb',
           fqn: 'testPage.ptext'
         },
-        pcheckbox: {
+        {
           elementKey: 'pcheckbox',
           defaultValue: true,
           formIndex: '1',
@@ -40,7 +40,7 @@ export default function () {
           fqn: 'testPage.pcheckbox',
           helperHtml: '<p>a checkbox iinput</p>'
         },
-        ptextpcheckbox: {
+        {
           elementKey: 'ptextpcheckbox',
           dependantOn: 'pcheckbox',
           formIndex: '1',
@@ -50,7 +50,7 @@ export default function () {
           fqn: 'testPage.ptextpcheckbox',
           helperHtml: '<p>a text input</p>'
         },
-        passetLink: {
+        {
           elementKey: 'passetLink',
           assetBase: 'standardized-assessment-tools',
           assetName: 'the-canadian-ed-triage-and-acuity-scale.gif',
@@ -59,7 +59,7 @@ export default function () {
           label: 'assetLink',
           fqn: 'testPage.passetLink'
         },
-        pselect: {
+        {
           elementKey: 'pselect',
           formIndex: '1',
           inputType: 'select',
@@ -78,7 +78,7 @@ export default function () {
           passToFunction: 'p-cValue1',
           fqn: 'testPage.pselect'
         },
-        pselect2: {
+        {
           elementKey: 'pselect2',
           formIndex: '1',
           inputType: 'select',
@@ -97,7 +97,7 @@ export default function () {
           passToFunction: 'p-cValue1',
           fqn: 'testPage.pselect2'
         },
-        'p-cValue1': {
+        {
           elementKey: 'p-cValue1',
           formIndex: '1',
           helperText: 'a calculated value based on the select \'pselect1\' on this page',
@@ -106,7 +106,7 @@ export default function () {
           fqn: 'testPage.p-cValue1',
           helperHtml: '<p>a calculated value based on the select \'pselect1\' on this page</p>'
         },
-        pcheckset: {
+        {
           elementKey: 'pcheckset',
           defaultValue: 'check1,all',
           formIndex: '1',
@@ -128,7 +128,7 @@ export default function () {
           ],
           fqn: 'testPage.pcheckset'
         },
-        ptext1: {
+        {
           elementKey: 'ptext1',
           formIndex: '1',
           formOption: 'hideLabel',
@@ -136,14 +136,14 @@ export default function () {
           label: 'text',
           fqn: 'testPage.ptext1'
         },
-        ptextarea1: {
+        {
           elementKey: 'ptextarea1',
           formIndex: '1',
           inputType: 'textarea',
           label: 'textarea',
           fqn: 'testPage.ptextarea1'
         },
-        pselect1: {
+        {
           elementKey: 'pselect1',
           formIndex: '1',
           inputType: 'select',
@@ -159,21 +159,21 @@ export default function () {
           passToFunction: 'p-cValue2',
           fqn: 'testPage.pselect1'
         },
-        'p-cValue2': {
+        {
           elementKey: 'p-cValue2',
           formIndex: '1',
           inputType: 'calculatedValue',
           label: 'calculatedValue',
           fqn: 'testPage.p-cValue2'
         },
-        pcheckbox2: {
+        {
           elementKey: 'pcheckbox2',
           formIndex: '1',
           inputType: 'checkbox',
           label: 'checkbox',
           fqn: 'testPage.pcheckbox2'
         },
-        ptext2: {
+        {
           elementKey: 'ptext2',
           dependantOn: 'pcheckbox2',
           formIndex: '1',
@@ -181,21 +181,21 @@ export default function () {
           label: 'text',
           fqn: 'testPage.ptext2'
         },
-        pform_label2: {
+        {
           elementKey: 'pform_label2',
           formIndex: '1',
           inputType: 'form_label',
           label: '<b>a form <i>label</i></b>',
           fqn: 'testPage.pform_label2'
         },
-        pspacer2: {
+        {
           elementKey: 'pspacer2',
           formIndex: '1',
           inputType: 'spacer',
           label: 'spacer',
           fqn: 'testPage.pspacer2'
         },
-        passetLink2: {
+        {
           elementKey: 'passetLink2',
           assetBase: 'standardized-assessment-tools',
           assetName: 'the-canadian-ed-triage-and-acuity-scale.gif',
@@ -204,29 +204,29 @@ export default function () {
           label: 'assetLink',
           fqn: 'testPage.passetLink2'
         },
-        pdate2: {
+        {
           elementKey: 'pdate2',
           formIndex: '1',
           inputType: 'date',
           label: 'date',
           fqn: 'testPage.pdate2'
         },
-        name: {
+        {
           elementKey: 'name',
           formIndex: '2',
           inputType: 'text',
           label: 'Name',
           fqn: 'testPage.name'
         },
-        place: {
+        {
           elementKey: 'place',
           formIndex: '2',
           inputType: 'text',
           label: 'Place',
           fqn: 'testPage.place'
         }
-      },
-      generated: '2019-08-21T16:49:23-07:00',
+      ],
+      generated: '2019-08-22T15:28:52-07:00',
       pageElements: {
         form1: {
           elementKey: 'form1',
@@ -306,22 +306,22 @@ export default function () {
       pIndex: '41',
       isV2: true,
       hasGridTable: true,
-      pageChildren: {
-        e1: {
+      pageChildren: [
+        {
           elementKey: 'e1',
           formIndex: '1',
           inputType: 'form_label',
           label: '<b>a form <i>label</i></b>',
           fqn: 'testTable.e1'
         },
-        e2: {
+        {
           elementKey: 'e2',
           formIndex: '1',
           inputType: 'spacer',
           label: 'spacer',
           fqn: 'testTable.e2'
         },
-        e3: {
+        {
           elementKey: 'e3',
           defaultValue: 'default content',
           formIndex: '1',
@@ -330,7 +330,7 @@ export default function () {
           tableColumn: '2',
           fqn: 'testTable.e3'
         },
-        e4: {
+        {
           elementKey: 'e4',
           defaultValue: true,
           formIndex: '1',
@@ -341,7 +341,7 @@ export default function () {
           fqn: 'testTable.e4',
           helperHtml: '<p>a checkbox iinput</p>'
         },
-        e5: {
+        {
           elementKey: 'e5',
           dependantOn: 'e4',
           formIndex: '1',
@@ -353,7 +353,7 @@ export default function () {
           fqn: 'testTable.e5',
           helperHtml: '<p>a text input</p>'
         },
-        e6: {
+        {
           elementKey: 'e6',
           assetBase: 'standardized-assessment-tools',
           assetName: 'the-canadian-ed-triage-and-acuity-scale.gif',
@@ -362,7 +362,7 @@ export default function () {
           label: 'assetLink',
           fqn: 'testTable.e6'
         },
-        e7: {
+        {
           elementKey: 'e7',
           formIndex: '1',
           inputType: 'select',
@@ -382,7 +382,7 @@ export default function () {
           tableColumn: '5',
           fqn: 'testTable.e7'
         },
-        e8: {
+        {
           elementKey: 'e8',
           formIndex: '1',
           inputType: 'select',
@@ -402,7 +402,7 @@ export default function () {
           tableColumn: '5',
           fqn: 'testTable.e8'
         },
-        'p-cValue1': {
+        {
           elementKey: 'p-cValue1',
           formIndex: '1',
           helperText: 'a calculated value based on the select \'pselect1\' on this page',
@@ -412,7 +412,7 @@ export default function () {
           fqn: 'testTable.p-cValue1',
           helperHtml: '<p>a calculated value based on the select \'pselect1\' on this page</p>'
         },
-        e10: {
+        {
           elementKey: 'e10',
           defaultValue: 'check1,other',
           formIndex: '1',
@@ -435,7 +435,7 @@ export default function () {
           tableColumn: '4',
           fqn: 'testTable.e10'
         },
-        g1: {
+        {
           elementKey: 'g1',
           formIndex: '1',
           formOption: 'hideLabel',
@@ -444,7 +444,7 @@ export default function () {
           tableColumn: '7',
           fqn: 'testTable.g1'
         },
-        g2: {
+        {
           elementKey: 'g2',
           formIndex: '1',
           inputType: 'textarea',
@@ -452,7 +452,7 @@ export default function () {
           tableColumn: '8',
           fqn: 'testTable.g2'
         },
-        g3: {
+        {
           elementKey: 'g3',
           formIndex: '1',
           inputType: 'select',
@@ -469,7 +469,7 @@ export default function () {
           tableColumn: '9',
           fqn: 'testTable.g3'
         },
-        'p-cValue2': {
+        {
           elementKey: 'p-cValue2',
           formIndex: '1',
           inputType: 'calculatedValue',
@@ -477,7 +477,7 @@ export default function () {
           tableColumn: '10',
           fqn: 'testTable.p-cValue2'
         },
-        g4: {
+        {
           elementKey: 'g4',
           formIndex: '1',
           inputType: 'checkbox',
@@ -485,7 +485,7 @@ export default function () {
           tableColumn: '12',
           fqn: 'testTable.g4'
         },
-        g5: {
+        {
           elementKey: 'g5',
           dependantOn: 'g4',
           formIndex: '1',
@@ -494,7 +494,7 @@ export default function () {
           tableColumn: '13',
           fqn: 'testTable.g5'
         },
-        g6: {
+        {
           elementKey: 'g6',
           formIndex: '1',
           inputType: 'form_label',
@@ -502,14 +502,14 @@ export default function () {
           tableColumn: '14',
           fqn: 'testTable.g6'
         },
-        g7: {
+        {
           elementKey: 'g7',
           formIndex: '1',
           inputType: 'spacer',
           label: 'spacer',
           fqn: 'testTable.g7'
         },
-        g8: {
+        {
           elementKey: 'g8',
           assetBase: 'standardized-assessment-tools',
           assetName: 'the-canadian-ed-triage-and-acuity-scale.gif',
@@ -518,7 +518,7 @@ export default function () {
           label: 'assetLink',
           fqn: 'testTable.g8'
         },
-        g9: {
+        {
           elementKey: 'g9',
           formIndex: '1',
           inputType: 'date',
@@ -526,7 +526,7 @@ export default function () {
           tableColumn: '15',
           fqn: 'testTable.g9'
         },
-        e11: {
+        {
           elementKey: 'e11',
           formIndex: '1',
           formCss: 'full-width',
@@ -536,14 +536,14 @@ export default function () {
           tableCss: 'hr-table',
           fqn: 'testTable.e11'
         },
-        record_header: {
+        {
           elementKey: 'record_header',
           formIndex: '2',
           inputType: 'record_header',
           tableColumn: '1',
           fqn: 'testTable.record_header'
         },
-        referralName: {
+        {
           elementKey: 'referralName',
           formIndex: '2',
           inputType: 'text',
@@ -551,7 +551,7 @@ export default function () {
           tableColumn: '3',
           fqn: 'testTable.referralName'
         },
-        referralProfession: {
+        {
           elementKey: 'referralProfession',
           formIndex: '2',
           inputType: 'text',
@@ -559,12 +559,13 @@ export default function () {
           tableColumn: '3',
           fqn: 'testTable.referralProfession'
         },
-        undefined: {
+        {
+          elementKey: 'spacer9',
           formIndex: '2',
           inputType: 'spacer',
-          fqn: 'testTable.undefined'
+          fqn: 'testTable.spacer9'
         },
-        appointmentDate: {
+        {
           elementKey: 'appointmentDate',
           formIndex: '2',
           inputType: 'date',
@@ -572,7 +573,7 @@ export default function () {
           tableColumn: '4',
           fqn: 'testTable.appointmentDate'
         },
-        appointmentTime: {
+        {
           elementKey: 'appointmentTime',
           formIndex: '2',
           inputType: 'time',
@@ -580,7 +581,7 @@ export default function () {
           tableColumn: '4',
           fqn: 'testTable.appointmentTime'
         },
-        status: {
+        {
           elementKey: 'status',
           formIndex: '2',
           inputType: 'select',
@@ -596,8 +597,8 @@ export default function () {
           tableColumn: '5',
           fqn: 'testTable.status'
         }
-      },
-      generated: '2019-08-21T16:49:23-07:00',
+      ],
+      generated: '2019-08-22T15:28:52-07:00',
       pageElements: {
         table1: {
           elementKey: 'table1',
@@ -765,7 +766,24 @@ export default function () {
                   'e11'
                 ]
               }
-            ]
+            ],
+            ehr_data: {
+              e3: 'default content',
+              e4: true,
+              e5: '',
+              e7: '',
+              e8: '',
+              'p-cValue1': '',
+              e10: 'check1,other',
+              g1: '',
+              g2: '',
+              g3: '',
+              'p-cValue2': '',
+              g4: '',
+              g5: '',
+              g9: '',
+              e11: ''
+            }
           }
         },
         stacked: {
@@ -822,13 +840,20 @@ export default function () {
                 gChildren: [
                   'referralName',
                   'referralProfession',
-                  null,
+                  'spacer9',
                   'appointmentDate',
                   'appointmentTime',
                   'status'
                 ]
               }
-            ]
+            ],
+            ehr_data: {
+              referralName: '',
+              referralProfession: '',
+              appointmentDate: '',
+              appointmentTime: '',
+              status: ''
+            }
           }
         }
       }

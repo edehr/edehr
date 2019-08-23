@@ -1,7 +1,7 @@
 <template lang="pug">
   div
-    ehr-page-form(v-if="element.isPageForm", :form="element", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey", :theData="theData")
-    ehr-page-table(v-else, :tableDef="element", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey", :theData="theData")
+    ehr-page-form(v-if="element.isPageForm", :form="element", :ehrHelp="ehrHelp")
+    ehr-page-table(v-else, :tableDef="element", :ehrHelp="ehrHelp")
 </template>
 
 <script>
@@ -18,7 +18,6 @@ export default {
   },
   data: function () {
     return {
-      inputs: {}
     }
   },
   props: {

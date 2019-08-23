@@ -47,13 +47,6 @@ export default {
     }
   },
   methods: {
-    dialogShowHideEvent (eData) {
-      if(eData.value) {
-        // console.log('EhrCheckset value', this.key, this.inputs[this.key])
-        let initialValue = this.inputs[this.key]
-        this.setInitialValue(initialValue)
-      }
-    },
     validate () {
       // used by this.setup
       let result = true

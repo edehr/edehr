@@ -2,7 +2,7 @@
   div(class="ehr-subgroup-wrapper")
     h4(v-if="subgroup.label") {{ subgroup.label }}
     div(v-for="child in subgroup.sgChildren")
-      ehr-element-form(:elementKey="child", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey", :theData="theData")
+      ehr-element-form(:elementKey="child", :ehrHelp="ehrHelp")
 </template>
 
 <script>
@@ -13,23 +13,11 @@ export default {
   components: {
     EhrElementForm
   },
-  data: function () {
-    return {
-      // theData: {}
-    }
-  },
   props: {
     subgroup: {type: Object },
-    ehrHelp: { type: Object },
-    pageDataKey: {type: String },
-    theData: { type: Object }
-  },
-  computed: {
+    ehrHelp: { type: Object }
   },
   methods: {
-    isSubgroup (element) {
-      return element && typeof element === 'object'
-    },
   },
 }
 </script>

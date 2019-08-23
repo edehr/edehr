@@ -1,4 +1,4 @@
-import { setApiError } from './ehr-utils'
+// import { setApiError } from './ehr-utils'
 // import CV1 from '../inside/defs/current-visit-1'
 // import CV2 from '../inside/defs/current-visit-2'
 // import PC from '../inside/defs/patient-chart'
@@ -44,8 +44,8 @@ class EhrDefsWorker {
   }
 
   getChildElements (pageKey, filterKey, filterValue, desiredProperty) {
-    let pageDef = this.pageDefs[pageKey]
-    let children = pageDef.pageChildren.filter( ch => ch[filterKey] === filterValue)
+    let pd = this.getPageDefinition(pageKey)
+    let children = pd.pageChildren.filter( ch => ch[filterKey] === filterValue)
     if(desiredProperty){
       children = children.map( ch => ch[desiredProperty])
     }
@@ -53,9 +53,8 @@ class EhrDefsWorker {
   }
 
   getPageChildElement (pageKey, key) {
-    let page = this.pageDefs[pageKey]
-    // console.log('this.pageDefs[pageKey]', pageKey, page)
-    return page ? page.pageChildren[key] : {}
+    let pd = this.getPageDefinition(pageKey)
+    return pd.pageChildren.find(ch => ch['elementKey'] === key)
   }
 
   getDefaultValue (pageDataKey, elementKey) {
@@ -82,9 +81,9 @@ class EhrDefsWorker {
   }
 
   getMedOrderSchedule  (pageKey) {
-    let pageDef = this.pageDefs[pageKey]
-    let medPeriods = pageDef.medSchedule
-    // console.log('getMedOrderSchedule', pageKey, medPeriods)
+    let pd = this.getPageDefinition(pageKey)
+    let medPeriods = pd.medSchedule
+    console.log('getMedOrderSchedule', pageKey, medPeriods)
     return medPeriods
   }
 

@@ -1,8 +1,9 @@
 <template lang="pug">
     app-dialog(:isModal="true", ref="theDialog", @cancel="cancelDialog", @save="saveDialog", v-bind:errors="errorList")
       h3(slot="header") {{ tableDef.addButtonText }}
+      div tableKey {{ tableKey}}
       div(slot="body", class="ehr-page-content")
-        ehr-group(v-for="group in groups", :group="group", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey", :theData="inputs")
+        ehr-group(v-for="group in groups", :key="group.gIndex", :group="group", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
       span(slot="save-button") Create and close
 </template>
 
@@ -19,22 +20,26 @@ export default {
     EhrGroup,
     AppDialog
   },
+  inject: [ 'isPageElement', 'pageDataKey' ],
+  provide () {
+    return {
+      tableKey: this.tableKey
+    }
+  },
   data: function () {
     return {
+      inputs: {}
     }
   },
   props: {
     ehrHelp: { type: Object },
     tableDef: { type: Object },
-    inputs: { type: Object },
+    // inputs: { type: Object },
     errorList: { type: Array }
   },
   computed: {
     tableKey () {
       return this.tableDef.tableKey
-    },
-    pageDataKey () {
-      return this.ehrHelp.getPageKey()
     },
     groups () {
       return this.tableDef.form ? this.tableDef.form.ehr_groups : []
@@ -54,6 +59,9 @@ export default {
     receiveShowHideEvent (eData) {
       // console.log('EhrDialogForm rcv show hide', this.inputs)
       if(eData.value) {
+        this.inputs = this.ehrHelp.getDialogInputs(this.tableKey)
+        console.log('EhrDialogForm rcv show hide', this.tableKey,  JSON.stringify(this.inputs))
+        console.log('EhrDialogForm rcv show hide', this.tableKey,  this.inputs)
         this.$refs.theDialog.onOpen()
       } else {
         this.$refs.theDialog.onClose()
@@ -62,7 +70,7 @@ export default {
   },
   mounted: function () {
     const _this = this
-    console.log('mount dialog', this.pageDataKey)
+    // console.log('mount dialog', this.pageDataKey)
     let ch = this.ehrHelp.getDialogEventChannel(this.tableKey)
     // console.log('EhrDialogForm add listener', ch)
     this.eventHandler = function (eData) {
