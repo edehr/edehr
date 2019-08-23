@@ -8,6 +8,18 @@ const PAGE_FORM = 'page_form'
 const TABLE_FORM = 'table_form'
 const ehrGroup = 'ehr_group'
 const ehrSubgroup = 'ehr_subgroup'
+const DATA_INPUT_TYPES = [
+  'text', 'textarea', 'checkbox', 'select', 'calculatedValue', 'checkset', 'date', 'day', 'time'
+]
+
+const NONDATA_INPUT_TYPES = [
+  'form_label', 'spacer', 'assetLink'
+]
+
+const STRUCT_INPUT_TYPES = [
+  PAGE_FORM, TABLE_FORM, PAGE_INPUT_TYPE, ehrGroup, ehrSubgroup,
+  'record_header'
+]
 
 const pageChildElementProperties = [
   'elementKey',
@@ -79,6 +91,9 @@ const mlFields = [
   'Notes_Questions',
   'Mandatory'
 ]
+
+/* To create unique keys for non-data items that are missing elementKey */
+let missingKeyIndex = 0
 
 class RawInputToDef {
   /**
@@ -219,6 +234,7 @@ class RawInputToDef {
       // *********** place form element in group
       let cnt = Object.keys(group.gChildren).length
       group.gChildren[cnt+1] = entry.elementKey
+      // console.log('group.gChildren[cnt+1] = entry.elementKey', group.gChildren[cnt+1], entry.elementKey)
     }
 
     if (pElement.isTable) {
@@ -268,11 +284,12 @@ class RawInputToDef {
         let groups = _this._objToArray(element.ehr_groups, _aGroup)
         element.ehr_groups = groups
       } else if (element.isTable) {
+        //console.log('Convert ehrGroups', element.form.ehr_groups)
         let groups = _this._objToArray(element.form.ehr_groups, _aGroup)
         element.form.ehr_groups = groups
         let list = _this._objToArray(element.ehr_list)
         element.ehr_list = list
-        this._formInputs(page1, form)
+        this._formInputs(page1, element.form)
       }
       pageElementsByKey[element.elementKey] = element
     })
@@ -280,7 +297,30 @@ class RawInputToDef {
   }
 
   _formInputs (page, form) {
-
+    function input (key, data) {
+      let child = page.pageChildren.find( (ch) => { return ch.elementKey === key })
+      // console.log('_formInputs look for child with key', key, child)
+      let inputType = child.inputType
+      if (DATA_INPUT_TYPES.indexOf(inputType) >= 0) {
+        data[key] = child.defaultValue || ''
+      }
+    }
+    let groups = form.ehr_groups
+    let data = {}
+    groups.forEach( (grp) => {
+      console.log('_formInputs group', grp)
+      grp.gChildren.forEach( (grpChild ) => {
+        if (typeof grpChild === 'string') {
+          input(grpChild, data)
+        } else {
+          console.log('_formInputs group child is subgroup', grpChild)
+          grpChild.sgChildren.forEach( (sgrpChild ) => {
+            input(sgrpChild, data)
+          })
+        }
+      })
+    })
+    form.ehr_data = data
   }
   
   _objToArray (obj, middle) {
@@ -296,6 +336,19 @@ class RawInputToDef {
   /* *************** definition helpers ******** */
 
   _validateEntry (entry) {
+    if (DATA_INPUT_TYPES.indexOf(entry.inputType) >= 0) {
+      assert(entry.elementKey, 'Must have element key for input types', entry)
+    } else if (NONDATA_INPUT_TYPES.indexOf(entry.inputType) >= 0) {
+      // OK
+    } else if (STRUCT_INPUT_TYPES.indexOf(entry.inputType) >= 0) {
+      // OK
+    } else {
+      assert(false, 'This entry ' + JSON.stringify(entry)+  ' has an unsupported inputType')
+    }
+    if (!entry.elementKey) {
+      console.log('Adding elementKey to entry ', entry)
+      entry.elementKey = entry.inputType + ++missingKeyIndex
+    }
     assert(entry.pN, 'Why no page number for this entry?', entry)
     if(entry.inputType === PAGE_INPUT_TYPE) return
     assert(entry.fN, 'Why no form number for this entry?', entry)

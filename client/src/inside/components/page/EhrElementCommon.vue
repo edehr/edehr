@@ -7,12 +7,15 @@ import EventBus from '../../../helpers/event-bus'
 import UiInfo from '../../../app/ui/UiInfo'
 import { PAGE_DATA_REFRESH_EVENT, PAGE_FORM_INPUT_EVENT, DIALOG_INPUT_EVENT } from '../../../helpers/event-bus'
 
+const dbInputs = true
+const dbDialog = false
+
 export default {
   components: {
     EhrPageFormLabel,
     UiInfo
   },
-  inject: [ 'isPageElement', 'pageDataKey' ],
+  inject: [ 'pageDataKey', 'isPageElement', 'isTableElement','tableKey' ],
   data: function () {
     return {
       dialogIsOpen: false,
@@ -28,12 +31,7 @@ export default {
   },
   props: {
     elementKey: {type: String },
-    ehrHelp: { type: Object },
-    theData: { type: Object },
-    // inputs: { type: Object },
-    //element: { type: Object },
-    // isPageElement: { type: Boolean},
-    dialogTableKey: { type: String}
+    ehrHelp: { type: Object }
   },
   computed: {
     element () {
@@ -46,7 +44,7 @@ export default {
 
     computedInitialValue () {
       let key = this.elementKey
-      let initialValue = this.theData[key]
+      let initialValue = this.inputs[key]
       this.setInitialValue(initialValue)
       return initialValue
     },
@@ -54,9 +52,12 @@ export default {
       return !this.ehrHelp.isEditing()
     },
     disabled () {
-      let disable = this.notEditing
-      if (!disable && this.dependantOnKey) {
-        disable = !(this.dependantOnValue === true)
+      let disable = false
+      if (this.isPageElement ) {
+        disable = this.notEditing
+        if (!disable && this.dependantOnKey) {
+          disable = !(this.dependantOnValue === true)
+        }
       }
       return disable
     }
@@ -141,22 +142,33 @@ export default {
         EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.pageRefreshEventHandler)
       }
 
-      if (this.dialogTableKey) {
-        this.dialogEventKey = this.ehrHelp.getDialogEventChannel(this.dialogTableKey)
-        this.dialogEventHandler = function (eData) {
-          _this.dialogIsOpen = eData.value
-          if (_this.dialogShowHideEvent) {
-            _this.dialogShowHideEvent(eData)
-          }
+      // if (this.dialogTableKey) {
+      this.dialogEventKey = this.ehrHelp.getDialogEventChannel(this.tableKey)
+      if (dbDialog) console.log('EhrCommon this.dialogEventKey', this.dialogEventKey)
+      this.dialogEventHandler = function (eData) {
+        if (dbDialog) console.log('EhrCommon dialogEventHandler', _this.key, eData)
+        _this.dialogIsOpen = eData.value
+        if (_this.dialogShowHideEvent) {
+          _this.dialogShowHideEvent(eData)
         }
-        EventBus.$on(this.dialogEventKey, this.dialogEventHandler)
+      }
+      EventBus.$on(this.dialogEventKey, this.dialogEventHandler)
+      // }
+    },
+    dialogShowHideEvent (eData) {
+      if(eData.value) {
+        if (dbDialog || dbInputs) console.log('EhrCommon value', this.key, this.inputs)
+        let initialValue = this.inputs[this.key]
+        this.setInitialValue(initialValue)
       }
     },
     setInitialValue (value) {
+      if (dbInputs) console.log('EhrCommon setInitialValue', value)
       this.inputVal = value
     },
   },
   mounted: function () {
+    // console.log('mounted this.tableKey', this.tableKey)
     this.setupCommon()
     this.setupEventHandlers()
     this.dependantPropertySetUp()
@@ -184,10 +196,10 @@ export default {
         }
         // Send event when any input changes. The listener (EhrHelper) will collect the changes
         // and be ready to send the changes to the server. Calculated values also listen.
-        console.log('broadcast PAGE_FORM_INPUT_EVENT ', val, this.elementKey)
+        console.log('EhrCommon broadcast PAGE_FORM_INPUT_EVENT ', val, this.elementKey)
         EventBus.$emit(PAGE_FORM_INPUT_EVENT, {value: val, element: this.element})
       }
-      if (this.dialogTableKey) {
+      if (this.tableKey) {
         if (this.dialogIsOpen) {
           let element = this.element
           EventBus.$emit(DIALOG_INPUT_EVENT, {value: val, element: element})

@@ -17,6 +17,7 @@ import EhrDefs from '../../../helpers/ehr-defs-grid'
 const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
 const dbDialog = true
+const dbDelta = false
 
 
 export default class EhrHelpV2 {
@@ -214,22 +215,15 @@ export default class EhrHelpV2 {
     return this.getAsLoadedPageData(this.pageKey)
   }
 
-  getInputValue (def) {
-    let inputs = this.currentDialog.inputs
-    let val = inputs[def.elementKey]
-    // console.log('helper provides val for key ', val, def.key)
-    return val
-  }
-
   formatDate (d) {
     return formatTimeStr(d)
   }
 
   /* ********************* DIALOG  */
 
-  showDialog (tableDef, dialogInputs) {
+  showDialog (tableDef) {
     // this._setEditing (fals)
-    let dialog = { tableDef: tableDef, inputs: dialogInputs }
+    let dialog = { tableDef: tableDef, inputs: {} }
     let key = this.activeTableKey = tableDef.tableKey
     this.dialogMap[key] = dialog
     // add this dialog to the map
@@ -240,7 +234,7 @@ export default class EhrHelpV2 {
     this._clearDialogInputs(key)
     let eData = { key: key, value: true }
     let channel = this.getDialogEventChannel(key)
-    if (dbDialog) console.log('showDialog emit message to channel ' + channel + ' for key' + key + ' tableDef', tableDef)
+    if (dbDialog) console.log('66666666 showDialog emit message to channel ' + channel + ' for key' + key + ' tableDef', tableDef)
     EventBus.$emit(channel, eData)
   }
 
@@ -275,9 +269,9 @@ export default class EhrHelpV2 {
     const pageKey = this.pageKey
     const tableKey = this.activeTableKey
     if (this._validateInputs(tableKey)) {
-      if (dbDialog) console.log('saveDialog for page/table', pageKey, tableKey)
+      if (dbDialog) console.log('EhrHelp saveDialog for page/table', pageKey, tableKey)
       let dialog = this.dialogMap[tableKey]
-      if (dbDialog) console.log('saveDialog', dialog, 'data', data)
+      if (dbDialog) console.log('EhrHelp saveDialog', dialog, 'data', data)
       let inputs = dialog.inputs
       inputs.createdDate = moment().format()
       if (dbDialog) console.log('save dialog data into ', tableKey)
@@ -288,7 +282,7 @@ export default class EhrHelpV2 {
         asLoadedPageData[tableKey] = table
       }
       table.push(inputs)
-      if (dbDialog) console.log('storing this: asLoadedPageData', asLoadedPageData, 'table', table, tableKey, dialog.tableKey)
+      if (dbDialog) console.log('EhrHelp storing this: asLoadedPageData', asLoadedPageData, 'table', table, tableKey, dialog.tableKey)
       // Prepare a payload to tell the API which property inside the assignment data to change
       let payload = {
         propertyName: pageKey,
@@ -364,6 +358,13 @@ export default class EhrHelpV2 {
     return d ? d.errorList : []
   }
 
+  getDialogInputs (dialogKey) {
+    let d = this.dialogMap[dialogKey]
+    let inputs = d ? d.inputs : {}
+    console.log('EhrHelp get dialog inputs for key', dialogKey, inputs)
+    return inputs
+  }
+
   _emitCloseEvent (dialogKey) {
     let eData = { key: dialogKey, value: false }
     let channel = this.getDialogEventChannel(dialogKey)
@@ -378,17 +379,10 @@ export default class EhrHelpV2 {
   _clearDialogInputs (key) {
     let d = this.dialogMap[key]
     let tableDef = d.tableDef
-    if (dbDialog) console.log('clear for key, dialog ', key, d)
-    let cells = tableDef.ehr_list
-    let inputs = d.inputs
-    // console.log('clear dialog inputs', inputs)
-    // console.log('clear dialog cells', cells)
-    // TODO check that default values are working
-    cells.forEach(cell => {
-      let dV = this.getDefinedDefaultValue(cell.elementKey) || ''
-      // console.log('load table cell with default value', cell, dV)
-      inputs[cell.elementKey] = dV
-    })
+    let form = tableDef.form
+    if (dbDialog) console.log('EhrHelp clear table form key, form ', key, form.ehr_data, JSON.stringify(d.inputs))
+    d.inputs = { ...form.ehr_data}
+    if (dbDialog) console.log('EhrHelp cleared key, form ', key, JSON.stringify(d.inputs))
     // empty the error list array
     d.errorList = []
   }
@@ -396,7 +390,7 @@ export default class EhrHelpV2 {
 
   // TODO validation will need rework as part of the DDD refactor
   _validateInputs (key) {
-    // console.log('validate dialog for key' + key)
+    if (dbDialog) console.log('EhrHelp validate dialog for key' + key)
     let d = this.dialogMap[key]
     let cells = d.tableDef.tableCells
     let inputs = d.inputs
@@ -433,7 +427,6 @@ export default class EhrHelpV2 {
    */
   showTableAddButton () {
     return this._showControl('hasTable') || this._showControl('hasGridTable')
-
   }
 
   showPageFormControls () {
@@ -473,7 +466,7 @@ export default class EhrHelpV2 {
       cacheData: cacheData,
       value: asLoadedData
     }
-    console.log('beginEdit', this.pageKey, pageKey, this.pageFormData)
+    // console.log('beginEdit', this.pageKey, pageKey, this.pageFormData)
   }
 
   /*
@@ -590,8 +583,8 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
     let elementKey = def.elementKey
     let value = eData.value
     let d = this.dialogMap[tableKey]
-    console.log(`handle dialog input change for key ${tableKey}`)
-    console.log(`On event from ${tableKey} ${elementKey} with dialog: ${d}`)
+    if (dbDelta) console.log(`handle dialog input change for key ${tableKey}`)
+    if (dbDelta) console.log(`On event from ${tableKey} ${elementKey} with dialog: ${d}`)
     let inputs = d.inputs
     inputs[elementKey] = value
   }
@@ -600,15 +593,15 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
     let element = eData.element
     let elementKey = element.elementKey
     let value = eData.value
-    console.log('_handlePageFormInputChangeEvent', this.pageKey, element)
-    console.log(`Input change event from ${elementKey} value: ${value}`)
+    if (dbDelta) console.log('_handlePageFormInputChangeEvent', this.pageKey, element)
+    if (dbDelta) console.log(`Input change event from ${elementKey} value: ${value}`)
 
     // let pageData = this.pageFormData.value
     // pageData[elementKey] = value
   }
 
   _handleActivityDataChangeEvent (eData) {
-    console.log('Activity data changed. Trigger a load and refresh', this.pageKey)
+    if (dbDelta) console.log('Activity data changed. Trigger a load and refresh', this.pageKey)
     EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
   }
 }

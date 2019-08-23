@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="ehr-page-table")
+  div(class="ehr-page-table") EPT pk {{pageDataKey}}
     div(v-if="showTableAddButton")
       ui-button(v-on:buttonClicked="showDialog") {{ tableDef.addButtonText }}
     div(v-if="isVertical", class="column_table")
@@ -7,13 +7,7 @@
     div(v-if="isStacked", class="stacked_table")
       h2(v-show="tableDef.label") {{tableDef.label}}
       ehr-table-stacked(:ehrHelp="ehrHelp", :tableDef="tableDef")
-
-    <!--div(v-for="group in tableDef.form.ehr_groups")-->
-      <!--div {{group}}-->
-      <!--hr-->
-
-    ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDef", :inputs="inputs", :errorList="errorList" )
-    //div(style="display:none") {{currentData}}
+    ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDef", :errorList="errorList" )
 </template>
 
 <script>
@@ -35,19 +29,16 @@ export default {
   },
   data: function () {
     return {
-      inputs: {}
     }
   },
+  inject: [ 'pageDataKey'],
   props: {
     ehrHelp: { type: Object },
-    pageDataKey: {type: String },
-    theData: { type: Object },
     tableDef: { type: Object, default: function () {return {}} }
   },
   provide () {
     return {
-      isPageElement: false,
-      pageDataKey: this.pageDataKey
+      isTableElement: true,
     }
   },
   computed: {
@@ -72,11 +63,11 @@ export default {
   methods: {
     showDialog: function () {
       // console.log('EhrPageTable showDialog ', this.tableDef)
-      this.ehrHelp.showDialog(this.tableDef, this.theData)
+      this.ehrHelp.showDialog(this.tableDef)
     },
     showDialogHandler: function () {
       // console.log('EhrPageTable showDialogHandler ', this.tableDef)
-      this.ehrHelp.showDialog(this.tableDef, this.theData)
+      this.ehrHelp.showDialog(this.tableDef)
     }
   },
   mounted: function () {

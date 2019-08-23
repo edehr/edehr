@@ -2,8 +2,8 @@
   div(class="ehr-group-wrapper")
     h3(v-if="group.label") {{ group.label }}
     div(v-for="child in group.gChildren", class="ehr-group-for")
-      ehr-sub-group(v-if="isSubgroup(child)", :subgroup="child", :ehrHelp="ehrHelp", :theData="theData")
-      ehr-element-form(v-else-if="child", :elementKey="child", :ehrHelp="ehrHelp", :theData="theData")
+      ehr-sub-group(v-if="isSubgroup(child)", :subgroup="child", :ehrHelp="ehrHelp")
+      ehr-element-form(v-else-if="child", :elementKey="child", :ehrHelp="ehrHelp")
       div(v-else) This group has an undefined element
 </template>
 
@@ -19,15 +19,9 @@ export default {
     EhrSubGroup,
     EhrElementForm
   },
-  data: function () {
-    return {
-      // theData: {}
-    }
-  },
   props: {
     group: {type: Object },
-    ehrHelp: { type: Object },
-    theData: { type: Object },
+    ehrHelp: { type: Object }
   },
   computed: {
   },

@@ -560,9 +560,10 @@ export default function () {
           fqn: 'testTable.referralProfession'
         },
         {
+          elementKey: 'spacer9',
           formIndex: '2',
           inputType: 'spacer',
-          fqn: 'testTable.undefined'
+          fqn: 'testTable.spacer9'
         },
         {
           elementKey: 'appointmentDate',
@@ -765,7 +766,24 @@ export default function () {
                   'e11'
                 ]
               }
-            ]
+            ],
+            ehr_data: {
+              e3: 'default content',
+              e4: true,
+              e5: '',
+              e7: '',
+              e8: '',
+              'p-cValue1': '',
+              e10: 'check1,other',
+              g1: '',
+              g2: '',
+              g3: '',
+              'p-cValue2': '',
+              g4: '',
+              g5: '',
+              g9: '',
+              e11: ''
+            }
           }
         },
         stacked: {
@@ -822,13 +840,20 @@ export default function () {
                 gChildren: [
                   'referralName',
                   'referralProfession',
-                  null,
+                  'spacer9',
                   'appointmentDate',
                   'appointmentTime',
                   'status'
                 ]
               }
-            ]
+            ],
+            ehr_data: {
+              referralName: '',
+              referralProfession: '',
+              appointmentDate: '',
+              appointmentTime: '',
+              status: ''
+            }
           }
         }
       }

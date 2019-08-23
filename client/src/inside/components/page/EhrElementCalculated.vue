@@ -15,7 +15,7 @@ export default {
   name: 'EhrComputedNumber',
   props: {
     ehrHelp: { type: Object },
-    theData: {type: Object}, // dialog values
+    inputs: {type: Object}, // dialog values
     element: {type: Object} // cell definition
   },
   data () {
@@ -28,11 +28,11 @@ export default {
     receiveEvent (eData) {
       let pageDataKey = this.ehrHelp.getPageKey()
       let elementKey = this.element.elementKey
-      if (db) console.log('EhrComputedValue ', elementKey, this.theData)
-      let value = ehrCalculateProperty(pageDataKey, elementKey, this.theData)
+      if (db) console.log('EhrComputedValue ', elementKey, this.inputs)
+      let value = ehrCalculateProperty(pageDataKey, elementKey, this.inputs)
       if (db) console.log('EhrComputedValue ', elementKey, value)
       // put value into the inputs so the dialog save can preserve the result
-      this.theData[elementKey] = value
+      this.inputs[elementKey] = value
       // put into component data to be rendered
       this.value = value
     }
@@ -41,7 +41,7 @@ export default {
     const _this = this
     // get initial value
     let elementKey = this.element.elementKey
-    this.value = this.theData[elementKey]
+    this.value = ''// this.inputs[elementKey]
     // set up event handler
     this.eventHandler = function (eData) {
       _this.receiveEvent(eData)
