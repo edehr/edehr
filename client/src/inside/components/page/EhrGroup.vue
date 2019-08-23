@@ -1,10 +1,11 @@
 <template lang="pug">
-  div(class="ehr-group-wrapper")
+  div
     h3(v-if="group.label") {{ group.label }}
-    div(v-for="child in group.gChildren", class="ehr-group-for")
-      ehr-sub-group(v-if="isSubgroup(child)", :subgroup="child", :ehrHelp="ehrHelp")
-      ehr-element-form(v-else-if="child", :elementKey="child", :ehrHelp="ehrHelp")
-      div(v-else) This group has an undefined element
+    div(class="ehr-group-wrapper", :class="groupClass")
+      div(v-for="child in group.gChildren")
+        ehr-sub-group(v-if="isSubgroup(child)", :subgroup="child", :ehrHelp="ehrHelp", class="column1")
+        ehr-element-form(v-else-if="child", :elementKey="child", :ehrHelp="ehrHelp")
+        div(v-else) This group has an undefined element
 </template>
 
 <script>
@@ -24,6 +25,9 @@ export default {
     ehrHelp: { type: Object }
   },
   computed: {
+    groupClass () {
+      return "grid-left-to-right-3"
+    }
   },
   methods: {
     isSubgroup (element) {
@@ -37,6 +41,31 @@ export default {
 @import '../../../scss/definitions';
 .ehr-group-wrapper {
   background-color: #E8E8E8;
-  border: 1px solid #d3d3d3;
+  border: 1px solid green;
+}
+
+.grid-left-to-right-3 {
+  display: grid;
+  grid-gap: 1rem 2rem;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-left-to-right-5 {
+  display: grid;
+  grid-gap: 1rem 2rem;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.grid-up-to-down {
+  display: grid;
+  grid-gap: 1rem 2rem;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-span-2-columns {
+  grid-column: span 2;
 }
 </style>

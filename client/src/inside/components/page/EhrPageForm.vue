@@ -59,8 +59,6 @@ export default {
 
 <style lang="scss" scoped>
 .ehr-page-form {
-  background-color: #87ceeb;
-  padding: 5px;
   margin-bottom: .5em;
 }
 
