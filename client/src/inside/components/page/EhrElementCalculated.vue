@@ -40,7 +40,6 @@ export default {
   mounted: function () {
     const _this = this
     // get initial value
-    let elementKey = this.element.elementKey
     this.value = ''// this.inputs[elementKey]
     // set up event handler
     this.eventHandler = function (eData) {

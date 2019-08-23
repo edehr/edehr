@@ -254,12 +254,14 @@ export default function () {
               gChildren: [
                 {
                   label: 'subgroup 1',
+                  elementKey: 'subgroup3',
                   sgChildren: [
                     'pcheckset'
                   ]
                 },
                 {
                   label: 'subgroup 2',
+                  elementKey: 'subgroup4',
                   sgChildren: [
                     'ptext1',
                     'ptextarea1',
@@ -269,6 +271,7 @@ export default function () {
                 },
                 {
                   label: 'subgroup 3',
+                  elementKey: 'subgroup5',
                   sgChildren: [
                     'pcheckbox2',
                     'ptext2',
@@ -560,10 +563,10 @@ export default function () {
           fqn: 'testTable.referralProfession'
         },
         {
-          elementKey: 'spacer9',
+          elementKey: 'spacer15',
           formIndex: '2',
           inputType: 'spacer',
-          fqn: 'testTable.spacer9'
+          fqn: 'testTable.spacer15'
         },
         {
           elementKey: 'appointmentDate',
@@ -734,12 +737,14 @@ export default function () {
                 gChildren: [
                   {
                     label: 'subgroup 1',
+                    elementKey: 'subgroup9',
                     sgChildren: [
                       'e10'
                     ]
                   },
                   {
                     label: 'subgroup 1',
+                    elementKey: 'subgroup10',
                     sgChildren: [
                       'g1',
                       'g2',
@@ -749,6 +754,7 @@ export default function () {
                   },
                   {
                     label: 'subgroup 1',
+                    elementKey: 'subgroup11',
                     sgChildren: [
                       'g4',
                       'g5',
@@ -840,7 +846,7 @@ export default function () {
                 gChildren: [
                   'referralName',
                   'referralProfession',
-                  'spacer9',
+                  'spacer15',
                   'appointmentDate',
                   'appointmentTime',
                   'status'
