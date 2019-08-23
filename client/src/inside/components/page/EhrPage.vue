@@ -2,7 +2,7 @@
   div(class="ehr-page")
     ehr-panel-header {{ pageDef.pageTitle }}
     ehr-panel-content
-      ehr-page-element(v-for="element in pageElements", :element="element", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
+      ehr-page-element(v-for="element in pageElements", :key="element.pageDataKey", :element="element", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
 
     div(class="assignment-save")
       div Page updated: {{ ehrHelp.formatDate(pageDef.generated) }}
