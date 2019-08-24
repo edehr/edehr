@@ -5,7 +5,7 @@
       label
         input(class="checkbox", type="checkbox",  v-bind:disabled="disabled", :value="option.prop", v-model="checkValues")
         span {{ option.text}}
-    div(style="display:none") computedInitialValue {{computedInitialValue}}
+    //div(style="display:none") computedInitialValue {{computedInitialValue}}
 </template>
 
 <script>
@@ -16,7 +16,7 @@ import { PAGE_FORM_INPUT_EVENT, DIALOG_INPUT_EVENT } from '../../../helpers/even
 import camelcase from 'camelcase'
 
 export default {
-  name: 'EhrDialogFormElement',
+  name: 'EhrElementCheckset',
   extends: EhrElementCommon,
   // for props, etc see EhrCommonElement
   data () {

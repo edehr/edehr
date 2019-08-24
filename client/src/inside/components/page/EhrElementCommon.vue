@@ -7,8 +7,9 @@ import EventBus from '../../../helpers/event-bus'
 import UiInfo from '../../../app/ui/UiInfo'
 import { PAGE_DATA_REFRESH_EVENT, PAGE_FORM_INPUT_EVENT, DIALOG_INPUT_EVENT } from '../../../helpers/event-bus'
 
-const dbInputs = true
+const dbInputs = false
 const dbDialog = false
+const dbPage = false
 
 export default {
   components: {
@@ -42,12 +43,13 @@ export default {
     label () { return this.element.label + ' ' + this.element.elementKey},
     key () { return this.element.elementKey },
 
-    computedInitialValue () {
-      let key = this.elementKey
-      let initialValue = this.inputs[key]
-      this.setInitialValue(initialValue)
-      return initialValue
-    },
+    // computedInitialValue () {
+    //   let key = this.elementKey
+    //   let initialValue = this.inputs[key]
+    //   if (dbPage || dbInputs) console.log('EhrCommon computedInitialValue', this.key, this.inputs)
+    //   this.setInitialValue(initialValue)
+    //   return initialValue
+    // },
     notEditing () {
       return !this.ehrHelp.isEditing()
     },
@@ -81,6 +83,7 @@ export default {
       let pageDataKey = this.pageDataKey
       let pageData = this.ehrHelp.getAsLoadedPageData(pageDataKey)
       let value = pageData[this.elementKey]
+      if (dbPage || dbInputs) console.log('EhrCommon refresh page', this.key, pageData)
       this.setInitialValue(value)
     },
     /*
@@ -157,13 +160,14 @@ export default {
     },
     dialogShowHideEvent (eData) {
       if(eData.value) {
-        if (dbDialog || dbInputs) console.log('EhrCommon value', this.key, this.inputs)
-        let initialValue = this.inputs[this.key]
+        let inputs = this.ehrHelp.getDialogInputs(this.tableKey)
+        if (dbDialog || dbInputs) console.log('EhrCommon dialog show key with inputs', this.key, this.inputs)
+        let initialValue = inputs[this.key]
         this.setInitialValue(initialValue)
       }
     },
     setInitialValue (value) {
-      if (dbInputs) console.log('EhrCommon setInitialValue', value)
+      if (dbInputs) console.log('EhrCommon setInitialValue', this.elementKey, value)
       this.inputVal = value
     },
   },

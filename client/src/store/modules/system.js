@@ -21,6 +21,7 @@ const mutations = {
     }
     state.isLoading = state.loadingCnt > 0
   },
+  // TODO remove this once all grid work is done
   setEditing: (state, isEditing) => {
     state.isEditing = isEditing
   },
