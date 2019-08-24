@@ -358,11 +358,9 @@ export default class EhrHelpV2 {
     return d ? d.errorList : []
   }
 
-  getDialogInputs (dialogKey) {
-    let d = this.dialogMap[dialogKey]
-    let inputs = d ? d.inputs : {}
-    console.log('EhrHelp get dialog inputs for key', dialogKey, inputs)
-    return inputs
+  getDialogInputs(key) {
+    let d = this.dialogMap[key]
+    return d.inputs
   }
 
   _emitCloseEvent (dialogKey) {
