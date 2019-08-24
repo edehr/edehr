@@ -26,7 +26,7 @@ export default {
   },
   computed: {
     groupClass () {
-      return "grid-left-to-right-3"
+      return 'grid-left-to-right-3'
     }
   },
   methods: {

@@ -1,10 +1,11 @@
 import EhrDefs from '../../../helpers/ehr-defs-grid'
 
-const db = false
+const db = true
 
-export function ehrCalculateProperty (pageDataKey, calculationKey, sourceValues) {
+export function ehrCalculateProperty (pageDataKey, calculationKey, ehrHelper) {
   let desiredProperty = 'elementKey'
   let filterKey = 'passToFunction'
+  let sourceValues = ehrHelper.getActiveData()
   let pd = EhrDefs.getChildElements(pageDataKey, filterKey, calculationKey, desiredProperty)
   if (db) console.log('ehrCalculateProperty ', calculationKey, pd, JSON.stringify(sourceValues))
   let total = 0

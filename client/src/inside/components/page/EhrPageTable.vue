@@ -49,7 +49,7 @@ export default {
       return true // TODO this.tableDef.isStacked
     },
     showTableAddButton () {
-      return true // TODO this.ehrHelp.showTableAddButton()
+      return this.ehrHelp.showTableAddButton()
     },
     tableForm () {
       let form = this.tableDef.tableForm

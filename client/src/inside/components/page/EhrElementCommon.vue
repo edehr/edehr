@@ -43,13 +43,13 @@ export default {
     label () { return this.element.label + ' ' + this.element.elementKey},
     key () { return this.element.elementKey },
 
-    computedInitialValue () {
-      let key = this.elementKey
-      let initialValue = this.inputs[key]
-      if (dbPage || dbInputs) console.log('EhrCommon computedInitialValue', this.key, this.inputs)
-      this.setInitialValue(initialValue)
-      return initialValue
-    },
+    // computedInitialValue () {
+    //   let key = this.elementKey
+    //   let initialValue = this.inputs[key]
+    //   if (dbPage || dbInputs) console.log('EhrCommon computedInitialValue', this.key, this.inputs)
+    //   this.setInitialValue(initialValue)
+    //   return initialValue
+    // },
     notEditing () {
       return !this.ehrHelp.isEditing()
     },
@@ -160,9 +160,9 @@ export default {
     },
     dialogShowHideEvent (eData) {
       if(eData.value) {
-        this.inputs = this.ehrHelp.getDialogInputs(this.tableKey)
+        let inputs = this.ehrHelp.getDialogInputs(this.tableKey)
         if (dbDialog || dbInputs) console.log('EhrCommon dialog show key with inputs', this.key, this.inputs)
-        let initialValue = this.inputs[this.key]
+        let initialValue = inputs[this.key]
         this.setInitialValue(initialValue)
       }
     },

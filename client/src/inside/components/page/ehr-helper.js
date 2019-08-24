@@ -16,8 +16,9 @@ import EhrDefs from '../../../helpers/ehr-defs-grid'
 
 const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
-const dbDialog = true
+const dbDialog = false
 const dbDelta = false
+const dbPageForm = false
 
 
 export default class EhrHelpV2 {
@@ -26,8 +27,8 @@ export default class EhrHelpV2 {
     this.$store = store
     this.pageKey = pageKey
     this.$store.commit('system/setCurrentPageKey', pageKey)
-    this.activeTableKey = ''
-    this.dialogMap = {}
+    this.dialogFormData = {}
+    this.pageFormData = {}
     this._setupTableStackDefs()
     this._setupEventHandlers()
     // wait until components are set up and then refresh table data
@@ -37,8 +38,29 @@ export default class EhrHelpV2 {
   getPageKey () { return this.pageKey }
   getPageDef () { return EhrDefs.getPageDefinition(this.pageKey) }
   getPageTables () { return EhrDefs.getPageTables(this.pageKey) }
-  getActiveTableKey () { return this.activeTableKey }
   getDefinedDefaultValue (elementKey) { return EhrDefs.getDefaultValue(this.pageKey, elementKey)}
+
+  getActiveData () {
+    let data
+    if (this.dialogFormData.inputs) {
+      data = this.dialogFormData.inputs
+    }
+    if (this.pageFormData.value) {
+      data = this.pageFormData.value
+    }
+    if (!data) {
+      console.error('ERROR call to getActiveData when there is none', this.pageFormData, this.dialogFormData)
+    }
+    return data
+  }
+  storeActiveData (elementKey, value) {
+    if (this.dialogFormData.inputs) {
+      this.dialogFormData.inputs[elementKey] = value
+    }
+    if (this.pageFormData.value) {
+      this.pageFormData.value[elementKey] = value
+    }
+  }
 
   _setupEventHandlers () {
     const _this = this
@@ -222,55 +244,34 @@ export default class EhrHelpV2 {
   /* ********************* DIALOG  */
 
   showDialog (tableDef) {
-    // this._setEditing (fals)
-    let dialog = { tableDef: tableDef, inputs: {} }
-    let key = this.activeTableKey = tableDef.tableKey
-    this.dialogMap[key] = dialog
+    let tableKey = tableDef.tableKey
+    this.dialogFormData = { tableKey: tableKey, tableDef: tableDef, inputs: {} }
     // add this dialog to the map
     if (dbDialog) console.log('set helper into each form element', tableDef.tableForm)
     // if (tableDef.tableForm.ehr_groups) {
     //   this.attachHelperToElementsV2(tableDef.tableForm.ehr_groups)
     // }
-    this._clearDialogInputs(key)
-    let eData = { key: key, value: true }
-    let channel = this.getDialogEventChannel(key)
-    if (dbDialog) console.log('66666666 showDialog emit message to channel ' + channel + ' for key' + key + ' tableDef', tableDef)
+    this._clearDialogInputs(tableKey)
+    let eData = { key: tableKey, value: true }
+    let channel = this.getDialogEventChannel(tableKey)
+    if (dbDialog) console.log('66666666 showDialog emit message to channel ' + channel + ' for key' + tableKey + ' tableDef', tableDef)
     EventBus.$emit(channel, eData)
   }
 
-  attachHelperToElementsV2 (groups) {
-    // TODO attached elements to groups
-    console.log('TODO attached elements to groups')
-  }
-
-  attachHelperToElementsV1 (rows) {
-    const _this = this
-    rows.forEach(row => {
-      row.elements.forEach(def => {
-        def.helper = _this
-        if(def.formFieldSet) {
-          let cRows = def.formFieldSet.rows
-          _this.attachHelperToElementsV1(cRows)
-        }
-      })
-    })
-  }
-
   cancelDialog () {
-    const tableKey = this.activeTableKey
+    const tableKey = this.dialogFormData.tableKey
     if (dbDialog) console.log('cancel dialog (indexed by tableKey)', tableKey)
     this._clearDialogInputs(tableKey)
     this._emitCloseEvent(tableKey)
-    this.activeTableKey = ''
   }
 
   saveDialog () {
     const _this = this
     const pageKey = this.pageKey
-    const tableKey = this.activeTableKey
+    let dialog = this.dialogFormData
+    const tableKey = dialog.tableKey
     if (this._validateInputs(tableKey)) {
       if (dbDialog) console.log('EhrHelp saveDialog for page/table', pageKey, tableKey)
-      let dialog = this.dialogMap[tableKey]
       if (dbDialog) console.log('EhrHelp saveDialog', dialog, 'data', data)
       let inputs = dialog.inputs
       inputs.createdDate = moment().format()
@@ -298,10 +299,6 @@ export default class EhrHelpV2 {
     this.$store.commit('system/setLoading', flag)
   }
 
-  _setEditing (flag) {
-    this.$store.commit('system/setEditing', flag)
-  }
-
   _isStudent () {
     return this.$store.getters['visit/isStudent']
   }
@@ -313,15 +310,6 @@ export default class EhrHelpV2 {
   _isSubmitted () {
     return this.$store.getters['ehrData/submitted']
   }
-
-  /**
-   * Return true if a page form is open for edit.
-   * @return {(function())|default.computed.isEditing|boolean|*}
-   */
-  isEditing () {
-    return this.$store.state.system.isEditing
-  }
-
 
   _saveData (payload) {
     const _this = this
@@ -352,18 +340,19 @@ export default class EhrHelpV2 {
     return channel
   }
 
-  getErrorList (dialogKey) {
+  getErrorList (tableKey) {
     // console.log('get error list for key', dialogKey)
-    let d = this.dialogMap[dialogKey]
-    return d ? d.errorList : []
+    let dialog = this.dialogFormData
+    return dialog && dialog.tableKey === tableKey ? dialog.errorList : []
   }
 
-  getDialogInputs(key) {
-    let d = this.dialogMap[key]
-    return d.inputs
+  getDialogInputs (tableKey) {
+    let dialog = this.dialogFormData
+    return dialog && dialog.tableKey === tableKey ? d.inputs : []
   }
 
   _emitCloseEvent (dialogKey) {
+    this.dialogFormData = {}
     let eData = { key: dialogKey, value: false }
     let channel = this.getDialogEventChannel(dialogKey)
     Vue.nextTick(function () {
@@ -375,25 +364,25 @@ export default class EhrHelpV2 {
   }
 
   _clearDialogInputs (key) {
-    let d = this.dialogMap[key]
-    let tableDef = d.tableDef
+    let dialog = this.dialogFormData
+    let tableDef = dialog.tableDef
     let form = tableDef.form
-    if (dbDialog) console.log('EhrHelp clear table form key, form ', key, form.ehr_data, JSON.stringify(d.inputs))
-    d.inputs = { ...form.ehr_data}
-    if (dbDialog) console.log('EhrHelp cleared key, form ', key, JSON.stringify(d.inputs))
+    if (dbDialog) console.log('EhrHelp clear table form key, form ', key, form.ehr_data, JSON.stringify(dialog.inputs))
+    dialog.inputs = { ...form.ehr_data}
+    if (dbDialog) console.log('EhrHelp cleared key, form ', key, JSON.stringify(dialog.inputs))
     // empty the error list array
-    d.errorList = []
+    dialog.errorList = []
   }
 
 
   // TODO validation will need rework as part of the DDD refactor
   _validateInputs (key) {
     if (dbDialog) console.log('EhrHelp validate dialog for key' + key)
-    let d = this.dialogMap[key]
-    let cells = d.tableDef.tableCells
-    let inputs = d.inputs
+    let dialog = this.dialogFormData
+    let cells = dialog.tableDef.tableCells
+    let inputs = dialog.inputs
     // console.log('what is in the inputs? ', inputs)
-    d.errorList = []
+    dialog.errorList = []
     cells.forEach(cell => {
       if (cell.type === 'text') {
         inputs[cell.elementKey] = inputs[cell.elementKey].trim()
@@ -404,12 +393,12 @@ export default class EhrHelpV2 {
           if (rule.required && value.length === 0) {
             let msg = cell.label + ' is required'
             console.log('validateInput', msg)
-            d.errorList.push(msg)
+            dialog.errorList.push(msg)
           }
         })
       }
     })
-    d.errorList.push('TODO remove force success once ready')
+    dialog.errorList.push('TODO remove force success once ready')
     // TODO remove force success once ready
     return true // d.errorList.length === 0
   }
@@ -427,19 +416,10 @@ export default class EhrHelpV2 {
     return this._showControl('hasTable') || this._showControl('hasGridTable')
   }
 
-  showPageFormControls () {
-    return this._showControl('hasForm') || this._showControl('hasGridForm')
-  }
-
-  showPageCustomControls () {
-    return this._canEdit()
-  }
-
   _canEdit () {
     let studentCanEdit = this._isStudent() && !this._isSubmitted()
     return studentCanEdit || this._isDevelopingContent()
   }
-
 
   _showControl (prop) {
     let show = false
@@ -451,20 +431,46 @@ export default class EhrHelpV2 {
     return show
   }
 
+  canEditForm (formKey) {
+    let pfd = this.pageFormData
+    let result = this._canEdit() && pfd.formKey === undefined
+    if (dbPageForm) console.log('canEditForm', formKey, result)
+    return result
+  }
+
+  isEditing () {
+    let pfd = this.pageFormData
+    let result = pfd.formKey !== undefined
+    if (dbPageForm) console.log('isEditing', result)
+    return result
+  }
+  isEditingForm (formKey) {
+    let pfd = this.pageFormData
+    let result = pfd.formKey === formKey
+    if (dbPageForm) console.log('isEditingForm', formKey, result)
+    return result
+  }
+
+
   /**
    * Begin editing a page form
    */
-  beginEdit (pageKey) {
-    this._setEditing (true)
-    // console.log('beginEdit', this.pageKey, pageKey)
+  beginEdit (formKey) {
+    if (this.isEditing()) {
+      console.error('EhrHelp begin edit while there is already an edit session in progress')
+      return
+    }
+    let pageKey = this.pageKey
+    if (dbPageForm) console.log('beginEdit', formKey)
     let asLoadedData = this.getAsLoadedPageData(pageKey)
     let cacheData = JSON.stringify(asLoadedData)
     this.pageFormData = {
       propertyName: pageKey,
+      formKey: formKey,
       cacheData: cacheData,
       value: asLoadedData
     }
-    // console.log('beginEdit', this.pageKey, pageKey, this.pageFormData)
+    console.log('beginEdit', this.pageFormData)
   }
 
   /*
@@ -474,16 +480,14 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
    * Cancel the edit on a page form. Restore values from the database.
    */
   cancelEdit () {
-    const _this = this
-    console.log('cancelEdit', this.pageKey)
+    if (dbPageForm) console.log('cancelEdit', this.pageKey)
     this._setLoading(true)
     this.$store.dispatch('ehrData/restoreActivityData').then(() => {
-      _this._setEditing (false)
-      _this._setLoading(false)
-      _this._mergedProperty()
+      this.pageFormData = {}
+      this._setLoading(false)
+      this._mergedProperty()
       EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
     })
-    this.pageFormData = undefined
   }
 
   /**
@@ -492,7 +496,7 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
   saveEdit () {
     let payload = this.pageFormData
     this._saveData(payload).then(() => {
-      this._setEditing (false)
+      this.pageFormData = {}
     })
   }
 
@@ -503,15 +507,13 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
   unsavedData () {
     let isEditing = this.isEditing()
     let result = false
-    if (isEditing) {
-      if (this.pageFormData) {
-        let currentData = JSON.stringify(this.pageFormData.value)
-        let cacheData = this.pageFormData.cacheData
-        result = cacheData !== currentData
-      } else {
-        // a page dialog is open.
-        result = true
-      }
+    if (this.isEditing()) {
+      let currentData = JSON.stringify(this.pageFormData.value)
+      let cacheData = this.pageFormData.cacheData
+      result = cacheData !== currentData
+    } else {
+      // a page dialog is open.
+      result = true
     }
     // console.log('unsaved data?', isEditing, result)
     return result
@@ -539,7 +541,7 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
           return next(false)
         }
       }
-      this._setEditing (false)
+      this.pageFormData = {}
     }
     next()
   }
@@ -577,10 +579,10 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
    */
   _handleDialogInputChangeEvent (eData) {
     let def = eData.element
-    let tableKey = this.activeTableKey
+    let d = this.dialogFormData
+    let tableKey = d.tableKey
     let elementKey = def.elementKey
     let value = eData.value
-    let d = this.dialogMap[tableKey]
     if (dbDelta) console.log(`handle dialog input change for key ${tableKey}`)
     if (dbDelta) console.log(`On event from ${tableKey} ${elementKey} with dialog: ${d}`)
     let inputs = d.inputs
@@ -593,9 +595,8 @@ TODO the cancel edit page form is not restoring the as loaded data correctly, co
     let value = eData.value
     if (dbDelta) console.log('_handlePageFormInputChangeEvent', this.pageKey, element)
     if (dbDelta) console.log(`Input change event from ${elementKey} value: ${value}`)
-
-    // let pageData = this.pageFormData.value
-    // pageData[elementKey] = value
+    let pageData = this.pageFormData.value
+    pageData[elementKey] = value
   }
 
   _handleActivityDataChangeEvent (eData) {
