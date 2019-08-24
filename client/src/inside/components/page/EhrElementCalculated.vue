@@ -1,7 +1,8 @@
 <template lang="pug">
-  label(class="calculated_value")
-    span(v-html="element.label")
-    span : &nbsp; {{value}}
+  div(class="form-element")
+    label(class="calculated_value")
+      span(v-html="element.label")
+      span : &nbsp; {{value}}
 </template>
 
 <script>
