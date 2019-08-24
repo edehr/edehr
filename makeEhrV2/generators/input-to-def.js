@@ -204,6 +204,7 @@ class RawInputToDef {
     let groups = form.ehr_groups
     let group = groups[entry.gN]
     let subgroup = rawHelper._transferProperties(entry, groupProperties)
+    subgroup.elementKey = subgroup.elementKey || 'subgroup' + ++missingKeyIndex
     subgroup.sgChildren = []
     group.gChildren[entry.sgN] = subgroup
   }
