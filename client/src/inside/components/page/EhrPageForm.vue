@@ -1,8 +1,8 @@
 <template lang="pug">
   div(class="ehr-page-form")
-    h2(v-if="form.label") {{ form.label }} EPF pK {{pageDataKey}}
-    div(slot="controls", v-show="showPageFormControls")
-      ehr-edit-controls(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
+    //h2(v-if="form.label") {{ form.label }} EPF pK {{pageDataKey}}
+    h2(class="headerClass") Form Title {{ form.label }} EPF pK {{pageDataKey}}
+    ehr-edit-controls(class="headerControl", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
     ehr-group(v-for="group in groups", :group="group", :ehrHelp="ehrHelp")
 </template>
 
@@ -65,5 +65,17 @@ export default {
 .assignment-save{
   font-style: italic;
   margin-top: 5em;
+}
+.ehr-page-form {
+  position: relative;
+}
+  .headerClass {
+    display: inline-block;
+  }
+.headerControl {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 </style>
