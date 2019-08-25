@@ -5,6 +5,7 @@ export default function () {
       pageTitle: 'Test Page',
       pIndex: '40',
       isV2: true,
+      hasGridTable: true,
       hasGridForm: true,
       pageChildren: [
         {
@@ -22,13 +23,15 @@ export default function () {
           fqn: 'testPage.pspacer'
         },
         {
-          elementKey: 'ptext',
-          defaultValue: 'default content',
+          elementKey: 'weight',
+          defaultValue: '80',
           formIndex: '1',
           inputType: 'text',
-          label: 'text w def',
+          label: 'Weight',
+          mandatory: true,
           suffix: 'lb',
-          fqn: 'testPage.ptext'
+          validation: 'isNumber',
+          fqn: 'testPage.weight'
         },
         {
           elementKey: 'pcheckbox',
@@ -41,19 +44,18 @@ export default function () {
           helperHtml: '<p>a checkbox iinput</p>'
         },
         {
-          elementKey: 'ptextpcheckbox',
+          elementKey: 'defaultText',
+          defaultValue: 'some default',
           dependantOn: 'pcheckbox',
           formIndex: '1',
           helperText: 'a text input',
           inputType: 'text',
           label: 'text',
-          fqn: 'testPage.ptextpcheckbox',
+          fqn: 'testPage.defaultText',
           helperHtml: '<p>a text input</p>'
         },
         {
           elementKey: 'passetLink',
-          assetBase: 'standardized-assessment-tools',
-          assetName: 'the-canadian-ed-triage-and-acuity-scale.gif',
           formIndex: '1',
           inputType: 'assetLink',
           label: 'assetLink',
@@ -66,13 +68,13 @@ export default function () {
           label: 'select',
           options: [
             {
-              text: '1=a'
+              text: '1=a choice 1'
             },
             {
-              text: '2=b'
+              text: '2=b choice 1'
             },
             {
-              text: '3=c'
+              text: '3=c choice 1'
             }
           ],
           passToFunction: 'p-cValue1',
@@ -85,13 +87,13 @@ export default function () {
           label: 'select',
           options: [
             {
-              text: '1=a'
+              text: '1=a choice 2'
             },
             {
-              text: '2=b'
+              text: '2=b choice 2'
             },
             {
-              text: '3=c'
+              text: '3=c choice 2'
             }
           ],
           passToFunction: 'p-cValue1',
@@ -129,22 +131,25 @@ export default function () {
           fqn: 'testPage.pcheckset'
         },
         {
-          elementKey: 'ptext1',
+          elementKey: 'dayValue',
           formIndex: '1',
-          formOption: 'hideLabel',
-          inputType: 'text',
-          label: 'text',
-          fqn: 'testPage.ptext1'
+          inputType: 'day',
+          label: 'Day',
+          mandatory: true,
+          validation: 'isDay',
+          fqn: 'testPage.dayValue'
         },
         {
-          elementKey: 'ptextarea1',
+          elementKey: 'timeValue',
           formIndex: '1',
-          inputType: 'textarea',
-          label: 'textarea',
-          fqn: 'testPage.ptextarea1'
+          inputType: 'time',
+          label: 'Time',
+          mandatory: true,
+          validation: 'isTime',
+          fqn: 'testPage.timeValue'
         },
         {
-          elementKey: 'pselect1',
+          elementKey: 'forCalc',
           formIndex: '1',
           inputType: 'select',
           label: 'select',
@@ -157,7 +162,7 @@ export default function () {
             }
           ],
           passToFunction: 'p-cValue2',
-          fqn: 'testPage.pselect1'
+          fqn: 'testPage.forCalc'
         },
         {
           elementKey: 'p-cValue2',
@@ -177,6 +182,7 @@ export default function () {
           elementKey: 'ptext2',
           dependantOn: 'pcheckbox2',
           formIndex: '1',
+          formOption: 'hideLabel',
           inputType: 'text',
           label: 'text',
           fqn: 'testPage.ptext2'
@@ -212,24 +218,43 @@ export default function () {
           fqn: 'testPage.pdate2'
         },
         {
-          elementKey: 'name',
+          elementKey: 't1',
           formIndex: '2',
+          inputType: 'text',
+          label: 'Text 1',
+          tableColumn: '1',
+          fqn: 'testPage.t1'
+        },
+        {
+          elementKey: 't2',
+          formIndex: '2',
+          helperText: 'a text input',
+          inputType: 'text',
+          label: 'Text 2',
+          tableColumn: '2',
+          fqn: 'testPage.t2',
+          helperHtml: '<p>a text input</p>'
+        },
+        {
+          elementKey: 'name',
+          formIndex: '3',
           inputType: 'text',
           label: 'Name',
           fqn: 'testPage.name'
         },
         {
           elementKey: 'place',
-          formIndex: '2',
+          formIndex: '3',
           inputType: 'text',
           label: 'Place',
           fqn: 'testPage.place'
         }
       ],
-      generated: '2019-08-22T15:28:52-07:00',
+      generated: '2019-08-24T10:12:12-07:00',
       pageElements: {
         form1: {
           elementKey: 'form1',
+          label: 'Form 1',
           formKey: 'form1',
           isPageForm: true,
           ehr_groups: [
@@ -239,9 +264,9 @@ export default function () {
               gChildren: [
                 'pform_label',
                 'pspacer',
-                'ptext',
+                'weight',
                 'pcheckbox',
-                'ptextpcheckbox',
+                'defaultText',
                 'passetLink',
                 'pselect',
                 'pselect2',
@@ -263,9 +288,9 @@ export default function () {
                   label: 'subgroup 2',
                   elementKey: 'subgroup4',
                   sgChildren: [
-                    'ptext1',
-                    'ptextarea1',
-                    'pselect1',
+                    'dayValue',
+                    'timeValue',
+                    'forCalc',
                     'p-cValue2'
                   ]
                 },
@@ -284,6 +309,49 @@ export default function () {
               ]
             }
           ]
+        },
+        table1: {
+          elementKey: 'table1',
+          tableKey: 'table1',
+          isTable: true,
+          label: 'Test table 1',
+          addButtonText: 'Add a row to the test table',
+          ehr_list: [
+            {
+              label: 'Text 1',
+              ehr_list_index: '1',
+              items: [
+                't1'
+              ]
+            },
+            {
+              label: 'Text 2',
+              ehr_list_index: '2',
+              items: [
+                't2'
+              ]
+            }
+          ],
+          form: {
+            elementKey: 'table1',
+            label: 'Test table 1',
+            addButtonText: 'Add a row to the test table',
+            formKey: 'table1',
+            ehr_groups: [
+              {
+                label: 'Group 1',
+                gIndex: '1',
+                gChildren: [
+                  't1',
+                  't2'
+                ]
+              }
+            ],
+            ehr_data: {
+              t1: '',
+              t2: ''
+            }
+          }
         },
         form2: {
           elementKey: 'form2',
@@ -325,35 +393,39 @@ export default function () {
           fqn: 'testTable.e2'
         },
         {
-          elementKey: 'e3',
-          defaultValue: 'default content',
+          elementKey: 'weight',
+          defaultValue: '80',
           formIndex: '1',
           inputType: 'text',
-          label: 'text w def',
+          label: 'Weight',
+          mandatory: true,
+          suffix: 'lb',
           tableColumn: '2',
-          fqn: 'testTable.e3'
+          validation: 'isNumber',
+          fqn: 'testTable.weight'
         },
         {
-          elementKey: 'e4',
+          elementKey: 'pcheckbox',
           defaultValue: true,
           formIndex: '1',
           helperText: 'a checkbox iinput',
           inputType: 'checkbox',
           label: 'checkbox',
           tableColumn: '1',
-          fqn: 'testTable.e4',
+          fqn: 'testTable.pcheckbox',
           helperHtml: '<p>a checkbox iinput</p>'
         },
         {
-          elementKey: 'e5',
-          dependantOn: 'e4',
+          elementKey: 'defaultText',
+          defaultValue: 'some default',
+          dependantOn: 'pcheckbox',
           formIndex: '1',
           helperText: 'a text input',
           inputType: 'text',
           label: 'text',
           tableColumn: '3',
           tableCss: 'hr-table',
-          fqn: 'testTable.e5',
+          fqn: 'testTable.defaultText',
           helperHtml: '<p>a text input</p>'
         },
         {
@@ -372,13 +444,13 @@ export default function () {
           label: 'select',
           options: [
             {
-              text: '1=a'
+              text: '1=a choice 1'
             },
             {
-              text: '2=b'
+              text: '2=b choice 1'
             },
             {
-              text: '3=c'
+              text: '3=c choice 1'
             }
           ],
           passToFunction: 'p-cValue1',
@@ -392,13 +464,13 @@ export default function () {
           label: 'select',
           options: [
             {
-              text: '1=a'
+              text: '1=a choice 2'
             },
             {
-              text: '2=b'
+              text: '2=b choice 2'
             },
             {
-              text: '3=c'
+              text: '3=c choice 2'
             }
           ],
           passToFunction: 'p-cValue1',
@@ -439,24 +511,27 @@ export default function () {
           fqn: 'testTable.e10'
         },
         {
-          elementKey: 'g1',
+          elementKey: 'dayValue',
           formIndex: '1',
-          formOption: 'hideLabel',
-          inputType: 'text',
-          label: 'text',
+          inputType: 'day',
+          label: 'Day',
+          mandatory: true,
           tableColumn: '7',
-          fqn: 'testTable.g1'
+          validation: 'isDay',
+          fqn: 'testTable.dayValue'
         },
         {
-          elementKey: 'g2',
+          elementKey: 'timeValue',
           formIndex: '1',
-          inputType: 'textarea',
-          label: 'textarea',
+          inputType: 'time',
+          label: 'Time',
+          mandatory: true,
           tableColumn: '8',
-          fqn: 'testTable.g2'
+          validation: 'isTime',
+          fqn: 'testTable.timeValue'
         },
         {
-          elementKey: 'g3',
+          elementKey: 'forCalc',
           formIndex: '1',
           inputType: 'select',
           label: 'select',
@@ -470,7 +545,7 @@ export default function () {
           ],
           passToFunction: 'p-cValue2',
           tableColumn: '9',
-          fqn: 'testTable.g3'
+          fqn: 'testTable.forCalc'
         },
         {
           elementKey: 'p-cValue2',
@@ -563,10 +638,11 @@ export default function () {
           fqn: 'testTable.referralProfession'
         },
         {
-          elementKey: 'spacer15',
+          elementKey: 'spacer1',
           formIndex: '2',
           inputType: 'spacer',
-          fqn: 'testTable.spacer15'
+          label: 'even spacers need a element key',
+          fqn: 'testTable.spacer1'
         },
         {
           elementKey: 'appointmentDate',
@@ -601,7 +677,7 @@ export default function () {
           fqn: 'testTable.status'
         }
       ],
-      generated: '2019-08-22T15:28:52-07:00',
+      generated: '2019-08-24T10:12:12-07:00',
       pageElements: {
         table1: {
           elementKey: 'table1',
@@ -614,21 +690,21 @@ export default function () {
               label: 'A bool',
               ehr_list_index: '1',
               items: [
-                'e4'
+                'pcheckbox'
               ]
             },
             {
-              label: 'A text',
+              label: 'Wieght',
               ehr_list_index: '2',
               items: [
-                'e3'
+                'weight'
               ]
             },
             {
               label: 'Text',
               ehr_list_index: '3',
               items: [
-                'e5'
+                'defaultText'
               ]
             },
             {
@@ -655,24 +731,24 @@ export default function () {
               ]
             },
             {
-              label: 'Text',
+              label: 'Day',
               ehr_list_index: '7',
               items: [
-                'g1'
+                'dayValue'
               ]
             },
             {
-              label: 'Long',
+              label: 'Time',
               ehr_list_index: '8',
               items: [
-                'g2'
+                'timeValue'
               ]
             },
             {
-              label: 'Select',
+              label: 'Source',
               ehr_list_index: '9',
               items: [
-                'g3'
+                'forCalc'
               ]
             },
             {
@@ -723,9 +799,9 @@ export default function () {
                 gChildren: [
                   'e1',
                   'e2',
-                  'e3',
-                  'e4',
-                  'e5',
+                  'weight',
+                  'pcheckbox',
+                  'defaultText',
                   'e6',
                   'e7',
                   'e8',
@@ -737,24 +813,24 @@ export default function () {
                 gChildren: [
                   {
                     label: 'subgroup 1',
-                    elementKey: 'subgroup9',
+                    elementKey: 'subgroup10',
                     sgChildren: [
                       'e10'
                     ]
                   },
                   {
-                    label: 'subgroup 1',
-                    elementKey: 'subgroup10',
+                    label: 'subgroup 2',
+                    elementKey: 'subgroup11',
                     sgChildren: [
-                      'g1',
-                      'g2',
-                      'g3',
+                      'dayValue',
+                      'timeValue',
+                      'forCalc',
                       'p-cValue2'
                     ]
                   },
                   {
-                    label: 'subgroup 1',
-                    elementKey: 'subgroup11',
+                    label: 'subgroup 3',
+                    elementKey: 'subgroup12',
                     sgChildren: [
                       'g4',
                       'g5',
@@ -774,16 +850,16 @@ export default function () {
               }
             ],
             ehr_data: {
-              e3: 'default content',
-              e4: true,
-              e5: '',
+              weight: '80',
+              pcheckbox: true,
+              defaultText: 'some default',
               e7: '',
               e8: '',
               'p-cValue1': '',
               e10: 'check1,other',
-              g1: '',
-              g2: '',
-              g3: '',
+              dayValue: '',
+              timeValue: '',
+              forCalc: '',
               'p-cValue2': '',
               g4: '',
               g5: '',
@@ -846,7 +922,7 @@ export default function () {
                 gChildren: [
                   'referralName',
                   'referralProfession',
-                  'spacer15',
+                  'spacer1',
                   'appointmentDate',
                   'appointmentTime',
                   'status'

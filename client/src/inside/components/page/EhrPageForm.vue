@@ -1,7 +1,11 @@
 <template lang="pug">
   div(class="ehr-page-form")
-    h2(class="headerClass") {{ form.label }} (pKey: {{pageDataKey}})
+    h2(class="headerClass") {{ form.label }} (formKey: {{formKey}})
     ehr-page-form-controls(class="headerControl", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey", :formKey="formKey")
+    div(v-show="errors.length")
+      p Fix the following:
+      ul
+        li(v-for="error in errors") {{ error }}
     ehr-group(v-for="group in groups", :key="group.gIndex", :group="group", :ehrHelp="ehrHelp")
 </template>
 
@@ -20,7 +24,8 @@ export default {
     return {
       isPageElement: true,
       isTableElement: false,
-      tableKey: undefined
+      tableKey: undefined,
+      formKey: this.formKey
     }
   },
   data: function () {
@@ -38,6 +43,9 @@ export default {
     groups () {
       return this.form.ehr_groups
     },
+    errors () {
+      return this.ehrHelp.getPageErrors(this.formKey)
+    }
   },
   methods: {
     cssFromDefs: function (element) {

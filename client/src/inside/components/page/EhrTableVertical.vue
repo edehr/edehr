@@ -57,6 +57,7 @@ export default {
       return css
     },
     refresh () {
+      // TODO get the latest data from the ehr heleper
       const tableDef = this.tableDef
       this.transposedColumns = tableDef.transposedColumns
       // console.log('table view refresh', tableDef)

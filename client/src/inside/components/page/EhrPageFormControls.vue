@@ -34,7 +34,7 @@ export default {
       this.ehrHelp.cancelEdit()
     },
     saveEdit: function () {
-      this.ehrHelp.saveEdit()
+      this.ehrHelp.savePageFormEdit()
     }
   }
 }

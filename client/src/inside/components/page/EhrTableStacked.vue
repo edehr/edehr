@@ -43,6 +43,7 @@ export default {
       return stack.tableCss
     },
     refresh () {
+      // TODO get the latest data from the ehr helper
       const tableDef = this.tableDef
       this.stackedData = tableDef.stackedData
       // console.log('table view refresh', tableDef)

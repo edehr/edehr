@@ -12,7 +12,7 @@
 import EhrElementCommon from './EhrElementCommon'
 import { setApiError } from '../../../helpers/ehr-utils'
 import EventBus from '../../../helpers/event-bus'
-import { PAGE_FORM_INPUT_EVENT, DIALOG_INPUT_EVENT } from '../../../helpers/event-bus'
+import { FORM_INPUT_EVENT } from '../../../helpers/event-bus'
 import camelcase from 'camelcase'
 
 export default {
@@ -34,14 +34,14 @@ export default {
           console.log('In EhrCheckset  watched change to checkvalues send event ', newVal)
           // Send event when any input changes. The listener (EhrHelper) will collect the changes
           // and be ready to send the changes to the server. Calculated values also listen.
-          EventBus.$emit(PAGE_FORM_INPUT_EVENT, {value: newVal, element: this.element})
+          EventBus.$emit(FORM_INPUT_EVENT, {value: newVal, element: this.element})
         }
       }
       if (this.dialogTableKey) {
         if (this.dialogIsOpen) {
           // only broadcast if dialog is open
           let newVal = val.join(',')
-          EventBus.$emit(DIALOG_INPUT_EVENT, {value: newVal, element: this.element})
+          EventBus.$emit(FORM_INPUT_EVENT, {value: newVal, element: this.element})
         }
       }
     }
