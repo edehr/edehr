@@ -1,3 +1,4 @@
+import EhrTypes from './ehr-types'
 // import { setApiError } from './ehr-utils'
 // import CV1 from '../inside/defs/current-visit-1'
 // import CV2 from '../inside/defs/current-visit-2'
@@ -12,6 +13,7 @@ import TP from '../inside/defs-grid/test-page'
 // const pageDefsExt = ER()
 const pageDefsTP = TP()
 // const pageDefs = Object.assign(pageDefsPP, pageDefsCV1, pageDefsCV2, pageDefsPC, pageDefsExt, pageDefsTP)
+const PROPS = EhrTypes.elementProperties
 
 class EhrDefsWorker {
   constructor () {
@@ -54,29 +56,34 @@ class EhrDefsWorker {
 
   getPageChildElement (pageKey, key) {
     let pd = this.getPageDefinition(pageKey)
-    return pd.pageChildren.find(ch => ch['elementKey'] === key)
+    return pd.pageChildren.find(ch => ch[PROPS.elementKey] === key)
+  }
+
+  getPageChildProperty (pageKey, key, prop) {
+    let child = this.getPageChildElement(pageKey, key)
+    let value = child[prop]
+    return value
   }
 
   getDefaultValue (pageDataKey, elementKey) {
-    let filterKey = 'elementKey'
-    let pd = this.getChildElements(pageDataKey, filterKey, elementKey, 'defaultValue')
-    let dV = ''
-    if(pd.length > 0) {
-      dV = pd[0] || ''
-      dV = (dV.toLowerCase() === 'true') ? true : ((dV.toLowerCase() === 'false') ? false : dV)
-    }
+    let dV = this.getPageChildProperty(pageDataKey, elementKey, PROPS.defaultValue) || ''
+    dV = (dV.toLowerCase() === 'true') ? true : ((dV.toLowerCase() === 'false') ? false : dV)
     // console.log('EhrDefs.getDefaultValue', elementKey, dV)
     return dV
   }
 
   getDataCaseStudy (pageDataKey, elementKey) {
-    let filterKey = 'elementKey'
-    let pd = this.getChildElements(pageDataKey, filterKey, elementKey, 'dataCaseStudy')
-    let dV = ''
-    if(pd.length > 0) {
-      dV = pd[0]
-    }
-    // console.log('EhrDefs.getDataCaseStudy', elementKey, dV)
+    let dV = this.getPageChildProperty(pageDataKey, elementKey, PROPS.dataCaseStudy) || ''
+    return dV
+  }
+
+  getValidationRule (pageDataKey, elementKey) {
+    let dV = this.getPageChildProperty(pageDataKey, elementKey, PROPS.validation) || ''
+    return dV
+  }
+
+  getMandatoryRule (pageDataKey, elementKey) {
+    let dV = this.getPageChildProperty(pageDataKey, elementKey, PROPS.mandatory) || ''
     return dV
   }
 

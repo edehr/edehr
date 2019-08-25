@@ -1,6 +1,6 @@
 import EhrDefs from '../../../helpers/ehr-defs-grid'
 
-const db = true
+const db = false
 
 export function ehrCalculateProperty (pageDataKey, calculationKey, ehrHelper) {
   let desiredProperty = 'elementKey'

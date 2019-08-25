@@ -3,7 +3,7 @@
       h3(slot="header") {{ tableDef.addButtonText }}
       div tableKey {{ tableKey}}
       div(slot="body", class="ehr-page-content")
-        ehr-group(v-for="group in groups", :key="group.gIndex", :group="group", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
+        ehr-group(v-for="group in groups", :key="group.gIndex", :group="group", :ehrHelp="ehrHelp")
       span(slot="save-button") Create and close
 </template>
 
@@ -20,20 +20,14 @@ export default {
     EhrGroup,
     AppDialog
   },
-  inject: [ 'isPageElement', 'pageDataKey' ],
-  provide () {
-    return {
-      tableKey: this.tableKey
-    }
-  },
   data: function () {
     return {
+      errorList: []
     }
   },
   props: {
     ehrHelp: { type: Object },
     tableDef: { type: Object },
-    errorList: { type: Array }
   },
   computed: {
     tableKey () {
@@ -52,7 +46,10 @@ export default {
       this.ehrHelp.cancelDialog()
     },
     saveDialog: function () {
-      this.ehrHelp.saveDialog()
+      let errs = this.ehrHelp.saveDialog()
+      if (errs) {
+        this.errorList = errs
+      }
     },
     receiveShowHideEvent (eData) {
       if(eData.value) {

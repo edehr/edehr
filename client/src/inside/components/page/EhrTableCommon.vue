@@ -3,7 +3,7 @@
 import moment from 'moment'
 import { formatDateStr } from '../../../helpers/ehr-utils'
 import EventBus from '../../../helpers/event-bus'
-import { TABLE_DATA_REFRESH_EVENT } from '../../../helpers/event-bus'
+import { PAGE_DATA_READY_EVENT } from '../../../helpers/event-bus'
 
 export default {
   name: 'EhrCommonTable',
@@ -38,14 +38,13 @@ export default {
   mounted: function () {
     const _this = this
     this.refreshEventHandler = function () {
-      // console.log('receive TABLE_DATA_REFRESH_EVENT')
       _this.refresh()
     }
-    EventBus.$on(TABLE_DATA_REFRESH_EVENT, this.refreshEventHandler)
+    EventBus.$on(PAGE_DATA_READY_EVENT, this.refreshEventHandler)
   },
   beforeDestroy: function () {
     if (this.refreshEventHandler) {
-      EventBus.$off(TABLE_DATA_REFRESH_EVENT, this.refreshEventHandler)
+      EventBus.$off(PAGE_DATA_READY_EVENT, this.refreshEventHandler)
     }
   }
 }

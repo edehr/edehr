@@ -3,11 +3,14 @@ const rawHelper = require('./helps')
 const moment = require('moment')
 const assert = require('assert').strict
 
+const dbug = false
+
 const PAGE_INPUT_TYPE = 'page'
 const PAGE_FORM = 'page_form'
 const TABLE_FORM = 'table_form'
 const ehrGroup = 'ehr_group'
 const ehrSubgroup = 'ehr_subgroup'
+
 const DATA_INPUT_TYPES = [
   'text', 'textarea', 'checkbox', 'select', 'calculatedValue', 'checkset', 'date', 'day', 'time'
 ]
@@ -136,7 +139,7 @@ class RawInputToDef {
 
   _makePage (groups, entry) {
     let pKey = entry.pN
-    console.log('Page:', pKey)
+    if (dbug) console.log('Page:', pKey)
     let page = rawHelper._transferProperties(entry, pageProperties)
     page.isV2 = true
     page.pageChildren = []
@@ -300,7 +303,7 @@ class RawInputToDef {
   _formInputs (page, form) {
     function input (key, data) {
       let child = page.pageChildren.find( (ch) => { return ch.elementKey === key })
-      // console.log('_formInputs look for child with key', key, child)
+      // if (dbug) console.log('_formInputs look for child with key', key, child)
       let inputType = child.inputType
       if (DATA_INPUT_TYPES.indexOf(inputType) >= 0) {
         data[key] = child.defaultValue || ''
@@ -309,12 +312,12 @@ class RawInputToDef {
     let groups = form.ehr_groups
     let data = {}
     groups.forEach( (grp) => {
-      console.log('_formInputs group', grp)
+      // if (dbug) console.log('_formInputs group', grp)
       grp.gChildren.forEach( (grpChild ) => {
         if (typeof grpChild === 'string') {
           input(grpChild, data)
         } else {
-          console.log('_formInputs group child is subgroup', grpChild)
+          // if (dbug) console.log('_formInputs group child is subgroup', grpChild)
           grpChild.sgChildren.forEach( (sgrpChild ) => {
             input(sgrpChild, data)
           })
@@ -347,7 +350,7 @@ class RawInputToDef {
       assert(false, 'This entry ' + JSON.stringify(entry)+  ' has an unsupported inputType')
     }
     if (!entry.elementKey) {
-      console.log('Adding elementKey to entry ', entry)
+      if (dbug) console.log('Adding elementKey to entry ', entry)
       entry.elementKey = entry.inputType + ++missingKeyIndex
     }
     assert(entry.pN, 'Why no page number for this entry?', entry)

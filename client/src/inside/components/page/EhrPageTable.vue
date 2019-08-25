@@ -38,10 +38,16 @@ export default {
   },
   provide () {
     return {
+      isPageElement: false,
       isTableElement: true,
+      tableKey: this.tableKey,
+      formKey: undefined
     }
   },
   computed: {
+    tableKey () {
+      return this.tableDef.tableKey
+    },
     isVertical () {
       return this.tableDef.isTransposed
     },
