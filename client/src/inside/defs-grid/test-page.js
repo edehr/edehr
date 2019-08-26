@@ -281,14 +281,14 @@ export default function () {
               gChildren: [
                 {
                   label: 'subgroup 1',
-                  elementKey: 'subgroup3',
+                  elementKey: 'subgroup20',
                   sgChildren: [
                     'pcheckset'
                   ]
                 },
                 {
                   label: 'subgroup 2',
-                  elementKey: 'subgroup4',
+                  elementKey: 'subgroup21',
                   sgChildren: [
                     'dayValue',
                     'timeValue',
@@ -298,7 +298,7 @@ export default function () {
                 },
                 {
                   label: 'subgroup 3',
-                  elementKey: 'subgroup5',
+                  elementKey: 'subgroup22',
                   sgChildren: [
                     'pcheckbox2',
                     'ptext2',
@@ -832,14 +832,14 @@ export default function () {
                 gChildren: [
                   {
                     label: 'subgroup 1',
-                    elementKey: 'subgroup10',
+                    elementKey: 'subgroup27',
                     sgChildren: [
                       'e10'
                     ]
                   },
                   {
                     label: 'subgroup 2',
-                    elementKey: 'subgroup11',
+                    elementKey: 'subgroup28',
                     sgChildren: [
                       'dayValue',
                       'timeValue',
@@ -849,7 +849,7 @@ export default function () {
                   },
                   {
                     label: 'subgroup 3',
-                    elementKey: 'subgroup12',
+                    elementKey: 'subgroup29',
                     sgChildren: [
                       'g4',
                       'g5',

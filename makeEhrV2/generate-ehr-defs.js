@@ -10,7 +10,7 @@ const source = pathUtil.join(process.cwd(), 'raw_data')
 // const sourceFiles = ['patient-profile', 'current-visit-1','current-visit-2', 'patient-chart', 'external-resources', 'test-page']
 // const sourceFiles = ['current-visit-1']
 // const sourceFiles = ['patient-profile']
-const sourceFiles = ['test-page']
+const sourceFiles = ['patient-profile','test-page']
 
 main()
 
