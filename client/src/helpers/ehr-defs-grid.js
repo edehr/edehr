@@ -3,21 +3,21 @@ import EhrTypes from './ehr-types'
 // import CV1 from '../inside/defs/current-visit-1'
 // import CV2 from '../inside/defs/current-visit-2'
 // import PC from '../inside/defs/patient-chart'
-// import PP from '../inside/defs/patient-profile'
+import PP from '../inside/defs-grid/patient-profile'
 // import ER from '../inside/defs/external-resources'
 import TP from '../inside/defs-grid/test-page'
-// const pageDefsPP = PP()
+const pageDefsPP = PP()
 // const pageDefsCV1 = CV1()
 // const pageDefsCV2 = CV2()
 // const pageDefsPC = PC()
 // const pageDefsExt = ER()
 const pageDefsTP = TP()
-// const pageDefs = Object.assign(pageDefsPP, pageDefsCV1, pageDefsCV2, pageDefsPC, pageDefsExt, pageDefsTP)
 const PROPS = EhrTypes.elementProperties
+const pageDefs = Object.assign(pageDefsPP, /*pageDefsCV1, pageDefsCV2, pageDefsPC, pageDefsExt,*/ pageDefsTP)
 
 class EhrDefsWorker {
   constructor () {
-    this.pageDefs = Object.assign(pageDefsTP)
+    this.pageDefs = pageDefs
     console.log('construct V2 defs', this.pageDefs)
   }
   getPageDefinition (pageKey) {

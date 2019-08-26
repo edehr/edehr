@@ -21,7 +21,7 @@ const NONDATA_INPUT_TYPES = [
 
 const STRUCT_INPUT_TYPES = [
   PAGE_FORM, TABLE_FORM, PAGE_INPUT_TYPE, ehrGroup, ehrSubgroup,
-  'record_header'
+  'record_header', 'checkbox_text_spacer', 'checkbox_date', 'text_date'
 ]
 
 const pageChildElementProperties = [
