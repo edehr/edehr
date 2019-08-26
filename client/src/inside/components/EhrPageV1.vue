@@ -1,8 +1,9 @@
 <template lang="pug">
   div
     ehr-panel-header {{ uiProps.pageTitle }}
-      div(slot="controls", v-show="showPageFormControls")
-        ehr-edit-controls(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
+      v2-control(slot="controls")
+      <!--div(slot="controls", v-show="showPageFormControls")-->
+        <!--ehr-edit-controls(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey")-->
     ehr-panel-content
       div(class="region ehr-page-content")
         ehr-page-form(v-if="uiProps.hasForm", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey",)
@@ -15,6 +16,8 @@
 import EhrPanelHeader from '../components/EhrPanelHeader.vue'
 import EhrPanelContent from '../components/EhrPanelContent.vue'
 import EhrEditControls from '../components/EhrEditControls.vue'
+import V2Control from './page/V2Control'
+
 import EhrPageTable from '../components/EhrPageTable'
 import EhrPageForm from '../components/EhrPageForm.vue'
 import EhrHelp from '../../helpers/ehr-helper'
@@ -27,6 +30,7 @@ export default {
     EhrPanelContent,
     EhrPageForm,
     EhrPageTable,
+    V2Control,
     EhrEditControls
   },
   data: function () {
