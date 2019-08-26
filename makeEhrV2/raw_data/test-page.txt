@@ -50,7 +50,7 @@ all=all options are selectable}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: checkbox}	eCell	{Label: checkbox}	{elementKey: pcheckbox}	{pN: 41}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	{tableLabel: A bool}	{tableColumn: 1}	eCell	eCell	eCell	{Default_value: TRUE}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: a checkbox iinput}	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: text}	{elementKey: defaultText}	{pN: 41}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	{tableLabel: Text}	{tableColumn: 3}	{tableCss: hr-table}	eCell	{dependantOn: pcheckbox}	{Default_value: some default}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: a text input}	eCell	eCell	eCell
 {inputType: assetLink}	eCell	{Label: assetLink}	{elementKey: e6}	{pN: 41}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{assetBase: standardized-assessment-tools}	{assetName: the-canadian-ed-triage-and-acuity-scale.gif}	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: select}	{elementKey: e7}	{pN: 41}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	{tableLabel: Stack1}	{tableColumn: 5}	eCell	eCell	eCell	eCell	"{Options: 1=a choice 1
+{inputType: select}	eCell	{Label: select}	{elementKey: e7}	{pN: 41}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	{tableLabel: Selects}	{tableColumn: 5}	eCell	eCell	eCell	eCell	"{Options: 1=a choice 1
 2=b choice 1
 3=c choice 1}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: p-cValue1}
 {inputType: select}	eCell	{Label: select}	{elementKey: e8}	{pN: 41}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 5}	eCell	eCell	eCell	eCell	"{Options: 1=a choice 2

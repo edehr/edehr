@@ -20,9 +20,10 @@ const PROPS = EhrTypes.elementProperties
 const INPUT_TYPES = EhrTypes.inputTypes
 
 const dbDialog = false
-// const dbDelta = false
-const dbPageForm = true
-const dbLoad = true
+const dbDelta = false
+const dbPageForm = false
+const dbLoad = false
+const dbTable = true
 
 
 export default class EhrHelpV2 {
@@ -33,7 +34,7 @@ export default class EhrHelpV2 {
     this.$store.commit('system/setCurrentPageKey', pageKey)
     this.pageFormData = { pageKey: pageKey }
     this.tableFormMap = {}
-    let tables = this.getPageTables()
+    let tables = this.getPageTableDefs()
     tables.forEach((tableDef) => {
       const tableKey = tableDef.tableKey
       this.tableFormMap[tableKey] = { tableKey: tableKey, tableDef: tableDef, inputs: {}, errorList: [], active: false }
@@ -46,9 +47,10 @@ export default class EhrHelpV2 {
 
   getPageKey () { return this.pageKey }
   getPageDef () { return EhrDefs.getPageDefinition(this.pageKey) }
-  getPageTables () { return EhrDefs.getPageTables(this.pageKey) }
+  getPageTableDefs () { return EhrDefs.getPageTables(this.pageKey) }
   getPageForms () { return EhrDefs.getPageForms(this.pageKey) }
   getDefinedDefaultValue (elementKey) { return EhrDefs.getDefaultValue(this.pageKey, elementKey)}
+  getTable (tableKey) { return this.tableFormMap[tableKey]}
 
   getPageGeneratedDate () {
     return this.formatDate(this.getPageDef().generated)
@@ -81,6 +83,7 @@ export default class EhrHelpV2 {
   stashActiveData (elementKey, value) {
     let data = this.getActiveData()
     data[elementKey] = value
+    if (dbDelta) console.log('EhrHelp stash ', elementKey, value)
   }
 
   /* ********************* HELPERS  */
@@ -164,36 +167,69 @@ export default class EhrHelpV2 {
   /* ********************* TABLES  */
 
   _getActiveTableDialog () {
-    Object.values(this.tableFormMap).find( (tbl) => { return tbl.active })
+    return Object.values(this.tableFormMap).find( (tbl) => { return tbl.active })
   }
   _loadTableData () {
-    // see _setupTableStackDefs
+    let pageKey = this.pageKey
     let theData = this.getAsLoadedPageData()
-    // let pageDef = this.getPageDef()
-    let tables = this.getPageTables()
-    // console.log('load stack data for page', pageKey, tables, theData)
-    if (tables.length > 0) {
-      tables.forEach((tableDef) => {
-        const tableKey = tableDef.tableKey
-        let dbData = Array.isArray(theData[tableKey]) ? theData[tableKey] : []
-        // console.log('load stacked with data ', dbData)
-        let stackedData = []
-        dbData.forEach(dbRowData => {
-          let tblRow = []
-          tableDef.ehr_list.forEach(stack => {
-            let dStack = {}
-            stack.items.forEach(cell => {
-              const key = cell
-              const value = dbRowData[key]
-              dStack[key] = {cellDef: cell, value: value}
+    let tableDefs = this.getPageTableDefs()
+    if (dbTable) console.log('EhrHelp load stack data for page', this.pageKey, tableDefs, theData)
+    if (tableDefs.length > 0) {
+      tableDefs.forEach((tableDef) => {
+        let tableKey = tableDef.tableKey
+        let tableForm = this.getTable(tableKey)
+        let rowTemplate = []
+        tableDef.ehr_list.forEach(stack => {
+          let templateCell = {
+            stack: []
+          }
+          stack.items.forEach(cell => {
+            let cellDef = EhrDefs.getPageChildElement(pageKey, cell)
+            templateCell.stack.push({
+              key: cell,
+              inputType: cellDef.inputType
             })
-            tblRow.push(dStack)
+            templateCell.tableLabel = templateCell.tableLabel || cellDef.tableLabel
+            templateCell.tableCss = templateCell.tableCss || cellDef.tableCss
           })
-          stackedData.push(tblRow)
+          rowTemplate.push(templateCell)
         })
-        tableDef.stackedData = stackedData
-        // console.log('load stackedData', tableDef)
+        tableForm.rowTemplate = rowTemplate
+
+        let dbData = theData[tableKey]
+        let tableData = []
+        if (dbData) {
+          dbData.forEach((dbRow) => {
+            let dataRow = JSON.parse(JSON.stringify(rowTemplate)) // deep copy the array
+            console.log('dbRow', dbRow)
+            console.log('datarow', dataRow)
+            Object.values(dataRow).forEach((templateCell) => {
+              // console.log('templateCell', templateCell)
+              templateCell.stack.forEach((cell) => {
+                let val = dbRow[cell.key] || ''
+                cell.value = val
+                console.log('cell', cell)
+              })
+            })
+            tableData.push(dataRow)
+          })
+          tableForm.tableData = tableData
+          tableForm.dbData = dbData
+        }
+        if (dbTable) console.log('EhrHelp load stacked with data ', dbData)
+
+        if (dbTable) console.log('EhrHelp load tableForm', tableForm)
       })
+      // dbData.forEach(dbRowData => {
+      //   let tblRow = dbRowData
+      // tableForm.stackedData = stackedData
+      // if (stackedData && stackedData.length > 0) {
+      //   if (dbTable) console.log('EhrHelp load stackedData', stackedData)
+      //   let transpose = stackedData[0].map((col, i) => stackedData.map(row => row[i]))
+      //   if (dbTable) console.log('EhrHelp load transpose', transpose)
+      //   tableForm.transposedColumns = transpose
+      //   tableForm.isTransposed = true
+      // }
     }
   }
 
@@ -265,7 +301,7 @@ export default class EhrHelpV2 {
     // TODO load data for tables
     // this._mergedProperty()
     // this._loadTransposedColumns()
-    // this._loadTableData()
+    this._loadTableData()
     EventBus.$emit(PAGE_DATA_READY_EVENT)
   }
 
@@ -286,12 +322,6 @@ export default class EhrHelpV2 {
     return this.$store.getters['ehrData/asLoadedDataForPageKey'](pageKey)
   }
 
-  // TODO verify can remove
-  // getHasDataForPagesList () {
-  //   let hasDataForPagesList = store.getters['ehrData/hasDataForPagesList']
-  //   return hasDataForPagesList
-  // }
-
   /**
    * Get and return the merged (seed + student's work) for the current page
    *
@@ -307,8 +337,7 @@ export default class EhrHelpV2 {
 
   /* ********************* DIALOG  */
 
-  showDialog (tableDef) {
-    let tableKey = tableDef.tableKey
+  showDialog (tableKey) {
     this._dialogEvent(tableKey, true)
   }
 
@@ -327,7 +356,6 @@ export default class EhrHelpV2 {
       return dialog.errorList
     }
     if (dbDialog) console.log('EhrHelp saveDialog for page/table', pageKey, tableKey)
-    if (dbDialog) console.log('EhrHelp saveDialog', dialog, 'data', data)
     let inputs = dialog.inputs
     inputs.createdDate = moment().format()
     if (dbDialog) console.log('save dialog data into ', tableKey)
@@ -341,7 +369,7 @@ export default class EhrHelpV2 {
     if (dbDialog) console.log('EhrHelp storing this: asLoadedPageData', asLoadedPageData, 'table', table, tableKey, dialog.tableKey)
     // Prepare a payload to tell the API which property inside the assignment data to change
     let payload = {
-      propertyName: pageKey,
+      pageKey: pageKey,
       value: asLoadedPageData
     }
     this._saveData(payload).then(() => {
@@ -357,12 +385,14 @@ export default class EhrHelpV2 {
     let isDevelopingContent = this._isDevelopingContent()
     if (isStudent) {
       if (dbDialog) console.log('saving assignment data', payload)
+      payload.propertyName = payload.pageKey
       payload.value = prepareAssignmentPageDataForSave(payload.value)
       return _this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload).then(() => {
         _this._setLoading(false)
       })
     } else if (isDevelopingContent) {
       payload.id = _this.$store.state.seedStore.sSeedId
+      payload.propertyName = payload.pageKey
       payload.value = removeEmptyProperties(payload.value)
       if (dbDialog) console.log('saving seed ehr data', payload.id, JSON.stringify(payload.value))
       return _this.$store.dispatch('seedStore/updateSeedEhrProperty', payload).then(() => {
@@ -469,7 +499,7 @@ export default class EhrHelpV2 {
   beginEdit (formKey) {
     if (dbPageForm) console.log('EhrHelp begin edit', formKey)
     if (this.isEditing()) {
-      console.error('EhrHelp begin edit while there is already an edit session in progress')
+      if (dbPageForm) console.error('EhrHelp begin edit while there is already an edit session in progress')
       return
     }
     this._loadPageFormData(formKey)
@@ -551,7 +581,7 @@ export default class EhrHelpV2 {
       _this._handleActivityDataChangeEvent(eData)
     }
     this.refreshEventHandler = function (eData) {
-      if (dbLoad) console.log('ehrhelper respond to page refresh', _this.pageKey)
+      if (dbLoad) console.log('EhrHelper respond to page refresh', _this.pageKey)
       _this._loadPageData()
     }
     window.addEventListener('beforeunload', this.windowUnloadHandler)

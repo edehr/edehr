@@ -223,6 +223,7 @@ export default function () {
           inputType: 'text',
           label: 'Text 1',
           tableColumn: '1',
+          tableLabel: 'Text 1',
           fqn: 'testPage.t1'
         },
         {
@@ -232,6 +233,7 @@ export default function () {
           inputType: 'text',
           label: 'Text 2',
           tableColumn: '2',
+          tableLabel: 'Text 2',
           fqn: 'testPage.t2',
           helperHtml: '<p>a text input</p>'
         },
@@ -250,7 +252,7 @@ export default function () {
           fqn: 'testPage.place'
         }
       ],
-      generated: '2019-08-24T10:12:12-07:00',
+      generated: '2019-08-25T14:45:46-07:00',
       pageElements: {
         form1: {
           elementKey: 'form1',
@@ -401,6 +403,7 @@ export default function () {
           mandatory: true,
           suffix: 'lb',
           tableColumn: '2',
+          tableLabel: 'Wieght',
           validation: 'isNumber',
           fqn: 'testTable.weight'
         },
@@ -412,6 +415,7 @@ export default function () {
           inputType: 'checkbox',
           label: 'checkbox',
           tableColumn: '1',
+          tableLabel: 'A bool',
           fqn: 'testTable.pcheckbox',
           helperHtml: '<p>a checkbox iinput</p>'
         },
@@ -425,6 +429,7 @@ export default function () {
           label: 'text',
           tableColumn: '3',
           tableCss: 'hr-table',
+          tableLabel: 'Text',
           fqn: 'testTable.defaultText',
           helperHtml: '<p>a text input</p>'
         },
@@ -455,6 +460,7 @@ export default function () {
           ],
           passToFunction: 'p-cValue1',
           tableColumn: '5',
+          tableLabel: 'Selects',
           fqn: 'testTable.e7'
         },
         {
@@ -508,6 +514,7 @@ export default function () {
             }
           ],
           tableColumn: '4',
+          tableLabel: 'Set',
           fqn: 'testTable.e10'
         },
         {
@@ -517,6 +524,7 @@ export default function () {
           label: 'Day',
           mandatory: true,
           tableColumn: '7',
+          tableLabel: 'Day',
           validation: 'isDay',
           fqn: 'testTable.dayValue'
         },
@@ -527,6 +535,7 @@ export default function () {
           label: 'Time',
           mandatory: true,
           tableColumn: '8',
+          tableLabel: 'Time',
           validation: 'isTime',
           fqn: 'testTable.timeValue'
         },
@@ -545,6 +554,7 @@ export default function () {
           ],
           passToFunction: 'p-cValue2',
           tableColumn: '9',
+          tableLabel: 'Source',
           fqn: 'testTable.forCalc'
         },
         {
@@ -553,6 +563,7 @@ export default function () {
           inputType: 'calculatedValue',
           label: 'calculatedValue',
           tableColumn: '10',
+          tableLabel: 'Calculated',
           fqn: 'testTable.p-cValue2'
         },
         {
@@ -561,6 +572,7 @@ export default function () {
           inputType: 'checkbox',
           label: 'checkbox',
           tableColumn: '12',
+          tableLabel: 'Bool',
           fqn: 'testTable.g4'
         },
         {
@@ -570,6 +582,7 @@ export default function () {
           inputType: 'text',
           label: 'text',
           tableColumn: '13',
+          tableLabel: 'Text',
           fqn: 'testTable.g5'
         },
         {
@@ -578,6 +591,7 @@ export default function () {
           inputType: 'form_label',
           label: '<b>a form <i>label</i></b>',
           tableColumn: '14',
+          tableLabel: 'Lable',
           fqn: 'testTable.g6'
         },
         {
@@ -602,6 +616,7 @@ export default function () {
           inputType: 'date',
           label: 'date',
           tableColumn: '15',
+          tableLabel: 'Date',
           fqn: 'testTable.g9'
         },
         {
@@ -612,6 +627,7 @@ export default function () {
           label: 'textarea',
           tableColumn: '6',
           tableCss: 'hr-table',
+          tableLabel: 'Long text',
           fqn: 'testTable.e11'
         },
         {
@@ -627,6 +643,7 @@ export default function () {
           inputType: 'text',
           label: 'Referral name',
           tableColumn: '3',
+          tableLabel: 'Referral',
           fqn: 'testTable.referralName'
         },
         {
@@ -650,6 +667,7 @@ export default function () {
           inputType: 'date',
           label: 'Appointment date',
           tableColumn: '4',
+          tableLabel: 'Appointment',
           fqn: 'testTable.appointmentDate'
         },
         {
@@ -674,10 +692,11 @@ export default function () {
             }
           ],
           tableColumn: '5',
+          tableLabel: 'Status',
           fqn: 'testTable.status'
         }
       ],
-      generated: '2019-08-24T10:12:12-07:00',
+      generated: '2019-08-25T14:45:46-07:00',
       pageElements: {
         table1: {
           elementKey: 'table1',
@@ -715,7 +734,7 @@ export default function () {
               ]
             },
             {
-              label: 'Stack1',
+              label: 'Selects',
               ehr_list_index: '5',
               items: [
                 'e7',
