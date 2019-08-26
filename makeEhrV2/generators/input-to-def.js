@@ -48,6 +48,7 @@ const pageChildElementProperties = [
   'suffix',
   'tableColumn',
   'tableCss',
+  'tableLabel',
   'validation'
 ]
 

@@ -99,7 +99,8 @@ export const getters = {
       let pageData = mergedData[pageKey]
       let pageDefV2 = EhrDefs.getPageDefinition(pageKey)
       if (pageDefV2) {
-        return pageData
+        if (debug) console.log('EhrData asLoadedDataForPageKey -=-=-=-=-=-=-=-=-=-=-=-= key and page data:', pageKey, pageData)
+        return pageData || {}
       } else {
         // TODO remove the following once new grid system is all done
         let pageDef = getPageDefinition(pageKey)

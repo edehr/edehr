@@ -1,12 +1,12 @@
 <template lang="pug">
-  div
+  div tc {{transposedColumns[0]}}
     div(v-if="!hasData") There are no records or reports for the patient.
     div(v-else)
       table.table_vertical
         tbody
           tr(v-for="column in transposedColumns", :class="tableColumnCss(column)")
-            td(:class="transposeLabelCss(column)")
-              span(v-html="transposeLabel(column).value")
+            td(:class="transposeLabelCss(column)") {{column}}
+              //span(v-html="transposeLabel(column).value")
             td(v-for="cell in transposeData(column)", :class="transposeValueCss(cell)") {{ getCellData(cell) }}
 </template>
 
@@ -22,8 +22,11 @@ export default {
     }
   },
   computed: {
+    // transposedColumns () {
+    //   return this.tableDef.transposedColumns
+    // },
     hasData () {
-      return this.transposedColumns.length > 0 && this.transposedColumns[0].length > 1
+      return this.transposedColumns.length > 0// && this.transposedColumns[0].length > 1
     }
   },
   methods: {
@@ -57,10 +60,9 @@ export default {
       return css
     },
     refresh () {
-      // TODO get the latest data from the ehr heleper
       const tableDef = this.tableDef
       this.transposedColumns = tableDef.transposedColumns
-      // console.log('table view refresh', tableDef)
+      console.log('EhrTableVertical table view refresh', tableDef, this.transposedColumns)
     }
   }
 }

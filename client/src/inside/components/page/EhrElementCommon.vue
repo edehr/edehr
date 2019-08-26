@@ -3,12 +3,12 @@
 import {getDefaultValue} from '../../../helpers/ehr-defs'
 import EhrPageFormLabel from './EhrPageFormLabel.vue'
 import EhrDefs from '../../../helpers/ehr-defs-grid'
-import EventBus from '../../../helpers/event-bus'
 import UiInfo from '../../../app/ui/UiInfo'
+import EventBus from '../../../helpers/event-bus'
 import { PAGE_DATA_READY_EVENT, FORM_INPUT_EVENT } from '../../../helpers/event-bus'
 
 const dbInputs = false
-const dbDialog = true
+const dbDialog = false
 const dbPage = false
 const dbDetail = false
 
@@ -38,7 +38,7 @@ export default {
   computed: {
     element () { return EhrDefs.getPageChildElement(this.pageDataKey, this.elementKey) },
     inputType () { return this.element.inputType },
-    label () { return this.element.label + ' ' + this.element.elementKey},
+    label () { return this.element.label},
     key () { return this.element.elementKey },
     isEditing () { return this.ehrHelp.isEditing() },
     disabled () {
@@ -177,6 +177,7 @@ export default {
   },
   watch: {
     inputVal (val) {
+      if (dbInputs) console.log('EhrElement input val changed', this.elementKey, val)
       if (this.isPageElement &&  this.isEditing) {
         // only broadcast if user is editing the form
         this.sendInputEvent(val)

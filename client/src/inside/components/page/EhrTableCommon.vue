@@ -4,6 +4,7 @@ import moment from 'moment'
 import { formatDateStr } from '../../../helpers/ehr-utils'
 import EventBus from '../../../helpers/event-bus'
 import { PAGE_DATA_READY_EVENT } from '../../../helpers/event-bus'
+const debug = true
 
 export default {
   name: 'EhrCommonTable',
@@ -17,7 +18,8 @@ export default {
   props: {
     ehrHelp: { type: Object },
     // the ehr helper loads fresh data into the table definition.
-    tableDef: { type: Object }
+    tableDef: { type: Object },
+    tableForm: { type: Object }
   },
   computed: {
   },
@@ -27,8 +29,8 @@ export default {
     },
     getCellData: function (cell) {
       let value = cell.value
-      let cellDef = cell.cellDef
-      if (cellDef.inputType === 'date') {
+      let inputType = cell.inputType
+      if (inputType === 'date') {
         let mom = moment(value, 'YYYY-MM-DDTHH:mm:ss ZZ')
         if (mom.isValid()) value = formatDateStr(value) //mom.format('DD MMM YYYY')
       }

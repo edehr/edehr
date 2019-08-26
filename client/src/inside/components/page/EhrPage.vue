@@ -7,7 +7,6 @@
     div(class="assignment-save")
       div Page updated: {{ ehrHelp.getPageGeneratedDate() }}
       div Assignment last saved: {{ ehrHelp.getLastPageDataUpdateDate() }}
-
 </template>
 
 <script>
@@ -16,6 +15,8 @@ import EhrPanelContent from '../../components/EhrPanelContent.vue'
 import EhrPageElement from './EhrPageElement'
 import EhrHelpV2 from './ehr-helper'
 import EhrDefs from '../../../helpers/ehr-defs-grid'
+import EventBus from '../../../helpers/event-bus'
+import { PAGE_DATA_REFRESH_EVENT } from '../../../helpers/event-bus'
 
 /*
 # EhrPage
@@ -85,31 +86,17 @@ export default {
     },
   },
   methods: {
-    // refresh () {
-    //   let d = this.ehrHelp.getAsLoadedPageData()
-    //   // console.log('EhrPageForm refresh for page key', this.pageDataKey)
-    //   // console.log('EhrPageForm refresh found data', d)
-    //   this.theData = d
-    // }
   },
   created () {
     this.ehrHelp = new EhrHelpV2(this, this.$store, this.pageDataKey, this.uiProps)
   },
-  // mounted: function () {
-  // const _this = this
-  // this.refreshEventHandler = function () {
-  //   // console.log('received page refresh event')
-  //   _this.refresh()
-  // }
-  // EventBus.$on(PAGE_DATA_READY_EVENT, this.refreshEventHandler)
-  // },
+  mounted: function () {
+    EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
+  },
   beforeRouteLeave (to, from, next) {
     this.ehrHelp.beforeRouteLeave(to, from, next)
   },
   beforeDestroy: function () {
-  //   if (this.refreshEventHandler) {
-  //     EventBus.$off(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
-  //   }
     this.ehrHelp.beforeDestroy(this.pageDataKey)
   },
 }
