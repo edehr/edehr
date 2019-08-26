@@ -1,6 +1,7 @@
 <template lang="pug">
   div(class="ehr-page")
     ehr-panel-header {{ pageDef.pageTitle }}
+      v2-control(slot="controls")
     ehr-panel-content
       ehr-page-element(v-for="element in pageElements", :key="element.pageDataKey", :element="element", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
 
@@ -10,8 +11,9 @@
 </template>
 
 <script>
-import EhrPanelHeader from '../../components/EhrPanelHeader.vue'
-import EhrPanelContent from '../../components/EhrPanelContent.vue'
+import EhrPanelHeader from './EhrPanelHeader.vue'
+import EhrPanelContent from './EhrPanelContent.vue'
+import V2Control from './V2Control'
 import EhrPageElement from './EhrPageElement'
 import EhrHelpV2 from './ehr-helper'
 import EhrDefs from '../../../helpers/ehr-defs-grid'
@@ -61,6 +63,7 @@ export default {
   name: 'EhrPageTable',
   components: {
     EhrPanelHeader,
+    V2Control,
     EhrPanelContent,
     EhrPageElement
   },

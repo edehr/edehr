@@ -5,7 +5,8 @@ const state = {
   currentPageKey: '',
   loadingCnt: 0,
   apiError: '',
-  sysMessage: ''
+  sysMessage: '',
+  usingV2: false
 }
 
 const getters = {}
@@ -21,7 +22,11 @@ const mutations = {
     }
     state.isLoading = state.loadingCnt > 0
   },
-  // TODO remove this once all grid work is done
+  setUseV2: (state, value) => {
+    localStorage.setItem('usingV2', value)
+    state.usingV2 = value
+    // console.log('System store set using v2', value)
+  },
   setEditing: (state, isEditing) => {
     state.isEditing = isEditing
   },

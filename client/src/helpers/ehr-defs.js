@@ -1,4 +1,5 @@
 import { setApiError } from './ehr-utils'
+import StoreHelper from './store-helper'
 import EhrDefs from './ehr-defs-grid'
 import CV1 from '../inside/defs/current-visit-1'
 import CV2 from '../inside/defs/current-visit-2'
@@ -16,7 +17,12 @@ const pageDefs = Object.assign(pageDefsPP, pageDefsCV1, pageDefsCV2, pageDefsPC,
 
 export function getPageDefinition (pageKey) {
   // return page def from V2 if available otherwise fall back on V1
-  let pd = EhrDefs.getPageDefinition(pageKey)
+  let uV2 = StoreHelper.usingV2()
+  console.log('getPageDefinition using v2', uV2)
+  let pd
+  if (uV2) {
+    pd = EhrDefs.getPageDefinition(pageKey)
+  }
   pd = pd ? pd : pageDefs[pageKey]
   return pd
 }
