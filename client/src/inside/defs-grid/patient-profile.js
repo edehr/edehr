@@ -2,7 +2,7 @@ export default function () {
   return {
     demographics: {
       pageDataKey: 'demographics',
-      pageTitle: 'V2Demographics',
+      pageTitle: 'Demographics',
       pIndex: '1',
       isV2: true,
       hasGridForm: true,

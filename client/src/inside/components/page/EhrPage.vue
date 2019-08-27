@@ -15,7 +15,6 @@ import EhrPanelHeader from './EhrPanelHeader.vue'
 import EhrPanelContent from './EhrPanelContent.vue'
 import V2Control from './V2Control'
 import EhrPageElement from './EhrPageElement'
-import EhrHelpV2 from './ehr-helper'
 import EhrDefs from '../../../helpers/ehr-defs-grid'
 import EventBus from '../../../helpers/event-bus'
 import { PAGE_DATA_REFRESH_EVENT } from '../../../helpers/event-bus'
@@ -57,7 +56,6 @@ Each time the EhrDialogForm opens these values are refreshed.
 The elements ask the EhrHelp for their initial value. As the user makes a change to the inputs an event FORM_INPUT_EVENT
 is broadcast and captured with the change. The change is then pushed into the page data or form data as appropriate.
 
-
  */
 export default {
   name: 'EhrPageTable',
@@ -69,7 +67,6 @@ export default {
   },
   data: function () {
     return {
-      ehrHelp: undefined
     }
   },
   provide () {
@@ -78,7 +75,8 @@ export default {
     }
   },
   props: {
-    pageDataKey: { type: String }
+    pageDataKey: { type: String },
+    ehrHelp: { type: Object }
   },
   computed: {
     pageDef () {
@@ -90,18 +88,9 @@ export default {
   },
   methods: {
   },
-  created () {
-    this.ehrHelp = new EhrHelpV2(this, this.$store, this.pageDataKey, this.uiProps)
-  },
   mounted: function () {
     EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
-  },
-  beforeRouteLeave (to, from, next) {
-    this.ehrHelp.beforeRouteLeave(to, from, next)
-  },
-  beforeDestroy: function () {
-    this.ehrHelp.beforeDestroy(this.pageDataKey)
-  },
+  }
 }
 </script>
 

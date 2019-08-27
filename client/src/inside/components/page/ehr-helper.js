@@ -146,14 +146,11 @@ export default class EhrHelpV2 {
   }
 
   isEditing () {
-    return this.$store.state.system.isEditing
+    let sysVal =  this.$store.state.system.isEditing
+    if (dbLeave) console.log('EhrHelp isEditing ', sysVal)
+    return sysVal
   }
-  isEditingDeda () {
-    let pfd = this.pageFormData
-    let result = pfd.formKey !== undefined
-    if (dbPageForm) console.log('EhrHelp isEditing', result)
-    return result
-  }
+
   isEditingForm (formKey) {
     let result = false
     if (this.isEditing()) {
@@ -201,14 +198,14 @@ export default class EhrHelpV2 {
         if (dbData) {
           dbData.forEach((dbRow) => {
             let dataRow = JSON.parse(JSON.stringify(rowTemplate)) // deep copy the array
-            console.log('dbRow', dbRow)
-            console.log('datarow', dataRow)
+            // console.log('dbRow', dbRow)
+            // console.log('datarow', dataRow)
             Object.values(dataRow).forEach((templateCell) => {
               // console.log('templateCell', templateCell)
               templateCell.stack.forEach((cell) => {
                 let val = dbRow[cell.key] || ''
                 cell.value = val
-                console.log('cell', cell)
+                // console.log('cell', cell)
               })
             })
             tableData.push(dataRow)
@@ -421,6 +418,7 @@ export default class EhrHelpV2 {
   }
 
   _dialogEvent (tableKey, open) {
+    if (dbLeave) console.log('EhrHelp _dialogEvent', tableKey, open)
     let dialog = this.tableFormMap[tableKey]
     dialog.active = open
     this._clearDialogInputs(dialog)
@@ -536,11 +534,15 @@ export default class EhrHelpV2 {
       let currentData = JSON.stringify(this.pageFormData.value)
       let cacheData = this.pageFormData.cacheData
       result = cacheData !== currentData
-    } else {
-      // a page dialog is open.
+      if (dbLeave) console.log('EhrHelp compare current to cache result:', result)
       result = true
+    } else {
+      let dialog = this._getActiveTableDialog()
+      result = !!dialog
+      if (dbLeave) console.log('EhrHelp dialog is open?', dialog, result)
+      // a page dialog is open.
     }
-    // console.log('unsaved data?', isEditing, result)
+    if (dbLeave) console.log('EhrHelp unsaved data?', result)
     return result
   }
 
@@ -614,9 +616,10 @@ export default class EhrHelpV2 {
   beforeRouteLeave (to, from, next) {
     // console.log('beforeRouteLeave ...', to)
     let isEditing = this.isEditing()
+    if (dbLeave) console.log('EhrHelp beforeRouteLeave isEditing', isEditing)
     if (isEditing) {
       let unsaved = this.unsavedData()
-      // console.log('beforeRouteLeave ...', unsaved)
+      if (dbLeave) console.log('EhrHelp beforeRouteLeave unsaved', unsaved)
       if (unsaved) {
         if (!window.confirm(LEAVE_PROMPT)) {
           // unsaved data and the user wants to stay
@@ -635,9 +638,9 @@ export default class EhrHelpV2 {
    */
   beforeUnloadListener (event) {
     let e = event || window.event
-    // console.log('beforeunload ...', e)
+    if (dbLeave) console.log('EhrHelp beforeunload event', e)
     let unsaved = this.unsavedData()
-    // console.log('beforeunload ...', unsaved)
+    if (dbLeave) console.log('EhrHelp beforeunload unsaved', unsaved)
     if (unsaved) {
       // according to specs use preventDefault too.
       e.preventDefault()

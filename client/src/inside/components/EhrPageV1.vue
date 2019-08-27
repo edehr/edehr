@@ -1,9 +1,10 @@
 <template lang="pug">
   div
     ehr-panel-header {{ uiProps.pageTitle }}
-      v2-control(slot="controls")
-      <!--div(slot="controls", v-show="showPageFormControls")-->
-        <!--ehr-edit-controls(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey")-->
+      div(slot="controls")
+        v2-control
+        div(v-show="showPageFormControls")
+          ehr-edit-controls(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
     ehr-panel-content
       div(class="region ehr-page-content")
         ehr-page-form(v-if="uiProps.hasForm", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey",)
@@ -20,7 +21,6 @@ import V2Control from './page/V2Control'
 
 import EhrPageTable from '../components/EhrPageTable'
 import EhrPageForm from '../components/EhrPageForm.vue'
-import EhrHelp from '../../helpers/ehr-helper'
 import { getPageDefinition } from '../../helpers/ehr-defs'
 
 export default {
@@ -35,11 +35,11 @@ export default {
   },
   data: function () {
     return {
-      ehrHelp: undefined
     }
   },
   props: {
-    pageDataKey: { type: String }
+    pageDataKey: { type: String },
+    ehrHelp: { type: Object }
   },
   computed: {
     uiProps () {
@@ -56,15 +56,6 @@ export default {
       return this.ehrHelp.showPageFormControls()
     }
   },
-  created () {
-    this.ehrHelp = new EhrHelp(this, this.$store, this.pageDataKey, this.uiProps)
-  },
-  beforeRouteLeave (to, from, next) {
-    this.ehrHelp.beforeRouteLeave(to, from, next)
-  },
-  beforeDestroy: function () {
-    this.ehrHelp.beforeDestroy(this.pageDataKey)
-  }
 }
 </script>
 
