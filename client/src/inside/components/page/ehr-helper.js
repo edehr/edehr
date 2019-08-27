@@ -201,14 +201,14 @@ export default class EhrHelpV2 {
         if (dbData) {
           dbData.forEach((dbRow) => {
             let dataRow = JSON.parse(JSON.stringify(rowTemplate)) // deep copy the array
-            console.log('dbRow', dbRow)
-            console.log('datarow', dataRow)
+            // console.log('dbRow', dbRow)
+            // console.log('datarow', dataRow)
             Object.values(dataRow).forEach((templateCell) => {
               // console.log('templateCell', templateCell)
               templateCell.stack.forEach((cell) => {
                 let val = dbRow[cell.key] || ''
                 cell.value = val
-                console.log('cell', cell)
+                // console.log('cell', cell)
               })
             })
             tableData.push(dataRow)

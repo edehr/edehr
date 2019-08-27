@@ -2,7 +2,6 @@
   div
     input(id="v2control", type="checkbox", v-model="inputVal")
     label(for="v2control") {{label}}
-
 </template>
 
 <script>
@@ -15,6 +14,9 @@ export default {
   computed: {
     label () {
       return 'Showing ' + (this.inputVal ? 'V2' : 'V1')
+    },
+    system () {
+      return this.$store.state.system.usingV2
     }
   },
   mounted: function () {
@@ -28,7 +30,3 @@ export default {
 
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

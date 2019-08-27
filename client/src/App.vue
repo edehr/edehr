@@ -25,11 +25,11 @@ export default {
       let restoring = false
       this.$store.commit('system/setLoading', true)
 
-      let usingV2 = localStorage.getItem('usingV2')
-      // console.log('App load localStorage  using v2', usingV2)
-      if (usingV2) {
-        this.$store.commit('system/setUseV2', usingV2)
-      }
+      let usingV2 = localStorage.getItem('usingV2') || false
+      console.log('App load localStorage  using v2', usingV2)
+      // if (usingV2) {
+      this.$store.commit('system/setUseV2', usingV2)
+      // }
 
       const _this = this
       _this

@@ -8,7 +8,8 @@ class StoreHelperWorker {
   }
 
   usingV2 () {
-    return this.shc.$store.state.system.usingV2
+    let v2 =  this.shc.$store.state.system.usingV2
+    return v2
   }
   /* **********   General  ************** */
 

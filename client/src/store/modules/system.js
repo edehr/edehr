@@ -23,9 +23,9 @@ const mutations = {
     state.isLoading = state.loadingCnt > 0
   },
   setUseV2: (state, value) => {
-    localStorage.setItem('usingV2', value)
-    state.usingV2 = value
-    // console.log('System store set using v2', value)
+    let isTrue = (value === true || value === 'true')
+    localStorage.setItem('usingV2', isTrue)
+    state.usingV2 = isTrue
   },
   setEditing: (state, isEditing) => {
     state.isEditing = isEditing

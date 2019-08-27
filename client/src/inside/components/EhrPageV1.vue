@@ -1,9 +1,10 @@
 <template lang="pug">
   div
     ehr-panel-header {{ uiProps.pageTitle }}
-      v2-control(slot="controls")
-      <!--div(slot="controls", v-show="showPageFormControls")-->
-        <!--ehr-edit-controls(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey")-->
+      div(slot="controls")
+        v2-control
+        div(v-show="showPageFormControls")
+          ehr-edit-controls(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
     ehr-panel-content
       div(class="region ehr-page-content")
         ehr-page-form(v-if="uiProps.hasForm", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey",)
