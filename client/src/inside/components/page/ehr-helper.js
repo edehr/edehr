@@ -24,6 +24,7 @@ const dbDelta = false
 const dbPageForm = false
 const dbLoad = false
 const dbTable = false
+const dbLeave = true
 
 
 export default class EhrHelpV2 {

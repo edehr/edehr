@@ -20,6 +20,7 @@ import EhrPageV1 from '../components/EhrPageV1'
 import EhrPage from '../components/page/EhrPage'
 import EhrHelp from '../../helpers/ehr-helper'
 import EhrHelpV2 from '../components/page/ehr-helper'
+import EhrDefs from '../../helpers/ehr-defs-grid'
 import { getPageDefinition } from '../../helpers/ehr-defs'
 
 export default {
@@ -37,12 +38,11 @@ export default {
       return getPageDefinition(this.pageDataKey)
     },
     isV2 () {
-      return this.$store.state.system.usingV2
+      return EhrDefs.isPageV2(this.pageKey)
     }
   },
   created () {
-    let v2 = this.$store.state.system.usingV2
-    if (v2) {
+    if (this.isV2) {
       this.ehrHelp = new EhrHelpV2(this, this.$store, this.pageDataKey, this.uiProps)
     } else {
       this.ehrHelp = new EhrHelp(this, this.$store, this.pageDataKey, this.uiProps)
