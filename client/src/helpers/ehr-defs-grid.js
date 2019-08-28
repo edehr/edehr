@@ -1,4 +1,5 @@
 import EhrTypes from './ehr-types'
+import StoreHelper from './store-helper'
 // import { setApiError } from './ehr-utils'
 // import CV1 from '../inside/defs/current-visit-1'
 // import CV2 from '../inside/defs/current-visit-2'
@@ -20,6 +21,14 @@ class EhrDefsWorker {
     this.pageDefs = pageDefs
     console.log('construct V2 defs', this.pageDefs)
   }
+  isPageV2 (pageKey) {
+    let result = false
+    if (StoreHelper.usingV2()) {
+      result = this.pageDefs[pageKey]  !== undefined
+    }
+    return result
+  }
+
   getPageDefinition (pageKey) {
     let pd =  this.pageDefs[pageKey]
     return pd
