@@ -9,6 +9,7 @@
         span {{assetName()}}
     div(v-else-if="isType('spacer')", class="label_wrapper") <!--class="spacer"-->
       div ' &nbsp; '
+    hr(v-else-if="isType('horizontal')")
 
 
     div(v-else-if="isType('calculatedValue')", class="computed_wrapper")

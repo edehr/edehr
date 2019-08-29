@@ -1,34 +1,106 @@
-const EhrShortForms = {
+import EhrTypes from '../../client/src/helpers/ehr-types'
+
+const Defs = {
   // 'inputType': 'record_header'
   recordHeader: [
     {
       elementKey: 'name',
-      // 'formIndex': '2',
       inputType: 'text',
       label: 'Name',
       tableLabel: 'Header',
-      tableColumn: '1',
-      // 'fqn': 'testTable.record_header'
     },
     {
       elementKey: 'profession',
       inputType: 'text',
       label: 'Profession',
-      tableColumn: '1',
+      
     },
     {
       elementKey: 'day',
       inputType: 'day',
       label: 'Day',
-      tableColumn: '1',
+      
     },
     {
       elementKey: 'time',
       inputType: 'time',
       label: 'Time',
-      tableColumn: '1',
+      
+    },
+    {
+      elementKey: 'horizontal',
+      inputType: 'horizontal',
     }
+  ],
+
+  checkBoxTextSpacer: [],
+  checkBoxDate: [
+    {
+      inputType: 'checkbox',
+    },
+    {
+      inputType: 'date',
+    },
+    { inputType: 'spacer'}
+  ],
+  textDate: [
+    {
+      inputType: 'text',
+    },
+    {
+      inputType: 'date',
+    },
+    { inputType: 'spacer'}
   ]
 }
+
+class EhrShortFormHelper {
+  preprocess (entry, postEntries) {
+    if (entry.inputType === EhrTypes.shortFormTypes.recordHeader) {
+      this.recHdr(entry, postEntries)
+    }
+    if (entry.inputType === EhrTypes.shortFormTypes.checkBoxDate) {
+      this.withDate(entry, postEntries, Defs.checkBoxDate)
+    }
+    if (entry.inputType === EhrTypes.shortFormTypes.textDate) {
+      this.withDate(entry, postEntries, Defs.textDate)
+    }
+
+  }
+
+  recHdr (entry, postEntries) {
+    console.log('preprocess record header ', entry)
+    let toAdd = JSON.parse(JSON.stringify(Defs.recordHeader))
+    toAdd.forEach((e) => {
+      e.pN = entry.pN
+      e.fN = entry.fN
+      e.gN = entry.gN
+      e.sgN = entry.sgN
+      e.tableColumn = entry.tableColumn
+      postEntries.push(e)
+    })
+  }
+
+  withDate (entry, postEntries, defs) {
+    console.log('preprocess input with date ', entry)
+    let toAdd = JSON.parse(JSON.stringify(defs))
+    let main = toAdd[0]
+    let date = toAdd[1]
+    main.elementKey = entry.elementKey
+    date.elementKey = entry.elementKey + 'Date'
+    toAdd.forEach((e) => {
+      e.pN = entry.pN
+      e.fN = entry.fN
+      e.gN = entry.gN
+      e.sgN = entry.sgN
+      e.tableColumn = entry.tableColumn
+      e.label = entry.label
+      e.tableLabel = entry.tableLabel
+      postEntries.push(e)
+    })
+  }
+
+}
+const EhrShortForms = new EhrShortFormHelper()
 
 module.exports = EhrShortForms

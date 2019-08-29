@@ -1,9 +1,9 @@
 import EhrTypes from '../../client/src/helpers/ehr-types'
+import EhrShortForms from './ehr-short-forms'
 
 const rawHelper = require('./helps')
 const moment = require('moment')
 const assert = require('assert').strict
-const EhrShortForms = require('./ehr-short-forms')
 const dbug = false
 
 const PAGE_INPUT_TYPE = EhrTypes.inputTypes.page
@@ -115,19 +115,7 @@ class RawInputToDef {
     let postEntries = []
     entries.forEach(entry => {
       if (SHORT_FORMS.indexOf(entry.inputType) >= 0) {
-        if (entry.inputType === EhrTypes.shortFormTypes.recordHeader) {
-          console.log('preprocess entry ', entry)
-          let toAdd = JSON.parse(JSON.stringify(EhrShortForms.recordHeader))
-          toAdd.forEach( (e) => {
-            e.pN = entry.pN
-            e.fN = entry.fN
-            e.gN = entry.gN
-            e.sgN = entry.sgN
-            postEntries.push(e)
-          })
-        }
-
-
+        EhrShortForms.preprocess(entry, postEntries)
       } else {
         // entry is a regular element
         postEntries.push(entry)

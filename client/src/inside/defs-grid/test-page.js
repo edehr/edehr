@@ -242,6 +242,62 @@ export default function () {
           formIndex: '3',
           inputType: 'text',
           label: 'Name',
+          tableLabel: 'Header',
+          fqn: 'testPage.name'
+        },
+        {
+          elementKey: 'profession',
+          formIndex: '3',
+          inputType: 'text',
+          label: 'Profession',
+          fqn: 'testPage.profession'
+        },
+        {
+          elementKey: 'day',
+          formIndex: '3',
+          inputType: 'day',
+          label: 'Day',
+          fqn: 'testPage.day'
+        },
+        {
+          elementKey: 'time',
+          formIndex: '3',
+          inputType: 'time',
+          label: 'Time',
+          fqn: 'testPage.time'
+        },
+        {
+          elementKey: 'horizontal',
+          formIndex: '3',
+          inputType: 'horizontal',
+          fqn: 'testPage.horizontal'
+        },
+        {
+          elementKey: 'textDate',
+          formIndex: '3',
+          inputType: 'text',
+          label: 'TextDate',
+          fqn: 'testPage.textDate'
+        },
+        {
+          elementKey: 'textDateDate',
+          formIndex: '3',
+          inputType: 'date',
+          label: 'TextDate',
+          fqn: 'testPage.textDateDate'
+        },
+        {
+          elementKey: 'spacer32',
+          formIndex: '3',
+          inputType: 'spacer',
+          label: 'TextDate',
+          fqn: 'testPage.spacer32'
+        },
+        {
+          elementKey: 'name',
+          formIndex: '3',
+          inputType: 'text',
+          label: 'Name',
           fqn: 'testPage.name'
         },
         {
@@ -252,7 +308,7 @@ export default function () {
           fqn: 'testPage.place'
         }
       ],
-      generated: '2019-08-25T14:45:46-07:00',
+      generated: '2019-08-29T08:19:00-07:00',
       pageElements: {
         form1: {
           elementKey: 'form1',
@@ -281,14 +337,14 @@ export default function () {
               gChildren: [
                 {
                   label: 'subgroup 1',
-                  elementKey: 'subgroup27',
+                  elementKey: 'subgroup42',
                   sgChildren: [
                     'pcheckset'
                   ]
                 },
                 {
                   label: 'subgroup 2',
-                  elementKey: 'subgroup28',
+                  elementKey: 'subgroup43',
                   sgChildren: [
                     'dayValue',
                     'timeValue',
@@ -298,7 +354,7 @@ export default function () {
                 },
                 {
                   label: 'subgroup 3',
-                  elementKey: 'subgroup29',
+                  elementKey: 'subgroup44',
                   sgChildren: [
                     'pcheckbox2',
                     'ptext2',
@@ -365,6 +421,14 @@ export default function () {
               label: 'A group label',
               gIndex: '1',
               gChildren: [
+                'name',
+                'profession',
+                'day',
+                'time',
+                'horizontal',
+                'textDate',
+                'textDateDate',
+                'spacer32',
                 'name',
                 'place'
               ]
@@ -664,11 +728,99 @@ export default function () {
           fqn: 'testTable.time'
         },
         {
+          elementKey: 'horizontal',
+          formIndex: '2',
+          inputType: 'horizontal',
+          tableColumn: '1',
+          fqn: 'testTable.horizontal'
+        },
+        {
+          elementKey: 'cd1',
+          formIndex: '2',
+          inputType: 'checkbox',
+          label: 'C D 1',
+          tableColumn: '2',
+          tableLabel: 'TDate',
+          fqn: 'testTable.cd1'
+        },
+        {
+          elementKey: 'cd1Date',
+          formIndex: '2',
+          inputType: 'date',
+          label: 'C D 1',
+          tableColumn: '2',
+          tableLabel: 'TDate',
+          fqn: 'testTable.cd1Date'
+        },
+        {
+          elementKey: 'spacer38',
+          formIndex: '2',
+          inputType: 'spacer',
+          label: 'C D 1',
+          tableColumn: '2',
+          tableLabel: 'TDate',
+          fqn: 'testTable.spacer38'
+        },
+        {
+          elementKey: 'cd2',
+          formIndex: '2',
+          inputType: 'checkbox',
+          label: 'C D 2',
+          tableColumn: '3',
+          tableLabel: 'TDate',
+          fqn: 'testTable.cd2'
+        },
+        {
+          elementKey: 'cd2Date',
+          formIndex: '2',
+          inputType: 'date',
+          label: 'C D 2',
+          tableColumn: '3',
+          tableLabel: 'TDate',
+          fqn: 'testTable.cd2Date'
+        },
+        {
+          elementKey: 'spacer39',
+          formIndex: '2',
+          inputType: 'spacer',
+          label: 'C D 2',
+          tableColumn: '3',
+          tableLabel: 'TDate',
+          fqn: 'testTable.spacer39'
+        },
+        {
+          elementKey: 'td1',
+          formIndex: '2',
+          inputType: 'text',
+          label: 'TextDate',
+          tableColumn: '4',
+          tableLabel: 'TDate',
+          fqn: 'testTable.td1'
+        },
+        {
+          elementKey: 'td1Date',
+          formIndex: '2',
+          inputType: 'date',
+          label: 'TextDate',
+          tableColumn: '4',
+          tableLabel: 'TDate',
+          fqn: 'testTable.td1Date'
+        },
+        {
+          elementKey: 'spacer40',
+          formIndex: '2',
+          inputType: 'spacer',
+          label: 'TextDate',
+          tableColumn: '4',
+          tableLabel: 'TDate',
+          fqn: 'testTable.spacer40'
+        },
+        {
           elementKey: 'referralName',
           formIndex: '2',
           inputType: 'text',
           label: 'Referral name',
-          tableColumn: '3',
+          tableColumn: '5',
           tableLabel: 'Referral',
           fqn: 'testTable.referralName'
         },
@@ -677,7 +829,7 @@ export default function () {
           formIndex: '2',
           inputType: 'text',
           label: 'Referral profession',
-          tableColumn: '3',
+          tableColumn: '5',
           fqn: 'testTable.referralProfession'
         },
         {
@@ -692,7 +844,7 @@ export default function () {
           formIndex: '2',
           inputType: 'date',
           label: 'Appointment date',
-          tableColumn: '4',
+          tableColumn: '6',
           tableLabel: 'Appointment',
           fqn: 'testTable.appointmentDate'
         },
@@ -701,7 +853,7 @@ export default function () {
           formIndex: '2',
           inputType: 'time',
           label: 'Appointment time',
-          tableColumn: '4',
+          tableColumn: '6',
           fqn: 'testTable.appointmentTime'
         },
         {
@@ -717,12 +869,12 @@ export default function () {
               text: 'Discharged'
             }
           ],
-          tableColumn: '5',
+          tableColumn: '7',
           tableLabel: 'Status',
           fqn: 'testTable.status'
         }
       ],
-      generated: '2019-08-25T14:45:46-07:00',
+      generated: '2019-08-29T08:19:00-07:00',
       pageElements: {
         table1: {
           elementKey: 'table1',
@@ -858,14 +1010,14 @@ export default function () {
                 gChildren: [
                   {
                     label: 'subgroup 1',
-                    elementKey: 'subgroup30',
+                    elementKey: 'subgroup45',
                     sgChildren: [
                       'e10'
                     ]
                   },
                   {
                     label: 'subgroup 2',
-                    elementKey: 'subgroup31',
+                    elementKey: 'subgroup46',
                     sgChildren: [
                       'dayValue',
                       'timeValue',
@@ -875,7 +1027,7 @@ export default function () {
                   },
                   {
                     label: 'subgroup 3',
-                    elementKey: 'subgroup32',
+                    elementKey: 'subgroup47',
                     sgChildren: [
                       'g4',
                       'g5',
@@ -918,7 +1070,7 @@ export default function () {
           tableKey: 'stacked',
           isTable: true,
           label: 'Stacked table',
-          addButtonText: 'Add a referral',
+          addButtonText: 'Add a stacked row',
           ehr_list: [
             {
               label: 'Header',
@@ -927,12 +1079,40 @@ export default function () {
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                'horizontal'
+              ]
+            },
+            {
+              label: 'TDate',
+              ehr_list_index: '2',
+              items: [
+                'cd1',
+                'cd1Date',
+                'spacer38'
+              ]
+            },
+            {
+              label: 'TDate',
+              ehr_list_index: '3',
+              items: [
+                'cd2',
+                'cd2Date',
+                'spacer39'
+              ]
+            },
+            {
+              label: 'TDate',
+              ehr_list_index: '4',
+              items: [
+                'td1',
+                'td1Date',
+                'spacer40'
               ]
             },
             {
               label: 'Referral',
-              ehr_list_index: '3',
+              ehr_list_index: '5',
               items: [
                 'referralName',
                 'referralProfession'
@@ -940,7 +1120,7 @@ export default function () {
             },
             {
               label: 'Appointment',
-              ehr_list_index: '4',
+              ehr_list_index: '6',
               items: [
                 'appointmentDate',
                 'appointmentTime'
@@ -948,7 +1128,7 @@ export default function () {
             },
             {
               label: 'Status',
-              ehr_list_index: '5',
+              ehr_list_index: '7',
               items: [
                 'status'
               ]
@@ -957,7 +1137,7 @@ export default function () {
           form: {
             elementKey: 'stacked',
             label: 'Stacked table',
-            addButtonText: 'Add a referral',
+            addButtonText: 'Add a stacked row',
             formKey: 'stacked',
             ehr_groups: [
               {
@@ -966,11 +1146,26 @@ export default function () {
                   'name',
                   'profession',
                   'day',
-                  'time'
+                  'time',
+                  'horizontal'
                 ]
               },
               {
                 gIndex: '2',
+                gChildren: [
+                  'cd1',
+                  'cd1Date',
+                  'spacer38',
+                  'cd2',
+                  'cd2Date',
+                  'spacer39',
+                  'td1',
+                  'td1Date',
+                  'spacer40'
+                ]
+              },
+              {
+                gIndex: '3',
                 gChildren: [
                   'referralName',
                   'referralProfession',
@@ -986,6 +1181,12 @@ export default function () {
               profession: '',
               day: '',
               time: '',
+              cd1: '',
+              cd1Date: '',
+              cd2: '',
+              cd2Date: '',
+              td1: '',
+              td1Date: '',
               referralName: '',
               referralProfession: '',
               appointmentDate: '',

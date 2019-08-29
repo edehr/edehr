@@ -572,7 +572,7 @@ export default function () {
               gIndex: '1',
               gChildren: [
                 {
-                  elementKey: 'subgroup17',
+                  elementKey: 'subgroup27',
                   sgChildren: []
                 },
                 'diet',
@@ -778,7 +778,209 @@ export default function () {
       pIndex: '6',
       isV2: true,
       hasGridForm: true,
-      pageChildren: [],
+      pageChildren: [
+        {
+          elementKey: 'hepA',
+          formIndex: '1',
+          inputType: 'checkbox',
+          label: 'Hep A',
+          fqn: 'immunization.hepA'
+        },
+        {
+          elementKey: 'hepADate',
+          formIndex: '1',
+          inputType: 'date',
+          label: 'Hep A',
+          fqn: 'immunization.hepADate'
+        },
+        {
+          elementKey: 'spacer13',
+          formIndex: '1',
+          inputType: 'spacer',
+          label: 'Hep A',
+          fqn: 'immunization.spacer13'
+        },
+        {
+          elementKey: 'hepB',
+          formIndex: '1',
+          inputType: 'checkbox',
+          label: 'Hep B',
+          fqn: 'immunization.hepB'
+        },
+        {
+          elementKey: 'hepBDate',
+          formIndex: '1',
+          inputType: 'date',
+          label: 'Hep B',
+          fqn: 'immunization.hepBDate'
+        },
+        {
+          elementKey: 'spacer14',
+          formIndex: '1',
+          inputType: 'spacer',
+          label: 'Hep B',
+          fqn: 'immunization.spacer14'
+        },
+        {
+          elementKey: 'mmr',
+          formIndex: '1',
+          inputType: 'checkbox',
+          label: 'MMR',
+          fqn: 'immunization.mmr'
+        },
+        {
+          elementKey: 'mmrDate',
+          formIndex: '1',
+          inputType: 'date',
+          label: 'MMR',
+          fqn: 'immunization.mmrDate'
+        },
+        {
+          elementKey: 'spacer15',
+          formIndex: '1',
+          inputType: 'spacer',
+          label: 'MMR',
+          fqn: 'immunization.spacer15'
+        },
+        {
+          elementKey: 'pneumococcal',
+          formIndex: '1',
+          inputType: 'checkbox',
+          label: 'Pneumococcal',
+          fqn: 'immunization.pneumococcal'
+        },
+        {
+          elementKey: 'pneumococcalDate',
+          formIndex: '1',
+          inputType: 'date',
+          label: 'Pneumococcal',
+          fqn: 'immunization.pneumococcalDate'
+        },
+        {
+          elementKey: 'spacer16',
+          formIndex: '1',
+          inputType: 'spacer',
+          label: 'Pneumococcal',
+          fqn: 'immunization.spacer16'
+        },
+        {
+          elementKey: 'polioDiptheriaPertussis',
+          formIndex: '1',
+          inputType: 'checkbox',
+          label: 'Polio diptheria pertussis',
+          fqn: 'immunization.polioDiptheriaPertussis'
+        },
+        {
+          elementKey: 'polioDiptheriaPertussisDate',
+          formIndex: '1',
+          inputType: 'date',
+          label: 'Polio diptheria pertussis',
+          fqn: 'immunization.polioDiptheriaPertussisDate'
+        },
+        {
+          elementKey: 'spacer17',
+          formIndex: '1',
+          inputType: 'spacer',
+          label: 'Polio diptheria pertussis',
+          fqn: 'immunization.spacer17'
+        },
+        {
+          elementKey: 'tb',
+          formIndex: '1',
+          inputType: 'checkbox',
+          label: 'TB',
+          fqn: 'immunization.tb'
+        },
+        {
+          elementKey: 'tbDate',
+          formIndex: '1',
+          inputType: 'date',
+          label: 'TB',
+          fqn: 'immunization.tbDate'
+        },
+        {
+          elementKey: 'spacer18',
+          formIndex: '1',
+          inputType: 'spacer',
+          label: 'TB',
+          fqn: 'immunization.spacer18'
+        },
+        {
+          elementKey: 'tetanus',
+          formIndex: '1',
+          inputType: 'checkbox',
+          label: 'Tetanus',
+          fqn: 'immunization.tetanus'
+        },
+        {
+          elementKey: 'tetanusDate',
+          formIndex: '1',
+          inputType: 'date',
+          label: 'Tetanus',
+          fqn: 'immunization.tetanusDate'
+        },
+        {
+          elementKey: 'spacer19',
+          formIndex: '1',
+          inputType: 'spacer',
+          label: 'Tetanus',
+          fqn: 'immunization.spacer19'
+        },
+        {
+          elementKey: 'other1',
+          formIndex: '1',
+          inputType: 'text',
+          fqn: 'immunization.other1'
+        },
+        {
+          elementKey: 'other1Date',
+          formIndex: '1',
+          inputType: 'date',
+          fqn: 'immunization.other1Date'
+        },
+        {
+          elementKey: 'spacer20',
+          formIndex: '1',
+          inputType: 'spacer',
+          fqn: 'immunization.spacer20'
+        },
+        {
+          elementKey: 'other2',
+          formIndex: '1',
+          inputType: 'text',
+          fqn: 'immunization.other2'
+        },
+        {
+          elementKey: 'other2Date',
+          formIndex: '1',
+          inputType: 'date',
+          fqn: 'immunization.other2Date'
+        },
+        {
+          elementKey: 'spacer21',
+          formIndex: '1',
+          inputType: 'spacer',
+          fqn: 'immunization.spacer21'
+        },
+        {
+          elementKey: 'other3',
+          formIndex: '1',
+          inputType: 'text',
+          fqn: 'immunization.other3'
+        },
+        {
+          elementKey: 'other3Date',
+          formIndex: '1',
+          inputType: 'date',
+          fqn: 'immunization.other3Date'
+        },
+        {
+          elementKey: 'spacer22',
+          formIndex: '1',
+          inputType: 'spacer',
+          fqn: 'immunization.spacer22'
+        }
+      ],
       generated: '2019-08-25T20:31:51-07:00',
       pageElements: {
         page_form11: {
@@ -788,7 +990,38 @@ export default function () {
           ehr_groups: [
             {
               gIndex: '1',
-              gChildren: []
+              gChildren: [
+                'hepA',
+                'hepADate',
+                'spacer13',
+                'hepB',
+                'hepBDate',
+                'spacer14',
+                'mmr',
+                'mmrDate',
+                'spacer15',
+                'pneumococcal',
+                'pneumococcalDate',
+                'spacer16',
+                'polioDiptheriaPertussis',
+                'polioDiptheriaPertussisDate',
+                'spacer17',
+                'tb',
+                'tbDate',
+                'spacer18',
+                'tetanus',
+                'tetanusDate',
+                'spacer19',
+                'other1',
+                'other1Date',
+                'spacer20',
+                'other2',
+                'other2Date',
+                'spacer21',
+                'other3',
+                'other3Date',
+                'spacer22'
+              ]
             }
           ]
         }
@@ -811,9 +1044,9 @@ export default function () {
       ],
       generated: '2019-08-25T20:31:51-07:00',
       pageElements: {
-        page_form13: {
-          elementKey: 'page_form13',
-          formKey: 'page_form13',
+        page_form23: {
+          elementKey: 'page_form23',
+          formKey: 'page_form23',
           isPageForm: true,
           ehr_groups: [
             {
@@ -852,9 +1085,9 @@ export default function () {
       ],
       generated: '2019-08-25T20:31:51-07:00',
       pageElements: {
-        page_form15: {
-          elementKey: 'page_form15',
-          formKey: 'page_form15',
+        page_form25: {
+          elementKey: 'page_form25',
+          formKey: 'page_form25',
           isPageForm: true,
           ehr_groups: [
             {
@@ -939,9 +1172,9 @@ export default function () {
       ],
       generated: '2019-08-25T20:31:51-07:00',
       pageElements: {
-        page_form16: {
-          elementKey: 'page_form16',
-          formKey: 'page_form16',
+        page_form26: {
+          elementKey: 'page_form26',
+          formKey: 'page_form26',
           isPageForm: true,
           ehr_groups: [
             {
