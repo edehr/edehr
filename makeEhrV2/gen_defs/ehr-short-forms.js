@@ -26,10 +26,6 @@ const Defs = {
       inputType: 'time',
       label: 'Time',
       
-    },
-    {
-      elementKey: 'horizontal',
-      inputType: 'horizontal',
     }
   ],
 
