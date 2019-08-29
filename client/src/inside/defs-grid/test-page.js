@@ -281,14 +281,14 @@ export default function () {
               gChildren: [
                 {
                   label: 'subgroup 1',
-                  elementKey: 'subgroup20',
+                  elementKey: 'subgroup27',
                   sgChildren: [
                     'pcheckset'
                   ]
                 },
                 {
                   label: 'subgroup 2',
-                  elementKey: 'subgroup21',
+                  elementKey: 'subgroup28',
                   sgChildren: [
                     'dayValue',
                     'timeValue',
@@ -298,7 +298,7 @@ export default function () {
                 },
                 {
                   label: 'subgroup 3',
-                  elementKey: 'subgroup22',
+                  elementKey: 'subgroup29',
                   sgChildren: [
                     'pcheckbox2',
                     'ptext2',
@@ -631,11 +631,37 @@ export default function () {
           fqn: 'testTable.e11'
         },
         {
-          elementKey: 'record_header',
+          elementKey: 'name',
           formIndex: '2',
-          inputType: 'record_header',
+          inputType: 'text',
+          label: 'Name',
           tableColumn: '1',
-          fqn: 'testTable.record_header'
+          tableLabel: 'Header',
+          fqn: 'testTable.name'
+        },
+        {
+          elementKey: 'profession',
+          formIndex: '2',
+          inputType: 'text',
+          label: 'Profession',
+          tableColumn: '1',
+          fqn: 'testTable.profession'
+        },
+        {
+          elementKey: 'day',
+          formIndex: '2',
+          inputType: 'day',
+          label: 'Day',
+          tableColumn: '1',
+          fqn: 'testTable.day'
+        },
+        {
+          elementKey: 'time',
+          formIndex: '2',
+          inputType: 'time',
+          label: 'Time',
+          tableColumn: '1',
+          fqn: 'testTable.time'
         },
         {
           elementKey: 'referralName',
@@ -832,14 +858,14 @@ export default function () {
                 gChildren: [
                   {
                     label: 'subgroup 1',
-                    elementKey: 'subgroup27',
+                    elementKey: 'subgroup30',
                     sgChildren: [
                       'e10'
                     ]
                   },
                   {
                     label: 'subgroup 2',
-                    elementKey: 'subgroup28',
+                    elementKey: 'subgroup31',
                     sgChildren: [
                       'dayValue',
                       'timeValue',
@@ -849,7 +875,7 @@ export default function () {
                   },
                   {
                     label: 'subgroup 3',
-                    elementKey: 'subgroup29',
+                    elementKey: 'subgroup32',
                     sgChildren: [
                       'g4',
                       'g5',
@@ -895,9 +921,13 @@ export default function () {
           addButtonText: 'Add a referral',
           ehr_list: [
             {
+              label: 'Header',
               ehr_list_index: '1',
               items: [
-                'record_header'
+                'name',
+                'profession',
+                'day',
+                'time'
               ]
             },
             {
@@ -933,7 +963,10 @@ export default function () {
               {
                 gIndex: '1',
                 gChildren: [
-                  'record_header'
+                  'name',
+                  'profession',
+                  'day',
+                  'time'
                 ]
               },
               {
@@ -949,6 +982,10 @@ export default function () {
               }
             ],
             ehr_data: {
+              name: '',
+              profession: '',
+              day: '',
+              time: '',
               referralName: '',
               referralProfession: '',
               appointmentDate: '',

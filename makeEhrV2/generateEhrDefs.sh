@@ -5,7 +5,7 @@ set -e
 set -o pipefail
 
 # run the generator
-node generate-ehr-defs
+node gen_defs/index.js
 
 # place the generated content into the client
 cp generated/ehrDefs/*.js ../client/src/inside/defs-grid/

@@ -2,7 +2,7 @@ const fs = require('fs')
 const md5Hex = require('md5-hex')
 const moment = require('moment')
 const pathUtil = require('path')
-const getDefinitions = require('./generators/input-to-def')
+const getDefinitions = require('./input-to-def')
 const destination = pathUtil.join(process.cwd(), 'generated', 'ehrDefs')
 const hashMapFile = pathUtil.join(process.cwd(), 'hashMapFile.json')
 
@@ -50,7 +50,7 @@ function processFile (contents, fName, lastModifiedTime) {
   var pages = getDefinitions(contents, lastModifiedTime)
   var results = JSON.stringify(pages, null, 2)
   results = results.replace(/'/g, '\\\'')
-  results = results.replace(/"/g, "'")
+  results = results.replace(/"/g, '\'')
   results = _fixBooleans(results)
   var modDef = []
   // modDef.push('/* eslint-disable quotes */')

@@ -559,60 +559,6 @@ export default function () {
           inputType: 'textarea',
           label: 'Hobbies',
           fqn: 'psychosocial.hobbies'
-        },
-        {
-          elementKey: 'exercise',
-          dataCaseStudy: '< 1 day/week',
-          formIndex: '1',
-          inputType: 'checkbox_text_spacer',
-          label: 'Exercise',
-          fqn: 'psychosocial.exercise'
-        },
-        {
-          elementKey: 'caffeineUse',
-          dataCaseStudy: '1-2 cups/day',
-          formIndex: '1',
-          inputType: 'checkbox_text_spacer',
-          label: 'Caffeine use',
-          fqn: 'psychosocial.caffeineUse'
-        },
-        {
-          elementKey: 'tobaccoUse',
-          dataCaseStudy: '1-2 cups/day',
-          formIndex: '1',
-          helperText: 'Have you used any tobacco products in the last 6 months?\nHave you used any tobacco products in the last 7 days?',
-          inputType: 'checkbox_text_spacer',
-          label: 'Tobacco use',
-          fqn: 'psychosocial.tobaccoUse',
-          helperHtml: '<p>Have you used any tobacco products in the last 6 months?</p>\n<p>Have you used any tobacco products in the last 7 days?</p>'
-        },
-        {
-          elementKey: 'cannabisUse',
-          formIndex: '1',
-          helperText: 'Have you used any cannabis products in the last 6 months?\nHave you used any cannabis products in the last 7 days?',
-          inputType: 'checkbox_text_spacer',
-          label: 'Cannabis use',
-          fqn: 'psychosocial.cannabisUse',
-          helperHtml: '<p>Have you used any cannabis products in the last 6 months?</p>\n<p>Have you used any cannabis products in the last 7 days?</p>'
-        },
-        {
-          elementKey: 'alcoholUse',
-          dataCaseStudy: 'Social',
-          formIndex: '1',
-          helperText: 'CAGE questionaire\nHave you ever felt that you should cut down on your drinking?\nHave you ever become annoyed by criticisms of your drinking?\nHave you ever felt guilty about your drinking?\nHave you ever had a morning eye opener to get rid of a hangover?',
-          inputType: 'checkbox_text_spacer',
-          label: 'Alcohol use',
-          fqn: 'psychosocial.alcoholUse',
-          helperHtml: '<p>CAGE questionaire</p>\n<p>Have you ever felt that you should cut down on your drinking?</p>\n<p>Have you ever become annoyed by criticisms of your drinking?</p>\n<p>Have you ever felt guilty about your drinking?</p>\n<p>Have you ever had a morning eye opener to get rid of a hangover?</p>'
-        },
-        {
-          elementKey: 'substanceUse',
-          formIndex: '1',
-          helperText: 'Have you used any substances in the last 6 months?\nHave you used any substances in the last 7 days?\nIf so, make notes about which ones.',
-          inputType: 'checkbox_text_spacer',
-          label: 'Substance use',
-          fqn: 'psychosocial.substanceUse',
-          helperHtml: '<p>Have you used any substances in the last 6 months?</p>\n<p>Have you used any substances in the last 7 days?</p>\n<p>If so, make notes about which ones.</p>'
         }
       ],
       generated: '2019-08-25T20:31:51-07:00',
@@ -626,15 +572,8 @@ export default function () {
               gIndex: '1',
               gChildren: [
                 {
-                  elementKey: 'subgroup9',
-                  sgChildren: [
-                    'exercise',
-                    'caffeineUse',
-                    'tobaccoUse',
-                    'cannabisUse',
-                    'alcoholUse',
-                    'substanceUse'
-                  ]
+                  elementKey: 'subgroup17',
+                  sgChildren: []
                 },
                 'diet',
                 'livingSituation',
@@ -721,9 +660,9 @@ export default function () {
       ],
       generated: '2019-08-25T20:31:51-07:00',
       pageElements: {
-        table_form10: {
-          elementKey: 'table_form10',
-          tableKey: 'table_form10',
+        table_form9: {
+          elementKey: 'table_form9',
+          tableKey: 'table_form9',
           isTable: true,
           addButtonText: 'Add a past surgery',
           ehr_list: [
@@ -747,9 +686,9 @@ export default function () {
             }
           ],
           form: {
-            elementKey: 'table_form10',
+            elementKey: 'table_form9',
             addButtonText: 'Add a past surgery',
-            formKey: 'table_form10',
+            formKey: 'table_form9',
             ehr_groups: [
               {
                 label: 'Past surgery',
@@ -768,9 +707,9 @@ export default function () {
             }
           }
         },
-        table_form11: {
-          elementKey: 'table_form11',
-          tableKey: 'table_form11',
+        table_form10: {
+          elementKey: 'table_form10',
+          tableKey: 'table_form10',
           isTable: true,
           addButtonText: 'Add a previous appointment',
           ehr_list: [
@@ -806,9 +745,9 @@ export default function () {
             }
           ],
           form: {
-            elementKey: 'table_form11',
+            elementKey: 'table_form10',
             addButtonText: 'Add a previous appointment',
-            formKey: 'table_form11',
+            formKey: 'table_form10',
             ehr_groups: [
               {
                 label: 'Previous admission',
@@ -839,103 +778,17 @@ export default function () {
       pIndex: '6',
       isV2: true,
       hasGridForm: true,
-      pageChildren: [
-        {
-          elementKey: 'hepA',
-          dependantOn: 'hepA',
-          formIndex: '1',
-          inputType: 'checkbox_date',
-          label: 'Hep A',
-          fqn: 'immunization.hepA'
-        },
-        {
-          elementKey: 'hepB',
-          dependantOn: 'hepB',
-          formIndex: '1',
-          inputType: 'checkbox_date',
-          label: 'Hep B',
-          fqn: 'immunization.hepB'
-        },
-        {
-          elementKey: 'mmr',
-          dependantOn: 'mmr',
-          formIndex: '1',
-          inputType: 'checkbox_date',
-          label: 'MMR',
-          fqn: 'immunization.mmr'
-        },
-        {
-          elementKey: 'pneumococcal',
-          dependantOn: 'pneumococcal',
-          formIndex: '1',
-          inputType: 'checkbox_date',
-          label: 'Pneumococcal',
-          fqn: 'immunization.pneumococcal'
-        },
-        {
-          elementKey: 'polioDiptheriaPertussis',
-          dependantOn: 'polioDiptheriaPertussis',
-          formIndex: '1',
-          inputType: 'checkbox_date',
-          label: 'Polio diptheria pertussis',
-          fqn: 'immunization.polioDiptheriaPertussis'
-        },
-        {
-          elementKey: 'tb',
-          dependantOn: 'tb',
-          formIndex: '1',
-          inputType: 'checkbox_date',
-          label: 'TB',
-          fqn: 'immunization.tb'
-        },
-        {
-          elementKey: 'tetanus',
-          dependantOn: 'tetanus',
-          formIndex: '1',
-          inputType: 'checkbox_date',
-          label: 'Tetanus',
-          fqn: 'immunization.tetanus'
-        },
-        {
-          elementKey: 'other1',
-          formIndex: '1',
-          inputType: 'text_date',
-          fqn: 'immunization.other1'
-        },
-        {
-          elementKey: 'other2',
-          formIndex: '1',
-          inputType: 'text_date',
-          fqn: 'immunization.other2'
-        },
-        {
-          elementKey: 'other3',
-          formIndex: '1',
-          inputType: 'text_date',
-          fqn: 'immunization.other3'
-        }
-      ],
+      pageChildren: [],
       generated: '2019-08-25T20:31:51-07:00',
       pageElements: {
-        page_form12: {
-          elementKey: 'page_form12',
-          formKey: 'page_form12',
+        page_form11: {
+          elementKey: 'page_form11',
+          formKey: 'page_form11',
           isPageForm: true,
           ehr_groups: [
             {
               gIndex: '1',
-              gChildren: [
-                'hepA',
-                'hepB',
-                'mmr',
-                'pneumococcal',
-                'polioDiptheriaPertussis',
-                'tb',
-                'tetanus',
-                'other1',
-                'other2',
-                'other3'
-              ]
+              gChildren: []
             }
           ]
         }
@@ -958,9 +811,9 @@ export default function () {
       ],
       generated: '2019-08-25T20:31:51-07:00',
       pageElements: {
-        page_form14: {
-          elementKey: 'page_form14',
-          formKey: 'page_form14',
+        page_form13: {
+          elementKey: 'page_form13',
+          formKey: 'page_form13',
           isPageForm: true,
           ehr_groups: [
             {
@@ -999,9 +852,9 @@ export default function () {
       ],
       generated: '2019-08-25T20:31:51-07:00',
       pageElements: {
-        page_form16: {
-          elementKey: 'page_form16',
-          formKey: 'page_form16',
+        page_form15: {
+          elementKey: 'page_form15',
+          formKey: 'page_form15',
           isPageForm: true,
           ehr_groups: [
             {
@@ -1086,9 +939,9 @@ export default function () {
       ],
       generated: '2019-08-25T20:31:51-07:00',
       pageElements: {
-        page_form17: {
-          elementKey: 'page_form17',
-          formKey: 'page_form17',
+        page_form16: {
+          elementKey: 'page_form16',
+          formKey: 'page_form16',
           isPageForm: true,
           ehr_groups: [
             {

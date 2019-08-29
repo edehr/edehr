@@ -51,4 +51,5 @@ EhrTypes.inputTypes = Object.assign({},
 )
 
 
-module.exports = EhrTypes
+//module.exports = EhrTypes
+export default EhrTypes

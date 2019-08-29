@@ -1,28 +1,24 @@
-'use strict'
+import EhrTypes from '../../client/src/helpers/ehr-types'
+
 const rawHelper = require('./helps')
 const moment = require('moment')
 const assert = require('assert').strict
-
+const EhrShortForms = require('./ehr-short-forms')
 const dbug = false
 
-const PAGE_INPUT_TYPE = 'page'
-const PAGE_FORM = 'page_form'
-const TABLE_FORM = 'table_form'
-const ehrGroup = 'ehr_group'
-const ehrSubgroup = 'ehr_subgroup'
+const PAGE_INPUT_TYPE = EhrTypes.inputTypes.page
+const PAGE_FORM = EhrTypes.inputTypes.page_form
+const TABLE_FORM = EhrTypes.inputTypes.table_form
+const ehrGroup = EhrTypes.inputTypes.group
+const ehrSubgroup = EhrTypes.inputTypes.subgroup
 
-const DATA_INPUT_TYPES = [
-  'text', 'textarea', 'checkbox', 'select', 'calculatedValue', 'checkset', 'date', 'day', 'time'
-]
+const DATA_INPUT_TYPES = Object.values(EhrTypes.dataInputTypes)
 
-const NONDATA_INPUT_TYPES = [
-  'form_label', 'spacer', 'assetLink'
-]
+const NONDATA_INPUT_TYPES = Object.values(EhrTypes.nondataInputType)
 
-const STRUCT_INPUT_TYPES = [
-  PAGE_FORM, TABLE_FORM, PAGE_INPUT_TYPE, ehrGroup, ehrSubgroup,
-  'record_header', 'checkbox_text_spacer', 'checkbox_date', 'text_date'
-]
+const STRUCT_INPUT_TYPES = Object.values(EhrTypes.structuralTypes)
+
+const SHORT_FORMS = Object.values(EhrTypes.shortFormTypes)
 
 const pageChildElementProperties = [
   'elementKey',
@@ -109,15 +105,41 @@ class RawInputToDef {
    */
   getDefinitions (contents, lastModifiedTime) {
     let entries = rawHelper._rawToEntries(contents, mlFields)
+    entries = this._preprocessEntries(entries)
+    entries = this._validateEntries(entries)
     let pages = this._groupByPages(entries)
     pages = this._toPages(pages, lastModifiedTime)
     return pages
   }
+  _preprocessEntries (entries) {
+    let postEntries = []
+    entries.forEach(entry => {
+      if (SHORT_FORMS.indexOf(entry.inputType) >= 0) {
+        if (entry.inputType === EhrTypes.shortFormTypes.recordHeader) {
+          console.log('preprocess entry ', entry)
+          let toAdd = JSON.parse(JSON.stringify(EhrShortForms.recordHeader))
+          toAdd.forEach( (e) => {
+            e.pN = entry.pN
+            e.fN = entry.fN
+            e.gN = entry.gN
+            e.sgN = entry.sgN
+            postEntries.push(e)
+          })
+        }
+
+
+      } else {
+        // entry is a regular element
+        postEntries.push(entry)
+      }
+    })
+    return postEntries
+  }
+
 
   _groupByPages (entries) {
     let pages = {}
     entries.forEach(entry => {
-      this._validateEntry(entry)
       if (entry.inputType === PAGE_INPUT_TYPE) {
         this._makePage(pages, entry)
       } else if (entry.inputType === PAGE_FORM) {
@@ -340,12 +362,21 @@ class RawInputToDef {
 
   /* *************** definition helpers ******** */
 
+  _validateEntries (entries) {
+    entries.forEach(entry => {
+      this._validateEntry(entry)
+    })
+    return entries
+  }
+
   _validateEntry (entry) {
     if (DATA_INPUT_TYPES.indexOf(entry.inputType) >= 0) {
       assert(entry.elementKey, 'Must have element key for input types', entry)
     } else if (NONDATA_INPUT_TYPES.indexOf(entry.inputType) >= 0) {
-      // OK
+      // OK  SHORT_FORMS
     } else if (STRUCT_INPUT_TYPES.indexOf(entry.inputType) >= 0) {
+      // OK
+    } else if (SHORT_FORMS.indexOf(entry.inputType) >= 0) {
       // OK
     } else {
       assert(false, 'This entry ' + JSON.stringify(entry)+  ' has an unsupported inputType')
