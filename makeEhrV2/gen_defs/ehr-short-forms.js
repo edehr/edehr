@@ -69,7 +69,7 @@ class EhrShortFormHelper {
   }
 
   recHdr (entry, postEntries) {
-    console.log('preprocess record header ', entry)
+    // console.log('preprocess record header ', entry)
     let toAdd = JSON.parse(JSON.stringify(Defs.recordHeader))
     toAdd.forEach((e) => {
       e.pN = entry.pN
@@ -82,7 +82,7 @@ class EhrShortFormHelper {
   }
 
   withDate (entry, postEntries, defs) {
-    console.log('preprocess input with date ', entry)
+    // console.log('preprocess input with date ', entry)
     let toAdd = JSON.parse(JSON.stringify(defs))
     let main = toAdd[0]
     let date = toAdd[1]

@@ -26,7 +26,8 @@ export default {
   },
   computed: {
     groupClass () {
-      return 'grid-left-to-right-3'
+      let css = this.group.formCss || 'grid-left-to-right-3'
+      return css
     }
   },
   methods: {

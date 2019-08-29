@@ -61,15 +61,17 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Height',
+          suffix: 'cm',
           fqn: 'demographics.height'
         },
         {
           elementKey: 'weight',
           dataCaseStudy: '63',
-          defaultValue: '63',
+          defaultValue: '49',
           formIndex: '1',
           inputType: 'text',
           label: 'Weight',
+          suffix: 'kg',
           fqn: 'demographics.weight'
         },
         {
@@ -393,7 +395,7 @@ export default function () {
           fqn: 'demographics.decisionMakerPhone'
         }
       ],
-      generated: '2019-08-29T08:46:43-07:00',
+      generated: '2019-08-29T16:17:55-07:00',
       pageElements: {
         page_form1: {
           elementKey: 'page_form1',
@@ -463,7 +465,7 @@ export default function () {
           fqn: 'allergies.checkbox'
         }
       ],
-      generated: '2019-08-29T08:46:43-07:00',
+      generated: '2019-08-29T16:17:55-07:00',
       pageElements: {
         page_form: {
           elementKey: 'page_form',
@@ -496,7 +498,7 @@ export default function () {
           fqn: 'medical.history'
         }
       ],
-      generated: '2019-08-29T08:46:43-07:00',
+      generated: '2019-08-29T16:17:55-07:00',
       pageElements: {
         page_form4: {
           elementKey: 'page_form4',
@@ -504,6 +506,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
+              formCss: 'full-width',
               gIndex: '1',
               gChildren: [
                 'history'
@@ -561,7 +564,7 @@ export default function () {
           fqn: 'psychosocial.hobbies'
         }
       ],
-      generated: '2019-08-29T08:46:43-07:00',
+      generated: '2019-08-29T16:17:55-07:00',
       pageElements: {
         page_form6: {
           elementKey: 'page_form6',
@@ -572,7 +575,7 @@ export default function () {
               gIndex: '1',
               gChildren: [
                 {
-                  elementKey: 'subgroup27',
+                  elementKey: 'subgroup28',
                   sgChildren: []
                 },
                 'diet',
@@ -658,7 +661,7 @@ export default function () {
           fqn: 'surgical.comments'
         }
       ],
-      generated: '2019-08-29T08:46:43-07:00',
+      generated: '2019-08-29T16:17:55-07:00',
       pageElements: {
         table_form9: {
           elementKey: 'table_form9',
@@ -756,7 +759,13 @@ export default function () {
                   'with',
                   'details',
                   'previousAdmissions',
-                  'previousAdmissionsDate',
+                  'previousAdmissionsDate'
+                ]
+              },
+              {
+                formCss: 'full-width',
+                gIndex: '2',
+                gChildren: [
                   'comments'
                 ]
               }
@@ -794,11 +803,11 @@ export default function () {
           fqn: 'immunization.hepADate'
         },
         {
-          elementKey: 'spacer13',
+          elementKey: 'spacer14',
           formIndex: '1',
           inputType: 'spacer',
           label: 'Hep A',
-          fqn: 'immunization.spacer13'
+          fqn: 'immunization.spacer14'
         },
         {
           elementKey: 'hepB',
@@ -815,11 +824,11 @@ export default function () {
           fqn: 'immunization.hepBDate'
         },
         {
-          elementKey: 'spacer14',
+          elementKey: 'spacer15',
           formIndex: '1',
           inputType: 'spacer',
           label: 'Hep B',
-          fqn: 'immunization.spacer14'
+          fqn: 'immunization.spacer15'
         },
         {
           elementKey: 'mmr',
@@ -836,11 +845,11 @@ export default function () {
           fqn: 'immunization.mmrDate'
         },
         {
-          elementKey: 'spacer15',
+          elementKey: 'spacer16',
           formIndex: '1',
           inputType: 'spacer',
           label: 'MMR',
-          fqn: 'immunization.spacer15'
+          fqn: 'immunization.spacer16'
         },
         {
           elementKey: 'pneumococcal',
@@ -857,11 +866,11 @@ export default function () {
           fqn: 'immunization.pneumococcalDate'
         },
         {
-          elementKey: 'spacer16',
+          elementKey: 'spacer17',
           formIndex: '1',
           inputType: 'spacer',
           label: 'Pneumococcal',
-          fqn: 'immunization.spacer16'
+          fqn: 'immunization.spacer17'
         },
         {
           elementKey: 'polioDiptheriaPertussis',
@@ -878,11 +887,11 @@ export default function () {
           fqn: 'immunization.polioDiptheriaPertussisDate'
         },
         {
-          elementKey: 'spacer17',
+          elementKey: 'spacer18',
           formIndex: '1',
           inputType: 'spacer',
           label: 'Polio diptheria pertussis',
-          fqn: 'immunization.spacer17'
+          fqn: 'immunization.spacer18'
         },
         {
           elementKey: 'tb',
@@ -899,11 +908,11 @@ export default function () {
           fqn: 'immunization.tbDate'
         },
         {
-          elementKey: 'spacer18',
+          elementKey: 'spacer19',
           formIndex: '1',
           inputType: 'spacer',
           label: 'TB',
-          fqn: 'immunization.spacer18'
+          fqn: 'immunization.spacer19'
         },
         {
           elementKey: 'tetanus',
@@ -920,11 +929,11 @@ export default function () {
           fqn: 'immunization.tetanusDate'
         },
         {
-          elementKey: 'spacer19',
+          elementKey: 'spacer20',
           formIndex: '1',
           inputType: 'spacer',
           label: 'Tetanus',
-          fqn: 'immunization.spacer19'
+          fqn: 'immunization.spacer20'
         },
         {
           elementKey: 'other1',
@@ -939,10 +948,10 @@ export default function () {
           fqn: 'immunization.other1Date'
         },
         {
-          elementKey: 'spacer20',
+          elementKey: 'spacer21',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'immunization.spacer20'
+          fqn: 'immunization.spacer21'
         },
         {
           elementKey: 'other2',
@@ -957,10 +966,10 @@ export default function () {
           fqn: 'immunization.other2Date'
         },
         {
-          elementKey: 'spacer21',
+          elementKey: 'spacer22',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'immunization.spacer21'
+          fqn: 'immunization.spacer22'
         },
         {
           elementKey: 'other3',
@@ -975,17 +984,17 @@ export default function () {
           fqn: 'immunization.other3Date'
         },
         {
-          elementKey: 'spacer22',
+          elementKey: 'spacer23',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'immunization.spacer22'
+          fqn: 'immunization.spacer23'
         }
       ],
-      generated: '2019-08-29T08:46:43-07:00',
+      generated: '2019-08-29T16:17:55-07:00',
       pageElements: {
-        page_form11: {
-          elementKey: 'page_form11',
-          formKey: 'page_form11',
+        page_form12: {
+          elementKey: 'page_form12',
+          formKey: 'page_form12',
           isPageForm: true,
           ehr_groups: [
             {
@@ -993,34 +1002,34 @@ export default function () {
               gChildren: [
                 'hepA',
                 'hepADate',
-                'spacer13',
+                'spacer14',
                 'hepB',
                 'hepBDate',
-                'spacer14',
+                'spacer15',
                 'mmr',
                 'mmrDate',
-                'spacer15',
+                'spacer16',
                 'pneumococcal',
                 'pneumococcalDate',
-                'spacer16',
+                'spacer17',
                 'polioDiptheriaPertussis',
                 'polioDiptheriaPertussisDate',
-                'spacer17',
+                'spacer18',
                 'tb',
                 'tbDate',
-                'spacer18',
+                'spacer19',
                 'tetanus',
                 'tetanusDate',
-                'spacer19',
+                'spacer20',
                 'other1',
                 'other1Date',
-                'spacer20',
+                'spacer21',
                 'other2',
                 'other2Date',
-                'spacer21',
+                'spacer22',
                 'other3',
                 'other3Date',
-                'spacer22'
+                'spacer23'
               ]
             }
           ]
@@ -1042,14 +1051,15 @@ export default function () {
           fqn: 'familyHistory.history'
         }
       ],
-      generated: '2019-08-29T08:46:43-07:00',
+      generated: '2019-08-29T16:17:55-07:00',
       pageElements: {
-        page_form23: {
-          elementKey: 'page_form23',
-          formKey: 'page_form23',
+        page_form24: {
+          elementKey: 'page_form24',
+          formKey: 'page_form24',
           isPageForm: true,
           ehr_groups: [
             {
+              formCss: 'full-width',
               gIndex: '1',
               gChildren: [
                 'history'
@@ -1083,11 +1093,11 @@ export default function () {
           fqn: 'careTeam.profession'
         }
       ],
-      generated: '2019-08-29T08:46:43-07:00',
+      generated: '2019-08-29T16:17:55-07:00',
       pageElements: {
-        page_form25: {
-          elementKey: 'page_form25',
-          formKey: 'page_form25',
+        page_form26: {
+          elementKey: 'page_form26',
+          formKey: 'page_form26',
           isPageForm: true,
           ehr_groups: [
             {
@@ -1170,11 +1180,11 @@ export default function () {
           fqn: 'pastAppointments.diagnosis'
         }
       ],
-      generated: '2019-08-29T08:46:43-07:00',
+      generated: '2019-08-29T16:17:55-07:00',
       pageElements: {
-        page_form26: {
-          elementKey: 'page_form26',
-          formKey: 'page_form26',
+        page_form27: {
+          elementKey: 'page_form27',
+          formKey: 'page_form27',
           isPageForm: true,
           ehr_groups: [
             {

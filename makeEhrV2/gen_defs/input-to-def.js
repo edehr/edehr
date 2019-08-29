@@ -195,9 +195,10 @@ class RawInputToDef {
   _group (pages, entry) {
     let page = pages[entry.pN]
     let group = rawHelper._transferProperties(entry, groupProperties)
-    group.label = entry.label
+    // group.label = entry.label
     group.gIndex = entry.gN
     group.gChildren = {}
+    //console.log('_group entry then group', entry, group)
     let form = this._findForm(page, entry.fN)
     let groups = form.ehr_groups
     groups[group.gIndex] = group
