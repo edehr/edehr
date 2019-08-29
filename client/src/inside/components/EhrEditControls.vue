@@ -1,11 +1,11 @@
 <template lang="pug">
   div
-    button(v-on:click="beginEdit", v-show="!isEditing", class="is-pulled-right button is-light")
+    button(v-on:click="beginEdit", v-show="!isEditing", class=" button is-light")
       fas-icon(icon="edit", class="icon-left") 
       span Edit form
-    button(v-on:click="saveEdit", v-show="isEditing", class="is-pulled-right button is-light")
+    button(v-on:click="saveEdit", v-show="isEditing", class=" button is-light")
       fas-icon(icon="check-circle")
-    button(v-on:click="cancelEdit", v-show="isEditing", class="is-pulled-right button is-light")
+    button(v-on:click="cancelEdit", v-show="isEditing", class=" button is-light")
       fas-icon(icon="times-circle")
 </template>
 

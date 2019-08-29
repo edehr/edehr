@@ -1,0 +1,110 @@
+import EhrTypes from './ehr-types'
+import StoreHelper from './store-helper'
+// import { setApiError } from './ehr-utils'
+// import CV1 from '../inside/defs/current-visit-1'
+// import CV2 from '../inside/defs/current-visit-2'
+// import PC from '../inside/defs/patient-chart'
+import PP from '../inside/defs-grid/patient-profile'
+// import ER from '../inside/defs/external-resources'
+import TP from '../inside/defs-grid/test-page'
+const pageDefsPP = PP()
+// const pageDefsCV1 = CV1()
+// const pageDefsCV2 = CV2()
+// const pageDefsPC = PC()
+// const pageDefsExt = ER()
+const pageDefsTP = TP()
+const PROPS = EhrTypes.elementProperties
+const pageDefs = Object.assign(pageDefsPP, /*pageDefsCV1, pageDefsCV2, pageDefsPC, pageDefsExt,*/ pageDefsTP)
+
+class EhrDefsWorker {
+  constructor () {
+    this.pageDefs = pageDefs
+    // console.log('construct V2 defs', this.pageDefs)
+  }
+  isPageV2 (pageKey) {
+    let result = false
+    if (StoreHelper.usingV2()) {
+      result = this.pageDefs[pageKey]  !== undefined
+      // console.log('EhrDefsV2 is using V2 and is there a page for ', pageKey, this.pageDefs[pageKey])
+    }
+    return result
+  }
+
+  getPageDefinition (pageKey) {
+    let pd =  this.pageDefs[pageKey]
+    return pd
+  }
+  getAllPageKeys () {
+    let pageKeys = Object.keys(this.pageDefs)
+    pageKeys.sort()
+    return pageKeys
+  }
+
+  getPageElements (pageKey) {
+    let pd = this.getPageDefinition(pageKey)
+    return pd.pageElements
+  }
+
+  getPageForms (pageKey) {
+    let elements = this.getPageElements(pageKey)
+    return Object.values(elements).filter( e => e.isPageForm)
+  }
+
+  getPageTables (pageKey) {
+    let elements = this.getPageElements(pageKey)
+    return Object.values(elements).filter( (e) => {return e.isTable})
+  }
+
+  getChildElements (pageKey, filterKey, filterValue, desiredProperty) {
+    let pd = this.getPageDefinition(pageKey)
+    let children = pd.pageChildren.filter( ch => ch[filterKey] === filterValue)
+    if(desiredProperty){
+      children = children.map( ch => ch[desiredProperty])
+    }
+    return children
+  }
+
+  getPageChildElement (pageKey, key) {
+    let pd = this.getPageDefinition(pageKey)
+    return pd.pageChildren.find(ch => ch[PROPS.elementKey] === key)
+  }
+
+  getPageChildProperty (pageKey, key, prop) {
+    let child = this.getPageChildElement(pageKey, key)
+    let value = child[prop]
+    return value
+  }
+
+  getDefaultValue (pageDataKey, elementKey) {
+    let dV = this.getPageChildProperty(pageDataKey, elementKey, PROPS.defaultValue) || ''
+    dV = (dV.toLowerCase() === 'true') ? true : ((dV.toLowerCase() === 'false') ? false : dV)
+    // console.log('EhrDefs.getDefaultValue', elementKey, dV)
+    return dV
+  }
+
+  getDataCaseStudy (pageDataKey, elementKey) {
+    let dV = this.getPageChildProperty(pageDataKey, elementKey, PROPS.dataCaseStudy) || ''
+    return dV
+  }
+
+  getValidationRule (pageDataKey, elementKey) {
+    let dV = this.getPageChildProperty(pageDataKey, elementKey, PROPS.validation) || ''
+    return dV
+  }
+
+  getMandatoryRule (pageDataKey, elementKey) {
+    let dV = this.getPageChildProperty(pageDataKey, elementKey, PROPS.mandatory) || ''
+    return dV
+  }
+
+  getMedOrderSchedule  (pageKey) {
+    let pd = this.getPageDefinition(pageKey)
+    let medPeriods = pd.medSchedule
+    console.log('getMedOrderSchedule', pageKey, medPeriods)
+    return medPeriods
+  }
+
+}
+const EhrDefs = new EhrDefsWorker()
+export default EhrDefs
+

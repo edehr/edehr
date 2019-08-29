@@ -1,4 +1,6 @@
 import InstoreHelper from './instoreHelper'
+import EventBus from '../../helpers/event-bus'
+import { ACTIVITY_DATA_EVENT } from '../../helpers/event-bus'
 import { composeUrl } from '../../helpers/ehr-utils'
 const API = 'seed-data'
 
@@ -164,6 +166,7 @@ export const mutations = {
   _setSeedEhrData: (state, value) => {
     // console.log('setting seed data _setSeedEhrData ', value)
     state.ehrSeedData = value
+    EventBus.$emit(ACTIVITY_DATA_EVENT)
   },
   _setSeedDataList: (state, list) => {
     state.seedDataList = list

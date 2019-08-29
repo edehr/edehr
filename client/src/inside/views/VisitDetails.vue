@@ -1,15 +1,10 @@
 // Generated VUE file. Before modifying see docs about Vue file generation
 <template lang="pug">
   div(class="ehr-page")
-    ehr-panel-header {{ uiProps.pageTitle }}
-      div(slot="controls", v-show="showPageFormControls")
-        ehr-edit-controls(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
-    ehr-panel-content
-      div(class="region ehr-page-content")
-        ehr-page-form(v-if="uiProps.hasForm", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey",)
-        div(v-if="uiProps.hasTable", v-for="tableDef in uiProps.tables", :key="tableDef.tableKey")
-          ehr-page-table(:tableDef="tableDef", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey", :showTableLabel="showTableLabel")
-      div Page updated: {{ ehrHelp.formatDate(uiProps.generated) }}
+    div(v-if="isV2")
+      ehr-page(:pageDataKey="pageDataKey", :ehrHelp="ehrHelp")
+    div(v-else)
+      ehr-page-v1(:pageDataKey="pageDataKey", :ehrHelp="ehrHelp")
     div(style="display:none")
       p This Visit Details page is generated.
       p Label: Visit details
@@ -21,23 +16,16 @@
 </template>
 
 <script>
-import EhrPanelHeader from '../components/EhrPanelHeader.vue'
-import EhrPanelContent from '../components/EhrPanelContent.vue'
-import EhrEditControls from '../components/EhrEditControls.vue'
-import EhrPageTable from '../components/EhrPageTable'
-import EhrPageForm from '../components/EhrPageForm.vue'
+import EhrPageV1 from '../components/EhrPageV1'
+import EhrPage from '../components/page/EhrPage'
 import EhrHelp from '../../helpers/ehr-helper'
+import EhrHelpV2 from '../components/page/ehr-helper'
+import EhrDefs from '../../helpers/ehr-defs-grid'
 import { getPageDefinition } from '../../helpers/ehr-defs'
 
 export default {
   name: 'VisitDetails',
-  components: {
-    EhrPanelHeader,
-    EhrPanelContent,
-    EhrPageForm,
-    EhrPageTable,
-    EhrEditControls
-  },
+  components: { EhrPage, EhrPageV1 },
   data: function () {
     return {
       pageDataKey: 'visit',
@@ -48,17 +36,18 @@ export default {
     uiProps () {
       return getPageDefinition(this.pageDataKey)
     },
-    showTableLabel () {
-      let tbls = this.uiProps.tables || []
-      return tbls.length > 1
-    },
-    showPageFormControls () {
-      return this.ehrHelp.showPageFormControls()
+    isV2 () {
+      return EhrDefs.isPageV2(this.pageDataKey)
     }
   },
   created () {
-    this.ehrHelp = new EhrHelp(this, this.$store, this.pageDataKey, this.uiProps)
+    if (this.isV2) {
+      this.ehrHelp = new EhrHelpV2(this, this.$store, this.pageDataKey, this.uiProps)
+    } else {
+      this.ehrHelp = new EhrHelp(this, this.$store, this.pageDataKey, this.uiProps)
+    }
   },
+  // must declare beforeRouteLeave on the component that is routed
   beforeRouteLeave (to, from, next) {
     this.ehrHelp.beforeRouteLeave(to, from, next)
   },

@@ -44,7 +44,7 @@ export default {
         // TODO consider adding a state "isEvaluating" to compliment isInstructor
         colour = hd.hasInstructor ? NEW_INFO : (hd.hasSeed ? OLD_INFO : NONE)
       }
-      console.log('hasDataColor', hd, colour)
+      // console.log('hasDataColor', hd, colour)
       return colour
     },
     levelClass () {

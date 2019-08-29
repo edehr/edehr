@@ -1,0 +1,174 @@
+{inputType: page}	{pRef: 3}	{Label: Demographics}	{elementKey: demographics}	{pN: 1}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: page_form}	eCell	eCell	eCell	{pN: 1}	{fN: 1}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	eCell	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: First name}	{elementKey: givenName}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Erin}	eCell	eCell
+{inputType: text}	eCell	{Label: Middle name(s)}	{elementKey: middleName}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Last name}	{elementKey: familyName}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Johns}	eCell	eCell
+{inputType: text}	eCell	{Label: Preferred name}	{elementKey: preferredName}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Erin}	eCell	eCell
+{inputType: text}	eCell	{Label: Date of birth}	{elementKey: dateOfBirth}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: 09-SEP-19##}	eCell	eCell
+{inputType: text}	eCell	{Label: Age}	{elementKey: personAge}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: 74}	eCell	eCell
+{inputType: text}	eCell	{Label: Height}	{elementKey: height}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Default_value: 157}	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: 157}	eCell	eCell
+{inputType: text}	eCell	{Label: Weight}	{elementKey: weight}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Default_value: 63}	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: 63}	eCell	eCell
+{inputType: select}	eCell	{Label: Gender}	{elementKey: gender}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Options: Unknown
+Female
+Male
+Transgender female
+Transgender male
+Undifferentiated
+Prefer not to say}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Female}	eCell	eCell
+{inputType: select}	eCell	{Label: Martial status}	{elementKey: martialStatus}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Options: Married
+Single
+Life partner
+Divorced
+Separated
+Widowed}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Widow}	eCell	eCell
+{inputType: select}	eCell	{Label: Primary language}	{elementKey: languagePrimary}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Options: English
+French
+Spanish
+German
+Chinese}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: English}	eCell	eCell
+{inputType: text}	eCell	{Label: Religion}	{elementKey: religion}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: Do you identify as an indigenous person?}	{elementKey: indigenousIdentifyAs}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Options: Yes
+No}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: No}	eCell	eCell
+{inputType: text}	eCell	{Label: Street address}	{elementKey: streetAddress}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: 402 Willow St.}	eCell	eCell
+{inputType: text}	eCell	{Label: City}	{elementKey: city}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Vancouver}	eCell	eCell
+{inputType: text}	eCell	{Label: Country}	{elementKey: country}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Default_value: Canada}	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Canada}	eCell	eCell
+{inputType: text}	eCell	{Label: Postal code}	{elementKey: postalCode}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: V3F 9R2}	eCell	eCell
+{inputType: checkbox}	eCell	{Label: No address}	{elementKey: noAddress}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Default_value: FALSE}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Primary phone number}	{elementKey: phoneNumber}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: (778) 555-2947}	eCell	eCell
+{inputType: text}	eCell	{Label: Email}	{elementKey: emailAddress}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Occupation/student}	{elementKey: occupationStudent}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Retired}	eCell	eCell
+{inputType: text}	eCell	{Label: PHN}	{elementKey: phn}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: 12345678}	eCell	eCell
+{inputType: text}	eCell	{Label: MRN}	{elementKey: mrn}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Patient service}	{elementKey: patientService}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Next of kin name}	{elementKey: nextOfKinName}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Thomas Johns}	eCell	eCell
+{inputType: select}	eCell	{Label: Next of kin relationship}	{elementKey: nextOfKinRelationship}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Options: Wife
+Husband
+Mother
+Father
+Guardian
+Sister
+Brother
+Daughter
+Son
+Aunt
+Uncle
+Grandmother
+Grandfather
+Friend
+Other}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Son}	eCell	eCell
+{inputType: text}	eCell	{Label: Next of kin phone}	{elementKey: nextOfKinPhone}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: 604-555-9865}	eCell	eCell
+{inputType: text}	eCell	{Label: Decision maker name}	{elementKey: decisionMakerName}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Thomas Johns}	eCell	eCell
+{inputType: select}	eCell	{Label: Decision maker relationship}	{elementKey: decisionMakerRelationship}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Options: Spouse
+Child
+Parent
+Sibling
+Grandparent
+Grandchild
+Friend
+Anyone else related by partnership
+Public guardian and trustee employee
+Other}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Son}	eCell	eCell
+{inputType: text}	eCell	{Label: Decision maker phone}	{elementKey: decisionMakerPhone}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: 604-555-9865}	eCell	eCell
+{inputType: page}	{pRef: 4}	{Label: Allergies}	{elementKey: allergies}	{pN: 2}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: page_form}	eCell	eCell	{elementKey: page_form}	{pN: 2}	{fN: 1}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	eCell	{pN: 2}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Allergies}	{elementKey: text}	{pN: 2}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Default_value: TRUE}	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: TRUE}	eCell	eCell
+{inputType: checkbox}	eCell	{Label: No known allergies}	{elementKey: checkbox}	{pN: 2}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: page}	{pRef: 6}	{Label: Medical history}	{elementKey: medical}	{pN: 3}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: page_form}	eCell	eCell	eCell	{pN: 3}	{fN: 1}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	eCell	{pN: 3}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: textarea}	eCell	{Label: Past medical history}	{elementKey: history}	{pN: 3}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: page}	{pRef: 7}	{Label: Psychosocial history}	{elementKey: psychosocial}	{pN: 4}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: page_form}	eCell	eCell	eCell	{pN: 4}	{fN: 1}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	eCell	{pN: 4}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: textarea}	eCell	{Label: Psychosocial history}	{elementKey: history}	{pN: 4}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Feels down when she thinks about her lower financial status and her advancing age, and how she is becoming more forgetful and less energetic. Often feels alone and worries about falling and not being able to alert anyone to come to her rescue. Driving is becoming hard for her.}	eCell	eCell
+{inputType: textarea}	eCell	{Label: Diet}	{elementKey: diet}	{pN: 4}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Regular}	eCell	eCell
+{inputType: textarea}	eCell	{Label: Living situation}	{elementKey: livingSituation}	{pN: 4}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Son lives with her in her house}	eCell	eCell
+{inputType: textarea}	eCell	{Label: Employment/school}	{elementKey: employmentSchool}	{pN: 4}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Retired hairdresser}	eCell	eCell
+{inputType: textarea}	eCell	{Label: Hobbies}	{elementKey: hobbies}	{pN: 4}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Bingo, Netflix, playing “Solitaire and Scrabble with friends” on her iPad}	eCell	eCell
+{inputType: ehr_subgroup}	eCell	eCell	eCell	{pN: 4}	{fN: 1}	{gN: 1}	{sgN: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkbox_text_spacer}	eCell	{Label: Exercise}	{elementKey: exercise}	{pN: 4}	{fN: 1}	{gN: 1}	{sgN: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: < 1 day/week}	eCell	eCell
+{inputType: checkbox_text_spacer}	eCell	{Label: Caffeine use}	{elementKey: caffeineUse}	{pN: 4}	{fN: 1}	{gN: 1}	{sgN: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: 1-2 cups/day}	eCell	eCell
+{inputType: checkbox_text_spacer}	eCell	{Label: Tobacco use}	{elementKey: tobaccoUse}	{pN: 4}	{fN: 1}	{gN: 1}	{sgN: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: 1-2 cups/day}	"{helperText: Have you used any tobacco products in the last 6 months?
+Have you used any tobacco products in the last 7 days?}"	eCell
+{inputType: checkbox_text_spacer}	eCell	{Label: Cannabis use}	{elementKey: cannabisUse}	{pN: 4}	{fN: 1}	{gN: 1}	{sgN: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{helperText: Have you used any cannabis products in the last 6 months?
+Have you used any cannabis products in the last 7 days?}"	eCell
+{inputType: checkbox_text_spacer}	eCell	{Label: Alcohol use}	{elementKey: alcoholUse}	{pN: 4}	{fN: 1}	{gN: 1}	{sgN: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Social}	"{helperText: CAGE questionaire
+Have you ever felt that you should cut down on your drinking?
+Have you ever become annoyed by criticisms of your drinking?
+Have you ever felt guilty about your drinking?
+Have you ever had a morning eye opener to get rid of a hangover?}"	eCell
+{inputType: checkbox_text_spacer}	eCell	{Label: Substance use}	{elementKey: substanceUse}	{pN: 4}	{fN: 1}	{gN: 1}	{sgN: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{helperText: Have you used any substances in the last 6 months?
+Have you used any substances in the last 7 days?
+If so, make notes about which ones.}"	eCell
+{inputType: page}	{pRef: 8}	{Label: Surgical history}	{elementKey: surgical}	{pN: 5}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: table_form}	eCell	eCell	eCell	{pN: 5}	{fN: 1}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	{addButtonText: Add a past surgery}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	{Label: Past surgery}	{elementKey: pastSurgery}	{pN: 5}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Performing physician}	{elementKey: physician}	{pN: 5}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Surgery/procedure}	{elementKey: procedure}	{pN: 5}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Cesarean section}	eCell	eCell
+{inputType: text}	eCell	{Label: Time elapsed since surgery}	{elementKey: timeSince}	{pN: 5}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: table_form}	eCell	eCell	eCell	{pN: 5}	{fN: 2}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	{addButtonText: Add a previous appointment}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	{Label: Previous admission}	{elementKey: previous}	{pN: 5}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Appointment with}	{elementKey: with}	{pN: 5}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Appointment details}	{elementKey: details}	{pN: 5}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Previous admission reason}	{elementKey: previousAdmissions}	{pN: 5}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: date}	eCell	{Label: Date}	{elementKey: previousAdmissionsDate}	{pN: 5}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 4}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: textarea}	eCell	{Label: General comments}	{elementKey: comments}	{pN: 5}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 5}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: page}	{pRef: 9}	{Label: Immunization history}	{elementKey: immunization}	{pN: 6}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: page_form}	eCell	eCell	eCell	{pN: 6}	{fN: 1}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	eCell	{pN: 6}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkbox_date}	eCell	{Label: Hep A}	{elementKey: hepA}	{pN: 6}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	{dependantOn: hepA}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkbox_date}	eCell	{Label: Hep B}	{elementKey: hepB}	{pN: 6}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	{dependantOn: hepB}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkbox_date}	eCell	{Label: MMR}	{elementKey: mmr}	{pN: 6}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	{dependantOn: mmr}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkbox_date}	eCell	{Label: Pneumococcal}	{elementKey: pneumococcal}	{pN: 6}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	{dependantOn: pneumococcal}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkbox_date}	eCell	{Label: Polio diptheria pertussis}	{elementKey: polioDiptheriaPertussis}	{pN: 6}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	{dependantOn: polioDiptheriaPertussis}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkbox_date}	eCell	{Label: TB}	{elementKey: tb}	{pN: 6}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	{dependantOn: tb}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkbox_date}	eCell	{Label: Tetanus}	{elementKey: tetanus}	{pN: 6}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	{dependantOn: tetanus}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text_date}	eCell	eCell	{elementKey: other1}	{pN: 6}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text_date}	eCell	eCell	{elementKey: other2}	{pN: 6}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text_date}	eCell	eCell	{elementKey: other3}	{pN: 6}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: page}	{pRef: 10}	{Label: Family history}	{elementKey: familyHistory}	{pN: 7}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: page_form}	eCell	eCell	eCell	{pN: 7}	{fN: 1}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	eCell	{pN: 7}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: textarea}	eCell	{Label: Family medical history}	{elementKey: history}	{pN: 7}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: page}	{pRef: 11}	{Label: Care team}	{elementKey: careTeam}	{pN: 8}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: page_form}	eCell	eCell	eCell	{pN: 8}	{fN: 1}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	{Label: Team}	{elementKey: team}	{pN: 8}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Name}	{elementKey: name}	{pN: 8}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Data_case_study: Dr. Singh
+Dr. Notley
+Jason
+Jackie
+Gurpreet
+Alexa
+Matt
+Serge
+Trache
+Dr. Hunnicutt
+Jim
+Gladys
+Herman}"	eCell	eCell
+{inputType: text}	eCell	{Label: Profession}	{elementKey: profession}	{pN: 8}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Data_case_study: Physician
+Physician
+Nurse
+Nurse
+Medical radiograpeor
+Medical laboratory technician
+Medical radiographer
+RN
+Physician
+RN
+Pysiotherapy student
+Resp. therapist}"	eCell	eCell
+{inputType: page}	{pRef: 12}	{Label: Past appointments}	{elementKey: pastAppointments}	{pN: 9}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: page_form}	eCell	eCell	eCell	{pN: 9}	{fN: 1}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	{Label: Past encounters}	{elementKey: encounters}	{pN: 9}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: date}	eCell	{Label: Date}	{elementKey: date}	{pN: 9}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Site}	{elementKey: site}	{pN: 9}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Diagnosis}	{elementKey: diagnosis}	{pN: 9}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Most responsible person}	{elementKey: mrp}	{pN: 9}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	{Label: Outpatient appointments}	{elementKey: outpatientAppointments}	{pN: 9}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Date}	{elementKey: date}	{pN: 9}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: 1 week ago}	eCell	eCell
+{inputType: text}	eCell	{Label: Site}	{elementKey: site}	{pN: 9}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Clinic}	eCell	eCell
+{inputType: text}	eCell	{Label: Reason for visit}	{elementKey: reasonForVisit}	{pN: 9}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Shortness of breath x 24 hrs}	eCell	eCell
+{inputType: text}	eCell	{Label: Diagnosis}	{elementKey: diagnosis}	{pN: 9}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: COPD}	eCell	eCell
