@@ -19,13 +19,13 @@ const pageDefs = Object.assign(pageDefsPP, /*pageDefsCV1, pageDefsCV2, pageDefsP
 class EhrDefsWorker {
   constructor () {
     this.pageDefs = pageDefs
-    console.log('construct V2 defs', this.pageDefs)
+    // console.log('construct V2 defs', this.pageDefs)
   }
   isPageV2 (pageKey) {
     let result = false
     if (StoreHelper.usingV2()) {
       result = this.pageDefs[pageKey]  !== undefined
-      console.log('EhrDefsV2 is using V2 and is there a page for ', pageKey, this.pageDefs[pageKey])
+      // console.log('EhrDefsV2 is using V2 and is there a page for ', pageKey, this.pageDefs[pageKey])
     }
     return result
   }

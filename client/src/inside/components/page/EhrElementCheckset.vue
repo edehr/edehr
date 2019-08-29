@@ -69,7 +69,7 @@ export default {
     },
     setup () {
       // called from EhrCommon.mount
-      console.log('setup checkset', this.elementKey, this.element, this.options)
+      // console.log('setup checkset', this.elementKey, this.element, this.options)
       if (this.validate()) {
         this.checkOptions = []
         let prop,text

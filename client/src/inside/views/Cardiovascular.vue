@@ -34,7 +34,6 @@ export default {
   },
   computed: {
     uiProps () {
-      console.log('get ui props for ', this.pageDataKey )
       return getPageDefinition(this.pageDataKey)
     },
     isV2 () {

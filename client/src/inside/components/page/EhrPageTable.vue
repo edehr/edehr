@@ -80,8 +80,8 @@ export default {
       this.ehrHelp.showDialog(this.tableKey)
     },
     refresh () {
-      console.log('EhrPageTable refresh ', this.tableKey)
       this.tableForm = this.ehrHelp.getTable(this.tableKey)
+      console.log('EhrPageTable refresh ', this.tableKey, this.tableForm)
     }
   },
   mounted: function () {

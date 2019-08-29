@@ -23,8 +23,8 @@ const dbDialog = false
 const dbDelta = false
 const dbPageForm = false
 const dbLoad = false
-const dbTable = false
-const dbLeave = true
+const dbTable = true
+const dbLeave = false
 
 
 export default class EhrHelpV2 {
@@ -171,7 +171,7 @@ export default class EhrHelpV2 {
     let pageKey = this.pageKey
     let theData = this.getAsLoadedPageData()
     let tableDefs = this.getPageTableDefs()
-    if (dbTable) console.log('EhrHelp load stack data for page', this.pageKey, tableDefs, theData)
+    if (dbTable) console.log('EhrHelp._loadTableData load stack data for page', this.pageKey, tableDefs, theData)
     if (tableDefs.length > 0) {
       tableDefs.forEach((tableDef) => {
         let tableKey = tableDef.tableKey
@@ -214,20 +214,10 @@ export default class EhrHelpV2 {
           tableForm.tableData = tableData
           tableForm.dbData = dbData
         }
-        if (dbTable) console.log('EhrHelp load stacked with data ', dbData)
+        if (dbTable) console.log('EhrHelp._loadTableData load stacked with data ', dbData)
 
-        if (dbTable) console.log('EhrHelp load tableForm', tableForm)
+        if (dbTable) console.log('EhrHelp._loadTableData load tableForm', tableForm)
       })
-      // dbData.forEach(dbRowData => {
-      //   let tblRow = dbRowData
-      // tableForm.stackedData = stackedData
-      // if (stackedData && stackedData.length > 0) {
-      //   if (dbTable) console.log('EhrHelp load stackedData', stackedData)
-      //   let transpose = stackedData[0].map((col, i) => stackedData.map(row => row[i]))
-      //   if (dbTable) console.log('EhrHelp load transpose', transpose)
-      //   tableForm.transposedColumns = transpose
-      //   tableForm.isTransposed = true
-      // }
     }
   }
 
@@ -296,9 +286,6 @@ export default class EhrHelpV2 {
 
   _loadPageData () {
     if (dbLoad) console.log('ehrhelper respond to page refresh', this.pageKey)
-    // TODO load data for tables
-    // this._mergedProperty()
-    // this._loadTransposedColumns()
     this._loadTableData()
     EventBus.$emit(PAGE_DATA_READY_EVENT)
   }

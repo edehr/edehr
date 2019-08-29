@@ -13,10 +13,6 @@
             td(v-for="cell in dRow", class="cell.tableCss")
               div(v-for="cPart in cell.stack") {{getCellData(cPart)}}
                 //div {{cPart.inputType}} - {{cPart.value}}
-
-          <!--tr(v-for="tblRow in stackedData")-->
-            <!--td(v-for="stack in tblRow", :class="getCellCss(stack)")-->
-              <!--div(v-for="cell in stack") {{ getCellData(cell) }} &nbsp;-->
 </template>
 
 <script>
@@ -28,11 +24,6 @@ export default {
   extends: EhrTableCommon,
   data: function () {
     return {
-      // stackedData contains an array (of rows).
-      // Each row contains an arrary of stacks.
-      // Each stack contains an array of cells.
-      // A Cell has label, inputType, elementKey and the current value
-      stackedData: []
     }
   },
   computed: {
