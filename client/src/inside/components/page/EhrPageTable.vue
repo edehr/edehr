@@ -1,16 +1,5 @@
 <template lang="pug">
   div(class="ehr-page-table")
-    div(v-show="false")
-      div(v-for="tCell in tableForm.rowTemplate")
-        div {{tCell.tableLabel}}  - {{tCell.tableCss}}
-      h2 table Data
-      div(v-for="dRow in tableForm.tableData")
-        div Row:
-        div(v-for="cell in dRow")
-          div cell: {{cell.tableCss}}
-          div(v-for="cPart in cell.stack")
-            div {{cPart.inputType}} - {{cPart.value}}
-      div tkk: {{tableKey}} isTransposed {{tableDef.isTransposed}} isStacked {{isStacked}} isVertical {{isVertical}}
     div(v-if="showTableAddButton")
       ui-button(v-on:buttonClicked="showDialog") {{ tableDef.addButtonText }}
     //div(v-if="isVertical", class="column_table")
@@ -18,6 +7,7 @@
     //div(v-else-if="isStacked", class="stacked_table")
     div
       h2(v-show="tableDef.label") {{tableDef.label}}
+      // ehr-table-vertical(:ehrHelp="ehrHelp", :tableDef="tableDef")
       ehr-table-stacked(:ehrHelp="ehrHelp", :tableDef="tableDef", :tableForm="tableForm")
     ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDef", :errorList="errorList" )
 </template>

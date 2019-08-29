@@ -214,40 +214,30 @@ export default class EhrHelpV2 {
           tableForm.tableData = tableData
           tableForm.dbData = dbData
         }
-        if (dbTable) console.log('EhrHelp._loadTableData load stacked with data ', dbData)
+        let combined = []
+        let headerRow = []
+        rowTemplate.forEach( (rt) => {
+          let hdr = { label: rt.tableLabel}
+          headerRow.push(hdr)
+        })
+        combined.push(headerRow)
+        tableData.forEach ( (row) => {
+          combined.push(row)
+        })
 
+        console.log('combined', combined)
+        let transpose = combined.map((col, i) => combined.map(row => row[i]))
+        console.log('combined, transpose', combined, transpose)
+        tableForm.transposedColumns = transpose
+
+        let len = tableData[0] ? tableData[0].length : -1
+        console.log('length of row of table data', len, rowTemplate.length)
         if (dbTable) console.log('EhrHelp._loadTableData load tableForm', tableForm)
       })
     }
   }
 
-  _loadTransposedColumns () {
-    // let pageKey = this.pageKey
-    // let pageDef = this.getPageDef()
-    // if (pageDef && pageDef.tables) {
-    //   pageDef.tables.forEach(tableDef => {
-    //     if (tableDef.isTransposed) {
-    //       // console.log('transpose tableDef', tableDef)
-    //       this.setupColumnData(pageDef, tableDef, pageKey)
-    //       // console.log('transposed table', tableDef.transposedColumns)
-    //     }
-    //   })
-    // }
-  }
-
-  /**
-   Take the component's definition data and the component's data and combine it into one table.
-   Then rotates the table to place the header labels into the first column and
-   each following row in a column.
-   Place the result into table.transposedColumns
-   * @param pageDef
-   * @param table
-   * @param pageKey
-   */
   setupColumnData (pageDef, table, pageKey) {
-    // let theData = this.getAsLoadedPageData()
-    // const tableKey = table.tableKey
-    // let dbData = Array.isArray(theData[tableKey]) ? theData[tableKey] : []
     // let columns = []
     // let row = []
     // table.tableCells.forEach(cell => {
