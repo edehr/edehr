@@ -72,7 +72,7 @@ export default {
   display: grid;
   grid-gap: 1rem 2rem;
   grid-auto-flow: row;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .grid-left-to-right-5 {

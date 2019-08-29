@@ -1,6 +1,7 @@
 <template lang="pug">
   div(class="ehr-page-form")
-    h2(class="headerClass") {{ form.label }} (formKey: {{formKey}})
+    h2(class="headerClass")
+    div(style="display:inline") {{ form.label }} (formKey: {{formKey}})
     ehr-page-form-controls(class="headerControl", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey", :formKey="formKey")
     div(v-show="errors.length")
       p Fix the following:
@@ -55,7 +56,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .ehr-page-form {
   margin-bottom: .5em;
 }
@@ -67,7 +68,8 @@ export default {
 .ehr-page-form {
   position: relative;
 }
-  .headerClass {
+
+.headerClass {
     display: inline-block;
   }
 .headerControl {
