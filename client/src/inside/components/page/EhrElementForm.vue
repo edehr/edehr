@@ -18,38 +18,36 @@
       ehr-element-checkset(:elementKey="elementKey", :ehrHelp="ehrHelp")
 
     div(v-else-if="isType('checkbox')", class="checkbox_wrapper")
-      label(v-if="showLabel", class="checkbox_label")
-        input(class="checkbox", type="checkbox", v-bind:disabled="disabled", v-bind:name="elementKey", v-model="inputVal", v-on:change="dependantClickEvent()")
-        span {{label}}
-        ui-info(v-if="helperText", :title="label", :html="helperHtml", :text="helperText")
+      input(:id="inputId", class="checkbox", type="checkbox", v-bind:disabled="disabled", v-bind:name="elementKey", v-model="inputVal", v-on:change="dependantClickEvent()")
+      ehr-page-form-label(:element="element", css="checkbox_label, check-label", :forElement="inputId")
 
     div(v-else-if="isType('date')", class="date_wrapper")
-      ehr-page-form-label(:showLabel="showLabel", css="date_label", :label="label", :helperText="helperText", :helperHtml="helperHtml")
+      ehr-page-form-label(:element="element", css="date_label")
       date-picker(class="d-picker", typeable, v-bind:disabled="disabled", v-bind:name="elementKey", v-model="inputVal")
-        div(v-if="!showLabel", slot="beforeCalendarHeader", class="datepicker-header") {{label}}
+        //div(v-if="!showLabel", slot="beforeCalendarHeader", class="datepicker-header") {{label}}
 
     div(v-else-if="isType('day')", class="day_wrapper")
-      ehr-page-form-label(:showLabel="showLabel", css="day_label", :label="label", :helperText="helperText", :helperHtml="helperHtml")
+      ehr-page-form-label(:element="element", css="day_label")
       input(class="input", v-bind:disabled="disabled", v-bind:name="elementKey", v-model="inputVal")
 
     div(v-else-if="isType('select')", class="select_wrapper")
-      ehr-page-form-label(:showLabel="showLabel", css="select_label", :label="label", :helperText="helperText", :helperHtml="helperHtml")
+      ehr-page-form-label(:element="element", css="select_label")
       div(class="select")
         select(v-bind:name="elementKey", v-bind:disabled="disabled", v-model="inputVal")
           option(value="")
           option(v-for="option in options", :key="option.text", v-bind:value="option.text") {{ option.text}}
 
     div(v-else-if="isType('text')", class="text_input_wrapper")
-      ehr-page-form-label(:showLabel="showLabel", css="text_label", :label="label", :helperText="helperText", :helperHtml="helperHtml")
+      ehr-page-form-label(:element="element", css="text_label")
       input(class="input", v-bind:disabled="disabled", v-bind:name="elementKey", v-model="inputVal")
       span {{suffix }}
 
     div(v-else-if="isType('time')", class="time_wrapper")
-      ehr-page-form-label(:showLabel="showLabel", css="time_label", :label="label", :helperText="helperText", :helperHtml="helperHtml")
+      ehr-page-form-label(:element="element", css="time_label")
       input(class="input", type="text", v-bind:disabled="disabled", v-bind:name="elementKey", v-model="inputVal")
 
     div(v-else-if="isType('textarea')", class="textarea_wrapper")
-      ehr-page-form-label(:showLabel="showLabel", css="textarea_label", :label="label", :helperText="helperText", :helperHtml="helperHtml")
+      ehr-page-form-label(:element="element", css="textarea_label")
       textarea(class="ehr-page-form-textarea", v-bind:disabled="disabled", v-bind:name="elementKey", v-model="inputVal")
 
     div(v-else) ELSE: {{inputType}} {{label}}
@@ -78,4 +76,3 @@ export default {
   }
 }
 </script>
-

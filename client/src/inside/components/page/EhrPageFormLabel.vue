@@ -1,6 +1,6 @@
 <template lang="pug">
-  div
-    label(v-if="showLabel", :class="css", v-html="label")
+  div(:class="css")
+    label(v-if="showLabel", v-html="label", :for="forElement")
     ui-info(v-if="helperText", :title="label", :html="helperHtml", :text="helperText")
 </template>
 
@@ -10,16 +10,30 @@ import UiInfo from '../../../app/ui/UiInfo'
 export default {
   name: 'EhrPageFormLabel',
   components: { UiInfo},
+  data: function () {
+    return {
+      label: '',
+      helperHtml: '',
+      helperText: '',
+      showLabel: true,
+    }
+  },
   props: {
-    showLabel: { type: Boolean },
+    element: { type: Object },
     css: { type: String },
-    label: { type: String },
-    helperHtml: { type: String },
-    helperText: { type: String }
+    forElement: { type: String }
+  },
+  methods: {
+    setupCommon () {
+      const element = this.element
+      this.showLabel = !(element.formOption === 'hideLabel')
+      this.label = element.label
+      this.helperText = element.helperText
+      this.helperHtml = element.helperHtml
+    }
+  },
+  mounted: function () {
+    this.setupCommon()
   }
 }
 </script>
-
-<style lang="scss">
-// @import '../../scss/definitions';
-</style>

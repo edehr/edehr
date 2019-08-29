@@ -23,10 +23,7 @@ export default {
       dialogIsOpen: false,
       dependantOnKey: '',
       dependantOnValue: '',
-      helperHtml: '',
-      helperText: '',
       inputVal: '',
-      showLabel: true,
       suffix: '',
       options: ''
     }
@@ -37,6 +34,7 @@ export default {
   },
   computed: {
     element () { return EhrDefs.getPageChildElement(this.pageDataKey, this.elementKey) },
+    inputId () { return this.elementKey + this.element.inputType},
     inputType () { return this.element.inputType },
     label () { return this.element.label},
     key () { return this.element.elementKey },
@@ -135,9 +133,6 @@ export default {
 
     setupCommon () {
       const element = this.element
-      this.showLabel = !(element.formOption === 'hideLabel')
-      this.helperText = element.helperText
-      this.helperHtml = element.helperHtml
       this.suffix = element.suffix
       this.options = element.options
     },
@@ -191,6 +186,9 @@ export default {
 </script>
 <style lang="scss">
   @import '../../../scss/definitions';
+  .check-label {
+    display: inline;
+  }
   .assetLink a{
     color: blueviolet; /*$grey60;*/
     display: block;
