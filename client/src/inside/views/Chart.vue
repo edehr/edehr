@@ -38,7 +38,7 @@ export default {
       return getPageDefinition(this.pageDataKey)
     },
     isV2 () {
-      return EhrDefs.isPageV2(this.pageKey)
+      return EhrDefs.isPageV2(this.pageDataKey)
     }
   },
   created () {
