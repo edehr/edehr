@@ -23,7 +23,7 @@ const dbDialog = false
 const dbDelta = false
 const dbPageForm = false
 const dbLoad = false
-const dbTable = true
+const dbTable = false
 const dbLeave = false
 
 
@@ -513,7 +513,6 @@ export default class EhrHelpV2 {
       let cacheData = this.pageFormData.cacheData
       result = cacheData !== currentData
       if (dbLeave) console.log('EhrHelpV2 compare current to cache result:', result)
-      result = true
     } else {
       let dialog = this._getActiveTableDialog()
       result = !!dialog
@@ -604,7 +603,7 @@ export default class EhrHelpV2 {
           return next(false)
         }
       }
-      this._resetPageFormData()
+      this.cancelEdit()
     }
     next()
   }
