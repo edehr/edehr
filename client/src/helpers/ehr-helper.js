@@ -86,28 +86,35 @@ export default class EhrHelp {
     let pageDef = getPageDefinition(pageKey)
     if (pageDef && pageDef.tables) {
       pageDef.tables.forEach(tableDef => {
-        let stacks = {}
-        tableDef.tableCells.forEach((cell) => {
-          let stack = stacks[cell.tableColumn]
-          if (!stack) {
-            stack = stacks[cell.tableColumn] = {
-              primary: cell,
-              cells: []
-            }
-          }
-          stack.cells.push(cell)
-        })
-        tableDef.stacks = Object.values(stacks)
-        tableDef.isTransposed = tableDef.isStacked = false
-        if (tableDef.stacks.length > 8) {
-          tableDef.isTransposed = true
-          tableDef.transposedColumns = []
-        } else {
-          tableDef.isStacked = true
+        if ( tableDef.tableCells) {
+          this.v1StackedTable(tableDef)
         }
       })
     }
   }
+
+  v1StackedTable (tableDef) {
+    let stacks = {}
+    tableDef.tableCells.forEach((cell) => {
+      let stack = stacks[cell.tableColumn]
+      if (!stack) {
+        stack = stacks[cell.tableColumn] = {
+          primary: cell,
+          cells: []
+        }
+      }
+      stack.cells.push(cell)
+    })
+    tableDef.stacks = Object.values(stacks)
+    tableDef.isTransposed = tableDef.isStacked = false
+    if (tableDef.stacks.length > 8) {
+      tableDef.isTransposed = true
+      tableDef.transposedColumns = []
+    } else {
+      tableDef.isStacked = true
+    }
+  }
+
   _loadStackData () {
     // see _setupTableStackDefs
     let pageKey = this.pageKey
@@ -241,7 +248,12 @@ export default class EhrHelp {
     this.dialogMap[key] = dialog
     // add this dialog to the map
     // console.log('set helper into each form element', tableDef.tableForm)
-    this.attachHelperToElements(tableDef.tableForm.rows)
+    if (tableDef.tableForm.rows) {
+      this.attachHelperToElementsV1(tableDef.tableForm.rows)
+    }
+    if (tableDef.tableForm.ehr_groups) {
+      this.attachHelperToElementsV2(tableDef.tableForm.ehr_groups)
+    }
     this._clearDialogInputs(key)
     let eData = { key: key, value: true }
     let channel = this.getDialogEventChannel(key)
@@ -249,14 +261,19 @@ export default class EhrHelp {
     EventBus.$emit(channel, eData)
   }
 
-  attachHelperToElements (rows) {
+  attachHelperToElementsV2 (groups) {
+    // TODO attached elements to groups
+    console.log('TODO attached elements to groups')
+  }
+
+  attachHelperToElementsV1 (rows) {
     const _this = this
     rows.forEach(row => {
       row.elements.forEach(def => {
         def.helper = _this
         if(def.formFieldSet) {
           let cRows = def.formFieldSet.rows
-          _this.attachHelperToElements(cRows)
+          _this.attachHelperToElementsV1(cRows)
         }
       })
     })
@@ -380,6 +397,17 @@ export default class EhrHelp {
     let d = this.dialogMap[key]
     const pageDataKey = d.tableDef.pageDataKey
     // console.log('dialog', d)
+    if (d.tableDef.tableCells) {
+      this._clearInputsV1(d, pageDataKey)
+    } else {
+      // TODO clear inputs for groups
+      console.log(' TODO clear inputs for groups')
+    }
+    // empty the error list array
+    d.errorList = []
+  }
+
+  _clearInputsV1 (d, pageDataKey) {
     let cells = d.tableDef.tableCells
     let inputs = d.inputs
     // console.log('clear dialog inputs', inputs)
@@ -390,8 +418,6 @@ export default class EhrHelp {
       // console.log('load table cell with default value', cell, dV)
       inputs[cell.elementKey] = dV
     })
-    // empty the error list array
-    d.errorList = []
   }
 
   // TODO validation will need rework as part of the DDD refactor
@@ -429,14 +455,15 @@ export default class EhrHelp {
    * Currently the rule is simply "is the user a student" but this will need to
    * be changed if there is a need to let instructors "do the assignment" or
    * if we want to let the application be the place to edit seed data.
-   * @return {*}
+   * @return {*}fat
    */
   showTableAddButton () {
-    return this._showControl('hasTable')
+    return this._showControl('hasTable') || this._showControl('hasGridTable')
+
   }
 
   showPageFormControls () {
-    return this._showControl('hasForm')
+    return this._showControl('hasForm') || this._showControl('hasGridForm')
   }
 
   showPageCustomControls () {

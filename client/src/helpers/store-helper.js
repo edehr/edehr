@@ -1,10 +1,16 @@
 import Vue from 'vue'
+import store from '../store'
+// Vue.use(Vuex)
 
 class StoreHelperWorker {
   constructor () {
-    this.shc = new Vue()
+    this.shc = new Vue({store})
   }
 
+  usingV2 () {
+    let v2 =  this.shc.$store.state.system.usingV2
+    return v2
+  }
   /* **********   General  ************** */
 
 

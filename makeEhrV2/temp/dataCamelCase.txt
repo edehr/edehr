@@ -1,0 +1,331 @@
+elementKey
+visit
+
+admissionDay
+admissionTime
+consent
+status
+diagnosis
+location
+location
+transferInDay
+transferInTime
+vitals
+table
+temperature
+source
+rate
+rhythm
+strength
+systolic
+diastolic
+patientPosition
+respirationRate
+respirationEffort
+oxygenSaturation
+oxygenMode
+flowRate
+neurological
+table
+name
+profession
+unit
+day
+time
+status
+alert
+oriented
+confused
+drowsy
+unresponsive
+dizziness
+blurred vision
+loss of conciousness
+glasgow coma scale
+eye opening
+verbal response
+best motor response
+totalGlasgow
+pupils
+left pupil size
+left pupil response to light
+right pupil size
+right pupil response to light
+both pupils
+level of conciousness
+best gaze
+level of conciousness questions
+visual
+level of conciousness commands
+facial palsy
+motor - left arm
+sensory
+motor - right arm
+best language
+motor - left leg
+dysarthria
+motor - right leg
+extinction and inattention
+limb ataxia
+comments
+respiratory
+table
+name
+profession
+unit
+day
+time
+airway
+oxygen therapy
+oxygen flow
+breath
+lul
+rul
+rml
+lll
+rll
+respiratory rhythm
+respiratory depth
+cough
+sputum colour
+sputum comments
+general comments
+cardiovascular
+table
+name
+profession
+unit
+day
+time
+pulse
+skin appearance
+cap refill: right hand
+cap refill: left hand
+cap refill: right foot
+cap refill: left foot
+temperature: right hand
+temperature: left hand
+temperature: right foot
+temperature: left foot
+peripheral edema: right hand
+peripheral edema: left hand
+peripheral edema: right foot
+peripheral edema: left foot
+nail bed colour: right hand
+nail bed colour: left hand
+nail bed colour: right foot
+nail bed colour: left foot
+comments
+gastrointestinal
+table
+name
+profession
+unit
+day
+time
+abdomen
+abdominal pain
+emesis
+emesis colour
+description
+amount
+easting
+reason
+npoSinceDate
+npoSinceTime
+bowelMovement
+lastBM
+bowelSounds
+stoolColour
+StoolDescription
+StoolAmount
+stoolSource
+comments
+genitourinary
+table
+name
+profession
+unit
+day
+time
+urinarySymptoms
+none
+increasedFrequency
+dysuria
+hernaturia
+oliguria
+indwelling
+incontinence
+retention
+distention
+symptoms
+last voided day
+last voided time
+urine colour
+urine consistency
+diaper/brief
+foley
+foley type
+foley size
+pelvic pain
+location
+
+pelvic pain source
+vaginal
+discharge
+bleeing
+description
+last menstrual period date
+pregnant
+pregnant
+gravida (number of pregnancies)
+para (number of children)
+living children
+comments
+musculoskeletal
+table
+name
+profession
+unit
+day
+time
+swelling
+pain
+deformity
+movement
+sensation
+pulse
+colour
+temp
+use of ambulatory aid
+type
+comments
+pain
+table
+name
+profession
+unit
+day
+time
+primarySite
+painScale
+respiratoryRate
+location
+onset
+type
+alleviation & associated symptoms
+radiation
+precipitating events
+comments
+secondarySite
+painScale
+respiratoryRate
+location
+onset
+type
+alleviation & associated symptoms
+radiation
+precipitating events
+comments
+biopsychosocial
+table
+name
+profession
+unit
+day
+time
+
+domesticViolence
+
+requestContact
+behaviour effect
+hallucinations
+suicidal
+homicidal
+speech
+hygiene and grooming
+comments
+support
+person
+supportComments
+security/police present
+securityComments
+patient restrained
+day
+time
+comments
+general comments
+nonmedOrders
+table
+order
+ordered by
+start day
+start time
+details
+status
+day of referral
+start time
+end time
+reconciliation complete
+referrals
+table
+name
+profession
+unit
+day
+time
+referral name
+referral profession
+appointment date
+appointment time
+status
+labRequisitions
+table
+requisition
+ordered
+collected
+report
+status
+medicationOrders
+table
+medication
+dose
+route
+frequency
+quantity
+refills
+notes
+reason
+ordered by
+order day
+order time
+medAdminRec
+table
+status
+medication
+ordered by
+yesterday
+today plan
+today given
+administered by
+actual time
+reconcile
+dischargeSummary
+
+admission day
+discharging physician/np
+clinical summary
+procedures
+discharge rx
+referred to
+discharge notes
+discharged to
+discharged by
+role
+discharge day
+discharge time
+billing
+
+msp
+thirdParty
+federal
