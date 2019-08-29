@@ -47,7 +47,28 @@ export default {
   border: 1px solid green;
 }
 
+.grid-left-to-right-1 {
+  display: grid;
+  grid-gap: 1rem 2rem;
+  grid-auto-flow: row;
+  grid-template-columns: 1fr;
+}
+
+.grid-left-to-right-2 {
+  display: grid;
+  grid-gap: 1rem 2rem;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(2, 1fr);
+}
+
 .grid-left-to-right-3 {
+  display: grid;
+  grid-gap: 1rem 2rem;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-left-to-right-4 {
   display: grid;
   grid-gap: 1rem 2rem;
   grid-auto-flow: row;
@@ -68,7 +89,7 @@ export default {
   grid-template-columns: repeat(3, 1fr);
 }
 
-.grid-span-2-columns {
-  grid-column: span 2;
+.grid-span-3-columns {
+  grid-column: span 3;
 }
 </style>
