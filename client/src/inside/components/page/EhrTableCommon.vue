@@ -17,7 +17,6 @@ export default {
     ehrHelp: { type: Object },
     // the ehr helper loads fresh data into the table definition.
     tableDef: { type: Object },
-    tableForm: { type: Object }
   },
   computed: {
   },

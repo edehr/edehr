@@ -32,7 +32,6 @@ import { SHOW_TABLE_DIALOG_EVENT, PAGE_DATA_READY_EVENT } from '../../../helpers
 
 
 export default {
-  name: 'EhrPageTable',
   components: {
     EhrTableStacked,
     EhrTableVertical,
