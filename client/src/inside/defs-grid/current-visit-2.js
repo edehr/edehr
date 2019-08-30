@@ -437,7 +437,7 @@ export default function () {
           fqn: 'genitourinary.comments'
         }
       ],
-      generated: '2019-08-30T07:09:12-07:00',
+      generated: '2019-08-30T10:19:43-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1023,7 +1023,7 @@ export default function () {
           fqn: 'musculoskeletal.comments'
         }
       ],
-      generated: '2019-08-30T07:09:12-07:00',
+      generated: '2019-08-30T10:19:43-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1383,7 +1383,7 @@ export default function () {
           fqn: 'pain.comments'
         }
       ],
-      generated: '2019-08-30T07:09:12-07:00',
+      generated: '2019-08-30T10:19:43-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1962,7 +1962,7 @@ export default function () {
           fqn: 'biopsychosocial.generalComments'
         }
       ],
-      generated: '2019-08-30T07:09:12-07:00',
+      generated: '2019-08-30T10:19:43-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2331,7 +2331,7 @@ export default function () {
           fqn: 'nonmedOrders.comment'
         }
       ],
-      generated: '2019-08-30T07:09:12-07:00',
+      generated: '2019-08-30T10:19:43-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2537,7 +2537,7 @@ export default function () {
           fqn: 'referrals.status'
         }
       ],
-      generated: '2019-08-30T07:09:12-07:00',
+      generated: '2019-08-30T10:19:43-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2701,7 +2701,7 @@ export default function () {
           fqn: 'labRequisitions.collected'
         }
       ],
-      generated: '2019-08-30T07:09:12-07:00',
+      generated: '2019-08-30T10:19:43-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2916,7 +2916,7 @@ export default function () {
           fqn: 'medicationOrders.scheduleType'
         },
         {
-          elementKey: 'schedule',
+          elementKey: 'scheduleTime',
           formIndex: '1',
           inputType: 'checkset',
           label: 'Schedule time',
@@ -2933,7 +2933,7 @@ export default function () {
           ],
           tableColumn: '8',
           tableLabel: 'Schedule time',
-          fqn: 'medicationOrders.schedule'
+          fqn: 'medicationOrders.scheduleTime'
         },
         {
           elementKey: 'instructions',
@@ -2963,7 +2963,7 @@ export default function () {
           fqn: 'medicationOrders.notes'
         }
       ],
-      generated: '2019-08-30T07:09:12-07:00',
+      generated: '2019-08-30T10:19:43-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -3027,7 +3027,7 @@ export default function () {
               label: 'Schedule time',
               ehr_list_index: '8',
               items: [
-                'schedule'
+                'scheduleTime'
               ]
             },
             {
@@ -3076,7 +3076,7 @@ export default function () {
                   'startMeds',
                   'endMeds',
                   'scheduleType',
-                  'schedule'
+                  'scheduleTime'
                 ]
               },
               {
@@ -3100,7 +3100,7 @@ export default function () {
               startMeds: '',
               endMeds: '',
               scheduleType: '',
-              schedule: '',
+              scheduleTime: '',
               instructions: '',
               reason: '',
               notes: ''
@@ -3225,7 +3225,7 @@ export default function () {
           helperHtml: '<p>Enter time delivered or say if not delivered.</p>'
         }
       ],
-      generated: '2019-08-30T07:09:12-07:00',
+      generated: '2019-08-30T10:19:43-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -3441,7 +3441,7 @@ export default function () {
           fqn: 'dischargeSummary.dischargeEducation'
         }
       ],
-      generated: '2019-08-30T07:09:12-07:00',
+      generated: '2019-08-30T10:19:43-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -3506,7 +3506,7 @@ export default function () {
           fqn: 'billing.federal'
         }
       ],
-      generated: '2019-08-30T07:09:12-07:00',
+      generated: '2019-08-30T10:19:43-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
