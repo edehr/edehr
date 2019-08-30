@@ -267,12 +267,6 @@ export default function () {
           fqn: 'testPage.time'
         },
         {
-          elementKey: 'horizontal',
-          formIndex: '3',
-          inputType: 'horizontal',
-          fqn: 'testPage.horizontal'
-        },
-        {
           elementKey: 'textDate',
           formIndex: '3',
           inputType: 'text',
@@ -287,11 +281,11 @@ export default function () {
           fqn: 'testPage.textDateDate'
         },
         {
-          elementKey: 'spacer32',
+          elementKey: 'spacer80',
           formIndex: '3',
           inputType: 'spacer',
           label: 'TextDate',
-          fqn: 'testPage.spacer32'
+          fqn: 'testPage.spacer80'
         },
         {
           elementKey: 'name',
@@ -308,7 +302,7 @@ export default function () {
           fqn: 'testPage.place'
         }
       ],
-      generated: '2019-08-29T08:46:43-07:00',
+      generated: '2019-08-29T14:31:39-07:00',
       pageElements: {
         form1: {
           elementKey: 'form1',
@@ -337,14 +331,14 @@ export default function () {
               gChildren: [
                 {
                   label: 'subgroup 1',
-                  elementKey: 'subgroup42',
+                  elementKey: 'subgroup90',
                   sgChildren: [
                     'pcheckset'
                   ]
                 },
                 {
                   label: 'subgroup 2',
-                  elementKey: 'subgroup43',
+                  elementKey: 'subgroup91',
                   sgChildren: [
                     'dayValue',
                     'timeValue',
@@ -354,7 +348,7 @@ export default function () {
                 },
                 {
                   label: 'subgroup 3',
-                  elementKey: 'subgroup44',
+                  elementKey: 'subgroup92',
                   sgChildren: [
                     'pcheckbox2',
                     'ptext2',
@@ -425,10 +419,9 @@ export default function () {
                 'profession',
                 'day',
                 'time',
-                'horizontal',
                 'textDate',
                 'textDateDate',
-                'spacer32',
+                'spacer80',
                 'name',
                 'place'
               ]
@@ -686,7 +679,6 @@ export default function () {
         {
           elementKey: 'e11',
           formIndex: '1',
-          formCss: 'full-width',
           inputType: 'textarea',
           label: 'textarea',
           tableColumn: '6',
@@ -728,19 +720,12 @@ export default function () {
           fqn: 'testTable.time'
         },
         {
-          elementKey: 'horizontal',
-          formIndex: '2',
-          inputType: 'horizontal',
-          tableColumn: '1',
-          fqn: 'testTable.horizontal'
-        },
-        {
           elementKey: 'cd1',
           formIndex: '2',
           inputType: 'checkbox',
           label: 'C D 1',
           tableColumn: '2',
-          tableLabel: 'TDate',
+          tableLabel: 'Chk 1',
           fqn: 'testTable.cd1'
         },
         {
@@ -749,17 +734,17 @@ export default function () {
           inputType: 'date',
           label: 'C D 1',
           tableColumn: '2',
-          tableLabel: 'TDate',
+          tableLabel: 'Chk 1',
           fqn: 'testTable.cd1Date'
         },
         {
-          elementKey: 'spacer38',
+          elementKey: 'spacer86',
           formIndex: '2',
           inputType: 'spacer',
           label: 'C D 1',
           tableColumn: '2',
-          tableLabel: 'TDate',
-          fqn: 'testTable.spacer38'
+          tableLabel: 'Chk 1',
+          fqn: 'testTable.spacer86'
         },
         {
           elementKey: 'cd2',
@@ -767,7 +752,7 @@ export default function () {
           inputType: 'checkbox',
           label: 'C D 2',
           tableColumn: '3',
-          tableLabel: 'TDate',
+          tableLabel: 'Chk 2',
           fqn: 'testTable.cd2'
         },
         {
@@ -776,17 +761,17 @@ export default function () {
           inputType: 'date',
           label: 'C D 2',
           tableColumn: '3',
-          tableLabel: 'TDate',
+          tableLabel: 'Chk 2',
           fqn: 'testTable.cd2Date'
         },
         {
-          elementKey: 'spacer39',
+          elementKey: 'spacer87',
           formIndex: '2',
           inputType: 'spacer',
           label: 'C D 2',
           tableColumn: '3',
-          tableLabel: 'TDate',
-          fqn: 'testTable.spacer39'
+          tableLabel: 'Chk 2',
+          fqn: 'testTable.spacer87'
         },
         {
           elementKey: 'td1',
@@ -794,7 +779,7 @@ export default function () {
           inputType: 'text',
           label: 'TextDate',
           tableColumn: '4',
-          tableLabel: 'TDate',
+          tableLabel: 'Txt 1',
           fqn: 'testTable.td1'
         },
         {
@@ -803,17 +788,17 @@ export default function () {
           inputType: 'date',
           label: 'TextDate',
           tableColumn: '4',
-          tableLabel: 'TDate',
+          tableLabel: 'Txt 1',
           fqn: 'testTable.td1Date'
         },
         {
-          elementKey: 'spacer40',
+          elementKey: 'spacer88',
           formIndex: '2',
           inputType: 'spacer',
           label: 'TextDate',
           tableColumn: '4',
-          tableLabel: 'TDate',
-          fqn: 'testTable.spacer40'
+          tableLabel: 'Txt 1',
+          fqn: 'testTable.spacer88'
         },
         {
           elementKey: 'referralName',
@@ -874,7 +859,7 @@ export default function () {
           fqn: 'testTable.status'
         }
       ],
-      generated: '2019-08-29T08:46:43-07:00',
+      generated: '2019-08-29T14:31:39-07:00',
       pageElements: {
         table1: {
           elementKey: 'table1',
@@ -1010,14 +995,14 @@ export default function () {
                 gChildren: [
                   {
                     label: 'subgroup 1',
-                    elementKey: 'subgroup45',
+                    elementKey: 'subgroup93',
                     sgChildren: [
                       'e10'
                     ]
                   },
                   {
                     label: 'subgroup 2',
-                    elementKey: 'subgroup46',
+                    elementKey: 'subgroup94',
                     sgChildren: [
                       'dayValue',
                       'timeValue',
@@ -1027,7 +1012,7 @@ export default function () {
                   },
                   {
                     label: 'subgroup 3',
-                    elementKey: 'subgroup47',
+                    elementKey: 'subgroup95',
                     sgChildren: [
                       'g4',
                       'g5',
@@ -1040,6 +1025,7 @@ export default function () {
                 ]
               },
               {
+                formCss: 'full-width',
                 gIndex: '3',
                 gChildren: [
                   'e11'
@@ -1079,35 +1065,34 @@ export default function () {
                 'name',
                 'profession',
                 'day',
-                'time',
-                'horizontal'
+                'time'
               ]
             },
             {
-              label: 'TDate',
+              label: 'Chk 1',
               ehr_list_index: '2',
               items: [
                 'cd1',
                 'cd1Date',
-                'spacer38'
+                'spacer86'
               ]
             },
             {
-              label: 'TDate',
+              label: 'Chk 2',
               ehr_list_index: '3',
               items: [
                 'cd2',
                 'cd2Date',
-                'spacer39'
+                'spacer87'
               ]
             },
             {
-              label: 'TDate',
+              label: 'Txt 1',
               ehr_list_index: '4',
               items: [
                 'td1',
                 'td1Date',
-                'spacer40'
+                'spacer88'
               ]
             },
             {
@@ -1141,13 +1126,13 @@ export default function () {
             formKey: 'stacked',
             ehr_groups: [
               {
+                formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
                   'name',
                   'profession',
                   'day',
-                  'time',
-                  'horizontal'
+                  'time'
                 ]
               },
               {
@@ -1155,13 +1140,13 @@ export default function () {
                 gChildren: [
                   'cd1',
                   'cd1Date',
-                  'spacer38',
+                  'spacer86',
                   'cd2',
                   'cd2Date',
-                  'spacer39',
+                  'spacer87',
                   'td1',
                   'td1Date',
-                  'spacer40'
+                  'spacer88'
                 ]
               },
               {

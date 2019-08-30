@@ -203,6 +203,15 @@ export default {
       color: $grey40;
       margin-right: 5px;
     }
-
   }
+  .suffix, .text-input {
+    display: inline-block;
+  }
+  .suffix {
+    position:absolute;
+    margin-left: 5px;
+    bottom:5px;
+    right:10px;
+  }
+
 </style>

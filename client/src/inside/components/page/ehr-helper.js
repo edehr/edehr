@@ -23,7 +23,7 @@ const dbDialog = false
 const dbDelta = false
 const dbPageForm = false
 const dbLoad = false
-const dbTable = true
+const dbTable = false
 const dbLeave = false
 
 
@@ -84,7 +84,7 @@ export default class EhrHelpV2 {
   stashActiveData (elementKey, value) {
     let data = this.getActiveData()
     data[elementKey] = value
-    if (dbDelta) console.log('EhrHelp stash ', elementKey, value)
+    if (dbDelta) console.log('EhrHelpV2 stash ', elementKey, value)
   }
 
   /* ********************* HELPERS  */
@@ -148,7 +148,7 @@ export default class EhrHelpV2 {
 
   isEditing () {
     let sysVal =  this.$store.state.system.isEditing
-    if (dbLeave) console.log('EhrHelp isEditing ', sysVal)
+    if (dbLeave) console.log('EhrHelpV2 isEditing ', sysVal)
     return sysVal
   }
 
@@ -171,7 +171,7 @@ export default class EhrHelpV2 {
     let pageKey = this.pageKey
     let theData = this.getAsLoadedPageData()
     let tableDefs = this.getPageTableDefs()
-    if (dbTable) console.log('EhrHelp._loadTableData load stack data for page', this.pageKey, tableDefs, theData)
+    if (dbTable) console.log('EhrHelpV2._loadTableData load stack data for page', this.pageKey, tableDefs, theData)
     if (tableDefs.length > 0) {
       tableDefs.forEach((tableDef) => {
         let tableKey = tableDef.tableKey
@@ -232,7 +232,7 @@ export default class EhrHelpV2 {
 
         let len = tableData[0] ? tableData[0].length : -1
         console.log('length of row of table data', len, rowTemplate.length)
-        if (dbTable) console.log('EhrHelp._loadTableData load tableForm', tableForm)
+        if (dbTable) console.log('EhrHelpV2._loadTableData load tableForm', tableForm)
       })
     }
   }
@@ -275,7 +275,7 @@ export default class EhrHelpV2 {
   /* ********************* DATA  */
 
   _loadPageData () {
-    if (dbLoad) console.log('ehrhelper respond to page refresh', this.pageKey)
+    if (dbLoad) console.log('ehrhelperV2 respond to page refresh', this.pageKey)
     this._loadTableData()
     EventBus.$emit(PAGE_DATA_READY_EVENT)
   }
@@ -330,7 +330,7 @@ export default class EhrHelpV2 {
     if (!this._validateInputs(dialog)) {
       return dialog.errorList
     }
-    if (dbDialog) console.log('EhrHelp saveDialog for page/table', pageKey, tableKey)
+    if (dbDialog) console.log('EhrHelpV2 saveDialog for page/table', pageKey, tableKey)
     let inputs = dialog.inputs
     inputs.createdDate = moment().format()
     if (dbDialog) console.log('save dialog data into ', tableKey)
@@ -341,7 +341,7 @@ export default class EhrHelpV2 {
       asLoadedPageData[tableKey] = table
     }
     table.push(inputs)
-    if (dbDialog) console.log('EhrHelp storing this: asLoadedPageData', asLoadedPageData, 'table', table, tableKey, dialog.tableKey)
+    if (dbDialog) console.log('EhrHelpV2 storing this: asLoadedPageData', asLoadedPageData, 'table', table, tableKey, dialog.tableKey)
     // Prepare a payload to tell the API which property inside the assignment data to change
     let payload = {
       pageKey: pageKey,
@@ -396,7 +396,7 @@ export default class EhrHelpV2 {
   }
 
   _dialogEvent (tableKey, open) {
-    if (dbLeave) console.log('EhrHelp _dialogEvent', tableKey, open)
+    if (dbLeave) console.log('EhrHelpV2 _dialogEvent', tableKey, open)
     let dialog = this.tableFormMap[tableKey]
     dialog.active = open
     this._clearDialogInputs(dialog)
@@ -416,7 +416,7 @@ export default class EhrHelpV2 {
     let form = tableDef.form
     // set inputs equal to the form's data definition
     dialog.inputs = { ...form.ehr_data}
-    if (dbDialog) console.log('EhrHelp cleared key, form ', dialog.tableKey, JSON.stringify(dialog.inputs))
+    if (dbDialog) console.log('EhrHelpV2 cleared key, form ', dialog.tableKey, JSON.stringify(dialog.inputs))
     // empty the error list array
     dialog.errorList = []
   }
@@ -428,12 +428,12 @@ export default class EhrHelpV2 {
     let inputs = dialog.inputs
     let form = tableDef.form
     let ehr_data = form.ehr_data
-    if (dbDialog) console.log('EhrHelp validate dialog for key', key, inputs)
+    if (dbDialog) console.log('EhrHelpV2 validate dialog for key', key, inputs)
     dialog.errorList = []
     Object.keys(ehr_data).forEach( (eKey) => {
       let eDef = EhrDefs.getPageChildElement(pageKey, eKey)
       let value = inputs[eKey]
-      console.log('EhrHelp validate:', key, value, eDef)
+      console.log('EhrHelpV2 validate:', key, value, eDef)
       let type = eDef[PROPS.inputType]
       let label = eDef[PROPS.label]
       // let validationRules = eDef[PROPS.validation]
@@ -473,21 +473,21 @@ export default class EhrHelpV2 {
    * Begin editing a page form
    */
   beginEdit (formKey) {
-    if (dbPageForm) console.log('EhrHelp begin edit', formKey)
+    if (dbPageForm) console.log('EhrHelpV2 begin edit', formKey)
     if (this.isEditing()) {
       if (dbPageForm) console.error('EhrHelp begin edit while there is already an edit session in progress')
       return
     }
     this._loadPageFormData(formKey)
     this._setEditing(true)
-    if (dbPageForm) console.log('EhrHelper beginEdit', this.pageFormData)
+    if (dbPageForm) console.log('EhrHelperV2 beginEdit', this.pageFormData)
   }
 
   /**
    * Cancel the edit on a page form. Restore values from the database.
    */
   cancelEdit () {
-    if (dbPageForm) console.log('EhrHelper cancelEdit', this.pageKey)
+    if (dbPageForm) console.log('EhrHelperV2 cancelEdit', this.pageKey)
     this._resetPageFormData()
     this._setEditing(false)
     this.$store.dispatch('ehrData/restoreActivityData')
@@ -512,15 +512,14 @@ export default class EhrHelpV2 {
       let currentData = JSON.stringify(this.pageFormData.value)
       let cacheData = this.pageFormData.cacheData
       result = cacheData !== currentData
-      if (dbLeave) console.log('EhrHelp compare current to cache result:', result)
-      result = true
+      if (dbLeave) console.log('EhrHelpV2 compare current to cache result:', result)
     } else {
       let dialog = this._getActiveTableDialog()
       result = !!dialog
-      if (dbLeave) console.log('EhrHelp dialog is open?', dialog, result)
+      if (dbLeave) console.log('EhrHelpV2 dialog is open?', dialog, result)
       // a page dialog is open.
     }
-    if (dbLeave) console.log('EhrHelp unsaved data?', result)
+    if (dbLeave) console.log('EhrHelpV2 unsaved data?', result)
     return result
   }
 
@@ -561,7 +560,7 @@ export default class EhrHelpV2 {
       _this._handleActivityDataChangeEvent(eData)
     }
     this.refreshEventHandler = function (eData) {
-      if (dbLoad) console.log('EhrHelper respond to page refresh', _this.pageKey)
+      if (dbLoad) console.log('EhrHelperV2respond to page refresh', _this.pageKey)
       _this._loadPageData()
     }
     window.addEventListener('beforeunload', this.windowUnloadHandler)
@@ -594,17 +593,17 @@ export default class EhrHelpV2 {
   beforeRouteLeave (to, from, next) {
     // console.log('beforeRouteLeave ...', to)
     let isEditing = this.isEditing()
-    if (dbLeave) console.log('EhrHelp beforeRouteLeave isEditing', isEditing)
+    if (dbLeave) console.log('EhrHelpV2 beforeRouteLeave isEditing', isEditing)
     if (isEditing) {
       let unsaved = this.unsavedData()
-      if (dbLeave) console.log('EhrHelp beforeRouteLeave unsaved', unsaved)
+      if (dbLeave) console.log('EhrHelpV2 beforeRouteLeave unsaved', unsaved)
       if (unsaved) {
         if (!window.confirm(LEAVE_PROMPT)) {
           // unsaved data and the user wants to stay
           return next(false)
         }
       }
-      this._resetPageFormData()
+      this.cancelEdit()
     }
     next()
   }
@@ -616,9 +615,9 @@ export default class EhrHelpV2 {
    */
   beforeUnloadListener (event) {
     let e = event || window.event
-    if (dbLeave) console.log('EhrHelp beforeunload event', e)
+    if (dbLeave) console.log('EhrHelpV2 beforeunload event', e)
     let unsaved = this.unsavedData()
-    if (dbLeave) console.log('EhrHelp beforeunload unsaved', unsaved)
+    if (dbLeave) console.log('EhrHelpV2 beforeunload unsaved', unsaved)
     if (unsaved) {
       // according to specs use preventDefault too.
       e.preventDefault()

@@ -1,20 +1,21 @@
 import EhrTypes from './ehr-types'
 import StoreHelper from './store-helper'
 // import { setApiError } from './ehr-utils'
-// import CV1 from '../inside/defs/current-visit-1'
-// import CV2 from '../inside/defs/current-visit-2'
-// import PC from '../inside/defs/patient-chart'
 import PP from '../inside/defs-grid/patient-profile'
-// import ER from '../inside/defs/external-resources'
+import CV1 from '../inside/defs-grid/current-visit-1'
+// import CV2 from '../inside/defs-grid/current-visit-2'
+// import PC from '../inside/defs-grid/patient-chart'
+// import ER from '../inside/defs-grid/external-resources'
 import TP from '../inside/defs-grid/test-page'
-const pageDefsPP = PP()
-// const pageDefsCV1 = CV1()
-// const pageDefsCV2 = CV2()
-// const pageDefsPC = PC()
-// const pageDefsExt = ER()
-const pageDefsTP = TP()
+const pageDefs = Object.assign(
+  PP(),
+  CV1(),
+  // CV2(),
+  // PC(),
+  // ER(),
+  TP())
+
 const PROPS = EhrTypes.elementProperties
-const pageDefs = Object.assign(pageDefsPP, /*pageDefsCV1, pageDefsCV2, pageDefsPC, pageDefsExt,*/ pageDefsTP)
 
 class EhrDefsWorker {
   constructor () {
@@ -25,13 +26,14 @@ class EhrDefsWorker {
     let result = false
     if (StoreHelper.usingV2()) {
       result = this.pageDefs[pageKey]  !== undefined
-      // console.log('EhrDefsV2 is using V2 and is there a page for ', pageKey, this.pageDefs[pageKey])
+      console.log('EhrDefsV2 is using V2 and is there a page for ', pageKey, this.pageDefs[pageKey])
     }
     return result
   }
 
   getPageDefinition (pageKey) {
     let pd =  this.pageDefs[pageKey]
+    console.log('EhrDefsGrid getPageDef', pageKey, pd)
     return pd
   }
   getAllPageKeys () {

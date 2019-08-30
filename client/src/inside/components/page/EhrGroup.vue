@@ -26,7 +26,8 @@ export default {
   },
   computed: {
     groupClass () {
-      return 'grid-left-to-right-3'
+      let css = this.group.formCss || 'grid-left-to-right-3'
+      return css
     }
   },
   methods: {
@@ -68,13 +69,14 @@ export default {
   grid-template-columns: repeat(3, 1fr);
 }
 
-.grid-left-to-right-4 {
+.record-header, .grid-left-to-right-4 {
   display: grid;
   grid-gap: 1rem 2rem;
   grid-auto-flow: row;
   grid-template-columns: repeat(4, 1fr);
 }
 
+.cardio-assessment,
 .grid-left-to-right-5 {
   display: grid;
   grid-gap: 1rem 2rem;

@@ -44,7 +44,7 @@ export default class EhrHelp {
       _this._handleActivityDataChangeEvent(eData)
     }
     this.refreshEventHandler = function (eData) {
-      console.log('ehrhelper respond to page refresh', _this.pageKey)
+      console.log('ehrhelper v1 respond to page refresh', _this.pageKey)
       _this._mergedProperty()
       _this._refreshTables()
     }
