@@ -1,7 +1,7 @@
 <template lang="pug">
   div(class="ehr-page-form")
     h2(class="headerClass")
-    div(style="display:inline") {{ form.label }} (formKey: {{formKey}})
+    div(style="display:inline") {{ form.label }}
     ehr-page-form-controls(class="headerControl", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey", :formKey="formKey")
     div(v-show="errors.length")
       p Fix the following:

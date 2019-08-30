@@ -1,13 +1,13 @@
 <template lang="pug">
   div(class="ehr-page")
     ehr-panel-header {{ pageDef.pageTitle }}
-      v2-control(slot="controls")
     ehr-panel-content
       ehr-page-element(v-for="element in pageElements", :key="element.pageDataKey", :element="element", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
 
     div(class="assignment-save")
       div Page updated: {{ ehrHelp.getPageGeneratedDate() }}
       div Assignment last saved: {{ ehrHelp.getLastPageDataUpdateDate() }}
+    v2-control
 </template>
 
 <script>
