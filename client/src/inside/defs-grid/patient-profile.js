@@ -395,7 +395,7 @@ export default function () {
           fqn: 'demographics.decisionMakerPhone'
         }
       ],
-      generated: '2019-08-29T16:17:55-07:00',
+      generated: '2019-08-30T07:10:46-07:00',
       pageElements: {
         page_form1: {
           elementKey: 'page_form1',
@@ -465,7 +465,7 @@ export default function () {
           fqn: 'allergies.checkbox'
         }
       ],
-      generated: '2019-08-29T16:17:55-07:00',
+      generated: '2019-08-30T07:10:46-07:00',
       pageElements: {
         page_form: {
           elementKey: 'page_form',
@@ -498,7 +498,7 @@ export default function () {
           fqn: 'medical.history'
         }
       ],
-      generated: '2019-08-29T16:17:55-07:00',
+      generated: '2019-08-30T07:10:46-07:00',
       pageElements: {
         page_form4: {
           elementKey: 'page_form4',
@@ -506,7 +506,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
-              formCss: 'full-width',
+              formCss: 'full-grid',
               gIndex: '1',
               gChildren: [
                 'history'
@@ -564,7 +564,7 @@ export default function () {
           fqn: 'psychosocial.hobbies'
         }
       ],
-      generated: '2019-08-29T16:17:55-07:00',
+      generated: '2019-08-30T07:10:46-07:00',
       pageElements: {
         page_form6: {
           elementKey: 'page_form6',
@@ -661,7 +661,7 @@ export default function () {
           fqn: 'surgical.comments'
         }
       ],
-      generated: '2019-08-29T16:17:55-07:00',
+      generated: '2019-08-30T07:10:46-07:00',
       pageElements: {
         table_form9: {
           elementKey: 'table_form9',
@@ -763,7 +763,7 @@ export default function () {
                 ]
               },
               {
-                formCss: 'full-width',
+                formCss: 'full-grid',
                 gIndex: '2',
                 gChildren: [
                   'comments'
@@ -990,7 +990,7 @@ export default function () {
           fqn: 'immunization.spacer23'
         }
       ],
-      generated: '2019-08-29T16:17:55-07:00',
+      generated: '2019-08-30T07:10:46-07:00',
       pageElements: {
         page_form12: {
           elementKey: 'page_form12',
@@ -1051,7 +1051,7 @@ export default function () {
           fqn: 'familyHistory.history'
         }
       ],
-      generated: '2019-08-29T16:17:55-07:00',
+      generated: '2019-08-30T07:10:46-07:00',
       pageElements: {
         page_form24: {
           elementKey: 'page_form24',
@@ -1059,7 +1059,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
-              formCss: 'full-width',
+              formCss: 'full-grid',
               gIndex: '1',
               gChildren: [
                 'history'
@@ -1093,7 +1093,7 @@ export default function () {
           fqn: 'careTeam.profession'
         }
       ],
-      generated: '2019-08-29T16:17:55-07:00',
+      generated: '2019-08-30T07:10:46-07:00',
       pageElements: {
         page_form26: {
           elementKey: 'page_form26',
@@ -1180,7 +1180,7 @@ export default function () {
           fqn: 'pastAppointments.diagnosis'
         }
       ],
-      generated: '2019-08-29T16:17:55-07:00',
+      generated: '2019-08-30T07:10:46-07:00',
       pageElements: {
         page_form27: {
           elementKey: 'page_form27',

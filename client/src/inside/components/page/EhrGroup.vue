@@ -48,6 +48,7 @@ export default {
   border: 1px solid green;
 }
 
+.full-grid,
 .grid-left-to-right-1 {
   display: grid;
   grid-gap: 1rem 2rem;
