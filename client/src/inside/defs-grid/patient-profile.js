@@ -185,6 +185,7 @@ export default function () {
           elementKey: 'streetAddress',
           dataCaseStudy: '402 Willow St.',
           formIndex: '1',
+          formCss: 'grid-span-2-columns',
           inputType: 'text',
           label: 'Street address',
           fqn: 'demographics.streetAddress'
@@ -395,7 +396,7 @@ export default function () {
           fqn: 'demographics.decisionMakerPhone'
         }
       ],
-      generated: '2019-08-30T07:10:46-07:00',
+      generated: '2019-08-30T16:41:34-07:00',
       pageElements: {
         page_form1: {
           elementKey: 'page_form1',
@@ -403,6 +404,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
+              formCss: 'section-divider',
               gIndex: '1',
               gChildren: [
                 'givenName',
@@ -417,7 +419,13 @@ export default function () {
                 'martialStatus',
                 'languagePrimary',
                 'religion',
-                'indigenousIdentifyAs',
+                'indigenousIdentifyAs'
+              ]
+            },
+            {
+              formCss: 'section-divider',
+              gIndex: '2',
+              gChildren: [
                 'streetAddress',
                 'city',
                 'country',
@@ -428,7 +436,12 @@ export default function () {
                 'occupationStudent',
                 'phn',
                 'mrn',
-                'patientService',
+                'patientService'
+              ]
+            },
+            {
+              gIndex: '3',
+              gChildren: [
                 'nextOfKinName',
                 'nextOfKinRelationship',
                 'nextOfKinPhone',
@@ -449,6 +462,13 @@ export default function () {
       hasGridForm: true,
       pageChildren: [
         {
+          elementKey: 'checkbox',
+          formIndex: '1',
+          inputType: 'checkbox',
+          label: 'No known allergies',
+          fqn: 'allergies.checkbox'
+        },
+        {
           elementKey: 'text',
           dataCaseStudy: true,
           defaultValue: true,
@@ -456,16 +476,9 @@ export default function () {
           inputType: 'text',
           label: 'Allergies',
           fqn: 'allergies.text'
-        },
-        {
-          elementKey: 'checkbox',
-          formIndex: '1',
-          inputType: 'checkbox',
-          label: 'No known allergies',
-          fqn: 'allergies.checkbox'
         }
       ],
-      generated: '2019-08-30T07:10:46-07:00',
+      generated: '2019-08-30T16:41:34-07:00',
       pageElements: {
         page_form: {
           elementKey: 'page_form',
@@ -473,10 +486,11 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
+              formCss: 'grid-left-to-right-1',
               gIndex: '1',
               gChildren: [
-                'text',
-                'checkbox'
+                'checkbox',
+                'text'
               ]
             }
           ]
@@ -498,11 +512,11 @@ export default function () {
           fqn: 'medical.history'
         }
       ],
-      generated: '2019-08-30T07:10:46-07:00',
+      generated: '2019-08-30T16:41:34-07:00',
       pageElements: {
-        page_form4: {
-          elementKey: 'page_form4',
-          formKey: 'page_form4',
+        page_form6: {
+          elementKey: 'page_form6',
+          formKey: 'page_form6',
           isPageForm: true,
           ehr_groups: [
             {
@@ -564,24 +578,30 @@ export default function () {
           fqn: 'psychosocial.hobbies'
         }
       ],
-      generated: '2019-08-30T07:10:46-07:00',
+      generated: '2019-08-30T16:41:34-07:00',
       pageElements: {
-        page_form6: {
-          elementKey: 'page_form6',
-          formKey: 'page_form6',
+        page_form8: {
+          elementKey: 'page_form8',
+          formKey: 'page_form8',
           isPageForm: true,
           ehr_groups: [
             {
               gIndex: '1',
               gChildren: [
-                {
-                  elementKey: 'subgroup28',
-                  sgChildren: []
-                },
+                'history',
                 'diet',
                 'livingSituation',
                 'employmentSchool',
                 'hobbies'
+              ]
+            },
+            {
+              gIndex: '2',
+              gChildren: [
+                {
+                  elementKey: 'subgroup31',
+                  sgChildren: []
+                }
               ]
             }
           ]
@@ -661,11 +681,11 @@ export default function () {
           fqn: 'surgical.comments'
         }
       ],
-      generated: '2019-08-30T07:10:46-07:00',
+      generated: '2019-08-30T16:41:34-07:00',
       pageElements: {
-        table_form9: {
-          elementKey: 'table_form9',
-          tableKey: 'table_form9',
+        table_form12: {
+          elementKey: 'table_form12',
+          tableKey: 'table_form12',
           isTable: true,
           addButtonText: 'Add a past surgery',
           ehr_list: [
@@ -689,9 +709,9 @@ export default function () {
             }
           ],
           form: {
-            elementKey: 'table_form9',
+            elementKey: 'table_form12',
             addButtonText: 'Add a past surgery',
-            formKey: 'table_form9',
+            formKey: 'table_form12',
             ehr_groups: [
               {
                 label: 'Past surgery',
@@ -710,9 +730,9 @@ export default function () {
             }
           }
         },
-        table_form10: {
-          elementKey: 'table_form10',
-          tableKey: 'table_form10',
+        table_form13: {
+          elementKey: 'table_form13',
+          tableKey: 'table_form13',
           isTable: true,
           addButtonText: 'Add a previous appointment',
           ehr_list: [
@@ -748,9 +768,9 @@ export default function () {
             }
           ],
           form: {
-            elementKey: 'table_form10',
+            elementKey: 'table_form13',
             addButtonText: 'Add a previous appointment',
-            formKey: 'table_form10',
+            formKey: 'table_form13',
             ehr_groups: [
               {
                 label: 'Previous admission',
@@ -803,11 +823,11 @@ export default function () {
           fqn: 'immunization.hepADate'
         },
         {
-          elementKey: 'spacer14',
+          elementKey: 'spacer17',
           formIndex: '1',
           inputType: 'spacer',
           label: 'Hep A',
-          fqn: 'immunization.spacer14'
+          fqn: 'immunization.spacer17'
         },
         {
           elementKey: 'hepB',
@@ -824,11 +844,11 @@ export default function () {
           fqn: 'immunization.hepBDate'
         },
         {
-          elementKey: 'spacer15',
+          elementKey: 'spacer18',
           formIndex: '1',
           inputType: 'spacer',
           label: 'Hep B',
-          fqn: 'immunization.spacer15'
+          fqn: 'immunization.spacer18'
         },
         {
           elementKey: 'mmr',
@@ -845,11 +865,11 @@ export default function () {
           fqn: 'immunization.mmrDate'
         },
         {
-          elementKey: 'spacer16',
+          elementKey: 'spacer19',
           formIndex: '1',
           inputType: 'spacer',
           label: 'MMR',
-          fqn: 'immunization.spacer16'
+          fqn: 'immunization.spacer19'
         },
         {
           elementKey: 'pneumococcal',
@@ -866,11 +886,11 @@ export default function () {
           fqn: 'immunization.pneumococcalDate'
         },
         {
-          elementKey: 'spacer17',
+          elementKey: 'spacer20',
           formIndex: '1',
           inputType: 'spacer',
           label: 'Pneumococcal',
-          fqn: 'immunization.spacer17'
+          fqn: 'immunization.spacer20'
         },
         {
           elementKey: 'polioDiptheriaPertussis',
@@ -887,11 +907,11 @@ export default function () {
           fqn: 'immunization.polioDiptheriaPertussisDate'
         },
         {
-          elementKey: 'spacer18',
+          elementKey: 'spacer21',
           formIndex: '1',
           inputType: 'spacer',
           label: 'Polio diptheria pertussis',
-          fqn: 'immunization.spacer18'
+          fqn: 'immunization.spacer21'
         },
         {
           elementKey: 'tb',
@@ -908,11 +928,11 @@ export default function () {
           fqn: 'immunization.tbDate'
         },
         {
-          elementKey: 'spacer19',
+          elementKey: 'spacer22',
           formIndex: '1',
           inputType: 'spacer',
           label: 'TB',
-          fqn: 'immunization.spacer19'
+          fqn: 'immunization.spacer22'
         },
         {
           elementKey: 'tetanus',
@@ -929,11 +949,11 @@ export default function () {
           fqn: 'immunization.tetanusDate'
         },
         {
-          elementKey: 'spacer20',
+          elementKey: 'spacer23',
           formIndex: '1',
           inputType: 'spacer',
           label: 'Tetanus',
-          fqn: 'immunization.spacer20'
+          fqn: 'immunization.spacer23'
         },
         {
           elementKey: 'other1',
@@ -948,10 +968,10 @@ export default function () {
           fqn: 'immunization.other1Date'
         },
         {
-          elementKey: 'spacer21',
+          elementKey: 'spacer24',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'immunization.spacer21'
+          fqn: 'immunization.spacer24'
         },
         {
           elementKey: 'other2',
@@ -966,10 +986,10 @@ export default function () {
           fqn: 'immunization.other2Date'
         },
         {
-          elementKey: 'spacer22',
+          elementKey: 'spacer25',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'immunization.spacer22'
+          fqn: 'immunization.spacer25'
         },
         {
           elementKey: 'other3',
@@ -984,17 +1004,17 @@ export default function () {
           fqn: 'immunization.other3Date'
         },
         {
-          elementKey: 'spacer23',
+          elementKey: 'spacer26',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'immunization.spacer23'
+          fqn: 'immunization.spacer26'
         }
       ],
-      generated: '2019-08-30T07:10:46-07:00',
+      generated: '2019-08-30T16:41:34-07:00',
       pageElements: {
-        page_form12: {
-          elementKey: 'page_form12',
-          formKey: 'page_form12',
+        page_form15: {
+          elementKey: 'page_form15',
+          formKey: 'page_form15',
           isPageForm: true,
           ehr_groups: [
             {
@@ -1002,34 +1022,34 @@ export default function () {
               gChildren: [
                 'hepA',
                 'hepADate',
-                'spacer14',
+                'spacer17',
                 'hepB',
                 'hepBDate',
-                'spacer15',
+                'spacer18',
                 'mmr',
                 'mmrDate',
-                'spacer16',
+                'spacer19',
                 'pneumococcal',
                 'pneumococcalDate',
-                'spacer17',
+                'spacer20',
                 'polioDiptheriaPertussis',
                 'polioDiptheriaPertussisDate',
-                'spacer18',
+                'spacer21',
                 'tb',
                 'tbDate',
-                'spacer19',
+                'spacer22',
                 'tetanus',
                 'tetanusDate',
-                'spacer20',
+                'spacer23',
                 'other1',
                 'other1Date',
-                'spacer21',
+                'spacer24',
                 'other2',
                 'other2Date',
-                'spacer22',
+                'spacer25',
                 'other3',
                 'other3Date',
-                'spacer23'
+                'spacer26'
               ]
             }
           ]
@@ -1051,11 +1071,11 @@ export default function () {
           fqn: 'familyHistory.history'
         }
       ],
-      generated: '2019-08-30T07:10:46-07:00',
+      generated: '2019-08-30T16:41:34-07:00',
       pageElements: {
-        page_form24: {
-          elementKey: 'page_form24',
-          formKey: 'page_form24',
+        page_form27: {
+          elementKey: 'page_form27',
+          formKey: 'page_form27',
           isPageForm: true,
           ehr_groups: [
             {
@@ -1093,11 +1113,11 @@ export default function () {
           fqn: 'careTeam.profession'
         }
       ],
-      generated: '2019-08-30T07:10:46-07:00',
+      generated: '2019-08-30T16:41:34-07:00',
       pageElements: {
-        page_form26: {
-          elementKey: 'page_form26',
-          formKey: 'page_form26',
+        page_form29: {
+          elementKey: 'page_form29',
+          formKey: 'page_form29',
           isPageForm: true,
           ehr_groups: [
             {
@@ -1180,11 +1200,11 @@ export default function () {
           fqn: 'pastAppointments.diagnosis'
         }
       ],
-      generated: '2019-08-30T07:10:46-07:00',
+      generated: '2019-08-30T16:41:34-07:00',
       pageElements: {
-        page_form27: {
-          elementKey: 'page_form27',
-          formKey: 'page_form27',
+        page_form30: {
+          elementKey: 'page_form30',
+          formKey: 'page_form30',
           isPageForm: true,
           ehr_groups: [
             {

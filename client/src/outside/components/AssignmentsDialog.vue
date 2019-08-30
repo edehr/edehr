@@ -29,7 +29,6 @@
           hr
           div(class="technical")
             div {{ assignmentId}}
-            div ** Do we need landing page? If yes then it will be a dropdown select of all the pages in the app.
     ui-confirm(ref="confirmDialog", v-on:confirm="proceedWithSave")
 
 </template>

@@ -7,7 +7,7 @@
     div(class="assignment-save")
       div Page updated: {{ ehrHelp.getPageGeneratedDate() }}
       div Assignment last saved: {{ ehrHelp.getLastPageDataUpdateDate() }}
-    v2-control
+      v2-control
 </template>
 
 <script>
@@ -95,9 +95,23 @@ export default {
 </script>
 
 <style lang="scss">
-  .assignment-save{
-    font-style: italic;
-    margin-top: 5em;
-    margin-left: 1rem;
-  }
+@import '../../../scss/definitions';
+
+.assignment-save{
+  font-style: italic;
+  margin-top: 5em;
+  margin-left: 2rem;
+}
+
+.record-header {
+    border-bottom: 1px solid $grey20;
+    margin-bottom: 2.5em;
+    padding-bottom: .75em;
+}
+
+.section-divider {
+    border-bottom: 1px solid $grey40;
+    margin-bottom: 2em;
+    padding-bottom: 2em;
+}
 </style>

@@ -130,7 +130,7 @@ export default function () {
           fqn: 'visit.transferOutTime'
         }
       ],
-      generated: '2019-08-30T07:10:28-07:00',
+      generated: '2019-08-30T11:30:57-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -279,10 +279,10 @@ export default function () {
           fqn: 'vitals.time'
         },
         {
-          elementKey: 'spacer34',
+          elementKey: 'spacer37',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'vitals.spacer34'
+          fqn: 'vitals.spacer37'
         },
         {
           elementKey: 'temperature',
@@ -321,10 +321,10 @@ export default function () {
           fqn: 'vitals.source'
         },
         {
-          elementKey: 'spacer35',
+          elementKey: 'spacer38',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'vitals.spacer35'
+          fqn: 'vitals.spacer38'
         },
         {
           elementKey: 'strength',
@@ -422,16 +422,16 @@ export default function () {
           fqn: 'vitals.respirationRate'
         },
         {
-          elementKey: 'spacer36',
+          elementKey: 'spacer39',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'vitals.spacer36'
+          fqn: 'vitals.spacer39'
         },
         {
-          elementKey: 'spacer37',
+          elementKey: 'spacer40',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'vitals.spacer37'
+          fqn: 'vitals.spacer40'
         },
         {
           elementKey: 'oxygenSaturation',
@@ -481,7 +481,7 @@ export default function () {
           fqn: 'vitals.flowRate'
         }
       ],
-      generated: '2019-08-30T07:10:28-07:00',
+      generated: '2019-08-30T11:30:57-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -619,10 +619,10 @@ export default function () {
                 gChildren: [
                   'day',
                   'time',
-                  'spacer34',
+                  'spacer37',
                   'temperature',
                   'source',
-                  'spacer35',
+                  'spacer38',
                   'strength',
                   'rate',
                   'rhythm',
@@ -630,8 +630,8 @@ export default function () {
                   'diastolic',
                   'patientPosition',
                   'respirationRate',
-                  'spacer36',
-                  'spacer37',
+                  'spacer39',
+                  'spacer40',
                   'oxygenSaturation',
                   'oxygenMode',
                   'flowRate'
@@ -719,7 +719,7 @@ export default function () {
           fqn: 'fluidBalance.fluidOut'
         }
       ],
-      generated: '2019-08-30T07:10:28-07:00',
+      generated: '2019-08-30T11:30:57-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1164,11 +1164,11 @@ export default function () {
           fqn: 'neurological.bothPupils'
         },
         {
-          elementKey: 'spacer45',
+          elementKey: 'spacer48',
           dataCaseStudy: 'Equal',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'neurological.spacer45'
+          fqn: 'neurological.spacer48'
         },
         {
           elementKey: 'comments',
@@ -1304,10 +1304,10 @@ export default function () {
           fqn: 'neurological.motorRightArm'
         },
         {
-          elementKey: 'spacer49',
+          elementKey: 'spacer52',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'neurological.spacer49'
+          fqn: 'neurological.spacer52'
         },
         {
           elementKey: 'motorLeftLeg',
@@ -1541,7 +1541,7 @@ export default function () {
           fqn: 'neurological.strokeAssessmentCalculation'
         }
       ],
-      generated: '2019-08-30T07:10:28-07:00',
+      generated: '2019-08-30T11:30:57-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1827,7 +1827,7 @@ export default function () {
                 gChildren: [
                   {
                     label: 'Status',
-                    elementKey: 'subgroup62',
+                    elementKey: 'subgroup65',
                     sgChildren: [
                       'alert',
                       'oriented',
@@ -1840,7 +1840,7 @@ export default function () {
                   },
                   {
                     label: 'Glasgow Coma Scale',
-                    elementKey: 'subgroup63',
+                    elementKey: 'subgroup66',
                     sgChildren: [
                       'eyeOpening',
                       'verbalResponse',
@@ -1850,7 +1850,7 @@ export default function () {
                   },
                   {
                     label: 'Conciousness',
-                    elementKey: 'subgroup64',
+                    elementKey: 'subgroup67',
                     sgChildren: [
                       'loss',
                       'duration'
@@ -1858,14 +1858,14 @@ export default function () {
                   },
                   {
                     label: 'Pupils',
-                    elementKey: 'subgroup65',
+                    elementKey: 'subgroup68',
                     sgChildren: [
                       'leftPupilSize',
                       'leftPupilResponseToLight',
                       'rightPupilSize',
                       'rightPupilResponseToLight',
                       'bothPupils',
-                      'spacer45'
+                      'spacer48'
                     ]
                   }
                 ]
@@ -1883,14 +1883,14 @@ export default function () {
                 gIndex: '4',
                 gChildren: [
                   {
-                    elementKey: 'subgroup66',
+                    elementKey: 'subgroup69',
                     sgChildren: [
                       'levelOfConciousness',
                       'levelOfConciousnessQuestions',
                       'levelOfConciousnessCommands',
                       'motorLeftArm',
                       'motorRightArm',
-                      'spacer49',
+                      'spacer52',
                       'motorLeftLeg',
                       'motorRightLeg',
                       'limbAtaxia',
@@ -2317,7 +2317,7 @@ export default function () {
           fqn: 'respiratory.generalComments'
         }
       ],
-      generated: '2019-08-30T07:10:28-07:00',
+      generated: '2019-08-30T11:30:57-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2475,7 +2475,7 @@ export default function () {
                 gChildren: [
                   {
                     label: 'Airway',
-                    elementKey: 'subgroup67',
+                    elementKey: 'subgroup70',
                     sgChildren: [
                       'patent',
                       'obstructed',
@@ -2487,7 +2487,7 @@ export default function () {
                   },
                   {
                     label: 'Breath sounds',
-                    elementKey: 'subgroup68',
+                    elementKey: 'subgroup71',
                     sgChildren: [
                       'lul',
                       'rul',
@@ -2501,7 +2501,7 @@ export default function () {
                   },
                   {
                     label: 'Sputum',
-                    elementKey: 'subgroup69',
+                    elementKey: 'subgroup72',
                     sgChildren: [
                       'cough',
                       'sputumColour',
@@ -3066,7 +3066,7 @@ export default function () {
           fqn: 'cardiovascular.comments'
         }
       ],
-      generated: '2019-08-30T07:10:28-07:00',
+      generated: '2019-08-30T11:30:57-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -3749,11 +3749,12 @@ export default function () {
           formIndex: '1',
           inputType: 'textarea',
           label: 'Comments',
+          tableColumn: '21',
           tableLabel: 'Comments',
           fqn: 'gastrointestinal.comments'
         }
       ],
-      generated: '2019-08-30T07:10:28-07:00',
+      generated: '2019-08-30T11:30:57-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -3903,6 +3904,13 @@ export default function () {
               items: [
                 'stoolSource'
               ]
+            },
+            {
+              label: 'Comments',
+              ehr_list_index: '21',
+              items: [
+                'comments'
+              ]
             }
           ],
           form: {
@@ -3925,7 +3933,7 @@ export default function () {
                 gChildren: [
                   {
                     label: 'Abdomen',
-                    elementKey: 'subgroup70',
+                    elementKey: 'subgroup73',
                     sgChildren: [
                       'condition',
                       'pain',
@@ -3934,21 +3942,21 @@ export default function () {
                   },
                   {
                     label: 'Bowel',
-                    elementKey: 'subgroup71',
+                    elementKey: 'subgroup74',
                     sgChildren: [
                       'bowel'
                     ]
                   },
                   {
                     label: 'Bowel sounds',
-                    elementKey: 'subgroup72',
+                    elementKey: 'subgroup75',
                     sgChildren: [
                       'bSounds'
                     ]
                   },
                   {
                     label: 'Emesis',
-                    elementKey: 'subgroup73',
+                    elementKey: 'subgroup76',
                     sgChildren: [
                       'emesisPresent',
                       'colour',
@@ -3958,7 +3966,7 @@ export default function () {
                   },
                   {
                     label: 'Eating',
-                    elementKey: 'subgroup74',
+                    elementKey: 'subgroup77',
                     sgChildren: [
                       'eating',
                       'reason',
@@ -3969,7 +3977,7 @@ export default function () {
                   },
                   {
                     label: 'Stool',
-                    elementKey: 'subgroup75',
+                    elementKey: 'subgroup78',
                     sgChildren: [
                       'lastBm',
                       'stoolColour',

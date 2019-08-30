@@ -65,6 +65,7 @@ export default {
   font-style: italic;
   margin-top: 5em;
 }
+
 .ehr-page-form {
   position: relative;
 }
@@ -78,4 +79,5 @@ export default {
   top: 0;
   right: 0;
 }
+
 </style>

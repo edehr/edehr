@@ -24,8 +24,4 @@ export default {
 
 <style lang="scss">
   @import '../../../scss/definitions';
-  .ehr-subgroup-wrapper {
-    background-color: #cccccc;
-    border: 1px solid #3b3108;
-  }
 </style>

@@ -100,8 +100,11 @@ export default {
   margin-bottom: .5em;
 }
 
-.assignment-save{
+.assignment-save {
   font-style: italic;
   margin-top: 5em;
+  margin-bottom: 2em;
+  margin-right: 2em;
+  text-align: right;
 }
 </style>

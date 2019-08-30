@@ -26,7 +26,9 @@ export default {
   },
   computed: {
     groupClass () {
-      let css = this.group.formCss || 'grid-left-to-right-3'
+      let css = this.group.formCss
+      css = css ? css + ' ' : ''
+      css += 'grid-left-to-right-3'
       return css
     }
   },
@@ -42,11 +44,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../../../scss/definitions';
-.ehr-group-wrapper {
-  background-color: #E8E8E8;
-  border: 1px solid green;
-}
 
 .full-grid,
 .grid-left-to-right-1 {
@@ -92,7 +89,7 @@ export default {
   grid-template-columns: repeat(3, 1fr);
 }
 
-.grid-span-3-columns {
-  grid-column: span 3;
+.grid-span-2-columns {
+  grid-column: span 2;
 }
 </style>
