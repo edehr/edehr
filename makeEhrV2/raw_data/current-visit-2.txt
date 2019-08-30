@@ -235,7 +235,7 @@ Subcutaneous}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 PRN (as needed)
 Once
 Stat}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkset}	eCell	{Label: Schedule time}	{elementKey: schedule}	{pN: 25}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Schedule time}	{tableColumn: 8}	eCell	eCell	eCell	eCell	"{Options: Morning
+{inputType: checkset}	eCell	{Label: Schedule time}	{elementKey: scheduleTime}	{pN: 25}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Schedule time}	{tableColumn: 8}	eCell	eCell	eCell	eCell	"{Options: Morning
 Mid day
 Bedtime}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	{pN: 25}	{fN: 1}	{gN: 3}	{sgN: }	{formCss: full-grid}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
