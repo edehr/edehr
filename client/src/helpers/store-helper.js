@@ -11,6 +11,10 @@ class StoreHelperWorker {
     let v2 =  this.shc.$store.state.system.usingV2
     return v2
   }
+  getAsLoadedPageData (pageKey) {
+    return this.shc.$store.getters['ehrData/asLoadedDataForPageKey'](pageKey)
+  }
+
   /* **********   General  ************** */
 
 

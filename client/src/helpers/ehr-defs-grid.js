@@ -33,7 +33,7 @@ class EhrDefsWorker {
 
   getPageDefinition (pageKey) {
     let pd =  this.pageDefs[pageKey]
-    console.log('EhrDefsGrid getPageDef', pageKey, pd)
+    // console.log('EhrDefsGrid getPageDef', pageKey, pd)
     return pd
   }
   getAllPageKeys () {
@@ -55,6 +55,11 @@ class EhrDefsWorker {
   getPageTables (pageKey) {
     let elements = this.getPageElements(pageKey)
     return Object.values(elements).filter( (e) => {return e.isTable})
+  }
+
+  getPageTable (pageKey, tableKey) {
+    let tbls = this.getPageTables(pageKey)
+    return tbls.find( t => t.tableKey === tableKey)
   }
 
   getChildElements (pageKey, filterKey, filterValue, desiredProperty) {

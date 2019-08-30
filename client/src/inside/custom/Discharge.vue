@@ -1,20 +1,12 @@
 // Custom page for Discharge Summary
 <template lang="pug">
   div(class="ehr-page")
-    ehr-panel-header {{ uiProps.pageTitle }}
-      div(slot="controls", v-show="showPageFormControls")
-        ehr-edit-controls(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
-    ehr-panel-content
-      div(v-for="key in summaries")
-        ehr-summary-table(:summaryKey="key", :ehrHelp="ehrHelp")
-        hr
-      div(class="region ehr-page-content")
-        ehr-page-form(v-if="uiProps.hasForm", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey",)
-        div(v-if="uiProps.hasTable", v-for="tableDef in uiProps.tables", :key="tableDef.tableKey")
-          ehr-page-table(:tableDef="tableDef", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey", :showTableLabel="showTableLabel")
-      div(class="page-update") Page updated: {{ ehrHelp.formatDate(uiProps.generated) }}
+    div(v-if="isV2")
+      discharge-v2(:ehrHelp="ehrHelp")
+    div(v-else)
+      discharge-v1(:ehrHelp="ehrHelp")
     div(style="display:none")
-      p This Discharge page is generated.
+      p This Discharge page customized
       p Label: Discharge summary
       p Data Key: dischargeSummary
       p Component name: Discharge
@@ -24,47 +16,40 @@
 </template>
 
 <script>
-import EhrPanelHeader from '../components/EhrPanelHeader.vue'
-import EhrPanelContent from '../components/EhrPanelContent.vue'
-import EhrEditControls from '../components/EhrEditControls.vue'
-import EhrPageTable from '../components/EhrPageTable'
-import EhrPageForm from '../components/EhrPageForm.vue'
 import EhrHelp from '../../helpers/ehr-helper'
-import { getPageDefinition } from '../../helpers/ehr-defs'
-import EhrSummaryTable from '../components/EhrSummaryTable.vue'
-import { ESK_Referrals, ESK_LabReqs, ESK_Procedures, ESK_DischargeProcedures, ESK_Medications, ESK_MARS } from '../../helpers/ehr-summary-table'
+import EhrHelpV2 from '../components/page/ehr-helper'
+import EhrDefs from '../../helpers/ehr-defs-grid'
+import DischargeV1 from './DischargeV1'
+import DischargeV2 from '../components/discharge/DischargeV2'
 
 export default {
   name: 'Discharge',
   components: {
-    EhrSummaryTable,
-    EhrPanelHeader,
-    EhrPanelContent,
-    EhrPageForm,
-    EhrPageTable,
-    EhrEditControls
+    DischargeV1,
+    DischargeV2
   },
   data: function () {
     return {
-      summaries: [ESK_Referrals, ESK_Medications, ESK_MARS, ESK_Procedures, ESK_DischargeProcedures, ESK_LabReqs],
       pageDataKey: 'dischargeSummary',
       ehrHelp: undefined
     }
   },
+  provide () {
+    return {
+      pageDataKey: this.pageDataKey,
+    }
+  },
   computed: {
-    uiProps () {
-      return getPageDefinition(this.pageDataKey)
-    },
-    showTableLabel () {
-      let tbls = this.uiProps.tables || []
-      return tbls.length > 1
-    },
-    showPageFormControls () {
-      return this.ehrHelp.showPageFormControls()
+    isV2 () {
+      return EhrDefs.isPageV2(this.pageDataKey)
     }
   },
   created () {
-    this.ehrHelp = new EhrHelp(this, this.$store, this.pageDataKey, this.uiProps)
+    if (this.isV2) {
+      this.ehrHelp = new EhrHelpV2(this, this.$store, this.pageDataKey)
+    } else {
+      this.ehrHelp = new EhrHelp(this, this.$store, this.pageDataKey)
+    }
   },
   beforeRouteLeave (to, from, next) {
     this.ehrHelp.beforeRouteLeave(to, from, next)
@@ -74,9 +59,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.page-update {
-  margin-bottom: 5em;
-}
-</style>
