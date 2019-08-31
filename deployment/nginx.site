@@ -1,15 +1,12 @@
 ## To be placed in /etc/nginx/sites-available and then linked in sites-enabled
 server {
   listen 80;
-  server_name 142.93.148.22;
-## TODOs
-# use SSL
-# serve static
-#	return 301 https://$server_name$request_uri;
-#}
-#server {
-# server_name 142.93.148.22;
-#	listen 443 ssl;
+  server_name edehrapp-dev.bccampus.ca;
+
+  listen 443 ssl;
+
+  ssl_certificate /etc/nginx/ssl/wildcard.bccampus.ca_2019.crt;
+  ssl_certificate_key /etc/nginx/ssl/wildcard.bccampus.ca_2019.ckey;
 
   #Strict-Transport-Security to prevent man in the middle attacks
   add_header Strict-Transport-Security "max-age=31536000";
