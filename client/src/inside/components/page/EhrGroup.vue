@@ -2,7 +2,7 @@
   div
     h3(v-if="group.label") {{ group.label }}
     div(class="ehr-group-wrapper", :class="groupClass")
-      div(v-for="child in group.gChildren", :key="forIndex(child)", class="ehr-group-for")
+      div(v-for="child in group.gChildren", :key="forIndex(child)", class="ehr-group-for foo", :class="childClass(child)")
         ehr-sub-group(v-if="isSubgroup(child)", :subgroup="child", :ehrHelp="ehrHelp")
         ehr-element-form(v-else-if="child", :elementKey="child", :ehrHelp="ehrHelp")
         div(v-else) This group has an undefined element
@@ -12,6 +12,7 @@
 import EhrEditControls from '../../components/EhrEditControls.vue'
 import EhrSubGroup from './EhrSubGroup'
 import EhrElementForm from './EhrElementForm'
+import EhrDefs from '../../../helpers/ehr-defs-grid'
 
 export default {
   name: 'EhrPageForm',
@@ -20,6 +21,7 @@ export default {
     EhrSubGroup,
     EhrElementForm
   },
+  inject: [ 'pageDataKey'],
   props: {
     group: {type: Object },
     ehrHelp: { type: Object }
@@ -30,9 +32,13 @@ export default {
       css = css ? css + ' ' : ''
       css += 'grid-left-to-right-3'
       return css
-    }
+    },
   },
   methods: {
+    childClass (elementKey) {
+      let element = EhrDefs.getPageChildElement(this.pageDataKey, elementKey)
+      return element.formCss
+    },
     forIndex (child) {
       return (typeof element === 'string') ? child : child.elementKey
     },
