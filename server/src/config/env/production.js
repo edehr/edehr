@@ -5,8 +5,12 @@ module.exports = {
   // To run prod locally with a dev client server
   //
   // API_URL=http://localhost:27004 CLIENT_URL=http://localhost:28000 node index.js
-  apiUrl: process.env.API_URL || 'http://142.93.148.22/api',
-  clientUrl: process.env.CLIENT_URL || 'http://142.93.148.22',
+  // BC Campus server: edehrapp-dev.bccampus.ca
+  // Digital Ocean server provided by Bryan 142.93.148.22
+  // apiUrl: process.env.API_URL || 'http://142.93.148.22/api',
+  // clientUrl: process.env.CLIENT_URL || 'http://142.93.148.22',
+  apiUrl: process.env.API_URL || 'https://edehrapp-dev.bccampus.ca/api',
+  clientUrl: process.env.CLIENT_URL || 'https://edehrapp-dev.bccampus.ca',
   databaseName: databaseName,
   database: {
     uri: 'mongodb://localhost:27018/' + databaseName,
