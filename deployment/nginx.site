@@ -6,7 +6,7 @@ server {
   listen 443 ssl;
 
   ssl_certificate /etc/nginx/ssl/wildcard.bccampus.ca_2019.crt;
-  ssl_certificate_key /etc/nginx/ssl/wildcard.bccampus.ca_2019.ckey;
+  ssl_certificate_key /etc/nginx/ssl/wildcard.bccampus.ca_2019.key;
 
   #Strict-Transport-Security to prevent man in the middle attacks
   add_header Strict-Transport-Security "max-age=31536000";

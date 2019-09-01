@@ -134,6 +134,25 @@ export default class LTIController {
           return toolConsumer
         })
         .then(() => {
+
+          let debugLtiValidation = true
+
+          if (debugLtiValidation) {
+            // mimic a little of what the provider does to verify the oauth signature
+            let secret = req.toolConsumer.oauth_consumer_secret
+            let {protocol} = req
+            let originalUrl = req.originalUrl || req.url
+            let {encrypted} = req.connection
+            const parsedUrl = url.parse(originalUrl, true)
+            const hitUrl = protocol + '://' + req.headers.host + parsedUrl.pathname
+            console.log('req.url', req.url)
+            console.log('originalUrl', originalUrl)
+            console.log('protocol', protocol)
+            console.log('encrypted', encrypted)
+            console.log('hitUrl', hitUrl)
+            console.log('req.toolConsumer.oauth_consumer_secret', secret)
+            console.log('ltiData', ltiData)
+          }
           var provider = new lti.Provider(ltiData, req.toolConsumer.oauth_consumer_secret)
           debug('strategyVerify validate msg with provider')
           provider.valid_request(req, function (err, isValid) {
