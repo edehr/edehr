@@ -109,19 +109,20 @@ export default {
      * @private
      */
     _loadApiUrl (apiUrl) {
+      let db = true
       return new Promise((resolve, reject) => {
         if (apiUrl) {
-          // console.log('API url provided in query: ', apiUrl)
+          if (db) console.log('API url provided in query: ', apiUrl)
         } else {
-          // console.log('No API url in query')
+          if (db) console.log('No API url in query')
           apiUrl = localStorage.getItem('apiUrl')
-          // console.log('Can we use API URL from local storage', apiUrl)
+          if (db) console.log('Can we use API URL from local storage', apiUrl)
           if (!apiUrl) {
             setApiError(this, Text.MISSING_API_URL)
             return reject(msg)
           }
         }
-        // console.log('Store API URL in $store (also stores to local storage)', apiUrl)
+        if (db) console.log('Store API URL in $store (also stores to local storage)', apiUrl)
         this.$store.commit('visit/apiUrl', apiUrl)
         resolve(apiUrl)
       })
