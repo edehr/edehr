@@ -337,7 +337,8 @@ export default class LTIController {
     }
     let visit = req.visit
     let port = req.get('port') ? ':' + req.get('port') : ''
-    let apiUrl = encodeURIComponent(req.protocol + '://' + req.get('host') + port + '/api')
+    // let apiUrl = encodeURIComponent(req.protocol + '://' + req.get('host') + port + '/api')
+    let apiUrl = this.config.apiUrl
     let route = req.assignment.ehrRoutePath || '/ehr'
 
     if (visit.isInstructor) {
@@ -349,6 +350,7 @@ export default class LTIController {
       let errs = req.errors.join('-')
       url += '&error=' + errs
     }
+    debug('LTI redirect url is:', url)
     req.ltiNextUrl = url
     return req
   }
