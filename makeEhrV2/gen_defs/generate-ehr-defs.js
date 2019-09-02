@@ -11,8 +11,8 @@ const sourceFiles = []
 sourceFiles.push('patient-profile')
 sourceFiles.push('current-visit-1')
 sourceFiles.push('current-visit-2')
-// sourceFiles.push('patient-chart')
-// sourceFiles.push('external-resources')
+sourceFiles.push('patient-chart')
+sourceFiles.push('external-resources')
 sourceFiles.push('test-page')
 
 main()
