@@ -36,8 +36,12 @@ export default {
   },
   methods: {
     childClass (elementKey) {
-      let element = EhrDefs.getPageChildElement(this.pageDataKey, elementKey)
-      return element.formCss
+      if (typeof elementKey === 'string') {
+        let element = EhrDefs.getPageChildElement(this.pageDataKey, elementKey)
+        if (!element) console.error('Why no element for key ', elementKey)
+        return element.formCss
+      }
+      return ''
     },
     forIndex (child) {
       return (typeof element === 'string') ? child : child.elementKey

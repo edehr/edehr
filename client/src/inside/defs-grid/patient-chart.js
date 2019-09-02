@@ -1,0 +1,436 @@
+export default function () {
+  return {
+    progressNotes: {
+      pageDataKey: 'progressNotes',
+      pageTitle: 'Progress notes',
+      pIndex: '29',
+      isV2: true,
+      hasGridTable: true,
+      pageChildren: [
+        {
+          elementKey: 'name',
+          formIndex: '1',
+          inputType: 'text',
+          label: 'Name',
+          tableColumn: '1',
+          tableLabel: 'Header',
+          fqn: 'progressNotes.name'
+        },
+        {
+          elementKey: 'profession',
+          formIndex: '1',
+          inputType: 'text',
+          label: 'Profession',
+          tableColumn: '1',
+          fqn: 'progressNotes.profession'
+        },
+        {
+          elementKey: 'day',
+          formIndex: '1',
+          inputType: 'day',
+          label: 'Day',
+          tableColumn: '1',
+          fqn: 'progressNotes.day'
+        },
+        {
+          elementKey: 'time',
+          formIndex: '1',
+          inputType: 'time',
+          label: 'Time',
+          tableColumn: '1',
+          fqn: 'progressNotes.time'
+        },
+        {
+          elementKey: 'note',
+          dataCaseStudy: 'Erin Johns is 74 years old. She is widowed with four children, one of whom lives at home with her in their original family home. Two of Erins children live within a one-hour drive from her, and one lives a three-hour flight away. She also has 10 grandchildren and one great grandchild. Erin describes herself as a non-smoker, but she smoked socially when she was in her early twenties for about five years. She is a retired hairdresser.',
+          formIndex: '1',
+          inputType: 'textarea',
+          label: 'Progress note',
+          fqn: 'progressNotes.note'
+        }
+      ],
+      generated: '2019-09-02T05:52:36-07:00',
+      pageElements: {
+        table: {
+          elementKey: 'table',
+          tableKey: 'table',
+          isTable: true,
+          addButtonText: 'Add an encounter note',
+          ehr_list: [
+            {
+              label: 'Header',
+              ehr_list_index: '1',
+              items: [
+                'name',
+                'profession',
+                'day',
+                'time'
+              ]
+            }
+          ],
+          form: {
+            elementKey: 'table',
+            addButtonText: 'Add an encounter note',
+            formKey: 'table',
+            ehr_groups: [
+              {
+                formCss: 'record-header',
+                gIndex: '1',
+                gChildren: [
+                  'name',
+                  'profession',
+                  'day',
+                  'time'
+                ]
+              },
+              {
+                gIndex: '2',
+                gChildren: [
+                  'note'
+                ]
+              }
+            ],
+            ehr_data: {
+              name: '',
+              profession: '',
+              day: '',
+              time: '',
+              note: ''
+            }
+          }
+        }
+      }
+    },
+    carePlan: {
+      pageDataKey: 'carePlan',
+      pageTitle: 'Interprofessional plan of care',
+      pIndex: '30',
+      isV2: true,
+      hasGridTable: true,
+      pageChildren: [
+        {
+          elementKey: 'name',
+          formIndex: '1',
+          inputType: 'text',
+          label: 'Name',
+          tableColumn: '1',
+          tableLabel: 'Header',
+          fqn: 'carePlan.name'
+        },
+        {
+          elementKey: 'profession',
+          formIndex: '1',
+          inputType: 'text',
+          label: 'Profession',
+          tableColumn: '1',
+          fqn: 'carePlan.profession'
+        },
+        {
+          elementKey: 'day',
+          formIndex: '1',
+          inputType: 'day',
+          label: 'Day',
+          tableColumn: '1',
+          fqn: 'carePlan.day'
+        },
+        {
+          elementKey: 'time',
+          formIndex: '1',
+          inputType: 'time',
+          label: 'Time',
+          tableColumn: '1',
+          fqn: 'carePlan.time'
+        },
+        {
+          elementKey: 'clinical',
+          formIndex: '1',
+          inputType: 'textarea',
+          label: 'Clinical issue',
+          fqn: 'carePlan.clinical'
+        },
+        {
+          elementKey: 'goal',
+          formIndex: '1',
+          inputType: 'textarea',
+          label: 'Goal of care',
+          fqn: 'carePlan.goal'
+        },
+        {
+          elementKey: 'interventions',
+          formIndex: '1',
+          inputType: 'textarea',
+          label: 'Intervention',
+          fqn: 'carePlan.interventions'
+        },
+        {
+          elementKey: 'evaluation',
+          formIndex: '1',
+          inputType: 'textarea',
+          label: 'Evaluation of intervention',
+          fqn: 'carePlan.evaluation'
+        },
+        {
+          elementKey: 'status',
+          formIndex: '1',
+          inputType: 'select',
+          label: 'Status',
+          options: [
+            {
+              text: 'Active'
+            },
+            {
+              text: 'In progress'
+            },
+            {
+              text: 'Complete'
+            }
+          ],
+          fqn: 'carePlan.status'
+        }
+      ],
+      generated: '2019-09-02T05:52:36-07:00',
+      pageElements: {
+        table2: {
+          elementKey: 'table2',
+          tableKey: 'table2',
+          isTable: true,
+          addButtonText: 'Add a care plan',
+          ehr_list: [
+            {
+              label: 'Header',
+              ehr_list_index: '1',
+              items: [
+                'name',
+                'profession',
+                'day',
+                'time'
+              ]
+            }
+          ],
+          form: {
+            elementKey: 'table2',
+            addButtonText: 'Add a care plan',
+            formKey: 'table2',
+            ehr_groups: [
+              {
+                formCss: 'record-header',
+                gIndex: '1',
+                gChildren: [
+                  'name',
+                  'profession',
+                  'day',
+                  'time'
+                ]
+              },
+              {
+                gIndex: '2',
+                gChildren: [
+                  'clinical',
+                  'goal',
+                  'interventions',
+                  'evaluation',
+                  'status'
+                ]
+              }
+            ],
+            ehr_data: {
+              name: '',
+              profession: '',
+              day: '',
+              time: '',
+              clinical: '',
+              goal: '',
+              interventions: '',
+              evaluation: '',
+              status: ''
+            }
+          }
+        }
+      }
+    },
+    consults: {
+      pageDataKey: 'consults',
+      pageTitle: 'Consults',
+      pIndex: '31',
+      isV2: true,
+      hasGridForm: true,
+      pageChildren: [],
+      generated: '2019-09-02T05:52:36-07:00',
+      pageElements: {
+        page_form125: {
+          elementKey: 'page_form125',
+          formKey: 'page_form125',
+          isPageForm: true,
+          ehr_groups: []
+        }
+      }
+    },
+    labResults: {
+      pageDataKey: 'labResults',
+      pageTitle: 'Laboratory results',
+      pIndex: '32',
+      isV2: true,
+      hasGridForm: true,
+      pageChildren: [
+        {
+          elementKey: 'labReport1_1',
+          assetBase: 'lab-reports',
+          assetName: 'day-0-abg-laboratory-report.pdf',
+          formIndex: '1',
+          inputType: 'assetLink',
+          label: 'ABG laboratory report',
+          fqn: 'labResults.labReport1_1'
+        },
+        {
+          elementKey: 'labReport2_1',
+          assetBase: 'lab-reports',
+          assetName: 'day-1-abg-laboratory-report.pdf',
+          formIndex: '1',
+          inputType: 'assetLink',
+          label: 'ABG laboratory report',
+          fqn: 'labResults.labReport2_1'
+        },
+        {
+          elementKey: 'labReport3_1',
+          assetBase: 'lab-reports',
+          assetName: 'day-3-c-s-laboratory-report.pdf',
+          formIndex: '1',
+          inputType: 'assetLink',
+          label: 'C&S laboratory report',
+          fqn: 'labResults.labReport3_1'
+        },
+        {
+          elementKey: 'labReport4_1',
+          assetBase: 'lab-reports',
+          assetName: 'day-3-final-c-s-laboratory-report.pdf',
+          formIndex: '1',
+          inputType: 'assetLink',
+          label: 'Final C&S laboratory report',
+          fqn: 'labResults.labReport4_1'
+        }
+      ],
+      generated: '2019-09-02T05:52:36-07:00',
+      pageElements: {
+        page_form126: {
+          elementKey: 'page_form126',
+          formKey: 'page_form126',
+          isPageForm: true,
+          ehr_groups: [
+            {
+              gIndex: '1',
+              gChildren: [
+                {
+                  label: 'Laboratory results',
+                  elementKey: 'subgroup131',
+                  sgChildren: [
+                    'labReport1_1',
+                    'labReport2_1',
+                    'labReport3_1',
+                    'labReport4_1'
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    medicalImaging: {
+      pageDataKey: 'medicalImaging',
+      pageTitle: 'Medical imaging',
+      pIndex: '33',
+      isV2: true,
+      hasGridForm: true,
+      pageChildren: [
+        {
+          elementKey: 'day0',
+          formIndex: '1',
+          inputType: 'form_label',
+          label: 'Day 0',
+          fqn: 'medicalImaging.day0'
+        },
+        {
+          elementKey: 'day2',
+          formIndex: '1',
+          inputType: 'form_label',
+          label: 'Day 2',
+          fqn: 'medicalImaging.day2'
+        },
+        {
+          elementKey: 'copd_xray',
+          assetBase: 'diagnostic-test-results',
+          assetName: 'xray-report-for-copd-day-0.pdf',
+          formIndex: '1',
+          inputType: 'assetLink',
+          label: 'COPD xray',
+          fqn: 'medicalImaging.copd_xray'
+        },
+        {
+          elementKey: 'pneumonia_xray',
+          assetBase: 'diagnostic-test-results',
+          assetName: 'xray-report-for-pneumonia-day-2.pdf',
+          formIndex: '1',
+          inputType: 'assetLink',
+          label: 'Pneumonia xray',
+          fqn: 'medicalImaging.pneumonia_xray'
+        },
+        {
+          elementKey: 'copd_report',
+          assetBase: 'diagnostic-test-results',
+          assetName: 'copd-xray.jpg',
+          formIndex: '1',
+          inputType: 'assetLink',
+          label: 'COPD report',
+          fqn: 'medicalImaging.copd_report'
+        },
+        {
+          elementKey: 'pneumonia_report',
+          assetBase: 'diagnostic-test-results',
+          assetName: 'chest-xray-with-pneumonia.jpg',
+          formIndex: '1',
+          inputType: 'assetLink',
+          label: 'Pneumonia report',
+          fqn: 'medicalImaging.pneumonia_report'
+        }
+      ],
+      generated: '2019-09-02T05:52:36-07:00',
+      pageElements: {
+        page_form128: {
+          elementKey: 'page_form128',
+          formKey: 'page_form128',
+          isPageForm: true,
+          ehr_groups: [
+            {
+              gIndex: '1',
+              gChildren: [
+                'day0',
+                'day2',
+                'copd_xray',
+                'pneumonia_xray',
+                'copd_report',
+                'pneumonia_report'
+              ]
+            }
+          ]
+        }
+      }
+    },
+    operationReports: {
+      pageDataKey: 'operationReports',
+      pageTitle: 'Operative reports and anaesthesia record',
+      pIndex: '34',
+      isV2: true,
+      hasGridForm: true,
+      pageChildren: [],
+      generated: '2019-09-02T05:52:36-07:00',
+      pageElements: {
+        page_form130: {
+          elementKey: 'page_form130',
+          formKey: 'page_form130',
+          isPageForm: true,
+          ehr_groups: []
+        }
+      }
+    }
+  }
+}

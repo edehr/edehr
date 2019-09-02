@@ -4,15 +4,15 @@ import StoreHelper from './store-helper'
 import PP from '../inside/defs-grid/patient-profile'
 import CV1 from '../inside/defs-grid/current-visit-1'
 import CV2 from '../inside/defs-grid/current-visit-2'
-// import PC from '../inside/defs-grid/patient-chart'
-// import ER from '../inside/defs-grid/external-resources'
+import PC from '../inside/defs-grid/patient-chart'
+import ER from '../inside/defs-grid/external-resources'
 import TP from '../inside/defs-grid/test-page'
 const pageDefs = Object.assign(
   PP(),
   CV1(),
   CV2(),
-  // PC(),
-  // ER(),
+  PC(),
+  ER(),
   TP())
 
 const PROPS = EhrTypes.elementProperties
