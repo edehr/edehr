@@ -165,20 +165,26 @@ class StoreHelperWorker {
     let activity = visitInfo.activity || {}
     let activityData = component.$store.state.ehrData.sActivityData
     let name = component.$store.state.visit.sUserInfo.fullName
+    let currentEvaluationStudent = component.$store.getters['instructor/currentEvaluationStudent']
+    let student = currentEvaluationStudent.user || {}
+    // console.log('getPanelData: student', JSON.stringify(currentEvaluationStudent, null, 2))
     // console.log('assignment', JSON.stringify(assignment))
     // console.log('visitInfo', JSON.stringify(visitInfo, null, 2))
     // console.log('activity', JSON.stringify(activity, null, 2))
     // sActivityData provides the seed and current assignment data
     // let sActivityData = this.$store.state.ehrData.sActivityData || {}
+    // console.log('GetPagelData data.lastVisitDate', data.lastVisitDate)
     // console.log('sActivityData', JSON.stringify(sActivityData, null, 2))
     let data = {
-      studentName: name,
+      student: student,
+      studentName: student.fullName,
       courseTitle: activity.context_title,
       activityTitle: activity.resource_link_title,
       activityDescription: activity.resource_link_description,
       assignmentName: assignment.name,
       assignmentDescription: assignment.description,
-      activityData: activityData
+      activityData: activityData,
+      lastVisitDate: currentEvaluationStudent.lastVisitDate
     }
     return data
   }
