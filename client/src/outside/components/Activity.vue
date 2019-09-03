@@ -4,7 +4,7 @@
       div(class="header-column is-10 column")
         h3(:title="activityId") {{ activity.resource_link_title }}
         p LMS description: {{ activity.resource_link_description }}
-        p Assignment name:
+        p Assignment name: &nbsp;
           ui-link(:name="'assignments'", :params="{assignmentId: assignment._id}") {{ assignment.name }}
         p Assignment description: {{ assignment.description }}
         p LMS configuration: assignment={{ assignment.externalId }}

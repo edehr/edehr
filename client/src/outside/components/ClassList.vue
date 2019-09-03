@@ -18,11 +18,10 @@
             td {{ statusText(sv) }}
             td.actions
               span(v-if="sv.activityData.submitted && !sv.activityData.evaluated")
-                span &nbsp;
                 ui-button(v-on:buttonClicked="unsubmit(sv)", v-bind:secondary="true", :title="unsubmitTool") {{unsubmitText}}
               span(v-if="sv.activityData.submitted && !sv.activityData.evaluated")
                 ui-button(v-on:buttonClicked="goToEhr(sv)", v-bind:secondary="true", title="View and evaluate in the EHR") Evaluate student work
-              span(v-if="showEvaluateAction(sv)") &nbsp;
+              span(v-if="showEvaluateAction(sv)")
                 ui-button(v-on:buttonClicked="markEvaluated(sv)", v-bind:secondary="true", :title="evaluatedButtonTooltip(sv)") {{ evaluatedButtonText(sv) }}
 
 </template>
@@ -40,7 +39,7 @@ export default {
   data () {
     return {
       unsubmitText: 'Send back for edits',
-      unsubmitTool: 'Send back for edits'
+      unsubmitTool: 'Send back to student for edits'
     }
   },
   props: {
@@ -54,9 +53,6 @@ export default {
     },
     evaluatedButtonTooltip (sv) {
       return sv.activityData.evaluated ? 'I want to edit the evaluation notes' : 'Evaluation is done. Let the student see the evaluation notes.'
-    },
-    showEvaluateLabel (sv) {
-      return sv.activityData.evaluated
     },
     showEvaluateAction (sv) {
       return sv.activityData.submitted && sv.activityData.evaluationData
