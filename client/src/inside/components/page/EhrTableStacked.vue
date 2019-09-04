@@ -17,7 +17,7 @@
 
 <script>
 import EhrTableCommon from './EhrTableCommon'
-const debug = true
+const debug = false
 
 export default {
   extends: EhrTableCommon,

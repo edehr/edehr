@@ -3265,6 +3265,7 @@ export default function () {
           form: {
             elementKey: 'table',
             addButtonText: 'Add an administration record',
+            formOption: 'customCode',
             formKey: 'table',
             ehr_groups: [
               {

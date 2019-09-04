@@ -85,6 +85,8 @@ export default {
       return formatTimeStr(sv.activityData.lastDate)
     },
     goToEhr (studentVisit) {
+      // disable the develop content in case it is on
+      StoreHelper.setIsDevelopingContent(this, false)
       let studentId = studentVisit._id
       // Go to the first screen related to the assignent
       let name = '/ehr/patient/demographics'

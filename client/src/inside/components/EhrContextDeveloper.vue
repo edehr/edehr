@@ -5,7 +5,7 @@
         div(class="textField") Name: {{ sSeedContent.name }}
         div(class="textField") Version: {{ sSeedContent.version}}
         div(class="textField") Description: {{ sSeedContent.description}}
-        div(class="textField") Ehr: {{ sSeedContent.ehrData}}
+        // div(class="textField") Ehr: {{ sSeedContent.ehrData}}
 </template>
 
 <script>

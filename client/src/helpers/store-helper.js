@@ -164,7 +164,6 @@ class StoreHelperWorker {
     let assignment = visitInfo.assignment || {}
     let activity = visitInfo.activity || {}
     let activityData = component.$store.state.ehrData.sActivityData
-    let name = component.$store.state.visit.sUserInfo.fullName
     let currentEvaluationStudent = component.$store.getters['instructor/currentEvaluationStudent']
     let student = currentEvaluationStudent.user || {}
     // console.log('getPanelData: student', JSON.stringify(currentEvaluationStudent, null, 2))

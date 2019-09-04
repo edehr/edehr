@@ -38,10 +38,10 @@ export default {
       return StoreHelper.isStudent(this)
     },
     showInstructor () {
-      return StoreHelper.isInstructor(this)
+      return StoreHelper.isInstructor(this) && !StoreHelper.isDevelopingContent(this)
     },
     showSeeding () {
-      return false
+      return StoreHelper.isDevelopingContent(this)
     }
   },
   methods: {

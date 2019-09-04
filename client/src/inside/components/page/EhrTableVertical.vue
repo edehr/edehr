@@ -1,11 +1,11 @@
 <template lang="pug">
-  div tc {{transposedColumns[0]}}
+  div
     div(v-if="!hasData") There are no records or reports for the patient.
     div(v-else)
       table.table_vertical
         tbody
           tr(v-for="column in transposedColumns", :class="tableColumnCss(column)")
-            td(:class="transposeLabelCss(column)") {{column}}
+            td(:class="transposeLabelCss(column)")
               span(v-html="transposeLabel(column)")
             td(v-for="cell in transposeData(column)", :class="transposeValueCss(cell)") {{ getCellData(cell) }}
 </template>
@@ -45,7 +45,15 @@ export default {
       return column.slice(1,column.length)
     },
     getCellData (cell) {
-      return cell
+      // console.log('EhrTableVertical getCellData', cell)
+      let stack = cell.stack
+      let values = []
+      stack.forEach ( (c) => {
+        if (c.value) {
+          values.push(c.value)
+        }
+      })
+      return values.join(',')
     },
     tableColumnCss: function (column) {
       // let hide = 'hide-table-element'
@@ -62,7 +70,7 @@ export default {
     refresh () {
       this.tableForm = this.ehrHelp.getTable(this.tableKey)
       this.transposedColumns = this.tableForm.transposedColumns
-      console.log('EhrTableVertical table view refresh', this.transposedColumns)
+      // console.log('EhrTableVertical table view refresh', this.transposedColumns)
     }
   }
 }

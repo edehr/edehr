@@ -7,8 +7,8 @@
     //div(v-else-if="isStacked", class="stacked_table")
     div
       h2(v-show="tableDef.label") {{tableDef.label}}
-      // ehr-table-vertical(:ehrHelp="ehrHelp", :tableDef="tableDef")
-      ehr-table-stacked(:ehrHelp="ehrHelp", :tableDef="tableDef", :tableForm="tableForm")
+      ehr-table-vertical(v-if="isVertical", :ehrHelp="ehrHelp", :tableDef="tableDef")
+      ehr-table-stacked(v-if="isStacked", :ehrHelp="ehrHelp", :tableDef="tableDef", :tableForm="tableForm")
     ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDef", :errorList="errorList" )
 </template>
 
@@ -51,10 +51,12 @@ export default {
       return this.tableDef.tableKey
     },
     isVertical () {
-      return this.tableForm.isTransposed
+      let isVert = this.tableDef.form.formOption === 'transpose'
+      // console.log('EhrPageTable is table vertical? ', isVert,  this.tableDef.form.formOption)
+      return isVert
     },
     isStacked () {
-      return this.tableForm.isStacked
+      return ! this.isVertical
     },
     showTableAddButton () {
       return this.ehrHelp.showTableAddButton()
@@ -70,7 +72,7 @@ export default {
     },
     refresh () {
       this.tableForm = this.ehrHelp.getTable(this.tableKey)
-      console.log('EhrPageTable refresh ', this.tableKey, this.tableForm)
+      // console.log('EhrPageTable refresh ', this.tableKey, this.tableForm)
     }
   },
   mounted: function () {
