@@ -38,7 +38,7 @@ export default {
   },
   computed: {
     uiProps () {
-      return getPageDefinition(this.pageDataKey)
+      return getPageDefinition(this.pageDataKey, true)
     }
   },
   created () {

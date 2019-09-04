@@ -23,6 +23,7 @@ export default class EhrHelp {
     // wait until components are set up and then refresh table data
     component.$nextTick( () => this._refreshTables() )
   }
+  isV2 () { return false }
 
   getPageKey () { return this.pageKey }
   getPageDef () { return getPageDefinition(this.pageKey) }

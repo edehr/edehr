@@ -1,7 +1,7 @@
 <template lang="pug">
   div(class="content")
     tabs
-      tab(name="Graph",:selected="true")
+      tab(name="Graph", :selected="true")
         div(v-show="showTableAddButton")
           ui-button(v-on:buttonClicked="showDialog") {{ tableDef.addButtonText }}
         input(class="checkbox", type="checkbox", v-model="showingSpecial")
@@ -53,11 +53,11 @@ export default {
   },
   computed: {
     showTableAddButton () {
-      return this.ehrHelp.showTableAddButton()
+      return true// this.ehrHelp.showTableAddButton()
     },
     uiProps () {
       let pageKey = this.ehrHelp.getPageKey()
-      return getPageDefinition(pageKey)
+      return getPageDefinition(pageKey, true)
     },
     refreshData () {
       this.refresh()
