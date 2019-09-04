@@ -46,6 +46,8 @@ export default class EhrHelpV2 {
     // component.$nextTick( () => this._refreshTables() )
   }
 
+  isV2 () { return true }
+
   getPageKey () { return this.pageKey }
   getPageDef () { return EhrDefs.getPageDefinition(this.pageKey) }
   getPageTableDefs () { return EhrDefs.getPageTables(this.pageKey) }

@@ -118,7 +118,7 @@ export default {
       const file = event.target.files[0]
       const fileName = file.name
       StoreHelper.setLoading(component, true)
-      return readFile().then( (contents) => {
+      return readFile(file).then( (contents) => {
         return importSeedData(component, seedId, contents)
           .then(result => {
             let title = TEXT.AGREE_TITLE(seedName)

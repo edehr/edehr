@@ -11,7 +11,7 @@
 import VitalChart from '../../helpers/vitalChart'
 
 const yAxisWidth = 75
-const canvasHeight = 2000
+const canvasHeight = 1140
 const canvasWidth = 8200
 
 export default {

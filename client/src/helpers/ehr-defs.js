@@ -15,11 +15,12 @@ const pageDefsExt = ER()
 const pageDefsTP = TP()
 const pageDefs = Object.assign(pageDefsPP, pageDefsCV1, pageDefsCV2, pageDefsPC, pageDefsExt, pageDefsTP)
 
-export function getPageDefinition (pageKey) {
+export function getPageDefinition (pageKey, forceV1) {
   // return page def from V2 if available otherwise fall back on V1
   let pd
-  if (StoreHelper.usingV2()) {
+  if (!forceV1 && StoreHelper.usingV2()) {
     pd = EhrDefs.getPageDefinition(pageKey)
+    console.log('getPageDef for V2 ', pageKey, pd)
   }
   pd = pd ? pd : pageDefs[pageKey]
   return pd
