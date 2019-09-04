@@ -57,6 +57,7 @@ const formProperties  = [
   'elementKey',
   'label',
   'addButtonText',
+  'formOption',
   'formCss',
 ]
 

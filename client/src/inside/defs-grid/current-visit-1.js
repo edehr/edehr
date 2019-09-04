@@ -130,7 +130,7 @@ export default function () {
           fqn: 'visit.transferOutTime'
         }
       ],
-      generated: '2019-08-30T17:00:21-07:00',
+      generated: '2019-09-04T11:04:11-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -481,7 +481,7 @@ export default function () {
           fqn: 'vitals.flowRate'
         }
       ],
-      generated: '2019-08-30T17:00:21-07:00',
+      generated: '2019-09-04T11:04:11-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -601,6 +601,7 @@ export default function () {
           form: {
             elementKey: 'table',
             addButtonText: 'Add vital signs',
+            formOption: 'transpose',
             formKey: 'table',
             ehr_groups: [
               {
@@ -719,7 +720,7 @@ export default function () {
           fqn: 'fluidBalance.fluidOut'
         }
       ],
-      generated: '2019-08-30T17:00:21-07:00',
+      generated: '2019-09-04T11:04:11-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1541,7 +1542,7 @@ export default function () {
           fqn: 'neurological.strokeAssessmentCalculation'
         }
       ],
-      generated: '2019-08-30T17:00:21-07:00',
+      generated: '2019-09-04T11:04:11-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1810,6 +1811,7 @@ export default function () {
             elementKey: 'table',
             label: 'Neurological',
             addButtonText: 'Add a neurological assessment',
+            formOption: 'transpose',
             formKey: 'table',
             ehr_groups: [
               {
@@ -2317,7 +2319,7 @@ export default function () {
           fqn: 'respiratory.generalComments'
         }
       ],
-      generated: '2019-08-30T17:00:21-07:00',
+      generated: '2019-09-04T11:04:11-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2458,6 +2460,7 @@ export default function () {
           form: {
             elementKey: 'table',
             addButtonText: 'Add a respiratory assessment',
+            formOption: 'transpose',
             formKey: 'table',
             ehr_groups: [
               {
@@ -3066,7 +3069,7 @@ export default function () {
           fqn: 'cardiovascular.comments'
         }
       ],
-      generated: '2019-08-30T17:00:21-07:00',
+      generated: '2019-09-04T11:04:11-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -3277,6 +3280,7 @@ export default function () {
           form: {
             elementKey: 'table',
             addButtonText: 'Add a cardiovascular assessment',
+            formOption: 'transpose',
             formKey: 'table',
             ehr_groups: [
               {
@@ -3754,7 +3758,7 @@ export default function () {
           fqn: 'gastrointestinal.comments'
         }
       ],
-      generated: '2019-08-30T17:00:21-07:00',
+      generated: '2019-09-04T11:04:11-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -3916,6 +3920,7 @@ export default function () {
           form: {
             elementKey: 'table',
             addButtonText: 'Add a gastrointestinal assessment',
+            formOption: 'transpose',
             formKey: 'table',
             ehr_groups: [
               {

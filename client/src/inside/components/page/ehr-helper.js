@@ -216,6 +216,7 @@ export default class EhrHelpV2 {
           tableForm.tableData = tableData
           tableForm.dbData = dbData
         }
+        if (dbTable) console.log('EhrHelpV2._loadTableData tableData', tableData)
         let combined = []
         let headerRow = []
         rowTemplate.forEach( (rt) => {
@@ -227,13 +228,13 @@ export default class EhrHelpV2 {
           combined.push(row)
         })
 
-        console.log('combined', combined)
-        let transpose = combined.map((col, i) => combined.map(row => row[i]))
-        console.log('combined, transpose', combined, transpose)
+        if (dbTable) console.log('EhrHelpV2 combined', combined)
+        let transpose = combined[0].map((col, i) => combined.map(row => row[i]))
+        if (dbTable) console.log('EhrHelpV2 transpose', transpose)
         tableForm.transposedColumns = transpose
 
         let len = tableData[0] ? tableData[0].length : -1
-        console.log('length of row of table data', len, rowTemplate.length)
+        if (dbTable) console.log('EhrHelpV2 length of row of table data', len, rowTemplate.length)
         if (dbTable) console.log('EhrHelpV2._loadTableData load tableForm', tableForm)
       })
     }
