@@ -39,11 +39,19 @@ export default class MedOrder {
     return obj
   }
   isScheduled (periodKey) {
+    let result = false
     /*
     The data imported from the db has a field for each schedule period. If this property exists and is true then
     the result of testing for a periodKey will be true.
      */
-    let result = !!this._data[periodKey]
+    if (this._data.scheduleTime) { // V2
+      let st = this._data.scheduleTime
+      result = st.includes(periodKey)
+      // console.log('MedOrder isScheduled V2', periodKey, st, result)
+    } else {
+      // console.log('MedOrder isScheduled', periodKey, this)
+      result = !!this._data[periodKey]
+    }
     return result
   }
 

@@ -32,9 +32,9 @@ export default {
   methods: {
     clearMessage () {
       if (this.hasErrMsg)
-        setApiError(this, '')
+        setApiError('')
       else
-        setSystemMessage(this,'')
+        setSystemMessage('')
     },
     updateSystemMessage () {
       let msg = ''
@@ -50,12 +50,12 @@ export default {
         }
       }
       // uncomment to set a test message
-      // setApiError(this.$store, 'This a test api error message')
+      // setApiError('This a test api error message')
       // msg = Text.STUDENT_HAS_SUBMITTED
       // msg = Text.STUDENT_INTRO
       // msg = Text.ASSIGNMENT_HAS_BEEN_EVALUATED
       // console.log('updateSystemMessage', msg)
-      setSystemMessage(this, msg)
+      setSystemMessage(msg)
     }
 
   },

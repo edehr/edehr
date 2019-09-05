@@ -127,7 +127,7 @@ export default {
             StoreHelper.setLoading(component, false)
           })
           .catch( err => {
-            setApiError(component, TEXT.FAIL_IMPORT(fileName, err))
+            setApiError(TEXT.FAIL_IMPORT(fileName, err))
             StoreHelper.setLoading(component, false)
           })
       })

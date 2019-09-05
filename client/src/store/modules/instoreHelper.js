@@ -25,7 +25,7 @@ class InstoreHelperWorker {
         })
         .catch(error => {
           let msg = composeAxiosResponseError(error, 'Update failed: ')
-          setApiError(context, msg)
+          setApiError(msg)
           StoreHelper.setLoading(context, false)
           reject(msg)
         })
@@ -44,7 +44,7 @@ class InstoreHelperWorker {
         })
         .catch(error => {
           let msg = composeAxiosResponseError(error, 'Create failed: ')
-          setApiError(context, msg)
+          setApiError(msg)
           StoreHelper.setLoading(context, false)
           reject(msg)
         })
@@ -63,7 +63,7 @@ class InstoreHelperWorker {
         .catch(error => {
           // let msg = `Failed GET to ${url} with error: ${error.message}`
           let msg = composeAxiosResponseError(error, 'Get failed: ')
-          setApiError(context, msg)
+          setApiError(msg)
           StoreHelper.setLoading(context, false)
           reject(msg)
         })

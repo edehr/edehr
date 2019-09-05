@@ -20,7 +20,7 @@ export function getPageDefinition (pageKey, forceV1) {
   let pd
   if (!forceV1 && StoreHelper.usingV2()) {
     pd = EhrDefs.getPageDefinition(pageKey)
-    console.log('getPageDef for V2 ', pageKey, pd)
+    // console.log('getPageDef for V2 ', pageKey, pd)
   }
   pd = pd ? pd : pageDefs[pageKey]
   return pd
@@ -74,8 +74,7 @@ export function getTableCellsByTableKey (pageKey, tableKey) {
 export function getFieldSetCells (pageKey, tableIndex, fieldSetKey) {
   let cells = getTableCellsByIndex(pageKey, tableIndex)
   if(!cells) {
-    // TODO the setApiError needs a component context to get the store. The following is broken
-    setApiError(pageKey + ' can not find table cells that support tableIndex', tableIndex)
+    setApiError(pageKey + ' can not find table cells that support tableIndex ' + tableIndex)
     return
   }
   let fieldSet = cells.filter(cell => cell.level3Key === fieldSetKey && cell.inputType === 'checkbox')
@@ -119,8 +118,7 @@ export function getDataCaseStudy (pageDataKey, elementKey) {
 }
 
 export function getMedOrderSchedule  (pageKey) {
-  let pageDef = pageDefs[pageKey]
+  let pageDef = getPageDefinition(pageKey)
   let medPeriods = pageDef.medSchedule
-  // console.log('getMedOrderSchedule', pageKey, medPeriods)
   return medPeriods
 }

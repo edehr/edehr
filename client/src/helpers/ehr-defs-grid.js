@@ -107,7 +107,7 @@ class EhrDefsWorker {
   getMedOrderSchedule  (pageKey) {
     let pd = this.getPageDefinition(pageKey)
     let medPeriods = pd.medSchedule
-    console.log('getMedOrderSchedule', pageKey, medPeriods)
+    // console.log('getMedOrderSchedule', pageKey, medPeriods)
     return medPeriods
   }
 

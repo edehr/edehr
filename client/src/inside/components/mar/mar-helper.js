@@ -72,10 +72,16 @@ export default class MarHelper {
     let key
     try {
       let marsPageDef = this.getPageDef_Mar()
-      let table = marsPageDef.tables[0]
+      let table
+      if (marsPageDef.isV2) {
+        // the mars page has one table element
+        table = marsPageDef.pageElements.table
+      } else {
+        table = marsPageDef.tables[0]
+      }
       key = table.tableKey
     } catch (err) {
-      setApiError(this.ehrHelp.component, err)
+      setApiError(err)
     }
     return key
   }
