@@ -83,11 +83,16 @@ class RawHelper {
   }
 
   _prepareSpecialProperties (src, dest, page) {
-    if (src.specialProperties === 'marScheduleOption') {
-      if (!page.medSchedule) page.medSchedule = []
-      page.medSchedule.push(dest)
-      console.log('marScheduleOption', page.medSchedule)
-      // dest.specialProperties = src.specialProperties
+    // TODO it would be good to put the marScheduleOption into the Inputs.
+    // using the element key here is a quick way to accomplish this while I have poor internet
+    if (src.specialProperties === 'marScheduleOption' || src.elementKey === 'scheduleTime') {
+      page.medSchedule = []
+      // get the options from the dest because they have been processed by now
+      dest.options.forEach( (opt) => {
+        let t = opt.text
+        page.medSchedule.push({elementKey: camelCase(t), label: t})
+      })
+      // console.log('marScheduleOption', page.medSchedule)
     }
   }
 

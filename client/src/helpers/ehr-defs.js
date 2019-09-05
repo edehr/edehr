@@ -20,7 +20,7 @@ export function getPageDefinition (pageKey, forceV1) {
   let pd
   if (!forceV1 && StoreHelper.usingV2()) {
     pd = EhrDefs.getPageDefinition(pageKey)
-    console.log('getPageDef for V2 ', pageKey, pd)
+    // console.log('getPageDef for V2 ', pageKey, pd)
   }
   pd = pd ? pd : pageDefs[pageKey]
   return pd
@@ -118,8 +118,7 @@ export function getDataCaseStudy (pageDataKey, elementKey) {
 }
 
 export function getMedOrderSchedule  (pageKey) {
-  let pageDef = pageDefs[pageKey]
+  let pageDef = getPageDefinition(pageKey)
   let medPeriods = pageDef.medSchedule
-  // console.log('getMedOrderSchedule', pageKey, medPeriods)
   return medPeriods
 }

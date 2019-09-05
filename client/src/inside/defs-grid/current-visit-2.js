@@ -2783,6 +2783,20 @@ export default function () {
       pIndex: '25',
       isV2: true,
       hasGridTable: true,
+      medSchedule: [
+        {
+          elementKey: 'morning',
+          label: 'Morning'
+        },
+        {
+          elementKey: 'midDay',
+          label: 'Mid day'
+        },
+        {
+          elementKey: 'bedtime',
+          label: 'Bedtime'
+        }
+      ],
       pageChildren: [
         {
           elementKey: 'name',

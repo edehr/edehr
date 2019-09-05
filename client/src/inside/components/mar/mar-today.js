@@ -9,29 +9,37 @@ export default class MarToday {
   getTodaysSchedule (marRecords, medOrders) {
     /*   See the Algorithm in the MAR Readme */
     let db = false
+    let db1 = false
     let db2 = false
+
+    if (db1) console.log('getTodaysSchedule marRecords', marRecords)
+    if (db1) console.log('getTodaysSchedule medOrders', medOrders)
 
     // Step 1
     let pDefs = new PeriodDefs()
     let pdList = pDefs.periodList
     this._cDay = 0
 
+    if (db1) console.log('getTodaysSchedule pDefs', pDefs)
+    if (db1) console.log('getTodaysSchedule pdList', pdList)
+
     // Step 2
     if(!medOrders || medOrders.length === 0) {
       if(db) console.log('getTodaysSchedule: Done (There are no periods needing a MAR. The Today page is empty)')
       return []
     }
-    if(db) console.log('getTodaysSchedule: medOrders', medOrders)
 
     // Step 3
     let mOrders = medOrders // in future filter this list to only include active prescriptions
     pdList.forEach(pk => {
-      if(db) console.log('getTodaysSchedule: For pk look for orders', pk)
+      if(db) console.log('getTodaysSchedule: For pk look for orders', pk.key, pk)
       mOrders.forEach( mo => {
-        if(db2) console.log('getTodaysSchedule: For pk look at mo.isScheduled', pk, mo)
+        if(db2) console.log('getTodaysSchedule: For pk look at mo.isScheduled', mo)
         if (mo.isScheduled(pk.key)) {
           if(db2) console.log('getTodaysSchedule: For pk mo.isScheduled so add it to pk', pk, mo)
           pk.addMedication(mo)
+        } else {
+          if(db2) console.log('getTodaysSchedule: mo was not scheduled', pk, mo)
         }
       })
     })
