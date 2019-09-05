@@ -56,7 +56,7 @@ const actions = {
       // console.log('In load page ', url)
       function invalid (msg) {
         // console.error('INVALID LoadVisit', msg)
-        setApiError(context, msg)
+        setApiError(msg)
         reject(new Error(msg))
       }
       axios

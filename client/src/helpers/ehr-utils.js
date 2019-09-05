@@ -3,6 +3,17 @@ import camelcase from 'camelcase'
 import fileDownload  from 'js-file-download'
 import { getAllPageKeys } from './ehr-defs'
 import { Text } from './ehr-text'
+import Vue from 'vue'
+import store from '../store'
+
+
+class ContextProvider {
+  constructor () {
+    this.shc = new Vue({store})
+  }
+}
+const provider = new ContextProvider()
+const gContext = provider.shc.$store
 
 export function getIncomingParams () {
   let search = window.location.search.substring(1)
@@ -21,14 +32,12 @@ export function composeUrl (context, api) {
   return `${apiUrl}/${api}/`
 }
 
-export function setApiError (context, msg) {
-  context = context.$store || context
-  context.commit('system/setApiError', msg, { root: true })
+export function setApiError (msg) {
+  gContext.commit('system/setApiError', msg, { root: true })
 }
 
-export function setSystemMessage (context, msg) {
-  context = context.$store || context
-  context.commit('system/setSystemMessage', msg, { root: true })
+export function setSystemMessage (msg) {
+  gContext.commit('system/setSystemMessage', msg, { root: true })
 }
 
 export function validTimeStr (text) {

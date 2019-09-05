@@ -44,7 +44,7 @@ export default {
             // console.log('Dispatch the load visit information', visitId)
             return this.$store.dispatch('visit/loadVisitInfo', visitId)
           } else {
-            setApiError(this, Text.MISSING_VISIT_ID)
+            setApiError(Text.MISSING_VISIT_ID)
             return Promise.reject(msg)
           }
         })
@@ -118,7 +118,7 @@ export default {
           apiUrl = localStorage.getItem('apiUrl')
           if (db) console.log('Can we use API URL from local storage', apiUrl)
           if (!apiUrl) {
-            setApiError(this, Text.MISSING_API_URL)
+            setApiError(Text.MISSING_API_URL)
             return reject(msg)
           }
         }

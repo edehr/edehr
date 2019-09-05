@@ -16,7 +16,7 @@ const actions = {
       let assignment = response.data.assignment
       if (!assignment) {
         let msg = 'ERROR the could not get assignment ' + id
-        setApiError(context, msg)
+        setApiError(msg)
         return
       }
       let seedId = assignment.seedDataId
@@ -43,7 +43,7 @@ const actions = {
       let assignment = response.data.assignment
       if (!assignment) {
         let msg = 'ERROR the could not get assignment ' + id
-        setApiError(context, msg)
+        setApiError(msg)
         return
       }
       return assignment
@@ -56,7 +56,7 @@ const actions = {
       if (!list) {
         let msg = 'ERROR the system should have assignments'
         console.error(msg)
-        setApiError(context, msg)
+        setApiError(msg)
         return
       }
       this.assignmentsListing = list
@@ -88,7 +88,7 @@ const actions = {
       .catch(err => {
         let msg = 'error in update assignment ' + err
         console.error(msg)
-        setApiError(context, msg)
+        setApiError(msg)
       })
   }
 }

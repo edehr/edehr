@@ -52,7 +52,7 @@ export default {
       let result = true
       let opts = this.options
       if(!opts || opts.length === 0) {
-        setApiError(this, 'The checkset '+ this.key + ' definition is missing the options property')
+        setApiError('The checkset '+ this.key + ' definition is missing the options property')
         result = false
       }
       return result
