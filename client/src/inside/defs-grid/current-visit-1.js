@@ -91,7 +91,6 @@ export default function () {
           inputType: 'text',
           label: 'Patient location',
           mandatory: true,
-          passToFunction: 'transferInTime',
           tableColumn: '1',
           fqn: 'visit.location',
           helperHtml: '<p>hospital, ward #, room #, home, out patient clinic</p>'
@@ -101,7 +100,6 @@ export default function () {
           formIndex: '2',
           inputType: 'day',
           label: 'Transfer in day',
-          passToFunction: 'transferInTime',
           tableColumn: '2',
           fqn: 'visit.transferInDay'
         },
@@ -130,7 +128,7 @@ export default function () {
           fqn: 'visit.transferOutTime'
         }
       ],
-      generated: '2019-09-04T11:04:11-07:00',
+      generated: '2019-09-06T07:52:27-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -481,7 +479,7 @@ export default function () {
           fqn: 'vitals.flowRate'
         }
       ],
-      generated: '2019-09-04T11:04:11-07:00',
+      generated: '2019-09-06T07:52:27-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -720,7 +718,7 @@ export default function () {
           fqn: 'fluidBalance.fluidOut'
         }
       ],
-      generated: '2019-09-04T11:04:11-07:00',
+      generated: '2019-09-06T07:52:27-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -918,6 +916,7 @@ export default function () {
               text: '4 = Spontaneous'
             }
           ],
+          passToFunction: 'glasgowCalculation',
           tableColumn: '9',
           tableLabel: 'Eye opening',
           fqn: 'neurological.eyeOpening'
@@ -948,6 +947,7 @@ export default function () {
               text: '5 = Oriented'
             }
           ],
+          passToFunction: 'glasgowCalculation',
           tableColumn: '10',
           tableLabel: 'Verbal response',
           fqn: 'neurological.verbalResponse'
@@ -981,6 +981,7 @@ export default function () {
               text: '6 = Obeys commands'
             }
           ],
+          passToFunction: 'glasgowCalculation',
           tableColumn: '11',
           tableLabel: 'Best motor response',
           fqn: 'neurological.bestMotorResponse'
@@ -1208,6 +1209,7 @@ export default function () {
               text: '3 = Unresponsive or responds only with reflex'
             }
           ],
+          passToFunction: 'strokeAssessmentCalculation',
           tableColumn: '21',
           tableLabel: 'Level of conciousness',
           fqn: 'neurological.levelOfConciousness'
@@ -1228,6 +1230,7 @@ export default function () {
               text: '2 = Answers neither question correctly'
             }
           ],
+          passToFunction: 'strokeAssessmentCalculation',
           tableColumn: '22',
           tableLabel: 'Level of conciousness questions',
           fqn: 'neurological.levelOfConciousnessQuestions'
@@ -1248,6 +1251,7 @@ export default function () {
               text: '2 = Performs neither task correctly'
             }
           ],
+          passToFunction: 'strokeAssessmentCalculation',
           tableColumn: '23',
           tableLabel: 'Level of conciousness commands',
           fqn: 'neurological.levelOfConciousnessCommands'
@@ -1274,6 +1278,7 @@ export default function () {
               text: '4 = No movement'
             }
           ],
+          passToFunction: 'strokeAssessmentCalculation',
           tableColumn: '24',
           tableLabel: 'Motor - left arm',
           fqn: 'neurological.motorLeftArm'
@@ -1300,6 +1305,7 @@ export default function () {
               text: '4 = No movement'
             }
           ],
+          passToFunction: 'strokeAssessmentCalculation',
           tableColumn: '25',
           tableLabel: 'Motor - right arm',
           fqn: 'neurological.motorRightArm'
@@ -1332,6 +1338,7 @@ export default function () {
               text: '4 = No movement'
             }
           ],
+          passToFunction: 'strokeAssessmentCalculation',
           tableColumn: '26',
           tableLabel: 'Motor - left leg',
           fqn: 'neurological.motorLeftLeg'
@@ -1358,6 +1365,7 @@ export default function () {
               text: '4 = No movement'
             }
           ],
+          passToFunction: 'strokeAssessmentCalculation',
           tableColumn: '27',
           tableLabel: 'Motor - right leg',
           fqn: 'neurological.motorRightLeg'
@@ -1378,6 +1386,7 @@ export default function () {
               text: '2 = Present in two limbs'
             }
           ],
+          passToFunction: 'strokeAssessmentCalculation',
           tableColumn: '28',
           tableLabel: 'Limb ataxia',
           fqn: 'neurological.limbAtaxia'
@@ -1398,6 +1407,7 @@ export default function () {
               text: '2 = Forced deviation'
             }
           ],
+          passToFunction: 'strokeAssessmentCalculation',
           tableColumn: '29',
           tableLabel: 'Best gaze',
           fqn: 'neurological.bestGaze'
@@ -1421,6 +1431,7 @@ export default function () {
               text: '3 = Complete paralysis of one or both sides'
             }
           ],
+          passToFunction: 'strokeAssessmentCalculation',
           tableColumn: '30',
           tableLabel: 'Visual',
           fqn: 'neurological.visual'
@@ -1444,6 +1455,7 @@ export default function () {
               text: '3 = Complete paralysis of one or both sides'
             }
           ],
+          passToFunction: 'strokeAssessmentCalculation',
           tableColumn: '31',
           tableLabel: 'Facial palsy',
           fqn: 'neurological.facialPalsy'
@@ -1464,6 +1476,7 @@ export default function () {
               text: '2 = Severe to total sensory loss'
             }
           ],
+          passToFunction: 'strokeAssessmentCalculation',
           tableColumn: '32',
           tableLabel: 'Sensory',
           fqn: 'neurological.sensory'
@@ -1487,6 +1500,7 @@ export default function () {
               text: '3 = Mute, global aphasia'
             }
           ],
+          passToFunction: 'strokeAssessmentCalculation',
           tableColumn: '33',
           tableLabel: 'Best language',
           fqn: 'neurological.bestLanguage'
@@ -1507,6 +1521,7 @@ export default function () {
               text: '2 = Severe dysarthria'
             }
           ],
+          passToFunction: 'strokeAssessmentCalculation',
           tableColumn: '34',
           tableLabel: 'Dysarthria',
           fqn: 'neurological.dysarthria'
@@ -1527,6 +1542,7 @@ export default function () {
               text: '2 = Profound hemi-inattention or extinction'
             }
           ],
+          passToFunction: 'strokeAssessmentCalculation',
           tableColumn: '35',
           tableLabel: 'Extinction and inattention',
           fqn: 'neurological.extinctionAndInattention'
@@ -1542,7 +1558,7 @@ export default function () {
           fqn: 'neurological.strokeAssessmentCalculation'
         }
       ],
-      generated: '2019-09-04T11:04:11-07:00',
+      generated: '2019-09-06T07:52:27-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2319,7 +2335,7 @@ export default function () {
           fqn: 'respiratory.generalComments'
         }
       ],
-      generated: '2019-09-04T11:04:11-07:00',
+      generated: '2019-09-06T07:52:27-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -3069,7 +3085,7 @@ export default function () {
           fqn: 'cardiovascular.comments'
         }
       ],
-      generated: '2019-09-04T11:04:11-07:00',
+      generated: '2019-09-06T07:52:27-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -3758,7 +3774,7 @@ export default function () {
           fqn: 'gastrointestinal.comments'
         }
       ],
-      generated: '2019-09-04T11:04:11-07:00',
+      generated: '2019-09-06T07:52:27-07:00',
       pageElements: {
         table: {
           elementKey: 'table',

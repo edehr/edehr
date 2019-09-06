@@ -11,9 +11,9 @@
 <script>
 import EhrElementCommon from './EhrElementCommon'
 import { setApiError } from '../../../helpers/ehr-utils'
-import EventBus from '../../../helpers/event-bus'
-import { FORM_INPUT_EVENT } from '../../../helpers/event-bus'
 import camelcase from 'camelcase'
+
+const debug = false
 
 export default {
   name: 'EhrElementCheckset',
@@ -27,22 +27,16 @@ export default {
   },
   watch: {
     checkValues (val) {
-      if (this.isPageElement) {
-        if (this.ehrHelp.isEditing()) {
-          // only broadcast if user is editing the form
-          let newVal = val.join(',')
-          console.log('In EhrCheckset  watched change to checkvalues send event ', newVal)
-          // Send event when any input changes. The listener (EhrHelper) will collect the changes
-          // and be ready to send the changes to the server. Calculated values also listen.
-          EventBus.$emit(FORM_INPUT_EVENT, {value: newVal, element: this.element})
-        }
+      let newVal = val.join(',')
+      if (debug) console.log('EhrCheckset input val changed', this.elementKey, newVal)
+      if (this.isPageElement &&  this.isEditing) {
+        // only broadcast if user is editing the form
+        if (debug) console.log('EhrCheckset send input event')
+        this.sendInputEvent(newVal)
       }
-      if (this.dialogTableKey) {
-        if (this.dialogIsOpen) {
-          // only broadcast if dialog is open
-          let newVal = val.join(',')
-          EventBus.$emit(FORM_INPUT_EVENT, {value: newVal, element: this.element})
-        }
+      if (this.isTableElement && this.dialogIsOpen) {
+        if (debug) console.log('EhrCheckset send input event')
+        this.sendInputEvent(newVal)
       }
     }
   },
