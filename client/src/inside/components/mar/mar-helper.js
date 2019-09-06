@@ -15,6 +15,7 @@ export default class MarHelper {
   get marRecords () { return this._marRecords }
 
   refreshMarData () {
+    // console.log('mar-helper refreshMarData')
     this.pageData = this.ehrHelp.getAsLoadedPageData(MED_ORDERS_PAGE_KEY)
     if (!this.pageData || !this.pageData.table) {
       // console.log('call to refreshMarData before system is set up. There will be another call in a sec')
@@ -50,9 +51,10 @@ export default class MarHelper {
     let marTableKey = this.getMarTableKey()
     let raw = this.getEhrData_MarPageData()[marTableKey] || []
     // raw = Object.assign({}, raw)
-    // console.log('getEhrData_MarRecords', JSON.stringify(raw))
+    // console.log('getEhrData_MarRecords raw', JSON.stringify(raw))
     let records = raw.map( m => new MarEntity(m))
     records.sort( (a,b) => MarEntity.compare(a, b) )
+    // console.log('getEhrData_MarRecords records', JSON.stringify(records))
     return records
   }
 

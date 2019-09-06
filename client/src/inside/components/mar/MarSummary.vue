@@ -69,6 +69,7 @@ export default {
         let summary = this.marSummary
         let help = this.marHelper
         help.refreshMarData()
+        // console.log('MarSummary component.refresh() helper', help)
         summary.summaryRefresh(help.marRecords, help.theMedOrders)
         // console.log('MarSummary component.refresh()', summary)
         this.tableHeader = summary.tableHeader

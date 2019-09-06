@@ -436,37 +436,19 @@ export default class EhrHelpV2 {
     Object.keys(ehr_data).forEach( (eKey) => {
       let eDef = EhrDefs.getPageChildElement(pageKey, eKey)
       let value = inputs[eKey]
-      console.log('EhrHelpV2 validate:', key, value, eDef)
+      if (dbDialog) console.log('EhrHelpV2 validate:', key, value, eDef)
       let type = eDef[PROPS.inputType]
       let label = eDef[PROPS.label]
       // let validationRules = eDef[PROPS.validation]
       let mandatory = eDef[PROPS.mandatory]
-
       if (value && (type === INPUT_TYPES.text || type === INPUT_TYPES.textarea)) {
         inputs[eKey] = value = value.trim()
       }
-
       if (mandatory && !value ) {
         let msg = label + ' is required'
         dialog.errorList.push(msg)
       }
-
     })
-    // cells.forEach(cell => {
-    //   if (cell.type === 'text') {
-    //     inputs[cell.elementKey] = inputs[cell.elementKey].trim()
-    //   }
-    //   if (cell.validationRules) {
-    //     cell.validationRules.forEach(rule => {
-    //       let value = inputs[cell.elementKey]
-    //       if (rule.required && value.length === 0) {
-    //         let msg = cell.label + ' is required'
-    //         console.log('validateInput', msg)
-    //         dialog.errorList.push(msg)
-    //       }
-    //     })
-    //   }
-    // })
     return dialog.errorList.length === 0
   }
 

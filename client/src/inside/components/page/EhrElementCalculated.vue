@@ -13,7 +13,6 @@ import { ehrCalculateProperty } from './ehr-calcs'
 let db = false
 
 export default {
-  name: 'EhrComputedNumber',
   inject: [ 'pageDataKey' ],
   props: {
     ehrHelp: { type: Object },
@@ -29,6 +28,7 @@ export default {
     receiveEvent (eData) {
       let pageDataKey = this.pageDataKey
       let elementKey = this.element.elementKey
+      if (db) console.log('EhrCalculated rcv evt', eData, pageDataKey, elementKey)
       let value = ehrCalculateProperty(pageDataKey, elementKey, this.ehrHelp)
       if (db) console.log('EhrComputedValue ', elementKey, value)
       // put value into the inputs so the dialog save can preserve the result

@@ -49,6 +49,9 @@ export default {
     isLoading () {
       return this.$store.state.system.isLoading
     }
+  },
+  mounted: function () {
+    console.log('LayoutEhr mounted')
   }
 }
 </script>

@@ -21,12 +21,16 @@ export default class MarSummary {
   summaryRefresh (marRecords, medOrders) {
     let db = false
     let db2 = false
+    if (!marRecords || !medOrders) {
+      console.log('MarSummary call to refresh before system is set up. There will be another call in a sec')
+      return
+    }
     const EMPTY = _createElement(MS.KEY_EMPTY,{})
+    if(db) console.log('MarSummary refresh', marRecords, medOrders)
     // sort newest first
     marRecords.sort( (a,b) => MarEntity.compare(a, b, true) )
 
     // Compose the table header ....
-    if(db) console.log('MarSummary refresh', marRecords, medOrders)
     let hdr = []
     marRecords.forEach( mar => hdr.push(_createElement(MS.KEY_MAR, mar)) )
     this._header = hdr

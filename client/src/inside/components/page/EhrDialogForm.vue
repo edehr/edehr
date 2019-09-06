@@ -13,6 +13,8 @@ import EhrDialogFormElement from '../elements/EhrDialogFormElement'
 import EhrGroup from './EhrGroup'
 import EventBus from '../../../helpers/event-bus'
 
+const debug = false
+
 export default {
   name: 'EhrDialogForm',
   components: {
@@ -40,7 +42,6 @@ export default {
   methods: {
     cssFromDefs: function (element) {
       return element.formCss ? element.formCss : undefined
-      // return element.inputType + ' ' + element.elementKey
     },
     cancelDialog: function () {
       this.ehrHelp.cancelDialog()
@@ -53,8 +54,8 @@ export default {
     },
     receiveShowHideEvent (eData) {
       if(eData.value) {
-        console.log('EhrDialogForm rcv show hide', this.tableKey)
-        console.log('EhrDialogForm rcv show hide', this.tableKey)
+        if (debug) console.log('EhrDialogForm rcv show hide', this.tableKey)
+        if (debug) console.log('EhrDialogForm rcv show hide', this.tableKey)
         this.$refs.theDialog.onOpen()
       } else {
         this.$refs.theDialog.onClose()
