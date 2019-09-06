@@ -150,7 +150,7 @@ export default {
 .dialog-wrapper {
   position: fixed;
   /*   For top and see the data properties */
-  min-width: 500px;
+  min-width: 700px;
   max-width: 1024px;
   z-index: 999;
   background-color: $dialog-wrapper-background-color;

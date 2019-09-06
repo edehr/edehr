@@ -13,6 +13,8 @@
 <script>
 import EhrPageFormControls from './EhrPageFormControls'
 import EhrGroup from './EhrGroup'
+import UiButton from '../../../app/ui/UiButton'
+
 
 export default {
   name: 'EhrPageForm',
@@ -74,10 +76,8 @@ export default {
     display: inline-block;
   }
 .headerControl {
-  display: inline-block;
-  position: absolute;
-  top: 0;
-  right: 0;
+  display: block;
+  margin-bottom: 20px;
 }
 
 </style>
