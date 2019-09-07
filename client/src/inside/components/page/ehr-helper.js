@@ -208,6 +208,7 @@ export default class EhrHelpV2 {
               templateCell.stack.forEach((cell) => {
                 let val = dbRow[cell.key] || ''
                 cell.value = val
+                cell.tableCss = templateCell.tableCss
                 // console.log('cell', cell)
               })
             })
@@ -220,7 +221,7 @@ export default class EhrHelpV2 {
         let combined = []
         let headerRow = []
         rowTemplate.forEach( (rt) => {
-          let hdr = { label: rt.tableLabel}
+          let hdr = { label: rt.tableLabel, tableCss: rt.tableCss}
           headerRow.push(hdr)
         })
         combined.push(headerRow)

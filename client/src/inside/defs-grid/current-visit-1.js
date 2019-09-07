@@ -128,7 +128,7 @@ export default function () {
           fqn: 'visit.transferOutTime'
         }
       ],
-      generated: '2019-09-06T19:39:56-07:00',
+      generated: '2019-09-07T08:28:35-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -484,7 +484,7 @@ export default function () {
           fqn: 'vitals.flowRate'
         }
       ],
-      generated: '2019-09-06T19:39:56-07:00',
+      generated: '2019-09-07T08:28:35-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -723,7 +723,7 @@ export default function () {
           fqn: 'fluidBalance.fluidOut'
         }
       ],
-      generated: '2019-09-06T19:39:56-07:00',
+      generated: '2019-09-07T08:28:35-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1531,7 +1531,7 @@ export default function () {
           fqn: 'neurological.strokeAssessmentCalculation'
         }
       ],
-      generated: '2019-09-06T19:39:56-07:00',
+      generated: '2019-09-07T08:28:35-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1656,6 +1656,7 @@ export default function () {
             },
             {
               label: 'Level of conciousness commands',
+              tableCss: 'hr-table',
               ehr_list_index: '17',
               items: [
                 'levelOfConciousnessCommands'
@@ -1691,6 +1692,7 @@ export default function () {
             },
             {
               label: 'Limb ataxia',
+              tableCss: 'hr-table',
               ehr_list_index: '22',
               items: [
                 'limbAtaxia'
@@ -1740,6 +1742,7 @@ export default function () {
             },
             {
               label: 'Extinction and inattention',
+              tableCss: 'hr-table',
               ehr_list_index: '29',
               items: [
                 'extinctionAndInattention'
@@ -2260,7 +2263,7 @@ export default function () {
           fqn: 'respiratory.generalComments'
         }
       ],
-      generated: '2019-09-06T19:39:56-07:00',
+      generated: '2019-09-07T08:28:35-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2956,7 +2959,7 @@ export default function () {
           fqn: 'cardiovascular.comments'
         }
       ],
-      generated: '2019-09-06T19:39:56-07:00',
+      generated: '2019-09-07T08:28:35-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -3654,7 +3657,7 @@ export default function () {
           fqn: 'gastrointestinal.comments'
         }
       ],
-      generated: '2019-09-06T19:39:56-07:00',
+      generated: '2019-09-07T08:28:35-07:00',
       pageElements: {
         table: {
           elementKey: 'table',

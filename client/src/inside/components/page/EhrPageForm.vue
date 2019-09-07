@@ -13,7 +13,6 @@
 <script>
 import EhrPageFormControls from './EhrPageFormControls'
 import EhrGroup from './EhrGroup'
-import UiButton from '../../../app/ui/UiButton'
 
 
 export default {
