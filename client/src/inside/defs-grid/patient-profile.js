@@ -396,7 +396,7 @@ export default function () {
           fqn: 'demographics.decisionMakerPhone'
         }
       ],
-      generated: '2019-08-30T17:00:21-07:00',
+      generated: '2019-09-06T16:47:47-07:00',
       pageElements: {
         page_form1: {
           elementKey: 'page_form1',
@@ -478,7 +478,7 @@ export default function () {
           fqn: 'allergies.text'
         }
       ],
-      generated: '2019-08-30T17:00:21-07:00',
+      generated: '2019-09-06T16:47:47-07:00',
       pageElements: {
         page_form: {
           elementKey: 'page_form',
@@ -512,7 +512,7 @@ export default function () {
           fqn: 'medical.history'
         }
       ],
-      generated: '2019-08-30T17:00:21-07:00',
+      generated: '2019-09-06T16:47:47-07:00',
       pageElements: {
         page_form6: {
           elementKey: 'page_form6',
@@ -520,7 +520,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
-              formCss: 'full-grid',
+              formCss: 'grid-left-to-right-1',
               gIndex: '1',
               gChildren: [
                 'history'
@@ -578,7 +578,7 @@ export default function () {
           fqn: 'psychosocial.hobbies'
         }
       ],
-      generated: '2019-08-30T17:00:21-07:00',
+      generated: '2019-09-06T16:47:47-07:00',
       pageElements: {
         page_form8: {
           elementKey: 'page_form8',
@@ -599,7 +599,7 @@ export default function () {
               gIndex: '2',
               gChildren: [
                 {
-                  elementKey: 'subgroup31',
+                  elementKey: 'subgroup32',
                   sgChildren: []
                 }
               ]
@@ -616,11 +616,19 @@ export default function () {
       hasGridTable: true,
       pageChildren: [
         {
+          elementKey: 'date',
+          formIndex: '1',
+          inputType: 'text',
+          label: 'Date',
+          tableColumn: '1',
+          fqn: 'surgical.date'
+        },
+        {
           elementKey: 'physician',
           formIndex: '1',
           inputType: 'text',
           label: 'Performing physician',
-          tableColumn: '1',
+          tableColumn: '2',
           fqn: 'surgical.physician'
         },
         {
@@ -629,23 +637,23 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Surgery/procedure',
-          tableColumn: '2',
+          tableColumn: '3',
           fqn: 'surgical.procedure'
         },
         {
-          elementKey: 'timeSince',
-          formIndex: '1',
-          inputType: 'text',
-          label: 'Time elapsed since surgery',
-          tableColumn: '3',
-          fqn: 'surgical.timeSince'
+          elementKey: 'previousAdmissionsDate',
+          formIndex: '2',
+          inputType: 'date',
+          label: 'Date',
+          tableColumn: '1',
+          fqn: 'surgical.previousAdmissionsDate'
         },
         {
           elementKey: 'with',
           formIndex: '2',
           inputType: 'text',
           label: 'Appointment with',
-          tableColumn: '1',
+          tableColumn: '2',
           fqn: 'surgical.with'
         },
         {
@@ -653,24 +661,16 @@ export default function () {
           formIndex: '2',
           inputType: 'text',
           label: 'Appointment details',
-          tableColumn: '2',
+          tableColumn: '3',
           fqn: 'surgical.details'
         },
         {
           elementKey: 'previousAdmissions',
           formIndex: '2',
           inputType: 'text',
-          label: 'Previous admission reason',
-          tableColumn: '3',
-          fqn: 'surgical.previousAdmissions'
-        },
-        {
-          elementKey: 'previousAdmissionsDate',
-          formIndex: '2',
-          inputType: 'date',
-          label: 'Date',
+          label: 'Previous appointment reason',
           tableColumn: '4',
-          fqn: 'surgical.previousAdmissionsDate'
+          fqn: 'surgical.previousAdmissions'
         },
         {
           elementKey: 'comments',
@@ -681,52 +681,53 @@ export default function () {
           fqn: 'surgical.comments'
         }
       ],
-      generated: '2019-08-30T17:00:21-07:00',
+      generated: '2019-09-06T16:47:47-07:00',
       pageElements: {
         table_form12: {
           elementKey: 'table_form12',
           tableKey: 'table_form12',
           isTable: true,
-          addButtonText: 'Add a past surgery',
+          label: 'Previous surgeries',
+          addButtonText: 'Add a previous surgery',
           ehr_list: [
             {
               ehr_list_index: '1',
               items: [
-                'physician'
+                'date'
               ]
             },
             {
               ehr_list_index: '2',
               items: [
-                'procedure'
+                'physician'
               ]
             },
             {
               ehr_list_index: '3',
               items: [
-                'timeSince'
+                'procedure'
               ]
             }
           ],
           form: {
             elementKey: 'table_form12',
-            addButtonText: 'Add a past surgery',
+            label: 'Previous surgeries',
+            addButtonText: 'Add a previous surgery',
             formKey: 'table_form12',
             ehr_groups: [
               {
-                label: 'Past surgery',
                 gIndex: '1',
                 gChildren: [
+                  'date',
                   'physician',
-                  'procedure',
-                  'timeSince'
+                  'procedure'
                 ]
               }
             ],
             ehr_data: {
+              date: '',
               physician: '',
-              procedure: '',
-              timeSince: ''
+              procedure: ''
             }
           }
         },
@@ -734,30 +735,31 @@ export default function () {
           elementKey: 'table_form13',
           tableKey: 'table_form13',
           isTable: true,
+          label: 'Previous appointments',
           addButtonText: 'Add a previous appointment',
           ehr_list: [
             {
               ehr_list_index: '1',
               items: [
-                'with'
+                'previousAdmissionsDate'
               ]
             },
             {
               ehr_list_index: '2',
               items: [
-                'details'
+                'with'
               ]
             },
             {
               ehr_list_index: '3',
               items: [
-                'previousAdmissions'
+                'details'
               ]
             },
             {
               ehr_list_index: '4',
               items: [
-                'previousAdmissionsDate'
+                'previousAdmissions'
               ]
             },
             {
@@ -769,21 +771,21 @@ export default function () {
           ],
           form: {
             elementKey: 'table_form13',
+            label: 'Previous appointments',
             addButtonText: 'Add a previous appointment',
             formKey: 'table_form13',
             ehr_groups: [
               {
-                label: 'Previous admission',
                 gIndex: '1',
                 gChildren: [
+                  'previousAdmissionsDate',
                   'with',
                   'details',
-                  'previousAdmissions',
-                  'previousAdmissionsDate'
+                  'previousAdmissions'
                 ]
               },
               {
-                formCss: 'full-grid',
+                formCss: 'grid-left-to-right-1',
                 gIndex: '2',
                 gChildren: [
                   'comments'
@@ -791,10 +793,10 @@ export default function () {
               }
             ],
             ehr_data: {
+              previousAdmissionsDate: '',
               with: '',
               details: '',
               previousAdmissions: '',
-              previousAdmissionsDate: '',
               comments: ''
             }
           }
@@ -1010,7 +1012,7 @@ export default function () {
           fqn: 'immunization.spacer26'
         }
       ],
-      generated: '2019-08-30T17:00:21-07:00',
+      generated: '2019-09-06T16:47:47-07:00',
       pageElements: {
         page_form15: {
           elementKey: 'page_form15',
@@ -1071,7 +1073,7 @@ export default function () {
           fqn: 'familyHistory.history'
         }
       ],
-      generated: '2019-08-30T17:00:21-07:00',
+      generated: '2019-09-06T16:47:47-07:00',
       pageElements: {
         page_form27: {
           elementKey: 'page_form27',
@@ -1079,7 +1081,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
-              formCss: 'full-grid',
+              formCss: 'grid-left-to-right-1',
               gIndex: '1',
               gChildren: [
                 'history'
@@ -1113,7 +1115,7 @@ export default function () {
           fqn: 'careTeam.profession'
         }
       ],
-      generated: '2019-08-30T17:00:21-07:00',
+      generated: '2019-09-06T16:47:47-07:00',
       pageElements: {
         page_form29: {
           elementKey: 'page_form29',
@@ -1121,7 +1123,6 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
-              label: 'Team',
               gIndex: '1',
               gChildren: [
                 'name',
@@ -1200,15 +1201,15 @@ export default function () {
           fqn: 'pastAppointments.diagnosis'
         }
       ],
-      generated: '2019-08-30T17:00:21-07:00',
+      generated: '2019-09-06T16:47:47-07:00',
       pageElements: {
-        page_form30: {
-          elementKey: 'page_form30',
-          formKey: 'page_form30',
+        page_form31: {
+          elementKey: 'page_form31',
+          formKey: 'page_form31',
           isPageForm: true,
           ehr_groups: [
             {
-              label: 'Past encounters',
+              formCss: 'section-divider',
               gIndex: '1',
               gChildren: [
                 'date',
@@ -1218,7 +1219,6 @@ export default function () {
               ]
             },
             {
-              label: 'Outpatient appointments',
               gIndex: '2',
               gChildren: [
                 'date',

@@ -58,43 +58,50 @@ export default {
 .full-grid,
 .grid-left-to-right-1 {
   display: grid;
-  grid-gap: 1rem 2rem;
+  grid-gap: 1rem 1.25rem;
   grid-auto-flow: row;
   grid-template-columns: 1fr;
+  margin-bottom: 1rem;
 }
 
 .grid-left-to-right-2 {
   display: grid;
-  grid-gap: 1rem 2rem;
+  grid-gap: 1rem 1.25rem;
   grid-auto-flow: row;
   grid-template-columns: repeat(2, 1fr);
+  margin-bottom: 1rem;
 }
 
 .grid-left-to-right-3 {
   display: grid;
-  grid-gap: 1rem 2rem;
+  grid-gap: 1rem 1.25rem;
   grid-auto-flow: row;
   grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 1rem;
 }
 
 .record-header, .grid-left-to-right-4 {
   display: grid;
-  grid-gap: 1rem 2rem;
+  grid-gap: 1rem 1.25rem;
   grid-auto-flow: row;
   grid-template-columns: repeat(4, 1fr);
+}
+
+.grid-left-to-right-4 {
+  margin-bottom: 1rem;
 }
 
 .cardio-assessment,
 .grid-left-to-right-5 {
   display: grid;
-  grid-gap: 1rem 2rem;
+  grid-gap: 1rem 1.25rem;
   grid-auto-flow: row;
   grid-template-columns: repeat(5, 1fr);
 }
 
 .grid-up-to-down {
   display: grid;
-  grid-gap: 1rem 2rem;
+  grid-gap: 1rem 1.25rem;
   grid-auto-flow: column;
   grid-template-columns: repeat(3, 1fr);
 }

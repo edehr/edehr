@@ -5,8 +5,10 @@
       span Edit form
     button(v-on:click="saveEdit", v-show="isEditing", class=" button is-light")
       fas-icon(icon="check-circle")
+      span Save
     button(v-on:click="cancelEdit", v-show="isEditing", class=" button is-light")
       fas-icon(icon="times-circle")
+      span Cancel
 </template>
 
 <script>

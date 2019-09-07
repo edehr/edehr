@@ -12,11 +12,13 @@ import EhrDialogFormElement from '../components/elements/EhrDialogFormElement.vu
 import EventBus from '../../helpers/event-bus'
 import { PAGE_DATA_REFRESH_EVENT } from '../../helpers/event-bus'
 import { getPageDefinition } from '../../helpers/ehr-defs'
+import UiButton from '../../app/ui/UiButton.vue'
 
 export default {
   name: 'EhrPageForm',
   components: {
-    EhrDialogFormElement
+    EhrDialogFormElement,
+    UiButton
   },
   data: function () {
     return {
