@@ -1,6 +1,6 @@
 <template lang="pug">
   div(:class="$options.name")
-    sup(:title="text")
+    span(:title="text")
       button(class="info-button", v-on:click="buttonClicked")
         fas-icon(class="info-icon", icon="info-circle")
     app-dialog(:isModal="false", ref="theDialog", :useSave="false", @cancel="cancelDialog")
@@ -49,17 +49,18 @@ export default {
 
 .UiInfo {
   display: inline;
-  margin-left: 10px;
+  margin-left: 8px;
   .info-button {
     background: none;
     color: $grey40;
+    line-height: 0;
     padding: 0;
     border: none;
     border-radius: 50%; /* to encircle the circle icon*/
-    height: 1em; /* to match height of fas icon*/
+    height: .85em; /* to match height of fas icon*/
   }
   .info-icon {
-    vertical-align: -6px;
+    vertical-align: -2px;
 
     &:hover {
       color: $black;

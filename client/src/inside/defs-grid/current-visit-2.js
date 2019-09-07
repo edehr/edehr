@@ -437,7 +437,7 @@ export default function () {
           fqn: 'genitourinary.comments'
         }
       ],
-      generated: '2019-08-30T10:19:43-07:00',
+      generated: '2019-09-06T19:48:05-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -626,6 +626,7 @@ export default function () {
           form: {
             elementKey: 'table',
             addButtonText: 'Add a genitourinary assessment',
+            formOption: 'transpose',
             formKey: 'table',
             ehr_groups: [
               {
@@ -709,7 +710,7 @@ export default function () {
                 ]
               },
               {
-                formCss: 'full-grid',
+                formCss: 'grid-left-to-right-1',
                 gIndex: '3',
                 gChildren: [
                   'comments'
@@ -1023,7 +1024,7 @@ export default function () {
           fqn: 'musculoskeletal.comments'
         }
       ],
-      generated: '2019-08-30T10:19:43-07:00',
+      generated: '2019-09-06T19:48:05-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1122,6 +1123,7 @@ export default function () {
           form: {
             elementKey: 'table',
             addButtonText: 'Add a musculoskeletal assessment',
+            formOption: 'transpose',
             formKey: 'table',
             ehr_groups: [
               {
@@ -1150,7 +1152,7 @@ export default function () {
                 ]
               },
               {
-                formCss: 'full-grid',
+                formCss: 'grid-left-to-right-1',
                 gIndex: '3',
                 gChildren: [
                   'comments'
@@ -1383,7 +1385,7 @@ export default function () {
           fqn: 'pain.comments'
         }
       ],
-      generated: '2019-08-30T10:19:43-07:00',
+      generated: '2019-09-06T19:48:05-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1525,6 +1527,7 @@ export default function () {
           form: {
             elementKey: 'table',
             addButtonText: 'Add a pain assessment',
+            formOption: 'transpose',
             formKey: 'table',
             ehr_groups: [
               {
@@ -1552,7 +1555,7 @@ export default function () {
                 ]
               },
               {
-                formCss: 'full-grid',
+                formCss: 'grid-left-to-right-1',
                 gIndex: '3',
                 gChildren: [
                   'comments'
@@ -1573,7 +1576,7 @@ export default function () {
                 ]
               },
               {
-                formCss: 'full-grid',
+                formCss: 'grid-left-to-right-1',
                 gIndex: '5',
                 gChildren: [
                   'comments'
@@ -1657,7 +1660,7 @@ export default function () {
             }
           ],
           tableColumn: '2',
-          tableLabel: 'NEED LABEL',
+          tableLabel: 'Domestic violence?',
           fqn: 'biopsychosocial.domesticViolence'
         },
         {
@@ -1678,7 +1681,7 @@ export default function () {
             }
           ],
           tableColumn: '3',
-          tableLabel: 'NEED LABEL',
+          tableLabel: 'Social worker?',
           fqn: 'biopsychosocial.requestContact'
         },
         {
@@ -1710,105 +1713,61 @@ export default function () {
           fqn: 'biopsychosocial.hygieneComments'
         },
         {
-          elementKey: 'calm',
+          elementKey: 'behaviour',
           dataCaseStudy: 'Calm-NL-Cooperative',
           formIndex: '1',
-          inputType: 'checkbox',
-          label: 'Calm',
+          inputType: 'checkset',
+          label: 'Behaviour',
+          options: [
+            {
+              text: 'Calm'
+            },
+            {
+              text: 'Cooperative'
+            },
+            {
+              text: 'Agitated'
+            },
+            {
+              text: 'Flat affect'
+            },
+            {
+              text: 'Threatening'
+            },
+            {
+              text: 'Physically agressive'
+            },
+            {
+              text: 'Uncommunicative'
+            }
+          ],
           tableColumn: '6',
           tableLabel: 'Behaviour',
-          fqn: 'biopsychosocial.calm'
+          fqn: 'biopsychosocial.behaviour'
         },
         {
-          elementKey: 'cooperative',
-          dataCaseStudy: 'Calm-NL-Cooperative',
-          formIndex: '1',
-          inputType: 'checkbox',
-          label: 'Cooperative',
-          tableColumn: '6',
-          fqn: 'biopsychosocial.cooperative'
-        },
-        {
-          elementKey: 'agitated',
-          dataCaseStudy: 'Calm-NL-Cooperative',
-          formIndex: '1',
-          inputType: 'checkbox',
-          label: 'Agitated',
-          tableColumn: '6',
-          fqn: 'biopsychosocial.agitated'
-        },
-        {
-          elementKey: 'flat',
-          dataCaseStudy: 'Calm-NL-Cooperative',
-          formIndex: '1',
-          inputType: 'checkbox',
-          label: 'Flat affect',
-          tableColumn: '6',
-          fqn: 'biopsychosocial.flat'
-        },
-        {
-          elementKey: 'threatening',
-          dataCaseStudy: 'Calm-NL-Cooperative',
-          formIndex: '1',
-          inputType: 'checkbox',
-          label: 'Threatening',
-          tableColumn: '6',
-          fqn: 'biopsychosocial.threatening'
-        },
-        {
-          elementKey: 'agressive',
-          dataCaseStudy: 'Calm-NL-Cooperative',
-          formIndex: '1',
-          inputType: 'checkbox',
-          label: 'Physically agressive',
-          tableColumn: '6',
-          fqn: 'biopsychosocial.agressive'
-        },
-        {
-          elementKey: 'uncommunicative',
-          dataCaseStudy: 'Calm-NL-Cooperative',
-          formIndex: '1',
-          inputType: 'checkbox',
-          label: 'Uncommunicative',
-          tableColumn: '6',
-          fqn: 'biopsychosocial.uncommunicative'
-        },
-        {
-          elementKey: 'none',
+          elementKey: 'hallucinations',
           dataCaseStudy: 'None',
           formIndex: '1',
-          inputType: 'checkbox',
-          label: 'None',
+          inputType: 'checkset',
+          label: 'Hallucinations',
+          options: [
+            {
+              text: 'None'
+            },
+            {
+              text: 'Visual'
+            },
+            {
+              text: 'Auditory'
+            },
+            {
+              text: 'Olafactory'
+            }
+          ],
           tableColumn: '7',
           tableLabel: 'Hallucinations',
-          fqn: 'biopsychosocial.none'
-        },
-        {
-          elementKey: 'visual',
-          dataCaseStudy: 'None',
-          formIndex: '1',
-          inputType: 'checkbox',
-          label: 'Visual',
-          tableColumn: '7',
-          fqn: 'biopsychosocial.visual'
-        },
-        {
-          elementKey: 'auditory',
-          dataCaseStudy: 'None',
-          formIndex: '1',
-          inputType: 'checkbox',
-          label: 'Auditory',
-          tableColumn: '7',
-          fqn: 'biopsychosocial.auditory'
-        },
-        {
-          elementKey: 'olafactory',
-          dataCaseStudy: 'None',
-          formIndex: '1',
-          inputType: 'checkbox',
-          label: 'Olafactory',
-          tableColumn: '7',
-          fqn: 'biopsychosocial.olafactory'
+          fqn: 'biopsychosocial.hallucinations'
         },
         {
           elementKey: 'suicidal',
@@ -1845,7 +1804,7 @@ export default function () {
               text: 'Ideation'
             }
           ],
-          tableColumn: '8',
+          tableColumn: '9',
           fqn: 'biopsychosocial.homicidal'
         },
         {
@@ -1862,7 +1821,7 @@ export default function () {
               text: 'Other'
             }
           ],
-          tableColumn: '8',
+          tableColumn: '10',
           fqn: 'biopsychosocial.speech'
         },
         {
@@ -1871,7 +1830,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Support person',
-          tableColumn: '9',
+          tableColumn: '11',
           tableLabel: 'Support',
           fqn: 'biopsychosocial.supportPerson'
         },
@@ -1879,9 +1838,10 @@ export default function () {
           elementKey: 'supportComments',
           dataCaseStudy: '(not filled)',
           formIndex: '1',
+          formCss: 'grid-span-2-columns',
           inputType: 'textarea',
           label: 'Support comments',
-          tableColumn: '9',
+          tableColumn: '12',
           fqn: 'biopsychosocial.supportComments'
         },
         {
@@ -1890,7 +1850,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Security/police present',
-          tableColumn: '10',
+          tableColumn: '13',
           tableLabel: 'Security',
           fqn: 'biopsychosocial.securityPolicePresent'
         },
@@ -1898,9 +1858,10 @@ export default function () {
           elementKey: 'securityComments',
           dataCaseStudy: '(not filled)',
           formIndex: '1',
+          formCss: 'grid-span-2-columns',
           inputType: 'textarea',
           label: 'Security comments',
-          tableColumn: '10',
+          tableColumn: '14',
           fqn: 'biopsychosocial.securityComments'
         },
         {
@@ -1917,7 +1878,7 @@ export default function () {
               text: 'No'
             }
           ],
-          tableColumn: '11',
+          tableColumn: '15',
           tableLabel: 'Patient restrained',
           fqn: 'biopsychosocial.patientRestrained'
         },
@@ -1927,7 +1888,7 @@ export default function () {
           formIndex: '1',
           inputType: 'day',
           label: 'Day',
-          tableColumn: '12',
+          tableColumn: '16',
           tableLabel: 'Day',
           fqn: 'biopsychosocial.restraintDay'
         },
@@ -1937,7 +1898,7 @@ export default function () {
           formIndex: '1',
           inputType: 'time',
           label: 'Time',
-          tableColumn: '13',
+          tableColumn: '17',
           tableLabel: 'Time',
           fqn: 'biopsychosocial.restraintTime'
         },
@@ -1945,9 +1906,10 @@ export default function () {
           elementKey: 'restraintComments',
           dataCaseStudy: '(not filled)',
           formIndex: '1',
+          formCss: 'grid-span-2-columns',
           inputType: 'textarea',
           label: 'Restraint comments',
-          tableColumn: '14',
+          tableColumn: '18',
           tableLabel: 'Restraint comments',
           fqn: 'biopsychosocial.restraintComments'
         },
@@ -1957,12 +1919,12 @@ export default function () {
           formIndex: '1',
           inputType: 'textarea',
           label: 'General comments',
-          tableColumn: '15',
+          tableColumn: '19',
           tableLabel: 'General comments',
           fqn: 'biopsychosocial.generalComments'
         }
       ],
-      generated: '2019-08-30T10:19:43-07:00',
+      generated: '2019-09-06T19:48:05-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1981,14 +1943,14 @@ export default function () {
               ]
             },
             {
-              label: 'NEED LABEL',
+              label: 'Domestic violence?',
               ehr_list_index: '2',
               items: [
                 'domesticViolence'
               ]
             },
             {
-              label: 'NEED LABEL',
+              label: 'Social worker?',
               ehr_list_index: '3',
               items: [
                 'requestContact'
@@ -2012,81 +1974,92 @@ export default function () {
               label: 'Behaviour',
               ehr_list_index: '6',
               items: [
-                'calm',
-                'cooperative',
-                'agitated',
-                'flat',
-                'threatening',
-                'agressive',
-                'uncommunicative'
+                'behaviour'
               ]
             },
             {
               label: 'Hallucinations',
               ehr_list_index: '7',
               items: [
-                'none',
-                'visual',
-                'auditory',
-                'olafactory'
+                'hallucinations'
               ]
             },
             {
               label: 'Psychological state',
               ehr_list_index: '8',
               items: [
-                'suicidal',
-                'homicidal',
+                'suicidal'
+              ]
+            },
+            {
+              ehr_list_index: '9',
+              items: [
+                'homicidal'
+              ]
+            },
+            {
+              ehr_list_index: '10',
+              items: [
                 'speech'
               ]
             },
             {
               label: 'Support',
-              ehr_list_index: '9',
+              ehr_list_index: '11',
               items: [
-                'supportPerson',
+                'supportPerson'
+              ]
+            },
+            {
+              ehr_list_index: '12',
+              items: [
                 'supportComments'
               ]
             },
             {
               label: 'Security',
-              ehr_list_index: '10',
+              ehr_list_index: '13',
               items: [
-                'securityPolicePresent',
+                'securityPolicePresent'
+              ]
+            },
+            {
+              ehr_list_index: '14',
+              items: [
                 'securityComments'
               ]
             },
             {
               label: 'Patient restrained',
-              ehr_list_index: '11',
+              ehr_list_index: '15',
               items: [
                 'patientRestrained'
               ]
             },
             {
               label: 'Day',
-              ehr_list_index: '12',
+              ehr_list_index: '16',
               items: [
                 'restraintDay'
               ]
             },
             {
               label: 'Time',
-              ehr_list_index: '13',
+              ehr_list_index: '17',
               items: [
                 'restraintTime'
               ]
             },
             {
               label: 'Restraint comments',
-              ehr_list_index: '14',
+              ehr_list_index: '18',
               items: [
                 'restraintComments'
               ]
             },
             {
               label: 'General comments',
-              ehr_list_index: '15',
+              ehr_list_index: '19',
               items: [
                 'generalComments'
               ]
@@ -2095,6 +2068,7 @@ export default function () {
           form: {
             elementKey: 'table',
             addButtonText: 'Add a biopsychosocial assessment',
+            formOption: 'transpose',
             formKey: 'table',
             ehr_groups: [
               {
@@ -2110,77 +2084,67 @@ export default function () {
               {
                 gIndex: '2',
                 gChildren: [
-                  {
-                    label: 'Hygiene and grooming',
-                    elementKey: 'subgroup114',
-                    sgChildren: [
-                      'hygieneGrooming',
-                      'hygieneComments'
-                    ]
-                  },
-                  {
-                    label: 'Behaviour',
-                    elementKey: 'subgroup115',
-                    sgChildren: [
-                      'calm',
-                      'cooperative',
-                      'agitated',
-                      'flat',
-                      'threatening',
-                      'agressive',
-                      'uncommunicative'
-                    ]
-                  },
-                  {
-                    label: 'Hallucinations',
-                    elementKey: 'subgroup116',
-                    sgChildren: [
-                      'none',
-                      'visual',
-                      'auditory',
-                      'olafactory'
-                    ]
-                  },
-                  {
-                    label: 'Psychological state',
-                    elementKey: 'subgroup117',
-                    sgChildren: [
-                      'suicidal',
-                      'homicidal',
-                      'speech'
-                    ]
-                  },
-                  {
-                    label: 'Support',
-                    elementKey: 'subgroup118',
-                    sgChildren: [
-                      'supportPerson',
-                      'supportComments'
-                    ]
-                  },
-                  {
-                    label: 'Security',
-                    elementKey: 'subgroup119',
-                    sgChildren: [
-                      'securityPolicePresent',
-                      'securityComments'
-                    ]
-                  },
-                  {
-                    label: 'Restraint',
-                    elementKey: 'subgroup120',
-                    sgChildren: [
-                      'patientRestrained',
-                      'restraintDay',
-                      'restraintTime',
-                      'restraintComments'
-                    ]
-                  }
+                  'domesticViolence',
+                  'requestContact'
                 ]
               },
               {
-                formCss: 'full-grid',
                 gIndex: '3',
+                gChildren: [
+                  'hygieneGrooming',
+                  'hygieneComments'
+                ]
+              },
+              {
+                gIndex: '4',
+                gChildren: [
+                  'behaviour'
+                ]
+              },
+              {
+                gIndex: '5',
+                gChildren: [
+                  'hallucinations'
+                ]
+              },
+              {
+                label: 'Psychological state',
+                gIndex: '6',
+                gChildren: [
+                  'suicidal',
+                  'homicidal',
+                  'speech'
+                ]
+              },
+              {
+                label: 'Support',
+                gIndex: '7',
+                gChildren: [
+                  'supportPerson',
+                  'supportComments'
+                ]
+              },
+              {
+                label: 'Security',
+                gIndex: '8',
+                gChildren: [
+                  'securityPolicePresent',
+                  'securityComments'
+                ]
+              },
+              {
+                label: 'Restraint',
+                gIndex: '9',
+                gChildren: [
+                  'patientRestrained',
+                  'restraintDay',
+                  'restraintTime',
+                  'restraintComments'
+                ]
+              },
+              {
+                formCss: 'grid-left-to-right-1',
+                gIndex: '10',
                 gChildren: [
                   'generalComments'
                 ]
@@ -2191,19 +2155,12 @@ export default function () {
               profession: '',
               day: '',
               time: '',
+              domesticViolence: '',
+              requestContact: '',
               hygieneGrooming: '',
               hygieneComments: '',
-              calm: '',
-              cooperative: '',
-              agitated: '',
-              flat: '',
-              threatening: '',
-              agressive: '',
-              uncommunicative: '',
-              none: '',
-              visual: '',
-              auditory: '',
-              olafactory: '',
+              behaviour: '',
+              hallucinations: '',
               suicidal: '',
               homicidal: '',
               speech: '',
@@ -2265,7 +2222,7 @@ export default function () {
           elementKey: 'order',
           dataCaseStudy: '1) Chest xray-NL-2) ABG-NL-3) CBC, electrolytes, BUN, creatine-NL-4) Spirometry',
           formIndex: '1',
-          formCss: 'span-2',
+          formCss: 'grid-span-2-columns',
           inputType: 'text',
           label: 'Order',
           tableColumn: '2',
@@ -2286,7 +2243,7 @@ export default function () {
         {
           elementKey: 'reason',
           formIndex: '1',
-          formCss: 'span-2',
+          formCss: 'grid-span-2-columns',
           inputType: 'text',
           label: 'Reason',
           tableColumn: '4',
@@ -2331,7 +2288,7 @@ export default function () {
           fqn: 'nonmedOrders.comment'
         }
       ],
-      generated: '2019-08-30T10:19:43-07:00',
+      generated: '2019-09-06T19:48:05-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2410,7 +2367,7 @@ export default function () {
                 ]
               },
               {
-                formCss: 'full-grid',
+                formCss: 'grid-left-to-right-1',
                 gIndex: '3',
                 gChildren: [
                   'comment'
@@ -2537,7 +2494,7 @@ export default function () {
           fqn: 'referrals.status'
         }
       ],
-      generated: '2019-08-30T10:19:43-07:00',
+      generated: '2019-09-06T19:48:05-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2701,7 +2658,7 @@ export default function () {
           fqn: 'labRequisitions.collected'
         }
       ],
-      generated: '2019-08-30T10:19:43-07:00',
+      generated: '2019-09-06T19:48:05-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2834,7 +2791,7 @@ export default function () {
         {
           elementKey: 'medication',
           formIndex: '1',
-          formCss: 'span-2',
+          formCss: 'grid-span-2-columns',
           inputType: 'text',
           label: '<a href=\'/assets/static-databases/drug.txt\' target=\'_blank\'>Medication</a>',
           tableColumn: '2',
@@ -2977,7 +2934,7 @@ export default function () {
           fqn: 'medicationOrders.notes'
         }
       ],
-      generated: '2019-08-30T10:19:43-07:00',
+      generated: '2019-09-06T19:48:05-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -3094,7 +3051,7 @@ export default function () {
                 ]
               },
               {
-                formCss: 'full-grid',
+                formCss: 'grid-left-to-right-1',
                 gIndex: '3',
                 gChildren: [
                   'instructions',
@@ -3204,6 +3161,7 @@ export default function () {
               text: '[Today\'s day] plan'
             }
           ],
+          tableColumn: '5',
           tableLabel: 'Today\'s plan',
           fqn: 'medAdminRec.todayPlan'
         },
@@ -3217,6 +3175,7 @@ export default function () {
               text: '[Today\'s day] given'
             }
           ],
+          tableColumn: '6',
           tableLabel: 'Today\'s given',
           fqn: 'medAdminRec.todayGiven'
         },
@@ -3225,6 +3184,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Administered by',
+          tableColumn: '7',
           tableLabel: 'Administered by',
           fqn: 'medAdminRec.administeredBy'
         },
@@ -3234,12 +3194,13 @@ export default function () {
           helperText: 'Enter time delivered or say if not delivered.',
           inputType: 'text',
           label: 'Actual time',
+          tableColumn: '8',
           tableLabel: 'Actual time',
           fqn: 'medAdminRec.actualTime',
           helperHtml: '<p>Enter time delivered or say if not delivered.</p>'
         }
       ],
-      generated: '2019-08-30T10:19:43-07:00',
+      generated: '2019-09-06T19:48:05-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -3273,6 +3234,34 @@ export default function () {
               ehr_list_index: '4',
               items: [
                 'route'
+              ]
+            },
+            {
+              label: 'Today\'s plan',
+              ehr_list_index: '5',
+              items: [
+                'todayPlan'
+              ]
+            },
+            {
+              label: 'Today\'s given',
+              ehr_list_index: '6',
+              items: [
+                'todayGiven'
+              ]
+            },
+            {
+              label: 'Administered by',
+              ehr_list_index: '7',
+              items: [
+                'administeredBy'
+              ]
+            },
+            {
+              label: 'Actual time',
+              ehr_list_index: '8',
+              items: [
+                'actualTime'
               ]
             }
           ],
@@ -3456,7 +3445,7 @@ export default function () {
           fqn: 'dischargeSummary.dischargeEducation'
         }
       ],
-      generated: '2019-08-30T10:19:43-07:00',
+      generated: '2019-09-06T19:48:05-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -3478,7 +3467,7 @@ export default function () {
               ]
             },
             {
-              formCss: 'full-grid',
+              formCss: 'grid-left-to-right-1',
               gIndex: '2',
               gChildren: [
                 'dischargeDiagnosis',
@@ -3497,31 +3486,26 @@ export default function () {
       hasGridForm: true,
       pageChildren: [
         {
-          elementKey: 'msp',
+          elementKey: 'paymentType',
           dataCaseStudy: 'MSP',
           formIndex: '1',
-          inputType: 'checkbox',
-          label: 'MSP',
-          fqn: 'billing.msp'
-        },
-        {
-          elementKey: 'thirdParty',
-          dataCaseStudy: 'MSP',
-          formIndex: '1',
-          inputType: 'checkbox',
-          label: 'Third party',
-          fqn: 'billing.thirdParty'
-        },
-        {
-          elementKey: 'federal',
-          dataCaseStudy: 'MSP',
-          formIndex: '1',
-          inputType: 'checkbox',
-          label: 'Federal',
-          fqn: 'billing.federal'
+          inputType: 'checkset',
+          label: 'Payment type',
+          options: [
+            {
+              text: 'MSP'
+            },
+            {
+              text: 'Third party'
+            },
+            {
+              text: 'Federal'
+            }
+          ],
+          fqn: 'billing.paymentType'
         }
       ],
-      generated: '2019-08-30T10:19:43-07:00',
+      generated: '2019-09-06T19:48:05-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -3529,12 +3513,9 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
-              formCss: 'full-grid',
               gIndex: '1',
               gChildren: [
-                'msp',
-                'thirdParty',
-                'federal'
+                'paymentType'
               ]
             }
           ]

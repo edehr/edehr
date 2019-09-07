@@ -46,10 +46,12 @@ export default function () {
           formIndex: '1',
           inputType: 'textarea',
           label: 'Progress note',
+          tableColumn: '2',
+          tableLabel: 'Note',
           fqn: 'progressNotes.note'
         }
       ],
-      generated: '2019-09-02T05:52:36-07:00',
+      generated: '2019-09-06T18:26:06-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -65,6 +67,13 @@ export default function () {
                 'profession',
                 'day',
                 'time'
+              ]
+            },
+            {
+              label: 'Note',
+              ehr_list_index: '2',
+              items: [
+                'note'
               ]
             }
           ],
@@ -146,6 +155,8 @@ export default function () {
           formIndex: '1',
           inputType: 'textarea',
           label: 'Clinical issue',
+          tableColumn: '2',
+          tableLabel: 'Clinical issue',
           fqn: 'carePlan.clinical'
         },
         {
@@ -153,6 +164,8 @@ export default function () {
           formIndex: '1',
           inputType: 'textarea',
           label: 'Goal of care',
+          tableColumn: '3',
+          tableLabel: 'Goal of care',
           fqn: 'carePlan.goal'
         },
         {
@@ -160,6 +173,8 @@ export default function () {
           formIndex: '1',
           inputType: 'textarea',
           label: 'Intervention',
+          tableColumn: '4',
+          tableLabel: 'Intervention',
           fqn: 'carePlan.interventions'
         },
         {
@@ -167,6 +182,8 @@ export default function () {
           formIndex: '1',
           inputType: 'textarea',
           label: 'Evaluation of intervention',
+          tableColumn: '5',
+          tableLabel: 'Evaluation of intervention',
           fqn: 'carePlan.evaluation'
         },
         {
@@ -185,10 +202,12 @@ export default function () {
               text: 'Complete'
             }
           ],
+          tableColumn: '6',
+          tableLabel: 'Status',
           fqn: 'carePlan.status'
         }
       ],
-      generated: '2019-09-02T05:52:36-07:00',
+      generated: '2019-09-06T18:26:06-07:00',
       pageElements: {
         table2: {
           elementKey: 'table2',
@@ -204,6 +223,41 @@ export default function () {
                 'profession',
                 'day',
                 'time'
+              ]
+            },
+            {
+              label: 'Clinical issue',
+              ehr_list_index: '2',
+              items: [
+                'clinical'
+              ]
+            },
+            {
+              label: 'Goal of care',
+              ehr_list_index: '3',
+              items: [
+                'goal'
+              ]
+            },
+            {
+              label: 'Intervention',
+              ehr_list_index: '4',
+              items: [
+                'interventions'
+              ]
+            },
+            {
+              label: 'Evaluation of intervention',
+              ehr_list_index: '5',
+              items: [
+                'evaluation'
+              ]
+            },
+            {
+              label: 'Status',
+              ehr_list_index: '6',
+              items: [
+                'status'
               ]
             }
           ],
@@ -255,11 +309,11 @@ export default function () {
       isV2: true,
       hasGridForm: true,
       pageChildren: [],
-      generated: '2019-09-02T05:52:36-07:00',
+      generated: '2019-09-06T18:26:06-07:00',
       pageElements: {
-        page_form125: {
-          elementKey: 'page_form125',
-          formKey: 'page_form125',
+        page_form118: {
+          elementKey: 'page_form118',
+          formKey: 'page_form118',
           isPageForm: true,
           ehr_groups: []
         }
@@ -309,11 +363,11 @@ export default function () {
           fqn: 'labResults.labReport4_1'
         }
       ],
-      generated: '2019-09-02T05:52:36-07:00',
+      generated: '2019-09-06T18:26:06-07:00',
       pageElements: {
-        page_form126: {
-          elementKey: 'page_form126',
-          formKey: 'page_form126',
+        page_form119: {
+          elementKey: 'page_form119',
+          formKey: 'page_form119',
           isPageForm: true,
           ehr_groups: [
             {
@@ -321,7 +375,7 @@ export default function () {
               gChildren: [
                 {
                   label: 'Laboratory results',
-                  elementKey: 'subgroup131',
+                  elementKey: 'subgroup124',
                   sgChildren: [
                     'labReport1_1',
                     'labReport2_1',
@@ -393,11 +447,11 @@ export default function () {
           fqn: 'medicalImaging.pneumonia_report'
         }
       ],
-      generated: '2019-09-02T05:52:36-07:00',
+      generated: '2019-09-06T18:26:06-07:00',
       pageElements: {
-        page_form128: {
-          elementKey: 'page_form128',
-          formKey: 'page_form128',
+        page_form121: {
+          elementKey: 'page_form121',
+          formKey: 'page_form121',
           isPageForm: true,
           ehr_groups: [
             {
@@ -422,11 +476,11 @@ export default function () {
       isV2: true,
       hasGridForm: true,
       pageChildren: [],
-      generated: '2019-09-02T05:52:36-07:00',
+      generated: '2019-09-06T18:26:06-07:00',
       pageElements: {
-        page_form130: {
-          elementKey: 'page_form130',
-          formKey: 'page_form130',
+        page_form123: {
+          elementKey: 'page_form123',
+          formKey: 'page_form123',
           isPageForm: true,
           ehr_groups: []
         }

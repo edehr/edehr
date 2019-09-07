@@ -6,9 +6,7 @@ The datepicker plugin has styling that needs adjustments.
 2. Need to change the position from absolute to relative so the date picker will appear within a dialog. Otherwise
 the date picker may be chopped and much of it might not be visible.
  */
-.vdp-datepicker {
-  border: 1px solid $grey40;
-}
+
 .vdp-datepicker__calendar {
   position: relative;
 }
@@ -162,7 +160,6 @@ input:disabled, textarea:disabled, select:disabled, checkbox:disabled, radio:dis
 }
 
 .vdp-datepicker * {
-  border: none;
   width: 100%
 }
 

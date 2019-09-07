@@ -4,8 +4,8 @@
       tab(name="Graph", :selected="true")
         div(v-show="showTableAddButton")
           ui-button(v-on:buttonClicked="showDialog") {{ tableDef.addButtonText }}
-        input(class="checkbox", type="checkbox", v-model="showingSpecial")
-        span show sample data
+        <!-- input(class="checkbox", type="checkbox", v-model="showingSpecial")
+        span show sample data -->
         vitals-chart(v-bind:vitals="tableData", v-bind:vitalsModel="vitalsModel")
         ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDef", :inputs="dialogInputs", :errorList="errorList" )
       tab(name="Chart")

@@ -128,7 +128,7 @@ export default function () {
           fqn: 'visit.transferOutTime'
         }
       ],
-      generated: '2019-09-06T07:52:27-07:00',
+      generated: '2019-09-06T19:39:56-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -146,7 +146,7 @@ export default function () {
               ]
             },
             {
-              formCss: 'full-grid',
+              formCss: 'grid-left-to-right-1',
               gIndex: '2',
               gChildren: [
                 'diagnosis'
@@ -197,6 +197,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
+                formCss: 'grid-left-to-right-1',
                 gIndex: '1',
                 gChildren: [
                   'location',
@@ -205,6 +206,10 @@ export default function () {
                   'transferOutDay',
                   'transferOutTime'
                 ]
+              },
+              {
+                gIndex: '2',
+                gChildren: []
               }
             ],
             ehr_data: {
@@ -277,10 +282,10 @@ export default function () {
           fqn: 'vitals.time'
         },
         {
-          elementKey: 'spacer37',
+          elementKey: 'spacer39',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'vitals.spacer37'
+          fqn: 'vitals.spacer39'
         },
         {
           elementKey: 'temperature',
@@ -319,10 +324,10 @@ export default function () {
           fqn: 'vitals.source'
         },
         {
-          elementKey: 'spacer38',
+          elementKey: 'spacer40',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'vitals.spacer38'
+          fqn: 'vitals.spacer40'
         },
         {
           elementKey: 'strength',
@@ -420,16 +425,16 @@ export default function () {
           fqn: 'vitals.respirationRate'
         },
         {
-          elementKey: 'spacer39',
+          elementKey: 'spacer41',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'vitals.spacer39'
+          fqn: 'vitals.spacer41'
         },
         {
-          elementKey: 'spacer40',
+          elementKey: 'spacer42',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'vitals.spacer40'
+          fqn: 'vitals.spacer42'
         },
         {
           elementKey: 'oxygenSaturation',
@@ -479,7 +484,7 @@ export default function () {
           fqn: 'vitals.flowRate'
         }
       ],
-      generated: '2019-09-06T07:52:27-07:00',
+      generated: '2019-09-06T19:39:56-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -618,10 +623,10 @@ export default function () {
                 gChildren: [
                   'day',
                   'time',
-                  'spacer37',
+                  'spacer39',
                   'temperature',
                   'source',
-                  'spacer38',
+                  'spacer40',
                   'strength',
                   'rate',
                   'rhythm',
@@ -629,8 +634,8 @@ export default function () {
                   'diastolic',
                   'patientPosition',
                   'respirationRate',
-                  'spacer39',
-                  'spacer40',
+                  'spacer41',
+                  'spacer42',
                   'oxygenSaturation',
                   'oxygenMode',
                   'flowRate'
@@ -703,22 +708,22 @@ export default function () {
           elementKey: 'fluidIn',
           formIndex: '1',
           inputType: 'text',
-          label: 'Fluid In',
+          label: 'Fluid in',
           tableColumn: '2',
-          tableLabel: 'Fluid In',
+          tableLabel: 'Fluid in',
           fqn: 'fluidBalance.fluidIn'
         },
         {
           elementKey: 'fluidOut',
           formIndex: '1',
           inputType: 'text',
-          label: 'Fluid Out',
+          label: 'Fluid out',
           tableColumn: '3',
-          tableLabel: 'Fluid Out',
+          tableLabel: 'Fluid out',
           fqn: 'fluidBalance.fluidOut'
         }
       ],
-      generated: '2019-09-06T07:52:27-07:00',
+      generated: '2019-09-06T19:39:56-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -737,14 +742,14 @@ export default function () {
               ]
             },
             {
-              label: 'Fluid In',
+              label: 'Fluid in',
               ehr_list_index: '2',
               items: [
                 'fluidIn'
               ]
             },
             {
-              label: 'Fluid Out',
+              label: 'Fluid out',
               ehr_list_index: '3',
               items: [
                 'fluidOut'
@@ -767,7 +772,6 @@ export default function () {
                 ]
               },
               {
-                formCss: 'record-header',
                 gIndex: '2',
                 gChildren: [
                   'fluidIn',
@@ -830,68 +834,33 @@ export default function () {
         {
           elementKey: 'alert',
           formIndex: '1',
-          inputType: 'checkbox',
-          label: 'Alert',
+          inputType: 'checkset',
+          options: [
+            {
+              text: 'Alert'
+            },
+            {
+              text: 'Oriented'
+            },
+            {
+              text: 'Confused'
+            },
+            {
+              text: 'Drowsy'
+            },
+            {
+              text: 'Unresponsive'
+            },
+            {
+              text: 'Dizziness'
+            },
+            {
+              text: 'Blurred vision'
+            }
+          ],
           tableColumn: '2',
-          tableLabel: 'Alert',
+          tableLabel: 'Status',
           fqn: 'neurological.alert'
-        },
-        {
-          elementKey: 'oriented',
-          dataCaseStudy: true,
-          formIndex: '1',
-          inputType: 'checkbox',
-          label: 'Oriented',
-          tableColumn: '3',
-          tableLabel: 'Oriented',
-          fqn: 'neurological.oriented'
-        },
-        {
-          elementKey: 'confused',
-          dataCaseStudy: true,
-          formIndex: '1',
-          inputType: 'checkbox',
-          label: 'Confused',
-          tableColumn: '4',
-          tableLabel: 'Confused',
-          fqn: 'neurological.confused'
-        },
-        {
-          elementKey: 'drowsy',
-          formIndex: '1',
-          inputType: 'checkbox',
-          label: 'Drowsy',
-          tableColumn: '5',
-          tableLabel: 'Drowsy',
-          fqn: 'neurological.drowsy'
-        },
-        {
-          elementKey: 'unresponsive',
-          formIndex: '1',
-          inputType: 'checkbox',
-          label: 'Unresponsive',
-          passToFunction: 'dizziness',
-          tableColumn: '6',
-          tableLabel: 'Unresponsive',
-          fqn: 'neurological.unresponsive'
-        },
-        {
-          elementKey: 'dizziness',
-          formIndex: '1',
-          inputType: 'checkbox',
-          label: 'Dizziness',
-          tableColumn: '7',
-          tableLabel: 'Dizziness',
-          fqn: 'neurological.dizziness'
-        },
-        {
-          elementKey: 'blurredVision',
-          formIndex: '1',
-          inputType: 'checkbox',
-          label: 'Blurred vision',
-          tableColumn: '8',
-          tableLabel: 'Blurred vision',
-          fqn: 'neurological.blurredVision'
         },
         {
           elementKey: 'eyeOpening',
@@ -917,7 +886,7 @@ export default function () {
             }
           ],
           passToFunction: 'glasgowCalculation',
-          tableColumn: '9',
+          tableColumn: '3',
           tableLabel: 'Eye opening',
           fqn: 'neurological.eyeOpening'
         },
@@ -948,7 +917,7 @@ export default function () {
             }
           ],
           passToFunction: 'glasgowCalculation',
-          tableColumn: '10',
+          tableColumn: '4',
           tableLabel: 'Verbal response',
           fqn: 'neurological.verbalResponse'
         },
@@ -982,7 +951,7 @@ export default function () {
             }
           ],
           passToFunction: 'glasgowCalculation',
-          tableColumn: '11',
+          tableColumn: '5',
           tableLabel: 'Best motor response',
           fqn: 'neurological.bestMotorResponse'
         },
@@ -998,7 +967,7 @@ export default function () {
               text: '=14+14+14'
             }
           ],
-          tableColumn: '12',
+          tableColumn: '6',
           tableLabel: 'Glasgow Coma Scale',
           fqn: 'neurological.glasgowCalculation'
         },
@@ -1019,7 +988,7 @@ export default function () {
               text: 'Unknown'
             }
           ],
-          tableColumn: '13',
+          tableColumn: '7',
           tableLabel: 'Loss of conciousness',
           fqn: 'neurological.loss'
         },
@@ -1029,7 +998,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Duration',
-          tableColumn: '14',
+          tableColumn: '8',
           tableLabel: 'Duration',
           fqn: 'neurological.duration'
         },
@@ -1065,7 +1034,7 @@ export default function () {
               text: '8'
             }
           ],
-          tableColumn: '15',
+          tableColumn: '9',
           tableLabel: 'Left pupil size',
           fqn: 'neurological.leftPupilSize'
         },
@@ -1086,9 +1055,16 @@ export default function () {
               text: 'Fixed'
             }
           ],
-          tableColumn: '16',
+          tableColumn: '10',
           tableLabel: 'Left pupil response to light',
           fqn: 'neurological.leftPupilResponseToLight'
+        },
+        {
+          elementKey: 'spacer50',
+          dataCaseStudy: 'Equal',
+          formIndex: '1',
+          inputType: 'spacer',
+          fqn: 'neurological.spacer50'
         },
         {
           elementKey: 'rightPupilSize',
@@ -1122,7 +1098,7 @@ export default function () {
               text: '8'
             }
           ],
-          tableColumn: '17',
+          tableColumn: '11',
           tableLabel: 'Right pupil size',
           fqn: 'neurological.rightPupilSize'
         },
@@ -1143,7 +1119,7 @@ export default function () {
               text: 'Fixed'
             }
           ],
-          tableColumn: '18',
+          tableColumn: '12',
           tableLabel: 'Right pupil response to light',
           fqn: 'neurological.rightPupilResponseToLight'
         },
@@ -1161,24 +1137,18 @@ export default function () {
               text: 'Unequal'
             }
           ],
-          tableColumn: '19',
+          tableColumn: '13',
           tableLabel: 'Both pupils',
           fqn: 'neurological.bothPupils'
-        },
-        {
-          elementKey: 'spacer48',
-          dataCaseStudy: 'Equal',
-          formIndex: '1',
-          inputType: 'spacer',
-          fqn: 'neurological.spacer48'
         },
         {
           elementKey: 'comments',
           dataCaseStudy: '(no comments)',
           formIndex: '1',
+          formCss: 'grid-span-2-columns',
           inputType: 'textarea',
           label: 'Comments',
-          tableColumn: '20',
+          tableColumn: '14',
           tableLabel: 'Comments',
           fqn: 'neurological.comments'
         },
@@ -1210,7 +1180,7 @@ export default function () {
             }
           ],
           passToFunction: 'strokeAssessmentCalculation',
-          tableColumn: '21',
+          tableColumn: '15',
           tableLabel: 'Level of conciousness',
           fqn: 'neurological.levelOfConciousness'
         },
@@ -1231,7 +1201,7 @@ export default function () {
             }
           ],
           passToFunction: 'strokeAssessmentCalculation',
-          tableColumn: '22',
+          tableColumn: '16',
           tableLabel: 'Level of conciousness questions',
           fqn: 'neurological.levelOfConciousnessQuestions'
         },
@@ -1252,7 +1222,8 @@ export default function () {
             }
           ],
           passToFunction: 'strokeAssessmentCalculation',
-          tableColumn: '23',
+          tableColumn: '17',
+          tableCss: 'hr-table',
           tableLabel: 'Level of conciousness commands',
           fqn: 'neurological.levelOfConciousnessCommands'
         },
@@ -1279,7 +1250,7 @@ export default function () {
             }
           ],
           passToFunction: 'strokeAssessmentCalculation',
-          tableColumn: '24',
+          tableColumn: '18',
           tableLabel: 'Motor - left arm',
           fqn: 'neurological.motorLeftArm'
         },
@@ -1306,15 +1277,15 @@ export default function () {
             }
           ],
           passToFunction: 'strokeAssessmentCalculation',
-          tableColumn: '25',
+          tableColumn: '19',
           tableLabel: 'Motor - right arm',
           fqn: 'neurological.motorRightArm'
         },
         {
-          elementKey: 'spacer52',
+          elementKey: 'spacer53',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'neurological.spacer52'
+          fqn: 'neurological.spacer53'
         },
         {
           elementKey: 'motorLeftLeg',
@@ -1339,7 +1310,7 @@ export default function () {
             }
           ],
           passToFunction: 'strokeAssessmentCalculation',
-          tableColumn: '26',
+          tableColumn: '20',
           tableLabel: 'Motor - left leg',
           fqn: 'neurological.motorLeftLeg'
         },
@@ -1366,7 +1337,7 @@ export default function () {
             }
           ],
           passToFunction: 'strokeAssessmentCalculation',
-          tableColumn: '27',
+          tableColumn: '21',
           tableLabel: 'Motor - right leg',
           fqn: 'neurological.motorRightLeg'
         },
@@ -1387,7 +1358,8 @@ export default function () {
             }
           ],
           passToFunction: 'strokeAssessmentCalculation',
-          tableColumn: '28',
+          tableColumn: '22',
+          tableCss: 'hr-table',
           tableLabel: 'Limb ataxia',
           fqn: 'neurological.limbAtaxia'
         },
@@ -1408,7 +1380,7 @@ export default function () {
             }
           ],
           passToFunction: 'strokeAssessmentCalculation',
-          tableColumn: '29',
+          tableColumn: '23',
           tableLabel: 'Best gaze',
           fqn: 'neurological.bestGaze'
         },
@@ -1432,7 +1404,7 @@ export default function () {
             }
           ],
           passToFunction: 'strokeAssessmentCalculation',
-          tableColumn: '30',
+          tableColumn: '24',
           tableLabel: 'Visual',
           fqn: 'neurological.visual'
         },
@@ -1456,7 +1428,7 @@ export default function () {
             }
           ],
           passToFunction: 'strokeAssessmentCalculation',
-          tableColumn: '31',
+          tableColumn: '25',
           tableLabel: 'Facial palsy',
           fqn: 'neurological.facialPalsy'
         },
@@ -1477,7 +1449,7 @@ export default function () {
             }
           ],
           passToFunction: 'strokeAssessmentCalculation',
-          tableColumn: '32',
+          tableColumn: '26',
           tableLabel: 'Sensory',
           fqn: 'neurological.sensory'
         },
@@ -1501,7 +1473,7 @@ export default function () {
             }
           ],
           passToFunction: 'strokeAssessmentCalculation',
-          tableColumn: '33',
+          tableColumn: '27',
           tableLabel: 'Best language',
           fqn: 'neurological.bestLanguage'
         },
@@ -1522,7 +1494,7 @@ export default function () {
             }
           ],
           passToFunction: 'strokeAssessmentCalculation',
-          tableColumn: '34',
+          tableColumn: '28',
           tableLabel: 'Dysarthria',
           fqn: 'neurological.dysarthria'
         },
@@ -1543,7 +1515,8 @@ export default function () {
             }
           ],
           passToFunction: 'strokeAssessmentCalculation',
-          tableColumn: '35',
+          tableColumn: '29',
+          tableCss: 'hr-table',
           tableLabel: 'Extinction and inattention',
           fqn: 'neurological.extinctionAndInattention'
         },
@@ -1553,18 +1526,17 @@ export default function () {
           formIndex: '1',
           inputType: 'calculatedValue',
           label: '<b>Stroke assessment calculation</b>',
-          tableColumn: '36',
+          tableColumn: '30',
           tableLabel: 'Stroke Assessment',
           fqn: 'neurological.strokeAssessmentCalculation'
         }
       ],
-      generated: '2019-09-06T07:52:27-07:00',
+      generated: '2019-09-06T19:39:56-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
-          label: 'Neurological',
           addButtonText: 'Add a neurological assessment',
           ehr_list: [
             {
@@ -1578,246 +1550,204 @@ export default function () {
               ]
             },
             {
-              label: 'Alert',
+              label: 'Status',
               ehr_list_index: '2',
               items: [
                 'alert'
               ]
             },
             {
-              label: 'Oriented',
-              ehr_list_index: '3',
-              items: [
-                'oriented'
-              ]
-            },
-            {
-              label: 'Confused',
-              ehr_list_index: '4',
-              items: [
-                'confused'
-              ]
-            },
-            {
-              label: 'Drowsy',
-              ehr_list_index: '5',
-              items: [
-                'drowsy'
-              ]
-            },
-            {
-              label: 'Unresponsive',
-              ehr_list_index: '6',
-              items: [
-                'unresponsive'
-              ]
-            },
-            {
-              label: 'Dizziness',
-              ehr_list_index: '7',
-              items: [
-                'dizziness'
-              ]
-            },
-            {
-              label: 'Blurred vision',
-              ehr_list_index: '8',
-              items: [
-                'blurredVision'
-              ]
-            },
-            {
               label: 'Eye opening',
-              ehr_list_index: '9',
+              ehr_list_index: '3',
               items: [
                 'eyeOpening'
               ]
             },
             {
               label: 'Verbal response',
-              ehr_list_index: '10',
+              ehr_list_index: '4',
               items: [
                 'verbalResponse'
               ]
             },
             {
               label: 'Best motor response',
-              ehr_list_index: '11',
+              ehr_list_index: '5',
               items: [
                 'bestMotorResponse'
               ]
             },
             {
               label: 'Glasgow Coma Scale',
-              ehr_list_index: '12',
+              ehr_list_index: '6',
               items: [
                 'glasgowCalculation'
               ]
             },
             {
               label: 'Loss of conciousness',
-              ehr_list_index: '13',
+              ehr_list_index: '7',
               items: [
                 'loss'
               ]
             },
             {
               label: 'Duration',
-              ehr_list_index: '14',
+              ehr_list_index: '8',
               items: [
                 'duration'
               ]
             },
             {
               label: 'Left pupil size',
-              ehr_list_index: '15',
+              ehr_list_index: '9',
               items: [
                 'leftPupilSize'
               ]
             },
             {
               label: 'Left pupil response to light',
-              ehr_list_index: '16',
+              ehr_list_index: '10',
               items: [
                 'leftPupilResponseToLight'
               ]
             },
             {
               label: 'Right pupil size',
-              ehr_list_index: '17',
+              ehr_list_index: '11',
               items: [
                 'rightPupilSize'
               ]
             },
             {
               label: 'Right pupil response to light',
-              ehr_list_index: '18',
+              ehr_list_index: '12',
               items: [
                 'rightPupilResponseToLight'
               ]
             },
             {
               label: 'Both pupils',
-              ehr_list_index: '19',
+              ehr_list_index: '13',
               items: [
                 'bothPupils'
               ]
             },
             {
               label: 'Comments',
-              ehr_list_index: '20',
+              ehr_list_index: '14',
               items: [
                 'comments'
               ]
             },
             {
               label: 'Level of conciousness',
-              ehr_list_index: '21',
+              ehr_list_index: '15',
               items: [
                 'levelOfConciousness'
               ]
             },
             {
               label: 'Level of conciousness questions',
-              ehr_list_index: '22',
+              ehr_list_index: '16',
               items: [
                 'levelOfConciousnessQuestions'
               ]
             },
             {
               label: 'Level of conciousness commands',
-              ehr_list_index: '23',
+              ehr_list_index: '17',
               items: [
                 'levelOfConciousnessCommands'
               ]
             },
             {
               label: 'Motor - left arm',
-              ehr_list_index: '24',
+              ehr_list_index: '18',
               items: [
                 'motorLeftArm'
               ]
             },
             {
               label: 'Motor - right arm',
-              ehr_list_index: '25',
+              ehr_list_index: '19',
               items: [
                 'motorRightArm'
               ]
             },
             {
               label: 'Motor - left leg',
-              ehr_list_index: '26',
+              ehr_list_index: '20',
               items: [
                 'motorLeftLeg'
               ]
             },
             {
               label: 'Motor - right leg',
-              ehr_list_index: '27',
+              ehr_list_index: '21',
               items: [
                 'motorRightLeg'
               ]
             },
             {
               label: 'Limb ataxia',
-              ehr_list_index: '28',
+              ehr_list_index: '22',
               items: [
                 'limbAtaxia'
               ]
             },
             {
               label: 'Best gaze',
-              ehr_list_index: '29',
+              ehr_list_index: '23',
               items: [
                 'bestGaze'
               ]
             },
             {
               label: 'Visual',
-              ehr_list_index: '30',
+              ehr_list_index: '24',
               items: [
                 'visual'
               ]
             },
             {
               label: 'Facial palsy',
-              ehr_list_index: '31',
+              ehr_list_index: '25',
               items: [
                 'facialPalsy'
               ]
             },
             {
               label: 'Sensory',
-              ehr_list_index: '32',
+              ehr_list_index: '26',
               items: [
                 'sensory'
               ]
             },
             {
               label: 'Best language',
-              ehr_list_index: '33',
+              ehr_list_index: '27',
               items: [
                 'bestLanguage'
               ]
             },
             {
               label: 'Dysarthria',
-              ehr_list_index: '34',
+              ehr_list_index: '28',
               items: [
                 'dysarthria'
               ]
             },
             {
               label: 'Extinction and inattention',
-              ehr_list_index: '35',
+              ehr_list_index: '29',
               items: [
                 'extinctionAndInattention'
               ]
             },
             {
               label: 'Stroke Assessment',
-              ehr_list_index: '36',
+              ehr_list_index: '30',
               items: [
                 'strokeAssessmentCalculation'
               ]
@@ -1825,7 +1755,6 @@ export default function () {
           ],
           form: {
             elementKey: 'table',
-            label: 'Neurological',
             addButtonText: 'Add a neurological assessment',
             formOption: 'transpose',
             formKey: 'table',
@@ -1845,20 +1774,14 @@ export default function () {
                 gChildren: [
                   {
                     label: 'Status',
-                    elementKey: 'subgroup65',
+                    elementKey: 'subgroup73',
                     sgChildren: [
-                      'alert',
-                      'oriented',
-                      'confused',
-                      'drowsy',
-                      'unresponsive',
-                      'dizziness',
-                      'blurredVision'
+                      'alert'
                     ]
                   },
                   {
                     label: 'Glasgow Coma Scale',
-                    elementKey: 'subgroup66',
+                    elementKey: 'subgroup74',
                     sgChildren: [
                       'eyeOpening',
                       'verbalResponse',
@@ -1868,61 +1791,61 @@ export default function () {
                   },
                   {
                     label: 'Conciousness',
-                    elementKey: 'subgroup67',
+                    elementKey: 'subgroup75',
                     sgChildren: [
                       'loss',
                       'duration'
-                    ]
-                  },
-                  {
-                    label: 'Pupils',
-                    elementKey: 'subgroup68',
-                    sgChildren: [
-                      'leftPupilSize',
-                      'leftPupilResponseToLight',
-                      'rightPupilSize',
-                      'rightPupilResponseToLight',
-                      'bothPupils',
-                      'spacer48'
                     ]
                   }
                 ]
               },
               {
-                formCss: 'full-grid',
+                formCss: 'section-divider',
                 gIndex: '3',
+                gChildren: [
+                  'leftPupilSize',
+                  'leftPupilResponseToLight',
+                  'spacer50',
+                  'rightPupilSize',
+                  'rightPupilResponseToLight',
+                  'bothPupils'
+                ]
+              },
+              {
+                formCss: 'section-divider',
+                gIndex: '4',
                 gChildren: [
                   'comments',
                   'resources'
                 ]
               },
               {
-                label: 'Stroke Assessment',
-                gIndex: '4',
+                label: 'Stroke assessment',
+                gIndex: '5',
                 gChildren: [
-                  {
-                    elementKey: 'subgroup69',
-                    sgChildren: [
-                      'levelOfConciousness',
-                      'levelOfConciousnessQuestions',
-                      'levelOfConciousnessCommands',
-                      'motorLeftArm',
-                      'motorRightArm',
-                      'spacer52',
-                      'motorLeftLeg',
-                      'motorRightLeg',
-                      'limbAtaxia',
-                      'bestGaze',
-                      'visual',
-                      'facialPalsy',
-                      'sensory',
-                      'bestLanguage',
-                      'dysarthria',
-                      'extinctionAndInattention',
-                      'strokeAssessmentCalculation'
-                    ]
-                  }
+                  'levelOfConciousness',
+                  'levelOfConciousnessQuestions',
+                  'levelOfConciousnessCommands',
+                  'motorLeftArm',
+                  'motorRightArm',
+                  'spacer53',
+                  'motorLeftLeg',
+                  'motorRightLeg',
+                  'limbAtaxia',
+                  'bestGaze',
+                  'visual',
+                  'facialPalsy',
+                  'sensory',
+                  'bestLanguage',
+                  'dysarthria',
+                  'extinctionAndInattention',
+                  'strokeAssessmentCalculation'
                 ]
+              },
+              {
+                formCss: 'grid-left-to-right-1',
+                gIndex: '6',
+                gChildren: []
               }
             ],
             ehr_data: {
@@ -1931,12 +1854,6 @@ export default function () {
               day: '',
               time: '',
               alert: '',
-              oriented: '',
-              confused: '',
-              drowsy: '',
-              unresponsive: '',
-              dizziness: '',
-              blurredVision: '',
               eyeOpening: '',
               verbalResponse: '',
               bestMotorResponse: '',
@@ -2011,48 +1928,35 @@ export default function () {
           fqn: 'respiratory.time'
         },
         {
-          elementKey: 'patent',
+          elementKey: 'airway',
           dataCaseStudy: true,
           formIndex: '1',
-          inputType: 'checkbox',
-          label: 'Patent',
+          inputType: 'checkset',
+          label: 'Airway',
+          options: [
+            {
+              text: 'Patent'
+            },
+            {
+              text: 'Obstructed'
+            },
+            {
+              text: 'Oral endotracheal tube'
+            },
+            {
+              text: 'Other'
+            }
+          ],
           tableColumn: '2',
-          tableLabel: 'Patent',
-          fqn: 'respiratory.patent'
-        },
-        {
-          elementKey: 'obstructed',
-          formIndex: '1',
-          inputType: 'checkbox',
-          label: 'Obstructed',
-          tableColumn: '3',
-          tableLabel: 'Obstructed',
-          fqn: 'respiratory.obstructed'
-        },
-        {
-          elementKey: 'oett',
-          formIndex: '1',
-          inputType: 'checkbox',
-          label: 'Oral endotracheal tube',
-          tableColumn: '4',
-          tableLabel: 'Oral endotracheal tube',
-          fqn: 'respiratory.oett'
-        },
-        {
-          elementKey: 'otherValue',
-          formIndex: '1',
-          inputType: 'checkbox',
-          label: 'Other',
-          tableColumn: '5',
-          tableLabel: 'Other',
-          fqn: 'respiratory.otherValue'
+          tableLabel: 'Airway',
+          fqn: 'respiratory.airway'
         },
         {
           elementKey: 'oxygenTherapy',
           formIndex: '1',
           inputType: 'text',
           label: 'Oxygen therapy',
-          tableColumn: '6',
+          tableColumn: '3',
           tableLabel: 'Oxygen therapy',
           fqn: 'respiratory.oxygenTherapy'
         },
@@ -2062,7 +1966,7 @@ export default function () {
           inputType: 'text',
           label: 'Flow rate',
           suffix: '/lpm',
-          tableColumn: '7',
+          tableColumn: '4',
           tableLabel: 'Flow rate',
           fqn: 'respiratory.flowRate'
         },
@@ -2089,7 +1993,7 @@ export default function () {
               text: 'Deceased'
             }
           ],
-          tableColumn: '8',
+          tableColumn: '5',
           tableLabel: 'Left upper lung',
           fqn: 'respiratory.lul'
         },
@@ -2116,9 +2020,16 @@ export default function () {
               text: 'Deceased'
             }
           ],
-          tableColumn: '9',
+          tableColumn: '6',
           tableLabel: 'Right upper lung',
           fqn: 'respiratory.rul'
+        },
+        {
+          elementKey: 'aSpacer',
+          dataCaseStudy: 'Normal',
+          formIndex: '1',
+          inputType: 'spacer',
+          fqn: 'respiratory.aSpacer'
         },
         {
           elementKey: 'aSpacer',
@@ -2150,9 +2061,16 @@ export default function () {
               text: 'Deceased'
             }
           ],
-          tableColumn: '10',
+          tableColumn: '7',
           tableLabel: 'Right middle lung',
           fqn: 'respiratory.rml'
+        },
+        {
+          elementKey: 'aSpacer',
+          dataCaseStudy: 'Normal',
+          formIndex: '1',
+          inputType: 'spacer',
+          fqn: 'respiratory.aSpacer'
         },
         {
           elementKey: 'lll',
@@ -2177,7 +2095,7 @@ export default function () {
               text: 'Deceased'
             }
           ],
-          tableColumn: '11',
+          tableColumn: '8',
           tableLabel: 'Left lower lung',
           fqn: 'respiratory.lll'
         },
@@ -2204,9 +2122,16 @@ export default function () {
               text: 'Deceased'
             }
           ],
-          tableColumn: '12',
+          tableColumn: '9',
           tableLabel: 'Right lower lung',
           fqn: 'respiratory.rll'
+        },
+        {
+          elementKey: 'aSpacer',
+          dataCaseStudy: 'Normal',
+          formIndex: '1',
+          inputType: 'spacer',
+          fqn: 'respiratory.aSpacer'
         },
         {
           elementKey: 'respiratoryRhythm',
@@ -2225,7 +2150,7 @@ export default function () {
               text: 'Paradoxical'
             }
           ],
-          tableColumn: '13',
+          tableColumn: '10',
           tableLabel: 'Respiratory rhythm',
           fqn: 'respiratory.respiratoryRhythm'
         },
@@ -2246,9 +2171,16 @@ export default function () {
               text: 'Deep'
             }
           ],
-          tableColumn: '14',
+          tableColumn: '11',
           tableLabel: 'Respiratory depth',
           fqn: 'respiratory.respiratoryDepth'
+        },
+        {
+          elementKey: 'aSpacer',
+          dataCaseStudy: 'Normal',
+          formIndex: '1',
+          inputType: 'spacer',
+          fqn: 'respiratory.aSpacer'
         },
         {
           elementKey: 'cough',
@@ -2267,7 +2199,7 @@ export default function () {
               text: 'Productive'
             }
           ],
-          tableColumn: '15',
+          tableColumn: '12',
           tableLabel: 'Cough',
           fqn: 'respiratory.cough'
         },
@@ -2303,16 +2235,9 @@ export default function () {
               text: 'Bloody'
             }
           ],
-          tableColumn: '16',
+          tableColumn: '13',
           tableLabel: 'Sputum colour',
           fqn: 'respiratory.sputumColour'
-        },
-        {
-          elementKey: 'aSpacer',
-          dataCaseStudy: 'Normal',
-          formIndex: '1',
-          inputType: 'spacer',
-          fqn: 'respiratory.aSpacer'
         },
         {
           elementKey: 'sputumComments',
@@ -2320,7 +2245,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Sputum comments',
-          tableColumn: '17',
+          tableColumn: '14',
           tableLabel: 'Sputum comments',
           fqn: 'respiratory.sputumComments'
         },
@@ -2330,12 +2255,12 @@ export default function () {
           formIndex: '1',
           inputType: 'textarea',
           label: 'General comments',
-          tableColumn: '18',
+          tableColumn: '15',
           tableLabel: 'General comments',
           fqn: 'respiratory.generalComments'
         }
       ],
-      generated: '2019-09-06T07:52:27-07:00',
+      generated: '2019-09-06T19:39:56-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2354,120 +2279,99 @@ export default function () {
               ]
             },
             {
-              label: 'Patent',
+              label: 'Airway',
               ehr_list_index: '2',
               items: [
-                'patent'
-              ]
-            },
-            {
-              label: 'Obstructed',
-              ehr_list_index: '3',
-              items: [
-                'obstructed'
-              ]
-            },
-            {
-              label: 'Oral endotracheal tube',
-              ehr_list_index: '4',
-              items: [
-                'oett'
-              ]
-            },
-            {
-              label: 'Other',
-              ehr_list_index: '5',
-              items: [
-                'otherValue'
+                'airway'
               ]
             },
             {
               label: 'Oxygen therapy',
-              ehr_list_index: '6',
+              ehr_list_index: '3',
               items: [
                 'oxygenTherapy'
               ]
             },
             {
               label: 'Flow rate',
-              ehr_list_index: '7',
+              ehr_list_index: '4',
               items: [
                 'flowRate'
               ]
             },
             {
               label: 'Left upper lung',
-              ehr_list_index: '8',
+              ehr_list_index: '5',
               items: [
                 'lul'
               ]
             },
             {
               label: 'Right upper lung',
-              ehr_list_index: '9',
+              ehr_list_index: '6',
               items: [
                 'rul'
               ]
             },
             {
               label: 'Right middle lung',
-              ehr_list_index: '10',
+              ehr_list_index: '7',
               items: [
                 'rml'
               ]
             },
             {
               label: 'Left lower lung',
-              ehr_list_index: '11',
+              ehr_list_index: '8',
               items: [
                 'lll'
               ]
             },
             {
               label: 'Right lower lung',
-              ehr_list_index: '12',
+              ehr_list_index: '9',
               items: [
                 'rll'
               ]
             },
             {
               label: 'Respiratory rhythm',
-              ehr_list_index: '13',
+              ehr_list_index: '10',
               items: [
                 'respiratoryRhythm'
               ]
             },
             {
               label: 'Respiratory depth',
-              ehr_list_index: '14',
+              ehr_list_index: '11',
               items: [
                 'respiratoryDepth'
               ]
             },
             {
               label: 'Cough',
-              ehr_list_index: '15',
+              ehr_list_index: '12',
               items: [
                 'cough'
               ]
             },
             {
               label: 'Sputum colour',
-              ehr_list_index: '16',
+              ehr_list_index: '13',
               items: [
                 'sputumColour'
               ]
             },
             {
               label: 'Sputum comments',
-              ehr_list_index: '17',
+              ehr_list_index: '14',
               items: [
                 'sputumComments'
               ]
             },
             {
               label: 'General comments',
-              ehr_list_index: '18',
+              ehr_list_index: '15',
               items: [
                 'generalComments'
               ]
@@ -2492,43 +2396,31 @@ export default function () {
               {
                 gIndex: '2',
                 gChildren: [
-                  {
-                    label: 'Airway',
-                    elementKey: 'subgroup70',
-                    sgChildren: [
-                      'patent',
-                      'obstructed',
-                      'oett',
-                      'otherValue',
-                      'oxygenTherapy',
-                      'flowRate'
-                    ]
-                  },
-                  {
-                    label: 'Breath sounds',
-                    elementKey: 'subgroup71',
-                    sgChildren: [
-                      'lul',
-                      'rul',
-                      'aSpacer',
-                      'rml',
-                      'lll',
-                      'rll',
-                      'respiratoryRhythm',
-                      'respiratoryDepth'
-                    ]
-                  },
-                  {
-                    label: 'Sputum',
-                    elementKey: 'subgroup72',
-                    sgChildren: [
-                      'cough',
-                      'sputumColour',
-                      'aSpacer',
-                      'sputumComments',
-                      'generalComments'
-                    ]
-                  }
+                  'airway',
+                  'oxygenTherapy',
+                  'flowRate',
+                  'lul',
+                  'rul',
+                  'aSpacer',
+                  'aSpacer',
+                  'rml',
+                  'aSpacer',
+                  'lll',
+                  'rll',
+                  'aSpacer',
+                  'respiratoryRhythm',
+                  'respiratoryDepth',
+                  'aSpacer',
+                  'cough',
+                  'sputumColour',
+                  'sputumComments'
+                ]
+              },
+              {
+                formCss: 'grid-left-to-right-1',
+                gIndex: '3',
+                gChildren: [
+                  'generalComments'
                 ]
               }
             ],
@@ -2537,10 +2429,7 @@ export default function () {
               profession: '',
               day: '',
               time: '',
-              patent: '',
-              obstructed: '',
-              oett: '',
-              otherValue: '',
+              airway: '',
               oxygenTherapy: '',
               flowRate: '',
               lul: '',
@@ -2657,6 +2546,12 @@ export default function () {
           fqn: 'cardiovascular.skinAppearance'
         },
         {
+          elementKey: 'spacer63',
+          formIndex: '1',
+          inputType: 'spacer',
+          fqn: 'cardiovascular.spacer63'
+        },
+        {
           elementKey: 'labelCapRefill',
           dataCaseStudy: 'Normal',
           formIndex: '1',
@@ -2704,9 +2599,87 @@ export default function () {
           formIndex: '1',
           inputType: 'form_label',
           label: 'Right hand',
-          tableColumn: '8',
-          tableLabel: 'Right hand',
           fqn: 'cardiovascular.labelRight'
+        },
+        {
+          elementKey: 'capRefillLeftHand',
+          dataCaseStudy: 'Normal',
+          formIndex: '1',
+          inputType: 'select',
+          options: [
+            {
+              text: 'Normal < 3 seconds'
+            },
+            {
+              text: 'Delayed > 3 seconds'
+            }
+          ],
+          tableColumn: '8',
+          tableLabel: 'Cap refill: Right hand',
+          fqn: 'cardiovascular.capRefillLeftHand'
+        },
+        {
+          elementKey: 'temperatureRightHand',
+          dataCaseStudy: 'Warm',
+          formIndex: '1',
+          inputType: 'select',
+          options: [
+            {
+              text: 'Warm'
+            },
+            {
+              text: 'Cool'
+            },
+            {
+              text: 'Hot'
+            }
+          ],
+          tableColumn: '9',
+          tableLabel: 'Temperature: Right hand',
+          fqn: 'cardiovascular.temperatureRightHand'
+        },
+        {
+          elementKey: 'peripheralEdemaRightHand',
+          dataCaseStudy: 'No',
+          formIndex: '1',
+          inputType: 'select',
+          options: [
+            {
+              text: 'No'
+            },
+            {
+              text: 'Ankle'
+            },
+            {
+              text: 'Pedal'
+            },
+            {
+              text: 'Sacral'
+            },
+            {
+              text: 'Pitting'
+            }
+          ],
+          tableColumn: '10',
+          tableLabel: 'Peripheral edema: Right hand',
+          fqn: 'cardiovascular.peripheralEdemaRightHand'
+        },
+        {
+          elementKey: 'nailBedColourRightHand',
+          dataCaseStudy: 'Pink',
+          formIndex: '1',
+          inputType: 'select',
+          options: [
+            {
+              text: 'Pink'
+            },
+            {
+              text: 'Cyanotic'
+            }
+          ],
+          tableColumn: '11',
+          tableLabel: 'Nail bed colour: Right hand',
+          fqn: 'cardiovascular.nailBedColourRightHand'
         },
         {
           elementKey: 'labelLeftHand',
@@ -2714,36 +2687,13 @@ export default function () {
           formIndex: '1',
           inputType: 'form_label',
           label: 'Left hand',
-          tableColumn: '9',
-          tableLabel: 'Left hand',
           fqn: 'cardiovascular.labelLeftHand'
-        },
-        {
-          elementKey: 'labelRightFoot',
-          dataCaseStudy: 'Normal',
-          formIndex: '1',
-          inputType: 'form_label',
-          label: 'Right foot',
-          tableColumn: '10',
-          tableLabel: 'Right foot',
-          fqn: 'cardiovascular.labelRightFoot'
-        },
-        {
-          elementKey: 'labelLeftFoot',
-          dataCaseStudy: 'Normal',
-          formIndex: '1',
-          inputType: 'form_label',
-          label: 'Left foot',
-          tableColumn: '11',
-          tableLabel: 'Left foot',
-          fqn: 'cardiovascular.labelLeftFoot'
         },
         {
           elementKey: 'capRefillRightHand',
           dataCaseStudy: 'Normal',
           formIndex: '1',
           inputType: 'select',
-          label: 'Cap refill: Left hand',
           options: [
             {
               text: 'Normal < 3 seconds'
@@ -2757,65 +2707,10 @@ export default function () {
           fqn: 'cardiovascular.capRefillRightHand'
         },
         {
-          elementKey: 'capRefillLeftHand',
-          dataCaseStudy: 'Normal',
-          formIndex: '1',
-          inputType: 'select',
-          label: 'Cap refill: Right hand',
-          options: [
-            {
-              text: 'Normal < 3 seconds'
-            },
-            {
-              text: 'Delayed > 3 seconds'
-            }
-          ],
-          tableColumn: '13',
-          tableLabel: 'Cap refill: Right hand',
-          fqn: 'cardiovascular.capRefillLeftHand'
-        },
-        {
-          elementKey: 'capRefillRightFoot',
-          dataCaseStudy: 'Normal',
-          formIndex: '1',
-          inputType: 'select',
-          label: 'Cap refill: Right foot',
-          options: [
-            {
-              text: 'Normal < 3 seconds'
-            },
-            {
-              text: 'Delayed > 3 seconds'
-            }
-          ],
-          tableColumn: '14',
-          tableLabel: 'Cap refill: Right foot',
-          fqn: 'cardiovascular.capRefillRightFoot'
-        },
-        {
-          elementKey: 'capRefillLeftFoot',
-          dataCaseStudy: 'Normal',
-          formIndex: '1',
-          inputType: 'select',
-          label: 'Cap refill: Left foot',
-          options: [
-            {
-              text: 'Normal < 3 seconds'
-            },
-            {
-              text: 'Delayed > 3 seconds'
-            }
-          ],
-          tableColumn: '15',
-          tableLabel: 'Cap refill: Left foot',
-          fqn: 'cardiovascular.capRefillLeftFoot'
-        },
-        {
-          elementKey: 'temperatureRightHand',
+          elementKey: 'temperatureLeftHand',
           dataCaseStudy: 'Warm',
           formIndex: '1',
           inputType: 'select',
-          label: 'Temperature: Right hand',
           options: [
             {
               text: 'Warm'
@@ -2827,16 +2722,83 @@ export default function () {
               text: 'Hot'
             }
           ],
-          tableColumn: '16',
-          tableLabel: 'Temperature: Right hand',
-          fqn: 'cardiovascular.temperatureRightHand'
+          tableColumn: '13',
+          tableLabel: 'Temperature: Left hand',
+          fqn: 'cardiovascular.temperatureLeftHand'
         },
         {
-          elementKey: 'temperatureLeftHand',
+          elementKey: 'peripheralEdemaLeftHand',
+          dataCaseStudy: 'No',
+          formIndex: '1',
+          inputType: 'select',
+          options: [
+            {
+              text: 'No'
+            },
+            {
+              text: 'Ankle'
+            },
+            {
+              text: 'Pedal'
+            },
+            {
+              text: 'Sacral'
+            },
+            {
+              text: 'Pitting'
+            }
+          ],
+          tableColumn: '14',
+          tableLabel: 'Peripheral edema: Left hand',
+          fqn: 'cardiovascular.peripheralEdemaLeftHand'
+        },
+        {
+          elementKey: 'nailBedColourLeftHand',
+          dataCaseStudy: 'Pink',
+          formIndex: '1',
+          inputType: 'select',
+          options: [
+            {
+              text: 'Pink'
+            },
+            {
+              text: 'Cyanotic'
+            }
+          ],
+          tableColumn: '15',
+          tableLabel: 'Nail bed colour: Left hand',
+          fqn: 'cardiovascular.nailBedColourLeftHand'
+        },
+        {
+          elementKey: 'labelRightFoot',
+          dataCaseStudy: 'Normal',
+          formIndex: '1',
+          inputType: 'form_label',
+          label: 'Right foot',
+          fqn: 'cardiovascular.labelRightFoot'
+        },
+        {
+          elementKey: 'capRefillRightFoot',
+          dataCaseStudy: 'Normal',
+          formIndex: '1',
+          inputType: 'select',
+          options: [
+            {
+              text: 'Normal < 3 seconds'
+            },
+            {
+              text: 'Delayed > 3 seconds'
+            }
+          ],
+          tableColumn: '16',
+          tableLabel: 'Cap refill: Right foot',
+          fqn: 'cardiovascular.capRefillRightFoot'
+        },
+        {
+          elementKey: 'temperatureRightFoot',
           dataCaseStudy: 'Warm',
           formIndex: '1',
           inputType: 'select',
-          label: 'Temperature: Left hand',
           options: [
             {
               text: 'Warm'
@@ -2849,111 +2811,102 @@ export default function () {
             }
           ],
           tableColumn: '17',
-          tableLabel: 'Temperature: Left hand',
-          fqn: 'cardiovascular.temperatureLeftHand'
-        },
-        {
-          elementKey: 'temperatureRightFoot',
-          dataCaseStudy: 'Warm',
-          formIndex: '1',
-          inputType: 'select',
-          label: 'Temperature: Right foot',
-          options: [
-            {
-              text: 'Warm'
-            },
-            {
-              text: 'Cool'
-            },
-            {
-              text: 'Hot'
-            }
-          ],
-          tableColumn: '18',
           tableLabel: 'Temperature: Right foot',
           fqn: 'cardiovascular.temperatureRightFoot'
-        },
-        {
-          elementKey: 'temperatureLeftFoot',
-          dataCaseStudy: 'Warm',
-          formIndex: '1',
-          inputType: 'select',
-          label: 'Temperature: Left foot',
-          options: [
-            {
-              text: 'Warm'
-            },
-            {
-              text: 'Cool'
-            },
-            {
-              text: 'Hot'
-            }
-          ],
-          tableColumn: '19',
-          tableLabel: 'Temperature: Left foot',
-          fqn: 'cardiovascular.temperatureLeftFoot'
-        },
-        {
-          elementKey: 'peripheralEdemaRightHand',
-          dataCaseStudy: 'No',
-          formIndex: '1',
-          inputType: 'select',
-          label: 'Peripheral edema: Right hand',
-          options: [
-            {
-              text: 'No'
-            },
-            {
-              text: 'Ankle'
-            },
-            {
-              text: 'Pedal'
-            },
-            {
-              text: 'Sacral'
-            },
-            {
-              text: 'Pitting'
-            }
-          ],
-          tableColumn: '20',
-          tableLabel: 'Peripheral edema: Right hand',
-          fqn: 'cardiovascular.peripheralEdemaRightHand'
-        },
-        {
-          elementKey: 'peripheralEdemaLeftHand',
-          dataCaseStudy: 'No',
-          formIndex: '1',
-          inputType: 'select',
-          label: 'Peripheral edema: Left hand',
-          options: [
-            {
-              text: 'No'
-            },
-            {
-              text: 'Ankle'
-            },
-            {
-              text: 'Pedal'
-            },
-            {
-              text: 'Sacral'
-            },
-            {
-              text: 'Pitting'
-            }
-          ],
-          tableColumn: '21',
-          tableLabel: 'Peripheral edema: Left hand',
-          fqn: 'cardiovascular.peripheralEdemaLeftHand'
         },
         {
           elementKey: 'peripheralEdemaRightFoot',
           dataCaseStudy: 'No',
           formIndex: '1',
           inputType: 'select',
-          label: 'Peripheral edema: Right foot',
+          options: [
+            {
+              text: 'No'
+            },
+            {
+              text: 'Ankle'
+            },
+            {
+              text: 'Pedal'
+            },
+            {
+              text: 'Sacral'
+            },
+            {
+              text: 'Pitting'
+            }
+          ],
+          tableColumn: '18',
+          tableLabel: 'Peripheral edema: Right foot',
+          fqn: 'cardiovascular.peripheralEdemaRightFoot'
+        },
+        {
+          elementKey: 'nailBedColourRightFoot',
+          dataCaseStudy: 'Pink',
+          formIndex: '1',
+          inputType: 'select',
+          options: [
+            {
+              text: 'Pink'
+            },
+            {
+              text: 'Cyanotic'
+            }
+          ],
+          tableColumn: '19',
+          tableLabel: 'Nail bed colour: Right Foot',
+          fqn: 'cardiovascular.nailBedColourRightFoot'
+        },
+        {
+          elementKey: 'labelLeftFoot',
+          dataCaseStudy: 'Normal',
+          formIndex: '1',
+          inputType: 'form_label',
+          label: 'Left foot',
+          fqn: 'cardiovascular.labelLeftFoot'
+        },
+        {
+          elementKey: 'capRefillLeftFoot',
+          dataCaseStudy: 'Normal',
+          formIndex: '1',
+          inputType: 'select',
+          options: [
+            {
+              text: 'Normal < 3 seconds'
+            },
+            {
+              text: 'Delayed > 3 seconds'
+            }
+          ],
+          tableColumn: '20',
+          tableLabel: 'Cap refill: Left foot',
+          fqn: 'cardiovascular.capRefillLeftFoot'
+        },
+        {
+          elementKey: 'temperatureLeftFoot',
+          dataCaseStudy: 'Warm',
+          formIndex: '1',
+          inputType: 'select',
+          options: [
+            {
+              text: 'Warm'
+            },
+            {
+              text: 'Cool'
+            },
+            {
+              text: 'Hot'
+            }
+          ],
+          tableColumn: '21',
+          tableLabel: 'Temperature: Left foot',
+          fqn: 'cardiovascular.temperatureLeftFoot'
+        },
+        {
+          elementKey: 'peripheralEdemaLeftFoot',
+          dataCaseStudy: 'No',
+          formIndex: '1',
+          inputType: 'select',
           options: [
             {
               text: 'No'
@@ -2972,96 +2925,14 @@ export default function () {
             }
           ],
           tableColumn: '22',
-          tableLabel: 'Peripheral edema: Right foot',
-          fqn: 'cardiovascular.peripheralEdemaRightFoot'
-        },
-        {
-          elementKey: 'peripheralEdemaLeftFoot',
-          dataCaseStudy: 'No',
-          formIndex: '1',
-          inputType: 'select',
-          label: 'Peripheral edema: Left foot',
-          options: [
-            {
-              text: 'No'
-            },
-            {
-              text: 'Ankle'
-            },
-            {
-              text: 'Pedal'
-            },
-            {
-              text: 'Sacral'
-            },
-            {
-              text: 'Pitting'
-            }
-          ],
-          tableColumn: '23',
           tableLabel: 'Peripheral edema: Left foot',
           fqn: 'cardiovascular.peripheralEdemaLeftFoot'
-        },
-        {
-          elementKey: 'nailBedColourRightHand',
-          dataCaseStudy: 'Pink',
-          formIndex: '1',
-          inputType: 'select',
-          label: 'Nail bed colour: Right hand',
-          options: [
-            {
-              text: 'Pink'
-            },
-            {
-              text: 'Cyanotic'
-            }
-          ],
-          tableColumn: '24',
-          tableLabel: 'Nail bed colour: Right hand',
-          fqn: 'cardiovascular.nailBedColourRightHand'
-        },
-        {
-          elementKey: 'nailBedColourLeftHand',
-          dataCaseStudy: 'Pink',
-          formIndex: '1',
-          inputType: 'select',
-          label: 'Nail bed colour: Left hand',
-          options: [
-            {
-              text: 'Pink'
-            },
-            {
-              text: 'Cyanotic'
-            }
-          ],
-          tableColumn: '25',
-          tableLabel: 'Nail bed colour: Left hand',
-          fqn: 'cardiovascular.nailBedColourLeftHand'
-        },
-        {
-          elementKey: 'nailBedColourRightFoot',
-          dataCaseStudy: 'Pink',
-          formIndex: '1',
-          inputType: 'select',
-          label: 'Nail bed colour: Right Foot',
-          options: [
-            {
-              text: 'Pink'
-            },
-            {
-              text: 'Cyanotic'
-            }
-          ],
-          tableColumn: '26',
-          tableLabel: 'Nail bed colour: Right Foot',
-          fqn: 'cardiovascular.nailBedColourRightFoot'
         },
         {
           elementKey: 'nailBedColourLeftFoot',
           dataCaseStudy: 'Pink',
           formIndex: '1',
           inputType: 'select',
-          label: 'Nail bed colour: Left foot',
           options: [
             {
               text: 'Pink'
@@ -3070,7 +2941,7 @@ export default function () {
               text: 'Cyanotic'
             }
           ],
-          tableColumn: '27',
+          tableColumn: '23',
           tableLabel: 'Nail bed colour: Left foot',
           fqn: 'cardiovascular.nailBedColourLeftFoot'
         },
@@ -3080,12 +2951,12 @@ export default function () {
           formIndex: '1',
           inputType: 'textarea',
           label: 'Comments',
-          tableColumn: '28',
+          tableColumn: '24',
           tableLabel: 'Comments',
           fqn: 'cardiovascular.comments'
         }
       ],
-      generated: '2019-09-06T07:52:27-07:00',
+      generated: '2019-09-06T19:39:56-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -3146,31 +3017,31 @@ export default function () {
               ]
             },
             {
-              label: 'Right hand',
+              label: 'Cap refill: Right hand',
               ehr_list_index: '8',
               items: [
-                'labelRight'
+                'capRefillLeftHand'
               ]
             },
             {
-              label: 'Left hand',
+              label: 'Temperature: Right hand',
               ehr_list_index: '9',
               items: [
-                'labelLeftHand'
+                'temperatureRightHand'
               ]
             },
             {
-              label: 'Right foot',
+              label: 'Peripheral edema: Right hand',
               ehr_list_index: '10',
               items: [
-                'labelRightFoot'
+                'peripheralEdemaRightHand'
               ]
             },
             {
-              label: 'Left foot',
+              label: 'Nail bed colour: Right hand',
               ehr_list_index: '11',
               items: [
-                'labelLeftFoot'
+                'nailBedColourRightHand'
               ]
             },
             {
@@ -3181,113 +3052,85 @@ export default function () {
               ]
             },
             {
-              label: 'Cap refill: Right hand',
-              ehr_list_index: '13',
-              items: [
-                'capRefillLeftHand'
-              ]
-            },
-            {
-              label: 'Cap refill: Right foot',
-              ehr_list_index: '14',
-              items: [
-                'capRefillRightFoot'
-              ]
-            },
-            {
-              label: 'Cap refill: Left foot',
-              ehr_list_index: '15',
-              items: [
-                'capRefillLeftFoot'
-              ]
-            },
-            {
-              label: 'Temperature: Right hand',
-              ehr_list_index: '16',
-              items: [
-                'temperatureRightHand'
-              ]
-            },
-            {
               label: 'Temperature: Left hand',
-              ehr_list_index: '17',
+              ehr_list_index: '13',
               items: [
                 'temperatureLeftHand'
               ]
             },
             {
-              label: 'Temperature: Right foot',
-              ehr_list_index: '18',
-              items: [
-                'temperatureRightFoot'
-              ]
-            },
-            {
-              label: 'Temperature: Left foot',
-              ehr_list_index: '19',
-              items: [
-                'temperatureLeftFoot'
-              ]
-            },
-            {
-              label: 'Peripheral edema: Right hand',
-              ehr_list_index: '20',
-              items: [
-                'peripheralEdemaRightHand'
-              ]
-            },
-            {
               label: 'Peripheral edema: Left hand',
-              ehr_list_index: '21',
+              ehr_list_index: '14',
               items: [
                 'peripheralEdemaLeftHand'
               ]
             },
             {
-              label: 'Peripheral edema: Right foot',
-              ehr_list_index: '22',
-              items: [
-                'peripheralEdemaRightFoot'
-              ]
-            },
-            {
-              label: 'Peripheral edema: Left foot',
-              ehr_list_index: '23',
-              items: [
-                'peripheralEdemaLeftFoot'
-              ]
-            },
-            {
-              label: 'Nail bed colour: Right hand',
-              ehr_list_index: '24',
-              items: [
-                'nailBedColourRightHand'
-              ]
-            },
-            {
               label: 'Nail bed colour: Left hand',
-              ehr_list_index: '25',
+              ehr_list_index: '15',
               items: [
                 'nailBedColourLeftHand'
               ]
             },
             {
+              label: 'Cap refill: Right foot',
+              ehr_list_index: '16',
+              items: [
+                'capRefillRightFoot'
+              ]
+            },
+            {
+              label: 'Temperature: Right foot',
+              ehr_list_index: '17',
+              items: [
+                'temperatureRightFoot'
+              ]
+            },
+            {
+              label: 'Peripheral edema: Right foot',
+              ehr_list_index: '18',
+              items: [
+                'peripheralEdemaRightFoot'
+              ]
+            },
+            {
               label: 'Nail bed colour: Right Foot',
-              ehr_list_index: '26',
+              ehr_list_index: '19',
               items: [
                 'nailBedColourRightFoot'
               ]
             },
             {
+              label: 'Cap refill: Left foot',
+              ehr_list_index: '20',
+              items: [
+                'capRefillLeftFoot'
+              ]
+            },
+            {
+              label: 'Temperature: Left foot',
+              ehr_list_index: '21',
+              items: [
+                'temperatureLeftFoot'
+              ]
+            },
+            {
+              label: 'Peripheral edema: Left foot',
+              ehr_list_index: '22',
+              items: [
+                'peripheralEdemaLeftFoot'
+              ]
+            },
+            {
               label: 'Nail bed colour: Left foot',
-              ehr_list_index: '27',
+              ehr_list_index: '23',
               items: [
                 'nailBedColourLeftFoot'
               ]
             },
             {
               label: 'Comments',
-              ehr_list_index: '28',
+              ehr_list_index: '24',
               items: [
                 'comments'
               ]
@@ -3317,37 +3160,38 @@ export default function () {
                 ]
               },
               {
-                formCss: 'cardio-assessment',
+                formCss: 'grid-left-to-right-5 section-divider',
                 gIndex: '3',
                 gChildren: [
+                  'spacer63',
                   'labelCapRefill',
                   'labelTemperature',
                   'labelPeripheral',
                   'labelNailBed',
                   'labelRight',
-                  'labelLeftHand',
-                  'labelRightFoot',
-                  'labelLeftFoot',
-                  'capRefillRightHand',
                   'capRefillLeftHand',
-                  'capRefillRightFoot',
-                  'capRefillLeftFoot',
                   'temperatureRightHand',
-                  'temperatureLeftHand',
-                  'temperatureRightFoot',
-                  'temperatureLeftFoot',
                   'peripheralEdemaRightHand',
-                  'peripheralEdemaLeftHand',
-                  'peripheralEdemaRightFoot',
-                  'peripheralEdemaLeftFoot',
                   'nailBedColourRightHand',
+                  'labelLeftHand',
+                  'capRefillRightHand',
+                  'temperatureLeftHand',
+                  'peripheralEdemaLeftHand',
                   'nailBedColourLeftHand',
+                  'labelRightFoot',
+                  'capRefillRightFoot',
+                  'temperatureRightFoot',
+                  'peripheralEdemaRightFoot',
                   'nailBedColourRightFoot',
+                  'labelLeftFoot',
+                  'capRefillLeftFoot',
+                  'temperatureLeftFoot',
+                  'peripheralEdemaLeftFoot',
                   'nailBedColourLeftFoot'
                 ]
               },
               {
-                formCss: 'full-grid',
+                formCss: 'grid-left-to-right-1 section-divider',
                 gIndex: '4',
                 gChildren: [
                   'comments'
@@ -3361,21 +3205,21 @@ export default function () {
               time: '',
               pulse: '',
               skinAppearance: '',
-              capRefillRightHand: '',
               capRefillLeftHand: '',
-              capRefillRightFoot: '',
-              capRefillLeftFoot: '',
               temperatureRightHand: '',
-              temperatureLeftHand: '',
-              temperatureRightFoot: '',
-              temperatureLeftFoot: '',
               peripheralEdemaRightHand: '',
-              peripheralEdemaLeftHand: '',
-              peripheralEdemaRightFoot: '',
-              peripheralEdemaLeftFoot: '',
               nailBedColourRightHand: '',
+              capRefillRightHand: '',
+              temperatureLeftHand: '',
+              peripheralEdemaLeftHand: '',
               nailBedColourLeftHand: '',
+              capRefillRightFoot: '',
+              temperatureRightFoot: '',
+              peripheralEdemaRightFoot: '',
               nailBedColourRightFoot: '',
+              capRefillLeftFoot: '',
+              temperatureLeftFoot: '',
+              peripheralEdemaLeftFoot: '',
               nailBedColourLeftFoot: '',
               comments: ''
             }
@@ -3424,65 +3268,10 @@ export default function () {
           fqn: 'gastrointestinal.time'
         },
         {
-          elementKey: 'condition',
-          formIndex: '1',
-          inputType: 'checkset',
-          options: [
-            {
-              text: 'soft=Soft'
-            },
-            {
-              text: 'tender=Tender'
-            },
-            {
-              text: 'rigid=Rigid'
-            },
-            {
-              text: 'guarding=Guarding'
-            },
-            {
-              text: 'distended=Distended'
-            },
-            {
-              text: 'scars=Scars'
-            }
-          ],
-          tableColumn: '2',
-          tableLabel: 'Abdomen',
-          fqn: 'gastrointestinal.condition'
-        },
-        {
-          elementKey: 'pain',
-          dataCaseStudy: 'No',
-          formIndex: '1',
-          inputType: 'select',
-          label: 'Abdominal pain',
-          options: [
-            {
-              text: 'Yes'
-            },
-            {
-              text: 'No'
-            }
-          ],
-          tableColumn: '3',
-          tableLabel: 'Abdominal pain',
-          fqn: 'gastrointestinal.pain'
-        },
-        {
-          elementKey: 'aLabel',
-          dataCaseStudy: 'No',
-          formIndex: '1',
-          inputType: 'form_label',
-          label: 'If answered yes, please complete the <a href=\'/assets/standardized-assessment-tools/numeric-rating-scale.pdf\'>pain assessment</a>.',
-          tableColumn: '4',
-          tableLabel: 'If answered yes, please complete the <a href=\'/assets/standardized-assessment-tools/numeric-rating-scale.pdf\'>pain assessment</a>.',
-          fqn: 'gastrointestinal.aLabel'
-        },
-        {
           elementKey: 'bowel',
           formIndex: '1',
           inputType: 'checkset',
+          label: 'Bowel',
           options: [
             {
               text: 'Normal'
@@ -3500,7 +3289,7 @@ export default function () {
               text: 'Incontinent'
             }
           ],
-          tableColumn: '5',
+          tableColumn: '2',
           tableLabel: 'Bowel',
           fqn: 'gastrointestinal.bowel'
         },
@@ -3508,6 +3297,7 @@ export default function () {
           elementKey: 'bSounds',
           formIndex: '1',
           inputType: 'checkset',
+          label: 'Bowel sounds',
           options: [
             {
               text: 'None'
@@ -3531,9 +3321,92 @@ export default function () {
               text: 'Hyperactive'
             }
           ],
-          tableColumn: '6',
+          tableColumn: '3',
           tableLabel: 'Bowel sounds',
           fqn: 'gastrointestinal.bSounds'
+        },
+        {
+          elementKey: 'condition',
+          formIndex: '1',
+          inputType: 'checkset',
+          label: 'Abdomen',
+          options: [
+            {
+              text: 'soft=Soft'
+            },
+            {
+              text: 'tender=Tender'
+            },
+            {
+              text: 'rigid=Rigid'
+            },
+            {
+              text: 'guarding=Guarding'
+            },
+            {
+              text: 'distended=Distended'
+            },
+            {
+              text: 'scars=Scars'
+            }
+          ],
+          tableColumn: '4',
+          tableLabel: 'Abdomen',
+          fqn: 'gastrointestinal.condition'
+        },
+        {
+          elementKey: 'spacer67',
+          dataCaseStudy: 'Equal',
+          formIndex: '1',
+          inputType: 'spacer',
+          fqn: 'gastrointestinal.spacer67'
+        },
+        {
+          elementKey: 'spacer68',
+          dataCaseStudy: 'Equal',
+          formIndex: '1',
+          inputType: 'spacer',
+          fqn: 'gastrointestinal.spacer68'
+        },
+        {
+          elementKey: 'pain',
+          dataCaseStudy: 'No',
+          formIndex: '1',
+          inputType: 'select',
+          label: 'Abdominal pain',
+          options: [
+            {
+              text: 'Yes'
+            },
+            {
+              text: 'No'
+            }
+          ],
+          tableColumn: '5',
+          tableLabel: 'Abdominal pain',
+          fqn: 'gastrointestinal.pain'
+        },
+        {
+          elementKey: 'spacer69',
+          dataCaseStudy: 'Equal',
+          formIndex: '1',
+          inputType: 'spacer',
+          fqn: 'gastrointestinal.spacer69'
+        },
+        {
+          elementKey: 'spacer70',
+          dataCaseStudy: 'Equal',
+          formIndex: '1',
+          inputType: 'spacer',
+          fqn: 'gastrointestinal.spacer70'
+        },
+        {
+          elementKey: 'aLabel',
+          dataCaseStudy: 'No',
+          formIndex: '1',
+          inputType: 'form_label',
+          label: 'If answered yes, please complete the <a href=\'/assets/standardized-assessment-tools/numeric-rating-scale.pdf\'>pain assessment</a>.',
+          fqn: 'gastrointestinal.aLabel'
         },
         {
           elementKey: 'emesisPresent',
@@ -3552,7 +3425,7 @@ export default function () {
               text: 'Vomiting'
             }
           ],
-          tableColumn: '7',
+          tableColumn: '4',
           tableLabel: 'Emesis present?',
           fqn: 'gastrointestinal.emesisPresent'
         },
@@ -3579,7 +3452,7 @@ export default function () {
               text: 'Black'
             }
           ],
-          tableColumn: '8',
+          tableColumn: '5',
           tableLabel: 'Emesis colour',
           fqn: 'gastrointestinal.colour'
         },
@@ -3589,7 +3462,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Description',
-          tableColumn: '9',
+          tableColumn: '6',
           tableLabel: 'Description',
           fqn: 'gastrointestinal.description'
         },
@@ -3610,7 +3483,7 @@ export default function () {
               text: 'Large'
             }
           ],
-          tableColumn: '10',
+          tableColumn: '7',
           tableLabel: 'Approximate volume',
           fqn: 'gastrointestinal.amount'
         },
@@ -3628,7 +3501,7 @@ export default function () {
               text: 'Difficult'
             }
           ],
-          tableColumn: '11',
+          tableColumn: '8',
           tableLabel: 'Difficulty',
           fqn: 'gastrointestinal.eating'
         },
@@ -3638,9 +3511,16 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Reason',
-          tableColumn: '12',
+          tableColumn: '9',
           tableLabel: 'Reason',
           fqn: 'gastrointestinal.reason'
+        },
+        {
+          elementKey: 'spacer71',
+          dataCaseStudy: 'Equal',
+          formIndex: '1',
+          inputType: 'spacer',
+          fqn: 'gastrointestinal.spacer71'
         },
         {
           elementKey: 'npoSinceDay',
@@ -3648,7 +3528,7 @@ export default function () {
           formIndex: '1',
           inputType: 'day',
           label: 'NPO since day',
-          tableColumn: '13',
+          tableColumn: '10',
           tableLabel: 'NPO since day',
           fqn: 'gastrointestinal.npoSinceDay'
         },
@@ -3658,7 +3538,7 @@ export default function () {
           formIndex: '1',
           inputType: 'time',
           label: 'NPO since time',
-          tableColumn: '14',
+          tableColumn: '11',
           tableLabel: 'NPO since time',
           fqn: 'gastrointestinal.npoSinceTime'
         },
@@ -3667,7 +3547,7 @@ export default function () {
           formIndex: '1',
           inputType: 'select',
           label: 'Weight loss',
-          tableColumn: '15',
+          tableColumn: '12',
           tableLabel: 'Weight loss',
           fqn: 'gastrointestinal.weightLoss'
         },
@@ -3677,7 +3557,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Last bowel movement',
-          tableColumn: '16',
+          tableColumn: '13',
           tableLabel: 'Last bowel movement',
           fqn: 'gastrointestinal.lastBm'
         },
@@ -3710,7 +3590,7 @@ export default function () {
               text: 'Dark red'
             }
           ],
-          tableColumn: '17',
+          tableColumn: '14',
           tableLabel: 'Stool colour',
           fqn: 'gastrointestinal.stoolColour'
         },
@@ -3728,7 +3608,7 @@ export default function () {
               text: 'Hard pellets'
             }
           ],
-          tableColumn: '18',
+          tableColumn: '15',
           tableLabel: 'Description',
           fqn: 'gastrointestinal.stoolDescription'
         },
@@ -3738,7 +3618,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Amount',
-          tableColumn: '19',
+          tableColumn: '16',
           tableLabel: 'Amount',
           fqn: 'gastrointestinal.stoolAmount'
         },
@@ -3759,7 +3639,7 @@ export default function () {
               text: 'Not observed'
             }
           ],
-          tableColumn: '20',
+          tableColumn: '17',
           tableLabel: 'Source',
           fqn: 'gastrointestinal.stoolSource'
         },
@@ -3769,12 +3649,12 @@ export default function () {
           formIndex: '1',
           inputType: 'textarea',
           label: 'Comments',
-          tableColumn: '21',
+          tableColumn: '18',
           tableLabel: 'Comments',
           fqn: 'gastrointestinal.comments'
         }
       ],
-      generated: '2019-09-06T07:52:27-07:00',
+      generated: '2019-09-06T19:39:56-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -3793,141 +3673,122 @@ export default function () {
               ]
             },
             {
-              label: 'Abdomen',
-              ehr_list_index: '2',
-              items: [
-                'condition'
-              ]
-            },
-            {
-              label: 'Abdominal pain',
-              ehr_list_index: '3',
-              items: [
-                'pain'
-              ]
-            },
-            {
-              label: 'If answered yes, please complete the <a href=\'/assets/standardized-assessment-tools/numeric-rating-scale.pdf\'>pain assessment</a>.',
-              ehr_list_index: '4',
-              items: [
-                'aLabel'
-              ]
-            },
-            {
               label: 'Bowel',
-              ehr_list_index: '5',
+              ehr_list_index: '2',
               items: [
                 'bowel'
               ]
             },
             {
               label: 'Bowel sounds',
-              ehr_list_index: '6',
+              ehr_list_index: '3',
               items: [
                 'bSounds'
               ]
             },
             {
-              label: 'Emesis present?',
-              ehr_list_index: '7',
+              label: 'Abdomen',
+              ehr_list_index: '4',
               items: [
+                'condition',
                 'emesisPresent'
               ]
             },
             {
-              label: 'Emesis colour',
-              ehr_list_index: '8',
+              label: 'Abdominal pain',
+              ehr_list_index: '5',
               items: [
+                'pain',
                 'colour'
               ]
             },
             {
               label: 'Description',
-              ehr_list_index: '9',
+              ehr_list_index: '6',
               items: [
                 'description'
               ]
             },
             {
               label: 'Approximate volume',
-              ehr_list_index: '10',
+              ehr_list_index: '7',
               items: [
                 'amount'
               ]
             },
             {
               label: 'Difficulty',
-              ehr_list_index: '11',
+              ehr_list_index: '8',
               items: [
                 'eating'
               ]
             },
             {
               label: 'Reason',
-              ehr_list_index: '12',
+              ehr_list_index: '9',
               items: [
                 'reason'
               ]
             },
             {
               label: 'NPO since day',
-              ehr_list_index: '13',
+              ehr_list_index: '10',
               items: [
                 'npoSinceDay'
               ]
             },
             {
               label: 'NPO since time',
-              ehr_list_index: '14',
+              ehr_list_index: '11',
               items: [
                 'npoSinceTime'
               ]
             },
             {
               label: 'Weight loss',
-              ehr_list_index: '15',
+              ehr_list_index: '12',
               items: [
                 'weightLoss'
               ]
             },
             {
               label: 'Last bowel movement',
-              ehr_list_index: '16',
+              ehr_list_index: '13',
               items: [
                 'lastBm'
               ]
             },
             {
               label: 'Stool colour',
-              ehr_list_index: '17',
+              ehr_list_index: '14',
               items: [
                 'stoolColour'
               ]
             },
             {
               label: 'Description',
-              ehr_list_index: '18',
+              ehr_list_index: '15',
               items: [
                 'stoolDescription'
               ]
             },
             {
               label: 'Amount',
-              ehr_list_index: '19',
+              ehr_list_index: '16',
               items: [
                 'stoolAmount'
               ]
             },
             {
               label: 'Source',
-              ehr_list_index: '20',
+              ehr_list_index: '17',
               items: [
                 'stoolSource'
               ]
             },
             {
               label: 'Comments',
-              ehr_list_index: '21',
+              ehr_list_index: '18',
               items: [
                 'comments'
               ]
@@ -3950,68 +3811,59 @@ export default function () {
                 ]
               },
               {
+                formCss: 'section-divider',
                 gIndex: '2',
                 gChildren: [
-                  {
-                    label: 'Abdomen',
-                    elementKey: 'subgroup73',
-                    sgChildren: [
-                      'condition',
-                      'pain',
-                      'aLabel'
-                    ]
-                  },
-                  {
-                    label: 'Bowel',
-                    elementKey: 'subgroup74',
-                    sgChildren: [
-                      'bowel'
-                    ]
-                  },
-                  {
-                    label: 'Bowel sounds',
-                    elementKey: 'subgroup75',
-                    sgChildren: [
-                      'bSounds'
-                    ]
-                  },
-                  {
-                    label: 'Emesis',
-                    elementKey: 'subgroup76',
-                    sgChildren: [
-                      'emesisPresent',
-                      'colour',
-                      'description',
-                      'amount'
-                    ]
-                  },
-                  {
-                    label: 'Eating',
-                    elementKey: 'subgroup77',
-                    sgChildren: [
-                      'eating',
-                      'reason',
-                      'npoSinceDay',
-                      'npoSinceTime',
-                      'weightLoss'
-                    ]
-                  },
-                  {
-                    label: 'Stool',
-                    elementKey: 'subgroup78',
-                    sgChildren: [
-                      'lastBm',
-                      'stoolColour',
-                      'stoolDescription',
-                      'stoolAmount',
-                      'stoolSource'
-                    ]
-                  }
+                  'bowel',
+                  'bSounds',
+                  'condition',
+                  'spacer67',
+                  'spacer68',
+                  'pain',
+                  'spacer69',
+                  'spacer70',
+                  'aLabel'
                 ]
               },
               {
-                formCss: 'full-grid',
+                label: 'Emesis',
+                formCss: 'section-divider',
                 gIndex: '3',
+                gChildren: [
+                  'emesisPresent',
+                  'colour',
+                  'description',
+                  'amount'
+                ]
+              },
+              {
+                label: 'Eating',
+                formCss: 'section-divider',
+                gIndex: '4',
+                gChildren: [
+                  'eating',
+                  'reason',
+                  'spacer71',
+                  'npoSinceDay',
+                  'npoSinceTime',
+                  'weightLoss'
+                ]
+              },
+              {
+                label: 'Stool',
+                formCss: 'section-divider',
+                gIndex: '5',
+                gChildren: [
+                  'lastBm',
+                  'stoolColour',
+                  'stoolDescription',
+                  'stoolAmount',
+                  'stoolSource'
+                ]
+              },
+              {
+                formCss: 'grid-left-to-right-1 section-divider',
+                gIndex: '6',
                 gChildren: [
                   'comments'
                 ]
@@ -4022,10 +3874,10 @@ export default function () {
               profession: '',
               day: '',
               time: '',
-              condition: '',
-              pain: '',
               bowel: '',
               bSounds: '',
+              condition: '',
+              pain: '',
               emesisPresent: '',
               colour: '',
               description: '',

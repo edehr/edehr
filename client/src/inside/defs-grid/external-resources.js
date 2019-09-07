@@ -143,11 +143,11 @@ export default function () {
           fqn: 'assessmentTools.medication1_1'
         }
       ],
-      generated: '2019-09-02T05:58:16-07:00',
+      generated: '2019-09-06T18:26:31-07:00',
       pageElements: {
-        page_form132: {
-          elementKey: 'page_form132',
-          formKey: 'page_form132',
+        page_form125: {
+          elementKey: 'page_form125',
+          formKey: 'page_form125',
           isPageForm: true,
           ehr_groups: [
             {
@@ -155,7 +155,7 @@ export default function () {
               gChildren: [
                 {
                   label: 'Admissions',
-                  elementKey: 'subgroup141',
+                  elementKey: 'subgroup134',
                   sgChildren: [
                     'admissions1_1',
                     'admissions2_1',
@@ -164,7 +164,7 @@ export default function () {
                 },
                 {
                   label: 'Pain assessment',
-                  elementKey: 'subgroup142',
+                  elementKey: 'subgroup135',
                   sgChildren: [
                     'painAssessment1_1',
                     'painAssessment2_1'
@@ -172,7 +172,7 @@ export default function () {
                 },
                 {
                   label: 'Neurological assessment',
-                  elementKey: 'subgroup143',
+                  elementKey: 'subgroup136',
                   sgChildren: [
                     'neuroAssessment1_1',
                     'neuroAssessment2_1',
@@ -181,7 +181,7 @@ export default function () {
                 },
                 {
                   label: 'Falls risk',
-                  elementKey: 'subgroup144',
+                  elementKey: 'subgroup137',
                   sgChildren: [
                     'fallRisk1_1',
                     'fallRisk2_1'
@@ -189,14 +189,14 @@ export default function () {
                 },
                 {
                   label: 'Notes',
-                  elementKey: 'subgroup145',
+                  elementKey: 'subgroup138',
                   sgChildren: [
                     'notes1_1'
                   ]
                 },
                 {
                   label: 'Educational resources',
-                  elementKey: 'subgroup146',
+                  elementKey: 'subgroup139',
                   sgChildren: [
                     'educational1_1',
                     'educational2_1'
@@ -204,14 +204,14 @@ export default function () {
                 },
                 {
                   label: 'Wound assessment',
-                  elementKey: 'subgroup147',
+                  elementKey: 'subgroup140',
                   sgChildren: [
                     'wound1_1'
                   ]
                 },
                 {
                   label: 'Medication',
-                  elementKey: 'subgroup148',
+                  elementKey: 'subgroup141',
                   sgChildren: [
                     'medication1_1'
                   ]
@@ -244,7 +244,7 @@ export default function () {
           fqn: 'codeLookup.icf'
         }
       ],
-      generated: '2019-09-02T05:58:16-07:00',
+      generated: '2019-09-06T18:26:31-07:00',
       pageElements: {
         aForm: {
           elementKey: 'aForm',
@@ -309,6 +309,8 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: '<a href=\'/assets/static-databases/icd-10-medical-diagnosis-codes.pdf\' target=\'_blank\'>ICD-10 database</a>',
+          tableColumn: '2',
+          tableLabel: 'ICD-10',
           fqn: 'diagnosticCodes.icd10'
         },
         {
@@ -318,6 +320,8 @@ export default function () {
           inputType: 'text',
           label: 'Condition',
           mandatory: 'yes',
+          tableColumn: '3',
+          tableLabel: 'Condition',
           fqn: 'diagnosticCodes.condition'
         },
         {
@@ -327,6 +331,8 @@ export default function () {
           inputType: 'text',
           label: 'Diagnosis code',
           mandatory: 'yes',
+          tableColumn: '4',
+          tableLabel: 'Diagnosis code',
           validation: 'Up to 8 characters long',
           fqn: 'diagnosticCodes.code'
         },
@@ -351,6 +357,8 @@ export default function () {
               text: '3'
             }
           ],
+          tableColumn: '5',
+          tableLabel: 'Diagnosis type',
           validation: '1 character',
           fqn: 'diagnosticCodes.type'
         },
@@ -360,6 +368,8 @@ export default function () {
           inputType: 'text',
           label: 'Prefix',
           mandatory: 'no',
+          tableColumn: '6',
+          tableLabel: 'Prefix',
           validation: '1 character',
           fqn: 'diagnosticCodes.prefix'
         },
@@ -369,11 +379,13 @@ export default function () {
           inputType: 'text',
           label: 'Diagnosis cluster',
           mandatory: 'no',
+          tableColumn: '7',
+          tableLabel: 'Diagnosis cluster',
           validation: '1 character',
           fqn: 'diagnosticCodes.cluster'
         }
       ],
-      generated: '2019-09-02T05:58:16-07:00',
+      generated: '2019-09-06T18:26:31-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -389,6 +401,48 @@ export default function () {
                 'profession',
                 'day',
                 'time'
+              ]
+            },
+            {
+              label: 'ICD-10',
+              ehr_list_index: '2',
+              items: [
+                'icd10'
+              ]
+            },
+            {
+              label: 'Condition',
+              ehr_list_index: '3',
+              items: [
+                'condition'
+              ]
+            },
+            {
+              label: 'Diagnosis code',
+              ehr_list_index: '4',
+              items: [
+                'code'
+              ]
+            },
+            {
+              label: 'Diagnosis type',
+              ehr_list_index: '5',
+              items: [
+                'type'
+              ]
+            },
+            {
+              label: 'Prefix',
+              ehr_list_index: '6',
+              items: [
+                'prefix'
+              ]
+            },
+            {
+              label: 'Diagnosis cluster',
+              ehr_list_index: '7',
+              items: [
+                'cluster'
               ]
             }
           ],
@@ -487,6 +541,8 @@ export default function () {
           formIndex: '1',
           inputType: 'form_label',
           label: 'Intervention code attributes',
+          tableColumn: '2',
+          tableLabel: 'Code',
           fqn: 'interventionCodes.label'
         },
         {
@@ -496,6 +552,8 @@ export default function () {
           formOption: 'bold-text',
           inputType: 'text',
           label: 'Intervention',
+          tableColumn: '3',
+          tableLabel: 'Intervention',
           fqn: 'interventionCodes.intervention'
         },
         {
@@ -503,6 +561,8 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Status',
+          tableColumn: '4',
+          tableLabel: 'Status',
           fqn: 'interventionCodes.status'
         },
         {
@@ -510,6 +570,8 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Laterally',
+          tableColumn: '5',
+          tableLabel: 'Laterally',
           fqn: 'interventionCodes.laterally'
         },
         {
@@ -517,10 +579,12 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Extent',
+          tableColumn: '6',
+          tableLabel: 'Extent',
           fqn: 'interventionCodes.extent'
         }
       ],
-      generated: '2019-09-02T05:58:16-07:00',
+      generated: '2019-09-06T18:26:31-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -536,6 +600,41 @@ export default function () {
                 'profession',
                 'day',
                 'time'
+              ]
+            },
+            {
+              label: 'Code',
+              ehr_list_index: '2',
+              items: [
+                'label'
+              ]
+            },
+            {
+              label: 'Intervention',
+              ehr_list_index: '3',
+              items: [
+                'intervention'
+              ]
+            },
+            {
+              label: 'Status',
+              ehr_list_index: '4',
+              items: [
+                'status'
+              ]
+            },
+            {
+              label: 'Laterally',
+              ehr_list_index: '5',
+              items: [
+                'laterally'
+              ]
+            },
+            {
+              label: 'Extent',
+              ehr_list_index: '6',
+              items: [
+                'extent'
               ]
             }
           ],
@@ -625,6 +724,8 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Major clinical category',
+          tableColumn: '2',
+          tableLabel: 'Category',
           fqn: 'caseMixGroup.clinicalCategory'
         },
         {
@@ -632,6 +733,8 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Case mix number',
+          tableColumn: '3',
+          tableLabel: 'Case mix number',
           fqn: 'caseMixGroup.caseMixNumber'
         },
         {
@@ -639,6 +742,8 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Resource intensity weight',
+          tableColumn: '4',
+          tableLabel: 'Resource intensity weight',
           fqn: 'caseMixGroup.resourceIntensity'
         },
         {
@@ -646,6 +751,8 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Expected length of stay',
+          tableColumn: '5',
+          tableLabel: 'Expected length of stay',
           fqn: 'caseMixGroup.expectedStay'
         },
         {
@@ -653,10 +760,12 @@ export default function () {
           formIndex: '1',
           inputType: 'textarea',
           label: 'Analysis',
+          tableColumn: '6',
+          tableLabel: 'Analysis',
           fqn: 'caseMixGroup.analysis'
         }
       ],
-      generated: '2019-09-02T05:58:16-07:00',
+      generated: '2019-09-06T18:26:31-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -672,6 +781,41 @@ export default function () {
                 'profession',
                 'day',
                 'time'
+              ]
+            },
+            {
+              label: 'Category',
+              ehr_list_index: '2',
+              items: [
+                'clinicalCategory'
+              ]
+            },
+            {
+              label: 'Case mix number',
+              ehr_list_index: '3',
+              items: [
+                'caseMixNumber'
+              ]
+            },
+            {
+              label: 'Resource intensity weight',
+              ehr_list_index: '4',
+              items: [
+                'resourceIntensity'
+              ]
+            },
+            {
+              label: 'Expected length of stay',
+              ehr_list_index: '5',
+              items: [
+                'expectedStay'
+              ]
+            },
+            {
+              label: 'Analysis',
+              ehr_list_index: '6',
+              items: [
+                'analysis'
               ]
             }
           ],

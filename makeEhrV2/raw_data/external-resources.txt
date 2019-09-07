@@ -34,40 +34,40 @@
 {inputType: ehr_group}	eCell	eCell	eCell	{pN: 37}	{fN: 1}	{gN: 1}	{sgN: }	{formCss: record-header}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: record_header}	eCell	eCell	eCell	{pN: 37}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	{pN: 37}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: <a href="/assets/static-databases/icd-10-medical-diagnosis-codes.pdf" target="_blank">ICD-10 database</a>}	{elementKey: icd10}	{pN: 37}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{assetBase: static-databases}	{assetName: icd-10-medical-diagnosis-codes.pdf}	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Condition}	{elementKey: condition}	{pN: 37}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Mandatory: yes}	eCell	eCell	eCell	"{Data_case_study: COPD
+{inputType: text}	eCell	{Label: <a href="/assets/static-databases/icd-10-medical-diagnosis-codes.pdf" target="_blank">ICD-10 database</a>}	{elementKey: icd10}	{pN: 37}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: ICD-10}	{tableColumn: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{assetBase: static-databases}	{assetName: icd-10-medical-diagnosis-codes.pdf}	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Condition}	{elementKey: condition}	{pN: 37}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Condition}	{tableColumn: 3}	eCell	eCell	eCell	eCell	eCell	eCell	{Mandatory: yes}	eCell	eCell	eCell	"{Data_case_study: COPD
 History of smoking
 Hypertension}"	eCell	eCell
-{inputType: text}	eCell	{Label: Diagnosis code}	{elementKey: code}	{pN: 37}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Mandatory: yes}	{Validation: Up to 8 characters long}	eCell	eCell	"{Data_case_study: J44.9
+{inputType: text}	eCell	{Label: Diagnosis code}	{elementKey: code}	{pN: 37}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Diagnosis code}	{tableColumn: 4}	eCell	eCell	eCell	eCell	eCell	eCell	{Mandatory: yes}	{Validation: Up to 8 characters long}	eCell	eCell	"{Data_case_study: J44.9
 Z86.42
 I10}"	eCell	eCell
-{inputType: select}	eCell	{Label: Diagnosis type}	{elementKey: type}	{pN: 37}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Options: M
+{inputType: select}	eCell	{Label: Diagnosis type}	{elementKey: type}	{pN: 37}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Diagnosis type}	{tableColumn: 5}	eCell	eCell	eCell	eCell	"{Options: M
 1
 2
 3}"	eCell	{Mandatory: yes}	{Validation: 1 character}	eCell	eCell	"{Data_case_study: M
 3
 3}"	eCell	eCell
-{inputType: text}	eCell	{Label: Prefix}	{elementKey: prefix}	{pN: 37}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Mandatory: no}	{Validation: 1 character}	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Diagnosis cluster}	{elementKey: cluster}	{pN: 37}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Mandatory: no}	{Validation: 1 character}	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Prefix}	{elementKey: prefix}	{pN: 37}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Prefix}	{tableColumn: 6}	eCell	eCell	eCell	eCell	eCell	eCell	{Mandatory: no}	{Validation: 1 character}	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Diagnosis cluster}	{elementKey: cluster}	{pN: 37}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Diagnosis cluster}	{tableColumn: 7}	eCell	eCell	eCell	eCell	eCell	eCell	{Mandatory: no}	{Validation: 1 character}	eCell	eCell	eCell	eCell	eCell
 {inputType: page}	{pRef: 46}	{Label: Intervention codes}	{elementKey: interventionCodes}	{pN: 38}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: table_form}	eCell	eCell	{elementKey: table}	{pN: 38}	{fN: 1}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	{addButtonText: Add an intervention code}	eCell	eCell	{Options: Add an intervention code}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	{pN: 38}	{fN: 1}	{gN: 1}	{sgN: }	{formCss: record-header}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: record_header}	eCell	eCell	eCell	{pN: 38}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	{pN: 38}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: spacer}	eCell	eCell	{elementKey: spacer}	{pN: 38}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{assetBase: ?}	eCell	eCell	eCell	eCell
-{inputType: form_label}	eCell	{Label: Intervention code attributes}	{elementKey: label}	{pN: 38}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Intervention}	{elementKey: intervention}	{pN: 38}	{fN: 1}	{gN: 2}	{sgN: }	eCell	{formOption: bold-text}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Data_case_study: 3.GY.10.VA
+{inputType: form_label}	eCell	{Label: Intervention code attributes}	{elementKey: label}	{pN: 38}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Code}	{tableColumn: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Intervention}	{elementKey: intervention}	{pN: 38}	{fN: 1}	{gN: 2}	{sgN: }	eCell	{formOption: bold-text}	{tableLabel: Intervention}	{tableColumn: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Data_case_study: 3.GY.10.VA
 2.GZ.21.EA}"	eCell	eCell
-{inputType: text}	eCell	{Label: Status}	{elementKey: status}	{pN: 38}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Laterally}	{elementKey: laterally}	{pN: 38}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Extent}	{elementKey: extent}	{pN: 38}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Status}	{elementKey: status}	{pN: 38}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Status}	{tableColumn: 4}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Laterally}	{elementKey: laterally}	{pN: 38}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Laterally}	{tableColumn: 5}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Extent}	{elementKey: extent}	{pN: 38}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Extent}	{tableColumn: 6}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: page}	{pRef: 47}	{Label: Case mix group}	{elementKey: caseMixGroup}	{pN: 39}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: table_form}	eCell	eCell	{elementKey: table}	{pN: 39}	{fN: 1}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	{addButtonText: Add a case mix group}	eCell	eCell	{Options: Add case mix group}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	{pN: 39}	{fN: 1}	{gN: 1}	{sgN: }	{formCss: record-header}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: record_header}	eCell	eCell	eCell	{pN: 39}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	{pN: 39}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Major clinical category}	{elementKey: clinicalCategory}	{pN: 39}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Case mix number}	{elementKey: caseMixNumber}	{pN: 39}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Resource intensity weight}	{elementKey: resourceIntensity}	{pN: 39}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Expected length of stay}	{elementKey: expectedStay}	{pN: 39}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: textarea}	eCell	{Label: Analysis}	{elementKey: analysis}	{pN: 39}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Major clinical category}	{elementKey: clinicalCategory}	{pN: 39}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Category}	{tableColumn: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Case mix number}	{elementKey: caseMixNumber}	{pN: 39}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Case mix number}	{tableColumn: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Resource intensity weight}	{elementKey: resourceIntensity}	{pN: 39}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Resource intensity weight}	{tableColumn: 4}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Expected length of stay}	{elementKey: expectedStay}	{pN: 39}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Expected length of stay}	{tableColumn: 5}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: textarea}	eCell	{Label: Analysis}	{elementKey: analysis}	{pN: 39}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Analysis}	{tableColumn: 6}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
