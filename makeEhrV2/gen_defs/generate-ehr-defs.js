@@ -34,15 +34,14 @@ function main () {
 function convertFile (fName, hashMap) {
   let fSrc = pathUtil.join(source, fName) + '.txt'
   let contents = fs.readFileSync(fSrc, 'utf8')
-  let hash = 2//md5Hex(contents)
+  let hash = md5Hex(contents)
   let previousHash = hashMap[fName]
   if (hash != previousHash) {
     let stats = fs.statSync(fSrc)
     let lastModifiedTime = stats.mtime
     console.log('GenerateEhr convert file. Process', fName)
     processFile(contents, fName, lastModifiedTime)
-    // TODO uncomment to restore storage of hash
-    // hashMap[fName] = hash
+    hashMap[fName] = hash
   } else {
     console.log('GenerateEhr convert file. Skip', fName)
   }

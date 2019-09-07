@@ -263,6 +263,7 @@ class RawInputToDef {
           // *********** make stack for table at this index
           table.ehr_list[index] = {
             label: entry.tableLabel,
+            tableCss: entry.tableCss,
             ehr_list_index: index,
             items: []}
         }

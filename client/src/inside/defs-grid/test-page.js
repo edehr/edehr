@@ -302,7 +302,7 @@ export default function () {
           fqn: 'testPage.place'
         }
       ],
-      generated: '2019-08-30T10:23:31-07:00',
+      generated: '2019-08-29T14:31:39-07:00',
       pageElements: {
         form1: {
           elementKey: 'form1',
@@ -859,7 +859,7 @@ export default function () {
           fqn: 'testTable.status'
         }
       ],
-      generated: '2019-08-30T10:23:31-07:00',
+      generated: '2019-08-29T14:31:39-07:00',
       pageElements: {
         table1: {
           elementKey: 'table1',
@@ -884,6 +884,7 @@ export default function () {
             },
             {
               label: 'Text',
+              tableCss: 'hr-table',
               ehr_list_index: '3',
               items: [
                 'defaultText'
@@ -907,6 +908,7 @@ export default function () {
             },
             {
               label: 'Long text',
+              tableCss: 'hr-table',
               ehr_list_index: '6',
               items: [
                 'e11'

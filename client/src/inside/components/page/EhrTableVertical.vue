@@ -37,8 +37,7 @@ export default {
       return cell.tableCss
     },
     transposeValueCss (cell) {
-      let cellDef = cell.cellDef || {}
-      let hdrCss = 'column_value' + (cellDef.tableCss ? ' ' + cellDef.tableCss : '')
+      let hdrCss = 'column_value' + (cell.tableCss ? ' ' + cell.tableCss : '')
       return hdrCss
     },
     transposeData (column) {
