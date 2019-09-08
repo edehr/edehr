@@ -26,7 +26,8 @@ export default class EhrHelp {
   isV2 () { return false }
 
   getPageKey () { return this.pageKey }
-  getPageDef () { return getPageDefinition(this.pageKey) }
+  // force get V1 page def
+  getPageDef () { return getPageDefinition(this.pageKey, true) }
   getActiveTableKey () { return this.activeTableKey }
 
   _setupEventHandlers () {

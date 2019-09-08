@@ -10,24 +10,21 @@
         ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDef", :inputs="dialogInputs", :errorList="errorList" )
       tab(name="Chart")
         ehr-page-table(:tableDef="tableDef", :ehrHelp="ehrHelp")
-
     div(style="display:none") Vitals: {{refreshData}}
 </template>
 
 <script>
-import Tabs from './Tabs'
-import Tab from './Tab'
-import UiButton from '../../app/ui/UiButton.vue'
+import Tabs from '../Tabs'
+import Tab from '../Tab'
+import UiButton from '../../../app/ui/UiButton.vue'
 import VitalsChart from './VitalsChart'
-import VitalModel from '../../helpers/vitalModel'
-import EhrPageTable from '../components/EhrPageTable'
-import EventBus from '../../helpers/event-bus'
-import { PAGE_DATA_REFRESH_EVENT } from '../../helpers/event-bus'
-import EhrDialogForm from '../components/EhrDialogForm.vue'
-import { getPageDefinition } from '../../helpers/ehr-defs'
+import VitalModel from './vitalModel'
+import EhrPageTable from '../EhrPageTable'
+import EventBus from '../../../helpers/event-bus'
+import { PAGE_DATA_REFRESH_EVENT } from '../../../helpers/event-bus'
+import EhrDialogForm from '../EhrDialogForm.vue'
 
 export default {
-  name: 'home',
   components: {
     EhrDialogForm,
     Tabs,
@@ -49,21 +46,22 @@ export default {
     }
   },
   props: {
-    ehrHelp: {type: Object}
+    ehrHelp: {type: Object},
+    pageDataKey: { type: String }
   },
   computed: {
     showTableAddButton () {
-      return true// this.ehrHelp.showTableAddButton()
+      return this.ehrHelp.showTableAddButton()
     },
     uiProps () {
-      let pageKey = this.ehrHelp.getPageKey()
-      return getPageDefinition(pageKey, true)
+      return this.ehrHelp.getPageDef(this.pageDataKey)
     },
     refreshData () {
       this.refresh()
       return this.tableData
     },
     tableDef () {
+      console.log('Vitals1 looking for table def', this.uiProps)
       return this.uiProps.tables[0] || {}
     },
     errorList () {
@@ -82,7 +80,7 @@ export default {
       } else {
         let tableKey = this.tableDef.tableKey
         let pageKey = this.ehrHelp.getPageKey()
-        console.log('Vitals refresh for page table key', pageKey, tableKey)
+        console.log('Vitals1 refresh for page table key', pageKey, tableKey)
         let pageData = this.ehrHelp.getAsLoadedPageData(pageKey)
         let tableData = pageData[tableKey] || []
         // store the current data into local data property for display
