@@ -2,9 +2,6 @@
   div(class="ehr-page-table")
     div(v-if="showTableAddButton")
       ui-button(v-on:buttonClicked="showDialog") {{ tableDef.addButtonText }}
-    //div(v-if="isVertical", class="column_table")
-    //  ehr-table-vertical(:ehrHelp="ehrHelp", :tableDef="tableDef")
-    //div(v-else-if="isStacked", class="stacked_table")
     div
       h2(v-show="tableDef.label") {{tableDef.label}}
       ehr-table-vertical(v-if="isVertical", :ehrHelp="ehrHelp", :tableDef="tableDef")
