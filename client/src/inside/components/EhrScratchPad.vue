@@ -8,7 +8,7 @@
         span Scratch pad
 
     app-dialog(:isModal="false", ref="theDialog", @cancel="cancelDialog", @save="saveDialog")
-      h3(slot="header") Your private notes
+      h2(slot="header") Your private notes
       div(slot="body")
         div
           div(class="input-fieldrow")

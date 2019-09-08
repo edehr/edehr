@@ -4,12 +4,12 @@
 {inputType: text}	eCell	{Label: First name}	{elementKey: givenName}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Erin}	eCell	eCell
 {inputType: text}	eCell	{Label: Middle name(s)}	{elementKey: middleName}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Last name}	{elementKey: familyName}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Johns}	eCell	eCell
-{inputType: text}	eCell	{Label: Preferred name}	{elementKey: preferredName}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Erin}	eCell	eCell
+{inputType: text}	eCell	{Label: Preferred name}	{elementKey: preferredName}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Erin}	eCell	eCell
 {inputType: text}	eCell	{Label: Date of birth}	{elementKey: dateOfBirth}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: 09-SEP-19##}	eCell	eCell
 {inputType: text}	eCell	{Label: Age}	{elementKey: personAge}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: 74}	eCell	eCell
 {inputType: text}	eCell	{Label: Height}	{elementKey: height}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Default_value: 157}	eCell	{Suffix: cm}	eCell	eCell	eCell	eCell	{Data_case_study: 157}	eCell	eCell
 {inputType: text}	eCell	{Label: Weight}	{elementKey: weight}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Default_value: 49}	eCell	{Suffix: kg}	eCell	eCell	eCell	eCell	{Data_case_study: 63}	eCell	eCell
-{inputType: select}	eCell	{Label: Gender}	{elementKey: gender}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Options: Unknown
+{inputType: select}	eCell	{Label: Gender}	{elementKey: gender}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: Unknown
 Female
 Male
 Transgender female
@@ -28,20 +28,20 @@ Spanish
 German
 Chinese}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: English}	eCell	eCell
 {inputType: text}	eCell	{Label: Religion}	{elementKey: religion}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Do you identify as an indigenous person?}	{elementKey: indigenousIdentifyAs}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Options: Yes
+{inputType: select}	eCell	{Label: Do you identify as an indigenous person?}	{elementKey: indigenousIdentifyAs}	{pN: 1}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: Yes
 No}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: No}	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	{pN: 1}	{fN: 1}	{gN: 2}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Street address}	{elementKey: streetAddress}	{pN: 1}	{fN: 1}	{gN: 2}	{sgN: }	{formCss: grid-span-2-columns}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: 402 Willow St.}	eCell	eCell
 {inputType: text}	eCell	{Label: City}	{elementKey: city}	{pN: 1}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Vancouver}	eCell	eCell
 {inputType: text}	eCell	{Label: Country}	{elementKey: country}	{pN: 1}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Default_value: Canada}	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Canada}	eCell	eCell
 {inputType: text}	eCell	{Label: Postal code}	{elementKey: postalCode}	{pN: 1}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: V3F 9R2}	eCell	eCell
-{inputType: checkbox}	eCell	{Label: No address}	{elementKey: noAddress}	{pN: 1}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Default_value: FALSE}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkbox}	eCell	{Label: No address}	{elementKey: noAddress}	{pN: 1}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	{tableCss: hr-table}	eCell	eCell	{Default_value: FALSE}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Primary phone number}	{elementKey: phoneNumber}	{pN: 1}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: (778) 555-2947}	eCell	eCell
-{inputType: text}	eCell	{Label: Email}	{elementKey: emailAddress}	{pN: 1}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Email}	{elementKey: emailAddress}	{pN: 1}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Occupation/student}	{elementKey: occupationStudent}	{pN: 1}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Retired}	eCell	eCell
 {inputType: text}	eCell	{Label: PHN}	{elementKey: phn}	{pN: 1}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: 12345678}	eCell	eCell
 {inputType: text}	eCell	{Label: MRN}	{elementKey: mrn}	{pN: 1}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Patient service}	{elementKey: patientService}	{pN: 1}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Patient service}	{elementKey: patientService}	{pN: 1}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	{pN: 1}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Next of kin name}	{elementKey: nextOfKinName}	{pN: 1}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Thomas Johns}	eCell	eCell
 {inputType: select}	eCell	{Label: Next of kin relationship}	{elementKey: nextOfKinRelationship}	{pN: 1}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Options: Wife
@@ -59,7 +59,7 @@ Grandmother
 Grandfather
 Friend
 Other}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Son}	eCell	eCell
-{inputType: text}	eCell	{Label: Next of kin phone}	{elementKey: nextOfKinPhone}	{pN: 1}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: 604-555-9865}	eCell	eCell
+{inputType: text}	eCell	{Label: Next of kin phone}	{elementKey: nextOfKinPhone}	{pN: 1}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: 604-555-9865}	eCell	eCell
 {inputType: text}	eCell	{Label: Decision maker name}	{elementKey: decisionMakerName}	{pN: 1}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Thomas Johns}	eCell	eCell
 {inputType: select}	eCell	{Label: Decision maker relationship}	{elementKey: decisionMakerRelationship}	{pN: 1}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Options: Spouse
 Child

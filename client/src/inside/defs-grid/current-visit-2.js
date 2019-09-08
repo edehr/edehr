@@ -13,7 +13,7 @@ export default function () {
           inputType: 'text',
           label: 'Name',
           tableColumn: '1',
-          tableLabel: 'Header',
+          tableLabel: 'Identification',
           fqn: 'genitourinary.name'
         },
         {
@@ -41,88 +41,43 @@ export default function () {
           fqn: 'genitourinary.time'
         },
         {
-          elementKey: 'none',
+          elementKey: 'urinaryGroup1',
           assetBase: 'standardized-assessment-tools',
           assetName: 'opqrstuv.pdf',
           dataCaseStudy: 'None',
           formIndex: '1',
-          inputType: 'checkbox',
-          label: 'None',
+          inputType: 'checkset',
+          label: 'Urinary symptoms',
+          options: [
+            {
+              text: 'None'
+            },
+            {
+              text: 'Increased frequency'
+            },
+            {
+              text: 'Dysuria'
+            },
+            {
+              text: 'Hermaturia'
+            },
+            {
+              text: 'Oliguria'
+            },
+            {
+              text: 'Incontinence'
+            },
+            {
+              text: 'Retention'
+            },
+            {
+              text: 'Distention'
+            }
+          ],
           tableColumn: '2',
-          fqn: 'genitourinary.none'
-        },
-        {
-          elementKey: 'increasedFrequency',
-          assetBase: 'standardized-assessment-tools',
-          assetName: 'numeric-rating-scale.pdf',
-          dataCaseStudy: 'None',
-          formIndex: '1',
-          inputType: 'checkbox',
-          label: 'Increased frequency',
-          tableColumn: '2',
-          fqn: 'genitourinary.increasedFrequency'
-        },
-        {
-          elementKey: 'dysuria',
-          dataCaseStudy: 'None',
-          formIndex: '1',
-          inputType: 'checkbox',
-          label: 'Dysuria',
-          tableColumn: '2',
-          fqn: 'genitourinary.dysuria'
-        },
-        {
-          elementKey: 'hernaturia',
-          assetBase: 'standardized-assessment-tools',
-          assetName: 'glasgow-coma-scale.pdf',
-          dataCaseStudy: 'None',
-          formIndex: '1',
-          inputType: 'checkbox',
-          label: 'Hermaturia',
-          tableColumn: '2',
-          fqn: 'genitourinary.hernaturia'
-        },
-        {
-          elementKey: 'oliguria',
-          assetBase: 'standardized-assessment-tools',
-          assetName: 'mini-mental-health-screen.pdf',
-          dataCaseStudy: 'None',
-          formIndex: '1',
-          inputType: 'checkbox',
-          label: 'Oliguria',
-          tableColumn: '2',
-          fqn: 'genitourinary.oliguria'
-        },
-        {
-          elementKey: 'incontinence',
-          assetBase: 'standardized-assessment-tools',
-          assetName: 'richmond-agitation-sedation-scale-rass.pdf',
-          dataCaseStudy: 'None',
-          formIndex: '1',
-          inputType: 'checkbox',
-          label: 'Incontinence',
-          tableColumn: '2',
-          fqn: 'genitourinary.incontinence'
-        },
-        {
-          elementKey: 'retention',
-          dataCaseStudy: 'None',
-          formIndex: '1',
-          inputType: 'checkbox',
-          label: 'Retention',
-          tableColumn: '2',
-          fqn: 'genitourinary.retention'
-        },
-        {
-          elementKey: 'distention',
-          assetBase: 'standardized-assessment-tools',
-          assetName: 'fall-risk-assessment-tool.pdf',
-          dataCaseStudy: 'None',
-          formIndex: '1',
-          inputType: 'checkbox',
-          label: 'Distention',
-          tableColumn: '2',
-          fqn: 'genitourinary.distention'
+          tableCss: 'hr-table',
+          tableLabel: 'Urinary symptoms',
+          fqn: 'genitourinary.urinaryGroup1'
         },
         {
           elementKey: 'lastVoidedDay',
@@ -216,6 +171,7 @@ export default function () {
             }
           ],
           tableColumn: '7',
+          tableCss: 'hr-table',
           tableLabel: 'Diaper',
           fqn: 'genitourinary.diaper'
         },
@@ -269,6 +225,7 @@ export default function () {
           inputType: 'day',
           label: 'Last catheter change',
           tableColumn: '11',
+          tableCss: 'hr-table',
           tableLabel: 'Last catheter change',
           fqn: 'genitourinary.lastChange'
         },
@@ -318,6 +275,7 @@ export default function () {
             }
           ],
           tableColumn: '14',
+          tableCss: 'hr-table',
           tableLabel: 'Pelvic pain source',
           fqn: 'genitourinary.pelvicPainSource'
         },
@@ -327,7 +285,6 @@ export default function () {
           formIndex: '1',
           inputType: 'form_label',
           label: 'If answered yes, please complete the pain assessment',
-          tableColumn: '15',
           tableLabel: 'If answered yes, please complete the pain assessment',
           fqn: 'genitourinary.aLabel'
         },
@@ -338,7 +295,7 @@ export default function () {
           formIndex: '1',
           inputType: 'checkbox',
           label: 'Discharge',
-          tableColumn: '16',
+          tableColumn: '15',
           tableLabel: 'Discharge',
           fqn: 'genitourinary.discharge'
         },
@@ -349,7 +306,7 @@ export default function () {
           formIndex: '1',
           inputType: 'checkbox',
           label: 'Bleeding',
-          tableColumn: '17',
+          tableColumn: '16',
           tableLabel: 'Bleeding',
           fqn: 'genitourinary.bleeding'
         },
@@ -360,7 +317,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Description',
-          tableColumn: '18',
+          tableColumn: '17',
           tableLabel: 'Description',
           fqn: 'genitourinary.description'
         },
@@ -371,7 +328,8 @@ export default function () {
           formIndex: '1',
           inputType: 'date',
           label: 'Last menstrual period date',
-          tableColumn: '19',
+          tableColumn: '18',
+          tableCss: 'hr-table',
           tableLabel: 'Last menstrual period date',
           fqn: 'genitourinary.lastMenstrualPeriodDate'
         },
@@ -392,7 +350,7 @@ export default function () {
               text: 'Unknown'
             }
           ],
-          tableColumn: '20',
+          tableColumn: '19',
           tableLabel: 'Pregnant',
           fqn: 'genitourinary.pregnant'
         },
@@ -402,7 +360,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Gravida (number of pregnancies)',
-          tableColumn: '21',
+          tableColumn: '20',
           tableLabel: 'Gravida (number of pregnancies)',
           fqn: 'genitourinary.gravida'
         },
@@ -412,7 +370,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Para (number of children)',
-          tableColumn: '22',
+          tableColumn: '21',
           tableLabel: 'Para (number of children)',
           fqn: 'genitourinary.para'
         },
@@ -422,7 +380,8 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Living children',
-          tableColumn: '23',
+          tableColumn: '22',
+          tableCss: 'hr-table',
           tableLabel: 'Living children',
           fqn: 'genitourinary.livingChildren'
         },
@@ -432,12 +391,12 @@ export default function () {
           formIndex: '1',
           inputType: 'textarea',
           label: 'Comments',
-          tableColumn: '24',
+          tableColumn: '23',
           tableLabel: 'Comments',
           fqn: 'genitourinary.comments'
         }
       ],
-      generated: '2019-09-07T08:28:35-07:00',
+      generated: '2019-09-07T20:23:15-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -446,7 +405,7 @@ export default function () {
           addButtonText: 'Add a genitourinary assessment',
           ehr_list: [
             {
-              label: 'Header',
+              label: 'Identification',
               ehr_list_index: '1',
               items: [
                 'name',
@@ -456,16 +415,11 @@ export default function () {
               ]
             },
             {
+              label: 'Urinary symptoms',
+              tableCss: 'hr-table',
               ehr_list_index: '2',
               items: [
-                'none',
-                'increasedFrequency',
-                'dysuria',
-                'hernaturia',
-                'oliguria',
-                'incontinence',
-                'retention',
-                'distention'
+                'urinaryGroup1'
               ]
             },
             {
@@ -498,6 +452,7 @@ export default function () {
             },
             {
               label: 'Diaper',
+              tableCss: 'hr-table',
               ehr_list_index: '7',
               items: [
                 'diaper'
@@ -526,6 +481,7 @@ export default function () {
             },
             {
               label: 'Last catheter change',
+              tableCss: 'hr-table',
               ehr_list_index: '11',
               items: [
                 'lastChange'
@@ -547,77 +503,73 @@ export default function () {
             },
             {
               label: 'Pelvic pain source',
+              tableCss: 'hr-table',
               ehr_list_index: '14',
               items: [
                 'pelvicPainSource'
               ]
             },
             {
-              label: 'If answered yes, please complete the pain assessment',
-              ehr_list_index: '15',
-              items: [
-                'aLabel'
-              ]
-            },
-            {
               label: 'Discharge',
-              ehr_list_index: '16',
+              ehr_list_index: '15',
               items: [
                 'discharge'
               ]
             },
             {
               label: 'Bleeding',
-              ehr_list_index: '17',
+              ehr_list_index: '16',
               items: [
                 'bleeding'
               ]
             },
             {
               label: 'Description',
-              ehr_list_index: '18',
+              ehr_list_index: '17',
               items: [
                 'description'
               ]
             },
             {
               label: 'Last menstrual period date',
-              ehr_list_index: '19',
+              tableCss: 'hr-table',
+              ehr_list_index: '18',
               items: [
                 'lastMenstrualPeriodDate'
               ]
             },
             {
               label: 'Pregnant',
-              ehr_list_index: '20',
+              ehr_list_index: '19',
               items: [
                 'pregnant'
               ]
             },
             {
               label: 'Gravida (number of pregnancies)',
-              ehr_list_index: '21',
+              ehr_list_index: '20',
               items: [
                 'gravida'
               ]
             },
             {
               label: 'Para (number of children)',
-              ehr_list_index: '22',
+              ehr_list_index: '21',
               items: [
                 'para'
               ]
             },
             {
               label: 'Living children',
-              ehr_list_index: '23',
+              tableCss: 'hr-table',
+              ehr_list_index: '22',
               items: [
                 'livingChildren'
               ]
             },
             {
               label: 'Comments',
-              ehr_list_index: '24',
+              ehr_list_index: '23',
               items: [
                 'comments'
               ]
@@ -642,76 +594,63 @@ export default function () {
               {
                 gIndex: '2',
                 gChildren: [
-                  {
-                    label: 'Urinary symptoms',
-                    elementKey: 'subgroup108',
-                    sgChildren: [
-                      'none',
-                      'increasedFrequency',
-                      'dysuria',
-                      'hernaturia',
-                      'oliguria',
-                      'incontinence',
-                      'retention',
-                      'distention'
-                    ]
-                  },
-                  {
-                    label: 'Urinary',
-                    elementKey: 'subgroup109',
-                    sgChildren: [
-                      'lastVoidedDay',
-                      'lastVoidedTime',
-                      'colour',
-                      'consistency',
-                      'diaper'
-                    ]
-                  },
-                  {
-                    label: 'Foley',
-                    elementKey: 'subgroup110',
-                    sgChildren: [
-                      'foley',
-                      'foleyType',
-                      'foleySize',
-                      'lastChange'
-                    ]
-                  },
-                  {
-                    label: 'Pelvic',
-                    elementKey: 'subgroup111',
-                    sgChildren: [
-                      'pelvicPain',
-                      'location',
-                      'pelvicPainSource',
-                      'aLabel'
-                    ]
-                  },
-                  {
-                    label: 'Vaginal',
-                    elementKey: 'subgroup112',
-                    sgChildren: [
-                      'discharge',
-                      'bleeding',
-                      'description',
-                      'lastMenstrualPeriodDate'
-                    ]
-                  },
-                  {
-                    label: 'Pregnancy',
-                    elementKey: 'subgroup113',
-                    sgChildren: [
-                      'pregnant',
-                      'gravida',
-                      'para',
-                      'livingChildren'
-                    ]
-                  }
+                  'urinaryGroup1'
+                ]
+              },
+              {
+                label: 'Urinary',
+                gIndex: '3',
+                gChildren: [
+                  'lastVoidedDay',
+                  'lastVoidedTime',
+                  'colour',
+                  'consistency',
+                  'diaper'
+                ]
+              },
+              {
+                label: 'Foley',
+                gIndex: '4',
+                gChildren: [
+                  'foley',
+                  'foleyType',
+                  'foleySize',
+                  'lastChange'
+                ]
+              },
+              {
+                label: 'Pelvic',
+                gIndex: '5',
+                gChildren: [
+                  'pelvicPain',
+                  'location',
+                  'pelvicPainSource',
+                  'aLabel'
+                ]
+              },
+              {
+                label: 'Vaginal',
+                gIndex: '6',
+                gChildren: [
+                  'discharge',
+                  'bleeding',
+                  'description',
+                  'lastMenstrualPeriodDate'
+                ]
+              },
+              {
+                label: 'Pregnancy',
+                gIndex: '7',
+                gChildren: [
+                  'pregnant',
+                  'gravida',
+                  'para',
+                  'livingChildren'
                 ]
               },
               {
                 formCss: 'grid-left-to-right-1',
-                gIndex: '3',
+                gIndex: '8',
                 gChildren: [
                   'comments'
                 ]
@@ -722,14 +661,7 @@ export default function () {
               profession: '',
               day: '',
               time: '',
-              none: '',
-              increasedFrequency: '',
-              dysuria: '',
-              hernaturia: '',
-              oliguria: '',
-              incontinence: '',
-              retention: '',
-              distention: '',
+              urinaryGroup1: '',
               lastVoidedDay: '',
               lastVoidedTime: '',
               colour: '',
@@ -769,7 +701,7 @@ export default function () {
           inputType: 'text',
           label: 'Name',
           tableColumn: '1',
-          tableLabel: 'Header',
+          tableLabel: 'Identification',
           fqn: 'musculoskeletal.name'
         },
         {
@@ -1009,6 +941,7 @@ export default function () {
             }
           ],
           tableColumn: '11',
+          tableCss: 'hr-table',
           tableLabel: 'Type',
           fqn: 'musculoskeletal.type'
         },
@@ -1024,7 +957,7 @@ export default function () {
           fqn: 'musculoskeletal.comments'
         }
       ],
-      generated: '2019-09-07T08:28:35-07:00',
+      generated: '2019-09-07T20:23:15-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1033,7 +966,7 @@ export default function () {
           addButtonText: 'Add a musculoskeletal assessment',
           ehr_list: [
             {
-              label: 'Header',
+              label: 'Identification',
               ehr_list_index: '1',
               items: [
                 'name',
@@ -1107,6 +1040,7 @@ export default function () {
             },
             {
               label: 'Type',
+              tableCss: 'hr-table',
               ehr_list_index: '11',
               items: [
                 'type'
@@ -1193,7 +1127,7 @@ export default function () {
           inputType: 'text',
           label: 'Name',
           tableColumn: '1',
-          tableLabel: 'Header',
+          tableLabel: 'Identification',
           fqn: 'pain.name'
         },
         {
@@ -1291,6 +1225,7 @@ export default function () {
           inputType: 'text',
           label: 'Precipitating events',
           tableColumn: '8',
+          tableCss: 'hr-table',
           tableLabel: 'Precipitating events',
           fqn: 'pain.precipitatingEvents'
         },
@@ -1300,6 +1235,7 @@ export default function () {
           inputType: 'textarea',
           label: 'Comments',
           tableColumn: '9',
+          tableCss: 'hr-table',
           tableLabel: 'Comments',
           fqn: 'pain.comments'
         },
@@ -1372,6 +1308,7 @@ export default function () {
           inputType: 'text',
           label: 'Precipitating events',
           tableColumn: '18',
+          tableCss: 'hr-table',
           tableLabel: 'Precipitating events',
           fqn: 'pain.precipitatingEvents'
         },
@@ -1385,7 +1322,7 @@ export default function () {
           fqn: 'pain.comments'
         }
       ],
-      generated: '2019-09-07T08:28:35-07:00',
+      generated: '2019-09-07T20:23:15-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1394,7 +1331,7 @@ export default function () {
           addButtonText: 'Add a pain assessment',
           ehr_list: [
             {
-              label: 'Header',
+              label: 'Identification',
               ehr_list_index: '1',
               items: [
                 'name',
@@ -1448,6 +1385,7 @@ export default function () {
             },
             {
               label: 'Precipitating events',
+              tableCss: 'hr-table',
               ehr_list_index: '8',
               items: [
                 'precipitatingEvents'
@@ -1455,6 +1393,7 @@ export default function () {
             },
             {
               label: 'Comments',
+              tableCss: 'hr-table',
               ehr_list_index: '9',
               items: [
                 'comments'
@@ -1511,6 +1450,7 @@ export default function () {
             },
             {
               label: 'Precipitating events',
+              tableCss: 'hr-table',
               ehr_list_index: '18',
               items: [
                 'precipitatingEvents'
@@ -1604,7 +1544,7 @@ export default function () {
     },
     biopsychosocial: {
       pageDataKey: 'biopsychosocial',
-      pageTitle: 'Biopsychosocial',
+      pageTitle: 'Biopsychosocial assessment',
       pIndex: '21',
       isV2: true,
       hasGridTable: true,
@@ -1615,7 +1555,7 @@ export default function () {
           inputType: 'text',
           label: 'Name',
           tableColumn: '1',
-          tableLabel: 'Header',
+          tableLabel: 'Identification',
           fqn: 'biopsychosocial.name'
         },
         {
@@ -1681,6 +1621,7 @@ export default function () {
             }
           ],
           tableColumn: '3',
+          tableCss: 'hr-table',
           tableLabel: 'Social worker?',
           fqn: 'biopsychosocial.requestContact'
         },
@@ -1709,6 +1650,7 @@ export default function () {
           inputType: 'textarea',
           label: 'Hygiene comments',
           tableColumn: '5',
+          tableCss: 'hr-table',
           tableLabel: 'Hygiene comments',
           fqn: 'biopsychosocial.hygieneComments'
         },
@@ -1742,6 +1684,7 @@ export default function () {
             }
           ],
           tableColumn: '6',
+          tableCss: 'hr-table',
           tableLabel: 'Behaviour',
           fqn: 'biopsychosocial.behaviour'
         },
@@ -1766,6 +1709,7 @@ export default function () {
             }
           ],
           tableColumn: '7',
+          tableCss: 'hr-table',
           tableLabel: 'Hallucinations',
           fqn: 'biopsychosocial.hallucinations'
         },
@@ -1822,6 +1766,7 @@ export default function () {
             }
           ],
           tableColumn: '10',
+          tableCss: 'hr-table',
           fqn: 'biopsychosocial.speech'
         },
         {
@@ -1842,6 +1787,7 @@ export default function () {
           inputType: 'textarea',
           label: 'Support comments',
           tableColumn: '12',
+          tableCss: 'hr-table',
           fqn: 'biopsychosocial.supportComments'
         },
         {
@@ -1862,6 +1808,7 @@ export default function () {
           inputType: 'textarea',
           label: 'Security comments',
           tableColumn: '14',
+          tableCss: 'hr-table',
           fqn: 'biopsychosocial.securityComments'
         },
         {
@@ -1910,6 +1857,7 @@ export default function () {
           inputType: 'textarea',
           label: 'Restraint comments',
           tableColumn: '18',
+          tableCss: 'hr-table',
           tableLabel: 'Restraint comments',
           fqn: 'biopsychosocial.restraintComments'
         },
@@ -1924,7 +1872,7 @@ export default function () {
           fqn: 'biopsychosocial.generalComments'
         }
       ],
-      generated: '2019-09-07T08:28:35-07:00',
+      generated: '2019-09-07T20:23:15-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1933,7 +1881,7 @@ export default function () {
           addButtonText: 'Add a biopsychosocial assessment',
           ehr_list: [
             {
-              label: 'Header',
+              label: 'Identification',
               ehr_list_index: '1',
               items: [
                 'name',
@@ -1951,6 +1899,7 @@ export default function () {
             },
             {
               label: 'Social worker?',
+              tableCss: 'hr-table',
               ehr_list_index: '3',
               items: [
                 'requestContact'
@@ -1965,6 +1914,7 @@ export default function () {
             },
             {
               label: 'Hygiene comments',
+              tableCss: 'hr-table',
               ehr_list_index: '5',
               items: [
                 'hygieneComments'
@@ -1972,6 +1922,7 @@ export default function () {
             },
             {
               label: 'Behaviour',
+              tableCss: 'hr-table',
               ehr_list_index: '6',
               items: [
                 'behaviour'
@@ -1979,6 +1930,7 @@ export default function () {
             },
             {
               label: 'Hallucinations',
+              tableCss: 'hr-table',
               ehr_list_index: '7',
               items: [
                 'hallucinations'
@@ -1998,6 +1950,7 @@ export default function () {
               ]
             },
             {
+              tableCss: 'hr-table',
               ehr_list_index: '10',
               items: [
                 'speech'
@@ -2011,6 +1964,7 @@ export default function () {
               ]
             },
             {
+              tableCss: 'hr-table',
               ehr_list_index: '12',
               items: [
                 'supportComments'
@@ -2024,6 +1978,7 @@ export default function () {
               ]
             },
             {
+              tableCss: 'hr-table',
               ehr_list_index: '14',
               items: [
                 'securityComments'
@@ -2052,6 +2007,7 @@ export default function () {
             },
             {
               label: 'Restraint comments',
+              tableCss: 'hr-table',
               ehr_list_index: '18',
               items: [
                 'restraintComments'
@@ -2191,7 +2147,7 @@ export default function () {
           inputType: 'text',
           label: 'Name',
           tableColumn: '1',
-          tableLabel: 'Header',
+          tableLabel: 'Identification',
           fqn: 'nonmedOrders.name'
         },
         {
@@ -2275,6 +2231,7 @@ export default function () {
             }
           ],
           tableColumn: '5',
+          tableCss: 'hr-table',
           tableLabel: 'Status',
           fqn: 'nonmedOrders.status'
         },
@@ -2288,7 +2245,7 @@ export default function () {
           fqn: 'nonmedOrders.comment'
         }
       ],
-      generated: '2019-09-07T08:28:35-07:00',
+      generated: '2019-09-07T20:23:15-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2297,7 +2254,7 @@ export default function () {
           addButtonText: 'Add an order',
           ehr_list: [
             {
-              label: 'Header',
+              label: 'Identification',
               ehr_list_index: '1',
               items: [
                 'name',
@@ -2329,6 +2286,7 @@ export default function () {
             },
             {
               label: 'Status',
+              tableCss: 'hr-table',
               ehr_list_index: '5',
               items: [
                 'status'
@@ -2402,7 +2360,7 @@ export default function () {
           inputType: 'text',
           label: 'Name',
           tableColumn: '1',
-          tableLabel: 'Header',
+          tableLabel: 'Identification',
           fqn: 'referrals.name'
         },
         {
@@ -2450,10 +2408,10 @@ export default function () {
           fqn: 'referrals.referralProfession'
         },
         {
-          elementKey: 'spacer98',
+          elementKey: 'spacer63',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'referrals.spacer98'
+          fqn: 'referrals.spacer63'
         },
         {
           elementKey: 'appointmentDate',
@@ -2494,7 +2452,7 @@ export default function () {
           fqn: 'referrals.status'
         }
       ],
-      generated: '2019-09-07T08:28:35-07:00',
+      generated: '2019-09-07T20:23:15-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2503,7 +2461,7 @@ export default function () {
           addButtonText: 'Add a referral',
           ehr_list: [
             {
-              label: 'Header',
+              label: 'Identification',
               ehr_list_index: '1',
               items: [
                 'name',
@@ -2568,7 +2526,7 @@ export default function () {
                 gChildren: [
                   'referralName',
                   'referralProfession',
-                  'spacer98',
+                  'spacer63',
                   'appointmentDate',
                   'appointmentTime',
                   'status'
@@ -2603,7 +2561,7 @@ export default function () {
           inputType: 'text',
           label: 'Name',
           tableColumn: '1',
-          tableLabel: 'Header',
+          tableLabel: 'Identification',
           fqn: 'labRequisitions.name'
         },
         {
@@ -2658,7 +2616,7 @@ export default function () {
           fqn: 'labRequisitions.collected'
         }
       ],
-      generated: '2019-09-07T08:28:35-07:00',
+      generated: '2019-09-07T20:23:15-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2667,7 +2625,7 @@ export default function () {
           addButtonText: 'Add a lab requisition',
           ehr_list: [
             {
-              label: 'Header',
+              label: 'Identification',
               ehr_list_index: '1',
               items: [
                 'name',
@@ -2761,7 +2719,7 @@ export default function () {
           inputType: 'text',
           label: 'Name',
           tableColumn: '1',
-          tableLabel: 'Header',
+          tableLabel: 'Identification',
           fqn: 'medicationOrders.name'
         },
         {
@@ -2903,6 +2861,7 @@ export default function () {
             }
           ],
           tableColumn: '8',
+          tableCss: 'hr-table',
           tableLabel: 'Schedule time',
           fqn: 'medicationOrders.scheduleTime'
         },
@@ -2934,7 +2893,7 @@ export default function () {
           fqn: 'medicationOrders.notes'
         }
       ],
-      generated: '2019-09-07T08:28:35-07:00',
+      generated: '2019-09-07T20:23:15-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2943,7 +2902,7 @@ export default function () {
           addButtonText: 'Add a medication order',
           ehr_list: [
             {
-              label: 'Header',
+              label: 'Identification',
               ehr_list_index: '1',
               items: [
                 'name',
@@ -2996,6 +2955,7 @@ export default function () {
             },
             {
               label: 'Schedule time',
+              tableCss: 'hr-table',
               ehr_list_index: '8',
               items: [
                 'scheduleTime'
@@ -3200,7 +3160,7 @@ export default function () {
           helperHtml: '<p>Enter time delivered or say if not delivered.</p>'
         }
       ],
-      generated: '2019-09-07T08:28:35-07:00',
+      generated: '2019-09-07T20:23:15-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -3445,7 +3405,7 @@ export default function () {
           fqn: 'dischargeSummary.dischargeEducation'
         }
       ],
-      generated: '2019-09-07T08:28:35-07:00',
+      generated: '2019-09-07T20:23:15-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -3505,7 +3465,7 @@ export default function () {
           fqn: 'billing.paymentType'
         }
       ],
-      generated: '2019-09-07T08:28:35-07:00',
+      generated: '2019-09-07T20:23:15-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',

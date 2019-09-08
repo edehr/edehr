@@ -143,11 +143,11 @@ export default function () {
           fqn: 'assessmentTools.medication1_1'
         }
       ],
-      generated: '2019-09-07T08:28:35-07:00',
+      generated: '2019-09-07T20:17:06-07:00',
       pageElements: {
-        page_form125: {
-          elementKey: 'page_form125',
-          formKey: 'page_form125',
+        page_form116: {
+          elementKey: 'page_form116',
+          formKey: 'page_form116',
           isPageForm: true,
           ehr_groups: [
             {
@@ -155,7 +155,7 @@ export default function () {
               gChildren: [
                 {
                   label: 'Admissions',
-                  elementKey: 'subgroup134',
+                  elementKey: 'subgroup125',
                   sgChildren: [
                     'admissions1_1',
                     'admissions2_1',
@@ -164,7 +164,7 @@ export default function () {
                 },
                 {
                   label: 'Pain assessment',
-                  elementKey: 'subgroup135',
+                  elementKey: 'subgroup126',
                   sgChildren: [
                     'painAssessment1_1',
                     'painAssessment2_1'
@@ -172,7 +172,7 @@ export default function () {
                 },
                 {
                   label: 'Neurological assessment',
-                  elementKey: 'subgroup136',
+                  elementKey: 'subgroup127',
                   sgChildren: [
                     'neuroAssessment1_1',
                     'neuroAssessment2_1',
@@ -181,7 +181,7 @@ export default function () {
                 },
                 {
                   label: 'Falls risk',
-                  elementKey: 'subgroup137',
+                  elementKey: 'subgroup128',
                   sgChildren: [
                     'fallRisk1_1',
                     'fallRisk2_1'
@@ -189,14 +189,14 @@ export default function () {
                 },
                 {
                   label: 'Notes',
-                  elementKey: 'subgroup138',
+                  elementKey: 'subgroup129',
                   sgChildren: [
                     'notes1_1'
                   ]
                 },
                 {
                   label: 'Educational resources',
-                  elementKey: 'subgroup139',
+                  elementKey: 'subgroup130',
                   sgChildren: [
                     'educational1_1',
                     'educational2_1'
@@ -204,14 +204,14 @@ export default function () {
                 },
                 {
                   label: 'Wound assessment',
-                  elementKey: 'subgroup140',
+                  elementKey: 'subgroup131',
                   sgChildren: [
                     'wound1_1'
                   ]
                 },
                 {
                   label: 'Medication',
-                  elementKey: 'subgroup141',
+                  elementKey: 'subgroup132',
                   sgChildren: [
                     'medication1_1'
                   ]
@@ -244,7 +244,7 @@ export default function () {
           fqn: 'codeLookup.icf'
         }
       ],
-      generated: '2019-09-07T08:28:35-07:00',
+      generated: '2019-09-07T20:17:06-07:00',
       pageElements: {
         aForm: {
           elementKey: 'aForm',
@@ -275,7 +275,7 @@ export default function () {
           inputType: 'text',
           label: 'Name',
           tableColumn: '1',
-          tableLabel: 'Header',
+          tableLabel: 'Identification',
           fqn: 'diagnosticCodes.name'
         },
         {
@@ -385,7 +385,7 @@ export default function () {
           fqn: 'diagnosticCodes.cluster'
         }
       ],
-      generated: '2019-09-07T08:28:35-07:00',
+      generated: '2019-09-07T20:17:06-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -394,7 +394,7 @@ export default function () {
           addButtonText: 'Add a diagnostic code',
           ehr_list: [
             {
-              label: 'Header',
+              label: 'Identification',
               ehr_list_index: '1',
               items: [
                 'name',
@@ -502,7 +502,7 @@ export default function () {
           inputType: 'text',
           label: 'Name',
           tableColumn: '1',
-          tableLabel: 'Header',
+          tableLabel: 'Identification',
           fqn: 'interventionCodes.name'
         },
         {
@@ -584,7 +584,7 @@ export default function () {
           fqn: 'interventionCodes.extent'
         }
       ],
-      generated: '2019-09-07T08:28:35-07:00',
+      generated: '2019-09-07T20:17:06-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -593,7 +593,7 @@ export default function () {
           addButtonText: 'Add an intervention code',
           ehr_list: [
             {
-              label: 'Header',
+              label: 'Identification',
               ehr_list_index: '1',
               items: [
                 'name',
@@ -692,7 +692,7 @@ export default function () {
           inputType: 'text',
           label: 'Name',
           tableColumn: '1',
-          tableLabel: 'Header',
+          tableLabel: 'Identification',
           fqn: 'caseMixGroup.name'
         },
         {
@@ -765,7 +765,7 @@ export default function () {
           fqn: 'caseMixGroup.analysis'
         }
       ],
-      generated: '2019-09-07T08:28:35-07:00',
+      generated: '2019-09-07T20:17:06-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -774,7 +774,7 @@ export default function () {
           addButtonText: 'Add a case mix group',
           ehr_list: [
             {
-              label: 'Header',
+              label: 'Identification',
               ehr_list_index: '1',
               items: [
                 'name',

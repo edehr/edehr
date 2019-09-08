@@ -7,7 +7,7 @@ const Defs = {
       elementKey: 'name',
       inputType: 'text',
       label: 'Name',
-      tableLabel: 'Header',
+      tableLabel: 'Identification',
     },
     {
       elementKey: 'profession',

@@ -72,6 +72,7 @@ export default function () {
           formIndex: '1',
           inputType: 'checkbox',
           label: 'Consent for blood products',
+          tableCss: 'hr-table',
           fqn: 'visit.consentForBlood'
         },
         {
@@ -92,6 +93,7 @@ export default function () {
           label: 'Patient location',
           mandatory: true,
           tableColumn: '1',
+          tableCss: 'hr-table',
           fqn: 'visit.location',
           helperHtml: '<p>hospital, ward #, room #, home, out patient clinic</p>'
         },
@@ -112,6 +114,13 @@ export default function () {
           fqn: 'visit.transferInTime'
         },
         {
+          elementKey: 'aSpacer',
+          dataCaseStudy: 'Normal',
+          formIndex: '2',
+          inputType: 'spacer',
+          fqn: 'visit.aSpacer'
+        },
+        {
           elementKey: 'transferOutDay',
           formIndex: '2',
           inputType: 'day',
@@ -128,7 +137,7 @@ export default function () {
           fqn: 'visit.transferOutTime'
         }
       ],
-      generated: '2019-09-07T08:28:35-07:00',
+      generated: '2019-09-07T22:20:24-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -161,6 +170,7 @@ export default function () {
           addButtonText: 'Add a patient location',
           ehr_list: [
             {
+              tableCss: 'hr-table',
               ehr_list_index: '1',
               items: [
                 'location'
@@ -200,16 +210,18 @@ export default function () {
                 formCss: 'grid-left-to-right-1',
                 gIndex: '1',
                 gChildren: [
-                  'location',
-                  'transferInDay',
-                  'transferInTime',
-                  'transferOutDay',
-                  'transferOutTime'
+                  'location'
                 ]
               },
               {
                 gIndex: '2',
-                gChildren: []
+                gChildren: [
+                  'transferInDay',
+                  'transferInTime',
+                  'aSpacer',
+                  'transferOutDay',
+                  'transferOutTime'
+                ]
               }
             ],
             ehr_data: {
@@ -236,7 +248,7 @@ export default function () {
           inputType: 'text',
           label: 'Name',
           tableColumn: '1',
-          tableLabel: 'Header',
+          tableLabel: 'Identification',
           fqn: 'vitals.name'
         },
         {
@@ -278,19 +290,19 @@ export default function () {
           inputType: 'text',
           label: 'Vital taken time',
           tableColumn: '3',
+          tableCss: 'hr-table',
           tableLabel: 'Time',
           fqn: 'vitals.time'
         },
         {
-          elementKey: 'spacer39',
+          elementKey: 'spacer7',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'vitals.spacer39'
+          fqn: 'vitals.spacer7'
         },
         {
           elementKey: 'temperature',
           dataCaseStudy: '36.5',
-          dependantOn: 'time',
           formIndex: '1',
           inputType: 'text',
           label: 'Temperature',
@@ -320,14 +332,15 @@ export default function () {
             }
           ],
           tableColumn: '5',
+          tableCss: 'hr-table',
           tableLabel: 'Source',
           fqn: 'vitals.source'
         },
         {
-          elementKey: 'spacer40',
+          elementKey: 'spacer8',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'vitals.spacer40'
+          fqn: 'vitals.spacer8'
         },
         {
           elementKey: 'strength',
@@ -421,20 +434,21 @@ export default function () {
           inputType: 'text',
           label: 'Respiration rate',
           tableColumn: '12',
+          tableCss: 'hr-table',
           tableLabel: 'Respiration rate',
           fqn: 'vitals.respirationRate'
         },
         {
-          elementKey: 'spacer41',
+          elementKey: 'spacer9',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'vitals.spacer41'
+          fqn: 'vitals.spacer9'
         },
         {
-          elementKey: 'spacer42',
+          elementKey: 'spacer10',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'vitals.spacer42'
+          fqn: 'vitals.spacer10'
         },
         {
           elementKey: 'oxygenSaturation',
@@ -484,7 +498,7 @@ export default function () {
           fqn: 'vitals.flowRate'
         }
       ],
-      generated: '2019-09-07T08:28:35-07:00',
+      generated: '2019-09-07T22:20:24-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -493,7 +507,7 @@ export default function () {
           addButtonText: 'Add vital signs',
           ehr_list: [
             {
-              label: 'Header',
+              label: 'Identification',
               ehr_list_index: '1',
               items: [
                 'name',
@@ -511,6 +525,7 @@ export default function () {
             },
             {
               label: 'Time',
+              tableCss: 'hr-table',
               ehr_list_index: '3',
               items: [
                 'time'
@@ -525,6 +540,7 @@ export default function () {
             },
             {
               label: 'Source',
+              tableCss: 'hr-table',
               ehr_list_index: '5',
               items: [
                 'source'
@@ -574,6 +590,7 @@ export default function () {
             },
             {
               label: 'Respiration rate',
+              tableCss: 'hr-table',
               ehr_list_index: '12',
               items: [
                 'respirationRate'
@@ -618,15 +635,14 @@ export default function () {
                 ]
               },
               {
-                formCss: 'record-header',
                 gIndex: '2',
                 gChildren: [
                   'day',
                   'time',
-                  'spacer39',
+                  'spacer7',
                   'temperature',
                   'source',
-                  'spacer40',
+                  'spacer8',
                   'strength',
                   'rate',
                   'rhythm',
@@ -634,8 +650,8 @@ export default function () {
                   'diastolic',
                   'patientPosition',
                   'respirationRate',
-                  'spacer41',
-                  'spacer42',
+                  'spacer9',
+                  'spacer10',
                   'oxygenSaturation',
                   'oxygenMode',
                   'flowRate'
@@ -677,7 +693,7 @@ export default function () {
           inputType: 'text',
           label: 'Name',
           tableColumn: '1',
-          tableLabel: 'Header',
+          tableLabel: 'Identification',
           fqn: 'fluidBalance.name'
         },
         {
@@ -723,7 +739,7 @@ export default function () {
           fqn: 'fluidBalance.fluidOut'
         }
       ],
-      generated: '2019-09-07T08:28:35-07:00',
+      generated: '2019-09-07T22:20:24-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -732,7 +748,7 @@ export default function () {
           addButtonText: 'Add a fluid in/out record',
           ehr_list: [
             {
-              label: 'Header',
+              label: 'Identification',
               ehr_list_index: '1',
               items: [
                 'name',
@@ -804,7 +820,7 @@ export default function () {
           inputType: 'text',
           label: 'Name',
           tableColumn: '1',
-          tableLabel: 'Header',
+          tableLabel: 'Identification',
           fqn: 'neurological.name'
         },
         {
@@ -835,6 +851,7 @@ export default function () {
           elementKey: 'alert',
           formIndex: '1',
           inputType: 'checkset',
+          label: 'Status',
           options: [
             {
               text: 'Alert'
@@ -859,6 +876,7 @@ export default function () {
             }
           ],
           tableColumn: '2',
+          tableCss: 'hr-table',
           tableLabel: 'Status',
           fqn: 'neurological.alert'
         },
@@ -968,6 +986,7 @@ export default function () {
             }
           ],
           tableColumn: '6',
+          tableCss: 'hr-table',
           tableLabel: 'Glasgow Coma Scale',
           fqn: 'neurological.glasgowCalculation'
         },
@@ -999,6 +1018,7 @@ export default function () {
           inputType: 'text',
           label: 'Duration',
           tableColumn: '8',
+          tableCss: 'hr-table',
           tableLabel: 'Duration',
           fqn: 'neurological.duration'
         },
@@ -1060,11 +1080,11 @@ export default function () {
           fqn: 'neurological.leftPupilResponseToLight'
         },
         {
-          elementKey: 'spacer50',
+          elementKey: 'spacer18',
           dataCaseStudy: 'Equal',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'neurological.spacer50'
+          fqn: 'neurological.spacer18'
         },
         {
           elementKey: 'rightPupilSize',
@@ -1147,9 +1167,10 @@ export default function () {
           formIndex: '1',
           formCss: 'grid-span-2-columns',
           inputType: 'textarea',
-          label: 'Comments',
+          label: 'General comments',
           tableColumn: '14',
-          tableLabel: 'Comments',
+          tableCss: 'hr-table',
+          tableLabel: 'General comments',
           fqn: 'neurological.comments'
         },
         {
@@ -1282,10 +1303,10 @@ export default function () {
           fqn: 'neurological.motorRightArm'
         },
         {
-          elementKey: 'spacer53',
+          elementKey: 'spacer21',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'neurological.spacer53'
+          fqn: 'neurological.spacer21'
         },
         {
           elementKey: 'motorLeftLeg',
@@ -1531,7 +1552,7 @@ export default function () {
           fqn: 'neurological.strokeAssessmentCalculation'
         }
       ],
-      generated: '2019-09-07T08:28:35-07:00',
+      generated: '2019-09-07T22:20:24-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1540,7 +1561,7 @@ export default function () {
           addButtonText: 'Add a neurological assessment',
           ehr_list: [
             {
-              label: 'Header',
+              label: 'Identification',
               ehr_list_index: '1',
               items: [
                 'name',
@@ -1551,6 +1572,7 @@ export default function () {
             },
             {
               label: 'Status',
+              tableCss: 'hr-table',
               ehr_list_index: '2',
               items: [
                 'alert'
@@ -1579,6 +1601,7 @@ export default function () {
             },
             {
               label: 'Glasgow Coma Scale',
+              tableCss: 'hr-table',
               ehr_list_index: '6',
               items: [
                 'glasgowCalculation'
@@ -1593,6 +1616,7 @@ export default function () {
             },
             {
               label: 'Duration',
+              tableCss: 'hr-table',
               ehr_list_index: '8',
               items: [
                 'duration'
@@ -1634,7 +1658,8 @@ export default function () {
               ]
             },
             {
-              label: 'Comments',
+              label: 'General comments',
+              tableCss: 'hr-table',
               ehr_list_index: '14',
               items: [
                 'comments'
@@ -1773,42 +1798,38 @@ export default function () {
                 ]
               },
               {
+                formCss: 'section-divider',
                 gIndex: '2',
                 gChildren: [
-                  {
-                    label: 'Status',
-                    elementKey: 'subgroup73',
-                    sgChildren: [
-                      'alert'
-                    ]
-                  },
-                  {
-                    label: 'Glasgow Coma Scale',
-                    elementKey: 'subgroup74',
-                    sgChildren: [
-                      'eyeOpening',
-                      'verbalResponse',
-                      'bestMotorResponse',
-                      'glasgowCalculation'
-                    ]
-                  },
-                  {
-                    label: 'Conciousness',
-                    elementKey: 'subgroup75',
-                    sgChildren: [
-                      'loss',
-                      'duration'
-                    ]
-                  }
+                  'alert'
+                ]
+              },
+              {
+                label: 'Glasgow Coma Scale',
+                formCss: 'section-divider',
+                gIndex: '3',
+                gChildren: [
+                  'eyeOpening',
+                  'verbalResponse',
+                  'bestMotorResponse',
+                  'glasgowCalculation'
+                ]
+              },
+              {
+                label: 'Conciousness',
+                gIndex: '4',
+                gChildren: [
+                  'loss',
+                  'duration'
                 ]
               },
               {
                 formCss: 'section-divider',
-                gIndex: '3',
+                gIndex: '5',
                 gChildren: [
                   'leftPupilSize',
                   'leftPupilResponseToLight',
-                  'spacer50',
+                  'spacer18',
                   'rightPupilSize',
                   'rightPupilResponseToLight',
                   'bothPupils'
@@ -1816,7 +1837,7 @@ export default function () {
               },
               {
                 formCss: 'section-divider',
-                gIndex: '4',
+                gIndex: '6',
                 gChildren: [
                   'comments',
                   'resources'
@@ -1824,14 +1845,14 @@ export default function () {
               },
               {
                 label: 'Stroke assessment',
-                gIndex: '5',
+                gIndex: '7',
                 gChildren: [
                   'levelOfConciousness',
                   'levelOfConciousnessQuestions',
                   'levelOfConciousnessCommands',
                   'motorLeftArm',
                   'motorRightArm',
-                  'spacer53',
+                  'spacer21',
                   'motorLeftLeg',
                   'motorRightLeg',
                   'limbAtaxia',
@@ -1847,7 +1868,7 @@ export default function () {
               },
               {
                 formCss: 'grid-left-to-right-1',
-                gIndex: '6',
+                gIndex: '8',
                 gChildren: []
               }
             ],
@@ -1903,7 +1924,7 @@ export default function () {
           inputType: 'text',
           label: 'Name',
           tableColumn: '1',
-          tableLabel: 'Header',
+          tableLabel: 'Identification',
           fqn: 'respiratory.name'
         },
         {
@@ -1970,6 +1991,7 @@ export default function () {
           label: 'Flow rate',
           suffix: '/lpm',
           tableColumn: '4',
+          tableCss: 'hr-table',
           tableLabel: 'Flow rate',
           fqn: 'respiratory.flowRate'
         },
@@ -1993,7 +2015,7 @@ export default function () {
               text: 'Absent'
             },
             {
-              text: 'Deceased'
+              text: 'Decreased'
             }
           ],
           tableColumn: '5',
@@ -2020,7 +2042,7 @@ export default function () {
               text: 'Absent'
             },
             {
-              text: 'Deceased'
+              text: 'Decreased'
             }
           ],
           tableColumn: '6',
@@ -2061,7 +2083,7 @@ export default function () {
               text: 'Absent'
             },
             {
-              text: 'Deceased'
+              text: 'Decreased'
             }
           ],
           tableColumn: '7',
@@ -2122,10 +2144,11 @@ export default function () {
               text: 'Absent'
             },
             {
-              text: 'Deceased'
+              text: 'Decreased'
             }
           ],
           tableColumn: '9',
+          tableCss: 'hr-table',
           tableLabel: 'Right lower lung',
           fqn: 'respiratory.rll'
         },
@@ -2249,6 +2272,7 @@ export default function () {
           inputType: 'text',
           label: 'Sputum comments',
           tableColumn: '14',
+          tableCss: 'hr-table',
           tableLabel: 'Sputum comments',
           fqn: 'respiratory.sputumComments'
         },
@@ -2263,7 +2287,7 @@ export default function () {
           fqn: 'respiratory.generalComments'
         }
       ],
-      generated: '2019-09-07T08:28:35-07:00',
+      generated: '2019-09-07T22:20:24-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2272,7 +2296,7 @@ export default function () {
           addButtonText: 'Add a respiratory assessment',
           ehr_list: [
             {
-              label: 'Header',
+              label: 'Identification',
               ehr_list_index: '1',
               items: [
                 'name',
@@ -2297,6 +2321,7 @@ export default function () {
             },
             {
               label: 'Flow rate',
+              tableCss: 'hr-table',
               ehr_list_index: '4',
               items: [
                 'flowRate'
@@ -2332,6 +2357,7 @@ export default function () {
             },
             {
               label: 'Right lower lung',
+              tableCss: 'hr-table',
               ehr_list_index: '9',
               items: [
                 'rll'
@@ -2367,6 +2393,7 @@ export default function () {
             },
             {
               label: 'Sputum comments',
+              tableCss: 'hr-table',
               ehr_list_index: '14',
               items: [
                 'sputumComments'
@@ -2453,7 +2480,7 @@ export default function () {
     },
     cardiovascular: {
       pageDataKey: 'cardiovascular',
-      pageTitle: 'Cardiovascular',
+      pageTitle: 'Cardiovascular assessment',
       pIndex: '16',
       isV2: true,
       hasGridTable: true,
@@ -2464,7 +2491,7 @@ export default function () {
           inputType: 'text',
           label: 'Name',
           tableColumn: '1',
-          tableLabel: 'Header',
+          tableLabel: 'Identification',
           fqn: 'cardiovascular.name'
         },
         {
@@ -2545,14 +2572,15 @@ export default function () {
             }
           ],
           tableColumn: '3',
+          tableCss: 'hr-table',
           tableLabel: 'Skin appearance',
           fqn: 'cardiovascular.skinAppearance'
         },
         {
-          elementKey: 'spacer63',
+          elementKey: 'spacer31',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'cardiovascular.spacer63'
+          fqn: 'cardiovascular.spacer31'
         },
         {
           elementKey: 'labelCapRefill',
@@ -2561,8 +2589,6 @@ export default function () {
           helperText: 'Normal < 3 seconds\nDelayed > 3 seconds',
           inputType: 'form_label',
           label: 'Cap refill',
-          tableColumn: '4',
-          tableLabel: 'Cap refill',
           fqn: 'cardiovascular.labelCapRefill',
           helperHtml: '<p>Normal < 3 seconds</p>\n<p>Delayed > 3 seconds</p>'
         },
@@ -2572,8 +2598,6 @@ export default function () {
           formIndex: '1',
           inputType: 'form_label',
           label: 'Temperature',
-          tableColumn: '5',
-          tableLabel: 'Temperature',
           fqn: 'cardiovascular.labelTemperature'
         },
         {
@@ -2582,8 +2606,6 @@ export default function () {
           formIndex: '1',
           inputType: 'form_label',
           label: 'Peripheral edema',
-          tableColumn: '6',
-          tableLabel: 'Peripheral edema',
           fqn: 'cardiovascular.labelPeripheral'
         },
         {
@@ -2592,8 +2614,6 @@ export default function () {
           formIndex: '1',
           inputType: 'form_label',
           label: 'Nail bed colour',
-          tableColumn: '7',
-          tableLabel: 'Nail bed colour',
           fqn: 'cardiovascular.labelNailBed'
         },
         {
@@ -2617,7 +2637,7 @@ export default function () {
               text: 'Delayed > 3 seconds'
             }
           ],
-          tableColumn: '8',
+          tableColumn: '4',
           tableLabel: 'Cap refill: Right hand',
           fqn: 'cardiovascular.capRefillLeftHand'
         },
@@ -2637,7 +2657,7 @@ export default function () {
               text: 'Hot'
             }
           ],
-          tableColumn: '9',
+          tableColumn: '5',
           tableLabel: 'Temperature: Right hand',
           fqn: 'cardiovascular.temperatureRightHand'
         },
@@ -2663,7 +2683,7 @@ export default function () {
               text: 'Pitting'
             }
           ],
-          tableColumn: '10',
+          tableColumn: '6',
           tableLabel: 'Peripheral edema: Right hand',
           fqn: 'cardiovascular.peripheralEdemaRightHand'
         },
@@ -2680,7 +2700,8 @@ export default function () {
               text: 'Cyanotic'
             }
           ],
-          tableColumn: '11',
+          tableColumn: '7',
+          tableCss: 'hr-table',
           tableLabel: 'Nail bed colour: Right hand',
           fqn: 'cardiovascular.nailBedColourRightHand'
         },
@@ -2705,7 +2726,7 @@ export default function () {
               text: 'Delayed > 3 seconds'
             }
           ],
-          tableColumn: '12',
+          tableColumn: '8',
           tableLabel: 'Cap refill: Left hand',
           fqn: 'cardiovascular.capRefillRightHand'
         },
@@ -2725,7 +2746,7 @@ export default function () {
               text: 'Hot'
             }
           ],
-          tableColumn: '13',
+          tableColumn: '9',
           tableLabel: 'Temperature: Left hand',
           fqn: 'cardiovascular.temperatureLeftHand'
         },
@@ -2751,7 +2772,7 @@ export default function () {
               text: 'Pitting'
             }
           ],
-          tableColumn: '14',
+          tableColumn: '10',
           tableLabel: 'Peripheral edema: Left hand',
           fqn: 'cardiovascular.peripheralEdemaLeftHand'
         },
@@ -2768,7 +2789,8 @@ export default function () {
               text: 'Cyanotic'
             }
           ],
-          tableColumn: '15',
+          tableColumn: '11',
+          tableCss: 'hr-table',
           tableLabel: 'Nail bed colour: Left hand',
           fqn: 'cardiovascular.nailBedColourLeftHand'
         },
@@ -2793,7 +2815,7 @@ export default function () {
               text: 'Delayed > 3 seconds'
             }
           ],
-          tableColumn: '16',
+          tableColumn: '12',
           tableLabel: 'Cap refill: Right foot',
           fqn: 'cardiovascular.capRefillRightFoot'
         },
@@ -2813,7 +2835,7 @@ export default function () {
               text: 'Hot'
             }
           ],
-          tableColumn: '17',
+          tableColumn: '13',
           tableLabel: 'Temperature: Right foot',
           fqn: 'cardiovascular.temperatureRightFoot'
         },
@@ -2839,7 +2861,7 @@ export default function () {
               text: 'Pitting'
             }
           ],
-          tableColumn: '18',
+          tableColumn: '14',
           tableLabel: 'Peripheral edema: Right foot',
           fqn: 'cardiovascular.peripheralEdemaRightFoot'
         },
@@ -2856,7 +2878,8 @@ export default function () {
               text: 'Cyanotic'
             }
           ],
-          tableColumn: '19',
+          tableColumn: '15',
+          tableCss: 'hr-table',
           tableLabel: 'Nail bed colour: Right Foot',
           fqn: 'cardiovascular.nailBedColourRightFoot'
         },
@@ -2881,7 +2904,7 @@ export default function () {
               text: 'Delayed > 3 seconds'
             }
           ],
-          tableColumn: '20',
+          tableColumn: '16',
           tableLabel: 'Cap refill: Left foot',
           fqn: 'cardiovascular.capRefillLeftFoot'
         },
@@ -2901,7 +2924,7 @@ export default function () {
               text: 'Hot'
             }
           ],
-          tableColumn: '21',
+          tableColumn: '17',
           tableLabel: 'Temperature: Left foot',
           fqn: 'cardiovascular.temperatureLeftFoot'
         },
@@ -2927,7 +2950,7 @@ export default function () {
               text: 'Pitting'
             }
           ],
-          tableColumn: '22',
+          tableColumn: '18',
           tableLabel: 'Peripheral edema: Left foot',
           fqn: 'cardiovascular.peripheralEdemaLeftFoot'
         },
@@ -2944,7 +2967,8 @@ export default function () {
               text: 'Cyanotic'
             }
           ],
-          tableColumn: '23',
+          tableColumn: '19',
+          tableCss: 'hr-table',
           tableLabel: 'Nail bed colour: Left foot',
           fqn: 'cardiovascular.nailBedColourLeftFoot'
         },
@@ -2954,12 +2978,12 @@ export default function () {
           formIndex: '1',
           inputType: 'textarea',
           label: 'Comments',
-          tableColumn: '24',
+          tableColumn: '20',
           tableLabel: 'Comments',
           fqn: 'cardiovascular.comments'
         }
       ],
-      generated: '2019-09-07T08:28:35-07:00',
+      generated: '2019-09-07T22:20:24-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2968,7 +2992,7 @@ export default function () {
           addButtonText: 'Add a cardiovascular assessment',
           ehr_list: [
             {
-              label: 'Header',
+              label: 'Identification',
               ehr_list_index: '1',
               items: [
                 'name',
@@ -2986,154 +3010,131 @@ export default function () {
             },
             {
               label: 'Skin appearance',
+              tableCss: 'hr-table',
               ehr_list_index: '3',
               items: [
                 'skinAppearance'
               ]
             },
             {
-              label: 'Cap refill',
-              ehr_list_index: '4',
-              items: [
-                'labelCapRefill'
-              ]
-            },
-            {
-              label: 'Temperature',
-              ehr_list_index: '5',
-              items: [
-                'labelTemperature'
-              ]
-            },
-            {
-              label: 'Peripheral edema',
-              ehr_list_index: '6',
-              items: [
-                'labelPeripheral'
-              ]
-            },
-            {
-              label: 'Nail bed colour',
-              ehr_list_index: '7',
-              items: [
-                'labelNailBed'
-              ]
-            },
-            {
               label: 'Cap refill: Right hand',
-              ehr_list_index: '8',
+              ehr_list_index: '4',
               items: [
                 'capRefillLeftHand'
               ]
             },
             {
               label: 'Temperature: Right hand',
-              ehr_list_index: '9',
+              ehr_list_index: '5',
               items: [
                 'temperatureRightHand'
               ]
             },
             {
               label: 'Peripheral edema: Right hand',
-              ehr_list_index: '10',
+              ehr_list_index: '6',
               items: [
                 'peripheralEdemaRightHand'
               ]
             },
             {
               label: 'Nail bed colour: Right hand',
-              ehr_list_index: '11',
+              tableCss: 'hr-table',
+              ehr_list_index: '7',
               items: [
                 'nailBedColourRightHand'
               ]
             },
             {
               label: 'Cap refill: Left hand',
-              ehr_list_index: '12',
+              ehr_list_index: '8',
               items: [
                 'capRefillRightHand'
               ]
             },
             {
               label: 'Temperature: Left hand',
-              ehr_list_index: '13',
+              ehr_list_index: '9',
               items: [
                 'temperatureLeftHand'
               ]
             },
             {
               label: 'Peripheral edema: Left hand',
-              ehr_list_index: '14',
+              ehr_list_index: '10',
               items: [
                 'peripheralEdemaLeftHand'
               ]
             },
             {
               label: 'Nail bed colour: Left hand',
-              ehr_list_index: '15',
+              tableCss: 'hr-table',
+              ehr_list_index: '11',
               items: [
                 'nailBedColourLeftHand'
               ]
             },
             {
               label: 'Cap refill: Right foot',
-              ehr_list_index: '16',
+              ehr_list_index: '12',
               items: [
                 'capRefillRightFoot'
               ]
             },
             {
               label: 'Temperature: Right foot',
-              ehr_list_index: '17',
+              ehr_list_index: '13',
               items: [
                 'temperatureRightFoot'
               ]
             },
             {
               label: 'Peripheral edema: Right foot',
-              ehr_list_index: '18',
+              ehr_list_index: '14',
               items: [
                 'peripheralEdemaRightFoot'
               ]
             },
             {
               label: 'Nail bed colour: Right Foot',
-              ehr_list_index: '19',
+              tableCss: 'hr-table',
+              ehr_list_index: '15',
               items: [
                 'nailBedColourRightFoot'
               ]
             },
             {
               label: 'Cap refill: Left foot',
-              ehr_list_index: '20',
+              ehr_list_index: '16',
               items: [
                 'capRefillLeftFoot'
               ]
             },
             {
               label: 'Temperature: Left foot',
-              ehr_list_index: '21',
+              ehr_list_index: '17',
               items: [
                 'temperatureLeftFoot'
               ]
             },
             {
               label: 'Peripheral edema: Left foot',
-              ehr_list_index: '22',
+              ehr_list_index: '18',
               items: [
                 'peripheralEdemaLeftFoot'
               ]
             },
             {
               label: 'Nail bed colour: Left foot',
-              ehr_list_index: '23',
+              tableCss: 'hr-table',
+              ehr_list_index: '19',
               items: [
                 'nailBedColourLeftFoot'
               ]
             },
             {
               label: 'Comments',
-              ehr_list_index: '24',
+              ehr_list_index: '20',
               items: [
                 'comments'
               ]
@@ -3166,7 +3167,7 @@ export default function () {
                 formCss: 'grid-left-to-right-5 section-divider',
                 gIndex: '3',
                 gChildren: [
-                  'spacer63',
+                  'spacer31',
                   'labelCapRefill',
                   'labelTemperature',
                   'labelPeripheral',
@@ -3194,7 +3195,7 @@ export default function () {
                 ]
               },
               {
-                formCss: 'grid-left-to-right-1 section-divider',
+                formCss: 'grid-left-to-right-1',
                 gIndex: '4',
                 gChildren: [
                   'comments'
@@ -3232,7 +3233,7 @@ export default function () {
     },
     gastrointestinal: {
       pageDataKey: 'gastrointestinal',
-      pageTitle: 'Gastrointestinal',
+      pageTitle: 'Gastrointestinal assessment',
       pIndex: '17',
       isV2: true,
       hasGridTable: true,
@@ -3243,7 +3244,7 @@ export default function () {
           inputType: 'text',
           label: 'Name',
           tableColumn: '1',
-          tableLabel: 'Header',
+          tableLabel: 'Identification',
           fqn: 'gastrointestinal.name'
         },
         {
@@ -3358,18 +3359,18 @@ export default function () {
           fqn: 'gastrointestinal.condition'
         },
         {
-          elementKey: 'spacer67',
+          elementKey: 'spacer35',
           dataCaseStudy: 'Equal',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'gastrointestinal.spacer67'
+          fqn: 'gastrointestinal.spacer35'
         },
         {
-          elementKey: 'spacer68',
+          elementKey: 'spacer36',
           dataCaseStudy: 'Equal',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'gastrointestinal.spacer68'
+          fqn: 'gastrointestinal.spacer36'
         },
         {
           elementKey: 'pain',
@@ -3386,22 +3387,23 @@ export default function () {
             }
           ],
           tableColumn: '5',
+          tableCss: 'hr-table',
           tableLabel: 'Abdominal pain',
           fqn: 'gastrointestinal.pain'
         },
         {
-          elementKey: 'spacer69',
+          elementKey: 'spacer37',
           dataCaseStudy: 'Equal',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'gastrointestinal.spacer69'
+          fqn: 'gastrointestinal.spacer37'
         },
         {
-          elementKey: 'spacer70',
+          elementKey: 'spacer38',
           dataCaseStudy: 'Equal',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'gastrointestinal.spacer70'
+          fqn: 'gastrointestinal.spacer38'
         },
         {
           elementKey: 'aLabel',
@@ -3487,6 +3489,7 @@ export default function () {
             }
           ],
           tableColumn: '7',
+          tableCss: 'hr-table',
           tableLabel: 'Approximate volume',
           fqn: 'gastrointestinal.amount'
         },
@@ -3519,11 +3522,11 @@ export default function () {
           fqn: 'gastrointestinal.reason'
         },
         {
-          elementKey: 'spacer71',
+          elementKey: 'spacer39',
           dataCaseStudy: 'Equal',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'gastrointestinal.spacer71'
+          fqn: 'gastrointestinal.spacer39'
         },
         {
           elementKey: 'npoSinceDay',
@@ -3551,6 +3554,7 @@ export default function () {
           inputType: 'select',
           label: 'Weight loss',
           tableColumn: '12',
+          tableCss: 'hr-table',
           tableLabel: 'Weight loss',
           fqn: 'gastrointestinal.weightLoss'
         },
@@ -3643,6 +3647,7 @@ export default function () {
             }
           ],
           tableColumn: '17',
+          tableCss: 'hr-table',
           tableLabel: 'Source',
           fqn: 'gastrointestinal.stoolSource'
         },
@@ -3657,7 +3662,7 @@ export default function () {
           fqn: 'gastrointestinal.comments'
         }
       ],
-      generated: '2019-09-07T08:28:35-07:00',
+      generated: '2019-09-07T22:20:24-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -3666,7 +3671,7 @@ export default function () {
           addButtonText: 'Add a gastrointestinal assessment',
           ehr_list: [
             {
-              label: 'Header',
+              label: 'Identification',
               ehr_list_index: '1',
               items: [
                 'name',
@@ -3699,6 +3704,7 @@ export default function () {
             },
             {
               label: 'Abdominal pain',
+              tableCss: 'hr-table',
               ehr_list_index: '5',
               items: [
                 'pain',
@@ -3714,6 +3720,7 @@ export default function () {
             },
             {
               label: 'Approximate volume',
+              tableCss: 'hr-table',
               ehr_list_index: '7',
               items: [
                 'amount'
@@ -3749,6 +3756,7 @@ export default function () {
             },
             {
               label: 'Weight loss',
+              tableCss: 'hr-table',
               ehr_list_index: '12',
               items: [
                 'weightLoss'
@@ -3784,6 +3792,7 @@ export default function () {
             },
             {
               label: 'Source',
+              tableCss: 'hr-table',
               ehr_list_index: '17',
               items: [
                 'stoolSource'
@@ -3820,11 +3829,11 @@ export default function () {
                   'bowel',
                   'bSounds',
                   'condition',
-                  'spacer67',
-                  'spacer68',
+                  'spacer35',
+                  'spacer36',
                   'pain',
-                  'spacer69',
-                  'spacer70',
+                  'spacer37',
+                  'spacer38',
                   'aLabel'
                 ]
               },
@@ -3846,7 +3855,7 @@ export default function () {
                 gChildren: [
                   'eating',
                   'reason',
-                  'spacer71',
+                  'spacer39',
                   'npoSinceDay',
                   'npoSinceTime',
                   'weightLoss'

@@ -13,7 +13,7 @@ export default function () {
           inputType: 'text',
           label: 'Name',
           tableColumn: '1',
-          tableLabel: 'Header',
+          tableLabel: 'Identification',
           fqn: 'progressNotes.name'
         },
         {
@@ -51,7 +51,7 @@ export default function () {
           fqn: 'progressNotes.note'
         }
       ],
-      generated: '2019-09-07T08:28:35-07:00',
+      generated: '2019-09-07T22:26:12-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -60,7 +60,7 @@ export default function () {
           addButtonText: 'Add an encounter note',
           ehr_list: [
             {
-              label: 'Header',
+              label: 'Identification',
               ehr_list_index: '1',
               items: [
                 'name',
@@ -93,6 +93,7 @@ export default function () {
                 ]
               },
               {
+                formCss: 'grid-left-to-right-1',
                 gIndex: '2',
                 gChildren: [
                   'note'
@@ -123,7 +124,7 @@ export default function () {
           inputType: 'text',
           label: 'Name',
           tableColumn: '1',
-          tableLabel: 'Header',
+          tableLabel: 'Identification',
           fqn: 'carePlan.name'
         },
         {
@@ -207,7 +208,7 @@ export default function () {
           fqn: 'carePlan.status'
         }
       ],
-      generated: '2019-09-07T08:28:35-07:00',
+      generated: '2019-09-07T22:26:12-07:00',
       pageElements: {
         table2: {
           elementKey: 'table2',
@@ -216,7 +217,7 @@ export default function () {
           addButtonText: 'Add a care plan',
           ehr_list: [
             {
-              label: 'Header',
+              label: 'Identification',
               ehr_list_index: '1',
               items: [
                 'name',
@@ -309,11 +310,11 @@ export default function () {
       isV2: true,
       hasGridForm: true,
       pageChildren: [],
-      generated: '2019-09-07T08:28:35-07:00',
+      generated: '2019-09-07T22:26:12-07:00',
       pageElements: {
-        page_form118: {
-          elementKey: 'page_form118',
-          formKey: 'page_form118',
+        page_form5: {
+          elementKey: 'page_form5',
+          formKey: 'page_form5',
           isPageForm: true,
           ehr_groups: []
         }
@@ -363,11 +364,11 @@ export default function () {
           fqn: 'labResults.labReport4_1'
         }
       ],
-      generated: '2019-09-07T08:28:35-07:00',
+      generated: '2019-09-07T22:26:12-07:00',
       pageElements: {
-        page_form119: {
-          elementKey: 'page_form119',
-          formKey: 'page_form119',
+        page_form6: {
+          elementKey: 'page_form6',
+          formKey: 'page_form6',
           isPageForm: true,
           ehr_groups: [
             {
@@ -375,7 +376,7 @@ export default function () {
               gChildren: [
                 {
                   label: 'Laboratory results',
-                  elementKey: 'subgroup124',
+                  elementKey: 'subgroup11',
                   sgChildren: [
                     'labReport1_1',
                     'labReport2_1',
@@ -447,11 +448,11 @@ export default function () {
           fqn: 'medicalImaging.pneumonia_report'
         }
       ],
-      generated: '2019-09-07T08:28:35-07:00',
+      generated: '2019-09-07T22:26:12-07:00',
       pageElements: {
-        page_form121: {
-          elementKey: 'page_form121',
-          formKey: 'page_form121',
+        page_form8: {
+          elementKey: 'page_form8',
+          formKey: 'page_form8',
           isPageForm: true,
           ehr_groups: [
             {
@@ -476,11 +477,11 @@ export default function () {
       isV2: true,
       hasGridForm: true,
       pageChildren: [],
-      generated: '2019-09-07T08:28:35-07:00',
+      generated: '2019-09-07T22:26:12-07:00',
       pageElements: {
-        page_form123: {
-          elementKey: 'page_form123',
-          formKey: 'page_form123',
+        page_form10: {
+          elementKey: 'page_form10',
+          formKey: 'page_form10',
           isPageForm: true,
           ehr_groups: []
         }

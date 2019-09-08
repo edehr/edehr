@@ -3,7 +3,7 @@
     ui-link(:name="routeName(path)", :class="levelClass")
       div(:class="linkClass", class="linkElement columns")
         div(class="linkLabel") {{ path.label }}
-        div(class="is-pulled-right", :class="hasDataColour") &nbsp;
+        div(class="is-pulled-right", :class="hasDataColour")
         //fas-icon(class="icon-right green-circle", :class="hasDataColour")
 </template>
 
@@ -32,17 +32,17 @@ export default {
     hasDataColour () {
       let colour = ''
       const NEW_INFO = 'circle green-circle' //'new-info'
-      const OLD_INFO = 'circle empty-circle'
+      const SEED_INFO = 'circle empty-circle'
       const NONE = ''
       let hd = this.hasData
       if (StoreHelper.isStudent(this)) {
-        colour = hd.hasStudent ? NEW_INFO : hd.hasSeed ? OLD_INFO : NONE
+        colour = hd.hasStudent ? NEW_INFO : hd.hasSeed ? SEED_INFO : NONE
       } else if (StoreHelper.isDevelopingContent(this)) {
         colour = hd.hasSeed ? NEW_INFO : NONE
       } else if (StoreHelper.isInstructor(this)) {
         // check for developing content first because instructor can do both.
         // TODO consider adding a state "isEvaluating" to compliment isInstructor
-        colour = hd.hasInstructor ? NEW_INFO : (hd.hasSeed ? OLD_INFO : NONE)
+        colour = hd.hasInstructor ? NEW_INFO : (hd.hasSeed ? SEED_INFO : NONE)
       }
       // console.log('hasDataColor', hd, colour)
       return colour
@@ -163,18 +163,18 @@ export default {
 */
   .circle {
     border-radius: 50%;
-    max-height: $radius;
     position: relative;
-    max-width: $radius;
-    width: $radius;
+    height: 12px;
+    margin-top: 3px;
+    width: 12px;
   }
 
   .empty-circle {
-    border: 2px solid $green2;
+    border: 2px solid $green;
   }
 
   .green-circle {
-    background-image: $green-radial;
+    background: $green;
   }
 }
 </style>

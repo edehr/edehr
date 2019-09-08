@@ -60,6 +60,10 @@ p {
 .icon-group {
     position: absolute;
     right: 0;
+
+    & svg.svg-inline--fa {
+    	font-size: 20px;
+	}
 }
 
 .errorMesageList, .error-listing {

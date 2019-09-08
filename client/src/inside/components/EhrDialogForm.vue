@@ -1,7 +1,7 @@
 <template lang="pug">
   div
     app-dialog(:class="$options.name", :isModal="true", ref="theDialog", @cancel="cancelDialog", @save="saveDialog", v-bind:errors="errorList")
-      h3(slot="header") {{ tableDef.addButtonText }}
+      h2(slot="header") {{ tableDef.addButtonText }}
       div(slot="body", class="region ehr-page-content")
         div(class="form-row-wrapper")
           div(class="form-element-wrapper", v-bind:class="cssFromDefs(element)", v-for="element in topRow.elements", v-bind:key="element.elementKey")
