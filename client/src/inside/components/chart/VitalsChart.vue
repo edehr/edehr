@@ -8,14 +8,13 @@
 </template>
 
 <script>
-import VitalChart from '../../helpers/vitalChart'
+import VitalChart from './vitalChart'
 
 const yAxisWidth = 75
 const canvasHeight = 1140
 const canvasWidth = 8200
 
 export default {
-  name: 'VitalsChart',
   data: function () {
     return {
       axisCanvasWidth: yAxisWidth,
