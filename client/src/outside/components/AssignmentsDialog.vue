@@ -1,7 +1,7 @@
 <template lang="pug">
   div
     app-dialog(:isModal="true", ref="theDialog", @cancel="cancelDialog", @save="saveDialog")
-      h3(slot="header") {{dialogHeader}}
+      h2(slot="header") {{dialogHeader}}
       div(slot="body")
         div
           div(class="input-fieldrow")

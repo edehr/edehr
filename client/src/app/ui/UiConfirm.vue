@@ -1,7 +1,7 @@
 <template lang="pug">
   div(class="ui-confirm")
     app-dialog(:isModal="true", ref="theDialog", @save="confirmDialog", @cancel="cancelDialog", saveButtonLabel="Confirm")
-      h3(slot="header") {{ title }}
+      h2(slot="header") {{ title }}
       div(slot="body") {{ text }}
   
 </template>

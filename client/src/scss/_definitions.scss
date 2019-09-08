@@ -20,17 +20,8 @@ $green-light: #7ED321;
 $green: #8dd03e;
 $blue: #3396FF;
 
-// Here is a fiddle that can be used to play with these circles.
-// https://jsfiddle.net/bgil2012/26ufnke8/10/
-$green1: rgba(175, 227, 185, 0.98);
-$green2: rgba(2, 201, 72, 0.9);
-$orange1: rgba(254, 235, 220, 0.86);
-$orange2: rgba(250, 116, 0, 1);
-$radius: 20px;
-$off-centerx: $radius * 0.4;
-$off-centery: $radius * 0.4;
-$green-radial: radial-gradient(circle at $off-centerx $off-centery, $green1 0%,  $green2 100%);
-$orang-radial: radial-gradient(circle at $off-centerx $off-centery, $orange1 0%,  $orange2 100%);
+
+
 /* ****************** TYPOGRAPHY ****************** */
 
 $bodyFontFamily: 'Source Sans Pro', sans-serif;

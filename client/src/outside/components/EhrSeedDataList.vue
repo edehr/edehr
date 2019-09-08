@@ -30,8 +30,8 @@
               td(v-if="!sv.isDefault",class="seed-actions")
                ui-button(v-on:buttonClicked="uploadSeed(sv)", v-bind:secondary="true") Upload
                ui-button(v-on:buttonClicked="downloadSeed(sv)", , v-bind:secondary="true", class="dwn") Download
-               ui-button(v-on:buttonClicked="showEditDialog(sv)", v-bind:secondary="true") Edit
-               ui-button(v-on:buttonClicked="gotoEhrWithSeed(sv)") View
+               ui-button(v-on:buttonClicked="showEditDialog(sv)", v-bind:secondary="true") Edit description
+               ui-button(v-on:buttonClicked="gotoEhrWithSeed(sv)") View/edit seed
       ui-agree(ref="aggreeDialog")
       input(id="fileUploadInput", ref="fileUploadInput", type="file", accept="application/json", style="display:none", @change="importSeedFile")
     ehr-seed-data-dialog(ref="theDialog")
@@ -219,7 +219,7 @@ export default {
     width: 100%;
   }
   td.seed-actions {
-    min-width: 360px;
+    min-width: 480px;
     padding-right: 0;
 
     button.button {

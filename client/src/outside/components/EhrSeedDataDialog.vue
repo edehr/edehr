@@ -1,7 +1,7 @@
 <template lang="pug">
   div(id="seedDataList", class="seedData-list")
     app-dialog(:isModal="true", ref="theDialog",  @cancel="cancelDialog", @save="saveDialog")
-      h3(slot="header") {{dialogHeader}}
+      h2(slot="header") {{dialogHeader}}
       div(slot="body")
         div {{ehrParseMsg}}
           div(class="input-fieldrow")

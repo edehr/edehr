@@ -1,7 +1,7 @@
 <template lang="pug">
   div(class="ui-agree")
     app-dialog(:isModal="true", ref="theDialog", :useSave="false", @cancel="cancelDialog", cancelButtonLabel="OK")
-      h3(slot="header") {{ title }}
+      h2(slot="header") {{ title }}
       div(slot="body") {{ text }}
   
 </template>

@@ -190,7 +190,7 @@ export default {
     display: inline;
   }
   .assetLink a{
-    color: blueviolet; /*$grey60;*/
+    color: $grey60;
     display: block;
     margin-bottom: 10px;
 
