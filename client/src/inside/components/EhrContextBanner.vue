@@ -7,7 +7,7 @@
         div(class="context-header columns", v-on:click="toggleShow")
             h3(class="header-item", :title="panelInfo.courseTitle") {{ panelInfo.courseTitle }}
             div(class="icon-group")
-              fas-icon(icon="plus", v-show="!show")
+              fas-icon(icon="plus", v-show="!show") 
               fas-icon(icon="minus", v-show="show")
         div(v-show="show")
           ehr-context-instructor(v-if="showInstructor")
@@ -70,7 +70,15 @@ export default {
 }
 
 .EhrPanelContent {
-  border-bottom: 1px solid $grey40;
-  padding: 1.75rem 2rem 1rem 2rem;
+  border-bottom: 1px solid $grey20;
+  padding: 1rem 1rem 1rem 2rem;
+}
+
+.context-header {
+  cursor: pointer;
+}
+
+h3.header-item {
+  margin-bottom: 0;
 }
 </style>

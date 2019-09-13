@@ -18,9 +18,9 @@
             td {{ statusText(sv) }}
             td.actions
               span(v-if="sv.activityData.submitted && !sv.activityData.evaluated")
-                ui-button(v-on:buttonClicked="unsubmit(sv)", v-bind:secondary="true", :title="unsubmitTool") {{unsubmitText}}
-              span(v-if="sv.activityData.submitted && !sv.activityData.evaluated")
                 ui-button(v-on:buttonClicked="goToEhr(sv)", v-bind:secondary="true", title="View and evaluate in the EHR") Evaluate student work
+              span(v-if="sv.activityData.submitted && !sv.activityData.evaluated")
+                ui-button(v-on:buttonClicked="unsubmit(sv)", v-bind:secondary="true", :title="unsubmitTool") {{unsubmitText}}
               span(v-if="showEvaluateAction(sv)")
                 ui-button(v-on:buttonClicked="markEvaluated(sv)", v-bind:secondary="true", :title="evaluatedButtonTooltip(sv)") {{ evaluatedButtonText(sv) }}
 
