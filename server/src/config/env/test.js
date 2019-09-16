@@ -3,12 +3,12 @@
 var defaultEnvConfig = require('./default')
 const databaseName = 'edehr-test'
 module.exports = {
-  port: process.env.PORT || 27000,
-  apiUrl: 'http://localhost:27000',
-  // clientUrl is the url for this server that the Ed EHR client uses to make API calls
-  clientUrl: 'http://localhost:28000',
+  scheme: process.env.SCHEME || 'http',
+  host: process.env.HOST || 'localhost',
+  apiPort: 27000,
+  serverPort: 27000,
+  clientPort: 28000,
   defaultConsumerKey: 'edehrkey',
-
   databaseName: databaseName,
   database: {
     uri: 'mongodb://localhost:27018/' + databaseName,
@@ -16,6 +16,7 @@ module.exports = {
     // Enable mongoose debug mode
     debug: process.env.MONGODB_DEBUG || false
   },
+  traceApiCalls: true,
   app: {
     title: defaultEnvConfig.app.title + ' - Test Environment'
   },

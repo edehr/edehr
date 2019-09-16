@@ -1,7 +1,6 @@
 'use strict'
 const chalk = require('chalk')
 const glob = require('glob')
-const fs = require('fs')
 const path = require('path')
 const debug = require('debug')('server')
 export default class Config {
@@ -17,10 +16,18 @@ export default class Config {
     let environmentConfig = require(path.join(process.cwd(), 'src/config/env/', this.env)) || {}
 
     // Merge config files
-    this.configuration = Object.assign(defaultConfig, environmentConfig)
+    let cfg = Object.assign(defaultConfig, environmentConfig)
 
-    // Validate Secure SSL mode can be used
-    Config.validateSecureMode(this.configuration)
+    function composeUrl ( scheme, host, port, part) {
+      return scheme + '://' + host + (port ? ':' + port : '') + (part ? '/' + part : '')
+    }
+    let url = composeUrl(cfg.scheme, cfg.host, cfg.clientPort)
+    cfg.clientUrl = process.env.CLIENT_URL || url
+    url = composeUrl(cfg.scheme, cfg.host, cfg.apiPort, 'api')
+    cfg.apiUrl = process.env.API_URL || url
+    debug('config apiUrl', cfg.apiUrl)
+    debug('config clientUrl', cfg.clientUrl)
+    this.configuration = cfg
     debug('configuration ready ', this.configuration)
   }
 
@@ -53,29 +60,4 @@ export default class Config {
     console.log(chalk.white(''))
   }
 
-  /**
-   * Validate Secure=true parameter can actually be turned on
-   * because it requires certs and key files to be available
-   */
-  static validateSecureMode (config) {
-    if (!config.secure || config.secure.ssl !== true) {
-      return true
-    }
-
-    var privateKey = fs.existsSync(path.resolve(config.secure.privateKey))
-    var certificate = fs.existsSync(path.resolve(config.secure.certificate))
-
-    if (!privateKey || !certificate) {
-      console.log(
-        chalk.red('+ Error: Certificate file or key file is missing, falling back to non-SSL mode')
-      )
-      console.log(
-        chalk.red(
-          '  To create them, simply run the following from your shell: sh ./scripts/generate-ssl-certs.sh'
-        )
-      )
-      console.log()
-      config.secure.ssl = false
-    }
-  }
 }

@@ -8,8 +8,8 @@ const configuration = config.config
 ehrApp.setup(configuration)
   .then(() => {
     const app = ehrApp.application
-    const {port} = configuration
-    app.listen(port, () => {
-      console.log('Server running...', port)
+    const {serverPort} = configuration
+    app.listen(serverPort, () => {
+      console.log('Server running...', serverPort)
     })
   })
