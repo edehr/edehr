@@ -1,0 +1,13 @@
+version: '3'
+services:
+  nginx:
+    build:
+      context: ../nginx
+      dockerfile: Dockerfile
+      args:
+        - DOMAIN=edehr.mac
+        - PROXY_PASS=http://edehr.mac/api/
+    ports:
+      - "80:80"
+      - "443:443"
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"

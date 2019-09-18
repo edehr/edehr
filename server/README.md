@@ -10,18 +10,9 @@ npm install
 Be sure the mongoDB is running in its docker container. See the database subdirectory.
 
 
-This project depends on another project that provides LTI support
-outside of the project directory 
+This project depends on a customized LTI plugin.  Be sure to include the following in the project dependencies 
 ```
-cd /your/development/area
-git clone https://github.com/bryan-gilbert/ims-lti.git
-cd ims-lti.git 
-npm install
-cd ../proto-EdEHR
-# Do the next step in the server subdirectory
-# Install the local copy of the LTI project
-cd database
-npm install ../../ims-lti --save
+    "ims-lti": "git+https://github.com/bryan-gilbert/ims-lti.git",
 ```
 
 

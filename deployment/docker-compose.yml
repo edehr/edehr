@@ -1,0 +1,47 @@
+version: '3'
+services:
+  certbot:
+    image: certbot/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+    volumes:
+      - ./DOMAIN/data/certbot/conf:/etc/letsencrypt
+      - ./DOMAIN/data/certbot/www:/var/www/certbot
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+      args:
+        - DOMAIN=localhost
+    ports:
+      - "80:80"
+      - "443:443"
+     # - "8083:80"
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+    volumes:
+      - "./content/:/usr/share/nginx/html/"
+      - "./certs/:/etc/letsencrypt/"
+      - ./DOMAIN/data/nginx:/etc/nginx/conf.d
+      - ./DOMAIN/data/certbot/conf:/etc/letsencrypt
+      - ./DOMAIN/data/certbot/www:/var/www/certbot
+    depends_on:
+     - simpleapp
+    volumes:
+      - "./client/my-project/dist/:/usr/share/nginx/html/"
+  simpleapp:
+    # Docker container names must be unique, so don't use container_name if you want to scale your services
+    # container_name: simple-app
+    restart: always
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3003"  # The API service listens on the second port and docker maps this to the first port for use outside the container.
+    environment:
+      - API_PORT=3000
+      - API_HOST=localhost
+      - CLIENT_HOST=localhost
+      - CLIENT_PORT=8083
+    entrypoint:
+      - npm
+      - run
+      - start:dev

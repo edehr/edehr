@@ -1,43 +1,34 @@
 'use strict'
-const databaseName = 'edehr-prod'
 
-if (!process.env.COOKIE_SECRET) {
-  throw new Error('For production you must set COOKIE_SECRET env ')
-}
+const TRACE_CALLS = true
+// BC Campus server: edehrapp-dev.bccampus.ca
+// Digital Ocean server provided by Bryan https://edehr.org
+const HOST =   process.env.HOST || 'edehr.org'
+const SCHEME = process.env.SCHEME || 'https'
+const COOKIE_SECRET = process.env.COOKIE_SECRET
 
-module.exports = {
-  scheme: process.env.SCHEME || 'https',
-  // BC Campus server: edehrapp-dev.bccampus.ca
-  // Digital Ocean server provided by Bryan https://edehr.org
-  host: process.env.HOST || 'edehr.org',
-  apiPort: undefined,
-  serverPort: 27004,
-  clientPort: undefined,
-  cookieSecret: process.env.COOKIE_SECRET,
-  cookieSettings: cookieSettings(),
-  databaseName: databaseName,
-  database: {
-    uri: 'mongodb://localhost:27018/' + databaseName,
-    options: {
-      useNewUrlParser: true,
-      useCreateIndex: true,
-      user: process.env.MONGODB_USER || '',
-      pass: process.env.MONGODB_PASSWORD || ''
-    },
-    // Enable mongoose debug module
-    debug: process.env.MONGODB_DEBUG || false
-  },
-  traceApiCalls: true,
-  // log: {
-  //   // Can specify one of 'combined', 'common', 'dev', 'short', 'tiny'
-  //   format: 'combined',
-  //   // Stream defaults to process.stdout
-  //   // Uncomment to enable logging to a log on the file system
-  //   options: {
-  //     // stream: 'access.log'
-  //   }
-  // },
-  seedDB: process.env.MONGO_SEED || true
+// default overrides
+const SERVER_PORT = process.env.SERVER_PORT || 27000
+//api port is the port number, if any, to use when constructing the API url
+const API_PORT = undefined
+const CLIENT_PORT = undefined
+const MONGODB_NAME = process.env.MONGODB_NAME || 'edehr-prod'
+
+module.exports = function (cfg) {
+  cfg.isDevelop = false
+  cfg.isProduction = true
+  cfg.traceApiCalls = TRACE_CALLS
+  cfg.scheme = SCHEME
+  cfg.host = HOST
+  cfg.cookieSecret = COOKIE_SECRET
+  cfg.cookieSettings = cookieSettings()
+  cfg.app.title = cfg.app.title + ' - Development Environment'
+  cfg.port =  API_PORT
+  cfg.apiPort = API_PORT
+  cfg.serverPort = SERVER_PORT
+  cfg.clientPort = CLIENT_PORT
+  cfg.database.name =  MONGODB_NAME
+  return cfg
 }
 
 /*

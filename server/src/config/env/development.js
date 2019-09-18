@@ -1,39 +1,22 @@
 'use strict'
 
 let defaultEnvConfig = require('./default')
-const databaseName = 'edehr-dev'
 
-module.exports = {
-  scheme: process.env.SCHEME || 'http',
-  host: process.env.HOST || 'localhost',
-  apiPort: 27000,
-  serverPort: 27000,
-  clientPort: 28000,
-  cookieSecret: 'this is the secret for the session cookie',
-  cookieSettings: cookieSettings(),
-  defaultConsumerKey: 'edehrkey',
-  databaseName: databaseName,
-  database: {
-    uri: 'mongodb://localhost:27018/' + databaseName,
-    options: {
-      useNewUrlParser: true,
-      useCreateIndex: true,
-      user: process.env.MONGODB_USER || '',
-      pass: process.env.MONGODB_PASSWORD || ''
-    },
-    // Enable mongoose debug mode
-    debug: process.env.MONGODB_DEBUG || false
-  },
-  traceApiCalls: true,
-  // // TODO set up to use some means to configure logging here
-  // log: {
-  //   // Can specify one of 'combined', 'common', 'dev', 'short', 'tiny'
-  //   format: 'dev'
-  // },
-  app: {
-    title: defaultEnvConfig.app.title + ' - Development Environment'
-  },
-  seedDB: process.env.MONGO_SEED || true
+const TRACE_CALLS = true
+const HOST = process.env.HOST || 'localhost'
+const SCHEME = process.env.SCHEME || 'http'
+const COOKIE_SECRET = process.env.COOKIE_SECRET || 'this is the secret for the session cookie'
+
+module.exports = function (cfg) {
+  cfg.isDevelop = true
+  cfg.isProduction = false
+  cfg.traceApiCalls = TRACE_CALLS
+  cfg.scheme = SCHEME
+  cfg.host = HOST
+  cfg.cookieSecret = COOKIE_SECRET
+  cfg.cookieSettings = cookieSettings()
+  cfg.app.title = cfg.app.title + ' - Development Environment'
+  return cfg
 }
 
 /*
@@ -49,7 +32,7 @@ Set the following cookie options to enhance security:
     expires - use to set expiration date for persistent cookies.
 
  */
-function cookieSettings() {
+function cookieSettings () {
   return {
     secure: false,
     sameSite: 'lax',

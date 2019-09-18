@@ -1,4 +1,4 @@
-# EdEHR
+# Project - EdEHR
 
 > Educational Electronic Health Record System: a [BCcampus](https://bccampus.ca) project
 
@@ -74,12 +74,12 @@ npm run test
 
 
 ## EHR generation
-The EHR side of the project contains almost 40 separate screens, each needs to be listed in the menu and routing tables.  These 
-tasks are automated via a script in the makeEhr subdirectory. This script only needs to be invoked if the content of the 
-configuration files have been modified.  The source of the configuration files comes from a Google spreadsheet stored 
-in the project GDrive.
+The EHR side of the project contains over 40 separate screens, each needs to be listed in the menu and routing tables. 
+The code for this comes from the generator in the makeEhrV2 directory. 
+The generating script only needs to be invoked when the content of the configuration files are modified.  
+The source of the configuration files comes from a Google spreadsheet stored in the project GDrive.
 ```
-cd makeEhr
+cd makeEhrV2
 ./deploy.sh --lint
 ```
 The ```--lint``` option can be replaced with ```-l```. You must use this lint option before submitting files. If you are 

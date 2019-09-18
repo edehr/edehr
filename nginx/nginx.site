@@ -1,0 +1,54 @@
+## To be placed in /etc/nginx/sites-available and then linked in sites-enabled
+server {
+  server_name DOMAIN;
+  listen 443 ssl;
+
+  #Strict-Transport-Security to prevent man in the middle attacks
+  # config to enable HSTS(HTTP Strict Transport Security) https://developer.mozilla.org/en-US/docs/Security/HTTP_Strict_Transport_Security
+  # to avoid ssl stripping https://en.wikipedia.org/wiki/SSL_stripping#SSL_stripping
+  # also https://hstspreload.org/
+  add_header Strict-Transport-Security "max-age=31536000; includeSubdomains; preload";
+
+  root /opt/edehr/client/dist/;
+  access_log /var/log/nginx/edehr.access.log;
+  error_log /var/log/nginx/edehr.error.log;
+
+#  include /etc/nginx/include/api
+location /api {
+    #proxy_cache off;
+    #proxy_cache off disables caching inherited from the previous configuration level.
+    # https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache_bypass
+    proxy_cache_bypass $http_upgrade;
+    proxy_http_version 1.1;
+    proxy_max_temp_file_size 0;
+    proxy_pass PROXY_PASS;
+    proxy_redirect off;
+    proxy_set_header Connection 'upgrade';
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-NginX-Proxy true;
+    proxy_set_header X-Real-IP $remote_addr;
+}
+
+
+  include /etc/nginx/include/ssl
+
+  location / {
+    try_files $uri $uri/ /index.html;
+  }
+
+}
+
+server {
+  listen 80;
+  server_name DOMAIN;
+  location /.well-known/acme-challenge/ {
+      root /var/www/certbot;
+  }
+  if ($host = DOMAIN) {
+    return 301 https://$host$request_uri;
+  }
+  return 404;
+}
