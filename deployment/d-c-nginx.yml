@@ -5,9 +5,60 @@ services:
       context: ../nginx
       dockerfile: Dockerfile
       args:
-        - DOMAIN=edehr.mac
-        - PROXY_PASS=http://edehr.mac/api/
+        - HOST
+        - PROXY_PASS_HOST
+        - SERVER_PORT
+        - DOMAIN=${HOST}
+    depends_on:
+        - edehrapp
     ports:
       - "80:80"
       - "443:443"
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+    volumes:
+      - ../client/dist/:/usr/share/nginx/html
+      - /etc/letsencrypt/:/etc/letsencrypt/
+      - ../logs/:/var/log/nginx/
+  edehrapp:
+    build:
+      context: ../server
+      dockerfile: Dockerfile
+    hostname: edehrapp
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+    environment:
+      - API_HOST
+      - API_PORT
+      - CLIENT_HOST
+      - CLIENT_PORT
+      - COOKIE_SECRET
+      - DEBUG
+      - HOST
+      - MONGODB_HOST
+      - MONGODB_PORT
+      - MONGODB_PWORD
+      - MONGODB_USER
+      - NODE_ENV
+      - PROXY_PASS_HOST
+      - SCHEME
+      - SERVER_PORT
+      - START_ARG
+    depends_on:
+     - mongo_service
+    volumes:
+      - "../server/src/:/usr/src/app/src/"
+    entrypoint:
+      - npm
+      - run
+      - ${START_ARG}
+  mongo_service:
+    image: mongo
+    environment:
+      - MONGODB_USER
+      - MONGODB_PWORD
+      - MONGODB_PORT=${MONGODB_PORT}
+      - MONGO_INITDB_ROOT_USERNAME=${MONGODB_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGODB_PWORD}
+    ports:
+      - "${MONGODB_PORT}:${MONGODB_PORT}"
+    command: mongod --port ${MONGODB_PORT}

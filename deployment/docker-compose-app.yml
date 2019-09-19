@@ -6,6 +6,7 @@ services:
     build:
       context: ../server
       dockerfile: Dockerfile
+    hostname: ${PROXY_PASS_HOST}
     ports:
       - ${SERVER_PORT}:${SERVER_PORT}
     environment:
@@ -21,6 +22,7 @@ services:
       - MONGODB_PWORD
       - MONGODB_USER
       - NODE_ENV
+      - PROXY_PASS_HOST
       - SCHEME
       - SERVER_PORT
       - START_ARG
