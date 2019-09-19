@@ -189,6 +189,10 @@ select {
   border-color: $grey40;
 }
 
+.select select:disabled::after {
+  border-color: $grey10;
+}
+
 .user_name {
   width: 35%;
 }
