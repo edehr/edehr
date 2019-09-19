@@ -1,7 +1,7 @@
 <template lang="pug">
   div(class="ehr-summary-table")
     h2 {{summaryTitle}}
-    div(v-show="!hasData") Not Applicable
+    div(v-show="!hasData") Not applicable
     table(v-show="hasData")
       thead
         tr
