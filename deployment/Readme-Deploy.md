@@ -1,42 +1,38 @@
 # EdEHR Deployment
 
-> Instructions for deploying EdEHR with Nginx (engine-X)
+> Instructions for deploying EdEHR with Docker
 
-This readme assumes you know how to install and set up Nginx. 
+Assume you have Docker installed and running.
 
-Steps to set up.
-   1. Edit the nginx.site file if needed
-   2. Link the nginx.site file into your nginx sites-available folder.
-   3. Link the linked file into the sites-enabled folder
-   4. restart nginx
-  
-## On a Mac
-Nginx location is  ``` /usr/local/etc/nginx/ ```      
+## For development work 
 
-Set up local web dns
+This will run the EdEHR client with the Vue server; the EdEHR server API within a docker container and the mongoDB within 
+another container.
+
+1. Start the client
+```
+cd client
+npm run start
 ``` 
-sudo vi /etc/hosts
-```
-Add ``` 127.0.0.1       edehr.mac ```
 
-Link up the Nginx site configuration file   
-```
-cd into this development folder
-ln -s mac-dev.site /usr/local/etc/nginx/sites-available edehr.mac
-cd /usr/local/etc/nginx/
-ln -s sites-available/edehr.mac sites-enabled/edehr.mac
+2. Start the DB and Server
+``` 
+cd deployment
+docker-compose -f docker-compose-app.yml up --build
 ```
 
+Alternatively you can also build the containers and then run them in detacted mode but, for development it's easier to
+just use the same command to both build and run in the interactive mode so you can watch log messages and quickly reset
+the system simply by using Ctrl-C to stop the containers.
+
+This local development set up depends on the variable set in the ```deployment/.env``` file.
 
 
-## On a public server
-Nginx location is  ``` /... ```      
+## For Product side
 
-Link up the Nginx site configuration file   
-```
-cd into this development folder
-ln -s nginx.site /.../sites-available edehr
-cd ....
-ln -s sites-available/edehr sites-enabled/edehr
-```
+We use nginx as the main web server for the system.  This will server the static vue client files and proxy 
+the API requests to the server.  The MongoDb will remain behind the firewall.
 
+For each installation of production you must edit the ```.env``` file in the ```deployment``` directory.
+
+ 

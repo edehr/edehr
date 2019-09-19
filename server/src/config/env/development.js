@@ -1,38 +1,42 @@
 'use strict'
 
-/*
-API_URL=http://42.93.148.22/api CLIENT_URL=http://142.93.148.22 PORT=27004  npm run start-server
-API_URL=http://edehr.mac/api CLIENT_URL=http://edehr.mac npm run start-server
- */
-var defaultEnvConfig = require('./default')
-const databaseName = 'edehr-dev'
-module.exports = {
-  port: process.env.PORT || 27000,
-  apiUrl: process.env.API_URL || 'http://localhost:27000',
-  // clientUrl is the url for this server that the Ed EHR client uses to make API calls
-  clientUrl:  process.env.CLIENT_URL || 'http://localhost:28000',
-  defaultConsumerKey: 'edehrkey',
-  traceApiCalls: true,
+let defaultEnvConfig = require('./default')
 
-  databaseName: databaseName,
-  database: {
-    uri: 'mongodb://localhost:27018/' + databaseName,
-    options: {
-      useNewUrlParser: true,
-      useCreateIndex: true,
-      user: process.env.MONGODB_USER || '',
-      pass: process.env.MONGODB_PASSWORD || ''
-    },
-    // Enable mongoose debug mode
-    debug: process.env.MONGODB_DEBUG || false
-  },
-  // TODO set up to use some means to configure logging here
-  log: {
-    // Can specify one of 'combined', 'common', 'dev', 'short', 'tiny'
-    format: 'dev'
-  },
-  app: {
-    title: defaultEnvConfig.app.title + ' - Development Environment'
-  },
-  seedDB: process.env.MONGO_SEED || true
+const TRACE_CALLS = true
+const HOST = process.env.HOST || 'localhost'
+const SCHEME = process.env.SCHEME || 'http'
+const COOKIE_SECRET = process.env.COOKIE_SECRET || 'this is the secret for the session cookie'
+
+module.exports = function (cfg) {
+  cfg.isDevelop = true
+  cfg.isProduction = false
+  cfg.traceApiCalls = TRACE_CALLS
+  cfg.scheme = SCHEME
+  cfg.host = HOST
+  cfg.cookieSecret = COOKIE_SECRET
+  cfg.cookieSettings = cookieSettings()
+  cfg.app.title = cfg.app.title + ' - Development Environment'
+  return cfg
+}
+
+/*
+Set cookie security options
+
+Set the following cookie options to enhance security:
+    secure - Ensures the browser only sends the cookie over HTTPS.
+    httpOnly - Ensures the cookie is sent only over HTTP(S), not client JavaScript, helping to protect against cross-site scripting attacks.
+    domain - indicates the domain of the cookie; use it to compare against the domain of the server in which
+    the URL is being requested. If they match, then check the path attribute next.
+    By default, no domain is set, and most clients will consider the cookie to apply to only the current domain.
+    path - indicates the path of the cookie; use it to compare against the request path. If this and domain match, then send the cookie in the request.
+    expires - use to set expiration date for persistent cookies.
+
+ */
+function cookieSettings () {
+  return {
+    secure: false,
+    sameSite: 'lax',
+    httpOnly: true,
+    maxAge: 60000 * 24
+  }
 }

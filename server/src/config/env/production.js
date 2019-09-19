@@ -1,36 +1,54 @@
 'use strict'
-const databaseName = 'edehr-prod'
-module.exports = {
-  port: process.env.PORT || 27004,
-  // To run prod locally with a dev client server
-  //
-  // API_URL=http://localhost:27004 CLIENT_URL=http://localhost:28000 node index.js
-  // BC Campus server: edehrapp-dev.bccampus.ca
-  // Digital Ocean server provided by Bryan 142.93.148.22
-  // apiUrl: process.env.API_URL || 'http://142.93.148.22/api',
-  // clientUrl: process.env.CLIENT_URL || 'http://142.93.148.22',
-  apiUrl: process.env.API_URL || 'https://edehrapp-dev.bccampus.ca/api',
-  clientUrl: process.env.CLIENT_URL || 'https://edehrapp-dev.bccampus.ca',
-  databaseName: databaseName,
-  database: {
-    uri: 'mongodb://localhost:27018/' + databaseName,
-    options: {
-      useNewUrlParser: true,
-      useCreateIndex: true,
-      user: process.env.MONGODB_USER || '',
-      pass: process.env.MONGODB_PASSWORD || ''
-    },
-    // Enable mongoose debug module
-    debug: process.env.MONGODB_DEBUG || false
-  },
-  log: {
-    // Can specify one of 'combined', 'common', 'dev', 'short', 'tiny'
-    format: 'combined',
-    // Stream defaults to process.stdout
-    // Uncomment to enable logging to a log on the file system
-    options: {
-      // stream: 'access.log'
-    }
-  },
-  seedDB: process.env.MONGO_SEED || true
+
+const TRACE_CALLS = true
+// BC Campus server: edehrapp-dev.bccampus.ca
+// Digital Ocean server provided by Bryan https://edehr.org
+const HOST =   process.env.HOST || 'edehr.org'
+const SCHEME = process.env.SCHEME || 'https'
+const COOKIE_SECRET = process.env.COOKIE_SECRET
+
+// default overrides
+const SERVER_PORT = process.env.SERVER_PORT || 27000
+//api port is the port number, if any, to use when constructing the API url
+const API_PORT = undefined
+const CLIENT_PORT = undefined
+const MONGODB_NAME = process.env.MONGODB_NAME || 'edehr-prod'
+
+module.exports = function (cfg) {
+  cfg.isDevelop = false
+  cfg.isProduction = true
+  cfg.traceApiCalls = TRACE_CALLS
+  cfg.scheme = SCHEME
+  cfg.host = HOST
+  cfg.cookieSecret = COOKIE_SECRET
+  cfg.cookieSettings = cookieSettings()
+  cfg.app.title = cfg.app.title + ' - Development Environment'
+  cfg.port =  API_PORT
+  cfg.apiPort = API_PORT
+  cfg.serverPort = SERVER_PORT
+  cfg.clientPort = CLIENT_PORT
+  cfg.database.name =  MONGODB_NAME
+  return cfg
+}
+
+/*
+Set cookie security options
+
+Set the following cookie options to enhance security:
+    secure - Ensures the browser only sends the cookie over HTTPS.
+    httpOnly - Ensures the cookie is sent only over HTTP(S), not client JavaScript, helping to protect against cross-site scripting attacks.
+    domain - indicates the domain of the cookie; use it to compare against the domain of the server in which
+    the URL is being requested. If they match, then check the path attribute next.
+    By default, no domain is set, and most clients will consider the cookie to apply to only the current domain.
+    path - indicates the path of the cookie; use it to compare against the request path. If this and domain match, then send the cookie in the request.
+    expires - use to set expiration date for persistent cookies.
+
+ */
+function cookieSettings() {
+  return {
+    secure: true,
+    sameSite: 'strict',
+    httpOnly: true,
+    maxAge: 60000 * 24
+  }
 }

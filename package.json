@@ -2,6 +2,12 @@
   "name": "edehr",
   "version": "1.0.0",
   "author": "BCcampus {https://bccampus.ca/)",
+  "title": "Ed EHR",
+  "keywords": [
+    "BCCampus",
+    "Learning Tools Interoperability",
+    "electronic Health Record System"
+  ],
   "description": "This project provides an educational tool that replicates an Electronic Health Record system within a Learning Tools Interoperability (LTI) compliant course-ware.",
   "contributors": [
     "Bryan Gilbert <bryan.gilbert@gmail.com>"

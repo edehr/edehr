@@ -40,7 +40,7 @@ export function apiMiddle (app, config) {
         // debug('------------------ SESSION genid ' + guid)
         return guid
       },
-      cookie: { sameSite: 'lax', httpOnly: true, maxAge: 60000 * 24 },
+      cookie: config.cookieSettings,
       name: 'EdEhr.cookie',
       store: app.sessionStore,
       secret: config.cookieSecret,
@@ -48,8 +48,6 @@ export function apiMiddle (app, config) {
       saveUninitialized: false
     })
   )
-
-  // config.traceApiCalls = true
   if (config.traceApiCalls) {
     app.use(function (req, res, next) {
       debug(moment().format('YYYY/MM/DD, h:mm:ss.SSS a'), req.method, ' Url:', req.url)

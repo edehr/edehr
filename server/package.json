@@ -1,14 +1,18 @@
 {
   "name": "edehr-server",
-  "description": "Provides the API services to the EdEHR project",
-  "main": "dev-server.js.js",
+  "title": "Ed EHR",
+  "keywords": [
+    "BCCampus",
+    "Learning Tools Interoperability",
+    "electronic Health Record System"
+  ],
+  "description": "This project provides an educational tool that replicates an Electronic Health Record system within a Learning Tools Interoperability (LTI) compliant course-ware.",
   "scripts": {
-    "start-do": "API_URL=http://142.93.148.22/api CLIENT_URL=http://142.93.148.22 PORT=27004  npm run start",
-    "start-mac": "API_URL=http://edehr.mac/api CLIENT_URL=http://edehr.mac npm run start",
     "start": "NODE_ENV=development DEBUG=server node index.js",
-    "start-prod": "NODE_ENV=production node index.js",
     "start-dev": "NODE_ENV=development DEBUG=server nodemon -L  node index.js",
-    "start-prod-dev": "NODE_ENV=production API_URL=http://localhost:27004 CLIENT_URL=http://localhost:28000 node index.js",
+    "start-docker": "node index.js",
+    "start-docker-dev": "nodemon -L  node index.js",
+    "start-prod": "NODE_ENV=production node index.js",
     "lint": "eslint --fix src/**/*.js && eslint --fix test/**/*.js",
     "test": "node_modules/.bin/mocha --recursive --sort --bail --require @babel/register **/*.spec.js"
   },

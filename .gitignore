@@ -32,3 +32,5 @@ prototyping/hello-world/**
 .DS_Store
 docs/.vuepress/dist/**
 **/dbDump/**
+
+*/.env
