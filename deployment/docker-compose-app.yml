@@ -1,0 +1,47 @@
+version: '3'
+services:
+  edehrapp:
+    # restart not needed for dev because we use nodemon:
+    # restart: always
+    build:
+      context: ../server
+      dockerfile: Dockerfile
+    hostname: ${PROXY_PASS_HOST}
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+    environment:
+      - API_HOST
+      - API_PORT
+      - CLIENT_HOST
+      - CLIENT_PORT
+      - COOKIE_SECRET
+      - DEBUG
+      - HOST
+      - MONGODB_HOST
+      - MONGODB_PORT
+      - MONGODB_PWORD
+      - MONGODB_USER
+      - NODE_ENV
+      - PROXY_PASS_HOST
+      - SCHEME
+      - SERVER_PORT
+      - START_ARG
+    depends_on:
+     - mongo_service
+    volumes:
+      - "../server/src/:/usr/src/app/src/"
+    entrypoint:
+      - npm
+      - run
+      - ${START_ARG}
+  mongo_service:
+    image: mongo
+    environment:
+      - MONGODB_USER
+      - MONGODB_PWORD
+      - MONGODB_PORT=${MONGODB_PORT}
+      - MONGO_INITDB_ROOT_USERNAME=${MONGODB_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGODB_PWORD}
+    ports:
+      - "${MONGODB_PORT}:${MONGODB_PORT}"
+    command: mongod --port ${MONGODB_PORT}

@@ -92,18 +92,6 @@ export default class LTIController {
       })
       app.use(passport.initialize())
       app.use(passport.session())
-      // let myLogger = function (req, res, next) {
-      //   console.log('LOGGED')
-      //   // console.log('Request Type:    ', req.method)
-      //   // console.log('Request URL:     ', req.originalUrl)
-      //   console.log('Request headers:   ', req.headers)
-      //   console.log('Request session:   ', req.session)
-      //   // console.log('Request _passport: ', req._passport.session )
-      //   // console.log('Request cookie: ', req.cookie)
-      //   // console.log('Request user:    ', (req.user ? req.user._id : ''))
-      //   next()
-      // }
-      // app.use(myLogger)
     })
   }
 
@@ -357,7 +345,7 @@ export default class LTIController {
 
   _postLtiChain (req) {
     const _this = this
-    const db = true
+    const db = false
     return Promise.resolve()
       .then(() => {
         if (db) console.log('Do update tool')
