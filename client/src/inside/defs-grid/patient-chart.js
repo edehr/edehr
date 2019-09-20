@@ -45,13 +45,13 @@ export default function () {
           dataCaseStudy: 'Erin Johns is 74 years old. She is widowed with four children, one of whom lives at home with her in their original family home. Two of Erins children live within a one-hour drive from her, and one lives a three-hour flight away. She also has 10 grandchildren and one great grandchild. Erin describes herself as a non-smoker, but she smoked socially when she was in her early twenties for about five years. She is a retired hairdresser.',
           formIndex: '1',
           inputType: 'textarea',
-          label: 'Progress note',
+          label: 'Encounter note',
           tableColumn: '2',
-          tableLabel: 'Note',
+          tableLabel: 'Encounter note',
           fqn: 'progressNotes.note'
         }
       ],
-      generated: '2019-09-07T22:26:12-07:00',
+      generated: '2019-09-20T10:48:20-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -70,7 +70,7 @@ export default function () {
               ]
             },
             {
-              label: 'Note',
+              label: 'Encounter note',
               ehr_list_index: '2',
               items: [
                 'note'
@@ -208,7 +208,7 @@ export default function () {
           fqn: 'carePlan.status'
         }
       ],
-      generated: '2019-09-07T22:26:12-07:00',
+      generated: '2019-09-20T10:48:20-07:00',
       pageElements: {
         table2: {
           elementKey: 'table2',
@@ -310,11 +310,11 @@ export default function () {
       isV2: true,
       hasGridForm: true,
       pageChildren: [],
-      generated: '2019-09-07T22:26:12-07:00',
+      generated: '2019-09-20T10:48:20-07:00',
       pageElements: {
-        page_form5: {
-          elementKey: 'page_form5',
-          formKey: 'page_form5',
+        page_form110: {
+          elementKey: 'page_form110',
+          formKey: 'page_form110',
           isPageForm: true,
           ehr_groups: []
         }
@@ -364,19 +364,18 @@ export default function () {
           fqn: 'labResults.labReport4_1'
         }
       ],
-      generated: '2019-09-07T22:26:12-07:00',
+      generated: '2019-09-20T10:48:20-07:00',
       pageElements: {
-        page_form6: {
-          elementKey: 'page_form6',
-          formKey: 'page_form6',
+        page_form111: {
+          elementKey: 'page_form111',
+          formKey: 'page_form111',
           isPageForm: true,
           ehr_groups: [
             {
               gIndex: '1',
               gChildren: [
                 {
-                  label: 'Laboratory results',
-                  elementKey: 'subgroup11',
+                  elementKey: 'subgroup116',
                   sgChildren: [
                     'labReport1_1',
                     'labReport2_1',
@@ -405,13 +404,6 @@ export default function () {
           fqn: 'medicalImaging.day0'
         },
         {
-          elementKey: 'day2',
-          formIndex: '1',
-          inputType: 'form_label',
-          label: 'Day 2',
-          fqn: 'medicalImaging.day2'
-        },
-        {
           elementKey: 'copd_xray',
           assetBase: 'diagnostic-test-results',
           assetName: 'xray-report-for-copd-day-0.pdf',
@@ -419,15 +411,6 @@ export default function () {
           inputType: 'assetLink',
           label: 'COPD xray',
           fqn: 'medicalImaging.copd_xray'
-        },
-        {
-          elementKey: 'pneumonia_xray',
-          assetBase: 'diagnostic-test-results',
-          assetName: 'xray-report-for-pneumonia-day-2.pdf',
-          formIndex: '1',
-          inputType: 'assetLink',
-          label: 'Pneumonia xray',
-          fqn: 'medicalImaging.pneumonia_xray'
         },
         {
           elementKey: 'copd_report',
@@ -439,6 +422,22 @@ export default function () {
           fqn: 'medicalImaging.copd_report'
         },
         {
+          elementKey: 'day2',
+          formIndex: '1',
+          inputType: 'form_label',
+          label: 'Day 2',
+          fqn: 'medicalImaging.day2'
+        },
+        {
+          elementKey: 'pneumonia_xray',
+          assetBase: 'diagnostic-test-results',
+          assetName: 'xray-report-for-pneumonia-day-2.pdf',
+          formIndex: '1',
+          inputType: 'assetLink',
+          label: 'Pneumonia xray',
+          fqn: 'medicalImaging.pneumonia_xray'
+        },
+        {
           elementKey: 'pneumonia_report',
           assetBase: 'diagnostic-test-results',
           assetName: 'chest-xray-with-pneumonia.jpg',
@@ -448,21 +447,21 @@ export default function () {
           fqn: 'medicalImaging.pneumonia_report'
         }
       ],
-      generated: '2019-09-07T22:26:12-07:00',
+      generated: '2019-09-20T10:48:20-07:00',
       pageElements: {
-        page_form8: {
-          elementKey: 'page_form8',
-          formKey: 'page_form8',
+        page_form113: {
+          elementKey: 'page_form113',
+          formKey: 'page_form113',
           isPageForm: true,
           ehr_groups: [
             {
               gIndex: '1',
               gChildren: [
                 'day0',
-                'day2',
                 'copd_xray',
-                'pneumonia_xray',
                 'copd_report',
+                'day2',
+                'pneumonia_xray',
                 'pneumonia_report'
               ]
             }
@@ -477,11 +476,11 @@ export default function () {
       isV2: true,
       hasGridForm: true,
       pageChildren: [],
-      generated: '2019-09-07T22:26:12-07:00',
+      generated: '2019-09-20T10:48:20-07:00',
       pageElements: {
-        page_form10: {
-          elementKey: 'page_form10',
-          formKey: 'page_form10',
+        page_form115: {
+          elementKey: 'page_form115',
+          formKey: 'page_form115',
           isPageForm: true,
           ehr_groups: []
         }

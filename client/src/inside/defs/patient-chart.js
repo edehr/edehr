@@ -32,7 +32,7 @@ export default function () {
           dataCaseStudy: "Erin Johns is 74 years old. She is widowed with four children, one of whom lives at home with her in their original family home. Two of Erins children live within a one-hour drive from her, and one lives a three-hour flight away. She also has 10 grandchildren and one great grandchild. Erin describes herself as a non-smoker, but she smoked socially when she was in her early twenties for about five years. She is a retired hairdresser."
         }
       ],
-      generated: "2019-07-27T14:18:56-07:00",
+      generated: "2019-07-29T17:28:54-07:00",
       hasTable: true,
       tables: [
         {
@@ -199,7 +199,7 @@ export default function () {
           ]
         }
       ],
-      generated: "2019-07-27T14:18:56-07:00",
+      generated: "2019-07-29T17:28:54-07:00",
       hasTable: true,
       tables: [
         {
@@ -376,7 +376,7 @@ export default function () {
       pageTitle: "Consults",
       pageDataKey: "consults",
       pageChildren: [],
-      generated: "2019-07-27T14:18:56-07:00",
+      generated: "2019-07-29T17:28:54-07:00",
       hasForm: true,
       pageForm: {
         rows: [],
@@ -416,7 +416,7 @@ export default function () {
           assetName: "day-3-final-c-s-laboratory-report.pdf"
         }
       ],
-      generated: "2019-07-27T14:18:56-07:00",
+      generated: "2019-07-29T17:28:54-07:00",
       hasForm: true,
       pageForm: {
         rows: [
@@ -534,7 +534,7 @@ export default function () {
           assetName: "chest-xray-with-pneumonia.jpg"
         }
       ],
-      generated: "2019-07-27T14:18:56-07:00",
+      generated: "2019-07-29T17:28:54-07:00",
       hasForm: true,
       pageForm: {
         rows: [
@@ -604,7 +604,7 @@ export default function () {
       pageTitle: "Operative reports and anaesthesia record",
       pageDataKey: "operationReports",
       pageChildren: [],
-      generated: "2019-07-27T14:18:56-07:00",
+      generated: "2019-07-29T17:28:54-07:00",
       hasForm: true,
       pageForm: {
         rows: [],

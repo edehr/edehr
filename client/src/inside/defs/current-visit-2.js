@@ -320,7 +320,7 @@ export default function () {
           dataCaseStudy: "(not filled)"
         }
       ],
-      generated: "2019-08-02T17:59:37-07:00",
+      generated: "2019-08-10T11:00:11-07:00",
       hasTable: true,
       tables: [
         {
@@ -1283,7 +1283,7 @@ export default function () {
           dataCaseStudy: "(not filled)"
         }
       ],
-      generated: "2019-08-02T17:59:37-07:00",
+      generated: "2019-08-10T11:00:11-07:00",
       hasTable: true,
       tables: [
         {
@@ -1676,7 +1676,7 @@ export default function () {
           fqn: "pain.table.secondarySite.comments"
         }
       ],
-      generated: "2019-08-02T17:59:37-07:00",
+      generated: "2019-08-10T11:00:11-07:00",
       hasTable: true,
       tables: [
         {
@@ -2353,7 +2353,7 @@ export default function () {
           dataCaseStudy: "(not filled)"
         }
       ],
-      generated: "2019-08-02T17:59:37-07:00",
+      generated: "2019-08-10T11:00:11-07:00",
       hasTable: true,
       tables: [
         {
@@ -3143,7 +3143,7 @@ export default function () {
           fqn: "nonmedOrders.table.comment"
         }
       ],
-      generated: "2019-08-02T17:59:37-07:00",
+      generated: "2019-08-10T11:00:11-07:00",
       hasTable: true,
       tables: [
         {
@@ -3388,7 +3388,7 @@ export default function () {
           dataCaseStudy: "Active"
         }
       ],
-      generated: "2019-08-02T17:59:37-07:00",
+      generated: "2019-08-10T11:00:11-07:00",
       hasTable: true,
       tables: [
         {
@@ -3595,7 +3595,7 @@ export default function () {
           fqn: "labRequisitions.table.collected"
         }
       ],
-      generated: "2019-08-02T17:59:37-07:00",
+      generated: "2019-08-10T11:00:11-07:00",
       hasTable: true,
       tables: [
         {
@@ -3887,7 +3887,7 @@ export default function () {
           specialProperties: "marScheduleOption"
         }
       ],
-      generated: "2019-08-02T17:59:37-07:00",
+      generated: "2019-08-10T11:00:11-07:00",
       hasTable: true,
       tables: [
         {
@@ -3898,6 +3898,12 @@ export default function () {
             {
               elementKey: "name",
               label: "Entered by name",
+              tableColumn: "1",
+              inputType: "text"
+            },
+            {
+              elementKey: "profession",
+              label: "Entered by profession",
               tableColumn: "1",
               inputType: "text"
             },
@@ -3913,12 +3919,6 @@ export default function () {
               tableColumn: "1",
               tableCss: "hr-table",
               inputType: "time"
-            },
-            {
-              elementKey: "profession",
-              label: "Entered by profession",
-              tableColumn: "1",
-              inputType: "text"
             },
             {
               elementKey: "medication",
@@ -4324,7 +4324,7 @@ export default function () {
           helperHtml: "<p>Enter time delivered or say if not delivered.</p>"
         }
       ],
-      generated: "2019-08-02T17:59:37-07:00",
+      generated: "2019-08-10T11:00:11-07:00",
       hasTable: true,
       tables: [
         {
@@ -4617,7 +4617,7 @@ export default function () {
           fqn: "dischargeSummary.dischargeEducation"
         }
       ],
-      generated: "2019-08-02T17:59:37-07:00",
+      generated: "2019-08-10T11:00:11-07:00",
       hasForm: true,
       pageForm: {
         rows: [
@@ -4774,7 +4774,7 @@ export default function () {
           dataCaseStudy: "MSP"
         }
       ],
-      generated: "2019-08-02T17:59:37-07:00",
+      generated: "2019-08-10T11:00:11-07:00",
       hasForm: true,
       pageForm: {
         rows: [
