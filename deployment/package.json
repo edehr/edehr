@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "build:dev": "cp dev.env .env && docker-compose -f d-c.yml up --build",
+    "build:prod": "cp prod.env .env && docker-compose -f d-c.yml -f d-c-prod.yml up --build",
+    "run:dev": "cp dev.env .env && docker-compose -f d-c.yml up -d",
+    "run:prod": "cp prod.env .env && docker-compose -f d-c.yml -f d-c-prod.yml up -d",
+    "stop:dev": "docker-compose -f d-c.yml down",
+    "stop:prod": "docker-compose -f d-c.yml -f d-c-prod.yml down",
+    "final": ""
+  },
+  "scriptsComments": {
+    "docked:start": "Start the docker containers. Connections: client http://localhost port spec'd in compose file (8083)",
+    "docked:on:prod:start": "Start docker containers for the prod server. Can use on dev box. Connections: client http://(localhost/domain) port 80.",
+    "*:full:*": "Ditto but first build the static client side."
+  }
+}
