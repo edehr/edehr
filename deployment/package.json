@@ -1,0 +1,28 @@
+{
+  "scripts": {
+    "dev:build": "cp dev.env .env && docker-compose -f d-c.yml up --build",
+    "dev:run": "cp dev.env .env && docker-compose -f d-c.yml up -d",
+    "dev:stop": "docker-compose -f d-c.yml down",
+    "prod:build": "cp prod.env .env && docker-compose -f d-c.yml -f d-c-prod.yml up --build",
+    "prod:run": "cp prod.env .env && docker-compose -f d-c.yml -f d-c-prod.yml up -d",
+    "prod:stop": "docker-compose -f d-c.yml -f d-c-prod.yml down",
+    "ls": "docker ps -a",
+    "stop": "docker stop $(docker ps -a -q)",
+    "rm": "docker rm $(docker ps -a -q)",
+    "prune": "docker system prune",
+    "shell:nginx": "docker exec -it deployment_nginx_1 sh",
+    "shell:app": "docker exec -it deployment_edehrapp_1 sh",
+    "shell:mongo": "docker exec -it deployment_mongo_service_1 sh",
+    "final": ""
+  },
+  "scriptsComments": {
+    "dev:*": "dev build or run (detacted) or stop",
+    "prod:*": "prod build or run (detacted) or stop",
+    "ls": "list docker containers",
+    "stop": "stop all running containers",
+    "rm": "remove all stopped containers",
+    "prune": "delete everything not running, images, containers etc",
+    "shell:*": "open a sh shell on the choosen running container. Good to see the inside",
+    "final": ""
+  }
+}
