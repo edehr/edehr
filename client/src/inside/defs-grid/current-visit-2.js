@@ -293,22 +293,19 @@ export default function () {
           assetBase: '?',
           dataCaseStudy: '(not filled)',
           formIndex: '1',
-          inputType: 'checkbox',
+          inputType: 'checkset',
           label: 'Discharge',
+          options: [
+            {
+              text: 'Discharge'
+            },
+            {
+              text: 'Bleeding'
+            }
+          ],
           tableColumn: '15',
           tableLabel: 'Discharge',
           fqn: 'genitourinary.discharge'
-        },
-        {
-          elementKey: 'bleeding',
-          assetBase: '?',
-          dataCaseStudy: '(not filled)',
-          formIndex: '1',
-          inputType: 'checkbox',
-          label: 'Bleeding',
-          tableColumn: '16',
-          tableLabel: 'Bleeding',
-          fqn: 'genitourinary.bleeding'
         },
         {
           elementKey: 'description',
@@ -317,7 +314,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Description',
-          tableColumn: '17',
+          tableColumn: '16',
           tableLabel: 'Description',
           fqn: 'genitourinary.description'
         },
@@ -328,7 +325,7 @@ export default function () {
           formIndex: '1',
           inputType: 'date',
           label: 'Last menstrual period date',
-          tableColumn: '18',
+          tableColumn: '17',
           tableCss: 'hr-table',
           tableLabel: 'Last menstrual period date',
           fqn: 'genitourinary.lastMenstrualPeriodDate'
@@ -350,7 +347,7 @@ export default function () {
               text: 'Unknown'
             }
           ],
-          tableColumn: '19',
+          tableColumn: '18',
           tableLabel: 'Pregnant',
           fqn: 'genitourinary.pregnant'
         },
@@ -360,7 +357,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Gravida (number of pregnancies)',
-          tableColumn: '20',
+          tableColumn: '19',
           tableLabel: 'Gravida (number of pregnancies)',
           fqn: 'genitourinary.gravida'
         },
@@ -370,7 +367,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Para (number of children)',
-          tableColumn: '21',
+          tableColumn: '20',
           tableLabel: 'Para (number of children)',
           fqn: 'genitourinary.para'
         },
@@ -380,7 +377,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Living children',
-          tableColumn: '22',
+          tableColumn: '21',
           tableCss: 'hr-table',
           tableLabel: 'Living children',
           fqn: 'genitourinary.livingChildren'
@@ -391,12 +388,12 @@ export default function () {
           formIndex: '1',
           inputType: 'textarea',
           label: 'Comments',
-          tableColumn: '23',
+          tableColumn: '22',
           tableLabel: 'Comments',
           fqn: 'genitourinary.comments'
         }
       ],
-      generated: '2019-09-07T20:23:15-07:00',
+      generated: '2019-09-20T10:47:55-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -517,15 +514,8 @@ export default function () {
               ]
             },
             {
-              label: 'Bleeding',
-              ehr_list_index: '16',
-              items: [
-                'bleeding'
-              ]
-            },
-            {
               label: 'Description',
-              ehr_list_index: '17',
+              ehr_list_index: '16',
               items: [
                 'description'
               ]
@@ -533,28 +523,28 @@ export default function () {
             {
               label: 'Last menstrual period date',
               tableCss: 'hr-table',
-              ehr_list_index: '18',
+              ehr_list_index: '17',
               items: [
                 'lastMenstrualPeriodDate'
               ]
             },
             {
               label: 'Pregnant',
-              ehr_list_index: '19',
+              ehr_list_index: '18',
               items: [
                 'pregnant'
               ]
             },
             {
               label: 'Gravida (number of pregnancies)',
-              ehr_list_index: '20',
+              ehr_list_index: '19',
               items: [
                 'gravida'
               ]
             },
             {
               label: 'Para (number of children)',
-              ehr_list_index: '21',
+              ehr_list_index: '20',
               items: [
                 'para'
               ]
@@ -562,14 +552,14 @@ export default function () {
             {
               label: 'Living children',
               tableCss: 'hr-table',
-              ehr_list_index: '22',
+              ehr_list_index: '21',
               items: [
                 'livingChildren'
               ]
             },
             {
               label: 'Comments',
-              ehr_list_index: '23',
+              ehr_list_index: '22',
               items: [
                 'comments'
               ]
@@ -592,15 +582,11 @@ export default function () {
                 ]
               },
               {
+                label: 'Urinary',
+                formCss: 'section-divider',
                 gIndex: '2',
                 gChildren: [
-                  'urinaryGroup1'
-                ]
-              },
-              {
-                label: 'Urinary',
-                gIndex: '3',
-                gChildren: [
+                  'urinaryGroup1',
                   'lastVoidedDay',
                   'lastVoidedTime',
                   'colour',
@@ -610,7 +596,8 @@ export default function () {
               },
               {
                 label: 'Foley',
-                gIndex: '4',
+                formCss: 'section-divider',
+                gIndex: '3',
                 gChildren: [
                   'foley',
                   'foleyType',
@@ -620,7 +607,8 @@ export default function () {
               },
               {
                 label: 'Pelvic',
-                gIndex: '5',
+                formCss: 'section-divider',
+                gIndex: '4',
                 gChildren: [
                   'pelvicPain',
                   'location',
@@ -630,17 +618,18 @@ export default function () {
               },
               {
                 label: 'Vaginal',
-                gIndex: '6',
+                formCss: 'section-divider',
+                gIndex: '5',
                 gChildren: [
                   'discharge',
-                  'bleeding',
                   'description',
                   'lastMenstrualPeriodDate'
                 ]
               },
               {
                 label: 'Pregnancy',
-                gIndex: '7',
+                formCss: 'section-divider',
+                gIndex: '6',
                 gChildren: [
                   'pregnant',
                   'gravida',
@@ -649,8 +638,8 @@ export default function () {
                 ]
               },
               {
-                formCss: 'grid-left-to-right-1',
-                gIndex: '8',
+                formCss: 'grid-left-to-right-1 section-divider',
+                gIndex: '7',
                 gChildren: [
                   'comments'
                 ]
@@ -675,7 +664,6 @@ export default function () {
               location: '',
               pelvicPainSource: '',
               discharge: '',
-              bleeding: '',
               description: '',
               lastMenstrualPeriodDate: '',
               pregnant: '',
@@ -895,6 +883,12 @@ export default function () {
           fqn: 'musculoskeletal.temp'
         },
         {
+          elementKey: 'spacer77',
+          formIndex: '1',
+          inputType: 'spacer',
+          fqn: 'musculoskeletal.spacer77'
+        },
+        {
           elementKey: 'useOfAmbulatoryAid',
           assetBase: '?',
           dataCaseStudy: 'No',
@@ -957,7 +951,7 @@ export default function () {
           fqn: 'musculoskeletal.comments'
         }
       ],
-      generated: '2019-09-07T20:23:15-07:00',
+      generated: '2019-09-20T10:47:55-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1081,6 +1075,7 @@ export default function () {
                   'pulse',
                   'colour',
                   'temp',
+                  'spacer77',
                   'useOfAmbulatoryAid',
                   'type'
                 ]
@@ -1159,7 +1154,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Location',
-          tableColumn: '1',
+          tableColumn: '2',
           tableLabel: 'Location',
           fqn: 'pain.location'
         },
@@ -1169,7 +1164,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Pain intensity (0-10)',
-          tableColumn: '2',
+          tableColumn: '3',
           tableLabel: 'Pain intensity (0-10)',
           fqn: 'pain.painScale'
         },
@@ -1179,7 +1174,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Respiratory rate (br/min)',
-          tableColumn: '3',
+          tableColumn: '4',
           tableLabel: 'Respiratory rate (br/min)',
           fqn: 'pain.respiratoryRate'
         },
@@ -1188,7 +1183,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Onset',
-          tableColumn: '4',
+          tableColumn: '5',
           tableLabel: 'Onset',
           fqn: 'pain.onset'
         },
@@ -1197,7 +1192,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Type',
-          tableColumn: '5',
+          tableColumn: '6',
           tableLabel: 'Type',
           fqn: 'pain.type'
         },
@@ -1206,7 +1201,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Alleviation & associated symptoms',
-          tableColumn: '6',
+          tableColumn: '7',
           tableLabel: 'Alleviation & associated symptoms',
           fqn: 'pain.alleviationAssociatedSymptoms'
         },
@@ -1215,7 +1210,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Radiation',
-          tableColumn: '7',
+          tableColumn: '8',
           tableLabel: 'Radiation',
           fqn: 'pain.radiation'
         },
@@ -1224,7 +1219,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Precipitating events',
-          tableColumn: '8',
+          tableColumn: '9',
           tableCss: 'hr-table',
           tableLabel: 'Precipitating events',
           fqn: 'pain.precipitatingEvents'
@@ -1234,7 +1229,7 @@ export default function () {
           formIndex: '1',
           inputType: 'textarea',
           label: 'Comments',
-          tableColumn: '9',
+          tableColumn: '10',
           tableCss: 'hr-table',
           tableLabel: 'Comments',
           fqn: 'pain.comments'
@@ -1244,7 +1239,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Location',
-          tableColumn: '11',
+          tableColumn: '12',
           tableLabel: 'Location',
           fqn: 'pain.location'
         },
@@ -1253,7 +1248,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Pain scale (0-10)',
-          tableColumn: '12',
+          tableColumn: '13',
           tableLabel: 'Pain scale (0-10)',
           fqn: 'pain.painScale'
         },
@@ -1262,7 +1257,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Respiratory rate (br/min)',
-          tableColumn: '13',
+          tableColumn: '14',
           tableLabel: 'Respiratory rate (br/min)',
           fqn: 'pain.respiratoryRate'
         },
@@ -1271,7 +1266,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Onset',
-          tableColumn: '14',
+          tableColumn: '15',
           tableLabel: 'Onset',
           fqn: 'pain.onset'
         },
@@ -1280,7 +1275,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Type',
-          tableColumn: '15',
+          tableColumn: '16',
           tableLabel: 'Type',
           fqn: 'pain.type'
         },
@@ -1289,7 +1284,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Alleviation & associated symptoms',
-          tableColumn: '16',
+          tableColumn: '17',
           tableLabel: 'Alleviation & associated symptoms',
           fqn: 'pain.alleviationAssociatedSymptoms'
         },
@@ -1298,7 +1293,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Radiation',
-          tableColumn: '17',
+          tableColumn: '18',
           tableLabel: 'Radiation',
           fqn: 'pain.radiation'
         },
@@ -1307,7 +1302,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Precipitating events',
-          tableColumn: '18',
+          tableColumn: '19',
           tableCss: 'hr-table',
           tableLabel: 'Precipitating events',
           fqn: 'pain.precipitatingEvents'
@@ -1317,12 +1312,12 @@ export default function () {
           formIndex: '1',
           inputType: 'textarea',
           label: 'Comments',
-          tableColumn: '19',
+          tableColumn: '20',
           tableLabel: 'Comments',
           fqn: 'pain.comments'
         }
       ],
-      generated: '2019-09-07T20:23:15-07:00',
+      generated: '2019-09-20T10:47:55-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1337,48 +1332,54 @@ export default function () {
                 'name',
                 'profession',
                 'day',
-                'time',
+                'time'
+              ]
+            },
+            {
+              label: 'Location',
+              ehr_list_index: '2',
+              items: [
                 'location'
               ]
             },
             {
               label: 'Pain intensity (0-10)',
-              ehr_list_index: '2',
+              ehr_list_index: '3',
               items: [
                 'painScale'
               ]
             },
             {
               label: 'Respiratory rate (br/min)',
-              ehr_list_index: '3',
+              ehr_list_index: '4',
               items: [
                 'respiratoryRate'
               ]
             },
             {
               label: 'Onset',
-              ehr_list_index: '4',
+              ehr_list_index: '5',
               items: [
                 'onset'
               ]
             },
             {
               label: 'Type',
-              ehr_list_index: '5',
+              ehr_list_index: '6',
               items: [
                 'type'
               ]
             },
             {
               label: 'Alleviation & associated symptoms',
-              ehr_list_index: '6',
+              ehr_list_index: '7',
               items: [
                 'alleviationAssociatedSymptoms'
               ]
             },
             {
               label: 'Radiation',
-              ehr_list_index: '7',
+              ehr_list_index: '8',
               items: [
                 'radiation'
               ]
@@ -1386,7 +1387,7 @@ export default function () {
             {
               label: 'Precipitating events',
               tableCss: 'hr-table',
-              ehr_list_index: '8',
+              ehr_list_index: '9',
               items: [
                 'precipitatingEvents'
               ]
@@ -1394,56 +1395,56 @@ export default function () {
             {
               label: 'Comments',
               tableCss: 'hr-table',
-              ehr_list_index: '9',
+              ehr_list_index: '10',
               items: [
                 'comments'
               ]
             },
             {
               label: 'Location',
-              ehr_list_index: '11',
+              ehr_list_index: '12',
               items: [
                 'location'
               ]
             },
             {
               label: 'Pain scale (0-10)',
-              ehr_list_index: '12',
+              ehr_list_index: '13',
               items: [
                 'painScale'
               ]
             },
             {
               label: 'Respiratory rate (br/min)',
-              ehr_list_index: '13',
+              ehr_list_index: '14',
               items: [
                 'respiratoryRate'
               ]
             },
             {
               label: 'Onset',
-              ehr_list_index: '14',
+              ehr_list_index: '15',
               items: [
                 'onset'
               ]
             },
             {
               label: 'Type',
-              ehr_list_index: '15',
+              ehr_list_index: '16',
               items: [
                 'type'
               ]
             },
             {
               label: 'Alleviation & associated symptoms',
-              ehr_list_index: '16',
+              ehr_list_index: '17',
               items: [
                 'alleviationAssociatedSymptoms'
               ]
             },
             {
               label: 'Radiation',
-              ehr_list_index: '17',
+              ehr_list_index: '18',
               items: [
                 'radiation'
               ]
@@ -1451,14 +1452,14 @@ export default function () {
             {
               label: 'Precipitating events',
               tableCss: 'hr-table',
-              ehr_list_index: '18',
+              ehr_list_index: '19',
               items: [
                 'precipitatingEvents'
               ]
             },
             {
               label: 'Comments',
-              ehr_list_index: '19',
+              ehr_list_index: '20',
               items: [
                 'comments'
               ]
@@ -1495,7 +1496,7 @@ export default function () {
                 ]
               },
               {
-                formCss: 'grid-left-to-right-1',
+                formCss: 'grid-left-to-right-1 section-divider',
                 gIndex: '3',
                 gChildren: [
                   'comments'
@@ -1710,7 +1711,7 @@ export default function () {
           ],
           tableColumn: '7',
           tableCss: 'hr-table',
-          tableLabel: 'Hallucinations',
+          tableLabel: 'Behaviour',
           fqn: 'biopsychosocial.hallucinations'
         },
         {
@@ -1872,7 +1873,7 @@ export default function () {
           fqn: 'biopsychosocial.generalComments'
         }
       ],
-      generated: '2019-09-07T20:23:15-07:00',
+      generated: '2019-09-20T10:47:55-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1929,7 +1930,7 @@ export default function () {
               ]
             },
             {
-              label: 'Hallucinations',
+              label: 'Behaviour',
               tableCss: 'hr-table',
               ehr_list_index: '7',
               items: [
@@ -2038,6 +2039,7 @@ export default function () {
                 ]
               },
               {
+                formCss: 'section-divider',
                 gIndex: '2',
                 gChildren: [
                   'domesticViolence',
@@ -2045,6 +2047,7 @@ export default function () {
                 ]
               },
               {
+                formCss: 'section-divider',
                 gIndex: '3',
                 gChildren: [
                   'hygieneGrooming',
@@ -2052,20 +2055,16 @@ export default function () {
                 ]
               },
               {
+                formCss: 'section-divider',
                 gIndex: '4',
                 gChildren: [
-                  'behaviour'
-                ]
-              },
-              {
-                gIndex: '5',
-                gChildren: [
+                  'behaviour',
                   'hallucinations'
                 ]
               },
               {
                 label: 'Psychological state',
-                gIndex: '6',
+                gIndex: '5',
                 gChildren: [
                   'suicidal',
                   'homicidal',
@@ -2074,7 +2073,7 @@ export default function () {
               },
               {
                 label: 'Support',
-                gIndex: '7',
+                gIndex: '6',
                 gChildren: [
                   'supportPerson',
                   'supportComments'
@@ -2082,7 +2081,7 @@ export default function () {
               },
               {
                 label: 'Security',
-                gIndex: '8',
+                gIndex: '7',
                 gChildren: [
                   'securityPolicePresent',
                   'securityComments'
@@ -2090,7 +2089,7 @@ export default function () {
               },
               {
                 label: 'Restraint',
-                gIndex: '9',
+                gIndex: '8',
                 gChildren: [
                   'patientRestrained',
                   'restraintDay',
@@ -2100,7 +2099,7 @@ export default function () {
               },
               {
                 formCss: 'grid-left-to-right-1',
-                gIndex: '10',
+                gIndex: '9',
                 gChildren: [
                   'generalComments'
                 ]
@@ -2231,7 +2230,6 @@ export default function () {
             }
           ],
           tableColumn: '5',
-          tableCss: 'hr-table',
           tableLabel: 'Status',
           fqn: 'nonmedOrders.status'
         },
@@ -2245,7 +2243,7 @@ export default function () {
           fqn: 'nonmedOrders.comment'
         }
       ],
-      generated: '2019-09-07T20:23:15-07:00',
+      generated: '2019-09-20T10:47:55-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2286,7 +2284,6 @@ export default function () {
             },
             {
               label: 'Status',
-              tableCss: 'hr-table',
               ehr_list_index: '5',
               items: [
                 'status'
@@ -2408,10 +2405,10 @@ export default function () {
           fqn: 'referrals.referralProfession'
         },
         {
-          elementKey: 'spacer63',
+          elementKey: 'spacer94',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'referrals.spacer63'
+          fqn: 'referrals.spacer94'
         },
         {
           elementKey: 'appointmentDate',
@@ -2452,7 +2449,7 @@ export default function () {
           fqn: 'referrals.status'
         }
       ],
-      generated: '2019-09-07T20:23:15-07:00',
+      generated: '2019-09-20T10:47:55-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2526,7 +2523,7 @@ export default function () {
                 gChildren: [
                   'referralName',
                   'referralProfession',
-                  'spacer63',
+                  'spacer94',
                   'appointmentDate',
                   'appointmentTime',
                   'status'
@@ -2590,33 +2587,39 @@ export default function () {
         },
         {
           elementKey: 'requisition',
+          dataCaseStudy: 'lab-requisition-form.pdf',
           formIndex: '1',
           inputType: 'assetLink',
-          label: 'Requisition',
-          tableColumn: '2',
-          tableLabel: 'Requisition',
+          label: 'Lab requisition',
           fqn: 'labRequisitions.requisition'
         },
         {
-          elementKey: 'ordered',
+          elementKey: 'requisition',
+          assetBase: 'requisitions',
+          dataCaseStudy: 'medical-imaging-requisition.pdf',
           formIndex: '1',
-          inputType: 'day',
-          label: 'Ordered (day)',
-          tableColumn: '3',
-          tableLabel: 'Ordered (day)',
-          fqn: 'labRequisitions.ordered'
+          inputType: 'assetLink',
+          label: 'Medical imaging requisition',
+          fqn: 'labRequisitions.requisition'
         },
         {
-          elementKey: 'collected',
+          elementKey: 'spacer97',
+          formIndex: '1',
+          inputType: 'spacer',
+          fqn: 'labRequisitions.spacer97'
+        },
+        {
+          elementKey: 'ordered',
+          assetBase: 'requisitions',
           formIndex: '1',
           inputType: 'day',
-          label: 'Collected (day)',
-          tableColumn: '4',
-          tableLabel: 'Collected (day)',
-          fqn: 'labRequisitions.collected'
+          label: 'Ordered day',
+          tableColumn: '2',
+          tableLabel: 'Ordered day',
+          fqn: 'labRequisitions.ordered'
         }
       ],
-      generated: '2019-09-07T20:23:15-07:00',
+      generated: '2019-09-20T10:47:55-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2635,24 +2638,10 @@ export default function () {
               ]
             },
             {
-              label: 'Requisition',
+              label: 'Ordered day',
               ehr_list_index: '2',
               items: [
-                'requisition'
-              ]
-            },
-            {
-              label: 'Ordered (day)',
-              ehr_list_index: '3',
-              items: [
                 'ordered'
-              ]
-            },
-            {
-              label: 'Collected (day)',
-              ehr_list_index: '4',
-              items: [
-                'collected'
               ]
             }
           ],
@@ -2675,8 +2664,9 @@ export default function () {
                 gIndex: '2',
                 gChildren: [
                   'requisition',
-                  'ordered',
-                  'collected'
+                  'requisition',
+                  'spacer97',
+                  'ordered'
                 ]
               }
             ],
@@ -2685,8 +2675,7 @@ export default function () {
               profession: '',
               day: '',
               time: '',
-              ordered: '',
-              collected: ''
+              ordered: ''
             }
           }
         }
@@ -2861,7 +2850,6 @@ export default function () {
             }
           ],
           tableColumn: '8',
-          tableCss: 'hr-table',
           tableLabel: 'Schedule time',
           fqn: 'medicationOrders.scheduleTime'
         },
@@ -2893,7 +2881,7 @@ export default function () {
           fqn: 'medicationOrders.notes'
         }
       ],
-      generated: '2019-09-07T20:23:15-07:00',
+      generated: '2019-09-20T10:47:55-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2955,7 +2943,6 @@ export default function () {
             },
             {
               label: 'Schedule time',
-              tableCss: 'hr-table',
               ehr_list_index: '8',
               items: [
                 'scheduleTime'
@@ -3160,7 +3147,7 @@ export default function () {
           helperHtml: '<p>Enter time delivered or say if not delivered.</p>'
         }
       ],
-      generated: '2019-09-07T20:23:15-07:00',
+      generated: '2019-09-20T10:47:55-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -3278,6 +3265,7 @@ export default function () {
           elementKey: 'clinicalSummary',
           dataCaseStudy: 'Patient arrived with chronic COPD in acute form-NL-Previously diagnosed with hypertension-NL-Developed bilateral gram positive cocci pneunoma (what kind of cocci? Need a lab report)-NL-Treated with intravenous antibiotics and responded well',
           formIndex: '1',
+          formCss: 'grid-span-2-columns',
           inputType: 'textarea',
           label: 'Clinical summary',
           fqn: 'dischargeSummary.clinicalSummary'
@@ -3326,6 +3314,12 @@ export default function () {
             }
           ],
           fqn: 'dischargeSummary.dischargeRole'
+        },
+        {
+          elementKey: 'spacer103',
+          formIndex: '1',
+          inputType: 'spacer',
+          fqn: 'dischargeSummary.spacer103'
         },
         {
           elementKey: 'dischargeDay',
@@ -3405,7 +3399,7 @@ export default function () {
           fqn: 'dischargeSummary.dischargeEducation'
         }
       ],
-      generated: '2019-09-07T20:23:15-07:00',
+      generated: '2019-09-20T10:47:55-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -3419,6 +3413,7 @@ export default function () {
                 'clinicalSummary',
                 'dischargingPhysician/np',
                 'dischargeRole',
+                'spacer103',
                 'dischargeDay',
                 'dischargeTime',
                 'dischargedTo',
@@ -3465,7 +3460,7 @@ export default function () {
           fqn: 'billing.paymentType'
         }
       ],
-      generated: '2019-09-07T20:23:15-07:00',
+      generated: '2019-09-20T10:47:55-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',

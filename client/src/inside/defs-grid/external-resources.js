@@ -143,11 +143,11 @@ export default function () {
           fqn: 'assessmentTools.medication1_1'
         }
       ],
-      generated: '2019-09-07T20:17:06-07:00',
+      generated: '2019-09-20T10:48:35-07:00',
       pageElements: {
-        page_form116: {
-          elementKey: 'page_form116',
-          formKey: 'page_form116',
+        page_form117: {
+          elementKey: 'page_form117',
+          formKey: 'page_form117',
           isPageForm: true,
           ehr_groups: [
             {
@@ -155,7 +155,7 @@ export default function () {
               gChildren: [
                 {
                   label: 'Admissions',
-                  elementKey: 'subgroup125',
+                  elementKey: 'subgroup127',
                   sgChildren: [
                     'admissions1_1',
                     'admissions2_1',
@@ -164,7 +164,7 @@ export default function () {
                 },
                 {
                   label: 'Pain assessment',
-                  elementKey: 'subgroup126',
+                  elementKey: 'subgroup128',
                   sgChildren: [
                     'painAssessment1_1',
                     'painAssessment2_1'
@@ -172,7 +172,7 @@ export default function () {
                 },
                 {
                   label: 'Neurological assessment',
-                  elementKey: 'subgroup127',
+                  elementKey: 'subgroup129',
                   sgChildren: [
                     'neuroAssessment1_1',
                     'neuroAssessment2_1',
@@ -181,7 +181,7 @@ export default function () {
                 },
                 {
                   label: 'Falls risk',
-                  elementKey: 'subgroup128',
+                  elementKey: 'subgroup130',
                   sgChildren: [
                     'fallRisk1_1',
                     'fallRisk2_1'
@@ -189,14 +189,14 @@ export default function () {
                 },
                 {
                   label: 'Notes',
-                  elementKey: 'subgroup129',
+                  elementKey: 'subgroup131',
                   sgChildren: [
                     'notes1_1'
                   ]
                 },
                 {
                   label: 'Educational resources',
-                  elementKey: 'subgroup130',
+                  elementKey: 'subgroup132',
                   sgChildren: [
                     'educational1_1',
                     'educational2_1'
@@ -204,14 +204,14 @@ export default function () {
                 },
                 {
                   label: 'Wound assessment',
-                  elementKey: 'subgroup131',
+                  elementKey: 'subgroup133',
                   sgChildren: [
                     'wound1_1'
                   ]
                 },
                 {
                   label: 'Medication',
-                  elementKey: 'subgroup132',
+                  elementKey: 'subgroup134',
                   sgChildren: [
                     'medication1_1'
                   ]
@@ -244,7 +244,7 @@ export default function () {
           fqn: 'codeLookup.icf'
         }
       ],
-      generated: '2019-09-07T20:17:06-07:00',
+      generated: '2019-09-20T10:48:35-07:00',
       pageElements: {
         aForm: {
           elementKey: 'aForm',
@@ -385,7 +385,7 @@ export default function () {
           fqn: 'diagnosticCodes.cluster'
         }
       ],
-      generated: '2019-09-07T20:17:06-07:00',
+      generated: '2019-09-20T10:48:35-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -530,29 +530,12 @@ export default function () {
           fqn: 'interventionCodes.time'
         },
         {
-          elementKey: 'spacer',
-          assetBase: '?',
-          formIndex: '1',
-          inputType: 'spacer',
-          fqn: 'interventionCodes.spacer'
-        },
-        {
-          elementKey: 'label',
-          formIndex: '1',
-          inputType: 'form_label',
-          label: 'Intervention code attributes',
-          tableColumn: '2',
-          tableLabel: 'Code',
-          fqn: 'interventionCodes.label'
-        },
-        {
           elementKey: 'intervention',
           dataCaseStudy: '3.GY.10.VA-NL-2.GZ.21.EA',
           formIndex: '1',
-          formOption: 'bold-text',
           inputType: 'text',
           label: 'Intervention',
-          tableColumn: '3',
+          tableColumn: '2',
           tableLabel: 'Intervention',
           fqn: 'interventionCodes.intervention'
         },
@@ -561,7 +544,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Status',
-          tableColumn: '4',
+          tableColumn: '3',
           tableLabel: 'Status',
           fqn: 'interventionCodes.status'
         },
@@ -570,7 +553,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Laterally',
-          tableColumn: '5',
+          tableColumn: '4',
           tableLabel: 'Laterally',
           fqn: 'interventionCodes.laterally'
         },
@@ -579,12 +562,12 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Extent',
-          tableColumn: '6',
+          tableColumn: '5',
           tableLabel: 'Extent',
           fqn: 'interventionCodes.extent'
         }
       ],
-      generated: '2019-09-07T20:17:06-07:00',
+      generated: '2019-09-20T10:48:35-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -603,36 +586,29 @@ export default function () {
               ]
             },
             {
-              label: 'Code',
-              ehr_list_index: '2',
-              items: [
-                'label'
-              ]
-            },
-            {
               label: 'Intervention',
-              ehr_list_index: '3',
+              ehr_list_index: '2',
               items: [
                 'intervention'
               ]
             },
             {
               label: 'Status',
-              ehr_list_index: '4',
+              ehr_list_index: '3',
               items: [
                 'status'
               ]
             },
             {
               label: 'Laterally',
-              ehr_list_index: '5',
+              ehr_list_index: '4',
               items: [
                 'laterally'
               ]
             },
             {
               label: 'Extent',
-              ehr_list_index: '6',
+              ehr_list_index: '5',
               items: [
                 'extent'
               ]
@@ -654,15 +630,18 @@ export default function () {
                 ]
               },
               {
+                formCss: 'grid-left-to-right-1',
                 gIndex: '2',
                 gChildren: [
-                  'spacer',
-                  'label',
                   'intervention',
                   'status',
                   'laterally',
                   'extent'
                 ]
+              },
+              {
+                gIndex: '3',
+                gChildren: []
               }
             ],
             ehr_data: {
@@ -765,7 +744,7 @@ export default function () {
           fqn: 'caseMixGroup.analysis'
         }
       ],
-      generated: '2019-09-07T20:17:06-07:00',
+      generated: '2019-09-20T10:48:35-07:00',
       pageElements: {
         table: {
           elementKey: 'table',

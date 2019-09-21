@@ -403,7 +403,7 @@ export default function () {
           fqn: 'demographics.decisionMakerPhone'
         }
       ],
-      generated: '2019-09-07T20:15:28-07:00',
+      generated: '2019-09-20T11:24:30-07:00',
       pageElements: {
         page_form1: {
           elementKey: 'page_form1',
@@ -485,7 +485,7 @@ export default function () {
           fqn: 'allergies.text'
         }
       ],
-      generated: '2019-09-07T20:15:28-07:00',
+      generated: '2019-09-20T11:24:30-07:00',
       pageElements: {
         page_form: {
           elementKey: 'page_form',
@@ -519,7 +519,7 @@ export default function () {
           fqn: 'medical.history'
         }
       ],
-      generated: '2019-09-07T20:15:28-07:00',
+      generated: '2019-09-20T11:24:30-07:00',
       pageElements: {
         page_form6: {
           elementKey: 'page_form6',
@@ -585,7 +585,7 @@ export default function () {
           fqn: 'psychosocial.hobbies'
         }
       ],
-      generated: '2019-09-07T20:15:28-07:00',
+      generated: '2019-09-20T11:24:30-07:00',
       pageElements: {
         page_form8: {
           elementKey: 'page_form8',
@@ -688,7 +688,7 @@ export default function () {
           fqn: 'surgical.comments'
         }
       ],
-      generated: '2019-09-07T20:15:28-07:00',
+      generated: '2019-09-20T11:24:30-07:00',
       pageElements: {
         table_form12: {
           elementKey: 'table_form12',
@@ -1019,7 +1019,7 @@ export default function () {
           fqn: 'immunization.spacer26'
         }
       ],
-      generated: '2019-09-07T20:15:28-07:00',
+      generated: '2019-09-20T11:24:30-07:00',
       pageElements: {
         page_form15: {
           elementKey: 'page_form15',
@@ -1080,7 +1080,7 @@ export default function () {
           fqn: 'familyHistory.history'
         }
       ],
-      generated: '2019-09-07T20:15:28-07:00',
+      generated: '2019-09-20T11:24:30-07:00',
       pageElements: {
         page_form27: {
           elementKey: 'page_form27',
@@ -1103,7 +1103,7 @@ export default function () {
       pageTitle: 'Care team',
       pIndex: '8',
       isV2: true,
-      hasGridForm: true,
+      hasGridTable: true,
       pageChildren: [
         {
           elementKey: 'name',
@@ -1122,21 +1122,32 @@ export default function () {
           fqn: 'careTeam.profession'
         }
       ],
-      generated: '2019-09-07T20:15:28-07:00',
+      generated: '2019-09-20T11:24:30-07:00',
       pageElements: {
-        page_form29: {
-          elementKey: 'page_form29',
-          formKey: 'page_form29',
-          isPageForm: true,
-          ehr_groups: [
-            {
-              gIndex: '1',
-              gChildren: [
-                'name',
-                'profession'
-              ]
+        table_form29: {
+          elementKey: 'table_form29',
+          tableKey: 'table_form29',
+          isTable: true,
+          addButtonText: 'Add a care team member',
+          ehr_list: [],
+          form: {
+            elementKey: 'table_form29',
+            addButtonText: 'Add a care team member',
+            formKey: 'table_form29',
+            ehr_groups: [
+              {
+                gIndex: '1',
+                gChildren: [
+                  'name',
+                  'profession'
+                ]
+              }
+            ],
+            ehr_data: {
+              name: '',
+              profession: ''
             }
-          ]
+          }
         }
       }
     },
@@ -1145,7 +1156,7 @@ export default function () {
       pageTitle: 'Past appointments',
       pIndex: '9',
       isV2: true,
-      hasGridForm: true,
+      hasGridTable: true,
       pageChildren: [
         {
           elementKey: 'date',
@@ -1208,33 +1219,47 @@ export default function () {
           fqn: 'pastAppointments.diagnosis'
         }
       ],
-      generated: '2019-09-07T20:15:28-07:00',
+      generated: '2019-09-20T11:24:30-07:00',
       pageElements: {
-        page_form31: {
-          elementKey: 'page_form31',
-          formKey: 'page_form31',
-          isPageForm: true,
-          ehr_groups: [
-            {
-              formCss: 'section-divider',
-              gIndex: '1',
-              gChildren: [
-                'date',
-                'site',
-                'diagnosis',
-                'mrp'
-              ]
-            },
-            {
-              gIndex: '2',
-              gChildren: [
-                'date',
-                'site',
-                'reasonForVisit',
-                'diagnosis'
-              ]
+        table_form31: {
+          elementKey: 'table_form31',
+          tableKey: 'table_form31',
+          isTable: true,
+          addButtonText: 'Add a past appointment',
+          ehr_list: [],
+          form: {
+            elementKey: 'table_form31',
+            addButtonText: 'Add a past appointment',
+            formKey: 'table_form31',
+            ehr_groups: [
+              {
+                formCss: 'section-divider',
+                gIndex: '1',
+                gChildren: [
+                  'date',
+                  'site',
+                  'diagnosis',
+                  'mrp'
+                ]
+              },
+              {
+                gIndex: '2',
+                gChildren: [
+                  'date',
+                  'site',
+                  'reasonForVisit',
+                  'diagnosis'
+                ]
+              }
+            ],
+            ehr_data: {
+              date: '',
+              site: '',
+              diagnosis: '',
+              mrp: '',
+              reasonForVisit: ''
             }
-          ]
+          }
         }
       }
     }
