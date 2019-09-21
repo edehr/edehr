@@ -6,7 +6,6 @@ services:
       dockerfile: Dockerfile
       args:
         - NODE_ENV
-        - CLIENT_HOST
         - PROXY_PASS_HOST
         - SERVER_PORT
         - DOMAIN=${CLIENT_HOST}
