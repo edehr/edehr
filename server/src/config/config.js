@@ -21,9 +21,9 @@ export default class Config {
     function composeUrl ( scheme, host, port, part) {
       return scheme + '://' + host + (port ? ':' + port : '') + (part ? '/' + part : '')
     }
-    let url = composeUrl(cfg.scheme, cfg.host, cfg.clientPort)
+    let url = composeUrl(cfg.scheme, cfg.clientHost, cfg.clientPort)
     cfg.clientUrl = process.env.CLIENT_URL || url
-    url = composeUrl(cfg.scheme, cfg.host, cfg.apiPort, 'api')
+    url = composeUrl(cfg.scheme, cfg.apiHost, cfg.apiPort, 'api')
     cfg.apiUrl = process.env.API_URL || url
     // debug('config apiUrl', cfg.apiUrl)
     // debug('config clientUrl', cfg.clientUrl)

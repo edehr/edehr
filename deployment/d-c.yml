@@ -5,10 +5,11 @@ services:
       context: ../nginx
       dockerfile: Dockerfile
       args:
-        - HOST
+        - NODE_ENV
+        - CLIENT_HOST
         - PROXY_PASS_HOST
         - SERVER_PORT
-        - DOMAIN=${HOST}
+        - DOMAIN=${CLIENT_HOST}
     depends_on:
         - edehrapp
     ports:
@@ -32,7 +33,6 @@ services:
       - CLIENT_PORT
       - COOKIE_SECRET
       - DEBUG
-      - HOST
       - MONGODB_HOST
       - MONGODB_PORT
       - MONGODB_PWORD

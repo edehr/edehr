@@ -1,11 +1,11 @@
 {
   "scripts": {
-    "build:dev": "cp dev.env .env && docker-compose -f d-c.yml up --build",
-    "build:prod": "cp prod.env .env && docker-compose -f d-c.yml -f d-c-prod.yml up --build",
-    "run:dev": "cp dev.env .env && docker-compose -f d-c.yml up -d",
-    "run:prod": "cp prod.env .env && docker-compose -f d-c.yml -f d-c-prod.yml up -d",
-    "stop:dev": "docker-compose -f d-c.yml down",
-    "stop:prod": "docker-compose -f d-c.yml -f d-c-prod.yml down",
+    "dev:build": "cp dev.env .env && docker-compose -f d-c.yml up --build",
+    "dev:run": "cp dev.env .env && docker-compose -f d-c.yml up -d",
+    "dev:stop": "docker-compose -f d-c.yml down",
+    "prod:build": "cp prod.env .env && docker-compose -f d-c.yml -f d-c-prod.yml up --build",
+    "prod:run": "cp prod.env .env && docker-compose -f d-c.yml -f d-c-prod.yml up -d",
+    "prod:stop": "docker-compose -f d-c.yml -f d-c-prod.yml down",
     "final": ""
   },
   "scriptsComments": {

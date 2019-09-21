@@ -12,12 +12,12 @@ ____HERE
     exit 1
 }
 
-: "${IS_PROD:=$1}"
+: "${NODE_ENV:=$1}"
 : "${DOMAIN:=$2}"
 : "${PROXY_PASS_HOST:=$3}"
 : "${SERVER_PORT:=$4}"
 
-if [[ -z "${IS_PROD}" ]]; then
+if [[ -z "${NODE_ENV}" ]]; then
     usage
     exit
 fi
@@ -34,12 +34,14 @@ if [[ -z "${SERVER_PORT}" ]]; then
     exit
 fi
 
-grep -rl 'DOMAIN' /etc/nginx/sites-available | xargs sed -i "s|DOMAIN|${DOMAIN}|g"
-grep -rl 'PROXY_PASS_HOST' /etc/nginx/sites-available | xargs sed -i "s|PROXY_PASS_HOST|${PROXY_PASS_HOST}|g"
-grep -rl 'SERVER_PORT' /etc/nginx/sites-available | xargs sed -i "s|SERVER_PORT|${SERVER_PORT}|g"
+grep -rl '_DOMAIN' /etc/nginx | xargs sed -i "s|_DOMAIN|${DOMAIN}|g"
+grep -rl '_PROXY_PASS_HOST' /etc/nginx | xargs sed -i "s|_PROXY_PASS_HOST|${PROXY_PASS_HOST}|g"
+grep -rl '_SERVER_PORT' /etc/nginx | xargs sed -i "s|_SERVER_PORT|${SERVER_PORT}|g"
 
-if [[ "${IS_PROD}" = true ]]; then
+if [[ "${NODE_ENV}" = 'production' ]]; then
   ln -s /etc/nginx/sites-available/edehr_prod.conf /etc/nginx/sites-enabled/default.conf
 else
   ln -s /etc/nginx/sites-available/edehr_dev.conf /etc/nginx/sites-enabled/default.conf
 fi
+
+cat /etc/nginx/sites-enabled/up_stream.inc
