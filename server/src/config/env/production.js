@@ -8,10 +8,7 @@ const SCHEME = process.env.SCHEME || 'https'
 const COOKIE_SECRET = process.env.COOKIE_SECRET
 
 // default overrides
-const SERVER_PORT = process.env.SERVER_PORT || 27000
 //api port is the port number, if any, to use when constructing the API url
-const API_PORT = undefined
-const CLIENT_PORT = undefined
 const MONGODB_NAME = process.env.MONGODB_NAME || 'edehr-prod'
 
 module.exports = function (cfg) {
@@ -23,10 +20,6 @@ module.exports = function (cfg) {
   cfg.cookieSecret = COOKIE_SECRET
   cfg.cookieSettings = cookieSettings()
   cfg.app.title = cfg.app.title + ' - Development Environment'
-  cfg.port =  API_PORT
-  cfg.apiPort = API_PORT
-  cfg.serverPort = SERVER_PORT
-  cfg.clientPort = CLIENT_PORT
   cfg.database.name =  MONGODB_NAME
   return cfg
 }

@@ -12,52 +12,69 @@ Or see the compiled documents [here](https://bryan-gilbert.github.io/edehr/)
 
 
 ## Installation
+Git clone the repository
 ```
 cd /your/development/area
 git clone https://github.com/BCcampus/edehr.git
 ```
 
-To install packages run from project root:
+After cloning the repository or to update packages used by the server or client run this one step install script:
 ```
 npm run install
 ```
 
-## Run Development
+## Run Development - method 1
+This method starts the components one at a time. This is best for intensive development where you need to have 
+a close contact with the code and the components.
 
 Start the database server (in docker container)
 ```
-npm run start-db
+npm run start:db
 ```
 Start the API server. From project root:
 ```
-npm run start-server
+npm run start:server
 ```
-In another terminal window start the client. From project root:
+In another terminal session start the client. From project root:
 ```
-npm run start-client
+npm run start:client
 ```
 When done stop the database server. From project root:
 ```
-npm run database-stop
+npm run stop:db
 ```
 
-## Run Production
-Build the client. From project root:
+## Run Development - method 2
+
+This method starts all the components with one script, each in their own docker container.
 ```
+cd deployment
+# to build the containers and start attached to see debug logs
+npm run dev:build
+# to run containers that were built in detached mode
+npm run dev:run
+# to stop detached running containers
+npm run dev:stop
+```
+
+
+## Run Production
+
+First build the client vue project.
+```
+cd /<you project root>
 npm run build
 ```
 
-Start the database server (in docker container)
+Starts all the components with one script, each in their own docker container.
 ```
-npm run start-db
-```
-Start the API server. From project root:
-```
-npm run start-server:prod
-```
-When done stop the database server. From project root:
-```
-npm run database-stop
+cd deployment
+# to build the containers and start attached to see debug logs
+npm run prod:build
+# to run containers that were built in detached mode
+npm run prod:run
+# to stop detached running containers
+npm run prod:stop
 ```
 
 ## Lint

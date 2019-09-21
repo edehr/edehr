@@ -12,8 +12,10 @@ const DESCRIPTION = pkg.description
 // server port is the port the node js app listens on
 const SERVER_PORT = process.env.SERVER_PORT || 27000
 //api port is the port number, if any, to use when constructing the API url
-const API_PORT = process.env.API_PORT || 27000
-const CLIENT_PORT = process.env.CLIENT_PORT || 28000
+const API_PORT = process.env.API_PORT || undefined // 2700
+const CLIENT_PORT = process.env.CLIENT_PORT || undefined // 28000
+const API_HOST =   process.env.API_HOST
+const CLIENT_HOST =   process.env.CLIENT_HOST
 const MONGODB_PORT = process.env.MONGODB_PORT || 27018
 const MONGODB_HOST = process.env.MONGODB_HOST || 'localhost'
 const MONGODB_DEBUG = process.env.MONGODB_DEBUG || false
@@ -35,9 +37,11 @@ module.exports = function() {
       keywords: KEYWORDS
     },
     port: API_PORT,
+    apiHost: API_HOST,
     apiPort: API_PORT,
     serverPort: SERVER_PORT,
     clientPort: CLIENT_PORT,
+    clientHost: CLIENT_HOST,
     seedDB: SEED_DB,
     database: {
       name: MONGODB_NAME,
