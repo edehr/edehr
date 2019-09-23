@@ -75,7 +75,7 @@ export default {
     },
     tableDef () {
       let tables = EhrDefs.getPageTables(this.pageDataKey)
-      console.log('Vitals2 looking at tables', tables)
+      // console.log('Vitals2 looking at tables', tables)
       return tables[0]
     },
     errorList () {
@@ -91,19 +91,19 @@ export default {
     },
     refresh () {
       this.tableForm = this.ehrHelp.getTable(this.tableKey)
-      console.log('VITALS2 refresh ', this.tableKey, this.tableForm)
+      // console.log('VITALS2 refresh ', this.tableKey, this.tableForm)
 
       if (this.showingSpecial) {
         this.tableData = sampleData()
       } else {
         let tableKey = this.tableDef.tableKey
         let pageKey = this.ehrHelp.getPageKey()
-        console.log('Vitals2 refresh for page table key', pageKey, tableKey)
+        // console.log('Vitals2 refresh for page table key', pageKey, tableKey)
         let pageData = this.ehrHelp.getAsLoadedPageData(pageKey)
         let tableData = pageData[tableKey] || []
         // store the current data into local data property for display
         this.tableData = tableData
-        console.log('Vitals page and table data', pageData, this.tableData)
+        // console.log('Vitals page and table data', pageData, this.tableData)
         this.tableData.reverse()
       }
     }

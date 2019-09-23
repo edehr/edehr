@@ -7,6 +7,10 @@
       ehr-table-vertical(v-if="isVertical", :ehrHelp="ehrHelp", :tableDef="tableDef")
       ehr-table-stacked(v-if="isStacked", :ehrHelp="ehrHelp", :tableDef="tableDef", :tableForm="tableForm")
     ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDef", :errorList="errorList" )
+    div(v-if="hasData")
+      ui-button(v-on:buttonClicked="clearAllData", v-bind:secondary="true") Clear all table data
+      ui-confirm(ref="confirmDialog", v-on:confirm="proceedClearAllData")
+
 </template>
 
 <script>
@@ -14,8 +18,14 @@ import EhrDialogForm from './EhrDialogForm.vue'
 import EhrTableStacked from './EhrTableStacked'
 import EhrTableVertical from './EhrTableVertical'
 import UiButton from '../../../app/ui/UiButton.vue'
+import UiConfirm from '../../../app/ui/UiConfirm'
 import EventBus from '../../../helpers/event-bus'
 import { SHOW_TABLE_DIALOG_EVENT, PAGE_DATA_READY_EVENT } from '../../../helpers/event-bus'
+
+const TEXT = {
+  TITLE:  'Clear table',
+  MSG: 'Are you sure you want to delete all the data in the table? This can not be undone.'
+}
 
 
 export default {
@@ -23,6 +33,7 @@ export default {
     EhrTableStacked,
     EhrTableVertical,
     EhrDialogForm,
+    UiConfirm,
     UiButton
   },
   data: function () {
@@ -47,6 +58,9 @@ export default {
     tableKey () {
       return this.tableDef.tableKey
     },
+    hasData () {
+      return this.tableForm.hasData
+    },
     isVertical () {
       let isVert = this.tableDef.form.formOption === 'transpose'
       // console.log('EhrPageTable is table vertical? ', isVert,  this.tableDef.form.formOption)
@@ -66,6 +80,13 @@ export default {
     showDialog: function () {
       // console.log('EhrPageTable showDialog ', this.tableDef)
       this.ehrHelp.showDialog(this.tableKey)
+    },
+    clearAllData () {
+      this.$refs.confirmDialog.showDialog(TEXT.TITLE, TEXT.MSG)
+    },
+    proceedClearAllData () {
+      console.log('EhrPageTable clearAllData ', this.tableDef)
+      this.ehrHelp.clearTable(this.tableKey)
     },
     refresh () {
       this.tableForm = this.ehrHelp.getTable(this.tableKey)

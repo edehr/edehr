@@ -358,6 +358,22 @@ export default class EhrHelpV2 {
     return undefined
   }
 
+  clearTable (tableKey) {
+    const pageKey = this.pageKey
+    if (dbDialog) console.log('clearTable for table ', tableKey)
+    let asLoadedPageData = this.getAsLoadedPageData()
+    asLoadedPageData[tableKey] = []
+    // Prepare a payload to tell the API which property inside the assignment data to change
+    let payload = {
+      pageKey: pageKey,
+      value: asLoadedPageData
+    }
+    this._saveData(payload).then(() => {
+      this._dialogEvent(tableKey, false)
+    })
+    return undefined
+  }
+
   _saveData (payload) {
     const _this = this
     _this._setLoading(true)
