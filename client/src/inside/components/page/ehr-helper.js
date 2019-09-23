@@ -198,6 +198,7 @@ export default class EhrHelpV2 {
 
         let dbData = theData[tableKey]
         let tableData = []
+        tableForm.hasData = !! dbData
         if (dbData) {
           dbData.forEach((dbRow) => {
             let dataRow = JSON.parse(JSON.stringify(rowTemplate)) // deep copy the array
