@@ -24,7 +24,7 @@ export default {
   },
   computed: {
     hasData () {
-      return this.transposedColumns.length > 0
+      return this.tableForm.hasData
     }
   },
   methods: {

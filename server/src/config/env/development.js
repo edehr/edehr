@@ -3,7 +3,10 @@
 let defaultEnvConfig = require('./default')
 
 const TRACE_CALLS = true
-const HOST = process.env.HOST || 'localhost'
+const API_HOST =   process.env.API_HOST || 'localhost'
+const CLIENT_HOST =   process.env.CLIENT_HOST || 'localhost'
+const API_PORT = process.env.API_PORT || 27000
+const CLIENT_PORT = process.env.CLIENT_PORT || 28000
 const SCHEME = process.env.SCHEME || 'http'
 const COOKIE_SECRET = process.env.COOKIE_SECRET || 'this is the secret for the session cookie'
 
@@ -12,7 +15,11 @@ module.exports = function (cfg) {
   cfg.isProduction = false
   cfg.traceApiCalls = TRACE_CALLS
   cfg.scheme = SCHEME
-  // cfg.host = HOST
+  cfg.apiHost =  API_HOST
+  cfg.apiPort = API_PORT
+  cfg.clientPort = CLIENT_PORT
+  cfg.clientHost = CLIENT_HOST
+
   cfg.cookieSecret = COOKIE_SECRET
   cfg.cookieSettings = cookieSettings()
   cfg.app.title = cfg.app.title + ' - Development Environment'

@@ -9,9 +9,8 @@
         vitals-chart(v-bind:vitals="tableData", v-bind:vitalsModel="vitalsModel")
         ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDef", :inputs="dialogInputs", :errorList="errorList" )
       tab(name="Chart V2")
-        div(v-show="showTableAddButton")
-          ui-button(v-on:buttonClicked="showDialog") {{ tableDef.addButtonText }}
-        ehr-table-vertical(:ehrHelp="ehrHelp", :tableDef="tableDef")
+        ehr-page-table(:tableDef="tableDef", :ehrHelp="ehrHelp")
+
 </template>
 
 <script>
@@ -24,7 +23,7 @@ import EhrDefs from '../../../helpers/ehr-defs-grid'
 import EventBus from '../../../helpers/event-bus'
 import { PAGE_DATA_READY_EVENT } from '../../../helpers/event-bus'
 import EhrDialogForm from '../page/EhrDialogForm.vue'
-import EhrTableVertical from '../page/EhrTableVertical'
+import EhrPageTable from '../page/EhrPageTable'
 
 export default {
   components: {
@@ -33,7 +32,7 @@ export default {
     Tab,
     UiButton,
     VitalsChart,
-    EhrTableVertical
+    EhrPageTable
   },
   data () {
     return {
@@ -70,13 +69,9 @@ export default {
     uiProps () {
       return this.ehrHelp.getPageDef(this.pageDataKey)
     },
-    refreshData () {
-      this.refresh()
-      return this.tableData
-    },
     tableDef () {
       let tables = EhrDefs.getPageTables(this.pageDataKey)
-      console.log('Vitals2 looking at tables', tables)
+      // console.log('Vitals2 looking at tables', tables)
       return tables[0]
     },
     errorList () {
@@ -92,19 +87,19 @@ export default {
     },
     refresh () {
       this.tableForm = this.ehrHelp.getTable(this.tableKey)
-      console.log('VITALS2 refresh ', this.tableKey, this.tableForm)
+      // console.log('VITALS2 refresh ', this.tableKey, this.tableForm)
 
       if (this.showingSpecial) {
         this.tableData = sampleData()
       } else {
         let tableKey = this.tableDef.tableKey
         let pageKey = this.ehrHelp.getPageKey()
-        console.log('Vitals2 refresh for page table key', pageKey, tableKey)
+        // console.log('Vitals2 refresh for page table key', pageKey, tableKey)
         let pageData = this.ehrHelp.getAsLoadedPageData(pageKey)
         let tableData = pageData[tableKey] || []
         // store the current data into local data property for display
         this.tableData = tableData
-        console.log('Vitals page and table data', pageData, this.tableData)
+        // console.log('Vitals page and table data', pageData, this.tableData)
         this.tableData.reverse()
       }
     }

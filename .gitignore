@@ -34,3 +34,4 @@ docs/.vuepress/dist/**
 **/dbDump/**
 
 */.env
+server/.session/

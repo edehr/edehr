@@ -198,6 +198,7 @@ export default class EhrHelpV2 {
 
         let dbData = theData[tableKey]
         let tableData = []
+        tableForm.hasData = !! dbData
         if (dbData) {
           dbData.forEach((dbRow) => {
             let dataRow = JSON.parse(JSON.stringify(rowTemplate)) // deep copy the array
@@ -346,6 +347,22 @@ export default class EhrHelpV2 {
     }
     table.push(inputs)
     if (dbDialog) console.log('EhrHelpV2 storing this: asLoadedPageData', asLoadedPageData, 'table', table, tableKey, dialog.tableKey)
+    // Prepare a payload to tell the API which property inside the assignment data to change
+    let payload = {
+      pageKey: pageKey,
+      value: asLoadedPageData
+    }
+    this._saveData(payload).then(() => {
+      this._dialogEvent(tableKey, false)
+    })
+    return undefined
+  }
+
+  clearTable (tableKey) {
+    const pageKey = this.pageKey
+    if (dbDialog) console.log('clearTable for table ', tableKey)
+    let asLoadedPageData = this.getAsLoadedPageData()
+    asLoadedPageData[tableKey] = []
     // Prepare a payload to tell the API which property inside the assignment data to change
     let payload = {
       pageKey: pageKey,

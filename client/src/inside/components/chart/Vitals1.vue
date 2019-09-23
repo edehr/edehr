@@ -61,7 +61,7 @@ export default {
       return this.tableData
     },
     tableDef () {
-      console.log('Vitals1 looking for table def', this.uiProps)
+      // console.log('Vitals1 looking for table def', this.uiProps)
       return this.uiProps.tables[0] || {}
     },
     errorList () {
@@ -80,12 +80,12 @@ export default {
       } else {
         let tableKey = this.tableDef.tableKey
         let pageKey = this.ehrHelp.getPageKey()
-        console.log('Vitals1 refresh for page table key', pageKey, tableKey)
+        // console.log('Vitals1 refresh for page table key', pageKey, tableKey)
         let pageData = this.ehrHelp.getAsLoadedPageData(pageKey)
         let tableData = pageData[tableKey] || []
         // store the current data into local data property for display
         this.tableData = tableData
-        console.log('Vitals page and table data', pageData, this.tableData)
+        // console.log('Vitals page and table data', pageData, this.tableData)
         this.tableData.reverse()
       }
     }
