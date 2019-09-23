@@ -69,10 +69,6 @@ export default {
     uiProps () {
       return this.ehrHelp.getPageDef(this.pageDataKey)
     },
-    refreshData () {
-      this.refresh()
-      return this.tableData
-    },
     tableDef () {
       let tables = EhrDefs.getPageTables(this.pageDataKey)
       // console.log('Vitals2 looking at tables', tables)

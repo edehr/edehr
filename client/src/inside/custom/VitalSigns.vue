@@ -21,6 +21,8 @@ import VitalSignsV2 from '../components/chart/VitalSignsV2'
 import EhrDefs from '../../helpers/ehr-defs-grid'
 import EhrHelp from '../../helpers/ehr-helper'
 import EhrHelpV2 from '../components/page/ehr-helper'
+import EventBus from '../../helpers/event-bus'
+import { PAGE_DATA_REFRESH_EVENT } from '../../helpers/event-bus'
 
 export default {
   components: {
@@ -46,6 +48,9 @@ export default {
       console.log('VitalSigns construct v1 helper')
       this.ehrHelp = new EhrHelp(this, this.$store, this.pageDataKey, this.uiProps)
     }
+  },
+  mounted: function () {
+    EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
   }
   // Note we do not need before route leave handlers because there is no page form
 }
