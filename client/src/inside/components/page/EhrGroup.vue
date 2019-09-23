@@ -28,14 +28,11 @@ export default {
   },
   computed: {
     groupClass () {
-      let css
+      let css = this.group.formCss
       const theDefault = 'grid-left-to-right-3'
-      if (this.group.formCss) {
-        css = this.group.formCss
-        if (!this.group.formCss.includes('grid')) {
-          css += ' ' + theDefault
-        }
-      } else {
+      if (css && !css.includes('grid')) {
+        css += ' ' + theDefault
+      } else if (!css) {
         css = theDefault
       }
       return css

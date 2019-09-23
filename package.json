@@ -49,7 +49,7 @@
     "test": "run tests",
     "doc": "update vuepress documentation",
     "*:full:*": "Ditto but first build the static client side."
-  }
+  },
   "devDependencies": {
     "vuepress": "^1.0.0-beta.2"
   }
