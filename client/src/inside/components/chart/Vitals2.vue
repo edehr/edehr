@@ -9,9 +9,8 @@
         vitals-chart(v-bind:vitals="tableData", v-bind:vitalsModel="vitalsModel")
         ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDef", :inputs="dialogInputs", :errorList="errorList" )
       tab(name="Chart V2")
-        div(v-show="showTableAddButton")
-          ui-button(v-on:buttonClicked="showDialog") {{ tableDef.addButtonText }}
-        ehr-table-vertical(:ehrHelp="ehrHelp", :tableDef="tableDef")
+        ehr-page-table(:tableDef="tableDef", :ehrHelp="ehrHelp")
+
 </template>
 
 <script>
@@ -24,7 +23,7 @@ import EhrDefs from '../../../helpers/ehr-defs-grid'
 import EventBus from '../../../helpers/event-bus'
 import { PAGE_DATA_READY_EVENT } from '../../../helpers/event-bus'
 import EhrDialogForm from '../page/EhrDialogForm.vue'
-import EhrTableVertical from '../page/EhrTableVertical'
+import EhrPageTable from '../page/EhrPageTable'
 
 export default {
   components: {
@@ -33,7 +32,7 @@ export default {
     Tab,
     UiButton,
     VitalsChart,
-    EhrTableVertical
+    EhrPageTable
   },
   data () {
     return {
