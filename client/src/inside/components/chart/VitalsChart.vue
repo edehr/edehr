@@ -72,13 +72,13 @@ export default {
       vitalChart.drawYLine(y)
       y += space
 
+      ht = 210
+      vitalChart.drawChart(this.bloodPressure, y, ht)
+      y += ht + space
+
       space = 60
       ht = 250
       vitalChart.drawChart(this.temperatures, y, ht)
-      y += ht + space
-
-      ht = 210
-      vitalChart.drawChart(this.bloodPressure, y, ht)
       y += ht + space
 
       ht = 250

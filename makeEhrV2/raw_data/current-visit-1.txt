@@ -31,21 +31,21 @@ Discharged}"	eCell	{Mandatory: TRUE}	eCell	eCell	eCell	{Data_case_study: Admitte
 {inputType: text}	eCell	{Label: Vital taken day}	{elementKey: day}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Vital taken day}	{tableColumn: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Vital taken time}	{elementKey: time}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Vital taken time}	{tableColumn: 3}	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: spacer}	eCell	eCell	eCell	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Temperature}	{elementKey: temperature}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Temperature}	{tableColumn: 4}	eCell	eCell	eCell	eCell	eCell	{Suffix: Celcius}	eCell	eCell	eCell	eCell	{Data_case_study: 36.5}	eCell	eCell
-{inputType: select}	eCell	{Label: Temperature source}	{elementKey: source}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Source}	{tableColumn: 5}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: Oral
+{inputType: text}	eCell	{Label: Systolic blood pressure}	{elementKey: systolic}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Systolic blood pressure}	{tableColumn: 4}	eCell	{addButtonText: Add a row to the test table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: 180}	eCell	eCell
+{inputType: text}	eCell	{Label: Diastolic blood pressure}	{elementKey: diastolic}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Diastolic blood pressure}	{tableColumn: 5}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: 90}	eCell	eCell
+{inputType: select}	eCell	{Label: Patient position}	{elementKey: patientPosition}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Patient position}	{tableColumn: 6}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: Supine
+Sitting
+Standing}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: sitting}	eCell	eCell
+{inputType: text}	eCell	{Label: Temperature}	{elementKey: temperature}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Temperature}	{tableColumn: 7}	eCell	eCell	eCell	eCell	eCell	{Suffix: Celcius}	eCell	eCell	eCell	eCell	{Data_case_study: 36.5}	eCell	eCell
+{inputType: select}	eCell	{Label: Temperature source}	{elementKey: source}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Source}	{tableColumn: 8}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: Oral
 Axilla
 Rectal
 Tympanic}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Axilla}	eCell	eCell
 {inputType: spacer}	eCell	eCell	eCell	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Pulse site}	{elementKey: strength}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Pulse site}	{tableColumn: 6}	eCell	eCell	eCell	eCell	{Options: Peripheral}	eCell	eCell	eCell	eCell	eCell	{Data_case_study: strong}	eCell	eCell
-{inputType: text}	eCell	{Label: Pulse rate}	{elementKey: rate}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Pulse rate}	{tableColumn: 7}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: 96}	eCell	eCell
-{inputType: select}	eCell	{Label: Pulse rhythm}	{elementKey: rhythm}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Pulse rhythm}	{tableColumn: 8}	eCell	eCell	eCell	eCell	"{Options: Regular
+{inputType: select}	eCell	{Label: Pulse site}	{elementKey: strength}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Pulse site}	{tableColumn: 9}	eCell	eCell	eCell	eCell	{Options: Peripheral}	eCell	eCell	eCell	eCell	eCell	{Data_case_study: strong}	eCell	eCell
+{inputType: text}	eCell	{Label: Pulse rate}	{elementKey: rate}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Pulse rate}	{tableColumn: 10}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: 96}	eCell	eCell
+{inputType: select}	eCell	{Label: Pulse rhythm}	{elementKey: rhythm}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Pulse rhythm}	{tableColumn: 11}	eCell	eCell	eCell	eCell	"{Options: Regular
 Irregular}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: regular}	eCell	eCell
-{inputType: text}	eCell	{Label: Systolic blood pressure}	{elementKey: systolic}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Systolic blood pressure}	{tableColumn: 9}	eCell	{addButtonText: Add a row to the test table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: 180}	eCell	eCell
-{inputType: text}	eCell	{Label: Diastolic blood pressure}	{elementKey: diastolic}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Diastolic blood pressure}	{tableColumn: 10}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: 90}	eCell	eCell
-{inputType: select}	eCell	{Label: Patient position}	{elementKey: patientPosition}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Patient position}	{tableColumn: 11}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: Supine
-Sitting
-Standing}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: sitting}	eCell	eCell
 {inputType: text}	eCell	{Label: Respiration rate}	{elementKey: respirationRate}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Respiration rate}	{tableColumn: 12}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: 28}	eCell	eCell
 {inputType: spacer}	eCell	eCell	eCell	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: spacer}	eCell	eCell	eCell	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell

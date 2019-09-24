@@ -137,7 +137,7 @@ export default function () {
           fqn: 'visit.transferOutTime'
         }
       ],
-      generated: '2019-09-20T11:22:10-07:00',
+      generated: '2019-09-23T16:14:53-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -295,10 +295,53 @@ export default function () {
           fqn: 'vitals.time'
         },
         {
-          elementKey: 'spacer39',
+          elementKey: 'spacer7',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'vitals.spacer39'
+          fqn: 'vitals.spacer7'
+        },
+        {
+          elementKey: 'systolic',
+          addButtonText: 'Add a row to the test table',
+          dataCaseStudy: '180',
+          formIndex: '1',
+          inputType: 'text',
+          label: 'Systolic blood pressure',
+          tableColumn: '4',
+          tableLabel: 'Systolic blood pressure',
+          fqn: 'vitals.systolic'
+        },
+        {
+          elementKey: 'diastolic',
+          dataCaseStudy: '90',
+          formIndex: '1',
+          inputType: 'text',
+          label: 'Diastolic blood pressure',
+          tableColumn: '5',
+          tableLabel: 'Diastolic blood pressure',
+          fqn: 'vitals.diastolic'
+        },
+        {
+          elementKey: 'patientPosition',
+          dataCaseStudy: 'sitting',
+          formIndex: '1',
+          inputType: 'select',
+          label: 'Patient position',
+          options: [
+            {
+              text: 'Supine'
+            },
+            {
+              text: 'Sitting'
+            },
+            {
+              text: 'Standing'
+            }
+          ],
+          tableColumn: '6',
+          tableCss: 'hr-table',
+          tableLabel: 'Patient position',
+          fqn: 'vitals.patientPosition'
         },
         {
           elementKey: 'temperature',
@@ -307,7 +350,7 @@ export default function () {
           inputType: 'text',
           label: 'Temperature',
           suffix: 'Celcius',
-          tableColumn: '4',
+          tableColumn: '7',
           tableLabel: 'Temperature',
           fqn: 'vitals.temperature'
         },
@@ -331,16 +374,16 @@ export default function () {
               text: 'Tympanic'
             }
           ],
-          tableColumn: '5',
+          tableColumn: '8',
           tableCss: 'hr-table',
           tableLabel: 'Source',
           fqn: 'vitals.source'
         },
         {
-          elementKey: 'spacer40',
+          elementKey: 'spacer8',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'vitals.spacer40'
+          fqn: 'vitals.spacer8'
         },
         {
           elementKey: 'strength',
@@ -353,7 +396,7 @@ export default function () {
               text: 'Peripheral'
             }
           ],
-          tableColumn: '6',
+          tableColumn: '9',
           tableLabel: 'Pulse site',
           fqn: 'vitals.strength'
         },
@@ -363,7 +406,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Pulse rate',
-          tableColumn: '7',
+          tableColumn: '10',
           tableLabel: 'Pulse rate',
           fqn: 'vitals.rate'
         },
@@ -381,52 +424,9 @@ export default function () {
               text: 'Irregular'
             }
           ],
-          tableColumn: '8',
+          tableColumn: '11',
           tableLabel: 'Pulse rhythm',
           fqn: 'vitals.rhythm'
-        },
-        {
-          elementKey: 'systolic',
-          addButtonText: 'Add a row to the test table',
-          dataCaseStudy: '180',
-          formIndex: '1',
-          inputType: 'text',
-          label: 'Systolic blood pressure',
-          tableColumn: '9',
-          tableLabel: 'Systolic blood pressure',
-          fqn: 'vitals.systolic'
-        },
-        {
-          elementKey: 'diastolic',
-          dataCaseStudy: '90',
-          formIndex: '1',
-          inputType: 'text',
-          label: 'Diastolic blood pressure',
-          tableColumn: '10',
-          tableLabel: 'Diastolic blood pressure',
-          fqn: 'vitals.diastolic'
-        },
-        {
-          elementKey: 'patientPosition',
-          dataCaseStudy: 'sitting',
-          formIndex: '1',
-          inputType: 'select',
-          label: 'Patient position',
-          options: [
-            {
-              text: 'Supine'
-            },
-            {
-              text: 'Sitting'
-            },
-            {
-              text: 'Standing'
-            }
-          ],
-          tableColumn: '11',
-          tableCss: 'hr-table',
-          tableLabel: 'Patient position',
-          fqn: 'vitals.patientPosition'
         },
         {
           elementKey: 'respirationRate',
@@ -439,16 +439,16 @@ export default function () {
           fqn: 'vitals.respirationRate'
         },
         {
-          elementKey: 'spacer41',
+          elementKey: 'spacer9',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'vitals.spacer41'
+          fqn: 'vitals.spacer9'
         },
         {
-          elementKey: 'spacer42',
+          elementKey: 'spacer10',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'vitals.spacer42'
+          fqn: 'vitals.spacer10'
         },
         {
           elementKey: 'oxygenSaturation',
@@ -498,7 +498,7 @@ export default function () {
           fqn: 'vitals.flowRate'
         }
       ],
-      generated: '2019-09-20T11:22:10-07:00',
+      generated: '2019-09-23T16:14:53-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -532,51 +532,15 @@ export default function () {
               ]
             },
             {
-              label: 'Temperature',
-              ehr_list_index: '4',
-              items: [
-                'temperature'
-              ]
-            },
-            {
-              label: 'Source',
-              tableCss: 'hr-table',
-              ehr_list_index: '5',
-              items: [
-                'source'
-              ]
-            },
-            {
-              label: 'Pulse site',
-              ehr_list_index: '6',
-              items: [
-                'strength'
-              ]
-            },
-            {
-              label: 'Pulse rate',
-              ehr_list_index: '7',
-              items: [
-                'rate'
-              ]
-            },
-            {
-              label: 'Pulse rhythm',
-              ehr_list_index: '8',
-              items: [
-                'rhythm'
-              ]
-            },
-            {
               label: 'Systolic blood pressure',
-              ehr_list_index: '9',
+              ehr_list_index: '4',
               items: [
                 'systolic'
               ]
             },
             {
               label: 'Diastolic blood pressure',
-              ehr_list_index: '10',
+              ehr_list_index: '5',
               items: [
                 'diastolic'
               ]
@@ -584,9 +548,45 @@ export default function () {
             {
               label: 'Patient position',
               tableCss: 'hr-table',
-              ehr_list_index: '11',
+              ehr_list_index: '6',
               items: [
                 'patientPosition'
+              ]
+            },
+            {
+              label: 'Temperature',
+              ehr_list_index: '7',
+              items: [
+                'temperature'
+              ]
+            },
+            {
+              label: 'Source',
+              tableCss: 'hr-table',
+              ehr_list_index: '8',
+              items: [
+                'source'
+              ]
+            },
+            {
+              label: 'Pulse site',
+              ehr_list_index: '9',
+              items: [
+                'strength'
+              ]
+            },
+            {
+              label: 'Pulse rate',
+              ehr_list_index: '10',
+              items: [
+                'rate'
+              ]
+            },
+            {
+              label: 'Pulse rhythm',
+              ehr_list_index: '11',
+              items: [
+                'rhythm'
               ]
             },
             {
@@ -639,19 +639,19 @@ export default function () {
                 gChildren: [
                   'day',
                   'time',
-                  'spacer39',
-                  'temperature',
-                  'source',
-                  'spacer40',
-                  'strength',
-                  'rate',
-                  'rhythm',
+                  'spacer7',
                   'systolic',
                   'diastolic',
                   'patientPosition',
+                  'temperature',
+                  'source',
+                  'spacer8',
+                  'strength',
+                  'rate',
+                  'rhythm',
                   'respirationRate',
-                  'spacer41',
-                  'spacer42',
+                  'spacer9',
+                  'spacer10',
                   'oxygenSaturation',
                   'oxygenMode',
                   'flowRate'
@@ -663,14 +663,14 @@ export default function () {
               profession: '',
               day: '',
               time: '',
+              systolic: '',
+              diastolic: '',
+              patientPosition: '',
               temperature: '',
               source: '',
               strength: '',
               rate: '',
               rhythm: '',
-              systolic: '',
-              diastolic: '',
-              patientPosition: '',
               respirationRate: '',
               oxygenSaturation: '',
               oxygenMode: '',
@@ -739,7 +739,7 @@ export default function () {
           fqn: 'fluidBalance.fluidOut'
         }
       ],
-      generated: '2019-09-20T11:22:10-07:00',
+      generated: '2019-09-23T16:14:53-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1080,11 +1080,11 @@ export default function () {
           fqn: 'neurological.leftPupilResponseToLight'
         },
         {
-          elementKey: 'spacer50',
+          elementKey: 'spacer18',
           dataCaseStudy: 'Equal',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'neurological.spacer50'
+          fqn: 'neurological.spacer18'
         },
         {
           elementKey: 'rightPupilSize',
@@ -1303,10 +1303,10 @@ export default function () {
           fqn: 'neurological.motorRightArm'
         },
         {
-          elementKey: 'spacer53',
+          elementKey: 'spacer21',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'neurological.spacer53'
+          fqn: 'neurological.spacer21'
         },
         {
           elementKey: 'motorLeftLeg',
@@ -1552,7 +1552,7 @@ export default function () {
           fqn: 'neurological.strokeAssessmentCalculation'
         }
       ],
-      generated: '2019-09-20T11:22:10-07:00',
+      generated: '2019-09-23T16:14:53-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1829,7 +1829,7 @@ export default function () {
                 gChildren: [
                   'leftPupilSize',
                   'leftPupilResponseToLight',
-                  'spacer50',
+                  'spacer18',
                   'rightPupilSize',
                   'rightPupilResponseToLight',
                   'bothPupils'
@@ -1852,7 +1852,7 @@ export default function () {
                   'levelOfConciousnessCommands',
                   'motorLeftArm',
                   'motorRightArm',
-                  'spacer53',
+                  'spacer21',
                   'motorLeftLeg',
                   'motorRightLeg',
                   'limbAtaxia',
@@ -2288,7 +2288,7 @@ export default function () {
           fqn: 'respiratory.generalComments'
         }
       ],
-      generated: '2019-09-20T11:22:10-07:00',
+      generated: '2019-09-23T16:14:53-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2590,10 +2590,10 @@ export default function () {
           fqn: 'cardiovascular.skinAppearance'
         },
         {
-          elementKey: 'spacer63',
+          elementKey: 'spacer31',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'cardiovascular.spacer63'
+          fqn: 'cardiovascular.spacer31'
         },
         {
           elementKey: 'labelCapRefill',
@@ -3012,7 +3012,7 @@ export default function () {
           fqn: 'cardiovascular.comments'
         }
       ],
-      generated: '2019-09-20T11:22:10-07:00',
+      generated: '2019-09-23T16:14:53-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -3196,7 +3196,7 @@ export default function () {
                 formCss: 'grid-left-to-right-5 section-divider',
                 gIndex: '3',
                 gChildren: [
-                  'spacer63',
+                  'spacer31',
                   'labelCapRefill',
                   'labelTemperature',
                   'labelPeripheral',
@@ -3388,18 +3388,18 @@ export default function () {
           fqn: 'gastrointestinal.condition'
         },
         {
-          elementKey: 'spacer67',
+          elementKey: 'spacer35',
           dataCaseStudy: 'Equal',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'gastrointestinal.spacer67'
+          fqn: 'gastrointestinal.spacer35'
         },
         {
-          elementKey: 'spacer68',
+          elementKey: 'spacer36',
           dataCaseStudy: 'Equal',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'gastrointestinal.spacer68'
+          fqn: 'gastrointestinal.spacer36'
         },
         {
           elementKey: 'pain',
@@ -3420,18 +3420,18 @@ export default function () {
           fqn: 'gastrointestinal.pain'
         },
         {
-          elementKey: 'spacer69',
+          elementKey: 'spacer37',
           dataCaseStudy: 'Equal',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'gastrointestinal.spacer69'
+          fqn: 'gastrointestinal.spacer37'
         },
         {
-          elementKey: 'spacer70',
+          elementKey: 'spacer38',
           dataCaseStudy: 'Equal',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'gastrointestinal.spacer70'
+          fqn: 'gastrointestinal.spacer38'
         },
         {
           elementKey: 'aLabel',
@@ -3550,11 +3550,11 @@ export default function () {
           fqn: 'gastrointestinal.reason'
         },
         {
-          elementKey: 'spacer71',
+          elementKey: 'spacer39',
           dataCaseStudy: 'Equal',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'gastrointestinal.spacer71'
+          fqn: 'gastrointestinal.spacer39'
         },
         {
           elementKey: 'npoSinceDay',
@@ -3690,7 +3690,7 @@ export default function () {
           fqn: 'gastrointestinal.comments'
         }
       ],
-      generated: '2019-09-20T11:22:10-07:00',
+      generated: '2019-09-23T16:14:53-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -3868,11 +3868,11 @@ export default function () {
                   'bowel',
                   'bSounds',
                   'condition',
-                  'spacer67',
-                  'spacer68',
+                  'spacer35',
+                  'spacer36',
                   'pain',
-                  'spacer69',
-                  'spacer70',
+                  'spacer37',
+                  'spacer38',
                   'aLabel'
                 ]
               },
@@ -3894,7 +3894,7 @@ export default function () {
                 gChildren: [
                   'eating',
                   'reason',
-                  'spacer71',
+                  'spacer39',
                   'npoSinceDay',
                   'npoSinceTime',
                   'weightLoss'
