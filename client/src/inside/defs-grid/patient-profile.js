@@ -403,7 +403,7 @@ export default function () {
           fqn: 'demographics.decisionMakerPhone'
         }
       ],
-      generated: '2019-09-20T11:24:30-07:00',
+      generated: '2019-09-23T16:04:42-07:00',
       pageElements: {
         page_form1: {
           elementKey: 'page_form1',
@@ -485,7 +485,7 @@ export default function () {
           fqn: 'allergies.text'
         }
       ],
-      generated: '2019-09-20T11:24:30-07:00',
+      generated: '2019-09-23T16:04:42-07:00',
       pageElements: {
         page_form: {
           elementKey: 'page_form',
@@ -519,7 +519,7 @@ export default function () {
           fqn: 'medical.history'
         }
       ],
-      generated: '2019-09-20T11:24:30-07:00',
+      generated: '2019-09-23T16:04:42-07:00',
       pageElements: {
         page_form6: {
           elementKey: 'page_form6',
@@ -585,7 +585,7 @@ export default function () {
           fqn: 'psychosocial.hobbies'
         }
       ],
-      generated: '2019-09-20T11:24:30-07:00',
+      generated: '2019-09-23T16:04:42-07:00',
       pageElements: {
         page_form8: {
           elementKey: 'page_form8',
@@ -606,7 +606,7 @@ export default function () {
               gIndex: '2',
               gChildren: [
                 {
-                  elementKey: 'subgroup32',
+                  elementKey: 'subgroup33',
                   sgChildren: []
                 }
               ]
@@ -688,7 +688,7 @@ export default function () {
           fqn: 'surgical.comments'
         }
       ],
-      generated: '2019-09-20T11:24:30-07:00',
+      generated: '2019-09-23T16:04:42-07:00',
       pageElements: {
         table_form12: {
           elementKey: 'table_form12',
@@ -1019,7 +1019,7 @@ export default function () {
           fqn: 'immunization.spacer26'
         }
       ],
-      generated: '2019-09-20T11:24:30-07:00',
+      generated: '2019-09-23T16:04:42-07:00',
       pageElements: {
         page_form15: {
           elementKey: 'page_form15',
@@ -1080,7 +1080,7 @@ export default function () {
           fqn: 'familyHistory.history'
         }
       ],
-      generated: '2019-09-20T11:24:30-07:00',
+      generated: '2019-09-23T16:04:42-07:00',
       pageElements: {
         page_form27: {
           elementKey: 'page_form27',
@@ -1122,7 +1122,7 @@ export default function () {
           fqn: 'careTeam.profession'
         }
       ],
-      generated: '2019-09-20T11:24:30-07:00',
+      generated: '2019-09-23T16:04:42-07:00',
       pageElements: {
         table_form29: {
           elementKey: 'table_form29',
@@ -1189,7 +1189,7 @@ export default function () {
         {
           elementKey: 'date',
           dataCaseStudy: '1 week ago',
-          formIndex: '1',
+          formIndex: '2',
           inputType: 'text',
           label: 'Date',
           fqn: 'pastAppointments.date'
@@ -1197,7 +1197,7 @@ export default function () {
         {
           elementKey: 'site',
           dataCaseStudy: 'Clinic',
-          formIndex: '1',
+          formIndex: '2',
           inputType: 'text',
           label: 'Site',
           fqn: 'pastAppointments.site'
@@ -1205,7 +1205,7 @@ export default function () {
         {
           elementKey: 'reasonForVisit',
           dataCaseStudy: 'Shortness of breath x 24 hrs',
-          formIndex: '1',
+          formIndex: '2',
           inputType: 'text',
           label: 'Reason for visit',
           fqn: 'pastAppointments.reasonForVisit'
@@ -1213,13 +1213,13 @@ export default function () {
         {
           elementKey: 'diagnosis',
           dataCaseStudy: 'COPD',
-          formIndex: '1',
+          formIndex: '2',
           inputType: 'text',
           label: 'Diagnosis',
           fqn: 'pastAppointments.diagnosis'
         }
       ],
-      generated: '2019-09-20T11:24:30-07:00',
+      generated: '2019-09-23T16:04:42-07:00',
       pageElements: {
         table_form31: {
           elementKey: 'table_form31',
@@ -1233,7 +1233,6 @@ export default function () {
             formKey: 'table_form31',
             ehr_groups: [
               {
-                formCss: 'section-divider',
                 gIndex: '1',
                 gChildren: [
                   'date',
@@ -1241,9 +1240,29 @@ export default function () {
                   'diagnosis',
                   'mrp'
                 ]
-              },
+              }
+            ],
+            ehr_data: {
+              date: '',
+              site: '',
+              diagnosis: '',
+              mrp: ''
+            }
+          }
+        },
+        table_form32: {
+          elementKey: 'table_form32',
+          tableKey: 'table_form32',
+          isTable: true,
+          addButtonText: 'Add an outpatient appointment',
+          ehr_list: [],
+          form: {
+            elementKey: 'table_form32',
+            addButtonText: 'Add an outpatient appointment',
+            formKey: 'table_form32',
+            ehr_groups: [
               {
-                gIndex: '2',
+                gIndex: '1',
                 gChildren: [
                   'date',
                   'site',
@@ -1255,9 +1274,8 @@ export default function () {
             ehr_data: {
               date: '',
               site: '',
-              diagnosis: '',
-              mrp: '',
-              reasonForVisit: ''
+              reasonForVisit: '',
+              diagnosis: ''
             }
           }
         }
