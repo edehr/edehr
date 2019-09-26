@@ -137,7 +137,7 @@ export default function () {
           fqn: 'visit.transferOutTime'
         }
       ],
-      generated: '2019-09-23T16:14:53-07:00',
+      generated: '2019-09-26T11:51:02-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -425,6 +425,7 @@ export default function () {
             }
           ],
           tableColumn: '11',
+          tableCss: 'hr-table',
           tableLabel: 'Pulse rhythm',
           fqn: 'vitals.rhythm'
         },
@@ -498,7 +499,7 @@ export default function () {
           fqn: 'vitals.flowRate'
         }
       ],
-      generated: '2019-09-23T16:14:53-07:00',
+      generated: '2019-09-26T11:51:02-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -584,6 +585,7 @@ export default function () {
             },
             {
               label: 'Pulse rhythm',
+              tableCss: 'hr-table',
               ehr_list_index: '11',
               items: [
                 'rhythm'
@@ -739,7 +741,7 @@ export default function () {
           fqn: 'fluidBalance.fluidOut'
         }
       ],
-      generated: '2019-09-23T16:14:53-07:00',
+      generated: '2019-09-26T11:51:02-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1552,7 +1554,7 @@ export default function () {
           fqn: 'neurological.strokeAssessmentCalculation'
         }
       ],
-      generated: '2019-09-23T16:14:53-07:00',
+      generated: '2019-09-26T11:51:02-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2288,7 +2290,7 @@ export default function () {
           fqn: 'respiratory.generalComments'
         }
       ],
-      generated: '2019-09-23T16:14:53-07:00',
+      generated: '2019-09-26T11:51:02-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2652,6 +2654,7 @@ export default function () {
             }
           ],
           tableColumn: '4',
+          tableCss: 'hideLabel',
           tableLabel: 'Cap refill: Right hand',
           fqn: 'cardiovascular.capRefillLeftHand'
         },
@@ -2673,6 +2676,7 @@ export default function () {
             }
           ],
           tableColumn: '5',
+          tableCss: 'hideLabel',
           tableLabel: 'Temperature: Right hand',
           fqn: 'cardiovascular.temperatureRightHand'
         },
@@ -2700,6 +2704,7 @@ export default function () {
             }
           ],
           tableColumn: '6',
+          tableCss: 'hideLabel',
           tableLabel: 'Peripheral edema: Right hand',
           fqn: 'cardiovascular.peripheralEdemaRightHand'
         },
@@ -2718,7 +2723,7 @@ export default function () {
             }
           ],
           tableColumn: '7',
-          tableCss: 'hr-table',
+          tableCss: 'hr-table hideLabel',
           tableLabel: 'Nail bed colour: Right hand',
           fqn: 'cardiovascular.nailBedColourRightHand'
         },
@@ -2745,6 +2750,7 @@ export default function () {
             }
           ],
           tableColumn: '8',
+          tableCss: 'hideLabel',
           tableLabel: 'Cap refill: Left hand',
           fqn: 'cardiovascular.capRefillRightHand'
         },
@@ -2766,6 +2772,7 @@ export default function () {
             }
           ],
           tableColumn: '9',
+          tableCss: 'hideLabel',
           tableLabel: 'Temperature: Left hand',
           fqn: 'cardiovascular.temperatureLeftHand'
         },
@@ -2793,6 +2800,7 @@ export default function () {
             }
           ],
           tableColumn: '10',
+          tableCss: 'hideLabel',
           tableLabel: 'Peripheral edema: Left hand',
           fqn: 'cardiovascular.peripheralEdemaLeftHand'
         },
@@ -2811,7 +2819,7 @@ export default function () {
             }
           ],
           tableColumn: '11',
-          tableCss: 'hr-table',
+          tableCss: 'hr-table hideLabel',
           tableLabel: 'Nail bed colour: Left hand',
           fqn: 'cardiovascular.nailBedColourLeftHand'
         },
@@ -2838,6 +2846,7 @@ export default function () {
             }
           ],
           tableColumn: '12',
+          tableCss: 'hideLabel',
           tableLabel: 'Cap refill: Right foot',
           fqn: 'cardiovascular.capRefillRightFoot'
         },
@@ -2859,6 +2868,7 @@ export default function () {
             }
           ],
           tableColumn: '13',
+          tableCss: 'hideLabel',
           tableLabel: 'Temperature: Right foot',
           fqn: 'cardiovascular.temperatureRightFoot'
         },
@@ -2886,6 +2896,7 @@ export default function () {
             }
           ],
           tableColumn: '14',
+          tableCss: 'hideLabel',
           tableLabel: 'Peripheral edema: Right foot',
           fqn: 'cardiovascular.peripheralEdemaRightFoot'
         },
@@ -2904,7 +2915,7 @@ export default function () {
             }
           ],
           tableColumn: '15',
-          tableCss: 'hr-table',
+          tableCss: 'hr-table hideLabel',
           tableLabel: 'Nail bed colour: Right Foot',
           fqn: 'cardiovascular.nailBedColourRightFoot'
         },
@@ -2931,6 +2942,7 @@ export default function () {
             }
           ],
           tableColumn: '16',
+          tableCss: 'hideLabel',
           tableLabel: 'Cap refill: Left foot',
           fqn: 'cardiovascular.capRefillLeftFoot'
         },
@@ -2952,6 +2964,7 @@ export default function () {
             }
           ],
           tableColumn: '17',
+          tableCss: 'hideLabel',
           tableLabel: 'Temperature: Left foot',
           fqn: 'cardiovascular.temperatureLeftFoot'
         },
@@ -2979,6 +2992,7 @@ export default function () {
             }
           ],
           tableColumn: '18',
+          tableCss: 'hideLabel',
           tableLabel: 'Peripheral edema: Left foot',
           fqn: 'cardiovascular.peripheralEdemaLeftFoot'
         },
@@ -2997,7 +3011,7 @@ export default function () {
             }
           ],
           tableColumn: '19',
-          tableCss: 'hr-table',
+          tableCss: 'hr-table hideLabel',
           tableLabel: 'Nail bed colour: Left foot',
           fqn: 'cardiovascular.nailBedColourLeftFoot'
         },
@@ -3012,7 +3026,7 @@ export default function () {
           fqn: 'cardiovascular.comments'
         }
       ],
-      generated: '2019-09-23T16:14:53-07:00',
+      generated: '2019-09-26T11:51:02-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -3047,6 +3061,7 @@ export default function () {
             },
             {
               label: 'Cap refill: Right hand',
+              tableCss: 'hideLabel',
               ehr_list_index: '4',
               items: [
                 'capRefillLeftHand'
@@ -3054,6 +3069,7 @@ export default function () {
             },
             {
               label: 'Temperature: Right hand',
+              tableCss: 'hideLabel',
               ehr_list_index: '5',
               items: [
                 'temperatureRightHand'
@@ -3061,6 +3077,7 @@ export default function () {
             },
             {
               label: 'Peripheral edema: Right hand',
+              tableCss: 'hideLabel',
               ehr_list_index: '6',
               items: [
                 'peripheralEdemaRightHand'
@@ -3068,7 +3085,7 @@ export default function () {
             },
             {
               label: 'Nail bed colour: Right hand',
-              tableCss: 'hr-table',
+              tableCss: 'hr-table hideLabel',
               ehr_list_index: '7',
               items: [
                 'nailBedColourRightHand'
@@ -3076,6 +3093,7 @@ export default function () {
             },
             {
               label: 'Cap refill: Left hand',
+              tableCss: 'hideLabel',
               ehr_list_index: '8',
               items: [
                 'capRefillRightHand'
@@ -3083,6 +3101,7 @@ export default function () {
             },
             {
               label: 'Temperature: Left hand',
+              tableCss: 'hideLabel',
               ehr_list_index: '9',
               items: [
                 'temperatureLeftHand'
@@ -3090,6 +3109,7 @@ export default function () {
             },
             {
               label: 'Peripheral edema: Left hand',
+              tableCss: 'hideLabel',
               ehr_list_index: '10',
               items: [
                 'peripheralEdemaLeftHand'
@@ -3097,7 +3117,7 @@ export default function () {
             },
             {
               label: 'Nail bed colour: Left hand',
-              tableCss: 'hr-table',
+              tableCss: 'hr-table hideLabel',
               ehr_list_index: '11',
               items: [
                 'nailBedColourLeftHand'
@@ -3105,6 +3125,7 @@ export default function () {
             },
             {
               label: 'Cap refill: Right foot',
+              tableCss: 'hideLabel',
               ehr_list_index: '12',
               items: [
                 'capRefillRightFoot'
@@ -3112,6 +3133,7 @@ export default function () {
             },
             {
               label: 'Temperature: Right foot',
+              tableCss: 'hideLabel',
               ehr_list_index: '13',
               items: [
                 'temperatureRightFoot'
@@ -3119,6 +3141,7 @@ export default function () {
             },
             {
               label: 'Peripheral edema: Right foot',
+              tableCss: 'hideLabel',
               ehr_list_index: '14',
               items: [
                 'peripheralEdemaRightFoot'
@@ -3126,7 +3149,7 @@ export default function () {
             },
             {
               label: 'Nail bed colour: Right Foot',
-              tableCss: 'hr-table',
+              tableCss: 'hr-table hideLabel',
               ehr_list_index: '15',
               items: [
                 'nailBedColourRightFoot'
@@ -3134,6 +3157,7 @@ export default function () {
             },
             {
               label: 'Cap refill: Left foot',
+              tableCss: 'hideLabel',
               ehr_list_index: '16',
               items: [
                 'capRefillLeftFoot'
@@ -3141,6 +3165,7 @@ export default function () {
             },
             {
               label: 'Temperature: Left foot',
+              tableCss: 'hideLabel',
               ehr_list_index: '17',
               items: [
                 'temperatureLeftFoot'
@@ -3148,6 +3173,7 @@ export default function () {
             },
             {
               label: 'Peripheral edema: Left foot',
+              tableCss: 'hideLabel',
               ehr_list_index: '18',
               items: [
                 'peripheralEdemaLeftFoot'
@@ -3155,7 +3181,7 @@ export default function () {
             },
             {
               label: 'Nail bed colour: Left foot',
-              tableCss: 'hr-table',
+              tableCss: 'hr-table hideLabel',
               ehr_list_index: '19',
               items: [
                 'nailBedColourLeftFoot'
@@ -3690,7 +3716,7 @@ export default function () {
           fqn: 'gastrointestinal.comments'
         }
       ],
-      generated: '2019-09-23T16:14:53-07:00',
+      generated: '2019-09-26T11:51:02-07:00',
       pageElements: {
         table: {
           elementKey: 'table',

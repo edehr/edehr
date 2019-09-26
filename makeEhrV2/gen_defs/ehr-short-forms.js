@@ -13,39 +13,28 @@ const Defs = {
       elementKey: 'profession',
       inputType: 'text',
       label: 'Profession',
-      
     },
     {
       elementKey: 'day',
       inputType: 'day',
       label: 'Day',
-      
     },
     {
       elementKey: 'time',
       inputType: 'time',
       label: 'Time',
-      
     }
   ],
 
   checkBoxTextSpacer: [],
   checkBoxDate: [
-    {
-      inputType: 'checkbox',
-    },
-    {
-      inputType: 'date',
-    },
+    { inputType: 'checkbox' },
+    { inputType: 'date', formOption: 'hideLabel' },
     { inputType: 'spacer'}
   ],
   textDate: [
-    {
-      inputType: 'text',
-    },
-    {
-      inputType: 'date',
-    },
+    { inputType: 'text' },
+    { inputType: 'date' },
     { inputType: 'spacer'}
   ]
 }
@@ -78,7 +67,7 @@ class EhrShortFormHelper {
   }
 
   withDate (entry, postEntries, defs) {
-    // console.log('preprocess input with date ', entry)
+    console.log('preprocess input with date ', entry)
     let toAdd = JSON.parse(JSON.stringify(defs))
     let main = toAdd[0]
     let date = toAdd[1]
@@ -92,6 +81,7 @@ class EhrShortFormHelper {
       e.tableColumn = entry.tableColumn
       e.label = entry.label
       e.tableLabel = entry.tableLabel
+      // e.formOption = entry.formOption
       postEntries.push(e)
     })
   }

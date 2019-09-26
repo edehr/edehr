@@ -113,8 +113,8 @@ export default {
     if ( useScale) {
       chartCanvas.width = canvasWidth * f
       chartCanvas.height = canvasHeight * f
-      chartCanvas.style.width = canvasWidth + "px"
-      chartCanvas.style.height = canvasHeight + "px"
+      chartCanvas.style.width = canvasWidth + 'px'
+      chartCanvas.style.height = canvasHeight + 'px'
       chartCanvas.getContext('2d').scale(f, f)
     }
     this.vitalChart = new VitalChart(chartCanvas, axisCanvas)

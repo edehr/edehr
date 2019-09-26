@@ -44,7 +44,7 @@ Tympanic}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Axilla}	eCell	eCell
 {inputType: spacer}	eCell	eCell	eCell	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Pulse site}	{elementKey: strength}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Pulse site}	{tableColumn: 9}	eCell	eCell	eCell	eCell	{Options: Peripheral}	eCell	eCell	eCell	eCell	eCell	{Data_case_study: strong}	eCell	eCell
 {inputType: text}	eCell	{Label: Pulse rate}	{elementKey: rate}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Pulse rate}	{tableColumn: 10}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: 96}	eCell	eCell
-{inputType: select}	eCell	{Label: Pulse rhythm}	{elementKey: rhythm}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Pulse rhythm}	{tableColumn: 11}	eCell	eCell	eCell	eCell	"{Options: Regular
+{inputType: select}	eCell	{Label: Pulse rhythm}	{elementKey: rhythm}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Pulse rhythm}	{tableColumn: 11}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: Regular
 Irregular}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: regular}	eCell	eCell
 {inputType: text}	eCell	{Label: Respiration rate}	{elementKey: respirationRate}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Respiration rate}	{tableColumn: 12}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: 28}	eCell	eCell
 {inputType: spacer}	eCell	eCell	eCell	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
@@ -277,56 +277,56 @@ Delayed > 3 seconds}"	eCell
 {inputType: form_label}	eCell	{Label: Peripheral edema}	{elementKey: labelPeripheral}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Normal}	eCell	eCell
 {inputType: form_label}	eCell	{Label: Nail bed colour}	{elementKey: labelNailBed}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Normal}	eCell	eCell
 {inputType: form_label}	eCell	{Label: Right hand}	{elementKey: labelRight}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Normal}	eCell	eCell
-{inputType: select}	eCell	eCell	{elementKey: capRefillLeftHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Cap refill: Right hand}	{tableColumn: 4}	eCell	eCell	eCell	eCell	"{Options: Normal < 3 seconds
+{inputType: select}	eCell	eCell	{elementKey: capRefillLeftHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Cap refill: Right hand}	{tableColumn: 4}	{tableCss: hideLabel}	eCell	eCell	eCell	"{Options: Normal < 3 seconds
 Delayed > 3 seconds}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Normal}	eCell	eCell
-{inputType: select}	eCell	eCell	{elementKey: temperatureRightHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Temperature: Right hand}	{tableColumn: 5}	eCell	eCell	eCell	eCell	"{Options: Warm
+{inputType: select}	eCell	eCell	{elementKey: temperatureRightHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Temperature: Right hand}	{tableColumn: 5}	{tableCss: hideLabel}	eCell	eCell	eCell	"{Options: Warm
 Cool
 Hot}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Warm}	eCell	eCell
-{inputType: select}	eCell	eCell	{elementKey: peripheralEdemaRightHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Peripheral edema: Right hand}	{tableColumn: 6}	eCell	eCell	eCell	eCell	"{Options: No
+{inputType: select}	eCell	eCell	{elementKey: peripheralEdemaRightHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Peripheral edema: Right hand}	{tableColumn: 6}	{tableCss: hideLabel}	eCell	eCell	eCell	"{Options: No
 Ankle
 Pedal
 Sacral
 Pitting}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: No}	eCell	eCell
-{inputType: select}	eCell	eCell	{elementKey: nailBedColourRightHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Nail bed colour: Right hand}	{tableColumn: 7}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: Pink 
+{inputType: select}	eCell	eCell	{elementKey: nailBedColourRightHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Nail bed colour: Right hand}	{tableColumn: 7}	{tableCss: hr-table hideLabel}	eCell	eCell	eCell	"{Options: Pink
 Cyanotic}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Pink}	eCell	eCell
 {inputType: form_label}	eCell	{Label: Left hand}	{elementKey: labelLeftHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Normal}	eCell	eCell
-{inputType: select}	eCell	eCell	{elementKey: capRefillRightHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Cap refill: Left hand}	{tableColumn: 8}	eCell	eCell	eCell	eCell	"{Options: Normal < 3 seconds
+{inputType: select}	eCell	eCell	{elementKey: capRefillRightHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Cap refill: Left hand}	{tableColumn: 8}	{tableCss: hideLabel}	eCell	eCell	eCell	"{Options: Normal < 3 seconds
 Delayed > 3 seconds}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Normal}	eCell	eCell
-{inputType: select}	eCell	eCell	{elementKey: temperatureLeftHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Temperature: Left hand}	{tableColumn: 9}	eCell	eCell	eCell	eCell	"{Options: Warm
+{inputType: select}	eCell	eCell	{elementKey: temperatureLeftHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Temperature: Left hand}	{tableColumn: 9}	{tableCss: hideLabel}	eCell	eCell	eCell	"{Options: Warm
 Cool
 Hot}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Warm}	eCell	eCell
-{inputType: select}	eCell	eCell	{elementKey: peripheralEdemaLeftHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Peripheral edema: Left hand}	{tableColumn: 10}	eCell	eCell	eCell	eCell	"{Options: No
+{inputType: select}	eCell	eCell	{elementKey: peripheralEdemaLeftHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Peripheral edema: Left hand}	{tableColumn: 10}	{tableCss: hideLabel}	eCell	eCell	eCell	"{Options: No
 Ankle
 Pedal
 Sacral
 Pitting}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: No}	eCell	eCell
-{inputType: select}	eCell	eCell	{elementKey: nailBedColourLeftHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Nail bed colour: Left hand}	{tableColumn: 11}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: Pink 
+{inputType: select}	eCell	eCell	{elementKey: nailBedColourLeftHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Nail bed colour: Left hand}	{tableColumn: 11}	{tableCss: hr-table hideLabel}	eCell	eCell	eCell	"{Options: Pink
 Cyanotic}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Pink}	eCell	eCell
 {inputType: form_label}	eCell	{Label: Right foot}	{elementKey: labelRightFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Normal}	eCell	eCell
-{inputType: select}	eCell	eCell	{elementKey: capRefillRightFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Cap refill: Right foot}	{tableColumn: 12}	eCell	eCell	eCell	eCell	"{Options: Normal < 3 seconds
+{inputType: select}	eCell	eCell	{elementKey: capRefillRightFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Cap refill: Right foot}	{tableColumn: 12}	{tableCss: hideLabel}	eCell	eCell	eCell	"{Options: Normal < 3 seconds
 Delayed > 3 seconds}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Normal}	eCell	eCell
-{inputType: select}	eCell	eCell	{elementKey: temperatureRightFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Temperature: Right foot}	{tableColumn: 13}	eCell	eCell	eCell	eCell	"{Options: Warm
+{inputType: select}	eCell	eCell	{elementKey: temperatureRightFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Temperature: Right foot}	{tableColumn: 13}	{tableCss: hideLabel}	eCell	eCell	eCell	"{Options: Warm
 Cool
 Hot}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Warm}	eCell	eCell
-{inputType: select}	eCell	eCell	{elementKey: peripheralEdemaRightFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Peripheral edema: Right foot}	{tableColumn: 14}	eCell	eCell	eCell	eCell	"{Options: No
+{inputType: select}	eCell	eCell	{elementKey: peripheralEdemaRightFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Peripheral edema: Right foot}	{tableColumn: 14}	{tableCss: hideLabel}	eCell	eCell	eCell	"{Options: No
 Ankle
 Pedal
 Sacral
 Pitting}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: No}	eCell	eCell
-{inputType: select}	eCell	eCell	{elementKey: nailBedColourRightFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Nail bed colour: Right Foot}	{tableColumn: 15}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: Pink 
+{inputType: select}	eCell	eCell	{elementKey: nailBedColourRightFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Nail bed colour: Right Foot}	{tableColumn: 15}	{tableCss: hr-table hideLabel}	eCell	eCell	eCell	"{Options: Pink
 Cyanotic}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Pink}	eCell	eCell
 {inputType: form_label}	eCell	{Label: Left foot}	{elementKey: labelLeftFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Normal}	eCell	eCell
-{inputType: select}	eCell	eCell	{elementKey: capRefillLeftFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Cap refill: Left foot}	{tableColumn: 16}	eCell	eCell	eCell	eCell	"{Options: Normal < 3 seconds
+{inputType: select}	eCell	eCell	{elementKey: capRefillLeftFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Cap refill: Left foot}	{tableColumn: 16}	{tableCss: hideLabel}	eCell	eCell	eCell	"{Options: Normal < 3 seconds
 Delayed > 3 seconds}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Normal}	eCell	eCell
-{inputType: select}	eCell	eCell	{elementKey: temperatureLeftFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Temperature: Left foot}	{tableColumn: 17}	eCell	eCell	eCell	eCell	"{Options: Warm
+{inputType: select}	eCell	eCell	{elementKey: temperatureLeftFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Temperature: Left foot}	{tableColumn: 17}	{tableCss: hideLabel}	eCell	eCell	eCell	"{Options: Warm
 Cool
 Hot}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Warm}	eCell	eCell
-{inputType: select}	eCell	eCell	{elementKey: peripheralEdemaLeftFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Peripheral edema: Left foot}	{tableColumn: 18}	eCell	eCell	eCell	eCell	"{Options: No
+{inputType: select}	eCell	eCell	{elementKey: peripheralEdemaLeftFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Peripheral edema: Left foot}	{tableColumn: 18}	{tableCss: hideLabel}	eCell	eCell	eCell	"{Options: No
 Ankle
 Pedal
 Sacral
 Pitting}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: No}	eCell	eCell
-{inputType: select}	eCell	eCell	{elementKey: nailBedColourLeftFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Nail bed colour: Left foot}	{tableColumn: 19}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: Pink 
+{inputType: select}	eCell	eCell	{elementKey: nailBedColourLeftFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Nail bed colour: Left foot}	{tableColumn: 19}	{tableCss: hr-table hideLabel}	eCell	eCell	eCell	"{Options: Pink
 Cyanotic}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Pink}	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	{pN: 16}	{fN: 1}	{gN: 4}	{sgN: }	{formCss: grid-left-to-right-1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: textarea}	eCell	{Label: Comments}	{elementKey: comments}	{pN: 16}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Comments}	{tableColumn: 20}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: (blank)}	eCell	eCell
