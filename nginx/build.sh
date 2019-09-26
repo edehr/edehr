@@ -39,8 +39,10 @@ grep -rl '_PROXY_PASS_HOST' /etc/nginx | xargs sed -i "s|_PROXY_PASS_HOST|${PROX
 grep -rl '_SERVER_PORT' /etc/nginx | xargs sed -i "s|_SERVER_PORT|${SERVER_PORT}|g"
 
 if [[ "${NODE_ENV}" = 'production' ]]; then
+  echo "Production configuration for nginx"
   ln -s /etc/nginx/sites-available/edehr_prod.conf /etc/nginx/sites-enabled/default.conf
 else
+  echo "Development configuration for nginx"
   ln -s /etc/nginx/sites-available/edehr_dev.conf /etc/nginx/sites-enabled/default.conf
 fi
 
