@@ -62,7 +62,7 @@ npm run dev:stop
 
 First build the client vue project.
 ```
-cd /<you project root>
+# in oroject root
 npm run build
 ```
 
