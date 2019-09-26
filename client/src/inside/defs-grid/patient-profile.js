@@ -403,7 +403,7 @@ export default function () {
           fqn: 'demographics.decisionMakerPhone'
         }
       ],
-      generated: '2019-09-23T16:04:42-07:00',
+      generated: '2019-09-25T19:23:24-07:00',
       pageElements: {
         page_form1: {
           elementKey: 'page_form1',
@@ -485,7 +485,7 @@ export default function () {
           fqn: 'allergies.text'
         }
       ],
-      generated: '2019-09-23T16:04:42-07:00',
+      generated: '2019-09-25T19:23:24-07:00',
       pageElements: {
         page_form: {
           elementKey: 'page_form',
@@ -519,7 +519,7 @@ export default function () {
           fqn: 'medical.history'
         }
       ],
-      generated: '2019-09-23T16:04:42-07:00',
+      generated: '2019-09-25T19:23:24-07:00',
       pageElements: {
         page_form6: {
           elementKey: 'page_form6',
@@ -585,7 +585,7 @@ export default function () {
           fqn: 'psychosocial.hobbies'
         }
       ],
-      generated: '2019-09-23T16:04:42-07:00',
+      generated: '2019-09-25T19:23:24-07:00',
       pageElements: {
         page_form8: {
           elementKey: 'page_form8',
@@ -688,7 +688,7 @@ export default function () {
           fqn: 'surgical.comments'
         }
       ],
-      generated: '2019-09-23T16:04:42-07:00',
+      generated: '2019-09-25T19:23:24-07:00',
       pageElements: {
         table_form12: {
           elementKey: 'table_form12',
@@ -827,6 +827,7 @@ export default function () {
         {
           elementKey: 'hepADate',
           formIndex: '1',
+          formOption: 'hideLabel',
           inputType: 'date',
           label: 'Hep A',
           fqn: 'immunization.hepADate'
@@ -848,6 +849,7 @@ export default function () {
         {
           elementKey: 'hepBDate',
           formIndex: '1',
+          formOption: 'hideLabel',
           inputType: 'date',
           label: 'Hep B',
           fqn: 'immunization.hepBDate'
@@ -869,6 +871,7 @@ export default function () {
         {
           elementKey: 'mmrDate',
           formIndex: '1',
+          formOption: 'hideLabel',
           inputType: 'date',
           label: 'MMR',
           fqn: 'immunization.mmrDate'
@@ -890,6 +893,7 @@ export default function () {
         {
           elementKey: 'pneumococcalDate',
           formIndex: '1',
+          formOption: 'hideLabel',
           inputType: 'date',
           label: 'Pneumococcal',
           fqn: 'immunization.pneumococcalDate'
@@ -911,6 +915,7 @@ export default function () {
         {
           elementKey: 'polioDiptheriaPertussisDate',
           formIndex: '1',
+          formOption: 'hideLabel',
           inputType: 'date',
           label: 'Polio diptheria pertussis',
           fqn: 'immunization.polioDiptheriaPertussisDate'
@@ -932,6 +937,7 @@ export default function () {
         {
           elementKey: 'tbDate',
           formIndex: '1',
+          formOption: 'hideLabel',
           inputType: 'date',
           label: 'TB',
           fqn: 'immunization.tbDate'
@@ -953,6 +959,7 @@ export default function () {
         {
           elementKey: 'tetanusDate',
           formIndex: '1',
+          formOption: 'hideLabel',
           inputType: 'date',
           label: 'Tetanus',
           fqn: 'immunization.tetanusDate'
@@ -1019,7 +1026,7 @@ export default function () {
           fqn: 'immunization.spacer26'
         }
       ],
-      generated: '2019-09-23T16:04:42-07:00',
+      generated: '2019-09-25T19:23:24-07:00',
       pageElements: {
         page_form15: {
           elementKey: 'page_form15',
@@ -1080,7 +1087,7 @@ export default function () {
           fqn: 'familyHistory.history'
         }
       ],
-      generated: '2019-09-23T16:04:42-07:00',
+      generated: '2019-09-25T19:23:24-07:00',
       pageElements: {
         page_form27: {
           elementKey: 'page_form27',
@@ -1122,7 +1129,7 @@ export default function () {
           fqn: 'careTeam.profession'
         }
       ],
-      generated: '2019-09-23T16:04:42-07:00',
+      generated: '2019-09-25T19:23:24-07:00',
       pageElements: {
         table_form29: {
           elementKey: 'table_form29',
@@ -1219,7 +1226,7 @@ export default function () {
           fqn: 'pastAppointments.diagnosis'
         }
       ],
-      generated: '2019-09-23T16:04:42-07:00',
+      generated: '2019-09-25T19:23:24-07:00',
       pageElements: {
         table_form31: {
           elementKey: 'table_form31',
