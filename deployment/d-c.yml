@@ -60,3 +60,5 @@ services:
     ports:
       - "${MONGODB_PORT}:${MONGODB_PORT}"
     command: mongod --port ${MONGODB_PORT}
+    volumes:
+      - "../database/data:/data/db"

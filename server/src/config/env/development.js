@@ -6,7 +6,7 @@ const TRACE_CALLS = true
 const API_HOST =   process.env.API_HOST || 'localhost'
 const CLIENT_HOST =   process.env.CLIENT_HOST || 'localhost'
 const API_PORT = process.env.API_PORT || 27000
-const CLIENT_PORT = process.env.CLIENT_PORT || 28000
+const CLIENT_PORT = process.env.CLIENT_PORT || undefined // 28000
 const SCHEME = process.env.SCHEME || 'http'
 const COOKIE_SECRET = process.env.COOKIE_SECRET || 'this is the secret for the session cookie'
 
