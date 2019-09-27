@@ -1,8 +1,9 @@
 const DEFAULT_FONT = '18px Source Sans Pro'
 const DEFAULT_DATA_FONT = '14px Source Sans Pro'
 
-const POINT_TYPES = {
+export const POINT_TYPES = {
   POINT: 'point',
+  X: 'x',
   DOWN_CHEVRON: 'downChevron',
   UP_CHEVRON: 'upChevron',
   TEXT: 'text'
@@ -141,6 +142,7 @@ export default class VitalChart {
     let pointStyle = dataSet.pointStyle
     let textOnly = data.chartType === POINT_TYPES.TEXT
     let chevron = POINT_TYPES.DOWN_CHEVRON === pointStyle || POINT_TYPES.UP_CHEVRON === pointStyle
+    let x_symbol = POINT_TYPES.X === pointStyle
     let values = dataSet.values
     let originY = data.originY
     let min = data.dMin
@@ -186,7 +188,9 @@ export default class VitalChart {
         px = py = undefined
       } else {
         let y = originY + height - (value - min) * vScale
-        if (chevron) {
+        if (x_symbol) {
+          this._drawX(context, x, y, pointFillColour)
+        } else if (chevron) {
           this._drawChevron(context, x, y, pointStyle, pointFillColour)
         } else {
           // default to POINT_TYPES.POINT
@@ -327,6 +331,25 @@ export default class VitalChart {
     context.fillStyle = pointFillColour
     context.arc(x, y, pointRadius, 0, 2 * Math.PI)
     context.fill()
+  }
+
+  _drawX (ctx, pointX, pointY, colour) {
+    console.log('draw X ', pointX, pointY, colour)
+    const len = 5
+    const lineWidth = 2
+    const x = pointX, y = pointY
+    ctx.save()
+    ctx.strokeStyle = colour
+    ctx.lineWidth = lineWidth
+    ctx.beginPath()
+    ctx.moveTo(x - len, y - len)
+    ctx.lineTo(x + len, y + len)
+    ctx.stroke()
+
+    ctx.moveTo(x + len, y - len)
+    ctx.lineTo(x - len, y + len)
+    ctx.stroke()
+    ctx.restore()
   }
 
   _drawChevron (ctx, pointX, pointY, direction, colour) {

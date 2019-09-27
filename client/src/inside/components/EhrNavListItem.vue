@@ -49,7 +49,10 @@ export default {
     },
     levelClass () {
       let lv = this.level || 1
-      return 'EhrNavListItem__level' + lv
+      let lvClass = 'EhrNavListItem__level' + lv
+      let isTopAndActive = this.$store.state.visit.topLevelMenu === this.path.name
+      let aClass = isTopAndActive ? ' router-link-active' : ''
+      return lvClass + aClass
     },
     linkClass () {
       let lv = this.level || 1

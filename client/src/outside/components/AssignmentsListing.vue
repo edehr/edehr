@@ -22,7 +22,8 @@
       tbody
         tr(v-for="item in assignmentsListing", :class="rowClass(item)")
           td {{ item.name }}
-          td {{ item.description}}
+          td
+            div(v-text-to-html="item.description")
           td {{ item.externalId}}
           // td {{ item.ehrRoutePath}}
           td

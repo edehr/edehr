@@ -1,11 +1,5 @@
 import { options } from './vitalChart'
-
-const POINT_TYPES = {
-  POINT: 'point',
-  DOWN_CHEVRON: 'downChevron',
-  UP_CHEVRON: 'upChevron',
-  TEXT: 'text'
-}
+import { POINT_TYPES } from './vitalChart'
 
 const vitalRanges = {
   bloodPressure: { min: 25, max: 225, normal: { systolic: [90, 130, 140], diastolic: [60, 85, 90] } },
@@ -123,7 +117,8 @@ export default class VitalModel {
       },
       dataSet: [
         {
-          pointStyle: POINT_TYPES.POINT,
+          pointStyle: POINT_TYPES.X,
+          pointFillColour: options.pointFillColour,
           values: values
         }
       ]

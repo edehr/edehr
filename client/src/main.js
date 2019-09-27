@@ -6,6 +6,7 @@ import outsideLayout from './outside/layout/LayoutOutside.vue'
 import insideLayout from './inside/layout/LayoutEhr.vue'
 import dragDirective from './directives/drag-directive'
 import resizeDirective from './directives/resize-directive'
+import textToHtml from './directives/text-to-html'
 
 /*
 Import the global style sheet
@@ -55,6 +56,7 @@ Vue.component('outside-layout', outsideLayout)
 Vue.component('inside-layout', insideLayout)
 Vue.directive('dragged', dragDirective)
 Vue.directive('resized', resizeDirective)
+Vue.directive('textToHtml', textToHtml) // used as text-to-html attribute
 
 /*
 Create the root Vue component.
