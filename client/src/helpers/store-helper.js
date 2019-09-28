@@ -110,6 +110,13 @@ class StoreHelperWorker {
     return component.$store.dispatch('assignment/findAssignment', payload)
   }
 
+  getAssignment () {
+    return this.shc.$store.state.assignment.assignment
+  }
+
+  switchAssignment(assignment) {
+    return this.shc.$store.dispatch('assignment/switchAssignment', assignment)
+  }
 
   loadAssignment (component, id) {
     // console.log('Assignment Load ', id)

@@ -31,6 +31,8 @@ export default {
       this.$store.commit('system/setUseV2', usingV2)
       // }
 
+      const debugApp = false
+
       const _this = this
       _this
         ._loadApiUrl(apiUrl)
@@ -38,30 +40,30 @@ export default {
           if (!visitId) {
             restoring = true
             visitId = localStorage.getItem('token')
-            // console.log('No visit id on query so check local storage storage?', visitId)
+            if (debugApp) console.log('No visit id on query so checked local storage --> ', visitId)
           }
           if (visitId) {
-            // console.log('Dispatch the load visit information', visitId)
+            if (debugApp) console.log('Dispatch the load visit information', visitId)
             return this.$store.dispatch('visit/loadVisitInfo', visitId)
           } else {
             setApiError(Text.MISSING_VISIT_ID)
-            return Promise.reject(msg)
+            return Promise.reject(Text.MISSING_VISIT_ID)
           }
         })
         .then(() => {
           let isDev = StoreHelper.isDeveloper(this)
-          // console.log('Is user is allowed to edit content?',isDev)
+          if (debugApp) console.log('Is user is allowed to edit content?',isDev)
           if (isDev) {
-            // console.log('User is allowed to edit content')
+            if (debugApp) console.log('User is allowed to edit content')
             return _this._loadDeveloping(restoring)
           }
         })
         .then(() => {
           let isIns = _this.$store.getters['visit/isInstructor']
-          // console.log('Is user an instructor?', isIns)
+          if (debugApp) console.log('Is user an instructor?', isIns)
           if (isIns) {
             return _this.$store.dispatch('instructor/loadCourses').then(() => {
-              // console.log('Page load instructor restoring?', restoring)
+              if (debugApp) console.log('Page load instructor restoring?', restoring)
               if (restoring) {
                 return _this.reloadInstructor()
               }
@@ -71,7 +73,7 @@ export default {
         .then(() => {
           this.$store.commit('system/setLoading', false)
           EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
-          console.log('App DONE loading now.')
+          if (debugApp) console.log('App DONE loading now.')
         })
         .catch(err => {
           alert(err + '\nSystem Error')
