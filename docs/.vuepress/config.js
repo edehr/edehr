@@ -2,78 +2,195 @@ const path = require("path");
 
 module.exports = {
   title: 'EdEHR a prototype project',
-  description: 'EdEHR is an open source LTI compatable learning tool providing support for educational programs in the medical field. EdEHR allows students to try out a Electronic Health Record (EHR) system within the educational experience',
+  description: 'EdEHR is an open source, LTI-compatable learning tool for students in post-secondary medical programs. EdEHR gives students the opportunity to learn about Electronic Health Record (EHR) systems in a classroom or sim lab setting before working in a professional environment.',
   base: "/edehr/",
   themeConfig: {
     displayAllHeaders: false,
     nav: [
-      { text: 'Home', link: '/' },
-      { text: 'LMS', link: '/lms/' },
-      { text: 'Ed', link: '/outside/' },
-      { text: 'EHR', link: '/inside/' },
-      { text: 'Documentation', link: '/docs/' },
-      { text: 'DevOps', link: '/devop/' }
+      { text: 'Developer', link: 'developer' },
+      { text: 'Technical admin', link: 'admin' },
+      { text: 'Instructor', link: 'instructor' },
+      { text: 'Student', link: 'student' },
     ],
+
+    // If user = developer, then show this sidebar
     sidebar: [
       {
-        title: 'EdEHR Project',
+        title: "EdEHR - Developer's guide",
         children: [
-          '/'
+          '/developer/'
+        ]
+      },
+      {
+        title: 'Getting started',
+        children: [
+          '/developer/',
+          '/developer/installation.md',
+          '/developer/development-environment.md',
+          '/shared/user-flow.md',
+          '/shared/definitions.md'
         ]
       },
       {
         title: 'LMS',
         children: [
-          '/lms/',
-          '/lms/LTI.md'
+          'developer/lms/',
+          'developer/lms/LTI.md'
         ]
       },
       {
         title: 'Assignments',
         children: [
-          '/outside/',
-          '/outside/assignments.md'
+          'developer/outside/',
+          'developer/outside/assignments.md'
         ]
       },
       {
-        title: 'EHR',
+        title: 'Dashboard',
         children: [
-          '/inside/'
+          'developer/outside/',
+          'developer/outside/assignments.md'
         ]
       },
       {
-        title: 'Code generator',
+        title: 'Health record generation',
         children: [
-          '/inside-generator/',
-          '/inside-generator/Ehr-Defs-Pages.md',
-          '/inside-generator/Ehr-Defs-Input-Types.md',
-          '/inside-generator/Ehr-Defs-Keys.md',
-          '/inside-generator/Ehr-Defs-Location.md',
-          '/inside-generator/Ehr-Calculated-Values.md',
-        ]
-      },
-      {
-        title: 'Custom Pages',
-        children: [
-          '/inside-custom/',
-          '/inside-custom/Med-Admin-Records.md',
-          '/inside-custom/Summary-table.md'
+          'developer/inside/',
+          'developer/inside-generator/',
+          'developer/inside-generator/Ehr-Defs-Pages.md',
+          'developer/inside-generator/Ehr-Defs-Input-Types.md',
+          'developer/inside-generator/Ehr-Defs-Keys.md',
+          'developer/inside-generator/Ehr-Defs-Location.md',
+          'developer/inside-generator/Ehr-Calculated-Values.md',
+          'developer/inside-custom/',
+          'developer/inside-custom/Med-Admin-Records.md',
+          'developer/inside-custom/Summary-table.md'
         ]
       },
       {
         title: 'DevOps',
         children: [
-          '/devop/',
-          '/devop/deploy.md',
-          '/devop/technical-architecture.md'
+          'developer/devop/',
+          'developer/devop/deploy.md',
+          'developer/devop/technical-architecture.md'
         ]
       },
       {
-        title: 'Documentation',
+        title: 'Documentation maintenance',
         children: [
-          '/docs/'
+          'shared/docs/'
         ]
       }
+    ]
+
+
+    // If user = technical admin, then show this sidebar
+    sidebar: [
+      {
+        title: "EdEHR - Technical admin's guide",
+        children: [
+          '/'
+        ]
+      },
+      {
+        title: 'Getting started',
+        children: [
+          'developer/user-flow.md',
+          'shared/definitions.md'
+        ]
+      },
+      {
+        title: 'LMS',
+        children: [
+          'developer/lms/',
+          'developer/lms/LTI.md'
+        ]
+      },
+      {
+        title: 'Assignments',
+        children: [
+          'developer/outside/',
+          'developer/outside/assignments.md'
+        ]
+      },
+      {
+        title: 'Health record generation',
+        children: [
+          '/developer/inside/',
+          '/developer/inside-generator/',
+          '/developer/inside-generator/Ehr-Defs-Pages.md',
+          '/developer/inside-generator/Ehr-Defs-Input-Types.md',
+          '/developer/inside-generator/Ehr-Defs-Keys.md',
+          '/developer/inside-generator/Ehr-Defs-Location.md',
+          '/developer/inside-generator/Ehr-Calculated-Values.md',
+          '/developer/inside-custom/',
+          '/developer/inside-custom/Med-Admin-Records.md',
+          '/developer/inside-custom/Summary-table.md'
+        ]
+      },
+    ]
+
+
+    // If user = instructor, then show this sidebar
+    sidebar: [
+      {
+        title: "EdEHR - Instructor's guide",
+        children: [
+          '/'
+        ]
+      },
+      {
+        title: 'Getting started',
+        children: [
+          'shared/definitions.md'
+        ]
+      },
+      {
+        title: 'LMS',
+        children: [
+          '/lms/'
+        ]
+      },
+      {
+        title: 'Assignments',
+        children: [
+          'instructor/outside/',
+          'instructor/outside/dashboard.md',
+          'instructor/outside/evaluation.md'
+        ]
+      },
+    ]
+
+
+    // If user = student, then show this sidebar
+    sidebar: [
+      {
+        title: "EdEHR - Student's guide",
+        children: [
+          '/'
+        ]
+      },
+      {
+        title: 'Getting started',
+        children: [
+          'shared/quick-tips.md',
+          'shared/definitions.md'
+        ]
+      },
+      {
+        title: 'LMS',
+        children: [
+          'developer/lms/',
+        ]
+      },
+      {
+        title: 'Assignments',
+        children: [
+          'developer/outside/',
+          'developer/outside/dashboard.md',
+          'developer/outside/evaluation.md'
+        ]
+      },
     ]
   }
 }
