@@ -1,13 +1,15 @@
 <template lang="pug">
-  div
+  div(:id="activityId")
     div(class="activity-list-header columns", v-on:click="toggleShow")
       div(class="header-column is-10 column")
         h3(:title="activityId") {{ activity.resource_link_title }}
         p LMS description: {{ activity.resource_link_description }}
         p Assignment name: &nbsp;
-          ui-link(:name="'assignments'", :params="{assignmentId: assignment._id}") {{ assignment.name }}
+          ui-link(:name="'assignments'", :params="{assignmentId: assignment._id}")
+            span(v-on:click="switchAssignment")  {{ assignment.name }}
         p Assignment description: {{ assignment.description }}
         p LMS configuration: assignment={{ assignment.externalId }}
+        p {{assignment}}
       div(class="header-column is-2 column")
         div(class="header-item header-icon")
           div(class="icon-group")
@@ -49,6 +51,10 @@ export default {
     }
   },
   methods: {
+    switchAssignment: function () {
+      console.log('switchAssignment', this.assignment)
+      StoreHelper.switchAssignment(this.assignment)
+    },
     setShow: function (value) {
       this.show = value
       this.indicator = value ? '-' : '+'
@@ -70,6 +76,21 @@ export default {
         })
         .then((theAssignment) => {
           _this.assignment = theAssignment
+          let id = this.assignment._id
+          let assignment = StoreHelper.getAssignment()
+          // console.log('Activity loadActivity id', id)
+          // console.log('Activity loadActivity assignment', assignment)
+          let selected = id === assignment._id
+          if (selected) {
+            this.loadClassList()
+            this.$nextTick(() => {
+              // this.$refs[this.activityId].scrollTop = 0
+              let element = document.getElementById(activityId)
+              // console.log('Activity scroll to ', activityId, element)
+              let top = element.offsetTop
+              window.scrollTo(0, top)
+            })
+          }
         })
     },
     loadClassList () {
@@ -83,9 +104,6 @@ export default {
   },
   mounted: function () {
     this.loadActivity()
-    if (this.index === 0) {
-      this.loadClassList()
-    }
   }
 }
 </script>

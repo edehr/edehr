@@ -28,6 +28,10 @@ const actions = {
     })
   },
 
+  switchAssignment(context, assignment) {
+    context.commit('setAssignment', assignment)
+  },
+
   findAssignment (context, payload) {
     let {toolConsumerId, externalId} = payload
     let url = composeUrl(context, API) + 'consumer/' + toolConsumerId + '/externalId/' + externalId
