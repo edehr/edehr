@@ -85,8 +85,8 @@ const actions = {
     return InstoreHelper
       .putRequest(context, url, payload)
       .then(results => {
-        // let resultsData = results.data
-        // console.log('assignment post responded with:', JSON.stringify(resultsData))
+        let resultsData = results.data
+        console.log('assignment post responded with:', JSON.stringify(resultsData))
         return context.dispatch('loadAssignments')
       })
       .catch(err => {
