@@ -7,9 +7,9 @@
         p Assignment name: &nbsp;
           ui-link(:name="'assignments'", :params="{assignmentId: assignment._id}")
             span(v-on:click="switchAssignment")  {{ assignment.name }}
-        p Assignment description: {{ assignment.description }}
+        p Assignment description:
+          div(v-text-to-html="assignment.description")
         p LMS configuration: assignment={{ assignment.externalId }}
-        p {{assignment}}
       div(class="header-column is-2 column")
         div(class="header-item header-icon")
           div(class="icon-group")
