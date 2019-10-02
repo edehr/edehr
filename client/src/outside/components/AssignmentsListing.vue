@@ -8,8 +8,8 @@
       p Adjust your Learning Management System to use an assignment from the list below
     div(v-show="isDevelopingContent")
       ui-button(v-on:buttonClicked="showCreateDialog") Create a new assignment
-      ui-button(v-on:buttonClicked="manageEhrData", :secondary="true") Manage EHR data
-      ui-button(v-on:buttonClicked="downloadAll") Download all
+      ui-button(v-on:buttonClicked="downloadAll") Download all assignments
+      ui-button(v-on:buttonClicked="manageEhrData", :secondary="true") Manage seed data
     table.table
       thead
         tr
@@ -30,7 +30,7 @@
             ui-link(:name="'developEhrData'", :params="{seedId: item.seedDataObj._id}") {{ item.seedDataObj.name }}
           td
             ui-button(v-on:buttonClicked="showEditDialog", :value="item._id")
-              fas-icon(icon="edit")
+              fas-icon(icon="edit") Edit assignment properties
     assignments-dialog(ref="theDialog")
 </template>
 
