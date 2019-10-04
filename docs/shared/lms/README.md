@@ -1,5 +1,6 @@
 # Learning Management System and LTI
 
+> Learning 
 
 The learning management system (LMS) is a separate piece of functionality from the EHR and is provided by an application called a LTI Consumer. 
 LTI stands for Learning Tools Interoperability and this technology allows learning applications to consume and course material from
@@ -18,7 +19,7 @@ everything course instructors need and a prototype couldn't hope to provide.
 Second, it means the EdEHR prototype can focus on 
 the really important task: providing an excellent learning experience for an electronic health record system.
 
-See [LTI message properties](/lms/LTI.md) for more about what is inside a LTI message.
+See [LTI message properties](/shared/lms/LTI.md) for more about what is inside a LTI message.
 
 ![EdEHR-overview]
 
@@ -53,7 +54,7 @@ Default launch container | New widow (recommended or use existing window)
 Once configured, these 'external tools' can be used in any course activity.
 
 \* The custom parameter is very important. It is the way the LMS tells the EdEHR which assignment (in the EdEHR)
-is associated with this external tool.  See [assignments](/outside/assignments.md) 
+is associated with this external tool.  See [assignments](/shared/assignments.md) 
  
 Once the external tools are configured the administrator or course content editor can set up the activities for a course.
 Students will see these activities and be asked to complete them by a certain time. 
@@ -80,7 +81,7 @@ and, likely, more complex ER digram.
 Notice the class called "Activities" and the propery "LTI resource link id".
 This is a unique ID created by the LMS when a new activity is created.  The EdEHR uses this to uniquely locate course activities.
 Notice how these can be associated with External Tools which have that custom parameter (called "EdEHR assignment id" in the diagram). These are 
-the key connection points to the entity relationship diagram for the EdEHR. See [assignments](/outside/)
+the key connection points to the entity relationship diagram for the EdEHR. See [assignments](/shared/assignments.md)
 
 
 
@@ -91,7 +92,7 @@ the key connection points to the entity relationship diagram for the EdEHR. See 
 
 
 
-[EdEHR-overview]: ../images/EdEHR-overview.png "overview"
-[EdEHR-ER-consumer]: ../images/EdEHR-ER-consumer.png "LTI Consumer"
-[EdEHR-ER-provider]: ../images/EdEHR-ER-provider.png "LTI Provider"
+[EdEHR-overview]: ../../images/EdEHR-overview.png "overview"
+[EdEHR-ER-consumer]: ../../images/EdEHR-ER-consumer.png "LTI Consumer"
+[EdEHR-ER-provider]: ../../images/EdEHR-ER-provider.png "LTI Provider"
 

@@ -2,78 +2,62 @@ const path = require("path");
 
 module.exports = {
   title: 'EdEHR a prototype project',
-  description: 'EdEHR is an open source LTI compatable learning tool providing support for educational programs in the medical field. EdEHR allows students to try out a Electronic Health Record (EHR) system within the educational experience',
+  description: 'EdEHR is an open source, LTI-compatable learning tool for students in post-secondary medical programs. EdEHR gives students the opportunity to learn about Electronic Health Record (EHR) systems in a classroom or sim lab setting before working in a professional environment.',
   base: "/edehr/",
   themeConfig: {
     displayAllHeaders: false,
     nav: [
-      { text: 'Home', link: '/' },
-      { text: 'LMS', link: '/lms/' },
-      { text: 'Ed', link: '/outside/' },
-      { text: 'EHR', link: '/inside/' },
-      { text: 'Documentation', link: '/docs/' },
-      { text: 'DevOps', link: '/devop/' }
+      {text: 'Home', link: '/'},
+      {text: 'LMS admin', link: '/lms-admin/'},
+      {text: 'Course designer', link: '/course-designer/'},
+      {text: 'Instructor', link: '/instructor/'},
+      {text: 'Student', link: '/student/'},
+      {text: 'Developer', link: '/developer/'},
     ],
     sidebar: [
       {
-        title: 'EdEHR Project',
+        title: "EdEHR",
         children: [
-          '/'
+          '/',
+          '/about.md',
+          '/whats-next.md'
         ]
       },
       {
-        title: 'LMS',
+        title: "LMS admin",
         children: [
-          '/lms/',
-          '/lms/LTI.md'
+          '/lms-admin/'
         ]
       },
       {
-        title: 'Assignments',
+        title: "Course designer",
         children: [
-          '/outside/',
-          '/outside/assignments.md'
+          '/course-designer/',
+          '/course-designer/cd-lms.md',
+          '/course-designer/cd-edehr.md'
         ]
       },
       {
-        title: 'EHR',
+        title: "Instructors's guide",
+        path: '/instructor/',
         children: [
-          '/inside/'
+          '/instructor/',
         ]
       },
       {
-        title: 'Code generator',
+        title: "Student's guide",
         children: [
-          '/inside-generator/',
-          '/inside-generator/Ehr-Defs-Pages.md',
-          '/inside-generator/Ehr-Defs-Input-Types.md',
-          '/inside-generator/Ehr-Defs-Keys.md',
-          '/inside-generator/Ehr-Defs-Location.md',
-          '/inside-generator/Ehr-Calculated-Values.md',
+          '/student/',
         ]
       },
       {
-        title: 'Custom Pages',
+        title: "Developer's guide",
+        path: '/developer/',
         children: [
-          '/inside-custom/',
-          '/inside-custom/Med-Admin-Records.md',
-          '/inside-custom/Summary-table.md'
+          '/developer/',
         ]
       },
-      {
-        title: 'DevOps',
-        children: [
-          '/devop/',
-          '/devop/deploy.md',
-          '/devop/technical-architecture.md'
-        ]
-      },
-      {
-        title: 'Documentation',
-        children: [
-          '/docs/'
-        ]
-      }
     ]
   }
 }
+

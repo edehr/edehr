@@ -62,8 +62,8 @@ The EdEHR provides the instructor an opportunity to see the student's work in si
 for evaluation and grading.  The system provides a space for instructors to record comments on the students work.  
 
 
-[EdEHR-overview.png]: ../images/EdEHR-overview.png "overview"
-[EdEHR-ER-consumer]: ../images/EdEHR-ER-consumer.png "LTI Consumer"
-[EdEHR-ER-provider]: ../images/EdEHR-ER-provider.png "LTI Provider"
-[LMS-custom-parameter]: ../images/LMS-custom-parameter.png "LTI Custom Parameter"
+[EdEHR-overview.png]: ../../images/EdEHR-overview.png "overview"
+[EdEHR-ER-consumer]: ../../images/EdEHR-ER-consumer.png "LTI Consumer"
+[EdEHR-ER-provider]: ../../images/EdEHR-ER-provider.png "LTI Provider"
+[LMS-custom-parameter]: ../../images/LMS-custom-parameter.png "LTI Custom Parameter"
 
