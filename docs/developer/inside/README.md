@@ -9,8 +9,8 @@ The schema on the left reflects what a professional EHR schema might look like. 
 
 Because the EdEHR tracks only one small encounter, all of the EHR data can be stored in a single structured text file. Incremental deltas (version control) can then be stored for each stage of the scripted assignment
 
-[EdEHR-ER-EHR]: ../images/EdEHR-ER-EHR.png "EHR-ER"
-[EHR-screenshot]: ../images/EHR-screenshot.png "EHR"
+[EdEHR-ER-EHR]: ../../images/EdEHR-ER-EHR.png "EHR-ER"
+[EHR-screenshot]: ../../images/EHR-screenshot.png "EHR"
 
 ![EdEHR-ER-EHR]
 
