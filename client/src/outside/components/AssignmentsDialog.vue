@@ -168,6 +168,7 @@ export default {
 }
 </script>
 
-<!--<style lang="scss" scoped>-->
-<!--@import '../../scss/definitions';-->
-<!--</style>-->
+<style lang="scss" scoped>
+@import '../../scss/definitions';
+@import '../../scss/styles/forms';
+</style>
