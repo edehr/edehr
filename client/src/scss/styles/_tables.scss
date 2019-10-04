@@ -60,6 +60,12 @@ th,
   border-bottom: 1px solid $grey40;
 }
 
+.no-data {
+    font-size: 16px;
+    font-style: italic;
+    margin-bottom: 3em;
+}
+
 /* .canvas-wrapper[data-v-5baa5a88] {
     -webkit-box-flex: 1;
     -ms-flex: 1 0 auto;
