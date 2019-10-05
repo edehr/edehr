@@ -1,4 +1,4 @@
-# Course Designer
+# Course designer
 
 > Create course content and assignments.
 

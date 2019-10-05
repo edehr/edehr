@@ -1,4 +1,4 @@
-# LMS Admin
+# LMS admin
 
 > The learning management system (LMS) administrator creates the LTI connection
 
