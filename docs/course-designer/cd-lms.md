@@ -2,7 +2,7 @@
 
 > Course designer configures the LMS with a LTI link to the EdEHR
 
-Prerequisites: the LMS admin has configured the LTI link to the EdEHR. The LMS admin may inform the course designer that the link is ready and provide the "tool name".  Optionally, the course designer may be told what the custom parameter (the External Id to the EdEHR) is. But this isn't absolutely necessary.
+Prerequisites: the LMS admin has configured the LTI link to the EdEHR. The LMS admin may inform the course designer that the link is ready and provide the "tool name".  Optionally, the course designer may be told what the custom parameter (the [External Id](/shared/definitions.md#external-id) to the EdEHR) is. But this isn't absolutely necessary.
 
 The following describes how a course designer will configure the course in Moodle.  Hopefully the process is similar in other LMS applications. We welcome contributions to this documentation.
 

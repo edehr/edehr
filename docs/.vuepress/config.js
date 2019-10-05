@@ -57,6 +57,14 @@ module.exports = {
           '/developer/',
         ]
       },
+      {
+        title: "Common",
+        path: '/shared/',
+        children: [
+          '/shared/',
+          '/shared/definitions.md',
+        ]
+      },
     ]
   }
 }
