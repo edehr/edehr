@@ -21,8 +21,9 @@ To compliment this we have added the following to the license.
 
 ## LTI
 
-As a course designer and/or LMS administrator I'd like to use more of the capabilities of LTI. In particular, I want to use the newer LTI versions to simplify creating course content using the EdEHR; to use the grade outcomes to ease the evaluation and grading of students and use the higher level of security not present in the basic LTI connection.
-See [wiki](https://en.wikipedia.org/wiki/Learning_Tools_Interoperability)
+As a course designer and/or LMS administrator I'd like to use more of the capabilities of LTI. In particular, I want to use the newer LTI versions to simplify creating course content using the EdEHR; to use the grade outcomes to ease the evaluation and grading of students and use the higher level of security not present in the basic LTI connection.  It may also be possible for the provider (e.g. EdEHR) to query the consumer (e.g. Moodle LMS) about courses and such that the current user has access to.
+
+Also see [wiki](https://en.wikipedia.org/wiki/Learning_Tools_Interoperability)
 
 
 Solution: A future version of the EdEHR application might support LTI V1.2 to allow for transferring more information,

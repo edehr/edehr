@@ -2,13 +2,20 @@
 
 > The learning management system (LMS) administrator creates the LTI connection
 
-1. The first step is to have a LMS application use the EdEHR. This has two parts.
-    1. a LMS administrator creates a LTI link to the EdEHR. See below 
-    1. then, also in the LMS, a course designer uses this link one or more times to set up activities in courses. See [course designer]
-    
-The following describes how to do this process in Moodle.  Hopefully the process is similar in other LMS applications. We welcome contributions to this documentation.
+The LMS admin is responsible for the first steps to create the course that uses the EdEHR.  Read the introduction to getting started [here](/#getting-started)
 
-Prerequisite: The Course Designer needs to ask the LMS admin to create the LTI link. The Course Designer needs to provide a name for the connection, an optional description, and the Custom parameter ([External Id](/shared/definitions.md#external-id)) for the assignment in the EdEHR. (See below for descriptions.) 
+1. The first step has two parts 
+    1. The LMS administrator creates a LTI link to the EdEHR. See below 
+    1. The course designer uses this link one or more times to set up activities in courses. See [course designer](/course-designer/)
+    
+Prerequisite: 
+1. The LMS admin asks the EdEHR admin for the [API URL](/shared/definitions.md#api-url), plus the [consumer key and secret](/shared/definitions.md#consumer-key). These are needed to allow the LMS to connect to the EdEHR.
+1. The Course Designer has provided the LMS admin a meaningful name for the connection, an optional description, and the ([External Id](/shared/definitions.md#external-id)) for the assignment in the EdEHR.  The LMS will use these for the tool name, description and custom parameters below.
+
+
+## Moodle External Tool Configuration
+
+The following describes the process in Moodle.  The process is likely similar in other LMS applications. 
 
 Log onto your Moodle instance as an administrator.  Select "Site Administration" (bottom left corner of the home screen).  Select Plugins and scan down the list of "Activity Modules" looking for "External Tool".  Click the "Manage tools" immediately below "External Tool".
 ![1]
@@ -27,15 +34,19 @@ assignment=<letters-or-numbers-or-dot-or-hyphen>
 
 Recommend that the tool name and custom parameter have some obvious connection to help with keeping the system easy to understand. 
 
-**Tool description:** Write a description that helps you, as the LMS admin, and the course designer understand what this LTI tool does.
+**Tool description:** Write a description that helps you, as the LMS admin, and the course designer understand what this LTI connection does.
 
-**Tool URL:** This is the url to the instance of EdEHR you wish to connect to. 
+**Tool URL:** This is the url to the back end of EdEHR. See [API URL](/shared/definitions.md#api-url). 
 
-**Consumner key:** and **Shared secret:** are two pieces of information that is shared between the LMS admin and the EdEHR admin.  These two administrators share a key and a secret that are used by the EdEHR to identify the institution.  This sharing typically happens via a phone conversation or email. 
+**Consumner key:** and **Shared secret:** are two pieces of information that is shared between the LMS admin and the EdEHR admin.  These two administrators share a key and a secret that are used by the EdEHR to identify the institution.  This sharing typically happens via a phone conversation or email.  See [consumer key and secret](/shared/definitions.md#consumer-key). 
 
 **Default launch container:** Select "Existing window" or "New window".  Do not either "Embed" option. It may help the instructors and students if you select "New window". This means the EdEHR will open in a new tab.
 
 Save the settings and then inform your course designers they can now configure course activities with this tool. Tell them what the tool name is and also provide the "custom parameter".  In the EdEHR this is called the [External Id](/shared/definitions.md#external-id).
 
+
+Next step to get started is done by the [course designer](/course-designer)
+
 [1]: ../images/moodle-manage-tool.png "Manage external tool in Moodle" 
 [2]: ../images/moodle-external-tool-config.png "External tool configuration in Moodle"
+

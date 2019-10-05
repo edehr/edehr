@@ -63,6 +63,7 @@ module.exports = {
         children: [
           '/shared/',
           '/shared/definitions.md',
+          '/shared/FAQ.md',
         ]
       },
     ]
