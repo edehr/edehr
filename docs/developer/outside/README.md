@@ -19,7 +19,7 @@ A student can only see the assignment after an instructor or content editor has 
 
 The EdEHR Activity corresponds to an activity within the LMS.  
 
-Every EHR Activity has a unique 'external id' or 'assignment id'.  In the LTI message this parameter is called
+Every EHR Activity has a unique [External Id](/shared/definitions.md#external-id) or 'assignment id'.  In the LTI message this parameter is called
 'custom_assignment'.  In the Moodle external tool setup looks like this  
 ![LMS-custom-parameter]
 The format is:
@@ -33,7 +33,7 @@ The system automatically creates an activity record
 when an instructor or content editor first uses a activity in the LMS.  Until an activity record exists all student
 users will see an error page.
 
-When the activity record is created the system searches for any existing assignments that have the 'external id' specified
+When the activity record is created the system searches for any existing assignments that have the [External Id](/shared/definitions.md#external-id) specified
 in the LTI message.  If none is found, then a new assignment record is created for this external id and a default empty seed
 is attached.
 

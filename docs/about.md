@@ -34,6 +34,7 @@ The electronic health record system is the core of the application. In this prot
 with one or more data entry forms and/or one or more tables with associated input dialogs.  EHR's are complex and that is
 why students need some exposure to them during their post-secondary education.
 
+The application also has a EHR page generation module that is responsible for creating the 48 or so web pages. This module works from configuration information stored in a project speadsheet.  It takes this information and generates pages, forms, dialogs and tables.  This allows a now-developer to participate in the design of the EHR screens.
 
 ## Open Source & License
 

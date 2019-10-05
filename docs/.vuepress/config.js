@@ -34,7 +34,9 @@ module.exports = {
         children: [
           '/course-designer/',
           '/course-designer/cd-lms.md',
-          '/course-designer/cd-edehr.md'
+          '/course-designer/cd-edehr.md',
+          '/course-designer/cd-assignment.md',
+          '/course-designer/cd-seed.md'
         ]
       },
       {
@@ -55,6 +57,15 @@ module.exports = {
         path: '/developer/',
         children: [
           '/developer/',
+        ]
+      },
+      {
+        title: "Common",
+        path: '/shared/',
+        children: [
+          '/shared/',
+          '/shared/definitions.md',
+          '/shared/FAQ.md',
         ]
       },
     ]
