@@ -2,15 +2,13 @@
 
 > The learning management system (LMS) administrator creates the LTI connection
 
-The LMS admin is responsible for the first steps to create the course that uses the EdEHR.  Read the introduction to getting started [here](/#getting-started)
-
-1. The first step has two parts 
-    1. The LMS administrator creates a LTI link to the EdEHR. See below 
-    1. The course designer uses this link one or more times to set up activities in courses. See [course designer](/course-designer/)
+The LMS admin is responsible for the first steps to create the course that uses the EdEHR.  Read [getting started](/#getting-started). The first step has two parts:
+1. The LMS administrator creates a LTI link to the EdEHR. See below 
+1. The course designer uses this link one or more times to set up activities in courses. See [course designer](/course-designer/)
     
 Prerequisite: 
 1. The LMS admin asks the EdEHR admin for the [API URL](/shared/definitions.md#api-url), plus the [consumer key and secret](/shared/definitions.md#consumer-key). These are needed to allow the LMS to connect to the EdEHR.
-1. The Course Designer has provided the LMS admin a meaningful name for the connection, an optional description, and the ([External Id](/shared/definitions.md#external-id)) for the assignment in the EdEHR.  The LMS will use these for the tool name, description and custom parameters below.
+1. The [course designer](/shared/definitions.md#course-designer) has provided the LMS admin a meaningful name for the connection, an optional description, and the ([External Id](/shared/definitions.md#external-id)) for the assignment in the EdEHR.  The LMS will use these for the tool name, description and custom parameters below.
 
 
 ## Moodle External Tool Configuration
