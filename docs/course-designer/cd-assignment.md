@@ -19,7 +19,7 @@ Normally you will also want to set up more than the default empty content. To do
 
 ## Content development
 
-At the bottom of the assignments page is a checkbox.  This is a prototype kludge that enables "content editing". Check this box to become a [course designer](/shared/definitions.md#edehr-course-designer). When you do the top of the page now has buttons that enable you to manage the assignments.
+At the bottom of the assignments page is a checkbox.  This is a prototype kludge that enables "content editing". Check this box to become a [course designer](/shared/definitions.md#course-designer). When you do the top of the page now has buttons that enable you to manage the assignments.
 ![3]
 
 
@@ -35,9 +35,6 @@ This button downloads a file with all the assignment configuration data.  This i
 
 This buttons takes you to the seed management page.  Go there to create and manage seed data (course case study data).  Once you have configured the seeds return to this assignments page and finalize the configuration of the assignment.
 
-
-
-> Work In Progress .. to be continued
 
 [1]: ../images/edehr-dashboard.png "EdEHR dashboard"
 [2]: ../images/edehr-assignment-list-pre-config.png "Assignment listing before configuring the assignment"

@@ -2,7 +2,7 @@
 
 > Course designer configures the activity and assignment in the EdEHR
 
-Prerequisites: a course designer has configured an activity in the LMS that links to the EdEHR. See [lms](/course-designer/cd-lms.md)
+Prerequisites: a course designer has configured an activity in the LMS that links to the EdEHR. See [previous step](/course-designer/cd-lms.md)
 
 ## Course activity listing
 As a course designer (instructor or LMS administrator) click on the LMS activity previously created.  You will be taken to the EdEHR dashboard.  The Dashboard shows all courses the current user has activated by visiting the EdEHR via the LMS.  See [Faq - activation](/shared/faq.md#activation).

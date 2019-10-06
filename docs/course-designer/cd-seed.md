@@ -7,7 +7,7 @@ Also see [seed definition](/shared/definition.md#seed)
 One seed is often used by many assignments.  Just as one assignment is often used by many activities.
 
 
-To access the 'Manage seed data' page you need to start on the assignments page with [content editing enabled](/course-designer/cd-edehr.md#content-development) 
+To access the 'Manage seed data' page you need to start on the assignments page with [content editing enabled](/course-designer/cd-activity.md#content-development) 
 
 ![1]
 
