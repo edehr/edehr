@@ -134,7 +134,7 @@ export function apiError (app, config) {
       err.message += ' -- AssignmentMismatchError'
       let status = 400
       res.status(status)
-      res.render('server-errors/error', {message: err.message, status: status, errorData: err.errorData})
+      res.render('server-errors/error', {message: err.message, status: status, errorData: JSON.stringify(err.errorData)})
     } else {
       next(err)
     }
