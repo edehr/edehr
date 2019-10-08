@@ -14,7 +14,7 @@ export const Text = {
   EdEHR_REQUIRES_CONTEXT: 'EdEHR requires the LTI tool consumer to provide a resource context_id',
   EdEHR_REQUIRES_CUSTOM : 'EdEHR requires the LTI tool consumer to provide a custom assignment paramater named "custom_assignment"',
 
-  EdEHR_ASSIGNMENT_MISMATCH: (key, id, externalId) => `Could not locate assignment for ${externalId}  tool: ${key} ${id}`,
+  EdEHR_ASSIGNMENT_MISMATCH: (key, externalId) => `Could not locate activity with external id '${externalId}' for LTI consumer '${key}'. Ask your school to configure the EdEHR activity.`,
 
   EdEHR_MISSING_VISIT: (key, id) => `Missing visit while preparing to redirect for tool consumer ${key} - ${id}`,
 

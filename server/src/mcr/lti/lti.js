@@ -278,7 +278,7 @@ export default class LTIController {
       .then(assignment => {
         if (!assignment) {
           if (role.isStudent) {
-            let msg = Text.EdEHR_ASSIGNMENT_MISMATCH(toolConsumer.oauth_consumer_key, toolConsumer._id, externalId)
+            let msg = Text.EdEHR_ASSIGNMENT_MISMATCH(toolConsumer.oauth_consumer_key, externalId)
             debug('locateAssignment ' + msg)
             throw this._createAssignmentMismatchError(req.ltiData, msg)
           }

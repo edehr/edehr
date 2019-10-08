@@ -28,6 +28,9 @@ Apart from installing and running the LMS and EdEHR applications there are four 
 
 4. Instructors also get to the EdEHR via the same LMS course/activity link but they come to the EdEHR dashboard with a listing of all the courses they have used. Under each course is a listing of activities and these each contain class lists. From here the instructor can enter the EHR and evaluation each student's work.  These evaluations notes can later be exported to a file and imported into the LMS. See [instructor](/instructor/)
 
+To help explain all this we have a video in two parts. [part1](https://www.dropbox.com/s/j1ycyvb91ef7hcf/tutorial-part1.mp4?dl=0) and  [part 2](https://www.dropbox.com/s/duznqu7rz930v1p/tutorial-part2.mp4?dl=0)
+These videos demonstrate all of the above including how a student completes their assignment and instructor evaluates the work. You see this in part 2.
+
 
 ## Installation and Development
 
