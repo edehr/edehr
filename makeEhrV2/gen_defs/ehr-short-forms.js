@@ -67,7 +67,7 @@ class EhrShortFormHelper {
   }
 
   withDate (entry, postEntries, defs) {
-    console.log('preprocess input with date ', entry)
+    // console.log('preprocess input with date ', entry)
     let toAdd = JSON.parse(JSON.stringify(defs))
     let main = toAdd[0]
     let date = toAdd[1]

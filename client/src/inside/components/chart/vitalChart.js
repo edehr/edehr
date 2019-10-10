@@ -334,7 +334,7 @@ export default class VitalChart {
   }
 
   _drawX (ctx, pointX, pointY, colour) {
-    console.log('draw X ', pointX, pointY, colour)
+    // console.log('draw X ', pointX, pointY, colour)
     const len = 5
     const lineWidth = 2
     const x = pointX, y = pointY

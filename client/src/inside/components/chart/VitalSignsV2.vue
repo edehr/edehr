@@ -1,7 +1,7 @@
 // Custom EHR Vue component
 <template lang="pug">
-  div(class="ehr-page")
-    ehr-panel-header {{ uiProps.pageTitle }}
+  div()
+    ehr-panel-header {{ pageDef.pageTitle }}
     ehr-panel-content
       div(class="region ehr-page-content")
         vitals2(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
@@ -27,7 +27,7 @@ export default {
     pageDataKey: { type: String }
   },
   computed: {
-    uiProps () {
+    pageDef () {
       return this.ehrHelp.getPageDef(this.pageDataKey)
     }
   }

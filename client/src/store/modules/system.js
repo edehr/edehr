@@ -2,11 +2,11 @@ const state = {
   isSeeding: false,
   isLoading: false,
   isEditing: false,
+  isShowingAdvanced: false,
   currentPageKey: '',
   loadingCnt: 0,
   apiError: '',
-  sysMessage: '',
-  usingV2: false
+  sysMessage: ''
 }
 
 const getters = {}
@@ -22,13 +22,11 @@ const mutations = {
     }
     state.isLoading = state.loadingCnt > 0
   },
-  setUseV2: (state, value) => {
-    let isTrue = (value === true || value === 'true')
-    localStorage.setItem('usingV2', isTrue)
-    state.usingV2 = isTrue
-  },
   setEditing: (state, isEditing) => {
     state.isEditing = isEditing
+  },
+  setShowingAdvanced: (state, isEditing) => {
+    state.isShowingAdvanced = isEditing
   },
   setSeeding: (state, isSeeding) => {
     state.isSeeding = isSeeding

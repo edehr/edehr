@@ -4,26 +4,26 @@
       h2(slot="header") {{dialogHeader}}
       div(slot="body")
         div
-          div(class="input-fieldrow")
-            div(class="ehrdfe")
+          div(class="ehr-group-wrapper grid-left-to-right-3")
+            div(class="form-element")
               div(class="text_input_wrapper")
                 label Assignment name
-                input(class="input", type="text", v-model="assignmentName", :class="{ 'is-invalid': !validName }")
-            div(class="ehrdfe")
+                input(class="input text-input", type="text", v-model="assignmentName", :class="{ 'is-invalid': !validName }")
+            div(class="form-element")
               div(class="text_input_wrapper")
                 label External id
-                input(class="input", type="text", v-model="externalId", :class="{ 'is-invalid': !validExternalId }")
-            div(class="ehrdfe")
+                input(class="input text-input", :disabled="!enableExternalIdEdit", type="text", v-model="externalId", :class="{ 'is-invalid': !validExternalId }")
+            div(class="form-element")
               div(class="input-element")
                 label Seed data
                 select(v-model="selectedSeed", :class="{ 'is-invalid': !validSeed }")
                   option(value="")
                   option(v-for="seed in seedOptionList", v-bind:value="seed.id", :selected="seed.selected") {{ seed.name}} {{seed.selected}}
-          div(class="input-fieldrow")
-            div(class="ehrdfe")
+          div(class="ehr-group-wrapper")
+            div(class="form-element")
               div(class="input-element input-element-full")
                 label Description
-                textarea(class="textarea",v-model="description")
+                textarea(class="ehr-page-form-textarea",v-model="description")
           div(class="error-listing")
             div(v-for="err in errorList") {{ err }}
           hr
@@ -62,6 +62,7 @@ export default {
       actionType: '',
       assignmentId: '',
       selectedSeed: '',
+      enableExternalIdEdit: true,
       inUseIds: []
     }
   },
@@ -131,8 +132,11 @@ export default {
         this.assignmentId = assignmentData._id
         this.selectedSeed = assignmentData.seedDataId || ''
         this.inUseIds = this.inUseIds.filter( a => a !== this.externalId.toLowerCase())
+        let cnt = StoreHelper.activitiesUsingAssignmentCount(this.assignmentId)
+        this.enableExternalIdEdit =  0 === cnt
       } else {
         this.actionType = CREATE_ACTION
+        this.enableExternalIdEdit = true
       }
       this.$refs.theDialog.onOpen()
     },
@@ -141,11 +145,13 @@ export default {
       this.$refs.theDialog.onClose()
     },
     saveDialog: function () {
-      console.log('saveDialog ', this.actionType, this.aSeed)
+      // console.log('saveDialog ', this.actionType)
       if (this.errorList.length > 0) {
         this.$refs.confirmDialog.showDialog(CONFIRM_TITLE, CONFIRM_MSG)
       } else {
-        this.proceedWithSave()
+        this.proceedWithSave().then( () => {
+          this.$emit('save')
+        })
       }
     },
     proceedWithSave: function () {
@@ -159,9 +165,9 @@ export default {
       }
       this.$refs.theDialog.onClose()
       if (this.actionType === EDIT_ACTION) {
-        StoreHelper.updateAssignment(this, this.assignmentId, aAssignment)
+        return StoreHelper.updateAssignment(this, this.assignmentId, aAssignment)
       } else if (this.actionType === CREATE_ACTION) {
-        StoreHelper.createAssignment(this, aAssignment)
+        return StoreHelper.createAssignment(this, aAssignment)
       }
     }
   }
@@ -169,6 +175,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/definitions';
-@import '../../scss/styles/forms';
+/*@import '../../scss/definitions';*/
+/*@import '../../scss/styles/forms';*/
 </style>

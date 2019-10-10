@@ -51,7 +51,7 @@ export default function () {
           fqn: 'progressNotes.note'
         }
       ],
-      generated: '2019-09-20T10:48:20-07:00',
+      generated: '2019-10-08T20:19:04-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -208,11 +208,11 @@ export default function () {
           fqn: 'carePlan.status'
         }
       ],
-      generated: '2019-09-20T10:48:20-07:00',
+      generated: '2019-10-08T20:19:04-07:00',
       pageElements: {
-        table2: {
-          elementKey: 'table2',
-          tableKey: 'table2',
+        table: {
+          elementKey: 'table',
+          tableKey: 'table',
           isTable: true,
           addButtonText: 'Add a care plan',
           ehr_list: [
@@ -263,9 +263,9 @@ export default function () {
             }
           ],
           form: {
-            elementKey: 'table2',
+            elementKey: 'table',
             addButtonText: 'Add a care plan',
-            formKey: 'table2',
+            formKey: 'table',
             ehr_groups: [
               {
                 formCss: 'record-header',
@@ -310,11 +310,11 @@ export default function () {
       isV2: true,
       hasGridForm: true,
       pageChildren: [],
-      generated: '2019-09-20T10:48:20-07:00',
+      generated: '2019-10-08T20:19:04-07:00',
       pageElements: {
-        page_form110: {
-          elementKey: 'page_form110',
-          formKey: 'page_form110',
+        pageForm: {
+          elementKey: 'pageForm',
+          formKey: 'pageForm',
           isPageForm: true,
           ehr_groups: []
         }
@@ -364,18 +364,18 @@ export default function () {
           fqn: 'labResults.labReport4_1'
         }
       ],
-      generated: '2019-09-20T10:48:20-07:00',
+      generated: '2019-10-08T20:19:04-07:00',
       pageElements: {
-        page_form111: {
-          elementKey: 'page_form111',
-          formKey: 'page_form111',
+        pageForm: {
+          elementKey: 'pageForm',
+          formKey: 'pageForm',
           isPageForm: true,
           ehr_groups: [
             {
               gIndex: '1',
               gChildren: [
                 {
-                  elementKey: 'subgroup116',
+                  elementKey: 'subgroup63',
                   sgChildren: [
                     'labReport1_1',
                     'labReport2_1',
@@ -447,11 +447,11 @@ export default function () {
           fqn: 'medicalImaging.pneumonia_report'
         }
       ],
-      generated: '2019-09-20T10:48:20-07:00',
+      generated: '2019-10-08T20:19:04-07:00',
       pageElements: {
-        page_form113: {
-          elementKey: 'page_form113',
-          formKey: 'page_form113',
+        pageForm: {
+          elementKey: 'pageForm',
+          formKey: 'pageForm',
           isPageForm: true,
           ehr_groups: [
             {
@@ -476,11 +476,11 @@ export default function () {
       isV2: true,
       hasGridForm: true,
       pageChildren: [],
-      generated: '2019-09-20T10:48:20-07:00',
+      generated: '2019-10-08T20:19:04-07:00',
       pageElements: {
-        page_form115: {
-          elementKey: 'page_form115',
-          formKey: 'page_form115',
+        pageForm: {
+          elementKey: 'pageForm',
+          formKey: 'pageForm',
           isPageForm: true,
           ehr_groups: []
         }

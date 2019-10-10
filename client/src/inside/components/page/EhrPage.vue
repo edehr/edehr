@@ -3,18 +3,14 @@
     ehr-panel-header {{ pageDef.pageTitle }}
     ehr-panel-content
       ehr-page-element(v-for="element in pageElements", :key="element.pageDataKey", :element="element", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
-
-    div(class="assignment-save")
-      div Page updated: {{ ehrHelp.getPageGeneratedDate() }}
-      div Assignment last saved: {{ ehrHelp.getLastPageDataUpdateDate() }}
-      v2-control
+    ehr-page-footer(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
 </template>
 
 <script>
 import EhrPanelHeader from './EhrPanelHeader.vue'
 import EhrPanelContent from './EhrPanelContent.vue'
-import V2Control from './V2Control'
 import EhrPageElement from './EhrPageElement'
+import EhrPageFooter from './EhrPageFooter'
 import EhrDefs from '../../../helpers/ehr-defs-grid'
 import EventBus from '../../../helpers/event-bus'
 import { PAGE_DATA_REFRESH_EVENT } from '../../../helpers/event-bus'
@@ -61,8 +57,8 @@ export default {
   name: 'EhrPageTable',
   components: {
     EhrPanelHeader,
-    V2Control,
     EhrPanelContent,
+    EhrPageFooter,
     EhrPageElement
   },
   data: function () {

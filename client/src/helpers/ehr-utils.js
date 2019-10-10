@@ -1,7 +1,7 @@
 import moment from 'moment'
 import camelcase from 'camelcase'
 import fileDownload  from 'js-file-download'
-import { getAllPageKeys } from './ehr-defs'
+import EhrDefs from './ehr-defs-grid'
 import { Text } from './ehr-text'
 import Vue from 'vue'
 import store from '../store'
@@ -155,7 +155,7 @@ export function ehrMarkSeed (data) {
  * @private
  */
 export function validateSeedFileContents (dataAsString) {
-  let pageKeys = getAllPageKeys()
+  let pageKeys = EhrDefs.getAllPageKeys()
   try {
     let obj = JSON.parse(dataAsString)
     if (!obj.license) {

@@ -19,7 +19,7 @@ export default class UserController extends BaseController {
   listAsInstructorCourses (id) {
     debug('listAsInstructorCourses for ' + id)
     return Visit.find({ $and: [ {isInstructor: true }, {user: new ObjectID(id)} ] })
-      .populate('activity', 'context_id context_label context_title resource_link_title resource_link_description')
+      .populate('activity', 'context_id context_label context_title resource_link_title resource_link_description assignment')
       // .populate('assignment', 'name description seedDataId')
       // .select('lastVisitDate activityData')
       .then(visits => {

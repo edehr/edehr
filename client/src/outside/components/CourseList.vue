@@ -6,6 +6,7 @@
 
 <script>
 import Course from './Course'
+import StoreHelper from '../../helpers/store-helper'
 
 export default {
   name: 'CourseList',
@@ -14,7 +15,7 @@ export default {
   },
   computed: {
     courses () {
-      return this.$store.state.instructor.sCourses
+      return StoreHelper.getCourseList(this)
     }
   }
 }

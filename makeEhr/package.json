@@ -1,9 +1,0 @@
-{
-  "name": "edehr-makeEhr",
-  "description": "Tools to generate client Vue files from configuration files. Run the deply.sh script",
-  "dependencies": {
-    "camelcase": "^5.2.0",
-    "md5-hex": "^2.0.0",
-    "moment": "^2.24.0"
-  }
-}

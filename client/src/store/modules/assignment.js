@@ -28,7 +28,7 @@ const actions = {
     })
   },
 
-  switchAssignment(context, assignment) {
+  switchAssignment (context, assignment) {
     context.commit('setAssignment', assignment)
   },
 

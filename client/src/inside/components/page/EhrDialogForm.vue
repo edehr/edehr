@@ -9,7 +9,6 @@
 
 <script>
 import AppDialog from '../../../app/components/AppDialogShell'
-import EhrDialogFormElement from '../elements/EhrDialogFormElement'
 import EhrGroup from './EhrGroup'
 import EventBus from '../../../helpers/event-bus'
 
@@ -18,7 +17,6 @@ const debug = false
 export default {
   name: 'EhrDialogForm',
   components: {
-    EhrDialogFormElement,
     EhrGroup,
     AppDialog
   },
