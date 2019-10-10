@@ -1,23 +1,18 @@
 // Custom page for Discharge Summary
 <template lang="pug">
-  div(class="ehr-page")
+  div()
     ehr-panel-header {{ pageDef.pageTitle }}
-      v2-control(slot="controls")
     ehr-panel-content
       div(v-for="key in summaries")
         ehr-summary-table(:summaryKey="key", :ehrHelp="ehrHelp")
         hr
       ehr-page-element(v-for="element in pageElements", :key="element.pageDataKey", :element="element", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
 
-    div(class="assignment-save")
-      div Page updated: {{ ehrHelp.getPageGeneratedDate() }}
-      div Assignment last saved: {{ ehrHelp.getLastPageDataUpdateDate() }}
 </template>
 
 <script>
-import EhrPanelHeader from '../EhrPanelHeader.vue'
-import EhrPanelContent from '../EhrPanelContent.vue'
-import V2Control from '../page/V2Control'
+import EhrPanelHeader from '../page/EhrPanelHeader.vue'
+import EhrPanelContent from '../page/EhrPanelContent.vue'
 import EhrPageElement from '../page/EhrPageElement'
 import EhrDefs from '../../../helpers/ehr-defs-grid'
 import EventBus from '../../../helpers/event-bus'
@@ -30,8 +25,7 @@ export default {
     EhrSummaryTable,
     EhrPanelHeader,
     EhrPanelContent,
-    EhrPageElement,
-    V2Control
+    EhrPageElement
   },
   data: function () {
     return {

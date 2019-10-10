@@ -1,5 +1,5 @@
 {inputType: page}	{pRef: 43}	{Label: Standardized assessment tools}	{elementKey: assessmentTools}	{pN: 35}	{fN: }	{gN: }	{sgN: }	eCell	{formOption: formOption}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: page_form}	eCell	eCell	eCell	{pN: 35}	{fN: 1}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: page_form}	eCell	eCell	{elementKey: pageForm}	{pN: 35}	{fN: 1}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	{pN: 35}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_subgroup}	eCell	{Label: Admissions}	{elementKey: admissions}	{pN: 35}	{fN: 1}	{gN: 1}	{sgN: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: assetLink}	eCell	{Label: Triage scale}	{elementKey: admissions1_1}	{pN: 35}	{fN: 1}	{gN: 1}	{sgN: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{assetBase: standardized-assessment-tools}	{assetName: the-canadian-ed-triage-and-acuity-scale.gif}	eCell	eCell	eCell
@@ -25,7 +25,7 @@
 {inputType: ehr_subgroup}	eCell	{Label: Medication}	{elementKey: medication}	{pN: 35}	{fN: 1}	{gN: 1}	{sgN: 8}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: assetLink}	eCell	{Label: Best possible medication history}	{elementKey: medication1_1}	{pN: 35}	{fN: 1}	{gN: 1}	{sgN: 8}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{assetBase: standardized-assessment-tools}	{assetName: best_possible_medication.pdf}	eCell	eCell	eCell
 {inputType: page}	{pRef: 44}	{Label: Code lookup}	{elementKey: codeLookup}	{pN: 36}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: page_form}	eCell	eCell	{elementKey: aForm}	{pN: 36}	{fN: 1}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: page_form}	eCell	eCell	{elementKey: pageForm}	{pN: 36}	{fN: 1}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	{pN: 36}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: SnomedCT}	{elementKey: snomed}	{pN: 36}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: ICB}	{elementKey: icf}	{pN: 36}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
@@ -56,7 +56,7 @@ I10}"	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	{pN: 38}	{fN: 1}	{gN: 2}	{sgN: }	{formCss: grid-left-to-right-1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Intervention}	{elementKey: intervention}	{pN: 38}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Intervention}	{tableColumn: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Data_case_study: 3.GY.10.VA
 2.GZ.21.EA}"	eCell	eCell
-{inputType: ehr_group}	eCell	#REF!	#REF!	{pN: 38}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	{Label: Intervention code attributes}	{elementKey: label}	{pN: 38}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Status}	{elementKey: status}	{pN: 38}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Status}	{tableColumn: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Laterally}	{elementKey: laterally}	{pN: 38}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Laterally}	{tableColumn: 4}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Extent}	{elementKey: extent}	{pN: 38}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Extent}	{tableColumn: 5}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell

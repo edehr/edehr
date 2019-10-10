@@ -67,7 +67,7 @@ export default {
       this.$refs.refMarDialog.openMarDialog(period)
     },
     showButton (period) {
-      return this.ehrHelp.showPageCustomControls() && !period.hasMar()
+      return this.ehrHelp.showTableAddButton() && !period.hasMar()
     },
     saveMar (mar) {
       let help = new MarHelper(this.ehrHelp)

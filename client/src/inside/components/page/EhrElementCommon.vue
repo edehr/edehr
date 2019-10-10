@@ -1,6 +1,5 @@
 
 <script>
-import {getDefaultValue} from '../../../helpers/ehr-defs'
 import EhrPageFormLabel from './EhrPageFormLabel.vue'
 import EhrDefs from '../../../helpers/ehr-defs-grid'
 import UiInfo from '../../../app/ui/UiInfo'
@@ -121,7 +120,7 @@ export default {
       const dKey = this.dependantOnKey = this.element.dependantOn
       if (dKey) {
         // get default value of the other element and coerce to be boolean
-        const dependantDefault = getDefaultValue(this.pageDataKey, dKey)
+        const dependantDefault = EhrDefs.getDefaultValue(this.pageDataKey, dKey)
         this.dependantOnValue = !!dependantDefault
         this.dependentPropertyChangeChannel = 'radio:' + dKey
         this.dependentEventHandler = function (eData) {

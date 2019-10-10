@@ -5,7 +5,7 @@
     div
       h2(v-show="tableDef.label") {{tableDef.label}}
       ehr-table-vertical(v-if="isVertical", :ehrHelp="ehrHelp", :tableDef="tableDef")
-      ehr-table-stacked(v-if="isStacked", :ehrHelp="ehrHelp", :tableDef="tableDef", :tableForm="tableForm")
+      ehr-table-stacked(v-if="isStacked", :ehrHelp="ehrHelp", :tableDef="tableDef")
     ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDef", :errorList="errorList" )
     div(v-if="hasData")
       ui-button(v-on:buttonClicked="clearAllData", v-bind:secondary="true") Clear all table data
@@ -38,7 +38,7 @@ export default {
   },
   data: function () {
     return {
-      tableForm: {}
+      hasData: false
     }
   },
   inject: [ 'pageDataKey'],
@@ -57,9 +57,6 @@ export default {
   computed: {
     tableKey () {
       return this.tableDef.tableKey
-    },
-    hasData () {
-      return this.tableForm.hasData
     },
     isVertical () {
       let isVert = this.tableDef.form.formOption === 'transpose'
@@ -89,7 +86,8 @@ export default {
       this.ehrHelp.clearTable(this.tableKey)
     },
     refresh () {
-      this.tableForm = this.ehrHelp.getTable(this.tableKey)
+      let tableForm = this.ehrHelp.getTable(this.tableKey)
+      this.hasData = tableForm.hasData
       // console.log('EhrPageTable refresh ', this.tableKey, this.tableForm)
     }
   },

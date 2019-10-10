@@ -3,7 +3,7 @@ const debug = false
 
 export default {
   bind (el, binding) {
-    function linky(text) {
+    function linky (text) {
       let re = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b[\/[a-zA-Z0-9()@:%_\-\+.~#?&=]*]*/g
       let linkedText = text.replace(re,'<a href="$&" target="_blank">$&</a>')
       if(debug) console.log('rich text linky', text, linkedText)

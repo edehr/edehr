@@ -143,11 +143,11 @@ export default function () {
           fqn: 'assessmentTools.medication1_1'
         }
       ],
-      generated: '2019-09-20T10:48:35-07:00',
+      generated: '2019-10-08T20:19:22-07:00',
       pageElements: {
-        page_form117: {
-          elementKey: 'page_form117',
-          formKey: 'page_form117',
+        pageForm: {
+          elementKey: 'pageForm',
+          formKey: 'pageForm',
           isPageForm: true,
           ehr_groups: [
             {
@@ -155,7 +155,7 @@ export default function () {
               gChildren: [
                 {
                   label: 'Admissions',
-                  elementKey: 'subgroup127',
+                  elementKey: 'subgroup72',
                   sgChildren: [
                     'admissions1_1',
                     'admissions2_1',
@@ -164,7 +164,7 @@ export default function () {
                 },
                 {
                   label: 'Pain assessment',
-                  elementKey: 'subgroup128',
+                  elementKey: 'subgroup73',
                   sgChildren: [
                     'painAssessment1_1',
                     'painAssessment2_1'
@@ -172,7 +172,7 @@ export default function () {
                 },
                 {
                   label: 'Neurological assessment',
-                  elementKey: 'subgroup129',
+                  elementKey: 'subgroup74',
                   sgChildren: [
                     'neuroAssessment1_1',
                     'neuroAssessment2_1',
@@ -181,7 +181,7 @@ export default function () {
                 },
                 {
                   label: 'Falls risk',
-                  elementKey: 'subgroup130',
+                  elementKey: 'subgroup75',
                   sgChildren: [
                     'fallRisk1_1',
                     'fallRisk2_1'
@@ -189,14 +189,14 @@ export default function () {
                 },
                 {
                   label: 'Notes',
-                  elementKey: 'subgroup131',
+                  elementKey: 'subgroup76',
                   sgChildren: [
                     'notes1_1'
                   ]
                 },
                 {
                   label: 'Educational resources',
-                  elementKey: 'subgroup132',
+                  elementKey: 'subgroup77',
                   sgChildren: [
                     'educational1_1',
                     'educational2_1'
@@ -204,14 +204,14 @@ export default function () {
                 },
                 {
                   label: 'Wound assessment',
-                  elementKey: 'subgroup133',
+                  elementKey: 'subgroup78',
                   sgChildren: [
                     'wound1_1'
                   ]
                 },
                 {
                   label: 'Medication',
-                  elementKey: 'subgroup134',
+                  elementKey: 'subgroup79',
                   sgChildren: [
                     'medication1_1'
                   ]
@@ -244,11 +244,11 @@ export default function () {
           fqn: 'codeLookup.icf'
         }
       ],
-      generated: '2019-09-20T10:48:35-07:00',
+      generated: '2019-10-08T20:19:22-07:00',
       pageElements: {
-        aForm: {
-          elementKey: 'aForm',
-          formKey: 'aForm',
+        pageForm: {
+          elementKey: 'pageForm',
+          formKey: 'pageForm',
           isPageForm: true,
           ehr_groups: [
             {
@@ -385,7 +385,7 @@ export default function () {
           fqn: 'diagnosticCodes.cluster'
         }
       ],
-      generated: '2019-09-20T10:48:35-07:00',
+      generated: '2019-10-08T20:19:22-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -567,7 +567,7 @@ export default function () {
           fqn: 'interventionCodes.extent'
         }
       ],
-      generated: '2019-09-20T10:48:35-07:00',
+      generated: '2019-10-08T20:19:22-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -640,6 +640,7 @@ export default function () {
                 ]
               },
               {
+                label: 'Intervention code attributes',
                 gIndex: '3',
                 gChildren: []
               }
@@ -744,7 +745,7 @@ export default function () {
           fqn: 'caseMixGroup.analysis'
         }
       ],
-      generated: '2019-09-20T10:48:35-07:00',
+      generated: '2019-10-08T20:19:22-07:00',
       pageElements: {
         table: {
           elementKey: 'table',

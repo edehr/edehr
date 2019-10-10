@@ -52,6 +52,11 @@ export default {
   },
   mounted: function () {
     console.log('LayoutEhr mounted')
+  },
+  watch: {
+    showingSpecial: function (flag) {
+      this.$store.commit('system/setShowingAdvanced', flag)
+    }
   }
 }
 </script>

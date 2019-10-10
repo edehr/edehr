@@ -4,11 +4,14 @@
       h2(slot="header") Add a record of medication administration
       div(slot="body")
         div
-          div Day {{currentDay}} - {{activePeriod.name}}
-          div 
-          med-list(:medsList="activePeriod.medsList")
-          div(class="input-fieldrow")
-            div(class="ehrdfe")
+          div(class="ehr-group-wrapper grid-left-to-right-1")
+            div(class="form-element")
+              label Day {{currentDay}} - {{activePeriod.name}}
+          div(class="ehr-group-wrapper grid-left-to-right-1")
+            label Medications:
+            med-list(:medsList="activePeriod.medsList")
+          div(class="ehr-group-wrapper grid-left-to-right-2")
+            div(class="form-element")
               div(class="text_input_wrapper")
                 label Administered by
                 input(class="input", type="text", v-model="who")
@@ -16,8 +19,8 @@
               div(class="text_input_wrapper")
                 label Actual time
                 input(class="input", type="text", v-model="when")
-          div(class="input-fieldrow")
-            div(class="ehrdfe")
+          div(class="ehr-group-wrapper grid-left-to-right-1")
+            div(class="form-element")
               label Comment
               div(class="input-element input-element-full")
                 textarea(class="textarea",v-model="comment")

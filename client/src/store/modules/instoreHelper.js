@@ -38,7 +38,7 @@ class InstoreHelperWorker {
       axios
         .post(url, bodyData)
         .then(results => {
-          console.log('success instoreHelper putRequest', results)
+          // console.log('success instoreHelper putRequest', results)
           StoreHelper.setLoading(context, false)
           resolve(results)
         })

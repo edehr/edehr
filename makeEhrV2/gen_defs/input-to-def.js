@@ -258,6 +258,10 @@ class RawInputToDef {
       let table = pElement
       // *********** table element
       let index = entry.tableColumn
+      if (!index) {
+        let msg = (`Element in table ${pElement.elementKey} lacks tableColumn value. Check the Inputs. elementKey: ${entry.elementKey}`)
+        assert(false, msg)
+      }
       if (index && entry.elementKey) {
         if (!table.ehr_list[index]) {
           // *********** make stack for table at this index
@@ -371,6 +375,10 @@ class RawInputToDef {
       // OK
     } else {
       assert(false, 'This entry ' + JSON.stringify(entry)+  ' has an unsupported inputType')
+    }
+    if(entry.inputType === TABLE_FORM && !entry.elementKey) {
+
+      assert(false, 'Tables must have element key ' +  JSON.stringify(entry))
     }
     if (!entry.elementKey) {
       if (dbug) console.log('Adding elementKey to entry ', entry)

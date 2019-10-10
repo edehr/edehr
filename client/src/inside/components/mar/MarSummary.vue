@@ -1,19 +1,22 @@
 <template lang="pug">
   div
-    table.mar-summary
-      thead
-        th 
-          h4 Medication order
-        th(v-for="(cell, index) in tableHeader", :class="tdStyle(cell, index, tableHeader)")
-          div Day {{cell.value.day}} - {{cell.value.actualTime}}
-          div {{cell.value.scheduledTime}}
-          div {{cell.value.whoAdministered}}
-          div {{cell.value.comment}}
+    div(v-if="tableBody.length === 0")
+      h4 No medications administered
+    div(v-else)
+      table.mar-summary
+        thead
+          th
+            h4 Medication order
+          th(v-for="(cell, index) in tableHeader", :class="tdStyle(cell, index, tableHeader)")
+            div Day {{cell.value.day}} - {{cell.value.actualTime}}
+            div {{cell.value.scheduledTime}}
+            div {{cell.value.whoAdministered}}
+            div {{cell.value.comment}}
 
-      tbody
-        tr(v-for="row in tableBody")
-          td(v-for="(cell, index) in row", :class="tdStyle(cell, index, row)")
-            div(:class="marCellStyle(cell, index, row)") {{marCellContent(cell)}}
+        tbody
+          tr(v-for="row in tableBody")
+            td(v-for="(cell, index) in row", :class="tdStyle(cell, index, row)")
+              div(:class="marCellStyle(cell, index, row)") {{marCellContent(cell)}}
 </template>
 
 <script>

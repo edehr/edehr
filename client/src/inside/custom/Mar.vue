@@ -1,41 +1,27 @@
 // Custom page for MAR
 <template lang="pug">
   div(class="ehr-page")
-    ehr-panel-header {{ uiProps.pageTitle }}
-      div(slot="controls", v-show="showPageFormControls")
-        ehr-edit-controls(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey", @controlsCallback="controlsCallback")
+    ehr-panel-header {{ pageDef.pageTitle }}
     ehr-panel-content
-      div(class="region ehr-page-content")
-        mar-tabs(:ehrHelp="ehrHelp")
-    div(style="display:none")
-      p This is the Mar page
-      p Label: MAR
-      p Data Key: medAdminRec
-      p Component name: Mar
-      p Redirect: 
-      p Route name: mar
-      p Full path: /ehr/current/mar
+      mar-tabs(:ehrHelp="ehrHelp")
+    ehr-page-footer(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
 </template>
 
 <script>
-import EhrPanelHeader from '../components/EhrPanelHeader.vue'
-import EhrPanelContent from '../components/EhrPanelContent.vue'
-import EhrEditControls from '../components/EhrEditControls.vue'
-import EhrPageTable from '../components/EhrPageTable'
-import EhrPageForm from '../components/EhrPageForm.vue'
-import EhrHelp from '../../helpers/ehr-helper'
-import MarTabs from '../components/MarTabs'
-import { getPageDefinition } from '../../helpers/ehr-defs'
+import EhrPanelHeader from '../components/page/EhrPanelHeader.vue'
+import EhrPanelContent from '../components/page/EhrPanelContent.vue'
+import EhrPageFooter from '../components/page/EhrPageFooter'
+import EhrHelp from '../components/page/ehr-helper'
+import MarTabs from '../components/mar/MarTabs'
+import EhrDefs from '../../helpers/ehr-defs-grid'
 
 export default {
   name: 'Mar',
   components: {
     EhrPanelHeader,
     EhrPanelContent,
-    EhrPageForm,
-    EhrPageTable,
-    EhrEditControls,
-    MarTabs
+    MarTabs,
+    EhrPageFooter
   },
   data: function () {
     return {
@@ -45,25 +31,17 @@ export default {
     }
   },
   computed: {
-    uiProps () {
-      return getPageDefinition(this.pageDataKey)
+    pageDef () {
+      return EhrDefs.getPageDefinition(this.pageDataKey)
     },
-    showPageFormControls () {
-      return this.ehrHelp.showPageFormControls()
-    }
   },
-  methods: {
-    controlsCallback (callback) {
-      callback(this.theData)
-    },
-    tableData (tableDef) {
-      // console.log('return table data', tableDef.tableKey)
-      let td = this.theData[tableDef.tableKey]
-      return td
+  provide () {
+    return {
+      pageDataKey: this.pageDataKey,
     }
   },
   created () {
-    this.ehrHelp = new EhrHelp(this, this.$store, this.pageDataKey, this.uiProps)
+    this.ehrHelp = new EhrHelp(this, this.$store, this.pageDataKey)
   },
   beforeRouteLeave (to, from, next) {
     this.ehrHelp.beforeRouteLeave(to, from, next)

@@ -4,25 +4,23 @@
       h2(slot="header") {{dialogHeader}}
       div(slot="body")
         div {{ehrParseMsg}}
-          div(class="input-fieldrow")
-            div(class="ehrdfe")
+          div(class="ehr-group-wrapper grid-left-to-right-2")
+            div(class="form-element")
               div(class="text_input_wrapper")
                 label Name
                 input(class="input", type="text", v-model="name", :class="{ 'is-invalid': !validName }")
-            div(class="ehrdfe")
+            div(class="form-element")
               div(class="text_input_wrapper")
                 label Version
                 input(class="input", type="text", v-model="version")
-          div(class="input-fieldrow")
-            div(class="ehrdfe")
+          div(class="ehr-group-wrapper grid-left-to-right-1")
+            div(class="form-element")
               label Description
-              div(class="input-element input-element-full")
-                textarea(class="textarea",v-model="description")
-          div(v-if="showAdvanced", class="input-fieldrow")
-            div(class="ehrdfe")
+              textarea(class="textarea",v-model="description")
+          div(v-if="showAdvanced", class="ehr-group-wrapper grid-left-to-right-1")
+            div(class="form-element")
               label EHR Data
-              div(class="input-element input-element-full")
-                textarea(class="textarea",v-model="ehrDataString", :class="{ 'is-invalid': !validEhr }")
+              textarea(class="textarea",v-model="ehrDataString", :class="{ 'is-invalid': !validEhr }")
           div(class="error-listing")
             div(v-for="err in errorList") {{ err }}
           hr

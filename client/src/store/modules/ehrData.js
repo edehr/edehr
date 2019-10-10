@@ -3,7 +3,6 @@ import EventBus from '../../helpers/event-bus'
 import { ACTIVITY_DATA_EVENT } from '../../helpers/event-bus'
 import { composeUrl, decoupleObject } from '../../helpers/ehr-utils'
 import { ehrMergeEhrData, ehrMarkSeed } from '../../helpers/ehr-utils'
-import { getAllPageKeys, getPageDefinition, getDefaultValue, getDataCaseStudy } from '../../helpers/ehr-defs'
 import EhrDefs from '../../helpers/ehr-defs-grid'
 
 const API_ACTIVITY = 'activity-data'
@@ -74,7 +73,7 @@ export const getters = {
   },
   hasDataForPagesList (state, getters, rootState) {
     // console.log('hasDataForPagesList')
-    const pageKeys = getAllPageKeys()
+    const pageKeys = EhrDefs.getAllPageKeys()
     const mergedData = getters.mergedData
     const seedData = rootState.seedStore.ehrSeedData
     const instructorData = state.sCurrentStudentData.assignmentData
@@ -92,67 +91,10 @@ export const getters = {
     return results
   },
   asLoadedDataForPageKey (state, getters, rootState) {
-    const debug = false
     return pageKey => {
       let mergedData = getters.mergedData
-      // let pageKey = rootState.system.currentPageKey
       let pageData = mergedData[pageKey]
-      let pageDefV2 = EhrDefs.getPageDefinition(pageKey)
-      if (pageDefV2) {
-        if (debug) console.log('EhrData asLoadedDataForPageKey -=-=-=-=-=-=-=-=-=-=-=-= key and page data:', pageKey, pageData)
-        return pageData || {}
-      } else {
-        // TODO remove the following once new grid system is all done
-        let pageDef = getPageDefinition(pageKey)
-        let isDevelopingContent = rootState.visit.isDevelopingContent
-        if (debug) console.log('EhrData asLoadedDataForPageKey -=-=-=-=-=-=-=-=-=-=-=-= key and page data:', pageKey, pageData)
-        if (!pageData) {
-          if (!pageKey || !pageDef) {
-            if (debug) console.log('EhrData asLoadedDataForPageKey ................ too soon')
-            return {}
-          }
-          // Decouple default page def from original or else any editing will also affect the defined default.
-          // We need to keep the defined default clean so we can use it to restore a page after a canceled edit.
-          let defaultPageValue = decoupleObject(pageDef.pageData)
-          if (!defaultPageValue) {
-            defaultPageValue = {}
-            if (debug) console.log('asLoadedDataForPageKey page defs did not spec a default so create one ', defaultPageValue)
-          } else {
-            if (debug) console.log('asLoadedDataForPageKey page default data is ', JSON.stringify(defaultPageValue))
-          }
-          pageData = mergedData[pageKey] = defaultPageValue
-        }
-
-        function loadDef (pageDataKey, elementKey, pageData) {
-          let defaultValue = getDefaultValue(pageDataKey, elementKey)
-          if (isDevelopingContent) {
-            defaultValue = getDataCaseStudy(pageDataKey, elementKey)
-            // console.log('prepareAsLoadedData isDevelopingContent, defaultValue', isDevelopingContent, defaultValue  )
-          }
-          // TODO see about date, time, and boolean default values
-          if (!pageData[elementKey]) {
-            // console.log('prepareAsLoadedData ', elementKey, defaultValue  )
-            pageData[elementKey] = defaultValue
-          }
-        }
-
-        let formDefs = pageDef.pageForm
-        if (formDefs) {
-          // console.log('EhrData asLoadedDataForPageKey formDefs -=-=-=-=-=-=-=-=-=-=-=-=', pageKey)
-          let rows = formDefs.rows
-          rows.forEach(row => {
-            row.elements.forEach(element => {
-              loadDef(pageKey, element.elementKey, pageData)
-              if (element.elements) {
-                element.elements.forEach(subElement => {
-                  loadDef(pageKey, subElement.elementKey, pageData)
-                })
-              }
-            })
-          })
-        }
-        return pageData
-      }
+      return pageData || {}
     }
   },
   scratchData: (state, getters, rootState) => {

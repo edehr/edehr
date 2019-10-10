@@ -52,7 +52,6 @@ export default class EhrHelpV2 {
   getPageDef () { return EhrDefs.getPageDefinition(this.pageKey) }
   getPageTableDefs () { return EhrDefs.getPageTables(this.pageKey) }
   getPageForms () { return EhrDefs.getPageForms(this.pageKey) }
-  getDefinedDefaultValue (elementKey) { return EhrDefs.getDefaultValue(this.pageKey, elementKey)}
   getTable (tableKey) { return this.tableFormMap[tableKey]}
 
   getPageGeneratedDate () {
@@ -64,6 +63,12 @@ export default class EhrHelpV2 {
     return date
   }
 
+  setShowingAdvanced (flag) {
+    this.$store.commit('system/setShowingAdvanced', flag)
+  }
+  isShowingAdvanced () {
+    return this.$store.state.system.isShowingAdvanced
+  }
 
   getPageErrors (formKey) {
     return []
@@ -179,6 +184,7 @@ export default class EhrHelpV2 {
         let tableKey = tableDef.tableKey
         let tableForm = this.getTable(tableKey)
         let rowTemplate = []
+        if (dbTable) console.log('EhrHelpV2 tableDef.ehr_list', tableDef.ehr_list)
         tableDef.ehr_list.forEach(stack => {
           let templateCell = {
             stack: []
@@ -189,23 +195,27 @@ export default class EhrHelpV2 {
               key: cell,
               inputType: cellDef.inputType
             })
-            templateCell.tableLabel = templateCell.tableLabel || cellDef.tableLabel
+            // column header .. use previous label if set else use special tableLabel value from Inputs else use element label
+            templateCell.tableLabel = templateCell.tableLabel || cellDef.tableLabel || cellDef.label
             templateCell.tableCss = templateCell.tableCss || cellDef.tableCss
           })
           rowTemplate.push(templateCell)
         })
+        if (dbTable) console.log('EhrHelpV2 rowTemplate', rowTemplate)
         tableForm.rowTemplate = rowTemplate
 
         let dbData = theData[tableKey]
         let tableData = []
-        tableForm.hasData = !! dbData
+        tableForm.hasData = dbData  && dbData.length > 0
+        if (dbTable) console.log('EhrHelpV2 tableForm.hasData', tableForm.hasData)
         if (dbData) {
           dbData.forEach((dbRow) => {
             let dataRow = JSON.parse(JSON.stringify(rowTemplate)) // deep copy the array
             // console.log('dbRow', dbRow)
             // console.log('datarow', dataRow)
+            if (dbTable) console.log('EhrHelpV2 dataRow', dataRow)
             Object.values(dataRow).forEach((templateCell) => {
-              // console.log('templateCell', templateCell)
+              if (dbTable) console.log('EhrHelpV2 templateCell', templateCell)
               templateCell.stack.forEach((cell) => {
                 let val = dbRow[cell.key] || ''
                 cell.value = val
@@ -297,8 +307,8 @@ export default class EhrHelpV2 {
     this.pageFormData.value = asLoadedData
   }
 
-  getAsLoadedPageData () {
-    let pageKey = this.pageKey
+  getAsLoadedPageData (aPageKey) {
+    let pageKey = aPageKey || this.pageKey
     return this.$store.getters['ehrData/asLoadedDataForPageKey'](pageKey)
   }
 

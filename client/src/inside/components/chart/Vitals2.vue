@@ -4,8 +4,9 @@
       tab(name="Graph V2", :selected="true")
         div(v-show="showTableAddButton")
           ui-button(v-on:buttonClicked="showDialog") {{ tableDef.addButtonText }}
-        <!-- input(class="checkbox", type="checkbox", v-model="showingSpecial")
-        span show sample data -->
+        div(v-if="ehrHelp.isShowingAdvanced()")
+          input(class="checkbox", type="checkbox", v-model="showingSpecial")
+          span show sample data
         vitals-chart(v-bind:vitals="tableData", v-bind:vitalsModel="vitalsModel")
         ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDef", :inputs="dialogInputs", :errorList="errorList" )
       tab(name="Chart V2")
@@ -76,6 +77,11 @@ export default {
     },
     errorList () {
       return this.ehrHelp.getErrorList(this.tableDef.tableKey)
+    }
+  },
+  watch: {
+    showingSpecial: function () {
+      this.refresh()
     }
   },
   methods: {

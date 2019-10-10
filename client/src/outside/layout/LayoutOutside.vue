@@ -67,7 +67,13 @@ export default {
     // when mounted initialize the local model
     console.log('LayoutOutside mounted, isDevelopingContent', this.isDevelopingContent)
     this.developContent = this.isDevelopingContent
-  }}
+  },
+  watch: {
+    showingSpecial: function (flag) {
+      this.$store.commit('system/setShowingAdvanced', flag)
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>

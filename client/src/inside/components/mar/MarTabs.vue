@@ -1,22 +1,20 @@
 <template lang="pug">
-  div(class="content")
+  div()
     tabs
       tab(:name="todayTabName", :selected="true")
-        div
-          mar-today-content(:ehrHelp="ehrHelp", :marToday="marToday")
+        mar-today-content(:ehrHelp="ehrHelp", :marToday="marToday")
       tab(name="Summary")
         mar-summary(:ehrHelp="ehrHelp")
 </template>
 
 <script>
-import MarSummary from './mar/MarSummary'
-import MarTodayContent from './mar/MarTodayContent'
-import Tabs from './Tabs'
-import Tab from './Tab'
-import MarToday from './mar/mar-today'
+import MarSummary from './MarSummary'
+import MarTodayContent from './MarTodayContent'
+import Tabs from '../Tabs'
+import Tab from '../Tab'
+import MarToday from './mar-today'
 
 export default {
-  name: 'home',
   data () {
     return {
       marToday: {} // helper class

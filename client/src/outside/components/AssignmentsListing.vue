@@ -15,6 +15,7 @@
         tr
           th(title="Name", style="min-width: 170px") Assignment name
           th(title="Description") Description
+          th(title="Activities") Activities
           th(title="External Id", style="min-width: 110px") External id
           // th(title="Route") Route
           th(title="Seed Data", style="min-width: 170px") Seed name
@@ -24,14 +25,14 @@
           td {{ item.name }}
           td
             div(v-text-to-html="item.description")
+          td {{ activitiesUsingAssignmentCount(item._id) }}
           td {{ item.externalId}}
-          // td {{ item.ehrRoutePath}}
           td
             ui-link(:name="'developEhrData'", :params="{seedId: item.seedDataObj._id}") {{ item.seedDataObj.name }}
           td
             ui-button(v-on:buttonClicked="showEditDialog", :value="item._id")
               fas-icon(icon="edit") Edit assignment properties
-    assignments-dialog(ref="theDialog")
+    assignments-dialog(ref="theDialog", @save="load")
 </template>
 
 <script>
@@ -47,33 +48,13 @@ export default {
   data () {
     return {
       isRespondingToError: null,
-      aAssignment: {},
-      errorList: [],
-      dialogHeader: '',
-      actionType: '',
-      assignmentId: '',
-      stashedSelectedSeed: {},
-      selectedSeed: ''
+      assignmentsListing: []
     }
   },
   components: { AssignmentsDialog, UiButton, UiLink, BreadCrumb },
   computed: {
     isDevelopingContent () {
       return StoreHelper.isDevelopingContent(this)
-    },
-    assignmentsListing () {
-      let sdList = StoreHelper.getSeedDataList(this)
-      let assList = StoreHelper.getAssignmentsList(this)
-      assList.forEach(ass => {
-        ass.seedDataObj = {}
-        if (ass.seedDataId) {
-          let sd = sdList.find(sd => {
-            return sd._id === ass.seedDataId
-          })
-          ass.seedDataObj = sd || {}
-        }
-      })
-      return assList
     },
     activity () {
       return StoreHelper.getCurrentActivity(this)
@@ -84,6 +65,9 @@ export default {
     rowClass: function (item) {
       let selected = item._id === this.$route.params.assignmentId
       return selected ? 'selected' : ''
+    },
+    activitiesUsingAssignmentCount: function (assignmentId) {
+      return StoreHelper.activitiesUsingAssignmentCount(assignmentId)
     },
     manageEhrData: function () {
       this.$router.push('developEhrData')
@@ -106,12 +90,32 @@ export default {
     },
     showCreateDialog: function () {
       this.$refs.theDialog.showDialog()
+    },
+    load: function () {
+      // force the reactive system to see the change to this listing.
+      this.assignmentsListing=[]
+      StoreHelper.loadAssignmentAndSeedLists(this)
+        .then( () => {
+          let sdList = StoreHelper.getSeedDataList(this)
+          let assList = StoreHelper.getAssignmentsList(this)
+          assList.forEach(ass => {
+            ass.seedDataObj = {}
+            if (ass.seedDataId) {
+              let sd = sdList.find(sd => {
+                return sd._id === ass.seedDataId
+              })
+              ass.seedDataObj = sd || {}
+            }
+          })
+          this.assignmentsListing = assList
+        })
+
     }
   },
   mounted: function () {
     let params2 = getIncomingParams()
     this.isRespondingToError = params2['error']
-    StoreHelper.loadAssignmentAndSeedLists(this)
+    this.load()
   }
 }
 </script>

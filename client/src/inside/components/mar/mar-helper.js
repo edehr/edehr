@@ -1,10 +1,12 @@
 import { setApiError } from '../../../helpers/ehr-utils'
 import MedOrder from './med-entity'
 import MarEntity from './mar-entity'
-import { getPageDefinition } from '../../../helpers/ehr-defs'
+import EhrDefs from '../../../helpers/ehr-defs-grid'
 
 export const MAR_PAGE_KEY = 'medAdminRec'
 export const MED_ORDERS_PAGE_KEY = 'medicationOrders'
+
+const debug = false
 
 export default class MarHelper {
   constructor (ehrHelp) {
@@ -17,8 +19,9 @@ export default class MarHelper {
   refreshMarData () {
     // console.log('mar-helper refreshMarData')
     this.pageData = this.ehrHelp.getAsLoadedPageData(MED_ORDERS_PAGE_KEY)
+    if (debug) console.log('mar-helper refreshMarData', this.pageData)
     if (!this.pageData || !this.pageData.table) {
-      // console.log('call to refreshMarData before system is set up. There will be another call in a sec')
+      if (debug) console.log('helper call to refreshMarData before system is set up. There will be another call in a sec')
       return
     }
     this._theMedOrders = this.getEhrData_Orders()
@@ -31,7 +34,7 @@ export default class MarHelper {
   getEhrData_Orders () {
     let pageTable = this.pageData.table
     let medOrders = pageTable.map(order => new MedOrder(order))
-    // console.log('helper med orders', medOrders)
+    if (debug) console.log('helper med orders', medOrders)
     return medOrders
   }
 
@@ -63,7 +66,7 @@ export default class MarHelper {
    * @return {*}
    */
   getPageDef_Mar () {
-    return getPageDefinition(MAR_PAGE_KEY)
+    return EhrDefs.getPageDefinition(MAR_PAGE_KEY)
   }
 
   /**
@@ -103,7 +106,7 @@ export default class MarHelper {
     table.push(aMar)
     asLoadedPageData[marTableKey] = table
     let payload = {
-      propertyName: MAR_PAGE_KEY,
+      pageKey: MAR_PAGE_KEY,
       value: asLoadedPageData
     }
     return this.ehrHelp._saveData(payload)

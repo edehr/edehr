@@ -41,10 +41,15 @@ export default {
       return stack.tableCss
     },
     refresh () {
-      if(debug) console.log('EhrTableStacked refresh')
+      if(debug) console.log('EhrTableStacked refresh this.tableKey', this.tableKey)
+      // force the reactive system to see the change by changing the objects. Otherwise it sees the same object even
+      // though the content is different
+      this.tableForm = {}
+      this.tableData = []
       this.tableForm = this.ehrHelp.getTable(this.tableKey)
       this.tableData = this.tableForm.tableData
-      // console.log('table view refresh', tableDef)
+      if (debug) console.log('EhrTableStacked this.tableForm', this.tableForm)
+      if (debug) console.log('EhrTableStacked this.tableData', this.tableData)
     }
   },
 

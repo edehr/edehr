@@ -403,11 +403,11 @@ export default function () {
           fqn: 'demographics.decisionMakerPhone'
         }
       ],
-      generated: '2019-09-25T19:23:24-07:00',
+      generated: '2019-10-09T16:15:30-07:00',
       pageElements: {
-        page_form1: {
-          elementKey: 'page_form1',
-          formKey: 'page_form1',
+        pageForm: {
+          elementKey: 'pageForm',
+          formKey: 'pageForm',
           isPageForm: true,
           ehr_groups: [
             {
@@ -485,11 +485,11 @@ export default function () {
           fqn: 'allergies.text'
         }
       ],
-      generated: '2019-09-25T19:23:24-07:00',
+      generated: '2019-10-09T16:15:30-07:00',
       pageElements: {
-        page_form: {
-          elementKey: 'page_form',
-          formKey: 'page_form',
+        pageForm: {
+          elementKey: 'pageForm',
+          formKey: 'pageForm',
           isPageForm: true,
           ehr_groups: [
             {
@@ -519,11 +519,11 @@ export default function () {
           fqn: 'medical.history'
         }
       ],
-      generated: '2019-09-25T19:23:24-07:00',
+      generated: '2019-10-09T16:15:30-07:00',
       pageElements: {
-        page_form6: {
-          elementKey: 'page_form6',
-          formKey: 'page_form6',
+        pageForm: {
+          elementKey: 'pageForm',
+          formKey: 'pageForm',
           isPageForm: true,
           ehr_groups: [
             {
@@ -585,11 +585,11 @@ export default function () {
           fqn: 'psychosocial.hobbies'
         }
       ],
-      generated: '2019-09-25T19:23:24-07:00',
+      generated: '2019-10-09T16:15:30-07:00',
       pageElements: {
-        page_form8: {
-          elementKey: 'page_form8',
-          formKey: 'page_form8',
+        pageForm: {
+          elementKey: 'pageForm',
+          formKey: 'pageForm',
           isPageForm: true,
           ehr_groups: [
             {
@@ -606,7 +606,7 @@ export default function () {
               gIndex: '2',
               gChildren: [
                 {
-                  elementKey: 'subgroup33',
+                  elementKey: 'subgroup23',
                   sgChildren: []
                 }
               ]
@@ -688,11 +688,11 @@ export default function () {
           fqn: 'surgical.comments'
         }
       ],
-      generated: '2019-09-25T19:23:24-07:00',
+      generated: '2019-10-09T16:15:30-07:00',
       pageElements: {
-        table_form12: {
-          elementKey: 'table_form12',
-          tableKey: 'table_form12',
+        pastSurgery: {
+          elementKey: 'pastSurgery',
+          tableKey: 'pastSurgery',
           isTable: true,
           label: 'Previous surgeries',
           addButtonText: 'Add a previous surgery',
@@ -717,10 +717,10 @@ export default function () {
             }
           ],
           form: {
-            elementKey: 'table_form12',
+            elementKey: 'pastSurgery',
             label: 'Previous surgeries',
             addButtonText: 'Add a previous surgery',
-            formKey: 'table_form12',
+            formKey: 'pastSurgery',
             ehr_groups: [
               {
                 gIndex: '1',
@@ -738,9 +738,9 @@ export default function () {
             }
           }
         },
-        table_form13: {
-          elementKey: 'table_form13',
-          tableKey: 'table_form13',
+        previous: {
+          elementKey: 'previous',
+          tableKey: 'previous',
           isTable: true,
           label: 'Previous appointments',
           addButtonText: 'Add a previous appointment',
@@ -777,10 +777,10 @@ export default function () {
             }
           ],
           form: {
-            elementKey: 'table_form13',
+            elementKey: 'previous',
             label: 'Previous appointments',
             addButtonText: 'Add a previous appointment',
-            formKey: 'table_form13',
+            formKey: 'previous',
             ehr_groups: [
               {
                 gIndex: '1',
@@ -833,11 +833,11 @@ export default function () {
           fqn: 'immunization.hepADate'
         },
         {
-          elementKey: 'spacer17',
+          elementKey: 'spacer11',
           formIndex: '1',
           inputType: 'spacer',
           label: 'Hep A',
-          fqn: 'immunization.spacer17'
+          fqn: 'immunization.spacer11'
         },
         {
           elementKey: 'hepB',
@@ -855,11 +855,11 @@ export default function () {
           fqn: 'immunization.hepBDate'
         },
         {
-          elementKey: 'spacer18',
+          elementKey: 'spacer12',
           formIndex: '1',
           inputType: 'spacer',
           label: 'Hep B',
-          fqn: 'immunization.spacer18'
+          fqn: 'immunization.spacer12'
         },
         {
           elementKey: 'mmr',
@@ -877,11 +877,11 @@ export default function () {
           fqn: 'immunization.mmrDate'
         },
         {
-          elementKey: 'spacer19',
+          elementKey: 'spacer13',
           formIndex: '1',
           inputType: 'spacer',
           label: 'MMR',
-          fqn: 'immunization.spacer19'
+          fqn: 'immunization.spacer13'
         },
         {
           elementKey: 'pneumococcal',
@@ -899,11 +899,11 @@ export default function () {
           fqn: 'immunization.pneumococcalDate'
         },
         {
-          elementKey: 'spacer20',
+          elementKey: 'spacer14',
           formIndex: '1',
           inputType: 'spacer',
           label: 'Pneumococcal',
-          fqn: 'immunization.spacer20'
+          fqn: 'immunization.spacer14'
         },
         {
           elementKey: 'polioDiptheriaPertussis',
@@ -921,11 +921,11 @@ export default function () {
           fqn: 'immunization.polioDiptheriaPertussisDate'
         },
         {
-          elementKey: 'spacer21',
+          elementKey: 'spacer15',
           formIndex: '1',
           inputType: 'spacer',
           label: 'Polio diptheria pertussis',
-          fqn: 'immunization.spacer21'
+          fqn: 'immunization.spacer15'
         },
         {
           elementKey: 'tb',
@@ -943,11 +943,11 @@ export default function () {
           fqn: 'immunization.tbDate'
         },
         {
-          elementKey: 'spacer22',
+          elementKey: 'spacer16',
           formIndex: '1',
           inputType: 'spacer',
           label: 'TB',
-          fqn: 'immunization.spacer22'
+          fqn: 'immunization.spacer16'
         },
         {
           elementKey: 'tetanus',
@@ -965,11 +965,11 @@ export default function () {
           fqn: 'immunization.tetanusDate'
         },
         {
-          elementKey: 'spacer23',
+          elementKey: 'spacer17',
           formIndex: '1',
           inputType: 'spacer',
           label: 'Tetanus',
-          fqn: 'immunization.spacer23'
+          fqn: 'immunization.spacer17'
         },
         {
           elementKey: 'other1',
@@ -984,10 +984,10 @@ export default function () {
           fqn: 'immunization.other1Date'
         },
         {
-          elementKey: 'spacer24',
+          elementKey: 'spacer18',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'immunization.spacer24'
+          fqn: 'immunization.spacer18'
         },
         {
           elementKey: 'other2',
@@ -1002,10 +1002,10 @@ export default function () {
           fqn: 'immunization.other2Date'
         },
         {
-          elementKey: 'spacer25',
+          elementKey: 'spacer19',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'immunization.spacer25'
+          fqn: 'immunization.spacer19'
         },
         {
           elementKey: 'other3',
@@ -1020,17 +1020,17 @@ export default function () {
           fqn: 'immunization.other3Date'
         },
         {
-          elementKey: 'spacer26',
+          elementKey: 'spacer20',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'immunization.spacer26'
+          fqn: 'immunization.spacer20'
         }
       ],
-      generated: '2019-09-25T19:23:24-07:00',
+      generated: '2019-10-09T16:15:30-07:00',
       pageElements: {
-        page_form15: {
-          elementKey: 'page_form15',
-          formKey: 'page_form15',
+        pageForm: {
+          elementKey: 'pageForm',
+          formKey: 'pageForm',
           isPageForm: true,
           ehr_groups: [
             {
@@ -1038,34 +1038,34 @@ export default function () {
               gChildren: [
                 'hepA',
                 'hepADate',
-                'spacer17',
+                'spacer11',
                 'hepB',
                 'hepBDate',
-                'spacer18',
+                'spacer12',
                 'mmr',
                 'mmrDate',
-                'spacer19',
+                'spacer13',
                 'pneumococcal',
                 'pneumococcalDate',
-                'spacer20',
+                'spacer14',
                 'polioDiptheriaPertussis',
                 'polioDiptheriaPertussisDate',
-                'spacer21',
+                'spacer15',
                 'tb',
                 'tbDate',
-                'spacer22',
+                'spacer16',
                 'tetanus',
                 'tetanusDate',
-                'spacer23',
+                'spacer17',
                 'other1',
                 'other1Date',
-                'spacer24',
+                'spacer18',
                 'other2',
                 'other2Date',
-                'spacer25',
+                'spacer19',
                 'other3',
                 'other3Date',
-                'spacer26'
+                'spacer20'
               ]
             }
           ]
@@ -1087,11 +1087,11 @@ export default function () {
           fqn: 'familyHistory.history'
         }
       ],
-      generated: '2019-09-25T19:23:24-07:00',
+      generated: '2019-10-09T16:15:30-07:00',
       pageElements: {
-        page_form27: {
-          elementKey: 'page_form27',
-          formKey: 'page_form27',
+        pageForm: {
+          elementKey: 'pageForm',
+          formKey: 'pageForm',
           isPageForm: true,
           ehr_groups: [
             {
@@ -1118,6 +1118,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Name',
+          tableColumn: '1',
           fqn: 'careTeam.name'
         },
         {
@@ -1126,21 +1127,35 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Profession',
+          tableColumn: '2',
           fqn: 'careTeam.profession'
         }
       ],
-      generated: '2019-09-25T19:23:24-07:00',
+      generated: '2019-10-09T16:15:30-07:00',
       pageElements: {
-        table_form29: {
-          elementKey: 'table_form29',
-          tableKey: 'table_form29',
+        teams: {
+          elementKey: 'teams',
+          tableKey: 'teams',
           isTable: true,
           addButtonText: 'Add a care team member',
-          ehr_list: [],
+          ehr_list: [
+            {
+              ehr_list_index: '1',
+              items: [
+                'name'
+              ]
+            },
+            {
+              ehr_list_index: '2',
+              items: [
+                'profession'
+              ]
+            }
+          ],
           form: {
-            elementKey: 'table_form29',
+            elementKey: 'teams',
             addButtonText: 'Add a care team member',
-            formKey: 'table_form29',
+            formKey: 'teams',
             ehr_groups: [
               {
                 gIndex: '1',
@@ -1170,6 +1185,7 @@ export default function () {
           formIndex: '1',
           inputType: 'date',
           label: 'Date',
+          tableColumn: '1',
           fqn: 'pastAppointments.date'
         },
         {
@@ -1177,6 +1193,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Site',
+          tableColumn: '2',
           fqn: 'pastAppointments.site'
         },
         {
@@ -1184,6 +1201,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Diagnosis',
+          tableColumn: '3',
           fqn: 'pastAppointments.diagnosis'
         },
         {
@@ -1191,6 +1209,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Most responsible person',
+          tableColumn: '4',
           fqn: 'pastAppointments.mrp'
         },
         {
@@ -1199,6 +1218,7 @@ export default function () {
           formIndex: '2',
           inputType: 'text',
           label: 'Date',
+          tableColumn: '1',
           fqn: 'pastAppointments.date'
         },
         {
@@ -1207,6 +1227,7 @@ export default function () {
           formIndex: '2',
           inputType: 'text',
           label: 'Site',
+          tableColumn: '2',
           fqn: 'pastAppointments.site'
         },
         {
@@ -1215,6 +1236,7 @@ export default function () {
           formIndex: '2',
           inputType: 'text',
           label: 'Reason for visit',
+          tableColumn: '3',
           fqn: 'pastAppointments.reasonForVisit'
         },
         {
@@ -1223,21 +1245,47 @@ export default function () {
           formIndex: '2',
           inputType: 'text',
           label: 'Diagnosis',
+          tableColumn: '4',
           fqn: 'pastAppointments.diagnosis'
         }
       ],
-      generated: '2019-09-25T19:23:24-07:00',
+      generated: '2019-10-09T16:15:30-07:00',
       pageElements: {
-        table_form31: {
-          elementKey: 'table_form31',
-          tableKey: 'table_form31',
+        encounters: {
+          elementKey: 'encounters',
+          tableKey: 'encounters',
           isTable: true,
           addButtonText: 'Add a past appointment',
-          ehr_list: [],
+          ehr_list: [
+            {
+              ehr_list_index: '1',
+              items: [
+                'date'
+              ]
+            },
+            {
+              ehr_list_index: '2',
+              items: [
+                'site'
+              ]
+            },
+            {
+              ehr_list_index: '3',
+              items: [
+                'diagnosis'
+              ]
+            },
+            {
+              ehr_list_index: '4',
+              items: [
+                'mrp'
+              ]
+            }
+          ],
           form: {
-            elementKey: 'table_form31',
+            elementKey: 'encounters',
             addButtonText: 'Add a past appointment',
-            formKey: 'table_form31',
+            formKey: 'encounters',
             ehr_groups: [
               {
                 gIndex: '1',
@@ -1257,16 +1305,41 @@ export default function () {
             }
           }
         },
-        table_form32: {
-          elementKey: 'table_form32',
-          tableKey: 'table_form32',
+        outpatientAppointments: {
+          elementKey: 'outpatientAppointments',
+          tableKey: 'outpatientAppointments',
           isTable: true,
           addButtonText: 'Add an outpatient appointment',
-          ehr_list: [],
+          ehr_list: [
+            {
+              ehr_list_index: '1',
+              items: [
+                'date'
+              ]
+            },
+            {
+              ehr_list_index: '2',
+              items: [
+                'site'
+              ]
+            },
+            {
+              ehr_list_index: '3',
+              items: [
+                'reasonForVisit'
+              ]
+            },
+            {
+              ehr_list_index: '4',
+              items: [
+                'diagnosis'
+              ]
+            }
+          ],
           form: {
-            elementKey: 'table_form32',
+            elementKey: 'outpatientAppointments',
             addButtonText: 'Add an outpatient appointment',
-            formKey: 'table_form32',
+            formKey: 'outpatientAppointments',
             ehr_groups: [
               {
                 gIndex: '1',
