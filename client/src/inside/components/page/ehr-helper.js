@@ -20,7 +20,6 @@ const PROPS = EhrTypes.elementProperties
 const INPUT_TYPES = EhrTypes.inputTypes
 
 const dbDialog = false
-const dbDelta = false
 const dbPageForm = false
 const dbLoad = false
 const dbTable = false

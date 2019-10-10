@@ -3,13 +3,23 @@
     div(class="activity-list-header columns", v-on:click="toggleShow")
       div(class="header-column is-10 column")
         h3(:title="activityId") {{ activity.resource_link_title }}
-        p LMS description: {{ activity.resource_link_description }}
-        p Assignment name: &nbsp;
-          ui-link(:name="'assignments'", :params="{assignmentId: assignment._id}")
-            span(v-on:click="switchAssignment")  {{ assignment.name }}
-        p Assignment description:
-          div(v-text-to-html="assignment.description")
-        p LMS configuration: assignment={{ assignment.externalId }}
+        table
+          tr
+            td LMS description:
+            td
+              div(v-text-to-html="activity.resource_link_description")
+          tr
+            td Assignment name:
+            td
+              ui-link(:name="'assignments'", :params="{assignmentId: assignment._id}")
+              span(v-on:click="switchAssignment")  {{ assignment.name }}
+          tr
+            td Assignment description:
+            td
+              div(v-text-to-html="assignment.description")
+          tr
+            td LMS configuration:
+            td assignment={{ assignment.externalId }}
       div(class="header-column is-2 column")
         div(class="header-item header-icon")
           div(class="icon-group")
