@@ -9,12 +9,14 @@
   "description": "This project provides an educational tool that replicates an Electronic Health Record system within a Learning Tools Interoperability (LTI) compliant course-ware.",
   "scripts": {
     "start": "NODE_ENV=development DEBUG=server node index.js",
-    "start-dev": "NODE_ENV=development DEBUG=server nodemon -L  node index.js",
-    "start-docker": "node index.js",
-    "start-docker-dev": "nodemon -L  node index.js",
-    "start-prod": "NODE_ENV=production node index.js",
+    "start:dev": "NODE_ENV=development DEBUG=server nodemon -L  node index.js",
     "lint": "eslint --fix src/**/*.js && eslint --fix test/**/*.js",
     "test": "node_modules/.bin/mocha --recursive --sort --bail --require @babel/register **/*.spec.js"
+  },
+  "maybetrash": {
+    "start-docker": "node index.js",
+    "start-docker-dev": "nodemon -L  node index.js",
+    "start-prod": "NODE_ENV=production node index.js"
   },
   "dependencies": {
     "body-parser": "^1.19.0",

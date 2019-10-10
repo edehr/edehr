@@ -8,7 +8,7 @@
         div(class="section")
           slot
           div(v-if="isDeveloper")
-            div(style="display:none") Is developing content: {{ isDevelopingContent }}
+            div(style="display:none") Is developing content: {{ isDevelopingContent }} developContent: {{ developContent }}
             input(type="checkbox", id="develop-content", v-model="developContent" )
             label(for="develop-content") Develop content
     slot(name="outside-footer", class="outside-footer")
@@ -50,6 +50,9 @@ export default {
     isDevelopingContent: function () {
       // console.log('LayoutOutside watch isDevelopingContent', this.isDevelopingContent)
       this.developContent = this.isDevelopingContent
+    },
+    showingSpecial: function (flag) {
+      this.$store.commit('system/setShowingAdvanced', flag)
     }
   },
   computed: {
@@ -67,11 +70,6 @@ export default {
     // when mounted initialize the local model
     console.log('LayoutOutside mounted, isDevelopingContent', this.isDevelopingContent)
     this.developContent = this.isDevelopingContent
-  },
-  watch: {
-    showingSpecial: function (flag) {
-      this.$store.commit('system/setShowingAdvanced', flag)
-    }
   }
 }
 </script>
