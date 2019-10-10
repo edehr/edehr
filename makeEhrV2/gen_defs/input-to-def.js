@@ -78,18 +78,14 @@ const pageProperties2 = [
 
 // Fields may have data that spans multiple lines.
 // Replace linefeeds with a marker we can use to mark the end of each line.
-// Use labels as found in the inputs spreadsheet before they are converted to camelCase
+// **** !!!! Use labels as found in the inputs spreadsheet before they are converted to camelCase !!! ***
 const mlFields = [
   'Label:',
   'Options:',
   'Data_case_study:',
-  'Data_first_case_study:',
-  'Data_second_case_study',
   'Label:',
   'helperText:',
   'Notes:',
-  'Questions_for_the_group',
-  'Notes_Questions',
   'Mandatory'
 ]
 
@@ -258,9 +254,9 @@ class RawInputToDef {
       let table = pElement
       // *********** table element
       let index = entry.tableColumn
-      if (!index) {
+      if (!index && NONDATA_INPUT_TYPES.indexOf(entry.inputType) < 0) {
         let msg = (`Element in table ${pElement.elementKey} lacks tableColumn value. Check the Inputs. elementKey: ${entry.elementKey}`)
-        assert(false, msg)
+        console.log('WARNING', msg)
       }
       if (index && entry.elementKey) {
         if (!table.ehr_list[index]) {
@@ -368,7 +364,7 @@ class RawInputToDef {
     if (DATA_INPUT_TYPES.indexOf(entry.inputType) >= 0) {
       assert(entry.elementKey, 'Must have element key for input types', entry)
     } else if (NONDATA_INPUT_TYPES.indexOf(entry.inputType) >= 0) {
-      // OK  SHORT_FORMS
+      // OK
     } else if (STRUCT_INPUT_TYPES.indexOf(entry.inputType) >= 0) {
       // OK
     } else if (SHORT_FORMS.indexOf(entry.inputType) >= 0) {

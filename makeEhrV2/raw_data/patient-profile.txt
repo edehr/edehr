@@ -90,19 +90,18 @@ Other}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Son}	eCell	eCell
 {inputType: textarea}	eCell	{Label: Employment/school}	{elementKey: employmentSchool}	{pN: 4}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Retired hairdresser}	eCell	eCell
 {inputType: textarea}	eCell	{Label: Hobbies}	{elementKey: hobbies}	{pN: 4}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Bingo, Netflix, playing “Solitaire and Scrabble with friends” on her iPad}	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	{pN: 4}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_subgroup}	eCell	eCell	eCell	{pN: 4}	{fN: 1}	{gN: 2}	{sgN: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkbox_text_spacer}	eCell	{Label: Exercise}	{elementKey: exercise}	{pN: 4}	{fN: 1}	{gN: 2}	{sgN: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: < 1 day/week}	eCell	eCell
-{inputType: checkbox_text_spacer}	eCell	{Label: Caffeine use}	{elementKey: caffeineUse}	{pN: 4}	{fN: 1}	{gN: 2}	{sgN: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: 1-2 cups/day}	eCell	eCell
-{inputType: checkbox_text_spacer}	eCell	{Label: Tobacco use}	{elementKey: tobaccoUse}	{pN: 4}	{fN: 1}	{gN: 2}	{sgN: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: 1-2 cups/day}	"{helperText: Have you used any tobacco products in the last 6 months?
+{inputType: checkbox_text_spacer}	eCell	{Label: Exercise}	{elementKey: exercise}	{pN: 4}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: < 1 day/week}	eCell	eCell
+{inputType: checkbox_text_spacer}	eCell	{Label: Caffeine use}	{elementKey: caffeineUse}	{pN: 4}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: 1-2 cups/day}	eCell	eCell
+{inputType: checkbox_text_spacer}	eCell	{Label: Tobacco use}	{elementKey: tobaccoUse}	{pN: 4}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: 1-2 cups/day}	"{helperText: Have you used any tobacco products in the last 6 months?
 Have you used any tobacco products in the last 7 days?}"	eCell
-{inputType: checkbox_text_spacer}	eCell	{Label: Cannabis use}	{elementKey: cannabisUse}	{pN: 4}	{fN: 1}	{gN: 2}	{sgN: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{helperText: Have you used any cannabis products in the last 6 months?
+{inputType: checkbox_text_spacer}	eCell	{Label: Cannabis use}	{elementKey: cannabisUse}	{pN: 4}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{helperText: Have you used any cannabis products in the last 6 months?
 Have you used any cannabis products in the last 7 days?}"	eCell
-{inputType: checkbox_text_spacer}	eCell	{Label: Alcohol use}	{elementKey: alcoholUse}	{pN: 4}	{fN: 1}	{gN: 2}	{sgN: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Social}	"{helperText: CAGE questionaire
+{inputType: checkbox_text_spacer}	eCell	{Label: Alcohol use}	{elementKey: alcoholUse}	{pN: 4}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Social}	"{helperText: CAGE questionaire
 Have you ever felt that you should cut down on your drinking?
 Have you ever become annoyed by criticisms of your drinking?
 Have you ever felt guilty about your drinking?
 Have you ever had a morning eye opener to get rid of a hangover?}"	eCell
-{inputType: checkbox_text_spacer}	eCell	{Label: Substance use}	{elementKey: substanceUse}	{pN: 4}	{fN: 1}	{gN: 2}	{sgN: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{helperText: Have you used any substances in the last 6 months?
+{inputType: checkbox_text_spacer}	eCell	{Label: Substance use}	{elementKey: substanceUse}	{pN: 4}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{helperText: Have you used any substances in the last 6 months?
 Have you used any substances in the last 7 days?
 If so, make notes about which ones.}"	eCell
 {inputType: page}	{pRef: 8}	{Label: Surgical history}	{elementKey: surgical}	{pN: 5}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell

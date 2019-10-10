@@ -242,7 +242,7 @@ export default function () {
           formIndex: '3',
           inputType: 'text',
           label: 'Name',
-          tableLabel: 'Header',
+          tableLabel: 'Identification',
           fqn: 'testPage.name'
         },
         {
@@ -281,11 +281,11 @@ export default function () {
           fqn: 'testPage.textDateDate'
         },
         {
-          elementKey: 'spacer146',
+          elementKey: 'spacer128',
           formIndex: '3',
           inputType: 'spacer',
           label: 'TextDate',
-          fqn: 'testPage.spacer146'
+          fqn: 'testPage.spacer128'
         },
         {
           elementKey: 'name',
@@ -302,7 +302,7 @@ export default function () {
           fqn: 'testPage.place'
         }
       ],
-      generated: '2019-08-29T14:31:39-07:00',
+      generated: '2019-10-08T07:35:50-07:00',
       pageElements: {
         form1: {
           elementKey: 'form1',
@@ -331,14 +331,14 @@ export default function () {
               gChildren: [
                 {
                   label: 'subgroup 1',
-                  elementKey: 'subgroup156',
+                  elementKey: 'subgroup138',
                   sgChildren: [
                     'pcheckset'
                   ]
                 },
                 {
                   label: 'subgroup 2',
-                  elementKey: 'subgroup157',
+                  elementKey: 'subgroup139',
                   sgChildren: [
                     'dayValue',
                     'timeValue',
@@ -348,7 +348,7 @@ export default function () {
                 },
                 {
                   label: 'subgroup 3',
-                  elementKey: 'subgroup158',
+                  elementKey: 'subgroup140',
                   sgChildren: [
                     'pcheckbox2',
                     'ptext2',
@@ -421,7 +421,7 @@ export default function () {
                 'time',
                 'textDate',
                 'textDateDate',
-                'spacer146',
+                'spacer128',
                 'name',
                 'place'
               ]
@@ -692,7 +692,7 @@ export default function () {
           inputType: 'text',
           label: 'Name',
           tableColumn: '1',
-          tableLabel: 'Header',
+          tableLabel: 'Identification',
           fqn: 'testTable.name'
         },
         {
@@ -731,6 +731,7 @@ export default function () {
         {
           elementKey: 'cd1Date',
           formIndex: '2',
+          formOption: 'hideLabel',
           inputType: 'date',
           label: 'C D 1',
           tableColumn: '2',
@@ -738,13 +739,13 @@ export default function () {
           fqn: 'testTable.cd1Date'
         },
         {
-          elementKey: 'spacer152',
+          elementKey: 'spacer134',
           formIndex: '2',
           inputType: 'spacer',
           label: 'C D 1',
           tableColumn: '2',
           tableLabel: 'Chk 1',
-          fqn: 'testTable.spacer152'
+          fqn: 'testTable.spacer134'
         },
         {
           elementKey: 'cd2',
@@ -758,6 +759,7 @@ export default function () {
         {
           elementKey: 'cd2Date',
           formIndex: '2',
+          formOption: 'hideLabel',
           inputType: 'date',
           label: 'C D 2',
           tableColumn: '3',
@@ -765,13 +767,13 @@ export default function () {
           fqn: 'testTable.cd2Date'
         },
         {
-          elementKey: 'spacer153',
+          elementKey: 'spacer135',
           formIndex: '2',
           inputType: 'spacer',
           label: 'C D 2',
           tableColumn: '3',
           tableLabel: 'Chk 2',
-          fqn: 'testTable.spacer153'
+          fqn: 'testTable.spacer135'
         },
         {
           elementKey: 'td1',
@@ -792,13 +794,13 @@ export default function () {
           fqn: 'testTable.td1Date'
         },
         {
-          elementKey: 'spacer154',
+          elementKey: 'spacer136',
           formIndex: '2',
           inputType: 'spacer',
           label: 'TextDate',
           tableColumn: '4',
           tableLabel: 'Txt 1',
-          fqn: 'testTable.spacer154'
+          fqn: 'testTable.spacer136'
         },
         {
           elementKey: 'referralName',
@@ -859,7 +861,7 @@ export default function () {
           fqn: 'testTable.status'
         }
       ],
-      generated: '2019-08-29T14:31:39-07:00',
+      generated: '2019-10-08T07:35:50-07:00',
       pageElements: {
         table1: {
           elementKey: 'table1',
@@ -997,14 +999,14 @@ export default function () {
                 gChildren: [
                   {
                     label: 'subgroup 1',
-                    elementKey: 'subgroup159',
+                    elementKey: 'subgroup141',
                     sgChildren: [
                       'e10'
                     ]
                   },
                   {
                     label: 'subgroup 2',
-                    elementKey: 'subgroup160',
+                    elementKey: 'subgroup142',
                     sgChildren: [
                       'dayValue',
                       'timeValue',
@@ -1014,7 +1016,7 @@ export default function () {
                   },
                   {
                     label: 'subgroup 3',
-                    elementKey: 'subgroup161',
+                    elementKey: 'subgroup143',
                     sgChildren: [
                       'g4',
                       'g5',
@@ -1061,7 +1063,7 @@ export default function () {
           addButtonText: 'Add a stacked row',
           ehr_list: [
             {
-              label: 'Header',
+              label: 'Identification',
               ehr_list_index: '1',
               items: [
                 'name',
@@ -1076,7 +1078,7 @@ export default function () {
               items: [
                 'cd1',
                 'cd1Date',
-                'spacer152'
+                'spacer134'
               ]
             },
             {
@@ -1085,7 +1087,7 @@ export default function () {
               items: [
                 'cd2',
                 'cd2Date',
-                'spacer153'
+                'spacer135'
               ]
             },
             {
@@ -1094,7 +1096,7 @@ export default function () {
               items: [
                 'td1',
                 'td1Date',
-                'spacer154'
+                'spacer136'
               ]
             },
             {
@@ -1142,13 +1144,13 @@ export default function () {
                 gChildren: [
                   'cd1',
                   'cd1Date',
-                  'spacer152',
+                  'spacer134',
                   'cd2',
                   'cd2Date',
-                  'spacer153',
+                  'spacer135',
                   'td1',
                   'td1Date',
-                  'spacer154'
+                  'spacer136'
                 ]
               },
               {

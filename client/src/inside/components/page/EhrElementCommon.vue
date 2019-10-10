@@ -2,6 +2,7 @@
 <script>
 import EhrPageFormLabel from './EhrPageFormLabel.vue'
 import EhrDefs from '../../../helpers/ehr-defs-grid'
+import StoreHelper from '../../../helpers/store-helper'
 import UiInfo from '../../../app/ui/UiInfo'
 import EventBus from '../../../helpers/event-bus'
 import { PAGE_DATA_READY_EVENT, FORM_INPUT_EVENT } from '../../../helpers/event-bus'
@@ -74,6 +75,19 @@ export default {
     refreshPage () {
       let pageData = this.ehrHelp.getAsLoadedPageData()
       let value = pageData[this.elementKey]
+      let isDev = StoreHelper.isDevelopingContent()
+      if (isDev) {
+        let caseVal = EhrDefs.getDataCaseStudy(this.pageDataKey, this.elementKey)
+        value = value || caseVal
+        // trick:  send the "hey a value changed" event so that the value is stored at the page level.
+        // this way it is ready in case the user clicks the edit form button and then saves the page.
+        // These data case study values will then be saved along with any further edits the content edit
+        // might make
+        this.sendInputEvent(value)
+      } else {
+        let defVal = EhrDefs.getDefaultValue(this.pageDataKey, this.elementKey)
+        value = value || defVal
+      }
       if (dbPage || dbInputs) console.log('EhrCommon page data is ready', this.elementKey, value)
       this.setInitialValue(value)
     },

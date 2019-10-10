@@ -1,8 +1,8 @@
 {
+  "patient-profile": "3e6886718ec0903e9bba7fc649c9129c",
   "current-visit-1": "1757321a5b03df34b82c2df77e7ace2f",
   "current-visit-2": "3665c34695e7571debcfee9591573c6b",
   "patient-chart": "e8198cad0b15784cb462a108e9e8ffd2",
   "external-resources": "d64c18e4790b2327915dd2caa6f7a05a",
-  "test-page": "9ee60bc2d35e6d62cc785de7b4049559",
-  "patient-profile": "7958b1742ae5624760c354bcd898144d"
+  "test-page": "9ee60bc2d35e6d62cc785de7b4049559"
 }

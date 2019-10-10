@@ -79,7 +79,8 @@ export default class EhrHelpV2 {
     const dialog = this._getActiveTableDialog()
     if (dialog) {
       data = dialog.inputs
-    } else if (this.pageFormData.value) {
+    } else {
+      this.pageFormData.value = this.pageFormData.value || {}
       data = this.pageFormData.value
     }
     if (!data) {
@@ -91,7 +92,7 @@ export default class EhrHelpV2 {
   stashActiveData (elementKey, value) {
     let data = this.getActiveData()
     data[elementKey] = value
-    if (dbDelta) console.log('EhrHelpV2 stash ', elementKey, value)
+    if (dbPageForm) console.log('EhrHelpV2 stash ', elementKey, value)
   }
 
   /* ********************* HELPERS  */
@@ -304,7 +305,16 @@ export default class EhrHelpV2 {
     let asLoadedData = this.getAsLoadedPageData()
     this.pageFormData.cacheData = JSON.stringify(asLoadedData)
     this.pageFormData.formKey = formKey
-    this.pageFormData.value = asLoadedData
+    /*
+    If _isDevelopingContent then the EhrElementCommon has told this helper to stash
+    the asLoaded or the DataCaseStudy value into the pageFormData.value. We want
+    to use this.
+    Otherwise, this is a student and we want to use the asLoadedData
+     */
+    if (!this._isDevelopingContent) {
+      this.pageFormData.value = asLoadedData
+    } // else use what is already in this.pageFormData.value
+
   }
 
   getAsLoadedPageData (aPageKey) {
@@ -488,7 +498,7 @@ export default class EhrHelpV2 {
   beginEdit (formKey) {
     if (dbPageForm) console.log('EhrHelpV2 begin edit', formKey)
     if (this.isEditing()) {
-      if (dbPageForm) console.error('EhrHelp begin edit while there is already an edit session in progress')
+      console.error('EhrHelp begin edit while there is already an edit session in progress')
       return
     }
     this._loadPageFormData(formKey)
@@ -511,6 +521,7 @@ export default class EhrHelpV2 {
    */
   savePageFormEdit () {
     let payload = this.pageFormData
+    if (dbPageForm) console.log('EhrHelperV2 savePageFormEdit', payload)
     this._setEditing(false)
     this._saveData(payload)
   }
