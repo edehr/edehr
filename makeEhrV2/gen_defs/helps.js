@@ -3,7 +3,7 @@ const assert = require('assert').strict
 const camelCase = require('camelcase')
 
 // Sample of multiline content:
-// Section	Label	Input_type	Options	Data_From	Input_format	Data_first_case_study	Data_second_case_study	Helper_Text	Mandatory	Validation	Notes	Questions_for_the_group	Element_Key	FQN	NavURL	Dependant_On_FQN
+// Section	Label	Input_type	Options	Data_From	Input_format	Helper_Text	Mandatory	Validation	Notes	Questions_for_the_group	Element_Key	FQN	NavURL	Dependant_On_FQN
 const nlSep = '-NL-'
 
 class RawHelper {

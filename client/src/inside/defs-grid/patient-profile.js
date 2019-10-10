@@ -403,7 +403,7 @@ export default function () {
           fqn: 'demographics.decisionMakerPhone'
         }
       ],
-      generated: '2019-10-09T16:15:30-07:00',
+      generated: '2019-10-09T18:58:02-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -485,7 +485,7 @@ export default function () {
           fqn: 'allergies.text'
         }
       ],
-      generated: '2019-10-09T16:15:30-07:00',
+      generated: '2019-10-09T18:58:02-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -519,7 +519,7 @@ export default function () {
           fqn: 'medical.history'
         }
       ],
-      generated: '2019-10-09T16:15:30-07:00',
+      generated: '2019-10-09T18:58:02-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -583,9 +583,149 @@ export default function () {
           inputType: 'textarea',
           label: 'Hobbies',
           fqn: 'psychosocial.hobbies'
+        },
+        {
+          elementKey: 'exercise',
+          dataCaseStudy: true,
+          formIndex: '1',
+          inputType: 'checkbox',
+          label: 'Exercise',
+          fqn: 'psychosocial.exercise'
+        },
+        {
+          elementKey: 'exerciseText',
+          dataCaseStudy: '< 1 day/week',
+          formIndex: '1',
+          formOption: 'hideLabel',
+          inputType: 'text',
+          label: 'Exercise',
+          fqn: 'psychosocial.exerciseText'
+        },
+        {
+          elementKey: 'spacer8',
+          formIndex: '1',
+          inputType: 'spacer',
+          label: 'Exercise',
+          fqn: 'psychosocial.spacer8'
+        },
+        {
+          elementKey: 'caffeineUse',
+          dataCaseStudy: true,
+          formIndex: '1',
+          inputType: 'checkbox',
+          label: 'Caffeine use',
+          fqn: 'psychosocial.caffeineUse'
+        },
+        {
+          elementKey: 'caffeineUseText',
+          dataCaseStudy: '1-2 cups/day',
+          formIndex: '1',
+          formOption: 'hideLabel',
+          inputType: 'text',
+          label: 'Caffeine use',
+          fqn: 'psychosocial.caffeineUseText'
+        },
+        {
+          elementKey: 'spacer9',
+          formIndex: '1',
+          inputType: 'spacer',
+          label: 'Caffeine use',
+          fqn: 'psychosocial.spacer9'
+        },
+        {
+          elementKey: 'tobaccoUse',
+          dataCaseStudy: true,
+          formIndex: '1',
+          inputType: 'checkbox',
+          label: 'Tobacco use',
+          fqn: 'psychosocial.tobaccoUse'
+        },
+        {
+          elementKey: 'tobaccoUseText',
+          dataCaseStudy: '1-2 cups/day',
+          formIndex: '1',
+          formOption: 'hideLabel',
+          inputType: 'text',
+          label: 'Tobacco use',
+          fqn: 'psychosocial.tobaccoUseText'
+        },
+        {
+          elementKey: 'spacer10',
+          formIndex: '1',
+          inputType: 'spacer',
+          label: 'Tobacco use',
+          fqn: 'psychosocial.spacer10'
+        },
+        {
+          elementKey: 'cannabisUse',
+          formIndex: '1',
+          inputType: 'checkbox',
+          label: 'Cannabis use',
+          fqn: 'psychosocial.cannabisUse'
+        },
+        {
+          elementKey: 'cannabisUseText',
+          formIndex: '1',
+          formOption: 'hideLabel',
+          inputType: 'text',
+          label: 'Cannabis use',
+          fqn: 'psychosocial.cannabisUseText'
+        },
+        {
+          elementKey: 'spacer11',
+          formIndex: '1',
+          inputType: 'spacer',
+          label: 'Cannabis use',
+          fqn: 'psychosocial.spacer11'
+        },
+        {
+          elementKey: 'alcoholUse',
+          dataCaseStudy: true,
+          formIndex: '1',
+          inputType: 'checkbox',
+          label: 'Alcohol use',
+          fqn: 'psychosocial.alcoholUse'
+        },
+        {
+          elementKey: 'alcoholUseText',
+          dataCaseStudy: 'Social',
+          formIndex: '1',
+          formOption: 'hideLabel',
+          inputType: 'text',
+          label: 'Alcohol use',
+          fqn: 'psychosocial.alcoholUseText'
+        },
+        {
+          elementKey: 'spacer12',
+          formIndex: '1',
+          inputType: 'spacer',
+          label: 'Alcohol use',
+          fqn: 'psychosocial.spacer12'
+        },
+        {
+          elementKey: 'substanceUse',
+          formIndex: '1',
+          inputType: 'checkbox',
+          label: 'Substance use',
+          fqn: 'psychosocial.substanceUse'
+        },
+        {
+          elementKey: 'substanceUseText',
+          formIndex: '1',
+          formOption: 'hideLabel',
+          inputType: 'text',
+          label: 'Substance use',
+          fqn: 'psychosocial.substanceUseText'
+        },
+        {
+          elementKey: 'spacer13',
+          formIndex: '1',
+          inputType: 'spacer',
+          label: 'Substance use',
+          fqn: 'psychosocial.spacer13'
         }
       ],
-      generated: '2019-10-09T16:15:30-07:00',
+      generated: '2019-10-09T18:58:02-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -605,10 +745,24 @@ export default function () {
             {
               gIndex: '2',
               gChildren: [
-                {
-                  elementKey: 'subgroup23',
-                  sgChildren: []
-                }
+                'exercise',
+                'exerciseText',
+                'spacer8',
+                'caffeineUse',
+                'caffeineUseText',
+                'spacer9',
+                'tobaccoUse',
+                'tobaccoUseText',
+                'spacer10',
+                'cannabisUse',
+                'cannabisUseText',
+                'spacer11',
+                'alcoholUse',
+                'alcoholUseText',
+                'spacer12',
+                'substanceUse',
+                'substanceUseText',
+                'spacer13'
               ]
             }
           ]
@@ -688,7 +842,7 @@ export default function () {
           fqn: 'surgical.comments'
         }
       ],
-      generated: '2019-10-09T16:15:30-07:00',
+      generated: '2019-10-09T18:58:02-07:00',
       pageElements: {
         pastSurgery: {
           elementKey: 'pastSurgery',
@@ -833,11 +987,11 @@ export default function () {
           fqn: 'immunization.hepADate'
         },
         {
-          elementKey: 'spacer11',
+          elementKey: 'spacer16',
           formIndex: '1',
           inputType: 'spacer',
           label: 'Hep A',
-          fqn: 'immunization.spacer11'
+          fqn: 'immunization.spacer16'
         },
         {
           elementKey: 'hepB',
@@ -855,11 +1009,11 @@ export default function () {
           fqn: 'immunization.hepBDate'
         },
         {
-          elementKey: 'spacer12',
+          elementKey: 'spacer17',
           formIndex: '1',
           inputType: 'spacer',
           label: 'Hep B',
-          fqn: 'immunization.spacer12'
+          fqn: 'immunization.spacer17'
         },
         {
           elementKey: 'mmr',
@@ -877,11 +1031,11 @@ export default function () {
           fqn: 'immunization.mmrDate'
         },
         {
-          elementKey: 'spacer13',
+          elementKey: 'spacer18',
           formIndex: '1',
           inputType: 'spacer',
           label: 'MMR',
-          fqn: 'immunization.spacer13'
+          fqn: 'immunization.spacer18'
         },
         {
           elementKey: 'pneumococcal',
@@ -899,11 +1053,11 @@ export default function () {
           fqn: 'immunization.pneumococcalDate'
         },
         {
-          elementKey: 'spacer14',
+          elementKey: 'spacer19',
           formIndex: '1',
           inputType: 'spacer',
           label: 'Pneumococcal',
-          fqn: 'immunization.spacer14'
+          fqn: 'immunization.spacer19'
         },
         {
           elementKey: 'polioDiptheriaPertussis',
@@ -921,11 +1075,11 @@ export default function () {
           fqn: 'immunization.polioDiptheriaPertussisDate'
         },
         {
-          elementKey: 'spacer15',
+          elementKey: 'spacer20',
           formIndex: '1',
           inputType: 'spacer',
           label: 'Polio diptheria pertussis',
-          fqn: 'immunization.spacer15'
+          fqn: 'immunization.spacer20'
         },
         {
           elementKey: 'tb',
@@ -943,11 +1097,11 @@ export default function () {
           fqn: 'immunization.tbDate'
         },
         {
-          elementKey: 'spacer16',
+          elementKey: 'spacer21',
           formIndex: '1',
           inputType: 'spacer',
           label: 'TB',
-          fqn: 'immunization.spacer16'
+          fqn: 'immunization.spacer21'
         },
         {
           elementKey: 'tetanus',
@@ -965,11 +1119,11 @@ export default function () {
           fqn: 'immunization.tetanusDate'
         },
         {
-          elementKey: 'spacer17',
+          elementKey: 'spacer22',
           formIndex: '1',
           inputType: 'spacer',
           label: 'Tetanus',
-          fqn: 'immunization.spacer17'
+          fqn: 'immunization.spacer22'
         },
         {
           elementKey: 'other1',
@@ -984,10 +1138,10 @@ export default function () {
           fqn: 'immunization.other1Date'
         },
         {
-          elementKey: 'spacer18',
+          elementKey: 'spacer23',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'immunization.spacer18'
+          fqn: 'immunization.spacer23'
         },
         {
           elementKey: 'other2',
@@ -1002,10 +1156,10 @@ export default function () {
           fqn: 'immunization.other2Date'
         },
         {
-          elementKey: 'spacer19',
+          elementKey: 'spacer24',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'immunization.spacer19'
+          fqn: 'immunization.spacer24'
         },
         {
           elementKey: 'other3',
@@ -1020,13 +1174,13 @@ export default function () {
           fqn: 'immunization.other3Date'
         },
         {
-          elementKey: 'spacer20',
+          elementKey: 'spacer25',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'immunization.spacer20'
+          fqn: 'immunization.spacer25'
         }
       ],
-      generated: '2019-10-09T16:15:30-07:00',
+      generated: '2019-10-09T18:58:02-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -1038,34 +1192,34 @@ export default function () {
               gChildren: [
                 'hepA',
                 'hepADate',
-                'spacer11',
+                'spacer16',
                 'hepB',
                 'hepBDate',
-                'spacer12',
+                'spacer17',
                 'mmr',
                 'mmrDate',
-                'spacer13',
+                'spacer18',
                 'pneumococcal',
                 'pneumococcalDate',
-                'spacer14',
+                'spacer19',
                 'polioDiptheriaPertussis',
                 'polioDiptheriaPertussisDate',
-                'spacer15',
+                'spacer20',
                 'tb',
                 'tbDate',
-                'spacer16',
+                'spacer21',
                 'tetanus',
                 'tetanusDate',
-                'spacer17',
+                'spacer22',
                 'other1',
                 'other1Date',
-                'spacer18',
+                'spacer23',
                 'other2',
                 'other2Date',
-                'spacer19',
+                'spacer24',
                 'other3',
                 'other3Date',
-                'spacer20'
+                'spacer25'
               ]
             }
           ]
@@ -1087,7 +1241,7 @@ export default function () {
           fqn: 'familyHistory.history'
         }
       ],
-      generated: '2019-10-09T16:15:30-07:00',
+      generated: '2019-10-09T18:58:02-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -1131,7 +1285,7 @@ export default function () {
           fqn: 'careTeam.profession'
         }
       ],
-      generated: '2019-10-09T16:15:30-07:00',
+      generated: '2019-10-09T18:58:02-07:00',
       pageElements: {
         teams: {
           elementKey: 'teams',
@@ -1249,7 +1403,7 @@ export default function () {
           fqn: 'pastAppointments.diagnosis'
         }
       ],
-      generated: '2019-10-09T16:15:30-07:00',
+      generated: '2019-10-09T18:58:02-07:00',
       pageElements: {
         encounters: {
           elementKey: 'encounters',
