@@ -19,7 +19,7 @@
             ui-button(v-on:buttonClicked="$emit('cancel')", v-bind:secondary="true")
               slot(name="cancel-button") {{ cancelButtonLabel }}
             div(class="dialog-footer-button-space", v-show="useSave")
-            ui-button(v-on:buttonClicked="$emit('save')", v-show="useSave")
+            ui-button(v-on:buttonClicked="$emit('save')", v-show="useSave", :disabled="disableSave")
               slot(name="save-button") {{ saveButtonLabel }}
 </template>
 
@@ -35,6 +35,7 @@ export default {
   props: {
     isModal: { type: Boolean, default: false },
     useSave: { type: Boolean, default: true },
+    disableSave: { type: Boolean, default: false },
     saveButtonLabel: {
       type: String,
       default: 'Save'

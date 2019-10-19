@@ -12,7 +12,7 @@
             td Assignment name:
             td
               ui-link(:name="'assignments'", :params="{assignmentId: assignment._id}")
-              span(v-on:click="switchAssignment")  {{ assignment.name }}
+                span(v-on:click="switchAssignment")  {{ assignment.name }}
           tr
             td Assignment description:
             td

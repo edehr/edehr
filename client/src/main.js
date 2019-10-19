@@ -7,6 +7,7 @@ import insideLayout from './inside/layout/LayoutEhr.vue'
 import dragDirective from './directives/drag-directive'
 import resizeDirective from './directives/resize-directive'
 import textToHtml from './directives/text-to-html'
+import validate from './directives/validate'
 
 /*
 Import the global style sheet
@@ -57,6 +58,7 @@ Vue.component('inside-layout', insideLayout)
 Vue.directive('dragged', dragDirective)
 Vue.directive('resized', resizeDirective)
 Vue.directive('textToHtml', textToHtml) // used as text-to-html attribute
+Vue.directive('validate', validate)
 
 /*
 Create the root Vue component.

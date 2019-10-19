@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    app-dialog(:isModal="true", ref="theDialog", @cancel="cancelDialog", @save="saveDialog")
+    app-dialog(:isModal="true", ref="theDialog", @cancel="cancelDialog", @save="saveDialog", :disableSave="disableSave")
       h2(slot="header") {{dialogHeader}}
       div(slot="body")
         div
@@ -8,15 +8,15 @@
             div(class="form-element")
               div(class="text_input_wrapper")
                 label Assignment name
-                input(class="input text-input", type="text", v-model="assignmentName", :class="{ 'is-invalid': !validName }")
+                input(class="input text-input", type="text", v-model="assignmentName", v-validate="nameValidate")
             div(class="form-element")
               div(class="text_input_wrapper")
                 label External id
-                input(class="input text-input", :disabled="!enableExternalIdEdit", type="text", v-model="externalId", :class="{ 'is-invalid': !validExternalId }")
+                input(class="input text-input", :disabled="!enableExternalIdEdit", type="text", v-model="externalId", v-validate="externalValidate")
             div(class="form-element")
               div(class="input-element")
                 label Seed data
-                select(v-model="selectedSeed", :class="{ 'is-invalid': !validSeed }")
+                select(v-model="selectedSeed", v-validate="seedValidate")
                   option(value="")
                   option(v-for="seed in seedOptionList", v-bind:value="seed.id", :selected="seed.selected") {{ seed.name}} {{seed.selected}}
           div(class="ehr-group-wrapper")
@@ -24,18 +24,16 @@
               div(class="input-element input-element-full")
                 label Description
                 textarea(class="ehr-page-form-textarea",v-model="description")
-          div(class="error-listing")
-            div(v-for="err in errorList") {{ err }}
-          hr
-          div(class="technical")
-            div {{ assignmentId}}
-    ui-confirm(ref="confirmDialog", v-on:confirm="proceedWithSave")
+          div(class="technical", v-if="hasAdvanced")
+            hr
+            div(v-if="showAdvanced") Assignment: {{ assignmentId}}
+            label( for="show-advanced") Show advanced
+              input( type="checkbox" name="show-advanced" id="show-advanced" v-model="showAdvanced")
 
 </template>
 
 <script>
 import AppDialog from '../../app/components/AppDialogShell'
-import UiConfirm from '../../app/ui/UiConfirm.vue'
 import StoreHelper from '../../helpers/store-helper'
 
 const TITLES = {
@@ -43,19 +41,17 @@ const TITLES = {
   create: 'Create a new assignment'
 }
 const ERRORS = {
-  ID_IN_USER: (id) => `ExternalId ${id} is already in use`,
+  ID_IN_USE: (id) => `ExternalId ${id} is already in use`,
   NAME_REQUIRED: 'Assignment name is required',
   ID_REQUIRED: 'Assignment externalId is required',
+  ID_PATTERN: 'External Id needs to start with a letter and then contain letters, numbers, hypens or underscores',
   SEED_REQUIRED: 'Assignment EHR data seed is required'
 }
-const CONFIRM_TITLE = 'Force Save Assignment?'
-const CONFIRM_MSG = 'The data you have entered has errors. Are you sure you want to save anyways?'
 
 const EDIT_ACTION= 'edit'
 const CREATE_ACTION = 'create'
 
 export default {
-  name: 'AssignmentsDialog',
   data () {
     return {
       assignmentName: '', externalId: '', ehrRoutePath: '', description: '',
@@ -63,49 +59,43 @@ export default {
       assignmentId: '',
       selectedSeed: '',
       enableExternalIdEdit: true,
-      inUseIds: []
+      inUseIds: [],
+      showAdvanced: false
     }
   },
-  components: { AppDialog, UiConfirm },
+  components: { AppDialog },
   computed: {
+    nameValidate () {
+      return this.assignmentName.trim() ? undefined :  ERRORS.NAME_REQUIRED
+    },
+    seedValidate () {
+      return this.selectedSeed.trim() ? undefined :  ERRORS.SEED_REQUIRED
+    },
+    externalValidate () {
+      if (!this.externalId) {
+        return ERRORS.ID_REQUIRED
+      }
+      let re = /^[a-zA-Z][0-9a-zA-Z\-_]*$/
+      if (!this.externalId.match(re)) {
+        return ERRORS.ID_PATTERN
+      }
+      let id = this.externalId.toLowerCase()
+      return this.inUseIds.includes(id) ? ERRORS.ID_IN_USE(id) : undefined
+    },
+    disableSave () {
+      return !!(this.nameValidate || this.seedValidate || this.externalValidate)
+    },
     dialogHeader () {
       return TITLES[this.actionType] || ''
-    },
-    nameExists () {
-      return this.assignmentName && this.assignmentName.length > 0
-    },
-    externalIdExists () {
-      return this.externalId && this.externalId.length > 0
-    },
-    uniqueExternalId () {
-      let isInuse = this.inUseIds.includes(this.externalId.toLowerCase())
-      return this.externalIdExists ? !isInuse : true
-    },
-    seedExists () {
-      return this.selectedSeed && this.selectedSeed.length > 0
-    },
-    validName () {
-      return this.nameExists
-    },
-    validExternalId () {
-      return this.externalIdExists && this.uniqueExternalId
-    },
-    validSeed () {
-      return this.seedExists
-    },
-    errorList () {
-      let errs = []
-      if (!this.nameExists) errs.push(ERRORS.NAME_REQUIRED)
-      if (!this.externalIdExists) errs.push(ERRORS.ID_REQUIRED)
-      if (!this.uniqueExternalId) errs.push(ERRORS.ID_IN_USER(this.externalId))
-      if (!this.seedExists) errs.push(ERRORS.SEED_REQUIRED)
-      return errs
     },
     seedOptionList () {
       let sdList = StoreHelper.getSeedDataList(this)
       return sdList.map(sd => {
         return { id: sd._id, name: sd.name }
       })
+    },
+    hasAdvanced () {
+      return this.actionType === EDIT_ACTION
     }
   },
   methods: {
@@ -122,7 +112,6 @@ export default {
       this.clearInputs()
       let assList = StoreHelper.getAssignmentsList(this)
       this.inUseIds = assList.map(a => a.externalId.toLowerCase())
-      this.inUseIds.push('atest')
       if (assignmentData) {
         this.actionType = EDIT_ACTION
         this.assignmentName = assignmentData.name
@@ -131,9 +120,10 @@ export default {
         this.description = assignmentData.description
         this.assignmentId = assignmentData._id
         this.selectedSeed = assignmentData.seedDataId || ''
+        // remove the current assignment id from the list
         this.inUseIds = this.inUseIds.filter( a => a !== this.externalId.toLowerCase())
         let cnt = StoreHelper.activitiesUsingAssignmentCount(this.assignmentId)
-        this.enableExternalIdEdit =  0 === cnt
+        this.enableExternalIdEdit = 0 === cnt
       } else {
         this.actionType = CREATE_ACTION
         this.enableExternalIdEdit = true
@@ -145,16 +135,6 @@ export default {
       this.$refs.theDialog.onClose()
     },
     saveDialog: function () {
-      // console.log('saveDialog ', this.actionType)
-      if (this.errorList.length > 0) {
-        this.$refs.confirmDialog.showDialog(CONFIRM_TITLE, CONFIRM_MSG)
-      } else {
-        this.proceedWithSave().then( () => {
-          this.$emit('save')
-        })
-      }
-    },
-    proceedWithSave: function () {
       let sId = this.selectedSeed && this.selectedSeed.length > 0 ? this.selectedSeed : null
       let aAssignment = {
         name: this.assignmentName,
@@ -173,8 +153,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-/*@import '../../scss/definitions';*/
-/*@import '../../scss/styles/forms';*/
-</style>

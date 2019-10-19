@@ -1,19 +1,20 @@
-<template>
-  <button v-on:click="buttonClicked" v-bind:class="classObject"><slot /></button>
+<template lang="pug">
+  button(v-on:click="buttonClicked", v-bind:class="classObject", :disabled="disabled")
+    slot
 </template>
 
 <script>
 export default {
-  name: 'UiButton',
   props: {
     value: { type: String },
     secondary: {
       type: Boolean
-    }
+    },
+    disabled: { type: Boolean, default: false },
   },
   computed: {
     classObject: function () {
-      var def = {
+      let def = {
         button: true
       }
       if (this.secondary) {
