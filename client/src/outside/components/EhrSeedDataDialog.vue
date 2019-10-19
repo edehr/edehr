@@ -1,14 +1,14 @@
 <template lang="pug">
   div(id="seedDataList", class="seedData-list")
-    app-dialog(:isModal="true", ref="theDialog",  @cancel="cancelDialog", @save="saveDialog")
+    app-dialog(:isModal="true", ref="theDialog",  @cancel="cancelDialog", @save="saveDialog", :disableSave="disableSave")
       h2(slot="header") {{dialogHeader}}
       div(slot="body")
-        div {{ehrParseMsg}}
+        div
           div(class="ehr-group-wrapper grid-left-to-right-2")
             div(class="form-element")
               div(class="text_input_wrapper")
                 label Name
-                input(class="input", type="text", v-model="name", :class="{ 'is-invalid': !validName }")
+                input(class="input", type="text", v-model="name", v-validate="nameValidate")
             div(class="form-element")
               div(class="text_input_wrapper")
                 label Version
@@ -20,22 +20,16 @@
           div(v-if="showAdvanced", class="ehr-group-wrapper grid-left-to-right-1")
             div(class="form-element")
               label EHR Data
-              textarea(class="textarea",v-model="ehrDataString", :class="{ 'is-invalid': !validEhr }")
-          div(class="error-listing")
-            div(v-for="err in errorList") {{ err }}
-          hr
+              textarea(class="textarea",v-model="ehrDataString", v-validate="ehrValidate")
           div(class="technical")
-            div(v-if="showAdvanced") {{ seedId}}
+            hr
+            div(v-if="showAdvanced") Seed Id: {{ seedId}}
             label( for="show-advanced") Show advanced
               input( type="checkbox" name="show-advanced" id="show-advanced" v-model="showAdvanced")
-            
-    ui-confirm(ref="confirmDialog", v-on:confirm="proceedWithSave")
-
 </template>
 
 <script>
 import AppDialog from '../../app/components/AppDialogShell'
-import UiConfirm from '../../app/ui/UiConfirm.vue'
 import StoreHelper from '../../helpers/store-helper'
 
 const TITLES = {
@@ -47,15 +41,13 @@ const ERRORS = {
   EHR_REQUIRED: 'Seed EHR data seed is required',
   EHR_INVALID: (msg) => `Seed EHR data seed is invalid. ${msg}`
 }
-const CONFIRM_TITLE = 'Force save EHR seed?'
-const CONFIRM_MSG = 'The data you have entered has errors. Are you sure you want to save anyways?'
 
 const EDIT_ACTION= 'edit'
 const CREATE_ACTION = 'create'
 
 export default {
   name: 'EhrSeedDataList',
-  components: { AppDialog, UiConfirm },
+  components: { AppDialog },
   data () {
     return {
       name: '',
@@ -73,37 +65,27 @@ export default {
     dialogHeader () {
       return TITLES[this.actionType] || ''
     },
-    nameExists () {
-      return this.name && this.name.length > 0
+    disableSave () {
+      return !!(this.nameValidate || this.ehrValidate)
     },
-    ehrExists () {
-      return this.ehrDataString && this.ehrDataString.length > 0
+    nameValidate () {
+      let v = this.name.length > 0
+      return v ? undefined : ERRORS.NAME_REQUIRED
     },
-    ehrParseMsg ()  {
-      return this.parseEhr().err
-    },
-    validName () { return this.nameExists },
-    validEhr () { return this.ehrExists && this.ehrParseMsg === undefined },
-    errorList () {
-      let errs = []
-      if (!this.nameExists) errs.push(ERRORS.NAME_REQUIRED)
-      if (!this.ehrExists) errs.push(ERRORS.EHR_REQUIRED)
-      let msg = this.ehrParseMsg
-      if (msg) { errs.push(ERRORS.EHR_INVALID(msg)) }
-      return errs
+    ehrValidate () {
+      if (this.ehrDataString.length === 0) {
+        return {valid:'false', text: ERRORS.SEED_REQUIRED}
+      }
+      let msg
+      try {
+        JSON.parse(this.ehrDataString)
+      } catch(error) {
+        msg = error.message
+      }
+      return msg ? ERRORS.EHR_INVALID(msg) : undefined
     }
   },
   methods: {
-    parseEhr () {
-      let results = {}
-      try {
-        results.obj = JSON.parse(this.ehrDataString)
-      } catch(error) {
-        results.err = error.message
-      }
-      // console.log('parseEhr', results)
-      return results
-    },
     clearInputs: function () {
       this.selectedSeed
         = this.actionType
@@ -136,24 +118,13 @@ export default {
       this.$refs.theDialog.onClose()
     },
     saveDialog: function () {
-      // console.log('saveDialog ', this.actionType, this.name)
-      if (this.errorList.length > 0) {
-        this.$refs.confirmDialog.showDialog(CONFIRM_TITLE, CONFIRM_MSG)
-      } else {
-        this.proceedWithSave()
-      }
-    },
-    proceedWithSave: function () {
       let seedData = {
         name: this.name,
         version: this.version,
         description: this.description,
         toolConsumer: StoreHelper.toolConsumerId(this)
       }
-      let ehr = this.parseEhr()
-      if (ehr.obj) {
-        seedData.ehrData = ehr.obj
-      }
+      seedData.ehrData = JSON.parse(this.ehrDataString)
       this.$refs.theDialog.onClose()
       if (this.actionType === EDIT_ACTION) {
         StoreHelper.updateSeed(this, this.seedId, seedData)
