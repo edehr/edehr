@@ -116,7 +116,7 @@ class StoreHelperWorker {
     return store.dispatch('assignment/findAssignment', payload)
   }
 
-  getAssignment () {
+  getLoadedAssignment () {
     return store.state.assignment.assignment
   }
 
@@ -124,9 +124,9 @@ class StoreHelperWorker {
     return store.dispatch('assignment/switchAssignment', assignment)
   }
 
-  loadAssignment (component, id) {
+  getAssignment (component, id) {
     // console.log('Assignment Load ', id)
-    return store.dispatch('assignment/loadAssignment', id)
+    return store.dispatch('assignment/getAssignment', id)
   }
 
   // returns promise that resolves to assignment list

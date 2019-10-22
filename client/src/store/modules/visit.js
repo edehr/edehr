@@ -91,7 +91,7 @@ const actions = {
           let options = { root: true }
           return Promise.all([
             context.dispatch('ehrData/loadActivityData', { forStudent: true, id: ad_id }, options),
-            context.dispatch('assignment/loadOneAssignmentThenSeed', a_id, options)
+            context.dispatch('assignment/loadAssignment', a_id, options)
           ]).then(() => {
             // console.log('after dispatch load active data, and assignment', ad_id)
             resolve()
