@@ -156,7 +156,7 @@ const actions = {
 
 export const mutations = {
   setSeedId: (state, seedId) => {
-    localStorage.setItem('seedId', seedId)
+    sessionStorage.setItem('seedId', seedId)
     state.sSeedId = seedId
   },
   _setSeedContent: (state, value) => {

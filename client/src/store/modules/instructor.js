@@ -158,11 +158,11 @@ const mutations = {
   },
   setInstructorReturnUrl: (state, rUrl) => {
     // console.log('save instructor return url' + rUrl)
-    localStorage.setItem('sInstructorReturnUrl', rUrl)
+    sessionStorage.setItem('sInstructorReturnUrl', rUrl)
     state.sInstructorReturnUrl = rUrl
   },
   setCurrentEvaluationStudentId: (state, id) => {
-    localStorage.setItem('sCurrentEvaluationStudentId', id)
+    sessionStorage.setItem('sCurrentEvaluationStudentId', id)
     state.sCurrentEvaluationStudentId = id
   }
 }
