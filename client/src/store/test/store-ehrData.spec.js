@@ -1,7 +1,9 @@
-import store from './store-create'
+jest.mock('../../store')
+import store from '../__mock__'
 import {activityData, developerVisit, instructorVisit, studentVisit, SEED} from './store-test-helper'
+import should  from 'should'
 
-const should = require('should')
+
 beforeEach(function () { reset() })
 
 describe('Test ehrData module', () => {
@@ -53,11 +55,9 @@ describe('Test ehrData asLoadedDataForPageKey', () => {
     should.exist(aFunction)
     let demographics = aFunction('demographics')
     should.exist(demographics)
-    // get a page that is NOT in the seed data. It should exist and contain some known properties
+    // get a page that is NOT in the seed data. It should exist and be empty
     let testPage = aFunction('testPage')
     should.exist(testPage)
-    testPage.should.have.property('ptext')
-    testPage.ptext.should.equal('default content')
   })
 
   it.skip('store asLoadedDataForPageKey as Developer', () => {
