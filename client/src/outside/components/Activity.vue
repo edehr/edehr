@@ -82,12 +82,12 @@ export default {
       return StoreHelper.dispatchLoadActivity(this, activityId)
         .then((theActivity) => {
           _this.activity = theActivity
-          return StoreHelper.loadAssignment(this, theActivity.assignment)
+          return StoreHelper.getAssignment(this, theActivity.assignment)
         })
         .then((theAssignment) => {
           _this.assignment = theAssignment
           let id = this.assignment._id
-          let assignment = StoreHelper.getAssignment()
+          let assignment = StoreHelper.getLoadedAssignment()
           // console.log('Activity loadActivity id', id)
           // console.log('Activity loadActivity assignment', assignment)
           let selected = id === assignment._id
