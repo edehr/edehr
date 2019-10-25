@@ -1,5 +1,5 @@
 import should from 'should'
-import { getPageDefinition, getAllPageKeys } from '../ehr-defs'
+import { getPageDefinition, getAllPageKeys } from '../../helpers/ehr-defs-grid'
 
 describe('Test ehr defs', () => {
   it('getAllPageKeys', () => {
