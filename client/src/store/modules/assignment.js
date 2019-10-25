@@ -10,7 +10,14 @@ const state = {
 const getters = {}
 
 const actions = {
-  loadOneAssignmentThenSeed (context, id) {
+  loadAssignment ({dispatch, commit}, id) {
+    return dispatch('getAssignment',id)
+      .then( (assignment) => {
+        // console.log('Assignment store loaded ', assignment)
+        return commit('setAssignment', assignment)
+      })
+  },
+  getAssignment (context, id) {
     let url = composeUrl(context, API) + 'get/' + id
     return InstoreHelper.getRequest(context, url).then(response => {
       let assignment = response.data.assignment
@@ -19,15 +26,9 @@ const actions = {
         setApiError(msg)
         return
       }
-      let seedId = assignment.seedDataId
-      let options = { root: true }
-      // console.log('Got assignment for ', id, 'with seedDataId', seedId)
-      context.commit('setAssignment', assignment)
-      context.commit('seedStore/setSeedId', seedId, options)
-      return context.dispatch('seedStore/loadSeedContent', null, options)
+      return assignment
     })
   },
-
   switchAssignment (context, assignment) {
     context.commit('setAssignment', assignment)
   },
@@ -41,18 +42,7 @@ const actions = {
       return response.data
     })
   },
-  loadAssignment (context, id) {
-    let url = composeUrl(context, API) + 'get/' + id
-    return InstoreHelper.getRequest(context, url).then(response => {
-      let assignment = response.data.assignment
-      if (!assignment) {
-        let msg = 'ERROR the could not get assignment ' + id
-        setApiError(msg)
-        return
-      }
-      return assignment
-    })
-  },
+
   loadAssignments (context) {
     let url = composeUrl(context, API)
     return InstoreHelper.getRequest(context, url).then(response => {

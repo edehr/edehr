@@ -1,20 +1,22 @@
-import { getPageDefinition, getAllPageKeys } from '../../../helpers/ehr-defs'
-import { mutations as dMutations, state as dState, getters as dGetters} from '../ehrData'
-import { mutations as sMutations, state as sState } from '../seedStore'
+//import store from '../../store'
+jest.mock('../../store')
+import EhrDefs from '@/helpers/ehr-defs-grid'
+import { mutations as dMutations, state as dState, getters as dGetters} from '../modules/ehrData'
+import { mutations as sMutations, state as sState } from '../modules/seedStore'
 
 import {createActivityData, getObjFromFile, SEED} from './store-test-helper'
 const should = require('should')
 
 describe('Test ehr defs', () => {
   it('getAllPageKeys', () => {
-    let pageKeys = getAllPageKeys()
+    let pageKeys = EhrDefs.getAllPageKeys()
     should.exist(pageKeys)
     pageKeys.length.should.be.greaterThanOrEqual(40)
   })
   it('getPageDefinition', () => {
-    let pageKeys = getAllPageKeys()
+    let pageKeys = EhrDefs.getAllPageKeys()
     let key = pageKeys[0]
-    let aPage = getPageDefinition(key)
+    let aPage = EhrDefs.getPageDefinition(key)
     should.exist(aPage)
   })
 })

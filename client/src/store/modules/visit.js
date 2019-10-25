@@ -6,7 +6,7 @@ const state = {
   sUserInfo: {},
   visitId: '',
   sVisitInfo: {},
-  isLoggedIn: !!localStorage.getItem('token'),
+  isLoggedIn: !!sessionStorage.getItem('token'),
   topLevelMenu: '',
   isDevelopingContent: false
 }
@@ -79,7 +79,7 @@ const actions = {
           if (!visitInfo.activityData) {
             return invalid('ERROR.  No activity data information for ' + visitId)
           }
-          localStorage.setItem('token', visitId)
+          sessionStorage.setItem('token', visitId)
           context.commit('setVisitInfo', visitInfo)
           context.commit('setUserInfo', visitInfo.user)
 
@@ -91,7 +91,7 @@ const actions = {
           let options = { root: true }
           return Promise.all([
             context.dispatch('ehrData/loadActivityData', { forStudent: true, id: ad_id }, options),
-            context.dispatch('assignment/loadOneAssignmentThenSeed', a_id, options)
+            context.dispatch('assignment/loadAssignment', a_id, options)
           ]).then(() => {
             // console.log('after dispatch load active data, and assignment', ad_id)
             resolve()
@@ -115,12 +115,12 @@ const actions = {
 const mutations = {
   apiUrl: (state, url) => {
     // console.log('visit store set api url ' + url)
-    localStorage.setItem('apiUrl', url)
+    sessionStorage.setItem('apiUrl', url)
     state.apiUrl = url
   },
   setIsDevelopingContent: (state, value) => {
     // console.log('setIsDevelopingContent', value)
-    localStorage.setItem('isDevelopingContent', value)
+    sessionStorage.setItem('isDevelopingContent', value)
     state.isDevelopingContent = value
   },
   setVisitInfo: (state, info) => {
@@ -133,7 +133,7 @@ const mutations = {
   },
   routeEnter: state => {
     // console.log('mutation route enter found token ', token)
-    var token = localStorage.getItem('token')
+    var token = sessionStorage.getItem('token')
     state.isLoggedIn = !!token
   },
   topLevelMenu: (state, top) => {

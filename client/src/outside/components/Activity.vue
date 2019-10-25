@@ -2,7 +2,7 @@
   div(:id="activityId")
     div(class="activity-list-header columns", v-on:click="toggleShow")
       div(class="header-column is-10 column")
-        h3(:title="activityId") {{ activity.resource_link_title }}
+        h3(:title="activityId") {{ activityName }}
         table
           tr
             td LMS description:
@@ -29,9 +29,11 @@
     div(class="activity-list-body")
       accordion-element(theme="grayTheme", :show="show")
         div(class="activity-details-header")
-          div(class="activity-details-header-item") Evaluation notes
-            fas-icon(class="icon-right", icon="download")
+          div(class="activity-details-header-item")
+            ui-button(v-on:buttonClicked="downloadEvaluations") Download evaluations
+              fas-icon(class="icon-right", icon="download")
         class-list(:classList="classList")
+    ui-save-as-prompt(ref="promptDialog", title="Save evaluation", :message="promptMessage", :filename="activityName", v-on:confirm="proceed")
 </template>
 
 <script>
@@ -39,13 +41,15 @@ import ClassList from './ClassList'
 import AccordionElement from '../../app/components/AccordionElement'
 import StoreHelper from '../../helpers/store-helper'
 import UiLink from '../../app/ui/UiLink.vue'
+import UiButton from '../../app/ui/UiButton'
+import UiSaveAsPrompt from '../../app/ui/UiSaveAsPrompt.vue'
+import { downArrayToCsvFile } from '../../helpers/ehr-utils'
 
 export default {
-  name: 'Activity',
   components: {
     AccordionElement,
     ClassList,
-    UiLink
+    UiLink, UiSaveAsPrompt, UiButton
   },
   props: {
     activityId: { type: String },
@@ -58,6 +62,14 @@ export default {
       classList: [],
       activity: {},
       assignment: {}
+    }
+  },
+  computed: {
+    activityName () {
+      return this.activity.resource_link_title
+    },
+    promptMessage () {
+      return 'Save evaluations for ' + this.activityName
     }
   },
   methods: {
@@ -76,18 +88,30 @@ export default {
         this.setShow(false)
       }
     },
+    downloadEvaluations () {
+      this.$refs.promptDialog.showDialog(this.promptTitle, this.promptMessage, this.promptLabel)
+    },
+    proceed (filename) {
+      let data = []
+      data.push(['email','feedback: ' + this.activityName])
+      this.classList.forEach ( sv => {
+        data.push([sv.user.emailPrimary,sv.activityData.evaluationData])
+      })
+      downArrayToCsvFile(filename, data)
+    },
+
     loadActivity () {
       const _this = this
       const activityId = this.activityId
       return StoreHelper.dispatchLoadActivity(this, activityId)
         .then((theActivity) => {
           _this.activity = theActivity
-          return StoreHelper.loadAssignment(this, theActivity.assignment)
+          return StoreHelper.getAssignment(this, theActivity.assignment)
         })
         .then((theAssignment) => {
           _this.assignment = theAssignment
           let id = this.assignment._id
-          let assignment = StoreHelper.getAssignment()
+          let assignment = StoreHelper.getLoadedAssignment()
           // console.log('Activity loadActivity id', id)
           // console.log('Activity loadActivity assignment', assignment)
           let selected = id === assignment._id

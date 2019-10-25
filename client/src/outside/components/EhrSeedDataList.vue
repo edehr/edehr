@@ -149,13 +149,15 @@ export default {
     gotoEhrWithSeed (sv) {
       const _this = this
       this.seedId = sv._id
-      // console.log('gotoEhrWithSeed with seed id', value, this.seedId)
+      // console.log('gotoEhrWithSeed with seed id', this.seedId)
       this.$store.commit('seedStore/setSeedId', this.seedId)
-      this.$store.dispatch('seedStore/loadSeedContent').then(() => {
-        // console.log('go to demographics')
-        _this.$router.push({ name: 'demographics' })
-        EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
-      })
+      // console.log('loadSeedContent', this.seedId)
+      return this.$store.dispatch('seedStore/loadSeedContent')
+        .then(() => {
+          // console.log('route to demographics page with seed', this.seedId)
+          _this.$router.push({ name: 'demographics' })
+          EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
+        })
     },
     showEditDialog (sv) {
       this.$refs.theDialog.showDialog(sv)

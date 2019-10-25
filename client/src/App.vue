@@ -33,7 +33,7 @@ export default {
         .then(() => {
           if (!visitId) {
             restoring = true
-            visitId = localStorage.getItem('token')
+            visitId = sessionStorage.getItem('token')
             if (debugApp) console.log('No visit id on query so checked local storage --> ', visitId)
           }
           if (visitId) {
@@ -79,8 +79,8 @@ export default {
           return resolve()
         }
         // console.log('Restore indicator says the user is refreshing page')
-        let isDevelopingContent = 'true' === localStorage.getItem('isDevelopingContent')
-        let seedId = localStorage.getItem('seedId')
+        let isDevelopingContent = 'true' === sessionStorage.getItem('isDevelopingContent')
+        let seedId = sessionStorage.getItem('seedId')
         // console.log(`App local storage idDevCon ${isDevelopingContent} seedId ${seedId}`)
         if (isDevelopingContent && seedId) {
           // console.log('User is developing content with seed id', seedId)
@@ -111,7 +111,7 @@ export default {
           if (db) console.log('API url provided in query: ', apiUrl)
         } else {
           if (db) console.log('No API url in query')
-          apiUrl = localStorage.getItem('apiUrl')
+          apiUrl = sessionStorage.getItem('apiUrl')
           if (db) console.log('Can we use API URL from local storage', apiUrl)
           if (!apiUrl) {
             setApiError(Text.MISSING_API_URL)
@@ -126,20 +126,20 @@ export default {
     reloadInstructor: function () {
       // console.log('Page load and restore instructor')
       const _this = this
-      let rUrl = localStorage.getItem('sInstructorReturnUrl')
+      let rUrl = sessionStorage.getItem('sInstructorReturnUrl')
       if (rUrl) {
         // console.log('Page load and restore instructor return url', rUrl)
         _this.$store.commit('instructor/setInstructorReturnUrl', rUrl)
       }
-      let activityId = localStorage.getItem('activityId')
-      let studentId = localStorage.getItem('sCurrentEvaluationStudentId')
+      let activityId = sessionStorage.getItem('activityId')
+      let studentId = sessionStorage.getItem('sCurrentEvaluationStudentId')
       if (activityId) {
         // console.log('Page load and restore last activity', activityId)
-        // no need to set localStorage because we are reloading from the value in localStorage
+        // no need to set sessionStorage because we are reloading from the value in sessionStorage
         return StoreHelper.dispatchLoadCurrentActivity(this, activityId)
           .then((activity) => {
             if (!activity) {
-              localStorage.removeItem('activityId')
+              sessionStorage.removeItem('activityId')
               return
             }
             // console.log('Page load and restore class list', activityId)

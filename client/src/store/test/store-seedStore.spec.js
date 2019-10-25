@@ -1,5 +1,6 @@
-import store from './store-create'
+import store from '../__mock__'
 const should = require('should')
+jest.mock('../../store')
 
 import {getObjFromFile} from './store-test-helper'
 

@@ -1,19 +1,40 @@
 import moment from 'moment'
 import camelcase from 'camelcase'
-import fileDownload  from 'js-file-download'
+import { saveAs } from 'file-saver'
+import filenamify from 'filenamify'
 import EhrDefs from './ehr-defs-grid'
 import { Text } from './ehr-text'
 import Vue from 'vue'
 import store from '../store'
+import validFilename  from 'valid-filename'
 
-
-class ContextProvider {
-  constructor () {
-    this.shc = new Vue({store})
+const mJSON = 'json', mTEXT = 'text', mCSV = 'csv'
+function _saveAs (stringData, fileName, mediaType) {
+  let type
+  switch (mediaType) {
+  case mCSV:
+    type = 'text/csv;charset=utf-8'
+    break
+  case mJSON:
+    type = 'application/json'
+    break
+  case mTEXT :
+  default:
+    type = 'text/plain;charset=utf-8'
+    break
   }
+  let blob = new Blob([stringData], {type: type})
+  /*
+  https://github.com/eligrey/FileSaver.js
+  Firefox dialog will include the text "from: blob:".  This is a defect with FF only.  https://github.com/eligrey/FileSaver.js/issues/101
+   */
+  saveAs(blob, fileName)
 }
-const provider = new ContextProvider()
-const gContext = provider.shc.$store
+
+export function makeSafeFileName (filename) {
+  return filenamify(filename)
+}
+
 
 export function getIncomingParams () {
   let search = window.location.search.substring(1)
@@ -31,6 +52,14 @@ export function composeUrl (context, api) {
   let apiUrl = visitState.apiUrl
   return `${apiUrl}/${api}/`
 }
+
+class ContextProvider {
+  constructor () {
+    this.shc = new Vue({store})
+  }
+}
+const provider = new ContextProvider()
+const gContext = provider.shc.$store
 
 export function setApiError (msg) {
   gContext.commit('system/setApiError', msg, { root: true })
@@ -228,14 +257,36 @@ export function downloadSeedToFile (seedId, sSeedContent, ehrData) {
   }
   data = JSON.stringify(data,null,2)
   console.log('Download seed to ', fName, ehrData)
-  fileDownload(data, fName, 'application/json')
+  _saveAs(data, fName, mJSON)
 }
 
 export function downObjectToFile (fileName, object) {
   let data = JSON.stringify(object,null,2)
   console.log('Download object to file ', fileName, data)
-  fileDownload(data, fileName, 'application/json')
+  _saveAs(data, fileName, mJSON)
 }
+
+export function isValidFilename (filename) {
+  return validFilename(filename)
+}
+
+export function arrayToCsv (array) {
+  let csv = []
+  array.forEach( line => {
+    let row = []
+    line.forEach( e => {
+      row.push(`"${e}"`)
+    })
+    csv.push(row.join(','))
+  })
+  return csv.join('\n')
+}
+
+export function downArrayToCsvFile (filename, array) {
+  let data = arrayToCsv(array)
+  _saveAs(data, filename, mCSV)
+}
+
 
 /**
  * prepareAssignmentPageDataForSave does two things
