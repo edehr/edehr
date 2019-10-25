@@ -23,7 +23,6 @@
                 ui-button(v-on:buttonClicked="unsubmit(sv)", v-bind:secondary="true", :title="unsubmitTool") {{unsubmitText}}
               span(v-if="showEvaluateAction(sv)")
                 ui-button(v-on:buttonClicked="markEvaluated(sv)", v-bind:secondary="true", :title="evaluatedButtonTooltip(sv)") {{ evaluatedButtonText(sv) }}
-
 </template>
 
 <script>
@@ -32,7 +31,6 @@ import StoreHelper from '../../helpers/store-helper'
 import UiButton from '../../app/ui/UiButton.vue'
 
 export default {
-  name: 'ActivityList',
   components: {
     UiButton
   },
