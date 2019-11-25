@@ -3,23 +3,24 @@
     div(class="activity-list-header columns", v-on:click="toggleShow")
       div(class="header-column is-10 column")
         h3(:title="activityId") {{ activityName }}
-        table
-          tr
-            td LMS description:
-            td
-              div(v-text-to-html="activity.resource_link_description")
-          tr
-            td Assignment name:
-            td
-              ui-link(:name="'assignments'", :params="{assignmentId: assignment._id}")
-                span(v-on:click="switchAssignment")  {{ assignment.name }}
-          tr
-            td Assignment description:
-            td
-              div(v-text-to-html="assignment.description")
-          tr
-            td LMS configuration:
-            td assignment={{ assignment.externalId }}
+        accordion-element(theme="grayTheme", :show="show")
+          table
+            tr
+              td LMS description:
+              td
+                div(v-text-to-html="activity.resource_link_description")
+            tr
+              td Assignment name:
+              td
+                ui-link(:name="'assignments'", :params="{assignmentId: assignment._id}")
+                  span(v-on:click="switchAssignment")  {{ assignment.name }}
+            tr
+              td Assignment description:
+              td
+                div(v-text-to-html="assignment.description")
+            tr
+              td LMS configuration:
+              td assignment={{ assignment.externalId }}
       div(class="header-column is-2 column")
         div(class="header-item header-icon")
           div(class="icon-group")
@@ -27,10 +28,10 @@
             fas-icon(icon="minus", v-show="show")
 
     div(class="activity-list-body")
-      accordion-element(theme="grayTheme", :show="show")
+      accordion-element(:show="show")
         div(class="activity-details-header")
           div(class="activity-details-header-item")
-            ui-button(v-on:buttonClicked="downloadEvaluations") Download evaluations
+            ui-button(v-on:buttonClicked="downloadEvaluations") Download all assignment evaluation notes
               fas-icon(class="icon-right", icon="download")
         class-list(:classList="classList")
     ui-save-as-prompt(ref="promptDialog", title="Save evaluation", :message="promptMessage", :filename="activityName", v-on:confirm="proceed")
@@ -154,7 +155,7 @@ export default {
     cursor: pointer;
 
     .header-column {
-      padding: 1rem 1.5rem;
+      padding: 1rem 1.5rem .5rem;
       position: relative;
 
       p {
@@ -172,6 +173,7 @@ export default {
       font-size: 2rem;
       font-weight: bold;
       text-align: right;
+      line-height: 0.5;
     }
   }
 
@@ -189,6 +191,9 @@ export default {
     .activity-details-header-item {
       display: inline-block;
       margin-right: 2rem;
+    }
+    button.button {
+      margin-bottom: 0;
     }
   }
   .activity-list:hover .activity-list-header {

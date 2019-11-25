@@ -89,4 +89,8 @@ button.is-light {
 button + button {
     margin-left: 15px;
 }
+
+.table td.actions button {
+  margin-bottom: 0;
+}
 </style>

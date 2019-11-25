@@ -8,9 +8,9 @@
         li(class="navItem push")
           a(:href="lmsUrl", class="navLink") {{lmsName}}
         li(v-if="showDashboard", class="navItem")
-          router-link(:to="{ name: `instructor` }", class="navLink") Dashboard
+          router-link(:to="{ name: `instructor` }", class="navLink") Courses
         li(v-if="showDashboard", class="navItem")
-          router-link(:to="{ name: `assignments` }", class="navLink subMenu") Assignments
+          router-link(:to="{ name: `assignments` }", class="navLink subMenu") (Assignments)
         li(v-if="showAssignmentActivation", class="navItem")
           div(class="navLink activationItem", v-on:click="toggleShowAssignmentDetails()") Assignment details
           div(v-show="showingAssignmentDetails", class="activationContent subNavList")
