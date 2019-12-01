@@ -12,6 +12,10 @@ A stakeholder group formed by individuals from from BCIT, Douglas College, UBC, 
 
 The EdEHR experience is broken down into the following three areas:
 
+## Documentation
+
+Public docs are available here [https://bccampus.github.io/edehr/](hhttps://bccampus.github.io/edehr/)
+
 ### Learning management system
 
 A LMS is needed to access the EdEHR. It provides user authentication and stores the courses and student lists that the EdEHR pulls from to know which students need access to specific assignments. 
