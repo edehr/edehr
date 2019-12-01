@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    h1 Dashboard
+    h1 Courses
     course-list
 </template>
 

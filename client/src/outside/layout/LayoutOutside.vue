@@ -10,7 +10,7 @@
           div(v-if="isDeveloper")
             div(style="display:none") Is developing content: {{ isDevelopingContent }} developContent: {{ developContent }}
             input(type="checkbox", id="develop-content", v-model="developContent" )
-            label(for="develop-content") Develop content
+            label(for="develop-content") Course designer functionality
     slot(name="outside-footer", class="outside-footer")
       app-footer
     input(class="checkbox", type="checkbox", v-model="showingSpecial")

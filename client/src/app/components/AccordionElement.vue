@@ -50,6 +50,6 @@ export default {
   background-color: skyblue;
 }
 .grayTheme {
-  background-color: $grey10;
+  background-color: $grey03;
 }
 </style>
