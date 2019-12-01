@@ -2,7 +2,7 @@
  * Vue directive to validate a form field.
  *
  * Usage:
-  1. Include this directive you your Vue main.js.
+  1. Include this directive in your Vue main.js.
     import Vue from 'vue'
     import validate from './directives/validate'
     Vue.directive('validate', validate)
@@ -67,7 +67,7 @@ function _clear (el) {
   _removeChild(el)
 }
 
-function _check(el) {
+function _check (el) {
   const invalid = !!el.dataset.text
   _clear(el)
   if (invalid) {

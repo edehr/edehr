@@ -2,7 +2,7 @@
   div(class="classlist", v-show="showClassList")
     div(class="classlist_content columns")
       div(class="is-4 column")
-        // div(class="textField") Course: {{ panelInfo.courseTitle}}
+        div(class="textField") Course: {{ panelInfo.courseTitle}}
         div(class="textField") Activity: {{ panelInfo.activityTitle}}
           ui-info(:title="panelInfo.activityTitle", :text="panelInfo.activityDescription")
         div(class="textField") Assignment: {{ panelInfo.assignmentName}}
@@ -10,8 +10,11 @@
       div(class="is-4 column")
         div(class="textField") Student: {{ panelInfo.studentName }}
         div(class="textField") Student's last visit: {{ formatTime(panelInfo.lastVisitDate) }}
+        div(class="textField") Return to  &nbsp;
+          ui-link(:name="'classlist'") classlist
       div(class="is-4 column")
         div(class="columns is-pulled-right")
+          div {{currentIndex}} of {{listLen}}
           ui-button(v-on:buttonClicked="previousStudent", class="is-pulled-right is-light", :disabled="!enablePrev")
             fas-icon(icon="angle-left", class="icon-left")
             span Previous
@@ -25,79 +28,79 @@
 <script>
 import UiButton from '../../app/ui/UiButton'
 import UiInfo from '../../app/ui/UiInfo'
+import UiLink from '../../app/ui/UiLink'
 import EhrEvaluationInput from './EhrEvaluationInput'
 import { formatTimeStr } from '../../helpers/ehr-utils'
 import StoreHelper from '../../helpers/store-helper'
 
-// TODO add student classlist counter and student list drop down
-
 export default {
   name: 'EhrClassListNav',
-  components: { UiButton, EhrEvaluationInput, UiInfo },
+  components: { UiLink, UiButton, EhrEvaluationInput, UiInfo },
   computed: {
     panelInfo () {
-      return StoreHelper.getPanelData(this)
+      return StoreHelper.getPanelData()
     },
     classList () {
       /*
       Filter the class list to only show records for students who have submitted their work
        */
-      let list = this.$store.state.instructor.sClassList || []
+      let list = StoreHelper.getClassList()
       list = list.filter( sv => {
         return sv.activityData.submitted
       })
       return list
     },
     currentStudentId () {
-      return this.$store.state.instructor.sCurrentEvaluationStudentId
+      return StoreHelper.getCurrentEvaluationStudentId()
     },
     showClassList () {
       return true
     },
+    currentIndex () {
+      let elem = this.findCurrent()
+      return elem.index + 1
+    },
+    listLen () {
+      return this.classList.length
+    },
     enablePrev () {
-      let { index } = this.findCurrentIndex()
-      return index > 0
+      let elem = this.findCurrent()
+      return elem.index > 0
     },
     enableNext () {
-      let { list, index } = this.findCurrentIndex()
-      // console.log('enableNext', index, list)
-      return index + 1 < list.length
+      let elem = this.findCurrent()
+      return elem.index + 1 < this.listLen
     }
   },
   methods: {
     formatTime ( dStr ) {
       return formatTimeStr(dStr)
     },
-    findCurrentIndex () {
+    findCurrent () {
       let list = this.classList
       let id = this.currentStudentId
-      let index = list.findIndex(function (elem) {
-        return elem._id === id
-      })
-      // console.log('findCurrentIndex', id, ' index:', index, list)
-      return { list, index }
+      return list.find(function (elem) { return elem._id === id }) || {}
     },
     previousStudent () {
-      let { list, index } = this.findCurrentIndex()
-      index--
+      let elem = this.findCurrent()
+      let index = elem.index - 1
       if (index >= 0) {
-        let sv = list[index]
-        this.changeStudent(list, sv)
+        let sv = this.classList[index]
+        this.changeStudent(sv)
       }
     },
     nextStudent () {
-      let { list, index } = this.findCurrentIndex()
-      index++
-      if (index < list.length) {
-        let sv = list[index]
-        this.changeStudent(list, sv)
+      let elem = this.findCurrent()
+      let index = elem.index + 1
+      if (index < this.classList.length) {
+        let sv = this.classList[index]
+        this.changeStudent(sv)
       }
     },
-    changeStudent (list, sv) {
-      let pid = sv._id
-      console.log('EhrClassListNav go to ', pid)
-      StoreHelper.dispatchChangeCurrentEvaluationStudentId(this, list, pid)
-    }
+    changeStudent (sv) { StoreHelper.changeStudentForInstructor( sv._id ) }
+  },
+  mounted: function () {
+    StoreHelper.loadInstructorWithStudent(true)
   }
 }
 </script>

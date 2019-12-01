@@ -19,13 +19,11 @@ export default {
   data: function () {
     return {
       tableForm: {},
-      transposedColumns: []
+      transposedColumns: [],
+      hasData: false
     }
   },
   computed: {
-    hasData () {
-      return this.tableForm.hasData
-    }
   },
   methods: {
     transposeLabel (column) {
@@ -68,6 +66,7 @@ export default {
     },
     refresh () {
       this.tableForm = this.ehrHelp.getTable(this.tableKey)
+      this.hasData = this.tableForm.hasData
       this.transposedColumns = this.tableForm.transposedColumns
       // console.log('EhrTableVertical table view refresh', this.transposedColumns)
     }

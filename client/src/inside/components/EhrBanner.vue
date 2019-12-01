@@ -41,6 +41,7 @@
 
 <script>
 import UiIntro from '../../app/ui/UiIntro.vue'
+import StoreHelper from '../../helpers/store-helper'
 
 export default {
   name: 'EhrBanner',
@@ -54,19 +55,19 @@ export default {
   },
   computed: {
     demographics () {
-      let data = this.$store.getters['ehrData/mergedData'] || {}
+      let data = StoreHelper.getMergedData()
       let asStored = data.demographics || {}
       let input = JSON.parse(JSON.stringify(asStored))
       return input
     },
     visitDetails () {
-      let data = this.$store.getters['ehrData/mergedData'] || {}
+      let data = StoreHelper.getMergedData()
       let asStored = data.visit || {}
       let input = JSON.parse(JSON.stringify(asStored))
       return input
     },
     allergies () {
-      let data = this.$store.getters['ehrData/mergedData'] || {}
+      let data = StoreHelper.getMergedData()
       let asStored = data.allergies || {}
       let input = JSON.parse(JSON.stringify(asStored))
       return input

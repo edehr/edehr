@@ -34,17 +34,14 @@ export default {
       const NEW_INFO = 'circle green-circle' //'new-info'
       const SEED_INFO = 'circle empty-circle'
       const NONE = ''
+      let isDev = StoreHelper.isDevelopingContent()
       let hd = this.hasData
-      if (StoreHelper.isStudent(this)) {
-        colour = hd.hasStudent ? NEW_INFO : hd.hasSeed ? SEED_INFO : NONE
-      } else if (StoreHelper.isDevelopingContent(this)) {
+      // console.log('nav ', this.path.label, isDev, hd)
+      if (isDev) {
         colour = hd.hasSeed ? NEW_INFO : NONE
-      } else if (StoreHelper.isInstructor(this)) {
-        // check for developing content first because instructor can do both.
-        // TODO consider adding a state "isEvaluating" to compliment isInstructor
-        colour = hd.hasInstructor ? NEW_INFO : (hd.hasSeed ? SEED_INFO : NONE)
+      } else {
+        colour = hd.hasStudent ? NEW_INFO : hd.hasSeed ? SEED_INFO : NONE
       }
-      // console.log('hasDataColor', hd, colour)
       return colour
     },
     levelClass () {

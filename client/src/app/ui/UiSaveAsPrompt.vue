@@ -62,7 +62,7 @@ export default {
     }
   },
   watch: {
-    filename: function() {
+    filename: function () {
       let fn = this.filename || ''
       this.value = makeSafeFileName(fn)
     }

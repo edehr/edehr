@@ -16,7 +16,6 @@
     hr
     div(v-show="isInstructor")
       h3 Instructor Data
-      p sInstructorReturnUrl {{ sInstructorReturnUrl }}
       p isDevelopingContent {{ isDevelopingContent }}
       p sCurrentEvaluationStudentId: {{ sCurrentEvaluationStudentId }}
       p Class List with Student Visit
@@ -63,8 +62,8 @@
       p apiUrl: {{ apiUrl }}
       p topLevelMenu: {{ topLevelMenu }}
       p isLoggedIn: {{ isLoggedIn }}
-      p visitInfo properties:
-      li(v-for="(value, propertyName) in visitInfo", v-bind:key="propertyName", v-if="skipVisitProp(propertyName)")
+      p sVisitData properties:
+      li(v-for="(value, propertyName) in sVisitData", v-bind:key="propertyName", v-if="skipVisitProp(propertyName)")
         strong {{ propertyName }}
         span : {{ value }}
     hr
@@ -82,13 +81,13 @@
     hr
     h3 Assignment
     div(:class="`${$options.name}__data`")
-      li(v-for="(value, propertyName) in visitInfo.assignment", v-bind:key="propertyName")
+      li(v-for="(value, propertyName) in assignment", v-bind:key="propertyName")
         strong {{ propertyName }}
         span : {{ value }}
     hr
     h3 LMS Consumer
     div(:class="`${$options.name}__data`")
-      li(v-for="(value, propertyName) in visitInfo.toolConsumer", v-bind:key="propertyName")
+      li(v-for="(value, propertyName) in toolConsumer", v-bind:key="propertyName")
         strong {{ propertyName }}
         span : {{ value }}
     hr
@@ -127,10 +126,10 @@ export default {
       return this.$route.path
     },
     userInfo () {
-      return this.$store.state.visit.sUserInfo || {}
+      return this.$store.state.userStore.dataStore || {}
     },
     ltiData () {
-      let usr = this.$store.state.visit.sUserInfo || {}
+      let usr = this.$store.state.userStore.dataStore || {}
       let lti = usr.ltiData || []
       lti = lti[0]
       try {
@@ -140,55 +139,61 @@ export default {
       }
       return lti
     },
-    visitInfo () {
-      return this.$store.state.visit.sVisitInfo || {}
+    toolConsumer () {
+      return this.$store.state.consumerStore.dataStore || {}
+    },
+    sVisitData () {
+      return this.$store.state.visit.sVisitData || {}
     },
     assignmentsListing () {
-      return this.$store.state.assignment.assignmentsListing
+      return this.$store.state.assignmentStore.assignmentsListing
     },
     assignment () {
-      var vi = this.visitInfo
+      // TODO FIX assignment IN EHR SPECIAL
+      var vi = this.sVisitData
       var act = vi && vi.assignment ? vi.assignment : {}
       return act
     },
     assignmentData () {
-      return this.$store.getters['ehrData/assignmentData']
+      return this.$store.getters['activityDataStore/assignmentData']
     },
     mergedData () {
-      return this.$store.getters['ehrData/mergedData']
+      return StoreHelper.getMergedData()
     },
     scratchData () {
-      return this.$store.getters['ehrData/scratchData']
+      return StoreHelper.getStudentScratchData()
     },
     evaluationData () {
-      return this.$store.getters['ehrData/evaluationData']
+      return StoreHelper.getEvaluationNotes()
     },
     sActivityData () {
-      return this.$store.state.ehrData.sActivityData || {}
+      return StoreHelper.getActivityData()
     },
     sCurrentStudentData () {
-      return this.$store.state.ehrData.sCurrentStudentData
+      // TODO fix
+      return {} //this.$store.state.ehrData.sCurrentStudentData
     },
     sCurrentStudentInfo () {
-      return this.$store.state.ehrData.sCurrentStudentInfo
+      // TODO fix
+      return {} // this.$store.state.ehrData.sCurrentStudentInfo
     },
     sSeedContent () {
-      return this.$store.state.seedStore.sSeedContent || []
+      return StoreHelper.getSeedContent()
     },
     sSeedId () {
-      return this.$store.state.seedStore.sSeedId
+      return StoreHelper.getSeedId()
     },
     seedStoreData () {
-      return this.$store.getters['seedStore/seedEhrData']
+      return StoreHelper.getSeedEhrData()
     },
     isDevelopingContent () {
-      return this.$store.state.visit.isDevelopingContent
+      return StoreHelper.isDevelopingContent()
     },
     classList () {
-      return this.$store.state.instructor.sClassList || []
+      return StoreHelper.getClassList()
     },
     sCurrentActivityId () {
-      return this.$store.state.instructor.sCurrentActivityId || []
+      return StoreHelper.getActivityId()
     },
     sCurrentActivity () {
       return this.$store.state.instructor.sCurrentActivity || []
@@ -196,11 +201,8 @@ export default {
     courses () {
       return this.$store.state.instructor.sCourses || []
     },
-    sInstructorReturnUrl () {
-      return this.$store.state.instructor.sInstructorReturnUrl
-    },
     sCurrentEvaluationStudentId () {
-      return this.$store.state.instructor.sCurrentEvaluationStudentId
+      return StoreHelper.getCurrentEvaluationStudentId()
     },
     isInstructor () {
       return StoreHelper.isInstructor(this)

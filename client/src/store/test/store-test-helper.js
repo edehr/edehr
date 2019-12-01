@@ -8,7 +8,7 @@ export const STUDENT2 = getObjFromFile('student-data2.json')
 export const STUDENT_DATA = [STUDENT1, STUDENT2]
 
 export function getObjFromFile (fName) {
-  const seedFN = path.resolve(__dirname, fName)
+  const seedFN = path.resolve(__dirname, '_data', fName)
   let content = fs.readFileSync(seedFN, 'utf8')
   return JSON.parse(content)
 }

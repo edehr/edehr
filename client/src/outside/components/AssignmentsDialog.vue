@@ -147,7 +147,7 @@ export default {
       if (this.actionType === EDIT_ACTION) {
         return StoreHelper.updateAssignment(this, this.assignmentId, aAssignment)
       } else if (this.actionType === CREATE_ACTION) {
-        return StoreHelper.createAssignment(this, aAssignment)
+        return StoreHelper.createAssignment( aAssignment)
       }
     }
   }

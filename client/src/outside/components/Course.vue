@@ -9,7 +9,6 @@
 import ActivityList from './ActivityList'
 
 export default {
-  name: 'Course',
   components: {
     ActivityList
   },

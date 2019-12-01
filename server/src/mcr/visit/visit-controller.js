@@ -18,7 +18,12 @@ export default class VisitController extends BaseController {
     return this.baseFindOneQuery(id)
       .populate('activity')
       .populate('assignment')
-      .populate('toolConsumer')
+      .populate('toolConsumer', {
+        tool_consumer_instance_name: 1,
+        tool_consumer_instance_description: 1,
+        tool_consumer_info_product_family_code: 1,
+        tool_consumer_info_version: 1
+      })
       .populate('user')
   }
 

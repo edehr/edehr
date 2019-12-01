@@ -1,168 +1,131 @@
 import InstoreHelper from './instoreHelper'
-import EventBus from '../../helpers/event-bus'
-import { PAGE_DATA_REFRESH_EVENT } from '../../helpers/event-bus'
+import sKeys from '../../helpers/session-keys'
+const debug = false
+const NAME = 'InstStore '
 
 const state = {
-  sInstructorReturnUrl: '/instructor',
   sCurrentEvaluationStudentId: '',
-  sCurrentActivityId: '',
-  sCurrentActivity: {},
   sClassList: [],
   sCourses: []
 }
 
 const getters = {
+  /** List -- ClassList
+   *
+   ClassList is a list of Visit records (student only) for a particular LMS activity.
+   Each record contains a populated ActivityData (student's work) (EdEHR) Assignment and User
+   return Visit.find({ $and: [ {isStudent: true }, {activity: _id} ] })
+   .populate('activityData', 'submitted evaluated assignmentData evaluationData')
+   .populate('assignment', 'externalId name description seedDataId ehrRoutePath')
+   .populate('user', 'givenName familyName fullName emailPrimary')
+   .select('userName lastVisitDate')
+   .then((visits) => {
+      return {classList: visits}
+    })
+   * @return {Array|*}
+   */
+  list: state => { return state.sClassList },
+
+  currentStudentId: state => {
+    let id = state.sCurrentEvaluationStudentId
+    id = id ? id :   sessionStorage.getItem(sKeys.C_STUDENT)
+    return id
+  },
+
   currentEvaluationStudent: state => {
     let currentId = state.sCurrentEvaluationStudentId
     let classList = state.sClassList
-    if (currentId && classList) {
-      return classList.find(elem => {
-        return elem._id === currentId
-      })
+    let student = classList.find(elem => {return elem._id === currentId})
+    if(debug) {
+      console.log(NAME + 'currentEvaluationStudent currentId',currentId)
+      console.log(NAME + 'currentEvaluationStudent classList',classList)
+      console.log(NAME + 'currentEvaluationStudent student',student)
     }
-    return { user: {}, activity: {} }
+    student = student || { user: {}, activity: {}, activityData: { assignmentData: {}} }
+    return student
   }
 }
 
 const actions = {
-  changeCurrentEvaluationStudentId: (context, data) => {
-    return new Promise(resolve => {
-      let rootOpt = { root: true }
-      let currentId = data.studentId
-      let classList = data.classList
-      context.commit('setCurrentEvaluationStudentId', currentId)
-      // console.log('changeCurrentEvaluationStudentId', currentId, ' classList: ', classList)
-      let sv // a student's visit information
-      if (currentId && classList) {
-        sv = classList.find(elem => {
-          return elem._id === currentId
-        })
-      }
-      if (!sv) {
-        console.log('ERROR. Cannot find student in class list. ', currentId, classList)
-        return resolve()
-      }
-      // console.log("What do we have here? ", sv, sv.activity)
-      let sva = sv.assignment
-      let currentStudentInfo = {
-        studentName: sv.user.fullName,
-        assignmentName: sva.name,
-        assignmentDescription: sva.description
-      }
-      // console.log('setCurrentStudentInfo: ', currentStudentInfo)
-      context.commit('ehrData/setCurrentStudentInfo', currentStudentInfo, rootOpt)
-      // sv.activityData is the id of the activity data record
-      let activityOpt = { forStudent: false, id: sv.activityData._id }
-      let dispatchRoute = 'ehrData/loadActivityData'
-      context.dispatch(dispatchRoute, activityOpt, rootOpt)
-        .then(() => {
-          console.log('changeCurrentEvaluationStudentId emit PAGE_DATA_REFRESH_EVENT')
-          EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
-          resolve(currentStudentInfo)
-        })
-    })
+  changeCurrentEvaluationStudentId: (context, currentId) => {
+    if (debug) { console.log(NAME + 'change current evaluation student id to ', currentId)}
+    context.commit('setCurrentEvaluationStudentId', currentId)
+    let sv = context.getters.currentEvaluationStudent
+    let adId = sv.activityData._id
+    if(debug) console.log(NAME + 'currentEvaluationStudent activityData._id',adId)
+    return context.dispatch('activityDataStore/load', adId, {root:true})
   },
+
   saveEvaluationNotes (context, payload) {
     let vid = payload.activityDataId
     let body = {
       evaluationData: payload.evalNotes
     }
-    let url = `${context.state.apiUrl}/activity-data/evaluation-data/${vid}`
-    // console.log('store save eval notes ', url, body)
+    let api = 'activity-data'
+    let url = 'evaluation-data/' + vid
+    if(debug) console.log(NAME + 'store save eval notes ', url, body)
     return new Promise(resolve => {
-      InstoreHelper.putRequest(context, url, body).then(results => {
+      InstoreHelper.putRequest(context, api, url, body).then(results => {
         let evaluationData = results.data
         resolve(evaluationData)
       })
     })
   },
-  loadCurrentActivity (context, activityId) {
-    // console.log('Loading activity. ', activityId)
-    context.commit('setCurrentActivityId', activityId)
-    let visitState = context.rootState.visit
-    let apiUrl = visitState.apiUrl
-    let url = `${apiUrl}/activities/get/${activityId}`
-    return InstoreHelper.getRequest(context, url)
-      .then(response => {
-        let activity = response.data['activity']
-        if (activity)  {
-          context.commit('setCurrentActivity', activity)
-        }
-        return activity
-      })
-  },
-  loadActivity (context, activityId) {
-    let visitState = context.rootState.visit
-    let apiUrl = visitState.apiUrl
-    let url = `${apiUrl}/activities/get/${activityId}`
-    return InstoreHelper.getRequest(context, url)
-      .then(response => {
-        let activity = response.data['activity']
-        return activity
-      })
-  },
+
   loadCourses (context) {
-    // console.log('In instructor loadCourses')
-    let visitState = context.rootState.visit
-    let apiUrl = visitState.apiUrl
-    let userId = visitState.sUserInfo._id
-    let url = `${apiUrl}/users/instructor/courses/${userId}`
-    // console.log('In instructor loadCourses ', url)
-    return InstoreHelper.getRequest(context, url)
+    if(debug) console.log(NAME + 'loadCourses')
+    let userId = context.rootGetters['userStore/userId']
+    let api = 'users'
+    let url = 'instructor/courses/' + userId
+    return InstoreHelper.getRequest(context, api, url)
       .then(response => {
         let courses = response.data['courses']
-        // console.log('load courses', response.data)
-        // console.log('load courses', courses)
+        if(debug) console.log(NAME + 'loadCourses', courses)
         context.commit('setCourses', courses)
         return courses
       })
   },
-  loadClassList (context, activityId) {
-    let visitState = context.rootState.visit
-    let apiUrl = visitState.apiUrl
-    let url = `${apiUrl}/activities/class/${activityId}`
-    return InstoreHelper.getRequest(context, url)
+
+  loadClassList (context, filtered) {
+    let activityId = context.rootGetters['activityStore/activityId']
+    if(debug) console.log(NAME + 'load classList filtered, activityId', filtered, activityId)
+    let api = 'activities'
+    let url = `class/${activityId}`
+    return InstoreHelper.getRequest(context, api, url)
       .then(response => {
-        // console.log('load activities', response.data)
-        let classList = response.data['classList']
+        let tmpList = response.data['classList']
+        let classList = filtered ? tmpList.filter( elem => elem.activityData.submitted ) : tmpList
+        let len = classList.length
+        classList.forEach (( elem, index )  => {
+          elem.index = index
+          elem.listLength = len
+        })
+        if(debug) {
+          console.log(NAME + 'cl filtered', filtered)
+          console.log(NAME + 'cl tmpList', tmpList)
+          console.log(NAME + 'cl classList', classList)
+        }
         context.commit('setClassList', classList)
         return classList
       })
-  }
+  },
+
+  sessionRestore: (context) => {
+    let sid = sessionStorage.getItem(sKeys.C_STUDENT)
+    if (sid) {
+      context.commit('setCurrentEvaluationStudentId', sid)
+    }
+  },
+
 }
 
 const mutations = {
-  setClassList: (state, list) => {
-    /*
-    list of Visit records (student only) for a particular LMS activity.
-    Each record contains a populated ActivityData (student's work)
-    (EdEHR) Assignment and User
-     */
-    state.sClassList = list
-  },
-  updateActivityData: (state, options) => {
-    let svId = options.sv._id
-    let sv = state.sClassList.find( (elem) => elem._id === svId)
-    sv.activityData = options.activityData
-    console.log('updated AD in sv', sv.activityData)
-  },
-  setCurrentActivityId: (state, id) => {
-    state.sCurrentActivityId = id
-  },
-  setCurrentActivity: (state, activity) => {
-    state.sCurrentActivity = activity
-  },
-  setCourses: (state, list) => {
-    // console.log('set courses', list)
-    state.sCourses = list
-  },
-  setInstructorReturnUrl: (state, rUrl) => {
-    // console.log('save instructor return url' + rUrl)
-    sessionStorage.setItem('sInstructorReturnUrl', rUrl)
-    state.sInstructorReturnUrl = rUrl
-  },
+  setClassList: (state, list) => { state.sClassList = list  },
+
+  setCourses: (state, list) => { state.sCourses = list  },
+
   setCurrentEvaluationStudentId: (state, id) => {
-    sessionStorage.setItem('sCurrentEvaluationStudentId', id)
+    sessionStorage.setItem(sKeys.C_STUDENT, id)
     state.sCurrentEvaluationStudentId = id
   }
 }

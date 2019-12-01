@@ -1,78 +1,104 @@
-
 import store from '../store'
+import {removeEmptyProperties } from './ehr-utils'
+import sKeys from './session-keys'
 
+const debug = false
 
 class StoreHelperWorker {
 
-  getAsLoadedPageData (pageKey) {
-    return store.getters['ehrData/asLoadedDataForPageKey'](pageKey)
-  }
+  getAsLoadedPageData (pageKey) { return store.getters['ehrDataStore/asLoadedDataForPageKey'](pageKey) }
+
+  getMergedData () { return store.getters['ehrDataStore/mergedData'] }
+
+  getHasDataForPagesList () { return store.getters['ehrDataStore/hasDataForPagesList'] }
+
+  /* **********   Internal  ************** */
+  _getActivityDataProperty (key) { return store.getters['activityDataStore/' + key]}
+  _getUserProperty (key) { return store.getters['userStore/' + key]}
+  _getActivityProperty (key) { return store.getters['activityStore/' + key]}
+  _getAssignmentProperty (key) { return store.getters['assignmentStore/' + key]}
+  _getAssignmentListProperty (key) { return store.getters['assignmentListStore/' + key]}
+  _getInstructorProperty (key) { return store.getters['instructor/' + key]}
+  _getSeedListProperty (key) { return store.getters['seedListStore/' + key]}
+  _getSystemProperty (key) { return store.getters['system/' + key]}
+  _getVisitProperty (key) { return store.getters['visit/' + key]}
+  _getConsumerProperty (key) { return store.getters['consumerStore/' + key]}
+
+  _dispatchActivity (key, payload) { return store.dispatch('activityStore/' + key, payload)}
+  _dispatchActivityData (key, payload) { return store.dispatch('activityDataStore/' + key, payload)}
+  _dispatchAssignment (key, payload) { return store.dispatch('assignmentStore/' + key, payload)}
+  _dispatchAssignmentList (key, payload) { return store.dispatch('assignmentListStore/' + key, payload)}
+  _dispatchConsumer (key, payload) { return store.dispatch('consumerStore/' + key, payload)}
+  _dispatchSeedListProperty (key, payload) { return store.dispatch('seedListStore/' + key, payload)}
+  _dispatchInstructor (key, payload) { return store.dispatch('instructor/' + key, payload)}
+  _dispatchVisit (key, payload) { return store.dispatch('visit/' + key, payload)}
+  _dispatchUser (key, payload) { return store.dispatch('userStore/' + key, payload)}
 
   /* **********   General  ************** */
+  toolConsumerId () { return this._getConsumerProperty('consumerId') }
+  userId () { return this._getUserProperty('userId') }
+  fullName () { return this._getUserProperty('fullName') }
+  lmsUrl () { return this._getVisitProperty('returnUrl') }
+  lmsName () { return this._getConsumerProperty('lmsName') }
+  isInstructor () { return this._getVisitProperty('isInstructor') }
+  isDeveloper () { return this._getVisitProperty('isDeveloper') }
+  isStudent () { return this._getVisitProperty('isStudent') }
 
-  toolConsumerId () {
-    let sVisitInfo = store.state.visit.sVisitInfo
-    return sVisitInfo ? sVisitInfo.toolConsumer._id : undefined
-  }
+  isDevelopingContent () { return this._getVisitProperty('isDevelopingContent')  }
+  setIsDevelopingContent (state) { store.commit('visit/setIsDevelopingContent', state) }
 
-  fullName () {
-    return store.getters['visit/fullName']
-  }
-  lmsUrl () {
-    return store.getters['visit/returnUrl']
-  }
-  lmsName () {
-    return store.getters['visit/lmsName']
-  }
-  isInstructor () {
-    return store.getters['visit/isInstructor']
-  }
-  isDeveloper () {
-    return store.getters['visit/isDeveloper']
-  }
-  isStudent () {
-    return store.getters['visit/isStudent']
-  }
+  getCourseTitle () { return this._getActivityProperty('courseTitle') }
 
-  isDevelopingContent () {
-    return store.state.visit.isDevelopingContent
-  }
+  isSubmitted () { return this._getActivityDataProperty('submitted') }
+  isEvaluated () { return this._getActivityDataProperty('evaluated') }
+  getStudentAssignmentData () { return this._getActivityDataProperty('assignmentData')}
+  getStudentScratchData () { return this._getActivityDataProperty('scratchData')}
+  getEvaluationNotes () { return this._getActivityDataProperty('evaluationData')   }
+  getActivityData () { return this._getActivityDataProperty('activityData')}
+  studentSubmitsAssignment (submitted) { return this._dispatchActivityData('sendSubmitted', submitted)}
 
-  isSubmitted () {
-    return store.getters['ehrData/submitted']
-  }
-  isEvaluated () {
-    let activityData = store.state.ehrData.sActivityData
-    return activityData.evaluated
-  }
+  sendAssignmentDataUpdate (payload) {return this._dispatchActivityData('sendAssignmentDataUpdate', payload)}
 
-  setLoading (context, value) {
-    let rt = undefined
-    if (context.$store) {
-      context = context.$store
-    } else {
-      rt = { root: true }
-    }
-    context.commit('system/setLoading', value, rt)
-  }
+  // TODO remove context in all calls to this method
+  setLoading (context, value) { store.commit('system/setLoading', value) }
+  setShowAdvanced (value) { store.commit('system/setShowingAdvanced', value) }
+  isLoading () { return this._getSystemProperty('isLoading')}
+  isShowingAdvanced () { return this._getSystemProperty('isShowingAdvanced') }
 
-  setIsDevelopingContent (component, state) {
-    store.commit('visit/setIsDevelopingContent', state)
-  }
-  setInstructorReturnUrl (component, url) {
-    store.commit('instructor/setInstructorReturnUrl', url)
+  /*
+  * **********   Instructor  **************
+  */
+
+  getClassList () { return this._getInstructorProperty('list') }
+
+  dispatchLoadClassList ( filtered ) { return this._dispatchInstructor('loadClassList', filtered)  }
+
+  getCurrentEvaluationStudentId () { return this._getInstructorProperty('currentStudentId') }
+
+  getCurrentEvaluationStudentVisit () { return this._getInstructorProperty('currentEvaluationStudent') }
+
+  getCurrentEvaluationStudentAssignmentData () {
+    let sv = this.getCurrentEvaluationStudentVisit()
+    return sv.activityData.assignmentData
   }
 
-  dispatchChangeCurrentEvaluationStudentId (component, classList, studentId) {
-    let data = {classList: classList, studentId: studentId}
-    return store.dispatch('instructor/changeCurrentEvaluationStudentId', data)
-  }
+  instructorReturnsAssignment () { return this.studentSubmitsAssignment(false)}
 
-  /* **********   Activity  ************** */
-  getCourseList () {
-    let list = store.state.instructor.sCourses || []
-    return list
-  }
+  instructorMarksWorkEvaluated (newState) {return this._dispatchActivityData('sendEvaluated', newState)}
+
+  changeStudentForInstructor (studentVisitId) { return this._dispatchInstructor('changeCurrentEvaluationStudentId', studentVisitId)}
+
+  saveEvaluationNotes (evalNotes ) { return this._dispatchActivityData('sendEvaluationNotes', evalNotes) }
+
+  /*
+  * **********   Activity  **************
+  */
+
+  getActivityId () { return this._getActivityProperty('activityId') }
+
+  getActivityTitle () { return this._getActivityProperty('activityTitle') }
+
+  getActivityDescription () { return this._getActivityProperty('activityDescription') }
 
   activitiesUsingAssignmentCount (assignmentId) {
     let cnt = 0
@@ -83,123 +109,244 @@ class StoreHelperWorker {
     return cnt
   }
 
-  getCurrentActivity () {
-    return store.state.ehrData.sActivityData
-  }
-  // returns promise that resolves to activity
-  dispatchLoadActivity ( component, activityId) {
-    return store.dispatch('instructor/loadActivity', activityId)
-  }
-  dispatchLoadCurrentActivity ( component, activityId) {
-    return store.dispatch('instructor/loadCurrentActivity', activityId)
-  }
+  /**
+   * Make API call to get activity
+   * @param activityId
+   * @return {*}
+   */
+  dispatchLoadActivity ( activityId) { return this._dispatchActivity('get', activityId) }
 
-  // returns promise that resolves to class list
-  dispatchLoadClassList ( component, activityId) {
-    return store.dispatch('instructor/loadClassList', activityId)
-  }
+  /**
+   * Make API call to load activity AND make this one the active one
+   * @param activityId
+   * @return {*}
+   */
+  loadAsCurrentActivity (activityId) { return this._dispatchActivity('load', activityId) }
 
-  /* **********   Assignments  ************** */
+  currentStudentId () { return this._getInstructorProperty('currentStudentId') }
+
+  getCourseList () { return store.state.instructor.sCourses || [] }
+
+
+  /**
+   *  **********   Assignments  **************
+   */
+
+  getAssignmentId () { return this._getAssignmentProperty('id') }
+
+  getAssignmentName () { return this._getActivityProperty('assignmentName') }
+
+  getAssignmentDescription () { return this._getActivityProperty('assignmentDescription') }
+
+  getAssignment (id) { return this._dispatchAssignment('get', id) }
+
+  loadAssignment (id) { return this._dispatchAssignment('load', id) }
+
   loadAssignmentAndSeedLists () {
-    return Promise.all([
-      store.dispatch('seedStore/loadSeedDataList'),
-      store.dispatch('assignment/loadAssignments')
-    ])
-  }
-  loadAssignmentList () {
-    return store.dispatch('assignment/loadAssignments')
+    // load the seeds first so they are ready for the assignments to integrate
+    return  this._dispatchSeedListProperty('loadSeeds')
+      .then ( () => {
+        return this.loadAssignmentList()
+      })
   }
 
-  findAssignment (component, toolConsumerId, externalId) {
-    // console.log('Assignment findAssignment ', toolConsumerId, externalId)
-    let payload = {toolConsumerId: toolConsumerId, externalId: externalId}
-    return store.dispatch('assignment/findAssignment', payload)
-  }
-
-  getLoadedAssignment () {
-    return store.state.assignment.assignment
-  }
-
-  switchAssignment (assignment) {
-    return store.dispatch('assignment/switchAssignment', assignment)
-  }
-
-  getAssignment (component, id) {
-    // console.log('Assignment Load ', id)
-    return store.dispatch('assignment/getAssignment', id)
-  }
+  loadAssignmentList () {  return this._dispatchAssignmentList('loadAssignments') }
 
   // returns promise that resolves to assignment list
   updateAssignment (component, assignmentId, assignmentData) {
     // console.log('Assignment update ', assignmentId, assignmentData)
     let dataIdPlusPayload = { id: assignmentId, payload: assignmentData }
-    return store.dispatch('assignment/updateAssignment', dataIdPlusPayload)
+    return this._dispatchAssignmentList('updateAssignment', dataIdPlusPayload)
   }
 
   // returns promise that resolves to assignment list
-  createAssignment (component, assignmentData) {
-    // console.log('Assignment save ', assignmentData)
-    return store.dispatch('assignment/createAssignment', assignmentData)
-  }
+  createAssignment (assignmentData) { return this._dispatchAssignmentList('createAssignment', assignmentData) }
 
-  getAssignmentsList () {
-    return store.state.assignment.assignmentsListing
-  }
+  getAssignmentsList () { return this._getAssignmentListProperty('list') }
+
+  getAssignmentSeedId () { return this._getAssignmentProperty('seedDataId') }
 
   /* **********   Seed Data  ************** */
 
-  loadSeedLists () {
-    return Promise.all([
-      store.dispatch('seedStore/loadSeedDataList'),
-    ])
-  }
+  getSeedId () { return this._getSeedListProperty('seedId')}
+  getSeedEhrData () { return this._getSeedListProperty('seedEhrData')}
+  getSeedContent () { return this._getSeedListProperty('seedContent') }
+
+  loadSeed (seedId) { return this._dispatchSeedListProperty('loadSeedContent', seedId) }
+  loadSeedLists () { return this._dispatchSeedListProperty('loadSeedDataList') }
 
   updateSeed (component, seedId, theData) {
     // console.log('Seed Data update ', seedId, theData)
     let dataIdPlusPayload = { id: seedId, payload: theData }
-    return store.dispatch('seedStore/updateSeedItem', dataIdPlusPayload)
+    return this._dispatchSeedListProperty('updateSeedItem', dataIdPlusPayload)
   }
 
-  createSeed (component, seedData) {
-    // console.log('Seed create ', seedData)
-    return store.dispatch('seedStore/createSeedItem', seedData)
+  updateSeedEhrData (seedId, ehrData) {
+    let payload = {
+      id: seedId,
+      ehrData: ehrData
+    }
+    return this._dispatchSeedListProperty('updateSeedEhrData', payload)
   }
 
-  getSeedDataList () {
-    return store.state.seedStore.seedDataList
+  updateSeedEhrProperty (propertyName, value ) {
+    let payload = {
+      propertyName: propertyName,
+      value: removeEmptyProperties(value)
+    }
+    return this._dispatchSeedListProperty('updateSeedEhrProperty', payload)
   }
 
-  /* ************* EHR Context
+  createSeed (component, seedData) { return this._dispatchSeedListProperty('createSeedItem', seedData) }
 
-   */
+  getSeedDataList () { return this._getSeedListProperty('list') }
+
+  /* ************* EHR Context   */
   getPanelData () {
-    let visitInfo = store.state.visit.sVisitInfo || {}
-    let assignment = visitInfo.assignment || {}
-    let activity = visitInfo.activity || {}
-    let activityData = store.state.ehrData.sActivityData
-    let currentEvaluationStudent = store.getters['instructor/currentEvaluationStudent']
-    let student = currentEvaluationStudent.user || {}
-    // console.log('getPanelData: student', JSON.stringify(currentEvaluationStudent, null, 2))
-    // console.log('assignment', JSON.stringify(assignment))
-    // console.log('visitInfo', JSON.stringify(visitInfo, null, 2))
-    // console.log('activity', JSON.stringify(activity, null, 2))
-    // sActivityData provides the seed and current assignment data
-    // let sActivityData = this.$store.state.ehrData.sActivityData || {}
-    // console.log('GetPagelData data.lastVisitDate', data.lastVisitDate)
-    // console.log('sActivityData', JSON.stringify(sActivityData, null, 2))
+    const pDebug = false
+    let assignment = this._getAssignmentProperty('assignment')
+    if(pDebug) console.log('getPanelData assignment', assignment)
+    let evaluated = this.isEvaluated()
     let data = {
-      student: student,
-      studentName: student.fullName,
-      courseTitle: activity.context_title,
-      activityTitle: activity.resource_link_title,
-      activityDescription: activity.resource_link_description,
+      userName: this.fullName(),
+      courseTitle: this.getCourseTitle(),
+      activityTitle: this.getActivityTitle(),
+      activityDescription: this.getActivityDescription(),
       assignmentName: assignment.name,
       assignmentDescription: assignment.description,
-      activityData: activityData,
-      lastVisitDate: currentEvaluationStudent.lastVisitDate
+      submitted: this.isSubmitted(),
+      evaluated: evaluated,
+      evaluationData: evaluated ? this.getEvaluationNotes() : '',
     }
+    if (this.isInstructor()) {
+      let ces = this.getCurrentEvaluationStudentVisit()
+      data.studentName = ces.userName
+      data.lastVisitDate = ces.lastVisitDate
+      data.currentEvaluationStudent = ces
+      if(pDebug) console.log('getPanelData currentEvaluationStudent', ces)
+    }
+    if (this.isStudent()) {
+      data.scratchData = this.getStudentScratchData()
+    }
+    if(pDebug) console.log('getPanelData data', data)
     return data
   }
+
+  /* **********   Loading and Restoring  ************** */
+  loadVisitRecord (visitId) {
+    if (debug) console.log('SH loadVisitRecord dispatch the load visit information', visitId)
+    sessionStorage.setItem(sKeys.USER_TOKEN, visitId)
+    return this._dispatchVisit('loadVisit2', visitId)
+  }
+
+  loadCommon () {
+    let visitInfo = store.state.visit.sVisitData || {}
+    return Promise.all([
+      this._dispatchConsumer('load', visitInfo.toolConsumer),
+      this._dispatchUser('load', visitInfo.user),
+    ]).then ( () => {
+      return this.loadAssignmentAndSeedLists()
+    }).then ( () => {
+      let activityId = this.getActivityId()
+      if (debug) console.log('SH loadCommon activityId', activityId)
+      if(!activityId) {
+        activityId = visitInfo.activity
+        if(debug) console.log('loadCommon load activity from visit record', activityId)
+      } else {
+        if(debug) console.log('loadCommon load activity from session', activityId)
+      }
+      if (activityId) {
+        return StoreHelper.loadAsCurrentActivity(activityId)
+      }
+    })
+  }
+
+  restoreSession () {
+    let visitId = sessionStorage.getItem(sKeys.USER_TOKEN)
+    if (debug) console.log('No visit id in url query. Is it in session storage? visitId', visitId)
+    if (visitId) {
+      return this._dispatchActivity('sessionRestore')
+        .then ( () => {
+          return this._dispatchInstructor('sessionRestore')
+        })
+        .then( () => {
+          return visitId
+        })
+    }
+    return visitId
+  }
+
+  clearSession () {
+    sessionStorage.removeItem(sKeys.C_ACTIVITY)
+    sessionStorage.removeItem(sKeys.C_STUDENT)
+    sessionStorage.removeItem(sKeys.SEED_ID)
+    return Promise.resolve()
+  }
+
+  loadStudent2 () {
+    let visitInfo = store.state.visit.sVisitData || {}
+    // visitInfo.activityData and .activity and .assignment are all ids
+    if (debug) console.log('SH loadStudent2 visitInfo.activity', visitInfo.activity)
+    return this.loadCommon().then(() => {
+      return Promise.all([
+        this._dispatchActivityData('load', visitInfo.activityData),
+        this.loadAsCurrentActivity(visitInfo.activity),
+        this.loadAssignment(visitInfo.assignment),
+      ])
+    }).then(() => {
+      let seedId = this.getAssignmentSeedId()
+      if(debug) console.log('loadStudent2 seedId', seedId)
+      return this.loadSeed(seedId)
+    })
+  }
+
+  loadInstructor2 () {
+    return this.loadCommon().then(() => {
+      return this._dispatchInstructor('loadCourses').then(() => {
+        if(debug) console.log('loadInstructor2 load and restore instructor')
+      })
+    })
+  }
+
+
+  loadInstructorWithStudent (filtered) {
+    const local = debug && true
+    if(local) console.log('loadInstructorWithStudent')
+    let activityId = this.getActivityId()
+    let result = {}
+    if (!activityId) {
+      console.error('Can\'t find a current activity id')
+      return Promise.resolve()
+    }
+    if(local) console.log('loadInstructorWithStudent activityId', activityId)
+    return this.loadAsCurrentActivity(activityId)
+      .then((theActivity) => {
+        result.activity = theActivity
+        if(local) console.log('loadInstructorWithStudent theActivity', theActivity)
+        return this.loadAssignment(theActivity.assignment)
+      })
+      .then((theAssignment) => {
+        result.assignment = theAssignment
+        if(local) console.log('loadInstructorWithStudent theAssignment', theAssignment)
+        return this.dispatchLoadClassList(filtered)
+      }).then(() => {
+        let seedId = StoreHelper.getAssignmentSeedId()
+        result.seedId = seedId
+        if(local) console.log('loadInstructorWithStudent seedId', seedId)
+        return this.loadSeed(seedId)
+      }).then(() => {
+        return result
+      })
+  }
+
+  loadDevelopingSeed () {
+    let seedId = sessionStorage.getItem(sKeys.SEED_ID)
+    if(debug) console.log('load developing seed id:', seedId)
+    if (seedId) {
+      return this.loadSeed(seedId)
+    }
+  }
+
 }
 
 const StoreHelper = new StoreHelperWorker()

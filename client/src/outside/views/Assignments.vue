@@ -7,7 +7,6 @@
 import AssignmentsListing from '../components/AssignmentsListing'
 
 export default {
-  name: 'DevelopEhrData',
   components: {
     AssignmentsListing
   }

@@ -1,53 +1,42 @@
-export default class EhrActions {
-  constructor (store, router) {
-    this.$store = store
-    this.$router = router
+import StoreHelper from '../helpers/store-helper'
+import { Text } from './ehr-text'
 
-  }
+export default class EhrActions {
 
   getNavPanelActionLabel () {
-    let lmsName = this.$store.getters['visit/lmsName']
-    let label = 'Return to ' + lmsName
-    if (this.navPanelActionNeedsConfirmation()) {
-      label = 'Send for evaluation'
-    }
-    return label
-  }
-
-  navPanelActionNeedsConfirmation () {
-    return this.isStudent() && !this.submitted()
+    return this.isUnsubmittedStudent() ? Text.SEND_FOR_EVAL : Text.RETURN_TO(StoreHelper.lmsName())
   }
 
   navPanelActionConfirmOptions () {
-    let options = {}
-    options.title ='Send assignment to your instructor for evaluation'
-    options.msg = 'You are unable to edit your assignment after submission. Are you sure you want to send?'
-    return options
+    return {title: Text.SEND_FOR_EVAL_TITLE, msg: Text.SEND_FOR_EVAL_BODY }
+  }
+
+  // hard return to the calling LMS
+  gotoLMS () {
+    // console.log('Return to ', StoreHelper.lmsUrl())
+    window.location = StoreHelper.lmsUrl()
   }
 
   invokeNavPanelAction () {
     if (this.isStudent()) {
-      if (!this.submitted()) {
-        this.$store.dispatch('ehrData/sendSubmitted', true)
+      if (this.isUnsubmittedStudent()) {
+        StoreHelper.studentSubmitsAssignment(true).then(() => { this.gotoLMS() })
+      } else {
+        this.gotoLMS()
       }
-      // hard return to the calling LMS
-      window.location = this.$store.getters['visit/returnUrl']
     } else {
-      // stay within application and use router push
-      var pathname = this.$store.state.instructor.sInstructorReturnUrl
-      // console.log(`go to ${pathname} via router push to retain veux state information`)
-      this.$router.push({ path: pathname })
+      console.error('Coding error. Call for nav panel action for non-student user')
     }
   }
   isStudent () {
-    return this.$store.getters['visit/isStudent']
+    return StoreHelper.isStudent()
   }
 
   submitted () {
-    return this.$store.getters['ehrData/submitted']
+    return StoreHelper.isSubmitted()
   }
 
-  lmsName () {
-    return this.$store.getters.lmsName
+  isUnsubmittedStudent () {
+    return this.isStudent() && !this.submitted()
   }
 }

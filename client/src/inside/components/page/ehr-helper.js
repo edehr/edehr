@@ -1,4 +1,5 @@
 import moment from 'moment'
+import router from '../../../router'
 import Vue from 'vue'
 import EhrTypes from '../../../helpers/ehr-types'
 import EventBus from '../../../helpers/event-bus'
@@ -9,10 +10,10 @@ import {
   PAGE_DATA_READY_EVENT
 } from '../../../helpers/event-bus'
 import {
-  removeEmptyProperties,
   prepareAssignmentPageDataForSave,
   formatTimeStr } from '../../../helpers/ehr-utils'
 import EhrDefs from '../../../helpers/ehr-defs-grid'
+import StoreHelper from '../../../helpers/store-helper'
 
 const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
@@ -31,6 +32,7 @@ export default class EhrHelpV2 {
     // console.log('Construct helper', pageKey)
     this.$store = store
     this.pageKey = pageKey
+    // todo move the following into a helper
     this.$store.commit('system/setCurrentPageKey', pageKey)
     this.pageFormData = { pageKey: pageKey }
     this.tableFormMap = {}
@@ -63,10 +65,10 @@ export default class EhrHelpV2 {
   }
 
   setShowingAdvanced (flag) {
-    this.$store.commit('system/setShowingAdvanced', flag)
+    StoreHelper.setShowAdvanced(flag)
   }
   isShowingAdvanced () {
-    return this.$store.state.system.isShowingAdvanced
+    return StoreHelper.isShowingAdvanced()
   }
 
   getPageErrors (formKey) {
@@ -97,22 +99,17 @@ export default class EhrHelpV2 {
   /* ********************* HELPERS  */
 
   _isStudent () {
-    return this.$store.getters['visit/isStudent']
+    return StoreHelper.isStudent()
   }
 
   _isDevelopingContent () {
-    return this.$store.state.visit.isDevelopingContent
+    return StoreHelper.isDevelopingContent()
   }
 
   _isSubmitted () {
-    return this.$store.getters['ehrData/submitted']
+    return StoreHelper.isSubmitted()
   }
 
-  _setLoading (flag) {
-    // TODO verifiy this help does not need to set the loading flag and then remove all uses of this function
-    // the ehrdata api calls should be setting the loading flags
-    // this.$store.commit('system/setLoading', flag)
-  }
   /**
    * Show or don't show page edit controls or table open dialog buttons.
    * Currently the rule is simply "is the user a student" but this will need to
@@ -130,6 +127,7 @@ export default class EhrHelpV2 {
   }
 
   _setEditing (flag) {
+    // todo move the following into a helper
     this.$store.commit('system/setEditing', flag)
   }
 
@@ -154,6 +152,7 @@ export default class EhrHelpV2 {
   }
 
   isEditing () {
+    // todo move the following into a helper
     let sysVal =  this.$store.state.system.isEditing
     if (dbLeave) console.log('EhrHelpV2 isEditing ', sysVal)
     return sysVal
@@ -318,7 +317,7 @@ export default class EhrHelpV2 {
 
   getAsLoadedPageData (aPageKey) {
     let pageKey = aPageKey || this.pageKey
-    return this.$store.getters['ehrData/asLoadedDataForPageKey'](pageKey)
+    return StoreHelper.getAsLoadedPageData(pageKey)
   }
 
   /**
@@ -394,25 +393,16 @@ export default class EhrHelpV2 {
   }
 
   _saveData (payload) {
-    const _this = this
-    _this._setLoading(true)
     let isStudent = this._isStudent()
-    let isDevelopingContent = this._isDevelopingContent()
+    let isDevelopingContent = StoreHelper.isDevelopingContent()
     if (isStudent) {
       if (dbDialog) console.log('saving assignment data', payload)
       payload.propertyName = payload.pageKey
       payload.value = prepareAssignmentPageDataForSave(payload.value)
-      return _this.$store.dispatch('ehrData/sendAssignmentDataUpdate', payload).then(() => {
-        _this._setLoading(false)
-      })
+      return StoreHelper.sendAssignmentDataUpdate(payload)
     } else if (isDevelopingContent) {
-      payload.id = _this.$store.state.seedStore.sSeedId
-      payload.propertyName = payload.pageKey
-      payload.value = removeEmptyProperties(payload.value)
       if (dbDialog) console.log('saving seed ehr data', payload.id, JSON.stringify(payload.value))
-      return _this.$store.dispatch('seedStore/updateSeedEhrProperty', payload).then(() => {
-        _this._setLoading(false)
-      })
+      return StoreHelper.updateSeedEhrProperty(payload.pageKey, payload.value)
     } else {
       return Promise.reject('Coding error using _saveData out of context')
     }
@@ -512,7 +502,11 @@ export default class EhrHelpV2 {
     if (dbPageForm) console.log('EhrHelperV2 cancelEdit', this.pageKey)
     this._resetPageFormData()
     this._setEditing(false)
-    this.$store.dispatch('ehrData/restoreActivityData')
+    // To restore the data we do a full page load to get the same flow as happens when the user comes to this page.
+    // This is a good solution here because we want to restore the data as it was found and
+    // there are many ways a user can come to the page. As a student, as a seed editor or someday in demo mode.
+    // By doing a page refresh here we get the same results as a page load.
+    router.go(0)
   }
 
   /**

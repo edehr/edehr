@@ -27,6 +27,7 @@ import EhrNavPanel from '../components/EhrNavPanel.vue'
 import EhrBanner from '../components/EhrBanner.vue'
 import EhrContextBanner from '../components/EhrContextBanner'
 import UiSpinner from '../../app/ui/UiSpinner'
+import StoreHelper from '../../helpers/store-helper'
 
 export default {
   name: 'LayoutEhr',
@@ -47,7 +48,7 @@ export default {
   },
   computed: {
     isLoading () {
-      return this.$store.state.system.isLoading
+      return StoreHelper.isLoading()
     }
   },
   mounted: function () {
@@ -55,7 +56,7 @@ export default {
   },
   watch: {
     showingSpecial: function (flag) {
-      this.$store.commit('system/setShowingAdvanced', flag)
+      StoreHelper.setShowAdvanced(flag)
     }
   }
 }

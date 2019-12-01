@@ -79,6 +79,17 @@ export default class BaseController {
       })
   }
 
+  listForTool (tool) {
+    return this.model
+      .find({toolConsumer: tool})
+      .limit(MAX_RESULTS)
+      .then((modelInstances) => {
+        var response = {}
+        response[pluralize(this.modelName)] = modelInstances
+        return response
+      })
+  }
+
   delete (id) {
     var filter = this.baseFilter(id)
     return this.model
@@ -161,6 +172,13 @@ export default class BaseController {
     router.get('/', (req, res) => {
       this
         .list()
+        .then(ok(res))
+        .then(null, fail(res))
+    })
+
+    router.get('/consumer/:tool', (req, res) => {
+      this
+        .listForTool(req.params.tool)
         .then(ok(res))
         .then(null, fail(res))
     })

@@ -7,6 +7,9 @@ import { Text } from './ehr-text'
 import Vue from 'vue'
 import store from '../store'
 import validFilename  from 'valid-filename'
+import StoreHelper from './store-helper'
+
+const debug = false
 
 const mJSON = 'json', mTEXT = 'text', mCSV = 'csv'
 function _saveAs (stringData, fileName, mediaType) {
@@ -45,12 +48,6 @@ export function getIncomingParams () {
     params2[pair[0]] = decodeURIComponent(pair[1])
   })
   return params2
-}
-
-export function composeUrl (context, api) {
-  let visitState = context.rootState.visit
-  let apiUrl = visitState.apiUrl
-  return `${apiUrl}/${api}/`
 }
 
 class ContextProvider {
@@ -95,7 +92,7 @@ export function composeAxiosResponseError (error, msg) {
 export function decoupleObject (obj) {
   if (obj) {
     let str = JSON.stringify(obj)
-    // console.log('decouple object ', str)
+    // console.log('EhrUtil decouple object ', str)
     return JSON.parse(str)
   }
   return obj
@@ -213,7 +210,7 @@ export function validateSeedFileContents (dataAsString) {
     }
     return { seedObj: obj }
   }catch(err) {
-    console.log('validateSeedFileContents: failed to parse seed data', err)
+    console.log('EhrUtil validateSeedFileContents: failed to parse seed data', err)
     return { invalidMsg: err.message}
   }
 }
@@ -228,14 +225,12 @@ export function validateSeedFileContents (dataAsString) {
 export function importSeedData (component, seedId, contents) {
   return new Promise( (resolve, reject) => {
     let {seedObj, invalidMsg} = validateSeedFileContents(contents)
-    if (invalidMsg) { return reject(invalidMsg) }
-    let payload = {
-      id: seedId,
-      ehrData: seedObj.ehrData
+    if (invalidMsg) {
+      console.log('EhrUtil importSeedData invalidMsg', invalidMsg)
+      return reject(invalidMsg)
     }
-    return component.$store.dispatch('seedStore/updateSeedEhrData', payload).then(() => {
-      return resolve()
-    })
+    if(debug) console.log('EhrUtil importSeedData seedObj', seedObj)
+    resolve(StoreHelper.updateSeedEhrData(seedId, seedObj.ehrData))
   })
 }
 
@@ -256,13 +251,13 @@ export function downloadSeedToFile (seedId, sSeedContent, ehrData) {
     fileName: fName
   }
   data = JSON.stringify(data,null,2)
-  console.log('Download seed to ', fName, ehrData)
+  if(debug) console.log('EhrUtil Download seed to ', fName, ehrData)
   _saveAs(data, fName, mJSON)
 }
 
 export function downObjectToFile (fileName, object) {
   let data = JSON.stringify(object,null,2)
-  console.log('Download object to file ', fileName, data)
+  if(debug) console.log('EhrUtil Download object to file ', fileName, data)
   _saveAs(data, fileName, mJSON)
 }
 
@@ -296,7 +291,7 @@ export function downArrayToCsvFile (filename, array) {
  * @return {*}
  */
 export function prepareAssignmentPageDataForSave (aPage) {
-  // console.log('prepareAssignmentPageDataForSave', JSON.stringify(aPage, null, 2))
+  if(debug) console.log('EhrUtil prepareAssignmentPageDataForSave', JSON.stringify(aPage, null, 2))
   let cleanValue = removeEmptyProperties(aPage)
   cleanValue = ehrRemoveMarkedSeed(cleanValue)
   return cleanValue
@@ -309,7 +304,7 @@ export function ehrMergeEhrData (one, two) {
   pageKeys.forEach(key => {
     let pgFromOne = one[key]
     let pageFromTwo = two[key]
-    let pg
+    let pg = {}
     if (pgFromOne && pageFromTwo) {
       pg = _ehrMergeAtPageLevel(pgFromOne, pageFromTwo)
     } else if (pgFromOne && !pageFromTwo) {
