@@ -46,7 +46,7 @@ grouping.
 ## form_label
 The content in the form label property accepts raw html. For example
 
-```angular2html
+```
 <b>Resources</b>
 <p>Morse Fall Score <a target='_blank' href='https://google.ca'>external link</a></p>
 <p>Mini-mental state examination (MMSE) <a target='_blank' href='https://google.ca'>external link</a></p>
