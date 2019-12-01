@@ -2,8 +2,8 @@
 
 > About these documentation pages
 
-The essential elements of the directory structure are below.  At the top is the root README which becomes the
-home page. Then, in order of application structure, is the LMS, outside, and inside.  This is followed by technical 
+The essential elements of the directory structure are below. At the top is the root README which becomes the
+home page. Then, in order of application structure, is the LMS, outside, and inside. This is followed by technical 
 documentation about how to deploy this application on a server and other DevOp information.
 
 ```
@@ -33,13 +33,13 @@ documentation about how to deploy this application on a server and other DevOp i
    └─ README.md
 ```
 
-The documentation system is build with [VuePress](https://vuepress.vuejs.org/).  The menu configuration is located
-in ```./vuepress/config.js```.   Images placed into the ```images``` folder are automatically copied to a
+The documentation system is build with [VuePress](https://vuepress.vuejs.org/). The menu configuration is located
+in ```./vuepress/config.js```. Images placed into the ```images``` folder are automatically copied to a
 public directory when the documentation is published.
 
 ## Publish
 
 To publish the documentation to the publicly available Github pages repository run the ```docDeploy.sh``` script
-in the root directory of this project.  
+in the root directory of this project.
 
 Public docs are currently placed here [https://bryan-gilbert.github.io/edehr/](https://bryan-gilbert.github.io/edehr/)

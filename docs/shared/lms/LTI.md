@@ -2,7 +2,7 @@
 
 > LTI is the glue between the learning tool and the EdEHR.
 
-The following illustrates some of the data in a LTI message.  When a user clicks a link
+The following illustrates some of the data in a LTI message. When a user clicks a link
 in a LMS that is associated with a LTI connection, a HTTP POST message is 
 sent to the server with the following data: If the message is valid the
 receiver will:

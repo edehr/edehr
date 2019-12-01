@@ -1,10 +1,10 @@
 # Open Source & License
 
-> A core requirement of this project is to be open source.  
+> A core requirement of this project is to be open source.
 
 Open source means all the code and documentation is publicly available,
 all the time, even while under development.
-Git code repository [here](https://github.com/BCcampus/edehr)
+[Git code repository](https://github.com/BCcampus/edehr)
 
 From [https://opensource.org/licenses](https://opensource.org/licenses). The following OSI-approved licenses are popular, 
 widely used, or have strong communities:
@@ -28,9 +28,9 @@ if you run a modified program on a server and let other users communicate with i
 them to download the source code corresponding to the modified version running there.
 
 The GNU Affero seems to best fit the intention of BCCampas’s mandate to provide open source educational tools and promote 
-the development of more open source tools.  
+the development of more open source tools.
 
-Todo: Add a header to code files.  Question: should the author's name be the developer or BCcampus?
+Todo: Add a header to code files. Question: should the author's name be the developer or BCcampus?
 
  
 > Copyright (C) 2019 Bryan Gilbert
@@ -40,7 +40,7 @@ Todo: Add a header to code files.  Question: should the author's name be the dev
 > This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
 
 > You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>. 
-  
+
 #### More references
 * [https://www.gnu.org/licenses/why-affero-gpl.html](https://www.gnu.org/licenses/why-affero-gpl.html)
 * [https://bccampus.ca/2018/05/08/copyright-and-open-licences-an-excerpt-from-the-bccampus-open-education-self-publishing-guide/](https://bccampus.ca/2018/05/08/copyright-and-open-licences-an-excerpt-from-the-bccampus-open-education-self-publishing-guide/)]

@@ -3,7 +3,7 @@
 > A component that displays a subset of columns from a table with an optional filter.
 
 The Discharge Summary Page shows a a summary of tabular data based on the patient's chart.
-Each table can be identified by it's fully qualified name (FQN) as well as the list of columns.  Each column
+Each table can be identified by it's fully qualified name (FQN) as well as the list of columns. Each column
 must be contained within the table so only FQN's relative to the table's FQN are needed.
 
 For example, in the ```medicationOrders.table``` table the following data is required:
@@ -11,7 +11,7 @@ For example, in the ```medicationOrders.table``` table the following data is req
 - route
 - schedule.*
 
-All of the fields should be inside the schedule fieldset.  The list is not made
+All of the fields should be inside the schedule fieldset. The list is not made
 explicit because the contents of the fieldset may change over time. At the moment, this fieldset contains:
 - schedule.startDayFood
 - schedule.startDay

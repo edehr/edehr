@@ -7,7 +7,6 @@ module.exports = {
   themeConfig: {
     displayAllHeaders: false,
     nav: [
-      {text: 'Home', link: '/'},
       {text: 'LMS admin', link: '/lms-admin/'},
       {text: 'Course designer', link: '/course-designer/'},
       {text: 'Instructor', link: '/instructor/'},
@@ -17,55 +16,60 @@ module.exports = {
     sidebar: [
       {
         title: "EdEHR",
-        children: [
-          '/',
-          '/about.md',
-          '/whats-next.md'
-        ]
+        path: '/',
       },
       {
-        title: "LMS admin",
-        children: [
-          '/lms-admin/'
-        ]
+        title: "Configuration",
+        path: '/configuration/',
       },
       {
-        title: "Course designer",
-        children: [
-          '/course-designer/',
-          '/course-designer/cd-lms.md',
-          '/course-designer/cd-activity.md',
-          '/course-designer/cd-assignment.md',
-          '/course-designer/cd-seed.md'
-        ]
-      },
-      {
-        title: "Instructors's guide",
+        title: "Instructor guide",
         path: '/instructor/',
         children: [
           '/instructor/',
+          '/shared/shortcuts.md',
         ]
       },
       {
-        title: "Student's guide",
+        title: "Student guide",
+        path: '/student/',
         children: [
           '/student/',
+          '/shared/shortcuts.md',
         ]
       },
       {
-        title: "Developer's guide",
+        title: "Developer guide",
         path: '/developer/',
         children: [
-          '/developer/',
+          '/developer/contributors.md',
+          '/developer/devop/',
+          '/developer/devop/technical-architecture.md',
+          '/developer/devop/deploy.md',
+          '/developer/inside/',
+          '/developer/inside-generator/',
+          '/developer/inside-generator/ehr-defs-pages.md',
+          '/developer/inside-generator/ehr-defs-keys.md',
+          '/developer/inside-generator/ehr-defs-input-types.md',
+          '/developer/inside-generator/ehr-defs-location.md',
+          '/developer/inside-generator/ehr-calculated-values.md',
+          '/developer/inside-custom/',
+          '/developer/inside-custom/med-admin-records.md',
+          '/developer/inside-custom/summary-table.md',
         ]
       },
       {
-        title: "Common",
-        path: '/shared/',
+        title: "Glossary",
+        path: '/shared/definitions',
         children: [
-          '/shared/',
           '/shared/definitions.md',
-          '/shared/FAQ.md',
+          '/shared/users.md',
+        ]
+      },
+      {
+        title: "License",
+        path: '/shared/license',
+        children: [
           '/shared/license.md',
         ]
       },

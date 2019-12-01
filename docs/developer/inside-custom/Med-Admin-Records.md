@@ -16,7 +16,7 @@ These values are dynamically based on the Medication Order page definitions as d
 Inputs spreadsheet. See the ```PeriodDefs``` class for the algorithm used to construct these 
 periods based on the definitions.
 
-Much of the logic is based on this set of time periods.  Each singular time period is called a ```PeriodDef``` 
+Much of the logic is based on this set of time periods. Each singular time period is called a ```PeriodDef``` 
 The set is plural and called ```PeriodDefs```
 
 ## Medication Orders
@@ -110,7 +110,7 @@ The summary tab holds every given and missed medication administration. It match
 Each medication will have a status of given or not given for each MAR. 
 
 We can see a challenge as the number of active days in the assignment grows beyond a few days. For this prototype we
-ignore this problem yet it needs to be addressed for a larger system.  One option is to place an afordance like a filter on the page
+ignore this problem yet it needs to be addressed for a larger system. One option is to place an afordance like a filter on the page
 to select MARs for a particular day.
 
 ## Algorithm to collate Medication Orders and MARs into Periods
@@ -136,7 +136,7 @@ to select MARs for a particular day.
 1. If there are no ```marRecs``` for the current day then
     1. Done (No MAR records for current day so all the periods with scheduled medications need a MAR)
     
-1. For each ```mRec``` in ```marRecs``` find the ```period``` in ```PeriodDefs```.  Let ```period.marRec = mRec```
+1. For each ```mRec``` in ```marRecs``` find the ```period``` in ```PeriodDefs```. Let ```period.marRec = mRec```
 
     > At this point, each period has ```mOrders```. If this list is not empty then the period may also have a ```marRec```
 
@@ -147,5 +147,4 @@ to select MARs for a particular day.
    > This situation happens when the last day is full
    
 > If we reach this point then the current day has at least one scheduled period that has some medications prescribed and no
-MAR record. Display as per described above (MAR Current Day)
-   
+MAR record. Display as per described above (MAR Current Day) 

@@ -4,23 +4,23 @@ The EdEHR project has two levels which we call the inside and the outside. The o
 The outside provides the assignment management system which includes learning management activities
 such as viewing class lists (activities), assignments and EHR seed data (the initial data that seeds the assignment).
 
-The inside is the electronic health record system.  
+The inside is the electronic health record system.
 
 When an instructor accesses the application, via a link in a LMS, they are taken to the assignment
-management pages.  Here they can view class lists, see the status of student's work, and evaluate
+management pages. Here they can view class lists, see the status of student's work, and evaluate
 the work within the EHR.
 
 When a user who has content editing permissions enters the app they are taken to the
-assignment management pages.  Here they can edit assignments and seed data.
+assignment management pages. Here they can edit assignments and seed data.
 
 A student can only see the assignment after an instructor or content editor has first established the activity in the EdEHR.
 
 ## EdEHR Activity
 
-The EdEHR Activity corresponds to an activity within the LMS.  
+The EdEHR Activity corresponds to an activity within the LMS.
 
-Every EHR Activity has a unique [External Id](/shared/definitions.md#external-id) or 'assignment id'.  In the LTI message this parameter is called
-'custom_assignment'.  In the Moodle external tool setup looks like this  
+Every EHR Activity has a unique [External Id](/shared/definitions.md#external-id) or 'assignment id'. In the LTI message this parameter is called
+'custom_assignment'. In the Moodle external tool setup looks like this
 ![LMS-custom-parameter]
 The format is:
 ```
@@ -30,11 +30,11 @@ For example ```assignment=ErinJonesCaseStudy1```. It is required that the LMS ex
 custom parameter. It is recommended that assignment ids are one single word-phrase. Capitalize each word. (This is called camel case.) 
 
 The system automatically creates an activity record
-when an instructor or content editor first uses a activity in the LMS.  Until an activity record exists all student
+when an instructor or content editor first uses a activity in the LMS. Until an activity record exists all student
 users will see an error page.
 
 When the activity record is created the system searches for any existing assignments that have the [External Id](/shared/definitions.md#external-id) specified
-in the LTI message.  If none is found, then a new assignment record is created for this external id and a default empty seed
+in the LTI message. If none is found, then a new assignment record is created for this external id and a default empty seed
 is attached.
 
 Normally, someone will set up the system with a set of assignments (along with rich EHR seed content). They will inform the
@@ -51,15 +51,15 @@ Also see the EHR ('Inside') Entity Relationship Diagram
 
 ## EdEHR Assignment
 
-An assignment is based on a case study text and is augmented with educational assists.  The case study provides a textual 
+An assignment is based on a case study text and is augmented with educational assists. The case study provides a text 
 description of the scenario, technical data and links to external resources (educational aids).
 
 In the future, an assignment may optionally have notes and resources provided by the course instructor.
 
-Students complete their assignment inside the EdEHR.  The system provides a scratch pad for students to record their temporary notes.
+Students complete their assignment inside the EdEHR. The system provides a scratch pad for students to record their temporary notes.
 
 The EdEHR provides the instructor an opportunity to see the student's work in situation,
-for evaluation and grading.  The system provides a space for instructors to record comments on the students work.  
+for evaluation and grading. The system provides a space for instructors to record comments on the students work.
 
 
 [EdEHR-overview.png]: ../../images/EdEHR-overview.png "overview"
