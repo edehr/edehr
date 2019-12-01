@@ -20,7 +20,7 @@ Tables display arrays of data and each table has a related dialog to create a ro
 An assetLink provides a link to a file served from the web root. The files are stored in the code repository in the ```client/public/assets``` directory.
 The ```label``` property is displayed as the link text.
 The ```assetBase``` property is the folder containing the file and ```assetName``` is the file name. The link is created with both 
-these properties.  To add a new file:
+these properties. To add a new file:
 - place the file in the appropriate folder of ```client/public/assets``` (make a new subdirectory if needed)
 - in the Inputs sheet 
   - set assetBase to the folder name
@@ -53,18 +53,18 @@ The content in the form label property accepts raw html. For example
 ```
 
 ## select box
-A select box is shown as a drop down list. The select options are provided in the ```options``` multi-line property.  Each line
-is parsed to become one of the options.  When a user selects an option, the entire content is stored in the database but, this
+A select box is shown as a drop down list. The select options are provided in the ```options``` multi-line property. Each line
+is parsed to become one of the options. When a user selects an option, the entire content is stored in the database but, this
 may change in the future.
 
-Some option lists contain a set of lines of the form ```N = text```.  Currently this special format is only used by the 
+Some option lists contain a set of lines of the form ```N = text```. Currently this special format is only used by the 
 calculated values (see above) yet in the future we may wish to make the left had side be the value to store in the database.
 
 ### formOption hideLabel
 If a select box or text box has ```hideLabel``` in its formOption then the label is not displayed
 
 ## spacer
-A spacer is equal to an empty label. Useful to have an element in place that spaces other elements.  
+A spacer is equal to an empty label. Useful to have an element in place that spaces other elements.
 
 ## text
 A text input is the standard HTML text input with a label displayed before the input area.

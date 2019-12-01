@@ -1,74 +1,74 @@
 ---
-sidebarDepth: 2
+sidebarDepth: 0
 ---
 
-# Definitions
+# Glossary
 
-## EdEHR
-EdEHR - The name of the application, Ed-ucational Electronic Health Records.  The EdEHR is a LTI Provider.
+## Activity
+An activity is the general name for a group of different functionalities within a Moodle course. There are internal activities that use Moodle technology for things like forums, quizzes, and simple form-based assignments. The EdEHR is an example of an [external tool](#tool) activity which is linked to from the LMS, but is not a part of the LMS itself. No other types of activites are linked to the EdEHR.
+![Moodle activities](../images/moodle-course-add-activity.png)
 
-### EHR
-EHR - The portion of the app that is made up of the health records screens, Electronic Health Records. Also used to refer to the bottom section of the EHR screens when differentiating between the navigation and evaluation functions of the app and the area that assignments are completed in and viewed for evaluation.
+## Assignment
+While LMS's do have assignment activities, we only use the external tool activity to connect to the EdEHR. Within the EdEHR, an assignment refers to the chunk of work that a student is required to complete and submit to an instructor for evaluation. Do not confuse it with a LMS assignment.
 
-### Dashboard
-Dashboard - The management screens used by admins and instructors. These screens are not seen by students.
+## API url
+See [Tool URL](#tool-url).
 
-### Application navigation
-Application navigation - The horizontal navigation bar at the top of the screen for all audiences.
+## Application navigation
+The horizontal navigation bar at the top of all screens within the EdEHR software. It appears for all users, although each user type has a different set of links that they are able to access from it.
 
-### Evaluation panel
-Evaluation panel - The section under the application navigation that is used by instructors to add evaluation notes.
+## Consumer key and secret
+Two pieces of data that are unique to each LMS and act like a special password to allow the LMS to send data to the EdEHR securely.
 
+## Course
+A course is a container in which a instructor will add resources and [activities](#activity) for their students to complete.
 
-## Users
+## Courseware
+Software designed for use in an educational or training program. The EdEHR is an example of courseware.
 
-### Course Designer
-The course designer's role spans both LMS and EdEHR setup. The EdEHR course designer is someone who can configure the EdEHR assignments with associated EHR data (seed).  The LMS course designer is someone who can configure courses in the LMS to use LTI connections 
+## Dashboard
+The EdEHR software is described in two parts - Dashboard and EHR. The dashboard represents the educational management screens used by admins and instructors. These screens are not seen by students.
 
-### Instructor
-Instructor - or teacher or mentor.  Anyone with a teacher like role in the LMS who can evaluate student work. 
+## Educational Electronic Health Records (EdEHR))
+The name of the application. Generically, the EdEHR is a [LTI Provider](#lti-provider).
 
-### Student
-Student - the special people we built this tool for.
+## EHR navigation
+The left side navigation bar with links to each of the pages contained within the EHR.
 
-### EdEHR Admin
-EdEHR Administrator installs and runs the EdEHR.  This person provides the keys to use the EdEHR to the LMS Admin. These keys include:
-1. Tool URL also called the API URL.  For example: https://edehr.org/api/launch_lti.
-2. The consumer key and secret.  The EdEHR admin sets up new "tool consumers" (LMS systems) to each have unique key and associated secret
+## Electronic Health Records (EHR)
+The EdEHR software is described in two parts - Dashboard and EHR. The EHR represents a steamlined professional EHR experience for students to use to complete assignments. It is seen below the [application navigation](#application-navigation) and [evaluation panel](#evaluation-panel). 
 
-### LMS Admin
-LMS Administrator - someone who can log onto the LMS and configure the LTI connections
+## Evaluation panel
+The area under the application navigation that is used by instructors to add evaluation notes and viewed by students to receive evaluation notes.
 
+## External id
+This is the id used by the LMS and EdEHR to link a activity with an EdEHR assignment. When the LMS admin creates the LTI connection they add a "custom parameter". (See [LMS-admin](/lms-admin/)). 
 
-## EdEHR Concepts
+## Learning Management System (LMS)
+An application used by post-secondary institutions to offer courses and manage student records. This can also be referred to generically as a tool consumer.
 
-### API URL
-The url to the EdEHR API.  This is called the "Tool URL" in the LMS.
+## Learning Tools Interoperability (LTI)
+A technology that allows a LMS to link to and use content from a courseware provider that complies with the LTI standard. The EdEHR supports [LTI 1.1](https://www.imsglobal.org/specs/ltiv2p0/implementation-guide). 
 
-### Consumer Key
-The consumer key and associated secret are two pieces of text that are unique to each LMS that wants to use the EdEHR.  The EdEHR administrator creates these when they add a new tool consumer.
+## LTI consumer
+The LMS that receives content from the LTI provider.
 
-### External Id
+## LTI provider
+A web service that provides courseware resources to [tool consumers](#tool-consumer) using [LTI](learning-tools-interoperability (LTI)). The EdEHR is a LTI Provider.
 
-This is the id used by the LMS and EdEHR to link a activity with an EdEHR assignment. When the LMS admin creates the LTI connection they add a "custom parameter". (See [LMS-admin](/lms-admin/)). This has the form of "assignment=SomeKeyWords".  The text "SomeKeyWords" is sent to the EdEHR when a user accesses the application.  The EdEHR locates an assignment that matches the key. 
+## Resources
+A supporting document that is given to students as a reference material to help students complete their assigned [activity](#activity) (In the case of the EdEHR, an assignment.)
 
-If no matching assignment is found and if the user is an instructor or course designer then the EdEHR creates the assignment.  If the user is a student they will see an error page.
+## Seed
+The initial data a student will see upon entering the EHR. It can be some or all of the medical data within a case study that that the assignment is based on. This can only be entered by a course designer into the EdEHR.
 
-### Seed
-A "seed" is an instance of some or all of a case study. It is the case study data entered into the EHR by a course designer to prepare for the student experience.  It is the "seed" or initial data.
+A seed can be used by multiple students and for multiple assignments. It is the base of which a students fills in their assignment data, which is then written to a different file for the instructor to evaluate upon submission.
 
-Essentially, the seed is course data that students are given. To a student this data is read-only.  When a student enters the system the seed data is loaded first. Then any data the student has previously entered is added.    
+## Tool
+A generic technical term, in this case used to describe the EdEHR.
 
+## Tool consumer
+Any system that offers access to a [Tool](#tool). See [LMS](#lms) for more details.
 
-
-## LMS
-LMS - Learning management system is an application used by post-secondary institution to offer courses and manage student records.
-
-## LTI
-LTI stands for Learning Tools Interoperability.  LTI is a technology that allows a LMS to link to and use a courseware that complies with the LTI standard.  The EdEHR supports LTI 1.1.  More recent versions of LTI (1.2) permit the provider to query the consumer for more information. See [Whats Next LTI](/whats-next.md#lti)
-
-### Tool Consumer
-A tool consumer is an application that uses courseware from a LTI provider, such as the EdEHR.
-
-### LTI Provider
-A web service that provides courseware resources to tool consumers using LTI
+## Tool URL
+This can also be referred to an API URL. It is the link that will launch the EdEHR (the [tool](#tool)). For example, https://edehr.org/api/launch_lti. It is added to the LMS so that users can access the EdEHR only from an authenticated LMS account. 

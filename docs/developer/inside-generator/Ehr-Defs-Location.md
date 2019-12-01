@@ -1,6 +1,6 @@
 # EHR Definitions - Location and Styling within the UI
 
-> Where does a UI element go?  How does it look? Does it have any special traits?
+> Where does a UI element go? How does it look? Does it have any special traits?
 
 The Inputs spreadsheet configuration system lets us define 
 - the layout of elements within a page, table or dialog
@@ -33,8 +33,8 @@ If present, the content in this property is added as a CSS class to the element 
 ## Special traits
 
 ### addButtonText
-**This is a required field for table elements**.  Every table has a dialog associated with it (to allow for the creation
-of new data. Be it as part of a student's assignment or to create the seed data for an assignment.)  The table has a button
+**This is a required field for table elements**. Every table has a dialog associated with it (to allow for the creation
+of new data. Be it as part of a student's assignment or to create the seed data for an assignment.) The table has a button
 that opens the dialog. This ```addButtonText``` is the text displayed in this button. 
 
 ### formOption

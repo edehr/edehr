@@ -1,3 +1,7 @@
 # Instructor
 
-> Placeholder readme file for documentation for instructors and teachers
+What happens in LMS vs EdEHR
+
+Details to give to course designer for setup
+
+Health case studies

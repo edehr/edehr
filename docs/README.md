@@ -1,42 +1,44 @@
 # Introduction 
-> The Educational Electronic Health Record application is a [BCcampus](https://bccampus.ca) project.  Project documents can be viewed [here](https://bryan-gilbert.github.io/edehr/). Project code repository is [here](https://github.com/BCcampus/edehr)
+The Educational Electronic Health Record application is a [BCcampus](https://bccampus.ca) [open-source](/developer/contributors.md) project funded by the Ministry of Advanced Education, Skills and Training. 
 
-BCcampus is leading the development of a new educational technology for the classroom in the Educational Electronic Health 
-Record System Project (EdEHR). This project is funded by the Ministry of Advanced Education, Skills and Training and 
-will build on existing research and development completed by an interest group from BCIT, Douglas College, UBC, and UVic.
+The EdEHR simulates the interaction a nurse, doctor, pharmacist or other medical practitioner would have using a professional EHR.
 
-In support of the requirement for health professional graduates to be competent in using electronic health records in 
-an inter-professional setting, the goal of this project is to develop a solution that can be piloted and evaluated by interested institutions.
+A stakeholder group formed by individuals from from BCIT, Douglas College, UBC, and UVic helped to research and develop requirements that were used as a foundation for the project. The goal of that stakeholder group and this project was to build a pilot-ready, minimum viable product to give students access to an EHR system in classrooms before they work in a professional setting.
 
-> [BCcampus announcement](https://bccampus.ca/2018/01/23/bccampus-launches-the-educational-electronic-health-record-system-project-in-b-c/)
+- [GitHub repository](https://github.com/BCcampus/edehr)
+- [BCcampus announcement](https://bccampus.ca/2018/01/23/bccampus-launches-the-educational-electronic-health-record-system-project-in-b-c/)
 
-The objectives of this project are to build a pilot-ready prototype EdEHR and a sustainability plan. The EHR simulates the interaction a nurse, doctor, pharmacist or other medical practitioner would have using a professional EHR. The EdEHR wraps this simulation into an educational tool.
+## About the EdEHR
 
-> This application is a prototype so there are many areas that could see further development. See [next](/whats-next.md) 
+The EdEHR experience is broken down into the following three areas:
 
-## Getting started
+### Learning management system
 
-Apart from installing and running the LMS and EdEHR applications there are four main steps to using the application.
+A LMS is needed to access the EdEHR. It provides user authentication and stores the courses and student lists that the EdEHR pulls from to know which students need access to specific assignments. 
 
-1. The first step is to have a LMS application use the EdEHR. This has two parts.  
-    1. a LMS administrator creates a LTI link to the EdEHR. See [LMS Admin](/lms-admin/) 
-    1. then, also in the LMS, a course designer uses this link one or more times to set up activities in courses. See [course designer](/course-designer)
+The LMS is installed and managed by each post secondary institution using the EdEHR. 
 
-2. Next an instructor or course designer clicks on the LMS course/activity link and will be taken to the EdEHR dashboard. It is necessary for the user to configure the activity and assignment in the EdEHR. See [course designer](/course/designer/)
+Examples include:
+- [Moodle](https://moodle.org/)
+- [Canvas](https://www.canvaslms.com/)
+- [Blackboard](https://www.blackboard.com)
+- [D2L](https://www.d2l.com/)
+ 
 
-3. Now the course students can click on the LMS course/activity and they will be taken directly to the EHR part of the EdEHR. The medical student will read instructions that come from the LMS and the assignment created in the EdEHR and complete their assigned task.  When they are done they submit their work for evaluation. See [student](/student/)
+### Assignment configuration and management
 
-4. Instructors also get to the EdEHR via the same LMS course/activity link but they come to the EdEHR dashboard with a listing of all the courses they have used. Under each course is a listing of activities and these each contain class lists. From here the instructor can enter the EHR and evaluation each student's work.  These evaluations notes can later be exported to a file and imported into the LMS. See [instructor](/instructor/)
+The EdEHR system is split into two parts: the EHR and everything else. "Everything else" includes the screens used by admins to configure the system as well as instructors for evaluating student work. These screens, often referred to collectively as the dashboard, is the entry point to the EdEHR for the instructor and course designer.
 
-To help explain all this we have a video in two parts. [part1](https://www.dropbox.com/s/j1ycyvb91ef7hcf/tutorial-part1.mp4?dl=0) and  [part 2](https://www.dropbox.com/s/duznqu7rz930v1p/tutorial-part2.mp4?dl=0)
-These videos demonstrate all of the above including how a student completes their assignment and instructor evaluates the work. You see this in part 2.
+After a course designer has configured an assignment in the EdEHR, an instructor can view each respective course, assignment and list of students that have logged into the EdEHR from their dashboard. They can also manage evaluation notes for each student.
 
+[Learn about EdEHR configuration](/configuration/)
 
-## Installation and Development
+### Electronic health record 
 
-This documentation assumes you have a running LMS. It is beyond the scop of this project to describe how this is done. Yet see how to setup the LMS to use the EdEHR [here](/lms-admin/).
+The EHR screens are made up of forms and prepopulated patient data and reports. It represents a professional EHR that has been made generic and scaled back to best serve curriculum purposes. It is where students complete an assignment and where instructors view student work and make evaluation notes. 
 
-To set up and install a copy of the EdEHR see [developer](/developer/).
+[Learn about EHR configuration](/developer/inside-generator/)
 
-The EdEHR project is open source so the world is invited to make contributions. See [developer](/developer/) to learn more.
+## Continuing development
 
+There are many opportunities to add new features and functionality to the EdEHR. For a current list of issues we're tackling, see our [GitHub project board](https://github.com/BCcampus/edehr/projects/2).
