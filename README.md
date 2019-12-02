@@ -139,7 +139,7 @@ EdEHR is an open source project and we encourage contributions. Please read CONT
 
 
 ## Documentation
-For more details about this project, [view the documentation](https://bryan-gilbert.github.io/edehr/)
+For more details about this project, [view the documentation](https://bccampus.github.io/edehr/)
 
 Alternatively, you can run a local documentatiom server by running the following command in your terminal:
 ```
