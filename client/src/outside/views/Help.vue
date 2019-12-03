@@ -2,12 +2,17 @@
   div(class="outside-view")
     h1 Help
     div
-      p. 
-        This project is in development and has not yet developed any help pages for students and instructors using the EdEHR.
       p.  
-        Having trouble with the app or need help with your assignment? Contact your instructor for help.
+        Are you a student having trouble with the app or need help with your assignment? Contact your instructor for help.
       p.
-        You can also <a href="https://bryan-gilbert.github.io/edehr/">read project documentation</a>.
+        You can also read the project documentation:
+      <ul>
+        <li>  <a href="https://bccampus.github.io/edehr/student/">Student guide</a>
+        </li>
+        <li>
+        <a href="https://bccampus.github.io/edehr/instructor/">Instructor guide</a>
+        </li>
+      </ul>
 </template>
 
 <style lang="scss" scoped>
