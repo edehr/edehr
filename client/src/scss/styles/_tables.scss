@@ -1,18 +1,26 @@
-table {
+table,
+.table {
   margin-bottom: 2em;
   th {
     border-bottom: 2px solid $grey20;
     font-size: 1.25em;
     padding: 0.5em 0.5em 0.5em 0;
   }
+  th,
+  .content table thead th,
+  .column_label {
+    color: $grey60;
+    font-size: 1em;
+  }
   tr {
     border-bottom: 1px solid $grey20;
     font-size: $bodyFontSize;
   }
   th, td {
-    padding: 0.5em 1em 0.5em 0 !important;
+    padding: 0.5em 1em 0.5em 0;
 
-    &:last-child {
+    &:last-child,
+    &.actions {
       padding-right: 0;
     }
   }
@@ -33,13 +41,6 @@ table {
 
 .accordion table {
   margin-bottom: 0;
-}
-
-th,
-.content table thead th,
-.column_label {
-  color: $grey60;
-  font-size: 1em;
 }
 
 .column_table {
