@@ -10,5 +10,3 @@ public directory when the documentation is published.
 
 To publish the documentation to the publicly available Github pages repository run the ```docDeploy.sh``` script
 in the root directory of this project.
-
-Public docs are available here [https://bccampus.github.io/edehr/](hhttps://bccampus.github.io/edehr/)

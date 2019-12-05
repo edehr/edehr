@@ -12,9 +12,6 @@ A stakeholder group formed by individuals from from BCIT, Douglas College, UBC, 
 
 The EdEHR experience is broken down into the following three areas:
 
-## Documentation
-
-Public docs are available here [https://bccampus.github.io/edehr/](hhttps://bccampus.github.io/edehr/)
 
 ### Learning management system
 
