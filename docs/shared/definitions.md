@@ -17,11 +17,17 @@ See [Tool URL](#tool-url).
 ## Application navigation
 The horizontal navigation bar at the top of all screens within the EdEHR software. It appears for all users, although each user type has a different set of links that they are able to access from it.
 
+## Class list
+A list of students that have accessed the related assignment within the EdEHR.
+
 ## Consumer key and secret
 Two pieces of data that are unique to each LMS and act like a special password to allow the LMS to send data to the EdEHR securely.
 
 ## Course
 A course is a container in which a instructor will add resources and [activities](#activity) for their students to complete.
+
+## Course designer functionality
+The name of a checkbox that allows a course designer to access their admin screens while in the instructor view of the EdEHR.
 
 ## Courseware
 Software designed for use in an educational or training program. The EdEHR is an example of courseware.
@@ -37,6 +43,9 @@ The left side navigation bar with links to each of the pages contained within th
 
 ## Electronic Health Records (EHR)
 The EdEHR software is described in two parts - Dashboard and EHR. The EHR represents a steamlined professional EHR experience for students to use to complete assignments. It is seen below the [application navigation](#application-navigation) and [evaluation panel](#evaluation-panel). 
+
+## Evaluation notes
+The EdEHR is equipped to allow instructors to leave general evaluation notes for the entire assignment. There is no functionality to give an explicit grade to students at this time.
 
 ## Evaluation panel
 The area under the application navigation that is used by instructors to add evaluation notes and viewed by students to receive evaluation notes.
