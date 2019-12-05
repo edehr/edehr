@@ -10,7 +10,7 @@ Moodle and the EdEHR must be installed and running prior to configuration.
 ## Tips before you get started
 
 - When creating names, descriptions, IDs or any other kind of data, try to follow a convention will make this data easy to understand and maintain.
-- Some of the following steps may have already been completed or you may not want to configure for your assignment. Those iteks are marked *OPTIONAL* .
+- Some of the following steps may have already been completed or you may not want to configure for your assignment. Those items are marked *OPTIONAL* .
 
 ## Connect Moodle to the EdEHR
 
