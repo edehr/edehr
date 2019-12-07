@@ -1,9 +1,16 @@
-## <Task title>
+---
+name: Small task template
+about: A task to support a larger issue
+title: ''
+labels: "~Task"
+assignees: ''
 
-<brief description>
+---
 
-## Related to issue
-This task is related to issue <insert number>
+## Task
+To support issue #______
+we will ______________
+because  _________________
 
 ## Details
 - step 1
