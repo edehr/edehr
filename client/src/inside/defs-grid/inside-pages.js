@@ -140,7 +140,7 @@ module.exports = function () {
       path: '/ehr/current/assessments',
       routeName: 'cardiovascular',
       pageDataKey: 'cardiovascular',
-      label: 'Cardiovascular',
+      label: 'Cardiovascular assessment',
       redirect: '',
       generateComponent: 'yes'
     },
@@ -148,7 +148,7 @@ module.exports = function () {
       path: '/ehr/current/assessments',
       routeName: 'gastrointestinal',
       pageDataKey: 'gastrointestinal',
-      label: 'Gastrointestinal',
+      label: 'Gastrointestinal assessment',
       redirect: '',
       generateComponent: 'yes'
     },
@@ -180,7 +180,7 @@ module.exports = function () {
       path: '/ehr/current/assessments',
       routeName: 'biopsychosocial',
       pageDataKey: 'biopsychosocial',
-      label: 'Biopsychosocial',
+      label: 'Biopsychosocial assessment',
       redirect: '',
       generateComponent: 'yes'
     },
@@ -365,6 +365,14 @@ module.exports = function () {
       routeName: 'test-table',
       pageDataKey: 'testTable',
       label: 'Test Table',
+      redirect: '',
+      generateComponent: 'yes'
+    },
+    {
+      path: '/ehr/current/assessments',
+      routeName: 'wound',
+      pageDataKey: 'wound',
+      label: 'Wound',
       redirect: '',
       generateComponent: 'yes'
     }

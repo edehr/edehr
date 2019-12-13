@@ -16,12 +16,12 @@
 {path: /ehr/current}	{routeName: assessments}	eCell	{label: Assessments}	{redirect: neurological}	eCell
 {path: /ehr/current/assessments}	{routeName: neurological}	{pageDataKey: neurological}	{label: Neurological assessment}	{redirect: }	{generateComponent: yes}
 {path: /ehr/current/assessments}	{routeName: respiratory}	{pageDataKey: respiratory}	{label: Respiratory assessment}	{redirect: }	{generateComponent: yes}
-{path: /ehr/current/assessments}	{routeName: cardiovascular}	{pageDataKey: cardiovascular}	{label: Cardiovascular}	{redirect: }	{generateComponent: yes}
-{path: /ehr/current/assessments}	{routeName: gastrointestinal}	{pageDataKey: gastrointestinal}	{label: Gastrointestinal}	{redirect: }	{generateComponent: yes}
+{path: /ehr/current/assessments}	{routeName: cardiovascular}	{pageDataKey: cardiovascular}	{label: Cardiovascular assessment}	{redirect: }	{generateComponent: yes}
+{path: /ehr/current/assessments}	{routeName: gastrointestinal}	{pageDataKey: gastrointestinal}	{label: Gastrointestinal assessment}	{redirect: }	{generateComponent: yes}
 {path: /ehr/current/assessments}	{routeName: genitourinary}	{pageDataKey: genitourinary}	{label: Genitourinary assessment}	{redirect: }	{generateComponent: yes}
 {path: /ehr/current/assessments}	{routeName: musculoskeletal}	{pageDataKey: musculoskeletal}	{label: Musculoskeletal assessment}	{redirect: }	{generateComponent: yes}
 {path: /ehr/current/assessments}	{routeName: pain}	{pageDataKey: pain}	{label: Pain assessment}	{redirect: }	{generateComponent: yes}
-{path: /ehr/current/assessments}	{routeName: biopsychosocial}	{pageDataKey: biopsychosocial}	{label: Biopsychosocial}	{redirect: }	{generateComponent: yes}
+{path: /ehr/current/assessments}	{routeName: biopsychosocial}	{pageDataKey: biopsychosocial}	{label: Biopsychosocial assessment}	{redirect: }	{generateComponent: yes}
 {path: /ehr/current}	{routeName: no-med}	eCell	{label: Non-medication orders}	{redirect: no-med-orders}	eCell
 {path: /ehr/current/no-med}	{routeName: no-med-orders}	{pageDataKey: nonmedOrders}	{label: Orders}	{redirect: }	{generateComponent: yes}
 {path: /ehr/current/no-med}	{routeName: referrals}	{pageDataKey: referrals}	{label: Referrals to other disciplines}	{redirect: }	{generateComponent: yes}
@@ -46,3 +46,4 @@
 {path: /ehr/external}	{routeName: case-mix-group}	{pageDataKey: caseMixGroup}	{label: Case mix group}	{redirect: }	{generateComponent: yes}
 {path: /ehr/external}	{routeName: test-page}	{pageDataKey: testPage}	{label: Test Page}	{redirect: }	{generateComponent: yes}
 {path: /ehr/external}	{routeName: test-table}	{pageDataKey: testTable}	{label: Test Table}	{redirect: }	{generateComponent: yes}
+{path: /ehr/current/assessments}	{routeName: wound}	{pageDataKey: wound}	{label: Wound}	{redirect: }	{generateComponent: yes}

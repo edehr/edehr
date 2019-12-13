@@ -3,13 +3,13 @@
   div(class="ehr-page")
     ehr-page(:pageDataKey="pageDataKey", :ehrHelp="ehrHelp")
     div(style="display:none")
-      p This Biopsychosocial page is generated.
-      p Label: Biopsychosocial assessment
-      p Data Key: biopsychosocial
-      p Component name: Biopsychosocial
+      p This Wound page is generated.
+      p Label: Wound
+      p Data Key: wound
+      p Component name: Wound
       p Redirect: 
-      p Route name: biopsychosocial
-      p Full path: /ehr/current/assessments/biopsychosocial
+      p Route name: wound
+      p Full path: /ehr/current/assessments/wound
 </template>
 
 <script>
@@ -17,11 +17,11 @@ import EhrPage from '../components/page/EhrPage'
 import EhrHelpV2 from '../components/page/ehr-helper'
 
 export default {
-  name: 'Biopsychosocial',
+  name: 'Wound',
   components: { EhrPage },
   data: function () {
     return {
-      pageDataKey: 'biopsychosocial',
+      pageDataKey: 'wound',
       ehrHelp: undefined
     }
   },
