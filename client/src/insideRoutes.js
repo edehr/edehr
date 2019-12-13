@@ -132,14 +132,14 @@ export function inside () {
       name: 'cardiovascular',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/Cardiovascular.vue'),
-      meta: { layout: 'inside', label: 'Cardiovascular', topLevel: 'current' }
+      meta: { layout: 'inside', label: 'Cardiovascular assessment', topLevel: 'current' }
     },
     {
       path: '/ehr/current/assessments/gastrointestinal',
       name: 'gastrointestinal',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/Gastrointestinal.vue'),
-      meta: { layout: 'inside', label: 'Gastrointestinal', topLevel: 'current' }
+      meta: { layout: 'inside', label: 'Gastrointestinal assessment', topLevel: 'current' }
     },
     {
       path: '/ehr/current/assessments/genitourinary',
@@ -167,7 +167,7 @@ export function inside () {
       name: 'biopsychosocial',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/Biopsychosocial.vue'),
-      meta: { layout: 'inside', label: 'Biopsychosocial', topLevel: 'current' }
+      meta: { layout: 'inside', label: 'Biopsychosocial assessment', topLevel: 'current' }
     },
     {
       path: '/ehr/current/no-med',
@@ -336,6 +336,13 @@ export function inside () {
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/TestTable.vue'),
       meta: { layout: 'inside', label: 'Test Table', topLevel: 'external' }
+    },
+    {
+      path: '/ehr/current/assessments/wound',
+      name: 'wound',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/Wound.vue'),
+      meta: { layout: 'inside', label: 'Wound', topLevel: 'current' }
     }
   ]
 }

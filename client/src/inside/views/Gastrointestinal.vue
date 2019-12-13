@@ -4,7 +4,7 @@
     ehr-page(:pageDataKey="pageDataKey", :ehrHelp="ehrHelp")
     div(style="display:none")
       p This Gastrointestinal page is generated.
-      p Label: Gastrointestinal
+      p Label: Gastrointestinal assessment
       p Data Key: gastrointestinal
       p Component name: Gastrointestinal
       p Redirect: 

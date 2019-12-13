@@ -4,7 +4,7 @@
     ehr-page(:pageDataKey="pageDataKey", :ehrHelp="ehrHelp")
     div(style="display:none")
       p This Cardiovascular page is generated.
-      p Label: Cardiovascular
+      p Label: Cardiovascular assessment
       p Data Key: cardiovascular
       p Component name: Cardiovascular
       p Redirect: 
