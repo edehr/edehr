@@ -3,8 +3,7 @@
     div(v-if="isEvaluated", class="EhrContextBanner")
       div(class="EhrPanelContent")
         h3 {{ panelInfo.courseTitle}} - {{ panelInfo.assignmentName}}
-        p Student (This is temp. For dev only): {{ panelInfo.studentName }}
-        p {{ panelInfo.instructorName }}
+        p Student: {{ userName }}
         p Evaluation: {{ evaluationNotes }}
 </template>
 
@@ -15,24 +14,12 @@ export default {
   name: 'EhrContextStudent',
   components: { UiInfo },
   computed: {
-    scratchData () {
-      let ad = this.panelInfo.activityData
-      return ad.scratchData
-    },
-    submitted () {
-      let ad = this.panelInfo.activityData
-      return ad.submitted
-    },
-    isEvaluated () {
-      return this.panelInfo.activityData.evaluated
-    },
-    evaluationNotes () {
-      let ad = this.panelInfo.activityData
-      return ad.evaluated  ? ad.evaluationData : 'Not available'
-    },
-    panelInfo () {
-      return StoreHelper.getPanelData(this)
-    }
+    userName ()         { return this.panelInfo.userName },
+    scratchData ()      { return this.panelInfo.scratchData },
+    submitted ()        { return this.panelInfo.submitted },
+    isEvaluated ()      { return this.panelInfo.evaluated },
+    evaluationNotes ()  { return this.panelInfo.evaluationData },
+    panelInfo ()        { return StoreHelper.getPanelData(this) }
   },
   methods: {}
 }

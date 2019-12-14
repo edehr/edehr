@@ -5,7 +5,7 @@
     div(class="EhrContextBanner EhrPanelContent")
       div(class="EhrPanelContent_Inner")
         div(class="context-header columns", v-on:click="toggleShow")
-            h3(class="header-item", :title="panelInfo.courseTitle") {{ panelInfo.courseTitle }}
+            h3(class="header-item", :title="title") {{ title }}
             div(class="icon-group")
               fas-icon(icon="plus", v-show="!show") 
               fas-icon(icon="minus", v-show="show")
@@ -31,17 +31,20 @@ export default {
     }
   },
   computed: {
+    title () {
+      return StoreHelper.isDevelopingContent() ? 'Edit seed' :StoreHelper.getCourseTitle()
+    },
     panelInfo () {
-      return StoreHelper.getPanelData(this)
+      return StoreHelper.getPanelData()
     },
     showStudent () {
-      return StoreHelper.isStudent(this)
+      return StoreHelper.isStudent()
     },
     showInstructor () {
-      return StoreHelper.isInstructor(this) && !StoreHelper.isDevelopingContent(this)
+      return StoreHelper.isInstructor() && !StoreHelper.isDevelopingContent()
     },
     showSeeding () {
-      return StoreHelper.isDevelopingContent(this)
+      return StoreHelper.isDevelopingContent()
     }
   },
   methods: {

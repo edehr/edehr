@@ -1,11 +1,17 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import visit from './modules/visit'
+import activityStore from './modules/activityStore'
+import activityDataStore from './modules/activityDataStore'
+import assignmentStore from './modules/assignmentStore'
+import assignmentListStore from './modules/assignmentListStore'
+import classListStore from './modules/classListStore'
+import consumerStore from './modules/consumerStore'
+import ehrDataStore from './modules/ehrDataStore'
 import instructor from './modules/instructor'
-import assignment from './modules/assignment'
-import ehrData from './modules/ehrData'
+import seedListStore from './modules/seedListStore'
 import system from './modules/system'
-import seedStore from './modules/seedStore'
+import userStore from './modules/userStore'
+import visit from './modules/visit'
 // import createLogger from 'vuex/dist/logger'
 
 Vue.use(Vuex)
@@ -14,12 +20,18 @@ const debug = process.env.NODE_ENV !== 'production'
 
 export default new Vuex.Store({
   modules: {
-    visit,
+    activityStore,
+    activityDataStore,
+    assignmentListStore,
+    assignmentStore,
+    classListStore,
+    consumerStore,
+    ehrDataStore,
     instructor,
-    assignment,
+    seedListStore,
     system,
-    ehrData,
-    seedStore
+    userStore,
+    visit,
   },
   strict: debug,
   // Uncomment to enable a log of all storage transistions

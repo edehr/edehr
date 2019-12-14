@@ -10,6 +10,8 @@
 
 <script>
 import UiButton from '../../app/ui/UiButton'
+import StoreHelper from '../../helpers/store-helper'
+
 export default {
   name: 'EhrEvaluationInput',
   components: { UiButton },
@@ -30,8 +32,7 @@ export default {
       return !(this.enableActions && this.enableNext)
     },
     asStoredEvaluationNotes () {
-      // console.log('EhrEvaluationInput computed asStoredEvaluationNotes')
-      return this.$store.getters['ehrData/evaluationData']
+      return StoreHelper.getEvaluationNotes()
     }
   },
   mounted: function (){
@@ -50,14 +51,14 @@ export default {
     },
     loadDialog: function () {
       /* restore the data to what is in the db. */
-      this.setNotes(this.$store.getters['ehrData/evaluationData'])
+      this.setNotes(StoreHelper.getEvaluationNotes())
     },
     cancelEvaluationNotes: function () {
       this.loadDialog() // reset the data for next time
       this.$emit('canceled')
     },
     saveEvaluationNotes: function (event) {
-      this.$store.dispatch('ehrData/sendEvaluationNotes', this.theNotes).then(() => {
+      return StoreHelper.saveEvaluationNotes(this.theNotes).then(() => {
         this.$emit(event)
       })
     }

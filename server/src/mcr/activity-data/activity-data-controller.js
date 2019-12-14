@@ -45,7 +45,7 @@ export default class ActivityDataController extends BaseController {
    * @return {*}
    */
   updateScratchData (id, data) {
-    debug(`ActivityData update ${id} scratch data [${data}]`)
+    debug(`ActivityData update ${id} scratch data [${JSON.stringify(data)}]`)
     var value = data.value
     return this.baseFindOneQuery(id).then(activityData => {
       if (activityData) {

@@ -8,7 +8,6 @@
 import CourseList from '../components/CourseList'
 
 export default {
-  name: 'Instructor',
   components: {
     CourseList
   }

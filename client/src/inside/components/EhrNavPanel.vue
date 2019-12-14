@@ -11,6 +11,7 @@ import UiButton from '../../app/ui/UiButton.vue'
 import EhrNavList from './EhrNavList'
 import EhrNavPanelAction from './EhrNavPanelAction'
 import EhrScratchPad from '../components/EhrScratchPad'
+import StoreHelper from '../../helpers/store-helper'
 
 
 export default {
@@ -33,8 +34,7 @@ export default {
   },
   provide: {
     pageDataList () {
-      let hasDataForPagesList = this.$store.getters['ehrData/hasDataForPagesList']
-      return hasDataForPagesList
+      return StoreHelper.getHasDataForPagesList()
     }
   }
 }

@@ -1,15 +1,23 @@
 const state = {
   isSeeding: false,
-  isLoading: false,
+  _isLoading: false,
   isEditing: false,
-  isShowingAdvanced: false,
+  _isShowingAdvanced: false,
   currentPageKey: '',
   loadingCnt: 0,
   apiError: '',
   sysMessage: ''
 }
 
-const getters = {}
+const getters = {
+  isLoading: state => {
+    return state._isLoading
+  },
+  isShowingAdvanced: state => {
+    return state._isShowingAdvanced
+  },
+
+}
 
 const actions = {}
 
@@ -20,13 +28,13 @@ const mutations = {
     } else {
       state.loadingCnt--
     }
-    state.isLoading = state.loadingCnt > 0
+    state._isLoading = state.loadingCnt > 0
   },
   setEditing: (state, isEditing) => {
     state.isEditing = isEditing
   },
   setShowingAdvanced: (state, isEditing) => {
-    state.isShowingAdvanced = isEditing
+    state._isShowingAdvanced = isEditing
   },
   setSeeding: (state, isSeeding) => {
     state.isSeeding = isSeeding

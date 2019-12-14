@@ -32,7 +32,7 @@
           td
             ui-button(v-on:buttonClicked="showEditDialog", :value="item._id")
               fas-icon(icon="edit") Edit assignment properties
-    assignments-dialog(ref="theDialog", @save="load")
+    assignments-dialog(ref="theDialog")
 </template>
 
 <script>
@@ -48,17 +48,17 @@ export default {
   data () {
     return {
       isRespondingToError: null,
-      assignmentsListing: []
     }
   },
   components: { AssignmentsDialog, UiButton, UiLink, BreadCrumb },
   computed: {
     isDevelopingContent () {
-      return StoreHelper.isDevelopingContent(this)
+      return StoreHelper.isDevelopingContent()
     },
     activity () {
-      return StoreHelper.getCurrentActivity(this)
-    }
+      return {custom_assignment:'This error handling feature is a work in progress'}
+    },
+    assignmentsListing () { return StoreHelper.getAssignmentsList()}
   },
 
   methods: {
@@ -91,31 +91,13 @@ export default {
     showCreateDialog: function () {
       this.$refs.theDialog.showDialog()
     },
-    load: function () {
-      // force the reactive system to see the change to this listing.
-      this.assignmentsListing=[]
-      StoreHelper.loadAssignmentAndSeedLists(this)
-        .then( () => {
-          let sdList = StoreHelper.getSeedDataList(this)
-          let assList = StoreHelper.getAssignmentsList(this)
-          assList.forEach(ass => {
-            ass.seedDataObj = {}
-            if (ass.seedDataId) {
-              let sd = sdList.find(sd => {
-                return sd._id === ass.seedDataId
-              })
-              ass.seedDataObj = sd || {}
-            }
-          })
-          this.assignmentsListing = assList
-        })
-
-    }
   },
   mounted: function () {
+    // TODO BG thinks this needs to be testes. Create a LMS activity with invalid external id.
+    // Need to give error to user. Does this do it?
     let params2 = getIncomingParams()
     this.isRespondingToError = params2['error']
-    this.load()
+    StoreHelper.loadAssignmentList()
   }
 }
 </script>

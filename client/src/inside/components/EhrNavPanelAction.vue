@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     npButtonClicked () {
-      if (this.ehrAction.navPanelActionNeedsConfirmation() ) {
+      if (this.ehrAction.isUnsubmittedStudent() ) {
         let opts = this.ehrAction.navPanelActionConfirmOptions()
         this.$refs.confirmDialog.showDialog(opts.title, opts.msg)
       } else {

@@ -1,7 +1,7 @@
 <template lang="pug">
   div(id="seedDataList", class="seedData-list")
     h1 Manage seed data
-    div
+    div(v-show="isDevelopingContent")
       ui-button(v-on:buttonClicked="showCreateDialog") Create new seed
       ui-button(v-on:buttonClicked="downloadAll") Download all
     div(class="seedData-list-body")
@@ -27,7 +27,7 @@
                   ui-link(:name="'assignments'", :params="{assignmentId: assignment._id}") {{ assignment.name }}
 
               // td {{sv._id}}
-              td(v-if="!sv.isDefault",class="seed-actions")
+              td(v-if="isDevelopingContent && !sv.isDefault",class="seed-actions")
                ui-button(v-on:buttonClicked="uploadSeed(sv)", v-bind:secondary="true") Upload
                ui-button(v-on:buttonClicked="downloadSeed(sv)", , v-bind:secondary="true", class="dwn") Download
                ui-button(v-on:buttonClicked="showEditDialog(sv)", v-bind:secondary="true") Edit description
@@ -75,7 +75,10 @@ export default {
   props: {},
   computed: {
     seedDataList () {
-      return StoreHelper.getSeedDataList(this)
+      return StoreHelper.getSeedDataList()
+    },
+    isDevelopingContent () {
+      return StoreHelper.isDevelopingContent()
     },
   },
   methods: {
@@ -100,9 +103,6 @@ export default {
         pages = keys.join(', ')
       }
       return pages
-    },
-    loadSeedDataList () {
-      StoreHelper.loadAssignmentAndSeedLists(this)
     },
     uploadSeed (sv) {
       this.seedId = sv._id
@@ -140,19 +140,18 @@ export default {
       downloadSeedToFile(this.seedId, sSeedContent, data)
     },
     downloadAll () {
-      StoreHelper.loadSeedLists(this)
-        .then ( (sdList) => {
-          let filtered = sdList[0].filter( (seed) => !seed.isDefault)
-          downObjectToFile('EdEHR-seed-list.json', filtered)
-        })
+      let sdList = this.seedDataList
+      // console.log('Download all seeds starting with list', sdList)
+      let filtered = sdList.filter( (seed) => !seed.isDefault)
+      // console.log('Download filtered', filtered)
+      downObjectToFile('EdEHR-seed-list.json', filtered)
     },
     gotoEhrWithSeed (sv) {
       const _this = this
       this.seedId = sv._id
-      // console.log('gotoEhrWithSeed with seed id', this.seedId)
-      this.$store.commit('seedStore/setSeedId', this.seedId)
-      // console.log('loadSeedContent', this.seedId)
-      return this.$store.dispatch('seedStore/loadSeedContent')
+      // NB StoreHelper.isDevelopingContent === true
+      // Here is where the user starts editing a seed.
+      return StoreHelper.loadSeed(sv._id)
         .then(() => {
           // console.log('route to demographics page with seed', this.seedId)
           _this.$router.push({ name: 'demographics' })
@@ -165,9 +164,6 @@ export default {
     showCreateDialog: function () {
       this.$refs.theDialog.showDialog()
     }
-  },
-  mounted: function () {
-    this.loadSeedDataList()
   }
 }
 </script>

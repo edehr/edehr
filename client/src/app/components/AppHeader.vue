@@ -32,9 +32,9 @@ export default {
   },
   computed: {
     home () {
-      let isStudent = this.$store.getters['visit/isStudent']
-      let isDevelopingContent = this.$store.state.visit.isDevelopingContent
-      let isInstructor = this.$store.getters['visit/isInstructor']
+      let isStudent = StoreHelper.isStudent()
+      let isDevelopingContent = StoreHelper.isDevelopingContent()
+      let isInstructor = StoreHelper.isInstructor()
       let home = isStudent
         ? 'demographics'
         : isInstructor
@@ -48,10 +48,10 @@ export default {
       return StoreHelper.fullName(this)
     },
     lmsUrl () {
-      return StoreHelper.lmsUrl(this)
+      return StoreHelper.lmsUrl()
     },
     lmsName () {
-      return StoreHelper.lmsName(this)
+      return StoreHelper.lmsName()
     },
     isInstructor () {
       return StoreHelper.isInstructor(this)

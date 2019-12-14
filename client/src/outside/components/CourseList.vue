@@ -15,7 +15,7 @@ export default {
   },
   computed: {
     courses () {
-      return StoreHelper.getCourseList(this)
+      return StoreHelper.getCourseList()
     }
   }
 }

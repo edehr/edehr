@@ -1,16 +1,15 @@
 <template lang="pug">
   div
     div(class="activities", v-for="(activity, index) in activities")
-      activity(:activityId="activity._id", :index="index")
+      activity-list-item(:activityId="activity._id", :index="index")
 </template>
 
 <script>
-import Activity from './Activity'
+import ActivityListItem from './ActivityListItem'
 
 export default {
-  name: 'ActivityList',
   components: {
-    Activity
+    ActivityListItem
   },
   props: {
     activities: {type: Array}

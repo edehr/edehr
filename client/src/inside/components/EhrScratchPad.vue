@@ -1,14 +1,15 @@
 <template lang="pug">
   div(:class="$options.name")
+
     div(:class="`${$options.name}__bottom`")
       ui-button(v-on:buttonClicked="showDialog", :class="`${$options.name}__button`", 
 
       v-bind:secondary="true") 
         fas-icon(class="icon-left", icon="sticky-note") 
-        span Scratch pad
+        span Private scratch pad for {{userName}}
 
     app-dialog(:isModal="false", ref="theDialog", @cancel="cancelDialog", @save="saveDialog")
-      h2(slot="header") Your private notes
+      h2(slot="header") Private notes for {{userName}}
       div(slot="body")
         div
           div(class="input-fieldrow")
@@ -19,6 +20,7 @@
 <script>
 import AppDialog from '../../app/components/AppDialogShell'
 import UiButton from '../../app/ui/UiButton.vue'
+import StoreHelper from '../../helpers/store-helper'
 
 export default {
   name: 'EhrScratchPad',
@@ -32,9 +34,14 @@ export default {
       theNotes: ''
     }
   },
+  computed: {
+    userName () {
+      return StoreHelper.fullName()
+    }
+  },
   methods: {
     resetNotes: function () {
-      let sp = this.$store.getters['ehrData/scratchData']
+      let sp = StoreHelper.getStudentScratchData()
       console.log('EhrScratchPad reset with existing ', sp)
       this.theNotes = sp
     },
@@ -49,7 +56,7 @@ export default {
     saveDialog: function () {
       this.$refs.theDialog.onClose()
       console.log('EhrScratchPad saving ', this.theNotes)
-      this.$store.dispatch('ehrData/sendScratchData', this.theNotes)
+      this.$store.dispatch('activityDataStore/sendScratchData', this.theNotes)
     }
   }
 }

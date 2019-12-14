@@ -1,112 +1,74 @@
-import axios from 'axios' // '../node_modules/axios/dist/axios.min'
-import { setApiError } from '../../helpers/ehr-utils'
+import InstoreHelper from './instoreHelper'
+import sKeys from '../../helpers/session-keys'
+const API = 'visits'
+const NAME = 'Visit'
+const debug = false
+
+function getIsDeving () {
+  let sVal = sessionStorage.getItem(sKeys.IS_DEVING) || ''
+  let result = sVal === 'true'
+  if(debug) console.log('visit get getIsDeving sVal: "'+ result +'"')
+  return result
+}
 
 const state = {
   apiUrl: '',
-  sUserInfo: {},
-  visitId: '',
-  sVisitInfo: {},
-  isLoggedIn: !!sessionStorage.getItem('token'),
+  // visitId: '',
+  sVisitData: {},
+  // sVisitInfo: {},
+  isLoggedIn: !!sessionStorage.getItem(sKeys.USER_TOKEN),
   topLevelMenu: '',
-  isDevelopingContent: false
+  _isDevelopingContent: getIsDeving()
 }
 
 const getters = {
   isInstructor: state => {
-    return state.sVisitInfo.isInstructor
+    return state.sVisitData.isInstructor
   },
   isDeveloper: state => {
-    return state.sVisitInfo.isDeveloper
+    return state.sVisitData.isDeveloper
   },
   hasDashboard: state => {
-    var vi = state.sVisitInfo
+    let vi = state.sVisitData
     return vi ? vi.isInstructor || vi.isDeveloper : false
   },
   isStudent: state => {
-    return state.sVisitInfo.isStudent
+    return state.sVisitData.isStudent
   },
-  lmsName: state => {
-    if (state.sVisitInfo && state.sVisitInfo.toolConsumer) {
-      return state.sVisitInfo.toolConsumer.tool_consumer_instance_name
-    }
-    return ''
+  isDevelopingContent: state => {
+    // let sessVal = getIsDeving()
+    let stVal = state._isDevelopingContent
+    if(debug) console.log('VisitStore isDeving state._isDevelopingContent', stVal)
+    return stVal
   },
   returnUrl: state => {
-    var vi = state.sVisitInfo
-    return vi ? vi.returnUrl : ''
+    let prop =  state.sVisitData.returnUrl
+    if(debug) console.log(NAME + ' get returnUrl', prop)
+    return prop
   },
-  fullName: state => {
-    let info = state.sUserInfo
-    let name = info ? info.fullName : ''
-    return name
+  lastUpdateDate: state => {
+    // unlike other models this one's update field is called lastVisitDate
+    let prop =  state.dataStore.lastVisitDate
+    if(debug) console.log(NAME + ' get lastUpdateDate', prop)
+    return prop
   },
-  username: (state, getters, rootState) => {
-    let info = rootState.sUserInfo
-    let name = info ? info.givenName : ''
-    return name
-  }
 }
 
 const actions = {
-  loadVisitInfo (context, visitId) {
-    // console.log('loadVisitInfo')
-    return new Promise((resolve, reject) => {
-      var apiUrl = context.state.apiUrl
-      let url = apiUrl + '/visits/flushed/' + visitId
-      // console.log('In load page ', url)
-      function invalid (msg) {
-        // console.error('INVALID LoadVisit', msg)
-        setApiError(msg)
-        reject(new Error(msg))
+  loadVisit2 (context, visitId) {
+    let url = 'get/' + visitId
+    if(debug) console.log('loadVisit api call ', url)
+    return InstoreHelper.getRequest(context, API, url).then(response => {
+      if(debug) console.log('loadVisit what is the response? ', response.data)
+      let visitInfo = response.data
+      if (!visitInfo || ! visitInfo.visit) {
+        return invalid('ERROR No visit information for ' + visitId)
       }
-      axios
-        .get(url)
-        .then(response => {
-          // console.log('what is the response? ', response.data)
-          let visitInfo = response.data
-          if (!visitInfo) {
-            return invalid('ERROR No visit information for ' + visitId)
-          }
-          if (!visitInfo.user) {
-            return invalid('ERROR.  No user information for ' + visitId)
-          }
-          if (!visitInfo.activity) {
-            return invalid('ERROR.  No activity information for ' + visitId)
-          }
-          if (!visitInfo.assignment) {
-            return invalid('ERROR.  No assignment information for ' + visitId)
-          }
-          if (!visitInfo.activityData) {
-            return invalid('ERROR.  No activity data information for ' + visitId)
-          }
-          sessionStorage.setItem('token', visitId)
-          context.commit('setVisitInfo', visitInfo)
-          context.commit('setUserInfo', visitInfo.user)
-
-          let a_id = visitInfo.assignment._id
-          // visitInfo.activityData contains the id of the ActivityData record
-          let ad_id = visitInfo.activityData
-          // console.log('dispatch load active data and assignment', ad_id)
-          // console.log('load visit a_id, ad_id, visitInfo', a_id, ad_id, visitInfo)
-          let options = { root: true }
-          return Promise.all([
-            context.dispatch('ehrData/loadActivityData', { forStudent: true, id: ad_id }, options),
-            context.dispatch('assignment/loadAssignment', a_id, options)
-          ]).then(() => {
-            // console.log('after dispatch load active data, and assignment', ad_id)
-            resolve()
-          })
-        })
-        .catch(error => {
-          console.log('loadVisitInfo - error')
-          console.log('error.message', error.message)
-          console.log('error.code', error.code) // Not always specified
-          console.log('error.config', error.config) // The config that was used to make the request
-          console.log('error.response', error.response) // Only available if response was received from the server
-          return invalid(error.message)
-        })
+      if(debug) console.log('loadVisit what is the visitInfo? ', visitInfo.visit)
+      context.commit('setVisitData', visitInfo.visit)
     })
   },
+
   routeEnter ({ commit }) {
     commit('routeEnter')
   }
@@ -114,30 +76,31 @@ const actions = {
 
 const mutations = {
   apiUrl: (state, url) => {
-    // console.log('visit store set api url ' + url)
-    sessionStorage.setItem('apiUrl', url)
+    if(debug) console.log('visit store set api url ' + url)
+    sessionStorage.setItem(sKeys.API_URL, url)
     state.apiUrl = url
   },
   setIsDevelopingContent: (state, value) => {
-    // console.log('setIsDevelopingContent', value)
-    sessionStorage.setItem('isDevelopingContent', value)
-    state.isDevelopingContent = value
+    if(debug) console.log('setIsDevelopingContent isDeving', value)
+    // This value needs to survive a browser refresh so make the source of truth the session storage
+    if (value) {
+      sessionStorage.setItem(sKeys.IS_DEVING, value)
+    } else {
+      sessionStorage.removeItem(sKeys.IS_DEVING)
+    }
+    state._isDevelopingContent = value
   },
-  setVisitInfo: (state, info) => {
-    // console.log('visit store set visit info ' + info._id)
-    state.sVisitInfo = info
-  },
-  setUserInfo: (state, info) => {
-    // console.log('visit store set user info ' + info._id)
-    state.sUserInfo = info
+  setVisitData: (state, info) => {
+    if(debug) console.log('visit store setVisitData ', info)
+    state.sVisitData = info
   },
   routeEnter: state => {
-    // console.log('mutation route enter found token ', token)
-    var token = sessionStorage.getItem('token')
+    if(debug) console.log('mutation route enter found token ', token)
+    let token = sessionStorage.getItem(sKeys.USER_TOKEN)
     state.isLoggedIn = !!token
   },
   topLevelMenu: (state, top) => {
-    // console.log('visit store top level menu ' + (top ? top : 'empty'))
+    if(debug) console.log('visit store top level menu ' + (top ? top : 'empty'))
     state.topLevelMenu = top
   }
 }

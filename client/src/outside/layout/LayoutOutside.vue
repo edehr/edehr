@@ -44,31 +44,30 @@ export default {
   watch: {
     developContent: function () {
       // when the model changes due to user action in the UI or in the next method update the store
-      console.log('LayoutOutside watch developContent', this.developContent)
-      StoreHelper.setIsDevelopingContent(this, this.developContent)
+      // console.log('LayoutOutside watch isDeving developContent', this.developContent)
+      StoreHelper.setIsDevelopingContent( this.developContent)
     },
     isDevelopingContent: function () {
-      // console.log('LayoutOutside watch isDevelopingContent', this.isDevelopingContent)
+      // console.log('LayoutOutside watch isDeving isDevelopingContent', this.isDevelopingContent)
       this.developContent = this.isDevelopingContent
     },
     showingSpecial: function (flag) {
-      this.$store.commit('system/setShowingAdvanced', flag)
+      StoreHelper.setShowAdvanced(flag)
     }
   },
   computed: {
     isDevelopingContent () {
-      return StoreHelper.isDevelopingContent(this)
+      return StoreHelper.isDevelopingContent()
     },
     isDeveloper () {
-      return StoreHelper.isDeveloper(this)
+      return StoreHelper.isDeveloper()
     },
     isLoading () {
-      return this.$store.state.system.isLoading
+      return StoreHelper.isLoading()
     }
   },
   mounted: function () {
-    // when mounted initialize the local model
-    console.log('LayoutOutside mounted, isDevelopingContent', this.isDevelopingContent)
+    // console.log('LayoutOutside mounted, isDeving isDevelopingContent', typeof this.isDevelopingContent)
     this.developContent = this.isDevelopingContent
   }
 }
