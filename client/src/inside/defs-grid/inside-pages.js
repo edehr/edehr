@@ -370,9 +370,9 @@ module.exports = function () {
     },
     {
       path: '/ehr/current/assessments',
-      routeName: 'wound',
-      pageDataKey: 'wound',
-      label: 'Wound',
+      routeName: 'integumentary-assessment',
+      pageDataKey: 'integumentaryAssessment',
+      label: 'Integumentary assessment',
       redirect: '',
       generateComponent: 'yes'
     }
