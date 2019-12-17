@@ -338,11 +338,11 @@ export function inside () {
       meta: { layout: 'inside', label: 'Test Table', topLevel: 'external' }
     },
     {
-      path: '/ehr/current/assessments/wound',
-      name: 'wound',
+      path: '/ehr/current/assessments/integumentary-assessment',
+      name: 'integumentary-assessment',
       component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/Wound.vue'),
-      meta: { layout: 'inside', label: 'Wound', topLevel: 'current' }
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/IntegumentaryAssessment.vue'),
+      meta: { layout: 'inside', label: 'Integumentary assessment', topLevel: 'current' }
     }
   ]
 }
