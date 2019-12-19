@@ -1,7 +1,10 @@
+import { ParameterError } from '../common/errors'
 import BaseController from '../common/base'
 import { Text }  from '../../config/text'
 import Consumer from '../consumer/consumer'
 import SeedDataController from '../seed/seedData-controller'
+import {ok, fail} from '../common/utils'
+
 
 const debug = require('debug')('server')
 const sd = new SeedDataController()
@@ -67,4 +70,26 @@ export default class ConsumerController extends BaseController {
         return null
       })
   }
+
+
+  route () {
+    const router = super.route()
+
+    router.post('/create', (req, res) => {
+      /* Create a new tool consumer with key/secret pair (the key must be unique in the system) */
+      if (!req.body) {
+        throw new ParameterError(Text.SYSTEM_REQUIRE_REQUEST_BODY)
+      }
+      const def = {
+        oauth_consumer_key: req.body.oauth_consumer_key,
+        oauth_consumer_secret: req.body.oauth_consumer_secret
+      }
+      this.createToolConsumer(def)
+        .then(ok(res))
+        .then(null, fail(res))
+    })
+
+    return router
+  }
+
 }
