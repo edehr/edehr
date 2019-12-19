@@ -16,6 +16,13 @@ export function outside () {
       meta: { layout: 'outside', label: 'ClassList', topLevel: 'undefined' }
     },
     {
+      path: '/consumers',
+      name: 'consumers',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Consumers.vue'),
+      meta: { layout: 'outside', label: 'Consumers', topLevel: 'undefined' }
+    },
+    {
       path: '/help',
       name: 'help',
       component: () =>

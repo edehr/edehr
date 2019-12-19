@@ -18,6 +18,7 @@ class StoreHelperWorker {
   _getActivityProperty (key) { return store.getters['activityStore/' + key]}
   _getAssignmentProperty (key) { return store.getters['assignmentStore/' + key]}
   _getAssignmentListProperty (key) { return store.getters['assignmentListStore/' + key]}
+  _getConsumerListProperty (key) { return store.getters['consumerListStore/' + key]}
   _getInstructorProperty (key) { return store.getters['instructor/' + key]}
   _getSeedListProperty (key) { return store.getters['seedListStore/' + key]}
   _getSystemProperty (key) { return store.getters['system/' + key]}
@@ -28,6 +29,7 @@ class StoreHelperWorker {
   _dispatchActivityData (key, payload) { return store.dispatch('activityDataStore/' + key, payload)}
   _dispatchAssignment (key, payload) { return store.dispatch('assignmentStore/' + key, payload)}
   _dispatchAssignmentList (key, payload) { return store.dispatch('assignmentListStore/' + key, payload)}
+  _dispatchConsumerList (key, payload) { return store.dispatch('consumerListStore/' + key, payload)}
   _dispatchConsumer (key, payload) { return store.dispatch('consumerStore/' + key, payload)}
   _dispatchSeedListProperty (key, payload) { return store.dispatch('seedListStore/' + key, payload)}
   _dispatchInstructor (key, payload) { return store.dispatch('instructor/' + key, payload)}
@@ -200,6 +202,20 @@ class StoreHelperWorker {
   createSeed (component, seedData) { return this._dispatchSeedListProperty('createSeedItem', seedData) }
 
   getSeedDataList () { return this._getSeedListProperty('list') }
+
+  /* ************* LMS LTI Consumers   */
+
+  getConsumersList () { return this._getConsumerListProperty('list') }
+
+  loadConsumerList () {  return this._dispatchConsumerList('loadConsumers') }
+
+  updateConsumer (consumerId, consumerData) {
+    let dataIdPlusPayload = { id: consumerId, payload: consumerData }
+    return this._dispatchConsumerList('updateConsumer', dataIdPlusPayload)
+  }
+
+  createConsumer (consumerData) { return this._dispatchConsumerList('createConsumer', consumerData) }
+
 
   /* ************* EHR Context   */
   getPanelData () {

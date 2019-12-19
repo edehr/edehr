@@ -24,6 +24,7 @@ export default class AdminController {
 
   // To skip the rest of the router’s middleware functions, call next('router') to pass control back out of the router instance.
 
+  // curl -H "Authorization: Bearer 7a6e0540-a23d-4474-80ad-c37e211f9079" http://localhost:27000/admin
   headerCheck (req) {
     let db = false
     if (!req || !req.headers || !req.headers['authorization']) {
@@ -119,27 +120,6 @@ export default class AdminController {
       console.log('in root admin get set result status 200 and send simple message')
       res.status(200).send('hello admin')
     })
-
-    router.post('/consumer/create', (req, res) => {
-      /* Create a new tool consumer with key/secret pair (the key must be unique in the system) */
-      if (!req.body) {
-        throw new ParameterError(Text.SYSTEM_REQUIRE_REQUEST_BODY)
-      }
-      const def = {
-        oauth_consumer_key: req.body.key,
-        oauth_consumer_secret: req.body.secret
-      }
-      consumer.createTool(def)
-        .then(ok(res))
-        .then(null, fail(res))
-    })
-
-    router.get('/consumer/users/:toolKey', (req, res) => {
-      this.listConsumerUsers(req.params.key)
-        .then(ok(res))
-        .then(null, fail(res))
-    })
-
 
     router.get('/reset', (req, res) => {
       console.log('in root admin reset')
