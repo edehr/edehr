@@ -406,34 +406,35 @@ Skipped}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: page}	{pRef: 32}	{Label: Discharge summary}	{elementKey: dischargeSummary}	{pN: 27}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: page_form}	eCell	eCell	{elementKey: pageForm}	{pN: 27}	{fN: 1}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	{pN: 27}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Admission day}	{elementKey: admissionDay}	{pN: 27}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Default_value: Day 0}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: textarea}	eCell	{Label: Clinical summary}	{elementKey: clinicalSummary}	{pN: 27}	{fN: 1}	{gN: 1}	{sgN: }	{formCss: grid-span-2-columns}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Data_case_study: Patient arrived with chronic COPD in acute form
+{inputType: textarea}	eCell	{Label: Discharge diagnosis}	{elementKey: dischargeDiagnosis}	{pN: 27}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: textarea}	eCell	{Label: Discharge education}	{elementKey: dischargeEducation}	{pN: 27}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: page_form}	eCell	eCell	{elementKey: pageForm2}	{pN: 27}	{fN: 2}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	eCell	{pN: 27}	{fN: 2}	{gN: 1}	{sgN: }	{formCss: grid-left-to-right-1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Admission day}	{elementKey: admissionDay}	{pN: 27}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Default_value: Day 0}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: textarea}	eCell	{Label: Clinical summary}	{elementKey: clinicalSummary}	{pN: 27}	{fN: 2}	{gN: 1}	{sgN: }	{formCss: grid-span-2-columns}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Data_case_study: Patient arrived with chronic COPD in acute form
 Previously diagnosed with hypertension
-Developed bilateral gram positive cocci pneunoma (what kind of cocci? Need a lab report) 
+Developed bilateral gram positive cocci pneunoma (what kind of cocci? Need a lab report)
 Treated with intravenous antibiotics and responded well}"	eCell	eCell
-{inputType: select}	eCell	{Label: Discharging physician/NP}	{elementKey: dischargingPhysician/np}	{pN: 27}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Options: Dr. Notley
+{inputType: select}	eCell	{Label: Discharging physician/NP}	{elementKey: dischargingPhysician/np}	{pN: 27}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Options: Dr. Notley
 Dr. Hunicutt
 Dr. Lee
 Dr. Malik
 Dr. Ng
 Dr. Walker
 Dr. Brooks}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Role}	{elementKey: dischargeRole}	{pN: 27}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Options: Doctor
+{inputType: select}	eCell	{Label: Role}	{elementKey: dischargeRole}	{pN: 27}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Options: Doctor
 Nurse practitioner}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: spacer}	eCell	eCell	eCell	{pN: 27}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: day}	eCell	{Label: Discharge day}	{elementKey: dischargeDay}	{pN: 27}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Day 1}	eCell	eCell
-{inputType: time}	eCell	{Label: Discharge time}	{elementKey: dischargeTime}	{pN: 27}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: 0.333333333333333}	eCell	eCell
-{inputType: select}	eCell	{Label: Discharged to}	{elementKey: dischargedTo}	{pN: 27}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Options: Home
+{inputType: spacer}	eCell	eCell	eCell	{pN: 27}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: day}	eCell	{Label: Discharge day}	{elementKey: dischargeDay}	{pN: 27}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Day 1}	eCell	eCell
+{inputType: time}	eCell	{Label: Discharge time}	{elementKey: dischargeTime}	{pN: 27}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: 0.333333333333333}	eCell	eCell
+{inputType: select}	eCell	{Label: Discharged to}	{elementKey: dischargedTo}	{pN: 27}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Options: Home
 Expired
 Transferred}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: home}	eCell	eCell
-{inputType: text}	eCell	{Label: Transferred to}	{elementKey: transferedTo}	{pN: 27}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Leaving by}	{elementKey: leavingBy}	{pN: 27}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Options: Taxi
+{inputType: text}	eCell	{Label: Transferred to}	{elementKey: transferedTo}	{pN: 27}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: Leaving by}	{elementKey: leavingBy}	{pN: 27}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Options: Taxi
 Family
 Ambulance
 Walk out/wheelchair}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	eCell	eCell	{pN: 27}	{fN: 1}	{gN: 2}	{sgN: }	{formCss: grid-left-to-right-1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: textarea}	eCell	{Label: Discharge diagnosis}	{elementKey: dischargeDiagnosis}	{pN: 27}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: textarea}	eCell	{Label: Discharge education}	{elementKey: dischargeEducation}	{pN: 27}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: page}	{pRef: 33}	{Label: Billing}	{elementKey: billing}	{pN: 28}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: page_form}	eCell	eCell	{elementKey: pageForm}	{pN: 28}	{fN: 1}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	{pN: 28}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell

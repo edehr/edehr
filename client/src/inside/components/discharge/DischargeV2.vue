@@ -3,10 +3,11 @@
   div()
     ehr-panel-header {{ pageDef.pageTitle }}
     ehr-panel-content
+      ehr-page-element(:key="leadElement.pageDataKey", :element="leadElement", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
       div(v-for="key in summaries")
         ehr-summary-table(:summaryKey="key", :ehrHelp="ehrHelp")
         hr
-      ehr-page-element(v-for="element in pageElements", :key="element.pageDataKey", :element="element", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
+      ehr-page-element(v-for="element in trailingElements", :key="element.pageDataKey", :element="element", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
 
 </template>
 
@@ -38,9 +39,22 @@ export default {
     pageDef () {
       return EhrDefs.getPageDefinition(this.pageDataKey)
     },
-    pageElements () {
-      return EhrDefs.getPageElements(this.pageDataKey)
+    leadElement () {
+      const pe = EhrDefs.getPageElements(this.pageDataKey)
+      let arr = Object.keys(pe).map((k) => pe[k])
+      return arr[0]
     },
+    trailingElements () {
+      const pe = EhrDefs.getPageElements(this.pageDataKey)
+      let arr = Object.keys(pe).map((k) => pe[k])
+      arr.shift()
+      return arr
+    },
+    pageElements () {
+      const pe = EhrDefs.getPageElements(this.pageDataKey)
+      let arr = Object.keys(pe).map((k) => pe[k])
+      return arr
+    }
   },
   mounted: function () {
     EventBus.$emit(PAGE_DATA_REFRESH_EVENT)

@@ -41,6 +41,8 @@ const pDefs = new PeriodDefs()
 const medSchedules = pDefs.keyNameList
 // console.log('EhrSummaryHelp medSchedules', medSchedules)
 
+const debug = false
+
 export default class EhrSummaryHelpV2 {
   constructor (summaryKey, ehrHelp) {
     let def = this._getDefs()[summaryKey]
@@ -48,7 +50,7 @@ export default class EhrSummaryHelpV2 {
     let tableKey = def.tableKey
     let summary = {pageKey: pageKey, tableKey: tableKey }
     let tableDef = EhrDefs.getPageTable(pageKey, tableKey)
-    console.log('EhrSummaryHelpV2 summary, tableDef: ', summary, tableDef)
+    if(debug) console.log('EhrSummaryHelpV2 summary, tableDef: ', summary, tableDef)
     let rowTemplate = []
     tableDef.ehr_list.forEach(stack => {
       stack.items.forEach(cellKey => {
@@ -60,7 +62,7 @@ export default class EhrSummaryHelpV2 {
         })
       })
     })
-    console.log('EhrSummaryHelpV2 rowTemplate: ', rowTemplate)
+    if(debug) console.log('EhrSummaryHelpV2 rowTemplate: ', rowTemplate)
     let tableColumns = []
     def.columnKeys.forEach( key => {
       let cell = rowTemplate.find( c => c.key === key)
@@ -70,27 +72,27 @@ export default class EhrSummaryHelpV2 {
       }
     })
     summary.tableColumns = tableColumns
-    console.log('EhrSummaryHelpV2 tableColumns: ', tableColumns)
+    if(debug) console.log('EhrSummaryHelpV2 tableColumns: ', tableColumns)
 
     let pageData = StoreHelper.getAsLoadedPageData(pageKey) || {}
-    console.log('EhrSummaryHelpV2 pageData: ', pageData)
+    if(debug) console.log('EhrSummaryHelpV2 pageData: ', pageData)
 
     let tableData = pageData[tableKey] || []
     tableData = tableData.filter( data => { return def.filter(data)} )
-    console.log('EhrSummaryHelpV2 tableData: after filter ', tableData)
+    if(debug) console.log('EhrSummaryHelpV2 tableData: after filter ', tableData)
     tableData = tableData.map( data => {
       let result = {}
       def.columnKeys.forEach( key => {
         result[key] = def.customGetters[key] ? def.customGetters[key](key, data) : data[key]
-        console.log('EhrSummaryHelpV2 tableData: key data result', key, data, result)
+        if(debug) console.log('EhrSummaryHelpV2 tableData: key data result', key, data, result)
       })
       console.log('EhrSummaryHelpV2 tableData:', data, result)
       return result
     })
-    console.log('EhrSummaryHelpV2 tableData: after map ', tableData)
+    if(debug) console.log('EhrSummaryHelpV2 tableData: after map ', tableData)
 
     summary.tableData = tableData
-    console.log('EhrSummaryHelpV2 load pageKey:', summary)
+    if(debug) console.log('EhrSummaryHelpV2 load pageKey:', summary)
     this.summary = summary
   }
 
