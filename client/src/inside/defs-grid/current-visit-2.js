@@ -386,7 +386,7 @@ export default function () {
           fqn: 'genitourinary.comments'
         }
       ],
-      generated: '2019-12-15T00:45:30-08:00',
+      generated: '2019-12-21T11:12:00-08:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -944,7 +944,7 @@ export default function () {
           fqn: 'musculoskeletal.comments'
         }
       ],
-      generated: '2019-12-15T00:45:30-08:00',
+      generated: '2019-12-21T11:12:00-08:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1314,7 +1314,7 @@ export default function () {
           fqn: 'pain.comments'
         }
       ],
-      generated: '2019-12-15T00:45:30-08:00',
+      generated: '2019-12-21T11:12:00-08:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1870,7 +1870,7 @@ export default function () {
           fqn: 'biopsychosocial.generalComments'
         }
       ],
-      generated: '2019-12-15T00:45:30-08:00',
+      generated: '2019-12-21T11:12:00-08:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2240,7 +2240,7 @@ export default function () {
           fqn: 'nonmedOrders.comment'
         }
       ],
-      generated: '2019-12-15T00:45:30-08:00',
+      generated: '2019-12-21T11:12:00-08:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2446,7 +2446,7 @@ export default function () {
           fqn: 'referrals.status'
         }
       ],
-      generated: '2019-12-15T00:45:30-08:00',
+      generated: '2019-12-21T11:12:00-08:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2616,7 +2616,7 @@ export default function () {
           fqn: 'labRequisitions.ordered'
         }
       ],
-      generated: '2019-12-15T00:45:30-08:00',
+      generated: '2019-12-21T11:12:00-08:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2968,7 +2968,7 @@ export default function () {
           fqn: 'medicationOrders.notes'
         }
       ],
-      generated: '2019-12-15T00:45:30-08:00',
+      generated: '2019-12-21T11:12:00-08:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -3312,7 +3312,7 @@ export default function () {
           helperHtml: '<p>Enter time delivered or say if not delivered.</p>'
         }
       ],
-      generated: '2019-12-15T00:45:30-08:00',
+      generated: '2019-12-21T11:12:00-08:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -3428,9 +3428,23 @@ export default function () {
       hasGridForm: true,
       pageChildren: [
         {
+          elementKey: 'dischargeDiagnosis',
+          formIndex: '1',
+          inputType: 'textarea',
+          label: 'Discharge diagnosis',
+          fqn: 'dischargeSummary.dischargeDiagnosis'
+        },
+        {
+          elementKey: 'dischargeEducation',
+          formIndex: '1',
+          inputType: 'textarea',
+          label: 'Discharge education',
+          fqn: 'dischargeSummary.dischargeEducation'
+        },
+        {
           elementKey: 'admissionDay',
           defaultValue: 'Day 0',
-          formIndex: '1',
+          formIndex: '2',
           inputType: 'text',
           label: 'Admission day',
           fqn: 'dischargeSummary.admissionDay'
@@ -3438,7 +3452,7 @@ export default function () {
         {
           elementKey: 'clinicalSummary',
           dataCaseStudy: 'Patient arrived with chronic COPD in acute form-NL-Previously diagnosed with hypertension-NL-Developed bilateral gram positive cocci pneunoma (what kind of cocci? Need a lab report)-NL-Treated with intravenous antibiotics and responded well',
-          formIndex: '1',
+          formIndex: '2',
           formCss: 'grid-span-2-columns',
           inputType: 'textarea',
           label: 'Clinical summary',
@@ -3446,7 +3460,7 @@ export default function () {
         },
         {
           elementKey: 'dischargingPhysician/np',
-          formIndex: '1',
+          formIndex: '2',
           inputType: 'select',
           label: 'Discharging physician/NP',
           options: [
@@ -3476,7 +3490,7 @@ export default function () {
         },
         {
           elementKey: 'dischargeRole',
-          formIndex: '1',
+          formIndex: '2',
           inputType: 'select',
           label: 'Role',
           options: [
@@ -3490,15 +3504,15 @@ export default function () {
           fqn: 'dischargeSummary.dischargeRole'
         },
         {
-          elementKey: 'spacer45',
-          formIndex: '1',
+          elementKey: 'spacer46',
+          formIndex: '2',
           inputType: 'spacer',
-          fqn: 'dischargeSummary.spacer45'
+          fqn: 'dischargeSummary.spacer46'
         },
         {
           elementKey: 'dischargeDay',
           dataCaseStudy: 'Day 1',
-          formIndex: '1',
+          formIndex: '2',
           inputType: 'day',
           label: 'Discharge day',
           fqn: 'dischargeSummary.dischargeDay'
@@ -3506,7 +3520,7 @@ export default function () {
         {
           elementKey: 'dischargeTime',
           dataCaseStudy: '0.333333333333333',
-          formIndex: '1',
+          formIndex: '2',
           inputType: 'time',
           label: 'Discharge time',
           fqn: 'dischargeSummary.dischargeTime'
@@ -3514,7 +3528,7 @@ export default function () {
         {
           elementKey: 'dischargedTo',
           dataCaseStudy: 'home',
-          formIndex: '1',
+          formIndex: '2',
           inputType: 'select',
           label: 'Discharged to',
           options: [
@@ -3532,14 +3546,14 @@ export default function () {
         },
         {
           elementKey: 'transferedTo',
-          formIndex: '1',
+          formIndex: '2',
           inputType: 'text',
           label: 'Transferred to',
           fqn: 'dischargeSummary.transferedTo'
         },
         {
           elementKey: 'leavingBy',
-          formIndex: '1',
+          formIndex: '2',
           inputType: 'select',
           label: 'Leaving by',
           options: [
@@ -3557,23 +3571,9 @@ export default function () {
             }
           ],
           fqn: 'dischargeSummary.leavingBy'
-        },
-        {
-          elementKey: 'dischargeDiagnosis',
-          formIndex: '1',
-          inputType: 'textarea',
-          label: 'Discharge diagnosis',
-          fqn: 'dischargeSummary.dischargeDiagnosis'
-        },
-        {
-          elementKey: 'dischargeEducation',
-          formIndex: '1',
-          inputType: 'textarea',
-          label: 'Discharge education',
-          fqn: 'dischargeSummary.dischargeEducation'
         }
       ],
-      generated: '2019-12-15T00:45:30-08:00',
+      generated: '2019-12-21T11:12:00-08:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -3583,24 +3583,31 @@ export default function () {
             {
               gIndex: '1',
               gChildren: [
+                'dischargeDiagnosis',
+                'dischargeEducation'
+              ]
+            }
+          ]
+        },
+        pageForm2: {
+          elementKey: 'pageForm2',
+          formKey: 'pageForm2',
+          isPageForm: true,
+          ehr_groups: [
+            {
+              formCss: 'grid-left-to-right-1',
+              gIndex: '1',
+              gChildren: [
                 'admissionDay',
                 'clinicalSummary',
                 'dischargingPhysician/np',
                 'dischargeRole',
-                'spacer45',
+                'spacer46',
                 'dischargeDay',
                 'dischargeTime',
                 'dischargedTo',
                 'transferedTo',
                 'leavingBy'
-              ]
-            },
-            {
-              formCss: 'grid-left-to-right-1',
-              gIndex: '2',
-              gChildren: [
-                'dischargeDiagnosis',
-                'dischargeEducation'
               ]
             }
           ]
@@ -3634,7 +3641,7 @@ export default function () {
           fqn: 'billing.paymentType'
         }
       ],
-      generated: '2019-12-15T00:45:30-08:00',
+      generated: '2019-12-21T11:12:00-08:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -4419,7 +4426,7 @@ export default function () {
           fqn: 'integumentaryAssessment.treatmentComplete'
         }
       ],
-      generated: '2019-12-15T00:45:30-08:00',
+      generated: '2019-12-21T11:12:00-08:00',
       pageElements: {
         table: {
           elementKey: 'table',
