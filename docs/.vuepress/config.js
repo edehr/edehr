@@ -10,7 +10,6 @@ module.exports = {
       {text: 'LMS admin', link: '/lms-admin/'},
       {text: 'Course designer', link: '/course-designer/'},
       {text: 'Instructor', link: '/instructor/'},
-      {text: 'Student', link: '/student/'},
       {text: 'Developer', link: '/developer/'},
     ],
     sidebar: [
@@ -27,14 +26,6 @@ module.exports = {
         path: '/instructor/',
         children: [
           '/instructor/',
-          '/shared/shortcuts.md',
-        ]
-      },
-      {
-        title: "Student guide",
-        path: '/student/',
-        children: [
-          '/student/',
           '/shared/shortcuts.md',
         ]
       },
