@@ -31,10 +31,15 @@ module.exports = {
         ]
       },
       {
-        title: "Student guide",
-        path: '/student/',
+        title: "Course designer guide",
+        path: '/course-designer/',
         children: [
-          '/student/',
+          '/course-designer/',
+          '/course-designer/cd-lms',
+          '/course-designer/cd-connect',
+          '/course-designer/cd-activity',
+          '/course-designer/cd-assignment',
+          '/course-designer/cd-seed',
           '/shared/shortcuts.md',
         ]
       },
