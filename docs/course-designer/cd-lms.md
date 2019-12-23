@@ -1,13 +1,7 @@
-# LMS setup for course designer
+# Configuring an activity in Moodle
 
-> Course designer configures the LMS with a LTI link to the EdEHR
-
-### Prerequisite
-- The LMS admin has configured the LTI link to the EdEHR.
-- The LMS admin may inform the course designer that the link is ready and provide the "tool name". 
-- Optionally, the course designer may be told what the custom parameter (the [External Id](/shared/definitions.md#external-id) to the EdEHR) is. But this isn't absolutely necessary.
-
-The following describes how a course designer will configure the course in Moodle. Hopefully the process is similar in other LMS applications. We welcome contributions to this documentation.
+### Prerequisites
+Steps 1 to 3 in the [configuration docs](../configuration/#connect-moodle-to-the-edehr) have been completed by an LMS admin.
 
 Navigate to the course. Select the gear icon and select "Turn editing on".
 ![1]
@@ -21,17 +15,13 @@ Select "External tool" from the list
 You can now set up the LTI link inside the course as an activity
 ![4]
 
-First select the preconfigured tool your LMS admin created. Set the **Activity name**. Perhaps use the same name as the external tool but that is up to you. This name will appear in the course activities as well as in the EdEHR.
+Select the preconfigured tool your LMS admin created. Set the **Activity name**. It is recommended that you use the same name as the external tool. This name will appear in the course activities as well as in the EdEHR.
 ![5]
 
-Important for your students. Click the "show more" and add a description for this activity. This description will be combined with the description you create in the EdEHR assignment. You can include line feeds to format the description and URLs to resources. The EdEHR will automatically convert these URLs into hyperlinks for the student to use.
-
-Return to the course and select the activity you just added.
-![6]
+Click the "show more" link and add a description for the activity. This is the default description for the activity and can be added to within the EdEHR, but not removed. URL's will be shown to students as links when they view the description.
 
 [1]: ../images/moodle-course-activate-edit.png "Activate editing of course in Moodle"
 [2]: ../images/moodle-course-edit-enabled.png "Editing activated"
 [3]: ../images/moodle-course-add-activity.png "Add activity"
 [4]: ../images/moodle-course-activity-select-start.png "Activity selection"
 [5]: ../images/moodle-course-activity-select-end.png "Selected activity"
-[6]: ../images/moodle-course-activity-added.png "Activity added"

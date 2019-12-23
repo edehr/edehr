@@ -1,13 +1,7 @@
-# Course designer
+# A course designer's role
 
-> Create course content and assignments.
+> Course designers create or find case studies relevant to the curriculum, put together an assignment based on that case study and create the seed that students will interact with when they login to the EdEHR to complete the respective assignment. They also connect the LMS to the EdEHR through an LTI connection.
 
-### Prerequisite
-- The LMS admin has set up the LTI link with the EdEHR. See [LMS admin](/lms-admin/)
+This documentation was written with a focus on using Moodle for the LMS as that's what was chosen for the MVP milestone of the project.
 
-We are now going to look at the second stages of *getting started*. These tasks are completed by a course designer. This is someone who has the role, in the LMS, to create and edit activities for a course. This may include instructors or LMS administrators. It is also the person who can configure assignments in the EdEHR.
-
-1. [LMS setup for course designer](/course-designer/cd-lms.md)
-2. [EdEHR setup for course designer](/course-designer/cd-activity.md)
-
-
+We welcome [contributions to this documentation](../developer/contributors.html) for other LMS's.

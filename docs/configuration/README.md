@@ -61,6 +61,8 @@ Moodle and the EdEHR must be installed and running prior to configuration.
 
 ### Course designer
 
+> For more detailed instructions, see the [configuration-details](../course-designer/cd-configuration-details) section of the course designer documentation.
+
 8. Create a new course section that will hold the EdEHR assignment and relevant [resources](/shared/definitions.md#resources). *OPTIONAL* 
 
 - [Moodle documentation](https://docs.moodle.org/38/en/Course_homepage#Parts_of_a_course_homepage)
