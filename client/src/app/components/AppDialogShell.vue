@@ -153,6 +153,7 @@ export default {
   /*   For top and see the data properties */
   min-width: 700px;
   max-width: 1024px;
+  min-height: 40vh;
   z-index: 999;
   background-color: $dialog-wrapper-background-color;
   border: 1px solid $grey40;
@@ -180,7 +181,7 @@ export default {
 
 .dialog-body {
   overflow-y: auto;
-  max-height: calc( 90vh - 20vh );
+  min-height: 40vh;
   padding: 1.5rem 2rem 2rem 2rem;
 }
 
