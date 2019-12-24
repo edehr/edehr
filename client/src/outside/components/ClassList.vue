@@ -1,7 +1,14 @@
 <template lang="pug">
   div
-    div(class="course-header")
-      h2(class="course-header-item") {{ courseTitle }}
+    div(class="classlist-header-group")
+      div(class="course-header")
+        h2(class="course-header-item") {{ courseTitle }}
+      div(class="course-header-item float-right")
+          accordion-element(:show="show")
+          ui-button(v-on:buttonClicked="downloadEvaluations") Download all assignment evaluation notes
+              fas-icon(class="icon-right", icon="download")
+              class-list(:classList="classList")
+          ui-save-as-prompt(ref="promptDialog", title="Save evaluation", :message="promptMessage", :filename="activityName", v-on:confirm="proceed")
     h3(:title="activityId") {{ activityName }}
     table
       tr
@@ -50,8 +57,9 @@ import StoreHelper from '../../helpers/store-helper'
 import EvalHelper from '../../helpers/eval-helper'
 import UiButton from '../../app/ui/UiButton.vue'
 import UiLink from '../../app/ui/UiLink.vue'
-// import UiSaveAsPrompt from '../../app/ui/UiSaveAsPrompt.vue'
-// import { downArrayToCsvFile } from '../../helpers/ehr-utils'
+import UiSaveAsPrompt from '../../app/ui/UiSaveAsPrompt.vue'
+import { downArrayToCsvFile } from '../../helpers/ehr-utils'
+import AccordionElement from '../../app/components/AccordionElement'
 
 const Text = {
   EVAL_DONE: 'Evaluation is done. Let the student see the evaluation notes.',
@@ -66,7 +74,7 @@ const Text = {
 }
 export default {
   components: {
-    UiButton, UiLink
+    UiButton, UiLink, UiSaveAsPrompt, AccordionElement
   },
   data () {
     return {
@@ -75,7 +83,8 @@ export default {
       activity: {},
       assignment: {},
       activityId: '',
-      testingDev: true
+      testingDev: true,
+      show: false,
     }
   },
   props: {
@@ -97,7 +106,11 @@ export default {
 
     classList () { return StoreHelper.getClassList()  },
 
-    cs () { return StoreHelper.currentStudentId()}
+    cs () { return StoreHelper.currentStudentId()},
+
+    promptMessage () {
+      return 'Save evaluations for ' + this.activityName
+    }
 
   },
   methods: {
@@ -157,7 +170,24 @@ export default {
             this.assignment = result.assignment
           }
         })
-    }
+    },
+    downloadEvaluations () {
+      this.$refs.promptDialog.showDialog(this.promptTitle, this.promptMessage, this.promptLabel)
+    },
+
+    closeDialog () {
+      this.$refs.promptDialog.cancelDialog()
+    },
+
+    proceed (filename) {
+      let data = []
+      data.push(['email','feedback: ' + this.activityName])
+      this.classList.forEach ( sv => {
+        data.push([sv.user.emailPrimary,sv.activityData.evaluationData])
+      })
+      downArrayToCsvFile(filename, data)
+    },
+
   },
   mounted: function () {
     this.loadComponent()
@@ -168,6 +198,10 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/definitions';
+  .classlist-header-group {
+    display: flex; 
+    justify-content: space-between;
+  }
   .classlist-header {
     padding: 0.5rem 1.5rem;
     background-color: $grey10;
