@@ -82,10 +82,15 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/definitions';
+header {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
 .apphdr {
   background: $toolbar-background-color;
   color: $toolbar-color;
-
   .wrapper {
     padding: 10px 20px;
   }

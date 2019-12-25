@@ -66,19 +66,20 @@ export default {
 @import '../../scss/definitions';
 .ehr_layout {
 
-  // background-color: $grey60;
+  background-color: $grey60;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  &__wrapper {
-    margin: 1px;
+  margin: 1px;
+  // &__wrapper {
     
-  }
+  // }
   &__main {
     color: $grey80;
     background-color: $white;
     display: flex;
     overflow: hidden;
+    margin-top: auto;
   }
   &__main_content {
   }
