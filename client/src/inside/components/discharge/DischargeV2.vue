@@ -30,7 +30,7 @@ export default {
   },
   data: function () {
     return {
-      summaries: [ESK_Referrals, ESK_Medications, ESK_MARS, ESK_Procedures, ESK_DischargeProcedures, ESK_LabReqs],
+      summaries: [ESK_Procedures, ESK_MARS, ESK_Medications, ESK_DischargeProcedures, ESK_LabReqs, ESK_Referrals],
     }
   },
   inject: [ 'pageDataKey'],

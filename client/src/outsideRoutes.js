@@ -9,20 +9,6 @@ export function outside () {
       meta: { layout: 'outside', label: 'Instructor', topLevel: 'undefined' }
     },
     {
-      path: '/classlist',
-      name: 'classlist',
-      component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/ClassList.vue'),
-      meta: { layout: 'outside', label: 'ClassList', topLevel: 'undefined' }
-    },
-    {
-      path: '/consumers',
-      name: 'consumers',
-      component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Consumers.vue'),
-      meta: { layout: 'outside', label: 'Consumers', topLevel: 'undefined' }
-    },
-    {
       path: '/help',
       name: 'help',
       component: () =>
