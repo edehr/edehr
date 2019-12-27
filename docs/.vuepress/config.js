@@ -33,7 +33,9 @@ module.exports = {
         path: '/course-designer/',
         children: [
           '/course-designer/',
-          '/course-designer/cd-configuration-details',
+          '/course-designer/cd-lms',
+          '/course-designer/cd-connect',
+          '/course-designer/cd-activity',
           '/course-designer/cd-assignment',
           '/course-designer/cd-seed',
         ]
