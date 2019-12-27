@@ -3,12 +3,13 @@ import EhrDefs from  '../../../helpers/ehr-defs-grid'
 import StoreHelper from  '../../../helpers/store-helper'
 import PeriodDefs from '../mar/period-defs'
 
-export const ESK_Medications = 'Discharge medication orders'
-export const ESK_Referrals = 'Discharge referrals'
-export const ESK_LabReqs = 'Discharge lab requisitions'
+export const ESK_Medications = 'Discharge Rx'
+export const ESK_Referrals = 'Referrals'
+export const ESK_LabReqs = 'Discharge requisitions'
 export const ESK_Procedures = 'Procedures and treatment'
-export const ESK_DischargeProcedures = 'Discharge procedures and treatment'
+export const ESK_DischargeProcedures = 'Discharge orders'
 export const ESK_MARS = 'Medications administered while in care'
+
 /*
 Procedures and treatment: These are pulled in from the orders page.
 Only orders that have the status complete should appear here.
