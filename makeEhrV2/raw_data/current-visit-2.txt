@@ -368,23 +368,10 @@ Stat}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: checkset}	eCell	{Label: Schedule time}	{elementKey: scheduleTime}	{pN: 25}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Schedule time}	{tableColumn: 8}	eCell	eCell	eCell	eCell	"{Options: Morning
 Mid day
 Bedtime}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Scheduled}	{elementKey: scheduled}	{pN: 25}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Scheduled}	{tableColumn: 9}	eCell	eCell	eCell	eCell	"{Options: BID / q12h
-TID
-q8h
-QID
-q6h
-q4h}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: spacer}	eCell	eCell	eCell	{pN: 25}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: PRN 1}	{elementKey: prn1}	{pN: 25}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: PRN 1}	{tableColumn: 10}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: PRN 2}	{elementKey: prn2}	{pN: 25}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: PRN 2}	{tableColumn: 11}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: PRN 3}	{elementKey: prn3}	{pN: 25}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: PRN 3}	{tableColumn: 12}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: PRN 4}	{elementKey: prn4}	{pN: 25}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: PRN 4}	{tableColumn: 13}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: PRN 5}	{elementKey: prn5}	{pN: 25}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: PRN 5}	{tableColumn: 14}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: PRN 6}	{elementKey: prn6}	{pN: 25}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: PRN 6}	{tableColumn: 15}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	{pN: 25}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Instructions}	{elementKey: instructions}	{pN: 25}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Instructions}	{tableColumn: 16}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Reason}	{elementKey: reason}	{pN: 25}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Reason}	{tableColumn: 17}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: textarea}	eCell	{Label: Notes}	{elementKey: notes}	{pN: 25}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Notes}	{tableColumn: 18}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Instructions}	{elementKey: instructions}	{pN: 25}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Instructions}	{tableColumn: 9}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Reason}	{elementKey: reason}	{pN: 25}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Reason}	{tableColumn: 10}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: textarea}	eCell	{Label: Notes}	{elementKey: notes}	{pN: 25}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Notes}	{tableColumn: 11}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: page}	{pRef: 31}	{Label: Medication administration records}	{elementKey: medAdminRec}	{pN: 26}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: table_form}	eCell	eCell	{elementKey: table}	{pN: 26}	{fN: 1}	{gN: }	{sgN: }	eCell	{formOption: customCode}	eCell	eCell	eCell	{addButtonText: Administered}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	{pN: 26}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
@@ -402,28 +389,27 @@ Skipped}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Today's given}	{elementKey: todayGiven}	{pN: 26}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	{tableLabel: Today's given}	{tableColumn: 6}	eCell	eCell	eCell	eCell	{Options: [Today's day] given}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Administered by}	{elementKey: administeredBy}	{pN: 26}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	{tableLabel: Administered by}	{tableColumn: 7}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Profession}	{elementKey: profession}	{pN: 26}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	{tableLabel: Profession}	{tableColumn: 8}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Actual time}	{elementKey: actualTime}	{pN: 26}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	{tableLabel: Actual time}	{tableColumn: 9}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: Enter time delivered or say if not delivered.}	eCell
+{inputType: text}	eCell	{Label: Administered time}	{elementKey: administeredTime}	{pN: 26}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	{tableLabel: Administered time}	{tableColumn: 9}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: Enter time delivered or say if not delivered.}	eCell
 {inputType: page}	{pRef: 32}	{Label: Discharge summary}	{elementKey: dischargeSummary}	{pN: 27}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: page_form}	eCell	eCell	{elementKey: pageForm}	{pN: 27}	{fN: 1}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	{pN: 27}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: textarea}	eCell	{Label: Discharge diagnosis}	{elementKey: dischargeDiagnosis}	{pN: 27}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: textarea}	eCell	{Label: Discharge education}	{elementKey: dischargeEducation}	{pN: 27}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: page_form}	eCell	eCell	{elementKey: pageForm2}	{pN: 27}	{fN: 2}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	eCell	eCell	{pN: 27}	{fN: 2}	{gN: 1}	{sgN: }	{formCss: grid-left-to-right-1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Admission day}	{elementKey: admissionDay}	{pN: 27}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Default_value: Day 0}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: textarea}	eCell	{Label: Clinical summary}	{elementKey: clinicalSummary}	{pN: 27}	{fN: 2}	{gN: 1}	{sgN: }	{formCss: grid-span-2-columns}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Data_case_study: Patient arrived with chronic COPD in acute form
-Previously diagnosed with hypertension
-Developed bilateral gram positive cocci pneunoma (what kind of cocci? Need a lab report)
-Treated with intravenous antibiotics and responded well}"	eCell	eCell
-{inputType: select}	eCell	{Label: Discharging physician/NP}	{elementKey: dischargingPhysician/np}	{pN: 27}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Options: Dr. Notley
+{inputType: text}	eCell	{Label: Admission day}	{elementKey: admissionDay}	{pN: 27}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Default_value: Day 0}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: Discharging physician/NP}	{elementKey: dischargingPhysician/np}	{pN: 27}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Options: Dr. Notley
 Dr. Hunicutt
 Dr. Lee
 Dr. Malik
 Dr. Ng
 Dr. Walker
 Dr. Brooks}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Role}	{elementKey: dischargeRole}	{pN: 27}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Options: Doctor
-Nurse practitioner}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: spacer}	eCell	eCell	eCell	{pN: 27}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: textarea}	eCell	{Label: Clinical summary}	{elementKey: clinicalSummary}	{pN: 27}	{fN: 1}	{gN: 1}	{sgN: }	{formCss: grid-span-2-columns section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Data_case_study: Patient arrived with chronic COPD in acute form
+Previously diagnosed with hypertension
+Developed bilateral gram positive cocci pneunoma (what kind of cocci? Need a lab report) 
+Treated with intravenous antibiotics and responded well}"	eCell	eCell
+{inputType: page_form}	eCell	eCell	{elementKey: pageForm2}	{pN: 27}	{fN: 2}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	eCell	{pN: 27}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: textarea}	eCell	{Label: Discharge diagnosis}	{elementKey: dischargeDiagnosis}	{pN: 27}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: textarea}	eCell	{Label: Discharge education}	{elementKey: dischargeEducation}	{pN: 27}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: spacer}	eCell	eCell	eCell	{pN: 27}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: day}	eCell	{Label: Discharge day}	{elementKey: dischargeDay}	{pN: 27}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Day 1}	eCell	eCell
 {inputType: time}	eCell	{Label: Discharge time}	{elementKey: dischargeTime}	{pN: 27}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: 0.333333333333333}	eCell	eCell
