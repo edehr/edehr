@@ -26,7 +26,16 @@ module.exports = {
         path: '/instructor/',
         children: [
           '/instructor/',
-          '/shared/shortcuts.md',
+        ]
+      },
+      {
+        title: "Course designer guide",
+        path: '/course-designer/',
+        children: [
+          '/course-designer/',
+          '/course-designer/cd-configuration-details',
+          '/course-designer/cd-assignment',
+          '/course-designer/cd-seed',
         ]
       },
       {

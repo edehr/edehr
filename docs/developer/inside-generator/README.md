@@ -22,6 +22,11 @@ making changes and then checking the results in the UI you can skip ```lint``` a
 Just run the script with lint when you are done and are ready to submit your code.
 
 ## Input spreadsheet
+
+> Todo. Add documentation about the input spreadsheet and default case study data.
+
+The input spreadsheet allows the product developer to define a default value for fields in the EHR. This is used to prepopulate the application with information from the "Erin Jones" case study.
+
 Team members have access to a Google spreadsheet called "Inputs". This spreadsheet is the primary source of truth for
 the application. Team members can adjust the number of pages, tables, forms, inputs and the initial seed data
 all from this one worksheet. Each sheet has a set of cells (with formula based values) that are designed to be selected and
