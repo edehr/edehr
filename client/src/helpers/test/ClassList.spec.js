@@ -30,12 +30,21 @@ describe('ClassName test', () => {
     test('renders as expected', () => {
       expect(wrapper.html()).toMatchSnapshot()
     })
+    const button = wrapper.find('.assignmentascsv')
     test('has "Download Evaluation Notes as CSV button"', () => {
-      const button = wrapper.find('.assignmentascsv')
       expect(button.text()).toContain(
         'Download all assignment evaluation notes'
       )
     })
+    //   test('does clicking the button show the modal', () => {
+    //     button.trigger('click')
+    //     wrapper.vm.$nextTick()
+    //       .then(() => {
+    //         console.log('vm >> ', wrapper.vm.activity)
+    //         expect(wrapper.find('.instruction')).toContain('Save evalutaion for ')
+
+  //       })
+  //   })
   })
  
 

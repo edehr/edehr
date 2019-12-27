@@ -4,10 +4,9 @@
       div(class="course-header")
         h2(class="course-header-item") {{ courseTitle }}
       div(class="course-header-item float-right")
-          accordion-element(:show="show")
-          ui-button(class="assignmentascsv", v-on:buttonClicked="downloadEvaluations") Download all assignment evaluation notes
-              fas-icon(class="icon-right", icon="download")
-          ui-save-as-prompt(ref="promptDialog", title="Save evaluation", :message="promptMessage", :filename="activityName", v-on:confirm="proceed")
+        ui-button(class="assignmentascsv", v-on:buttonClicked="downloadEvaluations") Download all assignment evaluation notes
+          fas-icon(class="icon-right", icon="download")
+        ui-save-as-prompt(ref="promptDialog", title="Save evaluation", :message="promptMessage", :filename="activityName", v-on:confirm="proceed")
     h3(:title="activityId") {{ activityName }}
     table
       tr
@@ -58,7 +57,6 @@ import UiButton from '../../app/ui/UiButton.vue'
 import UiLink from '../../app/ui/UiLink.vue'
 import UiSaveAsPrompt from '../../app/ui/UiSaveAsPrompt.vue'
 import { downArrayToCsvFile } from '../../helpers/ehr-utils'
-import AccordionElement from '../../app/components/AccordionElement'
 
 const Text = {
   EVAL_DONE: 'Evaluation is done. Let the student see the evaluation notes.',
@@ -73,7 +71,7 @@ const Text = {
 }
 export default {
   components: {
-    UiButton, UiLink, UiSaveAsPrompt, AccordionElement
+    UiButton, UiLink, UiSaveAsPrompt
   },
   data () {
     return {
@@ -83,7 +81,6 @@ export default {
       assignment: {},
       activityId: '',
       testingDev: true,
-      show: false,
     }
   },
   props: {
