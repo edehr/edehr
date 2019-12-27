@@ -5,10 +5,7 @@
       div(slot="body")
         div
           div(class="ehr-group-wrapper grid-left-to-right-1")
-            div(class="form-element")
-              label Day {{currentDay}} - {{activePeriod.name}}
-          div(class="ehr-group-wrapper grid-left-to-right-1")
-            label Medications:
+            h3 Day {{currentDay}} - {{activePeriod.name}}
             med-list(:medsList="activePeriod.medsList")
           div(class="ehr-group-wrapper grid-left-to-right-2")
             div(class="form-element")
@@ -17,7 +14,7 @@
                 input(class="input", type="text", v-model="who")
             div(class="ehrdfe")
               div(class="text_input_wrapper")
-                label Actual time
+                label Administered time
                 input(class="input", type="text", v-model="when")
           div(class="ehr-group-wrapper grid-left-to-right-1")
             div(class="form-element")
@@ -77,5 +74,9 @@ export default {
 </script>
 
 <style scoped>
+
+h3 {
+  margin-bottom: 0;
+}
 
 </style>
