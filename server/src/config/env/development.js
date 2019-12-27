@@ -1,7 +1,5 @@
 'use strict'
 
-let defaultEnvConfig = require('./default')
-
 const TRACE_CALLS = true
 const API_HOST =   process.env.API_HOST || 'localhost'
 const CLIENT_HOST =   process.env.CLIENT_HOST || 'localhost'

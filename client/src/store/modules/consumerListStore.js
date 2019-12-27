@@ -1,5 +1,4 @@
 import InstoreHelper from './instoreHelper'
-import StoreHelper from '../../helpers/store-helper'
 import { setApiError } from '../../helpers/ehr-utils'
 const API = 'consumers'
 const debug = false
@@ -33,7 +32,7 @@ const actions = {
   },
 
   createConsumer (context, payload) {
-    let url = "create"
+    let url = 'create'
     if(debug) console.log('send consumer data ', url, payload)
     return InstoreHelper.postRequest(context, API, url, payload).then(results => {
       // let resultsData = results.data

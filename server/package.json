@@ -10,7 +10,7 @@
   "scripts": {
     "start": "NODE_ENV=development DEBUG=server node index.js",
     "start:dev": "NODE_ENV=development DEBUG=server nodemon -L  node index.js",
-    "lint": "eslint --fix src/**/*.js && eslint --fix test/**/*.js",
+    "lint": "eslint --fix src/**/*.js",
     "test": "node_modules/.bin/mocha --recursive --sort --bail --require @babel/register **/*.spec.js"
   },
   "maybetrash": {

@@ -1,16 +1,16 @@
-import Helper from '../common/test-helper'
-import EhrApp from '../../server/app'
-import Config from '../../config/config'
 import { adminToken } from './admin-controller'
+import Config from '../../config/config'
+import EhrApp from '../../server/app'
+import Helper from '../common/test-helper'
 
-const should = require('should')
-const request = require('supertest')
-const mongoose = require('mongoose')
-const helper = new Helper()
+// const request = require('supertest')
+const BASE = '/admin'
 const config = new Config('test')
 const configuration = config.config
-const BASE = '/admin'
 const ehrApp = new EhrApp()
+const helper = new Helper()
+const mongoose = require('mongoose')
+const should = require('should')
 const TYPE = 'Admin'
 
 
@@ -36,73 +36,6 @@ describe(`Make server calls on ${TYPE}`, function () {
         should.exist(res)
         res.text.should.equal('hello admin')
         // Helper.consoleRes(res)
-      })
-  })
-
-  it('Admin create tool without auth', function () {
-    let url = BASE + '/consumer/create'
-    let noToken = 'aasdssdasdads'
-    let theData = {key: 'akey', secret : 'asecret'}
-    return Helper.postUrlAuth(theApp, url, noToken, theData)
-      .expect(404)
-      .expect( (res) => {
-        should.exist(res)
-        // Helper.consoleRes(res)
-      })
-      .catch ( (error) => {
-        should.not.exist(error)
-      })
-  })
-
-
-  it('Admin create tool', function () {
-    let url = BASE + '/consumer/create'
-    let theData = {key: 'akey', secret : 'asecret'}
-    return Helper.postUrlAuth(theApp, url, adminToken, theData)
-      .expect(200)
-      .expect( (res) => {
-        should.exist(res)
-      })
-      .catch ( (error) => {
-        should.not.exist(error)
-      })
-  })
-
-  it('Admin create 2nd tool with conflict on key --- should error', function () {
-    let url = BASE + '/consumer/create'
-    let theData = {key: 'akey', secret : 'asecret'}
-    return Helper.postUrlAuth(theApp, url, adminToken, theData)
-      .expect(200)
-      .expect( (res) => {
-        should.not.exist(res)
-      })
-      .catch ( (error) => {
-        should.exist(error)
-      })
-  })
-
-  it('Admin create second tool with different key', function () {
-    let url = BASE + '/consumer/create'
-    let theData = {key: 'akey2', secret : 'asecret'}
-    return Helper.postUrlAuth(theApp, url, adminToken, theData)
-      .expect(200)
-      .expect( (res) => {
-        should.exist(res)
-      })
-      .catch ( (error) => {
-        should.not.exist(error)
-      })
-  })
-
-  it.skip('Admin list consumer users', function () {
-    let url = BASE + '/consumers/'
-    return Helper.getUrlAuth(theApp, url, adminToken)
-      .expect(200)
-      .expect( (res) => {
-        should.exist(res)
-      })
-      .catch ( (error) => {
-        should.not.exist(error)
       })
   })
 
