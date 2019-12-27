@@ -36,7 +36,7 @@ export default class Config {
     return this.configuration
   }
 
-  asStringForLog() {
+  asStringForLog () {
     let tmp = {}
     try {
       tmp = JSON.parse(JSON.stringify(this.configuration))
