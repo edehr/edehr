@@ -5,9 +5,8 @@
         h2(class="course-header-item") {{ courseTitle }}
       div(class="course-header-item float-right")
           accordion-element(:show="show")
-          ui-button(v-on:buttonClicked="downloadEvaluations") Download all assignment evaluation notes
+          ui-button(class="assignmentascsv", v-on:buttonClicked="downloadEvaluations") Download all assignment evaluation notes
               fas-icon(class="icon-right", icon="download")
-              class-list(:classList="classList")
           ui-save-as-prompt(ref="promptDialog", title="Save evaluation", :message="promptMessage", :filename="activityName", v-on:confirm="proceed")
     h3(:title="activityId") {{ activityName }}
     table
