@@ -9,12 +9,13 @@ This project is a prototype which means it needs to be designed to be changed as
 with stakeholders to refine the application.
 
 ## EHR generation
-The EHR side of the project lists it's more than 40 screens in the menu and routing tables. These 
-tasks are automated via a script in the makeEhr subdirectory. This script only needs to be invoked if the content of the 
-configuration files have been modified. The source of the configuration files comes from a Google spreadsheet stored 
+The EHR side of the project has more than 40 screens in the menu and routing tables. The Vue components that render these
+pages are based on JSON configuration files.  These files are generated via scripts in the makeEhr subdirectory.
+The script only needs to be invoked if the source of the configuration files have been modified.
+The source of the configuration files comes from a Google spreadsheet stored 
 in the project's GDrive.
 ```
-cd makeEhr
+cd makeEhrV2
 ./deploy.sh --lint
 ```
 The ```--lint``` option can be replaced with ```-l```. You must use this lint option before submitting files. If you are 
@@ -25,7 +26,8 @@ Just run the script with lint when you are done and are ready to submit your cod
 
 > Todo. Add documentation about the input spreadsheet and default case study data.
 
-The input spreadsheet allows the product developer to define a default value for fields in the EHR. This is used to prepopulate the application with information from the "Erin Jones" case study.
+The input spreadsheet allows the product developer to define a default value for fields in the EHR. This is used to
+prepopulate the application with information from the "Erin Jones" case study.
 
 Team members have access to a Google spreadsheet called "Inputs". This spreadsheet is the primary source of truth for
 the application. Team members can adjust the number of pages, tables, forms, inputs and the initial seed data
@@ -35,6 +37,18 @@ file per tab in the worksheet.
 
 Developers can run the ```deploy.sh``` script to generate the content. They must use the ```-lint``` option before submitting
 changes to the repo.
+
+## Work flow
+
+When team members make a change to the Inputs sheet they are encouraged to tag the Google sheet with a version name that reflects
+the PR number of the code submitted.  E.g.
+
+  1. Make some changes
+      1. Make a change to the Inputs sheet
+      2. Copy the code blocks into the raw files
+      3. Run the deploy script and verify your changes.
+  2. Submit a PR with the configuration changes.  Note the PR number
+  3. Return to the google sheet and File ... Version History ... Name current version (use the PR #)
 
 ## Default_value
 The ```Default_value``` property provides the input elements default value.

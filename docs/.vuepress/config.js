@@ -20,6 +20,16 @@ module.exports = {
       {
         title: "Configuration",
         path: '/configuration/',
+        children: [
+          '/configuration/',
+        ]
+      },
+      {
+        title: "LMS Admin",
+        path: '/lms-admin/',
+        children: [
+          '/lms-admin/',
+        ]
       },
       {
         title: "Instructor guide",
