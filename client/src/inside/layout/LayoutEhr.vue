@@ -1,6 +1,6 @@
 <template lang="pug">
   div(class="ehr_layout")
-    div(class="ehr_layout__wrapper")
+    div(class="ehr_layout__wrapper app")
       ui-spinner(:loading="isLoading")
       app-header
       ehr-context-banner
@@ -13,10 +13,10 @@
               ehr-banner
           div(class="ehr_layout__content_page")
             slot Main EHR content for a component will appear here. The component is selected by the router
-      app-footer
-      input(class="checkbox", type="checkbox", v-model="showingSpecial")
-      div(v-show="showingSpecial")
-        ehr-special
+    input(class="checkbox", type="checkbox", v-model="showingSpecial")
+    div(v-show="showingSpecial")
+      ehr-special
+    app-footer
 </template>
 
 <script>
@@ -65,16 +65,21 @@ export default {
 <style lang="scss" scoped>
 @import '../../scss/definitions';
 .ehr_layout {
-  margin: 1px;
+
   background-color: $grey60;
-  &__wrapper {
-    width: 100%;
-  }
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 1px;
+  // &__wrapper {
+    
+  // }
   &__main {
     color: $grey80;
     background-color: $white;
     display: flex;
     overflow: hidden;
+    margin-top: auto;
   }
   &__main_content {
   }
@@ -111,6 +116,15 @@ export default {
     width: 100%;
     margin-left: $panelMarginLeft;
   }
+}
+
+.app {
+  flex: 1 0 auto;
+}
+
+footer {
+  flex-shrink: 0;
+  justify-self: flex-end;
 }
 
 @media(device-width: 768px) and (device-height: 1024px){

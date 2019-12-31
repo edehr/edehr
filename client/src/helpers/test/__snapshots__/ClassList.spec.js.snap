@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ClassName test Basic testing renders as expected 1`] = `
+<div>
+  <div class="classlist-header-group">
+    <div class="course-header">
+      <h2 class="course-header-item"></h2>
+    </div>
+    <div class="course-header-item float-right">
+      <ui-button-stub class="assignmentascsv">Download all assignment evaluation notes<fas-icon-stub icon="download" class="icon-right"></fas-icon-stub>
+      </ui-button-stub>
+      <ui-save-as-prompt-stub title="Save evaluation" message="Save evaluations for undefined" savelabel="OK"></ui-save-as-prompt-stub>
+    </div>
+  </div>
+  <h3></h3>
+  <table>
+    <tr>
+      <td>LMS description:</td>
+      <td>
+        <div></div>
+      </td>
+    </tr>
+    <tr>
+      <td>Assignment name:</td>
+      <td>
+        <ui-link-stub name="assignments" params="[object Object]"><span></span></ui-link-stub>
+      </td>
+    </tr>
+    <tr>
+      <td>Assignment description:</td>
+      <td>
+        <div></div>
+      </td>
+    </tr>
+  </table>
+  <div class="classlist-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Student</th>
+          <th>Submitted</th>
+          <th>Evaluation notes</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+`;

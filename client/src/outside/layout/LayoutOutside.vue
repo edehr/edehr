@@ -3,19 +3,21 @@
     ui-spinner(:loading="isLoading")
     slot(name="outside-header", class="outside-header")
       app-header
-    main(class="outside-main")
-      div(name="mainContent", class="outside-content")
-        div(class="section")
-          slot
-          div(v-if="isDeveloper")
-            div(style="display:none") Is developing content: {{ isDevelopingContent }} developContent: {{ developContent }}
-            input(type="checkbox", id="develop-content", v-model="developContent" )
-            label(for="develop-content") Course designer functionality
-    slot(name="outside-footer", class="outside-footer")
+      div(class="app")
+        main(class="outside-main")
+          div(name="mainContent", class="outside-content")
+            div(class="section")
+              slot
+              div(v-if="isDeveloper")
+                div(style="display:none") Is developing content: {{ isDevelopingContent }} developContent: {{ developContent }}
+                input(type="checkbox", id="develop-content", v-model="developContent" )
+                label(for="develop-content") Course designer functionality
+        slot(name="outside-footer", class="outside-footer")
+      input(class="checkbox", type="checkbox", v-model="showingSpecial")
+      div(v-show="showingSpecial")
+        ehr-special
       app-footer
-    input(class="checkbox", type="checkbox", v-model="showingSpecial")
-    div(v-show="showingSpecial")
-      ehr-special
+   
 </template>
 
 <script>
@@ -76,9 +78,22 @@ export default {
 <style lang="scss" scoped>
 @import '../../scss/definitions';
 
-body {
-  background: $grey10;
+
+  // background: $grey10÷;
+.outside-layout {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  
 }
+
+.app {
+  flex: 1 0 auto;
+}
+footer {
+  flex-shrink: 0;
+}
+
 
 .section {
   padding: 1.5rem;
@@ -87,14 +102,15 @@ body {
   display: inline-block;
   padding-right: 1rem;
 }
-.outside-layout {
-  .outside-header {
-  }
-  .outside-content {
-    margin: 0;
-  }
-  .outside-nav {
-    padding: 1.5rem 0 0 1.5rem;
-  }
-}
+// .outside-layout {
+  
+//   .outside-header {
+//   }
+//   .outside-content {
+//     margin: 0;
+//   }
+//   .outside-nav {
+//     padding: 1.5rem 0 0 1.5rem;
+//   }
+// }
 </style>
