@@ -10,6 +10,7 @@ import AssignmentController from '../mcr/assignment/assignment-controller'
 import ConsumerController from '../mcr/consumer/consumer-controller'
 import IntegrationController from '../mcr/integration/integration-controller'
 import LTIController from '../mcr/lti/lti'
+import LookaheadController from '../mcr/lookahead/lookahead-controller'
 import UserController from '../mcr/user/user-controller.js'
 import VisitController from '../mcr/visit/visit-controller'
 import SeedDataController from '../mcr/seed/seedData-controller'
@@ -60,6 +61,7 @@ export function apiMiddle (app, config) {
   const act = new ActivityController()
   const acc = new ActivityDataController()
   const as = new AssignmentController(config)
+  const look = new LookaheadController()
   const vc = new VisitController()
   const cc = new ConsumerController()
   const uc = new UserController(config)
@@ -102,6 +104,7 @@ export function apiMiddle (app, config) {
       api.use('/activity-data', cors(corsOptions), acc.route())
       api.use('/assignments', cors(corsOptions), as.route())
       api.use('/consumers', cors(corsOptions), cc.route())
+      api.use('/lookahead', cors(corsOptions), look.route())
       api.use('/users', cors(corsOptions), uc.route())
       api.use('/visits', cors(corsOptions), vc.route())
       api.use('/seed-data', cors(corsOptions), sd.route())
@@ -110,6 +113,7 @@ export function apiMiddle (app, config) {
       api.use('/api/activity-data', cors(corsOptions), acc.route())
       api.use('/api/assignments', cors(corsOptions), as.route())
       api.use('/api/consumers', cors(corsOptions), cc.route())
+      api.use('/api/lookahead', cors(corsOptions), look.route())
       api.use('/api/users', cors(corsOptions), uc.route())
       api.use('/api/visits', cors(corsOptions), vc.route())
       api.use('/api/seed-data', cors(corsOptions), sd.route())
