@@ -13,7 +13,8 @@ const rl = readLine.createInterface({
   terminal: false
 })
 
-console.log(header())
+// no header needed
+//console.log(header())
 
 rl.on('line', function (line) {
   const cL = parseLine(line)
