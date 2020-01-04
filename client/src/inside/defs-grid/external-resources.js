@@ -155,7 +155,7 @@ export default function () {
               gChildren: [
                 {
                   label: 'Admissions',
-                  elementKey: 'subgroup116',
+                  elementKey: 'subgroup130',
                   sgChildren: [
                     'admissions1_1',
                     'admissions2_1',
@@ -164,7 +164,7 @@ export default function () {
                 },
                 {
                   label: 'Pain assessment',
-                  elementKey: 'subgroup117',
+                  elementKey: 'subgroup131',
                   sgChildren: [
                     'painAssessment1_1',
                     'painAssessment2_1'
@@ -172,7 +172,7 @@ export default function () {
                 },
                 {
                   label: 'Neurological assessment',
-                  elementKey: 'subgroup118',
+                  elementKey: 'subgroup132',
                   sgChildren: [
                     'neuroAssessment1_1',
                     'neuroAssessment2_1',
@@ -181,7 +181,7 @@ export default function () {
                 },
                 {
                   label: 'Falls risk',
-                  elementKey: 'subgroup119',
+                  elementKey: 'subgroup133',
                   sgChildren: [
                     'fallRisk1_1',
                     'fallRisk2_1'
@@ -189,14 +189,14 @@ export default function () {
                 },
                 {
                   label: 'Notes',
-                  elementKey: 'subgroup120',
+                  elementKey: 'subgroup134',
                   sgChildren: [
                     'notes1_1'
                   ]
                 },
                 {
                   label: 'Educational resources',
-                  elementKey: 'subgroup121',
+                  elementKey: 'subgroup135',
                   sgChildren: [
                     'educational1_1',
                     'educational2_1'
@@ -204,14 +204,14 @@ export default function () {
                 },
                 {
                   label: 'Wound assessment',
-                  elementKey: 'subgroup122',
+                  elementKey: 'subgroup136',
                   sgChildren: [
                     'wound1_1'
                   ]
                 },
                 {
                   label: 'Medication',
-                  elementKey: 'subgroup123',
+                  elementKey: 'subgroup137',
                   sgChildren: [
                     'medication1_1'
                   ]
@@ -345,15 +345,19 @@ export default function () {
           mandatory: 'yes',
           options: [
             {
+              key: 'M',
               text: 'M'
             },
             {
+              key: '1',
               text: '1'
             },
             {
+              key: '2',
               text: '2'
             },
             {
+              key: '3',
               text: '3'
             }
           ],

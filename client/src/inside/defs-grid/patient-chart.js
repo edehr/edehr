@@ -194,12 +194,15 @@ export default function () {
           label: 'Status',
           options: [
             {
+              key: 'Active',
               text: 'Active'
             },
             {
+              key: 'In progress',
               text: 'In progress'
             },
             {
+              key: 'Complete',
               text: 'Complete'
             }
           ],
@@ -375,7 +378,7 @@ export default function () {
               gIndex: '1',
               gChildren: [
                 {
-                  elementKey: 'subgroup107',
+                  elementKey: 'subgroup121',
                   sgChildren: [
                     'labReport1_1',
                     'labReport2_1',

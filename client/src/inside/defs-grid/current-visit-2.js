@@ -50,27 +50,35 @@ export default function () {
           label: 'Urinary symptoms',
           options: [
             {
+              key: 'None',
               text: 'None'
             },
             {
+              key: 'Increased frequency',
               text: 'Increased frequency'
             },
             {
+              key: 'Dysuria',
               text: 'Dysuria'
             },
             {
+              key: 'Hermaturia',
               text: 'Hermaturia'
             },
             {
+              key: 'Oliguria',
               text: 'Oliguria'
             },
             {
+              key: 'Incontinence',
               text: 'Incontinence'
             },
             {
+              key: 'Retention',
               text: 'Retention'
             },
             {
+              key: 'Distention',
               text: 'Distention'
             }
           ],
@@ -109,18 +117,23 @@ export default function () {
           label: 'Urine colour',
           options: [
             {
+              key: 'Pale yellow',
               text: 'Pale yellow'
             },
             {
+              key: 'Dark yellow',
               text: 'Dark yellow'
             },
             {
+              key: 'Amber',
               text: 'Amber'
             },
             {
+              key: 'Red/blood',
               text: 'Red/blood'
             },
             {
+              key: 'Other',
               text: 'Other'
             }
           ],
@@ -138,15 +151,19 @@ export default function () {
           label: 'Urine consistency',
           options: [
             {
+              key: 'Clear',
               text: 'Clear'
             },
             {
+              key: 'Cloudy',
               text: 'Cloudy'
             },
             {
+              key: 'Foamy',
               text: 'Foamy'
             },
             {
+              key: 'Other',
               text: 'Other'
             }
           ],
@@ -164,9 +181,11 @@ export default function () {
           label: 'Diaper',
           options: [
             {
+              key: 'Yes',
               text: 'Yes'
             },
             {
+              key: 'No',
               text: 'No'
             }
           ],
@@ -185,9 +204,11 @@ export default function () {
           label: 'Foley',
           options: [
             {
+              key: 'Yes',
               text: 'Yes'
             },
             {
+              key: 'No',
               text: 'No'
             }
           ],
@@ -236,9 +257,11 @@ export default function () {
           label: 'Pelvic pain',
           options: [
             {
+              key: 'Yes',
               text: 'Yes'
             },
             {
+              key: 'No',
               text: 'No'
             }
           ],
@@ -262,12 +285,15 @@ export default function () {
           label: 'Pelvic pain source',
           options: [
             {
+              key: 'Observed',
               text: 'Observed'
             },
             {
+              key: 'As per patient observed',
               text: 'As per patient observed'
             },
             {
+              key: 'Not observed',
               text: 'Not observed'
             }
           ],
@@ -291,9 +317,11 @@ export default function () {
           label: 'Discharge',
           options: [
             {
+              key: 'Discharge',
               text: 'Discharge'
             },
             {
+              key: 'Bleeding',
               text: 'Bleeding'
             }
           ],
@@ -331,12 +359,15 @@ export default function () {
           label: 'Pregnant',
           options: [
             {
+              key: 'Yes',
               text: 'Yes'
             },
             {
+              key: 'No',
               text: 'No'
             },
             {
+              key: 'Unknown',
               text: 'Unknown'
             }
           ],
@@ -386,7 +417,7 @@ export default function () {
           fqn: 'genitourinary.comments'
         }
       ],
-      generated: '2019-12-27T11:25:53-08:00',
+      generated: '2020-01-02T19:02:00-08:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -717,9 +748,11 @@ export default function () {
           label: 'Swelling',
           options: [
             {
+              key: 'Present',
               text: 'Present'
             },
             {
+              key: 'Absent',
               text: 'Absent'
             }
           ],
@@ -735,9 +768,11 @@ export default function () {
           label: 'Pain',
           options: [
             {
+              key: 'Present',
               text: 'Present'
             },
             {
+              key: 'Absent',
               text: 'Absent'
             }
           ],
@@ -753,9 +788,11 @@ export default function () {
           label: 'Deformity',
           options: [
             {
+              key: 'Present',
               text: 'Present'
             },
             {
+              key: 'Absent',
               text: 'Absent'
             }
           ],
@@ -771,12 +808,15 @@ export default function () {
           label: 'Movement',
           options: [
             {
+              key: 'Normal',
               text: 'Normal'
             },
             {
+              key: 'Decreased',
               text: 'Decreased'
             },
             {
+              key: 'Absent',
               text: 'Absent'
             }
           ],
@@ -792,12 +832,15 @@ export default function () {
           label: 'Sensation',
           options: [
             {
+              key: 'Present',
               text: 'Present'
             },
             {
+              key: 'Absent',
               text: 'Absent'
             },
             {
+              key: 'Numb',
               text: 'Numb'
             }
           ],
@@ -813,18 +856,23 @@ export default function () {
           label: 'Pulse',
           options: [
             {
+              key: 'Absent',
               text: 'Absent'
             },
             {
+              key: 'Weak',
               text: 'Weak'
             },
             {
+              key: 'Moderate',
               text: 'Moderate'
             },
             {
+              key: 'Strong',
               text: 'Strong'
             },
             {
+              key: 'Bounding',
               text: 'Bounding'
             }
           ],
@@ -840,12 +888,15 @@ export default function () {
           label: 'Colour',
           options: [
             {
+              key: 'Flesh',
               text: 'Flesh'
             },
             {
+              key: 'Pale',
               text: 'Pale'
             },
             {
+              key: 'Cynanotic',
               text: 'Cynanotic'
             }
           ],
@@ -862,12 +913,15 @@ export default function () {
           label: 'Temp',
           options: [
             {
+              key: 'Hot',
               text: 'Hot'
             },
             {
+              key: 'Warm',
               text: 'Warm'
             },
             {
+              key: 'Cold',
               text: 'Cold'
             }
           ],
@@ -876,10 +930,10 @@ export default function () {
           fqn: 'musculoskeletal.temp'
         },
         {
-          elementKey: 'spacer5',
+          elementKey: 'spacer72',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'musculoskeletal.spacer5'
+          fqn: 'musculoskeletal.spacer72'
         },
         {
           elementKey: 'useOfAmbulatoryAid',
@@ -890,9 +944,11 @@ export default function () {
           label: 'Use of ambulatory aid',
           options: [
             {
+              key: 'Yes',
               text: 'Yes'
             },
             {
+              key: 'No',
               text: 'No'
             }
           ],
@@ -909,21 +965,27 @@ export default function () {
           label: 'Type',
           options: [
             {
+              key: 'Walker',
               text: 'Walker'
             },
             {
+              key: 'Cane',
               text: 'Cane'
             },
             {
+              key: 'One crutch',
               text: 'One crutch'
             },
             {
+              key: 'Two crutches',
               text: 'Two crutches'
             },
             {
+              key: 'Wheelchair',
               text: 'Wheelchair'
             },
             {
+              key: 'Other',
               text: 'Other'
             }
           ],
@@ -944,7 +1006,7 @@ export default function () {
           fqn: 'musculoskeletal.comments'
         }
       ],
-      generated: '2019-12-27T11:25:53-08:00',
+      generated: '2020-01-02T19:02:00-08:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1068,7 +1130,7 @@ export default function () {
                   'pulse',
                   'colour',
                   'temp',
-                  'spacer5',
+                  'spacer72',
                   'useOfAmbulatoryAid',
                   'type'
                 ]
@@ -1314,7 +1376,7 @@ export default function () {
           fqn: 'pain.comments'
         }
       ],
-      generated: '2019-12-27T11:25:53-08:00',
+      generated: '2020-01-02T19:02:00-08:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1588,12 +1650,15 @@ export default function () {
           label: 'From our experience in the hospital, we know that domestic violence can be a problem. Is this a factor in your life?',
           options: [
             {
+              key: 'Didn\'t ask',
               text: 'Didn\'t ask'
             },
             {
+              key: 'Yes',
               text: 'Yes'
             },
             {
+              key: 'No',
               text: 'No'
             }
           ],
@@ -1609,12 +1674,15 @@ export default function () {
           label: 'Would you like to speak to a social worker?',
           options: [
             {
+              key: 'Didn\'t ask',
               text: 'Didn\'t ask'
             },
             {
+              key: 'Yes',
               text: 'Yes'
             },
             {
+              key: 'No',
               text: 'No'
             }
           ],
@@ -1631,9 +1699,11 @@ export default function () {
           label: 'Hygiene',
           options: [
             {
+              key: 'Good',
               text: 'Good'
             },
             {
+              key: 'Requires attention',
               text: 'Requires attention'
             }
           ],
@@ -1660,24 +1730,31 @@ export default function () {
           label: 'Behaviour',
           options: [
             {
+              key: 'Calm',
               text: 'Calm'
             },
             {
+              key: 'Cooperative',
               text: 'Cooperative'
             },
             {
+              key: 'Agitated',
               text: 'Agitated'
             },
             {
+              key: 'Flat affect',
               text: 'Flat affect'
             },
             {
+              key: 'Threatening',
               text: 'Threatening'
             },
             {
+              key: 'Physically agressive',
               text: 'Physically agressive'
             },
             {
+              key: 'Uncommunicative',
               text: 'Uncommunicative'
             }
           ],
@@ -1694,15 +1771,19 @@ export default function () {
           label: 'Hallucinations',
           options: [
             {
+              key: 'None',
               text: 'None'
             },
             {
+              key: 'Visual',
               text: 'Visual'
             },
             {
+              key: 'Auditory',
               text: 'Auditory'
             },
             {
+              key: 'Olafactory',
               text: 'Olafactory'
             }
           ],
@@ -1719,12 +1800,15 @@ export default function () {
           label: 'Suicidal',
           options: [
             {
+              key: 'None',
               text: 'None'
             },
             {
+              key: 'Ideation',
               text: 'Ideation'
             },
             {
+              key: 'Attempt',
               text: 'Attempt'
             }
           ],
@@ -1740,9 +1824,11 @@ export default function () {
           label: 'Homicidal',
           options: [
             {
+              key: 'None',
               text: 'None'
             },
             {
+              key: 'Ideation',
               text: 'Ideation'
             }
           ],
@@ -1757,9 +1843,11 @@ export default function () {
           label: 'Speech',
           options: [
             {
+              key: 'Clear and coherent',
               text: 'Clear and coherent'
             },
             {
+              key: 'Other',
               text: 'Other'
             }
           ],
@@ -1817,9 +1905,11 @@ export default function () {
           label: 'Patient restrained',
           options: [
             {
+              key: 'Yes',
               text: 'Yes'
             },
             {
+              key: 'No',
               text: 'No'
             }
           ],
@@ -1870,7 +1960,7 @@ export default function () {
           fqn: 'biopsychosocial.generalComments'
         }
       ],
-      generated: '2019-12-27T11:25:53-08:00',
+      generated: '2020-01-02T19:02:00-08:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2211,18 +2301,23 @@ export default function () {
           mandatory: '?',
           options: [
             {
+              key: 'Ordered',
               text: 'Ordered'
             },
             {
+              key: 'In process',
               text: 'In process'
             },
             {
+              key: 'Cancelled',
               text: 'Cancelled'
             },
             {
+              key: 'Completed',
               text: 'Completed'
             },
             {
+              key: 'Discontinued',
               text: 'Discontinued'
             }
           ],
@@ -2240,7 +2335,7 @@ export default function () {
           fqn: 'nonmedOrders.comment'
         }
       ],
-      generated: '2019-12-27T11:25:53-08:00',
+      generated: '2020-01-02T19:02:00-08:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2402,10 +2497,10 @@ export default function () {
           fqn: 'referrals.referralProfession'
         },
         {
-          elementKey: 'spacer34',
+          elementKey: 'spacer101',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'referrals.spacer34'
+          fqn: 'referrals.spacer101'
         },
         {
           elementKey: 'appointmentDate',
@@ -2435,9 +2530,11 @@ export default function () {
           label: 'Status',
           options: [
             {
+              key: 'Active',
               text: 'Active'
             },
             {
+              key: 'Discharged',
               text: 'Discharged'
             }
           ],
@@ -2446,7 +2543,7 @@ export default function () {
           fqn: 'referrals.status'
         }
       ],
-      generated: '2019-12-27T11:25:53-08:00',
+      generated: '2020-01-02T19:02:00-08:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2520,7 +2617,7 @@ export default function () {
                 gChildren: [
                   'referralName',
                   'referralProfession',
-                  'spacer34',
+                  'spacer101',
                   'appointmentDate',
                   'appointmentTime',
                   'status'
@@ -2601,10 +2698,10 @@ export default function () {
           fqn: 'labRequisitions.requisition'
         },
         {
-          elementKey: 'spacer37',
+          elementKey: 'spacer104',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'labRequisitions.spacer37'
+          fqn: 'labRequisitions.spacer104'
         },
         {
           elementKey: 'ordered',
@@ -2616,7 +2713,7 @@ export default function () {
           fqn: 'labRequisitions.ordered'
         }
       ],
-      generated: '2019-12-27T11:25:53-08:00',
+      generated: '2020-01-02T19:02:00-08:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2662,7 +2759,7 @@ export default function () {
                 gChildren: [
                   'requisition',
                   'requisition',
-                  'spacer37',
+                  'spacer104',
                   'ordered'
                 ]
               }
@@ -2758,30 +2855,39 @@ export default function () {
           label: 'Route',
           options: [
             {
+              key: 'Oral',
               text: 'Oral'
             },
             {
+              key: 'Sublingual',
               text: 'Sublingual'
             },
             {
+              key: 'Inhalation',
               text: 'Inhalation'
             },
             {
+              key: 'Nasal',
               text: 'Nasal'
             },
             {
+              key: 'Rectal',
               text: 'Rectal'
             },
             {
+              key: 'Vaginal',
               text: 'Vaginal'
             },
             {
+              key: 'Intravenous',
               text: 'Intravenous'
             },
             {
+              key: 'Intramuscular',
               text: 'Intramuscular'
             },
             {
+              key: 'Subcutaneous',
               text: 'Subcutaneous'
             }
           ],
@@ -2815,15 +2921,19 @@ export default function () {
           label: 'Administration',
           options: [
             {
+              key: 'Scheduled',
               text: 'Scheduled'
             },
             {
+              key: 'PRN (as needed)',
               text: 'PRN (as needed)'
             },
             {
+              key: 'Once',
               text: 'Once'
             },
             {
+              key: 'Stat',
               text: 'Stat'
             }
           ],
@@ -2838,12 +2948,15 @@ export default function () {
           label: 'Schedule time',
           options: [
             {
+              key: 'Morning',
               text: 'Morning'
             },
             {
+              key: 'Mid day',
               text: 'Mid day'
             },
             {
+              key: 'Bedtime',
               text: 'Bedtime'
             }
           ],
@@ -2879,7 +2992,7 @@ export default function () {
           fqn: 'medicationOrders.notes'
         }
       ],
-      generated: '2019-12-27T11:25:53-08:00',
+      generated: '2020-01-02T19:02:00-08:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -3044,15 +3157,19 @@ export default function () {
           label: 'Medication status',
           options: [
             {
+              key: 'Active',
               text: 'Active'
             },
             {
+              key: 'Hold',
               text: 'Hold'
             },
             {
+              key: 'Discontinued',
               text: 'Discontinued'
             },
             {
+              key: '',
               text: ''
             }
           ],
@@ -3067,15 +3184,19 @@ export default function () {
           label: 'Administration status',
           options: [
             {
+              key: 'Administered',
               text: 'Administered'
             },
             {
+              key: 'Refused',
               text: 'Refused'
             },
             {
+              key: 'Missed',
               text: 'Missed'
             },
             {
+              key: 'Skipped',
               text: 'Skipped'
             }
           ],
@@ -3108,6 +3229,7 @@ export default function () {
           label: 'Today\'s plan',
           options: [
             {
+              key: '[Today\'s day] plan',
               text: '[Today\'s day] plan'
             }
           ],
@@ -3122,6 +3244,7 @@ export default function () {
           label: 'Today\'s given',
           options: [
             {
+              key: '[Today\'s day] given',
               text: '[Today\'s day] given'
             }
           ],
@@ -3159,7 +3282,7 @@ export default function () {
           helperHtml: '<p>Enter time delivered or say if not delivered.</p>'
         }
       ],
-      generated: '2019-12-27T11:25:53-08:00',
+      generated: '2020-01-02T19:02:00-08:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -3289,34 +3412,41 @@ export default function () {
           label: 'Discharging physician/NP',
           options: [
             {
+              key: 'Dr. Notley',
               text: 'Dr. Notley'
             },
             {
+              key: 'Dr. Hunicutt',
               text: 'Dr. Hunicutt'
             },
             {
+              key: 'Dr. Lee',
               text: 'Dr. Lee'
             },
             {
+              key: 'Dr. Malik',
               text: 'Dr. Malik'
             },
             {
+              key: 'Dr. Ng',
               text: 'Dr. Ng'
             },
             {
+              key: 'Dr. Walker',
               text: 'Dr. Walker'
             },
             {
+              key: 'Dr. Brooks',
               text: 'Dr. Brooks'
             }
           ],
           fqn: 'dischargeSummary.dischargingPhysician/np'
         },
         {
-          elementKey: 'spacer44',
+          elementKey: 'spacer111',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'dischargeSummary.spacer44'
+          fqn: 'dischargeSummary.spacer111'
         },
         {
           elementKey: 'clinicalSummary',
@@ -3342,10 +3472,10 @@ export default function () {
           fqn: 'dischargeSummary.dischargeEducation'
         },
         {
-          elementKey: 'spacer46',
+          elementKey: 'spacer113',
           formIndex: '2',
           inputType: 'spacer',
-          fqn: 'dischargeSummary.spacer46'
+          fqn: 'dischargeSummary.spacer113'
         },
         {
           elementKey: 'dischargeDay',
@@ -3371,12 +3501,15 @@ export default function () {
           label: 'Discharged to',
           options: [
             {
+              key: 'Home',
               text: 'Home'
             },
             {
+              key: 'Expired',
               text: 'Expired'
             },
             {
+              key: 'Transferred',
               text: 'Transferred'
             }
           ],
@@ -3396,22 +3529,26 @@ export default function () {
           label: 'Leaving by',
           options: [
             {
+              key: 'Taxi',
               text: 'Taxi'
             },
             {
+              key: 'Family',
               text: 'Family'
             },
             {
+              key: 'Ambulance',
               text: 'Ambulance'
             },
             {
+              key: 'Walk out/wheelchair',
               text: 'Walk out/wheelchair'
             }
           ],
           fqn: 'dischargeSummary.leavingBy'
         }
       ],
-      generated: '2019-12-27T11:25:53-08:00',
+      generated: '2020-01-02T19:02:00-08:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -3423,7 +3560,7 @@ export default function () {
               gChildren: [
                 'admissionDay',
                 'dischargingPhysician/np',
-                'spacer44',
+                'spacer111',
                 'clinicalSummary'
               ]
             }
@@ -3439,7 +3576,7 @@ export default function () {
               gChildren: [
                 'dischargeDiagnosis',
                 'dischargeEducation',
-                'spacer46',
+                'spacer113',
                 'dischargeDay',
                 'dischargeTime',
                 'dischargedTo',
@@ -3466,19 +3603,22 @@ export default function () {
           label: 'Payment type',
           options: [
             {
+              key: 'MSP',
               text: 'MSP'
             },
             {
+              key: 'Third party',
               text: 'Third party'
             },
             {
+              key: 'Federal',
               text: 'Federal'
             }
           ],
           fqn: 'billing.paymentType'
         }
       ],
-      generated: '2019-12-27T11:25:53-08:00',
+      generated: '2020-01-02T19:02:00-08:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -3542,15 +3682,19 @@ export default function () {
           label: 'Wound label',
           options: [
             {
+              key: 'Wound A',
               text: 'Wound A'
             },
             {
+              key: 'Wound B',
               text: 'Wound B'
             },
             {
+              key: 'Wound C',
               text: 'Wound C'
             },
             {
+              key: 'Wound D',
               text: 'Wound D'
             }
           ],
@@ -3566,12 +3710,15 @@ export default function () {
           label: 'Goal of care',
           options: [
             {
+              key: 'To heal',
               text: 'To heal'
             },
             {
+              key: 'To maintain',
               text: 'To maintain'
             },
             {
+              key: 'To monitor/manage',
               text: 'To monitor/manage'
             }
           ],
@@ -3581,10 +3728,10 @@ export default function () {
           fqn: 'integumentaryAssessment.goalOfCare'
         },
         {
-          elementKey: 'spacer9',
+          elementKey: 'spacer76',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'integumentaryAssessment.spacer9'
+          fqn: 'integumentaryAssessment.spacer76'
         },
         {
           elementKey: 'woundLocation',
@@ -3613,24 +3760,31 @@ export default function () {
           label: 'Wound type/etiology',
           options: [
             {
+              key: 'Pressure injury',
               text: 'Pressure injury'
             },
             {
+              key: 'Venous ulcer',
               text: 'Venous ulcer'
             },
             {
+              key: 'Arterial ulcer',
               text: 'Arterial ulcer'
             },
             {
+              key: 'Diabetic ulcer',
               text: 'Diabetic ulcer'
             },
             {
+              key: 'Surgical secondary intent',
               text: 'Surgical secondary intent'
             },
             {
+              key: 'Skin tear',
               text: 'Skin tear'
             },
             {
+              key: 'Other',
               text: 'Other'
             }
           ],
@@ -3646,21 +3800,27 @@ export default function () {
           label: 'Stage',
           options: [
             {
+              key: 'Stage 1',
               text: 'Stage 1'
             },
             {
+              key: 'Stage 2',
               text: 'Stage 2'
             },
             {
+              key: 'Stage 3',
               text: 'Stage 3'
             },
             {
+              key: 'Stage 4',
               text: 'Stage 4'
             },
             {
+              key: 'Stage X (unstageable)',
               text: 'Stage X (unstageable)'
             },
             {
+              key: 'Stage SDTI (Supected Deep Tissue Injury)',
               text: 'Stage SDTI (Supected Deep Tissue Injury)'
             }
           ],
@@ -3758,10 +3918,10 @@ export default function () {
           fqn: 'integumentaryAssessment.other'
         },
         {
-          elementKey: 'spacer10',
+          elementKey: 'spacer77',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'integumentaryAssessment.spacer10'
+          fqn: 'integumentaryAssessment.spacer77'
         },
         {
           elementKey: 'woundBedCalculation',
@@ -3771,6 +3931,7 @@ export default function () {
           label: '<b>Wound bed calculation</b>',
           options: [
             {
+              key: '=42+42+42+42+42+42+42+42',
               text: '=42+42+42+42+42+42+42+42'
             }
           ],
@@ -3786,16 +3947,16 @@ export default function () {
           fqn: 'integumentaryAssessment.aLabelClock'
         },
         {
-          elementKey: 'spacer11',
+          elementKey: 'spacer78',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'integumentaryAssessment.spacer11'
+          fqn: 'integumentaryAssessment.spacer78'
         },
         {
-          elementKey: 'spacer12',
+          elementKey: 'spacer79',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'integumentaryAssessment.spacer12'
+          fqn: 'integumentaryAssessment.spacer79'
         },
         {
           elementKey: 'length',
@@ -3842,39 +4003,51 @@ export default function () {
           label: 'Location',
           options: [
             {
+              key: '1',
               text: '1'
             },
             {
+              key: '2',
               text: '2'
             },
             {
+              key: '3',
               text: '3'
             },
             {
+              key: '4',
               text: '4'
             },
             {
+              key: '5',
               text: '5'
             },
             {
+              key: '6',
               text: '6'
             },
             {
+              key: '7',
               text: '7'
             },
             {
+              key: '8',
               text: '8'
             },
             {
+              key: '9',
               text: '9'
             },
             {
+              key: '10',
               text: '10'
             },
             {
+              key: '11',
               text: '11'
             },
             {
+              key: '12',
               text: '12'
             }
           ],
@@ -3885,10 +4058,10 @@ export default function () {
           helperHtml: '<p>O\'clock</p>'
         },
         {
-          elementKey: 'spacer13',
+          elementKey: 'spacer80',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'integumentaryAssessment.spacer13'
+          fqn: 'integumentaryAssessment.spacer80'
         },
         {
           elementKey: 'sinusDepth2',
@@ -3907,39 +4080,51 @@ export default function () {
           label: 'Location',
           options: [
             {
+              key: '1',
               text: '1'
             },
             {
+              key: '2',
               text: '2'
             },
             {
+              key: '3',
               text: '3'
             },
             {
+              key: '4',
               text: '4'
             },
             {
+              key: '5',
               text: '5'
             },
             {
+              key: '6',
               text: '6'
             },
             {
+              key: '7',
               text: '7'
             },
             {
+              key: '8',
               text: '8'
             },
             {
+              key: '9',
               text: '9'
             },
             {
+              key: '10',
               text: '10'
             },
             {
+              key: '11',
               text: '11'
             },
             {
+              key: '12',
               text: '12'
             }
           ],
@@ -3950,10 +4135,10 @@ export default function () {
           helperHtml: '<p>O\'clock</p>'
         },
         {
-          elementKey: 'spacer14',
+          elementKey: 'spacer81',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'integumentaryAssessment.spacer14'
+          fqn: 'integumentaryAssessment.spacer81'
         },
         {
           elementKey: 'underminingDepth1',
@@ -3972,39 +4157,51 @@ export default function () {
           label: 'Location',
           options: [
             {
+              key: '1',
               text: '1'
             },
             {
+              key: '2',
               text: '2'
             },
             {
+              key: '3',
               text: '3'
             },
             {
+              key: '4',
               text: '4'
             },
             {
+              key: '5',
               text: '5'
             },
             {
+              key: '6',
               text: '6'
             },
             {
+              key: '7',
               text: '7'
             },
             {
+              key: '8',
               text: '8'
             },
             {
+              key: '9',
               text: '9'
             },
             {
+              key: '10',
               text: '10'
             },
             {
+              key: '11',
               text: '11'
             },
             {
+              key: '12',
               text: '12'
             }
           ],
@@ -4015,10 +4212,10 @@ export default function () {
           helperHtml: '<p>O\'clock</p>'
         },
         {
-          elementKey: 'spacer15',
+          elementKey: 'spacer82',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'integumentaryAssessment.spacer15'
+          fqn: 'integumentaryAssessment.spacer82'
         },
         {
           elementKey: 'underminingDepth2',
@@ -4037,39 +4234,51 @@ export default function () {
           label: 'Location',
           options: [
             {
+              key: '1',
               text: '1'
             },
             {
+              key: '2',
               text: '2'
             },
             {
+              key: '3',
               text: '3'
             },
             {
+              key: '4',
               text: '4'
             },
             {
+              key: '5',
               text: '5'
             },
             {
+              key: '6',
               text: '6'
             },
             {
+              key: '7',
               text: '7'
             },
             {
+              key: '8',
               text: '8'
             },
             {
+              key: '9',
               text: '9'
             },
             {
+              key: '10',
               text: '10'
             },
             {
+              key: '11',
               text: '11'
             },
             {
+              key: '12',
               text: '12'
             }
           ],
@@ -4086,15 +4295,19 @@ export default function () {
           label: 'Exudate amount',
           options: [
             {
+              key: 'None',
               text: 'None'
             },
             {
+              key: 'Scant/small',
               text: 'Scant/small'
             },
             {
+              key: 'Moderate',
               text: 'Moderate'
             },
             {
+              key: 'Large/copious',
               text: 'Large/copious'
             }
           ],
@@ -4109,15 +4322,19 @@ export default function () {
           label: 'Exudate type',
           options: [
             {
+              key: 'Serous',
               text: 'Serous'
             },
             {
+              key: 'Sanguineous',
               text: 'Sanguineous'
             },
             {
+              key: 'Purulent',
               text: 'Purulent'
             },
             {
+              key: 'Other',
               text: 'Other'
             }
           ],
@@ -4133,9 +4350,11 @@ export default function () {
           label: 'Odour present after cleansing',
           options: [
             {
+              key: 'Yes',
               text: 'Yes'
             },
             {
+              key: 'No',
               text: 'No'
             }
           ],
@@ -4151,15 +4370,19 @@ export default function () {
           label: 'Wound edge',
           options: [
             {
+              key: 'Attached (flush with wound bed or sloping edge)',
               text: 'Attached (flush with wound bed or sloping edge)'
             },
             {
+              key: 'Non-attached (edge appears as a cliff)',
               text: 'Non-attached (edge appears as a cliff)'
             },
             {
+              key: 'Rolled (curled under)',
               text: 'Rolled (curled under)'
             },
             {
+              key: 'Epithelialization',
               text: 'Epithelialization'
             }
           ],
@@ -4174,27 +4397,35 @@ export default function () {
           label: 'Peri-wound skin',
           options: [
             {
+              key: 'Intact',
               text: 'Intact'
             },
             {
+              key: 'Erythema (reddened) in cm',
               text: 'Erythema (reddened) in cm'
             },
             {
+              key: 'Indurated (firmness around wound) in cm',
               text: 'Indurated (firmness around wound) in cm'
             },
             {
+              key: 'Macerated (white, waterlogged)',
               text: 'Macerated (white, waterlogged)'
             },
             {
+              key: 'Excoriated/Denuded (superficial loss of tissue)',
               text: 'Excoriated/Denuded (superficial loss of tissue)'
             },
             {
+              key: 'Callused',
               text: 'Callused'
             },
             {
+              key: 'Fragile',
               text: 'Fragile'
             },
             {
+              key: 'Other',
               text: 'Other'
             }
           ],
@@ -4240,10 +4471,10 @@ export default function () {
           helperHtml: '<p>Any depth 1cm or greater, count packing pieces</p>'
         },
         {
-          elementKey: 'spacer18',
+          elementKey: 'spacer85',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'integumentaryAssessment.spacer18'
+          fqn: 'integumentaryAssessment.spacer85'
         },
         {
           elementKey: 'treatmentComplete',
@@ -4252,9 +4483,11 @@ export default function () {
           label: 'Treatments as per plan of care',
           options: [
             {
+              key: 'Yes',
               text: 'Yes'
             },
             {
+              key: 'No',
               text: 'No'
             }
           ],
@@ -4263,7 +4496,7 @@ export default function () {
           fqn: 'integumentaryAssessment.treatmentComplete'
         }
       ],
-      generated: '2019-12-27T11:25:53-08:00',
+      generated: '2020-01-02T19:02:00-08:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -4551,7 +4784,7 @@ export default function () {
                 gChildren: [
                   'woundLabel',
                   'goalOfCare',
-                  'spacer9',
+                  'spacer76',
                   'woundLocation',
                   'woundDayOnset',
                   'woundType'
@@ -4579,7 +4812,7 @@ export default function () {
                   'underlying',
                   'notVisible',
                   'other',
-                  'spacer10',
+                  'spacer77',
                   'woundBedCalculation'
                 ]
               },
@@ -4589,20 +4822,20 @@ export default function () {
                 gIndex: '5',
                 gChildren: [
                   'aLabelClock',
-                  'spacer11',
-                  'spacer12',
+                  'spacer78',
+                  'spacer79',
                   'length',
                   'width',
                   'depth',
                   'sinusDepth1',
                   'sinusDepthLocation1',
-                  'spacer13',
+                  'spacer80',
                   'sinusDepth2',
                   'sinusDepthLocation2',
-                  'spacer14',
+                  'spacer81',
                   'underminingDepth1',
                   'underminingDepthLocation1',
-                  'spacer15',
+                  'spacer82',
                   'underminingDepth2',
                   'underminingDepthLocation2'
                 ]
@@ -4626,7 +4859,7 @@ export default function () {
                 gChildren: [
                   'packingOut',
                   'packinIn',
-                  'spacer18',
+                  'spacer85',
                   'treatmentComplete'
                 ]
               }
