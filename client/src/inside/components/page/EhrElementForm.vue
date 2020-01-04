@@ -35,7 +35,7 @@
       div(class="select")
         select(v-bind:name="elementKey", v-bind:disabled="disabled", v-model="inputVal")
           option(value="")
-          option(v-for="option in options", :key="option.text", v-bind:value="option.text") {{ option.text}}
+          option(v-for="option in options", :key="option.key", v-bind:value="option.key") {{ option.text}}
 
     div(v-else-if="isType('text')", class="text_input_wrapper")
       ehr-page-form-label(:element="element", css="text_label")

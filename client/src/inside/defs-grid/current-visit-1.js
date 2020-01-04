@@ -35,24 +35,31 @@ export default function () {
           mandatory: true,
           options: [
             {
+              key: 'Admission in progress',
               text: 'Admission in progress'
             },
             {
+              key: 'Admitted',
               text: 'Admitted'
             },
             {
+              key: 'Inpatient',
               text: 'Inpatient'
             },
             {
+              key: 'Outpatient',
               text: 'Outpatient'
             },
             {
+              key: 'Surgical day care',
               text: 'Surgical day care'
             },
             {
+              key: 'Discharge pending',
               text: 'Discharge pending'
             },
             {
+              key: 'Discharged',
               text: 'Discharged'
             }
           ],
@@ -329,12 +336,15 @@ export default function () {
           label: 'Patient position',
           options: [
             {
+              key: 'Supine',
               text: 'Supine'
             },
             {
+              key: 'Sitting',
               text: 'Sitting'
             },
             {
+              key: 'Standing',
               text: 'Standing'
             }
           ],
@@ -362,15 +372,19 @@ export default function () {
           label: 'Temperature source',
           options: [
             {
+              key: 'Oral',
               text: 'Oral'
             },
             {
+              key: 'Axilla',
               text: 'Axilla'
             },
             {
+              key: 'Rectal',
               text: 'Rectal'
             },
             {
+              key: 'Tympanic',
               text: 'Tympanic'
             }
           ],
@@ -393,6 +407,7 @@ export default function () {
           label: 'Pulse site',
           options: [
             {
+              key: 'Peripheral',
               text: 'Peripheral'
             }
           ],
@@ -418,9 +433,11 @@ export default function () {
           label: 'Pulse rhythm',
           options: [
             {
+              key: 'Regular',
               text: 'Regular'
             },
             {
+              key: 'Irregular',
               text: 'Irregular'
             }
           ],
@@ -469,18 +486,23 @@ export default function () {
           label: 'Oxygen mode',
           options: [
             {
+              key: 'Room air',
               text: 'Room air'
             },
             {
+              key: 'Nasal prongs',
               text: 'Nasal prongs'
             },
             {
+              key: 'Simple face mask',
               text: 'Simple face mask'
             },
             {
+              key: 'Rebreathing face mask',
               text: 'Rebreathing face mask'
             },
             {
+              key: 'Optiflow',
               text: 'Optiflow'
             }
           ],
@@ -856,24 +878,31 @@ export default function () {
           label: 'Status',
           options: [
             {
+              key: 'Alert',
               text: 'Alert'
             },
             {
+              key: 'Oriented',
               text: 'Oriented'
             },
             {
+              key: 'Confused',
               text: 'Confused'
             },
             {
+              key: 'Drowsy',
               text: 'Drowsy'
             },
             {
+              key: 'Unresponsive',
               text: 'Unresponsive'
             },
             {
+              key: 'Dizziness',
               text: 'Dizziness'
             },
             {
+              key: 'Blurred vision',
               text: 'Blurred vision'
             }
           ],
@@ -890,18 +919,23 @@ export default function () {
           label: 'Eye opening',
           options: [
             {
+              key: '0 = Non testable',
               text: '0 = Non testable'
             },
             {
+              key: '1 = None',
               text: '1 = None'
             },
             {
+              key: '2 = To pressure',
               text: '2 = To pressure'
             },
             {
+              key: '3 = To sound',
               text: '3 = To sound'
             },
             {
+              key: '4 = Spontaneous',
               text: '4 = Spontaneous'
             }
           ],
@@ -918,21 +952,27 @@ export default function () {
           label: 'Verbal response',
           options: [
             {
+              key: '0 = Non testable',
               text: '0 = Non testable'
             },
             {
+              key: '1 = None',
               text: '1 = None'
             },
             {
+              key: '2 = Sounds',
               text: '2 = Sounds'
             },
             {
+              key: '3 = Words',
               text: '3 = Words'
             },
             {
+              key: '4 = Confused',
               text: '4 = Confused'
             },
             {
+              key: '5 = Oriented',
               text: '5 = Oriented'
             }
           ],
@@ -949,24 +989,31 @@ export default function () {
           label: 'Best motor response',
           options: [
             {
+              key: '0 = Non testable',
               text: '0 = Non testable'
             },
             {
+              key: '1 = None',
               text: '1 = None'
             },
             {
+              key: '2 = Extension',
               text: '2 = Extension'
             },
             {
+              key: '3 = Normal flexion',
               text: '3 = Normal flexion'
             },
             {
+              key: '4 = Abnormal flexion',
               text: '4 = Abnormal flexion'
             },
             {
+              key: '5 = Localising',
               text: '5 = Localising'
             },
             {
+              key: '6 = Obeys commands',
               text: '6 = Obeys commands'
             }
           ],
@@ -984,6 +1031,7 @@ export default function () {
           label: 'Glasgow Coma Scale',
           options: [
             {
+              key: '=14+14+14',
               text: '=14+14+14'
             }
           ],
@@ -1000,12 +1048,15 @@ export default function () {
           label: 'Loss of conciousness',
           options: [
             {
+              key: 'No',
               text: 'No'
             },
             {
+              key: 'Yes',
               text: 'Yes'
             },
             {
+              key: 'Unknown',
               text: 'Unknown'
             }
           ],
@@ -1032,27 +1083,35 @@ export default function () {
           label: 'Left pupil size',
           options: [
             {
+              key: '1',
               text: '1'
             },
             {
+              key: '2',
               text: '2'
             },
             {
+              key: '3',
               text: '3'
             },
             {
+              key: '4',
               text: '4'
             },
             {
+              key: '5',
               text: '5'
             },
             {
+              key: '6',
               text: '6'
             },
             {
+              key: '7',
               text: '7'
             },
             {
+              key: '8',
               text: '8'
             }
           ],
@@ -1068,12 +1127,15 @@ export default function () {
           label: 'Left pupil response to light',
           options: [
             {
+              key: 'Brisk',
               text: 'Brisk'
             },
             {
+              key: 'Sluggish',
               text: 'Sluggish'
             },
             {
+              key: 'Fixed',
               text: 'Fixed'
             }
           ],
@@ -1096,27 +1158,35 @@ export default function () {
           label: 'Right pupil size',
           options: [
             {
+              key: '1',
               text: '1'
             },
             {
+              key: '2',
               text: '2'
             },
             {
+              key: '3',
               text: '3'
             },
             {
+              key: '4',
               text: '4'
             },
             {
+              key: '5',
               text: '5'
             },
             {
+              key: '6',
               text: '6'
             },
             {
+              key: '7',
               text: '7'
             },
             {
+              key: '8',
               text: '8'
             }
           ],
@@ -1132,12 +1202,15 @@ export default function () {
           label: 'Right pupil response to light',
           options: [
             {
+              key: 'Brisk',
               text: 'Brisk'
             },
             {
+              key: 'Sluggish',
               text: 'Sluggish'
             },
             {
+              key: 'Fixed',
               text: 'Fixed'
             }
           ],
@@ -1153,9 +1226,11 @@ export default function () {
           label: 'Both pupils',
           options: [
             {
+              key: 'Equal',
               text: 'Equal'
             },
             {
+              key: 'Unequal',
               text: 'Unequal'
             }
           ],
@@ -1190,15 +1265,19 @@ export default function () {
           label: 'Level of conciousness',
           options: [
             {
+              key: '0 = Alert; keenly responsive',
               text: '0 = Alert; keenly responsive'
             },
             {
+              key: '1 = Not alert; but arousable by minor stimulation',
               text: '1 = Not alert; but arousable by minor stimulation'
             },
             {
+              key: '2 = Not alert; requires repeated stimulation',
               text: '2 = Not alert; requires repeated stimulation'
             },
             {
+              key: '3 = Unresponsive or responds only with reflex',
               text: '3 = Unresponsive or responds only with reflex'
             }
           ],
@@ -1214,12 +1293,15 @@ export default function () {
           label: 'Level of conciousness questions',
           options: [
             {
+              key: '0 = Answers two questions correctly',
               text: '0 = Answers two questions correctly'
             },
             {
+              key: '1 = Answers one question correctly',
               text: '1 = Answers one question correctly'
             },
             {
+              key: '2 = Answers neither question correctly',
               text: '2 = Answers neither question correctly'
             }
           ],
@@ -1235,12 +1317,15 @@ export default function () {
           label: 'Level of conciousness commands',
           options: [
             {
+              key: '0 = Performs both tasks correctly',
               text: '0 = Performs both tasks correctly'
             },
             {
+              key: '1 = Performs one task correctly',
               text: '1 = Performs one task correctly'
             },
             {
+              key: '2 = Performs neither task correctly',
               text: '2 = Performs neither task correctly'
             }
           ],
@@ -1257,18 +1342,23 @@ export default function () {
           label: 'Motor - left arm',
           options: [
             {
+              key: '0 = No drift',
               text: '0 = No drift'
             },
             {
+              key: '1 = Drift',
               text: '1 = Drift'
             },
             {
+              key: '2 = Some effort against gravity',
               text: '2 = Some effort against gravity'
             },
             {
+              key: '3 = No effort against gravity; limb falls',
               text: '3 = No effort against gravity; limb falls'
             },
             {
+              key: '4 = No movement',
               text: '4 = No movement'
             }
           ],
@@ -1284,18 +1374,23 @@ export default function () {
           label: 'Motor - right arm',
           options: [
             {
+              key: '0 = No drift',
               text: '0 = No drift'
             },
             {
+              key: '1 = Drift',
               text: '1 = Drift'
             },
             {
+              key: '2 = Some effort against gravity',
               text: '2 = Some effort against gravity'
             },
             {
+              key: '3 = No effort against gravity; limb falls',
               text: '3 = No effort against gravity; limb falls'
             },
             {
+              key: '4 = No movement',
               text: '4 = No movement'
             }
           ],
@@ -1317,18 +1412,23 @@ export default function () {
           label: 'Motor - left leg',
           options: [
             {
+              key: '0 = No drift',
               text: '0 = No drift'
             },
             {
+              key: '1 = Drift',
               text: '1 = Drift'
             },
             {
+              key: '2 = Some effort against gravity',
               text: '2 = Some effort against gravity'
             },
             {
+              key: '3 = No effort against gravity',
               text: '3 = No effort against gravity'
             },
             {
+              key: '4 = No movement',
               text: '4 = No movement'
             }
           ],
@@ -1344,18 +1444,23 @@ export default function () {
           label: 'Motor - right leg',
           options: [
             {
+              key: '0 = No drift',
               text: '0 = No drift'
             },
             {
+              key: '1 = Drift',
               text: '1 = Drift'
             },
             {
+              key: '2 = Some effort against gravity',
               text: '2 = Some effort against gravity'
             },
             {
+              key: '3 = No effort against gravity',
               text: '3 = No effort against gravity'
             },
             {
+              key: '4 = No movement',
               text: '4 = No movement'
             }
           ],
@@ -1371,12 +1476,15 @@ export default function () {
           label: 'Limb ataxia',
           options: [
             {
+              key: '0 = Absent',
               text: '0 = Absent'
             },
             {
+              key: '1 = Present in one limb',
               text: '1 = Present in one limb'
             },
             {
+              key: '2 = Present in two limbs',
               text: '2 = Present in two limbs'
             }
           ],
@@ -1393,12 +1501,15 @@ export default function () {
           label: 'Best gaze',
           options: [
             {
+              key: '0 = Normal',
               text: '0 = Normal'
             },
             {
+              key: '1 = Partial gaze palsy',
               text: '1 = Partial gaze palsy'
             },
             {
+              key: '2 = Forced deviation',
               text: '2 = Forced deviation'
             }
           ],
@@ -1414,15 +1525,19 @@ export default function () {
           label: 'Visual',
           options: [
             {
+              key: '0 = No visual loss',
               text: '0 = No visual loss'
             },
             {
+              key: '1 = Partial hemianopia',
               text: '1 = Partial hemianopia'
             },
             {
+              key: '2 = Partial paralysis',
               text: '2 = Partial paralysis'
             },
             {
+              key: '3 = Complete paralysis of one or both sides',
               text: '3 = Complete paralysis of one or both sides'
             }
           ],
@@ -1438,15 +1553,19 @@ export default function () {
           label: 'Facial palsy',
           options: [
             {
+              key: '0 = Normal symmetric movements',
               text: '0 = Normal symmetric movements'
             },
             {
+              key: '1 = Minor paralysis',
               text: '1 = Minor paralysis'
             },
             {
+              key: '2 = Partial paralysis',
               text: '2 = Partial paralysis'
             },
             {
+              key: '3 = Complete paralysis of one or both sides',
               text: '3 = Complete paralysis of one or both sides'
             }
           ],
@@ -1462,12 +1581,15 @@ export default function () {
           label: 'Sensory',
           options: [
             {
+              key: '0 = Normal; no sensory loss',
               text: '0 = Normal; no sensory loss'
             },
             {
+              key: '1 = Mild-to-moderate sensory loss',
               text: '1 = Mild-to-moderate sensory loss'
             },
             {
+              key: '2 = Severe to total sensory loss',
               text: '2 = Severe to total sensory loss'
             }
           ],
@@ -1483,15 +1605,19 @@ export default function () {
           label: 'Best language',
           options: [
             {
+              key: '0 = No aphasia; normal',
               text: '0 = No aphasia; normal'
             },
             {
+              key: '1 = Mild to moderate aphasia',
               text: '1 = Mild to moderate aphasia'
             },
             {
+              key: '2 = Severe aphasia',
               text: '2 = Severe aphasia'
             },
             {
+              key: '3 = Mute, global aphasia',
               text: '3 = Mute, global aphasia'
             }
           ],
@@ -1507,12 +1633,15 @@ export default function () {
           label: 'Dysarthria',
           options: [
             {
+              key: '0 = Normal',
               text: '0 = Normal'
             },
             {
+              key: '1 = Mild to moderate',
               text: '1 = Mild to moderate'
             },
             {
+              key: '2 = Severe dysarthria',
               text: '2 = Severe dysarthria'
             }
           ],
@@ -1528,12 +1657,15 @@ export default function () {
           label: 'Extinction and inattention',
           options: [
             {
+              key: '0 = No abnormality',
               text: '0 = No abnormality'
             },
             {
+              key: '1 = Visual, tactile, auditory, spatial, or personal inattention',
               text: '1 = Visual, tactile, auditory, spatial, or personal inattention'
             },
             {
+              key: '2 = Profound hemi-inattention or extinction',
               text: '2 = Profound hemi-inattention or extinction'
             }
           ],
@@ -1962,15 +2094,19 @@ export default function () {
           label: 'Airway',
           options: [
             {
+              key: 'Patent',
               text: 'Patent'
             },
             {
+              key: 'Obstructed',
               text: 'Obstructed'
             },
             {
+              key: 'Oral endotracheal tube',
               text: 'Oral endotracheal tube'
             },
             {
+              key: 'Other',
               text: 'Other'
             }
           ],
@@ -2006,18 +2142,23 @@ export default function () {
           label: 'Left upper lung',
           options: [
             {
+              key: 'Normal',
               text: 'Normal'
             },
             {
+              key: 'Wheeze',
               text: 'Wheeze'
             },
             {
+              key: 'Crackles',
               text: 'Crackles'
             },
             {
+              key: 'Absent',
               text: 'Absent'
             },
             {
+              key: 'Decreased',
               text: 'Decreased'
             }
           ],
@@ -2033,18 +2174,23 @@ export default function () {
           label: 'Right upper lung',
           options: [
             {
+              key: 'Normal',
               text: 'Normal'
             },
             {
+              key: 'Wheeze',
               text: 'Wheeze'
             },
             {
+              key: 'Crackles',
               text: 'Crackles'
             },
             {
+              key: 'Absent',
               text: 'Absent'
             },
             {
+              key: 'Decreased',
               text: 'Decreased'
             }
           ],
@@ -2074,18 +2220,23 @@ export default function () {
           label: 'Right middle lung',
           options: [
             {
+              key: 'Normal',
               text: 'Normal'
             },
             {
+              key: 'Wheeze',
               text: 'Wheeze'
             },
             {
+              key: 'Crackles',
               text: 'Crackles'
             },
             {
+              key: 'Absent',
               text: 'Absent'
             },
             {
+              key: 'Decreased',
               text: 'Decreased'
             }
           ],
@@ -2108,18 +2259,23 @@ export default function () {
           label: 'Left lower lung',
           options: [
             {
+              key: 'Normal',
               text: 'Normal'
             },
             {
+              key: 'Wheeze',
               text: 'Wheeze'
             },
             {
+              key: 'Crackles',
               text: 'Crackles'
             },
             {
+              key: 'Absent',
               text: 'Absent'
             },
             {
+              key: 'Decreased',
               text: 'Decreased'
             }
           ],
@@ -2135,18 +2291,23 @@ export default function () {
           label: 'Right lower lung',
           options: [
             {
+              key: 'Normal',
               text: 'Normal'
             },
             {
+              key: 'Wheeze',
               text: 'Wheeze'
             },
             {
+              key: 'Crackles',
               text: 'Crackles'
             },
             {
+              key: 'Absent',
               text: 'Absent'
             },
             {
+              key: 'Decreased',
               text: 'Decreased'
             }
           ],
@@ -2170,12 +2331,15 @@ export default function () {
           label: 'Respiratory rhythm',
           options: [
             {
+              key: 'Regular',
               text: 'Regular'
             },
             {
+              key: 'Irregular',
               text: 'Irregular'
             },
             {
+              key: 'Paradoxical',
               text: 'Paradoxical'
             }
           ],
@@ -2191,12 +2355,15 @@ export default function () {
           label: 'Respiratory depth',
           options: [
             {
+              key: 'Normal',
               text: 'Normal'
             },
             {
+              key: 'Shallow',
               text: 'Shallow'
             },
             {
+              key: 'Deep',
               text: 'Deep'
             }
           ],
@@ -2219,12 +2386,15 @@ export default function () {
           label: 'Cough',
           options: [
             {
+              key: 'No',
               text: 'No'
             },
             {
+              key: 'Nonproductive',
               text: 'Nonproductive'
             },
             {
+              key: 'Productive',
               text: 'Productive'
             }
           ],
@@ -2240,27 +2410,35 @@ export default function () {
           label: 'Sputum colour',
           options: [
             {
+              key: 'Mucoid',
               text: 'Mucoid'
             },
             {
+              key: 'Purulent',
               text: 'Purulent'
             },
             {
+              key: 'Yellow-green',
               text: 'Yellow-green'
             },
             {
+              key: 'Rust-coloured',
               text: 'Rust-coloured'
             },
             {
+              key: 'Pink, blood tinged',
               text: 'Pink, blood tinged'
             },
             {
+              key: 'Pink, frothy',
               text: 'Pink, frothy'
             },
             {
+              key: 'Profuse, colourless',
               text: 'Profuse, colourless'
             },
             {
+              key: 'Bloody',
               text: 'Bloody'
             }
           ],
@@ -2541,18 +2719,23 @@ export default function () {
           label: 'Pulse',
           options: [
             {
+              key: 'Regular',
               text: 'Regular'
             },
             {
+              key: 'Irregular',
               text: 'Irregular'
             },
             {
+              key: 'Normal',
               text: 'Normal'
             },
             {
+              key: 'Weak',
               text: 'Weak'
             },
             {
+              key: 'Bounding',
               text: 'Bounding'
             }
           ],
@@ -2568,21 +2751,27 @@ export default function () {
           label: 'Skin appearance',
           options: [
             {
+              key: 'Normal',
               text: 'Normal'
             },
             {
+              key: 'Pale',
               text: 'Pale'
             },
             {
+              key: 'Mottled',
               text: 'Mottled'
             },
             {
+              key: 'Cyanotic',
               text: 'Cyanotic'
             },
             {
+              key: 'Flushed',
               text: 'Flushed'
             },
             {
+              key: 'Jaundiced',
               text: 'Jaundiced'
             }
           ],
@@ -2647,9 +2836,11 @@ export default function () {
           inputType: 'select',
           options: [
             {
+              key: 'Normal < 3 seconds',
               text: 'Normal < 3 seconds'
             },
             {
+              key: 'Delayed > 3 seconds',
               text: 'Delayed > 3 seconds'
             }
           ],
@@ -2666,12 +2857,15 @@ export default function () {
           inputType: 'select',
           options: [
             {
+              key: 'Warm',
               text: 'Warm'
             },
             {
+              key: 'Cool',
               text: 'Cool'
             },
             {
+              key: 'Hot',
               text: 'Hot'
             }
           ],
@@ -2688,18 +2882,23 @@ export default function () {
           inputType: 'select',
           options: [
             {
+              key: 'No',
               text: 'No'
             },
             {
+              key: 'Ankle',
               text: 'Ankle'
             },
             {
+              key: 'Pedal',
               text: 'Pedal'
             },
             {
+              key: 'Sacral',
               text: 'Sacral'
             },
             {
+              key: 'Pitting',
               text: 'Pitting'
             }
           ],
@@ -2716,9 +2915,11 @@ export default function () {
           inputType: 'select',
           options: [
             {
+              key: 'Pink',
               text: 'Pink'
             },
             {
+              key: 'Cyanotic',
               text: 'Cyanotic'
             }
           ],
@@ -2743,9 +2944,11 @@ export default function () {
           inputType: 'select',
           options: [
             {
+              key: 'Normal < 3 seconds',
               text: 'Normal < 3 seconds'
             },
             {
+              key: 'Delayed > 3 seconds',
               text: 'Delayed > 3 seconds'
             }
           ],
@@ -2762,12 +2965,15 @@ export default function () {
           inputType: 'select',
           options: [
             {
+              key: 'Warm',
               text: 'Warm'
             },
             {
+              key: 'Cool',
               text: 'Cool'
             },
             {
+              key: 'Hot',
               text: 'Hot'
             }
           ],
@@ -2784,18 +2990,23 @@ export default function () {
           inputType: 'select',
           options: [
             {
+              key: 'No',
               text: 'No'
             },
             {
+              key: 'Ankle',
               text: 'Ankle'
             },
             {
+              key: 'Pedal',
               text: 'Pedal'
             },
             {
+              key: 'Sacral',
               text: 'Sacral'
             },
             {
+              key: 'Pitting',
               text: 'Pitting'
             }
           ],
@@ -2812,9 +3023,11 @@ export default function () {
           inputType: 'select',
           options: [
             {
+              key: 'Pink',
               text: 'Pink'
             },
             {
+              key: 'Cyanotic',
               text: 'Cyanotic'
             }
           ],
@@ -2839,9 +3052,11 @@ export default function () {
           inputType: 'select',
           options: [
             {
+              key: 'Normal < 3 seconds',
               text: 'Normal < 3 seconds'
             },
             {
+              key: 'Delayed > 3 seconds',
               text: 'Delayed > 3 seconds'
             }
           ],
@@ -2858,12 +3073,15 @@ export default function () {
           inputType: 'select',
           options: [
             {
+              key: 'Warm',
               text: 'Warm'
             },
             {
+              key: 'Cool',
               text: 'Cool'
             },
             {
+              key: 'Hot',
               text: 'Hot'
             }
           ],
@@ -2880,18 +3098,23 @@ export default function () {
           inputType: 'select',
           options: [
             {
+              key: 'No',
               text: 'No'
             },
             {
+              key: 'Ankle',
               text: 'Ankle'
             },
             {
+              key: 'Pedal',
               text: 'Pedal'
             },
             {
+              key: 'Sacral',
               text: 'Sacral'
             },
             {
+              key: 'Pitting',
               text: 'Pitting'
             }
           ],
@@ -2908,9 +3131,11 @@ export default function () {
           inputType: 'select',
           options: [
             {
+              key: 'Pink',
               text: 'Pink'
             },
             {
+              key: 'Cyanotic',
               text: 'Cyanotic'
             }
           ],
@@ -2935,9 +3160,11 @@ export default function () {
           inputType: 'select',
           options: [
             {
+              key: 'Normal < 3 seconds',
               text: 'Normal < 3 seconds'
             },
             {
+              key: 'Delayed > 3 seconds',
               text: 'Delayed > 3 seconds'
             }
           ],
@@ -2954,12 +3181,15 @@ export default function () {
           inputType: 'select',
           options: [
             {
+              key: 'Warm',
               text: 'Warm'
             },
             {
+              key: 'Cool',
               text: 'Cool'
             },
             {
+              key: 'Hot',
               text: 'Hot'
             }
           ],
@@ -2976,18 +3206,23 @@ export default function () {
           inputType: 'select',
           options: [
             {
+              key: 'No',
               text: 'No'
             },
             {
+              key: 'Ankle',
               text: 'Ankle'
             },
             {
+              key: 'Pedal',
               text: 'Pedal'
             },
             {
+              key: 'Sacral',
               text: 'Sacral'
             },
             {
+              key: 'Pitting',
               text: 'Pitting'
             }
           ],
@@ -3004,9 +3239,11 @@ export default function () {
           inputType: 'select',
           options: [
             {
+              key: 'Pink',
               text: 'Pink'
             },
             {
+              key: 'Cyanotic',
               text: 'Cyanotic'
             }
           ],
@@ -3333,18 +3570,23 @@ export default function () {
           label: 'Bowel',
           options: [
             {
+              key: 'Normal',
               text: 'Normal'
             },
             {
+              key: 'Constipation',
               text: 'Constipation'
             },
             {
+              key: 'Diarrhea',
               text: 'Diarrhea'
             },
             {
+              key: 'Melena',
               text: 'Melena'
             },
             {
+              key: 'Incontinent',
               text: 'Incontinent'
             }
           ],
@@ -3359,24 +3601,31 @@ export default function () {
           label: 'Bowel sounds',
           options: [
             {
+              key: 'None',
               text: 'None'
             },
             {
+              key: 'LUQ',
               text: 'LUQ'
             },
             {
+              key: 'RUQ',
               text: 'RUQ'
             },
             {
+              key: 'LLQ',
               text: 'LLQ'
             },
             {
+              key: 'RLQ',
               text: 'RLQ'
             },
             {
+              key: 'Hypoactive',
               text: 'Hypoactive'
             },
             {
+              key: 'Hyperactive',
               text: 'Hyperactive'
             }
           ],
@@ -3391,21 +3640,27 @@ export default function () {
           label: 'Abdomen',
           options: [
             {
+              key: 'soft=Soft',
               text: 'soft=Soft'
             },
             {
+              key: 'tender=Tender',
               text: 'tender=Tender'
             },
             {
+              key: 'rigid=Rigid',
               text: 'rigid=Rigid'
             },
             {
+              key: 'guarding=Guarding',
               text: 'guarding=Guarding'
             },
             {
+              key: 'distended=Distended',
               text: 'distended=Distended'
             },
             {
+              key: 'scars=Scars',
               text: 'scars=Scars'
             }
           ],
@@ -3435,9 +3690,11 @@ export default function () {
           label: 'Abdominal pain',
           options: [
             {
+              key: 'Yes',
               text: 'Yes'
             },
             {
+              key: 'No',
               text: 'No'
             }
           ],
@@ -3475,12 +3732,15 @@ export default function () {
           label: 'Emesis present?',
           options: [
             {
+              key: 'None',
               text: 'None'
             },
             {
+              key: 'Nausea',
               text: 'Nausea'
             },
             {
+              key: 'Vomiting',
               text: 'Vomiting'
             }
           ],
@@ -3496,18 +3756,23 @@ export default function () {
           label: 'Emesis colour',
           options: [
             {
+              key: 'Greenish-yellow',
               text: 'Greenish-yellow'
             },
             {
+              key: 'Blood-tinged',
               text: 'Blood-tinged'
             },
             {
+              key: 'Bright red',
               text: 'Bright red'
             },
             {
+              key: 'Dark red',
               text: 'Dark red'
             },
             {
+              key: 'Black',
               text: 'Black'
             }
           ],
@@ -3533,12 +3798,15 @@ export default function () {
           label: 'Approximate volume',
           options: [
             {
+              key: 'Small',
               text: 'Small'
             },
             {
+              key: 'Moderate',
               text: 'Moderate'
             },
             {
+              key: 'Large',
               text: 'Large'
             }
           ],
@@ -3555,9 +3823,11 @@ export default function () {
           label: 'Difficulty',
           options: [
             {
+              key: 'Regular',
               text: 'Regular'
             },
             {
+              key: 'Difficult',
               text: 'Difficult'
             }
           ],
@@ -3630,24 +3900,31 @@ export default function () {
           label: 'Stool colour',
           options: [
             {
+              key: 'Brown',
               text: 'Brown'
             },
             {
+              key: 'Green',
               text: 'Green'
             },
             {
+              key: 'Clay coloured',
               text: 'Clay coloured'
             },
             {
+              key: 'Yellow',
               text: 'Yellow'
             },
             {
+              key: 'Black',
               text: 'Black'
             },
             {
+              key: 'Bright red',
               text: 'Bright red'
             },
             {
+              key: 'Dark red',
               text: 'Dark red'
             }
           ],
@@ -3663,9 +3940,11 @@ export default function () {
           label: 'Description',
           options: [
             {
+              key: 'Runny',
               text: 'Runny'
             },
             {
+              key: 'Hard pellets',
               text: 'Hard pellets'
             }
           ],
@@ -3691,12 +3970,15 @@ export default function () {
           label: 'Source',
           options: [
             {
+              key: 'Observed',
               text: 'Observed'
             },
             {
+              key: 'As per patient observed',
               text: 'As per patient observed'
             },
             {
+              key: 'Not observed',
               text: 'Not observed'
             }
           ],

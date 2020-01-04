@@ -83,24 +83,31 @@ export default function () {
           label: 'Gender',
           options: [
             {
+              key: 'Unknown',
               text: 'Unknown'
             },
             {
+              key: 'Female',
               text: 'Female'
             },
             {
+              key: 'Male',
               text: 'Male'
             },
             {
+              key: 'Transgender female',
               text: 'Transgender female'
             },
             {
+              key: 'Transgender male',
               text: 'Transgender male'
             },
             {
+              key: 'Undifferentiated',
               text: 'Undifferentiated'
             },
             {
+              key: 'Prefer not to say',
               text: 'Prefer not to say'
             }
           ],
@@ -115,21 +122,27 @@ export default function () {
           label: 'Martial status',
           options: [
             {
+              key: 'Married',
               text: 'Married'
             },
             {
+              key: 'Single',
               text: 'Single'
             },
             {
+              key: 'Life partner',
               text: 'Life partner'
             },
             {
+              key: 'Divorced',
               text: 'Divorced'
             },
             {
+              key: 'Separated',
               text: 'Separated'
             },
             {
+              key: 'Widowed',
               text: 'Widowed'
             }
           ],
@@ -143,18 +156,23 @@ export default function () {
           label: 'Primary language',
           options: [
             {
+              key: 'English',
               text: 'English'
             },
             {
+              key: 'French',
               text: 'French'
             },
             {
+              key: 'Spanish',
               text: 'Spanish'
             },
             {
+              key: 'German',
               text: 'German'
             },
             {
+              key: 'Chinese',
               text: 'Chinese'
             }
           ],
@@ -175,9 +193,11 @@ export default function () {
           label: 'Do you identify as an indigenous person?',
           options: [
             {
+              key: 'Yes',
               text: 'Yes'
             },
             {
+              key: 'No',
               text: 'No'
             }
           ],
@@ -290,48 +310,63 @@ export default function () {
           label: 'Next of kin relationship',
           options: [
             {
+              key: 'Wife',
               text: 'Wife'
             },
             {
+              key: 'Husband',
               text: 'Husband'
             },
             {
+              key: 'Mother',
               text: 'Mother'
             },
             {
+              key: 'Father',
               text: 'Father'
             },
             {
+              key: 'Guardian',
               text: 'Guardian'
             },
             {
+              key: 'Sister',
               text: 'Sister'
             },
             {
+              key: 'Brother',
               text: 'Brother'
             },
             {
+              key: 'Daughter',
               text: 'Daughter'
             },
             {
+              key: 'Son',
               text: 'Son'
             },
             {
+              key: 'Aunt',
               text: 'Aunt'
             },
             {
+              key: 'Uncle',
               text: 'Uncle'
             },
             {
+              key: 'Grandmother',
               text: 'Grandmother'
             },
             {
+              key: 'Grandfather',
               text: 'Grandfather'
             },
             {
+              key: 'Friend',
               text: 'Friend'
             },
             {
+              key: 'Other',
               text: 'Other'
             }
           ],
@@ -362,33 +397,43 @@ export default function () {
           label: 'Decision maker relationship',
           options: [
             {
+              key: 'Spouse',
               text: 'Spouse'
             },
             {
+              key: 'Child',
               text: 'Child'
             },
             {
+              key: 'Parent',
               text: 'Parent'
             },
             {
+              key: 'Sibling',
               text: 'Sibling'
             },
             {
+              key: 'Grandparent',
               text: 'Grandparent'
             },
             {
+              key: 'Grandchild',
               text: 'Grandchild'
             },
             {
+              key: 'Friend',
               text: 'Friend'
             },
             {
+              key: 'Anyone else related by partnership',
               text: 'Anyone else related by partnership'
             },
             {
+              key: 'Public guardian and trustee employee',
               text: 'Public guardian and trustee employee'
             },
             {
+              key: 'Other',
               text: 'Other'
             }
           ],

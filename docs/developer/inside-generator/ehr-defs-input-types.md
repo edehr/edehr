@@ -60,6 +60,18 @@ may change in the future.
 Some option lists contain a set of lines of the form ```N = text```. Currently this special format is only used by the 
 calculated values (see above) yet in the future we may wish to make the left had side be the value to store in the database.
 
+> NEW key value pairs
+
+Options are now split into keys and values. By default the entire text content is the key and value.
+When the text contains ```:=``` the generator will split this into key and value. For example:
+```
+sched := Scheduled
+prn := PRN (as needed)
+once := Once
+stat := Stat
+```
+These keys can be used to control group visibility.
+
 ### formOption hideLabel
 If a select box or text box has ```hideLabel``` in its formOption then the label is not displayed
 
