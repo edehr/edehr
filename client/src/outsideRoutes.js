@@ -9,11 +9,11 @@ export function outside () {
       meta: { layout: 'outside', label: 'Instructor', topLevel: 'undefined' }
     },
     {
-      path: '/classlist',
-      name: 'classlist',
+      path: '/classList',
+      name: 'classList',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/ClassList.vue'),
-      meta: { layout: 'outside', label: 'ClassList', topLevel: 'undefined' }
+      meta: { layout: 'outside', label: 'Class List', topLevel: 'undefined' }
     },
     {
       path: '/consumers',
