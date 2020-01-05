@@ -83,6 +83,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
+                elementKey: 'ehr_group115',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -93,6 +94,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group116',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '2',
                 gChildren: [
@@ -267,6 +269,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
+                elementKey: 'ehr_group117',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -277,6 +280,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group118',
                 gIndex: '2',
                 gChildren: [
                   'clinical',
@@ -371,10 +375,11 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
+              elementKey: 'ehr_group119',
               gIndex: '1',
               gChildren: [
                 {
-                  elementKey: 'subgroup74',
+                  elementKey: 'labReport',
                   sgChildren: [
                     'labReport1_1',
                     'labReport2_1',
@@ -454,6 +459,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
+              elementKey: 'ehr_group120',
               gIndex: '1',
               gChildren: [
                 'day0',

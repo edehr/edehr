@@ -52,6 +52,11 @@ export default {
           disable = !(this.dependantOnValue === true)
         }
       }
+      /* A change to false means disable this element. So let's also empty it too. */
+      if (disable) {
+        this.setInitialValue('')
+      }
+
       return disable
     }
   },

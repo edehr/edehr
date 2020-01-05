@@ -24,7 +24,7 @@ const EhrTypes = {
   dependantOn: {
     splitActionKeyOn: ':',
     splitKeyValueOn: '=',
-    prefix: 'dependant',
+    prefix: 'dependant:',
     type: {
       check: 'check',
       select: 'select',

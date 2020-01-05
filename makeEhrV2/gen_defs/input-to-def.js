@@ -49,6 +49,8 @@ const pageChildElementProperties = [
 ]
 
 const groupProperties = [
+  'elementKey',
+  'dependantOn',
   'label',
   'formCss',
 ]

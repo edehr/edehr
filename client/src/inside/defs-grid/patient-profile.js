@@ -456,6 +456,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
+              elementKey: 'ehr_group1',
               formCss: 'section-divider',
               gIndex: '1',
               gChildren: [
@@ -475,6 +476,7 @@ export default function () {
               ]
             },
             {
+              elementKey: 'ehr_group2',
               formCss: 'section-divider',
               gIndex: '2',
               gChildren: [
@@ -492,6 +494,7 @@ export default function () {
               ]
             },
             {
+              elementKey: 'ehr_group3',
               gIndex: '3',
               gChildren: [
                 'nextOfKinName',
@@ -538,6 +541,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
+              elementKey: 'ehr_group4',
               formCss: 'grid-left-to-right-1',
               gIndex: '1',
               gChildren: [
@@ -572,6 +576,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
+              elementKey: 'ehr_group5',
               formCss: 'grid-left-to-right-1',
               gIndex: '1',
               gChildren: [
@@ -778,6 +783,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
+              elementKey: 'ehr_group6',
               gIndex: '1',
               gChildren: [
                 'history',
@@ -788,6 +794,7 @@ export default function () {
               ]
             },
             {
+              elementKey: 'ehr_group7',
               gIndex: '2',
               gChildren: [
                 'exercise',
@@ -922,6 +929,7 @@ export default function () {
             formKey: 'pastSurgery',
             ehr_groups: [
               {
+                elementKey: 'pastSurgery',
                 gIndex: '1',
                 gChildren: [
                   'date',
@@ -982,6 +990,7 @@ export default function () {
             formKey: 'previous',
             ehr_groups: [
               {
+                elementKey: 'previous',
                 gIndex: '1',
                 gChildren: [
                   'previousAdmissionsDate',
@@ -991,6 +1000,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group14',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '2',
                 gChildren: [
@@ -1233,6 +1243,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
+              elementKey: 'ehr_group15',
               gIndex: '1',
               gChildren: [
                 'hepA',
@@ -1294,6 +1305,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
+              elementKey: 'ehr_group26',
               formCss: 'grid-left-to-right-1',
               gIndex: '1',
               gChildren: [
@@ -1357,6 +1369,7 @@ export default function () {
             formKey: 'teams',
             ehr_groups: [
               {
+                elementKey: 'ehr_group27',
                 gIndex: '1',
                 gChildren: [
                   'name',
@@ -1487,6 +1500,7 @@ export default function () {
             formKey: 'encounters',
             ehr_groups: [
               {
+                elementKey: 'encounters',
                 gIndex: '1',
                 gChildren: [
                   'date',
@@ -1541,6 +1555,7 @@ export default function () {
             formKey: 'outpatientAppointments',
             ehr_groups: [
               {
+                elementKey: 'outpatientAppointments',
                 gIndex: '1',
                 gChildren: [
                   'date',

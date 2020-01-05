@@ -293,11 +293,11 @@ export default function () {
           fqn: 'testPage.textDateDate'
         },
         {
-          elementKey: 'spacer5',
+          elementKey: 'spacer133',
           formIndex: '3',
           inputType: 'spacer',
           label: 'TextDate',
-          fqn: 'testPage.spacer5'
+          fqn: 'testPage.spacer133'
         },
         {
           elementKey: 'name',
@@ -314,7 +314,7 @@ export default function () {
           fqn: 'testPage.place'
         }
       ],
-      generated: '2020-01-04T14:49:55-08:00',
+      generated: '2020-01-04T16:54:44-08:00',
       pageElements: {
         form1: {
           elementKey: 'form1',
@@ -323,6 +323,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
+              elementKey: 'ehr_group129',
               label: 'A group label',
               gIndex: '1',
               gChildren: [
@@ -338,19 +339,20 @@ export default function () {
               ]
             },
             {
+              elementKey: 'ehr_group130',
               label: 'Second group',
               gIndex: '2',
               gChildren: [
                 {
+                  elementKey: 'subgroup1',
                   label: 'subgroup 1',
-                  elementKey: 'subgroup20',
                   sgChildren: [
                     'pcheckset'
                   ]
                 },
                 {
+                  elementKey: 'subgroup2',
                   label: 'subgroup 2',
-                  elementKey: 'subgroup21',
                   sgChildren: [
                     'dayValue',
                     'timeValue',
@@ -359,8 +361,8 @@ export default function () {
                   ]
                 },
                 {
+                  elementKey: 'subgroup3',
                   label: 'subgroup 3',
-                  elementKey: 'subgroup22',
                   sgChildren: [
                     'pcheckbox2',
                     'ptext2',
@@ -403,6 +405,7 @@ export default function () {
             formKey: 'table1',
             ehr_groups: [
               {
+                elementKey: 'ehr_group131',
                 label: 'Group 1',
                 gIndex: '1',
                 gChildren: [
@@ -424,6 +427,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
+              elementKey: 'ehr_group132',
               label: 'A group label',
               gIndex: '1',
               gChildren: [
@@ -433,7 +437,7 @@ export default function () {
                 'time',
                 'textDate',
                 'textDateDate',
-                'spacer5',
+                'spacer133',
                 'name',
                 'place'
               ]
@@ -764,13 +768,13 @@ export default function () {
           fqn: 'testTable.cd1Date'
         },
         {
-          elementKey: 'spacer11',
+          elementKey: 'spacer139',
           formIndex: '2',
           inputType: 'spacer',
           label: 'C D 1',
           tableColumn: '2',
           tableLabel: 'Chk 1',
-          fqn: 'testTable.spacer11'
+          fqn: 'testTable.spacer139'
         },
         {
           elementKey: 'cd2',
@@ -792,13 +796,13 @@ export default function () {
           fqn: 'testTable.cd2Date'
         },
         {
-          elementKey: 'spacer12',
+          elementKey: 'spacer140',
           formIndex: '2',
           inputType: 'spacer',
           label: 'C D 2',
           tableColumn: '3',
           tableLabel: 'Chk 2',
-          fqn: 'testTable.spacer12'
+          fqn: 'testTable.spacer140'
         },
         {
           elementKey: 'td1',
@@ -819,13 +823,13 @@ export default function () {
           fqn: 'testTable.td1Date'
         },
         {
-          elementKey: 'spacer13',
+          elementKey: 'spacer141',
           formIndex: '2',
           inputType: 'spacer',
           label: 'TextDate',
           tableColumn: '4',
           tableLabel: 'Txt 1',
-          fqn: 'testTable.spacer13'
+          fqn: 'testTable.spacer141'
         },
         {
           elementKey: 'referralName',
@@ -1016,7 +1020,7 @@ export default function () {
           fqn: 'testTable.stat'
         }
       ],
-      generated: '2020-01-04T14:49:55-08:00',
+      generated: '2020-01-04T16:54:44-08:00',
       pageElements: {
         table1: {
           elementKey: 'table1',
@@ -1135,6 +1139,7 @@ export default function () {
             formKey: 'table1',
             ehr_groups: [
               {
+                elementKey: 'ehr_group134',
                 label: 'Group 1',
                 gIndex: '1',
                 gChildren: [
@@ -1150,18 +1155,19 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group135',
                 gIndex: '2',
                 gChildren: [
                   {
+                    elementKey: 'subgroup1',
                     label: 'subgroup 1',
-                    elementKey: 'subgroup23',
                     sgChildren: [
                       'e10'
                     ]
                   },
                   {
+                    elementKey: 'subgroup2',
                     label: 'subgroup 2',
-                    elementKey: 'subgroup24',
                     sgChildren: [
                       'dayValue',
                       'timeValue',
@@ -1170,8 +1176,8 @@ export default function () {
                     ]
                   },
                   {
+                    elementKey: 'subgroup3',
                     label: 'subgroup 3',
-                    elementKey: 'subgroup25',
                     sgChildren: [
                       'g4',
                       'g5',
@@ -1184,6 +1190,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group136',
                 formCss: 'full-width',
                 gIndex: '3',
                 gChildren: [
@@ -1233,7 +1240,7 @@ export default function () {
               items: [
                 'cd1',
                 'cd1Date',
-                'spacer11'
+                'spacer139'
               ]
             },
             {
@@ -1242,7 +1249,7 @@ export default function () {
               items: [
                 'cd2',
                 'cd2Date',
-                'spacer12'
+                'spacer140'
               ]
             },
             {
@@ -1251,7 +1258,7 @@ export default function () {
               items: [
                 'td1',
                 'td1Date',
-                'spacer13'
+                'spacer141'
               ]
             },
             {
@@ -1285,6 +1292,7 @@ export default function () {
             formKey: 'stacked',
             ehr_groups: [
               {
+                elementKey: 'ehr_group137',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -1295,20 +1303,22 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group138',
                 gIndex: '2',
                 gChildren: [
                   'cd1',
                   'cd1Date',
-                  'spacer11',
+                  'spacer139',
                   'cd2',
                   'cd2Date',
-                  'spacer12',
+                  'spacer140',
                   'td1',
                   'td1Date',
-                  'spacer13'
+                  'spacer141'
                 ]
               },
               {
+                elementKey: 'ehr_group142',
                 gIndex: '3',
                 gChildren: [
                   'referralName',
@@ -1346,18 +1356,23 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
+              elementKey: 'adminGroup',
               gIndex: '1',
               gChildren: [
                 'administration'
               ]
             },
             {
+              elementKey: 'schedGroup',
+              dependantOn: 'visble:administration=sched',
               gIndex: '2',
               gChildren: [
                 'scheduled'
               ]
             },
             {
+              elementKey: 'prnGroup',
+              dependantOn: 'visble:administration=prn',
               gIndex: '3',
               gChildren: [
                 'prn1',
@@ -1369,12 +1384,16 @@ export default function () {
               ]
             },
             {
+              elementKey: 'onceGroup',
+              dependantOn: 'visble:administration=once',
               gIndex: '4',
               gChildren: [
                 'once'
               ]
             },
             {
+              elementKey: 'statGroup',
+              dependantOn: 'visble:administration=stat',
               gIndex: '5',
               gChildren: [
                 'stat'

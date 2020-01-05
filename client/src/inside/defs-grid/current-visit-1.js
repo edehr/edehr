@@ -152,6 +152,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
+              elementKey: 'ehr_group28',
               gIndex: '1',
               gChildren: [
                 'admissionDay',
@@ -162,6 +163,7 @@ export default function () {
               ]
             },
             {
+              elementKey: 'ehr_group29',
               formCss: 'grid-left-to-right-1',
               gIndex: '2',
               gChildren: [
@@ -214,6 +216,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
+                elementKey: 'ehr_group30',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '1',
                 gChildren: [
@@ -221,6 +224,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group31',
                 gIndex: '2',
                 gChildren: [
                   'transferInDay',
@@ -649,6 +653,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
+                elementKey: 'ehr_group32',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -659,6 +664,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group33',
                 gIndex: '2',
                 gChildren: [
                   'day',
@@ -802,6 +808,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
+                elementKey: 'ehr_group38',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -812,6 +819,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group39',
                 gIndex: '2',
                 gChildren: [
                   'fluidIn',
@@ -1922,6 +1930,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
+                elementKey: 'ehr_group40',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -1932,6 +1941,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group41',
                 formCss: 'section-divider',
                 gIndex: '2',
                 gChildren: [
@@ -1939,6 +1949,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group42',
                 label: 'Glasgow Coma Scale',
                 formCss: 'section-divider',
                 gIndex: '3',
@@ -1950,6 +1961,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group43',
                 label: 'Conciousness',
                 gIndex: '4',
                 gChildren: [
@@ -1958,6 +1970,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group44',
                 formCss: 'section-divider',
                 gIndex: '5',
                 gChildren: [
@@ -1970,6 +1983,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group46',
                 formCss: 'section-divider',
                 gIndex: '6',
                 gChildren: [
@@ -1978,6 +1992,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group47',
                 label: 'Stroke assessment',
                 gIndex: '7',
                 gChildren: [
@@ -2000,6 +2015,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group49',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '8',
                 gChildren: [
@@ -2595,6 +2611,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
+                elementKey: 'ehr_group50',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -2605,6 +2622,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group51',
                 gIndex: '2',
                 gChildren: [
                   'airway',
@@ -2613,6 +2631,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group52',
                 formCss: 'section-divider',
                 gIndex: '3',
                 gChildren: [
@@ -2628,6 +2647,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group53',
                 formCss: 'section-divider',
                 gIndex: '4',
                 gChildren: [
@@ -2640,6 +2660,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group54',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '5',
                 gChildren: [
@@ -3439,6 +3460,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
+                elementKey: 'ehr_group55',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -3449,6 +3471,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group56',
                 gIndex: '2',
                 gChildren: [
                   'pulse',
@@ -3456,6 +3479,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group57',
                 formCss: 'grid-left-to-right-5 section-divider',
                 gIndex: '3',
                 gChildren: [
@@ -3487,6 +3511,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group59',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '4',
                 gChildren: [
@@ -4160,6 +4185,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
+                elementKey: 'ehr_group60',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -4170,6 +4196,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group61',
                 formCss: 'section-divider',
                 gIndex: '2',
                 gChildren: [
@@ -4185,6 +4212,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'emesis',
                 label: 'Emesis',
                 formCss: 'section-divider',
                 gIndex: '3',
@@ -4196,6 +4224,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'eatingGroup',
                 label: 'Eating',
                 formCss: 'section-divider',
                 gIndex: '4',
@@ -4209,6 +4238,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'stool',
                 label: 'Stool',
                 formCss: 'section-divider',
                 gIndex: '5',
@@ -4221,6 +4251,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group67',
                 formCss: 'grid-left-to-right-1 section-divider',
                 gIndex: '6',
                 gChildren: [
