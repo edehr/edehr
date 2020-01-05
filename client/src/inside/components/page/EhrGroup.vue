@@ -24,8 +24,6 @@ export default {
   inject: [ 'pageDataKey'],
   data: function () {
     return {
-      dependantOnKey: '',
-      dependantOnValue: '',
     }
   },
   props: {
@@ -36,7 +34,7 @@ export default {
     elementKey () { return this.group.elementKey },
     groupIsVisible () {
       let visible = true
-      if(this.dependantDef) {
+      if(this.dependantDef && this.dependantDef.refValue) {
         visible = this.dependantDef.refValue === this.dependantOnValue
       }
       return visible

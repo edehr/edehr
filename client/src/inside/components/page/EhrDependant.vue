@@ -24,6 +24,7 @@ export default {
     return {
       dependantOnKey: '',
       dependantOnValue: '',
+      dependantDef: {}
     }
   },
   computed: {
