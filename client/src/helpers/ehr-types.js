@@ -2,6 +2,7 @@ const EhrTypes = {
   elementProperties: {
     elementKey: 'elementKey',
     inputType: 'inputType',
+    defaultValue : 'defaultValue',
     label: 'label',
     validation: 'validation',
     mandatory: 'mandatory',
@@ -19,6 +20,19 @@ const EhrTypes = {
     text: 'text',
     textarea: 'textarea',
     time: 'time',
+  },
+  dependantOn: {
+    splitActionKeyOn: ':',
+    splitKeyValueOn: '=',
+    prefix: 'dependant',
+    type: {
+      check: 'check',
+      select: 'select',
+    },
+    action: {
+      disable: 'disable',
+      visible: 'visible'
+    }
   },
   nondataInputType: {
     form_label: 'form_label',
@@ -46,6 +60,7 @@ const EhrTypes = {
 EhrTypes.inputTypes = Object.assign({},
   EhrTypes.structuralTypes,
   EhrTypes.dataInputTypes,
+  EhrTypes.dependantOn,
   EhrTypes.nondataInputType,
   EhrTypes.shortFormTypes
 )

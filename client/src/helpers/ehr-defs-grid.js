@@ -74,7 +74,9 @@ class EhrDefsWorker {
 
   getDefaultValue (pageDataKey, elementKey) {
     let dV = this.getPageChildProperty(pageDataKey, elementKey, PROPS.defaultValue) || ''
-    dV = (dV.toLowerCase() === 'true') ? true : ((dV.toLowerCase() === 'false') ? false : dV)
+    if (typeof dV === 'string') {
+      dV = (dV.toLowerCase() === 'true') ? true : ((dV.toLowerCase() === 'false') ? false : dV)
+    }
     // console.log('EhrDefs.getDefaultValue', elementKey, dV)
     return dV
   }

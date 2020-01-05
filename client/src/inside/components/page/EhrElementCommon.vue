@@ -1,11 +1,15 @@
 
 <script>
 import EhrPageFormLabel from './EhrPageFormLabel.vue'
+import EhrDependant from './EhrDependant.vue'
 import EhrDefs from '../../../helpers/ehr-defs-grid'
+import EhrTypes from '../../../helpers/ehr-types'
 import StoreHelper from '../../../helpers/store-helper'
 import UiInfo from '../../../app/ui/UiInfo'
 import EventBus from '../../../helpers/event-bus'
 import { PAGE_DATA_READY_EVENT, FORM_INPUT_EVENT } from '../../../helpers/event-bus'
+
+const DEPENDANT_PROPS = EhrTypes.dependantOn
 
 const dbInputs = false
 const dbDialog = false
@@ -13,6 +17,7 @@ const dbPage = false
 const dbDetail = false
 
 export default {
+  extends: EhrDependant,
   components: {
     EhrPageFormLabel,
     UiInfo
@@ -21,8 +26,6 @@ export default {
   data: function () {
     return {
       dialogIsOpen: false,
-      dependantOnKey: '',
-      dependantOnValue: '',
       inputVal: '',
       suffix: '',
       options: ''
@@ -44,8 +47,10 @@ export default {
       if (this.isPageElement ) {
         disable = ! this.ehrHelp.isEditingForm(this.formKey)
       }
-      if (!disable && this.dependantOnKey) {
-        disable = !(this.dependantOnValue === true)
+      if(this.dependantDef) {
+        if (!disable && this.dependantDef.action === DEPENDANT_PROPS.action.disable) {
+          disable = !(this.dependantOnValue === true)
+        }
       }
       return disable
     }
@@ -101,55 +106,11 @@ export default {
         this.setInitialValue(initialValue)
       }
     },
-    /*
-    About dependant elements ... we need to enable input elements based on the state of a checkbox.  We can't depend
-    on reactive properties because the data structures for the pages only get created as needed. Vue's reactivity system
-    needs properties to exist on load to work best. The vue $set method was tried but it had inconsistent results.
-    I chose the direct listen-for-click-event approach. This approach also allows me to do more when the click
-    happens and to setup default values.
-     */
-    dependantClickEvent () {
-      const eData = { key: this.elementKey, value: this.inputVal }
-      const channel = this.eventChannelBroadcast
-      this.$nextTick(function () {
-        // console.log('Send an event on our transmission channel with a payload containing this component\'s value', eData, channel)
-        EventBus.$emit(channel, eData)
-      })
-    },
-    dependentPropertyReceiveEvent (eData) {
-      // we're receiving an event transmitted by another instance of this component
-      // it has sent a message on the channel this component listens on.
-      // console.log(`On channel ${this.dependentPropertyChangeChannel} from key ${eData.key} got hit? ${eData.value}`)
-      this.dependantOnValue = eData.value
-      /*
-      A change to false means disable this element. So let's also empty it too.
-       */
-      if (eData.value === false) {
-        this.setInitialValue('')
-      }
-    },
-    dependantPropertySetUp () {
-      const _this = this
-      this.eventChannelBroadcast = 'radio:' + this.elementKey
-      const dKey = this.dependantOnKey = this.element.dependantOn
-      if (dKey) {
-        // get default value of the other element and coerce to be boolean
-        const dependantDefault = EhrDefs.getDefaultValue(this.pageDataKey, dKey)
-        this.dependantOnValue = !!dependantDefault
-        this.dependentPropertyChangeChannel = 'radio:' + dKey
-        this.dependentEventHandler = function (eData) {
-          _this.dependentPropertyReceiveEvent(eData)
-        }
-        EventBus.$on(this.dependentPropertyChangeChannel, this.dependentEventHandler)
-      }
-    },
-
     setupCommon () {
       const element = this.element
       this.suffix = element.suffix
       this.options = element.options
     },
-
     setupEventHandlers () {
       const _this = this
       if (this.isPageElement) {
@@ -167,7 +128,6 @@ export default {
     // console.log('mounted this.tableKey', this.tableKey)
     this.setupCommon()
     this.setupEventHandlers()
-    this.dependantPropertySetUp()
     if (this.setup) {
       this.setup()
     }
@@ -178,9 +138,6 @@ export default {
     }
     if (this.dialogEventHandler) {
       EventBus.$off(this.dialogEventKey, this.dialogEventHandler)
-    }
-    if (this.dependentEventHandler) {
-      EventBus.$off(this.dependentPropertyChangeChannel, this.dependentEventHandler)
     }
   },
   watch: {

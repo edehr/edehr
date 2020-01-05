@@ -51,7 +51,7 @@ export default function () {
           fqn: 'progressNotes.note'
         }
       ],
-      generated: '2019-10-09T18:40:08-07:00',
+      generated: '2020-01-04T16:31:04-08:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -194,10 +194,6 @@ export default function () {
           label: 'Status',
           options: [
             {
-              key: 'Active',
-              text: 'Active'
-            },
-            {
               key: 'In progress',
               text: 'In progress'
             },
@@ -211,7 +207,7 @@ export default function () {
           fqn: 'carePlan.status'
         }
       ],
-      generated: '2019-10-09T18:40:08-07:00',
+      generated: '2020-01-04T16:31:04-08:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -313,7 +309,7 @@ export default function () {
       isV2: true,
       hasGridForm: true,
       pageChildren: [],
-      generated: '2019-10-09T18:40:08-07:00',
+      generated: '2020-01-04T16:31:04-08:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -367,7 +363,7 @@ export default function () {
           fqn: 'labResults.labReport4_1'
         }
       ],
-      generated: '2019-10-09T18:40:08-07:00',
+      generated: '2020-01-04T16:31:04-08:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -378,7 +374,7 @@ export default function () {
               gIndex: '1',
               gChildren: [
                 {
-                  elementKey: 'subgroup121',
+                  elementKey: 'subgroup74',
                   sgChildren: [
                     'labReport1_1',
                     'labReport2_1',
@@ -450,7 +446,7 @@ export default function () {
           fqn: 'medicalImaging.pneumonia_report'
         }
       ],
-      generated: '2019-10-09T18:40:08-07:00',
+      generated: '2020-01-04T16:31:04-08:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -479,7 +475,7 @@ export default function () {
       isV2: true,
       hasGridForm: true,
       pageChildren: [],
-      generated: '2019-10-09T18:40:08-07:00',
+      generated: '2020-01-04T16:31:04-08:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',

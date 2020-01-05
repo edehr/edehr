@@ -46,7 +46,7 @@ export default function () {
         {
           elementKey: 'defaultText',
           defaultValue: 'some default',
-          dependantOn: 'pcheckbox',
+          dependantOn: 'disable:pcheckbox',
           formIndex: '1',
           helperText: 'a text input',
           inputType: 'text',
@@ -192,7 +192,7 @@ export default function () {
         },
         {
           elementKey: 'ptext2',
-          dependantOn: 'pcheckbox2',
+          dependantOn: 'disable:pcheckbox2',
           formIndex: '1',
           formOption: 'hideLabel',
           inputType: 'text',
@@ -314,7 +314,7 @@ export default function () {
           fqn: 'testPage.place'
         }
       ],
-      generated: '2020-01-04T08:37:17-08:00',
+      generated: '2020-01-04T14:49:55-08:00',
       pageElements: {
         form1: {
           elementKey: 'form1',
@@ -492,7 +492,7 @@ export default function () {
         {
           elementKey: 'defaultText',
           defaultValue: 'some default',
-          dependantOn: 'pcheckbox',
+          dependantOn: 'disable:pcheckbox',
           formIndex: '1',
           helperText: 'a text input',
           inputType: 'text',
@@ -659,7 +659,7 @@ export default function () {
         },
         {
           elementKey: 'g5',
-          dependantOn: 'g4',
+          dependantOn: 'disable:g4',
           formIndex: '1',
           inputType: 'text',
           label: 'text',
@@ -890,6 +890,7 @@ export default function () {
         },
         {
           elementKey: 'administration',
+          defaultValue: 'sched',
           formIndex: '3',
           inputType: 'select',
           label: 'Administration',
@@ -1015,7 +1016,7 @@ export default function () {
           fqn: 'testTable.stat'
         }
       ],
-      generated: '2020-01-04T08:37:17-08:00',
+      generated: '2020-01-04T14:49:55-08:00',
       pageElements: {
         table1: {
           elementKey: 'table1',
