@@ -5,7 +5,7 @@
 {inputType: spacer}	eCell	{Label: spacer}	{elementKey: pspacer}	{pN: 40}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Weight}	{elementKey: weight}	{pN: 40}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Default_value: 80}	eCell	{Suffix: lb}	{Mandatory: TRUE}	{Validation: isNumber}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: checkbox}	eCell	{Label: checkbox}	{elementKey: pcheckbox}	{pN: 40}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Default_value: TRUE}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: a checkbox iinput}	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: text}	{elementKey: defaultText}	{pN: 40}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	{dependantOn: pcheckbox}	{Default_value: some default}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: a text input}	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: text}	{elementKey: defaultText}	{pN: 40}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	{dependantOn: disable:pcheckbox}	{Default_value: some default}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: a text input}	eCell	eCell	eCell
 {inputType: assetLink}	eCell	{Label: assetLink}	{elementKey: passetLink}	{pN: 40}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: select}	{elementKey: pselect}	{pN: 40}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Options: 1=a choice 1
 2=b choice 1
@@ -28,7 +28,7 @@ all=all options are selectable}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: calculatedValue}	eCell	{Label: calculatedValue}	{elementKey: p-cValue2}	{pN: 40}	{fN: 1}	{gN: 2}	{sgN: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_subgroup}	eCell	{Label: subgroup 3}	{elementKey: subgroup3}	{pN: 40}	{fN: 1}	{gN: 2}	{sgN: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: checkbox}	eCell	{Label: checkbox}	{elementKey: pcheckbox2}	{pN: 40}	{fN: 1}	{gN: 2}	{sgN: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: text}	{elementKey: ptext2}	{pN: 40}	{fN: 1}	{gN: 2}	{sgN: 3}	eCell	{formOption: hideLabel}	eCell	eCell	eCell	eCell	{dependantOn: pcheckbox2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: text}	{elementKey: ptext2}	{pN: 40}	{fN: 1}	{gN: 2}	{sgN: 3}	eCell	{formOption: hideLabel}	eCell	eCell	eCell	eCell	{dependantOn: disable:pcheckbox2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: form_label}	eCell	{Label: <b>a form <i>label</i></b>}	{elementKey: pform_label2}	{pN: 40}	{fN: 1}	{gN: 2}	{sgN: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: spacer}	eCell	{Label: spacer}	{elementKey: pspacer2}	{pN: 40}	{fN: 1}	{gN: 2}	{sgN: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: assetLink}	eCell	{Label: assetLink}	{elementKey: passetLink2}	{pN: 40}	{fN: 1}	{gN: 2}	{sgN: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{assetBase: standardized-assessment-tools}	{assetName: the-canadian-ed-triage-and-acuity-scale.gif}	eCell	eCell	eCell	eCell	eCell	eCell
@@ -50,7 +50,7 @@ all=all options are selectable}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: spacer}	eCell	{Label: spacer}	{elementKey: e2}	{pN: 41}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Weight}	{elementKey: weight}	{pN: 41}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	{tableLabel: Wieght}	{tableColumn: 2}	eCell	eCell	eCell	{Default_value: 80}	eCell	{Suffix: lb}	{Mandatory: TRUE}	{Validation: isNumber}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: checkbox}	eCell	{Label: checkbox}	{elementKey: pcheckbox}	{pN: 41}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	{tableLabel: A bool}	{tableColumn: 1}	eCell	eCell	eCell	{Default_value: TRUE}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: a checkbox iinput}	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: text}	{elementKey: defaultText}	{pN: 41}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	{tableLabel: Text}	{tableColumn: 3}	{tableCss: hr-table}	eCell	{dependantOn: pcheckbox}	{Default_value: some default}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: a text input}	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: text}	{elementKey: defaultText}	{pN: 41}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	{tableLabel: Text}	{tableColumn: 3}	{tableCss: hr-table}	eCell	{dependantOn: disable:pcheckbox}	{Default_value: some default}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: a text input}	eCell	eCell	eCell
 {inputType: assetLink}	eCell	{Label: assetLink}	{elementKey: e6}	{pN: 41}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{assetBase: standardized-assessment-tools}	{assetName: the-canadian-ed-triage-and-acuity-scale.gif}	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: select}	{elementKey: e7}	{pN: 41}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	{tableLabel: Selects}	{tableColumn: 5}	eCell	eCell	eCell	eCell	"{Options: 1=a choice 1
 2=b choice 1
@@ -73,7 +73,7 @@ all=all options are selectable}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: calculatedValue}	eCell	{Label: calculatedValue}	{elementKey: p-cValue2}	{pN: 41}	{fN: 1}	{gN: 2}	{sgN: 2}	eCell	eCell	{tableLabel: Calculated}	{tableColumn: 10}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_subgroup}	eCell	{Label: subgroup 3}	{elementKey: subgroup3}	{pN: 41}	{fN: 1}	{gN: 2}	{sgN: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: checkbox}	eCell	{Label: checkbox}	{elementKey: g4}	{pN: 41}	{fN: 1}	{gN: 2}	{sgN: 3}	eCell	eCell	{tableLabel: Bool}	{tableColumn: 12}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: text}	{elementKey: g5}	{pN: 41}	{fN: 1}	{gN: 2}	{sgN: 3}	eCell	eCell	{tableLabel: Text}	{tableColumn: 13}	eCell	eCell	{dependantOn: g4}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: text}	{elementKey: g5}	{pN: 41}	{fN: 1}	{gN: 2}	{sgN: 3}	eCell	eCell	{tableLabel: Text}	{tableColumn: 13}	eCell	eCell	{dependantOn: disable:g4}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: form_label}	eCell	{Label: <b>a form <i>label</i></b>}	{elementKey: g6}	{pN: 41}	{fN: 1}	{gN: 2}	{sgN: 3}	eCell	eCell	{tableLabel: Lable}	{tableColumn: 14}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: spacer}	eCell	{Label: spacer}	{elementKey: g7}	{pN: 41}	{fN: 1}	{gN: 2}	{sgN: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: assetLink}	{pRef: 6}	{Label: assetLink}	{elementKey: g8}	{pN: 41}	{fN: 1}	{gN: 2}	{sgN: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{assetBase: standardized-assessment-tools}	{assetName: the-canadian-ed-triage-and-acuity-scale.gif}	eCell	eCell	eCell	eCell	eCell	eCell
@@ -96,26 +96,26 @@ all=all options are selectable}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Status}	{elementKey: status}	{pN: 41}	{fN: 2}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Status}	{tableColumn: 7}	eCell	eCell	eCell	eCell	"{Options: Active
 Discharged}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: page_form}	eCell	{Label: Form 3}	{elementKey: form3}	{pN: 41}	{fN: 3}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	eCell	eCell	{pN: 41}	{fN: 3}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Administration}	{elementKey: administration}	{pN: 41}	{fN: 3}	{gN: 1}	{sgN: }	eCell	eCell	{tableLabel: Administration}	{tableColumn: 7}	eCell	eCell	eCell	eCell	"{Options: sched := Scheduled
+{inputType: ehr_group}	eCell	eCell	{elementKey: adminGroup}	{pN: 41}	{fN: 3}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: Administration}	{elementKey: administration}	{pN: 41}	{fN: 3}	{gN: 1}	{sgN: }	eCell	eCell	{tableLabel: Administration}	{tableColumn: 7}	eCell	eCell	eCell	{Default_value: sched}	"{Options: sched := Scheduled
 prn := PRN (as needed)
 once := Once
 stat := Stat}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	eCell	eCell	{pN: 41}	{fN: 3}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	{elementKey: schedGroup}	{pN: 41}	{fN: 3}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	{dependantOn: visble:administration=sched}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Scheduled}	{elementKey: scheduled}	{pN: 41}	{fN: 3}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Scheduled}	{tableColumn: 9}	eCell	eCell	eCell	eCell	"{Options: BID / q12h
 TID
 q8h
 QID
 q6h
 q4h}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	eCell	eCell	{pN: 41}	{fN: 3}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	{elementKey: prnGroup}	{pN: 41}	{fN: 3}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	{dependantOn: visble:administration=prn}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: PRN 1}	{elementKey: prn1}	{pN: 41}	{fN: 3}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 10}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: PRN 2}	{elementKey: prn2}	{pN: 41}	{fN: 3}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 11}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: PRN 3}	{elementKey: prn3}	{pN: 41}	{fN: 3}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 12}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: PRN 4}	{elementKey: prn4}	{pN: 41}	{fN: 3}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 13}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: PRN 5}	{elementKey: prn5}	{pN: 41}	{fN: 3}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 14}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: PRN 6}	{elementKey: prn6}	{pN: 41}	{fN: 3}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 15}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	eCell	eCell	{pN: 41}	{fN: 3}	{gN: 4}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	{elementKey: onceGroup}	{pN: 41}	{fN: 3}	{gN: 4}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	{dependantOn: visble:administration=once}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Once}	{elementKey: once}	{pN: 41}	{fN: 3}	{gN: 4}	{sgN: }	eCell	eCell	eCell	{tableColumn: 10}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	eCell	eCell	{pN: 41}	{fN: 3}	{gN: 5}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	{elementKey: statGroup}	{pN: 41}	{fN: 3}	{gN: 5}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	{dependantOn: visble:administration=stat}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Stat}	{elementKey: stat}	{pN: 41}	{fN: 3}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 10}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell

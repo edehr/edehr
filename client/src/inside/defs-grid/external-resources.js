@@ -151,11 +151,12 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
+              elementKey: 'ehr_group121',
               gIndex: '1',
               gChildren: [
                 {
+                  elementKey: 'admissions',
                   label: 'Admissions',
-                  elementKey: 'subgroup130',
                   sgChildren: [
                     'admissions1_1',
                     'admissions2_1',
@@ -163,16 +164,16 @@ export default function () {
                   ]
                 },
                 {
+                  elementKey: 'painAssessment',
                   label: 'Pain assessment',
-                  elementKey: 'subgroup131',
                   sgChildren: [
                     'painAssessment1_1',
                     'painAssessment2_1'
                   ]
                 },
                 {
+                  elementKey: 'neuroAssessment',
                   label: 'Neurological assessment',
-                  elementKey: 'subgroup132',
                   sgChildren: [
                     'neuroAssessment1_1',
                     'neuroAssessment2_1',
@@ -180,38 +181,38 @@ export default function () {
                   ]
                 },
                 {
+                  elementKey: 'fallRisk',
                   label: 'Falls risk',
-                  elementKey: 'subgroup133',
                   sgChildren: [
                     'fallRisk1_1',
                     'fallRisk2_1'
                   ]
                 },
                 {
+                  elementKey: 'notes',
                   label: 'Notes',
-                  elementKey: 'subgroup134',
                   sgChildren: [
                     'notes1_1'
                   ]
                 },
                 {
+                  elementKey: 'educational',
                   label: 'Educational resources',
-                  elementKey: 'subgroup135',
                   sgChildren: [
                     'educational1_1',
                     'educational2_1'
                   ]
                 },
                 {
+                  elementKey: 'wound',
                   label: 'Wound assessment',
-                  elementKey: 'subgroup136',
                   sgChildren: [
                     'wound1_1'
                   ]
                 },
                 {
+                  elementKey: 'medication',
                   label: 'Medication',
-                  elementKey: 'subgroup137',
                   sgChildren: [
                     'medication1_1'
                   ]
@@ -252,6 +253,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
+              elementKey: 'ehr_group122',
               gIndex: '1',
               gChildren: [
                 'snomed',
@@ -456,6 +458,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
+                elementKey: 'ehr_group123',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -466,6 +469,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group124',
                 gIndex: '2',
                 gChildren: [
                   'icd10',
@@ -624,6 +628,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
+                elementKey: 'ehr_group125',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -634,6 +639,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group126',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '2',
                 gChildren: [
@@ -644,6 +650,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'label',
                 label: 'Intervention code attributes',
                 gIndex: '3',
                 gChildren: []
@@ -809,6 +816,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
+                elementKey: 'ehr_group127',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -819,6 +827,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group128',
                 gIndex: '2',
                 gChildren: [
                   'clinicalCategory',

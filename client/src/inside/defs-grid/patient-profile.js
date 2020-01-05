@@ -448,7 +448,7 @@ export default function () {
           fqn: 'demographics.decisionMakerPhone'
         }
       ],
-      generated: '2019-10-09T18:58:02-07:00',
+      generated: '2020-01-04T16:29:56-08:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -456,6 +456,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
+              elementKey: 'ehr_group1',
               formCss: 'section-divider',
               gIndex: '1',
               gChildren: [
@@ -475,6 +476,7 @@ export default function () {
               ]
             },
             {
+              elementKey: 'ehr_group2',
               formCss: 'section-divider',
               gIndex: '2',
               gChildren: [
@@ -492,6 +494,7 @@ export default function () {
               ]
             },
             {
+              elementKey: 'ehr_group3',
               gIndex: '3',
               gChildren: [
                 'nextOfKinName',
@@ -530,7 +533,7 @@ export default function () {
           fqn: 'allergies.text'
         }
       ],
-      generated: '2019-10-09T18:58:02-07:00',
+      generated: '2020-01-04T16:29:56-08:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -538,6 +541,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
+              elementKey: 'ehr_group4',
               formCss: 'grid-left-to-right-1',
               gIndex: '1',
               gChildren: [
@@ -564,7 +568,7 @@ export default function () {
           fqn: 'medical.history'
         }
       ],
-      generated: '2019-10-09T18:58:02-07:00',
+      generated: '2020-01-04T16:29:56-08:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -572,6 +576,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
+              elementKey: 'ehr_group5',
               formCss: 'grid-left-to-right-1',
               gIndex: '1',
               gChildren: [
@@ -770,7 +775,7 @@ export default function () {
           fqn: 'psychosocial.spacer13'
         }
       ],
-      generated: '2019-10-09T18:58:02-07:00',
+      generated: '2020-01-04T16:29:56-08:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -778,6 +783,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
+              elementKey: 'ehr_group6',
               gIndex: '1',
               gChildren: [
                 'history',
@@ -788,6 +794,7 @@ export default function () {
               ]
             },
             {
+              elementKey: 'ehr_group7',
               gIndex: '2',
               gChildren: [
                 'exercise',
@@ -887,7 +894,7 @@ export default function () {
           fqn: 'surgical.comments'
         }
       ],
-      generated: '2019-10-09T18:58:02-07:00',
+      generated: '2020-01-04T16:29:56-08:00',
       pageElements: {
         pastSurgery: {
           elementKey: 'pastSurgery',
@@ -922,6 +929,7 @@ export default function () {
             formKey: 'pastSurgery',
             ehr_groups: [
               {
+                elementKey: 'pastSurgery',
                 gIndex: '1',
                 gChildren: [
                   'date',
@@ -982,6 +990,7 @@ export default function () {
             formKey: 'previous',
             ehr_groups: [
               {
+                elementKey: 'previous',
                 gIndex: '1',
                 gChildren: [
                   'previousAdmissionsDate',
@@ -991,6 +1000,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group14',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '2',
                 gChildren: [
@@ -1225,7 +1235,7 @@ export default function () {
           fqn: 'immunization.spacer25'
         }
       ],
-      generated: '2019-10-09T18:58:02-07:00',
+      generated: '2020-01-04T16:29:56-08:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -1233,6 +1243,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
+              elementKey: 'ehr_group15',
               gIndex: '1',
               gChildren: [
                 'hepA',
@@ -1286,7 +1297,7 @@ export default function () {
           fqn: 'familyHistory.history'
         }
       ],
-      generated: '2019-10-09T18:58:02-07:00',
+      generated: '2020-01-04T16:29:56-08:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -1294,6 +1305,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
+              elementKey: 'ehr_group26',
               formCss: 'grid-left-to-right-1',
               gIndex: '1',
               gChildren: [
@@ -1330,7 +1342,7 @@ export default function () {
           fqn: 'careTeam.profession'
         }
       ],
-      generated: '2019-10-09T18:58:02-07:00',
+      generated: '2020-01-04T16:29:56-08:00',
       pageElements: {
         teams: {
           elementKey: 'teams',
@@ -1357,6 +1369,7 @@ export default function () {
             formKey: 'teams',
             ehr_groups: [
               {
+                elementKey: 'ehr_group27',
                 gIndex: '1',
                 gChildren: [
                   'name',
@@ -1448,7 +1461,7 @@ export default function () {
           fqn: 'pastAppointments.diagnosis'
         }
       ],
-      generated: '2019-10-09T18:58:02-07:00',
+      generated: '2020-01-04T16:29:56-08:00',
       pageElements: {
         encounters: {
           elementKey: 'encounters',
@@ -1487,6 +1500,7 @@ export default function () {
             formKey: 'encounters',
             ehr_groups: [
               {
+                elementKey: 'encounters',
                 gIndex: '1',
                 gChildren: [
                   'date',
@@ -1541,6 +1555,7 @@ export default function () {
             formKey: 'outpatientAppointments',
             ehr_groups: [
               {
+                elementKey: 'outpatientAppointments',
                 gIndex: '1',
                 gChildren: [
                   'date',

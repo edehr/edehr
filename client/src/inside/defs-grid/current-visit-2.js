@@ -596,6 +596,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
+                elementKey: 'ehr_group68',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -606,6 +607,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'urinaryGroup2',
                 label: 'Urinary',
                 formCss: 'section-divider',
                 gIndex: '2',
@@ -619,6 +621,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'foleyGroup',
                 label: 'Foley',
                 formCss: 'section-divider',
                 gIndex: '3',
@@ -630,6 +633,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'pelvicGroup',
                 label: 'Pelvic',
                 formCss: 'section-divider',
                 gIndex: '4',
@@ -641,6 +645,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'vaginal',
                 label: 'Vaginal',
                 formCss: 'section-divider',
                 gIndex: '5',
@@ -651,6 +656,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'pregnantGroup',
                 label: 'Pregnancy',
                 formCss: 'section-divider',
                 gIndex: '6',
@@ -662,6 +668,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group69',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '7',
                 gChildren: [
@@ -1110,6 +1117,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
+                elementKey: 'ehr_group70',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -1120,6 +1128,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group71',
                 gIndex: '2',
                 gChildren: [
                   'swelling',
@@ -1136,6 +1145,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group73',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '3',
                 gChildren: [
@@ -1531,6 +1541,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
+                elementKey: 'ehr_group86',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -1541,6 +1552,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group87',
                 label: 'Primary pain site',
                 gIndex: '2',
                 gChildren: [
@@ -1555,6 +1567,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group88',
                 formCss: 'grid-left-to-right-1 section-divider',
                 gIndex: '3',
                 gChildren: [
@@ -1562,6 +1575,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group89',
                 label: 'Secondary pain site',
                 gIndex: '4',
                 gChildren: [
@@ -1576,6 +1590,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group90',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '5',
                 gChildren: [
@@ -2116,6 +2131,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
+                elementKey: 'ehr_group91',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -2126,6 +2142,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group92',
                 formCss: 'section-divider',
                 gIndex: '2',
                 gChildren: [
@@ -2134,6 +2151,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group93',
                 formCss: 'section-divider',
                 gIndex: '3',
                 gChildren: [
@@ -2142,6 +2160,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group94',
                 formCss: 'section-divider',
                 gIndex: '4',
                 gChildren: [
@@ -2150,6 +2169,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'state',
                 label: 'Psychological state',
                 gIndex: '5',
                 gChildren: [
@@ -2159,6 +2179,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'support',
                 label: 'Support',
                 gIndex: '6',
                 gChildren: [
@@ -2167,6 +2188,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'security',
                 label: 'Security',
                 gIndex: '7',
                 gChildren: [
@@ -2175,6 +2197,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'restraint',
                 label: 'Restraint',
                 gIndex: '8',
                 gChildren: [
@@ -2185,6 +2208,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group95',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '9',
                 gChildren: [
@@ -2395,6 +2419,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
+                elementKey: 'ehr_group96',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -2405,6 +2430,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group97',
                 gIndex: '2',
                 gChildren: [
                   'order',
@@ -2414,6 +2440,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group98',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '3',
                 gChildren: [
@@ -2603,6 +2630,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
+                elementKey: 'ehr_group99',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -2613,6 +2641,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group100',
                 gIndex: '2',
                 gChildren: [
                   'referralName',
@@ -2745,6 +2774,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
+                elementKey: 'ehr_group102',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -2755,6 +2785,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group103',
                 gIndex: '2',
                 gChildren: [
                   'requisition',
@@ -3088,6 +3119,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
+                elementKey: 'ehr_group105',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -3098,6 +3130,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group106',
                 gIndex: '2',
                 gChildren: [
                   'medication',
@@ -3108,6 +3141,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group107',
                 gIndex: '3',
                 gChildren: [
                   'administration',
@@ -3115,6 +3149,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group108',
                 gIndex: '4',
                 gChildren: [
                   'instructions',
@@ -3361,6 +3396,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
+                elementKey: 'ehr_group109',
                 gIndex: '1',
                 gChildren: [
                   'medStatus',
@@ -3556,6 +3592,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
+              elementKey: 'ehr_group110',
               gIndex: '1',
               gChildren: [
                 'admissionDay',
@@ -3572,6 +3609,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
+              elementKey: 'ehr_group112',
               gIndex: '1',
               gChildren: [
                 'dischargeDiagnosis',
@@ -3626,6 +3664,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
+              elementKey: 'ehr_group114',
               gIndex: '1',
               gChildren: [
                 'paymentType'
@@ -4769,6 +4808,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
+                elementKey: 'ehr_group74',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -4779,6 +4819,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group75',
                 formCss: 'section-divider',
                 gIndex: '2',
                 gChildren: [
@@ -4791,6 +4832,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'pressureInjury',
                 label: 'Pressure injury',
                 formCss: 'section-divider',
                 gIndex: '3',
@@ -4800,6 +4842,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'woundBed',
                 label: 'Wound bed',
                 formCss: 'section-divider',
                 gIndex: '4',
@@ -4817,6 +4860,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'toeSinus',
                 label: 'Toe undermining/Sinus tract',
                 formCss: 'section-divider',
                 gIndex: '5',
@@ -4841,6 +4885,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group83',
                 formCss: 'section-divider',
                 gIndex: '6',
                 gChildren: [
@@ -4853,6 +4898,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group84',
                 label: 'Treatment',
                 formCss: 'section-divider',
                 gIndex: '7',
