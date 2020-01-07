@@ -463,7 +463,7 @@ export default class EhrHelpV2 {
     Object.keys(ehr_data).forEach( (eKey) => {
       let eDef = EhrDefs.getPageChildElement(pageKey, eKey)
       let value = inputs[eKey]
-      if (dbDialog) console.log('EhrHelpV2 validate:', key, value, eDef)
+      if (dbDialog) console.log('EhrHelpV2 validate:', eKey, value, 'eDef:', eDef)
       let type = eDef[PROPS.inputType]
       let label = eDef[PROPS.label]
       // let validationRules = eDef[PROPS.validation]

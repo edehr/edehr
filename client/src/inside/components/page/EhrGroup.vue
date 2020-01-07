@@ -34,7 +34,7 @@ export default {
     elementKey () { return this.group.elementKey },
     groupIsVisible () {
       let visible = true
-      console.log('EhrGroup visible?', this.dependentDef, this.dependentOnValue)
+      // console.log('EhrGroup visible?', this.dependentDef, this.dependentOnValue)
       if(this.dependentDef && this.dependentDef.refValue) {
         visible = this.dependentDef.refValue === this.dependentOnValue
       }
