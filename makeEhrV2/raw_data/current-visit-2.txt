@@ -360,18 +360,33 @@ Intramuscular
 Subcutaneous}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: day}	eCell	{Label: Start day}	{elementKey: startMeds}	{pN: 25}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Start day}	{tableColumn: 5}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: day}	eCell	{Label: End day}	{elementKey: endMeds}	{pN: 25}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: End day}	{tableColumn: 6}	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	eCell	eCell	{pN: 25}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Administration}	{elementKey: administration}	{pN: 25}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Administration}	{tableColumn: 7}	eCell	eCell	eCell	eCell	"{Options: Scheduled
-PRN (as needed)
-Once
-Stat}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkset}	eCell	{Label: Schedule time}	{elementKey: scheduleTime}	{pN: 25}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Schedule time}	{tableColumn: 8}	eCell	eCell	eCell	eCell	"{Options: Morning
-Mid day
-Bedtime}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	eCell	eCell	{pN: 25}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Instructions}	{elementKey: instructions}	{pN: 25}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Instructions}	{tableColumn: 9}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Reason}	{elementKey: reason}	{pN: 25}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Reason}	{tableColumn: 10}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: textarea}	eCell	{Label: Notes}	{elementKey: notes}	{pN: 25}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Notes}	{tableColumn: 11}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	{elementKey: adminGroup}	{pN: 25}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: Administration}	{elementKey: administration}	{pN: 25}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Administration}	{tableColumn: 7}	eCell	eCell	eCell	{Default_value: sched}	"{Options: sched := Scheduled
+prn := PRN (as needed)
+once := Once
+stat := Stat}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	{elementKey: schedGroup}	{pN: 25}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	{dependentOn: visble:administration=sched}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: Scheduled}	{elementKey: scheduled}	{pN: 25}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Scheduled}	{tableColumn: 9}	eCell	eCell	eCell	eCell	"{Options: BID / q12h
+TID
+q8h
+QID
+q6h
+q4h}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	{elementKey: prnGroup}	{pN: 25}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	{dependentOn: visble:administration=prn}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: PRN 1}	{elementKey: prn1}	{pN: 25}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 10}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: PRN 2}	{elementKey: prn2}	{pN: 25}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 11}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: PRN 3}	{elementKey: prn3}	{pN: 25}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 12}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: PRN 4}	{elementKey: prn4}	{pN: 25}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 13}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: PRN 5}	{elementKey: prn5}	{pN: 25}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 14}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: PRN 6}	{elementKey: prn6}	{pN: 25}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 15}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	{elementKey: onceGroup}	{pN: 25}	{fN: 1}	{gN: 6}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	{dependentOn: visble:administration=once}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Once}	{elementKey: once}	{pN: 25}	{fN: 1}	{gN: 6}	{sgN: }	eCell	eCell	eCell	{tableColumn: 10}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	{elementKey: statGroup}	{pN: 25}	{fN: 1}	{gN: 7}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	{dependentOn: visble:administration=stat}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Stat}	{elementKey: stat}	{pN: 25}	{fN: 1}	{gN: 7}	{sgN: }	eCell	eCell	eCell	{tableColumn: 10}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	eCell	{pN: 25}	{fN: 1}	{gN: 8}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Instructions}	{elementKey: instructions}	{pN: 25}	{fN: 1}	{gN: 8}	{sgN: }	eCell	eCell	{tableLabel: Instructions}	#REF!	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Reason}	{elementKey: reason}	{pN: 25}	{fN: 1}	{gN: 8}	{sgN: }	eCell	eCell	{tableLabel: Reason}	#REF!	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: textarea}	eCell	{Label: Notes}	{elementKey: notes}	{pN: 25}	{fN: 1}	{gN: 8}	{sgN: }	eCell	eCell	{tableLabel: Notes}	#REF!	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: page}	{pRef: 31}	{Label: Medication administration records}	{elementKey: medAdminRec}	{pN: 26}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: table_form}	eCell	eCell	{elementKey: table}	{pN: 26}	{fN: 1}	{gN: }	{sgN: }	eCell	{formOption: customCode}	eCell	eCell	eCell	{addButtonText: Administered}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	{pN: 26}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell

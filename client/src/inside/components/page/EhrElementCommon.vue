@@ -77,6 +77,8 @@ export default {
     },
     setInitialValue (value) {
       this.inputVal = value
+      // invoke setInitialDependentValue after inputVal is set
+      this.setInitialDependentValue()
     },
     sendInputEvent (val) {
       if (dbDetail) console.log('EhrCommon broadcast PAGE_FORM_INPUT_EVENT ', val, this.elementKey)
@@ -100,8 +102,6 @@ export default {
       }
       if (dbPage || dbInputs) console.log('EhrCommon page data is ready', this.elementKey, value)
       this.setInitialValue(value)
-      // only invoke setInitialDependentValue after inputVal is set
-      this.setInitialDependentValue()
     },
     dialogEvent (open) {
       if (dbDialog) console.log('EhrCommon dialog opened or closed', this.elementKey, open)
@@ -154,6 +154,7 @@ export default {
         // only broadcast if user is editing the form
         this.sendInputEvent(val)
       }
+      if (dbInputs) console.log('EhrElement this.isTableElement', this.isTableElement, 'this.dialogIsOpen', this.dialogIsOpen)
       if (this.isTableElement && this.dialogIsOpen) {
         this.sendInputEvent(val)
       }

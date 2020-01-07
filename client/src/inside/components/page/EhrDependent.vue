@@ -40,12 +40,12 @@ export default {
   methods: {
     setInitialDependentValue () {
       if(this.isEventSource) {
-        console.log('setInitialDependentValue', this.elementKey)
+        // console.log('setInitialDependentValue', this.elementKey)
         this.dependentUIEvent()
       }
     },
     setDependentValue (value) {
-      console.log('setDependentValue', this.elementKey, value, this.dependentDef)
+      // console.log('setDependentValue', this.elementKey, value, this.dependentDef)
       this.dependentOnValue = value
     },
     dependentUIEvent () {
@@ -94,7 +94,7 @@ export default {
     },
     dependentPropertySetUp () {
       if (this.dependentOn) {
-        console.log('do we have dependentOn and element', this.dependentOn, this.elementKey)
+        // console.log('do we have dependentOn and element', this.dependentOn, this.elementKey)
         this.dependentDef = this._dependentKeys(this.dependentOn)
         if (this.dependentDef.key) {
           this._dReceiveSetup()

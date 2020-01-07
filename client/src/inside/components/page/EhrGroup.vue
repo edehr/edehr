@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(v-if="groupIsVisible")
+  div(v-show="groupIsVisible")
     h3(v-if="group.label") {{ group.label }}
     div(class="ehr-group-wrapper", :class="groupClass")
       div(v-for="child in group.gChildren", :key="forIndex(child)", class="ehr-group-for", :class="childClass(child)")
@@ -34,7 +34,7 @@ export default {
     elementKey () { return this.group.elementKey },
     groupIsVisible () {
       let visible = true
-      console.log('EhrGroup visible?', this.dependentDef, this.dependentOnValue)
+      // console.log('EhrGroup visible?', this.dependentDef, this.dependentOnValue)
       if(this.dependentDef && this.dependentDef.refValue) {
         visible = this.dependentDef.refValue === this.dependentOnValue
       }
