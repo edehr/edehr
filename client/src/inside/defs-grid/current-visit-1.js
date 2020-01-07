@@ -85,7 +85,7 @@ export default function () {
         {
           elementKey: 'diagnosis',
           dataCaseStudy: 'COPD, shortness of breath, dizzy',
-          dependantOn: 'disable:consentForBlood',
+          dependentOn: 'disable:consentForBlood',
           formIndex: '1',
           inputType: 'textarea',
           label: 'Physician admitting diagnosis',
@@ -144,7 +144,7 @@ export default function () {
           fqn: 'visit.transferOutTime'
         }
       ],
-      generated: '2020-01-04T16:30:26-08:00',
+      generated: '2020-01-05T08:31:04-08:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -525,7 +525,7 @@ export default function () {
           fqn: 'vitals.flowRate'
         }
       ],
-      generated: '2020-01-04T16:30:26-08:00',
+      generated: '2020-01-05T08:31:04-08:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -769,7 +769,7 @@ export default function () {
           fqn: 'fluidBalance.fluidOut'
         }
       ],
-      generated: '2020-01-04T16:30:26-08:00',
+      generated: '2020-01-05T08:31:04-08:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1694,7 +1694,7 @@ export default function () {
           fqn: 'neurological.strokeAssessmentCalculation'
         }
       ],
-      generated: '2020-01-04T16:30:26-08:00',
+      generated: '2020-01-05T08:31:04-08:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2484,7 +2484,7 @@ export default function () {
           fqn: 'respiratory.generalComments'
         }
       ],
-      generated: '2020-01-04T16:30:26-08:00',
+      generated: '2020-01-05T08:31:04-08:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -3284,7 +3284,7 @@ export default function () {
           fqn: 'cardiovascular.comments'
         }
       ],
-      generated: '2020-01-04T16:30:26-08:00',
+      generated: '2020-01-05T08:31:04-08:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -4023,7 +4023,7 @@ export default function () {
           fqn: 'gastrointestinal.comments'
         }
       ],
-      generated: '2020-01-04T16:30:26-08:00',
+      generated: '2020-01-05T08:31:04-08:00',
       pageElements: {
         table: {
           elementKey: 'table',

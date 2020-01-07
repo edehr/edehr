@@ -18,7 +18,7 @@
       ehr-element-checkset(:elementKey="elementKey", :ehrHelp="ehrHelp")
 
     div(v-else-if="isType('checkbox')", class="checkbox_wrapper")
-      input(:id="inputId", class="checkbox", type="checkbox", v-bind:disabled="disabled", v-bind:name="elementKey", v-model="inputVal", v-on:change="dependantEvent()")
+      input(:id="inputId", class="checkbox", type="checkbox", v-bind:disabled="disabled", v-bind:name="elementKey", v-model="inputVal", v-on:change="dependentUIEvent()")
       ehr-page-form-label(:element="element", css="checkbox_label, check-label", :forElement="inputId")
 
     div(v-else-if="isType('date')", class="date_wrapper")
@@ -33,7 +33,7 @@
     div(v-else-if="isType('select')", class="select_wrapper")
       ehr-page-form-label(:element="element", css="select_label")
       div(class="select")
-        select(v-bind:name="elementKey", v-bind:disabled="disabled", v-model="inputVal", v-on:change="dependantEvent()")
+        select(v-bind:name="elementKey", v-bind:disabled="disabled", v-model="inputVal", v-on:change="dependentUIEvent()")
           option(value="")
           option(v-for="option in options", :key="option.key", v-bind:value="option.key") {{ option.text}}
 
