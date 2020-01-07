@@ -21,10 +21,10 @@ const EhrTypes = {
     textarea: 'textarea',
     time: 'time',
   },
-  dependantOn: {
+  dependentOn: {
     splitActionKeyOn: ':',
     splitKeyValueOn: '=',
-    prefix: 'dependant:',
+    prefix: 'dependent:',
     type: {
       check: 'check',
       select: 'select',

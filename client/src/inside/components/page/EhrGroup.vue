@@ -12,11 +12,11 @@
 import EhrSubGroup from './EhrSubGroup'
 import EhrElementForm from './EhrElementForm'
 import EhrDefs from '../../../helpers/ehr-defs-grid'
-import EhrDependant from './EhrDependant.vue'
+import EhrDependent from './EhrDependent.vue'
 
 export default {
   name: 'EhrPageForm',
-  extends: EhrDependant,
+  extends: EhrDependent,
   components: {
     EhrSubGroup,
     EhrElementForm
@@ -34,8 +34,9 @@ export default {
     elementKey () { return this.group.elementKey },
     groupIsVisible () {
       let visible = true
-      if(this.dependantDef && this.dependantDef.refValue) {
-        visible = this.dependantDef.refValue === this.dependantOnValue
+      console.log('EhrGroup visible?', this.dependentDef, this.dependentOnValue)
+      if(this.dependentDef && this.dependentDef.refValue) {
+        visible = this.dependentDef.refValue === this.dependentOnValue
       }
       return visible
     },

@@ -46,7 +46,7 @@ export default function () {
         {
           elementKey: 'defaultText',
           defaultValue: 'some default',
-          dependantOn: 'disable:pcheckbox',
+          dependentOn: 'disable:pcheckbox',
           formIndex: '1',
           helperText: 'a text input',
           inputType: 'text',
@@ -192,7 +192,7 @@ export default function () {
         },
         {
           elementKey: 'ptext2',
-          dependantOn: 'disable:pcheckbox2',
+          dependentOn: 'disable:pcheckbox2',
           formIndex: '1',
           formOption: 'hideLabel',
           inputType: 'text',
@@ -314,7 +314,7 @@ export default function () {
           fqn: 'testPage.place'
         }
       ],
-      generated: '2020-01-04T16:54:44-08:00',
+      generated: '2020-01-05T08:32:00-08:00',
       pageElements: {
         form1: {
           elementKey: 'form1',
@@ -496,7 +496,7 @@ export default function () {
         {
           elementKey: 'defaultText',
           defaultValue: 'some default',
-          dependantOn: 'disable:pcheckbox',
+          dependentOn: 'disable:pcheckbox',
           formIndex: '1',
           helperText: 'a text input',
           inputType: 'text',
@@ -663,7 +663,7 @@ export default function () {
         },
         {
           elementKey: 'g5',
-          dependantOn: 'disable:g4',
+          dependentOn: 'disable:g4',
           formIndex: '1',
           inputType: 'text',
           label: 'text',
@@ -1020,7 +1020,7 @@ export default function () {
           fqn: 'testTable.stat'
         }
       ],
-      generated: '2020-01-04T16:54:44-08:00',
+      generated: '2020-01-05T08:32:00-08:00',
       pageElements: {
         table1: {
           elementKey: 'table1',
@@ -1364,7 +1364,7 @@ export default function () {
             },
             {
               elementKey: 'schedGroup',
-              dependantOn: 'visble:administration=sched',
+              dependentOn: 'visble:administration=sched',
               gIndex: '2',
               gChildren: [
                 'scheduled'
@@ -1372,7 +1372,7 @@ export default function () {
             },
             {
               elementKey: 'prnGroup',
-              dependantOn: 'visble:administration=prn',
+              dependentOn: 'visble:administration=prn',
               gIndex: '3',
               gChildren: [
                 'prn1',
@@ -1385,7 +1385,7 @@ export default function () {
             },
             {
               elementKey: 'onceGroup',
-              dependantOn: 'visble:administration=once',
+              dependentOn: 'visble:administration=once',
               gIndex: '4',
               gChildren: [
                 'once'
@@ -1393,7 +1393,7 @@ export default function () {
             },
             {
               elementKey: 'statGroup',
-              dependantOn: 'visble:administration=stat',
+              dependentOn: 'visble:administration=stat',
               gIndex: '5',
               gChildren: [
                 'stat'

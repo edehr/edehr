@@ -28,7 +28,7 @@ const pageChildElementProperties = [
   { sKey: 'cN', dKey: 'cIndex'},
   'dataCaseStudy',
   'defaultValue',
-  'dependantOn',
+  'dependentOn',
   { sKey: 'fN', dKey: 'formIndex'},
   'formCss',
   'formOption',
@@ -50,7 +50,7 @@ const pageChildElementProperties = [
 
 const groupProperties = [
   'elementKey',
-  'dependantOn',
+  'dependentOn',
   'label',
   'formCss',
 ]

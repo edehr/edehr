@@ -1,7 +1,7 @@
 
 <script>
 import EhrPageFormLabel from './EhrPageFormLabel.vue'
-import EhrDependant from './EhrDependant.vue'
+import EhrDependent from './EhrDependent.vue'
 import EhrDefs from '../../../helpers/ehr-defs-grid'
 import EhrTypes from '../../../helpers/ehr-types'
 import StoreHelper from '../../../helpers/store-helper'
@@ -9,7 +9,7 @@ import UiInfo from '../../../app/ui/UiInfo'
 import EventBus from '../../../helpers/event-bus'
 import { PAGE_DATA_READY_EVENT, FORM_INPUT_EVENT } from '../../../helpers/event-bus'
 
-const DEPENDANT_PROPS = EhrTypes.dependantOn
+const DEPENDENT_PROPS = EhrTypes.dependentOn
 
 const dbInputs = false
 const dbDialog = false
@@ -17,7 +17,7 @@ const dbPage = false
 const dbDetail = false
 
 export default {
-  extends: EhrDependant,
+  extends: EhrDependent,
   components: {
     EhrPageFormLabel,
     UiInfo
@@ -47,9 +47,9 @@ export default {
       if (this.isPageElement ) {
         disable = ! this.ehrHelp.isEditingForm(this.formKey)
       }
-      if(this.dependantDef) {
-        if (!disable && this.dependantDef.action === DEPENDANT_PROPS.action.disable) {
-          disable = !(this.dependantOnValue === true)
+      if(this.dependentDef) {
+        if (!disable && this.dependentDef.action === DEPENDENT_PROPS.action.disable) {
+          disable = !(this.dependentOnValue === true)
         }
       }
       /* A change to false means disable this element. So let's also empty it too. */
@@ -100,6 +100,8 @@ export default {
       }
       if (dbPage || dbInputs) console.log('EhrCommon page data is ready', this.elementKey, value)
       this.setInitialValue(value)
+      // only invoke setInitialDependentValue after inputVal is set
+      this.setInitialDependentValue()
     },
     dialogEvent (open) {
       if (dbDialog) console.log('EhrCommon dialog opened or closed', this.elementKey, open)
