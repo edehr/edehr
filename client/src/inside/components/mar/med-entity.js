@@ -33,6 +33,7 @@ export default class MedOrder {
   get route () { return this._data.route }
   get reason () { return this._data.reason }
   get notes () { return this._data.notes }
+  get scheduled () { return this._data.scheduled}
 
   asObjectForApi () {
     let obj = Object.assign({},this._data)

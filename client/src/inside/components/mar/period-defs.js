@@ -12,9 +12,14 @@ import PeriodEntity from './period-entity'
  */
 
 export default class PeriodDefs {
-  constructor () {
-    let medPeriods = EhrDefs.getMedOrderSchedule(MED_ORDERS_PAGE_KEY)
-    this._periodList = medPeriods.map( (mp) => new PeriodEntity(mp.elementKey, mp.label))
+  constructor (periods) {
+    this._periodList = []
+    const medPeriods = this.createPeriodObject(periods)
+    console.log('medPeriods >> ', medPeriods)
+    // let medPeriods = EhrDefs.getMedOrderSchedule(MED_ORDERS_PAGE_KEY)
+    this._periodList = medPeriods ? 
+      medPeriods.map( (mp) => new PeriodEntity(mp.key, mp.value))
+      : []
   }
 
   get periodList () { return this._periodList}
@@ -23,6 +28,19 @@ export default class PeriodDefs {
 
   findPeriod (key) {
     return this._periodList.find(pk => pk.key === key)
+  }
+
+  formatPeriod (period) {
+    return `${period.slice(0,2)}:${period.slice(2)}`
+  }
+
+  createPeriodObject (periods) {
+    return periods.map(p => {
+      return {
+        key: p,
+        value: this.formatPeriod(p)
+      }
+    })
   }
 
   validScheduledTime (value) {

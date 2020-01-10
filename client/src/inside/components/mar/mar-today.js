@@ -1,5 +1,6 @@
 
 import PeriodDefs from './period-defs'
+import MarSchedule from './mar-schedule'
 
 export default class MarToday {
   constructor () {
@@ -14,10 +15,15 @@ export default class MarToday {
 
     if (db1) console.log('getTodaysSchedule marRecords', marRecords)
     if (db1) console.log('getTodaysSchedule medOrders', medOrders)
-
+    const schedule = new MarSchedule(medOrders)
+  
+    const times = schedule.getPeriodDefs()
+    
     // Step 1
-    let pDefs = new PeriodDefs()
+    let pDefs = new PeriodDefs(times)
+    if (pDefs) console.log('pdefs >> ', pDefs)
     let pdList = pDefs.periodList
+    console.log('pdList >> ', pdList)
     this._cDay = 0
 
     if (db1) console.log('getTodaysSchedule pDefs', pDefs)
