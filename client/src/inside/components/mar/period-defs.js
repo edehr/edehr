@@ -18,11 +18,16 @@ export default class PeriodDefs {
     console.log('medPeriods >> ', medPeriods)
     // let medPeriods = EhrDefs.getMedOrderSchedule(MED_ORDERS_PAGE_KEY)
     this._periodList = medPeriods ? 
-      medPeriods.map( (mp) => new PeriodEntity(mp.key, mp.value))
+      medPeriods.map( (mp) => {
+        return new PeriodEntity(mp.key, mp.value)
+        // periodEntity.addMedication
+      })
       : []
   }
 
   get periodList () { return this._periodList}
+  
+  set periodList (periodList) { this._periodList = periodList}
 
   get keyNameList () { return this._periodList.map( e => { return {key: e.key, name: e.name }})}
 

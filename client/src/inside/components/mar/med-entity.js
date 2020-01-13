@@ -1,3 +1,5 @@
+import MarSchedule from './mar-schedule'
+
 /**
  * MedOrder holds a medication order as stored in the db plus it has a list
  * of references to periodDef; one for each scheduled period this medication
@@ -45,7 +47,11 @@ export default class MedOrder {
     The data imported from the db has a field for each schedule period. If this property exists and is true then
     the result of testing for a periodKey will be true.
      */
-    if (this._data.scheduleTime) { // V2
+    if (this._data.administration === 'sched' && this._data.scheduled) { // V3, with schedule
+      const schedule = new MarSchedule()
+      const possibleTimes = schedule.getScheduleFromTime(periodKey)
+      return possibleTimes.includes(this._data.scheduled)
+    } else if (this._data.scheduleTime) { // V2
       let st = this._data.scheduleTime
       result = st.includes(periodKey)
       // console.log('MedOrder isScheduled V2', periodKey, st, result)
@@ -55,6 +61,7 @@ export default class MedOrder {
     }
     return result
   }
+  isSch
 
 
 }
