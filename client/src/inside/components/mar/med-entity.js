@@ -61,7 +61,5 @@ export default class MedOrder {
     }
     return result
   }
-  isSch
-
 
 }
