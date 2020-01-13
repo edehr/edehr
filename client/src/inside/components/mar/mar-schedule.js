@@ -2,31 +2,38 @@ export default class MarSchedule {
   constructor (medOrders) {
     this.schedlule = []
     this.medOrders = medOrders || []
+    this.scheduledOptions = {
+      'BID / q12h' : ['0800','2000'],
+      TID: ['0800', '1600', '2200'],
+      q8h: ['0600','1400', '2200'],
+      QID: ['0800','1200', '1700', '2200'],
+      q6h: ['0600', '1200', '1800', '2200', '0200'],
+      q4h: ['0600', '1000', '1400', '1800', '2200', '0200']
+    }
+    console.log('medOrders >> ', medOrders)
   }
-  getFullSchedule () {
 
-  }
+  // set medOrders (medOrders) { this.medOrders = medOrders }
+  // get scheduledOptions () { return this.scheduledOptions }
+
   
   populateByType (medOrder) {
-    console.log('medOrder >> ', medOrder)
-    switch(medOrder.scheduled) {
-    case 'BID / q12h':
-      return ['0800','2000']
-    case 'TID':
-      return ['0800', '1600', '2200']
-    case 'q8h':
-      return ['0600','1400', '2200']
-    case 'QID':
-      return ['0800','1200', '1700', '2200']
-    case 'q6h':
-      return ['0600', '1200', '1800', '2200', '0200']
-    case 'q4h':
-      return ['0600', '1000', '1400', '1800', '2200', '0200']
-    default: 
-      console.log('medOrder.scheduled >> ', medOrder.scheduled)
+    const keys = Object.keys(this.scheduledOptions)
+    if(keys.includes(medOrder.scheduled)) {
+      return this.scheduledOptions[medOrder.scheduled]
+    } else {
+      console.log('NOT FOUND medOrder.scheduled >> ', medOrder.scheduled)
     }
+  }
 
+  getScheduleFromTime (time) {
+    const keys = Object.keys(this.scheduledOptions)
+    const filtered = keys.filter(k => this.scheduledOptions[k].includes(time))
+    return filtered
+  }
 
+  getScheduledMedicalOrders (scheduleId) {
+    return this.medOrders.filter(mo => mo.scheduled === scheduleId)
   }
   
   getPeriodDefs () {
@@ -38,4 +45,22 @@ export default class MarSchedule {
     })
     return periods
   }
+
+  // getFullSchedule () {
+  //   const schedule = {}
+  //   this.medOrders.map(mo => {
+  //     this.populateByType(mo)
+  //       .map(period => {
+  //         return {
+  //           [period]: this.get
+  //         }
+  //       })
+
+  //   })
+  // }
+
+  // getAllMedications () {
+  //   return this.medOrders.map(mo => mo.medication)
+  // }
+
 }
