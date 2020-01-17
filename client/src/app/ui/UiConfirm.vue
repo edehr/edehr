@@ -1,6 +1,13 @@
 <template lang="pug">
   div(class="ui-confirm")
-    app-dialog(:isModal="true", ref="theDialog", @save="confirmDialog", @cancel="cancelDialog", saveButtonLabel="Confirm")
+    app-dialog(
+      ref="theDialog", 
+      :isModal="true", 
+      :saveButtonLabel="save",
+      :cancelButtonLabel="cancel",
+      @save="confirmDialog", 
+      @cancel="cancelDialog"
+      )
       h2(slot="header") {{ title }}
       div(slot="body") {{ text }}
   
@@ -13,6 +20,8 @@ const ABORT_EVENT = 'abort' // event emitted when user aborts
 
 const DEFAULT_TITLE = 'Confirm or cancel'
 const DEFAULT_TEXT =''
+const SAVE_BUTTON_LABEL = 'Save'
+const CANCEL_BUTTON_LABEL = 'Cancel'
 export default {
   name: 'UiConfirm',
   components: {
@@ -21,13 +30,23 @@ export default {
   data: function () {
     return {
       title: DEFAULT_TITLE,
-      text: DEFAULT_TEXT
+      text: DEFAULT_TEXT,
+      save: SAVE_BUTTON_LABEL,
+      cancel: CANCEL_BUTTON_LABEL
     }
   },
+  props: {
+    setFooter: {type: Boolean, default: false}
+  },
+
   methods: {
-    showDialog: function (title, msg) {
+    showDialog: function (title, msg, save = SAVE_BUTTON_LABEL, cancel = CANCEL_BUTTON_LABEL) {
       this.title = title  || this.title
       this.text = msg || this.text
+      if(this.setFooter) {
+        this.save = save
+        this.cancel = cancel
+      }
       this.$refs.theDialog.onOpen()
     },
     closeIt: function () {
