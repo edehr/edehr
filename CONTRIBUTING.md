@@ -22,10 +22,10 @@ Here's a quick guide:
 - Each individual commit should make sense by itself as far as possible.
 - Breaking up a large change into smaller (coherent) commits is encouraged.
 - Good commit messages are also encouraged. Here are some resources on writing good commit messages:
-  - [Notes from Linus] (https://github.com/torvalds/subsurface/commit/b6590150d68df528efd40c889ba6eea476b39873)
-  - [Erlang's guide] (https://github.com/erlang/otp/wiki/Writing-good-commit-messages)
-  - [An often-cited post] (http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
-- Update the documentation, examples elsewhere, guides, whatever is affected by your contribution.
+  - [Notes from Linus](https://github.com/torvalds/subsurface/commit/b6590150d68df528efd40c889ba6eea476b39873)
+  - [Erlang's guide](https://github.com/erlang/otp/wiki/Writing-good-commit-messages)
+  - [An often-cited post](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
+- Update the documentation, examples elsewhere, guides and whatever is affected by your contribution.
 
 ## Follow the coding conventions
 This is a [Vue-based framework](https://vuejs.org/v2/guide/)
