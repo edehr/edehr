@@ -6,10 +6,10 @@ import path from 'path'
 export default class LookaheadController {
 
   constructor () {
-    const fName = path.join(__dirname, 'medicationsList.csv')
+    const fName = path.join(__dirname, 'medicationsList.json')
     const content = fs.readFileSync(fName, 'utf-8')
-    this.medications = content.split('\n')
-    this.limitCnt = 10
+    this.medications = JSON.parse(content)
+    this.limitCnt = 100
   }
 
   validateTerm (term) {
@@ -34,14 +34,14 @@ export default class LookaheadController {
       let cnt = 0;
       let results = []
       this.medications.forEach( med => {
-        if(med.includes(term)) {
+        if(med.name.includes(term)) {
           cnt++
           if (cnt < this.limitCnt) {
             results.push(med)
           }
         }
       })
-      const response = {count: cnt, results: results}
+      const response = {count: cnt, medications: results}
       resolve(response)
     })
   }
