@@ -116,7 +116,6 @@ export default {
       this.shouldConfirmNavigation = true
     },
     handleProceedNavigation () {
-      console.log('handlingProceedNavigation >> ', this.navigation)
       if(this.navigation === 'previous') {
         this.previousStudent()
       } else if (this.navigation === 'next'){
