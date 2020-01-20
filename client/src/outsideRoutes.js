@@ -42,6 +42,13 @@ export function outside () {
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/DevelopEhrData.vue'),
       meta: { layout: 'outside', label: 'Develop Ehr Data', topLevel: 'undefined' }
+    },
+    {
+      path: '/lookahead',
+      name: 'lookahead',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Lookahead.vue'),
+      meta: { layout: 'outside', label: 'Lookahead test', topLevel: 'undefined' }
     }
   ]
 }
