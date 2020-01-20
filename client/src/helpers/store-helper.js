@@ -45,6 +45,7 @@ class StoreHelperWorker {
   isInstructor () { return this._getVisitProperty('isInstructor') }
   isDeveloper () { return this._getVisitProperty('isDeveloper') }
   isStudent () { return this._getVisitProperty('isStudent') }
+  apiUrl () { return this._getVisitProperty('apiUrl') }
 
   isDevelopingContent () { return this._getVisitProperty('isDevelopingContent')  }
   setIsDevelopingContent (state) { store.commit('visit/setIsDevelopingContent', state) }

@@ -22,6 +22,9 @@ const state = {
 }
 
 const getters = {
+  apiUrl: state => {
+    return state.apiUrl
+  },
   isInstructor: state => {
     return state.sVisitData.isInstructor
   },
