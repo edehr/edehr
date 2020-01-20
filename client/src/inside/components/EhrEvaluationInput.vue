@@ -23,6 +23,7 @@ const CONFIRM =  {
   next: 'Save and Next',
 }
 const CANCEL = 'Discard notes and continue'
+const LEAVE_PROMPT = 'Your evaluation notes have not been saved'
 
 export default {
   name: 'EhrEvaluationInput',
@@ -55,8 +56,12 @@ export default {
     asStoredEvaluationNotes () {
       return StoreHelper.getEvaluationNotes()
     },
-    hasData () {
-      return (this.theNotes && this.theNotes.length > 0)
+    hasNewData () {
+      return (
+        this.theNotes && 
+        this.theNotes.length > 0 && 
+        this.theNotes !== this.asStoredEvaluationNotes
+      )
     }
   },
   mounted: function (){ 
@@ -69,7 +74,7 @@ export default {
 
   beforeRouteLeave : function (to, from, next) {
     console.log('beforeRouteLeave EhrEvaluationInput')
-    if(!to.path.includes('ehr') && this.hasData) {
+    if(to.meta.layout !== 'inside' && this.hasNewData) {
       this.confirmStep = 'beforeRouteLeave'
       this.next = next
       this.showConfirmationDialog()
@@ -89,7 +94,7 @@ export default {
     },
 
     shouldConfirmNavigation: function (shouldConfirm) {
-      if(shouldConfirm && this.hasData) {
+      if(shouldConfirm && this.hasNewData) {
         this.confirmStep = 'navigation'
         this.showConfirmationDialog()
       } else {
@@ -122,12 +127,14 @@ export default {
     },
 
     beforeUnloadListener (event) {
+      console.log('beforeUnloadListen')
       let e = event || window.event
-      if (this.hasData) {
+      if (this.hasNewData) {
         e.preventDefault()
         e.returnValue = LEAVE_PROMPT
       }
     },
+
 
     _setupEventHandlers () {
       const _this = this
