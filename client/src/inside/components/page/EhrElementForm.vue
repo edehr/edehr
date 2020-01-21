@@ -23,7 +23,8 @@
 
     div(v-else-if="isType('date')", class="date_wrapper")
       ehr-page-form-label(:element="element", css="date_label")
-      date-picker(class="d-picker", typeable, v-bind:disabled="disabled", v-bind:name="elementKey", v-model="inputVal")
+      div(class="date-container")
+        date-picker(class="d-picker", typeable, v-bind:disabled="disabled", v-bind:name="elementKey", v-model="inputVal")
         //div(v-if="!showLabel", slot="beforeCalendarHeader", class="datepicker-header") {{label}}
 
     div(v-else-if="isType('day')", class="day_wrapper")
@@ -53,6 +54,12 @@
     div(v-else) ELSE: {{inputType}} {{label}}
 
 </template>
+
+<style scoped>
+.date-container {
+    min-height: 29vh;
+  }
+</style>
 
 <script>
 // import the common component with the .vue extension so that the base component doesn't need to have a template section
