@@ -181,7 +181,6 @@ export default {
 
 .dialog-body {
   overflow-y: auto;
-  min-height: 40vh;
   max-height: calc( 90vh - 20vh );
   padding: 1.5rem 2rem 2rem 2rem;
 }
