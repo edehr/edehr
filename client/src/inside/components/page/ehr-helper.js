@@ -366,7 +366,7 @@ export default class EhrHelpV2 {
     })
     return undefined
   }
-
+  
   clearTable (tableKey) {
     const pageKey = this.pageKey
     if (dbDialog) console.log('clearTable for table ', tableKey)
@@ -382,7 +382,6 @@ export default class EhrHelpV2 {
     })
     return undefined
   }
-
   _saveData (payload) {
     let isStudent = this._isStudent()
     let isDevelopingContent = StoreHelper.isDevelopingContent()
@@ -501,6 +500,25 @@ export default class EhrHelpV2 {
     // there are many ways a user can come to the page. As a student, as a seed editor or someday in demo mode.
     // By doing a page refresh here we get the same results as a page load.
     router.go(0)
+  }
+
+  async resetFormData (childrenKeys) {
+    const { pageKey } = this
+    const ehrSeed = StoreHelper.getSeedEhrData()
+    const asLoadedPageData = this.getAsLoadedPageData()
+    childrenKeys.map(ck => {
+      const asSeed = ehrSeed[ck] ? ehrSeed[ck] : ''
+      asLoadedPageData[ck] = asSeed
+    })
+    
+    let payload = {
+      pageKey,
+      value: asLoadedPageData
+    }
+    await this._saveData(payload)
+    return undefined
+  
+
   }
 
   /**
