@@ -509,6 +509,27 @@ export default class EhrHelpV2 {
     router.go(0)
   }
 
+  async resetFormData (childrenKeys) {
+    const { pageKey } = this
+    
+    const ehrSeed = StoreHelper.getSeedEhrData()
+    const asLoadedPageData = this.getAsLoadedPageData()
+    console.log('seed >> ', ehrSeed)
+    childrenKeys.map(ck => {
+      const asSeed = ehrSeed[ck] ? ehrSeed[ck] : ''
+      asLoadedPageData[ck] = asSeed
+    })
+    
+    let payload = {
+      pageKey,
+      value: asLoadedPageData
+    }
+    await this._saveData(payload)
+    return undefined
+  
+
+  }
+
   /**
    * Save changes made on a page form
    */
