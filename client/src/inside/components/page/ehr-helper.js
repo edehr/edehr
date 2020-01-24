@@ -508,7 +508,6 @@ export default class EhrHelpV2 {
     
     const ehrSeed = StoreHelper.getSeedEhrData()
     const asLoadedPageData = this.getAsLoadedPageData()
-    console.log('seed >> ', ehrSeed)
     childrenKeys.map(ck => {
       const asSeed = ehrSeed[ck] ? ehrSeed[ck] : ''
       asLoadedPageData[ck] = asSeed
