@@ -320,15 +320,6 @@ export default class EhrHelpV2 {
     return StoreHelper.getAsLoadedPageData(pageKey)
   }
 
-  /**
-   * Get and return the merged (seed + student's work) for the current page
-   *
-   * @returns {any}
-   */
-  _mergedProperty () {
-    return this.getAsLoadedPageData()
-  }
-
   formatDate (d) {
     return formatTimeStr(d)
   }
@@ -401,8 +392,11 @@ export default class EhrHelpV2 {
       payload.value = prepareAssignmentPageDataForSave(payload.value)
       return StoreHelper.sendAssignmentDataUpdate(payload)
     } else if (isDevelopingContent) {
-      if (dbDialog) console.log('saving seed ehr data', payload.id, JSON.stringify(payload.value))
+      if (dbDialog) console.log('saving seed ehr data', payload.pageKey, JSON.stringify(payload.value))
       return StoreHelper.updateSeedEhrProperty(payload.pageKey, payload.value)
+        .then(() => {
+          this._loadPageData()
+        })
     } else {
       return Promise.reject('Coding error using _saveData out of context')
     }
