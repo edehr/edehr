@@ -8,7 +8,7 @@ import dragDirective from './directives/drag-directive'
 import resizeDirective from './directives/resize-directive'
 import textToHtml from './directives/text-to-html'
 import validate from './directives/validate'
-import VueAutosuggest from "vue-autosuggest"
+import VueAutosuggest from 'vue-autosuggest'
 /*
 Import the global style sheet
  */
@@ -52,7 +52,7 @@ Configure Vue
  */
 Vue.config.productionTip = false
 Vue.use(require('vue-moment'))
-Vue.use(VueAutosuggest);
+Vue.use(VueAutosuggest)
 Vue.component('outside-layout', outsideLayout)
 Vue.component('inside-layout', insideLayout)
 Vue.directive('dragged', dragDirective)
