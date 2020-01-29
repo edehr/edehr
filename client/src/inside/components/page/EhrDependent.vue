@@ -49,12 +49,14 @@ export default {
       this.dependentOnValue = value
     },
     dependentUIEvent () {
-      const eData = {key: this.elementKey, value: this.inputVal}
       const channel = this.eventChannelBroadcast
-      this.$nextTick(function () {
-        // console.log('Send an event on our transmission channel with a payload containing this component\'s value', eData, channel)
-        EventBus.$emit(channel, eData)
-      })
+      if(channel) {
+        const eData = {key: this.elementKey, value: this.inputVal}
+        this.$nextTick(function () {
+          // console.log('Send an event on our transmission channel with a payload containing this component\'s value', eData, channel)
+          EventBus.$emit(channel, eData)
+        })
+      }
     },
     _dReceiveEvent (eData) {
       // we're receiving an event transmitted by another instance of this component

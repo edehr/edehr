@@ -3,12 +3,12 @@
     div(class="ehr_layout__wrapper app")
       ui-spinner(:loading="isLoading")
       app-header
-      ehr-context-banner
       main(class="ehr_layout__main columns")
         div(class="ehr_layout__nav column")
           ehr-nav-panel
         div(class="ehr_layout__content column")
           div(class="ehr_layout__content_banner")
+            ehr-context-banner
             div(class="ehr_layout__content_banner_content")
               ehr-banner
           div(class="ehr_layout__content_page")
