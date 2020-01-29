@@ -18,6 +18,9 @@ export default class MarToday {
     const schedule = new MarSchedule(medOrders)
   
     const times = schedule.getPeriodDefs()
+
+    const mar_schedule = schedule.getMedOrdersSchedule()
+    console.log('marToday mar_schedule >> ', mar_schedule)
     // Step 1
     let pDefs = new PeriodDefs(times)
     let pdList = pDefs.periodList
@@ -73,24 +76,12 @@ export default class MarToday {
 
     // Step 7
     marRecsFiltered.forEach( mar =>  {
-      // console.log('MarToday filter list', pdListFiltered, 'to find ', mar.scheduledTime)
-      
-      
-      // if( mar.scheduled ) { 
-      //   schedule.getScheduleFromTime(pk)
-      //   pdListFiltered.filter( pk => schedule.getScheduleFromTime(pk).includes(mar.scheduled ))
-      //     .map(pk => {
-      //       console.log('pk >> ', pk)
-      //       pk.marRecord = mar
-      //       console.log('set pk marRecord >>> ', pk)
-      //     })
-      // } else
-      
       if(mar.scheduledTime ) {
         let pk = pdListFiltered.find( pk => pk.key === mar.scheduledTime )
         pk.marRecord = mar
       } 
     })
+
 
     // Step 8
     let mCnt = 0
@@ -100,6 +91,8 @@ export default class MarToday {
       this._cDay += 1
       pdListFiltered.forEach ( pk => pk.marRecord = undefined )
     }
+
+    console.log('pdListFiltered >> ', pdListFiltered)
 
     return pdListFiltered
   }

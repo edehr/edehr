@@ -36,6 +36,10 @@ export default class MedOrder {
   get reason () { return this._data.reason }
   get notes () { return this._data.notes }
   get scheduled () { return this._data.scheduled}
+  get schedule () { return this._data.schedule}
+  get administration () { return this._data.administration}
+
+  set schedule (schedule)  { this._data.schedule = schedule}
 
   asObjectForApi () {
     let obj = Object.assign({},this._data)
@@ -43,14 +47,21 @@ export default class MedOrder {
   }
   isScheduled (periodKey) {
     let result = false
+    const schedule = new MarSchedule()
     /*
     The data imported from the db has a field for each schedule period. If this property exists and is true then
     the result of testing for a periodKey will be true.
      */
     if (this._data.administration === 'sched' && this._data.scheduled) { // V3, with schedule
-      const schedule = new MarSchedule()
       const possibleTimes = schedule.getScheduleFromTime(periodKey)
-      return possibleTimes.includes(this._data.scheduled)
+      result = possibleTimes.includes(this._data.scheduled)
+    }else if (this._data.administration === 'prn') {
+      const mo = this._data
+      const timeKeys =  Object.keys(mo).filter(k=>k.includes('prn'))
+      console.log('timeKeys', timeKeys)
+      result = timeKeys.filter(t => mo[t] === periodKey)
+      console.log('result >> ', result)
+      result = result.length > 0
     } else if (this._data.scheduleTime) { // V2
       let st = this._data.scheduleTime
       result = st.includes(periodKey)

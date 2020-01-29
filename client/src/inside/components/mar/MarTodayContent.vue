@@ -71,6 +71,7 @@ export default {
     },
     saveMar (mar) {
       let help = new MarHelper(this.ehrHelp)
+      console.log('help >> ', help)
       help.saveMarDialog(mar).then(() => {
         this.$refs.refMarDialog.closeDialog()
       })

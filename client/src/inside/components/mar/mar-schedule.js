@@ -15,19 +15,55 @@ export default class MarSchedule {
 
   // set medOrders (medOrders) { this.medOrders = medOrders }
   // get scheduledOptions () { return this.scheduledOptions }
-
   
   populateByType (medOrder) {
-    const keys = Object.keys(this.scheduledOptions)
-    if(keys.includes(medOrder.scheduled)) {
-      return this.scheduledOptions[medOrder.scheduled]
-    } else {
-      console.log('NOT FOUND medOrder.scheduled >> ', medOrder.scheduled)
+    switch (medOrder.administration) {
+    case 'sched':
+      console.log('case sched')
+      const keys = Object.keys(this.scheduledOptions)
+      if(keys.includes(medOrder.scheduled)) {
+        return this.scheduledOptions[medOrder.scheduled]
+      } else {
+        console.log('NOT FOUND medOrder.scheduled >> ', medOrder.scheduled)
+      }
+    case 'prn':
+      console.log('isPrn!')
+      const prnKeys = Object.keys(medOrder._data).filter(k=>k.includes('prn'))
+      const prnArray = []
+      const mo = medOrder._data
+      prnKeys.map(k => {
+        if(mo[k]){
+          console.log('push >> ', mo[k])
+          prnArray.push(mo[k])
+        }
+      })
+      return prnArray
+    default: 
+      console.warn('medOrder.administration not explicitly defined in mar-schedule.populateByType yet...', medOrder.administration)
     }
+  }
+
+
+  getPRNMedicationsByTime (time){
+    const hasPrn = this.medOrders.filter(mo=>mo.administration === 'prn')
+    const keys = Object.keys(hasPrn._data).filter(k=>k.includes('prn'))
+    console.log('getPRNMedicationsByTime, keys', keys)
+    const filteredTimes = []
+    hasPrn.map(mo => {
+      keys.map(k => {
+        if(mo[k] === time) {
+          filteredTimes.push({[k]: mo[k]})
+        }
+      }) 
+    })
+
+    console.log('filteredTimes >> ', filteredTimes)
+    return filteredTimes
   }
 
   getScheduleFromTime (time) {
     const keys = Object.keys(this.scheduledOptions)
+    // Filtered from schedule options
     const filtered = keys.filter(k => this.scheduledOptions[k].includes(time))
     return filtered
   }
@@ -46,12 +82,19 @@ export default class MarSchedule {
     return periods
   }
 
+  getMedOrdersSchedule () {
+    return this.medOrders.map(mo => {
+      mo.schedule = this.populateByType(mo)      
+      return mo
+    })
+  }
+
   // getFullSchedule () {
   //   const schedule = {}
   //   this.medOrders.map(mo => {
   //     this.populateByType(mo)
   //       .map(period => {
-  //         return {
+  //         return {`
   //           [period]: this.get
   //         }
   //       })
