@@ -9,15 +9,15 @@
         :renderSuggestion="renderSuggestion",
         :getSuggestionValue="getSuggestionValue"
       )
-        div(slot="before-suggestions") {{dropDownTitle}}
-      div(v-if="showDetails",style="margin-top: 10px;") Selection details:
-        span(v-show="resultCount>0") {{resultCount}} possible matches
-        pre {{JSON.stringify(selected, null, 4)}}
+      //-   div(slot="before-suggestions") {{dropDownTitle}}
+      //- div(v-if="showDetails",style="margin-top: 10px;") Selection details:
+      //-   span(v-show="resultCount>0") {{resultCount}} possible matches
+      //-   pre {{JSON.stringify(selected, null, 4)}}
 </template>
 
 <script>
 import { VueAutosuggest } from 'vue-autosuggest'
-import StoreHelper from '../../helpers/store-helper'
+import StoreHelper from '../../../helpers/store-helper'
 import axios from 'axios'
 
 export default {
@@ -27,7 +27,7 @@ export default {
   data () {
     const apiUrl = StoreHelper.apiUrl()
     const base = apiUrl + '/lookahead/medications/'
-    console.log('Using url ', base)
+    // console.log('Using url ', base)
     return {
       showDetails: true, // set true/false to show/hide details about the selected results
       timeout: null,
@@ -118,8 +118,7 @@ export default {
     outline: none;
     position: relative;
     display: block;
-    border: 1px solid #616161;
-    padding: 10px;
+    padding: 3.5px;
     width: 100%;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
