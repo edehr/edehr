@@ -508,10 +508,9 @@ export default class EhrHelpV2 {
     // By doing a page refresh here we get the same results as a page load.
     router.go(0)
   }
-
+  
   async resetFormData (childrenKeys) {
     const { pageKey } = this
-    
     const ehrSeed = StoreHelper.getSeedEhrData()
     const asLoadedPageData = this.getAsLoadedPageData()
     childrenKeys.map(ck => {
