@@ -1,6 +1,5 @@
 export default class MarSchedule {
-  constructor (medOrders) {
-    this.schedlule = []
+  constructor (medOrders, schedule) {
     this.medOrders = medOrders || []
     this.scheduledOptions = {
       'BID / q12h' : ['0800','2000'],
@@ -10,12 +9,19 @@ export default class MarSchedule {
       q6h: ['0600', '1200', '1800', '2200', '0200'],
       q4h: ['0600', '1000', '1400', '1800', '2200', '0200']
     }
-    console.log('medOrders >> ', medOrders)
+    this.schedule = schedule || []
   }
 
   // set medOrders (medOrders) { this.medOrders = medOrders }
   // get scheduledOptions () { return this.scheduledOptions }
   
+  isPeriodInSchedule (periodKey) {
+    const possibleTimes = this.getScheduleFromTime(periodKey)
+    console.log('possibleTimes >> ', possibleTimes)
+    console.log('possibleTimes.includes(this.schedlule) >> ', possibleTimes.includes(this.schedlule))
+    return possibleTimes.includes(this.schedule)
+  }
+
   populateByType (medOrder) {
     switch (medOrder.administration) {
     case 'sched':
@@ -28,37 +34,15 @@ export default class MarSchedule {
       }
     case 'prn':
       console.log('isPrn!')
-      const prnKeys = Object.keys(medOrder._data).filter(k=>k.includes('prn'))
       const prnArray = []
-      const mo = medOrder._data
-      prnKeys.map(k => {
-        if(mo[k]){
-          console.log('push >> ', mo[k])
-          prnArray.push(mo[k])
-        }
-      })
+      for (let i = 1; i <= 6; i++){
+        const prn = `prn${i}`
+        prnArray.push(medOrder[prn])
+      }
       return prnArray
     default: 
       console.warn('medOrder.administration not explicitly defined in mar-schedule.populateByType yet...', medOrder.administration)
     }
-  }
-
-
-  getPRNMedicationsByTime (time){
-    const hasPrn = this.medOrders.filter(mo=>mo.administration === 'prn')
-    const keys = Object.keys(hasPrn._data).filter(k=>k.includes('prn'))
-    console.log('getPRNMedicationsByTime, keys', keys)
-    const filteredTimes = []
-    hasPrn.map(mo => {
-      keys.map(k => {
-        if(mo[k] === time) {
-          filteredTimes.push({[k]: mo[k]})
-        }
-      }) 
-    })
-
-    console.log('filteredTimes >> ', filteredTimes)
-    return filteredTimes
   }
 
   getScheduleFromTime (time) {

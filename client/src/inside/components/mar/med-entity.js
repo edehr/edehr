@@ -38,6 +38,13 @@ export default class MedOrder {
   get scheduled () { return this._data.scheduled}
   get schedule () { return this._data.schedule}
   get administration () { return this._data.administration}
+  get prn1 () { return this._data.prn1 }
+  get prn2 () { return this._data.prn2 }
+  get prn3 () { return this._data.prn3 }
+  get prn4 () { return this._data.prn4 }
+  get prn5 () { return this._data.prn5 }
+  get prn6 () { return this._data.prn6 }
+
 
   set schedule (schedule)  { this._data.schedule = schedule}
 
@@ -47,14 +54,14 @@ export default class MedOrder {
   }
   isScheduled (periodKey) {
     let result = false
-    const schedule = new MarSchedule()
+
     /*
     The data imported from the db has a field for each schedule period. If this property exists and is true then
     the result of testing for a periodKey will be true.
      */
     if (this._data.administration === 'sched' && this._data.scheduled) { // V3, with schedule
-      const possibleTimes = schedule.getScheduleFromTime(periodKey)
-      result = possibleTimes.includes(this._data.scheduled)
+      const schedule = new MarSchedule([], this._data.scheduled)
+      result = schedule.isPeriodInSchedule(periodKey)
     }else if (this._data.administration === 'prn') {
       const mo = this._data
       const timeKeys =  Object.keys(mo).filter(k=>k.includes('prn'))
