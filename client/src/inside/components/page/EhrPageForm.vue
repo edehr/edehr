@@ -71,7 +71,6 @@ export default {
     },
 
     resetFormData: function () {
-     
       const children = []
       this.form.ehr_groups.map(g=>{
         g.gChildren.map(k=>{

@@ -366,7 +366,7 @@ export default class EhrHelpV2 {
     })
     return undefined
   }
-
+  
   clearTable (tableKey) {
     const pageKey = this.pageKey
     if (dbDialog) console.log('clearTable for table ', tableKey)
@@ -382,7 +382,6 @@ export default class EhrHelpV2 {
     })
     return undefined
   }
-
   _saveData (payload) {
     let isStudent = this._isStudent()
     let isDevelopingContent = StoreHelper.isDevelopingContent()
@@ -502,7 +501,7 @@ export default class EhrHelpV2 {
     // By doing a page refresh here we get the same results as a page load.
     router.go(0)
   }
-  
+
   async resetFormData (childrenKeys) {
     const { pageKey } = this
     const ehrSeed = StoreHelper.getSeedEhrData()
