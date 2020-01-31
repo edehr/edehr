@@ -1,14 +1,13 @@
 <template lang="pug">
-    div(class="container")
-      vue-autosuggest(
-        ref="autocomplete",
-        :suggestions="suggestions",
-        :inputProps="inputProps",
-        @input= "fetchResults",
-        :sectionConfigs="sectionConfigs",
-        :renderSuggestion="renderSuggestion",
-        :getSuggestionValue="getSuggestionValue"
-      )
+  vue-autosuggest(
+    ref="autocomplete",
+    :suggestions="suggestions",
+    :inputProps="inputProps",
+    @input= "fetchResults",
+    :sectionConfigs="sectionConfigs",
+    :renderSuggestion="renderSuggestion",
+    :getSuggestionValue="getSuggestionValue"
+  )
       //-   div(slot="before-suggestions") {{dropDownTitle}}
       //- div(v-if="showDetails",style="margin-top: 10px;") Selection details:
       //-   span(v-show="resultCount>0") {{resultCount}} possible matches
@@ -47,12 +46,17 @@ export default {
         medications: {
           // limit: 16,
           onSelected: selected => {
-            this.selected = selected.item
+            this.selected = selected.item.name
+            this.$emit('selected', this.selected)
           }
         },
       }
     }
   },
+  props: {
+    lookaheadKey: { type: String }
+  },
+
   computed: {
     dropDownTitle () {
       return 'Found ' + this.resultCount + ' possible matches'

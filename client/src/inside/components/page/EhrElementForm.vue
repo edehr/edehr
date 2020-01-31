@@ -52,7 +52,11 @@
 
     div(v-else-if="isType('lookahead')", class="text_input_wrapper")
       ehr-page-form-label(:element="element", css="text_input_wrapper")
-      ehr-element-lookup(v-bind:disabled="disabled", v-bind:name="lookaheadKey", v-model="inputVal")
+      ehr-element-lookup(
+        v-bind:disabled="disabled", 
+        v-bind:name="lookaheadKey", 
+        @selected="(selected) => inputVal = selected"
+        )
 
     div(v-else) ELSE: {{inputType}} {{label}}
 
