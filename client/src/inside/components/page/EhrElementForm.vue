@@ -23,7 +23,7 @@
 
     div(v-else-if="isType('date')", class="date_wrapper")
       ehr-page-form-label(:element="element", css="date_label")
-        date-picker(class="d-picker", typeable, v-bind:disabled="disabled", v-bind:name="elementKey", v-model="inputVal")
+      date-picker(class="d-picker", typeable, v-bind:disabled="disabled", v-bind:name="elementKey", v-model="inputVal")
         //div(v-if="!showLabel", slot="beforeCalendarHeader", class="datepicker-header") {{label}}
 
     div(v-else-if="isType('day')", class="day_wrapper")
