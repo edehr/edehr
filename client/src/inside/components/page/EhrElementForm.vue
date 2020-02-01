@@ -50,6 +50,14 @@
       ehr-page-form-label(:element="element", css="textarea_label")
       textarea(class="ehr-page-form-textarea", v-bind:disabled="disabled", v-bind:name="elementKey", v-model="inputVal")
 
+    div(v-else-if="isType('lookahead')", class="text_input_wrapper")
+      ehr-page-form-label(:element="element", css="text_input_wrapper")
+      ehr-element-lookup(
+        v-bind:disabled="disabled", 
+        v-bind:name="lookaheadKey", 
+        @selected="(selected) => inputVal = selected"
+        )
+
     div(v-else) ELSE: {{inputType}} {{label}}
 
 </template>
@@ -59,6 +67,7 @@
 import EhrElementCommon from './EhrElementCommon.vue'
 import EhrElementCalculated from './EhrElementCalculated'
 import EhrElementCheckset from './EhrElementCheckset'
+import EhrElementLookup from './EhrElementLookup.vue'
 import DatePicker from 'vuejs-datepicker'
 
 export default {
@@ -66,7 +75,8 @@ export default {
   components: {
     EhrElementCalculated,
     EhrElementCheckset,
-    DatePicker
+    DatePicker,
+    EhrElementLookup
   },
   props: {
   },
