@@ -2,7 +2,7 @@
 name: Small task template
 about: A task to support a larger issue
 title: ''
-labels: "~Task"
+labels: ''
 assignees: ''
 
 ---
