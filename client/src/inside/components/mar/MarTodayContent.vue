@@ -1,6 +1,6 @@
 <template lang="pug">
   div(class="mar-today-content")
-    div(v-if="schedule.length === 0")
+    div(v-if="todaysSchedule.length === 0")
       h4 No medications ordered
     div(v-else)
       div(class="columns")
@@ -10,19 +10,19 @@
           h4 Medication order
         div(class="column mar-column")
           h4 Administration
-      div(class="periodsList", v-for="period in schedule", :key="period.key")
+      div(class="periodsList", v-for="period in todaysSchedule", :key="period.hour24")
         div(class="columns")
           div(class="column period-column")
-            p {{ period.name }}
-          div(class="column med-order-column")           
-            med-list(:medsList="period.medsList")
+            p {{ period.hour24 }}
+          div(class="column med-order-column")
+            med-list(:medsList="period.medList")
           div(class="column mar-column")
             div(v-show="showButton(period)")
               ui-button(v-on:buttonClicked="openMarDialog(period)", v-bind:secondary="true") Add MAR
-            div(v-show="period.hasMar()")
-              mar-record(:record="period.marRecord || {}")
-      mar-dialog(ref="refMarDialog", :currentDay="currentDay", v-on:saveMar="saveMar")
-    div(style="display:none") refreshData: {{refreshData}}
+            div(v-show="period.hasMar")
+              mar-record(:record="period.marRecord")
+        mar-dialog(ref="refMarDialog", :currentDay="currentDay", v-on:saveMar="saveMar")
+      div(style="display:none") refreshData: {{refreshData}}
 </template>
 
 <script>
@@ -45,7 +45,7 @@ export default {
   data () {
     return {
       showMarDialog: false,
-      schedule: [],
+      todaysSchedule: [],
       currentDay: 0
     }
   },
@@ -58,7 +58,7 @@ export default {
       // See EhrPageForm for more on why we have currentData
       this.refresh()
       // console.log('MarTodayContent refreshData', this.schedule)
-      return this.schedule
+      return this.todaysSchedule
     }
   },
   methods: {
@@ -67,10 +67,11 @@ export default {
       this.$refs.refMarDialog.openMarDialog(period)
     },
     showButton (period) {
-      return this.ehrHelp.showTableAddButton() && !period.hasMar()
+      return this.ehrHelp.showTableAddButton() && !period.hasMar
     },
     saveMar (mar) {
       let help = new MarHelper(this.ehrHelp)
+      console.log('help >> ', help)
       help.saveMarDialog(mar).then(() => {
         this.$refs.refMarDialog.closeDialog()
       })
@@ -79,7 +80,7 @@ export default {
       if(this.ehrHelp){
         let help = new MarHelper(this.ehrHelp)
         let marToday = this.marToday
-        this.schedule = marToday.getTodaysSchedule(help.marRecords, help.theMedOrders)
+        this.todaysSchedule = marToday.getTodaysSchedule(help.marRecords, help.theMedOrders)
         this.currentDay = marToday.getCurrentDay()
       }
     }

@@ -1,12 +1,12 @@
 import { validTimeStr, validDayStr } from '../../../helpers/ehr-utils'
-import PeriodDefs from './period-defs'
-import MedOrder from './med-entity'
+import MedOrder from './med-order'
 
 
 const ERR_WHO = 'Must provide who administered'
 const ERR_WHEN = 'Time must be 24:00 hour format'
 const ERR_DAY = 'Day must be one of 0,1,2,3,...'
 const ERR_EMPTY_MEDS = 'Medication list can not be empty'
+// TODO see if we need to validate scheduled time
 const ERR_SCHEDULE = 'Must provide the scheduled time'
 
 const DEFAULT_TIME = '0:00'
@@ -61,16 +61,12 @@ export default class MarEntity {
   get medications () { return this._data.medications}
 
   validate () {
-    const _periodDefs = new PeriodDefs()
     let errMsgList = []
     if(!validWho(this.whoAdministered)) {
       errMsgList.push(ERR_WHO)
     }
     if(!validDay(this.day)) {
       errMsgList.push(ERR_DAY)
-    }
-    if(!_periodDefs.validScheduledTime(this.scheduledTime)) {
-      errMsgList.push(ERR_SCHEDULE)
     }
     if(!validTimeStr(this.actualTime)) {
       errMsgList.push(ERR_WHEN)
