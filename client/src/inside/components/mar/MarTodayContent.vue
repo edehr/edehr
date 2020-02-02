@@ -85,6 +85,9 @@ export default {
       }
     }
   },
+  mounted: function () {
+    this.refresh()
+  },
   created: function () {
     const _this = this
     this.refreshEventHandler = function () { _this.refresh() }
