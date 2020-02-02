@@ -1,26 +1,19 @@
 <template lang="pug">
   ul
     li(class="medList", v-for="med in medsList")
-      h6 {{ med.medication }}
-      div {{ med.route }}
-      div {{ med.reason }}
+      div {{ med.medication }} {{ med.route }} {{ med.reason }}
 </template>
 
 <script>
-import MedOrder from './med-entity'
 export default {
-  name: 'MedList',
   props: {
     medsList: { type: Array }
   },
-  methods: {
-    medText (med) {
-      let text =  MedOrder.medOrderAsTextLine(med)
-      // console.log('MedList medText', text)
-      return text
-    }
+  mounted: function () {
+    console.log('this.medLsit >> ', this.medsList)
   }
 }
+
 </script>
 
 <style lang="scss" scoped>
@@ -32,9 +25,9 @@ ul {
 }
 ul li {
   list-style: none;
-  border-bottom: 1px solid $grey40;
-  margin-bottom: 1.5em;
-  padding-bottom: 1.5em;
+  /* border-bottom: 1px solid $grey40; */
+  /* margin-bottom: 1.5em; */
+  padding-bottom: 1em;
   &:last-child {
     border-bottom: none;
     margin-bottom: 0;

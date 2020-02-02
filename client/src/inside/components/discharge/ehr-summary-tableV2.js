@@ -1,7 +1,6 @@
 
 import EhrDefs from  '../../../helpers/ehr-defs-grid'
 import StoreHelper from  '../../../helpers/store-helper'
-import PeriodDefs from '../mar/period-defs'
 
 export const ESK_Medications = 'Discharge Rx'
 export const ESK_Referrals = 'Referrals'
@@ -38,9 +37,8 @@ Referrals: Pulled in from the referrals to other disciplines page.
     Referral time {fqn: referrals.table.appointmentTime}
  */
 
-const pDefs = new PeriodDefs()
-const medSchedules = pDefs.keyNameList
-// console.log('EhrSummaryHelp medSchedules', medSchedules)
+const medSchedules = [] // TODO get MARs
+console.log('EhrSummaryHelp TODO get medSchedules', medSchedules)
 
 const debug = false
 

@@ -5,8 +5,8 @@
       div(slot="body")
         div
           div(class="ehr-group-wrapper grid-left-to-right-1")
-            h3 Day {{currentDay}} - {{activePeriod.name}}
-            med-list(:medsList="activePeriod.medsList")
+            h3 Day {{currentDay}} - {{activePeriod.hour24}}
+            med-list(:medsList="activePeriod.medList")
           div(class="ehr-group-wrapper grid-left-to-right-2")
             div(class="form-element")
               div(class="text_input_wrapper")
@@ -55,16 +55,19 @@ export default {
     openMarDialog (period) {
       console.log('MarDialog open', period)
       this.comment = this.when = this.who = ''
+      console.log('comment >> ', this.comment)
       this.activePeriod = period
+      console.log('this.activePeriod >> ', this.activePeriod)
       this.$refs.theDialog.onOpen()
     },
     closeDialog: function () {
       this.$refs.theDialog.onClose()
     },
     saveDialog: function () {
-      let mar = new MarEntity(this.who, this.currentDay, this.when, this.comment, this.activePeriod)
+      let mar = new MarEntity(this.who, this.currentDay, this.when, this.comment,  this.activePeriod)
       this.errorMesageList = mar.validate()
       if(this.errorMesageList.length > 0) {
+        console.log('this.errorMEssageList >> ', this.errorMesageList)
         return
       }
       this.$emit('saveMar', mar)
