@@ -21,7 +21,7 @@
               ui-button(v-on:buttonClicked="openMarDialog(period)", v-bind:secondary="true") Add MAR
             div(v-show="period.hasMar")
               mar-record(:record="period.marRecord")
-        mar-dialog(ref="refMarDialog", :currentDay="currentDay", v-on:saveMar="saveMar")
+      mar-dialog(ref="refMarDialog", :currentDay="currentDay", v-on:saveMar="saveMar")
       div(style="display:none") refreshData: {{refreshData}}
 </template>
 
@@ -63,16 +63,21 @@ export default {
   },
   methods: {
     openMarDialog (period) {
-      // console.log('this.$refs.refMarDialog',this.$refs.refMarDialog)
+      console.log('this.$refs.refMarDialog',this.$refs.refMarDialog)
+      console.log('period >> ', period.marRecords)
       this.$refs.refMarDialog.openMarDialog(period)
     },
     showButton (period) {
+      console.log('ShowButton >> ', period)
+      console.log('this.ehrHelp.showTableAddButton() >> ', this.ehrHelp.showTableAddButton())
+      console.log('period.hasMar', period.hasMar)
       return this.ehrHelp.showTableAddButton() && !period.hasMar
     },
     saveMar (mar) {
       let help = new MarHelper(this.ehrHelp)
       console.log('help >> ', help)
-      help.saveMarDialog(mar).then(() => {
+      console.log('mar >> ', mar)
+      help.saveMarDialog(mar).then((res) => {
         this.$refs.refMarDialog.closeDialog()
       })
     },

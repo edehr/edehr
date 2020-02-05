@@ -16,11 +16,11 @@ class ScheduleOptions {
     q4h: ['0600', '1000', '1400', '1800', '2200', '0200']
   }
 
-  static getKeys() {
+  static getKeys () {
     return Object.keys(this.OPTIONS)
   }
 
-  static getSchedule(key) {
+  static getSchedule (key) {
     let value = this.OPTIONS[key]
     if(!value) {
       console.error('Could not find a medication schedule for key', key)

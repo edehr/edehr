@@ -8,8 +8,12 @@
 export default {
   props: {
     medsList: { type: Array }
+  },
+  mounted: function () {
+    console.log('this.medLsit >> ', this.medsList)
   }
 }
+
 </script>
 
 <style lang="scss" scoped>

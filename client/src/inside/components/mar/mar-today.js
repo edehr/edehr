@@ -1,5 +1,5 @@
 
-function getSchedule(medOrders) {
+function getSchedule (medOrders) {
   let schedules = {}
   medOrders = medOrders || []
   medOrders.forEach(mo => {
@@ -78,6 +78,7 @@ export default class MarToday {
     // Match mars for the current data to the scheduled list of medications
     marRecsFiltered.forEach( mar =>  {
       if(mar.scheduledTime ) {
+        console.log('scheduledTime >> ', mar.scheduledTime)
         let pk = aDaySchedule.find( pk => {
           pk.hour24 === mar.scheduledTime
         } )

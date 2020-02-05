@@ -5,8 +5,8 @@
       div(slot="body")
         div
           div(class="ehr-group-wrapper grid-left-to-right-1")
-            h3 Day {{currentDay}} - {{activePeriod.name}}
-            med-list(:medsList="activePeriod.medsList")
+            h3 Day {{currentDay}} - {{activePeriod.hour24}}
+            med-list(:medsList="activePeriod.medList")
           div(class="ehr-group-wrapper grid-left-to-right-2")
             div(class="form-element")
               div(class="text_input_wrapper")
@@ -64,8 +64,7 @@ export default {
       this.$refs.theDialog.onClose()
     },
     saveDialog: function () {
-      console.log('saving dialog >> ', this.who, this.currentDay, this.when, this.comment, this.activePeriod)
-      let mar = new MarEntity(this.who, this.currentDay, this.when, this.comment, this.activePeriod)
+      let mar = new MarEntity(this.who, this.currentDay, this.when, this.comment,  this.activePeriod)
       this.errorMesageList = mar.validate()
       if(this.errorMesageList.length > 0) {
         console.log('this.errorMEssageList >> ', this.errorMesageList)

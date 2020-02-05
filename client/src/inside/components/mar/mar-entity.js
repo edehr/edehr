@@ -24,15 +24,19 @@ medication
 export default class MarEntity {
   constructor (whoOrObj, ...[day, when, comment, period = {}]) {
     this._data = {}
+    console.log('whoOrObj >> MarEntity', whoOrObj)
     if (typeof whoOrObj ==='string') { // from dialog
       // console.log('MarEntity create from dialog arguments')
       this._data.whoAdministered = whoOrObj
       this._data.day = day
       this._data.actualTime = when
       this._data.comment = comment
-      this._data.scheduledTime = period.key
+      this._data.scheduledTime = period.hour24
       this._period = period
-      this._data.medications = period.medsList
+      this._data.medications = period.medList
+      // period.medList.map(ml => ml.asObjectForApi())
+      console.log(' this._data.medications >> ',  this._data.medications)
+      
     } else if (typeof whoOrObj === 'object') { // from database
       // console.log('MarEntity create from object', whoOrObj)
       this._data = whoOrObj._data ? whoOrObj._data : whoOrObj
@@ -43,9 +47,11 @@ export default class MarEntity {
 
   asObjectForApi () {
     let obj = Object.assign({},this._data)
-    let medsList = this._period && this._period.medsList ? this._period.medsList : []
+    console.log(this._period)
+    let medsList = this._period && this._period.medList ? this._period.medList : []
+    console.log('medList asObjectForApi ', medsList)
     // console.log('MarEntity medsList', medsList)
-    obj.medications = medsList.map(m => m.asObjectForApi())
+    obj.medications = medsList
     // console.log('MarEntity asObjectForApi', obj)
     return obj
   }
