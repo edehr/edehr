@@ -55,10 +55,9 @@
       ehr-element-lookup(
         :disabled="disabled", 
         :lookaheadKey="element.lookaheadKey", 
-        @selected="(selected) => inputVal = selected"
+        @selected="(selected) => inputVal = selected",
         :inputVal="inputVal"
-        :lookaheadKey="lookaheadKey", 
-        )
+      )
     div(v-else) ELSE: {{inputType}} {{label}}
 
 </template>

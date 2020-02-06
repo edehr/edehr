@@ -6,8 +6,8 @@
     @input= "fetchResults",
     :sectionConfigs="sectionConfigs",
     :renderSuggestion="renderSuggestion",
-    :getSuggestionValue="getSuggestionValue"
-    :value="inputVal"
+    :getSuggestionValue="getSuggestionValue",
+    :value="inputVal",
     :disabled="disabled"
   )
 </template>
@@ -52,7 +52,7 @@ export default {
   },
   props: {
     lookaheadKey: { type: String },
-    inputVal: { type: String }
+    inputVal: { type: String },
     disabled: { type: Boolean }
   },
 
