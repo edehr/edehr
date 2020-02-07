@@ -68,15 +68,10 @@ export default {
       this.$refs.refMarDialog.openMarDialog(period)
     },
     showButton (period) {
-      console.log('ShowButton >> ', period)
-      console.log('this.ehrHelp.showTableAddButton() >> ', this.ehrHelp.showTableAddButton())
-      console.log('period.hasMar', period.hasMar)
       return this.ehrHelp.showTableAddButton() && !period.hasMar
     },
     saveMar (mar) {
       let help = new MarHelper(this.ehrHelp)
-      console.log('help >> ', help)
-      console.log('mar >> ', mar)
       help.saveMarDialog(mar).then((res) => {
         this.$refs.refMarDialog.closeDialog()
       })
@@ -87,6 +82,7 @@ export default {
         let marToday = this.marToday
         this.todaysSchedule = marToday.getTodaysSchedule(help.marRecords, help.theMedOrders)
         this.currentDay = marToday.getCurrentDay()
+
       }
     }
   },

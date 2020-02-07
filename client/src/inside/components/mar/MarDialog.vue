@@ -65,6 +65,7 @@ export default {
     },
     saveDialog: function () {
       let mar = new MarEntity(this.who, this.currentDay, this.when, this.comment,  this.activePeriod)
+      console.log('saveDialog Mar >> ', mar)
       this.errorMesageList = mar.validate()
       if(this.errorMesageList.length > 0) {
         console.log('this.errorMEssageList >> ', this.errorMesageList)

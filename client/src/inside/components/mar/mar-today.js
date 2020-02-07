@@ -65,9 +65,9 @@ export default class MarToday {
       this._cDay = Math.max(this._cDay, mar.day)
     })
     // MAR Records filtered to the cDay
-    let marRecsFiltered = marRecords.filter( mar => {
+    let marRecsFiltered = marRecords.filter( mar => 
       mar.day === this._cDay
-    })
+    )
     //
     // Step 6
     if(marRecsFiltered.length === 0) {
@@ -78,10 +78,9 @@ export default class MarToday {
     // Match mars for the current data to the scheduled list of medications
     marRecsFiltered.forEach( mar =>  {
       if(mar.scheduledTime ) {
-        console.log('scheduledTime >> ', mar.scheduledTime)
-        let pk = aDaySchedule.find( pk => {
+        let pk = aDaySchedule.find( pk => 
           pk.hour24 === mar.scheduledTime
-        } )
+        )
         pk.marRecord = mar
         pk.hasMar = true
       }
