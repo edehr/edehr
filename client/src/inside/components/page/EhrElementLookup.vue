@@ -7,6 +7,7 @@
     :sectionConfigs="sectionConfigs",
     :renderSuggestion="renderSuggestion",
     :getSuggestionValue="getSuggestionValue"
+    :disabled="disabled"
   )
       //-   div(slot="before-suggestions") {{dropDownTitle}}
       //- div(v-if="showDetails",style="margin-top: 10px;") Selection details:
@@ -54,7 +55,8 @@ export default {
     }
   },
   props: {
-    lookaheadKey: { type: String }
+    lookaheadKey: { type: String },
+    disabled: { type: Boolean }
   },
 
   computed: {
