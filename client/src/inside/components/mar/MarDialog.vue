@@ -53,11 +53,8 @@ export default {
   },
   methods: {
     openMarDialog (period) {
-      console.log('MarDialog open', period)
       this.comment = this.when = this.who = ''
-      console.log('comment >> ', this.comment)
       this.activePeriod = period
-      console.log('this.activePeriod >> ', this.activePeriod)
       this.$refs.theDialog.onOpen()
     },
     closeDialog: function () {
@@ -65,10 +62,8 @@ export default {
     },
     saveDialog: function () {
       let mar = new MarEntity(this.who, this.currentDay, this.when, this.comment,  this.activePeriod)
-      console.log('saveDialog Mar >> ', mar)
       this.errorMesageList = mar.validate()
       if(this.errorMesageList.length > 0) {
-        console.log('this.errorMEssageList >> ', this.errorMesageList)
         return
       }
       this.$emit('saveMar', mar)
