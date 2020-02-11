@@ -11,7 +11,7 @@
           h4 Medication order
         div(class="column mar-column")
           h4 Administration
-      div(class="periodsList", v-for="period in sortedSchedule", :key="period.hour24")
+      div(class="periodsList", v-for="period in todaysSchedule", :key="period.hour24")
         div(class="columns")
           div(class="column period-column")
             p {{ period.hour24 }}
@@ -62,14 +62,6 @@ export default {
       // console.log('MarTodayContent refreshData', this.schedule)
       return this.todaysSchedule
     },
-    sortedSchedule () {
-      const schedule = this.todaysSchedule
-      return schedule.sort((a,b) => {
-        const aTime = moment(a.hour24, 'HH:mm')
-        const bTime = moment(b.hour24, 'HH:mm')
-        return aTime.diff(bTime)
-      }) 
-    }
   },
   methods: {
     openMarDialog (period) {

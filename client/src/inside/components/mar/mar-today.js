@@ -28,10 +28,11 @@ function getSchedule (medOrders) {
   Object.keys(schedules).forEach( k => {
     typicalDay.push(schedules[k])
   })
-  typicalDay.filter(d => isTimeValid(d.hour24))
-
-  console.log('typicalDay >> ', typicalDay)
-  return typicalDay
+  return typicalDay.filter(d => isTimeValid(d.hour24)).sort((a,b) => {
+    const aTime = moment(a.hour24, 'HH:mm')
+    const bTime = moment(b.hour24, 'HH:mm')
+    return aTime.diff(bTime)
+  })
 }
 
 function isTimeValid (time) { 
@@ -52,7 +53,7 @@ export default class MarToday {
     }
     this._cDay = 0
 
-    let aDaySchedule = getSchedule(medOrders).filter(d => isTimeValid(d.hour24))
+    let aDaySchedule = getSchedule(medOrders)
     if (db) console.log('marToday aDaySchedule >> ', aDaySchedule)
 
     if(aDaySchedule.length === 0) {
@@ -105,7 +106,6 @@ export default class MarToday {
         pk.hasMar = false
       })
     }
-
     return aDaySchedule
   }
 
