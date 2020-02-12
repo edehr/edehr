@@ -1,3 +1,4 @@
+const moment = require('moment')
 
 function getSchedule (medOrders) {
   let schedules = {}
@@ -27,10 +28,15 @@ function getSchedule (medOrders) {
   Object.keys(schedules).forEach( k => {
     typicalDay.push(schedules[k])
   })
-  typicalDay.sort((a,b) => {
-    return a.hour24 > b.hour24
+  return typicalDay.filter(d => isTimeValid(d.hour24)).sort((a,b) => {
+    const aTime = moment(a.hour24, 'HH:mm')
+    const bTime = moment(b.hour24, 'HH:mm')
+    return aTime.diff(bTime)
   })
-  return typicalDay
+}
+
+function isTimeValid (time) { 
+  return (/^([0-2]?[0-9]|2[0-3]):[0-5][0-9]$/.test(time))
 }
 
 
@@ -100,7 +106,6 @@ export default class MarToday {
         pk.hasMar = false
       })
     }
-
     return aDaySchedule
   }
 

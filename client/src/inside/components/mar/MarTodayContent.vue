@@ -1,5 +1,6 @@
 <template lang="pug">
   div(class="mar-today-content")
+    //- pre {{ sortedSchedule }}
     div(v-if="todaysSchedule.length === 0")
       h4 No medications ordered
     div(v-else)
@@ -33,6 +34,7 @@ import UiButton from '../../../app/ui/UiButton'
 import MarRecord from './MarRecord'
 import MarDialog from './MarDialog'
 import MarHelper from './mar-helper'
+import moment from 'moment'
 
 export default {
   name: 'MarTodayContent',
@@ -59,12 +61,10 @@ export default {
       this.refresh()
       // console.log('MarTodayContent refreshData', this.schedule)
       return this.todaysSchedule
-    }
+    },
   },
   methods: {
     openMarDialog (period) {
-      console.log('this.$refs.refMarDialog',this.$refs.refMarDialog)
-      console.log('period >> ', period.marRecords)
       this.$refs.refMarDialog.openMarDialog(period)
     },
     showButton (period) {
