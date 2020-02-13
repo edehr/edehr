@@ -22,7 +22,7 @@ export default {
     EhrPageFormLabel,
     UiInfo
   },
-  inject: ['pageDataKey', 'isPageElement', 'isTableElement', 'tableKey', 'formKey', 'lookaheadKey'],
+  inject: ['pageDataKey', 'isPageElement', 'isTableElement', 'tableKey', 'formKey'],
   data: function () {
     return {
       dialogIsOpen: false,

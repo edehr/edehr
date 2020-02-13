@@ -41,10 +41,20 @@ export default {
       },
       suggestions: [],
       sectionConfigs: {
+        default: {
+          onSelected: selected => {
+            if (selected !== null) {
+              this.$emit('selected', selected.item.name)
+            }
+            
+          }
+        },
         medications: {
           // limit: 16,
           onSelected: selected => {
-            this.$emit('selected', selected.item.name)
+            if (selected !== null) {
+              this.$emit('selected', selected.item.name)
+            }
           }
         }
       }
