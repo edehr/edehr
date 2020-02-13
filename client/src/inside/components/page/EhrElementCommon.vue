@@ -22,7 +22,7 @@ export default {
     EhrPageFormLabel,
     UiInfo
   },
-  inject: [ 'pageDataKey', 'isPageElement', 'isTableElement','tableKey', 'formKey' ],
+  inject: ['pageDataKey', 'isPageElement', 'isTableElement', 'tableKey', 'formKey', 'lookaheadKey'],
   data: function () {
     return {
       dialogIsOpen: false,
@@ -32,22 +32,37 @@ export default {
     }
   },
   props: {
-    elementKey: {type: String },
+    elementKey: { type: String },
     ehrHelp: { type: Object }
   },
   computed: {
-    element () { return EhrDefs.getPageChildElement(this.pageDataKey, this.elementKey) },
-    inputId () { return this.elementKey + this.element.inputType},
-    inputType () { return this.element.inputType },
-    label () { return this.element.label},
-    key () { return this.element.elementKey },
-    isEditing () { return this.ehrHelp.isEditing() },
+    element () {
+      return EhrDefs.getPageChildElement(this.pageDataKey, this.elementKey)
+    },
+    inputId () {
+      return this.elementKey + this.element.inputType
+    },
+    inputType () {
+      return this.element.inputType
+    },
+    label () {
+      return this.element.label
+    },
+    key () {
+      return this.element.elementKey
+    },
+    lookaheadKey () {
+      return this.element.lookaheadKey
+    },
+    isEditing () {
+      return this.ehrHelp.isEditing()
+    },
     disabled () {
       let disable = false
-      if (this.isPageElement ) {
-        disable = ! this.ehrHelp.isEditingForm(this.formKey)
+      if (this.isPageElement) {
+        disable = !this.ehrHelp.isEditingForm(this.formKey)
       }
-      if(this.dependentDef) {
+      if (this.dependentDef) {
         if (!disable && this.dependentDef.action === DEPENDENT_PROPS.action.disable) {
           disable = !(this.dependentOnValue === true)
         }
@@ -61,7 +76,9 @@ export default {
     }
   },
   methods: {
-    isType (type) { return this.inputType === type },
+    isType (type) {
+      return this.inputType === type
+    },
     assetUrl () {
       let e = this.element
       let url = '/assets/' + e.assetBase + '/' + e.assetName
@@ -82,7 +99,7 @@ export default {
     },
     sendInputEvent (val) {
       if (dbDetail) console.log('EhrCommon broadcast PAGE_FORM_INPUT_EVENT ', val, this.elementKey)
-      EventBus.$emit(FORM_INPUT_EVENT, {value: val, element: this.element})
+      EventBus.$emit(FORM_INPUT_EVENT, { value: val, element: this.element })
     },
     refreshPage () {
       let pageData = this.ehrHelp.getAsLoadedPageData()
@@ -121,11 +138,15 @@ export default {
     setupEventHandlers () {
       const _this = this
       if (this.isPageElement) {
-        this.pageRefreshEventHandler = function () { _this.refreshPage() }
+        this.pageRefreshEventHandler = function () {
+          _this.refreshPage()
+        }
         EventBus.$on(PAGE_DATA_READY_EVENT, this.pageRefreshEventHandler)
       }
       if (this.isTableElement) {
-        this.dialogEventHandler = function (eData) { _this.dialogEvent(eData.value) }
+        this.dialogEventHandler = function (eData) {
+          _this.dialogEvent(eData.value)
+        }
         this.dialogEventKey = this.ehrHelp.getDialogEventChannel(this.tableKey)
         EventBus.$on(this.dialogEventKey, this.dialogEventHandler)
       }
@@ -150,11 +171,17 @@ export default {
   watch: {
     inputVal (val) {
       if (dbInputs) console.log('EhrElement input val changed', this.elementKey, val)
-      if (this.isPageElement &&  this.isEditing) {
+      if (this.isPageElement && this.isEditing) {
         // only broadcast if user is editing the form
         this.sendInputEvent(val)
       }
-      if (dbInputs) console.log('EhrElement this.isTableElement', this.isTableElement, 'this.dialogIsOpen', this.dialogIsOpen)
+      if (dbInputs)
+        console.log(
+          'EhrElement this.isTableElement',
+          this.isTableElement,
+          'this.dialogIsOpen',
+          this.dialogIsOpen
+        )
       if (this.isTableElement && this.dialogIsOpen) {
         this.sendInputEvent(val)
       }
@@ -163,33 +190,33 @@ export default {
 }
 </script>
 <style lang="scss">
-  @import '../../../scss/definitions';
-  .check-label {
-    display: inline;
-  }
-  .assetLink a{
-    color: $grey60;
-    display: block;
-    margin-bottom: 10px;
+@import '../../../scss/definitions';
+.check-label {
+  display: inline;
+}
+.assetLink a {
+  color: $grey60;
+  display: block;
+  margin-bottom: 10px;
 
-    &:hover {
-      color: $black;
-      text-decoration: underline;
-    }
-
-    .linkIcon {
-      color: $grey40;
-      margin-right: 5px;
-    }
-  }
-  .suffix, .text-input {
-    display: inline-block;
-  }
-  .suffix {
-    position:absolute;
-    margin-left: 5px;
-    bottom:5px;
-    right:10px;
+  &:hover {
+    color: $black;
+    text-decoration: underline;
   }
 
+  .linkIcon {
+    color: $grey40;
+    margin-right: 5px;
+  }
+}
+.suffix,
+.text-input {
+  display: inline-block;
+}
+.suffix {
+  position: absolute;
+  margin-left: 5px;
+  bottom: 5px;
+  right: 10px;
+}
 </style>
