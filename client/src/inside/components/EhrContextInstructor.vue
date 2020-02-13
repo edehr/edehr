@@ -15,14 +15,21 @@
       div(class="is-4 column")
         div(class="columns is-pulled-right")
           div {{currentIndex}} of {{listLen}}
-          ui-button(v-on:buttonClicked="previousStudent", class="is-pulled-right is-light", :disabled="!enablePrev")
+          ui-button(v-on:buttonClicked="handleConfirmNavigation('previous')", class="is-pulled-right is-light", :disabled="!enablePrev")
             fas-icon(icon="angle-left", class="icon-left")
             span Previous
-          ui-button(v-on:buttonClicked="nextStudent", class="is-pulled-right is-light", :disabled="!enableNext")
+          ui-button(v-on:buttonClicked="handleConfirmNavigation('next')", class="is-pulled-right is-light", :disabled="!enableNext")
             span Next &nbsp;
             fas-icon(icon="angle-right", class="icon-left")
     div(class="textField") Evaluation notes
-    ehr-evaluation-input(ref="evaluationNoteComponent", v-on:saveNext="nextStudent", :enableNext="enableNext")
+    ehr-evaluation-input(
+      ref="evaluationNoteComponent", 
+      v-on:saveNext="nextStudent", 
+      :enableNext="enableNext", 
+      :shouldConfirmNavigation="shouldConfirmNavigation"
+      :navigation="navigation"
+      @proceedNavigation="handleProceedNavigation"
+    )
 </template>
 
 <script>
@@ -36,6 +43,12 @@ import StoreHelper from '../../helpers/store-helper'
 export default {
   name: 'EhrClassListNav',
   components: { UiLink, UiButton, EhrEvaluationInput, UiInfo },
+  data: function () {
+    return {
+      shouldConfirmNavigation: false,
+      navigation: ''
+    }
+  },
   computed: {
     panelInfo () {
       return StoreHelper.getPanelData()
@@ -97,7 +110,20 @@ export default {
         this.changeStudent(sv)
       }
     },
-    changeStudent (sv) { StoreHelper.changeStudentForInstructor( sv._id ) }
+    changeStudent (sv) { StoreHelper.changeStudentForInstructor( sv._id ) },
+    handleConfirmNavigation (type) {
+      this.navigation = type
+      this.shouldConfirmNavigation = true
+    },
+    handleProceedNavigation () {
+      if(this.navigation === 'previous') {
+        this.previousStudent()
+      } else if (this.navigation === 'next'){
+        this.nextStudent()
+      }
+      this.shouldConfirmNavigation = false
+      this.navigation = ''
+    }
   },
   mounted: function () {
     StoreHelper.loadInstructorWithStudent(true)
