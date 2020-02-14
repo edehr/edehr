@@ -118,10 +118,14 @@ export default {
     saveEvaluationNotes: function (event) {
       if (event) {
         return StoreHelper.saveEvaluationNotes(this.theNotes).then(() => {
+          this.loadDialog()
           this.$emit(event)
         })
       } else {
         return StoreHelper.saveEvaluationNotes(this.theNotes)
+          .then(() => {
+            this.loadDialog()
+          })
       }
       
     },
@@ -149,7 +153,6 @@ export default {
     },
 
     handleReset () {
-      console.log('handlingReset >> ', this.confirmStep)
       if(this.confirmStep === 'navigation') {
         this.$emit('proceedNavigation')
       } else if (this.confirmStep === 'beforeRouteLeave') {
@@ -165,8 +168,8 @@ export default {
       this.$refs.confirmDialog.showDialog(HEADER, TEXT, CONFIRM[key], CANCEL)
     },
 
-    handleConfirm () {
-      this.saveEvaluationNotes()
+    async handleConfirm () {
+      await this.saveEvaluationNotes()
       switch(this.confirmStep) {
       case 'beforeRouteLeave':
         this.next(true)
@@ -177,7 +180,6 @@ export default {
       default:
         this.saveEvaluationNotes('saved')
       }
-      this.setNotes('')
     },
   }
   

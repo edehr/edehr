@@ -24,10 +24,10 @@
     div(class="textField") Evaluation notes
     ehr-evaluation-input(
       ref="evaluationNoteComponent", 
-      v-on:saveNext="nextStudent", 
       :enableNext="enableNext", 
       :shouldConfirmNavigation="shouldConfirmNavigation"
       :navigation="navigation"
+      @saveNext="nextStudent", 
       @proceedNavigation="handleProceedNavigation"
     )
 </template>
