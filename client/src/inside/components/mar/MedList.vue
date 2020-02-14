@@ -9,9 +9,6 @@ export default {
   props: {
     medsList: { type: Array }
   },
-  mounted: function () {
-    console.log('this.medLsit >> ', this.medsList)
-  }
 }
 
 </script>
@@ -25,8 +22,6 @@ ul {
 }
 ul li {
   list-style: none;
-  /* border-bottom: 1px solid $grey40; */
-  /* margin-bottom: 1.5em; */
   padding-bottom: 1em;
   &:last-child {
     border-bottom: none;

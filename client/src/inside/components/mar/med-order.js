@@ -5,7 +5,8 @@ const PRN_KEYS =[]
 for (let i = 1; i <= 6; i++) {
   PRN_KEYS.push(`prn${i}`)
 }
-
+// This list of keys with schedules must be kept in sync with the schedule 
+// dropdown options shown on the Medications page.
 class ScheduleOptions {
   static OPTIONS = {
     'BID / q12h' : ['08:00','20:00'],
@@ -51,6 +52,7 @@ export default class MedOrder {
         }
       })
     }
+    // TODO need to handle the other administration options STAT and ONCE
     this._scheduleTimes = scheduleTimes
   }
 

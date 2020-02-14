@@ -61,7 +61,7 @@ export default {
       this.$refs.theDialog.onClose()
     },
     saveDialog: function () {
-      let mar = new MarEntity(this.who, this.currentDay, this.when, this.comment,  this.activePeriod)
+      let mar = new MarEntity(this.who, this.currentDay, this.when, this.comment, this.activePeriod)
       this.errorMesageList = mar.validate()
       if(this.errorMesageList.length > 0) {
         return
