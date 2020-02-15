@@ -1,5 +1,5 @@
 import { setApiError } from '../../../helpers/ehr-utils'
-import MedOrder from './med-entity'
+import MedOrder from './med-order'
 import MarEntity from './mar-entity'
 import EhrDefs from '../../../helpers/ehr-defs-grid'
 
