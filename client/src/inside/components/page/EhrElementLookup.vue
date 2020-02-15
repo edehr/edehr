@@ -6,12 +6,10 @@
     @input= "fetchResults",
     :sectionConfigs="sectionConfigs",
     :renderSuggestion="renderSuggestion",
-    :getSuggestionValue="getSuggestionValue"
+    :getSuggestionValue="getSuggestionValue",
+    :value="inputVal",
+    :disabled="disabled"
   )
-      //-   div(slot="before-suggestions") {{dropDownTitle}}
-      //- div(v-if="showDetails",style="margin-top: 10px;") Selection details:
-      //-   span(v-show="resultCount>0") {{resultCount}} possible matches
-      //-   pre {{JSON.stringify(selected, null, 4)}}
 </template>
 
 <script>
@@ -30,8 +28,8 @@ export default {
     return {
       showDetails: true, // set true/false to show/hide details about the selected results
       timeout: null,
-      searchTerm: '',
-      selected: '',
+      searchTerm: this.inputVal,
+      selected: this.inputVal,
       resultCount: 0,
       debounceMilliseconds: 50,
       medicationsUrl: base,
@@ -43,18 +41,37 @@ export default {
       },
       suggestions: [],
       sectionConfigs: {
+        default: {
+          onSelected: selected => {
+            if (selected !== null) {
+              this.$emit('selected', selected.item.name)
+            }
+            
+          }
+        },
         medications: {
           // limit: 16,
           onSelected: selected => {
-            this.selected = selected.item.name
-            this.$emit('selected', this.selected)
+            if (selected !== null) {
+              this.$emit('selected', selected.item.name)
+            }
           }
-        },
+        }
       }
     }
   },
   props: {
-    lookaheadKey: { type: String }
+    lookaheadKey: { type: String },
+    inputVal: { type: String },
+    disabled: { type: Boolean }
+  },
+
+  watch: {
+    inputVal (curr) {
+      if(curr === '') {
+        this.suggestions = []
+      }
+    }
   },
 
   computed: {
@@ -95,13 +112,13 @@ export default {
       const str = suggestion.item.name
       const result = re[Symbol.split](str)
       const html = []
-      for(let i = 0; i < result.length; i++) {
+      for (let i = 0; i < result.length; i++) {
         const part = result[i]
-        if(part.trim().length > 0) {
+        if (part.trim().length > 0) {
           html.push(<span>{part}</span>)
         }
-        if(i+1 < result.length) {
-          html.push(<span class='searchHighlight'>{searchTerm}</span>)
+        if (i + 1 < result.length) {
+          html.push(<span class="searchHighlight">{searchTerm}</span>)
         }
       }
       return html
