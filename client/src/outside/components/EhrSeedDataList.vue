@@ -21,7 +21,8 @@
               td {{sv.name}}
               td {{sv.version}}
               td {{sv.description}}
-              td {{ ehrPages(sv) }}
+              td(v-if="shouldBeLimited(sv)", :title="ehrPages(sv)") {{ limitedPages(sv) }}
+              td(v-else) {{ ehrPages(sv) }}
               td
                 div(v-for="assignment in assignmentList(sv)")
                   ui-link(:name="'assignments'", :params="{assignmentId: assignment._id}") {{ assignment.name }}
@@ -103,6 +104,24 @@ export default {
         pages = keys.join(', ')
       }
       return pages
+    },
+    limitedPages (sv) {
+      if(sv.ehrData) {
+        const keys = Object.keys(sv.ehrData)
+        if (keys.length > 1) {
+          return `${ keys.slice(0, 1).join(', ') }...`
+        } else {
+          return keys.join(', ')
+        }
+      }
+    },
+    shouldBeLimited (sv) {
+      const data = sv.ehrData
+      if (data) {
+        const keys = Object.keys(data)
+        return keys.length > 1
+      }
+      return false
     },
     uploadSeed (sv) {
       this.seedId = sv._id
