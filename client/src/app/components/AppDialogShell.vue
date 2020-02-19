@@ -91,7 +91,10 @@ export default {
       this.top += deltaY
     },
     onOpen () {
-      if (this.isModal) {
+      // console.log('onOpen >> ', this.$route, this)
+      // There seems to be a conflict when setting the body's position to fixed
+      // It conflicts and causes the bug mentioned here: https://github.com/BCcampus/edehr/issues/152
+      if (this.isModal && this.$route.meta.layout !== 'outside') {
         // console.log('FREEZEEEEEEE')
         document.body.style.position = 'fixed'
       }
