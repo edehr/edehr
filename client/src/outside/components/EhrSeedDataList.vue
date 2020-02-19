@@ -21,7 +21,7 @@
               td {{sv.name}}
               td {{sv.version}}
               td {{sv.description}}
-              td {{ ehrPages(sv) }}
+              td(:title="ehrPages(sv)") {{ limitedPages(sv) }}
               td
                 div(v-for="assignment in assignmentList(sv)")
                   ui-link(:name="'assignments'", :params="{assignmentId: assignment._id}") {{ assignment.name }}
@@ -103,6 +103,16 @@ export default {
         pages = keys.join(', ')
       }
       return pages
+    },
+    limitedPages (sv) {
+      if(sv.ehrData) {
+        const keys = Object.keys(sv.ehrData)
+        if (keys.length > 1) {
+          return `${ keys.slice(0, 1).join(', ') }...`
+        } else {
+          return keys.join(', ')
+        }
+      }
     },
     uploadSeed (sv) {
       this.seedId = sv._id
