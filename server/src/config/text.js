@@ -1,3 +1,6 @@
+
+// Some of the values here are used in the frontend. in AssignmentsListing.vue
+// Please, in case of change, make sure to update the values there, as well.
 export const Text = {
   APP_TITLE: 'Ed EHR',
   DEFAULT_SEED_NAME: 'Default data',
