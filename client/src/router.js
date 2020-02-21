@@ -9,7 +9,7 @@ let routes = [
     path: '/',
     name: 'home',
     component: () =>
-      import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Dashboard.vue'),
+      import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Home'),
     meta: { layout: 'outside' }
   },
   {
