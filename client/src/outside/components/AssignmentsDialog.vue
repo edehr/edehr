@@ -44,7 +44,7 @@ const ERRORS = {
   ID_IN_USE: (id) => `ExternalId ${id} is already in use`,
   NAME_REQUIRED: 'Assignment name is required',
   ID_REQUIRED: 'Assignment externalId is required',
-  ID_PATTERN: 'External Id needs to start with a letter and then contain letters, numbers, hypens or underscores',
+  ID_PATTERN: 'External Id needs to contain letters, numbers, hypens or underscores',
   SEED_REQUIRED: 'Assignment EHR data seed is required'
 }
 
@@ -75,7 +75,7 @@ export default {
       if (!this.externalId) {
         return ERRORS.ID_REQUIRED
       }
-      let re = /^[a-zA-Z][0-9a-zA-Z\-_]*$/
+      let re = /^[0-9a-zA-Z\-_]*$/
       if (!this.externalId.match(re)) {
         return ERRORS.ID_PATTERN
       }

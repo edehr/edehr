@@ -119,15 +119,15 @@ export default {
 }
 </script>
 
-//@import '../../scss/definitions';
-<style scoped>
+<style lang="scss" scoped>
+@import '../../scss/_definitions';
 .un-configured {
-  background: #FF9900;
+  background: $grey10;
   opacity: 0.8;
 }
 
 .un-configured-warning {
-  color: #FF9900;
+  color: $grey10;
 }
 
 </style>
