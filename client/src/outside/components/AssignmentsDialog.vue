@@ -83,7 +83,10 @@ export default {
       return this.inUseIds.includes(id) ? ERRORS.ID_IN_USE(id) : undefined
     },
     disableSave () {
-      return !!(this.nameValidate || this.seedValidate || this.externalValidate)
+      const errmsg = this.nameValidate || this.seedValidate || this.externalValidate
+      const isInvalid = !!errmsg
+      console.log('errmsg', errmsg)
+      return isInvalid
     },
     dialogHeader () {
       return TITLES[this.actionType] || ''
