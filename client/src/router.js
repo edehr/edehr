@@ -10,7 +10,7 @@ let routes = [
     name: 'home',
     component: () =>
       import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Home'),
-    meta: { layout: 'outside' }
+    meta: { layout: 'outside', public: true }
   },
   {
     path: '/ehr', redirect: '/ehr/patient/demographics'

@@ -12,7 +12,6 @@ import sKeys from './helpers/session-keys'
 import StoreHelper from './helpers/store-helper'
 import { PAGE_DATA_REFRESH_EVENT } from './helpers/event-bus'
 const DefaultLayout = 'outside'
-const NO_AUTH_ROUTES = ['/']
 
 export default {
   name: 'App',
@@ -115,8 +114,7 @@ export default {
     // }
   },
   created: function () {
-    // console.log('route >> ', this.$route, this)
-    if (!NO_AUTH_ROUTES.includes(this.$route.path)) {
+    if (!this.$route.meta.public) {
       this.loadData()
     }
   }
