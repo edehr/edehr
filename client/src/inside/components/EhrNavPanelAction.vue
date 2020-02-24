@@ -3,21 +3,36 @@
     div(v-if="showNavAction")
       ui-button(v-on:buttonClicked="npButtonClicked", :disabled="disableNavAction") {{ npButtonLabel }}
       ui-confirm(ref="confirmDialog", v-on:confirm="proceed")
+      app-dialog(
+        :isModal="true",
+        ref="submittedConfirm",
+        :useSave="false",
+        cancelButtonLabel="Continue to LMS",
+        @cancel="ehrAction.gotoLMS()"
+        )
+        h2(slot="header") {{ confirmTitle }}
+        div(slot="body") {{ confirmBody }}
 </template>
 <script>
 import UiButton from '../../app/ui/UiButton.vue'
 import UiConfirm from '../../app/ui/UiConfirm.vue'
 import EhrActions from '../../helpers/ehr-actions'
+import AppDialog from '../../app/components/AppDialogShell.vue'
+
+const TITLE = 'Assignment submitted successfully'
 
 export default {
   name: 'EhrNavPanelAction',
   components: {
     UiButton,
-    UiConfirm
+    UiConfirm,
+    AppDialog
   },
   data () {
     return {
-      ehrAction: {}
+      ehrAction: {},
+      confirmTitle: TITLE,
+      confirmBody: ''
     }
   },
   computed: {
@@ -46,10 +61,12 @@ export default {
     },
     proceed () {
       this.ehrAction.invokeNavPanelAction()
-    }
+      this.$refs.submittedConfirm.onOpen()
+    },
   },
   created: function () {
     this.ehrAction = new EhrActions(this.$store, this.$router)
+    this.confirmBody = this.ehrAction.getStudentHasSubmitted()
   }
 }
 </script>

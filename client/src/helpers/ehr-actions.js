@@ -20,7 +20,7 @@ export default class EhrActions {
   invokeNavPanelAction () {
     if (this.isStudent()) {
       if (this.isUnsubmittedStudent()) {
-        StoreHelper.studentSubmitsAssignment(true).then(() => { this.gotoLMS() })
+        StoreHelper.studentSubmitsAssignment(true)
       } else {
         this.gotoLMS()
       }
@@ -39,4 +39,9 @@ export default class EhrActions {
   isUnsubmittedStudent () {
     return this.isStudent() && !this.submitted()
   }
+
+  getStudentHasSubmitted () {
+    return Text.STUDENT_HAS_SUBMITTED
+  }
+
 }
