@@ -15,12 +15,15 @@
               p {{ errorDirections }}
               ul
                 li(v-for="error in errors") {{ error }}
-          div(class="dialog-footer-content is-pulled-right")
-            ui-button(v-on:buttonClicked="$emit('cancel')", v-bind:secondary="true")
-              slot(name="cancel-button") {{ cancelButtonLabel }}
-            div(class="dialog-footer-button-space", v-show="useSave")
-            ui-button(v-on:buttonClicked="$emit('save')", v-show="useSave", :disabled="disableSave")
-              slot(name="save-button") {{ saveButtonLabel }}
+          div(class="dialog-footer-content")
+            div(v-if="hasLeftButton" class="is-pulled-left")
+              slot(name="left-button")
+            div(class="is-pulled-right")
+              ui-button(v-on:buttonClicked="$emit('cancel')", v-bind:secondary="true")
+                slot(name="cancel-button") {{ cancelButtonLabel }}
+              div(class="dialog-footer-button-space", v-show="useSave")
+              ui-button(v-on:buttonClicked="$emit('save')", v-show="useSave", :disabled="disableSave")
+                slot(name="save-button") {{ saveButtonLabel }}
 </template>
 
 <script>
@@ -53,6 +56,10 @@ export default {
       default: function () {
         return []
       }
+    },
+    hasLeftButton: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
