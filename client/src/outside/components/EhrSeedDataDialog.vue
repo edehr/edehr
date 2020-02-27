@@ -28,11 +28,6 @@
             div(class="form-element")
               label EHR Data
               textarea(class="textarea",v-model="ehrDataString", v-validate="ehrValidate")
-          div(class="technical")
-            hr
-            div(v-if="showAdvanced") Seed Id: {{ seedId}}
-            label( for="show-advanced") Show advanced
-              input( type="checkbox" name="show-advanced" id="show-advanced" v-model="showAdvanced")
           input(id="fileUploadInput", ref="fileUploadInput", type="file", accept="application/json", style="display:none", @change="setFile")
       ui-button(slot="left-button", v-on:buttonClicked="handleUpload", v-bind:secondary="true") Upload
       
