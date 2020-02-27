@@ -1,6 +1,13 @@
 <template lang="pug">
   div(id="seedDataList", class="seedData-list")
-    app-dialog(:isModal="true", ref="theDialog",  @cancel="cancelDialog", @save="saveDialog", :disableSave="disableSave")
+    app-dialog(
+      :isModal="true", 
+      ref="theDialog",  
+      @cancel="cancelDialog", 
+      @save="saveDialog", 
+      :disableSave="disableSave",
+      has-left-button
+    )
       h2(slot="header") {{dialogHeader}}
       div(slot="body")
         div
@@ -26,11 +33,22 @@
             div(v-if="showAdvanced") Seed Id: {{ seedId}}
             label( for="show-advanced") Show advanced
               input( type="checkbox" name="show-advanced" id="show-advanced" v-model="showAdvanced")
+          input(id="fileUploadInput", ref="fileUploadInput", type="file", accept="application/json", style="display:none", @change="setFile")
+      ui-button(slot="left-button", v-on:buttonClicked="handleUpload", v-bind:secondary="true") Upload
+      
 </template>
 
 <script>
 import AppDialog from '../../app/components/AppDialogShell'
 import StoreHelper from '../../helpers/store-helper'
+import UiButton from '../../app/ui/UiButton.vue'
+import { setApiError, readFile, importSeedData } from '../../helpers/ehr-utils'
+
+const TEXT = {
+  AGREE_TITLE: (seedName) => `${seedName} has new seed data`,
+  AGREE_MSG: (fileName) => `New seed data has been imported from file: ${fileName}`,
+  FAIL_IMPORT: (fileName, msg) => `Upload ${fileName} failed: ${msg}`
+}
 
 const TITLES = {
   edit: 'Edit seed data properties',
@@ -47,7 +65,7 @@ const CREATE_ACTION = 'create'
 
 export default {
   name: 'EhrSeedDataList',
-  components: { AppDialog },
+  components: { AppDialog, UiButton },
   data () {
     return {
       name: '',
@@ -57,7 +75,9 @@ export default {
       ehrDataString: '',
       actionType: '',
       seedId: '',
-      showAdvanced: false
+      showAdvanced: false,
+      file: null,
+      upload: false
     }
   },
   props: {},
@@ -117,7 +137,7 @@ export default {
       this.clearInputs()
       this.$refs.theDialog.onClose()
     },
-    saveDialog: function () {
+    saveDialog: async function () {
       let seedData = {
         name: this.name,
         version: this.version,
@@ -127,11 +147,50 @@ export default {
       seedData.ehrData = JSON.parse(this.ehrDataString)
       this.$refs.theDialog.onClose()
       if (this.actionType === EDIT_ACTION) {
-        StoreHelper.updateSeed(this, this.seedId, seedData)
+        await StoreHelper.updateSeed(this, this.seedId, seedData)
       } else if (this.actionType === CREATE_ACTION) {
-        StoreHelper.createSeed(this, seedData)
+        const prevSeedList = StoreHelper.getSeedDataList().map(d=>JSON.stringify(d))
+        const currSeedList = await StoreHelper.createSeed(this, seedData)
+        const createdSeed = currSeedList.find(s => !prevSeedList.includes(JSON.stringify(s)))
+        this.seedId = createdSeed._id
       }
-    }
+      if (this.upload) {
+        this.importSeedFile()
+      }
+    },
+    handleUpload: function () {   
+      this.currentSeed = StoreHelper.getSeedDataList().find(e => 
+        e._id === this.seedId
+      )
+      this.$refs.fileUploadInput.click()
+    },
+    setFile (event) {
+      this.file = event.target.files[0]
+      this.upload = true
+      this.$refs.fileUploadInput.value = null
+    },
+    importSeedFile () {
+      const component = this
+      const seedId = this.seedId
+      const seedName = this.name
+      const file = this.file
+      const fileName = file.name
+      StoreHelper.setLoading(component, true)
+      return readFile(file).then( (contents) => {
+        return importSeedData(component, seedId, contents)
+          .then(result => {
+            let title = TEXT.AGREE_TITLE(seedName)
+            let msg = TEXT.AGREE_MSG(fileName)
+            this.$emit('showDialog', title, msg)
+            this.upload = false
+            StoreHelper.setLoading(component, false)
+          })
+          .catch( err => {
+            setApiError(TEXT.FAIL_IMPORT(fileName, err))
+            StoreHelper.setLoading(component, false)
+          })
+      })
+    },
   }
 }
 </script>

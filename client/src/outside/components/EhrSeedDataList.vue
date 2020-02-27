@@ -28,13 +28,11 @@
 
               // td {{sv._id}}
               td(v-if="isDevelopingContent && !sv.isDefault",class="seed-actions")
-               ui-button(v-on:buttonClicked="uploadSeed(sv)", v-bind:secondary="true") Upload
                ui-button(v-on:buttonClicked="downloadSeed(sv)", , v-bind:secondary="true", class="dwn") Download
                ui-button(v-on:buttonClicked="showEditDialog(sv)", v-bind:secondary="true") Edit description
                ui-button(v-on:buttonClicked="gotoEhrWithSeed(sv)") View/edit seed
       ui-agree(ref="aggreeDialog")
-      input(id="fileUploadInput", ref="fileUploadInput", type="file", accept="application/json", style="display:none", @change="importSeedFile")
-    ehr-seed-data-dialog(ref="theDialog")
+    ehr-seed-data-dialog(ref="theDialog", @showDialog="showDialog")
 </template>
 
 <script>
@@ -45,14 +43,8 @@ import UiAgree from '../../app/ui/UiAgree.vue'
 import EhrSeedDataDialog from './EhrSeedDataDialog'
 import StoreHelper from '../../helpers/store-helper'
 import EventBus from '../../helpers/event-bus'
-import { setApiError, readFile, importSeedData, downloadSeedToFile, downObjectToFile } from '../../helpers/ehr-utils'
+import { downloadSeedToFile, downObjectToFile } from '../../helpers/ehr-utils'
 import { PAGE_DATA_REFRESH_EVENT } from '../../helpers/event-bus'
-
-const TEXT = {
-  AGREE_TITLE: (seedName) => `${seedName} has new seed data`,
-  AGREE_MSG: (fileName) => `New seed data has been imported from file: ${fileName}`,
-  FAIL_IMPORT: (fileName, msg) => `Upload ${fileName} failed: ${msg}`
-}
 
 export default {
   name: 'EhrSeedDataList',
@@ -69,7 +61,7 @@ export default {
       errorMesageList: [],
       dialogHeader: '',
       actionType: '',
-      seedId: ''
+      seedId: '',
     }
   },
   props: {},
@@ -114,34 +106,6 @@ export default {
         }
       }
     },
-    uploadSeed (sv) {
-      this.seedId = sv._id
-      this.currentSeed = this.findSeed(this.seedId)
-      // console.log('upload seed for ', this.currentSeed)
-      this.$refs.fileUploadInput.click()
-    },
-    importSeedFile (event) {
-      const component = this
-      const seedId = this.seedId
-      const seedName = this.currentSeed.name
-      const dialog = this.$refs.aggreeDialog
-      const file = event.target.files[0]
-      const fileName = file.name
-      StoreHelper.setLoading(component, true)
-      return readFile(file).then( (contents) => {
-        return importSeedData(component, seedId, contents)
-          .then(result => {
-            let title = TEXT.AGREE_TITLE(seedName)
-            let msg = TEXT.AGREE_MSG(fileName)
-            dialog.showDialog(title, msg)
-            StoreHelper.setLoading(component, false)
-          })
-          .catch( err => {
-            setApiError(TEXT.FAIL_IMPORT(fileName, err))
-            StoreHelper.setLoading(component, false)
-          })
-      })
-    },
     downloadSeed (sv) {
       this.seedId = sv._id
       // console.log('download seed for ', this.seedId)
@@ -173,6 +137,9 @@ export default {
     },
     showCreateDialog: function () {
       this.$refs.theDialog.showDialog()
+    },
+    showDialog: function (title, msg) {
+      this.$refs.aggreeDialog.showDialog(title, msg)
     }
   }
 }
