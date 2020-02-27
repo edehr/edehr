@@ -144,6 +144,9 @@ export default {
       if (this.actionType === EDIT_ACTION) {
         await StoreHelper.updateSeed(this, this.seedId, seedData)
       } else if (this.actionType === CREATE_ACTION) {
+        // This is done in order to compare a list of objects
+        // before and after the upload, so that, the created seed can be filtered out
+        // in order to satisfy the need of seedId when uploading the file. 
         const prevSeedList = StoreHelper.getSeedDataList().map(d=>JSON.stringify(d))
         const currSeedList = await StoreHelper.createSeed(this, seedData)
         const createdSeed = currSeedList.find(s => !prevSeedList.includes(JSON.stringify(s)))
