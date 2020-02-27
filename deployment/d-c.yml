@@ -62,3 +62,4 @@ services:
     command: mongod --port ${MONGODB_PORT}
     volumes:
       - "../database/data:/data/db"
+      - "./database:/dump"

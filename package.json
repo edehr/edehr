@@ -39,7 +39,8 @@
     "test:client": "cd client && npm run test",
     "test:server": "cd server && npm run test",
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "docs:build": "vuepress build docs",
+    "db:bash": "docker exec -it mongo bash"
   },
   "scriptsComments": {
     "*db": "for dev only. start and stop a bare bones mongo",
