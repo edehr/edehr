@@ -2,8 +2,6 @@
   div(:class="$options.name")
     bread-crumb(currentPage="assignments")
     h1 Assignments
-    div(v-if="validationWarning")
-      p(class="un-configured-warning") {{ validationWarning }}
     div(v-if="isRespondingToError")
       p Error: {{ isRespondingToError }}
       p Your LMS is asking for "{{ activity.custom_assignment }}".
@@ -12,6 +10,8 @@
       ui-button(v-on:buttonClicked="showCreateDialog") Create a new assignment
       ui-button(v-on:buttonClicked="downloadAll") Download all assignments
       ui-button(v-on:buttonClicked="manageEhrData", :secondary="true") Manage seed data
+    div(v-if="validationWarning")
+      p(class="un-configured-warning") {{ validationWarning }}
     table.table
       thead
         tr
@@ -103,7 +103,7 @@ export default {
       this.$refs.theDialog.showDialog()
     },
     isItemMisconfigured (item) {
-      this.validationWarning = 'Outlined rows need further configuration. '
+      this.validationWarning = 'Shaded rows need further configuration. '
       return item.description === DEFAULT_ASSIGNMENT_DESCRIPTION || 
       DEFAULT_SEED_NAME === item.seedDataObj.name || 
       DEFAULT_SEED_DESCRIPTION === item.seedDataObj.description
@@ -122,12 +122,12 @@ export default {
 <style lang="scss" scoped>
 @import '../../scss/_definitions';
 .un-configured {
-  background: $grey10;
+  background: $greyWarn;
   opacity: 0.8;
 }
 
 .un-configured-warning {
-  color: $grey10;
+  color: $grey80;
 }
 
 </style>

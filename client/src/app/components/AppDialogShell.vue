@@ -191,9 +191,13 @@ export default {
   overflow-y: auto;
   max-height: calc( 90vh - 20vh );
   padding: 1.5rem 2rem 2rem 2rem;
+  margin-bottom: 4rem;
 }
 
 .dialog-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   /*margin-top: 30px;*/
   align-items: flex-end;
   .dialog-footer-content {

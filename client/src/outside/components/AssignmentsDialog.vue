@@ -24,11 +24,6 @@
               div(class="input-element input-element-full")
                 label Description
                 textarea(class="ehr-page-form-textarea",v-model="description")
-          div(class="technical", v-if="hasAdvanced")
-            hr
-            div(v-if="showAdvanced") Assignment: {{ assignmentId}}
-            label( for="show-advanced") Show advanced
-              input( type="checkbox" name="show-advanced" id="show-advanced" v-model="showAdvanced")
 
 </template>
 
