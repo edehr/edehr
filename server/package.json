@@ -14,9 +14,11 @@
     "test": "node_modules/.bin/mocha --recursive --sort --bail --require @babel/register **/*.spec.js",
     "start-docker": "node index.js",
     "start-docker-dev": "nodemon -L  node index.js",
-    "start-prod": "NODE_ENV=production node index.js"
+    "start-prod": "NODE_ENV=production node index.js",
+    "scale-test": "node test/scale-testing.js"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "cors": "^2.8.4",
     "debug": "~2.6.9",
