@@ -3,15 +3,33 @@
     div(v-if="showNavAction")
       ui-button(v-on:buttonClicked="npButtonClicked", :disabled="disableNavAction") {{ npButtonLabel }}
       ui-confirm(ref="confirmDialog", v-on:confirm="proceed")
+      //- app-dialog(
+      //-   :isModal="true",
+      //-   ref="submittedConfirm",
+      //-   :useSave="false",
+      //-   cancelButtonLabel="Continue to LMS",
+      //-   @cancel="ehrAction.gotoLMS()"
+      //-   )
+      //-   h2(slot="header") {{ confirmTitle }}
+      //-   div(slot="body") {{ confirmBody }}
+
       app-dialog(
         :isModal="true",
-        ref="submittedConfirm",
-        :useSave="false",
-        cancelButtonLabel="Continue to LMS",
+        ref="submitFeedback",
+        :useSave="true",
+        saveButtonLabel="Submit Feedback",
+        cancelButtonLabel="Cancel",
+        @save="submitFeedback"
         @cancel="ehrAction.gotoLMS()"
         )
-        h2(slot="header") {{ confirmTitle }}
-        div(slot="body") {{ confirmBody }}
+        h2(slot="header") {{ feedbackTitle }}
+        div(slot="body") 
+          div {{ feedbackBody }}
+          div(style="margin-top:5%;")
+            textarea(v-model="feedback", rows="5")
+          
+
+
 </template>
 <script>
 import UiButton from '../../app/ui/UiButton.vue'
@@ -20,6 +38,9 @@ import EhrActions from '../../helpers/ehr-actions'
 import AppDialog from '../../app/components/AppDialogShell.vue'
 
 const TITLE = 'Assignment submitted successfully'
+
+const FEEDBACK_TITLE = 'Feedback Form'
+const FEEDBACK_BODY = 'Please share your thoughts and suggestions about this Educational Electronic Health Record System.'
 
 export default {
   name: 'EhrNavPanelAction',
@@ -32,7 +53,10 @@ export default {
     return {
       ehrAction: {},
       confirmTitle: TITLE,
-      confirmBody: ''
+      confirmBody: '',
+      feedbackTitle: FEEDBACK_TITLE,
+      feedbackBody: FEEDBACK_BODY,
+      feedback: ''
     }
   },
   computed: {
@@ -61,8 +85,14 @@ export default {
     },
     proceed () {
       this.ehrAction.invokeNavPanelAction()
-      this.$refs.submittedConfirm.onOpen()
+      // this.$refs.submittedConfirm.onOpen()
+      this.$refs.submitFeedback.onOpen()
     },
+
+    submitFeedback () {
+      // Feedback API logic goes here, feedback is set to this.feedback...
+      this.ehrAction.gotoLMS()
+    }
   },
   created: function () {
     this.ehrAction = new EhrActions(this.$store, this.$router)
