@@ -35,7 +35,7 @@
           tr(v-for="sv in classList", v-on:click="changeStudent(sv)", :class="rowClass(sv)")
             td
               div(:id="`ref-${sv._id}`",  :ref="`ref-${sv._id}`", :title="sv._id") {{ sv.user.fullName }}
-            td {{ lastUpdate(sv) }}
+            td {{ lastSubmitted(sv)  }}
             td {{ sv.activityData.evaluationData }}
             td {{ statusText(sv) }}
             td.actions
@@ -130,6 +130,9 @@ export default {
     },
     lastUpdate (sv) {
       return formatTimeStr(sv.activityData.lastDate)
+    },
+    lastSubmitted (sv) {
+      return sv.activityData.submitted ? this.lastUpdate(sv) : ''
     },
 
     unsubmit (sv) {
