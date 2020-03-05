@@ -10,7 +10,7 @@
           li(v-for="error in errors") {{ error }}
       ehr-group(v-for="group in groups", :key="group.gIndex", :group="group", :ehrHelp="ehrHelp")
       div(class="resetFormButton")
-        ui-button(class="resetFormButton", v-on:buttonClicked="promptConfirmDialog", v-bind:secondary="true") Reset form data
+        ui-button(v-on:buttonClicked="promptConfirmDialog", v-bind:secondary="true") Reset form data
     ui-confirm(ref="confirmDialog", @confirm="resetFormData")
 </template>
 
