@@ -8,6 +8,7 @@ import ActivityDataController from '../mcr/activity-data/activity-data-controlle
 import AdminController from '../mcr/admin/admin-controller'
 import AssignmentController from '../mcr/assignment/assignment-controller'
 import ConsumerController from '../mcr/consumer/consumer-controller'
+import FeedbackController from '../mcr/feedback/feedback-controller'
 import IntegrationController from '../mcr/integration/integration-controller'
 import LTIController from '../mcr/lti/lti'
 import LookaheadController from '../mcr/lookahead/lookahead-controller'
@@ -61,6 +62,7 @@ export function apiMiddle (app, config) {
   const act = new ActivityController()
   const acc = new ActivityDataController()
   const as = new AssignmentController(config)
+  const fc = new FeedbackController(config)
   const look = new LookaheadController()
   const vc = new VisitController()
   const cc = new ConsumerController()
@@ -103,6 +105,7 @@ export function apiMiddle (app, config) {
       api.use('/activities', cors(corsOptions), act.route())
       api.use('/activity-data', cors(corsOptions), acc.route())
       api.use('/assignments', cors(corsOptions), as.route())
+      api.use('/feedback', cors(corsOptions), fc.route())
       api.use('/consumers', cors(corsOptions), cc.route())
       api.use('/lookahead', cors(corsOptions), look.route())
       api.use('/users', cors(corsOptions), uc.route())
@@ -113,6 +116,7 @@ export function apiMiddle (app, config) {
       api.use('/api/activity-data', cors(corsOptions), acc.route())
       api.use('/api/assignments', cors(corsOptions), as.route())
       api.use('/api/consumers', cors(corsOptions), cc.route())
+      api.use('/api/feedback', cors(corsOptions), fc.route())
       api.use('/api/lookahead', cors(corsOptions), look.route())
       api.use('/api/users', cors(corsOptions), uc.route())
       api.use('/api/visits', cors(corsOptions), vc.route())

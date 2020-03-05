@@ -3,16 +3,6 @@
     div(v-if="showNavAction")
       ui-button(v-on:buttonClicked="npButtonClicked", :disabled="disableNavAction") {{ npButtonLabel }}
       ui-confirm(ref="confirmDialog", v-on:confirm="proceed")
-      //- app-dialog(
-      //-   :isModal="true",
-      //-   ref="submittedConfirm",
-      //-   :useSave="false",
-      //-   cancelButtonLabel="Continue to LMS",
-      //-   @cancel="ehrAction.gotoLMS()"
-      //-   )
-      //-   h2(slot="header") {{ confirmTitle }}
-      //-   div(slot="body") {{ confirmBody }}
-
       app-dialog(
         :isModal="true",
         ref="submitFeedback",
@@ -20,27 +10,26 @@
         saveButtonLabel="Submit Feedback",
         cancelButtonLabel="Cancel",
         @save="submitFeedback"
-        @cancel="ehrAction.gotoLMS()"
+        @cancel="cancelAction"
         )
-        h2(slot="header") {{ feedbackTitle }}
+        h2(slot="header") {{ feedbackFormTitle }}
         div(slot="body") 
-          div {{ feedbackBody }}
-          div(style="margin-top:5%;")
-            textarea(v-model="feedback", rows="5")
-          
-
+          div {{ feedbackFormIntro }}
+          div(style="margin-top:2%;")
+            textarea(v-model="feedbackContent", rows="5")
 
 </template>
 <script>
 import UiButton from '../../app/ui/UiButton.vue'
 import UiConfirm from '../../app/ui/UiConfirm.vue'
 import EhrActions from '../../helpers/ehr-actions'
+import { postFeedback } from '../../helpers/feedback'
 import AppDialog from '../../app/components/AppDialogShell.vue'
 
-const TITLE = 'Assignment submitted successfully'
-
-const FEEDBACK_TITLE = 'Feedback Form'
-const FEEDBACK_BODY = 'Please share your thoughts and suggestions about this Educational Electronic Health Record System.'
+const FEEDBACK_TITLE = 'Optional Feedback Form'
+const FEEDBACK_BODY = 'Your assignment has been submitted successfully.  Before you leave, '+
+  ' we hope you will share your thoughts and suggestions about this Educational Electronic Health Record System.' +
+  ' Providing feedback is optional and totally anonymous but very much appreciated.'
 
 export default {
   name: 'EhrNavPanelAction',
@@ -52,11 +41,9 @@ export default {
   data () {
     return {
       ehrAction: {},
-      confirmTitle: TITLE,
-      confirmBody: '',
-      feedbackTitle: FEEDBACK_TITLE,
-      feedbackBody: FEEDBACK_BODY,
-      feedback: ''
+      feedbackFormTitle: FEEDBACK_TITLE,
+      feedbackFormIntro: FEEDBACK_BODY,
+      feedbackContent: ''
     }
   },
   computed: {
@@ -80,22 +67,29 @@ export default {
         let opts = this.ehrAction.navPanelActionConfirmOptions()
         this.$refs.confirmDialog.showDialog(opts.title, opts.msg)
       } else {
-        this.ehrAction.invokeNavPanelAction()
+        this.ehrAction.gotoLMS()
       }
     },
     proceed () {
-      this.ehrAction.invokeNavPanelAction()
-      // this.$refs.submittedConfirm.onOpen()
-      this.$refs.submitFeedback.onOpen()
+      this.ehrAction.invokeNavPanelAction().then(() => {
+        this.$refs.submitFeedback.onOpen()
+        // use the next line instead if you don't want to collect feedback
+        // this.ehrAction.gotoLMS()
+      })
+    },
+
+    cancelAction() {
+      this.ehrAction.gotoLMS()
     },
 
     submitFeedback () {
-      // Feedback API logic goes here, feedback is set to this.feedback...
-      this.ehrAction.gotoLMS()
+      postFeedback(this.feedbackContent).then( () => {
+        this.ehrAction.gotoLMS()
+      })
     }
   },
   created: function () {
-    this.ehrAction = new EhrActions(this.$store, this.$router)
+    this.ehrAction = new EhrActions()
     this.confirmBody = this.ehrAction.getStudentHasSubmitted()
   }
 }
