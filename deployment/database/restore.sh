@@ -1,0 +1,1 @@
+mongorestore --db edehr-prod ./dump/edehr-prod/
