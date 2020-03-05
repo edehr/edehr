@@ -18,6 +18,7 @@ export default {
   components: {},
   methods: {
     loadData: function () {
+      console.log('loadData triggered !!! >> ', this.$route.meta.public)
       const debugApp = false
       let params2 = getIncomingParams()
       StoreHelper.setLoading(null, true)
@@ -113,9 +114,12 @@ export default {
     //   return this.$store.state.sVisitInfo
     // }
   },
-  created: function () {
-    if (!this.$route.meta.public) {
-      this.loadData()
+  watch: {
+    $route: function (route) {
+      console.log('route watcher', route)
+      if(!route.meta.public) {
+        this.loadData()
+      }
     }
   }
 }
