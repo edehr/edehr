@@ -52,11 +52,11 @@ export default class Helper {
     )
     const db = mongoose.connection
     db.on('error', console.error.bind(console, 'connection error'))
-    console.log('Begin connection to ' + DatabaseName)
+    // console.log('Begin connection to ' + DatabaseName)
     return db.once('open', function () {
-      console.log('We are connected to test database!')
+      // console.log('We are connected to test database!')
       mongoose.connection.db.dropDatabase(function (err) {
-        console.log('dropped '+DatabaseName+' dropDatabase')
+        // console.log('dropped '+DatabaseName+' dropDatabase')
       })
     })
   }
@@ -109,7 +109,6 @@ export default class Helper {
       assignment: assignment
     }
   }
-
 
   static sampleActivityData (consumerId, visitId) {
     return {

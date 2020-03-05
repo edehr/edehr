@@ -17,17 +17,20 @@ export default class EhrActions {
     window.location = StoreHelper.lmsUrl()
   }
 
+  /**
+   * Go to LMS unless the user is a student with unsubmitted work.
+   * @return Promise
+   */
   invokeNavPanelAction () {
     if (this.isStudent()) {
       if (this.isUnsubmittedStudent()) {
-        StoreHelper.studentSubmitsAssignment(true)
-      } else {
-        this.gotoLMS()
+        return StoreHelper.studentSubmitsAssignment(true)
       }
-    } else {
-      console.error('Coding error. Call for nav panel action for non-student user')
     }
+    this.gotoLMS()
+    return Promise.resolve()
   }
+
   isStudent () {
     return StoreHelper.isStudent()
   }
