@@ -75,7 +75,7 @@ describe(`${typeName} controller testing`, function () {
         res.body.should.be.object
         let response = res.body
         should.exist(response.count)
-        should.exist(response.results)
+        should.exist(response.medications)
         response.count.should.be.greaterThan(1)
         done()
       })

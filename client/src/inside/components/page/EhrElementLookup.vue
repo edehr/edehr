@@ -4,6 +4,7 @@
     :suggestions="suggestions",
     :inputProps="inputProps",
     @input= "fetchResults",
+    @blur="blurred",
     :sectionConfigs="sectionConfigs",
     :renderSuggestion="renderSuggestion",
     :getSuggestionValue="getSuggestionValue",
@@ -80,6 +81,11 @@ export default {
     }
   },
   methods: {
+    blurred () {
+      // If the user types in something and does not select from the options then
+      // capture the text they entered and emit this as the selected value
+      this.$emit('selected', this.searchTerm)
+    },
     fetchResults (val) {
       // console.log('input changed', val)
       if (val.length <= 2) {

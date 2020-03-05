@@ -31,10 +31,11 @@ export default class LookaheadController {
       if(err) {
         return reject(err)
       }
-      let cnt = 0;
+      const upperCase = term.toUpperCase()
+      let cnt = 0
       let results = []
       this.medications.forEach( med => {
-        if(med.name.includes(term)) {
+        if(med.medication.includes(upperCase)) {
           cnt++
           if (cnt < this.limitCnt) {
             results.push(med)
