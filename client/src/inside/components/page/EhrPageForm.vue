@@ -9,7 +9,8 @@
         ul
           li(v-for="error in errors") {{ error }}
       ehr-group(v-for="group in groups", :key="group.gIndex", :group="group", :ehrHelp="ehrHelp")
-      ui-button(v-on:buttonClicked="promptConfirmDialog", v-bind:secondary="true") Reset form data
+      div(class="resetFormButton")
+        ui-button(v-on:buttonClicked="promptConfirmDialog", v-bind:secondary="true") Reset form data
     ui-confirm(ref="confirmDialog", @confirm="resetFormData")
 </template>
 
@@ -86,6 +87,16 @@ export default {
 </script>
 
 <style lang="scss">
+
+.resetFormButton {
+  display: flex;
+  justify-content: flex-end;
+  button {
+    margin-top: 1rem;
+    margin-bottom: 0 !important;
+  }
+}
+
 .ehr-page-form {
   margin-bottom: .5em;
 }
