@@ -79,7 +79,6 @@ export default {
       unsubmitTool: Text.SEND_BACK_TO,
       activity: {},
       assignment: {},
-      activityId: '',
       testingDev: true,
     }
   },
@@ -106,6 +105,10 @@ export default {
 
     promptMessage () {
       return 'Save evaluations for ' + this.activityName
+    },
+
+    activityId () {
+      return this.$route.params.activityId || StoreHelper.getActivityId()
     }
 
   },
@@ -154,8 +157,6 @@ export default {
       In the first instance the route parameters will contain (must contain) the activity id. In the
       second instance we will retrieve the "active" activity rom the StoreHelper
        */
-      this.activityId = this.$route.params.activityId || StoreHelper.getActivityId()
-      console.log('ClassList loadComponent route param activityId',this.activityId)
       return StoreHelper.loadAsCurrentActivity(this.activityId)
         .then( () => {
           return  StoreHelper.loadInstructorWithStudent()
@@ -185,8 +186,12 @@ export default {
     },
 
   },
-  mounted: function () {
-    this.loadComponent()
+  watch: {
+    activityId:function (curr, prev) {
+      if (!prev && curr) {
+        this.loadComponent()
+      }
+    }
   }
 
 }
