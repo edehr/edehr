@@ -2,58 +2,63 @@ const axios = require('axios')
 require('@babel/core')
 require('@babel/polyfill')
 
+const BASE_URL = 'https://edehr.org'
+
 function getVisits () {
-  return axios.get('https://edehr.org/api/visits')
+  return axios.get(`${BASE_URL}/api/visits`)
 }
 
 function getUsers () {
-  return axios.get('https://edehr.org/api/users')
+  return axios.get(`${BASE_URL}/api/users`)
 }
 
 function getConsumers () {
-  return axios.get('https://edehr.org/api/consumers')
+  return axios.get(`${BASE_URL}/api/consumers`)
 }
 
 function launchLti (user, consumer, visit) {
-  return axios.get('https://edehr.org/launch_lti', {
-    oauth_version: visit ? visit.ltiData[0].oauth_version : '',
-    oauth_nonce: visit ? visit.ltiData[0].oauth_nonce : '',
-    oauth_timestamp: visit ? visit.ltiData[0].oauth_timestamp : '',
-    oauth_consumer_key: consumer.oauth_consumer_key,
-    user_id: user._id,
-    lis_person_sourcedid: visit ? visit.ltiData[0].lis_person_sourcedid : '',
-    roles: consumer.roles,
-    context_id: visit ? visit.ltiData[0].context_id : '',
-    context_label: visit ? visit.ltiData[0].context_label : '',
-    context_title: visit ? visit.ltiData[0].context_title : '',
-    resource_link_title: visit ? visit.ltiData[0].context_label : '',
-    resource_link_description: visit ? visit.ltiData[0].resource_link_description : '',
-    resource_link_id: visit ? visit.ltiData[0].resource_link_id : '',
-    context_type:  visit ? visit.ltiData[0].context_type : '',
-    lis_course_section_sourcedid: visit ? visit.ltiData[0].lis_course_section_sourcedid : '',
-    lis_result_sourcedid: visit ? visit.ltiData[0].lis_result_sourcedid : '',
-    lis_outcome_service_url: visit ? visit.ltiData[0].lis_outcome_service_url : '',
-    lis_person_name_given: visit ? visit.ltiData[0].lis_person_name_given : '',
-    lis_person_name_family: visit ? visit.ltiData[0].lis_person_name_family : '',
-    lis_person_name_full: visit ? visit.ltiData[0].lis_person_name_full : '',
-    ext_user_username: visit ? visit.ltiData[0].ext_user_username : '',
-    lis_person_contact_email_primary: visit ?  visit.ltiData[0].lis_person_contact_email_primary : '',
-    launch_presentation_locale: visit ? visit.ltiData[0].launch_presentation_locale : '',
-    ext_lms: visit ? visit.ltiData[0].ext_lms : '',
-    tool_consumer_info_product_family_code: consumer.tool_consumer_info_product_family_code,
-    tool_consumer_info_version: consumer.tool_consumer_info_version,
-    oauth_callback: visit ? visit.ltiData[0].oauth_callback : '',
-    lti_version: visit ? visit.ltiData[0].lti_version : '',
-    lti_message_type: visit ? visit.ltiData[0].lti_message_type : '',
-    tool_consumer_instance_guid: consumer.tool_consumer_instance_guid,
-    tool_consumer_instance_name: consumer.tool_consumer_instance_name,
-    tool_consumer_instance_description: consumer.tool_consumer_instance_description,
-    custom_assignment: visit ? visit.ltiData[0].custom_assignment : '',
-    launch_presentation_document_target: visit ? visit.ltiData[0].launch_presentation_document_target : '',
-    launch_presentation_return_url: visit ? visit.ltiData[0].launch_presentation_return_url : '',
-    oauth_signature_method: visit ? visit.ltiData[0].oauth_signature_method : '',
-    oauth_signature: visit ? visit.ltiData[0].oauth_signature : '',
-  })
+  if (visit) {
+    const ltiData = visit.ltiData[0]
+    return axios.get(`${BASE_URL}/launch_lti`, {
+      oauth_version: ltiData.oauth_version,
+      oauth_nonce: ltiData.oauth_nonce,
+      oauth_timestamp: ltiData.oauth_timestamp,
+      oauth_consumer_key: consumer.oauth_consumer_key,
+      user_id: user._id,
+      lis_person_sourcedid: ltiData.lis_person_sourcedid,
+      roles: consumer.roles,
+      context_id: ltiData.context_id,
+      context_label: ltiData.context_label,
+      context_title: ltiData.context_title,
+      resource_link_title: ltiData.context_label,
+      resource_link_description: ltiData.resource_link_description,
+      resource_link_id: ltiData.resource_link_id,
+      context_type: ltiData.context_type,
+      lis_course_section_sourcedid: ltiData.lis_course_section_sourcedid,
+      lis_result_sourcedid: ltiData.lis_result_sourcedid,
+      lis_outcome_service_url: ltiData.lis_outcome_service_url,
+      lis_person_name_given: ltiData.lis_person_name_given,
+      lis_person_name_family: ltiData.lis_person_name_family,
+      lis_person_name_full: ltiData.lis_person_name_full,
+      ext_user_username: ltiData.ext_user_username,
+      lis_person_contact_email_primary: ltiData.lis_person_contact_email_primary,
+      launch_presentation_locale: ltiData.launch_presentation_locale,
+      ext_lms: ltiData.ext_lms,
+      tool_consumer_info_product_family_code: consumer.tool_consumer_info_product_family_code,
+      tool_consumer_info_version: consumer.tool_consumer_info_version,
+      oauth_callback: ltiData.oauth_callback,
+      lti_version: ltiData.lti_version,
+      lti_message_type: ltiData.lti_message_type,
+      tool_consumer_instance_guid: consumer.tool_consumer_instance_guid,
+      tool_consumer_instance_name: consumer.tool_consumer_instance_name,
+      tool_consumer_instance_description: consumer.tool_consumer_instance_description,
+      custom_assignment: ltiData.custom_assignment,
+      launch_presentation_document_target: ltiData.launch_presentation_document_target,
+      launch_presentation_return_url: ltiData.launch_presentation_return_url,
+      oauth_signature_method: ltiData.oauth_signature_method,
+      oauth_signature: ltiData.oauth_signature,
+    })
+  }
 }
 
 Array.min = function(arr) {
