@@ -16,6 +16,11 @@ const DefaultLayout = 'outside'
 export default {
   name: 'App',
   components: {},
+  data: function () {
+    return {
+      hasLoaded: false
+    }
+  },
   methods: {
     loadData: function () {
       console.log('loadData triggered !!! >> ', this.$route.meta.public)
@@ -116,9 +121,9 @@ export default {
   },
   watch: {
     $route: function (route) {
-      console.log('route watcher', route)
-      if(!route.meta.public) {
+      if(!route.meta.public && !this.hasLoaded) {
         this.loadData()
+        this.hasLoaded = true
       }
     }
   }
