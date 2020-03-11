@@ -41,13 +41,6 @@
       @cancel="cancelSeedDuplication",
       set-footer
       )
-      div(slot="extra", style="margin-top: calc(40vh - 25vh);") 
-        input(
-          class="checkbox",
-          type="checkbox",
-          v-model="duplicateDocuments"
-        )
-        span Add associated documents?
 </template>
 
 <script>
@@ -64,7 +57,7 @@ import { PAGE_DATA_REFRESH_EVENT } from '../../helpers/event-bus'
 
 const DUPLICATE = {
   TITLE : (name) => `Confirm duplication of ${name}`,
-  DESCRIPTION: 'Are you sure you\'d like to duplicate the given seed?',
+  DESCRIPTION: (name) => `Are you sure you want to duplicate ${name}?`,
 }
 
 export default {
@@ -84,8 +77,7 @@ export default {
       dialogHeader: '',
       actionType: '',
       seedId: '',
-      duplicatingSeed: {},
-      duplicateDocuments: true,      
+      duplicatingSeed: {}
     }
   },
   props: {},
@@ -172,17 +164,14 @@ export default {
       this.duplicatingSeed = sv
       this.$refs.confirmDialog.showDialog(
         DUPLICATE.TITLE(sv.name), 
-        DUPLICATE.DESCRIPTION, 
+        DUPLICATE.DESCRIPTION(sv.name), 
         'Confirm'
       )
     },
     async confirmSeedDuplication () {
-      const docs = this.duplicateDocuments ? 
-        this.duplicatingSeed.ehrData : {}
       const seed = Object.assign({}, 
         this.duplicatingSeed, {
           name: `COPY OF ${this.duplicatingSeed.name}`,
-          ehrData: docs,
           createDate: new Date(),
           lastUpdateDate: new Date()
         })
@@ -192,7 +181,7 @@ export default {
       this.duplicatingSeed = {}
       this.duplicateDocuments = true
     }
-  },
+  }
 }
 </script>
 

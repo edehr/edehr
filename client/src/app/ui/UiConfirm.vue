@@ -10,7 +10,6 @@
       )
       h2(slot="header") {{ title }}
       div(slot="body") {{ text }}
-        slot(name="extra")
   
 </template>
 
