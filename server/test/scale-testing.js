@@ -2,7 +2,7 @@ const axios = require('axios')
 require('@babel/core')
 require('@babel/polyfill')
 
-const BASE_URL = 'https://edehr.org'
+const BASE_URL = 'https://localhost:27000'
 
 function getVisits () {
   return axios.get(`${BASE_URL}/api/visits`)
@@ -17,12 +17,14 @@ function getConsumers () {
 }
 
 function launchLti () {
-  return axios.post(`${BASE_URL}/api/launch_lti`, {
+  return axios.post(`${BASE_URL}/launch_lti`, {
     oauth_customer_key: 'key',
     oauth_signature_method: 'HMAC-SHA1',
     oauth_timestamp: Math.round(Date.now() / 1000),
     oauth_nonce: Date.now() + Math.random() * 100,
-    custom_assignment: 'test_assignment_id_1'
+    custom_assignment: 'test_assignment_id_1',
+    oauth_version: 1.0,
+    lti_version: 'LTI-1p0'
   })
 }
 
@@ -39,7 +41,7 @@ let totalStart, totalEnd, diff = [], start, end
 async function main() {
     try {
         totalStart = new Date()
-        for(let i = 0; i < 500; i++) {
+        // for(let i = 0; i < 500; i++) {
             start = new Date()
             const result = await launchLti()
             console.log('result >> ', result)
@@ -54,10 +56,24 @@ async function main() {
                 console.log(`Min Time: ${ Array.min(diff)} seconds`)
                 console.log(`Max Time: ${ Array.max(diff)} seconds`)
             }
-        } 
+        // } 
     } catch (err ) {
         console.log('error in main! >> ', err)
     }
 }
 
 main()
+
+// custom_assignment=foo&
+// roles=student&
+// lti_version=LTI-1p0&
+// user_id=345&
+// oauth_consumer_key=edehrkey&
+// oauth_signature_method=HMAC-SHA1&
+// oauth_timestamp=1541050085&
+// oauth_nonce=EZTFu6Wpx4b&
+// oauth_version=1.0&
+// oauth_signature=IGArSiWdwo/3qrLilg7aHn35qac=&
+// resource_link_id=res1&
+// lti_message_type=basic-lti-launch-request&
+// context_id=123
