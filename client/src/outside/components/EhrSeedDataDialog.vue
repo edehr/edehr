@@ -144,8 +144,20 @@ export default {
       if (this.actionType === EDIT_ACTION) {
         await StoreHelper.updateSeed(this, this.seedId, seedData)
       } else if (this.actionType === CREATE_ACTION) {
+        // This is done in order to compare a list of objects
+        // before and after the upload, so that, the created seed can be filtered out
+        // in order to satisfy the need of seedId when uploading the file. 
+        // In short, prevSeedList contains a list of the previous fields; 
+        // which include the list which is already added to the database. 
+        // currSeedList contains the newly updated seed list after
+        // adding the database record.
+        // Then the createdSeed value contains the difference object
+        // (which is the newly added object) by filtering out all the
+        // objects which are different from the prevSeedList; returning the newly added
+        // object with its backend id.
         const prevSeedList = StoreHelper.getSeedDataList().map(d=>JSON.stringify(d))
         const currSeedList = await StoreHelper.createSeed(this, seedData)
+        console.log('currSeedList >> ', currSeedList)
         const createdSeed = currSeedList.find(s => !prevSeedList.includes(JSON.stringify(s)))
         this.seedId = createdSeed._id
       }
