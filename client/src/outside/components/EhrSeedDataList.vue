@@ -28,11 +28,19 @@
 
               // td {{sv._id}}
               td(v-if="isDevelopingContent && !sv.isDefault",class="seed-actions")
+               ui-button(v-on:buttonClicked="duplicateSeed(sv)", secondary, :title="`Copy of ${sv.name}`") Duplicate
                ui-button(v-on:buttonClicked="downloadSeed(sv)", , v-bind:secondary="true", class="dwn") Download
                ui-button(v-on:buttonClicked="showEditDialog(sv)", v-bind:secondary="true") Edit description
                ui-button(v-on:buttonClicked="gotoEhrWithSeed(sv)") View/edit seed
       ui-agree(ref="aggreeDialog")
     ehr-seed-data-dialog(ref="theDialog", @showDialog="showDialog")
+    ui-confirm(
+      ref="confirmDialog",
+      @confirm="confirmSeedDuplication",
+      @abort="cancelSeedDuplication",
+      @cancel="cancelSeedDuplication",
+      set-footer
+      )
 </template>
 
 <script>
@@ -40,11 +48,17 @@ import BreadCrumb from './BreadCrumb'
 import UiButton from '../../app/ui/UiButton.vue'
 import UiLink from '../../app/ui/UiLink.vue'
 import UiAgree from '../../app/ui/UiAgree.vue'
+import UiConfirm from '../../app/ui/UiConfirm.vue'
 import EhrSeedDataDialog from './EhrSeedDataDialog'
 import StoreHelper from '../../helpers/store-helper'
 import EventBus from '../../helpers/event-bus'
 import { downloadSeedToFile, downObjectToFile } from '../../helpers/ehr-utils'
 import { PAGE_DATA_REFRESH_EVENT } from '../../helpers/event-bus'
+
+const DUPLICATE = {
+  TITLE : (name) => `Confirm duplication of ${name}`,
+  DESCRIPTION: (name) => `Are you sure you want to duplicate ${name}?`,
+}
 
 export default {
   name: 'EhrSeedDataList',
@@ -53,7 +67,8 @@ export default {
     UiButton,
     UiLink,
     UiAgree,
-    BreadCrumb
+    BreadCrumb,
+    UiConfirm
   },
   data () {
     return {
@@ -62,6 +77,7 @@ export default {
       dialogHeader: '',
       actionType: '',
       seedId: '',
+      duplicatingSeed: {}
     }
   },
   props: {},
@@ -140,6 +156,30 @@ export default {
     },
     showDialog: function (title, msg) {
       this.$refs.aggreeDialog.showDialog(title, msg)
+    },
+    duplicateSeed (sv) {
+      delete sv._id
+      delete sv.createDate
+      delete sv.lastUpdateDate
+      this.duplicatingSeed = sv
+      this.$refs.confirmDialog.showDialog(
+        DUPLICATE.TITLE(sv.name), 
+        DUPLICATE.DESCRIPTION(sv.name), 
+        'Confirm'
+      )
+    },
+    async confirmSeedDuplication () {
+      const seed = Object.assign({}, 
+        this.duplicatingSeed, {
+          name: `COPY OF ${this.duplicatingSeed.name}`,
+          createDate: new Date(),
+          lastUpdateDate: new Date()
+        })
+      await StoreHelper.createSeed(this, seed)
+    },
+    cancelSeedDuplication () {
+      this.duplicatingSeed = {}
+      this.duplicateDocuments = true
     }
   }
 }
