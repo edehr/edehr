@@ -14,7 +14,7 @@
             li Gender: &nbsp;
               b {{ demographics.gender }}
             li Weight: &nbsp;
-              b {{ `${demographics.weight || 49}kg` }}
+              b {{ `${demographics.weight}kg` }}
         div( class="column EhrBanner__content_row--2")
           ul
             li Code status: &nbsp;
