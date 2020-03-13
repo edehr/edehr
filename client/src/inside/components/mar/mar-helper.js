@@ -46,6 +46,18 @@ export default class MarHelper {
     return this.ehrHelp.getAsLoadedPageData(MAR_PAGE_KEY)
   }
 
+  clearAllData () {
+    let marTableKey = this.getMarTableKey()
+    let asLoadedPageData = this.getEhrData_MarPageData()
+    
+    asLoadedPageData[marTableKey] = []
+    let payload = {
+      pageKey: MAR_PAGE_KEY,
+      value: asLoadedPageData
+    }
+    return this.ehrHelp._saveData(payload)
+  }
+
   /**
    * Get the MAR records. This is an array of records inside the main MAR page data
    * @return {*|Array}

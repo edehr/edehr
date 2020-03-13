@@ -52,7 +52,6 @@ export default class MarToday {
       console.log('getTodaysSchedule medOrders', medOrders)
     }
     this._cDay = 0
-
     let aDaySchedule = getSchedule(medOrders)
     if (db) console.log('marToday aDaySchedule >> ', aDaySchedule)
 
@@ -68,6 +67,9 @@ export default class MarToday {
 
     // Let cDay = the max day in all MAR records.
     marRecords.forEach (mar => {
+      if(mar.day === 1) {
+        console.log('marDay1 >> ', mar)
+      }
       this._cDay = Math.max(this._cDay, mar.day)
     })
     // MAR Records filtered to the cDay
@@ -83,7 +85,10 @@ export default class MarToday {
 
     // Match mars for the current data to the scheduled list of medications
     marRecsFiltered.forEach( mar =>  {
-      if(mar.scheduledTime ) {
+      const pk = aDaySchedule.find( pk => 
+        pk.hour24 === mar.scheduledTime
+      )
+      if(mar.scheduledTime && pk) {
         let pk = aDaySchedule.find( pk => 
           pk.hour24 === mar.scheduledTime
         )
