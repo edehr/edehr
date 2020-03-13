@@ -46,10 +46,18 @@ const getters = {
     const studentData = rootGetters['activityDataStore/assignmentData'] || {}
     let results = {}
     pageKeys.forEach( key => { 
+      const combinedObject = Object.assign({}, mergedData[key], seedData[key])
+      const isTable = Object.keys(combinedObject).includes('table')
       results[key] = { pagekey: key }
-      results[key].hasMerged = !! mergedData[key]
-      results[key].hasSeed = !! seedData[key]
-      results[key].hasStudent = !! studentData[key]
+      if(isTable) {
+        results[key].hasMerged =  mergedData[key] && mergedData[key].table.length > 0
+        results[key].hasSeed =  seedData[key] && seedData[key].table.length > 0
+        results[key].hasStudent =  studentData[key] && studentData[key].table.length > 0
+      } else {
+        results[key].hasMerged =  !!mergedData[key]
+        results[key].hasSeed =  !!seedData[key]
+        results[key].hasStudent =  !!studentData[key]
+      }
     })
     if (debug) console.log('EhrData hasDataForPagesList pageKeys', pageKeys)
     if (debug) console.log('EhrData hasDataForPagesList mergedData', mergedData)
