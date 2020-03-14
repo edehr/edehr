@@ -78,7 +78,7 @@ export default {
       })
     },
 
-    cancelAction() {
+    cancelAction () {
       this.ehrAction.gotoLMS()
     },
 
