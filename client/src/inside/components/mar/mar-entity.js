@@ -6,9 +6,6 @@ const ERR_WHO = 'Must provide who administered'
 const ERR_WHEN = 'Time must be 24:00 hour format'
 const ERR_DAY = 'Day must be one of 0,1,2,3,...'
 const ERR_EMPTY_MEDS = 'Medication list can not be empty'
-// TODO see if we need to validate scheduled time
-const ERR_SCHEDULE = 'Must provide the scheduled time'
-
 const DEFAULT_TIME = '0:00'
 const DEFAULT_DAY = 0
 

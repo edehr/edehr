@@ -48,7 +48,7 @@ export function outside () {
       name: 'lookahead',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Lookahead.vue'),
-      meta: { layout: 'outside', label: 'Lookahead test', topLevel: 'undefined' }
+      meta: { layout: 'outside', label: 'Lookahead', topLevel: 'undefined' }
     }
   ]
 }
