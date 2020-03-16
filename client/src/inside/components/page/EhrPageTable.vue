@@ -85,11 +85,8 @@ export default {
     proceedClearAllData () {
       console.log('EhrPageTable clearAllData ', this.tableDef)
       this.ehrHelp.clearTable(this.tableKey)
-      if (this.pageDataKey === 'medicationOrders') {
-        const helper = new MarHelper(this.ehrHelp)
-        helper.clearAllData()
-      }
-      
+      const helper = new MarHelper(this.ehrHelp)
+      helper.triggerActionByPageKey()      
     },
     refresh () {
       let tableForm = this.ehrHelp.getTable(this.tableKey)

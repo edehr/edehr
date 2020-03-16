@@ -67,9 +67,6 @@ export default class MarToday {
 
     // Let cDay = the max day in all MAR records.
     marRecords.forEach (mar => {
-      if(mar.day === 1) {
-        console.log('marDay1 >> ', mar)
-      }
       this._cDay = Math.max(this._cDay, mar.day)
     })
     // MAR Records filtered to the cDay
@@ -84,6 +81,9 @@ export default class MarToday {
     }
 
     // Match mars for the current data to the scheduled list of medications
+    // Since pk can be null, according to what aDaySchedule.find
+    // returns, a comparison has been added so that it doesn't break
+    //  the view with a error like "Cannot read marRecord of null"
     marRecsFiltered.forEach( mar =>  {
       const pk = aDaySchedule.find( pk => 
         pk.hour24 === mar.scheduledTime

@@ -123,4 +123,13 @@ export default class MarHelper {
     }
     return this.ehrHelp._saveData(payload)
   }
+
+  triggerActionByPageKey () {
+    const marTableKey = this.getMarTableKey()
+    switch (marTableKey) {
+    case MED_ORDERS_PAGE_KEY:
+      this.clearAllData()
+      break
+    }
+  }
 }
