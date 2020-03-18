@@ -14,6 +14,7 @@ import {
   formatTimeStr } from '../../../helpers/ehr-utils'
 import EhrDefs from '../../../helpers/ehr-defs-grid'
 import StoreHelper from '../../../helpers/store-helper'
+import validations from './ehr-validations'
 import { Text } from '../../../helpers/ehr-text'
 
 const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
@@ -472,6 +473,20 @@ export default class EhrHelpV2 {
       if (mandatory && !value ) {
         let msg = label + ' is required'
         dialog.errorList.push(msg)
+      }
+      if (eDef.validation && validations[eDef.validation]) {
+        if(!validations[eDef.validation](inputs[eKey])) {
+          const errKey = `${eDef.validation.toUpperCase()}_ERROR`
+          if (dbDialog) console.log('errKey >> ', errKey, 'eKey >> ', eKey)
+          if(eKey.includes('prn')) {
+            const prnString = 'PRN values'
+            if(!dialog.errorList.includes(validations[errKey](prnString))) {
+              dialog.errorList.push(validations[errKey](prnString))
+            } 
+          } else {
+            dialog.errorList.push(validations[errKey](eKey))
+          }
+        }
       }
     })
     return dialog.errorList.length === 0

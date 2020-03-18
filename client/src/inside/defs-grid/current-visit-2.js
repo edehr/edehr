@@ -417,7 +417,7 @@ export default function () {
           fqn: 'genitourinary.comments'
         }
       ],
-      generated: '2020-01-06T19:49:26-08:00',
+      generated: '2020-03-18T11:51:40-03:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1013,7 +1013,7 @@ export default function () {
           fqn: 'musculoskeletal.comments'
         }
       ],
-      generated: '2020-01-06T19:49:26-08:00',
+      generated: '2020-03-18T11:51:40-03:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1386,7 +1386,7 @@ export default function () {
           fqn: 'pain.comments'
         }
       ],
-      generated: '2020-01-06T19:49:26-08:00',
+      generated: '2020-03-18T11:51:40-03:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1975,7 +1975,7 @@ export default function () {
           fqn: 'biopsychosocial.generalComments'
         }
       ],
-      generated: '2020-01-06T19:49:26-08:00',
+      generated: '2020-03-18T11:51:40-03:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2359,7 +2359,7 @@ export default function () {
           fqn: 'nonmedOrders.comment'
         }
       ],
-      generated: '2020-01-06T19:49:26-08:00',
+      generated: '2020-03-18T11:51:40-03:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2570,7 +2570,7 @@ export default function () {
           fqn: 'referrals.status'
         }
       ],
-      generated: '2020-01-06T19:49:26-08:00',
+      generated: '2020-03-18T11:51:40-03:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2715,6 +2715,7 @@ export default function () {
           formIndex: '1',
           inputType: 'assetLink',
           label: 'Lab requisition',
+          tableColumn: '2',
           fqn: 'labRequisitions.requisition'
         },
         {
@@ -2724,12 +2725,14 @@ export default function () {
           formIndex: '1',
           inputType: 'assetLink',
           label: 'Medical imaging requisition',
+          tableColumn: '3',
           fqn: 'labRequisitions.requisition'
         },
         {
           elementKey: 'spacer37',
           formIndex: '1',
           inputType: 'spacer',
+          tableColumn: '4',
           fqn: 'labRequisitions.spacer37'
         },
         {
@@ -2737,12 +2740,12 @@ export default function () {
           formIndex: '1',
           inputType: 'day',
           label: 'Ordered day',
-          tableColumn: '2',
+          tableColumn: '5',
           tableLabel: 'Ordered day',
           fqn: 'labRequisitions.ordered'
         }
       ],
-      generated: '2020-01-06T19:49:26-08:00',
+      generated: '2020-03-18T11:51:40-03:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2761,8 +2764,26 @@ export default function () {
               ]
             },
             {
-              label: 'Ordered day',
               ehr_list_index: '2',
+              items: [
+                'requisition'
+              ]
+            },
+            {
+              ehr_list_index: '3',
+              items: [
+                'requisition'
+              ]
+            },
+            {
+              ehr_list_index: '4',
+              items: [
+                'spacer37'
+              ]
+            },
+            {
+              label: 'Ordered day',
+              ehr_list_index: '5',
               items: [
                 'ordered'
               ]
@@ -2851,7 +2872,6 @@ export default function () {
           formIndex: '1',
           formCss: 'grid-span-2-columns',
           inputType: 'lookahead',
-          lookaheadKey: 'medications',
           label: '<a href=\'/assets/static-databases/drug.txt\' target=\'_blank\'>Medication</a>',
           tableColumn: '2',
           tableLabel: 'Medication',
@@ -3001,6 +3021,7 @@ export default function () {
           inputType: 'text',
           label: 'PRN 1',
           tableColumn: '10',
+          validation: 'time24',
           fqn: 'medicationOrders.prn1'
         },
         {
@@ -3009,6 +3030,7 @@ export default function () {
           inputType: 'text',
           label: 'PRN 2',
           tableColumn: '11',
+          validation: 'time24',
           fqn: 'medicationOrders.prn2'
         },
         {
@@ -3017,6 +3039,7 @@ export default function () {
           inputType: 'text',
           label: 'PRN 3',
           tableColumn: '12',
+          validation: 'time24',
           fqn: 'medicationOrders.prn3'
         },
         {
@@ -3025,6 +3048,7 @@ export default function () {
           inputType: 'text',
           label: 'PRN 4',
           tableColumn: '13',
+          validation: 'time24',
           fqn: 'medicationOrders.prn4'
         },
         {
@@ -3033,6 +3057,7 @@ export default function () {
           inputType: 'text',
           label: 'PRN 5',
           tableColumn: '14',
+          validation: 'time24',
           fqn: 'medicationOrders.prn5'
         },
         {
@@ -3041,6 +3066,7 @@ export default function () {
           inputType: 'text',
           label: 'PRN 6',
           tableColumn: '15',
+          validation: 'time24',
           fqn: 'medicationOrders.prn6'
         },
         {
@@ -3064,6 +3090,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Instructions',
+          tableColumn: '16',
           tableLabel: 'Instructions',
           fqn: 'medicationOrders.instructions'
         },
@@ -3072,6 +3099,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Reason',
+          tableColumn: '17',
           tableLabel: 'Reason',
           fqn: 'medicationOrders.reason'
         },
@@ -3080,11 +3108,12 @@ export default function () {
           formIndex: '1',
           inputType: 'textarea',
           label: 'Notes',
+          tableColumn: '18',
           tableLabel: 'Notes',
           fqn: 'medicationOrders.notes'
         }
       ],
-      generated: '2020-01-06T19:49:26-08:00',
+      generated: '2020-03-18T11:51:40-03:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -3188,6 +3217,27 @@ export default function () {
               ehr_list_index: '15',
               items: [
                 'prn6'
+              ]
+            },
+            {
+              label: 'Instructions',
+              ehr_list_index: '16',
+              items: [
+                'instructions'
+              ]
+            },
+            {
+              label: 'Reason',
+              ehr_list_index: '17',
+              items: [
+                'reason'
+              ]
+            },
+            {
+              label: 'Notes',
+              ehr_list_index: '18',
+              items: [
+                'notes'
               ]
             }
           ],
@@ -3439,7 +3489,7 @@ export default function () {
           helperHtml: '<p>Enter time delivered or say if not delivered.</p>'
         }
       ],
-      generated: '2020-01-06T19:49:26-08:00',
+      generated: '2020-03-18T11:51:40-03:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -3706,7 +3756,7 @@ export default function () {
           fqn: 'dischargeSummary.leavingBy'
         }
       ],
-      generated: '2020-01-06T19:49:26-08:00',
+      generated: '2020-03-18T11:51:40-03:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -3778,7 +3828,7 @@ export default function () {
           fqn: 'billing.paymentType'
         }
       ],
-      generated: '2020-01-06T19:49:26-08:00',
+      generated: '2020-03-18T11:51:40-03:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -4657,7 +4707,7 @@ export default function () {
           fqn: 'integumentaryAssessment.treatmentComplete'
         }
       ],
-      generated: '2020-01-06T19:49:26-08:00',
+      generated: '2020-03-18T11:51:40-03:00',
       pageElements: {
         table: {
           elementKey: 'table',
