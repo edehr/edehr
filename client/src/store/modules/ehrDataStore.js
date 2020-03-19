@@ -9,6 +9,37 @@ const debug = false
 const state = {
 }
 
+const _getTables = (obj = {}) => {
+  return Object.keys(obj).filter(o => o.includes('table') || o.includes('stacked'))
+}
+
+const _hasOnlyTables = (obj) => {
+  const tableLength = _getTables(obj).length
+  const objectLength = Object.keys(obj).filter(k => k !== 'lastUpdate').length
+  return tableLength > 0 && objectLength === tableLength
+}
+
+const _hasTables = (obj) => {
+  return _getTables(obj).length > 0 
+}
+
+const _hasAnyData = (obj) => {
+  return _hasTables(obj) ? _doTablesHaveData(obj) : !! obj
+}
+
+const _doTablesHaveData = (obj) => {
+  let hasData = false
+  const tableKeys = _getTables(obj)
+  if(tableKeys.length > 0) { 
+    tableKeys.map(key => {
+      if(obj[key] &&( obj[key] && obj[key].length > 0)) {
+        hasData = true
+      }
+    })
+  }
+  return hasData
+}
+
 const getters = {
   mergedData: (state, getters, rootState, rootGetters) => {
     let type = ''
@@ -46,10 +77,25 @@ const getters = {
     const studentData = rootGetters['activityDataStore/assignmentData'] || {}
     let results = {}
     pageKeys.forEach( key => { 
+      const combinedObject = Object.assign({}, 
+        mergedData[key], 
+        seedData[key], 
+        studentData[key]
+      )
       results[key] = { pagekey: key }
-      results[key].hasMerged = !! mergedData[key]
-      results[key].hasSeed = !! seedData[key]
-      results[key].hasStudent = !! studentData[key]
+      if (_hasOnlyTables(combinedObject)) {
+        results[key].hasMerged = _doTablesHaveData(mergedData[key])
+        results[key].hasSeed = _doTablesHaveData(seedData[key])
+        results[key].hasStudent =  _doTablesHaveData(studentData[key])
+      } else if (_hasTables(combinedObject)) {
+        results[key].hasMerged = _hasAnyData(mergedData[key])
+        results[key].hasSeed = _hasAnyData(seedData[key])
+        results[key].hasStudent = _hasAnyData(studentData[key])
+      } else {
+        results[key].hasMerged =  !!mergedData[key]
+        results[key].hasSeed =  !!seedData[key]
+        results[key].hasStudent =  !!studentData[key]
+      }
     })
     if (debug) console.log('EhrData hasDataForPagesList pageKeys', pageKeys)
     if (debug) console.log('EhrData hasDataForPagesList mergedData', mergedData)
@@ -65,7 +111,6 @@ const getters = {
     }
   },
 }
-
 const actions = {
 }
 
