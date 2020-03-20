@@ -6,7 +6,8 @@ const sKeys = {
   C_STUDENT: 'sCurrentEvaluationStudentId',
   C_ACTIVITY: 'currentActivityId',
   IS_DEVING: 'isSeedEditing',
-  AUTH_TOKEN: 'authToken'
+  AUTH_TOKEN: 'authToken',
+  IS_READONLY_INSTRUCTOR: 'isReadOnlyInstructor'
 }
 
 export default sKeys

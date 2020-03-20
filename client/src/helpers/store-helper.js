@@ -57,8 +57,8 @@ class StoreHelperWorker {
   apiUrl () { return sessionStorage.getItem('apiUrl') || undefined }
   apiUrlSet (url) { sessionStorage.setItem('apiUrl', url) }
 
-
-
+  isReadOnlyInstructor () { return this._getVisitProperty('isReadOnlyInstructor')}
+  setIsReadOnlyInstructor (isReadonly = false) { store.commit('visit/setIsReadOnlyInstructor', isReadonly)}
   isDevelopingContent () { return this._getVisitProperty('isDevelopingContent')  }
   setIsDevelopingContent (state) { store.commit('visit/setIsDevelopingContent', state) }
 
@@ -180,7 +180,7 @@ class StoreHelperWorker {
   loadAssignment (id) { return this._dispatchAssignment('load', id) }
 
   loadAssignmentAndSeedLists () {
-    // load the seeds first so they are ready for the assignments to integrate
+  // load the seeds first so they are ready for the assignments to integrate
     return  this._dispatchSeedListProperty('loadSeeds')
       .then ( () => {
         return this.loadAssignmentList()
@@ -191,7 +191,7 @@ class StoreHelperWorker {
 
   // returns promise that resolves to assignment list
   updateAssignment (component, assignmentId, assignmentData) {
-    // console.log('Assignment update ', assignmentId, assignmentData)
+  // console.log('Assignment update ', assignmentId, assignmentData)
     let dataIdPlusPayload = { id: assignmentId, payload: assignmentData }
     return this._dispatchAssignmentList('updateAssignment', dataIdPlusPayload)
   }
@@ -213,7 +213,7 @@ class StoreHelperWorker {
   loadSeedLists () { return this._dispatchSeedListProperty('loadSeedDataList') }
 
   updateSeed (component, seedId, theData) {
-    // console.log('Seed Data update ', seedId, theData)
+  // console.log('Seed Data update ', seedId, theData)
     let dataIdPlusPayload = { id: seedId, payload: theData }
     return this._dispatchSeedListProperty('updateSeedItem', dataIdPlusPayload)
   }
@@ -333,6 +333,7 @@ class StoreHelperWorker {
     sessionStorage.removeItem(sKeys.C_ACTIVITY)
     sessionStorage.removeItem(sKeys.C_STUDENT)
     sessionStorage.removeItem(sKeys.SEED_ID)
+    sessionStorage.removeItem(sKeys.IS_READONLY_INSTRUCTOR)
     return Promise.resolve()
   }
 
