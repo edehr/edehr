@@ -13,8 +13,8 @@
           div(class="dialog-footer-errors is-pulled-left")
             div(v-show="errors.length")
               span {{ errorDirections }} 
-              span(v-for="(error, index) in errors.join(', ')", class="error-color")
-                span {{ error }}
+              span(class="error-color")
+                span {{ errors.join(', ') }}
 
           div(class="dialog-footer-content")
             div(v-if="hasLeftButton" class="is-pulled-left")
