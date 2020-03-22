@@ -36,3 +36,4 @@ docs/.vuepress/dist/**
 */.env
 server/.session/
 database/data/**
+database/backup/dump/**

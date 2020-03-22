@@ -23,7 +23,8 @@ const state = {
 
 const getters = {
   apiUrl: state => {
-    return state.apiUrl
+    let rval = state.apiUrl || sessionStorage.getItem(sKeys.API_URL)
+    return rval
   },
   isInstructor: state => {
     return state.sVisitData.isInstructor

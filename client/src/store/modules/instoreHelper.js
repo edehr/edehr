@@ -17,7 +17,7 @@ class InstoreHelperWorker {
 
   composeUrl (context, api, url) {
     let visitState = context.rootState.visit
-    let apiUrl = visitState.apiUrl
+    let apiUrl = sessionStorage.getItem('apiUrl')
     return `${apiUrl}/${api}/` + (url ? url : '')
   }
 
