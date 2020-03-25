@@ -52,8 +52,9 @@ function launchLti () {
     },
     body: Object.assign({}, ltiData, { debug: true })
   }
-
+  
   let signer = new HMAC_SHA1()
+  // console.log('body >> ', req.body)
   req.body.oauth_signature = signer.build_signature(req, req.body, ltiData.oauth_consumer_secret)
   return axios.post(req.url, req.body)
 }

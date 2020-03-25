@@ -408,6 +408,30 @@ export default class LTIController {
           next(err)
         })
     })
+    router.post('/make-HMAC_SHA1', (req, res) => {
+      this._makeSignature(req, res)
+    })
+    return router
+  }
+
+  _makeSignature (req, res) {
+    if(req.body) {
+      console.log('req.body >>', req.body)
+      try {
+        let signer = new HMAC_SHA1()
+        const oauth_signature = signer.build_signature(
+          req, 
+          req.body,
+          req.body.oauth_consumer_secret
+        )
+        res.status(200).json({ oauth_signature })
+      }
+      catch (err) {
+        req.status(500).send(err)
+      }
+    }
+  }
+  
 
   _extractLtiData (props, src, dest) {
     dest = dest || {}
