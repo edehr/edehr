@@ -38,7 +38,7 @@
           td
             ui-button(v-on:buttonClicked="showEditDialog", :value="item._id", :secondary="isItemMisconfigured(item)")
               fas-icon(icon="edit") Edit assignment properties
-    assignments-dialog(ref="theDialog", @close="fetchAssignments")
+    assignments-dialog(ref="theDialog")
 </template>
 
 <script>
