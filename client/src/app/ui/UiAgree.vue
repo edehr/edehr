@@ -8,6 +8,7 @@
 
 <script>
 import AppDialog from '../components/AppDialogShell'
+const CONFIRM_EVENT = 'confirm' // event emitted when user confirms
 const DEFAULT_TITLE = 'Agree'
 const DEFAULT_TEXT =''
 export default {
@@ -31,6 +32,7 @@ export default {
       this.title = DEFAULT_TITLE 
       this.msg = DEFAULT_TEXT
       this.$refs.theDialog.onClose()
+      this.$emit(CONFIRM_EVENT)
     }
   }
 }
