@@ -20,7 +20,7 @@
           tr
             td Class list:
             td
-              ui-link(:name="'classList'", :params="{activityId: activityId}")
+              ui-link(:name="'classList'", :query="{activityId: activityId}")
                 span go to list
 </template>
 
