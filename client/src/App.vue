@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     loadData: function () {
-      console.log('loadData triggered !!! >> ', this.$route.meta.public)
+      console.log('loadData triggered:  this.$route.meta ', this.$route.meta)
       const debugApp = false
       let params2 = getIncomingParams()
       StoreHelper.setLoading(null, true)

@@ -90,7 +90,7 @@ const actions = {
     let activityId = context.rootGetters['activityStore/activityId']
     if(debug) console.log(NAME + 'load classList filtered, activityId', filtered, activityId)
     let api = 'activities'
-    let url = `class/${activityId}`
+    let url = `class-list/${activityId}`
     return InstoreHelper.getRequest(context, api, url)
       .then(response => {
         let tmpList = response.data['classList']

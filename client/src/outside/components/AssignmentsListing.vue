@@ -114,7 +114,7 @@ export default {
     },
   },
   mounted: function () {
-    // TODO BG thinks this needs to be testes. Create a LMS activity with invalid external id.
+    // TODO BG thinks this needs to be tested. Create a LMS activity with invalid external id.
     // Need to give error to user. Does this do it?
     let params2 = getIncomingParams()
     this.isRespondingToError = params2['error']

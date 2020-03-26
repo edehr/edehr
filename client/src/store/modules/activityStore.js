@@ -49,7 +49,7 @@ const actions = {
   },
 
   load ({dispatch, commit}, id) {
-    // at this time the switch to activity and class list component both invoke this load.
+    // at this time the switch to aactivityctivity and class list component both invoke this load.
     // commit the new id now so the class list component uses the latest as set by the switch assignment
     return dispatch('get',id)
       .then( (results) => {
