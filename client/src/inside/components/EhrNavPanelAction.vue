@@ -27,6 +27,7 @@ import UiAgree from '../../app/ui/UiAgree.vue'
 import EhrActions from '../../helpers/ehr-actions'
 import { postFeedback } from '../../helpers/feedback'
 import AppDialog from '../../app/components/AppDialogShell.vue'
+import StoreHelper from '../../helpers/store-helper'
 
 const FEEDBACK_TITLE = 'Optional Feedback Form'
 const FEEDBACK_BODY = 'Your assignment has been submitted successfully.  Before you leave, '+
@@ -63,7 +64,7 @@ export default {
       return require('../../menuList.json')
     },
     showNavAction () {
-      return this.$store.getters['visit/isStudent']
+      return !StoreHelper.getActivityIsClosed() && this.$store.getters['visit/isStudent']
     },
     disableNavAction () {
       return this.$store.state.system.isEditing

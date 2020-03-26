@@ -87,22 +87,20 @@ const actions = {
   },
 
   loadClassList (context, filtered) {
+    console.debug('Instructor store no longer filters list. TODO clean up.')
     let activityId = context.rootGetters['activityStore/activityId']
     if(debug) console.log(NAME + 'load classList filtered, activityId', filtered, activityId)
     let api = 'activities'
     let url = `class-list/${activityId}`
     return InstoreHelper.getRequest(context, api, url)
       .then(response => {
-        let tmpList = response.data['classList']
-        let classList = filtered ? tmpList.filter( elem => elem.activityData.submitted ) : tmpList
+        let classList = response.data['classList']
         let len = classList.length
         classList.forEach (( elem, index )  => {
           elem.index = index
           elem.listLength = len
         })
         if(debug) {
-          console.log(NAME + 'cl filtered', filtered)
-          console.log(NAME + 'cl tmpList', tmpList)
           console.log(NAME + 'cl classList', classList)
         }
         context.commit('setClassList', classList)

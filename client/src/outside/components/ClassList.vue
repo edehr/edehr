@@ -4,24 +4,52 @@
       div(class="course-header")
         h2(class="course-header-item") {{ courseTitle }}
       div(class="course-header-item float-right")
-        ui-button(class="assignmentascsv", v-on:buttonClicked="downloadEvaluations") Download all assignment evaluation notes
+        ui-button(v-if="activity.closed", v-on:buttonClicked="openActivity", title="Open activity for students to submit work. Instructor can evaluate only work submitted by students.") Open activity
+          fas-icon(class="icon-right", icon="hourglass-start")
+        ui-button(v-else, v-on:buttonClicked="closeActivity", title="Block students from doing more work. Instructor can evaluate all work.") Close activity
+          fas-icon(class="icon-right", icon="hourglass-end")
+        ui-button(v-on:buttonClicked="downloadEvaluations") Download all assignment evaluation notes
           fas-icon(class="icon-right", icon="download")
         ui-save-as-prompt(ref="promptDialog", title="Save evaluation", :message="promptMessage", :filename="activityName", v-on:confirm="proceed")
-    h3(:title="activityId") {{ activityName }}
+    div {{ activity.context_title }}
+    div {{ activity.context_label }}
     table
       tr
-        td LMS description:
         td
-          div(v-text-to-html="activityDescription")
-      tr
-        td Assignment name:
+          table
+            tr
+              td Assignment name:
+              td
+                ui-link(:name="'assignments'", :params="{assignmentId: assignmentId}")
+                  span {{ assignmentName }}
+            tr
+              td Description:
+              td
+                div(v-text-to-html="assignmentDescription")
         td
-          ui-link(:name="'assignments'", :params="{assignmentId: assignmentId}")
-            span {{ assignmentName }}
-      tr
-        td Assignment description:
+          table
+            tr
+              td Last Update:
+              td {{ activity.lastDate | formatDateTime }}
+            tr
+              td Created:
+              td {{ activity.createDate | formatDateTime }}
         td
-          div(v-text-to-html="assignmentDescription")
+          table
+            tr
+              td Status
+              td {{activity.closed ? "Closed" : "Open" }}
+            tr
+              td Date closed
+              td {{activity.closedDate | formatDateTime }}
+        td
+          table
+            tr
+              td Students participating
+              td {{classList.length}}
+            tr
+              td Students submitted
+              td {{classSubmittedList.length}}
     div(class="classlist-body")
       table.table
         thead
@@ -39,7 +67,7 @@
             td {{ sv.activityData.evaluationData }}
             td {{ statusText(sv) }}
             td.actions
-              span(v-if="sv.activityData.submitted && !sv.activityData.evaluated")
+              span(v-if="activity.closed || (sv.activityData.submitted && !sv.activityData.evaluated)")
                 ui-button(v-on:buttonClicked="goToEhr(sv)", v-bind:secondary="true", title="View and evaluate in the EHR") Evaluate student work
               span(v-if="sv.activityData.submitted && !sv.activityData.evaluated")
                 ui-button(v-on:buttonClicked="unsubmit(sv)", v-bind:secondary="true", :title="unsubmitTool") {{unsubmitText}}
@@ -101,6 +129,14 @@ export default {
 
     classList () { return StoreHelper.getClassList()  },
 
+    classSubmittedList () {
+      let list = this.classList
+      list = list.filter(sv => {
+        return sv.activityData.submitted
+      })
+      return list
+    },
+
     cs () { return StoreHelper.currentStudentId()},
 
     promptMessage () {
@@ -108,7 +144,7 @@ export default {
     },
 
     activityId () {
-      return this.$route.params.activityId || StoreHelper.getActivityId()
+      return this.$route.query.activityId || StoreHelper.getActivityId()
     }
 
   },
@@ -142,6 +178,26 @@ export default {
       EvalHelper.unsubmit(sv)
     },
 
+    closeActivity () {
+      return StoreHelper.closeActivity(this.activityId)
+        .then((result) => {
+          if(result) {
+            this.activity = result
+          }
+        })
+
+    },
+
+    openActivity () {
+      return StoreHelper.openActivity(this.activityId)
+        .then((result) => {
+          if(result) {
+            this.activity = result
+          }
+        })
+
+    },
+
     forceSubmit (sv) { EvalHelper.forceSubmit(sv) },
 
     markEvaluated (sv) {
@@ -160,6 +216,7 @@ export default {
       In the first instance the route parameters will contain (must contain) the activity id. In the
       second instance we will retrieve the "active" activity rom the StoreHelper
        */
+      // console.log('class list load component: this.activityId',this.activityId)
       return StoreHelper.loadAsCurrentActivity(this.activityId)
         .then( () => {
           return  StoreHelper.loadInstructorWithStudent()
@@ -169,6 +226,9 @@ export default {
             this.activity = result.activity
             this.assignment = result.assignment
           }
+        })
+        .catch((error) => {
+          console.error('Load class list failed', error)
         })
     },
     downloadEvaluations () {
@@ -189,9 +249,15 @@ export default {
     },
 
   },
+  mounted: function () {
+    // console.log('Load component because component mounted')
+    this.loadComponent()
+  },
   watch: {
+    // TODO ALmost certain this watch is not triggered anymore.
     activityId:function (curr, prev) {
       if (!prev && curr) {
+        console.log('Load component because of a change in activity id')
         this.loadComponent()
       }
     }

@@ -25,7 +25,7 @@ const Schema = new mongoose.Schema({
   resource_link_title: {type: String}, // ltiData.resource_link_title,
   resource_link_description: {type: String}, // ltiData.resource_link_description,
   assignment: {type: ObjectId, ref: 'Assignment'}, // ltiData.custom_assignment,
-  open: {type: Boolean, default: true},
+  closed: {type: Boolean, default: false},
   createDate: {type: Date, default: Date.now},
   closedDate: {type: Date},
   lastDate: {type: Date, default: Date.now}

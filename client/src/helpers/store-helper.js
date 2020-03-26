@@ -103,6 +103,14 @@ class StoreHelperWorker {
 
   getActivityDescription () { return this._getActivityProperty('activityDescription') }
 
+  getActivityIsClosed () {
+    return this._getActivityProperty('closed')
+  }
+
+  getActivityClosedDate () {
+    return this._getActivityProperty('closedDate')
+  }
+
   activitiesUsingAssignmentCount (assignmentId) {
     let cnt = 0
     let courses = this.getCourseList()
@@ -125,6 +133,20 @@ class StoreHelperWorker {
    * @return {*}
    */
   loadAsCurrentActivity (activityId) { return this._dispatchActivity('load', activityId) }
+
+  /**
+   * Make API call to close activity
+   * @param activityId
+   * @return {*}
+   */
+  closeActivity (activityId) { return this._dispatchActivity('close', activityId) }
+
+  /**
+   * Make API call to open activity
+   * @param activityId
+   * @return {*}
+   */
+  openActivity (activityId) { return this._dispatchActivity('open', activityId) }
 
   currentStudentId () { return this._getInstructorProperty('currentStudentId') }
 
@@ -229,6 +251,8 @@ class StoreHelperWorker {
       courseTitle: this.getCourseTitle(),
       activityTitle: this.getActivityTitle(),
       activityDescription: this.getActivityDescription(),
+      closed: this.getActivityIsClosed(),
+      closedDate: this.getActivityClosedDate(),
       assignmentName: assignment.name,
       assignmentDescription: assignment.description,
       submitted: this.isSubmitted(),

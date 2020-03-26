@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import moment from 'moment'
 import router from './router'
 import store from './store'
 import outsideLayout from './outside/layout/LayoutOutside.vue'
@@ -30,6 +31,8 @@ import {
   faClock,
   faCircle,
   faInfoCircle,
+  faHourglassEnd,
+  faHourglassStart,
   faArrowRight,
   faArrowLeft,
   faNotesMedical,
@@ -43,6 +46,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 library.add(faCheckCircle, faCircle, faTimesCircle, faTimes, faPlus, faMinus, faAngleRight, faAngleLeft)
 library.add(faClock, faInfoCircle, faArrowRight, faArrowLeft, faNotesMedical)
 library.add(faEdit, faDownload, faUpload, faFilePdf, faStickyNote)
+library.add(faHourglassEnd, faHourglassStart)
 // IN CODE sample usage is:
 // fas-icon(icon="download")
 Vue.component('fas-icon', FontAwesomeIcon)
@@ -59,6 +63,17 @@ Vue.directive('dragged', dragDirective)
 Vue.directive('resized', resizeDirective)
 Vue.directive('textToHtml', textToHtml) // used as text-to-html attribute
 Vue.directive('validate', validate)
+
+Vue.filter('formatDateDMY', function (value) {
+  return moment(value).format('DD MMM YYYY')
+})
+Vue.filter('formatDateYMD', function (value) {
+  return moment(value).format('YYYY-MM-DD')
+})
+Vue.filter('formatDateTime', function (value) {
+  return moment(value).format('YYYY-MM-DD h:mm a')
+})
+
 
 /*
 Create the root Vue component.

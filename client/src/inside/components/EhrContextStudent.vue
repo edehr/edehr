@@ -1,10 +1,11 @@
 <template lang="pug">
   div(class="contextStudent")
-    div(v-if="isEvaluated", class="EhrContextBanner")
+    div(v-if="showContext", class="EhrContextBanner")
       div(class="EhrPanelContent")
         h3 {{ panelInfo.courseTitle}} - {{ panelInfo.assignmentName}}
-        p Student: {{ userName }}
-        p Evaluation: {{ evaluationNotes }}
+        div(v-if="isClosed") Activity closed as of {{ closedDate | formatDateTime }}
+        div Student: {{ userName }}
+        div Evaluation: {{ evaluationNotes }}
 </template>
 
 <script>
@@ -17,9 +18,12 @@ export default {
     userName ()         { return this.panelInfo.userName },
     scratchData ()      { return this.panelInfo.scratchData },
     submitted ()        { return this.panelInfo.submitted },
+    isClosed ()         { return this.panelInfo.closed },
+    closedDate ()       { return this.panelInfo.closedDate },
     isEvaluated ()      { return this.panelInfo.evaluated },
     evaluationNotes ()  { return this.panelInfo.evaluationData },
-    panelInfo ()        { return StoreHelper.getPanelData(this) }
+    panelInfo ()        { return StoreHelper.getPanelData(this) },
+    showContext ()      { return this.isEvaluated || this.isClosed }
   },
   methods: {}
 }
