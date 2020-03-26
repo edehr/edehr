@@ -9,12 +9,15 @@ export default {
   name: 'UiLink',
   props: {
     name: { type: String },
-    params: { type: Object }
+    params: { type: Object },
+    query: { type: Object }
   },
   computed: {
     destination () {
       let d =  {name: this.name}
       if (this.params) d.params = this.params
+      if (this.query) d.query = this.query
+      // console.log('uilink destination', JSON.stringify(d,null,2))
       return d
     }
   }
