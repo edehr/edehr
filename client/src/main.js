@@ -65,13 +65,13 @@ Vue.directive('textToHtml', textToHtml) // used as text-to-html attribute
 Vue.directive('validate', validate)
 
 Vue.filter('formatDateDMY', function (value) {
-  return moment(value).format('DD MMM YYYY')
+  return value ? moment(value).format('DD MMM YYYY') : ''
 })
 Vue.filter('formatDateYMD', function (value) {
-  return moment(value).format('YYYY-MM-DD')
+  return value ? moment(value).format('YYYY-MM-DD') : ''
 })
 Vue.filter('formatDateTime', function (value) {
-  return moment(value).format('YYYY-MM-DD h:mm a')
+  return value ? moment(value).format('YYYY-MM-DD h:mm a') : ''
 })
 
 

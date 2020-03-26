@@ -16,8 +16,9 @@ export default class ActivityController extends BaseController {
   closeActivity (id, direction) {
     return this.baseFindOneQuery(id).then(activity => {
       if (activity) {
-        activity.closedDate = Date.now()
-        activity.closed = direction === 'close'
+        const closing = direction === 'close'
+        activity.closedDate = closing ? Date.now() : null
+        activity.closed = closing
         return activity.save()
       }
     })
