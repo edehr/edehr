@@ -133,6 +133,31 @@ making changes to view locally in multiple steps, you can shorten the time it ta
 
 Please remember to run the script with lint when you are done and ready to submit your code.
 
+## Backing Up and Restoring the Database
+
+1. Accessing the Mongo Shell
+   
+    As mentioned, the system is running MongoDB as the database, usually in a Docker instance. There might be, however, the need to access the shell in order to run scripts at the database level. This can be done by running:
+
+    ```
+    npm run shell:mongo
+    ```
+2. Running the restore and backup scripts should be easy, since a volume has been implemented with the backup and restore scripts for all given databases (production and development), you access the scripts by accessing ``/data/``.
+
+    Inside the Mongo Shell, run:
+    ```
+    cd data/
+    ```
+
+3. In order to run the backup script, please run `./backup.sh` and then all the dump data will be set to `data/dump/` (and, at the same time will be set to the volume, which is, by default in `database/backup/dump`).
+   In order to run the restore script, simply run `./restore.sh` and everything in the `dump/` folder will be restored. 
+
+   ``Note``: It might be needed to give permission to the script files. In case this happens, please, run:
+
+   ```
+    chmod +x *.sh 
+   ```
+
 
 ## Contributing
 EdEHR is an open source project and we encourage contributions. Please read CONTRIBUTING.md before contributing.
