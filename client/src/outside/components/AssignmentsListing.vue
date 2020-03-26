@@ -25,8 +25,12 @@
       tbody
         tr(v-for="item in assignmentsListing", :class="rowClass(item)")
           td {{ item.name }}
-          td
-            div(v-text-to-html="item.description")
+          //- The following conditional flow is needed because 
+          //- v-text-to-html can be kept out of sync when 
+          //- clearing the description value
+          td(v-if="item.description.length > 0")
+            div(v-text-to-html="item.description") 
+          td(v-else) {{ item.description }}
           td {{ activitiesUsingAssignmentCount(item._id) }}
           td {{ item.externalId}}
           td
