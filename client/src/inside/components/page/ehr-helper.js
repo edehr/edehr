@@ -110,6 +110,10 @@ export default class EhrHelpV2 {
     return StoreHelper.isSubmitted()
   }
 
+  _isActivityOpen () {
+    return !StoreHelper.getActivityIsClosed()
+  }
+
   /**
    * Show or don't show page edit controls or table open dialog buttons.
    * Currently the rule is simply "is the user a student" but this will need to
@@ -122,7 +126,7 @@ export default class EhrHelpV2 {
   }
 
   _canEdit () {
-    let studentCanEdit = this._isStudent() && !this._isSubmitted()
+    let studentCanEdit = this._isActivityOpen() && this._isStudent() && !this._isSubmitted()
     return studentCanEdit || this._isDevelopingContent()
   }
 

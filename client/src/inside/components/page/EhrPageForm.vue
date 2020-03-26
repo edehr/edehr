@@ -9,7 +9,7 @@
         ul
           li(v-for="error in errors") {{ error }}
       ehr-group(v-for="group in groups", :key="group.gIndex", :group="group", :ehrHelp="ehrHelp")
-      div(class="resetFormButton")
+      div(v-if="canEdit", class="resetFormButton")
         ui-button(
           v-on:buttonClicked="promptConfirmDialog", 
           v-bind:secondary="true",
@@ -56,6 +56,9 @@ export default {
     ehrHelp: { type: Object }
   },
   computed: {
+    canEdit () {
+      return this.ehrHelp._canEdit()
+    },
     formKey () {
       return this.form.elementKey
     },

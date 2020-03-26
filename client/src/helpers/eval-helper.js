@@ -106,6 +106,21 @@ class EvalHelperWorker {
       })
   }
 
+  closeActivity (activityId) {
+    return StoreHelper.closeActivity(activityId)
+      .then(() => {
+        return StoreHelper.loadAsCurrentActivity(activityId)
+      })
+  }
+
+  openActivity (activityId) {
+    return StoreHelper.openActivity(activityId)
+      .then(() => {
+        return StoreHelper.loadAsCurrentActivity(activityId)
+      })
+  }
+
+
   goToEhr (studentVisit) {
     // Assumes the activity and assignment and seed are all in place.
     // switch to the EHR with the current student's information loaded

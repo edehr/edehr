@@ -17,7 +17,7 @@ export default class ActivityController extends BaseController {
     return this.baseFindOneQuery(id).then(activity => {
       if (activity) {
         activity.closedDate = Date.now()
-        activity.open = direction
+        activity.closed = direction === 'close'
         return activity.save()
       }
     })
@@ -130,16 +130,16 @@ export default class ActivityController extends BaseController {
     // PUT
     router.put('/close-activity/:key', (req, res) => {
       this
-        .closeActivity(req.params.key, true)
+        .closeActivity(req.params.key, 'close')
         .then(ok(res))
         .then(null, fail(res))
     })
 
     router.put('/open-activity/:key', (req, res) => {
       this
-      .closeActivity(req.params.key, false)
-      .then(ok(res))
-      .then(null, fail(res))
+        .closeActivity(req.params.key, 'open')
+        .then(ok(res))
+        .then(null, fail(res))
     })
 
     return router

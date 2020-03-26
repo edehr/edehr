@@ -36,6 +36,11 @@ const getters = {
     if(debug) console.log(NAME + ' get activityDescription', prop)
     return prop
   },
+  closed: state => {
+    let prop =  state.dataStore.closed
+    if(debug) console.log(NAME + ' get dataStore.closed', prop)
+    return prop
+  }
 }
 
 const actions = {
@@ -46,6 +51,27 @@ const actions = {
       return dispatch('load', actId)
     }
     return Promise.resolve()
+  },
+
+  close ({dispatch, commit}, id) {
+    let url = 'close-activity/' + id
+    let payload = { url:url, data: { }}
+    return dispatch('put', payload)
+      .then( (results) => {
+        if(debug) console.log(NAME + ' loaded ', results)
+        commit('set', results)
+        return results
+      })
+  },
+  open ({dispatch, commit}, id) {
+    let url = 'open-activity/' + id
+    let payload = { url:url, data: { }}
+    return dispatch('put', payload)
+      .then( (results) => {
+        if(debug) console.log(NAME + ' loaded ', results)
+        commit('set', results)
+        return results
+      })
   },
 
   load ({dispatch, commit}, id) {

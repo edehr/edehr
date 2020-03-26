@@ -10,6 +10,7 @@
       div(class="is-4 column")
         div(class="textField") Student: {{ panelInfo.studentName }}
         div(class="textField") Student's last visit: {{ formatTime(panelInfo.lastVisitDate) }}
+        div Activity is {{ panelInfo.closed ? "CLOSED " : "OPEN "}} to students
         div(class="textField") Return to  &nbsp;
           ui-link(:name="'classList'") classlist
       div(class="is-4 column")
@@ -54,13 +55,13 @@ export default {
       return StoreHelper.getPanelData()
     },
     classList () {
-      /*
-      Filter the class list to only show records for students who have submitted their work
-       */
       let list = StoreHelper.getClassList()
-      list = list.filter( sv => {
-        return sv.activityData.submitted
-      })
+      if(!this.panelInfo.closed) {
+        // Filter the class list to only show records for students who have submitted their work
+        list = list.filter(sv => {
+          return sv.activityData.submitted
+        })
+      }
       return list
     },
     currentStudentId () {
