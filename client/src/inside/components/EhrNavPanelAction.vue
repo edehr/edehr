@@ -3,6 +3,7 @@
     div(v-if="showNavAction")
       ui-button(v-on:buttonClicked="npButtonClicked", :disabled="disableNavAction") {{ npButtonLabel }}
       ui-confirm(ref="confirmDialog", v-on:confirm="proceed")
+      ui-agree(ref="successDialog", v-on:confirm="finishedAction")
       app-dialog(
         :isModal="true",
         ref="submitFeedback",
@@ -10,7 +11,7 @@
         saveButtonLabel="Submit Feedback",
         cancelButtonLabel="Cancel",
         @save="submitFeedback"
-        @cancel="cancelAction"
+        @cancel="finishedAction"
         )
         h2(slot="header") {{ feedbackFormTitle }}
         div(slot="body") 
@@ -22,6 +23,7 @@
 <script>
 import UiButton from '../../app/ui/UiButton.vue'
 import UiConfirm from '../../app/ui/UiConfirm.vue'
+import UiAgree from '../../app/ui/UiAgree.vue'
 import EhrActions from '../../helpers/ehr-actions'
 import { postFeedback } from '../../helpers/feedback'
 import AppDialog from '../../app/components/AppDialogShell.vue'
@@ -31,9 +33,15 @@ const FEEDBACK_BODY = 'Your assignment has been submitted successfully.  Before 
   ' we hope you will share your thoughts and suggestions about this Educational Electronic Health Record System.' +
   ' Providing feedback is optional and totally anonymous but very much appreciated.'
 
+/*
+Work in progress.  Idea is to collect student feedback, completely anonymous and voluntary, after work is submitted.
+ */
+const COLLECT_FEEDBACK = false
+
 export default {
   name: 'EhrNavPanelAction',
   components: {
+    UiAgree,
     UiButton,
     UiConfirm,
     AppDialog
@@ -72,13 +80,17 @@ export default {
     },
     proceed () {
       this.ehrAction.invokeNavPanelAction().then(() => {
-        this.$refs.submitFeedback.onOpen()
-        // use the next line instead if you don't want to collect feedback
-        // this.ehrAction.gotoLMS()
+        if (COLLECT_FEEDBACK) {
+          // show confirmation and collect feedback form Next step is finishedAction
+          this.$refs.submitFeedback.onOpen()
+        } else {
+          // show confirmation. Next step is finishedAction
+          this.$refs.successDialog.showDialog('Submitted', 'Your assignment is now submitted. Will now return you back to your learning management system.')
+        }
       })
     },
 
-    cancelAction () {
+    finishedAction () {
       this.ehrAction.gotoLMS()
     },
 
