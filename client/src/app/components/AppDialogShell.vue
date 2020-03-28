@@ -10,11 +10,12 @@
         div(class="dialog-body")
           slot(name="body") default body
         div(class="dialog-footer")
-          div(class="dialog-footer-errors")
+          div(class="dialog-footer-errors is-pulled-left")
             div(v-show="errors.length")
-              p {{ errorDirections }}
-              ul
-                li(v-for="error in errors") {{ error }}
+              span {{ errorDirections }} 
+              span(class="error-color")
+                span {{ errors.join(', ') }}
+
           div(class="dialog-footer-content")
             div(v-if="hasLeftButton" class="is-pulled-left")
               slot(name="left-button")
@@ -207,8 +208,13 @@ export default {
       margin-bottom: 0;
     }
   }
-  .dialog-footer-errors li {
+  .dialog-footer-errors {
     /*margin-left: 5px;*/
+    display: inline-block;
+    max-width: 62%;
+  }
+  .error-color {
+    color: red;
   }
   .dialog-footer-button-space {
     display: inline-block;
