@@ -3,12 +3,14 @@ import Role from '../roles/roles'
 import { ParameterError, AssignmentMismatchError, SystemError } from '../common/errors'
 import { Text } from '../../config/text'
 import { ltiVersions, LTI_BASIC } from './lti-defs'
+import AuthController from '../auth/auth-controller'
 
 const url = require('url')
 const debug = require('debug')('server')
 const CustomStrategy = require('passport-custom')
 const lti = require('ims-lti')
 const passport = require('passport')
+const jwt = require('jsonwebtoken')
 
 const PROPS_CONSUMER = [
   'tool_consumer_instance_guid',
@@ -341,19 +343,29 @@ export default class LTIController {
       debug('Route to instructor page ')// + JSON.stringify(req.ltiData, null, 2))
       route = '/instructor'
     }
-    let url = this.config.clientUrl + route + '?visit=' + visit._id + '&apiUrl=' + apiUrl
-    if (req.errors.length > 0) {
-      let errs = req.errors.join('-')
-      url += '&error=' + errs
+
+    try {
+      const authController = new AuthController()
+      const token = authController.createAuthToken({visitId: visit._id})
+      const refreshToken = authController.createRefreshToken(token)
+      let url = this.config.clientUrl + route + `?apiUrl=${apiUrl}&token=${refreshToken}`
+      if (req.errors.length > 0) {
+        let errs = req.errors.join('-')
+        url += '&error=' + errs
+      }
+      debug('LTI redirect url is:', url)
+      req.ltiNextUrl = url
+      return req
     }
-    debug('LTI redirect url is:', url)
-    req.ltiNextUrl = url
-    return req
+    // TODO: implement AuthError handling
+    catch (err) {
+      throw new SystemError(err)
+    }
   }
 
   _postLtiChain (req) {
     const _this = this
-    const db = false
+    const db = true
     return Promise.resolve()
       .then(() => {
         if (db) console.log('Do update tool')
@@ -392,7 +404,9 @@ export default class LTIController {
       this._postLtiChain(req)
         .then((req) => {
           let url = req.ltiNextUrl
+          console.log('redirecting to ', url)
           debug(`ready to redirect to the ehr ${url}`)
+          res.header({Authorization: req.token })
           res.redirect(url)
         })
         .catch(err => {

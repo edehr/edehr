@@ -11,6 +11,7 @@ import { Text } from './helpers/ehr-text'
 import sKeys from './helpers/session-keys'
 import StoreHelper from './helpers/store-helper'
 import { PAGE_DATA_REFRESH_EVENT } from './helpers/event-bus'
+import AuthHelper from './helpers/auth-helper'
 const DefaultLayout = 'outside'
 
 export default {
@@ -22,19 +23,28 @@ export default {
     }
   },
   methods: {
-    loadData: function () {
+    loadData: async function () {
       console.log('loadData triggered:  this.$route.meta ', this.$route.meta)
       const debugApp = false
       let params2 = getIncomingParams()
       StoreHelper.setLoading(null, true)
+      // TEST only
+      // TODO: implement this into a store
+      const authHelper = new AuthHelper(params2['apiUrl'])
+      let res = await authHelper.getToken(params2['token'])
+      const { token } = res.data
+      res = await authHelper.getData(token)
+      const { visitId } = res.data
+      console.log('visitId >> res.data', visitId, res.data)
+      // API return to url
+      const apiUrl = params2['apiUrl']
       return Promise.resolve()
         .then(() => {
-          // API return to url
-          let apiUrl = params2['apiUrl']
+          
           return this._loadApiUrl(apiUrl)
         })
         .then(() => {
-          let visitId = params2['visit']
+          // let visitId = params2['visit'] || visitId
           if (visitId) {
             return StoreHelper.clearSession().then( () => { return visitId })
           } else {

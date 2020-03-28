@@ -26,6 +26,7 @@
     "express-session": "^1.16.1",
     "helmet": "^3.18.0",
     "ims-lti": "git+https://github.com/bryan-gilbert/ims-lti.git",
+    "jsonwebtoken": "^8.5.1",
     "moment": "^2.24.0",
     "mongoose": "^5.5.13",
     "mongoose-unique-validator": "^2.0.3",

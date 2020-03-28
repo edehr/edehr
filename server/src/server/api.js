@@ -15,6 +15,7 @@ import LookaheadController from '../mcr/lookahead/lookahead-controller'
 import UserController from '../mcr/user/user-controller.js'
 import VisitController from '../mcr/visit/visit-controller'
 import SeedDataController from '../mcr/seed/seedData-controller'
+import AuthController from '../mcr/auth/auth-controller'
 
 // Sessions and session cookies
 // express-session stores session data here on the server and only puts session id in the cookie
@@ -77,6 +78,7 @@ export function apiMiddle (app, config) {
   const lti = new LTIController(config, lcc)
   const ic = new IntegrationController()
   const sd = new SeedDataController()
+  const auth = new AuthController()
 
   return Promise.resolve()
     .then(() => {
@@ -121,6 +123,7 @@ export function apiMiddle (app, config) {
       api.use('/api/users', cors(corsOptions), uc.route())
       api.use('/api/visits', cors(corsOptions), vc.route())
       api.use('/api/seed-data', cors(corsOptions), sd.route())
+      api.use('/api/auth', cors(corsOptions), auth.route())
       return api
     })
 }
