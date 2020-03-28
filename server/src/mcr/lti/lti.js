@@ -3,6 +3,7 @@ import Role from '../roles/roles'
 import { ParameterError, AssignmentMismatchError, SystemError } from '../common/errors'
 import { Text } from '../../config/text'
 import { ltiVersions, LTI_BASIC } from './lti-defs'
+const HMAC_SHA1 = require('ims-lti/src/hmac-sha1')
 
 const url = require('url')
 const debug = require('debug')('server')
@@ -393,15 +394,44 @@ export default class LTIController {
         .then((req) => {
           let url = req.ltiNextUrl
           debug(`ready to redirect to the ehr ${url}`)
-          res.redirect(url)
+          // When redirecting in the test, the request promise 
+          // resolves in 404. So, for debugging / testing
+          // purposes, I believe it is better not to redirect
+          if (req.body.debug) {
+            res.status(200).send()
+          } else {
+            res.redirect(url)
+          }
         })
         .catch(err => {
           console.log('ERRRORRRR', err)
           next(err)
         })
     })
+    router.post('/make-HMAC_SHA1', (req, res) => {
+      this._makeSignature(req, res)
+    })
     return router
   }
+
+  _makeSignature (req, res) {
+    if(req.body) {
+      console.log('req.body >>', req.body)
+      try {
+        let signer = new HMAC_SHA1()
+        const oauth_signature = signer.build_signature(
+          req, 
+          req.body,
+          req.body.oauth_consumer_secret
+        )
+        res.status(200).json({ oauth_signature })
+      }
+      catch (err) {
+        req.status(500).send(err)
+      }
+    }
+  }
+  
 
   _extractLtiData (props, src, dest) {
     dest = dest || {}
