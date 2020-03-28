@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import activityStore from './modules/activityStore'
 import activityDataStore from './modules/activityDataStore'
+import authStore from './modules/authStore'
 import assignmentStore from './modules/assignmentStore'
 import assignmentListStore from './modules/assignmentListStore'
 import consumerListStore from './modules/consumerListStore'
@@ -23,6 +24,7 @@ export default new Vuex.Store({
   modules: {
     activityStore,
     activityDataStore,
+    authStore,
     assignmentListStore,
     assignmentStore,
     classListStore,

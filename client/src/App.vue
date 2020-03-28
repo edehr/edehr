@@ -22,19 +22,44 @@ export default {
     }
   },
   methods: {
-    loadData: function () {
-      console.log('loadData triggered:  this.$route.meta ', this.$route.meta)
+    loadData: async function () {
       const debugApp = false
       let params2 = getIncomingParams()
       StoreHelper.setLoading(null, true)
+      // API return to url
+      const apiUrl = params2['apiUrl']
+      const refreshToken = params2['token']
+      let visitId = ''
       return Promise.resolve()
         .then(() => {
-          // API return to url
-          let apiUrl = params2['apiUrl']
+          if (!(refreshToken && apiUrl)) {
+            console.log('apiURl >> ', apiUrl)
+            throw 'Parameters error'
+          }
+        })
+        .then(() => {
+          return StoreHelper.fetchToken(refreshToken, apiUrl)
+        })
+        .then(() => {
+          const token = StoreHelper.getAuthToken()
+          if (!token) {
+            throw 'Refresh token is expired'
+          } else {
+            return StoreHelper.fetchTokenData(token, apiUrl)
+          }
+        })
+        .then(() => {
+          return StoreHelper.getAuthPayload()
+        })
+        .then((payload) => {
+          console.log('payload >> ', payload)
+          visitId = payload.visitId
+        })
+        .then(() => {
           return this._loadApiUrl(apiUrl)
         })
         .then(() => {
-          let visitId = params2['visit']
+          // let visitId = params2['visit'] || visitId
           if (visitId) {
             return StoreHelper.clearSession().then( () => { return visitId })
           } else {

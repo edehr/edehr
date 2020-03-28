@@ -9,6 +9,7 @@ export const Text = {
   // API load errors
   MISSING_VISIT_ID: 'No visit id available',
   MISSING_API_URL: 'This system requires the URL to the API',
+  MISSING_AUTH_TOKEN: 'You need to be authenticated to view this',
   RETURN_TO: (lmsName) => `Return to ${lmsName}`,
   SEED_MUST_HAVE_LICENSE: 'Seed data must have licence',
   SEED_MUST_HAVE_EHRDATA: 'Seed data must have ehrData',
