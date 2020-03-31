@@ -478,14 +478,7 @@ export default class EhrHelpV2 {
         if(!validations[eDef.validation](inputs[eKey])) {
           const errKey = `${eDef.validation.toUpperCase()}_ERROR`
           if (dbDialog) console.log('errKey >> ', errKey, 'eKey >> ', eKey)
-          if(eKey.includes('prn')) {
-            const prnString = 'PRN values'
-            if(!dialog.errorList.includes(validations[errKey](prnString))) {
-              dialog.errorList.push(validations[errKey](prnString))
-            } 
-          } else {
-            dialog.errorList.push(validations[errKey](eKey))
-          }
+          dialog.errorList.push(validations[errKey](eKey))
         }
       }
     })
