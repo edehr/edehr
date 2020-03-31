@@ -21,8 +21,7 @@ const actions = {
     authHelper.setUrl(apiUrl)
     return authHelper.getToken(refreshToken)
       .then(res => {
-        const { token } = res
-        commit('setToken', token)
+        commit('setToken', res.data.token)
       })
   },
   fetchTokenData: function ({commit}, { authToken, apiUrl }) {
@@ -36,10 +35,10 @@ const actions = {
 }
 
 const mutations = {
-  setToken: function (token) {
+  setToken: function (none, token) {
     sessionStorage.setItem(sKeys.AUTH_TOKEN, token)
   },
-  setPayload: function (payload) {
+  setPayload: function (none, payload) {
     state.payload = payload
   }
 }

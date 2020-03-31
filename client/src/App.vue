@@ -42,6 +42,7 @@ export default {
         })
         .then(() => {
           const token = StoreHelper.getAuthToken()
+          console.log('token >> ', token)
           if (!token) {
             throw 'Refresh token is expired'
           } else {
@@ -52,8 +53,11 @@ export default {
           return StoreHelper.getAuthPayload()
         })
         .then((payload) => {
-          console.log('payload >> ', payload)
-          visitId = payload.visitId
+          if (!payload) {
+            throw 'Error when fetching token data'
+          } else {
+            visitId = payload.visitId
+          }
         })
         .then(() => {
           return this._loadApiUrl(apiUrl)

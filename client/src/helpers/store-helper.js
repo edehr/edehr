@@ -397,8 +397,8 @@ class StoreHelperWorker {
     return this._dispatchFetchToken('fetchAuthToken', {refreshToken, apiUrl})
   }
 
-  fetchTokenData (token) {
-    return this._dispatchFetchTokenData('fetchTokenData', token)
+  fetchTokenData (authToken, apiUrl) {
+    return this._dispatchFetchTokenData('fetchTokenData', {authToken, apiUrl})
   }
 
   getAuthPayload () {

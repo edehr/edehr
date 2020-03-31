@@ -71,7 +71,7 @@ export default class AuthController {
       this._getAuthToken(req, res)
     })
     router.post('/', (req, res) => {
-      this._getTokenData(req, res)
+      this._getTokenContent(req, res)
     })
     return router
   }
