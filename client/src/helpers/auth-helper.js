@@ -20,8 +20,7 @@ export default class AuthHelper {
 
   getData (token) {
     const url = `${this.url}/auth/`
-    const headers = {authorization: `Bearer ${token}`}
-    return axios.post(url, null, { headers })
+    return axios.post(url, null)
       .catch(err => {
         throw `Invalid token \n ${err}`
       })

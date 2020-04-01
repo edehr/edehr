@@ -146,7 +146,7 @@ export function apiMiddle (app, config) {
       api.use('/api/users', [cors(corsOptions), validatorMiddleware], uc.route())
       api.use('/api/visits', [cors(corsOptions), validatorMiddleware], vc.route())
       api.use('/api/seed-data', [cors(corsOptions), validatorMiddleware], sd.route())
-      api.use('/api/auth', [cors(corsOptions), validatorMiddleware], auth.route())
+      api.use('/api/auth', cors(corsOptions), auth.route())
       return api
     })
 }

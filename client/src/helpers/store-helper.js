@@ -1,7 +1,6 @@
 import store from '../store'
 import {removeEmptyProperties } from './ehr-utils'
 import sKeys from './session-keys'
-import AuthHelper from './auth-helper'
 
 const debug = false
 

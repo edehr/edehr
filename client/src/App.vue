@@ -27,26 +27,33 @@ export default {
       let params2 = getIncomingParams()
       StoreHelper.setLoading(null, true)
       // API return to url
-      const apiUrl = params2['apiUrl']
+      const apiUrl = params2['apiUrl'] || sessionStorage.getItem(sKeys.API_URL)
       const refreshToken = params2['token']
       let visitId = ''
       return Promise.resolve()
         .then(() => {
-          if (!(refreshToken && apiUrl)) {
+          if (!apiUrl && !sessionStorage.getItem(sKeys.API_URL)) {
             console.log('apiURl >> ', apiUrl)
             throw 'Parameters error'
           }
         })
         .then(() => {
-          return StoreHelper.fetchToken(refreshToken, apiUrl)
-        })
-        .then(() => {
-          const token = StoreHelper.getAuthToken()
-          console.log('token >> ', token)
-          if (!token) {
-            throw 'Refresh token is expired'
+          const authToken = StoreHelper.getAuthToken()
+          if (refreshToken) {
+            return StoreHelper.fetchToken(refreshToken, apiUrl)
+              .then(() => {
+                const token = StoreHelper.getAuthToken()
+                console.log('token >> ', token)
+                if (!token) {
+                  throw 'Refresh token is expired'
+                } else {
+                  return StoreHelper.fetchTokenData(token, apiUrl)
+                }
+              })
+          } else if (authToken) {
+            return StoreHelper.fetchTokenData(authToken, apiUrl)
           } else {
-            return StoreHelper.fetchTokenData(token, apiUrl)
+            throw 'Parameters Error'
           }
         })
         .then(() => {
@@ -150,7 +157,9 @@ export default {
   },
   watch: {
     $route: function (route) {
-      if(!route.meta.public && !this.hasLoaded) {
+      let params2 = getIncomingParams()
+      const apiUrl = params2['apiUrl']
+      if((!route.meta.public && !this.hasLoaded) && apiUrl) {
         this.loadData()
         this.hasLoaded = true
       }

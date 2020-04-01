@@ -29,10 +29,12 @@ export default class AuthController {
 
   _getAuthToken (req, res) {
     if (debug) console.log('_getAuthToken')
-    if(req.body.refreshToken) {
+    const { refreshToken } = req.body
+    if(refreshToken) {
       try {
-        const result = this.validateToken(req.body.refreshToken)
+        const result = this.validateToken(refreshToken)
         const { token } = result
+        console.log('tokenValidated >> ', token)
         res.status(200).json({token})
       } catch(err) {
         res.status(401).send(`AuthController -- Invalid token ${err}`)
