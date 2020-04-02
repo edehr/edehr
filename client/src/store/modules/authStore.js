@@ -1,5 +1,6 @@
 import AuthHelper from '../../helpers/auth-helper'
 import sKeys from '../../helpers/session-keys'
+import { setAuthHeader } from '../../helpers/axios-helper'
 
 const authHelper = new AuthHelper()
 
@@ -37,6 +38,7 @@ const actions = {
 const mutations = {
   setToken: function (none, token) {
     sessionStorage.setItem(sKeys.AUTH_TOKEN, token)
+    setAuthHeader()
   },
   setPayload: function (none, payload) {
     state.payload = payload

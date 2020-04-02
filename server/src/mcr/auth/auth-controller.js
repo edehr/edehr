@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { TOKEN_SECRET } from './auth-defs'
 const jwt = require('jsonwebtoken')
-const debug = false
+const debug = true
 
 
 export default class AuthController {
@@ -10,8 +10,8 @@ export default class AuthController {
       console.log('authController')
     }
   }
-  _authenticate (token) { 
-    if(debug) console.log('_authenticate')
+  authenticate (token) { 
+    if(debug) console.log('authenticate')
     const sliced = token.replace('Bearer ', '')
     return this.validateToken(sliced)
   }
@@ -29,10 +29,12 @@ export default class AuthController {
 
   _getAuthToken (req, res) {
     if (debug) console.log('_getAuthToken')
-    if(req.body.refreshToken) {
+    const { refreshToken } = req.body
+    if(refreshToken) {
       try {
-        const result = this.validateToken(req.body.refreshToken)
+        const result = this.validateToken(refreshToken)
         const { token } = result
+        console.log('tokenValidated >> ', token)
         res.status(200).json({token})
       } catch(err) {
         res.status(401).send(`AuthController -- Invalid token ${err}`)
@@ -49,7 +51,7 @@ export default class AuthController {
     if (debug) console.log('_getTokenContent')
     if(req.headers.authorization) {
       try {
-        const result = this._authenticate(req.headers.authorization)
+        const result = this.authenticate(req.headers.authorization)
         res.status(200).json(result)
       } catch(err) {
         res.status(401).send(err)
@@ -75,5 +77,4 @@ export default class AuthController {
     })
     return router
   }
-
-} 
+}

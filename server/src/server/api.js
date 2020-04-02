@@ -25,6 +25,29 @@ const uuid = require('uuid/v4')
 
 const debug = require('debug')('server')
 
+const validatorMiddleware = (req, res, next) => {
+  const authController = new AuthController()
+  if (req && req.headers.authorization) {
+    try {
+      const result = authController.authenticate(req.headers.authorization)
+      const { visitId } = result
+      console.log('result >> ', result)
+      if (visitId) {
+        console.log('passingNext!!!')
+        next()
+      } else {
+        res.status(401).send('Invalid token!')
+      }
+    } catch (err) {
+      console.log('validatorMiddleware caught ', err)
+      res.status(401).send(err)
+    }
+  } else {
+    console.log('validatorMiddleware else ', req)
+    res.status(401).send('A token is required')
+  }
+}
+
 export function apiMiddle (app, config) {
   const fileStoreOptions = {}
   if (config.sessionPath) {
@@ -104,25 +127,25 @@ export function apiMiddle (app, config) {
       api.use('/launch_lti', lti.route())
       api.use('/api/launch_lti', lti.route())
       // Inside API
-      api.use('/activities', cors(corsOptions), act.route())
-      api.use('/activity-data', cors(corsOptions), acc.route())
-      api.use('/assignments', cors(corsOptions), as.route())
-      api.use('/feedback', cors(corsOptions), fc.route())
-      api.use('/consumers', cors(corsOptions), cc.route())
-      api.use('/lookahead', cors(corsOptions), look.route())
-      api.use('/users', cors(corsOptions), uc.route())
-      api.use('/visits', cors(corsOptions), vc.route())
-      api.use('/seed-data', cors(corsOptions), sd.route())
+      api.use('/activities', [cors(corsOptions), validatorMiddleware], act.route())
+      api.use('/activity-data', [cors(corsOptions), validatorMiddleware], cors(corsOptions), validatorMiddleware, acc.route())
+      api.use('/assignments', [cors(corsOptions), validatorMiddleware], as.route())
+      api.use('/feedback', [cors(corsOptions), validatorMiddleware], fc.route())
+      api.use('/consumers', [cors(corsOptions), validatorMiddleware], cc.route())
+      api.use('/lookahead', [cors(corsOptions), validatorMiddleware], look.route())
+      api.use('/users', [cors(corsOptions), validatorMiddleware], uc.route())
+      api.use('/visits', [cors(corsOptions), validatorMiddleware], vc.route())
+      api.use('/seed-data', [cors(corsOptions), validatorMiddleware], sd.route())
       // for use behind a proxy:
-      api.use('/api/activities', cors(corsOptions), act.route())
-      api.use('/api/activity-data', cors(corsOptions), acc.route())
-      api.use('/api/assignments', cors(corsOptions), as.route())
-      api.use('/api/consumers', cors(corsOptions), cc.route())
-      api.use('/api/feedback', cors(corsOptions), fc.route())
-      api.use('/api/lookahead', cors(corsOptions), look.route())
-      api.use('/api/users', cors(corsOptions), uc.route())
-      api.use('/api/visits', cors(corsOptions), vc.route())
-      api.use('/api/seed-data', cors(corsOptions), sd.route())
+      api.use('/api/activities', [cors(corsOptions), validatorMiddleware], act.route())
+      api.use('/api/activity-data', [cors(corsOptions), validatorMiddleware], acc.route())
+      api.use('/api/assignments', [cors(corsOptions), validatorMiddleware], as.route())
+      api.use('/api/consumers', [cors(corsOptions), validatorMiddleware], cc.route())
+      api.use('/api/feedback', [cors(corsOptions), validatorMiddleware], fc.route())
+      api.use('/api/lookahead', [cors(corsOptions), validatorMiddleware], look.route())
+      api.use('/api/users', [cors(corsOptions), validatorMiddleware], uc.route())
+      api.use('/api/visits', [cors(corsOptions), validatorMiddleware], vc.route())
+      api.use('/api/seed-data', [cors(corsOptions), validatorMiddleware], sd.route())
       api.use('/api/auth', cors(corsOptions), auth.route())
       return api
     })
