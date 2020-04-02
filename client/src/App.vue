@@ -50,7 +50,6 @@ export default {
                 }
               })
           } else if (authToken) {
-            console.log('hasAuthToken >> ', authToken)
             setAuthHeader()
             return StoreHelper.fetchTokenData(authToken, apiUrl)
           } else {
@@ -158,7 +157,9 @@ export default {
   },
   watch: {
     $route: function (route) {
-      if(!route.meta.public && !this.hasLoaded) {
+      let params2 = getIncomingParams()
+      const apiUrl = params2['apiUrl'] || sessionStorage.getItem(sKeys.API_URL)
+      if((!route.meta.public && !this.hasLoaded) && apiUrl) {
         this.loadData()
         this.hasLoaded = true
       }

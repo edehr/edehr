@@ -3,7 +3,6 @@ import axios from 'axios'
 export default class AuthHelper {
   constructor (url) {
     this.url = url
-    console.log('newAuthHelper >> ', url)
   }
 
   setUrl (url) {
