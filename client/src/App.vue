@@ -11,6 +11,7 @@ import { Text } from './helpers/ehr-text'
 import sKeys from './helpers/session-keys'
 import StoreHelper from './helpers/store-helper'
 import { PAGE_DATA_REFRESH_EVENT } from './helpers/event-bus'
+import { setAuthHeader } from './helpers/axios-helper'
 const DefaultLayout = 'outside'
 
 export default {
@@ -30,15 +31,15 @@ export default {
       const apiUrl = params2['apiUrl'] || sessionStorage.getItem(sKeys.API_URL)
       const refreshToken = params2['token']
       let visitId = ''
+      const authToken = StoreHelper.getAuthToken()
       return Promise.resolve()
         .then(() => {
-          if (!apiUrl && !sessionStorage.getItem(sKeys.API_URL)) {
+          if (!(apiUrl || sessionStorage.getItem(sKeys.API_URL))) {
             console.log('apiURl >> ', apiUrl)
             throw 'Parameters error'
           }
         })
         .then(() => {
-          const authToken = StoreHelper.getAuthToken()
           if (refreshToken) {
             return StoreHelper.fetchToken(refreshToken, apiUrl)
               .then(() => {
@@ -51,6 +52,8 @@ export default {
                 }
               })
           } else if (authToken) {
+            console.log('hasAuthToken >> ', authToken)
+            setAuthHeader()
             return StoreHelper.fetchTokenData(authToken, apiUrl)
           } else {
             throw 'Parameters Error'
@@ -158,7 +161,7 @@ export default {
   watch: {
     $route: function (route) {
       let params2 = getIncomingParams()
-      const apiUrl = params2['apiUrl']
+      const apiUrl = params2['apiUrl'] || sessionStorage.getItem(sKeys.API_URL)
       if((!route.meta.public && !this.hasLoaded) && apiUrl) {
         this.loadData()
         this.hasLoaded = true
