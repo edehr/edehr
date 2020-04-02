@@ -1,14 +1,13 @@
 import { Router } from 'express'
 import { TOKEN_SECRET } from './auth-defs'
 const jwt = require('jsonwebtoken')
-const debug = true
+const debug = false
 
 
 export default class AuthController {
   constructor () {
-    if(debug){
-      console.log('authController')
-    }
+    if(debug) console.log('authController')
+    
   }
   authenticate (token) { 
     if(debug) console.log('authenticate')
@@ -34,15 +33,13 @@ export default class AuthController {
       try {
         const result = this.validateToken(refreshToken)
         const { token } = result
-        console.log('tokenValidated >> ', token)
+        if (debug) console.log('tokenValidated >> ', token)
         res.status(200).json({token})
       } catch(err) {
         res.status(401).send(`AuthController -- Invalid token ${err}`)
       }
     } else {
-      if(debug){
-        console.log('Token is required!', req.body)
-      }
+      if(debug) console.log('Token is required!', req.body)
       res.status(401).send('Token is required!')
     }
   }
