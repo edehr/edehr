@@ -427,22 +427,24 @@ export default class LTIController {
 
   _makeSignature (req, res) {
     if(req.body) {
-      console.log('req.body >>', req.body)
+      if(debug) console.log('req.body >>', req.body)
       try {
         let signer = new HMAC_SHA1()
-        const body = Object.assign({}, req.body, { 
+        const b = Object.assign({}, req.body.req.data.ltiData, { 
           oauth_timestamp: Math.round(Date.now() / 1000),
           oauth_nonce: Date.now() + Math.random() * 100
         })
         const oauth_signature = signer.build_signature(
           req, 
-          body,
-          req.body.oauth_consumer_secret
+          b,
+          b.oauth_consumer_secret
         )
-        res.status(200).json({ oauth_signature })
+
+        const body = Object.assign({}, b, {oauth_signature})
+        res.status(200).json({ body })
       }
       catch (err) {
-        req.status(500).send(err)
+        res.status(500).send(err)
       }
     }
   }
