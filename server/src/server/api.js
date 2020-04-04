@@ -106,7 +106,7 @@ export function apiMiddle (app, config) {
       api.use('/api/launch_lti', lti.route())
       // Inside API
       api.use('/activities', [cors(corsOptions), validatorMiddleware], act.route())
-      api.use('/activity-data', [cors(corsOptions), validatorMiddleware], cors(corsOptions), validatorMiddleware, acc.route())
+      api.use('/activity-data', [cors(corsOptions), validatorMiddleware], acc.route())
       api.use('/assignments', [cors(corsOptions), validatorMiddleware], as.route())
       api.use('/feedback', [cors(corsOptions), validatorMiddleware], fc.route())
       api.use('/consumers', [cors(corsOptions), validatorMiddleware], cc.route())
