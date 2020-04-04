@@ -2,8 +2,8 @@ const axios = require('axios')
 require('@babel/core')
 require('@babel/polyfill')
 const HMAC_SHA1 = require('ims-lti/src/hmac-sha1')
-const BASE_URL = 'https://edehr.org'
-// const BASE_URL = 'http://localhost:27000'
+// const BASE_URL = 'https://edehr.org'
+const BASE_URL = 'http://localhost:27000'
 
 // function getVisits () {
 //   return axios.get(`${BASE_URL}/api/visits`)
