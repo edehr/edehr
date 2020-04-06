@@ -32,6 +32,7 @@ export default {
       const refreshToken = params2['token']
       let visitId = ''
       const authToken = StoreHelper.getAuthToken()
+      const _this = this
       return Promise.resolve()
         .then(() => {
           if (!(apiUrl || sessionStorage.getItem(sKeys.API_URL))) {
@@ -98,6 +99,8 @@ export default {
         })
         .catch(err => {
           alert(err + '\nSystem Error')
+          StoreHelper.setLoading(null, false)
+          this.$router.push('/')
         })
     },
 
