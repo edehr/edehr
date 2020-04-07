@@ -61,7 +61,7 @@ export default {
           return StoreHelper.getAuthPayload()
         })
         .then((payload) => {
-          if (!payload) {
+          if (!(payload && payload.visitId)) {
             return Promise.reject('Error when fetching token data')
           } else {
             visitId = payload.visitId
@@ -71,21 +71,11 @@ export default {
           return this._loadApiUrl(apiUrl)
         })
         .then(() => {
-          // let visitId = params2['visit'] || visitId
-          if (visitId) {
-            return StoreHelper.clearSession().then( () => { return visitId })
-          } else {
-            return StoreHelper.restoreSession().then( (vid) => { return vid })
-          }
-        }).then((visitId) => {
-          if (visitId) {
-            return StoreHelper.loadVisitRecord(visitId)
-          } else {
-            // TODO here is where the demo mode needs to kick in. Consider setting a "demo" visit idsendAssignmentDataUpdate
-            setApiError(Text.MISSING_VISIT_ID)
-            return Promise.reject(Text.MISSING_VISIT_ID)
-          }
-        }).then(() => {
+          return StoreHelper.clearSession().then( () => { return visitId }) 
+        }).then(() => { 
+          return StoreHelper.loadVisitRecord(visitId)
+        })
+        .then(() => {
           if (StoreHelper.isInstructor()) {
             return StoreHelper.loadInstructor2()
           } else if (StoreHelper.isStudent()) {
