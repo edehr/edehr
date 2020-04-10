@@ -21,6 +21,7 @@ import UiButton from '../../../app/ui/UiButton.vue'
 import UiConfirm from '../../../app/ui/UiConfirm'
 import EventBus from '../../../helpers/event-bus'
 import { SHOW_TABLE_DIALOG_EVENT, PAGE_DATA_READY_EVENT } from '../../../helpers/event-bus'
+import MarHelper from '../mar/mar-helper'
 
 const TEXT = {
   TITLE:  'Clear table',
@@ -84,6 +85,8 @@ export default {
     proceedClearAllData () {
       console.log('EhrPageTable clearAllData ', this.tableDef)
       this.ehrHelp.clearTable(this.tableKey)
+      const helper = new MarHelper(this.ehrHelp)
+      helper.triggerActionByPageKey()      
     },
     refresh () {
       let tableForm = this.ehrHelp.getTable(this.tableKey)

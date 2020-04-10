@@ -52,7 +52,6 @@ export default class MarToday {
       console.log('getTodaysSchedule medOrders', medOrders)
     }
     this._cDay = 0
-
     let aDaySchedule = getSchedule(medOrders)
     if (db) console.log('marToday aDaySchedule >> ', aDaySchedule)
 
@@ -82,8 +81,14 @@ export default class MarToday {
     }
 
     // Match mars for the current data to the scheduled list of medications
+    // Since pk can be null, according to what aDaySchedule.find
+    // returns, a comparison has been added so that it doesn't break
+    //  the view with a error like "Cannot read marRecord of null"
     marRecsFiltered.forEach( mar =>  {
-      if(mar.scheduledTime ) {
+      const pk = aDaySchedule.find( pk => 
+        pk.hour24 === mar.scheduledTime
+      )
+      if(mar.scheduledTime && pk) {
         let pk = aDaySchedule.find( pk => 
           pk.hour24 === mar.scheduledTime
         )
