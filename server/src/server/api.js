@@ -15,6 +15,8 @@ import LookaheadController from '../mcr/lookahead/lookahead-controller'
 import UserController from '../mcr/user/user-controller.js'
 import VisitController from '../mcr/visit/visit-controller'
 import SeedDataController from '../mcr/seed/seedData-controller'
+import AuthController from '../mcr/auth/auth-controller'
+import { validatorMiddleware } from '../helpers/middleware'
 
 // Sessions and session cookies
 // express-session stores session data here on the server and only puts session id in the cookie
@@ -77,6 +79,7 @@ export function apiMiddle (app, config) {
   const lti = new LTIController(config, lcc)
   const ic = new IntegrationController()
   const sd = new SeedDataController()
+  const auth = new AuthController()
 
   return Promise.resolve()
     .then(() => {
@@ -102,25 +105,26 @@ export function apiMiddle (app, config) {
       api.use('/launch_lti', lti.route())
       api.use('/api/launch_lti', lti.route())
       // Inside API
-      api.use('/activities', cors(corsOptions), act.route())
-      api.use('/activity-data', cors(corsOptions), acc.route())
-      api.use('/assignments', cors(corsOptions), as.route())
-      api.use('/feedback', cors(corsOptions), fc.route())
-      api.use('/consumers', cors(corsOptions), cc.route())
-      api.use('/lookahead', cors(corsOptions), look.route())
-      api.use('/users', cors(corsOptions), uc.route())
-      api.use('/visits', cors(corsOptions), vc.route())
-      api.use('/seed-data', cors(corsOptions), sd.route())
+      api.use('/activities', [cors(corsOptions), validatorMiddleware], act.route())
+      api.use('/activity-data', [cors(corsOptions), validatorMiddleware], acc.route())
+      api.use('/assignments', [cors(corsOptions), validatorMiddleware], as.route())
+      api.use('/feedback', [cors(corsOptions), validatorMiddleware], fc.route())
+      api.use('/consumers', [cors(corsOptions), validatorMiddleware], cc.route())
+      api.use('/lookahead', [cors(corsOptions), validatorMiddleware], look.route())
+      api.use('/users', [cors(corsOptions), validatorMiddleware], uc.route())
+      api.use('/visits', [cors(corsOptions), validatorMiddleware], vc.route())
+      api.use('/seed-data', [cors(corsOptions), validatorMiddleware], sd.route())
       // for use behind a proxy:
-      api.use('/api/activities', cors(corsOptions), act.route())
-      api.use('/api/activity-data', cors(corsOptions), acc.route())
-      api.use('/api/assignments', cors(corsOptions), as.route())
-      api.use('/api/consumers', cors(corsOptions), cc.route())
-      api.use('/api/feedback', cors(corsOptions), fc.route())
-      api.use('/api/lookahead', cors(corsOptions), look.route())
-      api.use('/api/users', cors(corsOptions), uc.route())
-      api.use('/api/visits', cors(corsOptions), vc.route())
-      api.use('/api/seed-data', cors(corsOptions), sd.route())
+      api.use('/api/activities', [cors(corsOptions), validatorMiddleware], act.route())
+      api.use('/api/activity-data', [cors(corsOptions), validatorMiddleware], acc.route())
+      api.use('/api/assignments', [cors(corsOptions), validatorMiddleware], as.route())
+      api.use('/api/consumers', [cors(corsOptions), validatorMiddleware], cc.route())
+      api.use('/api/feedback', [cors(corsOptions), validatorMiddleware], fc.route())
+      api.use('/api/lookahead', [cors(corsOptions), validatorMiddleware], look.route())
+      api.use('/api/users', [cors(corsOptions), validatorMiddleware], uc.route())
+      api.use('/api/visits', [cors(corsOptions), validatorMiddleware], vc.route())
+      api.use('/api/seed-data', [cors(corsOptions), validatorMiddleware], sd.route())
+      api.use('/api/auth', cors(corsOptions), auth.route())
       return api
     })
 }

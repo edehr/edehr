@@ -11,6 +11,7 @@ import { Text } from './helpers/ehr-text'
 import sKeys from './helpers/session-keys'
 import StoreHelper from './helpers/store-helper'
 import { PAGE_DATA_REFRESH_EVENT } from './helpers/event-bus'
+import { setAuthHeader } from './helpers/axios-helper'
 const DefaultLayout = 'outside'
 
 export default {
@@ -22,33 +23,58 @@ export default {
     }
   },
   methods: {
-    loadData: function () {
-      console.log('loadData triggered:  this.$route.meta ', this.$route.meta)
+    loadData: async function () {
       const debugApp = false
       let params2 = getIncomingParams()
       StoreHelper.setLoading(null, true)
+      // API return to url
+      const apiUrl = params2['apiUrl'] || sessionStorage.getItem(sKeys.API_URL)
+      const refreshToken = params2['token']
+      let visitId = ''
+      const authToken = StoreHelper.getAuthToken()
       return Promise.resolve()
         .then(() => {
-          // API return to url
-          let apiUrl = params2['apiUrl']
+          if (!(apiUrl || sessionStorage.getItem(sKeys.API_URL))) {
+            return Promise.reject('Please provide the API\'s url')
+          }
+        })
+        .then(() => {
+          if (refreshToken) {
+            return StoreHelper.fetchToken(refreshToken, apiUrl)
+              .then(() => {
+                const token = StoreHelper.getAuthToken()
+                if (!token) {
+                  return Promise.reject('Refresh token is expired')
+                } else {
+                  return StoreHelper.fetchTokenData(token, apiUrl)
+                }
+              })
+          } else if (authToken) {
+            setAuthHeader()
+            return StoreHelper.fetchTokenData(authToken, apiUrl)
+          } else {
+            return Promise.reject('Parameters Error')
+          }
+        })
+        .then(() => {
+          return StoreHelper.getAuthPayload()
+        })
+        .then((payload) => {
+          if (!(payload && payload.visitId)) {
+            return Promise.reject('Error when fetching token data')
+          } else {
+            visitId = payload.visitId
+          }
+        })
+        .then(() => {
           return this._loadApiUrl(apiUrl)
         })
         .then(() => {
-          let visitId = params2['visit']
-          if (visitId) {
-            return StoreHelper.clearSession().then( () => { return visitId })
-          } else {
-            return StoreHelper.restoreSession().then( (vid) => { return vid })
-          }
-        }).then((visitId) => {
-          if (visitId) {
-            return StoreHelper.loadVisitRecord(visitId)
-          } else {
-            // TODO here is where the demo mode needs to kick in. Consider setting a "demo" visit idsendAssignmentDataUpdate
-            setApiError(Text.MISSING_VISIT_ID)
-            return Promise.reject(Text.MISSING_VISIT_ID)
-          }
-        }).then(() => {
+          return StoreHelper.clearSession().then( () => { return visitId }) 
+        }).then(() => { 
+          return StoreHelper.loadVisitRecord(visitId)
+        })
+        .then(() => {
           if (StoreHelper.isInstructor()) {
             return StoreHelper.loadInstructor2()
           } else if (StoreHelper.isStudent()) {
@@ -121,7 +147,9 @@ export default {
   },
   watch: {
     $route: function (route) {
-      if(!route.meta.public && !this.hasLoaded) {
+      let params2 = getIncomingParams()
+      const apiUrl = params2['apiUrl'] || sessionStorage.getItem(sKeys.API_URL)
+      if((!route.meta.public && !this.hasLoaded) && apiUrl) {
         this.loadData()
         this.hasLoaded = true
       }

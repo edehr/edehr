@@ -4,6 +4,7 @@ import { ParameterError, AssignmentMismatchError, SystemError } from '../common/
 import { Text } from '../../config/text'
 import { ltiVersions, LTI_BASIC } from './lti-defs'
 const HMAC_SHA1 = require('ims-lti/src/hmac-sha1')
+import AuthController from '../auth/auth-controller'
 
 const url = require('url')
 const debug = require('debug')('server')
@@ -342,19 +343,29 @@ export default class LTIController {
       debug('Route to instructor page ')// + JSON.stringify(req.ltiData, null, 2))
       route = '/instructor'
     }
-    let url = this.config.clientUrl + route + '?visit=' + visit._id + '&apiUrl=' + apiUrl
-    if (req.errors.length > 0) {
-      let errs = req.errors.join('-')
-      url += '&error=' + errs
+
+    try {
+      const authController = new AuthController()
+      const token = authController.createAuthToken({visitId: visit._id})
+      const refreshToken = authController.createRefreshToken(token)
+      let url = this.config.clientUrl + route + `?apiUrl=${apiUrl}&token=${refreshToken}`
+      if (req.errors.length > 0) {
+        let errs = req.errors.join('-')
+        url += '&error=' + errs
+      }
+      debug('LTI redirect url is:', url)
+      req.ltiNextUrl = url
+      return req
     }
-    debug('LTI redirect url is:', url)
-    req.ltiNextUrl = url
-    return req
+    // TODO: implement AuthError handling
+    catch (err) {
+      throw new SystemError(err)
+    }
   }
 
   _postLtiChain (req) {
     const _this = this
-    const db = false
+    const db = true
     return Promise.resolve()
       .then(() => {
         if (db) console.log('Do update tool')
@@ -393,6 +404,7 @@ export default class LTIController {
       this._postLtiChain(req)
         .then((req) => {
           let url = req.ltiNextUrl
+          console.log('redirecting to ', url)
           debug(`ready to redirect to the ehr ${url}`)
           // When redirecting in the test, the request promise 
           // resolves in 404. So, for debugging / testing
