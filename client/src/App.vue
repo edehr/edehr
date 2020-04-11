@@ -88,6 +88,8 @@ export default {
         })
         .catch(err => {
           alert(err + '\nSystem Error')
+          StoreHelper.setLoading(null, false)
+          this.$router.push('/')
         })
     },
 
