@@ -1,5 +1,12 @@
 <template lang="pug">
-  div(class="classlist", v-show="showClassList")
+  div(class="classlist", v-if="isReadonly")
+    div(class="classlist_content columns")
+      div(class="is-8 column") You are currently viewing 
+        b {{ panelInfo.activityTitle }}
+        span  in read only mode.
+    div
+        router-link(to="/instructor") Go back to courses page
+  div(class="classlist", v-show="showClassList", v-else)
     div(class="classlist_content columns")
       div(class="is-4 column")
         div(class="textField") Course: {{ panelInfo.courseTitle}}
@@ -48,6 +55,12 @@ export default {
     return {
       shouldConfirmNavigation: false,
       navigation: ''
+    }
+  },
+  props: {
+    isReadonly: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {

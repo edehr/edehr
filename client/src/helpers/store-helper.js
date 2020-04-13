@@ -180,7 +180,7 @@ class StoreHelperWorker {
   loadAssignment (id) { return this._dispatchAssignment('load', id) }
 
   loadAssignmentAndSeedLists () {
-  // load the seeds first so they are ready for the assignments to integrate
+    // load the seeds first so they are ready for the assignments to integrate
     return  this._dispatchSeedListProperty('loadSeeds')
       .then ( () => {
         return this.loadAssignmentList()

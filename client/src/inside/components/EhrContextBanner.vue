@@ -10,21 +10,19 @@
               fas-icon(icon="plus", v-show="!show") 
               fas-icon(icon="minus", v-show="show")
         div(v-show="show")
-          ehr-context-read-only-instructor(v-if="isReadOnlyInstructor")
-          ehr-context-instructor(v-else-if="showInstructor")
+          ehr-context-instructor(v-if="(showInstructor || isReadOnlyInstructor)", :isReadonly="isReadOnlyInstructor")
           ehr-context-developer(v-else-if="showSeeding")
 </template>
 
 <script>
 import EhrContextInstructor from './EhrContextInstructor'
 import EhrContextStudent from './EhrContextStudent'
-import EhrContextReadOnlyInstructor from './EhrContextReadOnlyInstructor'
 import EhrContextDeveloper from './EhrContextDeveloper'
 import StoreHelper from '../../helpers/store-helper'
 
 export default {
   name: 'EhrContextBanner',
-  components: { EhrContextInstructor, EhrContextStudent, EhrContextDeveloper, EhrContextReadOnlyInstructor },
+  components: { EhrContextInstructor, EhrContextStudent, EhrContextDeveloper },
   data: function () {
     return {
       show: false,
@@ -84,7 +82,8 @@ export default {
     }
   },
   beforeDestroy: function () {
-    this.setReadOnlyInstructor(true)
+    if (this.isReadOnlyInstructor)
+      this.setReadOnlyInstructor(false)
   }
 }
 </script>
