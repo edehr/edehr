@@ -39,20 +39,21 @@ export default {
         })
         .then(() => {
           if (refreshToken) {
-            return StoreHelper.fetchToken(refreshToken, apiUrl)
+            return StoreHelper.fetchAndStoreAuthToken(refreshToken, apiUrl)
               .then(() => {
                 const token = StoreHelper.getAuthToken()
                 if (!token) {
                   return Promise.reject('Refresh token is expired')
-                } else {
-                  return StoreHelper.fetchTokenData(token, apiUrl)
                 }
+                return StoreHelper.fetchTokenData(token, apiUrl)
               })
-          } else if (authToken) {
-            setAuthHeader()
-            return StoreHelper.fetchTokenData(authToken, apiUrl)
           } else {
-            return Promise.reject('Parameters Error')
+            if (!authToken) {
+              return Promise.reject('Parameters Error')
+            } else {
+              setAuthHeader()
+              return StoreHelper.fetchTokenData(authToken, apiUrl)
+            }
           }
         })
         .then(() => {
