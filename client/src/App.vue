@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { getIncomingParams, setApiError } from './helpers/ehr-utils'
+import { setApiError } from './helpers/ehr-utils'
 import EventBus from './helpers/event-bus'
 import { Text } from './helpers/ehr-text'
 import sKeys from './helpers/session-keys'
@@ -25,11 +25,10 @@ export default {
   methods: {
     loadData: async function () {
       const debugApp = false
-      let params2 = getIncomingParams()
       StoreHelper.setLoading(null, true)
       // API return to url
-      const apiUrl = params2['apiUrl'] || sessionStorage.getItem(sKeys.API_URL)
-      const refreshToken = params2['token']
+      const apiUrl = this.$route.query.apiUrl || sessionStorage.getItem(sKeys.API_URL)
+      const refreshToken = this.$route.query.token
       let visitId = ''
       const authToken = StoreHelper.getAuthToken()
       return Promise.resolve()
@@ -149,8 +148,7 @@ export default {
   },
   watch: {
     $route: function (route) {
-      let params2 = getIncomingParams()
-      const apiUrl = params2['apiUrl'] || sessionStorage.getItem(sKeys.API_URL)
+      const apiUrl = this.$route.query.apiUrl || sessionStorage.getItem(sKeys.API_URL)
       if((!route.meta.public && !this.hasLoaded) && apiUrl) {
         this.loadData()
         this.hasLoaded = true
