@@ -15,6 +15,7 @@ const SERVER_PORT = process.env.SERVER_PORT || 27000
 const API_PORT = process.env.API_PORT || undefined // 2700
 const CLIENT_PORT = process.env.CLIENT_PORT || undefined // 28000
 const API_HOST =   process.env.API_HOST
+const AUTH_TOKEN_SECRET = process.env.AUTH_TOKEN_SECRET || 'defaultTokenSecretForJWT'
 const CLIENT_HOST =   process.env.CLIENT_HOST
 const MONGODB_PORT = process.env.MONGODB_PORT || 27018
 const MONGODB_HOST = process.env.MONGODB_HOST || 'localhost'
@@ -39,6 +40,7 @@ module.exports = function() {
     port: API_PORT,
     apiHost: API_HOST,
     apiPort: API_PORT,
+    authTokenSecret: AUTH_TOKEN_SECRET,
     serverPort: SERVER_PORT,
     clientPort: CLIENT_PORT,
     clientHost: CLIENT_HOST,
