@@ -5,41 +5,45 @@ import { setAuthHeader } from '../../helpers/axios-helper'
 const authHelper = new AuthHelper()
 
 const state = {
-  payload: {}
+  data: {},
+  token: undefined
 }
 
 const getters = {
   authToken: function () {
-    return sessionStorage.getItem(sKeys.AUTH_TOKEN)
+    return sessionStorage.getItem(sKeys.AUTH_TOKEN) || state.token
   },
-  authPayload: function () {
-    return state.payload
+  authData: function () {
+    return state.data
   }
 }
 
 const actions = {
-  fetchAuthToken: function ({ commit }, { refreshToken }) {
+  fetchAndStoreAuthToken: function ({ commit }, { refreshToken, apiUrl }) {
+    authHelper.setUrl(apiUrl)
     return authHelper.getToken(refreshToken)
       .then(res => {
-        commit('setToken', res.data.token)
+        const { token } = res.data
+        return commit('setAuthToken', token)
       })
   },
   fetchTokenData: function ({commit}, { authToken }) {
     return authHelper.getData(authToken)
       .then(res => {
         const { data } = res
-        commit('setPayload', data)
+        return commit('setAuthData', data)
       })
   }
 }
 
 const mutations = {
-  setToken: function (none, token) {
+  setAuthToken: function (none, token) {
     sessionStorage.setItem(sKeys.AUTH_TOKEN, token)
+    state.token = token
     setAuthHeader()
   },
-  setPayload: function (none, payload) {
-    state.payload = payload
+  setAuthData: function (none, data) {
+    state.data = data
   }
 }
 
