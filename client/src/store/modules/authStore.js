@@ -18,15 +18,13 @@ const getters = {
 }
 
 const actions = {
-  fetchAuthToken: function ({ commit }, { refreshToken, apiUrl }) {
-    authHelper.setUrl(apiUrl)
+  fetchAuthToken: function ({ commit }, { refreshToken }) {
     return authHelper.getToken(refreshToken)
       .then(res => {
         commit('setToken', res.data.token)
       })
   },
-  fetchTokenData: function ({commit}, { authToken, apiUrl }) {
-    authHelper.setUrl(apiUrl)
+  fetchTokenData: function ({commit}, { authToken }) {
     return authHelper.getData(authToken)
       .then(res => {
         const { data } = res
