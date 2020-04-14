@@ -1,8 +1,9 @@
 <template lang="pug">
   div(:id="activityId")
     div(class="activity-list-header columns")
-      div(class="header-column is-10 column")
-        h3(:title="activityId") {{ activityName }}
+      div(class="header-column is-10 column")    
+        h3(:title="activityId") 
+             router-link(:to="`/ehr/patient/demographics?readonly=true`") {{ activityName }}
         table
           tr
             td LMS description:

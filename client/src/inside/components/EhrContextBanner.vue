@@ -10,8 +10,8 @@
               fas-icon(icon="plus", v-show="!show") 
               fas-icon(icon="minus", v-show="show")
         div(v-show="show")
-          ehr-context-instructor(v-if="showInstructor")
-          ehr-context-developer(v-if="showSeeding")
+          ehr-context-instructor(v-if="(showInstructor || isReadOnlyInstructor)", :isReadonly="isReadOnlyInstructor")
+          ehr-context-developer(v-else-if="showSeeding")
 </template>
 
 <script>
@@ -32,7 +32,12 @@ export default {
   },
   computed: {
     title () {
-      return StoreHelper.isDevelopingContent() ? 'Edit seed' :StoreHelper.getCourseTitle()
+      if (this.isReadOnlyInstructor) {
+        return StoreHelper.getCourseTitle()
+      } else {
+        return StoreHelper.isDevelopingContent() ? 'Edit seed' :StoreHelper.getCourseTitle()
+      }
+      
     },
     panelInfo () {
       return StoreHelper.getPanelData()
@@ -45,18 +50,40 @@ export default {
     },
     showSeeding () {
       return StoreHelper.isDevelopingContent()
+    },
+    isReadOnlyInstructor () {
+      return StoreHelper.isReadOnlyInstructor()
     }
   },
+  watch: {
+    '$route.query': (n) => {
+      if (n.readonly) {
+        this.setReadOnlyInstructor(true)
+      }
+    }
+  },
+
   methods: {
     toggleShow: function () {
       this.show = !this.show
       this.indicator = this.show ? '-' : '+'
+    },
+    setReadOnlyInstructor: function (isReadOnly) {
+      StoreHelper.setIsReadOnlyInstructor(isReadOnly)
     }
   },
   mounted: function () {
     if (StoreHelper.isInstructor(this)){
       this.show = true
     }
+    const { readonly } = this.$route.query
+    if (readonly) {
+      this.setReadOnlyInstructor(true)
+    }
+  },
+  beforeDestroy: function () {
+    if (this.isReadOnlyInstructor)
+      this.setReadOnlyInstructor(false)
   }
 }
 </script>

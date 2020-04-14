@@ -49,6 +49,9 @@ const getters = {
     if(debug) console.log(NAME + ' get lastUpdateDate', prop)
     return prop
   },
+  isReadOnlyInstructor: state => {
+    return sessionStorage.getItem(sKeys.IS_READONLY_INSTRUCTOR)
+  }
 }
 
 const actions = {
@@ -94,6 +97,9 @@ const mutations = {
   topLevelMenu: (state, top) => {
     if(debug) console.log('visit store top level menu ' + (top ? top : 'empty'))
     state.topLevelMenu = top
+  },
+  setIsReadOnlyInstructor: (val) => {
+    sessionStorage.setItem(sKeys.IS_READONLY_INSTRUCTOR, val)
   }
 }
 
