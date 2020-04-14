@@ -14,6 +14,7 @@ class StoreHelperWorker {
 
   /* **********   Internal  ************** */
   _getActivityDataProperty (key) { return store.getters['activityDataStore/' + key]}
+  _getAuthStore (key) { return store.getters['authStore/'+ key] }
   _getUserProperty (key) { return store.getters['userStore/' + key]}
   _getActivityProperty (key) { return store.getters['activityStore/' + key]}
   _getAssignmentProperty (key) { return store.getters['assignmentStore/' + key]}
@@ -24,21 +25,18 @@ class StoreHelperWorker {
   _getSystemProperty (key) { return store.getters['system/' + key]}
   _getVisitProperty (key) { return store.getters['visit/' + key]}
   _getConsumerProperty (key) { return store.getters['consumerStore/' + key]}
-  _getAuthPayload (key) { return store.getters['authStore/'+ key] }
-  _getAuthToken (key) { return store.getters['authStore/'+ key] }
 
   _dispatchActivity (key, payload) { return store.dispatch('activityStore/' + key, payload)}
   _dispatchActivityData (key, payload) { return store.dispatch('activityDataStore/' + key, payload)}
   _dispatchAssignment (key, payload) { return store.dispatch('assignmentStore/' + key, payload)}
   _dispatchAssignmentList (key, payload) { return store.dispatch('assignmentListStore/' + key, payload)}
+  _dispatchAuthStore (key, payload) { return store.dispatch(`authStore/${key}`, payload) }
   _dispatchConsumerList (key, payload) { return store.dispatch('consumerListStore/' + key, payload)}
   _dispatchConsumer (key, payload) { return store.dispatch('consumerStore/' + key, payload)}
   _dispatchSeedListProperty (key, payload) { return store.dispatch('seedListStore/' + key, payload)}
   _dispatchInstructor (key, payload) { return store.dispatch('instructor/' + key, payload)}
   _dispatchVisit (key, payload) { return store.dispatch('visit/' + key, payload)}
   _dispatchUser (key, payload) { return store.dispatch('userStore/' + key, payload)}
-  _dispatchFetchToken (key, payload) { return store.dispatch(`authStore/${key}`, payload) }
-  _dispatchFetchTokenData (key, payload) { return store.dispatch(`authStore/${key}`, payload) }
 
   /* **********   General  ************** */
   toolConsumerId () { return this._getConsumerProperty('consumerId') }
@@ -400,20 +398,24 @@ class StoreHelperWorker {
     }
   }
 
-  fetchToken (refreshToken) {
-    return this._dispatchFetchToken('fetchAuthToken', {refreshToken})
+  fetchAndStoreAuthToken (refreshToken, apiUrl) {
+    return this._dispatchAuthStore('fetchAndStoreAuthToken', {refreshToken, apiUrl})
   }
 
-  fetchTokenData (authToken) {
-    return this._dispatchFetchTokenData('fetchTokenData', {authToken})
+  fetchTokenData (authToken = this.getAuthToken(), apiUrl) {
+    return this._dispatchAuthStore('fetchTokenData', {authToken, apiUrl})
+  }
+
+  setAuthToken (authToken) {
+    return this._dispatchAuthStore('setAuthToken', authToken)
   }
 
   getAuthPayload () {
-    return this._getAuthPayload('authPayload')
+    return this._getAuthStore('authData')
   }
 
   getAuthToken () {
-    return this._getAuthToken('authToken')
+    return this._getAuthStore('authToken')
   }
   
 

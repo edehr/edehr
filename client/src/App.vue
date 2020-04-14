@@ -29,33 +29,35 @@ export default {
       const refreshToken = this.$route.query.token
       let visitId = ''
       const authToken = StoreHelper.getAuthToken()
+      let apiUrl = ''
       return Promise.resolve()
         .then(() => {
-          const apiUrl = this.$route.query.apiUrl || StoreHelper.apiUrl()
+          apiUrl = this.$route.query.apiUrl || StoreHelper.apiUrl()
           if (!apiUrl) {
             const msg = Text.MISSING_API_URL
             setApiError(msg)
             return Promise.reject(msg)
           }
           if(debugApp) console.log('Store the API URL', apiUrl)
-          StoreHelper.apiUrlSet(apiUrl)
+          return StoreHelper.apiUrlSet(apiUrl)
         })
         .then(() => {
           if (refreshToken) {
-            return StoreHelper.fetchToken(refreshToken)
+            return StoreHelper.fetchAndStoreAuthToken(refreshToken, apiUrl)
               .then(() => {
                 const token = StoreHelper.getAuthToken()
                 if (!token) {
                   return Promise.reject('Refresh token is expired')
-                } else {
-                  return StoreHelper.fetchTokenData(token)
                 }
+                return StoreHelper.fetchTokenData(token, apiUrl)
               })
-          } else if (authToken) {
-            setAuthHeader()
-            return StoreHelper.fetchTokenData(authToken)
           } else {
-            return Promise.reject('Parameters Error')
+            if (!authToken) {
+              return Promise.reject('Parameters Error')
+            } else {
+              setAuthHeader()
+              return StoreHelper.fetchTokenData(authToken, apiUrl)
+            }
           }
         })
         .then(() => {
