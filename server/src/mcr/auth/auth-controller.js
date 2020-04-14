@@ -1,13 +1,13 @@
 import { Router } from 'express'
-import { TOKEN_SECRET } from './auth-defs'
 const jwt = require('jsonwebtoken')
 const debug = false
 
 
 export default class AuthController {
-  constructor () {
-    if(debug) console.log('authController')
-    
+
+  constructor (config) {
+    this.tokenSecret = config.authTokenSecret
+    if(debug) console.log('authController -- tokenSecret', this.tokenSecret)
   }
   /**
    * @method authenticate
@@ -27,13 +27,13 @@ export default class AuthController {
 
   createAuthToken (data) {
     if(debug) console.log('authController -- createAuthToken')
-    return jwt.sign(data, TOKEN_SECRET)
+    return jwt.sign(data, this.tokenSecret)
   }
 
   createRefreshToken (token) {
-    if(debug) console.log('authController -- createRefreshToken')
+    if(debug) console.log('authController -- createRefreshToken', this.tokenSecret)
     //set to expire in 1 minute
-    return jwt.sign({token}, TOKEN_SECRET, { expiresIn: '1m'})
+    return jwt.sign({token}, this.tokenSecret, { expiresIn: '1m'})
   }
   /**
  * @method _getAuthToken
@@ -119,7 +119,7 @@ export default class AuthController {
    */
   validateToken (token) {
     if (debug) console.log('authController -- validateToken')
-    return jwt.verify(token, TOKEN_SECRET)
+    return jwt.verify(token, this.tokenSecret)
   }
 
   route () {
