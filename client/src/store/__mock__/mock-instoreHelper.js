@@ -9,7 +9,7 @@ class InstoreHelperWorker {
   composeUrl (context, api, url) {
     console.log('IN MOCK INSTORE HELPER')
     let visitState = context.rootState.visit
-    let apiUrl = visitState.apiUrl
+    let apiUrl = 'someURL'
     return `${apiUrl}/${api}/` + (url ? url : '')
   }
 

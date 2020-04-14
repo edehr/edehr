@@ -1,16 +1,12 @@
 import axios from 'axios'
+import StoreHelper from './store-helper'
+
 
 export default class AuthHelper {
-  constructor (url) {
-    this.url = url
-  }
-
-  setUrl (url) {
-    this.url = url
-  }
 
   getToken (refreshToken) {
-    const url = `${this.url}/auth/refresh`
+    const apiUrl = StoreHelper.apiUrl()
+    const url = `${apiUrl}/auth/refresh`
     return axios.post(url, {refreshToken})
       .catch(err => {
         throw `Token has expired \n${err}`
@@ -18,7 +14,8 @@ export default class AuthHelper {
   }
 
   getData (token) {
-    const url = `${this.url}/auth/`
+    const apiUrl = StoreHelper.apiUrl()
+    const url = `${apiUrl}/auth/`
     return axios.post(url, null)
       .catch(err => {
         throw `Invalid token \n ${err}`

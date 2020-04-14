@@ -12,20 +12,13 @@ function getIsDeving () {
 }
 
 const state = {
-  apiUrl: '',
-  // visitId: '',
   sVisitData: {},
-  // sVisitInfo: {},
   isLoggedIn: !!sessionStorage.getItem(sKeys.USER_TOKEN),
   topLevelMenu: '',
   _isDevelopingContent: getIsDeving()
 }
 
 const getters = {
-  apiUrl: state => {
-    let rval = state.apiUrl || sessionStorage.getItem(sKeys.API_URL)
-    return rval
-  },
   isInstructor: state => {
     return state.sVisitData.isInstructor
   },
@@ -79,11 +72,6 @@ const actions = {
 }
 
 const mutations = {
-  apiUrl: (state, url) => {
-    if(debug) console.log('visit store set api url ' + url)
-    sessionStorage.setItem(sKeys.API_URL, url)
-    state.apiUrl = url
-  },
   setIsDevelopingContent: (state, value) => {
     if(debug) console.log('setIsDevelopingContent isDeving', value)
     // This value needs to survive a browser refresh so make the source of truth the session storage

@@ -16,7 +16,7 @@ const debug = false
 class InstoreHelperWorker {
 
   composeUrl (context, api, url) {
-    let apiUrl = sessionStorage.getItem('apiUrl')
+    let apiUrl = StoreHelper.apiUrl()
     return `${apiUrl}/${api}/` + (url ? url : '')
   }
 

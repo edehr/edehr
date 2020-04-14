@@ -49,7 +49,15 @@ class StoreHelperWorker {
   isInstructor () { return this._getVisitProperty('isInstructor') }
   isDeveloper () { return this._getVisitProperty('isDeveloper') }
   isStudent () { return this._getVisitProperty('isStudent') }
-  apiUrl () { return this._getVisitProperty('apiUrl') }
+
+
+  /**
+   * The API server must provide the url to call back into the server.
+   */
+  apiUrl () { return sessionStorage.getItem('apiUrl') || undefined }
+  apiUrlSet (url) { sessionStorage.setItem('apiUrl', url) }
+
+
 
   isDevelopingContent () { return this._getVisitProperty('isDevelopingContent')  }
   setIsDevelopingContent (state) { store.commit('visit/setIsDevelopingContent', state) }
@@ -392,12 +400,12 @@ class StoreHelperWorker {
     }
   }
 
-  fetchToken (refreshToken, apiUrl) {
-    return this._dispatchFetchToken('fetchAuthToken', {refreshToken, apiUrl})
+  fetchToken (refreshToken) {
+    return this._dispatchFetchToken('fetchAuthToken', {refreshToken})
   }
 
-  fetchTokenData (authToken, apiUrl) {
-    return this._dispatchFetchTokenData('fetchTokenData', {authToken, apiUrl})
+  fetchTokenData (authToken) {
+    return this._dispatchFetchTokenData('fetchTokenData', {authToken})
   }
 
   getAuthPayload () {
