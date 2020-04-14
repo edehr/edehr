@@ -29,16 +29,17 @@ export default {
       const refreshToken = this.$route.query.token
       let visitId = ''
       const authToken = StoreHelper.getAuthToken()
+      let apiUrl = ''
       return Promise.resolve()
         .then(() => {
-          const apiUrl = this.$route.query.apiUrl || StoreHelper.apiUrl()
+          apiUrl = this.$route.query.apiUrl || StoreHelper.apiUrl()
           if (!apiUrl) {
             const msg = Text.MISSING_API_URL
             setApiError(msg)
             return Promise.reject(msg)
           }
           if(debugApp) console.log('Store the API URL', apiUrl)
-          StoreHelper.apiUrlSet(apiUrl)
+          return StoreHelper.apiUrlSet(apiUrl)
         })
         .then(() => {
           if (refreshToken) {

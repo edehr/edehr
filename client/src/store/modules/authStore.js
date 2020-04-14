@@ -19,8 +19,7 @@ const getters = {
 }
 
 const actions = {
-  fetchAndStoreAuthToken: function ({ commit }, { refreshToken, apiUrl }) {
-    authHelper.setUrl(apiUrl)
+  fetchAndStoreAuthToken: function ({ commit }, { refreshToken }) {
     return authHelper.getToken(refreshToken)
       .then(res => {
         const { token } = res.data
