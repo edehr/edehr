@@ -58,7 +58,7 @@ class StoreHelperWorker {
   apiUrlSet (url) { sessionStorage.setItem('apiUrl', url) }
 
   isReadOnlyInstructor () { return this._getVisitProperty('isReadOnlyInstructor')}
-  setIsReadOnlyInstructor (isReadonly = false) { store.commit('visit/setIsReadOnlyInstructor', isReadonly)}
+  setIsReadOnlyInstructor (isReadonly = false) { return store.commit('visit/setIsReadOnlyInstructor', isReadonly)}
   isDevelopingContent () { return this._getVisitProperty('isDevelopingContent')  }
   setIsDevelopingContent (state) { store.commit('visit/setIsDevelopingContent', state) }
 
@@ -180,7 +180,7 @@ class StoreHelperWorker {
   loadAssignment (id) { return this._dispatchAssignment('load', id) }
 
   loadAssignmentAndSeedLists () {
-    // load the seeds first so they are ready for the assignments to integrate
+  // load the seeds first so they are ready for the assignments to integrate
     return  this._dispatchSeedListProperty('loadSeeds')
       .then ( () => {
         return this.loadAssignmentList()
