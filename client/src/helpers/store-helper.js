@@ -39,9 +39,6 @@ class StoreHelperWorker {
   _dispatchInstructor (key, payload) { return store.dispatch('instructor/' + key, payload)}
   _dispatchVisit (key, payload) { return store.dispatch('visit/' + key, payload)}
   _dispatchUser (key, payload) { return store.dispatch('userStore/' + key, payload)}
-  _dispatchFetchToken (key, payload) { return store.dispatch(`authStore/${key}`, payload) }
-  _dispatchFetchTokenData (key, payload) { return store.dispatch(`authStore/${key}`, payload) }
-  _dispatchAdminLogin (key, payload) { return store.dispatch(`authStore/${key}`, payload) }
 
   /* **********   General  ************** */
   toolConsumerId () { return this._getConsumerProperty('consumerId') }
@@ -416,8 +413,12 @@ class StoreHelperWorker {
     return this._dispatchAuthStore('setAuthToken', authToken)
   }
 
-  adminLogin (adminPassword, apiUrl = sessionStorage.getItem(sKeys.API_URL)) {
-    return this._dispatchAdminLogin('adminLogin', { adminPassword, apiUrl })
+  adminLogin (adminPassword) {
+    return this._dispatchAuthStore('adminLogin', { adminPassword })
+  }
+
+  adminValidate (token) {
+    return this._dispatchAuthStore('adminValidate', { token })
   }
 
   getAuthPayload () {

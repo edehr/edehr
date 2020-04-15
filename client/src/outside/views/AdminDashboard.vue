@@ -2,26 +2,51 @@
     div(v-if="isAuthed")
         h2 Welcome!
         div You are currently logged in as an administrator
-        nuxt-link=""
+        br
+        router-link(to="/consumers") See consumers page
 </template>
 
 <script>
+import StoreHelper from '../../helpers/store-helper'
+import { setAuthHeader } from '../../helpers/axios-helper'
 export default {
   data : () => {
     return {
       isAuthed: true
     }
   },
-  computed: {
-    isAuthed () {
-      const token = StoreHelper.getAuthToken()
-      if(token) {
-      // TODO: implement a validator helper for admins
-        return true
+
+  methods: {
+    redirect (path = '/admin') {
+      this.$router.push(path)
+    }
+  },
+  mounted () {
+    const token = StoreHelper.getAuthToken()
+    StoreHelper.setLoading(null, true)
+    if(token) {
+      setAuthHeader(token)
+      StoreHelper.adminValidate(token)
+        .then(v => {
+          this.isAuthed = v
+        })
+        .catch(err => {
+          alert(err)
+          this.redirect()
+          StoreHelper.setLoading(null, false)
+        })
+    } else {
+      alert('You need to be properly authenticated to do this')
+      this.redirect()
+      return false
+    }
+  },
+  watch: {
+    isAuthed: function (curr) { 
+      if (curr) {
+        StoreHelper.setLoading(null, false)
       } else {
-        alert('You need to be properly authenticated to do this')
         this.redirect()
-        return false
       }
     }
   }
