@@ -15,7 +15,8 @@
     "start-docker": "node index.js",
     "start-docker-dev": "nodemon -L  node index.js",
     "start-prod": "NODE_ENV=production node index.js",
-    "scale-test": "node test/scale-testing.js"
+    "scale-test": "node test/scale-testing.js",
+    "generate-password": "node src/server/generate-password.js"
   },
   "dependencies": {
     "axios": "^0.19.2",
@@ -25,6 +26,7 @@
     "deepmerge": "^2.2.1",
     "ejs": "^2.6.1",
     "express": "^4.17.1",
+    "express-rate-limit": "^5.1.1",
     "express-session": "^1.16.1",
     "helmet": "^3.18.0",
     "ims-lti": "git+https://github.com/bryan-gilbert/ims-lti.git",
@@ -32,6 +34,7 @@
     "moment": "^2.24.0",
     "mongoose": "^5.5.13",
     "mongoose-unique-validator": "^2.0.3",
+    "nanoid": "^3.0.2",
     "passport": "^0.4.0",
     "passport-custom": "^1.0.5",
     "pluralize": "^7.0.0",

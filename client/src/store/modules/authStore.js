@@ -32,7 +32,23 @@ const actions = {
         const { data } = res
         return commit('setAuthData', data)
       })
+  },
+  adminLogin: function ({commit}, { adminPassword, apiUrl }) {
+    authHelper.setUrl(apiUrl)
+    return authHelper.adminLogin(adminPassword)
+      .then(res => {
+        const { token } = res.data
+        if (res.status === 200 && token) {
+          return commit('setToken', token)
+        } else if (res.status === 201) {
+          return Promise.reject('The token has been created. Please, contact an administrator to get it.')
+        }
+        
+      }).catch(err => {
+        return Promise.reject(err)
+      })
   }
+  
 }
 
 const mutations = {
