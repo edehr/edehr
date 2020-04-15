@@ -16,9 +16,7 @@ import LookaheadController from '../mcr/lookahead/lookahead-controller'
 import UserController from '../mcr/user/user-controller.js'
 import VisitController from '../mcr/visit/visit-controller'
 import SeedDataController from '../mcr/seed/seedData-controller'
-import { validatorMiddlewareWrapper } from '../helpers/middleware'
-import AuthController from '../mcr/auth/auth-controller'
-import { validatorMiddleware, adminValidationMiddleware } from '../helpers/middleware'
+import { validatorMiddlewareWrapper, adminValidationMiddlewareWrapper } from '../helpers/middleware'
 
 // Sessions and session cookies
 // express-session stores session data here on the server and only puts session id in the cookie
@@ -27,29 +25,6 @@ const FileStore = require('session-file-store')(session)
 const uuid = require('uuid/v4')
 
 const debug = require('debug')('server')
-
-const validatorMiddleware = (req, res, next) => {
-  const authController = new AuthController()
-  if (req && req.headers.authorization) {
-    try {
-      const result = authController.authenticate(req.headers.authorization)
-      const { visitId } = result
-      console.log('result >> ', result)
-      if (visitId) {
-        console.log('passingNext!!!')
-        next()
-      } else {
-        res.status(401).send('Invalid token!')
-      }
-    } catch (err) {
-      console.log('validatorMiddleware caught ', err)
-      res.status(401).send(err)
-    }
-  } else {
-    console.log('validatorMiddleware else ', req)
-    res.status(401).send('A token is required')
-  }
-}
 
 export function apiMiddle (app, config) {
   const fileStoreOptions = {}
@@ -110,6 +85,10 @@ export function apiMiddle (app, config) {
     cors(corsOptions),
     validatorMiddlewareWrapper(auth)
   ]
+  const adminMiddleware = [
+    cors(corsOptions),
+    adminValidationMiddlewareWrapper(auth)
+  ]
 
   return Promise.resolve()
     .then(() => {
@@ -130,7 +109,7 @@ export function apiMiddle (app, config) {
       const api = Router()
       // for local and dev only
       api.use('/admin', admin.route())
-      api.use('/integrations', [cors(corsOptions), adminValidationMiddleware], ic.route())
+      api.use('/integrations', adminMiddleware, ic.route())
       // External API
       api.use('/launch_lti', lti.route())
       api.use('/api/launch_lti', lti.route())
