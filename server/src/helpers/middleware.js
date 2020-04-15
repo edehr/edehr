@@ -1,4 +1,5 @@
 import { getAdminPassword } from './admin'
+
 const rateLimit = require('express-rate-limit')
 
 const ADMIN_MAX_REQUEST_LIMIT = 5
@@ -14,6 +15,7 @@ export const validatorMiddlewareWrapper = (authController) => {
         if (debug) console.log('result >> ', result)
         if (visitId) {
           if (debug) console.log('passingNext!!!')
+          req.authPayload = result
           next()
         } else {
           res.status(401).send('Invalid token!')
@@ -28,38 +30,19 @@ export const validatorMiddlewareWrapper = (authController) => {
     }
   }
 }
-  
-export const adminValidationMiddlewareWrapper = (authController) => {
-  return (req, res, next) => {
-    const { authorization } = req.headers
-    if(req && authorization) {
-      try {
-        const result = authController.authenticate(authorization)
-        const { adminPassword } = result
-        const adminToken = getAdminPassword()
-        if (debug) console.log('result >> ', result)
-        if (adminPassword) {
-          if(adminPassword === adminToken) {
-            if (debug) console.log('adminValidationMiddleware passingNext!!!', adminPassword)
-            next()
-          } else {
-            res.status(401).send('Admin password has expired. Please check you have the latest one.')
-          }
-        } else {
-          if (debug) console.log(' adminValidationMiddleware not an admin token!')
-          res.status(403).send('You don\'t have permission to view this')
-        }
-      } catch (err) {
-        if (debug) console.log('adminValidationMiddleware caught ', err)
-        res.status(500).send('An error occurred when validating the access')
-      }
-    } else {
-      if (debug) console.log('adminValidationMiddleware no token ', req)
-      res.status(401).send('An admin token is required')
-    }
-  }
-  
 
+export const isAdmin = (req, res, next) => {
+  const { authPayload } = req
+  if (req.authPayload.adminPassword) {
+    const passwd = getAdminPassword()
+    if (authPayload.adminToken === passwd) {
+      next()
+    } else {
+      return res.status(403).send('You don\'t have permission to do this!')
+    }
+  } else {
+    return res.status(401).send('Invalid token')
+  }
 }
 
 export const adminLimiter = rateLimit({

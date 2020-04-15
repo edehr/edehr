@@ -41,23 +41,50 @@ export default class AuthController {
         if (adminToken) {
           if (adminPass === adminToken) {
             const payload = this.authenticate(authorization)
-            const adminPayload = Object.assign({}, payload, { adminPassword : adminToken})
+            const adminPayload = Object.assign({}, payload, { adminPassword : adminPass})
             const newToken = this.createToken(adminPayload)
-            res.status(200).json({token: newToken})
+            return res.status(200).json({token: newToken})
           } else {
-            res.status(401).send('The password you\'ve entered is no longer valid. Please, try again. If the problem persists, please, contact an administrator')
+            return res.status(401).send('The password you\'ve entered is no longer valid. Please, try again. If the problem persists, please, contact an administrator')
           }
         } else {
           generateAdminPassword()
-          res.status(201).send('The password has been created')
+          return res.status(201).send('The password has been created')
         }
 
         
       }
       catch (err) {
         if (debug) console.log('_adminLogin threw', err)
-        res.status(201).send('The password you\'ve entered is no longer valid. Please, try again. If the problem persists, please, contact an administrator')
+        return res.status(201).send('The password you\'ve entered is no longer valid. Please, try again. If the problem persists, please, contact an administrator')
       }
+    }
+  }
+
+  _adminValidate (req, res) {
+    const { authorization } = req.headers
+    console.log('req.headers >> ', req.headers)
+    if (debug) console.log('_adminValidate', authorization)
+    if (authorization) {
+      if(debug) console.log('auth >> ', authorization)
+      try {
+        const result = this.authenticate(authorization)
+        if (debug) console.log('result >> ', result)
+        if (result.adminPassword) {
+          const adminPassword = getAdminPassword()
+          if (result.adminPassword === adminPassword) {
+            return res.status(200).send()
+          }
+          return res.status(401).send('Invalid token. Please, check with an administrator if your password is still valid!')
+        }
+        return res.status(403).send('You don\'t have permission to view this')
+        
+      } catch (err) {
+        return res.status(500).send(err)
+      }
+
+    } else {
+      return res.status(401).send('A token is required')
     }
   }
 
@@ -88,7 +115,7 @@ export default class AuthController {
         if (debug) console.log('validate token threw >> ', err)
         // This arguably returns 401 in this case. As the validateToken can throw if the token has expired,
         // which is a use case of the refresh token.
-        res.status(401).send('Invalid token. Please,   try again!')
+        res.status(401).send('Invalid token. Please, try again!')
       }
     } else {
       if(debug) console.log('Token is required!', req.body)
@@ -184,6 +211,11 @@ export default class AuthController {
     router.post('/admin', adminLimiter, (req, res) => {
       this._adminLogin(req, res)
     })
+
+    router.post('/admin/validate', (req, res) => {
+      this._adminValidate(req, res)
+    })
+
     router.post('/refresh', (req, res) => {
       this._getAuthToken(req, res)
     })  

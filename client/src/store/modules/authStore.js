@@ -38,11 +38,20 @@ const actions = {
       .then(res => {
         const { token } = res.data
         if (res.status === 200 && token) {
-          return commit('setToken', token)
+          return commit('setAuthToken', token)
         } else if (res.status === 201) {
           return Promise.reject('The token has been created. Please, contact an administrator to get it.')
         }
-        
+      }).catch(err => {
+        return Promise.reject(err.response.data)
+      })
+  },
+  adminValidate: function (none, { token }) {
+    return authHelper.adminValidate(token)
+      .then(() => {
+        return {
+          isAdmin: true
+        }
       }).catch(err => {
         return Promise.reject(err.response.data)
       })
@@ -54,7 +63,7 @@ const mutations = {
   setAuthToken: function (none, token) {
     sessionStorage.setItem(sKeys.AUTH_TOKEN, token)
     state.token = token
-    setAuthHeader()
+    return setAuthHeader(token)
   },
   setAuthData: function (none, data) {
     state.data = data

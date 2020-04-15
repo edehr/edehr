@@ -16,7 +16,7 @@ import LookaheadController from '../mcr/lookahead/lookahead-controller'
 import UserController from '../mcr/user/user-controller.js'
 import VisitController from '../mcr/visit/visit-controller'
 import SeedDataController from '../mcr/seed/seedData-controller'
-import { validatorMiddlewareWrapper, adminValidationMiddlewareWrapper } from '../helpers/middleware'
+import { validatorMiddlewareWrapper, adminLimiter } from '../helpers/middleware'
 
 // Sessions and session cookies
 // express-session stores session data here on the server and only puts session id in the cookie
@@ -87,7 +87,8 @@ export function apiMiddle (app, config) {
   ]
   const adminMiddleware = [
     cors(corsOptions),
-    adminValidationMiddlewareWrapper(auth)
+    validatorMiddlewareWrapper(auth),
+    adminLimiter
   ]
 
   return Promise.resolve()
