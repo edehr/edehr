@@ -33,8 +33,7 @@ const actions = {
         return commit('setAuthData', data)
       })
   },
-  adminLogin: function ({commit}, { adminPassword, apiUrl }) {
-    authHelper.setUrl(apiUrl)
+  adminLogin: function ({commit}, { adminPassword }) {
     return authHelper.adminLogin(adminPassword)
       .then(res => {
         const { token } = res.data
@@ -45,7 +44,7 @@ const actions = {
         }
         
       }).catch(err => {
-        return Promise.reject(err)
+        return Promise.reject(err.response.data)
       })
   }
   
