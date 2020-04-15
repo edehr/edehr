@@ -22,4 +22,12 @@ export default class AuthHelper {
       })
   }
 
+  adminLogin (adminPass) {
+    const url = `${this.url}/auth/admin`
+    return axios.post(url, {adminPass})
+      .catch(err => {
+        return Promise.reject(`An error occured: \n ${err}`)
+      })
+  }
+
 }

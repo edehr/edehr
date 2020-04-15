@@ -25,6 +25,8 @@ class StoreHelperWorker {
   _getSystemProperty (key) { return store.getters['system/' + key]}
   _getVisitProperty (key) { return store.getters['visit/' + key]}
   _getConsumerProperty (key) { return store.getters['consumerStore/' + key]}
+  _getAuthPayload (key) { return store.getters['authStore/'+ key] }
+  _getAuthToken (key) { return store.getters['authStore/'+ key] }
 
   _dispatchActivity (key, payload) { return store.dispatch('activityStore/' + key, payload)}
   _dispatchActivityData (key, payload) { return store.dispatch('activityDataStore/' + key, payload)}
@@ -37,6 +39,9 @@ class StoreHelperWorker {
   _dispatchInstructor (key, payload) { return store.dispatch('instructor/' + key, payload)}
   _dispatchVisit (key, payload) { return store.dispatch('visit/' + key, payload)}
   _dispatchUser (key, payload) { return store.dispatch('userStore/' + key, payload)}
+  _dispatchFetchToken (key, payload) { return store.dispatch(`authStore/${key}`, payload) }
+  _dispatchFetchTokenData (key, payload) { return store.dispatch(`authStore/${key}`, payload) }
+  _dispatchAdminLogin (key, payload) { return store.dispatch(`authStore/${key}`, payload) }
 
   /* **********   General  ************** */
   toolConsumerId () { return this._getConsumerProperty('consumerId') }
@@ -409,6 +414,10 @@ class StoreHelperWorker {
 
   setAuthToken (authToken) {
     return this._dispatchAuthStore('setAuthToken', authToken)
+  }
+
+  adminLogin (adminPassword, apiUrl = sessionStorage.getItem(sKeys.API_URL)) {
+    return this._dispatchAdminLogin('adminLogin', { adminPassword, apiUrl })
   }
 
   getAuthPayload () {

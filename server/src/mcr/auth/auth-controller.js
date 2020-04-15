@@ -1,4 +1,8 @@
 import { Router } from 'express'
+import { TOKEN_SECRET } from './auth-defs'
+import { getAdminPassword, generateAdminPassword } from '../../helpers/admin'
+import { adminLimiter } from '../../helpers/middleware'
+
 const jwt = require('jsonwebtoken')
 const debug = false
 
@@ -10,31 +14,54 @@ export default class AuthController {
     if(debug) console.log('authController -- tokenSecret', this.tokenSecret)
   }
   /**
-   * @method authenticate
-   * Unwraps the request and attempts to validate its token
-   * @param {*} token 
-   * @description unwraps the token from the Bearer ${token} structure and then 
-   * passes it to validateToken
-   * 
-   * @returns {*} a function call to validateToken
-   * 
-   */
-  authenticate (token) { 
-    if(debug) console.log('authController -- authenticate')
-    const sliced = token.replace('Bearer ', '')
-    return this.validateToken(sliced)
+ * @method _adminLogin 
+ * Receives the admin's password and, if it is valid, it returns a new token which is
+ * authenticated for an admin. Handles the /admin end point
+ * @param {*} req 
+ * @param {*} res 
+ * 
+ * @description The adminPass is received in the request's Body
+ * and it also receives the authorization in the headers. If adminPass is a match with the adminToken,
+ * then it generates a new token and responds with it.
+ * 
+ * @returns {JSON} token - if the request is successful (200 status).
+ * @returns {String} missingTokenError - if either the token or password is missing (401 status)
+ * @returns {String} passwordMismatch - if adminPass doesn't match with adminToken. (201 status)
+ * 
+ */
+  _adminLogin (req, res) {
+    if (debug) console.log('authController -- _adminLogin')
+    const { adminPass } = req.body
+    let adminToken = getAdminPassword()
+    const { authorization } = req.headers
+    if (!adminPass && !authorization) {
+      res.status(401).send('A password and the token are required')
+    } else {
+      if (debug) console.log('adminPass >> adminToken', adminPass,adminToken)
+      try {
+        if (adminToken) {
+          if (adminPass === adminToken) {
+            const payload = this.authenticate(authorization)
+            const adminPayload = Object.assign({}, payload, { adminPassword : adminToken})
+            const newToken = this.createToken(adminPayload)
+            res.status(200).json({token: newToken})
+          } else {
+            res.status(401).send('The password you\'ve entered is no longer valid. Please, try again. If the problem persists, please, contact an administrator')
+          }
+        } else {
+          generateAdminPassword()
+          res.status(201).send('The password has been created')
+        }
+
+        
+      }
+      catch (err) {
+        if (debug) console.log('_adminLogin threw', err)
+        res.status(201).send('The password you\'ve entered is no longer valid. Please, try again. If the problem persists, please, contact an administrator')
+      }
+    }
   }
 
-  createAuthToken (data) {
-    if(debug) console.log('authController -- createAuthToken')
-    return jwt.sign(data, this.tokenSecret)
-  }
-
-  createRefreshToken (token) {
-    if(debug) console.log('authController -- createRefreshToken', this.tokenSecret)
-    //set to expire in 1 minute
-    return jwt.sign({token}, this.tokenSecret, { expiresIn: '1m'})
-  }
   /**
  * @method _getAuthToken
  * Retrieves the authToken from the refreshToken (handles the /refresh end point)
@@ -71,19 +98,19 @@ export default class AuthController {
   }
 
   /**
-   * @method _getTokenContent
-   * Gets the payload from the authToken (handles the / end point)
-   * @param {*} req 
-   * @param {*} res 
-   * 
-   * @description it gets the authenticator token in req.headers.authorization
-   * and it unwraps it using authenticate and, if the token is properly validated, it returns the payload 
-   * (currently visitId)
-   * 
-   * @returns {Object} result - the result of getting the token data (status 200)
-   * @returns {String} missingTokenError - an error message whether the token is missing (status 401)
-   * @returns {String} tokenVerificationError - if an error occurs when verifying the token (status 500)
-   */
+ * @method _getTokenContent
+ * Gets the payload from the authToken (handles the / end point)
+ * @param {*} req 
+ * @param {*} res 
+ * 
+ * @description it gets the authenticator token in req.headers.authorization
+ * and it unwraps it using authenticate and, if the token is properly validated, it returns the payload 
+ * (currently visitId)
+ * 
+ * @returns {Object} result - the result of getting the token data (status 200)
+ * @returns {String} missingTokenError - an error message whether the token is missing (status 401)
+ * @returns {String} tokenVerificationError - if an error occurs when verifying the token (status 500)
+ */
   _getTokenContent (req, res) {
     if (debug) console.log('authController -- _getTokenContent')
     if(req.headers.authorization) {
@@ -100,6 +127,34 @@ export default class AuthController {
       res.status(401).send('Token is required!')
     }
   }
+
+  /**
+   * @method authenticate
+   * Unwraps the request and attempts to validate its token
+   * @param {*} token 
+   * @description unwraps the token from the Bearer ${token} structure and then 
+   * passes it to validateToken
+   * 
+   * @returns {*} a function call to validateToken
+   * 
+   */
+  authenticate (token) { 
+    if(debug) console.log('authController -- authenticate')
+    const sliced = token.replace('Bearer ', '')
+    return this.validateToken(sliced)
+  }
+
+  createToken (data) {
+    if(debug) console.log('authController -- createToken')
+    return jwt.sign(data, TOKEN_SECRET)
+  }
+
+  createRefreshToken (token) {
+    if(debug) console.log('authController -- createRefreshToken')
+    //set to expire in 1 minute
+    return jwt.sign({token}, TOKEN_SECRET, { expiresIn: '1m'})
+  }
+  
   
   /**
    * @method validateToken
@@ -124,12 +179,15 @@ export default class AuthController {
 
   route () {
     const router = new Router()
-    router.post('/refresh', (req, res) => {
-      this._getAuthToken(req, res)
-    })
     router.post('/', (req, res) => {
       this._getTokenContent(req, res)
     })
+    router.post('/admin', adminLimiter, (req, res) => {
+      this._adminLogin(req, res)
+    })
+    router.post('/refresh', (req, res) => {
+      this._getAuthToken(req, res)
+    })  
     return router
   }
 }

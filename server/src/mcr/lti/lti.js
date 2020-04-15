@@ -4,6 +4,7 @@ import { ParameterError, AssignmentMismatchError, SystemError } from '../common/
 import { Text } from '../../config/text'
 import { ltiVersions, LTI_BASIC } from './lti-defs'
 const HMAC_SHA1 = require('ims-lti/src/hmac-sha1')
+import AuthController from '../auth/auth-controller'
 
 const url = require('url')
 const debug = require('debug')('server')
