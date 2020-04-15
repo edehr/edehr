@@ -6,7 +6,6 @@ import { ParameterError } from '../common/errors'
 import { Router } from 'express'
 import {ok, fail} from '../common/utils'
 import { Text } from '../../config/text'
-import AuthController from '../auth/auth-controller.js'
 import { getAdminPassword } from '../../helpers/admin'
 
 const fs = require('fs')

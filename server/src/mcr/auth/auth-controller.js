@@ -1,10 +1,9 @@
 import { Router } from 'express'
-import { TOKEN_SECRET } from './auth-defs'
 import { getAdminPassword, generateAdminPassword } from '../../helpers/admin'
 import { adminLimiter } from '../../helpers/middleware'
 
 const jwt = require('jsonwebtoken')
-const debug = false
+const debug = true
 
 
 export default class AuthController {
@@ -146,13 +145,13 @@ export default class AuthController {
 
   createToken (data) {
     if(debug) console.log('authController -- createToken')
-    return jwt.sign(data, TOKEN_SECRET)
+    return jwt.sign(data, this.tokenSecret)
   }
 
   createRefreshToken (token) {
     if(debug) console.log('authController -- createRefreshToken')
     //set to expire in 1 minute
-    return jwt.sign({token}, TOKEN_SECRET, { expiresIn: '1m'})
+    return jwt.sign({token}, this.tokenSecret, { expiresIn: '1m'})
   }
   
   

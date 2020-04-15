@@ -4,7 +4,6 @@ import { ParameterError, AssignmentMismatchError, SystemError } from '../common/
 import { Text } from '../../config/text'
 import { ltiVersions, LTI_BASIC } from './lti-defs'
 const HMAC_SHA1 = require('ims-lti/src/hmac-sha1')
-import AuthController from '../auth/auth-controller'
 
 const url = require('url')
 const debug = require('debug')('server')
@@ -346,7 +345,7 @@ export default class LTIController {
     }
 
     try {
-      const token = this.authController.createAuthToken({visitId: visit._id})
+      const token = this.authController.createToken({visitId: visit._id})
       const refreshToken = this.authController.createRefreshToken(token)
       let url = this.config.clientUrl + route + `?apiUrl=${apiUrl}&token=${refreshToken}`
       if (req.errors.length > 0) {
