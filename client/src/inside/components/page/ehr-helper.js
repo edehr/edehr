@@ -309,7 +309,7 @@ export default class EhrHelpV2 {
     this.pageFormData.formKey = formKey
     /*
     If _isDevelopingContent then the EhrElementCommon has told this helper to stash
-    the asLoaded or the DataCaseStudy value into the pageFormData.value. We want
+    the asLoaded orz the DataCaseStudy value into the pageFormData.value. We want
     to use this.
     Otherwise, this is a student and we want to use the asLoadedData
      */
@@ -530,6 +530,12 @@ export default class EhrHelpV2 {
    */
   savePageFormEdit () {
     let payload = this.pageFormData
+    const asLoadedPageData = this.getAsLoadedPageData()
+    const mergedValues = {
+      ...asLoadedPageData,
+      ...payload.value
+    }
+    payload.value = mergedValues
     if (dbPageForm) console.log('EhrHelperV2 savePageFormEdit', payload)
     this._setEditing(false)
     this._saveData(payload)
