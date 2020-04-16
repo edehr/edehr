@@ -530,6 +530,12 @@ export default class EhrHelpV2 {
    */
   savePageFormEdit () {
     let payload = this.pageFormData
+    const asLoadedPageData = this.getAsLoadedPageData()
+    const mergedValues = {
+      ...asLoadedPageData,
+      ...payload.value
+    }
+    payload.value = mergedValues
     if (dbPageForm) console.log('EhrHelperV2 savePageFormEdit', payload)
     this._setEditing(false)
     this._saveData(payload)
