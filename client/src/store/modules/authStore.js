@@ -11,7 +11,7 @@ const state = {
 
 const getters = {
   authToken: function () {
-    return sessionStorage.getItem(sKeys.AUTH_TOKEN) || state.token
+    return state.token || sessionStorage.getItem(sKeys.AUTH_TOKEN)
   },
   authData: function () {
     return state.data
