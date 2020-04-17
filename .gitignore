@@ -20,7 +20,7 @@ client/dist/**
 
 client/selenium-debug\.log
 
-server/src/config/admin-password.txt
+server/src/config/admin-password\.txt
 
 makeEhr/generated/
 
