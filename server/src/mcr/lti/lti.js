@@ -345,7 +345,7 @@ export default class LTIController {
     }
 
     try {
-      const token = this.authController.createAuthToken({visitId: visit._id})
+      const token = this.authController.createToken({visitId: visit._id})
       const refreshToken = this.authController.createRefreshToken(token)
       let url = this.config.clientUrl + route + `?apiUrl=${apiUrl}&token=${refreshToken}`
       if (req.errors.length > 0) {

@@ -13,7 +13,7 @@ export default class AuthHelper {
       })
   }
 
-  getData (token) {
+  getData () {
     const apiUrl = StoreHelper.apiUrl()
     const url = `${apiUrl}/auth/`
     return axios.post(url, null)
@@ -22,4 +22,15 @@ export default class AuthHelper {
       })
   }
 
+  adminLogin (adminPass) {
+    const apiUrl = StoreHelper.apiUrl()
+    const url = `${apiUrl}/auth/admin`
+    return axios.post(url, {adminPass})
+  }
+
+  adminValidate (token) {
+    const apiUrl = StoreHelper.apiUrl()
+    const url = `${apiUrl}/auth/admin/validate`
+    return axios.post(url, null)
+  }
 }

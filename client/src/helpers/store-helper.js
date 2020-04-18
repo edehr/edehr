@@ -47,7 +47,7 @@ class StoreHelperWorker {
   isInstructor () { return this._getVisitProperty('isInstructor') }
   isDeveloper () { return this._getVisitProperty('isDeveloper') }
   isStudent () { return this._getVisitProperty('isStudent') }
-
+  isAdmin () { return this._get}
 
   /**
    * The API server must provide the url to call back into the server.
@@ -409,6 +409,14 @@ class StoreHelperWorker {
 
   setAuthToken (authToken) {
     return this._dispatchAuthStore('setAuthToken', authToken)
+  }
+
+  adminLogin (adminPassword) {
+    return this._dispatchAuthStore('adminLogin', { adminPassword })
+  }
+
+  adminValidate (token) {
+    return this._dispatchAuthStore('adminValidate', { token })
   }
 
   getAuthPayload () {

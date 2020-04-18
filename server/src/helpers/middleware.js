@@ -1,3 +1,9 @@
+import { getAdminPassword } from './admin'
+
+const rateLimit = require('express-rate-limit')
+
+const ADMIN_MAX_REQUEST_LIMIT = 5
+
 const debug = false
 
 export const validatorMiddlewareWrapper = (authController) => {
@@ -9,6 +15,7 @@ export const validatorMiddlewareWrapper = (authController) => {
         if (debug) console.log('result >> ', result)
         if (visitId) {
           if (debug) console.log('passingNext!!!')
+          req.authPayload = result
           next()
         } else {
           res.status(401).send('Invalid token!')
@@ -23,3 +30,23 @@ export const validatorMiddlewareWrapper = (authController) => {
     }
   }
 }
+
+export const isAdmin = (req, res, next) => {
+  const { authPayload } = req
+  if (req.authPayload.adminPassword) {
+    const passwd = getAdminPassword()
+    if (authPayload.adminToken === passwd) {
+      next()
+    } else {
+      return res.status(403).send('You don\'t have permission to do this!')
+    }
+  } else {
+    return res.status(401).send('Invalid token')
+  }
+}
+
+export const adminLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000,
+  max: ADMIN_MAX_REQUEST_LIMIT,
+  message: 'Too many requests triggered. Please, try again later!'
+})
