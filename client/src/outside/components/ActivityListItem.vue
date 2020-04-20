@@ -23,6 +23,22 @@
             td
               ui-link(:name="'classList'", :query="{activityId: activityId}")
                 span go to list
+          tr
+            td Status:
+            td {{activity.closed ? "Closed" : "Open" }}
+          tr
+            td Created date:
+            td {{ activity.createDate | formatDateTime }}
+          tr
+            td Last Update date:
+            td {{ activity.lastDate | formatDateTime }}
+          tr
+            td Number of students participating:
+            td
+              span {{classList.length}}
+          tr
+            td Number of students with submitted work:
+            td {{classSubmittedList.length}}
 </template>
 
 <script>
@@ -54,6 +70,15 @@ export default {
   computed: {
     activityName () {
       return StoreHelper.getActivityTitle()
+    },
+    classList () { return StoreHelper.getClassList()  },
+
+    classSubmittedList () {
+      let list = this.classList
+      list = list.filter(sv => {
+        return sv.activityData.submitted
+      })
+      return list
     },
   },
   methods: {
