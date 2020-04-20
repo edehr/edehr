@@ -55,7 +55,7 @@ export default {
             if (!authToken) {
               return Promise.reject('Parameters Error')
             } else {
-              setAuthHeader()
+              setAuthHeader(authToken)
               return StoreHelper.fetchTokenData(authToken, apiUrl)
             }
           }
