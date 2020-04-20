@@ -31,6 +31,6 @@ export default class AuthHelper {
   adminValidate (token) {
     const apiUrl = StoreHelper.apiUrl()
     const url = `${apiUrl}/auth/admin/validate`
-    return axios.post(url, null)
+    return axios.post(url, token)
   }
 }

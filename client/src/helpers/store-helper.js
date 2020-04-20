@@ -2,7 +2,7 @@ import store from '../store'
 import {removeEmptyProperties } from './ehr-utils'
 import sKeys from './session-keys'
 
-const debug = false
+const debug = true
 
 class StoreHelperWorker {
 
@@ -11,6 +11,22 @@ class StoreHelperWorker {
   getMergedData () { return store.getters['ehrDataStore/mergedData'] }
 
   getHasDataForPagesList () { return store.getters['ehrDataStore/hasDataForPagesList'] }
+
+  async _isAdminWrapper () { 
+    let isAdmin = false
+    const token = this.getAuthToken()
+    const verified = this.adminValidate(token)
+      .then((r) => {
+        console.log('then >> ', r)
+        console.log('_isAdminWrapper >> ', verified)
+        isAdmin = r.isAdmin
+      }).catch(err => {
+        if (debug) console.log('StoreHelper _isAdminWrapper threw', err )
+        isAdmin = false
+      })
+    return isAdmin
+    
+  }
 
   /* **********   Internal  ************** */
   _getActivityDataProperty (key) { return store.getters['activityDataStore/' + key]}
@@ -77,6 +93,7 @@ class StoreHelperWorker {
   setShowAdvanced (value) { store.commit('system/setShowingAdvanced', value) }
   isLoading () { return this._getSystemProperty('isLoading')}
   isShowingAdvanced () { return this._getSystemProperty('isShowingAdvanced') }
+  isAdmin () { return this._isAdminWrapper() }
 
   /*
   * **********   Instructor  **************

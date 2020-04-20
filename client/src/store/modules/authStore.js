@@ -46,14 +46,10 @@ const actions = {
         return Promise.reject(err.response.data)
       })
   },
-  adminValidate: function (none, { token }) {
-    return authHelper.adminValidate(token)
-      .then(() => {
-        return {
-          isAdmin: true
-        }
-      }).catch(err => {
-        return Promise.reject(err.response.data)
+  adminValidate: function (none) {
+    return authHelper.adminValidate()
+      .then((res) => {
+        return res.data.isAdmin
       })
   }
   

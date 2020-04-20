@@ -38,12 +38,18 @@
           td
             ui-button(v-on:buttonClicked="showEditDialog", :value="item._id", :secondary="isItemMisconfigured(item)")
               fas-icon(icon="edit") Edit assignment properties
+            //- , v-on:buttonClicked="showDeleteConfirmDialog", :value="item._id", 
+            ui-button(v-if="canBeDeleted(item)", danger )
+              fas-icon(icon="trash")  Edit assignment properties
     assignments-dialog(ref="theDialog")
+    ui-confirm(ref="confirmDialog", @confirm="handleDeletion", @abort="resetDeletion", @cancel="resetDeletion")
+    
 </template>
 
 <script>
 import UiButton from '../../app/ui/UiButton.vue'
 import UiLink from '../../app/ui/UiLink.vue'
+import UiConfirm from '../../app/ui/UiConfirm'
 import StoreHelper from '../../helpers/store-helper'
 import { getIncomingParams, downObjectToFile } from '../../helpers/ehr-utils'
 import BreadCrumb from './BreadCrumb'
@@ -61,9 +67,10 @@ export default {
     return {
       isRespondingToError: null,
       validationWarning: null,
+      isAdmin: false
     }
   },
-  components: { AssignmentsDialog, UiButton, UiLink, BreadCrumb },
+  components: { AssignmentsDialog, UiButton, UiConfirm, UiLink, BreadCrumb },
   computed: {
     isDevelopingContent () {
       return StoreHelper.isDevelopingContent()
@@ -112,13 +119,35 @@ export default {
       DEFAULT_SEED_NAME === item.seedDataObj.name || 
       DEFAULT_SEED_DESCRIPTION === item.seedDataObj.description
     },
+    canBeDeleted (item) {
+      const count = this.activitiesUsingAssignmentCount(item._id)
+      return this.isAdmin && count === 0
+    },
+
+    handleDeletion (item) {
+
+    },
+    
+    resetDeletion (item) {
+      
+    }
   },
   mounted: function () {
+    const debug = true
     // TODO BG thinks this needs to be tested. Create a LMS activity with invalid external id.
     // Need to give error to user. Does this do it?
     let params2 = getIncomingParams()
     this.isRespondingToError = params2['error']
     StoreHelper.loadAssignmentList()
+    const token = StoreHelper.getAuthToken()
+    StoreHelper.adminValidate(token)
+      .then(r => {
+        if (debug) console.log('r >> ', r)
+        this.isAdmin = r.isAdmin
+      }).catch(err => {
+        if (debug) console.log('err')
+      })
+
   }
 }
 </script>
