@@ -52,6 +52,13 @@ const actions = {
       return results
     })
   },
+  delete (context, id) {
+    const url = `/${id}`
+    return InstoreHelper.deleteRequest(context, API, url)
+      .then(response => {
+        if (debug) console.log('delete response >>', response)
+      })
+  }
 }
 
 const mutations = {

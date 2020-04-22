@@ -3,7 +3,7 @@
     app-dialog(
       ref="theDialog", 
       :isModal="true", 
-      :saveButtonLabel="save",
+      :saveButtonLabel="saveLabel",
       :cancelButtonLabel="cancel",
       @save="confirmDialog", 
       @cancel="cancelDialog"
@@ -36,7 +36,8 @@ export default {
     }
   },
   props: {
-    setFooter: {type: Boolean, default: false}
+    setFooter: {type: Boolean, default: false},
+    saveLabel: { type: String, default: SAVE_BUTTON_LABEL }
   },
 
   methods: {

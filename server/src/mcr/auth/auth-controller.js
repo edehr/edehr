@@ -69,12 +69,13 @@ export default class AuthController {
   }
 
   _adminValidate (req, res) {
-    const { token } = req.body
-    if (debug) console.log('_adminValidate', token)
-    if (token) {
-      if(debug) console.log('auth >> ', token)
+    const { authorization } = req.headers
+    console.log('req.headers >> ', req.headers)
+    if (debug) console.log('_adminValidate', authorization)
+    if (authorization) {
+      if(debug) console.log('auth >> ', authorization)
       try {
-        const result = this.validateToken(token)
+        const result = this.authenticate(authorization)
         if (debug) console.log('result >> ', result)
         if (result.adminPassword) {
           const adminPassword = getAdminPassword()
@@ -86,7 +87,7 @@ export default class AuthController {
         return res.status(403).send(TEXT.NOT_PERMITTED)
         
       } catch (err) {
-        return res.json({ isAuthed: false })
+        return res.status(500).send(err)
       }
 
     } else {

@@ -12,21 +12,6 @@ class StoreHelperWorker {
 
   getHasDataForPagesList () { return store.getters['ehrDataStore/hasDataForPagesList'] }
 
-  async _isAdminWrapper () { 
-    let isAdmin = false
-    const token = this.getAuthToken()
-    const verified = this.adminValidate(token)
-      .then((r) => {
-        console.log('then >> ', r)
-        console.log('_isAdminWrapper >> ', verified)
-        isAdmin = r.isAdmin
-      }).catch(err => {
-        if (debug) console.log('StoreHelper _isAdminWrapper threw', err )
-        isAdmin = false
-      })
-    return isAdmin
-    
-  }
 
   /* **********   Internal  ************** */
   _getActivityDataProperty (key) { return store.getters['activityDataStore/' + key]}
@@ -93,7 +78,6 @@ class StoreHelperWorker {
   setShowAdvanced (value) { store.commit('system/setShowingAdvanced', value) }
   isLoading () { return this._getSystemProperty('isLoading')}
   isShowingAdvanced () { return this._getSystemProperty('isShowingAdvanced') }
-  isAdmin () { return this._isAdminWrapper() }
 
   /*
   * **********   Instructor  **************
@@ -193,6 +177,8 @@ class StoreHelperWorker {
   getAssignment (id) { return this._dispatchAssignment('get', id) }
 
   loadAssignment (id) { return this._dispatchAssignment('load', id) }
+
+  deleteAssignment (id) { return this._dispatchAssignment('delete', id)}
 
   loadAssignmentAndSeedLists () {
   // load the seeds first so they are ready for the assignments to integrate
