@@ -44,8 +44,7 @@ export default {
         .then(() => {
           if (refreshToken) {
             return StoreHelper.fetchAndStoreAuthToken(refreshToken, apiUrl)
-              .then(() => {
-                const token = StoreHelper.getAuthToken()
+              .then((token) => {
                 if (!token) {
                   return Promise.reject('Refresh token is expired')
                 }
@@ -61,9 +60,7 @@ export default {
           }
         })
         .then(() => {
-          return StoreHelper.getAuthPayload()
-        })
-        .then((payload) => {
+          const payload = StoreHelper.getAuthData()
           if (!(payload && payload.visitId)) {
             return Promise.reject('Error when fetching token data')
           } else {
