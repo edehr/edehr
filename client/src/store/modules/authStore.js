@@ -4,16 +4,25 @@ import { setAuthHeader } from '../../helpers/axios-helper'
 
 const authHelper = new AuthHelper()
 
+const _getToken = () => {
+  return sessionStorage.getItem(sKeys.AUTH_TOKEN)
+}
+
+const _setToken = (token) => {
+  sessionStorage.setItem(sKeys.AUTH_TOKEN, token)
+}
+
+
 const state = {
   data: {},
-  token: undefined
 }
 
 const getters = {
-  authToken: function () {
-    return state.token || sessionStorage.getItem(sKeys.AUTH_TOKEN)
+  token: function () {
+    const token = _getToken()
+    return token
   },
-  authData: function () {
+  data: function () {
     return state.data
   }
 }
@@ -23,14 +32,16 @@ const actions = {
     return authHelper.getToken(refreshToken)
       .then(res => {
         const { token } = res.data
-        return commit('setAuthToken', token)
+        _setToken(token)
+        setAuthHeader(token)
+        return token
       })
   },
-  fetchTokenData: function ({commit}, { authToken }) {
+  fetchData: function ({commit}, { authToken }) {
     return authHelper.getData(authToken)
       .then(res => {
         const { data } = res
-        return commit('setAuthData', data)
+        return commit('setData', data)
       })
   },
   adminLogin: function ({commit}, { adminPassword }) {
@@ -38,7 +49,9 @@ const actions = {
       .then(res => {
         const { token } = res.data
         if (res.status === 200 && token) {
-          return commit('setAuthToken', token)
+          _setToken(token)
+          setAuthHeader(token)
+          return Promise.resolve(token)
         } else if (res.status === 201) {
           return Promise.reject('The token has been created. Please, contact an administrator to get it.')
         }
@@ -60,12 +73,7 @@ const actions = {
 }
 
 const mutations = {
-  setAuthToken: function (none, token) {
-    sessionStorage.setItem(sKeys.AUTH_TOKEN, token)
-    state.token = token
-    return setAuthHeader(token)
-  },
-  setAuthData: function (none, data) {
+  setData: function (none, data) {
     state.data = data
   }
 }

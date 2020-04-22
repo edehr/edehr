@@ -3,7 +3,6 @@ import axios from 'axios'
 
 export const setAuthHeader = (token) => {
   const tokenString = `Bearer ${token}`
-  axios.defaults.headers['Authorization'] = null
   axios.defaults.headers['Authorization'] = tokenString
 }
 

@@ -404,11 +404,7 @@ class StoreHelperWorker {
   }
 
   fetchTokenData (authToken = this.getAuthToken(), apiUrl) {
-    return this._dispatchAuthStore('fetchTokenData', {authToken, apiUrl})
-  }
-
-  setAuthToken (authToken) {
-    return this._dispatchAuthStore('setAuthToken', authToken)
+    return this._dispatchAuthStore('fetchData', {authToken, apiUrl})
   }
 
   adminLogin (adminPassword) {
@@ -419,15 +415,13 @@ class StoreHelperWorker {
     return this._dispatchAuthStore('adminValidate', { token })
   }
 
-  getAuthPayload () {
-    return this._getAuthStore('authData')
+  getAuthData () {
+    return this._getAuthStore('data')
   }
 
   getAuthToken () {
-    return this._getAuthStore('authToken')
+    return this._getAuthStore('token')
   }
-  
-
 }
 
 const StoreHelper = new StoreHelperWorker()
