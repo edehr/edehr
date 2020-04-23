@@ -14,6 +14,7 @@ import {
   formatTimeStr } from '../../../helpers/ehr-utils'
 import EhrDefs from '../../../helpers/ehr-defs-grid'
 import StoreHelper from '../../../helpers/store-helper'
+import { Text } from '../../../helpers/ehr-text'
 
 const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
@@ -401,7 +402,7 @@ export default class EhrHelpV2 {
           this._loadPageData()
         })
     } else {
-      return Promise.reject('Coding error using _saveData out of context')
+      return Promise.reject(Text.FUNCTION_OUT_OF_CONTEXT('_saveData'))
     }
   }
 

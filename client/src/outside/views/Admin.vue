@@ -14,6 +14,7 @@
 import StoreHelper from '../../helpers/store-helper'
 import UiButton from '../../app/ui/UiButton'
 import sKeys from '../../helpers/session-keys'
+import { Text } from '../../helpers/ehr-text'
 
 export default {
   components: {
@@ -48,7 +49,7 @@ export default {
       if(token && visitId) {
         return true
       } else {
-        alert('You need to be properly authenticated to do this')
+        alert(Text.REQUIRE_AUTHENTICATION)
         this.redirect()
         return false
       }

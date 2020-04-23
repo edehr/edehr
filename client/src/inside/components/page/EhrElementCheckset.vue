@@ -12,6 +12,7 @@
 import EhrElementCommon from './EhrElementCommon'
 import { setApiError } from '../../../helpers/ehr-utils'
 import camelcase from 'camelcase'
+import { Text } from '../../../helpers/ehr-text'
 
 const debug = false
 
@@ -46,7 +47,7 @@ export default {
       let result = true
       let opts = this.options
       if(!opts || opts.length === 0) {
-        setApiError('The checkset '+ this.key + ' definition is missing the options property')
+        setApiError(Text.IS_INVALID_CHECKSET(this.key))
         result = false
       }
       return result

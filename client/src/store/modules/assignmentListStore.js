@@ -1,6 +1,7 @@
 import InstoreHelper from './instoreHelper'
 import StoreHelper from '../../helpers/store-helper'
 import { setApiError } from '../../helpers/ehr-utils'
+import { Text } from '../../helpers/ehr-text'
 const API = 'assignments'
 const debug = false
 
@@ -22,7 +23,7 @@ const actions = {
       let list = response.data.assignments
       if(debug) console.log('loadAssignments response.data', list)
       if (!list) {
-        let msg = 'ERROR the system should have assignments'
+        let msg = Text.MUST_HAVE_ASSIGNMENTS
         console.error(msg)
         setApiError(msg)
         return
@@ -75,7 +76,7 @@ const actions = {
         return context.dispatch('loadAssignments')
       })
       .catch(err => {
-        let msg = 'error in update assignment ' + err
+        let msg = Text.UPDATE_ASSIGNMENT_ERROR(err)
         console.error(msg)
         setApiError(msg)
       })
