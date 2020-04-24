@@ -2,6 +2,7 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import db from './db'
 import { apiMiddle, apiError } from './api.js'
+import { Text } from '../config/text'
 const debug = require('debug')('server')
 const helmet = require('helmet')
 
@@ -50,7 +51,7 @@ export default class EhrApp {
     var env = process.env.NODE_ENV
     if (url.includes('favicon')) {
       debug('Another request for the favicon')
-      res.status(status).send('No favicon')
+      res.status(status).send(Text.NO_FAVICON)
     } else {
       var msg = 'Could not find "' + fullUrl + '". Environment: ' + env
       debug(msg)

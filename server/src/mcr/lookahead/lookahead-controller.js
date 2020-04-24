@@ -2,6 +2,7 @@ import {ok, fail} from '../common/utils'
 import { Router } from 'express'
 import fs from 'fs'
 import path from 'path'
+import { Text } from '../../config/text'
 
 export default class LookaheadController {
 
@@ -14,13 +15,13 @@ export default class LookaheadController {
 
   validateTerm (term) {
     if(!term) {
-      return 'Need to provide a search term for the medication lookup'
+      return Text.SEARCH_TERM_REQUIRED
     }
     if(typeof term !== 'string') {
-      return 'Search term for the medication lookup need to be given a string'
+      return Text.SEARCH_TERM_TYPE_ERROR
     }
     if(term.length < 3) {
-      return 'Search term for the medication lookup needs to be at least 3 characters long'
+      return Text.SEARCH_TERM_MIN_CHAR_LENGTH
     }
     return undefined
   }

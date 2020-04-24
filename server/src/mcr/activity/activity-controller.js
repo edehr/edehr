@@ -2,7 +2,7 @@ import BaseController from '../common/base'
 import Visit from '../visit/visit'
 import Activity from './activity'
 import {ok, fail} from '../common/utils'
-import { Text } from '../../../../client/src/helpers/ehr-text'
+import { Text } from '../../config/text'
 const debug = require('debug')('server')
 
 /*
