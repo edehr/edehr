@@ -27,5 +27,32 @@ export const Text = {
 
   SYSTEM_REQUIRE_REQUEST_BODY: 'Must provide request body',
   SYSTEM_REQUIRE_KEY_AND_SECRET: 'Must provide both a key and secret to create a tool consumer',
+
+  // AuthController
+  EXPIRED_ADMIN: 'The password you\'ve entered is no longer valid. Please, try again. If the problem persists, please, contact an administrator',
+  EXPIRED_TOKEN: 'Invalid token. Please, try again!',
+  INVALID_TOKEN: 'Invalid token. Please, check with an administrator if your password is still valid!',
+  NOT_PERMITTED: 'You don\'t have permission to view this',
+  REQUIRED_ADMIN: 'A password and the token are required',
+  SYS_ERROR: 'There was a problem validating the token. If it persists, please contact an administrator',
+  TOKEN_REQUIRED: 'A token is required',
+
+  // Lookahead
+  SEARCH_TERM_REQUIRED: 'Need to provide a search term for the medication lookup',
+  SEARCH_TERM_TYPE_ERROR: 'Search term for the medication lookup need to be given a string',
+  SEARCH_TERM_MIN_CHAR_LENGTH: 'Search term for the medication lookup needs to be at least 3 characters long',
+
+  // API errors
+  NO_FAVICON: 'No favicon',
+
+  // Admin errors
+  INVALID_CONSUMER_ID: (key) => `Invalid consumer id: ${key}`,
+  UNSUPPORTED_CONSUMER_KEY: (key) => `Unsupported consumer key ${key}`,
+
+  // Middleware errors
+  TOO_MANY_REQUESTS_ERROR: 'Too many requests triggered. Please, try again later!',
+
+  // Base errors
+  INVALID_BASE_ID: (id) => `Invalid id: ${id}`
 }
 

@@ -1,19 +1,10 @@
 import { Router } from 'express'
 import { getAdminPassword, generateAdminPassword } from '../../helpers/admin'
 import { adminLimiter } from '../../helpers/middleware'
+import { Text } from '../../config/text'
 
 const jwt = require('jsonwebtoken')
 const debug = false
-
-const TEXT = {
-  EXPIRED_ADMIN: 'The password you\'ve entered is no longer valid. Please, try again. If the problem persists, please, contact an administrator',
-  EXPIRED_TOKEN: 'Invalid token. Please, try again!',
-  INVALID: 'Invalid token. Please, check with an administrator if your password is still valid!',
-  NOT_PERMITTED: 'You don\'t have permission to view this',
-  REQUIRED_ADMIN: 'A password and the token are required',
-  SYS_ERROR: 'There was a problem validating the token. If it persists, please contact an administrator',
-  TOKEN_REQUIRED: 'A token is required'
-}
 
 export default class AuthController {
 
@@ -43,7 +34,7 @@ export default class AuthController {
     let adminToken = getAdminPassword()
     const { authorization } = req.headers
     if (!adminPass && !authorization) {
-      res.status(401).send(TEXT.REQUIRED_ADMIN)
+      res.status(401).send(Text.REQUIRED_ADMIN)
     } else {
       if (debug) console.log('adminPass >> adminToken', adminPass, adminToken)
       try {
@@ -54,7 +45,7 @@ export default class AuthController {
             const newToken = this.createToken(adminPayload)
             return res.status(200).json({token: newToken})
           } else {
-            return res.status(401).send(TEXT.EXPIRED_ADMIN)
+            return res.status(401).send(Text.EXPIRED_ADMIN)
           }
         } else {
           generateAdminPassword()
@@ -63,7 +54,7 @@ export default class AuthController {
       }
       catch (err) {
         if (debug) console.log('_adminLogin threw', err)
-        return res.status(401).send(TEXT.EXPIRED_ADMIN)
+        return res.status(401).send(Text.EXPIRED_ADMIN)
       }
     }
   }
@@ -82,16 +73,16 @@ export default class AuthController {
           if (result.adminPassword === adminPassword) {
             return res.status(200).send(/*success*/)
           }
-          return res.status(401).send(TEXT.INVALID)
+          return res.status(401).send(Text.INVALID_TOKEN)
         }
-        return res.status(403).send(TEXT.NOT_PERMITTED)
+        return res.status(403).send(Text.NOT_PERMITTED)
         
       } catch (err) {
         return res.status(500).send(err)
       }
 
     } else {
-      return res.status(401).send(TEXT.TOKEN_REQUIRED)
+      return res.status(401).send(Text.TOKEN_REQUIRED)
     }
   }
 
@@ -122,11 +113,11 @@ export default class AuthController {
         if (debug) console.log('validate token threw >> ', err)
         // This arguably returns 401 in this case. As the validateToken can throw if the token has expired,
         // which is a use case of the refresh token.
-        res.status(401).send(TEXT.EXPIRED_TOKEN)
+        res.status(401).send(Text.EXPIRED_TOKEN)
       }
     } else {
-      if(debug) console.log(TEXT.TOKEN_REQUIRED, req.body)
-      res.status(401).send(TEXT.TOKEN_REQUIRED)
+      if(debug) console.log(Text.TOKEN_REQUIRED, req.body)
+      res.status(401).send(Text.TOKEN_REQUIRED)
     }
   }
 
@@ -153,11 +144,11 @@ export default class AuthController {
       } catch(err) {
         if (debug) console.log('_getTokenContent threw >> ', err)
         // Here this can be 500, since it catches and error from the jwt.verify function
-        res.status(500).send(TEXT.SYS_ERROR)
+        res.status(500).send(Text.SYS_ERROR)
       }
     } else {
       if(debug) console.log('AuthController ._getTokenContent --- Token is required!')
-      res.status(401).send(TEXT.TOKEN_REQUIRED)
+      res.status(401).send(Text.TOKEN_REQUIRED)
     }
   }
 

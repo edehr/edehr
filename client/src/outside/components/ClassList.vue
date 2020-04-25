@@ -85,18 +85,8 @@ import UiButton from '../../app/ui/UiButton.vue'
 import UiLink from '../../app/ui/UiLink.vue'
 import UiSaveAsPrompt from '../../app/ui/UiSaveAsPrompt.vue'
 import { downArrayToCsvFile } from '../../helpers/ehr-utils'
+import { Text } from '../../helpers/ehr-text'
 
-const Text = {
-  EVAL_DONE: 'Evaluation is done. Let the student see the evaluation notes.',
-  EVALUATED: 'Evaluated',
-  NOT_SUBMITTED: 'Not submitted',
-  SEND_BACK: 'Send evaluation to student',
-  SEND_BACK_FOR: 'Send back for edits',
-  SEND_BACK_TO: 'Send back to student for edits',
-  SUBMITTED: 'Submitted and waiting for evaluation',
-  TAKE_BACK: 'Take back from student',
-  WANT_TO_EDIT: 'I want to edit the evaluation notes'
-}
 export default {
   components: {
     UiButton, UiLink, UiSaveAsPrompt

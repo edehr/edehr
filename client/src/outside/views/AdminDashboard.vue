@@ -9,6 +9,7 @@
 <script>
 import StoreHelper from '../../helpers/store-helper'
 import { setAuthHeader } from '../../helpers/axios-helper'
+import { Text } from '../../helpers/ehr-text'
 export default {
   data : () => {
     return {
@@ -36,7 +37,7 @@ export default {
           StoreHelper.setLoading(null, false)
         })
     } else {
-      alert('You need to be properly authenticated to do this')
+      alert(Text.REQUIRE_AUTHENTICATION)
       this.redirect()
       return false
     }

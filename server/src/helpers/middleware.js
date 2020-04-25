@@ -1,4 +1,5 @@
 import { getAdminPassword } from './admin'
+import { Text } from '../config/text'
 
 const rateLimit = require('express-rate-limit')
 
@@ -18,7 +19,7 @@ export const validatorMiddlewareWrapper = (authController) => {
           req.authPayload = result
           next()
         } else {
-          res.status(401).send('Invalid token!')
+          res.status(401).send(Text.INVALID_TOKEN)
         }
       } catch (err) {
         if (debug) console.log('validatorMiddleware caught ', err)
@@ -48,5 +49,5 @@ export const isAdmin = (req, res, next) => {
 export const adminLimiter = rateLimit({
   windowMs: 60 * 60 * 1000,
   max: ADMIN_MAX_REQUEST_LIMIT,
-  message: 'Too many requests triggered. Please, try again later!'
+  message: Text.TOO_MANY_REQUESTS_ERROR
 })

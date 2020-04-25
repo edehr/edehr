@@ -2,6 +2,7 @@ import BaseController from '../common/base'
 import Visit from '../visit/visit'
 import Activity from './activity'
 import {ok, fail} from '../common/utils'
+import { Text } from '../../config/text'
 const debug = require('debug')('server')
 
 /*
@@ -43,7 +44,7 @@ export default class ActivityController extends BaseController {
             activity.lastDate = Date.now()
             if (!activity.assignment.equals(assignment._id)) {
             // console.log('was ', activity.assignment, 'seeking', assignment._id)
-              const msg = 'Changing assignment for this activity.'
+              const msg = Text.CHANGE_ACTIVITY_ASSIGNMENT
               debug('updateCreateActivity ' + msg)
               activity.assignment = assignment._id
             }

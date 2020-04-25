@@ -3,6 +3,7 @@ import { Router } from 'express'
 import pluralize from 'pluralize'
 import {ok, fail} from './utils'
 import {SystemError} from './errors'
+import { Text } from '../../config/text'
 
 const MAX_RESULTS = 1000
 // var emptyPromise = function (t) {return new Promise (function (r, e) { r (t); }); };
@@ -42,7 +43,7 @@ export default class BaseController {
 
   baseFilter (id) {
     if (!mongoose.Types.ObjectId.isValid(id)) {
-      throw new SystemError('Invalid id: ' + id)
+      throw new SystemError(Text.INVALID_BASE_ID)
     }
     var filter = {}
     filter[this.key] = id

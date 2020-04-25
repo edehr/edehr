@@ -1,5 +1,6 @@
 import InstoreHelper from './instoreHelper'
 import { setApiError } from '../../helpers/ehr-utils'
+import { Text } from '../../helpers/ehr-text'
 const API = 'assignments'
 const NAME = 'AssignmentStore'
 const OBJ = 'assignment'
@@ -45,7 +46,7 @@ const actions = {
     return InstoreHelper.getRequest(context, API, url).then(response => {
       let results = response.data[OBJ]
       if (!results) {
-        let msg = `ERROR the could not get ${NAME} ${id}`
+        let msg = Text.GET_ASSIGNMENT_ERROR(NAME, id)
         setApiError(msg)
         return
       }

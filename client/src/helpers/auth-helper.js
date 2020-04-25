@@ -1,6 +1,6 @@
 import axios from 'axios'
 import StoreHelper from './store-helper'
-
+import { Text } from './ehr-text'
 
 export default class AuthHelper {
 
@@ -9,7 +9,7 @@ export default class AuthHelper {
     const url = `${apiUrl}/auth/refresh`
     return axios.post(url, {refreshToken})
       .catch(err => {
-        throw `Token has expired \n${err}`
+        throw Text.EXPIRED_TOKEN(err)
       })
   }
 
@@ -18,7 +18,7 @@ export default class AuthHelper {
     const url = `${apiUrl}/auth/`
     return axios.post(url, null)
       .catch(err => {
-        throw `Invalid token \n ${err}`
+        throw Text.INVALID_TOKEN(err)
       })
   }
 

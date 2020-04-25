@@ -1,6 +1,7 @@
 import InstoreHelper from './instoreHelper'
 import { setApiError } from '../../helpers/ehr-utils'
 import sKeys from '../../helpers/session-keys'
+import { Text } from '../../helpers/ehr-text'
 const API = 'activities'
 const OBJ = 'activity'
 const NAME = 'ActivityStore'
@@ -89,7 +90,7 @@ const actions = {
     return InstoreHelper.getRequest(context, API, url).then(response => {
       let results = response.data[OBJ]
       if (!results) {
-        let msg = `ERROR the could not get ${NAME} ${id}`
+        let msg = Text.GET_ACTIVITY_STORE_ERROR(NAME, id)
         setApiError(msg)
         return
       }
