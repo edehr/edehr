@@ -228,7 +228,7 @@ export default class AuthController {
 
     router.post('/refresh', (req, res) => {
       this._getAuthToken(req, res)
-    })  
+    }) 
     return router
   }
 }

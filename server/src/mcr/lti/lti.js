@@ -3,7 +3,6 @@ import Role from '../roles/roles'
 import { ParameterError, AssignmentMismatchError, SystemError } from '../common/errors'
 import { Text } from '../../config/text'
 import { ltiVersions, LTI_BASIC } from './lti-defs'
-const HMAC_SHA1 = require('ims-lti/src/hmac-sha1')
 
 const url = require('url')
 const debug = require('debug')('server')
@@ -419,37 +418,9 @@ export default class LTIController {
           next(err)
         })
     })
-    router.post('/make-HMAC_SHA1', (req, res) => {
-      this._makeSignature(req, res)
-    })
     return router
   }
-
-  _makeSignature (req, res) {
-    if(req.body) {
-      if(debug) console.log('req.body >>', req.body)
-      try {
-        let signer = new HMAC_SHA1()
-        const b = Object.assign({}, req.body.req.data.ltiData, { 
-          oauth_timestamp: Math.round(Date.now() / 1000),
-          oauth_nonce: Date.now() + Math.random() * 100
-        })
-        const oauth_signature = signer.build_signature(
-          req, 
-          b,
-          b.oauth_consumer_secret
-        )
-
-        const body = Object.assign({}, b, {oauth_signature})
-        res.status(200).json({ body })
-      }
-      catch (err) {
-        res.status(500).send(err)
-      }
-    }
-  }
   
-
   _extractLtiData (props, src, dest) {
     dest = dest || {}
     props.forEach( p => dest[p] = src[p])

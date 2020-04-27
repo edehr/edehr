@@ -35,13 +35,21 @@ export const isAdmin = (req, res, next) => {
   const { authPayload } = req
   if (req.authPayload.adminPassword) {
     const passwd = getAdminPassword()
-    if (authPayload.adminToken === passwd) {
+    if (authPayload.adminPassword === passwd) {
       next()
     } else {
       return res.status(403).send('You don\'t have permission to do this!')
     }
   } else {
     return res.status(401).send('Invalid token')
+  }
+}
+
+export const localhostOnly = (req, res, next) => {
+  if (req.hostname === 'localhost') {
+    next()
+  } else {
+    res.status(400).send('This is a localhost-only request. Please, make sure your host is correct')
   }
 }
 
