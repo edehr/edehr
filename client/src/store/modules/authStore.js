@@ -5,11 +5,11 @@ import { setAuthHeader } from '../../helpers/axios-helper'
 const authHelper = new AuthHelper()
 
 const _getToken = () => {
-  return sessionStorage.getItem(sKeys.AUTH_TOKEN)
+  return localStorage.getItem(sKeys.AUTH_TOKEN)
 }
 
 const _setToken = (token) => {
-  sessionStorage.setItem(sKeys.AUTH_TOKEN, token)
+  localStorage.setItem(sKeys.AUTH_TOKEN, token)
 }
 
 
