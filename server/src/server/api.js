@@ -96,7 +96,7 @@ export function apiMiddle (app, config) {
   const localhostOnlyAdminMiddleware = [
     cors(corsOptions),
     localhostOnly,
-    adminLimiter,
+    // adminLimiter,
     validatorMiddlewareWrapper(auth),
     isAdmin
   ]

@@ -4,9 +4,6 @@ const HMAC_SHA1 = require('ims-lti/src/hmac-sha1')
 const debug = false
 
 export default class PlaygroundController {
-
-
-
   /**
    * @method _makeSignature
    * @param {*} req request
@@ -21,22 +18,23 @@ export default class PlaygroundController {
   _makeSignature (req, res) {
     if(req.body) {
       if(debug) console.log('req.body >>', req.body)
+      const _req = req.body.req
       try {
         let signer = new HMAC_SHA1()
-        const mergedBody = Object.assign({}, req.body.req.data.ltiData, { 
+        const mergedBody = Object.assign({}, _req.body, { 
           oauth_timestamp: Math.round(Date.now() / 1000),
           oauth_nonce: Date.now() + Math.random() * 100
         })
         const oauth_signature = signer.build_signature(
-          req, 
+          _req, 
           mergedBody,
           mergedBody.oauth_consumer_secret
         )
-
-        const body = Object.assign({}, mergedBody, { oauth_signature })
-        res.status(200).json({ body })
+        const body = Object.assign({}, mergedBody, { oauth_signature }) 
+        res.status(200).json({ body, _req })
       }
       catch (err) {
+        if (debug) console.log('err >> ', err)
         res.status(500).send(err)
       }
     }
@@ -47,7 +45,6 @@ export default class PlaygroundController {
     const router = new Router()
 
     router.post('/make-HMAC_SHA1' ,(req, res) => {
-      console.log('this._makeSignature >> ', this._makeSignature)
       return this._makeSignature(req, res)
     })
 
