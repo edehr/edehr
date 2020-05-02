@@ -28,9 +28,9 @@ export default class AuthHelper {
     return axios.post(url, {adminPass})
   }
 
-  adminValidate (token) {
+  adminValidate () {
     const apiUrl = StoreHelper.apiUrl()
     const url = `${apiUrl}/auth/admin/validate`
-    return axios.post(url, null)
+    return axios.post(url)
   }
 }

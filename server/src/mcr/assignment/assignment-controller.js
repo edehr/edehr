@@ -1,9 +1,12 @@
 import BaseController from '../common/base'
 import Assignment from '../assignment/assignment'
+import Visit from '../visit/visit'
+import ActivityData from '../activity-data/activity-data'
 import SeedDataController from '../seed/seedData-controller'
 import { SystemError } from '../common/errors'
 import { Text } from '../../config/text'
 import {ok, fail} from '../common/utils'
+import { isAdmin } from '../../helpers/middleware'
 
 const debug = require('debug')('server')
 const sd = new SeedDataController()
@@ -18,6 +21,35 @@ export default class AssignmentController extends BaseController {
   _composeQuery (externalId, toolConsumerId) {
     return {$and: [{externalId: externalId}, {toolConsumer: toolConsumerId}]}
 
+  }
+
+  delete (assignmentId) {
+    console.log('assignmentDeletion')
+    if (!assignmentId) {
+      throw new SystemError('AssignmentId is missing!')
+    } else {
+      return Visit.find( { assignment: assignmentId } )
+        .then(visits => {
+          if (debug) console.log('visits >> ', visits)
+          const promises = visits.map(v => {
+            return ActivityData.remove(
+              { visit: v._id }
+            )
+          })
+          console.log('promises >> ', promises)
+          return Promise.all(promises)
+            .then(() => {
+              return Visit.remove(
+                { assignment: assignmentId }
+              )
+            })
+            .then(() => {
+              return Assignment.findOneAndDelete(
+                { _id: assignmentId }
+              )
+            })
+        })
+    }
   }
 
   /* *****
@@ -110,7 +142,22 @@ export default class AssignmentController extends BaseController {
   }
 
   route () {
-    const router = super.route()
+    const router = super.route()    
+    router.delete('/:key', isAdmin, (req, res) => {
+      const { key } = req.query
+      console.log('deleteAssignmentQuery')
+      this.delete(key)
+        .then(res => {
+          if (debug) console.log('res >> ', res)
+          res.status(200).json({success: true})
+        })
+        .catch(err => {
+          if (debug) console.log('err', err)
+          return req.status(500).send(err)
+          // fail(res)
+        })
+    })
+
     router.get('/consumer/:tool/externalId/:key', (req, res) => {
       this
         .locateAssignmentForStudent(req.params.key, req.params.tool)

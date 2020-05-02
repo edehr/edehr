@@ -88,6 +88,23 @@ class InstoreHelperWorker {
         })
     })
   }
+  deleteRequest (context, api, url) {
+    url = this.composeUrl(context, api, url)
+    if (debug) console.log('delete TO URL ', url, context)
+    StoreHelper.setLoading(context, true)
+    return new Promise ((resolve, reject) => {
+      axios.delete(url)
+        .then(result => {
+          StoreHelper.setLoading(context, false)
+          resolve(result)
+        }).catch(err => {
+          const msg = composeAxiosResponseError(err, 'Delete failed: ')
+          setApiError(err)
+          StoreHelper.setLoading(context, false)
+          reject(msg)
+        })
+    })
+  }
 }
 const InstoreHelper = new InstoreHelperWorker()
 export default InstoreHelper

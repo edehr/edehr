@@ -38,12 +38,18 @@
           td
             ui-button(v-on:buttonClicked="showEditDialog", :value="item._id", :secondary="isItemMisconfigured(item)")
               fas-icon(icon="edit") Edit assignment properties
+            //- , v-on:buttonClicked="showDeleteConfirmDialog", :value="item._id", 
+            ui-button(v-if="canBeDeleted(item)", danger, @buttonClicked="triggerConfirmDeletion(item)")
+              fas-icon(icon="trash")  Edit assignment properties
     assignments-dialog(ref="theDialog")
+    ui-confirm(ref="confirmDialog", @confirm="handleDeletion", @abort="resetDeletion", @cancel="resetDeletion", saveLabel="Confirm")
+    
 </template>
 
 <script>
 import UiButton from '../../app/ui/UiButton.vue'
 import UiLink from '../../app/ui/UiLink.vue'
+import UiConfirm from '../../app/ui/UiConfirm'
 import StoreHelper from '../../helpers/store-helper'
 import { getIncomingParams, downObjectToFile } from '../../helpers/ehr-utils'
 import BreadCrumb from './BreadCrumb'
@@ -55,15 +61,22 @@ const DEFAULT_ASSIGNMENT_DESCRIPTION = 'This assignment was automatically genera
 const DEFAULT_SEED_NAME = 'Default data'
 const DEFAULT_SEED_DESCRIPTION = 'This ehr data seed can not be modified. It is the default seed used when an assignment is created'
 
+const CONFIRM_DELETION_TEXT = {
+  title: 'Confirm assignment deletion?',
+  description: (name) => `Deleting ${name} will also delete all the data related to it.`
+}
+
 export default {
   name: 'AssignmentsListing',
   data () {
     return {
       isRespondingToError: null,
       validationWarning: null,
+      isAdmin: false,
+      selectedAssignment: {}
     }
   },
-  components: { AssignmentsDialog, UiButton, UiLink, BreadCrumb },
+  components: { AssignmentsDialog, UiButton, UiConfirm, UiLink, BreadCrumb },
   computed: {
     isDevelopingContent () {
       return StoreHelper.isDevelopingContent()
@@ -112,13 +125,48 @@ export default {
       DEFAULT_SEED_NAME === item.seedDataObj.name || 
       DEFAULT_SEED_DESCRIPTION === item.seedDataObj.description
     },
+    canBeDeleted (item) {
+      const count = this.activitiesUsingAssignmentCount(item._id)
+      return this.isAdmin && count === 0
+    },
+    triggerConfirmDeletion (item) {
+      this.selectedAssignment = item
+      this.$refs.confirmDialog.showDialog(
+        CONFIRM_DELETION_TEXT.title,
+        CONFIRM_DELETION_TEXT.description(item.name),
+        'Confirm',
+        'Cancel'
+      )
+    },
+    handleDeletion () {
+      StoreHelper.deleteAssignment(this.selectedAssignment._id)
+        .then(() => {
+          StoreHelper.setLoading(null, true)
+          StoreHelper.loadAssignmentList()
+          StoreHelper.setLoading(null, false)
+        })
+
+    },
+    resetDeletion (item) {
+      this.selectedAssignment = {}
+    }
   },
   mounted: function () {
+    const debug = false
     // TODO BG thinks this needs to be tested. Create a LMS activity with invalid external id.
     // Need to give error to user. Does this do it?
     let params2 = getIncomingParams()
     this.isRespondingToError = params2['error']
     StoreHelper.loadAssignmentList()
+    const token = StoreHelper.getAuthToken()
+    StoreHelper.adminValidate(token)
+      .then(r => {
+        if (debug) console.log('r >> ', r)
+        this.isAdmin = r.isAdmin
+      }).catch(err => {
+        if (debug) console.log('err')
+      })
+
   }
 }
 </script>

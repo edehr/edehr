@@ -61,7 +61,7 @@ const actions = {
   },
   adminValidate: function (none, { token }) {
     return authHelper.adminValidate(token)
-      .then(() => {
+      .then((r) => {
         return {
           isAdmin: true
         }
@@ -69,7 +69,6 @@ const actions = {
         return Promise.reject(err.response.data)
       })
   }
-  
 }
 
 const mutations = {

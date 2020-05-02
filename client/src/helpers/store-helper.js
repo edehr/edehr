@@ -2,7 +2,7 @@ import store from '../store'
 import {removeEmptyProperties } from './ehr-utils'
 import sKeys from './session-keys'
 
-const debug = false
+const debug = true
 
 class StoreHelperWorker {
 
@@ -11,6 +11,7 @@ class StoreHelperWorker {
   getMergedData () { return store.getters['ehrDataStore/mergedData'] }
 
   getHasDataForPagesList () { return store.getters['ehrDataStore/hasDataForPagesList'] }
+
 
   /* **********   Internal  ************** */
   _getActivityDataProperty (key) { return store.getters['activityDataStore/' + key]}
@@ -176,6 +177,8 @@ class StoreHelperWorker {
   getAssignment (id) { return this._dispatchAssignment('get', id) }
 
   loadAssignment (id) { return this._dispatchAssignment('load', id) }
+
+  deleteAssignment (id) { return this._dispatchAssignment('delete', id)}
 
   loadAssignmentAndSeedLists () {
   // load the seeds first so they are ready for the assignments to integrate
