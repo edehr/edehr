@@ -53,8 +53,8 @@ class StoreHelperWorker {
   /**
    * The API server must provide the url to call back into the server.
    */
-  apiUrl () { return sessionStorage.getItem('apiUrl') || undefined }
-  apiUrlSet (url) { sessionStorage.setItem('apiUrl', url) }
+  apiUrl () { return localStorage.getItem('apiUrl') || undefined }
+  apiUrlSet (url) { localStorage.setItem('apiUrl', url) }
 
   isReadOnlyInstructor () { return this._getVisitProperty('isReadOnlyInstructor')}
   setIsReadOnlyInstructor (isReadonly = false) { return store.commit('visit/setIsReadOnlyInstructor', isReadonly)}
