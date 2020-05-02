@@ -34,9 +34,10 @@ export const validatorMiddlewareWrapper = (authController) => {
 
 export const isAdmin = (req, res, next) => {
   const { authPayload } = req
-  if (req.authPayload.adminPassword) {
+  console.log('authPayload >> ', req, authPayload)
+  if (authPayload.adminPassword) {
     const passwd = getAdminPassword()
-    if (authPayload.adminToken === passwd) {
+    if (authPayload.adminPassword === passwd) {
       next()
     } else {
       return res.status(403).send('You don\'t have permission to do this!')
