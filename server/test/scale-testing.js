@@ -30,7 +30,6 @@ function launchLti () {
     oauth_consumer_key: 'edehrkey',
     oauth_consumer_secret: 'edehrsecret',
     context_id: 'some context id',
-    custom_assignment: '59',
     tool_consumer_instance_name: 'unit testing consumer',
     launch_presentation_return_url: 'http://some.place.org',
     resource_link_id: 'http://link-to-resource.com/resource',
@@ -39,7 +38,7 @@ function launchLti () {
     oauth_nonce: Date.now() + Math.random() * 100,
     custom_assignment: 'assignment1',
   }
-  let req = {
+  const req = {
     url: `${BASE_URL}/api/launch_lti`,
     method: 'POST',
     connection: {
