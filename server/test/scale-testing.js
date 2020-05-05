@@ -2,8 +2,8 @@ const axios = require('axios')
 require('@babel/core')
 require('@babel/polyfill')
 const HMAC_SHA1 = require('ims-lti/src/hmac-sha1')
-const BASE_URL = 'https://edehr.org'
-// const BASE_URL = 'http://localhost:27000'
+// const BASE_URL = 'https://edehr.org'
+const BASE_URL = 'http://localhost:27000'
 
 // function getVisits () {
 //   return axios.get(`${BASE_URL}/api/visits`)
@@ -32,6 +32,7 @@ function launchLti () {
     context_id: 'some context id',
     tool_consumer_instance_name: 'unit testing consumer',
     launch_presentation_return_url: 'http://some.place.org',
+    resource_link_title: "Resource Link Title",
     resource_link_id: 'http://link-to-resource.com/resource',
     oauth_signature_method: 'HMAC-SHA1',
     oauth_timestamp: Math.round(Date.now() / 1000),
