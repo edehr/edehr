@@ -18,6 +18,7 @@ import UserController from '../mcr/user/user-controller.js'
 import VisitController from '../mcr/visit/visit-controller'
 import SeedDataController from '../mcr/seed/seedData-controller'
 import { validatorMiddlewareWrapper, adminLimiter, localhostOnly, isAdmin } from '../helpers/middleware'
+import demoSeeder from '../config/lib/demoSeeder'
 
 // Sessions and session cookies
 // express-session stores session data here on the server and only puts session id in the cookie
@@ -104,6 +105,7 @@ export function apiMiddle (app, config) {
 
   return Promise.resolve()
     .then(() => {
+      demoSeeder()
       if (config.seedDB) {
         debug('seeding is enabled')
         return dbSeeder()
@@ -111,7 +113,7 @@ export function apiMiddle (app, config) {
     })
     .then(() => {
       if (config.seedDB) {
-        debug('seeding done')
+        debug('demo seeding done')
       }
     })
     .then(admin.initializeApp(app))
