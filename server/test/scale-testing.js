@@ -38,6 +38,7 @@ function launchLti () {
     oauth_timestamp: Math.round(Date.now() / 1000),
     oauth_nonce: Date.now() + Math.random() * 100,
     custom_assignment: 'assignment1',
+    resource_link_title: "Resource Link Title",
   }
   const req = {
     url: `${BASE_URL}/api/launch_lti`,

@@ -5,17 +5,20 @@
         div(class="ehr-group-wrapper  grid-to-1")
             div(class="form-element form-container")
                 div(class="text_input_wrapper form-container-item")
-                    label Username
+                  div(style="padding-top: 1em")
+                    label Full Name
                     input(class="input text-input", v-model="name", type="text")
-                    div(style="margin-top: 1em")
-                        label Role
-                        select(name="role", v-model="selectedRole")
-                            //- option(value="")
-                            option(
-                                v-for="role in roles", 
-                                :key="role.key", 
-                                v-bind:value="role.key"
-                            ) {{ role.value }}
+                    label E-mail
+                    input(class="input text-input", v-model="name", type="text")
+                    div
+                      label Role
+                      select(name="role", v-model="selectedRole")
+                          //- option(value="")
+                          option(
+                              v-for="role in roles", 
+                              :key="role.key", 
+                              v-bind:value="role.key"
+                          ) {{ role.value }}
                 ui-button(style="margin-top: 2vh", :disabled="!isNameUnique") Submit
 </template>
 

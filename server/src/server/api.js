@@ -19,6 +19,7 @@ import VisitController from '../mcr/visit/visit-controller'
 import SeedDataController from '../mcr/seed/seedData-controller'
 import { validatorMiddlewareWrapper, adminLimiter, localhostOnly, isAdmin } from '../helpers/middleware'
 import demoSeeder from '../config/lib/demoSeeder'
+import DemoController from '../mcr/demo/demo-controller'
 
 // Sessions and session cookies
 // express-session stores session data here on the server and only puts session id in the cookie
@@ -84,6 +85,7 @@ export function apiMiddle (app, config) {
   const ic = new IntegrationController()
   const pc = new PlaygroundController()
   const sd = new SeedDataController()
+  const demo = new DemoController()
   const middleWare = [
     cors(corsOptions),
     validatorMiddlewareWrapper(auth)
@@ -129,6 +131,7 @@ export function apiMiddle (app, config) {
       // External API
       api.use('/launch_lti', lti.route())
       api.use('/api/launch_lti', lti.route())
+      api.use('/demo', demo.route())
       // Inside API
       api.use('/activities', middleWare, act.route())
       api.use('/activity-data', middleWare, acc.route())
