@@ -9,6 +9,7 @@ const DEMO_CONSUMER_SECRET = 'demosecret'
 const DEMO_CONSUMER_KEY = 'demokey'
 const DEMO_ASSIGNMENT = 'demoAssignment'
 const TOOL_CONSUMER_NAME = 'EdEHRDemo'
+const DEMO_CONTEXT_ID = 'demoContext'
 
 const debug = true
 
@@ -36,7 +37,7 @@ export default class DemoController {
 
   createDemoUser (req, res) {
     const { fullName, role, email } = req.body
-    const host = req.hostname
+    const host = req.hostname === 'localhost' ? 'http://localhost:27000' : req.hostname
     console.log('hostname >> ', host)
     if (fullName && role) {
       const names = fullName.split(' ')
@@ -52,8 +53,10 @@ export default class DemoController {
         roles: role,
         oauth_consumer_key: DEMO_CONSUMER_KEY,
         oauth_consumer_secret: DEMO_CONSUMER_SECRET,
+        context_id: DEMO_CONTEXT_ID,
         tool_consumer_instance_name: TOOL_CONSUMER_NAME,
         launch_presentation_return_url: 'http://some.place.org',
+        resource_link_title: 'Resource Link Title',
         resource_link_id: 'http://link-to-resource.com/resource',
         oauth_signature_method: 'HMAC-SHA1',
         oauth_timestamp: Math.round(Date.now() / 1000),
@@ -62,6 +65,7 @@ export default class DemoController {
       }
 
       const req = this._signAndPrepareLTIRequest(ltiData, host)
+      console.log('req >> ', req)
       this._LTIPost(req)
         .then((res) => {
           console.log('res.data >> ', res.data)
@@ -70,6 +74,7 @@ export default class DemoController {
         .catch(err => {
           if (debug) {
             console.log('LTIPOST caught >> ', err.message)
+            res.status(500).send(err)
           }
         })
     } else {
@@ -91,12 +96,13 @@ export default class DemoController {
       headers: {
         accept: 'application/json, text/plain, */*',
         'content-type': 'application/json;charset=utf-8',
-        host: 'localhost:27000',
+        host: base,
       },
       body: Object.assign({}, ltiData, { debug: true })
     }
     const signer = new HMAC_SHA1()
-    req.body.oauth_consumer_secret = signer.build_signature(req, req.body, ltiData.oauth_consumer_secret)
+    req.body.oauth_signature = signer.build_signature(req, req.body, ltiData.oauth_consumer_secret)
+    console.log('signed ', req, ' with ', req.body.oauth_signature)
     return req
   }
 
@@ -107,7 +113,7 @@ export default class DemoController {
     //   this.isUniqueDemoUsername(req, res)
     // })
 
-    router.post('/create', (req, res) => {
+    router.post('/createUser', (req, res) => {
       this.createDemoUser(req, res)
     })
 
