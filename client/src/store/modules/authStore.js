@@ -68,6 +68,15 @@ const actions = {
       }).catch(err => {
         return Promise.reject(err.response.data)
       })
+  },
+  requestDemoAccess: function (none, { name, email, role }) {
+    console.log('requesting demo access from authStore >> ', name, email, role)
+    return authHelper.requestDemoAccess(name, email, role)
+      .then(res => {
+        return res.data
+      }).catch(err => {
+        return Promise.reject(err.response.data)
+      })
   }
 }
 

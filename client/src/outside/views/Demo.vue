@@ -1,16 +1,18 @@
 <template lang="pug">
-    div(v-if="isValid")
+    div(v-if="canRequestDemoAccess")
         h2(style="text-align: center") Demo Access Form
         br
         div(class="ehr-group-wrapper  grid-to-1")
             div(class="form-element form-container")
                 div(class="text_input_wrapper form-container-item")
-                  div(style="padding-top: 1em")
-                    label Full Name
-                    input(class="input text-input", v-model="name", type="text")
-                    label E-mail
-                    input(class="input text-input", v-model="name", type="text")
-                    div
+                  div
+                    div(style="margin-top: 1em")
+                      label Full Name
+                      input(class="input text-input", v-model="name", type="text")
+                    div(style="margin-top: 1em")
+                      label E-mail
+                      input(class="input text-input", v-model="email", type="email")
+                    div(style="margin-top: 1em")
                       label Role
                       select(name="role", v-model="selectedRole")
                           //- option(value="")
@@ -19,7 +21,11 @@
                               :key="role.key", 
                               v-bind:value="role.key"
                           ) {{ role.value }}
-                ui-button(style="margin-top: 2vh", :disabled="!isNameUnique") Submit
+                ui-button(
+                  style="margin-top: 2vh",
+                  :disabled="!isFormValid",
+                  @buttonClicked="submitDemoAccess"
+                ) Submit
 </template>
 
 <script>
@@ -32,25 +38,44 @@ export default {
   data () {
     return {
       name: '',
+      email: '',
       roles: [
         { key: 'student', value: 'Student' }, 
         // { key: 'instructor', value: 'Instructor' }, 
       ],
       selectedRole: 'student',
-      isNameUnique: false
     }
   },
   computed: {
-    isValid () {
+    canRequestDemoAccess () {
       const token = StoreHelper.getAuthToken()
-      if (token) this.redirect()
+      if(token) {
+        return this.redirect()
+      }
       return !token
+    },
+    isNameValid () {
+      return this.name.split(' ').length >= 2
+    },
+    isFormValid () {
+      return this.isNameValid && this.name && this.email && this.selectedRole
     }
   },
   methods: {
     redirect (path = '/ehr/'){
       this.$router.push(path)
     },
+
+    submitDemoAccess () {
+      const { name, email, selectedRole } = this
+      StoreHelper.requestDemoAccess(name, email, selectedRole)
+        .then(({url}) => {
+          window.location.replace(url)
+        })
+        .catch(err => {
+          alert(`Error when trying to get demo access \n ${err} `)
+        })
+    }
   }
 }
 </script>

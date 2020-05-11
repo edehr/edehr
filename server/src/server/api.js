@@ -131,7 +131,7 @@ export function apiMiddle (app, config) {
       // External API
       api.use('/launch_lti', lti.route())
       api.use('/api/launch_lti', lti.route())
-      api.use('/demo', demo.route())
+      api.use('/api/demo', cors(corsOptions), demo.route())
       // Inside API
       api.use('/activities', middleWare, act.route())
       api.use('/activity-data', middleWare, acc.route())

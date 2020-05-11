@@ -37,7 +37,7 @@ export default class DemoController {
 
   createDemoUser (req, res) {
     const { fullName, role, email } = req.body
-    const host = req.hostname === 'localhost' ? 'http://localhost:27000' : req.hostname
+    const host = req.hostname === 'localhost' ? 'localhost:27000' : req.hostname
     console.log('hostname >> ', host)
     if (fullName && role) {
       const names = fullName.split(' ')
@@ -67,9 +67,9 @@ export default class DemoController {
       const req = this._signAndPrepareLTIRequest(ltiData, host)
       console.log('req >> ', req)
       this._LTIPost(req)
-        .then((res) => {
-          console.log('res.data >> ', res.data)
-          res.status(200).json({ refreshToken: res.data.refreshToken })
+        .then((r) => {
+          console.log('res.data >> ', r.data)
+          res.status(200).json({ refreshToken: r.data.refreshToken, url: r.data.url })
         })
         .catch(err => {
           if (debug) {
@@ -88,21 +88,20 @@ export default class DemoController {
 
   _signAndPrepareLTIRequest  (ltiData, base) {
     const req = {
-      url: `${base}/api/launch_lti`,
+      url: `http://${base}/api/launch_lti`,
       method: 'POST',
       connection: {
         encrypted: undefined
       },
       headers: {
         accept: 'application/json, text/plain, */*',
-        'content-type': 'application/json;charset=utf-8',
+        'Content-Type': 'application/json;charset=utf-8',
         host: base,
       },
       body: Object.assign({}, ltiData, { debug: true })
     }
     const signer = new HMAC_SHA1()
     req.body.oauth_signature = signer.build_signature(req, req.body, ltiData.oauth_consumer_secret)
-    console.log('signed ', req, ' with ', req.body.oauth_signature)
     return req
   }
 
