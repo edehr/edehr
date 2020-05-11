@@ -77,6 +77,15 @@ const actions = {
       }).catch(err => {
         return Promise.reject(err.response.data)
       })
+  },
+  validateDemoUsername: function (none, { username }) {
+    return authHelper.validateDemoUsername(username)
+      .then(res => {
+        return res.data
+      }) 
+      .catch(err => {
+        return Promise.reject(err.response.data)
+      })
   }
 }
 

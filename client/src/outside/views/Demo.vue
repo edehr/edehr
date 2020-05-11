@@ -6,12 +6,12 @@
             div(class="form-element form-container")
                 div(class="text_input_wrapper form-container-item")
                   div
-                    div(style="margin-top: 1em")
-                      label Full Name
-                      input(class="input text-input", v-model="name", type="text")
-                    div(style="margin-top: 1em")
-                      label E-mail
-                      input(class="input text-input", v-model="email", type="email")
+                    //- div(style="margin-top: 1em")
+                    //-   label Full Name
+                    //-   input(class="input text-input", v-model="name", type="text")
+                    //- div(style="margin-top: 1em")
+                    //-   label E-mail
+                    //-   input(class="input text-input", v-model="email", type="email")
                     div(style="margin-top: 1em")
                       label Role
                       select(name="role", v-model="selectedRole")
@@ -54,18 +54,18 @@ export default {
       }
       return !token
     },
-    isNameValid () {
-      return this.name.split(' ').length >= 2
-    },
+    // isNameValid () {
+    //   return this.name.split(' ').length >= 2
+    // },
     isFormValid () {
-      return this.isNameValid && this.name && this.email && this.selectedRole
+      // return this.isNameValid && this.name && this.email && this.selectedRole
+      return this.selectedRole
     }
   },
   methods: {
     redirect (path = '/ehr/'){
       this.$router.push(path)
     },
-
     submitDemoAccess () {
       const { name, email, selectedRole } = this
       StoreHelper.requestDemoAccess(name, email, selectedRole)
@@ -75,7 +75,15 @@ export default {
         .catch(err => {
           alert(`Error when trying to get demo access \n ${err} `)
         })
-    }
+    },
+    // checkUsername () {
+    //   StoreHelper.checkDemoUsername(this.name)
+    //     .then(res => {
+    //       console.log('checkUsername then', res)
+    //     }).catch(err => {
+    //       alert(`Error when validating name \n ${err}` )
+    //     })
+    // }
   }
 }
 </script>
