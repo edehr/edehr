@@ -5,7 +5,7 @@
 EdEHR is an open source tool developed to teach medical students how to use an EHR before they enter the workforce. It can be accessed only through a learning management system (LMS) and requires a technical person to set it up. Once set up, users can access the system either as an instructor or a student. Credentials to try out either role are included below.
 
 ## Documentation
-Public docs are available here [https://bccampus.github.io/edehr/](hhttps://bccampus.github.io/edehr/)
+Public docs are available here [https://bccampus.github.io/edehr](https://bccampus.github.io/edehr)
 
 ## Demo
 You can try out a demo of the EdEHR by logging into [Moodle] (https://edehrlms.bccampus.ca/login/index.php) with the following credentials:
