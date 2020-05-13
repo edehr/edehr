@@ -16,7 +16,20 @@ const debug = false
 
 export default class DemoController {
 
-
+  /**
+  * @method findOrCreateToolConsumer
+  * 
+  * @description Looks for the Demo Tool Consumer based on 
+  * the DEMO constants. If the tool consumer exists, it returns
+  * it. Or else, it uses de demoSeeder function to seed the Demo DB
+  * and then it recursively calls itself again so that, it returns the newly
+  * created tool consumer.
+  * 
+  * @returns Either a call to itself or a Promise.resolve() with 
+  *  the tool consumer which was fetched
+  * 
+  * 
+  */
   findOrCreateToolConsumer () {
     return new Promise((resolve, reject) => {
       return ToolConsumer.findOne({ 
@@ -37,6 +50,26 @@ export default class DemoController {
     })
     
   }
+
+  /**
+ * @method createDemoUser
+ * @param {*} req The Express request object
+ * @param {*} res The Express response object
+ * @description This is an overall wrapper method for creating
+ * the user and it gets triggered when the /createUser endpoint is called.
+ * The whole process of creating a demo user consists of
+ * 
+ * 1. It unwraps the role from req.body and the host from req.hostname;
+ * 2. It calls the findOrCreateToolConsumer so that it asserts that the tool consumer exists;
+ * 3. Then it runs the generateUniqueName wrapper, which resolves into a userData object 
+ * (containing first, last and full names and an email address);
+ * 4. It prepares the ltiData object with the generated data. 
+ * 5. It then runs _signAndPrepareLTIRequest which prepares a req object 
+ * with the HMAC_SHA1 signature.
+ * 6. It calls _LTIPost which runs a LTI post request and from it it gets the returnUrl and refreshToken
+ * 7. Both the returnUrl and refreshToken are resolved to the client.
+ *
+ */
 
   createDemoUser (req, res) {
     // const { fullName, role, email } = req.body
@@ -92,11 +125,25 @@ export default class DemoController {
       res.status(400).send('Invalid parameters')   
     }
   }
+
+  /**
+   * @method _LTIPost
+   * @param {*} req The signed req object for the LTIPost
+   * @description this method acts as a wrapper for an Axios post request
+   * containing the signed LTIData as well as the other needed attributes
+   */
   _LTIPost (req) {
     return axios.post(req.url, req.body)
   }
 
-
+  /**
+ * @method _signAndPrepareLTIRequest
+ * @param {*} ltiData the ltiData object, containing metadata for the new connection
+ * @param {*} base The base for the request, extracted from req.host
+ * @description It prepares the request object within the needed parameters
+ * for signing and making a POST to the Lti logic
+ * @returns req the generated and signed req object
+ */
   _signAndPrepareLTIRequest  (ltiData, base) {
     const req = {
       url: `http://${base}/api/launch_lti`,
@@ -115,6 +162,14 @@ export default class DemoController {
     req.body.oauth_signature = signer.build_signature(req, req.body, ltiData.oauth_consumer_secret)
     return req
   }
+
+  /**
+   * @method _generateRandomName
+   * @description By consuming a random user API, it gets a user object and returns it.
+   * @return axios-based Promise, if the request doesn't fail, it returns the results (containing a user object)
+   * if not, it Rejects the promise, resulting in an error. 
+   * 
+   */
   _generateRandomName () {
     return axios.get('https://randomuser.me/api?nat=us,dk,fr,gb')
       .then(res => {
@@ -125,7 +180,12 @@ export default class DemoController {
         Promise.reject(err)
       })
   }
-
+  /**
+ * @method generateUniqueName
+ * @description This method is a wrapper for _generateRandomName. 
+ * It recursively triggers it until the data consumed from the API is unique 
+ * among the visit records
+ */
   generateUniqueName () {
     return new Promise((resolve, reject) => {
       this._generateRandomName() 
