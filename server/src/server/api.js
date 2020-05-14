@@ -13,10 +13,11 @@ import FeedbackController from '../mcr/feedback/feedback-controller'
 import IntegrationController from '../mcr/integration/integration-controller'
 import LTIController from '../mcr/lti/lti'
 import LookaheadController from '../mcr/lookahead/lookahead-controller'
+import PlaygroundController from '../mcr/playground/playground-controller'
 import UserController from '../mcr/user/user-controller.js'
 import VisitController from '../mcr/visit/visit-controller'
 import SeedDataController from '../mcr/seed/seedData-controller'
-import { validatorMiddlewareWrapper, adminLimiter, isAdmin } from '../helpers/middleware'
+import { validatorMiddlewareWrapper, adminLimiter, localhostOnly, isAdmin } from '../helpers/middleware'
 
 // Sessions and session cookies
 // express-session stores session data here on the server and only puts session id in the cookie
@@ -80,6 +81,7 @@ export function apiMiddle (app, config) {
   }
   const lti = new LTIController(config, lcc)
   const ic = new IntegrationController()
+  const pc = new PlaygroundController()
   const sd = new SeedDataController()
   const middleWare = [
     cors(corsOptions),
@@ -87,9 +89,17 @@ export function apiMiddle (app, config) {
   ]
   const adminMiddleware = [
     cors(corsOptions),
+    adminLimiter,
     validatorMiddlewareWrapper(auth),
-    isAdmin,
-    adminLimiter
+    isAdmin
+  ]
+
+  const localhostOnlyAdminMiddleware = [
+    cors(corsOptions),
+    localhostOnly,
+    // adminLimiter,
+    validatorMiddlewareWrapper(auth),
+    isAdmin
   ]
 
   return Promise.resolve()
@@ -112,6 +122,8 @@ export function apiMiddle (app, config) {
       // for local and dev only
       api.use('/admin', adminMiddleware, admin.route())
       api.use('/integrations', adminMiddleware, ic.route())
+      // Admin playground, for localhost-only tests  
+      api.use('/playground', localhostOnlyAdminMiddleware, pc.route())
       // External API
       api.use('/launch_lti', lti.route())
       api.use('/api/launch_lti', lti.route())
@@ -139,18 +151,18 @@ export function apiMiddle (app, config) {
       return api
     })
 }
-
+  
 export function apiError (app, config) {
   // error handlers
   app.use(logErrors)
   app.use(clientErrorHandler)
   app.use(errorHandler)
-
+  
   function logErrors (err, req, res, next) {
     console.error(`Error name: ${err.name} message: ${err.message}`)
     next(err)
   }
-
+  
   function clientErrorHandler (err, req, res, next) {
     // import {AssignmentMismatchError, ParameterError, SystemError} from '../utils/errors'
     if (err.name === AssignmentMismatchError.NAME()) {

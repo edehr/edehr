@@ -47,6 +47,14 @@ export const isAdmin = (req, res, next) => {
   }
 }
 
+export const localhostOnly = (req, res, next) => {
+  if (req.hostname === 'localhost') {
+    next()
+  } else {
+    res.status(400).send('This is a localhost-only request. Please, make sure your host is correct')
+  }
+}
+
 export const adminLimiter = rateLimit({
   windowMs: 60 * 60 * 1000,
   max: ADMIN_MAX_REQUEST_LIMIT,

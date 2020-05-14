@@ -3,7 +3,6 @@ import Role from '../roles/roles'
 import { ParameterError, AssignmentMismatchError, SystemError } from '../common/errors'
 import { Text } from '../../config/text'
 import { ltiVersions, LTI_BASIC } from './lti-defs'
-const HMAC_SHA1 = require('ims-lti/src/hmac-sha1')
 
 const url = require('url')
 const debug = require('debug')('server')
@@ -105,11 +104,14 @@ export default class LTIController {
    */
   strategyVerify (req, callback) {
     const _this = this
-    if (!_this.validateLti(req.body, callback)) {
+    // It is necessary to use a different _req for validation in case
+    // one is using postman
+    const _req = this._postmanFormat(req) 
+    if (!_this.validateLti(_req.body, callback)) {
       return
     }
     // store the LTI data for further processing after setting up the user
-    var ltiData = (req.ltiData = req.body)
+    var ltiData = (req.ltiData = _req.body)
     try {
       var consumerKey = ltiData['oauth_consumer_key']
       debug('strategyVerify find consumer by key ' + consumerKey)
@@ -149,14 +151,14 @@ export default class LTIController {
           let sec = req.toolConsumer.oauth_consumer_secret
           let provider = new lti.Provider(ltiData, sec)
           debug('strategyVerify validate msg with provider')
-          provider.valid_request(req, function (err, isValid) {
+          provider.valid_request(_req, function (err, isValid) {
             if (err) {
               debug('strategyVerify lti provider verify send error: ' + err.message)
               let detailsCallback = function (details) {
                 console.log('LTI auth details', details)
               }
               let provider = new lti.Provider(ltiData, sec, null, null, detailsCallback)
-              provider.valid_request(req, function (err, isValid) {})
+              provider.valid_request(_req, function (err, isValid) {})
               return callback(_this._createParameterError(req.ltiData, err.message), null)
             }
             let userId = ltiData['user_id']
@@ -167,6 +169,7 @@ export default class LTIController {
           })
         })
     } catch (err) {
+      console.log('strategyVerify authentication error: ' + err.message)
       debug('strategyVerify authentication error: ' + err.message)
       callback(_this._createSystemError(req.ltiData, err.message), null)
     }
@@ -347,6 +350,7 @@ export default class LTIController {
     try {
       const token = this.authController.createToken({visitId: visit._id})
       const refreshToken = this.authController.createRefreshToken(token)
+      req.refreshToken = refreshToken
       let url = this.config.clientUrl + route + `?apiUrl=${apiUrl}&token=${refreshToken}`
       if (req.errors.length > 0) {
         let errs = req.errors.join('-')
@@ -403,13 +407,14 @@ export default class LTIController {
       this._postLtiChain(req)
         .then((req) => {
           let url = req.ltiNextUrl
+          const refreshToken = req.refreshToken
           console.log('redirecting to ', url)
           debug(`ready to redirect to the ehr ${url}`)
           // When redirecting in the test, the request promise 
           // resolves in 404. So, for debugging / testing
           // purposes, I believe it is better not to redirect
           if (req.body.debug) {
-            res.status(200).send()
+            res.status(200).json({refreshToken})
           } else {
             res.redirect(url)
           }
@@ -418,9 +423,6 @@ export default class LTIController {
           console.log('ERRRORRRR', err)
           next(err)
         })
-    })
-    router.post('/make-HMAC_SHA1', (req, res) => {
-      this._makeSignature(req, res)
     })
     return router
   }
@@ -443,7 +445,6 @@ export default class LTIController {
     }
   }
   
-
   _extractLtiData (props, src, dest) {
     dest = dest || {}
     props.forEach( p => dest[p] = src[p])
@@ -475,6 +476,27 @@ export default class LTIController {
   _createSystemError (ltiData, msg) {
     let errData = this._createErrorData(ltiData)
     return new SystemError(msg, errData)
+  }
+
+  /**
+   * @method _postmanFormat
+   * @param {*} req 
+   * @description Formats and return a new _req object, in case the request is coming from postman.
+   * This happens since postman needs an API call so that the request is signed and, therefore the request needs to be
+   * equal for both of the requests, which is difficult. Therefore, this method assigns an _req object passed to the body 
+   * which reflects the same value as used in the other method. If the request is not from postman's user-agent,
+   * then it returns the original _req.
+   */
+  _postmanFormat (req) {
+    const isPostman = req.headers['user-agent'].includes('PostmanRuntime')
+    if (isPostman) {
+      req.body.debug = true
+      const _req = req.body._req
+      delete req.body._req
+      _req.body = req.body.body
+      return _req
+    } 
+    return req
   }
 
 }
