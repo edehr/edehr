@@ -67,7 +67,7 @@ export function setSystemMessage (msg) {
 }
 
 export function validTimeStr (text) {
-  return /^(|0?[0-9]|1[0-9]|2[0-3]):([0-5][0-9])$/.test(text)
+  return /^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9])$/.test(text)
 }
 
 export function validDayStr (text) {

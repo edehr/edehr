@@ -144,7 +144,7 @@ export default function () {
           fqn: 'visit.transferOutTime'
         }
       ],
-      generated: '2020-01-05T08:31:04-08:00',
+      generated: '2020-02-01T08:58:47-08:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -284,6 +284,7 @@ export default function () {
           inputType: 'time',
           label: 'Time',
           tableColumn: '1',
+          validation: 'time24',
           fqn: 'vitals.time'
         },
         {
@@ -525,7 +526,7 @@ export default function () {
           fqn: 'vitals.flowRate'
         }
       ],
-      generated: '2020-01-05T08:31:04-08:00',
+      generated: '2020-02-01T08:58:47-08:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -748,6 +749,7 @@ export default function () {
           inputType: 'time',
           label: 'Time',
           tableColumn: '1',
+          validation: 'time24',
           fqn: 'fluidBalance.time'
         },
         {
@@ -769,7 +771,7 @@ export default function () {
           fqn: 'fluidBalance.fluidOut'
         }
       ],
-      generated: '2020-01-05T08:31:04-08:00',
+      generated: '2020-02-01T08:58:47-08:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -877,6 +879,7 @@ export default function () {
           inputType: 'time',
           label: 'Time',
           tableColumn: '1',
+          validation: 'time24',
           fqn: 'neurological.time'
         },
         {
@@ -1694,7 +1697,7 @@ export default function () {
           fqn: 'neurological.strokeAssessmentCalculation'
         }
       ],
-      generated: '2020-01-05T08:31:04-08:00',
+      generated: '2020-02-01T08:58:47-08:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2100,6 +2103,7 @@ export default function () {
           inputType: 'time',
           label: 'Time',
           tableColumn: '1',
+          validation: 'time24',
           fqn: 'respiratory.time'
         },
         {
@@ -2484,7 +2488,7 @@ export default function () {
           fqn: 'respiratory.generalComments'
         }
       ],
-      generated: '2020-01-05T08:31:04-08:00',
+      generated: '2020-02-01T08:58:47-08:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2730,6 +2734,7 @@ export default function () {
           inputType: 'time',
           label: 'Time',
           tableColumn: '1',
+          validation: 'time24',
           fqn: 'cardiovascular.time'
         },
         {
@@ -3284,7 +3289,7 @@ export default function () {
           fqn: 'cardiovascular.comments'
         }
       ],
-      generated: '2020-01-05T08:31:04-08:00',
+      generated: '2020-02-01T08:58:47-08:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -3586,6 +3591,7 @@ export default function () {
           inputType: 'time',
           label: 'Time',
           tableColumn: '1',
+          validation: 'time24',
           fqn: 'gastrointestinal.time'
         },
         {
@@ -4023,7 +4029,7 @@ export default function () {
           fqn: 'gastrointestinal.comments'
         }
       ],
-      generated: '2020-01-05T08:31:04-08:00',
+      generated: '2020-02-01T08:58:47-08:00',
       pageElements: {
         table: {
           elementKey: 'table',

@@ -38,6 +38,7 @@ export default function () {
           inputType: 'time',
           label: 'Time',
           tableColumn: '1',
+          validation: 'time24',
           fqn: 'progressNotes.time'
         },
         {
@@ -51,7 +52,7 @@ export default function () {
           fqn: 'progressNotes.note'
         }
       ],
-      generated: '2020-01-04T16:31:04-08:00',
+      generated: '2020-01-18T11:50:12-08:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -83,7 +84,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group115',
+                elementKey: 'ehr_group114',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -94,7 +95,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group116',
+                elementKey: 'ehr_group115',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '2',
                 gChildren: [
@@ -151,6 +152,7 @@ export default function () {
           inputType: 'time',
           label: 'Time',
           tableColumn: '1',
+          validation: 'time24',
           fqn: 'carePlan.time'
         },
         {
@@ -209,7 +211,7 @@ export default function () {
           fqn: 'carePlan.status'
         }
       ],
-      generated: '2020-01-04T16:31:04-08:00',
+      generated: '2020-01-18T11:50:12-08:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -269,7 +271,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group117',
+                elementKey: 'ehr_group116',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -280,7 +282,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group118',
+                elementKey: 'ehr_group117',
                 gIndex: '2',
                 gChildren: [
                   'clinical',
@@ -313,7 +315,7 @@ export default function () {
       isV2: true,
       hasGridForm: true,
       pageChildren: [],
-      generated: '2020-01-04T16:31:04-08:00',
+      generated: '2020-01-18T11:50:12-08:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -367,7 +369,7 @@ export default function () {
           fqn: 'labResults.labReport4_1'
         }
       ],
-      generated: '2020-01-04T16:31:04-08:00',
+      generated: '2020-01-18T11:50:12-08:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -375,7 +377,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
-              elementKey: 'ehr_group119',
+              elementKey: 'ehr_group118',
               gIndex: '1',
               gChildren: [
                 {
@@ -451,7 +453,7 @@ export default function () {
           fqn: 'medicalImaging.pneumonia_report'
         }
       ],
-      generated: '2020-01-04T16:31:04-08:00',
+      generated: '2020-01-18T11:50:12-08:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -459,7 +461,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
-              elementKey: 'ehr_group120',
+              elementKey: 'ehr_group119',
               gIndex: '1',
               gChildren: [
                 'day0',
@@ -481,7 +483,7 @@ export default function () {
       isV2: true,
       hasGridForm: true,
       pageChildren: [],
-      generated: '2020-01-04T16:31:04-08:00',
+      generated: '2020-01-18T11:50:12-08:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',

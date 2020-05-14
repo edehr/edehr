@@ -184,7 +184,8 @@ export default {
 
 .dialog-header, .dialog-footer {
   background-color: $grey03;
-  height: 60px;
+  /* don't set a height. It prevents the element from expanding when more content is added.
+  height: 60px;*/
   padding: 1em 2em;
 }
 

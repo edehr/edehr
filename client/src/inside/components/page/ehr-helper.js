@@ -20,8 +20,6 @@ import { Text } from '../../../helpers/ehr-text'
 const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
 const PROPS = EhrTypes.elementProperties
-const INPUT_TYPES = EhrTypes.inputTypes
-
 const dbDialog = false
 const dbPageForm = false
 const dbLoad = false
@@ -451,34 +449,28 @@ export default class EhrHelpV2 {
   }
 
   _validateInputs (dialog) {
-    let pageKey = this.pageKey
-    let tableDef = dialog.tableDef
-    let key = tableDef.elementKey
-    let inputs = dialog.inputs
-    let form = tableDef.form
-    let ehr_data = form.ehr_data
-    if (dbDialog) console.log('EhrHelpV2 validate dialog for key', key, inputs)
+    const pageKey = this.pageKey
+    const tableDef = dialog.tableDef
+    const inputs = dialog.inputs
+    const ehr_data = tableDef.form.ehr_data
     dialog.errorList = []
     Object.keys(ehr_data).forEach( (eKey) => {
-      let eDef = EhrDefs.getPageChildElement(pageKey, eKey)
+      const eDef = EhrDefs.getPageChildElement(pageKey, eKey)
+      const label = eDef[PROPS.label]
+      const validator = eDef[PROPS.validation] ? validations[eDef.validation] : undefined
+      const mandatory = eDef[PROPS.mandatory]
       let value = inputs[eKey]
+      value = value ? value.trim() : value
       if (dbDialog) console.log('EhrHelpV2 validate:', eKey, value, 'eDef:', eDef)
-      let type = eDef[PROPS.inputType]
-      let label = eDef[PROPS.label]
-      // let validationRules = eDef[PROPS.validation]
-      let mandatory = eDef[PROPS.mandatory]
-      if (value && (type === INPUT_TYPES.text || type === INPUT_TYPES.textarea)) {
-        inputs[eKey] = value = value.trim()
-      }
       if (mandatory && !value ) {
-        let msg = label + ' is required'
+        const msg = label + ' is required'
         dialog.errorList.push(msg)
       }
-      if (eDef.validation && validations[eDef.validation]) {
-        if(!validations[eDef.validation](inputs[eKey])) {
-          const errKey = `${eDef.validation.toUpperCase()}_ERROR`
-          if (dbDialog) console.log('errKey >> ', errKey, 'eKey >> ', eKey)
-          dialog.errorList.push(validations[errKey](eKey))
+      if (validator) {
+        const errMsg = validator(label, value)
+        if(errMsg) {
+          if (dbDialog) console.log(`EhrHelpV2 validate for key ${eKey} value ${inputs[eKey]}: ${errMsg}`)
+          dialog.errorList.push(errMsg)
         }
       }
     })

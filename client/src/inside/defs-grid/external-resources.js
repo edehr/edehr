@@ -151,7 +151,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
-              elementKey: 'ehr_group121',
+              elementKey: 'ehr_group120',
               gIndex: '1',
               gChildren: [
                 {
@@ -253,7 +253,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
-              elementKey: 'ehr_group122',
+              elementKey: 'ehr_group121',
               gIndex: '1',
               gChildren: [
                 'snomed',
@@ -302,6 +302,7 @@ export default function () {
           inputType: 'time',
           label: 'Time',
           tableColumn: '1',
+          validation: 'time24',
           fqn: 'diagnosticCodes.time'
         },
         {
@@ -458,7 +459,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group123',
+                elementKey: 'ehr_group122',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -469,7 +470,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group124',
+                elementKey: 'ehr_group123',
                 gIndex: '2',
                 gChildren: [
                   'icd10',
@@ -535,6 +536,7 @@ export default function () {
           inputType: 'time',
           label: 'Time',
           tableColumn: '1',
+          validation: 'time24',
           fqn: 'interventionCodes.time'
         },
         {
@@ -628,7 +630,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group125',
+                elementKey: 'ehr_group124',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -639,7 +641,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group126',
+                elementKey: 'ehr_group125',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '2',
                 gChildren: [
@@ -708,6 +710,7 @@ export default function () {
           inputType: 'time',
           label: 'Time',
           tableColumn: '1',
+          validation: 'time24',
           fqn: 'caseMixGroup.time'
         },
         {
@@ -816,7 +819,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group127',
+                elementKey: 'ehr_group126',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -827,7 +830,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group128',
+                elementKey: 'ehr_group127',
                 gIndex: '2',
                 gChildren: [
                   'clinicalCategory',
