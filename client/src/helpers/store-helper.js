@@ -422,12 +422,22 @@ class StoreHelperWorker {
     return this._dispatchAuthStore('requestDemoAccess', { name, email, role })
   }
 
+  setDemoToken (token) {
+    return this._dispatchAuthStore('setDemoToken', { token })
+  }
+
+  
+
   getAuthData () {
     return this._getAuthStore('data')
   }
 
   getAuthToken () {
     return this._getAuthStore('token')
+  }
+
+  getDemoToken () {
+    return this._getAuthStore('demoToken')
   }
 }
 

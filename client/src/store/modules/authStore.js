@@ -12,6 +12,11 @@ const _setToken = (token) => {
   localStorage.setItem(sKeys.AUTH_TOKEN, token)
 }
 
+const _setDemoToken = (token) => {
+  localStorage.setItem(sKeys.DEMO_TOKEN, token)
+}
+
+const _getDemoToken = () => localStorage.getItem(sKeys.DEMO_TOKEN)
 
 const state = {
   data: {},
@@ -21,6 +26,10 @@ const getters = {
   token: function () {
     const token = _getToken()
     return token
+  },
+  demoToken: function () {
+    const demoToken = _getDemoToken()
+    return demoToken
   },
   data: function () {
     return state.data
@@ -86,6 +95,9 @@ const actions = {
       .catch(err => {
         return Promise.reject(err.response.data)
       })
+  },
+  setDemoToken: function (none, { token }) {
+    _setDemoToken(token)
   }
 }
 

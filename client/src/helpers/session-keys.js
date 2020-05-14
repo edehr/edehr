@@ -7,7 +7,8 @@ const sKeys = {
   C_ACTIVITY: 'currentActivityId',
   IS_DEVING: 'isSeedEditing',
   AUTH_TOKEN: 'authToken',
-  IS_READONLY_INSTRUCTOR: 'isReadOnlyInstructor'
+  IS_READONLY_INSTRUCTOR: 'isReadOnlyInstructor',
+  DEMO_TOKEN: 'demoToken',
 }
 
 export default sKeys
