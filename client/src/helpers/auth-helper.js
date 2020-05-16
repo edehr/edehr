@@ -3,7 +3,7 @@ import StoreHelper from './store-helper'
 import { Text } from './ehr-text'
 
 export default class AuthHelper {
-
+// Overall auth logic
   getToken (refreshToken) {
     const apiUrl = StoreHelper.apiUrl()
     const url = `${apiUrl}/auth/refresh`
@@ -21,7 +21,7 @@ export default class AuthHelper {
         throw Text.INVALID_TOKEN(err)
       })
   }
-
+  // Admin requests
   adminLogin (adminPass) {
     const apiUrl = StoreHelper.apiUrl()
     const url = `${apiUrl}/auth/admin`
@@ -32,5 +32,17 @@ export default class AuthHelper {
     const apiUrl = StoreHelper.apiUrl()
     const url = `${apiUrl}/auth/admin/validate`
     return axios.post(url)
+  }
+  // Demo requests
+  requestDemoAccess (name, email, role) {
+    console.log('requestingdemoaccess from authHelper', name, email, role)
+    const apiUrl = StoreHelper.apiUrl()
+    const url = `${apiUrl}/demo/createUser`
+    return axios.post(url, { fullName: name, email, role })
+  }
+  validateDemoUser (username) {
+    const apiUrl = StoreHelper.apiUrl()
+    const url = `${apiUrl}/demo/isUniqueUsername`
+    return axios.post(url, { username })
   }
 }

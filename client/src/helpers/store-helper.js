@@ -21,6 +21,7 @@ class StoreHelperWorker {
   _getAssignmentProperty (key) { return store.getters['assignmentStore/' + key]}
   _getAssignmentListProperty (key) { return store.getters['assignmentListStore/' + key]}
   _getConsumerListProperty (key) { return store.getters['consumerListStore/' + key]}
+  _getDemoStorage (key) { return store.getters['demoStore/'+ key] }
   _getInstructorProperty (key) { return store.getters['instructor/' + key]}
   _getSeedListProperty (key) { return store.getters['seedListStore/' + key]}
   _getSystemProperty (key) { return store.getters['system/' + key]}
@@ -34,6 +35,7 @@ class StoreHelperWorker {
   _dispatchAuthStore (key, payload) { return store.dispatch(`authStore/${key}`, payload) }
   _dispatchConsumerList (key, payload) { return store.dispatch('consumerListStore/' + key, payload)}
   _dispatchConsumer (key, payload) { return store.dispatch('consumerStore/' + key, payload)}
+  _dispatchDemoStore (key, payload) { return store.dispatch(`demoStore/${key}`, payload) }
   _dispatchSeedListProperty (key, payload) { return store.dispatch('seedListStore/' + key, payload)}
   _dispatchInstructor (key, payload) { return store.dispatch('instructor/' + key, payload)}
   _dispatchVisit (key, payload) { return store.dispatch('visit/' + key, payload)}
@@ -418,12 +420,42 @@ class StoreHelperWorker {
     return this._dispatchAuthStore('adminValidate', { token })
   }
 
+  requestDemoAccess (name, email, role) {
+    return this._dispatchAuthStore('requestDemoAccess', { name, email, role })
+  }
+
+  setDemoToken (demoToken) {
+    return this._dispatchDemoStore('setDemoToken', { demoToken })
+  }
+
+  setDemoUser (demoUser) {
+    return this._dispatchDemoStore('setDemoUser', { demoUser })
+  }
+
+  setDemoData (data) {
+    return this._dispatchDemoStore('setDemoData', { data })
+  }
+
+  
+
   getAuthData () {
     return this._getAuthStore('data')
   }
 
   getAuthToken () {
     return this._getAuthStore('token')
+  }
+
+  getDemoToken () {
+    return this._getDemoStorage('demoToken')
+  }
+
+  getDemoUser () {
+    return this._getDemoStorage('demoUser')
+  }
+
+  getDemoData () {
+    return this._getDemoStorage('demoData')
   }
 }
 
