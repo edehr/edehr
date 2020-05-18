@@ -13,9 +13,9 @@ export const validatorMiddlewareWrapper = (authController) => {
     if (req && req.headers.authorization) {
       try {
         const result = authController.authenticate(req.headers.authorization)
-        const {visitId} = result
+        const { visitId, ltiData } = result
         if (debug) console.log('result >> ', result)
-        if (visitId) {
+        if (visitId || ltiData) {
           if (debug) console.log('passingNext!!!')
           req.authPayload = result
           next()

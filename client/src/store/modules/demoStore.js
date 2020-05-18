@@ -29,6 +29,10 @@ const getters = {
   }
 }
 
+const state = {
+  ltiData: []
+}
+
 const actions = {
   createToolConsumer: function () {
     return demoHelper.createToolConsumer()
@@ -36,9 +40,25 @@ const actions = {
         const { demoToken } = res.data
         _setDemoToken(demoToken)
         setAuthHeader(demoToken)
-        return demoToken
+        return Promise.resolve(demoToken)
+      })
+      .catch(err => {
+        return Promise.reject(err)
       })
   },
+  fetchDemoData: function () {
+    return demoHelper.fetchDemoData() 
+      .then(res => {
+        console.log('demoHelperThen >> ', res)
+        const { authPayload } = res.data
+        _setDemoData(authPayload)
+        return Promise.resolve(authPayload)
+      })
+      .catch(err => {
+        return Promise.reject(err)
+      })
+  },
+
   setDemoToken: function (none, { demoToken }) {
     _setDemoToken(demoToken)
   },

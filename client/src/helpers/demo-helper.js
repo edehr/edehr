@@ -12,13 +12,13 @@ export default class DemoHelper {
 
   selectLTIUser (user) {
     const apiUrl = StoreHelper.apiUrl()
-    const url = `${apiUrl}/demo/selectDemoUser`
+    const url = `${apiUrl}/demo/set`
     return axios.post(url, { user })
   }
 
   getLTIData () {
     const apiUrl = StoreHelper.apiUrl()
-    const url = `${apiUrl}/demo/fetchUserData`
+    const url = `${apiUrl}/demo/fetch`
     return axios.post(url)
   }
 }

@@ -420,8 +420,8 @@ class StoreHelperWorker {
     return this._dispatchAuthStore('adminValidate', { token })
   }
 
-  requestDemoAccess (name, email, role) {
-    return this._dispatchAuthStore('requestDemoAccess', { name, email, role })
+  createDemoToolConsumer () {
+    return this._dispatchDemoStore('createToolConsumer')
   }
 
   setDemoToken (demoToken) {
@@ -435,8 +435,6 @@ class StoreHelperWorker {
   setDemoData (data) {
     return this._dispatchDemoStore('setDemoData', { data })
   }
-
-  
 
   getAuthData () {
     return this._getAuthStore('data')

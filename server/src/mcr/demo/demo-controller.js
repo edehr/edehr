@@ -1,9 +1,8 @@
 import { Router } from 'express'
 import axios from 'axios'
-import Visit from '../visit/visit'
 import ConsumerController from '../consumer/consumer-controller'
 import { demoUsers } from '../../helpers/demo-users'
-import { demoLimiter } from '../../helpers/middleware'
+import { demoLimiter, validatorMiddlewareWrapper } from '../../helpers/middleware'
 const {ltiVersions} = require('../../mcr/lti/lti-defs')
 
 const HMAC_SHA1 = require('ims-lti/src/hmac-sha1')
@@ -29,12 +28,12 @@ export default class DemoController {
   * @returns: JWT token with the information the client will need to compose a LTI request.
   *  
   */
-  _createDemoToolConsumer (req) {
+  _createDemoToolConsumer (req, res) {
+    console.log('req.body.id >> ', req.body.id)
     const cc = new ConsumerController()
-    const { id } = req.body
     const def = {
-      oauth_consumer_key: id,
-      oauth_consumer_secret: id,
+      oauth_consumer_key: req.body.id,
+      oauth_consumer_secret: req.body.id,
       lti_version: ltiVersions()[0],
       tool_consumer_info_product_family_code: 'EdEHR Demo',
       tool_consumer_info_version: 'moodle',
@@ -58,16 +57,16 @@ export default class DemoController {
         })
         // Generate token and return it
         try {
-          const token = this.auth.createToken(ltiData)
+          const demoToken = this.auth.createToken({ltiData})
           if (debug) {
-            console.log('ltiData, generating token', ltiToken)
-            console.log('generatedToken >> ', token)
+            console.log('ltiData, generating token', ltiData)
+            console.log('generatedToken >> ', demoToken)
           }
-          res.status(200).json({ token })
+          res.status(200).json({ demoToken })
   
         } catch (err) {
           if(debug) console.log('generate token caught ', err)
-          res.status
+          res.status(500).send(err)
         }
         
       })
@@ -94,17 +93,18 @@ export default class DemoController {
  *
  */
 
-  _createUserLTIData (req, user) {
-  
+  _createUserLTIData (user) {
+    const names = user.name.split(' ')
+    const [ firstName, lastName ] = names
     const ltiData = {
       user_id: user.id,
-      lis_person_name_given: user.firstName,
-      lis_person_name_family: user.lastName,
-      lis_person_name_full: user.fullName,
+      lis_person_name_given: firstName,
+      lis_person_name_family: lastName,
+      lis_person_name_full: user.name,
       lis_person_contact_email_primary: user.email,
       lti_version: 'LTI-1p0',
       lti_message_type: 'basic-lti-launch-request',
-      roles: role,
+      roles: user.role,
       oauth_consumer_key: DEMO_CONSUMER_KEY,
       oauth_consumer_secret: DEMO_CONSUMER_SECRET,
       context_id: DEMO_CONTEXT_ID,
@@ -121,9 +121,9 @@ export default class DemoController {
     return ltiData
   }
 
-  _submitLTIData (req, ltiData) {
+  submitLTIData (req, res) {
     const host = req.hostname === 'localhost' ? 'localhost:27000' : req.hostname
-       
+    const { ltiData } = req.data
     const _req = this._signAndPrepareLTIRequest(ltiData, host)
     this._LTIPost(_req)
       .then((r) => {
@@ -133,7 +133,10 @@ export default class DemoController {
         if (debug) console.log('LTIPOST caught >> ', err.message)
         res.status(500).send(err)
       })
-        
+  }
+
+  getDemoPayload (req, res) {
+    res.status(200).json({ result: req.result })
   }
 
   /**
@@ -173,14 +176,22 @@ export default class DemoController {
     return req
   }
 
-
   route () {
+    const middlewareWrapper = [ validatorMiddlewareWrapper(this.auth) ]
     const router = new Router()
-    // router.post('/createUser', (req, res) => {
-    //   this.createDemoUser(req, res)
-    // })
-    router.post('/', demoLimiter ,(req, res) => {
-      this._createDemoToolConsumer(req, res)
+
+    router.post('/', 
+      demoLimiter,
+      (req, res) => {
+        this._createDemoToolConsumer(req, res)
+      })
+
+    router.post('/fetch', middlewareWrapper, (req, res) => 
+      res.status(200).json(req.authPayload)
+    )
+
+    router.post('/set', middlewareWrapper, (req, res) => {
+      this.submitLTIData(req, res)
     })
 
 
