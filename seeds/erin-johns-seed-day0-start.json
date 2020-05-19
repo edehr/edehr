@@ -1,0 +1,165 @@
+{
+  "id": "5d6786b88d19fb14c0994a5f",
+  "license": "This work is licensed under a Creative Commons Attribution 4.0 International License. See http://creativecommons.org/licenses/by/4.0/",
+  "ehrData": {
+    "demographics": {
+      "familyName": "Johns",
+      "givenName": "Erin",
+      "preferredName": "Erin",
+      "dateOfBirth": "09-SEP-1945",
+      "personAge": "74",
+      "gender": "Female",
+      "martialStatus": "Widowed",
+      "languagePrimary": "English",
+      "indigenousIdentifyAs": "No",
+      "streetAddress": "402 Willow St.",
+      "city": "Vancouver",
+      "country": "Canada",
+      "postalCode": "V3F 9R2",
+      "noAddress": false,
+      "phoneNumber": "(778) 555-2947",
+      "occupationStudent": "Retired",
+      "phn": "12345678",
+      "nextOfKinName": "Thomas Johns",
+      "nextOfKinRelationship": "Son",
+      "nextOfKinPhone": "604-555-9865",
+      "decisionMakerName": "Thomas Johns",
+      "decisionMakerRelationship": "Child",
+      "decisionMakerPhone": "604-555-9865",
+      "weight": "49",
+      "height": "185"
+    },
+    "psychosocial": {
+      "history": "Feels down when she thinks about her lower financial status and her advancing age, and how she is becoming more forgetful and less energetic. Often feels alone and worries about falling and not being able to alert anyone to come to her rescue. Driving is becoming hard for her.",
+      "diet": "Regular",
+      "livingSituation": "Son lives with her in her house",
+      "employmentSchool": "Retired hairdresser",
+      "hobbies": "Bingo, Netflix, playing Solitaire and Scrabble with friends on her iPad",
+      "exercise": true,
+      "exerciseFrequency": "< 1 day/week",
+      "caffeineUse": true,
+      "caffeineUseFrequency": "1-2 cups/day",
+      "tobaccoUse": true,
+      "tobaccoUseFrequency": "History of smoking",
+      "alcoholUse": true,
+      "alcoholUseFrequency": "Social"
+    },
+    "allergies": {
+      "hasNoAllergies": "TRUE"
+    },
+    "surgical": {
+      "pastSurgery": [
+        {
+          "physician": "Dr. Henley",
+          "procedure": "Cesarean section",
+          "timeSince": "48 years",
+          "createdDate": "2019-05-30T09:36:55-07:00"
+        }
+      ],
+      "previous": []
+    },
+    "careTeam": {
+      "teams": [
+        {
+          "name": "Dr. Singh",
+          "profession": "Physician",
+          "createdDate": "2019-05-30T09:39:52-07:00"
+        },
+        {
+          "name": "Jackie",
+          "profession": "RN",
+          "createdDate": "2019-05-30T09:40:00-07:00"
+        },
+        {
+          "name": "Jason",
+          "profession": "RN",
+          "createdDate": "2019-05-30T09:40:07-07:00"
+        },
+        {
+          "name": "Alexa",
+          "profession": "Med lab technician",
+          "createdDate": "2019-05-30T09:40:19-07:00"
+        },
+        {
+          "name": "Gurpreet",
+          "profession": "Med radiographer",
+          "createdDate": "2019-05-30T09:40:39-07:00"
+        },
+        {
+          "name": "Matt",
+          "profession": "Respiratory therapist",
+          "createdDate": "2019-05-30T09:40:54-07:00"
+        },
+        {
+          "name": "Dr. Notley",
+          "profession": "Physician",
+          "createdDate": "2019-05-30T09:41:09-07:00"
+        },
+        {
+          "name": "Serge",
+          "profession": "Med radiographer",
+          "createdDate": "2019-05-30T09:41:23-07:00"
+        },
+        {
+          "name": "Trache",
+          "profession": "RN",
+          "createdDate": "2019-05-30T09:41:37-07:00"
+        },
+        {
+          "name": "Dr. Hunicutt",
+          "profession": "Physician",
+          "createdDate": "2019-05-30T09:41:50-07:00"
+        },
+        {
+          "name": "Jim",
+          "profession": "RN",
+          "createdDate": "2019-05-30T09:41:59-07:00"
+        },
+        {
+          "name": "Gladys",
+          "profession": "physiotherapy student",
+          "createdDate": "2019-05-30T09:42:14-07:00"
+        },
+        {
+          "name": "Herman",
+          "profession": "Repiratory therapist",
+          "createdDate": "2019-05-30T09:42:39-07:00"
+        }
+      ]
+    },
+    "pastAppointments": {
+      "encounters": [],
+      "outpatientAppointments": [
+        {
+          "date": "1 week ago",
+          "site": "Clinic",
+          "reasonForVisit": "Shortness of breath x 24 hours",
+          "diagnosis": "COPD",
+          "createdDate": "2019-05-30T09:43:19-07:00"
+        }
+      ]
+    },
+    "visit": {
+      "table": [
+        {
+          "location": "Emergency room",
+          "createdDate": "2019-05-30T23:21:10-07:00"
+        }
+      ],
+      "admissionDay": "Day 0",
+      "admissionTime": "06:00",
+      "consentForTreatment": "TRUE",
+      "consentForBlood": "TRUE",
+      "diagnosis": "COPD\nShortness of breath\nDizzy",
+      "status": "Admitted"
+    },
+    "billing": {
+      "msp": "MSP",
+      "thirdParty": false,
+      "federal": false
+    }
+  },
+  "name": "Master",
+  "version": "1.0",
+  "fileName": "master_1.0_29 Aug 2019.json"
+}
