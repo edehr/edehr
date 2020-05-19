@@ -1,9 +1,3 @@
-// This file must be kept in sync with
-// demo-users file in the frontend,
-// as it has been defined in
-// client/src/helpers/demo-users.js
-
-
 export const demoUsers = [
   {
     id: 1,

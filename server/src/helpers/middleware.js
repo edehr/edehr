@@ -10,6 +10,7 @@ const debug = false
 
 export const validatorMiddlewareWrapper = (authController) => {
   return (req, res, next) => {
+    console.log('validatorMiddlewareWrapper > ' , req.headers.authorization)
     if (req && req.headers.authorization) {
       try {
         const result = authController.authenticate(req.headers.authorization)
@@ -35,7 +36,6 @@ export const validatorMiddlewareWrapper = (authController) => {
 
 export const isAdmin = (req, res, next) => {
   const { authPayload } = req
-  console.log('authPayload >> ', req, authPayload)
   if (authPayload.adminPassword) {
     const passwd = getAdminPassword()
     if (authPayload.adminPassword === passwd) {

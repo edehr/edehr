@@ -6,13 +6,9 @@ const demoHelper = new DemoHelper()
 
 const _setDemoToken = (token) => localStorage.setItem(sKeys.DEMO_TOKEN, token)
 
-const _setDemoData = (data) => localStorage.setItem(sKeys.DEMO_DATA, data)
-
 const _setDemoUser = (user) => localStorage.setItem(sKeys.SELECTED_DEMO_USER, user)
 
 const _getDemoToken = () => localStorage.getItem(sKeys.DEMO_TOKEN)
-
-const _getDemoData = () => localStorage.getItem(sKeys.DEMO_DATA)
 
 const _getDemoUser = () => localStorage.getItem(sKeys.SELECTED_DEMO_USER)
 
@@ -24,8 +20,8 @@ const getters = {
   demoUser: function () {
     return _getDemoUser()
   },
-  demoData: function () {
-    return _getDemoData()
+  ltiData: function () {
+    return state.ltiData
   }
 }
 
@@ -46,13 +42,12 @@ const actions = {
         return Promise.reject(err)
       })
   },
-  fetchDemoData: function () {
+  fetchDemoData: function ({ commit }) {
     return demoHelper.fetchDemoData() 
       .then(res => {
-        console.log('demoHelperThen >> ', res)
-        const { authPayload } = res.data
-        _setDemoData(authPayload)
-        return Promise.resolve(authPayload)
+        const { ltiData } = res.data
+        commit('setLTIData', ltiData)
+        return Promise.resolve(ltiData)
       })
       .catch(err => {
         return Promise.reject(err)
@@ -71,6 +66,9 @@ const actions = {
 }
 
 const mutations = {
+  setLTIData: function (none, data) {
+    state.ltiData = data
+  }
 }
 
 export default {

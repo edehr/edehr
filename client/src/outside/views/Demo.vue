@@ -15,20 +15,20 @@
                   p.
                     EdEHR project git repository is here: https://github.com/BCcampus/edehr and documentation is here https://bccampus.github.io/edehr/
                   div(style="max-width: 10em; padding: 1em; border: 1px solid")
-                      div(v-for="obj in demoData" :key="obj.name")
+                      div(v-for="obj in demoData" :key="obj.user_id")
                         input(
                           type="checkbox",
-                          :id="obj.name",
-                          :checked="selectedUser.name === obj.name",
+                          :id="obj.user_id",
+                          :checked="ltiData.lis_person_name_full === obj.lis_person_name_full",
                           :value="obj",
-                          @change="selectedUser = obj"
+                          @change="ltiData = obj"
                         )
-                        label(:for="obj.name") {{obj.name}}
+                        label(:for="obj.user_id") {{obj.lis_person_name_full}}
 
       
                 ui-button(
                   style="margin-top: 2vh",
-                  :disabled="!selectedUser",
+                  :disabled="!ltiData",
                   @buttonClicked="submitDemoAccess"
                 ) Log in as
 </template>
@@ -36,24 +36,26 @@
 <script>
 import StoreHelper from '../../helpers/store-helper'
 import UiButton from '../../app/ui/UiButton'
-import { demoUsers } from '../../helpers/demo-users'
 export default {
   components: {
     UiButton
   },
   data () {
     return {
-      demoData: demoUsers,
-      selectedUser: {}
+      demoData: {},
+      ltiData: {}
     }
   },
   mounted () {
-    // StoreHelper.getDemoData()
-    //   .then(authPayload => {
-    //     this.demoData = 
-    //   }).catch(err => {
-    //     alert(err)
-    //   })
+    StoreHelper.fetchDemoData()
+      .then(() => {
+        const demoData = StoreHelper.getDemoLTIData()
+        console.log('demoData >> ', demoData)
+        this.demoData = demoData
+
+      }).catch(err => {
+        alert(err)
+      })
   }, 
   computed: {
     canRequestDemoAccess () {

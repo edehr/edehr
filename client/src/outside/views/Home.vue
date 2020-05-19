@@ -22,7 +22,7 @@
       To use this system you need to use a Learning Management System such as Moodle, Canvas, Blackboard, or any
       other LTI compliant learning system. For more information see the documentation.
   
-    div(style="margin-top: 2em;")
+    div(style="margin-top: 2em;", v-show="isDemoMode") 
       ui-button(@buttonClicked="confirmToolConsumerCreation") Enter Demo
     ui-confirm(ref="confirmDialog", @confirm="proceedDemoToolConsumerCreation", saveLabel="Confirm")
 
@@ -32,8 +32,6 @@
 import UiButton from '../../app/ui/UiButton'
 import UiConfirm from '../../app/ui/UiConfirm'
 import StoreHelper from '../../helpers/store-helper'
-
-const debug = true
 
 const TEXT = {
   TITLE: 'Proceed to create demo?',
@@ -45,6 +43,7 @@ export default {
   data () {
     return {
       selectedUser: {},
+      isDemoMode: true,
     }
   },
   mounted () {

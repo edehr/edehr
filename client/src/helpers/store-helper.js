@@ -432,8 +432,8 @@ class StoreHelperWorker {
     return this._dispatchDemoStore('setDemoUser', { demoUser })
   }
 
-  setDemoData (data) {
-    return this._dispatchDemoStore('setDemoData', { data })
+  fetchDemoData () {
+    return this._dispatchDemoStore('fetchDemoData')
   }
 
   getAuthData () {
@@ -452,8 +452,8 @@ class StoreHelperWorker {
     return this._getDemoStorage('demoUser')
   }
 
-  getDemoData () {
-    return this._getDemoStorage('demoData')
+  getDemoLTIData () {
+    return this._getDemoStorage('ltiData')
   }
 }
 

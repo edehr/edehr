@@ -186,8 +186,11 @@ export default class DemoController {
         this._createDemoToolConsumer(req, res)
       })
 
-    router.post('/fetch', middlewareWrapper, (req, res) => 
+    router.post('/fetch', middlewareWrapper, (req, res) => {
+      console.log('req >> ', req)
+      console.log('req >> ', req.authPayload)
       res.status(200).json(req.authPayload)
+    }
     )
 
     router.post('/set', middlewareWrapper, (req, res) => {
