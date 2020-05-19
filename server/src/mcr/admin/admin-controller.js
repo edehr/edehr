@@ -5,20 +5,17 @@ import VisitController from '../visit/visit-controller'
 import { ParameterError } from '../common/errors'
 import { Router } from 'express'
 import {ok, fail} from '../common/utils'
-import { Text } from '../../config/text'
+import { getAdminPassword } from '../../helpers/admin'
+import { Text } from '../../config/text.js'
 
 const debug = require('debug')('server')
 
 const UserModel = new UserController()
 const ActivityModel = new ActivityController()
 const Visit = new VisitController()
-const consumer = new ConsumerController()
-
-var uuid = require('uuid/v4')
 
 // For proof of concept we protect access to the admin via this token.
-export const adminToken = process.env.ADMIN_TOKEN || uuid()
-console.log('adminToken ', adminToken)
+export const adminToken = getAdminPassword()
 
 export default class AdminController {
 
@@ -86,13 +83,13 @@ export default class AdminController {
 
   reset (consumerKey) {
     if (!consumerKey) {
-      throw new ParameterError('Invalid consumer id: ' + consumerKey)
+      throw new ParameterError(Text.INVALID_CONSUMER_ID(consumerKey))
     }
     let toolConsumer
     return ConsumerController.findOneConsumerByKey(consumerKey)
       .then((tc) => {
         if (!tc) {
-          let message = 'Unsupported consumer key ' + consumerKey
+          let message = Text.UNSUPPORTED_CONSUMER_KEY(consumerKey)
           throw new ParameterError(message)
         }
         toolConsumer = tc

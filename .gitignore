@@ -20,6 +20,8 @@ client/dist/**
 
 client/selenium-debug\.log
 
+server/src/config/admin-password\.txt
+
 makeEhr/generated/
 
 makeEhr/util/camelcase-output\.txt
@@ -36,3 +38,4 @@ docs/.vuepress/dist/**
 */.env
 server/.session/
 database/data/**
+database/backup/dump/**

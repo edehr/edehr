@@ -1,6 +1,7 @@
 import InstoreHelper from './instoreHelper'
 import { setApiError } from '../../helpers/ehr-utils'
 import sKeys from '../../helpers/session-keys'
+import { Text } from '../../helpers/ehr-text'
 const API = 'activities'
 const OBJ = 'activity'
 const NAME = 'ActivityStore'
@@ -36,6 +37,11 @@ const getters = {
     if(debug) console.log(NAME + ' get activityDescription', prop)
     return prop
   },
+  closed: state => {
+    let prop =  state.dataStore.closed
+    if(debug) console.log(NAME + ' get dataStore.closed', prop)
+    return prop
+  }
 }
 
 const actions = {
@@ -48,8 +54,29 @@ const actions = {
     return Promise.resolve()
   },
 
+  close ({dispatch, commit}, id) {
+    let url = 'close-activity/' + id
+    let payload = { url:url, data: { }}
+    return dispatch('put', payload)
+      .then( (results) => {
+        if(debug) console.log(NAME + ' loaded ', results)
+        commit('set', results)
+        return results
+      })
+  },
+  open ({dispatch, commit}, id) {
+    let url = 'open-activity/' + id
+    let payload = { url:url, data: { }}
+    return dispatch('put', payload)
+      .then( (results) => {
+        if(debug) console.log(NAME + ' loaded ', results)
+        commit('set', results)
+        return results
+      })
+  },
+
   load ({dispatch, commit}, id) {
-    // at this time the switch to activity and class list component both invoke this load.
+    // at this time the switch to aactivityctivity and class list component both invoke this load.
     // commit the new id now so the class list component uses the latest as set by the switch assignment
     return dispatch('get',id)
       .then( (results) => {
@@ -63,7 +90,7 @@ const actions = {
     return InstoreHelper.getRequest(context, API, url).then(response => {
       let results = response.data[OBJ]
       if (!results) {
-        let msg = `ERROR the could not get ${NAME} ${id}`
+        let msg = Text.GET_ACTIVITY_STORE_ERROR(NAME, id)
         setApiError(msg)
         return
       }

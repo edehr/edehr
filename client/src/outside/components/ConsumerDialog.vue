@@ -77,7 +77,7 @@ export default {
       if (consumerData) {
         this.actionType = EDIT_ACTION
         this.consumerId = consumerData._id
-        this.consumerName = consumerData.tool_consumer_instance_name
+        this.consumerName = consumerData.tool_consumer_instance_name || ''
         this.key = consumerData.oauth_consumer_key
         this.secret = consumerData.oauth_consumer_secret
       } else {

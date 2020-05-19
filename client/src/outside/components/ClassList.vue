@@ -1,22 +1,55 @@
 <template lang="pug">
   div
-    div(class="course-header")
-      h2(class="course-header-item") {{ courseTitle }}
-    h3(:title="activityId") {{ activityName }}
+    div(class="classlist-header-group")
+      div(class="course-header")
+        h2(class="course-header-item") {{ courseTitle }}
+      div(class="course-header-item float-right")
+        ui-button(v-if="activity.closed", v-on:buttonClicked="openActivity", title="Open activity for students to submit work. Instructor can evaluate only work submitted by students.") Open activity
+          fas-icon(class="icon-right", icon="hourglass-start")
+        ui-button(v-else, v-on:buttonClicked="closeActivity", title="Block students from doing more work. Instructor can evaluate all work.") Close activity
+          fas-icon(class="icon-right", icon="hourglass-end")
+        ui-button(v-on:buttonClicked="downloadEvaluations") Download all assignment evaluation notes
+          fas-icon(class="icon-right", icon="download")
+        ui-save-as-prompt(ref="promptDialog", title="Save evaluation", :message="promptMessage", :filename="activityName", v-on:confirm="proceed")
+    div {{ activity.context_title }}
+    div {{ activity.context_label }}
     table
       tr
-        td LMS description:
         td
-          div(v-text-to-html="activityDescription")
-      tr
-        td Assignment name:
+          table
+            tr
+              td Assignment name:
+              td
+                ui-link(:name="'assignments'", :params="{assignmentId: assignmentId}")
+                  span {{ assignmentName }}
+            tr
+              td Description:
+              td
+                div(v-text-to-html="assignmentDescription")
         td
-          ui-link(:name="'assignments'", :params="{assignmentId: assignmentId}")
-            span {{ assignmentName }}
-      tr
-        td Assignment description:
+          table
+            tr
+              td Last Update:
+              td {{ activity.lastDate | formatDateTime }}
+            tr
+              td Created:
+              td {{ activity.createDate | formatDateTime }}
         td
-          div(v-text-to-html="assignmentDescription")
+          table
+            tr
+              td Status
+              td {{activity.closed ? "Closed" : "Open" }}
+            tr
+              td Date closed
+              td {{activity.closedDate | formatDateTime }}
+        td
+          table
+            tr
+              td Students participating
+              td {{classList.length}}
+            tr
+              td Students submitted
+              td {{classSubmittedList.length}}
     div(class="classlist-body")
       table.table
         thead
@@ -30,11 +63,11 @@
           tr(v-for="sv in classList", v-on:click="changeStudent(sv)", :class="rowClass(sv)")
             td
               div(:id="`ref-${sv._id}`",  :ref="`ref-${sv._id}`", :title="sv._id") {{ sv.user.fullName }}
-            td {{ lastUpdate(sv) }}
+            td {{ lastSubmitted(sv)  }}
             td {{ sv.activityData.evaluationData }}
             td {{ statusText(sv) }}
             td.actions
-              span(v-if="sv.activityData.submitted && !sv.activityData.evaluated")
+              span(v-if="activity.closed || (sv.activityData.submitted && !sv.activityData.evaluated)")
                 ui-button(v-on:buttonClicked="goToEhr(sv)", v-bind:secondary="true", title="View and evaluate in the EHR") Evaluate student work
               span(v-if="sv.activityData.submitted && !sv.activityData.evaluated")
                 ui-button(v-on:buttonClicked="unsubmit(sv)", v-bind:secondary="true", :title="unsubmitTool") {{unsubmitText}}
@@ -50,23 +83,13 @@ import StoreHelper from '../../helpers/store-helper'
 import EvalHelper from '../../helpers/eval-helper'
 import UiButton from '../../app/ui/UiButton.vue'
 import UiLink from '../../app/ui/UiLink.vue'
-// import UiSaveAsPrompt from '../../app/ui/UiSaveAsPrompt.vue'
-// import { downArrayToCsvFile } from '../../helpers/ehr-utils'
+import UiSaveAsPrompt from '../../app/ui/UiSaveAsPrompt.vue'
+import { downArrayToCsvFile } from '../../helpers/ehr-utils'
+import { Text } from '../../helpers/ehr-text'
 
-const Text = {
-  EVAL_DONE: 'Evaluation is done. Let the student see the evaluation notes.',
-  EVALUATED: 'Evaluated',
-  NOT_SUBMITTED: 'Not submitted',
-  SEND_BACK: 'Send evaluation to student',
-  SEND_BACK_FOR: 'Send back for edits',
-  SEND_BACK_TO: 'Send back to student for edits',
-  SUBMITTED: 'Submitted and waiting for evaluation',
-  TAKE_BACK: 'Take back from student',
-  WANT_TO_EDIT: 'I want to edit the evaluation notes'
-}
 export default {
   components: {
-    UiButton, UiLink
+    UiButton, UiLink, UiSaveAsPrompt
   },
   data () {
     return {
@@ -74,8 +97,7 @@ export default {
       unsubmitTool: Text.SEND_BACK_TO,
       activity: {},
       assignment: {},
-      activityId: '',
-      testingDev: true
+      testingDev: true,
     }
   },
   props: {
@@ -97,7 +119,23 @@ export default {
 
     classList () { return StoreHelper.getClassList()  },
 
-    cs () { return StoreHelper.currentStudentId()}
+    classSubmittedList () {
+      let list = this.classList
+      list = list.filter(sv => {
+        return sv.activityData.submitted
+      })
+      return list
+    },
+
+    cs () { return StoreHelper.currentStudentId()},
+
+    promptMessage () {
+      return 'Save evaluations for ' + this.activityName
+    },
+
+    activityId () {
+      return this.$route.query.activityId || StoreHelper.getActivityId()
+    }
 
   },
   methods: {
@@ -122,9 +160,32 @@ export default {
     lastUpdate (sv) {
       return formatTimeStr(sv.activityData.lastDate)
     },
+    lastSubmitted (sv) {
+      return sv.activityData.submitted ? this.lastUpdate(sv) : ''
+    },
 
     unsubmit (sv) {
       EvalHelper.unsubmit(sv)
+    },
+
+    closeActivity () {
+      return StoreHelper.closeActivity(this.activityId)
+        .then((result) => {
+          if(result) {
+            this.activity = result
+          }
+        })
+
+    },
+
+    openActivity () {
+      return StoreHelper.openActivity(this.activityId)
+        .then((result) => {
+          if(result) {
+            this.activity = result
+          }
+        })
+
     },
 
     forceSubmit (sv) { EvalHelper.forceSubmit(sv) },
@@ -145,8 +206,7 @@ export default {
       In the first instance the route parameters will contain (must contain) the activity id. In the
       second instance we will retrieve the "active" activity rom the StoreHelper
        */
-      this.activityId = this.$route.params.activityId || StoreHelper.getActivityId()
-      console.log('ClassList loadComponent route param activityId',this.activityId)
+      // console.log('class list load component: this.activityId',this.activityId)
       return StoreHelper.loadAsCurrentActivity(this.activityId)
         .then( () => {
           return  StoreHelper.loadInstructorWithStudent()
@@ -157,10 +217,40 @@ export default {
             this.assignment = result.assignment
           }
         })
-    }
+        .catch((error) => {
+          console.error('Load class list failed', error)
+        })
+    },
+    downloadEvaluations () {
+      this.$refs.promptDialog.showDialog(this.promptTitle, this.promptMessage, this.promptLabel)
+    },
+
+    closeDialog () {
+      this.$refs.promptDialog.cancelDialog()
+    },
+
+    proceed (filename) {
+      let data = []
+      data.push(['givenName', 'familyName', 'email','feedback: ' + this.activityName])
+      this.classList.forEach ( sv => {
+        data.push([sv.user.givenName, sv.user.familyName, sv.user.emailPrimary,sv.activityData.evaluationData])
+      })
+      downArrayToCsvFile(filename, data)
+    },
+
   },
   mounted: function () {
+    // console.log('Load component because component mounted')
     this.loadComponent()
+  },
+  watch: {
+    // TODO ALmost certain this watch is not triggered anymore.
+    activityId:function (curr, prev) {
+      if (!prev && curr) {
+        console.log('Load component because of a change in activity id')
+        this.loadComponent()
+      }
+    }
   }
 
 }
@@ -168,6 +258,10 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/definitions';
+  .classlist-header-group {
+    display: flex; 
+    justify-content: space-between;
+  }
   .classlist-header {
     padding: 0.5rem 1.5rem;
     background-color: $grey10;

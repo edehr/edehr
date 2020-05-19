@@ -23,6 +23,7 @@ const Defs = {
       elementKey: 'time',
       inputType: 'time',
       label: 'Time',
+      validation: 'time24',
     }
   ],
 

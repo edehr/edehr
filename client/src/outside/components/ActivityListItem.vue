@@ -1,8 +1,9 @@
 <template lang="pug">
   div(:id="activityId")
     div(class="activity-list-header columns")
-      div(class="header-column is-10 column")
-        h3(:title="activityId") {{ activityName }}
+      div(class="header-column is-10 column")    
+        h3(:title="activityId") 
+             router-link(:to="`/ehr/patient/demographics?readonly=true`") {{ activityName }}
         table
           tr
             td LMS description:
@@ -20,8 +21,24 @@
           tr
             td Class list:
             td
-              ui-link(:name="'classlist'", :params="{activityId: activityId}")
+              ui-link(:name="'classList'", :query="{activityId: activityId}")
                 span go to list
+          tr
+            td Status:
+            td {{activity.closed ? "Closed" : "Open" }}
+          tr
+            td Created date:
+            td {{ activity.createDate | formatDateTime }}
+          tr
+            td Last Update date:
+            td {{ activity.lastDate | formatDateTime }}
+          tr
+            td Number of students participating:
+            td
+              span {{classList.length}}
+          tr
+            td Number of students with submitted work:
+            td {{classSubmittedList.length}}
 </template>
 
 <script>
@@ -53,6 +70,15 @@ export default {
   computed: {
     activityName () {
       return StoreHelper.getActivityTitle()
+    },
+    classList () { return StoreHelper.getClassList()  },
+
+    classSubmittedList () {
+      let list = this.classList
+      list = list.filter(sv => {
+        return sv.activityData.submitted
+      })
+      return list
     },
   },
   methods: {

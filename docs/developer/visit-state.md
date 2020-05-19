@@ -12,4 +12,3 @@ The LTI request comes from the LMS via a POST message to the EdEHR API server. I
 Visit state management is all about allowing a user to refresh their browser and be able to continue to use the tool.
 
 This prototype is a prototype. A future version should send a JWT from the API server to the client. At this time the API sends necessary information via URL.
-

@@ -12,10 +12,7 @@ function getIsDeving () {
 }
 
 const state = {
-  apiUrl: '',
-  // visitId: '',
   sVisitData: {},
-  // sVisitInfo: {},
   isLoggedIn: !!sessionStorage.getItem(sKeys.USER_TOKEN),
   topLevelMenu: '',
   _isDevelopingContent: getIsDeving()
@@ -52,6 +49,9 @@ const getters = {
     if(debug) console.log(NAME + ' get lastUpdateDate', prop)
     return prop
   },
+  isReadOnlyInstructor: state => {
+    return sessionStorage.getItem(sKeys.IS_READONLY_INSTRUCTOR)
+  }
 }
 
 const actions = {
@@ -75,11 +75,6 @@ const actions = {
 }
 
 const mutations = {
-  apiUrl: (state, url) => {
-    if(debug) console.log('visit store set api url ' + url)
-    sessionStorage.setItem(sKeys.API_URL, url)
-    state.apiUrl = url
-  },
   setIsDevelopingContent: (state, value) => {
     if(debug) console.log('setIsDevelopingContent isDeving', value)
     // This value needs to survive a browser refresh so make the source of truth the session storage
@@ -102,6 +97,9 @@ const mutations = {
   topLevelMenu: (state, top) => {
     if(debug) console.log('visit store top level menu ' + (top ? top : 'empty'))
     state.topLevelMenu = top
+  },
+  setIsReadOnlyInstructor: (val) => {
+    sessionStorage.setItem(sKeys.IS_READONLY_INSTRUCTOR, val)
   }
 }
 

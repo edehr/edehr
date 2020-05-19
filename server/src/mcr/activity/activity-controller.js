@@ -2,6 +2,7 @@ import BaseController from '../common/base'
 import Visit from '../visit/visit'
 import Activity from './activity'
 import {ok, fail} from '../common/utils'
+import { Text } from '../../config/text'
 const debug = require('debug')('server')
 
 /*
@@ -13,20 +14,39 @@ export default class ActivityController extends BaseController {
     super(Activity, '_id')
   }
 
+  closeActivity (id, direction) {
+    return this.baseFindOneQuery(id).then(activity => {
+      if (activity) {
+        const closing = direction === 'close'
+        activity.closedDate = closing ? Date.now() : null
+        activity.closed = closing
+        return activity.save()
+      }
+    })
+  }
+
+  /**
+   * Called by the LTI controller when a user comes to this system.
+   *
+   * @param ltiData
+   * @param toolConsumerId
+   * @param assignment
+   * @return {Promise<any>}
+   */
   updateCreateActivity (ltiData, toolConsumerId, assignment) {
     const _this = this
     debug('updateCreateActivity search for existing activity ' + ltiData.resource_link_id)
     return new Promise(function (resolve, reject) {
-      var data = _this._extractLtiData(ltiData)
+      const data = _this._extractLtiData(ltiData)
       _this.findOne({$and: [{resource_link_id: ltiData.resource_link_id}, {toolConsumer: toolConsumerId}]})
         .then((activity) => {
           if (activity) {
+            activity.lastDate = Date.now()
             if (!activity.assignment.equals(assignment._id)) {
             // console.log('was ', activity.assignment, 'seeking', assignment._id)
-              var msg = 'Changing assignment for this activity.'
+              const msg = Text.CHANGE_ACTIVITY_ASSIGNMENT
               debug('updateCreateActivity ' + msg)
               activity.assignment = assignment._id
-            // console.log('adasd',activity)
             }
             debug('updateCreateActivity update activity ' + activity._id)
             return _this._updateHelper(activity, data)
@@ -44,12 +64,6 @@ export default class ActivityController extends BaseController {
   }
 
   listClassList (_id) {
-    // TODO elide the student's scratch pad
-    /*
-      .findOne({personcode: code})
-      .select('-_id -__v')
-      .populate('bookids', '-_id -__v')
-     */
     return Visit.find({ $and: [ {isStudent: true }, {activity: _id} ] })
       .populate('activityData', 'submitted evaluated assignmentData evaluationData')
       .populate('assignment', 'externalId name description seedDataId ehrRoutePath')
@@ -66,10 +80,10 @@ export default class ActivityController extends BaseController {
   }
 
   _createHelper (activity, data) {
-    debug('updateCreateActivity create new activity record ' + JSON.stringify((data)))
+    debug('createHelper create new activity record ' + JSON.stringify((data)))
     return this.create(data)
       .then((newActivity) => {
-        debug('updateCreateActivity new activity ' + newActivity._id)
+        debug('createHelper new activity ' + newActivity._id)
         return newActivity
       })
   }
@@ -78,10 +92,10 @@ export default class ActivityController extends BaseController {
     Object.assign(activity, data)
     let updated = JSON.stringify(activity)
     if (current !== updated) {
-      debug('updateCreateActivity there is something different in the activity. Saving new activity data ' + updated)
+      debug('updateHelper there is something different in the activity. Saving new activity data ' + updated)
       return activity.save()
     } else {
-      debug('updateCreateActivity  no change in activity')
+      debug('updateHelper  no change in activity')
       return activity
     }
   }
@@ -102,7 +116,7 @@ export default class ActivityController extends BaseController {
   route () {
     const router = super.route()
 
-    router.get('/class/:key', (req, res) => {
+    router.get('/class-list/:key', (req, res) => {
       this
         .listClassList(req.params.key)
         .then(ok(res))
@@ -114,6 +128,22 @@ export default class ActivityController extends BaseController {
         .then(ok(res))
         .then(null, fail(res))
     })
+
+    // PUT
+    router.put('/close-activity/:key', (req, res) => {
+      this
+        .closeActivity(req.params.key, 'close')
+        .then(ok(res))
+        .then(null, fail(res))
+    })
+
+    router.put('/open-activity/:key', (req, res) => {
+      this
+        .closeActivity(req.params.key, 'open')
+        .then(ok(res))
+        .then(null, fail(res))
+    })
+
     return router
   }
 }

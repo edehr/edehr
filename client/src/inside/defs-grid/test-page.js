@@ -46,7 +46,7 @@ export default function () {
         {
           elementKey: 'defaultText',
           defaultValue: 'some default',
-          dependantOn: 'pcheckbox',
+          dependentOn: 'disable:pcheckbox',
           formIndex: '1',
           helperText: 'a text input',
           inputType: 'text',
@@ -68,12 +68,15 @@ export default function () {
           label: 'select',
           options: [
             {
+              key: '1=a choice 1',
               text: '1=a choice 1'
             },
             {
+              key: '2=b choice 1',
               text: '2=b choice 1'
             },
             {
+              key: '3=c choice 1',
               text: '3=c choice 1'
             }
           ],
@@ -87,12 +90,15 @@ export default function () {
           label: 'select',
           options: [
             {
+              key: '1=a choice 2',
               text: '1=a choice 2'
             },
             {
+              key: '2=b choice 2',
               text: '2=b choice 2'
             },
             {
+              key: '3=c choice 2',
               text: '3=c choice 2'
             }
           ],
@@ -116,15 +122,19 @@ export default function () {
           label: 'checkset',
           options: [
             {
+              key: 'check1=check option 1',
               text: 'check1=check option 1'
             },
             {
+              key: 'check2=check option 2',
               text: 'check2=check option 2'
             },
             {
+              key: 'other=another option',
               text: 'other=another option'
             },
             {
+              key: 'all=all options are selectable',
               text: 'all=all options are selectable'
             }
           ],
@@ -155,9 +165,11 @@ export default function () {
           label: 'select',
           options: [
             {
+              key: '1 = Yes',
               text: '1 = Yes'
             },
             {
+              key: '2 = No',
               text: '2 = No'
             }
           ],
@@ -180,7 +192,7 @@ export default function () {
         },
         {
           elementKey: 'ptext2',
-          dependantOn: 'pcheckbox2',
+          dependentOn: 'disable:pcheckbox2',
           formIndex: '1',
           formOption: 'hideLabel',
           inputType: 'text',
@@ -264,6 +276,7 @@ export default function () {
           formIndex: '3',
           inputType: 'time',
           label: 'Time',
+          validation: 'time24',
           fqn: 'testPage.time'
         },
         {
@@ -281,11 +294,11 @@ export default function () {
           fqn: 'testPage.textDateDate'
         },
         {
-          elementKey: 'spacer128',
+          elementKey: 'spacer132',
           formIndex: '3',
           inputType: 'spacer',
           label: 'TextDate',
-          fqn: 'testPage.spacer128'
+          fqn: 'testPage.spacer132'
         },
         {
           elementKey: 'name',
@@ -302,7 +315,7 @@ export default function () {
           fqn: 'testPage.place'
         }
       ],
-      generated: '2019-10-08T07:35:50-07:00',
+      generated: '2020-03-14T15:32:58-07:00',
       pageElements: {
         form1: {
           elementKey: 'form1',
@@ -311,6 +324,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
+              elementKey: 'ehr_group128',
               label: 'A group label',
               gIndex: '1',
               gChildren: [
@@ -326,19 +340,20 @@ export default function () {
               ]
             },
             {
+              elementKey: 'ehr_group129',
               label: 'Second group',
               gIndex: '2',
               gChildren: [
                 {
+                  elementKey: 'subgroup1',
                   label: 'subgroup 1',
-                  elementKey: 'subgroup138',
                   sgChildren: [
                     'pcheckset'
                   ]
                 },
                 {
+                  elementKey: 'subgroup2',
                   label: 'subgroup 2',
-                  elementKey: 'subgroup139',
                   sgChildren: [
                     'dayValue',
                     'timeValue',
@@ -347,8 +362,8 @@ export default function () {
                   ]
                 },
                 {
+                  elementKey: 'subgroup3',
                   label: 'subgroup 3',
-                  elementKey: 'subgroup140',
                   sgChildren: [
                     'pcheckbox2',
                     'ptext2',
@@ -391,6 +406,7 @@ export default function () {
             formKey: 'table1',
             ehr_groups: [
               {
+                elementKey: 'ehr_group130',
                 label: 'Group 1',
                 gIndex: '1',
                 gChildren: [
@@ -412,6 +428,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
+              elementKey: 'ehr_group131',
               label: 'A group label',
               gIndex: '1',
               gChildren: [
@@ -421,7 +438,7 @@ export default function () {
                 'time',
                 'textDate',
                 'textDateDate',
-                'spacer128',
+                'spacer132',
                 'name',
                 'place'
               ]
@@ -436,6 +453,7 @@ export default function () {
       pIndex: '41',
       isV2: true,
       hasGridTable: true,
+      hasGridForm: true,
       pageChildren: [
         {
           elementKey: 'e1',
@@ -479,7 +497,7 @@ export default function () {
         {
           elementKey: 'defaultText',
           defaultValue: 'some default',
-          dependantOn: 'pcheckbox',
+          dependentOn: 'disable:pcheckbox',
           formIndex: '1',
           helperText: 'a text input',
           inputType: 'text',
@@ -506,12 +524,15 @@ export default function () {
           label: 'select',
           options: [
             {
+              key: '1=a choice 1',
               text: '1=a choice 1'
             },
             {
+              key: '2=b choice 1',
               text: '2=b choice 1'
             },
             {
+              key: '3=c choice 1',
               text: '3=c choice 1'
             }
           ],
@@ -527,12 +548,15 @@ export default function () {
           label: 'select',
           options: [
             {
+              key: '1=a choice 2',
               text: '1=a choice 2'
             },
             {
+              key: '2=b choice 2',
               text: '2=b choice 2'
             },
             {
+              key: '3=c choice 2',
               text: '3=c choice 2'
             }
           ],
@@ -558,15 +582,19 @@ export default function () {
           label: 'checkset',
           options: [
             {
+              key: 'check1=check option 1',
               text: 'check1=check option 1'
             },
             {
+              key: 'check2=check option 2',
               text: 'check2=check option 2'
             },
             {
+              key: 'other=another option',
               text: 'other=another option'
             },
             {
+              key: 'all=all options are selectable',
               text: 'all=all options are selectable'
             }
           ],
@@ -603,9 +631,11 @@ export default function () {
           label: 'select',
           options: [
             {
+              key: '1 = Yes',
               text: '1 = Yes'
             },
             {
+              key: '2 = No',
               text: '2 = No'
             }
           ],
@@ -634,7 +664,7 @@ export default function () {
         },
         {
           elementKey: 'g5',
-          dependantOn: 'g4',
+          dependentOn: 'disable:g4',
           formIndex: '1',
           inputType: 'text',
           label: 'text',
@@ -717,6 +747,7 @@ export default function () {
           inputType: 'time',
           label: 'Time',
           tableColumn: '1',
+          validation: 'time24',
           fqn: 'testTable.time'
         },
         {
@@ -739,13 +770,13 @@ export default function () {
           fqn: 'testTable.cd1Date'
         },
         {
-          elementKey: 'spacer134',
+          elementKey: 'spacer138',
           formIndex: '2',
           inputType: 'spacer',
           label: 'C D 1',
           tableColumn: '2',
           tableLabel: 'Chk 1',
-          fqn: 'testTable.spacer134'
+          fqn: 'testTable.spacer138'
         },
         {
           elementKey: 'cd2',
@@ -767,13 +798,13 @@ export default function () {
           fqn: 'testTable.cd2Date'
         },
         {
-          elementKey: 'spacer135',
+          elementKey: 'spacer139',
           formIndex: '2',
           inputType: 'spacer',
           label: 'C D 2',
           tableColumn: '3',
           tableLabel: 'Chk 2',
-          fqn: 'testTable.spacer135'
+          fqn: 'testTable.spacer139'
         },
         {
           elementKey: 'td1',
@@ -794,13 +825,13 @@ export default function () {
           fqn: 'testTable.td1Date'
         },
         {
-          elementKey: 'spacer136',
+          elementKey: 'spacer140',
           formIndex: '2',
           inputType: 'spacer',
           label: 'TextDate',
           tableColumn: '4',
           tableLabel: 'Txt 1',
-          fqn: 'testTable.spacer136'
+          fqn: 'testTable.spacer140'
         },
         {
           elementKey: 'referralName',
@@ -841,6 +872,7 @@ export default function () {
           inputType: 'time',
           label: 'Appointment time',
           tableColumn: '6',
+          tableLabel: 'Appointment',
           fqn: 'testTable.appointmentTime'
         },
         {
@@ -850,18 +882,147 @@ export default function () {
           label: 'Status',
           options: [
             {
+              key: 'Active',
               text: 'Active'
             },
             {
+              key: 'Discharged',
               text: 'Discharged'
             }
           ],
           tableColumn: '7',
           tableLabel: 'Status',
           fqn: 'testTable.status'
+        },
+        {
+          elementKey: 'administration',
+          defaultValue: 'sched',
+          formIndex: '3',
+          inputType: 'select',
+          label: 'Administration',
+          options: [
+            {
+              key: 'sched',
+              text: 'Scheduled'
+            },
+            {
+              key: 'prn',
+              text: 'PRN (as needed)'
+            },
+            {
+              key: 'once',
+              text: 'Once'
+            },
+            {
+              key: 'stat',
+              text: 'Stat'
+            }
+          ],
+          tableColumn: '7',
+          tableLabel: 'Administration',
+          fqn: 'testTable.administration'
+        },
+        {
+          elementKey: 'scheduled',
+          formIndex: '3',
+          inputType: 'select',
+          label: 'Scheduled',
+          options: [
+            {
+              key: 'BID / q12h',
+              text: 'BID / q12h'
+            },
+            {
+              key: 'TID',
+              text: 'TID'
+            },
+            {
+              key: 'q8h',
+              text: 'q8h'
+            },
+            {
+              key: 'QID',
+              text: 'QID'
+            },
+            {
+              key: 'q6h',
+              text: 'q6h'
+            },
+            {
+              key: 'q4h',
+              text: 'q4h'
+            }
+          ],
+          tableColumn: '9',
+          tableLabel: 'Scheduled',
+          fqn: 'testTable.scheduled'
+        },
+        {
+          elementKey: 'prn1',
+          formIndex: '3',
+          inputType: 'text',
+          label: 'PRN 1',
+          tableColumn: '10',
+          fqn: 'testTable.prn1'
+        },
+        {
+          elementKey: 'prn2',
+          formIndex: '3',
+          inputType: 'text',
+          label: 'PRN 2',
+          tableColumn: '11',
+          fqn: 'testTable.prn2'
+        },
+        {
+          elementKey: 'prn3',
+          formIndex: '3',
+          inputType: 'text',
+          label: 'PRN 3',
+          tableColumn: '12',
+          fqn: 'testTable.prn3'
+        },
+        {
+          elementKey: 'prn4',
+          formIndex: '3',
+          inputType: 'text',
+          label: 'PRN 4',
+          tableColumn: '13',
+          fqn: 'testTable.prn4'
+        },
+        {
+          elementKey: 'prn5',
+          formIndex: '3',
+          inputType: 'text',
+          label: 'PRN 5',
+          tableColumn: '14',
+          fqn: 'testTable.prn5'
+        },
+        {
+          elementKey: 'prn6',
+          formIndex: '3',
+          inputType: 'text',
+          label: 'PRN 6',
+          tableColumn: '15',
+          fqn: 'testTable.prn6'
+        },
+        {
+          elementKey: 'once',
+          formIndex: '3',
+          inputType: 'text',
+          label: 'Once',
+          tableColumn: '10',
+          fqn: 'testTable.once'
+        },
+        {
+          elementKey: 'stat',
+          formIndex: '3',
+          inputType: 'text',
+          label: 'Stat',
+          tableColumn: '10',
+          fqn: 'testTable.stat'
         }
       ],
-      generated: '2019-10-08T07:35:50-07:00',
+      generated: '2020-03-14T15:32:58-07:00',
       pageElements: {
         table1: {
           elementKey: 'table1',
@@ -980,6 +1141,7 @@ export default function () {
             formKey: 'table1',
             ehr_groups: [
               {
+                elementKey: 'ehr_group133',
                 label: 'Group 1',
                 gIndex: '1',
                 gChildren: [
@@ -995,18 +1157,19 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group134',
                 gIndex: '2',
                 gChildren: [
                   {
+                    elementKey: 'subgroup1',
                     label: 'subgroup 1',
-                    elementKey: 'subgroup141',
                     sgChildren: [
                       'e10'
                     ]
                   },
                   {
+                    elementKey: 'subgroup2',
                     label: 'subgroup 2',
-                    elementKey: 'subgroup142',
                     sgChildren: [
                       'dayValue',
                       'timeValue',
@@ -1015,8 +1178,8 @@ export default function () {
                     ]
                   },
                   {
+                    elementKey: 'subgroup3',
                     label: 'subgroup 3',
-                    elementKey: 'subgroup143',
                     sgChildren: [
                       'g4',
                       'g5',
@@ -1029,6 +1192,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group135',
                 formCss: 'full-width',
                 gIndex: '3',
                 gChildren: [
@@ -1078,7 +1242,7 @@ export default function () {
               items: [
                 'cd1',
                 'cd1Date',
-                'spacer134'
+                'spacer138'
               ]
             },
             {
@@ -1087,7 +1251,7 @@ export default function () {
               items: [
                 'cd2',
                 'cd2Date',
-                'spacer135'
+                'spacer139'
               ]
             },
             {
@@ -1096,7 +1260,7 @@ export default function () {
               items: [
                 'td1',
                 'td1Date',
-                'spacer136'
+                'spacer140'
               ]
             },
             {
@@ -1130,6 +1294,7 @@ export default function () {
             formKey: 'stacked',
             ehr_groups: [
               {
+                elementKey: 'ehr_group136',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -1140,20 +1305,22 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group137',
                 gIndex: '2',
                 gChildren: [
                   'cd1',
                   'cd1Date',
-                  'spacer134',
+                  'spacer138',
                   'cd2',
                   'cd2Date',
-                  'spacer135',
+                  'spacer139',
                   'td1',
                   'td1Date',
-                  'spacer136'
+                  'spacer140'
                 ]
               },
               {
+                elementKey: 'ehr_group141',
                 gIndex: '3',
                 gChildren: [
                   'referralName',
@@ -1183,6 +1350,58 @@ export default function () {
               status: ''
             }
           }
+        },
+        form3: {
+          elementKey: 'form3',
+          label: 'Form 3',
+          formKey: 'form3',
+          isPageForm: true,
+          ehr_groups: [
+            {
+              elementKey: 'adminGroup',
+              gIndex: '1',
+              gChildren: [
+                'administration'
+              ]
+            },
+            {
+              elementKey: 'schedGroup',
+              dependentOn: 'visble:administration=sched',
+              gIndex: '2',
+              gChildren: [
+                'scheduled'
+              ]
+            },
+            {
+              elementKey: 'prnGroup',
+              dependentOn: 'visble:administration=prn',
+              gIndex: '3',
+              gChildren: [
+                'prn1',
+                'prn2',
+                'prn3',
+                'prn4',
+                'prn5',
+                'prn6'
+              ]
+            },
+            {
+              elementKey: 'onceGroup',
+              dependentOn: 'visble:administration=once',
+              gIndex: '4',
+              gChildren: [
+                'once'
+              ]
+            },
+            {
+              elementKey: 'statGroup',
+              dependentOn: 'visble:administration=stat',
+              gIndex: '5',
+              gChildren: [
+                'stat'
+              ]
+            }
+          ]
         }
       }
     }

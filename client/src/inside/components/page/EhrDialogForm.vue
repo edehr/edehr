@@ -43,11 +43,14 @@ export default {
     },
     cancelDialog: function () {
       this.ehrHelp.cancelDialog()
+      this.errorList = []
     },
     saveDialog: function () {
       let errs = this.ehrHelp.saveDialog()
       if (errs) {
         this.errorList = errs
+      } else {
+        this.errorList = []
       }
     },
     receiveShowHideEvent (eData) {

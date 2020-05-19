@@ -1,14 +1,11 @@
 import { validTimeStr, validDayStr } from '../../../helpers/ehr-utils'
-import PeriodDefs from './period-defs'
-import MedOrder from './med-entity'
+import MedOrder from './med-order'
 
 
 const ERR_WHO = 'Must provide who administered'
 const ERR_WHEN = 'Time must be 24:00 hour format'
 const ERR_DAY = 'Day must be one of 0,1,2,3,...'
 const ERR_EMPTY_MEDS = 'Medication list can not be empty'
-const ERR_SCHEDULE = 'Must provide the scheduled time'
-
 const DEFAULT_TIME = '0:00'
 const DEFAULT_DAY = 0
 
@@ -30,9 +27,11 @@ export default class MarEntity {
       this._data.day = day
       this._data.actualTime = when
       this._data.comment = comment
-      this._data.scheduledTime = period.key
+      this._data.scheduledTime = period.hour24
       this._period = period
-      this._data.medications = period.medsList
+      this._data.medications = period.medList
+      // period.medList.map(ml => ml.asObjectForApi())
+      
     } else if (typeof whoOrObj === 'object') { // from database
       // console.log('MarEntity create from object', whoOrObj)
       this._data = whoOrObj._data ? whoOrObj._data : whoOrObj
@@ -43,10 +42,8 @@ export default class MarEntity {
 
   asObjectForApi () {
     let obj = Object.assign({},this._data)
-    let medsList = this._period && this._period.medsList ? this._period.medsList : []
-    // console.log('MarEntity medsList', medsList)
-    obj.medications = medsList.map(m => m.asObjectForApi())
-    // console.log('MarEntity asObjectForApi', obj)
+    let medsList = this._period && this._period.medList ? this._period.medList : []
+    obj.medications = medsList
     return obj
   }
 
@@ -61,16 +58,12 @@ export default class MarEntity {
   get medications () { return this._data.medications}
 
   validate () {
-    const _periodDefs = new PeriodDefs()
     let errMsgList = []
     if(!validWho(this.whoAdministered)) {
       errMsgList.push(ERR_WHO)
     }
     if(!validDay(this.day)) {
       errMsgList.push(ERR_DAY)
-    }
-    if(!_periodDefs.validScheduledTime(this.scheduledTime)) {
-      errMsgList.push(ERR_SCHEDULE)
     }
     if(!validTimeStr(this.actualTime)) {
       errMsgList.push(ERR_WHEN)

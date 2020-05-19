@@ -13,8 +13,7 @@
 {inputType: textarea}	eCell	{Label: Goal of care}	{elementKey: goal}	{pN: 30}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Goal of care}	{tableColumn: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: textarea}	eCell	{Label: Intervention}	{elementKey: interventions}	{pN: 30}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Intervention}	{tableColumn: 4}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: textarea}	eCell	{Label: Evaluation of intervention}	{elementKey: evaluation}	{pN: 30}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Evaluation of intervention}	{tableColumn: 5}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Status}	{elementKey: status}	{pN: 30}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Status}	{tableColumn: 6}	eCell	eCell	eCell	eCell	"{Options: Active
-In progress
+{inputType: select}	eCell	{Label: Status}	{elementKey: status}	{pN: 30}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Status}	{tableColumn: 6}	eCell	eCell	eCell	eCell	"{Options: In progress
 Complete}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: page}	{pRef: 38}	{Label: Consults}	{elementKey: consults}	{pN: 31}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: page_form}	eCell	eCell	{elementKey: pageForm}	{pN: 31}	{fN: 1}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell

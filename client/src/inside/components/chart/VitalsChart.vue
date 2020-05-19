@@ -116,6 +116,11 @@ export default {
       chartCanvas.style.width = canvasWidth + 'px'
       chartCanvas.style.height = canvasHeight + 'px'
       chartCanvas.getContext('2d').scale(f, f)
+      axisCanvas.width = yAxisWidth * f
+      axisCanvas.height = canvasHeight * f
+      axisCanvas.style.width = yAxisWidth+ 'px'
+      axisCanvas.style.height = canvasHeight + 'px'
+      axisCanvas.getContext('2d').scale(f, f)
     }
     this.vitalChart = new VitalChart(chartCanvas, axisCanvas)
     // draw to get empty chart

@@ -9,8 +9,8 @@ let routes = [
     path: '/',
     name: 'home',
     component: () =>
-      import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Dashboard.vue'),
-    meta: { layout: 'outside' }
+      import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Home'),
+    meta: { layout: 'outside', public: true }
   },
   {
     path: '/ehr', redirect: '/ehr/patient/demographics'

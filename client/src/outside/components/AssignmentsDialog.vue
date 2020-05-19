@@ -24,11 +24,6 @@
               div(class="input-element input-element-full")
                 label Description
                 textarea(class="ehr-page-form-textarea",v-model="description")
-          div(class="technical", v-if="hasAdvanced")
-            hr
-            div(v-if="showAdvanced") Assignment: {{ assignmentId}}
-            label( for="show-advanced") Show advanced
-              input( type="checkbox" name="show-advanced" id="show-advanced" v-model="showAdvanced")
 
 </template>
 
@@ -44,7 +39,7 @@ const ERRORS = {
   ID_IN_USE: (id) => `ExternalId ${id} is already in use`,
   NAME_REQUIRED: 'Assignment name is required',
   ID_REQUIRED: 'Assignment externalId is required',
-  ID_PATTERN: 'External Id needs to start with a letter and then contain letters, numbers, hypens or underscores',
+  ID_PATTERN: 'External Id needs to contain letters, numbers, hypens or underscores',
   SEED_REQUIRED: 'Assignment EHR data seed is required'
 }
 
@@ -75,7 +70,7 @@ export default {
       if (!this.externalId) {
         return ERRORS.ID_REQUIRED
       }
-      let re = /^[a-zA-Z][0-9a-zA-Z\-_]*$/
+      let re = /^[0-9a-zA-Z\-_]*$/
       if (!this.externalId.match(re)) {
         return ERRORS.ID_PATTERN
       }
@@ -83,7 +78,10 @@ export default {
       return this.inUseIds.includes(id) ? ERRORS.ID_IN_USE(id) : undefined
     },
     disableSave () {
-      return !!(this.nameValidate || this.seedValidate || this.externalValidate)
+      const errmsg = this.nameValidate || this.seedValidate || this.externalValidate
+      const isInvalid = !!errmsg
+      console.log('errmsg', errmsg)
+      return isInvalid
     },
     dialogHeader () {
       return TITLES[this.actionType] || ''

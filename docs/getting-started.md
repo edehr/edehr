@@ -22,4 +22,3 @@ These videos demonstrate all of the above including how a student completes thei
 This documentation assumes you have a running LMS. It is beyond the scope of this project to describe how this is done. Yet see how to setup the LMS to use the EdEHR [here](/lms-admin/).
 
 To set up and install a copy of the EdEHR see [developer](/developer/).
-

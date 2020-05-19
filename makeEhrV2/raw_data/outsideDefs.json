@@ -1,6 +1,9 @@
 [
   { "path": "", "routeName": "instructor"},
+  { "path": "", "routeName": "classList"},
+  { "path": "", "routeName": "consumers"},
   { "path": "", "routeName": "help"},
   { "path": "", "routeName": "assignments"},
-  { "path": "", "routeName": "developEhrData"}
+  { "path": "", "routeName": "developEhrData"},
+  { "path": "", "routeName": "lookahead"}
 ]

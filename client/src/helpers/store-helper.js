@@ -2,7 +2,7 @@ import store from '../store'
 import {removeEmptyProperties } from './ehr-utils'
 import sKeys from './session-keys'
 
-const debug = false
+const debug = true
 
 class StoreHelperWorker {
 
@@ -12,8 +12,10 @@ class StoreHelperWorker {
 
   getHasDataForPagesList () { return store.getters['ehrDataStore/hasDataForPagesList'] }
 
+
   /* **********   Internal  ************** */
   _getActivityDataProperty (key) { return store.getters['activityDataStore/' + key]}
+  _getAuthStore (key) { return store.getters['authStore/'+ key] }
   _getUserProperty (key) { return store.getters['userStore/' + key]}
   _getActivityProperty (key) { return store.getters['activityStore/' + key]}
   _getAssignmentProperty (key) { return store.getters['assignmentStore/' + key]}
@@ -29,6 +31,7 @@ class StoreHelperWorker {
   _dispatchActivityData (key, payload) { return store.dispatch('activityDataStore/' + key, payload)}
   _dispatchAssignment (key, payload) { return store.dispatch('assignmentStore/' + key, payload)}
   _dispatchAssignmentList (key, payload) { return store.dispatch('assignmentListStore/' + key, payload)}
+  _dispatchAuthStore (key, payload) { return store.dispatch(`authStore/${key}`, payload) }
   _dispatchConsumerList (key, payload) { return store.dispatch('consumerListStore/' + key, payload)}
   _dispatchConsumer (key, payload) { return store.dispatch('consumerStore/' + key, payload)}
   _dispatchSeedListProperty (key, payload) { return store.dispatch('seedListStore/' + key, payload)}
@@ -45,7 +48,16 @@ class StoreHelperWorker {
   isInstructor () { return this._getVisitProperty('isInstructor') }
   isDeveloper () { return this._getVisitProperty('isDeveloper') }
   isStudent () { return this._getVisitProperty('isStudent') }
+  isAdmin () { return this._get}
 
+  /**
+   * The API server must provide the url to call back into the server.
+   */
+  apiUrl () { return localStorage.getItem('apiUrl') || undefined }
+  apiUrlSet (url) { localStorage.setItem('apiUrl', url) }
+
+  isReadOnlyInstructor () { return this._getVisitProperty('isReadOnlyInstructor')}
+  setIsReadOnlyInstructor (isReadonly = false) { return store.commit('visit/setIsReadOnlyInstructor', isReadonly)}
   isDevelopingContent () { return this._getVisitProperty('isDevelopingContent')  }
   setIsDevelopingContent (state) { store.commit('visit/setIsDevelopingContent', state) }
 
@@ -102,6 +114,14 @@ class StoreHelperWorker {
 
   getActivityDescription () { return this._getActivityProperty('activityDescription') }
 
+  getActivityIsClosed () {
+    return this._getActivityProperty('closed')
+  }
+
+  getActivityClosedDate () {
+    return this._getActivityProperty('closedDate')
+  }
+
   activitiesUsingAssignmentCount (assignmentId) {
     let cnt = 0
     let courses = this.getCourseList()
@@ -125,6 +145,20 @@ class StoreHelperWorker {
    */
   loadAsCurrentActivity (activityId) { return this._dispatchActivity('load', activityId) }
 
+  /**
+   * Make API call to close activity
+   * @param activityId
+   * @return {*}
+   */
+  closeActivity (activityId) { return this._dispatchActivity('close', activityId) }
+
+  /**
+   * Make API call to open activity
+   * @param activityId
+   * @return {*}
+   */
+  openActivity (activityId) { return this._dispatchActivity('open', activityId) }
+
   currentStudentId () { return this._getInstructorProperty('currentStudentId') }
 
   getCourseList () { return store.state.instructor.sCourses || [] }
@@ -144,8 +178,10 @@ class StoreHelperWorker {
 
   loadAssignment (id) { return this._dispatchAssignment('load', id) }
 
+  deleteAssignment (id) { return this._dispatchAssignment('delete', id)}
+
   loadAssignmentAndSeedLists () {
-    // load the seeds first so they are ready for the assignments to integrate
+  // load the seeds first so they are ready for the assignments to integrate
     return  this._dispatchSeedListProperty('loadSeeds')
       .then ( () => {
         return this.loadAssignmentList()
@@ -156,7 +192,7 @@ class StoreHelperWorker {
 
   // returns promise that resolves to assignment list
   updateAssignment (component, assignmentId, assignmentData) {
-    // console.log('Assignment update ', assignmentId, assignmentData)
+  // console.log('Assignment update ', assignmentId, assignmentData)
     let dataIdPlusPayload = { id: assignmentId, payload: assignmentData }
     return this._dispatchAssignmentList('updateAssignment', dataIdPlusPayload)
   }
@@ -178,7 +214,7 @@ class StoreHelperWorker {
   loadSeedLists () { return this._dispatchSeedListProperty('loadSeedDataList') }
 
   updateSeed (component, seedId, theData) {
-    // console.log('Seed Data update ', seedId, theData)
+  // console.log('Seed Data update ', seedId, theData)
     let dataIdPlusPayload = { id: seedId, payload: theData }
     return this._dispatchSeedListProperty('updateSeedItem', dataIdPlusPayload)
   }
@@ -228,6 +264,8 @@ class StoreHelperWorker {
       courseTitle: this.getCourseTitle(),
       activityTitle: this.getActivityTitle(),
       activityDescription: this.getActivityDescription(),
+      closed: this.getActivityIsClosed(),
+      closedDate: this.getActivityClosedDate(),
       assignmentName: assignment.name,
       assignmentDescription: assignment.description,
       submitted: this.isSubmitted(),
@@ -296,6 +334,7 @@ class StoreHelperWorker {
     sessionStorage.removeItem(sKeys.C_ACTIVITY)
     sessionStorage.removeItem(sKeys.C_STUDENT)
     sessionStorage.removeItem(sKeys.SEED_ID)
+    sessionStorage.removeItem(sKeys.IS_READONLY_INSTRUCTOR)
     return Promise.resolve()
   }
 
@@ -363,6 +402,29 @@ class StoreHelperWorker {
     }
   }
 
+  fetchAndStoreAuthToken (refreshToken, apiUrl) {
+    return this._dispatchAuthStore('fetchAndStoreAuthToken', {refreshToken, apiUrl})
+  }
+
+  fetchTokenData (authToken = this.getAuthToken(), apiUrl) {
+    return this._dispatchAuthStore('fetchData', {authToken, apiUrl})
+  }
+
+  adminLogin (adminPassword) {
+    return this._dispatchAuthStore('adminLogin', { adminPassword })
+  }
+
+  adminValidate (token) {
+    return this._dispatchAuthStore('adminValidate', { token })
+  }
+
+  getAuthData () {
+    return this._getAuthStore('data')
+  }
+
+  getAuthToken () {
+    return this._getAuthStore('token')
+  }
 }
 
 const StoreHelper = new StoreHelperWorker()

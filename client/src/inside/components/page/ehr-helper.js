@@ -14,12 +14,12 @@ import {
   formatTimeStr } from '../../../helpers/ehr-utils'
 import EhrDefs from '../../../helpers/ehr-defs-grid'
 import StoreHelper from '../../../helpers/store-helper'
+import validations from './ehr-validations'
+import { Text } from '../../../helpers/ehr-text'
 
 const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
 const PROPS = EhrTypes.elementProperties
-const INPUT_TYPES = EhrTypes.inputTypes
-
 const dbDialog = false
 const dbPageForm = false
 const dbLoad = false
@@ -110,6 +110,10 @@ export default class EhrHelpV2 {
     return StoreHelper.isSubmitted()
   }
 
+  _isActivityOpen () {
+    return !StoreHelper.getActivityIsClosed()
+  }
+
   /**
    * Show or don't show page edit controls or table open dialog buttons.
    * Currently the rule is simply "is the user a student" but this will need to
@@ -122,7 +126,7 @@ export default class EhrHelpV2 {
   }
 
   _canEdit () {
-    let studentCanEdit = this._isStudent() && !this._isSubmitted()
+    let studentCanEdit = this._isActivityOpen() && this._isStudent() && !this._isSubmitted()
     return studentCanEdit || this._isDevelopingContent()
   }
 
@@ -320,15 +324,6 @@ export default class EhrHelpV2 {
     return StoreHelper.getAsLoadedPageData(pageKey)
   }
 
-  /**
-   * Get and return the merged (seed + student's work) for the current page
-   *
-   * @returns {any}
-   */
-  _mergedProperty () {
-    return this.getAsLoadedPageData()
-  }
-
   formatDate (d) {
     return formatTimeStr(d)
   }
@@ -375,7 +370,7 @@ export default class EhrHelpV2 {
     })
     return undefined
   }
-
+  
   clearTable (tableKey) {
     const pageKey = this.pageKey
     if (dbDialog) console.log('clearTable for table ', tableKey)
@@ -391,7 +386,6 @@ export default class EhrHelpV2 {
     })
     return undefined
   }
-
   _saveData (payload) {
     let isStudent = this._isStudent()
     let isDevelopingContent = StoreHelper.isDevelopingContent()
@@ -401,10 +395,13 @@ export default class EhrHelpV2 {
       payload.value = prepareAssignmentPageDataForSave(payload.value)
       return StoreHelper.sendAssignmentDataUpdate(payload)
     } else if (isDevelopingContent) {
-      if (dbDialog) console.log('saving seed ehr data', payload.id, JSON.stringify(payload.value))
+      if (dbDialog) console.log('saving seed ehr data', payload.pageKey, JSON.stringify(payload.value))
       return StoreHelper.updateSeedEhrProperty(payload.pageKey, payload.value)
+        .then(() => {
+          this._loadPageData()
+        })
     } else {
-      return Promise.reject('Coding error using _saveData out of context')
+      return Promise.reject(Text.FUNCTION_OUT_OF_CONTEXT('_saveData'))
     }
   }
 
@@ -452,28 +449,29 @@ export default class EhrHelpV2 {
   }
 
   _validateInputs (dialog) {
-    let pageKey = this.pageKey
-    let tableDef = dialog.tableDef
-    let key = tableDef.elementKey
-    let inputs = dialog.inputs
-    let form = tableDef.form
-    let ehr_data = form.ehr_data
-    if (dbDialog) console.log('EhrHelpV2 validate dialog for key', key, inputs)
+    const pageKey = this.pageKey
+    const tableDef = dialog.tableDef
+    const inputs = dialog.inputs
+    const ehr_data = tableDef.form.ehr_data
     dialog.errorList = []
     Object.keys(ehr_data).forEach( (eKey) => {
-      let eDef = EhrDefs.getPageChildElement(pageKey, eKey)
+      const eDef = EhrDefs.getPageChildElement(pageKey, eKey)
+      const label = eDef[PROPS.label]
+      const validator = eDef[PROPS.validation] ? validations[eDef.validation] : undefined
+      const mandatory = eDef[PROPS.mandatory]
       let value = inputs[eKey]
-      if (dbDialog) console.log('EhrHelpV2 validate:', key, value, eDef)
-      let type = eDef[PROPS.inputType]
-      let label = eDef[PROPS.label]
-      // let validationRules = eDef[PROPS.validation]
-      let mandatory = eDef[PROPS.mandatory]
-      if (value && (type === INPUT_TYPES.text || type === INPUT_TYPES.textarea)) {
-        inputs[eKey] = value = value.trim()
-      }
+      value = value ? value.trim() : value
+      if (dbDialog) console.log('EhrHelpV2 validate:', eKey, value, 'eDef:', eDef)
       if (mandatory && !value ) {
-        let msg = label + ' is required'
+        const msg = label + ' is required'
         dialog.errorList.push(msg)
+      }
+      if (validator) {
+        const errMsg = validator(label, value)
+        if(errMsg) {
+          if (dbDialog) console.log(`EhrHelpV2 validate for key ${eKey} value ${inputs[eKey]}: ${errMsg}`)
+          dialog.errorList.push(errMsg)
+        }
       }
     })
     return dialog.errorList.length === 0
@@ -509,11 +507,36 @@ export default class EhrHelpV2 {
     router.go(0)
   }
 
+  async resetFormData (childrenKeys) {
+    const { pageKey } = this
+    const ehrSeed = StoreHelper.getSeedEhrData()
+    const asLoadedPageData = this.getAsLoadedPageData()
+    childrenKeys.map(ck => {
+      const asSeed = ehrSeed[ck] ? ehrSeed[ck] : ''
+      asLoadedPageData[ck] = asSeed
+    })
+    
+    let payload = {
+      pageKey,
+      value: asLoadedPageData
+    }
+    await this._saveData(payload)
+    return undefined
+  
+
+  }
+
   /**
    * Save changes made on a page form
    */
   savePageFormEdit () {
     let payload = this.pageFormData
+    const asLoadedPageData = this.getAsLoadedPageData()
+    const mergedValues = {
+      ...asLoadedPageData,
+      ...payload.value
+    }
+    payload.value = mergedValues
     if (dbPageForm) console.log('EhrHelperV2 savePageFormEdit', payload)
     this._setEditing(false)
     this._saveData(payload)

@@ -18,7 +18,7 @@
       ehr-element-checkset(:elementKey="elementKey", :ehrHelp="ehrHelp")
 
     div(v-else-if="isType('checkbox')", class="checkbox_wrapper")
-      input(:id="inputId", class="checkbox", type="checkbox", v-bind:disabled="disabled", v-bind:name="elementKey", v-model="inputVal", v-on:change="dependantClickEvent()")
+      input(:id="inputId", class="checkbox", type="checkbox", v-bind:disabled="disabled", v-bind:name="elementKey", v-model="inputVal", v-on:change="dependentUIEvent()")
       ehr-page-form-label(:element="element", css="checkbox_label, check-label", :forElement="inputId")
 
     div(v-else-if="isType('date')", class="date_wrapper")
@@ -33,9 +33,9 @@
     div(v-else-if="isType('select')", class="select_wrapper")
       ehr-page-form-label(:element="element", css="select_label")
       div(class="select")
-        select(v-bind:name="elementKey", v-bind:disabled="disabled", v-model="inputVal")
+        select(v-bind:name="elementKey", v-bind:disabled="disabled", v-model="inputVal", v-on:change="dependentUIEvent()")
           option(value="")
-          option(v-for="option in options", :key="option.text", v-bind:value="option.text") {{ option.text}}
+          option(v-for="option in options", :key="option.key", v-bind:value="option.key") {{ option.text}}
 
     div(v-else-if="isType('text')", class="text_input_wrapper")
       ehr-page-form-label(:element="element", css="text_label")
@@ -50,6 +50,14 @@
       ehr-page-form-label(:element="element", css="textarea_label")
       textarea(class="ehr-page-form-textarea", v-bind:disabled="disabled", v-bind:name="elementKey", v-model="inputVal")
 
+    div(v-else-if="isType('lookahead')", class="text_input_wrapper")
+      ehr-page-form-label(:element="element", css="text_input_wrapper")
+      ehr-element-lookup(
+        :disabled="disabled", 
+        :lookaheadKey="element.lookaheadKey", 
+        @selected="(selected) => inputVal = selected",
+        :inputVal="inputVal"
+      )
     div(v-else) ELSE: {{inputType}} {{label}}
 
 </template>
@@ -59,6 +67,7 @@
 import EhrElementCommon from './EhrElementCommon.vue'
 import EhrElementCalculated from './EhrElementCalculated'
 import EhrElementCheckset from './EhrElementCheckset'
+import EhrElementLookup from './EhrElementLookup.vue'
 import DatePicker from 'vuejs-datepicker'
 
 export default {
@@ -66,13 +75,11 @@ export default {
   components: {
     EhrElementCalculated,
     EhrElementCheckset,
-    DatePicker
+    DatePicker,
+    EhrElementLookup
   },
-  props: {
-  },
-  computed: {
-  },
-  methods: {
-  }
+  props: {},
+  computed: {},
+  methods: {}
 }
 </script>

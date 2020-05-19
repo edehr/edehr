@@ -1,5 +1,6 @@
 import InstoreHelper from './instoreHelper'
 import { setApiError } from '../../helpers/ehr-utils'
+import { Text } from '../../helpers/ehr-text'
 const API = 'users'
 const NAME = 'UserStore'
 const OBJ = 'user'
@@ -39,7 +40,7 @@ const actions = {
       let user = response.data[OBJ]
       if(debug) console.log('response.data', response.data)
       if (!user) {
-        let msg = `ERROR the could not get ${NAME} ${id}`
+        let msg = Text.GET_USER_STORE_ERROR(NAME, id)
         setApiError(msg)
         return
       }

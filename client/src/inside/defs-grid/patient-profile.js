@@ -83,24 +83,31 @@ export default function () {
           label: 'Gender',
           options: [
             {
+              key: 'Unknown',
               text: 'Unknown'
             },
             {
+              key: 'Female',
               text: 'Female'
             },
             {
+              key: 'Male',
               text: 'Male'
             },
             {
+              key: 'Transgender female',
               text: 'Transgender female'
             },
             {
+              key: 'Transgender male',
               text: 'Transgender male'
             },
             {
+              key: 'Undifferentiated',
               text: 'Undifferentiated'
             },
             {
+              key: 'Prefer not to say',
               text: 'Prefer not to say'
             }
           ],
@@ -115,21 +122,27 @@ export default function () {
           label: 'Martial status',
           options: [
             {
+              key: 'Married',
               text: 'Married'
             },
             {
+              key: 'Single',
               text: 'Single'
             },
             {
+              key: 'Life partner',
               text: 'Life partner'
             },
             {
+              key: 'Divorced',
               text: 'Divorced'
             },
             {
+              key: 'Separated',
               text: 'Separated'
             },
             {
+              key: 'Widowed',
               text: 'Widowed'
             }
           ],
@@ -143,18 +156,23 @@ export default function () {
           label: 'Primary language',
           options: [
             {
+              key: 'English',
               text: 'English'
             },
             {
+              key: 'French',
               text: 'French'
             },
             {
+              key: 'Spanish',
               text: 'Spanish'
             },
             {
+              key: 'German',
               text: 'German'
             },
             {
+              key: 'Chinese',
               text: 'Chinese'
             }
           ],
@@ -175,9 +193,11 @@ export default function () {
           label: 'Do you identify as an indigenous person?',
           options: [
             {
+              key: 'Yes',
               text: 'Yes'
             },
             {
+              key: 'No',
               text: 'No'
             }
           ],
@@ -290,48 +310,63 @@ export default function () {
           label: 'Next of kin relationship',
           options: [
             {
+              key: 'Wife',
               text: 'Wife'
             },
             {
+              key: 'Husband',
               text: 'Husband'
             },
             {
+              key: 'Mother',
               text: 'Mother'
             },
             {
+              key: 'Father',
               text: 'Father'
             },
             {
+              key: 'Guardian',
               text: 'Guardian'
             },
             {
+              key: 'Sister',
               text: 'Sister'
             },
             {
+              key: 'Brother',
               text: 'Brother'
             },
             {
+              key: 'Daughter',
               text: 'Daughter'
             },
             {
+              key: 'Son',
               text: 'Son'
             },
             {
+              key: 'Aunt',
               text: 'Aunt'
             },
             {
+              key: 'Uncle',
               text: 'Uncle'
             },
             {
+              key: 'Grandmother',
               text: 'Grandmother'
             },
             {
+              key: 'Grandfather',
               text: 'Grandfather'
             },
             {
+              key: 'Friend',
               text: 'Friend'
             },
             {
+              key: 'Other',
               text: 'Other'
             }
           ],
@@ -362,33 +397,43 @@ export default function () {
           label: 'Decision maker relationship',
           options: [
             {
+              key: 'Spouse',
               text: 'Spouse'
             },
             {
+              key: 'Child',
               text: 'Child'
             },
             {
+              key: 'Parent',
               text: 'Parent'
             },
             {
+              key: 'Sibling',
               text: 'Sibling'
             },
             {
+              key: 'Grandparent',
               text: 'Grandparent'
             },
             {
+              key: 'Grandchild',
               text: 'Grandchild'
             },
             {
+              key: 'Friend',
               text: 'Friend'
             },
             {
+              key: 'Anyone else related by partnership',
               text: 'Anyone else related by partnership'
             },
             {
+              key: 'Public guardian and trustee employee',
               text: 'Public guardian and trustee employee'
             },
             {
+              key: 'Other',
               text: 'Other'
             }
           ],
@@ -403,7 +448,7 @@ export default function () {
           fqn: 'demographics.decisionMakerPhone'
         }
       ],
-      generated: '2019-10-09T18:58:02-07:00',
+      generated: '2020-01-18T11:50:12-08:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -411,6 +456,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
+              elementKey: 'ehr_group1',
               formCss: 'section-divider',
               gIndex: '1',
               gChildren: [
@@ -430,6 +476,7 @@ export default function () {
               ]
             },
             {
+              elementKey: 'ehr_group2',
               formCss: 'section-divider',
               gIndex: '2',
               gChildren: [
@@ -447,6 +494,7 @@ export default function () {
               ]
             },
             {
+              elementKey: 'ehr_group3',
               gIndex: '3',
               gChildren: [
                 'nextOfKinName',
@@ -485,7 +533,7 @@ export default function () {
           fqn: 'allergies.text'
         }
       ],
-      generated: '2019-10-09T18:58:02-07:00',
+      generated: '2020-01-18T11:50:12-08:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -493,6 +541,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
+              elementKey: 'ehr_group4',
               formCss: 'grid-left-to-right-1',
               gIndex: '1',
               gChildren: [
@@ -519,7 +568,7 @@ export default function () {
           fqn: 'medical.history'
         }
       ],
-      generated: '2019-10-09T18:58:02-07:00',
+      generated: '2020-01-18T11:50:12-08:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -527,6 +576,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
+              elementKey: 'ehr_group5',
               formCss: 'grid-left-to-right-1',
               gIndex: '1',
               gChildren: [
@@ -725,7 +775,7 @@ export default function () {
           fqn: 'psychosocial.spacer13'
         }
       ],
-      generated: '2019-10-09T18:58:02-07:00',
+      generated: '2020-01-18T11:50:12-08:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -733,6 +783,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
+              elementKey: 'ehr_group6',
               gIndex: '1',
               gChildren: [
                 'history',
@@ -743,6 +794,7 @@ export default function () {
               ]
             },
             {
+              elementKey: 'ehr_group7',
               gIndex: '2',
               gChildren: [
                 'exercise',
@@ -842,7 +894,7 @@ export default function () {
           fqn: 'surgical.comments'
         }
       ],
-      generated: '2019-10-09T18:58:02-07:00',
+      generated: '2020-01-18T11:50:12-08:00',
       pageElements: {
         pastSurgery: {
           elementKey: 'pastSurgery',
@@ -877,6 +929,7 @@ export default function () {
             formKey: 'pastSurgery',
             ehr_groups: [
               {
+                elementKey: 'pastSurgery',
                 gIndex: '1',
                 gChildren: [
                   'date',
@@ -937,6 +990,7 @@ export default function () {
             formKey: 'previous',
             ehr_groups: [
               {
+                elementKey: 'previous',
                 gIndex: '1',
                 gChildren: [
                   'previousAdmissionsDate',
@@ -946,6 +1000,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group14',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '2',
                 gChildren: [
@@ -1180,7 +1235,7 @@ export default function () {
           fqn: 'immunization.spacer25'
         }
       ],
-      generated: '2019-10-09T18:58:02-07:00',
+      generated: '2020-01-18T11:50:12-08:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -1188,6 +1243,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
+              elementKey: 'ehr_group15',
               gIndex: '1',
               gChildren: [
                 'hepA',
@@ -1241,7 +1297,7 @@ export default function () {
           fqn: 'familyHistory.history'
         }
       ],
-      generated: '2019-10-09T18:58:02-07:00',
+      generated: '2020-01-18T11:50:12-08:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -1249,6 +1305,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
+              elementKey: 'ehr_group26',
               formCss: 'grid-left-to-right-1',
               gIndex: '1',
               gChildren: [
@@ -1285,7 +1342,7 @@ export default function () {
           fqn: 'careTeam.profession'
         }
       ],
-      generated: '2019-10-09T18:58:02-07:00',
+      generated: '2020-01-18T11:50:12-08:00',
       pageElements: {
         teams: {
           elementKey: 'teams',
@@ -1312,6 +1369,7 @@ export default function () {
             formKey: 'teams',
             ehr_groups: [
               {
+                elementKey: 'ehr_group27',
                 gIndex: '1',
                 gChildren: [
                   'name',
@@ -1403,7 +1461,7 @@ export default function () {
           fqn: 'pastAppointments.diagnosis'
         }
       ],
-      generated: '2019-10-09T18:58:02-07:00',
+      generated: '2020-01-18T11:50:12-08:00',
       pageElements: {
         encounters: {
           elementKey: 'encounters',
@@ -1442,6 +1500,7 @@ export default function () {
             formKey: 'encounters',
             ehr_groups: [
               {
+                elementKey: 'encounters',
                 gIndex: '1',
                 gChildren: [
                   'date',
@@ -1496,6 +1555,7 @@ export default function () {
             formKey: 'outpatientAppointments',
             ehr_groups: [
               {
+                elementKey: 'outpatientAppointments',
                 gIndex: '1',
                 gChildren: [
                   'date',

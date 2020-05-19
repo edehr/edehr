@@ -3,8 +3,10 @@ import { Router } from 'express'
 import pluralize from 'pluralize'
 import {ok, fail} from './utils'
 import {SystemError} from './errors'
+import { Text } from '../../config/text'
+import { isAdmin } from '../../helpers/middleware'
 
-const MAX_RESULTS = 100
+const MAX_RESULTS = 1000
 // var emptyPromise = function (t) {return new Promise (function (r, e) { r (t); }); };
 
 /**
@@ -42,7 +44,7 @@ export default class BaseController {
 
   baseFilter (id) {
     if (!mongoose.Types.ObjectId.isValid(id)) {
-      throw new SystemError('Invalid id: ' + id)
+      throw new SystemError(Text.INVALID_BASE_ID)
     }
     var filter = {}
     filter[this.key] = id
@@ -205,21 +207,21 @@ export default class BaseController {
     })
 
     // TODO remove this once the /admin route is all set up
-    router.delete('/toolConsumer/:id', (req, res) => {
+    router.delete('/toolConsumer/:id', isAdmin, (req, res) => {
       this
         .clearConsumer(req.params.id)
         .then(ok(res))
         .then(null, fail(res))
     })
 
-    router.delete('/all/', (req, res) => {
+    router.delete('/all/', isAdmin, (req, res) => {
       this
         .clearAll()
         .then(ok(res))
         .then(null, fail(res))
     })
 
-    router.delete('/:key', (req, res) => {
+    router.delete('/:key', isAdmin, (req, res) => {
       this
         .delete(req.params.key)
         .then(ok(res))

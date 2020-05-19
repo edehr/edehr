@@ -4,6 +4,7 @@ import { Text }  from '../../config/text'
 import Consumer from '../consumer/consumer'
 import SeedDataController from '../seed/seedData-controller'
 import {ok, fail} from '../common/utils'
+import { isAdmin } from '../../helpers/middleware'
 
 
 const debug = require('debug')('server')
@@ -72,10 +73,15 @@ export default class ConsumerController extends BaseController {
   }
 
 
+
+  
   route () {
+    const adminMiddleware = [
+      isAdmin
+    ]
     const router = super.route()
 
-    router.post('/create', (req, res) => {
+    router.post('/create', adminMiddleware, (req, res) => {
       /* Create a new tool consumer with key/secret pair (the key must be unique in the system) */
       if (!req.body) {
         throw new ParameterError(Text.SYSTEM_REQUIRE_REQUEST_BODY)

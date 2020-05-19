@@ -2,7 +2,7 @@
   div(:id="activityId")
     div(class="activity-list-header columns", v-on:click="toggleShow")
       div(class="header-column is-10 column")
-        h3(:title="activityId") {{ activityName }}
+        h3(:title="activityId") {{ activityName }}  IS THIS COMPONENT USED ANYMORE?
         accordion-element(theme="grayTheme", :show="show")
           table
             tr

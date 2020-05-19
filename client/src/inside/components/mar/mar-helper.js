@@ -1,5 +1,5 @@
 import { setApiError } from '../../../helpers/ehr-utils'
-import MedOrder from './med-entity'
+import MedOrder from './med-order'
 import MarEntity from './mar-entity'
 import EhrDefs from '../../../helpers/ehr-defs-grid'
 
@@ -44,6 +44,18 @@ export default class MarHelper {
    */
   getEhrData_MarPageData () {
     return this.ehrHelp.getAsLoadedPageData(MAR_PAGE_KEY)
+  }
+
+  clearAllData () {
+    let marTableKey = this.getMarTableKey()
+    let asLoadedPageData = this.getEhrData_MarPageData()
+    
+    asLoadedPageData[marTableKey] = []
+    let payload = {
+      pageKey: MAR_PAGE_KEY,
+      value: asLoadedPageData
+    }
+    return this.ehrHelp._saveData(payload)
   }
 
   /**
@@ -110,5 +122,14 @@ export default class MarHelper {
       value: asLoadedPageData
     }
     return this.ehrHelp._saveData(payload)
+  }
+
+  triggerActionByPageKey () {
+    const marTableKey = this.getMarTableKey()
+    switch (marTableKey) {
+    case MED_ORDERS_PAGE_KEY:
+      this.clearAllData()
+      break
+    }
   }
 }

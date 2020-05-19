@@ -1,5 +1,5 @@
 <template lang="pug">
-  div
+  div(v-show="groupIsVisible")
     h3(v-if="group.label") {{ group.label }}
     div(class="ehr-group-wrapper", :class="groupClass")
       div(v-for="child in group.gChildren", :key="forIndex(child)", class="ehr-group-for", :class="childClass(child)")
@@ -12,19 +12,34 @@
 import EhrSubGroup from './EhrSubGroup'
 import EhrElementForm from './EhrElementForm'
 import EhrDefs from '../../../helpers/ehr-defs-grid'
+import EhrDependent from './EhrDependent.vue'
 
 export default {
   name: 'EhrPageForm',
+  extends: EhrDependent,
   components: {
     EhrSubGroup,
     EhrElementForm
   },
   inject: [ 'pageDataKey'],
+  data: function () {
+    return {
+    }
+  },
   props: {
     group: {type: Object },
     ehrHelp: { type: Object }
   },
   computed: {
+    elementKey () { return this.group.elementKey },
+    groupIsVisible () {
+      let visible = true
+      // console.log('EhrGroup visible?', this.dependentDef, this.dependentOnValue)
+      if(this.dependentDef && this.dependentDef.refValue) {
+        visible = this.dependentDef.refValue === this.dependentOnValue
+      }
+      return visible
+    },
     groupClass () {
       let css = this.group.formCss
       const theDefault = 'grid-left-to-right-3'

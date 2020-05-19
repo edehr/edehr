@@ -21,20 +21,26 @@
               td {{sv.name}}
               td {{sv.version}}
               td {{sv.description}}
-              td {{ ehrPages(sv) }}
+              td(:title="ehrPages(sv)") {{ limitedPages(sv) }}
               td
                 div(v-for="assignment in assignmentList(sv)")
                   ui-link(:name="'assignments'", :params="{assignmentId: assignment._id}") {{ assignment.name }}
 
               // td {{sv._id}}
               td(v-if="isDevelopingContent && !sv.isDefault",class="seed-actions")
-               ui-button(v-on:buttonClicked="uploadSeed(sv)", v-bind:secondary="true") Upload
+               ui-button(v-on:buttonClicked="duplicateSeed(sv)", secondary, :title="`Copy of ${sv.name}`") Duplicate
                ui-button(v-on:buttonClicked="downloadSeed(sv)", , v-bind:secondary="true", class="dwn") Download
                ui-button(v-on:buttonClicked="showEditDialog(sv)", v-bind:secondary="true") Edit description
                ui-button(v-on:buttonClicked="gotoEhrWithSeed(sv)") View/edit seed
       ui-agree(ref="aggreeDialog")
-      input(id="fileUploadInput", ref="fileUploadInput", type="file", accept="application/json", style="display:none", @change="importSeedFile")
-    ehr-seed-data-dialog(ref="theDialog")
+    ehr-seed-data-dialog(ref="theDialog", @showDialog="showDialog")
+    ui-confirm(
+      ref="confirmDialog",
+      @confirm="confirmSeedDuplication",
+      @abort="cancelSeedDuplication",
+      @cancel="cancelSeedDuplication",
+      set-footer
+      )
 </template>
 
 <script>
@@ -42,16 +48,16 @@ import BreadCrumb from './BreadCrumb'
 import UiButton from '../../app/ui/UiButton.vue'
 import UiLink from '../../app/ui/UiLink.vue'
 import UiAgree from '../../app/ui/UiAgree.vue'
+import UiConfirm from '../../app/ui/UiConfirm.vue'
 import EhrSeedDataDialog from './EhrSeedDataDialog'
 import StoreHelper from '../../helpers/store-helper'
 import EventBus from '../../helpers/event-bus'
-import { setApiError, readFile, importSeedData, downloadSeedToFile, downObjectToFile } from '../../helpers/ehr-utils'
+import { downloadSeedToFile, downObjectToFile } from '../../helpers/ehr-utils'
 import { PAGE_DATA_REFRESH_EVENT } from '../../helpers/event-bus'
 
-const TEXT = {
-  AGREE_TITLE: (seedName) => `${seedName} has new seed data`,
-  AGREE_MSG: (fileName) => `New seed data has been imported from file: ${fileName}`,
-  FAIL_IMPORT: (fileName, msg) => `Upload ${fileName} failed: ${msg}`
+const DUPLICATE = {
+  TITLE : (name) => `Confirm duplication of ${name}`,
+  DESCRIPTION: (name) => `Are you sure you want to duplicate ${name}?`,
 }
 
 export default {
@@ -61,7 +67,8 @@ export default {
     UiButton,
     UiLink,
     UiAgree,
-    BreadCrumb
+    BreadCrumb,
+    UiConfirm
   },
   data () {
     return {
@@ -69,7 +76,8 @@ export default {
       errorMesageList: [],
       dialogHeader: '',
       actionType: '',
-      seedId: ''
+      seedId: '',
+      duplicatingSeed: {}
     }
   },
   props: {},
@@ -104,33 +112,15 @@ export default {
       }
       return pages
     },
-    uploadSeed (sv) {
-      this.seedId = sv._id
-      this.currentSeed = this.findSeed(this.seedId)
-      // console.log('upload seed for ', this.currentSeed)
-      this.$refs.fileUploadInput.click()
-    },
-    importSeedFile (event) {
-      const component = this
-      const seedId = this.seedId
-      const seedName = this.currentSeed.name
-      const dialog = this.$refs.aggreeDialog
-      const file = event.target.files[0]
-      const fileName = file.name
-      StoreHelper.setLoading(component, true)
-      return readFile(file).then( (contents) => {
-        return importSeedData(component, seedId, contents)
-          .then(result => {
-            let title = TEXT.AGREE_TITLE(seedName)
-            let msg = TEXT.AGREE_MSG(fileName)
-            dialog.showDialog(title, msg)
-            StoreHelper.setLoading(component, false)
-          })
-          .catch( err => {
-            setApiError(TEXT.FAIL_IMPORT(fileName, err))
-            StoreHelper.setLoading(component, false)
-          })
-      })
+    limitedPages (sv) {
+      if(sv.ehrData) {
+        const keys = Object.keys(sv.ehrData)
+        if (keys.length > 1) {
+          return `${ keys.slice(0, 1).join(', ') }...`
+        } else {
+          return keys.join(', ')
+        }
+      }
     },
     downloadSeed (sv) {
       this.seedId = sv._id
@@ -163,6 +153,33 @@ export default {
     },
     showCreateDialog: function () {
       this.$refs.theDialog.showDialog()
+    },
+    showDialog: function (title, msg) {
+      this.$refs.aggreeDialog.showDialog(title, msg)
+    },
+    duplicateSeed (sv) {
+      delete sv._id
+      delete sv.createDate
+      delete sv.lastUpdateDate
+      this.duplicatingSeed = sv
+      this.$refs.confirmDialog.showDialog(
+        DUPLICATE.TITLE(sv.name), 
+        DUPLICATE.DESCRIPTION(sv.name), 
+        'Confirm'
+      )
+    },
+    async confirmSeedDuplication () {
+      const seed = Object.assign({}, 
+        this.duplicatingSeed, {
+          name: `COPY OF ${this.duplicatingSeed.name}`,
+          createDate: new Date(),
+          lastUpdateDate: new Date()
+        })
+      await StoreHelper.createSeed(this, seed)
+    },
+    cancelSeedDuplication () {
+      this.duplicatingSeed = {}
+      this.duplicateDocuments = true
     }
   }
 }

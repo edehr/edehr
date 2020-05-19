@@ -16,8 +16,7 @@ const debug = false
 class InstoreHelperWorker {
 
   composeUrl (context, api, url) {
-    let visitState = context.rootState.visit
-    let apiUrl = visitState.apiUrl
+    let apiUrl = StoreHelper.apiUrl()
     return `${apiUrl}/${api}/` + (url ? url : '')
   }
 
@@ -84,6 +83,23 @@ class InstoreHelperWorker {
           // let msg = `Failed GET to ${url} with error: ${error.message}`
           let msg = composeAxiosResponseError(error, 'Get failed: ')
           setApiError(msg)
+          StoreHelper.setLoading(context, false)
+          reject(msg)
+        })
+    })
+  }
+  deleteRequest (context, api, url) {
+    url = this.composeUrl(context, api, url)
+    if (debug) console.log('delete TO URL ', url, context)
+    StoreHelper.setLoading(context, true)
+    return new Promise ((resolve, reject) => {
+      axios.delete(url)
+        .then(result => {
+          StoreHelper.setLoading(context, false)
+          resolve(result)
+        }).catch(err => {
+          const msg = composeAxiosResponseError(err, 'Delete failed: ')
+          setApiError(err)
           StoreHelper.setLoading(context, false)
           reject(msg)
         })

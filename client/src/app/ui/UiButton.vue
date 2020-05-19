@@ -10,6 +10,10 @@ export default {
     secondary: {
       type: Boolean
     },
+    danger: {
+      type: Boolean,
+      default: false
+    },
     disabled: { type: Boolean, default: false },
   },
   computed: {
@@ -17,8 +21,11 @@ export default {
       let def = {
         button: true
       }
+      
       if (this.secondary) {
         def['is-light'] = true
+      } else if (this.danger) {
+        def['is-danger'] = true
       } else {
         def['is-primary'] = true
       }
@@ -56,6 +63,17 @@ button,
     color: $white;
     cursor: default;
   }
+}
+
+.button.is-danger {
+  background-color: $red;
+  border: 1px solid $white;
+  box-sizing: border-box;
+  color: $white;
+  font-family: $bodyFontFamily;
+  font-size: $bodyFontSize;
+  margin-bottom: 2em;
+  padding: 0.3rem 1rem;
 }
 
 .button.is-light,

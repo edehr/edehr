@@ -10,17 +10,21 @@
         div(class="dialog-body")
           slot(name="body") default body
         div(class="dialog-footer")
-          div(class="dialog-footer-errors")
+          div(class="dialog-footer-errors is-pulled-left")
             div(v-show="errors.length")
-              p {{ errorDirections }}
-              ul
-                li(v-for="error in errors") {{ error }}
-          div(class="dialog-footer-content is-pulled-right")
-            ui-button(v-on:buttonClicked="$emit('cancel')", v-bind:secondary="true")
-              slot(name="cancel-button") {{ cancelButtonLabel }}
-            div(class="dialog-footer-button-space", v-show="useSave")
-            ui-button(v-on:buttonClicked="$emit('save')", v-show="useSave", :disabled="disableSave")
-              slot(name="save-button") {{ saveButtonLabel }}
+              span {{ errorDirections }} 
+              span(class="error-color")
+                span {{ errors.join(', ') }}
+
+          div(class="dialog-footer-content")
+            div(v-if="hasLeftButton" class="is-pulled-left")
+              slot(name="left-button")
+            div(class="is-pulled-right")
+              ui-button(v-on:buttonClicked="$emit('cancel')", v-bind:secondary="true")
+                slot(name="cancel-button") {{ cancelButtonLabel }}
+              div(class="dialog-footer-button-space", v-show="useSave")
+              ui-button(v-on:buttonClicked="$emit('save')", v-show="useSave", :disabled="disableSave")
+                slot(name="save-button") {{ saveButtonLabel }}
 </template>
 
 <script>
@@ -53,6 +57,10 @@ export default {
       default: function () {
         return []
       }
+    },
+    hasLeftButton: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
@@ -93,7 +101,7 @@ export default {
     onOpen () {
       if (this.isModal) {
         // console.log('FREEZEEEEEEE')
-        document.body.style.position = 'fixed'
+        document.body.className += ' is-modal'
       }
       // wait a tick and then reset size. This accounts for the rendering engine to completely populate the dialog
       const _this = this
@@ -106,7 +114,8 @@ export default {
       this.showingDialog = false
       if (this.isModal) {
         // console.log('UN -- FREEZEEEEEEE')
-        document.body.style.position = ''
+        const replacedClass = document.body.className.replace(' is-modal','')
+        document.body.className = replacedClass
       }
     },
     reset () {
@@ -153,6 +162,7 @@ export default {
   /*   For top and see the data properties */
   min-width: 700px;
   max-width: 1024px;
+  min-height: 40vh;
   z-index: 999;
   background-color: $dialog-wrapper-background-color;
   border: 1px solid $grey40;
@@ -174,7 +184,8 @@ export default {
 
 .dialog-header, .dialog-footer {
   background-color: $grey03;
-  height: 60px;
+  /* don't set a height. It prevents the element from expanding when more content is added.
+  height: 60px;*/
   padding: 1em 2em;
 }
 
@@ -182,9 +193,13 @@ export default {
   overflow-y: auto;
   max-height: calc( 90vh - 20vh );
   padding: 1.5rem 2rem 2rem 2rem;
+  margin-bottom: 4rem;
 }
 
 .dialog-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   /*margin-top: 30px;*/
   align-items: flex-end;
   .dialog-footer-content {
@@ -194,8 +209,13 @@ export default {
       margin-bottom: 0;
     }
   }
-  .dialog-footer-errors li {
+  .dialog-footer-errors {
     /*margin-left: 5px;*/
+    display: inline-block;
+    max-width: 62%;
+  }
+  .error-color {
+    color: red;
   }
   .dialog-footer-button-space {
     display: inline-block;
@@ -259,4 +279,22 @@ Cursors
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
+</style>
+
+<style>
+  /*  
+    This is needed in order to fix potential conflicts which may occur
+      when setting the parent element's position to fixed in child components
+      that have display: flex set. It has been set in a separated style tag
+      so that this style is accessible to the body's scope
+  */
+  .is-modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 100%
+  }
+  
 </style>

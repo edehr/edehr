@@ -7,7 +7,7 @@
       ehr-table-vertical(v-if="isVertical", :ehrHelp="ehrHelp", :tableDef="tableDef")
       ehr-table-stacked(v-if="isStacked", :ehrHelp="ehrHelp", :tableDef="tableDef")
     ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDef", :errorList="errorList" )
-    div(v-if="hasData")
+    div(v-if="hasData", class="is-pulled-right")
       ui-button(v-on:buttonClicked="clearAllData", v-bind:secondary="true") Clear all table data
       ui-confirm(ref="confirmDialog", v-on:confirm="proceedClearAllData")
 
@@ -21,6 +21,7 @@ import UiButton from '../../../app/ui/UiButton.vue'
 import UiConfirm from '../../../app/ui/UiConfirm'
 import EventBus from '../../../helpers/event-bus'
 import { SHOW_TABLE_DIALOG_EVENT, PAGE_DATA_READY_EVENT } from '../../../helpers/event-bus'
+import MarHelper from '../mar/mar-helper'
 
 const TEXT = {
   TITLE:  'Clear table',
@@ -84,6 +85,8 @@ export default {
     proceedClearAllData () {
       console.log('EhrPageTable clearAllData ', this.tableDef)
       this.ehrHelp.clearTable(this.tableKey)
+      const helper = new MarHelper(this.ehrHelp)
+      helper.triggerActionByPageKey()      
     },
     refresh () {
       let tableForm = this.ehrHelp.getTable(this.tableKey)

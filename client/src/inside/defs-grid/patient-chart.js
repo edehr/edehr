@@ -38,6 +38,7 @@ export default function () {
           inputType: 'time',
           label: 'Time',
           tableColumn: '1',
+          validation: 'time24',
           fqn: 'progressNotes.time'
         },
         {
@@ -51,7 +52,7 @@ export default function () {
           fqn: 'progressNotes.note'
         }
       ],
-      generated: '2019-10-09T18:40:08-07:00',
+      generated: '2020-01-18T11:50:12-08:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -83,6 +84,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
+                elementKey: 'ehr_group114',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -93,6 +95,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group115',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '2',
                 gChildren: [
@@ -149,6 +152,7 @@ export default function () {
           inputType: 'time',
           label: 'Time',
           tableColumn: '1',
+          validation: 'time24',
           fqn: 'carePlan.time'
         },
         {
@@ -194,12 +198,11 @@ export default function () {
           label: 'Status',
           options: [
             {
-              text: 'Active'
-            },
-            {
+              key: 'In progress',
               text: 'In progress'
             },
             {
+              key: 'Complete',
               text: 'Complete'
             }
           ],
@@ -208,7 +211,7 @@ export default function () {
           fqn: 'carePlan.status'
         }
       ],
-      generated: '2019-10-09T18:40:08-07:00',
+      generated: '2020-01-18T11:50:12-08:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -268,6 +271,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
+                elementKey: 'ehr_group116',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -278,6 +282,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group117',
                 gIndex: '2',
                 gChildren: [
                   'clinical',
@@ -310,7 +315,7 @@ export default function () {
       isV2: true,
       hasGridForm: true,
       pageChildren: [],
-      generated: '2019-10-09T18:40:08-07:00',
+      generated: '2020-01-18T11:50:12-08:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -364,7 +369,7 @@ export default function () {
           fqn: 'labResults.labReport4_1'
         }
       ],
-      generated: '2019-10-09T18:40:08-07:00',
+      generated: '2020-01-18T11:50:12-08:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -372,10 +377,11 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
+              elementKey: 'ehr_group118',
               gIndex: '1',
               gChildren: [
                 {
-                  elementKey: 'subgroup107',
+                  elementKey: 'labReport',
                   sgChildren: [
                     'labReport1_1',
                     'labReport2_1',
@@ -447,7 +453,7 @@ export default function () {
           fqn: 'medicalImaging.pneumonia_report'
         }
       ],
-      generated: '2019-10-09T18:40:08-07:00',
+      generated: '2020-01-18T11:50:12-08:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -455,6 +461,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
+              elementKey: 'ehr_group119',
               gIndex: '1',
               gChildren: [
                 'day0',
@@ -476,7 +483,7 @@ export default function () {
       isV2: true,
       hasGridForm: true,
       pageChildren: [],
-      generated: '2019-10-09T18:40:08-07:00',
+      generated: '2020-01-18T11:50:12-08:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',

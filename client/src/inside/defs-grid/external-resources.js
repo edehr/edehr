@@ -151,11 +151,12 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
+              elementKey: 'ehr_group120',
               gIndex: '1',
               gChildren: [
                 {
+                  elementKey: 'admissions',
                   label: 'Admissions',
-                  elementKey: 'subgroup116',
                   sgChildren: [
                     'admissions1_1',
                     'admissions2_1',
@@ -163,16 +164,16 @@ export default function () {
                   ]
                 },
                 {
+                  elementKey: 'painAssessment',
                   label: 'Pain assessment',
-                  elementKey: 'subgroup117',
                   sgChildren: [
                     'painAssessment1_1',
                     'painAssessment2_1'
                   ]
                 },
                 {
+                  elementKey: 'neuroAssessment',
                   label: 'Neurological assessment',
-                  elementKey: 'subgroup118',
                   sgChildren: [
                     'neuroAssessment1_1',
                     'neuroAssessment2_1',
@@ -180,38 +181,38 @@ export default function () {
                   ]
                 },
                 {
+                  elementKey: 'fallRisk',
                   label: 'Falls risk',
-                  elementKey: 'subgroup119',
                   sgChildren: [
                     'fallRisk1_1',
                     'fallRisk2_1'
                   ]
                 },
                 {
+                  elementKey: 'notes',
                   label: 'Notes',
-                  elementKey: 'subgroup120',
                   sgChildren: [
                     'notes1_1'
                   ]
                 },
                 {
+                  elementKey: 'educational',
                   label: 'Educational resources',
-                  elementKey: 'subgroup121',
                   sgChildren: [
                     'educational1_1',
                     'educational2_1'
                   ]
                 },
                 {
+                  elementKey: 'wound',
                   label: 'Wound assessment',
-                  elementKey: 'subgroup122',
                   sgChildren: [
                     'wound1_1'
                   ]
                 },
                 {
+                  elementKey: 'medication',
                   label: 'Medication',
-                  elementKey: 'subgroup123',
                   sgChildren: [
                     'medication1_1'
                   ]
@@ -252,6 +253,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
+              elementKey: 'ehr_group121',
               gIndex: '1',
               gChildren: [
                 'snomed',
@@ -300,6 +302,7 @@ export default function () {
           inputType: 'time',
           label: 'Time',
           tableColumn: '1',
+          validation: 'time24',
           fqn: 'diagnosticCodes.time'
         },
         {
@@ -345,15 +348,19 @@ export default function () {
           mandatory: 'yes',
           options: [
             {
+              key: 'M',
               text: 'M'
             },
             {
+              key: '1',
               text: '1'
             },
             {
+              key: '2',
               text: '2'
             },
             {
+              key: '3',
               text: '3'
             }
           ],
@@ -452,6 +459,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
+                elementKey: 'ehr_group122',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -462,6 +470,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group123',
                 gIndex: '2',
                 gChildren: [
                   'icd10',
@@ -527,6 +536,7 @@ export default function () {
           inputType: 'time',
           label: 'Time',
           tableColumn: '1',
+          validation: 'time24',
           fqn: 'interventionCodes.time'
         },
         {
@@ -620,6 +630,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
+                elementKey: 'ehr_group124',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -630,6 +641,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group125',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '2',
                 gChildren: [
@@ -640,6 +652,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'label',
                 label: 'Intervention code attributes',
                 gIndex: '3',
                 gChildren: []
@@ -697,6 +710,7 @@ export default function () {
           inputType: 'time',
           label: 'Time',
           tableColumn: '1',
+          validation: 'time24',
           fqn: 'caseMixGroup.time'
         },
         {
@@ -805,6 +819,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
+                elementKey: 'ehr_group126',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -815,6 +830,7 @@ export default function () {
                 ]
               },
               {
+                elementKey: 'ehr_group127',
                 gIndex: '2',
                 gChildren: [
                   'clinicalCategory',

@@ -20,8 +20,8 @@ export default class ActivityDataController extends BaseController {
    * @return {*}
    */
   updateAssignmentData (id, data) {
-    var propertyName = data.propertyName
-    var value = data.value
+    const propertyName = data.propertyName
+    const value = data.value
     value.lastUpdate = moment().format()
     // debug(`ActivityData update ${id} assignmentData[${data.propertyName}] with data:`)
     // debug(JSON.stringify(value))
@@ -46,7 +46,7 @@ export default class ActivityDataController extends BaseController {
    */
   updateScratchData (id, data) {
     debug(`ActivityData update ${id} scratch data [${JSON.stringify(data)}]`)
-    var value = data.value
+    const value = data.value
     return this.baseFindOneQuery(id).then(activityData => {
       if (activityData) {
         activityData.lastDate = Date.now()
@@ -77,10 +77,12 @@ export default class ActivityDataController extends BaseController {
     })
   }
 
-  helperBoolVal (id, property, value) {
+  helperBoolVal (id, property, value, isStudentAction) {
     return this.baseFindOneQuery(id).then(activityData => {
       if (activityData) {
-        activityData.lastDate = Date.now()
+        if (isStudentAction) {
+          activityData.lastDate = Date.now()
+        }
         activityData[property] = value
         return activityData.save()
       }
@@ -89,12 +91,12 @@ export default class ActivityDataController extends BaseController {
 
   assignmentSubmitted (id, data) {
     let value = data.value === true
-    return this.helperBoolVal(id, 'submitted', value)
+    return this.helperBoolVal(id, 'submitted', value, true)
   }
 
   assignmentEvaluated (id, data) {
     let value = data.value === true
-    return this.helperBoolVal(id, 'evaluated', value)
+    return this.helperBoolVal(id, 'evaluated', value, false)
   }
 
   route () {

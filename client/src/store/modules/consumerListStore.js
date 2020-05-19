@@ -1,5 +1,6 @@
 import InstoreHelper from './instoreHelper'
 import { setApiError } from '../../helpers/ehr-utils'
+import { Text } from '../../helpers/ehr-text'
 const API = 'consumers'
 const debug = false
 
@@ -21,7 +22,7 @@ const actions = {
       let list = response.data.consumers
       if(debug) console.log('loadConsumers response.data', list)
       if (!list) {
-        let msg = 'ERROR the system should have consumers'
+        let msg = Text.NO_CONSUMERS_ERROR
         console.error(msg)
         setApiError(msg)
         return
@@ -54,7 +55,7 @@ const actions = {
         return context.dispatch('loadConsumers')
       })
       .catch(err => {
-        let msg = 'error in update consumer ' + err
+        let msg = Text.UPDATE_CONSUMER_ERROR(err)
         console.error(msg)
         setApiError(msg)
       })

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import moment from 'moment'
 import router from './router'
 import store from './store'
 import outsideLayout from './outside/layout/LayoutOutside.vue'
@@ -8,7 +9,7 @@ import dragDirective from './directives/drag-directive'
 import resizeDirective from './directives/resize-directive'
 import textToHtml from './directives/text-to-html'
 import validate from './directives/validate'
-
+import VueAutosuggest from 'vue-autosuggest'
 /*
 Import the global style sheet
  */
@@ -30,19 +31,23 @@ import {
   faClock,
   faCircle,
   faInfoCircle,
+  faHourglassEnd,
+  faHourglassStart,
   faArrowRight,
   faArrowLeft,
   faNotesMedical,
   faUpload,
   faDownload,
   faFilePdf,
-  faStickyNote
+  faStickyNote,
+  faTrash
 
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 library.add(faCheckCircle, faCircle, faTimesCircle, faTimes, faPlus, faMinus, faAngleRight, faAngleLeft)
 library.add(faClock, faInfoCircle, faArrowRight, faArrowLeft, faNotesMedical)
-library.add(faEdit, faDownload, faUpload, faFilePdf, faStickyNote)
+library.add(faTrash, faEdit, faDownload, faUpload, faFilePdf, faStickyNote)
+library.add(faHourglassEnd, faHourglassStart)
 // IN CODE sample usage is:
 // fas-icon(icon="download")
 Vue.component('fas-icon', FontAwesomeIcon)
@@ -52,13 +57,24 @@ Configure Vue
  */
 Vue.config.productionTip = false
 Vue.use(require('vue-moment'))
-
+Vue.use(VueAutosuggest)
 Vue.component('outside-layout', outsideLayout)
 Vue.component('inside-layout', insideLayout)
 Vue.directive('dragged', dragDirective)
 Vue.directive('resized', resizeDirective)
 Vue.directive('textToHtml', textToHtml) // used as text-to-html attribute
 Vue.directive('validate', validate)
+
+Vue.filter('formatDateDMY', function (value) {
+  return value ? moment(value).format('DD MMM YYYY') : ''
+})
+Vue.filter('formatDateYMD', function (value) {
+  return value ? moment(value).format('YYYY-MM-DD') : ''
+})
+Vue.filter('formatDateTime', function (value) {
+  return value ? moment(value).format('YYYY-MM-DD h:mm a') : ''
+})
+
 
 /*
 Create the root Vue component.

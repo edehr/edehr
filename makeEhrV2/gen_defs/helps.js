@@ -3,7 +3,7 @@ const assert = require('assert').strict
 const camelCase = require('camelcase')
 
 // Sample of multiline content:
-// Section	Label	Input_type	Options	Data_From	Input_format	Helper_Text	Mandatory	Validation	Notes	Questions_for_the_group	Element_Key	FQN	NavURL	Dependant_On_FQN
+// Section	Label	Input_type	Options	Data_From	Input_format	Helper_Text	Mandatory	Validation	Notes	Questions_for_the_group	Element_Key	FQN	NavUR
 const nlSep = '-NL-'
 
 class RawHelper {
@@ -61,10 +61,17 @@ class RawHelper {
     // 1. Split options for drop down inputs ...
     if (src.options) {
       let parts = src.options.split(nlSep)
-      let opts = parts.map(p => {
-        return { text: p }
+      dest.options = parts.map(p => {
+        let key = p
+        let text = p
+        // 2. Split on '=', if present use the sub-parts otherwise key and text are the same
+        let kv = p.split(':=')
+        if(kv.length === 2) {
+          key = kv[0].trim()
+          text= kv[1].trim()
+        }
+        return { key: key, text: text }
       })
-      dest.options = opts
     }
   }
 

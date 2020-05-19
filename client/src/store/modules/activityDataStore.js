@@ -2,6 +2,7 @@ import InstoreHelper from './instoreHelper'
 import { setApiError } from '../../helpers/ehr-utils'
 import EventBus from '../../helpers/event-bus'
 import { ACTIVITY_DATA_EVENT } from '../../helpers/event-bus'
+import { Text } from '../../helpers/ehr-text'
 
 const API = 'activity-data'
 const OBJ = 'activitydata'
@@ -103,7 +104,7 @@ const actions = {
     return InstoreHelper.getRequest(context, API, url).then(response => {
       let results = response.data[OBJ]
       if (!results) {
-        let msg = `ERROR the could not get ${NAME} ${id}`
+        let msg = Text.GET_ACTIVITY_DATA_ERROR(NAME, id)
         setApiError(msg)
         return
       }
