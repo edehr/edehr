@@ -133,15 +133,16 @@ This project has containerize access to the database and may still containerize 
 
 ### Automation of testing
 
-Jenkins is a tool for automating a series of steps to take code from the development environment and place it into the production environment. Along the way Jenkins can run automated helper and validation tasks. For example, Jenkins can automatically run all tests and only promote the code to the production environment if the tests pass.
-
-----
+Instead of Jenkins this project will look to use GitHub actions for automated tasks such as running static code tools and unit tests.
 
 ### Interoperability LTI ###
 
 Learning Tools Interoperability (LTI) is a standard created by the IMS Global Learning Consortium that links content to learning platforms. Its primary purpose is to connect learning systems such as a learning management system (LMS) with external service tools in a standard way across learning systems. The standard describes the connecting system as an LTI Tool Consumer and the connected tool as an LTI Tool Provider.
 
-With LTI we hope that our MVP prototype can use any LMS (e.g. Canvas or Moodle) to provide the system for managing students, instructors, classes and etc. The LMS is configured to communicate with the EdEHR through LTI v1.2 protocol. This protocol allows the LMS user to access special portions of the EdEHR. For example, students can view assignment links and instructors can view course links.
+With LTI found that our MVP prototype could be used by any LMS (e.g. Canvas or Moodle).  The LMS provides the system for managing 
+students, instructors, classes and etc. The LMS is configured to communicate with our EdEHR through LTI v1.2 
+protocol. Essentially, this protocol provides a means for the LMS user to access special portions of the EdEHR. For example, students can be presented with a set of links to assignments or instructors can have a set of links to 
+courses.
 
 ----
 
@@ -152,17 +153,20 @@ Multer to support multi-part document uploads
 
 Separate mounted disk for storage outside of application code space
 
-----
+There is no provision to store documents for users.  We are considering storing documents per seed to augment the 
+seed data.  The EdEHR does provide documents as static resources both in the client and server. 
 
 ### Authorization ###
-Authorization is provided by LMS via LTI
+
+Authorization is provided by LMS via LTI.  We are considering adding a demo mode.
 
 ----
 
 ### Media Attachments ###
 Status: Do Later
 
-Assuming this is not a core requirement for MVP. If it is a core requirement then look into Kaltura for video content. This is the tool used in ComPAIR. 
+Assuming this is not a core requirement for MVP. If it is a core requirement then look into Kaltura for video content.
+This is the tool used in ComPAIR. 
 
 [https://corp.kaltura.com/](https://corp.kaltura.com/)
 
@@ -172,15 +176,15 @@ Also see the [BCcampus story](https://bccampus.ca/2013/05/23/wrangling-videos-in
 
 ### Email system ###
 
-Status: Do Later
+There is no immediate need to send or handle emails from the EdEHR.  Yet we may use email as a means to grant access to
+a demonstraction version. 
 
-To be considered after LTI and LMS research. Perhaps the email function can be provided by the LMS
-
+Considered the following:
 * Nodemail
 * GoogleAPIs
 * Flask-Mailer (Python)
 
-----
+Will use []SendGrid](https://sendgrid.com/)
 
 ### Learning Analytics ###
 
