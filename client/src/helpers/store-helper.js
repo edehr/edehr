@@ -436,6 +436,10 @@ class StoreHelperWorker {
     return this._dispatchDemoStore('fetchDemoData')
   }
 
+  selectLTIUser (ltiData) {
+    return this._dispatchDemoStore('selectLTIUser', { ltiData })
+  }
+
   getAuthData () {
     return this._getAuthStore('data')
   }

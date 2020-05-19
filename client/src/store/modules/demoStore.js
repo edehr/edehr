@@ -1,6 +1,7 @@
 import DemoHelper from '../../helpers/demo-helper'
 import sKeys from '../../helpers/session-keys'
 import { setAuthHeader } from '../../helpers/axios-helper'
+import StoreHelper from '../../helpers/store-helper'
 
 const demoHelper = new DemoHelper()
 
@@ -50,6 +51,20 @@ const actions = {
         return Promise.resolve(ltiData)
       })
       .catch(err => {
+        return Promise.reject(err)
+      })
+  },
+  selectLTIUser: function (none, { ltiData }) {
+    return demoHelper.selectLTIUser(ltiData)
+      .then(res => {
+        const { refreshToken, apiUrl } = res.data
+        StoreHelper.fetchAndStoreAuthToken(refreshToken, apiUrl)
+          .then(() => {
+            _setDemoUser(ltiData)
+            return Promise.resolve({refreshToken, apiUrl})
+
+          })
+      }).catch(err => {
         return Promise.reject(err)
       })
   },

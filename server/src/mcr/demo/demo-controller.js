@@ -122,8 +122,9 @@ export default class DemoController {
   }
 
   submitLTIData (req, res) {
+    console.log('req >> ', req, 'req.body >> ', req.body)
     const host = req.hostname === 'localhost' ? 'localhost:27000' : req.hostname
-    const { ltiData } = req.data
+    const { ltiData } = req.body
     const _req = this._signAndPrepareLTIRequest(ltiData, host)
     this._LTIPost(_req)
       .then((r) => {
@@ -186,11 +187,8 @@ export default class DemoController {
         this._createDemoToolConsumer(req, res)
       })
 
-    router.post('/fetch', middlewareWrapper, (req, res) => {
-      console.log('req >> ', req)
-      console.log('req >> ', req.authPayload)
+    router.post('/fetch', middlewareWrapper, (req, res) =>
       res.status(200).json(req.authPayload)
-    }
     )
 
     router.post('/set', middlewareWrapper, (req, res) => {

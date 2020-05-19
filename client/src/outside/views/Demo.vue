@@ -28,7 +28,7 @@
       
                 ui-button(
                   style="margin-top: 2vh",
-                  :disabled="!ltiData",
+                  :disabled="!isFormValid",
                   @buttonClicked="submitDemoAccess"
                 ) Log in as
 </template>
@@ -48,9 +48,8 @@ export default {
   },
   mounted () {
     StoreHelper.fetchDemoData()
-      .then(() => {
+      .then((token) => {
         const demoData = StoreHelper.getDemoLTIData()
-        console.log('demoData >> ', demoData)
         this.demoData = demoData
 
       }).catch(err => {
@@ -65,12 +64,8 @@ export default {
       }
       return !token
     },
-    // isNameValid () {
-    //   return this.name.split(' ').length >= 2
-    // },
     isFormValid () {
-      // return this.isNameValid && this.name && this.email && this.selectedRole
-      return this.selectedRole
+      return Object.keys(this.ltiData).length > 0
     }
   },
   methods: {
@@ -78,13 +73,14 @@ export default {
       this.$router.push(path)
     },
     submitDemoAccess () {
-      const { name, email, selectedRole } = this
-      StoreHelper.requestDemoAccess(name, email, selectedRole)
-        .then(({url}) => {
-          window.location.replace(url)
+      const { ltiData } = this
+      StoreHelper.selectLTIUser(ltiData)
+        .then((res) => {
+          console.log('res >> ', res)
+          // window.location.replace(url)
         })
         .catch(err => {
-          alert(`Error when trying to get demo access \n ${err} `)
+          alert(`Error: \n ${err} `)
         })
     },
     // checkUsername () {

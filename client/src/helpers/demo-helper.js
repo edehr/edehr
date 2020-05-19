@@ -16,11 +16,11 @@ export default class DemoHelper {
     return axios.post(url, { id })
   }
 
-  selectLTIUser (user, token) {
+  selectLTIUser (ltiData) {
     const apiUrl = StoreHelper.apiUrl()
     const url = `${apiUrl}/demo/set`
     const headers = this._prepareHeaderObject()
-    return axios.post(url, { user }, { headers })
+    return axios.post(url, { ltiData }, { headers })
   }
 
   fetchDemoData (token) {

@@ -10,7 +10,6 @@ const debug = false
 
 export const validatorMiddlewareWrapper = (authController) => {
   return (req, res, next) => {
-    console.log('validatorMiddlewareWrapper > ' , req.headers.authorization)
     if (req && req.headers.authorization) {
       try {
         const result = authController.authenticate(req.headers.authorization)
