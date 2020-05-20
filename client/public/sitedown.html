@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title>EdEHR</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0
+      }
+
+      .box {
+        display: flex;
+        flex-flow: column;
+        height: 100%;
+      }
+
+      .background {
+        background: #7918f2;
+        background: -webkit-linear-gradient(-45deg, #ac32e4, #7918f2, #4801ff);
+        background: -o-linear-gradient(-45deg, #ac32e4, #7918f2, #4801ff);
+        background: -moz-linear-gradient(-45deg, #ac32e4, #7918f2, #4801ff);
+        background: linear-gradient(-45deg, #ac32e4, #7918f2, #4801ff);
+      }
+
+      .box .row.content{
+        flex: 1 1 auto;
+      }
+
+      .centered {
+        position: fixed; /* or absolute */
+        top: 30%;
+        left: 20%;
+      }
+
+      .message {
+        color: white;
+        font-size: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+
+  <div class="box">
+    <div class="row content background">
+      <div class="centered message">
+      <p>
+        The Ed EHR is down for maintenance and will be back shortly.
+      </p>
+      <p>
+        If you have any questions send an email to <a href="mailto:info@edehr.org">info@edehr.org</a>
+      </p>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>
