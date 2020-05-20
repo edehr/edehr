@@ -55,9 +55,9 @@ export default {
       StoreHelper.setLoading(null, true)
       const ltiData = StoreHelper.getDemoUser()
       StoreHelper.setLTIUser(ltiData, assignment)
-        .then(({ apiUrl, refreshToken }) => {
+        .then(({url}) => {
           StoreHelper.setLoading(null, false)
-          window.location.replace(apiUrl)
+          window.location.replace(url)
         }).catch(err => {
           StoreHelper.setLoading(null, false)
           alert('An error occured! \n ', err)

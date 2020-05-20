@@ -9,7 +9,7 @@ const HMAC_SHA1 = require('ims-lti/src/hmac-sha1')
 
 const DEMO_CONSUMER_SECRET = process.env.DEMO_CONSUMER_SECRET || 'demosecret'
 const DEMO_CONSUMER_KEY = process.env.DEMO_CONSUMER_KEY || 'demokey'
-const DEMO_ASSIGNMENT = process.env.DEMO_ASSIGNMENT || 'demoAssignment'
+// const DEMO_ASSIGNMENT = process.env.DEMO_ASSIGNMENT || 'demoAssignment'
 const TOOL_CONSUMER_NAME = process.env.TOOL_CONSUMER_NAME || 'EdEHRDemo'
 const DEMO_CONTEXT_ID = process.env.DEMO_CONTEXT_ID || 'demoContext'
 
@@ -129,6 +129,7 @@ export default class DemoController {
       custom_assignment: assignment
     })
     const _req = this._signAndPrepareLTIRequest(ltiData, host)
+    console.log('req obj >> ', _req )
     this._LTIPost(_req)
       .then((r) => {
         res.status(200).json({ refreshToken: r.data.refreshToken, url: r.data.url })
@@ -161,7 +162,7 @@ export default class DemoController {
  * for signing and making a POST to the Lti logic
  * @returns req the generated and signed req object
  */
-  _signAndPrepareLTIRequest  (ltiData, base) {
+  _signAndPrepareLTIRequest  (ltiData, base, debug = true) {
     const req = {
       url: `http://${base}/api/launch_lti`,
       method: 'POST',
@@ -173,7 +174,7 @@ export default class DemoController {
         'Content-Type': 'application/json;charset=utf-8',
         host: base,
       },
-      body: Object.assign({}, ltiData, { debug: true })
+      body: Object.assign({}, ltiData, { debug })
     }
     const signer = new HMAC_SHA1()
     req.body.oauth_signature = signer.build_signature(req, req.body, ltiData.oauth_consumer_secret)
@@ -185,7 +186,7 @@ export default class DemoController {
     const router = new Router()
 
     router.post('/', 
-      demoLimiter,
+      // demoLimiter,
       (req, res) => {
         this._createDemoToolConsumer(req, res)
       })

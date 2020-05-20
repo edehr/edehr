@@ -7,11 +7,11 @@ const demoHelper = new DemoHelper()
 
 const _setDemoToken = (token) => localStorage.setItem(sKeys.DEMO_TOKEN, token)
 
-const _setDemoUser = (user) => localStorage.setItem(sKeys.SELECTED_DEMO_USER, user)
+const _setDemoUser = (user) => localStorage.setItem(sKeys.SELECTED_DEMO_USER, JSON.stringify(user))
 
 const _getDemoToken = () => localStorage.getItem(sKeys.DEMO_TOKEN)
 
-// const _getDemoUser = () => localStorage.getItem(sKeys.SELECTED_DEMO_USER)
+const _getDemoUser = () => JSON.parse(localStorage.getItem(sKeys.SELECTED_DEMO_USER))
 
 
 const getters = {
@@ -19,8 +19,9 @@ const getters = {
     return _getDemoToken()
   },
   demoUser: function () {
-    // return _getDemoUser()
-    return state.selectedUser
+    const demoUser = _getDemoUser()
+    return demoUser
+    // return state.selectedUser
   },
   ltiData: function () {
     return state.ltiData
@@ -58,20 +59,16 @@ const actions = {
       })
   },
   selectLTIUser: function ({commit}, { ltiData } ) {
-    // _setDemoUser(ltiData)
-    console.log(typeof ltiData)
-    return commit('setDemoUser', ltiData)
+    return _setDemoUser(ltiData)
+    // return commit('setDemoUser', ltiData)
   },
   setLTIUser: function (none, { ltiData, assignment }) {
-    const demoToken = StoreHelper.getDemoToken()
+    const demoToken = _getDemoToken()
     return demoHelper.setLTIUser(ltiData, assignment, demoToken)
       .then(res => {
-        const { refreshToken, apiUrl } = res.data
-        StoreHelper.fetchAndStoreAuthToken(refreshToken, apiUrl)
-          .then(() => {
-            _setDemoUser(ltiData)
-            return Promise.resolve({ refreshToken, apiUrl })
-          })
+        console.log('setLTIUser resolved >> ', res.data)
+        return Promise.resolve(res.data)
+        
       }).catch(err => {
         return Promise.reject(err)
       })
@@ -80,9 +77,9 @@ const actions = {
   setDemoToken: function (none, { demoToken }) {
     _setDemoToken(demoToken)
   },
-  // setDemoUser: function (none, { user }) {
-  //   _setDemoUser(user)
-  // },
+  setDemoUser: function (none, { user }) {
+    _setDemoUser(user)
+  },
   setDemoData: function (none, { data }) {
     _setDemoData(data)
   }
@@ -92,9 +89,9 @@ const mutations = {
   setLTIData: function (none, data) {
     state.ltiData = data
   },
-  setDemoUser: function (none, data) {
-    state.selectedUser = data
-  }
+  // setDemoUser: function (none, data) {
+  //   state.selectedUser = data
+  // }
 }
 
 export default {

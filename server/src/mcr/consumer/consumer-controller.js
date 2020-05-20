@@ -24,7 +24,7 @@ export default class ConsumerController extends BaseController {
     return this.createWithSeed(def)
   }
 
-  createWithSeed (data, seedData = null, createAssignment = false) {
+  createWithSeed (data, seedData = null, createDemoAssignments = false) {
     let theConsumer
     return this.model
       .create(data)
@@ -47,14 +47,24 @@ export default class ConsumerController extends BaseController {
       })
       // creating activity
       .then(() => {
-        if (createAssignment) {
-          const as = new AssignmentController({ehr : { defaultAssignmentDescription: 'This a default demo assignment'} })
+        if (createDemoAssignments) {
+          // TODO: change this description
+          const as = new AssignmentController({ehr : { defaultAssignmentDescription: 'This a demo assignment 1'} })
           const assignmentDef = {
             toolConsumer: theConsumer, 
-            externalId: 'demoAssignment',
-            resource_link_title: 'Demo Assignment'
+            externalId: 'assignment1',
+            resource_link_title: 'Demo Assignment 1'
           }
           return as.createAssignment(assignmentDef.externalId, assignmentDef.toolConsumer, assignmentDef.resource_link_title )
+            .then(() => {
+              const as = new AssignmentController({ehr : { defaultAssignmentDescription: 'This a default demo assignment'} })
+              const assignmentDef = {
+                toolConsumer: theConsumer, 
+                externalId: 'assignment2',
+                resource_link_title: 'Demo Assignment 2',
+              }
+              return as.createAssignment(assignmentDef.externalId, assignmentDef.toolConsumer, assignmentDef.resource_link_title)
+            })
         } else {
           return Promise.resolve()
         }
