@@ -11,20 +11,20 @@ export default class DemoHelper {
 
   createToolConsumer () {
     const id = uuid()
-    const apiUrl = StoreHelper.apiUrl()
-    const url = `${apiUrl}/demo`
+    const apiUrl = StoreHelper.apiUrl() || 'http://localhost:27000/api'
+    const url = `${apiUrl}/demo/`
     return axios.post(url, { id })
   }
 
-  selectLTIUser (ltiData) {
-    const apiUrl = StoreHelper.apiUrl()
+  setLTIUser (ltiData, assignment, demoToken) {
+    const apiUrl = StoreHelper.apiUrl() || 'http://localhost:27000/api'
     const url = `${apiUrl}/demo/set`
-    const headers = this._prepareHeaderObject()
-    return axios.post(url, { ltiData }, { headers })
+    const headers = this._prepareHeaderObject(demoToken)
+    return axios.post(url, { ltiData, assignment }, { headers })
   }
 
   fetchDemoData (token) {
-    const apiUrl = StoreHelper.apiUrl()
+    const apiUrl = StoreHelper.apiUrl() || 'http://localhost:27000/api'
     const url = `${apiUrl}/demo/fetch`
     const headers = this._prepareHeaderObject()
     return axios.post(url, null, { headers })

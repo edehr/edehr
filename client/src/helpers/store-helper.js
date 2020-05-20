@@ -432,12 +432,16 @@ class StoreHelperWorker {
     return this._dispatchDemoStore('setDemoUser', { demoUser })
   }
 
-  fetchDemoData () {
-    return this._dispatchDemoStore('fetchDemoData')
+  fetchDemoData (demoToken) {
+    return this._dispatchDemoStore('fetchDemoData', { demoToken })
   }
 
   selectLTIUser (ltiData) {
     return this._dispatchDemoStore('selectLTIUser', { ltiData })
+  }
+
+  setLTIUser (ltiData, assignment) {
+    return this._dispatchDemoStore('setLTIUser', { ltiData, assignment })
   }
 
   getAuthData () {

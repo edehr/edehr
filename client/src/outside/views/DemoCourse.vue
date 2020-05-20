@@ -21,7 +21,9 @@
 
       p Case study #1 COPDExternal
 
-    div(class="form-container")
+      a(href="#", @click="handleAssignmentSelection('assignment1')") Go to assignment
+
+    div(class="form-container", style="margin-top: 1em;")
       h2 Case Study #2: Pneumonia
 
       p This assignment is based on Case Study #2 from <a href="https://pressbooks.bccampus.ca/healthcasestudies/chapter/learning-objectives-2/">Health Case Studies - Toward Closing the Healthcare Communication Gap</a>.
@@ -32,7 +34,9 @@
 
       p Case Study #2: Pnuemonia
 
+      a(href="#", @click="handleAssignmentSelection('assignment2')") Go to assignment
 
+      br
 </template>
 
 <script>
@@ -46,6 +50,20 @@ export default {
   computed: {
   },
   methods: {
+    handleAssignmentSelection: function (assignment) {
+      console.log('selected assignment >> ', assignment)
+      StoreHelper.setLoading(null, true)
+      const ltiData = StoreHelper.getDemoUser()
+      StoreHelper.setLTIUser(ltiData, assignment)
+        .then(({ apiUrl, refreshToken }) => {
+          StoreHelper.setLoading(null, false)
+          window.location.replace(apiUrl)
+        }).catch(err => {
+          StoreHelper.setLoading(null, false)
+          alert('An error occured! \n ', err)
+        })
+      // StoreHelper.setLoading(null, false)
+    }
   }
 }
 </script>

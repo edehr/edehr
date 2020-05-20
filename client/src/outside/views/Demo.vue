@@ -47,7 +47,8 @@ export default {
     }
   },
   mounted () {
-    StoreHelper.fetchDemoData()
+    StoreHelper.setLoading(null, true)
+    StoreHelper.fetchDemoData(this.demoToken)
       .then((token) => {
         const demoData = StoreHelper.getDemoLTIData()
         this.demoData = demoData
@@ -55,7 +56,8 @@ export default {
       }).catch(err => {
         alert(err)
       })
-  }, 
+    StoreHelper.setLoading(null, false)
+  },
   computed: {
     canRequestDemoAccess () {
       const token = StoreHelper.getAuthToken()
@@ -66,6 +68,9 @@ export default {
     },
     isFormValid () {
       return Object.keys(this.ltiData).length > 0
+    },
+    demoToken () {
+      return StoreHelper.getDemoToken()
     }
   },
   methods: {
@@ -73,24 +78,9 @@ export default {
       this.$router.push(path)
     },
     submitDemoAccess () {
-      const { ltiData } = this
-      StoreHelper.selectLTIUser(ltiData)
-        .then((res) => {
-          console.log('res >> ', res)
-          // window.location.replace(url)
-        })
-        .catch(err => {
-          alert(`Error: \n ${err} `)
-        })
+      StoreHelper.selectLTIUser(this.ltiData)
+      this.redirect('/demo-course')
     },
-    // checkUsername () {
-    //   StoreHelper.checkDemoUsername(this.name)
-    //     .then(res => {
-    //       console.log('checkUsername then', res)
-    //     }).catch(err => {
-    //       alert(`Error when validating name \n ${err}` )
-    //     })
-    // }
   }
 }
 </script>

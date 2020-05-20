@@ -114,17 +114,20 @@ export default class DemoController {
       resource_link_title: 'Resource Link Title',
       resource_link_id: 'http://link-to-resource.com/resource',
       oauth_signature_method: 'HMAC-SHA1',
-      oauth_timestamp: Math.round(Date.now() / 1000),
-      oauth_nonce: Date.now() + Math.random() * 100,
-      custom_assignment: DEMO_ASSIGNMENT
     }
     return ltiData
   }
 
   submitLTIData (req, res) {
-    console.log('req >> ', req, 'req.body >> ', req.body)
+    console.log('req.body >> ', req.body)
+    console.log('req.header >> ', req.headers)
     const host = req.hostname === 'localhost' ? 'localhost:27000' : req.hostname
-    const { ltiData } = req.body
+    let { ltiData, assignment } = req.body
+    ltiData = Object.assign({}, ltiData, {
+      oauth_timestamp: Math.round(Date.now() / 1000),
+      oauth_nonce: Date.now() + Math.random() * 100,
+      custom_assignment: assignment
+    })
     const _req = this._signAndPrepareLTIRequest(ltiData, host)
     this._LTIPost(_req)
       .then((r) => {
@@ -191,7 +194,8 @@ export default class DemoController {
       res.status(200).json(req.authPayload)
     )
 
-    router.post('/set', middlewareWrapper, (req, res) => {
+    router.post('/set', (req, res) => {
+    
       this.submitLTIData(req, res)
     })
 
