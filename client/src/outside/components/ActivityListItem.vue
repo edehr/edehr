@@ -3,7 +3,7 @@
     div(class="activity-list-header columns")
       div(class="header-column is-10 column")    
         h3(:title="activityId") 
-             router-link(:to="`/ehr/patient/demographics?readonly=true`") {{ activityName }}
+             router-link(:to="`/ehr/patient/demographics?readonly=true`") {{ activity.resource_link_title }}
         table
           tr
             td LMS description:
@@ -64,15 +64,14 @@ export default {
   data () {
     return {
       activity: {},
-      assignment: {}
+      assignment: {},
+      classList: []
     }
   },
   computed: {
     activityName () {
       return StoreHelper.getActivityTitle()
     },
-    classList () { return StoreHelper.getClassList()  },
-
     classSubmittedList () {
       let list = this.classList
       list = list.filter(sv => {
@@ -86,6 +85,10 @@ export default {
       const _this = this
       const activityId = this.activityId
       if(debug) console.log('ActivityListItem loadActivity', activityId)
+      StoreHelper.getClassListForActivity(activityId)
+        .then((classList) => {
+          _this.classList = classList
+        })
       return StoreHelper.dispatchLoadActivity(activityId)
         .then((theActivity) => {
           _this.activity = theActivity

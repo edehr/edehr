@@ -2,54 +2,39 @@
   div
     div(class="classlist-header-group")
       div(class="course-header")
-        h2(class="course-header-item") {{ courseTitle }}
+        h2(class="course-header-item")
+          span {{ courseTitle }}: &nbsp;
+          ui-link(:name="'assignments'", :params="{assignmentId: assignmentId}")
+            span {{ assignmentName }}
       div(class="course-header-item float-right")
-        ui-button(v-if="activity.closed", v-on:buttonClicked="openActivity", title="Open activity for students to submit work. Instructor can evaluate only work submitted by students.") Open activity
+        ui-button(v-if="activity.closed", v-on:buttonClicked="openActivity", title="Open activity for students to submit work. Instructor can evaluate only work that has been submitted by students.") Open activity
           fas-icon(class="icon-right", icon="hourglass-start")
         ui-button(v-else, v-on:buttonClicked="closeActivity", title="Block students from doing more work. Instructor can evaluate all work.") Close activity
           fas-icon(class="icon-right", icon="hourglass-end")
         ui-button(v-on:buttonClicked="downloadEvaluations") Download all assignment evaluation notes
           fas-icon(class="icon-right", icon="download")
         ui-save-as-prompt(ref="promptDialog", title="Save evaluation", :message="promptMessage", :filename="activityName", v-on:confirm="proceed")
-    div {{ activity.context_title }}
-    div {{ activity.context_label }}
+    div(v-text-to-html="assignmentDescription")
+
     table
       tr
-        td
-          table
-            tr
-              td Assignment name:
-              td
-                ui-link(:name="'assignments'", :params="{assignmentId: assignmentId}")
-                  span {{ assignmentName }}
-            tr
-              td Description:
-              td
-                div(v-text-to-html="assignmentDescription")
-        td
-          table
-            tr
-              td Last Update:
-              td {{ activity.lastDate | formatDateTime }}
-            tr
-              td Created:
-              td {{ activity.createDate | formatDateTime }}
-        td
-          table
-            tr
-              td Status
-              td {{activity.closed ? "Closed" : "Open" }}
-            tr
-              td Date closed
-              td {{activity.closedDate | formatDateTime }}
-        td
-          table
-            tr
-              td Students participating
-              td {{classList.length}}
-            tr
-              td Students submitted
-              td {{classSubmittedList.length}}
+        td Last Update:
+        td {{ activity.lastDate | formatDateTime }}
+      tr
+        td Created:
+        td {{ activity.createDate | formatDateTime }}
+      tr
+        td Status:
+        td {{activity.closed ? "Closed" : "Open" }}
+      tr(v-if="activity.closed")
+        td Date closed:
+        td {{activity.closedDate | formatDateTime }}
+      tr
+        td Students participating:
+        td {{classList.length}}
+      tr
+        td Students submitted:
+        td {{classSubmittedList.length}}
     div(class="classlist-body")
       table.table
         thead
@@ -104,7 +89,7 @@ export default {
   },
   computed: {
     courseTitle () {
-      return StoreHelper.getCourseTitle()
+      return this.activity.context_title
     },
     activityName () {
       return this.activity.resource_link_title
