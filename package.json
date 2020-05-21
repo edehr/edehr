@@ -40,7 +40,9 @@
     "test:server": "cd server && npm run test",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
-    "shell:mongo": "docker exec -it mongo bash"
+    "shell:mongo": "docker exec -it mongo bash",
+    "restart:prod": "cd deployment && npm run prod:stop && npm run prod:build",
+    "update:prod": "git pull && npm run build && npm restart:prod"
   },
   "scriptsComments": {
     "*db": "for dev only. start and stop a bare bones mongo",
