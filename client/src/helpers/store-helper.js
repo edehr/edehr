@@ -33,6 +33,7 @@ class StoreHelperWorker {
   _dispatchAssignmentList (key, payload) { return store.dispatch('assignmentListStore/' + key, payload)}
   _dispatchAuthStore (key, payload) { return store.dispatch(`authStore/${key}`, payload) }
   _dispatchConsumerList (key, payload) { return store.dispatch('consumerListStore/' + key, payload)}
+  _dispatchClassList (key, payload) { return store.dispatch('classListStore/' + key, payload)}
   _dispatchConsumer (key, payload) { return store.dispatch('consumerStore/' + key, payload)}
   _dispatchSeedListProperty (key, payload) { return store.dispatch('seedListStore/' + key, payload)}
   _dispatchInstructor (key, payload) { return store.dispatch('instructor/' + key, payload)}
@@ -78,6 +79,14 @@ class StoreHelperWorker {
   setShowAdvanced (value) { store.commit('system/setShowingAdvanced', value) }
   isLoading () { return this._getSystemProperty('isLoading')}
   isShowingAdvanced () { return this._getSystemProperty('isShowingAdvanced') }
+
+  /*
+   * **********   Class List  **************
+   */
+
+  getClassListForActivity( activityId) {
+    return this._dispatchClassList('getClassList', activityId)
+  }
 
   /*
   * **********   Instructor  **************

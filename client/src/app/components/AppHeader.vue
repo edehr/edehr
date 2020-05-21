@@ -6,11 +6,11 @@
         li(class="navItem")
           router-link(:to="{ name: `${home}` }", class="navLink app-title") Educational Electronic Health Record
         li(class="navItem push")
-          a(:href="lmsUrl", class="navLink") {{lmsName}}
+          a(:href="lmsUrl", class="navLink") Return to: {{lmsName}}
         li(v-if="showDashboard", class="navItem")
           router-link(:to="{ name: `instructor` }", class="navLink") Courses
         li(v-if="showDashboard", class="navItem")
-          router-link(:to="{ name: `assignments` }", class="navLink subMenu") (Assignments)
+          router-link(:to="{ name: `assignments` }", class="navLink subMenu") Assignments
         li(v-if="showAssignmentActivation", class="navItem")
           div(class="navLink activationItem", v-on:click="toggleShowAssignmentDetails()") Assignment details
           div(v-show="showingAssignmentDetails", class="activationContent subNavList")
