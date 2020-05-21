@@ -51,7 +51,6 @@ export default {
   },
   methods: {
     handleAssignmentSelection: function (assignment) {
-      console.log('selected assignment >> ', assignment)
       StoreHelper.setLoading(null, true)
       const ltiData = StoreHelper.getDemoUser()
       StoreHelper.setLTIUser(ltiData, assignment)

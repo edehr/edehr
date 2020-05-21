@@ -1,7 +1,6 @@
 import DemoHelper from '../../helpers/demo-helper'
 import sKeys from '../../helpers/session-keys'
 import { setAuthHeader } from '../../helpers/axios-helper'
-import StoreHelper from '../../helpers/store-helper'
 
 const demoHelper = new DemoHelper()
 
@@ -49,12 +48,12 @@ const actions = {
   fetchDemoData: function ({ commit }) {
     return demoHelper.fetchDemoData() 
       .then(res => {
-        const { ltiData } = res.data
-        console.log('ltiData >> ', ltiData)
-        commit('setLTIData', ltiData)
-        return Promise.resolve(ltiData)
+        const { demoData } = res.data
+        commit('setLTIData', demoData)
+        return Promise.resolve(demoData)
       })
       .catch(err => {
+        console.log(err)
         return Promise.reject(err)
       })
   },
@@ -66,7 +65,6 @@ const actions = {
     const demoToken = _getDemoToken()
     return demoHelper.setLTIUser(ltiData, assignment, demoToken)
       .then(res => {
-        console.log('setLTIUser resolved >> ', res.data)
         return Promise.resolve(res.data)
         
       }).catch(err => {

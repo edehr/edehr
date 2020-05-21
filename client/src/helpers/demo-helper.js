@@ -3,12 +3,6 @@ import StoreHelper from './store-helper'
 const uuid = require('uuid/v4')
 export default class DemoHelper {
     
-  _prepareHeaderObject = (token = StoreHelper.getDemoToken()) => {
-    return {
-      authorization: `Bearer ${token}`
-    }
-  }
-
   createToolConsumer () {
     const id = uuid()
     const apiUrl = StoreHelper.apiUrl() || 'http://localhost:27000/api'
@@ -19,14 +13,13 @@ export default class DemoHelper {
   setLTIUser (ltiData, assignment, demoToken) {
     const apiUrl = StoreHelper.apiUrl() || 'http://localhost:27000/api'
     const url = `${apiUrl}/demo/set`
-    const headers = this._prepareHeaderObject(demoToken)
-    return axios.post(url, { ltiData, assignment }, { headers })
+    return axios.post(url, { ltiData, assignment })
   }
 
-  fetchDemoData (token) {
+  fetchDemoData () {
     const apiUrl = StoreHelper.apiUrl() || 'http://localhost:27000/api'
     const url = `${apiUrl}/demo/fetch`
-    const headers = this._prepareHeaderObject()
-    return axios.post(url, null, { headers })
+    return axios.post(url, null)
+
   }
 }

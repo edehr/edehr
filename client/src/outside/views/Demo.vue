@@ -47,16 +47,9 @@ export default {
     }
   },
   mounted () {
-    StoreHelper.setLoading(null, true)
-    StoreHelper.fetchDemoData(this.demoToken)
-      .then((token) => {
-        const demoData = StoreHelper.getDemoLTIData()
-        this.demoData = demoData
-
-      }).catch(err => {
-        alert(err)
-      })
-    StoreHelper.setLoading(null, false)
+    if (this.demoToken)  {
+      this.fetchDemoData()
+    }
   },
   computed: {
     canRequestDemoAccess () {
@@ -70,7 +63,7 @@ export default {
       return Object.keys(this.ltiData).length > 0
     },
     demoToken () {
-      return StoreHelper.getDemoToken()
+      return StoreHelper.getDemoToken() || this.$route.query.demoToken
     }
   },
   methods: {
@@ -81,7 +74,20 @@ export default {
       StoreHelper.selectLTIUser(this.ltiData)
       this.redirect('/demo-course')
     },
-  }
+    fetchDemoData () {
+      StoreHelper.setLoading(null, true)
+      StoreHelper.fetchDemoData(this.demoToken)
+        .then(() => {
+          const demoData = StoreHelper.getDemoLTIData()
+          this.demoData = demoData
+          StoreHelper.setLoading(null, false)
+        })
+        .catch(err => {
+          alert(err)
+          StoreHelper.setLoading(null, false)
+        })
+    }
+  },
 }
 </script>
 

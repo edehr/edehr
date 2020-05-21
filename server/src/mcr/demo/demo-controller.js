@@ -1,45 +1,33 @@
 import { Router } from 'express'
 import axios from 'axios'
 import ConsumerController from '../consumer/consumer-controller'
-import { demoUsers } from '../../helpers/demo-users'
+import { demoPersonae } from '../../helpers/demo-personae'
 import { demoLimiter, validatorMiddlewareWrapper } from '../../helpers/middleware'
 const {ltiVersions} = require('../../mcr/lti/lti-defs')
 
 const HMAC_SHA1 = require('ims-lti/src/hmac-sha1')
 
-const DEMO_CONSUMER_SECRET = process.env.DEMO_CONSUMER_SECRET || 'demosecret'
-const DEMO_CONSUMER_KEY = process.env.DEMO_CONSUMER_KEY || 'demokey'
-// const DEMO_ASSIGNMENT = process.env.DEMO_ASSIGNMENT || 'demoAssignment'
-const TOOL_CONSUMER_NAME = process.env.TOOL_CONSUMER_NAME || 'EdEHRDemo'
-const DEMO_CONTEXT_ID = process.env.DEMO_CONTEXT_ID || 'demoContext'
-
 const debug = true
 
 export default class DemoController {
+  // TODO: create further method documentation after potential changes
   constructor (auth) {
     this.auth = auth
   }
-  /**
-  * @method _createDemoToolConsumer
-  * 
-  * @description 
-  * 1. Create a tool consumer using the unique id as the key and secret. Flag this consumer as a demo.  Create assignments, seeds as needed.
-  * 2. Create the four sample user personae records.  Hard code id, names, etc. 
-  * @returns: JWT token with the information the client will need to compose a LTI request.
-  *  
-  */
+ 
   _createDemoToolConsumer (req, res) {
-    console.log('req.body.id >> ', req.body.id)
     const cc = new ConsumerController()
     const def = {
       oauth_consumer_key: req.body.id,
       oauth_consumer_secret: req.body.id,
       lti_version: ltiVersions()[0],
       tool_consumer_info_product_family_code: 'EdEHR Demo',
-      tool_consumer_info_version: 'moodle',
+      tool_consumer_info_version: 'ehrdemo',
       tool_consumer_instance_description: 'Demo instance of Moodle for prototyping - seeded',
-      tool_consumer_instance_guid: 'Moodle-Demo-Local-EdEHRPrototype',
-      tool_consumer_instance_name: 'EdEHRDemo'
+      tool_consumer_instance_guid: 'Demo-EdEHR',
+      tool_consumer_instance_name: 'EdEHR Demo',
+      oauth_signature_method: 'HMAC-SHA1',
+      lti_message_type: 'basic-lti-launch-request',
     }
     const seedData = {
       name: 'Demo seed data',
@@ -48,18 +36,21 @@ export default class DemoController {
       isDefault: true,
       ehrData: {}
     }
-    let ltiData = []
+    // demoData contains information regarding a mock LTI request which combines data from
+    // the newly created Tool Consumer and all the seed personae, in order to generate a sample
+    // LTIData object which will be potentially used later in the demo flow.
+    let demoData = []
 
     cc.createWithSeed(def, seedData, true)
       .then((response, reject) => {
-        ltiData = demoUsers.map(user => {
-          return this._createUserLTIData(user)
+        demoData = demoPersonae.map(persona => {
+          return this._createDemoData(persona, def, req.hostname)
         })
         // Generate token and return it
         try {
-          const demoToken = this.auth.createToken({ltiData})
+          const demoToken = this.auth.createToken({ demoData })
           if (debug) {
-            console.log('ltiData, generating token', ltiData)
+            console.log('ltiData, generating token', demoData)
             console.log('generatedToken >> ', demoToken)
           }
           res.status(200).json({ demoToken })
@@ -73,54 +64,32 @@ export default class DemoController {
 
   }
 
-  /**
- * @method createDemoUser
- * @param {*} req The Express request object
- * @param {*} res The Express response object
- * @description This is an overall wrapper method for creating
- * the user and it gets triggered when the /createUser endpoint is called.
- * The whole process of creating a demo user consists of
- * 
- * 1. It unwraps the role from req.body and the host from req.hostname;
- * 2. It calls the findOrCreateToolConsumer so that it asserts that the tool consumer exists;
- * 3. Then it runs the generateUniqueName wrapper, which resolves into a userData object 
- * (containing first, last and full names and an email address);
- * 4. It prepares the ltiData object with the generated data. 
- * 5. It then runs _signAndPrepareLTIRequest which prepares a req object 
- * with the HMAC_SHA1 signature.
- * 6. It calls _LTIPost which runs a LTI post request and from it it gets the returnUrl and refreshToken
- * 7. Both the returnUrl and refreshToken are resolved to the client.
- *
- */
 
-  _createUserLTIData (user) {
-    const names = user.name.split(' ')
+  _createDemoData (persona, toolConsumer, host) {
+    const names = persona.name.split(' ')
     const [ firstName, lastName ] = names
-    const ltiData = {
-      user_id: user.id,
+    const clientUrl = host === 'localhost' ? 'http://localhost:28000' : 'https://www.edehr.org'
+    const demoData = {
+      user_id: persona.id,
       lis_person_name_given: firstName,
       lis_person_name_family: lastName,
-      lis_person_name_full: user.name,
-      lis_person_contact_email_primary: user.email,
-      lti_version: 'LTI-1p0',
-      lti_message_type: 'basic-lti-launch-request',
-      roles: user.role,
-      oauth_consumer_key: DEMO_CONSUMER_KEY,
-      oauth_consumer_secret: DEMO_CONSUMER_SECRET,
-      context_id: DEMO_CONTEXT_ID,
-      tool_consumer_instance_name: TOOL_CONSUMER_NAME,
+      lis_person_name_full: persona.name,
+      lis_person_contact_email_primary: persona.email,
+      lti_version: toolConsumer.lti_version,
+      lti_message_type: toolConsumer.lti_message_type,
+      roles: persona.role,
+      oauth_consumer_key: toolConsumer.oauth_consumer_key,
+      oauth_consumer_secret: toolConsumer.oauth_consumer_secret,
+      context_id: toolConsumer.context_id,
+      tool_consumer_instance_name: toolConsumer.tool_consumer_instance_name,
       // Return to demopage
-      launch_presentation_return_url: 'http://some.place.org',
-      resource_link_title: 'Resource Link Title',
-      resource_link_id: 'http://link-to-resource.com/resource',
-      oauth_signature_method: 'HMAC-SHA1',
+      launch_presentation_return_url: `${clientUrl}/demo-courses`,
+      oauth_signature_method:  toolConsumer.oauth_signature_method,
     }
-    return ltiData
+    return demoData
   }
 
   submitLTIData (req, res) {
-    console.log('req.body >> ', req.body)
-    console.log('req.header >> ', req.headers)
     const host = req.hostname === 'localhost' ? 'localhost:27000' : req.hostname
     let { ltiData, assignment } = req.body
     ltiData = Object.assign({}, ltiData, {
@@ -192,6 +161,7 @@ export default class DemoController {
       })
 
     router.post('/fetch', middlewareWrapper, (req, res) =>
+    // Document req.authPayload, improve readability and further explain structure
       res.status(200).json(req.authPayload)
     )
 
