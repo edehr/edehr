@@ -12,7 +12,7 @@
   "contributors": [
     "Bryan Gilbert <bryan.gilbert@gmail.com>"
   ],
-  "license": "MIT",
+  "license": "AGPL-3.0-or-later",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/BCcampus/edehr"
