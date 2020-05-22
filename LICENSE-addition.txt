@@ -1,0 +1,1 @@
+“Additional permission under AGPLv3, Sec. 7 If you modify this Program, or any covered work, by combining it with Plugins entirely written by you, the licensors of this Program grant you additional permission to convey those Plugins under terms of your choice, provided that those terms do not place additional restrictions on the Program.”
