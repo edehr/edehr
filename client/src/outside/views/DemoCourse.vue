@@ -32,7 +32,7 @@
 
       p The focus for this assignment is help the student complement their assessment and monitoring skills with accurate and careful recording within an electronic health record system.
 
-      p Case Study #2: Pnuemonia
+      p Case Study #2: Pneumonia
 
       a(href="#", @click="handleAssignmentSelection('assignment2')") Go to assignment
 
@@ -43,6 +43,15 @@
 import StoreHelper from '../../helpers/store-helper'
 export default {
   components: {
+  },
+  mounted () {
+    const demoToken = StoreHelper.getDemoToken()
+    const selectedDemoUser = StoreHelper.getDemoPersona()
+    if (demoToken && !selectedDemoUser) {
+      this.$router.push('/demo')
+    } else if (!demoToken) {
+      this.$router.push('/')
+    }
   },
   data () {
     return {}

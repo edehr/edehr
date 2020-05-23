@@ -47,6 +47,13 @@ export default {
     }
   },
   mounted () {
+    const demoToken = StoreHelper.getDemoToken()
+    const selectedDemoUser = StoreHelper.getDemoPersona()
+    if (demoToken && selectedDemoUser) {
+      this.$router.push('/demo-course')
+    } else if (!demoToken) {
+      this.$router.push('/')
+    }
     StoreHelper.setLoading(null, true)
     StoreHelper.fetchDemoData()
       .then(() => {
