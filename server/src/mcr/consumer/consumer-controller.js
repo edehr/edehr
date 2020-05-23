@@ -3,6 +3,7 @@ import BaseController from '../common/base'
 import { Text }  from '../../config/text'
 import Consumer from '../consumer/consumer'
 import SeedDataController from '../seed/seedData-controller'
+import AssignmentController from '../assignment/assignment-controller'
 import {ok, fail} from '../common/utils'
 import { isAdmin } from '../../helpers/middleware'
 
@@ -23,22 +24,51 @@ export default class ConsumerController extends BaseController {
     return this.createWithSeed(def)
   }
 
-  createWithSeed (data) {
+  createWithSeed (data, seedData = null, createDemoAssignments = false) {
     let theConsumer
     return this.model
       .create(data)
       .then((toolConsumer) => {
         theConsumer = toolConsumer
-        let seedDef = {
-          toolConsumer: toolConsumer._id,
-          name: Text.DEFAULT_SEED_NAME,
-          description: Text.DEFAULT_SEED_DESCRIPTION,
-          version: '1',
-          isDefault: true,
-          ehrData: {}
+        let seedDef = {}
+        if (seedData) {
+          seedDef = Object.assign({}, seedData, { toolConsumer: toolConsumer._id })
+        } else {
+          seedDef = {
+            toolConsumer: toolConsumer._id,
+            name: Text.DEFAULT_SEED_NAME,
+            description: Text.DEFAULT_SEED_DESCRIPTION,
+            version: '1',
+            isDefault: true,
+            ehrData: {}
+          }
         }
         return sd.create(seedDef)
       })
+      // creating activity
+      .then(() => {
+        if (createDemoAssignments) {
+          // TODO: change this description
+          const as = new AssignmentController({ehr : { defaultAssignmentDescription: 'This a demo assignment 1'} })
+          const assignmentDef = {
+            toolConsumer: theConsumer, 
+            externalId: 'assignment1',
+            resource_link_title: 'Demo Assignment 1'
+          }
+          return as.createAssignment(assignmentDef.externalId, assignmentDef.toolConsumer, assignmentDef.resource_link_title )
+            .then(() => {
+              const as = new AssignmentController({ehr : { defaultAssignmentDescription: 'This a default demo assignment'} })
+              const assignmentDef = {
+                toolConsumer: theConsumer, 
+                externalId: 'assignment2',
+                resource_link_title: 'Demo Assignment 2',
+              }
+              return as.createAssignment(assignmentDef.externalId, assignmentDef.toolConsumer, assignmentDef.resource_link_title)
+            })
+        } else {
+          return Promise.resolve()
+        }
+      })    
       .then( () => {
         return theConsumer
       })

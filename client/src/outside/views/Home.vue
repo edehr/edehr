@@ -21,13 +21,59 @@
     p.
       To use this system you need to use a Learning Management System such as Moodle, Canvas, Blackboard, or any
       other LTI compliant learning system. For more information see the documentation.
+  
+    div(style="margin-top: 2em;", v-show="isDemoMode") 
+      ui-button(@buttonClicked="confirmToolConsumerCreation") Enter Demo
+    ui-confirm(ref="confirmDialog", @confirm="proceedDemoToolConsumerCreation", saveLabel="Confirm")
+
 </template>
 
 <script>
+import UiButton from '../../app/ui/UiButton'
+import UiConfirm from '../../app/ui/UiConfirm'
+import StoreHelper from '../../helpers/store-helper'
+
+const TEXT = {
+  TITLE: 'Proceed to create demo?',
+  MSG: 'This process can only be done once in a given period of time.',
+}
+
 export default {
   name: 'home',
-  components: {},
-  computed: {}
+  data () {
+    return {
+      selectedUser: {},
+      isDemoMode: true,
+    }
+  },
+  mounted () {
+    const demoToken = StoreHelper.getDemoToken()
+    const selectedDemoUser = StoreHelper.getDemoPersona()
+    if (demoToken && selectedDemoUser) {
+      this.$router.push('/demo-course')
+    } else if (demoToken) {
+      this.$router.push('/demo')
+    }
+  },
+  methods: {
+    confirmToolConsumerCreation () {
+      this.$refs.confirmDialog.showDialog(TEXT.TITLE, TEXT.MSG)
+    },
+    proceedDemoToolConsumerCreation () {
+      return StoreHelper.createDemoToolConsumer()
+        .then(() => {
+          this.$router.push('demo')
+        }).catch(err => {
+          if(this.debug) console.log('createDemoToolConsumerError >> ', err)
+          alert(err)
+        })
+    }
+  },
+  components: {
+    UiButton,
+    UiConfirm 
+  },
+  computed: {},
 }
 </script>
 

@@ -414,7 +414,7 @@ export default class LTIController {
           // resolves in 404. So, for debugging / testing
           // purposes, I believe it is better not to redirect
           if (req.body.debug) {
-            res.status(200).json({refreshToken})
+            res.status(200).json({refreshToken, url})
           } else {
             res.redirect(url)
           }
