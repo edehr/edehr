@@ -6,29 +6,27 @@ const demoHelper = new DemoHelper()
 
 const _setDemoToken = (token) => localStorage.setItem(sKeys.DEMO_TOKEN, token)
 
-const _setDemoUser = (user) => localStorage.setItem(sKeys.SELECTED_DEMO_USER, JSON.stringify(user))
+const _setPersona = (persona) => localStorage.setItem(sKeys.SELECTED_DEMO_PERSONA, JSON.stringify(persona))
 
 const _getDemoToken = () => localStorage.getItem(sKeys.DEMO_TOKEN)
 
-const _getDemoUser = () => JSON.parse(localStorage.getItem(sKeys.SELECTED_DEMO_USER))
+const _getPersona = () => JSON.parse(localStorage.getItem(sKeys.SELECTED_DEMO_PERSONA))
 
 
 const getters = {
   demoToken: function () {
     return _getDemoToken()
   },
-  demoUser: function () {
-    const demoUser = _getDemoUser()
-    return demoUser
-    // return state.selectedUser
+  demoPersona: function () {
+    return _getPersona()
   },
-  ltiData: function () {
-    return state.ltiData
+  demoData: function () {
+    return state.demoData
   }
 }
 
 const state = {
-  ltiData: [],
+  demoData: [],
   selectedUser: {}
 }
 
@@ -38,7 +36,6 @@ const actions = {
       .then(res => {
         const { demoToken } = res.data
         _setDemoToken(demoToken)
-        setAuthHeader(demoToken)
         return Promise.resolve(demoToken)
       })
       .catch(err => {
@@ -46,24 +43,20 @@ const actions = {
       })
   },
   fetchDemoData: function ({ commit }) {
+    setAuthHeader(_getDemoToken())
     return demoHelper.fetchDemoData() 
       .then(res => {
         const { demoData } = res.data
-        commit('setLTIData', demoData)
+        commit('setDemoData', demoData)
         return Promise.resolve(demoData)
       })
       .catch(err => {
-        console.log(err)
+        console.error(err)
         return Promise.reject(err)
       })
   },
-  selectLTIUser: function ({commit}, { ltiData } ) {
-    return _setDemoUser(ltiData)
-    // return commit('setDemoUser', ltiData)
-  },
-  setLTIUser: function (none, { ltiData, assignment }) {
-    const demoToken = _getDemoToken()
-    return demoHelper.setLTIUser(ltiData, assignment, demoToken)
+  submitPersona: function (none, { demoData, assignment }) {
+    return demoHelper.submitPersona(demoData, assignment)
       .then(res => {
         return Promise.resolve(res.data)
         
@@ -75,8 +68,8 @@ const actions = {
   setDemoToken: function (none, { demoToken }) {
     _setDemoToken(demoToken)
   },
-  setDemoUser: function (none, { user }) {
-    _setDemoUser(user)
+  setDemoPersona: function (none, { demoPersona }) {
+    _setPersona(demoPersona)
   },
   setDemoData: function (none, { data }) {
     _setDemoData(data)
@@ -84,8 +77,8 @@ const actions = {
 }
 
 const mutations = {
-  setLTIData: function (none, data) {
-    state.ltiData = data
+  setDemoData: function (none, data) {
+    state.demoData = data
   },
   // setDemoUser: function (none, data) {
   //   state.selectedUser = data

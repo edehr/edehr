@@ -10,7 +10,7 @@ const sKeys = {
   IS_READONLY_INSTRUCTOR: 'isReadOnlyInstructor',
   DEMO_TOKEN: 'demoToken',
   DEMO_DATA: 'demoPayload',
-  SELECTED_DEMO_USER: 'selectedDemoUser'
+  SELECTED_DEMO_PERSONA: 'selectedDemoPersona'
 }
 
 export default sKeys

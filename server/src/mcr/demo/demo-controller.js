@@ -7,7 +7,7 @@ const {ltiVersions} = require('../../mcr/lti/lti-defs')
 
 const HMAC_SHA1 = require('ims-lti/src/hmac-sha1')
 
-const debug = true
+const debug = false
 
 export default class DemoController {
   // TODO: create further method documentation after potential changes
@@ -83,7 +83,7 @@ export default class DemoController {
       context_id: toolConsumer.context_id,
       tool_consumer_instance_name: toolConsumer.tool_consumer_instance_name,
       // Return to demopage
-      launch_presentation_return_url: `${clientUrl}/demo-courses`,
+      launch_presentation_return_url: `${clientUrl}/demo-course`,
       oauth_signature_method:  toolConsumer.oauth_signature_method,
     }
     return demoData
@@ -91,14 +91,16 @@ export default class DemoController {
 
   submitLTIData (req, res) {
     const host = req.hostname === 'localhost' ? 'localhost:27000' : req.hostname
-    let { ltiData, assignment } = req.body
-    ltiData = Object.assign({}, ltiData, {
+    let { demoData, assignment } = req.body
+    demoData = Object.assign({}, demoData, {
       oauth_timestamp: Math.round(Date.now() / 1000),
       oauth_nonce: Date.now() + Math.random() * 100,
-      custom_assignment: assignment
+      custom_assignment: assignment,
+      // Potential TODO: change this!
+      resource_link_id: 'resource_link_id',
+      context_id: Math.floor(Date.now() / 1000)
     })
-    const _req = this._signAndPrepareLTIRequest(ltiData, host)
-    console.log('req obj >> ', _req )
+    const _req = this._signAndPrepareLTIRequest(demoData, host)
     this._LTIPost(_req)
       .then((r) => {
         res.status(200).json({ refreshToken: r.data.refreshToken, url: r.data.url })
@@ -154,17 +156,34 @@ export default class DemoController {
     const middlewareWrapper = [ validatorMiddlewareWrapper(this.auth) ]
     const router = new Router()
 
+    /**
+     * @description Implements the tool consumer creation upon receiving a random id which is generated in the frontend.
+     * It gets the persona data which is defined and then it returns a token with a combined personae object, containing personae
+     * data, which will be later used on the LTI request.
+     */
+
     router.post('/', 
-      // demoLimiter,
+      demoLimiter,
       (req, res) => {
         this._createDemoToolConsumer(req, res)
       })
 
+
+    /**
+     * @description Fetches the auth data which is contained in the demoToken payload,
+     * which is the data returned from the /demo route. 
+     *
+     */
     router.post('/fetch', middlewareWrapper, (req, res) =>
     // Document req.authPayload, improve readability and further explain structure
       res.status(200).json(req.authPayload)
     )
 
+    /**
+     * 
+     * @description Receives a more complete and robust LTI object from the persona, containing the assignment, and the selected persona.
+     * It then signs the LTI request and then it completes the LTI post, returning the returnUrl and the refreshToken, which were obtained in the POST request.
+     */
     router.post('/set', (req, res) => {
     
       this.submitLTIData(req, res)

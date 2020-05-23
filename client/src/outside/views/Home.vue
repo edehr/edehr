@@ -48,7 +48,7 @@ export default {
   },
   mounted () {
     const demoToken = StoreHelper.getDemoToken()
-    const selectedDemoUser = StoreHelper.getDemoUser()
+    const selectedDemoUser = StoreHelper.getDemoPersona()
     if (demoToken && selectedDemoUser) {
       this.$router.push('/demo-course')
     } else if (demoToken) {
@@ -60,9 +60,9 @@ export default {
       this.$refs.confirmDialog.showDialog(TEXT.TITLE, TEXT.MSG)
     },
     proceedDemoToolConsumerCreation () {
-      StoreHelper.createDemoToolConsumer()
+      return StoreHelper.createDemoToolConsumer()
         .then(() => {
-          this.$router.push('/demo')
+          this.$router.push('demo')
         }).catch(err => {
           if(this.debug) console.log('createDemoToolConsumerError >> ', err)
           alert(err)

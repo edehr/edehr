@@ -19,9 +19,9 @@
                         input(
                           type="checkbox",
                           :id="obj.user_id",
-                          :checked="ltiData.lis_person_name_full === obj.lis_person_name_full",
+                          :checked="personaData.lis_person_name_full === obj.lis_person_name_full",
                           :value="obj",
-                          @change="ltiData = obj"
+                          @change="personaData = obj"
                         )
                         label(:for="obj.user_id") {{obj.lis_person_name_full}}
 
@@ -43,13 +43,22 @@ export default {
   data () {
     return {
       demoData: {},
-      ltiData: {}
+      personaData: {}
     }
   },
   mounted () {
-    if (this.demoToken)  {
-      this.fetchDemoData()
-    }
+    StoreHelper.setLoading(null, true)
+    StoreHelper.fetchDemoData()
+      .then(() => {
+        const demoData = StoreHelper.getDemoData()
+        this.demoData = demoData
+        StoreHelper.setLoading(null, false)
+      })
+      .catch(err => {
+        alert(err)
+        StoreHelper.setLoading(null, false)
+      })
+    
   },
   computed: {
     canRequestDemoAccess () {
@@ -60,7 +69,7 @@ export default {
       return !token
     },
     isFormValid () {
-      return Object.keys(this.ltiData).length > 0
+      return Object.keys(this.personaData).length > 0
     },
     demoToken () {
       return StoreHelper.getDemoToken() || this.$route.query.demoToken
@@ -71,22 +80,9 @@ export default {
       this.$router.push(path)
     },
     submitDemoAccess () {
-      StoreHelper.selectLTIUser(this.ltiData)
+      StoreHelper.setDemoPersona(this.personaData)
       this.redirect('/demo-course')
     },
-    fetchDemoData () {
-      StoreHelper.setLoading(null, true)
-      StoreHelper.fetchDemoData(this.demoToken)
-        .then(() => {
-          const demoData = StoreHelper.getDemoLTIData()
-          this.demoData = demoData
-          StoreHelper.setLoading(null, false)
-        })
-        .catch(err => {
-          alert(err)
-          StoreHelper.setLoading(null, false)
-        })
-    }
   },
 }
 </script>

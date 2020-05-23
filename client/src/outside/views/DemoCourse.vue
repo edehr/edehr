@@ -52,8 +52,8 @@ export default {
   methods: {
     handleAssignmentSelection: function (assignment) {
       StoreHelper.setLoading(null, true)
-      const ltiData = StoreHelper.getDemoUser()
-      StoreHelper.setLTIUser(ltiData, assignment)
+      const personaData = StoreHelper.getDemoPersona()
+      StoreHelper.submitPersona(personaData, assignment)
         .then(({url}) => {
           StoreHelper.setLoading(null, false)
           window.location.replace(url)

@@ -2,7 +2,7 @@ import store from '../store'
 import {removeEmptyProperties } from './ehr-utils'
 import sKeys from './session-keys'
 
-const debug = true
+const debug = false
 
 class StoreHelperWorker {
 
@@ -428,20 +428,16 @@ class StoreHelperWorker {
     return this._dispatchDemoStore('setDemoToken', { demoToken })
   }
 
-  setDemoUser (demoUser) {
-    return this._dispatchDemoStore('setDemoUser', { demoUser })
+  setDemoPersona (demoPersona) {
+    return this._dispatchDemoStore('setDemoPersona', { demoPersona })
   }
 
-  fetchDemoData (demoToken) {
-    return this._dispatchDemoStore('fetchDemoData', { demoToken })
+  fetchDemoData () {
+    return this._dispatchDemoStore('fetchDemoData')
   }
 
-  selectLTIUser (ltiData) {
-    return this._dispatchDemoStore('selectLTIUser', { ltiData })
-  }
-
-  setLTIUser (ltiData, assignment) {
-    return this._dispatchDemoStore('setLTIUser', { ltiData, assignment })
+  submitPersona (demoData, assignment) {
+    return this._dispatchDemoStore('submitPersona', { demoData, assignment })
   }
 
   getAuthData () {
@@ -456,12 +452,12 @@ class StoreHelperWorker {
     return this._getDemoStorage('demoToken')
   }
 
-  getDemoUser () {
-    return this._getDemoStorage('demoUser')
+  getDemoPersona () {
+    return this._getDemoStorage('demoPersona')
   }
 
-  getDemoLTIData () {
-    return this._getDemoStorage('ltiData')
+  getDemoData () {
+    return this._getDemoStorage('demoData')
   }
 }
 
