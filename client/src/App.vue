@@ -42,7 +42,10 @@ export default {
           return StoreHelper.apiUrlSet(apiUrl)
         })
         .then(() => {
-          if (refreshToken) {
+          if (authToken) {
+            setAuthHeader(authToken)
+            return StoreHelper.fetchTokenData(authToken, apiUrl)
+          } else if (refreshToken) {
             return StoreHelper.fetchAndStoreAuthToken(refreshToken, apiUrl)
               .then((token) => {
                 if (!token) {
@@ -50,13 +53,8 @@ export default {
                 }
                 return StoreHelper.fetchTokenData(token, apiUrl)
               })
-          } else {
-            if (!authToken) {
-              return Promise.reject(Text.PARAMETERS_ERROR)
-            } else {
-              setAuthHeader(authToken)
-              return StoreHelper.fetchTokenData(authToken, apiUrl)
-            }
+          } else { 
+            return Promise.reject(Text.PARAMETERS_ERROR)
           }
         })
         .then(() => {
