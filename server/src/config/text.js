@@ -30,7 +30,7 @@ export const Text = {
 
   // AuthController
   EXPIRED_ADMIN: 'The password you\'ve entered is no longer valid. Please, try again. If the problem persists, please, contact an administrator',
-  EXPIRED_TOKEN: 'Invalid token. Please, try again!',
+  EXPIRED_TOKEN: 'The token has expired. Please, try again!',
   INVALID_TOKEN: 'Invalid token. Please, check with an administrator if your password is still valid!',
   NOT_PERMITTED: 'You don\'t have permission to view this',
   REQUIRED_ADMIN: 'A password and the token are required',

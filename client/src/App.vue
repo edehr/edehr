@@ -42,18 +42,30 @@ export default {
           return StoreHelper.apiUrlSet(apiUrl)
         })
         .then(() => {
-          if (authToken) {
-            setAuthHeader(authToken)
-            return StoreHelper.fetchTokenData(authToken, apiUrl)
-          } else if (refreshToken) {
+          if (refreshToken) {
             return StoreHelper.fetchAndStoreAuthToken(refreshToken, apiUrl)
               .then((token) => {
                 if (!token) {
                   return Promise.reject(Text.EXPIRED_REFRESH_TOKEN)
                 }
                 return StoreHelper.fetchTokenData(token, apiUrl)
+              }).catch(err => {
+                if (
+                  ( err.response.status === 401  && 
+                    err.response.data.includes('The token has expired.') && 
+                    !!authToken
+                  )
+                ) {
+                  setAuthHeader(authToken)
+                  return StoreHelper.fetchTokenData(authToken, apiUrl)
+                } else {
+                  return Promise.reject(Text.EXPIRED_TOKEN(err))
+                }
               })
-          } else { 
+          } else if (authToken) {
+            setAuthHeader(authToken)
+            return StoreHelper.fetchTokenData(authToken, apiUrl)
+          }  else { 
             return Promise.reject(Text.PARAMETERS_ERROR)
           }
         })
@@ -83,9 +95,9 @@ export default {
           EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
         })
         .catch(err => {
-          alert(err + '\nSystem Error')
           StoreHelper.setLoading(null, false)
           this.$router.push('/')
+          setApiError(err + '\n. System Error')
         })
     },
 
@@ -95,7 +107,7 @@ export default {
     loadDataIfNotLoaded (route) {
       if(!route.meta.public && !this.hasLoaded) {
         this.loadData()
-        this.hasLoaded = true
+        // this.hasLoaded = true
       }
     }
   },
@@ -120,9 +132,9 @@ export default {
       this.loadDataIfNotLoaded(route)
     }
   },
-  mounted () {
-    this.loadDataIfNotLoaded(this.$route)
-  }
+  // mounted () {
+  //   this.loadDataIfNotLoaded(this.$route)
+  // }
 }
 </script>
 

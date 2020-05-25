@@ -22,7 +22,7 @@ export const Text = {
   STUDENT_HAS_SUBMITTED: 'This assignment has been sent to your instructor for evaluation. It is no longer editable.',
   // Authentication
   EXPIRED_REFRESH_TOKEN: 'Refresh token is expired',
-  EXPIRED_TOKEN: (err) => `Token has expired \n${err}`,
+  EXPIRED_TOKEN: (err) => `The token has expired. Please, try again! \n ${err}`,
   INVALID_TOKEN: (err) => `Invalid token \n ${err}`,
   REQUIRE_AUTHENTICATION: 'You need to be properly authenticated to do this',
   TOKEN_FETCHING_ERROR: 'Error when fetching token data',
