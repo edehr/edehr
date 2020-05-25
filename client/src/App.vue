@@ -92,6 +92,13 @@ export default {
     },
 
     reloadInstructor: function () {
+    },
+
+    loadDataIfNotLoaded (route) {
+      if(!route.meta.public && !this.hasLoaded) {
+        this.loadData()
+        this.hasLoaded = true
+      }
     }
   },
   computed: {
@@ -112,11 +119,11 @@ export default {
   },
   watch: {
     $route: function (route) {
-      if((!route.meta.public && !this.hasLoaded)) {
-        this.loadData()
-        this.hasLoaded = true
-      }
+      this.loadDataIfNotLoaded(route)
     }
+  },
+  mounted () {
+    this.loadDataIfNotLoaded(this.$route)
   }
 }
 </script>
