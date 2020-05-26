@@ -90,7 +90,7 @@ export default class DemoController {
   }
 
   submitLTIData (req, res) {
-    const host = req.hostname === 'localhost' ? 'localhost:27000' : req.hostname
+    const { host } = req.headers
     let { demoData, assignment } = req.body
     demoData = Object.assign({}, demoData, {
       oauth_timestamp: Math.round(Date.now() / 1000),
@@ -153,7 +153,7 @@ export default class DemoController {
   }
 
   route () {
-    const middlewareWrapper = [ validatorMiddlewareWrapper(this.auth) ]
+    const validatorMiddleware = [ validatorMiddlewareWrapper(this.auth) ]
     const router = new Router()
 
     /**
@@ -171,11 +171,10 @@ export default class DemoController {
 
     /**
      * @description Fetches the auth data which is contained in the demoToken payload,
-     * which is the data returned from the /demo route. 
+     * (the data returned from the /demo route). 
      *
      */
-    router.post('/fetch', middlewareWrapper, (req, res) =>
-    // Document req.authPayload, improve readability and further explain structure
+    router.get('/fetch', validatorMiddleware, (req, res) =>
       res.status(200).json(req.authPayload)
     )
 

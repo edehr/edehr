@@ -24,6 +24,11 @@ export default class ConsumerController extends BaseController {
     return this.createWithSeed(def)
   }
 
+  // the seedData and createDemoAssignments are overall placeholders for creating default demoAssignments and demoSeedData.
+  // In the future, as the seedData and assignments are provided from the seed, then createDemoAssignments should become an 
+  // array of the assignments seed to be create.
+  // For further information about it, please check issue 
+  // 
   createWithSeed (data, seedData = null, createDemoAssignments = false) {
     let theConsumer
     return this.model

@@ -408,7 +408,6 @@ export default class LTIController {
         .then((req) => {
           let url = req.ltiNextUrl
           const refreshToken = req.refreshToken
-          console.log('redirecting to ', url)
           debug(`ready to redirect to the ehr ${url}`)
           // When redirecting in the test, the request promise 
           // resolves in 404. So, for debugging / testing

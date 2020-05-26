@@ -32,6 +32,7 @@
 import UiButton from '../../app/ui/UiButton'
 import UiConfirm from '../../app/ui/UiConfirm'
 import StoreHelper from '../../helpers/store-helper'
+import { setApiError } from '../../helpers/ehr-utils'
 
 const TEXT = {
   TITLE: 'Proceed to create demo?',
@@ -65,7 +66,7 @@ export default {
           this.$router.push('demo')
         }).catch(err => {
           if(this.debug) console.log('createDemoToolConsumerError >> ', err)
-          alert(err)
+          setApiError(err)
         })
     }
   },

@@ -27,14 +27,14 @@ export function outside () {
       name: 'demo',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Demo'),
-      meta: { layout: 'outside', public: true }
+      meta: { layout: 'outside', demo: true }
     },
     {
       path: '/demo-course',
       name: 'demoCourse',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/DemoCourse'),
-      meta: { layout: 'outside', public: true }
+      meta: { layout: 'outside', demo: true }
     },
     {
       path: '/help',

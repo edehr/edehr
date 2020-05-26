@@ -36,6 +36,7 @@
 <script>
 import StoreHelper from '../../helpers/store-helper'
 import UiButton from '../../app/ui/UiButton'
+import { setApiError } from '../../helpers/ehr-utils'
 export default {
   components: {
     UiButton
@@ -62,7 +63,7 @@ export default {
         StoreHelper.setLoading(null, false)
       })
       .catch(err => {
-        alert(err)
+        setApiError(err)
         StoreHelper.setLoading(null, false)
       })
     

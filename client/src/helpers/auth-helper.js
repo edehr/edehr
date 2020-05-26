@@ -33,16 +33,4 @@ export default class AuthHelper {
     const url = `${apiUrl}/auth/admin/validate`
     return axios.post(url)
   }
-  // Demo requests
-  requestDemoAccess (name, email, role) {
-    console.log('requestingdemoaccess from authHelper', name, email, role)
-    const apiUrl = StoreHelper.apiUrl()
-    const url = `${apiUrl}/demo/createUser`
-    return axios.post(url, { fullName: name, email, role })
-  }
-  validateDemoUser (username) {
-    const apiUrl = StoreHelper.apiUrl()
-    const url = `${apiUrl}/demo/isUniqueUsername`
-    return axios.post(url, { username })
-  }
 }

@@ -19,7 +19,7 @@ export default class DemoHelper {
   fetchDemoData () {
     const apiUrl = StoreHelper.apiUrl() || 'http://localhost:27000/api'
     const url = `${apiUrl}/demo/fetch`
-    return axios.post(url)
+    return axios.get(url)
 
   }
 }

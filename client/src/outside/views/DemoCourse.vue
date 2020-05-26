@@ -41,8 +41,22 @@
 
 <script>
 import StoreHelper from '../../helpers/store-helper'
+import { setApiError } from '../../helpers/ehr-utils'
 export default {
-  components: {
+  methods: {
+    handleAssignmentSelection: function (assignment) {
+      StoreHelper.setLoading(null, true)
+      const personaData = StoreHelper.getDemoPersona()
+      StoreHelper.submitPersona(personaData, assignment)
+        .then(({ url }) => {
+          StoreHelper.setLoading(null, false)
+          window.location.replace(url)
+        }).catch(err => {
+          StoreHelper.setLoading(null, false)
+          setApiError('An error occured! ', err)
+        })
+    }
+    
   },
   mounted () {
     const demoToken = StoreHelper.getDemoToken()
@@ -53,26 +67,6 @@ export default {
       this.$router.push('/')
     }
   },
-  data () {
-    return {}
-  },
-  computed: {
-  },
-  methods: {
-    handleAssignmentSelection: function (assignment) {
-      StoreHelper.setLoading(null, true)
-      const personaData = StoreHelper.getDemoPersona()
-      StoreHelper.submitPersona(personaData, assignment)
-        .then(({url}) => {
-          StoreHelper.setLoading(null, false)
-          window.location.replace(url)
-        }).catch(err => {
-          StoreHelper.setLoading(null, false)
-          alert('An error occured! \n ', err)
-        })
-      // StoreHelper.setLoading(null, false)
-    }
-  }
 }
 </script>
 
