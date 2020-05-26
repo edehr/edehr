@@ -10,6 +10,8 @@
 import StoreHelper from '../../helpers/store-helper'
 import { setAuthHeader } from '../../helpers/axios-helper'
 import { Text } from '../../helpers/ehr-text'
+import { setApiError } from '../../helpers/ehr-utils'
+
 export default {
   data : () => {
     return {
@@ -32,12 +34,12 @@ export default {
           this.isAuthed = v
         })
         .catch(err => {
-          alert(err)
+          setApiError(err)
           this.redirect()
           StoreHelper.setLoading(null, false)
         })
     } else {
-      alert(Text.REQUIRE_AUTHENTICATION)
+      setApiError(Text.REQUIRE_AUTHENTICATION)
       this.redirect()
       return false
     }

@@ -15,6 +15,7 @@ import StoreHelper from '../../helpers/store-helper'
 import UiButton from '../../app/ui/UiButton'
 import sKeys from '../../helpers/session-keys'
 import { Text } from '../../helpers/ehr-text'
+import { setApiError } from '../../helpers/ehr-utils'
 
 export default {
   components: {
@@ -37,7 +38,7 @@ export default {
         })
         .catch ((err) => {
           this.errors.push(err)
-          alert(`\n ${err}`)
+          setApiError(`\n ${err}`)
           this.redirect()
         })
     }
@@ -49,7 +50,7 @@ export default {
       if(token && visitId) {
         return true
       } else {
-        alert(Text.REQUIRE_AUTHENTICATION)
+        setApiError(Text.REQUIRE_AUTHENTICATION)
         this.redirect()
         return false
       }
