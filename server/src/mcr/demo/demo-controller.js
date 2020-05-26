@@ -96,7 +96,9 @@ export default class DemoController {
       oauth_timestamp: Math.round(Date.now() / 1000),
       oauth_nonce: Date.now() + Math.random() * 100,
       custom_assignment: assignment,
-      // Potential TODO: change this!
+      // TODO: change this once the assignment seed is done.
+      // Please, refer to https://github.com/BCcampus/edehr/issues/691
+      // for further detail
       resource_link_id: 'resource_link_id',
       context_id: Math.floor(Date.now() / 1000)
     })

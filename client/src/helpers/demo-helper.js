@@ -2,7 +2,8 @@ import axios from 'axios'
 import StoreHelper from './store-helper'
 const uuid = require('uuid/v4')
 export default class DemoHelper {
-  // TODO: implement apiURL fetching from the backend before LTI POST
+  // TODO: implement apiURL fetching from the backend before LTI POST;
+  // please refer to https://github.com/BCcampus/edehr/issues/692 for further detail.
   createToolConsumer () {
     const id = uuid()
     const apiUrl = StoreHelper.apiUrl() || 'http://localhost:27000/api'
