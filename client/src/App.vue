@@ -51,8 +51,9 @@ export default {
                 return StoreHelper.fetchTokenData(token, apiUrl)
               }).catch(err => {
                 if (
-                  ( err.response.status === 401  && 
-                    err.response.data.includes('The token has expired.') && 
+                  ( 
+                    err.response.status === 401  && 
+                    err.response.data.toLowerCase().includes('expired') && 
                     !!authToken
                   )
                 ) {
@@ -97,7 +98,7 @@ export default {
         .catch(err => {
           StoreHelper.setLoading(null, false)
           this.$router.push('/')
-          setApiError(err + '\n. System Error')
+          setApiError(err + '. System Error')
         })
     },
 
