@@ -64,6 +64,8 @@
 
 <script>
 import { formatTimeStr } from '../../helpers/ehr-utils'
+import EventBus from '@/helpers/event-bus'
+import { PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
 import StoreHelper from '../../helpers/store-helper'
 import EvalHelper from '../../helpers/eval-helper'
 import UiButton from '../../app/ui/UiButton.vue'
@@ -71,6 +73,8 @@ import UiLink from '../../app/ui/UiLink.vue'
 import UiSaveAsPrompt from '../../app/ui/UiSaveAsPrompt.vue'
 import { downArrayToCsvFile } from '../../helpers/ehr-utils'
 import { Text } from '../../helpers/ehr-text'
+
+const debug = false
 
 export default {
   components: {
@@ -191,19 +195,23 @@ export default {
       In the first instance the route parameters will contain (must contain) the activity id. In the
       second instance we will retrieve the "active" activity rom the StoreHelper
        */
-      // console.log('class list load component: this.activityId',this.activityId)
+      if (debug) console.log('CL loadAsCurrentActivity', this.activityId)
       return StoreHelper.loadAsCurrentActivity(this.activityId)
         .then( () => {
+          if (debug) console.log('CL loadInstructorWithStudent', this.activityId)
           return  StoreHelper.loadInstructorWithStudent()
         })
         .then((result) => {
           if(result) {
+            if (debug) console.log('CL results', result)
             this.activity = result.activity
             this.assignment = result.assignment
+          } else {
+            console.error('CL no results', this.activityId)
           }
         })
         .catch((error) => {
-          console.error('Load class list failed', error)
+          console.error('CL Load class list failed', error)
         })
     },
     downloadEvaluations () {
@@ -224,15 +232,24 @@ export default {
     },
 
   },
-  mounted: function () {
-    // console.log('Load component because component mounted')
-    this.loadComponent()
+  created: function () {
+    /*
+      Must wait for App to load auth before loading this component
+     */
+    const _this = this
+    this.refreshEventHandler = function () { _this.loadComponent() }
+    EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
+  },
+  beforeDestroy: function () {
+    if (this.refreshEventHandler) {
+      EventBus.$off(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
+    }
   },
   watch: {
     // TODO ALmost certain this watch is not triggered anymore.
     activityId:function (curr, prev) {
       if (!prev && curr) {
-        console.log('Load component because of a change in activity id')
+        if (debug) console.log('CL load component because of a change in activity id')
         this.loadComponent()
       }
     }

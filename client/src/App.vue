@@ -38,55 +38,66 @@ export default {
             setApiError(msg)
             return Promise.reject(msg)
           }
-          if(debugApp) console.log('Store the API URL', apiUrl)
+          if(debugApp) console.log('App store the API URL', apiUrl)
           return StoreHelper.apiUrlSet(apiUrl)
         })
         .then(() => {
           if (refreshToken) {
+            if(debugApp) console.log('App refresh token fetch')
             return StoreHelper.fetchAndStoreAuthToken(refreshToken, apiUrl)
               .then((token) => {
                 if (!token) {
+                  if(debugApp) console.log('App refresh token expired')
                   return Promise.reject(Text.EXPIRED_REFRESH_TOKEN)
                 }
                 return StoreHelper.fetchTokenData(token, apiUrl)
               }).catch(err => {
                 if (
-                  ( 
-                    err.response.status === 401  && 
-                    err.response.data.toLowerCase().includes('expired') && 
-                    !!authToken
-                  )
+                  err.response.status === 401  &&
+                  err.response.data.toLowerCase().includes('expired') &&
+                  !!authToken
                 ) {
+                  if(debugApp) console.log('App refresh expired but we have a previous auth token. Use it')
                   setAuthHeader(authToken)
                   return StoreHelper.fetchTokenData(authToken, apiUrl)
                 } else {
+                  if(debugApp) console.log('App refresh expired and no previous token')
                   return Promise.reject(Text.EXPIRED_TOKEN(err))
                 }
               })
           } else if (authToken) {
+            if(debugApp) console.log('App use stored auth token')
             setAuthHeader(authToken)
             return StoreHelper.fetchTokenData(authToken, apiUrl)
-          }  else { 
+          }  else {
+            if(debugApp) console.log('App not auth token, no refresh token', Text.PARAMETERS_ERROR)
             return Promise.reject(Text.PARAMETERS_ERROR)
           }
         })
         .then(() => {
+          if(debugApp) console.log('App tokens processed get auth data')
           const payload = StoreHelper.getAuthData()
           if (!(payload && payload.visitId)) {
+            if(debugApp) console.log('App no auth data', Text.TOKEN_FETCHING_ERROR)
             return Promise.reject(Text.TOKEN_FETCHING_ERROR)
           } else {
+            if(debugApp) console.log('App have auth data and visit id', payload)
             visitId = payload.visitId
           }
         })
         .then(() => {
-          return StoreHelper.clearSession().then( () => { return visitId }) 
-        }).then(() => { 
+          if(debugApp) console.log('App clear previous session and start with visit id')
+          return StoreHelper.clearSession().then( () => { return visitId })
+        }).then(() => {
+          if(debugApp) console.log('App load visit record')
           return StoreHelper.loadVisitRecord(visitId)
         })
         .then(() => {
           if (StoreHelper.isInstructor()) {
+            if(debugApp) console.log('App load instructor')
             return StoreHelper.loadInstructor2()
           } else if (StoreHelper.isStudent()) {
+            if(debugApp) console.log('App load student')
             return StoreHelper.loadStudent2()
           }
         }).then(() => {

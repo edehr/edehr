@@ -42,6 +42,8 @@
 </template>
 
 <script>
+import EventBus from '@/helpers/event-bus'
+import { PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
 import ClassList from './ClassList'
 import AccordionElement from '../../app/components/AccordionElement'
 import StoreHelper from '../../helpers/store-helper'
@@ -113,9 +115,20 @@ export default {
         })
     },
   },
-  mounted: function () {
-    this.loadActivity()
-  }
+  created: function () {
+    /*
+      Must wait for App to load auth before loading this component
+     */
+    const _this = this
+    this.refreshEventHandler = function () { _this.loadActivity() }
+    EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
+  },
+  beforeDestroy: function () {
+    if (this.refreshEventHandler) {
+      EventBus.$off(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
+    }
+  },
+
 }
 </script>
 

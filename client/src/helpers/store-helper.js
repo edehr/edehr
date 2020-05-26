@@ -201,7 +201,7 @@ class StoreHelperWorker {
 
   // returns promise that resolves to assignment list
   updateAssignment (component, assignmentId, assignmentData) {
-  // console.log('Assignment update ', assignmentId, assignmentData)
+  // console.log('SH Assignment update ', assignmentId, assignmentData)
     let dataIdPlusPayload = { id: assignmentId, payload: assignmentData }
     return this._dispatchAssignmentList('updateAssignment', dataIdPlusPayload)
   }
@@ -223,7 +223,7 @@ class StoreHelperWorker {
   loadSeedLists () { return this._dispatchSeedListProperty('loadSeedDataList') }
 
   updateSeed (component, seedId, theData) {
-  // console.log('Seed Data update ', seedId, theData)
+  // console.log('SH Seed Data update ', seedId, theData)
     let dataIdPlusPayload = { id: seedId, payload: theData }
     return this._dispatchSeedListProperty('updateSeedItem', dataIdPlusPayload)
   }
@@ -266,7 +266,7 @@ class StoreHelperWorker {
   getPanelData () {
     const pDebug = false
     let assignment = this._getAssignmentProperty('assignment')
-    if(pDebug) console.log('getPanelData assignment', assignment)
+    if(pDebug) console.log('SH getPanelData assignment', assignment)
     let evaluated = this.isEvaluated()
     let data = {
       userName: this.fullName(),
@@ -286,12 +286,12 @@ class StoreHelperWorker {
       data.studentName = ces.userName
       data.lastVisitDate = ces.lastVisitDate
       data.currentEvaluationStudent = ces
-      if(pDebug) console.log('getPanelData currentEvaluationStudent', ces)
+      if(pDebug) console.log('SH getPanelData currentEvaluationStudent', ces)
     }
     if (this.isStudent()) {
       data.scratchData = this.getStudentScratchData()
     }
-    if(pDebug) console.log('getPanelData data', data)
+    if(pDebug) console.log('SH getPanelData data', data)
     return data
   }
 
@@ -314,9 +314,9 @@ class StoreHelperWorker {
       if (debug) console.log('SH loadCommon activityId', activityId)
       if(!activityId) {
         activityId = visitInfo.activity
-        if(debug) console.log('loadCommon load activity from visit record', activityId)
+        if(debug) console.log('SH loadCommon load activity from visit record', activityId)
       } else {
-        if(debug) console.log('loadCommon load activity from session', activityId)
+        if(debug) console.log('SH loadCommon load activity from session', activityId)
       }
       if (activityId) {
         return StoreHelper.loadAsCurrentActivity(activityId)
@@ -326,7 +326,7 @@ class StoreHelperWorker {
 
   restoreSession () {
     let visitId = sessionStorage.getItem(sKeys.USER_TOKEN)
-    if (debug) console.log('No visit id in url query. Is it in session storage? visitId', visitId)
+    if (debug) console.log('SH No visit id in url query. Is it in session storage? visitId', visitId)
     if (visitId) {
       return this._dispatchActivity('sessionRestore')
         .then ( () => {
@@ -359,7 +359,7 @@ class StoreHelperWorker {
       ])
     }).then(() => {
       let seedId = this.getAssignmentSeedId()
-      if(debug) console.log('loadStudent2 seedId', seedId)
+      if(debug) console.log('SH loadStudent2 seedId', seedId)
       return this.loadSeed(seedId)
     })
   }
@@ -367,7 +367,7 @@ class StoreHelperWorker {
   loadInstructor2 () {
     return this.loadCommon().then(() => {
       return this._dispatchInstructor('loadCourses').then(() => {
-        if(debug) console.log('loadInstructor2 load and restore instructor')
+        if(debug) console.log('SH loadInstructor2 load and restore instructor')
       })
     })
   }
@@ -375,28 +375,28 @@ class StoreHelperWorker {
 
   loadInstructorWithStudent (filtered) {
     const local = debug && true
-    if(local) console.log('loadInstructorWithStudent')
+    if(local) console.log('SH loadInstructorWithStudent')
     let activityId = this.getActivityId()
     let result = {}
     if (!activityId) {
       console.error('Can\'t find a current activity id')
       return Promise.resolve()
     }
-    if(local) console.log('loadInstructorWithStudent activityId', activityId)
+    if(local) console.log('SH loadInstructorWithStudent activityId', activityId)
     return this.loadAsCurrentActivity(activityId)
       .then((theActivity) => {
         result.activity = theActivity
-        if(local) console.log('loadInstructorWithStudent theActivity', theActivity)
+        if(local) console.log('SH loadInstructorWithStudent theActivity', theActivity)
         return this.loadAssignment(theActivity.assignment)
       })
       .then((theAssignment) => {
         result.assignment = theAssignment
-        if(local) console.log('loadInstructorWithStudent theAssignment', theAssignment)
+        if(local) console.log('SH loadInstructorWithStudent theAssignment', theAssignment)
         return this.dispatchLoadClassList(filtered)
       }).then(() => {
         let seedId = StoreHelper.getAssignmentSeedId()
         result.seedId = seedId
-        if(local) console.log('loadInstructorWithStudent seedId', seedId)
+        if(local) console.log('SH loadInstructorWithStudent seedId', seedId)
         return this.loadSeed(seedId)
       }).then(() => {
         return result
@@ -405,7 +405,7 @@ class StoreHelperWorker {
 
   loadDevelopingSeed () {
     let seedId = sessionStorage.getItem(sKeys.SEED_ID)
-    if(debug) console.log('load developing seed id:', seedId)
+    if(debug) console.log('SH load developing seed id:', seedId)
     if (seedId) {
       return this.loadSeed(seedId)
     }

@@ -47,6 +47,8 @@
 </template>
 
 <script>
+import EventBus from '@/helpers/event-bus'
+import { PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
 import UiButton from '../../app/ui/UiButton.vue'
 import UiLink from '../../app/ui/UiLink.vue'
 import UiConfirm from '../../app/ui/UiConfirm'
@@ -65,6 +67,8 @@ const CONFIRM_DELETION_TEXT = {
   title: 'Confirm assignment deletion?',
   description: (name) => `Deleting ${name} will also delete all the data related to it.`
 }
+
+const debug = false
 
 export default {
   name: 'AssignmentsListing',
@@ -102,9 +106,9 @@ export default {
     },
     downloadAll () {
       StoreHelper.loadAssignmentList(this)
-        .then ( (aList) => {
-          downObjectToFile('EdEHR-assignments-list.json', aList)
-        })
+      .then((aList) => {
+        downObjectToFile('EdEHR-assignments-list.json', aList)
+      })
     },
 
     findAssignment: function (id) {
@@ -121,9 +125,9 @@ export default {
     },
     isItemMisconfigured (item) {
       this.validationWarning = 'Shaded rows need further configuration. '
-      return item.description === DEFAULT_ASSIGNMENT_DESCRIPTION || 
-      DEFAULT_SEED_NAME === item.seedDataObj.name || 
-      DEFAULT_SEED_DESCRIPTION === item.seedDataObj.description
+      return item.description === DEFAULT_ASSIGNMENT_DESCRIPTION ||
+        DEFAULT_SEED_NAME === item.seedDataObj.name ||
+        DEFAULT_SEED_DESCRIPTION === item.seedDataObj.description
     },
     canBeDeleted (item) {
       const count = this.activitiesUsingAssignmentCount(item._id)
@@ -145,29 +149,39 @@ export default {
           StoreHelper.loadAssignmentList()
           StoreHelper.setLoading(null, false)
         })
-
     },
     resetDeletion (item) {
       this.selectedAssignment = {}
+    },
+    loadComponent () {
+      // TODO BG thinks this needs to be tested. Create a LMS activity with invalid external id.
+      // Need to give error to user. Does this do it?
+      let params2 = getIncomingParams()
+      this.isRespondingToError = params2['error']
+      StoreHelper.loadAssignmentList()
+      const token = StoreHelper.getAuthToken()
+      StoreHelper.adminValidate(token)
+        .then(r => {
+          if (debug) console.log('AssignmentsListing admin validate', r)
+          this.isAdmin = r.isAdmin
+        }).catch(err => {
+          if (debug) console.log('AssignmentsListing not admin', err)
+        })
     }
   },
-  mounted: function () {
-    const debug = false
-    // TODO BG thinks this needs to be tested. Create a LMS activity with invalid external id.
-    // Need to give error to user. Does this do it?
-    let params2 = getIncomingParams()
-    this.isRespondingToError = params2['error']
-    StoreHelper.loadAssignmentList()
-    const token = StoreHelper.getAuthToken()
-    StoreHelper.adminValidate(token)
-      .then(r => {
-        if (debug) console.log('r >> ', r)
-        this.isAdmin = r.isAdmin
-      }).catch(err => {
-        if (debug) console.log('err')
-      })
-
-  }
+  created: function () {
+    /*
+      Must wait for App to load auth before loading this component
+     */
+    const _this = this
+    this.refreshEventHandler = function () { _this.loadComponent() }
+    EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
+  },
+  beforeDestroy: function () {
+    if (this.refreshEventHandler) {
+      EventBus.$off(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
+    }
+  },
 }
 </script>
 
