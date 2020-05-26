@@ -6,6 +6,7 @@ const rateLimit = require('express-rate-limit')
 const ADMIN_MAX_REQUEST_LIMIT = 5
 
 const debug = false
+const debugErrs = true
 
 export const validatorMiddlewareWrapper = (authController) => {
   return (req, res, next) => {
@@ -19,14 +20,15 @@ export const validatorMiddlewareWrapper = (authController) => {
           req.authPayload = result
           next()
         } else {
+          if (debugErrs) console.log('validatorMiddleware', Text.INVALID_TOKEN)
           res.status(401).send(Text.INVALID_TOKEN)
         }
       } catch (err) {
-        if (debug) console.log('validatorMiddleware caught ', err)
+        if (debugErrs) console.log('validatorMiddleware caught ', err)
         res.status(401).send(err)
       }
     } else {
-      if (debug) console.log('validatorMiddleware else ', req)
+      if (debugErrs) console.log('validatorMiddleware no auth header ', req.originalUrl)
       res.status(401).send('A token is required')
     }
   }
@@ -40,9 +42,11 @@ export const isAdmin = (req, res, next) => {
     if (authPayload.adminPassword === passwd) {
       next()
     } else {
+      if (debugErrs) console.log('isAdmin not authorized')
       return res.status(403).send('You don\'t have permission to do this!')
     }
   } else {
+    if (debugErrs) console.log('isAdmin invalid token')
     return res.status(401).send('Invalid token')
   }
 }
