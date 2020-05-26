@@ -1,37 +1,43 @@
 <template lang="pug">
-  div(id="seedDataList", class="seedData-list")
+  div(id="seedDataList")
     h1 Manage seed data
     div(v-show="isDevelopingContent")
       ui-button(v-on:buttonClicked="showCreateDialog") Create new seed
       ui-button(v-on:buttonClicked="downloadAll") Download all
     div(class="seedData-list-body")
-      div(class="classlist-body")
-        table.table
-          thead
-            tr
-              th(title="Name", style="min-width: 170px") Seed name
-              th Version
-              th Description
-              th Pages with seed data
-              th Assignments using this seed
-              th
-              // th Seed id
-          tbody
-            tr(v-for="sv in seedDataList", :class="rowClass(sv)")
-              td {{sv.name}}
-              td {{sv.version}}
-              td {{sv.description}}
-              td(:title="ehrPages(sv)") {{ limitedPages(sv) }}
-              td
-                div(v-for="assignment in assignmentList(sv)")
-                  ui-link(:name="'assignments'", :params="{assignmentId: assignment._id}") {{ assignment.name }}
+      div(v-for="sv in seedDataList", class="list-element", :class="rowClass(sv)")
+        div(class="columns")
+          div(class="column is-2")
+            div(class="key") Name
+            div(class="value") {{sv.name}}
+          div(class="column")
+            div(class="key") Version
+            div(class="value") {{sv.version}}
+          div(class="column")
+            div(class="key") Created
+            div(class="value") {{sv.createDate | formatDateTime}}
+          div(class="column")
+            div(class="key") Last Update
+            div(class="value") {{sv.lastUpdateDate | formatDateTime}}
+        div(class="columns")
+          div(class="column is-2 key") Description
+          div(class="column is-10 value") {{sv.description}}
+        div(class="columns")
+          div(class="column is-2 key") EHR Pages
+          div(class="column is-10 value") {{ehrPages(sv)}}
+        div(class="columns")
+          div(class="column is-2 key") Assignments
+          div(class="column is-10 value")
+            span(class="value", v-for="assignment, x in assignmentList(sv)")
+              ui-link(:name="'assignments'", :params="{assignmentId: assignment._id}") {{ assignment.name }}
+              span(v-if="x+1 < assignmentList(sv).length") &nbsp;,&nbsp;
 
-              // td {{sv._id}}
-              td(v-if="isDevelopingContent && !sv.isDefault",class="seed-actions")
-               ui-button(v-on:buttonClicked="duplicateSeed(sv)", secondary, :title="`Copy of ${sv.name}`") Duplicate
-               ui-button(v-on:buttonClicked="downloadSeed(sv)", , v-bind:secondary="true", class="dwn") Download
-               ui-button(v-on:buttonClicked="showEditDialog(sv)", v-bind:secondary="true") Edit description
-               ui-button(v-on:buttonClicked="gotoEhrWithSeed(sv)") View/edit seed
+        // td {{sv._id}}
+        div(v-if="isDevelopingContent && !sv.isDefault")
+         ui-button(v-on:buttonClicked="duplicateSeed(sv)", secondary, :title="`Make a copy of ${sv.name}`") Duplicate
+         ui-button(v-on:buttonClicked="downloadSeed(sv)",  secondary, title="Save a copy on your computer") Download
+         ui-button(v-on:buttonClicked="showEditDialog(sv)", secondary, title="Edit seed properties or upload seed content") Properties (upload)
+         ui-button(v-on:buttonClicked="gotoEhrWithSeed(sv)", title="Edit the seed content in the EHR") Content (EHR)
       ui-agree(ref="aggreeDialog")
     ehr-seed-data-dialog(ref="theDialog", @showDialog="showDialog")
     ui-confirm(
@@ -116,7 +122,8 @@ export default {
       if(sv.ehrData) {
         const keys = Object.keys(sv.ehrData)
         if (keys.length > 1) {
-          return `${ keys.slice(0, 1).join(', ') }...`
+          const lim = Math.min(8, keys.length)
+          return `${ keys.slice(0, lim).join(', ') }...`
         } else {
           return keys.join(', ')
         }
@@ -187,59 +194,19 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/definitions';
-.seedData-list {
-  padding: 0;
-}
-.seedData-list-header {
-  background-color: $grey03;
-  margin-bottom: 0;
-
-  .header-column {
-    padding: 1rem 1.5rem;
-  }
-  .header-item {
-    display: block;
-  }
-  .header-icon {
-    font-size: 2rem;
-    font-weight: bold;
-    text-align: right;
-  }
-}
-
 .seedData-list-body {
   background-color: $grey10;
+}
+.list-element {
+  padding: 1rem 1.5rem;
+  border: 1px solid $grey20;
+  box-sizing: border-box;
   overflow: hidden;
-  margin-bottom: 0;
-
-  .classlist-header {
-    padding: 0.5rem 1.5rem;
-    background-color: $grey10;
-    border: 1px solid $grey20;
-    box-sizing: border-box;
-  }
-  .classlist-header-item {
-    display: inline-block;
-    margin-right: 2rem;
-  }
-  .classlist-body {
-    padding: 1rem 1.5rem;
-    background-color: $white;
-    border: 1px solid $grey20;
-    box-sizing: border-box;
-    overflow: hidden;
-  }
-  .table {
-    overflow: hidden;
-    width: 100%;
-  }
-  td.seed-actions {
-    min-width: 480px;
-    padding-right: 0;
-
-    button.button {
-      margin-bottom: 0;
-    }
-  }
+}
+.key {
+  font-weight: bold;
+}
+.key::after {
+  content: ': '
 }
 </style>
