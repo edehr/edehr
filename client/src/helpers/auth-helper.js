@@ -8,9 +8,6 @@ export default class AuthHelper {
     const apiUrl = StoreHelper.apiUrl()
     const url = `${apiUrl}/auth/refresh`
     return axios.post(url, {refreshToken})
-      .catch(err => {
-        throw Text.EXPIRED_TOKEN(err)
-      })
   }
 
   getData () {
