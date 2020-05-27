@@ -232,14 +232,31 @@ export default {
 
 <style lang="scss" scoped>
   //@import '../../scss/definitions';
-  .hero {
+
+  .card {
+    /* Trial and error to get a ht that makes all cards the same size */
+    min-height: 32rem;
   }
+  .card-image > .fa {
+    font-size: 10rem;
+    padding-top: 2.8rem;
+    padding-bottom: 0.5rem;
+    color: #209cee;
+  }
+  .card-content .content {
+    font-size: 1.2rem;
+  }
+  .card-content .content h4 {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
   .features {
-    background-color: #e6e6e6;
+    background-color: #BCBCBC;
+    padding: 1.5rem;
   }
 
   .hero.is-info.is-bold {
-    /*background-image: linear-gradient(141deg, #04a6d7 0%, #209cee 71%, #3287f5 100%);*/
     /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#0473ea+0,0085d8+32,1c8ace+100 */
     background: #0473ea; /* Old browsers */
     background: -moz-linear-gradient(top,  #0473ea 0%, #0085d8 32%, #1c8ace 100%); /* FF3.6-15 */
@@ -250,25 +267,7 @@ export default {
   }
   .hero.is-info {
     background-color: #1c8ace;
-    /*background-color: #209c99;*/
     color: #fff;
-  }
-
-  .card-content {
-    min-height: 15rem;
-  }
-  .is-shady {
-    animation: flyintoright .4s backwards;
-    background: #fff;
-    box-shadow: rgba(0, 0, 0, .1) 0 1px 0;
-    border-radius: 4px;
-    display: inline-block;
-    margin: 10px;
-    position: relative;
-    transition: all .2s ease-in-out;
-  }
-  .is-shady:hover {
-    box-shadow: 0 10px 16px rgba(0, 0, 0, .13), 0 6px 6px rgba(0, 0, 0, .19);
   }
 
   .hero-body {
@@ -280,23 +279,20 @@ export default {
     color: hsl(192,17%,99%) !important;
   }
 
-  .card-image > .fa {
-    font-size: 8rem;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-    color: #209cee;
+  .is-shady {
+    animation: flyintoright .4s backwards;
+    background: #fcfcfc;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+    position: relative;
+    transition: all .2s ease-in-out;
   }
-  .card-content .content {
-    font-size: 14px;
-    margin: 1rem 1rem;
+  .is-shady:hover {
+    box-shadow: 0 10px 16px rgba(0, 0, 0, .3), 0 6px 6px rgba(0, 0, 0, .7);
   }
-  .card-content .content h4 {
-    font-size: 16px;
-    font-weight: 700;
-  }
-  .card {
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
-    margin-bottom: 2rem;
-  }
+
 </style>
 

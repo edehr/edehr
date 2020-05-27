@@ -3,6 +3,7 @@ import App from './App.vue'
 import moment from 'moment'
 import router from './router'
 import store from './store'
+import homeLayout from './app/layout/LayoutHome.vue'
 import outsideLayout from './outside/layout/LayoutOutside.vue'
 import insideLayout from './inside/layout/LayoutEhr.vue'
 import dragDirective from './directives/drag-directive'
@@ -72,6 +73,7 @@ Configure Vue
 Vue.config.productionTip = false
 Vue.use(require('vue-moment'))
 Vue.use(VueAutosuggest)
+Vue.component('home-layout', homeLayout)
 Vue.component('outside-layout', outsideLayout)
 Vue.component('inside-layout', insideLayout)
 Vue.directive('dragged', dragDirective)

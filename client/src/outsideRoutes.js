@@ -54,12 +54,13 @@ export function outside () {
       path: '/admin',
       name: 'admin',
       component: () => import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Admin.vue'),
-      meta: { layout: 'outside', label: 'Admin'}
+      meta: { layout: 'outside', label: 'Admin', topLevel: 'undefined' }
     },
     {
       path: '/admin-dashboard',
       name: 'admin-dashboard',
       component: () => import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/AdminDashboard.vue'),
+      meta: { layout: 'outside', label: 'Dashboard', topLevel: 'undefined' }
     }
   ]
 }
