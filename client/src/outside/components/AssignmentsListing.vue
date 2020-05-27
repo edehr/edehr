@@ -106,9 +106,9 @@ export default {
     },
     downloadAll () {
       StoreHelper.loadAssignmentList(this)
-      .then((aList) => {
-        downObjectToFile('EdEHR-assignments-list.json', aList)
-      })
+        .then((aList) => {
+          downObjectToFile('EdEHR-assignments-list.json', aList)
+        })
     },
 
     findAssignment: function (id) {

@@ -40,14 +40,28 @@ import {
   faDownload,
   faFilePdf,
   faStickyNote,
-  faTrash
-
+  faTrash,
+  faGraduationCap,
+  faStethoscope,
+  faBookOpen,
+  faHospital,
+  faDiceD20,
+  faHeartbeat,
+  faMedkit,
+  faUserInjured,
+  faHandHoldingMedical,
+  faUserClock,
+  faPrescription
 } from '@fortawesome/free-solid-svg-icons'
+import { faFontAwesome, faCanadianMapleLeaf } from '@fortawesome/free-brands-svg-icons'
+
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 library.add(faCheckCircle, faCircle, faTimesCircle, faTimes, faPlus, faMinus, faAngleRight, faAngleLeft)
 library.add(faClock, faInfoCircle, faArrowRight, faArrowLeft, faNotesMedical)
 library.add(faTrash, faEdit, faDownload, faUpload, faFilePdf, faStickyNote)
 library.add(faHourglassEnd, faHourglassStart)
+// for home
+library.add(faMedkit, faHandHoldingMedical, faPrescription, faHeartbeat, faUserInjured, faUserClock, faStethoscope, faDiceD20, faHospital, faGraduationCap, faBookOpen, faFontAwesome, faCanadianMapleLeaf)
 // IN CODE sample usage is:
 // fas-icon(icon="download")
 Vue.component('fas-icon', FontAwesomeIcon)

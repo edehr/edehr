@@ -13,22 +13,27 @@ import { PAGE_DATA_REFRESH_EVENT } from './helpers/event-bus'
 import { setAuthHeader } from './helpers/axios-helper'
 const DefaultLayout = 'outside'
 
+const debugApp = true
+
 export default {
   name: 'App',
   components: {},
   data: function () {
     return {
-      hasLoaded: false
     }
   },
   methods: {
     loadData: async function () {
-      const debugApp = false
-      StoreHelper.setLoading(null, true)
-      // API return to url
+      if(debugApp) console.log('App begin loadData')
       const refreshToken = this.$route.query.token
-      let visitId = ''
       const authToken = StoreHelper.getAuthToken()
+      const isUser = refreshToken || authToken
+      if (!isUser) {
+        return Promise.resolve()
+      }
+      // else .... load
+      StoreHelper.setLoading(null, true)
+      let visitId = ''
       let apiUrl = ''
       return Promise.resolve()
         .then(() => {
@@ -113,14 +118,11 @@ export default {
         })
     },
 
-    reloadInstructor: function () {
-    },
-
     loadDataIfNotLoaded (route) {
-      if(!route.meta.public && !this.hasLoaded) {
-        this.loadData()
-        // this.hasLoaded = true
-      }
+      if (debugApp) console.log('App loadDataIfNotLoaded', route.meta)
+      //if(!route.meta.public) {
+      this.loadData()
+      //}
     }
   },
   computed: {
@@ -129,11 +131,10 @@ export default {
     },
     appCssClass () {
       let css = []
-      if (this.$store.state.visit.isStudent) {
+      if (StoreHelper.isStudent()) {
         css.push('isStudentClass')
       }
-      // if (this.$store.state.visit.isInstructor) {
-      if (this.$store.getters['visit/isInstructor']) {
+      if (StoreHelper.isInstructor()) {
         css.push('isInstructorClass')
       }
       return css.join(' ')
@@ -143,10 +144,7 @@ export default {
     $route: function (route) {
       this.loadDataIfNotLoaded(route)
     }
-  },
-  // mounted () {
-  //   this.loadDataIfNotLoaded(this.$route)
-  // }
+  }
 }
 </script>
 

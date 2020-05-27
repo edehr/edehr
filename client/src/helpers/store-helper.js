@@ -84,7 +84,7 @@ class StoreHelperWorker {
    * **********   Class List  **************
    */
 
-  getClassListForActivity( activityId) {
+  getClassListForActivity ( activityId) {
     return this._dispatchClassList('getClassList', activityId)
   }
 

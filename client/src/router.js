@@ -13,7 +13,7 @@ let routes = [
     meta: { layout: 'outside', public: true }
   },
   {
-    path: '/ehr', redirect: '/ehr/patient/demographics'
+    path: '/ehr', name: 'ehr', redirect: '/ehr/patient/demographics'
   }
 ]
 

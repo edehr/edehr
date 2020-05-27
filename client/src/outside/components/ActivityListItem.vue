@@ -48,8 +48,6 @@ import ClassList from './ClassList'
 import AccordionElement from '../../app/components/AccordionElement'
 import StoreHelper from '../../helpers/store-helper'
 import UiLink from '../../app/ui/UiLink.vue'
-import UiButton from '../../app/ui/UiButton'
-import UiSaveAsPrompt from '../../app/ui/UiSaveAsPrompt.vue'
 
 const debug = false
 
@@ -57,7 +55,7 @@ export default {
   components: {
     AccordionElement,
     ClassList,
-    UiLink, UiSaveAsPrompt, UiButton
+    UiLink
   },
   props: {
     activityId: { type: String },
