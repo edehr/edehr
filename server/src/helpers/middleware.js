@@ -4,6 +4,7 @@ import { Text } from '../config/text'
 const rateLimit = require('express-rate-limit')
 
 const ADMIN_MAX_REQUEST_LIMIT = 5
+const DEMO_MAX_REQUEST_LIMIT = 2
 
 const debug = false
 const debugErrs = true
@@ -11,11 +12,12 @@ const debugErrs = true
 export const validatorMiddlewareWrapper = (authController) => {
   return (req, res, next) => {
     if (req && req.headers.authorization) {
+      if (debug) console.log('has header!! ', req.headers.authorization)
       try {
         const result = authController.authenticate(req.headers.authorization)
-        const {visitId} = result
+        const { visitId, demoData } = result
         if (debug) console.log('result >> ', result)
-        if (visitId) {
+        if (visitId || demoData) {
           if (debug) console.log('passingNext!!!')
           req.authPayload = result
           next()
@@ -36,7 +38,6 @@ export const validatorMiddlewareWrapper = (authController) => {
 
 export const isAdmin = (req, res, next) => {
   const { authPayload } = req
-  console.log('authPayload >> ', req, authPayload)
   if (authPayload.adminPassword) {
     const passwd = getAdminPassword()
     if (authPayload.adminPassword === passwd) {
@@ -62,5 +63,11 @@ export const localhostOnly = (req, res, next) => {
 export const adminLimiter = rateLimit({
   windowMs: 60 * 60 * 1000,
   max: ADMIN_MAX_REQUEST_LIMIT,
+  message: Text.TOO_MANY_REQUESTS_ERROR
+})
+
+export const demoLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000,
+  max: DEMO_MAX_REQUEST_LIMIT,
   message: Text.TOO_MANY_REQUESTS_ERROR
 })

@@ -3,7 +3,7 @@ import StoreHelper from './store-helper'
 import { Text } from './ehr-text'
 
 export default class AuthHelper {
-
+// Overall auth logic
   getToken (refreshToken) {
     const apiUrl = StoreHelper.apiUrl()
     const url = `${apiUrl}/auth/refresh`
@@ -18,7 +18,7 @@ export default class AuthHelper {
         throw Text.INVALID_TOKEN(err)
       })
   }
-
+  // Admin requests
   adminLogin (adminPass) {
     const apiUrl = StoreHelper.apiUrl()
     const url = `${apiUrl}/auth/admin`

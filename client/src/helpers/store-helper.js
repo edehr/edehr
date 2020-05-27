@@ -2,7 +2,7 @@ import store from '../store'
 import {removeEmptyProperties } from './ehr-utils'
 import sKeys from './session-keys'
 
-const debug = true
+const debug = false
 
 class StoreHelperWorker {
 
@@ -21,6 +21,7 @@ class StoreHelperWorker {
   _getAssignmentProperty (key) { return store.getters['assignmentStore/' + key]}
   _getAssignmentListProperty (key) { return store.getters['assignmentListStore/' + key]}
   _getConsumerListProperty (key) { return store.getters['consumerListStore/' + key]}
+  _getDemoStorage (key) { return store.getters['demoStore/'+ key] }
   _getInstructorProperty (key) { return store.getters['instructor/' + key]}
   _getSeedListProperty (key) { return store.getters['seedListStore/' + key]}
   _getSystemProperty (key) { return store.getters['system/' + key]}
@@ -35,6 +36,7 @@ class StoreHelperWorker {
   _dispatchConsumerList (key, payload) { return store.dispatch('consumerListStore/' + key, payload)}
   _dispatchClassList (key, payload) { return store.dispatch('classListStore/' + key, payload)}
   _dispatchConsumer (key, payload) { return store.dispatch('consumerStore/' + key, payload)}
+  _dispatchDemoStore (key, payload) { return store.dispatch(`demoStore/${key}`, payload) }
   _dispatchSeedListProperty (key, payload) { return store.dispatch('seedListStore/' + key, payload)}
   _dispatchInstructor (key, payload) { return store.dispatch('instructor/' + key, payload)}
   _dispatchVisit (key, payload) { return store.dispatch('visit/' + key, payload)}
@@ -427,12 +429,44 @@ class StoreHelperWorker {
     return this._dispatchAuthStore('adminValidate', { token })
   }
 
+  createDemoToolConsumer () {
+    return this._dispatchDemoStore('createToolConsumer')
+  }
+
+  setDemoToken (demoToken) {
+    return this._dispatchDemoStore('setDemoToken', { demoToken })
+  }
+
+  setDemoPersona (demoPersona) {
+    return this._dispatchDemoStore('setDemoPersona', { demoPersona })
+  }
+
+  fetchDemoData () {
+    return this._dispatchDemoStore('fetchDemoData')
+  }
+
+  submitPersona (demoData, assignment) {
+    return this._dispatchDemoStore('submitPersona', { demoData, assignment })
+  }
+
   getAuthData () {
     return this._getAuthStore('data')
   }
 
   getAuthToken () {
     return this._getAuthStore('token')
+  }
+
+  getDemoToken () {
+    return this._getDemoStorage('demoToken')
+  }
+
+  getDemoPersona () {
+    return this._getDemoStorage('demoPersona')
+  }
+
+  getDemoData () {
+    return this._getDemoStorage('demoData')
   }
 }
 

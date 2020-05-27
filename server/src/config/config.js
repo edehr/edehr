@@ -24,6 +24,8 @@ export default class Config {
     let url = composeUrl(cfg.scheme, cfg.clientHost, cfg.clientPort)
     cfg.clientUrl = process.env.CLIENT_URL || url
     url = composeUrl(cfg.scheme, cfg.apiHost, cfg.apiPort, 'api')
+    
+    // in case this changes, please, reflect it on the frontend config files or the frontend env variables
     cfg.apiUrl = process.env.API_URL || url
     // debug('config apiUrl', cfg.apiUrl)
     // debug('config clientUrl', cfg.clientUrl)

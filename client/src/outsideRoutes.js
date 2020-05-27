@@ -23,6 +23,20 @@ export function outside () {
       meta: { layout: 'outside', label: 'Consumers', topLevel: 'undefined' }
     },
     {
+      path: '/demo',
+      name: 'demo',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Demo'),
+      meta: { layout: 'outside', demo: true }
+    },
+    {
+      path: '/demo-course',
+      name: 'demoCourse',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/DemoCourse'),
+      meta: { layout: 'outside', demo: true }
+    },
+    {
       path: '/help',
       name: 'help',
       component: () =>

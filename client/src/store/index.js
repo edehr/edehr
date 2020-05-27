@@ -8,6 +8,7 @@ import assignmentListStore from './modules/assignmentListStore'
 import consumerListStore from './modules/consumerListStore'
 import classListStore from './modules/classListStore'
 import consumerStore from './modules/consumerStore'
+import demoStore from './modules/demoStore'
 import ehrDataStore from './modules/ehrDataStore'
 import instructor from './modules/instructor'
 import seedListStore from './modules/seedListStore'
@@ -30,6 +31,7 @@ export default new Vuex.Store({
     classListStore,
     consumerStore,
     consumerListStore,
+    demoStore,
     ehrDataStore,
     instructor,
     seedListStore,

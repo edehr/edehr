@@ -7,7 +7,7 @@
                 div(class="text_input_wrapper form-container-item")
                     label Admin password
                     input(class="input text-input", v-model="password", type="password")
-                    ui-button(style="margin-top: 2vh", @buttonClicked="adminLogin", :disabled="!password") Submit
+                    ui-button(style="margin-top: 2vh", @buttonClicked="adminLogin", :disabled="!password") Request Access
 </template>
 
 <script>
