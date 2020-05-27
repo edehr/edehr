@@ -1,12 +1,21 @@
 <template lang="pug">
   div
     div(v-if="isAssignment")
-      h3 Course: {{ panelInfo.courseTitle}}
-      h4 Activity: {{ panelInfo.activityTitle}}
-      p(v-text-to-html="panelInfo.activityDescription", class="description")
-      hr
-      p Assignment: {{ panelInfo.assignmentName}}
-      p(v-text-to-html="panelInfo.assignmentDescription", class="description")
+      div(class="columns")
+        div(class="column is-1 key") Course
+        div(class="column") {{ panelInfo.courseTitle}}
+      div(class="columns")
+        div(class="column is-1 key") Activity
+        div(class="column") {{ panelInfo.activityTitle}}
+      div(class="columns")
+        div(class="column is-1")
+        div(class="column", v-text-to-html="panelInfo.activityDescription")
+      div(class="columns")
+        div(class="column is-1 key") Assignment
+        div(class="column") {{ panelInfo.assignmentName}}
+      div(class="columns")
+        div(class="column is-1")
+        div(class="column", v-text-to-html="panelInfo.assignmentDescription")
 </template>
 
 <script>
@@ -35,7 +44,13 @@ export default {
 
 <style lang="scss" scoped>
   //@import '../../scss/definitions';
-  .description {
-    padding-left: 1rem;
-  }
+.column {
+  padding: 0.1rem;
+}
+.key {
+  font-weight: bold;
+}
+.key::after {
+  content: ': '
+}
 </style>

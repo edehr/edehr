@@ -4,7 +4,7 @@
     div(class="wrapper")
       ul(class="navList")
         li(class="navItem")
-          router-link(:to="{ name: `${home}` }", class="navLink app-title") Educational Electronic Health Record
+          router-link(:to="{ name: 'home' }", class="navLink app-title") Educational Electronic Health Record
         li(class="navItem push")
           a(:href="lmsUrl", class="navLink") Return to: {{lmsName}}
         li(v-if="showDashboard", class="navItem")
@@ -31,19 +31,6 @@ export default {
     }
   },
   computed: {
-    home () {
-      let isStudent = StoreHelper.isStudent()
-      let isDevelopingContent = StoreHelper.isDevelopingContent()
-      let isInstructor = StoreHelper.isInstructor()
-      let home = isStudent
-        ? 'demographics'
-        : isInstructor
-          ? 'instructor'
-          : isDevelopingContent
-            ? 'assignments'
-            : 'home'
-      return home
-    },
     fullName () {
       return StoreHelper.fullName(this)
     },
