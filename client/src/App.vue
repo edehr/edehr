@@ -24,12 +24,16 @@ export default {
   },
   methods: {
     loadData: async function () {
-      StoreHelper.setLoading(null, true)
       if(debugApp) console.log('App begin loadData')
-      // API return to url
       const refreshToken = this.$route.query.token
-      let visitId = ''
       const authToken = StoreHelper.getAuthToken()
+      const isUser = refreshToken || authToken
+      if (!isUser) {
+        return Promise.resolve()
+      }
+      // else .... load
+      StoreHelper.setLoading(null, true)
+      let visitId = ''
       let apiUrl = ''
       return Promise.resolve()
         .then(() => {

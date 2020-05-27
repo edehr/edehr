@@ -12,12 +12,12 @@
           ui-link(:name="'instructor'") Go to your course and class lists.
       div(v-else-if="isStudent")
         div You are logged in as a student. &nbsp;
-        ehr-header-item(type="assignment")
-        ui-link(:name="'ehr'") Go to your assignment.
+          ui-link(:name="'ehr'") Go to your assignment.
       div(v-else)
         p.
           To use this system you need to use a Learning Management System such as Moodle, Canvas, Blackboard, or any
-          other LTI compliant learning system. For more information see the documentation.
+          other LTI compliant learning system. For more information see the
+          <a target="_blank" href="https://bccampus.github.io/edehr/">documentation</a>.
 
     section(class="container")
       div(class="columns features")

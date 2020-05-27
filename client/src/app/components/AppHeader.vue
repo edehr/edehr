@@ -5,7 +5,7 @@
       ul(class="navList")
         li(class="navItem")
           router-link(:to="{ name: 'home' }", class="navLink app-title") Educational Electronic Health Record
-        li(class="navItem push")
+        li(class="navItem push", v-if="lmsName")
           a(:href="lmsUrl", class="navLink") Return to: {{lmsName}}
         li(v-if="showDashboard", class="navItem")
           router-link(:to="{ name: `instructor` }", class="navLink") Courses
