@@ -18,7 +18,6 @@
           div {{ feedbackFormIntro }}
           div(style="margin-top:2%;")
             textarea(v-model="feedbackContent", rows="5")
-
 </template>
 <script>
 import UiButton from '../../app/ui/UiButton.vue'
@@ -59,12 +58,8 @@ export default {
     npButtonLabel () {
       return this.ehrAction.getNavPanelActionLabel()
     },
-    menuList () {
-      // read the menu definition stored in the project root src (client/src)
-      return require('../../menuList.json')
-    },
     showNavAction () {
-      return !StoreHelper.getActivityIsClosed() && this.$store.getters['visit/isStudent']
+      return !StoreHelper.getActivityIsClosed()
     },
     disableNavAction () {
       return this.$store.state.system.isEditing
@@ -111,8 +106,8 @@ export default {
 <style lang="scss" scoped>
 @import '../../scss/definitions'; 
 
-.EhrNavPanel .button {
+.button {
   width: 100%;
-  margin-bottom: 0;
+  margin-bottom: 2px !important;
 }
 </style>

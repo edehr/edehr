@@ -1,20 +1,14 @@
 <template lang="pug">
-  div(:class="$options.name")
-
-    div(:class="`${$options.name}__bottom`")
-      ui-button(v-on:buttonClicked="showDialog", :class="`${$options.name}__button`", 
-
-      v-bind:secondary="true") 
-        fas-icon(class="icon-left", icon="sticky-note") 
-        span Private scratch pad for {{userName}}
+  div
+    ui-button(v-on:buttonClicked="showDialog",v-bind:secondary="true")
+      fas-icon(class="icon-left", icon="sticky-note")
+      span Private scratch pad for {{userName}}
 
     app-dialog(:isModal="false", ref="theDialog", @cancel="cancelDialog", @save="saveDialog")
-      h2(slot="header") Private notes for {{userName}}
+      h2(slot="header") These private notes are for you {{userName}}
       div(slot="body")
         div
-          div(class="input-fieldrow")
-            div(class="input-element input-element-full")
-              textarea(:class="`${$options.name}__textarea`",v-model="theNotes")
+          textarea(v-model="theNotes")
 </template>
 
 <script>
@@ -23,7 +17,6 @@ import UiButton from '../../app/ui/UiButton.vue'
 import StoreHelper from '../../helpers/store-helper'
 
 export default {
-  name: 'EhrScratchPad',
   components: {
     UiButton,
     AppDialog
@@ -42,7 +35,7 @@ export default {
   methods: {
     resetNotes: function () {
       let sp = StoreHelper.getStudentScratchData()
-      console.log('EhrScratchPad reset with existing ', sp)
+      // console.log('EhrScratchPad reset with existing ', sp)
       this.theNotes = sp
     },
     showDialog: function () {
@@ -55,7 +48,7 @@ export default {
     },
     saveDialog: function () {
       this.$refs.theDialog.onClose()
-      console.log('EhrScratchPad saving ', this.theNotes)
+      // console.log('EhrScratchPad saving ', this.theNotes)
       this.$store.dispatch('activityDataStore/sendScratchData', this.theNotes)
     }
   }
@@ -64,22 +57,13 @@ export default {
 
 <style lang="scss" scoped>
 
-.EhrScratchPad {
-  margin: 2em 0;
-
-  &__bottom {
-    padding: 15px;
-  }
-  &__button {
-    width: 100%;
-  }
-  &__textarea {
-    width: 100%;
-    height: 6rem;
-  }
+button {
+  width: 100%;
+  margin-bottom: 2px !important;
 }
 
-.dialog-wrapper { 
-  width: 10em;
+textarea {
+  height: 15rem;
 }
+
 </style>

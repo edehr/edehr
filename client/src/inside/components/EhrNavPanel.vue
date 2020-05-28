@@ -1,15 +1,17 @@
 <template lang="pug">
-  div(class="EhrNavPanel")
-    div(class="EhrNavPanel__top")
+  div(class="panel")
+    div(v-if="isStudent", class="action-group")
       ehr-nav-panel-action
+      ehr-nav-panel-assignment-details
+      ehr-scratch-pad
     ehr-nav-list(v-for="path in menuList" :key="path.name" :path="path" :level="1")
-    ehr-scratch-pad(v-show="isStudent")
 </template>
 <script>
 import UiLink from '../../app/ui/UiLink.vue'
 import UiButton from '../../app/ui/UiButton.vue'
 import EhrNavList from './EhrNavList'
 import EhrNavPanelAction from './EhrNavPanelAction'
+import EhrNavPanelAssignmentDetails from './EhrAssignmentDetails.vue'
 import EhrScratchPad from '../components/EhrScratchPad'
 import StoreHelper from '../../helpers/store-helper'
 
@@ -21,6 +23,7 @@ export default {
     UiLink,
     EhrNavList,
     EhrNavPanelAction,
+    EhrNavPanelAssignmentDetails,
     EhrScratchPad
   },
   computed: {
@@ -43,22 +46,20 @@ export default {
 <style lang="scss" scoped>
 @import '../../scss/definitions';
 
-.EhrNavPanel .button {
-  width: 100%;
-  margin-bottom: 0;
-  color: red;
-}
-
-.EhrNavPanel {
+.panel {
   background-color: $nav-background-medium;
   height: 100%;
   display: flex;
   flex-direction: column;
-  /*color: $grey10;*/
+}
 
-  &__top {
-    padding: 15px;
-  }
+.action-group {
+  padding: 15px;
+
+}
+.button {
+  width: 100%;
+  border-radius: 8px;
 }
 
 </style>

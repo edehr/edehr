@@ -11,20 +11,17 @@
           router-link(:to="{ name: `instructor` }", class="navLink") Courses
         li(v-if="showDashboard", class="navItem")
           router-link(:to="{ name: `assignments` }", class="navLink subMenu") Assignments
-        li(v-if="showAssignmentActivation", class="navItem")
-          div(class="navLink activationItem", v-on:click="toggleShowAssignmentDetails()") Assignment details
-          div(v-show="showingAssignmentDetails", class="activationContent subNavList")
-            ehr-header-item(type="assignment")
+        li(v-if="isStudent", class="navItem")
+          router-link(:to="{ name: `ehr` }", class="navLink subMenu") Assignment
         li(class="navItem")
           router-link(:to="{ name: `help` }", class="navLink") Help
 </template>
 <script>
 import SystemMessage from './SystemMessage'
-import EhrHeaderItem from '../../inside/components/EhrHeaderItem'
 import StoreHelper from '../../helpers/store-helper'
 export default {
   name: 'AppHeader',
-  components: { SystemMessage, EhrHeaderItem },
+  components: { SystemMessage },
   data () {
     return {
       showingAssignmentDetails: false
@@ -48,9 +45,6 @@ export default {
     },
     showDashboard () {
       return this.isInstructor
-    },
-    showAssignmentActivation () {
-      return this.isStudent
     }
   },
   methods: {

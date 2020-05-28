@@ -94,7 +94,7 @@ export default {
       }
       let d = this.$refs.theDialog
       let br = d.getBoundingClientRect()
-      console.log('getBoundingClientRect', br)
+      // console.log('getBoundingClientRect', br)
       this.left += deltaX
       this.top += deltaY
     },
