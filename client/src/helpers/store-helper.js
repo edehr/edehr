@@ -2,7 +2,7 @@ import store from '../store'
 import {removeEmptyProperties } from './ehr-utils'
 import sKeys from './session-keys'
 
-const debug = true
+const debugSH = false
 
 class StoreHelperWorker {
 
@@ -297,7 +297,7 @@ class StoreHelperWorker {
 
   /* **********   Loading and Restoring  ************** */
   loadVisitRecord (visitId) {
-    if (debug) console.log('SH loadVisitRecord dispatch the load visit information', visitId)
+    if (debugSH) console.log('SH loadVisitRecord dispatch the load visit information', visitId)
     sessionStorage.setItem(sKeys.USER_TOKEN, visitId)
     return this._dispatchVisit('loadVisit2', visitId)
   }
@@ -311,12 +311,12 @@ class StoreHelperWorker {
       return this.loadAssignmentAndSeedLists()
     }).then ( () => {
       let activityId = this.getActivityId()
-      if (debug) console.log('SH loadCommon activityId', activityId)
+      if (debugSH) console.log('SH loadCommon activityId', activityId)
       if(!activityId) {
         activityId = visitInfo.activity
-        if(debug) console.log('SH loadCommon load activity from visit record', activityId)
+        if(debugSH) console.log('SH loadCommon load activity from visit record', activityId)
       } else {
-        if(debug) console.log('SH loadCommon load activity from session', activityId)
+        if(debugSH) console.log('SH loadCommon load activity from session', activityId)
       }
       if (activityId) {
         return StoreHelper.loadAsCurrentActivity(activityId)
@@ -326,7 +326,7 @@ class StoreHelperWorker {
 
   restoreSession () {
     let visitId = sessionStorage.getItem(sKeys.USER_TOKEN)
-    if (debug) console.log('SH No visit id in url query. Is it in session storage? visitId', visitId)
+    if (debugSH) console.log('SH No visit id in url query. Is it in session storage? visitId', visitId)
     if (visitId) {
       return this._dispatchActivity('sessionRestore')
         .then ( () => {
@@ -350,7 +350,7 @@ class StoreHelperWorker {
   loadStudent2 () {
     let visitInfo = store.state.visit.sVisitData || {}
     // visitInfo.activityData and .activity and .assignment are all ids
-    if (debug) console.log('SH loadStudent2 visitInfo.activity', visitInfo.activity)
+    if (debugSH) console.log('SH loadStudent2 visitInfo.activity', visitInfo.activity)
     return this.loadCommon().then(() => {
       return Promise.all([
         this._dispatchActivityData('load', visitInfo.activityData),
@@ -359,7 +359,7 @@ class StoreHelperWorker {
       ])
     }).then(() => {
       let seedId = this.getAssignmentSeedId()
-      if(debug) console.log('SH loadStudent2 seedId', seedId)
+      if(debugSH) console.log('SH loadStudent2 seedId', seedId)
       return this.loadSeed(seedId)
     })
   }
@@ -367,14 +367,14 @@ class StoreHelperWorker {
   loadInstructor2 () {
     return this.loadCommon().then(() => {
       return this._dispatchInstructor('loadCourses').then(() => {
-        if(debug) console.log('SH loadInstructor2 load and restore instructor')
+        if(debugSH) console.log('SH loadInstructor2 load and restore instructor')
       })
     })
   }
 
 
   loadInstructorWithStudent (filtered) {
-    const local = debug && true
+    const local = debugSH && true
     if(local) console.log('SH loadInstructorWithStudent')
     let activityId = this.getActivityId()
     let result = {}
@@ -405,7 +405,7 @@ class StoreHelperWorker {
 
   loadDevelopingSeed () {
     let seedId = sessionStorage.getItem(sKeys.SEED_ID)
-    if(debug) console.log('SH load developing seed id:', seedId)
+    if(debugSH) console.log('SH load developing seed id:', seedId)
     if (seedId) {
       return this.loadSeed(seedId)
     }
@@ -432,7 +432,9 @@ class StoreHelperWorker {
   }
 
   getAuthToken () {
-    return this._getAuthStore('token')
+    const token = localStorage.getItem(sKeys.AUTH_TOKEN)
+    if(debugSH) console.log('SH getAuthToken', token)
+    return token
   }
 }
 

@@ -13,7 +13,7 @@ import { PAGE_DATA_REFRESH_EVENT } from './helpers/event-bus'
 import { setAuthHeader } from './helpers/axios-helper'
 const DefaultLayout = 'outside'
 
-const debugApp = true
+const debugApp = false
 
 export default {
   name: 'App',
