@@ -16,8 +16,11 @@
       div(v-else)
         p.
           To use this system you need to use a Learning Management System such as Moodle, Canvas, Blackboard, or any
-          other LTI compliant learning system. For more information see the
-          <a target="_blank" href="https://bccampus.github.io/edehr/">documentation</a>.
+          other LTI compliant learning system.
+        p.
+          For more information see the <a target="_blank" href="https://bccampus.github.io/edehr/">documentation</a>.
+        p.
+          If you need help or have a question about the EdEHR then send an email to <a href="mailto:info@edehr.org">info@edehr.org</a>
 
     section(class="container")
       div(class="columns features")
