@@ -41,6 +41,11 @@ const getters = {
     let prop =  state.dataStore.closed
     if(debug) console.log(NAME + ' get dataStore.closed', prop)
     return prop
+  },
+  closedDate: state => {
+    let prop =  state.dataStore.closedDate
+    if(debug) console.log(NAME + ' get dataStore.closedDate', prop)
+    return prop
   }
 }
 
