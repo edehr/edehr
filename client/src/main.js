@@ -32,6 +32,7 @@ import {
   faClock,
   faCircle,
   faInfoCircle,
+  faHammer,
   faHourglassEnd,
   faHourglassStart,
   faArrowRight,
@@ -58,7 +59,7 @@ import { faFontAwesome, faCanadianMapleLeaf } from '@fortawesome/free-brands-svg
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 library.add(faCheckCircle, faCircle, faTimesCircle, faTimes, faPlus, faMinus, faAngleRight, faAngleLeft)
-library.add(faClock, faInfoCircle, faArrowRight, faArrowLeft, faNotesMedical)
+library.add(faClock, faHammer, faInfoCircle, faArrowRight, faArrowLeft, faNotesMedical)
 library.add(faTrash, faEdit, faDownload, faUpload, faFilePdf, faStickyNote)
 library.add(faHourglassEnd, faHourglassStart)
 // for home

@@ -4,7 +4,7 @@
     section(class="hero is-info is-medium is-bold")
       div(class="hero-body")
         div(class="container has-text-centered")
-          h1(class="title") EdEHR - The all Canadian, open source, Educational Electronic Health Record system.
+          h1(class="title") EdEHR - a Canadian, open source, Educational Electronic Health Record system.
           h2(class="subtitle") Student focused, simulated case studies, laddered case studies, with decision supports and customizable.
     div(class="box cta has-text-centered has-text-weight-semibold")
       div(v-if="isInstructor")
@@ -31,7 +31,7 @@
                 p.
                   EdEHR is focused on the learning needs of the student.  It has the flexibility to foster higher-order
                   critical thinking in students specific to their learning levels and their field.
-                  EdEHR introduces students to the concept of data collection and the impact of that data on patient
+                  The EdEHR introduces students to the concept of data collection and the impact of that data on patient
                   outcomes for real-time patient care.
 
 
@@ -56,8 +56,8 @@
                 h4 Canadian
                 p.
                   Can be stored, hosted, and implemented in Canada and is relevant to Canadian
-                  health care (e.g. metric, Canadian medication and dosaging, Canadian context and focus,
-                  including Indigenous perspectives)
+                  health care systems (e.g. metric, Canadian medication and dosaging, Canadian context and focus),
+                  and can be adapted to include our Indigenous heritage.
 
 
       div(class="columns features")
@@ -69,8 +69,7 @@
               div(class="content")
                 h4 Interprofessional
                 p.
-                  EdEHR places an interdisciplinary focus over a physician-centric focus.
-                  The EdEHR can be used for any medical profession including; nursing, physiotherapy, medicine, pharmacy, midwifery, etc.
+                  The EdEHR can be used for any healthcare profession including; nursing, physiotherapy, medicine, pharmacy, midwifery, etc.
                   Assignments can share case study data yet ask students in different faculties to complete work
                   relative to their course of study.
 
@@ -82,8 +81,9 @@
               div(class="content")
                 h4 Simulated case studies
                 p.
-                  Fictitious patient case studies can be utilized for learning and teaching.
-                  These can be based on the eight health case studies have been developed by a team at
+                  Patient case studies can be utilized for learning and teaching. Users can build their
+                  own case studies to suit their course curriculum.
+                  These can be based on the eight health case studies that have been developed by a team at
                   BCIT through BCcampus for this purpose.
                 p.
                   <a href="https://pressbooks.bccampus.ca/healthcasestudies/">Health Case Studies</a>
@@ -112,7 +112,7 @@
               div(class="content")
                 h4 Decision supports
                 p.
-                  EdEHR provides tools to assist with judgement and delivery or safe, quality care. Such as
+                  EdEHR provides tools to assist with judgement and delivery of safe, quality care. Such as
                   medication search a snapshot of the Canadian drug database.
                   Assignment definitions can give students access to educational resources, such as guidelines,
                   videos, glossaries, etc.
@@ -126,11 +126,11 @@
               div(class="content")
                 h4 Customizable
                 p.
-                  Post-secondary programs can adapt the assignments and case studies
+                  Post-secondary programs can create their assignments and case studies
                   to accommodate their educational needs and learning objectives.
                 p.
-                  Customization of EHR fields, pages and context can be implemented by a non-developer.
-                  See the <a href="https://bccampus.github.io/edehr/">documentation</a>
+                  The data fields and pages in the EdEHR can be adjusted without expensive development effort.
+                  See the <a href="https://bccampus.github.io/edehr/developer/inside-generator/">documentation</a>
 
         div(class="column is-4")
           div(class="card is-shady")
@@ -160,8 +160,17 @@
         h2(class="title") Ready for further development!
         div
           p(class="subtitle").
-            Working on addition of data files to assignment content.
+            In so many ways the EdEHR is still a prototype yet it has many capabilities that other educational EHRs lack.
+            Yet there are many more features to be developed.  Currently we are working on
+          ul
+            li(class="subtitle")
+              fas-icon(class="fa", icon="hammer")
+              span  &nbsp;&nbsp;&nbsp; ability to add data files to each assignment. For example, add an x-ray to fit the simulated case.
+            li(class="subtitle")
+              fas-icon(class="fa", icon="hammer")
+              span  &nbsp;&nbsp;&nbsp;  a demonstration mode.
         div
+          br
           p(class="subtitle").
             Could include a communication component between various members of
             the health care team to share the electronic documentation of patient data across the health care
@@ -196,9 +205,6 @@
 
       div(class="intro column is-8 is-offset-2")
         h2(class="title") Related resources
-        div
-          p(class="subtitle").
-            More what and why use a Canadian, open source Educational Electronic Health Record system.
         div
           p(class="subtitle").
             Canadian Association of Schools of Nursing (CASN)
