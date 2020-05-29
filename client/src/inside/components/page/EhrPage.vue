@@ -12,8 +12,6 @@ import EhrPanelContent from './EhrPanelContent.vue'
 import EhrPageElement from './EhrPageElement'
 import EhrPageFooter from './EhrPageFooter'
 import EhrDefs from '../../../helpers/ehr-defs-grid'
-import EventBus from '../../../helpers/event-bus'
-import { PAGE_DATA_REFRESH_EVENT } from '../../../helpers/event-bus'
 
 /*
 # EhrPage
@@ -54,7 +52,6 @@ is broadcast and captured with the change. The change is then pushed into the pa
 
  */
 export default {
-  name: 'EhrPageTable',
   components: {
     EhrPanelHeader,
     EhrPanelContent,
@@ -81,11 +78,6 @@ export default {
     pageElements () {
       return EhrDefs.getPageElements(this.pageDataKey)
     },
-  },
-  methods: {
-  },
-  mounted: function () {
-    EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
   }
 }
 </script>

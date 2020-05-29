@@ -1,9 +1,12 @@
 [
-  { "path": "", "routeName": "instructor"},
-  { "path": "", "routeName": "classList"},
-  { "path": "", "routeName": "consumers"},
-  { "path": "", "routeName": "help"},
-  { "path": "", "routeName": "assignments"},
-  { "path": "", "routeName": "developEhrData"},
-  { "path": "", "routeName": "lookahead"}
+  { "path": "", "routeName": "help", "zone": "public"},
+
+  { "path": "", "routeName": "assignments", "zone": "lms"},
+  { "path": "", "routeName": "classList", "zone": "lms"},
+  { "path": "", "routeName": "developEhrData", "zone": "lms"},
+  { "path": "", "routeName": "instructor", "zone": "lms"},
+
+  { "path": "", "routeName": "admin", "zone": "admin"},
+  { "path": "", "routeName": "admin-dashboard", "zone": "admin"},
+  { "path": "", "routeName": "consumers", "zone": "admin"}
 ]

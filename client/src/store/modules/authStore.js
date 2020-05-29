@@ -3,12 +3,10 @@ import sKeys from '../../helpers/session-keys'
 import { setAuthHeader } from '../../helpers/axios-helper'
 
 const authHelper = new AuthHelper()
-
-const _getToken = () => {
-  return localStorage.getItem(sKeys.AUTH_TOKEN)
-}
+const debugAS = false
 
 const _setToken = (token) => {
+  if (debugAS) console.log('AuthStore store token into local storage ', token)
   localStorage.setItem(sKeys.AUTH_TOKEN, token)
 }
 
@@ -18,11 +16,13 @@ const state = {
 }
 
 const getters = {
-  token: function () {
-    const token = _getToken()
-    return token
-  },
-  data: function () {
+  // Vuex getter values are cached. But the reactive system can't see into local storage so the cached
+  // value can become incorrect.  So, for this app, get the token via the StorageHelper which will always
+  // query local storage.
+  // token: state => {
+  //   return _getToken()
+  // },
+  data: state => {
     return state.data
   }
 }

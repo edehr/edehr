@@ -92,9 +92,9 @@ export default {
         this.moused = !!first
         return
       }
-      let d = this.$refs.theDialog
-      let br = d.getBoundingClientRect()
-      console.log('getBoundingClientRect', br)
+      // let d = this.$refs.theDialog
+      // let br = d.getBoundingClientRect()
+      // console.log('getBoundingClientRect', br)
       this.left += deltaX
       this.top += deltaY
     },

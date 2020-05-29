@@ -1,6 +1,5 @@
 <template lang="pug">
   div(class="outside-layout")
-    ui-spinner(:loading="isLoading")
     slot(name="outside-header", class="outside-header")
       app-header
       div(class="app")

@@ -83,8 +83,12 @@ export default {
     },
     lastFirstMiddle () {
       let d = this.demographics
-      let n = `${d.familyName}, ${d.givenName}`
-      n += d.middleName ? ' ' + d.middleName : ''
+      const fn = d.familyName
+      const gn = d.givenName
+      const mn = d.middleName
+      let n = fn ? fn : '-'
+      n += gn ? `, ${gn}` : ''
+      n += mn ? `, ${mn}` : ''
       return n
     },
     decisionMaker () {

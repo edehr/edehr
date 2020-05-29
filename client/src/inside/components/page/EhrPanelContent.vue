@@ -14,6 +14,9 @@ export default {
 <style lang="scss" scoped>
 @import '../../../scss/definitions';
 
+.EhrPanelContent_Inner {
+  min-height: 34rem;
+}
 .EhrPanelContent {
   &__main {
     .table th {

@@ -82,6 +82,7 @@ function flushDefs (defs, forInside) {
     if (forInside) {
       def.topLevel = def.fullPath.split('/')[2]
       def.componentPath = def.generateComponent === 'custom' ? './inside/custom' : './inside/views'
+      def.zone = 'ehr'
     } else {
       def.componentPath = './outside/views'
     }
@@ -98,14 +99,18 @@ function makeRoutes (defs, layout, outfilename) {
   var parts = []
   defs.forEach(def => {
     console.log(def.componentName, def.componentPath)
-    var rt = ''
+    let meta = `{ layout: '${layout}', label: '${def.label}'`
+    meta += def.topLevel ? `, topLevel: '${def.topLevel}'` : ''
+    meta += `, zone: '${def.zone}' }`
+
+    let rt = ''
     rt += `${s1}{\n`
     rt += `${s2}path: '${def.fullPath}',\n`
     rt += `${s2}name: '${def.routeName}',\n`
     rt += `${s2}component: () =>\n`
     rt += `${s3}import(/* webpackChunkName: "chunk-[request][index]" */`
     rt += ` '${def.componentPath}/${def.componentName}.vue'),\n`
-    rt += `${s2}meta: { layout: '${layout}', label: '${def.label}', topLevel: '${def.topLevel}' }\n`
+    rt += `${s2}meta: ${meta}\n`
     rt += `${s1}}`
     parts.push(rt)
   })

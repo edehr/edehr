@@ -13,13 +13,14 @@ import { PAGE_DATA_REFRESH_EVENT } from './helpers/event-bus'
 import { setAuthHeader } from './helpers/axios-helper'
 const DefaultLayout = 'outside'
 
-const debugApp = true
+const debugApp = false
 
 export default {
   name: 'App',
   components: {},
   data: function () {
     return {
+      hasLoadedEhrPage: false
     }
   },
   methods: {
@@ -36,7 +37,7 @@ export default {
       let visitId = ''
       let apiUrl = ''
       return Promise.resolve()
-        .then(() => {
+        .then((/* ********   LOAD API URL  *************  */) => {
           apiUrl = this.$route.query.apiUrl || StoreHelper.apiUrl()
           if (!apiUrl) {
             const msg = Text.MISSING_API_URL
@@ -46,15 +47,19 @@ export default {
           if(debugApp) console.log('App store the API URL', apiUrl)
           return StoreHelper.apiUrlSet(apiUrl)
         })
-        .then(() => {
+        .then((/* ******** AUTH TOKEN  *************  */) => {
           if (refreshToken) {
+            /* ********   NEW CONNECTION  *************  */
             if(debugApp) console.log('App refresh token fetch')
             return StoreHelper.fetchAndStoreAuthToken(refreshToken, apiUrl)
               .then((token) => {
                 if (!token) {
+                  /* ********   AUTH PROCESS DID NOT WORK -- SYSTEM ERROR?  *************  */
+                  // Todo should this condition be a system error?
                   if(debugApp) console.log('App refresh token expired')
                   return Promise.reject(Text.EXPIRED_REFRESH_TOKEN)
                 }
+                /* ******** NEW CONNECTION SUCCEEDED *************  */
                 return StoreHelper.fetchTokenData(token, apiUrl)
               }).catch(err => {
                 if (
@@ -62,24 +67,27 @@ export default {
                   err.response.data.toLowerCase().includes('expired') &&
                   !!authToken
                 ) {
+                  /* ******** REFRESH TOKEN IS OLD -- BUT PREVIOUS CONNECTION EXISTS *************  */
                   if(debugApp) console.log('App refresh expired but we have a previous auth token. Use it')
                   setAuthHeader(authToken)
                   return StoreHelper.fetchTokenData(authToken, apiUrl)
                 } else {
+                  /* ******** AUTH PROCESS TOOK TOO LONG - SYS ERR?  *************  */
                   if(debugApp) console.log('App refresh expired and no previous token')
                   return Promise.reject(Text.EXPIRED_TOKEN(err))
                 }
               })
           } else if (authToken) {
+            /* ******** USE PREVIOUS CONNECTION *************  */
             if(debugApp) console.log('App use stored auth token')
             setAuthHeader(authToken)
             return StoreHelper.fetchTokenData(authToken, apiUrl)
           }  else {
-            if(debugApp) console.log('App not auth token, no refresh token', Text.PARAMETERS_ERROR)
+            if(debugApp) console.log('App no auth token, no refresh token', Text.PARAMETERS_ERROR)
             return Promise.reject(Text.PARAMETERS_ERROR)
           }
         })
-        .then(() => {
+        .then((/* ********  LOAD USER DATA FROM TOKEN  *************  */) => {
           if(debugApp) console.log('App tokens processed get auth data')
           const payload = StoreHelper.getAuthData()
           if (!(payload && payload.visitId)) {
@@ -90,14 +98,14 @@ export default {
             visitId = payload.visitId
           }
         })
-        .then(() => {
+        .then((/* ********   CLEAR PREVIOUS SESSION  *************  */) => {
           if(debugApp) console.log('App clear previous session and start with visit id')
           return StoreHelper.clearSession().then( () => { return visitId })
-        }).then(() => {
+        }).then((/* ********   LOAD VISIT DATA  *************  */) => {
           if(debugApp) console.log('App load visit record')
           return StoreHelper.loadVisitRecord(visitId)
         })
-        .then(() => {
+        .then((/* ********   LOAD STUDENT OR INSTRUCTOR  *************  */) => {
           if (StoreHelper.isInstructor()) {
             if(debugApp) console.log('App load instructor')
             return StoreHelper.loadInstructor2()
@@ -105,7 +113,7 @@ export default {
             if(debugApp) console.log('App load student')
             return StoreHelper.loadStudent2()
           }
-        }).then(() => {
+        }).then((/* ********  DONE  *************  */) => {
           // move this to helper
           StoreHelper.setLoading(null, false)
           if (debugApp) console.log('App DONE loading. Send event', PAGE_DATA_REFRESH_EVENT)
@@ -119,10 +127,23 @@ export default {
     },
 
     loadDataIfNotLoaded (route) {
+      /*
+      We do not need to reload the app as the user navigates around the EHR pages
+       */
       if (debugApp) console.log('App loadDataIfNotLoaded', route.meta)
-      //if(!route.meta.public) {
-      this.loadData()
-      //}
+      const EHR_ZONE = 'ehr'
+      // const ZONE_ADMIN = 'admin'
+      // const ZONE_LMS = 'lms'
+      // const ZONE_PUBLIC = 'public'
+      if((route.meta.zone == EHR_ZONE)) {
+        if(!this.hasLoadedEhrPage) {
+          this.loadData()
+          this.hasLoadedEhrPage = true
+        }
+      } else {
+        this.loadData()
+        this.hasLoadedEhrPage = false
+      }
     }
   },
   computed: {

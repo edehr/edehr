@@ -221,7 +221,7 @@
 import StoreHelper from '@/helpers/store-helper'
 import UiButton from '../../app/ui/UiButton'
 import UiLink from '../../app/ui/UiLink.vue'
-import EhrHeaderItem from '../../inside/components/EhrHeaderItem'
+import EhrHeaderItem from '../../inside/components/EhrAssignmentDetailsContent'
 
 export default {
   components: {
