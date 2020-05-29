@@ -16,8 +16,6 @@ import EhrPanelHeader from '../page/EhrPanelHeader.vue'
 import EhrPanelContent from '../page/EhrPanelContent.vue'
 import EhrPageElement from '../page/EhrPageElement'
 import EhrDefs from '../../../helpers/ehr-defs-grid'
-import EventBus from '../../../helpers/event-bus'
-import { PAGE_DATA_REFRESH_EVENT } from '../../../helpers/event-bus'
 import EhrSummaryTable from './EhrSummaryTableV2'
 import { ESK_Referrals, ESK_LabReqs, ESK_Procedures, ESK_DischargeProcedures, ESK_Medications, ESK_MARS } from './ehr-summary-tableV2'
 
@@ -55,9 +53,6 @@ export default {
       let arr = Object.keys(pe).map((k) => pe[k])
       return arr
     }
-  },
-  mounted: function () {
-    EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
   }
 }
 </script>
