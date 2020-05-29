@@ -20,6 +20,7 @@ export default {
   components: {},
   data: function () {
     return {
+      hasLoadedEhrPage: false
     }
   },
   methods: {
@@ -119,10 +120,23 @@ export default {
     },
 
     loadDataIfNotLoaded (route) {
+      /*
+      We do not need to reload the app as the user navigates around the EHR pages
+       */
       if (debugApp) console.log('App loadDataIfNotLoaded', route.meta)
-      //if(!route.meta.public) {
-      this.loadData()
-      //}
+      const EHR_ZONE = 'ehr'
+      // const ZONE_ADMIN = 'admin'
+      // const ZONE_LMS = 'lms'
+      // const ZONE_PUBLIC = 'public'
+      if((route.meta.zone == EHR_ZONE)) {
+        if(!this.hasLoadedEhrPage) {
+          this.loadData()
+          this.hasLoadedEhrPage = true
+        }
+      } else {
+        this.loadData()
+        this.hasLoadedEhrPage = false
+      }
     }
   },
   computed: {
