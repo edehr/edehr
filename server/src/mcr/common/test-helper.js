@@ -258,12 +258,12 @@ export default class Helper {
       .set({ Authorization: 'Bearer ' + adminToken })
   }
 
-  static adminLogin (app, url, adminPass, adminToken) {
-    console.log('adminToken >> ', adminToken)
+  static adminLogin (app, url, adminPass, token) {
+    console.log('adminToken >> ', `Bearer ${token}`)
     return supertest(app)
       .post(url)
       .send({ adminPass })
-      .set({ authorization: `Bearer ${adminToken}`, 'Content-Type': 'application/json', Accept : 'application/json' })
+      .set({ authorization: `Bearer ${token}`, 'Content-Type': 'application/json', Accept : 'application/json' })
   }
 
 
@@ -283,9 +283,15 @@ export default class Helper {
     console.log('res.body', res.body)
   }
 
-  static generateAdminToken (visitId, adminToken = getCreateAdminPassword()) {
-    const adminPayload = Object.assign({}, {visit: visitId}, { adminPassword : adminToken})
-    return authController.createToken(adminPayload)
+  static generateToken (visitId, isAdmin = false) {
+    if (isAdmin) {
+      const adminToken = getCreateAdminPassword()
+      const adminPayload = Object.assign({}, { visitId }, { adminPassword : adminToken})
+      return authController.createToken(adminPayload)
+    } else {
+      return authController.createToken({ visitId })
+    }
+    
   }
 
 }

@@ -4,7 +4,7 @@ import { adminLimiter } from '../../helpers/middleware'
 import { Text } from '../../config/text'
 
 const jwt = require('jsonwebtoken')
-const debug = true
+const debug = false
 
 export default class AuthController {
 
@@ -33,7 +33,6 @@ export default class AuthController {
     const { adminPass } = req.body
     let adminToken = getAdminPassword()
     const { authorization } = req.headers
-    console.log('auth header >> ', authorization, 'adminPass >> ', adminPass)
     if (!adminPass || !authorization) {
       res.status(401).send(Text.REQUIRED_ADMIN)
     } else {
@@ -46,7 +45,6 @@ export default class AuthController {
             const newToken = this.createToken(adminPayload)
             return res.status(200).json({token: newToken})
           } else {
-            console.log('not eqwual >> ', adminPass === adminToken, adminPass, adminToken)
             return res.status(401).send(Text.EXPIRED_ADMIN)
           }
         } else {
@@ -63,7 +61,6 @@ export default class AuthController {
 
   _adminValidate (req, res) {
     const { authorization } = req.headers
-    console.log('req.headers >> ', req.headers)
     if (debug) console.log('_adminValidate', authorization)
     if (authorization) {
       if(debug) console.log('auth >> ', authorization)

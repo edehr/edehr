@@ -3,7 +3,7 @@ import EhrApp from '../../server/app'
 import Helper from '../common/test-helper'
 
 // const request = require('supertest')
-const BASE = '/auth'
+const BASE = '/api/auth/admin'
 const config = new Config('test')
 const configuration = config.config
 const ehrApp = new EhrApp()
@@ -14,9 +14,12 @@ const TYPE = 'Admin'
 import { getCreateAdminPassword } from '../../helpers/admin'
 const visitId = Helper.sampleObjectId(true)
 
-const adminToken = Helper.generateAdminToken(visitId)
+const token = Helper.generateToken(visitId)
 
-const adminPass = getCreateAdminPassword(6)
+console.log('token >> ', token)
+let adminToken
+
+const adminPass = getCreateAdminPassword()
 
 describe(`Make server calls on ${TYPE}`, function () {
   let theApp
@@ -32,38 +35,27 @@ describe(`Make server calls on ${TYPE}`, function () {
   })
 
   it('Admin properly logs in', () => {
-    let url = '/api/auth/admin'
-    console.log('url >> ', url, ' pass >> ', adminPass)
-    return Helper.adminLogin(theApp, url, adminPass, adminToken)
-      .expect(200)
+    let url = BASE
+    return Helper.adminLogin(theApp, url, adminPass, token)
+      // .expect(200)
       .expect((res) => {
-        // console.log('res >> ', res)
-        should.exist(res)
         // console.log('res >> , ', res)
+        should.exist(res)
+        should.exist(res.body.token)
+        adminToken = res.body.token
       } )
   })
 
-  // it('Admin routing calls', () => {
-  //   let url = BASE + '/'
-  //   return Helper.getUrlAuth(theApp, url, adminToken)
-  //     .expect(200)
-  //     .expect(function (res) {
-  //       should.exist(res)
-  //       res.text.should.equal('hello admin')
-  //       // Helper.consoleRes(res)
-  //     })
-  // })
+  it('Admin validate', () => {
+    let url = `${BASE}/validate`
+    return Helper.postUrlAuth(theApp, url, adminToken)
+      .expect(200)
+      // .expect(function (res) {
+      //   should.exist(res)
+      // })
+  })
 
-  // it.skip('Admin reset', function (done) {
-  //   let url = BASE + '/reset'
-  //   Helper.getUrl(theApp, url)
-  //     .expect(200)
-  //     .expect( (res) => {
-  //       should.exist(res)
-  //     })
-  //     .catch ( (error) => {
-  //       should.not.exist(error)
-  //     })
-  // })
+  // TODO implement server-side admin reset
+  
 
 })

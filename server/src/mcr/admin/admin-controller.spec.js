@@ -4,7 +4,7 @@ import Helper from '../common/test-helper'
 
 const visitId = Helper.sampleObjectId(true)
 
-const adminToken = Helper.generateAdminToken(visitId)
+const adminToken = Helper.generateToken(visitId, true)
 
 
 /* global describe it */
