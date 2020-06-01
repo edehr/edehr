@@ -488,7 +488,7 @@ export default class LTIController {
    * then it returns the original _req.
    */
   _postmanFormat (req) {
-    const isPostman = req.headers['user-agent'].includes('PostmanRuntime')
+    const isPostman = req.headers['user-agent'] && req.headers['user-agent'].includes('PostmanRuntime')
     if (isPostman) {
       req.body.debug = true
       const _req = req.body._req

@@ -15,6 +15,10 @@ const BASE = '/api/assignments'
 const BASE_SEED_DATA = '/api/seed-data'
 const ehrApp = new EhrApp()
 
+const visitId = Helper.sampleObjectId(true)
+const token = Helper.generateToken(visitId)
+const adminToken = Helper.generateToken(visitId, true)
+
 describe(`Make server calls on ${TYPE}`, function () {
   let app
   before(function (done) {
@@ -38,6 +42,7 @@ describe(`Make server calls on ${TYPE}`, function () {
       .send(theSampleSeedData)
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json')
+      .set('Authorization', `Bearer ${token}`)
       .expect(200)
       .end(function (err, res) {
         should.not.exist(err, url)
@@ -61,13 +66,15 @@ describe(`Make server calls on ${TYPE}`, function () {
       .send(theData)
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json')
-      .expect(200)
+      .set('Authorization', `Bearer ${token}`)
+      // .expect(200)
       .end(function (err, res) {
-        should.not.exist(err, url)
+        should.not.exist(err)
         should.exist(res)
         should.exist(res.body)
         let obj = res.body
         obj.should.have.property('seedDataId')
+        console.log('err >> ', err)
         console.log('created', obj._id, 'with seed', obj.seedDataId)
         done()
       })
@@ -78,6 +85,7 @@ describe(`Make server calls on ${TYPE}`, function () {
     let property = 'assignments'
     request(app)
       .get(url)
+      .set('Authorization', `Bearer ${token}`)
       .expect('Content-Type', /json/)
       .expect(200)
       .end(function (err, res) {
@@ -102,6 +110,7 @@ describe(`Make server calls on ${TYPE}`, function () {
     let url = BASE + '/get/' + theId
     request(app)
       .get(url)
+      .set('Authorization', `Bearer ${token}`)
       .expect('Content-Type', /json/)
       .expect(200)
       .end(function (err, res) {
@@ -120,6 +129,7 @@ describe(`Make server calls on ${TYPE}`, function () {
     request(app)
       .put(url)
       .send(theData)
+      .set('Authorization', `Bearer ${token}`)
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json')
       .expect(200)
@@ -145,11 +155,12 @@ describe(`Make server calls on ${TYPE}`, function () {
       .post(url)
       .send(theData)
       .set('Content-Type', 'application/json')
+      .set('Authorization', `Bearer ${token}`)
       .set('Accept', 'application/json')
       .expect(200)
       .end(function (err, res) {
-        // console.log('Creating a second assignment with the same external id should fail.', err, res.body)
-        should.exist(err, url)
+        console.log('Creating a second assignment with the same external id should not fail.', err, res.body)
+        should.exist(res.body)
         done()
       })
   })

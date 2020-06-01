@@ -267,11 +267,11 @@ export default class Helper {
   }
 
 
-  static postUrlAuth (app, url, adminToken, theData) {
+  static postUrlAuth (app, url, token, theData) {
     return supertest(app)
       .post(url)
       .send(theData)
-      .set({ Authorization: 'Bearer ' + adminToken })
+      .set({ Authorization: 'Bearer ' + token })
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json')
   }

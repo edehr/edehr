@@ -1,4 +1,3 @@
-import { adminToken } from '../admin/admin-controller'
 import Consumer from './consumer'
 import Config from '../../config/config'
 import EhrApp from '../../server/app'
@@ -13,6 +12,10 @@ const helper = new Helper()
 const mongoose = require('mongoose')
 const should = require('should')
 const TYPE = 'Consumer'
+
+const visitId = Helper.sampleObjectId(true)
+const token = Helper.generateToken(visitId)
+const adminToken = Helper.generateToken(visitId, true)
 
 /* global describe it */
 describe('Consumer mongoose schema testing', function () {
@@ -74,16 +77,15 @@ describe(`Make server calls on ${TYPE}`, function () {
 
   it('Admin create tool without auth', function () {
     let url = BASE + '/create'
-    let noToken = 'aasdssdasdads'
     let theData = {key: 'akey', secret: 'asecret'}
-    return Helper.postUrlAuth(theApp, url, noToken, theData)
-    //.expect(404)
+    return Helper.postUrlAuth(theApp, url, null, theData)
+      .expect(401)
       .expect((res) => {
-        should.exist(res)
+        should.not.exist(res)
       // Helper.consoleRes(res)
       })
       .catch((error) => {
-        should.not.exist(error)
+        should.exist(error)
       })
   })
 
