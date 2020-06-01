@@ -1,10 +1,9 @@
-import { adminToken } from './admin-controller'
 import Config from '../../config/config'
 import EhrApp from '../../server/app'
 import Helper from '../common/test-helper'
 
 // const request = require('supertest')
-const BASE = '/admin'
+const BASE = '/api/auth/admin'
 const config = new Config('test')
 const configuration = config.config
 const ehrApp = new EhrApp()
@@ -12,8 +11,15 @@ const helper = new Helper()
 const mongoose = require('mongoose')
 const should = require('should')
 const TYPE = 'Admin'
+import { getCreateAdminPassword } from '../../helpers/admin'
+const visitId = Helper.sampleObjectId(true)
 
+const token = Helper.generateToken(visitId)
 
+console.log('token >> ', token)
+let adminToken
+
+const adminPass = getCreateAdminPassword()
 
 describe(`Make server calls on ${TYPE}`, function () {
   let theApp
@@ -28,27 +34,28 @@ describe(`Make server calls on ${TYPE}`, function () {
       })
   })
 
-  it('Admin routing calls', () => {
-    let url = BASE + '/'
-    return Helper.getUrlAuth(theApp, url, adminToken)
-      .expect(200)
-      .expect(function (res) {
+  it('Admin properly logs in', () => {
+    let url = BASE
+    return Helper.adminLogin(theApp, url, adminPass, token)
+      // .expect(200)
+      .expect((res) => {
+        // console.log('res >> , ', res)
         should.exist(res)
-        res.text.should.equal('hello admin')
-        // Helper.consoleRes(res)
-      })
+        should.exist(res.body.token)
+        adminToken = res.body.token
+      } )
   })
 
-  it.skip('Admin reset', function (done) {
-    let url = BASE + '/reset'
-    Helper.getUrl(theApp, url)
+  it('Admin validate', () => {
+    let url = `${BASE}/validate`
+    return Helper.postUrlAuth(theApp, url, adminToken)
       .expect(200)
-      .expect( (res) => {
-        should.exist(res)
-      })
-      .catch ( (error) => {
-        should.not.exist(error)
-      })
+      // .expect(function (res) {
+      //   should.exist(res)
+      // })
   })
+
+  // TODO implement server-side admin reset
+  
 
 })

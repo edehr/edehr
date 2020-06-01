@@ -33,10 +33,10 @@ export default class AuthController {
     const { adminPass } = req.body
     let adminToken = getAdminPassword()
     const { authorization } = req.headers
-    if (!adminPass && !authorization) {
+    if (!adminPass || !authorization) {
       res.status(401).send(Text.REQUIRED_ADMIN)
     } else {
-      if (debug) console.log('adminPass >> adminToken', adminPass, adminToken)
+      if (debug) console.log('adminPass >> adminToken', adminPass, authorization)
       try {
         if (adminToken) {
           if (adminPass === adminToken) {
@@ -61,7 +61,6 @@ export default class AuthController {
 
   _adminValidate (req, res) {
     const { authorization } = req.headers
-    console.log('req.headers >> ', req.headers)
     if (debug) console.log('_adminValidate', authorization)
     if (authorization) {
       if(debug) console.log('auth >> ', authorization)

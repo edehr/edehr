@@ -14,6 +14,9 @@ const PROPERTY = 'seeddata'
 const BASE = '/api/seed-data'
 const ehrApp = new EhrApp()
 
+const visitId = Helper.sampleObjectId(true)
+const token = Helper.generateToken(visitId)
+
 describe(`Make server calls on ${TYPE}`, function () {
   let app
   before(function (done) {
@@ -43,6 +46,7 @@ describe(`Make server calls on ${TYPE}`, function () {
       .send(theData)
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json')
+      .set('Authorization', `Bearer ${token}`)
       .expect(200)
       .end(function (err, res) {
         should.not.exist(err, url)
@@ -59,6 +63,7 @@ describe(`Make server calls on ${TYPE}`, function () {
     let url = BASE
     request(app)
       .get(url)
+      .set('Authorization', `Bearer ${token}`)
       .expect('Content-Type', /json/)
       .expect(200)
       .end(function (err, res) {
@@ -81,6 +86,7 @@ describe(`Make server calls on ${TYPE}`, function () {
     let url = BASE + '/get/' + theId
     request(app)
       .get(url)
+      .set('Authorization', `Bearer ${token}`)
       .expect('Content-Type', /json/)
       .expect(200)
       .end(function (err, res) {
@@ -99,6 +105,7 @@ describe(`Make server calls on ${TYPE}`, function () {
     request(app)
       .put(url)
       .send(theData)
+      .set('Authorization', `Bearer ${token}`)
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json')
       .expect(200)
@@ -124,6 +131,7 @@ describe(`Make server calls on ${TYPE}`, function () {
     request(app)
       .put(url)
       .send(payload)
+      .set('Authorization', `Bearer ${token}`)
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json')
       .expect(200)
@@ -147,6 +155,7 @@ describe(`Make server calls on ${TYPE}`, function () {
     request(app)
       .put(url)
       .send(payload)
+      .set('Authorization', `Bearer ${token}`)
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json')
       .expect(200)

@@ -4,12 +4,16 @@ const request = require('supertest')
 import LookaheadController from './lookahead-controller'
 import EhrApp from '../../server/app'
 import Config from '../../config/config'
+import Helper from '../common/test-helper'
 
 const config = new Config('test')
 const configuration = config.config
 const ehrApp = new EhrApp()
 const BASE = '/api/lookahead'
 const typeName = 'Lookahead'
+
+const visitId = Helper.sampleObjectId(true)
+const token = Helper.generateToken(visitId)
 
 // Use following to leave results in test database for inspection
 /* global describe it */
@@ -61,11 +65,12 @@ describe(`${typeName} controller testing`, function () {
     })
   })
 
-  it(`get lookahead meds`, function (done) {
+  it('get lookahead meds', function (done) {
     let url = BASE
     url += '/medications/dextrose'
     request(app)
       .get(url)
+      .set('Authorization', `Bearer ${token}`)
       .expect('Content-Type', /json/)
       .expect(200)
       .end(function (err, res) {
