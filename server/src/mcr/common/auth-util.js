@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken')
 const debug = false
 
+// set to expire in 1 minute
+const REFRESH_TOKEN_EXPIRES_IN = '1m'
 export default class AuthUtil { 
   constructor (config) {
     this.tokenSecret = config.authTokenSecret
@@ -32,7 +34,7 @@ export default class AuthUtil {
   createRefreshToken (token) {
     if(debug) console.log('authController -- createRefreshToken')
     //set to expire in 1 minute
-    return jwt.sign({token}, this.tokenSecret, { expiresIn: '1m'})
+    return jwt.sign({ token }, this.tokenSecret, { expiresIn: REFRESH_TOKEN_EXPIRES_IN })
   }
   
   
