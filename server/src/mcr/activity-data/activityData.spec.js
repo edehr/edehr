@@ -6,9 +6,6 @@ import Model from './activity-data'
 
 const typeName = 'ActivityData'
 
-const visitId = Helper.sampleObjectId(true)
-const token = Helper.generateToken(visitId)
-
 /* global describe it */
 describe(`${typeName} mongoose schema testing`, function () {
   before(function (done) {
@@ -47,7 +44,7 @@ describe(`${typeName} mongoose schema testing`, function () {
         done()
       })
       .catch(err => {
-        console.log('error >> ', err)
+        debug(`${typeName} can save one error: ${err}`)
         should.not.exist(err)
         done()
       })

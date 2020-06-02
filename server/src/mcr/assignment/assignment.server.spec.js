@@ -74,7 +74,6 @@ describe(`Make server calls on ${TYPE}`, function () {
         should.exist(res.body)
         let obj = res.body
         obj.should.have.property('seedDataId')
-        console.log('err >> ', err)
         console.log('created', obj._id, 'with seed', obj.seedDataId)
         done()
       })

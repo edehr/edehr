@@ -3,7 +3,6 @@ import AdminController from './admin-controller'
 import Helper from '../common/test-helper'
 
 const visitId = Helper.sampleObjectId(true)
-
 const adminToken = Helper.generateToken(visitId, true)
 
 
@@ -40,7 +39,9 @@ describe('Admin controller testing', function () {
     res.should.equal(router)
 
     req.headers['authorization'] = 'Bearer ' + adminToken
+    console.log('req.headers > ', req.headers)
     res = controller.headerCheck(req)
+    console.warn('res >> ', res)
     // should.not.exist(res)
 
   })

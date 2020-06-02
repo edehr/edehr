@@ -1,14 +1,14 @@
 const fs = require('fs')
 const { nanoid } = require('nanoid')
-
+const debug = require('debug')('server')
 
 const generateAdminPassword = () => {
   const id = nanoid()
   fs.writeFile('./src/config/admin-password.txt', id, (err) => {
     if (err) throw err
-    console.log('generate-admin-password >> file saved!')
+    debug('generate-admin-password >> file saved!')
   })
-  return id.toString()
+  return id
 }
 
 const getAdminPassword = () => {
@@ -18,7 +18,7 @@ const getAdminPassword = () => {
 
 const getCreateAdminPassword = () => {
   const password = getAdminPassword()
-  console.log('gotAdminPassword', password)  
+  debug('gotAdminPassword', password)  
   if (password) {
     return password
   } 
