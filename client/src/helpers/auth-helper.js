@@ -21,13 +21,13 @@ export default class AuthHelper {
 
   adminLogin (adminPass) {
     const apiUrl = StoreHelper.apiUrl()
-    const url = `${apiUrl}/auth/admin`
+    const url = `${apiUrl}/admin`
     return axios.post(url, {adminPass})
   }
 
   adminValidate () {
     const apiUrl = StoreHelper.apiUrl()
-    const url = `${apiUrl}/auth/admin/validate`
+    const url = `${apiUrl}/admin/validate`
     return axios.post(url)
   }
 }

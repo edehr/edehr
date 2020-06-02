@@ -8,11 +8,11 @@ const ADMIN_MAX_REQUEST_LIMIT = 5
 const debug = false
 const debugErrs = true
 
-export const validatorMiddlewareWrapper = (authController) => {
+export const validatorMiddlewareWrapper = (authUtil) => {
   return (req, res, next) => {
     if (req && req.headers.authorization) {
       try {
-        const result = authController.authenticate(req.headers.authorization)
+        const result = authUtil.authenticate(req.headers.authorization)
         const {visitId} = result
         if (debug) console.log('result >> ', result)
         if (visitId) {
