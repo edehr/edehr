@@ -41,12 +41,6 @@ export default {
       if (StoreHelper.isStudent(this)) {
         if (StoreHelper.isSubmitted(this)) {
           msg = Text.STUDENT_HAS_SUBMITTED
-        } else {
-          msg = Text.STUDENT_INTRO
-        }
-      } else if (StoreHelper.isInstructor(this)){
-        if (StoreHelper.isEvaluated(this)) {
-          msg = Text.ASSIGNMENT_HAS_BEEN_EVALUATED
         }
       }
       // uncomment to set a test message
