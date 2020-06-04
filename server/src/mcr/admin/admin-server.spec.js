@@ -13,7 +13,7 @@
 // const should = require('should')
 // const TYPE = 'Admin'
 
-const token = Helper.generateToken(visitId)
+// const token = Helper.generateToken(visitId)
 
 // debug(`admin-server.spec token >> ${token}`)
 // let adminToken

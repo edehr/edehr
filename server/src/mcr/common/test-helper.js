@@ -8,9 +8,9 @@ import Role from '../roles/roles'
 const ObjectID = require('mongodb').ObjectID
 const { ltiVersions, LTI_BASIC } = require('../lti/lti-defs')
 import { getCreateAdminPassword } from '../../helpers/admin'
-import AuthController from '../auth/auth-controller'
+import AuthUtil from './auth-util'
 
-const authController = new AuthController({ authTokenSecret: 'defaultTokenSecretForJWT' })
+const authUtil = new AuthUtil({ authTokenSecret: 'defaultTokenSecretForJWT' })
 
 
 const consumerController = new ConsumerController()
@@ -287,9 +287,9 @@ export default class Helper {
     if (isAdmin) {
       const adminToken = getCreateAdminPassword()
       const adminPayload = Object.assign({}, { visitId }, { adminPassword : adminToken})
-      return authController.createToken(adminPayload)
+      return authUtil.createToken(adminPayload)
     } else {
-      return authController.createToken({ visitId })
+      return authUtil.createToken({ visitId })
     }
     
   }
