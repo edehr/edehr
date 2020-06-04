@@ -49,6 +49,9 @@ describe(`${BASE} - Running tests on class`, () => {
     result.token.should.equal(token)
     done()
   })
+
+  //TODO: implement this with sinon fakeTimers 
+  //   https://stackoverflow.com/questions/17446064/how-can-i-simulate-the-passing-of-time-in-mocha-tests-so-that-settimeout-callbac
   //   it(`${BASE} - Refresh token should not validate, as it's expired`, done => {
   //     this.timeout(70000)
   //     setTimeout(() => {

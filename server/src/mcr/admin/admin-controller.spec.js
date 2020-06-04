@@ -1,49 +1,19 @@
-// var should = require('should')
-// import AdminController from './admin-controller'
-// import Helper from '../common/test-helper'
+import AdminController from './admin-controller'
 
-// const visitId = Helper.sampleObjectId(true)
-// const adminToken = Helper.generateToken(visitId, true)
+/* global describe it */
+describe('Admin controller testing', function () {
+  let controller
 
+  it('Properly instantiates AdminController', done => {
+    controller = new AdminController()
+    should.exist(controller)
+    done()
+  })
 
-// /* global describe it */
-// describe('Admin controller testing', function () {
-//   // before(function (done) {
-//   //   helper.before(done, mongoose)
-//   // })
-
-//   let controller
-
-//   it('AdminController', function (done) {
-//     controller = new AdminController()
-//     should.exist(controller)
-//     done()
-//   })
-
-//   it('AdminController header checks', function () {
-//     let req = {}
-//     let res, router = 'router'
-//     res = controller.headerCheck(req)
-//     should.exist(res)
-//     res.should.equal(router)
-//     req = {
-//       headers: {
-//         authorization: 'asd asd'
-//       }
-//     }
-//     res = controller.headerCheck(req)
-//     res.should.equal(router)
-
-//     req.headers['authorization'] = 'Bearer'
-//     res = controller.headerCheck(req)
-//     res.should.equal(router)
-
-//     req.headers['authorization'] = 'Bearer ' + adminToken
-//     console.log('req.headers > ', req.headers)
-//     res = controller.headerCheck(req)
-//     console.warn('res >> ', res)
-//     // should.not.exist(res)
-
-//   })
-
-// })
+  it('Check properties', done => {
+    controller.should.have.property('_adminLogin')
+    controller.should.have.property('_adminValidate')
+    controller.should.have.property('route')
+    done()
+  })
+})

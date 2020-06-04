@@ -259,7 +259,6 @@ export default class Helper {
   }
 
   static adminLogin (app, url, adminPass, token) {
-    console.log('adminToken >> ', `Bearer ${token}`)
     return supertest(app)
       .post(url)
       .send({ adminPass })
@@ -288,10 +287,12 @@ export default class Helper {
       const adminToken = getCreateAdminPassword()
       const adminPayload = Object.assign({}, { visitId }, { adminPassword : adminToken})
       return authUtil.createToken(adminPayload)
-    } else {
-      return authUtil.createToken({ visitId })
-    }
-    
+    } 
+    return authUtil.createToken({ visitId })
+  }
+
+  static generateRefreshToken (token) {
+    return authUtil.createRefreshToken(token)
   }
 
 }
