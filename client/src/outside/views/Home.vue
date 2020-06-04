@@ -6,21 +6,26 @@
         div(class="container has-text-centered")
           h1(class="title") EdEHR - a Canadian, open source, Educational Electronic Health Record system.
           h2(class="subtitle") Student focused, simulated case studies, laddered case studies, with decision supports and customizable.
-    div(class="box cta has-text-centered has-text-weight-semibold")
+    div(class="container box cta has-text-weight-semibold")
       div(v-if="isInstructor")
         div You are logged in as an instructor.  &nbsp;
           ui-link(:name="'instructor'") Go to your course and class lists.
       div(v-else-if="isStudent")
         div You are logged in as a student. &nbsp;
           ui-link(:name="'ehr'") Go to your assignment.
-      div(v-else)
-        p.
-          To use this system you need to use a Learning Management System such as Moodle, Canvas, Blackboard, or any
-          other LTI compliant learning system.
-        p.
-          For more information see the <a target="_blank" href="https://bccampus.github.io/edehr/">documentation</a>.
-        p.
-          If you need help or have a question about the EdEHR then send an email to <a href="mailto:info@edehr.org">info@edehr.org</a>
+      div(v-else, class="columns")
+        div(class="intro column is-8 is-offset-2")
+          p.
+            This prototype EdEHR provides educational support for post secondary health programs, such as universities, colleges, etc.
+            These institutions can connect the EdEHR to their learning management systems.
+            Example learning management systems include Moodle, Canvas, Blackboard, or any other LTI compliant learning system.
+            Each institution can then create content for their health care programs. Content can be downloaded and shared
+            with other institutions. The EdEHR has a few case studies and more can be added because it is an open source project.
+          p.
+            Coming soon!  The EdEHR will have a demonstration version.
+          p.
+            For more information jump to the <a href="#resources">resources section</a>.
+            If you need help or have a question about the EdEHR then send an email to <a href="mailto:info@edehr.org">info@edehr.org</a>
 
     section(class="container")
       div(class="columns features")
@@ -182,31 +187,36 @@
 
     section(class="container")
       div(class="columns features")
-        div(class="intro column is-8 is-offset-2")
+        div(class="intro column is-9 is-offset-2")
           div(class="card is-shady")
             div(class="card-content")
               div(class="content")
                 h4 About the EdEHR
                 p.
                   The EdEHR is a <a target="_blank" href="https://bccampus.ca/">BCcampus</a>
-                  project funded by the Ministry of Advanced Education, Skills and Training.
-                  The project requirements were based on this
+                  project funded by the British Columbia Ministry of Advanced Education, Skills and Training.
+                  Here is a link to the
+                  <a target="_blank" href="https://bccampus.ca/2018/01/23/bccampus-launches-the-educational-electronic-health-record-system-project-in-b-c/">BCcampus announcement</a>.
+                  Read more about the announcement in this BCcampus
+                  <a target="_blank" href="https://bccampus.ca/2020/01/07/an-education-in-electronic-health-records/">blog post</a>.
+                p.
+                  A stakeholder group from BCIT, Douglas College, UBC, and UVic contributed to the research
+                  and development of the requirements that were used as a foundation for the project.
+                  The project requirements were based on their
                   <a target="_blank" href="http://solr.bccampus.ca:8001/bcc/file/cfc0515c-296f-4711-9811-8be605e661e4/1/EdEHR_Env_Scan_June%204_2018-%20Published.pdf">Environmental Scan Report</a>
                   published June 4, 2018.
                 p.
-                  Read more in this
-                  <a target="_blank" href="https://bccampus.ca/2020/01/07/an-education-in-electronic-health-records/">blog post </a>
-                p.
-                  A stakeholder group formed by individuals from from BCIT, Douglas College, UBC, and UVic helped to research
-                  and develop requirements that were used as a foundation for the project. The goal of that stakeholder group and
-                  this project was to build a pilot-ready, minimum viable product to give students access to an EHR system
-                  in classrooms before they work in a professional setting.
+                  To learn more see
                 ul
-                  li <a target="_blank" href="https://bccampus.github.io/edehr/">Documentation</a>
-                  li <a target="_blank" href="https://github.com/BCcampus/edehr">GitHub repository</a>
-                  li <a target="_blank" href="https://bccampus.ca/2018/01/23/bccampus-launches-the-educational-electronic-health-record-system-project-in-b-c/">BCcampus announcement</a>
+                  li <a target="_blank" href="https://bccampus.github.io/edehr/">EdEHR Documentation</a>
+                  li <a target="_blank" href="https://github.com/BCcampus/edehr">Open source GitHub code repository</a>
+                  li <a target="_blank" href="https://www.youtube.com/channel/UCVlhKFf-VHqp3JAY3TDIemw">Demonstration videos on YouTube</a>
 
-      div(class="intro column is-8 is-offset-2")
+                p.
+                  If you need help or have a question about the EdEHR then send an email to
+                  <a href="mailto:info@edehr.org">info@edehr.org</a>
+
+      div(id="resources", class="intro column is-8 is-offset-2")
         h2(class="title") Related resources
         div
           p(class="subtitle").
