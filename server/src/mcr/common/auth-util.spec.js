@@ -2,6 +2,7 @@ var should = require('should')
 
 import AuthUtil from './auth-util'
 import Helper from './test-helper'
+import sinon from 'sinon'
 
 const BASE = 'AuthUtil'
 
@@ -9,7 +10,14 @@ const visitId = Helper.sampleObjectId(true)
 
 const config = { authTokenSecret: 'defaultTokenSecretForJWT'}
 
+let clock
 describe(`${BASE} - Running tests on class`, () => {
+  beforeEach(() => {
+    clock = sinon.useFakeTimers()
+  })
+  afterEach(() => {
+    clock.restore()
+  })
   const authUtil = new AuthUtil(config)
   let token, refreshToken
   it(`${BASE} - is properly instantiated`, () => {
@@ -50,14 +58,10 @@ describe(`${BASE} - Running tests on class`, () => {
     done()
   })
 
-  //TODO: implement this with sinon fakeTimers 
-  //   https://stackoverflow.com/questions/17446064/how-can-i-simulate-the-passing-of-time-in-mocha-tests-so-that-settimeout-callbac
-  //   it(`${BASE} - Refresh token should not validate, as it's expired`, done => {
-  //     this.timeout(70000)
-  //     setTimeout(() => {
-  //       should.throws(() => authUtil.authenticate(`Bearer ${refreshToken}`))
-  //       done()
-  //     }, 60000)
-  //   })
+  it(`${BASE} - Refresh token should not validate, as it's expired`, done => {
+    clock.tick(60000)
+    should.throws(() => authUtil.authenticate(`Bearer ${refreshToken}`), 'refreshToken hasn\'t expired yet...')
+    done()
+  })
 
 })
