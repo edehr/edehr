@@ -50,7 +50,7 @@ export default class LTIController {
   constructor (config, cc) {
     this.config = config
     this.assignmentController = cc.assignmentController
-    this.authController = cc.authController
+    this.authUtil = cc.authUtil
     this.visitController = cc.visitController
     this.activityController = cc.activityController
     this.userController = cc.userController
@@ -348,8 +348,8 @@ export default class LTIController {
     }
 
     try {
-      const token = this.authController.createToken({visitId: visit._id})
-      const refreshToken = this.authController.createRefreshToken(token)
+      const token = this.authUtil.createToken({visitId: visit._id})
+      const refreshToken = this.authUtil.createRefreshToken(token)
       req.refreshToken = refreshToken
       let url = this.config.clientUrl + route + `?apiUrl=${apiUrl}&token=${refreshToken}`
       if (req.errors.length > 0) {
@@ -488,7 +488,7 @@ export default class LTIController {
    * then it returns the original _req.
    */
   _postmanFormat (req) {
-    const isPostman = req.headers['user-agent'].includes('PostmanRuntime')
+    const isPostman = req.headers['user-agent'] && req.headers['user-agent'].includes('PostmanRuntime')
     if (isPostman) {
       req.body.debug = true
       const _req = req.body._req

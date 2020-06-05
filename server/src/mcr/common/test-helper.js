@@ -7,6 +7,11 @@ import Activity from '../activity/activity'
 import Role from '../roles/roles'
 const ObjectID = require('mongodb').ObjectID
 const { ltiVersions, LTI_BASIC } = require('../lti/lti-defs')
+import { getCreateAdminPassword } from '../../helpers/admin'
+import AuthUtil from './auth-util'
+
+const authUtil = new AuthUtil({ authTokenSecret: 'defaultTokenSecretForJWT' })
+
 
 const consumerController = new ConsumerController()
 
@@ -121,10 +126,10 @@ export default class Helper {
    * Generates a random ObjectId
    * @return {*}
    */
-  static sampleObjectId () {
+  static sampleObjectId (asString = false) {
     let suffix = Math.floor(Math.random() * 1000) + 1
     let id = '56955ca46063c5600627f' + ('000' + suffix).slice(-3)
-    return new ObjectID(id)
+    return asString ? id : new ObjectID(id)
   }
 
   static sampleSeedDataSpec () {
@@ -249,16 +254,23 @@ export default class Helper {
 
   static getUrlAuth (app, url, adminToken) {
     return supertest(app)
-      .get(url)
+      .post(url)
       .set({ Authorization: 'Bearer ' + adminToken })
   }
 
+  static adminLogin (app, url, adminPass, token) {
+    return supertest(app)
+      .post(url)
+      .send({ adminPass })
+      .set({ authorization: `Bearer ${token}`, 'Content-Type': 'application/json', Accept : 'application/json' })
+  }
 
-  static postUrlAuth (app, url, adminToken, theData) {
+
+  static postUrlAuth (app, url, token, theData) {
     return supertest(app)
       .post(url)
       .send(theData)
-      .set({ Authorization: 'Bearer ' + adminToken })
+      .set({ Authorization: 'Bearer ' + token })
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json')
   }
@@ -268,6 +280,19 @@ export default class Helper {
     console.log('res.status', res.status)
     console.log('res.text', res.text)
     console.log('res.body', res.body)
+  }
+
+  static generateToken (visitId, isAdmin = false) {
+    if (isAdmin) {
+      const adminToken = getCreateAdminPassword()
+      const adminPayload = Object.assign({}, { visitId }, { adminPassword : adminToken})
+      return authUtil.createToken(adminPayload)
+    } 
+    return authUtil.createToken({ visitId })
+  }
+
+  static generateRefreshToken (token) {
+    return authUtil.createRefreshToken(token)
   }
 
 }

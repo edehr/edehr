@@ -44,6 +44,7 @@ describe(`${typeName} mongoose schema testing`, function () {
         done()
       })
       .catch(err => {
+        debug(`${typeName} can save one error: ${err}`)
         should.not.exist(err)
         done()
       })

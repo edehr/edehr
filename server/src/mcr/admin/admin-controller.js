@@ -1,128 +1,98 @@
-import UserController from '../user/user-controller.js'
-import ActivityController from '../activity/activity-controller'
-import ConsumerController from '../consumer/consumer-controller'
-import VisitController from '../visit/visit-controller'
-import { ParameterError } from '../common/errors'
 import { Router } from 'express'
-import {ok, fail} from '../common/utils'
-import { getAdminPassword } from '../../helpers/admin'
-import { Text } from '../../config/text.js'
+import { getAdminPassword, generateAdminPassword } from '../../helpers/admin'
+import { adminLimiter } from '../../helpers/middleware'
+const debug = false
 
-const debug = require('debug')('server')
-
-const UserModel = new UserController()
-const ActivityModel = new ActivityController()
-const Visit = new VisitController()
-
-// For proof of concept we protect access to the admin via this token.
-export const adminToken = getAdminPassword()
-
-export default class AdminController {
-
-  // To skip the rest of the router’s middleware functions, call next('router') to pass control back out of the router instance.
-
-  // curl -H "Authorization: Bearer 7a6e0540-a23d-4474-80ad-c37e211f9079" http://localhost:27000/admin
-  headerCheck (req) {
-    let db = false
-    if (!req || !req.headers || !req.headers['authorization']) {
-      if (db) console.log('No authorization in header')
-      return 'router'
-    }
-    try {
-      const authHeader = req.headers['authorization']
-      if (db) console.log('authHeader \'' + authHeader + '\'')
-      const parts = authHeader.split(' ')
-      if (db) console.log('the parts \'', parts, '\'')
-      const scheme = parts[0]
-      if (scheme !== 'Bearer') {
-        if (db) console.log('authHeader invalid scheme')
-        return 'router'
-      }
-      const token = parts[1]
-      if (!token || token !== adminToken) {
-        if (db) console.log('authHeader invalid token')
-        return 'router'
-      }
-    } catch (err) {
-      if (db) console.log('Auth header could not be parsed', err.message)
-      return 'router'
-    }
-    return undefined
+export default class adminController {
+  constructor (authUtil) {
+    this.authUtil = authUtil
   }
-
-  initializeApp (app) {
-    this.app = app
-    const _this = this
-    app.admin = this
-    return Promise.resolve()
-      .then(() => {
-        /*
-        This api end point is registered on the /admin root path in main api setup.
-        All calls that begin with that path will come here. They can only proceed if
-        the request is a valid admin request.  In this case 'r' will be undefined.
-         */
-        app.use('/admin/', function (req, res, next) {
-          let r = _this.headerCheck(req)
-          if (r) {
-            // go to r
-            // If 'r' is defined then it says where to go. If 'r' is 'router' then the request is routed
-            // to the next middleware at the root level which will likely go to the error handlers.
-            next(r)
+  
+  /**
+ * @method _adminLogin 
+ * Receives the admin's password and, if it is valid, it returns a new token which is
+ * authenticated for an admin. Handles the /admin end point
+ * @param {*} req 
+ * @param {*} res 
+ * 
+ * @description The adminPass is received in the request's Body
+ * and it also receives the authorization in the headers. If adminPass is a match with the adminToken,
+ * then it generates a new token and responds with it.
+ * 
+ * @returns {JSON} token - if the request is successful (200 status).
+ * @returns {String} missingTokenError - if either the token or password is missing (401 status)
+ * @returns {String} passwordMismatch - if adminPass doesn't match with adminToken. (201 status)
+ * 
+ */
+  _adminLogin (req, res) {
+    if (debug) console.log('authController -- _adminLogin')
+    const { adminPass } = req.body
+    let adminToken = getAdminPassword()
+    const { authorization } = req.headers
+    if (!adminPass && !authorization) {
+      res.status(401).send(Text.REQUIRED_ADMIN)
+    } else {
+      if (debug) console.log('adminPass >> adminToken', adminPass, adminToken)
+      try {
+        if (adminToken) {
+          if (adminPass === adminToken) {
+            const payload = this.authUtil.authenticate(authorization)
+            const adminPayload = Object.assign({}, payload, { adminPassword : adminPass})
+            const newToken = this.authUtil.createToken(adminPayload)
+            return res.status(200).json({token: newToken})
+          } else {
+            return res.status(401).send(Text.EXPIRED_ADMIN)
           }
-          else {
-            // go to next route in this router
-            next('route')
-          }
-        })
-      })
-  }
-
-  listConsumerUsers (toolKey) {
-
-  }
-
-  reset (consumerKey) {
-    if (!consumerKey) {
-      throw new ParameterError(Text.INVALID_CONSUMER_ID(consumerKey))
-    }
-    let toolConsumer
-    return ConsumerController.findOneConsumerByKey(consumerKey)
-      .then((tc) => {
-        if (!tc) {
-          let message = Text.UNSUPPORTED_CONSUMER_KEY(consumerKey)
-          throw new ParameterError(message)
+        } else {
+          generateAdminPassword()
+          return res.status(201).send('The password has been created')
         }
-        toolConsumer = tc
-        debug('working with consumer ' + toolConsumer.tool_consumer_instance_name)
-      })
-      .then(() => {
-        return Visit.clearConsumer(toolConsumer._id)
-      })
-      .then(() => {
-        return ActivityModel.clearConsumer(toolConsumer._id)
-      })
-      .then(() => {
-        return UserModel.clearConsumer(toolConsumer._id)
-      })
+      }
+      catch (err) {
+        if (debug) console.log('_adminLogin threw', err)
+        return res.status(401).send(Text.EXPIRED_ADMIN)
+      }
+    }
   }
+
+  _adminValidate (req, res) {
+    const { authorization } = req.headers
+    console.log('req.headers >> ', req.headers)
+    if (debug) console.log('_adminValidate', authorization)
+    if (authorization) {
+      if(debug) console.log('auth >> ', authorization)
+      try {
+        const result = this.authUtil.authenticate(authorization)
+        if (debug) console.log('result >> ', result)
+        if (result.adminPassword) {
+          const adminPassword = getAdminPassword()
+          if (result.adminPassword === adminPassword) {
+            return res.status(200).send(/*success*/)
+          }
+          return res.status(401).send(Text.INVALID_TOKEN)
+        }
+        return res.status(403).send(Text.NOT_PERMITTED)
+      
+      } catch (err) {
+        return res.status(500).send(err)
+      }
+
+    } else {
+      return res.status(401).send(Text.TOKEN_REQUIRED)
+    }
+  }
+
 
 
   route () {
     const router = new Router()
-
-    router.get('/', (req, res) => {
-      /*
-      This is a testing route. It does nothing and yet provides an end point for testing an admin request
-       */
-      console.log('in root admin get set result status 200 and send simple message')
-      res.status(200).send('hello admin')
+    
+    router.post('/', adminLimiter, (req, res) => {
+      this._adminLogin(req, res)
     })
 
-    router.get('/reset', (req, res) => {
-      console.log('in root admin reset')
-      this.reset(req.query.key)
-        .then(ok(res))
-        .then(null, fail(res))
+    router.post('/validate', (req, res) => {
+      this._adminValidate(req, res)
     })
     return router
   }

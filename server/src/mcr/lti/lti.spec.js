@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 import HMAC_SHA1 from '../../../node_modules/ims-lti/src/hmac-sha1'
 import AssignmentController from '../assignment/assignment-controller'
 import ActivityController from '../activity/activity-controller'
-import AuthController from '../auth/auth-controller'
+import AuthUtil from '../common/auth-util'
 import VisitController from '../visit/visit-controller'
 import UserController from '../user/user-controller'
 import ConsumerController from '../consumer/consumer-controller'
@@ -18,7 +18,7 @@ const config = new Config('test')
 const configuration = config.config
 const act = new ActivityController()
 const as = new AssignmentController(configuration)
-const auth = new AuthController(configuration)
+const authUtil = new AuthUtil(configuration)
 const vc = new VisitController()
 const cc = new ConsumerController()
 const uc = new UserController(configuration)
@@ -26,7 +26,7 @@ const sc = new SeedDataController()
 const lcc = {
   activityController: act,
   assignmentController: as,
-  authController: auth,
+  authUtil,
   consumerController: cc,
   userController: uc,
   visitController: vc

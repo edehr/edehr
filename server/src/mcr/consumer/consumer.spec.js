@@ -1,4 +1,3 @@
-import { adminToken } from '../admin/admin-controller'
 import Consumer from './consumer'
 import Config from '../../config/config'
 import EhrApp from '../../server/app'
@@ -13,6 +12,10 @@ const helper = new Helper()
 const mongoose = require('mongoose')
 const should = require('should')
 const TYPE = 'Consumer'
+const debug = require('debug')('server')
+
+const visitId = Helper.sampleObjectId(true)
+const adminToken = Helper.generateToken(visitId, true)
 
 /* global describe it */
 describe('Consumer mongoose schema testing', function () {
@@ -28,7 +31,6 @@ describe('Consumer mongoose schema testing', function () {
   it('Consumer should be invalid if key and secret Are empty', function (done) {
     var m = new Consumer()
     m.validate(function (err) {
-      // console.log('Expect error: ', err)
       should.exist(err)
       done()
     })
@@ -50,13 +52,12 @@ describe('Consumer mongoose schema testing', function () {
   })
   it('Consumer can find one ', function (done) {
     Consumer.findOne({oauth_consumer_key: consumerSpec.oauth_consumer_key}, function (err, doc) {
-      // console.log('results', doc)
       should.exist(doc)
       should.not.exist(err)
       doc.lti_version.should.equal(consumerSpec.lti_version)
       done()
     }).catch(e => {
-      console.log('find one error', e)
+      debug(`Consumer can find one error: ${e}`)
     })
   })
 })
@@ -74,16 +75,15 @@ describe(`Make server calls on ${TYPE}`, function () {
 
   it('Admin create tool without auth', function () {
     let url = BASE + '/create'
-    let noToken = 'aasdssdasdads'
     let theData = {key: 'akey', secret: 'asecret'}
-    return Helper.postUrlAuth(theApp, url, noToken, theData)
-    //.expect(404)
+    return Helper.postUrlAuth(theApp, url, null, theData)
+      .expect(401)
       .expect((res) => {
-        should.exist(res)
+        should.not.exist(res)
       // Helper.consoleRes(res)
       })
       .catch((error) => {
-        should.not.exist(error)
+        should.exist(error)
       })
   })
 

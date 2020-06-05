@@ -18,6 +18,7 @@ import UserController from '../mcr/user/user-controller.js'
 import VisitController from '../mcr/visit/visit-controller'
 import SeedDataController from '../mcr/seed/seedData-controller'
 import { validatorMiddlewareWrapper, adminLimiter, localhostOnly, isAdmin } from '../helpers/middleware'
+import AuthUtil from '../mcr/common/auth-util'
 
 // Sessions and session cookies
 // express-session stores session data here on the server and only puts session id in the cookie
@@ -61,11 +62,12 @@ export function apiMiddle (app, config) {
   }
 
   const corsOptions = setupCors(config)
-  const admin = new AdminController()
+  const authUtil = new AuthUtil(config)
+  const admin = new AdminController(authUtil)
   const act = new ActivityController()
   const acc = new ActivityDataController()
   const as = new AssignmentController(config)
-  const auth = new AuthController(config)
+  const auth = new AuthController(authUtil)
   const fc = new FeedbackController(config)
   const look = new LookaheadController()
   const vc = new VisitController()
@@ -74,7 +76,7 @@ export function apiMiddle (app, config) {
   const lcc = {
     activityController: act,
     assignmentController : as,
-    authController: auth,
+    authUtil,
     consumerController : cc,
     userController: uc,
     visitController: vc
@@ -85,12 +87,12 @@ export function apiMiddle (app, config) {
   const sd = new SeedDataController()
   const middleWare = [
     cors(corsOptions),
-    validatorMiddlewareWrapper(auth)
+    validatorMiddlewareWrapper(authUtil)
   ]
   const adminMiddleware = [
     cors(corsOptions),
     adminLimiter,
-    validatorMiddlewareWrapper(auth),
+    validatorMiddlewareWrapper(authUtil),
     isAdmin
   ]
 
@@ -98,7 +100,7 @@ export function apiMiddle (app, config) {
     cors(corsOptions),
     localhostOnly,
     // adminLimiter,
-    validatorMiddlewareWrapper(auth),
+    validatorMiddlewareWrapper(authUtil),
     isAdmin
   ]
 
@@ -114,13 +116,11 @@ export function apiMiddle (app, config) {
         debug('seeding done')
       }
     })
-    .then(admin.initializeApp(app))
     .then(lti.initializeApp(app))
     .then(cc.initializeApp(config.defaultConsumerKey))
     .then(() => {
       const api = Router()
       // for local and dev only
-      api.use('/admin', adminMiddleware, admin.route())
       api.use('/integrations', adminMiddleware, ic.route())
       // Admin playground, for localhost-only tests  
       api.use('/playground', localhostOnlyAdminMiddleware, pc.route())
@@ -148,6 +148,7 @@ export function apiMiddle (app, config) {
       api.use('/api/visits', middleWare, vc.route())
       api.use('/api/seed-data', middleWare, sd.route())
       api.use('/api/auth', cors(corsOptions), auth.route())
+      api.use('/api/admin', cors(corsOptions), admin.route())
       return api
     })
 }
