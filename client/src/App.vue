@@ -9,7 +9,7 @@ import { setApiError } from './helpers/ehr-utils'
 import EventBus from './helpers/event-bus'
 import { Text } from './helpers/ehr-text'
 import StoreHelper from './helpers/store-helper'
-import { PAGE_DATA_REFRESH_EVENT } from './helpers/event-bus'
+import { PAGE_DATA_REFRESH_EVENT, PAGE_DATA_READY_EVENT } from './helpers/event-bus'
 import { setAuthHeader } from './helpers/axios-helper'
 const DefaultLayout = 'outside'
 
@@ -26,12 +26,24 @@ export default {
   methods: {
     loadData: async function () {
       if(debugApp) console.log('App begin loadData')
+
+      // Load the demo data if its present and then return
+      if(StoreHelper.getDemoToken()) {
+        if(debugApp) console.log('App load the demo data')
+        return StoreHelper.loadDemoData()
+          .then(() => {
+            EventBus.$emit(PAGE_DATA_READY_EVENT)
+          })
+      }
+
+      // OK now see if we are handling a new LTI request or we've seen one before
       const refreshToken = this.$route.query.token
       const authToken = StoreHelper.getAuthToken()
       const isUser = refreshToken || authToken
       if (!isUser) {
         return Promise.resolve()
       }
+
       // else .... load
       StoreHelper.setLoading(null, true)
       let visitId = ''

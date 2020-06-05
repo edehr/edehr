@@ -2,8 +2,7 @@ import axios from 'axios'
 
 
 export const setAuthHeader = (token) => {
-  const tokenString = `Bearer ${token}`
-  axios.defaults.headers['Authorization'] = tokenString
+  axios.defaults.headers['Authorization'] = `Bearer ${token}`
 }
 
 export const unsetAuthToken = () => {

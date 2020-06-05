@@ -9,6 +9,8 @@ import {ok, fail} from '../common/utils'
 import { isAdmin } from '../../helpers/middleware'
 
 const debug = require('debug')('server')
+const debugAC = true
+
 const sd = new SeedDataController()
 
 export default class AssignmentController extends BaseController {
@@ -62,7 +64,7 @@ export default class AssignmentController extends BaseController {
     return this.findOne(query)
   }
 
-  createAssignment (externalId, toolConsumer, resource_link_title) {
+  createAssignment (externalId, toolConsumer, resource_link_title, description) {
     if (!externalId) {
       throw new SystemError(Text.ASSIGNMENT_REQUIRE_EXTERNAL_ID(toolConsumer.oauth_consumer_key, toolConsumer._id))
     }
@@ -78,10 +80,11 @@ export default class AssignmentController extends BaseController {
           toolConsumer: toolConsumer._id,
           externalId: externalId,
           name: resource_link_title,
-          description: this.defaultAssignmentDescription,
+          description: description || this.defaultAssignmentDescription,
           ehrRoutePath: '',
           seedDataId: seed._id
         }
+        if (debugAC) debug('AssignmentController create from def', data)
         return this.create(data)
       })
   }
@@ -115,23 +118,22 @@ export default class AssignmentController extends BaseController {
     const _this = this
     let externalId = ltiData.custom_assignment
     let query = this._composeQuery(externalId, toolConsumerId)
-    debug('updateCreateAssignment search for ' + query.toString())
+    if (debugAC) debug('updateCreateAssignment search for ' + query.toString())
     return new Promise(function (resolve, reject) {
       _this.findOne(query)
         .then((assignment) => {
           if (assignment) {
             if (!assignment.resource_link_id.equals(ltiData.resource_link_id)) {
-              var msg = 'Changing assignment for this activity.'
-              debug('updateCreateActivity ' + msg)
+              if (debugAC) debug('updateCreateAssignment change assignment id to', assignment._id)
               activity.assignment = assignment._id
             // debug('adasd',activity)
             }
-            debug('updateCreateActivity update activity ' + activity._id)
+            if (debugAC) debug('updateCreateActivity update activity ' + activity._id)
             return _this._updateHelper(activity, data)
           } else {
             data.toolConsumer = toolConsumerId
             data.assignment = assignment._id
-            debug('updateCreateActivity create activity')
+            if (debugAC) debug('updateCreateActivity create activity')
             return _this._createHelper(activity, data)
           }
         })

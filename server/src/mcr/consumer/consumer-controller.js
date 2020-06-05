@@ -6,9 +6,9 @@ import SeedDataController from '../seed/seedData-controller'
 import {ok, fail} from '../common/utils'
 import { isAdmin } from '../../helpers/middleware'
 
-
+const debugCC = true
 const debug = require('debug')('server')
-const sd = new SeedDataController()
+const seedDataController = new SeedDataController()
 
 export default class ConsumerController extends BaseController {
   constructor () {
@@ -20,24 +20,27 @@ export default class ConsumerController extends BaseController {
     if (!def.oauth_consumer_key || !def.oauth_consumer_secret) {
       throw new ParameterError(Text.SYSTEM_REQUIRE_KEY_AND_SECRET)
     }
-    return this.createWithSeed(def)
+    const seedDef = {
+      toolConsumer: '',
+      name: Text.DEFAULT_SEED_NAME,
+      description: Text.DEFAULT_SEED_DESCRIPTION,
+      version: '1',
+      isDefault: true,
+      ehrData: {}
+    }
+    return this.createWithSeed(def, seedDef)
   }
 
-  createWithSeed (data) {
+  createWithSeed (data, seedData) {
     let theConsumer
+    if (debugCC) debug('ConsumerController create oauth_consumer_key:', data.oauth_consumer_key)
     return this.model
       .create(data)
       .then((toolConsumer) => {
         theConsumer = toolConsumer
-        let seedDef = {
-          toolConsumer: toolConsumer._id,
-          name: Text.DEFAULT_SEED_NAME,
-          description: Text.DEFAULT_SEED_DESCRIPTION,
-          version: '1',
-          isDefault: true,
-          ehrData: {}
-        }
-        return sd.create(seedDef)
+        const seedDef = Object.assign({}, seedData, { toolConsumer: theConsumer._id })
+        if (debugCC) debug('ConsumerController created tool', theConsumer._id, ' create seed next ', seedDef)
+        return seedDataController.create(seedDef)
       })
       .then( () => {
         return theConsumer

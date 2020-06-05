@@ -17,7 +17,7 @@ function worker (el, binding, source) {
     let seenOne = false
     html.push('<p>')
     sentences.forEach(s => {
-      if (seenOne) html.push('<br/>')
+      if (seenOne) html.push('</p><p>')
       html.push(linky(s))
       seenOne = true
     })
