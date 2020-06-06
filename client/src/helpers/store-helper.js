@@ -50,6 +50,7 @@ class StoreHelperWorker {
   isDeveloper () { return this._getVisitProperty('isDeveloper') }
   isStudent () { return this._getVisitProperty('isStudent') }
   isAdmin () { return this._get}
+  // isDemo see demo section
 
   /**
    * The API server must provide the url to call back into the server.
@@ -436,6 +437,59 @@ class StoreHelperWorker {
     if(debugSH) console.log('SH getAuthToken', token)
     return token
   }
+
+  /*
+  * **********   Demonstration related  **************
+  */
+
+  _getDemoStorage (key) { return store.getters['demoStore/'+ key] }
+  _dispatchDemoStore (key, payload) { return store.dispatch(`demoStore/${key}`, payload) }
+
+  createDemoToolConsumer () {
+    return this._dispatchDemoStore('createToolConsumer')
+  }
+
+  demoLogout () {
+    return this._dispatchDemoStore('demoLogout')
+  }
+
+  loadDemoData () {
+    return this._dispatchDemoStore('loadDemoData')
+  }
+
+  getDemoToken () {
+    // return this._getDemoStorage('demoToken')
+    return localStorage.getItem(sKeys.DEMO_TOKEN)
+  }
+
+  getDemoPersona () {
+    return this._getDemoStorage('demoPersona')
+  }
+
+  getDemoTokenData () {
+    return this._getDemoStorage('demoTokenData')
+  }
+
+  isDemoMode () {
+    return this._getDemoStorage('isDemo')
+  }
+
+  setDemoToken (demoToken) {
+    return this._dispatchDemoStore('setDemoToken', demoToken)
+  }
+
+  setDemoPersona (demoPersona) {
+    return this._dispatchDemoStore('setDemoPersona', demoPersona)
+  }
+
+  setDemoAssignment (assignment) {
+    return this._dispatchDemoStore('setDemoAssignment', assignment)
+  }
+
+  submitPersona (demoData, assignment) {
+    return this._dispatchDemoStore('submitPersona', { demoData, assignment })
+  }
+
 }
 
 const StoreHelper = new StoreHelperWorker()

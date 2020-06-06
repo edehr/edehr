@@ -9,8 +9,10 @@
       @cancel="cancelDialog"
       )
       h2(slot="header") {{ title }}
-      div(slot="body") {{ text }}
-  
+      div(slot="body")
+        div(v-if="htmlBody", v-text-to-html="text")
+        div(v-else) {{ text }}
+
 </template>
 
 <script>
@@ -36,6 +38,7 @@ export default {
     }
   },
   props: {
+    htmlBody: { type: Boolean, default: false },
     setFooter: {type: Boolean, default: false},
     saveLabel: { type: String, default: SAVE_BUTTON_LABEL }
   },

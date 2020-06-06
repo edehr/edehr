@@ -56,6 +56,20 @@ export function outside () {
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Consumers.vue'),
       meta: { layout: 'outside', label: 'Consumers', zone: 'admin' }
+    },
+    {
+      path: '/demo',
+      name: 'demo',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Demo.vue'),
+      meta: { layout: 'outside', label: 'Demo', zone: 'demo' }
+    },
+    {
+      path: '/demo-course',
+      name: 'demo-course',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/DemoCourse.vue'),
+      meta: { layout: 'outside', label: 'Demo Course', zone: 'demo' }
     }
   ]
 }

@@ -6,26 +6,34 @@
         div(class="container has-text-centered")
           h1(class="title") EdEHR - a Canadian, open source, Educational Electronic Health Record system.
           h2(class="subtitle") Student focused, simulated case studies, laddered case studies, with decision supports and customizable.
-    div(class="container box cta has-text-weight-semibold")
-      div(v-if="isInstructor")
-        div You are logged in as an instructor.  &nbsp;
-          ui-link(:name="'instructor'") Go to your course and class lists.
-      div(v-else-if="isStudent")
-        div You are logged in as a student. &nbsp;
-          ui-link(:name="'ehr'") Go to your assignment.
-      div(v-else, class="columns")
-        div(class="intro column is-8 is-offset-2")
-          p.
-            This prototype EdEHR provides educational support for post secondary health programs, such as universities, colleges, etc.
-            These institutions can connect the EdEHR to their learning management systems.
-            Example learning management systems include Moodle, Canvas, Blackboard, or any other LTI compliant learning system.
-            Each institution can then create content for their health care programs. Content can be downloaded and shared
-            with other institutions. The EdEHR has a few case studies and more can be added because it is an open source project.
-          p.
-            Coming soon!  The EdEHR will have a demonstration version.
-          p.
-            For more information jump to the <a href="#resources">resources section</a>.
-            If you need help or have a question about the EdEHR then send an email to <a href="mailto:info@edehr.org">info@edehr.org</a>
+    section(class="container")
+      div(class="columns is-centered features")
+        div(class="column is-8  has-text-weight-semibold")
+          div(v-if="isInstructor")
+            div You are logged in as an instructor.  &nbsp;
+              ui-link(:name="'instructor'") Go to your course and class lists.
+          div(v-else-if="isStudent")
+            div You are logged in as a student. &nbsp;
+              ui-link(:name="'ehr'") Go to your assignment.
+          div(v-else-if="isDemo")
+            div You are already logged into the demonstration. &nbsp;
+              ui-link(:name="'demo'") Click here to return to the demonstration page.
+          div(v-else)
+            p.
+              This prototype EdEHR provides educational support for post secondary health programs, such as universities, colleges, etc.
+              These institutions can connect the EdEHR to their learning management systems.
+              Example learning management systems include Moodle, Canvas, Blackboard, or any other LTI compliant learning system.
+              Each institution can then create content for their health care programs. Content can be downloaded and shared
+              with other institutions. The EdEHR has a few case studies and more can be added because it is an open source project.
+            p(v-if="!activateDemoMode").
+              Coming soon!  The EdEHR will have a demonstration version.
+            p.
+              For more information jump to the <a href="#resources">resources section</a>.
+              If you need help or have a question about the EdEHR then send an email to <a href="mailto:info@edehr.org">info@edehr.org</a>
+            div(v-if="activateDemoMode")
+              div
+                span If you wish to see how the EdEHR works you can use our demonstration mode.
+                ui-button(class="is-pulled-right",@buttonClicked="demoLoginConfirm") Try out the prototype EdEHR
 
     section(class="container")
       div(class="columns features")
@@ -223,7 +231,10 @@
             Canadian Association of Schools of Nursing (CASN)
             <a target="_blank" href="https://www.casn.ca/2014/12/casn-entry-practice-nursing-informatics-competencies/">
             Entry-to-Practice Nursing Informatics Competencies</a>
+    div(class="is-pulled-right")
+      input(type="checkbox", v-model="activateDemoMode")
 
+    ui-confirm(class="confirmDialog",ref="confirmDemoDialog", @confirm="proceedDemoToolConsumerCreation", htmlBody, saveLabel="Continue")
 
 </template>
 
@@ -232,25 +243,77 @@ import StoreHelper from '@/helpers/store-helper'
 import UiButton from '../../app/ui/UiButton'
 import UiLink from '../../app/ui/UiLink.vue'
 import EhrHeaderItem from '../../inside/components/EhrAssignmentDetailsContent'
+import { setApiError } from '../../helpers/ehr-utils'
+import UiConfirm from '../../app/ui/UiConfirm'
+const DEMO = {
+  TITLE: 'Try out the EdEHR',
+  MSG: 'The EdEHR is still a prototype web application.\n ' +
+  'You may encounter some strangeness that may be because something is not finished. See all the work in progress on the GitHub site. (See the resources section on the Help or Home page)\n ' +
+    'As well consider that any data that you enter into the demonstration assignments as temporary. It maybe that the system needs to be restarted and the data may be lost.\n'
+}
+
+const debugH = true
 
 export default {
   components: {
     EhrHeaderItem,
-    UiButton, UiLink
+    UiButton, UiConfirm, UiLink
+  },
+  data () {
+    return {
+      activateDemoMode: false,
+      selectedUser: {},
+    }
   },
   computed: {
     layout () {
       return (this.$route.meta.layout || DefaultLayout) + '-layout'
     },
+    isDemo () { return StoreHelper.isDemoMode()  },
     isStudent () { return StoreHelper.isStudent() },
     isInstructor () { return StoreHelper.isInstructor() }
+  },
+  methods: {
+    demoLoginConfirm () {
+      this.$refs.confirmDemoDialog.showDialog(DEMO.TITLE, DEMO.MSG)
+    },
+    proceedDemoToolConsumerCreation () {
+      StoreHelper.setLoading(null, true)
+      if(debugH) console.log('Home proceedDemoToolConsumerCreation')
+      return StoreHelper.createDemoToolConsumer()
+        .then((demoToken) => {
+          if (debugH) console.log(`Home consumer created. If have token? ${!!demoToken} go to demo`)
+          if (!demoToken) {
+            throw Error('Setup of demonstration space failed')
+          }
+          return StoreHelper.loadDemoData()
+        })
+        .then ( () => {
+          StoreHelper.setLoading(null, false)
+          this.$router.push('demo')
+        }).catch(err => {
+          if(debugH) console.log('createDemoToolConsumer Error', err)
+          setApiError(err)
+          StoreHelper.setLoading(null, false)
+        })
+    }
+  },
+  mounted: function () {
+    let dMode = sessionStorage.getItem('demoMode')
+    if(dMode)
+      this.activateDemoMode = dMode
+  },
+  watch: {
+    activateDemoMode: function (val) {
+      sessionStorage.setItem('demoMode', val)
+    }
   }
 }
 </script>
 
 
 <style lang="scss" scoped>
-  //@import '../../scss/definitions';
+  @import '../../scss/definitions';
 
   .card {
     /* Trial and error to get a ht that makes all cards the same size */
@@ -268,6 +331,10 @@ export default {
   .card-content .content h4 {
     font-size: 1.25rem;
     font-weight: 700;
+  }
+
+  .confirmDialog {
+    color: $grey80;
   }
 
   .features {

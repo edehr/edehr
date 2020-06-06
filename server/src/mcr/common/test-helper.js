@@ -93,7 +93,7 @@ export default class Helper {
     if (this.clear) {
       // console.log(`drop collection ${collection}!`);
       mongoose.connection.db.dropDatabase(function (err) {
-        console.log('dropped dropDatabase')
+        // console.log('dropped dropDatabase')
         close()
       })
     } else {
@@ -227,7 +227,15 @@ export default class Helper {
   }
 
   static createConsumer  (oauth_consumer_key, oauth_consumer_secret) {
-    return consumerController.createWithSeed(Helper.sampleConsumerSpec(oauth_consumer_key, oauth_consumer_secret))
+    const seedDef = {
+      toolConsumer: '',
+      name: 'Test seed',
+      description: 'A seed for unit testing',
+      version: '1',
+      isDefault: true,
+      ehrData: {}
+    }
+    return consumerController.createWithSeed(Helper.sampleConsumerSpec(oauth_consumer_key, oauth_consumer_secret), seedDef)
   }
 
   static createUser (consumer, user_id) {

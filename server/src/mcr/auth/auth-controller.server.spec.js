@@ -32,6 +32,8 @@ describe(`${NAME} - Server requests `, () => {
 
   it('Properly gets the token content', done => {
     const url = BASE
+    // console.log('URL', url)
+    // console.log('token',token)
     request(app)
       .post(url)
       .set('Authorization', `Bearer ${token}`)

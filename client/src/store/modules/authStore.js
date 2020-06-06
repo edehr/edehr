@@ -10,7 +10,6 @@ const _setToken = (token) => {
   localStorage.setItem(sKeys.AUTH_TOKEN, token)
 }
 
-
 const state = {
   data: {},
 }
@@ -68,7 +67,7 @@ const actions = {
       }).catch(err => {
         return Promise.reject(err.response.data)
       })
-  }
+  },
 }
 
 const mutations = {

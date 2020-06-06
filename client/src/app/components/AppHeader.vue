@@ -13,15 +13,28 @@
           router-link(:to="{ name: `assignments` }", class="navLink subMenu") Assignments
         li(v-if="isStudent", class="navItem")
           router-link(:to="{ name: `ehr` }", class="navLink subMenu") Assignment
+        li(v-if="isDemo", class="navItem")
+          router-link(:to="{ name: `demo` }", class="navLink subMenu") Demonstration
+        li(v-if="isDemo", class="navItem")
+          ui-button(@buttonClicked="demoLogoutConfirm") Demo logout
+          ui-confirm(class="confirmDialog",ref="confirmDialog", @confirm="demoLogOut", save-label="Logout")
+
         li(class="navItem")
           router-link(:to="{ name: `help` }", class="navLink") Help
 </template>
 <script>
 import SystemMessage from './SystemMessage'
 import StoreHelper from '../../helpers/store-helper'
+import UiButton from '../../app/ui/UiButton'
+import UiConfirm from '../../app/ui/UiConfirm'
+const DEMO = {
+  TITLE: 'Do you want to exit the demo mode?',
+  MSG: 'Exit the demonstration mode. At this time this means all your data is removed. ' +
+  'But do not worry because you can just come back and try out the EdEHR again. ',
+}
+
 export default {
-  name: 'AppHeader',
-  components: { SystemMessage },
+  components: { SystemMessage, UiButton, UiConfirm },
   data () {
     return {
       showingAssignmentDetails: false
@@ -29,7 +42,7 @@ export default {
   },
   computed: {
     fullName () {
-      return StoreHelper.fullName(this)
+      return StoreHelper.fullName()
     },
     lmsUrl () {
       return StoreHelper.lmsUrl()
@@ -37,17 +50,30 @@ export default {
     lmsName () {
       return StoreHelper.lmsName()
     },
+    isDemo () {
+      return StoreHelper.isDemoMode()
+    },
     isInstructor () {
-      return StoreHelper.isInstructor(this)
+      return StoreHelper.isInstructor()
     },
     isStudent () {
-      return StoreHelper.isStudent(this)
+      return StoreHelper.isStudent()
     },
     showDashboard () {
       return this.isInstructor
     }
   },
   methods: {
+    demoLogoutConfirm () {
+      this.$refs.confirmDialog.showDialog(DEMO.TITLE, DEMO.MSG)
+    },
+    demoLogOut () {
+      console.log('AH demo logout')
+      StoreHelper.demoLogout().then( () => {
+        console.log('AH demo logout go home')
+        this.$router.push('/')
+      })
+    },
     showAssignmentDetails () {
       this.showingAssignmentDetails = true
     },
@@ -69,6 +95,9 @@ header {
   top: 0;
   z-index: 2;
 }
+.confirmDialog {
+  color: $grey80;
+}
 .apphdr {
   background: $toolbar-background-color;
   color: $toolbar-color;
@@ -78,44 +107,6 @@ header {
   .navList {
     display: flex;
     /* default is flow in row without wrap */
-
-    .subNavList {
-      background: $white;
-      border: solid 1px $grey40;
-      border-radius: .5em;
-      box-shadow: 0 0 20px 0px $grey40;
-      color: $grey80;
-      font-size: 1em;
-      margin-left: 2em;
-      margin-top: .5em;
-      margin-right: 1em;
-      padding: 1.5em 2em;
-      position: absolute;
-      transition: all 0.5s ease;
-      /*    visibility: hidden;
-      opacity: 0;*/
-
-      &:before {
-          content: '';
-          position: absolute;
-          left: 26px;
-          top: -26px;
-          width: 0;
-          height: 0;
-          border: 14px solid transparent;
-          border-bottom-color: $white;
-      }
-
-      .subNavItem {
-        margin-top: .5em;
-      }
-    }
-
-/*    &:hover {
-      visibility: visible;
-      opacity: 1;
-      display: block;
-    }*/
   }
 
   .push {
@@ -126,6 +117,11 @@ header {
     padding-top: 5px;
   }
 
+  .navItem .button {
+    margin-left: 2rem;
+    margin-bottom: 0;
+    margin-top: -8px; // t0 keep text aligned with non-button items
+  }
   .navLink {
     color: rgba(255, 255, 255, 0.8);
     text-decoration: none;

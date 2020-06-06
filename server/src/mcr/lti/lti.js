@@ -63,7 +63,7 @@ export default class LTIController {
     app.lti = this
     return Promise.resolve().then(() => {
       let strategy = function (req, callback) {
-        console.log('----------------------   STRATEGY ', req.url)
+        // console.log('----------------------   STRATEGY ', req.url)
         _this.strategyVerify(req, callback)
       }
       passport.use('ltiStrategy', new CustomStrategy(strategy))
@@ -76,7 +76,7 @@ export default class LTIController {
           debug('serializeUser id:' + id)
           done(null, id)
         } else {
-          console.log('Can not serialize user', user)
+          console.error('Can not serialize user', user)
           done('Can not serialize user')
         }
       })
@@ -155,7 +155,7 @@ export default class LTIController {
             if (err) {
               debug('strategyVerify lti provider verify send error: ' + err.message)
               let detailsCallback = function (details) {
-                console.log('LTI auth details', details)
+                // console.log('LTI auth details', details)
               }
               let provider = new lti.Provider(ltiData, sec, null, null, detailsCallback)
               provider.valid_request(_req, function (err, isValid) {})
@@ -278,7 +278,7 @@ export default class LTIController {
     let role = new Role(req.ltiData.roles)
     let toolConsumer = req.toolConsumer
     let toolConsumerId = toolConsumer._id
-    console.log('in locate assignent with ', toolConsumerId, externalId)
+    // console.log('in locate assignent with ', toolConsumerId, externalId)
     return this.assignmentController.locateAssignmentForStudent(externalId, toolConsumerId)
       .then(assignment => {
         if (!assignment) {
@@ -368,7 +368,7 @@ export default class LTIController {
 
   _postLtiChain (req) {
     const _this = this
-    const db = true
+    const db = false
     return Promise.resolve()
       .then(() => {
         if (db) console.log('Do update tool')
@@ -408,13 +408,12 @@ export default class LTIController {
         .then((req) => {
           let url = req.ltiNextUrl
           const refreshToken = req.refreshToken
-          console.log('redirecting to ', url)
           debug(`ready to redirect to the ehr ${url}`)
           // When redirecting in the test, the request promise 
           // resolves in 404. So, for debugging / testing
           // purposes, I believe it is better not to redirect
           if (req.body.debug) {
-            res.status(200).json({refreshToken})
+            res.status(200).json({refreshToken, url})
           } else {
             res.redirect(url)
           }
@@ -429,7 +428,7 @@ export default class LTIController {
 
   _makeSignature (req, res) {
     if(req.body) {
-      console.log('req.body >>', req.body)
+      // console.log('req.body >>', req.body)
       try {
         let signer = new HMAC_SHA1()
         const oauth_signature = signer.build_signature(
