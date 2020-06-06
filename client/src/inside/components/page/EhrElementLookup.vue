@@ -29,8 +29,8 @@ export default {
     return {
       showDetails: true, // set true/false to show/hide details about the selected results
       timeout: null,
-      searchTerm: this.inputVal,
-      selected: this.inputVal,
+      searchTerm: this.inputVal || '',
+      selected: this.inputVal || '',
       resultCount: 0,
       debounceMilliseconds: 50,
       medicationsUrl: base,
@@ -53,8 +53,9 @@ export default {
         medications: {
           // limit: 16,
           onSelected: selected => {
-            if (selected !== null) {
+            if (selected !== null && selected.item.name) {
               this.$emit('selected', selected.item.name)
+              this.selected = selected.item.name
             }
           }
         }
@@ -84,7 +85,9 @@ export default {
     blurred () {
       // If the user types in something and does not select from the options then
       // capture the text they entered and emit this as the selected value
-      this.$emit('selected', this.searchTerm)
+      if (!this.selected) {
+        this.$emit('selected', this.searchTerm)
+      }
     },
     fetchResults (val) {
       // console.log('input changed', val)
