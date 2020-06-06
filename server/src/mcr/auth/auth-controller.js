@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { Text } from '../../config/text'
 
-const debug = false
+const debug = require('debug')('server')
 
 export default class AuthController {
 
@@ -24,22 +24,22 @@ export default class AuthController {
  * 
  */
   _getAuthToken (req, res) {
-    if (debug) console.log('authController -- _getAuthToken')
+    debug('authController -- _getAuthToken')
     const { refreshToken } = req.body
     if(refreshToken) {
       try {
         const result = this.authUtil.validateToken(refreshToken)
         const { token } = result
-        if (debug) console.log('tokenValidated >> ', token)
+        debug('tokenValidated >> ', token)
         res.status(200).json({token})
       } catch(err) {
-        if (debug) console.log('validate token threw >> ', err)
+        debug('validate token threw >> ', err)
         // This arguably returns 401 in this case. As the validateToken can throw if the token has expired,
         // which is a use case of the refresh token.
         res.status(401).send(Text.EXPIRED_TOKEN)
       }
     } else {
-      if(debug) console.log(Text.TOKEN_REQUIRED, req.body)
+      debug(Text.TOKEN_REQUIRED, req.body)
       res.status(401).send(Text.TOKEN_REQUIRED)
     }
   }
@@ -59,18 +59,18 @@ export default class AuthController {
  * @returns {String} tokenVerificationError - if an error occurs when verifying the token (status 500)
  */
   _getTokenContent (req, res) {
-    if (debug) console.log('authController -- _getTokenContent')
+    debug('authController -- _getTokenContent')
     if(req.headers.authorization) {
       try {
         const result = this.authUtil.authenticate(req.headers.authorization)
         res.status(200).json(result)
       } catch(err) {
-        if (debug) console.log('_getTokenContent threw >> ', err)
+        debug('_getTokenContent threw >> ', err)
         // Here this can be 500, since it catches and error from the jwt.verify function
         res.status(500).send(Text.SYS_ERROR)
       }
     } else {
-      if(debug) console.log('AuthController ._getTokenContent --- Token is required!')
+      debug('AuthController ._getTokenContent --- Token is required!')
       res.status(401).send(Text.TOKEN_REQUIRED)
     }
   }

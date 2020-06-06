@@ -6,6 +6,8 @@ import Model from './activity-data'
 
 const typeName = 'ActivityData'
 
+const debug = require('debug')('server')
+
 /* global describe it */
 describe(`${typeName} mongoose schema testing`, function () {
   before(function (done) {
@@ -16,15 +18,15 @@ describe(`${typeName} mongoose schema testing`, function () {
   it('Create a tool consumer for testing ', function (done) {
     theVisitId = Helper.sampleObjectId()
     theConsumerId = Helper.sampleObjectId()
-    // console.log('Testing with visit id ', theVisitId)
-    // console.log('Testing with consumer id ', theConsumerId)
+    // debug('Testing with visit id ', theVisitId)
+    // debug('Testing with consumer id ', theConsumerId)
     done()
   })
 
   it(`${typeName} create model with no parameters should error`, function (done) {
     let m = new Model()
     m.validate(function (error) {
-      // console.log('Expect error: ', error)
+      // debug('Expect error: ', error)
       should.exist(error)
       should.equal(error.errors['visit'].message, 'Path `visit` is required.')
       should.equal(error.errors['toolConsumer'].message, 'Path `toolConsumer` is required.')
@@ -39,7 +41,7 @@ describe(`${typeName} mongoose schema testing`, function () {
       .save()
       .then((doc) => {
         should.exist(doc)
-        // console.log('saved doc', doc)
+        // debug('saved doc', doc)
         savedId = doc._id
         done()
       })
@@ -52,12 +54,12 @@ describe(`${typeName} mongoose schema testing`, function () {
 
   it(`${typeName} can find one`, function (done) {
     Model.findOne({ _id: savedId }, function (err, doc) {
-      // console.log('results', doc)
+      // debug('results', doc)
       should.exist(doc)
       should.not.exist(err)
       done()
     }).catch(e => {
-      console.log('find one error', e)
+      debug('find one error', e)
     })
   })
 })

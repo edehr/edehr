@@ -13,6 +13,7 @@ import Helper from '../common/test-helper'
 import Config from '../../config/config'
 import Assignment from '../assignment/assignment'
 
+const debug = require('debug')('server')
 const helper = new Helper()
 const config = new Config('test')
 const configuration = config.config
@@ -148,7 +149,7 @@ describe('LTI controller testing', function () {
       error.should.have.property('name')
       error.should.have.property('message')
       error.name.should.equal('AssignmentMismatchError')
-      // console.log(error.message)
+      // debug(error.message)
       done()
     }
     let ltiData = Helper.sampleValidLtiData()
@@ -168,7 +169,7 @@ describe('LTI controller testing', function () {
         req.should.have.property('user')
         let user = req.user
         user.should.have.property('user_id')
-        console.log('inside strategy verify callback', user.user_id)
+        debug('inside strategy verify callback', user.user_id)
         user.user_id.should.equal(ltiData.user_id)
         req.should.have.property('toolConsumer')
         let toolConsumer = req.toolConsumer
@@ -182,7 +183,7 @@ describe('LTI controller testing', function () {
         should.exist(foundUser)
       })
       .catch((error) => {
-        console.log('post equivalent ', error)
+        debug('post equivalent ', error)
         should.not.exist(error)
       })
   })
@@ -211,15 +212,15 @@ describe('LTI controller testing', function () {
       .then((req) => {
         return ltiController._postLtiChain(req)
           .then((req) => {
-            console.log('after post LIT')
+            debug('after post LIT')
             should.exist(req.user)
             should.exist(req.visit)
             should.exist(req.activity)
             should.exist(req.assignment)
             should.exist(req.assignment.seedDataId)
-            console.log('req.user', req.user)
-            console.log('req.visit', req.visit)
-            console.log('req.assignment', req.assignment)
+            debug('req.user', req.user)
+            debug('req.visit', req.visit)
+            debug('req.assignment', req.assignment)
 
             let visit = req.visit
             visit.should.have.property('isStudent')
@@ -251,7 +252,7 @@ activityData:
        */
           })
           .catch(err => {
-            // console.log('Error 1 .... ', err)
+            // debug('Error 1 .... ', err)
             should.not.exist(err)
           })
       })

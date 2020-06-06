@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 import Helper from '../common/test-helper'
 const helper = new Helper()
 import ActivityDataController from './activity-data-controller'
-
+const debug = require('debug')('server')
 const typeName = 'ActivityDataController'
 
 // Use following to leave results in test database for inspection
@@ -32,8 +32,8 @@ describe(`${typeName} controller testing`, function () {
   it('Create a tool consumer for testing ', function (done) {
     theVisitId = Helper.sampleObjectId()
     theConsumerId = Helper.sampleObjectId()
-    // console.log('Testing with visit id ', theVisitId)
-    // console.log('Testing with consumer id ', theConsumerId)
+    // debug('Testing with visit id ', theVisitId)
+    // debug('Testing with consumer id ', theConsumerId)
     done()
   })
 
@@ -50,7 +50,7 @@ describe(`${typeName} controller testing`, function () {
 
   it(`${typeName} use findOne`, function (done) {
     controller.findOne(theActivityData._id).then(doc => {
-      // console.log('findOne results', doc)
+      // debug('findOne results', doc)
       should.exist(doc)
       done()
     })
@@ -62,7 +62,7 @@ describe(`${typeName} controller testing`, function () {
       .then(doc => {
         should.exist(doc)
         doc.should.have.property('scratchData')
-        // console.log('updateScratchData results:', doc.scratchData)
+        // debug('updateScratchData results:', doc.scratchData)
         doc.scratchData.should.equal(data)
         done()
       })
@@ -74,7 +74,7 @@ describe(`${typeName} controller testing`, function () {
       .then(doc => {
         should.exist(doc)
         doc.should.have.property('assignmentData')
-        // console.log('updateAssignmentData results:', doc.assignmentData)
+        // debug('updateAssignmentData results:', doc.assignmentData)
         doc.assignmentData.should.have.property(data.propertyName)
         done()
       })
@@ -86,7 +86,7 @@ describe(`${typeName} controller testing`, function () {
       .then(doc => {
         should.exist(doc)
         doc.should.have.property('evaluationData')
-        // console.log('updateEvaluationData results:', doc.evaluationData)
+        // debug('updateEvaluationData results:', doc.evaluationData)
         doc.evaluationData.should.equal(data.value)
         done()
       })

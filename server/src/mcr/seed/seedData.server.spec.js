@@ -13,7 +13,7 @@ const NAME = 'seed data'
 const PROPERTY = 'seeddata'
 const BASE = '/api/seed-data'
 const ehrApp = new EhrApp()
-
+const debug = require('debug')('server')
 const visitId = Helper.sampleObjectId(true)
 const token = Helper.generateToken(visitId)
 
@@ -54,7 +54,7 @@ describe(`Make server calls on ${TYPE}`, function () {
         should.exist(res.body)
         let obj = res.body
         obj.should.have.property('_id')
-        console.log('created', obj._id)
+        debug('created', obj._id)
         done()
       })
   })
@@ -76,7 +76,7 @@ describe(`Make server calls on ${TYPE}`, function () {
         obj.should.be.array
         obj.should.have.length(1)
         let sd = obj[0]
-        // console.log('results from api/seed-data', sd._id)
+        // debug('results from api/seed-data', sd._id)
         theId = sd._id
         done()
       })

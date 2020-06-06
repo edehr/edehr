@@ -7,6 +7,8 @@ require('./seed-data')
 import IntegrationController from '../integration/integration-controller'
 import Helper from '../common/test-helper'
 
+const debug = require('debug')('server')
+
 const IntegrationModel = new IntegrationController()
 
 // import fs from 'fs'
@@ -23,7 +25,7 @@ describe(' db seeding test', function () {
   let name = 'another collection'
   it('Integrations find on empty collection', function (done) {
     IntegrationModel.findOne({ module: name }).then(result => {
-      // console.log('found: ', result)
+      // debug('found: ', result)
       should.not.exist(result)
       done()
     })
@@ -36,14 +38,14 @@ describe(' db seeding test', function () {
         done()
       })
       .catch(err => {
-        console.log(`Integration error ${err}`)
+        debug(`Integration error ${err}`)
         done()
       })
   })
 
   it('Integrations find after create', function (done) {
     IntegrationModel.findOne({ module: name }).then(result => {
-      // console.log('found: ', result)
+      // debug('found: ', result)
       should.exist(result)
       done()
     })
@@ -52,11 +54,11 @@ describe(' db seeding test', function () {
   it('Seed the sb', function (done) {
     dbSeeder()
       .then(() => {
-        console.log('done unit testing seeding')
+        debug('done unit testing seeding')
         done()
       })
       .catch(err => {
-        console.log(`error ${err}`)
+        debug(`error ${err}`)
         done()
       })
   })

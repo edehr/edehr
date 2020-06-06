@@ -7,6 +7,8 @@ import Model from './assignment'
 const typeName = 'Assignment'
 const collectionName = 'assignments'
 
+const debug = require('debug')('server')
+
 /* global describe it */
 describe(`${typeName} mongoose schema testing`, function () {
   before(function (done) {
@@ -20,7 +22,7 @@ describe(`${typeName} mongoose schema testing`, function () {
   it(`${typeName} be invalid if params are empty`, function (done) {
     let m = new Model()
     m.validate(function (err) {
-      // console.log('Expect error: ', err)
+      // debug('Expect error: ', err)
       should.exist(err)
       done()
     })
@@ -40,13 +42,13 @@ describe(`${typeName} mongoose schema testing`, function () {
 
   it(`${typeName} can find one`, function (done) {
     Model.findOne({ externalId: key }, function (err, doc) {
-      // console.log('results', doc)
+      // debug('results', doc)
       should.not.exist(err)
       should.exist(doc)
       doc.should.have.property('seedDataId')
       done()
     }).catch(e => {
-      console.log('find one error', e)
+      debug('find one error', e)
     })
   })
 })

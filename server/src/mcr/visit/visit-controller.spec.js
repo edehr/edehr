@@ -4,7 +4,7 @@ import Helper from '../common/test-helper'
 const helper = new Helper()
 import VisitController from './visit-controller'
 // import Model from '../../models/user'
-
+const debug = require('debug')('server')
 const typeName = 'VisitController'
 // const modelName = 'Visit'
 
@@ -53,7 +53,7 @@ describe(`${typeName} controller testing`, function () {
         done()
       })
       .catch((err) => {
-        console.log('setup unexpected err: ', err)
+        debug('setup unexpected err: ', err)
         should.not.exist(err)
         done()
       })
@@ -74,7 +74,7 @@ describe(`${typeName} controller testing`, function () {
     m.create(data)
       .then(doc => {
         should.exist(doc)
-        // console.log('created visit record', doc)
+        // debug('created visit record', doc)
         visitId = doc._id
         done()
       })

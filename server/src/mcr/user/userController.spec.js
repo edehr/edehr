@@ -5,7 +5,7 @@ import Helper from '../common/test-helper'
 const helper = new Helper()
 import UserController from './user-controller'
 import Model from './user'
-
+const debug = require('debug')('server')
 const typeName = 'UserController'
 
 // Use following to leave results in test database for inspection
@@ -34,11 +34,11 @@ describe(`${typeName} controller testing`, function () {
       .createConsumer()
       .then(doc => {
         theConsumer = doc
-        console.log('have consumer', doc)
+        debug('have consumer', doc)
         done()
       })
       .catch((err) => {
-        console.log('setup unexpected err: ', err)
+        debug('setup unexpected err: ', err)
         should.not.exist(err)
         done()
       })
@@ -67,11 +67,11 @@ describe(`${typeName} controller testing`, function () {
     m.should.have.property('listActivitiesAsStudent')
     m.listActivitiesAsStudent(id)
       .then((response) => {
-        console.log('listActivitiesAsStudent', response)
+        debug('listActivitiesAsStudent', response)
         done()
       })
       .catch((err) => {
-        console.log('listActivitiesAsStudent unexpected err: ', err)
+        debug('listActivitiesAsStudent unexpected err: ', err)
         should.not.exist(err)
         done()
       })
@@ -83,11 +83,11 @@ describe(`${typeName} controller testing`, function () {
     m.should.have.property('listAsInstructorCourses')
     m.listAsInstructorCourses(id)
       .then((response) => {
-        console.log('listAsInstructorCourses', response)
+        debug('listAsInstructorCourses', response)
         done()
       })
       .catch((err) => {
-        console.log('listAsInstructorCourses unexpected err: ', err)
+        debug('listAsInstructorCourses unexpected err: ', err)
         should.not.exist(err)
         done()
       })

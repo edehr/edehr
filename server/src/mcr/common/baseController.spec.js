@@ -9,6 +9,7 @@ const helper = new Helper()
 const typeName = 'BaseController'
 const modelName = 'Seed'
 
+const debug = require('debug')('server')
 // Use following to leave results in test database for inspection
 // helper.setClear(false)
 
@@ -49,7 +50,7 @@ describe(`${typeName} controller testing`, function () {
         done()
       })
       .catch(err => {
-        console.log(`${typeName} create one ${modelName} error ${err}`)
+        debug(`${typeName} create one ${modelName} error ${err}`)
         done()
       })
   })
@@ -58,14 +59,14 @@ describe(`${typeName} controller testing`, function () {
     let m = new BaseController(Model, 'name')
     m.findOne({ name: '1234' })
       .then(doc => {
-        // console.log('results', doc)
+        // debug('results', doc)
         should.exist(doc)
         doc.should.have.property('ehrData')
         doc.ehrData.should.have.property('foo')
         done()
       })
       .catch(e => {
-        console.log('find one error', e)
+        debug('find one error', e)
       })
   })
 
@@ -87,16 +88,16 @@ describe(`${typeName} controller testing`, function () {
       })
       .then(doc => {
         should.exist(doc)
-        // console.log('read id ', doc._id)
+        // debug('read id ', doc._id)
         id = doc._id
         return m.read(id)
       })
       .then(doc => {
-        // console.log('results of read doc:', doc)
+        // debug('results of read doc:', doc)
         should.exist(doc)
         should.exist(doc.seeddata)
         let model = doc.seeddata
-        console.log('results of read model:', model)
+        debug('results of read model:', model)
         model.should.have.property('ehrData')
         return m.delete(id)
       })
@@ -104,7 +105,7 @@ describe(`${typeName} controller testing`, function () {
         done()
       })
       .catch(err => {
-        console.log(`${typeName} create a ${modelName} error: ${err}`)
+        debug(`${typeName} create a ${modelName} error: ${err}`)
         done()
       })
   })
