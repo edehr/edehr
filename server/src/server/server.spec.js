@@ -11,6 +11,7 @@ const ehrApp = new EhrApp()
 
 const visitId = Helper.sampleObjectId(true)
 const token = Helper.generateToken(visitId)
+const debug = require('debug')('server')
 
 describe('Make some server calls', function () {
   let app
@@ -44,7 +45,7 @@ describe('Make some server calls', function () {
       .end(function (err, res) {
         should.not.exist(err)
         should.exist(res)
-        // console.log('results from api/seed-data', res.body)
+        // debug('results from api/seed-data', res.body)
         done()
       })
   })

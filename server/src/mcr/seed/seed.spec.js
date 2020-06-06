@@ -8,6 +8,7 @@ import Model from './seed-data'
 const typeName = 'SeedData'
 const collectionName = 'seeddatas'
 
+const debug = require('debug')('server')
 /* global describe it */
 describe(`${typeName} mongoose schema testing`, function () {
   before(function (done) {
@@ -21,7 +22,7 @@ describe(`${typeName} mongoose schema testing`, function () {
   it(`${typeName} create without name is not allowed`, function (done) {
     let m = new Model()
     m.validate(function (err) {
-      // console.log('Expect error: ', err)
+      // debug('Expect error: ', err)
       should.exist(err)
       done()
     })
@@ -49,7 +50,7 @@ describe(`${typeName} mongoose schema testing`, function () {
 
   it(`${typeName} can find one`, function (done) {
     Model.findOne({ name: '1234' }, function (err, doc) {
-      // console.log('results', doc)
+      // debug('results', doc)
       should.exist(doc)
       should.not.exist(err)
       doc.should.have.property('ehrData')
@@ -58,7 +59,7 @@ describe(`${typeName} mongoose schema testing`, function () {
       doc.version.should.equal(sampleData.version)
       done()
     }).catch(e => {
-      console.log('find one error', e)
+      debug('find one error', e)
     })
   })
 })

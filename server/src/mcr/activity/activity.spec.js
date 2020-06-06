@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 import Helper from '../common/test-helper'
 const helper = new Helper()
 import Model from './activity'
+const debug = require('debug')('server')
 
 const typeName = 'Activity'
 // const collectionName = 'activties'
@@ -36,7 +37,7 @@ describe(`${typeName} mongoose schema testing`, function () {
   it(`${typeName} be valid params are empty`, function (done) {
     let m = new Model()
     m.validate(function (err) {
-      // console.log('Expect error: ', err)
+      // debug('Expect error: ', err)
       should.exist(err)
       done()
     })
@@ -59,13 +60,13 @@ describe(`${typeName} mongoose schema testing`, function () {
     let activity = Helper.sampleActivity(theConsumer)
     let key = activity.resource_link_id
     Model.findOne({ resource_link_id: key }, function (err, doc) {
-      // console.log('results', doc)
+      // debug('results', doc)
       should.exist(doc)
       should.not.exist(err)
       // doc.seedData.should.have.property('foo');
       done()
     }).catch(e => {
-      console.log('find one error', e)
+      debug('find one error', e)
     })
   })
 })

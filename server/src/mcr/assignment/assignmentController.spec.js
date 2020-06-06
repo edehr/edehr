@@ -10,6 +10,8 @@ const helper = new Helper()
 const typeName = 'AssignmentController'
 const modelName = 'Assignment'
 
+const debug = require('debug')('server')
+
 function makeAssignmentController () {
   return new AssignmentController(configuration)
 }
@@ -40,7 +42,7 @@ describe(`${typeName} controller testing`, function () {
         done()
       })
       .catch(err => {
-        console.log(`${typeName} create ${modelName} error ${err}`)
+        debug(`${typeName} create ${modelName} error ${err}`)
         done()
       })
   })
@@ -49,13 +51,13 @@ describe(`${typeName} controller testing`, function () {
     let m = makeAssignmentController()
     m.locateAssignmentForStudent(key, toolConsumerId)
       .then(doc => {
-        // console.log('results', doc)
+        // debug('results', doc)
         should.exist(doc)
         // doc.seedData.should.have.property('foo')
         done()
       })
       .catch(e => {
-        console.log('find one error', e)
+        debug('find one error', e)
       })
   })
 

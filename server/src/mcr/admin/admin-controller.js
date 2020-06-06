@@ -1,7 +1,7 @@
 import { Router } from 'express'
 import { getAdminPassword, generateAdminPassword } from '../../helpers/admin'
 import { adminLimiter } from '../../helpers/middleware'
-const debug = false
+const debug = require('debug')('server')
 
 export default class adminController {
   constructor (authUtil) {
@@ -25,14 +25,14 @@ export default class adminController {
  * 
  */
   _adminLogin (req, res) {
-    if (debug) console.log('authController -- _adminLogin')
+    debug('authController -- _adminLogin')
     const { adminPass } = req.body
     let adminToken = getAdminPassword()
     const { authorization } = req.headers
     if (!adminPass && !authorization) {
       res.status(401).send(Text.REQUIRED_ADMIN)
     } else {
-      if (debug) console.log('adminPass >> adminToken', adminPass, adminToken)
+      debug('adminPass >> adminToken', adminPass, adminToken)
       try {
         if (adminToken) {
           if (adminPass === adminToken) {
@@ -49,7 +49,7 @@ export default class adminController {
         }
       }
       catch (err) {
-        if (debug) console.log('_adminLogin threw', err)
+        debug('_adminLogin threw', err)
         return res.status(401).send(Text.EXPIRED_ADMIN)
       }
     }
@@ -57,13 +57,13 @@ export default class adminController {
 
   _adminValidate (req, res) {
     const { authorization } = req.headers
-    console.log('req.headers >> ', req.headers)
-    if (debug) console.log('_adminValidate', authorization)
+    debug('req.headers >> ', req.headers)
+    debug('_adminValidate', authorization)
     if (authorization) {
-      if(debug) console.log('auth >> ', authorization)
+      debug('auth >> ', authorization)
       try {
         const result = this.authUtil.authenticate(authorization)
-        if (debug) console.log('result >> ', result)
+        debug('result >> ', result)
         if (result.adminPassword) {
           const adminPassword = getAdminPassword()
           if (result.adminPassword === adminPassword) {

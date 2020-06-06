@@ -57,7 +57,7 @@ describe(`${typeName} controller testing`, function () {
   it(`${typeName} use findActivity`, function (done) {
     let m = new ActivityController(Activity, 'name')
     m.findActivity(theActivity._id).then(doc => {
-      // console.log('findActivity results', doc)
+      // debug('findActivity results', doc)
       // should.exist(doc)
       doc.should.have.property('assignment')
       doc.assignment.should.have.property('seedDataId')
@@ -69,7 +69,7 @@ describe(`${typeName} controller testing`, function () {
     let m = new ActivityController(Activity, 'name')
     // use an id from the wrong type of object to cause a fail
     m.findActivity(theConsumer._id).then(doc => {
-      // console.log('findActivity results', doc)
+      // debug('findActivity results', doc)
       should.not.exist(doc)
       done()
     })
@@ -78,7 +78,7 @@ describe(`${typeName} controller testing`, function () {
   it(`${typeName} use findActivity`, function (done) {
     let m = new ActivityController(Activity, 'name')
     m.findActivity(theActivity._id).then(doc => {
-      // console.log('findActivity results', doc)
+      // debug('findActivity results', doc)
       // should.exist(doc)
       doc.should.have.property('assignment')
       doc.assignment.should.have.property('seedDataId')

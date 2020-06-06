@@ -19,6 +19,8 @@ const visitId = Helper.sampleObjectId(true)
 const token = Helper.generateToken(visitId)
 const adminToken = Helper.generateToken(visitId, true)
 
+const debug = require('debug')('server')
+
 describe(`Make server calls on ${TYPE}`, function () {
   let app
   before(function (done) {
@@ -50,7 +52,7 @@ describe(`Make server calls on ${TYPE}`, function () {
         should.exist(res.body)
         let obj = res.body
         obj.should.have.property('_id')
-        console.log('created', obj._id)
+        debug('created', obj._id)
         theSeedId = obj._id
         done()
       })
@@ -74,7 +76,7 @@ describe(`Make server calls on ${TYPE}`, function () {
         should.exist(res.body)
         let obj = res.body
         obj.should.have.property('seedDataId')
-        console.log('created', obj._id, 'with seed', obj.seedDataId)
+        debug('created', obj._id, 'with seed', obj.seedDataId)
         done()
       })
   })
@@ -93,13 +95,13 @@ describe(`Make server calls on ${TYPE}`, function () {
         should.exist(res.body)
         res.body.should.be.object
         let obj = res.body
-        // console.log('results get list', obj)
+        // debug('results get list', obj)
         obj.should.have.property(property)
         let results = obj[property]
         results.should.be.array
         results.should.have.length(1)
         let sd = results[0]
-        // console.log('results from api/seed-data', sd._id)
+        // debug('results from api/seed-data', sd._id)
         theId = sd._id
         done()
       })
@@ -158,7 +160,7 @@ describe(`Make server calls on ${TYPE}`, function () {
       .set('Accept', 'application/json')
       .expect(200)
       .end(function (err, res) {
-        console.log('Creating a second assignment with the same external id should not fail.', err, res.body)
+        debug('Creating a second assignment with the same external id should not fail.', err, res.body)
         should.exist(res.body)
         done()
       })

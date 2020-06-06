@@ -17,6 +17,8 @@ const ehrApp = new EhrApp()
 const visitId = Helper.sampleObjectId(true)
 const token = Helper.generateToken(visitId)
 
+const debug = require('debug')('server')
+
 describe(`Make server calls on ${TYPE}`, function () {
   let app
   before(function (done) {
@@ -42,7 +44,7 @@ describe(`Make server calls on ${TYPE}`, function () {
       .set('Authorization', `Bearer ${token}`)
       .expect(200)
       .end(function (err, res) {
-        // console.log('create request err, res', err, res.body)
+        // debug('create request err, res', err, res.body)
         should.not.exist(err, url)
         should.exist(res)
         should.exist(res.body)
@@ -66,7 +68,7 @@ describe(`Make server calls on ${TYPE}`, function () {
         should.exist(res.body)
         res.body.should.be.object
         let obj = res.body
-        // console.log('results get list', obj)
+        // debug('results get list', obj)
         obj.should.have.property(PROPERTY)
         let results = obj[PROPERTY]
         results.should.be.array

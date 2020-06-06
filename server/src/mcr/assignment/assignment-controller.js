@@ -24,19 +24,19 @@ export default class AssignmentController extends BaseController {
   }
 
   delete (assignmentId) {
-    console.log('assignmentDeletion')
+    debug('assignmentDeletion')
     if (!assignmentId) {
       throw new SystemError('AssignmentId is missing!')
     } else {
       return Visit.find( { assignment: assignmentId } )
         .then(visits => {
-          if (debug) console.log('visits >> ', visits)
+          debug('visits >> ', visits)
           const promises = visits.map(v => {
             return ActivityData.remove(
               { visit: v._id }
             )
           })
-          console.log('promises >> ', promises)
+          debug('promises >> ', promises)
           return Promise.all(promises)
             .then(() => {
               return Visit.remove(
@@ -124,7 +124,7 @@ export default class AssignmentController extends BaseController {
               var msg = 'Changing assignment for this activity.'
               debug('updateCreateActivity ' + msg)
               activity.assignment = assignment._id
-            // console.log('adasd',activity)
+            // debug('adasd',activity)
             }
             debug('updateCreateActivity update activity ' + activity._id)
             return _this._updateHelper(activity, data)
@@ -145,14 +145,14 @@ export default class AssignmentController extends BaseController {
     const router = super.route()    
     router.delete('/:key', isAdmin, (req, res) => {
       const { key } = req.query
-      console.log('deleteAssignmentQuery')
+      debug('deleteAssignmentQuery')
       this.delete(key)
         .then(res => {
-          if (debug) console.log('res >> ', res)
+          debug('res >> ', res)
           res.status(200).json({success: true})
         })
         .catch(err => {
-          if (debug) console.log('err', err)
+          debug('err', err)
           return req.status(500).send(err)
           // fail(res)
         })

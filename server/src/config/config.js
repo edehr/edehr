@@ -33,7 +33,7 @@ export default class Config {
   }
 
   get config () {
-    console.log('config >> ', this.configuration)
+    debug('config >> ', this.configuration)
     return this.configuration
   }
 

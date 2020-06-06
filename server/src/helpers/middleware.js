@@ -5,7 +5,7 @@ const rateLimit = require('express-rate-limit')
 
 const ADMIN_MAX_REQUEST_LIMIT = 5
 
-const debug = false
+const debug = require('debug')('server')
 const debugErrs = true
 
 export const validatorMiddlewareWrapper = (authUtil) => {
@@ -14,21 +14,21 @@ export const validatorMiddlewareWrapper = (authUtil) => {
       try {
         const result = authUtil.authenticate(req.headers.authorization)
         const {visitId} = result
-        if (debug) console.log('result >> ', result)
+        debug('result >> ', result)
         if (visitId) {
-          if (debug) console.log('passingNext!!!')
+          debug('passingNext!!!')
           req.authPayload = result
           next()
         } else {
-          if (debugErrs) console.log('validatorMiddleware', Text.INVALID_TOKEN)
+          if (debugErrs) debug('validatorMiddleware', Text.INVALID_TOKEN)
           res.status(401).send(Text.INVALID_TOKEN)
         }
       } catch (err) {
-        if (debugErrs) console.log('validatorMiddleware caught ', err)
+        if (debugErrs) debug('validatorMiddleware caught ', err)
         res.status(401).send(err)
       }
     } else {
-      if (debugErrs) console.log('validatorMiddleware no auth header ', req.originalUrl)
+      if (debugErrs) debug('validatorMiddleware no auth header ', req.originalUrl)
       res.status(401).send('A token is required')
     }
   }
@@ -36,17 +36,17 @@ export const validatorMiddlewareWrapper = (authUtil) => {
 
 export const isAdmin = (req, res, next) => {
   const { authPayload } = req
-  console.log('authPayload >> ', req, authPayload)
+  debug('authPayload >> ', req, authPayload)
   if (authPayload.adminPassword) {
     const passwd = getAdminPassword()
     if (authPayload.adminPassword === passwd) {
       next()
     } else {
-      if (debugErrs) console.log('isAdmin not authorized')
+      if (debugErrs) debug('isAdmin not authorized')
       return res.status(403).send('You don\'t have permission to do this!')
     }
   } else {
-    if (debugErrs) console.log('isAdmin invalid token')
+    if (debugErrs) debug('isAdmin invalid token')
     return res.status(401).send('Invalid token')
   }
 }

@@ -1,12 +1,12 @@
 const jwt = require('jsonwebtoken')
-const debug = false
+const debug = require('debug')('server')
 
 // set to expire in 1 minute
 const REFRESH_TOKEN_EXPIRES_IN = '1m'
 export default class AuthUtil { 
   constructor (config) {
     this.tokenSecret = config.authTokenSecret
-    if(debug) console.log('authUtils -- tokenSecret', this.tokenSecret)
+    debug('authUtils -- tokenSecret', this.tokenSecret)
   }
 
   /**
@@ -21,18 +21,18 @@ export default class AuthUtil {
    *
    */
   authenticate (token) { 
-    if(debug) console.log('authController -- authenticate')
+    debug('authController -- authenticate')
     const sliced = token.replace('Bearer ', '')
     return this.validateToken(sliced)
   }
 
   createToken (data) {
-    if(debug) console.log('authController -- createToken')
+    debug('authController -- createToken')
     return jwt.sign(data, this.tokenSecret)
   }
 
   createRefreshToken (token) {
-    if(debug) console.log('authController -- createRefreshToken')
+    debug('authController -- createRefreshToken')
     //set to expire in 1 minute
     return jwt.sign({ token }, this.tokenSecret, { expiresIn: REFRESH_TOKEN_EXPIRES_IN })
   }
@@ -57,7 +57,7 @@ export default class AuthUtil {
    */
   validateToken (token) {
     const results = jwt.verify(token, this.tokenSecret)
-    if (debug) console.log('authController -- validateToken', results)
+    debug('authController -- validateToken', results)
     return results
   }
 }
