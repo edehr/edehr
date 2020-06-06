@@ -6,14 +6,10 @@ const debug = require('debug')('server')
 const debugMW = true
 const debugErrs = true
 
-
 const ADMIN_MAX_REQUEST_LIMIT = 5
 const DEMO_MAX_REQUEST_LIMIT = process.env.NODE_ENV === 'development' ? 10 : 2
 if(debugMW) debug('validatorMiddlewareWrapper ADMIN_MAX_REQUEST_LIMIT', ADMIN_MAX_REQUEST_LIMIT)
 if(debugMW) debug('validatorMiddlewareWrapper DEMO_MAX_REQUEST_LIMIT', DEMO_MAX_REQUEST_LIMIT)
-
-const debug = require('debug')('server')
-const debugErrs = true
 
 /**
  *
@@ -23,11 +19,11 @@ const debugErrs = true
 export const validatorMiddlewareWrapper = (authUtil) => {
   return (req, res, next) => {
     if (req && req.headers.authorization) {
-      if (debugMW) debug('validatorMiddlewareWrapper has header:')
+      if (debugMW) debug('validatorMiddlewareWrapper has header')
       try {
         const result = authUtil.authenticate(req.headers.authorization)
         const { visitId, demoData } = result
-        if (debugMW) debug('validatorMiddlewareWrapper result >> ', result)
+        if (debugMW) debug('validatorMiddlewareWrapper has result? ', !!result, 'has demoData?', !!demoData)
         if (visitId || demoData) {
           if (debugMW) debug('validatorMiddlewareWrapper onto next')
           req.authPayload = result
