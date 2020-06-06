@@ -25,7 +25,16 @@ module.exports = function () {
           tool_consumer_instance_guid: 'Moodle-Local-EdEHRPrototype',
           tool_consumer_instance_name: 'EdEHRPrototype'
         }
-        cc.createWithSeed(def)
+        const seedDef = {
+          toolConsumer: '',
+          name: 'Test seed',
+          description: 'A seed for unit testing',
+          version: '1',
+          isDefault: true,
+          ehrData: {}
+        }
+
+        cc.createWithSeed(def, seedDef)
           .then((response, reject) => {
             // console.log('save results', response, reject)
             resolve()

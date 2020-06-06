@@ -72,7 +72,11 @@ const actions = {
   },
   loadDemoData: function ({ commit }) {
     const token = _getDemoToken()
-    return demoHelper.loadDemoData(token)
+    if (!token ) {
+      console.error('Unexpected no demo token when calling loadDemoData')
+      return Promise.reject('No token')
+    }
+    return demoHelper.dhLoadDemoData(token)
       .then(res => {
         const { demoData } = res.data
         commit('setDemoData', demoData)

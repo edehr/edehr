@@ -77,7 +77,7 @@ export default class DemoController {
             toolConsumerId: theToolConsumer._id,
             personaList: demoPersonae
           }
-          const demoToken = this.cc.authController.createToken({demoData: demoData})
+          const demoToken = this.cc.authUtil.createToken({demoData: demoData})
           if (debugDC) debug('DemoController _createDemoToolConsumer generated token')
           res.status(200).json({demoToken})
         } catch (err) {
@@ -192,7 +192,7 @@ export default class DemoController {
   }
 
   route () {
-    const validatorMiddleware = [validatorMiddlewareWrapper(this.cc.authController)]
+    const validatorMiddleware = [validatorMiddlewareWrapper(this.cc.authUtil)]
     const router = new Router()
 
     /**

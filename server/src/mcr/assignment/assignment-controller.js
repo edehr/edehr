@@ -9,7 +9,7 @@ import {ok, fail} from '../common/utils'
 import { isAdmin } from '../../helpers/middleware'
 
 const debug = require('debug')('server')
-const debugAC = true
+const debugAC = false
 
 const sd = new SeedDataController()
 

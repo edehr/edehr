@@ -32,7 +32,7 @@ export default class DemoHelper {
       })
   }
 
-  loadDemoData (token) {
+  dhLoadDemoData (token) {
     if(debugDH) console.log('DH fetch')
     setAuthHeader(token)
     const apiUrl = this.apiUrl

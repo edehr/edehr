@@ -299,10 +299,9 @@ export default {
     }
   },
   mounted: function () {
-    let m = sessionStorage.getItem('demoMode')
-    console.log('dddd?', m)
-    if(m)
-      this.activateDemoMode = m
+    let dMode = sessionStorage.getItem('demoMode')
+    if(dMode)
+      this.activateDemoMode = dMode
   },
   watch: {
     activateDemoMode: function (val) {

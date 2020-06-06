@@ -145,7 +145,6 @@ export default {
       _this.loadAssignments()
     }
     EventBus.$on(PAGE_DATA_READY_EVENT, this.refreshEventHandler)
-    _this.loadAssignments()
   },
   beforeDestroy: function () {
     if (this.refreshEventHandler) {

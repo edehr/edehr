@@ -6,7 +6,7 @@ import SeedDataController from '../seed/seedData-controller'
 import {ok, fail} from '../common/utils'
 import { isAdmin } from '../../helpers/middleware'
 
-const debugCC = true
+const debugCC = false
 const debug = require('debug')('server')
 const seedDataController = new SeedDataController()
 

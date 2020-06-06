@@ -458,7 +458,8 @@ class StoreHelperWorker {
   }
 
   getDemoToken () {
-    return this._getDemoStorage('demoToken')
+    // return this._getDemoStorage('demoToken')
+    return localStorage.getItem(sKeys.DEMO_TOKEN)
   }
 
   getDemoPersona () {

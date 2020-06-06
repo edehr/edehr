@@ -1,4 +1,6 @@
 import { Router } from 'express'
+import { getAdminPassword, generateAdminPassword } from '../../helpers/admin'
+import { adminLimiter } from '../../helpers/middleware'
 import { Text } from '../../config/text'
 
 const jwt = require('jsonwebtoken')
@@ -6,11 +8,10 @@ const debug = require('debug')('server')
 
 export default class AuthController {
 
-  constructor (config) {
-    this.tokenSecret = config.authTokenSecret
-    if(debugAC) debug('authController -- tokenSecret', this.tokenSecret)
+  constructor (authUtil) {
+    this.authUtil = authUtil
   }
- 
+
   /**
  * @method _adminLogin 
  * Receives the admin's password and, if it is valid, it returns a new token which is
@@ -151,64 +152,18 @@ export default class AuthController {
     }
   }
 
-  /**
-   * @method authenticate
-   * Unwraps the request and attempts to validate its token
-   * @param {*} token 
-   * @description unwraps the token from the Bearer ${token} structure and then 
-   * passes it to validateToken
-   * 
-   * @returns {*} a function call to validateToken
-   * @throws {*} token validation errors from jwt.verify
-   *
-   */
-  authenticate (token) { 
-    if(debugAC) debug('authController -- authenticate')
-    const sliced = token.replace('Bearer ', '')
-    return this.validateToken(sliced)
-  }
-
-  createToken (data) {
-    if(debugAC) debug('authController -- createToken')
-    return jwt.sign(data, this.tokenSecret)
-  }
-
-  createRefreshToken (token) {
-    if(debugAC) debug('authController -- createRefreshToken')
-    //set to expire in 1 minute
-    return jwt.sign({token}, this.tokenSecret, { expiresIn: '1m'})
-  }
-  
-  
-  /**
-   * @method validateToken
-   * Validates the given token
-   * @param {String} token 
-   * @description this is a wrapper for jwt.verify. 
-   * Which is a way of validating the token upon the jwt package.
-   * This function, however, can throw several errors; a good example would be whether the token 
-   * is expired, which commonly happens for the refresh token. 
-   * @returns {*} the results of calling jwt.verify on the token string.
-   * This may throw errors if the token is invalid or expired.
-   * 
-   * @throws {*} token validation errors from jwt.verify
-   * @inheritdoc Upon the (Synchronous) If a callback is not supplied, function acts synchronously.
-   * Returns the payload decoded if the signature is valid and optional expiration, audience, or issuer are valid.
-   * If not, it will throw the error. 
-   * (See more in https://github.com/auth0/node-jsonwebtoken)
-   */
-  validateToken (token) {
-    const results = jwt.verify(token, this.tokenSecret)
-    if (debugAC) debug('authController -- validateToken', results)
-    return results
-  }
-
   route () {
     const router = new Router()
     router.post('/', (req, res) => {
       this._getTokenContent(req, res)
     })
-  
+    router.post('/admin', adminLimiter, (req, res) => {
+      this._adminLogin(req, res)
+    })
+
+    router.post('/admin/validate', (req, res) => {
+      this._adminValidate(req, res)
+    })
 
     router.post('/refresh', (req, res) => {
       this._getAuthToken(req, res)
