@@ -13,10 +13,10 @@
               ehr-banner
           div(class="ehr_layout__content_page")
             div(class="mobile-only")
-              span(style="text-align: left; margin-left: 1em; font-size: 2em;",  @click="showingNavPanel = !showingNavPanel")
-                fas-icon(icon="bars")
+              span(style="text-align: left; margin-left: 1em; font-size: 2em;")
+                fas-icon(icon="bars", @click="showingNavPanel = !showingNavPanel")
                 transition(name="hamburger-action")
-                  ehr-nav-panel(v-if="showingNavPanel", @pressed="showingNavPanel = false")
+                  ehr-nav-panel(v-if="showingNavPanel")
             slot Main EHR content for a component will appear here. The component is selected by the router
     input(class="checkbox", type="checkbox", v-model="showingSpecial")
     div(v-show="showingSpecial")
