@@ -4,7 +4,7 @@
       ui-spinner(:loading="isLoading")
       app-header
       main(class="ehr_layout__main columns")
-        div(class="ehr_layout__nav column")
+        div(class="ehr_layout__nav column bigger-screens")
           ehr-nav-panel
         div(class="ehr_layout__content column")
           div(class="ehr_layout__content_banner")
@@ -12,6 +12,11 @@
             div(class="ehr_layout__content_banner_content")
               ehr-banner
           div(class="ehr_layout__content_page")
+            div(class="mobile-only")
+              span(style="text-align: left; margin-left: 1em; font-size: 2em;")
+                fas-icon(icon="bars", @click="showingNavPanel = !showingNavPanel")
+                transition(name="hamburger-action")
+                  ehr-nav-panel(v-if="showingNavPanel")
             slot Main EHR content for a component will appear here. The component is selected by the router
     input(class="checkbox", type="checkbox", v-model="showingSpecial")
     div(v-show="showingSpecial")
@@ -43,13 +48,14 @@ export default {
   },
   data: function () {
     return {
-      showingSpecial: false
+      showingSpecial: false,
+      showingNavPanel: false,
     }
   },
   computed: {
     isLoading () {
       return StoreHelper.isLoading()
-    }
+    },
   },
   mounted: function () {
     console.log('LayoutEhr mounted')
@@ -57,6 +63,11 @@ export default {
   watch: {
     showingSpecial: function (flag) {
       StoreHelper.setShowAdvanced(flag)
+    },
+    $route: function (curr, prev) {
+      if (curr !== prev && this.showingNavPanel) {
+        this.showingNavPanel = false
+      }
     }
   }
 }
@@ -118,6 +129,10 @@ export default {
   }
 }
 
+.mobile-only {
+  display: none;
+}
+
 .app {
   flex: 1 0 auto;
 }
@@ -138,4 +153,23 @@ footer {
         -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
     }
 }
+
+@media screen and (max-width: 1024px) and (max-height: 1400px ) {
+  .mobile-only {
+    display: block;
+  }
+  .bigger-screens {
+    display: none;
+  }
+}
+
+.hamburger-action-enter-active, .hamburger-action-leave-active  {
+  transition: opacity .15s;
+}
+
+.hamburger-action-enter, .hamburger-action-leave-to {
+  opacity: 0;
+}
+
+
 </style>

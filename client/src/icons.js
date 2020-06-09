@@ -37,7 +37,8 @@ import {
   faTrash,
   faUpload,
   faUserClock,
-  faUserInjured
+  faUserInjured,
+  faBars
 } from '@fortawesome/free-solid-svg-icons'
 import { faFontAwesome, faCanadianMapleLeaf } from '@fortawesome/free-brands-svg-icons'
 
@@ -78,7 +79,8 @@ export default function (Vue) {
     faTrash,
     faUpload,
     faUserClock,
-    faUserInjured
+    faUserInjured,
+    faBars
   )
   library.add(
     faFontAwesome,

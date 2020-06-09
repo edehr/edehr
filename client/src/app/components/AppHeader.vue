@@ -159,4 +159,43 @@ header {
   }
 }
 
+@media screen and (max-width: 1024px) and (max-height: 1400px) {
+  .apphdr {
+    .wrapper {
+      padding: 8px 12px;
+    }
+    .navLink {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-weight: bold;
+      font-size: auto;
+      margin-left: 1em;
+
+      &:focus,
+      &:hover,
+      &.is-active {
+        color: rgba(255, 255, 255, 1);
+        transition: 350ms ease-out;
+      }
+    }
+
+    .push {
+      margin-left: 0px;
+    }
+
+    .navItem .button {
+      margin-left: none;
+      margin-bottom: 0;
+      margin-top: -8px; // t0 keep text aligned with non-button items
+    }
+    .app-title {
+      font-size: auto;
+      margin-left: 0;
+    }
+
+  }
+
+}
+
+
 </style>
