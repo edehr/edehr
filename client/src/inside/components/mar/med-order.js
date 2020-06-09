@@ -1,6 +1,7 @@
 
 const SCHEDULED='sched'
 const PRESCRIBED='prn'
+const ONCE_A_DAY = 'od'
 const PRN_KEYS =[]
 for (let i = 1; i <= 6; i++) {
   PRN_KEYS.push(`prn${i}`)
@@ -51,6 +52,8 @@ export default class MedOrder {
           scheduleTimes.push(prnTime)
         }
       })
+    } else if (medOrder.administration === ONCE_A_DAY) {
+      scheduleTimes.push('od')
     }
     // TODO need to handle the other administration options STAT and ONCE
     this._scheduleTimes = scheduleTimes

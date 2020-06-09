@@ -1,4 +1,6 @@
 const moment = require('moment')
+const ONCE_A_DAY_MEDS = 'OD'
+
 
 function getSchedule (medOrders) {
   let schedules = {}
@@ -28,11 +30,15 @@ function getSchedule (medOrders) {
   Object.keys(schedules).forEach( k => {
     typicalDay.push(schedules[k])
   })
-  return typicalDay.filter(d => isTimeValid(d.hour24)).sort((a,b) => {
-    const aTime = moment(a.hour24, 'HH:mm')
-    const bTime = moment(b.hour24, 'HH:mm')
-    return aTime.diff(bTime)
-  })
+  return [
+    ...typicalDay.filter(d => String(d.hour24).toUpperCase() === ONCE_A_DAY_MEDS), 
+    ...typicalDay.filter(d => isTimeValid(d.hour24))
+      .sort((a,b) => {
+        const aTime = moment(a.hour24, 'HH:mm')
+        const bTime = moment(b.hour24, 'HH:mm')
+        return aTime.diff(bTime)
+      })
+  ]
 }
 
 function isTimeValid (time) { 
