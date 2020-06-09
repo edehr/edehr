@@ -4,7 +4,7 @@
       ui-spinner(:loading="isLoading")
       app-header
       main(class="ehr_layout__main columns")
-        div(class="ehr_layout__nav column")
+        div(class="ehr_layout__nav column", v-if="!isResponsive")
           ehr-nav-panel
         div(class="ehr_layout__content column")
           div(class="ehr_layout__content_banner")
@@ -12,7 +12,12 @@
             div(class="ehr_layout__content_banner_content")
               ehr-banner
           div(class="ehr_layout__content_page")
-            slot Main EHR content for a component will appear here. The component is selected by the router
+            div(v-if="isResponsive")
+              span(style="text-align: left; margin-left: 1em; font-size: 2em;",  @click="showingNavPanel = !showingNavPanel")
+                fas-icon(icon="bars")
+                transition(name="hamburger-action")
+                  ehr-nav-panel(v-if="showingNavPanel", @pressed="showingNavPanel = false")
+              slot Main EHR content for a component will appear here. The component is selected by the router
     input(class="checkbox", type="checkbox", v-model="showingSpecial")
     div(v-show="showingSpecial")
       ehr-special
@@ -43,12 +48,16 @@ export default {
   },
   data: function () {
     return {
-      showingSpecial: false
+      showingSpecial: false,
+      showingNavPanel: false,
     }
   },
   computed: {
     isLoading () {
       return StoreHelper.isLoading()
+    },
+    isResponsive () {
+      return window.innerHeight <= 1400 && window.innerWidth <= 1024
     }
   },
   mounted: function () {
@@ -57,6 +66,12 @@ export default {
   watch: {
     showingSpecial: function (flag) {
       StoreHelper.setShowAdvanced(flag)
+    },
+    $route: function (curr, prev) {
+      console.log('comparing routes >> ', curr, prev)
+      if (curr !== prev && this.isResponsive && this.showingNavPanel) {
+        this.showingNavPanel = false
+      }
     }
   }
 }
@@ -138,4 +153,14 @@ footer {
         -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
     }
 }
+
+.hamburger-action-enter-active, .hamburger-action-leave-active  {
+  transition: opacity .3s;
+}
+
+.hamburger-action-enter, .hamburger-action-leave-to {
+  opacity: 0;
+}
+
+
 </style>
