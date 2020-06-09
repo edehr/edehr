@@ -4,7 +4,7 @@
       ui-spinner(:loading="isLoading")
       app-header
       main(class="ehr_layout__main columns")
-        div(class="ehr_layout__nav column", v-if="!isResponsive")
+        div(class="ehr_layout__nav column bigger-screens")
           ehr-nav-panel
         div(class="ehr_layout__content column")
           div(class="ehr_layout__content_banner")
@@ -12,12 +12,12 @@
             div(class="ehr_layout__content_banner_content")
               ehr-banner
           div(class="ehr_layout__content_page")
-            div(v-if="isResponsive")
+            div(class="mobile-only")
               span(style="text-align: left; margin-left: 1em; font-size: 2em;",  @click="showingNavPanel = !showingNavPanel")
                 fas-icon(icon="bars")
                 transition(name="hamburger-action")
                   ehr-nav-panel(v-if="showingNavPanel", @pressed="showingNavPanel = false")
-              slot Main EHR content for a component will appear here. The component is selected by the router
+            slot Main EHR content for a component will appear here. The component is selected by the router
     input(class="checkbox", type="checkbox", v-model="showingSpecial")
     div(v-show="showingSpecial")
       ehr-special
@@ -56,9 +56,6 @@ export default {
     isLoading () {
       return StoreHelper.isLoading()
     },
-    isResponsive () {
-      return window.innerHeight <= 1400 && window.innerWidth <= 1024
-    }
   },
   mounted: function () {
     console.log('LayoutEhr mounted')
@@ -68,8 +65,7 @@ export default {
       StoreHelper.setShowAdvanced(flag)
     },
     $route: function (curr, prev) {
-      console.log('comparing routes >> ', curr, prev)
-      if (curr !== prev && this.isResponsive && this.showingNavPanel) {
+      if (curr !== prev && this.showingNavPanel) {
         this.showingNavPanel = false
       }
     }
@@ -133,6 +129,10 @@ export default {
   }
 }
 
+.mobile-only {
+  display: none;
+}
+
 .app {
   flex: 1 0 auto;
 }
@@ -154,8 +154,17 @@ footer {
     }
 }
 
+@media screen and (max-width: 1024px) and (max-height: 1400px ) {
+  .mobile-only {
+    display: block;
+  }
+  .bigger-screens {
+    display: none;
+  }
+}
+
 .hamburger-action-enter-active, .hamburger-action-leave-active  {
-  transition: opacity .3s;
+  transition: opacity .15s;
 }
 
 .hamburger-action-enter, .hamburger-action-leave-to {
