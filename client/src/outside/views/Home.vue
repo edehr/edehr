@@ -14,12 +14,12 @@
               ui-button(class="is-pulled-right",@buttonClicked="logoutUser") Logout
             div You are logged in as an instructor.  &nbsp;
               ui-link(:name="'instructor'") Go to your course and class lists.
-          div(v-else-if="isStudent")
+          div(v-if="isStudent")
             div(v-if="devEnv")
               ui-button(class="is-pulled-right",@buttonClicked="logoutUser") Logout
             div You are logged in as a student. &nbsp;
               ui-link(:name="'ehr'") Go to your assignment.
-          div(v-else-if="isDemo")
+          div(v-if="isDemo")
             div You are already logged into the demonstration. &nbsp;
               ui-link(:name="'demo'") Click here to return to the demonstration page.
           div(v-else)

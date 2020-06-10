@@ -126,26 +126,24 @@ export default class DemoController {
       })
   }
 
+  /**
+   * Request body needs to contain the lti data
+   * Good resource for LTI parameters and what they mean and do
+   *   https://developer.itslearning.com/LTI_standard_parameters.html
+   * @param req
+   * @param res
+   */
   submitLTIData (req, res) {
     const {host} = req.headers
-    let {demoData, assignment} = req.body
-    demoData = Object.assign({}, demoData, {
-      oauth_timestamp: Math.round(Date.now() / 1000),
-      oauth_nonce: Date.now() + Math.random() * 100,
-      custom_assignment: assignment,
-      // TODO: change this once the assignment seed is done.
-      // Please, refer to https://github.com/BCcampus/edehr/issues/691
-      // for further detail
-      resource_link_id: 'resource_link_id',
-      context_id: Math.floor(Date.now() / 1000)
-    })
-    const _req = this._signAndPrepareLTIRequest(demoData, host)
+    let {ltiData} = req.body
+    const _req = this._signAndPrepareLTIRequest(ltiData, host)
     this._LTIPost(_req)
-      .then((r) => {
-        res.status(200).json({refreshToken: r.data.refreshToken, url: r.data.url})
+      .then((_results) => {
+        if (debugDC) debug('DC.submitLtiData after post with results', _results)
+        res.status(200).json({refreshToken: _results.data.refreshToken, url: _results.data.url})
       })
       .catch(err => {
-        if (debugDC) console.log('LTIPOST caught >> ', err.message)
+        console.error('DC.submitLtiData caught >> ', err.message)
         res.status(500).send(err)
       })
   }

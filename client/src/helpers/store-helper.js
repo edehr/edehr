@@ -463,8 +463,8 @@ class StoreHelperWorker {
     return this._dispatchDemoStore('demoLogout')
   }
 
-  loadDemoData () {
-    return this._dispatchDemoStore('loadDemoData')
+  async loadDemoData () {
+    return await this._dispatchDemoStore('loadDemoData')
   }
 
   getDemoToken () {
@@ -496,8 +496,8 @@ class StoreHelperWorker {
     return this._dispatchDemoStore('setDemoAssignment', assignment)
   }
 
-  submitPersona (demoData, assignment) {
-    return this._dispatchDemoStore('submitPersona', { demoData, assignment })
+  submitPersona (submitData) {
+    return this._dispatchDemoStore('submitPersona', { submitData  })
   }
 
 }

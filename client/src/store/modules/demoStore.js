@@ -87,12 +87,11 @@ const actions = {
         return Promise.reject(err)
       })
   },
-  submitPersona: function (none, { demoData, assignment }) {
+  submitPersona: function (none, { submitData }) {
     const token = _getDemoToken()
-    return demoHelper.submitPersona(token, demoData, assignment)
+    return demoHelper.submitPersona(token, submitData)
       .then(res => {
         return Promise.resolve(res.data)
-        
       }).catch(err => {
         return Promise.reject(err)
       })

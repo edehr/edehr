@@ -10,6 +10,10 @@ const CustomStrategy = require('passport-custom')
 const lti = require('ims-lti')
 const passport = require('passport')
 
+/*
+Good resource for LTI parameters and what they mean and do
+https://developer.itslearning.com/LTI_standard_parameters.html
+ */
 const PROPS_CONSUMER = [
   'tool_consumer_instance_guid',
   'tool_consumer_instance_name',

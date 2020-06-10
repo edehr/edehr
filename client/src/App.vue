@@ -24,21 +24,25 @@ export default {
   },
   methods: {
     loadData: async function () {
-      if(debugApp) console.log('App begin loadData')
+      if(debugApp) console.log('App LD begin loadData')
+      const demoToken = StoreHelper.getDemoToken()
+      const refreshToken = this.$route.query.token
+      const authToken = StoreHelper.getAuthToken()
+      const isDemo = !! demoToken
+      const isUser = refreshToken || authToken
 
       // Load the demo data if its present and then return
-      if(StoreHelper.getDemoToken()) {
-        if(debugApp) console.log('App load the demo data')
-        return StoreHelper.loadDemoData()
-          .then(() => {
-            EventBus.$emit(PAGE_DATA_READY_EVENT)
-          })
+      if(isDemo) {
+        if(debugApp) console.log('App LD load the demo data')
+        await StoreHelper.loadDemoData()
+        if (!isUser) {
+          if(debugApp) console.log('App LD load no user data so return and refresh')
+          EventBus.$emit(PAGE_DATA_READY_EVENT)
+          return Promise.resolve()
+        }
       }
 
       // OK now see if we are handling a new LTI request or we've seen one before
-      const refreshToken = this.$route.query.token
-      const authToken = StoreHelper.getAuthToken()
-      const isUser = refreshToken || authToken
       if (!isUser) {
         return Promise.resolve()
       }
@@ -55,19 +59,19 @@ export default {
             StoreHelper.setApiError(msg)
             return Promise.reject(msg)
           }
-          if(debugApp) console.log('App store the API URL', apiUrl)
+          if(debugApp) console.log('App LD store the API URL', apiUrl)
           return StoreHelper.apiUrlSet(apiUrl)
         })
         .then((/* ******** AUTH TOKEN  *************  */) => {
           if (refreshToken) {
             /* ********   NEW CONNECTION  *************  */
-            if(debugApp) console.log('App refresh token fetch')
+            if(debugApp) console.log('App LD refresh token fetch')
             return StoreHelper.fetchAndStoreAuthToken(refreshToken, apiUrl)
               .then((token) => {
                 if (!token) {
                   /* ********   AUTH PROCESS DID NOT WORK -- SYSTEM ERROR?  *************  */
                   // Todo should this condition be a system error?
-                  if(debugApp) console.log('App refresh token expired')
+                  if(debugApp) console.log('App LD refresh token expired')
                   return Promise.reject(Text.EXPIRED_REFRESH_TOKEN)
                 }
                 /* ******** NEW CONNECTION SUCCEEDED *************  */
@@ -79,55 +83,55 @@ export default {
                   !!authToken
                 ) {
                   /* ******** REFRESH TOKEN IS OLD -- BUT PREVIOUS CONNECTION EXISTS *************  */
-                  if(debugApp) console.log('App refresh expired but we have a previous auth token. Use it')
+                  if(debugApp) console.log('App LD refresh expired but we have a previous auth token. Use it')
                   setAuthHeader(authToken)
                   return StoreHelper.fetchTokenData(authToken, apiUrl)
                 } else {
                   /* ******** AUTH PROCESS TOOK TOO LONG - SYS ERR?  *************  */
-                  if(debugApp) console.log('App refresh expired and no previous token')
+                  if(debugApp) console.log('App LD refresh expired and no previous token')
                   return Promise.reject(Text.EXPIRED_TOKEN(err))
                 }
               })
           } else if (authToken) {
             /* ******** USE PREVIOUS CONNECTION *************  */
-            if(debugApp) console.log('App use stored auth token')
+            if(debugApp) console.log('App LD use stored auth token',authToken)
             setAuthHeader(authToken)
             return StoreHelper.fetchTokenData(authToken, apiUrl)
           }  else {
-            if(debugApp) console.log('App no auth token, no refresh token', Text.PARAMETERS_ERROR)
+            if(debugApp) console.log('App LD no auth token, no refresh token', Text.PARAMETERS_ERROR)
             return Promise.reject(Text.PARAMETERS_ERROR)
           }
         })
         .then((/* ********  LOAD USER DATA FROM TOKEN  *************  */) => {
-          if(debugApp) console.log('App tokens processed get auth data')
+          if(debugApp) console.log('App LD tokens processed get auth data')
           const payload = StoreHelper.getAuthData()
           if (!(payload && payload.visitId)) {
-            if(debugApp) console.log('App no auth data', Text.TOKEN_FETCHING_ERROR)
+            if(debugApp) console.log('App LD no auth data', Text.TOKEN_FETCHING_ERROR)
             return Promise.reject(Text.TOKEN_FETCHING_ERROR)
           } else {
-            if(debugApp) console.log('App have auth data and visit id', payload)
+            if(debugApp) console.log('App LD have auth data and visit id', payload)
             visitId = payload.visitId
           }
         })
         .then((/* ********   CLEAR PREVIOUS SESSION  *************  */) => {
-          if(debugApp) console.log('App clear previous session and start with visit id')
+          if(debugApp) console.log('App LD clear previous session and start with visit id')
           return StoreHelper.clearSession().then( () => { return visitId })
         }).then((/* ********   LOAD VISIT DATA  *************  */) => {
-          if(debugApp) console.log('App load visit record')
+          if(debugApp) console.log('App LD load visit record')
           return StoreHelper.loadVisitRecord(visitId)
         })
         .then((/* ********   LOAD STUDENT OR INSTRUCTOR  *************  */) => {
           if (StoreHelper.isInstructor()) {
-            if(debugApp) console.log('App load instructor')
+            if(debugApp) console.log('App LD load instructor')
             return StoreHelper.loadInstructor2()
           } else if (StoreHelper.isStudent()) {
-            if(debugApp) console.log('App load student')
+            if(debugApp) console.log('App LD load student')
             return StoreHelper.loadStudent2()
           }
         }).then((/* ********  DONE  *************  */) => {
           // move this to helper
           StoreHelper.setLoading(null, false)
-          if (debugApp) console.log('App DONE loading. Send event', PAGE_DATA_REFRESH_EVENT)
+          if (debugApp) console.log('App LD DONE loading. Send event', PAGE_DATA_REFRESH_EVENT)
           EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
         })
         .catch(err => {
@@ -174,6 +178,8 @@ export default {
   },
   watch: {
     $route: function (route) {
+      // doing a watch on $route is equal to a router.afterEach hook
+      // for more about after each see https://router.vuejs.org/guide/advanced/navigation-guards.html#global-after-hooks
       this.loadDataIfNotLoaded(route)
     }
   }
