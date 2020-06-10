@@ -1,4 +1,4 @@
-import { setApiError } from '../../../helpers/ehr-utils'
+import StoreHelper from '../../../helpers/store-helper'
 import MedOrder from './med-order'
 import MarEntity from './mar-entity'
 import EhrDefs from '../../../helpers/ehr-defs-grid'
@@ -98,7 +98,7 @@ export default class MarHelper {
       }
       key = table.tableKey
     } catch (err) {
-      setApiError(err)
+      StoreHelper.setApiError(err)
     }
     return key
   }

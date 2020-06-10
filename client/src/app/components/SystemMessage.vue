@@ -6,7 +6,6 @@
 
 <script>
 import UiClose from '../ui/UiClose'
-import { setApiError, setSystemMessage } from '../../helpers/ehr-utils'
 import { Text } from '../../helpers/ehr-text'
 import StoreHelper from '../../helpers/store-helper'
 import EventBus from '../../helpers/event-bus'
@@ -32,9 +31,9 @@ export default {
   methods: {
     clearMessage () {
       if (this.hasErrMsg)
-        setApiError('')
+        StoreHelper.setApiError('')
       else
-        setSystemMessage('')
+        StoreHelper.setSystemMessage('')
     },
     updateSystemMessage () {
       let msg = ''
@@ -43,13 +42,13 @@ export default {
           msg = Text.STUDENT_HAS_SUBMITTED
         }
       }
-      // uncomment to set a test message
-      // setApiError('This a test api error message')
+      // uncomment to set a test api error
+      // StoreHelper.setApiError('This a test api error message')
+      // uncomment one of these msgs to set a test system message
       // msg = Text.STUDENT_HAS_SUBMITTED
       // msg = Text.STUDENT_INTRO
       // msg = Text.ASSIGNMENT_HAS_BEEN_EVALUATED
-      // console.log('updateSystemMessage', msg)
-      setSystemMessage(msg)
+      StoreHelper.setSystemMessage(msg)
     }
 
   },

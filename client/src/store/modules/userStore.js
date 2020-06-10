@@ -1,5 +1,5 @@
 import InstoreHelper from './instoreHelper'
-import { setApiError } from '../../helpers/ehr-utils'
+import StoreHelper from '../../helpers/store-helper'
 import { Text } from '../../helpers/ehr-text'
 const API = 'users'
 const NAME = 'UserStore'
@@ -41,7 +41,7 @@ const actions = {
       if(debug) console.log('response.data', response.data)
       if (!user) {
         let msg = Text.GET_USER_STORE_ERROR(NAME, id)
-        setApiError(msg)
+        StoreHelper.setApiError(msg)
         return
       }
       return user

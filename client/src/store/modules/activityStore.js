@@ -1,5 +1,5 @@
 import InstoreHelper from './instoreHelper'
-import { setApiError } from '../../helpers/ehr-utils'
+import StoreHelper from '../../helpers/store-helper'
 import sKeys from '../../helpers/session-keys'
 import { Text } from '../../helpers/ehr-text'
 const API = 'activities'
@@ -96,7 +96,7 @@ const actions = {
       let results = response.data[OBJ]
       if (!results) {
         let msg = Text.GET_ACTIVITY_STORE_ERROR(NAME, id)
-        setApiError(msg)
+        StoreHelper.setApiError(msg)
         return
       }
       return results

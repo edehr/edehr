@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import { setApiError } from './helpers/ehr-utils'
 import EventBus from './helpers/event-bus'
 import { Text } from './helpers/ehr-text'
 import StoreHelper from './helpers/store-helper'
@@ -53,7 +52,7 @@ export default {
           apiUrl = this.$route.query.apiUrl || StoreHelper.apiUrl()
           if (!apiUrl) {
             const msg = Text.MISSING_API_URL
-            setApiError(msg)
+            StoreHelper.setApiError(msg)
             return Promise.reject(msg)
           }
           if(debugApp) console.log('App store the API URL', apiUrl)
@@ -134,7 +133,7 @@ export default {
         .catch(err => {
           StoreHelper.setLoading(null, false)
           this.$router.push('/')
-          setApiError(err + '. System Error')
+          StoreHelper.setApiError(err + '. System Error')
         })
     },
 

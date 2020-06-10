@@ -55,7 +55,6 @@ import InstoreHelper from '../../store/modules/instoreHelper'
 import UiButton from '../../app/ui/UiButton'
 import UiConfirm from '../../app/ui/UiConfirm'
 import UiLink from '../../app/ui/UiLink.vue'
-import { setApiError } from '../../helpers/ehr-utils'
 import EventBus from '../../helpers/event-bus'
 import { PAGE_DATA_READY_EVENT } from '../../helpers/event-bus'
 const COMFIRM_ENTER = {
@@ -132,7 +131,7 @@ export default {
           if (debugDC) console.log('loadAssignments response.data', list)
           if (!list) {
             const msg = 'System error getting demonstration assignments.'
-            setApiError(msg)
+            StoreHelper.setApiError(msg)
             return
           }
           this.assignments = list
