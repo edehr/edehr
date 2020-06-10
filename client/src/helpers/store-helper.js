@@ -78,6 +78,10 @@ class StoreHelperWorker {
   // TODO remove context in all calls to this method
   setLoading (context, value) { store.commit('system/setLoading', value) }
   setShowAdvanced (value) { store.commit('system/setShowingAdvanced', value) }
+
+  setApiError (msg) {  store.commit('system/setApiError', msg, { root: true }) }
+  setSystemMessage (msg) {  store.commit('system/setSystemMessage', msg, { root: true }) }
+
   isLoading () { return this._getSystemProperty('isLoading')}
   isShowingAdvanced () { return this._getSystemProperty('isShowingAdvanced') }
 

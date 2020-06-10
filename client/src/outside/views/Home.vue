@@ -218,7 +218,6 @@ import StoreHelper from '@/helpers/store-helper'
 import UiButton from '../../app/ui/UiButton'
 import UiLink from '../../app/ui/UiLink.vue'
 import EhrHeaderItem from '../../inside/components/EhrAssignmentDetailsContent'
-import { setApiError } from '../../helpers/ehr-utils'
 import UiConfirm from '../../app/ui/UiConfirm'
 import Resources from '../components/Resources.vue'
 
@@ -271,7 +270,7 @@ export default {
           this.$router.push('demo')
         }).catch(err => {
           if(debugH) console.log('createDemoToolConsumer Error', err)
-          setApiError(err)
+          StoreHelper.setApiError(err)
           StoreHelper.setLoading(null, false)
         })
     }

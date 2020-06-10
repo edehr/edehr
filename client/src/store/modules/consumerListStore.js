@@ -1,5 +1,5 @@
 import InstoreHelper from './instoreHelper'
-import { setApiError } from '../../helpers/ehr-utils'
+import StoreHelper from '../../helpers/store-helper'
 import { Text } from '../../helpers/ehr-text'
 const API = 'consumers'
 const debug = false
@@ -24,7 +24,7 @@ const actions = {
       if (!list) {
         let msg = Text.NO_CONSUMERS_ERROR
         console.error(msg)
-        setApiError(msg)
+        StoreHelper.setApiError(msg)
         return
       }
       context.commit('setConsumersListing', list)
@@ -57,7 +57,7 @@ const actions = {
       .catch(err => {
         let msg = Text.UPDATE_CONSUMER_ERROR(err)
         console.error(msg)
-        setApiError(msg)
+        StoreHelper.setApiError(msg)
       })
   }
 }

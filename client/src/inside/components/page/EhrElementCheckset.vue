@@ -10,7 +10,7 @@
 
 <script>
 import EhrElementCommon from './EhrElementCommon'
-import { setApiError } from '../../../helpers/ehr-utils'
+import StoreHelper from '../../../helpers/store-helper'
 import camelcase from 'camelcase'
 import { Text } from '../../../helpers/ehr-text'
 
@@ -47,7 +47,7 @@ export default {
       let result = true
       let opts = this.options
       if(!opts || opts.length === 0) {
-        setApiError(Text.IS_INVALID_CHECKSET(this.key))
+        StoreHelper.setApiError(Text.IS_INVALID_CHECKSET(this.key))
         result = false
       }
       return result

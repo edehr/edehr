@@ -37,7 +37,7 @@
 import AppDialog from '../../app/components/AppDialogShell'
 import StoreHelper from '../../helpers/store-helper'
 import UiButton from '../../app/ui/UiButton.vue'
-import { setApiError, readFile, importSeedData } from '../../helpers/ehr-utils'
+import { readFile, importSeedData } from '../../helpers/ehr-utils'
 
 const TEXT = {
   AGREE_TITLE: (seedName) => `${seedName} has new seed data`,
@@ -193,7 +193,7 @@ export default {
             StoreHelper.setLoading(component, false)
           })
           .catch( err => {
-            setApiError(TEXT.FAIL_IMPORT(fileName, err))
+            StoreHelper.setApiError(TEXT.FAIL_IMPORT(fileName, err))
             StoreHelper.setLoading(component, false)
           })
       })
