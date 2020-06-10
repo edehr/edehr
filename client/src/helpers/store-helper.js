@@ -442,6 +442,12 @@ class StoreHelperWorker {
     return token
   }
 
+  clearAuthToken = () => {
+    if(debugSH) console.log('SH clear auth token')
+    localStorage.removeItem(sKeys.AUTH_TOKEN)
+  }
+
+
   /*
   * **********   Demonstration related  **************
   */
