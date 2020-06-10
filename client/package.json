@@ -6,9 +6,10 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test": "npm run test:unit",
-    "test:e2e": "vue-cli-service test:e2e --coverage",
-    "test:unit": "vue-cli-service test:unit --coverage",
-    "test-one": "npm run test:unit -t src/store/test/store.spec.js --coverage"
+    "test:cov": "vue-cli-service test:unit --coverage",
+    "test:e2e": "vue-cli-service test:e2e",
+    "test:unit": "vue-cli-service test:unit",
+    "test-one": "npm run test:unit -t src/store/test/store.spec.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
