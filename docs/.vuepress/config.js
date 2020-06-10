@@ -9,6 +9,7 @@ module.exports = {
     nav: [
       {text: 'LMS admin', link: '/lms-admin/'},
       {text: 'Course designer', link: '/course-designer/'},
+      {text: 'Student', link: '/student/'},
       {text: 'Instructor', link: '/instructor/'},
       {text: 'Developer', link: '/developer/'},
     ],
@@ -29,6 +30,13 @@ module.exports = {
         path: '/lms-admin/',
         children: [
           '/lms-admin/',
+        ]
+      },
+      {
+        title: "Student guide",
+        path: '/student/',
+        children: [
+          '/student/',
         ]
       },
       {
@@ -76,13 +84,6 @@ module.exports = {
         children: [
           '/shared/definitions.md',
           '/shared/users.md',
-        ]
-      },
-      {
-        title: "License",
-        path: '/shared/license',
-        children: [
-          '/shared/license.md',
         ]
       },
     ]
