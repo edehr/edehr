@@ -9,9 +9,11 @@ import outsideLayout from './outside/layout/LayoutOutside.vue'
 import insideLayout from './inside/layout/LayoutEhr.vue'
 import dragDirective from './directives/drag-directive'
 import resizeDirective from './directives/resize-directive'
+import StoreHelper from './helpers/store-helper'
 import textToHtml from './directives/text-to-html'
 import validate from './directives/validate'
 import VueAutosuggest from 'vue-autosuggest'
+import PageController from './helpers/page-controller'
 /*
 Import the global style sheet
  */
@@ -44,7 +46,14 @@ Vue.filter('formatDateTime', function (value) {
   return value ? moment(value).format('YYYY-MM-DD h:mm a') : ''
 })
 
-
+router.afterEach((to, from) => {
+  console.log('route after each ', to)
+  if (to.name === 'demo') {
+    console.log('Demo page nav. Clear any previous AuthToken whether user came from an LMS or from the demo')
+    StoreHelper.clearAuthToken()
+  }
+  PageController.onPageChange(to)
+})
 /*
 Create the root Vue component.
  */

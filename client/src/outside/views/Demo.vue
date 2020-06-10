@@ -82,9 +82,11 @@ export default {
       this.$router.push('demo-course')
     },
   },
-  mounted () {
-    // console.log('Demo mounted. clear any previous AuthToken whether user came from an LMS or from the demo')
-    StoreHelper.clearAuthToken()
+  watch: {
+    $route: function (route) {
+      console.log('Demo page nav. Clear any previous AuthToken whether user came from an LMS or from the demo')
+      StoreHelper.clearAuthToken()
+    }
   }
 }
 </script>

@@ -7,19 +7,23 @@ const debugDH = true
 
 export default class DemoHelper {
 
+  _getApiUrl () {
+    return StoreHelper.apiUrlGet()
+  }
+
   createToolConsumer () {
     const id = uuid()
-    const apiUrl = StoreHelper.apiUrl()
-    if(debugDH) console.log('DH create consumer for user id ', id)
+    const apiUrl = this._getApiUrl()
+    if(debugDH) console.log('DH create consumer for user id ', id, apiUrl)
     const url = `${apiUrl}/demo/`
     return axios.post(url, { id })
   }
 
   demoLogout (token) {
-    if(debugDH) console.log('DH logout')
-    setAuthHeader(token)
-    const apiUrl = StoreHelper.apiUrl()
+    const apiUrl = this._getApiUrl()
     const url = `${apiUrl}/demo/logout`
+    if(debugDH) console.log('DH logout',apiUrl)
+    setAuthHeader(token)
     return axios.post(url)
       .catch(err => {
         console.log('demoHelper error', err)
@@ -27,14 +31,16 @@ export default class DemoHelper {
   }
 
   dhLoadDemoData (token) {
-    if(debugDH) console.log('DH fetch')
-    setAuthHeader(token)
-    const apiUrl = StoreHelper.apiUrl()
+    const apiUrl = this._getApiUrl()
     const url = `${apiUrl}/demo/fetch`
+    if(debugDH) console.log('DH fetch', apiUrl)
+    setAuthHeader(token)
     return axios.get(url)
   }
 
   submitPersona (token, submitData) {
+    const apiUrl = this._getApiUrl()
+    const url = `${apiUrl}/demo/set`
     const {assignmentName, externalId, personaName, personaEmail, personaRole, returnUrl, theKey} = submitData
     const {given, family} = personaName.split(' ')
     const ltiData = {
@@ -66,10 +72,8 @@ export default class DemoHelper {
       tool_consumer_instance_description: 'EdEHR provided LTI tool for launching the EdEHR in a demonstration mode',
       user_id: theKey,
     }
-    if(debugDH) console.log('DH submitPersona', ltiData)
+    if(debugDH) console.log('DH submitPersona', ltiData, apiUrl)
     setAuthHeader(token)
-    const apiUrl = StoreHelper.apiUrl()
-    const url = `${apiUrl}/demo/set`
     return axios.post(url, { ltiData })
   }
   

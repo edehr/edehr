@@ -55,8 +55,9 @@ class StoreHelperWorker {
   /**
    * The API server must provide the url to call back into the server.
    */
-  apiUrl () { return localStorage.getItem('apiUrl') || undefined }
+  apiUrlGet () { return localStorage.getItem('apiUrl') || undefined }
   apiUrlSet (url) { localStorage.setItem('apiUrl', url) }
+  // import config from '../../config'
 
   isReadOnlyInstructor () { return this._getVisitProperty('isReadOnlyInstructor')}
   setIsReadOnlyInstructor (isReadonly = false) { return store.commit('visit/setIsReadOnlyInstructor', isReadonly)}
@@ -416,12 +417,12 @@ class StoreHelperWorker {
     }
   }
 
-  fetchAndStoreAuthToken (refreshToken, apiUrl) {
-    return this._dispatchAuthStore('fetchAndStoreAuthToken', {refreshToken, apiUrl})
+  fetchAndStoreAuthToken (refreshToken) {
+    return this._dispatchAuthStore('fetchAndStoreAuthToken', { refreshToken })
   }
 
-  fetchTokenData (authToken = this.getAuthToken(), apiUrl) {
-    return this._dispatchAuthStore('fetchData', {authToken, apiUrl})
+  fetchTokenData (authToken = this.getAuthToken()) {
+    return this._dispatchAuthStore('fetchData', {authToken})
   }
 
   adminLogin (adminPassword) {
@@ -432,8 +433,8 @@ class StoreHelperWorker {
     return this._dispatchAuthStore('adminValidate', { token })
   }
 
-  getAuthData () {
-    return this._getAuthStore('data')
+  async getAuthData () {
+    return await this._getAuthStore('data')
   }
 
   getAuthToken () {

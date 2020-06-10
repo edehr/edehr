@@ -208,7 +208,7 @@ export default {
       return StoreHelper.isInstructor(this)
     },
     apiUrl () {
-      return StoreHelper.apiUrl()
+      return StoreHelper.apiUrlGet()
     },
     topLevelMenu () {
       return this.$store.state.visit.topLevelMenu

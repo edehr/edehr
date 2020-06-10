@@ -9,10 +9,6 @@ const _clearDemoToken = () => localStorage.removeItem(sKeys.DEMO_TOKEN)
 const _getDemoToken = () => localStorage.getItem(sKeys.DEMO_TOKEN)
 const _setDemoToken = (token) => localStorage.setItem(sKeys.DEMO_TOKEN, token)
 
-// const _setPersona = (persona) => localStorage.setItem(sKeys.SELECTED_DEMO_PERSONA, JSON.stringify(persona))
-// const _getPersona = () => JSON.parse(localStorage.getItem(sKeys.SELECTED_DEMO_PERSONA))
-
-
 const getters = {
   demoToken: function () {
     return _getDemoToken()

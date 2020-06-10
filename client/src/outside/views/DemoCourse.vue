@@ -108,7 +108,7 @@ export default {
           window.location.replace(url)
         }).catch(err => {
           StoreHelper.setLoading(null, false)
-          setApiError('An error occurred during the launch of the demonstration mode. ', err)
+          StoreHelper.setApiError('An error occurred during the launch of the demonstration mode. ', err)
         })
     },
     loadAssignments: function () {
