@@ -2,7 +2,7 @@ import axios from 'axios'
 import StoreHelper from './store-helper'
 import { Text } from './ehr-text'
 
-const debugA = true
+const debugA = false
 
 export default class AuthHelper {
 

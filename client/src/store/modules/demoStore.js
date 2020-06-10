@@ -1,7 +1,7 @@
 import DemoHelper from '../../helpers/demo-helper'
 import sKeys from '../../helpers/session-keys'
 
-const debugDS = true
+const debugDS = false
 
 const demoHelper = new DemoHelper()
 

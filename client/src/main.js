@@ -47,13 +47,9 @@ Vue.filter('formatDateTime', function (value) {
 })
 
 router.afterEach((to, from) => {
-  console.log('route after each ', to)
-  if (to.name === 'demo') {
-    console.log('Demo page nav. Clear any previous AuthToken whether user came from an LMS or from the demo')
-    StoreHelper.clearAuthToken()
-  }
   PageController.onPageChange(to)
 })
+
 /*
 Create the root Vue component.
  */

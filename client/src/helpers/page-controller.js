@@ -6,7 +6,7 @@ import { setAuthHeader } from './axios-helper'
 import { PAGE_DATA_REFRESH_EVENT, PAGE_DATA_READY_EVENT } from './event-bus'
 import { Text } from './ehr-text'
 
-const debugApp = true
+const debugApp = false
 
 class PageControllerInner {
   constructor () {
@@ -28,6 +28,10 @@ class PageControllerInner {
         this.hasLoadedEhrPage = true
       }
     } else {
+      if (route.name === 'demo') {
+        if (debugApp) console.log('Page loading going to Demo page. "log the user out" of EHR whether user came from an LMS or from the demo')
+        StoreHelper.clearAuthToken()
+      }
       this.loadData(route)
       this.hasLoadedEhrPage = false
     }

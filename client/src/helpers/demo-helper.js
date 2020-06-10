@@ -3,7 +3,7 @@ import StoreHelper from './store-helper'
 const uuid = require('uuid/v4')
 import { setAuthHeader } from './axios-helper'
 
-const debugDH = true
+const debugDH = false
 
 export default class DemoHelper {
 
@@ -49,11 +49,11 @@ export default class DemoHelper {
       context_label: 'L-' + assignmentName,
       context_title: 'T-' + assignmentName,
       context_type: 'Demonstration',
+      launch_presentation_return_url: returnUrl,
       lis_person_contact_email_primary: personaEmail,
       lis_person_name_family: family,
       lis_person_name_given: given,
       lis_person_name_full:personaName,
-      lti_launch_presentation_return_url: returnUrl,
       lti_version: 'LTI-1p0',
       lti_message_type: 'basic-lti-launch-request',
       oauth_consumer_key: theKey,
