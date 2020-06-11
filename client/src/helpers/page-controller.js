@@ -30,7 +30,7 @@ class PageControllerInner {
     } else {
       if (route.name === 'demo') {
         if (debugApp) console.log('Page loading going to Demo page. "log the user out" of EHR whether user came from an LMS or from the demo')
-        StoreHelper.clearAuthToken()
+        StoreHelper.logUserOutOfEdEHR()
       }
       this.loadData(route)
       this.hasLoadedEhrPage = false
@@ -123,10 +123,11 @@ class PageControllerInner {
           if(debugApp) console.log('App LD have auth data and visit id', payload)
           visitId = payload.visitId
         }
-        StoreHelper.clearSession().then( () => { return visitId })
+        StoreHelper.clearSession()
         return StoreHelper.loadVisitRecord(visitId)
       })
       .then((/* ********   LOAD STUDENT OR INSTRUCTOR  *************  */) => {
+        if(debugApp) console.log('App LD loadVisitRecord done')
         if (StoreHelper.isInstructor()) {
           if(debugApp) console.log('App LD load instructor')
           return StoreHelper.loadInstructor2()

@@ -443,9 +443,10 @@ class StoreHelperWorker {
     return token
   }
 
-  clearAuthToken = () => {
+  logUserOutOfEdEHR = () => {
     if(debugSH) console.log('SH clear auth token')
     localStorage.removeItem(sKeys.AUTH_TOKEN)
+    return this._dispatchVisit('clearVisitData')
   }
 
 
@@ -460,8 +461,9 @@ class StoreHelperWorker {
     return this._dispatchDemoStore('createToolConsumer')
   }
 
-  demoLogout () {
-    return this._dispatchDemoStore('demoLogout')
+  async demoLogout () {
+    // log out of any ehr session too
+    return await this._dispatchDemoStore('demoLogout')
   }
 
   async loadDemoData () {

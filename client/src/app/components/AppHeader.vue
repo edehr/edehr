@@ -67,12 +67,13 @@ export default {
     demoLogoutConfirm () {
       this.$refs.confirmDialog.showDialog(DEMO.TITLE, DEMO.MSG)
     },
-    demoLogOut () {
+    async demoLogOut () {
       console.log('AH demo logout')
-      StoreHelper.demoLogout().then( () => {
-        console.log('AH demo logout go home')
-        this.$router.push('/')
-      })
+      await StoreHelper.demoLogout()
+      StoreHelper.logUserOutOfEdEHR()
+      console.log('AH demo logout go home')
+      // this.$router.go(0)
+      this.$router.push('/')
     },
     showAssignmentDetails () {
       this.showingAssignmentDetails = true
@@ -168,7 +169,6 @@ header {
       color: rgba(255, 255, 255, 0.8);
       text-decoration: none;
       font-weight: bold;
-      font-size: auto;
       margin-left: 1em;
 
       &:focus,
@@ -184,12 +184,10 @@ header {
     }
 
     .navItem .button {
-      margin-left: none;
       margin-bottom: 0;
       margin-top: -8px; // t0 keep text aligned with non-button items
     }
     .app-title {
-      font-size: auto;
       margin-left: 0;
     }
 

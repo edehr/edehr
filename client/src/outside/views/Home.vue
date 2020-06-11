@@ -11,12 +11,12 @@
         div(class="column is-8  has-text-weight-semibold")
           div(v-if="isInstructor")
             div(v-if="devEnv")
-              ui-button(class="is-pulled-right",@buttonClicked="logoutUser") Logout
+              ui-button(class="is-pulled-right",@buttonClicked="logoutUser") Sign out
             div You are logged in as an instructor.  &nbsp;
               ui-link(:name="'instructor'") Go to your course and class lists.
           div(v-if="isStudent")
             div(v-if="devEnv")
-              ui-button(class="is-pulled-right",@buttonClicked="logoutUser") Logout
+              ui-button(class="is-pulled-right",@buttonClicked="logoutUser") Sign out
             div You are logged in as a student. &nbsp;
               ui-link(:name="'ehr'") Go to your assignment.
           div(v-if="isDemo")
@@ -260,7 +260,7 @@ export default {
       this.$refs.confirmDemoDialog.showDialog(DEMO.TITLE, DEMO.MSG)
     },
     logoutUser () {
-      StoreHelper.clearAuthToken()
+      StoreHelper.logUserOutOfEdEHR()
       // refresh this page
       this.$router.go(0)
     },
