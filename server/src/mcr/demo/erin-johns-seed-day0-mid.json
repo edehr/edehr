@@ -348,7 +348,7 @@
       "federal": false
     }
   },
-  "name": "Master",
-  "version": "1.0",
-  "fileName": "master_1.0_29 Aug 2019.json"
+  "description": "This EHR Seed is based on a case from 'Health Case Studies - Toward Closing the Healthcare Communication Gap'. This EHR seed reflects the initial period of a patient's stay in the hospital ",
+  "name": "Erin Johns Day 0",
+  "version": "1.0"
 }

@@ -141,7 +141,7 @@ export default class DemoController {
     const _req = this._signAndPrepareLTIRequest(ltiData, host)
     this._LTIPost(_req)
       .then((_results) => {
-        if (debugDC) debug('DC.submitLtiData after post with results', _results)
+        if (debugDC) debug('DC.submitLtiData after post')
         res.status(200).json({refreshToken: _results.data.refreshToken, url: _results.data.url})
       })
       .catch(err => {

@@ -98,13 +98,12 @@ export default {
         personaEmail: persona.email,
         personaRole: persona.role,
         returnUrl: window.location.origin,
-        theKey: this.demoData.toolConsumerKey
+        toolKey: this.demoData.toolConsumerKey
       }
       StoreHelper.setLoading(null, true)
       StoreHelper.submitPersona(submitData)
         .then(({url}) => {
           StoreHelper.setLoading(null, false)
-          console.log('DemoCourse - Should we redirect here? do we get an url?', url)
           window.location.replace(url)
         }).catch(err => {
           StoreHelper.setLoading(null, false)

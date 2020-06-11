@@ -41,8 +41,10 @@ export default class DemoHelper {
   submitPersona (token, submitData) {
     const apiUrl = this._getApiUrl()
     const url = `${apiUrl}/demo/set`
-    const {assignmentName, externalId, personaName, personaEmail, personaRole, returnUrl, theKey} = submitData
-    const {given, family} = personaName.split(' ')
+    const {assignmentName, externalId, personaName, personaEmail, personaRole, returnUrl, toolKey} = submitData
+    const [ given, family ] = personaName.split(' ')
+    let theKey = toolKey
+    let userId = theKey.slice(-5) + family + '-' + given
     const ltiData = {
       custom_assignment: externalId,
       context_id: 'Demo-Course',
@@ -70,7 +72,7 @@ export default class DemoHelper {
       tool_consumer_info_version: 'x',
       tool_consumer_info_product_family_code:'EdEHR Demo',
       tool_consumer_instance_description: 'EdEHR provided LTI tool for launching the EdEHR in a demonstration mode',
-      user_id: theKey,
+      user_id: userId,
     }
     if(debugDH) console.log('DH submitPersona', ltiData, apiUrl)
     setAuthHeader(token)
