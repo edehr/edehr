@@ -6,7 +6,8 @@ const vitalRanges = {
   oxygenSaturation: { min: 50, max: 100 },
   pulseRate: { min: 30, max: 140, normal: { adult: [59, 99] } },
   respiratory: { min: 6, max: 42 },
-  temperature: { min: 35, max: 40 }
+  temperature: { min: 35, max: 40 },
+  cvp: { min: 0, max: 20 }
 }
 
 let lastDay = 0
@@ -252,7 +253,6 @@ export default class VitalModel {
     })
     let chartData = {
       label: 'Oxygen saturation',
-      chartType: POINT_TYPES.TEXT,
       noYAxisGrid: true,
       noYAxisLabel: false,
       gridY: {
@@ -264,6 +264,37 @@ export default class VitalModel {
       dataSet: [
         {
           values: values
+        }
+      ]
+    }
+    return chartData
+  }
+
+  getCVP (table) {
+    let min = vitalRanges.cvp.min
+    let max = vitalRanges.cvp.max
+    const values = table.map(el => el.cvp)
+    const steps = [...Array(max + 1).keys()]
+    let scalePoints = []
+    steps.map(item => {
+      // Potential enhancement: only get item if item % 3 === 0
+      if(item >= min)
+        scalePoints.push({ spv: item }) 
+    })
+    const chartData = {
+      label: 'CVP (Central Venous Pressure)',
+      dMin: min,
+      dMax: max,
+      gridY: {
+        scalePoints
+      },
+      gridX: {
+        steps: values.length
+      },
+      dataSet: [
+        {
+          pointStyle: POINT_TYPES.POINT,
+          values
         }
       ]
     }

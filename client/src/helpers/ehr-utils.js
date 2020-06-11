@@ -10,6 +10,7 @@ import validFilename  from 'valid-filename'
 import StoreHelper from './store-helper'
 
 const debug = false
+const debugErrs = false
 
 const mJSON = 'json', mTEXT = 'text', mCSV = 'csv'
 function _saveAs (stringData, fileName, mediaType) {
@@ -73,6 +74,25 @@ export function validTimeStr (text) {
 export function validDayStr (text) {
   return /^([0-9]?)$/.test(text)
 }
+
+export function validNumberStr (str) {
+  // These are a few of the exceptions which isNaN can return false for... 
+  // as it has been noted here: https://stackoverflow.com/questions/175739/built-in-way-in-javascript-to-check-if-a-string-is-a-valid-number
+  if (str === false || str === ' ' || str === '') 
+    return false
+  return !isNaN(str)
+}
+
+export function validRangeStr (str, max, min = 0) {
+  try {
+    const number = parseInt(str)
+    return number >= min && number <= max
+  } catch(err) { 
+    if (debugErrs) console.log('isIntegerInRange threw', err)
+    return false
+  }  
+}
+
 
 export function formatDateStr (dateStrFromDb) {
   return moment(dateStrFromDb).format('DD MMM YYYY')

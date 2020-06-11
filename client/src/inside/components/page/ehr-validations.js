@@ -1,4 +1,4 @@
-import { validTimeStr, validDayStr } from '../../../helpers/ehr-utils'
+import { validTimeStr, validDayStr, validNumberStr, validRangeStr } from '../../../helpers/ehr-utils'
 
 /**
  * Export a dictionary of validators. Each key is the input type as set from the generated ehr definitions.
@@ -22,5 +22,18 @@ export default {
         return `${fieldName} must be a day number 0 to 9`
       }
     }
-  }
+  },
+  cvp: function (fieldName, value) {
+    const MAX_CVP_VALUE = 30
+    const MIN_CVP_VALUE = 0
+    if (value)  {
+      const valid = validNumberStr(value)
+      if (!valid) {
+        return `${fieldName} must be a number`
+      }
+      const isValidRange = validRangeStr(value, MAX_CVP_VALUE, MIN_CVP_VALUE)
+      if (!isValidRange)
+        return `${fieldName} must be a positive number in the range of ${MIN_CVP_VALUE} to ${MAX_CVP_VALUE}` 
+    }
+  },
 }

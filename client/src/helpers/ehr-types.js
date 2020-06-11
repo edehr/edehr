@@ -21,6 +21,7 @@ const EhrTypes = {
     textarea: 'textarea',
     time: 'time',
     lookahead: 'lookahead',
+    number: 'number'
   },
   dependentOn: {
     splitActionKeyOn: ':',

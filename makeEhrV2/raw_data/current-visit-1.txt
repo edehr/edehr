@@ -56,6 +56,7 @@ Simple face mask
 Rebreathing face mask
 Optiflow}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Flow rate}	{elementKey: flowRate}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Flow rate}	{tableColumn: 15}	eCell	eCell	eCell	eCell	eCell	{Suffix: /lpm}	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: number}	eCell	{Label: CVP}	{elementKey: cvp}	{pN: 11}	{fN: 1}	{gN: 2}	eCell	eCell	eCell	{tableLabel: CVP (Central Venous Pressure)}	{tableColumn: 16}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Validation: cvp}	eCell	eCell	eCell	eCell	eCell
 {inputType: page}	{pRef: 16}	{Label: Fluid balance}	{elementKey: fluidBalance}	{pN: 12}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: table_form}	eCell	eCell	{elementKey: table}	{pN: 12}	{fN: 1}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	{addButtonText: Add a fluid in/out record}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	{pN: 12}	{fN: 1}	{gN: 1}	{sgN: }	{formCss: record-header}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
@@ -287,7 +288,7 @@ Ankle
 Pedal
 Sacral
 Pitting}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: No}	eCell	eCell
-{inputType: select}	eCell	eCell	{elementKey: nailBedColourRightHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Nail bed colour: Right hand}	{tableColumn: 7}	{tableCss: hr-table hideLabel}	eCell	eCell	eCell	"{Options: Pink
+{inputType: select}	eCell	eCell	{elementKey: nailBedColourRightHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Nail bed colour: Right hand}	{tableColumn: 7}	{tableCss: hr-table hideLabel}	eCell	eCell	eCell	"{Options: Pink 
 Cyanotic}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Pink}	eCell	eCell
 {inputType: form_label}	eCell	{Label: Left hand}	{elementKey: labelLeftHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Normal}	eCell	eCell
 {inputType: select}	eCell	eCell	{elementKey: capRefillRightHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Cap refill: Left hand}	{tableColumn: 8}	{tableCss: hideLabel}	eCell	eCell	eCell	"{Options: Normal < 3 seconds
@@ -300,7 +301,7 @@ Ankle
 Pedal
 Sacral
 Pitting}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: No}	eCell	eCell
-{inputType: select}	eCell	eCell	{elementKey: nailBedColourLeftHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Nail bed colour: Left hand}	{tableColumn: 11}	{tableCss: hr-table hideLabel}	eCell	eCell	eCell	"{Options: Pink
+{inputType: select}	eCell	eCell	{elementKey: nailBedColourLeftHand}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Nail bed colour: Left hand}	{tableColumn: 11}	{tableCss: hr-table hideLabel}	eCell	eCell	eCell	"{Options: Pink 
 Cyanotic}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Pink}	eCell	eCell
 {inputType: form_label}	eCell	{Label: Right foot}	{elementKey: labelRightFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Normal}	eCell	eCell
 {inputType: select}	eCell	eCell	{elementKey: capRefillRightFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Cap refill: Right foot}	{tableColumn: 12}	{tableCss: hideLabel}	eCell	eCell	eCell	"{Options: Normal < 3 seconds
@@ -313,7 +314,7 @@ Ankle
 Pedal
 Sacral
 Pitting}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: No}	eCell	eCell
-{inputType: select}	eCell	eCell	{elementKey: nailBedColourRightFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Nail bed colour: Right Foot}	{tableColumn: 15}	{tableCss: hr-table hideLabel}	eCell	eCell	eCell	"{Options: Pink
+{inputType: select}	eCell	eCell	{elementKey: nailBedColourRightFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Nail bed colour: Right Foot}	{tableColumn: 15}	{tableCss: hr-table hideLabel}	eCell	eCell	eCell	"{Options: Pink 
 Cyanotic}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Pink}	eCell	eCell
 {inputType: form_label}	eCell	{Label: Left foot}	{elementKey: labelLeftFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Normal}	eCell	eCell
 {inputType: select}	eCell	eCell	{elementKey: capRefillLeftFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Cap refill: Left foot}	{tableColumn: 16}	{tableCss: hideLabel}	eCell	eCell	eCell	"{Options: Normal < 3 seconds
@@ -326,7 +327,7 @@ Ankle
 Pedal
 Sacral
 Pitting}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: No}	eCell	eCell
-{inputType: select}	eCell	eCell	{elementKey: nailBedColourLeftFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Nail bed colour: Left foot}	{tableColumn: 19}	{tableCss: hr-table hideLabel}	eCell	eCell	eCell	"{Options: Pink
+{inputType: select}	eCell	eCell	{elementKey: nailBedColourLeftFoot}	{pN: 16}	{fN: 1}	{gN: 3}	{sgN: }	eCell	{formOption: hideLabel}	{tableLabel: Nail bed colour: Left foot}	{tableColumn: 19}	{tableCss: hr-table hideLabel}	eCell	eCell	eCell	"{Options: Pink 
 Cyanotic}"	eCell	eCell	eCell	eCell	eCell	{Data_case_study: Pink}	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	{pN: 16}	{fN: 1}	{gN: 4}	{sgN: }	{formCss: grid-left-to-right-1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: textarea}	eCell	{Label: Comments}	{elementKey: comments}	{pN: 16}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Comments}	{tableColumn: 20}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Data_case_study: (blank)}	eCell	eCell
