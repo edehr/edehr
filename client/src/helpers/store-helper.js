@@ -55,8 +55,9 @@ class StoreHelperWorker {
   /**
    * The API server must provide the url to call back into the server.
    */
-  apiUrl () { return localStorage.getItem('apiUrl') || undefined }
+  apiUrlGet () { return localStorage.getItem('apiUrl') || undefined }
   apiUrlSet (url) { localStorage.setItem('apiUrl', url) }
+  // import config from '../../config'
 
   isReadOnlyInstructor () { return this._getVisitProperty('isReadOnlyInstructor')}
   setIsReadOnlyInstructor (isReadonly = false) { return store.commit('visit/setIsReadOnlyInstructor', isReadonly)}
@@ -416,12 +417,12 @@ class StoreHelperWorker {
     }
   }
 
-  fetchAndStoreAuthToken (refreshToken, apiUrl) {
-    return this._dispatchAuthStore('fetchAndStoreAuthToken', {refreshToken, apiUrl})
+  fetchAndStoreAuthToken (refreshToken) {
+    return this._dispatchAuthStore('fetchAndStoreAuthToken', { refreshToken })
   }
 
-  fetchTokenData (authToken = this.getAuthToken(), apiUrl) {
-    return this._dispatchAuthStore('fetchData', {authToken, apiUrl})
+  fetchTokenData (authToken = this.getAuthToken()) {
+    return this._dispatchAuthStore('fetchData', {authToken})
   }
 
   adminLogin (adminPassword) {
@@ -432,8 +433,8 @@ class StoreHelperWorker {
     return this._dispatchAuthStore('adminValidate', { token })
   }
 
-  getAuthData () {
-    return this._getAuthStore('data')
+  async getAuthData () {
+    return await this._getAuthStore('data')
   }
 
   getAuthToken () {
@@ -441,6 +442,13 @@ class StoreHelperWorker {
     if(debugSH) console.log('SH getAuthToken', token)
     return token
   }
+
+  logUserOutOfEdEHR = () => {
+    if(debugSH) console.log('SH clear auth token')
+    localStorage.removeItem(sKeys.AUTH_TOKEN)
+    return this._dispatchVisit('clearVisitData')
+  }
+
 
   /*
   * **********   Demonstration related  **************
@@ -453,12 +461,13 @@ class StoreHelperWorker {
     return this._dispatchDemoStore('createToolConsumer')
   }
 
-  demoLogout () {
-    return this._dispatchDemoStore('demoLogout')
+  async demoLogout () {
+    // log out of any ehr session too
+    return await this._dispatchDemoStore('demoLogout')
   }
 
-  loadDemoData () {
-    return this._dispatchDemoStore('loadDemoData')
+  async loadDemoData () {
+    return await this._dispatchDemoStore('loadDemoData')
   }
 
   getDemoToken () {
@@ -490,8 +499,8 @@ class StoreHelperWorker {
     return this._dispatchDemoStore('setDemoAssignment', assignment)
   }
 
-  submitPersona (demoData, assignment) {
-    return this._dispatchDemoStore('submitPersona', { demoData, assignment })
+  submitPersona (submitData) {
+    return this._dispatchDemoStore('submitPersona', { submitData  })
   }
 
 }

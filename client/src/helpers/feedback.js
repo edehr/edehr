@@ -5,7 +5,7 @@ export function   postFeedback (feedback) {
   if(!feedback || feedback.length <= 0) {
     return Promise.resolve()
   }
-  const apiUrl = StoreHelper.apiUrl()
+  const apiUrl = StoreHelper.apiUrlGet()
   const base = apiUrl + '/feedback/'
   return axios.post(base, { feedbackData: feedback})
 }

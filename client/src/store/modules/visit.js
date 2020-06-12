@@ -13,7 +13,6 @@ function getIsDeving () {
 
 const state = {
   sVisitData: {},
-  isLoggedIn: !!sessionStorage.getItem(sKeys.USER_TOKEN),
   topLevelMenu: '',
   _isDevelopingContent: getIsDeving()
 }
@@ -55,6 +54,9 @@ const getters = {
 }
 
 const actions = {
+  clearVisitData (context) {
+    context.commit('setVisitData', {})
+  },
   loadVisit2 (context, visitId) {
     let url = 'get/' + visitId
     if(debug) console.log('loadVisit api call ', url)
@@ -62,15 +64,13 @@ const actions = {
       if(debug) console.log('loadVisit what is the response? ', response.data)
       let visitInfo = response.data
       if (!visitInfo || ! visitInfo.visit) {
-        return invalid('ERROR No visit information for ' + visitId)
+        console.error('ERROR No visit information for ' + visitId)
+        return
+        // return invalid('ERROR No visit information for ' + visitId)
       }
       if(debug) console.log('loadVisit what is the visitInfo? ', visitInfo.visit)
       context.commit('setVisitData', visitInfo.visit)
     })
-  },
-
-  routeEnter ({ commit }) {
-    commit('routeEnter')
   }
 }
 
@@ -88,11 +88,6 @@ const mutations = {
   setVisitData: (state, info) => {
     if(debug) console.log('visit store setVisitData ', info)
     state.sVisitData = info
-  },
-  routeEnter: state => {
-    if(debug) console.log('mutation route enter found token ', token)
-    let token = sessionStorage.getItem(sKeys.USER_TOKEN)
-    state.isLoggedIn = !!token
   },
   topLevelMenu: (state, top) => {
     if(debug) console.log('visit store top level menu ' + (top ? top : 'empty'))

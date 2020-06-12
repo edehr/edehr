@@ -10,22 +10,27 @@
         li(v-if="showDashboard", class="navItem")
           router-link(:to="{ name: `instructor` }", class="navLink") Courses
         li(v-if="showDashboard", class="navItem")
-          router-link(:to="{ name: `assignments` }", class="navLink subMenu") Assignments
+          router-link(:to="{ name: `assignments` }", class="navLink") Assignments
         li(v-if="isStudent", class="navItem")
-          router-link(:to="{ name: `ehr` }", class="navLink subMenu") Assignment
-        li(v-if="isDemo", class="navItem")
-          router-link(:to="{ name: `demo` }", class="navLink subMenu") Demonstration
-        li(v-if="isDemo", class="navItem")
-          ui-button(@buttonClicked="demoLogoutConfirm") Demo logout
-          ui-confirm(class="confirmDialog",ref="confirmDialog", @confirm="demoLogOut", save-label="Logout")
-
+          router-link(:to="{ name: `ehr` }", class="navLink") Assignment
         li(class="navItem")
           router-link(:to="{ name: `help` }", class="navLink") Help
+        li(v-if="isDemo", class="navItem")
+          div(class="navLink activationItem", v-on:click="toggleShowDemoSubmenu()") Demo
+            div(class="activationControl")
+              fas-icon(v-show="!showingDemoSubmenu", class="fa", icon="chevron-down")
+              fas-icon(v-show="showingDemoSubmenu", class="fa", icon="chevron-up")
+          div(v-show="showingDemoSubmenu", class="activationContent")
+            div(v-on:click="hideDemoMenu()")
+              router-link(:to="{ name: `demo` }", class="secondLevelLink") Change persona
+            div(class="secondLevelLink activationItem", v-on:click="demoLogoutConfirm()") Logout of demonstration
+    ui-confirm(class="confirmDialog",ref="confirmDialog", @confirm="demoLogOut", save-label="Logout")
 </template>
 <script>
 import SystemMessage from './SystemMessage'
 import StoreHelper from '../../helpers/store-helper'
 import UiButton from '../../app/ui/UiButton'
+
 import UiConfirm from '../../app/ui/UiConfirm'
 const DEMO = {
   TITLE: 'Do you want to exit the demo mode?',
@@ -37,7 +42,7 @@ export default {
   components: { SystemMessage, UiButton, UiConfirm },
   data () {
     return {
-      showingAssignmentDetails: false
+      showingDemoSubmenu: false
     }
   },
   computed: {
@@ -66,22 +71,24 @@ export default {
   methods: {
     demoLogoutConfirm () {
       this.$refs.confirmDialog.showDialog(DEMO.TITLE, DEMO.MSG)
+      this.hideDemoMenu()
     },
-    demoLogOut () {
+    async demoLogOut () {
       console.log('AH demo logout')
-      StoreHelper.demoLogout().then( () => {
-        console.log('AH demo logout go home')
-        this.$router.push('/')
-      })
+      await StoreHelper.demoLogout()
+      StoreHelper.logUserOutOfEdEHR()
+      console.log('AH demo logout go home')
+      // this.$router.go(0)
+      this.$router.push('/')
     },
     showAssignmentDetails () {
-      this.showingAssignmentDetails = true
+      this.showingDemoSubmenu = true
     },
-    hideAssignmentDetails () {
-      this.showingAssignmentDetails = false
+    hideDemoMenu() {
+      this.showingDemoSubmenu = false
     },
-    toggleShowAssignmentDetails () {
-      this.showingAssignmentDetails = !this.showingAssignmentDetails
+    toggleShowDemoSubmenu () {
+      this.showingDemoSubmenu = !this.showingDemoSubmenu
     }
   }
 }
@@ -117,11 +124,6 @@ header {
     padding-top: 5px;
   }
 
-  .navItem .button {
-    margin-left: 2rem;
-    margin-bottom: 0;
-    margin-top: -8px; // t0 keep text aligned with non-button items
-  }
   .navLink {
     color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
@@ -137,14 +139,29 @@ header {
     }
   }
 
+  .secondLevelLink {
+    color: $brand-primary;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+
+    &:focus,
+    &:hover,
+    &.is-active {
+      color: $brand-primary-hover;
+      transition: 350ms ease-out;
+    }
+  }
   .activationItem {
     cursor: pointer;
   }
 
+
   .activationContent {
-    width: 30rem;
+    min-height: 5rem;
     border-radius: 5px;
     border: 1px solid $grey60;
+    padding: 1rem;
 
     /*height: 100px;*/
     position: absolute;
@@ -153,6 +170,12 @@ header {
     color: $grey80;
   }
 
+  .activationControl {
+    display: inline-block;
+    position: relative;
+    top: 5px;
+    margin-left: 0.5rem;
+  }
   .app-title {
     font-size: 1.5rem;
     margin-left: 0;
@@ -168,7 +191,6 @@ header {
       color: rgba(255, 255, 255, 0.8);
       text-decoration: none;
       font-weight: bold;
-      font-size: auto;
       margin-left: 1em;
 
       &:focus,
@@ -184,12 +206,10 @@ header {
     }
 
     .navItem .button {
-      margin-left: none;
       margin-bottom: 0;
       margin-top: -8px; // t0 keep text aligned with non-button items
     }
     .app-title {
-      font-size: auto;
       margin-left: 0;
     }
 

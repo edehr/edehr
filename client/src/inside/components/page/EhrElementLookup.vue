@@ -23,7 +23,7 @@ export default {
     VueAutosuggest
   },
   data () {
-    const apiUrl = StoreHelper.apiUrl()
+    const apiUrl = StoreHelper.apiUrlGet()
     const base = apiUrl + '/lookahead/medications/'
     // console.log('Using url ', base)
     return {

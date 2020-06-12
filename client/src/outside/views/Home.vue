@@ -10,12 +10,16 @@
       div(class="columns is-centered features")
         div(class="column is-8  has-text-weight-semibold")
           div(v-if="isInstructor")
+            div(v-if="devEnv")
+              ui-button(class="is-pulled-right",@buttonClicked="logoutUser") Sign out
             div You are logged in as an instructor.  &nbsp;
               ui-link(:name="'instructor'") Go to your course and class lists.
-          div(v-else-if="isStudent")
+          div(v-if="isStudent")
+            div(v-if="devEnv")
+              ui-button(class="is-pulled-right",@buttonClicked="logoutUser") Sign out
             div You are logged in as a student. &nbsp;
               ui-link(:name="'ehr'") Go to your assignment.
-          div(v-else-if="isDemo")
+          div(v-if="isDemo")
             div You are already logged into the demonstration. &nbsp;
               ui-link(:name="'demo'") Click here to return to the demonstration page.
           div(v-else)
@@ -240,6 +244,7 @@ export default {
     return {
       activateDemoMode: false,
       selectedUser: {},
+      devEnv: process.env.NODE_ENV !== 'production'
     }
   },
   computed: {
@@ -253,6 +258,11 @@ export default {
   methods: {
     demoLoginConfirm () {
       this.$refs.confirmDemoDialog.showDialog(DEMO.TITLE, DEMO.MSG)
+    },
+    logoutUser () {
+      StoreHelper.logUserOutOfEdEHR()
+      // refresh this page
+      this.$router.go(0)
     },
     proceedDemoToolConsumerCreation () {
       StoreHelper.setLoading(null, true)

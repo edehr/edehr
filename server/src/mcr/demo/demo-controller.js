@@ -2,6 +2,10 @@ import { Router } from 'express'
 import axios from 'axios'
 import { demoPersonae } from '../../helpers/demo-personae'
 import { demoLimiter, validatorMiddlewareWrapper } from '../../helpers/middleware'
+import { assignment1, assignment2 } from './assignment-defs'
+
+const ej0Seed = require('./erin-johns-seed-day0-mid')
+const ej2Seed = require('./erin-johns-seed-day2-end')
 
 const {ltiVersions} = require('../../mcr/lti/lti-defs')
 const HMAC_SHA1 = require('ims-lti/src/hmac-sha1')
@@ -25,27 +29,7 @@ const seedData = {
   name: 'Demonstration seed data',
   description: 'This a demonstration empty seed data',
   version: '1',
-  isDefault: true,
   ehrData: {}
-}
-
-const a1 = {
-  externalId: 'demoAssignment1',
-  description: 'This demonstration EdEHR assignment is based on Case Study #1 from  "Health Case Studies - Toward Closing the Healthcare Communication Gap".\n' +
-  'Case 1 describes a patient\’s experience of chronic obstructive pulmonary disease (COPD) with a history of asthma. The interprofessional collaboration is role modelled between nursing, medical radiology, medical laboratory, and healthcare workers in the emergency department. ' +
-  'The focus for this assignment is help the student complement their assessment and monitoring skills with accurate and careful recording within an electronic health record system.'
-
-  , title: 'Demonstration Case Study #1: COPD'
-}
-
-const a2 = {
-  externalId: 'demoAssignment2',
-  description: 'This demonstration EdEHR assignment is based on Case Study #2 from "Health Case Studies - Toward Closing the Healthcare Communication Gap".\n' +
-
-  'Case 2 describes a patient\’s experience of COPD exacerbation due to community acquired pneumonia. The patient in this case study has a complicated health history. The interprofessional collaboration is role modelled between nursing, medical radiology, medical laboratory, and health care workers in the emergency department. ' +
-  'The focus for this assignment is help the student complement their assessment and monitoring skills with accurate and careful recording within an electronic health record system.'
-
-  , title: 'Demonstration Case Study #2: Pneumonia'
 }
 
 export default class DemoController {
@@ -59,22 +43,40 @@ export default class DemoController {
     const theId = req.body.id
     if (debugDC) debug('DemoController create tool. Id:', theId)
     const consumerDef = Object.assign({}, consumerBaseDef, {  oauth_consumer_key: theId, oauth_consumer_secret: theId })
-    let theToolConsumer
-    this.cc.consumerController.createWithSeed(consumerDef, seedData)
+    let toolC
+    this.cc.consumerController.createToolConsumer(consumerDef)
       .then((toolConsumer) => {
-        theToolConsumer = toolConsumer
-        if (debugDC) debug('DemoController create assignment ')
-        return this.cc.assignmentController.createAssignment(a1.externalId, theToolConsumer, a1.title, a1.description)
+        toolC = toolConsumer
+        if (debugDC) debug('DemoController tool consumer ready', toolC)
       })
       .then(() => {
-        return this.cc.assignmentController.createAssignment(a2.externalId, theToolConsumer, a2.title, a2.description)
+        if (debugDC) debug('DemoController create seed 1')
+        const aSeed = Object.assign({},seedData, {toolConsumer: toolC._id, name:'Seed 1'})
+        aSeed.ehrData = ej0Seed.ehrData
+        return this.cc.seedController.create(aSeed)
+      })
+      .then((seed) => {
+        if (debugDC) debug('DemoController create assignment 1')
+        const ass = Object.assign({},assignment1)
+        return this.cc.assignmentController.createAssignment(ass.externalId, toolC, ass.title, ass.description, seed._id)
       })
       .then(() => {
-        // Generate token and return it
+        if (debugDC) debug('DemoController create seed 2')
+        const aSeed = Object.assign({},seedData, {toolConsumer: toolC._id, name:'Seed 2'})
+        aSeed.ehrData = ej2Seed.ehrData
+        return this.cc.seedController.create(aSeed)
+      })
+      .then((seed) => {
+        if (debugDC) debug('DemoController create assignment')
+        const ass = Object.assign({},assignment2)
+        return this.cc.assignmentController.createAssignment(ass.externalId, toolC, ass.title, ass.description, seed._id)
+      })
+      .then(() => {
+        if (debugDC) debug('DemoController generate token')
         try {
           const demoData = {
             toolConsumerKey: theId,
-            toolConsumerId: theToolConsumer._id,
+            toolConsumerId: toolC._id,
             personaList: demoPersonae
           }
           const demoToken = this.cc.authUtil.createToken({demoData: demoData})
@@ -126,26 +128,24 @@ export default class DemoController {
       })
   }
 
+  /**
+   * Request body needs to contain the lti data
+   * Good resource for LTI parameters and what they mean and do
+   *   https://developer.itslearning.com/LTI_standard_parameters.html
+   * @param req
+   * @param res
+   */
   submitLTIData (req, res) {
     const {host} = req.headers
-    let {demoData, assignment} = req.body
-    demoData = Object.assign({}, demoData, {
-      oauth_timestamp: Math.round(Date.now() / 1000),
-      oauth_nonce: Date.now() + Math.random() * 100,
-      custom_assignment: assignment,
-      // TODO: change this once the assignment seed is done.
-      // Please, refer to https://github.com/BCcampus/edehr/issues/691
-      // for further detail
-      resource_link_id: 'resource_link_id',
-      context_id: Math.floor(Date.now() / 1000)
-    })
-    const _req = this._signAndPrepareLTIRequest(demoData, host)
+    let {ltiData} = req.body
+    const _req = this._signAndPrepareLTIRequest(ltiData, host)
     this._LTIPost(_req)
-      .then((r) => {
-        res.status(200).json({refreshToken: r.data.refreshToken, url: r.data.url})
+      .then((_results) => {
+        if (debugDC) debug('DC.submitLtiData after post')
+        res.status(200).json({refreshToken: _results.data.refreshToken, url: _results.data.url})
       })
       .catch(err => {
-        if (debugDC) console.log('LTIPOST caught >> ', err.message)
+        console.error('DC.submitLtiData caught >> ', err.message)
         res.status(500).send(err)
       })
   }

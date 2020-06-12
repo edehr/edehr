@@ -64,14 +64,18 @@ export default class AssignmentController extends BaseController {
     return this.findOne(query)
   }
 
-  createAssignment (externalId, toolConsumer, resource_link_title, description) {
+  createAssignment (externalId, toolConsumer, resource_link_title, description, seedId=undefined) {
     if (!externalId) {
       throw new SystemError(Text.ASSIGNMENT_REQUIRE_EXTERNAL_ID(toolConsumer.oauth_consumer_key, toolConsumer._id))
     }
     if (!resource_link_title) {
       throw new SystemError(Text.ASSIGNMENT_REQUIRE_RESOURCE(toolConsumer.oauth_consumer_key, toolConsumer._id))
     }
-    return sd.findOne({toolConsumer: toolConsumer._id})
+    const query = {toolConsumer: toolConsumer._id}
+    if (seedId) {
+      query._id = seedId
+    }
+    return sd.findOne(query)
       .then((seed) => {
         if (!seed) {
           throw new SystemError(Text.ASSIGNMENT_MISSING_SEED(toolConsumer.oauth_consumer_key, toolConsumer._id))

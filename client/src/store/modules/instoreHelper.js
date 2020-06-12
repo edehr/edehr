@@ -16,7 +16,7 @@ const debug = false
 class InstoreHelperWorker {
 
   composeUrl (context, api, url) {
-    let apiUrl = StoreHelper.apiUrl()
+    let apiUrl = StoreHelper.apiUrlGet()
     return `${apiUrl}/${api}/` + (url ? url : '')
   }
 
