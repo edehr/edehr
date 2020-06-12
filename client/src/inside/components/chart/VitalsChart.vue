@@ -11,7 +11,7 @@
 import VitalChart from './vitalChart'
 
 const yAxisWidth = 75
-const canvasHeight = 1140
+const canvasHeight = 1450
 const canvasWidth = 8200
 
 export default {
@@ -43,6 +43,9 @@ export default {
     },
     respiratory () {
       return this.vitalsModel.getRespiratory(this.vitals)
+    },
+    cvp () {
+      return this.vitalsModel.getCVP(this.vitals)
     }
   },
   watch: {
@@ -81,17 +84,24 @@ export default {
       vitalChart.drawChart(this.temperatures, y, ht)
       y += ht + space
 
+      space = 10
+      y += space
       ht = 250
+      vitalChart.drawChart(this.cvp, y, ht)
+
+      space = 60
+      ht = 250
+      y += ht + space
       vitalChart.drawChart(this.respiratory, y, ht)
       y += ht + space
 
       space = 20
       ht = 80
+      y += space
       vitalChart.drawChart(this.oxygen, y, ht)
-      y += ht + space
 
       vitalChart.drawYLine(y)
-      y += 0
+      y += 0 
       ht = 50
       vitalChart.drawChart(this.dates, y, ht)
 

@@ -42,6 +42,11 @@
       input(class="input text-input", v-bind:disabled="disabled", v-bind:name="elementKey", v-model="inputVal")
       span(class="suffix") {{suffix }}
 
+    div(v-else-if="isType('number')", class="text_input_wrapper")
+      ehr-page-form-label(:element="element", css="text_label")
+      input(class="input text-input", type="number", v-bind:disabled="disabled", v-bind:name="elementKey", v-model="inputVal")
+
+
     div(v-else-if="isType('time')", class="time_wrapper")
       ehr-page-form-label(:element="element", css="time_label")
       input(class="input", type="text", v-bind:disabled="disabled", v-bind:name="elementKey", v-model="inputVal")
