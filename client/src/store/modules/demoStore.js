@@ -1,17 +1,13 @@
 import DemoHelper from '../../helpers/demo-helper'
 import sKeys from '../../helpers/session-keys'
 
-const debugDS = true
+const debugDS = false
 
 const demoHelper = new DemoHelper()
 
 const _clearDemoToken = () => localStorage.removeItem(sKeys.DEMO_TOKEN)
 const _getDemoToken = () => localStorage.getItem(sKeys.DEMO_TOKEN)
 const _setDemoToken = (token) => localStorage.setItem(sKeys.DEMO_TOKEN, token)
-
-// const _setPersona = (persona) => localStorage.setItem(sKeys.SELECTED_DEMO_PERSONA, JSON.stringify(persona))
-// const _getPersona = () => JSON.parse(localStorage.getItem(sKeys.SELECTED_DEMO_PERSONA))
-
 
 const getters = {
   demoToken: function () {
@@ -87,12 +83,11 @@ const actions = {
         return Promise.reject(err)
       })
   },
-  submitPersona: function (none, { demoData, assignment }) {
+  submitPersona: function (none, { submitData }) {
     const token = _getDemoToken()
-    return demoHelper.submitPersona(token, demoData, assignment)
+    return demoHelper.submitPersona(token, submitData)
       .then(res => {
         return Promise.resolve(res.data)
-        
       }).catch(err => {
         return Promise.reject(err)
       })

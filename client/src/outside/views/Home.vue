@@ -10,12 +10,16 @@
       div(class="columns is-centered features")
         div(class="column is-8  has-text-weight-semibold")
           div(v-if="isInstructor")
+            div(v-if="devEnv")
+              ui-button(class="is-pulled-right",@buttonClicked="logoutUser") Sign out
             div You are logged in as an instructor.  &nbsp;
               ui-link(:name="'instructor'") Go to your course and class lists.
-          div(v-else-if="isStudent")
+          div(v-if="isStudent")
+            div(v-if="devEnv")
+              ui-button(class="is-pulled-right",@buttonClicked="logoutUser") Sign out
             div You are logged in as a student. &nbsp;
               ui-link(:name="'ehr'") Go to your assignment.
-          div(v-else-if="isDemo")
+          div(v-if="isDemo")
             div You are already logged into the demonstration. &nbsp;
               ui-link(:name="'demo'") Click here to return to the demonstration page.
           div(v-else)
@@ -198,32 +202,7 @@
         div(class="intro column is-9 is-offset-2")
           div(class="card is-shady")
             div(class="card-content")
-              div(class="content")
-                h4 About the EdEHR
-                p.
-                  The EdEHR is a <a target="_blank" href="https://bccampus.ca/">BCcampus</a>
-                  project funded by the British Columbia Ministry of Advanced Education, Skills and Training.
-                  Here is a link to the
-                  <a target="_blank" href="https://bccampus.ca/2018/01/23/bccampus-launches-the-educational-electronic-health-record-system-project-in-b-c/">BCcampus announcement</a>.
-                  Read more about the announcement in this BCcampus
-                  <a target="_blank" href="https://bccampus.ca/2020/01/07/an-education-in-electronic-health-records/">blog post</a>.
-                p.
-                  A stakeholder group from BCIT, Douglas College, UBC, and UVic contributed to the research
-                  and development of the requirements that were used as a foundation for the project.
-                  The project requirements were based on their
-                  <a target="_blank" href="http://solr.bccampus.ca:8001/bcc/file/cfc0515c-296f-4711-9811-8be605e661e4/1/EdEHR_Env_Scan_June%204_2018-%20Published.pdf">Environmental Scan Report</a>
-                  published June 4, 2018.
-                p.
-                  To learn more see
-                ul
-                  li <a target="_blank" href="https://bccampus.github.io/edehr/">EdEHR Documentation</a>
-                  li <a target="_blank" href="https://github.com/BCcampus/edehr">Open source GitHub code repository</a>
-                  li <a target="_blank" href="https://www.youtube.com/channel/UCVlhKFf-VHqp3JAY3TDIemw">Demonstration videos on YouTube</a>
-
-                p.
-                  If you need help or have a question about the EdEHR then send an email to
-                  <a href="mailto:info@edehr.org">info@edehr.org</a>
-
+              resources
       div(id="resources", class="intro column is-8 is-offset-2")
         h2(class="title") Related resources
         div
@@ -243,8 +222,9 @@ import StoreHelper from '@/helpers/store-helper'
 import UiButton from '../../app/ui/UiButton'
 import UiLink from '../../app/ui/UiLink.vue'
 import EhrHeaderItem from '../../inside/components/EhrAssignmentDetailsContent'
-import { setApiError } from '../../helpers/ehr-utils'
 import UiConfirm from '../../app/ui/UiConfirm'
+import Resources from '../components/Resources.vue'
+
 const DEMO = {
   TITLE: 'Try out the EdEHR',
   MSG: 'The EdEHR is still a prototype web application.\n ' +
@@ -257,12 +237,14 @@ const debugH = true
 export default {
   components: {
     EhrHeaderItem,
+    Resources,
     UiButton, UiConfirm, UiLink
   },
   data () {
     return {
       activateDemoMode: false,
       selectedUser: {},
+      devEnv: process.env.NODE_ENV !== 'production'
     }
   },
   computed: {
@@ -276,6 +258,11 @@ export default {
   methods: {
     demoLoginConfirm () {
       this.$refs.confirmDemoDialog.showDialog(DEMO.TITLE, DEMO.MSG)
+    },
+    logoutUser () {
+      StoreHelper.logUserOutOfEdEHR()
+      // refresh this page
+      this.$router.go(0)
     },
     proceedDemoToolConsumerCreation () {
       StoreHelper.setLoading(null, true)
@@ -293,7 +280,7 @@ export default {
           this.$router.push('demo')
         }).catch(err => {
           if(debugH) console.log('createDemoToolConsumer Error', err)
-          setApiError(err)
+          StoreHelper.setApiError(err)
           StoreHelper.setLoading(null, false)
         })
     }

@@ -1,5 +1,5 @@
 import InstoreHelper from './instoreHelper'
-import { setApiError } from '../../helpers/ehr-utils'
+import StoreHelper from '../../helpers/store-helper'
 import { Text } from '../../helpers/ehr-text'
 const API = 'assignments'
 const NAME = 'AssignmentStore'
@@ -47,7 +47,7 @@ const actions = {
       let results = response.data[OBJ]
       if (!results) {
         let msg = Text.GET_ASSIGNMENT_ERROR(NAME, id)
-        setApiError(msg)
+        StoreHelper.setApiError(msg)
         return
       }
       return results

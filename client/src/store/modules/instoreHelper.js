@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { composeAxiosResponseError, setApiError } from '../../helpers/ehr-utils'
+import { composeAxiosResponseError } from '../../helpers/ehr-utils'
 import StoreHelper from '../../helpers/store-helper'
 
 const debug = false
@@ -16,7 +16,7 @@ const debug = false
 class InstoreHelperWorker {
 
   composeUrl (context, api, url) {
-    let apiUrl = StoreHelper.apiUrl()
+    let apiUrl = StoreHelper.apiUrlGet()
     return `${apiUrl}/${api}/` + (url ? url : '')
   }
 
@@ -42,7 +42,7 @@ class InstoreHelperWorker {
         })
         .catch(error => {
           let msg = composeAxiosResponseError(error, 'Update failed: ')
-          setApiError(msg)
+          StoreHelper.setApiError(msg)
           StoreHelper.setLoading(context, false)
           reject(msg)
         })
@@ -62,7 +62,7 @@ class InstoreHelperWorker {
         })
         .catch(error => {
           let msg = composeAxiosResponseError(error, 'Create failed: ')
-          setApiError(msg)
+          StoreHelper.setApiError(msg)
           StoreHelper.setLoading(context, false)
           reject(msg)
         })
@@ -82,7 +82,7 @@ class InstoreHelperWorker {
         .catch(error => {
           // let msg = `Failed GET to ${url} with error: ${error.message}`
           let msg = composeAxiosResponseError(error, 'Get failed: ')
-          setApiError(msg)
+          StoreHelper.setApiError(msg)
           StoreHelper.setLoading(context, false)
           reject(msg)
         })
@@ -99,7 +99,7 @@ class InstoreHelperWorker {
           resolve(result)
         }).catch(err => {
           const msg = composeAxiosResponseError(err, 'Delete failed: ')
-          setApiError(err)
+          StoreHelper.setApiError(err)
           StoreHelper.setLoading(context, false)
           reject(msg)
         })

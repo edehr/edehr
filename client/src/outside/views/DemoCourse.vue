@@ -30,7 +30,7 @@
           You have selected assignment {{selectedAssignment.name}}.
         p(v-else).
           You need to select an assignment.
-        ui-button(:disabled="!readyForLti", @buttonClicked="confirmGotoEhr") Go to assignment.
+        ui-button(:disabled="!readyForLti", @buttonClicked="gotoEhr") Go to assignment.
 
       div(class="content")
         p(v-if="!!demoPersona.name").
@@ -38,8 +38,6 @@
         p(v-else).
           You need to go back and select a character.
         ui-button(secondary, @buttonClicked="gotoChangeCharacter") Change character.
-
-      ui-confirm(class="confirmDialog",ref="confirmGoToEhr",  @confirm="gotoEhr", save-label="OK")
 
     div(v-else, class="content")
       div You are not logged in to see the demo
@@ -53,22 +51,15 @@ import StoreHelper from '../../helpers/store-helper'
 import axios from 'axios'
 import InstoreHelper from '../../store/modules/instoreHelper'
 import UiButton from '../../app/ui/UiButton'
-import UiConfirm from '../../app/ui/UiConfirm'
 import UiLink from '../../app/ui/UiLink.vue'
-import { setApiError } from '../../helpers/ehr-utils'
 import EventBus from '../../helpers/event-bus'
 import { PAGE_DATA_READY_EVENT } from '../../helpers/event-bus'
-const COMFIRM_ENTER = {
-  TITLE: 'Sorry',
-  MSG: 'This is as far as the demonstration mode goes for now. It\'s a work in progress.\n' +
-  'Click OK to go and look around the EHR data pages. You will not see any case study data and you can not make any changes but hopefully you will see enough to entice you to come back and try the real demonstration mode when it is completed.',
-}
 
 const debugDC = true
 
 export default {
   components: {
-    UiButton, UiConfirm, UiLink
+    UiButton, UiLink
   },
   data () {
     return {
@@ -92,9 +83,6 @@ export default {
     }
   },
   methods: {
-    confirmGotoEhr () {
-      this.$refs.confirmGoToEhr.showDialog(COMFIRM_ENTER.TITLE, COMFIRM_ENTER.MSG)
-    },
     setAssignment: function (assignment) {
       this.selectedAssignment = assignment
     },
@@ -102,17 +90,24 @@ export default {
       this.$router.push('demo')
     },
     gotoEhr: function () {
-      this.$router.push('ehr')
-    },
-    handleAssignmentSelection: function (assignment) {
+      const persona = this.demoPersona
+      const submitData = {
+        assignmentName: this.selectedAssignment.name,
+        externalId: this.selectedAssignment.externalId,
+        personaName: persona.name,
+        personaEmail: persona.email,
+        personaRole: persona.role,
+        returnUrl: window.location.origin,
+        toolKey: this.demoData.toolConsumerKey
+      }
       StoreHelper.setLoading(null, true)
-      StoreHelper.submitPersona(this.demoPersona, assignment)
+      StoreHelper.submitPersona(submitData)
         .then(({url}) => {
           StoreHelper.setLoading(null, false)
           window.location.replace(url)
         }).catch(err => {
           StoreHelper.setLoading(null, false)
-          setApiError('An error occured! ', err)
+          StoreHelper.setApiError('An error occurred during the launch of the demonstration mode. ', err)
         })
     },
     loadAssignments: function () {
@@ -132,7 +127,7 @@ export default {
           if (debugDC) console.log('loadAssignments response.data', list)
           if (!list) {
             const msg = 'System error getting demonstration assignments.'
-            setApiError(msg)
+            StoreHelper.setApiError(msg)
             return
           }
           this.assignments = list

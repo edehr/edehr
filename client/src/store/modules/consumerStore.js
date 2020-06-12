@@ -1,5 +1,5 @@
 import InstoreHelper from './instoreHelper'
-import { setApiError } from '../../helpers/ehr-utils'
+import StoreHelper from '../../helpers/store-helper'
 import { Text } from '../../helpers/ehr-text'
 const API = 'consumers'
 const NAME = 'ConsumerStore'
@@ -43,7 +43,7 @@ const actions = {
       let results = response.data[OBJ]
       if (!results) {
         let msg = Text.CANNOT_GET_CONSUMER_STORE(NAME, id)
-        setApiError(msg)
+        StoreHelper.setApiError(msg)
         return
       }
       return results

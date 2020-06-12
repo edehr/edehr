@@ -4,8 +4,6 @@ import { saveAs } from 'file-saver'
 import filenamify from 'filenamify'
 import EhrDefs from './ehr-defs-grid'
 import { Text } from './ehr-text'
-import Vue from 'vue'
-import store from '../store'
 import validFilename  from 'valid-filename'
 import StoreHelper from './store-helper'
 
@@ -49,22 +47,6 @@ export function getIncomingParams () {
     params2[pair[0]] = decodeURIComponent(pair[1])
   })
   return params2
-}
-
-class ContextProvider {
-  constructor () {
-    this.shc = new Vue({store})
-  }
-}
-const provider = new ContextProvider()
-const gContext = provider.shc.$store
-
-export function setApiError (msg) {
-  gContext.commit('system/setApiError', msg, { root: true })
-}
-
-export function setSystemMessage (msg) {
-  gContext.commit('system/setSystemMessage', msg, { root: true })
 }
 
 export function validTimeStr (text) {
@@ -258,6 +240,7 @@ export function downloadSeedToFile (seedId, sSeedContent, ehrData) {
   let lastUpdate = formatDateStr(sSeedContent.lastUpdateDate)
   let name = sSeedContent.name
   let ver = sSeedContent.version
+  let desc = sSeedContent.description
   let fName = camelcase(name)
     + (ver ? '_' + ver : '')
     + '_' + lastUpdate
@@ -266,6 +249,7 @@ export function downloadSeedToFile (seedId, sSeedContent, ehrData) {
     id: seedId,
     license: Text.LICENSE_FULL_TEXT,
     ehrData: ehrData,
+    description: desc,
     name: name,
     version: ver,
     fileName: fName

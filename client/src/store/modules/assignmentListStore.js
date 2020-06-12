@@ -1,6 +1,5 @@
 import InstoreHelper from './instoreHelper'
 import StoreHelper from '../../helpers/store-helper'
-import { setApiError } from '../../helpers/ehr-utils'
 import { Text } from '../../helpers/ehr-text'
 const API = 'assignments'
 const debug = false
@@ -25,7 +24,7 @@ const actions = {
       if (!list) {
         let msg = Text.MUST_HAVE_ASSIGNMENTS
         console.error(msg)
-        setApiError(msg)
+        StoreHelper.setApiError(msg)
         return
       }
       let sdList = StoreHelper.getSeedDataList()
@@ -78,7 +77,7 @@ const actions = {
       .catch(err => {
         let msg = Text.UPDATE_ASSIGNMENT_ERROR(err)
         console.error(msg)
-        setApiError(msg)
+        StoreHelper.setApiError(msg)
       })
   }
 }

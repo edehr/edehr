@@ -1,6 +1,4 @@
 import InstoreHelper from './instoreHelper'
-// import { setApiError } from '../../helpers/ehr-utils'
-// const API = '???'
 const debug = false
 
 const state = {

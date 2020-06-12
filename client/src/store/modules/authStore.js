@@ -40,7 +40,7 @@ const actions = {
     return authHelper.getData(authToken)
       .then(res => {
         const { data } = res
-        return commit('setData', data)
+        return commit('setAuthData', data)
       })
   },
   adminLogin: function ({commit}, { adminPassword }) {
@@ -71,7 +71,7 @@ const actions = {
 }
 
 const mutations = {
-  setData: function (none, data) {
+  setAuthData: function (none, data) {
     state.data = data
   }
 }

@@ -61,7 +61,6 @@
     div(:class="`${$options.name}__data`")
       p apiUrl: {{ apiUrl }}
       p topLevelMenu: {{ topLevelMenu }}
-      p isLoggedIn: {{ isLoggedIn }}
       p sVisitData properties:
       li(v-for="(value, propertyName) in sVisitData", v-bind:key="propertyName", v-if="skipVisitProp(propertyName)")
         strong {{ propertyName }}
@@ -208,13 +207,10 @@ export default {
       return StoreHelper.isInstructor(this)
     },
     apiUrl () {
-      return StoreHelper.apiUrl()
+      return StoreHelper.apiUrlGet()
     },
     topLevelMenu () {
       return this.$store.state.visit.topLevelMenu
-    },
-    isLoggedIn () {
-      return this.$store.state.visit.isLoggedIn
     }
   },
   methods: {

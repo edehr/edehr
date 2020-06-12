@@ -1,5 +1,5 @@
 import InstoreHelper from './instoreHelper'
-import { setApiError } from '../../helpers/ehr-utils'
+import StoreHelper from '../../helpers/store-helper'
 import EventBus from '../../helpers/event-bus'
 import { ACTIVITY_DATA_EVENT } from '../../helpers/event-bus'
 import { Text } from '../../helpers/ehr-text'
@@ -105,7 +105,7 @@ const actions = {
       let results = response.data[OBJ]
       if (!results) {
         let msg = Text.GET_ACTIVITY_DATA_ERROR(NAME, id)
-        setApiError(msg)
+        StoreHelper.setApiError(msg)
         return
       }
       return results
