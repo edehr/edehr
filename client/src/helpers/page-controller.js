@@ -26,6 +26,9 @@ class PageControllerInner {
       if(!this.hasLoadedEhrPage) {
         this.loadData(route)
         this.hasLoadedEhrPage = true
+        // Intentional override to force page loading
+        // TODO See and resolve https://github.com/BCcampus/edehr/issues/730
+        this.hasLoadedEhrPage = false
       }
     } else {
       if (route.name === 'demo') {
