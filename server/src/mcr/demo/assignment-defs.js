@@ -5,7 +5,11 @@ export const assignment1 = {
   'Case 1 describes a patient\’s experience of chronic obstructive pulmonary disease (COPD) with a history of asthma. The interprofessional collaboration is role modelled between nursing, medical radiology, medical laboratory, and healthcare workers in the emergency department. ' +
   'The focus for this assignment is help the student complement their assessment and monitoring skills with accurate and careful recording within an electronic health record system.'
 
-  , title: 'Demonstration Case Study #1: COPD'
+  , title: 'Demonstration Case Study #1: COPD',
+  persona: 'demoPersona1',
+  profession: 'demoProfession1',
+  time: '08:00',
+  day : '11/02/2020'
 }
 
 export const assignment2 = {
@@ -15,5 +19,9 @@ export const assignment2 = {
   'Case 2 describes a patient\’s experience of COPD exacerbation due to community acquired pneumonia. The patient in this case study has a complicated health history. The interprofessional collaboration is role modelled between nursing, medical radiology, medical laboratory, and health care workers in the emergency department. ' +
   'The focus for this assignment is help the student complement their assessment and monitoring skills with accurate and careful recording within an electronic health record system.'
 
-  , title: 'Demonstration Case Study #2: Pneumonia'
+  , title: 'Demonstration Case Study #2: Pneumonia',
+  persona: 'demoPersona2',
+  profession: 'demoProfession2',
+  time: '08:00',
+  day: '11/02/2020'
 }

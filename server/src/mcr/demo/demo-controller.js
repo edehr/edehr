@@ -58,7 +58,7 @@ export default class DemoController {
       .then((seed) => {
         if (debugDC) debug('DemoController create assignment 1')
         const ass = Object.assign({},assignment1)
-        return this.cc.assignmentController.createAssignment(ass.externalId, toolC, ass.title, ass.description, seed._id)
+        return this.cc.assignmentController.createAssignment(ass.externalId, toolC, ass.title, ass.description, ass.persona, ass.profession, ass.day, ass.time, seed._id)
       })
       .then(() => {
         if (debugDC) debug('DemoController create seed 2')
@@ -69,7 +69,7 @@ export default class DemoController {
       .then((seed) => {
         if (debugDC) debug('DemoController create assignment')
         const ass = Object.assign({},assignment2)
-        return this.cc.assignmentController.createAssignment(ass.externalId, toolC, ass.title, ass.description, seed._id)
+        return this.cc.assignmentController.createAssignment(ass.externalId, toolC, ass.title, ass.description, ass.persona, ass.profession, ass.day, ass.time, seed._id)
       })
       .then(() => {
         if (debugDC) debug('DemoController generate token')
