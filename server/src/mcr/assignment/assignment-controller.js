@@ -64,7 +64,7 @@ export default class AssignmentController extends BaseController {
     return this.findOne(query)
   }
 
-  createAssignment (externalId, toolConsumer, resource_link_title, description, seedId=undefined) {
+  createAssignment (externalId, toolConsumer, resource_link_title, description, persona, profession, day, time, seedId=undefined) {
     if (!externalId) {
       throw new SystemError(Text.ASSIGNMENT_REQUIRE_EXTERNAL_ID(toolConsumer.oauth_consumer_key, toolConsumer._id))
     }
@@ -86,6 +86,10 @@ export default class AssignmentController extends BaseController {
           name: resource_link_title,
           description: description || this.defaultAssignmentDescription,
           ehrRoutePath: '',
+          persona, 
+          profession, 
+          day, 
+          time,
           seedDataId: seed._id
         }
         if (debugAC) debug('AssignmentController create from def', data)
