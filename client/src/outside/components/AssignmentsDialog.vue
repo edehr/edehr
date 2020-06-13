@@ -24,7 +24,26 @@
               div(class="input-element input-element-full")
                 label Description
                 textarea(class="ehr-page-form-textarea",v-model="description")
-
+            hr
+            h3 Assignment persona
+            div(class="ehr-group-wrapper grid-left-to-right-3")
+              div(class="form-element")
+                div(class="input-element input-element-full")
+                  label Persona
+                  input(class="input text-input", type="text", v-model="persona")
+              div(class="form-element")
+                div(class="input-element input-element-full")
+                  label Profession
+                  input(class="input text-input", type="text", v-model="profession")
+              div(class="form-element")
+                div(class="input-element input-element-full")
+                  label Day
+                  input(class="input text-input", type="text", v-model="day")
+              div(class="form-element")
+                div(class="input-element input-element-full")
+                  label Time
+                  input(class="input text-input", type="text", v-model="time")
+              
 </template>
 
 <script>
@@ -55,14 +74,18 @@ export default {
       selectedSeed: '',
       enableExternalIdEdit: true,
       inUseIds: [],
-      showAdvanced: false
+      showAdvanced: false,
+      persona: '',
+      profession: '',
+      day: '',
+      time: ''
     }
   },
   components: { AppDialog },
   computed: {
     nameValidate () {
       return this.assignmentName.trim() ? undefined :  ERRORS.NAME_REQUIRED
-    },
+    },  
     seedValidate () {
       return this.selectedSeed.trim() ? undefined :  ERRORS.SEED_REQUIRED
     },
@@ -104,7 +127,12 @@ export default {
         = this.externalId
         = this.ehrRoutePath
         = this.description
-        = this.assignmentId = ''
+        = this.assignmentId 
+        = this.persona
+        = this.profession
+        = this.day
+        = this.time
+        = ''
     },
     showDialog (assignmentData) {
       this.clearInputs()
@@ -118,6 +146,10 @@ export default {
         this.description = assignmentData.description
         this.assignmentId = assignmentData._id
         this.selectedSeed = assignmentData.seedDataId || ''
+        this.persona = assignmentData.persona
+        this.profession = assignmentData.profession
+        this.day = assignmentData.day
+        this.time = assignmentData.time
         // remove the current assignment id from the list
         this.inUseIds = this.inUseIds.filter( a => a !== this.externalId.toLowerCase())
         let cnt = StoreHelper.activitiesUsingAssignmentCount(this.assignmentId)
@@ -139,7 +171,11 @@ export default {
         externalId: this.externalId,
         description: this.description,
         seedDataId: sId,
-        toolConsumer: StoreHelper.toolConsumerId(this)
+        toolConsumer: StoreHelper.toolConsumerId(this),
+        persona: this.persona, 
+        profession: this.profession,
+        day: this.day,
+        time: this.time
       }
       this.$refs.theDialog.onClose()
       if (this.actionType === EDIT_ACTION) {

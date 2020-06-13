@@ -8,6 +8,10 @@ const Schema = new mongoose.Schema({
   name: { type: String, required: true},
   description: { type: String },
   ehrRoutePath: { type: String },
+  persona: { type: String },
+  profession: { type: String },
+  day: { type: String },
+  time: { type: String },
   seedDataId: {type: mongoose.Schema.Types.ObjectId, ref: 'SeedData', required: true}
 })
 
