@@ -21,6 +21,7 @@ class StoreHelperWorker {
   _getAssignmentProperty (key) { return store.getters['assignmentStore/' + key]}
   _getAssignmentListProperty (key) { return store.getters['assignmentListStore/' + key]}
   _getConsumerListProperty (key) { return store.getters['consumerListStore/' + key]}
+  _getDemoStorage (key) { return store.getters['demoStore/'+ key] }
   _getInstructorProperty (key) { return store.getters['instructor/' + key]}
   _getSeedListProperty (key) { return store.getters['seedListStore/' + key]}
   _getSystemProperty (key) { return store.getters['system/' + key]}
@@ -35,6 +36,7 @@ class StoreHelperWorker {
   _dispatchConsumerList (key, payload) { return store.dispatch('consumerListStore/' + key, payload)}
   _dispatchClassList (key, payload) { return store.dispatch('classListStore/' + key, payload)}
   _dispatchConsumer (key, payload) { return store.dispatch('consumerStore/' + key, payload)}
+  _dispatchDemoStore (key, payload) { return store.dispatch(`demoStore/${key}`, payload) }
   _dispatchSeedListProperty (key, payload) { return store.dispatch('seedListStore/' + key, payload)}
   _dispatchInstructor (key, payload) { return store.dispatch('instructor/' + key, payload)}
   _dispatchVisit (key, payload) { return store.dispatch('visit/' + key, payload)}

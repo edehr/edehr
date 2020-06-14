@@ -203,7 +203,7 @@ export default class DemoController {
     router.post('/',
       demoLimiter,
       (req, res) => {
-        this._createDemoToolConsumer(req, res)
+        this.createDemoToolConsumer(req, res)
       })
 
     /**

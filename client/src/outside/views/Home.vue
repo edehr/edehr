@@ -215,6 +215,14 @@
 
     ui-confirm(class="confirmDialog",ref="confirmDemoDialog", @confirm="proceedDemoToolConsumerCreation", htmlBody, saveLabel="Continue")
 
+    p.
+      To use this system you need to use a Learning Management System such as Moodle, Canvas, Blackboard, or any
+      other LTI compliant learning system. For more information see the documentation.
+  
+    div(style="margin-top: 2em;", v-show="isDemoMode") 
+      ui-button(@buttonClicked="confirmToolConsumerCreation") Enter Demo
+    ui-confirm(ref="confirmDialog", @confirm="proceedDemoToolConsumerCreation", saveLabel="Confirm")
+
 </template>
 
 <script>
@@ -233,6 +241,16 @@ const DEMO = {
 }
 
 const debugH = true
+
+import UiButton from '../../app/ui/UiButton'
+import UiConfirm from '../../app/ui/UiConfirm'
+import StoreHelper from '../../helpers/store-helper'
+import { setApiError } from '../../helpers/ehr-utils'
+
+const TEXT = {
+  TITLE: 'Proceed to create demo?',
+  MSG: 'This process can only be done once in a given period of time.',
+}
 
 export default {
   components: {

@@ -17,6 +17,9 @@ const debug = require('debug')('server')
 const visitId = Helper.sampleObjectId(true)
 const token = Helper.generateToken(visitId)
 
+const visitId = Helper.sampleObjectId(true)
+const token = Helper.generateToken(visitId)
+
 describe(`Make server calls on ${TYPE}`, function () {
   let app
   before(function (done) {

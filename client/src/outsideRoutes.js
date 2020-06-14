@@ -2,6 +2,41 @@ export function outside () {
 
   return [
     {
+      path: '/instructor',
+      name: 'instructor',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Instructor.vue'),
+      meta: { layout: 'outside', label: 'Instructor', topLevel: 'undefined' }
+    },
+    {
+      path: '/classList',
+      name: 'classList',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/ClassList.vue'),
+      meta: { layout: 'outside', label: 'Class List', topLevel: 'undefined' }
+    },
+    {
+      path: '/consumers',
+      name: 'consumers',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Consumers.vue'),
+      meta: { layout: 'outside', label: 'Consumers', topLevel: 'undefined' }
+    },
+    {
+      path: '/demo',
+      name: 'demo',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Demo'),
+      meta: { layout: 'outside', demo: true }
+    },
+    {
+      path: '/demo-course',
+      name: 'demoCourse',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/DemoCourse'),
+      meta: { layout: 'outside', demo: true }
+    },
+    {
       path: '/help',
       name: 'help',
       component: () =>

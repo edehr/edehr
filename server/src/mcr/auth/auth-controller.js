@@ -33,7 +33,7 @@ export default class AuthController {
     const { adminPass } = req.body
     let adminToken = getAdminPassword()
     const { authorization } = req.headers
-    if (!adminPass && !authorization) {
+    if (!adminPass || !authorization) {
       res.status(401).send(Text.REQUIRED_ADMIN)
     } else {
       if (debugAC) debug('adminPass >> adminToken', adminPass, adminToken)
