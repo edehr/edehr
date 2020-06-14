@@ -15,7 +15,7 @@ const configuration = config.config
 const _factorTypeName = (description = '') => `${typeName} - ${description}` 
 
 describe(_factorTypeName('making server calls'), () => {
-  let app, demoToken, demoData
+  let app, demoToken, demoData, assignments
   before(function (done) {
     ehrApp
       .setup(configuration)
@@ -37,7 +37,7 @@ describe(_factorTypeName('making server calls'), () => {
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json')
       .expect(200)
-      .expect(res => {
+      .then(res => {
         should.exist(res)
         should.exist(res.body)
         should.exist(res.body.demoToken)
@@ -60,7 +60,7 @@ describe(_factorTypeName('making server calls'), () => {
       .expect(res => {
         should.exist(res.body)
         should.exist(res.body.demoData)
-        res.body.demoData.should.have.length(4)
+        res.body.demoData.personaList.should.have.length(4)
         demoData = res.body.demoData
         done()
       })
@@ -69,18 +69,71 @@ describe(_factorTypeName('making server calls'), () => {
       })
   })
 
-  it(_factorTypeName('Set demo data'), (done) => {
-    const selectedDemoData = demoData[0]
-    const assignment = 'assignment1' // TODO: this must be changed when setting the demo assignment seed. 
-    // Please check https://github.com/BCcampus/edehr/issues/691 for further detail 
-    const url = `${BASE}/set`
+  it(_factorTypeName('Properly fetches assignments'), done => {
+    const url = `/api/assignments/consumer/${demoData.toolConsumerId}`
     request(app)
-      .post(url)
-      .send({ demoData: selectedDemoData, assignment })
+      .get(url)
+      .set('authorization', `Bearer ${demoToken}`)
       .set('Content-Type', 'application/json')
       .set('Accept', 'application/json')
       .expect(200)
       .expect(res => {
+        should.exist(res)
+        should.exist(res.body)
+        assignments = res.body.assignments
+        done()
+      })
+      .catch(err => {
+        should.not.exist(err)
+      })
+
+  })
+
+  it(_factorTypeName('Set demo data'), (done) => {
+    let assignment = assignments[0]
+    const data = Object.assign({},{ toolConsumerKey: demoData.toolConsumerKey, toolConsumerId: demoData.toolConsumerId}, demoData.personaList[0])
+    const [ given, family ] = data.name.split(' ')
+    let theKey = data.toolConsumerKey
+    let userId = theKey.slice(-5) + family + '-' + given
+    const ltiData = {
+      custom_assignment: assignment.externalId,
+      context_id: 'Demo-Course',
+      context_label: 'L-' + assignment.name,
+      context_title: 'T-' +  assignment.name,
+      context_type: 'Demonstration',
+      launch_presentation_return_url: 'http://returnurl.com',
+      lis_person_contact_email_primary: data.email,
+      lis_person_name_family: family,
+      lis_person_name_given: given,
+      lis_person_name_full: data.name,
+      lti_version: 'LTI-1p0',
+      lti_message_type: 'basic-lti-launch-request',
+      oauth_consumer_key: theKey,
+      oauth_consumer_secret: theKey,
+      oauth_nonce: Date.now() + Math.random() * 100,
+      oauth_signature_method: 'HMAC-SHA1',
+      oauth_timestamp: Math.round(Date.now() / 1000),
+      oauth_version: 'x.y',
+      roles: data.role,
+      resource_link_title: assignment.name,
+      resource_link_id: assignment.externalId,
+      tool_consumer_instance_guid: theKey,
+      tool_consumer_instance_name: 'Demo',
+      tool_consumer_info_version: 'x',
+      tool_consumer_info_product_family_code:'EdEHR Demo',
+      tool_consumer_instance_description: 'EdEHR provided LTI tool for launching the EdEHR in a demonstration mode',
+      user_id: userId,
+    }
+
+    const url = `${BASE}/set`
+    request(app)
+      .post(url)
+      .send({ ltiData })
+      .set('Content-Type', 'application/json')
+      .set('Accept', 'application/json')
+      .set('authorization', `Bearer ${demoToken}`)
+      .expect(200)
+      .then(res => {
         should.exist(res)
         should.exist(res.body)
         should.exist(res.body.refreshToken)

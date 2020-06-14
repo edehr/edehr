@@ -3,7 +3,6 @@ import BaseController from '../common/base'
 import { Text }  from '../../config/text'
 import Consumer from '../consumer/consumer'
 import SeedDataController from '../seed/seedData-controller'
-import AssignmentController from '../assignment/assignment-controller'
 import {ok, fail} from '../common/utils'
 import { isAdmin } from '../../helpers/middleware'
 
@@ -43,30 +42,6 @@ export default class ConsumerController extends BaseController {
         if (debugCC) debug('ConsumerController created tool', theConsumer._id, ' create seed next ', seedDef)
         return seedDataController.create(seedDef)
       })
-      // creating activity
-      .then(() => {
-        if (createDemoAssignments) {
-          // TODO: change this description
-          const as = new AssignmentController({ehr : { defaultAssignmentDescription: 'This a demo assignment 1'} })
-          const assignmentDef = {
-            toolConsumer: theConsumer, 
-            externalId: 'assignment1',
-            resource_link_title: 'Demo Assignment 1'
-          }
-          return as.createAssignment(assignmentDef.externalId, assignmentDef.toolConsumer, assignmentDef.resource_link_title )
-            .then(() => {
-              const as = new AssignmentController({ehr : { defaultAssignmentDescription: 'This a default demo assignment'} })
-              const assignmentDef = {
-                toolConsumer: theConsumer, 
-                externalId: 'assignment2',
-                resource_link_title: 'Demo Assignment 2',
-              }
-              return as.createAssignment(assignmentDef.externalId, assignmentDef.toolConsumer, assignmentDef.resource_link_title)
-            })
-        } else {
-          return Promise.resolve()
-        }
-      })    
       .then( () => {
         return theConsumer
       })
