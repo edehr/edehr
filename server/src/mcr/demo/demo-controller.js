@@ -50,9 +50,12 @@ export default class DemoController {
         if (debugDC) debug('DemoController tool consumer ready', toolC)
       })
       .then(() => {
-        if (debugDC) debug('DemoController create seed 1')
-        const aSeed = Object.assign({},seedData, {toolConsumer: toolC._id, name:'Seed 1'})
-        aSeed.ehrData = ej0Seed.ehrData
+        const data = ej0Seed
+        if (debugDC) debug('DemoController create', data.name)
+        const aSeed = Object.assign({},seedData, {toolConsumer: toolC._id})
+        aSeed.name = data.name
+        aSeed.description = data.description
+        aSeed.ehrData = data.ehrData
         return this.cc.seedController.create(aSeed)
       })
       .then((seed) => {
@@ -61,9 +64,12 @@ export default class DemoController {
         return this.cc.assignmentController.createAssignment(ass.externalId, toolC, ass.title, ass.description, seed._id)
       })
       .then(() => {
-        if (debugDC) debug('DemoController create seed 2')
-        const aSeed = Object.assign({},seedData, {toolConsumer: toolC._id, name:'Seed 2'})
-        aSeed.ehrData = ej2Seed.ehrData
+        const data = ej2Seed
+        if (debugDC) debug('DemoController create', data.name)
+        const aSeed = Object.assign({},seedData, {toolConsumer: toolC._id})
+        aSeed.name = data.name
+        aSeed.description = data.description
+        aSeed.ehrData = data.ehrData
         return this.cc.seedController.create(aSeed)
       })
       .then((seed) => {
