@@ -9,16 +9,16 @@
     section(class="container")
       div(class="columns is-centered features")
         div(class="column is-8  has-text-weight-semibold")
-          div(v-if="isInstructor")
-            div(v-if="devEnv")
-              ui-button(class="is-pulled-right",@buttonClicked="logoutUser") Sign out
-            div You are logged in as an instructor.  &nbsp;
+          div(class="columns", v-if="isInstructor")
+            div(class="column is-8") You are logged in as an instructor.  &nbsp;
               ui-link(:name="'instructor'") Go to your course and class lists.
-          div(v-if="isStudent")
-            div(v-if="devEnv")
-              ui-button(class="is-pulled-right",@buttonClicked="logoutUser") Sign out
-            div You are logged in as a student. &nbsp;
+            div(class="column is-4", v-if="isDemo")
+              ui-button(@buttonClicked="logoutUser") Sign out as instructor
+          div(class="columns", v-if="isStudent")
+            div(class="column is-10") You are logged in as a student. &nbsp;
               ui-link(:name="'ehr'") Go to your assignment.
+            div(class="column is-2", v-if="isDemo")
+              ui-button(@buttonClicked="logoutUser") Sign out as student
           div(v-if="isDemo")
             div You are already logged into the demonstration. &nbsp;
               ui-link(:name="'demo'") Click here to return to the demonstration page.
