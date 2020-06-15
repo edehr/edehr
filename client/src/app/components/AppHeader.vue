@@ -84,7 +84,7 @@ export default {
     showAssignmentDetails () {
       this.showingDemoSubmenu = true
     },
-    hideDemoMenu() {
+    hideDemoMenu () {
       this.showingDemoSubmenu = false
     },
     toggleShowDemoSubmenu () {

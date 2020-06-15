@@ -3,7 +3,7 @@ import { Text } from '../config/text'
 
 const rateLimit = require('express-rate-limit')
 const debug = require('debug')('server')
-const debugMW = true
+const debugMW = false
 const debugErrs = true
 
 const ADMIN_MAX_REQUEST_LIMIT = 5
@@ -13,7 +13,7 @@ if(debugMW) debug('validatorMiddlewareWrapper DEMO_MAX_REQUEST_LIMIT', DEMO_MAX_
 
 /**
  *
- * @param authController
+ * @param authUtil
  * @return {Function(req, res, next)} If req's auth header contains a valid token then place the parsed data into reg.authPayload
  */
 export const validatorMiddlewareWrapper = (authUtil) => {

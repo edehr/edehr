@@ -26,19 +26,18 @@ export default class AssignmentController extends BaseController {
   }
 
   delete (assignmentId) {
-    debug('assignmentDeletion')
+    if (debugAC) debug('Assignment. delete')
     if (!assignmentId) {
       throw new SystemError('AssignmentId is missing!')
     } else {
       return Visit.find( { assignment: assignmentId } )
         .then(visits => {
-          debug('visits >> ', visits)
           const promises = visits.map(v => {
             return ActivityData.remove(
               { visit: v._id }
             )
           })
-          debug('promises >> ', promises)
+          if (debugAC) debug('Assignment. delete visits associated with assignment')
           return Promise.all(promises)
             .then(() => {
               return Visit.remove(
@@ -60,7 +59,7 @@ export default class AssignmentController extends BaseController {
   locateAssignmentForStudent (externalId, toolConsumerId) {
     // let externalId = ltiData.custom_assignment
     let query = this._composeQuery(externalId, toolConsumerId)
-    debug('Assignment search for ' + JSON.stringify(query))
+    if (debugAC) debug('Assignment. search for ' + JSON.stringify(query))
     return this.findOne(query)
   }
 
@@ -88,14 +87,14 @@ export default class AssignmentController extends BaseController {
           ehrRoutePath: '',
           seedDataId: seed._id
         }
-        if (debugAC) debug('AssignmentController create from def', data)
+        if (debugAC) debug('Assignment. create from def', data)
         return this.create(data)
       })
   }
   locateDefaultAssignment (toolConsumerId) {
     const _this = this
     let query = this._composeQuery(DEFAULT_ASSIGNMENT_EXTERNAL_ID, toolConsumerId)
-    debug('Default assignment search ' + JSON.stringify(query))
+    if (debugAC) debug('Assignment. Default assignment search ' + JSON.stringify(query))
     return _this.findOne(query)
   }
 
@@ -151,14 +150,14 @@ export default class AssignmentController extends BaseController {
     const router = super.route()    
     router.delete('/:key', isAdmin, (req, res) => {
       const { key } = req.query
-      debug('deleteAssignmentQuery')
+      if (debugAC) debug('Assignment. delete query')
       this.delete(key)
         .then(res => {
-          debug('res >> ', res)
+          if (debugAC) debug('Assignment. delete results', res)
           res.status(200).json({success: true})
         })
         .catch(err => {
-          debug('err', err)
+          debug('Assignment. Delete Error', err)
           return req.status(500).send(err)
           // fail(res)
         })

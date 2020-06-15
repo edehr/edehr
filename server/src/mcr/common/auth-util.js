@@ -1,12 +1,13 @@
 const jwt = require('jsonwebtoken')
 const debug = require('debug')('server')
+const debugAuth = false
 
 // set to expire in 1 minute
 const REFRESH_TOKEN_EXPIRES_IN = '1m'
 export default class AuthUtil { 
   constructor (config) {
     this.tokenSecret = config.authTokenSecret
-    debug('authUtils -- tokenSecret', this.tokenSecret)
+    if (debugAuth) debug('authUtils -- tokenSecret', this.tokenSecret)
   }
 
   /**
@@ -20,19 +21,19 @@ export default class AuthUtil {
    * @throws {*} token validation errors from jwt.verify
    *
    */
-  authenticate (token) { 
-    debug('authController -- authenticate')
+  authenticate (token) {
+    if (debugAuth) debug('authController -- authenticate')
     const sliced = token.replace('Bearer ', '')
     return this.validateToken(sliced)
   }
 
   createToken (data) {
-    debug('authController -- createToken')
+    if (debugAuth) debug('authController -- createToken')
     return jwt.sign(data, this.tokenSecret)
   }
 
   createRefreshToken (token) {
-    debug('authController -- createRefreshToken')
+    if (debugAuth) debug('authController -- createRefreshToken')
     //set to expire in 1 minute
     return jwt.sign({ token }, this.tokenSecret, { expiresIn: REFRESH_TOKEN_EXPIRES_IN })
   }
@@ -57,7 +58,7 @@ export default class AuthUtil {
    */
   validateToken (token) {
     const results = jwt.verify(token, this.tokenSecret)
-    debug('authController -- validateToken', results)
+    if (debugAuth) debug('authController -- validateToken', results)
     return results
   }
 }

@@ -137,9 +137,9 @@ export default class DemoController {
    */
   submitLTIData (req, res) {
     const {host} = req.headers
-    let {ltiData} = req.body
-    const _req = this._signAndPrepareLTIRequest(ltiData, host)
-    this._LTIPost(_req)
+    const {ltiData} = req.body
+    const signedRequest = this._signAndPrepareLTIRequest(ltiData, host)
+    return axios.post(signedRequest.url, signedRequest.body)
       .then((_results) => {
         if (debugDC) debug('DC.submitLtiData after post')
         res.status(200).json({refreshToken: _results.data.refreshToken, url: _results.data.url})
@@ -167,28 +167,35 @@ export default class DemoController {
   /**
    * @method _signAndPrepareLTIRequest
    * @param {*} ltiData the ltiData object, containing metadata for the new connection
-   * @param {*} base The base for the request, extracted from req.host
-   * @description It prepares the request object within the needed parameters
-   * for signing and making a POST to the Lti logic
-   * @returns req the generated and signed req object
+   * @param {*} host The host for the request
+   * @description Create a signed request object containing the LTI data
+   * @returns a generated and signed request object
    */
-  _signAndPrepareLTIRequest (ltiData, base, debug = true) {
-    const req = {
-      url: `http://${base}/api/launch_lti`,
+  _signAndPrepareLTIRequest (ltiData, host) {
+    const signedRequest = {
+      url: `${this.config.scheme}://${host}/api/launch_lti`,
       method: 'POST',
       connection: {
-        encrypted: undefined
+        encrypted: this.config.scheme === 'https'
       },
       headers: {
         accept: 'application/json, text/plain, */*',
         'Content-Type': 'application/json;charset=utf-8',
-        host: base,
+        host: host,
       },
-      body: Object.assign({}, ltiData, {debug})
+      body: Object.assign({}, ltiData, { demoRedirect: true})
     }
-    const signer = new HMAC_SHA1()
-    req.body.oauth_signature = signer.build_signature(req, req.body, ltiData.oauth_consumer_secret)
-    return req
+    const debugSignature = false
+    let withDetailsCallback = debugSignature ?
+      function (signingDetails) {
+        debug('DemoController HMAC_SHA1 details:', signingDetails)
+      } : undefined
+    const signer = new HMAC_SHA1(withDetailsCallback)
+    signedRequest.body.oauth_signature = signer.build_signature(
+      signedRequest,
+      signedRequest.body,
+      ltiData.oauth_consumer_secret)
+    return signedRequest
   }
 
   route () {
