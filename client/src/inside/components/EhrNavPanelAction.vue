@@ -98,7 +98,7 @@ export default {
   },
   created: function () {
     this.ehrAction = new EhrActions()
-    this.confirmBody = this.ehrAction.getStudentHasSubmitted()
+    this.confirmBody = this.ehrAction.getStudentHasSubmitted() || this.ehrAction.getActivityIsClosed()
   }
 }
 </script>

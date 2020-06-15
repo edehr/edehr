@@ -20,6 +20,8 @@ export const Text = {
   SEND_FOR_EVAL_TITLE: 'Send assignment to your instructor for evaluation',
   SEND_FOR_EVAL_BODY: 'You will not be able to edit your assignment after submission. Are you sure you want to send?',
   STUDENT_HAS_SUBMITTED: 'This assignment has been sent to your instructor for evaluation. It is no longer editable.',
+  ACTIVITY_IS_CLOSED: 'This activity has been closed by your instructor. You will no longer be able to submit edits for it.',
+
   // Authentication
   EXPIRED_REFRESH_TOKEN: 'Refresh token is expired',
   EXPIRED_TOKEN: (err) => `The token has expired. Please, try again! \n ${err}`,
