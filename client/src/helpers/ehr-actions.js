@@ -47,4 +47,8 @@ export default class EhrActions {
     return Text.STUDENT_HAS_SUBMITTED
   }
 
+  getAssignmentIsClosed () {
+    return Text.ACTIVITY_IS_CLOSED
+  }
+
 }

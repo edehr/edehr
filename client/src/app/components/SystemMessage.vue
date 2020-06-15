@@ -40,6 +40,8 @@ export default {
       if (StoreHelper.isStudent(this)) {
         if (StoreHelper.isSubmitted(this)) {
           msg = Text.STUDENT_HAS_SUBMITTED
+        } else if (StoreHelper.getActivityIsClosed(this)) {
+          msg = Text.ACTIVITY_IS_CLOSED
         }
       }
       // uncomment to set a test api error
