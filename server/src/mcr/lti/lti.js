@@ -6,6 +6,8 @@ import { ltiVersions, LTI_BASIC } from './lti-defs'
 
 const url = require('url')
 const debug = require('debug')('server')
+const debugFine = false
+
 const CustomStrategy = require('passport-custom')
 const lti = require('ims-lti')
 const passport = require('passport')
@@ -74,10 +76,10 @@ export default class LTIController {
       // serialize the user object into the session. Provide a function that
       // receives a user object and a done(err,id) callback
       passport.serializeUser(function (user, done) {
-        debug('----------------------   SERIALIZE user', user.user_id)
+        if (debugFine) debug('----------------------   SERIALIZE user', user.user_id)
         if (user && user._id) {
           let id = user._id.valueOf()
-          debug('serializeUser id:' + id)
+          if (debugFine) debug('serializeUser id:' + id)
           done(null, id)
         } else {
           console.error('Can not serialize user', user)
@@ -87,7 +89,7 @@ export default class LTIController {
       // deserializeUser is to take the user id stored in the session and
       // go find the user object
       passport.deserializeUser(function (id, done) {
-        // debug('---------------------- DESERIALIZE id', id)
+        if (debugFine) debug('---------------------- DESERIALIZE id', id)
         _this.userController.read(id).then(results => {
           let user = results.user
           // debug('LTI deserializeUser result ' + (user ? user.user_id : 'none'))
@@ -133,11 +135,20 @@ export default class LTIController {
         .then(() => {
 
           let debugLtiValidation = false
+          let withDetailsCallback = undefined
 
           if (debugLtiValidation) {
+            withDetailsCallback = function (details) {
+              debug('LTI. Here are the details used to create the signature', details)
+            }
+            /*
             // mimic a little of what the provider does to verify the oauth signature
             let secret = req.toolConsumer.oauth_consumer_secret
             let {protocol} = req
+            if (req.headers['x-forwarded-proto'] ==='https') {
+              protocol = 'https'
+            }
+
             let x_forwarded_proto = req.headers['x-forwarded-proto']
             let originalUrl = req.originalUrl || req.url
             let {encrypted} = req.connection
@@ -151,10 +162,11 @@ export default class LTIController {
             console.log('hitUrl', hitUrl)
             console.log('req.toolConsumer.oauth_consumer_secret', secret)
             console.log('ltiData.oauth_signature', ltiData.oauth_signature)
+            */
           }
-          let sec = req.toolConsumer.oauth_consumer_secret
-          let provider = new lti.Provider(ltiData, sec)
-          debug('strategyVerify validate msg with provider')
+          let secret = req.toolConsumer.oauth_consumer_secret
+          let provider = new lti.Provider(ltiData, secret, null, null, withDetailsCallback)
+          if (debugFine) debug('strategyVerify validate msg with provider')
           provider.valid_request(_req, function (err, isValid) {
             if (err) {
               debug('strategyVerify lti provider verify send error: ' + err.message)
@@ -181,7 +193,7 @@ export default class LTIController {
 
   validateLti (ltiData, callback) {
     const _this = this
-    debug('strategyVerify validate request ')
+    if (debugFine) debug('strategyVerify validate request ')
     function invalid (message) {
       callback(_this._createParameterError(ltiData, message))
       return false
@@ -221,7 +233,7 @@ export default class LTIController {
       $and: [{ user_id: userId }, { toolConsumer: toolConsumer._id }]
     }).then((foundUser, r) => {
       if (foundUser) {
-        debug('Found user ' + foundUser._id)
+        if (debugFine) debug('Found user ' + foundUser._id)
         // will update the user record later
         return foundUser
       }
@@ -265,7 +277,7 @@ export default class LTIController {
       debug('updateToolConsumer update tool consumer record ') // + JSON.stringify(toolConsumer))
       return toolConsumer.save()
     } else {
-      debug('tool consumer is up to date ')
+      if (debugFine) debug('tool consumer is up to date ')
       return Promise.resolve()
     }
   }
@@ -308,20 +320,20 @@ export default class LTIController {
   updateActivity (req, results) {
     debug('updateActivity ' + JSON.stringify(req.assignment))
     if (req.assignment) {
-      debug('updateActivity with assignment')
+      if (debugFine) debug('updateActivity with assignment')
       return this.activityController.updateCreateActivity(
         req.ltiData,
         req.toolConsumer._id,
         req.assignment
       ).then(activity => {
-        debug('store the activity in the req')
+        if (debugFine) debug('store the activity in the req')
         req.activity = activity
       })
     }
   }
 
   updateVisit (req) {
-    debug('updateVisit')
+    if (debugFine) debug('updateVisit')
     if(req.activity) {
       return this.visitController.updateCreateVisit(
         req.user,
@@ -347,7 +359,7 @@ export default class LTIController {
     let route = req.assignment.ehrRoutePath || '/ehr'
 
     if (visit.isInstructor) {
-      debug('Route to instructor page ')// + JSON.stringify(req.ltiData, null, 2))
+      if (debugFine) debug('Route to instructor page ')// + JSON.stringify(req.ltiData, null, 2))
       route = '/instructor'
     }
 
@@ -360,7 +372,7 @@ export default class LTIController {
         let errs = req.errors.join('-')
         url += '&error=' + errs
       }
-      debug('LTI redirect url is:', url)
+      if (debugFine) debug(`LTI redirect url is "${url}`)
       req.ltiNextUrl = url
       return req
     }
@@ -407,16 +419,16 @@ export default class LTIController {
     })
     router.post('/', passport.authenticate('ltiStrategy'), (req, res, next) => {
       req.errors = []
-      debug('have authenticated user. Now process the lti launch request')
+      if (debugFine) debug('have authenticated user. Now process the lti launch request')
       this._postLtiChain(req)
         .then((req) => {
           let url = req.ltiNextUrl
           const refreshToken = req.refreshToken
-          debug(`ready to redirect to the ehr ${url}`)
-          // When redirecting in the test, the request promise 
-          // resolves in 404. So, for debugging / testing
-          // purposes, I believe it is better not to redirect
-          if (req.body.debug) {
+          debug(`LTI ready to redirect to the ehr "${url}"`)
+          // When the demo-controller redirects to LTI and this LTI controller uses redirect (note that is a
+          // POST sending a POST that would redirect) the redict results in a 404 error.
+          // So, instead return to the demo controller enough information to get into the ehr
+          if (req.body.demoRedirect) {
             res.status(200).json({refreshToken, url})
           } else {
             res.redirect(url)

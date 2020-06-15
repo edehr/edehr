@@ -4,7 +4,7 @@ import Activity from './activity'
 import {ok, fail} from '../common/utils'
 import { Text } from '../../config/text'
 const debug = require('debug')('server')
-
+const debugAC = false
 /*
 resource_link_id 	required 	unique id referencing the link, or "placement", of the app in the consumer. If an app was added twice to the same class, each placement would send a different id, and should be considered a unique "launch". For example, if the provider were a chat room app, then each resource_link_id would be a separate room.
 
@@ -35,7 +35,7 @@ export default class ActivityController extends BaseController {
    */
   updateCreateActivity (ltiData, toolConsumerId, assignment) {
     const _this = this
-    debug('updateCreateActivity search for existing activity ' + ltiData.resource_link_id)
+    if (debugAC) debug('updateCreateActivity search for existing activity ' + ltiData.resource_link_id)
     return new Promise(function (resolve, reject) {
       const data = _this._extractLtiData(ltiData)
       _this.findOne({$and: [{resource_link_id: ltiData.resource_link_id}, {toolConsumer: toolConsumerId}]})
@@ -45,15 +45,15 @@ export default class ActivityController extends BaseController {
             if (!activity.assignment.equals(assignment._id)) {
             // console.log('was ', activity.assignment, 'seeking', assignment._id)
               const msg = Text.CHANGE_ACTIVITY_ASSIGNMENT
-              debug('updateCreateActivity ' + msg)
+              if (debugAC) debug('updateCreateActivity ' + msg)
               activity.assignment = assignment._id
             }
-            debug('updateCreateActivity update activity ' + activity._id)
+            if (debugAC) debug('updateCreateActivity update activity ' + activity._id)
             return _this._updateHelper(activity, data)
           } else {
             data.toolConsumer = toolConsumerId
             data.assignment = assignment._id
-            debug('updateCreateActivity create activity')
+            if (debugAC) debug('updateCreateActivity create activity')
             return _this._createHelper(activity, data)
           }
         })
@@ -80,10 +80,10 @@ export default class ActivityController extends BaseController {
   }
 
   _createHelper (activity, data) {
-    debug('createHelper create new activity record ' + JSON.stringify((data)))
+    if (debugAC) debug('createHelper create new activity record ' + JSON.stringify((data)))
     return this.create(data)
       .then((newActivity) => {
-        debug('createHelper new activity ' + newActivity._id)
+        if (debugAC) debug('createHelper new activity ' + newActivity._id)
         return newActivity
       })
   }
@@ -92,10 +92,10 @@ export default class ActivityController extends BaseController {
     Object.assign(activity, data)
     let updated = JSON.stringify(activity)
     if (current !== updated) {
-      debug('updateHelper there is something different in the activity. Saving new activity data ' + updated)
+      if (debugAC) debug('updateHelper there is something different in the activity. Saving new activity data ' + updated)
       return activity.save()
     } else {
-      debug('updateHelper  no change in activity')
+      if (debugAC) debug('updateHelper  no change in activity')
       return activity
     }
   }

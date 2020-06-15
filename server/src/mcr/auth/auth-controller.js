@@ -110,7 +110,7 @@ export default class AuthController {
         debug('tokenValidated >> ', token)
         res.status(200).json({token})
       } catch(err) {
-        debug('validate token threw >> ', err)
+        debug('validate token threw >> ', err.message)
         // This arguably returns 401 in this case. As the validateToken can throw if the token has expired,
         // which is a use case of the refresh token.
         res.status(401).send(Text.EXPIRED_TOKEN)

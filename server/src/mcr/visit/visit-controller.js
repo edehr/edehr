@@ -6,7 +6,8 @@ import Role from '../roles/roles'
 
 const debug = require('debug')('server')
 function debugvc (msg) {
-  debug('VisitController: ' + msg)
+  if (false)
+    debug('VisitController: ' + msg)
 }
 
 export default class VisitController extends BaseController {

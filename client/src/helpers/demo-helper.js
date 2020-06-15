@@ -63,7 +63,6 @@ export default class DemoHelper {
       oauth_nonce: Date.now() + Math.random() * 100,
       oauth_signature_method: 'HMAC-SHA1',
       oauth_timestamp: Math.round(Date.now() / 1000),
-      oauth_version: 'x.y',
       roles: personaRole,
       resource_link_title: assignmentName,
       resource_link_id: externalId,

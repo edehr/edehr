@@ -11,7 +11,6 @@ const ehrApp = new EhrApp()
 
 const visitId = Helper.sampleObjectId(true)
 const token = Helper.generateToken(visitId)
-const debug = require('debug')('server')
 
 describe('Make some server calls', function () {
   let app
