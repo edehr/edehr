@@ -66,7 +66,14 @@ export default {
     },
     $route: function (curr, prev) {
       if (curr !== prev && this.showingNavPanel) {
-        this.showingNavPanel = false
+        const currArray = curr.path.split('/')
+        const prevArray = prev.path.split('/')
+        // The third item in the path array contains information about the 
+        // page, which was making the navigation awkward on mobile devices. 
+        // By implementing this, we assure that the navPanel will only be hidden
+        // if the current path is within the same group as the previous one. 
+        if (currArray[2] === prevArray[2])
+          this.showingNavPanel = false
       }
     }
   }
