@@ -26,7 +26,7 @@
               ui-button(v-on:buttonClicked="$emit('save')", v-show="useSave", :disabled="disableSave")
                 slot(name="save-button") {{ saveButtonLabel }}
       div(v-if="showingDialog", style="display:none")
-        div(data-test-id="AppDialog.dialog.is.open")
+        div(data-test-id="AppDialog.dialog.is.open") This div used for unit testing.
 </template>
 
 <script>
