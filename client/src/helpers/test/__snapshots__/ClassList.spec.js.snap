@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ClassName test Basic testing renders as expected 1`] = `
+exports[`ClassList component tests renders as expected 1`] = `
 <div>
   <div class="classlist-header-group">
     <div class="course-header">
