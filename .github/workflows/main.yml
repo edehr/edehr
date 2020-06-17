@@ -22,31 +22,41 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # - name: "run-db"
-      - uses: actions/npm@master
+      - uses: actions/setup-node@v2-beta
         with:
-          args: start:db
+          node-version: '12'
+      - run: npm ci
+        working-directory: client
+      - run: npm run lint -- --no-fix
+        working-directory: client
+      - run: npm run test
+        working-directory: client
+    
+      # - name: "run-db"
+      #- uses: actions/npm@master
+      #  with:
+      #    args: start:db
 
         # Run npm install
       # - name: "npm-install"
-      - uses: actions/npm@master
-        with:
-          args: run install
+      #- uses: actions/npm@master
+      #  with:
+      #    args: run install
 
         #test frontend
       # - name: "frontend-test"
-      - uses: actions/npm@master
-        with:
-          args: run test:client
+      #- uses: actions/npm@master
+      #  with:
+      #    args: run test:client
 
         #test backend
       # - name: "backend-test"
-      - uses: actions/npm@master
-        with:
-          args: run test:server
+      #- uses: actions/npm@master
+      #  with:
+      #    args: run test:server
 
         #run linter
       # - name: "npm-lint"
-      - uses: actions/npm@master
-        with:
-          args: run lint
+      #- uses: actions/npm@master
+      #  with:
+      #    args: run lint
