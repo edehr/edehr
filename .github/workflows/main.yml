@@ -23,31 +23,31 @@ jobs:
     uses: actions/checkout@v2
 
 
-    - name: run db
+    run-db:
       uses: actions/npm@master
       with:
         args: start:db
-        
+
     # Run npm install
-    - name: npm install
+    npm-install:
       uses: actions/npm@master
       with:
         args: install
 
     #test frontend
-    - name: frontend test
+    frontend-test:
       uses: actions/npm@master
       with:
         args: run test:client
 
     #test backend
-    - name: backend test
+    backend-test:
       uses: actions/npm@master
       with:
         args: run test:server
 
     #run linter
-    - name: npm lint
+    npm-lint:
       uses: actions/npm@master
       with:
         args: run lint
