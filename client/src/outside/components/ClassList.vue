@@ -11,9 +11,9 @@
           fas-icon(class="icon-right", icon="hourglass-start")
         ui-button(v-else, v-on:buttonClicked="closeActivity", title="Block students from doing more work. Instructor can evaluate all work.") Close activity
           fas-icon(class="icon-right", icon="hourglass-end")
-        ui-button(v-on:buttonClicked="downloadEvaluations") Download all assignment evaluation notes
+        ui-button(data-test-id="ClassList.button.download", v-on:buttonClicked="downloadEvaluations") Download all assignment evaluation notes
           fas-icon(class="icon-right", icon="download")
-        ui-save-as-prompt(ref="promptDialog", title="Save evaluation", :message="promptMessage", :filename="activityName", v-on:confirm="proceed")
+        ui-save-as-prompt(data-test-id="ClassList.prompt.saveAs", ref="promptDialog", title="Save evaluation", :message="promptMessage", :filename="activityName", v-on:confirm="proceed")
     div(v-text-to-html="assignmentDescription")
 
     table

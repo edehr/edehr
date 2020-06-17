@@ -1,52 +1,42 @@
-import { shallowMount, createLocalVue } from '@vue/test-utils'
+import { mount, createLocalVue } from '@vue/test-utils'
 import ClassList from '../../outside/components/ClassList.vue'
-import VueRouter from 'vue-router'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import {
-  faDownload,
-} from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-library.add(faDownload)
+import directivesFilters from '../directives-filters'
+import icons from '../../icons'
+import router from '../../router'
 
-const localVue = createLocalVue()
+const Vue = createLocalVue()
+directivesFilters(Vue)
+icons(Vue)
 
-const router = new VueRouter()
-localVue.use(VueRouter)
-localVue.component('fas-icon', FontAwesomeIcon)
-
-const wrapper =  shallowMount(ClassList, {
-  localVue,
-  router
-})
-
-
-describe('ClassName test', () => {
-  // let wrapper
-
-  describe('Basic testing', () => {
-    test('Mounts properly', () =>{
-      expect(wrapper.isVueInstance()).toBeTruthy()
-    })
-    test('renders as expected', () => {
-      expect(wrapper.html()).toMatchSnapshot()
-    })
-    const button = wrapper.find('.assignmentascsv')
-    test('has "Download Evaluation Notes as CSV button"', () => {
-      expect(button.text()).toContain(
-        'Download all assignment evaluation notes'
-      )
-    })
-    //   test('does clicking the button show the modal', () => {
-    //     button.trigger('click')
-    //     wrapper.vm.$nextTick()
-    //       .then(() => {
-    //         console.log('vm >> ', wrapper.vm.activity)
-    //         expect(wrapper.find('.instruction')).toContain('Save evalutaion for ')
-
-  //       })
-  //   })
+const wrapper =  mount(
+  ClassList, {
+    localVue: Vue,
+    router
   })
- 
 
 
+describe('ClassList component tests', () => {
+  test('mounts properly', () =>{
+    expect(wrapper.isVueInstance()).toBeTruthy()
+  })
+
+  test('renders as expected', () => {
+    expect(wrapper.html()).toMatchSnapshot()
+  })
+
+  test('has download evaluation notes as CSV button"', async () => {
+    const button = wrapper.find('[data-test-id="ClassList.button.download"]')
+    expect(button.text()).toContain('Download all assignment evaluation notes')
+  })
+
+  test('click download opens save as prompt dialog', async () => {
+    const prompt = '[data-test-id="AppDialog.dialog.is.open"]'
+    expect(wrapper.find(prompt).exists()).toBeFalsy()
+
+    const button = wrapper.find('[data-test-id="ClassList.button.download"]')
+    button.trigger('click')
+    await Vue.nextTick()
+
+    expect(wrapper.find(prompt).exists()).toBeTruthy()
+  })
 })
