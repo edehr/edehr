@@ -19,35 +19,34 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    uses: actions/checkout@v2
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      uses: actions/checkout@v2
+      
+      run-db:
+        uses: actions/npm@master
+        with:
+          args: start:db
 
+        # Run npm install
+        npm-install:
+          uses: actions/npm@master
+          with:
+            args: install
 
-    run-db:
-      uses: actions/npm@master
-      with:
-        args: start:db
+        #test frontend
+        frontend-test:
+          uses: actions/npm@master
+          with:
+            args: run test:client
 
-    # Run npm install
-    npm-install:
-      uses: actions/npm@master
-      with:
-        args: install
+        #test backend
+        backend-test:
+          uses: actions/npm@master
+          with:
+            args: run test:server
 
-    #test frontend
-    frontend-test:
-      uses: actions/npm@master
-      with:
-        args: run test:client
-
-    #test backend
-    backend-test:
-      uses: actions/npm@master
-      with:
-        args: run test:server
-
-    #run linter
-    npm-lint:
-      uses: actions/npm@master
-      with:
-        args: run lint
+        #run linter
+        npm-lint:
+          uses: actions/npm@master
+          with:
+            args: run lint
