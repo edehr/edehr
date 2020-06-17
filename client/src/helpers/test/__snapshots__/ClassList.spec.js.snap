@@ -4,33 +4,72 @@ exports[`ClassName test Basic testing renders as expected 1`] = `
 <div>
   <div class="classlist-header-group">
     <div class="course-header">
-      <h2 class="course-header-item"></h2>
+      <h2 class="course-header-item"><span>: &nbsp;</span><a href="/assignments" class="is-link"><span></span></a></h2>
     </div>
-    <div class="course-header-item float-right">
-      <ui-button-stub class="assignmentascsv">Download all assignment evaluation notes<fas-icon-stub icon="download" class="icon-right"></fas-icon-stub>
-      </ui-button-stub>
-      <ui-save-as-prompt-stub title="Save evaluation" message="Save evaluations for undefined" savelabel="OK"></ui-save-as-prompt-stub>
+    <div class="course-header-item float-right"><button class="button is-primary" title="Block students from doing more work. Instructor can evaluate all work.">Close activity<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="hourglass-end" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="icon-right svg-inline--fa fa-hourglass-end fa-w-12">
+          <path fill="currentColor" d="M360 64c13.255 0 24-10.745 24-24V24c0-13.255-10.745-24-24-24H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24 0 90.965 51.016 167.734 120.842 192C75.016 280.266 24 357.035 24 448c-13.255 0-24 10.745-24 24v16c0 13.255 10.745 24 24 24h336c13.255 0 24-10.745 24-24v-16c0-13.255-10.745-24-24-24 0-90.965-51.016-167.734-120.842-192C308.984 231.734 360 154.965 360 64zM192 208c-57.787 0-104-66.518-104-144h208c0 77.945-46.51 144-104 144z" class=""></path>
+        </svg></button><button class="button is-primary" data-test-id="ClassList.button.download">Download all assignment evaluation notes<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="download" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon-right svg-inline--fa fa-download fa-w-16">
+          <path fill="currentColor" d="M216 0h80c13.3 0 24 10.7 24 24v168h87.7c17.8 0 26.7 21.5 14.1 34.1L269.7 378.3c-7.5 7.5-19.8 7.5-27.3 0L90.1 226.1c-12.6-12.6-3.7-34.1 14.1-34.1H192V24c0-13.3 10.7-24 24-24zm296 376v112c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24V376c0-13.3 10.7-24 24-24h146.7l49 49c20.1 20.1 52.5 20.1 72.6 0l49-49H488c13.3 0 24 10.7 24 24zm-124 88c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20zm64 0c0-11-9-20-20-20s-20 9-20 20 9 20 20 20 20-9 20-20z" class=""></path>
+        </svg></button>
+      <div data-test-id="ClassList.prompt.saveAs">
+        <div style="display: none;" name="dialog">
+          <div class="modal-mask"></div>
+          <div class="dialog-wrapper" style="top: 0px; left: 0px;">
+            <div class="dialog-move-bar"></div>
+            <div class="dialog-header">
+              <h2>Save evaluation</h2><button class="button button-close"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512" class="icon-right svg-inline--fa fa-times fa-w-11">
+                  <path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z" class=""></path>
+                </svg></button>
+            </div>
+            <div class="dialog-body">
+              <div>
+                <div class="instruction">Save evaluations for undefined</div>
+                <div class="ehr-group-wrapper grid-left-to-right-2">
+                  <div class="form-element">
+                    <div class="text_input_wrapper"><input type="text" class="input text-input" data-focus="false"><span class="suffix">.csv</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="dialog-footer">
+              <div class="dialog-footer-errors is-pulled-left">
+                <div style="display: none;"><span>Correct the following: </span><span class="error-color"><span></span></span></div>
+              </div>
+              <div class="dialog-footer-content">
+                <!---->
+                <div class="is-pulled-right"><button class="button is-light">Cancel</button>
+                  <div class="dialog-footer-button-space"></div><button disabled="disabled" class="button is-primary">OK</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!---->
+        </div>
+      </div>
     </div>
   </div>
-  <h3></h3>
+  <div></div>
   <table>
     <tr>
-      <td>LMS description:</td>
-      <td>
-        <div></div>
-      </td>
+      <td>Last Update:</td>
+      <td></td>
     </tr>
     <tr>
-      <td>Assignment name:</td>
-      <td>
-        <ui-link-stub name="assignments" params="[object Object]"><span></span></ui-link-stub>
-      </td>
+      <td>Created:</td>
+      <td></td>
     </tr>
     <tr>
-      <td>Assignment description:</td>
-      <td>
-        <div></div>
-      </td>
+      <td>Status:</td>
+      <td>Open</td>
+    </tr>
+    <!---->
+    <tr>
+      <td>Students participating:</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>Students submitted:</td>
+      <td>0</td>
     </tr>
   </table>
   <div class="classlist-body">
