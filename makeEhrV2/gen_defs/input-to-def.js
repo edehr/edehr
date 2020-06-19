@@ -45,7 +45,8 @@ const pageChildElementProperties = [
   'tableColumn',
   'tableCss',
   'tableLabel',
-  'validation'
+  'validation',
+  'recHeader'
 ]
 
 const groupProperties = [

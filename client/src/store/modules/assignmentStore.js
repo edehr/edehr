@@ -23,6 +23,11 @@ const getters = {
   assignmentDescription:  state => { return state.dataStore.description },
   assignment: state => {
     return state.dataStore
+  },
+  personaData: state => { 
+    console.log(' state.dataStore >> ',  state.dataStore)
+    const { persona, time, date, profession } = state.dataStore
+    return Object.assign({}, { persona, time, date, profession})  
   }
   // TODO add last update field to model in server
   // lastUpdateDate: state => {

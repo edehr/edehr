@@ -143,7 +143,7 @@ export default function () {
           fqn: 'assessmentTools.medication1_1'
         }
       ],
-      generated: '2019-10-09T18:40:08-07:00',
+      generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -245,7 +245,7 @@ export default function () {
           fqn: 'codeLookup.icf'
         }
       ],
-      generated: '2019-10-09T18:40:08-07:00',
+      generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -272,13 +272,14 @@ export default function () {
       hasGridTable: true,
       pageChildren: [
         {
-          elementKey: 'name',
+          elementKey: 'persona',
           formIndex: '1',
           inputType: 'text',
-          label: 'Name',
+          label: 'Persona',
           tableColumn: '1',
           tableLabel: 'Identification',
-          fqn: 'diagnosticCodes.name'
+          recHeader: true,
+          fqn: 'diagnosticCodes.persona'
         },
         {
           elementKey: 'profession',
@@ -286,6 +287,7 @@ export default function () {
           inputType: 'text',
           label: 'Profession',
           tableColumn: '1',
+          recHeader: true,
           fqn: 'diagnosticCodes.profession'
         },
         {
@@ -294,6 +296,7 @@ export default function () {
           inputType: 'day',
           label: 'Day',
           tableColumn: '1',
+          recHeader: true,
           fqn: 'diagnosticCodes.day'
         },
         {
@@ -303,6 +306,7 @@ export default function () {
           label: 'Time',
           tableColumn: '1',
           validation: 'time24',
+          recHeader: true,
           fqn: 'diagnosticCodes.time'
         },
         {
@@ -392,7 +396,7 @@ export default function () {
           fqn: 'diagnosticCodes.cluster'
         }
       ],
-      generated: '2019-10-09T18:40:08-07:00',
+      generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -404,7 +408,7 @@ export default function () {
               label: 'Identification',
               ehr_list_index: '1',
               items: [
-                'name',
+                'persona',
                 'profession',
                 'day',
                 'time'
@@ -463,7 +467,7 @@ export default function () {
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
-                  'name',
+                  'persona',
                   'profession',
                   'day',
                   'time'
@@ -483,7 +487,7 @@ export default function () {
               }
             ],
             ehr_data: {
-              name: '',
+              persona: '',
               profession: '',
               day: '',
               time: '',
@@ -506,13 +510,14 @@ export default function () {
       hasGridTable: true,
       pageChildren: [
         {
-          elementKey: 'name',
+          elementKey: 'persona',
           formIndex: '1',
           inputType: 'text',
-          label: 'Name',
+          label: 'Persona',
           tableColumn: '1',
           tableLabel: 'Identification',
-          fqn: 'interventionCodes.name'
+          recHeader: true,
+          fqn: 'interventionCodes.persona'
         },
         {
           elementKey: 'profession',
@@ -520,6 +525,7 @@ export default function () {
           inputType: 'text',
           label: 'Profession',
           tableColumn: '1',
+          recHeader: true,
           fqn: 'interventionCodes.profession'
         },
         {
@@ -528,6 +534,7 @@ export default function () {
           inputType: 'day',
           label: 'Day',
           tableColumn: '1',
+          recHeader: true,
           fqn: 'interventionCodes.day'
         },
         {
@@ -537,6 +544,7 @@ export default function () {
           label: 'Time',
           tableColumn: '1',
           validation: 'time24',
+          recHeader: true,
           fqn: 'interventionCodes.time'
         },
         {
@@ -577,7 +585,7 @@ export default function () {
           fqn: 'interventionCodes.extent'
         }
       ],
-      generated: '2019-10-09T18:40:08-07:00',
+      generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -589,7 +597,7 @@ export default function () {
               label: 'Identification',
               ehr_list_index: '1',
               items: [
-                'name',
+                'persona',
                 'profession',
                 'day',
                 'time'
@@ -634,7 +642,7 @@ export default function () {
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
-                  'name',
+                  'persona',
                   'profession',
                   'day',
                   'time'
@@ -659,7 +667,7 @@ export default function () {
               }
             ],
             ehr_data: {
-              name: '',
+              persona: '',
               profession: '',
               day: '',
               time: '',
@@ -680,13 +688,14 @@ export default function () {
       hasGridTable: true,
       pageChildren: [
         {
-          elementKey: 'name',
+          elementKey: 'persona',
           formIndex: '1',
           inputType: 'text',
-          label: 'Name',
+          label: 'Persona',
           tableColumn: '1',
           tableLabel: 'Identification',
-          fqn: 'caseMixGroup.name'
+          recHeader: true,
+          fqn: 'caseMixGroup.persona'
         },
         {
           elementKey: 'profession',
@@ -694,6 +703,7 @@ export default function () {
           inputType: 'text',
           label: 'Profession',
           tableColumn: '1',
+          recHeader: true,
           fqn: 'caseMixGroup.profession'
         },
         {
@@ -702,6 +712,7 @@ export default function () {
           inputType: 'day',
           label: 'Day',
           tableColumn: '1',
+          recHeader: true,
           fqn: 'caseMixGroup.day'
         },
         {
@@ -711,6 +722,7 @@ export default function () {
           label: 'Time',
           tableColumn: '1',
           validation: 'time24',
+          recHeader: true,
           fqn: 'caseMixGroup.time'
         },
         {
@@ -759,7 +771,7 @@ export default function () {
           fqn: 'caseMixGroup.analysis'
         }
       ],
-      generated: '2019-10-09T18:40:08-07:00',
+      generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -771,7 +783,7 @@ export default function () {
               label: 'Identification',
               ehr_list_index: '1',
               items: [
-                'name',
+                'persona',
                 'profession',
                 'day',
                 'time'
@@ -823,7 +835,7 @@ export default function () {
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
-                  'name',
+                  'persona',
                   'profession',
                   'day',
                   'time'
@@ -842,7 +854,7 @@ export default function () {
               }
             ],
             ehr_data: {
-              name: '',
+              persona: '',
               profession: '',
               day: '',
               time: '',

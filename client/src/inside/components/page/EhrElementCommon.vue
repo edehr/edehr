@@ -28,7 +28,8 @@ export default {
       dialogIsOpen: false,
       inputVal: '',
       suffix: '',
-      options: ''
+      options: '',
+      assignment: {}
     }
   },
   props: {
@@ -57,6 +58,9 @@ export default {
     isEditing () {
       return this.ehrHelp.isEditing()
     },
+    personaData () {
+      return StoreHelper.getAssignmentPersonaData()
+    },
     disabled () {
       let disable = false
       if (this.isPageElement) {
@@ -70,6 +74,9 @@ export default {
       /* A change to false means disable this element. So let's also empty it too. */
       if (disable) {
         this.setInitialValue('')
+      }
+      if (this.element.recHeader) {
+        disable = true
       }
 
       return disable
@@ -128,6 +135,10 @@ export default {
         let initialValue = inputs[this.elementKey]
         if (dbDialog || dbInputs) console.log('EhrCommon key has value', this.key, initialValue)
         this.setInitialValue(initialValue)
+        if (this.element.recHeader) {
+          const v = this.personaData[this.key]
+          this.setInitialValue(v)
+        }
       }
     },
     setupCommon () {
@@ -150,7 +161,7 @@ export default {
         this.dialogEventKey = this.ehrHelp.getDialogEventChannel(this.tableKey)
         EventBus.$on(this.dialogEventKey, this.dialogEventHandler)
       }
-    }
+    },
   },
   mounted: function () {
     // console.log('mounted this.tableKey', this.tableKey)
@@ -185,7 +196,7 @@ export default {
       if (this.isTableElement && this.dialogIsOpen) {
         this.sendInputEvent(val)
       }
-    }
+    },
   }
 }
 </script>
