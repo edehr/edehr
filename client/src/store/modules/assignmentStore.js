@@ -25,7 +25,6 @@ const getters = {
     return state.dataStore
   },
   personaData: state => { 
-    console.log(' state.dataStore >> ',  state.dataStore)
     const { persona, time, date, profession } = state.dataStore
     return Object.assign({}, { persona, time, date, profession})  
   }
