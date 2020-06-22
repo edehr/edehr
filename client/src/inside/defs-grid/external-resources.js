@@ -272,42 +272,11 @@ export default function () {
       hasGridTable: true,
       pageChildren: [
         {
-          elementKey: 'persona',
+          elementKey: 'recordHeader',
           formIndex: '1',
-          inputType: 'text',
-          label: 'Persona',
+          inputType: 'record_checkbox',
           tableColumn: '1',
-          tableLabel: 'Identification',
-          recHeader: true,
-          fqn: 'diagnosticCodes.persona'
-        },
-        {
-          elementKey: 'profession',
-          formIndex: '1',
-          inputType: 'text',
-          label: 'Profession',
-          tableColumn: '1',
-          recHeader: true,
-          fqn: 'diagnosticCodes.profession'
-        },
-        {
-          elementKey: 'day',
-          formIndex: '1',
-          inputType: 'day',
-          label: 'Day',
-          tableColumn: '1',
-          recHeader: true,
-          fqn: 'diagnosticCodes.day'
-        },
-        {
-          elementKey: 'time',
-          formIndex: '1',
-          inputType: 'time',
-          label: 'Time',
-          tableColumn: '1',
-          validation: 'time24',
-          recHeader: true,
-          fqn: 'diagnosticCodes.time'
+          fqn: 'diagnosticCodes.recordHeader'
         },
         {
           elementKey: 'icd10',
@@ -405,13 +374,9 @@ export default function () {
           addButtonText: 'Add a diagnostic code',
           ehr_list: [
             {
-              label: 'Identification',
               ehr_list_index: '1',
               items: [
-                'persona',
-                'profession',
-                'day',
-                'time'
+                'recordHeader'
               ]
             },
             {
@@ -467,10 +432,7 @@ export default function () {
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
-                  'persona',
-                  'profession',
-                  'day',
-                  'time'
+                  'recordHeader'
                 ]
               },
               {
@@ -487,10 +449,7 @@ export default function () {
               }
             ],
             ehr_data: {
-              persona: '',
-              profession: '',
-              day: '',
-              time: '',
+              recordHeader: '',
               icd10: '',
               condition: '',
               code: '',
@@ -510,42 +469,11 @@ export default function () {
       hasGridTable: true,
       pageChildren: [
         {
-          elementKey: 'persona',
+          elementKey: 'recordHeader',
           formIndex: '1',
-          inputType: 'text',
-          label: 'Persona',
+          inputType: 'record_checkbox',
           tableColumn: '1',
-          tableLabel: 'Identification',
-          recHeader: true,
-          fqn: 'interventionCodes.persona'
-        },
-        {
-          elementKey: 'profession',
-          formIndex: '1',
-          inputType: 'text',
-          label: 'Profession',
-          tableColumn: '1',
-          recHeader: true,
-          fqn: 'interventionCodes.profession'
-        },
-        {
-          elementKey: 'day',
-          formIndex: '1',
-          inputType: 'day',
-          label: 'Day',
-          tableColumn: '1',
-          recHeader: true,
-          fqn: 'interventionCodes.day'
-        },
-        {
-          elementKey: 'time',
-          formIndex: '1',
-          inputType: 'time',
-          label: 'Time',
-          tableColumn: '1',
-          validation: 'time24',
-          recHeader: true,
-          fqn: 'interventionCodes.time'
+          fqn: 'interventionCodes.recordHeader'
         },
         {
           elementKey: 'intervention',
@@ -594,13 +522,9 @@ export default function () {
           addButtonText: 'Add an intervention code',
           ehr_list: [
             {
-              label: 'Identification',
               ehr_list_index: '1',
               items: [
-                'persona',
-                'profession',
-                'day',
-                'time'
+                'recordHeader'
               ]
             },
             {
@@ -642,10 +566,7 @@ export default function () {
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
-                  'persona',
-                  'profession',
-                  'day',
-                  'time'
+                  'recordHeader'
                 ]
               },
               {
@@ -667,10 +588,7 @@ export default function () {
               }
             ],
             ehr_data: {
-              persona: '',
-              profession: '',
-              day: '',
-              time: '',
+              recordHeader: '',
               intervention: '',
               status: '',
               laterally: '',
@@ -688,42 +606,11 @@ export default function () {
       hasGridTable: true,
       pageChildren: [
         {
-          elementKey: 'persona',
+          elementKey: 'recordHeader',
           formIndex: '1',
-          inputType: 'text',
-          label: 'Persona',
+          inputType: 'record_checkbox',
           tableColumn: '1',
-          tableLabel: 'Identification',
-          recHeader: true,
-          fqn: 'caseMixGroup.persona'
-        },
-        {
-          elementKey: 'profession',
-          formIndex: '1',
-          inputType: 'text',
-          label: 'Profession',
-          tableColumn: '1',
-          recHeader: true,
-          fqn: 'caseMixGroup.profession'
-        },
-        {
-          elementKey: 'day',
-          formIndex: '1',
-          inputType: 'day',
-          label: 'Day',
-          tableColumn: '1',
-          recHeader: true,
-          fqn: 'caseMixGroup.day'
-        },
-        {
-          elementKey: 'time',
-          formIndex: '1',
-          inputType: 'time',
-          label: 'Time',
-          tableColumn: '1',
-          validation: 'time24',
-          recHeader: true,
-          fqn: 'caseMixGroup.time'
+          fqn: 'caseMixGroup.recordHeader'
         },
         {
           elementKey: 'clinicalCategory',
@@ -780,13 +667,9 @@ export default function () {
           addButtonText: 'Add a case mix group',
           ehr_list: [
             {
-              label: 'Identification',
               ehr_list_index: '1',
               items: [
-                'persona',
-                'profession',
-                'day',
-                'time'
+                'recordHeader'
               ]
             },
             {
@@ -835,10 +718,7 @@ export default function () {
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
-                  'persona',
-                  'profession',
-                  'day',
-                  'time'
+                  'recordHeader'
                 ]
               },
               {
@@ -854,10 +734,7 @@ export default function () {
               }
             ],
             ehr_data: {
-              persona: '',
-              profession: '',
-              day: '',
-              time: '',
+              recordHeader: '',
               clinicalCategory: '',
               caseMixNumber: '',
               resourceIntensity: '',

@@ -63,6 +63,9 @@
         @selected="(selected) => inputVal = selected",
         :inputVal="inputVal"
       )
+    div(v-else-if="isType('record_checkbox')")
+      ehr-element-record-checkbox
+      
     div(v-else) ELSE: {{inputType}} {{label}}
 
 </template>
@@ -73,6 +76,7 @@ import EhrElementCommon from './EhrElementCommon.vue'
 import EhrElementCalculated from './EhrElementCalculated'
 import EhrElementCheckset from './EhrElementCheckset'
 import EhrElementLookup from './EhrElementLookup.vue'
+import EhrElementRecordCheckbox from './EhrElementRecordCheckbox.vue'
 import DatePicker from 'vuejs-datepicker'
 
 export default {
@@ -81,7 +85,8 @@ export default {
     EhrElementCalculated,
     EhrElementCheckset,
     DatePicker,
-    EhrElementLookup
+    EhrElementLookup,
+    EhrElementRecordCheckbox
   },
   props: {},
   computed: {},

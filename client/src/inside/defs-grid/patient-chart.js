@@ -8,42 +8,11 @@ export default function () {
       hasGridTable: true,
       pageChildren: [
         {
-          elementKey: 'persona',
+          elementKey: 'recordHeader',
           formIndex: '1',
-          inputType: 'text',
-          label: 'Persona',
+          inputType: 'record_checkbox',
           tableColumn: '1',
-          tableLabel: 'Identification',
-          recHeader: true,
-          fqn: 'progressNotes.persona'
-        },
-        {
-          elementKey: 'profession',
-          formIndex: '1',
-          inputType: 'text',
-          label: 'Profession',
-          tableColumn: '1',
-          recHeader: true,
-          fqn: 'progressNotes.profession'
-        },
-        {
-          elementKey: 'day',
-          formIndex: '1',
-          inputType: 'day',
-          label: 'Day',
-          tableColumn: '1',
-          recHeader: true,
-          fqn: 'progressNotes.day'
-        },
-        {
-          elementKey: 'time',
-          formIndex: '1',
-          inputType: 'time',
-          label: 'Time',
-          tableColumn: '1',
-          validation: 'time24',
-          recHeader: true,
-          fqn: 'progressNotes.time'
+          fqn: 'progressNotes.recordHeader'
         },
         {
           elementKey: 'note',
@@ -65,13 +34,9 @@ export default function () {
           addButtonText: 'Add an encounter note',
           ehr_list: [
             {
-              label: 'Identification',
               ehr_list_index: '1',
               items: [
-                'persona',
-                'profession',
-                'day',
-                'time'
+                'recordHeader'
               ]
             },
             {
@@ -92,10 +57,7 @@ export default function () {
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
-                  'persona',
-                  'profession',
-                  'day',
-                  'time'
+                  'recordHeader'
                 ]
               },
               {
@@ -108,10 +70,7 @@ export default function () {
               }
             ],
             ehr_data: {
-              persona: '',
-              profession: '',
-              day: '',
-              time: '',
+              recordHeader: '',
               note: ''
             }
           }
@@ -126,42 +85,11 @@ export default function () {
       hasGridTable: true,
       pageChildren: [
         {
-          elementKey: 'persona',
+          elementKey: 'recordHeader',
           formIndex: '1',
-          inputType: 'text',
-          label: 'Persona',
+          inputType: 'record_checkbox',
           tableColumn: '1',
-          tableLabel: 'Identification',
-          recHeader: true,
-          fqn: 'carePlan.persona'
-        },
-        {
-          elementKey: 'profession',
-          formIndex: '1',
-          inputType: 'text',
-          label: 'Profession',
-          tableColumn: '1',
-          recHeader: true,
-          fqn: 'carePlan.profession'
-        },
-        {
-          elementKey: 'day',
-          formIndex: '1',
-          inputType: 'day',
-          label: 'Day',
-          tableColumn: '1',
-          recHeader: true,
-          fqn: 'carePlan.day'
-        },
-        {
-          elementKey: 'time',
-          formIndex: '1',
-          inputType: 'time',
-          label: 'Time',
-          tableColumn: '1',
-          validation: 'time24',
-          recHeader: true,
-          fqn: 'carePlan.time'
+          fqn: 'carePlan.recordHeader'
         },
         {
           elementKey: 'clinical',
@@ -228,13 +156,9 @@ export default function () {
           addButtonText: 'Add a care plan',
           ehr_list: [
             {
-              label: 'Identification',
               ehr_list_index: '1',
               items: [
-                'persona',
-                'profession',
-                'day',
-                'time'
+                'recordHeader'
               ]
             },
             {
@@ -283,10 +207,7 @@ export default function () {
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
-                  'persona',
-                  'profession',
-                  'day',
-                  'time'
+                  'recordHeader'
                 ]
               },
               {
@@ -302,10 +223,7 @@ export default function () {
               }
             ],
             ehr_data: {
-              persona: '',
-              profession: '',
-              day: '',
-              time: '',
+              recordHeader: '',
               clinical: '',
               goal: '',
               interventions: '',

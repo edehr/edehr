@@ -8,42 +8,11 @@ export default function () {
       hasGridTable: true,
       pageChildren: [
         {
-          elementKey: 'persona',
+          elementKey: 'recordHeader',
           formIndex: '1',
-          inputType: 'text',
-          label: 'Persona',
+          inputType: 'record_checkbox',
           tableColumn: '1',
-          tableLabel: 'Identification',
-          recHeader: true,
-          fqn: 'genitourinary.persona'
-        },
-        {
-          elementKey: 'profession',
-          formIndex: '1',
-          inputType: 'text',
-          label: 'Profession',
-          tableColumn: '1',
-          recHeader: true,
-          fqn: 'genitourinary.profession'
-        },
-        {
-          elementKey: 'day',
-          formIndex: '1',
-          inputType: 'day',
-          label: 'Day',
-          tableColumn: '1',
-          recHeader: true,
-          fqn: 'genitourinary.day'
-        },
-        {
-          elementKey: 'time',
-          formIndex: '1',
-          inputType: 'time',
-          label: 'Time',
-          tableColumn: '1',
-          validation: 'time24',
-          recHeader: true,
-          fqn: 'genitourinary.time'
+          fqn: 'genitourinary.recordHeader'
         },
         {
           elementKey: 'urinaryGroup1',
@@ -431,13 +400,9 @@ export default function () {
           addButtonText: 'Add a genitourinary assessment',
           ehr_list: [
             {
-              label: 'Identification',
               ehr_list_index: '1',
               items: [
-                'persona',
-                'profession',
-                'day',
-                'time'
+                'recordHeader'
               ]
             },
             {
@@ -605,10 +570,7 @@ export default function () {
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
-                  'persona',
-                  'profession',
-                  'day',
-                  'time'
+                  'recordHeader'
                 ]
               },
               {
@@ -682,10 +644,7 @@ export default function () {
               }
             ],
             ehr_data: {
-              persona: '',
-              profession: '',
-              day: '',
-              time: '',
+              recordHeader: '',
               urinaryGroup1: '',
               lastVoidedDay: '',
               lastVoidedTime: '',
@@ -720,42 +679,11 @@ export default function () {
       hasGridTable: true,
       pageChildren: [
         {
-          elementKey: 'persona',
+          elementKey: 'recordHeader',
           formIndex: '1',
-          inputType: 'text',
-          label: 'Persona',
+          inputType: 'record_checkbox',
           tableColumn: '1',
-          tableLabel: 'Identification',
-          recHeader: true,
-          fqn: 'musculoskeletal.persona'
-        },
-        {
-          elementKey: 'profession',
-          formIndex: '1',
-          inputType: 'text',
-          label: 'Profession',
-          tableColumn: '1',
-          recHeader: true,
-          fqn: 'musculoskeletal.profession'
-        },
-        {
-          elementKey: 'day',
-          formIndex: '1',
-          inputType: 'day',
-          label: 'Day',
-          tableColumn: '1',
-          recHeader: true,
-          fqn: 'musculoskeletal.day'
-        },
-        {
-          elementKey: 'time',
-          formIndex: '1',
-          inputType: 'time',
-          label: 'Time',
-          tableColumn: '1',
-          validation: 'time24',
-          recHeader: true,
-          fqn: 'musculoskeletal.time'
+          fqn: 'musculoskeletal.recordHeader'
         },
         {
           elementKey: 'swelling',
@@ -1032,13 +960,9 @@ export default function () {
           addButtonText: 'Add a musculoskeletal assessment',
           ehr_list: [
             {
-              label: 'Identification',
               ehr_list_index: '1',
               items: [
-                'persona',
-                'profession',
-                'day',
-                'time'
+                'recordHeader'
               ]
             },
             {
@@ -1131,10 +1055,7 @@ export default function () {
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
-                  'persona',
-                  'profession',
-                  'day',
-                  'time'
+                  'recordHeader'
                 ]
               },
               {
@@ -1164,10 +1085,7 @@ export default function () {
               }
             ],
             ehr_data: {
-              persona: '',
-              profession: '',
-              day: '',
-              time: '',
+              recordHeader: '',
               swelling: '',
               pain: '',
               deformity: '',
@@ -1192,42 +1110,11 @@ export default function () {
       hasGridTable: true,
       pageChildren: [
         {
-          elementKey: 'persona',
+          elementKey: 'recordHeader',
           formIndex: '1',
-          inputType: 'text',
-          label: 'Persona',
+          inputType: 'record_checkbox',
           tableColumn: '1',
-          tableLabel: 'Identification',
-          recHeader: true,
-          fqn: 'pain.persona'
-        },
-        {
-          elementKey: 'profession',
-          formIndex: '1',
-          inputType: 'text',
-          label: 'Profession',
-          tableColumn: '1',
-          recHeader: true,
-          fqn: 'pain.profession'
-        },
-        {
-          elementKey: 'day',
-          formIndex: '1',
-          inputType: 'day',
-          label: 'Day',
-          tableColumn: '1',
-          recHeader: true,
-          fqn: 'pain.day'
-        },
-        {
-          elementKey: 'time',
-          formIndex: '1',
-          inputType: 'time',
-          label: 'Time',
-          tableColumn: '1',
-          validation: 'time24',
-          recHeader: true,
-          fqn: 'pain.time'
+          fqn: 'pain.recordHeader'
         },
         {
           elementKey: 'location',
@@ -1410,13 +1297,9 @@ export default function () {
           addButtonText: 'Add a pain assessment',
           ehr_list: [
             {
-              label: 'Identification',
               ehr_list_index: '1',
               items: [
-                'persona',
-                'profession',
-                'day',
-                'time'
+                'recordHeader'
               ]
             },
             {
@@ -1560,10 +1443,7 @@ export default function () {
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
-                  'persona',
-                  'profession',
-                  'day',
-                  'time'
+                  'recordHeader'
                 ]
               },
               {
@@ -1614,10 +1494,7 @@ export default function () {
               }
             ],
             ehr_data: {
-              persona: '',
-              profession: '',
-              day: '',
-              time: '',
+              recordHeader: '',
               location: '',
               painScale: '',
               respiratoryRate: '',
@@ -1640,42 +1517,11 @@ export default function () {
       hasGridTable: true,
       pageChildren: [
         {
-          elementKey: 'persona',
+          elementKey: 'recordHeader',
           formIndex: '1',
-          inputType: 'text',
-          label: 'Persona',
+          inputType: 'record_checkbox',
           tableColumn: '1',
-          tableLabel: 'Identification',
-          recHeader: true,
-          fqn: 'biopsychosocial.persona'
-        },
-        {
-          elementKey: 'profession',
-          formIndex: '1',
-          inputType: 'text',
-          label: 'Profession',
-          tableColumn: '1',
-          recHeader: true,
-          fqn: 'biopsychosocial.profession'
-        },
-        {
-          elementKey: 'day',
-          formIndex: '1',
-          inputType: 'day',
-          label: 'Day',
-          tableColumn: '1',
-          recHeader: true,
-          fqn: 'biopsychosocial.day'
-        },
-        {
-          elementKey: 'time',
-          formIndex: '1',
-          inputType: 'time',
-          label: 'Time',
-          tableColumn: '1',
-          validation: 'time24',
-          recHeader: true,
-          fqn: 'biopsychosocial.time'
+          fqn: 'biopsychosocial.recordHeader'
         },
         {
           elementKey: 'domesticViolence',
@@ -2004,13 +1850,9 @@ export default function () {
           addButtonText: 'Add a biopsychosocial assessment',
           ehr_list: [
             {
-              label: 'Identification',
               ehr_list_index: '1',
               items: [
-                'persona',
-                'profession',
-                'day',
-                'time'
+                'recordHeader'
               ]
             },
             {
@@ -2155,10 +1997,7 @@ export default function () {
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
-                  'persona',
-                  'profession',
-                  'day',
-                  'time'
+                  'recordHeader'
                 ]
               },
               {
@@ -2237,10 +2076,7 @@ export default function () {
               }
             ],
             ehr_data: {
-              persona: '',
-              profession: '',
-              day: '',
-              time: '',
+              recordHeader: '',
               domesticViolence: '',
               requestContact: '',
               hygieneGrooming: '',
@@ -2272,42 +2108,11 @@ export default function () {
       hasGridTable: true,
       pageChildren: [
         {
-          elementKey: 'persona',
+          elementKey: 'recordHeader',
           formIndex: '1',
-          inputType: 'text',
-          label: 'Persona',
+          inputType: 'record_checkbox',
           tableColumn: '1',
-          tableLabel: 'Identification',
-          recHeader: true,
-          fqn: 'nonmedOrders.persona'
-        },
-        {
-          elementKey: 'profession',
-          formIndex: '1',
-          inputType: 'text',
-          label: 'Profession',
-          tableColumn: '1',
-          recHeader: true,
-          fqn: 'nonmedOrders.profession'
-        },
-        {
-          elementKey: 'day',
-          formIndex: '1',
-          inputType: 'day',
-          label: 'Day',
-          tableColumn: '1',
-          recHeader: true,
-          fqn: 'nonmedOrders.day'
-        },
-        {
-          elementKey: 'time',
-          formIndex: '1',
-          inputType: 'time',
-          label: 'Time',
-          tableColumn: '1',
-          validation: 'time24',
-          recHeader: true,
-          fqn: 'nonmedOrders.time'
+          fqn: 'nonmedOrders.recordHeader'
         },
         {
           elementKey: 'order',
@@ -2393,13 +2198,9 @@ export default function () {
           addButtonText: 'Add an order',
           ehr_list: [
             {
-              label: 'Identification',
               ehr_list_index: '1',
               items: [
-                'persona',
-                'profession',
-                'day',
-                'time'
+                'recordHeader'
               ]
             },
             {
@@ -2448,10 +2249,7 @@ export default function () {
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
-                  'persona',
-                  'profession',
-                  'day',
-                  'time'
+                  'recordHeader'
                 ]
               },
               {
@@ -2474,10 +2272,7 @@ export default function () {
               }
             ],
             ehr_data: {
-              persona: '',
-              profession: '',
-              day: '',
-              time: '',
+              recordHeader: '',
               order: '',
               orderedBy: '',
               reason: '',
@@ -2496,42 +2291,11 @@ export default function () {
       hasGridTable: true,
       pageChildren: [
         {
-          elementKey: 'persona',
+          elementKey: 'recordHeader',
           formIndex: '1',
-          inputType: 'text',
-          label: 'Persona',
+          inputType: 'record_checkbox',
           tableColumn: '1',
-          tableLabel: 'Identification',
-          recHeader: true,
-          fqn: 'referrals.persona'
-        },
-        {
-          elementKey: 'profession',
-          formIndex: '1',
-          inputType: 'text',
-          label: 'Profession',
-          tableColumn: '1',
-          recHeader: true,
-          fqn: 'referrals.profession'
-        },
-        {
-          elementKey: 'day',
-          formIndex: '1',
-          inputType: 'day',
-          label: 'Day',
-          tableColumn: '1',
-          recHeader: true,
-          fqn: 'referrals.day'
-        },
-        {
-          elementKey: 'time',
-          formIndex: '1',
-          inputType: 'time',
-          label: 'Time',
-          tableColumn: '1',
-          validation: 'time24',
-          recHeader: true,
-          fqn: 'referrals.time'
+          fqn: 'referrals.recordHeader'
         },
         {
           elementKey: 'referralName',
@@ -2609,13 +2373,9 @@ export default function () {
           addButtonText: 'Add a referral',
           ehr_list: [
             {
-              label: 'Identification',
               ehr_list_index: '1',
               items: [
-                'persona',
-                'profession',
-                'day',
-                'time'
+                'recordHeader'
               ]
             },
             {
@@ -2664,10 +2424,7 @@ export default function () {
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
-                  'persona',
-                  'profession',
-                  'day',
-                  'time'
+                  'recordHeader'
                 ]
               },
               {
@@ -2684,10 +2441,7 @@ export default function () {
               }
             ],
             ehr_data: {
-              persona: '',
-              profession: '',
-              day: '',
-              time: '',
+              recordHeader: '',
               referralName: '',
               referralProfession: '',
               appointmentDate: '',
@@ -2706,42 +2460,11 @@ export default function () {
       hasGridTable: true,
       pageChildren: [
         {
-          elementKey: 'persona',
+          elementKey: 'recordHeader',
           formIndex: '1',
-          inputType: 'text',
-          label: 'Persona',
+          inputType: 'record_checkbox',
           tableColumn: '1',
-          tableLabel: 'Identification',
-          recHeader: true,
-          fqn: 'labRequisitions.persona'
-        },
-        {
-          elementKey: 'profession',
-          formIndex: '1',
-          inputType: 'text',
-          label: 'Profession',
-          tableColumn: '1',
-          recHeader: true,
-          fqn: 'labRequisitions.profession'
-        },
-        {
-          elementKey: 'day',
-          formIndex: '1',
-          inputType: 'day',
-          label: 'Day',
-          tableColumn: '1',
-          recHeader: true,
-          fqn: 'labRequisitions.day'
-        },
-        {
-          elementKey: 'time',
-          formIndex: '1',
-          inputType: 'time',
-          label: 'Time',
-          tableColumn: '1',
-          validation: 'time24',
-          recHeader: true,
-          fqn: 'labRequisitions.time'
+          fqn: 'labRequisitions.recordHeader'
         },
         {
           elementKey: 'requisition',
@@ -2789,13 +2512,9 @@ export default function () {
           addButtonText: 'Add a lab requisition',
           ehr_list: [
             {
-              label: 'Identification',
               ehr_list_index: '1',
               items: [
-                'persona',
-                'profession',
-                'day',
-                'time'
+                'recordHeader'
               ]
             },
             {
@@ -2834,10 +2553,7 @@ export default function () {
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
-                  'persona',
-                  'profession',
-                  'day',
-                  'time'
+                  'recordHeader'
                 ]
               },
               {
@@ -2852,10 +2568,7 @@ export default function () {
               }
             ],
             ehr_data: {
-              persona: '',
-              profession: '',
-              day: '',
-              time: '',
+              recordHeader: '',
               ordered: ''
             }
           }
@@ -2870,42 +2583,11 @@ export default function () {
       hasGridTable: true,
       pageChildren: [
         {
-          elementKey: 'persona',
+          elementKey: 'recordHeader',
           formIndex: '1',
-          inputType: 'text',
-          label: 'Persona',
+          inputType: 'record_checkbox',
           tableColumn: '1',
-          tableLabel: 'Identification',
-          recHeader: true,
-          fqn: 'medicationOrders.persona'
-        },
-        {
-          elementKey: 'profession',
-          formIndex: '1',
-          inputType: 'text',
-          label: 'Profession',
-          tableColumn: '1',
-          recHeader: true,
-          fqn: 'medicationOrders.profession'
-        },
-        {
-          elementKey: 'day',
-          formIndex: '1',
-          inputType: 'day',
-          label: 'Day',
-          tableColumn: '1',
-          recHeader: true,
-          fqn: 'medicationOrders.day'
-        },
-        {
-          elementKey: 'time',
-          formIndex: '1',
-          inputType: 'time',
-          label: 'Time',
-          tableColumn: '1',
-          validation: 'time24',
-          recHeader: true,
-          fqn: 'medicationOrders.time'
+          fqn: 'medicationOrders.recordHeader'
         },
         {
           elementKey: 'medication',
@@ -3166,13 +2848,9 @@ export default function () {
           addButtonText: 'Add a medication order',
           ehr_list: [
             {
-              label: 'Identification',
               ehr_list_index: '1',
               items: [
-                'persona',
-                'profession',
-                'day',
-                'time'
+                'recordHeader'
               ]
             },
             {
@@ -3295,10 +2973,7 @@ export default function () {
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
-                  'persona',
-                  'profession',
-                  'day',
-                  'time'
+                  'recordHeader'
                 ]
               },
               {
@@ -3367,10 +3042,7 @@ export default function () {
               }
             ],
             ehr_data: {
-              persona: '',
-              profession: '',
-              day: '',
-              time: '',
+              recordHeader: '',
               medication: '',
               dose: '',
               route: '',
@@ -3898,42 +3570,11 @@ export default function () {
       hasGridTable: true,
       pageChildren: [
         {
-          elementKey: 'persona',
+          elementKey: 'recordHeader',
           formIndex: '1',
-          inputType: 'text',
-          label: 'Persona',
+          inputType: 'record_checkbox',
           tableColumn: '1',
-          tableLabel: 'Identification',
-          recHeader: true,
-          fqn: 'integumentaryAssessment.persona'
-        },
-        {
-          elementKey: 'profession',
-          formIndex: '1',
-          inputType: 'text',
-          label: 'Profession',
-          tableColumn: '1',
-          recHeader: true,
-          fqn: 'integumentaryAssessment.profession'
-        },
-        {
-          elementKey: 'day',
-          formIndex: '1',
-          inputType: 'day',
-          label: 'Day',
-          tableColumn: '1',
-          recHeader: true,
-          fqn: 'integumentaryAssessment.day'
-        },
-        {
-          elementKey: 'time',
-          formIndex: '1',
-          inputType: 'time',
-          label: 'Time',
-          tableColumn: '1',
-          validation: 'time24',
-          recHeader: true,
-          fqn: 'integumentaryAssessment.time'
+          fqn: 'integumentaryAssessment.recordHeader'
         },
         {
           elementKey: 'woundLabel',
@@ -4765,13 +4406,9 @@ export default function () {
           addButtonText: 'Add an integumentary assessment',
           ehr_list: [
             {
-              label: 'Identification',
               ehr_list_index: '1',
               items: [
-                'persona',
-                'profession',
-                'day',
-                'time'
+                'recordHeader'
               ]
             },
             {
@@ -5033,10 +4670,7 @@ export default function () {
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
-                  'persona',
-                  'profession',
-                  'day',
-                  'time'
+                  'recordHeader'
                 ]
               },
               {
@@ -5132,10 +4766,7 @@ export default function () {
               }
             ],
             ehr_data: {
-              persona: '',
-              profession: '',
-              day: '',
-              time: '',
+              recordHeader: '',
               woundLabel: '',
               goalOfCare: '',
               woundLocation: '',

@@ -28,8 +28,7 @@ export default {
       dialogIsOpen: false,
       inputVal: '',
       suffix: '',
-      options: '',
-      assignment: {}
+      options: ''
     }
   },
   props: {
@@ -57,9 +56,6 @@ export default {
     },
     isEditing () {
       return this.ehrHelp.isEditing()
-    },
-    personaData () {
-      return StoreHelper.getAssignmentPersonaData()
     },
     disabled () {
       let disable = false
