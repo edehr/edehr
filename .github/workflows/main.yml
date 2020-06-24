@@ -31,16 +31,15 @@ jobs:
         working-directory: client
       - run: npm run test
         working-directory: client
-
-
   db: 
     runs-on: ubuntu-latest
-    - uses: actions/checkout@v2
+    steps:
+      - uses: actions/checkout@v2
 
-    - uses: actions/setup-node@v2-beta
-      with:
-        node-version: '12'
-    - run: npm run start:db
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: '12'
+      - run: npm run start:db
 
   server:
     runs-on: ubuntu-latest
