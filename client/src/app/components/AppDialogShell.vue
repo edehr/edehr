@@ -17,8 +17,8 @@
                 span {{ errors.join(', ') }}
 
           div(class="dialog-footer-content")
-            div(v-if="hasLeftButton" class="is-pulled-left")
-              slot(name="left-button")
+            div(v-if="hasLeftContent" class="is-pulled-left")
+              slot(name="left-content")
             div(class="is-pulled-right")
               ui-button(v-on:buttonClicked="$emit('cancel')", v-bind:secondary="true")
                 slot(name="cancel-button") {{ cancelButtonLabel }}
@@ -58,7 +58,7 @@ export default {
         return []
       }
     },
-    hasLeftButton: {
+    hasLeftContent: {
       type: Boolean,
       default: false
     }

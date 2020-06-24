@@ -106,7 +106,6 @@ class EhrDefsWorker {
   getRecHeaderStatus (pageKey) {
     const pd = this.getPageDefinition(pageKey)
     const recHeader = pd.recHeader
-    console.log('getRecHeaderStatus >> ', recHeader)
     return recHeader
   }
 

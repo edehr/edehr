@@ -1,17 +1,29 @@
 <template lang="pug">
-    app-dialog(:isModal="true", ref="theDialog", @cancel="cancelDialog", @save="saveDialog", v-bind:errors="errorList")
+    app-dialog(
+      :isModal="true",
+      ref="theDialog",
+      @cancel="cancelDialog", 
+      @save="saveDialog", 
+      v-bind:errors="errorList", 
+      :hasLeftContent="true"
+      :disableSave="disableSave"
+    )
       h3(slot="header") {{ tableDef.addButtonText }}
       div tableKey {{ tableKey}}
       div(slot="body", class="ehr-page-content")
         ehr-group(v-for="group in groups", :key="group.gIndex", :group="group", :ehrHelp="ehrHelp")
+      div(slot="left-content", class="checkbox-wrapper", v-if="hasRecHeader")
+        input(class="checkbox", type="checkbox", v-model="ackReqHeader")
+        span {{ ackText }}
       span(slot="save-button") Create and close
 </template>
 
 <script>
 import AppDialog from '../../../app/components/AppDialogShell'
+import EhrDefs from '../../../helpers/ehr-defs-grid'
 import EhrGroup from './EhrGroup'
 import EventBus from '../../../helpers/event-bus'
-import EhrDefs from '../../../helpers/ehr-defs-grid'
+import StoreHelper from '../../../helpers/store-helper'
 
 const debug = false
 
@@ -23,7 +35,8 @@ export default {
   },
   data: function () {
     return {
-      errorList: []
+      errorList: [],
+      ackReqHeader: false // has the user acknowledged the reqHeader?, that is, confirmed the checkbox
     }
   },
   props: {
@@ -38,8 +51,17 @@ export default {
       return this.tableDef.form ? this.tableDef.form.ehr_groups : []
     },
     hasRecHeader () {
-      console.log('hasRecHeader >> ', EhrDefs.getRecHeaderStatus(this.ehrHelp.pageKey))
       return EhrDefs.getRecHeaderStatus(this.ehrHelp.pageKey)
+    },
+    disableSave () {
+      // disable save in case there is a recHeader and the user hasn't acknowledged / confirmed
+      // it yet
+      return this.hasRecHeader ? !this.ackReqHeader : false
+    },
+    ackText () {
+      const persona = this.getPersonaData()
+      return `I hereby certify correct ${persona.persona}, ${persona.profession}. 
+      Hospital date: ${persona.day} ${persona.time}`
     }
 
   },
@@ -58,6 +80,7 @@ export default {
       } else {
         this.errorList = []
       }
+      this.ackReqHeader = false
     },
     receiveShowHideEvent (eData) {
       if(eData.value) {
@@ -67,6 +90,9 @@ export default {
       } else {
         this.$refs.theDialog.onClose()
       }
+    },
+    getPersonaData () {
+      return StoreHelper.getAssignmentPersonaData()
     }
   },
   mounted: function () {
