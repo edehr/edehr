@@ -448,6 +448,7 @@ export default function () {
           fqn: 'demographics.decisionMakerPhone'
         }
       ],
+      recHeader: false,
       generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         pageForm: {
@@ -533,6 +534,7 @@ export default function () {
           fqn: 'allergies.text'
         }
       ],
+      recHeader: false,
       generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         pageForm: {
@@ -568,6 +570,7 @@ export default function () {
           fqn: 'medical.history'
         }
       ],
+      recHeader: false,
       generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         pageForm: {
@@ -775,6 +778,7 @@ export default function () {
           fqn: 'psychosocial.spacer13'
         }
       ],
+      recHeader: false,
       generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         pageForm: {
@@ -894,6 +898,7 @@ export default function () {
           fqn: 'surgical.comments'
         }
       ],
+      recHeader: false,
       generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         pastSurgery: {
@@ -1235,6 +1240,7 @@ export default function () {
           fqn: 'immunization.spacer25'
         }
       ],
+      recHeader: false,
       generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         pageForm: {
@@ -1297,6 +1303,7 @@ export default function () {
           fqn: 'familyHistory.history'
         }
       ],
+      recHeader: false,
       generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         pageForm: {
@@ -1342,6 +1349,7 @@ export default function () {
           fqn: 'careTeam.profession'
         }
       ],
+      recHeader: false,
       generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         teams: {
@@ -1461,6 +1469,7 @@ export default function () {
           fqn: 'pastAppointments.diagnosis'
         }
       ],
+      recHeader: false,
       generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         encounters: {

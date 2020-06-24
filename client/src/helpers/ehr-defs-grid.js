@@ -103,6 +103,13 @@ class EhrDefsWorker {
     return medPeriods
   }
 
+  getRecHeaderStatus (pageKey) {
+    const pd = this.getPageDefinition(pageKey)
+    const recHeader = pd.recHeader
+    console.log('getRecHeaderStatus >> ', recHeader)
+    return recHeader
+  }
+
 }
 const EhrDefs = new EhrDefsWorker()
 export default EhrDefs

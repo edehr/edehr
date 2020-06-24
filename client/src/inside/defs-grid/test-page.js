@@ -250,40 +250,6 @@ export default function () {
           helperHtml: '<p>a text input</p>'
         },
         {
-          elementKey: 'persona',
-          formIndex: '3',
-          inputType: 'text',
-          label: 'Persona',
-          tableLabel: 'Identification',
-          recHeader: true,
-          fqn: 'testPage.persona'
-        },
-        {
-          elementKey: 'profession',
-          formIndex: '3',
-          inputType: 'text',
-          label: 'Profession',
-          recHeader: true,
-          fqn: 'testPage.profession'
-        },
-        {
-          elementKey: 'day',
-          formIndex: '3',
-          inputType: 'day',
-          label: 'Day',
-          recHeader: true,
-          fqn: 'testPage.day'
-        },
-        {
-          elementKey: 'time',
-          formIndex: '3',
-          inputType: 'time',
-          label: 'Time',
-          validation: 'time24',
-          recHeader: true,
-          fqn: 'testPage.time'
-        },
-        {
           elementKey: 'textDate',
           formIndex: '3',
           inputType: 'text',
@@ -319,6 +285,7 @@ export default function () {
           fqn: 'testPage.place'
         }
       ],
+      recHeader: true,
       generated: '2020-06-09T04:21:59-03:00',
       pageElements: {
         form1: {
@@ -436,10 +403,6 @@ export default function () {
               label: 'A group label',
               gIndex: '1',
               gChildren: [
-                'persona',
-                'profession',
-                'day',
-                'time',
                 'textDate',
                 'textDateDate',
                 'spacer132',
@@ -721,44 +684,6 @@ export default function () {
           fqn: 'testTable.e11'
         },
         {
-          elementKey: 'persona',
-          formIndex: '2',
-          inputType: 'text',
-          label: 'Persona',
-          tableColumn: '1',
-          tableLabel: 'Identification',
-          recHeader: true,
-          fqn: 'testTable.persona'
-        },
-        {
-          elementKey: 'profession',
-          formIndex: '2',
-          inputType: 'text',
-          label: 'Profession',
-          tableColumn: '1',
-          recHeader: true,
-          fqn: 'testTable.profession'
-        },
-        {
-          elementKey: 'day',
-          formIndex: '2',
-          inputType: 'day',
-          label: 'Day',
-          tableColumn: '1',
-          recHeader: true,
-          fqn: 'testTable.day'
-        },
-        {
-          elementKey: 'time',
-          formIndex: '2',
-          inputType: 'time',
-          label: 'Time',
-          tableColumn: '1',
-          validation: 'time24',
-          recHeader: true,
-          fqn: 'testTable.time'
-        },
-        {
           elementKey: 'cd1',
           formIndex: '2',
           inputType: 'checkbox',
@@ -1030,6 +955,7 @@ export default function () {
           fqn: 'testTable.stat'
         }
       ],
+      recHeader: true,
       generated: '2020-06-09T04:21:59-03:00',
       pageElements: {
         table1: {
@@ -1235,16 +1161,6 @@ export default function () {
           addButtonText: 'Add a stacked row',
           ehr_list: [
             {
-              label: 'Identification',
-              ehr_list_index: '1',
-              items: [
-                'persona',
-                'profession',
-                'day',
-                'time'
-              ]
-            },
-            {
               label: 'Chk 1',
               ehr_list_index: '2',
               items: [
@@ -1305,12 +1221,7 @@ export default function () {
                 elementKey: 'ehr_group136',
                 formCss: 'record-header',
                 gIndex: '1',
-                gChildren: [
-                  'persona',
-                  'profession',
-                  'day',
-                  'time'
-                ]
+                gChildren: []
               },
               {
                 elementKey: 'ehr_group137',
@@ -1341,10 +1252,6 @@ export default function () {
               }
             ],
             ehr_data: {
-              persona: '',
-              profession: '',
-              day: '',
-              time: '',
               cd1: '',
               cd1Date: '',
               cd2: '',

@@ -105,10 +105,11 @@ class RawInputToDef {
    */
   getDefinitions (contents, lastModifiedTime) {
     let entries = rawHelper._rawToEntries(contents, mlFields)
+    let recHeader = this._hasValidRecHeader(entries)
     entries = this._preprocessEntries(entries)
     entries = this._validateEntries(entries)
     let pages = this._groupByPages(entries)
-    pages = this._toPages(pages, lastModifiedTime)
+    pages = this._toPages(pages, lastModifiedTime, recHeader)
     return pages
   }
   _preprocessEntries (entries) {
@@ -122,6 +123,10 @@ class RawInputToDef {
       }
     })
     return postEntries
+  }
+  _hasValidRecHeader (entries) {
+    let validated = entries.map(e => EhrShortForms.validateRecHeader(e))
+    return validated.includes(true)
   }
 
 
@@ -277,12 +282,12 @@ class RawInputToDef {
   }
 
   /* *************** final preparation ******** */
-
-  _toPages (pages, lastModifiedTime) {
+  _toPages (pages, lastModifiedTime, hasRecHeader) {
     // Take the pages from the first stage and prepare final form.
     let pages2 = {}
     Object.values(pages).forEach(page1 => {
       let page2 = rawHelper._transferProperties(page1, pageProperties2)
+      page2.recHeader = hasRecHeader
       page2.generated = moment.utc(lastModifiedTime).local().format()
       page2.pageElements = this._toForms(page1)
       pages2[page2.pageDataKey] = page2

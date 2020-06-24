@@ -2,34 +2,34 @@ import EhrTypes from '../../client/src/helpers/ehr-types'
 
 const Defs = {
   // 'inputType': 'record_header'
-  recordHeader: [
-    {
-      elementKey: 'persona',
-      inputType: 'text',
-      label: 'Persona',
-      tableLabel: 'Identification',
-      recHeader: true
-    },
-    {
-      elementKey: 'profession',
-      inputType: 'text',
-      label: 'Profession',
-      recHeader: true
-    },
-    {
-      elementKey: 'day',
-      inputType: 'day',
-      label: 'Day',
-      recHeader: true
-    },
-    {
-      elementKey: 'time',
-      inputType: 'time',
-      label: 'Time',
-      validation: 'time24',
-      recHeader: true
-    }
-  ],
+  // recordHeader: [
+  //   {
+  //     elementKey: 'persona',
+  //     inputType: 'text',
+  //     label: 'Persona',
+  //     tableLabel: 'Identification',
+  //     recHeader: true
+  //   },
+  //   {
+  //     elementKey: 'profession',
+  //     inputType: 'text',
+  //     label: 'Profession',
+  //     recHeader: true
+  //   },
+  //   {
+  //     elementKey: 'day',
+  //     inputType: 'day',
+  //     label: 'Day',
+  //     recHeader: true
+  //   },
+  //   {
+  //     elementKey: 'time',
+  //     inputType: 'time',
+  //     label: 'Time',
+  //     validation: 'time24',
+  //     recHeader: true
+  //   }
+  // ],
 
   checkBoxTextSpacer: [
     { inputType: 'checkbox' },
@@ -50,9 +50,6 @@ const Defs = {
 
 class EhrShortFormHelper {
   preprocess (entry, postEntries) {
-    if (entry.inputType === EhrTypes.shortFormTypes.recordHeader) {
-      this.recHdr(entry, postEntries)
-    }
     if (entry.inputType === EhrTypes.shortFormTypes.checkBoxDate) {
       this.withDate(entry, postEntries, Defs.checkBoxDate)
     }
@@ -64,18 +61,8 @@ class EhrShortFormHelper {
     }
   }
 
-  recHdr (entry, postEntries) {
-    let toAdd = JSON.parse(JSON.stringify(Defs.recordHeader))
-    console.log('toAdd >> ', toAdd)
-    toAdd.forEach((e) => {
-      e.pN = entry.pN
-      e.fN = entry.fN
-      e.gN = entry.gN
-      e.sgN = entry.sgN
-      e.tableColumn = entry.tableColumn
-      // console.log('e >> ', e)
-      postEntries.push(e)
-    })
+  validateRecHeader (entry) {
+    return entry.inputType === EhrTypes.shortFormTypes.recordHeader
   }
 
   withDate (entry, postEntries, defs) {

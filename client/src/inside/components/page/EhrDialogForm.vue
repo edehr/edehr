@@ -11,6 +11,7 @@
 import AppDialog from '../../../app/components/AppDialogShell'
 import EhrGroup from './EhrGroup'
 import EventBus from '../../../helpers/event-bus'
+import EhrDefs from '../../../helpers/ehr-defs-grid'
 
 const debug = false
 
@@ -35,7 +36,12 @@ export default {
     },
     groups () {
       return this.tableDef.form ? this.tableDef.form.ehr_groups : []
+    },
+    hasRecHeader () {
+      console.log('hasRecHeader >> ', EhrDefs.getRecHeaderStatus(this.ehrHelp.pageKey))
+      return EhrDefs.getRecHeaderStatus(this.ehrHelp.pageKey)
     }
+
   },
   methods: {
     cssFromDefs: function (element) {

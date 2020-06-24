@@ -8,44 +8,6 @@ export default function () {
       hasGridTable: true,
       pageChildren: [
         {
-          elementKey: 'persona',
-          formIndex: '1',
-          inputType: 'text',
-          label: 'Persona',
-          tableColumn: '1',
-          tableLabel: 'Identification',
-          recHeader: true,
-          fqn: 'progressNotes.persona'
-        },
-        {
-          elementKey: 'profession',
-          formIndex: '1',
-          inputType: 'text',
-          label: 'Profession',
-          tableColumn: '1',
-          recHeader: true,
-          fqn: 'progressNotes.profession'
-        },
-        {
-          elementKey: 'day',
-          formIndex: '1',
-          inputType: 'day',
-          label: 'Day',
-          tableColumn: '1',
-          recHeader: true,
-          fqn: 'progressNotes.day'
-        },
-        {
-          elementKey: 'time',
-          formIndex: '1',
-          inputType: 'time',
-          label: 'Time',
-          tableColumn: '1',
-          validation: 'time24',
-          recHeader: true,
-          fqn: 'progressNotes.time'
-        },
-        {
           elementKey: 'note',
           dataCaseStudy: 'Erin Johns is 74 years old. She is widowed with four children, one of whom lives at home with her in their original family home. Two of Erins children live within a one-hour drive from her, and one lives a three-hour flight away. She also has 10 grandchildren and one great grandchild. Erin describes herself as a non-smoker, but she smoked socially when she was in her early twenties for about five years. She is a retired hairdresser.',
           formIndex: '1',
@@ -56,6 +18,7 @@ export default function () {
           fqn: 'progressNotes.note'
         }
       ],
+      recHeader: true,
       generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         table: {
@@ -64,16 +27,6 @@ export default function () {
           isTable: true,
           addButtonText: 'Add an encounter note',
           ehr_list: [
-            {
-              label: 'Identification',
-              ehr_list_index: '1',
-              items: [
-                'persona',
-                'profession',
-                'day',
-                'time'
-              ]
-            },
             {
               label: 'Encounter note',
               ehr_list_index: '2',
@@ -91,12 +44,7 @@ export default function () {
                 elementKey: 'ehr_group114',
                 formCss: 'record-header',
                 gIndex: '1',
-                gChildren: [
-                  'persona',
-                  'profession',
-                  'day',
-                  'time'
-                ]
+                gChildren: []
               },
               {
                 elementKey: 'ehr_group115',
@@ -108,10 +56,6 @@ export default function () {
               }
             ],
             ehr_data: {
-              persona: '',
-              profession: '',
-              day: '',
-              time: '',
               note: ''
             }
           }
@@ -125,44 +69,6 @@ export default function () {
       isV2: true,
       hasGridTable: true,
       pageChildren: [
-        {
-          elementKey: 'persona',
-          formIndex: '1',
-          inputType: 'text',
-          label: 'Persona',
-          tableColumn: '1',
-          tableLabel: 'Identification',
-          recHeader: true,
-          fqn: 'carePlan.persona'
-        },
-        {
-          elementKey: 'profession',
-          formIndex: '1',
-          inputType: 'text',
-          label: 'Profession',
-          tableColumn: '1',
-          recHeader: true,
-          fqn: 'carePlan.profession'
-        },
-        {
-          elementKey: 'day',
-          formIndex: '1',
-          inputType: 'day',
-          label: 'Day',
-          tableColumn: '1',
-          recHeader: true,
-          fqn: 'carePlan.day'
-        },
-        {
-          elementKey: 'time',
-          formIndex: '1',
-          inputType: 'time',
-          label: 'Time',
-          tableColumn: '1',
-          validation: 'time24',
-          recHeader: true,
-          fqn: 'carePlan.time'
-        },
         {
           elementKey: 'clinical',
           formIndex: '1',
@@ -219,6 +125,7 @@ export default function () {
           fqn: 'carePlan.status'
         }
       ],
+      recHeader: true,
       generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         table: {
@@ -227,16 +134,6 @@ export default function () {
           isTable: true,
           addButtonText: 'Add a care plan',
           ehr_list: [
-            {
-              label: 'Identification',
-              ehr_list_index: '1',
-              items: [
-                'persona',
-                'profession',
-                'day',
-                'time'
-              ]
-            },
             {
               label: 'Clinical issue',
               ehr_list_index: '2',
@@ -282,12 +179,7 @@ export default function () {
                 elementKey: 'ehr_group116',
                 formCss: 'record-header',
                 gIndex: '1',
-                gChildren: [
-                  'persona',
-                  'profession',
-                  'day',
-                  'time'
-                ]
+                gChildren: []
               },
               {
                 elementKey: 'ehr_group117',
@@ -302,10 +194,6 @@ export default function () {
               }
             ],
             ehr_data: {
-              persona: '',
-              profession: '',
-              day: '',
-              time: '',
               clinical: '',
               goal: '',
               interventions: '',
@@ -323,6 +211,7 @@ export default function () {
       isV2: true,
       hasGridForm: true,
       pageChildren: [],
+      recHeader: true,
       generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         pageForm: {
@@ -377,6 +266,7 @@ export default function () {
           fqn: 'labResults.labReport4_1'
         }
       ],
+      recHeader: true,
       generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         pageForm: {
@@ -461,6 +351,7 @@ export default function () {
           fqn: 'medicalImaging.pneumonia_report'
         }
       ],
+      recHeader: true,
       generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         pageForm: {
@@ -491,6 +382,7 @@ export default function () {
       isV2: true,
       hasGridForm: true,
       pageChildren: [],
+      recHeader: true,
       generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         pageForm: {

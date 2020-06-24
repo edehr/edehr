@@ -75,9 +75,6 @@ export default {
       if (disable) {
         this.setInitialValue('')
       }
-      if (this.element.recHeader) {
-        disable = true
-      }
 
       return disable
     }
@@ -135,10 +132,10 @@ export default {
         let initialValue = inputs[this.elementKey]
         if (dbDialog || dbInputs) console.log('EhrCommon key has value', this.key, initialValue)
         this.setInitialValue(initialValue)
-        if (this.element.recHeader) {
-          const v = this.personaData[this.key]
-          this.setInitialValue(v)
-        }
+        // if (this.element.recHeader) {
+        //   const v = this.personaData[this.key]
+        //   this.setInitialValue(v)
+        // }
       }
     },
     setupCommon () {
@@ -164,7 +161,6 @@ export default {
     },
   },
   mounted: function () {
-    // console.log('mounted this.tableKey', this.tableKey)
     this.setupCommon()
     this.setupEventHandlers()
     if (this.setup) {
