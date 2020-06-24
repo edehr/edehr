@@ -13,7 +13,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  client:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -31,6 +31,32 @@ jobs:
         working-directory: client
       - run: npm run test
         working-directory: client
+
+
+  db: 
+    runs-on: ubuntu-latest
+    - uses: actions/checkout@v2
+
+    - uses: actions/setup-node@v2-beta
+      with:
+        node-version: '12'
+    - run: npm run start:db
+
+  server:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: '12'
+      - run: npm ci
+        working-directory: server
+      - run: npm run lint -- --no-fix
+        working-directory: server
+      - run: npm run test
+        working-directory: server
     
       # - name: "run-db"
       #- uses: actions/npm@master
