@@ -3,7 +3,9 @@ scrivner/output
 scrivner/MarkdownSample.scriv
 **/node_modules/**
 **/logs/**
-package-lock.json
+# TODO: discuss this approach based on 
+# https://stackoverflow.com/questions/48524417/should-the-package-lock-json-file-be-added-to-gitignore
+# package-lock.json
 logs/**
 server/bin/sessions/**
 dbjson/db\.json
