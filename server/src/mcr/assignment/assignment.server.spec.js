@@ -17,7 +17,6 @@ const ehrApp = new EhrApp()
 
 const visitId = Helper.sampleObjectId(true)
 const token = Helper.generateToken(visitId)
-const adminToken = Helper.generateToken(visitId, true)
 
 const debug = require('debug')('server')
 

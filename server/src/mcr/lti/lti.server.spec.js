@@ -1,6 +1,6 @@
 const should = require('should')
 const mongoose = require('mongoose')
-import HMAC_SHA1 from '../../../node_modules/ims-lti/src/hmac-sha1'
+import HMAC_SHA1 from 'ims-lti/src/hmac-sha1'
 import AssignmentController from '../assignment/assignment-controller'
 import ActivityController from '../activity/activity-controller'
 import AuthUtil from '../common/auth-util'
@@ -8,7 +8,7 @@ import VisitController from '../visit/visit-controller'
 import UserController from '../user/user-controller'
 import ConsumerController from '../consumer/consumer-controller'
 import SeedDataController from '../seed/seedData-controller'
-import LTIController from '../lti/lti'
+import LTIController from './lti'
 import Helper from '../common/test-helper'
 import Config from '../../config/config'
 import Assignment from '../assignment/assignment'

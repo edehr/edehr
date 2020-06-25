@@ -1,5 +1,5 @@
 var should = require('should')
-import { ok, fail } from '../common/utils'
+import { ok, fail } from './utils'
 import { ltiVersions } from '../lti/lti-defs'
 
 /* global describe it */

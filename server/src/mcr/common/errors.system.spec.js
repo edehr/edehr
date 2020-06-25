@@ -4,7 +4,7 @@ import {
   SystemError,
   ConfigurationChangeError,
   ParameterError
-} from '../common/errors'
+} from './errors'
 
 let message = 'a message'
 

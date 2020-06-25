@@ -16,12 +16,10 @@ jobs:
   client:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
       - uses: actions/setup-node@v2-beta
         with:
           node-version: '12'
@@ -31,22 +29,10 @@ jobs:
         working-directory: client
       - run: npm run test
         working-directory: client
-  db: 
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-
-      - uses: actions/setup-node@v2-beta
-        with:
-          node-version: '12'
-      - run: npm run start:db
-
   server:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
-
       - uses: actions/setup-node@v2-beta
         with:
           node-version: '12'
@@ -54,34 +40,6 @@ jobs:
         working-directory: server
       - run: npm run lint -- --no-fix
         working-directory: server
-      - run: npm run test
+      - run: npm run test:system
         working-directory: server
     
-      # - name: "run-db"
-      #- uses: actions/npm@master
-      #  with:
-      #    args: start:db
-
-        # Run npm install
-      # - name: "npm-install"
-      #- uses: actions/npm@master
-      #  with:
-      #    args: run install
-
-        #test frontend
-      # - name: "frontend-test"
-      #- uses: actions/npm@master
-      #  with:
-      #    args: run test:client
-
-        #test backend
-      # - name: "backend-test"
-      #- uses: actions/npm@master
-      #  with:
-      #    args: run test:server
-
-        #run linter
-      # - name: "npm-lint"
-      #- uses: actions/npm@master
-      #  with:
-      #    args: run lint
