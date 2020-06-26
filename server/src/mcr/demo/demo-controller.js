@@ -12,6 +12,7 @@ const HMAC_SHA1 = require('ims-lti/src/hmac-sha1')
 
 const debugDC = true
 const debug = require('debug')('server')
+const logError = require('debug')('error')
 
 const consumerBaseDef = {
   lti_version: ltiVersions()[0],
@@ -89,7 +90,7 @@ export default class DemoController {
           if (debugDC) debug('DemoController _createDemoToolConsumer generated token')
           res.status(200).json({demoToken})
         } catch (err) {
-          debug('DemoController _createDemoToolConsumer ERROR ', err)
+          logError('DemoController _createDemoToolConsumer ERROR ', err)
           res.status(500).send(err)
         }
       })
@@ -151,7 +152,7 @@ export default class DemoController {
         res.status(200).json({refreshToken: _results.data.refreshToken, url: _results.data.url})
       })
       .catch(err => {
-        console.error('DC.submitLtiData caught >> ', err.message)
+        logError(`DC.submitLtiData caught >> ${err.message}`)
         res.status(500).send(err)
       })
   }

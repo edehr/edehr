@@ -8,6 +8,7 @@ import IntegrationController from '../integration/integration-controller'
 import Helper from '../common/test-helper'
 
 const debug = require('debug')('server')
+const logError = require('debug')('error')
 
 const IntegrationModel = new IntegrationController()
 
@@ -38,7 +39,7 @@ describe(' db seeding test', function () {
         done()
       })
       .catch(err => {
-        debug(`Integration error ${err}`)
+        logError(`Integration error ${err}`)
         done()
       })
   })
@@ -58,7 +59,7 @@ describe(' db seeding test', function () {
         done()
       })
       .catch(err => {
-        debug(`error ${err}`)
+        logError(`error ${err}`)
         done()
       })
   })

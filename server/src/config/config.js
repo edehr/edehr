@@ -2,6 +2,7 @@
 const glob = require('glob')
 const path = require('path')
 const debug = require('debug')('server')
+const logError = require('debug')('error')
 export default class Config {
   constructor (env) {
     this.env = env
@@ -44,7 +45,7 @@ export default class Config {
     try {
       tmp = JSON.parse(JSON.stringify(this.configuration))
     } catch (error) {
-      debug('Error cloning configuration %o', error)
+      logError('Error cloning configuration %o', error)
     }
 
     tmp.database.password = 'sanitizedFor2'

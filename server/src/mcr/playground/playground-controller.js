@@ -1,7 +1,8 @@
 import { Router } from 'express'
 const HMAC_SHA1 = require('ims-lti/src/hmac-sha1')
 
-const debug = false
+const logError = require('debug')('error')
+const debug = require('debug')('server')
 
 export default class PlaygroundController {
   /**
@@ -17,7 +18,7 @@ export default class PlaygroundController {
    */
   _makeSignature (req, res) {
     if(req.body) {
-      if(debug) console.log('req.body >>', req.body)
+      debug('req.body >>', req.body)
       const _req = req.body.req
       try {
         let signer = new HMAC_SHA1()
@@ -34,7 +35,7 @@ export default class PlaygroundController {
         res.status(200).json({ body, _req })
       }
       catch (err) {
-        if (debug) console.log('err >> ', err)
+        logError(`err >>  ${err}`)
         res.status(500).send(err)
       }
     }

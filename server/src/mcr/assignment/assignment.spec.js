@@ -7,7 +7,7 @@ import Model from './assignment'
 const typeName = 'Assignment'
 const collectionName = 'assignments'
 
-const debug = require('debug')('server')
+const logError = require('debug')('error')
 
 /* global describe it */
 describe(`${typeName} mongoose schema testing`, function () {
@@ -48,7 +48,7 @@ describe(`${typeName} mongoose schema testing`, function () {
       doc.should.have.property('seedDataId')
       done()
     }).catch(e => {
-      debug('find one error', e)
+      logError('find one error', e)
     })
   })
 })

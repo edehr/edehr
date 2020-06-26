@@ -6,7 +6,7 @@ import SeedDataController from './seedData-controller'
 
 const typeName = 'SeedDataController'
 const modelName = 'SeedData'
-const debug = require('debug')('server')
+const logError = require('debug')('error')
 
 /* global describe it */
 describe(`${typeName} controller testing`, function () {
@@ -34,7 +34,7 @@ describe(`${typeName} controller testing`, function () {
         done()
       })
       .catch(err => {
-        debug(`${typeName} create ${modelName} error ${err}`)
+        logError(`${typeName} create ${modelName} error ${err}`)
         done()
       })
   })

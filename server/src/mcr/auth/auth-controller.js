@@ -5,6 +5,7 @@ import { Text } from '../../config/text'
 
 const jwt = require('jsonwebtoken')
 const debug = require('debug')('server')
+const logError = require('debug')('error')
 
 export default class AuthController {
 
@@ -53,7 +54,7 @@ export default class AuthController {
         }
       }
       catch (err) {
-        if (debugAC) debug('_adminLogin threw', err)
+        logError('_adminLogin threw', err)
         return res.status(401).send(Text.EXPIRED_ADMIN)
       }
     }
@@ -110,13 +111,13 @@ export default class AuthController {
         debug('tokenValidated >> ', token)
         res.status(200).json({token})
       } catch(err) {
-        debug('validate token threw >> ', err.message)
+        logError('validate token threw >> ', err.message)
         // This arguably returns 401 in this case. As the validateToken can throw if the token has expired,
         // which is a use case of the refresh token.
         res.status(401).send(Text.EXPIRED_TOKEN)
       }
     } else {
-      debug(Text.TOKEN_REQUIRED, req.body)
+      logError(Text.TOKEN_REQUIRED, req.body)
       res.status(401).send(Text.TOKEN_REQUIRED)
     }
   }
@@ -142,12 +143,12 @@ export default class AuthController {
         const result = this.authUtil.authenticate(req.headers.authorization)
         res.status(200).json(result)
       } catch(err) {
-        debug('_getTokenContent threw >> ', err)
+        logError('_getTokenContent threw >> ', err)
         // Here this can be 500, since it catches and error from the jwt.verify function
         res.status(500).send(Text.SYS_ERROR)
       }
     } else {
-      debug('AuthController ._getTokenContent --- Token is required!')
+      logError('AuthController ._getTokenContent --- Token is required!')
       res.status(401).send(Text.TOKEN_REQUIRED)
     }
   }

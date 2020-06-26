@@ -9,6 +9,7 @@ import {ok, fail} from '../common/utils'
 import { isAdmin } from '../../helpers/middleware'
 
 const debug = require('debug')('server')
+const logError = require('debug')('error')
 const debugAC = false
 
 const sd = new SeedDataController()
@@ -157,7 +158,7 @@ export default class AssignmentController extends BaseController {
           res.status(200).json({success: true})
         })
         .catch(err => {
-          debug('Assignment. Delete Error', err)
+          logError('Assignment. Delete Error', err)
           return req.status(500).send(err)
           // fail(res)
         })

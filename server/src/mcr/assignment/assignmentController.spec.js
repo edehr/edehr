@@ -10,7 +10,7 @@ const helper = new Helper()
 const typeName = 'AssignmentController'
 const modelName = 'Assignment'
 
-const debug = require('debug')('server')
+const logError = require('debug')('error')
 
 function makeAssignmentController () {
   return new AssignmentController(configuration)
@@ -42,7 +42,7 @@ describe(`${typeName} controller testing`, function () {
         done()
       })
       .catch(err => {
-        debug(`${typeName} create ${modelName} error ${err}`)
+        logError(`${typeName} create ${modelName} error ${err}`)
         done()
       })
   })
@@ -57,7 +57,7 @@ describe(`${typeName} controller testing`, function () {
         done()
       })
       .catch(e => {
-        debug('find one error', e)
+        logError('find one error', e)
       })
   })
 
