@@ -4,6 +4,7 @@ import Config from '../../config/config'
 const request = require('supertest')
 const mongoose = require('mongoose')
 const should = require('should')
+const debug = require('debug')('server')
 
 const config = new Config('test')
 const ehrApp = new EhrApp()
@@ -32,8 +33,7 @@ describe(`${NAME} - Server requests `, () => {
 
   it('Properly gets the token content', done => {
     const url = BASE
-    // console.log('URL', url)
-    // console.log('token',token)
+    debug(`URL: ${url}, token: ${token}`)
     request(app)
       .post(url)
       .set('Authorization', `Bearer ${token}`)
