@@ -8,149 +8,162 @@ import { Text } from './ehr-text'
 
 const debugApp = false
 
+function dblog(msg, ...args) {
+  if (debugApp) {
+    if (args.length > 0)
+      console.log(msg,...args)
+    else
+      console.log(msg)
+  }
+}
+
 class PageControllerInner {
   constructor () {
-    this.hasLoadedEhrPage = false
+    dblog('App PageController constructor')
+    this.hasLoadedData = false
   }
 
-  onPageChange (route) {
-    /*
-    We do not need to reload the app as the user navigates around the EHR pages
-     */
-    if (debugApp) console.log('App loadDataIfNotLoaded', route.meta)
-    const EHR_ZONE = 'ehr'
-    // const ZONE_ADMIN = 'admin'
-    // const ZONE_LMS = 'lms'
-    // const ZONE_PUBLIC = 'public'
-    if((route.meta.zone == EHR_ZONE)) {
-      if(!this.hasLoadedEhrPage) {
-        this.loadData(route)
-        this.hasLoadedEhrPage = true
-        // Intentional override to force page loading
-        // TODO See and resolve https://github.com/BCcampus/edehr/issues/730
-        this.hasLoadedEhrPage = false
-      }
-    } else {
+  async onPageChange (route) {
+    dblog('App onPageChange', route.meta)
+    try {
       if (route.name === 'demo') {
-        if (debugApp) console.log('Page loading going to Demo page. "log the user out" of EHR whether user came from an LMS or from the demo')
-        StoreHelper.logUserOutOfEdEHR()
+        dblog('Page onPageChange going to demo page so "log the user out" of EHR whether the user came from an LMS or from the demo')
+        await StoreHelper.logUserOutOfEdEHR()
       }
-      this.loadData(route)
-      this.hasLoadedEhrPage = false
+      await this._loadData(route)
+      // the page has loaded and any following page change can skip most of the work.
+      this.hasLoadedData = true
     }
+    catch(err) {
+      StoreHelper.setLoading(null, false)
+      router.push('/')
+      StoreHelper.setApiError(err + '. System Error')
+    }
+
   }
 
-  async loadData (route) {
-    if(debugApp) console.log('App LD begin loadData')
-    StoreHelper.apiUrlSet(config.apiUrl)
-    if (route.query.apiUrl) {
-      StoreHelper.apiUrlSet(route.query.apiUrl)
-    }
+  async _loadData (route) {
+    const apiUrl = route.query.apiUrl ?  route.query.apiUrl : config.apiUrl
+    dblog('App _loadData. Store the api url', apiUrl, route.query.apiUrl ?  'from the route' : 'from the config')
+    StoreHelper.apiUrlSet(apiUrl)
+
     const demoToken = StoreHelper.getDemoToken()
+    const isDemo = !!demoToken
+
     const refreshToken = route.query.token
     const authToken = StoreHelper.getAuthToken()
-    const isDemo = !! demoToken
     const isUser = refreshToken || authToken
 
-    // Load the demo data if its present and then return
-    if(isDemo) {
-      if(debugApp) console.log('App LD load the demo data')
+    if (isDemo) {
+      dblog('App _loadData load demo data')
       await StoreHelper.loadDemoData()
       if (!isUser) {
-        if(debugApp) console.log('App LD load no user data so return and refresh')
+        dblog('App _loadData user is not yet visiting the EHR pages so page load is complete')
         EventBus.$emit(PAGE_DATA_READY_EVENT)
-        return Promise.resolve()
+        return
       }
     }
 
-    // OK now see if we are handling a new LTI request or we've seen one before
     if (!isUser) {
-      return Promise.resolve()
+      dblog('App _loadData page is not a demo page nor is the user visiting the core EdEHR pages.',
+        'They must be visiting a public page. No further loading needed')
+      return
     }
 
-    // else .... load
-    StoreHelper.setLoading(null, true)
-    let visitId = ''
+    dblog('App _loadData load user authorization data')
+    await this._loadAuth(refreshToken, authToken)
 
+    if (!this.hasLoadedData) {
 
-    return Promise.resolve()
-      .then((/* ******** AUTH TOKEN  *************  */) => {
-        if (refreshToken) {
-        /* ********   NEW CONNECTION  *************  */
-          if(debugApp) console.log('App LD refresh token fetch')
-          return StoreHelper.fetchAndStoreAuthToken(refreshToken)
-            .then((token) => {
-              if (!token) {
-                /* ********   AUTH PROCESS DID NOT WORK -- SYSTEM ERROR?  *************  */
-                // Todo should this condition be a system error?
-                if(debugApp) console.log('App LD refresh token expired')
-                return Promise.reject(Text.EXPIRED_REFRESH_TOKEN)
-              }
-              /* ******** NEW CONNECTION SUCCEEDED *************  */
-              return StoreHelper.fetchTokenData(token)
-            }).catch(err => {
-              if (
-                err.response.status === 401  &&
-            err.response.data.toLowerCase().includes('expired') &&
-            !!authToken
-              ) {
-                /* ******** REFRESH TOKEN IS OLD -- BUT PREVIOUS CONNECTION EXISTS *************  */
-                if(debugApp) console.log('App LD refresh expired but we have a previous auth token. Use it')
-                setAuthHeader(authToken)
-                return StoreHelper.fetchTokenData(authToken)
-              } else {
-                /* ******** AUTH PROCESS TOOK TOO LONG - SYS ERR?  *************  */
-                if(debugApp) console.log('App LD refresh expired and no previous token')
-                return Promise.reject(Text.EXPIRED_TOKEN(err))
-              }
-            })
-        } else if (authToken) {
-        /* ******** USE PREVIOUS CONNECTION *************  */
-          if(debugApp) console.log('App LD use stored auth token',authToken)
-          setAuthHeader(authToken)
-          return StoreHelper.fetchTokenData(authToken)
-        }  else {
-          if(debugApp) console.log('App LD no auth token, no refresh token', Text.PARAMETERS_ERROR)
-          return Promise.reject(Text.PARAMETERS_ERROR)
-        }
-      })
-      .then((/* ********  LOAD USER DATA FROM TOKEN  *************  */) => {
-        if (debugApp) console.log('App LD tokens processed get auth data')
-        return StoreHelper.getAuthData()
-      })
-      .then((payload) => {
-        if (!(payload && payload.visitId)) {
-          if(debugApp) console.log('App LD no auth data', payload,  Text.TOKEN_FETCHING_ERROR)
-          return Promise.reject(Text.TOKEN_FETCHING_ERROR)
-        } else {
-          if(debugApp) console.log('App LD have auth data and visit id', payload)
-          visitId = payload.visitId
-        }
-        StoreHelper.clearSession()
-        return StoreHelper.loadVisitRecord(visitId)
-      })
-      .then((/* ********   LOAD STUDENT OR INSTRUCTOR  *************  */) => {
-        if(debugApp) console.log('App LD loadVisitRecord done')
-        if (StoreHelper.isInstructor()) {
-          if(debugApp) console.log('App LD load instructor')
-          return StoreHelper.loadInstructor2()
-        } else if (StoreHelper.isStudent()) {
-          if(debugApp) console.log('App LD load student')
-          return StoreHelper.loadStudent2()
-        }
-      }).then((/* ********  DONE  *************  */) => {
-      // move this to helper
-        StoreHelper.setLoading(null, false)
-        if (debugApp) console.log('App LD DONE loading. Send event', PAGE_DATA_REFRESH_EVENT)
-        EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
-      })
-      .catch(err => {
-        StoreHelper.setLoading(null, false)
-        router.push('/')
-        StoreHelper.setApiError(err + '. System Error')
-      })
+      let visitId = await this._getVisitId()
+
+      await this._loadEhr(visitId)
+    }
+
+    dblog('App _loadData DONE. Send event', PAGE_DATA_REFRESH_EVENT)
+    EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
   }
 
+  async _loadAuth(refreshToken, authToken) {
+    if (refreshToken) {
+      dblog('App _loadAuth refresh token fetch')
+      await this._ltiAccess(refreshToken, authToken)
+      this.hasLoadedData = false
+    } else if (authToken) {
+      if (!this.hasLoadedData) {
+        dblog('App _loadAuth. User is refreshing their browser. We have an existing auth token. Get the auth data....')
+        StoreHelper.setLoading(null, true)
+        setAuthHeader(authToken)
+        await StoreHelper.fetchTokenData(authToken)
+        StoreHelper.setLoading(null, false)
+      }
+    } else {
+      dblog('App _loadAuth. User can not proceed. There is no refresh nor previous auth token.')
+      throw new Error(Text.PARAMETERS_ERROR)
+    }
+  }
+
+  async _ltiAccess(refreshToken, authToken) {
+    StoreHelper.setLoading(null, true)
+    dblog('App _ltiAccess take the refresh, convert to auth token.')
+    let token = await StoreHelper.fetchAndStoreAuthToken(refreshToken)
+    if (!token) {
+      dblog('App _ltiAccess the refresh token failed. Perhaps this is a SYSTEM ERROR?')
+      throw new Error(Text.EXPIRED_REFRESH_TOKEN)
+    }
+    /* ******** NEW CONNECTION SUCCEEDED *************  */
+    try {
+      dblog('App _ltiAccess take the newly provided auth token, store it and fetch the auth data.')
+      await StoreHelper.fetchTokenData(token)
+    }
+    catch (err) {
+      if (err.response.status === 401 && err.response.data.toLowerCase().includes('expired') && !!authToken) {
+        dblog('App _ltiAccess the refresh token expired but we have a previous auth token (user is refreshing browser).')
+        setAuthHeader(authToken)
+        await StoreHelper.fetchTokenData(authToken)
+      } else {
+        dblog('App _ltiAccess refresh token is expired and there is no previous token. User can not proceed.')
+        throw new Error(Text.EXPIRED_TOKEN(err))
+      }
+    }
+    StoreHelper.setLoading(null, false)
+  }
+
+  async _loadEhr (visitId) {
+    dblog('App _loadEhr')
+    StoreHelper.setLoading(null, true)
+    StoreHelper.clearSession()
+    await StoreHelper.loadVisitRecord(visitId)
+    dblog('App _loadEhr clear away any previous ehr settings. Load visitId', visitId, 'as ...')
+    if (StoreHelper.isInstructor()) {
+      dblog('App _loadEhr load instructor')
+      await StoreHelper.loadInstructor2()
+    } else if (StoreHelper.isStudent()) {
+      dblog('App _loadEhr load student')
+      await StoreHelper.loadStudent2()
+    }
+    StoreHelper.setLoading(null, false)
+  }
+
+
+  async _getVisitId() {
+    dblog('App _getVisitId')
+    StoreHelper.setLoading(null, true)
+    let payload = await StoreHelper.getAuthData()
+    if (!(payload && payload.visitId)) {
+      dblog('App _getVisitId no auth data', payload, Text.TOKEN_FETCHING_ERROR)
+      throw new Error(Text.TOKEN_FETCHING_ERROR)
+    }
+    dblog('App _getVisitId', payload)
+    StoreHelper.setLoading(null, false)
+    return payload.visitId
+  }
+
+  handleError(err) {
+    StoreHelper.setLoading(null, false)
+    router.push('/')
+    StoreHelper.setApiError(err + '. System Error')
+  }
 }
 const PageController = new PageControllerInner()
 export default PageController

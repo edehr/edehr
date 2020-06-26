@@ -187,7 +187,7 @@ export default {
     },
     changeStudent (sv) { StoreHelper.changeStudentForInstructor(sv._id) },
 
-    loadComponent () {
+    async loadComponent () {
       /*
       We can arrive here two ways.  1. from the main list of courses and activities. The user as selected to view the
       class list for an activity (of a course).  This is the main and primary entry point.
@@ -195,24 +195,21 @@ export default {
       In the first instance the route parameters will contain (must contain) the activity id. In the
       second instance we will retrieve the "active" activity rom the StoreHelper
        */
-      if (debug) console.log('CL loadAsCurrentActivity', this.activityId)
-      return StoreHelper.loadAsCurrentActivity(this.activityId)
-        .then( () => {
-          if (debug) console.log('CL loadInstructorWithStudent', this.activityId)
-          return  StoreHelper.loadInstructorWithStudent()
-        })
-        .then((result) => {
-          if(result) {
-            if (debug) console.log('CL results', result)
-            this.activity = result.activity
-            this.assignment = result.assignment
-          } else {
-            console.error('CL no results', this.activityId)
-          }
-        })
-        .catch((error) => {
-          console.error('CL Load class list failed', error)
-        })
+      if (debug) console.log('CL loadComponent', this.activityId)
+      try {
+        await StoreHelper.loadAsCurrentActivity(this.activityId)
+        if (debug) console.log('CL loadComponent loadInstructorWithStudent', this.activityId)
+        let result = await StoreHelper.loadInstructorWithStudent()
+        if (result) {
+          if (debug) console.log('CL results', result)
+          this.activity = result.activity
+          this.assignment = result.assignment
+        } else {
+          console.error('CL loadComponent no results', this.activityId)
+        }
+      } catch(error){
+        console.error('CL loadComponent failed', error)
+      }
     },
     downloadEvaluations () {
       this.$refs.promptDialog.showDialog(this.promptTitle, this.promptMessage, this.promptLabel)
