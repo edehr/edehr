@@ -31,14 +31,14 @@ class StoreHelperWorker {
   _dispatchActivityData (key, payload) { return store.dispatch('activityDataStore/' + key, payload)}
   _dispatchAssignment (key, payload) { return store.dispatch('assignmentStore/' + key, payload)}
   _dispatchAssignmentList (key, payload) { return store.dispatch('assignmentListStore/' + key, payload)}
-  _dispatchAuthStore (key, payload) { return store.dispatch(`authStore/${key}`, payload) }
+  async _dispatchAuthStore (key, payload) { return await store.dispatch(`authStore/${key}`, payload) }
   _dispatchConsumerList (key, payload) { return store.dispatch('consumerListStore/' + key, payload)}
   _dispatchClassList (key, payload) { return store.dispatch('classListStore/' + key, payload)}
-  _dispatchConsumer (key, payload) { return store.dispatch('consumerStore/' + key, payload)}
-  _dispatchSeedListProperty (key, payload) { return store.dispatch('seedListStore/' + key, payload)}
-  _dispatchInstructor (key, payload) { return store.dispatch('instructor/' + key, payload)}
+  async _dispatchConsumer (key, payload) { return await store.dispatch('consumerStore/' + key, payload)}
+  async _dispatchSeedListProperty (key, payload) { return await store.dispatch('seedListStore/' + key, payload)}
+  async _dispatchInstructor (key, payload) { return await store.dispatch('instructor/' + key, payload)}
   _dispatchVisit (key, payload) { return store.dispatch('visit/' + key, payload)}
-  _dispatchUser (key, payload) { return store.dispatch('userStore/' + key, payload)}
+  async _dispatchUser (key, payload) { return await store.dispatch('userStore/' + key, payload)}
 
   /* **********   General  ************** */
   toolConsumerId () { return this._getConsumerProperty('consumerId') }
@@ -158,7 +158,7 @@ class StoreHelperWorker {
    * @param activityId
    * @return {*}
    */
-  loadAsCurrentActivity (activityId) { return this._dispatchActivity('load', activityId) }
+  async loadAsCurrentActivity (activityId) { return await this._dispatchActivity('load', activityId) }
 
   /**
    * Make API call to close activity
@@ -195,12 +195,10 @@ class StoreHelperWorker {
 
   deleteAssignment (id) { return this._dispatchAssignment('delete', id)}
 
-  loadAssignmentAndSeedLists () {
+  async loadAssignmentAndSeedLists () {
   // load the seeds first so they are ready for the assignments to integrate
-    return  this._dispatchSeedListProperty('loadSeeds')
-      .then ( () => {
-        return this.loadAssignmentList()
-      })
+    await this._dispatchSeedListProperty('loadSeeds')
+    await this.loadAssignmentList()
   }
 
   loadAssignmentList () {  return this._dispatchAssignmentList('loadAssignments') }
@@ -225,7 +223,7 @@ class StoreHelperWorker {
   getSeedEhrData () { return this._getSeedListProperty('seedEhrData')}
   getSeedContent () { return this._getSeedListProperty('seedContent') }
 
-  loadSeed (seedId) { return this._dispatchSeedListProperty('loadSeedContent', seedId) }
+  async loadSeed (seedId) { await this._dispatchSeedListProperty('loadSeedContent', seedId) }
   loadSeedLists () { return this._dispatchSeedListProperty('loadSeedDataList') }
 
   updateSeed (component, seedId, theData) {
@@ -302,32 +300,28 @@ class StoreHelperWorker {
   }
 
   /* **********   Loading and Restoring  ************** */
-  loadVisitRecord (visitId) {
+  async loadVisitRecord (visitId) {
     if (debugSH) console.log('SH loadVisitRecord dispatch the load visit information', visitId)
     sessionStorage.setItem(sKeys.USER_TOKEN, visitId)
-    return this._dispatchVisit('loadVisit2', visitId)
+    await this._dispatchVisit('loadVisit2', visitId)
   }
 
-  loadCommon () {
+  async loadCommon () {
     let visitInfo = store.state.visit.sVisitData || {}
-    return Promise.all([
-      this._dispatchConsumer('load', visitInfo.toolConsumer),
-      this._dispatchUser('load', visitInfo.user),
-    ]).then ( () => {
-      return this.loadAssignmentAndSeedLists()
-    }).then ( () => {
-      let activityId = this.getActivityId()
-      if (debugSH) console.log('SH loadCommon activityId', activityId)
-      if(!activityId) {
-        activityId = visitInfo.activity
-        if(debugSH) console.log('SH loadCommon load activity from visit record', activityId)
-      } else {
-        if(debugSH) console.log('SH loadCommon load activity from session', activityId)
-      }
-      if (activityId) {
-        return StoreHelper.loadAsCurrentActivity(activityId)
-      }
-    })
+    await this._dispatchConsumer('load', visitInfo.toolConsumer)
+    await this._dispatchUser('load', visitInfo.user)
+    await this.loadAssignmentAndSeedLists()
+    let activityId = this.getActivityId()
+    if (debugSH) console.log('SH loadCommon activityId', activityId)
+    if(!activityId) {
+      activityId = visitInfo.activity
+      if(debugSH) console.log('SH loadCommon load activity from visit record', activityId)
+    } else {
+      if(debugSH) console.log('SH loadCommon load activity from session', activityId)
+    }
+    if (activityId) {
+      await StoreHelper.loadAsCurrentActivity(activityId)
+    }
   }
 
   restoreSession () {
@@ -353,76 +347,63 @@ class StoreHelperWorker {
     return Promise.resolve()
   }
 
-  loadStudent2 () {
+  async loadStudent2 () {
     let visitInfo = store.state.visit.sVisitData || {}
     // visitInfo.activityData and .activity and .assignment are all ids
     if (debugSH) console.log('SH loadStudent2 visitInfo.activity', visitInfo.activity)
-    return this.loadCommon().then(() => {
-      return Promise.all([
-        this._dispatchActivityData('load', visitInfo.activityData),
-        this.loadAsCurrentActivity(visitInfo.activity),
-        this.loadAssignment(visitInfo.assignment),
-      ])
-    }).then(() => {
-      let seedId = this.getAssignmentSeedId()
-      if(debugSH) console.log('SH loadStudent2 seedId', seedId)
-      return this.loadSeed(seedId)
-    })
+    await this.loadCommon()
+    await this._dispatchActivityData('load', visitInfo.activityData)
+    await this.loadAsCurrentActivity(visitInfo.activity)
+    await this.loadAssignment(visitInfo.assignment)
+    let seedId = this.getAssignmentSeedId()
+    if(debugSH) console.log('SH loadStudent2 seedId', seedId)
+    await this.loadSeed(seedId)
   }
 
-  loadInstructor2 () {
-    return this.loadCommon().then(() => {
-      return this._dispatchInstructor('loadCourses').then(() => {
-        if(debugSH) console.log('SH loadInstructor2 load and restore instructor')
-      })
-    })
+  async loadInstructor2 () {
+    await this.loadCommon()
+    await this._dispatchInstructor('loadCourses')
+    if(debugSH) console.log('SH loadInstructor2 load and restore instructor')
   }
 
 
-  loadInstructorWithStudent (filtered) {
-    const local = debugSH && true
-    if(local) console.log('SH loadInstructorWithStudent')
+  async loadInstructorWithStudent (filtered) {
+    if(debugSH) console.log('SH loadInstructorWithStudent')
     let activityId = this.getActivityId()
     let result = {}
     if (!activityId) {
       console.error('Can\'t find a current activity id')
-      return Promise.resolve()
+      return result
     }
-    if(local) console.log('SH loadInstructorWithStudent activityId', activityId)
-    return this.loadAsCurrentActivity(activityId)
-      .then((theActivity) => {
-        result.activity = theActivity
-        if(local) console.log('SH loadInstructorWithStudent theActivity', theActivity)
-        return this.loadAssignment(theActivity.assignment)
-      })
-      .then((theAssignment) => {
-        result.assignment = theAssignment
-        if(local) console.log('SH loadInstructorWithStudent theAssignment', theAssignment)
-        return this.dispatchLoadClassList(filtered)
-      }).then(() => {
-        let seedId = StoreHelper.getAssignmentSeedId()
-        result.seedId = seedId
-        if(local) console.log('SH loadInstructorWithStudent seedId', seedId)
-        return this.loadSeed(seedId)
-      }).then(() => {
-        return result
-      })
+    if(debugSH) console.log('SH loadInstructorWithStudent activityId', activityId)
+    let theActivity = await this.loadAsCurrentActivity(activityId)
+    result.activity = theActivity
+    if(debugSH) console.log('SH loadInstructorWithStudent theActivity', theActivity)
+    let theAssignment = await this.loadAssignment(theActivity.assignment)
+    result.assignment = theAssignment
+    if(debugSH) console.log('SH loadInstructorWithStudent theAssignment', theAssignment)
+    await this.dispatchLoadClassList(filtered)
+    let seedId = StoreHelper.getAssignmentSeedId()
+    result.seedId = seedId
+    if(debugSH) console.log('SH loadInstructorWithStudent seedId', seedId)
+    await this.loadSeed(seedId)
+    return result
   }
 
-  loadDevelopingSeed () {
+  async loadDevelopingSeed () {
     let seedId = sessionStorage.getItem(sKeys.SEED_ID)
     if(debugSH) console.log('SH load developing seed id:', seedId)
     if (seedId) {
-      return this.loadSeed(seedId)
+      await this.loadSeed(seedId)
     }
   }
 
-  fetchAndStoreAuthToken (refreshToken) {
-    return this._dispatchAuthStore('fetchAndStoreAuthToken', { refreshToken })
+  async fetchAndStoreAuthToken (refreshToken) {
+    return await this._dispatchAuthStore('fetchAndStoreAuthToken', { refreshToken })
   }
 
-  fetchTokenData (authToken = this.getAuthToken()) {
-    return this._dispatchAuthStore('fetchData', {authToken})
+  async fetchTokenData (authToken = this.getAuthToken()) {
+    return await this._dispatchAuthStore('fetchData', {authToken})
   }
 
   adminLogin (adminPassword) {
@@ -443,10 +424,10 @@ class StoreHelperWorker {
     return token
   }
 
-  logUserOutOfEdEHR = () => {
+  async logUserOutOfEdEHR () {
     if(debugSH) console.log('SH clear auth token')
     localStorage.removeItem(sKeys.AUTH_TOKEN)
-    return this._dispatchVisit('clearVisitData')
+    return await this._dispatchVisit('clearVisitData')
   }
 
 
