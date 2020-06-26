@@ -10,6 +10,7 @@ const typeName = 'BaseController'
 const modelName = 'Seed'
 
 const debug = require('debug')('server')
+const logError = require('debug')('error')
 // Use following to leave results in test database for inspection
 // helper.setClear(false)
 
@@ -50,7 +51,7 @@ describe(`${typeName} controller testing`, function () {
         done()
       })
       .catch(err => {
-        debug(`${typeName} create one ${modelName} error ${err}`)
+        logError(`${typeName} create one ${modelName} error ${err}`)
         done()
       })
   })
@@ -66,7 +67,7 @@ describe(`${typeName} controller testing`, function () {
         done()
       })
       .catch(e => {
-        debug('find one error', e)
+        logError('find one error', e)
       })
   })
 
@@ -105,7 +106,7 @@ describe(`${typeName} controller testing`, function () {
         done()
       })
       .catch(err => {
-        debug(`${typeName} create a ${modelName} error: ${err}`)
+        logError(`${typeName} create a ${modelName} error: ${err}`)
         done()
       })
   })

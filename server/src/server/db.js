@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
 
 const debug = require('debug')('server')
+const logError = require('debug')('error')
 
 export default function (config) {
   return new Promise((resolve, reject) => {
@@ -40,7 +41,7 @@ export default function (config) {
         resolve(conn)
       })
       .catch(error => {
-        debug('db connect error: ', error)
+        logError(`db connect error:  ${error}`)
         reject(error)
       })
   })

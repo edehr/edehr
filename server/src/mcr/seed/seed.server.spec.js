@@ -8,7 +8,7 @@ import Model from './seed-data'
 const typeName = 'SeedData'
 const collectionName = 'seeddatas'
 
-const debug = require('debug')('server')
+const logError = require('debug')('error')
 /* global describe it */
 describe(`${typeName} mongoose schema testing`, function () {
   before(function (done) {
@@ -59,7 +59,7 @@ describe(`${typeName} mongoose schema testing`, function () {
       doc.version.should.equal(sampleData.version)
       done()
     }).catch(e => {
-      debug('find one error', e)
+      logError('find one error', e)
     })
   })
 })

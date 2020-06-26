@@ -12,7 +12,7 @@ const helper = new Helper()
 const mongoose = require('mongoose')
 const should = require('should')
 const TYPE = 'Consumer'
-const debug = require('debug')('server')
+const logError = require('debug')('error')
 
 const visitId = Helper.sampleObjectId(true)
 const adminToken = Helper.generateToken(visitId, true)
@@ -57,7 +57,7 @@ describe('Consumer mongoose schema testing', function () {
       doc.lti_version.should.equal(consumerSpec.lti_version)
       done()
     }).catch(e => {
-      debug(`Consumer can find one error: ${e}`)
+      logError(`Consumer can find one error: ${e}`)
     })
   })
 })

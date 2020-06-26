@@ -2,6 +2,7 @@ import { Router } from 'express'
 import { getAdminPassword, generateAdminPassword } from '../../helpers/admin'
 import { adminLimiter } from '../../helpers/middleware'
 const debug = require('debug')('server')
+const logError = require('debug')('error')
 
 export default class adminController {
   constructor (authUtil) {
@@ -49,7 +50,7 @@ export default class adminController {
         }
       }
       catch (err) {
-        debug('_adminLogin threw', err)
+        logError('_adminLogin threw', err)
         return res.status(401).send(Text.EXPIRED_ADMIN)
       }
     }

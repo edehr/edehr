@@ -14,6 +14,7 @@ import Config from '../../config/config'
 import Assignment from '../assignment/assignment'
 
 const debug = require('debug')('server')
+const logError = require('debug')('error')
 const helper = new Helper()
 const config = new Config('test')
 const configuration = config.config
@@ -183,7 +184,7 @@ describe('LTI controller testing', function () {
         should.exist(foundUser)
       })
       .catch((error) => {
-        debug('post equivalent ', error)
+        logError('post equivalent ', error)
         should.not.exist(error)
       })
   })

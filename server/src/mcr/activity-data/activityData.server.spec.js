@@ -6,7 +6,7 @@ import Model from './activity-data'
 
 const typeName = 'ActivityData'
 
-const debug = require('debug')('server')
+const logError = require('debug')('error')
 
 /* global describe it */
 describe(`${typeName} mongoose schema testing`, function () {
@@ -46,7 +46,7 @@ describe(`${typeName} mongoose schema testing`, function () {
         done()
       })
       .catch(err => {
-        debug(`${typeName} can save one error: ${err}`)
+        logError(`${typeName} can save one error: ${err}`)
         should.not.exist(err)
         done()
       })
@@ -59,7 +59,7 @@ describe(`${typeName} mongoose schema testing`, function () {
       should.not.exist(err)
       done()
     }).catch(e => {
-      debug('find one error', e)
+      logError('find one error', e)
     })
   })
 })

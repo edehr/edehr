@@ -7,6 +7,7 @@ import { ltiVersions, LTI_BASIC } from './lti-defs'
 const url = require('url')
 const debug = require('debug')('server')
 const debugFine = false
+const logError = require('debug')('error')
 
 const CustomStrategy = require('passport-custom')
 const lti = require('ims-lti')
@@ -185,8 +186,7 @@ export default class LTIController {
           })
         })
     } catch (err) {
-      console.log('strategyVerify authentication error: ' + err.message)
-      debug('strategyVerify authentication error: ' + err.message)
+      logError('strategyVerify authentication error: ' + err.message)
       callback(_this._createSystemError(req.ltiData, err.message), null)
     }
   }
@@ -435,7 +435,7 @@ export default class LTIController {
           }
         })
         .catch(err => {
-          console.log('ERRRORRRR', err)
+          logError(`ERRRORRRR ${err}`)
           next(err)
         })
     })

@@ -3,8 +3,9 @@ import { Text } from '../config/text'
 
 const rateLimit = require('express-rate-limit')
 const debug = require('debug')('server')
+const logError = require('debug')('error')
+
 const debugMW = false
-const debugErrs = true
 
 const ADMIN_MAX_REQUEST_LIMIT = 5
 const DEMO_MAX_REQUEST_LIMIT = process.env.NODE_ENV === 'development' ? 10 : 2
@@ -29,15 +30,15 @@ export const validatorMiddlewareWrapper = (authUtil) => {
           req.authPayload = result
           next()
         } else {
-          if (debugErrs) debug('validatorMiddleware', Text.INVALID_TOKEN)
+          logError('validatorMiddleware', Text.INVALID_TOKEN)
           res.status(401).send(Text.INVALID_TOKEN)
         }
       } catch (err) {
-        if (debugErrs) debug('validatorMiddleware caught ', err)
+        logError('validatorMiddleware caught ', err)
         res.status(401).send(err)
       }
     } else {
-      if (debugErrs) debug('validatorMiddleware no auth header ', req.originalUrl)
+      logError('validatorMiddleware no auth header ', req.originalUrl)
       res.status(401).send('A token is required')
     }
   }
@@ -53,11 +54,11 @@ export const isAdmin = (req, res, next) => {
       if (debugMW) debug('validatorMiddlewareWrapper isAdmin  pass password test')
       next()
     } else {
-      if (debugErrs) debug('isAdmin not authorized')
+      logError('isAdmin not authorized')
       return res.status(403).send('You don\'t have permission to do this!')
     }
   } else {
-    if (debugErrs) debug('isAdmin invalid token')
+    logError('isAdmin invalid token')
     return res.status(401).send('Invalid token')
   }
 }
