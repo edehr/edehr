@@ -1,6 +1,6 @@
 var should = require('should')
 const mongoose = require('mongoose')
-import User from '../user/user'
+import User from './user'
 import Helper from '../common/test-helper'
 const helper = new Helper()
 const debug = require('debug')('server')

@@ -18,16 +18,6 @@ describe(`${typeName} controller testing`, function () {
     controller = new ActivityDataController()
   })
 
-  it(`${typeName} be able to create`, function (done) {
-    controller.should.have.property('updateAssignmentData')
-    controller.should.have.property('assignmentSubmitted')
-    controller.should.have.property('updateScratchData')
-    controller.should.have.property('updateEvaluationData')
-    controller.should.have.property('assignmentEvaluated')
-
-    done()
-  })
-
   let theConsumerId, theVisitId
   it('Create a tool consumer for testing ', function (done) {
     theVisitId = Helper.sampleObjectId()

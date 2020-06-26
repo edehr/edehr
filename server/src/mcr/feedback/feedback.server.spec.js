@@ -1,78 +1,35 @@
-const should = require('should')
-const request = require('supertest')
+var should = require('should')
 const mongoose = require('mongoose')
 import Helper from '../common/test-helper'
 const helper = new Helper()
-import EhrApp from '../../server/app'
-import Config from '../../config/config'
+import Model from './feedback'
 
-const config = new Config('test')
-const configuration = config.config
-const TYPE = 'Feedback'
-const NAME = 'feedback'
-const PROPERTY = 'feedbacks'
-const BASE = '/api/feedback/'
-const ehrApp = new EhrApp()
+const typeName = 'Feedback'
+const collectionName = 'feedback'
 
-const visitId = Helper.sampleObjectId(true)
-const token = Helper.generateToken(visitId)
-
-const debug = require('debug')('server')
-
-describe(`Make server calls on ${TYPE}`, function () {
-  let app
+/* global describe it */
+describe(`${typeName} mongoose schema testing`, function () {
   before(function (done) {
-    ehrApp
-      .setup(configuration)
-      .then(() => {
-        app = ehrApp.application
-      })
-      .then(() => {
-        return helper.before(done, mongoose)
-      })
+    helper.before(done, mongoose)
   })
 
-  let theData = {feedbackData: 'Some feedback data in a server test'}
-
-  it(`create ${NAME}`, function (done) {
-    let url = BASE
-    request(app)
-      .post(url)
-      .send(theData)
-      .set('Content-Type', 'application/json')
-      .set('Accept', 'application/json')
-      .set('Authorization', `Bearer ${token}`)
-      .expect(200)
-      .end(function (err, res) {
-        // debug('create request err, res', err, res.body)
-        should.not.exist(err, url)
-        should.exist(res)
-        should.exist(res.body)
-        let obj = res.body
-
-        obj.should.have.property('feedbackData')
-        done()
-      })
+  after(function (done) {
+    helper.afterTests(done, mongoose, collectionName)
   })
 
-  it(`get ${NAME} list`, function (done) {
-    let url = BASE
-    request(app)
-      .get(url)
-      .set('Authorization', `Bearer ${token}`)
-      .expect('Content-Type', /json/)
-      .expect(200)
-      .end(function (err, res) {
-        should.not.exist(err)
-        should.exist(res)
-        should.exist(res.body)
-        res.body.should.be.object
-        let obj = res.body
-        // debug('results get list', obj)
-        obj.should.have.property(PROPERTY)
-        let results = obj[PROPERTY]
-        results.should.be.array
-        results.should.have.length(1)
+  it(`${typeName} be invalid if params are empty`, function (done) {
+    let m = new Model()
+    m.validate(function (err) {
+      should.exist(err)
+      done()
+    })
+  })
+
+  it(`${typeName} can save one`, function (done) {
+    const newModel = new Model({feedbackData: 'Some feedback'})
+    newModel
+      .save()
+      .then(() => {
         done()
       })
   })
