@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 import User from '../user/user'
 import Helper from '../common/test-helper'
 const helper = new Helper()
-const debug = require('debug')('server')
+const logError = require('debug')('error')
 
 /* global describe it */
 describe('user mongoose schema testing', function () {
@@ -33,7 +33,7 @@ describe('user mongoose schema testing', function () {
         done()
       })
       .catch(err => {
-        debug('Error ', err)
+        logError('Error ', err)
         done()
       })
   })
@@ -44,7 +44,7 @@ describe('user mongoose schema testing', function () {
       should.not.exist(err)
       done()
     }).catch(e => {
-      debug('find one error', e)
+      logError('find one error', e)
     })
   })
 })

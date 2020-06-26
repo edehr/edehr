@@ -10,7 +10,7 @@ const helper = new Helper()
 const typeName = 'FeedbackController'
 const modelName = 'Feedback'
 
-const debug = require('debug')('server')
+const logError = require('debug')('error')
 
 function makeController () {
   return new FeedbackController(configuration)
@@ -30,7 +30,7 @@ describe(`${typeName} controller testing`, function () {
         done()
       })
       .catch(err => {
-        debug(`${typeName} create ${modelName} error ${err}`)
+        logError(`${typeName} create ${modelName} error ${err}`)
         done()
       })
   })

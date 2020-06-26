@@ -4,6 +4,7 @@ const Assignment = mongoose.model('Assignment')
 const SeedData = mongoose.model('SeedData')
 const Consumer = mongoose.model('Consumer')
 const debug = require('debug')('server')
+const logError = require('debug')('error')
 
 module.exports = function () {
   return new Promise(function (resolve, reject) {
@@ -39,7 +40,7 @@ module.exports = function () {
         return resolve()
       })
       .catch(err => {
-        console.error('Assignment seeding hit an error', err)
+        logError('Assignment seeding hit an error', err)
         reject(err)
       })
   })

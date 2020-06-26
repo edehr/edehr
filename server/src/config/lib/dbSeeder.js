@@ -1,6 +1,7 @@
 import IntegrationController from '../../mcr/integration/integration-controller'
 const IntegrationModel = new IntegrationController()
 const debug = require('debug')('server')
+const logError = require('debug')('error')
 
 var chalk = require('chalk')
 console.log(chalk.bold.red('Warning:  Database seeding is turned on'))
@@ -43,7 +44,7 @@ var checkIntegration = function (name, override) {
         })
       })
       .catch(err => {
-        console.error('Error seeding ' + name + ' : ', err)
+        logError('Error seeding ' + name + ' : ', err)
       })
   })
 }
@@ -68,30 +69,9 @@ function doIntegrations () {
       debug('DONE integrations')
     })
     .catch(err => {
-      console.error(err)
+      logError(err)
     })
 
-  // =========================================================================
-  //
-  // Things in this section are split into production and non-production
-  //
-  // =========================================================================
-  if (process.env.NODE_ENV === 'production') {
-    // -------------------------------------------------------------------------
-    //
-    // add production admin user
-    //
-    // -------------------------------------------------------------------------
-    // require('../seed-data/users-production')()
-  } else {
-    // -------------------------------------------------------------------------
-    //
-    // add non-production test user accounts
-    //
-    // -------------------------------------------------------------------------
-    // require('../seed-data/users-other')()
-    // -------------------------------------------------------------------------
-  }
 }
 export default function (forceSeeding) {
   let f = forceSeeding ? forceSeeding : FORCE

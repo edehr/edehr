@@ -4,7 +4,7 @@ import Helper from '../common/test-helper'
 const helper = new Helper()
 import VisitController from './visit-controller'
 // import Model from '../../models/user'
-const debug = require('debug')('server')
+const logError = require('debug')('error')
 const typeName = 'VisitController'
 // const modelName = 'Visit'
 
@@ -53,7 +53,7 @@ describe(`${typeName} controller testing`, function () {
         done()
       })
       .catch((err) => {
-        debug('setup unexpected err: ', err)
+        logError('setup unexpected err: ', err)
         should.not.exist(err)
         done()
       })

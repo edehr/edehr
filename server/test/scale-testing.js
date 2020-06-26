@@ -90,7 +90,7 @@ async function main () {
       }
     } 
   } catch (err) {
-    console.log('error in main! >> ', err.message)
+    console.error('error in main! >> ', err.message)
   }
 }
 

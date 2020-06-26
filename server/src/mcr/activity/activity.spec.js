@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 import Helper from '../common/test-helper'
 const helper = new Helper()
 import Model from './activity'
-const debug = require('debug')('server')
+const logError = require('debug')('error')
 
 const typeName = 'Activity'
 // const collectionName = 'activties'
@@ -66,7 +66,7 @@ describe(`${typeName} mongoose schema testing`, function () {
       // doc.seedData.should.have.property('foo');
       done()
     }).catch(e => {
-      debug('find one error', e)
+      logError('find one error', e)
     })
   })
 })
