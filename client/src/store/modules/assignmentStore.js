@@ -23,6 +23,10 @@ const getters = {
   assignmentDescription:  state => { return state.dataStore.description },
   assignment: state => {
     return state.dataStore
+  },
+  assignmentCaseStudyData: state => { 
+    const { persona, time, day, profession } = state.dataStore
+    return { persona, time, day, profession }  
   }
   // TODO add last update field to model in server
   // lastUpdateDate: state => {
