@@ -5,7 +5,10 @@ const debugDS = false
 
 const demoHelper = new DemoHelper()
 
-const _clearDemoToken = () => localStorage.removeItem(sKeys.DEMO_TOKEN)
+const _clearDemo = () => {
+  localStorage.removeItem(sKeys.DEMO_TOKEN)
+  localStorage.removeItem('AcceptTerms')
+}
 const _getDemoToken = () => localStorage.getItem(sKeys.DEMO_TOKEN)
 const _setDemoToken = (token) => localStorage.setItem(sKeys.DEMO_TOKEN, token)
 
@@ -22,19 +25,30 @@ const getters = {
   demoPersona: function (state) {
     return state.persona
   },
-  isDemo: function () {
+  isDemo: function (state) {
     // yes this is an active demo is the demo data has been loaded
     return state.demoData.constructor === Object && Object.keys(state.demoData).length > 0
+  },
+  agreesWithTerms: function (state) {
+    return state.acceptsTerms
+  },
+  getDemoFeatureFlag: function (state) {
+    return state.demoFeature
   }
 }
 
 const state = {
   demoData: {}, // load from a fetch token
   persona: {}, // selected by user on the Demo page
-  assignment: {} // selected by the user on the DemoCourse page
+  assignment: {}, // selected by the user on the DemoCourse page
+  acceptsTerms: false,
+  demoFeature: false
 }
 
 const actions = {
+  acceptsTerms: function ({ commit }, data) {
+    commit('setAcceptTerms', data)
+  },
   createToolConsumer: function () {
     return demoHelper.createToolConsumer()
       .then(res => {
@@ -53,18 +67,21 @@ const actions = {
       return demoHelper.demoLogout(token)
         .then(res => {
           if (debugDS) console.log('demoStore logout server side done. Next clear localstorage')
-          _clearDemoToken()
+          _clearDemo()
           commit('setDemoData', {})
         })
         .catch(err => {
           console.error('demoStore logout ERROR', err)
-          _clearDemoToken()
+          _clearDemo()
           commit('setDemoData', {})
         })
     } else {
       console.error('demoStore logout no token')
       return Promise.resolve()
     }
+  },
+  setDemoFeatureFlag: function ({ commit }, data) {
+    commit('demoFeature', data)
   },
   loadDemoData: function ({ commit }) {
     const token = _getDemoToken()
@@ -83,7 +100,7 @@ const actions = {
         return Promise.reject(err)
       })
   },
-  submitPersona: function (none, { submitData }) {
+  submitPersona: function (none, submitData) {
     const token = _getDemoToken()
     return demoHelper.submitPersona(token, submitData)
       .then(res => {
@@ -92,7 +109,6 @@ const actions = {
         return Promise.reject(err)
       })
   },
-
   setDemoToken: function (none, demoToken) {
     _setDemoToken(demoToken)
   },
@@ -105,12 +121,41 @@ const actions = {
   setDemoPersona: function ({ commit }, data) {
     commit('setPersona', data)
   },
+  initialize: function ({ commit }) {
+    commit('initialize')
+  },
 }
 
 const mutations = {
+  initialize: function (state) {
+    state.acceptsTerms = localStorage.getItem('AcceptTerms') === 'true'
+    state.demoFeature = localStorage.getItem('DemoFeature') === 'true'
+    const stashedDemoData = localStorage.getItem('DemoData')
+    if (stashedDemoData) {
+      if (debugDS) console.log('DemoStore restore stashed DemoData', stashedDemoData)
+      state.demoData = JSON.parse(stashedDemoData)
+    }
+    const stashedPersona = localStorage.getItem('DemoPersona')
+    if (stashedPersona) {
+      if (debugDS) console.log('DemoStore restore stashed persona', stashedPersona)
+      state.persona = JSON.parse(stashedPersona)
+    }
+    if (debugDS) console.log('DemoStore initialize: accept terms, demo feature state', state.acceptsTerms, state.demoFeature)
+  },
+  setAcceptTerms: function (state, data) {
+    if (debugDS) console.log('DemoStore set accept terms data', data)
+    state.acceptsTerms = data.accepts
+    localStorage.setItem('AcceptTerms', data.accepts)
+  },
   setDemoData: function (state, data) {
     if (debugDS) console.log('DemoStore set demo data', data)
     state.demoData = data
+    localStorage.setItem('DemoData', JSON.stringify(data))
+  },
+  demoFeature: function (state, data) {
+    if (debugDS) console.log('DemoStore set demo feature', data)
+    state.demoFeature = data
+    localStorage.setItem('DemoFeature', data)
   },
   setAssignment: function (state, data) {
     if (debugDS) console.log('DemoStore set assignment', data)
@@ -119,6 +164,7 @@ const mutations = {
   setPersona: function (state, data) {
     if (debugDS) console.log('DemoStore set persona', data)
     state.persona = data
+    localStorage.setItem('DemoPersona', JSON.stringify(data))
   },
 }
 

@@ -18,7 +18,11 @@ function worker (el, binding, source) {
     html.push('<p>')
     sentences.forEach(s => {
       if (seenOne) html.push('</p><p>')
-      html.push(linky(s))
+      if (binding.modifiers.noAutoLink) {
+        html.push(s)
+      } else {
+        html.push(linky(s))
+      }
       seenOne = true
     })
     html.push('</p>')

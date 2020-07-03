@@ -43,3 +43,8 @@ export default new Vuex.Store({
   // Uncomment to enable a log of all storage transistions
   // plugins: debug ? [createLogger()] : []
 })
+
+export function initializeStore (store) {
+  console.log('Initialize vuex modules')
+  store.dispatch('demoStore/initialize')
+}

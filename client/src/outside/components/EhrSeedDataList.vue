@@ -5,7 +5,7 @@
       ui-button(v-on:buttonClicked="showCreateDialog") Create new seed
       ui-button(v-on:buttonClicked="downloadAll") Download all
     div(class="seedData-list-body")
-      div(v-for="sv in seedDataList", class="list-element", :class="rowClass(sv)")
+      div(v-for="sv in seedDataList", class="card list-element", :class="rowClass(sv)")
         div(class="columns")
           div(class="column is-2")
             div(class="key") Name
@@ -195,13 +195,10 @@ export default {
 <style lang="scss" scoped>
 @import '../../scss/definitions';
 .seedData-list-body {
-  background-color: $grey10;
 }
 .list-element {
   padding: 1rem 1.5rem;
-  border: 1px solid $grey20;
-  box-sizing: border-box;
-  overflow: hidden;
+  margin-bottom: 1rem;
 }
 .key {
   font-weight: bold;

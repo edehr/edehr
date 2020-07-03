@@ -1,26 +1,26 @@
 export const demoPersonae = [
   {
     id: 1,
-    name: 'Instructor A',
-    email: 'instructor@bccampus.org',
+    name: 'Will Hunt',
+    email: 'whunt@edehr.org',
     role: 'instructor'
   },
   {
     id: 2,
-    name: 'Student A',
-    email: 'studenta@bccampus.org',
+    name: 'Juliet Annable',
+    email: 'jannable@edehr.org',
     role: 'student'
   },
   {
     id: 3,
-    name: 'Student B',
-    email: 'studentb@bccampus.org',
+    name: 'Roxanne Snow',
+    email: 'rsnow@edehr.org',
     role: 'student'
   },
   {
     id: 4,
-    name: 'Student C',
-    email: 'studentc@bccampus.org',
+    name: 'Carly Shillingford',
+    email: 'cshillingfor@edehr.org',
     role: 'student'
   }
 ]
