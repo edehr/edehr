@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     demoLoginConfirm () {
-      this.$refs.confirmDemoDialog.showDialog(demoText.login.title, demoText.logout.body)
+      this.$refs.confirmDemoDialog.showDialog(demoText.login.title, demoText.login.body)
     },
     async logoutUser () {
       await StoreHelper.logUserOutOfEdEHR()
