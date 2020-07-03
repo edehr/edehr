@@ -8,7 +8,7 @@ import { Text } from './ehr-text'
 
 const debugApp = false
 
-function dblog(msg, ...args) {
+function dblog (msg, ...args) {
   if (debugApp) {
     if (args.length > 0)
       console.log(msg,...args)
@@ -84,7 +84,7 @@ class PageControllerInner {
     EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
   }
 
-  async _loadAuth(refreshToken, authToken) {
+  async _loadAuth (refreshToken, authToken) {
     if (refreshToken) {
       dblog('App _loadAuth refresh token fetch')
       await this._ltiAccess(refreshToken, authToken)
@@ -103,7 +103,7 @@ class PageControllerInner {
     }
   }
 
-  async _ltiAccess(refreshToken, authToken) {
+  async _ltiAccess (refreshToken, authToken) {
     StoreHelper.setLoading(null, true)
     dblog('App _ltiAccess take the refresh, convert to auth token.')
     let token = await StoreHelper.fetchAndStoreAuthToken(refreshToken)
@@ -146,7 +146,7 @@ class PageControllerInner {
   }
 
 
-  async _getVisitId() {
+  async _getVisitId () {
     dblog('App _getVisitId')
     StoreHelper.setLoading(null, true)
     let payload = await StoreHelper.getAuthData()
@@ -159,7 +159,7 @@ class PageControllerInner {
     return payload.visitId
   }
 
-  handleError(err) {
+  handleError (err) {
     StoreHelper.setLoading(null, false)
     router.push('/')
     StoreHelper.setApiError(err + '. System Error')

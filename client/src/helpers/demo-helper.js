@@ -67,10 +67,10 @@ export default class DemoHelper {
       resource_link_title: assignmentName,
       resource_link_id: externalId,
       tool_consumer_instance_guid: theKey,
-      tool_consumer_instance_name: 'Demo',
+      tool_consumer_instance_name: 'Demo LMS',
       tool_consumer_info_version: 'x',
-      tool_consumer_info_product_family_code:'EdEHR Demo',
-      tool_consumer_instance_description: 'EdEHR provided LTI tool for launching the EdEHR in a demonstration mode',
+      tool_consumer_info_product_family_code:'EdEHR LMS Demo',
+      tool_consumer_instance_description: 'EdEHR provided demonstration LTI tool',
       user_id: userId,
     }
     if(debugDH) console.log('DH submitPersona', ltiData, apiUrl)

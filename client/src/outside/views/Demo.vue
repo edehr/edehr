@@ -1,44 +1,35 @@
 <template lang="pug">
   div(class="columns is-centered")
-    section(v-if="canAccessDemo", class="column is-8")
-      h2(class="has-text-centered") EdEHR Demonstration WIP - Select Your Character
-      div(class="content")
-        p.
-          Welcome to the
-          <span class="keyLetter">Ed</span>ucational
-          <span class="keyLetter">E</span>lectronic
-          <span class="keyLetter">H</span>ealth
-          <span class="keyLetter">R</span>ecord
-          (EdEHR) demonstration page. Here is where you can try out this educational resource
-          that is designed to give practical experience with an EHR (Electronic Health Record) system (sometimes called
-          EMR for Electronic Medical Record System) to post secondary health care students.
-          From the list below select the type of user you'd like to experiment with. Do you wish to see the
-          EdEHR from the point of view of the student or instructor?
+    section(v-if="canAccessDemo", class="content")
+      h2(class="has-text-centered") {{ demoText.title }}
+      div
+        div(v-text-to-html="demoText.intro")
+        div(class="columns")
+          div(class="column")
+            div
+              label Select a user
+            div
+              select(v-model="persona", required)
+                option(v-for="dp in demoPersonaList", v-bind:value="dp", :selected="dp===persona") {{dp.name}} ({{dp.role}})
 
-        ul
-          li(v-for="obj in demoPersonaList" :key="obj.user_id")
-            label
-              input(
-                type="radio",
-                :checked="persona.name === obj.name",
-                :value="obj",
-                @change="setPersona(obj)"
-              )
-              span(v-if="obj.roles === 'instructor'", class="icon")
-                fas-icon(class="fa", icon="chalkboard-teacher")
-              span(v-else, class="icon")
-                fas-icon(class="fa", icon="graduation-cap")
-              span {{obj.name}}
-        div
-          ui-button(
-            :disabled="!isFormValid",
-            @buttonClicked="submitDemoAccess"
-          ) Log in as {{persona.name}}
+          div(class="column")
+            div(v-if="persona.role")
+              span.
+                Great! You will be
+                {{ persona.role==='instructor' ? "instructor" : persona.role==='student' ? "student" : "" }}
+                {{persona.name}}.
+            div(v-else) Please choose a user to start the demo.
+            div
+              ui-button(:disabled="!isFormValid", @buttonClicked="submitDemoAccess")
+                span Log into demo LMS
+      div
+        div(v-text-to-html="demoText.explanation")
 
     div(v-else)
       div You are not logged in to see the demo
-      div Return to
-        ui-link(:name="'home'") home page
+      div Click &nbsp;
+        ui-link(:name="'home'") here
+        span &nbsp; to return to the main home page.
 
 </template>
 
@@ -46,6 +37,7 @@
 import StoreHelper from '../../helpers/store-helper'
 import UiButton from '../../app/ui/UiButton'
 import UiLink from '../../app/ui/UiLink.vue'
+import { demoText } from '@/appText'
 
 export default {
   components: {
@@ -53,32 +45,24 @@ export default {
   },
   data () {
     return {
-      persona: {}
+      persona: '',
+      demoText: demoText
     }
   },
   computed: {
-    demoData () {
-      return StoreHelper.getDemoTokenData()
-    },
     demoPersonaList () {
-      return this.demoData.personaList
+      return StoreHelper.getDemoTokenData().personaList
     },
     canAccessDemo () {
-      return !! this.demoData
+      return StoreHelper.isDemoMode()
     },
     isFormValid () {
       return Object.keys(this.persona).length > 0
-    },
-    demoToken () {
-      return StoreHelper.getDemoToken()
     }
   },
   methods: {
-    setPersona (obj) {
-      this.persona = obj
-      StoreHelper.setDemoPersona(obj)
-    },
     submitDemoAccess () {
+      StoreHelper.setDemoPersona(this.persona)
       this.$router.push('demo-course')
     },
   },
@@ -92,23 +76,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  //@import '../../scss/definitions';
   .content {
     font-size: 1.2rem;
+      max-width: 1024px;
+      margin-left: auto;
+      margin-right: auto;
   }
-  .keyLetter {
-    font-size: 1.2rem;
+  select {
+    width: 15rem;
   }
-  input[type=checkbox] {
-    transform: scale(1.5);
-  }
-  li {
-    padding: 1rem 0;
-  }
-  .icon {
-    color: #0473ea;
-    margin: 0 1rem;
-    font-size: 1.9rem;
-    vertical-align: middle;
-  }
+
 </style>

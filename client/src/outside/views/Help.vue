@@ -1,22 +1,24 @@
 <template lang="pug">
   div(class="outside-view")
-    h1 Help
+    h1 Help and About
     div
-      resources
-    h2 Students
-    p.
-      Are you a student having trouble with the app or need help with your assignment? Contact your instructor for help.  For information about the EdEHR see the
-      <a href="https://bccampus.github.io/edehr/student/">Student guide</a>
-    h2 Instructors
-    p.
-      Are you an instructor and need help? Then reach out to <a href="mailto:info@edehr.org">info@edehr.org</a> or see the <a href="https://bccampus.github.io/edehr/instructor/">Instructor guide</a>
+      div(v-text-to-html.noAutoLink="appText.resources.body")
+    h2 {{ helpText.student.title }}
+    div
+      div(v-text-to-html.noAutoLink="helpText.student.body")
+    h2 {{ helpText.instructor.title }}
+    div
+      div(v-text-to-html.noAutoLink="helpText.instructor.body")
 </template>
 
 <script>
-import Resources from '../components/Resources.vue'
+import { appText, helpText } from '@/appText'
 export default {
-  components: { Resources },
-  props: {
+  data () {
+    return {
+      appText: appText,
+      helpText: helpText,
+    }
   }
 }
 </script>

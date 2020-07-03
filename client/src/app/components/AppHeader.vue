@@ -2,20 +2,20 @@
   header(class="apphdr")
     system-message
     div(class="wrapper")
-      ul(class="navList")
-        li(class="navItem")
-          router-link(:to="{ name: 'home' }", class="navLink app-title") Educational Electronic Health Record
-        li(class="navItem push", v-if="lmsName")
-          a(:href="lmsUrl", class="navLink") Return to: {{lmsName}}
-        li(v-if="showDashboard", class="navItem")
+      div(class="navList columns is-multiline")
+        div(class="navItem column")
+          router-link(:to="{ name: 'home' }", class="navLink app-title") EdEHR
+        div(class="navItem  column push", v-if="lmsName")
+          a(:href="lmsUrl", class="navLink") {{lmsName}}
+        div(v-if="showDashboard", class="navItem column")
           router-link(:to="{ name: `instructor` }", class="navLink") Courses
-        li(v-if="showDashboard", class="navItem")
+        div(v-if="showDashboard", class="navItem column")
           router-link(:to="{ name: `assignments` }", class="navLink") Assignments
-        li(v-if="isStudent", class="navItem")
+        div(v-if="isStudent", class="navItem column")
           router-link(:to="{ name: `ehr` }", class="navLink") Assignment
-        li(class="navItem")
-          router-link(:to="{ name: `help` }", class="navLink") Help
-        li(v-if="isDemo", class="navItem")
+        div(class="navItem column")
+          router-link(:to="{ name: `help` }", class="navLink") About
+        div(v-if="isDemo", class="navItem column is-pulled-right")
           div(class="navLink activationItem", v-on:click="toggleShowDemoSubmenu()") Demo
             div(class="activationControl")
               fas-icon(v-show="!showingDemoSubmenu", class="fa", icon="chevron-down")
@@ -30,13 +30,9 @@
 import SystemMessage from './SystemMessage'
 import StoreHelper from '../../helpers/store-helper'
 import UiButton from '../../app/ui/UiButton'
+import { demoText } from '@/appText'
 
 import UiConfirm from '../../app/ui/UiConfirm'
-const DEMO = {
-  TITLE: 'Do you want to exit the demo mode?',
-  MSG: 'Exit the demonstration mode. At this time this means all your data is removed. ' +
-  'But do not worry because you can just come back and try out the EdEHR again. ',
-}
 
 export default {
   components: { SystemMessage, UiButton, UiConfirm },
@@ -70,7 +66,7 @@ export default {
   },
   methods: {
     demoLogoutConfirm () {
-      this.$refs.confirmDialog.showDialog(DEMO.TITLE, DEMO.MSG)
+      this.$refs.confirmDialog.showDialog(demoText.logout.title, demoText.logout.body)
       this.hideDemoMenu()
     },
     async demoLogOut () {
@@ -121,7 +117,7 @@ header {
   }
 
   .navItem:not(:first-child) {
-    padding-top: 5px;
+    /*padding-top: 5px;*/
   }
 
   .navLink {
@@ -129,7 +125,7 @@ header {
     text-decoration: none;
     font-weight: bold;
     font-size: 1.2rem;
-    margin-left: 3em;
+    /*margin-left: 3em;*/
 
     &:focus,
     &:hover,
@@ -178,7 +174,7 @@ header {
   }
   .app-title {
     font-size: 1.5rem;
-    margin-left: 0;
+    /*margin-left: 0;*/
   }
 }
 
@@ -191,7 +187,7 @@ header {
       color: rgba(255, 255, 255, 0.8);
       text-decoration: none;
       font-weight: bold;
-      margin-left: 1em;
+      /*margin-left: 1em;*/
 
       &:focus,
       &:hover,
@@ -210,7 +206,7 @@ header {
       margin-top: -8px; // t0 keep text aligned with non-button items
     }
     .app-title {
-      margin-left: 0;
+      /*margin-left: 0;*/
     }
 
   }
