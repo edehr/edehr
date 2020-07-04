@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import { initializeStore } from './store'
 import icons from './icons'
 import homeLayout from './app/layout/LayoutHome.vue'
 import outsideLayout from './outside/layout/LayoutOutside.vue'
@@ -38,5 +39,8 @@ Create the root Vue component.
 new Vue({
   router,
   store,
-  render: h => h(App)
+  render: h => h(App),
+  created: function () {
+    initializeStore(store)
+  }
 }).$mount('#app')

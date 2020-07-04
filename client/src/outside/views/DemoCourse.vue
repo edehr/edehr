@@ -1,49 +1,27 @@
 <template lang="pug">
-  div(class="columns is-centered")
-    section(v-if="canAccessDemo", class="column is-8")
-      h2(style="text-align: center") EdEHR Demonstration WIP - Select Your Assignment
-      div(class="content")
-        p.
-          The EdEHR can be used to create diverse educational resources. The sample assignments below are based on the
-          open text-book <a target="_blank" href="https://pressbooks.bccampus.ca/healthcasestudies/">Health Case Studies - Toward Closing the Healthcare Communication Gap</a> by:  Glynda Rees, Rob Kruger,
-          Janet Morrison.
+  div(class="content")
+    h1(class="has-text-centered") EdEHR Demonstration
+    section(class="columns")
 
-      div(v-for="assignment in assignments", :key="`des-${assignment.externalId}`", class="content assignment-description")
-        h2 {{assignment.name}}
-        div(v-text-to-html="assignment.description", class="assignment-description")
-
-      h3 Select which assignment you want to explore
-      div(v-for="assignment in assignments", :key="`sel-${assignment.externalId}`", class="content assignment-selection")
-        label
-          input(
-            type="radio",
-            :checked="selectedAssignment._id === assignment._id",
-            :value="assignment",
-            @change="setAssignment(assignment)"
-          )
-          span(class="icon")
-            fas-icon(class="fa", icon="stethoscope")
-          span {{assignment.name}}
-
-      div(class="content")
-        p(v-if="!!selectedAssignment.name").
-          You have selected assignment {{selectedAssignment.name}}.
-        p(v-else).
-          You need to select an assignment.
-        ui-button(:disabled="!readyForLti", @buttonClicked="gotoEhr") Go to assignment.
-
-      div(class="content")
-        p(v-if="!!demoPersona.name").
-          You are "logged in" as character "{{ demoPersona.name }}" with the role of {{ demoPersona.role}}.
-        p(v-else).
-          You need to go back and select a character.
-        ui-button(secondary, @buttonClicked="gotoChangeCharacter") Change character.
-
-    div(v-else, class="content")
-      div You are not logged in to see the demo
-      div Return to
-        ui-link(:name="'home'") home page
-
+      div(class="column is-3 aside")
+        div(class="aside-section")
+          ul
+            li Persona: {{ demoPersona.name }}
+            li Role: {{ demoPersona.role}}.
+            li
+              ui-link(name="demo") Click here to change persona
+        div(class="aside-section", v-text-to-html.noAutoLink="demoText.lmsAside")
+      div(class="column is-8 is-offset-1 is-centered")
+        div(class="card")
+          div(class="card-content")
+            h3(class="has-text-centered") One Page Learning Management System
+            section(v-for="assignment in assignments", :key="`des-${assignment.externalId}`")
+              div Assignment: {{assignment.name}}
+              div(v-text-to-html="assignment.description", class="assignment-description")
+              a(class="is-link", @click="gotoEhr(assignment)") {{assignment.name}}
+              span(class="icon")
+                fas-icon(class="fa", icon="stethoscope")
+              hr
 </template>
 
 <script>
@@ -54,6 +32,7 @@ import UiButton from '../../app/ui/UiButton'
 import UiLink from '../../app/ui/UiLink.vue'
 import EventBus from '../../helpers/event-bus'
 import { PAGE_DATA_READY_EVENT } from '../../helpers/event-bus'
+import { demoText } from '@/appText'
 
 const debugDC = true
 
@@ -63,9 +42,8 @@ export default {
   },
   data () {
     return {
-      show2nd: false, // under development, when ready enable
       assignments: [],
-      selectedAssignment: {}
+      demoText: demoText
     }
   },
   computed: {
@@ -74,36 +52,29 @@ export default {
     },
     demoPersona () {
       return StoreHelper.getDemoPersona()
-    },
-    canAccessDemo () {
-      return !! this.demoData
-    },
-    readyForLti () {
-      return !!(this.selectedAssignment.name && this.demoPersona.name)
     }
   },
   methods: {
-    setAssignment: function (assignment) {
-      this.selectedAssignment = assignment
-    },
     gotoChangeCharacter: function () {
       this.$router.push('demo')
     },
-    gotoEhr: function () {
+    gotoEhr: function (selectedAssignment) {
       const persona = this.demoPersona
       const submitData = {
-        assignmentName: this.selectedAssignment.name,
-        externalId: this.selectedAssignment.externalId,
+        assignmentName: selectedAssignment.name,
+        externalId: selectedAssignment.externalId,
         personaName: persona.name,
         personaEmail: persona.email,
         personaRole: persona.role,
-        returnUrl: window.location.origin,
+        returnUrl: window.location.origin + this.$route.path, // come back to this LMS page
         toolKey: this.demoData.toolConsumerKey
       }
+      if (debugDC) console.log('DemoCourse goto ehr with ', submitData)
       StoreHelper.setLoading(null, true)
       StoreHelper.submitPersona(submitData)
         .then(({url}) => {
           StoreHelper.setLoading(null, false)
+          if (debugDC) console.log('DemoCourse goto url ', url)
           window.location.replace(url)
         }).catch(err => {
           StoreHelper.setLoading(null, false)
@@ -121,7 +92,7 @@ export default {
       if (debugDC) console.log('DC get assignments toolConsumerId', toolConsumerId)
       axios.defaults.headers['Authorization'] = `Bearer ${token}`
       let url = 'consumer/' + toolConsumerId
-      return InstoreHelper.getRequest(undefined, 'assignments', url)
+      return InstoreHelper.getRequest(undefined/*context not needed*/, 'assignments', url)
         .then(response => {
           let list = response.data.assignments
           if (debugDC) console.log('loadAssignments response.data', list)
@@ -135,11 +106,22 @@ export default {
     }
   },
   mounted: function () {
+    if (!StoreHelper.isDemoMode()) {
+      if (debugDC) console.log('go to home because the user is not in the demo mode')
+      return this.$router.push('/')
+    }
+    const p = StoreHelper.getDemoPersona()
+    if (!p || !p.name) {
+      if (debugDC) console.log('Go to the demo change persona page')
+      // return this.$router.push('demo')
+    }
     const _this = this
     this.refreshEventHandler = function () {
+      if (debugDC) console.log('Demo LMS PAGE_DATA_READY_EVENT')
       _this.loadAssignments()
     }
     EventBus.$on(PAGE_DATA_READY_EVENT, this.refreshEventHandler)
+    _this.loadAssignments()
   },
   beforeDestroy: function () {
     if (this.refreshEventHandler) {
@@ -152,8 +134,21 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/definitions';
+
 .content {
   font-size: 1.2rem;
+  /*width: 50%;*/
+  /*margin-left: auto;*/
+  /*margin-right: auto;*/
+}
+
+.aside {
+  .aside-section {
+    margin-bottom: 3rem;
+  }
+}
+section {
+  margin-bottom: 1.5rem;
 }
 .assignment-description {
   p {
@@ -162,13 +157,6 @@ export default {
   }
 }
 
-.assignment-selection {
-  margin-bottom: 0.6rem;
-}
-
-input[type=checkbox] {
-  transform: scale(1.5);
-}
 .icon {
   color: #0473ea;
   margin: 0 1rem;
