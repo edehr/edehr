@@ -250,13 +250,13 @@ export default function () {
           helperHtml: '<p>a text input</p>'
         },
         {
-          elementKey: 'persona',
+          elementKey: 'name',
           formIndex: '3',
           inputType: 'text',
           label: 'Name',
           tableLabel: 'Identification',
           recHeader: true,
-          fqn: 'testPage.persona'
+          fqn: 'testPage.name'
         },
         {
           elementKey: 'profession',
@@ -437,7 +437,7 @@ export default function () {
               label: 'A group label',
               gIndex: '1',
               gChildren: [
-                'persona',
+                'name',
                 'profession',
                 'day',
                 'time',
@@ -722,14 +722,14 @@ export default function () {
           fqn: 'testTable.e11'
         },
         {
-          elementKey: 'persona',
+          elementKey: 'name',
           formIndex: '2',
           inputType: 'text',
           label: 'Name',
           tableColumn: '1',
           tableLabel: 'Identification',
           recHeader: true,
-          fqn: 'testTable.persona'
+          fqn: 'testTable.name'
         },
         {
           elementKey: 'profession',
@@ -1240,7 +1240,7 @@ export default function () {
               label: 'Identification',
               ehr_list_index: '1',
               items: [
-                'persona',
+                'name',
                 'profession',
                 'day',
                 'time'
@@ -1308,7 +1308,7 @@ export default function () {
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
-                  'persona',
+                  'name',
                   'profession',
                   'day',
                   'time'
@@ -1343,7 +1343,7 @@ export default function () {
               }
             ],
             ehr_data: {
-              persona: '',
+              name: '',
               profession: '',
               day: '',
               time: '',

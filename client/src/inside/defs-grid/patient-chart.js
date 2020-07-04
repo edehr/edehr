@@ -8,14 +8,14 @@ export default function () {
       hasGridTable: true,
       pageChildren: [
         {
-          elementKey: 'persona',
+          elementKey: 'name',
           formIndex: '1',
           inputType: 'text',
           label: 'Name',
           tableColumn: '1',
           tableLabel: 'Identification',
           recHeader: true,
-          fqn: 'progressNotes.persona'
+          fqn: 'progressNotes.name'
         },
         {
           elementKey: 'profession',
@@ -69,7 +69,7 @@ export default function () {
               label: 'Identification',
               ehr_list_index: '1',
               items: [
-                'persona',
+                'name',
                 'profession',
                 'day',
                 'time'
@@ -93,7 +93,7 @@ export default function () {
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
-                  'persona',
+                  'name',
                   'profession',
                   'day',
                   'time'
@@ -109,7 +109,7 @@ export default function () {
               }
             ],
             ehr_data: {
-              persona: '',
+              name: '',
               profession: '',
               day: '',
               time: '',
@@ -127,14 +127,14 @@ export default function () {
       hasGridTable: true,
       pageChildren: [
         {
-          elementKey: 'persona',
+          elementKey: 'name',
           formIndex: '1',
           inputType: 'text',
           label: 'Name',
           tableColumn: '1',
           tableLabel: 'Identification',
           recHeader: true,
-          fqn: 'carePlan.persona'
+          fqn: 'carePlan.name'
         },
         {
           elementKey: 'profession',
@@ -233,7 +233,7 @@ export default function () {
               label: 'Identification',
               ehr_list_index: '1',
               items: [
-                'persona',
+                'name',
                 'profession',
                 'day',
                 'time'
@@ -285,7 +285,7 @@ export default function () {
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
-                  'persona',
+                  'name',
                   'profession',
                   'day',
                   'time'
@@ -304,7 +304,7 @@ export default function () {
               }
             ],
             ehr_data: {
-              persona: '',
+              name: '',
               profession: '',
               day: '',
               time: '',

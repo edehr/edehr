@@ -8,14 +8,14 @@ export default function () {
       hasGridTable: true,
       pageChildren: [
         {
-          elementKey: 'persona',
+          elementKey: 'name',
           formIndex: '1',
           inputType: 'text',
           label: 'Name',
           tableColumn: '1',
           tableLabel: 'Identification',
           recHeader: true,
-          fqn: 'genitourinary.persona'
+          fqn: 'genitourinary.name'
         },
         {
           elementKey: 'profession',
@@ -435,7 +435,7 @@ export default function () {
               label: 'Identification',
               ehr_list_index: '1',
               items: [
-                'persona',
+                'name',
                 'profession',
                 'day',
                 'time'
@@ -606,7 +606,7 @@ export default function () {
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
-                  'persona',
+                  'name',
                   'profession',
                   'day',
                   'time'
@@ -683,7 +683,7 @@ export default function () {
               }
             ],
             ehr_data: {
-              persona: '',
+              name: '',
               profession: '',
               day: '',
               time: '',
@@ -721,14 +721,14 @@ export default function () {
       hasGridTable: true,
       pageChildren: [
         {
-          elementKey: 'persona',
+          elementKey: 'name',
           formIndex: '1',
           inputType: 'text',
           label: 'Name',
           tableColumn: '1',
           tableLabel: 'Identification',
           recHeader: true,
-          fqn: 'musculoskeletal.persona'
+          fqn: 'musculoskeletal.name'
         },
         {
           elementKey: 'profession',
@@ -1037,7 +1037,7 @@ export default function () {
               label: 'Identification',
               ehr_list_index: '1',
               items: [
-                'persona',
+                'name',
                 'profession',
                 'day',
                 'time'
@@ -1133,7 +1133,7 @@ export default function () {
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
-                  'persona',
+                  'name',
                   'profession',
                   'day',
                   'time'
@@ -1166,7 +1166,7 @@ export default function () {
               }
             ],
             ehr_data: {
-              persona: '',
+              name: '',
               profession: '',
               day: '',
               time: '',
@@ -1194,14 +1194,14 @@ export default function () {
       hasGridTable: true,
       pageChildren: [
         {
-          elementKey: 'persona',
+          elementKey: 'name',
           formIndex: '1',
           inputType: 'text',
           label: 'Name',
           tableColumn: '1',
           tableLabel: 'Identification',
           recHeader: true,
-          fqn: 'pain.persona'
+          fqn: 'pain.name'
         },
         {
           elementKey: 'profession',
@@ -1416,7 +1416,7 @@ export default function () {
               label: 'Identification',
               ehr_list_index: '1',
               items: [
-                'persona',
+                'name',
                 'profession',
                 'day',
                 'time'
@@ -1563,7 +1563,7 @@ export default function () {
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
-                  'persona',
+                  'name',
                   'profession',
                   'day',
                   'time'
@@ -1617,7 +1617,7 @@ export default function () {
               }
             ],
             ehr_data: {
-              persona: '',
+              name: '',
               profession: '',
               day: '',
               time: '',
@@ -1643,14 +1643,14 @@ export default function () {
       hasGridTable: true,
       pageChildren: [
         {
-          elementKey: 'persona',
+          elementKey: 'name',
           formIndex: '1',
           inputType: 'text',
           label: 'Name',
           tableColumn: '1',
           tableLabel: 'Identification',
           recHeader: true,
-          fqn: 'biopsychosocial.persona'
+          fqn: 'biopsychosocial.name'
         },
         {
           elementKey: 'profession',
@@ -2011,7 +2011,7 @@ export default function () {
               label: 'Identification',
               ehr_list_index: '1',
               items: [
-                'persona',
+                'name',
                 'profession',
                 'day',
                 'time'
@@ -2159,7 +2159,7 @@ export default function () {
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
-                  'persona',
+                  'name',
                   'profession',
                   'day',
                   'time'
@@ -2241,7 +2241,7 @@ export default function () {
               }
             ],
             ehr_data: {
-              persona: '',
+              name: '',
               profession: '',
               day: '',
               time: '',
@@ -2276,14 +2276,14 @@ export default function () {
       hasGridTable: true,
       pageChildren: [
         {
-          elementKey: 'persona',
+          elementKey: 'name',
           formIndex: '1',
           inputType: 'text',
           label: 'Name',
           tableColumn: '1',
           tableLabel: 'Identification',
           recHeader: true,
-          fqn: 'nonmedOrders.persona'
+          fqn: 'nonmedOrders.name'
         },
         {
           elementKey: 'profession',
@@ -2401,7 +2401,7 @@ export default function () {
               label: 'Identification',
               ehr_list_index: '1',
               items: [
-                'persona',
+                'name',
                 'profession',
                 'day',
                 'time'
@@ -2453,7 +2453,7 @@ export default function () {
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
-                  'persona',
+                  'name',
                   'profession',
                   'day',
                   'time'
@@ -2479,7 +2479,7 @@ export default function () {
               }
             ],
             ehr_data: {
-              persona: '',
+              name: '',
               profession: '',
               day: '',
               time: '',
@@ -2501,14 +2501,14 @@ export default function () {
       hasGridTable: true,
       pageChildren: [
         {
-          elementKey: 'persona',
+          elementKey: 'name',
           formIndex: '1',
           inputType: 'text',
           label: 'Name',
           tableColumn: '1',
           tableLabel: 'Identification',
           recHeader: true,
-          fqn: 'referrals.persona'
+          fqn: 'referrals.name'
         },
         {
           elementKey: 'profession',
@@ -2618,7 +2618,7 @@ export default function () {
               label: 'Identification',
               ehr_list_index: '1',
               items: [
-                'persona',
+                'name',
                 'profession',
                 'day',
                 'time'
@@ -2670,7 +2670,7 @@ export default function () {
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
-                  'persona',
+                  'name',
                   'profession',
                   'day',
                   'time'
@@ -2690,7 +2690,7 @@ export default function () {
               }
             ],
             ehr_data: {
-              persona: '',
+              name: '',
               profession: '',
               day: '',
               time: '',
@@ -2712,14 +2712,14 @@ export default function () {
       hasGridTable: true,
       pageChildren: [
         {
-          elementKey: 'persona',
+          elementKey: 'name',
           formIndex: '1',
           inputType: 'text',
           label: 'Name',
           tableColumn: '1',
           tableLabel: 'Identification',
           recHeader: true,
-          fqn: 'labRequisitions.persona'
+          fqn: 'labRequisitions.name'
         },
         {
           elementKey: 'profession',
@@ -2799,7 +2799,7 @@ export default function () {
               label: 'Identification',
               ehr_list_index: '1',
               items: [
-                'persona',
+                'name',
                 'profession',
                 'day',
                 'time'
@@ -2841,7 +2841,7 @@ export default function () {
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
-                  'persona',
+                  'name',
                   'profession',
                   'day',
                   'time'
@@ -2859,7 +2859,7 @@ export default function () {
               }
             ],
             ehr_data: {
-              persona: '',
+              name: '',
               profession: '',
               day: '',
               time: '',
@@ -2877,14 +2877,14 @@ export default function () {
       hasGridTable: true,
       pageChildren: [
         {
-          elementKey: 'persona',
+          elementKey: 'name',
           formIndex: '1',
           inputType: 'text',
           label: 'Name',
           tableColumn: '1',
           tableLabel: 'Identification',
           recHeader: true,
-          fqn: 'medicationOrders.persona'
+          fqn: 'medicationOrders.name'
         },
         {
           elementKey: 'profession',
@@ -3177,7 +3177,7 @@ export default function () {
               label: 'Identification',
               ehr_list_index: '1',
               items: [
-                'persona',
+                'name',
                 'profession',
                 'day',
                 'time'
@@ -3303,7 +3303,7 @@ export default function () {
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
-                  'persona',
+                  'name',
                   'profession',
                   'day',
                   'time'
@@ -3375,7 +3375,7 @@ export default function () {
               }
             ],
             ehr_data: {
-              persona: '',
+              name: '',
               profession: '',
               day: '',
               time: '',
@@ -3909,14 +3909,14 @@ export default function () {
       hasGridTable: true,
       pageChildren: [
         {
-          elementKey: 'persona',
+          elementKey: 'name',
           formIndex: '1',
           inputType: 'text',
           label: 'Name',
           tableColumn: '1',
           tableLabel: 'Identification',
           recHeader: true,
-          fqn: 'integumentaryAssessment.persona'
+          fqn: 'integumentaryAssessment.name'
         },
         {
           elementKey: 'profession',
@@ -4780,7 +4780,7 @@ export default function () {
               label: 'Identification',
               ehr_list_index: '1',
               items: [
-                'persona',
+                'name',
                 'profession',
                 'day',
                 'time'
@@ -5045,7 +5045,7 @@ export default function () {
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
-                  'persona',
+                  'name',
                   'profession',
                   'day',
                   'time'
@@ -5144,7 +5144,7 @@ export default function () {
               }
             ],
             ehr_data: {
-              persona: '',
+              name: '',
               profession: '',
               day: '',
               time: '',

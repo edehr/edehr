@@ -58,28 +58,32 @@ export default {
       return (
         this.isSigning &&
         EhrDefs.getCaseStudyDataStatus(this.ehrHelp.pageKey) && 
-        this.hasPersonaData
+        this.hasCaseStudyPersonaData
       )
     }, 
 
     hasCaseStudyData () {
       return EhrDefs.getCaseStudyDataStatus(this.ehrHelp.pageKey) && 
-        this.hasPersonaData
+        this.hasCaseStudyPersonaData
     },
 
     disableSave () {
       // disable save in case there is any case study data and the user hasn't acknowledged / confirmed
       // it yet
-      return this.hasCaseStudyData ? !this.ackCaseStudyData : false
+      if (this.acknowledgeSignature) {
+        return this.hasCaseStudyData ? !this.ackCaseStudyData : false
+      } else {
+        return false
+      }
     },
     ackText () {
-      const persona = this.getPersonaData()
-      return `I hereby certify correct ${persona.persona}, ${persona.profession}. 
+      const persona = this.getCaseStudyData()
+      return `I hereby certify correct ${persona.name}, ${persona.profession}. 
       Hospital date: ${persona.day} ${persona.time}`
     },
-    hasPersonaData () {
-      const persona = this.getPersonaData()
-      return Object.keys(persona).length > 0
+    hasCaseStudyPersonaData () {
+      const csData = this.getCaseStudyData()
+      return Object.keys(csData).length > 0
     },
     isSigning () {
       return StoreHelper.isSigning()
@@ -112,7 +116,7 @@ export default {
         this.$refs.theDialog.onClose()
       }
     },
-    getPersonaData () {
+    getCaseStudyData () {
       return StoreHelper.getAssignmentCaseStudyData()
     }
   },

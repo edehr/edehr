@@ -3,7 +3,7 @@ import EhrTypes from '../../client/src/helpers/ehr-types'
 const Defs = {
   recordHeader: [
     {
-      elementKey: 'persona',
+      elementKey: 'name',
       inputType: 'text',
       label: 'Name',
       tableLabel: 'Identification',

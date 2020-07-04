@@ -125,8 +125,7 @@ class RawInputToDef {
     return postEntries
   }
   _needsUserSignature (entries) {
-    let validated = entries.find(e => EhrShortForms.validateRecHeader(e) === true ) || {}
-    return Object.keys(validated).length > 0
+    return entries.findIndex(e => EhrShortForms.validateRecHeader(e)) > 0
   }
 
 
