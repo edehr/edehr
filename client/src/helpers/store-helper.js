@@ -4,6 +4,8 @@ import sKeys from './session-keys'
 
 const debugSH = false
 
+// TODO refactor this class See https://github.com/BCcampus/edehr/issues/760
+
 class StoreHelperWorker {
 
   getAsLoadedPageData (pageKey) { return store.getters['ehrDataStore/asLoadedDataForPageKey'](pageKey) }
@@ -486,7 +488,21 @@ class StoreHelperWorker {
   }
 
   submitPersona (submitData) {
-    return this._dispatchDemoStore('submitPersona', { submitData  })
+    return this._dispatchDemoStore('submitPersona', submitData)
+  }
+
+  getDemoAcceptTerms () {
+    return this._getDemoStorage('agreesWithTerms')
+  }
+  submitAcceptsTerms (accepts) {
+    return this._dispatchDemoStore('acceptsTerms', { accepts  })
+  }
+
+  getDemoFeatureFlag () {
+    return this._getDemoStorage('getDemoFeatureFlag')
+  }
+  setDemoFeatureFlag (flag) {
+    return this._dispatchDemoStore('setDemoFeatureFlag', flag)
   }
 
 }
