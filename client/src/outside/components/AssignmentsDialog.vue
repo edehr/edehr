@@ -34,7 +34,8 @@
               div(class="form-element")
                 div(class="input-element input-element-full")
                   label Profession
-                  input(class="input text-input", type="text", v-model="profession")
+                  select(v-model="profession")
+                    option(v-for="pr in professions", :value="pr.value" ) {{ pr.caption }}
               div(class="form-element")
                 div(class="input-element input-element-full")
                   label Case study day
@@ -68,8 +69,16 @@ const ERRORS = {
 const EDIT_ACTION= 'edit'
 const CREATE_ACTION = 'create'
 
+const PERSONA_DEFAULT_VALUES = {
+  persona: 'Jason',
+  profession: 'doctor',
+  day: 0,
+  time: '08:00'
+}
+
 export default {
   data () {
+    const { persona, profession, day, time } = PERSONA_DEFAULT_VALUES
     return {
       assignmentName: '', externalId: '', ehrRoutePath: '', description: '',
       actionType: '',
@@ -78,10 +87,21 @@ export default {
       enableExternalIdEdit: true,
       inUseIds: [],
       showAdvanced: false,
-      persona: '',
-      profession: '',
-      day: 0,
-      time: ''
+      professions: [
+        { 
+          value: 'doctor',
+          caption: 'Doctor', 
+        },
+        { 
+          value: 'nurse',
+          caption: 'Nurse', 
+        },
+        { 
+          value: 'pharmacist',
+          caption: 'Pharmacist', 
+        }
+      ],
+      persona, profession, day, time
     }
   },
   components: { AppDialog },
@@ -98,6 +118,18 @@ export default {
     seedValidate () {
       return this.selectedSeed.trim() ? undefined :  ERRORS.SEED_REQUIRED
     },
+    personaValidate () {
+      if (this.persona.length === 0) {
+        return 'The persona name is required!'
+      } else if (this.profession.length === 0 ) {
+        return 'The persona profession is required!'
+      } else if (this.day.length === 0) {
+        return 'The assignment day is required!'
+      } else if (this.time.length === 0) {
+        return 'The assignment time is required!'
+      }
+      return null
+    },
     externalValidate () {
       if (!this.externalId) {
         return ERRORS.ID_REQUIRED
@@ -110,11 +142,11 @@ export default {
       return this.inUseIds.includes(id) ? ERRORS.ID_IN_USE(id) : undefined
     },
     errors () {
-      const errmsg = this.nameValidate || this.seedValidate || this.externalValidate || this.timeValidate
+      const errmsg = this.nameValidate || this.seedValidate || this.externalValidate || this.timeValidate || this.personaValidate
       return errmsg ? [errmsg] : []
     },
     disableSave () {
-      const errmsg = this.nameValidate || this.seedValidate || this.externalValidate || this.timeValidate
+      const errmsg = this.nameValidate || this.seedValidate || this.externalValidate || this.timeValidate || this.personaValidate
       const isInvalid = !!errmsg
       console.log('errmsg', errmsg)
       return isInvalid
@@ -141,11 +173,13 @@ export default {
         = this.ehrRoutePath
         = this.description
         = this.assignmentId 
-        = this.persona
-        = this.profession
-        = this.day
-        = this.time
         = ''
+
+      const { persona, profession, day, time } = PERSONA_DEFAULT_VALUES
+      this.persona = persona
+      this.profession = profession
+      this.day = day
+      this.time = time
     },
     showDialog (assignmentData) {
       this.clearInputs()
@@ -160,7 +194,7 @@ export default {
         this.assignmentId = assignmentData._id
         this.selectedSeed = assignmentData.seedDataId || ''
         this.persona = assignmentData.persona
-        this.profession = assignmentData.profession
+        this.profession = assignmentData.profession.toLowerCase()
         this.day = assignmentData.day
         this.time = assignmentData.time
         // remove the current assignment id from the list

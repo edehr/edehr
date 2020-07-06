@@ -8,10 +8,13 @@ const Schema = new mongoose.Schema({
   name: { type: String, required: true},
   description: { type: String },
   ehrRoutePath: { type: String },
-  persona: { type: String },
-  profession: { type: String },
-  day: { type: Number, required: false },
-  time: { type: String },
+  // These fields refer to the assignment persona and their information. This is needed in order to acknowledge
+  // who was responsible for providing information on some contexts (digital signing). 
+  // It is now required and there's a fallback to default values if no information is provided. 
+  persona: { type: String, required: true, default: 'Jason' }, 
+  profession: { type: String, required: true, default: 'doctor' },
+  day: { type: Number, required: false, required: true, default: 0 },
+  time: { type: String, required: true, default: '08:00' },
   seedDataId: {type: mongoose.Schema.Types.ObjectId, ref: 'SeedData', required: true}
 })
 
