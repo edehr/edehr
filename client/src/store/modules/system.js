@@ -6,7 +6,8 @@ const state = {
   currentPageKey: '',
   loadingCnt: 0,
   apiError: '',
-  sysMessage: ''
+  sysMessage: '',
+  isSigning: false
 }
 
 const getters = {
@@ -16,6 +17,7 @@ const getters = {
   isShowingAdvanced: state => {
     return state._isShowingAdvanced
   },
+  isSigning: state => state.isSigning
 
 }
 
@@ -50,6 +52,9 @@ const mutations = {
       console.error('System api error:', error)
     }
     state.apiError = error
+  },
+  setSigning: (state, isSigning) => {
+    state.isSigning = isSigning
   }
 }
 

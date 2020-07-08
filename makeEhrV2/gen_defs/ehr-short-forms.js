@@ -1,29 +1,32 @@
 import EhrTypes from '../../client/src/helpers/ehr-types'
 
 const Defs = {
-  // 'inputType': 'record_header'
   recordHeader: [
     {
       elementKey: 'name',
       inputType: 'text',
       label: 'Name',
       tableLabel: 'Identification',
+      recHeader: true
     },
     {
       elementKey: 'profession',
       inputType: 'text',
       label: 'Profession',
+      recHeader: true
     },
     {
       elementKey: 'day',
       inputType: 'day',
       label: 'Day',
+      recHeader: true
     },
     {
       elementKey: 'time',
       inputType: 'time',
       label: 'Time',
       validation: 'time24',
+      recHeader: true
     }
   ],
 
@@ -71,6 +74,11 @@ class EhrShortFormHelper {
       e.tableColumn = entry.tableColumn
       postEntries.push(e)
     })
+  }
+
+
+  validateRecHeader (entry) {
+    return entry.inputType === EhrTypes.shortFormTypes.recordHeader
   }
 
   withDate (entry, postEntries, defs) {

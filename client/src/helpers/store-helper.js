@@ -84,9 +84,13 @@ class StoreHelperWorker {
 
   setApiError (msg) {  store.commit('system/setApiError', msg, { root: true }) }
   setSystemMessage (msg) {  store.commit('system/setSystemMessage', msg, { root: true }) }
+  setSigning (val) { store.commit('system/setSigning', val) }
 
   isLoading () { return this._getSystemProperty('isLoading')}
   isShowingAdvanced () { return this._getSystemProperty('isShowingAdvanced') }
+  isSigning () { return this._getSystemProperty('isSigning') }
+
+ 
 
   /*
    * **********   Class List  **************
@@ -219,6 +223,7 @@ class StoreHelperWorker {
 
   getAssignmentSeedId () { return this._getAssignmentProperty('seedDataId') }
 
+  getAssignmentCaseStudyData () { return this._getAssignmentProperty('assignmentCaseStudyData') }
   /* **********   Seed Data  ************** */
 
   getSeedId () { return this._getSeedListProperty('seedId')}

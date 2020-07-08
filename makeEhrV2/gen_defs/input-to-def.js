@@ -45,7 +45,8 @@ const pageChildElementProperties = [
   'tableColumn',
   'tableCss',
   'tableLabel',
-  'validation'
+  'validation',
+  'recHeader'
 ]
 
 const groupProperties = [
@@ -104,10 +105,11 @@ class RawInputToDef {
    */
   getDefinitions (contents, lastModifiedTime) {
     let entries = rawHelper._rawToEntries(contents, mlFields)
+    let recHeader = this._needsUserSignature(entries)
     entries = this._preprocessEntries(entries)
     entries = this._validateEntries(entries)
     let pages = this._groupByPages(entries)
-    pages = this._toPages(pages, lastModifiedTime)
+    pages = this._toPages(pages, lastModifiedTime, recHeader)
     return pages
   }
   _preprocessEntries (entries) {
@@ -121,6 +123,9 @@ class RawInputToDef {
       }
     })
     return postEntries
+  }
+  _needsUserSignature (entries) {
+    return entries.findIndex(e => EhrShortForms.validateRecHeader(e)) > 0
   }
 
 
@@ -276,12 +281,12 @@ class RawInputToDef {
   }
 
   /* *************** final preparation ******** */
-
-  _toPages (pages, lastModifiedTime) {
+  _toPages (pages, lastModifiedTime, hasRecHeader) {
     // Take the pages from the first stage and prepare final form.
     let pages2 = {}
     Object.values(pages).forEach(page1 => {
       let page2 = rawHelper._transferProperties(page1, pageProperties2)
+      page2.recHeader = hasRecHeader
       page2.generated = moment.utc(lastModifiedTime).local().format()
       page2.pageElements = this._toForms(page1)
       pages2[page2.pageDataKey] = page2

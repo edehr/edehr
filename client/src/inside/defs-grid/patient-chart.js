@@ -14,6 +14,7 @@ export default function () {
           label: 'Name',
           tableColumn: '1',
           tableLabel: 'Identification',
+          recHeader: true,
           fqn: 'progressNotes.name'
         },
         {
@@ -22,6 +23,7 @@ export default function () {
           inputType: 'text',
           label: 'Profession',
           tableColumn: '1',
+          recHeader: true,
           fqn: 'progressNotes.profession'
         },
         {
@@ -30,6 +32,7 @@ export default function () {
           inputType: 'day',
           label: 'Day',
           tableColumn: '1',
+          recHeader: true,
           fqn: 'progressNotes.day'
         },
         {
@@ -39,6 +42,7 @@ export default function () {
           label: 'Time',
           tableColumn: '1',
           validation: 'time24',
+          recHeader: true,
           fqn: 'progressNotes.time'
         },
         {
@@ -52,7 +56,8 @@ export default function () {
           fqn: 'progressNotes.note'
         }
       ],
-      generated: '2020-01-18T11:50:12-08:00',
+      recHeader: true,
+      generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -128,6 +133,7 @@ export default function () {
           label: 'Name',
           tableColumn: '1',
           tableLabel: 'Identification',
+          recHeader: true,
           fqn: 'carePlan.name'
         },
         {
@@ -136,6 +142,7 @@ export default function () {
           inputType: 'text',
           label: 'Profession',
           tableColumn: '1',
+          recHeader: true,
           fqn: 'carePlan.profession'
         },
         {
@@ -144,6 +151,7 @@ export default function () {
           inputType: 'day',
           label: 'Day',
           tableColumn: '1',
+          recHeader: true,
           fqn: 'carePlan.day'
         },
         {
@@ -153,6 +161,7 @@ export default function () {
           label: 'Time',
           tableColumn: '1',
           validation: 'time24',
+          recHeader: true,
           fqn: 'carePlan.time'
         },
         {
@@ -211,7 +220,8 @@ export default function () {
           fqn: 'carePlan.status'
         }
       ],
-      generated: '2020-01-18T11:50:12-08:00',
+      recHeader: true,
+      generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -315,7 +325,8 @@ export default function () {
       isV2: true,
       hasGridForm: true,
       pageChildren: [],
-      generated: '2020-01-18T11:50:12-08:00',
+      recHeader: true,
+      generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -369,7 +380,8 @@ export default function () {
           fqn: 'labResults.labReport4_1'
         }
       ],
-      generated: '2020-01-18T11:50:12-08:00',
+      recHeader: true,
+      generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -453,7 +465,8 @@ export default function () {
           fqn: 'medicalImaging.pneumonia_report'
         }
       ],
-      generated: '2020-01-18T11:50:12-08:00',
+      recHeader: true,
+      generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -483,7 +496,8 @@ export default function () {
       isV2: true,
       hasGridForm: true,
       pageChildren: [],
-      generated: '2020-01-18T11:50:12-08:00',
+      recHeader: true,
+      generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',

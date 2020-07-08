@@ -61,8 +61,8 @@ export default class DemoController {
       })
       .then((seed) => {
         if (debugDC) debug('DemoController create assignment 1')
-        const ass = Object.assign({},assignment1)
-        return this.cc.assignmentController.createAssignment(ass.externalId, toolC, ass.title, ass.description, seed._id)
+        const ass = Object.assign({}, assignment1, { toolConsumer: toolC })
+        return this.cc.assignmentController.createAssignment(ass, seed._id)
       })
       .then(() => {
         const data = ej2Seed
@@ -75,8 +75,8 @@ export default class DemoController {
       })
       .then((seed) => {
         if (debugDC) debug('DemoController create assignment')
-        const ass = Object.assign({},assignment2)
-        return this.cc.assignmentController.createAssignment(ass.externalId, toolC, ass.title, ass.description, seed._id)
+        const ass = Object.assign({}, assignment2, { toolConsumer: toolC })
+        return this.cc.assignmentController.createAssignment(ass, seed._id)
       })
       .then(() => {
         if (debugDC) debug('DemoController generate token')

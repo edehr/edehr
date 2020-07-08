@@ -143,7 +143,8 @@ export default function () {
           fqn: 'assessmentTools.medication1_1'
         }
       ],
-      generated: '2019-10-09T18:40:08-07:00',
+      recHeader: true,
+      generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -245,7 +246,8 @@ export default function () {
           fqn: 'codeLookup.icf'
         }
       ],
-      generated: '2019-10-09T18:40:08-07:00',
+      recHeader: true,
+      generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -278,6 +280,7 @@ export default function () {
           label: 'Name',
           tableColumn: '1',
           tableLabel: 'Identification',
+          recHeader: true,
           fqn: 'diagnosticCodes.name'
         },
         {
@@ -286,6 +289,7 @@ export default function () {
           inputType: 'text',
           label: 'Profession',
           tableColumn: '1',
+          recHeader: true,
           fqn: 'diagnosticCodes.profession'
         },
         {
@@ -294,6 +298,7 @@ export default function () {
           inputType: 'day',
           label: 'Day',
           tableColumn: '1',
+          recHeader: true,
           fqn: 'diagnosticCodes.day'
         },
         {
@@ -303,6 +308,7 @@ export default function () {
           label: 'Time',
           tableColumn: '1',
           validation: 'time24',
+          recHeader: true,
           fqn: 'diagnosticCodes.time'
         },
         {
@@ -392,7 +398,8 @@ export default function () {
           fqn: 'diagnosticCodes.cluster'
         }
       ],
-      generated: '2019-10-09T18:40:08-07:00',
+      recHeader: true,
+      generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -512,6 +519,7 @@ export default function () {
           label: 'Name',
           tableColumn: '1',
           tableLabel: 'Identification',
+          recHeader: true,
           fqn: 'interventionCodes.name'
         },
         {
@@ -520,6 +528,7 @@ export default function () {
           inputType: 'text',
           label: 'Profession',
           tableColumn: '1',
+          recHeader: true,
           fqn: 'interventionCodes.profession'
         },
         {
@@ -528,6 +537,7 @@ export default function () {
           inputType: 'day',
           label: 'Day',
           tableColumn: '1',
+          recHeader: true,
           fqn: 'interventionCodes.day'
         },
         {
@@ -537,6 +547,7 @@ export default function () {
           label: 'Time',
           tableColumn: '1',
           validation: 'time24',
+          recHeader: true,
           fqn: 'interventionCodes.time'
         },
         {
@@ -577,7 +588,8 @@ export default function () {
           fqn: 'interventionCodes.extent'
         }
       ],
-      generated: '2019-10-09T18:40:08-07:00',
+      recHeader: true,
+      generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -686,6 +698,7 @@ export default function () {
           label: 'Name',
           tableColumn: '1',
           tableLabel: 'Identification',
+          recHeader: true,
           fqn: 'caseMixGroup.name'
         },
         {
@@ -694,6 +707,7 @@ export default function () {
           inputType: 'text',
           label: 'Profession',
           tableColumn: '1',
+          recHeader: true,
           fqn: 'caseMixGroup.profession'
         },
         {
@@ -702,6 +716,7 @@ export default function () {
           inputType: 'day',
           label: 'Day',
           tableColumn: '1',
+          recHeader: true,
           fqn: 'caseMixGroup.day'
         },
         {
@@ -711,6 +726,7 @@ export default function () {
           label: 'Time',
           tableColumn: '1',
           validation: 'time24',
+          recHeader: true,
           fqn: 'caseMixGroup.time'
         },
         {
@@ -759,7 +775,8 @@ export default function () {
           fqn: 'caseMixGroup.analysis'
         }
       ],
-      generated: '2019-10-09T18:40:08-07:00',
+      recHeader: true,
+      generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         table: {
           elementKey: 'table',

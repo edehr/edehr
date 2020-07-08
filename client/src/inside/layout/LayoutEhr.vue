@@ -18,6 +18,8 @@
                 transition(name="hamburger-action")
                   ehr-nav-panel(v-if="showingNavPanel")
             slot Main EHR content for a component will appear here. The component is selected by the router
+    div(style="text-align: right",)
+      input(class="checkbox", type="checkbox", v-model="isSigning")
     input(class="checkbox", type="checkbox", v-model="showingSpecial")
     div(v-show="showingSpecial")
       ehr-special
@@ -47,9 +49,11 @@ export default {
     UiSpinner
   },
   data: function () {
+    const isSigning = StoreHelper.isSigning()
     return {
       showingSpecial: false,
       showingNavPanel: false,
+      isSigning
     }
   },
   computed: {
@@ -64,6 +68,11 @@ export default {
     showingSpecial: function (flag) {
       StoreHelper.setShowAdvanced(flag)
     },
+
+    isSigning: function (val) {
+      StoreHelper.setSigning(val)
+    },
+
     $route: function (curr, prev) {
       if (curr !== prev && this.showingNavPanel) {
         const currArray = curr.path.split('/')

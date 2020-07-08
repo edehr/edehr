@@ -255,6 +255,7 @@ export default function () {
           inputType: 'text',
           label: 'Name',
           tableLabel: 'Identification',
+          recHeader: true,
           fqn: 'testPage.name'
         },
         {
@@ -262,6 +263,7 @@ export default function () {
           formIndex: '3',
           inputType: 'text',
           label: 'Profession',
+          recHeader: true,
           fqn: 'testPage.profession'
         },
         {
@@ -269,6 +271,7 @@ export default function () {
           formIndex: '3',
           inputType: 'day',
           label: 'Day',
+          recHeader: true,
           fqn: 'testPage.day'
         },
         {
@@ -277,6 +280,7 @@ export default function () {
           inputType: 'time',
           label: 'Time',
           validation: 'time24',
+          recHeader: true,
           fqn: 'testPage.time'
         },
         {
@@ -315,7 +319,8 @@ export default function () {
           fqn: 'testPage.place'
         }
       ],
-      generated: '2020-03-14T15:32:58-07:00',
+      recHeader: true,
+      generated: '2020-06-09T04:21:59-03:00',
       pageElements: {
         form1: {
           elementKey: 'form1',
@@ -723,6 +728,7 @@ export default function () {
           label: 'Name',
           tableColumn: '1',
           tableLabel: 'Identification',
+          recHeader: true,
           fqn: 'testTable.name'
         },
         {
@@ -731,6 +737,7 @@ export default function () {
           inputType: 'text',
           label: 'Profession',
           tableColumn: '1',
+          recHeader: true,
           fqn: 'testTable.profession'
         },
         {
@@ -739,6 +746,7 @@ export default function () {
           inputType: 'day',
           label: 'Day',
           tableColumn: '1',
+          recHeader: true,
           fqn: 'testTable.day'
         },
         {
@@ -748,6 +756,7 @@ export default function () {
           label: 'Time',
           tableColumn: '1',
           validation: 'time24',
+          recHeader: true,
           fqn: 'testTable.time'
         },
         {
@@ -1022,7 +1031,8 @@ export default function () {
           fqn: 'testTable.stat'
         }
       ],
-      generated: '2020-03-14T15:32:58-07:00',
+      recHeader: true,
+      generated: '2020-06-09T04:21:59-03:00',
       pageElements: {
         table1: {
           elementKey: 'table1',

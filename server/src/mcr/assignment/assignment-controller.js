@@ -55,7 +55,7 @@ export default class AssignmentController extends BaseController {
   }
 
   /* *****
-  TODO ... verify the mext two methods are needed and working
+  TODO ... verify the next two methods are needed and working
    */
   locateAssignmentForStudent (externalId, toolConsumerId) {
     // let externalId = ltiData.custom_assignment
@@ -64,7 +64,18 @@ export default class AssignmentController extends BaseController {
     return this.findOne(query)
   }
 
-  createAssignment (externalId, toolConsumer, resource_link_title, description, seedId=undefined) {
+  createAssignment (data, seedId=undefined) {
+    console.log('creating assignment with data >> ', data)
+    const { 
+      externalId, 
+      resource_link_title, 
+      description, 
+      persona, 
+      profession, 
+      day, 
+      time,
+      toolConsumer
+    } = data
     if (!externalId) {
       throw new SystemError(Text.ASSIGNMENT_REQUIRE_EXTERNAL_ID(toolConsumer.oauth_consumer_key, toolConsumer._id))
     }
@@ -86,6 +97,10 @@ export default class AssignmentController extends BaseController {
           name: resource_link_title,
           description: description || this.defaultAssignmentDescription,
           ehrRoutePath: '',
+          persona, 
+          profession, 
+          day: day || 0, 
+          time,
           seedDataId: seed._id
         }
         if (debugAC) debug('Assignment. create from def', data)
