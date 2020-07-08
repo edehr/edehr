@@ -51,7 +51,6 @@ class StoreHelperWorker {
   isInstructor () { return this._getVisitProperty('isInstructor') }
   isDeveloper () { return this._getVisitProperty('isDeveloper') }
   isStudent () { return this._getVisitProperty('isStudent') }
-  isAdmin () { return this._get}
   // isDemo see demo section
 
   /**

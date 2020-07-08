@@ -1,0 +1,56 @@
+{
+  "apiUrl": "http://localhost:27000/api",
+  "activity": {
+    "_id": "5eb2bf6ddf6c04d3212355e1",
+    "closed": true,
+    "context_id": "3",
+    "context_label": "EDEHR001",
+    "context_title": "Educational EHR Proof of Concept 1",
+    "context_type": "CourseSection",
+    "resource_link_id": "20",
+    "resource_link_title": "localhost assignment1",
+    "resource_link_description": "",
+    "toolConsumer": "5eb2b706df6c04d3212355da",
+    "assignment": "5eb2bf6ddf6c04d3212355e0",
+    "createDate": "2020-05-06T13:45:17.941Z",
+    "lastDate": "2020-05-06T13:45:17.941Z",
+    "closedDate": "2020-06-15T12:12:18.510Z"
+  },
+  "activityData": {
+    "_id": "5eb2bf6edf6c04d3212355e3",
+    "submitted": false,
+    "evaluated": false,
+    "toolConsumer": "5eb2b706df6c04d3212355da",
+    "visit": "5eb2bf6edf6c04d3212355e2",
+    "createDate": "2020-05-06T13:45:18.332Z",
+    "lastDate": "2020-05-06T13:45:18.332Z",
+    "assignmentData": "Student assignment data",
+    "scratchData": "Scratch Data!",
+    "evaluationData": "Evaluation data"
+  },
+  "consumer": {
+    "_id": "testConsumerId",
+    "tool_consumer_instance_name": "EdEHRTests",
+    "oauth_consumer_key": "edehrkey",
+    "oauth_consumer_secret": "edehrsecret",
+    "lti_version": "LTI-1p0",
+    "createDate": "2020-05-06T13:09:26.463Z",
+    "lastUpdateDate": "2020-05-06T13:09:26.463Z",
+    "tool_consumer_info_product_family_code": "moodle",
+    "tool_consumer_info_version": "2018051702.05",
+    "tool_consumer_instance_description": "Ed EHR Prototype LMS",
+    "tool_consumer_instance_guid": "moodle.edehr.org"
+  },
+  "visit": {
+    "_id": "testVisit",
+    "isStudent": true,
+    "isInstructor": false,
+    "isDeveloper": false,
+    "returnUrl": "https://return-url.com"
+  },
+  "user": {
+    "_id": "testUser",
+    "fullName": "Test User",
+    "givenName": "Given Name"
+  }
+}

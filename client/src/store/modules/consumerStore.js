@@ -14,7 +14,7 @@ const state = {
 const getters = {
   consumerId: state => {
     let id = state.dataStore._id
-    id = id ? id :   sessionStorage.getItem(STASH_KEY)
+    id = id ? id : sessionStorage.getItem(STASH_KEY)
     return id
   },
   lastUpdateDate: state => {
