@@ -1,26 +1,26 @@
 import axios from 'axios'
 
-export default function instoreFactory () {
+export default instoreFactory = function () {
   return {
     _prepareResolve: function (resolve, data) {
       if (data) resolve(data)
       resolve(true)
     },
   
-    composeUrl : function (context, api, url) {
+    composeUrl : (context, api, url) => {
       let apiUrl = 'someURL'
       return `${apiUrl}/${api}/` + (url ? url : '')
     },
   
-    instoreIsInstructor: function (rootState) {
+    instoreIsInstructor: (rootState) => {
       return rootState.visit.sVisitData.isInstructor
     },
   
-    instoreIsDevContent: function (rootState) {
+    instoreIsDevContent: (rootState) => {
       return rootState.visit.isDevelopingContent
     },
   
-    putRequest: function (context, api, url, bodyData) {
+    putRequest: (context, api, url, bodyData) => {
       url = this.composeUrl(context, api, url)
       return new Promise((resolve, reject) => {
         const data = axios.put(url, bodyData)
@@ -28,7 +28,7 @@ export default function instoreFactory () {
         resolve(data)
       })
     },
-    postRequest: function (context, api, url, bodyData) {
+    postRequest: (context, api, url, bodyData) => {
       url = this.composeUrl(context, api, url)
       return new Promise((resolve, reject) => {
         try {
@@ -39,7 +39,7 @@ export default function instoreFactory () {
         }
       })
     },
-    getRequest: function (context, api, url) {
+    getRequest: (context, api, url) => {
       url = this.composeUrl(context, api, url)
       return new Promise((resolve, reject) => {
         try {
@@ -53,4 +53,5 @@ export default function instoreFactory () {
   }
   
 }
+
  

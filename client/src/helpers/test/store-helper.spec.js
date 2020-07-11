@@ -1,14 +1,15 @@
 import should from 'should'
 import StoreHelper from '../store-helper'
 import * as testHelper from './testHelper'
-import instoreFactory from './instoreFactory'
+// import instoreFactory from './instoreFactory'
 const data = require('./mockData.json')
 const mockData = testHelper.parseJSONData(data)
 const axiosMockHelper = require('./axios-mock-helper')
-
-jest.mock('../../store/modules/instoreHelper', () => {
-  return instoreFactory
-})
+// with and without factory
+jest.mock('../../store/modules/instoreHelper')
+// jest.mock('../../store/modules/instoreHelper', () => {
+//   return instoreFactory()
+// })
 jest.mock('axios')
 /**
  * 
