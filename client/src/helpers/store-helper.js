@@ -1,7 +1,6 @@
 import store from '../store'
 import {removeEmptyProperties } from './ehr-utils'
 import sKeys from './session-keys'
-
 const debugSH = false
 
 // TODO refactor this class See https://github.com/BCcampus/edehr/issues/760

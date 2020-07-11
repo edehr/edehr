@@ -1,10 +1,15 @@
 import should from 'should'
 import StoreHelper from '../store-helper'
 import * as testHelper from './testHelper'
+import instoreFactory from './instoreFactory'
 const data = require('./mockData.json')
 const mockData = testHelper.parseJSONData(data)
+const axiosMockHelper = require('./axios-mock-helper')
 
-
+jest.mock('../../store/modules/instoreHelper', () => {
+  return instoreFactory
+})
+jest.mock('axios')
 /**
  * 
  * Calling needed helper methods
@@ -17,6 +22,12 @@ testHelper.setUserMocks()
 testHelper.setVisitMocks()
 const pageKey = testHelper.getPageKeys[0]
 
+const resetAxiosResponse = () => {
+  const methods = ['get', 'post', 'put', 'delete']
+  methods.map(m => axiosMockHelper.prepareAxiosResponse(m, {}))
+}
+
+beforeEach(() => resetAxiosResponse())
 describe('StoreHelper testing', () => {
   it('getAsLoadedPageData', done => {
     const asLoaded = StoreHelper.getAsLoadedPageData(pageKey)
@@ -233,15 +244,44 @@ describe('StoreHelper testing', () => {
     done()
   })
 
+  it('setApiError', done => {
+    const message = 'test error message'
+    StoreHelper.setApiError(message)
+    should.doesNotThrow(() => StoreHelper.setApiError(message))
+    const apiError = testHelper.getSystemProperty('apiError')
+    apiError.should.equal(message)
+    done()
+  })
+
+  it('setSystemMessage', done => {
+    const message = 'test system message'
+    StoreHelper.setSystemMessage(message)
+    should.doesNotThrow(() => StoreHelper.setSystemMessage(message))
+    const systemMessage = testHelper.getSystemProperty('sysMessage')
+    systemMessage.should.equal(message)
+    done()
+  })
 
 
+  // How can this test be improved?
+  it('getClassList', done => {
+    const classList = StoreHelper.getClassList()
+    classList.length.should.equal(0)
+    done()
+  })
 
 
-  // it('studentSubmitsAssignment', done => {
-  //   const submit = !mockData.activityData.submitted
-  //   StoreHelper.studentSubmitsAssignment(submit)
-  //   should.doesNotThrow(() => StoreHelper.studentSubmitsAssignment(submit))
-  // })
+  it('studentSubmitsAssignment', async (done) => {
+    const submit = !mockData.activityData.submitted
+    const mockedResult = {
+      submitted: submit
+    }
+    axiosMockHelper.prepareAxiosResponse('put', mockedResult)
+    const result = StoreHelper.studentSubmitsAssignment(submit)
+    // should.doesNotThrow(() => StoreHelper.studentSubmitsAssignment(submit))
+    result.submitted.should.equal(submit)
+    done()
+  })
 
   // sendAssignmentDataUpdate
 

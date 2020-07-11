@@ -15,6 +15,10 @@ export const isTruthy = val => (val === true || val === 'true')
 export const getPageKeys = () => {
   return EhrDefs.getAllPageKeys()
 }
+
+export const getSystemProperty = (key) => {
+  return store.getters[`system/${key}`]
+}
  
 export const setActivityMocks = (payload = mockData.activity) => {
   const key = 'set'
