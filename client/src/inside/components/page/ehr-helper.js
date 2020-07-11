@@ -460,7 +460,7 @@ export default class EhrHelpV2 {
       const validator = eDef[PROPS.validation] ? validations[eDef.validation] : undefined
       const mandatory = eDef[PROPS.mandatory]
       let value = inputs[eKey]
-      value = value ? value.trim() : value
+      value = (value && typeof value === 'string') ? value.trim() : value
       if (dbDialog) console.log('EhrHelpV2 validate:', eKey, value, 'eDef:', eDef)
       if (mandatory && !value ) {
         const msg = label + ' is required'
