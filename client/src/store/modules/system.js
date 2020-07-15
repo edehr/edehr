@@ -17,7 +17,7 @@ const getters = {
   isShowingAdvanced: state => {
     return state._isShowingAdvanced
   },
-  isSigning: state => state.isSigning
+  isSigning: state => state.isSigning,
   apiError: state => {
     return state.apiError
   },
