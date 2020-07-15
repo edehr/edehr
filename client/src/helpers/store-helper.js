@@ -189,9 +189,9 @@ class StoreHelperWorker {
 
   getAssignmentId () { return this._getAssignmentProperty('id') }
 
-  getAssignmentName () { return this._getActivityProperty('assignmentName') }
+  getAssignmentName () { return this._getAssignmentProperty('assignmentName') }
 
-  getAssignmentDescription () { return this._getActivityProperty('assignmentDescription') }
+  getAssignmentDescription () { return this._getAssignmentProperty('assignmentDescription') }
 
   getAssignment (id) { return this._dispatchAssignment('get', id) }
 

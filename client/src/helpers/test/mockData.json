@@ -9,7 +9,7 @@
     "context_type": "CourseSection",
     "resource_link_id": "20",
     "resource_link_title": "localhost assignment1",
-    "resource_link_description": "",
+    "resource_link_description": "Resource link description...",
     "toolConsumer": "5eb2b706df6c04d3212355da",
     "assignment": "5eb2bf6ddf6c04d3212355e0",
     "createDate": "2020-05-06T13:45:17.941Z",
@@ -27,6 +27,15 @@
     "assignmentData": "Student assignment data",
     "scratchData": "Scratch Data!",
     "evaluationData": "Evaluation data"
+  },
+  "assignment": {
+    "_id": "assignmentId",
+    "toolConsumer": "5eb2b706df6c04d3212355d9",
+    "externalId": "testAssignment",
+    "name": "Test Assignment",
+    "description": "This a default test assignment",
+    "ehrRoutePath": "",
+    "seedDataId": "5eb2b706df6c04d3212355db"
   },
   "consumer": {
     "_id": "testConsumerId",
@@ -69,5 +78,55 @@
     "createDate":"2020-05-06T13:45:18.228Z",
     "lastVisitDate":"2020-05-09T14:13:17.623Z",
     "activityData":"5eb2bf6edf6c04d3212355e3"
-  }
+  },
+  "classList":  [
+    { 
+    "_id": "currentEvaluationStudentId", 
+    "user": "test user", 
+    "activity": "testActivity",
+    "activityData": { "_id": "activitityDataId", "assignmentData": "test activity data" } 
+    },
+    {
+      "_id": "currentEvaluationStudentId2", 
+      "user": "test user2", 
+      "activity": "testActivity2",
+      "activityData": { "_id": "activitityDataId2", "assignmentData": "test activity data2" }
+    }
+  ],
+  "courses": [
+    {
+      "_id": "acourseid",
+      "activities": [
+        { 
+          "_id": "activityId1", 
+          "assignment": "assignment1"
+        },
+        { 
+          "_id": "activityId2", 
+          "assignment": "assignment2"
+        },
+        { 
+          "_id": "activityId3", 
+          "assignment": "assignment3"
+        }
+      ]
+    },
+    {
+      "_id": "anothercourseid",
+      "activities": [
+        { 
+          "_id": "activityId1", 
+          "assignment": "assignment1"
+        },
+        { 
+          "_id": "activityId2", 
+          "assignment": "assignment2"
+        },
+        { 
+          "_id": "activityId3", 
+          "assignment": "assignment3"
+        }
+      ]
+    }
+  ]
 }

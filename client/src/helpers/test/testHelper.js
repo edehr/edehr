@@ -1,12 +1,7 @@
 import EhrDefs from '../ehr-defs-grid'
 import store from '../../store'
 
-export const parseJSONData = (data) => {
-  return JSON.parse(JSON.stringify(data))
-}
-
-const data = require('./mockData.json')
-const mockData = parseJSONData(data)
+const mockData = require('./mockData.json')
 
 export const STASH_KEY = 'consumerId'
   
@@ -19,6 +14,10 @@ export const getPageKeys = () => {
 export const getSystemProperty = (key) => {
   return store.getters[`system/${key}`]
 }
+
+export const instructorCommit = (payload, key) => {
+  store.commit(`instructor/${key}`, payload)
+}
  
 export const setActivityMocks = (payload = mockData.activity) => {
   const key = 'set'
@@ -28,6 +27,11 @@ export const setActivityMocks = (payload = mockData.activity) => {
 export const setActivityDataMocks = (payload = mockData.activityData) => {
   const key = 'set'
   store.commit('activityDataStore/' + key, payload)
+}
+
+export const setAssignmentMocks = (payload = mockData.assignment) => {
+  const key = 'set'
+  store.commit(`assignmentStore/${key}`, payload)
 }
 
 export const setUserMocks = (payload = mockData.user) => {
