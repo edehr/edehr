@@ -35,8 +35,40 @@
     "name": "Test Assignment",
     "description": "This a default test assignment",
     "ehrRoutePath": "",
-    "seedDataId": "5eb2b706df6c04d3212355db"
+    "seedDataId": "5eb2b706df6c04d3212355db",
+    "persona": "Jason",
+    "profession": "Doctor",
+    "time": "08:00",
+    "day": "12:00"
   },
+  "assignmentListing": [
+    {
+      "_id": "assignmentId",
+      "toolConsumer": "5eb2b706df6c04d3212355d9",
+      "externalId": "testAssignment",
+      "name": "Test Assignment",
+      "description": "This a default test assignment",
+      "ehrRoutePath": "",
+      "seedDataId": "5eb2b706df6c04d3212355db",
+      "persona": "Jason",
+      "profession": "Doctor",
+      "time": "08:00",
+      "day": "12:00"
+    },
+    {
+      "_id": "assignmentId2",
+      "toolConsumer": "5eb2b706df6c04d3212355d9",
+      "externalId": "testAssignment2",
+      "name": "Test Assignment2",
+      "description": "This a second test assignment",
+      "ehrRoutePath": "",
+      "seedDataId": "5eb2b706df6c04d3212355db",
+      "persona": "Jason",
+      "profession": "Doctor",
+      "time": "08:00",
+      "day": "12:00"
+    }
+  ],
   "consumer": {
     "_id": "testConsumerId",
     "tool_consumer_instance_name": "EdEHRTests",
@@ -50,6 +82,31 @@
     "tool_consumer_instance_description": "Ed EHR Prototype LMS",
     "tool_consumer_instance_guid": "moodle.edehr.org"
   },
+  
+  "consumerListing": [
+    {
+      "_id":"5eb2b706df6c04d3212355d9",
+      "oauth_consumer_key":"testConsumer",
+      "oauth_consumer_secret":"testSecret",
+      "lti_version":"LTI-1p0",
+      "tool_consumer_instance_name":"EdEhrTest",
+      "createDate":"2020-05-06T13:09:26.448Z",
+      "lastUpdateDate":"2020-05-06T13:09:26.448Z"
+    }, 
+    {
+      "_id": "testConsumerId",
+      "tool_consumer_instance_name": "EdEHRTests",
+      "oauth_consumer_key": "edehrkey",
+      "oauth_consumer_secret": "edehrsecret",
+      "lti_version": "LTI-1p0",
+      "createDate": "2020-05-06T13:09:26.463Z",
+      "lastUpdateDate": "2020-05-06T13:09:26.463Z",
+      "tool_consumer_info_product_family_code": "moodle",
+      "tool_consumer_info_version": "2018051702.05",
+      "tool_consumer_instance_description": "Ed EHR Prototype LMS",
+      "tool_consumer_instance_guid": "moodle.edehr.org"
+    }
+  ],
   "visit": {
     "_id": "studentVisit",
     "isStudent": true,
@@ -127,6 +184,41 @@
           "assignment": "assignment3"
         }
       ]
+    }
+  ],
+  "seedData": {
+    "_id": "5eb2b706df6c04d3212355db",
+    "isDefault": true,
+    "name": "Demo seed data",
+    "description": "This a demo-only seed data",
+    "version": "1",
+    "ehrData": {},
+    "toolConsumer": "5eb2b706df6c04d3212355d9",
+    "createDate": "2020-05-06T13:09:26.481Z",
+    "lastUpdateDate": "2020-05-06T13:09:26.481Z"
+  },
+  "seedDataList": [
+    {
+      "_id": "5eb2b706df6c04d3212355ab",
+      "isDefault": true,
+      "name": "Demo seed data",
+      "description": "This a demo-only seed data 1",
+      "version": "1",
+      "ehrData": {},
+      "toolConsumer": "5eb2b706df6c04d3212355d9",
+      "createDate": "2020-05-06T13:09:26.481Z",
+      "lastUpdateDate": "2020-05-06T13:09:26.481Z"
+    },
+    {
+      "_id": "5eb2b706df6c04d3212355cd",
+      "isDefault": true,
+      "name": "Demo seed data 2",
+      "description": "This a demo-only seed data 2",
+      "version": "1",
+      "ehrData": {},
+      "toolConsumer": "5eb2b706df6c04d3212355d9",
+      "createDate": "2020-05-06T13:09:26.481Z",
+      "lastUpdateDate": "2020-05-06T13:09:26.481Z"
     }
   ]
 }

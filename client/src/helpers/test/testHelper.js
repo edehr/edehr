@@ -34,6 +34,22 @@ export const setAssignmentMocks = (payload = mockData.assignment) => {
   store.commit(`assignmentStore/${key}`, payload)
 }
 
+export const setAssignmentListingMocks = (payload = mockData.assignmentListing) => {
+  const key = 'setAssignmentsListing'
+  store.commit(`assignmentListStore/${key}`, payload)
+}
+
+export const setConsumerListingMocks = (payload = mockData.consumerListing) => {
+  const key = 'setConsumersListing'
+  store.commit(`consumerListStore/${key}`, payload)
+}
+
+export const setSeedDataMocks = (payload = mockData.seedData) => {
+  store.commit('seedListStore/_setSeedContent', payload)
+  store.commit('seedListStore/_setSeedId', payload._id)
+  store.commit('seedListStore/_setSeedDataList', mockData.seedDataList)
+}
+
 export const setUserMocks = (payload = mockData.user) => {
   const key = 'set'
   store.commit('userStore/' + key, payload)

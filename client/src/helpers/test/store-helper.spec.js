@@ -23,7 +23,10 @@ beforeEach(() => {
   testHelper.setActivityMocks()
   testHelper.setActivityDataMocks()
   testHelper.setAssignmentMocks()
+  testHelper.setAssignmentListingMocks()
   testHelper.setConsumerMocks()
+  testHelper.setConsumerListingMocks()
+  testHelper.setSeedDataMocks()
   testHelper.setUserMocks()
   testHelper.setVisitMocks()
 })
@@ -300,7 +303,7 @@ describe('StoreHelper testing', () => {
     done()
   })
   
-  it('studentSubmitsAssignment', async (done) => {
+  it('studentSubmitsAssignment', async done => {
     const submit = !mockData.activityData.submitted
     const mockedResult = {
       submitted: submit
@@ -312,7 +315,7 @@ describe('StoreHelper testing', () => {
     done()
   })  
   
-  it('sendAssignmentDataUpdate', async (done) => {
+  it('sendAssignmentDataUpdate', async done => {
     const payload = {
       propertyName: 'progressNotes',
       value: true
@@ -323,7 +326,7 @@ describe('StoreHelper testing', () => {
     done()
   })
 
-  it('getClassListForActivity', async (done) => {
+  it('getClassListForActivity', async done => {
     const activityId = mockData.activity._id
     const mockResult =  { classList: mockData.classList }
     await axiosMockHelper.prepareAxiosResponse('get', mockResult)
@@ -333,18 +336,17 @@ describe('StoreHelper testing', () => {
     done()
   })
 
-  it('dispatchLoadClassList', async (done) => {
+  it('dispatchLoadClassList', async done => {
     const classList = { classList: mockData.classList }
     await axiosMockHelper.prepareAxiosResponse('get', classList)
     const load = await StoreHelper.dispatchLoadClassList(classList)
     should.doesNotThrow(async () => await StoreHelper.dispatchLoadClassList(classList))
     load.should.not.be.empty()
     load.length.should.equal(classList.classList.length)
-    
     done()
   })
 
-  it('instructorReturnsAssignment', async (done) => {
+  it('instructorReturnsAssignment', async done => {
     const submit = false
     const mockedResult = {
       submitted: submit
@@ -356,8 +358,7 @@ describe('StoreHelper testing', () => {
     done()
   })
 
-  it('instructorMarksWorkEvaluated', async (done) => {
-
+  it('instructorMarksWorkEvaluated', async done => {
     const evaluated = true
     const mockedResult = {
       evaluated
@@ -370,7 +371,7 @@ describe('StoreHelper testing', () => {
   })
 
 
-  it('changeStudentForInstructor', async (done) => {
+  it('changeStudentForInstructor', async done => {
     const _id = 'currentEvaluationStudentId2'
     const found = mockData.classList.find(c => c._id === _id)
     const classes = mockData.classList
@@ -387,7 +388,7 @@ describe('StoreHelper testing', () => {
     done()
   })
 
-  it('saveEvaluationNotes', async (done) => {
+  it('saveEvaluationNotes', async done => {
     const notes = 'Good job!'
     const r = { evalNotes : notes }
     await axiosMockHelper.prepareAxiosResponse('put', r)
@@ -440,7 +441,7 @@ describe('StoreHelper testing', () => {
     done()
   })
 
-  it('dispatchLoadActivity', async (done) => {
+  it('dispatchLoadActivity', async done => {
     await axiosMockHelper.prepareAxiosResponse('get', { activity: mockData.activity })
     const result = await StoreHelper.dispatchLoadActivity(mockData.activity._id)
     should.doesNotThrow(async () => await StoreHelper.dispatchLoadActivity(mockData.activity._id))
@@ -448,7 +449,7 @@ describe('StoreHelper testing', () => {
     done()
   })
 
-  it('loadAsCurrentActivity', async (done) => {
+  it('loadAsCurrentActivity', async done => {
     await axiosMockHelper.prepareAxiosResponse('get', { activity: mockData.activity })
     const result = await StoreHelper.dispatchLoadActivity(mockData.activity._id)
     should.doesNotThrow(async () => await StoreHelper.dispatchLoadActivity(mockData.activity._id))
@@ -458,7 +459,7 @@ describe('StoreHelper testing', () => {
     done()
   })
 
-  it('closeActivity', async (done) => {
+  it('closeActivity', async done => {
     const closedActivity = Object.assign({}, mockData.activity, { closed: true })
     await axiosMockHelper.prepareAxiosResponse('put', { activity: closedActivity })
     const result = await StoreHelper.closeActivity(mockData.activity._id)
@@ -468,7 +469,7 @@ describe('StoreHelper testing', () => {
     done()
   })
 
-  it('openActivity', async (done) => {
+  it('openActivity', async done => {
     const openedActivity = Object.assign({}, mockData.activity, { closed: false })
     await axiosMockHelper.prepareAxiosResponse('put', { activity: openedActivity })
     const result = await StoreHelper.openActivity(mockData.activity._id)
@@ -508,11 +509,179 @@ describe('StoreHelper testing', () => {
     done()
   })
 
-  it('getASsignmentDescription', done => {
+  it('getAssignmentDescription', done => {
     const description = StoreHelper.getAssignmentDescription()
     should.doesNotThrow(() => StoreHelper.getAssignmentDescription())
     description.should.equal(mockData.assignment.description)
     done()
   })
 
+  it('getAssignment', async done => {
+    const assignment = mockData.assignment
+    await axiosMockHelper.prepareAxiosResponse('get', { assignment })
+    const result = await StoreHelper.getAssignment(mockData.assignment._id)
+    should.doesNotThrow(async () => await StoreHelper.getAssignment(mockData.assignment._id))
+    result.should.equal(assignment)
+    done()
+  })
+
+  it('loadAssignment', async done => {
+    const { assignment } = mockData
+    await axiosMockHelper.prepareAxiosResponse('get', { assignment })
+    const result = await StoreHelper.loadAssignment(assignment._id)
+    should.doesNotThrow(async () => await StoreHelper.loadAssignment(assignment._id))
+    result.should.equal(assignment)
+    done()
+  })
+
+  it('deleteAssignment', async done => {
+    await axiosMockHelper.prepareAxiosResponse('delete',  {})
+    const result = await StoreHelper.deleteAssignment(mockData.assignment._id)
+    should.doesNotThrow(async () => await StoreHelper.deleteAssignment(mockData.assignment._id))
+    Object.keys(result).length.should.equal(0)
+    done()
+  })
+
+  it('loadAssignmentList', async done => {
+    const { assignmentListing } = mockData
+    await axiosMockHelper.prepareAxiosResponse('get', {assignments: assignmentListing})
+    const assignmentList = await StoreHelper.loadAssignmentList(this)
+    should.doesNotThrow(async () => await StoreHelper.loadAssignmentList(this))
+    assignmentList.should.equal(assignmentListing)
+    done()
+  })
+
+  it('updateAssignment', async done => {
+    const updatedAssignment = Object.assign(
+      {}, 
+      mockData.assignment, 
+      { name: 'updated assignment name' }
+    )
+    const assignments = [
+      ...mockData.assignmentListing.filter(a => a._id !== updatedAssignment._id),
+      updatedAssignment
+    ]
+    await axiosMockHelper.prepareAxiosResponse('put', updatedAssignment)
+    await axiosMockHelper.prepareAxiosResponse('get', { assignments })
+    const result = await StoreHelper.updateAssignment(this, updatedAssignment._id, updatedAssignment)
+    should.doesNotThrow(async () => await StoreHelper.updateAssignment(this, updatedAssignment._id, updatedAssignment))
+    result.includes(updatedAssignment).should.equal(true)
+    done()
+  })
+
+  it('createAssignment', async done => {
+    const newAssignment = {
+      _id: 'newAssignmentId',
+      toolConsumer: '5eb2b706df6c04d3212355d9',
+      externalId: 'newAssignment',
+      name: 'New test assignment',
+      description: 'This a new test assignment',
+      ehrRoutePath: '',
+      seedDataId: '5eb2b706df6c04d3212355db'
+    }
+    const assignments = [...mockData.assignmentListing, newAssignment]
+    await axiosMockHelper.prepareAxiosResponse('put', newAssignment)
+    await axiosMockHelper.prepareAxiosResponse('get', { assignments })
+    const result = await StoreHelper.createAssignment(newAssignment)
+    should.doesNotThrow(async () => await StoreHelper.createAssignment(newAssignment))
+    result.should.equal(assignments)
+    result.length.should.be.greaterThan(mockData.assignmentListing.length)
+    done()
+  })
+
+  it('getAssignmentsList', done => {
+    const list = StoreHelper.getAssignmentsList()
+    should.doesNotThrow(() => StoreHelper.getAssignmentsList())
+    list.should.not.be.empty()
+    list.should.equal(mockData.assignmentListing)
+    done()
+  })
+
+  it('getAssignmentSeedId', done => {
+    const seedId = StoreHelper.getAssignmentSeedId()
+    should.doesNotThrow(() => StoreHelper.getAssignmentSeedId())
+    seedId.should.equal(mockData.assignment.seedDataId)
+    done()
+  })
+
+  it('getAssignmentCaseStudyData', done => {
+    const { assignment } = mockData
+    const caseStudy = StoreHelper.getAssignmentCaseStudyData()
+    should.doesNotThrow(() => StoreHelper.getAssignmentCaseStudyData())
+    caseStudy.name.should.equal(assignment.persona)
+    caseStudy.profession.should.equal(assignment.profession)
+    caseStudy.day.should.equal(assignment.day)
+    caseStudy.time.should.equal(assignment.time)
+    done()
+  })
+
+  it('getSeedId', done => {
+    const { seedData } = mockData
+    const result = StoreHelper.getSeedId()
+    should.doesNotThrow(() => StoreHelper.getSeedId())
+    result.should.equal(seedData._id)
+    done()
+  })
+
+  it('getSeedDataList', done => {
+    const { seedDataList } = mockData
+    const result = StoreHelper.getSeedDataList()
+    should.doesNotThrow(() => StoreHelper.getSeedDataList())
+    result.should.equal(seedDataList)
+    done()
+  })
+  
+  it('getConsumersList', done => {
+    const list = StoreHelper.getConsumersList()  
+    should.doesNotThrow(() => StoreHelper.getConsumersList())
+    list.should.equal(mockData.consumerListing)
+    done()
+  })
+  
+  it('loadConsumersList', async done => {
+    const { consumerListing } = mockData
+    axiosMockHelper.prepareAxiosResponse('get', { consumers: consumerListing })
+    const list = await StoreHelper.loadConsumerList()
+    should.doesNotThrow(async () => await StoreHelper.loadConsumerList)
+    list.should.equal(consumerListing)
+    done()
+  })
+
+  it('updateConsumer', async done => {
+    const updatedConsumer = Object.assign({}, mockData.consumer, {
+      oauth_consumer_key: 'new consumer key',
+      oauth_consumer_secret: 'new consumer secret',
+      tool_consumer_instance_name: 'new instance name'
+    } )
+    const consumers = [
+      ...mockData.consumerListing.filter(c => c._id !== updatedConsumer._id),
+      updatedConsumer
+    ]
+    await axiosMockHelper.prepareAxiosResponse('put', { consumer: updatedConsumer })
+    await axiosMockHelper.prepareAxiosResponse('get', { consumers })
+    const result = await StoreHelper.updateConsumer(updatedConsumer._id, updatedConsumer)
+    should.doesNotThrow(async () => await StoreHelper.updateConsumer(updatedConsumer._id, updatedConsumer))
+    result.includes(updatedConsumer).should.equal(true)
+    done()
+  })
+
+  it('createConsumer', async done => {
+    const consumer = {
+      _id: 'newConsumerId',
+      oauth_consumer_key: 'new consumer key',
+      oauth_consumer_secret: 'new consumer secret',
+      tool_consumer_instance_name: 'new instance name'
+    }
+    const consumers = [
+      ...mockData.consumerListing,
+      consumer
+    ]
+    await axiosMockHelper.prepareAxiosResponse('put', { consumer })
+    await axiosMockHelper.prepareAxiosResponse('get', { consumers })
+    const result = await StoreHelper.createConsumer(consumer)
+    should.doesNotThrow(async () => await StoreHelper.createConsumer(consumer))
+    result.includes(consumer).should.equal(true)
+    done()
+
+  })
 })
