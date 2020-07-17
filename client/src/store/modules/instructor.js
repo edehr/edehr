@@ -43,7 +43,8 @@ const getters = {
     }
     student = student || { user: {}, activity: {}, activityData: { assignmentData: {}} }
     return student
-  }
+  },
+  sCourses: state => state.sCourses
 }
 
 const actions = {
