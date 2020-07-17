@@ -222,5 +222,35 @@
       "createDate": "2020-05-06T13:09:26.481Z",
       "lastUpdateDate": "2020-05-06T13:09:26.481Z"
     }
-  ]
+  ],
+  "demoData": {
+    "toolConsumerKey": "80e96b6f-d2d0-4a82-af50-99883bf1c369",
+    "toolConsumerId": "5eedefab5efef21b3ba93f03",
+    "personaList": [
+      { 
+        "id": 1,
+        "name": "Instructor A",
+        "email": "instructor@bccampus.org",
+        "role": "instructor"
+      },
+      {
+        "id": 2,
+        "name": "Student A",
+        "email": "studenta@bccampus.org",
+        "role": "student"
+      },
+      {
+        "id": 3,
+        "name": "Student B",
+        "email": "studentb@bccampus.org",
+        "role": "student"
+      },
+      {
+        "id": 4,
+        "name": "Student C",
+        "email": "studentc@bccampus.org",
+        "role": "student"
+      }
+    ]
+  }
 }

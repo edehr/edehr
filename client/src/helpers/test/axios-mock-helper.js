@@ -1,9 +1,9 @@
 const axios = require('axios')
 const mockData = require('./mockData.json')
 
-export const prepareAxiosResponse = (method, data) => {
+export const prepareAxiosResponse = (method, data, status = 200) => {
   return new Promise((resolve) => {
-    resolve(axios[method].mockResolvedValue({data}))
+    resolve(axios[method].mockResolvedValue({data, status}))
   })
 }
 

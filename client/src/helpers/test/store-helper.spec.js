@@ -2,7 +2,6 @@ import should from 'should'
 import StoreHelper from '../store-helper'
 import * as testHelper from './testHelper'
 import sKeys from '../session-keys'
-// import instoreFactory from './instoreFactory'
 const mockData = require('./mockData.json')
 const axiosMockHelper = require('./axios-mock-helper')
 jest.mock('axios')
@@ -19,20 +18,24 @@ const resetAxiosResponse = () => {
   methods.map(m => axiosMockHelper.prepareAxiosResponse(m, {}))
 }
 
-describe('StoreHelper testing', () => {
-  beforeEach(() => {
-    testHelper.setActivityMocks()
-    testHelper.setActivityDataMocks()
-    testHelper.setAssignmentMocks()
-    testHelper.setAssignmentListingMocks()
-    testHelper.setConsumerMocks()
-    testHelper.setConsumerListingMocks()
-    testHelper.setSeedDataMocks()
-    testHelper.setSeedDataListMocks()
-    testHelper.setUserMocks()
-    testHelper.setVisitMocks()
-    resetAxiosResponse()
-  })
+const _beforeEach = () => {
+  testHelper.setActivityMocks()
+  testHelper.setActivityDataMocks()
+  testHelper.setAssignmentMocks()
+  testHelper.setAssignmentListingMocks()
+  testHelper.setConsumerMocks()
+  testHelper.setConsumerListingMocks()
+  testHelper.setSeedDataMocks()
+  testHelper.setSeedDataListMocks()
+  testHelper.setUserMocks()
+  testHelper.setVisitMocks()
+  resetAxiosResponse()
+}
+
+describe('General testing', () => {
+  
+  beforeEach(() => _beforeEach())
+
   it('getAsLoadedPageData', done => {
     const asLoaded = StoreHelper.getAsLoadedPageData(pageKey)
     should.exist(asLoaded)
@@ -255,6 +258,18 @@ describe('StoreHelper testing', () => {
     done()
   })
 
+  it('setSigning', done => {
+    should.doesNotThrow(() => StoreHelper.setSigning('is signing'))
+    done()
+  })
+
+  it('isSigning', done => {
+    const s = 'is signing'
+    const r = StoreHelper.isSigning()
+    s.should.equal(r)
+    done()
+  })
+
   it('setSystemMessage', done => {
     const message = 'test system message'
     StoreHelper.setSystemMessage(message)
@@ -263,6 +278,11 @@ describe('StoreHelper testing', () => {
     systemMessage.should.equal(message)
     done()
   })
+})
+
+describe('classList / instructor tests', () => {
+
+  beforeEach(() => _beforeEach())
 
   it('getClassList', done => {
     const classes = mockData.classList
@@ -398,6 +418,9 @@ describe('StoreHelper testing', () => {
     done()
   })
 
+})
+describe('activity tests', () => {
+  beforeEach(() => _beforeEach())
   it('getActivityId', done => {
     const activityId = StoreHelper.getActivityId()
     should.doesNotThrow(() => StoreHelper.getActivityId())
@@ -494,6 +517,11 @@ describe('StoreHelper testing', () => {
     courseList.should.equal(mockData.courses)
     done()
   })
+})
+
+describe('assignment tests', () => {
+  
+  beforeEach(() => _beforeEach())
 
   it('getAssignmentId', done => {
     const id = StoreHelper.getAssignmentId()
@@ -561,12 +589,13 @@ describe('StoreHelper testing', () => {
       ...mockData.assignmentListing.filter(a => a._id !== updatedAssignment._id),
       updatedAssignment
     ]
-    await axiosMockHelper.prepareAxiosResponse('put', updatedAssignment)
-    await axiosMockHelper.prepareAxiosResponse('get', { assignments })
-    const result = await StoreHelper.updateAssignment(this, updatedAssignment._id, updatedAssignment)
-    should.doesNotThrow(async () => await StoreHelper.updateAssignment(this, updatedAssignment._id, updatedAssignment))
-    result.includes(updatedAssignment).should.equal(true)
-    done()
+    should.doesNotThrow(async () => {
+      await axiosMockHelper.prepareAxiosResponse('put', updatedAssignment)
+      await axiosMockHelper.prepareAxiosResponse('get', { assignments })
+      const result = await StoreHelper.updateAssignment(this, updatedAssignment._id, updatedAssignment)
+      result.includes(updatedAssignment).should.equal(true)
+      done()
+    })
   })
 
   it('createAssignment', async done => {
@@ -580,13 +609,14 @@ describe('StoreHelper testing', () => {
       seedDataId: '5eb2b706df6c04d3212355db'
     }
     const assignments = [...mockData.assignmentListing, newAssignment]
-    await axiosMockHelper.prepareAxiosResponse('put', newAssignment)
-    await axiosMockHelper.prepareAxiosResponse('get', { assignments })
-    const result = await StoreHelper.createAssignment(newAssignment)
-    should.doesNotThrow(async () => await StoreHelper.createAssignment(newAssignment))
-    result.should.equal(assignments)
-    result.length.should.be.greaterThan(mockData.assignmentListing.length)
-    done()
+    should.doesNotThrow(async () => {
+      await axiosMockHelper.prepareAxiosResponse('put', newAssignment)
+      await axiosMockHelper.prepareAxiosResponse('get', { assignments })
+      const result = await StoreHelper.createAssignment(newAssignment)
+      result.should.equal(assignments)
+      result.length.should.be.greaterThan(mockData.assignmentListing.length)
+      done()
+    })
   })
 
   it('getAssignmentsList', done => {
@@ -614,7 +644,9 @@ describe('StoreHelper testing', () => {
     caseStudy.time.should.equal(assignment.time)
     done()
   })
-
+})
+describe('seed data tests', () => {
+  beforeEach(() => _beforeEach())
   it('getSeedId', done => {
     const { seedData } = mockData
     const result = StoreHelper.getSeedId()
@@ -630,7 +662,10 @@ describe('StoreHelper testing', () => {
     JSON.stringify(result).should.equal(JSON.stringify(seedDataList))
     done()
   })
-  
+})
+
+describe('LMS/LTI consumers tests', () => {
+  beforeEach(() => _beforeEach())
   it('getConsumersList', done => {
     const list = StoreHelper.getConsumersList()  
     should.doesNotThrow(() => StoreHelper.getConsumersList())
@@ -683,7 +718,10 @@ describe('StoreHelper testing', () => {
     result.includes(consumer).should.equal(true)
     done()
   })
+})
 
+describe('Loading / restoring tests', () => {
+  beforeEach(() => _beforeEach())
   it('getPanelData' , done => {
     const panelData = StoreHelper.getPanelData()
     should.doesNotThrow(() => StoreHelper.getPanelData())
@@ -691,6 +729,27 @@ describe('StoreHelper testing', () => {
     Object.keys(panelData).length.should.be.greaterThan(0)
     done()
   })
+
+  it('restoreSession', async done => {
+    const { activity, visit } = mockData
+    const token = visit._id
+    sessionStorage.setItem(sKeys.USER_TOKEN, token)
+    await axiosMockHelper.prepareAxiosResponse('get', { activity })
+    const result = await StoreHelper.restoreSession()
+    should.doesNotThrow(async () => await StoreHelper.restoreSession())
+    result.should.equal(visit._id)
+    done()
+  })
+
+  it('clearSession', done => {
+    should.doesNotThrow(async () => await StoreHelper.clearSession())
+    should.not.exist(sessionStorage.getItem(sKeys.C_ACTIVITY))
+    should.not.exist(sessionStorage.getItem(sKeys.C_STUDENT))
+    should.not.exist(sessionStorage.getItem(sKeys.SEED_ID))
+    should.not.exist(sessionStorage.getItem(sKeys.IS_READONLY_INSTRUCTOR))
+    done()
+  })
+
 
   it('loadVisitRecord', async done => {
     const visitId = mockData.visit._id
@@ -701,6 +760,115 @@ describe('StoreHelper testing', () => {
     const result = testHelper.getVisitProperty('visitData')
     result.should.equal(visit)
     done()
+  })
+
+  it('loadDevelopingSeed', async done => {
+    await axiosMockHelper.prepareAxiosResponse('get', { seeddata: mockData.seedData })
+    should.doesNotThrow(async () => {
+      await StoreHelper.loadDevelopingSeed()
+      const seedId = StoreHelper.getSeedId()
+      seedId.should.equal(mockData.seedData._id)
+      done()
+    })
+  })
+})
+
+describe('auth/admin tests', () => {
+  
+  beforeEach(() => _beforeEach())
+
+  it('fetchAndStoreAuthToken', async done => {
+    const refreshToken = 'testRefreshToken'
+    const token = 'authToken'
+    await axiosMockHelper.prepareAxiosResponse('post', { token })
+    const result = await StoreHelper.fetchAndStoreAuthToken(refreshToken)
+    should.doesNotThrow(async () => await StoreHelper.fetchAndStoreAuthToken(refreshToken))
+    result.should.equal(token)
+    done()
+  })
+
+  it('fetchTokenData', async done => {
+    should.doesNotThrow(async () => {
+      await axiosMockHelper.prepareAxiosResponse('post', { authPayload: 'payload' })
+      await StoreHelper.fetchTokenData('testToken')
+      done()
+    })
+
+  })
+
+  it('adminLogin (200 status)', async done => {
+    const adminPassword = 'adminPassword'
+    const token = 'adminToken'
+    await axiosMockHelper.prepareAxiosResponse('post', { token }, 200)
+    const adminToken = await StoreHelper.adminLogin(adminPassword)
+    should.doesNotThrow(async () => await StoreHelper.adminLogin(adminPassword))
+    adminToken.should.equal(token)
+    done()
+  })
+
+  it('adminLogin (201 status)', async done => {
+    const adminPassword = 'adminPassword'
+    const token = 'adminToken'
+    await axiosMockHelper.prepareAxiosResponse('post', { token }, 201)
+    StoreHelper.adminLogin(adminPassword)
+      .catch(err => {
+        err.should.equal('The token has been created. Please, contact an administrator to get it.')
+        done()
+      })
+  })
+
+  it('adminValidate', async done => {
+    should.doesNotThrow(async () => {
+      const token = 'adminToken'
+      await axiosMockHelper.prepareAxiosResponse('post', { isAdmin: true })
+      const result = await StoreHelper.adminValidate(token)
+      result.isAdmin.should.equal(true)
+      done()
+    }) 
+  })
+
+  it('getAuthData', async done => {
+    const authPayload = 'payload'
+    await axiosMockHelper.prepareAxiosResponse('post', { authPayload })
+    await StoreHelper.fetchTokenData('testToken')
+    const response = await StoreHelper.getAuthData()
+    response.authPayload.should.equal(authPayload)
+    done()
+  })
+
+  it('getAuthToken', async done => {
+    const token = 'authToken'
+    const refreshToken = 'testRefreshToken'
+    await axiosMockHelper.prepareAxiosResponse('post', { token })
+    await StoreHelper.fetchAndStoreAuthToken(refreshToken)
+    const result = StoreHelper.getAuthToken()
+    result.should.equal(token)
+    done()
+  })
+
+  it('logUserOutOfEdEHR', async done => {    
+    await StoreHelper.logUserOutOfEdEHR()
+    const authToken = localStorage.getItem(sKeys.AUTH_TOKEN)
+    const visitData = testHelper.getVisitProperty('visitData')
+    should.not.exist(authToken)
+    Object.keys(visitData).length.should.equal(0)
+    done()
+  })
+})
+
+describe('Compound loading function tests', () => {
+  beforeEach(() => _beforeEach())
+
+  it('loadAssignmentAndSeedLists', async done => {
+    await axiosMockHelper.createCompoundGetResponse()
+    should.doesNotThrow(async () => {
+      await StoreHelper.loadAssignmentAndSeedLists()
+      const assignments = StoreHelper.getAssignmentsList()
+      const seedData = StoreHelper.getSeedDataList()
+      assignments.should.equal(mockData.assignmentListing)
+      JSON.stringify(seedData).should.equal(JSON.stringify(mockData.seedDataList))
+      done()
+    })
   })
 
   it('loadCommon', async done => {
@@ -719,24 +887,6 @@ describe('StoreHelper testing', () => {
       JSON.stringify(seedData).should.equal(JSON.stringify(mockData.seedDataList))
       done()
     })
-  })
-
-  it('restoreSession', async done => {
-    const { activity, visit } = mockData
-    await axiosMockHelper.prepareAxiosResponse('get', { activity })
-    const result = await StoreHelper.restoreSession()
-    should.doesNotThrow(async () => await StoreHelper.restoreSession())
-    result.should.equal(visit._id)
-    done()
-  })
-
-  it('clearSession', done => {
-    should.doesNotThrow(async () => await StoreHelper.clearSession())
-    should.not.exist(sessionStorage.getItem(sKeys.C_ACTIVITY))
-    should.not.exist(sessionStorage.getItem(sKeys.C_STUDENT))
-    should.not.exist(sessionStorage.getItem(sKeys.SEED_ID))
-    should.not.exist(sessionStorage.getItem(sKeys.IS_READONLY_INSTRUCTOR))
-    done()
   })
 
   it('loadStudent2', async done => {
@@ -800,4 +950,122 @@ describe('StoreHelper testing', () => {
     JSON.stringify(seedData).should.equal(JSON.stringify(mockData.seedDataList))
     done()
   })
+})
+
+describe('Demonstration related', () => {
+  beforeEach(() => _beforeEach())
+
+  it('createDemoToolConsumer', async done => {
+    const payload = { demoToken: 'demoToken' }
+    await axiosMockHelper.prepareAxiosResponse('post', payload)
+    const token = await StoreHelper.createDemoToolConsumer()
+    token.should.equal(payload.demoToken)
+    done()
+  })
+
+  it('loadDemoData', async done => {
+    const { demoData } = mockData
+    await axiosMockHelper.prepareAxiosResponse('get', { demoData })
+    const result = await StoreHelper.loadDemoData()
+    JSON.stringify(result).should.equal(JSON.stringify(demoData))
+    done()
+  })
+
+  it('getDemoToken', done => {
+    const demoToken = 'demoToken'
+    const token = StoreHelper.getDemoToken()
+    token.should.equal(demoToken)
+    done()
+  })
+
+  it('setDemoPersona', async done => {
+    const persona = mockData.demoData.personaList[0]
+    should.doesNotThrow(() => StoreHelper.setDemoPersona(persona))
+    done()
+    
+  })
+
+  it('getDemoPersona', done => {
+    const persona = mockData.demoData.personaList[0]
+    const result = StoreHelper.getDemoPersona()
+    result.should.equal(persona)
+    done()
+  })
+
+  it('getDemoTokenData', done => {
+    const data = StoreHelper.getDemoTokenData()
+    data.should.equal(mockData.demoData)
+    done()
+  })
+
+  it('isDemoMode', done => {
+    const isDemo = StoreHelper.isDemoMode()
+    isDemo.should.equal(true)
+    done()
+  })
+
+  it('setDemoToken', done => {
+    const demoToken = 'newDemoToken'
+    should.doesNotThrow(() => StoreHelper.setDemoToken(demoToken))
+    const token = StoreHelper.getDemoToken()
+    token.should.equal(demoToken)
+    done()
+  })
+
+  it('setDemoAssignment', done => {
+    const assignment = mockData.assignment
+    StoreHelper.setDemoAssignment(assignment)
+    const result = testHelper.dispatchGetter('demoStore/demoAssignment')
+    assignment.should.equal(result)
+    done()
+  })
+
+  it('submitPersona', async done => {
+    const persona = mockData.demoData.personaList[0]
+    const { assignment, demoData } = mockData
+    const submitData = {
+      assignmentName: assignment.name, 
+      externalId: assignment.externalId, 
+      personaName: persona.name, 
+      personaEmail: persona.email, 
+      personaRole: persona.role, 
+      returnUrl: 'returnUrl', 
+      toolKey: demoData.toolConsumerKey
+    }
+    await axiosMockHelper.prepareAxiosResponse('post', { triggered: true })
+    const result = await StoreHelper.submitPersona(submitData)
+    result.triggered.should.equal(true)
+    done()
+  })
+
+  it('submitAcceptsTerms', done => {
+    should.doesNotThrow(() => StoreHelper.submitAcceptsTerms(true))
+    done()
+  })
+
+  it('getDemoAcceptTerms', done => {
+    const accept = StoreHelper.getDemoAcceptTerms()
+    accept.should.equal(true)
+    done()
+  })
+
+  it('setDemoFeatureFlag', done => {
+    should.doesNotThrow(() => StoreHelper.setDemoFeatureFlag(true))
+    done()
+  })
+
+  it('getDemoFeatureFlag', done => {
+    const flag = StoreHelper.getDemoFeatureFlag()
+    flag.should.equal(true)
+    done()
+  })
+
+  it('demoLogout', async done => {
+    await axiosMockHelper.prepareAxiosResponse('post', null)
+    await StoreHelper.demoLogout()
+    const demoToken = StoreHelper.getDemoToken()
+    should.not.exist(demoToken)
+    done()
+  })
+
 })
