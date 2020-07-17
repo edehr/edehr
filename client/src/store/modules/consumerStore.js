@@ -27,6 +27,7 @@ const getters = {
     if (debug) console.log(NAME + ' get lmsName', prop)
     return prop
   },
+  consumer: state => state.dataStore
 }
 
 const actions = {

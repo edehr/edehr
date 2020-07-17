@@ -50,7 +50,8 @@ const getters = {
   },
   isReadOnlyInstructor: state => {
     return sessionStorage.getItem(sKeys.IS_READONLY_INSTRUCTOR)
-  }
+  },
+  visitData: state => state.sVisitData
 }
 
 const actions = {

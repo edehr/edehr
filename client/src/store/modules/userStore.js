@@ -23,7 +23,8 @@ const getters = {
     let info = state.dataStore
     let name = info ? info.givenName : ''
     return name
-  }
+  },
+  user: state => state.dataStore
 }
 
 const actions = {

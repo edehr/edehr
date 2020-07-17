@@ -32,6 +32,7 @@ const actions = {
         let sd = sdList.find(sd => { return sd._id === ass.seedDataId })
         ass.seedDataObj = sd || {}
       })
+      // this should be dealt inside a dispatch
       context.commit('setAssignmentsListing', list)
       return list
     })

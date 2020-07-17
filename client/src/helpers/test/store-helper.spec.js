@@ -1,6 +1,7 @@
 import should from 'should'
 import StoreHelper from '../store-helper'
 import * as testHelper from './testHelper'
+import sKeys from '../session-keys'
 // import instoreFactory from './instoreFactory'
 const mockData = require('./mockData.json')
 const axiosMockHelper = require('./axios-mock-helper')
@@ -18,19 +19,20 @@ const resetAxiosResponse = () => {
   methods.map(m => axiosMockHelper.prepareAxiosResponse(m, {}))
 }
 
-beforeEach(() => {
-  resetAxiosResponse()
-  testHelper.setActivityMocks()
-  testHelper.setActivityDataMocks()
-  testHelper.setAssignmentMocks()
-  testHelper.setAssignmentListingMocks()
-  testHelper.setConsumerMocks()
-  testHelper.setConsumerListingMocks()
-  testHelper.setSeedDataMocks()
-  testHelper.setUserMocks()
-  testHelper.setVisitMocks()
-})
 describe('StoreHelper testing', () => {
+  beforeEach(() => {
+    testHelper.setActivityMocks()
+    testHelper.setActivityDataMocks()
+    testHelper.setAssignmentMocks()
+    testHelper.setAssignmentListingMocks()
+    testHelper.setConsumerMocks()
+    testHelper.setConsumerListingMocks()
+    testHelper.setSeedDataMocks()
+    testHelper.setSeedDataListMocks()
+    testHelper.setUserMocks()
+    testHelper.setVisitMocks()
+    resetAxiosResponse()
+  })
   it('getAsLoadedPageData', done => {
     const asLoaded = StoreHelper.getAsLoadedPageData(pageKey)
     should.exist(asLoaded)
@@ -135,7 +137,6 @@ describe('StoreHelper testing', () => {
   })
 
   it('setIsReadOnlyInstructor', done => {
-    StoreHelper.setIsReadOnlyInstructor(true)
     should.doesNotThrow(() => StoreHelper.setIsReadOnlyInstructor(true))
     done()
   })
@@ -248,7 +249,6 @@ describe('StoreHelper testing', () => {
 
   it('setApiError', done => {
     const message = 'test error message'
-    StoreHelper.setApiError(message)
     should.doesNotThrow(() => StoreHelper.setApiError(message))
     const apiError = testHelper.getSystemProperty('apiError')
     apiError.should.equal(message)
@@ -627,7 +627,7 @@ describe('StoreHelper testing', () => {
     const { seedDataList } = mockData
     const result = StoreHelper.getSeedDataList()
     should.doesNotThrow(() => StoreHelper.getSeedDataList())
-    result.should.equal(seedDataList)
+    JSON.stringify(result).should.equal(JSON.stringify(seedDataList))
     done()
   })
   
@@ -682,6 +682,122 @@ describe('StoreHelper testing', () => {
     should.doesNotThrow(async () => await StoreHelper.createConsumer(consumer))
     result.includes(consumer).should.equal(true)
     done()
+  })
 
+  it('getPanelData' , done => {
+    const panelData = StoreHelper.getPanelData()
+    should.doesNotThrow(() => StoreHelper.getPanelData())
+    should.exist(panelData)
+    Object.keys(panelData).length.should.be.greaterThan(0)
+    done()
+  })
+
+  it('loadVisitRecord', async done => {
+    const visitId = mockData.visit._id
+    const { visit } = mockData
+    await axiosMockHelper.prepareAxiosResponse('get', { visit })
+    await StoreHelper.loadVisitRecord(visitId)
+    should.doesNotThrow(async () => await StoreHelper.loadVisitRecord(visitId))
+    const result = testHelper.getVisitProperty('visitData')
+    result.should.equal(visit)
+    done()
+  })
+
+  it('loadCommon', async done => {
+    await axiosMockHelper.createCompoundGetResponse()
+    should.doesNotThrow(async () => {
+      await StoreHelper.loadCommon()
+      const activityId = StoreHelper.getActivityId()
+      const assignments = StoreHelper.getAssignmentsList()
+      const consumer = testHelper.dispatchGetter('consumerStore/consumer')
+      const user = testHelper.dispatchGetter('userStore/user')
+      const seedData = StoreHelper.getSeedDataList()
+      activityId.should.equal(mockData.activity._id)
+      assignments.should.equal(mockData.assignmentListing)
+      consumer.should.equal(mockData.consumer)
+      user.should.equal(mockData.user)
+      JSON.stringify(seedData).should.equal(JSON.stringify(mockData.seedDataList))
+      done()
+    })
+  })
+
+  it('restoreSession', async done => {
+    const { activity, visit } = mockData
+    await axiosMockHelper.prepareAxiosResponse('get', { activity })
+    const result = await StoreHelper.restoreSession()
+    should.doesNotThrow(async () => await StoreHelper.restoreSession())
+    result.should.equal(visit._id)
+    done()
+  })
+
+  it('clearSession', done => {
+    should.doesNotThrow(async () => await StoreHelper.clearSession())
+    should.not.exist(sessionStorage.getItem(sKeys.C_ACTIVITY))
+    should.not.exist(sessionStorage.getItem(sKeys.C_STUDENT))
+    should.not.exist(sessionStorage.getItem(sKeys.SEED_ID))
+    should.not.exist(sessionStorage.getItem(sKeys.IS_READONLY_INSTRUCTOR))
+    done()
+  })
+
+  it('loadStudent2', async done => {
+    await axiosMockHelper.createCompoundGetResponse()
+    should.doesNotThrow(async () => {
+      await StoreHelper.loadStudent2()
+      const activityId = StoreHelper.getActivityId()
+      const activityData = StoreHelper.getActivityData()
+      const assignment = await StoreHelper.getAssignment()
+      const assignments = StoreHelper.getAssignmentsList()
+      const consumer = testHelper.dispatchGetter('consumerStore/consumer')
+      const user = testHelper.dispatchGetter('userStore/user')
+      const seedData = StoreHelper.getSeedDataList()
+      activityId.should.equal(mockData.activity._id)
+      activityData.should.equal(mockData.activityData)
+      assignment.should.equal(mockData.assignment)
+      assignments.should.equal(mockData.assignmentListing)
+      consumer.should.equal(mockData.consumer)
+      user.should.equal(mockData.user)
+      JSON.stringify(seedData).should.equal(JSON.stringify(mockData.seedDataList))
+      done()
+    })
+  })
+
+  it('loadInstructor2', async done => {
+    await axiosMockHelper.createCompoundGetResponse()
+    should.doesNotThrow(async () => {
+      await StoreHelper.loadInstructor2()
+      const activityId = StoreHelper.getActivityId()
+      const assignments = StoreHelper.getAssignmentsList()
+      const consumer = testHelper.dispatchGetter('consumerStore/consumer')
+      const courses = testHelper.dispatchGetter('instructor/sCourses')
+      const user = testHelper.dispatchGetter('userStore/user')
+      const seedData = StoreHelper.getSeedDataList()
+      activityId.should.equal(mockData.activity._id)
+      assignments.should.equal(mockData.assignmentListing)
+      consumer.should.equal(mockData.consumer)
+      courses.should.equal(mockData.courses)
+      user.should.equal(mockData.user)
+      JSON.stringify(seedData).should.equal(JSON.stringify(mockData.seedDataList))
+      done()
+    })
+  })
+
+  it('loadInstructorWithStudent', async done => {
+    await axiosMockHelper.createCompoundGetResponse()
+    should.doesNotThrow(async () => await StoreHelper.loadInstructorWithStudent(true))
+    const activityId = StoreHelper.getActivityId()
+    const activityData = StoreHelper.getActivityData()
+    const assignment = await StoreHelper.getAssignment()
+    const assignments = StoreHelper.getAssignmentsList()
+    const consumer = testHelper.dispatchGetter('consumerStore/consumer')
+    const user = testHelper.dispatchGetter('userStore/user')
+    const seedData = StoreHelper.getSeedDataList()
+    activityId.should.equal(mockData.activity._id)
+    activityData.should.equal(mockData.activityData)
+    assignment.should.equal(mockData.assignment)
+    assignments.should.equal(mockData.assignmentListing)
+    consumer.should.equal(mockData.consumer)
+    user.should.equal(mockData.user)
+    JSON.stringify(seedData).should.equal(JSON.stringify(mockData.seedDataList))
+    done()
   })
 })

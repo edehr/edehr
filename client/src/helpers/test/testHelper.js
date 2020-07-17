@@ -15,6 +15,14 @@ export const getSystemProperty = (key) => {
   return store.getters[`system/${key}`]
 }
 
+export const getVisitProperty = (key) => {
+  return store.getters[`visit/${key}`]
+}
+
+export const dispatchGetter = (str) => {
+  return store.getters[str]
+}
+
 export const instructorCommit = (payload, key) => {
   store.commit(`instructor/${key}`, payload)
 }
@@ -48,6 +56,11 @@ export const setSeedDataMocks = (payload = mockData.seedData) => {
   store.commit('seedListStore/_setSeedContent', payload)
   store.commit('seedListStore/_setSeedId', payload._id)
   store.commit('seedListStore/_setSeedDataList', mockData.seedDataList)
+}
+
+export const setSeedDataListMocks = (payload = mockData.seedDataList) => {
+  const key = '_setSeedDataList'
+  store.commit(`seedListStore/${key}`, payload)
 }
 
 export const setUserMocks = (payload = mockData.user) => {

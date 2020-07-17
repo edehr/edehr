@@ -17,7 +17,7 @@
     "closedDate": "2020-06-15T12:12:18.510Z"
   },
   "activityData": {
-    "_id": "studentActivityData",
+    "_id": "activityData",
     "submitted": false,
     "evaluated": false,
     "toolConsumer": "5eb2b706df6c04d3212355da",
@@ -112,7 +112,9 @@
     "isStudent": true,
     "isInstructor": false,
     "isDeveloper": false,
-    "returnUrl": "https://return-url.com"
+    "returnUrl": "https://return-url.com",
+    "activity": "5eb2bf6ddf6c04d3212355e1",
+    "assignment": "assignmentId"
   },
   "user": {
     "_id": "student",
