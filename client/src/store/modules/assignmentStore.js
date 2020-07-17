@@ -62,6 +62,7 @@ const actions = {
     return InstoreHelper.deleteRequest(context, API, url)
       .then(response => {
         if (debug) console.log('delete response >>', response)
+        return response.data
       })
   }
 }
