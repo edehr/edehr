@@ -15,8 +15,7 @@ const getters = {
 }
 
 const actions = {
-
-  loadAssignments (context) {
+  getAssignments (context) {
     let url = 'consumer/' + StoreHelper.toolConsumerId()
     return InstoreHelper.getRequest(context, API, url).then(response => {
       let list = response.data.assignments
@@ -32,9 +31,15 @@ const actions = {
         let sd = sdList.find(sd => { return sd._id === ass.seedDataId })
         ass.seedDataObj = sd || {}
       })
-      context.commit('setAssignmentsListing', list)
       return list
     })
+  },
+  
+  async loadAssignments (context) {
+    const { dispatch, commit } = context
+    const list = await dispatch('getAssignments', context)
+    commit('setAssignmentsListing', list)
+    return list
   },
 
   // loadSeedsIntoAssignments (context) {

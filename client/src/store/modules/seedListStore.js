@@ -18,7 +18,9 @@ export const getters = {
 
   seedEhrData: state => { return state.sSeedContent.ehrData || {} },
 
-  list: state => { return state.seedDataList }
+  list: state => { return state.seedDataList },
+  
+  seedId: state => state.sSeedId
 }
 
 const actions = {
