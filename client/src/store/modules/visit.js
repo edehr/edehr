@@ -50,7 +50,8 @@ const getters = {
   },
   isReadOnlyInstructor: state => {
     return sessionStorage.getItem(sKeys.IS_READONLY_INSTRUCTOR)
-  }
+  },
+  visitData: state => state.sVisitData
 }
 
 const actions = {
@@ -93,7 +94,7 @@ const mutations = {
     if(debug) console.log('visit store top level menu ' + (top ? top : 'empty'))
     state.topLevelMenu = top
   },
-  setIsReadOnlyInstructor: (val) => {
+  setIsReadOnlyInstructor: (state, val) => {
     sessionStorage.setItem(sKeys.IS_READONLY_INSTRUCTOR, val)
   }
 }

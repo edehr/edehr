@@ -1,0 +1,256 @@
+{
+  "apiUrl": "http://localhost:27000/api",
+  "activity": {
+    "_id": "5eb2bf6ddf6c04d3212355e1",
+    "closed": true,
+    "context_id": "3",
+    "context_label": "EDEHR001",
+    "context_title": "Educational EHR Proof of Concept 1",
+    "context_type": "CourseSection",
+    "resource_link_id": "20",
+    "resource_link_title": "localhost assignment1",
+    "resource_link_description": "Resource link description...",
+    "toolConsumer": "5eb2b706df6c04d3212355da",
+    "assignment": "5eb2bf6ddf6c04d3212355e0",
+    "createDate": "2020-05-06T13:45:17.941Z",
+    "lastDate": "2020-05-06T13:45:17.941Z",
+    "closedDate": "2020-06-15T12:12:18.510Z"
+  },
+  "activityData": {
+    "_id": "activityData",
+    "submitted": false,
+    "evaluated": false,
+    "toolConsumer": "5eb2b706df6c04d3212355da",
+    "visit": "5eb2bf6edf6c04d3212355e2",
+    "createDate": "2020-05-06T13:45:18.332Z",
+    "lastDate": "2020-05-06T13:45:18.332Z",
+    "assignmentData": "Student assignment data",
+    "scratchData": "Scratch Data!",
+    "evaluationData": "Evaluation data"
+  },
+  "assignment": {
+    "_id": "assignmentId",
+    "toolConsumer": "5eb2b706df6c04d3212355d9",
+    "externalId": "testAssignment",
+    "name": "Test Assignment",
+    "description": "This a default test assignment",
+    "ehrRoutePath": "",
+    "seedDataId": "5eb2b706df6c04d3212355db",
+    "persona": "Jason",
+    "profession": "Doctor",
+    "time": "08:00",
+    "day": "12:00"
+  },
+  "assignmentListing": [
+    {
+      "_id": "assignmentId",
+      "toolConsumer": "5eb2b706df6c04d3212355d9",
+      "externalId": "testAssignment",
+      "name": "Test Assignment",
+      "description": "This a default test assignment",
+      "ehrRoutePath": "",
+      "seedDataId": "5eb2b706df6c04d3212355db",
+      "persona": "Jason",
+      "profession": "Doctor",
+      "time": "08:00",
+      "day": "12:00"
+    },
+    {
+      "_id": "assignmentId2",
+      "toolConsumer": "5eb2b706df6c04d3212355d9",
+      "externalId": "testAssignment2",
+      "name": "Test Assignment2",
+      "description": "This a second test assignment",
+      "ehrRoutePath": "",
+      "seedDataId": "5eb2b706df6c04d3212355db",
+      "persona": "Jason",
+      "profession": "Doctor",
+      "time": "08:00",
+      "day": "12:00"
+    }
+  ],
+  "consumer": {
+    "_id": "testConsumerId",
+    "tool_consumer_instance_name": "EdEHRTests",
+    "oauth_consumer_key": "edehrkey",
+    "oauth_consumer_secret": "edehrsecret",
+    "lti_version": "LTI-1p0",
+    "createDate": "2020-05-06T13:09:26.463Z",
+    "lastUpdateDate": "2020-05-06T13:09:26.463Z",
+    "tool_consumer_info_product_family_code": "moodle",
+    "tool_consumer_info_version": "2018051702.05",
+    "tool_consumer_instance_description": "Ed EHR Prototype LMS",
+    "tool_consumer_instance_guid": "moodle.edehr.org"
+  },
+  
+  "consumerListing": [
+    {
+      "_id":"5eb2b706df6c04d3212355d9",
+      "oauth_consumer_key":"testConsumer",
+      "oauth_consumer_secret":"testSecret",
+      "lti_version":"LTI-1p0",
+      "tool_consumer_instance_name":"EdEhrTest",
+      "createDate":"2020-05-06T13:09:26.448Z",
+      "lastUpdateDate":"2020-05-06T13:09:26.448Z"
+    }, 
+    {
+      "_id": "testConsumerId",
+      "tool_consumer_instance_name": "EdEHRTests",
+      "oauth_consumer_key": "edehrkey",
+      "oauth_consumer_secret": "edehrsecret",
+      "lti_version": "LTI-1p0",
+      "createDate": "2020-05-06T13:09:26.463Z",
+      "lastUpdateDate": "2020-05-06T13:09:26.463Z",
+      "tool_consumer_info_product_family_code": "moodle",
+      "tool_consumer_info_version": "2018051702.05",
+      "tool_consumer_instance_description": "Ed EHR Prototype LMS",
+      "tool_consumer_instance_guid": "moodle.edehr.org"
+    }
+  ],
+  "visit": {
+    "_id": "studentVisit",
+    "isStudent": true,
+    "isInstructor": false,
+    "isDeveloper": false,
+    "returnUrl": "https://return-url.com",
+    "activity": "5eb2bf6ddf6c04d3212355e1",
+    "assignment": "assignmentId"
+  },
+  "user": {
+    "_id": "student",
+    "fullName": "Test User",
+    "givenName": "Given Name"
+  },
+  "instructor": {
+    "_id":"instructor",
+    "isStudent":false,
+    "isInstructor":true,
+    "isDeveloper":true,
+    "ltiData":["{\"oauth_version\":\"1.0\",\"oauth_nonce\":\"337e97309abcf74bc50124ab9b85403b\",\"oauth_timestamp\":\"1588772717\",\"oauth_consumer_key\":\"edehrkey\",\"user_id\":\"71\",\"lis_person_sourcedid\":\"\",\"roles\":\"Instructor\",\"context_id\":\"3\",\"context_label\":\"EDEHR001\",\"context_title\":\"Educational EHR Proof of Concept 1\",\"resource_link_title\":\"localhost assignment1\",\"resource_link_description\":\"\",\"resource_link_id\":\"20\",\"context_type\":\"CourseSection\",\"lis_course_section_sourcedid\":\"54321\",\"lis_result_sourcedid\":\"{\\\"data\\\":{\\\"instanceid\\\":\\\"20\\\",\\\"userid\\\":\\\"71\\\",\\\"typeid\\\":\\\"11\\\",\\\"launchid\\\":1765138014},\\\"hash\\\":\\\"ba0be23aaf5cb9a61df4baed39b87a7268b2c04315803485955cbd7447686227\\\"}\",\"lis_outcome_service_url\":\"https://moodle.edehr.org/moodle/mod/lti/service.php\",\"lis_person_name_given\":\"vinicius\",\"lis_person_name_family\":\"instructor\",\"lis_person_name_full\":\"vinicius instructor\",\"ext_user_username\":\"vinstructor\",\"lis_person_contact_email_primary\":\"vinstructor@memsharp.com\",\"launch_presentation_locale\":\"en\",\"ext_lms\":\"moodle-2\",\"tool_consumer_info_product_family_code\":\"moodle\",\"tool_consumer_info_version\":\"2018051702.05\",\"oauth_callback\":\"about:blank\",\"lti_version\":\"LTI-1p0\",\"lti_message_type\":\"basic-lti-launch-request\",\"tool_consumer_instance_guid\":\"moodle.edehr.org\",\"tool_consumer_instance_name\":\"Ed EHR LMS\",\"tool_consumer_instance_description\":\"Ed EHR Prototype LMS\",\"custom_assignment\":\"assignment1\",\"launch_presentation_document_target\":\"frame\",\"launch_presentation_return_url\":\"https://moodle.edehr.org/moodle/mod/lti/return.php?course=3&launch_container=5&instanceid=20&sesskey=R357CL6bQ7\",\"oauth_signature_method\":\"HMAC-SHA1\",\"oauth_signature\":\"cd3nRiDzNZ8/QHT6myqg+p+AMmg=\"}"],
+    "toolConsumer":"5eb2b706df6c04d3212355da",
+    "consumerKey":"edehrkey",
+    "user":"5eb2bf6ddf6c04d3212355df",
+    "userName":"vinicius instructor",
+    "activity":"5eb2bf6ddf6c04d3212355e1",
+    "assignment":"5eb2bf6ddf6c04d3212355e0",
+    "returnUrl":"https://moodle.edehr.org/moodle/mod/lti/return.php?course=3&launch_container=5&instanceid=20&sesskey=Ao7yg0TBKl",
+    "createDate":"2020-05-06T13:45:18.228Z",
+    "lastVisitDate":"2020-05-09T14:13:17.623Z",
+    "activityData":"5eb2bf6edf6c04d3212355e3"
+  },
+  "classList":  [
+    { 
+    "_id": "currentEvaluationStudentId", 
+    "user": "test user", 
+    "activity": "testActivity",
+    "activityData": { "_id": "activitityDataId", "assignmentData": "test activity data" } 
+    },
+    {
+      "_id": "currentEvaluationStudentId2", 
+      "user": "test user2", 
+      "activity": "testActivity2",
+      "activityData": { "_id": "activitityDataId2", "assignmentData": "test activity data2" }
+    }
+  ],
+  "courses": [
+    {
+      "_id": "acourseid",
+      "activities": [
+        { 
+          "_id": "activityId1", 
+          "assignment": "assignment1"
+        },
+        { 
+          "_id": "activityId2", 
+          "assignment": "assignment2"
+        },
+        { 
+          "_id": "activityId3", 
+          "assignment": "assignment3"
+        }
+      ]
+    },
+    {
+      "_id": "anothercourseid",
+      "activities": [
+        { 
+          "_id": "activityId1", 
+          "assignment": "assignment1"
+        },
+        { 
+          "_id": "activityId2", 
+          "assignment": "assignment2"
+        },
+        { 
+          "_id": "activityId3", 
+          "assignment": "assignment3"
+        }
+      ]
+    }
+  ],
+  "seedData": {
+    "_id": "5eb2b706df6c04d3212355db",
+    "isDefault": true,
+    "name": "Demo seed data",
+    "description": "This a demo-only seed data",
+    "version": "1",
+    "ehrData": {},
+    "toolConsumer": "5eb2b706df6c04d3212355d9",
+    "createDate": "2020-05-06T13:09:26.481Z",
+    "lastUpdateDate": "2020-05-06T13:09:26.481Z"
+  },
+  "seedDataList": [
+    {
+      "_id": "5eb2b706df6c04d3212355ab",
+      "isDefault": true,
+      "name": "Demo seed data",
+      "description": "This a demo-only seed data 1",
+      "version": "1",
+      "ehrData": {},
+      "toolConsumer": "5eb2b706df6c04d3212355d9",
+      "createDate": "2020-05-06T13:09:26.481Z",
+      "lastUpdateDate": "2020-05-06T13:09:26.481Z"
+    },
+    {
+      "_id": "5eb2b706df6c04d3212355cd",
+      "isDefault": true,
+      "name": "Demo seed data 2",
+      "description": "This a demo-only seed data 2",
+      "version": "1",
+      "ehrData": {},
+      "toolConsumer": "5eb2b706df6c04d3212355d9",
+      "createDate": "2020-05-06T13:09:26.481Z",
+      "lastUpdateDate": "2020-05-06T13:09:26.481Z"
+    }
+  ],
+  "demoData": {
+    "toolConsumerKey": "80e96b6f-d2d0-4a82-af50-99883bf1c369",
+    "toolConsumerId": "5eedefab5efef21b3ba93f03",
+    "personaList": [
+      { 
+        "id": 1,
+        "name": "Instructor A",
+        "email": "instructor@bccampus.org",
+        "role": "instructor"
+      },
+      {
+        "id": 2,
+        "name": "Student A",
+        "email": "studenta@bccampus.org",
+        "role": "student"
+      },
+      {
+        "id": 3,
+        "name": "Student B",
+        "email": "studentb@bccampus.org",
+        "role": "student"
+      },
+      {
+        "id": 4,
+        "name": "Student C",
+        "email": "studentc@bccampus.org",
+        "role": "student"
+      }
+    ]
+  }
+}

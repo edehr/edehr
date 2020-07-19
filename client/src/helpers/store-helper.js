@@ -1,7 +1,6 @@
 import store from '../store'
 import {removeEmptyProperties } from './ehr-utils'
 import sKeys from './session-keys'
-
 const debugSH = false
 
 // TODO refactor this class See https://github.com/BCcampus/edehr/issues/760
@@ -51,7 +50,6 @@ class StoreHelperWorker {
   isInstructor () { return this._getVisitProperty('isInstructor') }
   isDeveloper () { return this._getVisitProperty('isDeveloper') }
   isStudent () { return this._getVisitProperty('isStudent') }
-  isAdmin () { return this._get}
   // isDemo see demo section
 
   /**
@@ -191,9 +189,9 @@ class StoreHelperWorker {
 
   getAssignmentId () { return this._getAssignmentProperty('id') }
 
-  getAssignmentName () { return this._getActivityProperty('assignmentName') }
+  getAssignmentName () { return this._getAssignmentProperty('assignmentName') }
 
-  getAssignmentDescription () { return this._getActivityProperty('assignmentDescription') }
+  getAssignmentDescription () { return this._getAssignmentProperty('assignmentDescription') }
 
   getAssignment (id) { return this._dispatchAssignment('get', id) }
 

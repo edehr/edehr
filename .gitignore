@@ -39,3 +39,5 @@ docs/.vuepress/dist/**
 server/.session/
 database/data/**
 database/backup/dump/**
+
+.vscode/

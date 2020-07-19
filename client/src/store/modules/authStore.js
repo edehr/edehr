@@ -55,7 +55,7 @@ const actions = {
           return Promise.reject('The token has been created. Please, contact an administrator to get it.')
         }
       }).catch(err => {
-        return Promise.reject(err.response.data)
+        return Promise.reject(err)
       })
   },
   adminValidate: function (none, { token }) {
