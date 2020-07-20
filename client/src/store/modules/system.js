@@ -11,20 +11,11 @@ const state = {
 }
 
 const getters = {
-  isLoading: state => {
-    return state._isLoading
-  },
-  isShowingAdvanced: state => {
-    return state._isShowingAdvanced
-  },
+  isLoading: state => state._isLoading,
+  isShowingAdvanced: state => state._isShowingAdvanced,
   isSigning: state => state.isSigning,
-  apiError: state => {
-    return state.apiError
-  },
-  sysMessage: state => {
-    return state.sysMessage
-  }
-
+  apiError: state => state.apiError,
+  sysMessage: state => state.sysMessage
 }
 
 const actions = {}
