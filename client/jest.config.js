@@ -19,6 +19,11 @@ module.exports = {
     '!**/*.config.js',
     '!**/dist/**',
     '!**/node_modules/**',
-    '!**/coverage/**'
+    '!**/coverage/**',
+    '!**/src/tests/**',
+    '!**/tests/**',
+    '!**/src/store/test/**',
+    '!**/src/helpers/test/**',
+    '!**/src/inside/views/**'
   ]
 }

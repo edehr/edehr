@@ -2,21 +2,11 @@ import EhrDefs from '../ehr-defs-grid'
 import store from '../../store'
 
 const mockData = require('./mockData.json')
-
-export const STASH_KEY = 'consumerId'
   
 export const isTruthy = val => (val === true || val === 'true')
 
 export const getPageKeys = () => {
   return EhrDefs.getAllPageKeys()
-}
-
-export const getSystemProperty = (key) => {
-  return store.getters[`system/${key}`]
-}
-
-export const getVisitProperty = (key) => {
-  return store.getters[`visit/${key}`]
 }
 
 export const dispatchGetter = (str) => {
