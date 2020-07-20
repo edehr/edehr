@@ -1,9 +1,16 @@
 import EhrDefs from '../ehr-defs-grid'
 import store from '../../store'
 
+const axiosMockHelper = require('./axios-mock-helper')
 const mockData = require('./mockData.json')
   
 export const isTruthy = val => (val === true || val === 'true')
+
+
+export const resetAxiosResponse = () => {
+  const methods = ['get', 'post', 'put', 'delete']
+  methods.map(m => axiosMockHelper.prepareAxiosResponse(m, {}))
+}
 
 export const getPageKeys = () => {
   return EhrDefs.getAllPageKeys()

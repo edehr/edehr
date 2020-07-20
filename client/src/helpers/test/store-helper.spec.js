@@ -13,11 +13,6 @@ jest.mock('axios')
 
 const pageKey = testHelper.getPageKeys[0]
 
-const resetAxiosResponse = () => {
-  const methods = ['get', 'post', 'put', 'delete']
-  methods.map(m => axiosMockHelper.prepareAxiosResponse(m, {}))
-}
-
 const _beforeEach = () => {
   testHelper.setActivityMocks()
   testHelper.setActivityDataMocks()
@@ -29,7 +24,7 @@ const _beforeEach = () => {
   testHelper.setSeedDataListMocks()
   testHelper.setUserMocks()
   testHelper.setVisitMocks()
-  resetAxiosResponse()
+  testHelper.resetAxiosResponse()
 }
 
 describe('General testing', () => {
