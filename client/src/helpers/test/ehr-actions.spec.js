@@ -89,6 +89,4 @@ describe('Testing ehr-actions', () => {
     done()
   })
 
-
-
 })
