@@ -1,11 +1,9 @@
 const should = require('should')
 import EhrDefsGrid from '../ehr-defs-grid'
-import * as testHelpers from './testHelper'
 
 const DEFAULT_KEY = 'allergies'
 const PAGE_TABLE_KEY = 'biopsychosocial'
 
-const pageKeys = testHelpers.getPageKeys()
 // console.log('pageKeys >> ', pageKeys)
 // console.log('pageKeys >> ', pageKeys.map(k => EhrDefsGrid.getPageDefinition(k) ))
 const elemKey = 'text'
