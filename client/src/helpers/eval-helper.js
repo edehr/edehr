@@ -121,9 +121,15 @@ class EvalHelperWorker {
   }
 
 
-  goToEhr (studentVisit) {
+  goToEhr (studentVisit, customRouter = router) {
     // Assumes the activity and assignment and seed are all in place.
     // switch to the EHR with the current student's information loaded
+
+    // The customRouter parameter is being passed in order to satisfy some 
+    // testing / mocking needs. 
+    // In short, during the tests, a mocked router can be passed and, if it's not passed, it 
+    // falls back to the imported router. Please refer to this function's unit test for more 
+    // information on how the mocking of the router is implemented.
     return this.changeStudent(studentVisit._id)
       .then( () => {
         // The isDev flag may be set .. it needs to be OFF to evaluate a student.
@@ -131,7 +137,7 @@ class EvalHelperWorker {
         // Go to the EHR with current student
         // todo move this path to some global definition file
         let name = '/ehr/patient/demographics'
-        router.push(name)
+        customRouter.push(name)
       })
   }
 
