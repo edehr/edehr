@@ -252,5 +252,62 @@
         "role": "student"
       }
     ]
+  },
+  "ehrUtilsData": {
+    "pageOne": {
+      "aPage1": {
+        "p1": 1,
+        "emptyString": "",
+        "nullProp": null,
+        "emptyProp": null
+      },
+      "visit": {
+        "location": [{ "location": "in one", "transferInDay": 1, "transferInTime": 1 }],
+        "admissionDay": "Day 1",
+        "admissionTime": "7:00am",
+        "propertyInOne": "propertyInOne",
+        "status": "From One"
+      },
+      "cardiovascular": {
+        "table": [
+          {
+            "name": "Jane",
+            "profession": "nurse",
+            "day": 0,
+            "time": "9:00",
+            "pulse": "Regular",
+            "skinAppearance": "Pale",
+            "capRefillRightHand": "Normal"
+          }
+        ]
+      }
+    },
+    "pageTwo": {
+      "visit": {
+        "location": [{ "location": "in two", "transferInDay": 2 }],
+        "admissionDay": "Day 2",
+        "admissionTime": "10:00am",
+        "consentForTreatment": false,
+        "propertyInTwo": "propertyInTwo",
+        "consentForBlood": true,
+        "diagnosis": "two diagnosis",
+        "status": "From two"
+      },
+      "aPage2": {
+        "p2": 2
+      },
+      "cardiovascular": {
+        "table": [
+          {
+            "name": "Joe",
+            "profession": "nurse",
+            "day": 1,
+            "time": "10:00",
+            "pulse": "Irregular",
+            "skinAppearance": "Dark"
+          }
+        ]
+      }
+    }
   }
 }
