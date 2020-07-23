@@ -121,7 +121,7 @@ class EvalHelperWorker {
   }
 
 
-  goToEhr (studentVisit) {
+  goToEhr (studentVisit, r = router) {
     // Assumes the activity and assignment and seed are all in place.
     // switch to the EHR with the current student's information loaded
     return this.changeStudent(studentVisit._id)
@@ -131,7 +131,7 @@ class EvalHelperWorker {
         // Go to the EHR with current student
         // todo move this path to some global definition file
         let name = '/ehr/patient/demographics'
-        router.push(name)
+        r.push(name)
       })
   }
 
