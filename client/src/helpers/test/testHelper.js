@@ -1,5 +1,6 @@
 import EhrDefs from '../ehr-defs-grid'
 import store from '../../store'
+import MockFile from './MockFile'
 
 const axiosMockHelper = require('./axios-mock-helper')
 const mockData = require('./mockData.json')
@@ -73,4 +74,8 @@ export const setVisitMocks = (payload = mockData.visit) => {
 export const setConsumerMocks = (payload = mockData.consumer) => {
   const key = 'set'
   store.commit('consumerStore/' + key, payload)
+}
+
+export const createFile = (content) => {
+  return new MockFile(content)
 }
