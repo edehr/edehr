@@ -97,6 +97,10 @@ describe('Testing evalHelper', () => {
 
   it('goToEhr', async done => {
     await evalHelper.goToEhr(studentVisitId, router)
+    // This is following jest's function mocking 
+    // (https://jestjs.io/docs/en/mock-function-api.html#mockfnmockcalls). 
+    // This mock makes sure that the router.push function was 
+    // called only once and that it redirects properly (by asserting the ehr link)...
     const [call] = router.push.mock.calls
     const isDev = StoreHelper.isDevelopingContent()
     call.length.should.equal(1)
