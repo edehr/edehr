@@ -5,7 +5,7 @@ import { setAuthHeader } from './axios-helper'
 
 const debugDH = false
 
-export default class DemoHelper {
+class DemoHelper {
 
   _getApiUrl () {
     return StoreHelper.apiUrlGet()
@@ -79,3 +79,6 @@ export default class DemoHelper {
   }
   
 }
+
+const demoHelper = new DemoHelper()
+export default demoHelper

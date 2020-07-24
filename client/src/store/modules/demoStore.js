@@ -1,9 +1,7 @@
-import DemoHelper from '../../helpers/demo-helper'
+import demoHelper from '../../helpers/demo-helper'
 import sKeys from '../../helpers/session-keys'
 
 const debugDS = false
-
-const demoHelper = new DemoHelper()
 
 const _clearDemo = () => {
   localStorage.removeItem(sKeys.DEMO_TOKEN)
