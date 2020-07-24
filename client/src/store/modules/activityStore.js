@@ -1,6 +1,5 @@
 import InstoreHelper from './instoreHelper'
 import StoreHelper from '../../helpers/store-helper'
-import sKeys from '../../helpers/session-keys'
 import { Text } from '../../helpers/ehr-text'
 const API = 'activities'
 const OBJ = 'activity'
@@ -50,15 +49,6 @@ const getters = {
 }
 
 const actions = {
-  sessionRestore: ({dispatch}) => {
-    let actId = sessionStorage.getItem(sKeys.C_ACTIVITY)
-    if (actId) {
-      if(debug) console.log('ActivityStore restore current activity id', actId)
-      return dispatch('load', actId)
-    }
-    return Promise.resolve()
-  },
-
   close ({dispatch, commit}, id) {
     let url = 'close-activity/' + id
     let payload = { url:url, data: { }}
@@ -116,8 +106,6 @@ const actions = {
 const mutations = {
   set: (state, data) => {
     state.dataStore = data
-    let actId = data._id
-    sessionStorage.setItem(sKeys.C_ACTIVITY, actId)
   },
 
 }

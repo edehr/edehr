@@ -77,9 +77,6 @@ export default {
       }
       return list
     },
-    currentStudentId () {
-      return StoreHelper.getCurrentEvaluationStudentId()
-    },
     showClassList () {
       return true
     },
@@ -105,7 +102,7 @@ export default {
     },
     findCurrent () {
       let list = this.classList
-      let id = this.currentStudentId
+      let id = StoreHelper.getCurrentEvaluationStudentId()
       return list.find(function (elem) { return elem._id === id }) || {}
     },
     previousStudent () {

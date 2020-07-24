@@ -5,7 +5,6 @@ const API = 'consumers'
 const NAME = 'ConsumerStore'
 const OBJ = 'consumer'
 const debug = false
-const STASH_KEY = 'consumerId'
 
 const state = {
   dataStore: {}
@@ -13,9 +12,7 @@ const state = {
 
 const getters = {
   consumerId: state => {
-    let id = state.dataStore._id
-    id = id ? id : sessionStorage.getItem(STASH_KEY)
-    return id
+    return state.dataStore._id
   },
   lastUpdateDate: state => {
     let prop =  state.dataStore.lastUpdateDate
@@ -54,7 +51,6 @@ const actions = {
 
 const mutations = {
   set: (state, consumer) => {
-    if (consumer) sessionStorage.setItem(STASH_KEY, consumer._id)
     state.dataStore = consumer
   }
 }
