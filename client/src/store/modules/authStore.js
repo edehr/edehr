@@ -1,8 +1,7 @@
-import AuthHelper from '../../helpers/auth-helper'
+import authHelper from '../../helpers/auth-helper'
 import sKeys from '../../helpers/session-keys'
 import { setAuthHeader } from '../../helpers/axios-helper'
 
-const authHelper = new AuthHelper()
 const debugAS = false
 
 const _setToken = (token) => {

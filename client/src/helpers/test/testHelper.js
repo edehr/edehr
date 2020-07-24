@@ -1,6 +1,7 @@
 import EhrDefs from '../ehr-defs-grid'
 import store from '../../store'
 import MockFile from './MockFile'
+import StoreHelper from '../store-helper'
 
 const axiosMockHelper = require('./axios-mock-helper')
 const mockData = require('./mockData.json')
@@ -78,4 +79,8 @@ export const setConsumerMocks = (payload = mockData.consumer) => {
 
 export const createFile = (content) => {
   return new MockFile(content)
+}
+
+export const setAPIUrl = (apiUrl = mockData.apiUrl) => {
+  StoreHelper.apiUrlSet(apiUrl)
 }

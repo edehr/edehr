@@ -4,8 +4,7 @@ import { Text } from './ehr-text'
 
 const debugA = false
 
-export default class AuthHelper {
-
+class AuthHelper {
   _getApiUrl () {
     const url = StoreHelper.apiUrlGet()
     if (debugA) console.log('AuthHelper api url is ', url)
@@ -46,3 +45,6 @@ export default class AuthHelper {
     return axios.post(url)
   }
 }
+
+const authHelper = new AuthHelper()
+export default authHelper
