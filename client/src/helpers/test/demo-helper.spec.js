@@ -10,13 +10,6 @@ jest.mock('axios')
 const token = 'demoToken'
 
 describe('demoHelper tests', () => {
-  it('_getApiUrl', done => {
-    setAPIUrl()
-    const storeUrl = StoreHelper.apiUrlGet()
-    const url = demoHelper._getApiUrl()
-    url.should.equal(storeUrl)
-    done()
-  })
 
   it('createToolConsumer', async done => {
     const payload = { token }

@@ -40,11 +40,4 @@ describe('auth-helper tests', () => {
     })
   })
 
-  it('_getApiUrl', done => {
-    setAPIUrl()
-    const storeUrl = StoreHelper.apiUrlGet()
-    const _apiUrl = authHelper._getApiUrl()
-    _apiUrl.should.equal(storeUrl)
-    done()
-  })
 })
