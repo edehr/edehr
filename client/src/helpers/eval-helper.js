@@ -1,10 +1,6 @@
 import router from '../router'
 import StoreHelper from './store-helper'
 
-// import { downArrayToCsvFile } from './ehr-utils'
-
-// const debug = false
-
 /**
  * Helper class with methods that assist instructors during evaluation of student's work.
  * Includes actions
@@ -17,59 +13,6 @@ import StoreHelper from './store-helper'
  *
  */
 class EvalHelperWorker {
-
-  /*
-  atStart () {
-    let index = this.findCurrentIndex()
-    return index === 0
-  }
-  atEnd () {
-    let index = this.findCurrentIndex()
-    return index + 1 < list.length
-  }
-  findCurrentIndex () {
-    let id = this.currentStudentId()
-    let classList = this.getClassList()
-    let index = classList.findIndex(function (elem) {
-      return elem._id === id
-    })
-    console.log('findCurrentIndex', id, ' index:', index, this.classList)
-    return { list, index }
-  }
-  gotoPrevious () {
-    let sv
-    let classList = this.getClassList()
-    let index = this.findCurrentIndex()
-    index--
-    if (index >= 0) {
-      let sv = classList[index]
-      this.changeStudent(sv)
-    }
-    return sv
-  }
-  gotoNext () {
-    let sv
-    let classList = this.getClassList()
-    let index = this.findCurrentIndex()
-    index++
-    if (index < classList.length) {
-      let sv = classList[index]
-      this.changeStudent(sv)
-    }
-    return sv
-  }
-  */
-  /*
-
-  proceed (filename) {
-    let data = []
-    data.push(['email','feedback: ' + this.activityName])
-    this.classList.forEach ( sv => {
-      data.push([sv.user.emailPrimary,sv.activityData.evaluationData])
-    })
-    downArrayToCsvFile(filename, data)
-  }
-  */
 
   forceSubmit (studentVisit) {
     console.log('EvalHelper forceSubmit sv', studentVisit)

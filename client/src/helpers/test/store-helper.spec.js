@@ -292,17 +292,17 @@ describe('classList / instructor tests', () => {
   
   it('getCurrentEvaluationStudentId', done => {
     const studentEvalId = 'currentEvaluationStudentId'
-    testHelper.instructorCommit(studentEvalId, 'setCurrentEvaluationStudentId')
     should.doesNotThrow(() => testHelper.instructorCommit(studentEvalId, 'setCurrentEvaluationStudentId'))
-    const currentEval = StoreHelper.getCurrentEvaluationStudentId()
     should.doesNotThrow(() => StoreHelper.getCurrentEvaluationStudentId())
-    should.exist(studentEvalId)
+    const currentEval = StoreHelper.getCurrentEvaluationStudentId()
+    should.exist(currentEval)
     currentEval.should.equal(studentEvalId)
     done()
   })
   
   it('getCurrentEvaluationStudentVisit', done => {
     const studentEvalId = StoreHelper.getCurrentEvaluationStudentId()
+    should.doesNotThrow(() => testHelper.instructorCommit(studentEvalId, 'setCurrentEvaluationStudentId'))
     const currentVisit = StoreHelper.getCurrentEvaluationStudentVisit()
     should.doesNotThrow(() => StoreHelper.getCurrentEvaluationStudentVisit())
     currentVisit._id.should.equal(studentEvalId)
@@ -494,15 +494,6 @@ describe('activity tests', () => {
     should.doesNotThrow(async () => await StoreHelper.openActivity(mockData.activity._id))
     result.activity.should.equal(openedActivity)
     result.activity.closed.should.equal(false)
-    done()
-  })
-
-  it('currentStudentId', done => {
-    const currentStudentId = 'currStudentId'
-    testHelper.instructorCommit(currentStudentId, 'setCurrentEvaluationStudentId')
-    const id = StoreHelper.currentStudentId()
-    should.doesNotThrow(() => StoreHelper.currentStudentId())
-    id.should.equal(currentStudentId)
     done()
   })
 
@@ -725,21 +716,8 @@ describe('Loading / restoring tests', () => {
     done()
   })
 
-  it('restoreSession', async done => {
-    const { activity, visit } = mockData
-    const token = visit._id
-    sessionStorage.setItem(sKeys.USER_TOKEN, token)
-    await axiosMockHelper.prepareAxiosResponse('get', { activity })
-    const result = await StoreHelper.restoreSession()
-    should.doesNotThrow(async () => await StoreHelper.restoreSession())
-    result.should.equal(visit._id)
-    done()
-  })
-
   it('clearSession', done => {
     should.doesNotThrow(async () => await StoreHelper.clearSession())
-    should.not.exist(sessionStorage.getItem(sKeys.C_ACTIVITY))
-    should.not.exist(sessionStorage.getItem(sKeys.C_STUDENT))
     should.not.exist(sessionStorage.getItem(sKeys.SEED_ID))
     should.not.exist(sessionStorage.getItem(sKeys.IS_READONLY_INSTRUCTOR))
     done()

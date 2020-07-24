@@ -116,7 +116,7 @@ export default {
       return list
     },
 
-    cs () { return StoreHelper.currentStudentId()},
+    cs () { return StoreHelper.getCurrentEvaluationStudentId()},
 
     promptMessage () {
       return 'Save evaluations for ' + this.activityName
@@ -129,7 +129,7 @@ export default {
   },
   methods: {
     rowClass: function (sv) {
-      let selected = sv._id === StoreHelper.currentStudentId()
+      let selected = sv._id === StoreHelper.getCurrentEvaluationStudentId()
       return selected ? 'selected' : ''
     },
     evaluatedButtonText (sv) {

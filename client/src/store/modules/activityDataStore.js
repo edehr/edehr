@@ -3,7 +3,6 @@ import StoreHelper from '../../helpers/store-helper'
 import EventBus from '../../helpers/event-bus'
 import { ACTIVITY_DATA_EVENT } from '../../helpers/event-bus'
 import { Text } from '../../helpers/ehr-text'
-import { composeAxiosResponseError } from '../../helpers/ehr-utils'
 
 const API = 'activity-data'
 const OBJ = 'activitydata'

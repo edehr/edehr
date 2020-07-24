@@ -106,7 +106,7 @@ class StoreHelperWorker {
 
   dispatchLoadClassList ( filtered ) { return this._dispatchInstructor('loadClassList', filtered)  }
 
-  getCurrentEvaluationStudentId () { return this._getInstructorProperty('currentStudentId') }
+  getCurrentEvaluationStudentId () { return this._getInstructorProperty('currentEvaluationStudentId') }
 
   getCurrentEvaluationStudentVisit () { return this._getInstructorProperty('currentEvaluationStudent') }
 
@@ -177,8 +177,6 @@ class StoreHelperWorker {
    * @return {*}
    */
   openActivity (activityId) { return this._dispatchActivity('open', activityId) }
-
-  currentStudentId () { return this._getInstructorProperty('currentStudentId') }
 
   getCourseList () { return store.state.instructor.sCourses || [] }
 
@@ -329,24 +327,7 @@ class StoreHelperWorker {
     }
   }
 
-  restoreSession () {
-    let visitId = sessionStorage.getItem(sKeys.USER_TOKEN)
-    if (debugSH) console.log('SH No visit id in url query. Is it in session storage? visitId', visitId)
-    if (visitId) {
-      return this._dispatchActivity('sessionRestore')
-        .then ( () => {
-          return this._dispatchInstructor('sessionRestore')
-        })
-        .then( () => {
-          return visitId
-        })
-    }
-    return visitId
-  }
-
   clearSession () {
-    sessionStorage.removeItem(sKeys.C_ACTIVITY)
-    sessionStorage.removeItem(sKeys.C_STUDENT)
     sessionStorage.removeItem(sKeys.SEED_ID)
     sessionStorage.removeItem(sKeys.IS_READONLY_INSTRUCTOR)
     return Promise.resolve()

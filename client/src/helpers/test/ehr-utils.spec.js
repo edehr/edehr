@@ -258,15 +258,15 @@ describe('Test validators and formatters ', () => {
   })
 
   it('formatDateStr', done => {
-    ehrUtils.formatDateStr('10/11/2011').should.equal('11 Oct 2011')
-    ehrUtils.formatDateStr('04/01/2012').should.equal('01 Apr 2012')  
+    ehrUtils.formatDateStr('2011-10-11').should.equal('11 Oct 2011')
+    ehrUtils.formatDateStr('2012-04-01').should.equal('01 Apr 2012')
     done()
   })
 
   it('formatTimeStr', done => {
-    ehrUtils.formatTimeStr('10/11/2011 12:00').should.equal('2011-10-11 12:00 pm')
-    ehrUtils.formatTimeStr('10/11/2011 15:00').should.equal('2011-10-11 3:00 pm')
-    ehrUtils.formatTimeStr('10/11/2011 00:00').should.equal('2011-10-11 12:00 am')
+    ehrUtils.formatTimeStr('2011-10-11T12:00').should.equal('2011-10-11 12:00 pm')
+    ehrUtils.formatTimeStr('2011-10-11T15:00').should.equal('2011-10-11 3:00 pm')
+    ehrUtils.formatTimeStr('2011-10-11T00:00').should.equal('2011-10-11 12:00 am')
     done()
   })
 

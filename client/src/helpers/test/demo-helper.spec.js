@@ -1,8 +1,6 @@
 import should from 'should'
 import demoHelper from '../demo-helper'
-import { setAPIUrl } from './testHelper'
 import { prepareAxiosResponse } from './axios-mock-helper'
-import StoreHelper from '../store-helper'
 import mockData from './mockData.json'
 
 jest.mock('axios')
@@ -10,13 +8,6 @@ jest.mock('axios')
 const token = 'demoToken'
 
 describe('demoHelper tests', () => {
-  it('_getApiUrl', done => {
-    setAPIUrl()
-    const storeUrl = StoreHelper.apiUrlGet()
-    const url = demoHelper._getApiUrl()
-    url.should.equal(storeUrl)
-    done()
-  })
 
   it('createToolConsumer', async done => {
     const payload = { token }

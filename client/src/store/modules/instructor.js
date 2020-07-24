@@ -1,5 +1,4 @@
 import InstoreHelper from './instoreHelper'
-import sKeys from '../../helpers/session-keys'
 const debug = false
 const NAME = 'InstStore '
 
@@ -26,10 +25,8 @@ const getters = {
    */
   list: state => { return state.sClassList },
 
-  currentStudentId: state => {
-    let id = state.sCurrentEvaluationStudentId
-    id = id ? id :   sessionStorage.getItem(sKeys.C_STUDENT)
-    return id
+  currentEvaluationStudentId: state => {
+    return state.sCurrentEvaluationStudentId
   },
 
   currentEvaluationStudent: state => {
@@ -109,13 +106,6 @@ const actions = {
       })
   },
 
-  sessionRestore: (context) => {
-    let sid = sessionStorage.getItem(sKeys.C_STUDENT)
-    if (sid) {
-      context.commit('setCurrentEvaluationStudentId', sid)
-    }
-  },
-
 }
 
 const mutations = {
@@ -124,7 +114,6 @@ const mutations = {
   setCourses: (state, list) => { state.sCourses = list  },
 
   setCurrentEvaluationStudentId: (state, id) => {
-    sessionStorage.setItem(sKeys.C_STUDENT, id)
     state.sCurrentEvaluationStudentId = id
   }
 }

@@ -7,20 +7,16 @@ const debugDH = false
 
 class DemoHelper {
 
-  _getApiUrl () {
-    return StoreHelper.apiUrlGet()
-  }
-
   createToolConsumer () {
     const id = uuid()
-    const apiUrl = this._getApiUrl()
+    const apiUrl = StoreHelper.apiUrlGet()
     if(debugDH) console.log('DH create consumer for user id ', id, apiUrl)
     const url = `${apiUrl}/demo/`
     return axios.post(url, { id })
   }
 
   demoLogout (token) {
-    const apiUrl = this._getApiUrl()
+    const apiUrl = StoreHelper.apiUrlGet()
     const url = `${apiUrl}/demo/logout`
     if(debugDH) console.log('DH logout',apiUrl)
     setAuthHeader(token)
@@ -31,7 +27,7 @@ class DemoHelper {
   }
 
   dhLoadDemoData (token) {
-    const apiUrl = this._getApiUrl()
+    const apiUrl = StoreHelper.apiUrlGet()
     const url = `${apiUrl}/demo/fetch`
     if(debugDH) console.log('DH fetch', apiUrl)
     setAuthHeader(token)
@@ -39,7 +35,7 @@ class DemoHelper {
   }
 
   submitPersona (token, submitData) {
-    const apiUrl = this._getApiUrl()
+    const apiUrl = StoreHelper.apiUrlGet()
     const url = `${apiUrl}/demo/set`
     const {assignmentName, externalId, personaName, personaEmail, personaRole, returnUrl, toolKey} = submitData
     const [ given, family ] = personaName.split(' ')
