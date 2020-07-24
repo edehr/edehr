@@ -1,8 +1,6 @@
 import should from 'should'
 import demoHelper from '../demo-helper'
-import { setAPIUrl } from './testHelper'
 import { prepareAxiosResponse } from './axios-mock-helper'
-import StoreHelper from '../store-helper'
 import mockData from './mockData.json'
 
 jest.mock('axios')

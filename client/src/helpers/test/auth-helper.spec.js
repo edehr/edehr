@@ -1,9 +1,6 @@
 const should = require('should')
 import authHelper from '../auth-helper'
 import { prepareAxiosResponse } from './axios-mock-helper'
-import StoreHelper from '../store-helper'
-import { setAPIUrl } from './testHelper'
-
 jest.mock('axios')
 
 const refreshToken = 'testRefreshToken'

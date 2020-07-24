@@ -1,5 +1,4 @@
 import InstoreHelper from './instoreHelper'
-import sKeys from '../../helpers/session-keys'
 const debug = false
 const NAME = 'InstStore '
 
