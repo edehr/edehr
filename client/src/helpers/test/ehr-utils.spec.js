@@ -247,13 +247,13 @@ describe('Test validators and formatters ', () => {
 
   it('validRangeStr', done => {
     // invalid use cases
-    ehrUtils.validRangeStr(1000, 100, 0).should.equal(false)
-    ehrUtils.validRangeStr(-1000, 100, -100).should.equal(false)
-    ehrUtils.validRangeStr('a', 100).should.equal(false)
+    ehrUtils.validRangeStr(1000, 0,100).should.equal(false)
+    ehrUtils.validRangeStr(-1000, -100,100).should.equal(false)
+    ehrUtils.validRangeStr('a', 0, 100).should.equal(false)
     // valid use cases
-    ehrUtils.validRangeStr(10, 100, 0).should.equal(true)
-    ehrUtils.validRangeStr(-10, 100, -100).should.equal(true)
-    ehrUtils.validRangeStr(100, 1000, 0).should.equal(true)
+    ehrUtils.validRangeStr(10, 0,100).should.equal(true)
+    ehrUtils.validRangeStr(-10, -100, 100).should.equal(true)
+    ehrUtils.validRangeStr(100, 0, 1000).should.equal(true)
     done()
   })
 

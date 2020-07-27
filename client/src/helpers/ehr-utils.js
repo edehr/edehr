@@ -49,14 +49,29 @@ export function getIncomingParams () {
   return params2
 }
 
+/**
+ * Test if str is a valid 24 hr time format. Eg. 00:00 through to 23:59
+ * @param text
+ * @return {boolean}
+ */
 export function validTimeStr (text) {
   return /^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9])$/.test(text)
 }
 
+/**
+ * Test if the str is a valid "hospital stay day": a number between 0 and 9
+ * @param text
+ * @return {boolean}
+ */
 export function validDayStr (text) {
-  return /^([0-9]?)$/.test(text)
+  return validRangeStr(text, 0, 9) // /^([0-9]?)$/.test(text)
 }
 
+/**
+ * Test if the str is a number
+ * @param str
+ * @return {boolean}
+ */
 export function validNumberStr (str) {
   // These are a few of the exceptions which isNaN can return false for... 
   // as it has been noted here: https://stackoverflow.com/questions/175739/built-in-way-in-javascript-to-check-if-a-string-is-a-valid-number
@@ -65,7 +80,14 @@ export function validNumberStr (str) {
   return !isNaN(str)
 }
 
-export function validRangeStr (str, max, min = 0) {
+/**
+ * Test is the string input is a number equal to or greater than the min and equal to or less than max  min <= str <= max
+ * @param str
+ * @param min
+ * @param max
+ * @return {boolean|boolean}
+ */
+export function validRangeStr (str, min, max) {
   try {
     const number = parseInt(str)
     return number >= min && number <= max
