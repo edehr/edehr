@@ -3,7 +3,7 @@
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 18}	{fN: 1}	{gN: 1}	{sgN: }	{formCss: record-header}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: record_header}	eCell	eCell	eCell	eCell	{pN: 18}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	{Label: Urinary}	eCell	{elementKey: urinaryGroup2}	{pN: 18}	{fN: 1}	{gN: 2}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkset}	eCell	{Label: Urinary symptoms}	eCell	{elementKey: urinaryGroup1}	{pN: 18}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Urinary symptoms}	{tableColumn: 2}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: None
+{inputType: checkset}	eCell	{Label: Urinary symptoms}	eCell	{elementKey: urinaryGroup1}	{pN: 18}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Urinary symptoms}	{tableColumn: 2}	eCell	eCell	eCell	eCell	"{Options: None
 Increased frequency
 Dysuria
 Hermaturia
@@ -22,36 +22,44 @@ Other}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 Cloudy
 Foamy
 Other}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Continence containment device}	eCell	{elementKey: diaper}	{pN: 18}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Continence containment device}	{tableColumn: 7}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: Yes
+{inputType: select}	eCell	{Label: Continence containment device}	eCell	{elementKey: diaper}	{pN: 18}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Continence containment device}	{tableColumn: 7}	eCell	eCell	eCell	eCell	"{Options: Yes
+No}"	eCell	eCell	eCell	eCell	eCell	{helperText: Does the patient need the assistance of a brief, condom catheter, or etc.}	eCell
+{inputType: checkset}	eCell	{Label: Toiletting method}	{Comments: See Options}	{elementKey: toilettingMethod}	{pN: 18}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 8}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: Bedpan
+Comode
+Urinal,
+Help to the toilette
+Brief
+Mesh pant/pad
+Clean intermittent catheter
+Indwelling catheter}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	{Label: Indwelling Catheter}	eCell	{elementKey: foleyGroup}	{pN: 18}	{fN: 1}	{gN: 3}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: Indwelling Catheter}	{Comments: Foley is a specific 'type'}	{elementKey: foley}	{pN: 18}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Indwelling Catheter}	{tableColumn: 9}	eCell	eCell	eCell	eCell	"{Options: Yes
 No}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	{Label: Foley}	eCell	{elementKey: foleyGroup}	{pN: 18}	{fN: 1}	{gN: 3}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Foley}	eCell	{elementKey: foley}	{pN: 18}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Foley}	{tableColumn: 8}	eCell	eCell	eCell	eCell	"{Options: Yes
+{inputType: text}	eCell	{Label: Type }	{Comments: Change to drop down box with two options (urethral or suprapubic)}	{elementKey: foleyType}	{pN: 18}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Type }	{tableColumn: 10}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: eg. indwelling catheter}	eCell
+{inputType: text}	eCell	{Label: Size}	eCell	{elementKey: foleySize}	{pN: 18}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Size}	{tableColumn: 11}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: day}	eCell	{Label: Last catheter change (day)}	{Comments: added 'day'}	{elementKey: lastChange}	{pN: 18}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Last catheter change (day)}	{tableColumn: 12}	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	{Label: Pelvic}	{Comments: Consider renaming or regrouping into a Reproductive page or table. Also consider adding a male reproducive system. This work needs to wait until EdEHR can manage seed versions}	{elementKey: pelvicGroup}	{pN: 18}	{fN: 1}	{gN: 4}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: Pelvic pain}	{Comments: ALL Pelvic, Vaginal, Preg, categorized to Gynecology?}	{elementKey: pelvicPain}	{pN: 18}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Pelvic pain}	{tableColumn: 13}	eCell	eCell	eCell	eCell	"{Options: Yes
 No}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Type}	eCell	{elementKey: foleyType}	{pN: 18}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Type}	{tableColumn: 9}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: eg. indwelling catheter}	eCell
-{inputType: text}	eCell	{Label: Size}	eCell	{elementKey: foleySize}	{pN: 18}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Size}	{tableColumn: 10}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: day}	eCell	{Label: Last catheter change (day)}	eCell	{elementKey: lastChange}	{pN: 18}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Last catheter change (day)}	{tableColumn: 11}	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	{Label: Pelvic}	eCell	{elementKey: pelvicGroup}	{pN: 18}	{fN: 1}	{gN: 4}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Pelvic pain}	eCell	{elementKey: pelvicPain}	{pN: 18}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Pelvic pain}	{tableColumn: 12}	eCell	eCell	eCell	eCell	"{Options: Yes
-No}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Location}	eCell	{elementKey: location}	{pN: 18}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Location}	{tableColumn: 13}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Pelvic pain source}	eCell	{elementKey: pelvicPainSource}	{pN: 18}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Pelvic pain source}	{tableColumn: 14}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: Observed
+{inputType: text}	eCell	{Label: Location}	eCell	{elementKey: location}	{pN: 18}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Location}	{tableColumn: 14}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: Pelvic pain source}	eCell	{elementKey: pelvicPainSource}	{pN: 18}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Pelvic pain source}	{tableColumn: 15}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: Observed
 As per patient observed
 Not observed}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: form_label}	eCell	{Label: If answered yes, please complete the pain assessment}	eCell	{elementKey: aLabel}	{pN: 18}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	{Label: Vagina}	eCell	{elementKey: vaginal}	{pN: 18}	{fN: 1}	{gN: 5}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkset}	eCell	{Label: Discharge}	eCell	{elementKey: discharge}	{pN: 18}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: Discharge}	{tableColumn: 15}	eCell	eCell	eCell	eCell	"{Options: Discharge
+{inputType: ehr_group}	eCell	{Label: Vagina}	{Comments: changed label to vagina }	{elementKey: vaginal}	{pN: 18}	{fN: 1}	{gN: 5}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkset}	eCell	{Label: Discharge}	eCell	{elementKey: discharge}	{pN: 18}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: Discharge}	{tableColumn: 16}	eCell	eCell	eCell	eCell	"{Options: Discharge
 Bleeding}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Description}	eCell	{elementKey: description}	{pN: 18}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: Description}	{tableColumn: 16}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: date}	eCell	{Label: Last menstrual period date}	eCell	{elementKey: lastMenstrualPeriodDate}	{pN: 18}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: Last menstrual period date}	{tableColumn: 17}	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Description}	eCell	{elementKey: description}	{pN: 18}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: Description}	{tableColumn: 17}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: date}	eCell	{Label: Last menstrual period date}	eCell	{elementKey: lastMenstrualPeriodDate}	{pN: 18}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: Last menstrual period date}	{tableColumn: 18}	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	{Label: Pregnancy}	eCell	{elementKey: pregnantGroup}	{pN: 18}	{fN: 1}	{gN: 6}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Pregnant}	eCell	{elementKey: pregnant}	{pN: 18}	{fN: 1}	{gN: 6}	{sgN: }	eCell	eCell	{tableLabel: Pregnant}	{tableColumn: 18}	eCell	eCell	eCell	eCell	"{Options: Yes
+{inputType: select}	eCell	{Label: Pregnant}	eCell	{elementKey: pregnant}	{pN: 18}	{fN: 1}	{gN: 6}	{sgN: }	eCell	eCell	{tableLabel: Pregnant}	{tableColumn: 19}	eCell	eCell	eCell	eCell	"{Options: Yes
 No
 Unknown}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Gravida (number of pregnancies)}	eCell	{elementKey: gravida}	{pN: 18}	{fN: 1}	{gN: 6}	{sgN: }	eCell	eCell	{tableLabel: Gravida (number of pregnancies)}	{tableColumn: 19}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Para (number of children)}	eCell	{elementKey: para}	{pN: 18}	{fN: 1}	{gN: 6}	{sgN: }	eCell	eCell	{tableLabel: Para (number of children)}	{tableColumn: 20}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Living children}	eCell	{elementKey: livingChildren}	{pN: 18}	{fN: 1}	{gN: 6}	{sgN: }	eCell	eCell	{tableLabel: Living children}	{tableColumn: 21}	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Gravida (number of pregnancies)}	eCell	{elementKey: gravida}	{pN: 18}	{fN: 1}	{gN: 6}	{sgN: }	eCell	eCell	{tableLabel: Gravida (number of pregnancies)}	{tableColumn: 20}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Para (number of children)}	eCell	{elementKey: para}	{pN: 18}	{fN: 1}	{gN: 6}	{sgN: }	eCell	eCell	{tableLabel: Para (number of children)}	{tableColumn: 21}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Living children}	eCell	{elementKey: livingChildren}	{pN: 18}	{fN: 1}	{gN: 6}	{sgN: }	eCell	eCell	{tableLabel: Living children}	{tableColumn: 22}	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 18}	{fN: 1}	{gN: 7}	{sgN: }	{formCss: grid-left-to-right-1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: textarea}	eCell	{Label: Comments}	eCell	{elementKey: comments}	{pN: 18}	{fN: 1}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Comments}	{tableColumn: 22}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: textarea}	eCell	{Label: Comments}	eCell	{elementKey: comments}	{pN: 18}	{fN: 1}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Comments}	{tableColumn: 23}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: page}	{pRef: 23}	{Label: Musculoskeletal assessment}	eCell	{elementKey: musculoskeletal}	{pN: 19}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: table_form}	eCell	eCell	eCell	{elementKey: table}	{pN: 19}	{fN: 1}	{gN: }	{sgN: }	eCell	{formOption: transpose}	eCell	eCell	eCell	{addButtonText: Add a musculoskeletal assessment}	eCell	eCell	eCell	eCell	eCell	eCell	{assetBase: ?}	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 19}	{fN: 1}	{gN: 1}	{sgN: }	{formCss: record-header}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
@@ -96,33 +104,147 @@ Other}"	eCell	eCell	eCell	{assetBase: ?}	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 42}	{fN: 1}	{gN: 1}	{sgN: }	{formCss: record-header}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: record_header}	eCell	eCell	eCell	eCell	{pN: 42}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 42}	{fN: 1}	{gN: 2}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Wound label}	eCell	{elementKey: woundLabel}	{pN: 42}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Wound label}	{tableColumn: 2}	eCell	eCell	eCell	eCell	"{Options: Wound A
+{inputType: select}	eCell	{Label: Wound location}	{Comments: Changed to select with pick-list items of body part labels }	{elementKey: woundLocation}	{pN: 42}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Wound location}	{tableColumn: 2}	eCell	eCell	eCell	eCell	"{Options: Head
+Face
+Neck
+Chest
+Arm (Left)
+Arm (Right)
+Hand (Left)
+Hand (Right)
+Abdomen
+Back
+Pelvis
+Buttock
+Leg (Left)
+Leg (Right)
+Foot (Left)
+Foot (Right)
+}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: Wound label}	eCell	{elementKey: woundLabel}	{pN: 42}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Wound label}	{tableColumn: 3}	eCell	eCell	eCell	eCell	"{Options: Wound A
 Wound B
 Wound C
 Wound D}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Goal of care}	eCell	{elementKey: goalOfCare}	{pN: 42}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Goal of care}	{tableColumn: 5}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: To heal
+{inputType: select}	eCell	{Label: Goal of care}	eCell	{elementKey: goalOfCare}	{pN: 42}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Goal of care}	{tableColumn: 4}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: To heal
 To maintain
 To monitor/manage}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: spacer}	eCell	eCell	eCell	eCell	{pN: 42}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Wound location}	eCell	{elementKey: woundLocation}	{pN: 42}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Wound location}	{tableColumn: 4}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Wound day of onset}	eCell	{elementKey: woundDayOnset}	{pN: 42}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Wound day of onset}	{tableColumn: 4}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkset}	eCell	{Label: Wound type/etiology}	eCell	{elementKey: woundType}	{pN: 42}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Wound type/etiology}	{tableColumn: 4}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: Pressure injury
-Venous ulcer
-Arterial ulcer
-Diabetic ulcer
-Surgical secondary intent
-Skin tear
-Other}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	{Label: Pressure injury}	eCell	{elementKey: pressureInjury}	{pN: 42}	{fN: 1}	{gN: 3}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Stage}	eCell	{elementKey: stage}	{pN: 42}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Stage}	{tableColumn: 5}	eCell	eCell	eCell	eCell	"{Options: Stage 1
-Stage 2
-Stage 3
-Stage 4
-Stage X (unstageable)
-Stage SDTI (Supected Deep Tissue Injury)}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: date}	eCell	{Label: Date}	eCell	{elementKey: stageDate}	{pN: 42}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Date}	{tableColumn: 6}	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	{Label: Wound bed}	eCell	{elementKey: woundBed}	{pN: 42}	{fN: 1}	{gN: 4}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: % Pink/red}	eCell	{elementKey: pinkred}	{pN: 42}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: % Pink/red}	{tableColumn: 20}	eCell	eCell	eCell	eCell	"{Options: 10=10%
+{inputType: day}	eCell	{Label: Wound day of onset}	{Comments: Can the day of onset be BEFORE the hospital visit? Changed from type text to day. Does this need to be phased as "case day"? or similar?}	{elementKey: woundDayOnset}	{pN: 42}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Wound day of onset}	{tableColumn: 5}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	{Label: Wound Etiology/Type}	eCell	{elementKey: woundTypeGroup}	{pN: 42}	{fN: 1}	{gN: 3}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: day}	eCell	{Label: Case day}	eCell	{elementKey: stageDay}	{pN: 42}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 6}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkset}	eCell	{Label: Wound Etiology/Type}	eCell	{elementKey: stageType}	{pN: 42}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 7}	eCell	eCell	eCell	eCell	"{Options: stage1:=Pressure Injury Stage 1
+stage2:=Pressure Injury Stage 2
+stage3:=Pressure Injury Stage 3
+stage4:=Pressure Injury Stage 4
+unstageable:=Pressure Injury Unstageable
+deep:=Pressure Injury Deep Tissue Injury
+surgical:=Surgical Secondary Intent
+tear:=Skin Tear
+abscess:=Abscess
+burn:=Burn
+venous:=Venous Ulcer
+arterial:=Arterial Ulcer
+mixedUlcer:=Mixed Venous/Arterial Ulcer
+diabetic:=Diabetic/Neuropathic Ulcer
+other:=Other}"	eCell	eCell	eCell	eCell	eCell	"{helperText: Pressure Injury Stage 1– Intact skin with localized nonblanchable erythema; darkly pigmented skin may not show visible blanching but will appear different than the colour of surrounding skin.
+Pressure Injury Stage 2– Partial thickness wound presenting as a shallow open ulcer with a red / pink wound bed, slough may be present but does not obscure the depth of tissue loss; may also present as an intact or open/ruptured serum-filled or serosanguineous filled blister.
+Pressure Injury Stage 3– Full thickness wound; subcutaneous tissue may be visible but bone, tendon and muscle are not exposed; may include undermining and/or sinus tracks; slough or eschar may be present but does not obscure the depth of tissue loss.
+Pressure Injury Stage 4– Full thickness wound with exposed bone, tendon or muscle; often includes undermining and/or sinus tracks; slough or eschar may be present on some parts of the wound bed but does not obscure the depth of tissue loss.
+Pressure Injury Unstageable – A wound in which the wound bed is covered by sufficient slough and / or eschar to preclude staging.
+Pressure Injury Deep Tissue Injury – A localized purple or maroon area of intact skin or a blood filled blister that occur when underlying soft tissue is damaged from friction or shear.
+Surgical Wounds Secondary intention: Incision has dehisced and surgical closure is not possible; wounds must heal by granulation
+Skin Tear: Skin tears are the result of trauma caused by shearing, friction, or blunt force to the skin. Consider risk factors (i.e.: advanced age, immobility, inadequate hydration/nutrition, falls)
+Abscess: A local collection of purulent and/or sanguineous drainage that may be incised and drained.
+Burn: Tissue loss/damage as a result from thermal, chemical, electrical, and radiation sources.
+Venous Ulcer: Caused by venous insufficiency due to valve dysfunction, complete or partial blockage of the deep veins, and / or failure of the calf muscle pump.
+Arterial Ulcer: Caused by a disruption to arterial blood flow leading to moderate / severe tissue ischemia.
+Mixed Arterial/Venous Ulcer: Caused by both venous insufficiency and disrupted arterial blood flow.
+Diabetic/Neuropathic Ulcers: A result of neuropathy, structural foot changes, and/or altered blood flow related to diabetes mellitus (or alcoholism, renal failure, HIV, late stage syphilis, trauma and surgery).
+}"	eCell
+{inputType: text}	eCell	{Label: Other}	{Comments: If Etiology 'Other', describe:}	{elementKey: stageOther}	{pN: 42}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 8}	eCell	eCell	{dependentOn: visible:stageType=other}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	{Label: Wound measurements}	eCell	{elementKey: woundMeasureGroup}	{pN: 42}	{fN: 1}	{gN: 4}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Length cm.mm}	eCell	{elementKey: length}	{pN: 42}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Length cm.mm}	{tableColumn: 9}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Width cm.mm}	eCell	{elementKey: width}	{pN: 42}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Width cm.mm}	{tableColumn: 10}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Depth cm.mm}	eCell	{elementKey: depth}	{pN: 42}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Depth cm.mm}	{tableColumn: 11}	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Sinus/tunnel 1 depth cm.mm}	eCell	{elementKey: sinusDepth1}	{pN: 42}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Sinus/tunnel 1 depth cm.mm}	{tableColumn: 12}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: Location}	eCell	{elementKey: sinusDepthLocation1}	{pN: 42}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Location}	{tableColumn: 13}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12}"	eCell	eCell	eCell	eCell	eCell	{helperText: O'clock}	eCell
+{inputType: spacer}	eCell	eCell	eCell	eCell	{pN: 42}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Sinus/tunnel 2 depth cm.mm}	eCell	{elementKey: sinusDepth2}	{pN: 42}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Sinus/tunnel 2 depth cm.mm}	{tableColumn: 14}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: Location}	eCell	{elementKey: sinusDepthLocation2}	{pN: 42}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Location}	{tableColumn: 15}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12}"	eCell	eCell	eCell	eCell	eCell	{helperText: O'clock}	eCell
+{inputType: spacer}	eCell	eCell	eCell	eCell	{pN: 42}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Undermining 1 depth cm.mm}	eCell	{elementKey: underminingDepth1}	{pN: 42}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Undermining 1 depth cm.mm}	{tableColumn: 16}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: Location}	eCell	{elementKey: underminingDepthLocation1A}	{pN: 42}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Location}	{tableColumn: 17}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12}"	eCell	eCell	eCell	eCell	eCell	{helperText: O'clock}	eCell
+{inputType: select}	eCell	{Label: Location}	eCell	{elementKey: underminingDepthLocation1B}	{pN: 42}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Location}	{tableColumn: 18}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12}"	eCell	eCell	eCell	eCell	eCell	{helperText: O'clock}	eCell
+{inputType: text}	eCell	{Label: Undermining 2 depth cm.mm}	eCell	{elementKey: underminingDepth2}	{pN: 42}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Undermining 2 depth cm.mm}	{tableColumn: 19}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: Location}	eCell	{elementKey: underminingDepthLocation2A}	{pN: 42}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Location}	{tableColumn: 20}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12}"	eCell	eCell	eCell	eCell	eCell	{helperText: O'clock}	eCell
+{inputType: select}	eCell	{Label: Location}	eCell	{elementKey: underminingDepthLocation2B}	{pN: 42}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Location}	{tableColumn: 21}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12}"	eCell	eCell	eCell	eCell	eCell	{helperText: O'clock}	eCell
+{inputType: ehr_group}	eCell	{Label: Wound bed}	eCell	{elementKey: woundBed}	{pN: 42}	{fN: 1}	{gN: 5}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: % Pink/red}	eCell	{elementKey: pinkred}	{pN: 42}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: % Pink/red}	{tableColumn: 22}	eCell	eCell	eCell	eCell	"{Options: 10=10%
 20=20%
 30=30%
 40=40%
@@ -132,7 +254,7 @@ Stage SDTI (Supected Deep Tissue Injury)}"	eCell	eCell	eCell	eCell	eCell	eCell	e
 80=80%
 90=90%
 100=100%}"	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: woundBedCalculation}
-{inputType: select}	eCell	{Label: % Granulation}	eCell	{elementKey: granulation}	{pN: 42}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: % Granulation}	{tableColumn: 21}	eCell	eCell	eCell	eCell	"{Options: 10=10%
+{inputType: select}	eCell	{Label: % Granulation}	eCell	{elementKey: granulation}	{pN: 42}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: % Granulation}	{tableColumn: 23}	eCell	eCell	eCell	eCell	"{Options: 10=10%
 20=20%
 30=30%
 40=40%
@@ -142,7 +264,7 @@ Stage SDTI (Supected Deep Tissue Injury)}"	eCell	eCell	eCell	eCell	eCell	eCell	e
 80=80%
 90=90%
 100=100%}"	eCell	eCell	eCell	eCell	eCell	{helperText: Red pebbly}	{passToFunction: woundBedCalculation}
-{inputType: select}	eCell	{Label: % Slough}	eCell	{elementKey: slough}	{pN: 42}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: % Slough}	{tableColumn: 22}	eCell	eCell	eCell	eCell	"{Options: 10=10%
+{inputType: select}	eCell	{Label: % Slough}	eCell	{elementKey: slough}	{pN: 42}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: % Slough}	{tableColumn: 24}	eCell	eCell	eCell	eCell	"{Options: 10=10%
 20=20%
 30=30%
 40=40%
@@ -152,7 +274,7 @@ Stage SDTI (Supected Deep Tissue Injury)}"	eCell	eCell	eCell	eCell	eCell	eCell	e
 80=80%
 90=90%
 100=100%}"	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: woundBedCalculation}
-{inputType: select}	eCell	{Label: % Eschar}	eCell	{elementKey: eschar}	{pN: 42}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: % Eschar}	{tableColumn: 23}	eCell	eCell	eCell	eCell	"{Options: 10=10%
+{inputType: select}	eCell	{Label: % Eschar (soft, boggy)}	{Comments: Divided into two items}	{elementKey: eschar}	{pN: 42}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: % Eschar (soft, boggy)}	{tableColumn: 24}	eCell	eCell	eCell	eCell	"{Options: 10=10%
 20=20%
 30=30%
 40=40%
@@ -162,7 +284,17 @@ Stage SDTI (Supected Deep Tissue Injury)}"	eCell	eCell	eCell	eCell	eCell	eCell	e
 80=80%
 90=90%
 100=100%}"	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: woundBedCalculation}
-{inputType: select}	eCell	{Label: % Foreign body}	eCell	{elementKey: foreign}	{pN: 42}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: % Foreign body}	{tableColumn: 24}	eCell	eCell	eCell	eCell	"{Options: 10=10%
+{inputType: select}	eCell	{Label: % Eschar (dry, stable)}	eCell	{elementKey: eschar}	{pN: 42}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: % Eschar (dry, stable)}	{tableColumn: 25}	eCell	eCell	eCell	eCell	"{Options: 10=10%
+20=20%
+30=30%
+40=40%
+50=50%
+60=60%
+70=70%
+80=80%
+90=90%
+100=100%}"	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: woundBedCalculation}
+{inputType: select}	eCell	{Label: % Foreign body}	eCell	{elementKey: foreign}	{pN: 42}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: % Foreign body}	{tableColumn: 26}	eCell	eCell	eCell	eCell	"{Options: 10=10%
 20=20%
 30=30%
 40=40%
@@ -172,7 +304,7 @@ Stage SDTI (Supected Deep Tissue Injury)}"	eCell	eCell	eCell	eCell	eCell	eCell	e
 80=80%
 90=90%
 100=100%}"	eCell	eCell	eCell	eCell	eCell	{helperText: Sutures, mesh, hardware}	{passToFunction: woundBedCalculation}
-{inputType: select}	eCell	{Label: % Underlying structures}	eCell	{elementKey: underlying}	{pN: 42}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: % Underlying structures}	{tableColumn: 25}	eCell	eCell	eCell	eCell	"{Options: 10=10%
+{inputType: select}	eCell	{Label: % Underlying structures}	eCell	{elementKey: underlying}	{pN: 42}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: % Underlying structures}	{tableColumn: 27}	eCell	eCell	eCell	eCell	"{Options: 10=10%
 20=20%
 30=30%
 40=40%
@@ -182,7 +314,7 @@ Stage SDTI (Supected Deep Tissue Injury)}"	eCell	eCell	eCell	eCell	eCell	eCell	e
 80=80%
 90=90%
 100=100%}"	eCell	eCell	eCell	eCell	eCell	{helperText: Faschia, tendon, bone}	{passToFunction: woundBedCalculation}
-{inputType: select}	eCell	{Label: % Not visible}	eCell	{elementKey: notVisible}	{pN: 42}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: % Not visible}	{tableColumn: 26}	eCell	eCell	eCell	eCell	"{Options: 10=10%
+{inputType: select}	eCell	{Label: % Not visible}	eCell	{elementKey: notVisible}	{pN: 42}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: % Not visible}	{tableColumn: 28}	eCell	eCell	eCell	eCell	"{Options: 10=10%
 20=20%
 30=30%
 40=40%
@@ -192,7 +324,7 @@ Stage SDTI (Supected Deep Tissue Injury)}"	eCell	eCell	eCell	eCell	eCell	eCell	e
 80=80%
 90=90%
 100=100%}"	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: woundBedCalculation}
-{inputType: select}	eCell	{Label: % Other}	eCell	{elementKey: other}	{pN: 42}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: % Other}	{tableColumn: 27}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: 10=10%
+{inputType: select}	eCell	{Label: % Other}	eCell	{elementKey: other}	{pN: 42}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: % Other}	{tableColumn: 29}	eCell	eCell	eCell	eCell	"{Options: 10=10%
 20=20%
 30=30%
 40=40%
@@ -202,110 +334,23 @@ Stage SDTI (Supected Deep Tissue Injury)}"	eCell	eCell	eCell	eCell	eCell	eCell	e
 80=80%
 90=90%
 100=100%}"	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: woundBedCalculation}
-{inputType: spacer}	eCell	eCell	eCell	eCell	{pN: 42}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: calculatedValue}	eCell	{Label: Wound bed calculation}	eCell	{elementKey: woundBedCalculation}	{pN: 42}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Wound bed calculation}	{tableColumn: 28}	eCell	eCell	eCell	{Default_value: 0}	eCell	eCell	eCell	{Validation: range(0,100)}	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	{Label: Wound measurements}	eCell	{elementKey: toeSinus}	{pN: 42}	{fN: 1}	{gN: 5}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: form_label}	eCell	eCell	eCell	{elementKey: aLabelClock}	{pN: 42}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: spacer}	eCell	eCell	eCell	eCell	{pN: 42}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: spacer}	eCell	eCell	eCell	eCell	{pN: 42}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Length cm.mm}	eCell	{elementKey: length}	{pN: 42}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: Length cm.mm}	{tableColumn: 7}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Width cm.mm}	eCell	{elementKey: width}	{pN: 42}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: Width cm.mm}	{tableColumn: 8}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Depth cm.mm}	eCell	{elementKey: depth}	{pN: 42}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: Depth cm.mm}	{tableColumn: 9}	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Sinus/tunnel 1 depth cm.mm}	eCell	{elementKey: sinusDepth1}	{pN: 42}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: Sinus/tunnel 1 depth cm.mm}	{tableColumn: 10}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Location}	eCell	{elementKey: sinusDepthLocation1}	{pN: 42}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: Location}	{tableColumn: 11}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12}"	eCell	eCell	eCell	eCell	eCell	{helperText: O'clock}	eCell
-{inputType: spacer}	eCell	eCell	eCell	eCell	{pN: 42}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Sinus/tunnel 2 depth cm.mm}	eCell	{elementKey: sinusDepth2}	{pN: 42}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: Sinus/tunnel 2 depth cm.mm}	{tableColumn: 12}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Location}	eCell	{elementKey: sinusDepthLocation2}	{pN: 42}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: Location}	{tableColumn: 13}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12}"	eCell	eCell	eCell	eCell	eCell	{helperText: O'clock}	eCell
-{inputType: spacer}	eCell	eCell	eCell	eCell	{pN: 42}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Undermining 1 depth cm.mm}	eCell	{elementKey: underminingDepth1}	{pN: 42}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: Undermining 1 depth cm.mm}	{tableColumn: 14}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Location}	eCell	{elementKey: underminingDepthLocation1A}	{pN: 42}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: Location}	{tableColumn: 15}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12}"	eCell	eCell	eCell	eCell	eCell	{helperText: O'clock}	eCell
-{inputType: select}	eCell	{Label: Location}	eCell	{elementKey: underminingDepthLocation1B}	{pN: 42}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: Location}	{tableColumn: 16}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12}"	eCell	eCell	eCell	eCell	eCell	{helperText: O'clock}	eCell
-{inputType: spacer}	eCell	eCell	eCell	eCell	{pN: 42}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Undermining 2 depth cm.mm}	eCell	{elementKey: underminingDepth2}	{pN: 42}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: Undermining 2 depth cm.mm}	{tableColumn: 17}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Location}	eCell	{elementKey: underminingDepthLocation2A}	{pN: 42}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: Location}	{tableColumn: 18}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12}"	eCell	eCell	eCell	eCell	eCell	{helperText: O'clock}	eCell
-{inputType: select}	eCell	{Label: Location}	eCell	{elementKey: underminingDepthLocation2B}	{pN: 42}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: Location}	{tableColumn: 19}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12}"	eCell	eCell	eCell	eCell	eCell	{helperText: O'clock}	eCell
+{inputType: calculatedValue}	eCell	{Label: Wound bed calculation}	eCell	{elementKey: woundBedCalculation}	{pN: 42}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: Wound bed calculation}	{tableColumn: 30}	{tableCss: hr-table}	eCell	eCell	{Default_value: 0}	eCell	eCell	eCell	{Validation: range(0,100)}	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	{Label: Wound Exudate & Odour}	eCell	eCell	{pN: 42}	{fN: 1}	{gN: 6}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Exudate amount}	eCell	{elementKey: exudateAmount}	{pN: 42}	{fN: 1}	{gN: 6}	{sgN: }	eCell	eCell	{tableLabel: Exudate amount}	{tableColumn: 20}	eCell	eCell	eCell	eCell	"{Options: None
+{inputType: select}	eCell	{Label: Exudate amount}	eCell	{elementKey: exudateAmount}	{pN: 42}	{fN: 1}	{gN: 6}	{sgN: }	eCell	eCell	{tableLabel: Exudate amount}	{tableColumn: 31}	eCell	eCell	eCell	eCell	"{Options: None
 Scant/small
 Moderate
 Large/copious}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Exudate type}	eCell	{elementKey: exudateType}	{pN: 42}	{fN: 1}	{gN: 6}	{sgN: }	eCell	eCell	{tableLabel: Exudate type}	{tableColumn: 21}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: Serous
+{inputType: checkset}	eCell	{Label: Exudate type}	{Comments: change from select to checkset so students can check more than one type}	{elementKey: exudateType}	{pN: 42}	{fN: 1}	{gN: 6}	{sgN: }	eCell	eCell	{tableLabel: Exudate type}	{tableColumn: 32}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: Serous
 Sanguineous
 Purulent
 Other}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Odour present after cleansing}	eCell	{elementKey: odour}	{pN: 42}	{fN: 1}	{gN: 6}	{sgN: }	eCell	eCell	{tableLabel: Odour present after cleansing}	{tableColumn: 22}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: Yes
+{inputType: select}	eCell	{Label: Odour present after cleansing}	eCell	{elementKey: odour}	{pN: 42}	{fN: 1}	{gN: 6}	{sgN: }	eCell	eCell	{tableLabel: Odour present after cleansing}	{tableColumn: 33}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: Yes
 No}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkset}	eCell	{Label: Wound edge}	eCell	{elementKey: woundEdge}	{pN: 42}	{fN: 1}	{gN: 6}	{sgN: }	eCell	eCell	{tableLabel: Wound edge}	{tableColumn: 23}	eCell	eCell	eCell	eCell	"{Options: Attached (flush with wound bed or sloping edge)
+{inputType: checkset}	eCell	{Label: Wound edge}	eCell	{elementKey: woundEdge}	{pN: 42}	{fN: 1}	{gN: 6}	{sgN: }	eCell	eCell	{tableLabel: Wound edge}	{tableColumn: 34}	eCell	eCell	eCell	eCell	"{Options: Attached (flush with wound bed or sloping edge)
 Non-attached (edge appears as a cliff)
 Rolled (curled under)
 Epithelialization}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkset}	eCell	{Label: Peri-wound skin}	eCell	{elementKey: periWoundSkin}	{pN: 42}	{fN: 1}	{gN: 6}	{sgN: }	eCell	eCell	{tableLabel: Peri-wound skin}	{tableColumn: 24}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: Intact
+{inputType: checkset}	eCell	{Label: Peri-wound skin}	eCell	{elementKey: periWoundSkin}	{pN: 42}	{fN: 1}	{gN: 6}	{sgN: }	eCell	eCell	{tableLabel: Peri-wound skin}	{tableColumn: 35}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: Intact
 Erythema (reddened) in cm
 Indurated (firmness around wound) in cm
 Macerated (white, waterlogged)
@@ -313,13 +358,13 @@ Excoriated/Denuded (superficial loss of tissue)
 Callused
 Fragile
 Other}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Wound pain}	eCell	{elementKey: woundPain}	{pN: 42}	{fN: 1}	{gN: 6}	{sgN: }	eCell	eCell	{tableLabel: Wound pain}	{tableColumn: 25}	{tableCss: hr-table}	eCell	eCell	eCell	eCell	{Suffix: /10}	eCell	eCell	eCell	eCell	"{helperText: Scored from 10 point analogue Pain Scale
+{inputType: text}	eCell	{Label: Wound pain}	eCell	{elementKey: woundPain}	{pN: 42}	{fN: 1}	{gN: 6}	{sgN: }	eCell	eCell	{tableLabel: Wound pain}	{tableColumn: 36}	{tableCss: hr-table}	eCell	eCell	eCell	eCell	{Suffix: /10}	eCell	{Validation: range(0,10)}	eCell	eCell	"{helperText: Scored from 10 point analogue Pain Scale
 See Pain Assessment for details}"	eCell
 {inputType: ehr_group}	eCell	{Label: Treatment}	eCell	eCell	{pN: 42}	{fN: 1}	{gN: 7}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Packing out}	eCell	{elementKey: packingOut}	{pN: 42}	{fN: 1}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Packing out}	{tableColumn: 26}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: Any depth 1cm or greater, count packing pieces }	eCell
-{inputType: text}	eCell	{Label: Packing in}	eCell	{elementKey: packinIn}	{pN: 42}	{fN: 1}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Packing in}	{tableColumn: 27}	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: Any depth 1cm or greater, count packing pieces }	eCell
+{inputType: text}	eCell	{Label: Packing out}	eCell	{elementKey: packingOut}	{pN: 42}	{fN: 1}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Packing out}	{tableColumn: 37}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: Any depth 1cm or greater, count packing pieces }	eCell
+{inputType: text}	eCell	{Label: Packing in}	eCell	{elementKey: packinIn}	{pN: 42}	{fN: 1}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Packing in}	{tableColumn: 38}	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: Any depth 1cm or greater, count packing pieces }	eCell
 {inputType: spacer}	eCell	eCell	eCell	eCell	{pN: 42}	{fN: 1}	{gN: 7}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Treatments as per plan of care}	eCell	{elementKey: treatmentComplete}	{pN: 42}	{fN: 1}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Treatments as per plan of care}	{tableColumn: 28}	eCell	eCell	eCell	eCell	"{Options: Yes
+{inputType: select}	eCell	{Label: Treatments as per plan of care}	eCell	{elementKey: treatmentComplete}	{pN: 42}	{fN: 1}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Treatments as per plan of care}	{tableColumn: 39}	eCell	eCell	eCell	eCell	"{Options: Yes
 No}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: page}	{pRef: 24}	{Label: Pain assessment}	eCell	{elementKey: pain}	{pN: 20}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: table_form}	eCell	eCell	eCell	{elementKey: table}	{pN: 20}	{fN: 1}	{gN: }	{sgN: }	eCell	{formOption: transpose}	eCell	eCell	eCell	{addButtonText: Add a pain assessment}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell

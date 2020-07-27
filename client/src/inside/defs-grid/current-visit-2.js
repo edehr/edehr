@@ -85,7 +85,6 @@ export default function () {
             }
           ],
           tableColumn: '2',
-          tableCss: 'hr-table',
           tableLabel: 'Urinary symptoms',
           fqn: 'genitourinary.urinaryGroup1'
         },
@@ -168,6 +167,7 @@ export default function () {
         {
           elementKey: 'diaper',
           formIndex: '1',
+          helperText: 'Does the patient need the assistance of a brief, condom catheter, or etc.',
           inputType: 'select',
           label: 'Continence containment device',
           options: [
@@ -181,15 +181,58 @@ export default function () {
             }
           ],
           tableColumn: '7',
-          tableCss: 'hr-table',
           tableLabel: 'Continence containment device',
-          fqn: 'genitourinary.diaper'
+          fqn: 'genitourinary.diaper',
+          helperHtml: '<p>Does the patient need the assistance of a brief, condom catheter, or etc.</p>'
+        },
+        {
+          elementKey: 'toilettingMethod',
+          formIndex: '1',
+          inputType: 'checkset',
+          label: 'Toiletting method',
+          options: [
+            {
+              key: 'Bedpan',
+              text: 'Bedpan'
+            },
+            {
+              key: 'Comode',
+              text: 'Comode'
+            },
+            {
+              key: 'Urinal,',
+              text: 'Urinal,'
+            },
+            {
+              key: 'Help to the toilette',
+              text: 'Help to the toilette'
+            },
+            {
+              key: 'Brief',
+              text: 'Brief'
+            },
+            {
+              key: 'Mesh pant/pad',
+              text: 'Mesh pant/pad'
+            },
+            {
+              key: 'Clean intermittent catheter',
+              text: 'Clean intermittent catheter'
+            },
+            {
+              key: 'Indwelling catheter',
+              text: 'Indwelling catheter'
+            }
+          ],
+          tableColumn: '8',
+          tableCss: 'hr-table',
+          fqn: 'genitourinary.toilettingMethod'
         },
         {
           elementKey: 'foley',
           formIndex: '1',
           inputType: 'select',
-          label: 'Foley',
+          label: 'Indwelling Catheter',
           options: [
             {
               key: 'Yes',
@@ -200,8 +243,8 @@ export default function () {
               text: 'No'
             }
           ],
-          tableColumn: '8',
-          tableLabel: 'Foley',
+          tableColumn: '9',
+          tableLabel: 'Indwelling Catheter',
           fqn: 'genitourinary.foley'
         },
         {
@@ -210,7 +253,7 @@ export default function () {
           helperText: 'eg. indwelling catheter',
           inputType: 'text',
           label: 'Type',
-          tableColumn: '9',
+          tableColumn: '10',
           tableLabel: 'Type',
           fqn: 'genitourinary.foleyType',
           helperHtml: '<p>eg. indwelling catheter</p>'
@@ -220,7 +263,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Size',
-          tableColumn: '10',
+          tableColumn: '11',
           tableLabel: 'Size',
           fqn: 'genitourinary.foleySize'
         },
@@ -229,7 +272,7 @@ export default function () {
           formIndex: '1',
           inputType: 'day',
           label: 'Last catheter change (day)',
-          tableColumn: '11',
+          tableColumn: '12',
           tableCss: 'hr-table',
           tableLabel: 'Last catheter change (day)',
           fqn: 'genitourinary.lastChange'
@@ -249,7 +292,7 @@ export default function () {
               text: 'No'
             }
           ],
-          tableColumn: '12',
+          tableColumn: '13',
           tableLabel: 'Pelvic pain',
           fqn: 'genitourinary.pelvicPain'
         },
@@ -258,7 +301,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Location',
-          tableColumn: '13',
+          tableColumn: '14',
           tableLabel: 'Location',
           fqn: 'genitourinary.location'
         },
@@ -281,7 +324,7 @@ export default function () {
               text: 'Not observed'
             }
           ],
-          tableColumn: '14',
+          tableColumn: '15',
           tableCss: 'hr-table',
           tableLabel: 'Pelvic pain source',
           fqn: 'genitourinary.pelvicPainSource'
@@ -308,7 +351,7 @@ export default function () {
               text: 'Bleeding'
             }
           ],
-          tableColumn: '15',
+          tableColumn: '16',
           tableLabel: 'Discharge',
           fqn: 'genitourinary.discharge'
         },
@@ -317,7 +360,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Description',
-          tableColumn: '16',
+          tableColumn: '17',
           tableLabel: 'Description',
           fqn: 'genitourinary.description'
         },
@@ -326,7 +369,7 @@ export default function () {
           formIndex: '1',
           inputType: 'date',
           label: 'Last menstrual period date',
-          tableColumn: '17',
+          tableColumn: '18',
           tableCss: 'hr-table',
           tableLabel: 'Last menstrual period date',
           fqn: 'genitourinary.lastMenstrualPeriodDate'
@@ -350,7 +393,7 @@ export default function () {
               text: 'Unknown'
             }
           ],
-          tableColumn: '18',
+          tableColumn: '19',
           tableLabel: 'Pregnant',
           fqn: 'genitourinary.pregnant'
         },
@@ -359,7 +402,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Gravida (number of pregnancies)',
-          tableColumn: '19',
+          tableColumn: '20',
           tableLabel: 'Gravida (number of pregnancies)',
           fqn: 'genitourinary.gravida'
         },
@@ -368,7 +411,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Para (number of children)',
-          tableColumn: '20',
+          tableColumn: '21',
           tableLabel: 'Para (number of children)',
           fqn: 'genitourinary.para'
         },
@@ -377,7 +420,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Living children',
-          tableColumn: '21',
+          tableColumn: '22',
           tableCss: 'hr-table',
           tableLabel: 'Living children',
           fqn: 'genitourinary.livingChildren'
@@ -387,13 +430,13 @@ export default function () {
           formIndex: '1',
           inputType: 'textarea',
           label: 'Comments',
-          tableColumn: '22',
+          tableColumn: '23',
           tableLabel: 'Comments',
           fqn: 'genitourinary.comments'
         }
       ],
       recHeader: true,
-      generated: '2020-07-27T11:55:19-07:00',
+      generated: '2020-07-27T15:16:59-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -413,7 +456,6 @@ export default function () {
             },
             {
               label: 'Urinary symptoms',
-              tableCss: 'hr-table',
               ehr_list_index: '2',
               items: [
                 'urinaryGroup1'
@@ -449,29 +491,35 @@ export default function () {
             },
             {
               label: 'Continence containment device',
-              tableCss: 'hr-table',
               ehr_list_index: '7',
               items: [
                 'diaper'
               ]
             },
             {
-              label: 'Foley',
+              tableCss: 'hr-table',
               ehr_list_index: '8',
+              items: [
+                'toilettingMethod'
+              ]
+            },
+            {
+              label: 'Indwelling Catheter',
+              ehr_list_index: '9',
               items: [
                 'foley'
               ]
             },
             {
               label: 'Type',
-              ehr_list_index: '9',
+              ehr_list_index: '10',
               items: [
                 'foleyType'
               ]
             },
             {
               label: 'Size',
-              ehr_list_index: '10',
+              ehr_list_index: '11',
               items: [
                 'foleySize'
               ]
@@ -479,21 +527,21 @@ export default function () {
             {
               label: 'Last catheter change (day)',
               tableCss: 'hr-table',
-              ehr_list_index: '11',
+              ehr_list_index: '12',
               items: [
                 'lastChange'
               ]
             },
             {
               label: 'Pelvic pain',
-              ehr_list_index: '12',
+              ehr_list_index: '13',
               items: [
                 'pelvicPain'
               ]
             },
             {
               label: 'Location',
-              ehr_list_index: '13',
+              ehr_list_index: '14',
               items: [
                 'location'
               ]
@@ -501,21 +549,21 @@ export default function () {
             {
               label: 'Pelvic pain source',
               tableCss: 'hr-table',
-              ehr_list_index: '14',
+              ehr_list_index: '15',
               items: [
                 'pelvicPainSource'
               ]
             },
             {
               label: 'Discharge',
-              ehr_list_index: '15',
+              ehr_list_index: '16',
               items: [
                 'discharge'
               ]
             },
             {
               label: 'Description',
-              ehr_list_index: '16',
+              ehr_list_index: '17',
               items: [
                 'description'
               ]
@@ -523,28 +571,28 @@ export default function () {
             {
               label: 'Last menstrual period date',
               tableCss: 'hr-table',
-              ehr_list_index: '17',
+              ehr_list_index: '18',
               items: [
                 'lastMenstrualPeriodDate'
               ]
             },
             {
               label: 'Pregnant',
-              ehr_list_index: '18',
+              ehr_list_index: '19',
               items: [
                 'pregnant'
               ]
             },
             {
               label: 'Gravida (number of pregnancies)',
-              ehr_list_index: '19',
+              ehr_list_index: '20',
               items: [
                 'gravida'
               ]
             },
             {
               label: 'Para (number of children)',
-              ehr_list_index: '20',
+              ehr_list_index: '21',
               items: [
                 'para'
               ]
@@ -552,14 +600,14 @@ export default function () {
             {
               label: 'Living children',
               tableCss: 'hr-table',
-              ehr_list_index: '21',
+              ehr_list_index: '22',
               items: [
                 'livingChildren'
               ]
             },
             {
               label: 'Comments',
-              ehr_list_index: '22',
+              ehr_list_index: '23',
               items: [
                 'comments'
               ]
@@ -593,12 +641,13 @@ export default function () {
                   'lastVoidedTime',
                   'colour',
                   'consistency',
-                  'diaper'
+                  'diaper',
+                  'toilettingMethod'
                 ]
               },
               {
                 elementKey: 'foleyGroup',
-                label: 'Foley',
+                label: 'Indwelling Catheter',
                 formCss: 'section-divider',
                 gIndex: '3',
                 gChildren: [
@@ -663,6 +712,7 @@ export default function () {
               colour: '',
               consistency: '',
               diaper: '',
+              toilettingMethod: '',
               foley: '',
               foleyType: '',
               foleySize: '',
@@ -984,7 +1034,7 @@ export default function () {
         }
       ],
       recHeader: true,
-      generated: '2020-07-27T11:55:19-07:00',
+      generated: '2020-07-27T15:16:59-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1361,7 +1411,7 @@ export default function () {
         }
       ],
       recHeader: true,
-      generated: '2020-07-27T11:55:19-07:00',
+      generated: '2020-07-27T15:16:59-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1516,7 +1566,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group19',
+                elementKey: 'ehr_group14',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -1527,7 +1577,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group20',
+                elementKey: 'ehr_group15',
                 label: 'Primary pain site',
                 gIndex: '2',
                 gChildren: [
@@ -1542,7 +1592,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group21',
+                elementKey: 'ehr_group16',
                 formCss: 'grid-left-to-right-1 section-divider',
                 gIndex: '3',
                 gChildren: [
@@ -1550,7 +1600,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group22',
+                elementKey: 'ehr_group17',
                 label: 'Secondary pain site',
                 gIndex: '4',
                 gChildren: [
@@ -1565,7 +1615,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group23',
+                elementKey: 'ehr_group18',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '5',
                 gChildren: [
@@ -1938,7 +1988,7 @@ export default function () {
         }
       ],
       recHeader: true,
-      generated: '2020-07-27T11:55:19-07:00',
+      generated: '2020-07-27T15:16:59-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2094,7 +2144,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group24',
+                elementKey: 'ehr_group19',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -2105,7 +2155,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group25',
+                elementKey: 'ehr_group20',
                 formCss: 'section-divider',
                 gIndex: '2',
                 gChildren: [
@@ -2114,7 +2164,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group26',
+                elementKey: 'ehr_group21',
                 formCss: 'section-divider',
                 gIndex: '3',
                 gChildren: [
@@ -2123,7 +2173,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group27',
+                elementKey: 'ehr_group22',
                 formCss: 'section-divider',
                 gIndex: '4',
                 gChildren: [
@@ -2171,7 +2221,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group28',
+                elementKey: 'ehr_group23',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '9',
                 gChildren: [
@@ -2325,7 +2375,7 @@ export default function () {
         }
       ],
       recHeader: true,
-      generated: '2020-07-27T11:55:19-07:00',
+      generated: '2020-07-27T15:16:59-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2385,7 +2435,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group29',
+                elementKey: 'ehr_group24',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -2396,7 +2446,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group30',
+                elementKey: 'ehr_group25',
                 gIndex: '2',
                 gChildren: [
                   'order',
@@ -2406,7 +2456,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group31',
+                elementKey: 'ehr_group26',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '3',
                 gChildren: [
@@ -2493,10 +2543,10 @@ export default function () {
           fqn: 'referrals.referralProfession'
         },
         {
-          elementKey: 'spacer34',
+          elementKey: 'spacer29',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'referrals.spacer34'
+          fqn: 'referrals.spacer29'
         },
         {
           elementKey: 'appointmentDate',
@@ -2537,7 +2587,7 @@ export default function () {
         }
       ],
       recHeader: true,
-      generated: '2020-07-27T11:55:19-07:00',
+      generated: '2020-07-27T15:16:59-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2597,7 +2647,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group32',
+                elementKey: 'ehr_group27',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -2608,12 +2658,12 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group33',
+                elementKey: 'ehr_group28',
                 gIndex: '2',
                 gChildren: [
                   'referralName',
                   'referralProfession',
-                  'spacer34',
+                  'spacer29',
                   'appointmentDate',
                   'appointmentTime',
                   'status'
@@ -2699,11 +2749,11 @@ export default function () {
           fqn: 'labRequisitions.requisition'
         },
         {
-          elementKey: 'spacer37',
+          elementKey: 'spacer32',
           formIndex: '1',
           inputType: 'spacer',
           tableColumn: '4',
-          fqn: 'labRequisitions.spacer37'
+          fqn: 'labRequisitions.spacer32'
         },
         {
           elementKey: 'ordered',
@@ -2716,7 +2766,7 @@ export default function () {
         }
       ],
       recHeader: true,
-      generated: '2020-07-27T11:55:19-07:00',
+      generated: '2020-07-27T15:16:59-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2749,7 +2799,7 @@ export default function () {
             {
               ehr_list_index: '4',
               items: [
-                'spacer37'
+                'spacer32'
               ]
             },
             {
@@ -2766,7 +2816,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group35',
+                elementKey: 'ehr_group30',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -2777,12 +2827,12 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group36',
+                elementKey: 'ehr_group31',
                 gIndex: '2',
                 gChildren: [
                   'requisition',
                   'requisition',
-                  'spacer37',
+                  'spacer32',
                   'ordered'
                 ]
               }
@@ -3094,7 +3144,7 @@ export default function () {
         }
       ],
       recHeader: true,
-      generated: '2020-07-27T11:55:19-07:00',
+      generated: '2020-07-27T15:16:59-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -3228,7 +3278,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group38',
+                elementKey: 'ehr_group33',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -3239,7 +3289,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group39',
+                elementKey: 'ehr_group34',
                 gIndex: '2',
                 gChildren: [
                   'medication',
@@ -3294,7 +3344,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group40',
+                elementKey: 'ehr_group35',
                 gIndex: '8',
                 gChildren: [
                   'instructions',
@@ -3471,7 +3521,7 @@ export default function () {
         }
       ],
       recHeader: true,
-      generated: '2020-07-27T11:55:19-07:00',
+      generated: '2020-07-27T15:16:59-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -3550,7 +3600,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group41',
+                elementKey: 'ehr_group36',
                 gIndex: '1',
                 gChildren: [
                   'medStatus',
@@ -3633,10 +3683,10 @@ export default function () {
           fqn: 'dischargeSummary.dischargingPhysician/np'
         },
         {
-          elementKey: 'spacer43',
+          elementKey: 'spacer38',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'dischargeSummary.spacer43'
+          fqn: 'dischargeSummary.spacer38'
         },
         {
           elementKey: 'clinicalSummary',
@@ -3661,10 +3711,10 @@ export default function () {
           fqn: 'dischargeSummary.dischargeEducation'
         },
         {
-          elementKey: 'spacer45',
+          elementKey: 'spacer40',
           formIndex: '2',
           inputType: 'spacer',
-          fqn: 'dischargeSummary.spacer45'
+          fqn: 'dischargeSummary.spacer40'
         },
         {
           elementKey: 'dischargeDay',
@@ -3735,7 +3785,7 @@ export default function () {
         }
       ],
       recHeader: true,
-      generated: '2020-07-27T11:55:19-07:00',
+      generated: '2020-07-27T15:16:59-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -3743,12 +3793,12 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
-              elementKey: 'ehr_group42',
+              elementKey: 'ehr_group37',
               gIndex: '1',
               gChildren: [
                 'admissionDay',
                 'dischargingPhysician/np',
-                'spacer43',
+                'spacer38',
                 'clinicalSummary'
               ]
             }
@@ -3760,12 +3810,12 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
-              elementKey: 'ehr_group44',
+              elementKey: 'ehr_group39',
               gIndex: '1',
               gChildren: [
                 'dischargeDiagnosis',
                 'dischargeEducation',
-                'spacer45',
+                'spacer40',
                 'dischargeDay',
                 'dischargeTime',
                 'dischargedTo',
@@ -3807,7 +3857,7 @@ export default function () {
         }
       ],
       recHeader: true,
-      generated: '2020-07-27T11:55:19-07:00',
+      generated: '2020-07-27T15:16:59-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -3815,7 +3865,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
-              elementKey: 'ehr_group46',
+              elementKey: 'ehr_group41',
               gIndex: '1',
               gChildren: [
                 'paymentType'
@@ -3871,6 +3921,85 @@ export default function () {
           fqn: 'integumentaryAssessment.time'
         },
         {
+          elementKey: 'woundLocation',
+          formIndex: '1',
+          inputType: 'select',
+          label: 'Wound location',
+          options: [
+            {
+              key: 'Head',
+              text: 'Head'
+            },
+            {
+              key: 'Face',
+              text: 'Face'
+            },
+            {
+              key: 'Neck',
+              text: 'Neck'
+            },
+            {
+              key: 'Chest',
+              text: 'Chest'
+            },
+            {
+              key: 'Arm (Left)',
+              text: 'Arm (Left)'
+            },
+            {
+              key: 'Arm (Right)',
+              text: 'Arm (Right)'
+            },
+            {
+              key: 'Hand (Left)',
+              text: 'Hand (Left)'
+            },
+            {
+              key: 'Hand (Right)',
+              text: 'Hand (Right)'
+            },
+            {
+              key: 'Abdomen',
+              text: 'Abdomen'
+            },
+            {
+              key: 'Back',
+              text: 'Back'
+            },
+            {
+              key: 'Pelvis',
+              text: 'Pelvis'
+            },
+            {
+              key: 'Buttock',
+              text: 'Buttock'
+            },
+            {
+              key: 'Leg (Left)',
+              text: 'Leg (Left)'
+            },
+            {
+              key: 'Leg (Right)',
+              text: 'Leg (Right)'
+            },
+            {
+              key: 'Foot (Left)',
+              text: 'Foot (Left)'
+            },
+            {
+              key: 'Foot (Right)',
+              text: 'Foot (Right)'
+            },
+            {
+              key: '',
+              text: ''
+            }
+          ],
+          tableColumn: '2',
+          tableLabel: 'Wound location',
+          fqn: 'integumentaryAssessment.woundLocation'
+        },
+        {
           elementKey: 'woundLabel',
           formIndex: '1',
           inputType: 'select',
@@ -3893,7 +4022,7 @@ export default function () {
               text: 'Wound D'
             }
           ],
-          tableColumn: '2',
+          tableColumn: '3',
           tableLabel: 'Wound label',
           fqn: 'integumentaryAssessment.woundLabel'
         },
@@ -3916,584 +4045,115 @@ export default function () {
               text: 'To monitor/manage'
             }
           ],
-          tableColumn: '5',
+          tableColumn: '4',
           tableCss: 'hr-table',
           tableLabel: 'Goal of care',
           fqn: 'integumentaryAssessment.goalOfCare'
         },
         {
-          elementKey: 'spacer9',
-          formIndex: '1',
-          inputType: 'spacer',
-          fqn: 'integumentaryAssessment.spacer9'
-        },
-        {
-          elementKey: 'woundLocation',
-          formIndex: '1',
-          inputType: 'text',
-          label: 'Wound location',
-          tableColumn: '4',
-          tableLabel: 'Wound location',
-          fqn: 'integumentaryAssessment.woundLocation'
-        },
-        {
           elementKey: 'woundDayOnset',
           formIndex: '1',
-          inputType: 'text',
+          inputType: 'day',
           label: 'Wound day of onset',
-          tableColumn: '4',
+          tableColumn: '5',
           tableLabel: 'Wound day of onset',
           fqn: 'integumentaryAssessment.woundDayOnset'
         },
         {
-          elementKey: 'woundType',
+          elementKey: 'stageDay',
           formIndex: '1',
+          inputType: 'day',
+          label: 'Case day',
+          tableColumn: '6',
+          fqn: 'integumentaryAssessment.stageDay'
+        },
+        {
+          elementKey: 'stageType',
+          formIndex: '1',
+          helperText: 'Pressure Injury Stage 1 Intact skin with localized nonblanchable erythema; darkly pigmented skin may not show visible blanching but will appear different than the colour of surrounding skin.\nPressure Injury Stage 2 Partial thickness wound presenting as a shallow open ulcer with a red / pink wound bed, slough may be present but does not obscure the depth of tissue loss; may also present as an intact or open/ruptured serum-filled or serosanguineous filled blister.\nPressure Injury Stage 3 Full thickness wound; subcutaneous tissue may be visible but bone, tendon and muscle are not exposed; may include undermining and/or sinus tracks; slough or eschar may be present but does not obscure the depth of tissue loss.\nPressure Injury Stage 4 Full thickness wound with exposed bone, tendon or muscle; often includes undermining and/or sinus tracks; slough or eschar may be present on some parts of the wound bed but does not obscure the depth of tissue loss.\nPressure Injury Unstageable  A wound in which the wound bed is covered by sufficient slough and / or eschar to preclude staging.\nPressure Injury Deep Tissue Injury  A localized purple or maroon area of intact skin or a blood filled blister that occur when underlying soft tissue is damaged from friction or shear.\nSurgical Wounds Secondary intention: Incision has dehisced and surgical closure is not possible; wounds must heal by granulation\nSkin Tear: Skin tears are the result of trauma caused by shearing, friction, or blunt force to the skin. Consider risk factors (i.e.: advanced age, immobility, inadequate hydration/nutrition, falls)\nAbscess: A local collection of purulent and/or sanguineous drainage that may be incised and drained.\nBurn: Tissue loss/damage as a result from thermal, chemical, electrical, and radiation sources.\nVenous Ulcer: Caused by venous insufficiency due to valve dysfunction, complete or partial blockage of the deep veins, and / or failure of the calf muscle pump.\nArterial Ulcer: Caused by a disruption to arterial blood flow leading to moderate / severe tissue ischemia.\nMixed Arterial/Venous Ulcer: Caused by both venous insufficiency and disrupted arterial blood flow.\nDiabetic/Neuropathic Ulcers: A result of neuropathy, structural foot changes, and/or altered blood flow related to diabetes mellitus (or alcoholism, renal failure, HIV, late stage syphilis, trauma and surgery).\n',
           inputType: 'checkset',
-          label: 'Wound type/etiology',
+          label: 'Wound Etiology/Type',
           options: [
             {
-              key: 'Pressure injury',
-              text: 'Pressure injury'
+              key: 'stage1',
+              text: 'Pressure Injury Stage 1'
             },
             {
-              key: 'Venous ulcer',
-              text: 'Venous ulcer'
+              key: 'stage2',
+              text: 'Pressure Injury Stage 2'
             },
             {
-              key: 'Arterial ulcer',
-              text: 'Arterial ulcer'
+              key: 'stage3',
+              text: 'Pressure Injury Stage 3'
             },
             {
-              key: 'Diabetic ulcer',
-              text: 'Diabetic ulcer'
+              key: 'stage4',
+              text: 'Pressure Injury Stage 4'
             },
             {
-              key: 'Surgical secondary intent',
-              text: 'Surgical secondary intent'
+              key: 'unstageable',
+              text: 'Pressure Injury Unstageable'
             },
             {
-              key: 'Skin tear',
-              text: 'Skin tear'
+              key: 'deep',
+              text: 'Pressure Injury Deep Tissue Injury'
             },
             {
-              key: 'Other',
+              key: 'surgical',
+              text: 'Surgical Secondary Intent'
+            },
+            {
+              key: 'tear',
+              text: 'Skin Tear'
+            },
+            {
+              key: 'abscess',
+              text: 'Abscess'
+            },
+            {
+              key: 'burn',
+              text: 'Burn'
+            },
+            {
+              key: 'venous',
+              text: 'Venous Ulcer'
+            },
+            {
+              key: 'arterial',
+              text: 'Arterial Ulcer'
+            },
+            {
+              key: 'mixedUlcer',
+              text: 'Mixed Venous/Arterial Ulcer'
+            },
+            {
+              key: 'diabetic',
+              text: 'Diabetic/Neuropathic Ulcer'
+            },
+            {
+              key: 'other',
               text: 'Other'
             }
           ],
-          tableColumn: '4',
-          tableCss: 'hr-table',
-          tableLabel: 'Wound type/etiology',
-          fqn: 'integumentaryAssessment.woundType'
+          tableColumn: '7',
+          fqn: 'integumentaryAssessment.stageType',
+          helperHtml: '<p>Pressure Injury Stage 1 Intact skin with localized nonblanchable erythema; darkly pigmented skin may not show visible blanching but will appear different than the colour of surrounding skin.</p>\n<p>Pressure Injury Stage 2 Partial thickness wound presenting as a shallow open ulcer with a red / pink wound bed, slough may be present but does not obscure the depth of tissue loss; may also present as an intact or open/ruptured serum-filled or serosanguineous filled blister.</p>\n<p>Pressure Injury Stage 3 Full thickness wound; subcutaneous tissue may be visible but bone, tendon and muscle are not exposed; may include undermining and/or sinus tracks; slough or eschar may be present but does not obscure the depth of tissue loss.</p>\n<p>Pressure Injury Stage 4 Full thickness wound with exposed bone, tendon or muscle; often includes undermining and/or sinus tracks; slough or eschar may be present on some parts of the wound bed but does not obscure the depth of tissue loss.</p>\n<p>Pressure Injury Unstageable  A wound in which the wound bed is covered by sufficient slough and / or eschar to preclude staging.</p>\n<p>Pressure Injury Deep Tissue Injury  A localized purple or maroon area of intact skin or a blood filled blister that occur when underlying soft tissue is damaged from friction or shear.</p>\n<p>Surgical Wounds Secondary intention: Incision has dehisced and surgical closure is not possible; wounds must heal by granulation</p>\n<p>Skin Tear: Skin tears are the result of trauma caused by shearing, friction, or blunt force to the skin. Consider risk factors (i.e.: advanced age, immobility, inadequate hydration/nutrition, falls)</p>\n<p>Abscess: A local collection of purulent and/or sanguineous drainage that may be incised and drained.</p>\n<p>Burn: Tissue loss/damage as a result from thermal, chemical, electrical, and radiation sources.</p>\n<p>Venous Ulcer: Caused by venous insufficiency due to valve dysfunction, complete or partial blockage of the deep veins, and / or failure of the calf muscle pump.</p>\n<p>Arterial Ulcer: Caused by a disruption to arterial blood flow leading to moderate / severe tissue ischemia.</p>\n<p>Mixed Arterial/Venous Ulcer: Caused by both venous insufficiency and disrupted arterial blood flow.</p>\n<p>Diabetic/Neuropathic Ulcers: A result of neuropathy, structural foot changes, and/or altered blood flow related to diabetes mellitus (or alcoholism, renal failure, HIV, late stage syphilis, trauma and surgery).</p>\n<p></p>'
         },
         {
-          elementKey: 'stage',
+          elementKey: 'stageOther',
+          dependentOn: 'visble:stageType=other',
           formIndex: '1',
-          inputType: 'select',
-          label: 'Stage',
-          options: [
-            {
-              key: 'Stage 1',
-              text: 'Stage 1'
-            },
-            {
-              key: 'Stage 2',
-              text: 'Stage 2'
-            },
-            {
-              key: 'Stage 3',
-              text: 'Stage 3'
-            },
-            {
-              key: 'Stage 4',
-              text: 'Stage 4'
-            },
-            {
-              key: 'Stage X (unstageable)',
-              text: 'Stage X (unstageable)'
-            },
-            {
-              key: 'Stage SDTI (Supected Deep Tissue Injury)',
-              text: 'Stage SDTI (Supected Deep Tissue Injury)'
-            }
-          ],
-          tableColumn: '5',
-          tableLabel: 'Stage',
-          fqn: 'integumentaryAssessment.stage'
-        },
-        {
-          elementKey: 'stageDate',
-          formIndex: '1',
-          inputType: 'date',
-          label: 'Date',
-          tableColumn: '6',
-          tableCss: 'hr-table',
-          tableLabel: 'Date',
-          fqn: 'integumentaryAssessment.stageDate'
-        },
-        {
-          elementKey: 'pinkred',
-          formIndex: '1',
-          inputType: 'select',
-          label: '% Pink/red',
-          options: [
-            {
-              key: '10=10%',
-              text: '10=10%'
-            },
-            {
-              key: '20=20%',
-              text: '20=20%'
-            },
-            {
-              key: '30=30%',
-              text: '30=30%'
-            },
-            {
-              key: '40=40%',
-              text: '40=40%'
-            },
-            {
-              key: '50=50%',
-              text: '50=50%'
-            },
-            {
-              key: '60=60%',
-              text: '60=60%'
-            },
-            {
-              key: '70=70%',
-              text: '70=70%'
-            },
-            {
-              key: '80=80%',
-              text: '80=80%'
-            },
-            {
-              key: '90=90%',
-              text: '90=90%'
-            },
-            {
-              key: '100=100%',
-              text: '100=100%'
-            }
-          ],
-          passToFunction: 'woundBedCalculation',
-          tableColumn: '20',
-          tableLabel: '% Pink/red',
-          fqn: 'integumentaryAssessment.pinkred'
-        },
-        {
-          elementKey: 'granulation',
-          formIndex: '1',
-          helperText: 'Red pebbly',
-          inputType: 'select',
-          label: '% Granulation',
-          options: [
-            {
-              key: '10=10%',
-              text: '10=10%'
-            },
-            {
-              key: '20=20%',
-              text: '20=20%'
-            },
-            {
-              key: '30=30%',
-              text: '30=30%'
-            },
-            {
-              key: '40=40%',
-              text: '40=40%'
-            },
-            {
-              key: '50=50%',
-              text: '50=50%'
-            },
-            {
-              key: '60=60%',
-              text: '60=60%'
-            },
-            {
-              key: '70=70%',
-              text: '70=70%'
-            },
-            {
-              key: '80=80%',
-              text: '80=80%'
-            },
-            {
-              key: '90=90%',
-              text: '90=90%'
-            },
-            {
-              key: '100=100%',
-              text: '100=100%'
-            }
-          ],
-          passToFunction: 'woundBedCalculation',
-          tableColumn: '21',
-          tableLabel: '% Granulation',
-          fqn: 'integumentaryAssessment.granulation',
-          helperHtml: '<p>Red pebbly</p>'
-        },
-        {
-          elementKey: 'slough',
-          formIndex: '1',
-          inputType: 'select',
-          label: '% Slough',
-          options: [
-            {
-              key: '10=10%',
-              text: '10=10%'
-            },
-            {
-              key: '20=20%',
-              text: '20=20%'
-            },
-            {
-              key: '30=30%',
-              text: '30=30%'
-            },
-            {
-              key: '40=40%',
-              text: '40=40%'
-            },
-            {
-              key: '50=50%',
-              text: '50=50%'
-            },
-            {
-              key: '60=60%',
-              text: '60=60%'
-            },
-            {
-              key: '70=70%',
-              text: '70=70%'
-            },
-            {
-              key: '80=80%',
-              text: '80=80%'
-            },
-            {
-              key: '90=90%',
-              text: '90=90%'
-            },
-            {
-              key: '100=100%',
-              text: '100=100%'
-            }
-          ],
-          passToFunction: 'woundBedCalculation',
-          tableColumn: '22',
-          tableLabel: '% Slough',
-          fqn: 'integumentaryAssessment.slough'
-        },
-        {
-          elementKey: 'eschar',
-          formIndex: '1',
-          inputType: 'select',
-          label: '% Eschar',
-          options: [
-            {
-              key: '10=10%',
-              text: '10=10%'
-            },
-            {
-              key: '20=20%',
-              text: '20=20%'
-            },
-            {
-              key: '30=30%',
-              text: '30=30%'
-            },
-            {
-              key: '40=40%',
-              text: '40=40%'
-            },
-            {
-              key: '50=50%',
-              text: '50=50%'
-            },
-            {
-              key: '60=60%',
-              text: '60=60%'
-            },
-            {
-              key: '70=70%',
-              text: '70=70%'
-            },
-            {
-              key: '80=80%',
-              text: '80=80%'
-            },
-            {
-              key: '90=90%',
-              text: '90=90%'
-            },
-            {
-              key: '100=100%',
-              text: '100=100%'
-            }
-          ],
-          passToFunction: 'woundBedCalculation',
-          tableColumn: '23',
-          tableLabel: '% Eschar',
-          fqn: 'integumentaryAssessment.eschar'
-        },
-        {
-          elementKey: 'foreign',
-          formIndex: '1',
-          helperText: 'Sutures, mesh, hardware',
-          inputType: 'select',
-          label: '% Foreign body',
-          options: [
-            {
-              key: '10=10%',
-              text: '10=10%'
-            },
-            {
-              key: '20=20%',
-              text: '20=20%'
-            },
-            {
-              key: '30=30%',
-              text: '30=30%'
-            },
-            {
-              key: '40=40%',
-              text: '40=40%'
-            },
-            {
-              key: '50=50%',
-              text: '50=50%'
-            },
-            {
-              key: '60=60%',
-              text: '60=60%'
-            },
-            {
-              key: '70=70%',
-              text: '70=70%'
-            },
-            {
-              key: '80=80%',
-              text: '80=80%'
-            },
-            {
-              key: '90=90%',
-              text: '90=90%'
-            },
-            {
-              key: '100=100%',
-              text: '100=100%'
-            }
-          ],
-          passToFunction: 'woundBedCalculation',
-          tableColumn: '24',
-          tableLabel: '% Foreign body',
-          fqn: 'integumentaryAssessment.foreign',
-          helperHtml: '<p>Sutures, mesh, hardware</p>'
-        },
-        {
-          elementKey: 'underlying',
-          formIndex: '1',
-          helperText: 'Faschia, tendon, bone',
-          inputType: 'select',
-          label: '% Underlying structures',
-          options: [
-            {
-              key: '10=10%',
-              text: '10=10%'
-            },
-            {
-              key: '20=20%',
-              text: '20=20%'
-            },
-            {
-              key: '30=30%',
-              text: '30=30%'
-            },
-            {
-              key: '40=40%',
-              text: '40=40%'
-            },
-            {
-              key: '50=50%',
-              text: '50=50%'
-            },
-            {
-              key: '60=60%',
-              text: '60=60%'
-            },
-            {
-              key: '70=70%',
-              text: '70=70%'
-            },
-            {
-              key: '80=80%',
-              text: '80=80%'
-            },
-            {
-              key: '90=90%',
-              text: '90=90%'
-            },
-            {
-              key: '100=100%',
-              text: '100=100%'
-            }
-          ],
-          passToFunction: 'woundBedCalculation',
-          tableColumn: '25',
-          tableLabel: '% Underlying structures',
-          fqn: 'integumentaryAssessment.underlying',
-          helperHtml: '<p>Faschia, tendon, bone</p>'
-        },
-        {
-          elementKey: 'notVisible',
-          formIndex: '1',
-          inputType: 'select',
-          label: '% Not visible',
-          options: [
-            {
-              key: '10=10%',
-              text: '10=10%'
-            },
-            {
-              key: '20=20%',
-              text: '20=20%'
-            },
-            {
-              key: '30=30%',
-              text: '30=30%'
-            },
-            {
-              key: '40=40%',
-              text: '40=40%'
-            },
-            {
-              key: '50=50%',
-              text: '50=50%'
-            },
-            {
-              key: '60=60%',
-              text: '60=60%'
-            },
-            {
-              key: '70=70%',
-              text: '70=70%'
-            },
-            {
-              key: '80=80%',
-              text: '80=80%'
-            },
-            {
-              key: '90=90%',
-              text: '90=90%'
-            },
-            {
-              key: '100=100%',
-              text: '100=100%'
-            }
-          ],
-          passToFunction: 'woundBedCalculation',
-          tableColumn: '26',
-          tableLabel: '% Not visible',
-          fqn: 'integumentaryAssessment.notVisible'
-        },
-        {
-          elementKey: 'other',
-          formIndex: '1',
-          inputType: 'select',
-          label: '% Other',
-          options: [
-            {
-              key: '10=10%',
-              text: '10=10%'
-            },
-            {
-              key: '20=20%',
-              text: '20=20%'
-            },
-            {
-              key: '30=30%',
-              text: '30=30%'
-            },
-            {
-              key: '40=40%',
-              text: '40=40%'
-            },
-            {
-              key: '50=50%',
-              text: '50=50%'
-            },
-            {
-              key: '60=60%',
-              text: '60=60%'
-            },
-            {
-              key: '70=70%',
-              text: '70=70%'
-            },
-            {
-              key: '80=80%',
-              text: '80=80%'
-            },
-            {
-              key: '90=90%',
-              text: '90=90%'
-            },
-            {
-              key: '100=100%',
-              text: '100=100%'
-            }
-          ],
-          passToFunction: 'woundBedCalculation',
-          tableColumn: '27',
-          tableCss: 'hr-table',
-          tableLabel: '% Other',
-          fqn: 'integumentaryAssessment.other'
-        },
-        {
-          elementKey: 'spacer10',
-          formIndex: '1',
-          inputType: 'spacer',
-          fqn: 'integumentaryAssessment.spacer10'
-        },
-        {
-          elementKey: 'woundBedCalculation',
-          defaultValue: '0',
-          formIndex: '1',
-          inputType: 'calculatedValue',
-          label: 'Wound bed calculation',
-          tableColumn: '28',
-          tableLabel: 'Wound bed calculation',
-          validation: 'range(0,100)',
-          fqn: 'integumentaryAssessment.woundBedCalculation'
-        },
-        {
-          elementKey: 'aLabelClock',
-          formIndex: '1',
-          inputType: 'form_label',
-          fqn: 'integumentaryAssessment.aLabelClock'
-        },
-        {
-          elementKey: 'spacer11',
-          formIndex: '1',
-          inputType: 'spacer',
-          fqn: 'integumentaryAssessment.spacer11'
-        },
-        {
-          elementKey: 'spacer12',
-          formIndex: '1',
-          inputType: 'spacer',
-          fqn: 'integumentaryAssessment.spacer12'
+          inputType: 'text',
+          label: 'Other',
+          tableColumn: '8',
+          fqn: 'integumentaryAssessment.stageOther'
         },
         {
           elementKey: 'length',
           formIndex: '1',
           inputType: 'text',
           label: 'Length cm.mm',
-          tableColumn: '7',
+          tableColumn: '9',
           tableLabel: 'Length cm.mm',
           fqn: 'integumentaryAssessment.length'
         },
@@ -4502,7 +4162,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Width cm.mm',
-          tableColumn: '8',
+          tableColumn: '10',
           tableLabel: 'Width cm.mm',
           fqn: 'integumentaryAssessment.width'
         },
@@ -4511,7 +4171,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Depth cm.mm',
-          tableColumn: '9',
+          tableColumn: '11',
           tableCss: 'hr-table',
           tableLabel: 'Depth cm.mm',
           fqn: 'integumentaryAssessment.depth'
@@ -4521,7 +4181,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Sinus/tunnel 1 depth cm.mm',
-          tableColumn: '10',
+          tableColumn: '12',
           tableLabel: 'Sinus/tunnel 1 depth cm.mm',
           fqn: 'integumentaryAssessment.sinusDepth1'
         },
@@ -4581,24 +4241,24 @@ export default function () {
               text: '12'
             }
           ],
-          tableColumn: '11',
+          tableColumn: '13',
           tableCss: 'hr-table',
           tableLabel: 'Location',
           fqn: 'integumentaryAssessment.sinusDepthLocation1',
           helperHtml: '<p>O\'clock</p>'
         },
         {
-          elementKey: 'spacer13',
+          elementKey: 'spacer9',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'integumentaryAssessment.spacer13'
+          fqn: 'integumentaryAssessment.spacer9'
         },
         {
           elementKey: 'sinusDepth2',
           formIndex: '1',
           inputType: 'text',
           label: 'Sinus/tunnel 2 depth cm.mm',
-          tableColumn: '12',
+          tableColumn: '14',
           tableLabel: 'Sinus/tunnel 2 depth cm.mm',
           fqn: 'integumentaryAssessment.sinusDepth2'
         },
@@ -4658,24 +4318,24 @@ export default function () {
               text: '12'
             }
           ],
-          tableColumn: '13',
+          tableColumn: '15',
           tableCss: 'hr-table',
           tableLabel: 'Location',
           fqn: 'integumentaryAssessment.sinusDepthLocation2',
           helperHtml: '<p>O\'clock</p>'
         },
         {
-          elementKey: 'spacer14',
+          elementKey: 'spacer10',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'integumentaryAssessment.spacer14'
+          fqn: 'integumentaryAssessment.spacer10'
         },
         {
           elementKey: 'underminingDepth1',
           formIndex: '1',
           inputType: 'text',
           label: 'Undermining 1 depth cm.mm',
-          tableColumn: '14',
+          tableColumn: '16',
           tableLabel: 'Undermining 1 depth cm.mm',
           fqn: 'integumentaryAssessment.underminingDepth1'
         },
@@ -4735,7 +4395,7 @@ export default function () {
               text: '12'
             }
           ],
-          tableColumn: '15',
+          tableColumn: '17',
           tableCss: 'hr-table',
           tableLabel: 'Location',
           fqn: 'integumentaryAssessment.underminingDepthLocation1A',
@@ -4797,24 +4457,18 @@ export default function () {
               text: '12'
             }
           ],
-          tableColumn: '16',
+          tableColumn: '18',
           tableCss: 'hr-table',
           tableLabel: 'Location',
           fqn: 'integumentaryAssessment.underminingDepthLocation1B',
           helperHtml: '<p>O\'clock</p>'
         },
         {
-          elementKey: 'spacer15',
-          formIndex: '1',
-          inputType: 'spacer',
-          fqn: 'integumentaryAssessment.spacer15'
-        },
-        {
           elementKey: 'underminingDepth2',
           formIndex: '1',
           inputType: 'text',
           label: 'Undermining 2 depth cm.mm',
-          tableColumn: '17',
+          tableColumn: '19',
           tableLabel: 'Undermining 2 depth cm.mm',
           fqn: 'integumentaryAssessment.underminingDepth2'
         },
@@ -4874,7 +4528,7 @@ export default function () {
               text: '12'
             }
           ],
-          tableColumn: '18',
+          tableColumn: '20',
           tableCss: 'hr-table',
           tableLabel: 'Location',
           fqn: 'integumentaryAssessment.underminingDepthLocation2A',
@@ -4936,11 +4590,497 @@ export default function () {
               text: '12'
             }
           ],
-          tableColumn: '19',
+          tableColumn: '21',
           tableCss: 'hr-table',
           tableLabel: 'Location',
           fqn: 'integumentaryAssessment.underminingDepthLocation2B',
           helperHtml: '<p>O\'clock</p>'
+        },
+        {
+          elementKey: 'pinkred',
+          formIndex: '1',
+          inputType: 'select',
+          label: '% Pink/red',
+          options: [
+            {
+              key: '10=10%',
+              text: '10=10%'
+            },
+            {
+              key: '20=20%',
+              text: '20=20%'
+            },
+            {
+              key: '30=30%',
+              text: '30=30%'
+            },
+            {
+              key: '40=40%',
+              text: '40=40%'
+            },
+            {
+              key: '50=50%',
+              text: '50=50%'
+            },
+            {
+              key: '60=60%',
+              text: '60=60%'
+            },
+            {
+              key: '70=70%',
+              text: '70=70%'
+            },
+            {
+              key: '80=80%',
+              text: '80=80%'
+            },
+            {
+              key: '90=90%',
+              text: '90=90%'
+            },
+            {
+              key: '100=100%',
+              text: '100=100%'
+            }
+          ],
+          passToFunction: 'woundBedCalculation',
+          tableColumn: '22',
+          tableLabel: '% Pink/red',
+          fqn: 'integumentaryAssessment.pinkred'
+        },
+        {
+          elementKey: 'granulation',
+          formIndex: '1',
+          helperText: 'Red pebbly',
+          inputType: 'select',
+          label: '% Granulation',
+          options: [
+            {
+              key: '10=10%',
+              text: '10=10%'
+            },
+            {
+              key: '20=20%',
+              text: '20=20%'
+            },
+            {
+              key: '30=30%',
+              text: '30=30%'
+            },
+            {
+              key: '40=40%',
+              text: '40=40%'
+            },
+            {
+              key: '50=50%',
+              text: '50=50%'
+            },
+            {
+              key: '60=60%',
+              text: '60=60%'
+            },
+            {
+              key: '70=70%',
+              text: '70=70%'
+            },
+            {
+              key: '80=80%',
+              text: '80=80%'
+            },
+            {
+              key: '90=90%',
+              text: '90=90%'
+            },
+            {
+              key: '100=100%',
+              text: '100=100%'
+            }
+          ],
+          passToFunction: 'woundBedCalculation',
+          tableColumn: '23',
+          tableLabel: '% Granulation',
+          fqn: 'integumentaryAssessment.granulation',
+          helperHtml: '<p>Red pebbly</p>'
+        },
+        {
+          elementKey: 'slough',
+          formIndex: '1',
+          inputType: 'select',
+          label: '% Slough',
+          options: [
+            {
+              key: '10=10%',
+              text: '10=10%'
+            },
+            {
+              key: '20=20%',
+              text: '20=20%'
+            },
+            {
+              key: '30=30%',
+              text: '30=30%'
+            },
+            {
+              key: '40=40%',
+              text: '40=40%'
+            },
+            {
+              key: '50=50%',
+              text: '50=50%'
+            },
+            {
+              key: '60=60%',
+              text: '60=60%'
+            },
+            {
+              key: '70=70%',
+              text: '70=70%'
+            },
+            {
+              key: '80=80%',
+              text: '80=80%'
+            },
+            {
+              key: '90=90%',
+              text: '90=90%'
+            },
+            {
+              key: '100=100%',
+              text: '100=100%'
+            }
+          ],
+          passToFunction: 'woundBedCalculation',
+          tableColumn: '24',
+          tableLabel: '% Slough',
+          fqn: 'integumentaryAssessment.slough'
+        },
+        {
+          elementKey: 'eschar',
+          formIndex: '1',
+          inputType: 'select',
+          label: '% Eschar (soft, boggy)',
+          options: [
+            {
+              key: '10=10%',
+              text: '10=10%'
+            },
+            {
+              key: '20=20%',
+              text: '20=20%'
+            },
+            {
+              key: '30=30%',
+              text: '30=30%'
+            },
+            {
+              key: '40=40%',
+              text: '40=40%'
+            },
+            {
+              key: '50=50%',
+              text: '50=50%'
+            },
+            {
+              key: '60=60%',
+              text: '60=60%'
+            },
+            {
+              key: '70=70%',
+              text: '70=70%'
+            },
+            {
+              key: '80=80%',
+              text: '80=80%'
+            },
+            {
+              key: '90=90%',
+              text: '90=90%'
+            },
+            {
+              key: '100=100%',
+              text: '100=100%'
+            }
+          ],
+          passToFunction: 'woundBedCalculation',
+          tableColumn: '24',
+          tableLabel: '% Eschar (soft, boggy)',
+          fqn: 'integumentaryAssessment.eschar'
+        },
+        {
+          elementKey: 'eschar',
+          formIndex: '1',
+          inputType: 'select',
+          label: '% Eschar (dry, stable)',
+          options: [
+            {
+              key: '10=10%',
+              text: '10=10%'
+            },
+            {
+              key: '20=20%',
+              text: '20=20%'
+            },
+            {
+              key: '30=30%',
+              text: '30=30%'
+            },
+            {
+              key: '40=40%',
+              text: '40=40%'
+            },
+            {
+              key: '50=50%',
+              text: '50=50%'
+            },
+            {
+              key: '60=60%',
+              text: '60=60%'
+            },
+            {
+              key: '70=70%',
+              text: '70=70%'
+            },
+            {
+              key: '80=80%',
+              text: '80=80%'
+            },
+            {
+              key: '90=90%',
+              text: '90=90%'
+            },
+            {
+              key: '100=100%',
+              text: '100=100%'
+            }
+          ],
+          passToFunction: 'woundBedCalculation',
+          tableColumn: '25',
+          tableLabel: '% Eschar (dry, stable)',
+          fqn: 'integumentaryAssessment.eschar'
+        },
+        {
+          elementKey: 'foreign',
+          formIndex: '1',
+          helperText: 'Sutures, mesh, hardware',
+          inputType: 'select',
+          label: '% Foreign body',
+          options: [
+            {
+              key: '10=10%',
+              text: '10=10%'
+            },
+            {
+              key: '20=20%',
+              text: '20=20%'
+            },
+            {
+              key: '30=30%',
+              text: '30=30%'
+            },
+            {
+              key: '40=40%',
+              text: '40=40%'
+            },
+            {
+              key: '50=50%',
+              text: '50=50%'
+            },
+            {
+              key: '60=60%',
+              text: '60=60%'
+            },
+            {
+              key: '70=70%',
+              text: '70=70%'
+            },
+            {
+              key: '80=80%',
+              text: '80=80%'
+            },
+            {
+              key: '90=90%',
+              text: '90=90%'
+            },
+            {
+              key: '100=100%',
+              text: '100=100%'
+            }
+          ],
+          passToFunction: 'woundBedCalculation',
+          tableColumn: '26',
+          tableLabel: '% Foreign body',
+          fqn: 'integumentaryAssessment.foreign',
+          helperHtml: '<p>Sutures, mesh, hardware</p>'
+        },
+        {
+          elementKey: 'underlying',
+          formIndex: '1',
+          helperText: 'Faschia, tendon, bone',
+          inputType: 'select',
+          label: '% Underlying structures',
+          options: [
+            {
+              key: '10=10%',
+              text: '10=10%'
+            },
+            {
+              key: '20=20%',
+              text: '20=20%'
+            },
+            {
+              key: '30=30%',
+              text: '30=30%'
+            },
+            {
+              key: '40=40%',
+              text: '40=40%'
+            },
+            {
+              key: '50=50%',
+              text: '50=50%'
+            },
+            {
+              key: '60=60%',
+              text: '60=60%'
+            },
+            {
+              key: '70=70%',
+              text: '70=70%'
+            },
+            {
+              key: '80=80%',
+              text: '80=80%'
+            },
+            {
+              key: '90=90%',
+              text: '90=90%'
+            },
+            {
+              key: '100=100%',
+              text: '100=100%'
+            }
+          ],
+          passToFunction: 'woundBedCalculation',
+          tableColumn: '27',
+          tableLabel: '% Underlying structures',
+          fqn: 'integumentaryAssessment.underlying',
+          helperHtml: '<p>Faschia, tendon, bone</p>'
+        },
+        {
+          elementKey: 'notVisible',
+          formIndex: '1',
+          inputType: 'select',
+          label: '% Not visible',
+          options: [
+            {
+              key: '10=10%',
+              text: '10=10%'
+            },
+            {
+              key: '20=20%',
+              text: '20=20%'
+            },
+            {
+              key: '30=30%',
+              text: '30=30%'
+            },
+            {
+              key: '40=40%',
+              text: '40=40%'
+            },
+            {
+              key: '50=50%',
+              text: '50=50%'
+            },
+            {
+              key: '60=60%',
+              text: '60=60%'
+            },
+            {
+              key: '70=70%',
+              text: '70=70%'
+            },
+            {
+              key: '80=80%',
+              text: '80=80%'
+            },
+            {
+              key: '90=90%',
+              text: '90=90%'
+            },
+            {
+              key: '100=100%',
+              text: '100=100%'
+            }
+          ],
+          passToFunction: 'woundBedCalculation',
+          tableColumn: '28',
+          tableLabel: '% Not visible',
+          fqn: 'integumentaryAssessment.notVisible'
+        },
+        {
+          elementKey: 'other',
+          formIndex: '1',
+          inputType: 'select',
+          label: '% Other',
+          options: [
+            {
+              key: '10=10%',
+              text: '10=10%'
+            },
+            {
+              key: '20=20%',
+              text: '20=20%'
+            },
+            {
+              key: '30=30%',
+              text: '30=30%'
+            },
+            {
+              key: '40=40%',
+              text: '40=40%'
+            },
+            {
+              key: '50=50%',
+              text: '50=50%'
+            },
+            {
+              key: '60=60%',
+              text: '60=60%'
+            },
+            {
+              key: '70=70%',
+              text: '70=70%'
+            },
+            {
+              key: '80=80%',
+              text: '80=80%'
+            },
+            {
+              key: '90=90%',
+              text: '90=90%'
+            },
+            {
+              key: '100=100%',
+              text: '100=100%'
+            }
+          ],
+          passToFunction: 'woundBedCalculation',
+          tableColumn: '29',
+          tableLabel: '% Other',
+          fqn: 'integumentaryAssessment.other'
+        },
+        {
+          elementKey: 'woundBedCalculation',
+          defaultValue: '0',
+          formIndex: '1',
+          inputType: 'calculatedValue',
+          label: 'Wound bed calculation',
+          tableColumn: '30',
+          tableCss: 'hr-table',
+          tableLabel: 'Wound bed calculation',
+          validation: 'range(0,100)',
+          fqn: 'integumentaryAssessment.woundBedCalculation'
         },
         {
           elementKey: 'exudateAmount',
@@ -4965,14 +5105,14 @@ export default function () {
               text: 'Large/copious'
             }
           ],
-          tableColumn: '20',
+          tableColumn: '31',
           tableLabel: 'Exudate amount',
           fqn: 'integumentaryAssessment.exudateAmount'
         },
         {
           elementKey: 'exudateType',
           formIndex: '1',
-          inputType: 'select',
+          inputType: 'checkset',
           label: 'Exudate type',
           options: [
             {
@@ -4992,7 +5132,7 @@ export default function () {
               text: 'Other'
             }
           ],
-          tableColumn: '21',
+          tableColumn: '32',
           tableCss: 'hr-table',
           tableLabel: 'Exudate type',
           fqn: 'integumentaryAssessment.exudateType'
@@ -5012,7 +5152,7 @@ export default function () {
               text: 'No'
             }
           ],
-          tableColumn: '22',
+          tableColumn: '33',
           tableCss: 'hr-table',
           tableLabel: 'Odour present after cleansing',
           fqn: 'integumentaryAssessment.odour'
@@ -5040,7 +5180,7 @@ export default function () {
               text: 'Epithelialization'
             }
           ],
-          tableColumn: '23',
+          tableColumn: '34',
           tableLabel: 'Wound edge',
           fqn: 'integumentaryAssessment.woundEdge'
         },
@@ -5083,7 +5223,7 @@ export default function () {
               text: 'Other'
             }
           ],
-          tableColumn: '24',
+          tableColumn: '35',
           tableCss: 'hr-table',
           tableLabel: 'Peri-wound skin',
           fqn: 'integumentaryAssessment.periWoundSkin'
@@ -5095,9 +5235,10 @@ export default function () {
           inputType: 'text',
           label: 'Wound pain',
           suffix: '/10',
-          tableColumn: '25',
+          tableColumn: '36',
           tableCss: 'hr-table',
           tableLabel: 'Wound pain',
+          validation: 'range(0,10)',
           fqn: 'integumentaryAssessment.woundPain',
           helperHtml: '<p>Scored from 10 point analogue Pain Scale</p>\n<p>See Pain Assessment for details</p>'
         },
@@ -5107,7 +5248,7 @@ export default function () {
           helperText: 'Any depth 1cm or greater, count packing pieces',
           inputType: 'text',
           label: 'Packing out',
-          tableColumn: '26',
+          tableColumn: '37',
           tableLabel: 'Packing out',
           fqn: 'integumentaryAssessment.packingOut',
           helperHtml: '<p>Any depth 1cm or greater, count packing pieces</p>'
@@ -5118,17 +5259,17 @@ export default function () {
           helperText: 'Any depth 1cm or greater, count packing pieces',
           inputType: 'text',
           label: 'Packing in',
-          tableColumn: '27',
+          tableColumn: '38',
           tableCss: 'hr-table',
           tableLabel: 'Packing in',
           fqn: 'integumentaryAssessment.packinIn',
           helperHtml: '<p>Any depth 1cm or greater, count packing pieces</p>'
         },
         {
-          elementKey: 'spacer18',
+          elementKey: 'spacer13',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'integumentaryAssessment.spacer18'
+          fqn: 'integumentaryAssessment.spacer13'
         },
         {
           elementKey: 'treatmentComplete',
@@ -5145,13 +5286,13 @@ export default function () {
               text: 'No'
             }
           ],
-          tableColumn: '28',
+          tableColumn: '39',
           tableLabel: 'Treatments as per plan of care',
           fqn: 'integumentaryAssessment.treatmentComplete'
         }
       ],
       recHeader: true,
-      generated: '2020-07-27T11:55:19-07:00',
+      generated: '2020-07-27T15:16:59-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -5170,48 +5311,62 @@ export default function () {
               ]
             },
             {
-              label: 'Wound label',
+              label: 'Wound location',
               ehr_list_index: '2',
+              items: [
+                'woundLocation'
+              ]
+            },
+            {
+              label: 'Wound label',
+              ehr_list_index: '3',
               items: [
                 'woundLabel'
               ]
             },
             {
-              label: 'Wound location',
-              ehr_list_index: '4',
-              items: [
-                'woundLocation',
-                'woundDayOnset',
-                'woundType'
-              ]
-            },
-            {
               label: 'Goal of care',
               tableCss: 'hr-table',
-              ehr_list_index: '5',
+              ehr_list_index: '4',
               items: [
-                'goalOfCare',
-                'stage'
+                'goalOfCare'
               ]
             },
             {
-              label: 'Date',
-              tableCss: 'hr-table',
+              label: 'Wound day of onset',
+              ehr_list_index: '5',
+              items: [
+                'woundDayOnset'
+              ]
+            },
+            {
               ehr_list_index: '6',
               items: [
-                'stageDate'
+                'stageDay'
+              ]
+            },
+            {
+              ehr_list_index: '7',
+              items: [
+                'stageType'
+              ]
+            },
+            {
+              ehr_list_index: '8',
+              items: [
+                'stageOther'
               ]
             },
             {
               label: 'Length cm.mm',
-              ehr_list_index: '7',
+              ehr_list_index: '9',
               items: [
                 'length'
               ]
             },
             {
               label: 'Width cm.mm',
-              ehr_list_index: '8',
+              ehr_list_index: '10',
               items: [
                 'width'
               ]
@@ -5219,14 +5374,14 @@ export default function () {
             {
               label: 'Depth cm.mm',
               tableCss: 'hr-table',
-              ehr_list_index: '9',
+              ehr_list_index: '11',
               items: [
                 'depth'
               ]
             },
             {
               label: 'Sinus/tunnel 1 depth cm.mm',
-              ehr_list_index: '10',
+              ehr_list_index: '12',
               items: [
                 'sinusDepth1'
               ]
@@ -5234,14 +5389,14 @@ export default function () {
             {
               label: 'Location',
               tableCss: 'hr-table',
-              ehr_list_index: '11',
+              ehr_list_index: '13',
               items: [
                 'sinusDepthLocation1'
               ]
             },
             {
               label: 'Sinus/tunnel 2 depth cm.mm',
-              ehr_list_index: '12',
+              ehr_list_index: '14',
               items: [
                 'sinusDepth2'
               ]
@@ -5249,14 +5404,14 @@ export default function () {
             {
               label: 'Location',
               tableCss: 'hr-table',
-              ehr_list_index: '13',
+              ehr_list_index: '15',
               items: [
                 'sinusDepthLocation2'
               ]
             },
             {
               label: 'Undermining 1 depth cm.mm',
-              ehr_list_index: '14',
+              ehr_list_index: '16',
               items: [
                 'underminingDepth1'
               ]
@@ -5264,7 +5419,7 @@ export default function () {
             {
               label: 'Location',
               tableCss: 'hr-table',
-              ehr_list_index: '15',
+              ehr_list_index: '17',
               items: [
                 'underminingDepthLocation1A'
               ]
@@ -5272,14 +5427,14 @@ export default function () {
             {
               label: 'Location',
               tableCss: 'hr-table',
-              ehr_list_index: '16',
+              ehr_list_index: '18',
               items: [
                 'underminingDepthLocation1B'
               ]
             },
             {
               label: 'Undermining 2 depth cm.mm',
-              ehr_list_index: '17',
+              ehr_list_index: '19',
               items: [
                 'underminingDepth2'
               ]
@@ -5287,7 +5442,7 @@ export default function () {
             {
               label: 'Location',
               tableCss: 'hr-table',
-              ehr_list_index: '18',
+              ehr_list_index: '20',
               items: [
                 'underminingDepthLocation2A'
               ]
@@ -5295,81 +5450,141 @@ export default function () {
             {
               label: 'Location',
               tableCss: 'hr-table',
-              ehr_list_index: '19',
+              ehr_list_index: '21',
               items: [
                 'underminingDepthLocation2B'
               ]
             },
             {
               label: '% Pink/red',
-              ehr_list_index: '20',
+              ehr_list_index: '22',
               items: [
-                'pinkred',
-                'exudateAmount'
+                'pinkred'
               ]
             },
             {
               label: '% Granulation',
-              ehr_list_index: '21',
+              ehr_list_index: '23',
               items: [
-                'granulation',
-                'exudateType'
+                'granulation'
               ]
             },
             {
               label: '% Slough',
-              ehr_list_index: '22',
+              ehr_list_index: '24',
               items: [
                 'slough',
-                'odour'
+                'eschar'
               ]
             },
             {
-              label: '% Eschar',
-              ehr_list_index: '23',
+              label: '% Eschar (dry, stable)',
+              ehr_list_index: '25',
               items: [
-                'eschar',
-                'woundEdge'
+                'eschar'
               ]
             },
             {
               label: '% Foreign body',
-              ehr_list_index: '24',
+              ehr_list_index: '26',
               items: [
-                'foreign',
-                'periWoundSkin'
+                'foreign'
               ]
             },
             {
               label: '% Underlying structures',
-              ehr_list_index: '25',
+              ehr_list_index: '27',
               items: [
-                'underlying',
-                'woundPain'
+                'underlying'
               ]
             },
             {
               label: '% Not visible',
-              ehr_list_index: '26',
+              ehr_list_index: '28',
               items: [
-                'notVisible',
-                'packingOut'
+                'notVisible'
               ]
             },
             {
               label: '% Other',
-              tableCss: 'hr-table',
-              ehr_list_index: '27',
+              ehr_list_index: '29',
               items: [
-                'other',
-                'packinIn'
+                'other'
               ]
             },
             {
               label: 'Wound bed calculation',
-              ehr_list_index: '28',
+              tableCss: 'hr-table',
+              ehr_list_index: '30',
               items: [
-                'woundBedCalculation',
+                'woundBedCalculation'
+              ]
+            },
+            {
+              label: 'Exudate amount',
+              ehr_list_index: '31',
+              items: [
+                'exudateAmount'
+              ]
+            },
+            {
+              label: 'Exudate type',
+              tableCss: 'hr-table',
+              ehr_list_index: '32',
+              items: [
+                'exudateType'
+              ]
+            },
+            {
+              label: 'Odour present after cleansing',
+              tableCss: 'hr-table',
+              ehr_list_index: '33',
+              items: [
+                'odour'
+              ]
+            },
+            {
+              label: 'Wound edge',
+              ehr_list_index: '34',
+              items: [
+                'woundEdge'
+              ]
+            },
+            {
+              label: 'Peri-wound skin',
+              tableCss: 'hr-table',
+              ehr_list_index: '35',
+              items: [
+                'periWoundSkin'
+              ]
+            },
+            {
+              label: 'Wound pain',
+              tableCss: 'hr-table',
+              ehr_list_index: '36',
+              items: [
+                'woundPain'
+              ]
+            },
+            {
+              label: 'Packing out',
+              ehr_list_index: '37',
+              items: [
+                'packingOut'
+              ]
+            },
+            {
+              label: 'Packing in',
+              tableCss: 'hr-table',
+              ehr_list_index: '38',
+              items: [
+                'packinIn'
+              ]
+            },
+            {
+              label: 'Treatments as per plan of care',
+              ehr_list_index: '39',
+              items: [
                 'treatmentComplete'
               ]
             }
@@ -5396,71 +5611,66 @@ export default function () {
                 formCss: 'section-divider',
                 gIndex: '2',
                 gChildren: [
+                  'woundLocation',
                   'woundLabel',
                   'goalOfCare',
-                  'spacer9',
-                  'woundLocation',
-                  'woundDayOnset',
-                  'woundType'
+                  'woundDayOnset'
                 ]
               },
               {
-                elementKey: 'pressureInjury',
-                label: 'Pressure injury',
+                elementKey: 'woundTypeGroup',
+                label: 'Wound Etiology/Type',
                 formCss: 'section-divider',
                 gIndex: '3',
                 gChildren: [
-                  'stage',
-                  'stageDate'
+                  'stageDay',
+                  'stageType',
+                  'stageOther'
                 ]
               },
               {
-                elementKey: 'woundBed',
-                label: 'Wound bed',
+                elementKey: 'woundMeasureGroup',
+                label: 'Wound measurements',
                 formCss: 'section-divider',
                 gIndex: '4',
                 gChildren: [
-                  'pinkred',
-                  'granulation',
-                  'slough',
-                  'eschar',
-                  'foreign',
-                  'underlying',
-                  'notVisible',
-                  'other',
-                  'spacer10',
-                  'woundBedCalculation'
-                ]
-              },
-              {
-                elementKey: 'toeSinus',
-                label: 'Wound measurements',
-                formCss: 'section-divider',
-                gIndex: '5',
-                gChildren: [
-                  'aLabelClock',
-                  'spacer11',
-                  'spacer12',
                   'length',
                   'width',
                   'depth',
                   'sinusDepth1',
                   'sinusDepthLocation1',
-                  'spacer13',
+                  'spacer9',
                   'sinusDepth2',
                   'sinusDepthLocation2',
-                  'spacer14',
+                  'spacer10',
                   'underminingDepth1',
                   'underminingDepthLocation1A',
                   'underminingDepthLocation1B',
-                  'spacer15',
                   'underminingDepth2',
                   'underminingDepthLocation2A',
                   'underminingDepthLocation2B'
                 ]
               },
               {
-                elementKey: 'ehr_group16',
+                elementKey: 'woundBed',
+                label: 'Wound bed',
+                formCss: 'section-divider',
+                gIndex: '5',
+                gChildren: [
+                  'pinkred',
+                  'granulation',
+                  'slough',
+                  'eschar',
+                  'eschar',
+                  'foreign',
+                  'underlying',
+                  'notVisible',
+                  'other',
+                  'woundBedCalculation'
+                ]
+              },
+              {
+                elementKey: 'ehr_group11',
                 label: 'Wound Exudate & Odour',
                 formCss: 'section-divider',
                 gIndex: '6',
@@ -5474,14 +5684,14 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group17',
+                elementKey: 'ehr_group12',
                 label: 'Treatment',
                 formCss: 'section-divider',
                 gIndex: '7',
                 gChildren: [
                   'packingOut',
                   'packinIn',
-                  'spacer18',
+                  'spacer13',
                   'treatmentComplete'
                 ]
               }
@@ -5491,22 +5701,13 @@ export default function () {
               profession: '',
               day: '',
               time: '',
+              woundLocation: '',
               woundLabel: '',
               goalOfCare: '',
-              woundLocation: '',
               woundDayOnset: '',
-              woundType: '',
-              stage: '',
-              stageDate: '',
-              pinkred: '',
-              granulation: '',
-              slough: '',
-              eschar: '',
-              foreign: '',
-              underlying: '',
-              notVisible: '',
-              other: '',
-              woundBedCalculation: '0',
+              stageDay: '',
+              stageType: '',
+              stageOther: '',
               length: '',
               width: '',
               depth: '',
@@ -5520,6 +5721,15 @@ export default function () {
               underminingDepth2: '',
               underminingDepthLocation2A: '',
               underminingDepthLocation2B: '',
+              pinkred: '',
+              granulation: '',
+              slough: '',
+              eschar: '',
+              foreign: '',
+              underlying: '',
+              notVisible: '',
+              other: '',
+              woundBedCalculation: '0',
               exudateAmount: '',
               exudateType: '',
               odour: '',
