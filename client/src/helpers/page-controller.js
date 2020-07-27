@@ -30,9 +30,12 @@ class PageControllerInner {
         dblog('Page onPageChange going to demo page so "log the user out" of EHR whether the user came from an LMS or from the demo')
         await StoreHelper.logUserOutOfEdEHR()
       }
-      await this._loadData(route)
-      // the page has loaded and any following page change can skip most of the work.
-      this.hasLoadedData = true
+      return this._loadData(route)
+        .then(() => {
+        // the page has loaded and any following page change can skip most of the work.
+          this.hasLoadedData = true
+        })
+   
     }
     catch(err) {
       StoreHelper.setLoading(null, false)
@@ -159,9 +162,9 @@ class PageControllerInner {
     return payload.visitId
   }
 
-  handleError (err) {
+  handleError (err, customRouter = router) {
     StoreHelper.setLoading(null, false)
-    router.push('/')
+    customRouter.push('/')
     StoreHelper.setApiError(err + '. System Error')
   }
 }

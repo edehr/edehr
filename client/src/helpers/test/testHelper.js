@@ -1,6 +1,7 @@
 import EhrDefs from '../ehr-defs-grid'
 import store from '../../store'
 import MockFile from './MockFile'
+import sKeys from '../session-keys'
 import StoreHelper from '../store-helper'
 
 const axiosMockHelper = require('./axios-mock-helper')
@@ -83,4 +84,22 @@ export const createFile = (content) => {
 
 export const setAPIUrl = (apiUrl = mockData.apiUrl) => {
   StoreHelper.apiUrlSet(apiUrl)
+}
+
+export const setSession = (token = 'defaultToken') => {
+  localStorage.setItem(sKeys.AUTH_TOKEN, token)
+}
+
+export const commonBeforeEach = () => {
+  setActivityMocks()
+  setActivityDataMocks()
+  setAssignmentMocks()
+  setAssignmentListingMocks()
+  setConsumerMocks()
+  setConsumerListingMocks()
+  setSeedDataMocks()
+  setSeedDataListMocks()
+  setUserMocks()
+  setVisitMocks()
+  resetAxiosResponse()
 }

@@ -14,17 +14,7 @@ jest.mock('axios')
 const pageKey = testHelper.getPageKeys[0]
 
 const _beforeEach = () => {
-  testHelper.setActivityMocks()
-  testHelper.setActivityDataMocks()
-  testHelper.setAssignmentMocks()
-  testHelper.setAssignmentListingMocks()
-  testHelper.setConsumerMocks()
-  testHelper.setConsumerListingMocks()
-  testHelper.setSeedDataMocks()
-  testHelper.setSeedDataListMocks()
-  testHelper.setUserMocks()
-  testHelper.setVisitMocks()
-  testHelper.resetAxiosResponse()
+  testHelper.commonBeforeEach()
 }
 
 describe('General testing', () => {
