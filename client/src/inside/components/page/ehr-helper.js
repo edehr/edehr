@@ -448,6 +448,32 @@ export default class EhrHelpV2 {
     dialog.errorList = []
   }
 
+  /**
+   * Given an element's definition look to see if a validation function is requested. If not then return undefined.
+   * If yes then check if the function requires parameters. If yes then extract them and place into an array.
+   * Return an object containing validator function and parameters
+   * @param eDef
+   * @private
+   */
+  _validator (eDef) {
+    let result = {}
+    const vDef = eDef[PROPS.validation]
+    if (vDef) {
+      // functionPattern: 1st group is function name and second group is list of arguments. Expect this to be list of numbers.
+      const functionPattern = /(.*)\((.*)\)/
+      if (dbDialog) console.log('check vDef for functions parts', vDef)
+      const parts = vDef.match(functionPattern)
+      if (parts && parts.length >= 1 ) {
+        result.func = validations[parts[1]]
+        let args = parts[2].split(',')
+        result.arguments = args.map(n => parseInt(n))
+      } else {
+        result.func = validations[vDef]
+        result.arguments = []
+      }
+    }
+    return result
+  }
   _validateInputs (dialog) {
     const pageKey = this.pageKey
     const tableDef = dialog.tableDef
@@ -457,7 +483,7 @@ export default class EhrHelpV2 {
     Object.keys(ehr_data).forEach( (eKey) => {
       const eDef = EhrDefs.getPageChildElement(pageKey, eKey)
       const label = eDef[PROPS.label]
-      const validator = eDef[PROPS.validation] ? validations[eDef.validation] : undefined
+      const validator = this._validator(eDef)
       const mandatory = eDef[PROPS.mandatory]
       let value = inputs[eKey]
       value = (value && typeof value === 'string') ? value.trim() : value
@@ -466,8 +492,9 @@ export default class EhrHelpV2 {
         const msg = label + ' is required'
         dialog.errorList.push(msg)
       }
-      if (validator) {
-        const errMsg = validator(label, value)
+      if (validator.func) {
+        if (dbDialog) console.log('ehr helper validator', validator)
+        let errMsg = validator.func(label, value, ...validator.arguments)
         if(errMsg) {
           if (dbDialog) console.log(`EhrHelpV2 validate for key ${eKey} value ${inputs[eKey]}: ${errMsg}`)
           dialog.errorList.push(errMsg)
