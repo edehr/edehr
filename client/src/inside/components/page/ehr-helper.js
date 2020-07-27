@@ -461,7 +461,7 @@ export default class EhrHelpV2 {
     if (vDef) {
       // functionPattern: 1st group is function name and second group is list of arguments. Expect this to be list of numbers.
       const functionPattern = /(.*)\((.*)\)/
-      console.log('check vDef for functions parts', vDef)
+      if (dbDialog) console.log('check vDef for functions parts', vDef)
       const parts = vDef.match(functionPattern)
       if (parts && parts.length >= 1 ) {
         result.func = validations[parts[1]]
@@ -493,7 +493,7 @@ export default class EhrHelpV2 {
         dialog.errorList.push(msg)
       }
       if (validator.func) {
-        console.log('ehr helper validator', validator)
+        if (dbDialog) console.log('ehr helper validator', validator)
         let errMsg = validator.func(label, value, ...validator.arguments)
         if(errMsg) {
           if (dbDialog) console.log(`EhrHelpV2 validate for key ${eKey} value ${inputs[eKey]}: ${errMsg}`)
