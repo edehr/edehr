@@ -77,7 +77,6 @@ describe('page-controller tests', () => {
 
   it('_loadData (default UC)', done => {
     const route = _createRouteObject(false)
-    localStorage.removeItem(sKeys.DEMO_TOKEN)
     should.doesNotThrow(async () => {
       await pageController._loadData(route)
       sessionStorage.getItem(sKeys.USER_TOKEN).should.equal(mockData.visit._id)
