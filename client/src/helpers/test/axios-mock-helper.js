@@ -13,6 +13,7 @@ export const createCompoundGetResponse = () => {
     activitydata: mockData.activityData,
     assignment: mockData.assignment,
     assignments: mockData.assignmentListing,
+    classList: mockData.classList,
     consumer: mockData.consumer,
     courses: mockData.courses,
     user: mockData.user,

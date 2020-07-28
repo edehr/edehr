@@ -3,9 +3,15 @@ import EhrActions from '../ehr-actions'
 import * as testHelper from './testHelper'
 import { Text } from '../ehr-text'
 import mockData from './mockData.json'
+import StoreHelper from '../store-helper'
 
 const axiosMockHelper = require('./axios-mock-helper')
 const ehrActions = new EhrActions()
+
+const _setUpWindowObj = () => {
+  delete window.location
+  window.location = ''
+}
 
 jest.mock('axios')
 
@@ -24,6 +30,7 @@ const _beforeEach = () => {
 }
   
 describe('Testing ehr-actions', () => {
+  beforeAll(() => _setUpWindowObj())
   beforeEach(() => _beforeEach())
   
   it('isUnsubmittedStudent', done => {
@@ -47,10 +54,12 @@ describe('Testing ehr-actions', () => {
     done()
   })
 
-  // window.location could potentially be difficult to test. Further improvement might be needed
   it('gotoLMS', done => {
-    should.doesNotThrow(() => ehrActions.gotoLMS())
-    done()
+    should.doesNotThrow(() => {
+      ehrActions.gotoLMS()
+      window.location.should.equal(StoreHelper.lmsUrl())
+      done()
+    })
   })
 
   it('invokeNavPanelAction', async done => {
