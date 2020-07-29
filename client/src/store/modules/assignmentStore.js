@@ -26,6 +26,7 @@ const getters = {
   },
   assignmentCaseContext: state => {
     const { persona, time, day, profession } = state.dataStore
+    // persona key is changed to 'name' to match structure of recHeader in the EHR page definitions.
     return { name: persona, time, day, profession }  
   }
   // TODO add last update field to model in server

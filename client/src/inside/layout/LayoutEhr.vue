@@ -52,7 +52,7 @@ export default {
     UiSpinner
   },
   data: function () {
-    const featureCaseContext = CaseContext.isFeature()
+    const featureCaseContext = CaseContext.isCaseContextFeature()
     return {
       showingSpecial: false,
       showingNavPanel: false,

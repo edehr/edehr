@@ -27,12 +27,12 @@ describe('testing case-context', () => {
     should.doesNotThrow(() => {
       let result
       CaseContext.setFeature(true)
-      result = CaseContext.isFeature()
+      result = CaseContext.isCaseContextFeature()
       should(result).be.a.Boolean()
       result.should.be.true()
 
       CaseContext.setFeature(false)
-      result = CaseContext.isFeature()
+      result = CaseContext.isCaseContextFeature()
       should(result).be.a.Boolean()
       result.should.be.false()
     })

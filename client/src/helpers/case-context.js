@@ -5,7 +5,7 @@ class CaseContextHelper {
   constructor () {
   }
   getPageTableShowSignature (pageKey) {
-    let result = this.isFeature()
+    let result = this.isCaseContextFeature()
     if (result) {
       result = this.assignmentHasCaseContext()
       if (result) {
@@ -17,7 +17,7 @@ class CaseContextHelper {
     return result
   }
 
-  isFeature () {
+  isCaseContextFeature () {
     return store.getters['system/caseContextFeature']
   }
 

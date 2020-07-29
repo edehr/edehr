@@ -13,8 +13,9 @@
       div(slot="body", class="ehr-page-content")
         ehr-group(v-for="group in groups", :key="group.gIndex", :group="group", :ehrHelp="ehrHelp")
       div(slot="footer-content", class="checkbox-wrapper", v-if="acknowledgeSignature")
-        input(class="checkbox", type="checkbox", v-model="ackCaseStudyData")
-        span {{ ackText }}
+        label
+          input(class="checkbox", type="checkbox", v-model="ackCaseStudyData")
+          span {{ ackText }}
       span(slot="save-button") Create and close
 </template>
 
@@ -47,11 +48,7 @@ export default {
       return this.tableDef.tableKey
     },
     groups () {
-      let groups = this.tableDef.form ? this.tableDef.form.ehr_groups : []
-      if (this.acknowledgeSignature) {
-        return groups.filter(g => g.formCss !== 'record-header')
-      }
-      return groups
+      return this.tableDef.form ? this.tableDef.form.ehr_groups : []
     },
     acknowledgeSignature () {
       return CaseContext.getPageTableShowSignature(this.ehrHelp.pageKey)
@@ -72,7 +69,7 @@ export default {
       return CaseContext. assignmentHasCaseContext()
     },
     featureCaseContext () {
-      return CaseContext.isFeature()
+      return CaseContext.isCaseContextFeature()
     }
 
   },
