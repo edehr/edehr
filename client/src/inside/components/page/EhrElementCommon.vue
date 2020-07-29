@@ -77,7 +77,9 @@ export default {
         this.setInitialValue('')
       }
 
-      if (this.element.recHeader) {
+      if (this.element.recHeader && CaseContext.getPageTableShowSignature(this.pageDataKey)) {
+        // make the record header read only if the case context feature is enabled and there is case context data
+        // and the field is part of the record header
         disable = true
       }
 
