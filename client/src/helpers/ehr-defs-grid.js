@@ -1,17 +1,15 @@
 import EhrTypes from './ehr-types'
-import PP from '../inside/defs-grid/patient-profile'
-import CV1 from '../inside/defs-grid/current-visit-1'
-import CV2 from '../inside/defs-grid/current-visit-2'
-import PC from '../inside/defs-grid/patient-chart'
-import ER from '../inside/defs-grid/external-resources'
-import TP from '../inside/defs-grid/test-page'
+import { PP, CV1, CV2, PC, ER, TP } from '../inside/defs-grid/index'
 const pageDefs = Object.assign(
+  {},
   PP(),
   CV1(),
   CV2(),
   PC(),
   ER(),
   TP())
+
+const keys = Object.keys(pageDefs)
 
 const PROPS = EhrTypes.elementProperties
 
@@ -101,6 +99,27 @@ class EhrDefsWorker {
     let medPeriods = pd.medSchedule
     // console.log('getMedOrderSchedule', pageKey, medPeriods)
     return medPeriods
+  }
+
+  getCaseStudyDataStatus (pageKey) {
+    const pd = this.getPageDefinition(pageKey)
+    const recHeader = pd.recHeader
+    return recHeader
+  }
+
+  getItemsFromKey (dataKey) {
+    return keys.filter(key => pageDefs[key].pageDataKey === dataKey)
+  }
+
+  getAllPageChildren () {
+    const pc = []
+    keys.map(k => pageDefs[k].pageChildren).map(item => pc.push(...item))
+    return pc
+  }
+
+  findPageChildrenElement (elemKey) {
+    const pc = this.getAllPageChildren()
+    return pc.filter(c => c.elementKey === elemKey)
   }
 
 }
