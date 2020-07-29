@@ -47,4 +47,5 @@ export default new Vuex.Store({
 export function initializeStore (store) {
   console.log('Initialize vuex modules')
   store.dispatch('demoStore/initialize')
+  store.dispatch('system/initialize')
 }

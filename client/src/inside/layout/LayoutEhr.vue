@@ -19,8 +19,10 @@
                   ehr-nav-panel(v-if="showingNavPanel")
             slot Main EHR content for a component will appear here. The component is selected by the router
     div(style="text-align: right",)
-      input(class="checkbox", type="checkbox", v-model="isSigning")
-    input(class="checkbox", type="checkbox", v-model="showingSpecial")
+      label Use Sign On
+        input(class="checkbox", type="checkbox", v-model="featureCaseContext")
+      label Show Deets
+        input(class="checkbox", type="checkbox", v-model="showingSpecial")
     div(v-show="showingSpecial")
       ehr-special
     app-footer
@@ -35,6 +37,7 @@ import EhrBanner from '../components/EhrBanner.vue'
 import EhrContextBanner from '../components/EhrContextBanner'
 import UiSpinner from '../../app/ui/UiSpinner'
 import StoreHelper from '../../helpers/store-helper'
+import CaseContext from '../../helpers/case-context'
 
 export default {
   name: 'LayoutEhr',
@@ -49,11 +52,11 @@ export default {
     UiSpinner
   },
   data: function () {
-    const isSigning = StoreHelper.isSigning()
+    const featureCaseContext = CaseContext.isFeature()
     return {
       showingSpecial: false,
       showingNavPanel: false,
-      isSigning
+      featureCaseContext
     }
   },
   computed: {
@@ -69,8 +72,8 @@ export default {
       StoreHelper.setShowAdvanced(flag)
     },
 
-    isSigning: function (val) {
-      StoreHelper.setSigning(val)
+    featureCaseContext: function (val) {
+      CaseContext.setFeature(val)
     },
 
     $route: function (curr, prev) {

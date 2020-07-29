@@ -107,12 +107,4 @@ describe('testing ehr-defs-grid', () => {
     done()
   })
 
-  it('getCaseStudyDataStatus', done => {
-    should.doesNotThrow(() => {
-      const result = EhrDefsGrid.getCaseStudyDataStatus(DEFAULT_KEY)
-      should(result).be.a.Boolean()
-    })
-    done()
-  })
-
 })
