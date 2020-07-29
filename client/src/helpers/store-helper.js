@@ -219,7 +219,6 @@ class StoreHelperWorker {
 
   getAssignmentSeedId () { return this._getAssignmentProperty('seedDataId') }
 
-  getAssignmentCaseStudyData () { return this._getAssignmentProperty('assignmentCaseStudyData') }
   /* **********   Seed Data  ************** */
 
   getSeedId () { return this._getSeedListProperty('seedId')}

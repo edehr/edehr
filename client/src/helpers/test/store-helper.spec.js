@@ -274,18 +274,6 @@ describe('General testing', () => {
     })
   })
 
-  it('setSigning', done => {
-    should.doesNotThrow(() => StoreHelper.setSigning('is signing'))
-    done()
-  })
-
-  it('isSigning', done => {
-    const s = 'is signing'
-    const r = StoreHelper.isSigning()
-    s.should.equal(r)
-    done()
-  })
-
   it('setSystemMessage', done => {
     should.doesNotThrow(() => {
       const message = 'test system message'
@@ -676,17 +664,7 @@ describe('assignment tests', () => {
     })
   })
 
-  it('getAssignmentCaseStudyData', done => {
-    should.doesNotThrow(() => {
-      const { assignment } = mockData
-      const caseStudy = StoreHelper.getAssignmentCaseStudyData()
-      caseStudy.name.should.equal(assignment.persona)
-      caseStudy.profession.should.equal(assignment.profession)
-      caseStudy.day.should.equal(assignment.day)
-      caseStudy.time.should.equal(assignment.time)
-      done()
-    })
-  })
+
 })
 describe('seed data tests', () => {
   beforeEach(() => _beforeEach())

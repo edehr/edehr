@@ -24,7 +24,7 @@ const getters = {
   assignment: state => {
     return state.dataStore
   },
-  assignmentCaseStudyData: state => { 
+  assignmentCaseContext: state => {
     const { persona, time, day, profession } = state.dataStore
     return { name: persona, time, day, profession }  
   }

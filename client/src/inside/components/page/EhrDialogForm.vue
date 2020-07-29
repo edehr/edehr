@@ -20,10 +20,9 @@
 
 <script>
 import AppDialog from '../../../app/components/AppDialogShell'
-import EhrDefs from '../../../helpers/ehr-defs-grid'
+import CaseContext from '@/helpers/case-context'
 import EhrGroup from './EhrGroup'
 import EventBus from '../../../helpers/event-bus'
-import StoreHelper from '../../../helpers/store-helper'
 
 const debug = false
 
@@ -55,38 +54,25 @@ export default {
       return groups
     },
     acknowledgeSignature () {
-      return (
-        this.isSigning &&
-        EhrDefs.getCaseStudyDataStatus(this.ehrHelp.pageKey) && 
-        this.hasCaseStudyPersonaData
-      )
-    }, 
-
-    hasCaseStudyData () {
-      return EhrDefs.getCaseStudyDataStatus(this.ehrHelp.pageKey) && 
-        this.hasCaseStudyPersonaData
+      return CaseContext.getPageTableShowSignature(this.ehrHelp.pageKey)
     },
-
     disableSave () {
-      // disable save in case there is any case study data and the user hasn't acknowledged / confirmed
-      // it yet
       if (this.acknowledgeSignature) {
-        return this.hasCaseStudyData ? !this.ackCaseStudyData : false
+        // disable save until the user has acknowledged / confirmed signature
+        return !this.ackCaseStudyData
       } else {
         return false
       }
     },
     ackText () {
       const persona = this.getCaseStudyData()
-      return `I hereby certify correct ${persona.name}, ${persona.profession}. 
-      Hospital date: ${persona.day} ${persona.time}`
+      return `I, ${persona.profession} ${persona.name}, certify the above information is correct. Day: ${persona.day} Time: ${persona.time}`
     },
-    hasCaseStudyPersonaData () {
-      const csData = this.getCaseStudyData()
-      return Object.keys(csData).length > 0
+    assignmentHasCaseContext () {
+      return CaseContext. assignmentHasCaseContext()
     },
-    isSigning () {
-      return StoreHelper.isSigning()
+    featureCaseContext () {
+      return CaseContext.isFeature()
     }
 
   },
@@ -117,7 +103,7 @@ export default {
       }
     },
     getCaseStudyData () {
-      return StoreHelper.getAssignmentCaseStudyData()
+      return CaseContext.getAssignmentCaseContext()
     }
   },
   mounted: function () {

@@ -7,20 +7,27 @@ const state = {
   loadingCnt: 0,
   apiError: '',
   sysMessage: '',
-  isSigning: false
+  caseContextFeature: false
 }
 
 const getters = {
   isLoading: state => state._isLoading,
   isShowingAdvanced: state => state._isShowingAdvanced,
-  isSigning: state => state.isSigning,
+  caseContextFeature: state => state.caseContextFeature,
   apiError: state => state.apiError,
   sysMessage: state => state.sysMessage
 }
 
-const actions = {}
+const actions = {
+  initialize: function ({ commit }) {
+    commit('initialize')
+  }
+}
 
 const mutations = {
+  initialize: function (state) {
+    state.caseContextFeature = localStorage.getItem('CaseContextFeature') === 'true'
+  },
   setLoading: (state, isLoading) => {
     if (isLoading) {
       state.loadingCnt++
@@ -50,8 +57,9 @@ const mutations = {
     }
     state.apiError = error
   },
-  setSigning: (state, isSigning) => {
-    state.isSigning = isSigning
+  setCaseContext: (state, value) => {
+    state.caseContextFeature = value
+    localStorage.setItem('CaseContextFeature', value)
   }
 }
 

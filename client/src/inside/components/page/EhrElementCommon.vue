@@ -5,6 +5,7 @@ import EhrDependent from './EhrDependent.vue'
 import EhrDefs from '../../../helpers/ehr-defs-grid'
 import EhrTypes from '../../../helpers/ehr-types'
 import StoreHelper from '../../../helpers/store-helper'
+import CaseContext from '../../../helpers/case-context'
 import UiInfo from '../../../app/ui/UiInfo'
 import EventBus from '../../../helpers/event-bus'
 import { PAGE_DATA_READY_EVENT, FORM_INPUT_EVENT } from '../../../helpers/event-bus'
@@ -58,8 +59,8 @@ export default {
     isEditing () {
       return this.ehrHelp.isEditing()
     },
-    assignmentCaseStudyData () {
-      return StoreHelper.getAssignmentCaseStudyData()
+    assignmentCaseContext () {
+      return CaseContext.getAssignmentCaseContext()
     },
     disabled () {
       let disable = false
@@ -137,7 +138,7 @@ export default {
         if (dbDialog || dbInputs) console.log('EhrCommon key has value', this.key, initialValue)
         this.setInitialValue(initialValue)
         if (this.element.recHeader) {
-          const v = this.assignmentCaseStudyData[this.key]
+          const v = this.assignmentCaseContext[this.key]
           this.setInitialValue(v)
         }
       }

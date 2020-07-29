@@ -105,6 +105,7 @@ class RawInputToDef {
    */
   getDefinitions (contents, lastModifiedTime) {
     let entries = rawHelper._rawToEntries(contents, mlFields)
+    // TODO see https://github.com/BCcampus/edehr/issues/809
     let recHeader = this._needsUserSignature(entries)
     entries = this._preprocessEntries(entries)
     entries = this._validateEntries(entries)
