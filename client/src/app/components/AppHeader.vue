@@ -1,29 +1,30 @@
 <template lang="pug">
-  header(class="apphdr")
-    system-message
-    div(class="wrapper")
-      div(class="navList columns is-multiline")
-        div(class="navItem column")
-          router-link(:to="{ name: 'home' }", class="navLink app-title") EdEHR
-        div(class="navItem  column push", v-if="lmsName")
-          a(:href="lmsUrl", class="navLink") {{lmsName}}
-        div(v-if="showDashboard", class="navItem column")
-          router-link(:to="{ name: `instructor` }", class="navLink") Courses
-        div(v-if="showDashboard", class="navItem column")
-          router-link(:to="{ name: `assignments` }", class="navLink") Assignments
-        div(v-if="isStudent", class="navItem column")
-          router-link(:to="{ name: `ehr` }", class="navLink") Assignment
-        div(class="navItem column")
-          router-link(:to="{ name: `help` }", class="navLink") About
-        div(v-if="isDemo", class="navItem column is-pulled-right")
-          div(class="navLink activationItem", v-on:click="toggleShowDemoSubmenu()") Demo
-            div(class="activationControl")
-              fas-icon(v-show="!showingDemoSubmenu", class="fa", icon="chevron-down")
-              fas-icon(v-show="showingDemoSubmenu", class="fa", icon="chevron-up")
-          div(v-show="showingDemoSubmenu", class="activationContent")
-            div(v-on:click="hideDemoMenu()")
-              router-link(:to="{ name: `demo` }", class="secondLevelLink") Change persona
-            div(class="secondLevelLink activationItem", v-on:click="demoLogoutConfirm()") Logout of demonstration
+  div
+    header(class="apphdr")
+      system-message
+      div(class="wrapper")
+        div(class="navList columns is-multiline")
+          div(class="navItem column")
+            router-link(:to="{ name: 'home' }", class="navLink app-title") EdEHR
+          div(class="navItem  column push", v-if="lmsName")
+            a(:href="lmsUrl", class="navLink") {{lmsName}}
+          div(v-if="showDashboard", class="navItem column")
+            router-link(:to="{ name: `instructor` }", class="navLink") Courses
+          div(v-if="showDashboard", class="navItem column")
+            router-link(:to="{ name: `assignments` }", class="navLink") Assignments
+          div(v-if="isStudent", class="navItem column")
+            router-link(:to="{ name: `ehr` }", class="navLink") Assignment
+          div(class="navItem column")
+            router-link(:to="{ name: `help` }", class="navLink") About
+          div(v-if="isDemo", class="navItem column is-pulled-right")
+            div(class="navLink activationItem", v-on:click="toggleShowDemoSubmenu()") Demo
+              div(class="activationControl")
+                fas-icon(v-show="!showingDemoSubmenu", class="fa", icon="chevron-down")
+                fas-icon(v-show="showingDemoSubmenu", class="fa", icon="chevron-up")
+            div(v-show="showingDemoSubmenu", class="activationContent")
+              div(v-on:click="hideDemoMenu()")
+                router-link(:to="{ name: `demo` }", class="secondLevelLink") Change persona
+              div(class="secondLevelLink activationItem", v-on:click="demoLogoutConfirm()") Logout of demonstration
     ui-confirm(class="confirmDialog",ref="confirmDialog", @confirm="demoLogOut", save-label="Logout")
 </template>
 <script>
