@@ -1,13 +1,5 @@
 import EhrTypes from './ehr-types'
-import { PP, CV1, CV2, PC, ER, TP } from '../inside/defs-grid/index'
-const pageDefs = Object.assign(
-  {},
-  PP(),
-  CV1(),
-  CV2(),
-  PC(),
-  ER(),
-  TP())
+import pageDefs from '../inside/defs-grid/index'
 
 const keys = Object.keys(pageDefs)
 
@@ -99,12 +91,6 @@ class EhrDefsWorker {
     let medPeriods = pd.medSchedule
     // console.log('getMedOrderSchedule', pageKey, medPeriods)
     return medPeriods
-  }
-
-  getCaseStudyDataStatus (pageKey) {
-    const pd = this.getPageDefinition(pageKey)
-    const recHeader = pd.recHeader
-    return recHeader
   }
 
   getItemsFromKey (dataKey) {

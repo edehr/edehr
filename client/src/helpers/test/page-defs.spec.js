@@ -1,18 +1,10 @@
-import { PP, CV1, CV2, PC, ER, TP } from '../../inside/defs-grid/index'
+import pageDefs from '../../inside/defs-grid/index'
 
 import { inputTypes, dependentOn } from '../ehr-types'
 import EhrDefs from '../ehr-defs-grid'
 import ehrValidations from '../../inside/components/page/ehr-validations'
 const should = require('should')
 
-const pageDefs = Object.assign({},
-  PP(),
-  CV1(),
-  CV2(),
-  PC(),
-  ER(),
-  TP()
-)
 const keys = Object.keys(pageDefs)
 const pageChildren = EhrDefs.getAllPageChildren()
 
@@ -88,13 +80,5 @@ describe('page-definitions tests', () => {
       type.should.equal('function')
       
     })
-  })
-
-
-
-    
+  })  
 })
-
-   
-
-
