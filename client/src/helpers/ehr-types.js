@@ -33,7 +33,7 @@ const EhrTypes = {
     },
     action: {
       disable: 'disable',
-      visible: 'visible'
+      visible: 'visble'
     }
   },
   nondataInputType: {
