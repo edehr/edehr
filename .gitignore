@@ -1,5 +1,6 @@
 .idea
 .vscode/
+**/.credentials/**
 **/.DS_Store
 **/.sessions/**
 **/\.nyc_output/**
@@ -30,5 +31,6 @@ scrivner/MarkdownSample.scriv
 scrivner/output
 server/.session/
 server/bin/sessions/**
+server/ehr-files
 server/src/config/admin-password\.txt
 temp/**
