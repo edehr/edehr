@@ -3,10 +3,10 @@
 {inputType: ehr_group}	eCell	{Label: A group label}	eCell	{pN: 40}	{fN: 1}	{gN: 1}	{sgN: }	eCell	{formOption: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: form_label}	eCell	{Label: <b>a form <i>label</i></b>}	{elementKey: pform_label}	{pN: 40}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: spacer}	eCell	{Label: spacer}	{elementKey: pspacer}	{pN: 40}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Weight}	{elementKey: weight}	{pN: 40}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Default_value: 80}	eCell	{Suffix: lb}	{Mandatory: TRUE}	{Validation: isNumber}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Name}	{elementKey: name}	{pN: 40}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Default_value: 80}	eCell	{Suffix: lb}	{Mandatory: TRUE}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: checkbox}	eCell	{Label: checkbox}	{elementKey: pcheckbox}	{pN: 40}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Default_value: TRUE}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: a checkbox iinput}	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: text}	{elementKey: defaultText}	{pN: 40}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	{dependentOn: disable:pcheckbox}	{Default_value: some default}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: a text input}	eCell	eCell	eCell
-{inputType: assetLink}	eCell	{Label: assetLink}	{elementKey: passetLink}	{pN: 40}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: assetLink}	eCell	{Label: assetLink}	{elementKey: passetLink}	{pN: 40}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{assetBase: standardized-assessment-tools}	{assetName: the-canadian-ed-triage-and-acuity-scale.gif}	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: select}	{elementKey: pselect}	{pN: 40}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Options: 1=a choice 1
 2=b choice 1
 3=c choice 1}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: p-cValue1}
@@ -21,21 +21,22 @@ check2=check option 2
 other=another option
 all=all options are selectable}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_subgroup}	eCell	{Label: subgroup 2}	{elementKey: subgroup2}	{pN: 40}	{fN: 1}	{gN: 2}	{sgN: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: day}	eCell	{Label: Day}	{elementKey: dayValue}	{pN: 40}	{fN: 1}	{gN: 2}	{sgN: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Mandatory: TRUE}	{Validation: isDay}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: time}	eCell	{Label: Time}	{elementKey: timeValue}	{pN: 40}	{fN: 1}	{gN: 2}	{sgN: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Mandatory: TRUE}	{Validation: isTime}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: day}	eCell	{Label: Day}	{elementKey: dayValue}	{pN: 40}	{fN: 1}	{gN: 2}	{sgN: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Mandatory: TRUE}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: time}	eCell	{Label: Time}	{elementKey: timeValue}	{pN: 40}	{fN: 1}	{gN: 2}	{sgN: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Mandatory: TRUE}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: select}	{elementKey: forCalc}	{pN: 40}	{fN: 1}	{gN: 2}	{sgN: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Options: 1 = Yes
 2 = No}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: p-cValue2}
 {inputType: calculatedValue}	eCell	{Label: calculatedValue}	{elementKey: p-cValue2}	{pN: 40}	{fN: 1}	{gN: 2}	{sgN: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_subgroup}	eCell	{Label: subgroup 3}	{elementKey: subgroup3}	{pN: 40}	{fN: 1}	{gN: 2}	{sgN: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: checkbox}	eCell	{Label: checkbox}	{elementKey: pcheckbox2}	{pN: 40}	{fN: 1}	{gN: 2}	{sgN: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: text}	{elementKey: ptext2}	{pN: 40}	{fN: 1}	{gN: 2}	{sgN: 3}	eCell	{formOption: hideLabel}	eCell	eCell	eCell	eCell	{dependentOn: disable:pcheckbox2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: form_label}	eCell	{Label: <b>a NEW <i>label</i></b>}	{elementKey: pform_labeltest}	{pN: 40}	{fN: 1}	{gN: 2}	{sgN: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: form_label}	eCell	{Label: <b>a form <i>label</i></b>}	{elementKey: pform_label2}	{pN: 40}	{fN: 1}	{gN: 2}	{sgN: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: spacer}	eCell	{Label: spacer}	{elementKey: pspacer2}	{pN: 40}	{fN: 1}	{gN: 2}	{sgN: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: assetLink}	eCell	{Label: assetLink}	{elementKey: passetLink2}	{pN: 40}	{fN: 1}	{gN: 2}	{sgN: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{assetBase: standardized-assessment-tools}	{assetName: the-canadian-ed-triage-and-acuity-scale.gif}	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: date}	eCell	{Label: date}	{elementKey: pdate2}	{pN: 40}	{fN: 1}	{gN: 2}	{sgN: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: table_form}	eCell	{Label: Test table 1}	{elementKey: table1}	{pN: 40}	{fN: 2}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	{addButtonText: Add a row to the test table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	{Label: Group 1}	eCell	{pN: 40}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Text 1}	{elementKey: t1}	{pN: 40}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	{tableLabel: Text 1}	{tableColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Name}	{elementKey: name}	{pN: 40}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	{tableLabel: Text 1}	{tableColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Text 2}	{elementKey: t2}	{pN: 40}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	{tableLabel: Text 2}	{tableColumn: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: a text input}	eCell	eCell	eCell
 {inputType: page_form}	eCell	{Label: Form 2}	{elementKey: form2}	{pN: 40}	{fN: 3}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	{Label: A group label}	eCell	{pN: 40}	{fN: 3}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
@@ -48,7 +49,7 @@ all=all options are selectable}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	{Label: Group 1}	eCell	{pN: 41}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: form_label}	eCell	{Label: <b>a form <i>label</i></b>}	{elementKey: e1}	{pN: 41}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: spacer}	eCell	{Label: spacer}	{elementKey: e2}	{pN: 41}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Weight}	{elementKey: weight}	{pN: 41}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	{tableLabel: Wieght}	{tableColumn: 2}	eCell	eCell	eCell	{Default_value: 80}	eCell	{Suffix: lb}	{Mandatory: TRUE}	{Validation: isNumber}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Weight}	{elementKey: weight}	{pN: 41}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	{tableLabel: Wieght}	{tableColumn: 2}	eCell	eCell	eCell	{Default_value: 80}	eCell	{Suffix: lb}	{Mandatory: TRUE}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: checkbox}	eCell	{Label: checkbox}	{elementKey: pcheckbox}	{pN: 41}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	{tableLabel: A bool}	{tableColumn: 1}	eCell	eCell	eCell	{Default_value: TRUE}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: a checkbox iinput}	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: text}	{elementKey: defaultText}	{pN: 41}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	{tableLabel: Text}	{tableColumn: 3}	{tableCss: hr-table}	eCell	{dependentOn: disable:pcheckbox}	{Default_value: some default}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: a text input}	eCell	eCell	eCell
 {inputType: assetLink}	eCell	{Label: assetLink}	{elementKey: e6}	{pN: 41}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{assetBase: standardized-assessment-tools}	{assetName: the-canadian-ed-triage-and-acuity-scale.gif}	eCell	eCell	eCell	eCell	eCell	eCell
@@ -66,8 +67,8 @@ check2=check option 2
 other=another option
 all=all options are selectable}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_subgroup}	eCell	{Label: subgroup 2}	{elementKey: subgroup2}	{pN: 41}	{fN: 1}	{gN: 2}	{sgN: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: day}	eCell	{Label: Day}	{elementKey: dayValue}	{pN: 41}	{fN: 1}	{gN: 2}	{sgN: 2}	eCell	eCell	{tableLabel: Day}	{tableColumn: 7}	eCell	eCell	eCell	eCell	eCell	eCell	{Mandatory: TRUE}	{Validation: isDay}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: time}	eCell	{Label: Time}	{elementKey: timeValue}	{pN: 41}	{fN: 1}	{gN: 2}	{sgN: 2}	eCell	eCell	{tableLabel: Time}	{tableColumn: 8}	eCell	eCell	eCell	eCell	eCell	eCell	{Mandatory: TRUE}	{Validation: isTime}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: day}	eCell	{Label: Day}	{elementKey: dayValue}	{pN: 41}	{fN: 1}	{gN: 2}	{sgN: 2}	eCell	eCell	{tableLabel: Day}	{tableColumn: 7}	eCell	eCell	eCell	eCell	eCell	eCell	{Mandatory: TRUE}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: time}	eCell	{Label: Time}	{elementKey: timeValue}	{pN: 41}	{fN: 1}	{gN: 2}	{sgN: 2}	eCell	eCell	{tableLabel: Time}	{tableColumn: 8}	eCell	eCell	eCell	eCell	eCell	eCell	{Mandatory: TRUE}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: select}	{elementKey: forCalc}	{pN: 41}	{fN: 1}	{gN: 2}	{sgN: 2}	eCell	eCell	{tableLabel: Source}	{tableColumn: 9}	eCell	eCell	eCell	eCell	"{Options: 1 = Yes
 2 = No}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: p-cValue2}
 {inputType: calculatedValue}	eCell	{Label: calculatedValue}	{elementKey: p-cValue2}	{pN: 41}	{fN: 1}	{gN: 2}	{sgN: 2}	eCell	eCell	{tableLabel: Calculated}	{tableColumn: 10}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
@@ -102,7 +103,8 @@ prn := PRN (as needed)
 once := Once
 stat := Stat}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	{elementKey: schedGroup}	{pN: 41}	{fN: 3}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	{dependentOn: visble:administration=sched}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Scheduled}	{elementKey: scheduled}	{pN: 41}	{fN: 3}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Scheduled}	{tableColumn: 9}	eCell	eCell	eCell	eCell	"{Options: BID / q12h
+{inputType: select}	eCell	{Label: Scheduled}	{elementKey: scheduled}	{pN: 41}	{fN: 3}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Scheduled}	{tableColumn: 9}	eCell	eCell	eCell	eCell	"{Options: QI
+BID / q12h
 TID
 q8h
 QID

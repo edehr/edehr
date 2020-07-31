@@ -38,17 +38,17 @@
 {inputType: text}	eCell	{Label: Condition}	{elementKey: condition}	{pN: 37}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Condition}	{tableColumn: 3}	eCell	eCell	eCell	eCell	eCell	eCell	{Mandatory: yes}	eCell	eCell	eCell	"{Data_case_study: COPD
 History of smoking
 Hypertension}"	eCell	eCell
-{inputType: text}	eCell	{Label: Diagnosis code}	{elementKey: code}	{pN: 37}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Diagnosis code}	{tableColumn: 4}	eCell	eCell	eCell	eCell	eCell	eCell	{Mandatory: yes}	{Validation: Up to 8 characters long}	eCell	eCell	"{Data_case_study: J44.9
+{inputType: text}	eCell	{Label: Diagnosis code}	{elementKey: code}	{pN: 37}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Diagnosis code}	{tableColumn: 4}	eCell	eCell	eCell	eCell	eCell	eCell	{Mandatory: yes}	eCell	eCell	eCell	"{Data_case_study: J44.9
 Z86.42
 I10}"	eCell	eCell
 {inputType: select}	eCell	{Label: Diagnosis type}	{elementKey: type}	{pN: 37}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Diagnosis type}	{tableColumn: 5}	eCell	eCell	eCell	eCell	"{Options: M
 1
 2
-3}"	eCell	{Mandatory: yes}	{Validation: 1 character}	eCell	eCell	"{Data_case_study: M
+3}"	eCell	{Mandatory: yes}	eCell	eCell	eCell	"{Data_case_study: M
 3
 3}"	eCell	eCell
-{inputType: text}	eCell	{Label: Prefix}	{elementKey: prefix}	{pN: 37}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Prefix}	{tableColumn: 6}	eCell	eCell	eCell	eCell	eCell	eCell	{Mandatory: no}	{Validation: 1 character}	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Diagnosis cluster}	{elementKey: cluster}	{pN: 37}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Diagnosis cluster}	{tableColumn: 7}	eCell	eCell	eCell	eCell	eCell	eCell	{Mandatory: no}	{Validation: 1 character}	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Prefix}	{elementKey: prefix}	{pN: 37}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Prefix}	{tableColumn: 6}	eCell	eCell	eCell	eCell	eCell	eCell	{Mandatory: no}	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Diagnosis cluster}	{elementKey: cluster}	{pN: 37}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Diagnosis cluster}	{tableColumn: 7}	eCell	eCell	eCell	eCell	eCell	eCell	{Mandatory: no}	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: page}	{pRef: 46}	{Label: Intervention codes}	{elementKey: interventionCodes}	{pN: 38}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: table_form}	eCell	eCell	{elementKey: table}	{pN: 38}	{fN: 1}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	{addButtonText: Add an intervention code}	eCell	eCell	{Options: Add an intervention code}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	{pN: 38}	{fN: 1}	{gN: 1}	{sgN: }	{formCss: record-header}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell

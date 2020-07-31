@@ -10,7 +10,6 @@ export default function () {
       pageChildren: [
         {
           elementKey: 'admissionDay',
-          dataCaseStudy: '0',
           formIndex: '1',
           inputType: 'day',
           label: 'Admission day',
@@ -19,7 +18,6 @@ export default function () {
         },
         {
           elementKey: 'admissionTime',
-          dataCaseStudy: '0.25',
           formIndex: '1',
           inputType: 'time',
           label: 'Admission time',
@@ -28,7 +26,6 @@ export default function () {
         },
         {
           elementKey: 'status',
-          dataCaseStudy: 'Admitted',
           formIndex: '1',
           inputType: 'select',
           label: 'Admission status',
@@ -67,7 +64,6 @@ export default function () {
         },
         {
           elementKey: 'consentForTreatment',
-          dataCaseStudy: true,
           formIndex: '1',
           inputType: 'checkbox',
           label: 'Consent for treatment',
@@ -75,7 +71,6 @@ export default function () {
         },
         {
           elementKey: 'consentForBlood',
-          dataCaseStudy: true,
           formIndex: '1',
           inputType: 'checkbox',
           label: 'Consent for blood products',
@@ -84,7 +79,6 @@ export default function () {
         },
         {
           elementKey: 'diagnosis',
-          dataCaseStudy: 'COPD, shortness of breath, dizzy',
           dependentOn: 'disable:consentForBlood',
           formIndex: '1',
           inputType: 'textarea',
@@ -93,7 +87,6 @@ export default function () {
         },
         {
           elementKey: 'location',
-          dataCaseStudy: 'Emergency room',
           formIndex: '2',
           helperText: 'hospital, ward #, room #, home, out patient clinic',
           inputType: 'text',
@@ -122,7 +115,6 @@ export default function () {
         },
         {
           elementKey: 'aSpacer',
-          dataCaseStudy: 'Normal',
           formIndex: '2',
           inputType: 'spacer',
           fqn: 'visit.aSpacer'
@@ -145,7 +137,7 @@ export default function () {
         }
       ],
       recHeader: true,
-      generated: '2020-06-13T21:01:12-03:00',
+      generated: '2020-07-30T16:56:47-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -153,7 +145,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
-              elementKey: 'ehr_group28',
+              elementKey: 'ehr_group1',
               gIndex: '1',
               gChildren: [
                 'admissionDay',
@@ -164,7 +156,7 @@ export default function () {
               ]
             },
             {
-              elementKey: 'ehr_group29',
+              elementKey: 'ehr_group2',
               formCss: 'grid-left-to-right-1',
               gIndex: '2',
               gChildren: [
@@ -217,7 +209,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group30',
+                elementKey: 'ehr_group3',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '1',
                 gChildren: [
@@ -225,7 +217,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group31',
+                elementKey: 'ehr_group4',
                 gIndex: '2',
                 gChildren: [
                   'transferInDay',
@@ -312,15 +304,14 @@ export default function () {
           fqn: 'vitals.time'
         },
         {
-          elementKey: 'spacer34',
+          elementKey: 'spacer7',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'vitals.spacer34'
+          fqn: 'vitals.spacer7'
         },
         {
           elementKey: 'systolic',
           addButtonText: 'Add a row to the test table',
-          dataCaseStudy: '180',
           formIndex: '1',
           inputType: 'text',
           label: 'Systolic blood pressure',
@@ -330,7 +321,6 @@ export default function () {
         },
         {
           elementKey: 'diastolic',
-          dataCaseStudy: '90',
           formIndex: '1',
           inputType: 'text',
           label: 'Diastolic blood pressure',
@@ -340,7 +330,6 @@ export default function () {
         },
         {
           elementKey: 'patientPosition',
-          dataCaseStudy: 'sitting',
           formIndex: '1',
           inputType: 'select',
           label: 'Patient position',
@@ -365,7 +354,6 @@ export default function () {
         },
         {
           elementKey: 'temperature',
-          dataCaseStudy: '36.5',
           formIndex: '1',
           inputType: 'text',
           label: 'Temperature',
@@ -376,7 +364,6 @@ export default function () {
         },
         {
           elementKey: 'source',
-          dataCaseStudy: 'Axilla',
           formIndex: '1',
           inputType: 'select',
           label: 'Temperature source',
@@ -404,14 +391,13 @@ export default function () {
           fqn: 'vitals.source'
         },
         {
-          elementKey: 'spacer35',
+          elementKey: 'spacer8',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'vitals.spacer35'
+          fqn: 'vitals.spacer8'
         },
         {
           elementKey: 'strength',
-          dataCaseStudy: 'strong',
           formIndex: '1',
           inputType: 'select',
           label: 'Pulse site',
@@ -419,6 +405,10 @@ export default function () {
             {
               key: 'Peripheral',
               text: 'Peripheral'
+            },
+            {
+              key: 'Other',
+              text: 'Other'
             }
           ],
           tableColumn: '9',
@@ -427,7 +417,6 @@ export default function () {
         },
         {
           elementKey: 'rate',
-          dataCaseStudy: '96',
           formIndex: '1',
           inputType: 'text',
           label: 'Pulse rate',
@@ -437,7 +426,6 @@ export default function () {
         },
         {
           elementKey: 'rhythm',
-          dataCaseStudy: 'regular',
           formIndex: '1',
           inputType: 'select',
           label: 'Pulse rhythm',
@@ -458,7 +446,6 @@ export default function () {
         },
         {
           elementKey: 'respirationRate',
-          dataCaseStudy: '28',
           formIndex: '1',
           inputType: 'text',
           label: 'Respiration rate',
@@ -467,20 +454,19 @@ export default function () {
           fqn: 'vitals.respirationRate'
         },
         {
-          elementKey: 'spacer36',
+          elementKey: 'spacer9',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'vitals.spacer36'
+          fqn: 'vitals.spacer9'
         },
         {
-          elementKey: 'spacer37',
+          elementKey: 'spacer10',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'vitals.spacer37'
+          fqn: 'vitals.spacer10'
         },
         {
           elementKey: 'oxygenSaturation',
-          dataCaseStudy: '85',
           formIndex: '1',
           inputType: 'text',
           label: 'Oxygen saturation',
@@ -542,7 +528,7 @@ export default function () {
         }
       ],
       recHeader: true,
-      generated: '2020-06-13T21:01:12-03:00',
+      generated: '2020-07-30T16:56:47-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -677,7 +663,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group32',
+                elementKey: 'ehr_group5',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -688,24 +674,24 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group33',
+                elementKey: 'ehr_group6',
                 gIndex: '2',
                 gChildren: [
                   'day',
                   'time',
-                  'spacer34',
+                  'spacer7',
                   'systolic',
                   'diastolic',
                   'patientPosition',
                   'temperature',
                   'source',
-                  'spacer35',
+                  'spacer8',
                   'strength',
                   'rate',
                   'rhythm',
                   'respirationRate',
-                  'spacer36',
-                  'spacer37',
+                  'spacer9',
+                  'spacer10',
                   'oxygenSaturation',
                   'oxygenMode',
                   'flowRate',
@@ -801,7 +787,7 @@ export default function () {
         }
       ],
       recHeader: true,
-      generated: '2020-06-13T21:01:12-03:00',
+      generated: '2020-07-30T16:56:47-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -840,7 +826,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group38',
+                elementKey: 'ehr_group11',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -851,7 +837,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group39',
+                elementKey: 'ehr_group12',
                 gIndex: '2',
                 gChildren: [
                   'fluidIn',
@@ -958,7 +944,6 @@ export default function () {
         },
         {
           elementKey: 'eyeOpening',
-          dataCaseStudy: 'Spontaneous',
           formIndex: '1',
           inputType: 'select',
           label: 'Eye opening',
@@ -991,7 +976,6 @@ export default function () {
         },
         {
           elementKey: 'verbalResponse',
-          dataCaseStudy: 'Oriented',
           formIndex: '1',
           inputType: 'select',
           label: 'Verbal response',
@@ -1028,7 +1012,6 @@ export default function () {
         },
         {
           elementKey: 'bestMotorResponse',
-          dataCaseStudy: 'Obeys commands',
           formIndex: '1',
           inputType: 'select',
           label: 'Best motor response',
@@ -1069,7 +1052,6 @@ export default function () {
         },
         {
           elementKey: 'glasgowCalculation',
-          dataCaseStudy: '(15 - calculated by system)',
           defaultValue: '0',
           formIndex: '1',
           inputType: 'calculatedValue',
@@ -1087,7 +1069,6 @@ export default function () {
         },
         {
           elementKey: 'loss',
-          dataCaseStudy: 'No',
           formIndex: '1',
           inputType: 'select',
           label: 'Loss of conciousness',
@@ -1111,7 +1092,6 @@ export default function () {
         },
         {
           elementKey: 'duration',
-          dataCaseStudy: 'No',
           formIndex: '1',
           inputType: 'text',
           label: 'Duration',
@@ -1122,7 +1102,6 @@ export default function () {
         },
         {
           elementKey: 'leftPupilSize',
-          dataCaseStudy: '2',
           formIndex: '1',
           inputType: 'select',
           label: 'Left pupil size',
@@ -1166,7 +1145,6 @@ export default function () {
         },
         {
           elementKey: 'leftPupilResponseToLight',
-          dataCaseStudy: 'Brisk',
           formIndex: '1',
           inputType: 'select',
           label: 'Left pupil response to light',
@@ -1189,15 +1167,13 @@ export default function () {
           fqn: 'neurological.leftPupilResponseToLight'
         },
         {
-          elementKey: 'spacer45',
-          dataCaseStudy: 'Equal',
+          elementKey: 'spacer18',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'neurological.spacer45'
+          fqn: 'neurological.spacer18'
         },
         {
           elementKey: 'rightPupilSize',
-          dataCaseStudy: '2',
           formIndex: '1',
           inputType: 'select',
           label: 'Right pupil size',
@@ -1241,7 +1217,6 @@ export default function () {
         },
         {
           elementKey: 'rightPupilResponseToLight',
-          dataCaseStudy: 'Brisk',
           formIndex: '1',
           inputType: 'select',
           label: 'Right pupil response to light',
@@ -1265,7 +1240,6 @@ export default function () {
         },
         {
           elementKey: 'bothPupils',
-          dataCaseStudy: 'Equal',
           formIndex: '1',
           inputType: 'select',
           label: 'Both pupils',
@@ -1285,7 +1259,6 @@ export default function () {
         },
         {
           elementKey: 'comments',
-          dataCaseStudy: '(no comments)',
           formIndex: '1',
           formCss: 'grid-span-2-columns',
           inputType: 'textarea',
@@ -1297,7 +1270,6 @@ export default function () {
         },
         {
           elementKey: 'resources',
-          dataCaseStudy: '(no comments)',
           formIndex: '1',
           inputType: 'form_label',
           label: '<b>Resources</b><p><a target=\'_blank\' href=\'/assets/standardized-assessment-tools/Morse-Fall-Scale-score.png\'>Morse Fall Score </a></br><a target=\'_blank\' href=\'/assets/standardized-assessment-tools/mini-mental-health-screen.pdf\'>Mini-mental state examination (MMSE)</a></p>',
@@ -1445,10 +1417,10 @@ export default function () {
           fqn: 'neurological.motorRightArm'
         },
         {
-          elementKey: 'spacer48',
+          elementKey: 'spacer21',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'neurological.spacer48'
+          fqn: 'neurological.spacer21'
         },
         {
           elementKey: 'motorLeftLeg',
@@ -1732,7 +1704,7 @@ export default function () {
         }
       ],
       recHeader: true,
-      generated: '2020-06-13T21:01:12-03:00',
+      generated: '2020-07-30T16:56:47-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1968,7 +1940,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group40',
+                elementKey: 'ehr_group13',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -1979,7 +1951,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group41',
+                elementKey: 'ehr_group14',
                 formCss: 'section-divider',
                 gIndex: '2',
                 gChildren: [
@@ -1987,7 +1959,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group42',
+                elementKey: 'ehr_group15',
                 label: 'Glasgow Coma Scale',
                 formCss: 'section-divider',
                 gIndex: '3',
@@ -1999,7 +1971,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group43',
+                elementKey: 'ehr_group16',
                 label: 'Conciousness',
                 gIndex: '4',
                 gChildren: [
@@ -2008,20 +1980,20 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group44',
+                elementKey: 'ehr_group17',
                 formCss: 'section-divider',
                 gIndex: '5',
                 gChildren: [
                   'leftPupilSize',
                   'leftPupilResponseToLight',
-                  'spacer45',
+                  'spacer18',
                   'rightPupilSize',
                   'rightPupilResponseToLight',
                   'bothPupils'
                 ]
               },
               {
-                elementKey: 'ehr_group46',
+                elementKey: 'ehr_group19',
                 formCss: 'section-divider',
                 gIndex: '6',
                 gChildren: [
@@ -2030,7 +2002,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group47',
+                elementKey: 'ehr_group20',
                 label: 'Stroke assessment',
                 gIndex: '7',
                 gChildren: [
@@ -2039,7 +2011,7 @@ export default function () {
                   'levelOfConciousnessCommands',
                   'motorLeftArm',
                   'motorRightArm',
-                  'spacer48',
+                  'spacer21',
                   'motorLeftLeg',
                   'motorRightLeg',
                   'limbAtaxia',
@@ -2053,7 +2025,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group49',
+                elementKey: 'ehr_group22',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '8',
                 gChildren: [
@@ -2147,7 +2119,6 @@ export default function () {
         },
         {
           elementKey: 'airway',
-          dataCaseStudy: true,
           formIndex: '1',
           inputType: 'checkset',
           label: 'Airway',
@@ -2195,7 +2166,6 @@ export default function () {
         },
         {
           elementKey: 'lul',
-          dataCaseStudy: 'Normal',
           formIndex: '1',
           inputType: 'select',
           label: 'Left upper lung',
@@ -2227,7 +2197,6 @@ export default function () {
         },
         {
           elementKey: 'rul',
-          dataCaseStudy: 'Normal',
           formIndex: '1',
           inputType: 'select',
           label: 'Right upper lung',
@@ -2259,21 +2228,18 @@ export default function () {
         },
         {
           elementKey: 'aSpacer',
-          dataCaseStudy: 'Normal',
           formIndex: '1',
           inputType: 'spacer',
           fqn: 'respiratory.aSpacer'
         },
         {
           elementKey: 'aSpacer',
-          dataCaseStudy: 'Normal',
           formIndex: '1',
           inputType: 'spacer',
           fqn: 'respiratory.aSpacer'
         },
         {
           elementKey: 'rml',
-          dataCaseStudy: 'Decreased',
           formIndex: '1',
           inputType: 'select',
           label: 'Right middle lung',
@@ -2305,14 +2271,12 @@ export default function () {
         },
         {
           elementKey: 'aSpacer',
-          dataCaseStudy: 'Normal',
           formIndex: '1',
           inputType: 'spacer',
           fqn: 'respiratory.aSpacer'
         },
         {
           elementKey: 'lll',
-          dataCaseStudy: 'Decreased',
           formIndex: '1',
           inputType: 'select',
           label: 'Left lower lung',
@@ -2344,7 +2308,6 @@ export default function () {
         },
         {
           elementKey: 'rll',
-          dataCaseStudy: 'Decreased',
           formIndex: '1',
           inputType: 'select',
           label: 'Right lower lung',
@@ -2377,14 +2340,12 @@ export default function () {
         },
         {
           elementKey: 'aSpacer',
-          dataCaseStudy: 'Normal',
           formIndex: '1',
           inputType: 'spacer',
           fqn: 'respiratory.aSpacer'
         },
         {
           elementKey: 'respiratoryRhythm',
-          dataCaseStudy: 'Regular',
           formIndex: '1',
           inputType: 'select',
           label: 'Respiratory rhythm',
@@ -2408,7 +2369,6 @@ export default function () {
         },
         {
           elementKey: 'respiratoryDepth',
-          dataCaseStudy: 'Shallow',
           formIndex: '1',
           inputType: 'select',
           label: 'Respiratory depth',
@@ -2432,14 +2392,12 @@ export default function () {
         },
         {
           elementKey: 'aSpacer',
-          dataCaseStudy: 'Normal',
           formIndex: '1',
           inputType: 'spacer',
           fqn: 'respiratory.aSpacer'
         },
         {
           elementKey: 'cough',
-          dataCaseStudy: 'No',
           formIndex: '1',
           inputType: 'select',
           label: 'Cough',
@@ -2463,7 +2421,6 @@ export default function () {
         },
         {
           elementKey: 'sputumColour',
-          dataCaseStudy: '(nothing selected)',
           formIndex: '1',
           inputType: 'select',
           label: 'Sputum colour',
@@ -2507,7 +2464,6 @@ export default function () {
         },
         {
           elementKey: 'sputumComments',
-          dataCaseStudy: '(no notes)',
           formIndex: '1',
           inputType: 'text',
           label: 'Sputum comments',
@@ -2518,7 +2474,6 @@ export default function () {
         },
         {
           elementKey: 'generalComments',
-          dataCaseStudy: '(no notes)',
           formIndex: '1',
           inputType: 'textarea',
           label: 'General comments',
@@ -2528,7 +2483,7 @@ export default function () {
         }
       ],
       recHeader: true,
-      generated: '2020-06-13T21:01:12-03:00',
+      generated: '2020-07-30T16:56:47-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2655,7 +2610,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group50',
+                elementKey: 'ehr_group23',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -2666,7 +2621,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group51',
+                elementKey: 'ehr_group24',
                 gIndex: '2',
                 gChildren: [
                   'airway',
@@ -2675,7 +2630,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group52',
+                elementKey: 'ehr_group25',
                 formCss: 'section-divider',
                 gIndex: '3',
                 gChildren: [
@@ -2691,7 +2646,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group53',
+                elementKey: 'ehr_group26',
                 formCss: 'section-divider',
                 gIndex: '4',
                 gChildren: [
@@ -2704,7 +2659,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group54',
+                elementKey: 'ehr_group27',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '5',
                 gChildren: [
@@ -2783,7 +2738,6 @@ export default function () {
         },
         {
           elementKey: 'pulse',
-          dataCaseStudy: 'Regular',
           formIndex: '1',
           inputType: 'select',
           label: 'Pulse',
@@ -2815,7 +2769,6 @@ export default function () {
         },
         {
           elementKey: 'skinAppearance',
-          dataCaseStudy: 'Normal',
           formIndex: '1',
           inputType: 'select',
           label: 'Skin appearance',
@@ -2851,14 +2804,13 @@ export default function () {
           fqn: 'cardiovascular.skinAppearance'
         },
         {
-          elementKey: 'spacer58',
+          elementKey: 'spacer31',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'cardiovascular.spacer58'
+          fqn: 'cardiovascular.spacer31'
         },
         {
           elementKey: 'labelCapRefill',
-          dataCaseStudy: 'Normal',
           formIndex: '1',
           helperText: 'Normal < 3 seconds\nDelayed > 3 seconds',
           inputType: 'form_label',
@@ -2868,7 +2820,6 @@ export default function () {
         },
         {
           elementKey: 'labelTemperature',
-          dataCaseStudy: 'Normal',
           formIndex: '1',
           inputType: 'form_label',
           label: 'Temperature',
@@ -2876,7 +2827,6 @@ export default function () {
         },
         {
           elementKey: 'labelPeripheral',
-          dataCaseStudy: 'Normal',
           formIndex: '1',
           inputType: 'form_label',
           label: 'Peripheral edema',
@@ -2884,7 +2834,6 @@ export default function () {
         },
         {
           elementKey: 'labelNailBed',
-          dataCaseStudy: 'Normal',
           formIndex: '1',
           inputType: 'form_label',
           label: 'Nail bed colour',
@@ -2892,7 +2841,6 @@ export default function () {
         },
         {
           elementKey: 'labelRight',
-          dataCaseStudy: 'Normal',
           formIndex: '1',
           inputType: 'form_label',
           label: 'Right hand',
@@ -2900,7 +2848,6 @@ export default function () {
         },
         {
           elementKey: 'capRefillLeftHand',
-          dataCaseStudy: 'Normal',
           formIndex: '1',
           formOption: 'hideLabel',
           inputType: 'select',
@@ -2921,7 +2868,6 @@ export default function () {
         },
         {
           elementKey: 'temperatureRightHand',
-          dataCaseStudy: 'Warm',
           formIndex: '1',
           formOption: 'hideLabel',
           inputType: 'select',
@@ -2946,7 +2892,6 @@ export default function () {
         },
         {
           elementKey: 'peripheralEdemaRightHand',
-          dataCaseStudy: 'No',
           formIndex: '1',
           formOption: 'hideLabel',
           inputType: 'select',
@@ -2979,7 +2924,6 @@ export default function () {
         },
         {
           elementKey: 'nailBedColourRightHand',
-          dataCaseStudy: 'Pink',
           formIndex: '1',
           formOption: 'hideLabel',
           inputType: 'select',
@@ -3000,7 +2944,6 @@ export default function () {
         },
         {
           elementKey: 'labelLeftHand',
-          dataCaseStudy: 'Normal',
           formIndex: '1',
           inputType: 'form_label',
           label: 'Left hand',
@@ -3008,7 +2951,6 @@ export default function () {
         },
         {
           elementKey: 'capRefillRightHand',
-          dataCaseStudy: 'Normal',
           formIndex: '1',
           formOption: 'hideLabel',
           inputType: 'select',
@@ -3029,7 +2971,6 @@ export default function () {
         },
         {
           elementKey: 'temperatureLeftHand',
-          dataCaseStudy: 'Warm',
           formIndex: '1',
           formOption: 'hideLabel',
           inputType: 'select',
@@ -3054,7 +2995,6 @@ export default function () {
         },
         {
           elementKey: 'peripheralEdemaLeftHand',
-          dataCaseStudy: 'No',
           formIndex: '1',
           formOption: 'hideLabel',
           inputType: 'select',
@@ -3087,7 +3027,6 @@ export default function () {
         },
         {
           elementKey: 'nailBedColourLeftHand',
-          dataCaseStudy: 'Pink',
           formIndex: '1',
           formOption: 'hideLabel',
           inputType: 'select',
@@ -3108,7 +3047,6 @@ export default function () {
         },
         {
           elementKey: 'labelRightFoot',
-          dataCaseStudy: 'Normal',
           formIndex: '1',
           inputType: 'form_label',
           label: 'Right foot',
@@ -3116,7 +3054,6 @@ export default function () {
         },
         {
           elementKey: 'capRefillRightFoot',
-          dataCaseStudy: 'Normal',
           formIndex: '1',
           formOption: 'hideLabel',
           inputType: 'select',
@@ -3137,7 +3074,6 @@ export default function () {
         },
         {
           elementKey: 'temperatureRightFoot',
-          dataCaseStudy: 'Warm',
           formIndex: '1',
           formOption: 'hideLabel',
           inputType: 'select',
@@ -3162,7 +3098,6 @@ export default function () {
         },
         {
           elementKey: 'peripheralEdemaRightFoot',
-          dataCaseStudy: 'No',
           formIndex: '1',
           formOption: 'hideLabel',
           inputType: 'select',
@@ -3195,7 +3130,6 @@ export default function () {
         },
         {
           elementKey: 'nailBedColourRightFoot',
-          dataCaseStudy: 'Pink',
           formIndex: '1',
           formOption: 'hideLabel',
           inputType: 'select',
@@ -3216,7 +3150,6 @@ export default function () {
         },
         {
           elementKey: 'labelLeftFoot',
-          dataCaseStudy: 'Normal',
           formIndex: '1',
           inputType: 'form_label',
           label: 'Left foot',
@@ -3224,7 +3157,6 @@ export default function () {
         },
         {
           elementKey: 'capRefillLeftFoot',
-          dataCaseStudy: 'Normal',
           formIndex: '1',
           formOption: 'hideLabel',
           inputType: 'select',
@@ -3245,7 +3177,6 @@ export default function () {
         },
         {
           elementKey: 'temperatureLeftFoot',
-          dataCaseStudy: 'Warm',
           formIndex: '1',
           formOption: 'hideLabel',
           inputType: 'select',
@@ -3270,7 +3201,6 @@ export default function () {
         },
         {
           elementKey: 'peripheralEdemaLeftFoot',
-          dataCaseStudy: 'No',
           formIndex: '1',
           formOption: 'hideLabel',
           inputType: 'select',
@@ -3303,7 +3233,6 @@ export default function () {
         },
         {
           elementKey: 'nailBedColourLeftFoot',
-          dataCaseStudy: 'Pink',
           formIndex: '1',
           formOption: 'hideLabel',
           inputType: 'select',
@@ -3324,7 +3253,6 @@ export default function () {
         },
         {
           elementKey: 'comments',
-          dataCaseStudy: '(blank)',
           formIndex: '1',
           inputType: 'textarea',
           label: 'Comments',
@@ -3334,7 +3262,7 @@ export default function () {
         }
       ],
       recHeader: true,
-      generated: '2020-06-13T21:01:12-03:00',
+      generated: '2020-07-30T16:56:47-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -3510,7 +3438,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group55',
+                elementKey: 'ehr_group28',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -3521,7 +3449,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group56',
+                elementKey: 'ehr_group29',
                 gIndex: '2',
                 gChildren: [
                   'pulse',
@@ -3529,11 +3457,11 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group57',
+                elementKey: 'ehr_group30',
                 formCss: 'grid-left-to-right-5 section-divider',
                 gIndex: '3',
                 gChildren: [
-                  'spacer58',
+                  'spacer31',
                   'labelCapRefill',
                   'labelTemperature',
                   'labelPeripheral',
@@ -3561,7 +3489,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group59',
+                elementKey: 'ehr_group32',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '4',
                 gChildren: [
@@ -3749,22 +3677,19 @@ export default function () {
           fqn: 'gastrointestinal.condition'
         },
         {
-          elementKey: 'spacer62',
-          dataCaseStudy: 'Equal',
+          elementKey: 'spacer35',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'gastrointestinal.spacer62'
+          fqn: 'gastrointestinal.spacer35'
         },
         {
-          elementKey: 'spacer63',
-          dataCaseStudy: 'Equal',
+          elementKey: 'spacer36',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'gastrointestinal.spacer63'
+          fqn: 'gastrointestinal.spacer36'
         },
         {
           elementKey: 'pain',
-          dataCaseStudy: 'No',
           formIndex: '1',
           inputType: 'select',
           label: 'Abdominal pain',
@@ -3783,22 +3708,19 @@ export default function () {
           fqn: 'gastrointestinal.pain'
         },
         {
-          elementKey: 'spacer64',
-          dataCaseStudy: 'Equal',
+          elementKey: 'spacer37',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'gastrointestinal.spacer64'
+          fqn: 'gastrointestinal.spacer37'
         },
         {
-          elementKey: 'spacer65',
-          dataCaseStudy: 'Equal',
+          elementKey: 'spacer38',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'gastrointestinal.spacer65'
+          fqn: 'gastrointestinal.spacer38'
         },
         {
           elementKey: 'aLabel',
-          dataCaseStudy: 'No',
           formIndex: '1',
           inputType: 'form_label',
           label: 'If answered yes, please complete the <a href=\'/assets/standardized-assessment-tools/numeric-rating-scale.pdf\'>pain assessment</a>.',
@@ -3806,7 +3728,6 @@ export default function () {
         },
         {
           elementKey: 'emesisPresent',
-          dataCaseStudy: '(nothing selected)',
           formIndex: '1',
           inputType: 'select',
           label: 'Emesis present?',
@@ -3830,7 +3751,6 @@ export default function () {
         },
         {
           elementKey: 'colour',
-          dataCaseStudy: '(nothing selected)',
           formIndex: '1',
           inputType: 'select',
           label: 'Emesis colour',
@@ -3862,7 +3782,6 @@ export default function () {
         },
         {
           elementKey: 'description',
-          dataCaseStudy: '(nothing entered)',
           formIndex: '1',
           inputType: 'text',
           label: 'Description',
@@ -3872,7 +3791,6 @@ export default function () {
         },
         {
           elementKey: 'amount',
-          dataCaseStudy: '(nothing selected)',
           formIndex: '1',
           inputType: 'select',
           label: 'Approximate volume',
@@ -3897,7 +3815,6 @@ export default function () {
         },
         {
           elementKey: 'eating',
-          dataCaseStudy: 'Regular',
           formIndex: '1',
           inputType: 'select',
           label: 'Difficulty',
@@ -3917,7 +3834,6 @@ export default function () {
         },
         {
           elementKey: 'reason',
-          dataCaseStudy: '(nothing entered)',
           formIndex: '1',
           inputType: 'text',
           label: 'Reason',
@@ -3926,15 +3842,13 @@ export default function () {
           fqn: 'gastrointestinal.reason'
         },
         {
-          elementKey: 'spacer66',
-          dataCaseStudy: 'Equal',
+          elementKey: 'spacer39',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'gastrointestinal.spacer66'
+          fqn: 'gastrointestinal.spacer39'
         },
         {
           elementKey: 'npoSinceDay',
-          dataCaseStudy: '(nothing entered)',
           formIndex: '1',
           inputType: 'day',
           label: 'NPO since day',
@@ -3944,7 +3858,6 @@ export default function () {
         },
         {
           elementKey: 'npoSinceTime',
-          dataCaseStudy: '(nothing entered)',
           formIndex: '1',
           inputType: 'time',
           label: 'NPO since time',
@@ -3955,7 +3868,7 @@ export default function () {
         {
           elementKey: 'weightLoss',
           formIndex: '1',
-          inputType: 'select',
+          inputType: 'text',
           label: 'Weight loss',
           tableColumn: '14',
           tableCss: 'hr-table',
@@ -3964,7 +3877,6 @@ export default function () {
         },
         {
           elementKey: 'lastBm',
-          dataCaseStudy: 'Yesterday',
           formIndex: '1',
           inputType: 'text',
           label: 'Last bowel movement',
@@ -3974,7 +3886,6 @@ export default function () {
         },
         {
           elementKey: 'stoolColour',
-          dataCaseStudy: 'Brown',
           formIndex: '1',
           inputType: 'select',
           label: 'Stool colour',
@@ -4014,7 +3925,6 @@ export default function () {
         },
         {
           elementKey: 'stoolDescription',
-          dataCaseStudy: '(nothing entered)',
           formIndex: '1',
           inputType: 'select',
           label: 'Description',
@@ -4034,7 +3944,6 @@ export default function () {
         },
         {
           elementKey: 'stoolAmount',
-          dataCaseStudy: '(nothing entered)',
           formIndex: '1',
           inputType: 'text',
           label: 'Amount',
@@ -4044,7 +3953,6 @@ export default function () {
         },
         {
           elementKey: 'stoolSource',
-          dataCaseStudy: 'As per patient observed',
           formIndex: '1',
           inputType: 'select',
           label: 'Source',
@@ -4069,7 +3977,6 @@ export default function () {
         },
         {
           elementKey: 'comments',
-          dataCaseStudy: '(nothing entered)',
           formIndex: '1',
           inputType: 'textarea',
           label: 'Comments',
@@ -4079,7 +3986,7 @@ export default function () {
         }
       ],
       recHeader: true,
-      generated: '2020-06-13T21:01:12-03:00',
+      generated: '2020-07-30T16:56:47-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -4241,7 +4148,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group60',
+                elementKey: 'ehr_group33',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -4252,18 +4159,18 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group61',
+                elementKey: 'ehr_group34',
                 formCss: 'section-divider',
                 gIndex: '2',
                 gChildren: [
                   'bowel',
                   'bSounds',
                   'condition',
-                  'spacer62',
-                  'spacer63',
+                  'spacer35',
+                  'spacer36',
                   'pain',
-                  'spacer64',
-                  'spacer65',
+                  'spacer37',
+                  'spacer38',
                   'aLabel'
                 ]
               },
@@ -4287,7 +4194,7 @@ export default function () {
                 gChildren: [
                   'eating',
                   'reason',
-                  'spacer66',
+                  'spacer39',
                   'npoSinceDay',
                   'npoSinceTime',
                   'weightLoss'
@@ -4307,7 +4214,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group67',
+                elementKey: 'ehr_group40',
                 formCss: 'grid-left-to-right-1 section-divider',
                 gIndex: '6',
                 gChildren: [

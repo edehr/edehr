@@ -42,16 +42,16 @@ describe('page-definitions tests', () => {
 
   it('assetLink elements have values in assetBase and assetName', () => {
     pageChildren.filter(pc => pc.inputType === inputTypes.assetLink).map(pc => {
-      should.exist(pc.assetName)
+      should.exist(pc.assetName, `assetName should exist for pc ${JSON.stringify(pc)}`)
       if(pc.assetBase)
-        should.exist(pc.assetBase)
+        should.exist(pc.assetBase, 'b')
     })
   })
 
   it('select options has length > 1', () => {
-    pageChildren.filter(pc => pc.inputType === inputTypes.checkbox).map(pc => {
-      should.exist(pc.options)
-      pc.options.length.should.be.greaterThan(1)
+    pageChildren.filter(pc => pc.inputType === inputTypes.select).map(pc => {
+      should.exist(pc.options, `select options should exist for pc ${JSON.stringify(pc)}`)
+      pc.options.length.should.be.greaterThan(1, `select options should have length >  for ${JSON.stringify(pc)}`)
     })
   })
 
@@ -72,12 +72,12 @@ describe('page-definitions tests', () => {
 
   it('Test that any element with a validator refers to one of the supported validations', () => {
     pageChildren.filter(pc => !!pc.validation).map(pc => {
-      console.log('validation >> ', pc.validation)
+      // console.log('validation >> ', pc.validation)
       const method = pc.validation.indexOf('(') !== -1 
         ? pc.validation.slice(0, pc.validation.indexOf('(')) 
         : pc.validation
       const type = typeof ehrValidations[method]
-      type.should.equal('function')
+      type.should.equal('function', `validator should be function for pc ${JSON.stringify(pc)}`)
       
     })
   })  
