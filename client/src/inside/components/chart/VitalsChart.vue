@@ -46,6 +46,12 @@ export default {
     },
     cvp () {
       return this.vitalsModel.getCVP(this.vitals)
+    },
+    shouldScale () {
+      return !(
+        navigator.userAgent.includes('AppleWebKit') 
+        && navigator.vendor === 'Apple Computer, Inc.'
+      )
     }
   },
   watch: {
@@ -117,10 +123,8 @@ export default {
   mounted: function () {
     let chartCanvas = document.getElementById('chartCanvas')
     let axisCanvas = document.getElementById('axisCanvas')
-
-    let useScale = true
     let f = 2
-    if ( useScale) {
+    if ( this.shouldScale ) {
       chartCanvas.width = canvasWidth * f
       chartCanvas.height = canvasHeight * f
       chartCanvas.style.width = canvasWidth + 'px'
