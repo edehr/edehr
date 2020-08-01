@@ -308,7 +308,12 @@ export default class LTIController {
           // Get the default description for assignments from config.
           // The resource_link_description is used to describe the activity and using it for the
           // assignment too is confusing.
-          return _this.assignmentController.createAssignment(externalId, toolConsumer, title)
+          let aAssignment = {
+            resource_link_title: title,
+            externalId: externalId,
+            toolConsumer: toolConsumer
+          }
+          return _this.assignmentController.createAssignment(aAssignment)
         }
         return assignment
       })
