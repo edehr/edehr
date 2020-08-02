@@ -16,6 +16,13 @@ export function outside () {
       meta: { layout: 'outside', label: 'Assignments', zone: 'lms' }
     },
     {
+      path: '/files',
+      name: 'files',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Files.vue'),
+      meta: { layout: 'outside', label: 'Files', zone: 'lms' }
+    },
+    {
       path: '/classList',
       name: 'classList',
       component: () =>

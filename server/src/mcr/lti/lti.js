@@ -369,7 +369,15 @@ export default class LTIController {
     }
 
     try {
-      const token = this.authUtil.createToken({visitId: visit._id})
+      const tokenData = {
+        consumerKey: visit.consumerKey,
+        isInstructor: visit.isInstructor,
+        isStudent: visit.isStudent,
+        toolConsumerId: req.toolConsumer._id,
+        visitId: visit._id
+      }
+      debug('LTI create token with', tokenData)
+      const token = this.authUtil.createToken(tokenData)
       const refreshToken = this.authUtil.createRefreshToken(token)
       req.refreshToken = refreshToken
       let url = this.config.clientUrl + route + `?apiUrl=${apiUrl}&token=${refreshToken}`

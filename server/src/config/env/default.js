@@ -17,6 +17,7 @@ const CLIENT_PORT = process.env.CLIENT_PORT || undefined // 28000
 const API_HOST =   process.env.API_HOST
 const AUTH_TOKEN_SECRET = process.env.AUTH_TOKEN_SECRET || 'defaultTokenSecretForJWT'
 const CLIENT_HOST =   process.env.CLIENT_HOST
+const EHR_FILES = 'ehr-files'
 const MONGODB_PORT = process.env.MONGODB_PORT || 27018
 const MONGODB_HOST = process.env.MONGODB_HOST || 'localhost'
 const MONGODB_DEBUG = process.env.MONGODB_DEBUG || false
@@ -44,6 +45,7 @@ module.exports = function() {
     serverPort: SERVER_PORT,
     clientPort: CLIENT_PORT,
     clientHost: CLIENT_HOST,
+    ehrFiles: EHR_FILES,
     seedDB: SEED_DB,
     database: {
       name: MONGODB_NAME,

@@ -10,6 +10,7 @@ import AssignmentController from '../mcr/assignment/assignment-controller'
 import AuthController from '../mcr/auth/auth-controller'
 import ConsumerController from '../mcr/consumer/consumer-controller'
 import FeedbackController from '../mcr/feedback/feedback-controller'
+import FilesController from '../mcr/files/files-controller'
 import IntegrationController from '../mcr/integration/integration-controller'
 import LTIController from '../mcr/lti/lti'
 import LookaheadController from '../mcr/lookahead/lookahead-controller'
@@ -70,6 +71,7 @@ export function apiMiddle (app, config) {
   const as = new AssignmentController(config)
   const auth = new AuthController(authUtil)
   const fc = new FeedbackController(config)
+  const fileC = new FilesController(config)
   const look = new LookaheadController()
   const vc = new VisitController()
   const cc = new ConsumerController()
@@ -136,6 +138,7 @@ export function apiMiddle (app, config) {
       api.use('/activity-data', middleWare, acc.route())
       api.use('/assignments', middleWare, as.route())
       api.use('/feedback', middleWare, fc.route())
+      api.use('/files', middleWare, fileC.route())
       api.use('/consumers', middleWare, cc.route())
       api.use('/lookahead', middleWare, look.route())
       api.use('/users', middleWare, uc.route())
@@ -147,6 +150,7 @@ export function apiMiddle (app, config) {
       api.use('/api/assignments', middleWare, as.route())
       api.use('/api/consumers', middleWare, cc.route())
       api.use('/api/feedback', middleWare, fc.route())
+      api.use('/api/files', middleWare, fileC.route())
       api.use('/api/lookahead', middleWare, look.route())
       api.use('/api/users', middleWare, uc.route())
       api.use('/api/visits', middleWare, vc.route())
@@ -192,6 +196,7 @@ function setupCors (config) {
   var whitelist = [] // 'http://localhost:28000', 'http://localhost:27000']
   whitelist.push(config.clientUrl)
   whitelist.push(config.apiUrl)
+  debug('Setup CORS with whitelist:', whitelist)
   var corsOptionsDelegate = function (req, callback) {
     var corsOptions
     if (whitelist.indexOf(req.header('Origin')) !== -1) {
