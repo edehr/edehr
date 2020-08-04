@@ -1,20 +1,11 @@
 import should from 'should'
-import MedOrder from '../med-order'
+import MedOrder, { ScheduleOptions } from '../med-order'
 
 const mockMedOrder = {
   medication: 'ag-amitriptyline',
   reason: 'reason',
   notes: 'notes',
   route: 'Oral',
-}
-
-const schedOptions = {
-  'BID / q12h' : ['08:00','20:00'],
-  TID: ['08:00', '16:00', '22:00'],
-  q8h: ['06:00','14:00', '22:00'],
-  QID: ['08:00','12:00', '17:00', '22:00'],
-  q6h: ['06:00', '12:00', '18:00', '22:00', '02:00'],
-  q4h: ['06:00', '10:00', '14:00', '18:00', '22:00', '02:00']
 }
 
 const PRN = []
@@ -56,13 +47,13 @@ describe('Properly instantiates the med-order class', () => {
 })
 
 describe('test schedule types functionality', () => {
-  Object.keys(schedOptions).map(k => {
+  Object.keys(ScheduleOptions.OPTIONS).map(k => {
     it(`Test ${k} scheduling`, () => {
       should.doesNotThrow(() => {
         const scheduledMed = Object.assign({}, mockMedOrder, { scheduled: k, administration: 'sched'})
         medOrder = new MedOrder(scheduledMed)        
         medOrder._data.administration.should.equal('sched')
-        medOrder.scheduleTimes.should.be.eql(schedOptions[k])
+        medOrder.scheduleTimes.should.be.eql(ScheduleOptions.OPTIONS[k])
       })
     })
   })
