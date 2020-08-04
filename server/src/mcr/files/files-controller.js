@@ -23,7 +23,6 @@ export default class FileController {
     this.ehrMaxFileSize = config.ehrMaxFileSize
     debug('File upload limits file size to', this.ehrMaxFileSize)
     if (!this.ehrFilesDirectory) {
-      console.error('hree')
       const msg = 'Server configuration must provide a directory for storing EHR files (e.g. x-rays lab reports'
       logError(msg)
       throw new Error(msg)
