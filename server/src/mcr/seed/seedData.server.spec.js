@@ -14,8 +14,8 @@ const PROPERTY = 'seeddata'
 const BASE = '/api/seed-data'
 const ehrApp = new EhrApp()
 const debug = require('debug')('server')
-const visitId = Helper.sampleObjectId(true)
-const token = Helper.generateToken(visitId)
+const tokenData = Helper.sampleTokenData()
+const token = Helper.generateToken(tokenData)
 
 describe(`Make server calls on ${TYPE}`, function () {
   let app

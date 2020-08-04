@@ -3,7 +3,7 @@
     h1 Files
     div
       p.
-        This very crude page is just a hack for early server side development.
+        This very crude page is just a hack for early server side development.  Max file size {{ ehrMaxFileSize }} 
       ul
         li(v-for="(file) in files", :key="file.id")
           p. 
@@ -15,12 +15,12 @@
           span(v-else)
         file-upload(
           class="btn btn-primary",
-          accept="image/png,image/gif,image/jpeg,image/webp",
-          extensions="gif,jpg,jpeg,png,webp",
+          accept="image/png,image/gif,image/jpeg,image/webp,application/pdf",
+          extensions="gif,jpg,jpeg,png,webp,pdf",
           :headers="httpHeader",
-          :multiple="false",
+          :multiple="true",
           name="ehrFile",
-          :size="1024 * 1024 * 10",
+          :size="ehrMaxFileSize",
           :post-action="postUrl",
           v-model="files",
           @input-filter="inputFilter",
@@ -68,6 +68,7 @@ export default {
   data () {
     return {
       files: [],
+      ehrMaxFileSize: 0
     }
   },
   computed: {
@@ -117,7 +118,19 @@ export default {
         // remove
         console.log('remove', oldFile)
       }
+    },
+
+    async getMaxFileSize(){
+      const url = StoreHelper.apiUrlGet() + '/files/public/maxFileSize'
+      console.log('send request to', url)
+      const res = await fetch(url)
+      const data = await res.json();
+      console.log('got max file size', data)
+      this.ehrMaxFileSize = data.value
     }
+  },
+  created () {
+    this.getMaxFileSize()
   }
 }
 </script>

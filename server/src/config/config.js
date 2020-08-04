@@ -36,7 +36,7 @@ export default class Config {
   }
 
   get config () {
-    debug('config >> ', this.configuration)
+    // debug('config >> ', this.configuration)
     return this.configuration
   }
 

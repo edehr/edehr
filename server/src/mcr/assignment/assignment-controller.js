@@ -65,7 +65,7 @@ export default class AssignmentController extends BaseController {
   }
 
   createAssignment (data, seedId=undefined) {
-    console.log('creating assignment with data >> ', data)
+    // console.log('creating assignment with data >> ', data)
     const { 
       externalId, 
       resource_link_title, 
