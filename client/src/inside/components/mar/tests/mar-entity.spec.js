@@ -1,6 +1,4 @@
 import should from 'should'
-
-jest.mock('../mar-entity')
 import MarEntity from '../mar-entity'
 
 const medications = [
