@@ -21,8 +21,8 @@
               label Comment
               div(class="input-element input-element-full")
                 textarea(class="textarea",v-model="comment")
-          div(v-show="errorMesageList.length > 0", class="errorMesageList")
-            li(v-for="error in errorMesageList") {{ error }}
+          div(v-show="errorMessageList.length > 0", class="errorMessageList")
+            li(v-for="error in errorMessageList") {{ error }}
 </template>
 
 <script>
@@ -43,7 +43,7 @@ export default {
       who: '',
       when: '',
       comment: '',
-      errorMesageList: [],
+      errorMessageList: [],
       activePeriod: { name: '', medsList: [] }
     }
   },
@@ -62,8 +62,8 @@ export default {
     },
     saveDialog: function () {
       let mar = new MarEntity(this.who, this.currentDay, this.when, this.comment, this.activePeriod)
-      this.errorMesageList = mar.validate()
-      if(this.errorMesageList.length > 0) {
+      this.errorMessageList = mar.validate()
+      if(this.errorMessageList.length > 0) {
         return
       }
       this.$emit('saveMar', mar)
