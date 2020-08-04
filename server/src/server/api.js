@@ -29,6 +29,7 @@ const FileStore = require('session-file-store')(session)
 const uuid = require('uuid/v4')
 
 const debug = require('debug')('server')
+const logError = require('debug')('error')
 
 export function apiMiddle (app, config) {
   const fileStoreOptions = {}
@@ -133,6 +134,8 @@ export function apiMiddle (app, config) {
       api.use('/launch_lti', lti.route())
       api.use('/api/launch_lti', lti.route())
       api.use('/api/demo', cors(corsOptions), demo.route())
+      api.use('/api/files/public', cors(corsOptions), fileC.publicRoute())
+
       // Inside API
       api.use('/activities', middleWare, act.route())
       api.use('/activity-data', middleWare, acc.route())
@@ -168,7 +171,7 @@ export function apiError (app, config) {
   app.use(errorHandler)
   
   function logErrors (err, req, res, next) {
-    console.error(`Error name: ${err.name} message: ${err.message}`)
+    logError(`EdEHR server error name: "${err.name}" message: "${err.message}" on path: ${req.path}`)
     next(err)
   }
   
@@ -185,6 +188,7 @@ export function apiError (app, config) {
   }
 
   function errorHandler (err, req, res, next) {
+    debug('API errorHandler', err.message, err.status, err.errorData)
     let status = err.status || 500
     let errorData = err.errorData || {}
     res.status(status)

@@ -14,8 +14,8 @@ const should = require('should')
 const TYPE = 'Consumer'
 const logError = require('debug')('error')
 
-const visitId = Helper.sampleObjectId(true)
-const adminToken = Helper.generateToken(visitId, true)
+const tokenData = Helper.sampleTokenData()
+const adminToken = Helper.generateToken(tokenData, true)
 
 /* global describe it */
 describe('Consumer mongoose schema testing', function () {

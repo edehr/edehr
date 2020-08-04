@@ -9,8 +9,8 @@ const configuration = config.config
 
 const ehrApp = new EhrApp()
 
-const visitId = Helper.sampleObjectId(true)
-const token = Helper.generateToken(visitId)
+const tokenData = Helper.sampleTokenData()
+const token = Helper.generateToken(tokenData)
 
 describe('Make some server calls', function () {
   let app

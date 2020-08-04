@@ -12,8 +12,8 @@ const ehrApp = new EhrApp()
 const BASE = '/api/lookahead'
 const typeName = 'Lookahead'
 
-const visitId = Helper.sampleObjectId(true)
-const token = Helper.generateToken(visitId)
+const tokenData = Helper.sampleTokenData()
+const token = Helper.generateToken(tokenData)
 
 // Use following to leave results in test database for inspection
 /* global describe it */

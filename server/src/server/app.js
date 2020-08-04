@@ -14,6 +14,7 @@ export default class EhrApp {
   setup (config) {
     let app = this.app
     app.use(helmet())
+    // For error reporting will use pug (formerly jade) file formats. See views/server-errors
     app.set('view engine', 'pug')
     app.use(bodyParser.urlencoded({ extended: false }))
     app.use(bodyParser.json())

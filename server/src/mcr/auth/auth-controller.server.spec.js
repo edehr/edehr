@@ -13,8 +13,8 @@ const configuration = config.config
 
 const BASE = '/api/auth'
 const NAME = 'auth-controller'
-const visitId = Helper.sampleObjectId(true)
-const token = Helper.generateToken(visitId)
+const tokenData = Helper.sampleTokenData()
+const token = Helper.generateToken(tokenData)
 const refreshToken = Helper.generateRefreshToken(token)
 
 describe(`${NAME} - Server requests `, () => {
@@ -41,7 +41,12 @@ describe(`${NAME} - Server requests `, () => {
       .end((err, res) => {
         should.not.exist(err)
         should.exist(res)
+        // console.log('tokenData', tokenData)
+        // console.log('res.body', res.body)
         res.body.should.have.property('visitId')
+        res.body.visitId.should.equal(tokenData.visitId)
+        res.body.should.have.property('toolConsumerId')
+        res.body.toolConsumerId.should.equal(tokenData.toolConsumerId)
         done()
       })
   })

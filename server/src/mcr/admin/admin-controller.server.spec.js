@@ -11,9 +11,8 @@ const mongoose = require('mongoose')
 const should = require('should')
 const TYPE = 'Admin'
 import { getCreateAdminPassword } from '../../helpers/admin'
-const visitId = Helper.sampleObjectId(true)
-
-const token = Helper.generateToken(visitId)
+const tokenData = Helper.sampleTokenData()
+const token = Helper.generateToken(tokenData)
 
 debug(`admin-server.spec token >> ${token}`)
 let adminToken

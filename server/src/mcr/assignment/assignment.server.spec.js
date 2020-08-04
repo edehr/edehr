@@ -15,8 +15,8 @@ const BASE = '/api/assignments'
 const BASE_SEED_DATA = '/api/seed-data'
 const ehrApp = new EhrApp()
 
-const visitId = Helper.sampleObjectId(true)
-const token = Helper.generateToken(visitId)
+const tokenData = Helper.sampleTokenData()
+const token = Helper.generateToken(tokenData)
 
 const debug = require('debug')('server')
 

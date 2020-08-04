@@ -14,8 +14,8 @@ const PROPERTY = 'feedbacks'
 const BASE = '/api/feedback/'
 const ehrApp = new EhrApp()
 
-const visitId = Helper.sampleObjectId(true)
-const token = Helper.generateToken(visitId)
+const tokenData = Helper.sampleTokenData()
+const token = Helper.generateToken(tokenData)
 
 const debug = require('debug')('server')
 

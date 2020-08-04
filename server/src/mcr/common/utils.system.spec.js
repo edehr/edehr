@@ -45,7 +45,7 @@ describe('utils helper file', function () {
     error = { name: 'test error', message: 'test message' }
     r(error)
     res.should.have.property('code')
-    res.code.should.equal(404)
+    res.code.should.equal(500)
 
     error = { name: 'ValidationError', message: 'test message' }
     r(error)

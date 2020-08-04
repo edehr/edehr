@@ -23,8 +23,7 @@ export function ok (res) {
 */
 export function fail (res) {
   return (error) => {
-    let code = 404
-    let message = 'Not found'
+    let code, message
     switch (error.name) {
     case 'ValidationError':
       code = 400
@@ -41,10 +40,12 @@ export function fail (res) {
       console.log('Server utils fail CastError return 500.')
       break
     default:
-      console.log('Server TODO enhance error reporting for name:', error.name, ' msg:', error.message)
+      // return Internal Server Error ... "something has gone wrong on the web site's server but the server could not be more specific on what the exact problem is."
+      code = 500
+      message = 'Unknown error:' + error.name + ' ' + error.message
+      console.log('Server utils fail unknown error return 500.')
     }
-    // ...
-    console.log(code, message)
+    // TODO - return errors the way it's done in app.js
     res.status(code).send(message) // .end(message)
   }
 }

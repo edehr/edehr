@@ -226,6 +226,19 @@ export default class Helper {
     return data
   }
 
+  static sampleTokenData () {
+    const visitId = Helper.sampleObjectId(true)
+    const consumerId = Helper.sampleObjectId(true)
+    const tokenData = {
+      consumerKey: 'testConsumer',
+      isInstructor: false,
+      isStudent: false,
+      toolConsumerId: consumerId,
+      visitId: visitId
+    }
+    return tokenData
+  }
+
   static createConsumer  (oauth_consumer_key, oauth_consumer_secret) {
     const seedDef = {
       toolConsumer: '',
@@ -290,13 +303,13 @@ export default class Helper {
     console.log('res.body', res.body)
   }
 
-  static generateToken (visitId, isAdmin = false) {
+  static generateToken (tokenData, isAdmin = false) {
     if (isAdmin) {
       const adminToken = getCreateAdminPassword()
-      const adminPayload = Object.assign({}, { visitId }, { adminPassword : adminToken})
+      const adminPayload = Object.assign({}, tokenData, { adminPassword : adminToken})
       return authUtil.createToken(adminPayload)
     } 
-    return authUtil.createToken({ visitId })
+    return authUtil.createToken(tokenData)
   }
 
   static generateRefreshToken (token) {
