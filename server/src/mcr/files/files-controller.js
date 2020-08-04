@@ -5,6 +5,12 @@ import fs  from 'fs'
 import filenamify from 'filenamify'
 import filesize from 'filesize'
 
+export const TEXT = {
+  EXPECTED_FIELD: (fld) => {return `Expected field to be ${fld}` },
+  PROVIDE_FILE: 'Please upload a file',
+  MAX_FILE_SIZE: (size) => { return `Maximum files size is ${size}`},
+  SUPPORT_FILETYPES: (types) => { return `Error: File upload only supports the following filetypes - ${types}`}
+}
 const debug = require('debug')('server')
 const logError = require('debug')('error')
 //export for testing
@@ -17,8 +23,9 @@ export default class FileController {
     this.ehrMaxFileSize = config.ehrMaxFileSize
     debug('File upload limits file size to', this.ehrMaxFileSize)
     if (!this.ehrFilesDirectory) {
-      logError('Server configuration must provide a directory for storing EHR files (e.g. x-rays lab reports')
-      process.exit(1)
+      const msg = 'Server configuration must provide a directory for storing EHR files (e.g. x-rays lab reports'
+      logError(msg)
+      throw new Error(msg)
     }
     this.multerUploader = multer({
       fileFilter: function (req, file, cb) {
@@ -34,7 +41,7 @@ export default class FileController {
         let fTypes = String(filetypes)
         fTypes = fTypes.substr(1, fTypes.length - 2)
         fTypes = fTypes.split('|').join(', ')
-        req.fileValidationError = 'Error: File upload only supports the following filetypes - ' + fTypes
+        req.fileValidationError = TEXT.SUPPORT_FILETYPES(fTypes)
         debug('File upload filter found unsupported mime type:', fmt, mimetype, 'extension:', fext, extname)
         return cb(new Error(req.fileValidationError), false)
       },
@@ -73,7 +80,7 @@ export default class FileController {
 
     router.get('/maxFileSize', (req, res) => {
       res.status = 200
-      res.send({message:'Maximum file size is ' + filesize(this.ehrMaxFileSize), value: this.ehrMaxFileSize})
+      res.send({message: TEXT.MAX_FILE_SIZE(filesize(this.ehrMaxFileSize)), value: this.ehrMaxFileSize})
     })
 
     return router
@@ -92,10 +99,10 @@ export default class FileController {
         }
         else if (err instanceof multer.MulterError) {
           if (err.code === 'LIMIT_FILE_SIZE') {
-            err.message += ' maximum file size is ' + filesize(this.ehrMaxFileSize)
+            err.message += '. ' + TEXT.MAX_FILE_SIZE(filesize(this.ehrMaxFileSize))
           }
           if (err.code === 'LIMIT_UNEXPECTED_FILE') {
-            err.message += ' Expected field to be ' + formElementNameForFileUpload
+            err.message += '. ' + TEXT.EXPECTED_FIELD(formElementNameForFileUpload)
           }
           logError('File upload - Multer error', err.code, err.message)
           // Inform the caller their request was bad
@@ -108,7 +115,7 @@ export default class FileController {
         }
         else if (!req.file) {
           debug('File upload - user did not provide a file')
-          const error = new Error('Please upload a file')
+          const error = new Error(TEXT.PROVIDE_FILE)
           error.status = 400 // Bad Request
           return next(error)
         }
