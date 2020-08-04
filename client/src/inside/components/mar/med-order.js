@@ -26,6 +26,7 @@ class ScheduleOptions {
     let value = this.OPTIONS[key]
     if(!value) {
       console.error('Could not find a medication schedule for key', key)
+      throw new Error(`Could not find a medication schedule for key: ${key}`)
     }
     return value
   }
