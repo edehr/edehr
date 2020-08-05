@@ -16,7 +16,7 @@ export function getSchedule (medOrders) {
           marRecord: {},
           medList: []
         }
-      }
+      } 
       let reduced = {
         medication: mo.medication,
         route: mo.route,
@@ -44,7 +44,7 @@ export function getSchedule (medOrders) {
 }
 
 export function isTimeValid (time) { 
-  return (/^([0-2]?[0-9]|2[0-3]):[0-5][0-9]$/.test(time))
+  return (/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/.test(time))
 }
 
 
