@@ -8,7 +8,7 @@ for (let i = 1; i <= 6; i++) {
 }
 // This list of keys with schedules must be kept in sync with the schedule 
 // dropdown options shown on the Medications page.
-class ScheduleOptions {
+export class ScheduleOptions {
   static OPTIONS = {
     'BID / q12h' : ['08:00','20:00'],
     TID: ['08:00', '16:00', '22:00'],

@@ -2,7 +2,7 @@ const moment = require('moment')
 const ONCE_A_DAY_MEDS = 'OD'
 
 
-function getSchedule (medOrders) {
+export function getSchedule (medOrders) {
   let schedules = {}
   medOrders = medOrders || []
   medOrders.forEach(mo => {
@@ -43,7 +43,7 @@ function getSchedule (medOrders) {
   ]
 }
 
-function isTimeValid (time) { 
+export function isTimeValid (time) { 
   return (/^([0-2]?[0-9]|2[0-3]):[0-5][0-9]$/.test(time))
 }
 
