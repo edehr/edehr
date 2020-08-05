@@ -45,7 +45,11 @@ export default class MedOrder {
     // console.log('_createSchedule is', medOrder)
     let scheduleTimes = []
     if(medOrder.administration === SCHEDULED) {
-      scheduleTimes = ScheduleOptions.getSchedule(medOrder.scheduled)
+      try {
+        scheduleTimes = ScheduleOptions.getSchedule(medOrder.scheduled)
+      } catch(err) {
+        throw new Error(err)
+      }
     } else if(medOrder.administration === PRESCRIBED) {
       PRN_KEYS.forEach(prn => {
         let prnTime = medOrder[prn]

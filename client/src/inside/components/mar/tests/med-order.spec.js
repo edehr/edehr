@@ -84,3 +84,18 @@ describe('OD schedule', () => {
   })
 })
 
+describe('testing getSchedule', () => {
+  it('getSchedule shouldn\'t throw', () => {
+    should.doesNotThrow(() => {
+      const sch = ScheduleOptions.getSchedule('TID')
+      should.exist(sch)
+    })
+  })
+
+  it('getSchedule throws', () => {
+    should.throws(() => {
+      ScheduleOptions.getSchedule('non-existent')
+    })
+  })
+} )
+
