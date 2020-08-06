@@ -53,11 +53,26 @@ describe('mar-today tests', () => {
     })
   })
   
-  it('isTimeValid', () => {
+  it('isTimeValid - valid times', () => {
     isTimeValid('08:00').should.equal(true)
-    isTimeValid('0800').should.equal(false)
     isTimeValid('23:00').should.equal(true)
     isTimeValid('00:00').should.equal(true)
+    isTimeValid('23:59').should.equal(true)
+    isTimeValid('04:00').should.equal(true)
+    isTimeValid('00:59').should.equal(true)
+    isTimeValid('11:59').should.equal(true)
+    isTimeValid('04:59').should.equal(true)
+  })
+  
+  it('isTimeValid - invalid times', () => {
+    isTimeValid('24:00').should.equal(false)
+    isTimeValid('00:60').should.equal(false)
+    isTimeValid('0800').should.equal(false)
+    isTimeValid('99:99').should.equal(false)
+    isTimeValid('11:99').should.equal(false)
+    isTimeValid('00:60').should.equal(false)
+    isTimeValid('00:00:00').should.equal(false)
+    isTimeValid('11;11').should.equal(false)
   })
 
   it('properly instantiates the class', () => {
