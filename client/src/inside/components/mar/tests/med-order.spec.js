@@ -63,7 +63,6 @@ describe('test schedule types functionality', () => {
   it('Invalid scheduling properly throws', () => {
     const key = 'non-existent'
     const nonExistentSch = Object.assign({}, mockMedOrder, { scheduled: key, administration: 'sched'})
-    
     medOrder = new MedOrder(nonExistentSch)
     dispatchGetter('system/apiError').should.equal(`Error: Could not find a medication schedule for key: ${key}`)
   })
