@@ -1,3 +1,4 @@
+import StoreHelper from '../../../helpers/store-helper'
 
 const SCHEDULED='sched'
 const PRESCRIBED='prn'
@@ -48,7 +49,7 @@ export default class MedOrder {
       try {
         scheduleTimes = ScheduleOptions.getSchedule(medOrder.scheduled)
       } catch(err) {
-        throw new Error(err)
+        StoreHelper.setApiError(`${err}`)
       }
     } else if(medOrder.administration === PRESCRIBED) {
       PRN_KEYS.forEach(prn => {

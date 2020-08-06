@@ -1,5 +1,7 @@
 import should from 'should'
 import MedOrder, { ScheduleOptions } from '../med-order'
+import StoreHelper from '../../../../helpers/store-helper'
+import { dispatchGetter } from '../../../../helpers/test/testHelper'
 
 const mockMedOrder = {
   medication: 'ag-amitriptyline',
@@ -59,10 +61,11 @@ describe('test schedule types functionality', () => {
   })
 
   it('Invalid scheduling properly throws', () => {
-    const nonExistentSch = Object.assign({}, mockMedOrder, { scheduled: 'non-existent', administration: 'sched'})
-    should.throws(() => {
-      medOrder = new MedOrder(nonExistentSch)
-    })
+    const key = 'non-existent'
+    const nonExistentSch = Object.assign({}, mockMedOrder, { scheduled: key, administration: 'sched'})
+    
+    medOrder = new MedOrder(nonExistentSch)
+    dispatchGetter('system/apiError').should.equal(`Error: Could not find a medication schedule for key: ${key}`)
   })
 })
 
