@@ -81,16 +81,17 @@ describe('mar-summary testing', () => {
     should.exist(marSummary)
   })
 
-  // it('summaryRefresh', () => {
-  //   const result = marSummary.summaryRefresh(marRecords, medOrders)
-  //   should.exist(result)
-  // })
+  it.skip('summaryRefresh', () => {
+    const result = marSummary.summaryRefresh(marRecords, medOrders)
+    should.exist(result)
+  })
 
 
   it('marCellContent | has medOrder', () => {
     const result = marSummary.marCellContent(mockedScheduledCell)
+    const { medication, route, reason } = mockedScheduledCell.value
     should.exist(result)
-    result.should.equal(`${mockedScheduledCell.value.medication}, ${mockedScheduledCell.value.route}, ${mockedScheduledCell.value.reason}`)
+    result.should.equal(`${medication}, ${route}, ${reason}`)
   })
   
   it('marCellContent | has MAR', () => {
