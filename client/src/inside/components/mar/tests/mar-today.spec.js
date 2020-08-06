@@ -1,44 +1,12 @@
 import should from 'should'
 import MarToday, { isTimeValid, getSchedule } from '../mar-today'
-import MedOrder from '../med-order'
-import { ScheduleOptions } from '../med-order'
-let marToday
+import { getMedOrders, getExpectedSchedule } from './mar-test-helper'
 
-const mockMedOrders = [
-  {
-    medication: 'ag-amitriptyline',
-    reason: 'reason',
-    notes: 'notes',
-    route: 'Oral',
-    administration: 'sched',
-    scheduled: 'TID'
-  },
-  {
-    medication: 'acetylcysteine injection',
-    reason: 'reason',
-    notes: 'notes',
-    route: 'Injection',
-    administration: 'od'
-  },
-  {
-    medication: 'apo-amitriptyline',
-    reason: 'reason',
-    notes: 'notes',
-    route: 'Oral',
-    administration: 'PRN',
-    prn1: '08:00',
-    prn2: '09:00',
-    prn3: '10:00',
-    prn4: '11:00',
-    prn5: '12:00',
-    prn6: '13:00'
-  },
-]
-const expectedScheduleTimes = ['od']
-mockMedOrders.filter(mo=> mo.administration === 'sched')
-  .map(mo => expectedScheduleTimes.push(...ScheduleOptions.OPTIONS[mo.scheduled]))
-const medOrders = mockMedOrders.map(mo => new MedOrder(mo))
+const medOrders = getMedOrders(true)
+const expectedScheduleTimes = getExpectedSchedule()
+
 let marRecords = []
+let marToday
 
 describe('mar-today tests', () => {
   it('getSchedule', () => {

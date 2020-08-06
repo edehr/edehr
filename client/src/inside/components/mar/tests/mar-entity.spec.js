@@ -1,16 +1,8 @@
 import should from 'should'
 import MarEntity from '../mar-entity'
+import { getMedOrders } from './mar-test-helper'
 
-const medications = [
-  {
-    name: 'Medication',
-    profession: 'Profession',
-    medication: 'ag-amitriptyline',
-    dose: 'dose',
-    route: 'Oral',
-    scheduled: 'TID'
-  },
-]
+const medications = getMedOrders()
 
 const period = { 
   hour24: '12:00',
@@ -28,13 +20,10 @@ const mockMarEntity = {
 
 let marEntity
 
-// const _beforeEach = () => {
-//   marEntity = new MarEntity(mockMarEntity.who, mockMarEntity.currentDay, mockMarEntity.when, mockMarEntity.comment)
-// }
-
 describe('Test mar-entity', () => {
   it('create new mar-entity with medications Array', () => {
     marEntity = new MarEntity(Object.assign({}, {_data: mockMarEntity}))
+    should.exist(marEntity)
     marEntity.whoAdministered.should.equal(mockMarEntity.whoAdministered)
     marEntity.day.should.equal(mockMarEntity.day)
     marEntity.actualTime.should.equal(mockMarEntity.actualTime)
