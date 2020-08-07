@@ -1,7 +1,5 @@
 import should from 'should'
 import MarSummary, { MS } from '../mar-summary'
-import { getSchedule } from '../mar-today'
-import MedOrder from '../med-order'
 
 const constantValues = [
   'medOrder',

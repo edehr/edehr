@@ -2,13 +2,9 @@ import should from 'should'
 import MedOrder, { ScheduleOptions } from '../med-order'
 import StoreHelper from '../../../../helpers/store-helper'
 import { dispatchGetter } from '../../../../helpers/test/testHelper'
+import { getMedOrder } from './mar-test-helper'
 
-const mockMedOrder = {
-  medication: 'ag-amitriptyline',
-  reason: 'reason',
-  notes: 'notes',
-  route: 'Oral',
-}
+const mockMedOrder = getMedOrder()
 
 const PRN = []
 for (let i = 1; i <= 6; i++) {
