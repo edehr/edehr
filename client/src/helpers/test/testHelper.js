@@ -19,10 +19,6 @@ export const getPageKeys = () => {
   return EhrDefs.getAllPageKeys()
 }
 
-export const getPageDef = (key) => {
-  return EhrDefs.getPageDefinition(key)
-}
-
 export const dispatchGetter = (str) => {
   return store.getters[str]
 }

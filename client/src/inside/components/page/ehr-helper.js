@@ -86,7 +86,7 @@ export default class EhrHelpV2 {
     }
     if (!data) {
       console.error('ERROR call to getActiveData when there is none')
-      throw new Error('ERROR call to getActiveData when there is none')
+      throw new Error(`The page with key ${this.pageKey} has no form or tables. Tell your EdEHR admin about this problem.`)
     }
     return data
   }

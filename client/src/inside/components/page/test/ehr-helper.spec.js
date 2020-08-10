@@ -3,12 +3,17 @@ import EhrHelpV2, { LEAVE_PROMPT } from '../ehr-helper'
 import store from '../../../../store/index'
 import { getPageKeys } from '../../../../helpers/test/testHelper'
 
-// the following pageKey must contain one more table elements in its contents, 
-// so that it can be used in 
-const tablePageKey = getPageKeys()[3] 
-// the following pageKey must contain one more form elements in its contents, 
-// so that it can be used in 
-const formPageKey = getPageKeys()[0]
+// This constant must point to a pageKey index which contains one
+// or more table elements (which is required for fulfilling certain test cases for 
+// the current test's purpose)
+const CONTAINS_TABLE_ELEMENTS_INDEX = 3
+// This constant must point to a pageKey index which contains one
+// or more form elements (which is required for fulfilling certain test cases for the 
+// current test's purpose)
+const CONTAINS_FORM_ELEMENTS_INDEX = 0
+
+const tablePageKey = getPageKeys()[CONTAINS_TABLE_ELEMENTS_INDEX] 
+const formPageKey = getPageKeys()[CONTAINS_FORM_ELEMENTS_INDEX]
 
 const _setUpWindowObj = () => {
   delete window.confirm
@@ -18,130 +23,151 @@ const _setUpWindowObj = () => {
 let ehrHelper, formKey, tableKey = 'table', router = {}
 router.go = jest.fn()
 
+
 describe('ehr-helper tests', () => {
-  it('properly instantiates class', () => {
-    ehrHelper = new EhrHelpV2(this, store, formPageKey)
-    should.exist(ehrHelper)
+  describe('validation tests', () => {
+    beforeAll(() => ehrHelper = new EhrHelpV2(this, store, formPageKey))
+    it('properly instantiates class', () => {
+      should.exist(ehrHelper)
+    })
+  
+    it('isV2', () => {
+      ehrHelper.isV2().should.equal(true)
+    })
   })
 
-  it('isV2', () => {
-    ehrHelper.isV2().should.equal(true)
-  })
-
-  it('getPageKey', () => {
-    const result = ehrHelper.getPageKey()
-    should.exist(result)
-    result.should.equal(formPageKey)
-  })
-
-  it('getPageDef', () => {
-    const pageDef = ehrHelper.getPageDef()
-    should.exist(pageDef)
-    pageDef.pageDataKey.should.equal(formPageKey)
-  })
-
-  it('getPageForms', () => {
-    const pageForms = ehrHelper.getPageForms()
-    formKey = pageForms[0].formKey
-    should.exist(pageForms)
-    pageForms.should.be.an.Array()
-    pageForms[0].isPageForm.should.equal(true)
-  })
-
-  it('getPageTableDefs', () => {
-    ehrHelper = new EhrHelpV2(this, store, tablePageKey)
-    const pageTableDefs = ehrHelper.getPageTableDefs()
-    should.exist(pageTableDefs)
-    pageTableDefs.should.be.an.Array()
-    pageTableDefs.length.should.be.greaterThan(0)
-  })
-
-  it('getTable', () => {
-    const key = 'table'
-    const table = ehrHelper.getTable(key)
-    should.exist(table)
-    table.tableDef.isTable.should.equal(true)
-  })
-
-  it('getPageGeneratedDate', () => {
-    const gen = ehrHelper.getPageGeneratedDate()
-    should.exist(gen)
-  })
-
-  it('getLastPageDataUpdateDate', () => {
-    const updated = ehrHelper.getLastPageDataUpdateDate()
-    should.exist(updated)
-  })  
-
-  it('setShowingAdvanced', () => {
-    should.doesNotThrow(() => ehrHelper.setShowingAdvanced(true))
-  })
-
-  it('isShowingAdvanced', () => {
-    const showing = ehrHelper.isShowingAdvanced()
-    showing.should.equal(true)
-  })
-
-  it('getPageErrors', () => {
-    ehrHelper.getPageErrors().length.should.equal(0)
-  })
-
-  it('getActiveData', () => {
-    should.doesNotThrow(() => {
-      const result = ehrHelper.getActiveData()
+  describe('pageForm tests', () => {
+    beforeEach(() => ehrHelper = new EhrHelpV2(this, store, formPageKey))
+    it('getPageKey', () => { 
+      const result = ehrHelper.getPageKey()
       should.exist(result)
+      result.should.equal(formPageKey)
     })
-  })
-
-  it('stashActiveData', () => {
-    should.doesNotThrow(() => {
-      ehrHelper.stashActiveData('elementKey', 'value')
+  
+    it('getPageDef', () => {
+      const pageDef = ehrHelper.getPageDef()
+      should.exist(pageDef)
+      pageDef.pageDataKey.should.equal(formPageKey)
     })
-  })
-
-  it('showTableAddButton', () => {
-    const result = ehrHelper.showTableAddButton()
-    result.should.equal(false)
-  })
-
-  it('canEditForm', () => {
-    const result = ehrHelper.canEditForm(formKey)
-    result.should.equal(false)
-  })
-
-  it('isEditing', () => {
-    should.doesNotThrow(() => {
-      const result = ehrHelper.isEditing()
-      result.should.equal(false)
+  
+    it('getPageForms', () => {
+      const pageForms = ehrHelper.getPageForms()
+      should.exist(pageForms)
+      pageForms.should.be.an.Array()
+      // since we're getting the page form elements, then one (or any, for instance)
+      // item of the pageForms array, should contain the flag isPageForm true. By getting the first index,
+      // we're assuring that the element has items and they are pageForms as properly required for the test...
+      // therefore, if an array, then pageForms must contain at list one element (at index 0) which is a pageForm 
+      // (using the isPageForm flag)
+      const samplePageForm = pageForms[0]
+      formKey = samplePageForm.formKey
+      samplePageForm.isPageForm.should.equal(true)
     })
-  })
-
-  it('getAsLoadedPageData', () => {
-    should.doesNotThrow(() => {
-      let asLoaded = ehrHelper.getAsLoadedPageData()
-      should.exist(asLoaded)
-    })
-  })
-
-  it('formatDate', () => {
-    const date = new Date()
-    should.doesNotThrow(() => {
-      const result = ehrHelper.formatDate(date)
-      should.exist(result)
-    })
-  })
-
-  it('showDialog', () => {
-    should.doesNotThrow(() => ehrHelper.showDialog('table'))
-  })
-
-  it('saveDialog', () => {
-    should.doesNotThrow(() => ehrHelper.saveDialog())
+  
   })
   
-  it('clearTable', () => {
-    should.doesNotThrow(() => ehrHelper.clearTable(tableKey))
+  describe('pageTableTests', () => {
+    beforeEach(() => ehrHelper = new EhrHelpV2(this, store, tablePageKey))
+    it('getPageTableDefs', () => {
+      ehrHelper = new EhrHelpV2(this, store, tablePageKey)
+      const pageTableDefs = ehrHelper.getPageTableDefs()
+      should.exist(pageTableDefs)
+      pageTableDefs.should.be.an.Array()
+      pageTableDefs.length.should.be.greaterThan(0)
+    })
+  
+    it('getTable', () => {
+      const key = 'table'
+      const table = ehrHelper.getTable(key)
+      should.exist(table)
+      table.tableDef.isTable.should.equal(true)
+    })
   })
+
+  describe('general purpose tests', () => {
+    beforeAll(() => ehrHelper = new EhrHelpV2(this, store, tablePageKey))
+    it('getPageGeneratedDate', () => {
+      const gen = ehrHelper.getPageGeneratedDate()
+      should.exist(gen)
+    })
+  
+    it('getLastPageDataUpdateDate', () => {
+      const updated = ehrHelper.getLastPageDataUpdateDate()
+      should.exist(updated)
+    })  
+  
+    it('setShowingAdvanced', () => {
+      should.doesNotThrow(() => ehrHelper.setShowingAdvanced(true))
+    })
+  
+    it('isShowingAdvanced', () => {
+      const showing = ehrHelper.isShowingAdvanced()
+      showing.should.equal(true)
+    })
+  
+    it('getPageErrors', () => {
+      ehrHelper.getPageErrors().length.should.equal(0)
+    })
+  
+    it('getActiveData', () => {
+      should.doesNotThrow(() => {
+        const result = ehrHelper.getActiveData()
+        should.exist(result)
+      })
+    })
+  
+    it('stashActiveData', () => {
+      should.doesNotThrow(() => {
+        ehrHelper.stashActiveData('elementKey', 'value')
+      })
+    })
+  
+    it('showTableAddButton', () => {
+      const result = ehrHelper.showTableAddButton()
+      result.should.equal(false)
+    })
+  
+    it('canEditForm', () => {
+      const result = ehrHelper.canEditForm(formKey)
+      result.should.equal(false)
+    })
+  
+    it('isEditing', () => {
+      should.doesNotThrow(() => {
+        const result = ehrHelper.isEditing()
+        result.should.equal(false)
+      })
+    })
+  
+    it('getAsLoadedPageData', () => {
+      should.doesNotThrow(() => {
+        let asLoaded = ehrHelper.getAsLoadedPageData()
+        should.exist(asLoaded)
+      })
+    })
+  
+    it('formatDate', () => {
+      const date = new Date()
+      should.doesNotThrow(() => {
+        const result = ehrHelper.formatDate(date)
+        should.exist(result)
+      })
+    })
+  
+    it('showDialog', () => {
+      should.doesNotThrow(() => ehrHelper.showDialog('table'))
+    })
+  
+    it('saveDialog', () => {
+      should.doesNotThrow(() => ehrHelper.saveDialog())
+    })
+    
+    it('clearTable', () => {
+      should.doesNotThrow(() => ehrHelper.clearTable(tableKey))
+    })
+  })
+  
+  
 
   it('getDialogEventChannel', () => {
     should.doesNotThrow(() => ehrHelper.getDialogEventChannel())
