@@ -1,5 +1,6 @@
 import MedOrder, { ScheduleOptions } from '../med-order'
 import marMock from './marMock.json'
+import MarEntity from '../mar-entity'
 
 export const getMedOrders = (asClass = false) => {
   if (asClass) return marMock.mockMedOrders.map(mo => new MedOrder(mo))
@@ -20,4 +21,28 @@ export const getExpectedSchedule = () => {
   medOrders.filter(mo=> mo.administration === 'sched')
     .map(mo => result.push(...ScheduleOptions.OPTIONS[mo.scheduled]))
   return result
+}
+
+export const getMarRecords = (asClass = false) => {
+  const medOrders = getMedOrders(true)
+  return medOrders.map((mo, i) => {
+    if(asClass) {
+      return new MarEntity({
+        actualTime: `0${i}:00`,
+        comment: 'Test MAR',
+        day: 0,
+        medications: [
+          mo
+        ]
+      })
+    }
+    return {
+      actualTime: `0${i}:00`,
+      comment: 'Test MAR',
+      day: 0,
+      medications: [
+        mo
+      ]
+    }
+  })
 }
