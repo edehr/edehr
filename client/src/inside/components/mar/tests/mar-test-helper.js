@@ -21,3 +21,27 @@ export const getExpectedSchedule = () => {
     .map(mo => result.push(...ScheduleOptions.OPTIONS[mo.scheduled]))
   return result
 }
+
+export const getMarRecords = (asClass = false) => {
+  const medOrders = getMedOrders(true)
+  return medOrders.map((mo, i) => {
+    if(asClass) {
+      return new MarEntity({
+        actualTime: `0${i}:00`,
+        comment: 'Test MAR',
+        day: 0,
+        medications: [
+          mo
+        ]
+      })
+    }
+    return {
+      actualTime: `0${i}:00`,
+      comment: 'Test MAR',
+      day: 0,
+      medications: [
+        mo
+      ]
+    }
+  })
+}
