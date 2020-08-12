@@ -17,7 +17,7 @@ import StoreHelper from '../../../helpers/store-helper'
 import validations from './ehr-validations'
 import { Text } from '../../../helpers/ehr-text'
 
-const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
+export const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
 const PROPS = EhrTypes.elementProperties
 const dbDialog = false
@@ -86,14 +86,19 @@ export default class EhrHelpV2 {
     }
     if (!data) {
       console.error('ERROR call to getActiveData when there is none')
+      throw new Error(`The page with key ${this.pageKey} has no form or tables. Tell your EdEHR admin about this problem.`)
     }
     return data
   }
 
   stashActiveData (elementKey, value) {
-    let data = this.getActiveData()
-    data[elementKey] = value
-    if (dbPageForm) console.log('EhrHelpV2 stash ', elementKey, value)
+    try {
+      let data = this.getActiveData()
+      data[elementKey] = value
+      if (dbPageForm) console.log('EhrHelpV2 stash ', elementKey, value)
+    } catch (err) {
+      StoreHelper.setApiError(err)
+    }
   }
 
   /* ********************* HELPERS  */
@@ -523,7 +528,7 @@ export default class EhrHelpV2 {
   /**
    * Cancel the edit on a page form. Restore values from the database.
    */
-  cancelEdit () {
+  cancelEdit (customRouter = router) {
     if (dbPageForm) console.log('EhrHelperV2 cancelEdit', this.pageKey)
     this._resetPageFormData()
     this._setEditing(false)
@@ -531,7 +536,7 @@ export default class EhrHelpV2 {
     // This is a good solution here because we want to restore the data as it was found and
     // there are many ways a user can come to the page. As a student, as a seed editor or someday in demo mode.
     // By doing a page refresh here we get the same results as a page load.
-    router.go(0)
+    customRouter.go(0)
   }
 
   async resetFormData (childrenKeys) {
