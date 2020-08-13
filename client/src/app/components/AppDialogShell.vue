@@ -281,6 +281,13 @@ Cursors
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
+
+@media screen and (max-width: 500px){
+ .dialog-wrapper{ 
+    min-width: 50vw;
+    max-width: 100vw;
+ } 
+}
 </style>
 
 <style>
