@@ -5,39 +5,31 @@ import EhrDefs from '../../../../helpers/ehr-defs-grid'
 import MarEntity from '../mar-entity'
 import MedOrder from '../med-order'
 
-
 let marHelper
 const medOrders = getMedOrders()
 const classMedOrders = getMedOrders(true)
 const marRecords = getMarRecords()
 const classMarRecords = getMarRecords(true)
 
+const pageElements = { table: { tableKey: 'table'}}
+
+const asLoadedObj = Object.assign({}, {
+  [MED_ORDERS_PAGE_KEY]: {
+    pageElements, table: medOrders
+  },
+  [MAR_PAGE_KEY]: { pageElements, table: marRecords }
+})
+
+const noMarLoaded = Object.assign({}, asLoadedObj, { 
+  [MAR_PAGE_KEY]: { pageElements, table: [] } 
+})
+
 const getAsLoaded = (key) => {
-  if (key === MED_ORDERS_PAGE_KEY){
-    return Object.assign({}, {
-      pageElements: { table: { tableKey: 'table'}},
-      table: medOrders
-    })
-  } else if (key === MAR_PAGE_KEY) {
-    return Object.assign({}, {
-      pageElements: { table: { tableKey: 'table'}},
-      table: marRecords
-    })
-  }
+  return asLoadedObj[key]
 }
 
 const noMarGetAsLoaded = (key) => {
-  if (key === MED_ORDERS_PAGE_KEY){
-    return Object.assign({}, {
-      pageElements: { table: { tableKey: 'table'}},
-      table: medOrders
-    })
-  } else if (key === MAR_PAGE_KEY) {
-    return Object.assign({}, {
-      pageElements: { table: { tableKey: 'table'}},
-      table: []
-    })
-  }
+  return noMarLoaded[key]
 }
 
 const mockedEhrHelper = {
