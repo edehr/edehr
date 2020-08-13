@@ -177,5 +177,18 @@ export default {
   .green-circle {
     background: $green;
   }
+
+  @media screen and (max-width: 500px){
+    .circle {
+      margin-top: -18px;
+    }
+    .linkElement {
+      width: 90%;
+    }
+
+    .EhrNavListItem {
+      margin-top: -10px;
+    }
+  }
 }
 </style>

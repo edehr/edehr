@@ -24,6 +24,7 @@
             div(v-show="showingDemoSubmenu", class="activationContent")
               div(v-on:click="hideDemoMenu()")
                 router-link(:to="{ name: `demo` }", class="secondLevelLink") Change persona
+              hr
               div(class="secondLevelLink activationItem", v-on:click="demoLogoutConfirm()") Logout of demonstration
     ui-confirm(class="confirmDialog",ref="confirmDialog", @confirm="demoLogOut", save-label="Logout")
 </template>
@@ -212,6 +213,15 @@ header {
 
   }
 
+@media screen and (max-width: 500px){
+  .activationContent {
+    // This was created so that the Demo dropdown menu wouldn't overflow the
+    // total width of the design (making the page scrollable)
+    max-width: 34vw;
+    padding: 0.5rem;
+  }
+
+}
 }
 
 

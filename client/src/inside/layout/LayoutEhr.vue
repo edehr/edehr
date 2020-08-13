@@ -18,7 +18,7 @@
                 transition(name="hamburger-action")
                   ehr-nav-panel(v-if="showingNavPanel")
             slot Main EHR content for a component will appear here. The component is selected by the router
-    div(style="text-align: right",)
+    div(style="text-align: right; margin-top: 5px",)
       label Use Sign On
         input(class="checkbox", type="checkbox", v-model="featureCaseContext")
       label Show Deets
