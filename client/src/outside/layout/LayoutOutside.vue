@@ -8,16 +8,16 @@
           div(name="mainContent", class="outside-content")
             div(class="section")
               slot
-              div(v-if="isDeveloper")
-                div(style="display:none") Is developing content: {{ isDevelopingContent }} developContent: {{ developContent }}
-                input(type="checkbox", id="develop-content", v-model="developContent" )
-                label(for="develop-content") Course designer functionality
         slot(name="outside-footer", class="outside-footer")
+      div(v-if="isDeveloper")
+        div(style="display:none") Is developing content: {{ isDevelopingContent }} developContent: {{ developContent }}
+        input(type="checkbox", id="develop-content", v-model="developContent" )
+        label(for="develop-content") Course designer functionality
       input(class="checkbox", type="checkbox", v-model="showingSpecial")
       div(v-show="showingSpecial")
         ehr-special
       app-footer
-   
+
 </template>
 
 <script>

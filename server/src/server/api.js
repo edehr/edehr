@@ -83,6 +83,7 @@ export function apiMiddle (app, config) {
     assignmentController : as,
     authUtil,
     consumerController : cc,
+    filesController: fileC,
     seedController: sd,
     userController: uc,
     visitController: vc
@@ -191,8 +192,11 @@ export function apiError (app, config) {
     debug('API errorHandler', err.message, err.status, err.errorData)
     let status = err.status || 500
     let errorData = err.errorData || {}
+    let json =  {message: err.message, status: status, errorData: JSON.stringify(errorData)}
     res.status(status)
-    res.render('server-errors/error', {message: err.message, status: status, errorData: JSON.stringify(errorData)})
+    res.json(json)
+    // Returning a rendered html page is awkward for ajax clients. Return json and let the client decide how to format it.
+    // res.render('server-errors/error',json)
   }
 }
 

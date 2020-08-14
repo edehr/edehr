@@ -15,6 +15,7 @@ const debug = false
  */
 class InstoreHelperWorker {
 
+  // TODO remove context parameter
   composeUrl (context, api, url) {
     let apiUrl = StoreHelper.apiUrlGet()
     return `${apiUrl}/${api}/` + (url ? url : '')
@@ -68,6 +69,7 @@ class InstoreHelperWorker {
         })
     })
   }
+  // TODO remove context parameter
   getRequest (context, api, url) {
     url = this.composeUrl(context, api, url)
     if(debug) console.log('GET to this url', url, context)

@@ -72,7 +72,7 @@ describe('Make server calls on files controller', function () {
       })
   })
 
-  it('File upload', function (done) {
+  it('File upload first should work test', function (done) {
     const testFileName = 'test.json'
     shouldUpload(ehrApp.application, testFileName, done)
   })
@@ -227,4 +227,33 @@ describe('File upload with configuration changes', () => {
       })
   })
 
+})
+
+describe('File upload with invalid auth', () => {
+  it('No tool consumer', (done) => {
+
+    const tokenData = Helper.sampleTokenData()
+    tokenData.isInstructor = true
+    tokenData.toolConsumerId = undefined
+    const token = Helper.generateToken(tokenData)
+
+    const configDelta = new Config('test')
+    const configurationDelta = configDelta.config
+    const ehrAppDelta = new EhrApp()
+    ehrAppDelta
+      .setup(configurationDelta)
+      .then(() => {
+        request(ehrAppDelta.application)
+          .post(url)
+          .attach(formElementNameForFileUpload, Buffer.from('a'.repeat(1024)),
+            { contentType: 'application/text', filename: 'justText.text' })
+          .set('Authorization', `Bearer ${token}`)
+          .end(function (err, res) {
+            should.equal(res.status, 400)
+            should.exist(res.text)
+            res.text.should.containEql('consumer')
+            done()
+          })
+      })
+  })
 })

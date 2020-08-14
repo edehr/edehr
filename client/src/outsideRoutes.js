@@ -16,13 +16,6 @@ export function outside () {
       meta: { layout: 'outside', label: 'Assignments', zone: 'lms' }
     },
     {
-      path: '/files',
-      name: 'files',
-      component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Files.vue'),
-      meta: { layout: 'outside', label: 'Files', zone: 'lms' }
-    },
-    {
       path: '/classList',
       name: 'classList',
       component: () =>
@@ -42,6 +35,20 @@ export function outside () {
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Instructor.vue'),
       meta: { layout: 'outside', label: 'Instructor', zone: 'lms' }
+    },
+    {
+      path: '/fileList',
+      name: 'fileList',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/FileList.vue'),
+      meta: { layout: 'outside', label: 'File List', zone: 'lms' }
+    },
+    {
+      path: '/fileAdd',
+      name: 'fileAdd',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/FileAdd.vue'),
+      meta: { layout: 'outside', label: 'File Add', zone: 'lms' }
     },
     {
       path: '/admin',

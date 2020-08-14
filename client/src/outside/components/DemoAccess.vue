@@ -30,8 +30,6 @@ import UiLink from '../../app/ui/UiLink'
 import StoreHelper from '@/helpers/store-helper'
 import { demoText } from '@/appText'
 
-const debugH = true
-
 export default {
   components: {
     UiButton,
@@ -58,23 +56,10 @@ export default {
       this.$router.go(0)
     },
     proceedDemoToolConsumerCreation () {
-      StoreHelper.setLoading(null, true)
-      if(debugH) console.log('Home proceedDemoToolConsumerCreation')
-      return StoreHelper.createDemoToolConsumer()
-        .then((demoToken) => {
-          if (debugH) console.log(`Home consumer created. If have token? ${!!demoToken} go to demo`)
-          if (!demoToken) {
-            throw Error('Setup of demonstration space failed')
-          }
-          return StoreHelper.loadDemoData()
-        })
-        .then ( () => {
-          StoreHelper.setLoading(null, false)
+      const demoHelper = new DemoHelper()
+      demoHelper.proceedDemoToolConsumerCreation()
+        .then( () => {
           this.$router.push('demo')
-        }).catch(err => {
-          if(debugH) console.log('createDemoToolConsumer Error', err)
-          StoreHelper.setApiError(err)
-          StoreHelper.setLoading(null, false)
         })
     }
   },

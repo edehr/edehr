@@ -1,8 +1,19 @@
-import demoHelper from '../../helpers/demo-helper'
+import DemoStoreHelper from '@/helpers/demo-store-helper'
+import StoreHelper from '../../helpers/store-helper'
 import sKeys from '../../helpers/session-keys'
 
 const debugDS = false
 
+let demoHelper
+function _getHelper() {
+  /*
+  Lazy load helper to speed up startup, reduce mem if demo is not used and because store helper is not yet defined in
+  the global scope.
+   */
+  if (!demoHelper)
+    demoHelper = new DemoStoreHelper(StoreHelper.apiUrlGet())
+  return demoHelper
+}
 const _clearDemo = () => {
   localStorage.removeItem(sKeys.DEMO_TOKEN)
   localStorage.removeItem('AcceptTerms')
@@ -48,13 +59,14 @@ const actions = {
     commit('setAcceptTerms', data)
   },
   createToolConsumer: function () {
-    return demoHelper.createToolConsumer()
+    return _getHelper().createToolConsumer()
       .then(res => {
         const { demoToken } = res.data
         _setDemoToken(demoToken)
         return Promise.resolve(demoToken)
       })
       .catch(err => {
+        console.log('Create tool consumer failed ', err.response)
         return Promise.reject(err)
       })
   },
@@ -62,7 +74,7 @@ const actions = {
     const token = _getDemoToken()
     if (token) {
       if (debugDS) console.log('demoStore logout t', token)
-      return demoHelper.demoLogout(token)
+      return _getHelper().demoLogout(token)
         .then(res => {
           if (debugDS) console.log('demoStore logout server side done. Next clear localstorage')
           _clearDemo()
@@ -87,7 +99,7 @@ const actions = {
       console.error('Unexpected no demo token when calling loadDemoData')
       return Promise.reject('No token')
     }
-    return demoHelper.dhLoadDemoData(token)
+    return _getHelper().dhLoadDemoData(token)
       .then(res => {
         const { demoData } = res.data
         commit('setDemoData', demoData)
@@ -100,7 +112,7 @@ const actions = {
   },
   submitPersona: function (none, submitData) {
     const token = _getDemoToken()
-    return demoHelper.submitPersona(token, submitData)
+    return _getHelper().submitPersona(token, submitData)
       .then(res => {
         return Promise.resolve(res.data)
       }).catch(err => {

@@ -402,6 +402,9 @@ class StoreHelperWorker {
   async getAuthData () {
     return await this._getAuthStore('data')
   }
+  getAuthDataSync () {
+    return this._getAuthStore('data')
+  }
 
   getAuthToken () {
     const token = localStorage.getItem(sKeys.AUTH_TOKEN)

@@ -5,6 +5,8 @@
   { "path": "", "routeName": "classList", "zone": "lms"},
   { "path": "", "routeName": "developEhrData", "zone": "lms"},
   { "path": "", "routeName": "instructor", "zone": "lms"},
+  { "path": "", "routeName": "fileList", "zone": "lms"},
+  { "path": "", "routeName": "fileAdd", "zone": "lms"},
 
   { "path": "", "routeName": "admin", "zone": "admin"},
   { "path": "", "routeName": "admin-dashboard", "zone": "admin"},
