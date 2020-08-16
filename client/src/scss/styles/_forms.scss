@@ -11,61 +11,10 @@ the date picker may be chopped and much of it might not be visible.
   position: relative;
 }
 
-.form-row-wrapper {
-  display: flex;
-}
-
-.ehrdfe,
-.form-element-wrapper {
+.ehrdfe {
   width: 100%;
   margin-left: 1%;
   margin-right: 1%;
-}
-
-.input-fieldrow { /* used in dialog as containers, c */
-  display: flex;
-  justify-content: space-between;
-  /* margin-bottom: 3em; */
-}
-
-.fieldset_row_wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-bottom: 2em;
-  // @include debugColor(c)
-}
-
-.fieldset_col_wrapper {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
-  // @include debugColor(b)
-}
-
-.input-fieldrow-element {
-  width: 100%;
-}
-
-.fieldset_row_row {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.fieldset_row_row_element {
-  flex: 1 0 50%;
-}
-
-.fieldset_label {
-  display: block;
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-
-.fieldset-col {
-  padding: 0;
-  //@include debugColor(b)
 }
 
 li {
@@ -188,22 +137,6 @@ select, .select {
   border-color: $grey10;
 }
 
-.user_name {
-  width: 35%;
-}
-
-.user_pro {
-  width: 35%;
-}
-
-.user_day {
-  width: 15%;
-}
-
-.user_time {
-  width: 15%;
-}
-
 .full-width {
   width: 100%;
 }
@@ -218,77 +151,10 @@ select, .select {
   flex: 1 0 66%;
 }
 
-.is-one-third {
-  max-width: 31%;
-  flex: 1 0 31%;
-}
-.is-one-quarter {
-  max-width: 25%;
-  flex: 1 0 25%;
-}
-
-.width-10 {
-  width: 10%;
-  min-width: 10%;
-  flex-grow: 0.1;
-}
-
-.width-20 {
-  width: 20%;
-  min-width: 20%;
-  flex-grow: 0.2;
-}
-
-.width-30 {
-  width: 30%;
-  min-width: 30%;
-  flex-grow: 0.3;
-}
-
-.width-40 {
-  width: 40%;
-  min-width: 40%;
-  flex-grow: 0.4;
-}
-
-.width-50 {
-  width: 50%;
-  min-width: 50%;
-  flex-grow: 0.5;
-}
-
-.width-60 {
-  width: 60%;
-  min-width: 60%;
-  flex-grow: 0.6;
-}
-
-.width-70 {
-  width: 70%;
-  min-width: 70%;
-  flex-grow: 0.7;
-}
-
-.width-80 {
-  width: 80%;
-  min-width: 80%;
-  flex-grow: 0.8;
-}
-
-.width-90 {
-  width: 90%;
-  min-width: 90%;
-  flex-grow: 0.9;
-}
-
 .ehr-page-form {
   margin-bottom: 8em;
 }
 
-.bold-text {
-  font-weight: bolder;
-  color: $black;
-}
 
 .column_table {
   .column_label {
@@ -307,35 +173,6 @@ select, .select {
   text-align: center;
 }
 
-.z-10 {
-  z-index: 10;
-}
-
-.z-20 {
-  z-index: 20;
-}
-
-.z-30 {
-  z-index: 30;
-}
-
-.z-990 {
-  z-index: 990;
-}
-
-.z-999 {
-  z-index: 999;
-}
-
-/* Very specific formatting to make forms look a little more aligned */
-
-/* genitourinary form */
-#bleeding {
-    margin-bottom: 13px;
-}
-
-
-.full-grid,
 .grid-left-to-right-1 {
   display: grid;
   grid-gap: 1rem 1.25rem;

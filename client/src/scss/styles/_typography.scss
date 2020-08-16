@@ -25,7 +25,7 @@ h2 {
 	margin-bottom: .625em;
 }
 
-h3, .h3, .fieldset_label {
+h3, .h3 {
 	font-size: 20px;
 	margin-bottom: .5em;
 }
@@ -37,12 +37,6 @@ h4 {
 p {
 	color: $grey80;
 	margin-bottom: 1em;
-}
-
-.updated-date {
-	color: $grey60;
-	font-style: italic;
-	text-align: right
 }
 
 .assetLink {
@@ -66,10 +60,6 @@ p {
 	}
 }
 
-.errorMesageList, .error-listing {
+.errorMessageList {
     color: red;
-}
-
-.error-listing {
-	margin-top: 1em;
 }

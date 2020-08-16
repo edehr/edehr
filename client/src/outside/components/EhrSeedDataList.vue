@@ -78,10 +78,6 @@ export default {
   },
   data () {
     return {
-      aSeed: {},
-      errorMesageList: [],
-      dialogHeader: '',
-      actionType: '',
       seedId: '',
       duplicatingSeed: {}
     }

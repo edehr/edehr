@@ -291,7 +291,7 @@ export default {
     td.actions {
       text-align: right;
       & button {
-        margin-left: 20px;
+        margin-left: $buttonRowLeftMargin;
       }
     }
   }
