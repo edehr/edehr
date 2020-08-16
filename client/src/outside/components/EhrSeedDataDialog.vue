@@ -24,20 +24,15 @@
             div(class="form-element")
               label Description
               textarea(class="textarea",v-model="description")
-          div(v-if="showAdvanced", class="ehr-group-wrapper grid-left-to-right-1")
-            div(class="form-element")
-              label EHR Data
-              textarea(class="textarea",v-model="ehrDataString", v-validate="ehrValidate")
-          input(id="fileUploadInput", ref="fileUploadInput", type="file", accept="application/json", style="display:none", @change="setFile")
-      ui-button(slot="left-button", v-on:buttonClicked="handleUpload", v-bind:secondary="true") Upload
-      
+          input(id="fileUploadInput", ref="fileUploadInput", type="file", accept="application/json", @change="setFile")
+
 </template>
 
 <script>
 import AppDialog from '../../app/components/AppDialogShell'
 import StoreHelper from '../../helpers/store-helper'
 import UiButton from '../../app/ui/UiButton.vue'
-import { readFile, importSeedData } from '../../helpers/ehr-utils'
+import { readFile, importSeedData, validateSeedFileContents } from '../../helpers/ehr-utils'
 
 const TEXT = {
   AGREE_TITLE: (seedName) => `${seedName} has new seed data`,
@@ -70,7 +65,6 @@ export default {
       ehrDataString: '',
       actionType: '',
       seedId: '',
-      showAdvanced: false,
       file: null,
       upload: false
     }
@@ -162,7 +156,7 @@ export default {
         this.seedId = createdSeed._id
       }
       if (this.upload) {
-        this.importSeedFile()
+        await this.importSeedFile()
       }
     },
     handleUpload: function () {   
@@ -172,9 +166,12 @@ export default {
       this.$refs.fileUploadInput.click()
     },
     setFile (event) {
-      this.file = event.target.files[0]
+      const file = event.target.files[0]
       this.upload = true
-      this.$refs.fileUploadInput.value = null
+      readFile(file).then( (contents) => {
+        let {seedObj, invalidMsg} = validateSeedFileContents(contents)
+        console.log('is seed valid', invalidMsg)
+      })
     },
     importSeedFile () {
       const component = this
