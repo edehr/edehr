@@ -105,9 +105,7 @@ export default {
 .mar-today-content {
   /*border: 1px solid red;*/
 }
-.errorMesageList {
-  color: $error;
-}
+
 .period-column {
   flex: 0 0 20%;
 }

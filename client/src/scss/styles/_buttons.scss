@@ -1,0 +1,64 @@
+@import '../definitions';
+
+
+button,
+.button,
+.button.is-primary {
+  background-color: $brand-primary;
+  font-family: $bodyFontFamily;
+  font-size: $bodyFontSize;
+  margin-bottom: 2em;
+  padding: 0.3rem 1rem;
+
+  &:hover {
+    background-color: $brand-primary-hover;
+    transition-duration: 0.3s;
+    transition-property: background-color;
+  }
+
+  &:disabled {
+    background-color: $grey40;
+    color: $white;
+    cursor: default;
+  }
+}
+
+.button.is-danger {
+  background-color: $red;
+  border: 1px solid $white;
+  box-sizing: border-box;
+  color: $white;
+  font-family: $bodyFontFamily;
+  font-size: $bodyFontSize;
+  margin-bottom: 2em;
+  padding: 0.3rem 1rem;
+}
+
+.button.is-light,
+button.is-light {
+  background-color: $white;
+  border: 1px solid $brand-primary;
+  box-sizing: border-box;
+  color: $brand-primary;
+  font-family: $bodyFontFamily;
+  font-size: $bodyFontSize;
+  margin-bottom: 2em;
+  padding: 0.3rem 1rem;
+
+  &:hover {
+    background-color: $white;
+    border: 1px solid $brand-primary-hover;
+    color: $brand-primary-hover;
+    transition-duration: 0.3s;
+  }
+
+  &:disabled {
+    background-color: $grey40;
+    color: $white;
+    cursor: default;
+  }
+}
+
+button + button {
+  margin-left: $buttonRowLeftMargin;
+}
