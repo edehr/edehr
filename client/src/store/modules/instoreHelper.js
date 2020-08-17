@@ -99,7 +99,7 @@ class InstoreHelperWorker {
           resolve(result)
         }).catch(err => {
           const msg = composeAxiosResponseError(err, 'Delete failed: ')
-          StoreHelper.setApiError(err)
+          StoreHelper.setApiError(msg)
           StoreHelper.setLoading(context, false)
           reject(msg)
         })

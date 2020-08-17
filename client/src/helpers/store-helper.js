@@ -225,8 +225,10 @@ class StoreHelperWorker {
   getSeedEhrData () { return this._getSeedListProperty('seedEhrData')}
   getSeedContent () { return this._getSeedListProperty('seedContent') }
 
+  deleteSeed (id) { return this._dispatchSeedListProperty('deleteSeed', id)}
+
   async loadSeed (seedId) { await this._dispatchSeedListProperty('loadSeedContent', seedId) }
-  loadSeedLists () { return this._dispatchSeedListProperty('loadSeedDataList') }
+  loadSeedLists () { return this._dispatchSeedListProperty('loadSeeds') }
 
   updateSeed (component, seedId, theData) {
   // console.log('SH Seed Data update ', seedId, theData)

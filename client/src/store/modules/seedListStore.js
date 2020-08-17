@@ -2,7 +2,7 @@ import InstoreHelper from './instoreHelper'
 import sKeys from '../../helpers/session-keys'
 import StoreHelper from '../../helpers/store-helper'
 const API = 'seed-data'
-const debug = false
+const debugSL = true
 
 // exporting elements so they can be accessed in unit tests.
 // working code should only use the default exported module.
@@ -25,16 +25,26 @@ export const getters = {
 
 const actions = {
 
+  deleteSeed (context, id) {
+    const url = `/${id}`
+    if (debugSL) console.log('Seed list store. Delete url >>', url)
+    return InstoreHelper.deleteRequest(context, API, url)
+      .then(response => {
+        if (debugSL) console.log('Seed list store. Delete response >>', response)
+        return response.data
+      })
+  },
+
   /**
    * Load a seed record and set seed id as current seed
    * @param context
    * @return {*}
    */
   loadSeedContent (context, seedId) {
-    if(debug) console.log('SeedList loadSeedContent stash seed id', seedId)
+    if(debugSL) console.log('SeedList loadSeedContent stash seed id', seedId)
     context.commit('_setSeedId', seedId)
     let url =  'get/' + seedId
-    if(debug) console.log('SeedList loadSeedContent from url', url)
+    if(debugSL) console.log('SeedList loadSeedContent from url', url)
     return InstoreHelper.getRequest(context, API, url).then(response => {
       let sd = response.data.seeddata
       context.commit('_setSeedContent', sd)
@@ -68,12 +78,22 @@ const actions = {
    */
   createSeedItem (context, payload) {
     let url = undefined
-    if(debug) console.log('SeedList send seed data ', url, payload)
+    if(debugSL) console.log('SeedList send seed data ', url, payload)
     return InstoreHelper.postRequest(context, API, url, payload).then(results => {
-      // let resultsData = results.data
-      // console.log('SeedList assignment commit seed data with new data', JSON.stringify(resultsData))
-      return context.dispatch('loadSeeds')
+      if(debugSL) console.log('SeedList after create seed:', results.data )
+      return context.commit('_setSeedId', results.data._id)
     })
+      .then(results => {
+        if(debugSL) console.log('SeedList after seed create. Now loadSeeds')
+        return context.dispatch('loadSeeds')
+      })
+      .then(() => {
+        if (context.state.sSeedId) {
+          if(debugSL) console.log('SeedList after seed create now load created seed content')
+          return context.dispatch('loadSeedContent', context.state.sSeedId)
+        }
+      })
+
   },
 
   /**
@@ -87,17 +107,17 @@ const actions = {
     let id = dataIdPlusPayload.id
     let payload = dataIdPlusPayload.payload
     let url = id
-    if(debug) console.log('SeedList update seed', url, payload)
+    if(debugSL) console.log('SeedList update seed', url, payload)
     return InstoreHelper.putRequest(context, API, url, payload)
       .then(results => {
         // let resultsData = results.data
-        if(debug) console.log('SeedList after seed update loadSeeds')
+        if(debugSL) console.log('SeedList after seed update loadSeeds')
         return context.dispatch('loadSeeds')
       })
       .then(() => {
         if (context.state.sSeedId) {
-          if(debug) console.log('SeedList after seed update loadSeedContent')
-          return context.dispatch('loadSeedContent')
+          if(debugSL) console.log('SeedList after seed update loadSeedContent')
+          return context.dispatch('loadSeedContent', context.state.sSeedId)
         }
       })
   },
@@ -115,15 +135,15 @@ const actions = {
   updateSeedEhrProperty (context, payload) {
     let id = context.state.sSeedId
     let url = 'updateSeedEhrProperty/' + id
-    if(debug) console.log('SeedList updateSeedEhrProperty url, payload', url, payload)
+    if(debugSL) console.log('SeedList updateSeedEhrProperty url, payload', url, payload)
     return InstoreHelper.putRequest(context, API, url, payload)
       .then(results => {
-        if(debug) console.log('SeedList after ehrData update loadSeeds')
+        if(debugSL) console.log('SeedList after ehrData update loadSeeds')
         return context.dispatch('loadSeeds')
       })
       .then(() => {
         if (context.state.sSeedId) {
-          if(debug) console.log('SeedList after ehrData update loadSeedContent context.state.sSeedId', context.state.sSeedId)
+          if(debugSL) console.log('SeedList after ehrData update loadSeedContent context.state.sSeedId', context.state.sSeedId)
           return context.dispatch('loadSeedContent', context.state.sSeedId)
         }
       })
@@ -137,16 +157,16 @@ const actions = {
    */
   updateSeedEhrData (context, payload) {
     let url = 'updateSeedEhrData/' + payload.id
-    if(debug) console.log('SeedList updateSeedEhrData', url, payload.ehrData)
+    if(debugSL) console.log('SeedList updateSeedEhrData', url, payload.ehrData)
     return InstoreHelper.putRequest(context, API, url, payload.ehrData)
       .then(results => {
-        if(debug) console.log('SeedList after seed replace ehr data reload seed list')
+        if(debugSL) console.log('SeedList after seed replace ehr data reload seed list')
         return context.dispatch('loadSeeds')
       })
       .then(() => {
         if (context.state.sSeedId) {
-          if(debug) console.log('SeedList after seed replace ehr data reload current seed item')
-          return context.dispatch('loadSeedContent')
+          if(debugSL) console.log('SeedList after seed replace ehr data reload current seed item')
+          return context.dispatch('loadSeedContent', context.state.sSeedId)
         }
       })
   }
@@ -155,7 +175,7 @@ const actions = {
 
 export const mutations = {
   _setSeedId: (state, seedId) => {
-    if(debug) console.log('SeedList set seed id and stash in session store', seedId)
+    if(debugSL) console.log('SeedList set seed id and stash in session store', seedId)
     sessionStorage.setItem(sKeys.SEED_ID, seedId)
     state.sSeedId = seedId
   },

@@ -20,32 +20,33 @@ export function ok (res) {
   Not enough privileges - 401 Unauthorized
   Unknown error - 500 Internal server error
  TODO finish this error handler
+ TODO incorporate all the errors in the ./errors.js file
 */
 export function fail (res) {
   return (error) => {
     let code, message
     switch (error.name) {
     case 'ValidationError':
+    case 'NotAllowedError':
       code = 400
       message = error.name + ' ' + error.message
       break
     case 'CastError' :
       code = 500
       message = error.name + ' ' + error.message
-      console.log('Server utils fail CastError return 500.')
       break
     case 'MongoError' :
       code = 400
       message = error.message
-      console.log('Server utils fail CastError return 500.')
       break
     default:
       // return Internal Server Error ... "something has gone wrong on the web site's server but the server could not be more specific on what the exact problem is."
       code = 500
       message = 'Unknown error:' + error.name + ' ' + error.message
-      console.log('Server utils fail unknown error return 500.')
+      console.log('Server utils fail unknown error return 500.', message)
     }
     // TODO - return errors the way it's done in app.js
+    console.log('Send fail status', code, 'message', message)
     res.status(code).send(message) // .end(message)
   }
 }

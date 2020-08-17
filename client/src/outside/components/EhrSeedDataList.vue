@@ -23,6 +23,9 @@
           div(class="column is-2 key") Description
           div(class="column is-10 value") {{sv.description}}
         div(class="columns")
+          div(class="column is-2 key") Contributors
+          div(class="column is-10 value") {{sv.contributors}}
+        div(class="columns")
           div(class="column is-2 key") EHR Pages
           div(class="column is-10 value") {{ehrPages(sv)}}
         div(class="columns")
@@ -32,12 +35,12 @@
               ui-link(:name="'assignments'", :params="{assignmentId: assignment._id}") {{ assignment.name }}
               span(v-if="x+1 < assignmentList(sv).length") &nbsp;,&nbsp;
 
-        // td {{sv._id}}
         div(v-if="isDevelopingContent && !sv.isDefault")
          ui-button(v-on:buttonClicked="duplicateSeed(sv)", secondary, :title="`Make a copy of ${sv.name}`") Duplicate
          ui-button(v-on:buttonClicked="downloadSeed(sv)",  secondary, title="Save a copy on your computer") Download
          ui-button(v-on:buttonClicked="showEditDialog(sv)", secondary, title="Edit seed properties or upload seed content") Properties (upload)
          ui-button(v-on:buttonClicked="gotoEhrWithSeed(sv)", title="Edit the seed content in the EHR") Content (EHR)
+         ui-button(v-if="assignmentList(sv).length === 0", v-on:buttonClicked="deleteSeed(sv)", secondary, title="Delete") Delete
       ui-agree(ref="aggreeDialog")
     ehr-seed-data-dialog(ref="theDialog", @showDialog="showDialog")
     ui-confirm(
@@ -159,6 +162,18 @@ export default {
     },
     showDialog: function (title, msg) {
       this.$refs.aggreeDialog.showDialog(title, msg)
+    },
+    async deleteSeed (sv) {
+      return StoreHelper.deleteSeed(sv._id)
+        .then(() => {
+          StoreHelper.setLoading(null, true)
+          StoreHelper.loadSeedLists()
+        })
+        .catch(error => {
+          console.log('Sedd Data list delete error', error)
+          this.$refs.aggreeDialog.showDialog('Error', error)
+        })
+        .finally(() => StoreHelper.setLoading(null, false))
     },
     duplicateSeed (sv) {
       delete sv._id

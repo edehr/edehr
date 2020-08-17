@@ -60,6 +60,6 @@ p {
 	}
 }
 
-.errorMessageList {
-    color: red;
+.errorMessageList, .errorMessage {
+    color: $error;
 }

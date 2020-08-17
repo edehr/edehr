@@ -10,6 +10,7 @@ const Schema = new mongoose.Schema(
     isDefault: { type: Boolean, default: false },
     description: { type: String },
     version: { type: String },
+    contributors: { type: String },
     ehrData: { type: Object, default: {} },
     createDate: { type: Date, default: Date.now },
     lastUpdateDate: { type: Date, default: Date.now }

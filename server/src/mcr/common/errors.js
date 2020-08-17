@@ -44,8 +44,8 @@ class SystemError extends EdEhrError {
 class NotAllowedError extends EdEhrError {
   constructor (message, errorData) {
     super(...arguments)
-    this.name = 'SystemError'
-    this.status = 500
+    this.name = 'NotAllowedError'
+    this.status = 400
   }
 }
 

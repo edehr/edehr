@@ -107,9 +107,21 @@ export function formatTimeStr (dateStrFromDb) {
 }
 
 export function composeAxiosResponseError (error, msg) {
-  msg += error.response.status ? ` status: ${error.response.status}` : ''
-  msg += error.response.statusText ? ` ${error.response.statusText}` : ''
-  msg += error.response.data ? ` ${error.response.data}` : error.message
+  if (! error.response ) {
+    console.error('what is in error?')
+    return JSON.stringify(error)
+  }
+  const res = error.response
+  msg += res.status ? ` status: ${res.status}` : ''
+  msg += res.statusText ? ` ${res.statusText}` : ''
+  if (res.data) {
+    if (res.data.message)
+      msg += ' ' + res.data.message
+    else
+      msg += ' ' + res.data
+  } else {
+    msg += ' ' + error.message
+  }
   return msg
 }
 
