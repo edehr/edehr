@@ -72,7 +72,7 @@ export default {
     }
   },
   computed: {
-    httpHeader() {
+    httpHeader () {
       const token = StoreHelper.getAuthToken()
       const headers = { Authorization: token }
       console.log('headers', headers)
@@ -120,11 +120,11 @@ export default {
       }
     },
 
-    async getMaxFileSize(){
+    async getMaxFileSize (){
       const url = StoreHelper.apiUrlGet() + '/files/public/maxFileSize'
       console.log('send request to', url)
       const res = await fetch(url)
-      const data = await res.json();
+      const data = await res.json()
       console.log('got max file size', data)
       this.ehrMaxFileSize = data.value
     }

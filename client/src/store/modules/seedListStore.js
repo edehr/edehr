@@ -2,7 +2,7 @@ import InstoreHelper from './instoreHelper'
 import sKeys from '../../helpers/session-keys'
 import StoreHelper from '../../helpers/store-helper'
 const API = 'seed-data'
-const debugSL = true
+const debugSL = false
 
 // exporting elements so they can be accessed in unit tests.
 // working code should only use the default exported module.
