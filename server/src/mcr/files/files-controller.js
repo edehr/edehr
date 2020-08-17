@@ -233,12 +233,18 @@ export default class FileController {
         return next(error)
       }
       const dir = path.join(this.ehrFilesDirectory, toolConsumerId)
-      fs.readdir(dir, {withFileTypes: true}, (err, files) => {
-        if (err)
-          return next(err)
-        let fNames = files.filter(item => !item.isDirectory()).map(item => item.name)
-        res.status = 200
-        res.json(JSON.stringify(fNames))
+      fs.access(dir, fs.constants.F_OK, (err) => {
+        if (err) {
+          res.status = 200
+          res.json('[]')
+        }
+        fs.readdir(dir, {withFileTypes: true}, (err, files) => {
+          if (err)
+            return next(err)
+          let fNames = files.filter(item => !item.isDirectory()).map(item => item.name)
+          res.status = 200
+          res.json(JSON.stringify(fNames))
+        })
       })
     })
 

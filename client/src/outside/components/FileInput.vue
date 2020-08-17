@@ -34,5 +34,9 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-/* Using Bluma class */
+.file-label{
+  /* to override the 2rem marging that buttons have */
+  margin-bottom: 0;
+}
+
 </style>
