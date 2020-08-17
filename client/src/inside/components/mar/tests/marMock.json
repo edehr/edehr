@@ -1,6 +1,5 @@
-{
-    
-    "mockMedOrders": [
+{    
+  "mockMedOrders": [
     {
       "medication": "ag-amitriptyline",
       "reason": "reason",
