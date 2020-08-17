@@ -1,5 +1,6 @@
 import should from 'should'
 import MarSummary, { MS } from '../mar-summary'
+import { getMarRecords, getMedOrders } from './mar-test-helper'
 
 const constantValues = [
   'medOrder',
@@ -79,9 +80,19 @@ describe('mar-summary testing', () => {
     should.exist(marSummary)
   })
 
-  it.skip('summaryRefresh', () => {
-    const result = marSummary.summaryRefresh(marRecords, medOrders)
-    should.exist(result)
+  it('summaryRefresh', () => {
+    const marRecords = getMarRecords()
+    const medOrders = getMedOrders()
+    marSummary.summaryRefresh(marRecords, medOrders)
+    const body = marSummary.tableBody
+    should.exist(body) 
+    body.map(b => {
+      b.map(item => {
+        const types = Object.values(MS)
+        types.includes(item.type).should.equal(true)
+        should.exist(item.value)
+      })
+    })
   })
 
 
