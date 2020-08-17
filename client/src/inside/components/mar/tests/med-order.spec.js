@@ -1,6 +1,5 @@
 import should from 'should'
 import MedOrder, { ScheduleOptions } from '../med-order'
-import StoreHelper from '../../../../helpers/store-helper'
 import { dispatchGetter } from '../../../../helpers/test/testHelper'
 import { getMedOrder } from './mar-test-helper'
 

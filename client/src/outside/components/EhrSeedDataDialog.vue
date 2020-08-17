@@ -23,27 +23,40 @@
           div(class="ehr-group-wrapper grid-left-to-right-1")
             div(class="form-element")
               label Description
-              textarea(class="textarea",v-model="description")
-          div(v-if="showAdvanced", class="ehr-group-wrapper grid-left-to-right-1")
+              textarea(class="textarea", v-model="description")
+          div(class="ehr-group-wrapper grid-left-to-right-1")
             div(class="form-element")
-              label EHR Data
-              textarea(class="textarea",v-model="ehrDataString", v-validate="ehrValidate")
-          input(id="fileUploadInput", ref="fileUploadInput", type="file", accept="application/json", style="display:none", @change="setFile")
-      ui-button(slot="left-button", v-on:buttonClicked="handleUpload", v-bind:secondary="true") Upload
-      
+              label Contributors
+              input(class="input", type="text", v-model="contributors")
+          div
+            div(v-if="file")
+              div Selected EHR seed file: {{file.name}}
+              div(v-if="uploadError", class="errorMessage") {{uploadError}}
+              div(v-if="hasUploadSeed")
+                div Version: {{uploadSeed.version}}
+                div License: {{uploadSeed.license}}
+                div Original Name: {{uploadSeed.name}}
+                div Pages: {{ uploadSeedPages }}
+            label(class="file-label")
+              input(
+                class="file-input"
+                type="file",
+                id="fileUploadInput",
+                accept="application/json",
+                ref="fileUploadInput",
+                @change="setFile"
+              )
+              span(class="file-cta")
+                span(class="file-label button is-primary")  {{ hasUploadSeed ? 'Change File' : 'Upload Seed' }}
+
+
 </template>
 
 <script>
 import AppDialog from '../../app/components/AppDialogShell'
 import StoreHelper from '../../helpers/store-helper'
 import UiButton from '../../app/ui/UiButton.vue'
-import { readFile, importSeedData } from '../../helpers/ehr-utils'
-
-const TEXT = {
-  AGREE_TITLE: (seedName) => `${seedName} has new seed data`,
-  AGREE_MSG: (fileName) => `New seed data has been imported from file: ${fileName}`,
-  FAIL_IMPORT: (fileName, msg) => `Upload ${fileName} failed: ${msg}`
-}
+import { readFile, validateSeedFileContents } from '../../helpers/ehr-utils'
 
 const TITLES = {
   edit: 'Edit seed data properties',
@@ -51,8 +64,7 @@ const TITLES = {
 }
 const ERRORS = {
   NAME_REQUIRED: 'Seed name is required',
-  EHR_REQUIRED: 'Seed EHR data seed is required',
-  EHR_INVALID: (msg) => `Seed EHR data seed is invalid. ${msg}`
+  EHR_REQUIRED: 'Seed EHR data seed is required'
 }
 
 const EDIT_ACTION= 'edit'
@@ -65,14 +77,16 @@ export default {
     return {
       name: '',
       version: '',
+      contributors: '',
       description: '',
       ehrData: {},
       ehrDataString: '',
       actionType: '',
       seedId: '',
-      showAdvanced: false,
       file: null,
-      upload: false
+      upload: false,
+      uploadSeed: {},
+      uploadError: ''
     }
   },
   props: {},
@@ -81,23 +95,24 @@ export default {
       return TITLES[this.actionType] || ''
     },
     disableSave () {
-      return !!(this.nameValidate || this.ehrValidate)
+      return !!(this.nameValidate || this.uploadError)
     },
     nameValidate () {
       let v = this.name.length > 0
       return v ? undefined : ERRORS.NAME_REQUIRED
     },
-    ehrValidate () {
-      if (this.ehrDataString.length === 0) {
-        return {valid:'false', text: ERRORS.SEED_REQUIRED}
+    hasUploadSeed () {
+      return Object.keys(this.uploadSeed).length > 0
+    },
+    uploadSeedPages () {
+      let result = []
+      if (this.uploadSeed.ehrData) {
+        result = Object.keys(this.uploadSeed.ehrData)
       }
-      let msg
-      try {
-        JSON.parse(this.ehrDataString)
-      } catch(error) {
-        msg = error.message
-      }
-      return msg ? ERRORS.EHR_INVALID(msg) : undefined
+      return result.join(', ')
+    },
+    userName () {
+      return StoreHelper.fullName()
     }
   },
   methods: {
@@ -107,9 +122,12 @@ export default {
         = this.name
         = this.version
         = this.description
-        = this.ehrDataString
+        = this.contributors
         = this.seedId = ''
       this.ehrData = {}
+      this.file = null
+      this.uploadSeed = {}
+      this.uploadError = ''
     },
     showDialog (seedData) {
       this.clearInputs()
@@ -117,6 +135,7 @@ export default {
         this.actionType = EDIT_ACTION
         this.name = seedData.name
         this.version = seedData.version
+        this.contributors = seedData.contributors
         this.ehrData = seedData.ehrData
         this.description = seedData.description
         this.seedId = seedData._id
@@ -125,7 +144,14 @@ export default {
         this.version = '1.0'
         this.ehrData = {}
       }
-      this.ehrDataString = JSON.stringify(this.ehrData, null, 2)
+      if (! this.contributors || !this.contributors.includes(this.userName)) {
+        console.log(this.contributors, this.userName)
+        let list = this.contributors.split(', ')
+        list.push(this.userName)
+        let contribs = list.join(', ')
+        console.log('update contributors', contribs)
+        this.contributors = contribs
+      }
       this.$refs.theDialog.onOpen()
     },
     cancelDialog: function () {
@@ -137,65 +163,31 @@ export default {
         name: this.name,
         version: this.version,
         description: this.description,
+        contributors: this.contributors,
+        ehrData: this.ehrData,
         toolConsumer: StoreHelper.toolConsumerId(this)
       }
-      seedData.ehrData = JSON.parse(this.ehrDataString)
       this.$refs.theDialog.onClose()
       if (this.actionType === EDIT_ACTION) {
         await StoreHelper.updateSeed(this, this.seedId, seedData)
       } else if (this.actionType === CREATE_ACTION) {
-        // This is done in order to compare a list of objects
-        // before and after the upload, so that, the created seed can be filtered out
-        // in order to satisfy the need of seedId when uploading the file. 
-        // In short, prevSeedList contains a list of the previous fields; 
-        // which include the list which is already added to the database. 
-        // currSeedList contains the newly updated seed list after
-        // adding the database record.
-        // Then the createdSeed value contains the difference object
-        // (which is the newly added object) by filtering out all the
-        // objects which are different from the prevSeedList; returning the newly added
-        // object with its backend id.
-        const prevSeedList = StoreHelper.getSeedDataList().map(d=>JSON.stringify(d))
-        const currSeedList = await StoreHelper.createSeed(this, seedData)
-        console.log('currSeedList >> ', currSeedList)
-        const createdSeed = currSeedList.find(s => !prevSeedList.includes(JSON.stringify(s)))
-        this.seedId = createdSeed._id
+        await StoreHelper.createSeed(this, seedData)
       }
-      if (this.upload) {
-        this.importSeedFile()
-      }
-    },
-    handleUpload: function () {   
-      this.currentSeed = StoreHelper.getSeedDataList().find(e => 
-        e._id === this.seedId
-      )
-      this.$refs.fileUploadInput.click()
     },
     setFile (event) {
-      this.file = event.target.files[0]
+      this.uploadSeed = {}
+      this.uploadError = ''
+      const file = event.target.files[0]
       this.upload = true
-      this.$refs.fileUploadInput.value = null
-    },
-    importSeedFile () {
-      const component = this
-      const seedId = this.seedId
-      const seedName = this.name
-      const file = this.file
-      const fileName = file.name
-      StoreHelper.setLoading(component, true)
-      return readFile(file).then( (contents) => {
-        return importSeedData(component, seedId, contents)
-          .then(result => {
-            let title = TEXT.AGREE_TITLE(seedName)
-            let msg = TEXT.AGREE_MSG(fileName)
-            this.$emit('showDialog', title, msg)
-            this.upload = false
-            StoreHelper.setLoading(component, false)
-          })
-          .catch( err => {
-            StoreHelper.setApiError(TEXT.FAIL_IMPORT(fileName, err))
-            StoreHelper.setLoading(component, false)
-          })
+      this.file = file
+      readFile(file).then( (contents) => {
+        let {seedObj, invalidMsg} = validateSeedFileContents(contents)
+        if (invalidMsg) {
+          this.uploadError = invalidMsg
+        } else {
+          this.uploadSeed = seedObj
+          this.ehrData = seedObj.ehrData
+        }
       })
     },
   }
@@ -203,5 +195,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-//@import '../../scss/definitions';
+@import '../../scss/definitions';
+.file-label {
+  margin-bottom: 1px !important;
+}
 </style>

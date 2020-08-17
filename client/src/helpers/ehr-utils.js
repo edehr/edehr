@@ -107,9 +107,21 @@ export function formatTimeStr (dateStrFromDb) {
 }
 
 export function composeAxiosResponseError (error, msg) {
-  msg += error.response.status ? ` status: ${error.response.status}` : ''
-  msg += error.response.statusText ? ` ${error.response.statusText}` : ''
-  msg += error.response.data ? ` ${error.response.data}` : error.message
+  if (! error.response ) {
+    console.error('what is in error?')
+    return JSON.stringify(error)
+  }
+  const res = error.response
+  msg += res.status ? ` status: ${res.status}` : ''
+  msg += res.statusText ? ` ${res.statusText}` : ''
+  if (res.data) {
+    if (res.data.message)
+      msg += ' ' + res.data.message
+    else
+      msg += ' ' + res.data
+  } else {
+    msg += ' ' + error.message
+  }
   return msg
 }
 
@@ -206,37 +218,39 @@ export function ehrMarkSeed (data) {
  */
 export function validateSeedFileContents (dataAsString) {
   let pageKeys = EhrDefs.getAllPageKeys()
+  let parsedData
   try {
-    let obj = JSON.parse(dataAsString)
-    if (!obj.license) {
-      return { invalidMsg: Text.SEED_MUST_HAVE_LICENSE}
-    }
-    if (!obj.license.includes(Text.LICENSE_TEXT)) {
-      return { invalidMsg: Text.LICENSE_MUST_BE }
-    }
-    if (!obj.ehrData) {
-      return { invalidMsg: Text.SEED_MUST_HAVE_EHRDATA}
-    }
-    let keys = Object.keys(obj.ehrData)
-    if(!keys || keys.length === 0) {
-      return { invalidMsg: Text.EHRDATA_CAN_NOT_BE_EMPTY}
-    }
-    let badKeys = []
-    keys.forEach( key => {
-      let found = pageKeys.find( pKey => pKey === key)
-      if(!found) {
-        badKeys.push(key)
-      }
-    })
-    if(badKeys.length > 0) {
-      let extras = badKeys.join(', ')
-      return { invalidMsg: Text.EHRDATA_HAS_INVALID_PAGES(extras)}
-    }
-    return { seedObj: obj }
-  }catch(err) {
+    parsedData = JSON.parse(dataAsString)
+  } catch (err) {
     console.log('EhrUtil validateSeedFileContents: failed to parse seed data', err)
     return { invalidMsg: err.message}
   }
+  if (!parsedData.license) {
+    return { invalidMsg: Text.SEED_MUST_HAVE_LICENSE}
+  }
+  if (!parsedData.license.includes(Text.LICENSE_TEXT)) {
+    return { invalidMsg: Text.LICENSE_MUST_BE }
+  }
+  if (!parsedData.ehrData) {
+    return { invalidMsg: Text.SEED_MUST_HAVE_EHRDATA}
+  }
+  let keys = Object.keys(parsedData.ehrData)
+  console.log('keys', keys)
+  if(!keys || keys.length === 0) {
+    return { invalidMsg: Text.EHRDATA_CAN_NOT_BE_EMPTY}
+  }
+  let badKeys = []
+  keys.forEach( key => {
+    let found = pageKeys.find( pKey => pKey === key)
+    if(!found) {
+      badKeys.push(key)
+    }
+  })
+  if(badKeys.length > 0) {
+    let extras = badKeys.join(', ')
+    return { invalidMsg: Text.EHRDATA_HAS_INVALID_PAGES(extras)}
+  }
+  return { seedObj: parsedData }
 }
 
 /**

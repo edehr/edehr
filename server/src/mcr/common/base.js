@@ -132,6 +132,10 @@ export default class BaseController {
             modelInstance[attribute] = data[attribute]
           }
         }
+        if (modelInstance.lastUpdateDate) {
+          modelInstance.lastUpdateDate = Date.now()
+        }
+
         return modelInstance.save()
       })
       .then((modelInstance) => {

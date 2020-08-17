@@ -1,0 +1,50 @@
+{
+  "id": "5df8669ecbf93c0018849562",
+  "license": "This work is licensed under a Creative Commons Attribution 4.0 International License. See http://creativecommons.org/licenses/by/4.0/",
+  "ehrData": {
+    "demographics": {
+      "givenName": "Erin",
+      "middleName": "Joseph",
+      "familyName": "Johns",
+      "preferredName": "Johns",
+      "dateOfBirth": "09-SEP-1945",
+      "personAge": "74",
+      "height": "185",
+      "weight": "49",
+      "gender": "Female",
+      "martialStatus": "Widowed",
+      "languagePrimary": "English",
+      "indigenousIdentifyAs": "No",
+      "streetAddress": "402 Willow St.",
+      "city": "Warsaw",
+      "country": "Canada",
+      "postalCode": "V3F 9R2",
+      "phoneNumber": "(778) 555-2947",
+      "occupationStudent": "Retired",
+      "phn": "12345678",
+      "nextOfKinName": "Thomas Johns",
+      "nextOfKinRelationship": "Son",
+      "nextOfKinPhone": "604-555-9865",
+      "decisionMakerName": " ",
+      "decisionMakerRelationship": "",
+      "decisionMakerPhone": "604-555-9865"
+    },
+    "notValidPage": {
+      "diet": "Regular",
+      "livingSituation": "Son lives with her in her house",
+      "employmentSchool": "Retired hairdresser",
+      "hobbies": "Bingo, Netflix, playing Solitaire and Scrabble with friends on her iPad",
+      "exercise": true,
+      "exerciseFrequency": "< 1 day/week",
+      "caffeineUse": true,
+      "caffeineUseFrequency": "1-2 cups/day",
+      "tobaccoUse": true,
+      "tobaccoUseFrequency": "History of smoking",
+      "alcoholUse": true,
+      "alcoholUseFrequency": "Social"
+    }
+  },
+  "name": "Erin Johns",
+  "version": "1.0",
+  "fileName": "seed with parse error.json"
+}

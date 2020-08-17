@@ -1,4 +1,5 @@
 import BaseController from '../common/base'
+import Assignment from '../assignment/assignment'
 import SeedData from './seed-data'
 import { Text }  from '../../config/text'
 import { NotAllowedError } from '../common/errors'
@@ -62,6 +63,23 @@ export default class SeedDataController extends BaseController {
     })
   }
 
+  deleteSeed (id) {
+    console.log('Delete seed if there are no assignments using it', id)
+    return Assignment.find ( {seedDataId: id})
+      .then ( (assignments) => {
+        if (assignments.length > 0 ) {
+          console.log('will reject work?')
+          throw new NotAllowedError(Text.SEED_IN_USE_NO_DELETE)
+        }
+        let filter = this.baseFilter(id)
+        return this.model
+          .deleteMany(filter)
+          .then(() => {
+            return {}
+          })
+      })
+  }
+
   route () {
     const router = super.route()
     router.put('/updateSeedEhrProperty/:key/', (req, res) => {
@@ -77,6 +95,14 @@ export default class SeedDataController extends BaseController {
       this.updateSeedEhrData(id, data)
         .then(ok(res))
         .catch(fail(res))
+    })
+
+    router.delete('/:key', (req, res) => {
+      console.log('delete seed data', req.params)
+      this
+        .deleteSeed(req.params.key)
+        .then(ok(res))
+        .then(null, fail(res))
     })
     return router
   }
