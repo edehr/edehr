@@ -40,9 +40,16 @@ export default class DemoController {
     this.cc = cc
   }
 
-  _createDemoToolConsumer (req, res) {
-    const theId = req.body.id
-    if (debugDC) debug('DemoController create tool. Id:', theId)
+  _createDemoToolConsumer (req, res, next) {
+    let theId = req.body.id
+    if (debugDC) debug('DemoController create tool. Call provided this id:', theId)
+    if (!theId) {
+      let error = new Error('Caller must provide a new id for the demonstration to work.')
+      error.status = 400
+      return next(error)
+    }
+    theId = 'Demo-' + Date.now() + '-' + theId
+    if (debugDC) debug('DemoController create tool. Create tool with this id:', theId)
     const consumerDef = Object.assign({}, consumerBaseDef, {  oauth_consumer_key: theId, oauth_consumer_secret: theId })
     let toolC
     this.cc.consumerController.createToolConsumer(consumerDef)
@@ -108,30 +115,15 @@ export default class DemoController {
         }
         debug('Ready to remove a demo consumer along with all of its data: ' + tc.tool_consumer_instance_name)
         toolConsumer = tc._id
-      })
-      .then(() => {
-        debug('deleteDemoData delete consumer ' + toolConsumer)
-        return this.cc.consumerController.delete(toolConsumer)
-      })
-      .then(() => {
-        debug('deleteDemoData delete visits ' + toolConsumer)
-        return this.cc.visitController.clearConsumer(toolConsumer)
-      })
-      .then(() => {
-        debug('deleteDemoData delete activities ' + toolConsumer)
-        return this.cc.activityController.clearConsumer(toolConsumer)
-      })
-      .then(() => {
-        debug('deleteDemoData delete seeds ' + toolConsumer)
-        return this.cc.seedController.clearConsumer(toolConsumer)
-      })
-      .then(() => {
-        debug('deleteDemoData delete assignments ' + toolConsumer)
-        return this.cc.assignmentController.clearConsumer(toolConsumer._id)
-      })
-      .then(() => {
-        debug('deleteDemoData delete users ' + toolConsumer)
-        return this.cc.userController.clearConsumer(toolConsumer._id)
+        let promises = []
+        promises.push(this.cc.consumerController.delete(toolConsumer))
+        promises.push(this.cc.visitController.clearConsumer(toolConsumer))
+        promises.push(this.cc.activityController.clearConsumer(toolConsumer))
+        promises.push(this.cc.seedController.clearConsumer(toolConsumer))
+        promises.push(this.cc.assignmentController.clearConsumer(toolConsumer))
+        promises.push(this.cc.userController.clearConsumer(toolConsumer))
+        promises.push(this.cc.filesController.clearConsumer(toolConsumer))
+        return Promise.all(promises)
       })
   }
 
@@ -216,8 +208,8 @@ export default class DemoController {
      */
     router.post('/',
       demoLimiter,
-      (req, res) => {
-        this._createDemoToolConsumer(req, res)
+      (req, res, next) => {
+        this._createDemoToolConsumer(req, res, next)
       })
 
     /**

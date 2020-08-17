@@ -21,6 +21,7 @@
     "axios": "^0.18.0",
     "bulma": "^0.7.4",
     "core-js": "^2.6.11",
+    "exif-js": "^2.3.0",
     "file-saver": "^2.0.2",
     "filenamify": "^4.1.0",
     "moment": "^2.26.0",

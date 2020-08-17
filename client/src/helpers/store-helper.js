@@ -22,6 +22,7 @@ class StoreHelperWorker {
   _getAssignmentProperty (key) { return store.getters['assignmentStore/' + key]}
   _getAssignmentListProperty (key) { return store.getters['assignmentListStore/' + key]}
   _getConsumerListProperty (key) { return store.getters['consumerListStore/' + key]}
+  _getFileListProperty (key) { return store.getters['fileListStore/' + key]}
   _getInstructorProperty (key) { return store.getters['instructor/' + key]}
   _getSeedListProperty (key) { return store.getters['seedListStore/' + key]}
   _getSystemProperty (key) { return store.getters['system/' + key]}
@@ -35,6 +36,7 @@ class StoreHelperWorker {
   async _dispatchAuthStore (key, payload) { return await store.dispatch(`authStore/${key}`, payload) }
   _dispatchConsumerList (key, payload) { return store.dispatch('consumerListStore/' + key, payload)}
   _dispatchClassList (key, payload) { return store.dispatch('classListStore/' + key, payload)}
+  async _dispatchFileList (key, payload) { return await store.dispatch('fileListStore/' + key, payload)}
   async _dispatchConsumer (key, payload) { return await store.dispatch('consumerStore/' + key, payload)}
   async _dispatchSeedListProperty (key, payload) { return await store.dispatch('seedListStore/' + key, payload)}
   async _dispatchInstructor (key, payload) { return await store.dispatch('instructor/' + key, payload)}
@@ -98,6 +100,27 @@ class StoreHelperWorker {
   getClassListForActivity ( activityId) {
     return this._dispatchClassList('getClassList', activityId)
   }
+
+  /*
+   * **********   File List  **************
+   */
+
+  async getFileListMaxFileSize ( activityId) {
+    return await this._dispatchFileList('getMaxFileSize')
+  }
+  getFileListImages () { return this._getFileListProperty('imageFiles') }
+  getFileListOther () { return this._getFileListProperty('otherFiles') }
+  getFileListErrorMessage () { return this._getFileListProperty('errorMessage') }
+  getUploadedFile () { return this._getFileListProperty('uploadedFile')}
+  refreshFileLists (consumerId) { return this._dispatchFileList('refreshFileLists', consumerId)}
+  uploadReset () { return this._dispatchFileList('uploadReset')}
+  /**
+   *
+   * @param payload { file, onUploadProgress }  File and Function(progressEvent)
+   * @return {Promise<*>}
+   */
+  addFileToList (payload) { return this._dispatchFileList('addFileToList', payload)}
+
 
   /*
   * **********   Instructor  **************
@@ -410,6 +433,9 @@ class StoreHelperWorker {
 
   async getAuthData () {
     return await this._getAuthStore('authData')
+  }
+  getAuthDataSync () {
+    return this._getAuthStore('data')
   }
 
   getAuthToken () {

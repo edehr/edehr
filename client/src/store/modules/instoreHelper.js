@@ -15,6 +15,7 @@ const debug = false
  */
 class InstoreHelperWorker {
 
+  // TODO remove context parameter
   composeUrl (context, api, url) {
     let apiUrl = StoreHelper.apiUrlGet()
     return `${apiUrl}/${api}/` + (url ? url : '')
@@ -24,39 +25,37 @@ class InstoreHelperWorker {
     return rootState.visit.sVisitData.isInstructor
   }
 
-  putRequest (context, api, url, bodyData) {
-    url = this.composeUrl(context, api, url)
-    if(debug) console.log('PUT to this url', url)
-    StoreHelper.setLoading(context, true)
-    return new Promise((resolve, reject) => {
-      axios
-        .put(url, bodyData)
-        .then(results => {
-          // console.log('success instoreHelper putRequest')
-          StoreHelper.setLoading(context, false)
-          resolve(results)
-        })
-        .catch(error => {
-          let msg = composeAxiosResponseError(error, 'Update failed: ')
-          StoreHelper.setApiError(msg)
-          StoreHelper.setLoading(context, false)
-          reject(msg)
-        })
-    })
+  instoreIsDevContent (rootState) {
+    return rootState.visit.isDevelopingContent
   }
-  postRequest (context, api, url, bodyData) {
-    url = this.composeUrl(context, api, url)
+
+  postRequest (context, api, url, bodyData, config) {
+    console.log('here in post req')
+    return this.upsert(context, 'post', api, url, bodyData, config)
+  }
+
+  putRequest (context, api, url, bodyData, config) {
+    return this.upsert(context, 'put', api, url, bodyData, config)
+  }
+
+  upsert (context, method, api, url, bodyData, config) {
+    console.log('here in  upsert')
+    config = Object.assign({}, config)
+    config.url = this.composeUrl(context, api, url)
+    config.method = method
+    config.data = bodyData
+    console.log('here in  upsert', config)
     if(debug) console.log('POST to this url', url)
     StoreHelper.setLoading(context, true)
     return new Promise((resolve, reject) => {
-      axios
-        .post(url, bodyData)
+      axios(config)
         .then(results => {
-          // console.log('success instoreHelper putRequest', results)
+          console.log('success instoreHelper upsert', results)
           StoreHelper.setLoading(context, false)
           resolve(results)
         })
         .catch(error => {
+          console.log('success instoreHelper catch', error)
           let msg = composeAxiosResponseError(error, 'Create failed: ')
           StoreHelper.setApiError(msg)
           StoreHelper.setLoading(context, false)
@@ -64,8 +63,9 @@ class InstoreHelperWorker {
         })
     })
   }
-  getRequest (context, api, path) {
-    let url = this.composeUrl(context, api, path)
+  // TODO remove context parameter
+  getRequest (context, api, url) {
+    url = this.composeUrl(context, api, url)
     if(debug) console.log('GET to this url', url, context)
     StoreHelper.setLoading(context, true)
     return new Promise((resolve, reject) => {

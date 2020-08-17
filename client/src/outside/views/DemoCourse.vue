@@ -26,15 +26,14 @@
 
 <script>
 import StoreHelper from '../../helpers/store-helper'
-import axios from 'axios'
-import InstoreHelper from '../../store/modules/instoreHelper'
+import DemoHelper from '../../helpers/demo-helper'
 import UiButton from '../../app/ui/UiButton'
 import UiLink from '../../app/ui/UiLink.vue'
 import EventBus from '../../helpers/event-bus'
 import { PAGE_DATA_READY_EVENT } from '../../helpers/event-bus'
 import { demoText } from '@/appText'
 
-const debugDC = true
+const debugDC = false
 
 export default {
   components: {
@@ -59,48 +58,15 @@ export default {
       this.$router.push('demo')
     },
     gotoEhr: function (selectedAssignment) {
-      const persona = this.demoPersona
-      const submitData = {
-        assignmentName: selectedAssignment.name,
-        externalId: selectedAssignment.externalId,
-        personaName: persona.name,
-        personaEmail: persona.email,
-        personaRole: persona.role,
-        returnUrl: window.location.origin + this.$route.path, // come back to this LMS page
-        toolKey: this.demoData.toolConsumerKey
-      }
-      if (debugDC) console.log('DemoCourse goto ehr with ', submitData)
-      StoreHelper.setLoading(null, true)
-      StoreHelper.submitPersona(submitData)
-        .then(({url}) => {
-          StoreHelper.setLoading(null, false)
-          if (debugDC) console.log('DemoCourse goto url ', url)
-          window.location.replace(url)
-        }).catch(err => {
-          StoreHelper.setLoading(null, false)
-          StoreHelper.setApiError('An error occurred during the launch of the demonstration mode. ', err)
-        })
+      const demoHelper = new DemoHelper()
+      const returnUrl = window.location.origin + this.$route.path // come back to this LMS page
+      // Go to EHR. This will result in a page change
+      demoHelper.gotoEhr(this.demoData, this.demoPersona, selectedAssignment, returnUrl)
     },
     loadAssignments: function () {
-      const token = StoreHelper.getDemoToken()
-      const dd = StoreHelper.getDemoTokenData()
-      const toolConsumerId = dd.toolConsumerId
-      if (!toolConsumerId) {
-        if (debugDC) console.log('DC can not get assignments no toolConsumerId')
-        return
-      }
-      if (debugDC) console.log('DC get assignments toolConsumerId', toolConsumerId)
-      axios.defaults.headers['Authorization'] = `Bearer ${token}`
-      let url = 'consumer/' + toolConsumerId
-      return InstoreHelper.getRequest(undefined/*context not needed*/, 'assignments', url)
-        .then(response => {
-          let list = response.data.assignments
-          if (debugDC) console.log('loadAssignments response.data', list)
-          if (!list) {
-            const msg = 'System error getting demonstration assignments.'
-            StoreHelper.setApiError(msg)
-            return
-          }
+      const demoHelper = new DemoHelper()
+      demoHelper.loadAssignments()
+        .then((list) => {
           this.assignments = list
         })
     }

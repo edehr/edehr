@@ -31,6 +31,16 @@ export default class ConsumerController extends BaseController {
     return this.createWithSeed(def, seedDef)
   }
 
+  /**
+   * Replace method in base because to remove the actual consumer record
+   * @param toolConsumerId
+   * @return {*}
+   */
+  clearConsumer (toolConsumerId) {
+    debug('deleteDemoData delete consumer ' + toolConsumerId)
+    return this.delete(toolConsumerId)
+  }
+
   createWithSeed (data, seedData) {
     let theConsumer
     if (debugCC) debug('ConsumerController create oauth_consumer_key:', data.oauth_consumer_key)
