@@ -20,7 +20,7 @@ export const getters = {
 
   list: state => { return state.seedDataList },
   
-  seedId: state => state.sSeedId
+  seedId: state => state.sSeedId || sessionStorage.getItem(sKeys.SEED_ID)
 }
 
 const actions = {
