@@ -378,7 +378,7 @@ class StoreHelperWorker {
   }
 
   async loadDevelopingSeed () {
-    let seedId = sessionStorage.getItem(sKeys.SEED_ID)
+    let seedId = this.getSeedId()
     if(debugSH) console.log('SH load developing seed id:', seedId)
     if (seedId) {
       await this.loadSeed(seedId)
