@@ -398,8 +398,8 @@ class StoreHelperWorker {
     return this._dispatchAuthStore('adminLogin', { adminPassword })
   }
 
-  adminValidate (token) {
-    return this._dispatchAuthStore('adminValidate', { token })
+  adminValidate () {
+    return this._dispatchAuthStore('adminValidate')
   }
 
   async getAuthData () {
@@ -407,14 +407,10 @@ class StoreHelperWorker {
   }
 
   getAuthToken () {
-    const token = localStorage.getItem(sKeys.AUTH_TOKEN)
-    if(debugSH) console.log('SH getAuthToken', token)
-    return token
+    return this._getAuthStore('token')
   }
 
   async logUserOutOfEdEHR () {
-    if(debugSH) console.log('SH clear auth token')
-    localStorage.removeItem(sKeys.AUTH_TOKEN)
     return await this._dispatchVisit('clearVisitData')
   }
 

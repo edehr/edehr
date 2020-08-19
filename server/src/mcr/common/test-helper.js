@@ -305,8 +305,7 @@ export default class Helper {
 
   static generateToken (tokenData, isAdmin = false) {
     if (isAdmin) {
-      const adminToken = getCreateAdminPassword()
-      const adminPayload = Object.assign({}, tokenData, { adminPassword : adminToken})
+      const adminPayload = Object.assign({}, tokenData, { isAdmin : true})
       return authUtil.createToken(adminPayload)
     } 
     return authUtil.createToken(tokenData)

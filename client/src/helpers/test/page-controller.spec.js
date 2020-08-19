@@ -1,6 +1,5 @@
 import should from 'should'
 import pageController from '../page-controller'
-import { setSession } from './testHelper'
 import sKeys from '../session-keys'
 import { prepareAxiosResponse, createCompoundGetResponse  } from './axios-mock-helper'
 import mockData from './mockData.json'
@@ -18,7 +17,6 @@ const refreshToken = 'testRefreshToken'
 const _beforeEach = async () => {
   commonBeforeEach()
   pageController.hasLoadedData = false
-  setSession()
   const { demoData } = mockData
   return prepareAxiosResponse('post', { 
     visitId: mockData.visit._id, 
@@ -49,7 +47,6 @@ describe('page-controller tests', () => {
     should.doesNotThrow(async () => {
       const route = _createRouteObject(true)
       await pageController.onPageChange(route)
-      should.exist(localStorage.getItem(sKeys.AUTH_TOKEN))
       pageController.hasLoadedData.should.equal(true)
       done()
     })

@@ -124,7 +124,6 @@ export default {
     disableSave () {
       const errmsg = this.nameValidate || this.seedValidate || this.externalValidate || this.timeValidate
       const isInvalid = !!errmsg
-      console.log('errmsg', errmsg)
       return isInvalid
     },
     dialogHeader () {

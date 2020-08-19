@@ -791,14 +791,14 @@ describe('Loading / restoring tests', () => {
 })
 
 describe('auth/admin tests', () => {
-  
+
   beforeEach(() => _beforeEach())
 
   it('fetchAndStoreAuthToken', async done => {
     should.doesNotThrow(async () => {
       const refreshToken = 'testRefreshToken'
       const token = 'authToken'
-      await axiosMockHelper.prepareAxiosResponse('post', { token })
+      await axiosMockHelper.prepareAxiosResponse('post', {token})
       const result = await StoreHelper.fetchAndStoreAuthToken(refreshToken)
       result.should.equal(token)
       done()
@@ -807,7 +807,7 @@ describe('auth/admin tests', () => {
 
   it('fetchTokenData', async done => {
     should.doesNotThrow(async () => {
-      await axiosMockHelper.prepareAxiosResponse('post', { authPayload: 'payload' })
+      await axiosMockHelper.prepareAxiosResponse('post', {authPayload: 'payload'})
       await StoreHelper.fetchTokenData('testToken')
       done()
     })
@@ -817,8 +817,8 @@ describe('auth/admin tests', () => {
   it('adminLogin (200 status)', async done => {
     should.doesNotThrow(async () => {
       const adminPassword = 'adminPassword'
-      const token = 'adminToken'
-      await axiosMockHelper.prepareAxiosResponse('post', { token }, 200)
+      const token = 'start.' + btoa(JSON.stringify({isAdmin: true})) + '.end'
+      await axiosMockHelper.prepareAxiosResponse('post', {token}, 200)
       const adminToken = await StoreHelper.adminLogin(adminPassword)
       adminToken.should.equal(token)
       done()
@@ -827,7 +827,7 @@ describe('auth/admin tests', () => {
 
   it('adminLogin (201 status)', async done => {
     const adminPassword = 'adminPassword'
-    const token = 'adminToken'
+    const token = 'start.'+ btoa(JSON.stringify({isAdmin: true})) + '.end'
     await axiosMockHelper.prepareAxiosResponse('post', { token }, 201)
     StoreHelper.adminLogin(adminPassword)
       .catch(err => {
@@ -838,7 +838,7 @@ describe('auth/admin tests', () => {
 
   it('adminValidate', async done => {
     should.doesNotThrow(async () => {
-      const token = 'adminToken'
+      const token = 'start.'+ btoa(JSON.stringify({isAdmin: true})) + '.end'
       await axiosMockHelper.prepareAxiosResponse('post', { isAdmin: true })
       const result = await StoreHelper.adminValidate(token)
       result.isAdmin.should.equal(true)
@@ -871,9 +871,7 @@ describe('auth/admin tests', () => {
 
   it('logUserOutOfEdEHR', async done => {    
     await StoreHelper.logUserOutOfEdEHR()
-    const authToken = localStorage.getItem(sKeys.AUTH_TOKEN)
     const visitData = StoreHelper._getVisitProperty('visitData')
-    should.not.exist(authToken)
     Object.keys(visitData).length.should.equal(0)
     done()
   })

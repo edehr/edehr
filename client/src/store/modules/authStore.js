@@ -1,25 +1,15 @@
 import authHelper from '../../helpers/auth-helper'
-import sKeys from '../../helpers/session-keys'
 import { setAuthHeader } from '../../helpers/axios-helper'
-
-const debugAS = false
-
-const _setToken = (token) => {
-  if (debugAS) console.log('AuthStore store token into local storage ', token)
-  localStorage.setItem(sKeys.AUTH_TOKEN, token)
-}
 
 const state = {
   data: {},
+  token: undefined
 }
 
 const getters = {
-  // Vuex getter values are cached. But the reactive system can't see into local storage so the cached
-  // value can become incorrect.  So, for this app, get the token via the StorageHelper which will always
-  // query local storage.
-  // token: state => {
-  //   return _getToken()
-  // },
+  token: state => {
+    return state.token
+  },
   data: state => {
     return state.data
   }
@@ -30,8 +20,7 @@ const actions = {
     return authHelper.getToken(refreshToken)
       .then(res => {
         const { token } = res.data
-        _setToken(token)
-        setAuthHeader(token)
+        commit('setToken', token)
         return token
       })
   },
@@ -46,10 +35,10 @@ const actions = {
     return authHelper.adminLogin(adminPassword)
       .then(res => {
         const { token } = res.data
+        console.log('adminLogin res.data', res.data, res.status)
         if (res.status === 200 && token) {
-          _setToken(token)
-          setAuthHeader(token)
-          return Promise.resolve(token)
+          commit('setToken', token)
+          return token
         } else if (res.status === 201) {
           return Promise.reject('The token has been created. Please, contact an administrator to get it.')
         }
@@ -57,21 +46,47 @@ const actions = {
         return Promise.reject(err)
       })
   },
-  adminValidate: function (none, { token }) {
-    return authHelper.adminValidate(token)
-      .then((r) => {
-        return {
-          isAdmin: true
-        }
-      }).catch(err => {
-        return Promise.reject(err.response.data)
-      })
+  adminValidate: function ({state}) {
+    let token = state.token || ''
+    console.log('What is in token?', token)
+    let jwtData = token.split('.')
+    console.log('What is in jwtData?', jwtData)
+    if (jwtData.length === 3) {
+      // JWT's are two base64-encoded JSON objects and a trailing signature
+      // joined by periods. The middle section is the data payload.
+      let data = JSON.parse(atob(jwtData[1]))
+      console.log('adminValidate token data >> ', data)
+      if (data.isAdmin) {
+        return authHelper.adminValidate(token)
+          .then((r) => {
+            return {
+              isAdmin: true
+            }
+          }).catch(err => {
+            return Promise.reject(err.response.data)
+          })
+      }
+    }
+    return Promise.resolve({isAdmin: false})
+  },
+  initialize: function ({ commit }) {
+    commit('initialize')
   },
 }
 
+const AUTH_TOKEN_KEY = 'authToken'
+
 const mutations = {
+  initialize: function (state) {
+    state.token = localStorage.getItem(AUTH_TOKEN_KEY)
+  },
   setAuthData: function (none, data) {
     state.data = data
+  },
+  setToken: function (none, token) {
+    state.token = token
+    localStorage.setItem(AUTH_TOKEN_KEY, token)
+    setAuthHeader(token)
   }
 }
 

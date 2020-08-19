@@ -4,7 +4,6 @@ const sKeys = {
   SEED_ID: 'seedId',
   USER_TOKEN: 'token',
   IS_DEVING: 'isSeedEditing',
-  AUTH_TOKEN: 'authToken',
   IS_READONLY_INSTRUCTOR: 'isReadOnlyInstructor',
   DEMO_TOKEN: 'demoToken',
   DEMO_DATA: 'demoPayload',

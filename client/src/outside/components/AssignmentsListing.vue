@@ -159,8 +159,7 @@ export default {
       let params2 = getIncomingParams()
       this.isRespondingToError = params2['error']
       StoreHelper.loadAssignmentList()
-      const token = StoreHelper.getAuthToken()
-      StoreHelper.adminValidate(token)
+      StoreHelper.adminValidate()
         .then(r => {
           if (debug) console.log('AssignmentsListing admin validate', r)
           this.isAdmin = r.isAdmin
