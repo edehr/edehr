@@ -18,10 +18,12 @@ export default class ActivityDataController extends BaseController {
         property: 'progressNotes',
         value: activityData.assignmentData.progressNotes || []
    * @return {*}
+   * @see updateSeedEhrProperty in seedData-controller
    */
   updateAssignmentData (id, data) {
     const propertyName = data.propertyName
     const value = data.value
+    // place date into the ehr data's page element
     value.lastUpdate = moment().format()
     // debug(`ActivityData update ${id} assignmentData[${data.propertyName}] with data:`)
     // debug(JSON.stringify(value))
@@ -30,8 +32,10 @@ export default class ActivityDataController extends BaseController {
         if (!activityData.assignmentData) {
           activityData.assignmentData = {}
         }
+        // set last update date into the overall activity data record.
         activityData.lastDate = Date.now()
         activityData.assignmentData[propertyName] = value
+        // tell the db to see a change on this subfield
         activityData.markModified('assignmentData')
         return activityData.save()
       }

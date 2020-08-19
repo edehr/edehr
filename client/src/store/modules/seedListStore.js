@@ -47,6 +47,7 @@ const actions = {
     if(debugSL) console.log('SeedList loadSeedContent from url', url)
     return InstoreHelper.getRequest(context, API, url).then(response => {
       let sd = response.data.seeddata
+      if(debugSL) console.log('SeedList loadSeedContent sd >>', sd)
       context.commit('_setSeedContent', sd)
     })
   },

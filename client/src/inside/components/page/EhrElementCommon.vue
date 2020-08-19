@@ -68,12 +68,12 @@ export default {
       }
       if (this.dependentDef) {
         if (!disable && this.dependentDef.action === DEPENDENT_PROPS.action.disable) {
-          disable = !(this.dependentOnValue === true)
+          disable = !(this.dependentOnValue === true || this.dependentOnValue === 'TRUE')
+          console.log('A change to false means disable this element. So empty it.')
+          if (disable) {
+            this.setInitialValue('')
+          }
         }
-      }
-      /* A change to false means disable this element. So let's also empty it too. */
-      if (disable) {
-        this.setInitialValue('')
       }
 
       if (this.element.recHeader && CaseContext.getPageTableShowSignature(this.pageDataKey)) {
