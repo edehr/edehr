@@ -20,10 +20,17 @@ export const getters = {
 
   list: state => { return state.seedDataList },
   
-  seedId: state => state.sSeedId || sessionStorage.getItem(sKeys.SEED_ID)
+  seedId: state => state.sSeedId
 }
 
 const actions = {
+  
+  setDefaultSeedId (context) {
+    if(sessionStorage.getItem(sKeys.SEED_ID)) {
+      const seedId = sessionStorage.getItem(sKeys.SEED_ID)
+      context.commit('_setSeedId', seedId)
+    }
+  },
 
   deleteSeed (context, id) {
     const url = `/${id}`

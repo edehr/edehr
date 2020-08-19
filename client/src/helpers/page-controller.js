@@ -50,6 +50,9 @@ class PageControllerInner {
     dblog('App _loadData. Store the api url', apiUrl, route.query.apiUrl ?  'from the route' : 'from the config')
     StoreHelper.apiUrlSet(apiUrl)
 
+    // setting the default seedId (from sessionStorage to state)
+    StoreHelper.setDefaultSeedId()
+
     const demoToken = StoreHelper.getDemoToken()
     const isDemo = !!demoToken
 

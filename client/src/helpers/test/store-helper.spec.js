@@ -882,6 +882,17 @@ describe('auth/admin tests', () => {
 describe('Compound loading function tests', () => {
   beforeEach(() => _beforeEach())
 
+  it('setDefaultSeedId', () => {
+    const seedId = 'testSeedId'
+    sessionStorage.setItem(sKeys.SEED_ID, seedId)
+    should.doesNotThrow(() => {
+      StoreHelper.setDefaultSeedId()
+      const storeSeedId = StoreHelper.getSeedId()
+      should.exist(storeSeedId)
+      storeSeedId.should.equal(seedId)
+    })
+  })
+
   it('loadAssignmentAndSeedLists', async done => {
     await axiosMockHelper.createCompoundGetResponse()
     should.doesNotThrow(async () => {

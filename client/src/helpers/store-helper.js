@@ -304,6 +304,10 @@ class StoreHelperWorker {
   }
 
   /* **********   Loading and Restoring  ************** */
+  setDefaultSeedId () {
+    this._dispatchSeedListProperty('setDefaultSeedId')
+  }
+
   async loadVisitRecord (visitId) {
     if (debugSH) console.log('SH loadVisitRecord dispatch the load visit information', visitId)
     sessionStorage.setItem(sKeys.USER_TOKEN, visitId)
