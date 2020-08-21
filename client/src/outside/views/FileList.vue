@@ -23,21 +23,17 @@
       h2(slot="header") Add EHR Files
       div(slot="body")
         file-upload
-    ui-button(v-on:buttonClicked="showSelectDialog", secondary, title="Select a file") Select
-    file-select-dialog(ref="fileSelectDialog", @fileSelected="fileSelected")
-
 </template>
 <script>
 import AppDialog from '@/app/components/AppDialogShell.vue'
 import FileList from '@/outside/components/FileList'
-import FileSelectDialog from '@/outside/components/FileSelectDialog'
 import UiButton from '@/app/ui/UiButton'
 import FileUpload from '@/outside/components/FileUpload'
 import StoreHelper from '@/helpers/store-helper'
 
 export default {
   components: {
-    AppDialog, FileList, FileSelectDialog, FileUpload, UiButton
+    AppDialog, FileList, FileUpload, UiButton
   },
   methods: {
     fileSelected ( file ) {
@@ -49,10 +45,6 @@ export default {
     },
     cancelDialog: function () {
       this.$refs.addFile.onClose()
-    },
-    refresh () { this.getFileList() },
-    showSelectDialog () {
-      this.$refs.fileSelectDialog.showDialog()
     },
   },
 }

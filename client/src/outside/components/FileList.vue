@@ -11,19 +11,16 @@
         div(class="list-files-container")
           a(v-for="file in otherFiles", class="list-element", :href="file.url", target="_blank")  {{file.fName}}
 
-      div(class="controls")
-        ui-button(v-on:buttonClicked="refresh") Refresh
       div(v-show="errorMessage", class="error-msg") {{ errorMessage }}
     div(v-else)  You are not authorized to upload files.
 </template>
 <script>
 import StoreHelper from '@/helpers/store-helper'
-import UiButton from '@/app/ui/UiButton'
 import EventBus from '@/helpers/event-bus'
 import { PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
 
 export default {
-  components: { UiButton  },
+  components: {  },
   data () {
     return {
     }
@@ -72,7 +69,8 @@ export default {
 .list-element {
   flex: 0 0 auto;
   background: $grey10;
-  margin: 0.5rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
   padding: 0.5rem;
 }
 .image-element {

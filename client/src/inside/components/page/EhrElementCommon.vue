@@ -14,7 +14,6 @@ const DEPENDENT_PROPS = EhrTypes.dependentOn
 const dbInputs = false
 const dbDialog = false
 const dbPage = false
-const dbDetail = false
 
 export default {
   extends: EhrDependent,
