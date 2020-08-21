@@ -228,19 +228,25 @@ export default class FileController {
     router.get('/list', (req, res, next) => {
       const {toolConsumerId} = req.authPayload
       if (!toolConsumerId) {
+        debug('File get list no consumer id ', req.authPayload)
         let error = new Error(TEXT.INVALID_AUTH_CONSUMER)
         error.status = 400
         return next(error)
       }
       const dir = path.join(this.ehrFilesDirectory, toolConsumerId)
+      debug('File get list for dir', dir)
       fs.access(dir, fs.constants.F_OK, (err) => {
         if (err) {
+          debug('File dir does not exist so return empty list')
           res.status = 200
           res.json('[]')
+          return res.end()
         }
         fs.readdir(dir, {withFileTypes: true}, (err, files) => {
-          if (err)
+          if (err) {
+            debug('File readdir got error', err)
             return next(err)
+          }
           let fNames = files.filter(item => !item.isDirectory()).map(item => item.name)
           res.status = 200
           res.json(JSON.stringify(fNames))

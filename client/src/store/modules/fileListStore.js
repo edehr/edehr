@@ -1,6 +1,6 @@
 import InstoreHelper from './instoreHelper'
 import StoreHelper from '@/helpers/store-helper'
-const debugFL = true
+const debugFL = false
 
 const state = {
   ehrMaxFileSize: 1024 * 2,

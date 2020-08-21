@@ -189,11 +189,11 @@ export function apiError (app, config) {
   }
 
   function errorHandler (err, req, res, next) {
-    debug('API errorHandler', err.message, err.status, err.errorData)
+    debug('API errorHandler', err.message, err.status, err.errorData, res.status)
     let status = err.status || 500
     let errorData = err.errorData || {}
     let json =  {message: err.message, status: status, errorData: JSON.stringify(errorData)}
-    res.status(status)
+    res.status = status
     res.json(json)
     // Returning a rendered html page is awkward for ajax clients. Return json and let the client decide how to format it.
     // res.render('server-errors/error',json)

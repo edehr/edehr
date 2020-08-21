@@ -21,8 +21,8 @@ export const LEAVE_PROMPT = 'If you leave before saving, your changes will be lo
 
 const PROPS = EhrTypes.elementProperties
 const dbDialog = false
-const dbPageForm = false
-const dbLoad = false
+const dbPageForm = true
+const dbLoad = true
 const dbTable = false
 const dbLeave = false
 
@@ -522,7 +522,6 @@ export default class EhrHelpV2 {
     }
     this._loadPageFormData(formKey)
     this._setEditing(true)
-    if (dbPageForm) console.log('EhrHelperV2 beginEdit', this.pageFormData)
   }
 
   /**

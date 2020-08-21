@@ -3,9 +3,9 @@
 {inputType: ehr_group}	eCell	{Label: A group label}	eCell	{pN: 40}	{fN: 1}	{gN: 1}	{sgN: }	eCell	{formOption: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: form_label}	eCell	{Label: <b>a form <i>label</i></b>}	{elementKey: pform_label}	{pN: 40}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: spacer}	eCell	{Label: spacer}	{elementKey: pspacer}	{pN: 40}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Name}	{elementKey: name}	{pN: 40}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Default_value: 80}	eCell	{Suffix: lb}	{Mandatory: TRUE}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: weight}	{elementKey: name}	{pN: 40}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Default_value: 80}	eCell	{Suffix: lb}	{Mandatory: TRUE}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: checkbox}	eCell	{Label: checkbox}	{elementKey: pcheckbox}	{pN: 40}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Default_value: TRUE}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: a checkbox iinput}	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: text}	{elementKey: defaultText}	{pN: 40}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	{dependentOn: disable:pcheckbox}	{Default_value: some default}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: a text input}	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: disabledOnCheck}	{elementKey: defaultText}	{pN: 40}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	{dependentOn: disable:pcheckbox}	{Default_value: some default}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: a text input}	eCell	eCell	eCell
 {inputType: assetLink}	eCell	{Label: assetLink}	{elementKey: passetLink}	{pN: 40}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{assetBase: standardized-assessment-tools}	{assetName: the-canadian-ed-triage-and-acuity-scale.gif}	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: select}	{elementKey: pselect}	{pN: 40}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Options: 1=a choice 1
 2=b choice 1
@@ -14,6 +14,7 @@
 2=b choice 2
 3=c choice 2}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: p-cValue1}
 {inputType: calculatedValue}	eCell	{Label: calculatedValue}	{elementKey: p-cValue1}	{pN: 40}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: a calculated value based on the select 'pselect1' on this page}	eCell	eCell	eCell
+{inputType: ehrFile}	eCell	{Label: A File}	{elementKey: aFile}	{pN: 40}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	{Label: Second group}	eCell	{pN: 40}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_subgroup}	eCell	{Label: subgroup 1}	{elementKey: subgroup1}	{pN: 40}	{fN: 1}	{gN: 2}	{sgN: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: checkset}	eCell	{Label: checkset}	{elementKey: pcheckset}	{pN: 40}	{fN: 1}	{gN: 2}	{sgN: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Default_value: check1,all}	"{Options: check1=check option 1

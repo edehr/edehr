@@ -27,7 +27,7 @@ export default function () {
           defaultValue: '80',
           formIndex: '1',
           inputType: 'text',
-          label: 'Name',
+          label: 'weight',
           mandatory: true,
           suffix: 'lb',
           fqn: 'testPage.name'
@@ -49,7 +49,7 @@ export default function () {
           formIndex: '1',
           helperText: 'a text input',
           inputType: 'text',
-          label: 'text',
+          label: 'disabledOnCheck',
           fqn: 'testPage.defaultText',
           helperHtml: '<p>a text input</p>'
         },
@@ -114,6 +114,13 @@ export default function () {
           label: 'calculatedValue',
           fqn: 'testPage.p-cValue1',
           helperHtml: '<p>a calculated value based on the select \'pselect1\' on this page</p>'
+        },
+        {
+          elementKey: 'aFile',
+          formIndex: '1',
+          inputType: 'ehrFile',
+          label: 'A File',
+          fqn: 'testPage.aFile'
         },
         {
           elementKey: 'pcheckset',
@@ -326,7 +333,7 @@ export default function () {
         }
       ],
       recHeader: true,
-      generated: '2020-07-30T17:01:02-07:00',
+      generated: '2020-08-17T13:07:52-07:00',
       pageElements: {
         form1: {
           elementKey: 'form1',
@@ -347,7 +354,8 @@ export default function () {
                 'passetLink',
                 'pselect',
                 'pselect2',
-                'p-cValue1'
+                'p-cValue1',
+                'aFile'
               ]
             },
             {
@@ -1040,7 +1048,7 @@ export default function () {
         }
       ],
       recHeader: true,
-      generated: '2020-07-30T17:01:02-07:00',
+      generated: '2020-08-17T13:07:52-07:00',
       pageElements: {
         table1: {
           elementKey: 'table1',
