@@ -200,12 +200,12 @@ export default function () {
               text: 'Comode'
             },
             {
-              key: 'Urinal,',
-              text: 'Urinal,'
+              key: 'Urinal',
+              text: 'Urinal'
             },
             {
-              key: 'Help to the toilette',
-              text: 'Help to the toilette'
+              key: 'Help to the toilet',
+              text: 'Help to the toilet'
             },
             {
               key: 'Brief',
@@ -436,7 +436,7 @@ export default function () {
         }
       ],
       recHeader: true,
-      generated: '2020-07-30T16:48:41-07:00',
+      generated: '2020-08-21T10:32:52-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -620,7 +620,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group41',
+                elementKey: 'ehr_group1',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -693,7 +693,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group42',
+                elementKey: 'ehr_group2',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '7',
                 gChildren: [
@@ -960,10 +960,10 @@ export default function () {
           fqn: 'musculoskeletal.temp'
         },
         {
-          elementKey: 'spacer45',
+          elementKey: 'spacer5',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'musculoskeletal.spacer45'
+          fqn: 'musculoskeletal.spacer5'
         },
         {
           elementKey: 'useOfAmbulatoryAid',
@@ -1034,7 +1034,7 @@ export default function () {
         }
       ],
       recHeader: true,
-      generated: '2020-07-30T16:48:41-07:00',
+      generated: '2020-08-21T10:32:52-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1138,7 +1138,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group43',
+                elementKey: 'ehr_group3',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -1149,7 +1149,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group44',
+                elementKey: 'ehr_group4',
                 gIndex: '2',
                 gChildren: [
                   'swelling',
@@ -1160,13 +1160,13 @@ export default function () {
                   'pulse',
                   'colour',
                   'temp',
-                  'spacer45',
+                  'spacer5',
                   'useOfAmbulatoryAid',
                   'type'
                 ]
               },
               {
-                elementKey: 'ehr_group46',
+                elementKey: 'ehr_group6',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '3',
                 gChildren: [
@@ -1411,7 +1411,7 @@ export default function () {
         }
       ],
       recHeader: true,
-      generated: '2020-07-30T16:48:41-07:00',
+      generated: '2020-08-21T10:32:52-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1566,7 +1566,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group54',
+                elementKey: 'ehr_group19',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -1577,7 +1577,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group55',
+                elementKey: 'ehr_group20',
                 label: 'Primary pain site',
                 gIndex: '2',
                 gChildren: [
@@ -1592,7 +1592,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group56',
+                elementKey: 'ehr_group21',
                 formCss: 'grid-left-to-right-1 section-divider',
                 gIndex: '3',
                 gChildren: [
@@ -1600,7 +1600,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group57',
+                elementKey: 'ehr_group22',
                 label: 'Secondary pain site',
                 gIndex: '4',
                 gChildren: [
@@ -1615,7 +1615,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group58',
+                elementKey: 'ehr_group23',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '5',
                 gChildren: [
@@ -1988,7 +1988,7 @@ export default function () {
         }
       ],
       recHeader: true,
-      generated: '2020-07-30T16:48:41-07:00',
+      generated: '2020-08-21T10:32:52-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2144,7 +2144,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group59',
+                elementKey: 'ehr_group24',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -2155,7 +2155,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group60',
+                elementKey: 'ehr_group25',
                 formCss: 'section-divider',
                 gIndex: '2',
                 gChildren: [
@@ -2164,7 +2164,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group61',
+                elementKey: 'ehr_group26',
                 formCss: 'section-divider',
                 gIndex: '3',
                 gChildren: [
@@ -2173,7 +2173,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group62',
+                elementKey: 'ehr_group27',
                 formCss: 'section-divider',
                 gIndex: '4',
                 gChildren: [
@@ -2221,7 +2221,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group63',
+                elementKey: 'ehr_group28',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '9',
                 gChildren: [
@@ -2375,7 +2375,7 @@ export default function () {
         }
       ],
       recHeader: true,
-      generated: '2020-07-30T16:48:41-07:00',
+      generated: '2020-08-21T10:32:52-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2435,7 +2435,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group64',
+                elementKey: 'ehr_group29',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -2446,7 +2446,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group65',
+                elementKey: 'ehr_group30',
                 gIndex: '2',
                 gChildren: [
                   'order',
@@ -2456,7 +2456,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group66',
+                elementKey: 'ehr_group31',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '3',
                 gChildren: [
@@ -2543,10 +2543,10 @@ export default function () {
           fqn: 'referrals.referralProfession'
         },
         {
-          elementKey: 'spacer69',
+          elementKey: 'spacer34',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'referrals.spacer69'
+          fqn: 'referrals.spacer34'
         },
         {
           elementKey: 'appointmentDate',
@@ -2587,7 +2587,7 @@ export default function () {
         }
       ],
       recHeader: true,
-      generated: '2020-07-30T16:48:41-07:00',
+      generated: '2020-08-21T10:32:52-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2647,7 +2647,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group67',
+                elementKey: 'ehr_group32',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -2658,12 +2658,12 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group68',
+                elementKey: 'ehr_group33',
                 gIndex: '2',
                 gChildren: [
                   'referralName',
                   'referralProfession',
-                  'spacer69',
+                  'spacer34',
                   'appointmentDate',
                   'appointmentTime',
                   'status'
@@ -2751,11 +2751,11 @@ export default function () {
           fqn: 'labRequisitions.requisition'
         },
         {
-          elementKey: 'spacer72',
+          elementKey: 'spacer37',
           formIndex: '1',
           inputType: 'spacer',
           tableColumn: '4',
-          fqn: 'labRequisitions.spacer72'
+          fqn: 'labRequisitions.spacer37'
         },
         {
           elementKey: 'ordered',
@@ -2768,7 +2768,7 @@ export default function () {
         }
       ],
       recHeader: true,
-      generated: '2020-07-30T16:48:41-07:00',
+      generated: '2020-08-21T10:32:52-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2801,7 +2801,7 @@ export default function () {
             {
               ehr_list_index: '4',
               items: [
-                'spacer72'
+                'spacer37'
               ]
             },
             {
@@ -2818,7 +2818,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group70',
+                elementKey: 'ehr_group35',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -2829,12 +2829,12 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group71',
+                elementKey: 'ehr_group36',
                 gIndex: '2',
                 gChildren: [
                   'requisition',
                   'requisition',
-                  'spacer72',
+                  'spacer37',
                   'ordered'
                 ]
               }
@@ -3146,7 +3146,7 @@ export default function () {
         }
       ],
       recHeader: true,
-      generated: '2020-07-30T16:48:41-07:00',
+      generated: '2020-08-21T10:32:52-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -3280,7 +3280,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group73',
+                elementKey: 'ehr_group38',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -3291,7 +3291,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group74',
+                elementKey: 'ehr_group39',
                 gIndex: '2',
                 gChildren: [
                   'medication',
@@ -3346,7 +3346,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group75',
+                elementKey: 'ehr_group40',
                 gIndex: '8',
                 gChildren: [
                   'instructions',
@@ -3523,7 +3523,7 @@ export default function () {
         }
       ],
       recHeader: true,
-      generated: '2020-07-30T16:48:41-07:00',
+      generated: '2020-08-21T10:32:52-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -3602,7 +3602,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group76',
+                elementKey: 'ehr_group41',
                 gIndex: '1',
                 gChildren: [
                   'medStatus',
@@ -3641,7 +3641,6 @@ export default function () {
       pageChildren: [
         {
           elementKey: 'admissionDay',
-          defaultValue: 'Day 0',
           formIndex: '1',
           inputType: 'text',
           label: 'Admission day',
@@ -3685,10 +3684,10 @@ export default function () {
           fqn: 'dischargeSummary.dischargingPhysician/np'
         },
         {
-          elementKey: 'spacer78',
+          elementKey: 'spacer43',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'dischargeSummary.spacer78'
+          fqn: 'dischargeSummary.spacer43'
         },
         {
           elementKey: 'clinicalSummary',
@@ -3713,10 +3712,10 @@ export default function () {
           fqn: 'dischargeSummary.dischargeEducation'
         },
         {
-          elementKey: 'spacer80',
+          elementKey: 'spacer45',
           formIndex: '2',
           inputType: 'spacer',
-          fqn: 'dischargeSummary.spacer80'
+          fqn: 'dischargeSummary.spacer45'
         },
         {
           elementKey: 'dischargeDay',
@@ -3787,7 +3786,7 @@ export default function () {
         }
       ],
       recHeader: true,
-      generated: '2020-07-30T16:48:41-07:00',
+      generated: '2020-08-21T10:32:52-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -3795,12 +3794,12 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
-              elementKey: 'ehr_group77',
+              elementKey: 'ehr_group42',
               gIndex: '1',
               gChildren: [
                 'admissionDay',
                 'dischargingPhysician/np',
-                'spacer78',
+                'spacer43',
                 'clinicalSummary'
               ]
             }
@@ -3812,12 +3811,12 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
-              elementKey: 'ehr_group79',
+              elementKey: 'ehr_group44',
               gIndex: '1',
               gChildren: [
                 'dischargeDiagnosis',
                 'dischargeEducation',
-                'spacer80',
+                'spacer45',
                 'dischargeDay',
                 'dischargeTime',
                 'dischargedTo',
@@ -3859,7 +3858,7 @@ export default function () {
         }
       ],
       recHeader: true,
-      generated: '2020-07-30T16:48:41-07:00',
+      generated: '2020-08-21T10:32:52-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -3867,7 +3866,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
-              elementKey: 'ehr_group81',
+              elementKey: 'ehr_group46',
               gIndex: '1',
               gChildren: [
                 'paymentType'
@@ -3923,8 +3922,368 @@ export default function () {
           fqn: 'integumentaryAssessment.time'
         },
         {
-          elementKey: 'woundLocation',
+          elementKey: 'incisionLabel',
           formIndex: '1',
+          helperText: 'Enter incision label 1 to 4',
+          inputType: 'text',
+          label: 'Incision label',
+          tableColumn: '2',
+          fqn: 'integumentaryAssessment.incisionLabel',
+          helperHtml: '<p>Enter incision label 1 to 4</p>'
+        },
+        {
+          elementKey: 'postOpDay',
+          formIndex: '1',
+          inputType: 'day',
+          label: 'Post Operative Day',
+          tableColumn: '3',
+          fqn: 'integumentaryAssessment.postOpDay'
+        },
+        {
+          elementKey: 'opProcedure',
+          formIndex: '1',
+          inputType: 'text',
+          label: 'Operative Procedure',
+          tableColumn: '4',
+          fqn: 'integumentaryAssessment.opProcedure'
+        },
+        {
+          elementKey: 'incisionLocation',
+          formIndex: '1',
+          inputType: 'checkset',
+          label: 'Incision location',
+          options: [
+            {
+              key: 'Head',
+              text: 'Head'
+            },
+            {
+              key: 'Face',
+              text: 'Face'
+            },
+            {
+              key: 'Neck',
+              text: 'Neck'
+            },
+            {
+              key: 'Chest',
+              text: 'Chest'
+            },
+            {
+              key: 'Arm (Left)',
+              text: 'Arm (Left)'
+            },
+            {
+              key: 'Arm (Right)',
+              text: 'Arm (Right)'
+            },
+            {
+              key: 'Hand (Left)',
+              text: 'Hand (Left)'
+            },
+            {
+              key: 'Hand (Right)',
+              text: 'Hand (Right)'
+            },
+            {
+              key: 'Abdomen',
+              text: 'Abdomen'
+            },
+            {
+              key: 'Back',
+              text: 'Back'
+            },
+            {
+              key: 'Pelvis',
+              text: 'Pelvis'
+            },
+            {
+              key: 'Buttock',
+              text: 'Buttock'
+            },
+            {
+              key: 'Leg (Left)',
+              text: 'Leg (Left)'
+            },
+            {
+              key: 'Leg (Right)',
+              text: 'Leg (Right)'
+            },
+            {
+              key: 'Foot (Left)',
+              text: 'Foot (Left)'
+            },
+            {
+              key: 'Foot (Right)',
+              text: 'Foot (Right)'
+            },
+            {
+              key: '',
+              text: ''
+            }
+          ],
+          tableColumn: '5',
+          fqn: 'integumentaryAssessment.incisionLocation'
+        },
+        {
+          elementKey: 'closureMethod',
+          formIndex: '1',
+          inputType: 'checkset',
+          label: 'Closure Method',
+          options: [
+            {
+              key: 'Sutures',
+              text: 'Sutures'
+            },
+            {
+              key: 'Staples',
+              text: 'Staples'
+            },
+            {
+              key: 'Retention Sutures',
+              text: 'Retention Sutures'
+            },
+            {
+              key: 'SurgiGlue',
+              text: 'SurgiGlue'
+            },
+            {
+              key: 'Steri-Strip',
+              text: 'Steri-Strip'
+            },
+            {
+              key: 'Not Applicable',
+              text: 'Not Applicable'
+            }
+          ],
+          tableColumn: '6',
+          fqn: 'integumentaryAssessment.closureMethod'
+        },
+        {
+          elementKey: 'name',
+          formIndex: '2',
+          inputType: 'text',
+          label: 'Name',
+          tableColumn: '1',
+          tableLabel: 'Identification',
+          recHeader: true,
+          fqn: 'integumentaryAssessment.name'
+        },
+        {
+          elementKey: 'profession',
+          formIndex: '2',
+          inputType: 'text',
+          label: 'Profession',
+          tableColumn: '1',
+          recHeader: true,
+          fqn: 'integumentaryAssessment.profession'
+        },
+        {
+          elementKey: 'day',
+          formIndex: '2',
+          inputType: 'day',
+          label: 'Day',
+          tableColumn: '1',
+          recHeader: true,
+          fqn: 'integumentaryAssessment.day'
+        },
+        {
+          elementKey: 'time',
+          formIndex: '2',
+          inputType: 'time',
+          label: 'Time',
+          tableColumn: '1',
+          validation: 'time24',
+          recHeader: true,
+          fqn: 'integumentaryAssessment.time'
+        },
+        {
+          elementKey: 'incisionLabel',
+          formIndex: '2',
+          helperText: 'Enter incision label 1 to 4',
+          inputType: 'text',
+          label: 'Incision',
+          tableColumn: '2',
+          fqn: 'integumentaryAssessment.incisionLabel',
+          helperHtml: '<p>Enter incision label 1 to 4</p>'
+        },
+        {
+          elementKey: 'incisionStatus',
+          formIndex: '2',
+          inputType: 'select',
+          label: 'Incision Status',
+          options: [
+            {
+              key: 'Approximated',
+              text: 'Approximated'
+            },
+            {
+              key: 'Fully Epithelialized',
+              text: 'Fully Epithelialized'
+            },
+            {
+              key: 'Tenuous',
+              text: 'Tenuous'
+            },
+            {
+              key: 'Gaping',
+              text: 'Gaping'
+            }
+          ],
+          tableColumn: '3',
+          fqn: 'integumentaryAssessment.incisionStatus'
+        },
+        {
+          elementKey: 'closureChanges',
+          formIndex: '2',
+          inputType: 'text',
+          label: 'Change in closure',
+          tableColumn: '4',
+          fqn: 'integumentaryAssessment.closureChanges'
+        },
+        {
+          elementKey: 'exudateAmount',
+          formIndex: '2',
+          inputType: 'checkset',
+          label: 'Exudate Amount',
+          options: [
+            {
+              key: 'None',
+              text: 'None'
+            },
+            {
+              key: 'Small',
+              text: 'Small'
+            },
+            {
+              key: 'Moderate',
+              text: 'Moderate'
+            },
+            {
+              key: 'Large',
+              text: 'Large'
+            }
+          ],
+          tableColumn: '5',
+          fqn: 'integumentaryAssessment.exudateAmount'
+        },
+        {
+          elementKey: 'exudateType',
+          formIndex: '2',
+          inputType: 'checkset',
+          label: 'Exudate Type',
+          options: [
+            {
+              key: 'Serous',
+              text: 'Serous'
+            },
+            {
+              key: 'Sanginous',
+              text: 'Sanginous'
+            },
+            {
+              key: 'Purulent',
+              text: 'Purulent'
+            },
+            {
+              key: 'Other',
+              text: 'Other'
+            },
+            {
+              key: 'Not Applicable',
+              text: 'Not Applicable'
+            }
+          ],
+          tableColumn: '6',
+          fqn: 'integumentaryAssessment.exudateType'
+        },
+        {
+          elementKey: 'periIncisionSkin',
+          formIndex: '2',
+          inputType: 'checkset',
+          label: 'Peri-Incisional Skin',
+          options: [
+            {
+              key: 'Intact',
+              text: 'Intact'
+            },
+            {
+              key: 'Macerated',
+              text: 'Macerated'
+            },
+            {
+              key: 'BlistersErythema less than 2cm',
+              text: 'BlistersErythema less than 2cm'
+            },
+            {
+              key: 'Erythema greater than 2cm',
+              text: 'Erythema greater than 2cm'
+            },
+            {
+              key: 'Induration less than 2cm',
+              text: 'Induration less than 2cm'
+            },
+            {
+              key: 'Induration grater than 2cm',
+              text: 'Induration grater than 2cm'
+            },
+            {
+              key: 'Other',
+              text: 'Other'
+            }
+          ],
+          tableColumn: '7',
+          fqn: 'integumentaryAssessment.periIncisionSkin'
+        },
+        {
+          elementKey: 'periIncisionSkinOther',
+          formIndex: '2',
+          inputType: 'text',
+          label: 'Other',
+          tableColumn: '8',
+          fqn: 'integumentaryAssessment.periIncisionSkinOther'
+        },
+        {
+          elementKey: 'name',
+          formIndex: '3',
+          inputType: 'text',
+          label: 'Name',
+          tableColumn: '1',
+          tableLabel: 'Identification',
+          recHeader: true,
+          fqn: 'integumentaryAssessment.name'
+        },
+        {
+          elementKey: 'profession',
+          formIndex: '3',
+          inputType: 'text',
+          label: 'Profession',
+          tableColumn: '1',
+          recHeader: true,
+          fqn: 'integumentaryAssessment.profession'
+        },
+        {
+          elementKey: 'day',
+          formIndex: '3',
+          inputType: 'day',
+          label: 'Day',
+          tableColumn: '1',
+          recHeader: true,
+          fqn: 'integumentaryAssessment.day'
+        },
+        {
+          elementKey: 'time',
+          formIndex: '3',
+          inputType: 'time',
+          label: 'Time',
+          tableColumn: '1',
+          validation: 'time24',
+          recHeader: true,
+          fqn: 'integumentaryAssessment.time'
+        },
+        {
+          elementKey: 'woundLocation',
+          formIndex: '3',
           inputType: 'select',
           label: 'Wound location',
           options: [
@@ -4003,7 +4362,7 @@ export default function () {
         },
         {
           elementKey: 'woundLabel',
-          formIndex: '1',
+          formIndex: '3',
           inputType: 'select',
           label: 'Wound label',
           options: [
@@ -4030,7 +4389,7 @@ export default function () {
         },
         {
           elementKey: 'goalOfCare',
-          formIndex: '1',
+          formIndex: '3',
           inputType: 'select',
           label: 'Goal of care',
           options: [
@@ -4048,22 +4407,22 @@ export default function () {
             }
           ],
           tableColumn: '4',
-          tableCss: 'hr-table',
           tableLabel: 'Goal of care',
           fqn: 'integumentaryAssessment.goalOfCare'
         },
         {
           elementKey: 'woundDayOnset',
-          formIndex: '1',
+          formIndex: '3',
           inputType: 'day',
           label: 'Wound day of onset',
           tableColumn: '5',
+          tableCss: 'hr-table',
           tableLabel: 'Wound day of onset',
           fqn: 'integumentaryAssessment.woundDayOnset'
         },
         {
           elementKey: 'stageDay',
-          formIndex: '1',
+          formIndex: '3',
           inputType: 'day',
           label: 'Case day',
           tableColumn: '6',
@@ -4071,7 +4430,7 @@ export default function () {
         },
         {
           elementKey: 'stageType',
-          formIndex: '1',
+          formIndex: '3',
           helperText: 'Pressure Injury Stage 1 Intact skin with localized nonblanchable erythema; darkly pigmented skin may not show visible blanching but will appear different than the colour of surrounding skin.\nPressure Injury Stage 2 Partial thickness wound presenting as a shallow open ulcer with a red / pink wound bed, slough may be present but does not obscure the depth of tissue loss; may also present as an intact or open/ruptured serum-filled or serosanguineous filled blister.\nPressure Injury Stage 3 Full thickness wound; subcutaneous tissue may be visible but bone, tendon and muscle are not exposed; may include undermining and/or sinus tracks; slough or eschar may be present but does not obscure the depth of tissue loss.\nPressure Injury Stage 4 Full thickness wound with exposed bone, tendon or muscle; often includes undermining and/or sinus tracks; slough or eschar may be present on some parts of the wound bed but does not obscure the depth of tissue loss.\nPressure Injury Unstageable  A wound in which the wound bed is covered by sufficient slough and / or eschar to preclude staging.\nPressure Injury Deep Tissue Injury  A localized purple or maroon area of intact skin or a blood filled blister that occur when underlying soft tissue is damaged from friction or shear.\nSurgical Wounds Secondary intention: Incision has dehisced and surgical closure is not possible; wounds must heal by granulation\nSkin Tear: Skin tears are the result of trauma caused by shearing, friction, or blunt force to the skin. Consider risk factors (i.e.: advanced age, immobility, inadequate hydration/nutrition, falls)\nAbscess: A local collection of purulent and/or sanguineous drainage that may be incised and drained.\nBurn: Tissue loss/damage as a result from thermal, chemical, electrical, and radiation sources.\nVenous Ulcer: Caused by venous insufficiency due to valve dysfunction, complete or partial blockage of the deep veins, and / or failure of the calf muscle pump.\nArterial Ulcer: Caused by a disruption to arterial blood flow leading to moderate / severe tissue ischemia.\nMixed Arterial/Venous Ulcer: Caused by both venous insufficiency and disrupted arterial blood flow.\nDiabetic/Neuropathic Ulcers: A result of neuropathy, structural foot changes, and/or altered blood flow related to diabetes mellitus (or alcoholism, renal failure, HIV, late stage syphilis, trauma and surgery).\n',
           inputType: 'checkset',
           label: 'Wound Etiology/Type',
@@ -4144,7 +4503,7 @@ export default function () {
         {
           elementKey: 'stageOther',
           dependentOn: 'visble:stageType=other',
-          formIndex: '1',
+          formIndex: '3',
           inputType: 'text',
           label: 'Other',
           tableColumn: '8',
@@ -4152,7 +4511,7 @@ export default function () {
         },
         {
           elementKey: 'length',
-          formIndex: '1',
+          formIndex: '3',
           inputType: 'text',
           label: 'Length cm.mm',
           tableColumn: '9',
@@ -4161,7 +4520,7 @@ export default function () {
         },
         {
           elementKey: 'width',
-          formIndex: '1',
+          formIndex: '3',
           inputType: 'text',
           label: 'Width cm.mm',
           tableColumn: '10',
@@ -4170,17 +4529,16 @@ export default function () {
         },
         {
           elementKey: 'depth',
-          formIndex: '1',
+          formIndex: '3',
           inputType: 'text',
           label: 'Depth cm.mm',
           tableColumn: '11',
-          tableCss: 'hr-table',
           tableLabel: 'Depth cm.mm',
           fqn: 'integumentaryAssessment.depth'
         },
         {
           elementKey: 'sinusDepth1',
-          formIndex: '1',
+          formIndex: '3',
           inputType: 'text',
           label: 'Sinus/tunnel 1 depth cm.mm',
           tableColumn: '12',
@@ -4189,7 +4547,7 @@ export default function () {
         },
         {
           elementKey: 'sinusDepthLocation1',
-          formIndex: '1',
+          formIndex: '3',
           helperText: 'O\'clock',
           inputType: 'select',
           label: 'Location',
@@ -4244,20 +4602,19 @@ export default function () {
             }
           ],
           tableColumn: '13',
-          tableCss: 'hr-table',
           tableLabel: 'Location',
           fqn: 'integumentaryAssessment.sinusDepthLocation1',
           helperHtml: '<p>O\'clock</p>'
         },
         {
-          elementKey: 'spacer49',
-          formIndex: '1',
+          elementKey: 'spacer11',
+          formIndex: '3',
           inputType: 'spacer',
-          fqn: 'integumentaryAssessment.spacer49'
+          fqn: 'integumentaryAssessment.spacer11'
         },
         {
           elementKey: 'sinusDepth2',
-          formIndex: '1',
+          formIndex: '3',
           inputType: 'text',
           label: 'Sinus/tunnel 2 depth cm.mm',
           tableColumn: '14',
@@ -4266,7 +4623,7 @@ export default function () {
         },
         {
           elementKey: 'sinusDepthLocation2',
-          formIndex: '1',
+          formIndex: '3',
           helperText: 'O\'clock',
           inputType: 'select',
           label: 'Location',
@@ -4321,20 +4678,19 @@ export default function () {
             }
           ],
           tableColumn: '15',
-          tableCss: 'hr-table',
           tableLabel: 'Location',
           fqn: 'integumentaryAssessment.sinusDepthLocation2',
           helperHtml: '<p>O\'clock</p>'
         },
         {
-          elementKey: 'spacer50',
-          formIndex: '1',
+          elementKey: 'spacer12',
+          formIndex: '3',
           inputType: 'spacer',
-          fqn: 'integumentaryAssessment.spacer50'
+          fqn: 'integumentaryAssessment.spacer12'
         },
         {
           elementKey: 'underminingDepth1',
-          formIndex: '1',
+          formIndex: '3',
           inputType: 'text',
           label: 'Undermining 1 depth cm.mm',
           tableColumn: '16',
@@ -4343,7 +4699,7 @@ export default function () {
         },
         {
           elementKey: 'underminingDepthLocation1A',
-          formIndex: '1',
+          formIndex: '3',
           helperText: 'O\'clock',
           inputType: 'select',
           label: 'Location',
@@ -4398,14 +4754,13 @@ export default function () {
             }
           ],
           tableColumn: '17',
-          tableCss: 'hr-table',
           tableLabel: 'Location',
           fqn: 'integumentaryAssessment.underminingDepthLocation1A',
           helperHtml: '<p>O\'clock</p>'
         },
         {
           elementKey: 'underminingDepthLocation1B',
-          formIndex: '1',
+          formIndex: '3',
           helperText: 'O\'clock',
           inputType: 'select',
           label: 'Location',
@@ -4460,14 +4815,13 @@ export default function () {
             }
           ],
           tableColumn: '18',
-          tableCss: 'hr-table',
           tableLabel: 'Location',
           fqn: 'integumentaryAssessment.underminingDepthLocation1B',
           helperHtml: '<p>O\'clock</p>'
         },
         {
           elementKey: 'underminingDepth2',
-          formIndex: '1',
+          formIndex: '3',
           inputType: 'text',
           label: 'Undermining 2 depth cm.mm',
           tableColumn: '19',
@@ -4476,7 +4830,7 @@ export default function () {
         },
         {
           elementKey: 'underminingDepthLocation2A',
-          formIndex: '1',
+          formIndex: '3',
           helperText: 'O\'clock',
           inputType: 'select',
           label: 'Location',
@@ -4531,14 +4885,13 @@ export default function () {
             }
           ],
           tableColumn: '20',
-          tableCss: 'hr-table',
           tableLabel: 'Location',
           fqn: 'integumentaryAssessment.underminingDepthLocation2A',
           helperHtml: '<p>O\'clock</p>'
         },
         {
           elementKey: 'underminingDepthLocation2B',
-          formIndex: '1',
+          formIndex: '3',
           helperText: 'O\'clock',
           inputType: 'select',
           label: 'Location',
@@ -4600,9 +4953,10 @@ export default function () {
         },
         {
           elementKey: 'pinkred',
-          formIndex: '1',
+          formIndex: '3',
+          helperText: 'Superficial (pink/red): Clean, open pink/red area with non-measurable depth',
           inputType: 'select',
-          label: '% Pink/red',
+          label: '% Superficial (pink/red)',
           options: [
             {
               key: '10=10%',
@@ -4647,13 +5001,14 @@ export default function () {
           ],
           passToFunction: 'woundBedCalculation',
           tableColumn: '22',
-          tableLabel: '% Pink/red',
-          fqn: 'integumentaryAssessment.pinkred'
+          tableLabel: '% Superficial (pink/red)',
+          fqn: 'integumentaryAssessment.pinkred',
+          helperHtml: '<p>Superficial (pink/red): Clean, open pink/red area with non-measurable depth</p>'
         },
         {
           elementKey: 'granulation',
-          formIndex: '1',
-          helperText: 'Red pebbly',
+          formIndex: '3',
+          helperText: 'Granulation Tissue: Firm, red, moist, pebbled healthy tissue',
           inputType: 'select',
           label: '% Granulation',
           options: [
@@ -4702,11 +5057,12 @@ export default function () {
           tableColumn: '23',
           tableLabel: '% Granulation',
           fqn: 'integumentaryAssessment.granulation',
-          helperHtml: '<p>Red pebbly</p>'
+          helperHtml: '<p>Granulation Tissue: Firm, red, moist, pebbled healthy tissue</p>'
         },
         {
           elementKey: 'slough',
-          formIndex: '1',
+          formIndex: '3',
+          helperText: 'Slough: Moist or wet, loose or firmly attached, yellow to brown dead tissue',
           inputType: 'select',
           label: '% Slough',
           options: [
@@ -4754,11 +5110,13 @@ export default function () {
           passToFunction: 'woundBedCalculation',
           tableColumn: '24',
           tableLabel: '% Slough',
-          fqn: 'integumentaryAssessment.slough'
+          fqn: 'integumentaryAssessment.slough',
+          helperHtml: '<p>Slough: Moist or wet, loose or firmly attached, yellow to brown dead tissue</p>'
         },
         {
           elementKey: 'eschar',
-          formIndex: '1',
+          formIndex: '3',
+          helperText: 'Eschar (soft, boggy): Soft necrotic tissue which is black, brown, grey, or tan in color. It may be firmly or loosely attached to the wound edges and wound base; fluctuance and drainage may be present.',
           inputType: 'select',
           label: '% Eschar (soft, boggy)',
           options: [
@@ -4806,11 +5164,13 @@ export default function () {
           passToFunction: 'woundBedCalculation',
           tableColumn: '24',
           tableLabel: '% Eschar (soft, boggy)',
-          fqn: 'integumentaryAssessment.eschar'
+          fqn: 'integumentaryAssessment.eschar',
+          helperHtml: '<p>Eschar (soft, boggy): Soft necrotic tissue which is black, brown, grey, or tan in color. It may be firmly or loosely attached to the wound edges and wound base; fluctuance and drainage may be present.</p>'
         },
         {
           elementKey: 'eschar',
-          formIndex: '1',
+          formIndex: '3',
+          helperText: 'Eschar (dry, stable): Firm, dry necrotic tissue with an absence of drainage, edema, erythema or fluctuance. It is black or brown in color and is attached to the wound edges and wound base',
           inputType: 'select',
           label: '% Eschar (dry, stable)',
           options: [
@@ -4858,12 +5218,13 @@ export default function () {
           passToFunction: 'woundBedCalculation',
           tableColumn: '25',
           tableLabel: '% Eschar (dry, stable)',
-          fqn: 'integumentaryAssessment.eschar'
+          fqn: 'integumentaryAssessment.eschar',
+          helperHtml: '<p>Eschar (dry, stable): Firm, dry necrotic tissue with an absence of drainage, edema, erythema or fluctuance. It is black or brown in color and is attached to the wound edges and wound base</p>'
         },
         {
           elementKey: 'foreign',
-          formIndex: '1',
-          helperText: 'Sutures, mesh, hardware',
+          formIndex: '3',
+          helperText: 'Foreign body: Sutures, mesh, hardware',
           inputType: 'select',
           label: '% Foreign body',
           options: [
@@ -4912,12 +5273,12 @@ export default function () {
           tableColumn: '26',
           tableLabel: '% Foreign body',
           fqn: 'integumentaryAssessment.foreign',
-          helperHtml: '<p>Sutures, mesh, hardware</p>'
+          helperHtml: '<p>Foreign body: Sutures, mesh, hardware</p>'
         },
         {
           elementKey: 'underlying',
-          formIndex: '1',
-          helperText: 'Faschia, tendon, bone',
+          formIndex: '3',
+          helperText: 'Underlying structures: Faschia, tendon, bone',
           inputType: 'select',
           label: '% Underlying structures',
           options: [
@@ -4966,11 +5327,12 @@ export default function () {
           tableColumn: '27',
           tableLabel: '% Underlying structures',
           fqn: 'integumentaryAssessment.underlying',
-          helperHtml: '<p>Faschia, tendon, bone</p>'
+          helperHtml: '<p>Underlying structures: Faschia, tendon, bone</p>'
         },
         {
           elementKey: 'notVisible',
-          formIndex: '1',
+          formIndex: '3',
+          helperText: 'Not visible: A portion or all of the open wound bed that cannot be visualized',
           inputType: 'select',
           label: '% Not visible',
           options: [
@@ -5018,11 +5380,12 @@ export default function () {
           passToFunction: 'woundBedCalculation',
           tableColumn: '28',
           tableLabel: '% Not visible',
-          fqn: 'integumentaryAssessment.notVisible'
+          fqn: 'integumentaryAssessment.notVisible',
+          helperHtml: '<p>Not visible: A portion or all of the open wound bed that cannot be visualized</p>'
         },
         {
           elementKey: 'other',
-          formIndex: '1',
+          formIndex: '3',
           inputType: 'select',
           label: '% Other',
           options: [
@@ -5075,7 +5438,7 @@ export default function () {
         {
           elementKey: 'woundBedCalculation',
           defaultValue: '0',
-          formIndex: '1',
+          formIndex: '3',
           inputType: 'calculatedValue',
           label: 'Wound bed calculation',
           tableColumn: '30',
@@ -5086,7 +5449,7 @@ export default function () {
         },
         {
           elementKey: 'exudateAmount',
-          formIndex: '1',
+          formIndex: '3',
           inputType: 'select',
           label: 'Exudate amount',
           options: [
@@ -5113,7 +5476,7 @@ export default function () {
         },
         {
           elementKey: 'exudateType',
-          formIndex: '1',
+          formIndex: '3',
           inputType: 'checkset',
           label: 'Exudate type',
           options: [
@@ -5135,13 +5498,12 @@ export default function () {
             }
           ],
           tableColumn: '32',
-          tableCss: 'hr-table',
           tableLabel: 'Exudate type',
           fqn: 'integumentaryAssessment.exudateType'
         },
         {
           elementKey: 'odour',
-          formIndex: '1',
+          formIndex: '3',
           inputType: 'select',
           label: 'Odour present after cleansing',
           options: [
@@ -5155,13 +5517,12 @@ export default function () {
             }
           ],
           tableColumn: '33',
-          tableCss: 'hr-table',
           tableLabel: 'Odour present after cleansing',
           fqn: 'integumentaryAssessment.odour'
         },
         {
           elementKey: 'woundEdge',
-          formIndex: '1',
+          formIndex: '3',
           inputType: 'checkset',
           label: 'Wound edge',
           options: [
@@ -5188,7 +5549,7 @@ export default function () {
         },
         {
           elementKey: 'periWoundSkin',
-          formIndex: '1',
+          formIndex: '3',
           inputType: 'checkset',
           label: 'Peri-wound skin',
           options: [
@@ -5226,13 +5587,12 @@ export default function () {
             }
           ],
           tableColumn: '35',
-          tableCss: 'hr-table',
           tableLabel: 'Peri-wound skin',
           fqn: 'integumentaryAssessment.periWoundSkin'
         },
         {
           elementKey: 'woundPain',
-          formIndex: '1',
+          formIndex: '3',
           helperText: 'Scored from 10 point analogue Pain Scale\nSee Pain Assessment for details',
           inputType: 'text',
           label: 'Wound pain',
@@ -5246,7 +5606,7 @@ export default function () {
         },
         {
           elementKey: 'packingOut',
-          formIndex: '1',
+          formIndex: '3',
           helperText: 'Any depth 1cm or greater, count packing pieces',
           inputType: 'text',
           label: 'Packing out',
@@ -5257,25 +5617,24 @@ export default function () {
         },
         {
           elementKey: 'packinIn',
-          formIndex: '1',
+          formIndex: '3',
           helperText: 'Any depth 1cm or greater, count packing pieces',
           inputType: 'text',
           label: 'Packing in',
           tableColumn: '38',
-          tableCss: 'hr-table',
           tableLabel: 'Packing in',
           fqn: 'integumentaryAssessment.packinIn',
           helperHtml: '<p>Any depth 1cm or greater, count packing pieces</p>'
         },
         {
-          elementKey: 'spacer53',
-          formIndex: '1',
+          elementKey: 'spacer18',
+          formIndex: '3',
           inputType: 'spacer',
-          fqn: 'integumentaryAssessment.spacer53'
+          fqn: 'integumentaryAssessment.spacer18'
         },
         {
           elementKey: 'treatmentComplete',
-          formIndex: '1',
+          formIndex: '3',
           inputType: 'select',
           label: 'Treatments as per plan of care',
           options: [
@@ -5289,17 +5648,237 @@ export default function () {
             }
           ],
           tableColumn: '39',
+          tableCss: 'hr-table',
           tableLabel: 'Treatments as per plan of care',
           fqn: 'integumentaryAssessment.treatmentComplete'
         }
       ],
       recHeader: true,
-      generated: '2020-07-30T16:48:41-07:00',
+      generated: '2020-08-21T10:32:52-07:00',
       pageElements: {
-        table: {
-          elementKey: 'table',
-          tableKey: 'table',
+        tableIncision: {
+          elementKey: 'tableIncision',
+          tableKey: 'tableIncision',
           isTable: true,
+          label: 'Incision assessment',
+          addButtonText: 'Add an incision assessment',
+          ehr_list: [
+            {
+              label: 'Identification',
+              ehr_list_index: '1',
+              items: [
+                'name',
+                'profession',
+                'day',
+                'time'
+              ]
+            },
+            {
+              ehr_list_index: '2',
+              items: [
+                'incisionLabel'
+              ]
+            },
+            {
+              ehr_list_index: '3',
+              items: [
+                'postOpDay'
+              ]
+            },
+            {
+              ehr_list_index: '4',
+              items: [
+                'opProcedure'
+              ]
+            },
+            {
+              ehr_list_index: '5',
+              items: [
+                'incisionLocation'
+              ]
+            },
+            {
+              ehr_list_index: '6',
+              items: [
+                'closureMethod'
+              ]
+            }
+          ],
+          form: {
+            elementKey: 'tableIncision',
+            label: 'Incision assessment',
+            addButtonText: 'Add an incision assessment',
+            formOption: 'transpose',
+            formKey: 'tableIncision',
+            ehr_groups: [
+              {
+                elementKey: 'ehr_group7',
+                formCss: 'record-header',
+                gIndex: '1',
+                gChildren: [
+                  'name',
+                  'profession',
+                  'day',
+                  'time'
+                ]
+              },
+              {
+                elementKey: 'incisionLocationGroup',
+                label: 'Incision Location',
+                formCss: 'section-divider',
+                gIndex: '2',
+                gChildren: [
+                  'incisionLabel',
+                  'postOpDay',
+                  'opProcedure',
+                  'incisionLocation',
+                  'closureMethod'
+                ]
+              }
+            ],
+            ehr_data: {
+              name: '',
+              profession: '',
+              day: '',
+              time: '',
+              incisionLabel: '',
+              postOpDay: '',
+              opProcedure: '',
+              incisionLocation: '',
+              closureMethod: ''
+            }
+          }
+        },
+        tableIncisionStatus: {
+          elementKey: 'tableIncisionStatus',
+          tableKey: 'tableIncisionStatus',
+          isTable: true,
+          label: 'Incision status assessment',
+          addButtonText: 'Add an incision status assessment',
+          ehr_list: [
+            {
+              label: 'Identification',
+              ehr_list_index: '1',
+              items: [
+                'name',
+                'profession',
+                'day',
+                'time'
+              ]
+            },
+            {
+              ehr_list_index: '2',
+              items: [
+                'incisionLabel'
+              ]
+            },
+            {
+              ehr_list_index: '3',
+              items: [
+                'incisionStatus'
+              ]
+            },
+            {
+              ehr_list_index: '4',
+              items: [
+                'closureChanges'
+              ]
+            },
+            {
+              ehr_list_index: '5',
+              items: [
+                'exudateAmount'
+              ]
+            },
+            {
+              ehr_list_index: '6',
+              items: [
+                'exudateType'
+              ]
+            },
+            {
+              ehr_list_index: '7',
+              items: [
+                'periIncisionSkin'
+              ]
+            },
+            {
+              ehr_list_index: '8',
+              items: [
+                'periIncisionSkinOther'
+              ]
+            }
+          ],
+          form: {
+            elementKey: 'tableIncisionStatus',
+            label: 'Incision status assessment',
+            addButtonText: 'Add an incision status assessment',
+            formOption: 'transpose',
+            formKey: 'tableIncisionStatus',
+            ehr_groups: [
+              {
+                elementKey: 'ehr_group8',
+                formCss: 'record-header',
+                gIndex: '1',
+                gChildren: [
+                  'name',
+                  'profession',
+                  'day',
+                  'time'
+                ]
+              },
+              {
+                elementKey: 'incisionStatusGroup',
+                label: 'Incision',
+                formCss: 'section-divider',
+                gIndex: '2',
+                gChildren: [
+                  'incisionLabel',
+                  'incisionStatus',
+                  'closureChanges'
+                ]
+              },
+              {
+                elementKey: 'exudateGroup',
+                label: 'Exudate Charateristics',
+                formCss: 'section-divider',
+                gIndex: '3',
+                gChildren: [
+                  'exudateAmount',
+                  'exudateType'
+                ]
+              },
+              {
+                elementKey: 'periIncisionGroup',
+                label: 'Peri-Incisional Skin',
+                formCss: 'section-divider',
+                gIndex: '4',
+                gChildren: [
+                  'periIncisionSkin',
+                  'periIncisionSkinOther'
+                ]
+              }
+            ],
+            ehr_data: {
+              name: '',
+              profession: '',
+              day: '',
+              time: '',
+              incisionLabel: '',
+              incisionStatus: '',
+              closureChanges: '',
+              exudateAmount: '',
+              exudateType: '',
+              periIncisionSkin: '',
+              periIncisionSkinOther: ''
+            }
+          }
+        },
+        tableIntegumentary: {
+          elementKey: 'tableIntegumentary',
+          tableKey: 'tableIntegumentary',
+          isTable: true,
+          label: 'Integumentary assessment',
           addButtonText: 'Add an integumentary assessment',
           ehr_list: [
             {
@@ -5328,7 +5907,6 @@ export default function () {
             },
             {
               label: 'Goal of care',
-              tableCss: 'hr-table',
               ehr_list_index: '4',
               items: [
                 'goalOfCare'
@@ -5336,6 +5914,7 @@ export default function () {
             },
             {
               label: 'Wound day of onset',
+              tableCss: 'hr-table',
               ehr_list_index: '5',
               items: [
                 'woundDayOnset'
@@ -5375,7 +5954,6 @@ export default function () {
             },
             {
               label: 'Depth cm.mm',
-              tableCss: 'hr-table',
               ehr_list_index: '11',
               items: [
                 'depth'
@@ -5390,7 +5968,6 @@ export default function () {
             },
             {
               label: 'Location',
-              tableCss: 'hr-table',
               ehr_list_index: '13',
               items: [
                 'sinusDepthLocation1'
@@ -5405,7 +5982,6 @@ export default function () {
             },
             {
               label: 'Location',
-              tableCss: 'hr-table',
               ehr_list_index: '15',
               items: [
                 'sinusDepthLocation2'
@@ -5420,7 +5996,6 @@ export default function () {
             },
             {
               label: 'Location',
-              tableCss: 'hr-table',
               ehr_list_index: '17',
               items: [
                 'underminingDepthLocation1A'
@@ -5428,7 +6003,6 @@ export default function () {
             },
             {
               label: 'Location',
-              tableCss: 'hr-table',
               ehr_list_index: '18',
               items: [
                 'underminingDepthLocation1B'
@@ -5443,7 +6017,6 @@ export default function () {
             },
             {
               label: 'Location',
-              tableCss: 'hr-table',
               ehr_list_index: '20',
               items: [
                 'underminingDepthLocation2A'
@@ -5458,7 +6031,7 @@ export default function () {
               ]
             },
             {
-              label: '% Pink/red',
+              label: '% Superficial (pink/red)',
               ehr_list_index: '22',
               items: [
                 'pinkred'
@@ -5531,7 +6104,6 @@ export default function () {
             },
             {
               label: 'Exudate type',
-              tableCss: 'hr-table',
               ehr_list_index: '32',
               items: [
                 'exudateType'
@@ -5539,7 +6111,6 @@ export default function () {
             },
             {
               label: 'Odour present after cleansing',
-              tableCss: 'hr-table',
               ehr_list_index: '33',
               items: [
                 'odour'
@@ -5554,7 +6125,6 @@ export default function () {
             },
             {
               label: 'Peri-wound skin',
-              tableCss: 'hr-table',
               ehr_list_index: '35',
               items: [
                 'periWoundSkin'
@@ -5577,7 +6147,6 @@ export default function () {
             },
             {
               label: 'Packing in',
-              tableCss: 'hr-table',
               ehr_list_index: '38',
               items: [
                 'packinIn'
@@ -5585,6 +6154,7 @@ export default function () {
             },
             {
               label: 'Treatments as per plan of care',
+              tableCss: 'hr-table',
               ehr_list_index: '39',
               items: [
                 'treatmentComplete'
@@ -5592,13 +6162,14 @@ export default function () {
             }
           ],
           form: {
-            elementKey: 'table',
+            elementKey: 'tableIntegumentary',
+            label: 'Integumentary assessment',
             addButtonText: 'Add an integumentary assessment',
             formOption: 'transpose',
-            formKey: 'table',
+            formKey: 'tableIntegumentary',
             ehr_groups: [
               {
-                elementKey: 'ehr_group47',
+                elementKey: 'ehr_group9',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -5609,7 +6180,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group48',
+                elementKey: 'ehr_group10',
                 formCss: 'section-divider',
                 gIndex: '2',
                 gChildren: [
@@ -5641,10 +6212,10 @@ export default function () {
                   'depth',
                   'sinusDepth1',
                   'sinusDepthLocation1',
-                  'spacer49',
+                  'spacer11',
                   'sinusDepth2',
                   'sinusDepthLocation2',
-                  'spacer50',
+                  'spacer12',
                   'underminingDepth1',
                   'underminingDepthLocation1A',
                   'underminingDepthLocation1B',
@@ -5672,28 +6243,52 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group51',
-                label: 'Wound Exudate & Odour',
+                elementKey: 'ehr_group13',
+                label: 'Wound Exudate',
                 formCss: 'section-divider',
                 gIndex: '6',
                 gChildren: [
                   'exudateAmount',
-                  'exudateType',
-                  'odour',
+                  'exudateType'
+                ]
+              },
+              {
+                elementKey: 'ehr_group14',
+                label: 'Wound Odour',
+                formCss: 'section-divider',
+                gIndex: '7',
+                gChildren: [
+                  'odour'
+                ]
+              },
+              {
+                elementKey: 'ehr_group15',
+                label: 'Wound Edge & Periwound',
+                formCss: 'section-divider',
+                gIndex: '8',
+                gChildren: [
                   'woundEdge',
-                  'periWoundSkin',
+                  'periWoundSkin'
+                ]
+              },
+              {
+                elementKey: 'ehr_group16',
+                label: 'Wound Pain',
+                formCss: 'section-divider',
+                gIndex: '9',
+                gChildren: [
                   'woundPain'
                 ]
               },
               {
-                elementKey: 'ehr_group52',
+                elementKey: 'ehr_group17',
                 label: 'Treatment',
                 formCss: 'section-divider',
-                gIndex: '7',
+                gIndex: '10',
                 gChildren: [
                   'packingOut',
                   'packinIn',
-                  'spacer53',
+                  'spacer18',
                   'treatmentComplete'
                 ]
               }
