@@ -2,7 +2,7 @@
   div(:id="activityId")
     div(class="activity-list-header columns")
       div(class="header-column is-10 column")    
-        h3(:title="activityId") {{ activity.resource_link_title }}
+        h3(:title="activityId") Activity: {{ activity.resource_link_title }}
              <!-- router-link(:to="`/ehr/patient/demographics?viewSeed=true`") {{ activity.resource_link_title }} -->
         table
           tr

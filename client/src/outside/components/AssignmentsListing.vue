@@ -12,35 +12,38 @@
       ui-button(v-on:buttonClicked="manageEhrData", :secondary="true") Manage seed data
     div(v-if="validationWarning")
       p(class="un-configured-warning") {{ validationWarning }}
-    table.table
-      thead
-        tr
-          th(title="Name", style="min-width: 170px") Assignment name
-          th(title="Description") Description
-          th(title="Activities") Activities
-          th(title="External Id", style="min-width: 110px") External id
-          // th(title="Route") Route
-          th(title="Seed Data", style="min-width: 170px") Seed name
-          th
-      tbody
-        tr(v-for="item in assignmentsListing", :class="rowClass(item)")
-          td {{ item.name }}
-          //- The following conditional flow is needed because 
-          //- v-text-to-html can be kept out of sync when 
-          //- clearing the description value
-          td(v-if="item.description.length > 0")
-            div(v-text-to-html="item.description") 
-          td(v-else) {{ item.description }}
-          td {{ activitiesUsingAssignmentCount(item._id) }}
-          td {{ item.externalId}}
-          td
-            ui-link(:name="'developEhrData'", :params="{seedId: item.seedDataObj._id}") {{ item.seedDataObj.name }}
-          td
-            ui-button(v-on:buttonClicked="showEditDialog", :value="item._id", :secondary="isItemMisconfigured(item)")
-              fas-icon(icon="edit") Edit assignment properties
-            //- , v-on:buttonClicked="showDeleteConfirmDialog", :value="item._id", 
-            ui-button(v-if="canBeDeleted(item)", danger, @buttonClicked="triggerConfirmDeletion(item)")
-              fas-icon(icon="trash")  Edit assignment properties
+
+    div(class="seedData-list-body")
+      div(v-for="item in assignmentsListing", class="card list-element", :class="rowClass(item)")
+        div(class="columns")
+          div(class="column is-2")
+            div(class="key") Name
+            div(class="value") {{item.name}}
+          div(class="column")
+            div(class="key") Description
+            div(v-if="item.description.length > 0", v-text-to-html="item.description")
+            div(v-else) {{ item.description }}
+          div(class="column")
+            div(class="key") Activities
+            div(class="value") {{ activitiesUsingAssignmentCount(item._id) }}
+          div(class="column")
+            div(class="key") External id
+            div(class="value") {{ item.externalId}}
+          div(class="column")
+            div(class="key") Last Update
+            div(class="value") {{item.lastUpdateDate | formatDateTime}}
+        div(class="columns")
+          div(class="column")
+            div(class="key") Seed Name
+            div(class="value")
+              ui-link(:name="'developEhrData'", :params="{seedId: item.seedDataObj._id}") {{ item.seedDataObj.name }}
+          div(class="column")
+            div(class="value")
+              ui-button(v-on:buttonClicked="showEditDialog", :value="item._id", :secondary="isItemMisconfigured(item)")
+                fas-icon(icon="edit") Edit assignment properties
+                  //- , v-on:buttonClicked="showDeleteConfirmDialog", :value="item._id",
+              ui-button(v-if="canBeDeleted(item)", danger, @buttonClicked="triggerConfirmDeletion(item)")
+                fas-icon(icon="trash")  Edit assignment properties
     assignments-dialog(ref="theDialog")
     ui-confirm(ref="confirmDialog", @confirm="handleDeletion", @abort="resetDeletion", @cancel="resetDeletion", saveLabel="Confirm")
     
@@ -185,7 +188,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/_definitions';
+@import '../../scss/definitions';
+.list-element {
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+}
+.key {
+  font-weight: bold;
+}
+.key::after {
+  content: ': '
+}
+
 .un-configured {
   background: $greyWarn;
   opacity: 0.8;

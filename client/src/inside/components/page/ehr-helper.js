@@ -21,8 +21,8 @@ export const LEAVE_PROMPT = 'If you leave before saving, your changes will be lo
 
 const PROPS = EhrTypes.elementProperties
 const dbDialog = false
-const dbPageForm = true
-const dbLoad = true
+const dbPageForm = false
+const dbLoad = false
 const dbTable = false
 const dbLeave = false
 
