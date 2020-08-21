@@ -7,7 +7,7 @@ const PROPS = EhrTypes.dependentOn
 const UI_TYPES = EhrTypes.inputTypes
 /*
 EhrDependent is to be mixed into components to provide linkage between components. For example, one checkbox element
-can toogle whether another component is enabled or disabled. Or, the current value of a select can control the
+can toggle whether another component is enabled or disabled. Or, the current value of a select can control the
 visibility of a group of elements.  These are the only two tested scenarios but more are possible.
 
 

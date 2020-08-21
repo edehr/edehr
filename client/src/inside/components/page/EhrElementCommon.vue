@@ -69,8 +69,8 @@ export default {
       if (this.dependentDef) {
         if (!disable && this.dependentDef.action === DEPENDENT_PROPS.action.disable) {
           disable = !(this.dependentOnValue === true || this.dependentOnValue === 'TRUE')
-          console.log('A change to false means disable this element. So empty it.')
           if (disable) {
+            if (dbInputs) console.log('EhrElementCommon. A change to false means disable this element so empty it.', this.key)
             this.setInitialValue('')
           }
         }
@@ -108,7 +108,7 @@ export default {
       this.setInitialDependentValue()
     },
     sendInputEvent (val) {
-      if (dbDetail) console.log('EhrCommon broadcast PAGE_FORM_INPUT_EVENT ', val, this.elementKey)
+      if (dbInputs) console.log('EhrCommon broadcast PAGE_FORM_INPUT_EVENT ', val, this.elementKey)
       EventBus.$emit(FORM_INPUT_EVENT, { value: val, element: this.element })
     },
     refreshPage () {

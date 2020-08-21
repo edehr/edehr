@@ -35,7 +35,7 @@ export default {
     otherFiles () { return StoreHelper.getFileListOther() },
     authorized () {
       // TODO add check for is instructor too
-      const authData = StoreHelper.getAuthDataSync()
+      const authData = StoreHelper.getAuthData()
       return !!authData
     },
   },

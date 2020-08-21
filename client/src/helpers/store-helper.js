@@ -435,7 +435,7 @@ class StoreHelperWorker {
     return await this._getAuthStore('authData')
   }
   getAuthDataSync () {
-    return this._getAuthStore('data')
+    return this._getAuthStore('authData')
   }
 
   getAuthToken () {

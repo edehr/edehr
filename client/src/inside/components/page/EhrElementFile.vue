@@ -1,9 +1,13 @@
 <template lang="pug">
   div(class="form-element")
     ehr-page-form-label(:element="element", css="ehrFile_label")
-    ui-button(v-on:buttonClicked="showSelectDialog", secondary, title="Select a file") Select
+    div(class="inline thumbnail")
+      a(:href="inputVal.url")
+        img(:src="inputVal.url", style="height: 100px")
+        span {{inputVal.name }}
+    div(class="inline select-file")
+      ui-button(v-on:buttonClicked="showSelectDialog", v-bind:disabled="disabled", secondary, title="Select a file") {{ buttonLabel }}
     file-select-dialog(ref="fileSelectDialog", @fileSelected="fileSelected")
-    div {{inputVal}}
 </template>
 
 <script>
@@ -12,7 +16,6 @@ import EventBus from '../../../helpers/event-bus'
 import FileSelectDialog from '@/outside/components/FileSelectDialog'
 import UiButton from '@/app/ui/UiButton'
 import { FORM_INPUT_EVENT } from '../../../helpers/event-bus'
-import { ehrCalculateProperty } from './ehr-calcs'
 
 let db = true
 
@@ -28,6 +31,9 @@ export default {
       eventHandler: {}
     }
   },
+  computed: {
+    buttonLabel () { return this.inputVal && this.inputVal.url ? 'Change' : 'Select'}
+  },
   methods: {
     fileSelected ( file ) {
       console.log('file selected', file)
@@ -39,13 +45,10 @@ export default {
     receiveEvent (eData) {
       let pageDataKey = this.pageDataKey
       let elementKey = this.element.elementKey
-      if (db) console.log('EhrFile rcv evt', eData, pageDataKey, elementKey)
-      let value = ehrCalculateProperty(pageDataKey, elementKey, this.ehrHelp)
-      if (db) console.log('EhrFile ', elementKey, value)
+      let value = this.inputVal
+      if (db) console.log('EhrFile rcv FORM_INPUT_EVENT', eData, pageDataKey, elementKey, value)
       // put value into the inputs so the dialog save can preserve the result
       this.ehrHelp.stashActiveData(elementKey, value)
-      // put into component data to be rendered
-      this.value = value
     }
   },
   mounted: function () {
@@ -67,4 +70,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.inline {
+  display: inline-block;
+}
+.select-file {
+  vertical-align: top;
+}
 </style>

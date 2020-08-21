@@ -27,7 +27,7 @@ const getters = {
     return state._isDevelopingContent
   },
   isSeedEditing: state => {
-    console.log('isSeedEditing',state._seedEditId)
+    if (debug) console.log('isSeedEditing',state._seedEditId)
     return state._seedEditId && state._seedEditId.length > 0
   },
   seedEditId: state => {
