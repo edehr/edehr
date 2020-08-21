@@ -42,7 +42,7 @@ class StoreHelperWorker {
   async _dispatchUser (key, payload) { return await store.dispatch('userStore/' + key, payload)}
 
   /* **********   General  ************** */
-  toolConsumerId () { return this._getConsumerProperty('consumerId') }
+  toolConsumerId () { return this._getAuthStore('consumerId') }
   userId () { return this._getUserProperty('userId') }
   fullName () { return this._getUserProperty('fullName') }
   lmsUrl () { return this._getVisitProperty('returnUrl') }
@@ -61,6 +61,7 @@ class StoreHelperWorker {
 
   isReadOnlyInstructor () { return this._getVisitProperty('isReadOnlyInstructor')}
   setIsReadOnlyInstructor (isReadonly = false) { return store.commit('visit/setIsReadOnlyInstructor', isReadonly)}
+
   isDevelopingContent () { return this._getVisitProperty('isDevelopingContent')  }
   setIsDevelopingContent (state) { store.commit('visit/setIsDevelopingContent', state) }
 
@@ -217,10 +218,15 @@ class StoreHelperWorker {
 
   getAssignmentsList () { return this._getAssignmentListProperty('list') }
 
-  getAssignmentSeedId () { return this._getAssignmentProperty('seedDataId') }
-
   /* **********   Seed Data  ************** */
 
+  isSeedEditing () { return this._getVisitProperty('isSeedEditing')  }
+  setSeedEditId (id) { store.commit('visit/setSeedEditId', id) }
+  getSeedEditId (id) { return this._getVisitProperty('seedEditId')  }
+
+  getAssignmentSeedId () { return this._getAssignmentProperty('seedDataId') }
+
+  // get seed id from current activity
   getSeedId () { return this._getSeedListProperty('seedId')}
   getSeedEhrData () { return this._getSeedListProperty('seedEhrData')}
   getSeedContent () { return this._getSeedListProperty('seedContent') }
@@ -255,6 +261,12 @@ class StoreHelperWorker {
   createSeed (component, seedData) { return this._dispatchSeedListProperty('createSeedItem', seedData) }
 
   getSeedDataList () { return this._getSeedListProperty('list') }
+
+  async loadSeedEditor () {
+    if (debugSH) console.log('SH loadSeedEditor')
+    // await this.loadCommon()
+    await this.loadSeed(this.getSeedEditId())
+  }
 
   /* ************* LMS LTI Consumers   */
 
@@ -312,6 +324,7 @@ class StoreHelperWorker {
 
   async loadCommon () {
     let visitInfo = store.state.visit.sVisitData || {}
+    // To do use the accessor to get consumer id
     await this._dispatchConsumer('load', visitInfo.toolConsumer)
     await this._dispatchUser('load', visitInfo.user)
     await this.loadAssignmentAndSeedLists()
@@ -329,8 +342,9 @@ class StoreHelperWorker {
   }
 
   clearSession () {
-    sessionStorage.removeItem(sKeys.SEED_ID)
-    sessionStorage.removeItem(sKeys.IS_READONLY_INSTRUCTOR)
+    console.error('to do remove this method clear session')
+    // sessionStorage.removeItem(sKeys.SEED_ID)
+    // sessionStorage.removeItem(sKeys.IS_READONLY_INSTRUCTOR)
     return Promise.resolve()
   }
 
@@ -378,14 +392,6 @@ class StoreHelperWorker {
     return result
   }
 
-  async loadDevelopingSeed () {
-    let seedId = this.getSeedId()
-    if(debugSH) console.log('SH load developing seed id:', seedId)
-    if (seedId) {
-      await this.loadSeed(seedId)
-    }
-  }
-
   async fetchAndStoreAuthToken (refreshToken) {
     return await this._dispatchAuthStore('fetchAndStoreAuthToken', { refreshToken })
   }
@@ -403,7 +409,7 @@ class StoreHelperWorker {
   }
 
   async getAuthData () {
-    return await this._getAuthStore('data')
+    return await this._getAuthStore('authData')
   }
 
   getAuthToken () {

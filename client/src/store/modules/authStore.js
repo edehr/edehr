@@ -2,7 +2,7 @@ import authHelper from '../../helpers/auth-helper'
 import { setAuthHeader } from '../../helpers/axios-helper'
 
 const state = {
-  data: {},
+  authData: {},
   token: undefined
 }
 
@@ -10,8 +10,11 @@ const getters = {
   token: state => {
     return state.token
   },
-  data: state => {
-    return state.data
+  authData: state => {
+    return state.authData
+  },
+  consumerId: state => {
+    return state.authData.toolConsumerId
   }
 }
 
@@ -48,9 +51,7 @@ const actions = {
   },
   adminValidate: function ({state}) {
     let token = state.token || ''
-    console.log('What is in token?', token)
     let jwtData = token.split('.')
-    console.log('What is in jwtData?', jwtData)
     if (jwtData.length === 3) {
       // JWT's are two base64-encoded JSON objects and a trailing signature
       // joined by periods. The middle section is the data payload.
@@ -81,7 +82,7 @@ const mutations = {
     state.token = localStorage.getItem(AUTH_TOKEN_KEY)
   },
   setAuthData: function (none, data) {
-    state.data = data
+    state.authData = data
   },
   setToken: function (none, token) {
     state.token = token

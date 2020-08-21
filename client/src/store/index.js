@@ -49,4 +49,5 @@ export function initializeStore (store) {
   store.dispatch('authStore/initialize')
   store.dispatch('demoStore/initialize')
   store.dispatch('system/initialize')
+  store.dispatch('visit/initialize')
 }

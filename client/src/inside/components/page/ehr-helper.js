@@ -393,13 +393,13 @@ export default class EhrHelpV2 {
   }
   _saveData (payload) {
     let isStudent = this._isStudent()
-    let isDevelopingContent = StoreHelper.isDevelopingContent()
+    let isSeedEditing = StoreHelper.isSeedEditing()
     if (isStudent) {
       if (dbDialog) console.log('saving assignment data', payload)
       payload.propertyName = payload.pageKey
       payload.value = prepareAssignmentPageDataForSave(payload.value)
       return StoreHelper.sendAssignmentDataUpdate(payload)
-    } else if (isDevelopingContent) {
+    } else if (isSeedEditing) {
       if (dbDialog) console.log('saving seed ehr data', payload.pageKey, JSON.stringify(payload.value))
       return StoreHelper.updateSeedEhrProperty(payload.pageKey, payload.value)
         .then(() => {

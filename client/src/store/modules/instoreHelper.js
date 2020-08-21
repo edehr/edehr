@@ -24,10 +24,6 @@ class InstoreHelperWorker {
     return rootState.visit.sVisitData.isInstructor
   }
 
-  instoreIsDevContent (rootState) {
-    return rootState.visit.isDevelopingContent
-  }
-
   putRequest (context, api, url, bodyData) {
     url = this.composeUrl(context, api, url)
     if(debug) console.log('PUT to this url', url)
@@ -68,23 +64,26 @@ class InstoreHelperWorker {
         })
     })
   }
-  getRequest (context, api, url) {
-    url = this.composeUrl(context, api, url)
+  getRequest (context, api, path) {
+    let url = this.composeUrl(context, api, path)
     if(debug) console.log('GET to this url', url, context)
     StoreHelper.setLoading(context, true)
     return new Promise((resolve, reject) => {
       axios
         .get(url)
         .then(results => {
-          StoreHelper.setLoading(context, false)
+          if(debug) console.log('GOT >> ', path, results)
           resolve(results)
         })
         .catch(error => {
           // let msg = `Failed GET to ${url} with error: ${error.message}`
           let msg = composeAxiosResponseError(error, 'Get failed: ')
           StoreHelper.setApiError(msg)
-          StoreHelper.setLoading(context, false)
           reject(msg)
+        })
+        .finally( () => {
+          if(debug) console.log('GOT >> finally')
+          StoreHelper.setLoading(context, false)
         })
     })
   }

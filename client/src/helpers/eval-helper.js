@@ -75,12 +75,8 @@ class EvalHelperWorker {
     // information on how the mocking of the router is implemented.
     return this.changeStudent(studentVisit._id)
       .then( () => {
-        // The isDev flag may be set .. it needs to be OFF to evaluate a student.
-        StoreHelper.setIsDevelopingContent(false)
         // Go to the EHR with current student
-        // todo move this path to some global definition file
-        let name = '/ehr/patient/demographics'
-        customRouter.push(name)
+        customRouter.push({ name: 'ehr', query: { evaluatingStudent: true, studentId: studentVisit._id } })
       })
   }
 

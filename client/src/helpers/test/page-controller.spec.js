@@ -36,7 +36,8 @@ const _beforeEach = async () => {
 const _createRouteObject = (isDemo = false) => {
   return {
     query: { apiUrl: 'testApiUrl', token: refreshToken },
-    name: isDemo ? 'demo' : 'notDemo'
+    name: isDemo ? 'demo' : 'notDemo',
+    meta: { zone: 'demo' }
   }
 }
 

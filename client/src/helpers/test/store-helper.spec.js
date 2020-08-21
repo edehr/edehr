@@ -1,7 +1,6 @@
 import should from 'should'
 import StoreHelper from '../store-helper'
 import * as testHelper from './testHelper'
-import sKeys from '../session-keys'
 const mockData = require('./mockData.json')
 const axiosMockHelper = require('./axios-mock-helper')
 jest.mock('axios')
@@ -50,8 +49,6 @@ describe('General testing', () => {
     should.doesNotThrow(() => {
       const tc = StoreHelper.toolConsumerId()
       tc.should.be.type('string')
-      tc.should.equal(mockData.consumer._id)  
-      tc.should.equal(mockData.consumer._id)  
       tc.should.equal(mockData.consumer._id)  
       done()
     })
@@ -140,12 +137,15 @@ describe('General testing', () => {
     })
   })
 
-  it('setIsReadOnlyInstructor', done => {
+  /*
+    The read only mode has been temporarily removed
+   */
+  it.skip('setIsReadOnlyInstructor', done => {
     should.doesNotThrow(() => StoreHelper.setIsReadOnlyInstructor(true))
     done()
   })
 
-  it('isReadOnlyInstructor', done => {
+  it.skip('isReadOnlyInstructor', done => {
     should.doesNotThrow(() => {
       const isReadOnlyInstructor = StoreHelper.isReadOnlyInstructor()
       const isTruthy = testHelper.isTruthy(isReadOnlyInstructor)
@@ -759,14 +759,6 @@ describe('Loading / restoring tests', () => {
     })
   })
 
-  it('clearSession', done => {
-    should.doesNotThrow(async () => await StoreHelper.clearSession())
-    should.not.exist(sessionStorage.getItem(sKeys.SEED_ID))
-    should.not.exist(sessionStorage.getItem(sKeys.IS_READONLY_INSTRUCTOR))
-    done()
-  })
-
-
   it('loadVisitRecord', async done => {
     const visitId = mockData.visit._id
     const { visit } = mockData
@@ -779,15 +771,6 @@ describe('Loading / restoring tests', () => {
     })
   })
 
-  it('loadDevelopingSeed', async done => {
-    await axiosMockHelper.prepareAxiosResponse('get', { seeddata: mockData.seedData })
-    should.doesNotThrow(async () => {
-      await StoreHelper.loadDevelopingSeed()
-      const seedId = StoreHelper.getSeedId()
-      seedId.should.equal(mockData.seedData._id)
-      done()
-    })
-  })
 })
 
 describe('auth/admin tests', () => {

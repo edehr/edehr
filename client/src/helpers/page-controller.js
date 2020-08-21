@@ -2,6 +2,7 @@ import config from '../../config'
 import EventBus from './event-bus'
 import StoreHelper from './store-helper'
 import router from '../router'
+import { routeIsEHR }  from '../router'
 import { setAuthHeader } from './axios-helper'
 import { PAGE_DATA_REFRESH_EVENT, PAGE_DATA_READY_EVENT } from './event-bus'
 import { Text } from './ehr-text'
@@ -11,23 +12,65 @@ const debugApp = false
 function dblog (msg, ...args) {
   if (debugApp) {
     if (args.length > 0)
-      console.log(msg,...args)
+      console.log('App', msg,...args)
     else
-      console.log(msg)
+      console.log('App', msg)
   }
 }
 
 class PageControllerInner {
   constructor () {
-    dblog('App PageController constructor')
     this.hasLoadedData = false
   }
 
+  /**
+   * onPageChange is onvoked from main.js whenever a route has changed.
+   * @param route - the 'to' route. We can get the 'from' if needed.
+   * @return {Promise<unknown>}
+   */
   async onPageChange (route) {
-    dblog('App onPageChange', route.meta)
+    dblog('onPageChange', route.meta)
+    const {seedEditId, evaluatingStudent, lti} = route.query || {}
+    if(seedEditId) {
+      // New approach to be sure seed editor can refresh their browser while editing a see.
+      dblog('User is editing seed. Stash state for possible page refresh', seedEditId)
+      StoreHelper.setSeedEditId(seedEditId)
+    }
+    else if (evaluatingStudent) {
+      /*
+      The use of query parameters is new and changes the approach we can take to managing the
+      flow of page loading.  At this point the focus is to use the query parameters to load
+      seed for seed editing. Later can refactor the management of instructor and student visits
+       */
+      StoreHelper.setSeedEditId('')
+      const studentId = evaluatingStudent
+      dblog('User is an instructor evaluatingStudent >> ', studentId)
+    }
+    else if (lti) {
+      const userType = lti
+      // lti holds 'student', 'instructor' , or 'unknown'
+      // lti comes from the server (see lti controller)
+      StoreHelper.setSeedEditId('')
+      dblog('User coming in via LTI. userType',userType)
+    }
+    else if (routeIsEHR(route)) {
+      dblog('In app page change.')
+      const { viewSeed } = route.query
+      if (viewSeed) {
+        console.error('To do, restore the readonly viewing of seed feature')
+        // this.setReadOnlyInstructor(true)
+        // StoreHelper.setIsReadOnlyInstructor(isReadOnly)
+      }
+    } else {
+      dblog('User not in the EHR so clear any active seed editing ids')
+      StoreHelper.setSeedEditId('')
+    }
+
+
+
     try {
       if (route.name === 'demo') {
-        dblog('Page onPageChange going to demo page so "log the user out" of EHR whether the user came from an LMS or from the demo')
+        dblog('going to demo page so "log the user out" of EHR whether the user came from an LMS or from the demo')
         await StoreHelper.logUserOutOfEdEHR()
       }
       return this._loadData(route)
@@ -35,7 +78,6 @@ class PageControllerInner {
         // the page has loaded and any following page change can skip most of the work.
           this.hasLoadedData = true
         })
-   
     }
     catch(err) {
       StoreHelper.setLoading(null, false)
@@ -46,86 +88,92 @@ class PageControllerInner {
   }
 
   async _loadData (route) {
+    // to do the following is defective. If the query does not have the url then we use config. But the goal
+    // is to use the url from the query and stash that for later use, over riding the value in config.
     const apiUrl = route.query.apiUrl ?  route.query.apiUrl : config.apiUrl
-    dblog('App _loadData. Store the api url', apiUrl, route.query.apiUrl ?  'from the route' : 'from the config')
+    dblog('_loadData. Store the api url', apiUrl, route.query.apiUrl ?  'from the route' : 'from the config')
     StoreHelper.apiUrlSet(apiUrl)
 
     const demoToken = StoreHelper.getDemoToken()
     const isDemo = !!demoToken
 
+    // The LTI service provides a token in the query. We need to send this back to the server to get the token
+    // we'll use and cache for the user.  Actually, this step with the refresh token could be skiped since it adds
+    // little additional security for this application.
     const refreshToken = route.query.token
+    // if there is no token in the query then use any stashed token.
     const authToken = StoreHelper.getAuthToken()
+    // if we have either token then we have an LTI user who wants into the app.
     const isUser = refreshToken || authToken
 
     if (isDemo) {
-      dblog('App _loadData load demo data')
+      dblog('_loadData load demo data')
       await StoreHelper.loadDemoData()
       if (!isUser) {
-        dblog('App _loadData user is not yet visiting the EHR pages so page load is complete')
+        dblog('_loadData user is not yet visiting the EHR pages so page load is complete')
         EventBus.$emit(PAGE_DATA_READY_EVENT)
         return
       }
     }
 
     if (!isUser) {
-      dblog('App _loadData page is not a demo page nor is the user visiting the core EdEHR pages.',
-        'They must be visiting a public page. No further loading needed')
+      dblog('_loadData not a demo page not LTI. User is visiting a public page. No further loading needed')
       return
     }
 
-    dblog('App _loadData load user authorization data')
+    dblog('_loadData load user authorization data')
+    //  Will now do the LTI auth. This results in a lot of data from the server and this data will be
+    // be pushed into the storage.s
     await this._loadAuth(refreshToken, authToken)
 
     if (!this.hasLoadedData) {
-
       let visitId = await this._getVisitId()
-
       await this._loadEhr(visitId)
     }
 
-    dblog('App _loadData DONE. Send event', PAGE_DATA_REFRESH_EVENT)
+    dblog('_loadData DONE. Send event', PAGE_DATA_REFRESH_EVENT)
     EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
   }
 
   async _loadAuth (refreshToken, authToken) {
     if (refreshToken) {
-      dblog('App _loadAuth refresh token fetch')
+      dblog('_loadAuth refresh token fetch')
       await this._ltiAccess(refreshToken, authToken)
       this.hasLoadedData = false
     } else if (authToken) {
       if (!this.hasLoadedData) {
-        dblog('App _loadAuth. User is refreshing their browser. We have an existing auth token. Get the auth data....')
+        dblog('_loadAuth. User is refreshing their browser. We have an existing auth token. Get the auth data....')
         StoreHelper.setLoading(null, true)
         setAuthHeader(authToken)
         await StoreHelper.fetchTokenData(authToken)
         StoreHelper.setLoading(null, false)
       }
     } else {
-      dblog('App _loadAuth. User can not proceed. There is no refresh nor previous auth token.')
+      dblog('_loadAuth. User can not proceed. There is no refresh nor previous auth token.')
       throw new Error(Text.PARAMETERS_ERROR)
     }
   }
 
   async _ltiAccess (refreshToken, authToken) {
     StoreHelper.setLoading(null, true)
-    dblog('App _ltiAccess take the refresh, convert to auth token.')
+    dblog('_ltiAccess take the refresh, convert to auth token. Store the new token.')
     let token = await StoreHelper.fetchAndStoreAuthToken(refreshToken)
     if (!token) {
-      dblog('App _ltiAccess the refresh token failed. Perhaps this is a SYSTEM ERROR?')
+      dblog('_ltiAccess the refresh token failed. Perhaps this is a SYSTEM ERROR?')
       throw new Error(Text.EXPIRED_REFRESH_TOKEN)
     }
     /* ******** NEW CONNECTION SUCCEEDED *************  */
     try {
-      dblog('App _ltiAccess take the newly provided auth token, store it and fetch the auth data.')
+      dblog('_ltiAccess take the new token, get the server to validate and provide the data inside. Store the data')
       await StoreHelper.fetchTokenData(token)
     }
     catch (err) {
       if (err.response.status === 401 && err.response.data.toLowerCase().includes('expired') && !!authToken) {
-        dblog('App _ltiAccess the refresh token expired but we have a previous auth token (user is refreshing browser).')
+        dblog('_ltiAccess the refresh token expired but we have a previous auth token (user is refreshing browser).')
         setAuthHeader(authToken)
         await StoreHelper.fetchTokenData(authToken)
       } else {
-        dblog('App _ltiAccess refresh token is expired and there is no previous token. User can not proceed.')
+        dblog('_ltiAccess refresh token is expired and there is no previous token. User can not proceed.')
         throw new Error(Text.EXPIRED_TOKEN(err))
       }
     }
@@ -133,16 +181,19 @@ class PageControllerInner {
   }
 
   async _loadEhr (visitId) {
-    dblog('App _loadEhr')
+    dblog('_loadEhr')
     StoreHelper.setLoading(null, true)
-    StoreHelper.clearSession()
+    dblog('_loadEhr loadVisitRecord', visitId )
     await StoreHelper.loadVisitRecord(visitId)
-    dblog('App _loadEhr clear away any previous ehr settings. Load visitId', visitId, 'as ...')
-    if (StoreHelper.isInstructor()) {
-      dblog('App _loadEhr load instructor')
+    if (StoreHelper.isSeedEditing()) {
+      dblog('_loadEhr load seed editing')
+      await StoreHelper.loadSeedEditor()
+    }
+    else if (StoreHelper.isInstructor()) {
+      dblog('_loadEhr load instructor')
       await StoreHelper.loadInstructor2()
     } else if (StoreHelper.isStudent()) {
-      dblog('App _loadEhr load student')
+      dblog('_loadEhr load student')
       await StoreHelper.loadStudent2()
     }
     StoreHelper.setLoading(null, false)
@@ -150,14 +201,14 @@ class PageControllerInner {
 
 
   async _getVisitId () {
-    dblog('App _getVisitId')
+    dblog('_getVisitId')
     StoreHelper.setLoading(null, true)
     let payload = await StoreHelper.getAuthData()
     if (!(payload && payload.visitId)) {
-      dblog('App _getVisitId no auth data', payload, Text.TOKEN_FETCHING_ERROR)
+      dblog(' _getVisitId no auth data', payload, Text.TOKEN_FETCHING_ERROR)
       throw new Error(Text.TOKEN_FETCHING_ERROR)
     }
-    dblog('App _getVisitId', payload)
+    dblog('_getVisitId', payload)
     StoreHelper.setLoading(null, false)
     return payload.visitId
   }

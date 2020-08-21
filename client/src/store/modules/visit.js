@@ -1,20 +1,16 @@
 import InstoreHelper from './instoreHelper'
-import sKeys from '../../helpers/session-keys'
 const API = 'visits'
-const NAME = 'Visit'
 const debug = false
-
-function getIsDeving () {
-  let sVal = sessionStorage.getItem(sKeys.IS_DEVING) || ''
-  let result = sVal === 'true'
-  if(debug) console.log('visit get getIsDeving sVal: "'+ result +'"')
-  return result
-}
+const IS_CONTENT_EDITING = 'isContentEditor'
+const SEED_EDIT_ID = 'seedEditId'
+const IS_READONLY_INSTRUCTOR = 'isReadOnlyInstructor'
 
 const state = {
   sVisitData: {},
   topLevelMenu: '',
-  _isDevelopingContent: getIsDeving()
+  _seedEditId: '',
+  _isDevelopingContent: false,
+  _isReadOnlyInstructor: false
 }
 
 const getters = {
@@ -24,37 +20,36 @@ const getters = {
   isDeveloper: state => {
     return state.sVisitData.isDeveloper
   },
-  hasDashboard: state => {
-    let vi = state.sVisitData
-    return vi ? vi.isInstructor || vi.isDeveloper : false
-  },
   isStudent: state => {
     return state.sVisitData.isStudent
   },
   isDevelopingContent: state => {
-    // let sessVal = getIsDeving()
-    let stVal = state._isDevelopingContent
-    if(debug) console.log('VisitStore isDeving state._isDevelopingContent', stVal)
-    return stVal
+    return state._isDevelopingContent
+  },
+  isSeedEditing: state => {
+    console.log('isSeedEditing',state._seedEditId)
+    return state._seedEditId && state._seedEditId.length > 0
+  },
+  seedEditId: state => {
+    return state._seedEditId
   },
   returnUrl: state => {
-    let prop =  state.sVisitData.returnUrl
-    if(debug) console.log(NAME + ' get returnUrl', prop)
-    return prop
+    return state.sVisitData.returnUrl
   },
   lastUpdateDate: state => {
     // unlike other models this one's update field is called lastVisitDate
-    let prop =  state.dataStore.lastVisitDate
-    if(debug) console.log(NAME + ' get lastUpdateDate', prop)
-    return prop
+    return state.dataStore.lastVisitDate
   },
   isReadOnlyInstructor: state => {
-    return sessionStorage.getItem(sKeys.IS_READONLY_INSTRUCTOR)
+    return state._isReadOnlyInstructor
   },
   visitData: state => state.sVisitData
 }
 
 const actions = {
+  initialize: function ({ commit }) {
+    commit('initialize')
+  },
   clearVisitData (context) {
     context.commit('setVisitData', {})
   },
@@ -76,14 +71,21 @@ const actions = {
 }
 
 const mutations = {
+  initialize: function (state) {
+    state._isDevelopingContent = localStorage.getItem(IS_CONTENT_EDITING) === 'true'
+    state._isReadOnlyInstructor = localStorage.getItem(IS_READONLY_INSTRUCTOR) === 'true'
+    state._seedEditId = localStorage.getItem(SEED_EDIT_ID)
+  },
+  setSeedEditId: (state, value) => {
+    if(debug) console.log('setSeedEditing ', value)
+    // This value needs to survive a browser refresh so make the source of truth the session storage
+    localStorage.setItem(SEED_EDIT_ID, value)
+    state._seedEditId = value
+  },
   setIsDevelopingContent: (state, value) => {
     if(debug) console.log('setIsDevelopingContent isDeving', value)
     // This value needs to survive a browser refresh so make the source of truth the session storage
-    if (value) {
-      sessionStorage.setItem(sKeys.IS_DEVING, value)
-    } else {
-      sessionStorage.removeItem(sKeys.IS_DEVING)
-    }
+    localStorage.setItem(IS_CONTENT_EDITING, value)
     state._isDevelopingContent = value
   },
   setVisitData: (state, info) => {
@@ -95,7 +97,8 @@ const mutations = {
     state.topLevelMenu = top
   },
   setIsReadOnlyInstructor: (state, val) => {
-    sessionStorage.setItem(sKeys.IS_READONLY_INSTRUCTOR, val)
+    localStorage.setItem(IS_READONLY_INSTRUCTOR, val)
+    state._isReadOnlyInstructor = value
   }
 }
 

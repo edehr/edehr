@@ -22,6 +22,11 @@ export const dispatchGetter = (str) => {
   return store.getters[str]
 }
 
+export const setAuthMocks = (payload = mockData.authData) => {
+  const key = 'setAuthData'
+  store.commit('authStore/' + key, payload)
+}
+
 export const instructorCommit = (payload, key) => {
   store.commit(`instructor/${key}`, payload)
 }
@@ -90,6 +95,7 @@ export const commonBeforeEach = () => {
   setActivityDataMocks()
   setAssignmentMocks()
   setAssignmentListingMocks()
+  setAuthMocks()
   setConsumerMocks()
   setConsumerListingMocks()
   setSeedDataMocks()
