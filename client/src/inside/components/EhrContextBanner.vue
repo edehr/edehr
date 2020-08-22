@@ -66,7 +66,7 @@ export default {
 
 .EhrContextBanner {
   padding: 0;
-
+  border-top: 1px solid black;
   .header-column {
     padding: 0; // override bulma column padding
   }
@@ -74,7 +74,7 @@ export default {
 
 .EhrPanelContent {
   border-bottom: 1px solid $grey20;
-  padding: 1rem 1rem 1rem 2rem;
+  padding: 1rem;
 }
 
 .context-header {

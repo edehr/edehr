@@ -158,6 +158,7 @@ header {
 .navList {
   display: flex;
   flex-flow: row wrap;
+  align-items: center;
 }
 
 /* Small screens */
