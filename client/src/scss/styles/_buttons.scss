@@ -62,3 +62,14 @@ button.is-light {
 button + button {
   margin-left: $buttonRowLeftMargin;
 }
+
+/* Small screens */
+@media all and (max-width: 500px) {
+  button + button {
+    margin-left: 0;
+  }
+  button {
+    display: block !important;
+    margin-bottom: $buttonRowLeftMargin;
+  }
+}
