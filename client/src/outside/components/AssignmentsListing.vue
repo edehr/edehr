@@ -19,25 +19,31 @@
           div(class="column is-2")
             div(class="key") Name
             div(class="value") {{item.name}}
-          div(class="column")
-            div(class="key") Description
-            div(v-if="item.description.length > 0", v-text-to-html="item.description")
-            div(v-else) {{ item.description }}
-          div(class="column")
-            div(class="key") Activities
-            div(class="value") {{ activitiesUsingAssignmentCount(item._id) }}
-          div(class="column")
+          div(class="column is-2")
             div(class="key") External id
             div(class="value") {{ item.externalId}}
-          div(class="column")
-            div(class="key") Last Update
-            div(class="value") {{item.lastUpdateDate | formatDateTime}}
         div(class="columns")
-          div(class="column")
+          div(class="column is-2 key") Description
+          div(class="column is-10 value")
+            div(v-if="item.description.length > 0", v-text-to-html="item.description")
+            div(v-else) {{ item.description }}
+        div(class="columns")
+          div(class="column is-2")
+            div(class="key") Activities
+            div(class="value") {{ activitiesUsingAssignmentCount(item._id) }}
+          div(class="column is-2")
             div(class="key") Seed Name
             div(class="value")
               ui-link(:name="'developEhrData'", :params="{seedId: item.seedDataObj._id}") {{ item.seedDataObj.name }}
-          div(class="column")
+        div(class="columns")
+          div(class="column is-2")
+            div(class="key") Created
+            div(class="value") {{item.createDate | formatDateTime}}
+          div(class="column is-2")
+            div(class="key") Last Update
+            div(class="value") {{item.lastUpdateDate | formatDateTime}}
+        div(class="columns")
+          div(class="column" align="right")
             div(class="value")
               ui-button(v-on:buttonClicked="showEditDialog", :value="item._id", :secondary="isItemMisconfigured(item)")
                 fas-icon(icon="edit") Edit assignment properties
