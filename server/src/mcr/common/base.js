@@ -135,6 +135,10 @@ export default class BaseController {
         if (modelInstance.lastUpdateDate) {
           modelInstance.lastUpdateDate = Date.now()
         }
+        // THe activity model, unfortunately, used a different field name
+        if (modelInstance.lastDate) {
+          modelInstance.lastDate = Date.now()
+        }
 
         return modelInstance.save()
       })
