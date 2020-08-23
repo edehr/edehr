@@ -17,7 +17,8 @@ const CLIENT_PORT = process.env.CLIENT_PORT || undefined // 28000
 const API_HOST =   process.env.API_HOST
 const AUTH_TOKEN_SECRET = process.env.AUTH_TOKEN_SECRET || 'defaultTokenSecretForJWT'
 const CLIENT_HOST =   process.env.CLIENT_HOST
-const EHR_FILES_DIRECTORY = process.env.EHR_FILES_DIRECTORY  || 'ehr-files'
+const EHR_FILES_DIRECTORY = process.env.EHR_FILES_DIRECTORY  || 'files-ehr'
+const EHR_COMMON_FILES_DIRECTORY = process.env.EHR_COMMON_FILES_DIRECTORY  || 'files-common'
 const EHR_MAX_FILE_SIZE = process.env.EHR_MAX_FILE_SIZE  || 1024 * 1024 * 5
 const MONGODB_PORT = process.env.MONGODB_PORT || 27018
 const MONGODB_HOST = process.env.MONGODB_HOST || 'localhost'
@@ -47,6 +48,7 @@ module.exports = function() {
     clientPort: CLIENT_PORT,
     clientHost: CLIENT_HOST,
     ehrFilesDirectory: EHR_FILES_DIRECTORY,
+    ehrCommonFilesDirectory: EHR_COMMON_FILES_DIRECTORY,
     ehrMaxFileSize: EHR_MAX_FILE_SIZE,
     seedDB: SEED_DB,
     database: {
