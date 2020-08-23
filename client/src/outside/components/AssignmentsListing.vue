@@ -9,7 +9,6 @@
     div(v-show="isDevelopingContent")
       ui-button(v-on:buttonClicked="showCreateDialog") Create a new assignment
       ui-button(v-on:buttonClicked="downloadAll") Download all assignments
-      ui-button(v-on:buttonClicked="manageEhrData", :secondary="true") Manage seed data
     div(v-if="validationWarning")
       p(class="un-configured-warning") {{ validationWarning }}
 
@@ -109,9 +108,6 @@ export default {
     },
     activitiesUsingAssignmentCount: function (assignmentId) {
       return StoreHelper.activitiesUsingAssignmentCount(assignmentId)
-    },
-    manageEhrData: function () {
-      this.$router.push('developEhrData')
     },
     downloadAll () {
       StoreHelper.loadAssignmentList(this)

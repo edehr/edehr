@@ -4,7 +4,7 @@
       h2(slot="header") {{dialogHeader}}
       div(slot="body")
         div
-          div(class="ehr-group-wrapper grid-left-to-right-3")
+          div(class="grid-left-to-right-3")
             div(class="form-element")
               div(class="text_input_wrapper")
                 label Assignment name
@@ -26,7 +26,7 @@
                 textarea(class="ehr-page-form-textarea",v-model="description")
             hr
             h3 Assignment persona
-            div(class="ehr-group-wrapper grid-left-to-right-3")
+            div(class="grid-left-to-right-2")
               div(class="form-element")
                 div(class="input-element input-element-full")
                   label Persona
