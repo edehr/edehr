@@ -4,6 +4,7 @@ import path from 'path'
 import fs  from 'fs'
 import filenamify from 'filenamify'
 import filesize from 'filesize'
+import Consumer from '../consumer/consumer'
 
 
 const FILE_TYPES = /jpeg|jpg|png|gif|tiff|tif|bmp|pdf|json|txt|text/
@@ -98,14 +99,10 @@ export default class FileController {
   We'll also compute the directory and file name and stash in the request for when the processing is done.
  */
   _fileFilter () {
-    return (req, file, callback) => {
-      if (!this._validateRequest(req)) {
-        return callback(req.badRequestError)
-      }
+    return async (req, file, callback) => {
       if (!this._validateFileType(file)) {
         return callback(req.badRequestError)
       }
-      this._setupDirectory(req)
       this._setupFileName(req, file)
       console.log('is req method post', req.method)
       if (req.method === 'POST' && !this._validateFileDoesNotExist(req, file)) {
@@ -115,9 +112,7 @@ export default class FileController {
     }
   }
 
-  _setupDirectory(req) {
-    const {toolConsumerId} = req.authPayload
-    req.uploadDirectory = path.join(this.ehrFilesDirectory, toolConsumerId)
+  async _setupDirectory(req) {
     fs.mkdirSync(req.uploadDirectory, {recursive: true})
     debug('File Upload directory', req.uploadDirectory)
   }
@@ -127,14 +122,32 @@ export default class FileController {
     debug('File Upload original name', file.originalname, 'new file name:', req.newFileName)
   }
 
-  _validateRequest(req) {
-    const {toolConsumerId} = req.authPayload
-    debug(`File Upload consumer id is '${toolConsumerId}'`)
-    if (!toolConsumerId) {
-      req.badRequestError = new Error(TEXT.INVALID_AUTH_CONSUMER)
+  async _validateRequest(req, res, next) {
+    const id = (req.authPayload ? req.authPayload.toolConsumerId : req.params.consumer)
+    const dirName = await this._convertIdToKey(id)
+    debug(`File _validateRequest consumer id ${id} leads to key '${dirName}'`)
+    if (!dirName) {
+      logError('File upload - found badRequestError ', req.badRequestError)
+      const error = new Error(TEXT.INVALID_AUTH_CONSUMER)
+      error.status = 400 // Bad Request
+      next(error)
       return false
     }
+    req.dirName = dirName
+    req.uploadDirectory = path.join(this.ehrFilesDirectory, dirName)
     return true
+  }
+
+  async _convertIdToKey(toolConsumerId) {
+    const dirName = await Consumer.find({_id: toolConsumerId})
+      .then((found) => {
+        if (found && found.length > 0) {
+          const consumer = found[0]
+          return consumer.oauth_consumer_key
+        }
+        return undefined
+      })
+    return dirName
   }
 
   _validateFileType(file) {
@@ -165,8 +178,8 @@ export default class FileController {
    * Remove all files associated with the tool consumer
    * @param toolConsumerId
    */
-  clearConsumer (toolConsumerId) {
-    const dir = path.join(_this.ehrFilesDirectory, toolConsumerId)
+  async clearConsumer (toolConsumerId) {
+    const dir = await this._convertIdToKey(toolConsumerId)
     debug('File Controller Remove all files in this directory ', dir)
     fs.rmdir( dir, {recursive: true}, (err) => {
       if (err) return cb(err)
@@ -177,36 +190,32 @@ export default class FileController {
   publicRoute () {
     const router = new Router()
 
-    router.get('/:name/consumer/:consumer', (req, res, next) => {
-      const toolConsumerId = req.params.consumer
-      if (!toolConsumerId) {
-        let error = new Error(TEXT.INVALID_AUTH_CONSUMER)
-        error.status = 400
-        return next(error)
-      }
-      const options = {
-        root: path.join(this.ehrFilesDirectory, toolConsumerId),
-        dotfiles: 'deny',
-        headers: {
-          'x-timestamp': Date.now(),
-          'x-sent': true
+    router.get('/:name/consumer/:consumer', async (req, res, next) => {
+      if (await this._validateRequest(req, res, next)) {
+        const options = {
+          root: req.uploadDirectory,
+          dotfiles: 'deny',
+          headers: {
+            'x-timestamp': Date.now(),
+            'x-sent': true
+          }
         }
+        const fileName = req.params.name
+        res.sendFile(fileName, options, function (err) {
+          if (err) {
+            next(err)
+          }
+        })
       }
-      const fileName = req.params.name
-      res.sendFile(fileName, options, function (err) {
-        if (err) {
-          next(err)
-        }
-      })
     })
 
-    router.get('/exists/:name/consumer/:consumer', (req, res, next) => {
-      const toolConsumerId = req.params.consumer
-      const root = path.join(this.ehrFilesDirectory, toolConsumerId)
-      const fileName = path.join(root, req.params.name)
-      fs.access(fileName, fs.constants.F_OK, (err) => {
-        res.send({exists: !err})
-      })
+    router.get('/exists/:name/consumer/:consumer', async (req, res, next) => {
+      if (await this._validateRequest(req, res, next)) {
+        const fileName = path.join(req.uploadDirectory, req.params.name)
+        fs.access(fileName, fs.constants.F_OK, (err) => {
+          res.send({exists: !err})
+        })
+      }
     })
 
     router.get('/maxFileSize', (req, res) => {
@@ -225,41 +234,39 @@ export default class FileController {
 
   route () {
     const router = new Router()
-    router.get('/list', (req, res, next) => {
-      const {toolConsumerId} = req.authPayload
-      if (!toolConsumerId) {
-        debug('File get list no consumer id ', req.authPayload)
-        let error = new Error(TEXT.INVALID_AUTH_CONSUMER)
-        error.status = 400
-        return next(error)
-      }
-      const dir = path.join(this.ehrFilesDirectory, toolConsumerId)
-      debug('File get list for dir', dir)
-      fs.access(dir, fs.constants.F_OK, (err) => {
-        if (err) {
-          debug('File dir does not exist so return empty list')
-          res.status = 200
-          res.json('[]')
-          return res.end()
-        }
-        fs.readdir(dir, {withFileTypes: true}, (err, files) => {
+    router.get('/list', async (req, res, next) => {
+      if (await this._validateRequest(req, res, next)) {
+        debug('File get list for dir >> ', req.uploadDirectory)
+        fs.access(req.uploadDirectory, fs.constants.F_OK, (err) => {
           if (err) {
-            debug('File readdir got error', err)
-            return next(err)
+            debug(`File ${req.uploadDirectory} does not exist so return empty list`)
+            res.status = 200
+            res.json('[]')
+            return res.end()
           }
-          let fNames = files.filter(item => !item.isDirectory()).map(item => item.name)
-          res.status = 200
-          res.json(JSON.stringify(fNames))
+          fs.readdir(req.uploadDirectory, {withFileTypes: true}, (err, files) => {
+            if (err) {
+              debug('File readdir got error', err)
+              return next(err)
+            }
+            let fNames = files.filter(item => !item.isDirectory()).map(item => item.name)
+            res.status = 200
+            res.json(JSON.stringify(fNames))
+          })
         })
-      })
+      }
     })
 
-    router.post('/upload',  (req, res, next) => {
-      this._uploader(req, res, next)
+    router.post('/upload',  async (req, res, next) => {
+      if (await this._validateRequest(req, res, next)) {
+        this._uploader(req, res, next)
+      }
     })
 
-    router.put('/upload',  (req, res, next) => {
-      this._uploader(req, res, next)
+    router.put('/upload',  async (req, res, next) => {
+      if (await this._validateRequest(req, res, next)) {
+        this._uploader(req, res, next)
+      }
     })
 
     return router
