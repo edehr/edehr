@@ -77,7 +77,7 @@ describe('page-controller tests', () => {
     const route = _createRouteObject(false)
     should.doesNotThrow(async () => {
       await pageController._loadData(route)
-      sessionStorage.getItem(sKeys.USER_TOKEN).should.equal(mockData.visit._id)
+      sessionStorage.getItem(sKeys.VISIT_ID).should.equal(mockData.visit._id)
       done()
     })
   })

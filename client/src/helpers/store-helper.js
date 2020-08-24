@@ -341,7 +341,7 @@ class StoreHelperWorker {
   /* **********   Loading and Restoring  ************** */
   async loadVisitRecord (visitId) {
     if (debugSH) console.log('SH loadVisitRecord dispatch the load visit information', visitId)
-    sessionStorage.setItem(sKeys.USER_TOKEN, visitId)
+    localStorage.setItem(sKeys.VISIT_ID, visitId)
     await this._dispatchVisit('loadVisit2', visitId)
   }
 

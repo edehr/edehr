@@ -20,7 +20,7 @@ export const getters = {
 
   list: state => { return state.seedDataList },
   
-  seedId: state => state.sSeedId || sessionStorage.getItem(sKeys.SEED_ID)
+  seedId: state => state.sSeedId || localStorage.getItem(sKeys.SEED_ID)
 }
 
 const actions = {
@@ -177,7 +177,7 @@ const actions = {
 export const mutations = {
   _setSeedId: (state, seedId) => {
     if(debugSL) console.log('SeedList set seed id and stash in session store', seedId)
-    sessionStorage.setItem(sKeys.SEED_ID, seedId)
+    localStorage.setItem(sKeys.SEED_ID, seedId)
     state.sSeedId = seedId
   },
   _setSeedContent: (state, value) => {

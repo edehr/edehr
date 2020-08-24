@@ -79,7 +79,11 @@ const mutations = {
   setSeedEditId: (state, value) => {
     if(debug) console.log('setSeedEditing ', value)
     // This value needs to survive a browser refresh so make the source of truth the session storage
-    localStorage.setItem(SEED_EDIT_ID, value)
+    if (value) {
+      localStorage.setItem(SEED_EDIT_ID, value)
+    } else {
+      localStorage.removeItem(SEED_EDIT_ID)
+    }
     state._seedEditId = value
   },
   setIsDevelopingContent: (state, value) => {

@@ -45,7 +45,7 @@ export default {
   computed: {
     isValid () {
       const token = StoreHelper.getAuthToken()
-      const visitId = sessionStorage.getItem(sKeys.USER_TOKEN)
+      const visitId = localStorage.getItem(sKeys.VISIT_ID)
       if(token && visitId) {
         return true
       } else {
