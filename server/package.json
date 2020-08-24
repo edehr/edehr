@@ -50,6 +50,7 @@
     "passport-custom": "^1.1.1",
     "pluralize": "^7.0.0",
     "pug": "^2.0.3",
+    "qs": "^6.9.4",
     "session-file-store": "^1.2.0",
     "sinon": "^9.0.3",
     "uuid": "^3.3.2"
