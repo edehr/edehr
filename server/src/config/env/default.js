@@ -50,6 +50,8 @@ module.exports = function() {
     ehrFilesDirectory: EHR_FILES_DIRECTORY,
     ehrCommonFilesDirectory: EHR_COMMON_FILES_DIRECTORY,
     ehrMaxFileSize: EHR_MAX_FILE_SIZE,
+    ehrFileTypeRE: /jpeg|jpg|png|gif|tiff|tif|bmp|pdf|json|txt|text/,
+    ehrFileTypes: 'jpeg,jpg,png,gif,tiff,tif,bmp,pdf,json,txt,text',
     seedDB: SEED_DB,
     database: {
       name: MONGODB_NAME,

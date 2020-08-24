@@ -1,3 +1,4 @@
+import { Text }  from '../../config/text'
 import { Router } from 'express'
 import multer from 'multer'
 import path from 'path'
@@ -5,23 +6,6 @@ import fs  from 'fs'
 import filenamify from 'filenamify'
 import filesize from 'filesize'
 import Consumer from '../consumer/consumer'
-
-
-const FILE_TYPES = /jpeg|jpg|png|gif|tiff|tif|bmp|pdf|json|txt|text/
-
-const FILE_TYPES_TEXT = ( () => {
-  let S = String(FILE_TYPES)
-  return S.substr(1, S.length - 2).split('|').join(', ')
-})()
-
-export const TEXT = {
-  EXPECTED_FIELD: (fld) => {return `Expected field to be ${fld}` },
-  FILE_EXISTS: (originalname) => { return `File ${originalname} is already exists!`},
-  INVALID_AUTH_CONSUMER: 'Invalid authentication token. It needs to include consumer information.',
-  PROVIDE_FILE: 'Please upload a file',
-  MAX_FILE_SIZE: (size) => { return `Maximum files size is ${size}`},
-  SUPPORT_FILETYPES: `Error: File upload only supports the following filetypes - ${FILE_TYPES_TEXT}`
-}
 
 const debug = require('debug')('server')
 const logError = require('debug')('error')
@@ -33,6 +17,8 @@ export default class FileController {
   constructor (config) {
     this.ehrFilesDirectory = config.ehrFilesDirectory
     this.ehrMaxFileSize = config.ehrMaxFileSize
+    this.ehrFileTypeRE = config.ehrFileTypeRE
+    this.ehrFileTypes = config.ehrFileTypes
     debug('File upload limits file size to', this.ehrMaxFileSize)
     if (!this.ehrFilesDirectory) {
       const msg = 'Server configuration must provide a directory for storing EHR files (e.g. x-rays lab reports'
@@ -56,10 +42,10 @@ export default class FileController {
       }
       else if (err instanceof multer.MulterError) {
         if (err.code === 'LIMIT_FILE_SIZE') {
-          err.message += '. ' + TEXT.MAX_FILE_SIZE(filesize(this.ehrMaxFileSize))
+          err.message += '. ' + Text.MAX_FILE_SIZE(filesize(this.ehrMaxFileSize))
         }
         if (err.code === 'LIMIT_UNEXPECTED_FILE') {
-          err.message += '. ' + TEXT.EXPECTED_FIELD(formElementNameForFileUpload)
+          err.message += '. ' + Text.EXPECTED_FIELD(formElementNameForFileUpload)
         }
         logError('File upload - Multer error', err.code, err.message)
         // Inform the caller their request was bad
@@ -72,7 +58,7 @@ export default class FileController {
       }
       else if (!req.file) {
         debug('File upload - user did not provide a file')
-        const error = new Error(TEXT.PROVIDE_FILE)
+        const error = new Error(Text.PROVIDE_FILE)
         error.status = 400 // Bad Request
         return next(error)
       }
@@ -128,7 +114,7 @@ export default class FileController {
     debug(`File _validateRequest consumer id ${id} leads to key '${dirName}'`)
     if (!dirName) {
       logError('File upload - found badRequestError ', req.badRequestError)
-      const error = new Error(TEXT.INVALID_AUTH_CONSUMER)
+      const error = new Error(Text.INVALID_AUTH_CONSUMER)
       error.status = 400 // Bad Request
       next(error)
       return false
@@ -151,12 +137,12 @@ export default class FileController {
   }
 
   _validateFileType(file) {
-    let mimetype = FILE_TYPES.test(file.mimetype)
+    let mimetype = this.ehrFileTypeRE.test(file.mimetype)
     let fext = path.extname(file.originalname).toLowerCase()
-    let extname = FILE_TYPES.test(fext)
+    let extname = this.ehrFileTypeRE.test(fext)
     // require both mimetype and extension to be sure the file will be useful
     if (!mimetype || !extname) {
-      req.badRequestError = new Error(TEXT.SUPPORT_FILETYPES)
+      req.badRequestError = new Error(Text.SUPPORT_FILETYPES(this.ehrFileTypes))
       debug('File upload filter found unsupported mime type:', file.mimetype, mimetype, 'extension:', extname)
       return false
     }
@@ -167,7 +153,7 @@ export default class FileController {
     let fPath = path.join(req.uploadDirectory, req.newFileName)
     debug('File filter check for existence of this file: ', fPath)
     if (fs.existsSync(fPath)) {
-      req.badRequestError = new Error(TEXT.FILE_EXISTS(file.originalname))
+      req.badRequestError = new Error(Text.FILE_EXISTS(file.originalname))
       return false
     }
     return true
@@ -220,7 +206,7 @@ export default class FileController {
 
     router.get('/maxFileSize', (req, res) => {
       res.status = 200
-      res.json({message: TEXT.MAX_FILE_SIZE(filesize(this.ehrMaxFileSize)), value: this.ehrMaxFileSize})
+      res.json({message: Text.MAX_FILE_SIZE(filesize(this.ehrMaxFileSize)), value: this.ehrMaxFileSize})
     })
 
     router.get('/fieldName', (req, res) => {

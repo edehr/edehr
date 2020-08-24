@@ -55,6 +55,14 @@ export const Text = {
   TOO_MANY_REQUESTS_ERROR: 'Too many requests triggered. Please, try again later!',
 
   // Base errors
-  INVALID_BASE_ID: (id) => `Invalid id: ${id}`
+  INVALID_BASE_ID: (id) => `Invalid id: ${id}`,
+
+  /* for Files */
+  EXPECTED_FIELD: (fld) => {return `Expected field to be ${fld}` },
+  FILE_EXISTS: (originalname) => { return `File ${originalname} is already exists!`},
+  INVALID_AUTH_CONSUMER: 'Invalid authentication token. It needs to include consumer information.',
+  PROVIDE_FILE: 'Please upload a file',
+  MAX_FILE_SIZE: (size) => { return `Maximum files size is ${size}`},
+  SUPPORT_FILETYPES: (ehrFileTypes) => { return `Error: File upload only supports the following filetypes - ${ehrFileTypes}`}
 }
 

@@ -1,13 +1,14 @@
-import { formElementNameForFileUpload } from './files-controller'
 import fs from 'fs'
 import path from 'path'
-const debug = require('debug')('server')
+import { formElementNameForFileUpload } from './files-controller'
+import { Text } from '../../config/text'
 import Config from '../../config/config'
 import EhrApp from '../../server/app'
 import Helper from '../common/test-helper'
+
+const debug = require('debug')('server')
 const should = require('should')
 const request = require('supertest')
-import { TEXT } from './files-controller'
 
 const BASE = '/api/files'
 const tokenData = Helper.sampleTokenData()
@@ -118,7 +119,7 @@ describe('Make server calls on files controller', function () {
         should.exist(res)
         should.equal(res.status, 400)
         should.exist(res.text)
-        res.text.should.containEql(TEXT.PROVIDE_FILE)
+        res.text.should.containEql(Text.PROVIDE_FILE)
         done()
       })
   })
