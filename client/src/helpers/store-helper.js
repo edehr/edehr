@@ -364,13 +364,6 @@ class StoreHelperWorker {
     }
   }
 
-  clearSession () {
-    console.error('to do remove this method clear session')
-    // sessionStorage.removeItem(sKeys.SEED_ID)
-    // sessionStorage.removeItem(sKeys.IS_READONLY_INSTRUCTOR)
-    return Promise.resolve()
-  }
-
   async loadStudent2 () {
     let visitInfo = store.state.visit.sVisitData || {}
     // visitInfo.activityData and .activity and .assignment are all ids
@@ -443,7 +436,8 @@ class StoreHelperWorker {
   }
 
   async logUserOutOfEdEHR () {
-    return await this._dispatchVisit('clearVisitData')
+    await this._dispatchAuthStore('logOutUser')
+    await this._dispatchVisit('clearVisitData')
   }
 
 

@@ -19,6 +19,9 @@ const getters = {
 }
 
 const actions = {
+  logOutUser: function({commit}) {
+    commit('setToken', undefined)
+  },
   fetchAndStoreAuthToken: function ({ commit }, { refreshToken }) {
     return authHelper.getToken(refreshToken)
       .then(res => {
@@ -86,7 +89,11 @@ const mutations = {
   },
   setToken: function (none, token) {
     state.token = token
-    localStorage.setItem(AUTH_TOKEN_KEY, token)
+    if (token) {
+      localStorage.setItem(AUTH_TOKEN_KEY, token)
+    } else {
+      localStorage.removeItem(AUTH_TOKEN_KEY)
+    }
     setAuthHeader(token)
   }
 }

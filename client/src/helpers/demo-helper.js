@@ -12,10 +12,10 @@ export default class DemoHelper {
   proceedDemoToolConsumerCreation () {
 
     StoreHelper.setLoading(null, true)
-    if(debugH) console.log('Demo proceedDemoToolConsumerCreation')
+    if(debugDC) console.log('Demo proceedDemoToolConsumerCreation')
     return StoreHelper.createDemoToolConsumer()
       .then((demoToken) => {
-        if (debugH) console.log(`Demo consumer created. If have token? ${!!demoToken} go to demo`)
+        if (debugDC) console.log(`Demo consumer created. If have token? ${!!demoToken} go to demo`)
         if (!demoToken) {
           throw Error('Setup of demonstration space failed')
         }

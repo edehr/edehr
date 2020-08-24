@@ -4,7 +4,7 @@
       div(class="columns", v-if="isInstructor")
         div(class="column is-8") You are logged in as an instructor.  &nbsp;
           ui-link(:name="'instructor'") Go to your course lists.
-        div(class="column is-4", v-if="isDemo")
+        div(class="column is-4")
           ui-button(@buttonClicked="logoutUser") Sign out as instructor
       div(class="columns", v-if="isStudent")
         div(class="column is-10") You are logged in as a student. &nbsp;
@@ -27,6 +27,7 @@
 import UiButton from '../../app/ui/UiButton'
 import UiConfirm from '../../app/ui/UiConfirm'
 import UiLink from '../../app/ui/UiLink'
+import DemoHelper from '../../helpers/demo-helper'
 import StoreHelper from '@/helpers/store-helper'
 import { demoText } from '@/appText'
 

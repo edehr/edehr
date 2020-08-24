@@ -1,4 +1,5 @@
 import axios from 'axios'
+import qs from 'qs'
 import { setAuthHeader } from './axios-helper'
 
 const debugDH = false
@@ -23,7 +24,6 @@ export default class DemoStoreHelper {
     const apiUrl = this.apiUrl
     const url = `${apiUrl}/demo/logout`
     if(debugDH) console.log('DH logout',apiUrl)
-    setAuthHeader(token)
     return axios.post(url)
       .catch(err => {
         console.log('demoHelper error', err)
@@ -34,8 +34,14 @@ export default class DemoStoreHelper {
     const apiUrl = this.apiUrl
     const url = `${apiUrl}/demo/fetch`
     if(debugDH) console.log('DH fetch', apiUrl)
-    setAuthHeader(token)
-    return axios.get(url)
+    const options = {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+      url,
+    }
+    return axios(options)
   }
 
   /**
@@ -53,6 +59,7 @@ export default class DemoStoreHelper {
     let userId = theKey.slice(-5) + family + '-' + given
     const ltiData = {
       custom_assignment: externalId,
+      custom_is_demo: true,
       context_id: 'Demo-Course',
       context_label: 'L-' + assignmentName,
       context_title: 'T-' + assignmentName,
@@ -80,11 +87,16 @@ export default class DemoStoreHelper {
       user_id: userId,
     }
     if(debugDH) console.log('DH submitPersona', ltiData, apiUrl)
-    /*
-      Why stash the original token now and not earlier.  When do we stash the information returned from this LTI connection request. i.e. the visit id?
-     */
-    setAuthHeader(token)
-    return axios.post(url, { ltiData })
+    const options = {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/x-www-form-urlencoded',
+        Authorization: `Bearer ${token}`
+      },
+      data: qs.stringify({ltiData}),
+      url,
+    }
+    return axios(options)
   }
   
 }

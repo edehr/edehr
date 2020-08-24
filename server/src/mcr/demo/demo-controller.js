@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import axios from 'axios'
+import qs from 'qs'
 import { demoPersonae } from '../../helpers/demo-personae'
 import { demoLimiter, validatorMiddlewareWrapper } from '../../helpers/middleware'
 import { assignment1, assignment2 } from './assignment-defs'
@@ -136,7 +137,8 @@ export default class DemoController {
    */
   submitLTIData (req, res) {
     const {host} = req.headers
-    const {ltiData} = req.body
+    const {ltiData} = qs.parse(req.body)
+    // console.log('ltidata', ltiData, req.body)
     const signedRequest = this._signAndPrepareLTIRequest(ltiData, host)
     return axios.post(signedRequest.url, signedRequest.body)
       .then((_results) => {

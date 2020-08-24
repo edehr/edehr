@@ -2,7 +2,7 @@
 const sKeys = {
   API_URL: 'apiUrl',
   SEED_ID: 'seedId',
-  USER_TOKEN: 'token',
+  VISIT_ID: 'visitId',
   DEMO_TOKEN: 'demoToken',
   DEMO_DATA: 'demoPayload',
   SELECTED_DEMO_PERSONA: 'selectedDemoPersona'
