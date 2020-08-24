@@ -38,7 +38,7 @@ function shouldUpload (application, testFileName, done) {
     })
 }
 
-describe('Make server calls on files controller', function () {
+describe.skip('Make server calls on files controller', function () {
 
   before(function (done) {
     ehrApp
@@ -184,7 +184,7 @@ describe('Make server calls on files controller', function () {
 
 })
 
-describe('File upload with configuration changes', () => {
+describe.skip('File upload with configuration changes', () => {
 
   it('File upload file too big', function (done) {
     const configDelta = new Config('test')
@@ -230,7 +230,7 @@ describe('File upload with configuration changes', () => {
 
 })
 
-describe('File upload with invalid auth', () => {
+describe.skip('File upload with invalid auth', () => {
   it('No tool consumer', (done) => {
 
     const tokenData = Helper.sampleTokenData()
