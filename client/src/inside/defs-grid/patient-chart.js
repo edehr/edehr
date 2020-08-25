@@ -56,13 +56,13 @@ export default function () {
           fqn: 'progressNotes.note'
         }
       ],
-      recHeader: true,
       generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
+          hasRecHeader: false,
           addButtonText: 'Add an encounter note',
           ehr_list: [
             {
@@ -89,7 +89,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group114',
+                elementKey: 'ehr_group109',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -100,7 +100,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group115',
+                elementKey: 'ehr_group110',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '2',
                 gChildren: [
@@ -220,13 +220,13 @@ export default function () {
           fqn: 'carePlan.status'
         }
       ],
-      recHeader: true,
       generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
+          hasRecHeader: false,
           addButtonText: 'Add a care plan',
           ehr_list: [
             {
@@ -281,7 +281,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group116',
+                elementKey: 'ehr_group111',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -292,7 +292,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group117',
+                elementKey: 'ehr_group112',
                 gIndex: '2',
                 gChildren: [
                   'clinical',
@@ -325,7 +325,6 @@ export default function () {
       isV2: true,
       hasGridForm: true,
       pageChildren: [],
-      recHeader: true,
       generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         pageForm: {
@@ -380,7 +379,6 @@ export default function () {
           fqn: 'labResults.labReport4_1'
         }
       ],
-      recHeader: true,
       generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         pageForm: {
@@ -389,7 +387,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
-              elementKey: 'ehr_group118',
+              elementKey: 'ehr_group113',
               gIndex: '1',
               gChildren: [
                 {
@@ -465,7 +463,6 @@ export default function () {
           fqn: 'medicalImaging.pneumonia_report'
         }
       ],
-      recHeader: true,
       generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         pageForm: {
@@ -474,7 +471,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
-              elementKey: 'ehr_group119',
+              elementKey: 'ehr_group114',
               gIndex: '1',
               gChildren: [
                 'day0',
@@ -496,7 +493,6 @@ export default function () {
       isV2: true,
       hasGridForm: true,
       pageChildren: [],
-      recHeader: true,
       generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         pageForm: {

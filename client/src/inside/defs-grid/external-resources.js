@@ -143,8 +143,7 @@ export default function () {
           fqn: 'assessmentTools.medication1_1'
         }
       ],
-      recHeader: true,
-      generated: '2020-07-30T16:48:26-07:00',
+      generated: '2020-07-31T10:08:58-03:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -152,7 +151,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
-              elementKey: 'ehr_group82',
+              elementKey: 'ehr_group115',
               gIndex: '1',
               gChildren: [
                 {
@@ -246,8 +245,7 @@ export default function () {
           fqn: 'codeLookup.icf'
         }
       ],
-      recHeader: true,
-      generated: '2020-07-30T16:48:26-07:00',
+      generated: '2020-07-31T10:08:58-03:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -255,7 +253,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
-              elementKey: 'ehr_group83',
+              elementKey: 'ehr_group116',
               gIndex: '1',
               gChildren: [
                 'snomed',
@@ -394,13 +392,13 @@ export default function () {
           fqn: 'diagnosticCodes.cluster'
         }
       ],
-      recHeader: true,
-      generated: '2020-07-30T16:48:26-07:00',
+      generated: '2020-07-31T10:08:58-03:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
+          hasRecHeader: false,
           addButtonText: 'Add a diagnostic code',
           ehr_list: [
             {
@@ -462,7 +460,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group84',
+                elementKey: 'ehr_group117',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -473,7 +471,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group85',
+                elementKey: 'ehr_group118',
                 gIndex: '2',
                 gChildren: [
                   'icd10',
@@ -584,13 +582,13 @@ export default function () {
           fqn: 'interventionCodes.extent'
         }
       ],
-      recHeader: true,
-      generated: '2020-07-30T16:48:26-07:00',
+      generated: '2020-07-31T10:08:58-03:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
+          hasRecHeader: false,
           addButtonText: 'Add an intervention code',
           ehr_list: [
             {
@@ -638,7 +636,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group86',
+                elementKey: 'ehr_group119',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -649,7 +647,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group87',
+                elementKey: 'ehr_group120',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '2',
                 gChildren: [
@@ -771,13 +769,13 @@ export default function () {
           fqn: 'caseMixGroup.analysis'
         }
       ],
-      recHeader: true,
-      generated: '2020-07-30T16:48:26-07:00',
+      generated: '2020-07-31T10:08:58-03:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
+          hasRecHeader: false,
           addButtonText: 'Add a case mix group',
           ehr_list: [
             {
@@ -832,7 +830,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group88',
+                elementKey: 'ehr_group121',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -843,7 +841,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group89',
+                elementKey: 'ehr_group122',
                 gIndex: '2',
                 gChildren: [
                   'clinicalCategory',

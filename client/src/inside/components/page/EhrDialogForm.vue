@@ -51,7 +51,7 @@ export default {
       return this.tableDef.form ? this.tableDef.form.ehr_groups : []
     },
     acknowledgeSignature () {
-      return CaseContext.getPageTableShowSignature(this.ehrHelp.pageKey)
+      return CaseContext.getPageTableShowSignature(this.ehrHelp.pageKey, this.tableKey)
     },
     disableSave () {
       if (this.acknowledgeSignature) {

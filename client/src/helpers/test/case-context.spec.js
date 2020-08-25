@@ -4,9 +4,12 @@ import * as testHelper from './testHelper'
 const mockData = require('./mockData.json')
 
 // pick a page with a table that has a table that has a record header
-const DEFAULT_KEY = 'testPage'
-const PAGE_KEY_WITHOUT = 'demographics'
+const DEFAULT_KEY = 'testTable'
+const PAGE_KEY_WITHOUT = 'testPage'
 const { assignment } = mockData
+
+const HAS_RECHEADER_KEY = 'table2'
+const NO_RECHEADER_KEY = 'table1'
 
 function _setupWithContext () {
   testHelper.setAssignmentMocks(assignment)
@@ -80,11 +83,11 @@ describe('getPageTableShowSignature', () => {
       // CaseContext.setFeature(false)
       _setupWithContext()
       // _setupWithOutContext()
-      let key = DEFAULT_KEY
+      let key = DEFAULT_KEY, tableKey = NO_RECHEADER_KEY
       // let key = PAGE_KEY_WITHOUT
-      const result = CaseContext.getPageTableShowSignature(key)
+      const result = CaseContext.getPageTableShowSignature(key, tableKey)
       should(result).be.a.Boolean()
-      result.should.be.true()
+      result.should.be.false()
     })
     done()
   })
@@ -94,7 +97,8 @@ describe('getPageTableShowSignature', () => {
       CaseContext.setFeature(false)
       _setupWithContext()
       let key = DEFAULT_KEY
-      const result = CaseContext.getPageTableShowSignature(key)
+      let tableKey = HAS_RECHEADER_KEY
+      const result = CaseContext.getPageTableShowSignature(key, tableKey)
       should(result).be.a.Boolean()
       result.should.be.false()
     })
@@ -106,7 +110,8 @@ describe('getPageTableShowSignature', () => {
       CaseContext.setFeature(true)
       _setupWithOutContext()
       let key = DEFAULT_KEY
-      const result = CaseContext.getPageTableShowSignature(key)
+      let tableKey = HAS_RECHEADER_KEY
+      const result = CaseContext.getPageTableShowSignature(key, tableKey)
       should(result).be.a.Boolean()
       result.should.be.false()
     })
@@ -118,7 +123,8 @@ describe('getPageTableShowSignature', () => {
       CaseContext.setFeature(true)
       _setupWithContext()
       let key = PAGE_KEY_WITHOUT
-      const result = CaseContext.getPageTableShowSignature(key)
+      let tableKey = NO_RECHEADER_KEY
+      const result = CaseContext.getPageTableShowSignature(key, tableKey)
       should(result).be.a.Boolean()
       result.should.be.false()
     })

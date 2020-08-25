@@ -325,8 +325,7 @@ export default function () {
           fqn: 'testPage.place'
         }
       ],
-      recHeader: true,
-      generated: '2020-07-30T17:01:02-07:00',
+      generated: '2020-08-20T11:44:55-03:00',
       pageElements: {
         form1: {
           elementKey: 'form1',
@@ -393,6 +392,7 @@ export default function () {
           elementKey: 'table1',
           tableKey: 'table1',
           isTable: true,
+          hasRecHeader: false,
           label: 'Test table 1',
           addButtonText: 'Add a row to the test table',
           ehr_list: [
@@ -1039,13 +1039,13 @@ export default function () {
           fqn: 'testTable.stat'
         }
       ],
-      recHeader: true,
-      generated: '2020-07-30T17:01:02-07:00',
+      generated: '2020-08-20T11:44:55-03:00',
       pageElements: {
         table1: {
           elementKey: 'table1',
           tableKey: 'table1',
           isTable: true,
+          hasRecHeader: false,
           label: 'Test table 1',
           addButtonText: 'Add a row to the test table',
           ehr_list: [
@@ -1241,6 +1241,7 @@ export default function () {
           elementKey: 'stacked',
           tableKey: 'stacked',
           isTable: true,
+          hasRecHeader: false,
           label: 'Stacked table',
           addButtonText: 'Add a stacked row',
           ehr_list: [
