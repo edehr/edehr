@@ -10,8 +10,8 @@ class CaseContextHelper {
       result = this.assignmentHasCaseContext()
       if (result) {
         //TODO see https://github.com/BCcampus/edehr/issues/809
-        const pd = EhrDefsGrid.getPageDefinition(pageKey)
-        result = pd.recHeader === true
+        const table = EhrDefsGrid.getPageTable(pageKey, tableKey)
+        result = (table && table.hasRecHeader) === true
       }
     }
     return result

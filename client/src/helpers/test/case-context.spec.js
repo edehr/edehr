@@ -80,9 +80,9 @@ describe('getPageTableShowSignature', () => {
       // CaseContext.setFeature(false)
       _setupWithContext()
       // _setupWithOutContext()
-      let key = DEFAULT_KEY
+      let key = DEFAULT_KEY, tableKey = NO_RECHEADER_KEY
       // let key = PAGE_KEY_WITHOUT
-      const result = CaseContext.getPageTableShowSignature(key)
+      const result = CaseContext.getPageTableShowSignature(key, tableKey)
       should(result).be.a.Boolean()
       result.should.be.true()
     })
