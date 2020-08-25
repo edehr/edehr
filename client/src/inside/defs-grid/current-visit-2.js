@@ -435,13 +435,13 @@ export default function () {
           fqn: 'genitourinary.comments'
         }
       ],
-      recHeader: true,
-      generated: '2020-07-30T16:48:41-07:00',
+      generated: '2020-07-31T10:08:58-03:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
+          hasRecHeader: false,
           addButtonText: 'Add a genitourinary assessment',
           ehr_list: [
             {
@@ -620,7 +620,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group41',
+                elementKey: 'ehr_group68',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -693,7 +693,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group42',
+                elementKey: 'ehr_group69',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '7',
                 gChildren: [
@@ -960,10 +960,10 @@ export default function () {
           fqn: 'musculoskeletal.temp'
         },
         {
-          elementKey: 'spacer45',
+          elementKey: 'spacer72',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'musculoskeletal.spacer45'
+          fqn: 'musculoskeletal.spacer72'
         },
         {
           elementKey: 'useOfAmbulatoryAid',
@@ -1033,13 +1033,13 @@ export default function () {
           fqn: 'musculoskeletal.comments'
         }
       ],
-      recHeader: true,
-      generated: '2020-07-30T16:48:41-07:00',
+      generated: '2020-07-31T10:08:58-03:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
+          hasRecHeader: false,
           addButtonText: 'Add a musculoskeletal assessment',
           ehr_list: [
             {
@@ -1138,7 +1138,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group43',
+                elementKey: 'ehr_group70',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -1149,7 +1149,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group44',
+                elementKey: 'ehr_group71',
                 gIndex: '2',
                 gChildren: [
                   'swelling',
@@ -1160,13 +1160,13 @@ export default function () {
                   'pulse',
                   'colour',
                   'temp',
-                  'spacer45',
+                  'spacer72',
                   'useOfAmbulatoryAid',
                   'type'
                 ]
               },
               {
-                elementKey: 'ehr_group46',
+                elementKey: 'ehr_group73',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '3',
                 gChildren: [
@@ -1410,13 +1410,13 @@ export default function () {
           fqn: 'pain.comments'
         }
       ],
-      recHeader: true,
-      generated: '2020-07-30T16:48:41-07:00',
+      generated: '2020-07-31T10:08:58-03:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
+          hasRecHeader: false,
           addButtonText: 'Add a pain assessment',
           ehr_list: [
             {
@@ -1566,7 +1566,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group54',
+                elementKey: 'ehr_group81',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -1577,7 +1577,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group55',
+                elementKey: 'ehr_group82',
                 label: 'Primary pain site',
                 gIndex: '2',
                 gChildren: [
@@ -1592,7 +1592,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group56',
+                elementKey: 'ehr_group83',
                 formCss: 'grid-left-to-right-1 section-divider',
                 gIndex: '3',
                 gChildren: [
@@ -1600,7 +1600,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group57',
+                elementKey: 'ehr_group84',
                 label: 'Secondary pain site',
                 gIndex: '4',
                 gChildren: [
@@ -1615,7 +1615,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group58',
+                elementKey: 'ehr_group85',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '5',
                 gChildren: [
@@ -1987,13 +1987,13 @@ export default function () {
           fqn: 'biopsychosocial.generalComments'
         }
       ],
-      recHeader: true,
-      generated: '2020-07-30T16:48:41-07:00',
+      generated: '2020-07-31T10:08:58-03:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
+          hasRecHeader: false,
           addButtonText: 'Add a biopsychosocial assessment',
           ehr_list: [
             {
@@ -2144,7 +2144,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group59',
+                elementKey: 'ehr_group86',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -2155,7 +2155,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group60',
+                elementKey: 'ehr_group87',
                 formCss: 'section-divider',
                 gIndex: '2',
                 gChildren: [
@@ -2164,7 +2164,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group61',
+                elementKey: 'ehr_group88',
                 formCss: 'section-divider',
                 gIndex: '3',
                 gChildren: [
@@ -2173,7 +2173,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group62',
+                elementKey: 'ehr_group89',
                 formCss: 'section-divider',
                 gIndex: '4',
                 gChildren: [
@@ -2221,7 +2221,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group63',
+                elementKey: 'ehr_group90',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '9',
                 gChildren: [
@@ -2374,13 +2374,13 @@ export default function () {
           fqn: 'nonmedOrders.comment'
         }
       ],
-      recHeader: true,
-      generated: '2020-07-30T16:48:41-07:00',
+      generated: '2020-07-31T10:08:58-03:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
+          hasRecHeader: false,
           addButtonText: 'Add an order',
           ehr_list: [
             {
@@ -2435,7 +2435,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group64',
+                elementKey: 'ehr_group91',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -2446,7 +2446,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group65',
+                elementKey: 'ehr_group92',
                 gIndex: '2',
                 gChildren: [
                   'order',
@@ -2456,7 +2456,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group66',
+                elementKey: 'ehr_group93',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '3',
                 gChildren: [
@@ -2543,10 +2543,10 @@ export default function () {
           fqn: 'referrals.referralProfession'
         },
         {
-          elementKey: 'spacer69',
+          elementKey: 'spacer96',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'referrals.spacer69'
+          fqn: 'referrals.spacer96'
         },
         {
           elementKey: 'appointmentDate',
@@ -2586,13 +2586,13 @@ export default function () {
           fqn: 'referrals.status'
         }
       ],
-      recHeader: true,
-      generated: '2020-07-30T16:48:41-07:00',
+      generated: '2020-07-31T10:08:58-03:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
+          hasRecHeader: false,
           addButtonText: 'Add a referral',
           ehr_list: [
             {
@@ -2647,7 +2647,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group67',
+                elementKey: 'ehr_group94',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -2658,12 +2658,12 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group68',
+                elementKey: 'ehr_group95',
                 gIndex: '2',
                 gChildren: [
                   'referralName',
                   'referralProfession',
-                  'spacer69',
+                  'spacer96',
                   'appointmentDate',
                   'appointmentTime',
                   'status'
@@ -2751,11 +2751,11 @@ export default function () {
           fqn: 'labRequisitions.requisition'
         },
         {
-          elementKey: 'spacer72',
+          elementKey: 'spacer99',
           formIndex: '1',
           inputType: 'spacer',
           tableColumn: '4',
-          fqn: 'labRequisitions.spacer72'
+          fqn: 'labRequisitions.spacer99'
         },
         {
           elementKey: 'ordered',
@@ -2767,13 +2767,13 @@ export default function () {
           fqn: 'labRequisitions.ordered'
         }
       ],
-      recHeader: true,
-      generated: '2020-07-30T16:48:41-07:00',
+      generated: '2020-07-31T10:08:58-03:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
+          hasRecHeader: false,
           addButtonText: 'Add a lab requisition',
           ehr_list: [
             {
@@ -2801,7 +2801,7 @@ export default function () {
             {
               ehr_list_index: '4',
               items: [
-                'spacer72'
+                'spacer99'
               ]
             },
             {
@@ -2818,7 +2818,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group70',
+                elementKey: 'ehr_group97',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -2829,12 +2829,12 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group71',
+                elementKey: 'ehr_group98',
                 gIndex: '2',
                 gChildren: [
                   'requisition',
                   'requisition',
-                  'spacer72',
+                  'spacer99',
                   'ordered'
                 ]
               }
@@ -3145,13 +3145,13 @@ export default function () {
           fqn: 'medicationOrders.notes'
         }
       ],
-      recHeader: true,
-      generated: '2020-07-30T16:48:41-07:00',
+      generated: '2020-07-31T10:08:58-03:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
+          hasRecHeader: false,
           addButtonText: 'Add a medication order',
           ehr_list: [
             {
@@ -3280,7 +3280,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group73',
+                elementKey: 'ehr_group100',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -3291,7 +3291,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group74',
+                elementKey: 'ehr_group101',
                 gIndex: '2',
                 gChildren: [
                   'medication',
@@ -3346,7 +3346,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group75',
+                elementKey: 'ehr_group102',
                 gIndex: '8',
                 gChildren: [
                   'instructions',
@@ -3522,13 +3522,13 @@ export default function () {
           helperHtml: '<p>Enter time delivered or say if not delivered.</p>'
         }
       ],
-      recHeader: true,
-      generated: '2020-07-30T16:48:41-07:00',
+      generated: '2020-07-31T10:08:58-03:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
+          hasRecHeader: false,
           addButtonText: 'Administered',
           ehr_list: [
             {
@@ -3602,7 +3602,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group76',
+                elementKey: 'ehr_group103',
                 gIndex: '1',
                 gChildren: [
                   'medStatus',
@@ -3685,10 +3685,10 @@ export default function () {
           fqn: 'dischargeSummary.dischargingPhysician/np'
         },
         {
-          elementKey: 'spacer78',
+          elementKey: 'spacer105',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'dischargeSummary.spacer78'
+          fqn: 'dischargeSummary.spacer105'
         },
         {
           elementKey: 'clinicalSummary',
@@ -3713,10 +3713,10 @@ export default function () {
           fqn: 'dischargeSummary.dischargeEducation'
         },
         {
-          elementKey: 'spacer80',
+          elementKey: 'spacer107',
           formIndex: '2',
           inputType: 'spacer',
-          fqn: 'dischargeSummary.spacer80'
+          fqn: 'dischargeSummary.spacer107'
         },
         {
           elementKey: 'dischargeDay',
@@ -3786,8 +3786,7 @@ export default function () {
           fqn: 'dischargeSummary.leavingBy'
         }
       ],
-      recHeader: true,
-      generated: '2020-07-30T16:48:41-07:00',
+      generated: '2020-07-31T10:08:58-03:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -3795,12 +3794,12 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
-              elementKey: 'ehr_group77',
+              elementKey: 'ehr_group104',
               gIndex: '1',
               gChildren: [
                 'admissionDay',
                 'dischargingPhysician/np',
-                'spacer78',
+                'spacer105',
                 'clinicalSummary'
               ]
             }
@@ -3812,12 +3811,12 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
-              elementKey: 'ehr_group79',
+              elementKey: 'ehr_group106',
               gIndex: '1',
               gChildren: [
                 'dischargeDiagnosis',
                 'dischargeEducation',
-                'spacer80',
+                'spacer107',
                 'dischargeDay',
                 'dischargeTime',
                 'dischargedTo',
@@ -3858,8 +3857,7 @@ export default function () {
           fqn: 'billing.paymentType'
         }
       ],
-      recHeader: true,
-      generated: '2020-07-30T16:48:41-07:00',
+      generated: '2020-07-31T10:08:58-03:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -3867,7 +3865,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
-              elementKey: 'ehr_group81',
+              elementKey: 'ehr_group108',
               gIndex: '1',
               gChildren: [
                 'paymentType'
@@ -4250,10 +4248,10 @@ export default function () {
           helperHtml: '<p>O\'clock</p>'
         },
         {
-          elementKey: 'spacer49',
+          elementKey: 'spacer76',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'integumentaryAssessment.spacer49'
+          fqn: 'integumentaryAssessment.spacer76'
         },
         {
           elementKey: 'sinusDepth2',
@@ -4327,10 +4325,10 @@ export default function () {
           helperHtml: '<p>O\'clock</p>'
         },
         {
-          elementKey: 'spacer50',
+          elementKey: 'spacer77',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'integumentaryAssessment.spacer50'
+          fqn: 'integumentaryAssessment.spacer77'
         },
         {
           elementKey: 'underminingDepth1',
@@ -5268,10 +5266,10 @@ export default function () {
           helperHtml: '<p>Any depth 1cm or greater, count packing pieces</p>'
         },
         {
-          elementKey: 'spacer53',
+          elementKey: 'spacer80',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'integumentaryAssessment.spacer53'
+          fqn: 'integumentaryAssessment.spacer80'
         },
         {
           elementKey: 'treatmentComplete',
@@ -5293,13 +5291,13 @@ export default function () {
           fqn: 'integumentaryAssessment.treatmentComplete'
         }
       ],
-      recHeader: true,
-      generated: '2020-07-30T16:48:41-07:00',
+      generated: '2020-07-31T10:08:58-03:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
+          hasRecHeader: false,
           addButtonText: 'Add an integumentary assessment',
           ehr_list: [
             {
@@ -5598,7 +5596,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group47',
+                elementKey: 'ehr_group74',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -5609,7 +5607,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group48',
+                elementKey: 'ehr_group75',
                 formCss: 'section-divider',
                 gIndex: '2',
                 gChildren: [
@@ -5641,10 +5639,10 @@ export default function () {
                   'depth',
                   'sinusDepth1',
                   'sinusDepthLocation1',
-                  'spacer49',
+                  'spacer76',
                   'sinusDepth2',
                   'sinusDepthLocation2',
-                  'spacer50',
+                  'spacer77',
                   'underminingDepth1',
                   'underminingDepthLocation1A',
                   'underminingDepthLocation1B',
@@ -5672,7 +5670,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group51',
+                elementKey: 'ehr_group78',
                 label: 'Wound Exudate & Odour',
                 formCss: 'section-divider',
                 gIndex: '6',
@@ -5686,14 +5684,14 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group52',
+                elementKey: 'ehr_group79',
                 label: 'Treatment',
                 formCss: 'section-divider',
                 gIndex: '7',
                 gChildren: [
                   'packingOut',
                   'packinIn',
-                  'spacer53',
+                  'spacer80',
                   'treatmentComplete'
                 ]
               }

@@ -448,7 +448,6 @@ export default function () {
           fqn: 'demographics.decisionMakerPhone'
         }
       ],
-      recHeader: false,
       generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         pageForm: {
@@ -534,7 +533,6 @@ export default function () {
           fqn: 'allergies.text'
         }
       ],
-      recHeader: false,
       generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         pageForm: {
@@ -570,7 +568,6 @@ export default function () {
           fqn: 'medical.history'
         }
       ],
-      recHeader: false,
       generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         pageForm: {
@@ -778,7 +775,6 @@ export default function () {
           fqn: 'psychosocial.spacer13'
         }
       ],
-      recHeader: false,
       generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         pageForm: {
@@ -898,13 +894,13 @@ export default function () {
           fqn: 'surgical.comments'
         }
       ],
-      recHeader: false,
       generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         pastSurgery: {
           elementKey: 'pastSurgery',
           tableKey: 'pastSurgery',
           isTable: true,
+          hasRecHeader: false,
           label: 'Previous surgeries',
           addButtonText: 'Add a previous surgery',
           ehr_list: [
@@ -954,6 +950,7 @@ export default function () {
           elementKey: 'previous',
           tableKey: 'previous',
           isTable: true,
+          hasRecHeader: false,
           label: 'Previous appointments',
           addButtonText: 'Add a previous appointment',
           ehr_list: [
@@ -1240,7 +1237,6 @@ export default function () {
           fqn: 'immunization.spacer25'
         }
       ],
-      recHeader: false,
       generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         pageForm: {
@@ -1303,7 +1299,6 @@ export default function () {
           fqn: 'familyHistory.history'
         }
       ],
-      recHeader: false,
       generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         pageForm: {
@@ -1349,13 +1344,13 @@ export default function () {
           fqn: 'careTeam.profession'
         }
       ],
-      recHeader: false,
       generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         teams: {
           elementKey: 'teams',
           tableKey: 'teams',
           isTable: true,
+          hasRecHeader: false,
           addButtonText: 'Add a care team member',
           ehr_list: [
             {
@@ -1469,13 +1464,13 @@ export default function () {
           fqn: 'pastAppointments.diagnosis'
         }
       ],
-      recHeader: false,
       generated: '2020-02-10T11:05:37-02:00',
       pageElements: {
         encounters: {
           elementKey: 'encounters',
           tableKey: 'encounters',
           isTable: true,
+          hasRecHeader: false,
           addButtonText: 'Add a past appointment',
           ehr_list: [
             {
@@ -1531,6 +1526,7 @@ export default function () {
           elementKey: 'outpatientAppointments',
           tableKey: 'outpatientAppointments',
           isTable: true,
+          hasRecHeader: false,
           addButtonText: 'Add an outpatient appointment',
           ehr_list: [
             {
