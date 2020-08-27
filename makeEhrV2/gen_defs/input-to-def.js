@@ -106,11 +106,10 @@ class RawInputToDef {
   getDefinitions (contents, lastModifiedTime) {
     let entries = rawHelper._rawToEntries(contents, mlFields)
     // TODO see https://github.com/BCcampus/edehr/issues/809
-    let recHeader = this._needsUserSignature(entries)
     entries = this._preprocessEntries(entries)
     entries = this._validateEntries(entries)
     let pages = this._groupByPages(entries)
-    pages = this._toPages(pages, lastModifiedTime, recHeader)
+    pages = this._toPages(pages, lastModifiedTime)
     return pages
   }
   _preprocessEntries (entries) {
@@ -125,10 +124,6 @@ class RawInputToDef {
     })
     return postEntries
   }
-  _needsUserSignature (entries) {
-    return entries.findIndex(e => EhrShortForms.validateRecHeader(e)) > 0
-  }
-
 
   _groupByPages (entries) {
     let pages = {}
@@ -183,15 +178,17 @@ class RawInputToDef {
     form.formKey = entry.elementKey
     form.ehr_groups = {}
     assert.ok(form.addButtonText,'Need addButtonText property to set up the add button for table ')
+    const hasRecHeader = EhrShortForms.validateRecHeader(entry)
     let table = {
       elementKey: entry.elementKey,
       pageKey: page.pageKey,
       tableKey: entry.elementKey,
       isTable: true,
+      hasRecHeader,
       label: entry.label,
       addButtonText: entry.addButtonText,
       ehr_list: {},
-      form: form
+      form: form,
     }
     page.hasGridTable = true
     page.pageElementsByNumber[fKey] = table
@@ -282,12 +279,11 @@ class RawInputToDef {
   }
 
   /* *************** final preparation ******** */
-  _toPages (pages, lastModifiedTime, hasRecHeader) {
+  _toPages (pages, lastModifiedTime) {
     // Take the pages from the first stage and prepare final form.
     let pages2 = {}
     Object.values(pages).forEach(page1 => {
       let page2 = rawHelper._transferProperties(page1, pageProperties2)
-      page2.recHeader = hasRecHeader
       page2.generated = moment.utc(lastModifiedTime).local().format()
       page2.pageElements = this._toForms(page1)
       pages2[page2.pageDataKey] = page2
