@@ -136,9 +136,6 @@ export default {
       this.navigation = ''
     }
   },
-  mounted: function () {
-    StoreHelper.loadInstructorWithStudent(true)
-  }
 }
 </script>
 

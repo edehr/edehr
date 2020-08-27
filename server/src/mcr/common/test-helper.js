@@ -53,7 +53,7 @@ export default class Helper {
     mongoose.set('useCreateIndex', true)
     mongoose.connect(
       'mongodb://localhost:27018/unittest',
-      { useNewUrlParser: true }
+      { useNewUrlParser: true, useUnifiedTopology: true }
     )
     const db = mongoose.connection
     db.on('error', console.error.bind(console, 'connection error'))
@@ -305,8 +305,7 @@ export default class Helper {
 
   static generateToken (tokenData, isAdmin = false) {
     if (isAdmin) {
-      const adminToken = getCreateAdminPassword()
-      const adminPayload = Object.assign({}, tokenData, { adminPassword : adminToken})
+      const adminPayload = Object.assign({}, tokenData, { isAdmin : true})
       return authUtil.createToken(adminPayload)
     } 
     return authUtil.createToken(tokenData)

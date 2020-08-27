@@ -15,7 +15,9 @@ const Schema = new mongoose.Schema({
   profession: { type: String },
   day: { type: Number },
   time: { type: String },
-  seedDataId: {type: mongoose.Schema.Types.ObjectId, ref: 'SeedData', required: true}
+  seedDataId: {type: mongoose.Schema.Types.ObjectId, ref: 'SeedData', required: true},
+  createDate: { type: Date, default: Date.now },
+  lastUpdateDate: { type: Date, default: Date.now }
 })
 
 Schema.plugin(uniqueValidator)

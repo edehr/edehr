@@ -78,19 +78,25 @@ export function apiMiddle (app, config) {
   const cc = new ConsumerController()
   const uc = new UserController(config)
   const sd = new SeedDataController()
+  const lti = new LTIController(config)
+  const ic = new IntegrationController()
+  const pc = new PlaygroundController()
+  const demo = new DemoController(config)
+
   const lcc = {
     activityController: act,
     assignmentController : as,
     authUtil,
     consumerController : cc,
+    filesController: fileC,
     seedController: sd,
     userController: uc,
     visitController: vc
   }
-  const lti = new LTIController(config, lcc)
-  const ic = new IntegrationController()
-  const pc = new PlaygroundController()
-  const demo = new DemoController(config, lcc)
+  lti.setSharedControllers(lcc)
+  cc.setSharedControllers(lcc)
+  demo.setSharedControllers(lcc)
+
   const middleWare = [
     cors(corsOptions),
     validatorMiddlewareWrapper(authUtil)
@@ -188,11 +194,14 @@ export function apiError (app, config) {
   }
 
   function errorHandler (err, req, res, next) {
-    debug('API errorHandler', err.message, err.status, err.errorData)
+    debug('API errorHandler', err.message, err.status, err.errorData, res.status)
     let status = err.status || 500
     let errorData = err.errorData || {}
-    res.status(status)
-    res.render('server-errors/error', {message: err.message, status: status, errorData: JSON.stringify(errorData)})
+    let json =  {message: err.message, status: status, errorData: JSON.stringify(errorData)}
+    res.status = status
+    res.json(json)
+    // Returning a rendered html page is awkward for ajax clients. Return json and let the client decide how to format it.
+    // res.render('server-errors/error',json)
   }
 }
 

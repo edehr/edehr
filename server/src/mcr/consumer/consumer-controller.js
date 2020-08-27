@@ -15,6 +15,9 @@ export default class ConsumerController extends BaseController {
     super(Consumer, '_id')
   }
 
+  setSharedControllers(cc) {
+    this.comCon = cc
+  }
 
   createToolConsumer (def) {
     if (!def.oauth_consumer_key || !def.oauth_consumer_secret) {
@@ -29,6 +32,16 @@ export default class ConsumerController extends BaseController {
       ehrData: {}
     }
     return this.createWithSeed(def, seedDef)
+  }
+
+  /**
+   * Replace method in base because to remove the actual consumer record
+   * @param toolConsumerId
+   * @return {*}
+   */
+  clearConsumer (toolConsumerId) {
+    debug('deleteDemoData delete consumer ' + toolConsumerId)
+    return this.delete(toolConsumerId)
   }
 
   createWithSeed (data, seedData) {

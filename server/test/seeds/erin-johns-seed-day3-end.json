@@ -160,7 +160,7 @@
       "encounters": [],
       "outpatientAppointments": [
         {
-          "date": "1 week ago",
+          "appointmentDate": "1 week ago",
           "site": "Clinic",
           "reasonForVisit": "Shortness of breath x 24 hours",
           "diagnosis": "COPD",
@@ -635,10 +635,51 @@
     },
     "diagnosticCodes": {
       "table": [
+        {
+          "name": "Pat",
+          "day": "6",
+          "time": "10:15",
+          "condition": "COPD",
+          "code": "J44.9",
+          "type": "M",
+          "createdDate": "2019-05-30T23:11:12-07:00"
+        },
+        {
+          "name": "Pat",
+          "day": "6",
+          "time": "10:15",
+          "condition": "COPD",
+          "code": "Z86.42",
+          "type": "3",
+          "createdDate": "2019-05-30T23:11:44-07:00"
+        },
+        {
+          "name": "Pat",
+          "day": "6",
+          "time": "10:15",
+          "condition": "COPD",
+          "code": "I10",
+          "type": "3",
+          "createdDate": "2019-05-30T23:12:04-07:00"
+        }
       ]
     },
     "interventionCodes": {
       "table": [
+        {
+          "name": "Pat",
+          "day": "6",
+          "time": "10:15",
+          "intervention": "3.GY.10.VA",
+          "createdDate": "2019-05-30T23:12:40-07:00"
+        },
+        {
+          "name": "Pat",
+          "day": "6",
+          "time": "10:15",
+          "intervention": "2.GZ.21.EA",
+          "createdDate": "2019-05-30T23:12:59-07:00"
+        }
       ]
     }
   },

@@ -69,6 +69,9 @@
       "day": "12:00"
     }
   ],
+  "authData": {
+    "toolConsumerId": "testConsumerId"
+  },
   "consumer": {
     "_id": "testConsumerId",
     "tool_consumer_instance_name": "EdEHRTests",

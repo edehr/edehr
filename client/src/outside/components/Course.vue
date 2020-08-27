@@ -1,7 +1,7 @@
 <template lang="pug">
   div
     div(class="course-header")
-      h2(class="course-header-item") {{ course.label }} - {{ course.name }} (Id: {{ course.id }})
+      h2(class="course-header-item") Course: {{ course.label }} - {{ course.name }} (Id: {{ course.id }})
     activity-list(:activities="course.activities")
 </template>
 

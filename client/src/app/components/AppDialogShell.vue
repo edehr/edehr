@@ -165,6 +165,53 @@ export default {
   min-width: 700px;
   max-width: 1024px;
   min-height: 40vh;
+  display: flex;
+  flex-flow: row wrap;
+  flex: 1 100%;
+}
+
+.dialog-body {
+  overflow-y: auto;
+  max-height: calc( 90vh - 20vh );
+  padding: 1.5rem 2rem 2rem 2rem;
+  margin-bottom: 4rem;
+}
+.dialog-body, .dialog-footer, .dialog-header {
+  width: 100vw;
+}
+
+@media screen and (max-width: 500px){
+  .dialog-wrapper{
+    min-width: 100vw;
+  }
+  .dialog-body {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Layout inside dialog footer */
+.dialog-footer {
+  align-items: flex-end;
+  .dialog-footer-content {
+    flex-grow: 1;
+    button,
+    .button {
+      margin-bottom: 0;
+    }
+  }
+  .dialog-footer-errors {
+    /*margin-left: 5px;*/
+    display: inline-block;
+    max-width: 62%;
+  }
+  .dialog-footer-button-space {
+    display: inline-block;
+    width: 10px;
+  }
+}
+
+.dialog-wrapper {
   z-index: 999;
   background-color: $dialog-wrapper-background-color;
   border: 1px solid $grey40;
@@ -191,38 +238,9 @@ export default {
   padding: 1em 2em;
 }
 
-.dialog-body {
-  overflow-y: auto;
-  max-height: calc( 90vh - 20vh );
-  padding: 1.5rem 2rem 2rem 2rem;
-  margin-bottom: 4rem;
-}
 
-.dialog-footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /*margin-top: 30px;*/
-  align-items: flex-end;
-  .dialog-footer-content {
-    flex-grow: 1;
-    button,
-    .button {
-      margin-bottom: 0;
-    }
-  }
-  .dialog-footer-errors {
-    /*margin-left: 5px;*/
-    display: inline-block;
-    max-width: 62%;
-  }
-  .error-color {
-    color: red;
-  }
-  .dialog-footer-button-space {
-    display: inline-block;
-    width: 10px;
-  }
+.error-color {
+  color: red;
 }
 
 /* **********
@@ -280,13 +298,6 @@ Cursors
 .dialog-leave-active .dialog-container {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
-}
-
-@media screen and (max-width: 500px){
- .dialog-wrapper{ 
-    min-width: 50vw;
-    max-width: 100vw;
- } 
 }
 </style>
 

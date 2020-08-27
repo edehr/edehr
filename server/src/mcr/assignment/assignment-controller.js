@@ -107,12 +107,6 @@ export default class AssignmentController extends BaseController {
         return this.create(data)
       })
   }
-  locateDefaultAssignment (toolConsumerId) {
-    const _this = this
-    let query = this._composeQuery(DEFAULT_ASSIGNMENT_EXTERNAL_ID, toolConsumerId)
-    if (debugAC) debug('Assignment. Default assignment search ' + JSON.stringify(query))
-    return _this.findOne(query)
-  }
 
   /*
 {  
@@ -133,34 +127,6 @@ export default class AssignmentController extends BaseController {
     req.externalId = externalId
 
  */
-  updateCreateAssignment (ltiData, toolConsumerId) {
-    const _this = this
-    let externalId = ltiData.custom_assignment
-    let query = this._composeQuery(externalId, toolConsumerId)
-    if (debugAC) debug('updateCreateAssignment search for ' + query.toString())
-    return new Promise(function (resolve, reject) {
-      _this.findOne(query)
-        .then((assignment) => {
-          if (assignment) {
-            if (!assignment.resource_link_id.equals(ltiData.resource_link_id)) {
-              if (debugAC) debug('updateCreateAssignment change assignment id to', assignment._id)
-              activity.assignment = assignment._id
-            // debug('adasd',activity)
-            }
-            if (debugAC) debug('updateCreateActivity update activity ' + activity._id)
-            return _this._updateHelper(activity, data)
-          } else {
-            data.toolConsumer = toolConsumerId
-            data.assignment = assignment._id
-            if (debugAC) debug('updateCreateActivity create activity')
-            return _this._createHelper(activity, data)
-          }
-        })
-        .then((activity) => {
-          resolve(activity)
-        })
-    })
-  }
 
   route () {
     const router = super.route()    

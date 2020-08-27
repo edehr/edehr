@@ -226,3 +226,39 @@ select, .select {
 .grid-span-2-columns {
   grid-column: span 2;
 }
+
+
+/* Small screens */
+@media all and (max-width: 500px) {
+  .grid-left-to-right-2 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .grid-left-to-right-3 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .record-header, .grid-left-to-right-4 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .cardio-assessment,
+  .grid-left-to-right-5 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .grid-up-to-down {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .grid-span-2-columns {
+    grid-column: span 1;
+  }
+}
+
+.thumbnail {
+  display: inline-block;
+  vertical-align: middle;
+  max-height: 100px;
+  max-width: 100px;
+}

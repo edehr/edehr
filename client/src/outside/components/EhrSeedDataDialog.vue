@@ -11,21 +11,21 @@
       h2(slot="header") {{dialogHeader}}
       div(slot="body")
         div
-          div(class="ehr-group-wrapper grid-left-to-right-2")
-            div(class="form-element")
+          div(class="grid-left-to-right-2")
+            div
               div(class="text_input_wrapper")
                 label Name
                 input(class="input", type="text", v-model="name", v-validate="nameValidate")
-            div(class="form-element")
+            div
               div(class="text_input_wrapper")
                 label Version
                 input(class="input", type="text", v-model="version")
-          div(class="ehr-group-wrapper grid-left-to-right-1")
-            div(class="form-element")
+          div(class="grid-left-to-right-1")
+            div
               label Description
               textarea(class="textarea", v-model="description")
-          div(class="ehr-group-wrapper grid-left-to-right-1")
-            div(class="form-element")
+          div(class="grid-left-to-right-1")
+            div
               label Contributors
               input(class="input", type="text", v-model="contributors")
           div

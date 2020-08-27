@@ -57,7 +57,7 @@ export default function () {
         }
       ],
       recHeader: true,
-      generated: '2020-02-10T11:05:37-02:00',
+      generated: '2020-08-25T10:52:37-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -89,7 +89,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group114',
+                elementKey: 'ehr_group1',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -100,7 +100,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group115',
+                elementKey: 'ehr_group2',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '2',
                 gChildren: [
@@ -221,7 +221,7 @@ export default function () {
         }
       ],
       recHeader: true,
-      generated: '2020-02-10T11:05:37-02:00',
+      generated: '2020-08-25T10:52:37-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -281,7 +281,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group116',
+                elementKey: 'ehr_group3',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -292,7 +292,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group117',
+                elementKey: 'ehr_group4',
                 gIndex: '2',
                 gChildren: [
                   'clinical',
@@ -323,87 +323,268 @@ export default function () {
       pageTitle: 'Consults',
       pIndex: '31',
       isV2: true,
-      hasGridForm: true,
-      pageChildren: [],
+      hasGridTable: true,
+      pageChildren: [
+        {
+          elementKey: 'name',
+          formIndex: '1',
+          inputType: 'text',
+          label: 'Name',
+          tableColumn: '1',
+          tableLabel: 'Identification',
+          recHeader: true,
+          fqn: 'consults.name'
+        },
+        {
+          elementKey: 'profession',
+          formIndex: '1',
+          inputType: 'text',
+          label: 'Profession',
+          tableColumn: '1',
+          recHeader: true,
+          fqn: 'consults.profession'
+        },
+        {
+          elementKey: 'day',
+          formIndex: '1',
+          inputType: 'day',
+          label: 'Day',
+          tableColumn: '1',
+          recHeader: true,
+          fqn: 'consults.day'
+        },
+        {
+          elementKey: 'time',
+          formIndex: '1',
+          inputType: 'time',
+          label: 'Time',
+          tableColumn: '1',
+          validation: 'time24',
+          recHeader: true,
+          fqn: 'consults.time'
+        },
+        {
+          elementKey: 'consultReport',
+          formIndex: '1',
+          inputType: 'ehrFile',
+          label: 'Consult Report',
+          tableColumn: '2',
+          tableLabel: 'Consult Report',
+          fqn: 'consults.consultReport'
+        },
+        {
+          elementKey: 'comments',
+          formIndex: '1',
+          inputType: 'textarea',
+          label: 'Comments',
+          tableColumn: '3',
+          tableLabel: 'Comments',
+          fqn: 'consults.comments'
+        }
+      ],
       recHeader: true,
-      generated: '2020-02-10T11:05:37-02:00',
+      generated: '2020-08-25T10:52:37-07:00',
       pageElements: {
-        pageForm: {
-          elementKey: 'pageForm',
-          formKey: 'pageForm',
-          isPageForm: true,
-          ehr_groups: []
+        table: {
+          elementKey: 'table',
+          tableKey: 'table',
+          isTable: true,
+          addButtonText: 'Add a consulttion report',
+          ehr_list: [
+            {
+              label: 'Identification',
+              ehr_list_index: '1',
+              items: [
+                'name',
+                'profession',
+                'day',
+                'time'
+              ]
+            },
+            {
+              label: 'Consult Report',
+              ehr_list_index: '2',
+              items: [
+                'consultReport'
+              ]
+            },
+            {
+              label: 'Comments',
+              ehr_list_index: '3',
+              items: [
+                'comments'
+              ]
+            }
+          ],
+          form: {
+            elementKey: 'table',
+            addButtonText: 'Add a consulttion report',
+            formKey: 'table',
+            ehr_groups: [
+              {
+                elementKey: 'ehr_group5',
+                formCss: 'record-header',
+                gIndex: '1',
+                gChildren: [
+                  'name',
+                  'profession',
+                  'day',
+                  'time'
+                ]
+              },
+              {
+                elementKey: 'ehr_group6',
+                gIndex: '2',
+                gChildren: [
+                  'consultReport',
+                  'comments'
+                ]
+              }
+            ],
+            ehr_data: {
+              name: '',
+              profession: '',
+              day: '',
+              time: '',
+              consultReport: '',
+              comments: ''
+            }
+          }
         }
       }
     },
     labResults: {
       pageDataKey: 'labResults',
-      pageTitle: 'Laboratory results',
+      pageTitle: 'Laboratory reports',
       pIndex: '32',
       isV2: true,
-      hasGridForm: true,
+      hasGridTable: true,
       pageChildren: [
         {
-          elementKey: 'labReport1_1',
-          assetBase: 'lab-reports',
-          assetName: 'day-0-abg-laboratory-report.pdf',
+          elementKey: 'name',
           formIndex: '1',
-          inputType: 'assetLink',
-          label: 'ABG laboratory report',
-          fqn: 'labResults.labReport1_1'
+          inputType: 'text',
+          label: 'Name',
+          tableColumn: '1',
+          tableLabel: 'Identification',
+          recHeader: true,
+          fqn: 'labResults.name'
         },
         {
-          elementKey: 'labReport2_1',
-          assetBase: 'lab-reports',
-          assetName: 'day-1-abg-laboratory-report.pdf',
+          elementKey: 'profession',
           formIndex: '1',
-          inputType: 'assetLink',
-          label: 'ABG laboratory report',
-          fqn: 'labResults.labReport2_1'
+          inputType: 'text',
+          label: 'Profession',
+          tableColumn: '1',
+          recHeader: true,
+          fqn: 'labResults.profession'
         },
         {
-          elementKey: 'labReport3_1',
-          assetBase: 'lab-reports',
-          assetName: 'day-3-c-s-laboratory-report.pdf',
+          elementKey: 'day',
           formIndex: '1',
-          inputType: 'assetLink',
-          label: 'C&S laboratory report',
-          fqn: 'labResults.labReport3_1'
+          inputType: 'day',
+          label: 'Day',
+          tableColumn: '1',
+          recHeader: true,
+          fqn: 'labResults.day'
         },
         {
-          elementKey: 'labReport4_1',
-          assetBase: 'lab-reports',
-          assetName: 'day-3-final-c-s-laboratory-report.pdf',
+          elementKey: 'time',
           formIndex: '1',
-          inputType: 'assetLink',
-          label: 'Final C&S laboratory report',
-          fqn: 'labResults.labReport4_1'
+          inputType: 'time',
+          label: 'Time',
+          tableColumn: '1',
+          validation: 'time24',
+          recHeader: true,
+          fqn: 'labResults.time'
+        },
+        {
+          elementKey: 'laboratoryReport',
+          formIndex: '1',
+          inputType: 'ehrFile',
+          label: 'Laboratory Report',
+          tableColumn: '2',
+          tableLabel: 'Laboratory Report',
+          fqn: 'labResults.laboratoryReport'
+        },
+        {
+          elementKey: 'comments',
+          formIndex: '1',
+          inputType: 'textarea',
+          label: 'Comments',
+          tableColumn: '3',
+          tableLabel: 'Comments',
+          fqn: 'labResults.comments'
         }
       ],
       recHeader: true,
-      generated: '2020-02-10T11:05:37-02:00',
+      generated: '2020-08-25T10:52:37-07:00',
       pageElements: {
-        pageForm: {
-          elementKey: 'pageForm',
-          formKey: 'pageForm',
-          isPageForm: true,
-          ehr_groups: [
+        table: {
+          elementKey: 'table',
+          tableKey: 'table',
+          isTable: true,
+          addButtonText: 'Add a laboratory report',
+          ehr_list: [
             {
-              elementKey: 'ehr_group118',
-              gIndex: '1',
-              gChildren: [
-                {
-                  elementKey: 'labReport',
-                  sgChildren: [
-                    'labReport1_1',
-                    'labReport2_1',
-                    'labReport3_1',
-                    'labReport4_1'
-                  ]
-                }
+              label: 'Identification',
+              ehr_list_index: '1',
+              items: [
+                'name',
+                'profession',
+                'day',
+                'time'
+              ]
+            },
+            {
+              label: 'Laboratory Report',
+              ehr_list_index: '2',
+              items: [
+                'laboratoryReport'
+              ]
+            },
+            {
+              label: 'Comments',
+              ehr_list_index: '3',
+              items: [
+                'comments'
               ]
             }
-          ]
+          ],
+          form: {
+            elementKey: 'table',
+            addButtonText: 'Add a laboratory report',
+            formKey: 'table',
+            ehr_groups: [
+              {
+                elementKey: 'ehr_group7',
+                formCss: 'record-header',
+                gIndex: '1',
+                gChildren: [
+                  'name',
+                  'profession',
+                  'day',
+                  'time'
+                ]
+              },
+              {
+                elementKey: 'ehr_group8',
+                gIndex: '2',
+                gChildren: [
+                  'laboratoryReport',
+                  'comments'
+                ]
+              }
+            ],
+            ehr_data: {
+              name: '',
+              profession: '',
+              day: '',
+              time: '',
+              laboratoryReport: '',
+              comments: ''
+            }
+          }
         }
       }
     },
@@ -412,98 +593,268 @@ export default function () {
       pageTitle: 'Medical imaging',
       pIndex: '33',
       isV2: true,
-      hasGridForm: true,
+      hasGridTable: true,
       pageChildren: [
         {
-          elementKey: 'day0',
+          elementKey: 'name',
           formIndex: '1',
-          inputType: 'form_label',
-          label: 'Day 0',
-          fqn: 'medicalImaging.day0'
+          inputType: 'text',
+          label: 'Name',
+          tableColumn: '1',
+          tableLabel: 'Identification',
+          recHeader: true,
+          fqn: 'medicalImaging.name'
         },
         {
-          elementKey: 'copd_xray',
-          assetBase: 'diagnostic-test-results',
-          assetName: 'xray-report-for-copd-day-0.pdf',
+          elementKey: 'profession',
           formIndex: '1',
-          inputType: 'assetLink',
-          label: 'COPD xray',
-          fqn: 'medicalImaging.copd_xray'
+          inputType: 'text',
+          label: 'Profession',
+          tableColumn: '1',
+          recHeader: true,
+          fqn: 'medicalImaging.profession'
         },
         {
-          elementKey: 'copd_report',
-          assetBase: 'diagnostic-test-results',
-          assetName: 'copd-xray.jpg',
+          elementKey: 'day',
           formIndex: '1',
-          inputType: 'assetLink',
-          label: 'COPD report',
-          fqn: 'medicalImaging.copd_report'
+          inputType: 'day',
+          label: 'Day',
+          tableColumn: '1',
+          recHeader: true,
+          fqn: 'medicalImaging.day'
         },
         {
-          elementKey: 'day2',
+          elementKey: 'time',
           formIndex: '1',
-          inputType: 'form_label',
-          label: 'Day 2',
-          fqn: 'medicalImaging.day2'
+          inputType: 'time',
+          label: 'Time',
+          tableColumn: '1',
+          validation: 'time24',
+          recHeader: true,
+          fqn: 'medicalImaging.time'
         },
         {
-          elementKey: 'pneumonia_xray',
-          assetBase: 'diagnostic-test-results',
-          assetName: 'xray-report-for-pneumonia-day-2.pdf',
+          elementKey: 'laboratoryReport',
           formIndex: '1',
-          inputType: 'assetLink',
-          label: 'Pneumonia xray',
-          fqn: 'medicalImaging.pneumonia_xray'
+          inputType: 'ehrFile',
+          label: 'Medical imaging',
+          tableColumn: '2',
+          tableLabel: 'Medical imaging',
+          fqn: 'medicalImaging.laboratoryReport'
         },
         {
-          elementKey: 'pneumonia_report',
-          assetBase: 'diagnostic-test-results',
-          assetName: 'chest-xray-with-pneumonia.jpg',
+          elementKey: 'comments',
           formIndex: '1',
-          inputType: 'assetLink',
-          label: 'Pneumonia report',
-          fqn: 'medicalImaging.pneumonia_report'
+          inputType: 'textarea',
+          label: 'Comments',
+          tableColumn: '3',
+          tableLabel: 'Comments',
+          fqn: 'medicalImaging.comments'
         }
       ],
       recHeader: true,
-      generated: '2020-02-10T11:05:37-02:00',
+      generated: '2020-08-25T10:52:37-07:00',
       pageElements: {
-        pageForm: {
-          elementKey: 'pageForm',
-          formKey: 'pageForm',
-          isPageForm: true,
-          ehr_groups: [
+        table: {
+          elementKey: 'table',
+          tableKey: 'table',
+          isTable: true,
+          addButtonText: 'Add a report or image',
+          ehr_list: [
             {
-              elementKey: 'ehr_group119',
-              gIndex: '1',
-              gChildren: [
-                'day0',
-                'copd_xray',
-                'copd_report',
-                'day2',
-                'pneumonia_xray',
-                'pneumonia_report'
+              label: 'Identification',
+              ehr_list_index: '1',
+              items: [
+                'name',
+                'profession',
+                'day',
+                'time'
+              ]
+            },
+            {
+              label: 'Medical imaging',
+              ehr_list_index: '2',
+              items: [
+                'laboratoryReport'
+              ]
+            },
+            {
+              label: 'Comments',
+              ehr_list_index: '3',
+              items: [
+                'comments'
               ]
             }
-          ]
+          ],
+          form: {
+            elementKey: 'table',
+            addButtonText: 'Add a report or image',
+            formKey: 'table',
+            ehr_groups: [
+              {
+                elementKey: 'ehr_group9',
+                formCss: 'record-header',
+                gIndex: '1',
+                gChildren: [
+                  'name',
+                  'profession',
+                  'day',
+                  'time'
+                ]
+              },
+              {
+                elementKey: 'ehr_group10',
+                gIndex: '2',
+                gChildren: [
+                  'laboratoryReport',
+                  'comments'
+                ]
+              }
+            ],
+            ehr_data: {
+              name: '',
+              profession: '',
+              day: '',
+              time: '',
+              laboratoryReport: '',
+              comments: ''
+            }
+          }
         }
       }
     },
     operationReports: {
       pageDataKey: 'operationReports',
-      pageTitle: 'Operative reports and anaesthesia record',
+      pageTitle: 'Operative reports and anaesthesia records',
       pIndex: '34',
       isV2: true,
-      hasGridForm: true,
-      pageChildren: [],
+      hasGridTable: true,
+      pageChildren: [
+        {
+          elementKey: 'name',
+          formIndex: '1',
+          inputType: 'text',
+          label: 'Name',
+          tableColumn: '1',
+          tableLabel: 'Identification',
+          recHeader: true,
+          fqn: 'operationReports.name'
+        },
+        {
+          elementKey: 'profession',
+          formIndex: '1',
+          inputType: 'text',
+          label: 'Profession',
+          tableColumn: '1',
+          recHeader: true,
+          fqn: 'operationReports.profession'
+        },
+        {
+          elementKey: 'day',
+          formIndex: '1',
+          inputType: 'day',
+          label: 'Day',
+          tableColumn: '1',
+          recHeader: true,
+          fqn: 'operationReports.day'
+        },
+        {
+          elementKey: 'time',
+          formIndex: '1',
+          inputType: 'time',
+          label: 'Time',
+          tableColumn: '1',
+          validation: 'time24',
+          recHeader: true,
+          fqn: 'operationReports.time'
+        },
+        {
+          elementKey: 'laboratoryReport',
+          formIndex: '1',
+          inputType: 'ehrFile',
+          label: 'Operative reports and anaesthesia records',
+          tableColumn: '2',
+          tableLabel: 'Operative reports and anaesthesia records',
+          fqn: 'operationReports.laboratoryReport'
+        },
+        {
+          elementKey: 'comments',
+          formIndex: '1',
+          inputType: 'textarea',
+          label: 'Comments',
+          tableColumn: '3',
+          tableLabel: 'Comments',
+          fqn: 'operationReports.comments'
+        }
+      ],
       recHeader: true,
-      generated: '2020-02-10T11:05:37-02:00',
+      generated: '2020-08-25T10:52:37-07:00',
       pageElements: {
-        pageForm: {
-          elementKey: 'pageForm',
-          formKey: 'pageForm',
-          isPageForm: true,
-          ehr_groups: []
+        table: {
+          elementKey: 'table',
+          tableKey: 'table',
+          isTable: true,
+          addButtonText: 'Add a report',
+          ehr_list: [
+            {
+              label: 'Identification',
+              ehr_list_index: '1',
+              items: [
+                'name',
+                'profession',
+                'day',
+                'time'
+              ]
+            },
+            {
+              label: 'Operative reports and anaesthesia records',
+              ehr_list_index: '2',
+              items: [
+                'laboratoryReport'
+              ]
+            },
+            {
+              label: 'Comments',
+              ehr_list_index: '3',
+              items: [
+                'comments'
+              ]
+            }
+          ],
+          form: {
+            elementKey: 'table',
+            addButtonText: 'Add a report',
+            formKey: 'table',
+            ehr_groups: [
+              {
+                elementKey: 'ehr_group11',
+                formCss: 'record-header',
+                gIndex: '1',
+                gChildren: [
+                  'name',
+                  'profession',
+                  'day',
+                  'time'
+                ]
+              },
+              {
+                elementKey: 'ehr_group12',
+                gIndex: '2',
+                gChildren: [
+                  'laboratoryReport',
+                  'comments'
+                ]
+              }
+            ],
+            ehr_data: {
+              name: '',
+              profession: '',
+              day: '',
+              time: '',
+              laboratoryReport: '',
+              comments: ''
+            }
+          }
         }
       }
     }

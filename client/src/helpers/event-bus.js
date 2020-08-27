@@ -18,3 +18,27 @@ export const PAGE_DATA_READY_EVENT = 'PAGE_DATA_READY_EVENT'
 
 const EventBus = new Vue()
 export default EventBus
+
+const showKeyEvents = false
+
+if(showKeyEvents) {
+  EventBus.$on(PAGE_DATA_REFRESH_EVENT, function () {
+    console.log('PAGE_DATA_REFRESH_EVENT')
+  })
+
+  EventBus.$on(TABLE_DATA_REFRESH_EVENT, function () {
+    console.log('TABLE_DATA_REFRESH_EVENT')
+  })
+  EventBus.$on(DIALOG_INPUT_EVENT, function () {
+    console.log('DIALOG_INPUT_EVENT')
+  })
+  EventBus.$on(PAGE_FORM_INPUT_EVENT, function () {
+    console.log('PAGE_FORM_INPUT_EVENT')
+  })
+  EventBus.$on(FORM_INPUT_EVENT, function () {
+    console.log('FORM_INPUT_EVENT')
+  })
+  EventBus.$on(PAGE_DATA_READY_EVENT, function () {
+    console.log('PAGE_DATA_READY_EVENT')
+  })
+}

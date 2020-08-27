@@ -31,6 +31,6 @@ scrivner/MarkdownSample.scriv
 scrivner/output
 server/.session/
 server/bin/sessions/**
-server/ehr-files
+server/files-ehr
 server/src/config/admin-password\.txt
 temp/**

@@ -4,7 +4,7 @@
 set -e
 set -o pipefail
 
-LINT=false
+LINT=true
 for i in "$@"
 do
 echo i: $i

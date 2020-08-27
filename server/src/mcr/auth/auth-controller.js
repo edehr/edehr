@@ -6,6 +6,7 @@ import { Text } from '../../config/text'
 const jwt = require('jsonwebtoken')
 const debug = require('debug')('server')
 const logError = require('debug')('error')
+let debugAC = true
 
 export default class AuthController {
 

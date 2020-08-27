@@ -11,6 +11,8 @@
       div &nbsp;
     hr(v-else-if="isType('horizontal')")
 
+    div(v-else-if="isType('ehrFile')")
+      ehr-element-file(:elementKey="elementKey", :ehrHelp="ehrHelp")
 
     div(v-else-if="isType('calculatedValue')", class="computed_wrapper")
       ehr-element-calculated(:element="element", :ehrHelp="ehrHelp" )
@@ -72,6 +74,7 @@
 import EhrElementCommon from './EhrElementCommon.vue'
 import EhrElementCalculated from './EhrElementCalculated'
 import EhrElementCheckset from './EhrElementCheckset'
+import EhrElementFile from './EhrElementFile'
 import EhrElementLookup from './EhrElementLookup.vue'
 import DatePicker from 'vuejs-datepicker'
 
@@ -80,6 +83,7 @@ export default {
   components: {
     EhrElementCalculated,
     EhrElementCheckset,
+    EhrElementFile,
     DatePicker,
     EhrElementLookup
   },

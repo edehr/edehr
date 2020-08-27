@@ -7,7 +7,7 @@ button,
   background-color: $brand-primary;
   font-family: $bodyFontFamily;
   font-size: $bodyFontSize;
-  margin-bottom: 2em;
+  //margin-bottom: 2em;
   padding: 0.3rem 1rem;
 
   &:hover {
@@ -30,7 +30,7 @@ button,
   color: $white;
   font-family: $bodyFontFamily;
   font-size: $bodyFontSize;
-  margin-bottom: 2em;
+  //margin-bottom: 2em;
   padding: 0.3rem 1rem;
 }
 
@@ -42,7 +42,7 @@ button.is-light {
   color: $brand-primary;
   font-family: $bodyFontFamily;
   font-size: $bodyFontSize;
-  margin-bottom: 2em;
+  //margin-bottom: 2em;
   padding: 0.3rem 1rem;
 
   &:hover {
@@ -61,4 +61,15 @@ button.is-light {
 
 button + button {
   margin-left: $buttonRowLeftMargin;
+}
+
+/* Small screens */
+@media all and (max-width: 500px) {
+  button + button {
+    margin-left: 0;
+  }
+  button {
+    display: block !important;
+    margin-bottom: $buttonRowLeftMargin;
+  }
 }

@@ -1,3 +1,4 @@
+import moment from 'moment'
 import BaseController from '../common/base'
 import Assignment from '../assignment/assignment'
 import SeedData from './seed-data'
@@ -17,10 +18,13 @@ export default class SeedDataController extends BaseController {
    * @param id of the seed db doc
    * @param data containing propertyName and value
    * @return {*} updated doc
+   * @see updateAssignmentData in activity-data-controller
    */
   updateSeedEhrProperty (id, data) {
     let propertyName = data.propertyName
     let value = data.value
+    // place date into the ehr data's page element
+    value.lastUpdate = moment().format()
     debug(`SeedData updateSeedEhrProperty ${id} ehrData[${data.propertyName}] with data:`)
     debug('updateSeedEhrProperty ' + JSON.stringify(value))
     return this.baseFindOneQuery(id).then(model => {

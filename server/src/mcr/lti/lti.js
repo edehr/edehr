@@ -54,8 +54,10 @@ let PROPS_CONTEXT = [
 ]
 
 export default class LTIController {
-  constructor (config, cc) {
+  constructor (config) {
     this.config = config
+  }
+  setSharedControllers(cc) {
     this.assignmentController = cc.assignmentController
     this.authUtil = cc.authUtil
     this.visitController = cc.visitController
@@ -379,8 +381,9 @@ export default class LTIController {
       debug('LTI create token with', tokenData)
       const token = this.authUtil.createToken(tokenData)
       const refreshToken = this.authUtil.createRefreshToken(token)
+      let ltiQuery = 'lti=' + (visit.isInstructor ? 'instructor' : (visit.isStudent ? 'student' : 'unknown'))
       req.refreshToken = refreshToken
-      let url = this.config.clientUrl + route + `?apiUrl=${apiUrl}&token=${refreshToken}`
+      let url = this.config.clientUrl + route + `?${ltiQuery}&apiUrl=${apiUrl}&token=${refreshToken}`
       if (req.errors.length > 0) {
         let errs = req.errors.join('-')
         url += '&error=' + errs

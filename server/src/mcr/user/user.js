@@ -10,7 +10,8 @@ const Schema = new mongoose.Schema({
   familyName: { type: String },
   fullName: { type: String },
   emailPrimary: {type: String},
-  createDate: {type: Date, default: Date.now}
+  createDate: {type: Date, default: Date.now},
+  lastUpdateDate: { type: Date, default: Date.now }
 })
 
 // UserSchema.plugin(uniqueValidator)

@@ -28,7 +28,7 @@ export default {
     StoreHelper.setLoading(null, true)
     if(token) {
       setAuthHeader(token)
-      StoreHelper.adminValidate(token)
+      StoreHelper.adminValidate()
         .then(v => {
           this.isAuthed = v
         })

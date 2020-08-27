@@ -15,10 +15,6 @@ class InstoreHelperWorker {
     return rootState.visit.sVisitData.isInstructor
   }
 
-  instoreIsDevContent (rootState) {
-    return rootState.visit.isDevelopingContent
-  }
-
   putRequest (context, api, url, bodyData) {
     console.log('putRequest was fired')
     url = this.composeUrl(context, api, url)

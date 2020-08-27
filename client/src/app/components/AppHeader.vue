@@ -2,21 +2,18 @@
   div
     header(class="apphdr")
       system-message
-      div(class="wrapper")
-        div(class="navList columns is-multiline")
-          div(class="navItem column")
+      div(class="topMenu")
+        div(class="navList")
+          div(class="navItem")
             router-link(:to="{ name: 'home' }", class="navLink app-title") EdEHR
-          div(class="navItem  column push", v-if="lmsName")
+          div(class="navItem  push", v-if="lmsName")
+            span Return to &nbsp;
             a(:href="lmsUrl", class="navLink") {{lmsName}}
-          div(v-if="showDashboard", class="navItem column")
-            router-link(:to="{ name: `instructor` }", class="navLink") Courses
-          div(v-if="showDashboard", class="navItem column")
-            router-link(:to="{ name: `assignments` }", class="navLink") Assignments
-          div(v-if="isStudent", class="navItem column")
+          div(v-if="isStudent", class="navItem")
             router-link(:to="{ name: `ehr` }", class="navLink") Assignment
-          div(class="navItem column")
+          div(class="navItem")
             router-link(:to="{ name: `help` }", class="navLink") About
-          div(v-if="isDemo", class="navItem column is-pulled-right")
+          div(v-if="isDemo", class="navItem is-pulled-right")
             div(class="navLink activationItem", v-on:click="toggleShowDemoSubmenu()") Demo
               div(class="activationControl")
                 fas-icon(v-show="!showingDemoSubmenu", class="fa", icon="chevron-down")
@@ -26,6 +23,16 @@
                 router-link(:to="{ name: `demo` }", class="secondLevelLink") Change persona
               hr
               div(class="secondLevelLink activationItem", v-on:click="demoLogoutConfirm()") Logout of demonstration
+      div(v-if="showDashboard", class="secondMenu")
+        div(class="navList")
+          div(class="navItem")
+            router-link(:to="{ name: `instructor` }", class="navLink") Courses/Activities
+          div(class="navItem")
+            router-link(:to="{ name: `assignments` }", class="navLink") Assignments
+          div(class="navItem")
+            router-link(:to="{ name: `fileList` }", class="navLink") Files
+          div(class="navItem")
+            router-link(:to="{ name: `developEhrData` }", class="navLink") Content
     ui-confirm(class="confirmDialog",ref="confirmDialog", @confirm="demoLogOut", save-label="Logout")
 </template>
 <script>
@@ -103,36 +110,79 @@ header {
 .confirmDialog {
   color: $grey80;
 }
-.apphdr {
+
+/* Menu colours */
+.topMenu {
   background: $toolbar-background-color;
   color: $toolbar-color;
-  .wrapper {
-    padding: 10px 20px;
-  }
-  .navList {
-    display: flex;
-    /* default is flow in row without wrap */
-  }
-
-  .push {
-    margin-left: 100px;
-  }
-
-  .navItem:not(:first-child) {
-    /*padding-top: 5px;*/
-  }
-
   .navLink {
     color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.2rem;
-    /*margin-left: 3em;*/
-
     &:focus,
     &:hover,
     &.is-active {
       color: rgba(255, 255, 255, 1);
+    }
+  }
+}
+.secondMenu {
+  background: $brand-primary-light;
+  color: $black;
+  .navLink {
+    color: $black;
+    &:focus,
+    &:hover,
+    &.is-active {
+      color: $brand-primary;
+    }
+  }
+}
+
+/* Menu layout */
+.topMenu {
+  padding: 10px 20px;
+  .navItem {
+    padding: 5px 30px 15px 0;
+  }
+  .push {
+    margin-left: 100px;
+  }
+}
+.secondMenu {
+  padding: 5px 20px;
+  .navItem {
+    padding: 5px 30px 15px 0;
+  }
+}
+
+/* Large */
+.navList {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+/* Small screens */
+@media all and (max-width: 500px) {
+  .navList {
+    /* On small screens, we are no longer using row direction but column */
+    flex-direction: column;
+  }
+}
+
+
+/* Other */
+.apphdr {
+  /*.navItem:not(:first-child) {*/
+  /*  !*padding-top: 5px;*!*/
+  /*}*/
+
+  .navLink {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    &:focus,
+    &:hover,
+    &.is-active {
       transition: 350ms ease-out;
     }
   }
@@ -176,42 +226,15 @@ header {
   }
   .app-title {
     font-size: 1.5rem;
-    /*margin-left: 0;*/
   }
 }
 
 @media screen and (max-width: 1024px) and (max-height: 1400px) {
   .apphdr {
-    .wrapper {
-      padding: 8px 12px;
-    }
-    .navLink {
-      color: rgba(255, 255, 255, 0.8);
-      text-decoration: none;
-      font-weight: bold;
-      /*margin-left: 1em;*/
-
-      &:focus,
-      &:hover,
-      &.is-active {
-        color: rgba(255, 255, 255, 1);
-        transition: 350ms ease-out;
-      }
-    }
-
     .push {
       margin-left: 0px;
     }
-
-    .navItem .button {
-      margin-bottom: 0;
-      margin-top: -8px; // t0 keep text aligned with non-button items
-    }
-    .app-title {
-      /*margin-left: 0;*/
-    }
-
-  }
+}
 
 @media screen and (max-width: 500px){
   .activationContent {

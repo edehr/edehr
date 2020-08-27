@@ -10,16 +10,18 @@
         tbody
           tr(v-for="dRow in tableData")
             td(v-for="cell in dRow", class="cell.tableCss")
-              div(v-for="cPart in cell.stack") {{getCellData(cPart)}}
-                //div {{cPart.inputType}} - {{cPart.value}}
+              div(v-for="cPart in cell.stack")
+                ehr-table-element(v-if="!!cPart.value", :cell="cPart")
 </template>
 
 <script>
 import EhrTableCommon from './EhrTableCommon'
+import EhrTableElement from './EhrTableElement'
 const debug = false
 
 export default {
   extends: EhrTableCommon,
+  components: { EhrTableElement },
   inject: [ 'pageDataKey', 'tableKey'],
   data: function () {
     return {

@@ -22,6 +22,7 @@ class StoreHelperWorker {
   _getAssignmentProperty (key) { return store.getters['assignmentStore/' + key]}
   _getAssignmentListProperty (key) { return store.getters['assignmentListStore/' + key]}
   _getConsumerListProperty (key) { return store.getters['consumerListStore/' + key]}
+  _getFileListProperty (key) { return store.getters['fileListStore/' + key]}
   _getInstructorProperty (key) { return store.getters['instructor/' + key]}
   _getSeedListProperty (key) { return store.getters['seedListStore/' + key]}
   _getSystemProperty (key) { return store.getters['system/' + key]}
@@ -35,6 +36,7 @@ class StoreHelperWorker {
   async _dispatchAuthStore (key, payload) { return await store.dispatch(`authStore/${key}`, payload) }
   _dispatchConsumerList (key, payload) { return store.dispatch('consumerListStore/' + key, payload)}
   _dispatchClassList (key, payload) { return store.dispatch('classListStore/' + key, payload)}
+  async _dispatchFileList (key, payload) { return await store.dispatch('fileListStore/' + key, payload)}
   async _dispatchConsumer (key, payload) { return await store.dispatch('consumerStore/' + key, payload)}
   async _dispatchSeedListProperty (key, payload) { return await store.dispatch('seedListStore/' + key, payload)}
   async _dispatchInstructor (key, payload) { return await store.dispatch('instructor/' + key, payload)}
@@ -42,7 +44,7 @@ class StoreHelperWorker {
   async _dispatchUser (key, payload) { return await store.dispatch('userStore/' + key, payload)}
 
   /* **********   General  ************** */
-  toolConsumerId () { return this._getConsumerProperty('consumerId') }
+  toolConsumerId () { return this._getAuthStore('consumerId') }
   userId () { return this._getUserProperty('userId') }
   fullName () { return this._getUserProperty('fullName') }
   lmsUrl () { return this._getVisitProperty('returnUrl') }
@@ -61,6 +63,7 @@ class StoreHelperWorker {
 
   isReadOnlyInstructor () { return this._getVisitProperty('isReadOnlyInstructor')}
   setIsReadOnlyInstructor (isReadonly = false) { return store.commit('visit/setIsReadOnlyInstructor', isReadonly)}
+
   isDevelopingContent () { return this._getVisitProperty('isDevelopingContent')  }
   setIsDevelopingContent (state) { store.commit('visit/setIsDevelopingContent', state) }
 
@@ -97,6 +100,27 @@ class StoreHelperWorker {
   getClassListForActivity ( activityId) {
     return this._dispatchClassList('getClassList', activityId)
   }
+
+  /*
+   * **********   File List  **************
+   */
+
+  async getFileListMaxFileSize ( activityId) {
+    return await this._dispatchFileList('getMaxFileSize')
+  }
+  getFileListImages () { return this._getFileListProperty('imageFiles') }
+  getFileListOther () { return this._getFileListProperty('otherFiles') }
+  getFileListErrorMessage () { return this._getFileListProperty('errorMessage') }
+  getUploadedFile () { return this._getFileListProperty('uploadedFile')}
+  refreshFileLists (consumerId) { return this._dispatchFileList('refreshFileLists', consumerId)}
+  uploadReset () { return this._dispatchFileList('uploadReset')}
+  /**
+   *
+   * @param payload { file, onUploadProgress }  File and Function(progressEvent)
+   * @return {Promise<*>}
+   */
+  addFileToList (payload) { return this._dispatchFileList('addFileToList', payload)}
+
 
   /*
   * **********   Instructor  **************
@@ -217,10 +241,15 @@ class StoreHelperWorker {
 
   getAssignmentsList () { return this._getAssignmentListProperty('list') }
 
-  getAssignmentSeedId () { return this._getAssignmentProperty('seedDataId') }
-
   /* **********   Seed Data  ************** */
 
+  isSeedEditing () { return this._getVisitProperty('isSeedEditing')  }
+  setSeedEditId (id) { store.commit('visit/setSeedEditId', id) }
+  getSeedEditId (id) { return this._getVisitProperty('seedEditId')  }
+
+  getAssignmentSeedId () { return this._getAssignmentProperty('seedDataId') }
+
+  // get seed id from current activity
   getSeedId () { return this._getSeedListProperty('seedId')}
   getSeedEhrData () { return this._getSeedListProperty('seedEhrData')}
   getSeedContent () { return this._getSeedListProperty('seedContent') }
@@ -255,6 +284,12 @@ class StoreHelperWorker {
   createSeed (component, seedData) { return this._dispatchSeedListProperty('createSeedItem', seedData) }
 
   getSeedDataList () { return this._getSeedListProperty('list') }
+
+  async loadSeedEditor () {
+    if (debugSH) console.log('SH loadSeedEditor')
+    // await this.loadCommon()
+    await this.loadSeed(this.getSeedEditId())
+  }
 
   /* ************* LMS LTI Consumers   */
 
@@ -306,12 +341,13 @@ class StoreHelperWorker {
   /* **********   Loading and Restoring  ************** */
   async loadVisitRecord (visitId) {
     if (debugSH) console.log('SH loadVisitRecord dispatch the load visit information', visitId)
-    sessionStorage.setItem(sKeys.USER_TOKEN, visitId)
+    localStorage.setItem(sKeys.VISIT_ID, visitId)
     await this._dispatchVisit('loadVisit2', visitId)
   }
 
   async loadCommon () {
     let visitInfo = store.state.visit.sVisitData || {}
+    // To do use the accessor to get consumer id
     await this._dispatchConsumer('load', visitInfo.toolConsumer)
     await this._dispatchUser('load', visitInfo.user)
     await this.loadAssignmentAndSeedLists()
@@ -328,18 +364,13 @@ class StoreHelperWorker {
     }
   }
 
-  clearSession () {
-    sessionStorage.removeItem(sKeys.SEED_ID)
-    sessionStorage.removeItem(sKeys.IS_READONLY_INSTRUCTOR)
-    return Promise.resolve()
-  }
-
   async loadStudent2 () {
     let visitInfo = store.state.visit.sVisitData || {}
     // visitInfo.activityData and .activity and .assignment are all ids
     if (debugSH) console.log('SH loadStudent2 visitInfo.activity', visitInfo.activity)
     await this.loadCommon()
     await this._dispatchActivityData('load', visitInfo.activityData)
+    //TODO seems like load current activity is called twice for student, see loadCommon above.
     await this.loadAsCurrentActivity(visitInfo.activity)
     await this.loadAssignment(visitInfo.assignment)
     let seedId = this.getAssignmentSeedId()
@@ -377,14 +408,6 @@ class StoreHelperWorker {
     return result
   }
 
-  async loadDevelopingSeed () {
-    let seedId = this.getSeedId()
-    if(debugSH) console.log('SH load developing seed id:', seedId)
-    if (seedId) {
-      await this.loadSeed(seedId)
-    }
-  }
-
   async fetchAndStoreAuthToken (refreshToken) {
     return await this._dispatchAuthStore('fetchAndStoreAuthToken', { refreshToken })
   }
@@ -397,24 +420,24 @@ class StoreHelperWorker {
     return this._dispatchAuthStore('adminLogin', { adminPassword })
   }
 
-  adminValidate (token) {
-    return this._dispatchAuthStore('adminValidate', { token })
+  adminValidate () {
+    return this._dispatchAuthStore('adminValidate')
   }
 
   async getAuthData () {
-    return await this._getAuthStore('data')
+    return await this._getAuthStore('authData')
+  }
+  getAuthDataSync () {
+    return this._getAuthStore('authData')
   }
 
   getAuthToken () {
-    const token = localStorage.getItem(sKeys.AUTH_TOKEN)
-    if(debugSH) console.log('SH getAuthToken', token)
-    return token
+    return this._getAuthStore('token')
   }
 
   async logUserOutOfEdEHR () {
-    if(debugSH) console.log('SH clear auth token')
-    localStorage.removeItem(sKeys.AUTH_TOKEN)
-    return await this._dispatchVisit('clearVisitData')
+    await this._dispatchAuthStore('logOutUser')
+    await this._dispatchVisit('clearVisitData')
   }
 
 
