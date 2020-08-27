@@ -60,6 +60,9 @@ export default {
     assignmentCaseContext () {
       return CaseContext.getAssignmentCaseContext()
     },
+    showSignature () {
+      return CaseContext.getPageTableShowSignature(this.pageDataKey, this.tableKey)
+    },
     disabled () {
       let disable = false
       if (this.isPageElement) {
@@ -75,7 +78,7 @@ export default {
         }
       }
 
-      if (this.element.recHeader && CaseContext.getPageTableShowSignature(this.pageDataKey)) {
+      if (this.showSignature) {
         // make the record header read only if the case context feature is enabled and there is case context data
         // and the field is part of the record header
         disable = true
@@ -128,7 +131,7 @@ export default {
         let initialValue = inputs[this.elementKey]
         if (dbDialog || dbInputs) console.log('EhrCommon key has value', this.key, initialValue)
         this.setInitialValue(initialValue)
-        if (this.element.recHeader) {
+        if (this.showSignature) {
           const v = this.assignmentCaseContext[this.key]
           this.setInitialValue(v)
         }
