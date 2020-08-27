@@ -34,15 +34,11 @@ describe(`${typeName} controller testing`, function () {
     controller.create(data).then(doc => {
       should.exist(doc)
       theActivityData = doc
-      done()
-    })
-  })
-
-  it(`${typeName} use findOne`, function (done) {
-    controller.findOne(theActivityData._id).then(doc => {
-      // debug('findOne results', doc)
-      should.exist(doc)
-      done()
+      controller.findOne(theActivityData._id).then(doc => {
+        // debug('findOne results', doc)
+        should.exist(doc)
+        done()
+      })
     })
   })
 

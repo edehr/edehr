@@ -4,6 +4,7 @@ import HMAC_SHA1 from 'ims-lti/src/hmac-sha1'
 import AssignmentController from '../assignment/assignment-controller'
 import ActivityController from '../activity/activity-controller'
 import AuthUtil from '../common/auth-util'
+import FilesController from '../files/files-controller'
 import VisitController from '../visit/visit-controller'
 import UserController from '../user/user-controller'
 import ConsumerController from '../consumer/consumer-controller'
@@ -21,6 +22,7 @@ const configuration = config.config
 const act = new ActivityController()
 const as = new AssignmentController(configuration)
 const authUtil = new AuthUtil(configuration)
+const fileC = new FilesController(configuration)
 const vc = new VisitController()
 const cc = new ConsumerController()
 const uc = new UserController(configuration)
@@ -29,6 +31,7 @@ const lcc = {
   activityController: act,
   assignmentController: as,
   authUtil,
+  filesController: fileC,
   consumerController: cc,
   userController: uc,
   visitController: vc
@@ -119,7 +122,8 @@ describe('LTI controller testing', function () {
 
   let ltiController
   it('create LTI controller', function (done) {
-    ltiController = new LTIController(configuration, lcc)
+    ltiController = new LTIController(configuration)
+    ltiController.setSharedControllers(lcc)
     should.exist(ltiController)
 
     ltiController.should.have.property('route')

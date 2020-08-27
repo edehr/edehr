@@ -91,16 +91,6 @@ export default class EhrHelpV2 {
     return data
   }
 
-  stashActiveData (elementKey, value) {
-    try {
-      let data = this.getActiveData()
-      data[elementKey] = value
-      if (dbPageForm) console.log('EhrHelpV2 stash ', elementKey, value)
-    } catch (err) {
-      StoreHelper.setApiError(err)
-    }
-  }
-
   /* ********************* HELPERS  */
 
   _isStudent () {
@@ -393,13 +383,13 @@ export default class EhrHelpV2 {
   }
   _saveData (payload) {
     let isStudent = this._isStudent()
-    let isDevelopingContent = StoreHelper.isDevelopingContent()
+    let isSeedEditing = StoreHelper.isSeedEditing()
     if (isStudent) {
       if (dbDialog) console.log('saving assignment data', payload)
       payload.propertyName = payload.pageKey
       payload.value = prepareAssignmentPageDataForSave(payload.value)
       return StoreHelper.sendAssignmentDataUpdate(payload)
-    } else if (isDevelopingContent) {
+    } else if (isSeedEditing) {
       if (dbDialog) console.log('saving seed ehr data', payload.pageKey, JSON.stringify(payload.value))
       return StoreHelper.updateSeedEhrProperty(payload.pageKey, payload.value)
         .then(() => {
@@ -522,7 +512,6 @@ export default class EhrHelpV2 {
     }
     this._loadPageFormData(formKey)
     this._setEditing(true)
-    if (dbPageForm) console.log('EhrHelperV2 beginEdit', this.pageFormData)
   }
 
   /**
@@ -632,7 +621,7 @@ export default class EhrHelpV2 {
       _this._handleActivityDataChangeEvent(eData)
     }
     this.refreshEventHandler = function (eData) {
-      if (dbLoad) console.log('EhrHelperV2respond to page refresh', _this.pageKey)
+      if (dbLoad) console.log('EhrHelperV2 PAGE_DATA_REFRESH_EVENT refresh', _this.pageKey)
       _this._loadPageData()
     }
     window.addEventListener('beforeunload', this.windowUnloadHandler)
@@ -717,8 +706,17 @@ export default class EhrHelpV2 {
     this.stashActiveData(elementKey, value)
   }
 
+  stashActiveData (elementKey, value) {
+    try {
+      let data = this.getActiveData()
+      data[elementKey] = value
+      if (dbPageForm) console.log('EhrHelpV2 FORM_INPUT_EVENT stash ', elementKey, value)
+    } catch (err) {
+      StoreHelper.setApiError(err)
+    }
+  }
   _handleActivityDataChangeEvent (eData) {
-    if (dbLoad) console.log('Activity data changed. Trigger a load and refresh', this.pageKey)
+    if (dbLoad) console.log('EhrHelpV2 ACTIVITY_DATA_EVENT. Trigger a load and refresh', this.pageKey)
     EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
   }
 }

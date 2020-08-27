@@ -9,7 +9,6 @@ export default function () {
       pageChildren: [
         {
           elementKey: 'givenName',
-          dataCaseStudy: 'Erin',
           formIndex: '1',
           inputType: 'text',
           label: 'First name',
@@ -24,7 +23,6 @@ export default function () {
         },
         {
           elementKey: 'familyName',
-          dataCaseStudy: 'Johns',
           formIndex: '1',
           inputType: 'text',
           label: 'Last name',
@@ -32,7 +30,6 @@ export default function () {
         },
         {
           elementKey: 'preferredName',
-          dataCaseStudy: 'Erin',
           formIndex: '1',
           inputType: 'text',
           label: 'Preferred name',
@@ -41,7 +38,6 @@ export default function () {
         },
         {
           elementKey: 'dateOfBirth',
-          dataCaseStudy: '09-SEP-19##',
           formIndex: '1',
           inputType: 'text',
           label: 'Date of birth',
@@ -49,7 +45,6 @@ export default function () {
         },
         {
           elementKey: 'personAge',
-          dataCaseStudy: '74',
           formIndex: '1',
           inputType: 'text',
           label: 'Age',
@@ -57,8 +52,6 @@ export default function () {
         },
         {
           elementKey: 'height',
-          dataCaseStudy: '157',
-          defaultValue: '157',
           formIndex: '1',
           inputType: 'text',
           label: 'Height',
@@ -67,8 +60,6 @@ export default function () {
         },
         {
           elementKey: 'weight',
-          dataCaseStudy: '63',
-          defaultValue: '49',
           formIndex: '1',
           inputType: 'text',
           label: 'Weight',
@@ -77,7 +68,6 @@ export default function () {
         },
         {
           elementKey: 'gender',
-          dataCaseStudy: 'Female',
           formIndex: '1',
           inputType: 'select',
           label: 'Gender',
@@ -116,7 +106,6 @@ export default function () {
         },
         {
           elementKey: 'martialStatus',
-          dataCaseStudy: 'Widow',
           formIndex: '1',
           inputType: 'select',
           label: 'Martial status',
@@ -150,7 +139,6 @@ export default function () {
         },
         {
           elementKey: 'languagePrimary',
-          dataCaseStudy: 'English',
           formIndex: '1',
           inputType: 'select',
           label: 'Primary language',
@@ -187,7 +175,6 @@ export default function () {
         },
         {
           elementKey: 'indigenousIdentifyAs',
-          dataCaseStudy: 'No',
           formIndex: '1',
           inputType: 'select',
           label: 'Do you identify as an indigenous person?',
@@ -206,7 +193,6 @@ export default function () {
         },
         {
           elementKey: 'streetAddress',
-          dataCaseStudy: '402 Willow St.',
           formIndex: '1',
           formCss: 'grid-span-2-columns',
           inputType: 'text',
@@ -215,7 +201,6 @@ export default function () {
         },
         {
           elementKey: 'city',
-          dataCaseStudy: 'Vancouver',
           formIndex: '1',
           inputType: 'text',
           label: 'City',
@@ -223,7 +208,6 @@ export default function () {
         },
         {
           elementKey: 'country',
-          dataCaseStudy: 'Canada',
           defaultValue: 'Canada',
           formIndex: '1',
           inputType: 'text',
@@ -232,7 +216,6 @@ export default function () {
         },
         {
           elementKey: 'postalCode',
-          dataCaseStudy: 'V3F 9R2',
           formIndex: '1',
           inputType: 'text',
           label: 'Postal code',
@@ -249,7 +232,6 @@ export default function () {
         },
         {
           elementKey: 'phoneNumber',
-          dataCaseStudy: '(778) 555-2947',
           formIndex: '1',
           inputType: 'text',
           label: 'Primary phone number',
@@ -265,7 +247,6 @@ export default function () {
         },
         {
           elementKey: 'occupationStudent',
-          dataCaseStudy: 'Retired',
           formIndex: '1',
           inputType: 'text',
           label: 'Occupation/student',
@@ -273,7 +254,6 @@ export default function () {
         },
         {
           elementKey: 'phn',
-          dataCaseStudy: '12345678',
           formIndex: '1',
           inputType: 'text',
           label: 'PHN',
@@ -296,7 +276,6 @@ export default function () {
         },
         {
           elementKey: 'nextOfKinName',
-          dataCaseStudy: 'Thomas Johns',
           formIndex: '1',
           inputType: 'text',
           label: 'Next of kin name',
@@ -304,7 +283,6 @@ export default function () {
         },
         {
           elementKey: 'nextOfKinRelationship',
-          dataCaseStudy: 'Son',
           formIndex: '1',
           inputType: 'select',
           label: 'Next of kin relationship',
@@ -374,7 +352,6 @@ export default function () {
         },
         {
           elementKey: 'nextOfKinPhone',
-          dataCaseStudy: '604-555-9865',
           formIndex: '1',
           inputType: 'text',
           label: 'Next of kin phone',
@@ -383,7 +360,6 @@ export default function () {
         },
         {
           elementKey: 'decisionMakerName',
-          dataCaseStudy: 'Thomas Johns',
           formIndex: '1',
           inputType: 'text',
           label: 'Decision maker name',
@@ -391,7 +367,6 @@ export default function () {
         },
         {
           elementKey: 'decisionMakerRelationship',
-          dataCaseStudy: 'Son',
           formIndex: '1',
           inputType: 'select',
           label: 'Decision maker relationship',
@@ -441,7 +416,6 @@ export default function () {
         },
         {
           elementKey: 'decisionMakerPhone',
-          dataCaseStudy: '604-555-9865',
           formIndex: '1',
           inputType: 'text',
           label: 'Decision maker phone',
@@ -449,7 +423,7 @@ export default function () {
         }
       ],
       recHeader: false,
-      generated: '2020-02-10T11:05:37-02:00',
+      generated: '2020-08-25T13:44:55-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -526,8 +500,6 @@ export default function () {
         },
         {
           elementKey: 'text',
-          dataCaseStudy: true,
-          defaultValue: true,
           formIndex: '1',
           inputType: 'text',
           label: 'Allergies',
@@ -535,7 +507,7 @@ export default function () {
         }
       ],
       recHeader: false,
-      generated: '2020-02-10T11:05:37-02:00',
+      generated: '2020-08-25T13:44:55-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -571,7 +543,7 @@ export default function () {
         }
       ],
       recHeader: false,
-      generated: '2020-02-10T11:05:37-02:00',
+      generated: '2020-08-25T13:44:55-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -599,7 +571,6 @@ export default function () {
       pageChildren: [
         {
           elementKey: 'history',
-          dataCaseStudy: 'Feels down when she thinks about her lower financial status and her advancing age, and how she is becoming more forgetful and less energetic. Often feels alone and worries about falling and not being able to alert anyone to come to her rescue. Driving is becoming hard for her.',
           formIndex: '1',
           inputType: 'textarea',
           label: 'Psychosocial history',
@@ -607,7 +578,6 @@ export default function () {
         },
         {
           elementKey: 'diet',
-          dataCaseStudy: 'Regular',
           formIndex: '1',
           inputType: 'textarea',
           label: 'Diet',
@@ -615,7 +585,6 @@ export default function () {
         },
         {
           elementKey: 'livingSituation',
-          dataCaseStudy: 'Son lives with her in her house',
           formIndex: '1',
           inputType: 'textarea',
           label: 'Living situation',
@@ -623,7 +592,6 @@ export default function () {
         },
         {
           elementKey: 'employmentSchool',
-          dataCaseStudy: 'Retired hairdresser',
           formIndex: '1',
           inputType: 'textarea',
           label: 'Employment/school',
@@ -631,7 +599,6 @@ export default function () {
         },
         {
           elementKey: 'hobbies',
-          dataCaseStudy: 'Bingo, Netflix, playing Solitaire and Scrabble with friends on her iPad',
           formIndex: '1',
           inputType: 'textarea',
           label: 'Hobbies',
@@ -639,7 +606,6 @@ export default function () {
         },
         {
           elementKey: 'exercise',
-          dataCaseStudy: true,
           formIndex: '1',
           inputType: 'checkbox',
           label: 'Exercise',
@@ -647,7 +613,6 @@ export default function () {
         },
         {
           elementKey: 'exerciseText',
-          dataCaseStudy: '< 1 day/week',
           formIndex: '1',
           formOption: 'hideLabel',
           inputType: 'text',
@@ -663,7 +628,6 @@ export default function () {
         },
         {
           elementKey: 'caffeineUse',
-          dataCaseStudy: true,
           formIndex: '1',
           inputType: 'checkbox',
           label: 'Caffeine use',
@@ -671,7 +635,6 @@ export default function () {
         },
         {
           elementKey: 'caffeineUseText',
-          dataCaseStudy: '1-2 cups/day',
           formIndex: '1',
           formOption: 'hideLabel',
           inputType: 'text',
@@ -687,7 +650,6 @@ export default function () {
         },
         {
           elementKey: 'tobaccoUse',
-          dataCaseStudy: true,
           formIndex: '1',
           inputType: 'checkbox',
           label: 'Tobacco use',
@@ -695,7 +657,6 @@ export default function () {
         },
         {
           elementKey: 'tobaccoUseText',
-          dataCaseStudy: '1-2 cups/day',
           formIndex: '1',
           formOption: 'hideLabel',
           inputType: 'text',
@@ -733,7 +694,6 @@ export default function () {
         },
         {
           elementKey: 'alcoholUse',
-          dataCaseStudy: true,
           formIndex: '1',
           inputType: 'checkbox',
           label: 'Alcohol use',
@@ -741,7 +701,6 @@ export default function () {
         },
         {
           elementKey: 'alcoholUseText',
-          dataCaseStudy: 'Social',
           formIndex: '1',
           formOption: 'hideLabel',
           inputType: 'text',
@@ -779,7 +738,7 @@ export default function () {
         }
       ],
       recHeader: false,
-      generated: '2020-02-10T11:05:37-02:00',
+      generated: '2020-08-25T13:44:55-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -833,12 +792,12 @@ export default function () {
       hasGridTable: true,
       pageChildren: [
         {
-          elementKey: 'date',
+          elementKey: 'pastSurgeryDate',
           formIndex: '1',
           inputType: 'text',
           label: 'Date',
           tableColumn: '1',
-          fqn: 'surgical.date'
+          fqn: 'surgical.pastSurgeryDate'
         },
         {
           elementKey: 'physician',
@@ -850,7 +809,6 @@ export default function () {
         },
         {
           elementKey: 'procedure',
-          dataCaseStudy: 'Cesarean section',
           formIndex: '1',
           inputType: 'text',
           label: 'Surgery/procedure',
@@ -858,9 +816,17 @@ export default function () {
           fqn: 'surgical.procedure'
         },
         {
+          elementKey: 'timeSince',
+          formIndex: '1',
+          inputType: 'text',
+          label: 'Time Since',
+          tableColumn: '4',
+          fqn: 'surgical.timeSince'
+        },
+        {
           elementKey: 'previousAdmissionsDate',
           formIndex: '2',
-          inputType: 'date',
+          inputType: 'text',
           label: 'Date',
           tableColumn: '1',
           fqn: 'surgical.previousAdmissionsDate'
@@ -899,7 +865,7 @@ export default function () {
         }
       ],
       recHeader: false,
-      generated: '2020-02-10T11:05:37-02:00',
+      generated: '2020-08-25T13:44:55-07:00',
       pageElements: {
         pastSurgery: {
           elementKey: 'pastSurgery',
@@ -911,7 +877,7 @@ export default function () {
             {
               ehr_list_index: '1',
               items: [
-                'date'
+                'pastSurgeryDate'
               ]
             },
             {
@@ -925,6 +891,12 @@ export default function () {
               items: [
                 'procedure'
               ]
+            },
+            {
+              ehr_list_index: '4',
+              items: [
+                'timeSince'
+              ]
             }
           ],
           form: {
@@ -937,16 +909,18 @@ export default function () {
                 elementKey: 'pastSurgery',
                 gIndex: '1',
                 gChildren: [
-                  'date',
+                  'pastSurgeryDate',
                   'physician',
-                  'procedure'
+                  'procedure',
+                  'timeSince'
                 ]
               }
             ],
             ehr_data: {
-              date: '',
+              pastSurgeryDate: '',
               physician: '',
-              procedure: ''
+              procedure: '',
+              timeSince: ''
             }
           }
         },
@@ -1241,7 +1215,7 @@ export default function () {
         }
       ],
       recHeader: false,
-      generated: '2020-02-10T11:05:37-02:00',
+      generated: '2020-08-25T13:44:55-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -1304,7 +1278,7 @@ export default function () {
         }
       ],
       recHeader: false,
-      generated: '2020-02-10T11:05:37-02:00',
+      generated: '2020-08-25T13:44:55-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -1332,7 +1306,6 @@ export default function () {
       pageChildren: [
         {
           elementKey: 'name',
-          dataCaseStudy: 'Dr. Singh-NL-Dr. Notley-NL-Jason-NL-Jackie-NL-Gurpreet-NL-Alexa-NL-Matt-NL-Serge-NL-Trache-NL-Dr. Hunnicutt-NL-Jim-NL-Gladys-NL-Herman',
           formIndex: '1',
           inputType: 'text',
           label: 'Name',
@@ -1341,7 +1314,6 @@ export default function () {
         },
         {
           elementKey: 'profession',
-          dataCaseStudy: 'Physician-NL-Physician-NL-Nurse-NL-Nurse-NL-Medical radiograpeor-NL-Medical laboratory technician-NL-Medical radiographer-NL-RN-NL-Physician-NL-RN-NL-Pysiotherapy student-NL-Resp. therapist',
           formIndex: '1',
           inputType: 'text',
           label: 'Profession',
@@ -1350,7 +1322,7 @@ export default function () {
         }
       ],
       recHeader: false,
-      generated: '2020-02-10T11:05:37-02:00',
+      generated: '2020-08-25T13:44:55-07:00',
       pageElements: {
         teams: {
           elementKey: 'teams',
@@ -1401,12 +1373,12 @@ export default function () {
       hasGridTable: true,
       pageChildren: [
         {
-          elementKey: 'date',
+          elementKey: 'encounterDate',
           formIndex: '1',
-          inputType: 'date',
+          inputType: 'text',
           label: 'Date',
           tableColumn: '1',
-          fqn: 'pastAppointments.date'
+          fqn: 'pastAppointments.encounterDate'
         },
         {
           elementKey: 'site',
@@ -1433,17 +1405,15 @@ export default function () {
           fqn: 'pastAppointments.mrp'
         },
         {
-          elementKey: 'date',
-          dataCaseStudy: '1 week ago',
+          elementKey: 'appointmentDate',
           formIndex: '2',
           inputType: 'text',
-          label: 'Date',
+          label: 'Appointment Day',
           tableColumn: '1',
-          fqn: 'pastAppointments.date'
+          fqn: 'pastAppointments.appointmentDate'
         },
         {
           elementKey: 'site',
-          dataCaseStudy: 'Clinic',
           formIndex: '2',
           inputType: 'text',
           label: 'Site',
@@ -1452,7 +1422,6 @@ export default function () {
         },
         {
           elementKey: 'reasonForVisit',
-          dataCaseStudy: 'Shortness of breath x 24 hrs',
           formIndex: '2',
           inputType: 'text',
           label: 'Reason for visit',
@@ -1461,7 +1430,6 @@ export default function () {
         },
         {
           elementKey: 'diagnosis',
-          dataCaseStudy: 'COPD',
           formIndex: '2',
           inputType: 'text',
           label: 'Diagnosis',
@@ -1470,7 +1438,7 @@ export default function () {
         }
       ],
       recHeader: false,
-      generated: '2020-02-10T11:05:37-02:00',
+      generated: '2020-08-25T13:44:55-07:00',
       pageElements: {
         encounters: {
           elementKey: 'encounters',
@@ -1481,7 +1449,7 @@ export default function () {
             {
               ehr_list_index: '1',
               items: [
-                'date'
+                'encounterDate'
               ]
             },
             {
@@ -1512,7 +1480,7 @@ export default function () {
                 elementKey: 'encounters',
                 gIndex: '1',
                 gChildren: [
-                  'date',
+                  'encounterDate',
                   'site',
                   'diagnosis',
                   'mrp'
@@ -1520,7 +1488,7 @@ export default function () {
               }
             ],
             ehr_data: {
-              date: '',
+              encounterDate: '',
               site: '',
               diagnosis: '',
               mrp: ''
@@ -1536,7 +1504,7 @@ export default function () {
             {
               ehr_list_index: '1',
               items: [
-                'date'
+                'appointmentDate'
               ]
             },
             {
@@ -1567,7 +1535,7 @@ export default function () {
                 elementKey: 'outpatientAppointments',
                 gIndex: '1',
                 gChildren: [
-                  'date',
+                  'appointmentDate',
                   'site',
                   'reasonForVisit',
                   'diagnosis'
@@ -1575,7 +1543,7 @@ export default function () {
               }
             ],
             ehr_data: {
-              date: '',
+              appointmentDate: '',
               site: '',
               reasonForVisit: '',
               diagnosis: ''

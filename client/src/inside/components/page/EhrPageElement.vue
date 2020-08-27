@@ -2,6 +2,7 @@
   div
     ehr-page-form(v-if="element.isPageForm", :form="element", :ehrHelp="ehrHelp")
     ehr-page-table(v-else, :tableDef="element", :ehrHelp="ehrHelp")
+    hr
 </template>
 
 <script>

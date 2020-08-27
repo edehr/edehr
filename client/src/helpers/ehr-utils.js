@@ -97,6 +97,11 @@ export function validRangeStr (str, min, max) {
   }  
 }
 
+export function isImageFile (fName) {
+  if (!fName) return false
+  let fext = fName.toLocaleLowerCase().split('.').pop()
+  return /jpeg|jpg|png|gif|tiff|tif|bmp/.test(fext)
+}
 
 export function formatDateStr (dateStrFromDb) {
   return moment(dateStrFromDb).format('DD MMM YYYY')
@@ -235,7 +240,7 @@ export function validateSeedFileContents (dataAsString) {
     return { invalidMsg: Text.SEED_MUST_HAVE_EHRDATA}
   }
   let keys = Object.keys(parsedData.ehrData)
-  console.log('keys', keys)
+  // console.log('keys', keys)
   if(!keys || keys.length === 0) {
     return { invalidMsg: Text.EHRDATA_CAN_NOT_BE_EMPTY}
   }

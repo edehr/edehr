@@ -7,14 +7,17 @@
           tr(v-for="column in transposedColumns", :class="tableColumnCss(column)")
             td(:class="transposeLabelCss(column)")
               span(v-html="transposeLabel(column)")
-            td(v-for="cell in transposeData(column)", :class="transposeValueCss(cell)") {{ getCellData(cell) }}
+            td(v-for="cell in transposeData(column)", :class="transposeValueCss(cell)")
+              ehr-table-element(v-if="!!cell.value", :cell="cell")
 </template>
 
 <script>
 import EhrTableCommon from './EhrTableCommon'
+import EhrTableElement from './EhrTableElement'
 
 export default {
   extends: EhrTableCommon,
+  components: { EhrTableElement },
   inject: [ 'pageDataKey', 'tableKey'],
   data: function () {
     return {

@@ -1,3 +1,4 @@
+import axios from 'axios'
 const should = require('should')
 const mockData = require('./mockData.json')
 const { ehrUtilsData } = mockData
@@ -168,6 +169,8 @@ describe('Test support for seed import', () => {
       }
       await prepareAxiosResponse('get', response)
       await prepareAxiosResponse('put', response)
+      const mRes = { status: 200, data: 'fake data' }
+      axios.mockResolvedValueOnce(mRes)
       should.doesNotThrow(async () => await ehrUtils.importSeedData(null, seedId, data))
       done()
     })

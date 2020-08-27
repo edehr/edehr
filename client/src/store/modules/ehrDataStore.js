@@ -46,8 +46,8 @@ const getters = {
     let mData, studentAssignmentData
     // todo put this get into a helper and ditto for below
     let ehrSeedData = decoupleObject(rootGetters['seedListStore/seedEhrData'] || {})
-    if (InstoreHelper.instoreIsDevContent(rootState)) {
-      type = 'Developing Seed'
+    if (StoreHelper.isSeedEditing()) {
+      type = 'Seed Editing'
       mData = ehrSeedData
     } else if (InstoreHelper.instoreIsInstructor(rootState)) {
       type = 'Instructor wants student data'

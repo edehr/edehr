@@ -85,7 +85,6 @@ describe('Testing evalHelper', () => {
     done()
   })
 
-
   it('openActivity', async done => {
     const ac = Object.assign({}, activity, { closed: false })
     await _prepareChangeStudent(false, ac)
@@ -96,7 +95,7 @@ describe('Testing evalHelper', () => {
   })
 
   it('goToEhr', async done => {
-    await evalHelper.goToEhr(studentVisitId, router)
+    await evalHelper.goToEhr({_id: studentVisitId}, router)
     // This is following jest's function mocking 
     // (https://jestjs.io/docs/en/mock-function-api.html#mockfnmockcalls). 
     // This mock makes sure that the router.push function was 
@@ -104,12 +103,10 @@ describe('Testing evalHelper', () => {
     const [call] = router.push.mock.calls
     const isDev = StoreHelper.isDevelopingContent()
     call.length.should.equal(1)
-    call[0].should.equal('/ehr/patient/demographics')
-    isDev.should.equal(false)
+    call[0].name.should.equal('ehr')
+    call[0].query.evaluatingStudent.should.equal(true)
+    call[0].query.studentId.should.equal(studentVisitId)
+    isDev.should.equal(true)
     done()
-
   })
-
-  
-
 })

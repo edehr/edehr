@@ -14,7 +14,6 @@ const DEPENDENT_PROPS = EhrTypes.dependentOn
 const dbInputs = false
 const dbDialog = false
 const dbPage = false
-const dbDetail = false
 
 export default {
   extends: EhrDependent,
@@ -68,12 +67,12 @@ export default {
       }
       if (this.dependentDef) {
         if (!disable && this.dependentDef.action === DEPENDENT_PROPS.action.disable) {
-          disable = !(this.dependentOnValue === true)
+          disable = !(this.dependentOnValue === true || this.dependentOnValue === 'TRUE')
+          if (disable) {
+            if (dbInputs) console.log('EhrElementCommon. A change to false means disable this element so empty it.', this.key)
+            this.setInitialValue('')
+          }
         }
-      }
-      /* A change to false means disable this element. So let's also empty it too. */
-      if (disable) {
-        this.setInitialValue('')
       }
 
       if (this.element.recHeader && CaseContext.getPageTableShowSignature(this.pageDataKey)) {
@@ -108,7 +107,7 @@ export default {
       this.setInitialDependentValue()
     },
     sendInputEvent (val) {
-      if (dbDetail) console.log('EhrCommon broadcast PAGE_FORM_INPUT_EVENT ', val, this.elementKey)
+      if (dbInputs) console.log('EhrCommon broadcast PAGE_FORM_INPUT_EVENT ', val, this.elementKey)
       EventBus.$emit(FORM_INPUT_EVENT, { value: val, element: this.element })
     },
     refreshPage () {

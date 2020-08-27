@@ -1,80 +1,84 @@
 import axios from 'axios'
 import StoreHelper from './store-helper'
-const uuid = require('uuid/v4')
-import { setAuthHeader } from './axios-helper'
+import InstoreHelper from '../store/modules/instoreHelper'
 
-const debugDH = false
+const debugDC = true
 
-class DemoHelper {
-
-  createToolConsumer () {
-    const id = uuid()
-    const apiUrl = StoreHelper.apiUrlGet()
-    if(debugDH) console.log('DH create consumer for user id ', id, apiUrl)
-    const url = `${apiUrl}/demo/`
-    return axios.post(url, { id })
+export default class DemoHelper {
+  constructor (apiUrl) {
+    this.apiUrl = apiUrl
   }
 
-  demoLogout (token) {
-    const apiUrl = StoreHelper.apiUrlGet()
-    const url = `${apiUrl}/demo/logout`
-    if(debugDH) console.log('DH logout',apiUrl)
-    setAuthHeader(token)
-    return axios.post(url)
+  proceedDemoToolConsumerCreation () {
+
+    StoreHelper.setLoading(null, true)
+    if(debugDC) console.log('Demo proceedDemoToolConsumerCreation')
+    return StoreHelper.createDemoToolConsumer()
+      .then((demoToken) => {
+        if (debugDC) console.log(`Demo consumer created. If have token? ${!!demoToken} go to demo`)
+        if (!demoToken) {
+          throw Error('Setup of demonstration space failed')
+        }
+        return StoreHelper.loadDemoData()
+      })
       .catch(err => {
-        console.log('demoHelper error', err)
+        if(debugDC) console.log('createDemoToolConsumer Error', err)
+        let msg = err
+        if (err.response) {
+          msg = err.response.data.message
+        }
+        StoreHelper.setApiError(msg)
+      })
+      .finally ( () => {
+        StoreHelper.setLoading(null, false)
       })
   }
 
-  dhLoadDemoData (token) {
-    const apiUrl = StoreHelper.apiUrlGet()
-    const url = `${apiUrl}/demo/fetch`
-    if(debugDH) console.log('DH fetch', apiUrl)
-    setAuthHeader(token)
-    return axios.get(url)
-  }
 
-  submitPersona (token, submitData) {
-    const apiUrl = StoreHelper.apiUrlGet()
-    const url = `${apiUrl}/demo/set`
-    const {assignmentName, externalId, personaName, personaEmail, personaRole, returnUrl, toolKey} = submitData
-    const [ given, family ] = personaName.split(' ')
-    let theKey = toolKey
-    let userId = theKey.slice(-5) + family + '-' + given
-    const ltiData = {
-      custom_assignment: externalId,
-      context_id: 'Demo-Course',
-      context_label: 'L-' + assignmentName,
-      context_title: 'T-' + assignmentName,
-      context_type: 'Demonstration',
-      launch_presentation_return_url: returnUrl,
-      lis_person_contact_email_primary: personaEmail,
-      lis_person_name_family: family,
-      lis_person_name_given: given,
-      lis_person_name_full:personaName,
-      lti_version: 'LTI-1p0',
-      lti_message_type: 'basic-lti-launch-request',
-      oauth_consumer_key: theKey,
-      oauth_consumer_secret: theKey,
-      oauth_nonce: Date.now() + Math.random() * 100,
-      oauth_signature_method: 'HMAC-SHA1',
-      oauth_timestamp: Math.round(Date.now() / 1000),
-      roles: personaRole,
-      resource_link_title: assignmentName,
-      resource_link_id: externalId,
-      tool_consumer_instance_guid: theKey,
-      tool_consumer_instance_name: 'Demo LMS',
-      tool_consumer_info_version: 'x',
-      tool_consumer_info_product_family_code:'EdEHR LMS Demo',
-      tool_consumer_instance_description: 'EdEHR provided demonstration LTI tool',
-      user_id: userId,
+  gotoEhr (demoData, demoPersona, selectedAssignment, returnUrl) {
+    const persona = demoPersona
+    const submitData = {
+      assignmentName: selectedAssignment.name,
+      externalId: selectedAssignment.externalId,
+      personaName: persona.name,
+      personaEmail: persona.email,
+      personaRole: persona.role,
+      returnUrl: returnUrl, // window.location.origin + this.$route.path, // come back to this LMS page
+      toolKey: demoData.toolConsumerKey
     }
-    if(debugDH) console.log('DH submitPersona', ltiData, apiUrl)
-    setAuthHeader(token)
-    return axios.post(url, { ltiData })
+    if (debugDC) console.log('DemoCourse goto ehr with ', submitData)
+    StoreHelper.setLoading(null, true)
+    StoreHelper.submitPersona(submitData)
+      .then(({url}) => {
+        StoreHelper.setLoading(null, false)
+        if (debugDC) console.log('DemoCourse goto url ', url)
+        window.location.replace(url)
+      }).catch(err => {
+        StoreHelper.setLoading(null, false)
+        StoreHelper.setApiError('An error occurred during the launch of the demonstration mode. ', err)
+      })
   }
-  
-}
+  loadAssignments () {
+    const token = StoreHelper.getDemoToken()
+    const dd = StoreHelper.getDemoTokenData()
+    const toolConsumerId = dd.toolConsumerId
+    if (!toolConsumerId) {
+      if (debugDC) console.log('DC can not get assignments no toolConsumerId')
+      return
+    }
+    if (debugDC) console.log('DC get assignments toolConsumerId', toolConsumerId)
+    axios.defaults.headers['Authorization'] = `Bearer ${token}`
+    let url = 'consumer/' + toolConsumerId
+    return InstoreHelper.getRequest(undefined/*context not needed*/, 'assignments', url)
+      .then(response => {
+        let list = response.data.assignments
+        if (debugDC) console.log('loadAssignments response.data', list)
+        if (!list) {
+          const msg = 'System error getting demonstration assignments.'
+          StoreHelper.setApiError(msg)
+        }
+        return list
+      })
+  }
 
-const demoHelper = new DemoHelper()
-export default demoHelper
+}

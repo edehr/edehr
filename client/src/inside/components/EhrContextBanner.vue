@@ -10,7 +10,7 @@
               fas-icon(icon="plus", v-show="!show") 
               fas-icon(icon="minus", v-show="show")
         div(v-show="show")
-          ehr-context-instructor(v-if="(showInstructor || isReadOnlyInstructor)", :isReadonly="isReadOnlyInstructor")
+          ehr-context-instructor(v-if="(showInstructor)")
           ehr-context-developer(v-else-if="showSeeding")
 </template>
 
@@ -32,12 +32,7 @@ export default {
   },
   computed: {
     title () {
-      if (this.isReadOnlyInstructor) {
-        return StoreHelper.getCourseTitle()
-      } else {
-        return StoreHelper.isDevelopingContent() ? 'Edit seed' :StoreHelper.getCourseTitle()
-      }
-      
+      return StoreHelper.isSeedEditing() ? 'Edit seed' :StoreHelper.getCourseTitle()
     },
     panelInfo () {
       return StoreHelper.getPanelData()
@@ -46,45 +41,23 @@ export default {
       return StoreHelper.isStudent()
     },
     showInstructor () {
-      return StoreHelper.isInstructor() && !StoreHelper.isDevelopingContent()
+      return StoreHelper.isInstructor() && !StoreHelper.isSeedEditing()
     },
     showSeeding () {
-      return StoreHelper.isDevelopingContent()
+      return StoreHelper.isSeedEditing()
     },
-    isReadOnlyInstructor () {
-      return StoreHelper.isReadOnlyInstructor()
-    }
   },
-  watch: {
-    '$route.query': (n) => {
-      if (n.readonly) {
-        this.setReadOnlyInstructor(true)
-      }
-    }
-  },
-
   methods: {
     toggleShow: function () {
       this.show = !this.show
       this.indicator = this.show ? '-' : '+'
     },
-    setReadOnlyInstructor: function (isReadOnly) {
-      StoreHelper.setIsReadOnlyInstructor(isReadOnly)
-    }
   },
   mounted: function () {
     if (StoreHelper.isInstructor(this)){
       this.show = true
     }
-    const { readonly } = this.$route.query
-    if (readonly) {
-      this.setReadOnlyInstructor(true)
-    }
   },
-  beforeDestroy: function () {
-    if (this.isReadOnlyInstructor)
-      this.setReadOnlyInstructor(false)
-  }
 }
 </script>
 
@@ -93,7 +66,7 @@ export default {
 
 .EhrContextBanner {
   padding: 0;
-
+  border-top: 1px solid black;
   .header-column {
     padding: 0; // override bulma column padding
   }
@@ -101,7 +74,7 @@ export default {
 
 .EhrPanelContent {
   border-bottom: 1px solid $grey20;
-  padding: 1rem 1rem 1rem 2rem;
+  padding: 1rem;
 }
 
 .context-header {

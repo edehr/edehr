@@ -4,7 +4,7 @@
     ehr-page(:pageDataKey="pageDataKey", :ehrHelp="ehrHelp")
     div(style="display:none")
       p This Operative Anaesthesia page is generated.
-      p Label: Operative reports and anaesthesia record
+      p Label: Operative and anaesthesia records
       p Data Key: operationReports
       p Component name: OperativeAnaesthesia
       p Redirect: 

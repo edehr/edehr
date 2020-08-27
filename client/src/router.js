@@ -4,6 +4,10 @@ import store from './store'
 
 Vue.use(Router)
 
+export function routeIsEHR (route) {
+  return route.meta.zone === 'ehr'
+}
+
 let routes = [
   {
     path: '/',

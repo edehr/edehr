@@ -1,24 +1,17 @@
 // Generated VUE file. Before modifying see docs about Vue file generation
 <template lang="pug">
   div(class="ehr-page")
-    ehr-page(:pageDataKey="pageDataKey", :ehrHelp="ehrHelp")
-    div(style="display:none")
-      p This Integumentary Assessment page is generated.
-      p Label: Integumentary assessment
-      p Data Key: integumentaryAssessment
-      p Component name: IntegumentaryAssessment
-      p Redirect: 
-      p Route name: integumentary-assessment
-      p Full path: /ehr/current/assessments/integumentary-assessment
+    integumentary-content(:pageDataKey="pageDataKey", :ehrHelp="ehrHelp")
+    ehr-page-footer(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
 </template>
 
 <script>
-import EhrPage from '../components/page/EhrPage'
+import EhrPageFooter from '../components/page/EhrPageFooter'
 import EhrHelpV2 from '../components/page/ehr-helper'
+import IntegumentaryContent from './integumentary/IntegumentaryContent'
 
 export default {
-  name: 'IntegumentaryAssessment',
-  components: { EhrPage },
+  components: { EhrPageFooter, IntegumentaryContent },
   data: function () {
     return {
       pageDataKey: 'integumentaryAssessment',

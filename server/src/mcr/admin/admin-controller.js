@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import { getAdminPassword, generateAdminPassword } from '../../helpers/admin'
 import { adminLimiter } from '../../helpers/middleware'
+import { Text }  from '../../config/text'
 const debug = require('debug')('server')
 const logError = require('debug')('error')
 
@@ -26,19 +27,19 @@ export default class adminController {
  * 
  */
   _adminLogin (req, res) {
-    debug('authController -- _adminLogin')
+    debug('adminController -- _adminLogin')
     const { adminPass } = req.body
     let adminToken = getAdminPassword()
     const { authorization } = req.headers
     if (!adminPass && !authorization) {
       res.status(401).send(Text.REQUIRED_ADMIN)
     } else {
-      debug('adminPass >> adminToken', adminPass, adminToken)
+      debug('adminController -- adminPass >> adminToken', adminPass, adminToken)
       try {
         if (adminToken) {
           if (adminPass === adminToken) {
             const payload = this.authUtil.authenticate(authorization)
-            const adminPayload = Object.assign({}, payload, { adminPassword : adminPass})
+            const adminPayload = Object.assign({}, payload, { isAdmin : true})
             const newToken = this.authUtil.createToken(adminPayload)
             return res.status(200).json({token: newToken})
           } else {
@@ -58,23 +59,21 @@ export default class adminController {
 
   _adminValidate (req, res) {
     const { authorization } = req.headers
-    debug('req.headers >> ', req.headers)
-    debug('_adminValidate', authorization)
+    debug('adminController -- req.headers >> ', req.headers)
+    debug('adminController -- _adminValidate', authorization)
     if (authorization) {
-      debug('auth >> ', authorization)
+      debug('adminController -- auth >> ', authorization)
       try {
         const result = this.authUtil.authenticate(authorization)
-        debug('result >> ', result)
-        if (result.adminPassword) {
-          const adminPassword = getAdminPassword()
-          if (result.adminPassword === adminPassword) {
-            return res.status(200).send(/*success*/)
-          }
-          return res.status(401).send(Text.INVALID_TOKEN)
+        debug('adminController -- authenticate result >> ', result)
+        if (result.isAdmin) {
+          debug('adminController -- success')
+          return res.status(200).send(/*success*/)
         }
+        debug('adminController -- not allowed')
         return res.status(403).send(Text.NOT_PERMITTED)
-      
       } catch (err) {
+        logError('_adminValidate error', err)
         return res.status(500).send(err)
       }
 

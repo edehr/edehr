@@ -35,9 +35,9 @@
 {path: /ehr/chart}	{routeName: care-plan}	{pageDataKey: carePlan}	{label: Interprofessional plan of care}	{redirect: }	{generateComponent: yes}
 {path: /ehr/chart}	{routeName: reports}	eCell	{label: Reports and documents}	{redirect: consults}	eCell
 {path: /ehr/chart/reports}	{routeName: consults}	{pageDataKey: consults}	{label: Consults}	{redirect: }	{generateComponent: yes}
-{path: /ehr/chart/reports}	{routeName: lab-reports}	{pageDataKey: labResults}	{label: Laboratory results}	{redirect: }	{generateComponent: yes}
+{path: /ehr/chart/reports}	{routeName: lab-reports}	{pageDataKey: labResults}	{label: Laboratory reports}	{redirect: }	{generateComponent: yes}
 {path: /ehr/chart/reports}	{routeName: diagnostic-reports}	{pageDataKey: medicalImaging}	{label: Medical imaging}	{redirect: }	{generateComponent: yes}
-{path: /ehr/chart/reports}	{routeName: operative-anaesthesia}	{pageDataKey: operationReports}	{label: Operative reports and anaesthesia record}	{redirect: }	{generateComponent: yes}
+{path: /ehr/chart/reports}	{routeName: operative-anaesthesia}	{pageDataKey: operationReports}	{label: Operative and anaesthesia records}	{redirect: }	{generateComponent: yes}
 {path: /ehr}	{routeName: external}	eCell	{label: External resources}	{redirect: assessment-tools}	eCell
 {path: /ehr/external}	{routeName: assessment-tools}	{pageDataKey: assessmentTools}	{label: Standardized assessment tools}	{redirect: }	{generateComponent: yes}
 {path: /ehr/external}	{routeName: code-lookup}	{pageDataKey: codeLookup}	{label: Code lookup}	{redirect: }	{generateComponent: yes}
@@ -46,4 +46,4 @@
 {path: /ehr/external}	{routeName: case-mix-group}	{pageDataKey: caseMixGroup}	{label: Case mix group}	{redirect: }	{generateComponent: yes}
 {path: /ehr/external}	{routeName: test-page}	{pageDataKey: testPage}	{label: Test Page}	{redirect: }	{generateComponent: yes}
 {path: /ehr/external}	{routeName: test-table}	{pageDataKey: testTable}	{label: Test Table}	{redirect: }	{generateComponent: yes}
-{path: /ehr/current/assessments}	{routeName: integumentary-assessment}	{pageDataKey: integumentaryAssessment}	{label: Integumentary assessment}	{redirect: }	{generateComponent: yes}
+{path: /ehr/current/assessments}	{routeName: integumentary-assessment}	{pageDataKey: integumentaryAssessment}	{label: Integumentary assessment}	{redirect: }	{generateComponent: custom}

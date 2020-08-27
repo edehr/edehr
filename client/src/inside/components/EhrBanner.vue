@@ -2,7 +2,7 @@
   div( class="EhrBanner EhrPanelContent")
     div( class="EhrBanner_Inner EhrPanelContent_Inner")
       ui-intro(class="EhrBanner__intro")
-      div( class="columns EhrBanner__content")
+      div( class="columns EhrBanner__content grid-left-to-right-3")
         div( class="column EhrBanner__content_row--1")
           ul
             li 
@@ -106,19 +106,17 @@ export default {
 
 .EhrBanner {
   &__content {
-    display: flex;
     color: $grey60;
     & li {
-    margin-bottom: 4px;
+      margin-bottom: 4px;
     }
   }
   &__content_row--1, &__content_row--2 {
-    flex-grow: 1;
     padding: 0 2em .5em 0;
   }
   &__content_row--3 {
-    flex-grow: 2;
-    padding: 0 0 .5em 0;
+    /*padding: 0 0 .5em 0;*/
+    padding: 0 2em .5em 0;
   }
 }
 </style>

@@ -154,7 +154,7 @@
       "encounters": [],
       "outpatientAppointments": [
         {
-          "date": "1 week ago",
+          "appointmentDate": "1 week ago",
           "site": "Clinic",
           "reasonForVisit": "Shortness of breath x 24 hours",
           "diagnosis": "COPD",

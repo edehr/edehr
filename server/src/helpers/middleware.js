@@ -1,4 +1,3 @@
-import { getAdminPassword } from './admin'
 import { Text } from '../config/text'
 
 const rateLimit = require('express-rate-limit')
@@ -15,7 +14,7 @@ if(debugMW) debug('validatorMiddlewareWrapper DEMO_MAX_REQUEST_LIMIT', DEMO_MAX_
 /**
  *
  * @param authUtil
- * @return {Function(req, res, next)} If req's auth header contains a valid token then place the parsed data into reg.authPayload
+ * @return Function(req, res, next) If req's auth header contains a valid token then place the parsed data into reg.authPayload
  */
 export const validatorMiddlewareWrapper = (authUtil) => {
   return (req, res, next) => {
@@ -34,7 +33,7 @@ export const validatorMiddlewareWrapper = (authUtil) => {
           res.status(401).send(Text.INVALID_TOKEN)
         }
       } catch (err) {
-        logError('validatorMiddleware caught ', err)
+        logError('validatorMiddleware caught ', err.message)
         res.status(401).send(err)
       }
     } else {
@@ -46,12 +45,11 @@ export const validatorMiddlewareWrapper = (authUtil) => {
 
 export const isAdmin = (req, res, next) => {
   const { authPayload } = req
-  debug('authPayload >> ', req, authPayload)
+  debug('authPayload >> ', authPayload)
   if (debugMW) debug('validatorMiddlewareWrapper isAdmin  authPayload:', authPayload)
-  if (authPayload.adminPassword) {
-    const passwd = getAdminPassword()
-    if (authPayload.adminPassword === passwd) {
-      if (debugMW) debug('validatorMiddlewareWrapper isAdmin  pass password test')
+  if (authPayload) {
+    if (authPayload.isAdmin) {
+      if (debugMW) debug('validatorMiddlewareWrapper isAdmin  pass test')
       next()
     } else {
       logError('isAdmin not authorized')

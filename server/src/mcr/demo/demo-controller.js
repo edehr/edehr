@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import axios from 'axios'
+import qs from 'qs'
 import { demoPersonae } from '../../helpers/demo-personae'
 import { demoLimiter, validatorMiddlewareWrapper } from '../../helpers/middleware'
 import { assignment1, assignment2 } from './assignment-defs'
@@ -35,17 +36,27 @@ const seedData = {
 
 export default class DemoController {
 
-  constructor (config, cc) {
+  constructor (config) {
     this.config = config
-    this.cc = cc
   }
 
-  _createDemoToolConsumer (req, res) {
-    const theId = req.body.id
-    if (debugDC) debug('DemoController create tool. Id:', theId)
+  setSharedControllers(cc) {
+    this.comCon = cc
+  }
+
+  _createDemoToolConsumer (req, res, next) {
+    let theId = req.body.id
+    if (debugDC) debug('DemoController create tool. Call provided this id:', theId)
+    if (!theId) {
+      let error = new Error('Caller must provide a new id for the demonstration to work.')
+      error.status = 400
+      return next(error)
+    }
+    theId = 'Demo-' + Date.now() + '-' + theId
+    if (debugDC) debug('DemoController create tool. Create tool with this id:', theId)
     const consumerDef = Object.assign({}, consumerBaseDef, {  oauth_consumer_key: theId, oauth_consumer_secret: theId })
     let toolC
-    this.cc.consumerController.createToolConsumer(consumerDef)
+    this.comCon.consumerController.createToolConsumer(consumerDef)
       .then((toolConsumer) => {
         toolC = toolConsumer
         if (debugDC) debug('DemoController tool consumer ready', toolC)
@@ -57,12 +68,12 @@ export default class DemoController {
         aSeed.name = data.name
         aSeed.description = data.description
         aSeed.ehrData = data.ehrData
-        return this.cc.seedController.create(aSeed)
+        return this.comCon.seedController.create(aSeed)
       })
       .then((seed) => {
         if (debugDC) debug('DemoController create assignment 1')
         const ass = Object.assign({}, assignment1, { toolConsumer: toolC })
-        return this.cc.assignmentController.createAssignment(ass, seed._id)
+        return this.comCon.assignmentController.createAssignment(ass, seed._id)
       })
       .then(() => {
         const data = ej2Seed
@@ -71,12 +82,12 @@ export default class DemoController {
         aSeed.name = data.name
         aSeed.description = data.description
         aSeed.ehrData = data.ehrData
-        return this.cc.seedController.create(aSeed)
+        return this.comCon.seedController.create(aSeed)
       })
       .then((seed) => {
         if (debugDC) debug('DemoController create assignment')
         const ass = Object.assign({}, assignment2, { toolConsumer: toolC })
-        return this.cc.assignmentController.createAssignment(ass, seed._id)
+        return this.comCon.assignmentController.createAssignment(ass, seed._id)
       })
       .then(() => {
         if (debugDC) debug('DemoController generate token')
@@ -86,7 +97,7 @@ export default class DemoController {
             toolConsumerId: toolC._id,
             personaList: demoPersonae
           }
-          const demoToken = this.cc.authUtil.createToken({demoData: demoData})
+          const demoToken = this.comCon.authUtil.createToken({demoData: demoData})
           if (debugDC) debug('DemoController _createDemoToolConsumer generated token')
           res.status(200).json({demoToken})
         } catch (err) {
@@ -101,37 +112,22 @@ export default class DemoController {
   deleteDemoData (consumerKey) {
     let toolConsumer
     debug('Ready deleteDemoData demo consumer along with all of its data: ' + consumerKey)
-    return this.cc.consumerController.findOneConsumerByKey(consumerKey)
+    return this.comCon.consumerController.findOneConsumerByKey(consumerKey)
       .then((tc) => {
         if (!tc) {
           throw new Error('Attempt to clean up a demo consumer that does not exist ' + consumerKey)
         }
         debug('Ready to remove a demo consumer along with all of its data: ' + tc.tool_consumer_instance_name)
         toolConsumer = tc._id
-      })
-      .then(() => {
-        debug('deleteDemoData delete consumer ' + toolConsumer)
-        return this.cc.consumerController.delete(toolConsumer)
-      })
-      .then(() => {
-        debug('deleteDemoData delete visits ' + toolConsumer)
-        return this.cc.visitController.clearConsumer(toolConsumer)
-      })
-      .then(() => {
-        debug('deleteDemoData delete activities ' + toolConsumer)
-        return this.cc.activityController.clearConsumer(toolConsumer)
-      })
-      .then(() => {
-        debug('deleteDemoData delete seeds ' + toolConsumer)
-        return this.cc.seedController.clearConsumer(toolConsumer)
-      })
-      .then(() => {
-        debug('deleteDemoData delete assignments ' + toolConsumer)
-        return this.cc.assignmentController.clearConsumer(toolConsumer._id)
-      })
-      .then(() => {
-        debug('deleteDemoData delete users ' + toolConsumer)
-        return this.cc.userController.clearConsumer(toolConsumer._id)
+        let promises = []
+        promises.push(this.comCon.consumerController.delete(toolConsumer))
+        promises.push(this.comCon.visitController.clearConsumer(toolConsumer))
+        promises.push(this.comCon.activityController.clearConsumer(toolConsumer))
+        promises.push(this.comCon.seedController.clearConsumer(toolConsumer))
+        promises.push(this.comCon.assignmentController.clearConsumer(toolConsumer))
+        promises.push(this.comCon.userController.clearConsumer(toolConsumer))
+        promises.push(this.comCon.filesController.clearConsumer(toolConsumer))
+        return Promise.all(promises)
       })
   }
 
@@ -144,7 +140,8 @@ export default class DemoController {
    */
   submitLTIData (req, res) {
     const {host} = req.headers
-    const {ltiData} = req.body
+    const {ltiData} = qs.parse(req.body)
+    // console.log('ltidata', ltiData, req.body)
     const signedRequest = this._signAndPrepareLTIRequest(ltiData, host)
     return axios.post(signedRequest.url, signedRequest.body)
       .then((_results) => {
@@ -206,7 +203,7 @@ export default class DemoController {
   }
 
   route () {
-    const validatorMiddleware = [validatorMiddlewareWrapper(this.cc.authUtil)]
+    const validatorMiddleware = [validatorMiddlewareWrapper(this.comCon.authUtil)]
     const router = new Router()
 
     /**
@@ -216,8 +213,8 @@ export default class DemoController {
      */
     router.post('/',
       demoLimiter,
-      (req, res) => {
-        this._createDemoToolConsumer(req, res)
+      (req, res, next) => {
+        this._createDemoToolConsumer(req, res, next)
       })
 
     /**

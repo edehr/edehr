@@ -145,12 +145,12 @@ export default {
     gotoEhrWithSeed (sv) {
       const _this = this
       this.seedId = sv._id
-      // NB StoreHelper.isDevelopingContent === true
+      // NB StoreHelper.isEditingSee === true
       // Here is where the user starts editing a seed.
       return StoreHelper.loadSeed(sv._id)
         .then(() => {
           // console.log('route to demographics page with seed', this.seedId)
-          _this.$router.push({ name: 'demographics' })
+          _this.$router.push({ name: 'ehr', query: { seedEditId: this.seedId } })
           EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
         })
     },
@@ -163,11 +163,11 @@ export default {
     showDialog: function (title, msg) {
       this.$refs.aggreeDialog.showDialog(title, msg)
     },
-    async deleteSeed (sv) {
+    deleteSeed (sv) {
       return StoreHelper.deleteSeed(sv._id)
         .then(() => {
           StoreHelper.setLoading(null, true)
-          StoreHelper.loadSeedLists()
+          return StoreHelper.loadSeedLists()
         })
         .catch(error => {
           console.log('Sedd Data list delete error', error)

@@ -32,34 +32,27 @@ describe(`${typeName} mongoose schema testing`, function () {
     name: '1234',
     description: 'a test seed',
     version: '1.0',
-    ehrData: { foo: 'bar' }
+    ehrData: {foo: 'bar'}
   }
 
   it(`${typeName} can save one`, function (done) {
     const newUser = new Model(sampleData)
-    newUser
-      .save()
+    newUser.save()
       .then(() => {
-        done()
+        Model.findOne({name: '1234'}, function (err, doc) {
+          // debug('results', doc)
+          should.exist(doc)
+          should.not.exist(err)
+          doc.should.have.property('ehrData')
+          doc.ehrData.should.have.property('foo')
+          doc.should.have.property('version')
+          doc.version.should.equal(sampleData.version)
+          done()
+        })
       })
       .catch(err => {
         should.not.exist(err)
         done()
       })
-  })
-
-  it(`${typeName} can find one`, function (done) {
-    Model.findOne({ name: '1234' }, function (err, doc) {
-      // debug('results', doc)
-      should.exist(doc)
-      should.not.exist(err)
-      doc.should.have.property('ehrData')
-      doc.ehrData.should.have.property('foo')
-      doc.should.have.property('version')
-      doc.version.should.equal(sampleData.version)
-      done()
-    }).catch(e => {
-      logError('find one error', e)
-    })
   })
 })

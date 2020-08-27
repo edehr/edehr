@@ -12,7 +12,9 @@ const CONTAINS_TABLE_ELEMENTS_INDEX = 3
 // current test's purpose)
 const CONTAINS_FORM_ELEMENTS_INDEX = 0
 
-const tablePageKey = getPageKeys()[CONTAINS_TABLE_ELEMENTS_INDEX] 
+console.log('getPageKeys()',getPageKeys())
+const tablePageKey = getPageKeys()[CONTAINS_TABLE_ELEMENTS_INDEX]
+console.log('tablePageKey',tablePageKey)
 const formPageKey = getPageKeys()[CONTAINS_FORM_ELEMENTS_INDEX]
 
 const _setUpWindowObj = () => {
@@ -124,12 +126,12 @@ describe('ehr-helper tests', () => {
   
     it('showTableAddButton', () => {
       const result = ehrHelper.showTableAddButton()
-      result.should.equal(false)
+      result.should.equal(true)
     })
   
     it('canEditForm', () => {
       const result = ehrHelper.canEditForm(formKey)
-      result.should.equal(false)
+      result.should.equal(true)
     })
   
     it('isEditing', () => {

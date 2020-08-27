@@ -76,22 +76,7 @@ describe('testing ehr-defs-grid', () => {
     result.should.equal('checkbox')
     done()
   })
-
-  it('getDefaultValue', done => {
-    const defaultValue = EhrDefsGrid.getDefaultValue(DEFAULT_KEY, elemKey)
-    should.exists(defaultValue)
-    should(defaultValue).be.a.Boolean()
-    done()
-  })
-
-  it('getDataCaseStudy', done => {
-    should.doesNotThrow(() =>{
-      const result = EhrDefsGrid.getDataCaseStudy(DEFAULT_KEY, elemKey)
-      should(result).be.a.Boolean()
-      done()
-    })
-  })
-
+  
   it('getValidationRule', done => {
     should.doesNotThrow(() => EhrDefsGrid.getValidationRule(DEFAULT_KEY, elemKey))
     done()

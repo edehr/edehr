@@ -286,7 +286,7 @@ module.exports = function () {
       path: '/ehr/chart/reports',
       routeName: 'lab-reports',
       pageDataKey: 'labResults',
-      label: 'Laboratory results',
+      label: 'Laboratory reports',
       redirect: '',
       generateComponent: 'yes'
     },
@@ -302,7 +302,7 @@ module.exports = function () {
       path: '/ehr/chart/reports',
       routeName: 'operative-anaesthesia',
       pageDataKey: 'operationReports',
-      label: 'Operative reports and anaesthesia record',
+      label: 'Operative and anaesthesia records',
       redirect: '',
       generateComponent: 'yes'
     },
@@ -374,7 +374,7 @@ module.exports = function () {
       pageDataKey: 'integumentaryAssessment',
       label: 'Integumentary assessment',
       redirect: '',
-      generateComponent: 'yes'
+      generateComponent: 'custom'
     }
   ]
 }

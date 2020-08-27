@@ -265,7 +265,7 @@ export function inside () {
       name: 'lab-reports',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/LabReports.vue'),
-      meta: { layout: 'inside', label: 'Laboratory results', topLevel: 'chart', zone: 'ehr' }
+      meta: { layout: 'inside', label: 'Laboratory reports', topLevel: 'chart', zone: 'ehr' }
     },
     {
       path: '/ehr/chart/reports/diagnostic-reports',
@@ -279,7 +279,7 @@ export function inside () {
       name: 'operative-anaesthesia',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/OperativeAnaesthesia.vue'),
-      meta: { layout: 'inside', label: 'Operative reports and anaesthesia record', topLevel: 'chart', zone: 'ehr' }
+      meta: { layout: 'inside', label: 'Operative and anaesthesia records', topLevel: 'chart', zone: 'ehr' }
     },
     {
       path: '/ehr/external',
@@ -341,7 +341,7 @@ export function inside () {
       path: '/ehr/current/assessments/integumentary-assessment',
       name: 'integumentary-assessment',
       component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/IntegumentaryAssessment.vue'),
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/custom/IntegumentaryAssessment.vue'),
       meta: { layout: 'inside', label: 'Integumentary assessment', topLevel: 'current', zone: 'ehr' }
     }
   ]

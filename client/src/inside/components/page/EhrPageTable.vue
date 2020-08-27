@@ -7,7 +7,7 @@
       ehr-table-vertical(v-if="isVertical", :ehrHelp="ehrHelp", :tableDef="tableDef")
       ehr-table-stacked(v-if="isStacked", :ehrHelp="ehrHelp", :tableDef="tableDef")
     ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDef", :errorList="errorList" )
-    div(v-if="hasData", class="is-pulled-right")
+    div(v-if="hasData", style="text-align: right;") <!-- put the clear button on the far right side -->
       ui-button(v-on:buttonClicked="clearAllData", v-bind:secondary="true") Clear all table data
       ui-confirm(ref="confirmDialog", v-on:confirm="proceedClearAllData")
 

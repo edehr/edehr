@@ -1,7 +1,6 @@
 import EhrDefs from '../ehr-defs-grid'
 import store from '../../store'
 import MockFile from './MockFile'
-import sKeys from '../session-keys'
 import StoreHelper from '../store-helper'
 
 const axiosMockHelper = require('./axios-mock-helper')
@@ -21,6 +20,11 @@ export const getPageKeys = () => {
 
 export const dispatchGetter = (str) => {
   return store.getters[str]
+}
+
+export const setAuthMocks = (payload = mockData.authData) => {
+  const key = 'setAuthData'
+  store.commit('authStore/' + key, payload)
 }
 
 export const instructorCommit = (payload, key) => {
@@ -86,15 +90,12 @@ export const setAPIUrl = (apiUrl = mockData.apiUrl) => {
   StoreHelper.apiUrlSet(apiUrl)
 }
 
-export const setSession = (token = 'defaultToken') => {
-  localStorage.setItem(sKeys.AUTH_TOKEN, token)
-}
-
 export const commonBeforeEach = () => {
   setActivityMocks()
   setActivityDataMocks()
   setAssignmentMocks()
   setAssignmentListingMocks()
+  setAuthMocks()
   setConsumerMocks()
   setConsumerListingMocks()
   setSeedDataMocks()

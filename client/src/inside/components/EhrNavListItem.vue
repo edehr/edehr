@@ -34,10 +34,9 @@ export default {
       const NEW_INFO = 'circle green-circle' //'new-info'
       const SEED_INFO = 'circle empty-circle'
       const NONE = ''
-      let isDev = StoreHelper.isDevelopingContent()
+      let isSeedEditing = StoreHelper.isSeedEditing()
       let hd = this.hasData
-      // console.log('nav ', this.path.label, isDev, hd)
-      if (isDev) {
+      if (isSeedEditing) {
         colour = hd.hasSeed ? NEW_INFO : NONE
       } else {
         colour = hd.hasStudent ? NEW_INFO : hd.hasSeed ? SEED_INFO : NONE

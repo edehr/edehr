@@ -160,7 +160,7 @@
       "encounters": [],
       "outpatientAppointments": [
         {
-          "date": "1 week ago",
+          "appointmentDate": "1 week ago",
           "site": "Clinic",
           "reasonForVisit": "Shortness of breath x 24 hours",
           "diagnosis": "COPD",
@@ -516,7 +516,7 @@
           "time": "19:30",
           "referralName": "Matt",
           "referralProfession": "Resp therapy",
-          "appointmentDate": "2000-01-01T08:00:00.000Z",
+          "appointmentDate": "One week",
           "appointmentTime": "20:00",
           "status": "Active",
           "createdDate": "2019-05-30T22:52:30-07:00"
