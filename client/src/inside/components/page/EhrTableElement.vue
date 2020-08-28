@@ -1,24 +1,19 @@
 <template lang="pug">
   div
-    a(v-if="cell.inputType==='ehrFile'", :href="cell.value.url")
-      img(v-if="isImage", :src="cell.value.url", class="thumbnail")
-      span {{cell.value.fName}}
+    span(v-if="cell.inputType==='ehrFile'")
+      ehr-file-link(:ehrFile="cell.value")
     span(v-else) {{getCellData(cell)}}
 </template>
 
 <script>
 import moment from 'moment'
-import { formatDateStr, isImageFile } from '../../../helpers/ehr-utils'
+import EhrFileLink from '@/inside/components/EhrFileLink'
+import { formatDateStr } from '../../../helpers/ehr-utils'
 
 export default {
+  components: { EhrFileLink },
   props: {
     cell: { type: Object },
-  },
-  computed: {
-    isImage () {
-      let cell = this.cell
-      return (cell.inputType === 'ehrFile') ? isImageFile(cell.value.fName) : false
-    }
   },
   methods: {
     getCellData: function (cell) {

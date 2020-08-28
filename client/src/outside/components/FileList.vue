@@ -4,23 +4,24 @@
       div(v-show="hasFiles", class="list-body")
         h2 Images
         div(class="list-images-container")
-          a(v-for="file in imageFiles", class="list-element image-element", :href="file.url", target="_blank")
-            img(:src="file.url", class="thumbnail")
-            div {{file.fName}}
+          div(v-for="file in imageFiles", class="list-element image-element")
+            ehr-file-link(:ehrFile="file")
         h2 Files
         div(class="list-files-container")
-          a(v-for="file in otherFiles", class="list-element", :href="file.url", target="_blank")  {{file.fName}}
+          div(v-for="file in otherFiles", class="list-element")
+            ehr-file-link(:ehrFile="file")
 
       div(v-show="errorMessage", class="error-msg") {{ errorMessage }}
     div(v-else)  You are not authorized to upload files.
 </template>
 <script>
 import StoreHelper from '@/helpers/store-helper'
+import EhrFileLink from '@/inside/components/EhrFileLink'
 import EventBus from '@/helpers/event-bus'
 import { PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
 
 export default {
-  components: {  },
+  components: { EhrFileLink },
   data () {
     return {
     }

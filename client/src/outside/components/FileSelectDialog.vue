@@ -17,15 +17,13 @@
             div(v-for="file in imageFiles")
               label(class="list-element image-element")
                 input(type="radio", name="files", :value="file", v-model="selectedFile")
-                img(:src="file.url", class="thumbnail")
-                span(class="fileName") {{file.fName}}
+                ehr-file-link(:ehrFile="file", :alink="false")
           h2 Files
           div(class="list-files-container")
             div(v-for="file in otherFiles")
               label( class="list-element")
                 input(type="radio", name="files", :value="file", v-model="selectedFile")
-                span(class="fileName") {{file.fName}}
-
+                ehr-file-link(:ehrFile="file", :alink="false")
 
       div(slot="footer-content")
         div(v-show="selectedFile.fName")  Selected: {{ selectedFile.fName }}
@@ -36,9 +34,10 @@
 <script>
 import AppDialog from '../../app/components/AppDialogShell'
 import StoreHelper from '@/helpers/store-helper'
+import EhrFileLink from '@/inside/components/EhrFileLink'
 
 export default {
-  components: { AppDialog },
+  components: { AppDialog, EhrFileLink },
   data () {
     return {
       selectedFile: {}

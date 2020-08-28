@@ -9,7 +9,7 @@
     ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDef", :errorList="errorList" )
     div(v-if="hasData", style="text-align: right;") <!-- put the clear button on the far right side -->
       ui-button(v-on:buttonClicked="clearAllData", v-bind:secondary="true") Clear all table data
-      ui-confirm(ref="confirmDialog", v-on:confirm="proceedClearAllData")
+    ui-confirm(ref="confirmDialog", v-on:confirm="proceedClearAllData")
 
 </template>
 
