@@ -177,3 +177,22 @@ npm run docs:dev
 ```
 Then visit  [http://localhost:8080/edehr](http://localhost:8080/edehr) See documentation in the ```docs``` directory.
 
+# Update SSL Cert on production with Certbot
+
+```bash
+# Stop the server
+cd deployment
+npm run prod:stop
+
+# Run certbot to update the certs
+sudo certbot
+
+#Then find and stop all running nginx
+# e.g. 
+# sudo kill -QUIT 30708 
+
+ps aux | grep nginx
+
+# Then restart 
+npm run prod:run
+```
