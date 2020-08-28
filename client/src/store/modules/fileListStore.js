@@ -87,12 +87,7 @@ const actions = {
         // get all the other file names (not images)
         const otherNames = fileNames.filter(fName => imageNames.indexOf(fName) < 0)
         // compose the data structure for each file
-        const map = (fName) => {
-          return {
-            fName: fName,
-            url: apiUrl + `/files/public/${fName}/consumer/${consumerId}`
-          }
-        }
+        const map = (fName) => { return { fName: fName } }
         context.commit('setImageFiles', imageNames.map((fName) => map(fName)))
         context.commit('setOtherFiles', otherNames.map((fName) => map(fName)))
       })

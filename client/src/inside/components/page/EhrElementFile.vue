@@ -1,27 +1,34 @@
 <template lang="pug">
   div(class="form-element")
     ehr-page-form-label(:element="element", css="ehrFile_label")
-    div(class="inline thumbnail")
-      a(:href="inputVal.url")
-        img(v-if="isImage", :src="inputVal.url", style="height: 100px")
-        span {{inputVal.name }}
-    div(class="inline select-file")
-      ui-button(v-on:buttonClicked="showSelectDialog", v-bind:disabled="disabled", secondary, title="Select a file") {{ buttonLabel }}
+    div(class="file-element")
+      div(class="inline")
+        ehr-file-link(v-if="inputVal.fName", :ehrFile="inputVal", :alink="false")
+      div(class="inline select-file")
+        ui-button(v-on:buttonClicked="showSelectDialog", v-bind:disabled="disabled", secondary, title="Select a file") {{ buttonLabel }}
     file-select-dialog(ref="fileSelectDialog", @fileSelected="fileSelected")
 </template>
 
 <script>
 import EhrElementCommon from './EhrElementCommon'
 import EventBus from '../../../helpers/event-bus'
+import EhrFileLink from '@/inside/components/EhrFileLink'
 import FileSelectDialog from '@/outside/components/FileSelectDialog'
 import UiButton from '@/app/ui/UiButton'
 import { isImageFile } from '../../../helpers/ehr-utils'
 import { FORM_INPUT_EVENT } from '../../../helpers/event-bus'
 
 let db = false
+/*
+
+      a(:href="inputVal.url")
+        img(v-if="isImage", :src="inputVal.url", style="height: 100px")
+        span {{inputVal.name }}
+
+ */
 
 export default {
-  components: { FileSelectDialog, UiButton },
+  components: { EhrFileLink, FileSelectDialog, UiButton },
   extends: EhrElementCommon,
   inject: [ 'pageDataKey' ],
   props: {
@@ -33,7 +40,7 @@ export default {
     }
   },
   computed: {
-    buttonLabel () { return this.inputVal && this.inputVal.url ? 'Change' : 'Select'},
+    buttonLabel () { return this.inputVal && this.inputVal.fName ? 'Change' : 'Select'},
     isImage () { return this.inputVal ? isImageFile(this.inputVal.fName) : false }
   },
   methods: {
@@ -74,6 +81,9 @@ export default {
 <style lang="scss" scoped>
 .inline {
   display: inline-block;
+}
+.file-element {
+  margin: 1rem;
 }
 .select-file {
   vertical-align: top;
