@@ -1,0 +1,7 @@
+[
+  {
+    "id": "redeploy-edehr",
+    "execute-command": "npm run update:prod",
+    "command-working-directory": "/opt/edehr"
+  }
+]
