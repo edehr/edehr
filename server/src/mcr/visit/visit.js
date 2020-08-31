@@ -23,7 +23,7 @@ const VisitSchema = new mongoose.Schema({
   isDeveloper: {type: Boolean, default: false},
   returnUrl: {type: String},
   /* Track the lti information that creates this visit to help resolve issues between LMS and EdEHR*/
-  ltiData: [ { type: String } ],
+  // ltiData: [ { type: String } ],
   createDate: {type: Date, default: Date.now},
   lastVisitDate: {type: Date, default: Date.now}
 })
