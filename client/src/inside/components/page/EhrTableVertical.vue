@@ -8,7 +8,8 @@
             td(:class="transposeLabelCss(column)")
               span(v-html="transposeLabel(column)")
             td(v-for="cell in transposeData(column)", :class="transposeValueCss(cell)")
-              ehr-table-element(v-if="!!cell.value", :cell="cell")
+              div(v-for="cPart in cell.stack")
+                ehr-table-element(v-if="!!cPart.value", :cell="cPart")
 </template>
 
 <script>

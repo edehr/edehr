@@ -3,10 +3,11 @@ import axios from 'axios'
 import qs from 'qs'
 import { demoPersonae } from '../../helpers/demo-personae'
 import { demoLimiter, validatorMiddlewareWrapper } from '../../helpers/middleware'
-import { assignment1, assignment2 } from './assignment-defs'
+import { assignment1, assignment2, wound1 } from './assignment-defs'
 
 const ej0Seed = require('./erin-johns-seed-day0-mid')
 const ej2Seed = require('./erin-johns-seed-day2-end')
+const wound1Seed = require('./wound-case-1')
 
 const {ltiVersions} = require('../../mcr/lti/lti-defs')
 const HMAC_SHA1 = require('ims-lti/src/hmac-sha1')
@@ -26,7 +27,7 @@ const consumerBaseDef = {
   lti_message_type: 'basic-lti-launch-request',
 }
 
-const seedData = {
+const seedTemplate = {
   toolConsumer: '',
   name: 'Demonstration seed data',
   description: 'This a demonstration empty seed data',
@@ -44,7 +45,24 @@ export default class DemoController {
     this.comCon = cc
   }
 
-  _createDemoToolConsumer (req, res, next) {
+  addSample(theSeed, assignmentData, toolC) {
+  Promise.resolve().then(() => {
+      const data = theSeed
+      if (debugDC) debug('DemoController create', data.name)
+      const aSeed = Object.assign({}, seedTemplate, { toolConsumer: toolC._id })
+      aSeed.name = data.name
+      aSeed.description = data.description
+      aSeed.ehrData = data.ehrData
+      return this.comCon.seedController.create(aSeed)
+    })
+    .then((seed) => {
+      if (debugDC) debug('DemoController create assignment')
+      const ass = Object.assign({}, assignmentData, { toolConsumer: toolC })
+      return this.comCon.assignmentController.createAssignment(ass, seed._id)
+    })
+  }
+
+_createDemoToolConsumer (req, res, next) {
     let theId = req.body.id
     if (debugDC) debug('DemoController create tool. Call provided this id:', theId)
     if (!theId) {
@@ -62,32 +80,13 @@ export default class DemoController {
         if (debugDC) debug('DemoController tool consumer ready', toolC)
       })
       .then(() => {
-        const data = ej0Seed
-        if (debugDC) debug('DemoController create', data.name)
-        const aSeed = Object.assign({},seedData, {toolConsumer: toolC._id})
-        aSeed.name = data.name
-        aSeed.description = data.description
-        aSeed.ehrData = data.ehrData
-        return this.comCon.seedController.create(aSeed)
-      })
-      .then((seed) => {
-        if (debugDC) debug('DemoController create assignment 1')
-        const ass = Object.assign({}, assignment1, { toolConsumer: toolC })
-        return this.comCon.assignmentController.createAssignment(ass, seed._id)
+        return this.addSample(ej0Seed, assignment1, toolC)
       })
       .then(() => {
-        const data = ej2Seed
-        if (debugDC) debug('DemoController create', data.name)
-        const aSeed = Object.assign({},seedData, {toolConsumer: toolC._id})
-        aSeed.name = data.name
-        aSeed.description = data.description
-        aSeed.ehrData = data.ehrData
-        return this.comCon.seedController.create(aSeed)
+        return this.addSample(ej2Seed, assignment2, toolC)
       })
-      .then((seed) => {
-        if (debugDC) debug('DemoController create assignment')
-        const ass = Object.assign({}, assignment2, { toolConsumer: toolC })
-        return this.comCon.assignmentController.createAssignment(ass, seed._id)
+      .then(() => {
+        return this.addSample(wound1Seed, wound1  , toolC)
       })
       .then(() => {
         if (debugDC) debug('DemoController generate token')
@@ -105,7 +104,6 @@ export default class DemoController {
           res.status(500).send(err)
         }
       })
-
   }
 
 
