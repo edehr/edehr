@@ -209,6 +209,9 @@
           "stageType": "pressureInjuryStage4",
           "goalOfCare": "To heal",
           "woundBedCalculation": 0,
+          "woundProfileImage": {
+            "fName": "Stage_IV_Pressure_Injury.png"
+          },
           "createdDate": "2020-08-31T15:07:17-07:00"
         }
       ],

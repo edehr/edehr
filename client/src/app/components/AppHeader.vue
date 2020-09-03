@@ -33,24 +33,28 @@
             router-link(:to="{ name: `fileList` }", class="navLink") Files
           div(class="navItem")
             router-link(:to="{ name: `developEhrData` }", class="navLink") Content
+      div(v-if="isDevEnv", class="thirdMenu")
+        app-dev-menu
     ui-confirm(class="confirmDialog",ref="confirmDialog", @confirm="demoLogOut", save-label="Logout")
 </template>
 <script>
 import SystemMessage from './SystemMessage'
 import StoreHelper from '../../helpers/store-helper'
 import UiButton from '../../app/ui/UiButton'
+import AppDevMenu from './AppDevMenu'
 import { demoText } from '@/appText'
 
 import UiConfirm from '../../app/ui/UiConfirm'
 
 export default {
-  components: { SystemMessage, UiButton, UiConfirm },
+  components: { AppDevMenu, SystemMessage, UiButton, UiConfirm },
   data () {
     return {
       showingDemoSubmenu: false
     }
   },
   computed: {
+    isDevEnv () { return process.env.NODE_ENV !== 'production' },
     fullName () {
       return StoreHelper.fullName()
     },
@@ -154,6 +158,12 @@ header {
   }
 }
 
+.thirdMenu {
+  padding: 0;
+  .navItem {
+    padding: 0;
+  }
+}
 /* Large */
 .navList {
   display: flex;
