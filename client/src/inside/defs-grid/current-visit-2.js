@@ -435,13 +435,13 @@ export default function () {
           fqn: 'genitourinary.comments'
         }
       ],
-      recHeader: true,
-      generated: '2020-08-21T14:44:03-07:00',
+      generated: '2020-09-03T12:27:17-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
+          hasRecHeader: false,
           addButtonText: 'Add a genitourinary assessment',
           ehr_list: [
             {
@@ -1033,13 +1033,13 @@ export default function () {
           fqn: 'musculoskeletal.comments'
         }
       ],
-      recHeader: true,
-      generated: '2020-08-21T14:44:03-07:00',
+      generated: '2020-09-03T12:27:17-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
+          hasRecHeader: false,
           addButtonText: 'Add a musculoskeletal assessment',
           ehr_list: [
             {
@@ -1410,13 +1410,13 @@ export default function () {
           fqn: 'pain.comments'
         }
       ],
-      recHeader: true,
-      generated: '2020-08-21T14:44:03-07:00',
+      generated: '2020-09-03T12:27:17-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
+          hasRecHeader: false,
           addButtonText: 'Add a pain assessment',
           ehr_list: [
             {
@@ -1987,13 +1987,13 @@ export default function () {
           fqn: 'biopsychosocial.generalComments'
         }
       ],
-      recHeader: true,
-      generated: '2020-08-21T14:44:03-07:00',
+      generated: '2020-09-03T12:27:17-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
+          hasRecHeader: false,
           addButtonText: 'Add a biopsychosocial assessment',
           ehr_list: [
             {
@@ -2374,13 +2374,13 @@ export default function () {
           fqn: 'nonmedOrders.comment'
         }
       ],
-      recHeader: true,
-      generated: '2020-08-21T14:44:03-07:00',
+      generated: '2020-09-03T12:27:17-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
+          hasRecHeader: false,
           addButtonText: 'Add an order',
           ehr_list: [
             {
@@ -2586,13 +2586,13 @@ export default function () {
           fqn: 'referrals.status'
         }
       ],
-      recHeader: true,
-      generated: '2020-08-21T14:44:03-07:00',
+      generated: '2020-09-03T12:27:17-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
+          hasRecHeader: false,
           addButtonText: 'Add a referral',
           ehr_list: [
             {
@@ -2767,13 +2767,13 @@ export default function () {
           fqn: 'labRequisitions.ordered'
         }
       ],
-      recHeader: true,
-      generated: '2020-08-21T14:44:03-07:00',
+      generated: '2020-09-03T12:27:17-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
+          hasRecHeader: false,
           addButtonText: 'Add a lab requisition',
           ehr_list: [
             {
@@ -3145,13 +3145,13 @@ export default function () {
           fqn: 'medicationOrders.notes'
         }
       ],
-      recHeader: true,
-      generated: '2020-08-21T14:44:03-07:00',
+      generated: '2020-09-03T12:27:17-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
+          hasRecHeader: false,
           addButtonText: 'Add a medication order',
           ehr_list: [
             {
@@ -3522,13 +3522,13 @@ export default function () {
           helperHtml: '<p>Enter time delivered or say if not delivered.</p>'
         }
       ],
-      recHeader: true,
-      generated: '2020-08-21T14:44:03-07:00',
+      generated: '2020-09-03T12:27:17-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
+          hasRecHeader: false,
           addButtonText: 'Administered',
           ehr_list: [
             {
@@ -3785,8 +3785,7 @@ export default function () {
           fqn: 'dischargeSummary.leavingBy'
         }
       ],
-      recHeader: true,
-      generated: '2020-08-21T14:44:03-07:00',
+      generated: '2020-09-03T12:27:17-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -3857,8 +3856,7 @@ export default function () {
           fqn: 'billing.paymentType'
         }
       ],
-      recHeader: true,
-      generated: '2020-08-21T14:44:03-07:00',
+      generated: '2020-09-03T12:27:17-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -4024,7 +4022,7 @@ export default function () {
               text: ''
             }
           ],
-          tableColumn: '5',
+          tableColumn: '3',
           fqn: 'integumentaryAssessment.incisionLocation'
         },
         {
@@ -4032,7 +4030,7 @@ export default function () {
           formIndex: '1',
           inputType: 'day',
           label: 'Post Operative Day',
-          tableColumn: '3',
+          tableColumn: '4',
           fqn: 'integumentaryAssessment.postOpDay'
         },
         {
@@ -4040,7 +4038,7 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Operative Procedure',
-          tableColumn: '4',
+          tableColumn: '5',
           fqn: 'integumentaryAssessment.opProcedure'
         },
         {
@@ -4076,6 +4074,22 @@ export default function () {
           ],
           tableColumn: '6',
           fqn: 'integumentaryAssessment.closureMethod'
+        },
+        {
+          elementKey: 'incisionProfileImage',
+          formIndex: '1',
+          inputType: 'ehrFile',
+          label: 'Image',
+          tableColumn: '7',
+          fqn: 'integumentaryAssessment.incisionProfileImage'
+        },
+        {
+          elementKey: 'incisionProfileComments',
+          formIndex: '1',
+          inputType: 'textarea',
+          label: 'Comments',
+          tableColumn: '8',
+          fqn: 'integumentaryAssessment.incisionProfileComments'
         },
         {
           elementKey: 'name',
@@ -4170,11 +4184,19 @@ export default function () {
           fqn: 'integumentaryAssessment.incisionStatus'
         },
         {
+          elementKey: 'incisionStatusImage',
+          formIndex: '2',
+          inputType: 'ehrFile',
+          label: 'Image',
+          tableColumn: '4',
+          fqn: 'integumentaryAssessment.incisionStatusImage'
+        },
+        {
           elementKey: 'closureChanges',
           formIndex: '2',
           inputType: 'text',
           label: 'Change in closure',
-          tableColumn: '4',
+          tableColumn: '5',
           fqn: 'integumentaryAssessment.closureChanges'
         },
         {
@@ -4200,7 +4222,7 @@ export default function () {
               text: 'Large'
             }
           ],
-          tableColumn: '5',
+          tableColumn: '6',
           fqn: 'integumentaryAssessment.exudateAmount'
         },
         {
@@ -4230,7 +4252,7 @@ export default function () {
               text: 'Not Applicable'
             }
           ],
-          tableColumn: '6',
+          tableColumn: '7',
           fqn: 'integumentaryAssessment.exudateType'
         },
         {
@@ -4268,7 +4290,7 @@ export default function () {
               text: 'Other'
             }
           ],
-          tableColumn: '7',
+          tableColumn: '8',
           fqn: 'integumentaryAssessment.periIncisionSkin'
         },
         {
@@ -4276,8 +4298,17 @@ export default function () {
           formIndex: '2',
           inputType: 'text',
           label: 'Other',
-          tableColumn: '8',
+          tableColumn: '9',
           fqn: 'integumentaryAssessment.periIncisionSkinOther'
+        },
+        {
+          elementKey: 'incisionStatusComments',
+          formIndex: '2',
+          inputType: 'textarea',
+          label: 'Comments',
+          tableColumn: '10',
+          tableLabel: 'Comments',
+          fqn: 'integumentaryAssessment.incisionStatusComments'
         },
         {
           elementKey: 'name',
@@ -4501,6 +4532,7 @@ export default function () {
             }
           ],
           tableColumn: '5',
+          tableLabel: 'Wound Etiology/Type',
           fqn: 'integumentaryAssessment.stageType',
           helperHtml: '<p>Pressure Injury Stage 1 Intact skin with localized nonblanchable erythema; darkly pigmented skin may not show visible blanching but will appear different than the colour of surrounding skin.</p>\n<p>Pressure Injury Stage 2 Partial thickness wound presenting as a shallow open ulcer with a red / pink wound bed, slough may be present but does not obscure the depth of tissue loss; may also present as an intact or open/ruptured serum-filled or serosanguineous filled blister.</p>\n<p>Pressure Injury Stage 3 Full thickness wound; subcutaneous tissue may be visible but bone, tendon and muscle are not exposed; may include undermining and/or sinus tracks; slough or eschar may be present but does not obscure the depth of tissue loss.</p>\n<p>Pressure Injury Stage 4 Full thickness wound with exposed bone, tendon or muscle; often includes undermining and/or sinus tracks; slough or eschar may be present on some parts of the wound bed but does not obscure the depth of tissue loss.</p>\n<p>Pressure Injury Unstageable  A wound in which the wound bed is covered by sufficient slough and / or eschar to preclude staging.</p>\n<p>Pressure Injury Deep Tissue Injury  A localized purple or maroon area of intact skin or a blood filled blister that occur when underlying soft tissue is damaged from friction or shear.</p>\n<p>Surgical Wounds Secondary intention: Incision has dehisced and surgical closure is not possible; wounds must heal by granulation</p>\n<p>Skin Tear: Skin tears are the result of trauma caused by shearing, friction, or blunt force to the skin. Consider risk factors (i.e.: advanced age, immobility, inadequate hydration/nutrition, falls)</p>\n<p>Abscess: A local collection of purulent and/or sanguineous drainage that may be incised and drained.</p>\n<p>Burn: Tissue loss/damage as a result from thermal, chemical, electrical, and radiation sources.</p>\n<p>Venous Ulcer: Caused by venous insufficiency due to valve dysfunction, complete or partial blockage of the deep veins, and / or failure of the calf muscle pump.</p>\n<p>Arterial Ulcer: Caused by a disruption to arterial blood flow leading to moderate / severe tissue ischemia.</p>\n<p>Mixed Arterial/Venous Ulcer: Caused by both venous insufficiency and disrupted arterial blood flow.</p>\n<p>Diabetic/Neuropathic Ulcers: A result of neuropathy, structural foot changes, and/or altered blood flow related to diabetes mellitus (or alcoholism, renal failure, HIV, late stage syphilis, trauma and surgery).</p>\n<p></p>'
         },
@@ -4511,6 +4543,7 @@ export default function () {
           inputType: 'text',
           label: 'Other',
           tableColumn: '6',
+          tableLabel: 'Other',
           fqn: 'integumentaryAssessment.stageOther'
         },
         {
@@ -4535,6 +4568,24 @@ export default function () {
           tableColumn: '7',
           tableLabel: 'Goal of care',
           fqn: 'integumentaryAssessment.goalOfCare'
+        },
+        {
+          elementKey: 'woundProfileImage',
+          formIndex: '3',
+          inputType: 'ehrFile',
+          label: 'Image',
+          tableColumn: '8',
+          tableLabel: 'Image',
+          fqn: 'integumentaryAssessment.woundProfileImage'
+        },
+        {
+          elementKey: 'woundProfileComments',
+          formIndex: '3',
+          inputType: 'textarea',
+          label: 'Comments',
+          tableColumn: '9',
+          tableLabel: 'Comments',
+          fqn: 'integumentaryAssessment.woundProfileComments'
         },
         {
           elementKey: 'name',
@@ -4602,21 +4653,22 @@ export default function () {
           fqn: 'integumentaryAssessment.woundLabel'
         },
         {
+          elementKey: 'woundAssessmentImage',
+          formIndex: '4',
+          inputType: 'ehrFile',
+          label: 'Image',
+          tableColumn: '3',
+          tableLabel: 'Image',
+          fqn: 'integumentaryAssessment.woundAssessmentImage'
+        },
+        {
           elementKey: 'length',
           formIndex: '4',
           inputType: 'text',
           label: 'Length cm.mm',
-          tableColumn: '3',
+          tableColumn: '4',
           tableLabel: 'Length cm.mm',
           fqn: 'integumentaryAssessment.length'
-        },
-        {
-          elementKey: 'stageDay',
-          formIndex: '4',
-          inputType: 'day',
-          label: 'Case day',
-          tableColumn: '4',
-          fqn: 'integumentaryAssessment.stageDay'
         },
         {
           elementKey: 'width',
@@ -5147,6 +5199,60 @@ export default function () {
           helperHtml: '<p>Granulation Tissue: Firm, red, moist, pebbled healthy tissue</p>'
         },
         {
+          elementKey: 'nongranulated',
+          formIndex: '4',
+          helperText: 'Nongranulated: Pink to red tissue that is smooth and non-pebbled in appearance.',
+          inputType: 'select',
+          label: '% Nongranulated',
+          options: [
+            {
+              key: '10',
+              text: '10%'
+            },
+            {
+              key: '20',
+              text: '20%'
+            },
+            {
+              key: '30',
+              text: '30%'
+            },
+            {
+              key: '40',
+              text: '40%'
+            },
+            {
+              key: '50',
+              text: '50%'
+            },
+            {
+              key: '60',
+              text: '60%'
+            },
+            {
+              key: '70',
+              text: '70%'
+            },
+            {
+              key: '80',
+              text: '80%'
+            },
+            {
+              key: '90',
+              text: '90%'
+            },
+            {
+              key: '100',
+              text: '100%'
+            }
+          ],
+          passToFunction: 'woundBedCalculation',
+          tableColumn: '19',
+          tableLabel: '% Nongranulated',
+          fqn: 'integumentaryAssessment.nongranulated',
+          helperHtml: '<p>Nongranulated: Pink to red tissue that is smooth and non-pebbled in appearance.</p>'
+        },
+        {
           elementKey: 'slough',
           formIndex: '4',
           helperText: 'Slough: Moist or wet, loose or firmly attached, yellow to brown dead tissue',
@@ -5195,7 +5301,7 @@ export default function () {
             }
           ],
           passToFunction: 'woundBedCalculation',
-          tableColumn: '19',
+          tableColumn: '20',
           tableLabel: '% Slough',
           fqn: 'integumentaryAssessment.slough',
           helperHtml: '<p>Slough: Moist or wet, loose or firmly attached, yellow to brown dead tissue</p>'
@@ -5249,7 +5355,7 @@ export default function () {
             }
           ],
           passToFunction: 'woundBedCalculation',
-          tableColumn: '20',
+          tableColumn: '21',
           tableLabel: '% Eschar (soft, boggy)',
           fqn: 'integumentaryAssessment.escharBoggy',
           helperHtml: '<p>Eschar (soft, boggy): Soft necrotic tissue which is black, brown, grey, or tan in color. It may be firmly or loosely attached to the wound edges and wound base; fluctuance and drainage may be present.</p>'
@@ -5303,7 +5409,7 @@ export default function () {
             }
           ],
           passToFunction: 'woundBedCalculation',
-          tableColumn: '21',
+          tableColumn: '22',
           tableLabel: '% Eschar (dry, stable)',
           fqn: 'integumentaryAssessment.escharStable',
           helperHtml: '<p>Eschar (dry, stable): Firm, dry necrotic tissue with an absence of drainage, edema, erythema or fluctuance. It is black or brown in color and is attached to the wound edges and wound base</p>'
@@ -5357,7 +5463,7 @@ export default function () {
             }
           ],
           passToFunction: 'woundBedCalculation',
-          tableColumn: '22',
+          tableColumn: '23',
           tableLabel: '% Foreign body',
           fqn: 'integumentaryAssessment.foreign',
           helperHtml: '<p>Foreign body: Sutures, mesh, hardware</p>'
@@ -5411,7 +5517,7 @@ export default function () {
             }
           ],
           passToFunction: 'woundBedCalculation',
-          tableColumn: '23',
+          tableColumn: '24',
           tableLabel: '% Underlying structures',
           fqn: 'integumentaryAssessment.underlying',
           helperHtml: '<p>Underlying structures: Faschia, tendon, bone</p>'
@@ -5465,7 +5571,7 @@ export default function () {
             }
           ],
           passToFunction: 'woundBedCalculation',
-          tableColumn: '24',
+          tableColumn: '25',
           tableLabel: '% Not visible',
           fqn: 'integumentaryAssessment.notVisible',
           helperHtml: '<p>Not visible: A portion or all of the open wound bed that cannot be visualized</p>'
@@ -5518,7 +5624,7 @@ export default function () {
             }
           ],
           passToFunction: 'woundBedCalculation',
-          tableColumn: '25',
+          tableColumn: '26',
           tableLabel: '% Other',
           fqn: 'integumentaryAssessment.other'
         },
@@ -5528,7 +5634,7 @@ export default function () {
           formIndex: '4',
           inputType: 'calculatedValue',
           label: 'Wound bed calculation',
-          tableColumn: '26',
+          tableColumn: '27',
           tableLabel: 'Wound bed calculation',
           validation: 'range(0,100)',
           fqn: 'integumentaryAssessment.woundBedCalculation'
@@ -5556,7 +5662,7 @@ export default function () {
               text: 'Large/copious'
             }
           ],
-          tableColumn: '27',
+          tableColumn: '28',
           tableLabel: 'Exudate amount',
           fqn: 'integumentaryAssessment.exudateAmount'
         },
@@ -5583,7 +5689,7 @@ export default function () {
               text: 'Other'
             }
           ],
-          tableColumn: '28',
+          tableColumn: '29',
           tableLabel: 'Exudate type',
           fqn: 'integumentaryAssessment.exudateType'
         },
@@ -5602,40 +5708,55 @@ export default function () {
               text: 'No'
             }
           ],
-          tableColumn: '29',
+          tableColumn: '30',
           tableLabel: 'Odour present after cleansing',
           fqn: 'integumentaryAssessment.odour'
         },
         {
           elementKey: 'woundEdge',
           formIndex: '4',
+          helperText: 'Wound Edge: The perimeter of the wound\nDiffuse: Not well defined, indistinct, difficult to clearly define wound outline\nDemarcated: Well defined, distinct, easy to clearly define wound outline\nAttached: Edge appears flush with wound bed or as a sloping edge\nNot attached: Edge appears as a cliff\nEpithelializing: New, pink to purple, shiny migrating tissue\nRolled: Epithelial wound edge of a cavity wound which rolls under\n\n',
           inputType: 'checkset',
           label: 'Wound edge',
           options: [
             {
-              key: 'Attached (flush with wound bed or sloping edge)',
-              text: 'Attached (flush with wound bed or sloping edge)'
+              key: 'Diffuse',
+              text: 'Diffuse'
             },
             {
-              key: 'Non-attached (edge appears as a cliff)',
-              text: 'Non-attached (edge appears as a cliff)'
+              key: 'Demarcated',
+              text: 'Demarcated'
             },
             {
-              key: 'Rolled (curled under)',
-              text: 'Rolled (curled under)'
+              key: 'Attached',
+              text: 'Attached'
+            },
+            {
+              key: 'Not attached',
+              text: 'Not attached'
             },
             {
               key: 'Epithelialization',
               text: 'Epithelialization'
+            },
+            {
+              key: 'Rolled',
+              text: 'Rolled'
+            },
+            {
+              key: '',
+              text: ''
             }
           ],
-          tableColumn: '30',
+          tableColumn: '31',
           tableLabel: 'Wound edge',
-          fqn: 'integumentaryAssessment.woundEdge'
+          fqn: 'integumentaryAssessment.woundEdge',
+          helperHtml: '<p>Wound Edge: The perimeter of the wound</p>\n<p>Diffuse: Not well defined, indistinct, difficult to clearly define wound outline</p>\n<p>Demarcated: Well defined, distinct, easy to clearly define wound outline</p>\n<p>Attached: Edge appears flush with wound bed or as a sloping edge</p>\n<p>Not attached: Edge appears as a cliff</p>\n<p>Epithelializing: New, pink to purple, shiny migrating tissue</p>\n<p>Rolled: Epithelial wound edge of a cavity wound which rolls under</p>\n<p></p>\n<p></p>'
         },
         {
           elementKey: 'periWoundSkin',
           formIndex: '4',
+          helperText: 'Intact: Unbroken skin\nFragile: Skin that is at risk for breakdown\nMacerated: Wet, white looking skin\nExcoriated/denuded: loss of tissue\nErythema (2cm or less): Redness of the skin; may be intense bright red to dark red that DOES NOT extend 2cm from the wound edge\nIndurated (2cm or less): Abnormal firmness of the tissues with palpable margins that DOES NOT extend 2cm from the wound edge\nErythema (greater than 2cm): Redness of the skin; may be intense bright red to dark red that extends 2cm from the wound edge\nIndurated (greater than 2cm): Abnormal firmness of the tissues with palpable margins that extends 2cm from the wound edge\nIncreased warmth: Increased warmth when compared to skin in adjacent area\n',
           inputType: 'checkset',
           label: 'Peri-wound skin',
           options: [
@@ -5644,37 +5765,50 @@ export default function () {
               text: 'Intact'
             },
             {
-              key: 'Erythema (reddened) in cm',
-              text: 'Erythema (reddened) in cm'
-            },
-            {
-              key: 'Indurated (firmness around wound) in cm',
-              text: 'Indurated (firmness around wound) in cm'
-            },
-            {
-              key: 'Macerated (white, waterlogged)',
-              text: 'Macerated (white, waterlogged)'
-            },
-            {
-              key: 'Excoriated/Denuded (superficial loss of tissue)',
-              text: 'Excoriated/Denuded (superficial loss of tissue)'
-            },
-            {
-              key: 'Callused',
-              text: 'Callused'
-            },
-            {
               key: 'Fragile',
               text: 'Fragile'
             },
             {
+              key: 'Macerated',
+              text: 'Macerated'
+            },
+            {
+              key: 'Excoriated/Denuded',
+              text: 'Excoriated/Denuded'
+            },
+            {
+              key: 'Erythema (2cm or less)',
+              text: 'Erythema (2cm or less)'
+            },
+            {
+              key: 'Indurated (2cm or less)',
+              text: 'Indurated (2cm or less)'
+            },
+            {
+              key: 'Indurated (greater than 2cm)',
+              text: 'Indurated (greater than 2cm)'
+            },
+            {
+              key: 'Erythema (greater than 2cm)',
+              text: 'Erythema (greater than 2cm)'
+            },
+            {
+              key: 'Increased Warmth',
+              text: 'Increased Warmth'
+            },
+            {
               key: 'Other',
               text: 'Other'
+            },
+            {
+              key: '',
+              text: ''
             }
           ],
-          tableColumn: '31',
+          tableColumn: '32',
           tableLabel: 'Peri-wound skin',
-          fqn: 'integumentaryAssessment.periWoundSkin'
+          fqn: 'integumentaryAssessment.periWoundSkin',
+          helperHtml: '<p>Intact: Unbroken skin</p>\n<p>Fragile: Skin that is at risk for breakdown</p>\n<p>Macerated: Wet, white looking skin</p>\n<p>Excoriated/denuded: loss of tissue</p>\n<p>Erythema (2cm or less): Redness of the skin; may be intense bright red to dark red that DOES NOT extend 2cm from the wound edge</p>\n<p>Indurated (2cm or less): Abnormal firmness of the tissues with palpable margins that DOES NOT extend 2cm from the wound edge</p>\n<p>Erythema (greater than 2cm): Redness of the skin; may be intense bright red to dark red that extends 2cm from the wound edge</p>\n<p>Indurated (greater than 2cm): Abnormal firmness of the tissues with palpable margins that extends 2cm from the wound edge</p>\n<p>Increased warmth: Increased warmth when compared to skin in adjacent area</p>\n<p></p>'
         },
         {
           elementKey: 'woundPain',
@@ -5683,7 +5817,7 @@ export default function () {
           inputType: 'text',
           label: 'Wound pain',
           suffix: '/10',
-          tableColumn: '32',
+          tableColumn: '33',
           tableCss: 'hr-table',
           tableLabel: 'Wound pain',
           validation: 'range(0,10)',
@@ -5696,7 +5830,7 @@ export default function () {
           helperText: 'Any depth 1cm or greater, count packing pieces',
           inputType: 'text',
           label: 'Packing out',
-          tableColumn: '33',
+          tableColumn: '34',
           tableLabel: 'Packing out',
           fqn: 'integumentaryAssessment.packingOut',
           helperHtml: '<p>Any depth 1cm or greater, count packing pieces</p>'
@@ -5707,7 +5841,7 @@ export default function () {
           helperText: 'Any depth 1cm or greater, count packing pieces',
           inputType: 'text',
           label: 'Packing in',
-          tableColumn: '34',
+          tableColumn: '35',
           tableLabel: 'Packing in',
           fqn: 'integumentaryAssessment.packinIn',
           helperHtml: '<p>Any depth 1cm or greater, count packing pieces</p>'
@@ -5733,19 +5867,28 @@ export default function () {
               text: 'No'
             }
           ],
-          tableColumn: '35',
+          tableColumn: '36',
           tableCss: 'hr-table',
           tableLabel: 'Treatments as per plan of care',
           fqn: 'integumentaryAssessment.treatmentComplete'
+        },
+        {
+          elementKey: 'woundAssessmentComments',
+          formIndex: '4',
+          inputType: 'textarea',
+          label: 'Comments',
+          tableColumn: '1',
+          tableLabel: 'Comments',
+          fqn: 'integumentaryAssessment.woundAssessmentComments'
         }
       ],
-      recHeader: true,
-      generated: '2020-08-21T14:44:03-07:00',
+      generated: '2020-09-03T12:27:17-07:00',
       pageElements: {
         tableIncision: {
           elementKey: 'tableIncision',
           tableKey: 'tableIncision',
           isTable: true,
+          hasRecHeader: false,
           label: 'Incision profile',
           addButtonText: 'Add an incision profile',
           ehr_list: [
@@ -5768,25 +5911,37 @@ export default function () {
             {
               ehr_list_index: '3',
               items: [
-                'postOpDay'
+                'incisionLocation'
               ]
             },
             {
               ehr_list_index: '4',
               items: [
-                'opProcedure'
+                'postOpDay'
               ]
             },
             {
               ehr_list_index: '5',
               items: [
-                'incisionLocation'
+                'opProcedure'
               ]
             },
             {
               ehr_list_index: '6',
               items: [
                 'closureMethod'
+              ]
+            },
+            {
+              ehr_list_index: '7',
+              items: [
+                'incisionProfileImage'
+              ]
+            },
+            {
+              ehr_list_index: '8',
+              items: [
+                'incisionProfileComments'
               ]
             }
           ],
@@ -5817,7 +5972,9 @@ export default function () {
                   'incisionLocation',
                   'postOpDay',
                   'opProcedure',
-                  'closureMethod'
+                  'closureMethod',
+                  'incisionProfileImage',
+                  'incisionProfileComments'
                 ]
               }
             ],
@@ -5830,7 +5987,9 @@ export default function () {
               incisionLocation: '',
               postOpDay: '',
               opProcedure: '',
-              closureMethod: ''
+              closureMethod: '',
+              incisionProfileImage: '',
+              incisionProfileComments: ''
             }
           }
         },
@@ -5838,6 +5997,7 @@ export default function () {
           elementKey: 'tableIncisionAssessment',
           tableKey: 'tableIncisionAssessment',
           isTable: true,
+          hasRecHeader: false,
           label: 'Incision assessment',
           addButtonText: 'Add an incision assessment',
           ehr_list: [
@@ -5866,31 +6026,44 @@ export default function () {
             {
               ehr_list_index: '4',
               items: [
-                'closureChanges'
+                'incisionStatusImage'
               ]
             },
             {
               ehr_list_index: '5',
               items: [
-                'exudateAmount'
+                'closureChanges'
               ]
             },
             {
               ehr_list_index: '6',
               items: [
-                'exudateType'
+                'exudateAmount'
               ]
             },
             {
               ehr_list_index: '7',
               items: [
-                'periIncisionSkin'
+                'exudateType'
               ]
             },
             {
               ehr_list_index: '8',
               items: [
+                'periIncisionSkin'
+              ]
+            },
+            {
+              ehr_list_index: '9',
+              items: [
                 'periIncisionSkinOther'
+              ]
+            },
+            {
+              label: 'Comments',
+              ehr_list_index: '10',
+              items: [
+                'incisionStatusComments'
               ]
             }
           ],
@@ -5920,6 +6093,7 @@ export default function () {
                 gChildren: [
                   'incisionLabel',
                   'incisionStatus',
+                  'incisionStatusImage',
                   'closureChanges'
                 ]
               },
@@ -5940,7 +6114,8 @@ export default function () {
                 gIndex: '4',
                 gChildren: [
                   'periIncisionSkin',
-                  'periIncisionSkinOther'
+                  'periIncisionSkinOther',
+                  'incisionStatusComments'
                 ]
               }
             ],
@@ -5951,11 +6126,13 @@ export default function () {
               time: '',
               incisionLabel: '',
               incisionStatus: '',
+              incisionStatusImage: '',
               closureChanges: '',
               exudateAmount: '',
               exudateType: '',
               periIncisionSkin: '',
-              periIncisionSkinOther: ''
+              periIncisionSkinOther: '',
+              incisionStatusComments: ''
             }
           }
         },
@@ -5963,6 +6140,7 @@ export default function () {
           elementKey: 'tableWound',
           tableKey: 'tableWound',
           isTable: true,
+          hasRecHeader: false,
           label: 'Wound profile',
           addButtonText: 'Add a wound profile',
           ehr_list: [
@@ -5998,12 +6176,14 @@ export default function () {
               ]
             },
             {
+              label: 'Wound Etiology/Type',
               ehr_list_index: '5',
               items: [
                 'stageType'
               ]
             },
             {
+              label: 'Other',
               ehr_list_index: '6',
               items: [
                 'stageOther'
@@ -6014,6 +6194,20 @@ export default function () {
               ehr_list_index: '7',
               items: [
                 'goalOfCare'
+              ]
+            },
+            {
+              label: 'Image',
+              ehr_list_index: '8',
+              items: [
+                'woundProfileImage'
+              ]
+            },
+            {
+              label: 'Comments',
+              ehr_list_index: '9',
+              items: [
+                'woundProfileComments'
               ]
             }
           ],
@@ -6051,7 +6245,9 @@ export default function () {
                 gChildren: [
                   'stageType',
                   'stageOther',
-                  'goalOfCare'
+                  'goalOfCare',
+                  'woundProfileImage',
+                  'woundProfileComments'
                 ]
               }
             ],
@@ -6065,7 +6261,9 @@ export default function () {
               woundDayOnset: '',
               stageType: '',
               stageOther: '',
-              goalOfCare: ''
+              goalOfCare: '',
+              woundProfileImage: '',
+              woundProfileComments: ''
             }
           }
         },
@@ -6073,6 +6271,7 @@ export default function () {
           elementKey: 'tableWoundAssessment',
           tableKey: 'tableWoundAssessment',
           isTable: true,
+          hasRecHeader: false,
           label: 'Wound assessment',
           addButtonText: 'Add a wound assessment',
           ehr_list: [
@@ -6083,7 +6282,8 @@ export default function () {
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                'woundAssessmentComments'
               ]
             },
             {
@@ -6094,16 +6294,17 @@ export default function () {
               ]
             },
             {
-              label: 'Length cm.mm',
+              label: 'Image',
               ehr_list_index: '3',
               items: [
-                'length'
+                'woundAssessmentImage'
               ]
             },
             {
+              label: 'Length cm.mm',
               ehr_list_index: '4',
               items: [
-                'stageDay'
+                'length'
               ]
             },
             {
@@ -6205,92 +6406,99 @@ export default function () {
               ]
             },
             {
-              label: '% Slough',
+              label: '% Nongranulated',
               ehr_list_index: '19',
+              items: [
+                'nongranulated'
+              ]
+            },
+            {
+              label: '% Slough',
+              ehr_list_index: '20',
               items: [
                 'slough'
               ]
             },
             {
               label: '% Eschar (soft, boggy)',
-              ehr_list_index: '20',
+              ehr_list_index: '21',
               items: [
                 'escharBoggy'
               ]
             },
             {
               label: '% Eschar (dry, stable)',
-              ehr_list_index: '21',
+              ehr_list_index: '22',
               items: [
                 'escharStable'
               ]
             },
             {
               label: '% Foreign body',
-              ehr_list_index: '22',
+              ehr_list_index: '23',
               items: [
                 'foreign'
               ]
             },
             {
               label: '% Underlying structures',
-              ehr_list_index: '23',
+              ehr_list_index: '24',
               items: [
                 'underlying'
               ]
             },
             {
               label: '% Not visible',
-              ehr_list_index: '24',
+              ehr_list_index: '25',
               items: [
                 'notVisible'
               ]
             },
             {
               label: '% Other',
-              ehr_list_index: '25',
+              ehr_list_index: '26',
               items: [
                 'other'
               ]
             },
             {
               label: 'Wound bed calculation',
-              ehr_list_index: '26',
+              ehr_list_index: '27',
               items: [
                 'woundBedCalculation'
               ]
             },
             {
               label: 'Exudate amount',
-              ehr_list_index: '27',
+              ehr_list_index: '28',
               items: [
                 'exudateAmount'
               ]
             },
             {
               label: 'Exudate type',
-              ehr_list_index: '28',
+              ehr_list_index: '29',
               items: [
                 'exudateType'
               ]
             },
             {
               label: 'Odour present after cleansing',
-              ehr_list_index: '29',
+              ehr_list_index: '30',
               items: [
                 'odour'
               ]
             },
             {
               label: 'Wound edge',
-              ehr_list_index: '30',
+              ehr_list_index: '31',
               items: [
                 'woundEdge'
               ]
             },
             {
               label: 'Peri-wound skin',
-              ehr_list_index: '31',
+              ehr_list_index: '32',
               items: [
                 'periWoundSkin'
               ]
@@ -6298,21 +6506,21 @@ export default function () {
             {
               label: 'Wound pain',
               tableCss: 'hr-table',
-              ehr_list_index: '32',
+              ehr_list_index: '33',
               items: [
                 'woundPain'
               ]
             },
             {
               label: 'Packing out',
-              ehr_list_index: '33',
+              ehr_list_index: '34',
               items: [
                 'packingOut'
               ]
             },
             {
               label: 'Packing in',
-              ehr_list_index: '34',
+              ehr_list_index: '35',
               items: [
                 'packinIn'
               ]
@@ -6320,7 +6528,7 @@ export default function () {
             {
               label: 'Treatments as per plan of care',
               tableCss: 'hr-table',
-              ehr_list_index: '35',
+              ehr_list_index: '36',
               items: [
                 'treatmentComplete'
               ]
@@ -6349,7 +6557,8 @@ export default function () {
                 formCss: 'section-divider',
                 gIndex: '2',
                 gChildren: [
-                  'woundLabel'
+                  'woundLabel',
+                  'woundAssessmentImage'
                 ]
               },
               {
@@ -6359,7 +6568,6 @@ export default function () {
                 gIndex: '3',
                 gChildren: [
                   'length',
-                  'stageDay',
                   'width',
                   'depth',
                   'sinusDepth1',
@@ -6384,6 +6592,7 @@ export default function () {
                 gChildren: [
                   'pinkred',
                   'granulation',
+                  'nongranulated',
                   'slough',
                   'escharBoggy',
                   'escharStable',
@@ -6437,7 +6646,8 @@ export default function () {
                   'packingOut',
                   'packinIn',
                   'spacer19',
-                  'treatmentComplete'
+                  'treatmentComplete',
+                  'woundAssessmentComments'
                 ]
               }
             ],
@@ -6447,8 +6657,8 @@ export default function () {
               day: '',
               time: '',
               woundLabel: '',
+              woundAssessmentImage: '',
               length: '',
-              stageDay: '',
               width: '',
               depth: '',
               sinusDepth1: '',
@@ -6463,6 +6673,7 @@ export default function () {
               underminingDepthLocation2B: '',
               pinkred: '',
               granulation: '',
+              nongranulated: '',
               slough: '',
               escharBoggy: '',
               escharStable: '',
@@ -6479,7 +6690,8 @@ export default function () {
               woundPain: '',
               packingOut: '',
               packinIn: '',
-              treatmentComplete: ''
+              treatmentComplete: '',
+              woundAssessmentComments: ''
             }
           }
         }

@@ -71,7 +71,6 @@ const actions = {
       StoreHelper.setApiError('No tool consumer id so can not do file listing.')
       return
     }
-    const apiUrl = StoreHelper.apiUrlGet()
     const api = 'files'
     const url = 'list'
     if (debugFL) console.log('refreshFileList ')
