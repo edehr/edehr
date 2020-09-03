@@ -54,7 +54,7 @@ export default {
     }
   },
   computed: {
-    isDevEnv () { return process.env.NODE_ENV !== 'production' },
+    isDevEnv () { return StoreHelper.isShowingAdvanced() && process.env.NODE_ENV !== 'production' },
     fullName () {
       return StoreHelper.fullName()
     },
