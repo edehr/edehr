@@ -71,6 +71,7 @@ export default {
 <style lang="scss" scoped>
   @import '../../scss/definitions';
   .confirmDialog {
+    text-align: left;
     color: $grey80;
   }
 
