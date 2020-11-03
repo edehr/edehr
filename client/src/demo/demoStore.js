@@ -1,6 +1,6 @@
-import DemoStoreHelper from '@/helpers/demo-store-helper'
-import StoreHelper from '../../helpers/store-helper'
-import sKeys from '../../helpers/session-keys'
+import DemoStoreHelper from '@/demo/demo-store-helper'
+import StoreHelper from '@/helpers/store-helper'
+import sKeys from '@/helpers/session-keys'
 
 const debugDS = false
 
@@ -43,7 +43,7 @@ const getters = {
   },
   getDemoFeatureFlag: function (state) {
     return state.demoFeature
-  }
+  },
 }
 
 const state = {
@@ -51,7 +51,7 @@ const state = {
   persona: {}, // selected by user on the Demo page
   assignment: {}, // selected by the user on the DemoCourse page
   acceptsTerms: false,
-  demoFeature: true
+  demoFeature: true,
 }
 
 const actions = {
@@ -109,6 +109,14 @@ const actions = {
         console.error('DemoStore loadDemoData ERROR', err)
         return Promise.reject(err)
       })
+  },
+  submitDemoUserEmail: function ({ commit }, submitData) {
+    console.log('DemoStore placeholder action to send user email to server to be relayed onto npuser')
+    return Promise.resolve(submitData)
+  },
+  submitDemoUserVerificationCode: function ({ commit }, submitData) {
+    console.log('DemoStore placeholder action to send verification code to server to be relayed onto npuser')
+    return Promise.resolve(submitData)
   },
   submitPersona: function (none, submitData) {
     const token = _getDemoToken()

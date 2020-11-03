@@ -42,7 +42,7 @@ import SystemMessage from './SystemMessage'
 import StoreHelper from '../../helpers/store-helper'
 import UiButton from '../../app/ui/UiButton'
 import AppDevMenu from './AppDevMenu'
-import { demoText } from '@/appText'
+import { demoText } from '@/demo/demoText'
 
 import UiConfirm from '../../app/ui/UiConfirm'
 

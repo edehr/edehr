@@ -26,5 +26,22 @@ export const demoText = {
   logout: {
     title: 'Confirm leave the EdEHR demonstration mode',
     body: 'Exit the demonstration mode. At this time this means all your data is removed. But do not worry because you can just come back and try out the EdEHR again. '
-  }
+  },
+  emailForm: {
+    label: 'Enter your email address',
+    buttonLabel: 'Submit',
+    prompt: 'To get started please provide your email address. We use this purely to keep your data private and to allow you to develop content on this service. After you submit your email address go to your inbox and look for a message from "no-reply@npuser.org", which is our authentication service. The message will contain a verification code.  Rest assured that our authentication service will not retain any information about you. See https://npuser.org for more information.'
+  },
+  vCodeForm: {
+    label: 'Verification code',
+    buttonLabel: 'Verify',
+    prompt: 'Look in your inbox for an email from npuser.org with your verification code. Find and enter the verification code.'
+  },
+  consentForm: {
+    label: 'Consent is required',
+    prompt: 'I acknowledge that the EdEHR is a prototype web application.',
+    prompt2: 'As well, before you can proceed please acknowledge that you understand the EdEHR is a prototype web application and you accept to use it "as-is". ' +
+      'Any data that you enter while using this demonstration mode may be lost if the application is significantly modified. ' +
+      'Suggest that you download any work that is important to you regularly. '
+  },
 }

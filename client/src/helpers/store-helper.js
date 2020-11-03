@@ -91,7 +91,7 @@ class StoreHelperWorker {
   isShowingAdvanced () { return this._getSystemProperty('isShowingAdvanced') }
   isSigning () { return this._getSystemProperty('isSigning') }
 
- 
+
 
   /*
    * **********   Class List  **************
@@ -474,6 +474,11 @@ class StoreHelperWorker {
     return this._getDemoStorage('demoTokenData')
   }
 
+  getPendingVerificationCode () {
+    return this._getDemoStorage('pendingVerificationCode')
+  }
+
+
   isDemoMode () {
     return this._getDemoStorage('isDemo')
   }
@@ -488,6 +493,14 @@ class StoreHelperWorker {
 
   setDemoAssignment (assignment) {
     return this._dispatchDemoStore('setDemoAssignment', assignment)
+  }
+
+  submitDemoUserEmail (submitData) {
+    return this._dispatchDemoStore('submitDemoUserEmail', submitData)
+  }
+
+  submitDemoUserVerificationCode (submitData) {
+    return this._dispatchDemoStore('submitDemoUserVerificationCode', submitData)
   }
 
   submitPersona (submitData) {

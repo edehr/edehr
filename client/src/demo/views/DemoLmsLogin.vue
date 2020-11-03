@@ -37,7 +37,7 @@
 import StoreHelper from '@/helpers/store-helper'
 import UiButton from '@/app/ui/UiButton'
 import UiLink from '@/app/ui/UiLink.vue'
-import { demoText } from '@/appText'
+import { demoText } from '@/demo/demoText'
 
 export default {
   components: {

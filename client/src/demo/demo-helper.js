@@ -1,6 +1,6 @@
 import axios from 'axios'
-import StoreHelper from './store-helper'
-import InstoreHelper from '../store/modules/instoreHelper'
+import StoreHelper from '@/helpers/store-helper'
+import InstoreHelper from '@/store/modules/instoreHelper'
 
 const debugDC = true
 
