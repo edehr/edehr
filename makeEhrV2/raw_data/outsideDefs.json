@@ -11,6 +11,4 @@
   { "path": "", "routeName": "admin-dashboard", "zone": "admin"},
   { "path": "", "routeName": "consumers", "zone": "admin"},
 
-  { "path": "", "routeName": "demo", "zone": "demo"},
-  { "path": "", "routeName": "demo-course", "zone": "demo"}
 ]

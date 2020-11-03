@@ -51,7 +51,7 @@ const state = {
   persona: {}, // selected by user on the Demo page
   assignment: {}, // selected by the user on the DemoCourse page
   acceptsTerms: false,
-  demoFeature: false
+  demoFeature: true
 }
 
 const actions = {
@@ -139,7 +139,7 @@ const actions = {
 const mutations = {
   initialize: function (state) {
     state.acceptsTerms = localStorage.getItem('AcceptTerms') === 'true'
-    state.demoFeature = localStorage.getItem('DemoFeature') === 'true'
+    state.demoFeature = !( localStorage.getItem('DemoFeature') === 'false') // default to true now
     const stashedDemoData = localStorage.getItem('DemoData')
     if (stashedDemoData) {
       if (debugDS) console.log('DemoStore restore stashed DemoData', stashedDemoData)

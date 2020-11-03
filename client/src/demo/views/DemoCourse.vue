@@ -9,7 +9,7 @@
             li Persona: {{ demoPersona.name }}
             li Role: {{ demoPersona.role}}.
             li
-              ui-link(name="demo") Click here to change persona
+              ui-link(name="demoLms") Click here to change persona
         div(class="aside-section", v-text-to-html.noAutoLink="demoText.lmsAside")
       div(class="column is-8 is-offset-1 is-centered")
         div(class="card")
@@ -25,12 +25,12 @@
 </template>
 
 <script>
-import StoreHelper from '../../helpers/store-helper'
-import DemoHelper from '../../helpers/demo-helper'
-import UiButton from '../../app/ui/UiButton'
-import UiLink from '../../app/ui/UiLink.vue'
-import EventBus from '../../helpers/event-bus'
-import { PAGE_DATA_READY_EVENT } from '../../helpers/event-bus'
+import StoreHelper from '@/helpers/store-helper'
+import DemoHelper from '@/helpers/demo-helper'
+import UiButton from '@/app/ui/UiButton'
+import UiLink from '@/app/ui/UiLink.vue'
+import EventBus from '@/helpers/event-bus'
+import { PAGE_DATA_READY_EVENT } from '@/helpers/event-bus'
 import { demoText } from '@/appText'
 
 const debugDC = false
@@ -55,7 +55,7 @@ export default {
   },
   methods: {
     gotoChangeCharacter: function () {
-      this.$router.push('demo')
+      this.$router.push('demoLms')
     },
     gotoEhr: function (selectedAssignment) {
       const demoHelper = new DemoHelper()
@@ -79,7 +79,7 @@ export default {
     const p = StoreHelper.getDemoPersona()
     if (!p || !p.name) {
       if (debugDC) console.log('Go to the demo change persona page')
-      // return this.$router.push('demo')
+      // return this.$router.push('demoLms')
     }
     const _this = this
     this.refreshEventHandler = function () {

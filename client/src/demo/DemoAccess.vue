@@ -14,27 +14,28 @@
     div(v-if="demoFeatureFlag")
       div(v-if="isDemo")
         div You are already logged into the demonstration. &nbsp;
-          ui-link(:name="'demo'") Click here to return to the demonstration page.
+          ui-link(:name="'demoLms'") Click here to return to the demonstration page.
       div(v-else class="demoLogin")
         ui-button(class="",@buttonClicked="demoLoginConfirm") Try out the prototype EdEHR
     div(v-else).
       Coming soon!  The EdEHR will have a demonstration version.
-    ui-confirm(class="confirmDialog",ref="confirmDemoDialog", @confirm="proceedDemoToolConsumerCreation", htmlBody, saveLabel="Continue")
-
+    demo-login-dialog(class="confirmDialog",ref="confirmDemoDialog", @emailSent="proceedDemoToolConsumerCreation")
+    demo-validation-dialog(class="confirmDialog",ref="validationDemoDialog", @validated="proceedDemoToolConsumerCreation")
 </template>
 
 <script>
-import UiButton from '../../app/ui/UiButton'
-import UiConfirm from '../../app/ui/UiConfirm'
-import UiLink from '../../app/ui/UiLink'
-import DemoHelper from '../../helpers/demo-helper'
+import UiButton from '@/app/ui/UiButton'
+import UiLink from '@/app/ui/UiLink'
+import DemoHelper from '@/helpers/demo-helper'
+import DemoLoginDialog from './DemoLoginDialog.vue'
+import DemoValidationDialog from './DemoValidationDialog.vue'
 import StoreHelper from '@/helpers/store-helper'
-import { demoText } from '@/appText'
 
 export default {
   components: {
+    DemoLoginDialog,
+    DemoValidationDialog,
     UiButton,
-    UiConfirm,
     UiLink
   },
   data () {
@@ -49,7 +50,7 @@ export default {
   },
   methods: {
     demoLoginConfirm () {
-      this.$refs.confirmDemoDialog.showDialog(demoText.login.title, demoText.login.body)
+      this.$refs.confirmDemoDialog.openDemoLoginDialog()
     },
     async logoutUser () {
       await StoreHelper.logUserOutOfEdEHR()
@@ -60,7 +61,7 @@ export default {
       const demoHelper = new DemoHelper()
       demoHelper.proceedDemoToolConsumerCreation()
         .then( () => {
-          this.$router.push('demo')
+          this.$router.push('demoLms')
         })
     }
   },
@@ -69,7 +70,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '../../scss/definitions';
+  @import '../scss/definitions';
   .confirmDialog {
     text-align: left;
     color: $grey80;

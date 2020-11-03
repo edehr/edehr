@@ -6,7 +6,7 @@
         div(class="container has-text-centered")
           h1(class="title") {{ appText.heroText.title }}
           h2(class="subtitle") {{ appText.heroText.subTitle }}
-          demo-access(class="demo-access")
+          ui-button(v-on:buttonClicked="gotoDemoRegister", title="Register") Start Demo
 
     section(class="container features features-light")
       div(class="content", v-text-to-html.noAutoLink="appText.heroText.introText")
@@ -29,44 +29,28 @@
         h2(class="title") {{appText.related.title }}
         div(v-text-to-html.noAutoLink="appText.related.body")
 
-    div(class="is-pulled-right")
-      input(type="checkbox", v-model="activateDemoMode")
-
-
 </template>
 
 <script>
-import StoreHelper from '@/helpers/store-helper'
 import UiButton from '../../app/ui/UiButton'
 import UiLink from '../../app/ui/UiLink.vue'
-import DemoAccess from '../components/DemoAccess.vue'
 import EdEhrValues from '../components/EdEhrValues.vue'
 import { appText } from '@/appText'
 
 export default {
   components: {
-    DemoAccess,
     EdEhrValues,
     UiButton, UiLink
   },
   data () {
     return {
       appText: appText,
-      activateDemoMode: false
     }
-  },
-  computed: {
-    isDemo () { return StoreHelper.isDemoMode()  }
   },
   methods: {
-  },
-  mounted: function () {
-    this.activateDemoMode = StoreHelper.getDemoFeatureFlag()
-  },
-  watch: {
-    activateDemoMode: function (val) {
-      StoreHelper.setDemoFeatureFlag(val)
-    }
+    gotoDemoRegister () {
+      this.$router.push({ name: 'demoRegister' })
+    },
   }
 }
 </script>
@@ -123,6 +107,12 @@ export default {
   .hero-body .title {
     color: hsl(192,17%,99%) !important;
   }
+
+  .hero-body a {
+    color: hsl(192,17%,99%) !important;
+    font-size: 2rem;
+  }
+
 
   .hero-body .demo-access {
     @media only screen and (min-width : 1025px) {

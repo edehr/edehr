@@ -20,7 +20,7 @@
                 fas-icon(v-show="showingDemoSubmenu", class="fa", icon="chevron-up")
             div(v-show="showingDemoSubmenu", class="activationContent")
               div(v-on:click="hideDemoMenu()")
-                router-link(:to="{ name: `demo` }", class="secondLevelLink") Change persona
+                router-link(:to="{ name: `demoLms` }", class="secondLevelLink") Change persona
               hr
               div(class="secondLevelLink activationItem", v-on:click="demoLogoutConfirm()") Logout of demonstration
       div(v-if="showDashboard", class="secondMenu")

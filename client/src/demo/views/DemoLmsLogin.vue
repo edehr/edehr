@@ -34,9 +34,9 @@
 </template>
 
 <script>
-import StoreHelper from '../../helpers/store-helper'
-import UiButton from '../../app/ui/UiButton'
-import UiLink from '../../app/ui/UiLink.vue'
+import StoreHelper from '@/helpers/store-helper'
+import UiButton from '@/app/ui/UiButton'
+import UiLink from '@/app/ui/UiLink.vue'
 import { demoText } from '@/appText'
 
 export default {

@@ -1,10 +1,10 @@
 <template lang="pug">
   div(id="seedDataList", class="seedData-list")
     app-dialog(
-      :isModal="true", 
-      ref="theDialog",  
-      @cancel="cancelDialog", 
-      @save="saveDialog", 
+      :isModal="true",
+      ref="theDialog",
+      @cancel="cancelDialog",
+      @save="saveDialog",
       :disableSave="disableSave",
       has-left-button
     )
@@ -145,8 +145,7 @@ export default {
         this.ehrData = {}
       }
       if (! this.contributors || !this.contributors.includes(this.userName)) {
-        console.log(this.contributors, this.userName)
-        let list = this.contributors.split(', ')
+        let list = this.contributors ? this.contributors.split(', ') : []
         list.push(this.userName)
         let contribs = list.join(', ')
         console.log('update contributors', contribs)

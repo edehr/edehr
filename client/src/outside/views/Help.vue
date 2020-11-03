@@ -9,11 +9,17 @@
     h2 {{ helpText.instructor.title }}
     div
       div(v-text-to-html.noAutoLink="helpText.instructor.body")
+    h2 Contact
+    div
+      app-email-us
+
 </template>
 
 <script>
 import { appText, helpText } from '@/appText'
+import AppEmailUs from '@/app/components/AppEmailUs'
 export default {
+  components: { AppEmailUs },
   data () {
     return {
       appText: appText,

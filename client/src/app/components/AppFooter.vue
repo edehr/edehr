@@ -1,16 +1,19 @@
 <template lang="pug">
   footer
-    div(class="wrapper" v-if="showNav")
+    div(class="wrapper")
       p Except where otherwise noted, content on this site is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.
+    div(class="wrapper")
+      app-email-us
 </template>
 
 <script>
 import UiLink from '../ui/UiLink.vue'
+import AppEmailUs from '@/app/components/AppEmailUs'
 
 export default {
   name: 'AppFooter',
   components: {
-    UiLink
+    UiLink, AppEmailUs
   },
   data: function () {
     return {

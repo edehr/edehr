@@ -25,6 +25,8 @@ import { outside } from './outsideRoutes'
 routes = routes.concat(outside())
 import { inside } from './insideRoutes'
 routes = routes.concat(inside())
+import { demoRoutes } from './demo/demoRoutes'
+routes = routes.concat(demoRoutes())
 
 routes.push({
   path: '*',
