@@ -1,4 +1,5 @@
 import { Router } from 'express'
+import NoPasswordAuthorizer from 'npuser-client'
 import axios from 'axios'
 import qs from 'qs'
 import { demoPersonae } from '../../helpers/demo-personae'
@@ -41,28 +42,53 @@ export default class DemoController {
     this.config = config
   }
 
-  setSharedControllers(cc) {
+  getNpUser ( ) {
+    if (!this.npuser) {
+      const {config} = this
+      const dev = config.NPUSER_DEV || 'true'
+      const cfg = {
+        baseUrl: config.NPUSER_URL || 'https://npuser.org',
+        clientId: config.NPUSER_CLIENT_ID || 'client1',
+        sharedSecretKey: config.NPUSER_SECRET || 'secret1',
+        silent: false,
+        dev: dev === 'true'
+      }
+      console.log('Create NP User Authorizer with ', cfg)
+      this.npuser = new NoPasswordAuthorizer(cfg)
+    }
+    return this.npuser
+  }
+
+  async submitUserAuth (req, res) {
+    const { email } = req.body
+    console.log('Authorize user based on this email address:', email)
+    const authResponse = await this.getNpUser().sendAuth(email)
+    console.log('Auth response:', authResponse)
+    res.status(200).json({result: authResponse})
+  }
+
+  setSharedControllers (cc) {
     this.comCon = cc
   }
 
-  addSample(theSeed, assignmentData, toolC) {
-  Promise.resolve().then(() => {
+  addSample (theSeed, assignmentData, toolC) {
+    Promise.resolve().then(() => {
       const data = theSeed
       if (debugDC) debug('DemoController create', data.name)
-      const aSeed = Object.assign({}, seedTemplate, { toolConsumer: toolC._id })
+      const aSeed = Object.assign({}, seedTemplate, {toolConsumer: toolC._id})
       aSeed.name = data.name
       aSeed.description = data.description
       aSeed.ehrData = data.ehrData
       return this.comCon.seedController.create(aSeed)
     })
-    .then((seed) => {
-      if (debugDC) debug('DemoController create assignment')
-      const ass = Object.assign({}, assignmentData, { toolConsumer: toolC })
-      return this.comCon.assignmentController.createAssignment(ass, seed._id)
-    })
+      .then((seed) => {
+        if (debugDC) debug('DemoController create assignment')
+        const ass = Object.assign({}, assignmentData, {toolConsumer: toolC})
+        return this.comCon.assignmentController.createAssignment(ass, seed._id)
+      })
   }
 
-_createDemoToolConsumer (req, res, next) {
+  _createDemoToolConsumer (req, res, next) {
     let theId = req.body.id
     if (debugDC) debug('DemoController create tool. Call provided this id:', theId)
     if (!theId) {
@@ -72,7 +98,7 @@ _createDemoToolConsumer (req, res, next) {
     }
     theId = 'Demo-' + Date.now() + '-' + theId
     if (debugDC) debug('DemoController create tool. Create tool with this id:', theId)
-    const consumerDef = Object.assign({}, consumerBaseDef, {  oauth_consumer_key: theId, oauth_consumer_secret: theId })
+    const consumerDef = Object.assign({}, consumerBaseDef, {oauth_consumer_key: theId, oauth_consumer_secret: theId})
     let toolC
     this.comCon.consumerController.createToolConsumer(consumerDef)
       .then((toolConsumer) => {
@@ -86,7 +112,7 @@ _createDemoToolConsumer (req, res, next) {
         return this.addSample(ej2Seed, assignment2, toolC)
       })
       .then(() => {
-        return this.addSample(wound1Seed, wound1  , toolC)
+        return this.addSample(wound1Seed, wound1, toolC)
       })
       .then(() => {
         if (debugDC) debug('DemoController generate token')
@@ -105,7 +131,6 @@ _createDemoToolConsumer (req, res, next) {
         }
       })
   }
-
 
   deleteDemoData (consumerKey) {
     let toolConsumer
@@ -185,7 +210,7 @@ _createDemoToolConsumer (req, res, next) {
         'Content-Type': 'application/json;charset=utf-8',
         host: host,
       },
-      body: Object.assign({}, ltiData, { demoRedirect: true})
+      body: Object.assign({}, ltiData, {demoRedirect: true})
     }
     const debugSignature = false
     let withDetailsCallback = debugSignature ?
@@ -215,6 +240,12 @@ _createDemoToolConsumer (req, res, next) {
         this._createDemoToolConsumer(req, res, next)
       })
 
+    router.post('/submitEmail',
+      demoLimiter,
+      (req, res, next) => {
+        this.submitUserAuth(req, res, next)
+      })
+
     /**
      * @description Fetches the auth data which is contained in the demoToken payload,
      * (the data returned from the /demo route).
@@ -228,11 +259,11 @@ _createDemoToolConsumer (req, res, next) {
     router.post('/logout', validatorMiddleware, (req, res) => {
       if (debugDC) debug('DemoController logout', req.authPayload)
       this.deleteDemoData(req.authPayload.demoData.toolConsumerKey)
-        .then( () => {
+        .then(() => {
           if (debugDC) debug('DemoController logout, return 200')
           res.status(200).send('success')
         })
-        .catch( (err) => {
+        .catch((err) => {
           debug('DemoController logout ERROR ', err)
           res.status(500).send(err)
         })

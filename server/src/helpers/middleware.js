@@ -7,7 +7,7 @@ const logError = require('debug')('error')
 const debugMW = false
 
 const ADMIN_MAX_REQUEST_LIMIT = 5
-const DEMO_MAX_REQUEST_LIMIT = process.env.NODE_ENV === 'development' ? 10 : 2
+const DEMO_MAX_REQUEST_LIMIT = 3 // process.env.NODE_ENV === 'development' ? 10 : 2
 if(debugMW) debug('validatorMiddlewareWrapper ADMIN_MAX_REQUEST_LIMIT', ADMIN_MAX_REQUEST_LIMIT)
 if(debugMW) debug('validatorMiddlewareWrapper DEMO_MAX_REQUEST_LIMIT', DEMO_MAX_REQUEST_LIMIT)
 

@@ -111,8 +111,13 @@ const actions = {
       })
   },
   submitDemoUserEmail: function ({ commit }, submitData) {
-    console.log('DemoStore placeholder action to send user email to server to be relayed onto npuser')
-    return Promise.resolve(submitData)
+    console.log('DemoStore action to send user email to server to be relayed onto npuser')
+    return _getHelper().submitDemoUserEmail(submitData)
+      .then(res => {
+        return Promise.resolve(res.data)
+      }).catch(err => {
+        return Promise.reject(err)
+      })
   },
   submitDemoUserVerificationCode: function ({ commit }, submitData) {
     console.log('DemoStore placeholder action to send verification code to server to be relayed onto npuser')

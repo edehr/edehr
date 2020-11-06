@@ -45,6 +45,29 @@ export default class DemoStoreHelper {
 
   /**
    *
+   * @param email address
+   * @return {AxiosPromise<any>}
+   */
+  submitDemoUserEmail (email) {
+    const apiUrl = this.apiUrl
+    const url = `${apiUrl}/demo/submitEmail`
+    if(debugDH) console.log('DH submitDemoUserEmail', email, apiUrl)
+    const options = {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/x-www-form-urlencoded',
+        // Authorization: `Bearer ${token}`
+      },
+      data: qs.stringify({email}),
+      url,
+    }
+    return axios(options)
+  }
+
+
+
+  /**
+   *
    * @param token
    * @param submitData
    * @return {AxiosPromise<any>}
@@ -97,5 +120,5 @@ export default class DemoStoreHelper {
     }
     return axios(options)
   }
-  
+
 }
