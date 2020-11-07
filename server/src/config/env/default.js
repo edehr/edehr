@@ -33,6 +33,15 @@ const TIME_TO_LIVE = process.env.TIME_TO_LIVE || 3600
 const SESSION_DIR = process.env.SESSION_DIR || '.session'
 const FAVICON = process.env.FAVICON || 'favicon.ico'
 
+
+const NPUSER_DEV = process.env.NPUSER_DEV || 'true'
+const NPUSER_URL = process.env.NPUSER_URL || 'https://npuser.org'
+const NPUSER_CLIENT_ID = process.env.NPUSER_CLIENT_ID || 'edehr'
+const NPUSER_SECRET = process.env.NPUSER_SECRET
+const NPUSER_DEV = process.env.NPUSER_DEV || 'true'
+
+
+
 module.exports = function() {
   return {
     app: {

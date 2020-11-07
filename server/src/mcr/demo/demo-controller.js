@@ -48,7 +48,7 @@ export default class DemoController {
       const dev = config.NPUSER_DEV || 'true'
       const cfg = {
         baseUrl: config.NPUSER_URL || 'https://npuser.org',
-        clientId: config.NPUSER_CLIENT_ID || 'client1',
+        clientId: config.NPUSER_CLIENT_ID || 'edehr',
         sharedSecretKey: config.NPUSER_SECRET || 'secret1',
         silent: false,
         dev: dev === 'true'
