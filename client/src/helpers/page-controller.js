@@ -144,9 +144,12 @@ class PageControllerInner {
       if (!this.hasLoadedData) {
         dblog('_loadAuth. User is refreshing their browser. We have an existing auth token. Get the auth data....')
         StoreHelper.setLoading(null, true)
-        setAuthHeader(authToken)
-        await StoreHelper.fetchTokenData(authToken)
-        StoreHelper.setLoading(null, false)
+        try {
+          setAuthHeader(authToken)
+          await StoreHelper.fetchTokenData(authToken)
+        } finally {
+          StoreHelper.setLoading(null, false)
+        }
       }
     } else {
       dblog('_loadAuth. User can not proceed. There is no refresh nor previous auth token.')
@@ -159,6 +162,7 @@ class PageControllerInner {
     dblog('_ltiAccess take the refresh, convert to auth token. Store the new token.')
     let token = await StoreHelper.fetchAndStoreAuthToken(refreshToken)
     if (!token) {
+      StoreHelper.setLoading(null, false)
       dblog('_ltiAccess the refresh token failed. Perhaps this is a SYSTEM ERROR?')
       throw new Error(Text.EXPIRED_REFRESH_TOKEN)
     }
@@ -176,40 +180,47 @@ class PageControllerInner {
         dblog('_ltiAccess refresh token is expired and there is no previous token. User can not proceed.')
         throw new Error(Text.EXPIRED_TOKEN(err))
       }
+    } finally {
+      StoreHelper.setLoading(null, false)
     }
-    StoreHelper.setLoading(null, false)
   }
 
   async _loadEhr (visitId) {
     dblog('_loadEhr')
     StoreHelper.setLoading(null, true)
-    dblog('_loadEhr loadVisitRecord', visitId )
-    await StoreHelper.loadVisitRecord(visitId)
-    if (StoreHelper.isSeedEditing()) {
-      dblog('_loadEhr load seed editing')
-      await StoreHelper.loadSeedEditor()
+    try {
+      dblog('_loadEhr loadVisitRecord', visitId)
+      await StoreHelper.loadVisitRecord(visitId)
+      if (StoreHelper.isSeedEditing()) {
+        dblog('_loadEhr load seed editing')
+        await StoreHelper.loadSeedEditor()
+      } else if (StoreHelper.isInstructor()) {
+        dblog('_loadEhr load instructor')
+        await StoreHelper.loadInstructor2()
+      } else if (StoreHelper.isStudent()) {
+        dblog('_loadEhr load student')
+        await StoreHelper.loadStudent2()
+      }
+    } finally {
+      StoreHelper.setLoading(null, false)
     }
-    else if (StoreHelper.isInstructor()) {
-      dblog('_loadEhr load instructor')
-      await StoreHelper.loadInstructor2()
-    } else if (StoreHelper.isStudent()) {
-      dblog('_loadEhr load student')
-      await StoreHelper.loadStudent2()
-    }
-    StoreHelper.setLoading(null, false)
   }
 
 
   async _getVisitId () {
     dblog('_getVisitId')
+    let payload = {}
     StoreHelper.setLoading(null, true)
-    let payload = await StoreHelper.getAuthData()
-    if (!(payload && payload.visitId)) {
-      dblog(' _getVisitId no auth data', payload, Text.TOKEN_FETCHING_ERROR)
-      throw new Error(Text.TOKEN_FETCHING_ERROR)
+    try {
+      payload = await StoreHelper.getAuthData()
+      if (!(payload && payload.visitId)) {
+        dblog(' _getVisitId no auth data', payload, Text.TOKEN_FETCHING_ERROR)
+        throw new Error(Text.TOKEN_FETCHING_ERROR)
+      }
+      dblog('_getVisitId', payload)
+    } finally {
+      StoreHelper.setLoading(null, false)
     }
-    dblog('_getVisitId', payload)
-    StoreHelper.setLoading(null, false)
     return payload.visitId
   }
 

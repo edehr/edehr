@@ -112,6 +112,7 @@ export function formatTimeStr (dateStrFromDb) {
 }
 
 export function composeAxiosResponseError (error, msg) {
+  // TODO see https://github.com/axios/axios#handling-errors
   if (! error.response ) {
     console.error('what is in error?')
     return JSON.stringify(error)

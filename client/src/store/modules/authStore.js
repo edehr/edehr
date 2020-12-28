@@ -30,11 +30,16 @@ const actions = {
         return token
       })
   },
+  // pass in the token rather than just use the local state token to allow callers to use a token of their choice
   fetchData: function ({commit}, { authToken }) {
     return authHelper.getData(authToken)
       .then(res => {
         const { data } = res
         return commit('setAuthData', data)
+      })
+      .catch(err => {
+        // if we can't get data with the given token then the auth token
+        commit('setToken', undefined)
       })
   },
   adminLogin: function ({commit}, { adminPassword }) {
