@@ -12,14 +12,16 @@
     h2 Contact
     div
       app-email-us
-
+    year2020
 </template>
 
 <script>
 import { appText, helpText } from '@/appText'
 import AppEmailUs from '@/app/components/AppEmailUs'
+import Year2020 from './Year2020.vue'
+
 export default {
-  components: { AppEmailUs },
+  components: { AppEmailUs, Year2020 },
   data () {
     return {
       appText: appText,
@@ -33,7 +35,7 @@ export default {
 @import '../../scss/definitions';
 
 .outside-view {
-  height: 30rem;
+  /*height: 30rem;*/
   margin: 2rem;
 }
 </style>
