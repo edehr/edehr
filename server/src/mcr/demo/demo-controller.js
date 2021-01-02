@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import NoPasswordAuthorizer from 'npuser-client'
+import { NoPasswordAuthorizer } from 'npuser-client'
 import axios from 'axios'
 import qs from 'qs'
 import { demoPersonae } from '../../helpers/demo-personae'
@@ -36,35 +36,44 @@ const seedTemplate = {
   ehrData: {}
 }
 
+require('dotenv').config()
+const { NPUSER_CLIENT_ID } = process.env // the api key this app uses to connect with the npuser.org service
+const { NPUSER_CLIENT_SECRET } = process.env // the shared secret this app uses to send encrypted data to npuser
+const { NPUSER_URL } = process.env // the npuser service url with? or without? trailing slash
+console.log('NPUSER_CLIENT_ID',NPUSER_CLIENT_ID)
+console.log('NPUSER_CLIENT_SECRET',NPUSER_CLIENT_SECRET)
+console.log('NPUSER_URL',NPUSER_URL)
+if (!NPUSER_CLIENT_ID || !NPUSER_CLIENT_SECRET || !NPUSER_URL) {
+  throw new Error('Fatal setup error. Need NPUSER_CLIENT_ID, NPUSER_CLIENT_SECRET and NPUSER_URL to be defined in the environment')
+}
+
+let npuserAuthorizer = undefined
+const verbose = true
+function getNpUser ( ) {
+  if (!npuserAuthorizer) {
+    npuserAuthorizer = new NoPasswordAuthorizer({
+      baseUrl: NPUSER_URL,
+      clientId: NPUSER_CLIENT_ID,
+      sharedSecretKey: NPUSER_CLIENT_SECRET,
+      verbose: verbose // controls the verbosity of the np client library
+    })
+  }
+  return npuserAuthorizer
+}
+async function npUserAuth (req, res, next) {
+  const email = req.body.email
+  if (verbose) console.log('npuser-sample-server: step 1 request with email:', email)
+  const authResponse = await getNpUser().sendAuth(email)
+  const token = authResponse.token
+  if (verbose) console.log('npuser-sample-server:  step 1 response:', authResponse)
+  res.status(200).json({result: authResponse})
+}
+
+
 export default class DemoController {
 
   constructor (config) {
     this.config = config
-  }
-
-  getNpUser ( ) {
-    if (!this.npuser) {
-      const {config} = this
-      const dev = config.NPUSER_DEV || 'true'
-      const cfg = {
-        baseUrl: config.NPUSER_URL || 'https://npuser.org',
-        clientId: config.NPUSER_CLIENT_ID || 'edehr',
-        sharedSecretKey: config.NPUSER_SECRET || 'secret1',
-        silent: false,
-        dev: dev === 'true'
-      }
-      console.log('Create NP User Authorizer with ', cfg)
-      this.npuser = new NoPasswordAuthorizer(cfg)
-    }
-    return this.npuser
-  }
-
-  async submitUserAuth (req, res) {
-    const { email } = req.body
-    console.log('Authorize user based on this email address:', email)
-    const authResponse = await this.getNpUser().sendAuth(email)
-    console.log('Auth response:', authResponse)
-    res.status(200).json({result: authResponse})
   }
 
   setSharedControllers (cc) {
@@ -240,11 +249,7 @@ export default class DemoController {
         this._createDemoToolConsumer(req, res, next)
       })
 
-    router.post('/submitEmail',
-      demoLimiter,
-      (req, res, next) => {
-        this.submitUserAuth(req, res, next)
-      })
+    router.post('/submitEmail', demoLimiter, npUserAuth)
 
     /**
      * @description Fetches the auth data which is contained in the demoToken payload,
