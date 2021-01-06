@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import { NoPasswordAuthorizer } from 'npuser-client'
+import asyncHandler from 'express-async-handler'
 import axios from 'axios'
 import qs from 'qs'
 import { demoPersonae } from '../../helpers/demo-personae'
@@ -48,24 +49,23 @@ if (!NPUSER_CLIENT_ID || !NPUSER_CLIENT_SECRET || !NPUSER_URL) {
 }
 
 let npuserAuthorizer = undefined
-const verbose = true
 function getNpUser ( ) {
   if (!npuserAuthorizer) {
     npuserAuthorizer = new NoPasswordAuthorizer({
       baseUrl: NPUSER_URL,
       clientId: NPUSER_CLIENT_ID,
       sharedSecretKey: NPUSER_CLIENT_SECRET,
-      verbose: verbose // controls the verbosity of the np client library
+      verbose: debugDC // controls the verbosity of the np client library
     })
   }
   return npuserAuthorizer
 }
 async function npUserAuth (req, res, next) {
   const email = req.body.email
-  if (verbose) console.log('npuser-sample-server: step 1 request with email:', email)
+  if (debugDC) debug('DemoController: step 1 request with email:', email)
   const authResponse = await getNpUser().sendAuth(email)
   const token = authResponse.token
-  if (verbose) console.log('npuser-sample-server:  step 1 response:', authResponse)
+  if (debugDC) debug('DemoController:  step 1 response:', authResponse)
   res.status(200).json({result: authResponse})
 }
 
@@ -173,7 +173,7 @@ export default class DemoController {
   submitLTIData (req, res) {
     const {host} = req.headers
     const {ltiData} = qs.parse(req.body)
-    // console.log('ltidata', ltiData, req.body)
+    // debug('ltidata', ltiData, req.body)
     const signedRequest = this._signAndPrepareLTIRequest(ltiData, host)
     return axios.post(signedRequest.url, signedRequest.body)
       .then((_results) => {
@@ -249,7 +249,7 @@ export default class DemoController {
         this._createDemoToolConsumer(req, res, next)
       })
 
-    router.post('/submitEmail', demoLimiter, npUserAuth)
+    router.post('/submitEmail', demoLimiter, asyncHandler(npUserAuth))
 
     /**
      * @description Fetches the auth data which is contained in the demoToken payload,

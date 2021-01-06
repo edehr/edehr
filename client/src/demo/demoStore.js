@@ -67,7 +67,7 @@ const actions = {
       })
       .catch(err => {
         console.log('Create tool consumer failed ', err.response)
-        return Promise.reject(err)
+        return Promise.reject(err.response)
       })
   },
   demoLogout: function ({ commit }) {
@@ -107,16 +107,15 @@ const actions = {
       })
       .catch(err => {
         console.error('DemoStore loadDemoData ERROR', err)
-        return Promise.reject(err)
+        return Promise.reject(err.response)
       })
   },
   submitDemoUserEmail: function ({ commit }, submitData) {
     console.log('DemoStore action to send user email to server to be relayed onto npuser')
     return _getHelper().submitDemoUserEmail(submitData)
       .then(res => {
+        console.log('WHAT IS IN RES', res)
         return Promise.resolve(res.data)
-      }).catch(err => {
-        return Promise.reject(err)
       })
   },
   submitDemoUserVerificationCode: function ({ commit }, submitData) {
@@ -129,7 +128,7 @@ const actions = {
       .then(res => {
         return Promise.resolve(res.data)
       }).catch(err => {
-        return Promise.reject(err)
+        return Promise.reject(err.response)
       })
   },
   setDemoToken: function (none, demoToken) {

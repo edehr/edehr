@@ -134,7 +134,7 @@ export function apiMiddle (app, config) {
       const api = Router()
       // for local and dev only
       api.use('/integrations', adminMiddleware, ic.route())
-      // Admin playground, for localhost-only tests  
+      // Admin playground, for localhost-only tests
       api.use('/playground', localhostOnlyAdminMiddleware, pc.route())
       // External API
       api.use('/launch_lti', lti.route())
@@ -169,18 +169,26 @@ export function apiMiddle (app, config) {
       return api
     })
 }
-  
+
 export function apiError (app, config) {
   // error handlers
   app.use(logErrors)
   app.use(clientErrorHandler)
   app.use(errorHandler)
-  
+
   function logErrors (err, req, res, next) {
-    logError(`EdEHR server error name: "${err.name}" message: "${err.message}" on path: ${req.path}`)
+    let msg = []
+    msg.push('EdEHR server error')
+    if (err.name)
+      msg.push(` name: "${err.name}"`)
+    msg.push(` message: "${err.message}"`)
+    if (err.status)
+      msg.push(` status: "${err.status}"`)
+    msg.push(` on path: "${req.path}"`)
+    logError(msg.join(''))
     next(err)
   }
-  
+
   function clientErrorHandler (err, req, res, next) {
     // import {AssignmentMismatchError, ParameterError, SystemError} from '../utils/errors'
     if (err.name === AssignmentMismatchError.NAME()) {
@@ -194,11 +202,16 @@ export function apiError (app, config) {
   }
 
   function errorHandler (err, req, res, next) {
-    debug('API errorHandler', err.message, err.status, err.errorData, res.status)
-    let status = err.status || 500
     let errorData = err.errorData || {}
-    let json =  {message: err.message, status: status, errorData: JSON.stringify(errorData)}
-    res.status = status
+    let json = {}
+    json.message = err.message
+    json.status = err.status || 500
+    json.data = err.data ? ( err.data.message ? err.data.message : err.data ) : undefined
+    json.statusText = err.statusText || ' Unknown error'
+    json.message = err.message ? err.message : ( json.data ? json.data : json.statusText)
+    json.errorData = JSON.stringify(errorData)
+    debug('API errorHandler', JSON.stringify(json))
+    res.status(json.status)
     res.json(json)
     // Returning a rendered html page is awkward for ajax clients. Return json and let the client decide how to format it.
     // res.render('server-errors/error',json)

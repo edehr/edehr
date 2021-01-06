@@ -21,7 +21,7 @@
         demo-email-form(v-if="isPendingUserEmail", v-on:email-sent="authUser($event)")
         div(class="mb-2", v-if="email") Email sent to: {{ email }}
         demo-v-code-form(v-if="isPendingVerificationCode", v-on:vcode-sent="verifyUser($event)", v-on:cancel="cancelDemo()")
-
+        p(v-if="errMsg", class="error-text") {{errMsg}}
 </template>
 
 <script>
@@ -55,6 +55,7 @@ export default {
       // logic control
       isPendingUserEmail: true,
       isPendingVerificationCode: false,
+      errMsg: undefined
     }
   },
   computed: {
@@ -72,10 +73,19 @@ export default {
     },
     async authUser (email) {
       console.log('authUser with email', email)
-      await StoreHelper.submitDemoUserEmail(email)
-      this.email = email
-      this.isPendingUserEmail = false
-      this.isPendingVerificationCode = true
+      this.errMsg = undefined
+      try {
+        await StoreHelper.submitDemoUserEmail(email)
+        this.email = email
+        this.isPendingUserEmail = false
+        this.isPendingVerificationCode = true
+      } catch (error) {
+        let err = error.response ? error.response : error
+        let data = err.data ? ( err.data.message ? err.data.message : err.data ) : undefined
+        let msg = data ? data : (err.message ? err.message : err)
+        // console.log(msg)
+        this.errMsg = msg
+      }
     },
     async verifyUser (vcode) {
       console.log('user provided vcode and consented too', vcode)
