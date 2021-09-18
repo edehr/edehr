@@ -47,9 +47,9 @@ const actions = {
           return token
         } else if (res.status === 201) {
           return Promise.reject('The token has been created. Please, contact an administrator to get it.')
+        }  else {
+          return Promise.reject('Access denied')
         }
-      }).catch(err => {
-        return Promise.reject(err)
       })
   },
   adminValidate: function ({state}) {
