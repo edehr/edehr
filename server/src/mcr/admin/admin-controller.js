@@ -35,6 +35,7 @@ export default class adminController {
       res.status(401).send(Text.REQUIRED_ADMIN)
     } else {
       debug('adminController -- adminPass >> adminToken', adminPass, adminToken)
+      debug(`adminController >> adminPass: '${adminPass}' adminToken: '${adminToken}'`)
       try {
         if (adminToken) {
           if (adminPass === adminToken) {
@@ -46,6 +47,7 @@ export default class adminController {
             return res.status(401).send(Text.EXPIRED_ADMIN)
           }
         } else {
+          debug(`adminController no admin token so generate one`)
           generateAdminPassword()
           return res.status(201).send('The password has been created')
         }

@@ -13,7 +13,7 @@ const generateAdminPassword = () => {
 
 const getAdminPassword = () => {
   const token = fs.readFileSync('./src/config/admin-password.txt')
-  return token.toString()
+  return token.toString().trim()
 }
 
 const getCreateAdminPassword = () => {
