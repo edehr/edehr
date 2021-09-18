@@ -38,7 +38,7 @@ export default class AuthController {
     if (!adminPass && !authorization) {
       res.status(401).send(Text.REQUIRED_ADMIN)
     } else {
-      if (debugAC) debug('adminPass >> adminToken', adminPass, adminToken)
+      if (debugAC) debug(`_adminLogin >> adminPass: '${adminPass}' adminToken: '${adminToken}'`)
       try {
         if (adminToken) {
           if (adminPass === adminToken) {
