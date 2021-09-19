@@ -91,7 +91,7 @@ class StoreHelperWorker {
   isShowingAdvanced () { return this._getSystemProperty('isShowingAdvanced') }
   isSigning () { return this._getSystemProperty('isSigning') }
 
- 
+
 
   /*
    * **********   Class List  **************
@@ -304,6 +304,17 @@ class StoreHelperWorker {
 
   createConsumer (consumerData) { return this._dispatchConsumerList('createConsumer', consumerData) }
 
+  /* ************* Admin related   */
+
+  getUsersList () { return this._getUserProperty('list') }
+  loadUsersList (consumerId) { return this._dispatchUser('loadUsers', consumerId) }
+
+  async loadConsumer (id ) {
+    await this._dispatchConsumer('load', id)
+  }
+  getConsumer () {
+    return this._getConsumerProperty('consumer')
+  }
 
   /* ************* EHR Context   */
   getPanelData () {
