@@ -3,6 +3,7 @@
     h1 LTI Consumers
     div
       ui-button(v-on:buttonClicked="showCreateDialog") Create a new consumer
+      ui-button(v-on:buttonClicked="refresh") Refresh list
     table.table
       thead
         tr
@@ -10,16 +11,24 @@
           th Key
           th Family code
           th LTI version
-          th GUI
           th Description
+          th GUID
+          th Created / Updated
       tbody
         tr(v-for="item in consumerListing", :class="rowClass(item)")
           td {{ item.tool_consumer_instance_name }}
-          td {{ item.oauth_consumer_key}}
+          td
+            div {{ item.oauth_consumer_key}}
+            div {{ item.oauth_consumer_secret}}
           td {{ item.lti_version}}
           td {{ item.tool_consumer_info_version}}
           td {{ item.tool_consumer_instance_description}}
           td {{ item.tool_consumer_instance_guid}}
+          td
+            div {{ item.createDate}}
+            div {{ item.lastUpdateDate}}
+          td
+            router-link(:to="{ name:'users', params: { id: item._id }}") Users
           td
             ui-button(v-on:buttonClicked="showEditDialog", :value="item._id")
               fas-icon(icon="edit") Edit consumer properties
@@ -69,6 +78,9 @@ export default {
     },
     showCreateDialog: function () {
       this.$refs.theDialog.showDialog()
+    },
+    refresh: function () {
+      StoreHelper.loadConsumerList()
     }
   },
   mounted: function () {

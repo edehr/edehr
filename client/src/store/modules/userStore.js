@@ -7,7 +7,8 @@ const OBJ = 'user'
 const debug = false
 
 const state = {
-  dataStore: {}
+  dataStore: {},
+  usersList: []
 }
 
 const getters = {
@@ -24,7 +25,11 @@ const getters = {
     let name = info ? info.givenName : ''
     return name
   },
-  user: state => state.dataStore
+  user: state => state.dataStore,
+  list: state => {
+    return state.usersList
+  }
+
 }
 
 const actions = {
@@ -48,12 +53,27 @@ const actions = {
       return user
     })
   },
+  loadUsers (context) {
+    let url = ''
+    return InstoreHelper.getRequest(context, API, url).then(response => {
+      let list = response.data.users
+      if(debug) console.log('loadUsers response.data', list)
+      if (list) {
+        context.commit('setUsersList', list)
+      }
+      return list
+    })
+  },
 }
 
 const mutations = {
   set: (state, user) => {
     state.dataStore = user
-  }
+  },
+  setUsersList: (state, cData) => {
+    if(debug) console.log('setUsersList ', cData)
+    state.usersList = cData
+  },
 }
 
 export default {
