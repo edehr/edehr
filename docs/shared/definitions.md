@@ -14,9 +14,6 @@ An activity is the general name for a group of different functionalities within 
 ## Assignment
 While LMS's do have assignment activities, we only use the external tool activity to connect to the EdEHR. Within the EdEHR, an assignment refers to the chunk of work that a student is required to complete and submit to an instructor for evaluation. Do not confuse it with a LMS assignment.
 
-## API url
-See [Tool URL](#tool-url).
-
 ## Application navigation
 The horizontal navigation bar at the top of all screens within the EdEHR software. It appears for all users, although each user type has a different set of links that they are able to access from it.
 

@@ -2,25 +2,25 @@
 
 ## Installation
 
-Moodle and the EdEHR must be installed and running prior to configuration. 
+Access to the EdEHR is only available via your learning institution's learning management system (LMS).  You do not need to involve your IT department yet you do need to work with the people who can set up and configure your LMS. 
+Your learning institution can elect to run the open source EdEHR on their servers with their IT department or they may
+wish to work with https://edehr.org.  
 
-- Contact your LMS admin for help with Moodle.
-- Contact your IT admin for help with the EdEHR, or see the [developer guide](/developer/) for details on how to do this yourself.
+- Contact your LMS admin and ask them to contact the administrator of the EdEHR system.  
+The EdEHR admin will give your LMS admin a key and secret and simple instructions to configure connections that can be used in courses.
 
 ## Tips before you get started
 
 - When creating names, descriptions, IDs or any other kind of data, try to follow a convention will make this data easy to understand and maintain.
 - Some of the following steps may have already been completed or you may not want to configure for your assignment. Those items are marked *OPTIONAL* .
 
-## Connect Moodle to the EdEHR
+## EdEHR admin
 
-### EdEHR admin
+1. The EdEHR admin creates consumer key and secret via the admin panel. 
 
-1. Create a [consumer key and secret](/shared/definitions.md#consumer-key-and-secret).
+2. The API URL is the host domain plus "/api/launch_lti".  For example [https://edehr.org/api/launch_lti](https://edehr.org/api/launch_lti)
 
-2. Get the [API url](/shared/definitions.md#api-url) from the host server.
-
-3. Share the consumer key, secret and API url with with your LMS admin. 
+3. The EdEHR admin gives the consumer key, secret and API url to the LMS admin. 
 
 > The EdEHR admin's work is complete.
 

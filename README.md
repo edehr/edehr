@@ -22,21 +22,22 @@ Work since the BC Campus project is released under a copyleft license (GNU Affer
  
 ## Documentation
 
-Public docs are available here [https://bccampus.github.io/edehr](https://bccampus.github.io/edehr)
+Public docs are available here [https://edehr.github.io/edehr](https://edehr.github.io/edehr)
 
 ## Demo
 
-A demonstration mode is currently being implemented. This demo mode will mimic a learning management system so you can experience both the student's  and the instructor's experiences. Until then reach out to [info@edehr.org](mailto:info@edehr.org). You will be given login credentials to try out EdEHR
+A demonstration mode is currently being implemented. 
+This demo mode mimics a learning management system allowing you to experience both the student's  and the instructor's experiences. 
+For more information write an email to [info@edehr.org](mailto:info@edehr.org). 
 
-## Getting started
 
-Begin by installing an LMS (e.g. Moodle or Canvas). Only with an LMS installed can you access the EdEHR locally.
+## Getting started as a developer
 
-## Installation
-Git clone the repository
+Assumes you have already installed docker, git, npm and nodejs. 
+Git clone the repository.
 ```
 cd /your/development/area
-git clone https://github.com/BCcampus/edehr.git
+git clone https://github.com/edehr/edehr.git
 ```
 
 After cloning the repository or to update packages used by the server or client run this one-step install script:
@@ -87,15 +88,16 @@ npm run dev:stop
 
 ## Run Production
 
-When all changes have been made locally and you wish to update your production server, follow the instructions below.
+To run a "production" instance you check out the code as above and have the prerequisite tools installed.
+You have run the 'npm run install' set up script.
 
-First build the client vue project.
+Step 1. Build the client vue project.
 ```
 # in project root
 npm run build
 ```
 
-Starts all the components with one script, each in their own docker container.
+Step 2. Start the components, each in their own docker container.
 ```
 cd deployment
 # to build the containers and start attached to see debug logs
@@ -113,25 +115,27 @@ npm run lint
 ```
 
 ### Test
-Run test on both the client and server code base. From project root:
+Run tests on both the client and server code base. From project root:
 ```
 npm run test
 ```
 
 ## EHR screen generation
-There are over 40 EHR screens that are generated using a Google spreadsheet. This spreadsheet generates each screen's form layout, table layout, modal forms and can include option default data to include in the seed.
+There are over 40 EHR screens that are generated using a Google spreadsheet.
+For more information about this spreadsheet write an email to [info@edehr.org](mailto:info@edehr.org).
+This spreadsheet defines each screen's form layout, table layout, modal forms and can include option 
+default data to include in the case study "seed".
 
-If you wish to make edits to the screens or the defaut data, copy a version of the spreadsheet to your own Google Drive account (downloading and opening in Excel is not supported) and make the edits there. Copy the data from the furthest right-hand columns into the respective file in the ```makeEhr``` directory.
+If you wish to make edits to the screens or the default data, copy a version of the spreadsheet 
+to your own Google Drive account (downloading and opening in Excel is not supported) and make the edits there. 
+Copy the data from the furthest right-hand columns into the raw data file in the ```makeEhrV2/raw_data``` directory.
 
 Run the following command:
 ```
 cd makeEhrV2
-```
-Then
-```
 ./deploy.sh --lint
 ```
-Pro tip: The ```--lint``` option can be replaced with ```-l```. 
+Pro-tip: The ```--lint``` option can be replaced with ```-l```. 
 
 You must use this lint option before submitting files. If you are 
 making changes to view locally in multiple steps, you can shorten the time it takes to run the command by leaving ```lint``` out of the command. 
@@ -140,38 +144,38 @@ Please remember to run the script with lint when you are done and ready to submi
 
 ## Backing Up and Restoring the Database
 
-1. Accessing the Mongo Shell
-   
-    As mentioned, the system is running MongoDB as the database, usually in a Docker instance. There might be, however, the need to access the shell in order to run scripts at the database level. This can be done by running:
+The MongoDB database is running in a Docker container and you need to be inside this container to run the 
+database backup tools.  We have a npm script to make this step easy.
+```
+npm run shell:mongo
+```
+Restore and backup scripts are located in the /data directory. Data files are
+placed in a docker volume so after you create a backup you can exit the docker container and
+find the backup on your machine in `database/backup/dump`).
+Inside the Mongo Shell, run:
+ ```
+ cd data/
+ ```
 
-    ```
-    npm run shell:mongo
-    ```
-2. Running the restore and backup scripts should be easy, since a volume has been implemented with the backup and restore scripts for all given databases (production and development), you access the scripts by accessing ``/data/``.
+To run the backup script is in `./backup.sh` and
+all the dump data will be placed in `data/dump/` (`database/backup/dump` outside of the container) 
 
-    Inside the Mongo Shell, run:
-    ```
-    cd data/
-    ```
+A restore script, `./restore.sh`  restores based on the contents in the `dump/`. 
 
-3. In order to run the backup script, please run `./backup.sh` and then all the dump data will be set to `data/dump/` (and, at the same time will be set to the volume, which is, by default in `database/backup/dump`).
-   In order to run the restore script, simply run `./restore.sh` and everything in the `dump/` folder will be restored. 
-
-   ``Note``: It might be needed to give permission to the script files. In case this happens, please, run:
-
-   ```
-    chmod +x *.sh 
-   ```
+``Note``: It might be needed to change the permissions of the script files to be able to execute them.
+```
+chmod +x *.sh 
+```
 
 
 ## Contributing
-EdEHR is an open source project and we encourage contributions. Please read CONTRIBUTING.md before contributing.
+EdEHR is an open source project, and we encourage contributions. Please read CONTRIBUTING.md before contributing.
 
 
 ## Documentation
-For more details about this project, [view the documentation](https://bccampus.github.io/edehr/)
+For more details about this project, [view the documentation](https://edehr.github.io/edehr/)
 
-Alternatively, you can run a local documentatiom server by running the following command in your terminal:
+Alternatively, you can run a local documentation server by running the following command in your terminal:
 ```
 npm run docs:dev
 ```

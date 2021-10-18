@@ -5,7 +5,7 @@ On the server with a user that has sudo privileges
 Install on server:
 ```
 cd /opt
-sudo git clone git@github.com:BCcampus/edehr.git
+sudo git clone git@github.com:edehr/edehr.git
 sudo chown -R "$USER":www-data edehr/
 cd edehr
 # See main readme for remaining install and statup instructions

@@ -7,7 +7,7 @@ sidebarDepth: 0
 > Possible areas for future development.
 
 ## Issues
-This open source project tracks issue in the [git issues board](https://github.com/BCcampus/edehr/issues). This is the official location to discuss features (large and small) and defects. The following are examples of some larger features that might be considered.
+This open source project tracks issue in the [git issues board](https://github.com/edehr/edehr/issues). This is the official location to discuss features (large and small) and defects. The following are examples of some larger features that might be considered.
 
 > Todo: ensure there is a git issue for each of the following
 

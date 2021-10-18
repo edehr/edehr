@@ -15,12 +15,12 @@
   "license": "AGPL-3.0-or-later",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BCcampus/edehr"
+    "url": "git+https://github.com/edehr/edehr"
   },
   "bugs": {
-    "url": "https://github.com/BCcampus/edehr/issues"
+    "url": "https://github.com/edehr/edehr/issues"
   },
-  "homepage": "https://github.com/BCcampus/edehr#readme",
+  "homepage": "https://github.com/edehr/edehr#readme",
   "scripts": {
     "start:db": "cd database && docker-compose up -d",
     "stop:db": "cd database && docker-compose down",
