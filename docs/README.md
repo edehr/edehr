@@ -5,7 +5,7 @@ The EdEHR simulates the interaction a nurse, doctor, pharmacist or other medical
 
 A stakeholder group formed by individuals from from BCIT, Douglas College, UBC, and UVic helped to research and develop requirements that were used as a foundation for the project. The goal of that stakeholder group and this project was to build a pilot-ready, minimum viable product to give students access to an EHR system in classrooms before they work in a professional setting.
 
-- [GitHub repository](https://github.com/BCcampus/edehr)
+- [GitHub repository](https://github.com/edehr/edehr)
 - [BCcampus announcement](https://bccampus.ca/2018/01/23/bccampus-launches-the-educational-electronic-health-record-system-project-in-b-c/)
 
 ## About the EdEHR
@@ -42,4 +42,4 @@ The EHR screens are made up of forms and prepopulated patient data and reports. 
 
 ## Continuing development
 
-There are many opportunities to add new features and functionality to the EdEHR. For a current list of issues we're tackling, see our [GitHub project board](https://github.com/BCcampus/edehr/projects/2).
+There are many opportunities to add new features and functionality to the EdEHR. For a current list of issues we're tackling, see our [GitHub project board](https://github.com/edehr/edehr/projects/2).

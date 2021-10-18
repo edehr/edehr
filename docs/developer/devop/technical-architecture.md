@@ -31,7 +31,7 @@ Agile tasks: Github
 
 Documentation: Markdown
 
-Source Control: Github git@github.com:BCcampus/edehr.git or [https://github.com/BCcampus/edehr.git](https://github.com/BCcampus/edehr.git)
+Source Control: Github git@github.com:edehr/edehr.git or [https://github.com/edehr/edehr.git](https://github.com/edehr/edehr.git)
 
 Developers should fork the main repo and submit squashed PRs
 

@@ -4,7 +4,7 @@
 
 Open source means all the code and documentation is publicly available,
 all the time, even while under development.
-[Git code repository](https://github.com/BCcampus/edehr)
+[Git code repository](https://github.com/edehr/edehr)
 
 From [https://opensource.org/licenses](https://opensource.org/licenses). The following OSI-approved licenses are popular, 
 widely used, or have strong communities:

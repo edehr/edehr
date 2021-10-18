@@ -2,7 +2,7 @@ const path = require("path");
 
 module.exports = {
   title: 'EdEHR a prototype project',
-  description: 'EdEHR is an open source, LTI-compatable learning tool for students in post-secondary medical programs. EdEHR gives students the opportunity to learn about Electronic Health Record (EHR) systems in a classroom or sim lab setting before working in a professional environment.',
+  description: 'EdEHR is an open source, LTI-compatible learning tool for students in post-secondary medical programs. EdEHR gives students the opportunity to learn about Electronic Health Record (EHR) systems in a classroom or sim lab setting before working in a professional environment.',
   base: "/edehr/",
   themeConfig: {
     displayAllHeaders: false,
