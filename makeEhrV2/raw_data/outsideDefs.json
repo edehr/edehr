@@ -1,5 +1,6 @@
 [
   { "path": "", "routeName": "help", "zone": "public"},
+  { "path": "", "routeName": "privacy", "zone": "public"},
 
   { "path": "", "routeName": "assignments", "zone": "lms"},
   { "path": "", "routeName": "classList", "zone": "lms"},

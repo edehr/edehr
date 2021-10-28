@@ -6,6 +6,7 @@ module.exports = {
   base: "/edehr/",
   themeConfig: {
     displayAllHeaders: false,
+    lastUpdated: 'Last Updated', // string | boolean
     nav: [
       {text: 'LMS admin', link: '/lms-admin/'},
       {text: 'Course designer', link: '/course-designer/'},

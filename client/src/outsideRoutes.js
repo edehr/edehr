@@ -9,6 +9,13 @@ export function outside () {
       meta: { layout: 'outside', label: 'Help', zone: 'public' }
     },
     {
+      path: '/privacy',
+      name: 'privacy',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Privacy.vue'),
+      meta: { layout: 'outside', label: 'Privacy', zone: 'public' }
+    },
+    {
       path: '/assignments',
       name: 'assignments',
       component: () =>
@@ -63,13 +70,6 @@ export function outside () {
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Consumers.vue'),
       meta: { layout: 'outside', label: 'Consumers', zone: 'admin' }
-    },
-    {
-      path: '/users/:id',
-      name: 'users',
-      component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Users.vue'),
-      meta: { layout: 'outside', label: 'Users', zone: 'admin' }
     },
     {
       path: '/demo',
