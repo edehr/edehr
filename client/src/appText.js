@@ -8,7 +8,7 @@ export const appText = {
   },
   "resources": {
     "title": "About the EdEHR and Resources",
-    "body": "The EdEHR is a <a href=\"https://bccampus.ca/\">BCcampus</a> project funded by the British Columbia Ministry of Advanced Education, Skills and Training. Here is a link to the <a href=\"https://bccampus.ca/2018/01/23/bccampus-launches-the-educational-electronic-health-record-system-project-in-b-c/\">BCcampus announcement</a> and you can read more about the announcement in this BCcampus <a href=\"https://bccampus.ca/2020/01/07/an-education-in-electronic-health-records/\">blog post</a>.\nThe EdEHR project requirements are based on this <a href=\"http://solr.bccampus.ca:8001/bcc/file/cfc0515c-296f-4711-9811-8be605e661e4/1/EdEHR_Env_Scan_June%204_2018-%20Published.pdf\">Environmental Scan Report</a> published June 4, 2018. And the project was directed by a stakeholder group from the British Columbia Institute of Technology (<a href=\"https://www.bcit.ca/\">BCIT</a>), the University of British Columbia (<a href=\"https://www.ubc.ca/\">UBC</a>), and the University of Victoria (<a href=\"https://www.uvic.ca/\">UVic</a>)\nTo learn more see<ul><li> <a href=\"https://edehr.github.io/edehr/\">the EdEHR Documentation</a> </li><li> <a href=\"https://github.com/edehr/edehr\">the open source GitHub code repository</a> </li><li> <a href=\"https://www.youtube.com/channel/UCVlhKFf-VHqp3JAY3TDIemw\">some demonstration videos on YouTube</a> </li></ul>\nIf you need help or have a question about the EdEHR then send an email to <a href=\"mailto:info@edehr.org\">info@edehr.org</a>"
+    "body": "The EdEHR is a <a href=\"https://bccampus.ca/\">BCcampus</a> project funded by the British Columbia Ministry of Advanced Education, Skills and Training. Here is a link to the <a href=\"https://bccampus.ca/2018/01/23/bccampus-launches-the-educational-electronic-health-record-system-project-in-b-c/\">BCcampus announcement</a> and you can read more about the announcement in this BCcampus <a href=\"https://bccampus.ca/2020/01/07/an-education-in-electronic-health-records/\">blog post</a>.  The EdEHR project requirements are based on this <a href=\"http://solr.bccampus.ca:8001/bcc/file/cfc0515c-296f-4711-9811-8be605e661e4/1/EdEHR_Env_Scan_June%204_2018-%20Published.pdf\">Environmental Scan Report</a> published June 4, 2018. And the project was directed by a stakeholder group from the British Columbia Institute of Technology (<a href=\"https://www.bcit.ca/\">BCIT</a>), the University of British Columbia (<a href=\"https://www.ubc.ca/\">UBC</a>), and the University of Victoria (<a href=\"https://www.uvic.ca/\">UVic</a>)\nTo learn more see<ul><li> * <a href=\"https://edehr.github.io/edehr/\">the EdEHR documentation site</a> </li><li> * <a href=\"https://github.com/edehr/edehr\">the EdEHR open source code repository on GitHub</a> </li><li> * <a href=\"https://www.youtube.com/channel/UCVlhKFf-VHqp3JAY3TDIemw\">some videos on YouTube that demonstrate how the EdEHR works</a> </li></ul>\nIf you need further help or have a question about the EdEHR then send an email to <a href=\"mailto:info@edehr.org\">info@edehr.org</a>"
   },
   "related": {
     "title": "Related resources",
@@ -16,7 +16,7 @@ export const appText = {
   },
   underDevelopment : {
     title: 'Ready for further development!',
-    body: 'In so many ways the EdEHR is still a prototype yet it has many capabilities that other educational EHRs lack. Yet there are many more features to be developed.  Currently we are working on <ul><li>ability to add data files to each assignment. For example, add an x-ray to fit the simulated case</li><li>a demonstration mode</li></ul>\n And someday with funding we could work on <ul><li>course content development, sharing and versioning<li></li><li>a communication component between the health care team so that students can collaborate on a single data set</li><li>add accessibilty</li><li>provide a French version</li><li>and so much more</li><ul>'
+    body: 'In so many ways the EdEHR is still a prototype yet it has many capabilities that other educational EHRs lack. Yet there are many more features to be developed.  Currently we are working on <ul><li>ability to add data files to each assignment. For example, add an x-ray to fit the simulated case</li><li>a demonstration mode</li></ul>\n And someday with funding we could work on <ul><li>course content development, sharing and versioning<li></li><li>a communication component between the health care team so that students can collaborate on a single data set</li><li>add accessibility</li><li>provide a French version</li><li>and so much more</li><ul>'
   }
 }
 
@@ -24,11 +24,15 @@ export const helpText = {
   // Help page also uses appText.resources.body
   student: {
     title: 'Student',
-    body: 'Are you a student having trouble with the app or need help with your assignment? Contact your instructor for help.  For information about the EdEHR see the <a href="https://edehr.github.io/edehr/student/">Student guide</a>'
+    body: 'If you are a student and need help with your assignment then please contact your instructor.  For information about the EdEHR then please see the <a target="_blank" href="https://edehr.github.io/edehr/student/">student guide</a>'
   },
   instructor: {
     title: 'Instructor',
-    body: 'Are you an instructor and need help? Then reach out to <a href="mailto:info@edehr.org">info@edehr.org</a> or see the <a href="https://edehr.github.io/edehr/instructor/">Instructor guide</a>\n'
+    body: 'If you are an instructor and need help then please see the <a target="_blank" href="https://edehr.github.io/edehr/instructor/">instructor guide</a>.  If you can\'t find what you need then send your question to <a href="mailto:info@edehr.org">info@edehr.org</a>\n'
+  },
+  lmsadmin: {
+    title: 'LMS Administrator',
+    body: 'If you are an administrator of a learning management system (LMS) and want to know how easy it is to connect your LMS to a running instance of EdEHR then then please see the <a target="_blank" href="https://edehr.github.io/edehr/lms-admin/">LMS Admin guide</a>.  If you can\'t find what you need then send your question to <a href="mailto:info@edehr.org">info@edehr.org</a>\n'
   }
 }
 

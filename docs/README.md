@@ -1,30 +1,38 @@
-# Introduction 
+# Introduction to the EdEHR
 The Educational Electronic Health Record application is a [BCcampus](https://bccampus.ca) [open-source](/developer/contributors.md) project funded by the Ministry of Advanced Education, Skills and Training. 
 
-The EdEHR simulates the interaction a nurse, doctor, pharmacist or other medical practitioner would have using a professional EHR.
+The EdEHR simulates the interaction a nurse, doctor, pharmacist or other medical practitioner would have using a professional EHR system. An alternative name for EHR is electronic medical record (EMR) system.
 
-A stakeholder group formed by individuals from from BCIT, Douglas College, UBC, and UVic helped to research and develop requirements that were used as a foundation for the project. The goal of that stakeholder group and this project was to build a pilot-ready, minimum viable product to give students access to an EHR system in classrooms before they work in a professional setting.
+A stakeholder group comprised of stakeholders from 
+the British Columbia Institute of Technology (<a href="https://www.bcit.ca/">BCIT</a>), 
+the University of British Columbia (<a href="https://www.ubc.ca/">UBC</a>), 
+and the University of Victoria (<a href="https://www.uvic.ca/">UVic</a>
+formed to research and develop the requirements that were used as a foundation for the project. The goal of that stakeholder group and this project was to build a pilot-ready, "minimum viable product" to give students access to an EHR system in classrooms before they work in a professional setting.
 
 - [GitHub repository](https://github.com/edehr/edehr)
 - [BCcampus announcement](https://bccampus.ca/2018/01/23/bccampus-launches-the-educational-electronic-health-record-system-project-in-b-c/)
 
-## About the EdEHR
+The three main ways people interact with the EdEHR are; as a student learning about how best use an electronic health record system in clinical situations, as an instructor in a health teaching environment, or as an administrator of the learning management system for a health education insitition that wishes to use an instance of the EdEHR. 
 
-The EdEHR experience is broken down into the following three areas:
+All these interactions start in a learning management system (an LMS). Some typical learning management systems include
+[Moodle](https://moodle.org/),
+[Canvas](https://www.canvaslms.com/),
+[Blackboard](https://www.blackboard.com), and
+[D2L](https://www.d2l.com/).
+All of these learning management systems support a standard method of using external content provided by another application that is called LTI. You can read more about this in the [LMS Admin](/lms-admin) section of this documentation. 
 
+All students and instructors log into their LMS and view their course work.  If their LMS is configured to use the EdEHR then they will be able to access the EdEHR and complete their course work.  The EdEHR can only be accessed via an LMS connection.  So, the LMS provides the user authentication and authorization (e.g. student or instructor)
 
-### Learning management system
+## The EdEHR instance
 
-A LMS is needed to access the EdEHR. It provides user authentication and stores the courses and student lists that the EdEHR pulls from to know which students need access to specific assignments. 
+There are two ways a learning institution can access the EdEHR. The first is to take advantage of the open source nature of this project and run the EdEHR application on internal servers. This approach requires intensive effort from your institution's IT team, but it does mean that all data in the application remains within the control of your institution. To learn more about this approach see the open source repository [here](https://github.com/edehr/edehr).
 
-The LMS is installed and managed by each post secondary institution using the EdEHR. 
+The second way to use EdEHR is through a shared service operated outside the institution. The original developer of EdEHR offers this software as a not for profit service at
+[edehr.org](https://edehr.org). To learn more about how your learning institution can use this service please email <a href="mailto:info@edehr.org">info@edehr.org</a>.
+Click [here](https://edehr.org/privacy) to read the <strong>privacy policy</strong> for the edehr.org service.
 
-Examples include:
-- [Moodle](https://moodle.org/)
-- [Canvas](https://www.canvaslms.com/)
-- [Blackboard](https://www.blackboard.com)
-- [D2L](https://www.d2l.com/)
- 
+By using a shared service several learning instutions can share the cost of operation as well as share ideas for best peda  gogical practices.
+
 
 ### Assignment configuration and management
 
