@@ -1,4 +1,4 @@
-FROM nginx:1.15-alpine
+FROM nginx:stable-alpine
 
 ARG NODE_ENV
 ARG DOMAIN
