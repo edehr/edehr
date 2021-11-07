@@ -119,14 +119,6 @@ describe('General testing', () => {
     })
   })
 
-  it('setApiURL', done => {
-    should.doesNotThrow(() => {
-      const APIUrl = mockData.apiUrl
-      StoreHelper.apiUrlSet(APIUrl)
-      done()
-    })
-  })
-
   it('getApiURL', done => {
     should.doesNotThrow(() => {
       const APIUrl = mockData.apiUrl

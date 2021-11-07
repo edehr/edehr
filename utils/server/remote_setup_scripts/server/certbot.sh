@@ -8,7 +8,7 @@
 #apt-get update
 #apt-get install certbot -t stretch-backports -y
 
-sudo apt install certbot python3-certbot-nginx
+sudo apt install -y certbot python3-certbot-nginx
 
 #verify
 certbot --version

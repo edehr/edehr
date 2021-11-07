@@ -27,11 +27,13 @@ The following can be used to generate a ssh key
 ssh-keygen -t ecdsa -b 256 -f ~/.ssh/keyForDroplet.pub
 ```
 
-## Usage
+## Server setup
 
-1) Login to your Digital Ocean account and create a new virtual Ubuntu 20.4 server ("droplet").  The remote server must have your public ssh key installed -- for example `~/.ssh/id_rsa.pub
+The goal is to be able to easily setup a server, from the developer's computer. This server must be locked down to prevent root access, to prevent password login (requires ssh key), and to create one user with sudo privileges. The setup copies more setup script files to the remote server to be used to complete setup.  This documentation describes how the edehr.org Saas manages this task.  In brief, we create a virtual server on DigitalOcean and then configure it.
 
-2) Then on a local machine
+1) Login to your Digital Ocean account and create a new virtual Debian (latest stable) server ("droplet").  The remote server must have your public ssh key installed -- for example `~/.ssh/id_rsa.pub
+2) On the development machine, in a terminal session, change directory to the /utils/server folder. Edit a local copy of a .env file (see sample.env). 
+   1) Run ```./droplet_setup.sh```.  This step secures the ssh access, sets up the firewall, 
 
 ```bash
 cp sample.env .env

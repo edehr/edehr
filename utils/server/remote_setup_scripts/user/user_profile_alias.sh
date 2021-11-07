@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Script to add custom aliases located in resource/custom_aliases
 
 echo "HOME is $HOME"
 echo "PWD is $PWD"
@@ -10,8 +11,7 @@ CUSTOM_ALIAS_TEST_TEXT=customAliases
 USER_BASH=$UH/.bashrc
 USER_ALIAS=$UH/$ALIAS_FILENAME
 
-addCustom=0
-addToProfile=0
+# setup some flags that will be adjusted based on the set of tests below. Then the flags determine what work is done.
 addAliasToBash=0
 addAliases=0
 createAliases=0
@@ -19,7 +19,7 @@ createAliases=0
 echo "See if $USER_BASH and $CUSTOM_ALIAS_FILE exist"
 if [ -f $CUSTOM_ALIAS_FILE ]  && [ -f $USER_BASH ]; then
   echo "Yes. So next see if $USER_BASH imports $ALIAS_FILENAME"
-  if ! grep -q $ALIAS_FILENAME $USER_BASH; then
+  if ! grep -q $ALIAS_FILENAME "$USER_BASH"; then
     echo "No so set a flag to update $USER_BASH"
     addAliasToBash=1;
   fi
@@ -27,7 +27,7 @@ if [ -f $CUSTOM_ALIAS_FILE ]  && [ -f $USER_BASH ]; then
   echo "See if $ALIAS_HOME exists"
   if [ -f $ALIAS_HOME ]; then
     echo "yes it does so see if $USER_ALIAS contains the text: $CUSTOM_ALIAS_TEST_TEXT"
-    if grep -q $CUSTOM_ALIAS_TEST_TEXT $USER_ALIAS
+    if grep -q $CUSTOM_ALIAS_TEST_TEXT "$USER_ALIAS"
     then
       echo "Yes so we do nothing to $USER_ALIAS"
       addAliases=0
@@ -46,15 +46,15 @@ echo "Now do our work. The flags are addAliasToBash=$addAliasToBash  createAlias
 if [ $addAliasToBash -gt 0 ]; then
   echo "Get $USER_BASH to source alias file"
   REF="if [ -f ~/.bash_aliases ]; then . ~/.bash_aliases; fi"
-  echo $REF >> ${USER_BASH}
+  echo "$REF" >> "${USER_BASH}"
 fi
 
 if [ $createAliases -gt 0 ]; then
   echo "Copy $CUSTOM_ALIAS_FILE to $USER_ALIAS"
-  cp $CUSTOM_ALIAS_FILE $USER_ALIAS
+  cp $CUSTOM_ALIAS_FILE "$USER_ALIAS"
 fi
 
 if [ $addAliases -gt 0 ]; then
   echo "Insert $CUSTOM_ALIAS_FILE into $USER_ALIAS"
-  cat $CUSTOM_ALIAS_FILE >> $USER_ALIAS
+  cat $CUSTOM_ALIAS_FILE >> "$USER_ALIAS"
 fi

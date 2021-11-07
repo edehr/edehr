@@ -10,6 +10,11 @@ echo Update system
 apt-get update && apt-get -y upgrade
 
 echo Installing essentials
-apt-get install -y git curl git-core wget
+apt-get install -y sudo git curl git-core wget
+
+mkdir -p /opt/edehr/setup_scripts
+chown -R :edehr edehr/
+chmod -R 770 /opt/edehr
+chmod -R 770 /opt/edehr/setup_scripts
 
 exit
