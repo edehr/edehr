@@ -24,11 +24,11 @@ useradd -G users,sudo,ssh-access,docker,edehrgroup -m -s /bin/bash -p $(echo "${
 id "${new_user}"
 
 echo Copy public SSH keys installed by Digital Ocean in root into new users home directory
-cp -R /root/.ssh/ "${new_user_homedir}"
 mkdir -p "${new_user_homedir}"/.ssh
+cp -R /root/.ssh/ "${new_user_homedir}"
+chown -R "${new_user}" "${new_user_homedir}"/.ssh
 chmod 700 "${new_user_homedir}"/.ssh
 chmod 600 "${new_user_homedir}"/.ssh/*
-chown -R "${new_user}":edehrgroup "${new_user_homedir}"/.ssh
 ls -alR "${new_user_homedir}"/.ssh
 
 echo "alias ll='ls -lah'" >> "${new_user_homedir}"/.bashrc

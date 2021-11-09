@@ -16,7 +16,7 @@ ____HERE
 }
 
 echo Import the configuration
-. ../.env
+. .env.setup
 
 echo Domain "$domain_name"
 

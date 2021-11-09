@@ -13,7 +13,7 @@ ____HERE
 }
 
 echo Import the configuration
-. ../.env
+. .env.setup
 
 echo Domain "$domain_name"
 
@@ -22,9 +22,7 @@ if [[ -z "$domain_name" || -z "$secret" ]]; then
     exit
 fi
 
-cd /opt/edehr
-cd project
-cd deployment
+cd /opt/edehr/project/deployment
 FILE=prod.env
 BFILE=prod.env.bak
 if [ ! -f "BFILE" ]; then

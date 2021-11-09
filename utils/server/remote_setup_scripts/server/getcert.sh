@@ -6,7 +6,7 @@
 # in a container. If the server is running nginx then the instance inside the container will not be visible.
 
 function usage() {
-    echo "Usage $0 domain_name"
+    echo "Usage $0 with .env.setup file containing domain_name and cert_email_admin"
     cat <<-____HERE
     This script sets up SSL certs with certbot, without prompts.
     MUST run this script with sudo.
@@ -16,7 +16,7 @@ ____HERE
 }
 
 echo Import the configuration
-. ../.env
+. .env.setup
 
 echo Domain "$domain_name"
 

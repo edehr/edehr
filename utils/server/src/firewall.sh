@@ -2,6 +2,9 @@
 
 apt-get install -y ufw
 
+# disable IPv6 to reduce areas open to exploit.
+sed -i 's/IPV6=yes/IPV6=no/g' /etc/default/ufw
+
 ufw default deny incoming
 ufw default allow outgoing
 

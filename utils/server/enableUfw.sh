@@ -4,7 +4,7 @@
 # You can run this after droplet_setup.sh if you happened to NOT accept the final question.
 
 echo Import the configuration
-. .env
+. .env.setup
 
 echo Server "$server_ip"
 
