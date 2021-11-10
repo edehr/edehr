@@ -25,6 +25,16 @@ if [[ -z "$domain_name" || -z "$cert_email_admin" ]]; then
     exit
 fi
 
+# this next step will adjust the nginx setup with the correct domain.
 certbot --nginx --non-interactive --agree-tos --domains $domain_name --email $cert_email_admin
 
+echo 'Stop nginx after obtaining the certs because EdEHR does not need nginx to run at the server level. It will run nginx in a Docker container.'
+echo 'systemctl stop nginx'
 systemctl stop nginx
+
+echo 'Prevent this server level nginx from starting after a reboot'
+echo 'systemctl disable nginx'
+systemctl disable nginx
+
+echo The next line should show nginx is disabled
+sudo systemctl list-unit-files | grep nginx

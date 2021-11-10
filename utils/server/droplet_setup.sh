@@ -37,7 +37,8 @@ echo Import the configuration
 . .env.setup
 . .env.user
 
-if [[ -z "$server_ip" || -z "$domain_name" || -z "$server_name" ]]; then
+# test the env files contain all the expected values even though some are not needed for this particular setup script.
+if [[ -z "$server_ip" || -z "$domain_name" || -z "$server_name" || -z "$secret" || -z "$cert_email_admin" ]]; then
     echo Incomplete .env.setup file
     usage
     exit
@@ -93,8 +94,8 @@ ssh  "${address}" chown -h ${new_user} /home/"${new_user}"/edehr
 echo ''
 echo ''
 echo '************* Enable Firewall -- Disable Root *******************'
-echo After this command is executed, root can no longer ssh
-echo You can say no. Then test that you can log in as "$new_user". Then come back here and run the enableUfw.sh
+echo After this next command is executed, root will no longer be able ssh onto the server.
+echo You can say no. Then test that you can log in as "$new_user" then run the same command using enableUfw.sh
 # next two lines are also in:  enableUfw.sh
 read -p "Continue? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || next
 ssh "${address}" 'service ssh restart; ufw --force enable; ufw status'

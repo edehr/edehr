@@ -13,7 +13,7 @@ ____HERE
 }
 
 echo Import the configuration
-. .env.setup
+. ../.env.setup
 
 echo Domain "$domain_name"
 
@@ -28,12 +28,11 @@ BFILE=prod.env.bak
 if [ ! -f "BFILE" ]; then
     cp $FILE $BFILE
 fi
-sed -i "s/AUTH_TOKEN_SECRET=changeThisJwtTokenSecretOnProdServer/AUTH_TOKEN_SECRET=${secret};/g" $FILE
-sed -i "s/COOKIE_SECRET=changeThisCookieSecretOnProduction/COOKIE_SECRET=${secret};/g" $FILE
-sed -i "s/MONGODB_PWORD=protectTheDatabase/MONGODB_PWORD=${secret};/g" $FILE
-
-sed -i "s/API_HOST=edehr.org/API_HOST=${domain_name};/g" $FILE
-sed -i "s/CLIENT_HOST=edehr.org/CLIENT_HOST=${domain_name};/g" $FILE
+sed -i "s/AUTH_TOKEN_SECRET=.*/AUTH_TOKEN_SECRET=${secret}/g" $FILE
+sed -i "s/COOKIE_SECRET=.*/COOKIE_SECRET=${secret}/g" $FILE
+sed -i "s/MONGODB_PWORD=.*/MONGODB_PWORD=${secret}/g" $FILE
+sed -i "s/API_HOST=.*/API_HOST=${domain_name}/g" $FILE
+sed -i "s/CLIENT_HOST=.*/CLIENT_HOST=${domain_name}/g" $FILE
 
 cat $FILE
 

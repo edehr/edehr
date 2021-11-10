@@ -7,9 +7,14 @@ echo Import the configuration
 . .env.setup
 
 echo Server "$server_ip"
+if [[ -z "$server_ip" ]]; then
+    echo Incomplete .env.setup file
+    usage
+    exit
+fi
 
 echo Enable changes to the firewall and SSH Daemon
 echo After this command is executed, root can no longer ssh
 read -p "Continue? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
-ssh -i "${keyfile}" root@"${server_ip}" 'service ssh restart; ufw --force enable; ufw status'
+ssh root@"${server_ip}" 'service ssh restart; ufw --force enable; ufw status'
 

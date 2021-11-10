@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
 
-cd /opt/edehr
-cd project
-cd client
+cd /opt/edehr/project/client
 npm run build

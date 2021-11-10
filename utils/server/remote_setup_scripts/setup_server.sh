@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-# run this script as a user with sudo on the server
-# sudo ./setup_server.sh
+echo 'Installing Docker, Node, Certbot with Ngnix. Obtain SSL certificate. Install EdEHR.
 set -e
 
 echo ''
@@ -16,17 +15,17 @@ sudo ./server/node.sh
 
 echo ''
 echo ''
-echo '************* Installing Certbot *******************'
+echo '************* Installing Certbot and get SSL certs *******************'
+# Note that installing and using certbot will both install and set up nginx on the server.
+# EdEHR does not want nginx to run at this level because it runs nginx inside a Docker container.
+# The getcert script will disable nginx from starting on reboot.
+# install ....
 sudo ./server/certbot.sh
-
-echo ''
-echo ''
-echo '************* Configure nginx start on boot *******************'
-sudo ./server/nginx.sh
+# get SSL certs ...
 sudo ./server/getcert.sh
 
 echo ''
 echo ''
 echo '************* Clone and setup EdEHR project *******************'
-./server/edehr_install.sh
+./server/edehr_setup.sh
 
