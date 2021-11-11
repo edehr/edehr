@@ -22,18 +22,18 @@ if [[ -z "$domain_name" || -z "$secret" ]]; then
     exit
 fi
 
-cd /opt/edehr/project/deployment
-FILE=prod.env
-BFILE=prod.env.bak
-if [ ! -f "BFILE" ]; then
-    cp $FILE $BFILE
-fi
+FILE=/opt/edehr/project/deployment/prod.env
 sed -i "s/AUTH_TOKEN_SECRET=.*/AUTH_TOKEN_SECRET=${secret}/g" $FILE
 sed -i "s/COOKIE_SECRET=.*/COOKIE_SECRET=${secret}/g" $FILE
 sed -i "s/MONGODB_PWORD=.*/MONGODB_PWORD=${secret}/g" $FILE
 sed -i "s/API_HOST=.*/API_HOST=${domain_name}/g" $FILE
 sed -i "s/CLIENT_HOST=.*/CLIENT_HOST=${domain_name}/g" $FILE
-
+echo ''
+echo Deployment ${FILE}
 cat $FILE
 
-
+CLIENT_ENV=/opt/edehr/project/client/.env.production
+echo VUE_APP_ROOT_API=https://"${domain_name}"/api > $CLIENT_ENV
+echo ''
+echo VUE Client env file: "${CLIENT_ENV}"
+cat $CLIENT_ENV

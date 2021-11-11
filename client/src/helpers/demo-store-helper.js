@@ -15,7 +15,7 @@ export default class DemoStoreHelper {
      */
     let id = Math.random().toString(32).slice(-7)
     const apiUrl = StoreHelper.apiUrlGet()
-    if(debugDH) console.log('DH create consumer for user id ', id, apiUrl)
+    console.log('DemoStoreHelper create consumer for user id ', id, 'apiurl', apiUrl)
     const url = `${apiUrl}/demo/`
     return axios.post(url, { id })
   }
