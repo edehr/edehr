@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 
-echo 'Installing Docker, Node, Certbot with Ngnix. Obtain SSL certificate. Install EdEHR.
+echo 'Installing Docker, Node, Certbot with Ngnix. Obtain SSL certificate. Install EdEHR.'
 set -e
 
 echo ''
 echo ''
 echo '************* Installing Docker *******************'
-sudo ./server/docker20.sh
+sudo ./docker20.sh
 
 echo ''
 echo ''
 echo '************* Installing Node NPM *******************'
-sudo ./server/node.sh
+sudo ./node.sh
 
 echo ''
 echo ''
@@ -20,12 +20,12 @@ echo '************* Installing Certbot and get SSL certs *******************'
 # EdEHR does not want nginx to run at this level because it runs nginx inside a Docker container.
 # The getcert script will disable nginx from starting on reboot.
 # install ....
-sudo ./server/certbot.sh
+sudo ./certbot.sh
 # get SSL certs ...
-sudo ./server/getcert.sh
+sudo ./getcert.sh
 
 echo ''
 echo ''
-echo '************* Clone and setup EdEHR project *******************'
-./server/edehr_setup.sh
+echo 'NEXT clone and setup EdEHR project. Run the edehr_setup script...'
+echo ./edehr_setup.sh
 

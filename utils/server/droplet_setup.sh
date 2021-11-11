@@ -49,10 +49,7 @@ if [[ -z "$new_user" || -z "$password" ]]; then
     exit
 fi
 
-# Create a env file for the remote server. This gets copied below.  Of course we don't push any user passwords.
-#echo server_ip="$server_ip" > ./remote_setup_scripts/.env
-#echo server_name="$server_name" >> ./remote_setup_scripts/.env
-#echo domain_name="$domain_name" >> ./remote_setup_scripts/.env
+echo "************* START remote server ${server_ip} ${server_name} *******************"
 
 echo '***************** Delete Known Host Key - if one exists ********************'
 ssh-keygen -f $HOME/.ssh/known_hosts -R "${server_ip}"
@@ -61,7 +58,7 @@ address=root@"${server_ip}"
 
 echo ''
 echo ''
-echo '************* Secure SSH *******************'
+echo "************* Secure SSH $server_name *******************"
 ssh "${address}" "bash -s" -- < ./src/ssh_daemon.sh
 
 echo ''
@@ -81,9 +78,9 @@ ssh  "${address}" "bash -s" -- < ./src/basic_setup.sh
 
 echo ''
 echo ''
-echo '************* Set up root owned files *******************'
+echo "************* Set up server side setup script files $server_name *******************"
 ssh  "${address}" mkdir -p /opt/edehr/setup_scripts
-scp -r remote_setup_scripts/* "${address}":/opt/edehr/setup_scripts
+scp -r remote_setup_scripts/server/* "${address}":/opt/edehr/setup_scripts
 scp -r .env.setup "${address}":/opt/edehr/setup_scripts/.env.setup
 ssh  "${address}" chmod 770 /opt/edehr
 ssh  "${address}" chmod 770 -R /opt/edehr/*
@@ -95,10 +92,10 @@ echo ''
 echo ''
 echo '************* Enable Firewall -- Disable Root *******************'
 echo After this next command is executed, root will no longer be able ssh onto the server.
-echo You can say no. Then test that you can log in as "$new_user" then run the same command using enableUfw.sh
+echo "You can say no. Then test that you can log in as ${new_user} then run the same command using enableUfw.sh"
 # next two lines are also in:  enableUfw.sh
 read -p "Continue? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || next
 ssh "${address}" 'service ssh restart; ufw --force enable; ufw status'
 
-echo "************* DONE remote server" "${server_ip}" "*******************"
+echo "************* DONE remote server ${server_ip} ${server_name} *******************"
 next
