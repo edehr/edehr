@@ -86,10 +86,6 @@ export const createFile = (content) => {
   return new MockFile(content)
 }
 
-export const setAPIUrl = (apiUrl = mockData.apiUrl) => {
-  StoreHelper.apiUrlSet(apiUrl)
-}
-
 export const commonBeforeEach = () => {
   setActivityMocks()
   setActivityDataMocks()

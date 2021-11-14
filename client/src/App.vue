@@ -30,6 +30,9 @@ export default {
       }
       return css.join(' ')
     },
+  },
+  mounted () {
+    console.log('VUE_APP_ROOT_API',process.env.VUE_APP_ROOT_API)
   }
 }
 </script>

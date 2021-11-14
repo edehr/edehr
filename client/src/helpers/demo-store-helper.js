@@ -1,5 +1,6 @@
 import axios from 'axios'
 import qs from 'qs'
+import StoreHelper from '@/helpers/store-helper'
 
 const debugDH = false
 
@@ -13,8 +14,8 @@ export default class DemoStoreHelper {
     short id and add more to make sure it is unique.  The following generates 7 character string like: mpbchrk
      */
     let id = Math.random().toString(32).slice(-7)
-    const apiUrl = this.apiUrl
-    if(debugDH) console.log('DH create consumer for user id ', id, apiUrl)
+    const apiUrl = StoreHelper.apiUrlGet()
+    console.log('DemoStoreHelper create consumer for user id ', id, 'apiurl', apiUrl)
     const url = `${apiUrl}/demo/`
     return axios.post(url, { id })
   }

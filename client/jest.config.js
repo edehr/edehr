@@ -16,7 +16,6 @@ module.exports = {
     '**/src/**/*.{js,vue}',
     '**/tests/**/*.{js,vue}',
     '!**/*.eslintrc.js',
-    '!**/*.config.js',
     '!**/dist/**',
     '!**/node_modules/**',
     '!**/coverage/**',

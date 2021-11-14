@@ -10,7 +10,9 @@
 **/node_modules/**
 **/sessions/**
 **/trash/**
-*/.env
+**/.env
+**/.env.*
+**/.env-*
 client/dist/**
 client/selenium-debug\.log
 client/test/e2e/**

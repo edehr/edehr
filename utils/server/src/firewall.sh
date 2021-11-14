@@ -1,22 +1,16 @@
 #!/usr/bin/env bash
 
-: "${ssh_port:=$1}"
-
-if [[ -z "${ssh_port}" ]]; then
-
-    echo ******** Required parameter ssh_port not set ********
-    exit
-
-fi
-
-
 apt-get install -y ufw
+
+# disable IPv6 to reduce areas open to exploit.
+sed -i 's/IPV6=yes/IPV6=no/g' /etc/default/ufw
 
 ufw default deny incoming
 ufw default allow outgoing
 
 # open ssh port
-ufw allow "${ssh_port}"/tcp
+#ufw allow "${ssh_port}"/tcp
+sudo ufw allow ssh
 
 # open http port
 ufw allow 80/tcp

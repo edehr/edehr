@@ -11,7 +11,7 @@ addCustomToHome=0
 addToProfile=0
 
 echo "See if $USER_BASH and $CUSTOMIZATION_FILE exist"
-if [ -f $USER_BASH ]  && [ -f $CUSTOMIZATION_FILE ]; then
+if [ -f "$USER_BASH" ]  && [ -f $CUSTOMIZATION_FILE ]; then
   echo "Yes. So next see if $USER_BASH imports our customization"
   # test if user profile needs our customization
   if ! grep -q "${CUSTOMIZATION_NAME}" $USER_BASH
@@ -30,11 +30,11 @@ fi
 echo "Now do our work. The flags are addToProfile=$addToProfile  addCustomToHome=$addCustomToHome"
 
 if [ $addToProfile -gt 0 ]; then
-  cp ${USER_BASH} ${USER_BASH}.bak
-  echo 'if [ -f ~/.bash_customize_ssh ]; then source ~/.bash_customize_ssh; fi' >> $USER_BASH
+  cp "${USER_BASH}" "${USER_BASH}".bak
+  echo 'if [ -f ~/.bash_customize_ssh ]; then source ~/.bash_customize_ssh; fi' >> "$USER_BASH"
 fi
 
 if [ $addCustomToHome -gt 0 ]; then
   echo "Copy $CUSTOMIZATION_FILE to $USER_CUSTOM_HOME"
-  cp $CUSTOMIZATION_FILE $USER_CUSTOM_HOME
+  cp $CUSTOMIZATION_FILE "$USER_CUSTOM_HOME"
 fi

@@ -57,9 +57,7 @@ class StoreHelperWorker {
   /**
    * The API server must provide the url to call back into the server.
    */
-  apiUrlGet () { return localStorage.getItem('apiUrl') || undefined }
-  apiUrlSet (url) { localStorage.setItem('apiUrl', url) }
-  // import config from '../../config'
+  apiUrlGet () { return process.env.VUE_APP_ROOT_API }
 
   isReadOnlyInstructor () { return this._getVisitProperty('isReadOnlyInstructor')}
   setIsReadOnlyInstructor (isReadonly = false) { return store.commit('visit/setIsReadOnlyInstructor', isReadonly)}

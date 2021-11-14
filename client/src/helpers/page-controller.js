@@ -1,4 +1,4 @@
-import config from '../../config'
+
 import EventBus from './event-bus'
 import StoreHelper from './store-helper'
 import router from '../router'
@@ -88,12 +88,6 @@ class PageControllerInner {
   }
 
   async _loadData (route) {
-    // to do the following is defective. If the query does not have the url then we use config. But the goal
-    // is to use the url from the query and stash that for later use, over riding the value in config.
-    const apiUrl = route.query.apiUrl ?  route.query.apiUrl : config.apiUrl
-    dblog('_loadData. Store the api url', apiUrl, route.query.apiUrl ?  'from the route' : 'from the config')
-    StoreHelper.apiUrlSet(apiUrl)
-
     const demoToken = StoreHelper.getDemoToken()
     const isDemo = !!demoToken
 
