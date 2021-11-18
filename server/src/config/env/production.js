@@ -3,7 +3,7 @@
 const TRACE_CALLS = true
 // BC Campus server: edehrapp-dev.bccampus.ca
 // Digital Ocean server provided by Bryan https://edehr.org
-const HOST =   process.env.HOST || 'edehr.org'
+const HOST =   process.env.API_HOST || 'edehr.org'
 const SCHEME = process.env.SCHEME || 'https'
 const COOKIE_SECRET = process.env.COOKIE_SECRET
 

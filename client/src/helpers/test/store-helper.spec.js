@@ -119,17 +119,10 @@ describe('General testing', () => {
     })
   })
 
-  it('setApiURL', done => {
-    should.doesNotThrow(() => {
-      const APIUrl = mockData.apiUrl
-      StoreHelper.apiUrlSet(APIUrl)
-      done()
-    })
-  })
-
   it('getApiURL', done => {
     should.doesNotThrow(() => {
-      const APIUrl = mockData.apiUrl
+      process.env.VUE_APP_ROOT_API = 'some url'
+      const APIUrl = process.env.VUE_APP_ROOT_API // mockData.apiUrl
       const storeApiUrl = StoreHelper.apiUrlGet()
       should.exist(storeApiUrl)
       storeApiUrl.should.equal(APIUrl)

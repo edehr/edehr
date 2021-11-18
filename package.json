@@ -26,7 +26,7 @@
     "stop:db": "cd database && docker-compose down",
     "start:client": "cd client && npm run start",
     "start:server": "cd server && npm run start",
-    "build": "cd client && npm run build",
+    "build:client": "cd client && npm run build",
     "run": "echo 'cd to deployment and use package scripts'",
     "install": "npm run install:client && npm run install:server && npm run install:maker",
     "install:client": "cd client && npm install",

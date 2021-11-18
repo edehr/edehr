@@ -34,6 +34,7 @@ if [[ -z "${SERVER_PORT}" ]]; then
     exit
 fi
 
+echo 'Insert "${DOMAIN}" into nginx conf files'
 grep -rl '_DOMAIN' /etc/nginx | xargs sed -i "s|_DOMAIN|${DOMAIN}|g"
 grep -rl '_PROXY_PASS_HOST' /etc/nginx | xargs sed -i "s|_PROXY_PASS_HOST|${PROXY_PASS_HOST}|g"
 grep -rl '_SERVER_PORT' /etc/nginx | xargs sed -i "s|_SERVER_PORT|${SERVER_PORT}|g"
