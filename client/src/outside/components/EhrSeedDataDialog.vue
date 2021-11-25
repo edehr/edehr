@@ -27,10 +27,11 @@
           div(class="grid-left-to-right-1")
             div
               label Contributors
+                ui-info(title="testing ui info", text="content")
               input(class="input", type="text", v-model="contributors")
           div
-            div(v-if="file")
-              div Selected EHR seed file: {{file.name}}
+            div(v-if="seedFile")
+              div Selected EHR seed file: {{seedFile.name}}
               div(v-if="uploadError", class="errorMessage") {{uploadError}}
               div(v-if="hasUploadSeed")
                 div Version: {{uploadSeed.version}}
@@ -56,6 +57,7 @@
 import AppDialog from '../../app/components/AppDialogShell'
 import StoreHelper from '../../helpers/store-helper'
 import UiButton from '../../app/ui/UiButton.vue'
+import UiInfo from '../../app/ui/UiInfo'
 import { readFile, validateSeedFileContents } from '../../helpers/ehr-utils'
 
 const TITLES = {
@@ -72,7 +74,7 @@ const CREATE_ACTION = 'create'
 
 export default {
   name: 'EhrSeedDataList',
-  components: { AppDialog, UiButton },
+  components: { AppDialog, UiButton, UiInfo },
   data () {
     return {
       name: '',
@@ -83,7 +85,7 @@ export default {
       ehrDataString: '',
       actionType: '',
       seedId: '',
-      file: null,
+      seedFile: null,
       upload: false,
       uploadSeed: {},
       uploadError: ''
@@ -125,7 +127,7 @@ export default {
         = this.contributors
         = this.seedId = ''
       this.ehrData = {}
-      this.file = null
+      this.seedFile = null
       this.uploadSeed = {}
       this.uploadError = ''
     },
@@ -135,7 +137,7 @@ export default {
         this.actionType = EDIT_ACTION
         this.name = seedData.name
         this.version = seedData.version
-        this.contributors = seedData.contributors
+        this.contributors = seedData.contributors || ''
         this.ehrData = seedData.ehrData
         this.description = seedData.description
         this.seedId = seedData._id
@@ -144,12 +146,13 @@ export default {
         this.version = '1.0'
         this.ehrData = {}
       }
-      if (! this.contributors || !this.contributors.includes(this.userName)) {
-        console.log(this.contributors, this.userName)
-        let list = this.contributors.split(', ')
+      if (!this.contributors.includes(this.userName)) {
+        console.log('adding user to contrib list', this.contributors, this.userName)
+        let list = this.contributors.length > 0 ? this.contributors.split(', ') : []
+        console.log('adding user to contrib list', list)
         list.push(this.userName)
         let contribs = list.join(', ')
-        console.log('update contributors', contribs)
+        console.log('adding user to contrib list', contribs)
         this.contributors = contribs
       }
       this.$refs.theDialog.onOpen()
@@ -179,7 +182,7 @@ export default {
       this.uploadError = ''
       const file = event.target.files[0]
       this.upload = true
-      this.file = file
+      this.seedFile = file
       readFile(file).then( (contents) => {
         let {seedObj, invalidMsg} = validateSeedFileContents(contents)
         if (invalidMsg) {

@@ -10,7 +10,7 @@
             span Return to &nbsp;
             a(:href="lmsUrl", class="navLink") {{lmsName}}
           div(v-if="isStudent", class="navItem")
-            router-link(:to="{ name: `ehr` }", class="navLink") Assignment
+            router-link(:to="{ name: `ehr` }", class="navLink") Learning Object
           div(class="navItem")
             router-link(:to="{ name: `help` }", class="navLink") About
           div(v-if="isDemo", class="navItem is-pulled-right")
@@ -28,11 +28,11 @@
           div(class="navItem")
             router-link(:to="{ name: `instructor` }", class="navLink") Courses/Activities
           div(class="navItem")
-            router-link(:to="{ name: `assignments` }", class="navLink") Assignments
+            router-link(:to="{ name: `assignments` }", class="navLink") Learning Objects
+          div(class="navItem")
+            router-link(:to="{ name: `developEhrData` }", class="navLink") Seed Data
           div(class="navItem")
             router-link(:to="{ name: `fileList` }", class="navLink") Files
-          div(class="navItem")
-            router-link(:to="{ name: `developEhrData` }", class="navLink") Content
       div(v-if="isDevEnv", class="thirdMenu")
         app-dev-menu
     ui-confirm(class="confirmDialog",ref="confirmDialog", @confirm="demoLogOut", save-label="Logout")
