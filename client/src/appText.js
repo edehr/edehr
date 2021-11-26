@@ -41,7 +41,7 @@ export const demoText = {
   intro: 'Welcome to the Educational Electronic Health Record system demonstration log in page.  EdEHR helps in the education of our future health care workers, be they nurses, doctors, pharmacists, or other healthcare professions. EdEHR gives these students experience using an electronic health record system.\n This demonstration page let\'s you pretend to be an instructor or a student. Here you can "log in" as a user of a simulated learning management system (LMS) and through this get into the EdEHR. This simulated login will connect the same way other systems such as Canvas, Blackboard and Moodle will connect.',
   explanation:
 'In real life your LMS administrator works with an administrator the EdEHR to create connections between the two' +
-    ' systems. These connections are the assignments that instructors can use within their courses.\n This' +
+    ' systems. These connections are the learning objects that instructors can use within their courses.\n This' +
     ' demonstration will provide you with a one page LMS that has connections to the EdEHR that are ready to go.' +
     ' Once you "log in" you will see a fictitious course with sample assignments.\n You can "log in" as either an' +
     ' instructor or a student. Instructors can customize assignment content or evaluate the work of their students.' +

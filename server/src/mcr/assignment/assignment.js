@@ -2,8 +2,15 @@ import mongoose from 'mongoose'
 import uniqueValidator from 'mongoose-unique-validator'
 const ObjectId = mongoose.Schema.Types.ObjectId
 
+/*
+This object is now called a learning object in the client user interface.  Some refactoring of the code
+may be underway that would rename 'assignment' objects into 'learningObject' objects.
+And rename 'externalId' into 'learningObjectId'.   Expect this refactoring to remain partially
+complete for a period of time.
+ */
 const Schema = new mongoose.Schema({
   toolConsumer: {type: ObjectId, ref: 'Consumer', required: true },
+  // TODO rename externalId to learningObjectId
   externalId: {type: String, required: true},
   name: { type: String, required: true},
   description: { type: String },

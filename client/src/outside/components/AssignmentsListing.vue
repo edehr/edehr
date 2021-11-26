@@ -1,95 +1,103 @@
 <template lang="pug">
   div(:class="$options.name")
     bread-crumb(currentPage="assignments")
-    h1 Assignments
+    h1 Learning Objects
     div(v-if="isRespondingToError")
       p Error: {{ isRespondingToError }}
       p Your LMS is asking for "{{ activity.custom_assignment }}".
-      p Adjust your Learning Management System to use an assignment from the list below
+      p Ask your learning management system administrator to use a learning object from the list below
     div(v-show="isDevelopingContent")
-      ui-button(v-on:buttonClicked="showCreateDialog") Create a new assignment
-      ui-button(v-on:buttonClicked="downloadAll") Download all assignments
+      ui-button(v-on:buttonClicked="showCreateDialog") Create a new learning object
+      ui-button(v-on:buttonClicked="downloadAll") Download all learning objects
     div(v-if="validationWarning")
-      p(class="un-configured-warning") {{ validationWarning }}
+      p(class="un-configured-warning") Shaded items below may need some review and edits.
 
     div(class="seedData-list-body")
       div(v-for="item in assignmentsListing", class="card list-element", :class="rowClass(item)")
         div(class="columns")
-          div(class="column is-2")
-            div(class="key") Name
-            div(class="value") {{item.name}}
-          div(class="column is-2")
-            div(class="key") External id
-            div(class="value") {{ item.externalId}}
+          div(class="column is-2 key") {{cText.LO.nameLabel}}
+          div(class="column is-10 value") {{item.name}}
+        div(v-show="isDevelopingContent", class="columns")
+          div(class="column is-2 key") Learning object id
+          div(class="column is-10 value") {{ item.externalId}}
         div(class="columns")
           div(class="column is-2 key") Description
           div(class="column is-10 value")
             div(v-if="item.description.length > 0", v-text-to-html="item.description")
             div(v-else) {{ item.description }}
         div(class="columns")
-          div(class="column is-2")
-            div(class="key") Activities
-            div(class="value") {{ activitiesUsingAssignmentCount(item._id) }}
-          div(class="column is-2")
-            div(class="key") Seed Name
-            div(class="value")
-              ui-link(:name="'developEhrData'", :params="{seedId: item.seedDataObj._id}") {{ item.seedDataObj.name }}
+          div(class="column is-2 key") Used by
+          div(class="column is-10 value") {{ activitiesUsingAssignmentCount(item._id) }} activities
         div(class="columns")
-          div(class="column is-2")
-            div(class="key") Created
-            div(class="value") {{item.createDate | formatDateTime}}
-          div(class="column is-2")
-            div(class="key") Last Update
-            div(class="value") {{item.lastUpdateDate | formatDateTime}}
+          div(class="column is-2 key") Seed data object
+          div(class="column is-10 value")
+            ui-link(:name="'developEhrData'", :params="{seedId: item.seedDataObj._id}") {{ item.seedDataObj.name }}
         div(class="columns")
+          div(class="column is-2 key") Created
+          div(class="column is-10 value") {{item.createDate | formatDateTime}}
+        div(class="columns")
+          div(class="column is-2 key") Last Update
+          div(class="column is-10 value") {{item.lastUpdateDate | formatDateTime}}
+        div(v-show="isDevelopingContent", class="columns")
           div(class="column" align="right")
-            div(class="value")
+            div(class="column is-10 value")
               ui-button(v-on:buttonClicked="showEditDialog", :value="item._id", :secondary="isItemMisconfigured(item)")
-                fas-icon(icon="edit") Edit assignment properties
+                fas-icon(icon="edit") Edit learning object properties
                   //- , v-on:buttonClicked="showDeleteConfirmDialog", :value="item._id",
               ui-button(v-if="canBeDeleted(item)", danger, @buttonClicked="triggerConfirmDeletion(item)")
-                fas-icon(icon="trash")  Edit assignment properties
+                fas-icon(icon="trash")  Edit learning object properties
     assignments-dialog(ref="theDialog")
     ui-confirm(ref="confirmDialog", @confirm="handleDeletion", @abort="resetDeletion", @cancel="resetDeletion", saveLabel="Confirm")
     
 </template>
 
 <script>
-import EventBus from '@/helpers/event-bus'
-import { PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
+import EventBus, { PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
 import UiButton from '../../app/ui/UiButton.vue'
 import UiLink from '../../app/ui/UiLink.vue'
 import UiConfirm from '../../app/ui/UiConfirm'
 import StoreHelper from '../../helpers/store-helper'
-import { getIncomingParams, downObjectToFile } from '../../helpers/ehr-utils'
+import { downObjectToFile, getIncomingParams } from '@/helpers/ehr-utils'
 import BreadCrumb from './BreadCrumb'
 import AssignmentsDialog from './AssignmentsDialog'
+import { Text } from '@/helpers/ehr-text'
 
 // These constants must be kept in sync with the ones defined in the backend
 // in ../src/config/text.js. Please, make sure they're the same, in case of change
-const DEFAULT_ASSIGNMENT_DESCRIPTION = 'This assignment was automatically generated by an LTI request. Please update this description by editing the assignment in the EdEHR.'
+const DEFAULT_ASSIGNMENT_DESCRIPTION = 'This learning object was automatically generated by an LTI request. Please update the description by editing in the EdEHR.'
 const DEFAULT_SEED_NAME = 'Default data'
-const DEFAULT_SEED_DESCRIPTION = 'This ehr data seed can not be modified. It is the default seed used when an assignment is created'
+const DEFAULT_SEED_DESCRIPTION = 'This EHR seed data can not be modified. It is the default seed used when any learning object is created'
 
 const CONFIRM_DELETION_TEXT = {
-  title: 'Confirm assignment deletion?',
+  title: 'Confirm deletion of learning object?',
   description: (name) => `Deleting ${name} will also delete all the data related to it.`
 }
 
 const debug = false
+
+const learningObjectHasDefaultProperty = function (item) {
+  return item.description === DEFAULT_ASSIGNMENT_DESCRIPTION ||
+  DEFAULT_SEED_NAME === item.seedDataObj.name ||
+  DEFAULT_SEED_DESCRIPTION === item.seedDataObj.description
+}
 
 export default {
   name: 'AssignmentsListing',
   data () {
     return {
       isRespondingToError: null,
-      validationWarning: null,
       isAdmin: false,
       selectedAssignment: {}
     }
   },
   components: { AssignmentsDialog, UiButton, UiConfirm, UiLink, BreadCrumb },
   computed: {
+    cText () { return Text },
+    validationWarning () {
+      const list = StoreHelper.getAssignmentsList()
+      return list.find(element => learningObjectHasDefaultProperty(element))
+
+    },
     isDevelopingContent () {
       return StoreHelper.isDevelopingContent()
     },
@@ -129,10 +137,7 @@ export default {
       this.$refs.theDialog.showDialog()
     },
     isItemMisconfigured (item) {
-      this.validationWarning = 'Shaded rows need further configuration. '
-      return item.description === DEFAULT_ASSIGNMENT_DESCRIPTION ||
-        DEFAULT_SEED_NAME === item.seedDataObj.name ||
-        DEFAULT_SEED_DESCRIPTION === item.seedDataObj.description
+      return learningObjectHasDefaultProperty(item)
     },
     canBeDeleted (item) {
       const count = this.activitiesUsingAssignmentCount(item._id)
