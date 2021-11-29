@@ -10,19 +10,19 @@
             td
               div(v-text-to-html="activity.resource_link_description")
           tr
-            td Assignment name:
+            td Learning object name:
             td
               ui-link(:name="'assignments'", :params="{assignmentId: assignment._id}")
                 span {{ assignment.name }}
           tr
-            td Assignment description:
+            td Description:
             td
               div(v-text-to-html="assignment.description")
           tr
             td Class list:
             td
               ui-link(:name="'classList'", :query="{activityId: activityId}")
-                span go to list
+                span go to class list
           tr
             td Status:
             td {{activity.closed ? "Closed" : "Open" }}

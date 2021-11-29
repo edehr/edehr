@@ -7,23 +7,24 @@
           div(class="grid-left-to-right-3")
             div(class="form-element")
               div(class="text_input_wrapper")
-                label Assignment name
+                label {{cText.nameLabel}}
                 input(class="input text-input", type="text", v-model="assignmentName", v-validate="nameValidate")
             div(class="form-element")
               div(class="text_input_wrapper")
-                label External id
+                label Learning object id
                 input(class="input text-input", :disabled="!enableExternalIdEdit", type="text", v-model="externalId", v-validate="externalValidate")
             div(class="form-element")
               div(class="input-element")
-                label Seed data
+                label Seed data object
                 select(v-model="selectedSeed", v-validate="seedValidate")
                   option(value="")
-                  option(v-for="seed in seedOptionList", v-bind:value="seed.id", :selected="seed.selected") {{ seed.name}} {{seed.selected}}
+                  option(v-for="seed in seedOptionList", :value="seed.id", :selected="seed.selected") {{ seed.name}} {{seed.selected}}
           div(class="ehr-group-wrapper")
             div(class="form-element")
               div(class="input-element input-element-full")
                 label Description
                 textarea(class="ehr-page-form-textarea",v-model="description")
+          div(v-if="showPersona")
             hr
             h3 Assignment persona
             div(class="grid-left-to-right-2")
@@ -45,25 +46,26 @@
                 div(class="input-element input-element-full")
                   label Case study time
                   input(class="input text-input", type="text", v-model="time")
-              
+
 </template>
 
 <script>
 import AppDialog from '../../app/components/AppDialogShell'
 import StoreHelper from '../../helpers/store-helper'
-import { validTimeStr } from '../../helpers/ehr-utils'
+import { validTimeStr } from '@/helpers/ehr-utils'
+import { TextLearningObjects } from '@/helpers/ehr-text'
 
 
 const TITLES = {
-  edit: 'Edit assignment properties',
-  create: 'Create a new assignment'
+  edit: 'Edit learning object properties',
+  create: 'Create a new learning object'
 }
 const ERRORS = {
-  ID_IN_USE: (id) => `ExternalId ${id} is already in use`,
-  NAME_REQUIRED: 'Assignment name is required',
-  ID_REQUIRED: 'Assignment externalId is required',
-  ID_PATTERN: 'External Id needs to contain letters, numbers, hypens or underscores',
-  SEED_REQUIRED: 'Assignment EHR data seed is required',
+  ID_IN_USE: (id) => `The learning object id ${id} is already in use. The id is case insensitive so upper and lower case letters are consider the same.`,
+  NAME_REQUIRED: 'Learning object name is required',
+  ID_REQUIRED: 'Learning object id is required',
+  ID_PATTERN: 'Learning object id needs to contain letters, numbers, periods, hyphens or underscores',
+  SEED_REQUIRED: 'Learning object seed data is required',
   INVALID_TIME: 'Please, enter a valid 24hrs time'
 }
 
@@ -86,17 +88,19 @@ export default {
         'Nurse',
         'Pharmacist'
       ],
-      persona: '', 
-      profession: '', 
-      day: '', 
-      time: ''
+      persona: '',
+      profession: '',
+      day: '',
+      time: '',
+      showPersona: false // persona is in prototype stage
     }
   },
   components: { AppDialog },
   computed: {
+    cText () { return TextLearningObjects },
     nameValidate () {
       return this.assignmentName.trim() ? undefined :  ERRORS.NAME_REQUIRED
-    },  
+    },
     timeValidate () {
       if (this.time && this.time.length > 0) {
         return validTimeStr(this.time) ? null : ERRORS.INVALID_TIME
@@ -110,7 +114,7 @@ export default {
       if (!this.externalId) {
         return ERRORS.ID_REQUIRED
       }
-      let re = /^[0-9a-zA-Z\-_]*$/
+      let re = /^[0-9a-zA-Z\-_\.]*$/
       if (!this.externalId.match(re)) {
         return ERRORS.ID_PATTERN
       }
@@ -118,7 +122,7 @@ export default {
       return this.inUseIds.includes(id) ? ERRORS.ID_IN_USE(id) : undefined
     },
     errors () {
-      const errmsg = this.nameValidate || this.seedValidate || this.externalValidate || this.timeValidate 
+      const errmsg = this.nameValidate || this.seedValidate || this.externalValidate || this.timeValidate
       return errmsg ? [errmsg] : []
     },
     disableSave () {
@@ -147,11 +151,11 @@ export default {
         = this.externalId
         = this.ehrRoutePath
         = this.description
-        = this.assignmentId 
-        = this.persona 
-        = this.profession 
+        = this.assignmentId
+        = this.persona
+        = this.profession
         = this.day
-        = this.time 
+        = this.time
         = ''
     },
     showDialog (assignmentData) {
@@ -192,11 +196,12 @@ export default {
         description: this.description,
         seedDataId: sId,
         toolConsumer: StoreHelper.toolConsumerId(this),
-        persona: this.persona, 
+        persona: this.persona,
         profession: this.profession,
         day: this.day,
         time: this.time
       }
+      console.log('save learning object', aAssignment)
       this.$refs.theDialog.onClose()
       if (this.actionType === EDIT_ACTION) {
         return StoreHelper.updateAssignment(this, this.assignmentId, aAssignment)
