@@ -10,14 +10,14 @@ const helper = new Helper()
 const mongoose = require('mongoose')
 const should = require('should')
 const TYPE = 'Admin'
-import { getCreateAdminPassword } from '../../helpers/admin'
+// import { getCreateAdminPassword } from '../../helpers/admin'
 const tokenData = Helper.sampleTokenData()
 const token = Helper.generateToken(tokenData)
 
 debug(`admin-server.spec token >> ${token}`)
 let adminToken
 
-const adminPass = getCreateAdminPassword()
+// const adminPass = getCreateAdminPassword()
 
 describe(`Make server calls on ${TYPE}`, function () {
   let theApp
@@ -32,7 +32,8 @@ describe(`Make server calls on ${TYPE}`, function () {
       })
   })
 
-  it('Admin properly logs in', () => {
+  // TODO update admin password and obtain from .env then update tests
+  it.skip('Admin properly logs in', () => {
     let url = BASE
     return Helper.adminLogin(theApp, url, adminPass, token)
       .expect(200)
@@ -43,7 +44,7 @@ describe(`Make server calls on ${TYPE}`, function () {
       } )
   })
 
-  it('Admin validate', () => {
+  it.skip('Admin validate', () => {
     let url = `${BASE}/validate`
     return Helper.postUrlAuth(theApp, url, adminToken)
       .expect(200)
