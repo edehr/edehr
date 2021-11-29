@@ -7,7 +7,7 @@
           div(class="grid-left-to-right-3")
             div(class="form-element")
               div(class="text_input_wrapper")
-                label {{cText.LO.nameLabel}}
+                label {{cText.nameLabel}}
                 input(class="input text-input", type="text", v-model="assignmentName", v-validate="nameValidate")
             div(class="form-element")
               div(class="text_input_wrapper")
@@ -46,14 +46,14 @@
                 div(class="input-element input-element-full")
                   label Case study time
                   input(class="input text-input", type="text", v-model="time")
-              
+
 </template>
 
 <script>
 import AppDialog from '../../app/components/AppDialogShell'
 import StoreHelper from '../../helpers/store-helper'
 import { validTimeStr } from '@/helpers/ehr-utils'
-import { Text } from '@/helpers/ehr-text'
+import { TextLearningObjects } from '@/helpers/ehr-text'
 
 
 const TITLES = {
@@ -88,19 +88,19 @@ export default {
         'Nurse',
         'Pharmacist'
       ],
-      persona: '', 
-      profession: '', 
-      day: '', 
+      persona: '',
+      profession: '',
+      day: '',
       time: '',
       showPersona: false // persona is in prototype stage
     }
   },
   components: { AppDialog },
   computed: {
-    cText () { return Text },
+    cText () { return TextLearningObjects },
     nameValidate () {
       return this.assignmentName.trim() ? undefined :  ERRORS.NAME_REQUIRED
-    },  
+    },
     timeValidate () {
       if (this.time && this.time.length > 0) {
         return validTimeStr(this.time) ? null : ERRORS.INVALID_TIME
@@ -122,7 +122,7 @@ export default {
       return this.inUseIds.includes(id) ? ERRORS.ID_IN_USE(id) : undefined
     },
     errors () {
-      const errmsg = this.nameValidate || this.seedValidate || this.externalValidate || this.timeValidate 
+      const errmsg = this.nameValidate || this.seedValidate || this.externalValidate || this.timeValidate
       return errmsg ? [errmsg] : []
     },
     disableSave () {
@@ -151,11 +151,11 @@ export default {
         = this.externalId
         = this.ehrRoutePath
         = this.description
-        = this.assignmentId 
-        = this.persona 
-        = this.profession 
+        = this.assignmentId
+        = this.persona
+        = this.profession
         = this.day
-        = this.time 
+        = this.time
         = ''
     },
     showDialog (assignmentData) {
@@ -196,7 +196,7 @@ export default {
         description: this.description,
         seedDataId: sId,
         toolConsumer: StoreHelper.toolConsumerId(this),
-        persona: this.persona, 
+        persona: this.persona,
         profession: this.profession,
         day: this.day,
         time: this.time

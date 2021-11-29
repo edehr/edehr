@@ -12,7 +12,7 @@ export const Text = {
   MISSING_VISIT_ID: 'No visit id available',
   MISSING_API_URL: 'This system requires the URL to the API',
   MISSING_AUTH_TOKEN: 'You need to be authenticated to view this',
-  PARAMETERS_ERROR: 'Parameters Error', 
+  PARAMETERS_ERROR: 'Parameters Error',
   RETURN_TO: (lmsName) => `Return to ${lmsName}`,
   SEED_MUST_HAVE_LICENSE: 'Seed data must have a valid licence',
   SEED_MUST_HAVE_EHRDATA: 'Seed data must have EHR data (the ehrData property)',
@@ -41,7 +41,7 @@ export const Text = {
   CANNOT_GET_CONSUMER_STORE: (name, id) => `ERROR the could not get ${name} ${id}`,
 
 
-  // activityData 
+  // activityData
   GET_ACTIVITY_DATA_ERROR: (name, id) => `ERROR the could not get ${name} ${id}`,
   CHANGE_ACTIVITY_ASSIGNMENT: 'Changing learning object for this activity.',
   GET_ACTIVITY_STORE_ERROR: (name, id) => `ERROR the could not get ${name} ${id}`,
@@ -59,8 +59,8 @@ export const Text = {
   SUBMITTED: 'Submitted and waiting for evaluation',
   TAKE_BACK: 'Take back from student',
   WANT_TO_EDIT: 'I want to edit the evaluation notes',
+}
 
-  LO: {
-    nameLabel: 'Learning objects name'
-  }
+export const TextLearningObjects = {
+  nameLabel: 'Learning objects name'
 }

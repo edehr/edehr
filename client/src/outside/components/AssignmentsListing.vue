@@ -15,7 +15,7 @@
     div(class="seedData-list-body")
       div(v-for="item in assignmentsListing", class="card list-element", :class="rowClass(item)")
         div(class="columns")
-          div(class="column is-2 key") {{cText.LO.nameLabel}}
+          div(class="column is-2 key") {{cText.nameLabel}}
           div(class="column is-10 value") {{item.name}}
         div(v-show="isDevelopingContent", class="columns")
           div(class="column is-2 key") Learning object id
@@ -48,7 +48,7 @@
                 fas-icon(icon="trash")  Edit learning object properties
     assignments-dialog(ref="theDialog")
     ui-confirm(ref="confirmDialog", @confirm="handleDeletion", @abort="resetDeletion", @cancel="resetDeletion", saveLabel="Confirm")
-    
+
 </template>
 
 <script>
@@ -60,7 +60,7 @@ import StoreHelper from '../../helpers/store-helper'
 import { downObjectToFile, getIncomingParams } from '@/helpers/ehr-utils'
 import BreadCrumb from './BreadCrumb'
 import AssignmentsDialog from './AssignmentsDialog'
-import { Text } from '@/helpers/ehr-text'
+import { TextLearningObjects } from '@/helpers/ehr-text'
 
 // These constants must be kept in sync with the ones defined in the backend
 // in ../src/config/text.js. Please, make sure they're the same, in case of change
@@ -92,12 +92,11 @@ export default {
   },
   components: { AssignmentsDialog, UiButton, UiConfirm, UiLink, BreadCrumb },
   computed: {
-    cText () { return Text },
     validationWarning () {
       const list = StoreHelper.getAssignmentsList()
       return list.find(element => learningObjectHasDefaultProperty(element))
-
     },
+    cText () { return TextLearningObjects },
     isDevelopingContent () {
       return StoreHelper.isDevelopingContent()
     },
