@@ -90,7 +90,7 @@ describe(_factorTypeName('making server calls'), () => {
   })
 
   it(_factorTypeName('Set demo data'), (done) => {
-    let assignment = assignments[0]
+    let assignment = {name: 'unittestassignment', externalId:'foobar'}
     const data = Object.assign({},{ toolConsumerKey: demoData.toolConsumerKey, toolConsumerId: demoData.toolConsumerId}, demoData.personaList[0])
     const [ given, family ] = data.name.split(' ')
     let theKey = data.toolConsumerKey
@@ -102,7 +102,7 @@ describe(_factorTypeName('making server calls'), () => {
       context_title: 'T-' +  assignment.name,
       context_type: 'Demonstration',
       launch_presentation_return_url: 'http://returnurl.com',
-      lis_person_contact_email_primary: data.email,
+      // lis_person_contact_email_primary: data.email,
       lis_person_name_family: family,
       lis_person_name_given: given,
       lis_person_name_full: data.name,

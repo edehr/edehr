@@ -9,7 +9,7 @@ const Schema = new mongoose.Schema({
   givenName: { type: String },
   familyName: { type: String },
   fullName: { type: String },
-  emailPrimary: {type: String},
+  // emailPrimary: {type: String},
   createDate: {type: Date, default: Date.now},
   lastUpdateDate: { type: Date, default: Date.now }
 })

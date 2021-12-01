@@ -206,13 +206,13 @@ export function apiError (app, config) {
 }
 
 function setupCors (config) {
-  var whitelist = [] // 'http://localhost:28000', 'http://localhost:27000']
-  whitelist.push(config.clientUrl)
-  whitelist.push(config.apiUrl)
-  debug('Setup CORS with whitelist:', whitelist)
+  var allowedList = [] // 'http://localhost:28000', 'http://localhost:27000']
+  allowedList.push(config.clientUrl)
+  allowedList.push(config.apiUrl)
+  debug('Setup CORS with allowedList:', allowedList)
   var corsOptionsDelegate = function (req, callback) {
     var corsOptions
-    if (whitelist.indexOf(req.header('Origin')) !== -1) {
+    if (allowedList.indexOf(req.header('Origin')) !== -1) {
       corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
     } else {
       corsOptions = { origin: false } // disable CORS for this request

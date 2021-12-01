@@ -13,7 +13,7 @@ const VisitSchema = new mongoose.Schema({
   consumerKey: { type: String },
   user: {type: ObjectId, ref: 'User', required: true},
   /* include user name only to help a dev trace information through the db */
-  userName: { type: String },
+  // userName: { type: String },
   activity: {type: ObjectId, ref: 'Activity', required: true},
   assignment: {type: ObjectId, ref: 'Assignment', required: true},
   activityData: {type: ObjectId, ref: 'ActivityData'},

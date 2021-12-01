@@ -72,6 +72,13 @@ export function outside () {
       meta: { layout: 'outside', label: 'Consumers', zone: 'admin' }
     },
     {
+      path: '/users',
+      name: 'users',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Users.vue'),
+      meta: { layout: 'outside', label: 'Users', zone: 'admin' }
+    },
+    {
       path: '/demo',
       name: 'demo',
       component: () =>
