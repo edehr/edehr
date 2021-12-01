@@ -35,8 +35,8 @@ const PROPS_USER = [
   'user_id',
   'lis_person_name_given',
   'lis_person_name_family',
-  'lis_person_name_full',
-  'lis_person_contact_email_primary'
+  'lis_person_name_full'
+  // 'lis_person_contact_email_primary'
 ]
 
 let PROPS_CONTEXT = [
@@ -180,9 +180,9 @@ export default class LTIController {
               provider.valid_request(_req, function (err, isValid) {})
               return callback(_this._createParameterError(req.ltiData, err.message), null)
             }
-            let userId = ltiData['user_id']
-            debug('strategyVerify find userId: ' + userId + ' consumer: ' + consumerKey)
-            _this._findCreateUser(userId, req.toolConsumer, ltiData).then(user => {
+            // let userId = ltiData['user_id']
+            // debug('strategyVerify find userId: ' + userId + ' consumer: ' + consumerKey)
+            _this._findCreateUser(req.toolConsumer, ltiData).then(user => {
               callback(null, user)
             })
           })
@@ -229,23 +229,23 @@ export default class LTIController {
     return true
   }
 
-  _findCreateUser (userId, toolConsumer, ltiData) {
+  _findCreateUser (toolConsumer, ltiData) {
     const _this = this
     return this.userController.findOne({
-      $and: [{ user_id: userId }, { toolConsumer: toolConsumer._id }]
+      $and: [{ user_id: ltiData.user_id }, { toolConsumer: toolConsumer._id }]
     }).then((foundUser, r) => {
       if (foundUser) {
         if (debugFine) debug('Found user ' + foundUser._id)
         // will update the user record later
         return foundUser
       }
-      debug('Create user ' + userId + JSON.stringify(ltiData, null, 2))
+      debug('Create user ' + ltiData.user_id + JSON.stringify(ltiData, null, 2))
       let user = {
         user_id: ltiData.user_id,
         givenName: ltiData.lis_person_name_given,
         familyName: ltiData.lis_person_name_family,
         fullName: ltiData.lis_person_name_full,
-        emailPrimary: ltiData.lis_person_contact_email_primary,
+        // emailPrimary: ltiData.lis_person_contact_email_primary,
         // ltiData: [JSON.stringify(ltiData)],
         consumerKey: toolConsumer.oauth_consumer_key,
         toolConsumer: toolConsumer._id

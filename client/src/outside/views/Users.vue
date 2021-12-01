@@ -9,22 +9,22 @@
     table.table
       thead
         tr
-          th Id
+          th LMS User Id
           th Given Name
           th Family Name
           th Full Name
-          th Email
           th Created
           th Updated
+          th Consumer Key
       tbody
         tr(v-for="item in usersList")
           td {{ item.user_id }}
           td {{ item.givenName}}
           td {{ item.familyName}}
           td {{ item.fullName}}
-          td {{ item.emailPrimary}}
           td {{ item.createDate}}
           td {{ item.lastUpdateDate}}
+          td {{ item.consumerKey}}
 
     router-link(to="/consumers") See consumers page
 

@@ -221,9 +221,9 @@ export default {
 
     proceed (filename) {
       let data = []
-      data.push(['givenName', 'familyName', 'email','feedback: ' + this.activityName])
+      data.push(['givenName', 'familyName', 'lms_user_id','feedback: ' + this.activityName])
       this.classList.forEach ( sv => {
-        data.push([sv.user.givenName, sv.user.familyName, sv.user.emailPrimary,sv.activityData.evaluationData])
+        data.push([sv.user.givenName, sv.user.familyName, sv.user.user_id, sv.activityData.evaluationData])
       })
       downArrayToCsvFile(filename, data)
     },

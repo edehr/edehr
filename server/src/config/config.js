@@ -50,6 +50,7 @@ export default class Config {
 
     tmp.database.password = 'sanitizedFor2'
     tmp.cookieSecret = 'sanitized cookie secret'
+    tmp.authTokenSecret = 'sanitized auth token'
     return JSON.stringify(tmp, null, 2)
   }
 

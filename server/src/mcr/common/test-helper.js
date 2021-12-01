@@ -192,7 +192,7 @@ export default class Helper {
       lis_person_name_given: 'Fred',
       lis_person_name_family: 'Flintstones',
       lis_person_name_full: 'Fred Flintstone',
-      lis_person_contact_email_primary: 'fred@thecaves.ca',
+      // lis_person_contact_email_primary: 'fred@thecaves.ca',
       lti_version: ltiVersions()[0],
       lti_message_type: LTI_BASIC,
       roles: 'student',
