@@ -33,6 +33,7 @@ export default {
   },
   mounted () {
     console.log('VUE_APP_ROOT_API',process.env.VUE_APP_ROOT_API)
+    document.title = process.env.VUE_APP_SITE_TITLE
   }
 }
 </script>
