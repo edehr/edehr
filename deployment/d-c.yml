@@ -1,6 +1,7 @@
 version: '3'
 services:
   nginx:
+    restart: unless-stopped
     build:
       context: ../nginx
       dockerfile: Dockerfile
@@ -16,9 +17,10 @@ services:
       - "443:443"
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     volumes:
-      - ../client/dist/:/usr/share/nginx/html
+      - ../client/published/:/usr/share/nginx/html
       - ../logs/:/var/log/nginx/
   edehrapp:
+    restart: unless-stopped
     build:
       context: ../server
       dockerfile: Dockerfile
@@ -53,6 +55,7 @@ services:
       - run
       - ${START_ARG}
   mongo_service:
+    restart: unless-stopped
     image: mongo
     environment:
       - MONGODB_USER
