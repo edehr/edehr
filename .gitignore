@@ -14,6 +14,7 @@
 **/.env.*
 **/.env-*
 client/dist/**
+client/published/**
 client/selenium-debug\.log
 client/test/e2e/**
 client/tests/e2e/reports/
