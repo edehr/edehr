@@ -21,6 +21,7 @@ import SeedDataController from '../mcr/seed/seedData-controller'
 import { validatorMiddlewareWrapper, adminLimiter, localhostOnly, isAdmin } from '../helpers/middleware'
 import AuthUtil from '../mcr/common/auth-util'
 import DemoController from '../mcr/demo/demo-controller'
+import MetricController, { metricMiddle } from '../mcr/metric/metric-controller'
 
 // Sessions and session cookies
 // express-session stores session data here on the server and only puts session id in the cookie
@@ -63,6 +64,7 @@ export function apiMiddle (app, config) {
       next()
     })
   }
+  app.use(metricMiddle)
 
   const corsOptions = setupCors(config)
   const authUtil = new AuthUtil(config)
@@ -82,6 +84,7 @@ export function apiMiddle (app, config) {
   const ic = new IntegrationController()
   const pc = new PlaygroundController()
   const demo = new DemoController(config)
+  const metric = new MetricController(config)
 
   const lcc = {
     activityController: act,
@@ -141,6 +144,9 @@ export function apiMiddle (app, config) {
       api.use('/api/launch_lti', lti.route())
       api.use('/api/demo', cors(corsOptions), demo.route())
       api.use('/api/files/public', cors(corsOptions), fileC.publicRoute())
+
+      api.use('/api/metric', metric.route())
+      api.use('/metric', metric.route())
 
       // Inside API
       api.use('/activities', middleWare, act.route())
