@@ -4,7 +4,7 @@ import Helper from '../common/test-helper'
 const should = require('should')
 const request = require('supertest')
 const mongoose = require('mongoose')
-const uuid = require('uuid/v4')
+import { v4 as uuidv4 } from 'uuid'
 
 const ehrApp = new EhrApp()
 const helper = new Helper()
@@ -12,24 +12,24 @@ const typeName = 'demo'
 const BASE = '/api/demo'
 const config = new Config('test')
 const configuration = config.config
-const _factorTypeName = (description = '') => `${typeName} - ${description}` 
+const _factorTypeName = (description = '') => `${typeName} - ${description}`
 
 describe(_factorTypeName('making server calls'), () => {
   let app, demoToken, demoData, assignments
   before(function (done) {
-    ehrApp
-      .setup(configuration)
-      .then(() => {
+    helper.beforeTestAppAndDbDrop(ehrApp, configuration, mongoose)
+      .then( () => {
         app = ehrApp.application
-      })
-      .then(() => {
-        return helper.before(done, mongoose)
+        done()
       })
   })
-  
+  after(function (done) {
+    helper.afterTestsCloseDb(mongoose).then(() => done() )
+  })
+
 
   it(_factorTypeName('Properly creates tool consumer'), (done) => {
-    const id = uuid()
+    const id = uuidv4()
     const url = `${BASE}/`
     request(app)
       .post(url)
@@ -46,6 +46,7 @@ describe(_factorTypeName('making server calls'), () => {
       })
       .catch(err => {
         should.not.exist(err)
+        done()
       })
   })
 
@@ -62,11 +63,11 @@ describe(_factorTypeName('making server calls'), () => {
         should.exist(res.body.demoData)
         res.body.demoData.personaList.should.have.length(4)
         demoData = res.body.demoData
-        done()
       })
       .catch(err => {
         should.not.exist(err)
       })
+      .finally(() => done())
   })
 
   it(_factorTypeName('Properly fetches assignments'), done => {
@@ -81,11 +82,13 @@ describe(_factorTypeName('making server calls'), () => {
         should.exist(res)
         should.exist(res.body)
         assignments = res.body.assignments
-        done()
+        console.log('pfa', assignments)
+        // should.exist(assignments[0])
       })
       .catch(err => {
         should.not.exist(err)
       })
+      .finally(() => done())
 
   })
 
@@ -99,7 +102,7 @@ describe(_factorTypeName('making server calls'), () => {
       custom_assignment: assignment.externalId,
       context_id: 'Demo-Course',
       context_label: 'L-' + assignment.name,
-      context_title: 'T-' +  assignment.name,
+      context_title: 'T-' + assignment.name,
       context_type: 'Demonstration',
       launch_presentation_return_url: 'http://returnurl.com',
       // lis_person_contact_email_primary: data.email,
@@ -120,9 +123,9 @@ describe(_factorTypeName('making server calls'), () => {
       tool_consumer_instance_guid: theKey,
       tool_consumer_instance_name: 'Demo',
       tool_consumer_info_version: 'x',
-      tool_consumer_info_product_family_code:'EdEHR Demo',
+      tool_consumer_info_product_family_code: 'EdEHR Demo',
       tool_consumer_instance_description: 'EdEHR provided LTI tool for launching the EdEHR in a demonstration mode',
-      user_id: userId,
+      user_id: userId
     }
 
     const url = `${BASE}/set`

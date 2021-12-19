@@ -19,21 +19,21 @@ let adminToken
 
 // const adminPass = getCreateAdminPassword()
 
-describe(`Make server calls on ${TYPE}`, function () {
+describe.skip(`Make server calls on ${TYPE}`, function () {
   let theApp
   before(function (done) {
-    ehrApp
-      .setup(configuration)
-      .then(() => {
+    helper.beforeTestAppAndDbDrop(ehrApp, configuration, mongoose)
+      .then( () => {
         theApp = ehrApp.application
+        done()
       })
-      .then(() => {
-        return helper.before(done, mongoose)
-      })
+  })
+  after(function (done) {
+    helper.afterTestsCloseDb(mongoose).then(() => done() )
   })
 
   // TODO update admin password and obtain from .env then update tests
-  it.skip('Admin properly logs in', () => {
+  it('Admin properly logs in', () => {
     let url = BASE
     return Helper.adminLogin(theApp, url, adminPass, token)
       .expect(200)

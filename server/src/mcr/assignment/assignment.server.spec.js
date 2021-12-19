@@ -22,16 +22,18 @@ const debug = require('debug')('server')
 
 describe(`Make server calls on ${TYPE}`, function () {
   let app
+
   before(function (done) {
-    ehrApp
-      .setup(configuration)
-      .then(() => {
+    helper.beforeTestAppAndDbDrop(ehrApp, configuration, mongoose)
+      .then( () => {
         app = ehrApp.application
-      })
-      .then(() => {
-        return helper.before(done, mongoose)
+        done()
       })
   })
+  after(function (done) {
+    helper.afterTestsCloseDb(mongoose).then(() => done() )
+  })
+
   let theData = Helper.sampleAssignmentSpec()
   let theSampleSeedData = Helper.sampleSeedDataSpec()
   let theId, theSeedId

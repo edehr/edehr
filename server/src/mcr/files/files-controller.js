@@ -3,8 +3,8 @@ import { Router } from 'express'
 import multer from 'multer'
 import path from 'path'
 import fs  from 'fs'
-import filenamify from 'filenamify'
 import filesize from 'filesize'
+// import filenamify from 'filenamify'
 import Consumer from '../consumer/consumer'
 
 const debug = require('debug')('server')
@@ -14,6 +14,7 @@ export const formElementNameForFileUpload = 'ehrFile' // client to use this name
 
 const filesCommon = path.resolve('files-common')
 
+const filenamify = (fName) => { return fName }
 export default class FileController {
 
   constructor (config) {

@@ -3,8 +3,7 @@ const IntegrationModel = new IntegrationController()
 const debug = require('debug')('server')
 const logError = require('debug')('error')
 
-var chalk = require('chalk')
-console.log(chalk.bold.red('Warning:  Database seeding is turned on'))
+console.log('Warning:  Database seeding is turned on')
 
 // =========================================================================
 //

@@ -14,12 +14,11 @@ const typeName = 'VisitController'
 /* global describe it */
 describe(`${typeName} controller testing`, function () {
   before(function (done) {
-    helper.before(done, mongoose)
+    helper.beforeTestDbDrop(done, mongoose)
   })
-
-  // after(function (done) {
-  //   helper.afterDropDatabase(done, mongoose)
-  // })
+  after(function (done) {
+    helper.afterTestsCloseDb(mongoose).then(() => done() )
+  })
 
   let theConsumer
   let theAssignment

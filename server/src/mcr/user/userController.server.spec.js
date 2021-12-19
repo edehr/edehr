@@ -1,6 +1,6 @@
 var should = require('should')
 const mongoose = require('mongoose')
-const ObjectID = require('mongodb').ObjectID
+const ObjectID = require('mongodb').ObjectId
 import Helper from '../common/test-helper'
 const helper = new Helper()
 import UserController from './user-controller'
@@ -14,11 +14,10 @@ const typeName = 'UserController'
 /* global describe it */
 describe(`${typeName} controller testing`, function () {
   before(function (done) {
-    helper.before(done, mongoose)
+    helper.beforeTestDbDrop(done, mongoose)
   })
-
   after(function (done) {
-    helper.afterDropDatabase(done, mongoose)
+    helper.afterTestsCloseDb(mongoose).then(() => done() )
   })
 
   it(`${typeName} create controller `, function (done) {

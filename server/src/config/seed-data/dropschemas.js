@@ -1,7 +1,6 @@
 'use strict'
 
 const mongoose = require('mongoose')
-const chalk = require('chalk')
 
 const schemas = [
   'activities',
@@ -31,7 +30,7 @@ module.exports = function (doDrop) {
       return resolve(true)
     }
 
-    console.log(chalk.bold.red('Warning:  Dropping Schemas !!!'))
+    console.log('Warning:  Dropping Schemas !!!')
     const allDropPromises = schemas.map(schemaName => {
       return dropSchema(schemaName)
     })

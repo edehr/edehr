@@ -1,6 +1,6 @@
 'use strict'
-import Config from '../config/config'
-import EhrApp from './app'
+import Config from '../config/config.js'
+import EhrApp from './app.js'
 
 const ehrApp = new EhrApp()
 const config = new Config(process.env.NODE_ENV)
@@ -13,3 +13,4 @@ ehrApp.setup(configuration)
       console.log('Server running...', serverPort)
     })
   })
+export default ehrApp;

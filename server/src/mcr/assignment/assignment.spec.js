@@ -12,11 +12,11 @@ const logError = require('debug')('error')
 /* global describe it */
 describe(`${typeName} mongoose schema testing`, function () {
   before(function (done) {
-    helper.before(done, mongoose)
+    helper.beforeTestDbDrop(done, mongoose)
   })
 
   after(function (done) {
-    helper.afterTests(done, mongoose, collectionName)
+    helper.afterTestsCloseDb(mongoose).then(() => done() )
   })
 
   it(`${typeName} be invalid if params are empty`, function (done) {
@@ -47,7 +47,7 @@ describe(`${typeName} mongoose schema testing`, function () {
       should.exist(doc)
       doc.should.have.property('seedDataId')
       done()
-    }).catch(e => {
+    }).clone().catch(e => {
       logError('find one error', e)
     })
   })

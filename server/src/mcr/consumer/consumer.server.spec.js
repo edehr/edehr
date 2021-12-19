@@ -20,12 +20,11 @@ const adminToken = Helper.generateToken(tokenData, true)
 /* global describe it */
 describe('Consumer mongoose schema testing', function () {
   before(function (done) {
-    helper.before(done, mongoose)
+    helper.beforeTestDbDrop(done, mongoose)
   })
 
   after(function (done) {
-    let collection = 'consumers'
-    helper.afterTests(done, mongoose, collection)
+    helper.afterTestsCloseDb(mongoose).then(() => done() )
   })
 
   it('Consumer should be invalid if key and secret Are empty', function (done) {
@@ -65,12 +64,14 @@ describe('Consumer mongoose schema testing', function () {
 describe(`Make server calls on ${TYPE}`, function () {
   let theApp
   before(function (done) {
-    ehrApp
-      .setup(configuration)
-      .then(() => theApp = ehrApp.application)
-      .then(() => {
-        return helper.before(done, mongoose)
+    helper.beforeTestAppAndDbDrop(ehrApp, configuration, mongoose)
+      .then( () => {
+        theApp = ehrApp.application
+        done()
       })
+  })
+  after(function (done) {
+    helper.afterTestsCloseDb(mongoose).then(() => done() )
   })
 
   it('Admin create tool without auth', function () {
