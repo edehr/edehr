@@ -43,7 +43,7 @@ describe('user mongoose schema testing', function () {
       should.exist(doc)
       should.not.exist(err)
       done()
-    }).clone().catch(e => {
+    }).catch(e => {
       logError('find one error', e)
     })
   })

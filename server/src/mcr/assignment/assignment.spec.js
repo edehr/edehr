@@ -47,7 +47,7 @@ describe(`${typeName} mongoose schema testing`, function () {
       should.exist(doc)
       doc.should.have.property('seedDataId')
       done()
-    }).clone().catch(e => {
+    }).catch(e => {
       logError('find one error', e)
     })
   })
