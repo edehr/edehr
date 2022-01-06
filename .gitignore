@@ -20,7 +20,6 @@ client/test/e2e/**
 client/tests/e2e/reports/
 database/backup/dump/**
 database/data/**
-dbjson/db\.json
 docs/.vuepress/dist/**
 ehr/dev/**
 ehr/dist/**
@@ -28,10 +27,6 @@ logs/**
 makeEhr/generated/
 makeEhr/util/camelcase-input\.txt
 makeEhr/util/camelcase-output\.txt
-package-lock.json
-prototyping/hello-world/**
-scrivner/MarkdownSample.scriv
-scrivner/output
 server/.session/
 server/bin/sessions/**
 server/files-ehr
