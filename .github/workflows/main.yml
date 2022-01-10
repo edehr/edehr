@@ -33,6 +33,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - run: git config --global url."https://github.com/".insteadOf ssh://git@github.com/
       - uses: actions/setup-node@v2-beta
         with:
           node-version: '14'
