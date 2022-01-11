@@ -67,43 +67,7 @@ export default class Helper {
   afterTestsCloseDb (mongoose) {
     return mongoose.disconnect()
   }
-
-  // afterTests (done, mongoose, collection) {
-  //   function close () {
-  //     mongoose.connection.close(function () {
-  //       console.log('TH: Close test database!')
-  //       done()
-  //     })
-  //   }
-  //   if (this.clear) {
-  //     console.log(`TH: drop collection ${collection}!`);
-  //     mongoose.connection.db.dropCollection(collection, function (err) {
-  //       // console.log(`TH: dropped collection ${collection}!`);
-  //       close()
-  //     })
-  //   } else {
-  //     close()
-  //   }
-  // }
-  //
-  // afterDropDatabase (done, mongoose) {
-  //   function close () {
-  //     mongoose.connection.close(function () {
-  //       // console.log('TH: Close test database!');
-  //       done()
-  //     })
-  //   }
-  //   if (this.clear) {
-  //     // console.log(`TH: drop collection ${collection}!`);
-  //     mongoose.connection.db.dropDatabase(function (err) {
-  //       // console.log('TH: dropped dropDatabase')
-  //       close()
-  //     })
-  //   } else {
-  //     close()
-  //   }
-  // }
-
+  
   static sampleActivity (consumer, assignment) {
     return {
       toolConsumer: consumer._id,

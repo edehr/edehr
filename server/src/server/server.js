@@ -13,4 +13,4 @@ ehrApp.setup(configuration)
       console.log('Server running...', serverPort)
     })
   })
-export default ehrApp;
+export default ehrApp
