@@ -1,8 +1,8 @@
 import StoreHelper from '../../../helpers/store-helper'
 
-const SCHEDULED='sched'
-const PRESCRIBED='prn'
-const ONCE_A_DAY = 'od'
+const SCHEDULED='SCHED'
+const PRESCRIBED='PRN'
+const ONCE_A_DAY = 'OD'
 const PRN_KEYS =[]
 for (let i = 1; i <= 6; i++) {
   PRN_KEYS.push(`prn${i}`)
@@ -11,12 +11,12 @@ for (let i = 1; i <= 6; i++) {
 // dropdown options shown on the Medications page.
 export class ScheduleOptions {
   static OPTIONS = {
-    'BID / q12h' : ['08:00','20:00'],
+    'BID / Q12H' : ['08:00','20:00'],
     TID: ['08:00', '16:00', '22:00'],
-    q8h: ['06:00','14:00', '22:00'],
+    Q8H: ['06:00','14:00', '22:00'],
     QID: ['08:00','12:00', '17:00', '22:00'],
-    q6h: ['06:00', '12:00', '18:00', '22:00', '02:00'],
-    q4h: ['06:00', '10:00', '14:00', '18:00', '22:00', '02:00']
+    Q6H: ['06:00', '12:00', '18:00', '22:00', '02:00'],
+    Q4H: ['06:00', '10:00', '14:00', '18:00', '22:00', '02:00']
   }
 
   static getKeys () {
@@ -24,7 +24,7 @@ export class ScheduleOptions {
   }
 
   static getSchedule (key) {
-    let value = this.OPTIONS[key]
+    let value = this.OPTIONS[key.toUpperCase()]
     if(!value) {
       console.error('Could not find a medication schedule for key', key)
       throw new Error(`Could not find a medication schedule for key: ${key}`)
@@ -45,20 +45,22 @@ export default class MedOrder {
     const medOrder = this._data
     // console.log('_createSchedule is', medOrder)
     let scheduleTimes = []
-    if(medOrder.administration === SCHEDULED) {
+    const scheduleKey = medOrder.administration ? medOrder.administration.toUpperCase() : undefined
+    if(scheduleKey === SCHEDULED) {
       try {
         scheduleTimes = ScheduleOptions.getSchedule(medOrder.scheduled)
       } catch(err) {
+        console.log('error medOrder', medOrder)
         StoreHelper.setApiError(`${err}`)
       }
-    } else if(medOrder.administration === PRESCRIBED) {
+    } else if(scheduleKey === PRESCRIBED) {
       PRN_KEYS.forEach(prn => {
         let prnTime = medOrder[prn]
         if (prnTime) {
           scheduleTimes.push(prnTime)
         }
       })
-    } else if (medOrder.administration === ONCE_A_DAY) {
+    } else if (scheduleKey === ONCE_A_DAY) {
       scheduleTimes.push('od')
     }
     // TODO need to handle the other administration options STAT and ONCE
