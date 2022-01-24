@@ -33,6 +33,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      # force npm to use https when checking out the ims-lti (and any other) git repos
+      - run: git config --global url."https://github.com/".insteadOf ssh://git@github.com/
       - uses: actions/setup-node@v2-beta
         with:
           node-version: '12'
