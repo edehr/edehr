@@ -1,33 +1,31 @@
 'use strict'
 const glob = require('glob')
-const path = require('path')
 const debug = require('debug')('server')
 const logError = require('debug')('error')
+const defaultConfig = require('./env/default')()
+
+const developConfig = require('./env/development')(defaultConfig)
+const productionConfig = require('./env/production')(defaultConfig)
+const testConfig = require('./env/test')(defaultConfig)
+
 export default class Config {
   constructor (env) {
     this.env = env
     // Validate NODE_ENV existence
     this.validateEnvironmentVariable()
-
-    const cwd = path.join(process.cwd(), 'src/config/env')
-    const defaultPath = path.join(cwd, 'default')
-    let envPath = path.join(cwd, this.env)
-
-    // Load the config
-    const defaultConfig = require(defaultPath)()
-    const cfg = require(envPath)(defaultConfig)
-    // Merge config files
-    // let cfg = Object.assign(defaultConfig, environmentConfig)
+    debug('set up config for this environment:', this.env)
+    const cfg = this.env === 'production' ? productionConfig : this.env === 'test' ? testConfig : developConfig
 
     function composeUrl ( scheme, host, port, part) {
       return scheme + '://' + host + (port ? ':' + port : '') + (part ? '/' + part : '')
     }
     let url = composeUrl(cfg.scheme, cfg.clientHost, cfg.clientPort)
     cfg.clientUrl = process.env.CLIENT_URL || url
-    url = composeUrl(cfg.scheme, cfg.apiHost, cfg.apiPort, 'api')
-    
+
     // in case this changes, please, reflect it on the frontend config files or the frontend env variables
+    url = composeUrl(cfg.scheme, cfg.apiHost, cfg.apiPort, 'api')
     cfg.apiUrl = process.env.API_URL || url
+
     // debug('config apiUrl', cfg.apiUrl)
     // debug('config clientUrl', cfg.clientUrl)
     // debug('config database', cfg.database)

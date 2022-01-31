@@ -27,7 +27,8 @@ import MetricController, { metricMiddle } from '../mcr/metric/metric-controller'
 // express-session stores session data here on the server and only puts session id in the cookie
 const session = require('express-session')
 const FileStore = require('session-file-store')(session)
-const uuid = require('uuid/v4')
+// const uuid = require('uuid/v4')
+import { v4 as uuidv4 } from 'uuid'
 
 const debug = require('debug')('server')
 const logError = require('debug')('error')
@@ -46,7 +47,7 @@ export function apiMiddle (app, config) {
     session({
       genid: req => {
         // debug('Inside the session middleware req.sessionID ' + req.sessionID)
-        let guid = uuid()
+        let guid = uuidv4()
         // debug('------------------ SESSION genid ' + guid)
         return guid
       },

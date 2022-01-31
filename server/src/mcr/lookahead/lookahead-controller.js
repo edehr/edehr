@@ -3,13 +3,11 @@ import { Router } from 'express'
 import fs from 'fs'
 import path from 'path'
 import { Text } from '../../config/text'
+const MEDICATIONS = require('../../../resources/medicationsList.json')
 
 export default class LookaheadController {
 
   constructor () {
-    const fName = path.join(__dirname, 'medicationsList.json')
-    const content = fs.readFileSync(fName, 'utf-8')
-    this.medications = JSON.parse(content)
     this.limitCnt = 100
   }
 
@@ -35,7 +33,7 @@ export default class LookaheadController {
       const upperCase = term.toUpperCase()
       let cnt = 0
       let results = []
-      this.medications.forEach( med => {
+      MEDICATIONS.forEach( med => {
         if(med.medication.includes(upperCase)) {
           cnt++
           if (cnt < this.limitCnt) {

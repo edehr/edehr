@@ -3,7 +3,7 @@ import User from './user'
 import Activity from '../activity/activity'
 import Visit from '../visit/visit'
 import { ok, fail } from '../common/utils'
-const ObjectID = require('mongodb').ObjectID
+const ObjectID = require('mongodb').ObjectId
 const debug = require('debug')('server')
 
 export default class UserController extends BaseController {

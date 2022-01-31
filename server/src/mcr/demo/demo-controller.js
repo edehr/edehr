@@ -5,9 +5,9 @@ import { demoPersonae } from '../../helpers/demo-personae'
 import { demoLimiter, validatorMiddlewareWrapper } from '../../helpers/middleware'
 import { assignment1, assignment2, wound1 } from './assignment-defs'
 
-const ej0Seed = require('./erin-johns-seed-day0-mid')
-const ej2Seed = require('./erin-johns-seed-day2-end')
-const wound1Seed = require('./wound-case-1')
+const ej0Seed = require('../../../resources/erin-johns-seed-day0-mid.json')
+const ej2Seed = require('../../../resources/erin-johns-seed-day2-end.json')
+const wound1Seed = require('../../../resources/wound-case-1.json')
 
 const {ltiVersions} = require('../../mcr/lti/lti-defs')
 const HMAC_SHA1 = require('ims-lti/src/hmac-sha1')

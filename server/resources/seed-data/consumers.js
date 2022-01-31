@@ -1,10 +1,10 @@
 'use strict'
 
 import mongoose from 'mongoose'
-import ConsumerController from '../../mcr/consumer/consumer-controller'
+import ConsumerController from '../../src/mcr/consumer/consumer-controller'
 
 const Consumer = mongoose.model('Consumer')
-const {ltiVersions} = require('../../mcr/lti/lti-defs')
+const {ltiVersions} = require('../../src/mcr/lti/lti-defs')
 const KEY = 'edehrkey'
 const SECRET = 'edehrsecret'
 const debug = require('debug')('server')

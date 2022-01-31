@@ -3,28 +3,35 @@
 > This sub-project provides application API.
 
 ## Project setup
-Assumes your system has node, and npm installed.
+
+Your system needs to have nodejs version 14 (and not 13 nor 15), and npm version 6 installed.  Best to use the ```nvm``` node js version manager. https://github.com/nvm-sh/nvm 
+
+1. Run install on this project.
+
 ```
 npm install
 ```
-Be sure the mongoDB is running in its docker container. See the database subdirectory.
 
+2. Be sure the mongoDB is running in its docker container. See the database subdirectory.
 
-This project depends on a customized LTI plugin.  Be sure to include the following in the project dependencies 
-```
-    "ims-lti": "git+https://github.com/bryan-gilbert/ims-lti.git",
-```
 
 
 ## Run Server - Dev
+Running the dev code you just need to
 ```
-npm run serve-dev
+npm run start
 ```
+This will start nodemon to monitor for changes and babel-node to transpile and compile the code. This way you can make
+code changes and the system will automatically restart the server with the changes: hot swap.
 
 ## Run Server - Prod
+
+Running the production code requires you first run the build process.
 ```
-npm run serve
+npm run build
+npm run start:prod
 ```
+
 
 ## LTI 
 The following happens when a user clicks on an assignment in a LMS system that is linked to the EdEHR.
@@ -49,14 +56,33 @@ DB Queries
    - has this user worked on an assignment before?
    - does an activity exist?
    ... etc. TBContinues
-   
-   
+
+### LTI module
+
+This project depends on a customized LTI plugin.  Be sure to include the following in the project dependencies
+```
+    "ims-lti": "git+https://github.com/bryan-gilbert/ims-lti.git",
+```
+
+
 ## Testing
-To test a single test 
+
+To test a single test, edit the package.json file "test:one" script and put in the file name you wish to test 
 ```
-node node_modules/mocha/bin/mocha --require @babel/register test/controllers/lti.spec.js 
+npm run test:one 
 ```
+
 To test the full suite
 ```
 npm run test
+```
+
+To test the system
+```
+npm run test:system
+```
+
+To test the server
+```
+npm run test:server
 ```

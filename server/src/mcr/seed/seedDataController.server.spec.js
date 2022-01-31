@@ -1,4 +1,4 @@
-var should = require('should')
+const should = require('should')
 const mongoose = require('mongoose')
 import Helper from '../common/test-helper'
 const helper = new Helper()
@@ -11,7 +11,10 @@ const logError = require('debug')('error')
 /* global describe it */
 describe(`${typeName} controller testing`, function () {
   before(function (done) {
-    helper.before(done, mongoose)
+    helper.beforeTestDbDrop(done, mongoose)
+  })
+  after(function (done) {
+    helper.afterTestsCloseDb(mongoose).then(() => done() )
   })
 
   let controller
@@ -55,8 +58,12 @@ describe(`${typeName} controller testing`, function () {
         resultDoc.ehrData.should.have.property('aNewPage')
         // should have pre-existing property
         resultDoc.ehrData.should.have.property('foo')
+        done()
       })
-    done()
+      .catch(err => {
+        logError(`${typeName} create ${modelName} error ${err}`)
+        done()
+      })
   })
 
 
@@ -75,8 +82,12 @@ describe(`${typeName} controller testing`, function () {
         resultDoc.ehrData.should.have.property('someProperty')
         // should NOT have pre-existing property
         resultDoc.ehrData.should.not.have.property('foo')
+        done()
       })
-    done()
+      .catch(err => {
+        logError(`${typeName} create ${modelName} error ${err}`)
+        done()
+      })
   })
 
 })

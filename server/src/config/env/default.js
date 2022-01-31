@@ -61,7 +61,7 @@ module.exports = function() {
       password: MONGODB_PWORD,
       options: {
         useNewUrlParser: true,
-        useCreateIndex: true,
+        // useCreateIndex: true,
         useUnifiedTopology: true
       },
       debug: MONGODB_DEBUG

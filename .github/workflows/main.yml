@@ -22,7 +22,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2-beta
         with:
-          node-version: '12'
+          node-version: '14'
       - run: npm ci
         working-directory: client
       - run: npm run lint -- --no-fix
@@ -37,7 +37,7 @@ jobs:
       - run: git config --global url."https://github.com/".insteadOf ssh://git@github.com/
       - uses: actions/setup-node@v2-beta
         with:
-          node-version: '12'
+          node-version: '14'
       - run: npm ci
         working-directory: server
       - run: npm run lint -- --no-fix

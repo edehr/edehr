@@ -25,8 +25,12 @@
     "start:db": "cd database && docker-compose up -d",
     "stop:db": "cd database && docker-compose down",
     "start:client": "cd client && npm run start",
-    "start:server": "cd server && npm run start",
+    "start:server": "cd server && npm run start:dev",
+    "start:prod": "npm run stop:prod && npm run build && cd deployment && npm run prod:build",
+    "stop:prod": "cd deployment && npm run prod:stop",
+    "build": "npm run build:client && npm run build:server",
     "build:client": "cd client && npm run build",
+    "build:server": "cd server && npm run build",
     "run": "echo 'cd to deployment and use package scripts'",
     "install": "npm run install:client && npm run install:server && npm run install:maker",
     "install:client": "cd client && npm install",
@@ -41,7 +45,6 @@
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "shell:mongo": "docker exec -it mongo bash",
-    "restart:prod": "cd deployment && npm run prod:stop && npm run prod:build",
     "update:prod": "git pull && npm run build && npm run restart:prod"
   },
   "scriptsComments": {

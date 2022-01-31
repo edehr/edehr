@@ -1,6 +1,6 @@
 var should = require('should')
 const mongoose = require('mongoose')
-const ObjectID = require('mongodb').ObjectID
+const ObjectID = require('mongodb').ObjectId
 import Helper from '../common/test-helper'
 const helper = new Helper()
 import Model from './seed-data'
@@ -12,11 +12,10 @@ const logError = require('debug')('error')
 /* global describe it */
 describe(`${typeName} mongoose schema testing`, function () {
   before(function (done) {
-    helper.before(done, mongoose)
+    helper.beforeTestDbDrop(done, mongoose)
   })
-
   after(function (done) {
-    helper.afterTests(done, mongoose, collectionName)
+    helper.afterTestsCloseDb(mongoose).then(() => done() )
   })
 
   it(`${typeName} create without name is not allowed`, function (done) {

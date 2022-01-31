@@ -7,8 +7,8 @@ export default function (config) {
   return new Promise((resolve, reject) => {
     const dbc = config.database
     const sanitizedConfig = Object.assign( {} , dbc)
-    // sanitizedConfig.password = 'aPassword'
-    debug('DB Configuration: %s', JSON.stringify(sanitizedConfig,null,2))
+    sanitizedConfig.password = sanitizedConfig.password ? 'aPassword' : undefined
+    debug('DB: Configuration: %s', JSON.stringify(sanitizedConfig,null,2))
 
     let auth = false
     let uri = []
@@ -32,16 +32,18 @@ export default function (config) {
     if (auth) uri.push('?authSource=admin')
     uri = uri.join('')
     const sanitized = auth ? uri.replace(dbc.password, 'aPassword') : uri
-    debug('DB URN sanitized: ====  %s', sanitized)
-    debug('DB Options: %o', dbc.options)
+    debug('DB: URN sanitized: ====  %s', sanitized)
+    debug('DB: Options: %o', dbc.options)
+    debug('DB: ehrApp', uri)
+
     mongoose
       .connect(uri, dbc.options)
       .then(conn => {
-        debug('MongoDB Connected to ' + sanitized)
+        debug('DB: Connected to ' + sanitized)
         resolve(conn)
       })
       .catch(error => {
-        logError(`db connect error:  ${error}`)
+        logError(`DB: connect error:  ${error}`)
         reject(error)
       })
   })

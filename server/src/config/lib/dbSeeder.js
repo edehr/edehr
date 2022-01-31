@@ -3,8 +3,7 @@ const IntegrationModel = new IntegrationController()
 const debug = require('debug')('server')
 const logError = require('debug')('error')
 
-var chalk = require('chalk')
-console.log(chalk.bold.red('Warning:  Database seeding is turned on'))
+console.log('Warning:  Database seeding is turned on')
 
 // =========================================================================
 //
@@ -16,7 +15,7 @@ console.log(chalk.bold.red('Warning:  Database seeding is turned on'))
 var DROP_SCHEMAS = false
 
 if (DROP_SCHEMAS) {
-  require('../seed-data/dropschemas')(DROP_SCHEMAS)
+  require('../../../resources/seed-data/dropschemas')(DROP_SCHEMAS)
 }
 
 // =========================================================================
@@ -53,7 +52,7 @@ function doIntegrations () {
   return checkIntegration('consumers', false)
     .then(go => {
       if (go) {
-        return require('../seed-data/consumers')(true)
+        return require('../../../resources/seed-data/consumers')(true)
       }
     })
     // .then(() => {

@@ -1,3 +1,4 @@
+import mongoose from 'mongoose'
 var should = require('should')
 
 const request = require('supertest')
@@ -6,6 +7,7 @@ import EhrApp from '../../server/app'
 import Config from '../../config/config'
 import Helper from '../common/test-helper'
 
+const helper = new Helper()
 const config = new Config('test')
 const configuration = config.config
 const ehrApp = new EhrApp()
@@ -21,14 +23,17 @@ describe(`${typeName} controller testing`, function () {
 
   let app
   let looker
+
   before(function (done) {
-    ehrApp
-      .setup(configuration)
-      .then(() => {
+    helper.beforeTestAppAndDbDrop(ehrApp, configuration, mongoose)
+      .then( () => {
         app = ehrApp.application
         looker = new LookaheadController()
         done()
       })
+  })
+  after(function (done) {
+    helper.afterTestsCloseDb(mongoose).then(() => done() )
   })
 
   it('LookaheadController can be created', function (done) {

@@ -99,10 +99,10 @@ let theAssignment
 /* global describe it */
 describe('LTI controller testing', function () {
   before(function (done) {
-    helper.before(done, mongoose)
+    helper.beforeTestDbDrop(done, mongoose)
   })
   after(function (done) {
-    helper.afterDropDatabase(done, mongoose)
+    helper.afterTestsCloseDb(mongoose).then(() => done() )
   })
 
   it('Create a tool consumer for testing ', function (done) {

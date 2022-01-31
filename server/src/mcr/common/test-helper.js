@@ -1,26 +1,27 @@
 import supertest from 'supertest'
-import Consumer from '../consumer/consumer'
 import ConsumerController from '../consumer/consumer-controller'
 import Assignment from '../assignment/assignment'
 import User from '../user/user'
 import Activity from '../activity/activity'
 import Role from '../roles/roles'
-const ObjectID = require('mongodb').ObjectID
-const { ltiVersions, LTI_BASIC } = require('../lti/lti-defs')
-import { getCreateAdminPassword } from '../../helpers/admin'
 import AuthUtil from './auth-util'
+import mongoose from 'mongoose'
+
+const ObjectID = require('mongodb').ObjectId
+const { ltiVersions, LTI_BASIC } = require('../lti/lti-defs')
+
+console.log('TH: mongoose.connection.readyState', mongoose.connection.readyState)
 
 const authUtil = new AuthUtil({ authTokenSecret: 'defaultTokenSecretForJWT' })
-
 
 const consumerController = new ConsumerController()
 
 process.on('unhandledRejection', function (error, promise) {
-  console.error('UNHANDLED REJECTION', error.stack)
+  console.error('TH: UNHANDLED REJECTION', error.stack)
 })
 
 process.on('uncaughtException', function (error) {
-  console.error('UNCAUGHT EXCEPTION', error, error.stack)
+  console.error('TH: UNCAUGHT EXCEPTION', error, error.stack)
 })
 
 let DatabaseName = 'unittest'
@@ -34,6 +35,12 @@ let Default = {
   seedData: {foo:'bar'}
 }
 
+let options = {
+  useNewUrlParser: true,
+  // useCreateIndex: true,
+  useUnifiedTopology: true
+}
+
 export default class Helper {
   constructor () {
     this.clear = true
@@ -42,63 +49,29 @@ export default class Helper {
     this.clear = bool
   }
 
-  before (done, mongoose) {
-    this.beforeDropDatabase(mongoose)
-      .then( () => {
+  async beforeTestDbDrop (done, mongoose) {
+    const uri = 'mongodb://localhost:27018/unittest'
+    const dbug = false
+    if (dbug) console.log('TH: beforeTestDbDrop: mongoose.connection.readyState', mongoose.connection.readyState)
+    return mongoose.disconnect()
+      .then( async () => {
+        if (dbug) console.log('TH: before hook after disconnect', uri)
+        await mongoose.connect(uri, options)
+        if (dbug) console.log('TH: before hook connected', uri)
+        await mongoose.connection.dropDatabase()
+        if (dbug) console.log('TH: before hook done', uri)
         done()
       })
   }
 
-  beforeDropDatabase (mongoose) {
-    mongoose.set('useCreateIndex', true)
-    mongoose.connect(
-      'mongodb://localhost:27018/unittest',
-      { useNewUrlParser: true, useUnifiedTopology: true }
-    )
-    const db = mongoose.connection
-    db.on('error', console.error.bind(console, 'connection error'))
-    // console.log('Begin connection to ' + DatabaseName)
-    return db.once('open', function () {
-      // console.log('We are connected to test database!')
-      mongoose.connection.db.dropDatabase(function (err) {
-        // console.log('dropped '+DatabaseName+' dropDatabase')
-      })
-    })
-  }
-  afterTests (done, mongoose, collection) {
-    function close () {
-      mongoose.connection.close(function () {
-        // console.log('Close test database!');
-        done()
-      })
-    }
-    if (this.clear) {
-      // console.log(`drop collection ${collection}!`);
-      mongoose.connection.db.dropCollection(collection, function (err) {
-        // console.log(`dropped collection ${collection}!`);
-        close()
-      })
-    } else {
-      close()
-    }
+  beforeTestAppAndDbDrop (ehrApp, configuration, mongoose) {
+    return mongoose.disconnect()
+      .then(() => ehrApp.setup(configuration))
+      .then(() => mongoose.connection.dropDatabase() )
   }
 
-  afterDropDatabase (done, mongoose) {
-    function close () {
-      mongoose.connection.close(function () {
-        // console.log('Close test database!');
-        done()
-      })
-    }
-    if (this.clear) {
-      // console.log(`drop collection ${collection}!`);
-      mongoose.connection.db.dropDatabase(function (err) {
-        // console.log('dropped dropDatabase')
-        close()
-      })
-    } else {
-      close()
-    }
+  afterTestsCloseDb (mongoose) {
+    return mongoose.disconnect()
   }
 
   static sampleActivity (consumer, assignment) {
@@ -297,7 +270,7 @@ export default class Helper {
   }
 
   static consoleRes (res) {
-    console.log('res.headers', res.headers)
+    console.log('TH: res.headers', res.headers)
     console.log('res.status', res.status)
     console.log('res.text', res.text)
     console.log('res.body', res.body)
