@@ -532,15 +532,22 @@ export default class EhrHelpV2 {
     const { pageKey } = this
     const ehrSeed = StoreHelper.getSeedEhrData()
     const asLoadedPageData = this.getAsLoadedPageData()
-    childrenKeys.map(ck => {
-      const asSeed = ehrSeed[ck] ? ehrSeed[ck] : ''
-      asLoadedPageData[ck] = asSeed
-    })
+    // console.log('EhrHelper resetFormData childrenKeys', childrenKeys)
+    // console.log('EhrHelper resetFormData pageKey', pageKey)
+    // console.log('EhrHelper resetFormData ehrSeed', ehrSeed)
+    // console.log('EhrHelper resetFormData asLoadedPageData', asLoadedPageData)
+    if (childrenKeys) {
+      childrenKeys.map(ck => {
+        const asSeed = ehrSeed[ck] ? ehrSeed[ck] : ''
+        asLoadedPageData[ck] = asSeed
+      })
+    }
     
     let payload = {
       pageKey,
       value: asLoadedPageData
     }
+    // console.log('EhrHelper reset form data side effect is to save this', payload)
     await this._saveData(payload)
     return undefined
   

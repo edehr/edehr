@@ -12,11 +12,11 @@ const typeName = 'Activity'
 /* global describe it */
 describe(`${typeName} mongoose schema testing`, function () {
   before(function (done) {
-    helper.before(done, mongoose)
+    helper.beforeTestDbDrop(done, mongoose)
   })
 
   after(function (done) {
-    helper.afterDropDatabase(done, mongoose)
+    helper.afterTestsCloseDb(mongoose).then(() => done() )
   })
 
   let theConsumer

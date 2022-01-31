@@ -20,7 +20,10 @@ const helper = new Helper()
 /* global describe it */
 describe(' db seeding test', function () {
   before(function (done) {
-    helper.before(done, mongoose)
+    helper.beforeTestDbDrop(done, mongoose)
+  })
+  after(function (done) {
+    helper.afterTestsCloseDb(mongoose).then(() => done() )
   })
 
   let name = 'another collection'

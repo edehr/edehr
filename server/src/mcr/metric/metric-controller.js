@@ -7,6 +7,7 @@ const metricData = {
 
 export const metricMiddle = (req, res, next) => {
   // if (req.hostname === 'localhost') {
+  const dbug = false
   if (req && req.method == 'GET') {
     // const body = req.body? JSON.stringify(req.body) : 'empty'
     const host = req.headers['host']
@@ -19,7 +20,7 @@ export const metricMiddle = (req, res, next) => {
       metricData.gets[key] = 0
     }
     metricData.gets[key]++
-    console.log('metrics middle request from ', url, parts, req.method, host)
+    if (dbug) console.log('metrics middle request from ', url, parts, req.method, host)
     metricData.getDate1 = Date.now()
     // metricData.getDate2 = moment().format()
     metricData.runTime = metricData.getDate1 - metricData.startDate1

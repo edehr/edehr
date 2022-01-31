@@ -13,12 +13,12 @@ helper.setClear(false)
 /* global describe it */
 describe(`${typeName} controller testing`, function () {
   before(function (done) {
-    helper.before(done, mongoose)
+    helper.beforeTestDbDrop(done, mongoose)
   })
 
-  // after(function(done) {
-  //   helper.afterDropDatabase(done, mongoose)
-  // })
+  after(function (done) {
+    helper.afterTestsCloseDb(mongoose).then(() => done() )
+  })
 
   it(`${typeName} be valid with model and key`, function (done) {
     let m = new ActivityController(Activity)

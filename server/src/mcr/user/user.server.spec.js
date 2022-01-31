@@ -1,18 +1,18 @@
-var should = require('should')
+const should = require('should')
 const mongoose = require('mongoose')
 import User from './user'
 import Helper from '../common/test-helper'
 const helper = new Helper()
 const logError = require('debug')('error')
+console.log('USS: mongoose.connection.readyState', mongoose.connection.readyState)
 
 /* global describe it */
 describe('user mongoose schema testing', function () {
   before(function (done) {
-    helper.before(done, mongoose)
+    helper.beforeTestDbDrop(done, mongoose)
   })
   after(function (done) {
-    let collection = 'users'
-    helper.afterTests(done, mongoose, collection)
+    helper.afterTestsCloseDb(mongoose).then(() => done() )
   })
 
   it('user should be invalid if id is empty', function (done) {

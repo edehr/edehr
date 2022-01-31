@@ -1,4 +1,4 @@
-
+const logError = require('debug')('error')
 /*
 the ok and fail functions are used in route controllers. See for example base.js
 */
@@ -43,10 +43,10 @@ export function fail (res) {
       // return Internal Server Error ... "something has gone wrong on the web site's server but the server could not be more specific on what the exact problem is."
       code = 500
       message = 'Unknown error:' + error.name + ' ' + error.message
-      console.log('Server utils fail unknown error return 500.', message)
+      logError('Server utils fail unknown error return 500.', message)
     }
     // TODO - return errors the way it's done in app.js
-    console.log('Send fail status', code, 'message', message)
+    logError('Send fail status', code, 'message', message)
     res.status(code).send(message) // .end(message)
   }
 }

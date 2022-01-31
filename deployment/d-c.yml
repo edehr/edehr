@@ -48,6 +48,7 @@ services:
      - mongo_service
     volumes:
       - "../server/src/:/usr/src/app/src/"
+      - "../server/resources/:/usr/src/app/resources/"
       - "../server/files-common/:/usr/src/app/files-common/"
       - "../server/files-ehr/:/usr/src/app/files-ehr/"
     entrypoint:

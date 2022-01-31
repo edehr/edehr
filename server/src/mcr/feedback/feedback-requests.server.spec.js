@@ -22,14 +22,14 @@ const debug = require('debug')('server')
 describe(`Make server calls on ${TYPE}`, function () {
   let app
   before(function (done) {
-    ehrApp
-      .setup(configuration)
-      .then(() => {
+    helper.beforeTestAppAndDbDrop(ehrApp, configuration, mongoose)
+      .then( () => {
         app = ehrApp.application
+        done()
       })
-      .then(() => {
-        return helper.before(done, mongoose)
-      })
+  })
+  after(function (done) {
+    helper.afterTestsCloseDb(mongoose).then(() => done() )
   })
 
   let theData = {feedbackData: 'Some feedback data in a server test'}

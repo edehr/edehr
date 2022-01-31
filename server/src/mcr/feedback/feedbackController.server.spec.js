@@ -19,7 +19,10 @@ function makeController () {
 /* global describe it */
 describe(`${typeName} controller testing`, function () {
   before(function (done) {
-    helper.before(done, mongoose)
+    helper.beforeTestDbDrop(done, mongoose)
+  })
+  after(function (done) {
+    helper.afterTestsCloseDb(mongoose).then(() => done() )
   })
 
   it(`${typeName} create model`, function (done) {

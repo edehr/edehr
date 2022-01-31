@@ -1,6 +1,6 @@
 var should = require('should')
 const mongoose = require('mongoose')
-const ObjectID = require('mongodb').ObjectID
+const ObjectID = require('mongodb').ObjectId
 import BaseController from './base'
 import Model from '../seed/seed-data'
 import Helper from '../common/test-helper'
@@ -17,12 +17,12 @@ const logError = require('debug')('error')
 /* global describe it */
 describe(`${typeName} controller testing`, function () {
   before(function (done) {
-    helper.before(done, mongoose)
+    helper.beforeTestDbDrop(done, mongoose)
   })
 
-  // after(function(done) {
-  //   helper.afterTests(done, mongoose, collectionName)
-  // })
+  after(function (done) {
+    helper.afterTestsCloseDb(mongoose).then(() => done() )
+  })
 
   it(`${typeName} be valid with model and key`, function (done) {
     let m = new BaseController(Model, 'user_id')

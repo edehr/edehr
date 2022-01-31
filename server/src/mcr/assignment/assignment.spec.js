@@ -12,11 +12,11 @@ const logError = require('debug')('error')
 /* global describe it */
 describe(`${typeName} mongoose schema testing`, function () {
   before(function (done) {
-    helper.before(done, mongoose)
+    helper.beforeTestDbDrop(done, mongoose)
   })
 
   after(function (done) {
-    helper.afterTests(done, mongoose, collectionName)
+    helper.afterTestsCloseDb(mongoose).then(() => done() )
   })
 
   it(`${typeName} be invalid if params are empty`, function (done) {

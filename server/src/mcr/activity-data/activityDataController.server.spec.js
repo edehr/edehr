@@ -14,8 +14,11 @@ describe(`${typeName} controller testing`, function () {
   let controller
 
   before(function (done) {
-    helper.before(done, mongoose)
+    helper.beforeTestDbDrop(done, mongoose)
     controller = new ActivityDataController()
+  })
+  after(function (done) {
+    helper.afterTestsCloseDb(mongoose).then(() => done() )
   })
 
   let theConsumerId, theVisitId

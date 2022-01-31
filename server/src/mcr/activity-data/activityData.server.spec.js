@@ -11,7 +11,10 @@ const logError = require('debug')('error')
 /* global describe it */
 describe(`${typeName} mongoose schema testing`, function () {
   before(function (done) {
-    helper.before(done, mongoose)
+    helper.beforeTestDbDrop(done, mongoose)
+  })
+  after(function (done) {
+    helper.afterTestsCloseDb(mongoose).then(() => done() )
   })
 
   let theConsumerId, theVisitId
@@ -26,7 +29,7 @@ describe(`${typeName} mongoose schema testing`, function () {
   it(`${typeName} create model with no parameters should error`, function (done) {
     let m = new Model()
     m.validate(function (error) {
-      // debug('Expect error: ', error)
+      // console.log('Expecting error here: ', error)
       should.exist(error)
       should.equal(error.errors['visit'].message, 'Path `visit` is required.')
       should.equal(error.errors['toolConsumer'].message, 'Path `toolConsumer` is required.')

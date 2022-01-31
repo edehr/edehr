@@ -20,16 +20,16 @@ const refreshToken = Helper.generateRefreshToken(token)
 describe(`${NAME} - Server requests `, () => {
   let app
   before(function (done) {
-    ehrApp
-      .setup(configuration)
-      .then(() => {
+    helper.beforeTestAppAndDbDrop(ehrApp, configuration, mongoose)
+      .then( () => {
         app = ehrApp.application
-      })
-      .then(() => {
-        return helper.before(done, mongoose)
+        done()
       })
   })
-  
+  after(function (done) {
+    helper.afterTestsCloseDb(mongoose).then(() => done() )
+  })
+
 
   it('Properly gets the token content', done => {
     const url = BASE
