@@ -3,11 +3,9 @@ import mongoose from 'mongoose'
 var should = require('should')
 var request = require('supertest')
 import EhrApp from './app'
-import Config from '../config/config'
 import Helper from '../mcr/common/test-helper'
-
-const config = new Config('test')
-const configuration = config.config
+import applicationConfiguration from '../config/config'
+const configuration = applicationConfiguration('test')
 const helper = new Helper()
 const ehrApp = new EhrApp()
 

@@ -2,9 +2,8 @@ var should = require('should')
 const mongoose = require('mongoose')
 import AssignmentController from './assignment-controller'
 import Helper from '../common/test-helper'
-import Config from '../../config/config'
-const config = new Config('test')
-const configuration = config.config
+import applicationConfiguration from '../../config/config'
+const configuration = applicationConfiguration('test')
 const helper = new Helper()
 
 const typeName = 'AssignmentController'

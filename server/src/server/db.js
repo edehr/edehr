@@ -8,8 +8,7 @@ export default function (config) {
     const dbc = config.database
     const sanitizedConfig = Object.assign( {} , dbc)
     sanitizedConfig.password = sanitizedConfig.password ? 'aPassword' : undefined
-    debug('DB: Configuration: %s', JSON.stringify(sanitizedConfig,null,2))
-
+    // debug('DB: Configuration: %s', JSON.stringify(sanitizedConfig,null,2))
     let auth = false
     let uri = []
     // https://mongodb.github.io/node-mongodb-native/driver-articles/mongoclient.html
