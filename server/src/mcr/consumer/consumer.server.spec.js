@@ -1,12 +1,9 @@
 import Consumer from './consumer'
-import Config from '../../config/config'
 import EhrApp from '../../server/app'
 import Helper from '../common/test-helper'
-
-// const request = require('supertest')
+import applicationConfiguration from '../../config/config'
+const configuration = applicationConfiguration('test')
 const BASE = '/consumers'
-const config = new Config('test')
-const configuration = config.config
 const ehrApp = new EhrApp()
 const helper = new Helper()
 const mongoose = require('mongoose')

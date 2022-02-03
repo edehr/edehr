@@ -2,9 +2,9 @@ import fs from 'fs'
 import path from 'path'
 import { formElementNameForFileUpload } from './files-controller'
 import { Text } from '../../config/text'
-import Config from '../../config/config'
 import EhrApp from '../../server/app'
 import Helper from '../common/test-helper'
+import applicationConfiguration from '../../config/config'
 
 const debug = require('debug')('server')
 const should = require('should')
@@ -14,13 +14,11 @@ const BASE = '/api/files'
 const tokenData = Helper.sampleTokenData()
 tokenData.isInstructor = true
 const token = Helper.generateToken(tokenData)
-const config = new Config('test')
-const configuration = config.config
-
 const url = BASE +'/upload'
 const dataDirectory = 'test-data'
 const ehrApp = new EhrApp()
 
+const configuration = applicationConfiguration('test')
 function shouldUpload (application, testFileName, done) {
   const testFilePath = path.join(__dirname, dataDirectory, testFileName)
   const expectedPath = path.join(configuration.ehrFilesDirectory, tokenData.toolConsumerId, testFileName)
@@ -187,8 +185,7 @@ describe.skip('Make server calls on files controller', function () {
 describe.skip('File upload with configuration changes', () => {
 
   it('File upload file too big', function (done) {
-    const configDelta = new Config('test')
-    const configurationDelta = configDelta.config
+    const configurationDelta = applicationConfiguration('test')
     const testFileName = 'test.json'
     const testFilePath = path.join(__dirname, dataDirectory, testFileName)
     const testFileSizeInBytes = fs.statSync(testFilePath)['size']
@@ -212,8 +209,7 @@ describe.skip('File upload with configuration changes', () => {
   })
 
   it('File upload config is missing ehr directory', function () {
-    const configDelta = new Config('test')
-    const configurationDelta = configDelta.config
+    const configurationDelta = applicationConfiguration('test')
     delete configurationDelta.ehrFilesDirectory
 
     const ehrAppDelta = new EhrApp()
@@ -238,8 +234,7 @@ describe.skip('File upload with invalid auth', () => {
     tokenData.toolConsumerId = undefined
     const token = Helper.generateToken(tokenData)
 
-    const configDelta = new Config('test')
-    const configurationDelta = configDelta.config
+    const configurationDelta = applicationConfiguration('test')
     const ehrAppDelta = new EhrApp()
     ehrAppDelta
       .setup(configurationDelta)

@@ -4,10 +4,8 @@ const mongoose = require('mongoose')
 import Helper from '../common/test-helper'
 const helper = new Helper()
 import EhrApp from '../../server/app'
-import Config from '../../config/config'
-
-const config = new Config('test')
-const configuration = config.config
+import applicationConfiguration from '../../config/config'
+const configuration = applicationConfiguration('test')
 const TYPE = 'Feedback'
 const NAME = 'feedback'
 const PROPERTY = 'feedbacks'

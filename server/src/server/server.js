@@ -1,10 +1,9 @@
 'use strict'
-import Config from '../config/config.js'
+import applicationConfiguration from '../config/config.js'
 import EhrApp from './app.js'
+const configuration = applicationConfiguration(process.env.NODE_ENV)
 
 const ehrApp = new EhrApp()
-const config = new Config(process.env.NODE_ENV)
-const configuration = config.config
 ehrApp.setup(configuration)
   .then(() => {
     const app = ehrApp.application

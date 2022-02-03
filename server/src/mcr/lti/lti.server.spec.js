@@ -11,14 +11,12 @@ import ConsumerController from '../consumer/consumer-controller'
 import SeedDataController from '../seed/seedData-controller'
 import LTIController from './lti'
 import Helper from '../common/test-helper'
-import Config from '../../config/config'
-import Assignment from '../assignment/assignment'
+import applicationConfiguration from '../../config/config'
+const configuration = applicationConfiguration('test')
 
 const debug = require('debug')('server')
 const logError = require('debug')('error')
 const helper = new Helper()
-const config = new Config('test')
-const configuration = config.config
 const act = new ActivityController()
 const as = new AssignmentController(configuration)
 const authUtil = new AuthUtil(configuration)

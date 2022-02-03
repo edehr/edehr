@@ -1,15 +1,13 @@
 import Helper from '../common/test-helper'
 import EhrApp from '../../server/app'
-import Config from '../../config/config'
+import applicationConfiguration from '../../config/config'
+const configuration = applicationConfiguration('test')
 const request = require('supertest')
 const mongoose = require('mongoose')
 const should = require('should')
 const debug = require('debug')('server')
-
-const config = new Config('test')
 const ehrApp = new EhrApp()
 const helper = new Helper()
-const configuration = config.config
 
 const BASE = '/api/auth'
 const NAME = 'auth-controller'

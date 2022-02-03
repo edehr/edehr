@@ -1,17 +1,15 @@
-import Config from '../../config/config'
 import EhrApp from '../../server/app'
 import Helper from '../common/test-helper'
+import applicationConfiguration from '../../config/config'
+const configuration = applicationConfiguration('test')
 const should = require('should')
 const request = require('supertest')
 const mongoose = require('mongoose')
 import { v4 as uuidv4 } from 'uuid'
-
 const ehrApp = new EhrApp()
 const helper = new Helper()
 const typeName = 'demo'
 const BASE = '/api/demo'
-const config = new Config('test')
-const configuration = config.config
 const _factorTypeName = (description = '') => `${typeName} - ${description}`
 
 describe(_factorTypeName('making server calls'), () => {

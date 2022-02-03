@@ -4,12 +4,10 @@ var should = require('should')
 const request = require('supertest')
 import LookaheadController from './lookahead-controller'
 import EhrApp from '../../server/app'
-import Config from '../../config/config'
 import Helper from '../common/test-helper'
-
+import applicationConfiguration from '../../config/config'
+const configuration = applicationConfiguration('test')
 const helper = new Helper()
-const config = new Config('test')
-const configuration = config.config
 const ehrApp = new EhrApp()
 const BASE = '/api/lookahead'
 const typeName = 'Lookahead'
