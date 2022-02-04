@@ -159,11 +159,6 @@ export default function applicationConfiguration (env) {
       : developConfig(dCfg)
   cfg.clientUrl = composeUrl(cfg.scheme, cfg.clientHost, cfg.clientPort)
   cfg.apiUrl = composeUrl(cfg.scheme, cfg.apiHost, cfg.apiPort, 'api')
-  delete cfg.apiHost
-  delete cfg.apiPort
-  delete cfg.scheme
-  delete cfg.clientHost
-  delete cfg.clientPort
   debug('configuration %s', asStringForLog(cfg))
   return cfg
 }

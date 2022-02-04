@@ -40,7 +40,7 @@ export default class ConsumerController extends BaseController {
    * @return {*}
    */
   clearConsumer (toolConsumerId) {
-    debug('deleteDemoData delete consumer ' + toolConsumerId)
+    debug('ConsumerController clearConsumer for toolConsumerId ' + toolConsumerId)
     return this.delete(toolConsumerId)
   }
 

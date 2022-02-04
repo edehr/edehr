@@ -14,7 +14,7 @@
     "build:babel": "mkdir -p build && babel src --out-dir ./build",
     "build": "npm run clean && npm run build:babel",
     "start": "NODE_ENV=development DEBUG='server, error' nodemon --exec babel-node src/index.js",
-    "start:prod": "NODE_ENV=production DEBUG='error' node build/index.js",
+    "start:prod": "NODE_ENV=production DEBUG='server, error' node build/index.js",
     "lint": "eslint --fix src/**/*.js",
     "test": "npm run build && node_modules/.bin/mocha --recursive --sort --bail build/**/*.*.spec.js",
     "test:verbose": "NODE_ENV=development DEBUG='server, error' && npm run test",
