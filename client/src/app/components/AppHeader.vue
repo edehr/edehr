@@ -22,7 +22,7 @@
               div(v-on:click="hideDemoMenu()")
                 router-link(:to="{ name: `demo` }", class="secondLevelLink") Change persona
               hr
-              div(class="secondLevelLink activationItem", v-on:click="demoLogoutConfirm()") Logout of demonstration
+              div(class="secondLevelLink activationItem", v-on:click="demoLogoutConfirm()") Exit demonstration
       div(v-if="showDashboard", class="secondMenu")
         div(class="navList")
           div(class="navItem")

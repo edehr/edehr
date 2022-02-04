@@ -8,7 +8,7 @@ const metricData = {
 export const metricMiddle = (req, res, next) => {
   // if (req.hostname === 'localhost') {
   const dbug = false
-  if (req && req.method == 'GET') {
+  if (req && req.method === 'GET') {
     // const body = req.body? JSON.stringify(req.body) : 'empty'
     const host = req.headers['host']
     const url = req.url
@@ -25,7 +25,8 @@ export const metricMiddle = (req, res, next) => {
     // metricData.getDate2 = moment().format()
     metricData.runTime = metricData.getDate1 - metricData.startDate1
     metricData.getCount++
-    metricData.lastRequestUrl = req.url
+    let reqUrl = req.url ? req.url : ''
+    metricData.lastRequestUrl = reqUrl.includes('metric') ? metricData.lastRequestUrl : req.url
     metricData.host = host
   }
   next()
@@ -38,6 +39,7 @@ export default class MetricController {
   constructor(config) {
     metricData.host = config.host
     metricData.title = config.app.title
+    metricData.version = config.app.version
     metricData.startDate1 = Date.now()
     // startDate2: moment().format(),
     // getDate1: Date.now(),
@@ -47,7 +49,6 @@ export default class MetricController {
   }
 
   getMetrics() {
-    // metricData.userAgent = userAgent
     return Promise.resolve(metricData)
   }
 

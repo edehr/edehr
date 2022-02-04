@@ -3,26 +3,25 @@ import moment from 'moment'
 import cors from 'cors'
 import dbSeeder from '../config/lib/dbSeeder'
 import { AssignmentMismatchError } from '../mcr/common/errors'
+import { validatorMiddlewareWrapper, adminLimiter, localhostOnly, isAdmin } from '../helpers/middleware'
 import ActivityController from '../mcr/activity/activity-controller'
 import ActivityDataController from '../mcr/activity-data/activity-data-controller'
 import AdminController from '../mcr/admin/admin-controller'
 import AssignmentController from '../mcr/assignment/assignment-controller'
 import AuthController from '../mcr/auth/auth-controller'
+import AuthUtil from '../mcr/common/auth-util'
 import ConsumerController from '../mcr/consumer/consumer-controller'
+import DemoController from '../mcr/demo/demo-controller'
 import FeedbackController from '../mcr/feedback/feedback-controller'
 import FilesController from '../mcr/files/files-controller'
 import IntegrationController from '../mcr/integration/integration-controller'
-import LTIController from '../mcr/lti/lti'
 import LookaheadController from '../mcr/lookahead/lookahead-controller'
+import LTIController from '../mcr/lti/lti'
+import MetricController, { metricMiddle } from '../mcr/metric/metric-controller'
 import PlaygroundController from '../mcr/playground/playground-controller'
+import SeedDataController from '../mcr/seed/seedData-controller'
 import UserController from '../mcr/user/user-controller.js'
 import VisitController from '../mcr/visit/visit-controller'
-import SeedDataController from '../mcr/seed/seedData-controller'
-import { validatorMiddlewareWrapper, adminLimiter, localhostOnly, isAdmin } from '../helpers/middleware'
-import AuthUtil from '../mcr/common/auth-util'
-import DemoController from '../mcr/demo/demo-controller'
-import MetricController, { metricMiddle } from '../mcr/metric/metric-controller'
-
 // Sessions and session cookies
 // express-session stores session data here on the server and only puts session id in the cookie
 const session = require('express-session')
@@ -146,8 +145,8 @@ export function apiMiddle (app, config) {
       api.use('/api/demo', cors(corsOptions), demo.route())
       api.use('/api/files/public', cors(corsOptions), fileC.publicRoute())
 
-      api.use('/api/metric', metric.route())
-      api.use('/metric', metric.route())
+      api.use('/api/metric', cors(corsOptions), metric.route())
+      api.use('/metric', cors(corsOptions), metric.route())
 
       // Inside API
       api.use('/activities', middleWare, act.route())
@@ -222,6 +221,7 @@ function setupCors (config) {
     if (allowedList.indexOf(req.header('Origin')) !== -1) {
       corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
     } else {
+      console.log('CORS request rejected for req.header', req.header('Origin'))
       corsOptions = { origin: false } // disable CORS for this request
     }
     callback(null, corsOptions) // callback expects two parameters: error and options

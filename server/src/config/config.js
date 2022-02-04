@@ -19,6 +19,7 @@ function defaultConfig (env) {
     app: {
       title: pkg.title,
       description: pkg.description,
+      version: pkg.version,
       keywords: pkg.keywords.join(',')
     },
     isDevelop: true,

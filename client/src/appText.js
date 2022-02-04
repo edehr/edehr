@@ -58,8 +58,8 @@ export const demoText = {
       ' system needs to be restarted and all your demonstration data may be lost.\n'
   },
   logout: {
-    title: 'Confirm leave the EdEHR demonstration mode',
-    body: 'Exit the demonstration mode. At this time this means all your data is removed. But do not worry because you can just come back and try out the EdEHR again. '
+    title: 'Confirm exit demonstration mode',
+    body: 'Exit and destroy your demonstration environment. If you created or modified any EHR seeds you may wish to save a copy first. Cancel this dialog and return to the Seeds section (as an instructor) and download copies of your modified seeds. Then exit this demonstration mode.'
   }
 }
 

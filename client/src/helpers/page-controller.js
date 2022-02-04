@@ -43,8 +43,7 @@ class PageControllerInner {
       seed for seed editing. Later can refactor the management of instructor and student visits
        */
       StoreHelper.setSeedEditId('')
-      const studentId = evaluatingStudent
-      dblog('User is an instructor evaluatingStudent >> ', studentId)
+      dblog('User is an instructor evaluatingStudent >> ', evaluatingStudent)
     }
     else if (lti) {
       const userType = lti
@@ -65,8 +64,6 @@ class PageControllerInner {
       dblog('User not in the EHR so clear any active seed editing ids')
       StoreHelper.setSeedEditId('')
     }
-
-
 
     try {
       if (route.name === 'demo') {
@@ -91,9 +88,9 @@ class PageControllerInner {
     const demoToken = StoreHelper.getDemoToken()
     const isDemo = !!demoToken
 
-    // The LTI service provides a token in the query. We need to send this back to the server to get the token
-    // we'll use and cache for the user.  Actually, this step with the refresh token could be skiped since it adds
-    // little additional security for this application.
+    // The LTI service provides a token in the query. We send this back to our preconfigured api server to verify the
+    // incoming request and to get the actual token this client will use.  This two step token verification process
+    // makes sure the incoming request is from the expected api server and no-where else.
     const refreshToken = route.query.token
     // if there is no token in the query then use any stashed token.
     const authToken = StoreHelper.getAuthToken()

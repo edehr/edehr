@@ -5,9 +5,6 @@ import StoreHelper from '@/helpers/store-helper'
 const debugDH = false
 
 export default class DemoStoreHelper {
-  constructor (apiUrl) {
-    this.apiUrl = apiUrl
-  }
   createToolConsumer () {
     /*
     Create something short and random for the tool consumer's key and id. The server will take this
@@ -15,13 +12,13 @@ export default class DemoStoreHelper {
      */
     let id = Math.random().toString(32).slice(-7)
     const apiUrl = StoreHelper.apiUrlGet()
-    console.log('DemoStoreHelper create consumer for user id ', id, 'apiurl', apiUrl)
+    console.log('DemoStoreHelper create consumer for user id ', id, 'apiUrl', apiUrl)
     const url = `${apiUrl}/demo/`
     return axios.post(url, { id })
   }
 
   demoLogout (token) {
-    const apiUrl = this.apiUrl
+    const apiUrl = StoreHelper.apiUrlGet()
     const url = `${apiUrl}/demo/logout`
     if(debugDH) console.log('DH logout',apiUrl)
     return axios.post(url)
@@ -31,7 +28,7 @@ export default class DemoStoreHelper {
   }
 
   dhLoadDemoData (token) {
-    const apiUrl = this.apiUrl
+    const apiUrl = StoreHelper.apiUrlGet()
     const url = `${apiUrl}/demo/fetch`
     if(debugDH) console.log('DH fetch', apiUrl)
     const options = {
@@ -51,7 +48,7 @@ export default class DemoStoreHelper {
    * @return {AxiosPromise<any>}
    */
   submitPersona (token, submitData) {
-    const apiUrl = this.apiUrl
+    const apiUrl = StoreHelper.apiUrlGet()
     const url = `${apiUrl}/demo/set`
     const {assignmentName, externalId, personaName, personaEmail, personaRole, returnUrl, toolKey} = submitData
     const [ given, family ] = personaName.split(' ')
