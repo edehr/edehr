@@ -1,23 +1,34 @@
 import DemoStoreHelper from '@/helpers/demo-store-helper'
-import StoreHelper from '../../helpers/store-helper'
 import sKeys from '../../helpers/session-keys'
 
 const debugDS = false
-
 let demoHelper
+
 function _getHelper () {
   /*
   Lazy load helper to speed up startup, reduce mem if demo is not used and because store helper is not yet defined in
   the global scope.
    */
   if (!demoHelper)
-    demoHelper = new DemoStoreHelper(StoreHelper.apiUrlGet())
+    demoHelper = new DemoStoreHelper()
   return demoHelper
 }
 const _clearDemo = () => {
   localStorage.removeItem(sKeys.DEMO_TOKEN)
   localStorage.removeItem('AcceptTerms')
+  localStorage.removeItem('DemoData')
+  localStorage.removeItem('DemoFeature')
+  localStorage.removeItem('DemoPersona')
 }
+
+const _getAcceptTerms = () => localStorage.getItem('AcceptTerms')
+const _setAcceptTerms = (value) => localStorage.setItem('AcceptTerms', value)
+const _getDemoData = () => localStorage.getItem('DemoData')
+const _setDemoData = (value) => localStorage.setItem('DemoData', value)
+const _getDemoFeature = () => localStorage.getItem('DemoFeature')
+const _setDemoFeature = (value) => localStorage.setItem('DemoFeature', value)
+const _getDemoPersona = () => localStorage.getItem('DemoPersona')
+const _setDemoPersona = (value) => localStorage.setItem('DemoPersona', value)
 const _getDemoToken = () => localStorage.getItem(sKeys.DEMO_TOKEN)
 const _setDemoToken = (token) => localStorage.setItem(sKeys.DEMO_TOKEN, token)
 
@@ -138,14 +149,14 @@ const actions = {
 
 const mutations = {
   initialize: function (state) {
-    state.acceptsTerms = localStorage.getItem('AcceptTerms') === 'true'
-    state.demoFeature = localStorage.getItem('DemoFeature') === 'true'
-    const stashedDemoData = localStorage.getItem('DemoData')
+    state.acceptsTerms = _getAcceptTerms() === 'true'
+    state.demoFeature = _getDemoFeature() === 'true'
+    const stashedDemoData = _getDemoData()
     if (stashedDemoData) {
       if (debugDS) console.log('DemoStore restore stashed DemoData', stashedDemoData)
       state.demoData = JSON.parse(stashedDemoData)
     }
-    const stashedPersona = localStorage.getItem('DemoPersona')
+    const stashedPersona = _getDemoPersona()
     if (stashedPersona) {
       if (debugDS) console.log('DemoStore restore stashed persona', stashedPersona)
       state.persona = JSON.parse(stashedPersona)
@@ -155,17 +166,17 @@ const mutations = {
   setAcceptTerms: function (state, data) {
     if (debugDS) console.log('DemoStore set accept terms data', data)
     state.acceptsTerms = data.accepts
-    localStorage.setItem('AcceptTerms', data.accepts)
+    _setAcceptTerms(data.accepts)
   },
   setDemoData: function (state, data) {
     if (debugDS) console.log('DemoStore set demo data', data)
     state.demoData = data
-    localStorage.setItem('DemoData', JSON.stringify(data))
+    _setDemoData(JSON.stringify(data))
   },
   demoFeature: function (state, data) {
     if (debugDS) console.log('DemoStore set demo feature', data)
     state.demoFeature = data
-    localStorage.setItem('DemoFeature', data)
+    _setDemoFeature(data)
   },
   setAssignment: function (state, data) {
     if (debugDS) console.log('DemoStore set assignment', data)
@@ -174,7 +185,7 @@ const mutations = {
   setPersona: function (state, data) {
     if (debugDS) console.log('DemoStore set persona', data)
     state.persona = data
-    localStorage.setItem('DemoPersona', JSON.stringify(data))
+    _setDemoPersona(JSON.stringify(data))
   },
 }
 

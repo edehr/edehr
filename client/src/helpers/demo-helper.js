@@ -1,6 +1,7 @@
 import axios from 'axios'
 import StoreHelper from './store-helper'
 import InstoreHelper from '../store/modules/instoreHelper'
+// import router from '../router'
 
 const debugDC = true
 
@@ -52,6 +53,7 @@ export default class DemoHelper {
       .then(({url}) => {
         StoreHelper.setLoading(null, false)
         if (debugDC) console.log('DemoCourse goto url ', url)
+        // customRouter.push({ name: 'ehr', query: { evaluatingStudent: true, studentId: studentVisit._id } } http://localhost:28000/ehr?lti=student&token=eyJhb....
         window.location.replace(url)
       }).catch(err => {
         StoreHelper.setLoading(null, false)

@@ -360,9 +360,9 @@ export default class LTIController {
       throw new SystemError(Text.EdEHR_MISSING_VISIT(toolConsumer.oauth_consumer_key, toolConsumer._id) )
     }
     let visit = req.visit
-    let port = req.get('port') ? ':' + req.get('port') : ''
-    // let apiUrl = encodeURIComponent(req.protocol + '://' + req.get('host') + port + '/api')
-    let apiUrl = this.config.apiUrl
+    // ehrRoutePath is intended to allow a learning object (assignment) designate the starting page in the EHR
+    // although this may not be desired from a teaching point of view because most real ehr systems
+    // always start at the beginning.
     let route = req.assignment.ehrRoutePath || '/ehr'
 
     if (visit.isInstructor) {
@@ -383,7 +383,7 @@ export default class LTIController {
       const refreshToken = this.authUtil.createRefreshToken(token)
       let ltiQuery = 'lti=' + (visit.isInstructor ? 'instructor' : (visit.isStudent ? 'student' : 'unknown'))
       req.refreshToken = refreshToken
-      let url = this.config.clientUrl + route + `?${ltiQuery}&apiUrl=${apiUrl}&token=${refreshToken}`
+      let url = this.config.clientUrl + route + `?${ltiQuery}&token=${refreshToken}`
       if (req.errors.length > 0) {
         let errs = req.errors.join('-')
         url += '&error=' + errs

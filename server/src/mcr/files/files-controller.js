@@ -102,7 +102,7 @@ export default class FileController {
       if (!this._validateFileType(file)) {
         return callback(req.badRequestError)
       }
-      this._setupDirectory(req)
+      await this._setupDirectory(req)
       this._setupFileName(req, file)
       console.log('is req method post', req.method)
       if (req.method === 'POST' && !this._validateFileDoesNotExist(req, file)) {
@@ -139,15 +139,15 @@ export default class FileController {
   }
 
   async _convertIdToKey(toolConsumerId) {
-    const dirName = await Consumer.find({_id: toolConsumerId})
+    return await Consumer.find({_id: toolConsumerId})
       .then((found) => {
         if (found && found.length > 0) {
           const consumer = found[0]
           return consumer.oauth_consumer_key
         }
+        debug('_convertIdToKey did not find consumer for key', toolConsumerId)
         return undefined
       })
-    return dirName
   }
 
   _validateFileType(file) {
@@ -179,11 +179,21 @@ export default class FileController {
    * @param toolConsumerId
    */
   async clearConsumer (toolConsumerId) {
-    const dir = await this._convertIdToKey(toolConsumerId)
-    debug('File Controller Remove all files in this directory ', dir)
-    fs.rmdir( dir, {recursive: true}, (err) => {
-      if (err) return cb(err)
-      cb(null, 'Removed all files for ' + toolConsumerId + ' in directory ' + dir)
+    const dirName = await this._convertIdToKey(toolConsumerId)
+    if (!dirName) {
+      logError('Could not clear consumer', toolConsumerId)
+      return
+    }
+    // It's safe to let the directory removal proceed in the background and let the server proceed.
+    // Errors are reported to error log and need to be managed from there.
+    fs.rm( dirName,  { recursive: true, force: true }, (err) => {
+      if (err) {
+        logError('FAILED TO REMOVE ALL FILES FOR ' + toolConsumerId + ' IN DIRECTORY ' + dirName)
+        logError(err)
+      }
+      else {
+        debug('Removed all files for ' + toolConsumerId + ' in directory ' + dirName)
+      }
     })
   }
 
