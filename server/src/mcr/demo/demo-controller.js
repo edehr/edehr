@@ -109,7 +109,7 @@ _createDemoToolConsumer (req, res, next) {
 
   deleteDemoData (consumerKey) {
     let toolConsumer
-    debug('Ready deleteDemoData demo consumer along with all of its data: ' + consumerKey)
+    debug('deleteDemoData consumer along with all of its data: ' + consumerKey)
     return this.comCon.consumerController.findOneConsumerByKey(consumerKey)
       .then((tc) => {
         if (!tc) {
@@ -118,13 +118,15 @@ _createDemoToolConsumer (req, res, next) {
         debug('Ready to remove a demo consumer along with all of its data: ' + tc.tool_consumer_instance_name)
         toolConsumer = tc._id
         let promises = []
-        promises.push(this.comCon.consumerController.delete(toolConsumer))
         promises.push(this.comCon.visitController.clearConsumer(toolConsumer))
         promises.push(this.comCon.activityController.clearConsumer(toolConsumer))
         promises.push(this.comCon.seedController.clearConsumer(toolConsumer))
         promises.push(this.comCon.assignmentController.clearConsumer(toolConsumer))
         promises.push(this.comCon.userController.clearConsumer(toolConsumer))
         promises.push(this.comCon.filesController.clearConsumer(toolConsumer))
+        // remove the consumer record last in case it is needed to remove the dependants
+        // for example the files controller needs to look up the existing controller
+        promises.push(this.comCon.consumerController.delete(toolConsumer))
         return Promise.all(promises)
       })
   }
@@ -227,7 +229,7 @@ _createDemoToolConsumer (req, res, next) {
 
     router.post('/logout', validatorMiddleware, (req, res) => {
       if (debugDC) debug('DemoController logout', req.authPayload)
-      this.deleteDemoData(req.authPayload.demoData.toolConsumerKey)
+      this.deleteDemoData(req.authPayload.consumerKey)
         .then( () => {
           if (debugDC) debug('DemoController logout, return 200')
           res.status(200).send('success')

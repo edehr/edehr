@@ -145,7 +145,7 @@ export default class FileController {
           const consumer = found[0]
           return consumer.oauth_consumer_key
         }
-        debug('_convertIdToKey did not find consumer for key', toolConsumerId)
+        debug('_convertIdToKey did not find consumer for toolConsumerId', toolConsumerId)
         return undefined
       })
   }

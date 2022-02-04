@@ -200,7 +200,7 @@ export function apiError (app, config) {
   }
 
   function errorHandler (err, req, res, next) {
-    debug('API errorHandler', err.message, err.status, err.errorData, res.status)
+    debug('API errorHandler ', err.message, err.status, err.errorData, res.status)
     let status = err.status || 500
     let errorData = err.errorData || {}
     let json =  {message: err.message, status: status, errorData: JSON.stringify(errorData)}
@@ -212,19 +212,18 @@ export function apiError (app, config) {
 }
 
 function setupCors (config) {
-  var allowedList = [] // 'http://localhost:28000', 'http://localhost:27000']
+  const allowedList = [] // 'http://localhost:28000', 'http://localhost:27000']
   allowedList.push(config.clientUrl)
   allowedList.push(config.apiUrl)
   debug('Setup CORS with allowedList:', allowedList)
-  var corsOptionsDelegate = function (req, callback) {
-    var corsOptions
+  return function (req, callback) {
+    let corsOptions
     if (allowedList.indexOf(req.header('Origin')) !== -1) {
       corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
     } else {
-      console.log('CORS request rejected for req.header', req.header('Origin'))
+      console.log('CORS request rejected for req.header', req.path)
       corsOptions = { origin: false } // disable CORS for this request
     }
     callback(null, corsOptions) // callback expects two parameters: error and options
   }
-  return corsOptionsDelegate
 }

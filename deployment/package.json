@@ -6,6 +6,7 @@
     "prod:build": "cp prod.env .env && docker-compose -f d-c.yml -f d-c-prod.yml up --build -d",
     "prod:run": "cp prod.env .env && docker-compose -f d-c.yml -f d-c-prod.yml up -d",
     "prod:stop": "docker-compose -f d-c.yml -f d-c-prod.yml down",
+    "logs:app": "docker logs -f $(docker ps -aqf \"name=edehrapp\")",
     "ls": "docker ps -a",
     "stop": "docker stop $(docker ps -a -q)",
     "rm": "docker rm $(docker ps -a -q)",
