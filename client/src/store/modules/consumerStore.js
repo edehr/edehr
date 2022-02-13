@@ -35,6 +35,9 @@ const actions = {
       return results
     })
   },
+  clearConsumer ({dispatch, commit} ) {
+    commit('set', { })
+  },
   get (context, id) {
     let url = 'get/' + id
     return InstoreHelper.getRequest(context, API, url).then(response => {

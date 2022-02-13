@@ -1,6 +1,6 @@
 <template lang="pug">
   div(class="content")
-    h1(class="has-text-centered") EdEHR Demonstration
+    h1(class="has-text-centered") Mock Course Nursing 101 - Intro to EHR
     section(class="columns")
 
       div(class="column is-3 aside")
@@ -14,13 +14,16 @@
       div(class="column is-8 is-offset-1 is-centered")
         div(class="card")
           div(class="card-content")
-            h3(class="has-text-centered") One Page Learning Management System
             section(v-for="assignment in assignments", :key="`des-${assignment.externalId}`")
-              div Assignment: {{assignment.name}}
-              div(v-text-to-html="assignment.description", class="assignment-description")
-              a(class="is-link", @click="gotoEhr(assignment)") {{assignment.name}}
-              span(class="icon")
-                fas-icon(class="fa", icon="stethoscope")
+              div
+                span(class="field-head") Activity: &nbsp;
+                span {{assignment.name}}
+              div
+                span(v-text-to-html="assignment.description", class="assignment-description")
+              div
+                span(class="field-head") Link to EdEHR: &nbsp;
+                span
+                  a(class="is-link", @click="gotoEhr(assignment)") {{assignment.name}}
               hr
 </template>
 
@@ -123,6 +126,9 @@ section {
   }
 }
 
+.field-head {
+  font-weight: bold;
+}
 .icon {
   color: #0473ea;
   margin: 0 1rem;

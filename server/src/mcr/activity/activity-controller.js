@@ -101,13 +101,14 @@ export default class ActivityController extends BaseController {
   }
 
   _extractLtiData (ltiData, toolConsumerId) {
+    let learningObjectName = ltiData.resource_link_title.replace('LOA-','AC-')
     var data = {
       context_id: ltiData.context_id,
       context_label: ltiData.context_label,
       context_title: ltiData.context_title,
       context_type: ltiData.context_type,
       resource_link_id: ltiData.resource_link_id,
-      resource_link_title: ltiData.resource_link_title,
+      resource_link_title: learningObjectName,
       resource_link_description: ltiData.resource_link_description
     }
     return data

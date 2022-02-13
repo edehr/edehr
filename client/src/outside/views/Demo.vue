@@ -15,9 +15,10 @@
           div(class="column")
             div(v-if="persona.role")
               span.
-                Great! You will be
-                {{ persona.role==='instructor' ? "instructor" : persona.role==='student' ? "student" : "" }}
-                {{persona.name}}.
+                Great! You will log in as:
+                {{persona.name}}
+                ({{ persona.role==='instructor' ? "instructor" : persona.role==='student' ? "student" : "" }})
+
             div(v-else) Please choose a user to start the demo.
             div
               ui-button(:disabled="!isFormValid", @buttonClicked="submitDemoAccess")

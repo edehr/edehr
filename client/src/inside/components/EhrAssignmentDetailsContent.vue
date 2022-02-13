@@ -9,7 +9,7 @@
     div(class="columns")
       div(class="column", v-text-to-html="panelInfo.activityDescription")
     div(class="columns")
-      div(class="column is-2 key") Assignment
+      div(class="column is-2 key") Learning Object
       div(class="column") {{ panelInfo.assignmentName}}
     div(class="columns")
       div(class="column", v-text-to-html="panelInfo.assignmentDescription")
