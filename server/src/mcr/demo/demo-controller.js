@@ -120,6 +120,7 @@ _createDemoToolConsumer (req, res, next) {
         let promises = []
         promises.push(this.comCon.visitController.clearConsumer(toolConsumer))
         promises.push(this.comCon.activityController.clearConsumer(toolConsumer))
+        promises.push(this.comCon.activityDataController.clearConsumer(toolConsumer))
         promises.push(this.comCon.seedController.clearConsumer(toolConsumer))
         promises.push(this.comCon.assignmentController.clearConsumer(toolConsumer))
         promises.push(this.comCon.userController.clearConsumer(toolConsumer))

@@ -107,6 +107,7 @@ export default class BaseController {
     return this.model
       .deleteMany(filter)
       .then(() => {
+        console.log('clearConsumer for model', this.modelName, ' consumer', toolConsumerId)
         return {}
       })
   }

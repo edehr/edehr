@@ -37,25 +37,34 @@ export const helpText = {
 }
 
 export const demoText = {
-  title: 'EdEHR Demonstration - Log In',
-  intro: 'Welcome to the Educational Electronic Health Record system demonstration log in page.  EdEHR helps in the education of our future health care workers, be they nurses, doctors, pharmacists, or other healthcare professions. EdEHR gives these students experience using an electronic health record system.\n This demonstration page let\'s you pretend to be an instructor or a student. Here you can "log in" as a user of a simulated learning management system (LMS) and through this get into the EdEHR. This simulated login will connect the same way other systems such as Canvas, Blackboard and Moodle will connect.',
+  title: 'Mock Demonstration - Log In',
+  intro: 'This is a mock log in page.  Think of this page as the place instructors and students log into their school\'s ' +
+    'Learning Management System (LMS). Here you can "log in" as a student or instructor and try out a sample course that ' +
+    'uses the EdEHR.',
   explanation:
-'In real life your LMS administrator works with an administrator the EdEHR to create connections between the two' +
-    ' systems. These connections are the learning objects that instructors can use within their courses.\n This' +
-    ' demonstration will provide you with a one page LMS that has connections to the EdEHR that are ready to go.' +
-    ' Once you "log in" you will see a fictitious course with sample assignments.\n You can "log in" as either an' +
-    ' instructor or a student. Instructors can customize assignment content or evaluate the work of their students.' +
-    ' (You will need to try out the student role before your instructor role will see students in the class list.)\n' +
-    ' Students can complete assignments.\n We recommend you first log in as a student, try to follow the' +
-    ' instructions set by your "instructor" and submit something for evaluation. You can then use the Demo menu item' +
-    ' on the top banner to come back here and "log in" as an instructor. You can then go to "your" class list, see a list of "your" students and try out the evaluation experience.\n Once you are done with the basic flow of students working on the assignments and instructors evaluating the student\'s work then come back here and log in as an instructor and, this time, go to the assignments page and modify the instructions given to the students or go deeper and modify the EHR case study content.\n Use the Demo menu item on the top banner to change your persona or leave the demonstration.  When you leave the demonstration all of your demonstration data is reset.  Remember this instance of the EdEHR is a prototype and so the admin of this instance may need to reset the system at any time.',
-  lmsAside: 'This one page learning management system has assignments set to connect with the EdEHR. Some of these' +
+'\nIn real life your LMS course content creators will work with the EdEHR administrator to create connections between' +
+    ' the learning objects in the EdEHR and your LMS. ' +
+    ' For now, you can log into this demonstration to see a fictitious course with sample assignments that use the EdEHR. ' +
+    ' We suggest you first log in as one or more of the mock students.  ' +
+    ' Try the assignments. Send your work in for evaluation.\n ' +
+    ' Then log in as an instructor and review the work your "students" have done.\n' +
+    ' As an instructor you can also customize the learning objects and case study data. ' +
+    ' To do this log in as an instructor and go to one of the assignments. ' +
+    ' Then go to the Learning Objects tab and explore how you can modify the instructions given to the students. ' +
+    ' Or go deeper and modify the EHR case study content.\n' +
+    ' If you do edit the EHR seeds and you want to keep your work be sure to download your seed.' +
+    ' Reach out to <a href="mailto:info@edehr.org">info@edehr.org</a> if you have questions.' +
+    ' Use the Demo menu item on the top banner to leave the demonstration. ' +
+    ' When you leave the demonstration all of your demonstration data is reset.' +
+    ' Remember this instance of the EdEHR is a prototype and so the admin of this instance may need to reset the system at any time.',
+  lmsAside:
+    ' This one page learning management system has assignments set to connect with the EdEHR. Some of these' +
     ' sample assignments are based on the open text-book <a href="https://pressbooks.bccampus.ca/healthcasestudies/">Health Case Studies - Toward Closing the Healthcare Communication Gap</a> by:  Glynda Rees, Rob Kruger, Janet Morrison.',
   login: {
     title: 'Try out the EdEHR',
-    body: 'The EdEHR is still a prototype web application.\n ' +
-    'Please consider any data that you enter as temporary. It maybe that the' +
-      ' system needs to be restarted and all your demonstration data may be lost.\n'
+    body: 'This is a prototype web application. ' +
+      'If the system needs to be restarted your demonstration data may be lost. ' +
+      'Contact <a href="mailto:info@edehr.org">info@edehr.org</a> if you have any questions or need help.\n'
   },
   logout: {
     title: 'Confirm exit demonstration mode',

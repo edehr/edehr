@@ -10,7 +10,7 @@
       )
       h2(slot="header") {{ title }}
       div(slot="body")
-        div(v-if="htmlBody", v-text-to-html="text")
+        div(class="confirm-body", v-if="htmlBody", v-text-to-html="text")
         div(v-else) {{ text }}
 
 </template>
@@ -70,7 +70,14 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss" >
 .ui-confirm {
 }
+
+.confirm-body a {
+    color: blue !important;
+    font-weight: bold;
+}
+
+
 </style>

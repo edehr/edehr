@@ -447,6 +447,7 @@ class StoreHelperWorker {
   async logUserOutOfEdEHR () {
     await this._dispatchAuthStore('logOutUser')
     await this._dispatchVisit('clearVisitData')
+    await this._dispatchConsumer('clearConsumer')
   }
 
 

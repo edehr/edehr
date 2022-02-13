@@ -88,6 +88,7 @@ export function apiMiddle (app, config) {
 
   const lcc = {
     activityController: act,
+    activityDataController: acc,
     assignmentController : as,
     authUtil,
     consumerController : cc,
@@ -221,7 +222,7 @@ function setupCors (config) {
     if (allowedList.indexOf(req.header('Origin')) !== -1) {
       corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
     } else {
-      console.log('CORS request rejected for req.header', req.path)
+      console.log('CORS request rejected for req.path', req.path, 'req.header', req.header('Origin'))
       corsOptions = { origin: false } // disable CORS for this request
     }
     callback(null, corsOptions) // callback expects two parameters: error and options

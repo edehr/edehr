@@ -94,7 +94,7 @@ export default class AssignmentController extends BaseController {
         const data = {
           toolConsumer: toolConsumer._id,
           externalId: externalId,
-          name: resource_link_title,
+          name: 'LOA- ' + resource_link_title,
           description: description || this.defaultAssignmentDescription,
           ehrRoutePath: '',
           persona, 
