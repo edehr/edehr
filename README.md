@@ -91,6 +91,14 @@ npm run dev:stop
 To run a "production" instance you check out the code as above and have the prerequisite tools installed.
 You have run the 'npm run install' set up script.
 
+Step 0. Set up the secrets
+```
+cd deployment
+cp sample.secrets .env.secrets
+vi .env.secrets
+```
+
+
 Step 1. Build the client vue project.
 ```
 # in project root

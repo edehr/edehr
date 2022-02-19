@@ -1,10 +1,12 @@
 {
   "scripts": {
-    "wip:dev:build": "cp dev.env .env && docker-compose -f d-c.yml -f d-c-dev.yml up --build",
-    "wip:dev:run": "cp dev.env .env && docker-compose -f d-c.yml -f d-c-dev.yml up -d",
+    "env.dev": "cp dev.env .env && cat .env.secrets >> .env",
+    "env.prod": "cp prod.env .env && cat .env.secrets >> .env",
+    "wip:dev:build": "npm run env.dev && docker-compose -f d-c.yml -f d-c-dev.yml up --build",
+    "wip:dev:run": "npm run env.dev  && docker-compose -f d-c.yml -f d-c-dev.yml up -d",
     "wip:dev:stop": "docker-compose -f d-c.yml -f d-c-dev.yml down",
-    "prod:build": "cp prod.env .env && docker-compose -f d-c.yml -f d-c-prod.yml up --build -d",
-    "prod:run": "cp prod.env .env && docker-compose -f d-c.yml -f d-c-prod.yml up -d",
+    "prod:build": "npm run env.prod && docker-compose -f d-c.yml -f d-c-prod.yml up --build -d",
+    "prod:run": "npm run env.prod && docker-compose -f d-c.yml -f d-c-prod.yml up -d",
     "prod:stop": "docker-compose -f d-c.yml -f d-c-prod.yml down",
     "logs:app": "docker logs -f $(docker ps -aqf \"name=edehrapp\")",
     "ls": "docker ps -a",
