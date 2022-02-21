@@ -27,11 +27,11 @@ function defaultConfig (env) {
     env: env,
     traceApiCalls: true,
     scheme: process.env.SCHEME || 'http',
-    apiHost: process.env.API_HOST || 'localhost',
+    apiHost: process.env.DOMAIN || 'localhost',
     apiPort: process.env.API_PORT || 27000,
     apiUrl: '',
     clientPort: process.env.CLIENT_PORT || 28000,
-    clientHost: process.env.CLIENT_HOST || 'localhost',
+    clientHost: process.env.DOMAIN || 'localhost',
     clientUrl: '',
     serverPort: process.env.SERVER_PORT || 27000,
     authTokenSecret: process.env.AUTH_TOKEN_SECRET || 'defaultTokenSecretForJWT',
@@ -73,10 +73,10 @@ function productionConfig (cfg) {
   cfg.cookieSettings.secure = true
   cfg.traceApiCalls = true
   cfg.scheme = process.env.SCHEME || 'https'
-  cfg.apiHost = process.env.API_HOST || undefined
+  cfg.apiHost = process.env.DOMAIN || undefined
   cfg.apiPort = process.env.API_PORT || undefined
   cfg.clientPort = process.env.CLIENT_PORT || undefined
-  cfg.clientHost = process.env.CLIENT_HOST || undefined
+  cfg.clientHost = process.env.DOMAIN || undefined
   cfg.database.name = process.env.MONGODB_NAME || 'edehr-prod'
   return cfg
 }
