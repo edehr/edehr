@@ -36,6 +36,7 @@
     "install:client": "cd client && npm install",
     "install:server": "cd server && npm install",
     "install:maker": "cd makeEhrV2 && npm install",
+    "install:prod": "cd client && npm ci",
     "lint": "npm run lint:client && npm run lint:server",
     "lint:client": "cd client && npm run lint",
     "lint:server": "cd server && npm run lint",
