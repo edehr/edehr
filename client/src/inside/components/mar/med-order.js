@@ -50,7 +50,7 @@ export default class MedOrder {
       try {
         scheduleTimes = ScheduleOptions.getSchedule(medOrder.scheduled)
       } catch(err) {
-        console.log('error medOrder', medOrder)
+        console.error('error medOrder', medOrder)
         StoreHelper.setApiError(`${err}`)
       }
     } else if(scheduleKey === PRESCRIBED) {

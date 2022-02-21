@@ -15,7 +15,7 @@ import StoreHelper from './store-helper'
 class EvalHelperWorker {
 
   forceSubmit (studentVisit) {
-    console.log('EvalHelper forceSubmit sv', studentVisit)
+    // console.log('EvalHelper forceSubmit sv', studentVisit)
     return this.changeStudent(studentVisit._id)
       .then(() => {
         return StoreHelper.studentSubmitsAssignment(true)
@@ -27,7 +27,7 @@ class EvalHelperWorker {
 
   unsubmit (studentVisit) {
     // TODO now set activityData
-    console.log('EvalHelper unsubmit sv', studentVisit)
+    // console.log('EvalHelper unsubmit sv', studentVisit)
     return this.changeStudent(studentVisit._id)
       .then(() => {
         return StoreHelper.instructorReturnsAssignment()
@@ -41,7 +41,7 @@ class EvalHelperWorker {
     return this.changeStudent(studentVisit._id)
       .then(() => {
         const newState = ! studentVisit.activityData.evaluated
-        console.log('EvalHelper markEvaluated ', newState)
+        // console.log('EvalHelper markEvaluated ', newState)
         return StoreHelper.instructorMarksWorkEvaluated(newState)
       })
       .then(() => {
