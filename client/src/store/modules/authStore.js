@@ -41,7 +41,7 @@ const actions = {
     return authHelper.adminLogin(adminPassword)
       .then(res => {
         const { token } = res.data
-        console.log('adminLogin res.data', res.data, res.status)
+        // console.log('adminLogin res.data', res.data, res.status)
         if (res.status === 200 && token) {
           commit('setToken', token)
           return token
@@ -59,7 +59,7 @@ const actions = {
       // JWT's are two base64-encoded JSON objects and a trailing signature
       // joined by periods. The middle section is the data payload.
       let data = JSON.parse(atob(jwtData[1]))
-      console.log('adminValidate token data >> ', data)
+      // console.log('adminValidate token data >> ', data)
       if (data.isAdmin) {
         return authHelper.adminValidate(token)
           .then((r) => {

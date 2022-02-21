@@ -18,9 +18,9 @@ const CONTAINS_TABLE_ELEMENTS_INDEX = 3
 // current test's purpose)
 const CONTAINS_FORM_ELEMENTS_INDEX = 0
 
-console.log('getPageKeys()', getPageKeys())
+// console.log('getPageKeys()', getPageKeys())
 const tablePageKey = getPageKeys()[CONTAINS_TABLE_ELEMENTS_INDEX]
-console.log('tablePageKey', tablePageKey)
+// console.log('tablePageKey', tablePageKey)
 const formPageKey = getPageKeys()[CONTAINS_FORM_ELEMENTS_INDEX]
 
 const _setUpWindowObj = () => {

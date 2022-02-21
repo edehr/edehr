@@ -13,7 +13,7 @@ import userStore from '../modules/userStore'
 import system from '../modules/system'
 import visit from '../modules/visit'
 
-console.log('This is the mocked storage')
+// console.log('This is the mocked storage')
 
 export const localVue = createLocalVue()
 localVue.use(Vuex)
