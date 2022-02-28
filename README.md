@@ -158,12 +158,17 @@ database backup tools.  We have a npm script to make this step easy.
 npm run shell:mongo
 ```
 Restore and backup scripts are located in the /data directory. Data files are
-placed in a docker volume so after you create a backup you can exit the docker container and
+placed in a docker volume, so after you create a backup you can exit the docker container and
 find the backup on your machine in `database/backup/dump`).
 Inside the Mongo Shell, run:
  ```
  cd data/
  ```
+
+```bash
+
+tar -czvf edehr.org-2022-02-24.tar.gz /data/dump
+```
 
 To run the backup script is in `./backup.sh` and
 all the dump data will be placed in `data/dump/` (`database/backup/dump` outside of the container) 

@@ -1,0 +1,18 @@
+{
+    "name": "edehr-base-03",
+    "region": "tor1",
+    "size": "512mb",
+    "image": "debian-11-x64",
+    "ssh_keys":
+    [
+        "31:56:1d:bb:06:01:eb:5a:bb:48:2a:7c:bf:f8:cd:bb"
+    ],
+    "backups": false,
+    "ipv6": false,
+    "user_data": null,
+    "private_networking": null,
+    "tags":
+    [
+        "EcEHR"
+    ]
+}

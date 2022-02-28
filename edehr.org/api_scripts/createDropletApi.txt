@@ -1,0 +1,13 @@
+curl -X POST \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer 4440e17cc9694ac4ded4c1677941a72f288664b38a9d8c036b67e36addafa008' \
+  -d '{"name":"base01.edehr.org","region":"tor","size":"512mb","image":"debian-11-x64","ssh_keys":"
+ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBCnme+6CE9pAVcGqCXRldnM2ZMBTgImGItOFFMXFW2QQ0dnK7Jsoqy2+1v8uUx8IEBe1kCT4nHapZ/ns79OMBgg= bryangilbert@Bryans-MacBook-Pro.local","backups":false,"ipv6":false,"user_data":null,"private_networking":null}' \
+  "https://api.digitalocean.com/v2/droplets"
+
+
+  curl -X POST \
+    -H 'Content-Type: application/json' \
+    -H 'Authorization: Bearer 4440e17cc9694ac4ded4c1677941a72f288664b38a9d8c036b67e36addafa008' \
+    -d '{"name":"base01.edehr.org","region":"tor","size":"512mb","image":"debian-11-x64","ssh_keys":null,"backups":false,"ipv6":false,"user_data":null,"private_networking":null}' \
+    "https://api.digitalocean.com/v2/droplets"

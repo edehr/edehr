@@ -157,7 +157,7 @@ export default function applicationConfiguration (env) {
   const cfg = env === 'production' ? productionConfig(dCfg)
     : env === 'test' ? testConfig(dCfg)
       : developConfig(dCfg)
-  cfg.clientUrl = composeUrl(cfg.scheme, cfg.clientHost, cfg.clientPort)
+  cfg.clientUrl = composeUrl(cfg.scheme, cfg.domain, cfg.clientPort)
   cfg.apiUrl = composeUrl(cfg.scheme, cfg.apiHost, cfg.apiPort, 'api')
   debug('configuration %s', asStringForLog(cfg))
   return cfg
