@@ -1,0 +1,56 @@
+  line 1
+  line 2
+  EOT
+  
+exit
+
+echo ''
+echo '************* Set up the edehr client .env.production file with the domain'
+echo "When the Vue app is built all VUE_APP_ variables are substituted into the code."
+echo "The client used the ROOT API value for its api calls."
+echo "VUE_APP_ROOT_API=https://base03.edehr.org" > env/client.env.production
+scp env/client.env.production "dorothea3@147.182.151.107":/opt/edehr/project/client/.env.production
+
+read -p "Setup remote .env.site file in deployment directory? (Y/N): " confirm
+if [[  == [yY] ||  == [yY][eE][sS] ]]; then
+  fname=".env.site.base03.edehr.org"
+
+
+  echo "SOURCE=This file was created via edehr setup scripts" > ""
+  echo "AUTH_TOKEN_SECRET=thisIsThePasswordForEdEhrSite" >> ""
+  echo "COOKIE_SECRET=thisIsThePasswordForEdEhrSite" >> ""
+  echo "MONGODB_PWORD=thisIsThePasswordForEdEhrSite" >> ""
+  echo "DOMAIN=base03.edehr.org" >> ""
+  scp "" "dorothea3@147.182.151.107":/opt/edehr/project/deployment/.env.site
+fi
+fname=".env.base03.edehr.org"
+echo "DOMAIN=base03.edehr.org" >> ""
+scp "" "dorothea3@147.182.151.107":/opt/edehr/project/deployment/.env.site
+
+
+read -p "Run copy scripts to remote? (Y/N): " confirm
+if [[  == [yY] ||  == [yY][eE][sS] ]]; then
+  echo ''
+  echo "************* Refresh set up scripts from local to 147.182.151.107 *********"
+  echo "These are placed on the droplet for later use by a user who is working on the server"
+  ssh  "dorothea3@147.182.151.107" mkdir -p /opt/edehr/scripts/scripts_edehr
+  scp -r scripts_edehr/* "dorothea3@147.182.151.107":/opt/edehr/scripts/scripts_edehr
+
+  ssh  "dorothea3@147.182.151.107" mkdir -p /opt/edehr/scripts/install_scripts
+  scp -r install_scripts/* "dorothea3@147.182.151.107":/opt/edehr/scripts/install_scripts
+fi
+
+read -p "Run edehr_install? (Y/N): " confirm
+if [[  == [yY] ||  == [yY][eE][sS] ]]; then
+  echo ''
+  echo '************* Run scripts_edehr/edehr_install.sh'
+  ssh "dorothea3@147.182.151.107" "bash -s" -- < ./scripts_edehr/edehr_install.sh
+fi
+
+read -p "Run edehr_build? (Y/N): " confirm
+if [[  == [yY] ||  == [yY][eE][sS] ]]; then
+  echo ''
+  echo '************* Run scripts_edehr/edehr_build.sh'
+  ssh "dorothea3@147.182.151.107" "bash -s" -- < ./scripts_edehr/edehr_build.sh
+fi
+

@@ -1,7 +1,0 @@
-# customAliases
-alias gitlog='git log --graph --oneline --decorate --all'
-alias gitls='git show --pretty="" --name-only '
-alias h='history'
-alias l='ls -f1 -alF'
-alias ll='ls -lah'
-alias lr='ls -lahrS'
