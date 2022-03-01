@@ -16,7 +16,7 @@ This token is your access to your DO account
 export DIGITALOCEAN_TOKEN=4440....
 
 The following shows all the fields available:
-  id: 9674446,
+  id: 999,
   name: 'debian-512mb',
   memory: 1024,
   vcpus: 1,
