@@ -5,10 +5,9 @@ const path = require('path')
 const debug = require('debug')('server')
 const logError = require('debug')('error')
 
-const pkgPath = path.join(process.cwd(), 'package.json')
-// console.log('get package file contents from ', pkgPath)
+const pkgPath = path.join(process.cwd(), '../package.json')
+// console.log('CONFIG get package file contents from ', pkgPath)
 const pkg = require(pkgPath)
-
 const DEFAULT_COOKIE_SECRET = 'this is the secret for the session cookie'
 
 // console.log('config.js process.env', process.env)
@@ -17,11 +16,13 @@ const DEFAULT_COOKIE_SECRET = 'this is the secret for the session cookie'
 function defaultConfig (env) {
   return {
     app: {
-      title: pkg.title,
+      authors: pkg.authors,
       description: pkg.description,
       version: pkg.version,
+      license: pkg.license,
       keywords: pkg.keywords.join(',')
     },
+    appTitle: process.env.APP_TITLE || 'Dev-Edehr',
     isDevelop: true,
     isProduction: false,
     env: env,
@@ -33,6 +34,7 @@ function defaultConfig (env) {
     clientPort: process.env.CLIENT_PORT || 28000,
     clientHost: process.env.DOMAIN || 'localhost',
     clientUrl: '',
+    domain: process.env.DOMAIN || 'localhost',
     serverPort: process.env.SERVER_PORT || 27000,
     authTokenSecret: process.env.AUTH_TOKEN_SECRET || 'defaultTokenSecretForJWT',
     cookieSecret: process.env.COOKIE_SECRET || DEFAULT_COOKIE_SECRET,

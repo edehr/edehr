@@ -111,10 +111,11 @@ export function formatTimeStr (dateStrFromDb) {
   return moment(dateStrFromDb).format('YYYY-MM-DD h:mm a')
 }
 
-export function composeAxiosResponseError (error, msg) {
+export function composeAxiosResponseError (error, msg = '') {
   if (! error.response ) {
-    console.error('what is in error?')
-    return JSON.stringify(error)
+    msg += ' Error: ' + JSON.stringify(error)
+    console.error('composeAxiosResponseError without error.response: ', msg)
+    return msg
   }
   const res = error.response
   msg += res.status ? ` status: ${res.status}` : ''
@@ -127,6 +128,7 @@ export function composeAxiosResponseError (error, msg) {
   } else {
     msg += ' ' + error.message
   }
+  console.error('composeAxiosResponseError', msg)
   return msg
 }
 

@@ -41,6 +41,7 @@ class StoreHelperWorker {
   async _dispatchSeedListProperty (key, payload) { return await store.dispatch('seedListStore/' + key, payload)}
   async _dispatchInstructor (key, payload) { return await store.dispatch('instructor/' + key, payload)}
   _dispatchVisit (key, payload) { return store.dispatch('visit/' + key, payload)}
+  async _dispatchSystem (key, payload) { return await store.dispatch('system/' + key, payload)}
   async _dispatchUser (key, payload) { return await store.dispatch('userStore/' + key, payload)}
 
   /* **********   General  ************** */
@@ -353,6 +354,12 @@ class StoreHelperWorker {
     localStorage.setItem(sKeys.VISIT_ID, visitId)
     await this._dispatchVisit('loadVisit2', visitId)
   }
+
+  async loadApiData () {
+    if (debugSH) console.log('Load API data')
+    return this._dispatchSystem('loadApiSystem')
+  }
+  getApidata () { return this._getSystemProperty('apiData')  }
 
   async loadCommon () {
     let visitInfo = store.state.visit.sVisitData || {}
