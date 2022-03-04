@@ -1,14 +1,5 @@
 {
   "name": "edehr-server",
-  "title": "Ed EHR",
-  "version": "1.1.1",
-  "version-comment": "Need to manually update version when git version tag is changed.",
-  "keywords": [
-    "BCCampus",
-    "Learning Tools Interoperability",
-    "electronic Health Record System"
-  ],
-  "description": "This project provides an educational tool that replicates an Electronic Health Record system within a Learning Tools Interoperability (LTI) compliant course-ware.",
   "scripts": {
     "clean": "rm -rf build",
     "build:babel": "mkdir -p build && babel src --out-dir ./build",

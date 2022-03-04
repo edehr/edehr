@@ -173,10 +173,28 @@ export function apiMiddle (app, config) {
       api.use('/api/seed-data', middleWare, sd.route())
       api.use('/api/auth', cors(corsOptions), auth.route())
       api.use('/api/admin', cors(corsOptions), admin.route())
+
+      api.use('/api/home', cors(corsOptions), homeRoute(config))
+
       return api
     })
 }
-  
+
+function homeRoute (config) {
+  const router = new Router()
+  router.get('/', (req, res) => {
+    const requestUrl = req.url
+    const homeData = {}
+    homeData.host = config.host
+    homeData.appTitle = config.appTitle
+    homeData.authors = config.app.authors
+    homeData.license = config.app.license
+    homeData.version = config.app.version
+    homeData.requestUrl = requestUrl
+    res.json(homeData)
+  })
+  return router
+}
 export function apiError (app, config) {
   // error handlers
   app.use(logErrors)

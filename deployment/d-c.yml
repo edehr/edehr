@@ -29,6 +29,7 @@ services:
       - ${SERVER_PORT}:${SERVER_PORT}
     environment:
       - API_PORT
+      - APP_TITLE
       - AUTH_TOKEN_SECRET
       - DOMAIN
       - CLIENT_PORT

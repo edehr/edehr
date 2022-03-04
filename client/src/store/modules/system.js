@@ -1,4 +1,9 @@
+import InstoreHelper from '@/store/modules/instoreHelper'
+// import { Text } from '@/helpers/ehr-text'
+// import StoreHelper from '@/helpers/store-helper'
+
 const state = {
+  apiData: {},
   isSeeding: false,
   _isLoading: false,
   isEditing: false,
@@ -11,6 +16,7 @@ const state = {
 }
 
 const getters = {
+  apiData: state => state.apiData,
   isLoading: state => state._isLoading,
   isShowingAdvanced: state => state._isShowingAdvanced,
   caseContextFeature: state => state.caseContextFeature,
@@ -21,12 +27,29 @@ const getters = {
 const actions = {
   initialize: function ({ commit }) {
     commit('initialize')
+  },
+  loadApiSystem ({dispatch, commit}, id) {
+    return dispatch('getApiData',id)
+      .then( (sysData) => {
+        // console.log('System store loaded: ', sysData)
+        return commit('setApiData', sysData)
+      })
+  },
+  getApiData (context, id) {
+    return InstoreHelper.getRequest(context, 'home').then(response => {
+      const rData = response.data
+      // console.log('System store get data:', rData)
+      return rData
+    })
   }
 }
 
 const mutations = {
   initialize: function (state) {
     state.caseContextFeature = localStorage.getItem('CaseContextFeature') === 'true'
+  },
+  setApiData: (state, apiData) => {
+    state.apiData = apiData
   },
   setLoading: (state, isLoading) => {
     if (isLoading) {

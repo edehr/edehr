@@ -21,11 +21,11 @@
       router-link(:to="{ name: `privacy` }") here  &nbsp;
       | to read the <strong>privacy policy</strong> for the edehr.org service.
 
-    div(class="system-info")
+    div(class="system-info", style="text-align: right; margin-top: 5px;",)
+      label(@click="showMetrics = !showMetrics") M
+    div(class="system-info" v-if="showMetrics")
       h3 System information:
       p Environment: {{ environment }}
-      p VUE_APP_ROOT_API: {{ vue_api }}
-      p VUE_APP_SITE_TITLE: {{ vue_title }}
       p API: {{ apiUrl }}
       p Host: {{ metrics.host }}
       p Title: {{ metrics.title }}
@@ -57,7 +57,8 @@ export default {
     return {
       appText: appText,
       helpText: helpText,
-      metrics: { title: 'EdEHR' }
+      metrics: { title: 'EdEHR' },
+      showMetrics: false
     }
   },
   computed: {
@@ -72,14 +73,7 @@ export default {
     },
     startTime () {
       return new Date(this.metrics.startDate1)
-    },
-    vue_api () {
-      return process.env.VUE_APP_ROOT_API
-    },
-    vue_title () {
-      return process.env.VUE_APP_SITE_TITLE
-    },
-
+    }
   },
   methods: {
     refreshMetrics: async function () {
@@ -112,7 +106,8 @@ export default {
   margin-top: 2rem;
 }
 
-.system-info p, h3 {
+.system-info p, h3, label {
   color: #b5b5b5;
 }
+
 </style>

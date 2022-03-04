@@ -97,6 +97,12 @@ class PageControllerInner {
     // if we have either token then we have an LTI user who wants into the app.
     const isUser = refreshToken || authToken
 
+    await StoreHelper.loadApiData()
+
+    const apiData = StoreHelper.getApidata ()
+
+    document.title = apiData.appTitle
+
     if (isDemo) {
       dblog('_loadData load demo data')
       await StoreHelper.loadDemoData()
@@ -159,6 +165,7 @@ class PageControllerInner {
       await StoreHelper.fetchTokenData(token)
     }
     catch (err) {
+      console.error('PageController error', err)
       if (err.response.status === 401 && err.response.data.toLowerCase().includes('expired') && !!authToken) {
         dblog('_ltiAccess the refresh token expired but we have a previous auth token (user is refreshing browser).')
         setAuthHeader(authToken)

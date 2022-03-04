@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
 . ./env/.env
-if [[ -z "$server_ip" || -z "$new_user" || -z "$domain" || -z "$secret" || -z "$cert_email_admin" ]]; then
-    echo Must provide the .env file with server_ip, new_user and domain and cert_email_admin
+if [[ -z "$server_ip" || -z "$new_user" || -z "$domain" || -z "$secret" || -z "$cert_email_admin" || -z "$app_title" ]]; then
+    echo Must provide the .env file with server_ip, new_user and domain and cert_email_admin and app_title
     echo And need a secret to use as the db, cookie and auth token secrets
     exit
 fi
@@ -26,13 +26,14 @@ if [[ $confirm == [yY] ]]; then
   scp "${fname}" "${address}":/opt/edehr/project/client/.env.production
 
   echo '************* Set up .env.site in deployment'
-  fname="env/.env.deployment.${domain}"
+  fname="env/.env.site.${domain}"
   cat <<EOT > "${fname}"
 SOURCE="This file was created via edehr setup scripts"
 AUTH_TOKEN_SECRET=${secret}
 COOKIE_SECRET=${secret}
 MONGODB_PWORD=${secret}
 DOMAIN=${domain}
+APP_TITLE=${app_title}
 EOT
   scp "${fname}" "${address}":/opt/edehr/project/deployment/.env.site
 

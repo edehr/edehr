@@ -16,7 +16,9 @@
       div(v-show="showingSpecial")
         ehr-special
       app-footer
-      input(class="checkbox", type="checkbox", v-model="showingSpecial")
+      div(style="text-align: right; margin-top: 5px",)
+        label D
+          input(class="checkbox", type="checkbox", v-model="showingSpecial")
 
 </template>
 
