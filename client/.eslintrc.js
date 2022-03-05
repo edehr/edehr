@@ -12,9 +12,10 @@ module.exports = {
     quotes: ['warn', 'single'],
     'quote-props': ['error', 'as-needed'],
     indent: ['error', 2],
-    'no-unused-vars': ['warn', { args: 'none' }]
+    'no-unused-vars': ['warn', { args: 'none' }],
+    'vue/multi-word-component-names': 'off'
   },
   parserOptions: {
-    parser: 'babel-eslint'
+    parser: '@babel/eslint-parser'
   }
 }

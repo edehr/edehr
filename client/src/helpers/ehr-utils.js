@@ -1,7 +1,7 @@
 import moment from 'moment'
 import camelcase from 'camelcase'
 import { saveAs } from 'file-saver'
-import filenamify from 'filenamify'
+// import filenamify from 'filenamify'
 import EhrDefs from './ehr-defs-grid'
 import { Text } from './ehr-text'
 import validFilename  from 'valid-filename'
@@ -34,7 +34,9 @@ function _saveAs (stringData, fileName, mediaType) {
 }
 
 export function makeSafeFileName (filename) {
-  return filenamify(filename)
+  // TODO filename breaks build. Fix or replace.
+  return filename
+  // return filenamify(filename)
 }
 
 
