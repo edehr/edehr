@@ -1,13 +1,10 @@
 'use strict'
 import { Text } from './text'
+import moment from 'moment'
 
-const path = require('path')
 const debug = require('debug')('server')
 const logError = require('debug')('error')
 
-const pkgPath = path.join(process.cwd(), '../package.json')
-// console.log('CONFIG get package file contents from ', pkgPath)
-const pkg = require(pkgPath)
 const DEFAULT_COOKIE_SECRET = 'this is the secret for the session cookie'
 
 // console.log('config.js process.env', process.env)
@@ -15,14 +12,8 @@ const DEFAULT_COOKIE_SECRET = 'this is the secret for the session cookie'
 ///////////////// DEFAULT CONFIG
 function defaultConfig (env) {
   return {
-    app: {
-      authors: pkg.authors,
-      description: pkg.description,
-      version: pkg.version,
-      license: pkg.license,
-      keywords: pkg.keywords.join(',')
-    },
     appTitle: process.env.APP_TITLE || 'Dev-Edehr',
+    appVersion: process.env.APP_VERSION || 'Dev ' + moment().format('YYYY-MM-DD h:mm a'),
     isDevelop: true,
     isProduction: false,
     env: env,
@@ -86,14 +77,14 @@ function productionConfig (cfg) {
 /////////////////  TEST
 function testConfig (cfg) {
   cfg.apiPort = process.env.API_PORT || 27001
-  cfg.app.title = cfg.app.title + ' - Test Environment'
+  cfg.appTitle = cfg.appTitle + ' - Test Environment'
   cfg.database.name = process.env.MONGODB_NAME || 'edehr-test'
   return cfg
 }
 
 ///////////////// DEVELOPMENT
 function developConfig (cfg) {
-  cfg.app.title = cfg.app.title + ' - Development Environment'
+  cfg.appTitle = cfg.appTitle + ' ' + moment().format('DD hh:mm')
   return cfg
 }
 

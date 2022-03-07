@@ -38,8 +38,7 @@ export const metricMiddle = (req, res, next) => {
 export default class MetricController {
   constructor(config) {
     metricData.host = config.host
-    metricData.title = config.app.title
-    metricData.version = config.app.version
+    metricData.version = config.appVersion
     metricData.startDate1 = Date.now()
     // startDate2: moment().format(),
     // getDate1: Date.now(),

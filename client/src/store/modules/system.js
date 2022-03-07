@@ -49,6 +49,7 @@ const mutations = {
     state.caseContextFeature = localStorage.getItem('CaseContextFeature') === 'true'
   },
   setApiData: (state, apiData) => {
+    console.log('System store set ApiData: ', apiData)
     state.apiData = apiData
   },
   setLoading: (state, isLoading) => {

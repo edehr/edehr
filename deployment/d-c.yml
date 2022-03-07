@@ -30,6 +30,7 @@ services:
     environment:
       - API_PORT
       - APP_TITLE
+      - APP_VERSION
       - AUTH_TOKEN_SECRET
       - DOMAIN
       - CLIENT_PORT

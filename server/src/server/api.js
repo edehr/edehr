@@ -66,7 +66,11 @@ export function apiMiddle (app, config) {
   }
   app.use(metricMiddle)
 
-  const corsOptions = setupCors(config)
+  // const corsOptions = setupCors(config)
+  const corsOptions = {
+    origin: [ config.clientUrl, config.apiUrl ]
+  }
+  debug('corsOptions', corsOptions)
   const authUtil = new AuthUtil(config)
   const admin = new AdminController(authUtil)
   const act = new ActivityController()
@@ -183,14 +187,15 @@ export function apiMiddle (app, config) {
 function homeRoute (config) {
   const router = new Router()
   router.get('/', (req, res) => {
-    const requestUrl = req.url
     const homeData = {}
-    homeData.host = config.host
     homeData.appTitle = config.appTitle
-    homeData.authors = config.app.authors
-    homeData.license = config.app.license
-    homeData.version = config.app.version
-    homeData.requestUrl = requestUrl
+    homeData.appVersion = config.appVersion
+    homeData.ehrMaxFileSize = config.ehrMaxFileSize
+    homeData.ehrFileTypes = config.ehrFileTypes
+    homeData.host = config.host
+    homeData.isDevelop = config.isDevelop
+    homeData.isProduction = config.isProduction
+    homeData.date = Date.now()
     res.json(homeData)
   })
   return router
@@ -230,7 +235,10 @@ export function apiError (app, config) {
   }
 }
 
+// TODO can remove setupCors
+// eslint-disable-next-line no-unused-vars
 function setupCors (config) {
+  // From https://expressjs.com/en/resources/middleware/cors.html
   const allowedList = [] // 'http://localhost:28000', 'http://localhost:27000']
   allowedList.push(config.clientUrl)
   allowedList.push(config.apiUrl)

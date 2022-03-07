@@ -58,7 +58,16 @@ class StoreHelperWorker {
   /**
    * The API server must provide the url to call back into the server.
    */
-  apiUrlGet () { return process.env.VUE_APP_ROOT_API }
+  apiUrlGet () {
+    // return process.env.VUE_APP_ROOT_API
+    let url = window.location.origin
+    if (url.includes('localhost')) {
+      url = 'http://localhost:27000'
+    }
+    url += '/api'
+    // console.log('apiUrlGet', url)
+    return url
+  }
 
   isReadOnlyInstructor () { return this._getVisitProperty('isReadOnlyInstructor')}
   setIsReadOnlyInstructor (isReadonly = false) { return store.commit('visit/setIsReadOnlyInstructor', isReadonly)}
@@ -359,7 +368,9 @@ class StoreHelperWorker {
     if (debugSH) console.log('Load API data')
     return this._dispatchSystem('loadApiSystem')
   }
-  getApidata () { return this._getSystemProperty('apiData')  }
+  getApiData () { return this._getSystemProperty('apiData')  }
+  getAppTitle () { return this.getApiData().appTitle  }
+  getAppVersion () { return this.getApiData().appVersion  }
 
   async loadCommon () {
     let visitInfo = store.state.visit.sVisitData || {}

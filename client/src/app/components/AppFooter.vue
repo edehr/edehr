@@ -1,8 +1,7 @@
 <template lang="pug">
   footer
     div(class="wrapper")
-      //div apiData {{ apiData }}
-      div Application version {{ apiData.version }}
+      div Application version {{ appVersion }}
     div(class="wrapper")
       p Except where otherwise noted, content on this site is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.
 </template>
@@ -12,8 +11,8 @@ import StoreHelper from '../../helpers/store-helper'
 
 export default {
   computed: {
-    apiData () {
-      return StoreHelper.getApidata()
+    appVersion () {
+      return StoreHelper.getAppVersion()
     },
   }
 }

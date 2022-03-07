@@ -107,16 +107,17 @@ class InstoreHelperWorker {
   // TODO remove context parameter
   getRequest (context, api, url) {
     url = this.composeUrl(context, api, url)
-    if(debug) console.log('GET to this url', url, context)
+    if(debug) console.log('GET to this url', url)
     StoreHelper.setLoading(context, true)
     return new Promise((resolve, reject) => {
       axios
         .get(url)
         .then(results => {
-          if(debug) console.log('GOT >> ', path, results)
+          if(debug) console.log('GOT >> ', results)
           resolve(results)
         })
         .catch(error => {
+          if(debug) console.log('Error >> ', error)
           // let msg = `Failed GET to ${url} with error: ${error.message}`
           let msg = composeAxiosResponseError(error, 'Get failed: ')
           StoreHelper.setApiError(msg)
