@@ -1,6 +1,6 @@
 {
   "name": "edehr",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "authors": [
     {
       "name": "edehr.org",
@@ -31,6 +31,7 @@
   },
   "homepage": "https://github.com/edehr/edehr#readme",
   "scripts": {
+    "bump:ver": "npm version patch --no-git-tag-version",
     "start:db": "cd database && docker-compose up -d",
     "stop:db": "cd database && docker-compose down",
     "start:client": "cd client && npm run start",
