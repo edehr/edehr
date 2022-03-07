@@ -74,6 +74,7 @@ describe('mar-helper tests', () => {
     it('getEhrData_MarPageData', () => {
       should.doesNotThrow(() => {
         const result = marHelper.getEhrData_MarPageData()
+        should.exist(result)
         result.table.should.eql(marRecords)
       })
     })
@@ -90,6 +91,7 @@ describe('mar-helper tests', () => {
       should.doesNotThrow(() => {
         const pageDef = EhrDefs.getPageDefinition(MAR_PAGE_KEY)
         const result = marHelper.getPageDef_Mar()
+        should.exist(result)
         result.should.eql(pageDef)
       })
     })

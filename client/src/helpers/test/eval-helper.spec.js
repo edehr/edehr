@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 const should = require('should')
 import evalHelper from '../eval-helper'
 import mockData from './mockData.json'
@@ -30,17 +34,16 @@ const _prepareChangeStudent = (submitted = true, activity = mockData.activity) =
 }
 
 describe('Testing evalHelper', () => {
-  it('changeStudent', async done => {
+  it('changeStudent', async () => {
     _prepareChangeStudent()
     const found = mockData.classList.find(c => c._id === studentVisitId)
     should.doesNotThrow(async () => await evalHelper.changeStudent(studentVisitId))
     const result = StoreHelper.getActivityData()
     // const result = StoreHelper.getActivityData()
     result.should.equal(found.activityData)
-    done()
   })
 
-  it('forceSubmit', async done => {
+  it('forceSubmit', async () => {
     await _prepareChangeStudent()
     should.doesNotThrow(async () => {
       const list = await evalHelper.forceSubmit(studentVisitId)
@@ -48,11 +51,10 @@ describe('Testing evalHelper', () => {
       list.length.should.be.greaterThan(0)
       list.length.should.equal(mockData.classList.length)
       list.should.equal(mockData.classList)
-      done()
     })
   })
 
-  it('unsubmit', async done => {
+  it('unsubmit', async () => {
     await _prepareChangeStudent(false)
     const result = await evalHelper.unsubmit(studentVisitId)
     should.exist(result)
@@ -60,10 +62,9 @@ describe('Testing evalHelper', () => {
     result.should.equal(classes)
     const activityData = StoreHelper.getActivityData()
     activityData.submitted.should.equal(false)
-    done()
   })
 
-  it('markEvaluated', async done => {
+  it('markEvaluated', async () => {
     await _prepareChangeStudent()
     const studentVisit = Object.assign({}, {activityData: mockData.activityData}, { _id: studentVisitId })
     should.doesNotThrow(async () => {
@@ -72,29 +73,26 @@ describe('Testing evalHelper', () => {
       result.should.equal(classes)
       const activityData = StoreHelper.getActivityData()
       activityData.evaluated.should.equal(!mockData.activityData.evaluated)
-      done()
     })
   })
 
-  it('closeActivity', async done => {
+  it('closeActivity', async () => {
     const ac = Object.assign({}, activity, { closed: true })
     await _prepareChangeStudent(false, ac)
     const result = await evalHelper.closeActivity(activity._id)
     result.should.be.equal(ac)
     result.closed.should.be.equal(true)
-    done()
   })
 
-  it('openActivity', async done => {
+  it('openActivity', async () => {
     const ac = Object.assign({}, activity, { closed: false })
     await _prepareChangeStudent(false, ac)
     const result = await evalHelper.openActivity(activity._id)
     result.should.be.equal(ac)
     result.closed.should.be.equal(false)
-    done()
   })
 
-  it('goToEhr', async done => {
+  it('goToEhr', async () => {
     await evalHelper.goToEhr({_id: studentVisitId}, router)
     // This is following jest's function mocking 
     // (https://jestjs.io/docs/en/mock-function-api.html#mockfnmockcalls). 
@@ -107,6 +105,5 @@ describe('Testing evalHelper', () => {
     call[0].query.evaluatingStudent.should.equal(true)
     call[0].query.studentId.should.equal(studentVisitId)
     isDev.should.equal(true)
-    done()
   })
 })

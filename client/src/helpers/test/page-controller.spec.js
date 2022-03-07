@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 import should from 'should'
 import pageController from '../page-controller'
 import sKeys from '../session-keys'
@@ -42,23 +45,23 @@ const _createRouteObject = (isDemo = false) => {
 }
 
 describe('page-controller tests', () => {
-  beforeEach((done) => _beforeEach().then(() => done()))
+  beforeEach((done) => {
+    _beforeEach().then(() => done())
+  })
 
-  it('onPageChange [demo use-case]', async done => {
+  it('onPageChange [demo use-case]', async () => {
     should.doesNotThrow(async () => {
       const route = _createRouteObject(true)
       await pageController.onPageChange(route)
       pageController.hasLoadedData.should.equal(true)
-      done()
     })
   })
 
-  it('onPageChange [standard use-case]', async done => {
+  it('onPageChange [standard use-case]', async () => {
     should.doesNotThrow(async () => {
       const route = _createRouteObject()
       await pageController.onPageChange(route)
       pageController.hasLoadedData.should.equal(true)
-      done()
     })
   })
 })

@@ -11,27 +11,25 @@ const token = 'demoToken'
 
 describe.skip('demoHelper tests', () => {
 
-  it('createToolConsumer', async done => {
+  it('createToolConsumer', async () => {
     const payload = { token }
     await prepareAxiosResponse('post', payload)
     should.doesNotThrow(async () => {
       const result = await demoHelper.createToolConsumer()
       result.data.token.should.equal(token)
-      done()
     })
   })
 
-  it('dhLoadDemoData', async done => {
+  it('dhLoadDemoData', async () => {
     const { demoData } = mockData
     await prepareAxiosResponse('get', { demoData })
     should.doesNotThrow(async () => {
       const result = await demoHelper.dhLoadDemoData(token)
       result.data.demoData.should.equal(demoData)
-      done()
     })
   })
 
-  it('submitPersona', async done => {
+  it('submitPersona', async () => {
     const persona = mockData.demoData.personaList[0]
     const { assignment, demoData } = mockData
     const submitData = {
@@ -47,15 +45,13 @@ describe.skip('demoHelper tests', () => {
     should.doesNotThrow(async () => {
       const result = await demoHelper.submitPersona(token, submitData)
       result.data.submitted.should.equal(true)
-      done()
     })
   })
   
-  it('demoLogout', async done => {
+  it('demoLogout', async () => {
     await prepareAxiosResponse('post', null)
     const result = await demoHelper.demoLogout(token)
     should.not.exist(result.data)
-    done()
   })
 
 

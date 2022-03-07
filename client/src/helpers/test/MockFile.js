@@ -1,3 +1,9 @@
+/**
+ * @jest-environment jsdom
+ */
+// import { Blob } from 'buffer'
+// import Blob from 'cross-blob'
+
 export default class MockFile  {
   constructor (content) {
     let name = 'testMock.txt'

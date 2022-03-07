@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 const should = require('should')
 import CaseContext from '../case-context'
 import * as testHelper from './testHelper'

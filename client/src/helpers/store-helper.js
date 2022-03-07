@@ -60,7 +60,7 @@ class StoreHelperWorker {
    */
   apiUrlGet () {
     // return process.env.VUE_APP_ROOT_API
-    let url = window.location.origin
+    let url = window.location.origin || ''
     if (url.includes('localhost')) {
       url = 'http://localhost:27000'
     }

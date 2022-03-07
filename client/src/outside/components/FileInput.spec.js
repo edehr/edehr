@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import { mount } from '@vue/test-utils'
 
 import InputFile from '@/outside/components/FileInput.vue'

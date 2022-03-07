@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 import should from 'should'
 import EhrHelpV2, { LEAVE_PROMPT } from '../ehr-helper'
 import store from '../../../../store/index'
