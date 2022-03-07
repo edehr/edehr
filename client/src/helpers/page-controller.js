@@ -98,10 +98,7 @@ class PageControllerInner {
     const isUser = refreshToken || authToken
 
     await StoreHelper.loadApiData()
-
-    const apiData = StoreHelper.getApidata ()
-
-    document.title = apiData.appTitle
+    document.title = StoreHelper.getAppTitle ()
 
     if (isDemo) {
       dblog('_loadData load demo data')

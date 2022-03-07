@@ -130,7 +130,7 @@ export function composeAxiosResponseError (error, msg = '') {
   } else {
     msg += ' ' + error.message
   }
-  console.error('composeAxiosResponseError', msg)
+  // console.error('composeAxiosResponseError', msg)
   return msg
 }
 

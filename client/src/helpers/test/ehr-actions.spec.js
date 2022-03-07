@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 const should = require('should')
 import EhrActions from '../ehr-actions'
 import * as testHelper from './testHelper'
@@ -62,14 +66,13 @@ describe('Testing ehr-actions', () => {
     })
   })
 
-  it('invokeNavPanelAction', async done => {
+  it('invokeNavPanelAction', async () => {
     const mockedResult = {
       submitted: true
     }  
     await axiosMockHelper.prepareAxiosResponse('put', mockedResult)
     const result = await ehrActions.invokeNavPanelAction()
     result.submitted.should.equal(true)
-    done()
   })
 
   it('isStudent', done => {

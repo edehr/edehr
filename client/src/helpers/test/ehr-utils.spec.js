@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 import axios from 'axios'
 const should = require('should')
 const mockData = require('./mockData.json')
@@ -158,7 +161,7 @@ describe('Test support for seed import', () => {
     done()
   })
 
-  it('importSeedData', async done => {
+  it('importSeedData', async () => {
     should.doesNotThrow(async () => {
       const seedId = 'new seed'
       let ehrData = { demographics: { firstName: 'foo' } }
@@ -172,7 +175,7 @@ describe('Test support for seed import', () => {
       const mRes = { status: 200, data: 'fake data' }
       axios.mockResolvedValueOnce(mRes)
       should.doesNotThrow(async () => await ehrUtils.importSeedData(null, seedId, data))
-      done()
+      // done()
     })
   })
 
@@ -294,13 +297,12 @@ describe('Axios error and file upload', () => {
     done()
   })
 
-  it('readFile', async done => {
+  it('readFile', async () => {
     const fileContent = 'This is a mock file'
     const file = createFile(fileContent)
     should.exist(file)
     const result = await ehrUtils.readFile(file) 
     result.should.equal(fileContent)
-    done()
   })
 
  

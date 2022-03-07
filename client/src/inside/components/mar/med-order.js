@@ -26,7 +26,7 @@ export class ScheduleOptions {
   static getSchedule (key) {
     let value = this.OPTIONS[key.toUpperCase()]
     if(!value) {
-      console.error('Could not find a medication schedule for key', key)
+      // console.error('Could not find a medication schedule for key', key)
       throw new Error(`Could not find a medication schedule for key: ${key}`)
     }
     return value
@@ -50,7 +50,7 @@ export default class MedOrder {
       try {
         scheduleTimes = ScheduleOptions.getSchedule(medOrder.scheduled)
       } catch(err) {
-        console.error('error medOrder', medOrder)
+        //console.error('error medOrder', medOrder)
         StoreHelper.setApiError(`${err}`)
       }
     } else if(scheduleKey === PRESCRIBED) {
