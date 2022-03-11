@@ -6,4 +6,4 @@ services:
     ports:
       - '27018:27017'
     volumes:
-      - ./backup:/data/
+      - "./dbdata:/data/db"

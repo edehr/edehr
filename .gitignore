@@ -11,15 +11,17 @@
 **/sessions/**
 **/trash/**
 **/.env
-**/.env.*
+**/.env*
 **/.env-*
+**/.park/**
+**/.private/**
 client/dist/**
 client/published/**
 client/selenium-debug\.log
 client/test/e2e/**
 client/tests/e2e/reports/
 database/backup/dump/**
-database/data/**
+database/dbdata/**
 docs/.vuepress/dist/**
 ehr/dev/**
 ehr/dist/**
@@ -34,4 +36,3 @@ server/src/config/admin-password\.txt
 temp/**
 server/lib/**
 server/build/**
-.park
