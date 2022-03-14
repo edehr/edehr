@@ -77,7 +77,7 @@ export const setVisitMocks = (payload = mockData.visit) => {
 }
   
 export const setConsumerMocks = (payload = mockData.consumer) => {
-  const key = 'set'
+  const key = 'setDataStore'
   store.commit('consumerStore/' + key, payload)
 }
 

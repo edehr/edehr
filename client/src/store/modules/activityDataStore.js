@@ -1,8 +1,8 @@
 import InstoreHelper from './instoreHelper'
 import StoreHelper from '../../helpers/store-helper'
 import EventBus from '../../helpers/event-bus'
-import { ACTIVITY_DATA_EVENT } from '../../helpers/event-bus'
-import { Text } from '../../helpers/ehr-text'
+import { ACTIVITY_DATA_EVENT } from '@/helpers/event-bus'
+import { Text } from '@/helpers/ehr-text'
 
 const API = 'activity-data'
 const OBJ = 'activitydata'
@@ -38,6 +38,11 @@ const getters = {
     if (debug) console.log(NAME + ' get submitted', prop)
     return prop
   },
+  sentBack: state => {
+    let prop =  state.dataStore.sentBack || false
+    if (debug) console.log(NAME + ' get sentBack', prop)
+    return prop
+  },
   evaluated: state => {
     let prop =  state.dataStore.evaluated || false
     if (debug) console.log(NAME + ' get evaluated', prop)
@@ -66,6 +71,8 @@ const actions = {
   sendEvaluationNotes (context, data) {return _sendHelper(context, 'evaluation-data', data)},
 
   sendSubmitted (context, data) {return _sendHelper(context, 'submitted', data)},
+
+  sendBack (context, data) {return _sendHelper(context, 'sentBack', data)},
 
   sendEvaluated (context, data) {return _sendHelper(context, 'evaluated', data)},
 

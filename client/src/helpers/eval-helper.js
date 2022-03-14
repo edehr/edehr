@@ -18,7 +18,7 @@ class EvalHelperWorker {
     // console.log('EvalHelper forceSubmit sv', studentVisit)
     return this.changeStudent(studentVisit._id)
       .then(() => {
-        return StoreHelper.studentSubmitsAssignment(true)
+        return StoreHelper.forceSubmitAssignment(true)
       })
       .then(() => {
         return StoreHelper.dispatchLoadClassList()

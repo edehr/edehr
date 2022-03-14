@@ -68,16 +68,21 @@ describe('Testing ehr-actions', () => {
 
   it('invokeNavPanelAction', async () => {
     const mockedResult = {
-      submitted: true
+      submitted: true,
+      sentBack: false,
     }  
     await axiosMockHelper.prepareAxiosResponse('put', mockedResult)
     const result = await ehrActions.invokeNavPanelAction()
-    result.submitted.should.equal(true)
+    should.exist(result)
+    should.exist(result[0])
+    should.exist(result[0].submitted)
+    result[0].submitted.should.equal(true)
   })
 
   it('isStudent', done => {
     const { isStudent } = mockData.visit
     const result = ehrActions.isStudent()
+    should.exist(result)
     result.should.equal(isStudent)
     done()
   })

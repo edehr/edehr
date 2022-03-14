@@ -13,7 +13,7 @@
     "test:unit": "vue-cli-service test:unit",
     "test:updateSnapshots": "vue-cli-service test:unit -- -u",
     "test:it": "npm run test:unit -t src/inside/components/chart/charting.spec.js",
-    "test:one": "npm run test:unit -t src/inside/components/page/test/ehr-helper.spec.js"
+    "test:one": "npm run test:unit --trace-warnings -t src/helpers/test/store-helper.spec.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",

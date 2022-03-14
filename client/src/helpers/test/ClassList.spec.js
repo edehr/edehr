@@ -29,7 +29,7 @@ describe('ClassList component tests', () => {
 
   test('has download evaluation notes as CSV button"', async () => {
     const button = wrapper.find('[data-test-id="ClassList.button.download"]')
-    expect(button.text()).toContain('Download all assignment evaluation notes')
+    expect(button.text()).toContain('Download evaluation notes')
   })
 
   test('click download opens save as prompt dialog', async () => {

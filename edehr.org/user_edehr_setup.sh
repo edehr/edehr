@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+
 . ./env/.env
 if [[ -z "$server_ip" || -z "$new_user" || -z "$domain" || -z "$secret" || -z "$cert_email_admin" || -z "$app_title" ]]; then
     echo Must provide the .env file with server_ip, new_user and domain and cert_email_admin and app_title
@@ -44,6 +45,7 @@ SOURCE="This file was created via edehr setup scripts"
 domain=${domain}
 cert_email_admin=${cert_email_admin}
 EOT
+  ssh "${address}" "mkdir -p /opt/edehr/scripts/scripts_edehr/"
   scp "${fname}" "${address}":/opt/edehr/scripts/scripts_edehr/.env
 
 fi

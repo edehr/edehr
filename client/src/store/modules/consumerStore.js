@@ -29,23 +29,24 @@ const getters = {
 
 const actions = {
   load ({dispatch, commit}, id) {
-    return dispatch('get',id).then( (results) => {
+    return dispatch('getConsumer',id).then( (results) => {
       if (debug) console.log(NAME + ' loaded ', results)
-      commit('set', results)
+      commit('setDataStore', results)
       return results
     })
   },
   clearConsumer ({dispatch, commit} ) {
-    commit('set', { })
+    commit('setDataStore', { })
   },
-  get (context, id) {
+  getConsumer (context, id) {
     let url = 'get/' + id
     return InstoreHelper.getRequest(context, API, url).then(response => {
       let results = response.data[OBJ]
       if (!results) {
         let msg = Text.CANNOT_GET_CONSUMER_STORE(NAME, id)
         StoreHelper.setApiError(msg)
-        return
+        // return empty object so something other than undefined is put into the dataStore
+        return {}
       }
       return results
     })
@@ -53,7 +54,7 @@ const actions = {
 }
 
 const mutations = {
-  set: (state, consumer) => {
+  setDataStore: (state, consumer) => {
     state.dataStore = consumer
   }
 }

@@ -113,18 +113,19 @@ class InstoreHelperWorker {
       axios
         .get(url)
         .then(results => {
-          if(debug) console.log('GOT >> ', results)
+          if(debug) console.log('GOT ', api, '>> ', results)
           resolve(results)
         })
         .catch(error => {
-          if(debug) console.log('Error >> ', error)
+          if(debug) console.log('Error ', api, '>> ', error)
           // let msg = `Failed GET to ${url} with error: ${error.message}`
           let msg = composeAxiosResponseError(error, 'Get failed: ')
+          console.log('catch', msg)
           StoreHelper.setApiError(msg)
           reject(msg)
         })
         .finally( () => {
-          if(debug) console.log('GOT >> finally')
+          if(debug) console.log('GOT ', api, '>> finally')
           StoreHelper.setLoading(context, false)
         })
     })

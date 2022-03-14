@@ -5,9 +5,9 @@ alias gitls='git show --pretty="" --name-only '
 alias h='history'
 # long format, all, flagged
 alias ll='ls -alF'
-alias cddeploy="cd /opt/edehr/project/deployment"
-alias cdclient="cd /opt/edehr/project/client"
-alias cdscripts="cd /opt/edehr/scripts"
+alias cdde="cd /opt/edehr/project/deployment"
+alias cdcl="cd /opt/edehr/project/client"
+alias cdsc="cd /opt/edehr/scripts"
 alias cde="cd /opt/edehr/"
 alias dps="docker ps"
 alias dils="docker image ls"
