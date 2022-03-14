@@ -78,12 +78,12 @@ class StoreHelperWorker {
   getCourseTitle () { return this._getActivityProperty('courseTitle') }
 
   isSubmitted () { return this._getActivityDataProperty('submitted') }
+  isSentBack () { return this._getActivityDataProperty('sentBack') }
   isEvaluated () { return this._getActivityDataProperty('evaluated') }
   getStudentAssignmentData () { return this._getActivityDataProperty('assignmentData')}
   getStudentScratchData () { return this._getActivityDataProperty('scratchData')}
   getEvaluationNotes () { return this._getActivityDataProperty('evaluationData')   }
   getActivityData () { return this._getActivityDataProperty('activityData')}
-  studentSubmitsAssignment (submitted) { return this._dispatchActivityData('sendSubmitted', submitted)}
 
   sendAssignmentDataUpdate (payload) {return this._dispatchActivityData('sendAssignmentDataUpdate', payload)}
 
@@ -147,12 +147,33 @@ class StoreHelperWorker {
     return sv.activityData.assignmentData
   }
 
-  instructorReturnsAssignment () { return this.studentSubmitsAssignment(false)}
+  // when instructor forces submitted state so they can evaluate the work
+  forceSubmitAssignment () { return this._dispatchActivityData('sendSubmitted', true)}
 
+  // when the student submits their work. This work may have been "sentBack" by the instructor so
+  // clear that flag too
+  studentSubmitsAssignment (submitted) {
+    return Promise.all([
+      this._dispatchActivityData('sendSubmitted', true),
+      this._dispatchActivityData('sendBack', false)
+    ])
+  }
+
+  // When the instructor sends the work back to the student for further edits.
+  instructorReturnsAssignment () {
+    return Promise.all([
+      this._dispatchActivityData('sendSubmitted', false),
+      this._dispatchActivityData('sendBack', true)
+    ])
+  }
+
+  // When the instructor has evaluated the student's work
   instructorMarksWorkEvaluated (newState) {return this._dispatchActivityData('sendEvaluated', newState)}
 
+  // select which student's work is viewed for evaluation
   changeStudentForInstructor (studentVisitId) { return this._dispatchInstructor('changeCurrentEvaluationStudentId', studentVisitId)}
 
+  // When instructor saves their evaluation notes.
   saveEvaluationNotes (evalNotes ) { return this._dispatchActivityData('sendEvaluationNotes', evalNotes) }
 
   /*
@@ -330,6 +351,7 @@ class StoreHelperWorker {
     let assignment = this._getAssignmentProperty('assignment')
     if(pDebug) console.log('SH getPanelData assignment', assignment)
     let evaluated = this.isEvaluated()
+    const sentBack = this.isSentBack()
     let data = {
       userName: this.fullName(),
       courseTitle: this.getCourseTitle(),
@@ -341,7 +363,11 @@ class StoreHelperWorker {
       assignmentDescription: assignment.description,
       submitted: this.isSubmitted(),
       evaluated: evaluated,
-      evaluationData: evaluated ? this.getEvaluationNotes() : '',
+      sentBack: sentBack,
+      // show evaluation notes once the instructor is ready to share. That's
+      // when the work is marked as evaluated and
+      // todo when the work is sent back for edits and to be evaluated later.  Need to add a "sentBack" flag?
+      evaluationData: (evaluated || sentBack) ? this.getEvaluationNotes() : '',
     }
     if (this.isInstructor()) {
       let ces = this.getCurrentEvaluationStudentVisit()

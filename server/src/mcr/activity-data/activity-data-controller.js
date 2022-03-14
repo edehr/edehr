@@ -103,12 +103,24 @@ export default class ActivityDataController extends BaseController {
     return this.helperBoolVal(id, 'evaluated', value, false)
   }
 
+  assignmentSentBack (id, data) {
+    let value = data.value === true
+    return this.helperBoolVal(id, 'sentBack', value, false)
+  }
+
   route () {
     const router = super.route()
     router.put('/submitted/:key/', (req, res) => {
       const id = req.params.key
       const data = req.body
       this.assignmentSubmitted(id, data)
+        .then(ok(res))
+        .then(null, fail(res))
+    })
+    router.put('/sentBack/:key/', (req, res) => {
+      const id = req.params.key
+      const data = req.body
+      this.assignmentSentBack(id, data)
         .then(ok(res))
         .then(null, fail(res))
     })

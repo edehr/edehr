@@ -19,11 +19,12 @@ export default {
     scratchData ()      { return this.panelInfo.scratchData },
     submitted ()        { return this.panelInfo.submitted },
     isClosed ()         { return this.panelInfo.closed },
+    isSentBack ()       { return this.panelInfo.sentBack },
     closedDate ()       { return this.panelInfo.closedDate },
     isEvaluated ()      { return this.panelInfo.evaluated },
     evaluationNotes ()  { return this.panelInfo.evaluationData },
     panelInfo ()        { return StoreHelper.getPanelData(this) },
-    showContext ()      { return this.isEvaluated || this.isClosed }
+    showContext ()      { return this.isEvaluated || this.isClosed || this.isSentBack }
   },
   methods: {}
 }
