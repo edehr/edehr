@@ -16,4 +16,4 @@ alias di="docker image "
 alias dc="docker container "
 alias envs='env | sort'
 alias export_env='set -o allexport; source .env; set +o allexport'
-
+alias denv='source /opt/edehr/scripts/scripts_edehr/edehr_docker_containers_env.sh'

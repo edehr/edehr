@@ -1,6 +1,12 @@
 #!/bin/bash
 set -e
 . ./env/.env
+
+read -p "Do you want to go edit your .env file? Select N if you wish to proceed. (Y/N): " confirm
+if [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]]; then
+  exit
+fi
+
 if [[ -z "$server_ip" ]]; then
     echo Must provide the .env file with server_ip
     exit

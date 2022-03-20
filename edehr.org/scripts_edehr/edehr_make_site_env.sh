@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+. ./.env
+if [[ -z "$server_ip" || -z "$new_user" || -z "$domain" || -z "$secret" || -z "$cert_email_admin" || -z "$app_title" ]]; then
+    echo Must provide the .env file with server_ip, new_user and domain and cert_email_admin and app_title
+    echo And need a secret to use as the db, cookie and auth token secrets
+    exit
+fi
+
+echo '************* Set up .env.site in deployment'
+cat <<EOT > /opt/edehr/project/deployment/.env.site
+SOURCE="This file was created via edehr setup scripts"
+APP_TITLE=${app_title}
+AUTH_TOKEN_SECRET=${secret}
+COOKIE_SECRET=${secret}
+CERT_EMAIL=${cert_email_admin}
+DOMAIN=${domain}
+MONGODB_PWORD=${secret}
+EOT
+
+
+
