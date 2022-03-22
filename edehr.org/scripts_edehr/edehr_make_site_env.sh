@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-. ./.env
+. .env
 if [[ -z "$server_ip" || -z "$new_user" || -z "$domain" || -z "$subdomain" || -z "$secret" || -z "$cert_email_admin" || -z "$app_title" ]]; then
+    echo Usage $0
     echo Must provide the .env file with server_ip, new_user, subdomain, domain and cert_email_admin and app_title
     echo And need a secret to use as the db, cookie and auth token secrets
     exit
