@@ -17,6 +17,7 @@ COOKIE_SECRET=${secret}
 DOMAIN=${domain}
 MONGODB_PWORD=${secret}
 SUBDOMAIN=${subdomain}
+last_update=$(date +"%Y%m%dT%H%M")
 EOT
 
 
