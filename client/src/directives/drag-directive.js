@@ -1,6 +1,8 @@
 const POINTER_START_EVENTS = ['mousedown', 'touchstart']
 const POINTER_MOVE_EVENTS = ['mousemove', 'touchmove']
 const POINTER_END_EVENTS = ['mouseup', 'touchend']
+const POINTER_LEAVE_EVENTS = ['mouseout']
+
 var draggedElem
 
 var u = {
@@ -22,6 +24,7 @@ export default {
     if (!document) return
     function onPointerStart (evt) {
       evt.preventDefault()
+      u.addEventListeners(document.documentElement, POINTER_LEAVE_EVENTS, onPointerLeave)
       u.addEventListeners(document.documentElement, POINTER_MOVE_EVENTS, onPointerMove)
       u.addEventListeners(document.documentElement, POINTER_END_EVENTS, onPointerEnd)
       el.lastCoords = el.firstCoords = {
@@ -36,7 +39,16 @@ export default {
       })
       draggedElem = el
     }
+    function onPointerLeave (evt) {
+      // console.log('onPointerLeave', el !== draggedElem)
+      if (el !== draggedElem) return
+      evt.preventDefault()
+      // console.log('mouse leave')
+      onPointerEnd(evt)
+    }
+
     function onPointerEnd (evt) {
+      // console.log('onPointerEnd', el !== draggedElem)
       if (el !== draggedElem) return
       evt.preventDefault()
       el.lastCoords = null
@@ -47,6 +59,7 @@ export default {
         clientY: evt.clientY
       })
       draggedElem = null
+      u.removeEventListeners(document.documentElement, POINTER_LEAVE_EVENTS)
       u.removeEventListeners(document.documentElement, POINTER_END_EVENTS)
       u.removeEventListeners(document.documentElement, POINTER_MOVE_EVENTS)
     }
