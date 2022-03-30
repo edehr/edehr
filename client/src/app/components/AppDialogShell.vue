@@ -2,9 +2,8 @@
   transition(name="dialog")
     div(v-show="showingDialog")
       div(:class="modalClass")
-      div(class="dialog-wrapper", :class="moused", ref="theDialog", v-bind:style="{ top: top + 'px', left: left + 'px'}")
-        div(class="dialog-move-bar", v-dragged="onDragged")
-        div(class="dialog-header")
+      div(class="dialog-wrapper", :class="{ dragActive: moused }", ref="theDialog", v-bind:style="{ top: top + 'px', left: left + 'px'}")
+        div(class="dialog-header", v-dragged="onDragged")
           slot(name="header") default header
           ui-close(v-on:close="$emit('cancel')")
         div(class="dialog-body")
@@ -87,18 +86,21 @@ export default {
     onDragged ({ el, deltaX, deltaY, offsetX, offsetY, clientX, clientY, first, last }) {
       // Change top/left position based on drag
       // console.log('on drag', 'deltaX, deltaY, offsetX, offsetY, clientX, clientY, first, last' )
-      // console.log('on drag', deltaX, deltaY, offsetX, offsetY, clientX, clientY, first, last )
+      // console.log('on drag first, last', first, last )
       if (first || last) {
         // When drag starts 'first' exists. When drag stops 'first' does not exist.
         // Set the is being moused flag to trigger drag styling
         this.moused = !!first
+        // console.log('on drag this.moused STOP', this.moused )
         return
       }
+      // console.log('on drag this.moused', this.moused )
       // let d = this.$refs.theDialog
       // let br = d.getBoundingClientRect()
       // console.log('getBoundingClientRect', br)
       this.left += deltaX
       this.top += deltaY
+      this.top = Math.max(this.top, 0)
     },
     onOpen () {
       if (this.isModal) {
@@ -116,7 +118,7 @@ export default {
       this.showingDialog = false
       if (this.isModal) {
         // console.log('UN -- FREEZEEEEEEE')
-        const replacedClass = document.body.className.replace(' is-modal','')
+        const replacedClass = document.body.className.replace(' is-modal', '')
         document.body.className = replacedClass
       }
     },
@@ -129,18 +131,12 @@ export default {
       let wh = window.innerHeight
       let mx = (ww - ew) / 2
       let my = (wh - eh) / 2
+      my = Math.max(my, 5) // don't let top disappear
       // console.log('The Dialog w', ww, ew, mx, d)
       // console.log('The Dialog h', wh, eh, my, d)
       this.left = mx
       this.top = my
     }
-  },
-  mounted: function () {
-    // Trigger the reset but wait until all rendering is done in case there are elements that have not yet been sized.
-    // const _this = this
-    // this.$nextTick(function () {
-    //   _this.reset()
-    // })
   }
 }
 </script>
@@ -220,7 +216,7 @@ export default {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
-.dialog-wrapper.moused {
+.dragActive {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
@@ -236,6 +232,7 @@ export default {
   /* don't set a height. It prevents the element from expanding when more content is added.
   height: 60px;*/
   padding: 1em 2em;
+  cursor: move;
 }
 
 
