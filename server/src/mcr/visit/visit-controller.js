@@ -6,7 +6,7 @@ import Role from '../roles/roles'
 
 const debug = require('debug')('server')
 function debugvc (msg) {
-  if (false)
+  if (true)
     debug('VisitController: ' + msg)
 }
 
@@ -42,6 +42,7 @@ export default class VisitController extends BaseController {
     let filter = {
       $and: [
         {user: user._id},
+        {role: role.asText()},
         {activity: activity._id}
       ]
     }
@@ -65,6 +66,7 @@ export default class VisitController extends BaseController {
             userName: user.fullName,
             activity: activity._id,
             assignment: assignment._id,
+            role: role.asText(),
             isStudent: role.isStudent,
             isInstructor: role.isInstructor,
             // TODO use the actual incoming role to set isDeveloper

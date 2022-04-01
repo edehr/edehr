@@ -13,4 +13,9 @@ export default class Role {
     this.isDeveloper = r.includes('contentdeveloper') || r.includes('creator') || r.includes('accountadmin')
     this.isValid = this.isInstructor || this.isStudent || this.isAdmin || this.isDeveloper
   }
+
+  asText () {
+    return this.isStudent ? 'student' :
+      (this.isInstructor ? 'instructor' : 'other')
+  }
 }

@@ -36,14 +36,14 @@ export default class DemoHelper {
   }
 
 
-  gotoEhr (demoData, demoPersona, selectedAssignment, returnUrl) {
+  gotoEhr (demoData, demoPersona, selectedAssignment, returnUrl, switchRole = undefined) {
     const persona = demoPersona
     const submitData = {
       assignmentName: selectedAssignment.name,
       externalId: selectedAssignment.externalId,
       personaName: persona.name,
       personaEmail: persona.email,
-      personaRole: persona.role,
+      personaRole: switchRole ? switchRole : persona.role,
       returnUrl: returnUrl, // window.location.origin + this.$route.path, // come back to this LMS page
       toolKey: demoData.toolConsumerKey
     }

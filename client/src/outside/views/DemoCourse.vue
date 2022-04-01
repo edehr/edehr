@@ -6,10 +6,17 @@
       div(class="column is-3 aside")
         div(class="aside-section")
           ul
-            li Persona: {{ demoPersona.name }}
-            li Role: {{ demoPersona.role}}.
+            li Demo Persona: {{ demoPersona.name }}
+            li Demo Role: {{ demoPersona.role}}
+            li(v-if='demoPersona.role === "instructor"') Switch role: &nbsp;
+              label
+                input(class="checkbox", type="checkbox", v-model="asStudent")
+                span as student
+              div(v-if='asStudent') When you click on an activity this 'instructor' will become a 'student' same as how Moodle allows users to switch roles.
+          ul
             li
-              ui-link(name="demo") Click here to change persona
+              ui-button(v-on:buttonClicked="gotoChangeCharacter()", :secondary="true") Change to another persona
+
         div(class="aside-section", v-text-to-html.noAutoLink="demoText.lmsAside")
       div(class="column is-8 is-offset-1 is-centered")
         div(class="card")
@@ -44,6 +51,7 @@ export default {
   },
   data () {
     return {
+      asStudent: false,
       assignments: [],
       demoText: demoText
     }
@@ -58,13 +66,14 @@ export default {
   },
   methods: {
     gotoChangeCharacter: function () {
-      this.$router.push('demo')
+      this.$router.push('/demo')
     },
     gotoEhr: function (selectedAssignment) {
       const demoHelper = new DemoHelper()
       const returnUrl = window.location.origin + this.$route.path // come back to this LMS page
       // Go to EHR. This will result in a page change
-      demoHelper.gotoEhr(this.demoData, this.demoPersona, selectedAssignment, returnUrl)
+      const studentRole = this.asStudent ? 'student' : undefined
+      demoHelper.gotoEhr(this.demoData, this.demoPersona, selectedAssignment, returnUrl, studentRole)
     },
     loadAssignments: function () {
       const demoHelper = new DemoHelper()
