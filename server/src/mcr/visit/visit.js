@@ -11,6 +11,7 @@ const VisitSchema = new mongoose.Schema({
   toolConsumer: {type: ObjectId, ref: 'Consumer', required: true},
   /* include consumer key to help a dev trace information through the db */
   consumerKey: { type: String },
+  role: { type: String, default: 'student' },
   user: {type: ObjectId, ref: 'User', required: true},
   /* include user name only to help a dev trace information through the db */
   // userName: { type: String },

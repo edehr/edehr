@@ -18,8 +18,7 @@
         div(class="textField") Student: {{ panelInfo.studentName }}
         div(class="textField") Student's last visit: {{ formatTime(panelInfo.lastVisitDate) }}
         div Activity is {{ panelInfo.closed ? "CLOSED " : "OPEN "}} to students
-        div(class="textField") Return to  &nbsp;
-          ui-link(:name="'classList'") classlist
+
       div(class="is-4 column")
         div(class="columns is-pulled-right")
           div {{currentIndex}} of {{listLen}}

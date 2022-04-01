@@ -7,6 +7,7 @@
         ui-button(v-on:buttonClicked="cancelEvaluationNotes", :disabled="!enableActions", v-bind:secondary="true") Cancel
         ui-button(v-on:buttonClicked="saveEvaluationNotes('saveNext')", :disabled="disableNext", class="is-pulled-right")  Save and next student
         ui-button(v-on:buttonClicked="saveEvaluationNotes('saved')", :disabled="!enableActions", class="is-pulled-right")  Save
+        ui-button(v-on:buttonClicked="gotoClassList()", :secondary="true") Return to class list
     ui-confirm(ref="confirmDialog", @confirm="handleConfirm", @abort="handleReset", @cancel="handleReset" set-footer)
 </template>
 
@@ -103,6 +104,9 @@ export default {
     },  
   },
   methods: {
+    gotoClassList: function () {
+      this.$router.push('/classList')
+    },
     setNotes (data) {
       this.theNotes = data
       this.asStored = data
