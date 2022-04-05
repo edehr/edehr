@@ -108,7 +108,7 @@ export default class VitalChart {
    * @private
    */
   _drawTextSeries (context, values, originY, height, gridXStepSize) {
-    let lineHeight = lineHeight || options.lineHeight
+    let lineHeight = options.lineHeight
     // approximately center text vertically
     let lnCnt = 0
     for (let i = 0; i < values.length; i++) {
