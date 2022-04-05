@@ -7,7 +7,7 @@ const logError = require('debug')('error')
 const debugMW = false
 
 const ADMIN_MAX_REQUEST_LIMIT = 5
-const DEMO_MAX_REQUEST_LIMIT = process.env.NODE_ENV === 'development' ? 10 : 2
+const DEMO_MAX_REQUEST_LIMIT = 5
 if(debugMW) debug('validatorMiddlewareWrapper ADMIN_MAX_REQUEST_LIMIT', ADMIN_MAX_REQUEST_LIMIT)
 if(debugMW) debug('validatorMiddlewareWrapper DEMO_MAX_REQUEST_LIMIT', DEMO_MAX_REQUEST_LIMIT)
 
@@ -70,13 +70,13 @@ export const localhostOnly = (req, res, next) => {
 }
 
 export const adminLimiter = rateLimit({
-  windowMs: 60 * 60 * 1000,
+  windowMs: 10 * 60 * 1000,
   max: ADMIN_MAX_REQUEST_LIMIT,
   message: Text.TOO_MANY_REQUESTS_ERROR
 })
 
 export const demoLimiter = rateLimit({
-  windowMs: 60 * 60 * 1000,
+  windowMs: 10 * 60 * 1000,
   max: DEMO_MAX_REQUEST_LIMIT,
   message: Text.TOO_MANY_REQUESTS_ERROR
 })

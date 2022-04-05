@@ -32,6 +32,7 @@ makeEhr/util/camelcase-output\.txt
 server/.session/
 server/bin/sessions/**
 server/files-ehr
+server/deleted/**
 server/src/config/admin-password\.txt
 temp/**
 server/lib/**
