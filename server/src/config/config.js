@@ -44,7 +44,7 @@ function defaultConfig (env) {
       password: process.env.MONGODB_PWORD,
       options: {
         useNewUrlParser: true,
-        // useCreateIndex: true,
+        useCreateIndex: true,
         useUnifiedTopology: true
       },
       debug: process.env.MONGODB_DEBUG || false
@@ -88,6 +88,34 @@ function developConfig (cfg) {
   return cfg
 }
 
+////////////////
+export function getDbUri(config) {
+  const dbc = config.database
+  let auth = false
+  let uri = []
+  uri.push('mongodb://')
+  if (dbc.user && dbc.password) {
+    auth = true
+    uri.push(dbc.user)
+    uri.push(':')
+    uri.push(dbc.password)
+    uri.push('@')
+  }
+
+  uri.push(dbc.host)
+  uri.push(':')
+  uri.push(dbc.port)
+  uri.push('/')
+  uri.push(dbc.name)
+  // https://stackoverflow.com/questions/40608669/what-does-authsource-means-in-mongo-database-url/55779444#55779444
+  if (auth) uri.push('?authSource=admin')
+  uri = uri.join('')
+  const sanitized = auth ? uri.replace(dbc.password, 'aPassword') : uri
+  debug('DB: URN sanitized: ====  %s', sanitized)
+  debug('DB: Options: %o', dbc.options)
+  debug('DB: ehrApp', uri)
+  return uri
+}
 ////////////////
 /*
 Set cookie security options
@@ -152,6 +180,6 @@ export default function applicationConfiguration (env) {
       : developConfig(dCfg)
   cfg.clientUrl = composeUrl(cfg.scheme, cfg.domain, cfg.clientPort)
   cfg.apiUrl = composeUrl(cfg.scheme, cfg.apiHost, cfg.apiPort, 'api')
-  debug('configuration %s', asStringForLog(cfg))
+  // debug('configuration %s', asStringForLog(cfg))
   return cfg
 }

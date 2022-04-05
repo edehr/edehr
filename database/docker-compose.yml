@@ -7,3 +7,4 @@ services:
       - '27018:27017'
     volumes:
       - "./dbdata:/data/db"
+      - "./dbdata/backups:/data/backups"

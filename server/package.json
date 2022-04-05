@@ -14,7 +14,11 @@
     "test:server": "npm run build && node_modules/.bin/mocha --recursive --sort --bail  build/**/*.server.spec.js",
     "test:system": "npm run build && node_modules/.bin/mocha --recursive --sort --bail build/**/*.system.spec.js",
     "scale-test": "node test/scale-testing.js",
-    "generate-password": "node src/server/generate-password.js"
+    "generate-password": "node src/server/generate-password.js",
+    "db-tools": "NODE_ENV=development DEBUG='server, error' npx babel-node src/util/db-tools.js",
+    "db-tools-nodemon": "NODE_ENV=development DEBUG='server, error'  nodemon --ignore 'deleted/*' --exec babel-node src/util/db-tools.js",
+    "db-clean-nodemon": "NODE_ENV=development DEBUG='server, error' nodemon --ignore 'deleted/*' --exec babel-node src/util/db-clean.js",
+    "db-clean": "NODE_ENV=development DEBUG='server, error' npx babel-node src/util/db-clean.js"
   },
   "comments": {},
   "dependencies": {
