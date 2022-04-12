@@ -17,7 +17,7 @@ npm install
 
 
 ## Run Server - Dev
-Running the dev code you just need to
+Running the dev code you just need to first create a ```.env``` file based on the sample.env file provided. Then 
 ```
 npm run start
 ```
@@ -64,6 +64,9 @@ This project depends on a customized LTI plugin.  Be sure to include the followi
     "ims-lti": "git+https://github.com/bryan-gilbert/ims-lti.git",
 ```
 
+## API Token
+
+Certain api end points are available only via admin user or api token. For more on this see the code in the utils and mcr/admin folders.
 
 ## Testing
 

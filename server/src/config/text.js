@@ -38,6 +38,7 @@ export const Text = {
   REQUIRED_ADMIN: 'A password and the token are required',
   SYS_ERROR: 'There was a problem validating the token. If it persists, please contact an administrator',
   TOKEN_REQUIRED: 'A token is required',
+  SERVER_TOKEN_REQUIRED: 'Server must be provided with an api token for access to this resource.',
 
   // Lookahead
   SEARCH_TERM_REQUIRED: 'Need to provide a search term for the medication lookup',
@@ -63,6 +64,10 @@ export const Text = {
   INVALID_AUTH_CONSUMER: 'Invalid authentication token. It needs to include consumer information.',
   PROVIDE_FILE: 'Please upload a file',
   MAX_FILE_SIZE: (size) => { return `Maximum files size is ${size}`},
-  SUPPORT_FILETYPES: (ehrFileTypes) => { return `Error: File upload only supports the following filetypes - ${ehrFileTypes}`}
+  SUPPORT_FILETYPES: (ehrFileTypes) => { return `Error: File upload only supports the following filetypes - ${ehrFileTypes}`},
+
+  // For utility that cleans up consumers and other objects
+  INVALID_MONTH: (m) => `Invalid month ${m}. Must be an integer >= 1 and <= 60`,
+
 }
 

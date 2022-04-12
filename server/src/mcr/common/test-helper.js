@@ -3,6 +3,7 @@ import ConsumerController from '../consumer/consumer-controller'
 import Assignment from '../assignment/assignment'
 import User from '../user/user'
 import Activity from '../activity/activity'
+import Visit from '../visit/visit'
 import Role from '../roles/roles'
 import AuthUtil from './auth-util'
 import mongoose from 'mongoose'
@@ -16,13 +17,13 @@ const authUtil = new AuthUtil({ authTokenSecret: 'defaultTokenSecretForJWT' })
 
 const consumerController = new ConsumerController()
 
-process.on('unhandledRejection', function (error, promise) {
-  console.error('TH: UNHANDLED REJECTION', error.stack)
-})
-
-process.on('uncaughtException', function (error) {
-  console.error('TH: UNCAUGHT EXCEPTION', error, error.stack)
-})
+// process.on('unhandledRejection', function (error, promise) {
+//   console.error('TH: UNHANDLED REJECTION', error.stack)
+// })
+//
+// process.on('uncaughtException', function (error) {
+//   console.error('TH: UNCAUGHT EXCEPTION', error, error.stack)
+// })
 
 let DatabaseName = 'unittest'
 let DefaultUserId = '51234'
@@ -230,11 +231,16 @@ export default class Helper {
     return model.save()
   }
 
+  static createVisitFromSpec (visitSpec) {
+    const model = new Visit(visitSpec)
+    return model.save()
+  }
 
-  static createAssignment (externalId, seedId) {
+
+  static createAssignment (externalId, seedId, consumer) {
     externalId = externalId || '59'
     seedId = seedId || '56955ca46063c5600627f393'
-    const model = new Assignment(Helper.sampleAssignmentSpec(seedId,externalId))
+    const model = new Assignment(Helper.sampleAssignmentSpec(seedId,externalId, consumer))
     return model.save()
   }
 
