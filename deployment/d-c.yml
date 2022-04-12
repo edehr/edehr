@@ -28,14 +28,16 @@ services:
     ports:
       - ${SERVER_PORT}:${SERVER_PORT}
     environment:
+      - ADMIN_PWORD
       - API_PORT
+      - API_TOKEN
       - APP_TITLE
       - APP_VERSION
       - AUTH_TOKEN_SECRET
-      - DOMAIN
       - CLIENT_PORT
       - COOKIE_SECRET
       - DEBUG
+      - DOMAIN
       - MONGODB_HOST
       - MONGODB_PORT
       - MONGODB_PWORD

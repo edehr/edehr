@@ -48,9 +48,9 @@ describe(_factorTypeName('making server calls'), () => {
       })
   })
 
-  it(_factorTypeName('Properly fetches the demoData '), (done) => {
+  it(_factorTypeName('Properly fetches the demoData '), async () => {
     const url = `${BASE}/fetch`
-    request(app)
+    await request(app)
       .get(url)
       .set('authorization', `Bearer ${demoToken}`)
       .set('Content-Type', 'application/json')
@@ -59,13 +59,10 @@ describe(_factorTypeName('making server calls'), () => {
       .expect(res => {
         should.exist(res.body)
         should.exist(res.body.demoData)
-        res.body.demoData.personaList.should.have.length(4)
+        res.body.demoData.personaList.should.have.length(5)
         demoData = res.body.demoData
+        demoData.should.have.property('toolConsumerId')
       })
-      .catch(err => {
-        should.not.exist(err)
-      })
-      .finally(() => done())
   })
 
   it(_factorTypeName('Properly fetches assignments'), done => {

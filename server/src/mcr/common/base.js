@@ -215,28 +215,6 @@ export default class BaseController {
         .then(null, fail(res))
     })
 
-    // TODO remove this once the /admin route is all set up
-    // router.delete('/toolConsumer/:id', isAdmin, (req, res) => {
-    //   this
-    //     .clearConsumer(req.params.id)
-    //     .then(ok(res))
-    //     .then(null, fail(res))
-    // })
-    //
-    // router.delete('/all/', isAdmin, (req, res) => {
-    //   this
-    //     .clearAll()
-    //     .then(ok(res))
-    //     .then(null, fail(res))
-    // })
-    //
-    // router.delete('/:key', isAdmin, (req, res) => {
-    //   this
-    //     .delete(req.params.key)
-    //     .then(ok(res))
-    //     .then(null, fail(res))
-    // })
-
     return router
   }
 }

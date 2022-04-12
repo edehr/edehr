@@ -3,7 +3,12 @@ import moment from 'moment'
 import cors from 'cors'
 import dbSeeder from '../config/lib/dbSeeder'
 import { AssignmentMismatchError } from '../mcr/common/errors'
-import { validatorMiddlewareWrapper, adminLimiter, localhostOnly, isAdmin } from '../helpers/middleware'
+import {
+  validatorMiddlewareWrapper,
+  adminLimiter,
+  localhostOnly,
+  isAdmin
+} from '../helpers/middleware'
 import ActivityController from '../mcr/activity/activity-controller'
 import ActivityDataController from '../mcr/activity-data/activity-data-controller'
 import AdminController from '../mcr/admin/admin-controller'
@@ -22,6 +27,7 @@ import PlaygroundController from '../mcr/playground/playground-controller'
 import SeedDataController from '../mcr/seed/seedData-controller'
 import UserController from '../mcr/user/user-controller.js'
 import VisitController from '../mcr/visit/visit-controller'
+import UtilController from '../mcr/util/util-controller'
 // Sessions and session cookies
 // express-session stores session data here on the server and only puts session id in the cookie
 const session = require('express-session')
@@ -89,6 +95,7 @@ export function apiMiddle (app, config) {
   const pc = new PlaygroundController()
   const demo = new DemoController(config)
   const metric = new MetricController(config)
+  const utils = new UtilController()
 
   const lcc = {
     activityController: act,
@@ -165,6 +172,9 @@ export function apiMiddle (app, config) {
       api.use('/visits', middleWare, vc.route())
       api.use('/seed-data', middleWare, sd.route())
       // for use behind a proxy:
+      api.use('/utils', cors(corsOptions), utils.route(config))
+      api.use('/api/utils', cors(corsOptions), utils.route(config))
+
       api.use('/api/activities', middleWare, act.route())
       api.use('/api/activity-data', middleWare, acc.route())
       api.use('/api/assignments', middleWare, as.route())
@@ -177,7 +187,6 @@ export function apiMiddle (app, config) {
       api.use('/api/seed-data', middleWare, sd.route())
       api.use('/api/auth', cors(corsOptions), auth.route())
       api.use('/api/admin', cors(corsOptions), admin.route())
-
       api.use('/api/home', cors(corsOptions), homeRoute(config))
 
       return api

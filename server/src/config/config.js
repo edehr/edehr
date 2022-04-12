@@ -3,6 +3,7 @@ import { Text } from './text'
 import moment from 'moment'
 
 const debug = require('debug')('server')
+const details = require('debug')('details')
 const logError = require('debug')('error')
 
 const DEFAULT_COOKIE_SECRET = 'this is the secret for the session cookie'
@@ -12,8 +13,9 @@ const DEFAULT_COOKIE_SECRET = 'this is the secret for the session cookie'
 ///////////////// DEFAULT CONFIG
 function defaultConfig (env) {
   return {
+    adminPassword: process.env.ADMIN_PWORD,
+    apiToken: process.env.API_TOKEN,
     appTitle: process.env.APP_TITLE || 'Dev-Edehr',
-    appVersion: process.env.APP_VERSION || 'Dev ' + moment().format('YYYY-MM-DD h:mm a'),
     isDevelop: true,
     isProduction: false,
     env: env,
@@ -76,6 +78,7 @@ function productionConfig (cfg) {
 
 /////////////////  TEST
 function testConfig (cfg) {
+  cfg.apiToken='1234567890'
   cfg.apiPort = process.env.API_PORT || 27001
   cfg.appTitle = cfg.appTitle + ' - Test Environment'
   cfg.database.name = process.env.MONGODB_NAME || 'edehr-test'
@@ -89,7 +92,7 @@ function developConfig (cfg) {
 }
 
 ////////////////
-export function getDbUri(config) {
+export function getDbUri (config) {
   const dbc = config.database
   let auth = false
   let uri = []
@@ -180,6 +183,6 @@ export default function applicationConfiguration (env) {
       : developConfig(dCfg)
   cfg.clientUrl = composeUrl(cfg.scheme, cfg.domain, cfg.clientPort)
   cfg.apiUrl = composeUrl(cfg.scheme, cfg.apiHost, cfg.apiPort, 'api')
-  // debug('configuration %s', asStringForLog(cfg))
+  details('configuration %s', asStringForLog(cfg))
   return cfg
 }
