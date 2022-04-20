@@ -48,6 +48,7 @@ export default {
 
 .panel {
   background-color: $nav-background-medium;
+  border-radius: 0;
   height: 100%;
   display: flex;
   flex-direction: column;

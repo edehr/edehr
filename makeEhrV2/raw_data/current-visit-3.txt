@@ -1,0 +1,62 @@
+{inputType: page}	{pRef: 29}	{Label: Lab requisitions}	eCell	{elementKey: labRequisitions}	{pN: 24}	{fN: }	{gN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: table_form}	eCell	eCell	eCell	{elementKey: table}	{pN: 24}	{fN: 1}	{gN: }	eCell	eCell	eCell	eCell	eCell	eCell	{addButtonText: Add a xxx assessment}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 24}	{fN: 1}	{gN: 1}	{sgN: }	{formCss: record-header}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: record_header}	eCell	eCell	eCell	eCell	{pN: 24}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	{Label: Urinary}	eCell	{elementKey: urinaryGroup2}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkset}	eCell	{Label: Urinary symptoms}	eCell	{elementKey: urinaryGroup1}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Urinary symptoms}	{tableColumn: 2}	eCell	eCell	eCell	eCell	"{Options: None
+Increased frequency
+Dysuria
+Hermaturia
+Oliguria
+Incontinence
+Retention
+Distention}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: day}	eCell	{Label: Last voided day}	eCell	{elementKey: lastVoidedDay}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Last voided day}	{tableColumn: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: time}	eCell	{Label: Last voided time}	eCell	{elementKey: lastVoidedTime}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Last voided time}	{tableColumn: 4}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: Urine colour}	eCell	{elementKey: colour}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Urine colour}	{tableColumn: 5}	eCell	eCell	eCell	eCell	"{Options: Pale yellow
+Dark yellow
+Amber
+Red/blood
+Other}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: Urine consistency}	eCell	{elementKey: consistency}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Urine consistency}	{tableColumn: 6}	eCell	eCell	eCell	eCell	"{Options: Clear
+Cloudy
+Foamy
+Other}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: Continence containment device}	eCell	{elementKey: diaper}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Continence containment device}	{tableColumn: 7}	eCell	eCell	eCell	eCell	"{Options: Yes
+No}"	eCell	eCell	eCell	eCell	eCell	{helperText: Does the patient need the assistance of a brief, condom catheter, or etc.}	eCell
+{inputType: checkset}	eCell	{Label: Toiletting method}	eCell	{elementKey: toilettingMethod}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 8}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: Bedpan
+Comode
+Urinal
+Help to the toilet
+Brief
+Mesh pant/pad
+Clean intermittent catheter
+Indwelling catheter}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	{Label: Indwelling Catheter}	eCell	{elementKey: foleyGroup}	{pN: 24}	{fN: 1}	{gN: 3}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: Indwelling Catheter}	{Comments: Foley is a specific 'type'}	{elementKey: foley}	{pN: 24}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Indwelling Catheter}	{tableColumn: 9}	eCell	eCell	eCell	eCell	"{Options: Yes
+No}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Type }	{Comments: Change to drop down box with two options (urethral or suprapubic)}	{elementKey: foleyType}	{pN: 24}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Type }	{tableColumn: 10}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: eg. indwelling catheter}	eCell
+{inputType: text}	eCell	{Label: Size}	eCell	{elementKey: foleySize}	{pN: 24}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Size}	{tableColumn: 11}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: day}	eCell	{Label: Last catheter change (day)}	{Comments: added 'day'}	{elementKey: lastChange}	{pN: 24}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Last catheter change (day)}	{tableColumn: 12}	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	{Label: Pelvic}	{Comments: Consider renaming or regrouping into a Reproductive page or table. Also consider adding a male reproducive system. This work needs to wait until EdEHR can manage seed versions}	{elementKey: pelvicGroup}	{pN: 24}	{fN: 1}	{gN: 4}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: Pelvic pain}	{Comments: ALL Pelvic, Vaginal, Preg, categorized to Gynecology?}	{elementKey: pelvicPain}	{pN: 24}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Pelvic pain}	{tableColumn: 13}	eCell	eCell	eCell	eCell	"{Options: Yes
+No}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Location}	eCell	{elementKey: location}	{pN: 24}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Location}	{tableColumn: 14}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: Pelvic pain source}	eCell	{elementKey: pelvicPainSource}	{pN: 24}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Pelvic pain source}	{tableColumn: 15}	{tableCss: hr-table}	eCell	eCell	eCell	"{Options: Observed
+As per patient observed
+Not observed}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: form_label}	eCell	{Label: If answered yes, please complete the pain assessment}	eCell	{elementKey: aLabel}	{pN: 24}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	{Label: Vagina}	{Comments: changed label to vagina }	{elementKey: vaginal}	{pN: 24}	{fN: 1}	{gN: 5}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkset}	eCell	{Label: Discharge}	eCell	{elementKey: discharge}	{pN: 24}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: Discharge}	{tableColumn: 16}	eCell	eCell	eCell	eCell	"{Options: Discharge
+Bleeding}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Description}	eCell	{elementKey: description}	{pN: 24}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: Description}	{tableColumn: 17}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: date}	eCell	{Label: Last menstrual period date}	eCell	{elementKey: lastMenstrualPeriodDate}	{pN: 24}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	{tableLabel: Last menstrual period date}	{tableColumn: 18}	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	{Label: Pregnancy}	eCell	{elementKey: pregnantGroup}	{pN: 24}	{fN: 1}	{gN: 6}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: Pregnant}	eCell	{elementKey: pregnant}	{pN: 24}	{fN: 1}	{gN: 6}	{sgN: }	eCell	eCell	{tableLabel: Pregnant}	{tableColumn: 19}	eCell	eCell	eCell	eCell	"{Options: Yes
+No
+Unknown}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Gravida (number of pregnancies)}	eCell	{elementKey: gravida}	{pN: 24}	{fN: 1}	{gN: 6}	{sgN: }	eCell	eCell	{tableLabel: Gravida (number of pregnancies)}	{tableColumn: 20}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Para (number of children)}	eCell	{elementKey: para}	{pN: 24}	{fN: 1}	{gN: 6}	{sgN: }	eCell	eCell	{tableLabel: Para (number of children)}	{tableColumn: 21}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Living children}	eCell	{elementKey: livingChildren}	{pN: 24}	{fN: 1}	{gN: 6}	{sgN: }	eCell	eCell	{tableLabel: Living children}	{tableColumn: 22}	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 24}	{fN: 1}	{gN: 7}	{sgN: }	{formCss: grid-left-to-right-1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: textarea}	eCell	{Label: Comments}	eCell	{elementKey: comments}	{pN: 24}	{fN: 1}	{gN: 7}	{sgN: }	eCell	eCell	{tableLabel: Comments}	{tableColumn: 23}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
