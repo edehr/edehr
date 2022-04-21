@@ -4,10 +4,9 @@ const fs = require('fs')
 const readline = require('readline')
 const { google } = require('googleapis')
 
-https://docs.google.com/spreadsheets/d/1CkEc1dmeV4tqck_at1ERaW25zspMt1n7q0lFPRCnP1I/edit#gid=1524198205
+// https://docs.google.com/spreadsheets/d/1CkEc1dmeV4tqck_at1ERaW25zspMt1n7q0lFPRCnP1I/edit#gid=1524198205
 
 const INPUT_SPREADSHEET_ID = '1CkEc1dmeV4tqck_at1ERaW25zspMt1n7q0lFPRCnP1I'
-
 
 // If modifying these scopes, delete token.json.
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
@@ -16,12 +15,66 @@ const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 // time.
 const TOKEN_PATH = 'token.json'
 
+
+// inputType	pRef	Label	Comments	elementKey	pN	fN	gN	sgN	formCss	formOption	tableLabel	tableColumn	tableCss	addButtonText	dependentOn	Default_value	Options	Suffix	Mandatory	Validation	assetBase	assetName	helperText	passToFunction
+// inputType	pRef	Label	Comments	elementKey	pN	fN	gN	sgN	formCss	formOption	tableLabel	tableColumn	tableCss	addButtonText	dependentOn	Default_value	Options	Suffix	Mandatory	Validation	assetBase	assetName	helperText	passToFunction
+
+function getSheets(auth) {
+  const sheets = google.sheets({ version: 'v4', auth })
+  getSheet(sheets, INPUT_SPREADSHEET_ID, 'pProfile!AC2:BA300', 'raw_data/patient-profile.txt')
+  getSheet(sheets, INPUT_SPREADSHEET_ID, 'pChart!AC2:BA300', 'raw_data/patient-chart.txt')
+  // getSheet(sheets, INPUT_SPREADSHEET_ID, 'CV-1!AC2:BA300', 'raw_data/current-visit-1.txt')
+  // getSheet(sheets, INPUT_SPREADSHEET_ID, 'CV-2!AC2:BA300', 'raw_data/current-visit-2.txt')
+  // getSheet(sheets, INPUT_SPREADSHEET_ID, 'CV-3!AC2:BA300', 'raw_data/current-visit-3.txt')
+}
+
+// inputType	pRef	Label	Comments	elementKey	pN	fN	gN	sgN	formCss	formOption	tableLabel	tableColumn	tableCss	addButtonText	dependentOn	Default_value	Options	Suffix	Mandatory	Validation	assetBase	assetName	helperText	passToFunction
+// inputType	pRef	Label	Comments	elementKey	pN	fN	gN	sgN	formCss	formOption	tableLabel	tableColumn	tableCss	addButtonText	dependentOn	Default_value	Options	Suffix	Mandatory	Validation	assetBase	assetName	helperText	passToFunction
+// inputType	pRef	Label	Comments	elementKey	pN	fN	gN	sgN	formCss	formOption	tableLabel	tableColumn	tableCss	addButtonText	dependentOn	Default_value	Options	Suffix	Mandatory	Validation	assetBase	assetName	helperText	passToFunction
+
+function getSheet(sheets, sheetId, range, fName) {
+  sheets.spreadsheets.values.get({
+    spreadsheetId: sheetId,
+    range: range
+  }, (err, res) => {
+    if (err) return console.error('API get sheet ', range, fName, ' error: ', err)
+    const rows = res.data.values
+    if (rows.length) {
+      const data = []
+      rows.map((row) => {
+        const rowData = []
+        row.map((elem) => {
+          // wrap items with linefeeds in quotes
+          if (elem.indexOf('\n') > -1) {
+            const lines = elem.split('\n').map( line => line.trim())
+            rowData.push(`"${lines.join('\n')}"`)
+          } else {
+            rowData.push(elem)
+          }
+        })
+        // converting CSV to TSV
+        data.push(rowData.join('\t'))
+      })
+      fs.writeFile(fName, data.join('\n'), 'utf8', (err) => {
+        if (err) return console.error('Error writing file ', fName, ' error: ', err)
+        console.log('Saved data in', fName)
+      })
+    } else {
+      console.log('No data found for', range, fName)
+    }
+  })
+}
+
+
+// ... MAIN ...
 // Load client secrets from a local file.
 fs.readFile('credentials.json', 'utf8', (err, content) => {
   if (err) return console.log('Error loading client secret file:', err)
   // Authorize a client with credentials, then call the Google Sheets API.
   authorize(JSON.parse(content), getSheets)
 })
+
+// Auth helpers and follow ....
 
 /**
  * Create an OAuth2 client with the given credentials, and then execute the
@@ -71,67 +124,3 @@ function getNewToken(oAuth2Client, callback) {
     })
   })
 }
-
-/**
- * Prints the names and majors of students in a sample spreadsheet:
- * @see https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
- * @param {google.auth.OAuth2} auth The authenticated Google OAuth client.
- */
-/*
-Original from sample code
-  sheets.spreadsheets.values.get({
-    spreadsheetId: '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
-    range: 'Class Data!A2:E',
- */
-
-function listMajors(auth) {
-  const sheets = google.sheets({ version: 'v4', auth })
-  sheets.spreadsheets.values.get({
-    spreadsheetId: '1CkEc1dmeV4tqck_at1ERaW25zspMt1n7q0lFPRCnP1I',
-    range: 'CV-2!AC2:BA300'
-  }, (err, res) => {
-    if (err) return console.log('The API returned an error: ' + err)
-    const rows = res.data.values
-    if (rows.length) {
-      rows.map((row, index) => {
-        console.log(`${index}: ${row}`)
-        // console.log(index, row)
-      })
-    } else {
-      console.log('No data found.')
-    }
-  })
-}
-
-function getSheets(auth) {
-  const sheets = google.sheets({ version: 'v4', auth })
-  getSheet(sheets, 'CV-3!AC2:BA300', 'raw_data/current-visit-3.txt')
-}
-
-function getSheet(sheets, range, fName) {
-  sheets.spreadsheets.values.get({
-    spreadsheetId: INPUT_SPREADSHEET_ID,
-    range: range
-  }, (err, res) => {
-    if (err) return console.log('The API returned an error: ' + err)
-    const rows = res.data.values
-    if (rows.length) {
-      const data = []
-      rows.map((row) => {
-        const rowData = []
-        row.map( (elem) => {
-          rowData.push(elem.indexOf('\n') > -1 ? `"${elem}"`: elem)
-        })
-        const newStr = rowData.join('\t')
-        data.push(newStr)
-     })
-      fs.writeFile(fName, data.join('\n'), 'utf8', (err) => {
-        if (err) throw err;
-        console.log('The file has been saved!');
-      });
-    } else {
-      console.log('No data found.')
-    }
-  })
-}
-
