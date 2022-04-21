@@ -4,7 +4,6 @@ import pluralize from 'pluralize'
 import {ok, fail} from './utils'
 import {SystemError} from './errors'
 import { Text } from '../../config/text'
-import { isAdmin } from '../../helpers/middleware'
 
 const MAX_RESULTS = 1000
 // var emptyPromise = function (t) {return new Promise (function (r, e) { r (t); }); };

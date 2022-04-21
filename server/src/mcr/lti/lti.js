@@ -4,7 +4,6 @@ import { ParameterError, AssignmentMismatchError, SystemError } from '../common/
 import { Text } from '../../config/text'
 import { ltiVersions, LTI_BASIC } from './lti-defs'
 
-const url = require('url')
 const debug = require('debug')('server')
 const debugFine = false
 const logError = require('debug')('error')
@@ -57,7 +56,7 @@ export default class LTIController {
   constructor (config) {
     this.config = config
   }
-  setSharedControllers(cc) {
+  setSharedControllers (cc) {
     this.assignmentController = cc.assignmentController
     this.authUtil = cc.authUtil
     this.visitController = cc.visitController

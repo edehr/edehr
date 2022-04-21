@@ -3,7 +3,6 @@ const mongoose = require('mongoose')
 import Helper from '../common/test-helper'
 const helper = new Helper()
 import ActivityDataController from './activity-data-controller'
-const debug = require('debug')('server')
 const typeName = 'ActivityDataController'
 
 // Use following to leave results in test database for inspection

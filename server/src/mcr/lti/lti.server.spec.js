@@ -89,11 +89,6 @@ function strategyVerify (ltiController, req) {
   })
 }
 
-
-let assignmentKey = '599'
-let theConsumer
-let theAssignment
-
 /* global describe it */
 describe('LTI controller testing', function () {
   before(function (done) {
@@ -105,7 +100,7 @@ describe('LTI controller testing', function () {
 
   it('Create a tool consumer for testing ', function (done) {
     Helper.createConsumer(oauth_consumer_key[0], oauth_consumer_secret[0]).then(doc => {
-      theConsumer = doc
+      // theConsumer = doc
       done()
     })
   })

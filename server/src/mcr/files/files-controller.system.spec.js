@@ -1,5 +1,4 @@
 const should = require('should')
-import Config from '../../config/config'
 import applicationConfiguration from '../../config/config'
 const configuration = applicationConfiguration('test')
 import FileController from './files-controller'

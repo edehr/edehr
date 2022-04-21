@@ -5,7 +5,6 @@ const helper = new Helper()
 import Model from './assignment'
 
 const typeName = 'Assignment'
-const collectionName = 'assignments'
 
 const logError = require('debug')('error')
 

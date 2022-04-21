@@ -3,7 +3,6 @@ import { getAdminPassword, generateAdminPassword } from '../../helpers/admin'
 import { adminLimiter } from '../../helpers/middleware'
 import { Text } from '../../config/text'
 
-const jwt = require('jsonwebtoken')
 const debug = require('debug')('server')
 const logError = require('debug')('error')
 let debugAC = true

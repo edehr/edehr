@@ -41,12 +41,12 @@ export default class DemoController {
     this.config = config
   }
 
-  setSharedControllers(cc) {
+  setSharedControllers (cc) {
     this.comCon = cc
   }
 
-  addSample(theSeed, assignmentData, toolC) {
-  Promise.resolve().then(() => {
+  addSample (theSeed, assignmentData, toolC) {
+    Promise.resolve().then(() => {
       const data = theSeed
       if (debugDC) debug('DemoController create', data.name)
       const aSeed = Object.assign({}, seedTemplate, { toolConsumer: toolC._id })
@@ -55,14 +55,14 @@ export default class DemoController {
       aSeed.ehrData = data.ehrData
       return this.comCon.seedController.create(aSeed)
     })
-    .then((seed) => {
-      if (debugDC) debug('DemoController create assignment')
-      const ass = Object.assign({}, assignmentData, { toolConsumer: toolC })
-      return this.comCon.assignmentController.createAssignment(ass, seed._id)
-    })
+      .then((seed) => {
+        if (debugDC) debug('DemoController create assignment')
+        const ass = Object.assign({}, assignmentData, { toolConsumer: toolC })
+        return this.comCon.assignmentController.createAssignment(ass, seed._id)
+      })
   }
 
-_createDemoToolConsumer (req, res, next) {
+  _createDemoToolConsumer (req, res, next) {
     let theId = req.body.id
     if (debugDC) debug('DemoController create tool. Call provided this id:', theId)
     if (!theId) {

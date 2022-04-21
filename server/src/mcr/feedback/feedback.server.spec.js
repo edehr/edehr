@@ -5,7 +5,6 @@ const helper = new Helper()
 import Model from './feedback'
 
 const typeName = 'Feedback'
-const collectionName = 'feedback'
 
 /* global describe it */
 describe(`${typeName} mongoose schema testing`, function () {

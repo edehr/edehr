@@ -15,7 +15,7 @@ export default class ConsumerController extends BaseController {
     super(Consumer, '_id')
   }
 
-  setSharedControllers(cc) {
+  setSharedControllers (cc) {
     this.comCon = cc
   }
 
@@ -91,13 +91,13 @@ export default class ConsumerController extends BaseController {
   read (id) {
     let self = this
     return this.baseFindOneQuery(id)
-    .select('-oauth_consumer_secret')
-    .then((modelInstance) => {
-      console.log('read(id)  ', id, 'this.modelName', this.modelName, 'modelInstance', modelInstance, 'populate', self.populate)
-      var response = {}
-      response[this.modelName] = modelInstance
-      return response
-    })
+      .select('-oauth_consumer_secret')
+      .then((modelInstance) => {
+        console.log('read(id)  ', id, 'this.modelName', this.modelName, 'modelInstance', modelInstance, 'populate', self.populate)
+        var response = {}
+        response[this.modelName] = modelInstance
+        return response
+      })
   }
 
   

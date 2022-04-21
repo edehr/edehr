@@ -25,7 +25,6 @@ const consumerController = new ConsumerController()
 //   console.error('TH: UNCAUGHT EXCEPTION', error, error.stack)
 // })
 
-let DatabaseName = 'unittest'
 let DefaultUserId = '51234'
 let Default = {
   oauth_consumer_key: 'aKey',

@@ -6,9 +6,6 @@ const helper = new Helper()
 import Model from './seed-data'
 
 const typeName = 'SeedData'
-const collectionName = 'seeddatas'
-
-const logError = require('debug')('error')
 /* global describe it */
 describe(`${typeName} mongoose schema testing`, function () {
   before(function (done) {

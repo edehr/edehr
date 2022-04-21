@@ -1,2 +1,3 @@
 // Just import the main entry point...
+// eslint-disable-next-line no-unused-vars
 import ehrApp from  './server/server.js'

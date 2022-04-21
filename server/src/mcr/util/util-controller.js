@@ -27,7 +27,7 @@ export const utilLimiter = rateLimit({
 })
 debug(`Util Controller rate limiter will prevent ${UTIL_MAX_REQUEST_LIMIT} failed requests in ${UTIL_LIMIT_TIME} ms`)
 
-function utilMiddlewareWrapper(apiToken) {
+function utilMiddlewareWrapper (apiToken) {
   return (req, res, next) => {
     if (!apiToken) {
       logError('utilMiddlewareWrapper', Text.SERVER_TOKEN_REQUIRED)
@@ -69,14 +69,14 @@ const shortConsumer = {
   tool_consumer_instance_name: true
 }
 
-function groupBy(xs, key) {
-  return xs.reduce(function(rv, x) {
+function groupBy (xs, key) {
+  return xs.reduce(function (rv, x) {
     (rv[x[key]] = rv[x[key]] || []).push(x)
     return rv
   }, {})
 }
 
-function getDateMinusMonths(months) {
+function getDateMinusMonths (months) {
   const thresholdDate = new Date()
   thresholdDate.setMonth(thresholdDate.getMonth() - months)
   thresholdDate.setUTCHours(0, 0, 0, 0)
@@ -93,7 +93,7 @@ export default class UtilController {
    * @param realOnly
    * @returns {*}
    */
-  listConsumers(realOnly) {
+  listConsumers (realOnly) {
     let filter = realOnly ? realConsumers : demoConsumers
     return Consumer.find(filter, shortConsumer)
   }
@@ -105,7 +105,7 @@ export default class UtilController {
    * @param realOnly
    * @returns {*}
    */
-  listSeeds(realOnly) {
+  listSeeds (realOnly) {
     let filter = realOnly ? realConsumers : demoConsumers
     return Consumer.find(filter, { _id: true })
       .then((consumers) => {
@@ -113,11 +113,11 @@ export default class UtilController {
       })
   }
 
-  async getDocsToBeDeleted(type, typeName, consumerIds) {
+  async getDocsToBeDeleted (type, typeName, consumerIds) {
     return await type.find({ toolConsumer: { $nin: consumerIds } }, {})// {_id: true})
   }
 
-  async deleteDocs(type, ids) {
+  async deleteDocs (type, ids) {
     return await type.deleteMany({ _id: { $in: ids } })
   }
 
@@ -129,7 +129,7 @@ export default class UtilController {
    * @param doDelete
    * @returns {Promise<{cleanUpCount: {}, cleanUpData: {}}>}
    */
-  async cleanUpAllOrphanedDocs(showDetails, doDelete) {
+  async cleanUpAllOrphanedDocs (showDetails, doDelete) {
     let toKeepConsumers = await Consumer.find({})
     const record = {}
     for (let i = 0; i < MODELS.length; i++) {
@@ -162,7 +162,7 @@ export default class UtilController {
    * @param doDelete
    * @returns {Promise<{deleted: (string), consumerDeleteCount, cleanUpData: (*|undefined)}>}
    */
-  async cleanOldDemoConsumers(months, showDetails, doDelete) {
+  async cleanOldDemoConsumers (months, showDetails, doDelete) {
     // debug('cleanOldDemoConsumers months, showDetails, doDelete', months, showDetails, doDelete)
     const mParam = parseInt(months)
     if (!(Number.isInteger(mParam) && mParam > 0 && mParam <= 60)) {
@@ -206,7 +206,7 @@ export default class UtilController {
    * @param config
    * @returns {Router}
    */
-  route(config) {
+  route (config) {
     /** Create middleware for this router.
      * 1. Limit failed attempts to prevent malicious users from repeat attempts.
      * 2. Validate the api token is correct. This api token is passed into this service

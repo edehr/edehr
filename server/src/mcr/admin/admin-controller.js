@@ -47,7 +47,7 @@ export default class adminController {
             return res.status(401).send(Text.EXPIRED_ADMIN)
           }
         } else {
-          debug(`adminController no admin token so generate one`)
+          debug('adminController no admin token so generate one')
           generateAdminPassword()
           return res.status(201).send('The password has been created')
         }

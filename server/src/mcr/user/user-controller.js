@@ -1,6 +1,5 @@
 import BaseController from '../common/base'
 import User from './user'
-import Activity from '../activity/activity'
 import Visit from '../visit/visit'
 import { ok, fail } from '../common/utils'
 const ObjectID = require('mongodb').ObjectId

@@ -36,7 +36,7 @@ export const metricMiddle = (req, res, next) => {
 }
 
 export default class MetricController {
-  constructor(config) {
+  constructor (config) {
     metricData.host = config.host
     metricData.version = config.appVersion
     metricData.startDate1 = Date.now()
@@ -47,14 +47,13 @@ export default class MetricController {
     metricData.getCount = 0
   }
 
-  getMetrics() {
+  getMetrics () {
     return Promise.resolve(metricData)
   }
 
-  route() {
+  route () {
     const router = new Router()
     router.get('/', (req, res) => {
-      const requestUrl = req.url
       // TODO add check that request is coming from another server in our network
       this
         .getMetrics()

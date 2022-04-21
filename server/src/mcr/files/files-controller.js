@@ -45,7 +45,7 @@ export default class FileController {
     })
 
   }
-  _uploader(req, res, next) {
+  _uploader (req, res, next) {
     this.multerUploader(req, res, (err) => {
       if (req.badRequestError) {
         logError('File upload - found badRequestError ', req.badRequestError)
@@ -112,17 +112,17 @@ export default class FileController {
     }
   }
 
-  async _setupDirectory(req) {
+  async _setupDirectory (req) {
     fs.mkdirSync(req.consumerDirectory, {recursive: true})
     debug('File Upload directory', req.consumerDirectory)
   }
 
-  _setupFileName(req, file) {
+  _setupFileName (req, file) {
     req.newFileName = filenamify(file.originalname.replace(/ /g, '_'))
     debug('File Upload original name', file.originalname, 'new file name:', req.newFileName)
   }
 
-  async _validateRequest(req, res, next) {
+  async _validateRequest (req, res, next) {
     const id = (req.authPayload ? req.authPayload.toolConsumerId : req.params.consumer)
     const dirName = await this._convertIdToKey(id)
     debug(`File _validateRequest consumer id ${id} leads to key '${dirName}'`)
@@ -138,7 +138,7 @@ export default class FileController {
     return true
   }
 
-  async _convertIdToKey(toolConsumerId) {
+  async _convertIdToKey (toolConsumerId) {
     return await Consumer.find({_id: toolConsumerId})
       .then((found) => {
         if (found && found.length > 0) {
@@ -150,7 +150,7 @@ export default class FileController {
       })
   }
 
-  _validateFileType(file) {
+  _validateFileType (file) {
     let mimetype = this.ehrFileTypeRE.test(file.mimetype)
     let fext = path.extname(file.originalname).toLowerCase()
     let extname = this.ehrFileTypeRE.test(fext)
@@ -163,7 +163,7 @@ export default class FileController {
     return true
   }
 
-  _validateFileDoesNotExist(req, file) {
+  _validateFileDoesNotExist (req, file) {
     let fPath = path.join(req.consumerDirectory, req.newFileName)
     debug('File filter check for existence of this file: ', fPath)
     if (fs.existsSync(fPath)) {
@@ -214,7 +214,7 @@ export default class FileController {
         // if not there then look in the common files
         const fileName = req.params.name
         let testName = path.join(req.consumerDirectory, fileName)
-        function sendIt(fileName, options) {
+        function sendIt (fileName, options) {
           // console.log('sendFile options', options)
           res.sendFile(fileName, options, function (err) {
             if (err) {

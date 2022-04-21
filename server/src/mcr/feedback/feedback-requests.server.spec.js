@@ -15,8 +15,6 @@ const ehrApp = new EhrApp()
 const tokenData = Helper.sampleTokenData()
 const token = Helper.generateToken(tokenData)
 
-const debug = require('debug')('server')
-
 describe(`Make server calls on ${TYPE}`, function () {
   let app
   before(function (done) {

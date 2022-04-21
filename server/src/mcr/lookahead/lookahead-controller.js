@@ -1,7 +1,5 @@
 import {ok, fail} from '../common/utils'
 import { Router } from 'express'
-import fs from 'fs'
-import path from 'path'
 import { Text } from '../../config/text'
 const MEDICATIONS = require('../../../resources/medicationsList.json')
 
