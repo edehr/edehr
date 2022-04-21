@@ -46,403 +46,284 @@ export default function () {
           fqn: 'labRequisitions.time'
         },
         {
-          elementKey: 'urinaryGroup1',
+          elementKey: 'patientName',
           formIndex: '1',
-          inputType: 'checkset',
-          label: 'Urinary symptoms',
-          options: [
-            {
-              key: 'None',
-              text: 'None'
-            },
-            {
-              key: 'Increased frequency',
-              text: 'Increased frequency'
-            },
-            {
-              key: 'Dysuria',
-              text: 'Dysuria'
-            },
-            {
-              key: 'Hermaturia',
-              text: 'Hermaturia'
-            },
-            {
-              key: 'Oliguria',
-              text: 'Oliguria'
-            },
-            {
-              key: 'Incontinence',
-              text: 'Incontinence'
-            },
-            {
-              key: 'Retention',
-              text: 'Retention'
-            },
-            {
-              key: 'Distention',
-              text: 'Distention'
-            }
-          ],
+          inputType: 'text',
+          label: 'Patient Name',
           tableColumn: '2',
-          tableLabel: 'Urinary symptoms',
-          fqn: 'labRequisitions.urinaryGroup1'
+          fqn: 'labRequisitions.patientName'
         },
         {
-          elementKey: 'lastVoidedDay',
+          elementKey: 'patientHealthNumber',
           formIndex: '1',
-          inputType: 'day',
-          label: 'Last voided day',
+          inputType: 'text',
+          label: 'PHN',
           tableColumn: '3',
-          tableLabel: 'Last voided day',
-          fqn: 'labRequisitions.lastVoidedDay'
+          fqn: 'labRequisitions.patientHealthNumber'
         },
         {
-          elementKey: 'lastVoidedTime',
+          elementKey: 'dateOfBirth',
           formIndex: '1',
-          inputType: 'time',
-          label: 'Last voided time',
+          inputType: 'text',
+          label: 'DOB',
           tableColumn: '4',
-          tableLabel: 'Last voided time',
-          fqn: 'labRequisitions.lastVoidedTime'
-        },
-        {
-          elementKey: 'colour',
-          formIndex: '1',
-          inputType: 'select',
-          label: 'Urine colour',
-          options: [
-            {
-              key: 'Pale yellow',
-              text: 'Pale yellow'
-            },
-            {
-              key: 'Dark yellow',
-              text: 'Dark yellow'
-            },
-            {
-              key: 'Amber',
-              text: 'Amber'
-            },
-            {
-              key: 'Red/blood',
-              text: 'Red/blood'
-            },
-            {
-              key: 'Other',
-              text: 'Other'
-            }
-          ],
-          tableColumn: '5',
-          tableLabel: 'Urine colour',
-          fqn: 'labRequisitions.colour'
-        },
-        {
-          elementKey: 'consistency',
-          formIndex: '1',
-          inputType: 'select',
-          label: 'Urine consistency',
-          options: [
-            {
-              key: 'Clear',
-              text: 'Clear'
-            },
-            {
-              key: 'Cloudy',
-              text: 'Cloudy'
-            },
-            {
-              key: 'Foamy',
-              text: 'Foamy'
-            },
-            {
-              key: 'Other',
-              text: 'Other'
-            }
-          ],
-          tableColumn: '6',
-          tableLabel: 'Urine consistency',
-          fqn: 'labRequisitions.consistency'
-        },
-        {
-          elementKey: 'diaper',
-          formIndex: '1',
-          helperText: 'Does the patient need the assistance of a brief, condom catheter, or etc.',
-          inputType: 'select',
-          label: 'Continence containment device',
-          options: [
-            {
-              key: 'Yes',
-              text: 'Yes'
-            },
-            {
-              key: 'No',
-              text: 'No'
-            }
-          ],
-          tableColumn: '7',
-          tableLabel: 'Continence containment device',
-          fqn: 'labRequisitions.diaper',
-          helperHtml: '<p>Does the patient need the assistance of a brief, condom catheter, or etc.</p>'
-        },
-        {
-          elementKey: 'toilettingMethod',
-          formIndex: '1',
-          inputType: 'checkset',
-          label: 'Toiletting method',
-          options: [
-            {
-              key: 'Bedpan',
-              text: 'Bedpan'
-            },
-            {
-              key: 'Comode',
-              text: 'Comode'
-            },
-            {
-              key: 'Urinal',
-              text: 'Urinal'
-            },
-            {
-              key: 'Help to the toilet',
-              text: 'Help to the toilet'
-            },
-            {
-              key: 'Brief',
-              text: 'Brief'
-            },
-            {
-              key: 'Mesh pant/pad',
-              text: 'Mesh pant/pad'
-            },
-            {
-              key: 'Clean intermittent catheter',
-              text: 'Clean intermittent catheter'
-            },
-            {
-              key: 'Indwelling catheter',
-              text: 'Indwelling catheter'
-            }
-          ],
-          tableColumn: '8',
-          tableCss: 'hr-table',
-          fqn: 'labRequisitions.toilettingMethod'
-        },
-        {
-          elementKey: 'foley',
-          formIndex: '1',
-          inputType: 'select',
-          label: 'Indwelling Catheter',
-          options: [
-            {
-              key: 'Yes',
-              text: 'Yes'
-            },
-            {
-              key: 'No',
-              text: 'No'
-            }
-          ],
-          tableColumn: '9',
-          tableLabel: 'Indwelling Catheter',
-          fqn: 'labRequisitions.foley'
-        },
-        {
-          elementKey: 'foleyType',
-          formIndex: '1',
-          helperText: 'eg. indwelling catheter',
-          inputType: 'text',
-          label: 'Type',
-          tableColumn: '10',
-          tableLabel: 'Type',
-          fqn: 'labRequisitions.foleyType',
-          helperHtml: '<p>eg. indwelling catheter</p>'
-        },
-        {
-          elementKey: 'foleySize',
-          formIndex: '1',
-          inputType: 'text',
-          label: 'Size',
-          tableColumn: '11',
-          tableLabel: 'Size',
-          fqn: 'labRequisitions.foleySize'
-        },
-        {
-          elementKey: 'lastChange',
-          formIndex: '1',
-          inputType: 'day',
-          label: 'Last catheter change (day)',
-          tableColumn: '12',
-          tableCss: 'hr-table',
-          tableLabel: 'Last catheter change (day)',
-          fqn: 'labRequisitions.lastChange'
-        },
-        {
-          elementKey: 'pelvicPain',
-          formIndex: '1',
-          inputType: 'select',
-          label: 'Pelvic pain',
-          options: [
-            {
-              key: 'Yes',
-              text: 'Yes'
-            },
-            {
-              key: 'No',
-              text: 'No'
-            }
-          ],
-          tableColumn: '13',
-          tableLabel: 'Pelvic pain',
-          fqn: 'labRequisitions.pelvicPain'
+          fqn: 'labRequisitions.dateOfBirth'
         },
         {
           elementKey: 'location',
           formIndex: '1',
           inputType: 'text',
           label: 'Location',
-          tableColumn: '14',
-          tableLabel: 'Location',
+          tableColumn: '5',
           fqn: 'labRequisitions.location'
         },
         {
-          elementKey: 'pelvicPainSource',
+          elementKey: 'dateRequired',
           formIndex: '1',
-          inputType: 'select',
-          label: 'Pelvic pain source',
+          inputType: 'date',
+          label: 'Date required',
+          tableColumn: '6',
+          fqn: 'labRequisitions.dateRequired'
+        },
+        {
+          elementKey: 'reason',
+          formIndex: '1',
+          inputType: 'text',
+          label: 'Reason test is required',
+          tableColumn: '7',
+          fqn: 'labRequisitions.reason'
+        },
+        {
+          elementKey: 'hematology',
+          formIndex: '1',
+          inputType: 'checkset',
+          label: 'Hematology',
           options: [
             {
-              key: 'Observed',
-              text: 'Observed'
+              key: 'CBC',
+              text: 'CBC'
             },
             {
-              key: 'As per patient observed',
-              text: 'As per patient observed'
+              key: 'CBC with differential',
+              text: 'CBC with differential'
             },
             {
-              key: 'Not observed',
-              text: 'Not observed'
+              key: 'Hemoglobin A1-C',
+              text: 'Hemoglobin A1-C'
+            }
+          ],
+          tableColumn: '8',
+          fqn: 'labRequisitions.hematology'
+        },
+        {
+          elementKey: 'electrolytes',
+          formIndex: '1',
+          inputType: 'checkset',
+          label: 'Electrolytes',
+          options: [
+            {
+              key: 'K',
+              text: 'K'
+            },
+            {
+              key: 'Na',
+              text: 'Na'
+            },
+            {
+              key: 'Chloride',
+              text: 'Chloride'
+            },
+            {
+              key: 'Bicarbonate',
+              text: 'Bicarbonate'
+            },
+            {
+              key: 'Calcium',
+              text: 'Calcium'
+            },
+            {
+              key: 'Ionized Calcium',
+              text: 'Ionized Calcium'
+            }
+          ],
+          tableColumn: '9',
+          fqn: 'labRequisitions.electrolytes'
+        },
+        {
+          elementKey: 'bloodGas',
+          formIndex: '1',
+          inputType: 'checkset',
+          label: 'Blood Gas',
+          options: [
+            {
+              key: 'Arterial blood gas',
+              text: 'Arterial blood gas'
+            },
+            {
+              key: 'Venous blood gas',
+              text: 'Venous blood gas'
+            },
+            {
+              key: 'Fetal cord blood gas',
+              text: 'Fetal cord blood gas'
+            }
+          ],
+          tableColumn: '10',
+          fqn: 'labRequisitions.bloodGas'
+        },
+        {
+          elementKey: 'renalProfile',
+          formIndex: '1',
+          inputType: 'checkset',
+          label: 'Renal Profile',
+          options: [
+            {
+              key: 'BUN',
+              text: 'BUN'
+            },
+            {
+              key: 'Creatinine',
+              text: 'Creatinine'
+            }
+          ],
+          tableColumn: '11',
+          fqn: 'labRequisitions.renalProfile'
+        },
+        {
+          elementKey: 'liverFunction',
+          formIndex: '1',
+          inputType: 'checkset',
+          label: 'Liver Function',
+          options: [
+            {
+              key: 'AST',
+              text: 'AST'
+            },
+            {
+              key: 'GGT',
+              text: 'GGT'
+            },
+            {
+              key: 'ALT',
+              text: 'ALT'
+            },
+            {
+              key: 'Total Birilubin',
+              text: 'Total Birilubin'
+            },
+            {
+              key: 'Direct Birilubin',
+              text: 'Direct Birilubin'
+            }
+          ],
+          tableColumn: '12',
+          fqn: 'labRequisitions.liverFunction'
+        },
+        {
+          elementKey: 'urineAnalysis',
+          formIndex: '1',
+          inputType: 'checkset',
+          label: 'Urine Analysis',
+          options: [
+            {
+              key: 'R&M',
+              text: 'R&M'
+            },
+            {
+              key: 'Urine electrolytes',
+              text: 'Urine electrolytes'
+            },
+            {
+              key: 'Urine creatinine',
+              text: 'Urine creatinine'
+            }
+          ],
+          tableColumn: '13',
+          fqn: 'labRequisitions.urineAnalysis'
+        },
+        {
+          elementKey: 'microbiologyCulture',
+          formIndex: '1',
+          inputType: 'select',
+          label: 'Type of Culture',
+          options: [
+            {
+              key: 'culture and Senstitivity',
+              text: 'culture and Senstitivity'
+            }
+          ],
+          tableColumn: '14',
+          fqn: 'labRequisitions.microbiologyCulture'
+        },
+        {
+          elementKey: 'microbiologyLocation',
+          formIndex: '1',
+          inputType: 'select',
+          label: 'Location',
+          options: [
+            {
+              key: 'Wound',
+              text: 'Wound'
+            },
+            {
+              key: 'Sputum',
+              text: 'Sputum'
+            },
+            {
+              key: 'Blood',
+              text: 'Blood'
+            },
+            {
+              key: 'Urine',
+              text: 'Urine'
+            },
+            {
+              key: 'Stool',
+              text: 'Stool'
             }
           ],
           tableColumn: '15',
-          tableCss: 'hr-table',
-          tableLabel: 'Pelvic pain source',
-          fqn: 'labRequisitions.pelvicPainSource'
+          fqn: 'labRequisitions.microbiologyLocation'
         },
         {
-          elementKey: 'aLabel',
+          elementKey: 'histologyTissueType',
           formIndex: '1',
-          inputType: 'form_label',
-          label: 'If answered yes, please complete the pain assessment',
-          fqn: 'labRequisitions.aLabel'
-        },
-        {
-          elementKey: 'discharge',
-          formIndex: '1',
-          inputType: 'checkset',
-          label: 'Discharge',
+          inputType: 'select',
+          label: 'Tissue Type',
           options: [
             {
-              key: 'Discharge',
-              text: 'Discharge'
+              key: 'Skin',
+              text: 'Skin'
             },
             {
-              key: 'Bleeding',
-              text: 'Bleeding'
+              key: 'Blood',
+              text: 'Blood'
+            },
+            {
+              key: 'Organ',
+              text: 'Organ'
             }
           ],
           tableColumn: '16',
-          tableLabel: 'Discharge',
-          fqn: 'labRequisitions.discharge'
+          fqn: 'labRequisitions.histologyTissueType'
         },
         {
-          elementKey: 'description',
+          elementKey: 'histologyLocation',
           formIndex: '1',
           inputType: 'text',
-          label: 'Description',
+          label: 'Location',
           tableColumn: '17',
-          tableLabel: 'Description',
-          fqn: 'labRequisitions.description'
-        },
-        {
-          elementKey: 'lastMenstrualPeriodDate',
-          formIndex: '1',
-          inputType: 'date',
-          label: 'Last menstrual period date',
-          tableColumn: '18',
-          tableCss: 'hr-table',
-          tableLabel: 'Last menstrual period date',
-          fqn: 'labRequisitions.lastMenstrualPeriodDate'
-        },
-        {
-          elementKey: 'pregnant',
-          formIndex: '1',
-          inputType: 'select',
-          label: 'Pregnant',
-          options: [
-            {
-              key: 'Yes',
-              text: 'Yes'
-            },
-            {
-              key: 'No',
-              text: 'No'
-            },
-            {
-              key: 'Unknown',
-              text: 'Unknown'
-            }
-          ],
-          tableColumn: '19',
-          tableLabel: 'Pregnant',
-          fqn: 'labRequisitions.pregnant'
-        },
-        {
-          elementKey: 'gravida',
-          formIndex: '1',
-          inputType: 'text',
-          label: 'Gravida (number of pregnancies)',
-          tableColumn: '20',
-          tableLabel: 'Gravida (number of pregnancies)',
-          fqn: 'labRequisitions.gravida'
-        },
-        {
-          elementKey: 'para',
-          formIndex: '1',
-          inputType: 'text',
-          label: 'Para (number of children)',
-          tableColumn: '21',
-          tableLabel: 'Para (number of children)',
-          fqn: 'labRequisitions.para'
-        },
-        {
-          elementKey: 'livingChildren',
-          formIndex: '1',
-          inputType: 'text',
-          label: 'Living children',
-          tableColumn: '22',
-          tableCss: 'hr-table',
-          tableLabel: 'Living children',
-          fqn: 'labRequisitions.livingChildren'
-        },
-        {
-          elementKey: 'comments',
-          formIndex: '1',
-          inputType: 'textarea',
-          label: 'Comments',
-          tableColumn: '23',
-          tableLabel: 'Comments',
-          fqn: 'labRequisitions.comments'
+          fqn: 'labRequisitions.histologyLocation'
         }
       ],
-      generated: '2022-04-20T09:45:13-07:00',
+      generated: '2022-04-20T19:49:20-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
           hasRecHeader: false,
-          addButtonText: 'Add a xxx assessment',
+          addButtonText: 'Add a lab requisition assessment',
           ehr_list: [
             {
               label: 'Identification',
@@ -455,167 +336,105 @@ export default function () {
               ]
             },
             {
-              label: 'Urinary symptoms',
               ehr_list_index: '2',
               items: [
-                'urinaryGroup1'
+                'patientName'
               ]
             },
             {
-              label: 'Last voided day',
               ehr_list_index: '3',
               items: [
-                'lastVoidedDay'
+                'patientHealthNumber'
               ]
             },
             {
-              label: 'Last voided time',
               ehr_list_index: '4',
               items: [
-                'lastVoidedTime'
+                'dateOfBirth'
               ]
             },
             {
-              label: 'Urine colour',
               ehr_list_index: '5',
-              items: [
-                'colour'
-              ]
-            },
-            {
-              label: 'Urine consistency',
-              ehr_list_index: '6',
-              items: [
-                'consistency'
-              ]
-            },
-            {
-              label: 'Continence containment device',
-              ehr_list_index: '7',
-              items: [
-                'diaper'
-              ]
-            },
-            {
-              tableCss: 'hr-table',
-              ehr_list_index: '8',
-              items: [
-                'toilettingMethod'
-              ]
-            },
-            {
-              label: 'Indwelling Catheter',
-              ehr_list_index: '9',
-              items: [
-                'foley'
-              ]
-            },
-            {
-              label: 'Type',
-              ehr_list_index: '10',
-              items: [
-                'foleyType'
-              ]
-            },
-            {
-              label: 'Size',
-              ehr_list_index: '11',
-              items: [
-                'foleySize'
-              ]
-            },
-            {
-              label: 'Last catheter change (day)',
-              tableCss: 'hr-table',
-              ehr_list_index: '12',
-              items: [
-                'lastChange'
-              ]
-            },
-            {
-              label: 'Pelvic pain',
-              ehr_list_index: '13',
-              items: [
-                'pelvicPain'
-              ]
-            },
-            {
-              label: 'Location',
-              ehr_list_index: '14',
               items: [
                 'location'
               ]
             },
             {
-              label: 'Pelvic pain source',
-              tableCss: 'hr-table',
+              ehr_list_index: '6',
+              items: [
+                'dateRequired'
+              ]
+            },
+            {
+              ehr_list_index: '7',
+              items: [
+                'reason'
+              ]
+            },
+            {
+              ehr_list_index: '8',
+              items: [
+                'hematology'
+              ]
+            },
+            {
+              ehr_list_index: '9',
+              items: [
+                'electrolytes'
+              ]
+            },
+            {
+              ehr_list_index: '10',
+              items: [
+                'bloodGas'
+              ]
+            },
+            {
+              ehr_list_index: '11',
+              items: [
+                'renalProfile'
+              ]
+            },
+            {
+              ehr_list_index: '12',
+              items: [
+                'liverFunction'
+              ]
+            },
+            {
+              ehr_list_index: '13',
+              items: [
+                'urineAnalysis'
+              ]
+            },
+            {
+              ehr_list_index: '14',
+              items: [
+                'microbiologyCulture'
+              ]
+            },
+            {
               ehr_list_index: '15',
               items: [
-                'pelvicPainSource'
+                'microbiologyLocation'
               ]
             },
             {
-              label: 'Discharge',
               ehr_list_index: '16',
               items: [
-                'discharge'
+                'histologyTissueType'
               ]
             },
             {
-              label: 'Description',
               ehr_list_index: '17',
               items: [
-                'description'
-              ]
-            },
-            {
-              label: 'Last menstrual period date',
-              tableCss: 'hr-table',
-              ehr_list_index: '18',
-              items: [
-                'lastMenstrualPeriodDate'
-              ]
-            },
-            {
-              label: 'Pregnant',
-              ehr_list_index: '19',
-              items: [
-                'pregnant'
-              ]
-            },
-            {
-              label: 'Gravida (number of pregnancies)',
-              ehr_list_index: '20',
-              items: [
-                'gravida'
-              ]
-            },
-            {
-              label: 'Para (number of children)',
-              ehr_list_index: '21',
-              items: [
-                'para'
-              ]
-            },
-            {
-              label: 'Living children',
-              tableCss: 'hr-table',
-              ehr_list_index: '22',
-              items: [
-                'livingChildren'
-              ]
-            },
-            {
-              label: 'Comments',
-              ehr_list_index: '23',
-              items: [
-                'comments'
+                'histologyLocation'
               ]
             }
           ],
           form: {
             elementKey: 'table',
-            addButtonText: 'Add a xxx assessment',
+            addButtonText: 'Add a lab requisition assessment',
             formKey: 'table',
             ehr_groups: [
               {
@@ -630,73 +449,43 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'urinaryGroup2',
-                label: 'Urinary',
+                elementKey: 'demographics',
+                label: 'Demographic',
                 formCss: 'section-divider',
                 gIndex: '2',
                 gChildren: [
-                  'urinaryGroup1',
-                  'lastVoidedDay',
-                  'lastVoidedTime',
-                  'colour',
-                  'consistency',
-                  'diaper',
-                  'toilettingMethod'
+                  'patientName',
+                  'patientHealthNumber',
+                  'dateOfBirth',
+                  'location',
+                  'dateRequired',
+                  'reason',
+                  'hematology',
+                  'electrolytes',
+                  'bloodGas',
+                  'renalProfile',
+                  'liverFunction',
+                  'urineAnalysis'
                 ]
               },
               {
-                elementKey: 'foleyGroup',
-                label: 'Indwelling Catheter',
+                elementKey: 'microbiology',
+                label: 'Microbiology',
                 formCss: 'section-divider',
                 gIndex: '3',
                 gChildren: [
-                  'foley',
-                  'foleyType',
-                  'foleySize',
-                  'lastChange'
+                  'microbiologyCulture',
+                  'microbiologyLocation'
                 ]
               },
               {
-                elementKey: 'pelvicGroup',
-                label: 'Pelvic',
+                elementKey: 'histology',
+                label: 'Histology',
                 formCss: 'section-divider',
                 gIndex: '4',
                 gChildren: [
-                  'pelvicPain',
-                  'location',
-                  'pelvicPainSource',
-                  'aLabel'
-                ]
-              },
-              {
-                elementKey: 'vaginal',
-                label: 'Vagina',
-                formCss: 'section-divider',
-                gIndex: '5',
-                gChildren: [
-                  'discharge',
-                  'description',
-                  'lastMenstrualPeriodDate'
-                ]
-              },
-              {
-                elementKey: 'pregnantGroup',
-                label: 'Pregnancy',
-                formCss: 'section-divider',
-                gIndex: '6',
-                gChildren: [
-                  'pregnant',
-                  'gravida',
-                  'para',
-                  'livingChildren'
-                ]
-              },
-              {
-                elementKey: 'ehr_group2',
-                formCss: 'grid-left-to-right-1',
-                gIndex: '7',
-                gChildren: [
-                  'comments'
+                  'histologyTissueType',
+                  'histologyLocation'
                 ]
               }
             ],
@@ -705,28 +494,22 @@ export default function () {
               profession: '',
               day: '',
               time: '',
-              urinaryGroup1: '',
-              lastVoidedDay: '',
-              lastVoidedTime: '',
-              colour: '',
-              consistency: '',
-              diaper: '',
-              toilettingMethod: '',
-              foley: '',
-              foleyType: '',
-              foleySize: '',
-              lastChange: '',
-              pelvicPain: '',
+              patientName: '',
+              patientHealthNumber: '',
+              dateOfBirth: '',
               location: '',
-              pelvicPainSource: '',
-              discharge: '',
-              description: '',
-              lastMenstrualPeriodDate: '',
-              pregnant: '',
-              gravida: '',
-              para: '',
-              livingChildren: '',
-              comments: ''
+              dateRequired: '',
+              reason: '',
+              hematology: '',
+              electrolytes: '',
+              bloodGas: '',
+              renalProfile: '',
+              liverFunction: '',
+              urineAnalysis: '',
+              microbiologyCulture: '',
+              microbiologyLocation: '',
+              histologyTissueType: '',
+              histologyLocation: ''
             }
           }
         }
