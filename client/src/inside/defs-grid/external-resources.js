@@ -143,8 +143,7 @@ export default function () {
           fqn: 'assessmentTools.medication1_1'
         }
       ],
-      recHeader: true,
-      generated: '2020-07-30T16:48:26-07:00',
+      generated: '2022-04-20T19:04:43-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -152,7 +151,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
-              elementKey: 'ehr_group82',
+              elementKey: 'ehr_group124',
               gIndex: '1',
               gChildren: [
                 {
@@ -246,8 +245,7 @@ export default function () {
           fqn: 'codeLookup.icf'
         }
       ],
-      recHeader: true,
-      generated: '2020-07-30T16:48:26-07:00',
+      generated: '2022-04-20T19:04:43-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -255,7 +253,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
-              elementKey: 'ehr_group83',
+              elementKey: 'ehr_group125',
               gIndex: '1',
               gChildren: [
                 'snomed',
@@ -324,7 +322,6 @@ export default function () {
         },
         {
           elementKey: 'condition',
-          dataCaseStudy: 'COPD-NL-History of smoking-NL-Hypertension',
           formIndex: '1',
           inputType: 'text',
           label: 'Condition',
@@ -335,7 +332,6 @@ export default function () {
         },
         {
           elementKey: 'code',
-          dataCaseStudy: 'J44.9-NL-Z86.42-NL-I10',
           formIndex: '1',
           inputType: 'text',
           label: 'Diagnosis code',
@@ -346,7 +342,6 @@ export default function () {
         },
         {
           elementKey: 'type',
-          dataCaseStudy: 'M-NL-3-NL-3',
           formIndex: '1',
           inputType: 'select',
           label: 'Diagnosis type',
@@ -394,13 +389,13 @@ export default function () {
           fqn: 'diagnosticCodes.cluster'
         }
       ],
-      recHeader: true,
-      generated: '2020-07-30T16:48:26-07:00',
+      generated: '2022-04-20T19:04:43-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
+          hasRecHeader: false,
           addButtonText: 'Add a diagnostic code',
           ehr_list: [
             {
@@ -462,7 +457,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group84',
+                elementKey: 'ehr_group126',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -473,7 +468,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group85',
+                elementKey: 'ehr_group127',
                 gIndex: '2',
                 gChildren: [
                   'icd10',
@@ -548,7 +543,6 @@ export default function () {
         },
         {
           elementKey: 'intervention',
-          dataCaseStudy: '3.GY.10.VA-NL-2.GZ.21.EA',
           formIndex: '1',
           inputType: 'text',
           label: 'Intervention',
@@ -584,13 +578,13 @@ export default function () {
           fqn: 'interventionCodes.extent'
         }
       ],
-      recHeader: true,
-      generated: '2020-07-30T16:48:26-07:00',
+      generated: '2022-04-20T19:04:43-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
+          hasRecHeader: false,
           addButtonText: 'Add an intervention code',
           ehr_list: [
             {
@@ -638,7 +632,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group86',
+                elementKey: 'ehr_group128',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -649,7 +643,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group87',
+                elementKey: 'ehr_group129',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '2',
                 gChildren: [
@@ -771,13 +765,13 @@ export default function () {
           fqn: 'caseMixGroup.analysis'
         }
       ],
-      recHeader: true,
-      generated: '2020-07-30T16:48:26-07:00',
+      generated: '2022-04-20T19:04:43-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
+          hasRecHeader: false,
           addButtonText: 'Add a case mix group',
           ehr_list: [
             {
@@ -832,7 +826,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group88',
+                elementKey: 'ehr_group130',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -843,7 +837,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group89',
+                elementKey: 'ehr_group131',
                 gIndex: '2',
                 gChildren: [
                   'clinicalCategory',

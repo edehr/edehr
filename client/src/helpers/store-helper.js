@@ -5,6 +5,16 @@ const debugSH = false
 
 // TODO refactor this class See https://github.com/BCcampus/edehr/issues/760
 
+/*
+https://softwareengineering.stackexchange.com/a/247277/346750
+"A Helper class is a lesser known code smell where a coder has identified some miscellaneous,
+commonly used operations and attempted to make them reusable by lumping them together in an unnatural grouping."
+
+The above describes the StoreHelper to a "t".  With Vuex though it is difficult to group and encapsulate meaning
+in something that makes sense.  This EdEHR application will benefit from the Vue3 composition api.
+Hopefully one day this helper will be replaced with useful groupings.
+ */
+
 class StoreHelperWorker {
 
   getAsLoadedPageData (pageKey) { return store.getters['ehrDataStore/asLoadedDataForPageKey'](pageKey) }

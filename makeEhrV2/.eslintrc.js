@@ -3,7 +3,6 @@ module.exports = {
   env: {
     node: true
   },
-  extends: ['plugin:vue/essential'],
   rules: {
     'space-before-function-paren': ['warn', 'always'],
     'no-console': 'off',

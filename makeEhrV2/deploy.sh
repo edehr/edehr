@@ -25,6 +25,8 @@ case $i in
 esac
 done
 
+node pullFromSheets.js
+
 mkdir -p generated/vue
 mkdir -p generated/ehrDefs
 ./generateComponents.sh
@@ -36,3 +38,6 @@ then
   cd ../client
   npm run lint
 fi
+
+
+

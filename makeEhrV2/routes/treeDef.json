@@ -933,6 +933,29 @@
                   "zone": "ehr"
                 },
                 "children": []
+              },
+              {
+                "name": "hematology",
+                "label": "Hematology",
+                "pageDataKey": "hemotology",
+                "routeName": "hematology",
+                "topLevel": "chart",
+                "def": {
+                  "path": "/ehr/chart/reports",
+                  "routeName": "hematology",
+                  "pageDataKey": "hemotology",
+                  "label": "Hematology",
+                  "redirect": "",
+                  "generateComponent": "yes",
+                  "componentName": "Hematology",
+                  "dataName": "hematology",
+                  "fullPath": "/ehr/chart/reports/hematology",
+                  "title": "Hematology",
+                  "topLevel": "chart",
+                  "componentPath": "./inside/views",
+                  "zone": "ehr"
+                },
+                "children": []
               }
             ]
           }

@@ -47,3 +47,4 @@
 {path: /ehr/external}	{routeName: test-page}	{pageDataKey: testPage}	{label: Test Page}	{redirect: }	{generateComponent: yes}
 {path: /ehr/external}	{routeName: test-table}	{pageDataKey: testTable}	{label: Test Table}	{redirect: }	{generateComponent: yes}
 {path: /ehr/current/assessments}	{routeName: integumentary-assessment}	{pageDataKey: integumentaryAssessment}	{label: Integumentary assessment}	{redirect: }	{generateComponent: custom}
+{path: /ehr/chart/reports}	{routeName: hematology}	{pageDataKey: hemotology}	{label: Hematology}	{redirect: }	{generateComponent: yes}
