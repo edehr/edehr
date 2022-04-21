@@ -21,13 +21,16 @@ const TOKEN_PATH = 'token.json'
 
 function getSheets(auth) {
   const sheets = google.sheets({ version: 'v4', auth })
+  getSheet(sheets, INPUT_SPREADSHEET_ID, 'External!AC2:BA300', 'raw_data/external-resources.txt')
   getSheet(sheets, INPUT_SPREADSHEET_ID, 'pProfile!AC2:BA300', 'raw_data/patient-profile.txt')
   getSheet(sheets, INPUT_SPREADSHEET_ID, 'pChart!AC2:BA300', 'raw_data/patient-chart.txt')
-  // getSheet(sheets, INPUT_SPREADSHEET_ID, 'CV-1!AC2:BA300', 'raw_data/current-visit-1.txt')
-  // getSheet(sheets, INPUT_SPREADSHEET_ID, 'CV-2!AC2:BA300', 'raw_data/current-visit-2.txt')
-  // getSheet(sheets, INPUT_SPREADSHEET_ID, 'CV-3!AC2:BA300', 'raw_data/current-visit-3.txt')
+  getSheet(sheets, INPUT_SPREADSHEET_ID, 'TestPage!AC2:BA300', 'raw_data/test-page.txt')
+  getSheet(sheets, INPUT_SPREADSHEET_ID, 'CV-1!AC2:BA300', 'raw_data/current-visit-1.txt')
+  getSheet(sheets, INPUT_SPREADSHEET_ID, 'CV-2!AC2:BA300', 'raw_data/current-visit-2.txt')
+  getSheet(sheets, INPUT_SPREADSHEET_ID, 'CV-3!AC2:BA300', 'raw_data/current-visit-3.txt')
 }
 
+// inputType	pRef	Label	Comments	elementKey	pN	fN	gN	sgN	formCss	formOption	tableLabel	tableColumn	tableCss	addButtonText	dependentOn	Default_value	Options	Suffix	Mandatory	Validation	assetBase	assetName	helperText	passToFunction
 // inputType	pRef	Label	Comments	elementKey	pN	fN	gN	sgN	formCss	formOption	tableLabel	tableColumn	tableCss	addButtonText	dependentOn	Default_value	Options	Suffix	Mandatory	Validation	assetBase	assetName	helperText	passToFunction
 // inputType	pRef	Label	Comments	elementKey	pN	fN	gN	sgN	formCss	formOption	tableLabel	tableColumn	tableCss	addButtonText	dependentOn	Default_value	Options	Suffix	Mandatory	Validation	assetBase	assetName	helperText	passToFunction
 // inputType	pRef	Label	Comments	elementKey	pN	fN	gN	sgN	formCss	formOption	tableLabel	tableColumn	tableCss	addButtonText	dependentOn	Default_value	Options	Suffix	Mandatory	Validation	assetBase	assetName	helperText	passToFunction
