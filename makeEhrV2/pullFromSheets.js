@@ -13,7 +13,7 @@ const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 // The file token.json stores the user's access and refresh tokens, and is
 // created automatically when the authorization flow completes for the first
 // time.
-const TOKEN_PATH = 'token.json'
+const TOKEN_PATH = '.token.json'
 
 
 // inputType	pRef	Label	Comments	elementKey	pN	fN	gN	sgN	formCss	formOption	tableLabel	tableColumn	tableCss	addButtonText	dependentOn	Default_value	Options	Suffix	Mandatory	Validation	assetBase	assetName	helperText	passToFunction
@@ -67,7 +67,7 @@ function getSheet(sheets, sheetId, range, fName) {
 
 // ... MAIN ...
 // Load client secrets from a local file.
-fs.readFile('credentials.json', 'utf8', (err, content) => {
+fs.readFile('.credentials.json', 'utf8', (err, content) => {
   if (err) return console.log('Error loading client secret file:', err)
   // Authorize a client with credentials, then call the Google Sheets API.
   authorize(JSON.parse(content), getSheets)
