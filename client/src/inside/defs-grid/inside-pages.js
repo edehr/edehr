@@ -375,6 +375,14 @@ module.exports = function () {
       label: 'Integumentary assessment',
       redirect: '',
       generateComponent: 'custom'
+    },
+    {
+      path: '/ehr/chart/reports',
+      routeName: 'hematology',
+      pageDataKey: 'hemotology',
+      label: 'Hematology',
+      redirect: '',
+      generateComponent: 'yes'
     }
   ]
 }

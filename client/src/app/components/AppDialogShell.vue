@@ -171,6 +171,7 @@ export default {
   max-height: calc( 90vh - 20vh );
   padding: 1.5rem 2rem 2rem 2rem;
   margin-bottom: 4rem;
+  background-color: $grey03;
 }
 .dialog-body, .dialog-footer, .dialog-header {
   width: 100vw;

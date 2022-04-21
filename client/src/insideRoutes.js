@@ -343,6 +343,13 @@ export function inside () {
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/custom/IntegumentaryAssessment.vue'),
       meta: { layout: 'inside', label: 'Integumentary assessment', topLevel: 'current', zone: 'ehr' }
+    },
+    {
+      path: '/ehr/chart/reports/hematology',
+      name: 'hematology',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/Hematology.vue'),
+      meta: { layout: 'inside', label: 'Hematology', topLevel: 'chart', zone: 'ehr' }
     }
   ]
 }

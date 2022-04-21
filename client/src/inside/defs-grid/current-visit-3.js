@@ -248,8 +248,12 @@ export default function () {
           label: 'Type of Culture',
           options: [
             {
-              key: 'culture and Senstitivity',
-              text: 'culture and Senstitivity'
+              key: 'culture',
+              text: 'culture'
+            },
+            {
+              key: 'senstitivity',
+              text: 'senstitivity'
             }
           ],
           tableColumn: '14',
@@ -316,7 +320,7 @@ export default function () {
           fqn: 'labRequisitions.histologyLocation'
         }
       ],
-      generated: '2022-04-20T19:49:20-07:00',
+      generated: '2022-04-21T14:57:44-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
