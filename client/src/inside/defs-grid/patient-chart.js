@@ -47,7 +47,6 @@ export default function () {
         },
         {
           elementKey: 'note',
-          dataCaseStudy: 'Erin Johns is 74 years old. She is widowed with four children, one of whom lives at home with her in their original family home. Two of Erins children live within a one-hour drive from her, and one lives a three-hour flight away. She also has 10 grandchildren and one great grandchild. Erin describes herself as a non-smoker, but she smoked socially when she was in her early twenties for about five years. She is a retired hairdresser.',
           formIndex: '1',
           inputType: 'textarea',
           label: 'Encounter note',
@@ -56,13 +55,13 @@ export default function () {
           fqn: 'progressNotes.note'
         }
       ],
-      recHeader: true,
-      generated: '2020-08-25T10:52:37-07:00',
+      generated: '2022-04-20T19:04:43-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
+          hasRecHeader: false,
           addButtonText: 'Add an encounter note',
           ehr_list: [
             {
@@ -89,7 +88,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group1',
+                elementKey: 'ehr_group112',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -100,7 +99,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group2',
+                elementKey: 'ehr_group113',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '2',
                 gChildren: [
@@ -220,13 +219,13 @@ export default function () {
           fqn: 'carePlan.status'
         }
       ],
-      recHeader: true,
-      generated: '2020-08-25T10:52:37-07:00',
+      generated: '2022-04-20T19:04:43-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
+          hasRecHeader: false,
           addButtonText: 'Add a care plan',
           ehr_list: [
             {
@@ -281,7 +280,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group3',
+                elementKey: 'ehr_group114',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -292,7 +291,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group4',
+                elementKey: 'ehr_group115',
                 gIndex: '2',
                 gChildren: [
                   'clinical',
@@ -382,13 +381,13 @@ export default function () {
           fqn: 'consults.comments'
         }
       ],
-      recHeader: true,
-      generated: '2020-08-25T10:52:37-07:00',
+      generated: '2022-04-20T19:04:43-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
+          hasRecHeader: false,
           addButtonText: 'Add a consulttion report',
           ehr_list: [
             {
@@ -422,7 +421,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group5',
+                elementKey: 'ehr_group116',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -433,7 +432,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group6',
+                elementKey: 'ehr_group117',
                 gIndex: '2',
                 gChildren: [
                   'consultReport',
@@ -517,13 +516,13 @@ export default function () {
           fqn: 'labResults.comments'
         }
       ],
-      recHeader: true,
-      generated: '2020-08-25T10:52:37-07:00',
+      generated: '2022-04-20T19:04:43-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
+          hasRecHeader: false,
           addButtonText: 'Add a laboratory report',
           ehr_list: [
             {
@@ -557,7 +556,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group7',
+                elementKey: 'ehr_group118',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -568,7 +567,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group8',
+                elementKey: 'ehr_group119',
                 gIndex: '2',
                 gChildren: [
                   'laboratoryReport',
@@ -652,13 +651,13 @@ export default function () {
           fqn: 'medicalImaging.comments'
         }
       ],
-      recHeader: true,
-      generated: '2020-08-25T10:52:37-07:00',
+      generated: '2022-04-20T19:04:43-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
+          hasRecHeader: false,
           addButtonText: 'Add a report or image',
           ehr_list: [
             {
@@ -692,7 +691,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group9',
+                elementKey: 'ehr_group120',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -703,7 +702,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group10',
+                elementKey: 'ehr_group121',
                 gIndex: '2',
                 gChildren: [
                   'laboratoryReport',
@@ -725,7 +724,7 @@ export default function () {
     },
     operationReports: {
       pageDataKey: 'operationReports',
-      pageTitle: 'Operative reports and anaesthesia records',
+      pageTitle: 'Operative and anaesthesia records',
       pIndex: '34',
       isV2: true,
       hasGridTable: true,
@@ -772,9 +771,9 @@ export default function () {
           elementKey: 'laboratoryReport',
           formIndex: '1',
           inputType: 'ehrFile',
-          label: 'Operative reports and anaesthesia records',
+          label: 'Operative and anaesthesia records',
           tableColumn: '2',
-          tableLabel: 'Operative reports and anaesthesia records',
+          tableLabel: 'Operative and anaesthesia records',
           fqn: 'operationReports.laboratoryReport'
         },
         {
@@ -787,13 +786,13 @@ export default function () {
           fqn: 'operationReports.comments'
         }
       ],
-      recHeader: true,
-      generated: '2020-08-25T10:52:37-07:00',
+      generated: '2022-04-20T19:04:43-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
+          hasRecHeader: false,
           addButtonText: 'Add a report',
           ehr_list: [
             {
@@ -807,7 +806,7 @@ export default function () {
               ]
             },
             {
-              label: 'Operative reports and anaesthesia records',
+              label: 'Operative and anaesthesia records',
               ehr_list_index: '2',
               items: [
                 'laboratoryReport'
@@ -827,7 +826,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group11',
+                elementKey: 'ehr_group122',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -838,7 +837,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group12',
+                elementKey: 'ehr_group123',
                 gIndex: '2',
                 gChildren: [
                   'laboratoryReport',
