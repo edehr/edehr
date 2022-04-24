@@ -121,6 +121,10 @@ export default class EhrHelpV2 {
   }
 
   _canEdit () {
+    if(StoreHelper.isInstructor() && !StoreHelper.isSeedEditing()) {
+      // the instructor is evaluating student work. Do not allow edit of content.
+      return false
+    }
     let studentCanEdit = this._isActivityOpen() && this._isStudent() && !this._isSubmitted()
     return studentCanEdit || this._isDevelopingContent()
   }
