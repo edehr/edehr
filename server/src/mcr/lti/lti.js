@@ -119,7 +119,7 @@ export default class LTIController {
       return
     }
     // store the LTI data for further processing after setting up the user
-    var ltiData = (req.ltiData = _req.body)
+    const ltiData = (req.ltiData = _req.body)
     try {
       var consumerKey = ltiData['oauth_consumer_key']
       debug('strategyVerify find consumer by key ' + consumerKey)
@@ -127,44 +127,20 @@ export default class LTIController {
         .then(toolConsumer => {
           // Grave error to not have found a tool consumer
           if (!toolConsumer) {
-            let message = 'Unsupported consumer key ' + consumerKey
+            let message = Text.EdEHR_UNKNOWN_KEY(consumerKey)
             debug('strategyVerify ' + message)
-            return callback(_this._createParameterError(req.ltiData, message))
+            return callback(_this._createParameterError(ltiData, message))
           }
           req.toolConsumer = toolConsumer
           return toolConsumer
         })
         .then(() => {
-
           let debugLtiValidation = false
           let withDetailsCallback = undefined
-
           if (debugLtiValidation) {
             withDetailsCallback = function (details) {
               debug('LTI. Here are the details used to create the signature', details)
             }
-            /*
-            // mimic a little of what the provider does to verify the oauth signature
-            let secret = req.toolConsumer.oauth_consumer_secret
-            let {protocol} = req
-            if (req.headers['x-forwarded-proto'] ==='https') {
-              protocol = 'https'
-            }
-
-            let x_forwarded_proto = req.headers['x-forwarded-proto']
-            let originalUrl = req.originalUrl || req.url
-            let {encrypted} = req.connection
-            const parsedUrl = url.parse(originalUrl, true)
-            const hitUrl = protocol + '://' + req.headers.host + parsedUrl.pathname
-            console.log('req.url', req.url)
-            console.log('originalUrl', originalUrl)
-            console.log('x_forwarded_proto', x_forwarded_proto)
-            console.log('protocol', protocol)
-            console.log('encrypted', encrypted)
-            console.log('hitUrl', hitUrl)
-            console.log('req.toolConsumer.oauth_consumer_secret', secret)
-            console.log('ltiData.oauth_signature', ltiData.oauth_signature)
-            */
           }
           let secret = req.toolConsumer.oauth_consumer_secret
           let provider = new lti.Provider(ltiData, secret, null, null, withDetailsCallback)
@@ -172,11 +148,6 @@ export default class LTIController {
           provider.valid_request(_req, function (err, isValid) {
             if (err) {
               debug('strategyVerify lti provider verify send error: ' + err.message)
-              let detailsCallback = function (details) {
-                // console.log('LTI auth details', details)
-              }
-              let provider = new lti.Provider(ltiData, sec, null, null, detailsCallback)
-              provider.valid_request(_req, function (err, isValid) {})
               return callback(_this._createParameterError(req.ltiData, err.message), null)
             }
             // let userId = ltiData['user_id']

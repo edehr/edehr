@@ -1,5 +1,6 @@
 const should = require('should')
 const mongoose = require('mongoose')
+import { Text } from '../../config/text'
 import HMAC_SHA1 from 'ims-lti/src/hmac-sha1'
 import AssignmentController from '../assignment/assignment-controller'
 import ActivityController from '../activity/activity-controller'
@@ -14,7 +15,7 @@ import Helper from '../common/test-helper'
 import applicationConfiguration from '../../config/config'
 const configuration = applicationConfiguration('test')
 
-const debug = require('debug')('server')
+const debug = require('debug')('testing')
 const logError = require('debug')('error')
 const helper = new Helper()
 const act = new ActivityController()
@@ -141,21 +142,45 @@ describe('LTI controller testing', function () {
     done()
   })
 
-  it('invalid lti data', function (done) {
-    function expectErrorCallback (error) {
+  function makeErrCB(done, errName, errMsg) {
+    return function expectErrorCallback(error) {
       should.exist(error)
       error.should.have.property('name')
       error.should.have.property('message')
-      error.name.should.equal('AssignmentMismatchError')
-      // debug(error.message)
+      error.name.should.equal(errName)
+      error.message.should.equal(errMsg)
+      // debug('expectErrorCallback', error.message)
       done()
     }
+  }
+
+  it('invalid lti data no assignment', function (done) {
     let ltiData = Helper.sampleValidLtiData()
     delete ltiData.custom_assignment
-    let result = ltiController.validateLti(ltiData, expectErrorCallback)
-    should.fail(result)
-    done()
+    let result = ltiController.validateLti(ltiData, makeErrCB(done, 'AssignmentMismatchError', Text.EdEHR_REQUIRES_CUSTOM))
+    result.should.be.false
   })
+
+  it('invalid lti data must have consumer key', function (done) {
+    let ltiData = Helper.sampleValidLtiData()
+    delete ltiData.oauth_consumer_key
+    let result = ltiController.validateLti(ltiData, makeErrCB(done, 'ParameterError', Text.EdEHR_REQUIRES_KEY))
+    result.should.be.false
+  })
+
+  it('invalid lti data must resource_link_id', function (done) {
+    let ltiData = Helper.sampleValidLtiData()
+    delete ltiData.resource_link_id
+    let result = ltiController.validateLti(ltiData, makeErrCB(done, 'ParameterError', Text.EdEHR_REQUIRES_RESOURCE))
+    result.should.be.false
+  })
+  it('invalid lti data user_id', function (done) {
+    let ltiData = Helper.sampleValidLtiData()
+    delete ltiData.user_id
+    let result = ltiController.validateLti(ltiData, makeErrCB(done, 'ParameterError', Text.EdEHR_REQUIRES_USER))
+    result.should.be.false
+  })
+
 
   it('do a lti strategyVerify', () => {
     let externalId = 'test_assignment_id_1'
@@ -167,11 +192,10 @@ describe('LTI controller testing', function () {
         req.should.have.property('user')
         let user = req.user
         user.should.have.property('user_id')
-        debug('inside strategy verify callback', user.user_id)
+        // debug('inside strategy verify callback', user.user_id)
         user.user_id.should.equal(ltiData.user_id)
         req.should.have.property('toolConsumer')
         let toolConsumer = req.toolConsumer
-
         // verify the db has a new user
         return uc.findOne({
           $and: [{user_id: user.user_id}, {toolConsumer: toolConsumer._id}]
@@ -193,7 +217,9 @@ describe('LTI controller testing', function () {
       .then((req) => {
         return ltiController._postLtiChain(req)
           .then((req) => {
-            should.not.exist(req.ltiNextUrl)
+            should.exist(req.user)
+            should.exist(req.assignment.seedDataId)
+            should.exist(req.ltiNextUrl)
           })
           .catch(err => {
             should.exist(err)
@@ -210,44 +236,13 @@ describe('LTI controller testing', function () {
       .then((req) => {
         return ltiController._postLtiChain(req)
           .then((req) => {
-            debug('after post LIT')
             should.exist(req.user)
             should.exist(req.visit)
             should.exist(req.activity)
             should.exist(req.assignment)
             should.exist(req.assignment.seedDataId)
-            debug('req.user', req.user)
-            debug('req.visit', req.visit)
-            debug('req.assignment', req.assignment)
-
             let visit = req.visit
             visit.should.have.property('isStudent')
-            // should.be.true(user.isStudent)
-
-            /*
-      req.visit { isStudent: true,
-isInstructor: false,
-isDeveloper: false,
-_id: 5cf1a1bbecff4b38aae9eb6f,
-toolConsumer: 5cf1a1baecff4b38aae9eb6b,
-user: 5cf1a1bbecff4b38aae9eb6d,
-activity: 5cf1a1bbecff4b38aae9eb6e,
-assignment: 5cf1a1baecff4b38aae9eb6c,
-returnUrl: 'http://some.place.org',
-createDate: 2019-05-31T21:50:51.091Z,
-lastVisitDate: 2019-05-31T21:50:51.091Z,
-__v: 0,
-activityData:
-{ submitted: false,
- evaluated: false,
- _id: 5cf1a1bbecff4b38aae9eb70,
- toolConsumer: 5cf1a1baecff4b38aae9eb6b,
- visit: 5cf1a1bbecff4b38aae9eb6f,
- createDate: 2019-05-31T21:50:51.117Z,
- lastDate: 2019-05-31T21:50:51.117Z,
- __v: 0,
- id: '5cf1a1bbecff4b38aae9eb70' } }
-       */
           })
           .catch(err => {
             // debug('Error 1 .... ', err)
@@ -256,5 +251,33 @@ activityData:
       })
   })
 
+  it('lti _postLtiChain verify wrong secret', function () {
+    let externalId = 'test_assignment_id_1'
+    let ltiData = makeLtiData(0, externalId, /* as instructor */ true)
+    ltiData.resource_link_title = 'Test assignment'
+    ltiData.oauth_consumer_secret = 'wrong secret'
+    let req = makeReq(ltiData)
+    return strategyVerify(ltiController, req)
+      .then((req) => {
+        debug('ltiData', ltiData)
+        debug('her')
+        return ltiController._postLtiChain(req)
+          .then((req) => {
+            debug('req',req)
+            should.not.exist(req.user)
+          })
+          .catch(err => {
+            debug('Error inner .... ', err)
+            should.not.exist(err)
+          })
+      })
+      .catch(err => {
+        debug('Error 1 .... ', err.name, err.message)
+        should.exist(err)
+        err.should.have.property('name')
+        err.name.should.equal('ParameterError')
+        err.message.should.equal('Invalid Signature')
+      })
+  })
 
 })
