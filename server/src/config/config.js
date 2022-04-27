@@ -2,9 +2,17 @@
 import { Text } from './text'
 import moment from 'moment'
 
+import { version } from 'process'
+
+
 const debug = require('debug')('server')
 const details = require('debug')('details')
 const logError = require('debug')('error')
+
+debug(`Node Version: ${version}`)
+// get the application root package file reaching up outside of the server sub-project
+const appVersion = require('../../../package.json').version
+debug('Config setup found app version:', appVersion)
 
 const DEFAULT_COOKIE_SECRET = 'this is the secret for the session cookie'
 
@@ -14,6 +22,7 @@ const DEFAULT_COOKIE_SECRET = 'this is the secret for the session cookie'
 function defaultConfig (env) {
   return {
     adminPassword: process.env.ADMIN_PWORD,
+    appVersion: appVersion,
     apiToken: process.env.API_TOKEN,
     appTitle: process.env.APP_TITLE || 'Dev-Edehr',
     isDevelop: true,
