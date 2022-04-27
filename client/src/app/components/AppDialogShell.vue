@@ -164,11 +164,11 @@ export default {
   display: flex;
   flex-flow: row wrap;
   flex: 1 100%;
+  overflow-y: auto;
+  max-height: 95vh;
 }
 
 .dialog-body {
-  overflow-y: auto;
-  max-height: calc( 90vh - 20vh );
   padding: 1.5rem 2rem 2rem 2rem;
   margin-bottom: 4rem;
   background-color: $grey03;

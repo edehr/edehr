@@ -114,7 +114,6 @@ export default class Helper {
     }
   }
 
-
   static sampleAssignmentSpec (seedDataId, externalId, consumer) {
     // if empty use something that works and ObjectID
     let consumerId = consumer ? consumer._id : new ObjectID('56955ca46063c5600627f393')
@@ -235,7 +234,6 @@ export default class Helper {
     return model.save()
   }
 
-
   static createAssignment (externalId, seedId, consumer) {
     externalId = externalId || '59'
     seedId = seedId || '56955ca46063c5600627f393'
@@ -243,13 +241,10 @@ export default class Helper {
     return model.save()
   }
 
-
   static createActivity (consumer, assignment) {
     const model = new Activity(Helper.sampleActivity(consumer, assignment))
     return model.save()
   }
-
-
 
   static getUrlAuth (app, url, adminToken) {
     return supertest(app)
@@ -263,7 +258,6 @@ export default class Helper {
       .send({ adminPass })
       .set({ authorization: `Bearer ${token}`, 'Content-Type': 'application/json', Accept : 'application/json' })
   }
-
 
   static postUrlAuth (app, url, token, theData) {
     return supertest(app)

@@ -223,10 +223,11 @@ export function apiError (app, config) {
   function clientErrorHandler (err, req, res, next) {
     // import {AssignmentMismatchError, ParameterError, SystemError} from '../utils/errors'
     if (err.name === AssignmentMismatchError.NAME()) {
+      debug('API clientErrorHandler ', err.message, err.status, err.errorData, res.status)
       err.message += ' -- AssignmentMismatchError'
       let status = 400
-      res.status(status)
-      res.render('server-errors/error', {message: err.message, status: status, errorData: JSON.stringify(err.errorData)})
+      let json =  {message: err.message, status: status, errorData: JSON.stringify(errorData)}
+      res.status(status).json(json)
     } else {
       next(err)
     }
@@ -237,8 +238,8 @@ export function apiError (app, config) {
     let status = err.status || 500
     let errorData = err.errorData || {}
     let json =  {message: err.message, status: status, errorData: JSON.stringify(errorData)}
-    res.status = status
-    res.json(json)
+    debug('API errorHandler json', json)
+    res.status(status).json(json)
     // Returning a rendered html page is awkward for ajax clients. Return json and let the client decide how to format it.
     // res.render('server-errors/error',json)
   }

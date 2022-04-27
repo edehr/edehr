@@ -1,19 +1,37 @@
 import axios from 'axios'
 import StoreHelper from './store-helper'
 import InstoreHelper from '../store/modules/instoreHelper'
-// import router from '../router'
 
 const debugDC = true
 
-export default class DemoHelper {
-  constructor (apiUrl) {
-    this.apiUrl = apiUrl
+export function demoGoToEhr (toolKey, toolSecret, personaName, role, assignmentName, assignmentDescription, externalId, returnUrl) {
+  const submitData = {
+    assignmentName: assignmentName,
+    assignmentDescription: assignmentDescription,
+    externalId: externalId,
+    personaName: personaName,
+    personaRole: role,
+    returnUrl: returnUrl,
+    toolKey: toolKey,
+    secret: toolSecret
   }
+  if (debugDC) console.log('DemoCourse goto ehr with ', submitData)
+  StoreHelper.setLoading(null, true)
+  StoreHelper.submitPersona(submitData)
+    .then(({ url }) => {
+      StoreHelper.setLoading(null, false)
+      if (debugDC) console.log('DemoCourse goto url ', url)
+      window.location.replace(url)
+    }).catch(err => {
+      StoreHelper.setLoading(null, false)
+      StoreHelper.setApiError('An error occurred during the launch of the demonstration mode. ', err)
+    })
+}
 
+export default class DemoHelper {
   proceedDemoToolConsumerCreation () {
-
     StoreHelper.setLoading(null, true)
-    if(debugDC) console.log('Demo proceedDemoToolConsumerCreation')
+    if (debugDC) console.log('Demo proceedDemoToolConsumerCreation')
     return StoreHelper.createDemoToolConsumer()
       .then((demoToken) => {
         if (debugDC) console.log(`Demo consumer created. If have token? ${!!demoToken} go to demo`)
@@ -23,43 +41,18 @@ export default class DemoHelper {
         return StoreHelper.loadDemoData()
       })
       .catch(err => {
-        if(debugDC) console.log('createDemoToolConsumer Error', err)
+        if (debugDC) console.log('createDemoToolConsumer Error', err)
         let msg = err
         if (err.response) {
           msg = err.response.data.message
         }
         StoreHelper.setApiError(msg)
       })
-      .finally ( () => {
+      .finally(() => {
         StoreHelper.setLoading(null, false)
       })
   }
 
-
-  gotoEhr (demoData, demoPersona, selectedAssignment, returnUrl, switchRole = undefined) {
-    const persona = demoPersona
-    const submitData = {
-      assignmentName: selectedAssignment.name,
-      externalId: selectedAssignment.externalId,
-      personaName: persona.name,
-      personaEmail: persona.email,
-      personaRole: switchRole ? switchRole : persona.role,
-      returnUrl: returnUrl, // window.location.origin + this.$route.path, // come back to this LMS page
-      toolKey: demoData.toolConsumerKey
-    }
-    if (debugDC) console.log('DemoCourse goto ehr with ', submitData)
-    StoreHelper.setLoading(null, true)
-    StoreHelper.submitPersona(submitData)
-      .then(({url}) => {
-        StoreHelper.setLoading(null, false)
-        if (debugDC) console.log('DemoCourse goto url ', url)
-        // customRouter.push({ name: 'ehr', query: { evaluatingStudent: true, studentId: studentVisit._id } } http://localhost:28000/ehr?lti=student&token=eyJhb....
-        window.location.replace(url)
-      }).catch(err => {
-        StoreHelper.setLoading(null, false)
-        StoreHelper.setApiError('An error occurred during the launch of the demonstration mode. ', err)
-      })
-  }
   loadAssignments () {
     const token = StoreHelper.getDemoToken()
     const dd = StoreHelper.getDemoTokenData()
@@ -82,5 +75,4 @@ export default class DemoHelper {
         return list
       })
   }
-
 }
