@@ -1,6 +1,11 @@
 <template lang="pug">
   div(class="content")
-    h1(class="has-text-centered") Mock Course Nursing 101 - Intro to EHR
+    div(class="columns")
+      div(class="column is-10 is-offset-1 is-centered")
+        h1(class="has-text-centered") Nursing 101 - Intro to EHR
+      div(class="column is-2")
+        ui-button(v-on:buttonClicked="editMode = !editMode", :class="editButtonClass", title='Edit activity configuration')
+          fas-icon(icon="pen")
     section(class="columns")
 
       div(class="column is-3 aside")
@@ -15,30 +20,21 @@
               div(v-if='asStudent') When you click on an activity this 'instructor' will become a 'student' same as how Moodle allows users to switch roles.
           ul
             li
-              ui-button(v-on:buttonClicked="gotoChangeCharacter()", :secondary="true") Change to another persona
+              ui-button(v-on:buttonClicked="gotoChangeCharacter()", :secondary="true", title='Change to another persona') Change to another persona
 
         div(class="aside-section", v-text-to-html.noAutoLink="demoText.lmsAside")
       div(class="column is-8 is-offset-1 is-centered")
-        div(class="card")
-          div(class="card-content")
-            section(v-for="assignment in assignments", :key="`des-${assignment.externalId}`")
-              div
-                span(class="field-head") Activity: &nbsp;
-                span {{assignment.name}}
-              div
-                span(v-text-to-html="assignment.description", class="assignment-description")
-              div
-                span(class="field-head") Link to EdEHR: &nbsp;
-                span
-                  a(class="is-link", @click="gotoEhr(assignment)") {{assignment.name}}
-              hr
+
+        section(v-for="assignment in assignments", :key="`des-${assignment.externalId}`")
+          demo-course-activity(:assignment="assignment", :switch-role="asStudent", :edit-mode='editMode')
+          hr
 </template>
 
 <script>
 import StoreHelper from '../../helpers/store-helper'
+import DemoCourseActivity from '@/outside/views/DemoCourseActivity'
 import DemoHelper from '../../helpers/demo-helper'
 import UiButton from '../../app/ui/UiButton'
-import UiLink from '../../app/ui/UiLink.vue'
 import EventBus from '../../helpers/event-bus'
 import { PAGE_DATA_READY_EVENT } from '../../helpers/event-bus'
 import { demoText } from '@/appText'
@@ -47,17 +43,31 @@ const debugDC = false
 
 export default {
   components: {
-    UiButton, UiLink
+    UiButton, DemoCourseActivity
   },
   data () {
     return {
       asStudent: false,
       assignments: [],
-      demoText: demoText
+      demoText: demoText,
+      editMode: false
     }
   },
   computed: {
+    editButtonClass: function () {
+      return {
+        'is-light': this.editMode
+      }
+    },
     demoData () {
+      /* Sample data:
+      { "toolConsumerKey": "Demo-98098098-asda", "toolConsumerId": "5265820495c96c8eef7b2e3d",
+      "personaList": [ { "id": 1, "name": "Dorothea Dix", "email": "dorothea@edehr.org", "role": "instructor" },
+      { "id": 11, "name": "Lystra Eggert Gretter",  "role": "instructor" },
+      { "id": 2, "name": "Juliet Seton", "role": "student" },
+      { "id": 3, "name": "Roxanne Snow", "role": "student" },
+      { "id": 4, "name": "Carly Dixon",  "role": "student" } ] }
+       */
       return StoreHelper.getDemoTokenData()
     },
     demoPersona () {
@@ -67,13 +77,6 @@ export default {
   methods: {
     gotoChangeCharacter: function () {
       this.$router.push('/demo')
-    },
-    gotoEhr: function (selectedAssignment) {
-      const demoHelper = new DemoHelper()
-      const returnUrl = window.location.origin + this.$route.path // come back to this LMS page
-      // Go to EHR. This will result in a page change
-      const studentRole = this.asStudent ? 'student' : undefined
-      demoHelper.gotoEhr(this.demoData, this.demoPersona, selectedAssignment, returnUrl, studentRole)
     },
     loadAssignments: function () {
       const demoHelper = new DemoHelper()
@@ -115,9 +118,6 @@ export default {
 
 .content {
   font-size: 1.2rem;
-  /*width: 50%;*/
-  /*margin-left: auto;*/
-  /*margin-right: auto;*/
 }
 
 .aside {
@@ -125,24 +125,9 @@ export default {
     margin-bottom: 3rem;
   }
 }
-section {
-  margin-bottom: 1.5rem;
-}
-.assignment-description {
-  p {
-    font-size: 1.25rem;
-    margin-bottom: 0.6rem;
-  }
-}
 
-.field-head {
-  font-weight: bold;
-}
-.icon {
-  color: #0473ea;
-  margin: 0 1rem;
-  font-size: 1.9rem;
-  vertical-align: middle;
+section {
+  margin-bottom: 0.5rem;
 }
 
 </style>

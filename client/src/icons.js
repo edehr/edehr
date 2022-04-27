@@ -32,6 +32,7 @@ import {
   faNotesMedical,
   faPlus,
   faPrescription,
+  faPen,
   faStethoscope,
   faStickyNote,
   faTimes,
@@ -40,6 +41,7 @@ import {
   faUpload,
   faUserClock,
   faUserInjured,
+  faUndo,
   faBars
 } from '@fortawesome/free-solid-svg-icons'
 import { faFontAwesome, faCanadianMapleLeaf } from '@fortawesome/free-brands-svg-icons'
@@ -76,6 +78,7 @@ export default function (Vue) {
     faNotesMedical,
     faPlus,
     faPrescription,
+    faPen,
     faStethoscope,
     faStickyNote,
     faTimes,
@@ -84,7 +87,8 @@ export default function (Vue) {
     faUpload,
     faUserClock,
     faUserInjured,
-    faBars
+    faBars,
+    faUndo
   )
   library.add(
     faFontAwesome,

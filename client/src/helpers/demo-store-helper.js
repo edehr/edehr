@@ -50,9 +50,10 @@ export default class DemoStoreHelper {
   submitPersona (token, submitData) {
     const apiUrl = StoreHelper.apiUrlGet()
     const url = `${apiUrl}/demo/set`
-    const {assignmentName, externalId, personaName, personaEmail, personaRole, returnUrl, toolKey} = submitData
+    const {assignmentName, assignmentDescription, externalId, personaName, personaEmail, personaRole, returnUrl, toolKey, secret} = submitData
     const [ given, family ] = personaName.split(' ')
     let theKey = toolKey
+    let theSecret = secret
     let userId = theKey.slice(-5) + family + '-' + given
     const ltiData = {
       custom_assignment: externalId,
@@ -69,12 +70,13 @@ export default class DemoStoreHelper {
       lti_version: 'LTI-1p0',
       lti_message_type: 'basic-lti-launch-request',
       oauth_consumer_key: theKey,
-      oauth_consumer_secret: theKey,
+      oauth_consumer_secret: theSecret,
       oauth_nonce: Date.now() + Math.random() * 100,
       oauth_signature_method: 'HMAC-SHA1',
       oauth_timestamp: Math.round(Date.now() / 1000),
       roles: personaRole,
       resource_link_title: assignmentName,
+      resource_link_description: assignmentDescription,
       resource_link_id: externalId,
       tool_consumer_instance_guid: theKey,
       tool_consumer_instance_name: 'Demo LMS',

@@ -142,8 +142,8 @@ describe('LTI controller testing', function () {
     done()
   })
 
-  function makeErrCB(done, errName, errMsg) {
-    return function expectErrorCallback(error) {
+  function makeErrCB (done, errName, errMsg) {
+    return function expectErrorCallback (error) {
       should.exist(error)
       error.should.have.property('name')
       error.should.have.property('message')

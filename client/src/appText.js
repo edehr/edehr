@@ -58,7 +58,7 @@ export const demoText = {
     ' When you leave the demonstration all of your demonstration data is reset.' +
     ' Remember this instance of the EdEHR is a prototype and so the admin of this instance may need to reset the system at any time.',
   lmsAside:
-    ' This one page learning management system has assignments set to connect with the EdEHR. Some of these' +
+    ' This demonstration page provides a one-page learning management system with preconfigured assignments set to connect with the EdEHR. Some of these' +
     ' sample assignments are based on the open text-book <a href="https://pressbooks.bccampus.ca/healthcasestudies/">Health Case Studies - Toward Closing the Healthcare Communication Gap</a> by:  Glynda Rees, Rob Kruger, Janet Morrison.',
   login: {
     title: 'Try out the EdEHR',
