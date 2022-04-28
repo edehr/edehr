@@ -1,6 +1,6 @@
 <template lang="pug">
-  div(:class="css")
-    label(v-if="showLabel", v-html="label", :for="forElement")
+  div(:class="css", v-if="showLabel")
+    label(v-html="label", :for="forElement")
     ui-info(v-if="helperText", :title="label", :html="helperHtml", :text="helperText")
 </template>
 
@@ -26,6 +26,8 @@ export default {
   methods: {
     setupCommon () {
       const element = this.element
+      // only show the label if there is label content and the configuration permits it
+      // this.showLabel = !(element.formOption === 'hideLabel') && element.label
       this.showLabel = !(element.formOption === 'hideLabel')
       this.label = element.label
       this.helperText = element.helperText

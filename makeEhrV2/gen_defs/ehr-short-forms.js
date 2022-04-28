@@ -17,13 +17,13 @@ const Defs = {
     },
     {
       elementKey: 'day',
-      inputType: 'day',
+      inputType: 'visitDay',
       label: 'Day',
       recHeader: true
     },
     {
       elementKey: 'time',
-      inputType: 'time',
+      inputType: 'visitTime',
       label: 'Time',
       validation: 'time24',
       recHeader: true
@@ -102,17 +102,15 @@ class EhrShortFormHelper {
   }
 
   withCheckBoxTextSpacer (entry, postEntries, defs) {
-    // console.log('preprocess input with date ', entry)
+    // console.log('withCheckBoxTextSpacer entry', entry)
     let toAdd = JSON.parse(JSON.stringify(defs))
+    // console.log('withCheckBoxTextSpacer toAdd', toAdd)
     let main = toAdd[0]
     let text = toAdd[1]
     let spacer = toAdd[2]
-    let dataCaseStudy = entry.dataCaseStudy
     main.elementKey = entry.elementKey
-    main.dataCaseStudy = !!dataCaseStudy
+    main.helperText = entry.helperText
     text.elementKey = entry.elementKey + 'Text'
-    text.dataCaseStudy = dataCaseStudy
-    spacer.dataCaseStudy = undefined
     toAdd.forEach((e) => {
       e.pN = entry.pN
       e.fN = entry.fN
@@ -121,8 +119,8 @@ class EhrShortFormHelper {
       e.tableColumn = entry.tableColumn
       e.label = entry.label
       e.tableLabel = entry.tableLabel
-      // e.dataCaseStudy = entry.dataCaseStudy
       // e.formOption = entry.formOption
+      // console.log('withCheckBoxTextSpacer push e', e)
       postEntries.push(e)
     })
   }

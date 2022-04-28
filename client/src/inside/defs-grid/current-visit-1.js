@@ -10,16 +10,18 @@ export default function () {
       pageChildren: [
         {
           elementKey: 'admissionDay',
+          defaultValue: '0',
           formIndex: '1',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Admission day',
           mandatory: true,
           fqn: 'visit.admissionDay'
         },
         {
           elementKey: 'admissionTime',
+          defaultValue: '0.375',
           formIndex: '1',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'Admission time',
           mandatory: true,
           fqn: 'visit.admissionTime'
@@ -100,7 +102,7 @@ export default function () {
         {
           elementKey: 'transferInDay',
           formIndex: '2',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Transfer in day',
           tableColumn: '2',
           fqn: 'visit.transferInDay'
@@ -108,7 +110,7 @@ export default function () {
         {
           elementKey: 'transferInTime',
           formIndex: '2',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'Transfer in time',
           tableColumn: '3',
           fqn: 'visit.transferInTime'
@@ -122,7 +124,7 @@ export default function () {
         {
           elementKey: 'transferOutDay',
           formIndex: '2',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Transfer out day',
           tableColumn: '4',
           fqn: 'visit.transferOutDay'
@@ -130,13 +132,13 @@ export default function () {
         {
           elementKey: 'transferOutTime',
           formIndex: '2',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'Transfer out time',
           tableColumn: '5',
           fqn: 'visit.transferOutTime'
         }
       ],
-      generated: '2022-04-20T19:04:43-07:00',
+      generated: '2022-04-22T10:27:54-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -164,9 +166,9 @@ export default function () {
             }
           ]
         },
-        table: {
-          elementKey: 'table',
-          tableKey: 'table',
+        locations: {
+          elementKey: 'locations',
+          tableKey: 'locations',
           isTable: true,
           hasRecHeader: false,
           addButtonText: 'Add a patient location',
@@ -204,9 +206,9 @@ export default function () {
             }
           ],
           form: {
-            elementKey: 'table',
+            elementKey: 'locations',
             addButtonText: 'Add a patient location',
-            formKey: 'table',
+            formKey: 'locations',
             ehr_groups: [
               {
                 elementKey: 'ehr_group30',
@@ -268,7 +270,7 @@ export default function () {
         {
           elementKey: 'day',
           formIndex: '1',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Day',
           tableColumn: '1',
           recHeader: true,
@@ -277,7 +279,7 @@ export default function () {
         {
           elementKey: 'time',
           formIndex: '1',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'Time',
           tableColumn: '1',
           validation: 'time24',
@@ -527,7 +529,7 @@ export default function () {
           fqn: 'vitals.cvp'
         }
       ],
-      generated: '2022-04-20T19:04:43-07:00',
+      generated: '2022-04-22T10:27:54-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -751,7 +753,7 @@ export default function () {
         {
           elementKey: 'day',
           formIndex: '1',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Day',
           tableColumn: '1',
           recHeader: true,
@@ -760,7 +762,7 @@ export default function () {
         {
           elementKey: 'time',
           formIndex: '1',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'Time',
           tableColumn: '1',
           validation: 'time24',
@@ -786,7 +788,7 @@ export default function () {
           fqn: 'fluidBalance.fluidOut'
         }
       ],
-      generated: '2022-04-20T19:04:43-07:00',
+      generated: '2022-04-22T10:27:54-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -886,7 +888,7 @@ export default function () {
         {
           elementKey: 'day',
           formIndex: '1',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Day',
           tableColumn: '1',
           recHeader: true,
@@ -895,7 +897,7 @@ export default function () {
         {
           elementKey: 'time',
           formIndex: '1',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'Time',
           tableColumn: '1',
           validation: 'time24',
@@ -1703,7 +1705,7 @@ export default function () {
           fqn: 'neurological.strokeAssessmentCalculation'
         }
       ],
-      generated: '2022-04-20T19:04:43-07:00',
+      generated: '2022-04-22T10:27:54-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2101,7 +2103,7 @@ export default function () {
         {
           elementKey: 'day',
           formIndex: '1',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Day',
           tableColumn: '1',
           recHeader: true,
@@ -2110,7 +2112,7 @@ export default function () {
         {
           elementKey: 'time',
           formIndex: '1',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'Time',
           tableColumn: '1',
           validation: 'time24',
@@ -2482,7 +2484,7 @@ export default function () {
           fqn: 'respiratory.generalComments'
         }
       ],
-      generated: '2022-04-20T19:04:43-07:00',
+      generated: '2022-04-22T10:27:54-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2720,7 +2722,7 @@ export default function () {
         {
           elementKey: 'day',
           formIndex: '1',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Day',
           tableColumn: '1',
           recHeader: true,
@@ -2729,7 +2731,7 @@ export default function () {
         {
           elementKey: 'time',
           formIndex: '1',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'Time',
           tableColumn: '1',
           validation: 'time24',
@@ -3261,7 +3263,7 @@ export default function () {
           fqn: 'cardiovascular.comments'
         }
       ],
-      generated: '2022-04-20T19:04:43-07:00',
+      generated: '2022-04-22T10:27:54-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -3555,7 +3557,7 @@ export default function () {
         {
           elementKey: 'day',
           formIndex: '1',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Day',
           tableColumn: '1',
           recHeader: true,
@@ -3564,7 +3566,7 @@ export default function () {
         {
           elementKey: 'time',
           formIndex: '1',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'Time',
           tableColumn: '1',
           validation: 'time24',
@@ -3850,7 +3852,7 @@ export default function () {
         {
           elementKey: 'npoSinceDay',
           formIndex: '1',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'NPO since day',
           tableColumn: '12',
           tableLabel: 'NPO since day',
@@ -3859,7 +3861,7 @@ export default function () {
         {
           elementKey: 'npoSinceTime',
           formIndex: '1',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'NPO since time',
           tableColumn: '13',
           tableLabel: 'NPO since time',
@@ -3985,7 +3987,7 @@ export default function () {
           fqn: 'gastrointestinal.comments'
         }
       ],
-      generated: '2022-04-20T19:04:43-07:00',
+      generated: '2022-04-22T10:27:54-07:00',
       pageElements: {
         table: {
           elementKey: 'table',

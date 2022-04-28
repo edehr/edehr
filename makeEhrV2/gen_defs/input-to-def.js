@@ -105,7 +105,6 @@ class RawInputToDef {
    */
   getDefinitions (contents, lastModifiedTime) {
     let entries = rawHelper._rawToEntries(contents, mlFields)
-    // TODO see https://github.com/BCcampus/edehr/issues/809
     entries = this._preprocessEntries(entries)
     entries = this._validateEntries(entries)
     let pages = this._groupByPages(entries)

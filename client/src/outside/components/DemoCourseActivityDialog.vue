@@ -8,43 +8,42 @@
             span Activity Name
             ui-info(title="Activity Name", :text="documentation.assignmentName")
           div(class="column is-4")
-            input(class="input text-input", type="text", v-model="submistData.assignmentName", v-validate="nameValidate")
+            input(class="input text-input", type="text", v-model="submitData.assignmentName", v-validate="nameValidate")
         div(class="columns")
           div(class="column is-3")
             span Activity Description
             ui-info(title="Activity Description", :text="documentation.assignmentName")
           div(class="column is-9")
-            textarea( v-model="submistData.assignmentDescription")
+            textarea( v-model="submitData.assignmentDescription")
         div(class="columns")
           div(class="column is-3")
             span Learning Object Id
             ui-info(title="Learning Object Id", :text="documentation.externalId")
           div(class="column is-4")
-            input(class="input text-input", type="text", v-model="submistData.externalId", v-validate="externalValidate")
+            input(class="input text-input", type="text", v-model="submitData.externalId", v-validate="externalValidate")
         div(class="columns")
           div(class="column is-3")
             span Consumer key
             ui-info(title="Consumer key", :text="documentation.consumerKey")
           div(class="column is-4")
-            input(class="input text-input", type="text", v-model="submistData.consumerKey", v-validate="cKeyValidate")
+            input(class="input text-input", type="text", v-model="submitData.consumerKey", v-validate="cKeyValidate")
         div(class="columns")
           div(class="column is-3")
             span Consumer secret
             ui-info(title="Consumer secret", :text="documentation.consumerSecret")
           div(class="column is-4")
-            input(class="input text-input", type="text", v-model="submistData.consumerSecret", v-validate="cSecretValidate")
+            input(class="input text-input", type="text", v-model="submitData.consumerSecret", v-validate="cSecretValidate")
         div(class="columns")
           div(class="column is-3")
             span Tool URL
             ui-info(title="Tool Url", :text="documentation.toolUrl")
           div(class="column is-4")
-            input(class="input text-input", type="text", v-model="submistData.toolUrl" disabled)
+            input(class="input text-input", type="text", v-model="submitData.toolUrl" disabled)
 </template>
 
 <script>
 import AppDialog from '../../app/components/AppDialogShell'
 import UiInfo from '@/app/ui/UiInfo'
-import StoreHelper from '@/helpers/store-helper'
 
 const ERRORS = {
   NAME_REQUIRED: 'Activity name is required',
@@ -57,7 +56,7 @@ const ERRORS = {
 export default {
   data () {
     return {
-      submistData: {
+      submitData: {
         assignmentName: '',
         externalId: '',
         assignmentDescription: '',
@@ -79,7 +78,7 @@ export default {
         'course creation team at each learning institution. In this demonstration mode you can try modifying the key and/or the secret. ' +
         'This will break the connection yet you can explore how this error condition will appear to you and your users.',
       externalId: 'This is the id of the EdEHR learning object. The person who configures the external tool in the learning' +
-        ' management will enter "assignment=' +  this.submistData.externalId + '"',
+        ' management will enter "assignment=' +  this.submitData.externalId + '"',
       toolUrl: 'The tool url is the address of the LTI end point on the EdEHR server. In this demonstration mode this url is fixed and is ' +
         'shown here to demonstrate what it looks like.  This url is composed of the domain name of your EdEHR server plus "api/launch_lti". ' +
         'LTI stands for Learning Tools Interoperability and this is the way your LMS (learning management system such as Moodle or D2L) communicates ' +
@@ -87,20 +86,20 @@ export default {
     }
     },
     nameValidate () {
-      return this.submistData.assignmentName.trim() ? undefined : ERRORS.NAME_REQUIRED
+      return this.submitData.assignmentName.trim() ? undefined : ERRORS.NAME_REQUIRED
     },
     cKeyValidate () {
-      return this.submistData.consumerKey.trim() ? undefined : ERRORS.CONSUMER_KEY
+      return this.submitData.consumerKey.trim() ? undefined : ERRORS.CONSUMER_KEY
     },
     cSecretValidate () {
-      return this.submistData.consumerSecret.trim() ? undefined : ERRORS.CONSUMER_SECRET
+      return this.submitData.consumerSecret.trim() ? undefined : ERRORS.CONSUMER_SECRET
     },
     externalValidate () {
-      if (!this.submistData.externalId) {
+      if (!this.submitData.externalId) {
         return ERRORS.ID_REQUIRED
       }
       let re = /^[0-9a-zA-Z\-_\.]*$/
-      if (!this.submistData.externalId.match(re)) {
+      if (!this.submitData.externalId.match(re)) {
         return ERRORS.ID_PATTERN
       }
       return undefined
@@ -118,7 +117,7 @@ export default {
   },
   methods: {
     showDialog (assignmentData, resetCallback, saveCallback) {
-      this.submistData = assignmentData
+      this.submitData = assignmentData
       this.resetCallback = resetCallback
       this.saveCallback = saveCallback
       this.$refs.theDialog.onOpen()

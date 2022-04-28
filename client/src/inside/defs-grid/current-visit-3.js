@@ -29,7 +29,7 @@ export default function () {
         {
           elementKey: 'day',
           formIndex: '1',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Day',
           tableColumn: '1',
           recHeader: true,
@@ -38,7 +38,7 @@ export default function () {
         {
           elementKey: 'time',
           formIndex: '1',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'Time',
           tableColumn: '1',
           validation: 'time24',
@@ -80,7 +80,7 @@ export default function () {
         {
           elementKey: 'dateRequired',
           formIndex: '1',
-          inputType: 'date',
+          inputType: 'visitDay',
           label: 'Date required',
           tableColumn: '6',
           fqn: 'labRequisitions.dateRequired'
@@ -320,7 +320,7 @@ export default function () {
           fqn: 'labRequisitions.histologyLocation'
         }
       ],
-      generated: '2022-04-21T14:57:44-07:00',
+      generated: '2022-04-22T10:27:54-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -442,7 +442,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group1',
+                elementKey: 'ehr_group112',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [

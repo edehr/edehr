@@ -29,7 +29,7 @@ export default function () {
         {
           elementKey: 'day',
           formIndex: '1',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Day',
           tableColumn: '1',
           recHeader: true,
@@ -38,7 +38,7 @@ export default function () {
         {
           elementKey: 'time',
           formIndex: '1',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'Time',
           tableColumn: '1',
           validation: 'time24',
@@ -91,7 +91,7 @@ export default function () {
         {
           elementKey: 'lastVoidedDay',
           formIndex: '1',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Last voided day',
           tableColumn: '3',
           tableLabel: 'Last voided day',
@@ -100,7 +100,7 @@ export default function () {
         {
           elementKey: 'lastVoidedTime',
           formIndex: '1',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'Last voided time',
           tableColumn: '4',
           tableLabel: 'Last voided time',
@@ -270,12 +270,22 @@ export default function () {
         {
           elementKey: 'lastChange',
           formIndex: '1',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Last catheter change (day)',
-          tableColumn: '12',
+          tableColumn: '11',
           tableCss: 'hr-table',
           tableLabel: 'Last catheter change (day)',
           fqn: 'genitourinary.lastChange'
+        },
+        {
+          elementKey: 'lastChangeTime',
+          formIndex: '1',
+          inputType: 'visitTime',
+          label: 'Last catheter change (time)',
+          tableColumn: '12',
+          tableCss: 'hr-table',
+          tableLabel: 'Last catheter change (time)',
+          fqn: 'genitourinary.lastChangeTime'
         },
         {
           elementKey: 'pelvicPain',
@@ -435,7 +445,7 @@ export default function () {
           fqn: 'genitourinary.comments'
         }
       ],
-      generated: '2022-04-20T19:04:43-07:00',
+      generated: '2022-04-22T10:27:54-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -521,15 +531,16 @@ export default function () {
               label: 'Size',
               ehr_list_index: '11',
               items: [
-                'foleySize'
+                'foleySize',
+                'lastChange'
               ]
             },
             {
-              label: 'Last catheter change (day)',
+              label: 'Last catheter change (time)',
               tableCss: 'hr-table',
               ehr_list_index: '12',
               items: [
-                'lastChange'
+                'lastChangeTime'
               ]
             },
             {
@@ -654,7 +665,8 @@ export default function () {
                   'foley',
                   'foleyType',
                   'foleySize',
-                  'lastChange'
+                  'lastChange',
+                  'lastChangeTime'
                 ]
               },
               {
@@ -717,6 +729,7 @@ export default function () {
               foleyType: '',
               foleySize: '',
               lastChange: '',
+              lastChangeTime: '',
               pelvicPain: '',
               location: '',
               pelvicPainSource: '',
@@ -762,7 +775,7 @@ export default function () {
         {
           elementKey: 'day',
           formIndex: '1',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Day',
           tableColumn: '1',
           recHeader: true,
@@ -771,7 +784,7 @@ export default function () {
         {
           elementKey: 'time',
           formIndex: '1',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'Time',
           tableColumn: '1',
           validation: 'time24',
@@ -1033,7 +1046,7 @@ export default function () {
           fqn: 'musculoskeletal.comments'
         }
       ],
-      generated: '2022-04-20T19:04:43-07:00',
+      generated: '2022-04-22T10:27:54-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1224,7 +1237,7 @@ export default function () {
         {
           elementKey: 'day',
           formIndex: '1',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Day',
           tableColumn: '1',
           recHeader: true,
@@ -1233,7 +1246,7 @@ export default function () {
         {
           elementKey: 'time',
           formIndex: '1',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'Time',
           tableColumn: '1',
           validation: 'time24',
@@ -1410,7 +1423,7 @@ export default function () {
           fqn: 'pain.comments'
         }
       ],
-      generated: '2022-04-20T19:04:43-07:00',
+      generated: '2022-04-22T10:27:54-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1671,7 +1684,7 @@ export default function () {
         {
           elementKey: 'day',
           formIndex: '1',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Day',
           tableColumn: '1',
           recHeader: true,
@@ -1680,7 +1693,7 @@ export default function () {
         {
           elementKey: 'time',
           formIndex: '1',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'Time',
           tableColumn: '1',
           validation: 'time24',
@@ -1951,7 +1964,7 @@ export default function () {
         {
           elementKey: 'restraintDay',
           formIndex: '1',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Day',
           tableColumn: '16',
           tableLabel: 'Day',
@@ -1960,7 +1973,7 @@ export default function () {
         {
           elementKey: 'restraintTime',
           formIndex: '1',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'Time',
           tableColumn: '17',
           tableLabel: 'Time',
@@ -1987,7 +2000,7 @@ export default function () {
           fqn: 'biopsychosocial.generalComments'
         }
       ],
-      generated: '2022-04-20T19:04:43-07:00',
+      generated: '2022-04-22T10:27:54-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2286,7 +2299,7 @@ export default function () {
         {
           elementKey: 'day',
           formIndex: '1',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Day',
           tableColumn: '1',
           recHeader: true,
@@ -2295,7 +2308,7 @@ export default function () {
         {
           elementKey: 'time',
           formIndex: '1',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'Time',
           tableColumn: '1',
           validation: 'time24',
@@ -2374,7 +2387,7 @@ export default function () {
           fqn: 'nonmedOrders.comment'
         }
       ],
-      generated: '2022-04-20T19:04:43-07:00',
+      generated: '2022-04-22T10:27:54-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2508,7 +2521,7 @@ export default function () {
         {
           elementKey: 'day',
           formIndex: '1',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Day',
           tableColumn: '1',
           recHeader: true,
@@ -2517,7 +2530,7 @@ export default function () {
         {
           elementKey: 'time',
           formIndex: '1',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'Time',
           tableColumn: '1',
           validation: 'time24',
@@ -2560,7 +2573,7 @@ export default function () {
         {
           elementKey: 'appointmentTime',
           formIndex: '1',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'Appointment time',
           tableColumn: '5',
           tableLabel: 'Appointment time',
@@ -2586,7 +2599,7 @@ export default function () {
           fqn: 'referrals.status'
         }
       ],
-      generated: '2022-04-20T19:04:43-07:00',
+      generated: '2022-04-22T10:27:54-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2714,7 +2727,7 @@ export default function () {
         {
           elementKey: 'day',
           formIndex: '1',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Day',
           tableColumn: '1',
           recHeader: true,
@@ -2723,7 +2736,7 @@ export default function () {
         {
           elementKey: 'time',
           formIndex: '1',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'Time',
           tableColumn: '1',
           validation: 'time24',
@@ -2799,7 +2812,7 @@ export default function () {
         {
           elementKey: 'startMeds',
           formIndex: '1',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Start day',
           tableColumn: '5',
           tableLabel: 'Start day',
@@ -2808,7 +2821,7 @@ export default function () {
         {
           elementKey: 'endMeds',
           formIndex: '1',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'End day',
           tableColumn: '6',
           tableCss: 'hr-table',
@@ -2980,7 +2993,7 @@ export default function () {
           fqn: 'medicationOrders.notes'
         }
       ],
-      generated: '2022-04-20T19:04:43-07:00',
+      generated: '2022-04-22T10:27:54-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -3357,7 +3370,7 @@ export default function () {
           helperHtml: '<p>Enter time delivered or say if not delivered.</p>'
         }
       ],
-      generated: '2022-04-20T19:04:43-07:00',
+      generated: '2022-04-22T10:27:54-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -3555,14 +3568,14 @@ export default function () {
         {
           elementKey: 'dischargeDay',
           formIndex: '2',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Discharge day',
           fqn: 'dischargeSummary.dischargeDay'
         },
         {
           elementKey: 'dischargeTime',
           formIndex: '2',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'Discharge time',
           fqn: 'dischargeSummary.dischargeTime'
         },
@@ -3620,7 +3633,7 @@ export default function () {
           fqn: 'dischargeSummary.leavingBy'
         }
       ],
-      generated: '2022-04-20T19:04:43-07:00',
+      generated: '2022-04-22T10:27:54-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -3691,7 +3704,7 @@ export default function () {
           fqn: 'billing.paymentType'
         }
       ],
-      generated: '2022-04-20T19:04:43-07:00',
+      generated: '2022-04-22T10:27:54-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -3738,7 +3751,7 @@ export default function () {
         {
           elementKey: 'day',
           formIndex: '1',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Day',
           tableColumn: '1',
           recHeader: true,
@@ -3747,7 +3760,7 @@ export default function () {
         {
           elementKey: 'time',
           formIndex: '1',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'Time',
           tableColumn: '1',
           validation: 'time24',
@@ -3863,7 +3876,7 @@ export default function () {
         {
           elementKey: 'postOpDay',
           formIndex: '1',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Post Operative Day',
           tableColumn: '4',
           fqn: 'integumentaryAssessment.postOpDay'
@@ -3948,7 +3961,7 @@ export default function () {
         {
           elementKey: 'day',
           formIndex: '2',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Day',
           tableColumn: '1',
           recHeader: true,
@@ -3957,7 +3970,7 @@ export default function () {
         {
           elementKey: 'time',
           formIndex: '2',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'Time',
           tableColumn: '1',
           validation: 'time24',
@@ -4167,7 +4180,7 @@ export default function () {
         {
           elementKey: 'day',
           formIndex: '3',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Day',
           tableColumn: '1',
           recHeader: true,
@@ -4176,7 +4189,7 @@ export default function () {
         {
           elementKey: 'time',
           formIndex: '3',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'Time',
           tableColumn: '1',
           validation: 'time24',
@@ -4292,7 +4305,7 @@ export default function () {
         {
           elementKey: 'woundDayOnset',
           formIndex: '3',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Wound day of onset',
           tableColumn: '4',
           tableLabel: 'Wound day of onset',
@@ -4444,7 +4457,7 @@ export default function () {
         {
           elementKey: 'day',
           formIndex: '4',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Day',
           tableColumn: '1',
           recHeader: true,
@@ -4453,7 +4466,7 @@ export default function () {
         {
           elementKey: 'time',
           formIndex: '4',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'Time',
           tableColumn: '1',
           validation: 'time24',
@@ -5717,7 +5730,7 @@ export default function () {
           fqn: 'integumentaryAssessment.woundAssessmentComments'
         }
       ],
-      generated: '2022-04-20T19:04:43-07:00',
+      generated: '2022-04-22T10:27:54-07:00',
       pageElements: {
         tableIncision: {
           elementKey: 'tableIncision',
