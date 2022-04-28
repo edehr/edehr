@@ -96,7 +96,7 @@ Other}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 Have you used any tobacco products in the last 7 days?}"	eCell
 {inputType: checkbox_text_spacer}	eCell	{Label: Cannabis use}	eCell	{elementKey: cannabisUse}	{pN: 4}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{helperText: Have you used any cannabis products in the last 6 months?
 Have you used any cannabis products in the last 7 days?}"	eCell
-{inputType: checkbox_text_spacer}	eCell	{Label: Alcohol use}	eCell	{elementKey: alcoholUse}	{pN: 4}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{helperText: CAGE questionaire
+{inputType: checkbox_text_spacer}	eCell	{Label: Alcohol use}	eCell	{elementKey: alcoholUse}	{pN: 4}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{helperText: CAGE questionnaire
 Have you ever felt that you should cut down on your drinking?
 Have you ever become annoyed by criticisms of your drinking?
 Have you ever felt guilty about your drinking?
@@ -107,13 +107,12 @@ If so, make notes about which ones.}"	eCell
 {inputType: page}	{pRef: 8}	{Label: Surgical history}	eCell	{elementKey: surgical}	{pN: 5}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: table_form}	eCell	{Label: Previous surgeries}	eCell	{elementKey: pastSurgery}	{pN: 5}	{fN: 1}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	{addButtonText: Add a previous surgery}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	{elementKey: pastSurgery}	{pN: 5}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Date}	eCell	{elementKey: pastSurgeryDate}	{pN: 5}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Performing physician}	eCell	{elementKey: physician}	{pN: 5}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Surgery/procedure}	eCell	{elementKey: procedure}	{pN: 5}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Time Since}	eCell	{elementKey: timeSince}	{pN: 5}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 4}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Performing physician}	eCell	{elementKey: physician}	{pN: 5}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Surgery/procedure}	eCell	{elementKey: procedure}	{pN: 5}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Time Since}	eCell	{elementKey: timeSince}	{pN: 5}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: Describe when this happened prior to current visit. E.g. 6 years ago}	eCell
 {inputType: table_form}	eCell	{Label: Previous appointments}	eCell	{elementKey: previous}	{pN: 5}	{fN: 2}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	{addButtonText: Add a previous appointment}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	{elementKey: previous}	{pN: 5}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Date}	eCell	{elementKey: previousAdmissionsDate}	{pN: 5}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Date}	eCell	{elementKey: previousAdmissionsDate}	{pN: 5}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: Describe when this happened prior to current visit. E.g. 1 month ago}	eCell
 {inputType: text}	eCell	{Label: Appointment with}	eCell	{elementKey: with}	{pN: 5}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Appointment details}	eCell	{elementKey: details}	{pN: 5}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Previous appointment reason}	eCell	{elementKey: previousAdmissions}	{pN: 5}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 4}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell

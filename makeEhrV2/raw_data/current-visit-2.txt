@@ -652,7 +652,7 @@ Skipped}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: page}	{pRef: 32}	{Label: Discharge summary}	eCell	{elementKey: dischargeSummary}	{pN: 27}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: page_form}	eCell	eCell	eCell	{elementKey: pageForm}	{pN: 27}	{fN: 1}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 27}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Admission day}	eCell	{elementKey: admissionDay}	{pN: 27}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: visitDay}	eCell	{Label: Admission day}	eCell	{elementKey: admissionDay}	{pN: 27}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Default_value: 0}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Discharging physician/NP}	eCell	{elementKey: dischargingPhysician/np}	{pN: 27}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Options: Dr. Notley
 Dr. Hunicutt
 Dr. Lee
