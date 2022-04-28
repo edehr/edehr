@@ -119,7 +119,13 @@ export default {
      
       let defVal = EhrDefs.getDefaultValue(this.pageDataKey, this.elementKey)
       value = value || defVal
-      
+      if (this.elementKey === 'admissionDay') {
+        // The admissionDay field may have "Day x" content from a time when this field accepted plain text.
+        // The field now requires the visit day, a number 0,1,2,3,4
+        // TODO Create a more general way to transform ehr content when structure changes
+        console.log(`In EhrElementCommon transforming admissionDay "${value}"`)
+        value = value.replace(/Day (\d)/, '$1')
+      }
       if (dbPage || dbInputs) console.log('EhrCommon page data is ready', this.elementKey, value)
       this.setInitialValue(value)
     },
