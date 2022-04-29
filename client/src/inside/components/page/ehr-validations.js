@@ -35,6 +35,15 @@ export default {
       }
     }
   },
+  numeric: function (fieldName, value) {
+    // console.log('in number validator', fieldName, value)
+    if (value) {
+      const valid = validNumberStr(value)
+      if (!valid) {
+        return `${fieldName} must be a numeric value`
+      }
+    }
+  },
   /**
    * Central Venous Pressure. A measure of the flow through the heart.  Expect a value between 0 and 30.
    * @param fieldName: the name of the input field for error messages
