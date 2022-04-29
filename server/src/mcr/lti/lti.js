@@ -143,6 +143,7 @@ export default class LTIController {
             }
           }
           let secret = req.toolConsumer.oauth_consumer_secret
+          debug('strategyVerify secret', secret)
           let provider = new lti.Provider(ltiData, secret, null, null, withDetailsCallback)
           if (debugFine) debug('strategyVerify validate msg with provider')
           provider.valid_request(_req, function (err, isValid) {
@@ -266,13 +267,13 @@ export default class LTIController {
     let role = new Role(req.ltiData.roles)
     let toolConsumer = req.toolConsumer
     let toolConsumerId = toolConsumer._id
-    // console.log('in locate learning object with ', toolConsumerId, externalId)
+    debug('locateAssignment with toolConsumerId, externalId', toolConsumerId, externalId)
     return this.assignmentController.locateAssignmentForStudent(externalId, toolConsumerId)
       .then(assignment => {
         if (!assignment) {
           if (role.isStudent) {
             let msg = Text.EdEHR_ASSIGNMENT_MISMATCH(toolConsumer.oauth_consumer_key, externalId)
-            debug('locateAssignment ' + msg)
+            debug('locateAssignment not found for student role return error: ' + msg)
             throw this._createAssignmentMismatchError(req.ltiData, msg)
           }
           let ltiData = req.ltiData
@@ -285,6 +286,7 @@ export default class LTIController {
             externalId: externalId,
             toolConsumer: toolConsumer
           }
+          debug('locateAssignment not found so create', aAssignment)
           return _this.assignmentController.createAssignment(aAssignment)
         }
         return assignment

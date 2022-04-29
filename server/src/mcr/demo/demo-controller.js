@@ -151,7 +151,9 @@ export default class DemoController {
       })
       .catch(err => {
         logError(`DC.submitLtiData caught >> ${err.message}`)
-        res.status(500).send(err)
+        let { status, data } = err.response
+        // console.log('DC.submitLtiData', data)
+        res.status(status).send(data)
       })
   }
 
