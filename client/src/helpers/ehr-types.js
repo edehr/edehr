@@ -17,13 +17,15 @@ const EhrTypes = {
     calculatedValue: 'calculatedValue',
     checkset: 'checkset',
     date: 'date',
-    day: 'day',
+    // day: 'day',
     ehrFile: 'ehrFile',
     text: 'text',
     textarea: 'textarea',
-    time: 'time',
+    // time: 'time',
     lookahead: 'lookahead',
-    number: 'number'
+    number: 'number',
+    visitDay: 'visitDay',
+    visitTime: 'visitTime'
   },
   dependentOn: {
     splitActionKeyOn: ':',

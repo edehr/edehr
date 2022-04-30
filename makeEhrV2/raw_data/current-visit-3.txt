@@ -7,7 +7,7 @@
 {inputType: text}	eCell	{Label: PHN}	{Comments: get this from demographics}	{elementKey: patientHealthNumber}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: DOB}	{Comments: get this from demographics}	{elementKey: dateOfBirth}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 4}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Location}	{Comments: get this from location}	{elementKey: location}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 5}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: date}	eCell	{Label: Date required}	{Comments: day selector}	{elementKey: dateRequired}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 6}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: visitDay}	eCell	{Label: Date required}	{Comments: day selector}	{elementKey: dateRequired}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 6}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Reason test is required}	eCell	{elementKey: reason}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 7}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: checkset}	eCell	{Label: Hematology}	eCell	{elementKey: hematology}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 8}	eCell	eCell	eCell	eCell	"{Options: CBC
 CBC with differential

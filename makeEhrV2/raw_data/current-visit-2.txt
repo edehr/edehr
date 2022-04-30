@@ -11,8 +11,8 @@ Oliguria
 Incontinence
 Retention
 Distention}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: day}	eCell	{Label: Last voided day}	eCell	{elementKey: lastVoidedDay}	{pN: 18}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Last voided day}	{tableColumn: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: time}	eCell	{Label: Last voided time}	eCell	{elementKey: lastVoidedTime}	{pN: 18}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Last voided time}	{tableColumn: 4}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: visitDay}	eCell	{Label: Last voided day}	eCell	{elementKey: lastVoidedDay}	{pN: 18}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Last voided day}	{tableColumn: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: visitTime}	eCell	{Label: Last voided time}	eCell	{elementKey: lastVoidedTime}	{pN: 18}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Last voided time}	{tableColumn: 4}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Urine colour}	eCell	{elementKey: colour}	{pN: 18}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Urine colour}	{tableColumn: 5}	eCell	eCell	eCell	eCell	"{Options: Pale yellow
 Dark yellow
 Amber
@@ -37,7 +37,8 @@ Indwelling catheter}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 No}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Type }	{Comments: Change to drop down box with two options (urethral or suprapubic)}	{elementKey: foleyType}	{pN: 18}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Type }	{tableColumn: 10}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: eg. indwelling catheter}	eCell
 {inputType: text}	eCell	{Label: Size}	eCell	{elementKey: foleySize}	{pN: 18}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Size}	{tableColumn: 11}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: day}	eCell	{Label: Last catheter change (day)}	{Comments: added 'day'}	{elementKey: lastChange}	{pN: 18}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Last catheter change (day)}	{tableColumn: 12}	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: visitDay}	eCell	{Label: Last catheter change (day)}	{Comments: added 'day'}	{elementKey: lastChange}	{pN: 18}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Last catheter change (day)}	{tableColumn: 11}	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: visitTime}	eCell	{Label: Last catheter change (time)}	eCell	{elementKey: lastChangeTime}	{pN: 18}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Last catheter change (time)}	{tableColumn: 12}	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	{Label: Pelvic}	{Comments: Consider renaming or regrouping into a Reproductive page or table. Also consider adding a male reproducive system. This work needs to wait until EdEHR can manage seed versions}	{elementKey: pelvicGroup}	{pN: 18}	{fN: 1}	{gN: 4}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Pelvic pain}	{Comments: ALL Pelvic, Vaginal, Preg, categorized to Gynecology?}	{elementKey: pelvicPain}	{pN: 18}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Pelvic pain}	{tableColumn: 13}	eCell	eCell	eCell	eCell	"{Options: Yes
 No}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
@@ -125,7 +126,7 @@ Leg (Right)
 Foot (Left)
 Foot (Right)
 }"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: day}	eCell	{Label: Post Operative Day}	eCell	{elementKey: postOpDay}	{pN: 42}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 4}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: visitDay}	eCell	{Label: Post Operative Day}	eCell	{elementKey: postOpDay}	{pN: 42}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 4}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Operative Procedure}	eCell	{elementKey: opProcedure}	{pN: 42}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 5}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: checkset}	eCell	{Label: Closure Method}	eCell	{elementKey: closureMethod}	{pN: 42}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 6}	eCell	eCell	eCell	eCell	"{Options: Sutures
 Staples
@@ -194,7 +195,7 @@ Foot (Right)
 Wound B
 Wound C
 Wound D}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: day}	eCell	{Label: Wound day of onset}	eCell	{elementKey: woundDayOnset}	{pN: 42}	{fN: 3}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Wound day of onset}	{tableColumn: 4}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: visitDay}	eCell	{Label: Wound day of onset}	eCell	{elementKey: woundDayOnset}	{pN: 42}	{fN: 3}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Wound day of onset}	{tableColumn: 4}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	{elementKey: woundTypeGroup}	{pN: 42}	{fN: 3}	{gN: 3}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: checkset}	eCell	{Label: Wound Etiology/Type}	{Comments: other is not yet working in the app}	{elementKey: stageType}	{pN: 42}	{fN: 3}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Wound Etiology/Type}	{tableColumn: 5}	eCell	eCell	eCell	eCell	"{Options: stage1:=Pressure Injury Stage 1
 stage2:=Pressure Injury Stage 2
@@ -552,8 +553,8 @@ Other}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	{Label: Restraint}	eCell	{elementKey: restraint}	{pN: 21}	{fN: 1}	{gN: 8}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Patient restrained}	eCell	{elementKey: patientRestrained}	{pN: 21}	{fN: 1}	{gN: 8}	{sgN: }	eCell	eCell	{tableLabel: Patient restrained}	{tableColumn: 15}	eCell	eCell	eCell	eCell	"{Options: Yes
 No}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: day}	eCell	{Label: Day}	eCell	{elementKey: restraintDay}	{pN: 21}	{fN: 1}	{gN: 8}	{sgN: }	eCell	eCell	{tableLabel: Day}	{tableColumn: 16}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: time}	eCell	{Label: Time}	eCell	{elementKey: restraintTime}	{pN: 21}	{fN: 1}	{gN: 8}	{sgN: }	eCell	eCell	{tableLabel: Time}	{tableColumn: 17}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: visitDay}	eCell	{Label: Day}	eCell	{elementKey: restraintDay}	{pN: 21}	{fN: 1}	{gN: 8}	{sgN: }	eCell	eCell	{tableLabel: Day}	{tableColumn: 16}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: visitTime}	eCell	{Label: Time}	eCell	{elementKey: restraintTime}	{pN: 21}	{fN: 1}	{gN: 8}	{sgN: }	eCell	eCell	{tableLabel: Time}	{tableColumn: 17}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: textarea}	eCell	{Label: Restraint comments}	eCell	{elementKey: restraintComments}	{pN: 21}	{fN: 1}	{gN: 8}	{sgN: }	{formCss: grid-span-2-columns}	eCell	{tableLabel: Restraint comments}	{tableColumn: 18}	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 21}	{fN: 1}	{gN: 9}	{sgN: }	{formCss: grid-left-to-right-1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: textarea}	eCell	{Label: General comments}	eCell	{elementKey: generalComments}	{pN: 21}	{fN: 1}	{gN: 9}	{sgN: }	eCell	eCell	{tableLabel: General comments}	{tableColumn: 19}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
@@ -581,7 +582,7 @@ Discontinued}"	eCell	{Mandatory: ?}	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Referral profession}	eCell	{elementKey: referralProfession}	{pN: 23}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Referral profession}	{tableColumn: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: spacer}	eCell	eCell	eCell	eCell	{pN: 23}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: date}	eCell	{Label: Appointment date}	eCell	{elementKey: appointmentDate}	{pN: 23}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Appointment date}	{tableColumn: 4}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: time}	eCell	{Label: Appointment time}	eCell	{elementKey: appointmentTime}	{pN: 23}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Appointment time}	{tableColumn: 5}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: visitTime}	eCell	{Label: Appointment time}	eCell	{elementKey: appointmentTime}	{pN: 23}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Appointment time}	{tableColumn: 5}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Status}	eCell	{elementKey: status}	{pN: 23}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Status}	{tableColumn: 6}	eCell	eCell	eCell	eCell	"{Options: Active
 Discharged}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: page}	{pRef: 30}	{Label: Medication orders}	eCell	{elementKey: medicationOrders}	{pN: 25}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
@@ -600,8 +601,8 @@ Vaginal
 Intravenous
 Intramuscular
 Subcutaneous}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: day}	eCell	{Label: Start day}	eCell	{elementKey: startMeds}	{pN: 25}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Start day}	{tableColumn: 5}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: day}	eCell	{Label: End day}	eCell	{elementKey: endMeds}	{pN: 25}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: End day}	{tableColumn: 6}	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: visitDay}	eCell	{Label: Start day}	eCell	{elementKey: startMeds}	{pN: 25}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Start day}	{tableColumn: 5}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: visitDay}	eCell	{Label: End day}	eCell	{elementKey: endMeds}	{pN: 25}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: End day}	{tableColumn: 6}	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	{elementKey: adminGroup}	{pN: 25}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Administration}	eCell	{elementKey: administration}	{pN: 25}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Administration}	{tableColumn: 7}	eCell	eCell	eCell	{Default_value: sched}	"{Options: sched := Scheduled
 prn := PRN (as needed)
@@ -651,7 +652,7 @@ Skipped}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: page}	{pRef: 32}	{Label: Discharge summary}	eCell	{elementKey: dischargeSummary}	{pN: 27}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: page_form}	eCell	eCell	eCell	{elementKey: pageForm}	{pN: 27}	{fN: 1}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 27}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Admission day}	eCell	{elementKey: admissionDay}	{pN: 27}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: visitDay}	eCell	{Label: Admission day}	eCell	{elementKey: admissionDay}	{pN: 27}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Default_value: 0}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Discharging physician/NP}	eCell	{elementKey: dischargingPhysician/np}	{pN: 27}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Options: Dr. Notley
 Dr. Hunicutt
 Dr. Lee
@@ -666,8 +667,8 @@ Dr. Brooks}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: textarea}	eCell	{Label: Discharge diagnosis}	eCell	{elementKey: dischargeDiagnosis}	{pN: 27}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: textarea}	eCell	{Label: Discharge education}	eCell	{elementKey: dischargeEducation}	{pN: 27}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: spacer}	eCell	eCell	eCell	eCell	{pN: 27}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: day}	eCell	{Label: Discharge day}	eCell	{elementKey: dischargeDay}	{pN: 27}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: time}	eCell	{Label: Discharge time}	eCell	{elementKey: dischargeTime}	{pN: 27}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: visitDay}	eCell	{Label: Discharge day}	eCell	{elementKey: dischargeDay}	{pN: 27}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: visitTime}	eCell	{Label: Discharge time}	eCell	{elementKey: dischargeTime}	{pN: 27}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Discharged to}	eCell	{elementKey: dischargedTo}	{pN: 27}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	"{Options: Home
 Expired
 Transferred}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell

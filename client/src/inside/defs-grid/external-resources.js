@@ -143,7 +143,7 @@ export default function () {
           fqn: 'assessmentTools.medication1_1'
         }
       ],
-      generated: '2022-04-20T19:04:43-07:00',
+      generated: '2022-04-22T10:27:54-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -151,7 +151,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
-              elementKey: 'ehr_group124',
+              elementKey: 'ehr_group140',
               gIndex: '1',
               gChildren: [
                 {
@@ -245,7 +245,7 @@ export default function () {
           fqn: 'codeLookup.icf'
         }
       ],
-      generated: '2022-04-20T19:04:43-07:00',
+      generated: '2022-04-22T10:27:54-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -253,7 +253,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
-              elementKey: 'ehr_group125',
+              elementKey: 'ehr_group141',
               gIndex: '1',
               gChildren: [
                 'snomed',
@@ -293,7 +293,7 @@ export default function () {
         {
           elementKey: 'day',
           formIndex: '1',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Day',
           tableColumn: '1',
           recHeader: true,
@@ -302,7 +302,7 @@ export default function () {
         {
           elementKey: 'time',
           formIndex: '1',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'Time',
           tableColumn: '1',
           validation: 'time24',
@@ -389,7 +389,7 @@ export default function () {
           fqn: 'diagnosticCodes.cluster'
         }
       ],
-      generated: '2022-04-20T19:04:43-07:00',
+      generated: '2022-04-22T10:27:54-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -457,7 +457,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group126',
+                elementKey: 'ehr_group142',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -468,7 +468,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group127',
+                elementKey: 'ehr_group143',
                 gIndex: '2',
                 gChildren: [
                   'icd10',
@@ -525,7 +525,7 @@ export default function () {
         {
           elementKey: 'day',
           formIndex: '1',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Day',
           tableColumn: '1',
           recHeader: true,
@@ -534,7 +534,7 @@ export default function () {
         {
           elementKey: 'time',
           formIndex: '1',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'Time',
           tableColumn: '1',
           validation: 'time24',
@@ -578,7 +578,7 @@ export default function () {
           fqn: 'interventionCodes.extent'
         }
       ],
-      generated: '2022-04-20T19:04:43-07:00',
+      generated: '2022-04-22T10:27:54-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -632,7 +632,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group128',
+                elementKey: 'ehr_group144',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -643,7 +643,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group129',
+                elementKey: 'ehr_group145',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '2',
                 gChildren: [
@@ -703,7 +703,7 @@ export default function () {
         {
           elementKey: 'day',
           formIndex: '1',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Day',
           tableColumn: '1',
           recHeader: true,
@@ -712,7 +712,7 @@ export default function () {
         {
           elementKey: 'time',
           formIndex: '1',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'Time',
           tableColumn: '1',
           validation: 'time24',
@@ -765,7 +765,7 @@ export default function () {
           fqn: 'caseMixGroup.analysis'
         }
       ],
-      generated: '2022-04-20T19:04:43-07:00',
+      generated: '2022-04-22T10:27:54-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -826,7 +826,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group130',
+                elementKey: 'ehr_group146',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -837,7 +837,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group131',
+                elementKey: 'ehr_group147',
                 gIndex: '2',
                 gChildren: [
                   'clinicalCategory',

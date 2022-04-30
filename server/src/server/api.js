@@ -226,7 +226,7 @@ export function apiError (app, config) {
       debug('API clientErrorHandler ', err.message, err.status, err.errorData, res.status)
       err.message += ' -- AssignmentMismatchError'
       let status = 400
-      let json =  {message: err.message, status: status, errorData: JSON.stringify(errorData)}
+      let json =  {message: err.message, status: status, errorData: JSON.stringify(err.errorData)}
       res.status(status).json(json)
     } else {
       next(err)

@@ -29,7 +29,7 @@ export default function () {
         {
           elementKey: 'day',
           formIndex: '1',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Day',
           tableColumn: '1',
           recHeader: true,
@@ -38,7 +38,7 @@ export default function () {
         {
           elementKey: 'time',
           formIndex: '1',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'Time',
           tableColumn: '1',
           validation: 'time24',
@@ -55,7 +55,7 @@ export default function () {
           fqn: 'progressNotes.note'
         }
       ],
-      generated: '2022-04-21T14:50:56-07:00',
+      generated: '2022-04-22T10:27:54-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -88,7 +88,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group1',
+                elementKey: 'ehr_group113',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -99,7 +99,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group2',
+                elementKey: 'ehr_group114',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '2',
                 gChildren: [
@@ -147,7 +147,7 @@ export default function () {
         {
           elementKey: 'day',
           formIndex: '1',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Day',
           tableColumn: '1',
           recHeader: true,
@@ -156,7 +156,7 @@ export default function () {
         {
           elementKey: 'time',
           formIndex: '1',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'Time',
           tableColumn: '1',
           validation: 'time24',
@@ -219,7 +219,7 @@ export default function () {
           fqn: 'carePlan.status'
         }
       ],
-      generated: '2022-04-21T14:50:56-07:00',
+      generated: '2022-04-22T10:27:54-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -280,7 +280,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group3',
+                elementKey: 'ehr_group115',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -291,7 +291,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group4',
+                elementKey: 'ehr_group116',
                 gIndex: '2',
                 gChildren: [
                   'clinical',
@@ -346,7 +346,7 @@ export default function () {
         {
           elementKey: 'day',
           formIndex: '1',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Day',
           tableColumn: '1',
           recHeader: true,
@@ -355,7 +355,7 @@ export default function () {
         {
           elementKey: 'time',
           formIndex: '1',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'Time',
           tableColumn: '1',
           validation: 'time24',
@@ -381,7 +381,7 @@ export default function () {
           fqn: 'consults.comments'
         }
       ],
-      generated: '2022-04-21T14:50:56-07:00',
+      generated: '2022-04-22T10:27:54-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -421,7 +421,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group5',
+                elementKey: 'ehr_group117',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -432,7 +432,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group6',
+                elementKey: 'ehr_group118',
                 gIndex: '2',
                 gChildren: [
                   'consultReport',
@@ -481,7 +481,7 @@ export default function () {
         {
           elementKey: 'day',
           formIndex: '1',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Day',
           tableColumn: '1',
           recHeader: true,
@@ -490,7 +490,7 @@ export default function () {
         {
           elementKey: 'time',
           formIndex: '1',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'Time',
           tableColumn: '1',
           validation: 'time24',
@@ -516,7 +516,7 @@ export default function () {
           fqn: 'labResults.comments'
         }
       ],
-      generated: '2022-04-21T14:50:56-07:00',
+      generated: '2022-04-22T10:27:54-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -556,7 +556,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group7',
+                elementKey: 'ehr_group119',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -567,7 +567,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group8',
+                elementKey: 'ehr_group120',
                 gIndex: '2',
                 gChildren: [
                   'laboratoryReport',
@@ -616,7 +616,7 @@ export default function () {
         {
           elementKey: 'day',
           formIndex: '1',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Day',
           tableColumn: '1',
           recHeader: true,
@@ -625,7 +625,7 @@ export default function () {
         {
           elementKey: 'time',
           formIndex: '1',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'Time',
           tableColumn: '1',
           validation: 'time24',
@@ -651,7 +651,7 @@ export default function () {
           fqn: 'medicalImaging.comments'
         }
       ],
-      generated: '2022-04-21T14:50:56-07:00',
+      generated: '2022-04-22T10:27:54-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -691,7 +691,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group9',
+                elementKey: 'ehr_group121',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -702,7 +702,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group10',
+                elementKey: 'ehr_group122',
                 gIndex: '2',
                 gChildren: [
                   'laboratoryReport',
@@ -751,7 +751,7 @@ export default function () {
         {
           elementKey: 'day',
           formIndex: '1',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Day',
           tableColumn: '1',
           recHeader: true,
@@ -760,7 +760,7 @@ export default function () {
         {
           elementKey: 'time',
           formIndex: '1',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'Time',
           tableColumn: '1',
           validation: 'time24',
@@ -786,7 +786,7 @@ export default function () {
           fqn: 'operationReports.comments'
         }
       ],
-      generated: '2022-04-21T14:50:56-07:00',
+      generated: '2022-04-22T10:27:54-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -826,7 +826,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group11',
+                elementKey: 'ehr_group123',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -837,7 +837,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group12',
+                elementKey: 'ehr_group124',
                 gIndex: '2',
                 gChildren: [
                   'laboratoryReport',
@@ -886,7 +886,7 @@ export default function () {
         {
           elementKey: 'day',
           formIndex: '1',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Day',
           tableColumn: '1',
           recHeader: true,
@@ -895,7 +895,7 @@ export default function () {
         {
           elementKey: 'time',
           formIndex: '1',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'Time',
           tableColumn: '1',
           validation: 'time24',
@@ -929,7 +929,7 @@ export default function () {
         {
           elementKey: 'dateOfTest',
           formIndex: '1',
-          inputType: 'date',
+          inputType: 'visitDay',
           label: 'Date of test',
           tableColumn: '5',
           fqn: 'hemotology.dateOfTest'
@@ -937,7 +937,7 @@ export default function () {
         {
           elementKey: 'timeOfTest',
           formIndex: '1',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'Time of test',
           tableColumn: '6',
           fqn: 'hemotology.timeOfTest'
@@ -1062,7 +1062,7 @@ export default function () {
         {
           elementKey: 'day',
           formIndex: '2',
-          inputType: 'day',
+          inputType: 'visitDay',
           label: 'Day',
           tableColumn: '1',
           recHeader: true,
@@ -1071,7 +1071,7 @@ export default function () {
         {
           elementKey: 'time',
           formIndex: '2',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'Time',
           tableColumn: '1',
           validation: 'time24',
@@ -1105,7 +1105,7 @@ export default function () {
         {
           elementKey: 'dateOfReview',
           formIndex: '2',
-          inputType: 'date',
+          inputType: 'visitDay',
           label: 'Date of review',
           tableColumn: '5',
           fqn: 'hemotology.dateOfReview'
@@ -1113,7 +1113,7 @@ export default function () {
         {
           elementKey: 'timeOfReview',
           formIndex: '2',
-          inputType: 'time',
+          inputType: 'visitTime',
           label: 'Time of review',
           tableColumn: '6',
           fqn: 'hemotology.timeOfReview'
@@ -1795,7 +1795,7 @@ export default function () {
           fqn: 'hemotology.explain'
         }
       ],
-      generated: '2022-04-21T14:50:56-07:00',
+      generated: '2022-04-22T10:27:54-07:00',
       pageElements: {
         tableAnalysis: {
           elementKey: 'tableAnalysis',
@@ -1917,7 +1917,7 @@ export default function () {
             formKey: 'tableAnalysis',
             ehr_groups: [
               {
-                elementKey: 'ehr_group13',
+                elementKey: 'ehr_group125',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -1928,7 +1928,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group14',
+                elementKey: 'ehr_group126',
                 gIndex: '2',
                 gChildren: [
                   'patientName',
@@ -1939,7 +1939,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group15',
+                elementKey: 'ehr_group127',
                 label: 'Analysis',
                 gIndex: '3',
                 gChildren: [
@@ -1956,7 +1956,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group16',
+                elementKey: 'ehr_group128',
                 gIndex: '4',
                 gChildren: [
                   'comments'
@@ -2447,7 +2447,7 @@ export default function () {
             formKey: 'tableReview',
             ehr_groups: [
               {
-                elementKey: 'ehr_group17',
+                elementKey: 'ehr_group129',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -2458,7 +2458,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group18',
+                elementKey: 'ehr_group130',
                 gIndex: '2',
                 gChildren: [
                   'patientName',
@@ -2469,7 +2469,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group19',
+                elementKey: 'ehr_group131',
                 label: 'Analysis',
                 gIndex: '3',
                 gChildren: [
@@ -2477,7 +2477,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group20',
+                elementKey: 'ehr_group132',
                 label: 'Actions',
                 gIndex: '4',
                 gChildren: [
@@ -2487,7 +2487,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group21',
+                elementKey: 'ehr_group133',
                 label: 'WBC Estimate',
                 gIndex: '5',
                 gChildren: [
@@ -2510,7 +2510,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group22',
+                elementKey: 'ehr_group134',
                 label: 'PLT Estimate',
                 gIndex: '6',
                 gChildren: [
@@ -2534,7 +2534,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group23',
+                elementKey: 'ehr_group135',
                 label: 'WBC Differential',
                 gIndex: '7',
                 gChildren: [
@@ -2555,7 +2555,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group24',
+                elementKey: 'ehr_group136',
                 label: 'White Cell Morphology',
                 gIndex: '8',
                 gChildren: [
@@ -2566,7 +2566,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group25',
+                elementKey: 'ehr_group137',
                 label: 'Red Cell Morphology',
                 gIndex: '9',
                 gChildren: [
@@ -2589,7 +2589,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group26',
+                elementKey: 'ehr_group138',
                 gIndex: '10',
                 gChildren: [
                   'mcvMchcInterpretation',
@@ -2597,7 +2597,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group27',
+                elementKey: 'ehr_group139',
                 gIndex: '11',
                 gChildren: [
                   'referralToHema',

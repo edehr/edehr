@@ -422,7 +422,7 @@ export default function () {
           fqn: 'demographics.decisionMakerPhone'
         }
       ],
-      generated: '2022-04-20T19:04:43-07:00',
+      generated: '2022-04-28T08:55:26-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -505,7 +505,7 @@ export default function () {
           fqn: 'allergies.text'
         }
       ],
-      generated: '2022-04-20T19:04:43-07:00',
+      generated: '2022-04-28T08:55:26-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -540,7 +540,7 @@ export default function () {
           fqn: 'medical.history'
         }
       ],
-      generated: '2022-04-20T19:04:43-07:00',
+      generated: '2022-04-28T08:55:26-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -648,9 +648,11 @@ export default function () {
         {
           elementKey: 'tobaccoUse',
           formIndex: '1',
+          helperText: 'Have you used any tobacco products in the last 6 months?\nHave you used any tobacco products in the last 7 days?',
           inputType: 'checkbox',
           label: 'Tobacco use',
-          fqn: 'psychosocial.tobaccoUse'
+          fqn: 'psychosocial.tobaccoUse',
+          helperHtml: '<p>Have you used any tobacco products in the last 6 months?</p>\n<p>Have you used any tobacco products in the last 7 days?</p>'
         },
         {
           elementKey: 'tobaccoUseText',
@@ -670,9 +672,11 @@ export default function () {
         {
           elementKey: 'cannabisUse',
           formIndex: '1',
+          helperText: 'Have you used any cannabis products in the last 6 months?\nHave you used any cannabis products in the last 7 days?',
           inputType: 'checkbox',
           label: 'Cannabis use',
-          fqn: 'psychosocial.cannabisUse'
+          fqn: 'psychosocial.cannabisUse',
+          helperHtml: '<p>Have you used any cannabis products in the last 6 months?</p>\n<p>Have you used any cannabis products in the last 7 days?</p>'
         },
         {
           elementKey: 'cannabisUseText',
@@ -692,9 +696,11 @@ export default function () {
         {
           elementKey: 'alcoholUse',
           formIndex: '1',
+          helperText: 'CAGE questionnaire\nHave you ever felt that you should cut down on your drinking?\nHave you ever become annoyed by criticisms of your drinking?\nHave you ever felt guilty about your drinking?\nHave you ever had a morning eye opener to get rid of a hangover?',
           inputType: 'checkbox',
           label: 'Alcohol use',
-          fqn: 'psychosocial.alcoholUse'
+          fqn: 'psychosocial.alcoholUse',
+          helperHtml: '<p>CAGE questionnaire</p>\n<p>Have you ever felt that you should cut down on your drinking?</p>\n<p>Have you ever become annoyed by criticisms of your drinking?</p>\n<p>Have you ever felt guilty about your drinking?</p>\n<p>Have you ever had a morning eye opener to get rid of a hangover?</p>'
         },
         {
           elementKey: 'alcoholUseText',
@@ -714,9 +720,11 @@ export default function () {
         {
           elementKey: 'substanceUse',
           formIndex: '1',
+          helperText: 'Have you used any substances in the last 6 months?\nHave you used any substances in the last 7 days?\nIf so, make notes about which ones.',
           inputType: 'checkbox',
           label: 'Substance use',
-          fqn: 'psychosocial.substanceUse'
+          fqn: 'psychosocial.substanceUse',
+          helperHtml: '<p>Have you used any substances in the last 6 months?</p>\n<p>Have you used any substances in the last 7 days?</p>\n<p>If so, make notes about which ones.</p>'
         },
         {
           elementKey: 'substanceUseText',
@@ -734,7 +742,7 @@ export default function () {
           fqn: 'psychosocial.spacer13'
         }
       ],
-      generated: '2022-04-20T19:04:43-07:00',
+      generated: '2022-04-28T08:55:26-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -788,19 +796,11 @@ export default function () {
       hasGridTable: true,
       pageChildren: [
         {
-          elementKey: 'pastSurgeryDate',
-          formIndex: '1',
-          inputType: 'text',
-          label: 'Date',
-          tableColumn: '1',
-          fqn: 'surgical.pastSurgeryDate'
-        },
-        {
           elementKey: 'physician',
           formIndex: '1',
           inputType: 'text',
           label: 'Performing physician',
-          tableColumn: '2',
+          tableColumn: '1',
           fqn: 'surgical.physician'
         },
         {
@@ -808,24 +808,28 @@ export default function () {
           formIndex: '1',
           inputType: 'text',
           label: 'Surgery/procedure',
-          tableColumn: '3',
+          tableColumn: '2',
           fqn: 'surgical.procedure'
         },
         {
           elementKey: 'timeSince',
           formIndex: '1',
+          helperText: 'Describe when this happened prior to current visit. E.g. 6 years ago',
           inputType: 'text',
           label: 'Time Since',
-          tableColumn: '4',
-          fqn: 'surgical.timeSince'
+          tableColumn: '3',
+          fqn: 'surgical.timeSince',
+          helperHtml: '<p>Describe when this happened prior to current visit. E.g. 6 years ago</p>'
         },
         {
           elementKey: 'previousAdmissionsDate',
           formIndex: '2',
+          helperText: 'Describe when this happened prior to current visit. E.g. 1 month ago',
           inputType: 'text',
           label: 'Date',
           tableColumn: '1',
-          fqn: 'surgical.previousAdmissionsDate'
+          fqn: 'surgical.previousAdmissionsDate',
+          helperHtml: '<p>Describe when this happened prior to current visit. E.g. 1 month ago</p>'
         },
         {
           elementKey: 'with',
@@ -860,7 +864,7 @@ export default function () {
           fqn: 'surgical.comments'
         }
       ],
-      generated: '2022-04-20T19:04:43-07:00',
+      generated: '2022-04-28T08:55:26-07:00',
       pageElements: {
         pastSurgery: {
           elementKey: 'pastSurgery',
@@ -873,23 +877,17 @@ export default function () {
             {
               ehr_list_index: '1',
               items: [
-                'pastSurgeryDate'
+                'physician'
               ]
             },
             {
               ehr_list_index: '2',
               items: [
-                'physician'
-              ]
-            },
-            {
-              ehr_list_index: '3',
-              items: [
                 'procedure'
               ]
             },
             {
-              ehr_list_index: '4',
+              ehr_list_index: '3',
               items: [
                 'timeSince'
               ]
@@ -905,7 +903,6 @@ export default function () {
                 elementKey: 'pastSurgery',
                 gIndex: '1',
                 gChildren: [
-                  'pastSurgeryDate',
                   'physician',
                   'procedure',
                   'timeSince'
@@ -913,7 +910,6 @@ export default function () {
               }
             ],
             ehr_data: {
-              pastSurgeryDate: '',
               physician: '',
               procedure: '',
               timeSince: ''
@@ -1211,7 +1207,7 @@ export default function () {
           fqn: 'immunization.spacer25'
         }
       ],
-      generated: '2022-04-20T19:04:43-07:00',
+      generated: '2022-04-28T08:55:26-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -1273,7 +1269,7 @@ export default function () {
           fqn: 'familyHistory.history'
         }
       ],
-      generated: '2022-04-20T19:04:43-07:00',
+      generated: '2022-04-28T08:55:26-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -1316,7 +1312,7 @@ export default function () {
           fqn: 'careTeam.profession'
         }
       ],
-      generated: '2022-04-20T19:04:43-07:00',
+      generated: '2022-04-28T08:55:26-07:00',
       pageElements: {
         teams: {
           elementKey: 'teams',
@@ -1432,7 +1428,7 @@ export default function () {
           fqn: 'pastAppointments.diagnosis'
         }
       ],
-      generated: '2022-04-20T19:04:43-07:00',
+      generated: '2022-04-28T08:55:26-07:00',
       pageElements: {
         encounters: {
           elementKey: 'encounters',
