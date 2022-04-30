@@ -2,7 +2,7 @@ import axios from 'axios'
 import StoreHelper from './store-helper'
 import InstoreHelper from '../store/modules/instoreHelper'
 
-const debugDC = true
+const debugDC = false
 
 export function demoGoToEhr (toolKey, toolSecret, personaName, role, assignmentName, assignmentDescription, externalId, returnUrl) {
   const submitData = {
@@ -24,7 +24,8 @@ export function demoGoToEhr (toolKey, toolSecret, personaName, role, assignmentN
       window.location.replace(url)
     }).catch(err => {
       StoreHelper.setLoading(null, false)
-      StoreHelper.setApiError('An error occurred during the launch of the demonstration mode. ', err)
+      let msg = err.message || 'An error occurred during the launch of the demonstration mode.'
+      StoreHelper.setApiError(msg)
     })
 }
 

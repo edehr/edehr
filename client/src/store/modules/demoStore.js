@@ -124,11 +124,6 @@ const actions = {
   submitPersona: function (none, submitData) {
     const token = _getDemoToken()
     return _getHelper().submitPersona(token, submitData)
-      .then(res => {
-        return Promise.resolve(res.data)
-      }).catch(err => {
-        return Promise.reject(err)
-      })
   },
   setDemoToken: function (none, demoToken) {
     _setDemoToken(demoToken)

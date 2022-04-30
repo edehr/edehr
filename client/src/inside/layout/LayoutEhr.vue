@@ -64,9 +64,9 @@ export default {
       return StoreHelper.isLoading()
     },
   },
-  mounted: function () {
-    console.log('LayoutEhr mounted')
-  },
+  // mounted: function () {
+  //   console.log('LayoutEhr mounted')
+  // },
   watch: {
     showingSpecial: function (flag) {
       StoreHelper.setShowAdvanced(flag)

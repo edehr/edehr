@@ -96,6 +96,13 @@ export default class DemoStoreHelper {
       url,
     }
     return axios(options)
+      .then(res => {
+        return Promise.resolve(res.data)
+      }).catch(err => {
+        // extract the error data provided by the api
+        return Promise.reject(err.response.data)
+      })
+
   }
   
 }

@@ -47,7 +47,7 @@ export default new Vuex.Store({
 })
 
 export function initializeStore (store) {
-  console.log('Initialize vuex modules')
+  // console.log('Initialize vuex modules')
   store.dispatch('authStore/initialize')
   store.dispatch('demoStore/initialize')
   store.dispatch('system/initialize')
