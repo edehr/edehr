@@ -138,7 +138,7 @@ export default function () {
           fqn: 'visit.transferOutTime'
         }
       ],
-      generated: '2022-04-28T15:26:53-07:00',
+      generated: '2022-04-29T18:11:41-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -166,9 +166,9 @@ export default function () {
             }
           ]
         },
-        locations: {
-          elementKey: 'locations',
-          tableKey: 'locations',
+        table: {
+          elementKey: 'table',
+          tableKey: 'table',
           isTable: true,
           hasRecHeader: false,
           addButtonText: 'Add a patient location',
@@ -206,9 +206,9 @@ export default function () {
             }
           ],
           form: {
-            elementKey: 'locations',
+            elementKey: 'table',
             addButtonText: 'Add a patient location',
-            formKey: 'locations',
+            formKey: 'table',
             ehr_groups: [
               {
                 elementKey: 'ehr_group3',
@@ -536,7 +536,7 @@ export default function () {
           fqn: 'vitals.cvp'
         }
       ],
-      generated: '2022-04-28T15:26:53-07:00',
+      generated: '2022-04-29T18:11:41-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -795,7 +795,7 @@ export default function () {
           fqn: 'fluidBalance.fluidOut'
         }
       ],
-      generated: '2022-04-28T15:26:53-07:00',
+      generated: '2022-04-29T18:11:41-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1712,7 +1712,7 @@ export default function () {
           fqn: 'neurological.strokeAssessmentCalculation'
         }
       ],
-      generated: '2022-04-28T15:26:53-07:00',
+      generated: '2022-04-29T18:11:41-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2491,7 +2491,7 @@ export default function () {
           fqn: 'respiratory.generalComments'
         }
       ],
-      generated: '2022-04-28T15:26:53-07:00',
+      generated: '2022-04-29T18:11:41-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -3270,7 +3270,7 @@ export default function () {
           fqn: 'cardiovascular.comments'
         }
       ],
-      generated: '2022-04-28T15:26:53-07:00',
+      generated: '2022-04-29T18:11:41-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -3994,7 +3994,7 @@ export default function () {
           fqn: 'gastrointestinal.comments'
         }
       ],
-      generated: '2022-04-28T15:26:53-07:00',
+      generated: '2022-04-29T18:11:41-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
