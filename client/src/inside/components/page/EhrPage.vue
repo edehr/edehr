@@ -85,12 +85,6 @@ export default {
 <style lang="scss">
 @import '../../../scss/definitions';
 
-.assignment-save{
-  font-style: italic;
-  margin-top: 5em;
-  margin-left: 2rem;
-}
-
 .record-header {
     border-bottom: 1px solid $grey20;
     margin-bottom: 2.5em;

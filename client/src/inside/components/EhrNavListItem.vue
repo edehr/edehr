@@ -2,9 +2,13 @@
   div(class="EhrNavListItem")
     ui-link(:name="routeName(path)", :class="levelClass")
       div(:class="linkClass", class="linkElement columns")
-        div(class="linkLabel") {{ path.label }}
-        div(class="is-pulled-right", :class="hasDataColour")
-        //fas-icon(class="icon-right green-circle", :class="hasDataColour")
+        div(class="column") {{ linkLabel }}
+        div(class="column is-1 indicator")
+          div(:class="dataIndicatorClass")
+          div(v-if="level === 1")
+            fas-icon(v-show="opened", class="fa top-level", icon="angle-right")
+            fas-icon(v-show="!opened", class="fa top-level", icon="angle-down")
+            span &nbsp;
 </template>
 
 <script>
@@ -20,22 +24,26 @@ export default {
   },
   inject: [ 'pageDataList' ],
   computed: {
-    hasData () {
+    pageInfo () {
+      // page data has properties
+      // - hasSeed (data),
+      // - hasStudent (student data) and
+      // - hasMerged (any data)
       let k = this.path.pageDataKey
       let d = this.pageDataList()[k]
       if (!d) {
-        if (k) console.log('Missing page in hasData listing', k)
+        if (k) console.log('Missing page in pageInfo listing', k)
         d = {}
       }
       return d
     },
-    hasDataColour () {
+    dataIndicatorClass () {
       let colour = ''
-      const NEW_INFO = 'circle green-circle' //'new-info'
+      const NEW_INFO = 'circle green-circle'
       const SEED_INFO = 'circle empty-circle'
       const NONE = ''
       let isSeedEditing = StoreHelper.isSeedEditing()
-      let hd = this.hasData
+      let hd = this.pageInfo
       if (isSeedEditing) {
         colour = hd.hasSeed ? NEW_INFO : NONE
       } else {
@@ -50,6 +58,9 @@ export default {
       let aClass = isTopAndActive ? ' router-link-active' : ''
       return lvClass + aClass
     },
+    linkLabel () {
+      return this.path.label
+    },
     linkClass () {
       let lv = this.level || 1
       return 'EhrNavListItem__link' + lv
@@ -62,10 +73,9 @@ export default {
     }
   },
   props: {
-    path: {
-      type: Object
-    },
-    level: { type: Number }
+    path: { type: Object },
+    level: { type: Number },
+    opened: { type: Boolean }
   }
 }
 </script>
@@ -73,6 +83,13 @@ export default {
 <style lang="scss" scoped>
   @import '../../scss/definitions';
 
+.indicator {
+  justify-content: flex-end;
+}
+
+.column {
+  padding: 0;
+}
 .linkElement.columns:last-child {
   margin-bottom: 0;
 }
@@ -110,7 +127,7 @@ export default {
   &__level2 {
     color: $nav-color-level2;
     background-color: $nav-level2;
-    height: 30px;
+    min-height: 30px;
     & a {
     }
   }
@@ -118,7 +135,7 @@ export default {
   &__level3 {
     color: $nav-color-level3;
     background-color: $nav-level3;
-    height: 30px;
+    min-height: 30px;
     & a {
       color: $nav-color-level3;
     }
@@ -146,21 +163,7 @@ export default {
   .linkLabel {
     width: 90%;
   }
-/*
-  .new-info {
-    color: $green;
-    content: 'faTimes';
-    font-size: 1em;
-    margin-top: 3px;
-  }
 
-  .old-info {
-    // color: $green;
-    content: 'faCircle';
-    font-size: 1em;
-    margin-top: 3px;
-  }
-*/
   .circle {
     border-radius: 50%;
     position: relative;
@@ -175,6 +178,10 @@ export default {
 
   .green-circle {
     background: $green;
+  }
+
+  .top-level {
+    color: $green;
   }
 
   @media screen and (max-width: 500px){

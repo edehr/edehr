@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="panel")
+  div(class="ehr-panel")
     div(v-if="isStudent", class="action-group")
       ehr-nav-panel-action
       ehr-nav-panel-assignment-details
@@ -29,7 +29,9 @@ export default {
   computed: {
     menuList () {
       // read the menu definition stored in the project root src (client/src)
-      return require('../../menuList.json')
+      const mList = require('../../menuList.json')
+      // console.log(mList)
+      return mList
     },
     isStudent () {
       return this.$store.getters['visit/isStudent']
@@ -46,10 +48,11 @@ export default {
 <style lang="scss" scoped>
 @import '../../scss/definitions';
 
-.panel {
+.ehr-panel {
   background-color: $nav-background-medium;
   border-radius: 0;
-  height: 100%;
+  height: 98vh;
+  overflow-y: scroll;
   display: flex;
   flex-direction: column;
 }
