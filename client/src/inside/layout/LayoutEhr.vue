@@ -3,35 +3,29 @@
     div(class="ehr_layout__wrapper app")
       ui-spinner(:loading="isLoading")
       app-header
-      main(class="ehr_layout__main columns")
-        div(class="ehr_layout__nav column bigger-screens")
+      main(class="ehr_layout__main")
+        div(class="ehr_layout__nav bigger-screens")
           ehr-nav-panel
-        div(class="ehr_layout__content column")
+        div(class="ehr_layout__content")
           div(class="ehr_layout__content_banner")
+            // the area for instructors to grade students, seed editors to see infor about the see and students to see their evaluations
             ehr-context-banner
             div(class="ehr_layout__content_banner_content")
+              // banner with patient information
               ehr-banner
           div(class="ehr_layout__content_page")
             div(class="mobile-only")
-              span(style="text-align: left; margin-left: 1em; font-size: 2em;")
+              span(style="text-align: left; margin-left: 1em")
                 fas-icon(icon="bars", @click="showingNavPanel = !showingNavPanel")
                 transition(name="hamburger-action")
                   ehr-nav-panel(v-if="showingNavPanel")
             slot Main EHR content for a component will appear here. The component is selected by the router
-    div(v-show="showingSpecial")
-      ehr-special
     app-footer
-    div(style="text-align: right; margin-top: 5px",)
-      label F1
-        input(class="checkbox", type="checkbox", v-model="featureCaseContext")
-      label D
-        input(class="checkbox", type="checkbox", v-model="showingSpecial")
 </template>
 
 <script>
 import AppHeader from '../../app/components/AppHeader.vue'
 import AppFooter from '../../app/components/AppFooter.vue'
-import EhrSpecial from '../components/EhrSpecial.vue'
 import EhrNavPanel from '../components/EhrNavPanel.vue'
 import EhrBanner from '../components/EhrBanner.vue'
 import EhrContextBanner from '../components/EhrContextBanner'
@@ -45,10 +39,8 @@ export default {
     AppHeader,
     AppFooter,
     EhrBanner,
-    // EhrPanel,
     EhrNavPanel,
     EhrContextBanner,
-    EhrSpecial,
     UiSpinner
   },
   data: function () {
@@ -101,27 +93,25 @@ export default {
   display: flex;
   flex-direction: column;
   margin: 1px;
-  // &__wrapper {
-    
-  // }
   &__main {
     color: $grey80;
     background-color: $white;
     display: flex;
     overflow: hidden;
     margin-top: auto;
+    margin-bottom: 1rem;
   }
   &__main_content {
+    flex:initial;
+    width: 75%;
   }
   &__nav {
-    /* max-width: $navWidth; */
-    min-width: $navMinWidth;
-    max-width: $navMaxWidth;
-    width: 20%; /* of page width */
     padding: 0;
     min-height: $contentMinHeight;
     margin: 0;
     overflow-y: auto;
+    flex:none;
+    width: 25%;
   }
   &__content {
     padding: 0;
@@ -129,7 +119,6 @@ export default {
     margin: 0;
     overflow-y: auto;
     overflow-x: auto;
-    width: $contentWidth;
   }
   &__content_banner {
     background-color: $grey10;
@@ -139,11 +128,11 @@ export default {
   }
   &__content_banner_content {
     padding: 0;
-    max-width: 80%;
+    //max-width: 80%;
   }
   &__content_page {
     padding: 0;
-    width: 100%;
+    //width: 100%;
     margin-left: $panelMarginLeft;
   }
 }
@@ -172,8 +161,14 @@ footer {
         -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
     }
 }
-
-@media screen and (max-width: 1024px) and (max-height: 1400px ) {
+/*
+Mobile Up to 768px
+Tablet Between 769px and 1023px
+Desktop Between 1024px and 1215px
+Widescreen Between 1216px and 1407px
+FullHD 1408px and above
+ */
+@media screen and (max-width: 900px) {
   .mobile-only {
     display: block;
   }

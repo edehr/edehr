@@ -5,6 +5,7 @@ Import font awesome icons
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {
   faAngleLeft,
+  faAngleDown,
   faAngleRight,
   faArrowLeft,
   faArrowRight,
@@ -51,6 +52,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 export default function (Vue) {
   library.add(
     faAngleLeft,
+    faAngleDown,
     faAngleRight,
     faArrowLeft,
     faArrowRight,

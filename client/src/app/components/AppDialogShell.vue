@@ -4,8 +4,15 @@
       div(:class="modalClass")
       div(class="dialog-wrapper", :class="{ dragActive: moused }", ref="theDialog", v-bind:style="{ top: top + 'px', left: left + 'px'}")
         div(class="dialog-header", v-dragged="onDragged")
-          slot(name="header") default header
-          ui-close(v-on:close="$emit('cancel')")
+          div(class="columns")
+            div(class="column is-8")
+              slot(name="header") default header
+            div(class="column is-4 button-area")
+              ui-button(v-on:buttonClicked="$emit('cancel')", v-bind:secondary="true")
+                slot(name="cancel-button") {{ cancelButtonLabel }}
+              ui-button(v-on:buttonClicked="$emit('save')", v-show="useSave", :disabled="disableSave")
+                slot(name="save-button") {{ saveButtonLabel }}
+          //ui-close(v-on:close="$emit('cancel')")
         div(class="dialog-body")
           slot(name="body") default body
         div(class="dialog-footer")
@@ -65,9 +72,6 @@ export default {
     }
   },
   computed: {
-    saveEnabled () {
-      return false
-    },
     modalClass: function () {
       return {
         'modal-mask': this.isModal
@@ -220,7 +224,10 @@ export default {
 .dragActive {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
-
+.button-area {
+  display: flex;
+  justify-content: flex-end;
+}
 .dialog-move-bar {
   background-color: $grey40;
   width: 100%;

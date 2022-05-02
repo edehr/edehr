@@ -57,11 +57,6 @@ Define the styles for the left hand side components in the EHR
  */
 .EhrPanelContent {
   padding: $panelContentPadding;
-  .EhrPanelContent_Inner {
-    position: relative;
-    width: $contentWidthInner;
-    max-width: 90vw;
-  }
 }
 
 .EhrContextBanner {

@@ -108,11 +108,6 @@ export default {
   margin-bottom: .5em;
 }
 
-.assignment-save{
-  font-style: italic;
-  margin-top: 5em;
-}
-
 .ehr-page-form {
   position: relative;
 }

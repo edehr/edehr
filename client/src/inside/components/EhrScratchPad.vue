@@ -1,8 +1,7 @@
 <template lang="pug">
   div
     ui-button(v-on:buttonClicked="showDialog",v-bind:secondary="true")
-      fas-icon(class="icon-left", icon="sticky-note")
-      span Private scratch pad for {{userName}}
+      span Private notes for {{userName}}
 
     app-dialog(:isModal="false", ref="theDialog", @cancel="cancelDialog", @save="saveDialog")
       h2(slot="header") These private notes are for you {{userName}}
