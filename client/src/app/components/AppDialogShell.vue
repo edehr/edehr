@@ -3,7 +3,8 @@
     div(v-show="showingDialog")
       div(:class="modalClass")
       div(class="dialog-wrapper", :class="{ dragActive: moused }", ref="theDialog", v-bind:style="{ top: top + 'px', left: left + 'px'}")
-        div(class="dialog-header", v-dragged="onDragged")
+        div(class="dialog-drag-bar", v-dragged="onDragged")
+        div(class="dialog-header")
           div(class="columns")
             div(class="column is-8")
               slot(name="header") default header
@@ -228,19 +229,21 @@ export default {
   display: flex;
   justify-content: flex-end;
 }
-.dialog-move-bar {
+.dialog-drag-bar {
   background-color: $grey40;
   width: 100%;
-  height: 1vh;
+  height: 1em;
   cursor: move;
 }
 
 .dialog-header, .dialog-footer {
   background-color: $grey03;
-  /* don't set a height. It prevents the element from expanding when more content is added.
-  height: 60px;*/
-  padding: 1em 2em;
-  cursor: move;
+}
+.dialog-header, .dialog-footer {
+  padding: 0.25em 2em 1em 2em;
+}
+.dialog-footer {
+  padding: 1em 2em 1em 2em;
 }
 
 

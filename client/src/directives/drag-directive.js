@@ -5,7 +5,7 @@ const POINTER_LEAVE_EVENTS = ['mouseleave']
 
 var draggedElem
 
-var u = {
+var innerUtil = {
   addEventListeners (el, events, handler) {
     for (var i = 0, len = events.length; i < len; i++) {
       el.addEventListener(events[i], handler)
@@ -19,63 +19,76 @@ var u = {
   }
 }
 
+function getLoc (evt) {
+  let src = evt
+  if (evt.touches) {
+    src = evt.touches[0]
+  }
+  const loc = {
+    clientX: src.clientX,
+    clientY: src.clientY
+  }
+  if (deets) console.log('getLoc', src.clientY, src.screenY)
+  return loc
+}
+
+const deets = false
+
 export default {
   inserted (el, binding, vnode) {
     if (!document) return
     function onPointerStart (evt) {
-      evt.preventDefault()
-      u.addEventListeners(document, POINTER_LEAVE_EVENTS, onPointerLeave)
-      u.addEventListeners(document.documentElement, POINTER_MOVE_EVENTS, onPointerMove)
-      u.addEventListeners(document.documentElement, POINTER_END_EVENTS, onPointerEnd)
-      // console.log('onPointerStart')
+      if (deets) console.log('onPointerStart', el, evt, evt.touches)
+      const { clientX, clientY } = getLoc(evt)
+      innerUtil.addEventListeners(document, POINTER_LEAVE_EVENTS, onPointerLeave)
+      innerUtil.addEventListeners(document.documentElement, POINTER_MOVE_EVENTS, onPointerMove)
+      innerUtil.addEventListeners(document.documentElement, POINTER_END_EVENTS, onPointerEnd)
       el.lastCoords = el.firstCoords = {
-        x: evt.clientX,
-        y: evt.clientY
+        x: clientX,
+        y: clientY
       }
       binding.value({
         el,
         first: true,
-        clientX: evt.clientX,
-        clientY: evt.clientY
+        clientX: clientX,
+        clientY: clientY
       })
       draggedElem = el
     }
     function onPointerLeave (evt) {
-      // console.log('onPointerLeave', el !== draggedElem)
+      if (deets) console.log('onPointerLeave', el === draggedElem)
       if (el !== draggedElem) return
-      evt.preventDefault()
-      // console.log('mouse leave')
       onPointerEnd(evt)
     }
 
     function onPointerEnd (evt) {
-      // console.log('onPointerEnd', el !== draggedElem)
+      if (deets) console.log('onPointerEnd', el === draggedElem)
       if (el !== draggedElem) return
-      evt.preventDefault()
+      const { clientX, clientY } = getLoc(evt)
       el.lastCoords = null
       binding.value({
         el,
         last: true,
-        clientX: evt.clientX,
-        clientY: evt.clientY
+        clientX: clientX,
+        clientY: clientY
       })
       draggedElem = null
-      u.removeEventListeners(document, POINTER_LEAVE_EVENTS)
-      u.removeEventListeners(document.documentElement, POINTER_END_EVENTS)
-      u.removeEventListeners(document.documentElement, POINTER_MOVE_EVENTS)
+      innerUtil.removeEventListeners(document, POINTER_LEAVE_EVENTS)
+      innerUtil.removeEventListeners(document.documentElement, POINTER_END_EVENTS)
+      innerUtil.removeEventListeners(document.documentElement, POINTER_MOVE_EVENTS)
     }
     function onPointerMove (evt) {
-      console.log('onPointerMove', el !== draggedElem)
+      if (deets) console.log('onPointerMove', evt)
       if (el !== draggedElem) return
-      evt.preventDefault()
+      const { clientX, clientY } = getLoc(evt)
+      if (clientY < 0) {
+        onPointerEnd(evt)
+      }
       if (el.lastCoords) {
-        var deltaX = evt.clientX - el.lastCoords.x
-        var deltaY = evt.clientY - el.lastCoords.y
-        var offsetX = evt.clientX - el.firstCoords.x
-        var offsetY = evt.clientY - el.firstCoords.y
-        var clientX = evt.clientX
-        var clientY = evt.clientY
-
+        var deltaX = clientX - el.lastCoords.x
+        var deltaY = clientY - el.lastCoords.y
+        var offsetX = clientX - el.firstCoords.x
+        var offsetY = clientY - el.firstCoords.y
         binding.value({
           el,
           deltaX,
@@ -86,17 +99,17 @@ export default {
           clientY
         })
         el.lastCoords = {
-          x: evt.clientX,
-          y: evt.clientY
+          x: clientX,
+          y: clientY
         }
       }
     }
-    u.addEventListeners(el, POINTER_START_EVENTS, onPointerStart)
+    innerUtil.addEventListeners(el, POINTER_START_EVENTS, onPointerStart)
   },
 
   unbind (el) {
-    u.removeEventListeners(el, POINTER_START_EVENTS)
-    u.removeEventListeners(document.documentElement, POINTER_END_EVENTS)
-    u.removeEventListeners(document.documentElement, POINTER_MOVE_EVENTS)
+    innerUtil.removeEventListeners(el, POINTER_START_EVENTS)
+    innerUtil.removeEventListeners(document.documentElement, POINTER_END_EVENTS)
+    innerUtil.removeEventListeners(document.documentElement, POINTER_MOVE_EVENTS)
   }
 }
