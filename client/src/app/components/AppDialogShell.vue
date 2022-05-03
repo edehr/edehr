@@ -230,6 +230,7 @@ export default {
   justify-content: flex-end;
 }
 .dialog-drag-bar {
+  touch-action: none;
   background-color: $grey40;
   width: 100%;
   height: 1em;

@@ -21,7 +21,7 @@ var innerUtil = {
 
 function getLoc (evt) {
   let src = evt
-  if (evt.touches) {
+  if (evt.touches && evt.touches.length > 0) {
     src = evt.touches[0]
   }
   const loc = {
