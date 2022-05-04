@@ -4,29 +4,28 @@
       div(:class="modalClass")
       div(class="dialog-wrapper", :class="{ dragActive: moused }", ref="theDialog", v-bind:style="{ top: top + 'px', left: left + 'px'}")
         div(class="dialog-drag-bar", v-dragged="onDragged")
-        div(class="dialog-header")
-          div(class="columns")
+        div(class="dialog-content")
+          div(class="dialog-header")
+            div(class="columns")
+              div(class="column is-8")
+                slot(name="header") default header
+              div(class="column is-4 button-area")
+                ui-button(v-on:buttonClicked="$emit('cancel')", v-bind:secondary="true")
+                  slot(name="cancel-button") {{ cancelButtonLabel }}
+                ui-button(v-on:buttonClicked="$emit('save')", v-show="useSave", :disabled="disableSave")
+                  slot(name="save-button") {{ saveButtonLabel }}
+            //ui-close(v-on:close="$emit('cancel')")
+          div(class="dialog-body")
+            slot(name="body") default body
+          div(class="dialog-footer columns")
             div(class="column is-8")
-              slot(name="header") default header
-            div(class="column is-4 button-area")
-              ui-button(v-on:buttonClicked="$emit('cancel')", v-bind:secondary="true")
-                slot(name="cancel-button") {{ cancelButtonLabel }}
-              ui-button(v-on:buttonClicked="$emit('save')", v-show="useSave", :disabled="disableSave")
-                slot(name="save-button") {{ saveButtonLabel }}
-          //ui-close(v-on:close="$emit('cancel')")
-        div(class="dialog-body")
-          slot(name="body") default body
-        div(class="dialog-footer")
-          div(class="dialog-footer-errors is-pulled-left")
-            div(v-show="errors.length")
-              span {{ errorDirections }} 
-              span(class="error-color")
+              div(v-show="errors.length", class="error-color")
+                span {{ errorDirections }}
                 span {{ errors.join(', ') }}
 
-          div(class="dialog-footer-content")
-            div(v-if="hasFooterContent" class="is-pulled-left")
-              slot(name="footer-content")
-            div(class="is-pulled-right")
+              div(class="dialog-footer-content")
+                slot(name="footer-content")
+            div(class="column is-4 button-area")
               ui-button(v-on:buttonClicked="$emit('cancel')", v-bind:secondary="true")
                 slot(name="cancel-button") {{ cancelButtonLabel }}
               div(class="dialog-footer-button-space", v-show="useSave")
@@ -162,24 +161,22 @@ export default {
 
 .dialog-wrapper {
   position: fixed;
-  /*   For top and see the data properties */
+  /*   For top and see the data properties. For width only set the min and let the content decide the rest */
   min-width: 700px;
-  max-width: 1024px;
-  min-height: 40vh;
   display: flex;
   flex-flow: row wrap;
   flex: 1 100%;
+}
+.dialog-content {
+  min-height: 40vh;
+  max-height: 90vh;
   overflow-y: auto;
-  max-height: 95vh;
+  overflow-x: auto;
 }
 
 .dialog-body {
-  padding: 1.5rem 2rem 2rem 2rem;
-  margin-bottom: 4rem;
+  padding: 0.25rem 2rem;
   background-color: $grey03;
-}
-.dialog-body, .dialog-footer, .dialog-header {
-  width: 100vw;
 }
 
 @media screen and (max-width: 500px){

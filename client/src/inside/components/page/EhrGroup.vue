@@ -71,5 +71,9 @@ export default {
 </script>
 
 <style lang="scss">
-
+.ehr-group-for {
+  border: 1px solid rgb(55,45,45,0.1);
+  border-radius: 5px;
+  padding: 4px;
+}
 </style>

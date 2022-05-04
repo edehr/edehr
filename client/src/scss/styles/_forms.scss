@@ -173,46 +173,37 @@ select, .select {
   text-align: center;
 }
 
-.grid-left-to-right-1 {
+.cardio-assessment,
+.record-header,
+.grid-left-to-right-1,
+.grid-left-to-right-2,
+.grid-left-to-right-3,
+.grid-left-to-right-4,
+.grid-left-to-right-5 {
   display: grid;
-  grid-gap: 1rem 1.25rem;
+  grid-gap: 0.3rem 0.5rem;
   grid-auto-flow: row;
-  grid-template-columns: 1fr;
   margin-bottom: 1rem;
+}
+
+.grid-left-to-right-1 {
+  grid-template-columns: 1fr;
 }
 
 .grid-left-to-right-2 {
-  display: grid;
-  grid-gap: 1rem 1.25rem;
-  grid-auto-flow: row;
   grid-template-columns: repeat(2, 1fr);
-  margin-bottom: 1rem;
 }
 
 .grid-left-to-right-3 {
-  display: grid;
-  grid-gap: 1rem 1.25rem;
-  grid-auto-flow: row;
   grid-template-columns: repeat(3, 1fr);
-  margin-bottom: 1rem;
 }
 
 .record-header, .grid-left-to-right-4 {
-  display: grid;
-  grid-gap: 1rem 1.25rem;
-  grid-auto-flow: row;
   grid-template-columns: repeat(4, 1fr);
-}
-
-.grid-left-to-right-4 {
-  margin-bottom: 1rem;
 }
 
 .cardio-assessment,
 .grid-left-to-right-5 {
-  display: grid;
-  grid-gap: 1rem 1.25rem;
-  grid-auto-flow: row;
   grid-template-columns: repeat(5, 1fr);
 }
 

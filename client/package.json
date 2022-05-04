@@ -6,6 +6,7 @@
     "start": "NODE_ENV=development VUE_APP_ROOT_API=http://localhost:27000/api vue-cli-service serve",
     "build": "vue-cli-service build",
     "publish": "cp -R dist/* published/",
+    "both": "npm run build && npm run publish",
     "lint": "vue-cli-service lint",
     "test": "npm run test:unit",
     "test:cov": "vue-cli-service test:unit --coverage",
