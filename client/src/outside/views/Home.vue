@@ -14,23 +14,26 @@
     section(class="no-container features features-dark")
       ed-ehr-values
 
-    section(class="container features features-light")
-      div(class="content")
-        h2(class="title") {{ appText.underDevelopment.title }}
-        div(v-text-to-html.noAutoLink="appText.underDevelopment.body")
+    //section(class="container features features-light")
 
-    section(class="container features features-dark", id="resources")
+    section(class="container features features-light", id="resources")
       div(class="content")
         h2(class="title") {{ appText.resources.title }}
-        div(v-text-to-html.noAutoLink="appText.resources.body")
+        div(v-text-to-html.noAutoLink="appResourceBody")
 
-    section(class="container features features-light")
+    section(class="container features features-dark")
       div(class="content")
         h2(class="title") {{appText.related.title }}
         div(v-text-to-html.noAutoLink="appText.related.body")
 
-    div(class="is-pulled-right")
-      input(type="checkbox", v-model="activateDemoMode")
+    section(class="container features features-light")
+      div(class="content")
+        h2(class="title") {{appText.privacy.title }}
+        div(v-text-to-html.noAutoLink="appPrivacyBody")
+
+    section(class="no-container")
+      div(class="content")
+        input(type="checkbox", v-model="activateDemoMode", class="is-pulled-right")
 
 
 </template>
@@ -56,7 +59,9 @@ export default {
     }
   },
   computed: {
-    isDemo () { return StoreHelper.isDemoMode()  }
+    isDemo () { return StoreHelper.isDemoMode()  },
+    appPrivacyBody () { return this.appText.privacy.body(window.location.origin) },
+    appResourceBody () { return this.appText.resources.body(window.location.origin) }
   },
   methods: {
   },
