@@ -1,21 +1,21 @@
 import moment from 'moment'
-import router from '../../../router'
 import Vue from 'vue'
-import EhrTypes from '../../../helpers/ehr-types'
-import EventBus from '../../../helpers/event-bus'
+import router from '@/router'
+import EhrTypes from '@/helpers/ehr-types'
+import EventBus from '@/helpers/event-bus'
 import {
   ACTIVITY_DATA_EVENT,
   FORM_INPUT_EVENT,
   PAGE_DATA_REFRESH_EVENT,
   PAGE_DATA_READY_EVENT
-} from '../../../helpers/event-bus'
+} from '@/helpers/event-bus'
 import {
   prepareAssignmentPageDataForSave,
-  formatTimeStr } from '../../../helpers/ehr-utils'
-import EhrDefs from '../../../helpers/ehr-defs-grid'
-import StoreHelper from '../../../helpers/store-helper'
+  formatTimeStr } from '@/helpers/ehr-utils'
+import EhrDefs from '@/helpers/ehr-defs-grid'
+import StoreHelper from '@/helpers/store-helper'
 import validations from './ehr-validations'
-import { Text } from '../../../helpers/ehr-text'
+import { Text } from '@/helpers/ehr-text'
 
 export const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 

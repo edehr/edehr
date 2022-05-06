@@ -2,7 +2,7 @@ export default function () {
   return {
     visit: {
       pageDataKey: 'visit',
-      pageTitle: 'Visit details',
+      pageTitle: 'Visit details and location',
       pIndex: '10',
       isV2: true,
       hasGridTable: true,
@@ -138,7 +138,7 @@ export default function () {
           fqn: 'visit.transferOutTime'
         }
       ],
-      generated: '2022-04-29T18:11:41-07:00',
+      generated: '2022-05-05T17:05:01-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -146,7 +146,7 @@ export default function () {
           isPageForm: true,
           ehr_groups: [
             {
-              elementKey: 'ehr_group1',
+              elementKey: 'ehr_group28',
               gIndex: '1',
               gChildren: [
                 'admissionDay',
@@ -157,7 +157,7 @@ export default function () {
               ]
             },
             {
-              elementKey: 'ehr_group2',
+              elementKey: 'ehr_group29',
               formCss: 'grid-left-to-right-1',
               gIndex: '2',
               gChildren: [
@@ -211,7 +211,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group3',
+                elementKey: 'ehr_group30',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '1',
                 gChildren: [
@@ -219,7 +219,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group4',
+                elementKey: 'ehr_group31',
                 gIndex: '2',
                 gChildren: [
                   'transferInDay',
@@ -306,10 +306,10 @@ export default function () {
           fqn: 'vitals.time'
         },
         {
-          elementKey: 'spacer7',
+          elementKey: 'spacer34',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'vitals.spacer7'
+          fqn: 'vitals.spacer34'
         },
         {
           elementKey: 'systolic',
@@ -396,10 +396,10 @@ export default function () {
           fqn: 'vitals.source'
         },
         {
-          elementKey: 'spacer8',
+          elementKey: 'spacer35',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'vitals.spacer8'
+          fqn: 'vitals.spacer35'
         },
         {
           elementKey: 'strength',
@@ -461,16 +461,16 @@ export default function () {
           fqn: 'vitals.respirationRate'
         },
         {
-          elementKey: 'spacer9',
+          elementKey: 'spacer36',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'vitals.spacer9'
+          fqn: 'vitals.spacer36'
         },
         {
-          elementKey: 'spacer10',
+          elementKey: 'spacer37',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'vitals.spacer10'
+          fqn: 'vitals.spacer37'
         },
         {
           elementKey: 'oxygenSaturation',
@@ -536,7 +536,7 @@ export default function () {
           fqn: 'vitals.cvp'
         }
       ],
-      generated: '2022-04-29T18:11:41-07:00',
+      generated: '2022-05-05T17:05:01-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -672,7 +672,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group5',
+                elementKey: 'ehr_group32',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -683,24 +683,24 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group6',
+                elementKey: 'ehr_group33',
                 gIndex: '2',
                 gChildren: [
                   'day',
                   'time',
-                  'spacer7',
+                  'spacer34',
                   'systolic',
                   'diastolic',
                   'patientPosition',
                   'temperature',
                   'source',
-                  'spacer8',
+                  'spacer35',
                   'strength',
                   'rate',
                   'rhythm',
                   'respirationRate',
-                  'spacer9',
-                  'spacer10',
+                  'spacer36',
+                  'spacer37',
                   'oxygenSaturation',
                   'oxygenMode',
                   'flowRate',
@@ -795,7 +795,7 @@ export default function () {
           fqn: 'fluidBalance.fluidOut'
         }
       ],
-      generated: '2022-04-29T18:11:41-07:00',
+      generated: '2022-05-05T17:05:01-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -835,7 +835,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group11',
+                elementKey: 'ehr_group38',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -846,7 +846,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group12',
+                elementKey: 'ehr_group39',
                 gIndex: '2',
                 gChildren: [
                   'fluidIn',
@@ -1176,10 +1176,10 @@ export default function () {
           fqn: 'neurological.leftPupilResponseToLight'
         },
         {
-          elementKey: 'spacer18',
+          elementKey: 'spacer45',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'neurological.spacer18'
+          fqn: 'neurological.spacer45'
         },
         {
           elementKey: 'rightPupilSize',
@@ -1426,10 +1426,10 @@ export default function () {
           fqn: 'neurological.motorRightArm'
         },
         {
-          elementKey: 'spacer21',
+          elementKey: 'spacer48',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'neurological.spacer21'
+          fqn: 'neurological.spacer48'
         },
         {
           elementKey: 'motorLeftLeg',
@@ -1712,7 +1712,7 @@ export default function () {
           fqn: 'neurological.strokeAssessmentCalculation'
         }
       ],
-      generated: '2022-04-29T18:11:41-07:00',
+      generated: '2022-05-05T17:05:01-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1949,7 +1949,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group13',
+                elementKey: 'ehr_group40',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -1960,7 +1960,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group14',
+                elementKey: 'ehr_group41',
                 formCss: 'section-divider',
                 gIndex: '2',
                 gChildren: [
@@ -1968,7 +1968,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group15',
+                elementKey: 'ehr_group42',
                 label: 'Glasgow Coma Scale',
                 formCss: 'section-divider',
                 gIndex: '3',
@@ -1980,7 +1980,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group16',
+                elementKey: 'ehr_group43',
                 label: 'Conciousness',
                 gIndex: '4',
                 gChildren: [
@@ -1989,20 +1989,20 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group17',
+                elementKey: 'ehr_group44',
                 formCss: 'section-divider',
                 gIndex: '5',
                 gChildren: [
                   'leftPupilSize',
                   'leftPupilResponseToLight',
-                  'spacer18',
+                  'spacer45',
                   'rightPupilSize',
                   'rightPupilResponseToLight',
                   'bothPupils'
                 ]
               },
               {
-                elementKey: 'ehr_group19',
+                elementKey: 'ehr_group46',
                 formCss: 'section-divider',
                 gIndex: '6',
                 gChildren: [
@@ -2011,7 +2011,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group20',
+                elementKey: 'ehr_group47',
                 label: 'Stroke assessment',
                 gIndex: '7',
                 gChildren: [
@@ -2020,7 +2020,7 @@ export default function () {
                   'levelOfConciousnessCommands',
                   'motorLeftArm',
                   'motorRightArm',
-                  'spacer21',
+                  'spacer48',
                   'motorLeftLeg',
                   'motorRightLeg',
                   'limbAtaxia',
@@ -2034,7 +2034,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group22',
+                elementKey: 'ehr_group49',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '8',
                 gChildren: [
@@ -2491,7 +2491,7 @@ export default function () {
           fqn: 'respiratory.generalComments'
         }
       ],
-      generated: '2022-04-29T18:11:41-07:00',
+      generated: '2022-05-05T17:05:01-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -2619,7 +2619,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group23',
+                elementKey: 'ehr_group50',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -2630,7 +2630,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group24',
+                elementKey: 'ehr_group51',
                 gIndex: '2',
                 gChildren: [
                   'airway',
@@ -2639,7 +2639,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group25',
+                elementKey: 'ehr_group52',
                 formCss: 'section-divider',
                 gIndex: '3',
                 gChildren: [
@@ -2655,7 +2655,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group26',
+                elementKey: 'ehr_group53',
                 formCss: 'section-divider',
                 gIndex: '4',
                 gChildren: [
@@ -2668,7 +2668,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group27',
+                elementKey: 'ehr_group54',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '5',
                 gChildren: [
@@ -2813,10 +2813,10 @@ export default function () {
           fqn: 'cardiovascular.skinAppearance'
         },
         {
-          elementKey: 'spacer31',
+          elementKey: 'spacer58',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'cardiovascular.spacer31'
+          fqn: 'cardiovascular.spacer58'
         },
         {
           elementKey: 'labelCapRefill',
@@ -3270,7 +3270,7 @@ export default function () {
           fqn: 'cardiovascular.comments'
         }
       ],
-      generated: '2022-04-29T18:11:41-07:00',
+      generated: '2022-05-05T17:05:01-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -3447,7 +3447,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group28',
+                elementKey: 'ehr_group55',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -3458,7 +3458,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group29',
+                elementKey: 'ehr_group56',
                 gIndex: '2',
                 gChildren: [
                   'pulse',
@@ -3466,11 +3466,11 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group30',
+                elementKey: 'ehr_group57',
                 formCss: 'grid-left-to-right-5 section-divider',
                 gIndex: '3',
                 gChildren: [
-                  'spacer31',
+                  'spacer58',
                   'labelCapRefill',
                   'labelTemperature',
                   'labelPeripheral',
@@ -3498,7 +3498,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group32',
+                elementKey: 'ehr_group59',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '4',
                 gChildren: [
@@ -3686,16 +3686,16 @@ export default function () {
           fqn: 'gastrointestinal.condition'
         },
         {
-          elementKey: 'spacer35',
+          elementKey: 'spacer62',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'gastrointestinal.spacer35'
+          fqn: 'gastrointestinal.spacer62'
         },
         {
-          elementKey: 'spacer36',
+          elementKey: 'spacer63',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'gastrointestinal.spacer36'
+          fqn: 'gastrointestinal.spacer63'
         },
         {
           elementKey: 'pain',
@@ -3717,16 +3717,16 @@ export default function () {
           fqn: 'gastrointestinal.pain'
         },
         {
-          elementKey: 'spacer37',
+          elementKey: 'spacer64',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'gastrointestinal.spacer37'
+          fqn: 'gastrointestinal.spacer64'
         },
         {
-          elementKey: 'spacer38',
+          elementKey: 'spacer65',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'gastrointestinal.spacer38'
+          fqn: 'gastrointestinal.spacer65'
         },
         {
           elementKey: 'aLabel',
@@ -3851,10 +3851,10 @@ export default function () {
           fqn: 'gastrointestinal.reason'
         },
         {
-          elementKey: 'spacer39',
+          elementKey: 'spacer66',
           formIndex: '1',
           inputType: 'spacer',
-          fqn: 'gastrointestinal.spacer39'
+          fqn: 'gastrointestinal.spacer66'
         },
         {
           elementKey: 'npoSinceDay',
@@ -3994,7 +3994,7 @@ export default function () {
           fqn: 'gastrointestinal.comments'
         }
       ],
-      generated: '2022-04-29T18:11:41-07:00',
+      generated: '2022-05-05T17:05:01-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -4157,7 +4157,7 @@ export default function () {
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group33',
+                elementKey: 'ehr_group60',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -4168,18 +4168,18 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group34',
+                elementKey: 'ehr_group61',
                 formCss: 'section-divider',
                 gIndex: '2',
                 gChildren: [
                   'bowel',
                   'bSounds',
                   'condition',
-                  'spacer35',
-                  'spacer36',
+                  'spacer62',
+                  'spacer63',
                   'pain',
-                  'spacer37',
-                  'spacer38',
+                  'spacer64',
+                  'spacer65',
                   'aLabel'
                 ]
               },
@@ -4203,7 +4203,7 @@ export default function () {
                 gChildren: [
                   'eating',
                   'reason',
-                  'spacer39',
+                  'spacer66',
                   'npoSinceDay',
                   'npoSinceTime',
                   'weightLoss'
@@ -4223,7 +4223,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group40',
+                elementKey: 'ehr_group67',
                 formCss: 'grid-left-to-right-1 section-divider',
                 gIndex: '6',
                 gChildren: [

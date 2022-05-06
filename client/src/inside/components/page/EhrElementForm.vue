@@ -11,6 +11,9 @@
       div &nbsp;
     hr(v-else-if="isType('horizontal')")
 
+    div(v-else-if="isType(dataTypes.ehrDOB) || isType(dataTypes.ehrPHN) || isType(dataTypes.ehrPatientName) || isType(dataTypes.ehrLocation)" )
+      ehr-element-patient(:element="element", :elementKey="elementKey", :ehrHelp="ehrHelp")
+
     div(v-else-if="isType('ehrFile')")
       ehr-element-file(:elementKey="elementKey", :ehrHelp="ehrHelp")
 
@@ -85,9 +88,11 @@ import EhrElementCommon from './EhrElementCommon.vue'
 import EhrElementCalculated from './EhrElementCalculated'
 import EhrElementCheckset from './EhrElementCheckset'
 import EhrElementFile from './EhrElementFile'
+import EhrElementPatient from '@/inside/components/page/EhrElementPatient'
 import EhrElementLookup from './EhrElementLookup.vue'
 // import DatePicker from 'vuejs-datepicker'
 import UiInfo from '@/app/ui/UiInfo'
+import EhrTypes from '@/helpers/ehr-types'
 
 export default {
   extends: EhrElementCommon,
@@ -95,12 +100,14 @@ export default {
     EhrElementCalculated,
     EhrElementCheckset,
     EhrElementFile,
+    EhrElementPatient,
     // DatePicker,
     EhrElementLookup,
     UiInfo
   },
   props: {},
   computed: {
+    dataTypes () { return EhrTypes.dataInputTypes },
     timeSeries () {
       const ts = []
       for(let i = 0; i < 24; i++) {

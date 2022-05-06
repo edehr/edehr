@@ -10,7 +10,7 @@
 {path: /ehr/patient}	{routeName: care-team}	{pageDataKey: careTeam}	{label: Care team}	{redirect: }	{generateComponent: yes}
 {path: /ehr/patient}	{routeName: past-appointments}	{pageDataKey: pastAppointments}	{label: Past appointments}	{redirect: }	{generateComponent: yes}
 {path: /ehr}	{routeName: current}	eCell	{label: Current visit}	{redirect: visit-details}	eCell
-{path: /ehr/current}	{routeName: visit-details}	{pageDataKey: visit}	{label: Visit details}	{redirect: }	{generateComponent: yes}
+{path: /ehr/current}	{routeName: visit-details}	{pageDataKey: visit}	{label: Visit details and location}	{redirect: }	{generateComponent: yes}
 {path: /ehr/current}	{routeName: vital-signs}	{pageDataKey: vitals}	{label: Vital signs}	{redirect: }	{generateComponent: custom}
 {path: /ehr/current}	{routeName: fluid-balance}	{pageDataKey: fluidBalance}	{label: Fluid balance}	eCell	{generateComponent: yes}
 {path: /ehr/current}	{routeName: assessments}	eCell	{label: Assessments}	{redirect: neurological}	eCell

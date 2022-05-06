@@ -272,7 +272,7 @@
   "children": [
     {
       "name": "visit-details",
-      "label": "Visit details",
+      "label": "Visit details and location",
       "pageDataKey": "visit",
       "routeName": "visit-details",
       "topLevel": "current",
@@ -280,7 +280,7 @@
         "path": "/ehr/current",
         "routeName": "visit-details",
         "pageDataKey": "visit",
-        "label": "Visit details",
+        "label": "Visit details and location",
         "redirect": "",
         "generateComponent": "yes",
         "componentName": "VisitDetails",

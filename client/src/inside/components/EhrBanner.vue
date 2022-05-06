@@ -6,97 +6,49 @@
         div( class="column EhrBanner__content_row--1")
           ul
             li 
-              b {{ lastFirstMiddle }}
+              b {{ patientData.patientName }}
             li Date of birth: &nbsp;
-              b {{ demographics.dateOfBirth }}
+              b {{ patientData.dateOfBirth }}
             li Age: &nbsp;
-              b {{ demographics.personAge }}
+              b {{ patientData.personAge }}
             li Gender: &nbsp;
-              b {{ demographics.gender }}
+              b {{ patientData.gender }}
             li Weight: &nbsp;
-              b {{ `${demographics.weight}kg` }}
+              b {{ patientData.weight }}
         div( class="column EhrBanner__content_row--2")
           ul
             li Code status: &nbsp;
-              b {{ demographics.codeStatus }}
+              b {{ patientData.codeStatus }}
             li PHN: &nbsp;
-              b {{ demographics.phn }}
+              b {{ patientData.phn }}
             li  MRN: &nbsp;
-              b {{ demographics.mrn }}
+              b {{ patientData.mrn }}
             li MRP: &nbsp;
-              b {{ decisionMaker }}
+              b {{ patientData.mrp }}
             li MRP phone: &nbsp;
-              b {{ demographics.decisionMakerPhone}}
+              b {{ patientData.mrpPhone}}
         div( class="column EhrBanner__content_row--3")
           ul
             li Admitting diagnosis: &nbsp;
-              b {{ visitDetails.diagnosis }}
+              b {{ patientData.diagnosis }}
             li Allergies: &nbsp;
-              b {{allergies.allergies}}
+              b {{ patientData.allergies }}
             li Location: &nbsp;
-              b {{ location }}
+              b {{ patientData.location }}
             li Isolation precautions: &nbsp;
               b none
 </template>
 
 <script>
-import UiIntro from '../../app/ui/UiIntro.vue'
-import StoreHelper from '../../helpers/store-helper'
+import UiIntro from '@/app/ui/UiIntro.vue'
+import EhrPatient from '@/inside/components/page/ehr-patient'
 
 export default {
-  name: 'EhrBanner',
   components: {
     UiIntro
   },
-  props: {
-    action: {
-      type: Object
-    }
-  },
   computed: {
-    demographics () {
-      let data = StoreHelper.getMergedData()
-      let asStored = data.demographics || {}
-      let input = JSON.parse(JSON.stringify(asStored))
-      return input
-    },
-    visitDetails () {
-      let data = StoreHelper.getMergedData()
-      let asStored = data.visit || {}
-      let input = JSON.parse(JSON.stringify(asStored))
-      return input
-    },
-    allergies () {
-      let data = StoreHelper.getMergedData()
-      let asStored = data.allergies || {}
-      let input = JSON.parse(JSON.stringify(asStored))
-      return input
-    },
-    location () {
-      var place = ''
-      var locations = this.visitDetails.table || []
-      if (locations.length > 0) {
-        var latest = locations[locations.length - 1]
-        place = latest.location
-      }
-      return place
-    },
-    lastFirstMiddle () {
-      let d = this.demographics
-      const fn = d.familyName
-      const gn = d.givenName
-      const mn = d.middleName
-      let n = fn ? fn : '-'
-      n += gn ? `, ${gn}` : ''
-      n += mn ? `, ${mn}` : ''
-      return n
-    },
-    decisionMaker () {
-      let d = this.demographics
-      let n = d.decisionMakerName ? d.decisionMakerName : ''
-      n += d.decisionMakerRelationship ? ' (' + d.decisionMakerRelationship + ')' : ''
-      return n
-    }
+    patientData () { return EhrPatient.patientData() },
   }
 }
 </script>
