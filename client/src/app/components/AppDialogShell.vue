@@ -9,13 +9,13 @@
             div(class="columns")
               div(class="column is-8")
                 slot(name="header") default header
-              div(class="column is-4 button-area")
+              div(v-if="showTopButtons", class="column is-4 button-area")
                 ui-button(v-on:buttonClicked="$emit('cancel')", v-bind:secondary="true")
                   slot(name="cancel-button") {{ cancelButtonLabel }}
                 ui-button(v-on:buttonClicked="$emit('save')", v-show="useSave", :disabled="disableSave")
                   slot(name="save-button") {{ saveButtonLabel }}
             //ui-close(v-on:close="$emit('cancel')")
-          div(class="dialog-body")
+          div(class="dialog-body", ref="theDialogBody",)
             slot(name="body") default body
           div(class="dialog-footer columns")
             div(class="column is-8")
@@ -82,6 +82,7 @@ export default {
     return {
       moused: false,
       showingDialog: false,
+      showTopButtons: false,
       top: 0,
       left: 0
     }
@@ -140,7 +141,12 @@ export default {
       // console.log('The Dialog h', wh, eh, my, d)
       this.left = mx
       this.top = my
+      let db = this.$refs.theDialogBody
+      let dbh = db.clientHeight
+      this.showTopButtons = dbh > 500
     }
+  },
+  mounted () {
   }
 }
 </script>
@@ -168,6 +174,7 @@ export default {
   flex: 1 100%;
 }
 .dialog-content {
+  min-width: 700px;
   min-height: 40vh;
   max-height: 90vh;
   overflow-y: auto;

@@ -58,12 +58,13 @@ export const demoText = {
     ' When you leave the demonstration all of your demonstration data is reset.' +
     ' Remember this instance of the EdEHR is a prototype and so the admin of this instance may need to reset the system at any time.',
   lmsAside:
-    ' This demonstration page provides a one-page learning management system with preconfigured assignments set to connect with the EdEHR. Some of these' +
+    ' To the right is a one-page learning management system with preconfigured assignments ready to connect with the EdEHR. Some of these' +
     ' sample assignments are based on the open text-book <a href="https://pressbooks.bccampus.ca/healthcasestudies/">Health Case Studies - Toward Closing the Healthcare Communication Gap</a> by:  Glynda Rees, Rob Kruger, Janet Morrison.',
   login: {
-    title: 'Try out the EdEHR',
-    body: 'This is a prototype web application. ' +
-      'If the system needs to be restarted your demonstration data may be lost. ' +
+    title: 'Welcome to your personal EdEHR playground',
+    body: 'This is a sandbox area for you to explore the EdEHR and how it works with learning management systems such as Moodle, Brightspace, etc. ' +
+      'This demonstration mode is only meant for short term explorations. ' +
+      'If you create any course content you need to keep then be sure to download a copy. ' +
       'Contact <a href="mailto:info@edehr.org">info@edehr.org</a> if you have any questions or need help.\n'
   },
   logout: {

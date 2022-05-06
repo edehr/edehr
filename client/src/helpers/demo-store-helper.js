@@ -79,7 +79,7 @@ export default class DemoStoreHelper {
       resource_link_description: assignmentDescription,
       resource_link_id: externalId,
       tool_consumer_instance_guid: theKey,
-      tool_consumer_instance_name: 'Demo LMS',
+      tool_consumer_instance_name: 'Demo Learning Management System',
       tool_consumer_info_version: 'x',
       tool_consumer_info_product_family_code:'EdEHR LMS Demo',
       tool_consumer_instance_description: 'EdEHR provided demonstration LTI tool',

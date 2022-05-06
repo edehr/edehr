@@ -1,30 +1,28 @@
 <template lang="pug">
   div(class="content")
-    div(class="columns")
-      div(class="column is-10 is-offset-1 is-centered")
-        h1(class="has-text-centered") Nursing 101 - Intro to EHR
-      div(class="column is-2")
-        ui-button(v-on:buttonClicked="editMode = !editMode", :class="editButtonClass", title='Edit activity configuration')
-          fas-icon(icon="pen")
     section(class="columns")
 
       div(class="column is-3 aside")
         div(class="aside-section")
-          ul
-            li Demo Persona: {{ demoPersona.name }}
-            li Demo Role: {{ demoPersona.role}}
-            li(v-if='demoPersona.role === "instructor"') Switch role: &nbsp;
-              label
-                input(class="checkbox", type="checkbox", v-model="asStudent")
-                span as student
-              div(v-if='asStudent') When you click on an activity this 'instructor' will become a 'student' same as how Moodle allows users to switch roles.
-          ul
-            li
-              ui-button(v-on:buttonClicked="gotoChangeCharacter()", :secondary="true", title='Change to another persona') Change to another persona
+          div Demo Persona: {{ demoPersona.name }}
+          div Demo Role: {{ demoPersona.role}}
+          div(v-if='demoPersona.role === "instructor"') Switch role: &nbsp;
+            label
+              input(class="checkbox", type="checkbox", v-model="asStudent")
+              span as student
+            div(v-if='asStudent') When you click on an activity this 'instructor' will become a 'student' same as how Moodle allows users to switch roles.
+          div
+            ui-button(v-on:buttonClicked="gotoChangeCharacter()", :secondary="true", title='Change to another persona') Change to another persona
 
         div(class="aside-section", v-text-to-html.noAutoLink="demoText.lmsAside")
       div(class="column is-8 is-offset-1 is-centered")
-
+        div(class="columns")
+          div(class="column is-11")
+            h2 Demonstration Learning Management System
+            h3 Sample Course - Intro to EHR
+          div(class="column is-1")
+            ui-button(v-on:buttonClicked="editMode = !editMode", :class="editButtonClass", title='Edit activity configuration')
+              fas-icon(icon="pen")
         section(v-for="assignment in assignments", :key="`des-${assignment.externalId}`")
           demo-course-activity(:assignment="assignment", :switch-role="asStudent", :edit-mode='editMode')
           hr

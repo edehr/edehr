@@ -19,10 +19,10 @@
                 {{persona.name}}
                 ({{ persona.role==='instructor' ? "instructor" : persona.role==='student' ? "student" : "" }})
 
-            div(v-else) Please choose a user to start the demo.
+            div(v-else) First, please choose a user to start the demonstration mode.
             div
               ui-button(:disabled="!isFormValid", @buttonClicked="submitDemoAccess")
-                span Log into demo LMS
+                span Log into the demonstration learning management system
       div
         div(v-text-to-html="demoText.explanation")
 

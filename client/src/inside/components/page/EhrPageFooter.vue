@@ -1,6 +1,6 @@
 <template lang="pug">
   div(class="assignment-save")
-    div Assignment last saved: {{ ehrHelp.getLastPageDataUpdateDate() }}
+    div Content last saved: {{ ehrHelp.getLastPageDataUpdateDate() }}
     div Page design last saved: {{ ehrHelp.getPageGeneratedDate() }}
 </template>
 

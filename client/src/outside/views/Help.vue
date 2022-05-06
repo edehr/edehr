@@ -2,7 +2,7 @@
   div(class="outside-view")
     h1 About the EdEHR
     div
-      div(v-text-to-html.noAutoLink="appText.resources.body")
+      div(v-text-to-html.noAutoLink="appResourceBody")
 
     h1 EdEHR Help
     div
@@ -62,6 +62,7 @@ export default {
     }
   },
   computed: {
+    appResourceBody () { return this.appText.resources.body(window.location.origin) },
     apiUrl () {
       return StoreHelper.apiUrlGet()
     },

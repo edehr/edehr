@@ -99,7 +99,7 @@ export default {
   display: flex;
   justify-content: flex-end;
   button {
-    margin-top: 1rem;
+    margin-top: 0;
     margin-bottom: 0 !important;
   }
 }
@@ -117,7 +117,7 @@ export default {
   }
 .headerControl {
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 </style>

@@ -4,17 +4,21 @@
       system-message
       div(class="topMenu")
         div(class="navList")
-          div(class="navItem")
+          div(class="navItem navItemShort")
             router-link(:to="{ name: 'home' }", class="navLink app-title") EdEHR
-          div(class="navItem  push", v-if="lmsName")
-            span Return to &nbsp;
-            a(:href="lmsUrl", class="navLink") {{lmsName}}
-          div(v-if="isStudent", class="navItem")
-            router-link(:to="{ name: `ehr` }", class="navLink") Learning Object
-          div(class="navItem")
+          div(class="navItem navItemShort navItemEnd")
             router-link(:to="{ name: `help` }", class="navLink") About
-          div(v-if="isDemo", class="navItem is-pulled-right")
-            div(class="navLink activationItem", v-on:click="toggleShowDemoSubmenu()") Demo
+          div(class="navItem", v-if="lmsName")
+            span Return to: &nbsp;
+            a(:href="lmsUrl", class="navLink") {{lmsName}}
+          //div(v-if="isStudent", class="navItem")
+          //  router-link(:to="{ name: `ehr` }", class="navLink") Learning Object
+          div(v-if="isDemo", class="navItem")
+            div(class="navLink activationItem",
+              @keydown.enter="toggleShowDemoSubmenu()",
+              @keydown.esc="hideDemoMenu()",
+              tabindex=0,
+              v-on:click="toggleShowDemoSubmenu()") Demonstration
               div(class="activationControl")
                 fas-icon(v-show="!showingDemoSubmenu", class="fa", icon="chevron-down")
                 fas-icon(v-show="showingDemoSubmenu", class="fa", icon="chevron-up")
@@ -33,28 +37,23 @@
             router-link(:to="{ name: `developEhrData` }", class="navLink") Seed Data
           div(class="navItem")
             router-link(:to="{ name: `fileList` }", class="navLink") Files
-      div(v-if="isDevEnv", class="thirdMenu")
-        app-dev-menu
     ui-confirm(class="confirmDialog",ref="confirmDialog", @confirm="demoLogOut", save-label="Logout")
 </template>
 <script>
 import SystemMessage from './SystemMessage'
 import StoreHelper from '../../helpers/store-helper'
 import UiButton from '../../app/ui/UiButton'
-import AppDevMenu from './AppDevMenu'
+import UiConfirm from '../../app/ui/UiConfirm'
 import { demoText } from '@/appText'
 
-import UiConfirm from '../../app/ui/UiConfirm'
-
 export default {
-  components: { AppDevMenu, SystemMessage, UiButton, UiConfirm },
+  components: { SystemMessage, UiButton, UiConfirm },
   data () {
     return {
       showingDemoSubmenu: false
     }
   },
   computed: {
-    isDevEnv () { return StoreHelper.isShowingAdvanced() && process.env.NODE_ENV !== 'production' },
     fullName () {
       return StoreHelper.fullName()
     },
@@ -78,6 +77,9 @@ export default {
     }
   },
   methods: {
+    onClickOutside () {
+      console.log('onClickOutside')
+    },
     demoLogoutConfirm () {
       this.$refs.confirmDialog.showDialog(demoText.logout.title, demoText.logout.body)
       this.hideDemoMenu()
@@ -94,6 +96,7 @@ export default {
       this.showingDemoSubmenu = true
     },
     hideDemoMenu () {
+      console.log('esc')
       this.showingDemoSubmenu = false
     },
     toggleShowDemoSubmenu () {
@@ -115,6 +118,18 @@ header {
   color: $grey80;
 }
 
+.navList {
+  display: flex;
+}
+.navItemShort {
+  max-width: 10%;
+}
+.navItem {
+  //flex: 1 1 0;
+}
+.navItemEnd {
+  margin-right: auto;
+}
 /* Menu colours */
 .topMenu {
   background: $toolbar-background-color;
