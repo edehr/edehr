@@ -95,7 +95,7 @@ module.exports = function () {
       path: '/ehr/current',
       routeName: 'visit-details',
       pageDataKey: 'visit',
-      label: 'Visit details',
+      label: 'Visit details and location',
       redirect: '',
       generateComponent: 'yes'
     },

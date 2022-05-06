@@ -55,7 +55,7 @@ export default function () {
           fqn: 'progressNotes.note'
         }
       ],
-      generated: '2022-04-22T10:27:54-07:00',
+      generated: '2022-05-05T17:05:01-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -219,7 +219,7 @@ export default function () {
           fqn: 'carePlan.status'
         }
       ],
-      generated: '2022-04-22T10:27:54-07:00',
+      generated: '2022-05-05T17:05:01-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -381,7 +381,7 @@ export default function () {
           fqn: 'consults.comments'
         }
       ],
-      generated: '2022-04-22T10:27:54-07:00',
+      generated: '2022-05-05T17:05:01-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -516,7 +516,7 @@ export default function () {
           fqn: 'labResults.comments'
         }
       ],
-      generated: '2022-04-22T10:27:54-07:00',
+      generated: '2022-05-05T17:05:01-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -651,7 +651,7 @@ export default function () {
           fqn: 'medicalImaging.comments'
         }
       ],
-      generated: '2022-04-22T10:27:54-07:00',
+      generated: '2022-05-05T17:05:01-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -786,7 +786,7 @@ export default function () {
           fqn: 'operationReports.comments'
         }
       ],
-      generated: '2022-04-22T10:27:54-07:00',
+      generated: '2022-05-05T17:05:01-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -905,7 +905,7 @@ export default function () {
         {
           elementKey: 'patientName',
           formIndex: '1',
-          inputType: 'text',
+          inputType: 'ehrPatientName',
           label: 'Patient Name',
           tableColumn: '2',
           fqn: 'hemotology.patientName'
@@ -913,7 +913,7 @@ export default function () {
         {
           elementKey: 'patientHealthNumber',
           formIndex: '1',
-          inputType: 'text',
+          inputType: 'ehrPHN',
           label: 'PHN',
           tableColumn: '3',
           fqn: 'hemotology.patientHealthNumber'
@@ -921,7 +921,7 @@ export default function () {
         {
           elementKey: 'dateOfBirth',
           formIndex: '1',
-          inputType: 'text',
+          inputType: 'ehrDOB',
           label: 'DOB',
           tableColumn: '4',
           fqn: 'hemotology.dateOfBirth'
@@ -1081,7 +1081,7 @@ export default function () {
         {
           elementKey: 'patientName',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'ehrPatientName',
           label: 'Patient Name',
           tableColumn: '2',
           fqn: 'hemotology.patientName'
@@ -1089,7 +1089,7 @@ export default function () {
         {
           elementKey: 'patientHealthNumber',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'ehrPHN',
           label: 'PHN',
           tableColumn: '3',
           fqn: 'hemotology.patientHealthNumber'
@@ -1097,7 +1097,7 @@ export default function () {
         {
           elementKey: 'dateOfBirth',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'ehrDOB',
           label: 'DOB',
           tableColumn: '4',
           fqn: 'hemotology.dateOfBirth'
@@ -1795,14 +1795,14 @@ export default function () {
           fqn: 'hemotology.explain'
         }
       ],
-      generated: '2022-04-22T10:27:54-07:00',
+      generated: '2022-05-05T17:05:01-07:00',
       pageElements: {
         tableAnalysis: {
           elementKey: 'tableAnalysis',
           tableKey: 'tableAnalysis',
           isTable: true,
           hasRecHeader: false,
-          addButtonText: 'Add a blood analysis report',
+          addButtonText: 'Add a CBC Report',
           ehr_list: [
             {
               label: 'Identification',
@@ -1913,7 +1913,7 @@ export default function () {
           ],
           form: {
             elementKey: 'tableAnalysis',
-            addButtonText: 'Add a blood analysis report',
+            addButtonText: 'Add a CBC Report',
             formKey: 'tableAnalysis',
             ehr_groups: [
               {
@@ -1992,7 +1992,7 @@ export default function () {
           tableKey: 'tableReview',
           isTable: true,
           hasRecHeader: false,
-          addButtonText: 'Add a blood review report',
+          addButtonText: 'Add a PBF report',
           ehr_list: [
             {
               label: 'Identification',
@@ -2443,7 +2443,7 @@ export default function () {
           ],
           form: {
             elementKey: 'tableReview',
-            addButtonText: 'Add a blood review report',
+            addButtonText: 'Add a PBF report',
             formKey: 'tableReview',
             ehr_groups: [
               {

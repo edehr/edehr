@@ -17,6 +17,10 @@ const EhrTypes = {
     calculatedValue: 'calculatedValue',
     checkset: 'checkset',
     date: 'date',
+    ehrDOB: 'ehrDOB', // date of birth
+    ehrPHN: 'ehrPHN',
+    ehrPatientName: 'ehrPatientName',
+    ehrLocation: 'ehrLocation',
     // day: 'day',
     ehrFile: 'ehrFile',
     text: 'text',

@@ -48,7 +48,7 @@ export default function () {
         {
           elementKey: 'patientName',
           formIndex: '1',
-          inputType: 'text',
+          inputType: 'ehrPatientName',
           label: 'Patient Name',
           tableColumn: '2',
           fqn: 'labRequisitions.patientName'
@@ -56,7 +56,7 @@ export default function () {
         {
           elementKey: 'patientHealthNumber',
           formIndex: '1',
-          inputType: 'text',
+          inputType: 'ehrPHN',
           label: 'PHN',
           tableColumn: '3',
           fqn: 'labRequisitions.patientHealthNumber'
@@ -64,7 +64,7 @@ export default function () {
         {
           elementKey: 'dateOfBirth',
           formIndex: '1',
-          inputType: 'text',
+          inputType: 'ehrDOB',
           label: 'DOB',
           tableColumn: '4',
           fqn: 'labRequisitions.dateOfBirth'
@@ -72,7 +72,7 @@ export default function () {
         {
           elementKey: 'location',
           formIndex: '1',
-          inputType: 'text',
+          inputType: 'ehrLocation',
           label: 'Location',
           tableColumn: '5',
           fqn: 'labRequisitions.location'
@@ -320,7 +320,7 @@ export default function () {
           fqn: 'labRequisitions.histologyLocation'
         }
       ],
-      generated: '2022-04-22T10:27:54-07:00',
+      generated: '2022-05-05T17:05:01-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
