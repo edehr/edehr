@@ -7,7 +7,7 @@
         div(class="dialog-content")
           div(class="dialog-header")
             div(class="columns")
-              div(class="column is-8")
+              div(class="column", :class="{ 'is-8': showTopButtons}")
                 slot(name="header") default header
               div(v-if="showTopButtons", class="column is-4 button-area")
                 ui-button(v-on:buttonClicked="$emit('cancel')", v-bind:secondary="true")
