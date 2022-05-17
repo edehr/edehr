@@ -36,6 +36,7 @@ export default {
   },
   mounted: function () {
     const _this = this
+    // TODO clean up the table refresh event .. it appears to be unsused
     this.refreshEventHandler = function () {
       // console.log('receive TABLE_DATA_REFRESH_EVENT')
       _this.refresh()

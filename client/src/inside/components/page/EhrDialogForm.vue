@@ -1,4 +1,7 @@
 <template lang="pug">
+  div
+    div(v-if='ehrOnlyDemo')
+      ui-agree(ref="aggreeDialog")
     app-dialog(
       :isModal="true",
       ref="theDialog",
@@ -21,17 +24,19 @@
 
 <script>
 import AppDialog from '../../../app/components/AppDialogShell'
+import UiAgree from '@/app/ui/UiAgree'
 import CaseContext from '@/helpers/case-context'
 import EhrGroup from './EhrGroup'
 import EventBus from '../../../helpers/event-bus'
-
+import EhrOnlyDemo from '@/helpers/ehr-only-demo'
 const debug = false
 
 export default {
   name: 'EhrDialogForm',
   components: {
     EhrGroup,
-    AppDialog
+    AppDialog,
+    UiAgree
   },
   data: function () {
     return {
@@ -44,6 +49,9 @@ export default {
     tableDef: { type: Object },
   },
   computed: {
+    ehrOnlyDemo () {
+      return EhrOnlyDemo.isActiveEhrOnlyDemo()
+    },
     tableKey () {
       return this.tableDef.tableKey
     },
@@ -82,6 +90,14 @@ export default {
       this.errorList = []
     },
     saveDialog: function () {
+      // TODO Fix the EHR Only demo defects on table save
+      const msg = 'This EHR demonstration is a feature introduced in May 2022. \n' +
+        'This demo has two defects that impact will ' +
+        'your experience. First, after save the your new data does not appear. Simply, select another EHR page and ' +
+        'come back to see your list. Second, the base seed case data is duplicated. This message will be removed ' +
+        'as soon as the defects are resolved.'
+      this.$refs.aggreeDialog.showDialog('Advisory', msg)
+
       let errs = this.ehrHelp.saveDialog()
       if (errs) {
         this.errorList = errs

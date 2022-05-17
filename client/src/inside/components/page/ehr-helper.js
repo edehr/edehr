@@ -427,7 +427,7 @@ export default class EhrHelpV2 {
   }
 
   _dialogEvent (tableKey, open) {
-    if (dbLeave) console.log('EhrHelpV2 _dialogEvent', tableKey, open)
+    if (dbDialog) console.log('EhrHelpV2 _dialogEvent', tableKey, open)
     let dialog = this.tableFormMap[tableKey]
     dialog.active = open
     this._clearDialogInputs(dialog)

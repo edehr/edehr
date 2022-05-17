@@ -2,7 +2,8 @@
   div(class="ui-agree")
     app-dialog(:isModal="true", ref="theDialog", :useSave="false", @cancel="cancelDialog", cancelButtonLabel="OK")
       h2(slot="header") {{ title }}
-      div(slot="body") {{ text }}
+      div(slot="body")
+        p {{ text }}
   
 </template>
 
