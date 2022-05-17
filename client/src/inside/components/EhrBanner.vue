@@ -1,7 +1,6 @@
 <template lang="pug">
   div( class="EhrBanner EhrPanelContent")
     div( class="EhrBanner_Inner EhrPanelContent_Inner")
-      ui-intro(class="EhrBanner__intro")
       div( class="columns EhrBanner__content grid-left-to-right-3")
         div( class="column EhrBanner__content_row--1")
           ul
@@ -35,18 +34,14 @@
               b {{ patientData.allergies }}
             li Location: &nbsp;
               b {{ patientData.location }}
-            li Isolation precautions: &nbsp;
-              b none
+            //li Isolation precautions: &nbsp;
+            //  b none
 </template>
 
 <script>
-import UiIntro from '@/app/ui/UiIntro.vue'
 import EhrPatient from '@/inside/components/page/ehr-patient'
 
 export default {
-  components: {
-    UiIntro
-  },
   computed: {
     patientData () { return EhrPatient.patientData() },
   }

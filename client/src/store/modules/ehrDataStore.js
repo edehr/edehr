@@ -1,13 +1,11 @@
 import InstoreHelper from './instoreHelper'
-import { decoupleObject } from '../../helpers/ehr-utils'
-import { ehrMergeEhrData, ehrMarkSeed } from '../../helpers/ehr-utils'
-import EhrDefs from '../../helpers/ehr-defs-grid'
-import StoreHelper from '../../helpers/store-helper'
+import { decoupleObject, ehrMergeEhrData, ehrMarkSeed } from '@/helpers/ehr-utils'
+import EhrDefs from '@/helpers/ehr-defs-grid'
+import StoreHelper from '@/helpers/store-helper'
 
 const debug = false
 
-const state = {
-}
+const state = {}
 
 const _getTables = (obj = {}) => {
   return Object.keys(obj).filter(o => o.includes('table') || o.includes('stacked'))
@@ -15,17 +13,14 @@ const _getTables = (obj = {}) => {
 
 const _hasOnlyTables = (obj) => {
   const tableLength = _getTables(obj).length
+  // flakey way to see if the objects on this page are only tables
   const objectLength = Object.keys(obj).filter(k => k !== 'lastUpdate').length
   return tableLength > 0 && objectLength === tableLength
 }
 
-const _hasTables = (obj) => {
-  return _getTables(obj).length > 0 
-}
+const _hasTables = (obj) => { return _getTables(obj).length > 0 }
 
-const _hasAnyData = (obj) => {
-  return _hasTables(obj) ? _doTablesHaveData(obj) : !! obj
-}
+const _hasAnyData = (obj) => { return _hasTables(obj) ? _doTablesHaveData(obj) : !! obj }
 
 const _doTablesHaveData = (obj) => {
   let hasData = false
@@ -41,30 +36,57 @@ const _doTablesHaveData = (obj) => {
 }
 
 const getters = {
+  ehrOnly: (state, getters, rootState, rootGetters) => {
+    return rootGetters['ehrOnlyDemoStore/isActiveEhrOnlyDemo']
+  },
+  secondLevel: (state, getters, rootState, rootGetters) => {
+    let secondLevelData
+    if (StoreHelper.isSeedEditing()) {
+      // no second level
+    } else if (getters.ehrOnly) {
+      secondLevelData = rootGetters['ehrOnlyDemoStore/ehrOnlyData']
+    } else if (InstoreHelper.instoreIsInstructor(rootState)) {
+      secondLevelData = StoreHelper.getCurrentEvaluationStudentAssignmentData()
+    } else {
+      secondLevelData = rootGetters['activityDataStore/assignmentData'] || {}
+    }
+    return secondLevelData ? decoupleObject(secondLevelData) : undefined
+  },
+  baseLevel: (state, getters, rootState, rootGetters) => {
+    let baseLevelData = decoupleObject(rootGetters['seedListStore/seedEhrData'] || {})
+    if (StoreHelper.isSeedEditing()) {
+      // base already set above
+    } else if (getters.ehrOnly) {
+      baseLevelData = decoupleObject(rootGetters['ehrOnlyDemoStore/ehrOnlyDataSeed'])
+    } else if (InstoreHelper.instoreIsInstructor(rootState)) {
+      // base already set above
+    } else {
+      // type = 'Student merged data'
+      baseLevelData = ehrMarkSeed(baseLevelData)
+    }
+    return baseLevelData
+  },
   mergedData: (state, getters, rootState, rootGetters) => {
     let type = ''
-    let mData, studentAssignmentData
-    // todo put this get into a helper and ditto for below
-    let ehrSeedData = decoupleObject(rootGetters['seedListStore/seedEhrData'] || {})
+    let mData
+    const baseLevelData = getters.baseLevel
+    const secondLevelData = getters.secondLevel
     if (StoreHelper.isSeedEditing()) {
       type = 'Seed Editing'
-      mData = ehrSeedData
+      mData = baseLevelData
+    } else if (getters.ehrOnly) {
+      type = 'EHR Only demo'
     } else if (InstoreHelper.instoreIsInstructor(rootState)) {
       type = 'Instructor wants student data'
-      studentAssignmentData = StoreHelper.getCurrentEvaluationStudentAssignmentData()
     } else {
       type = 'Student merged data'
-      studentAssignmentData = StoreHelper.getStudentAssignmentData()
-      // mark all elements in the page arrays to allow us to strip the seed data out before saving
-      ehrSeedData = ehrMarkSeed(ehrSeedData)
     }
-    if (debug) console.log('EhrData ' + type, studentAssignmentData)
-    if (studentAssignmentData) {
-      studentAssignmentData = decoupleObject(studentAssignmentData)
-      mData = ehrMergeEhrData(ehrSeedData, studentAssignmentData)
+    if (debug) console.log('EhrData type: ' + type, secondLevelData)
+    if (secondLevelData) {
+      mData = ehrMergeEhrData(baseLevelData, secondLevelData)
       if (debug) {
-        console.log('EhrData seed  ', ehrSeedData)
-        console.log('EhrData data  ', studentAssignmentData)
+        console.log('EhrData base  ', baseLevelData)
+        console.log('EhrData second  ', secondLevelData)
         console.log('EhrData merged', mData)
       }
     }
@@ -72,34 +94,36 @@ const getters = {
   },
   hasDataForPagesList (state, getters, rootState, rootGetters) {
     const pageKeys = EhrDefs.getAllPageKeys()
-    const mergedData = getters.mergedData || {}
-    const seedData = rootGetters['seedListStore/seedEhrData'] || {}
-    const studentData = rootGetters['activityDataStore/assignmentData'] || {}
+    const baseLevelData = getters.baseLevel
+    const secondLevelData = getters.secondLevel || {}
+    const mergedData = getters.mergedData
     let results = {}
-    pageKeys.forEach( key => { 
-      const combinedObject = Object.assign({}, 
-        mergedData[key], 
-        seedData[key], 
-        studentData[key]
-      )
-      results[key] = { pagekey: key }
+    pageKeys.forEach( pagekey => {
+      const mergedDatum = mergedData[pagekey]
+      const seedDatum = baseLevelData[pagekey]
+      const studentDatum = secondLevelData[pagekey]
+      const combinedObject = Object.assign({}, mergedDatum, seedDatum, studentDatum)
+      let hasMerged, hasSeed, hasStudent
       if (_hasOnlyTables(combinedObject)) {
-        results[key].hasMerged = _doTablesHaveData(mergedData[key])
-        results[key].hasSeed = _doTablesHaveData(seedData[key])
-        results[key].hasStudent =  _doTablesHaveData(studentData[key])
+        hasMerged = _doTablesHaveData(mergedDatum)
+        hasSeed = _doTablesHaveData(seedDatum)
+        hasStudent =  _doTablesHaveData(studentDatum)
       } else if (_hasTables(combinedObject)) {
-        results[key].hasMerged = _hasAnyData(mergedData[key])
-        results[key].hasSeed = _hasAnyData(seedData[key])
-        results[key].hasStudent = _hasAnyData(studentData[key])
+        hasMerged = _hasAnyData(mergedDatum)
+        hasSeed = _hasAnyData(seedDatum)
+        hasStudent = _hasAnyData(studentDatum)
       } else {
-        results[key].hasMerged =  !!mergedData[key]
-        results[key].hasSeed =  !!seedData[key]
-        results[key].hasStudent =  !!studentData[key]
+        hasMerged =  !!mergedDatum
+        hasSeed =  !!seedDatum
+        hasStudent =  !!studentDatum
+      }
+      results[pagekey] = {
+        pagekey: pagekey,
+        hasMerged: hasMerged,
+        hasSeed: hasSeed,
+        hasStudent: hasStudent
       }
     })
-    if (debug) console.log('EhrData hasDataForPagesList pageKeys', pageKeys)
-    if (debug) console.log('EhrData hasDataForPagesList mergedData', mergedData)
-    if (debug) console.log('EhrData hasDataForPagesList seedData', seedData)
     if (debug) console.log('EhrData hasDataForPagesList results', results)
     return results
   },

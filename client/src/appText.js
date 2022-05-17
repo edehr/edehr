@@ -1,14 +1,16 @@
 /* eslint-disable quote-props,quotes */
 
+const commonTitle = "EdEHR - a Canadian, open source, educational electronic health record system."
+
 export const appText = {
   "heroText": {
-    "title": "EdEHR - a Canadian, open source, educational electronic health record system.",
+    "title": commonTitle,
     "subTitle": "Student focused, simulated case studies, laddered case studies, with decision supports and customizable.",
     "introText": "EdEHR is short for Educational Electronic Health Record. It is an educational tool designed for medical education programs that seek a Canadian system that is focused on the student experience. EdEHR is suitable for all health care programs including, but not limited to, nursing, medicine, pharmacy, physiotherapy and more. EdEHR can be connected with many learning management systems including Moodle, Canvas, Blackboard, and other <a href=\"https://www.imsglobal.org/activity/learning-tools-interoperability\">LTI</a> compliant learning systems. Each institution can customize the course content or seek ways to share resources with other institutions. EdEHR is an open source project.\n For more information jump to the <a href=\"#resources\">resources </a> section below. If you need help or have a question about the EdEHR then send an email to <a href=\"mailto:info@edehr.org\">info@edehr.org</a>"
   },
   "resources": {
     "title": "About the EdEHR and Resources",
-    "body": (host) => `The EdEHR is a <a href=\"https://bccampus.ca/\">BCcampus</a> project funded by the British Columbia Ministry of Advanced Education, Skills and Training. Here is a link to the <a href=\"https://bccampus.ca/2018/01/23/bccampus-launches-the-educational-electronic-health-record-system-project-in-b-c/\">BCcampus announcement</a> and you can read more about the announcement in this BCcampus <a href=\"https://bccampus.ca/2020/01/07/an-education-in-electronic-health-records/\">blog post</a>.  The EdEHR project requirements are based on this <a href=\"https://edehr.org/EdEHR_Env_Scan_June%204_2018-Published.pdf\">Environmental Scan Report</a> published June 4, 2018. And the project was directed by a stakeholder group from the British Columbia Institute of Technology (<a href=\"https://www.bcit.ca/\">BCIT</a>), the University of British Columbia (<a href=\"https://www.ubc.ca/\">UBC</a>), and the University of Victoria (<a href=\"https://www.uvic.ca/\">UVic</a>)\nTo learn more see<ul><li> * <a href=\"https://edehr.github.io/edehr/\">the EdEHR documentation site</a> </li><li> * <a href=\"https://github.com/edehr/edehr\">the EdEHR open source code repository on GitHub</a> </li><li> * <a href=\"https://www.youtube.com/channel/UCVlhKFf-VHqp3JAY3TDIemw\">some videos on YouTube that demonstrate how the EdEHR works</a> </li></ul>\nIf you need further help or have a question about the EdEHR then send an email to <a href=\"mailto:info@edehr.org\">info@edehr.org</a>`
+    "body": (host) => `The EdEHR is a <a href=\"https://bccampus.ca/\">BCcampus</a> project funded by the British Columbia Ministry of Advanced Education, Skills and Training. Here is a link to the <a href=\"https://bccampus.ca/2018/01/23/bccampus-launches-the-educational-electronic-health-record-system-project-in-b-c/\">BCcampus announcement</a> and you can read more about the announcement in this BCcampus <a href=\"https://bccampus.ca/2020/01/07/an-education-in-electronic-health-records/\">blog post</a>.  The EdEHR project requirements are based on this <a href=\"https://edehr.org/assets/EdEHR_Env_Scan_June%204_2018-Published.pdf\">Environmental Scan Report</a> published June 4, 2018. And the project was directed by a stakeholder group from the British Columbia Institute of Technology (<a href=\"https://www.bcit.ca/\">BCIT</a>), the University of British Columbia (<a href=\"https://www.ubc.ca/\">UBC</a>), and the University of Victoria (<a href=\"https://www.uvic.ca/\">UVic</a>)\nTo learn more see<ul><li> * <a href=\"https://edehr.github.io/edehr/\">the EdEHR documentation site</a> </li><li> * <a href=\"https://github.com/edehr/edehr\">the EdEHR open source code repository on GitHub</a> </li><li> * <a href=\"https://www.youtube.com/channel/UCVlhKFf-VHqp3JAY3TDIemw\">some videos on YouTube that demonstrate how the EdEHR works</a> </li></ul>\nIf you need further help or have a question about the EdEHR then send an email to <a href=\"mailto:info@edehr.org\">info@edehr.org</a>`
   },
   "related": {
     "title": "Related resources",
@@ -71,6 +73,31 @@ export const demoText = {
     title: 'Confirm exit demonstration mode',
     body: 'Exit and destroy your demonstration environment. If you created or modified any EHR seeds you may wish to save a copy first. Cancel this dialog and return to the Seeds section (as an instructor) and download copies of your modified seeds. Then exit this demonstration mode.'
   }
+}
+
+export const ehrOnlyDemoText = {
+  title: 'Try the EHR side of the EdEHR',
+  intro: 'The EdEHR is a Canadian, open source, educational electronic health record system designed to ' +
+    'support both students and faculty. ' +
+    'Training students on educational EHRs provides a realistic environment where students can learn without endangering patient safety and they can learn the importance of interdisciplinary communication. ' +
+  'Post-secondary programs can adapt the system to accommodate their educational needs. Faculty can adapt the case studies to accommodate their learning objectives.\n' +
+    'The button below will allow you to see the EHR side of the EdEHR. Of course, this is just half of the application because the EdEHR also supports faculty as they educate their students and develop course content.  If you wish to learn more about the whole application then please contact <a href=\"mailto:info@edehr.org\">info@edehr.org</a>. ',
+  explanation:
+    'When you enter the EHR you will see a sample case study that is based on the open text-book ' +
+    '"Health Case Studies - Toward Closing the Healthcare Communication Gap" ' +
+    'by:  Glynda Rees, Rob Kruger, Janet Morrison. ' +
+    'See: page 31 Case Study #2 in https://pressbooks.bccampus.ca/healthcasestudies/ \n' +
+    'In this case the patient has COPD that is exacerbated due to community acquired pneumonia. ' +
+    'The patient in this case study has a complicated health history. ' +
+    'The focus for this assignment is help the student complement their assessment and monitoring skills ' +
+    'with accurate and careful recording within an electronic health record system. ' +
+    'Imagine that you are a nursing student your second or third years of study. Your task is to review ' +
+    'the patients current condition and prepare a progress note for the attending physician. \n',
+  after:'In the full EdEHR the student is given support with information about the assigned task and they ' +
+    'are expected to submit their completed work for review. ' +
+    'The faculty can then review and comment on the work and even send ' +
+    'the work back to the student for refinement. The evaluation notes can later be transfered to the' +
+    'institutions learning management system.'
 }
 
 export const edEhrValues = [

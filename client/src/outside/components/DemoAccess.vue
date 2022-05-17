@@ -16,7 +16,7 @@
         div You are already logged into the demonstration. &nbsp;
           ui-link(:name="'demo'") Click here to return to the demonstration page.
       div(v-else class="demoLogin")
-        ui-button(class="",@buttonClicked="demoLoginConfirm") Try out the prototype EdEHR
+        ui-button(class="",@buttonClicked="demoLoginConfirm") Try out the EdEHR within a demonstration learning management system
     div(v-else).
       Coming soon!  The EdEHR will have a demonstration version. Contact <a href="mailto:info@edehr.org">info@edehr.org</a> for more information.
     ui-confirm(class="confirmDialog",ref="confirmDemoDialog", @confirm="proceedDemoToolConsumerCreation", htmlBody, saveLabel="Continue")

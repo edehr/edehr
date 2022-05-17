@@ -1,11 +1,12 @@
 import moment from 'moment'
 import camelcase from 'camelcase'
 import { saveAs } from 'file-saver'
-// import filenamify from 'filenamify'
 import EhrDefs from './ehr-defs-grid'
 import { Text } from './ehr-text'
 import validFilename  from 'valid-filename'
 import StoreHelper from './store-helper'
+import EhrOnlyDemo from '@/helpers/ehr-only-demo'
+// import filenamify from 'filenamify'
 
 const debug = false
 const debugErrs = false
@@ -345,6 +346,43 @@ export function prepareAssignmentPageDataForSave (aPage) {
   cleanValue = ehrRemoveMarkedSeed(cleanValue)
   return cleanValue
 }
+
+export function getMergedData (state, getters, rootState, rootGetters) {
+  console.log('ehrDataStore mergedData start merging here')
+  let type = ''
+  let mData, studentAssignmentData
+  const ehrOnly = EhrOnlyDemo.isActiveEhrOnlyDemo()
+  const isInstructor = StoreHelper.isInstructor()
+  let ehrSeedData = decoupleObject(StoreHelper.getSeedEhrData() || {})
+  if (StoreHelper.isSeedEditing()) {
+    type = 'Seed Editing'
+    mData = ehrSeedData
+  } else if (ehrOnly) {
+    type = 'EHR Only demo'
+    ehrSeedData = decoupleObject(EhrOnlyDemo.getEhrOnlySeedData())
+    studentAssignmentData = EhrOnlyDemo.getEhrOnlyUserData()
+  } else if (isInstructor) {
+    type = 'Instructor wants student data'
+    studentAssignmentData = StoreHelper.getCurrentEvaluationStudentAssignmentData()
+  } else {
+    type = 'Student merged data'
+    studentAssignmentData = StoreHelper.getStudentAssignmentData()
+    // mark all elements in the page arrays to allow us to strip the seed data out before saving
+    ehrSeedData = ehrMarkSeed(ehrSeedData)
+  }
+  if (debug) console.log('EhrData type: ' + type, studentAssignmentData)
+  if (studentAssignmentData) {
+    studentAssignmentData = decoupleObject(studentAssignmentData)
+    mData = ehrMergeEhrData(ehrSeedData, studentAssignmentData)
+    if (debug) {
+      console.log('EhrData seed  ', ehrSeedData)
+      console.log('EhrData data  ', studentAssignmentData)
+      console.log('EhrData merged', mData)
+    }
+  }
+  return mData || {}
+}
+
 export function ehrMergeEhrData (one, two) {
   one = one || {}
   two = two || {}

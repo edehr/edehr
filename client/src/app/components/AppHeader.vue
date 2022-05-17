@@ -6,6 +6,8 @@
         div(class="navList")
           div(class="navItem navItemShort")
             router-link(:to="{ name: 'home' }", class="navLink app-title") EdEHR
+          div(v-if="showEhrOnlyDemoLink", class="navItem navItemShort")
+            router-link(:to="{ name: 'ehrOnlyDemo' }", class="navLink") EHR Demo
           div(class="navItem navItemShort navItemEnd")
             router-link(:to="{ name: `help` }", class="navLink") About
           div(class="navItem", v-if="lmsName")
@@ -42,6 +44,7 @@
 <script>
 import SystemMessage from './SystemMessage'
 import StoreHelper from '../../helpers/store-helper'
+import EhrOnlyDemo from '@/helpers/ehr-only-demo'
 import UiButton from '../../app/ui/UiButton'
 import UiConfirm from '../../app/ui/UiConfirm'
 import { demoText } from '@/appText'
@@ -74,6 +77,12 @@ export default {
     },
     showDashboard () {
       return this.isInstructor
+    },
+    showEhrOnlyDemoLink () {
+      return !this.isDemo
+    },
+    isEhrOnlyDemoActive () {
+      return EhrOnlyDemo.isActiveEhrOnlyDemo()
     }
   },
   methods: {
@@ -101,6 +110,14 @@ export default {
     },
     toggleShowDemoSubmenu () {
       this.showingDemoSubmenu = !this.showingDemoSubmenu
+    },
+    toggleEhrOnlyDemo () {
+      if (this.isEhrOnlyDemoActive) {
+        EhrOnlyDemo.setInactiveEhrActive()
+      }
+      else {
+        EhrOnlyDemo.setActiveEhrActive()
+      }
     }
   }
 }

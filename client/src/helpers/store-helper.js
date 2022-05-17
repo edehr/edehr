@@ -19,7 +19,9 @@ class StoreHelperWorker {
 
   getAsLoadedPageData (pageKey) { return store.getters['ehrDataStore/asLoadedDataForPageKey'](pageKey) }
 
-  getMergedData () { return store.getters['ehrDataStore/mergedData'] }
+  getMergedData () {
+    return store.getters['ehrDataStore/mergedData']
+  }
 
   getHasDataForPagesList () { return store.getters['ehrDataStore/hasDataForPagesList'] }
 

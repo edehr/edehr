@@ -1,11 +1,11 @@
-
-import EventBus from './event-bus'
-import StoreHelper from './store-helper'
-import router from '../router'
-import { routeIsEHR }  from '../router'
-import { setAuthHeader } from './axios-helper'
-import { PAGE_DATA_REFRESH_EVENT, PAGE_DATA_READY_EVENT } from './event-bus'
-import { Text } from './ehr-text'
+import EventBus from '@/helpers/event-bus'
+import EhrOnlyDemo from '@/helpers/ehr-only-demo'
+import StoreHelper from '@/helpers/store-helper'
+import router from '@/router'
+import { routeIsEHR }  from '@/router'
+import { setAuthHeader } from '@/helpers/axios-helper'
+import { PAGE_DATA_REFRESH_EVENT, PAGE_DATA_READY_EVENT } from '@/helpers/event-bus'
+import { Text } from '@/helpers/ehr-text'
 
 const debugApp = false
 
@@ -18,19 +18,32 @@ function dblog (msg, ...args) {
   }
 }
 
+/**
+ * There is just one instance of PageController owned by the main.js entry point.
+ * PageController is responsible for the page load event.
+ */
 class PageControllerInner {
   constructor () {
     this.hasLoadedData = false
   }
 
   /**
-   * onPageChange is onvoked from main.js whenever a route has changed.
+   * onPageChange is invoked from main.js whenever a route has changed.
    * @param route - the 'to' route. We can get the 'from' if needed.
    * @return {Promise<unknown>}
    */
   async onPageChange (route) {
     dblog('onPageChange', route.meta)
     const {seedEditId, evaluatingStudent, lti} = route.query || {}
+    /*
+    First we make adjustments.
+    If Seed Editing then user is a content designer is coming from the Seeds pages.
+    If Eval Student then user is an instructor and is going to view ehr pages to see student's work.
+    If LIT then user is a student arriving here from a LTI consumer.
+    Otherwise;
+      user is navigating around the EHR pages or
+      user is not in ehr section.
+     */
     if(seedEditId) {
       // New approach to be sure seed editor can refresh their browser while editing a see.
       dblog('User is editing seed. Stash state for possible page refresh', seedEditId)
@@ -54,12 +67,12 @@ class PageControllerInner {
     }
     else if (routeIsEHR(route)) {
       dblog('In app page change.')
-      const { viewSeed } = route.query
-      if (viewSeed) {
-        console.error('To do, restore the readonly viewing of seed feature')
-        // this.setReadOnlyInstructor(true)
-        // StoreHelper.setIsReadOnlyInstructor(isReadOnly)
-      }
+      // const { viewSeed } = route.query
+      // if (viewSeed) {
+      //   console.error('To do, restore the readonly viewing of seed feature')
+      //   // this.setReadOnlyInstructor(true)
+      //   // StoreHelper.setIsReadOnlyInstructor(isReadOnly)
+      // }
     } else {
       dblog('User not in the EHR so clear any active seed editing ids')
       StoreHelper.setSeedEditId('')
@@ -85,6 +98,8 @@ class PageControllerInner {
   }
 
   async _loadData (route) {
+    // If there is a demo token in local memory then the user is using the full demo mode
+    // Note there is now a just ehr demo load below and that is not a full demo mode.
     const demoToken = StoreHelper.getDemoToken()
     const isDemo = !!demoToken
 
@@ -97,10 +112,15 @@ class PageControllerInner {
     // if we have either token then we have an LTI user who wants into the app.
     const isUser = refreshToken || authToken
 
+    // call into the api to get and store in memory api data, which includes page title
     await StoreHelper.loadApiData()
     document.title = StoreHelper.getAppTitle ()
 
+    // assume page load is for real work and not the ehr only demo
+    EhrOnlyDemo.setActiveEhrActive(false)
+
     if (isDemo) {
+      // set up demo and RETURN from function
       dblog('_loadData load demo data')
       await StoreHelper.loadDemoData()
       if (!isUser) {
@@ -111,10 +131,16 @@ class PageControllerInner {
     }
 
     if (!isUser) {
-      dblog('_loadData not a demo page not LTI. User is visiting a public page. No further loading needed')
+      dblog('_loadData set up EHR ONLY only demo and RETURN from function')
+      EhrOnlyDemo.setActiveEhrActive(true)
+      // await EhrOnlyDemo.loadEhrOnlyDemo()
+      // dblog('_loadData EHR Only demo DONE. Send events',  PAGE_DATA_REFRESH_EVENT)
+      // to load the page data
+      EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
       return
     }
 
+    // not full ehr demo and page is loading for an LTI user....
     dblog('_loadData load user authorization data')
     //  Will now do the LTI auth. This results in a lot of data from the server and this data will be
     // be pushed into the storage.s
