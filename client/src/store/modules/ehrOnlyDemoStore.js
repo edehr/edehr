@@ -23,12 +23,19 @@ const actions = {
   },
   deactivateEhrOnlyDemo (context) {
     context.commit('setEhrOnlyDemoActive', false)
+  },
+  ehrOnlyDataUpdate (context, payload) {
+    context.commit('setEhrData', payload)
   }
 }
 
 const mutations = {
   setEhrOnlyDemoActive: (state, flag) => {
     state.isActive = flag
+  },
+  setEhrData: (state, payload) => {
+    const { pageKey, value } = payload
+    state.ehrOnlyEhr[pageKey] = value
   }
 }
 

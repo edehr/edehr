@@ -13,14 +13,12 @@ class EhrOnlyDemoInner {
   getEhrOnlySeedData () {
     return store.getters['ehrOnlyDemoStore/ehrOnlyDataSeed']
   }
-  async loadEhrOnlyDemo () {
+  loadEhrOnlyDemo () {
     return store.getters['ehrOnlyDemoStore/ehrOnlyData']
   }
-  clearEhrOnlyUserData () {
-  }
-  getEhrOnlyUserData () {
-  }
-  saveEhrOnlyUserData (ehrData) {
+  saveEhrOnlyUserData (pageKey, newPageValue) {
+    const payload = {pageKey, value: newPageValue}
+    return store.dispatch('ehrOnlyDemoStore/ehrOnlyDataUpdate', payload)
   }
 }
 

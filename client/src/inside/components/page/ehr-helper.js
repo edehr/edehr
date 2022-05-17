@@ -1,6 +1,7 @@
 import moment from 'moment'
 import Vue from 'vue'
 import router from '@/router'
+import EhrOnlyDemo from '@/helpers/ehr-only-demo'
 import EhrTypes from '@/helpers/ehr-types'
 import EventBus from '@/helpers/event-bus'
 import {
@@ -126,7 +127,9 @@ export default class EhrHelpV2 {
       return false
     }
     let studentCanEdit = this._isActivityOpen() && this._isStudent() && !this._isSubmitted()
-    return studentCanEdit || this._isDevelopingContent()
+    let devContent = this._isDevelopingContent()
+    let ehrOnly = EhrOnlyDemo.isActiveEhrOnlyDemo()
+    return studentCanEdit || devContent || ehrOnly
   }
 
   _setEditing (flag) {
@@ -385,6 +388,7 @@ export default class EhrHelpV2 {
     return undefined
   }
   _saveData (payload) {
+    let ehrOnly = EhrOnlyDemo.isActiveEhrOnlyDemo()
     let isStudent = this._isStudent()
     let isSeedEditing = StoreHelper.isSeedEditing()
     if (isStudent) {
@@ -398,6 +402,8 @@ export default class EhrHelpV2 {
         .then(() => {
           this._loadPageData()
         })
+    } else if (ehrOnly) {
+      return EhrOnlyDemo.saveEhrOnlyUserData(payload.pageKey, payload.value)
     } else {
       return Promise.reject(Text.FUNCTION_OUT_OF_CONTEXT('_saveData'))
     }
