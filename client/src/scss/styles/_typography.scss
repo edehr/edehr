@@ -37,8 +37,18 @@ h4 {
 p {
 	color: $grey80;
 	margin-bottom: 1em;
+	max-width: 60rem;
 }
 
+.outside-layout {
+	a {
+		font-size: 18px;
+		text-decoration: underline;
+	}
+	p {
+		font-size: 18px;
+	}
+}
 .assetLink {
 	margin-bottom: .5em;
 }

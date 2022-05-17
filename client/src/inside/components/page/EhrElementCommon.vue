@@ -125,8 +125,11 @@ export default {
           // have "Day x" content. The field now requires the visit day, a number 0,1,2,3,4
           function transform ( value ) {
             let re = /\D*(\d*).*/
-            let vt = value.replace(re, '$1')
-            // console.log(`${value} --> ${vt}`)
+            let vt = value
+            if (typeof value === 'string') {
+              vt = value.replace(re, '$1')
+              console.log(`${value} --> ${vt}`)
+            }
             return vt
           }
           // samples of transform. All produce just 03
@@ -134,11 +137,15 @@ export default {
           // transform('03 fe')
           // transform('D asd 03')
           // transform('D - 03 asd 04')
+          // transform(3)
+
           let vt = transform(value)
           if (vt !== value) {
-            console.log(`In EhrElementCommon transforming visitDay from "${value} to "${vt}"`)
-            // TODO
-            console.log('TODO Create a more general way to transform ehr content when structure changes')
+            if(process.env.NODE_ENV !== 'production') {
+              console.log(`In EhrElementCommon transforming visitDay from "${value} to "${vt}"`)
+              // TODO
+              console.log('TODO Create a more general way to transform ehr content when structure changes')
+            }
             value = vt
           }
         }

@@ -12,13 +12,13 @@ class EhrPatientC {
     result.diagnosis = visitDetails.diagnosis
     result.gender = demographics.gender
     result.mrn = demographics.mrn
-    result.mrp = demographics.decisionMakerName + ' (' + demographics.decisionMakerRelationship + ')'
+    result.mrp = demographics.decisionMakerName? (demographics.decisionMakerName + ' (' + demographics.decisionMakerRelationship + ')') : ''
     result.mrpPhone = demographics.decisionMakerPhone
     result.personAge = demographics.personAge
     result.phn = demographics.phn
     result.location = this._location(visitDetails)
     result.patientName = this._lastFirstMiddle(demographics)
-    result.weight = demographics.weight + 'kg'
+    result.weight = demographics.weight? (demographics.weight + 'kg') : ''
     return result
   }
   _allergies (data) {
@@ -45,10 +45,16 @@ class EhrPatientC {
     const fn = d.familyName
     const gn = d.givenName
     const mn = d.middleName
-    let n = fn ? fn : '-'
-    n += gn ? `, ${gn}` : ''
-    n += mn ? `, ${mn}` : ''
-    return n
+    let np = []
+    fn ? np.push(fn) : ''
+    gn ? np.push(gn) : ''
+    mn ? np.push(mn) : ''
+    // let n = ''
+    // n += fn ? fn : ''
+    // n += gn ? `, ${gn}` : ''
+    // n += mn ? `, ${mn}` : ''
+    // return n
+    return np.join(', ')
   }
   _visitDetails (data) {
     let asStored = data.visit || {}

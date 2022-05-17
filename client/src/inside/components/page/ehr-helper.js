@@ -292,7 +292,6 @@ export default class EhrHelpV2 {
   /* ********************* DATA  */
 
   _loadPageData () {
-    if (dbLoad) console.log('ehrhelperV2 respond to page refresh', this.pageKey)
     this._loadTableData()
     EventBus.$emit(PAGE_DATA_READY_EVENT)
   }
