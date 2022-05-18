@@ -937,22 +937,22 @@
               {
                 "name": "hematology",
                 "label": "Hematology",
-                "pageDataKey": "hemotology",
+                "pageDataKey": "hematology",
                 "routeName": "hematology",
                 "topLevel": "chart",
                 "def": {
                   "path": "/ehr/chart/reports",
                   "routeName": "hematology",
-                  "pageDataKey": "hemotology",
+                  "pageDataKey": "hematology",
                   "label": "Hematology",
                   "redirect": "",
-                  "generateComponent": "yes",
+                  "generateComponent": "custom",
                   "componentName": "Hematology",
                   "dataName": "hematology",
                   "fullPath": "/ehr/chart/reports/hematology",
                   "title": "Hematology",
                   "topLevel": "chart",
-                  "componentPath": "./inside/views",
+                  "componentPath": "./inside/custom",
                   "zone": "ehr"
                 },
                 "children": []

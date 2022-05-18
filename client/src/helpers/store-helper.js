@@ -108,7 +108,6 @@ class StoreHelperWorker {
   setSigning (val) { store.commit('system/setSigning', val) }
 
   isLoading () { return this._getSystemProperty('isLoading')}
-  isShowingAdvanced () { return this._getSystemProperty('isShowingAdvanced') }
   isSigning () { return this._getSystemProperty('isSigning') }
 
 

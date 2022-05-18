@@ -48,8 +48,6 @@ export default class EhrHelpV2 {
     // component.$nextTick( () => this._refreshTables() )
   }
 
-  isV2 () { return true }
-
   getPageKey () { return this.pageKey }
   getPageDef () { return EhrDefs.getPageDefinition(this.pageKey) }
   getPageTableDefs () { return EhrDefs.getPageTables(this.pageKey) }
@@ -63,13 +61,6 @@ export default class EhrHelpV2 {
     let data = this.getAsLoadedPageData()
     let date = data ? this.formatDate(data.lastUpdate) : ''
     return date
-  }
-
-  setShowingAdvanced (flag) {
-    StoreHelper.setShowAdvanced(flag)
-  }
-  isShowingAdvanced () {
-    return StoreHelper.isShowingAdvanced()
   }
 
   getPageErrors (formKey) {

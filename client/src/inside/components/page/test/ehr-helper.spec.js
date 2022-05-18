@@ -107,15 +107,6 @@ describe('ehr-helper tests', () => {
       should.exist(updated)
     })
 
-    it('setShowingAdvanced', () => {
-      should.doesNotThrow(() => ehrHelper.setShowingAdvanced(true))
-    })
-
-    it('isShowingAdvanced', () => {
-      const showing = ehrHelper.isShowingAdvanced()
-      showing.should.equal(true)
-    })
-
     it('getPageErrors', () => {
       ehrHelper.getPageErrors().length.should.equal(0)
     })

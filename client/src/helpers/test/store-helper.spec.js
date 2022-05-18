@@ -255,17 +255,6 @@ describe('General testing', () => {
     })
   })
 
-  it('setShowAdvanced', done => {
-    should.doesNotThrow(() => {
-      const showAdvanced = !StoreHelper.isShowingAdvanced()
-      StoreHelper.setShowAdvanced(showAdvanced)
-      const result = StoreHelper.isShowingAdvanced()
-      should.exist(result)
-      result.should.equal(showAdvanced)
-      done()
-    })
-  })
-
   it('setApiError', done => {
     should.doesNotThrow(() => {
       const message = 'test error message'

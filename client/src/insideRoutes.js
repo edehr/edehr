@@ -348,7 +348,7 @@ export function inside () {
       path: '/ehr/chart/reports/hematology',
       name: 'hematology',
       component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/Hematology.vue'),
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/custom/Hematology.vue'),
       meta: { layout: 'inside', label: 'Hematology', topLevel: 'chart', zone: 'ehr' }
     }
   ]

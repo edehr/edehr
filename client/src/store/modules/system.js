@@ -7,7 +7,6 @@ const state = {
   isSeeding: false,
   _isLoading: false,
   isEditing: false,
-  _isShowingAdvanced: false,
   currentPageKey: '',
   loadingCnt: 0,
   apiError: '',
@@ -18,7 +17,6 @@ const state = {
 const getters = {
   apiData: state => state.apiData,
   isLoading: state => state._isLoading,
-  isShowingAdvanced: state => state._isShowingAdvanced,
   caseContextFeature: state => state.caseContextFeature,
   apiError: state => state.apiError,
   sysMessage: state => state.sysMessage
@@ -62,9 +60,6 @@ const mutations = {
   },
   setEditing: (state, isEditing) => {
     state.isEditing = isEditing
-  },
-  setShowingAdvanced: (state, isEditing) => {
-    state._isShowingAdvanced = isEditing
   },
   setSeeding: (state, isSeeding) => {
     state.isSeeding = isSeeding
