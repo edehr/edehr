@@ -1,9 +1,9 @@
 
 <script>
 import moment from 'moment'
-import { formatDateStr } from '../../../helpers/ehr-utils'
-import EventBus from '../../../helpers/event-bus'
-import { PAGE_DATA_READY_EVENT } from '../../../helpers/event-bus'
+import { formatDateStr } from '@/helpers/ehr-utils'
+import EventBus from '@/helpers/event-bus'
+import { PAGE_DATA_READY_EVENT } from '@/helpers/event-bus'
 
 export default {
   components: {

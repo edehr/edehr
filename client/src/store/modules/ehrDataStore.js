@@ -127,7 +127,7 @@ const getters = {
     if (debug) console.log('EhrData hasDataForPagesList results', results)
     return results
   },
-  asLoadedDataForPageKey (state, getters, rootState) {
+  mergedDataForPageKey (state, getters, rootState) {
     return pageKey => {
       let mergedData = getters.mergedData
       let pageData = mergedData[pageKey]

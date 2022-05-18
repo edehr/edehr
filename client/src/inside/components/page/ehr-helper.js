@@ -52,7 +52,7 @@ export default class EhrHelpV2 {
     return this.formatDate(this.getPageDef().generated)
   }
   getLastPageDataUpdateDate () {
-    let data = this.getAsLoadedPageData()
+    let data = this.getMergedPageData()
     let date = data ? this.formatDate(data.lastUpdate) : ''
     return date
   }
@@ -165,7 +165,7 @@ export default class EhrHelpV2 {
   }
   _loadTableData () {
     let pageKey = this.pageKey
-    let theData = this.getAsLoadedPageData()
+    let theData = this.getMergedPageData()
     let tableDefs = this.getPageTableDefs()
     if (dbTable) console.log('EhrHelpV2._loadTableData load stack data for page', this.pageKey, tableDefs, theData)
     if (tableDefs.length > 0) {
@@ -252,7 +252,7 @@ export default class EhrHelpV2 {
     this.pageFormData.value = undefined
   }
   _loadPageFormData (formKey) {
-    let asLoadedData = this.getAsLoadedPageData()
+    let asLoadedData = this.getMergedPageData()
     this.pageFormData.cacheData = JSON.stringify(asLoadedData)
     this.pageFormData.formKey = formKey
     /*
@@ -266,9 +266,9 @@ export default class EhrHelpV2 {
     } // else use what is already in this.pageFormData.value
   }
 
-  getAsLoadedPageData (aPageKey) {
+  getMergedPageData (aPageKey) {
     let pageKey = aPageKey || this.pageKey
-    return StoreHelper.getAsLoadedPageData(pageKey)
+    return StoreHelper.getMergedPageData(pageKey)
   }
 
   formatDate (d) {
@@ -299,7 +299,7 @@ export default class EhrHelpV2 {
     let inputs = dialog.inputs
     inputs.createdDate = moment().format()
     if (dbDialog) console.log('save dialog data into ', tableKey)
-    let asLoadedPageData = this.getAsLoadedPageData()
+    let asLoadedPageData = this.getMergedPageData()
     let table = asLoadedPageData[tableKey]
     if (!table) {
       table = []
@@ -321,7 +321,7 @@ export default class EhrHelpV2 {
   clearTable (tableKey) {
     const pageKey = this.pageKey
     if (dbDialog) console.log('clearTable for table ', tableKey)
-    let asLoadedPageData = this.getAsLoadedPageData()
+    let asLoadedPageData = this.getMergedPageData()
     asLoadedPageData[tableKey] = []
     // Prepare a payload to tell the API which property inside the assignment data to change
     let payload = {
@@ -486,7 +486,7 @@ export default class EhrHelpV2 {
   async resetFormData (childrenKeys) {
     const { pageKey } = this
     const ehrSeed = StoreHelper.getSeedEhrData()
-    const asLoadedPageData = this.getAsLoadedPageData()
+    const asLoadedPageData = this.getMergedPageData()
     if (childrenKeys) {
       childrenKeys.map(ck => {
         asLoadedPageData[ck] = ehrSeed[ck] ? ehrSeed[ck] : ''
@@ -505,7 +505,7 @@ export default class EhrHelpV2 {
    */
   savePageFormEdit () {
     let payload = this.pageFormData
-    const asLoadedPageData = this.getAsLoadedPageData()
+    const asLoadedPageData = this.getMergedPageData()
     const mergedValues = {
       ...asLoadedPageData,
       ...payload.value

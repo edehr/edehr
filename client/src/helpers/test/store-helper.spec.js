@@ -24,9 +24,9 @@ describe('General testing', () => {
   
   beforeEach(() => _beforeEach())
 
-  it('getAsLoadedPageData', done => {
+  it('getMergedPageData', done => {
     should.doesNotThrow(() => {
-      const asLoaded = StoreHelper.getAsLoadedPageData(pageKey)
+      const asLoaded = StoreHelper.getMergedPageData(pageKey)
       should.exist(asLoaded)
       done()
     })

@@ -115,7 +115,7 @@ export default {
     },
     refreshPage () {
       try {
-        let pageData = this.ehrHelp.getAsLoadedPageData()
+        let pageData = this.ehrHelp.getMergedPageData()
         let value = pageData[this.elementKey]
 
         let defVal = EhrDefs.getDefaultValue(this.pageDataKey, this.elementKey)

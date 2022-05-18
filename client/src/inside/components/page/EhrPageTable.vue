@@ -91,7 +91,7 @@ export default {
     refresh () {
       let tableForm = this.ehrHelp.getTable(this.tableKey)
       this.hasData = tableForm.hasData
-      // console.log('EhrPageTable refresh ', this.tableKey, this.tableForm)
+      // console.log('EhrPageTable refresh ', this.tableKey, tableForm)
     }
   },
   mounted: function () {

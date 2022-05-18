@@ -57,16 +57,6 @@ export default {
       return values.join(',')
     },
     tableColumnCss: function (column) {
-      // let hide = 'hide-table-element'
-      // let css = hide
-      // column.forEach(cell => {
-      //   let cellDef = cell.cellDef
-      //   if (!cellDef.tableCss || !cellDef.tableCss.includes(hide)) {
-      //     // console.log('cell css ', cell.tableCss)
-      //     css = ''
-      //   }
-      // })
-      // return css
     },
     refresh () {
       this.tableForm = this.ehrHelp.getTable(this.tableKey)

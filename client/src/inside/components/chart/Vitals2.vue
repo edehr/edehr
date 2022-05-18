@@ -87,7 +87,7 @@ export default {
       let tableKey = this.tableDef.tableKey
       let pageKey = this.ehrHelp.getPageKey()
       // console.log('Vitals2 refresh for page table key', pageKey, tableKey)
-      let pageData = this.ehrHelp.getAsLoadedPageData(pageKey)
+      let pageData = this.ehrHelp.getMergedPageData(pageKey)
       let tableData = pageData[tableKey] || []
       // store the current data into local data property for display
       this.tableData = tableData
