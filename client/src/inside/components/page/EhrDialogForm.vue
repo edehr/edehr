@@ -96,13 +96,18 @@ export default {
         'your experience. First, after save the your new data does not appear. Simply, select another EHR page and ' +
         'come back to see your list. Second, the base seed case data is duplicated. This message will be removed ' +
         'as soon as the defects are resolved.'
-      this.$refs.aggreeDialog.showDialog('Advisory', msg)
-
       let errs = this.ehrHelp.saveDialog()
       if (errs) {
         this.errorList = errs
       } else {
         this.errorList = []
+        // only display if there are no errors
+        const shownOnce = localStorage.getItem('EhrOnlyTemporaryAdvisory')
+        // console.log('EhrOnlyTemporaryAdvisory', shownOnce)
+        if (!shownOnce) {
+          this.$refs.aggreeDialog.showDialog('Advisory', msg)
+          localStorage.setItem('EhrOnlyTemporaryAdvisory', true)
+        }
       }
       this.ackReqHeader = false
     },
