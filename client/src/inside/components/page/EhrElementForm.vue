@@ -74,9 +74,11 @@
           option(value="")
           option(v-for="option in timeSeries", :key="option", v-bind:value="option") {{ option}}
 
-    div(v-else-if="isType('date')", class="text_wrapper columns")
-      input(class="column is-10 input text-input", v-bind:disabled="disabled", v-bind:name="elementKey", v-model="inputVal")
-      ui-info(class="column is-2", title="Time since", text="Describe when this happened prior to the current visit. e.g. '4 years ago'")
+    div(v-else-if="isType('date')", class="text_wrapper")
+      ehr-page-form-label(:element="element", css="text_label")
+      div(class="columns")
+        input(class="column is-10 input text-input", v-bind:disabled="disabled", v-bind:name="elementKey", v-model="inputVal")
+        ui-info(class="colum is-2", title="Time since", text="Describe when this happened prior to the current visit. e.g. '4 years ago'")
 
     div(v-else) ELSE: {{inputType}} {{label}}
 
