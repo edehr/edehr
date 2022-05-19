@@ -1,27 +1,19 @@
-// Generated VUE file. Before modifying see docs about Vue file generation
 <template lang="pug">
   div(class="ehr-page")
-    ehr-page(:pageDataKey="pageDataKey", :ehrHelp="ehrHelp")
-    div(style="display:none")
-      p This Hematology page is generated.
-      p Label: Hematology
-      p Data Key: hemotology
-      p Component name: Hematology
-      p Redirect: 
-      p Route name: hematology
-      p Full path: /ehr/chart/reports/hematology
+    hematology-content(:pageDataKey="pageDataKey", :ehrHelp="ehrHelp")
+    ehr-page-footer(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
 </template>
 
 <script>
-import EhrPage from '../components/page/EhrPage'
+import EhrPageFooter from '../components/page/EhrPageFooter'
 import EhrHelpV2 from '../components/page/ehr-helper'
+import HematologyContent from '@/inside/custom/hematology/HematologyContent'
 
 export default {
-  name: 'Hematology',
-  components: { EhrPage },
+  components: { EhrPageFooter, HematologyContent },
   data: function () {
     return {
-      pageDataKey: 'hemotology',
+      pageDataKey: 'hematology',
       ehrHelp: undefined
     }
   },

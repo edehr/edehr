@@ -33,7 +33,7 @@ const noMarGetAsLoaded = (key) => {
 }
 
 const mockedEhrHelper = {
-  getAsLoadedPageData: getAsLoaded,
+  getMergedPageData: getAsLoaded,
   _saveData: jest.fn()
 }
 
@@ -98,7 +98,7 @@ describe('mar-helper tests', () => {
   
     it('getMarTableKey', () => {
       should.doesNotThrow(() => {
-        const pageKey = mockedEhrHelper.getAsLoadedPageData(MAR_PAGE_KEY).pageElements.table.tableKey
+        const pageKey = mockedEhrHelper.getMergedPageData(MAR_PAGE_KEY).pageElements.table.tableKey
         const result = marHelper.getMarTableKey()
         result.should.equal(pageKey)
       })
@@ -129,7 +129,7 @@ describe('mar-helper tests', () => {
   describe('tests without MarRecord', () => {
     beforeAll(() => {
       noMarEhrHelper = {
-        getAsLoadedPageData: noMarGetAsLoaded,
+        getMergedPageData: noMarGetAsLoaded,
         _saveData: jest.fn()
       }
     })
@@ -189,7 +189,7 @@ describe('mar-helper tests', () => {
   
     it('getMarTableKey', () => {
       should.doesNotThrow(() => {
-        const pageKey = mockedEhrHelper.getAsLoadedPageData(MAR_PAGE_KEY).pageElements.table.tableKey
+        const pageKey = mockedEhrHelper.getMergedPageData(MAR_PAGE_KEY).pageElements.table.tableKey
         const result = marHelper.getMarTableKey()
         result.should.equal(pageKey)
       })

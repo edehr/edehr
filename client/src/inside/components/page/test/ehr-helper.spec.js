@@ -41,10 +41,6 @@ describe('ehr-helper tests', () => {
     it('properly instantiates class', () => {
       should.exist(ehrHelper)
     })
-
-    it('isV2', () => {
-      ehrHelper.isV2().should.equal(true)
-    })
   })
 
   describe('pageForm tests', () => {
@@ -107,15 +103,6 @@ describe('ehr-helper tests', () => {
       should.exist(updated)
     })
 
-    it('setShowingAdvanced', () => {
-      should.doesNotThrow(() => ehrHelper.setShowingAdvanced(true))
-    })
-
-    it('isShowingAdvanced', () => {
-      const showing = ehrHelper.isShowingAdvanced()
-      showing.should.equal(true)
-    })
-
     it('getPageErrors', () => {
       ehrHelper.getPageErrors().length.should.equal(0)
     })
@@ -150,9 +137,9 @@ describe('ehr-helper tests', () => {
       })
     })
 
-    it('getAsLoadedPageData', () => {
+    it('getMergedPageData', () => {
       should.doesNotThrow(() => {
-        let asLoaded = ehrHelper.getAsLoadedPageData()
+        let asLoaded = ehrHelper.getMergedPageData()
         should.exist(asLoaded)
       })
     })

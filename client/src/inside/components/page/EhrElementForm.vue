@@ -1,8 +1,7 @@
 <template lang='pug'>
   div(class="form-element")
-
-    div(v-if="isType('form_label')", class="label_wrapper")
-      div(v-html="label")
+    div(v-if="isType('form_label')")
+      div(v-html="label", class='form_label')
     div(v-else-if="isType('assetLink')", class="assetLink")
       a(:href="assetUrl()", target="_blank")
         fas-icon(class="linkIcon", icon="file-pdf")
@@ -20,64 +19,67 @@
     div(v-else-if="isType('calculatedValue')", class="computed_wrapper")
       ehr-element-calculated(:element="element", :ehrHelp="ehrHelp" )
     div(v-else-if="isType('checkset')", class="checkset_wrapper")
-      ehr-element-checkset(:elementKey="elementKey", :ehrHelp="ehrHelp")
+      ehr-element-checkset(:elementKey="elementKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
 
     div(v-else-if="isType('checkbox')", class="checkbox_wrapper")
-      input(:id="inputId", class="checkbox", type="checkbox", v-bind:disabled="disabled", v-bind:name="elementKey", v-model="inputVal", v-on:change="dependentUIEvent()")
+      input(:id="inputId", class="checkbox", type="checkbox", v-bind:disabled="disabled || viewOnly ", v-bind:name="elementKey", v-model="inputVal", v-on:change="dependentUIEvent()")
       ehr-page-form-label(:element="element", css="checkbox_label, check-label", :forElement="inputId")
-
-    //div(v-else-if="isType('date')", class="date_wrapper")
-    //  ehr-page-form-label(:element="element", css="date_label")
-    //  date-picker(class="d-picker", typeable, v-bind:disabled="disabled", v-bind:name="elementKey", v-model="inputVal")
-    //    //div(v-if="!showLabel", slot="beforeCalendarHeader", class="datepicker-header") {{label}}
 
     div(v-else-if="isType('select')", class="select_wrapper")
       ehr-page-form-label(:element="element", css="select_label")
-      div(class="select")
+      div(v-if="!viewOnly", class="select")
         select(v-bind:name="elementKey", v-bind:disabled="disabled", v-model="inputVal", v-on:change="dependentUIEvent()")
           option(value="")
           option(v-for="option in options", :key="option.key", v-bind:value="option.key") {{ option.text}}
+      div(v-if="viewOnly") {{ inputVal }}
 
     div(v-else-if="isType('text')", class="text_input_wrapper")
       ehr-page-form-label(:element="element", css="text_label")
-      input(class="input text-input", v-bind:disabled="disabled", v-bind:name="elementKey", v-model="inputVal")
+      input(v-if="!viewOnly", class="input text-input", v-bind:disabled="disabled", v-bind:name="elementKey", v-model="inputVal")
+      div(v-if="viewOnly") {{ inputVal }}
       span(class="suffix") {{suffix }}
 
     div(v-else-if="isType('number')", class="text_input_wrapper")
       ehr-page-form-label(:element="element", css="text_label")
-      input(class="input text-input", type="number", v-bind:disabled="disabled", v-bind:name="elementKey", v-model="inputVal")
+      input(v-if="!viewOnly", class="input text-input", type="number", v-bind:disabled="disabled", v-bind:name="elementKey", v-model="inputVal")
+      div(v-if="viewOnly") {{ inputVal }}
 
     div(v-else-if="isType('textarea')", class="textarea_wrapper")
       ehr-page-form-label(:element="element", css="textarea_label")
-      textarea(class="ehr-page-form-textarea", v-bind:disabled="disabled", v-bind:name="elementKey", v-model="inputVal")
+      textarea(class="ehr-page-form-textarea", v-bind:disabled="disabled || viewOnly", v-bind:name="elementKey", v-model="inputVal")
 
     div(v-else-if="isType('lookahead')", class="text_input_wrapper")
       ehr-page-form-label(:element="element", css="text_input_wrapper")
       ehr-element-lookup(
+        v-if="viewOnly",
         :disabled="disabled",
         :lookaheadKey="element.lookaheadKey",
         @selected="(selected) => inputVal = selected",
         :inputVal="inputVal"
       )
+      div(v-if="viewOnly") {{ inputVal }}
 
     div(v-else-if="isType('visitDay')", class="select_wrapper")
       ehr-page-form-label(:element="element", css="select_label")
-      div(class="select")
+      div(v-if="!viewOnly", class="select")
         select(v-bind:name="elementKey", v-bind:disabled="disabled", v-model="inputVal", v-on:change="dependentUIEvent()")
           option(value="")
           option(v-for="option in [0,1,2,3,4]", :key="option", v-bind:value="option") {{ option}}
+      div(v-if="viewOnly") {{ inputVal }}
 
     div(v-else-if="isType('visitTime')", class="time_wrapper")
       ehr-page-form-label(:element="element", css="select_label")
-      div(class="select")
+      div(v-if="!viewOnly", class="select")
         select(v-bind:name="elementKey", v-bind:disabled="disabled", v-model="inputVal", v-on:change="dependentUIEvent()")
           option(value="")
           option(v-for="option in timeSeries", :key="option", v-bind:value="option") {{ option}}
+      div(v-if="viewOnly") {{ inputVal }}
 
     div(v-else-if="isType('date')", class="text_wrapper")
       ehr-page-form-label(:element="element", css="text_label")
       div(class="columns")
-        input(class="column is-10 input text-input", v-bind:disabled="disabled", v-bind:name="elementKey", v-model="inputVal")
+        input(v-if="!viewOnly", class="column is-10 input text-input", v-bind:disabled="disabled", v-bind:name="elementKey", v-model="inputVal")
+        div(v-if="viewOnly") {{ inputVal }}
         ui-info(class="colum is-2", title="Time since", text="Describe when this happened prior to the current visit. e.g. '4 years ago'")
 
     div(v-else) ELSE: {{inputType}} {{label}}

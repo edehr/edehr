@@ -3,8 +3,8 @@
     h3(v-if="group.label") {{ group.label }}
     div(class="ehr-group-wrapper", :class="groupClass")
       div(v-for="child in group.gChildren", :key="forIndex(child)", class="ehr-group-for", :class="childClass(child)")
-        ehr-sub-group(v-if="isSubgroup(child)", :subgroup="child", :ehrHelp="ehrHelp")
-        ehr-element-form(v-else-if="child", :elementKey="child", :ehrHelp="ehrHelp")
+        ehr-sub-group(v-if="isSubgroup(child)", :subgroup="child", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
+        ehr-element-form(v-else-if="child", :elementKey="child", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
         div(v-else) This group has an undefined element
 </template>
 
@@ -28,7 +28,8 @@ export default {
   },
   props: {
     group: {type: Object },
-    ehrHelp: { type: Object }
+    ehrHelp: { type: Object },
+    viewOnly: { type: Boolean, default: false}
   },
   computed: {
     elementKey () { return this.group.elementKey },

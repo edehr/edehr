@@ -379,10 +379,10 @@ module.exports = function () {
     {
       path: '/ehr/chart/reports',
       routeName: 'hematology',
-      pageDataKey: 'hemotology',
+      pageDataKey: 'hematology',
       label: 'Hematology',
       redirect: '',
-      generateComponent: 'yes'
+      generateComponent: 'custom'
     }
   ]
 }

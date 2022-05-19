@@ -4,7 +4,6 @@ TODO document all of the following events ....
  */
 export const ACTIVITY_DATA_EVENT = 'ACTIVITY_DATA_EVENT'
 export const PAGE_DATA_REFRESH_EVENT = 'PAGE_DATA_REFRESH_EVENT'
-export const TABLE_DATA_REFRESH_EVENT = 'TABLE_DATA_REFRESH_EVENT'
 export const SHOW_TABLE_DIALOG_EVENT = 'SHOW_TABLE_DIALOG_EVENT'
 export const MAR_PERIODS_EVENT = 'MAR_PERIODS_EVENT'
 
@@ -24,10 +23,6 @@ const showKeyEvents = false
 if(showKeyEvents) {
   EventBus.$on(PAGE_DATA_REFRESH_EVENT, function () {
     console.log('PAGE_DATA_REFRESH_EVENT')
-  })
-
-  EventBus.$on(TABLE_DATA_REFRESH_EVENT, function () {
-    console.log('TABLE_DATA_REFRESH_EVENT')
   })
   EventBus.$on(DIALOG_INPUT_EVENT, function () {
     console.log('DIALOG_INPUT_EVENT')

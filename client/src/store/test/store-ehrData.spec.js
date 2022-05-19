@@ -49,12 +49,12 @@ describe.skip('Test ehrDataStore mergedData', () => {
   })
 })
 
-describe.skip('Test ehrDataStore asLoadedDataForPageKey', () => {
-  it('store asLoadedDataForPageKey student', () => {
+describe.skip('Test ehrDataStore mergedDataForPageKey', () => {
+  it('store mergedDataForPageKey student', () => {
     store.commit('seedListStore/_setSeedEhrData', SEED)
     store.commit('visit/setVisitInfo', studentVisit())
     store.commit('ehrDataStore/_setActivityData', activityData())
-    let aFunction = store.getters['ehrDataStore/asLoadedDataForPageKey']
+    let aFunction = store.getters['ehrDataStore/mergedDataForPageKey']
     should.exist(aFunction)
     let demographics = aFunction('demographics')
     should.exist(demographics)
@@ -63,7 +63,7 @@ describe.skip('Test ehrDataStore asLoadedDataForPageKey', () => {
     should.exist(testPage)
   })
 
-  it.skip('store asLoadedDataForPageKey as Developer', () => {
+  it.skip('store mergedDataForPageKey as Developer', () => {
     // TODO build out this test.  Look for data case study data in the seed
   })
 })

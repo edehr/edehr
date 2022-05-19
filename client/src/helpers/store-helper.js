@@ -17,7 +17,7 @@ Hopefully one day this helper will be replaced with useful groupings.
 
 class StoreHelperWorker {
 
-  getAsLoadedPageData (pageKey) { return store.getters['ehrDataStore/asLoadedDataForPageKey'](pageKey) }
+  getMergedPageData (pageKey) { return store.getters['ehrDataStore/mergedDataForPageKey'](pageKey) }
 
   getMergedData () {
     return store.getters['ehrDataStore/mergedData']
@@ -108,7 +108,6 @@ class StoreHelperWorker {
   setSigning (val) { store.commit('system/setSigning', val) }
 
   isLoading () { return this._getSystemProperty('isLoading')}
-  isShowingAdvanced () { return this._getSystemProperty('isShowingAdvanced') }
   isSigning () { return this._getSystemProperty('isSigning') }
 
 

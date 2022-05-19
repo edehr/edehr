@@ -1,24 +1,13 @@
 
 <script>
 import moment from 'moment'
-import { formatDateStr } from '../../../helpers/ehr-utils'
-import EventBus from '../../../helpers/event-bus'
-import { TABLE_DATA_REFRESH_EVENT } from '../../../helpers/event-bus'
+import { formatDateStr } from '@/helpers/ehr-utils'
 
 export default {
-  name: 'EhrCommonTable',
-  components: {
-  },
-  data: function () {
-    return {
-    }
-  },
   props: {
     ehrHelp: { type: Object },
     // the ehr helper loads fresh data into the table definition.
     tableDef: { type: Object }
-  },
-  computed: {
   },
   methods: {
     getCellCss: function (cell) {
@@ -33,23 +22,6 @@ export default {
       }
       return value
     },
-  },
-  mounted: function () {
-    const _this = this
-    // TODO clean up the table refresh event .. it appears to be unsused
-    this.refreshEventHandler = function () {
-      // console.log('receive TABLE_DATA_REFRESH_EVENT')
-      _this.refresh()
-    }
-    EventBus.$on(TABLE_DATA_REFRESH_EVENT, this.refreshEventHandler)
-  },
-  beforeDestroy: function () {
-    if (this.refreshEventHandler) {
-      EventBus.$off(TABLE_DATA_REFRESH_EVENT, this.refreshEventHandler)
-    }
   }
 }
 </script>
-<style lang="scss">
-//@import '../../../scss/definitions';
-</style>

@@ -8,20 +8,24 @@
             th(v-for="tCell in tableForm.rowTemplate")
               span(v-html="tCell.tableLabel", :class="tableColumnCss(tCell)")
         tbody
-          tr(v-for="dRow in tableData")
+          tr(v-for="(dRow, index) in tableData")
+            td
+              ui-button(v-on:buttonClicked="$emit('view-report',index)")
+                span View &nbsp;
+                fas-icon(icon="file-pdf")
             td(v-for="cell in dRow", class="cell.tableCss")
-              div(v-for="cPart in cell.stack")
-                ehr-table-element(v-if="!!cPart.value", :cell="cPart")
+              ehr-table-element(v-for="cPart in cell.stack",v-if="!!cPart.value", :cell="cPart")
 </template>
 
 <script>
 import EhrTableCommon from './EhrTableCommon'
 import EhrTableElement from './EhrTableElement'
+import UiButton from '@/app/ui/UiButton'
 const debug = false
 
 export default {
   extends: EhrTableCommon,
-  components: { EhrTableElement },
+  components: { EhrTableElement, UiButton },
   inject: [ 'pageDataKey', 'tableKey'],
   data: function () {
     return {

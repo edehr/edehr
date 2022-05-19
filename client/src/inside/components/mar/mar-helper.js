@@ -18,7 +18,7 @@ export default class MarHelper {
 
   refreshMarData () {
     // console.log('mar-helper refreshMarData')
-    this.pageData = this.ehrHelp.getAsLoadedPageData(MED_ORDERS_PAGE_KEY)
+    this.pageData = this.ehrHelp.getMergedPageData(MED_ORDERS_PAGE_KEY)
     if (debug) console.log('mar-helper refreshMarData', this.pageData)
     if (!this.pageData || !this.pageData.table) {
       if (debug) console.log('helper call to refreshMarData before system is set up. There will be another call in a sec')
@@ -43,7 +43,7 @@ export default class MarHelper {
    * @return {*}
    */
   getEhrData_MarPageData () {
-    return this.ehrHelp.getAsLoadedPageData(MAR_PAGE_KEY)
+    return this.ehrHelp.getMergedPageData(MAR_PAGE_KEY)
   }
 
   clearAllData () {

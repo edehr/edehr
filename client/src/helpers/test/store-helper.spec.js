@@ -24,9 +24,9 @@ describe('General testing', () => {
   
   beforeEach(() => _beforeEach())
 
-  it('getAsLoadedPageData', done => {
+  it('getMergedPageData', done => {
     should.doesNotThrow(() => {
-      const asLoaded = StoreHelper.getAsLoadedPageData(pageKey)
+      const asLoaded = StoreHelper.getMergedPageData(pageKey)
       should.exist(asLoaded)
       done()
     })
@@ -251,17 +251,6 @@ describe('General testing', () => {
       const result = StoreHelper.isLoading()
       should.exist(result)
       result.should.equal(isLoading)
-      done()
-    })
-  })
-
-  it('setShowAdvanced', done => {
-    should.doesNotThrow(() => {
-      const showAdvanced = !StoreHelper.isShowingAdvanced()
-      StoreHelper.setShowAdvanced(showAdvanced)
-      const result = StoreHelper.isShowingAdvanced()
-      should.exist(result)
-      result.should.equal(showAdvanced)
       done()
     })
   })

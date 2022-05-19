@@ -3,16 +3,13 @@ import Vue from 'vue'
 import router from '@/router'
 import EhrOnlyDemo from '@/helpers/ehr-only-demo'
 import EhrTypes from '@/helpers/ehr-types'
-import EventBus from '@/helpers/event-bus'
-import {
+import EventBus, {
   ACTIVITY_DATA_EVENT,
   FORM_INPUT_EVENT,
-  PAGE_DATA_REFRESH_EVENT,
-  PAGE_DATA_READY_EVENT
+  PAGE_DATA_READY_EVENT,
+  PAGE_DATA_REFRESH_EVENT
 } from '@/helpers/event-bus'
-import {
-  prepareAssignmentPageDataForSave,
-  formatTimeStr } from '@/helpers/ehr-utils'
+import { formatTimeStr, prepareAssignmentPageDataForSave } from '@/helpers/ehr-utils'
 import EhrDefs from '@/helpers/ehr-defs-grid'
 import StoreHelper from '@/helpers/store-helper'
 import validations from './ehr-validations'
@@ -40,15 +37,10 @@ export default class EhrHelpV2 {
     let tables = this.getPageTableDefs()
     tables.forEach((tableDef) => {
       const tableKey = tableDef.tableKey
-      this.tableFormMap[tableKey] = { tableKey: tableKey, tableDef: tableDef, inputs: {}, errorList: [], active: false }
+      this.tableFormMap[tableKey] = { tableKey: tableKey, tableDef: tableDef, inputs: {}, errorList: [], active: false, viewOnly: false }
     })
-
     this._setupEventHandlers()
-    // wait until components are set up and then refresh table data
-    // component.$nextTick( () => this._refreshTables() )
   }
-
-  isV2 () { return true }
 
   getPageKey () { return this.pageKey }
   getPageDef () { return EhrDefs.getPageDefinition(this.pageKey) }
@@ -60,16 +52,9 @@ export default class EhrHelpV2 {
     return this.formatDate(this.getPageDef().generated)
   }
   getLastPageDataUpdateDate () {
-    let data = this.getAsLoadedPageData()
+    let data = this.getMergedPageData()
     let date = data ? this.formatDate(data.lastUpdate) : ''
     return date
-  }
-
-  setShowingAdvanced (flag) {
-    StoreHelper.setShowAdvanced(flag)
-  }
-  isShowingAdvanced () {
-    return StoreHelper.isShowingAdvanced()
   }
 
   getPageErrors (formKey) {
@@ -158,7 +143,6 @@ export default class EhrHelpV2 {
   }
 
   isEditing () {
-    // todo move the following into a helper
     let sysVal =  this.$store.state.system.isEditing
     if (dbLeave) console.log('EhrHelpV2 isEditing ', sysVal)
     return sysVal
@@ -181,7 +165,7 @@ export default class EhrHelpV2 {
   }
   _loadTableData () {
     let pageKey = this.pageKey
-    let theData = this.getAsLoadedPageData()
+    let theData = this.getMergedPageData()
     let tableDefs = this.getPageTableDefs()
     if (dbTable) console.log('EhrHelpV2._loadTableData load stack data for page', this.pageKey, tableDefs, theData)
     if (tableDefs.length > 0) {
@@ -222,10 +206,8 @@ export default class EhrHelpV2 {
             Object.values(dataRow).forEach((templateCell) => {
               if (dbTable) console.log('EhrHelpV2 templateCell', templateCell)
               templateCell.stack.forEach((cell) => {
-                let val = dbRow[cell.key] || ''
-                cell.value = val
+                cell.value = dbRow[cell.key] || ''
                 cell.tableCss = templateCell.tableCss
-                // console.log('cell', cell)
               })
             })
             tableData.push(dataRow)
@@ -244,52 +226,19 @@ export default class EhrHelpV2 {
         tableData.forEach ( (row) => {
           combined.push(row)
         })
-
+        /*
+        combined contains a row with table header information and then a row for each data row.
+        transposed will contain a row for each element in the table. Each element will contain
+         */
         if (dbTable) console.log('EhrHelpV2 combined', combined)
         let transpose = combined[0].map((col, i) => combined.map(row => row[i]))
         if (dbTable) console.log('EhrHelpV2 transpose', transpose)
         tableForm.transposedColumns = transpose
-
         let len = tableData[0] ? tableData[0].length : -1
         if (dbTable) console.log('EhrHelpV2 length of row of table data', len, rowTemplate.length)
         if (dbTable) console.log('EhrHelpV2._loadTableData load tableForm', tableForm)
       })
     }
-  }
-
-  setupColumnData (pageDef, table, pageKey) {
-    // let columns = []
-    // let row = []
-    // table.tableCells.forEach(cell => {
-    //   // console.log('the cell ', cell)
-    //   // let hdrCss = 'column_label' + (cell.tableCss ? ' ' + cell.tableCss : '')
-    //   // let entry = {
-    //   //   inputType: cell.inputType,
-    //   //   title: cell.elementKey,
-    //   //   tableCss: hdrCss,
-    //   //   value: cell.label
-    //   // }
-    //   row.push({cellDef: cell, value: cell.label})
-    //   // row.push(entry)
-    // })
-    // columns.push(row)
-    // dbData.forEach(item => {
-    //   row = []
-    //   table.tableCells.forEach(cell => {
-    //     // let valCss = 'column_value' + (cell.tableCss ? ' ' + cell.tableCss : '')
-    //     let value = item[cell.elementKey]
-    //     // let entry = {
-    //     //   tableCss: valCss,
-    //     //   title: value,
-    //     //   value: value
-    //     // }
-    //     // {cellDef: cell, value: value}
-    //     row.push({cellDef: cell, value: value})
-    //   })
-    //   columns.push(row)
-    // })
-    // let transpose = columns[0].map((col, i) => columns.map(row => row[i]))
-    // table.transposedColumns = transpose
   }
 
   /* ********************* DATA  */
@@ -305,7 +254,7 @@ export default class EhrHelpV2 {
     this.pageFormData.value = undefined
   }
   _loadPageFormData (formKey) {
-    let asLoadedData = this.getAsLoadedPageData()
+    let asLoadedData = this.getMergedPageData()
     this.pageFormData.cacheData = JSON.stringify(asLoadedData)
     this.pageFormData.formKey = formKey
     /*
@@ -317,12 +266,11 @@ export default class EhrHelpV2 {
     if (!this._isDevelopingContent) {
       this.pageFormData.value = asLoadedData
     } // else use what is already in this.pageFormData.value
-
   }
 
-  getAsLoadedPageData (aPageKey) {
+  getMergedPageData (aPageKey) {
     let pageKey = aPageKey || this.pageKey
-    return StoreHelper.getAsLoadedPageData(pageKey)
+    return StoreHelper.getMergedPageData(pageKey)
   }
 
   formatDate (d) {
@@ -334,6 +282,10 @@ export default class EhrHelpV2 {
   showDialog (tableKey) {
     this._dialogEvent(tableKey, true)
   }
+  showReport (tableKey, data) {
+    this._dialogEvent(tableKey, true, data)
+  }
+
 
   cancelDialog () {
     const dialog = this._getActiveTableDialog()
@@ -353,7 +305,7 @@ export default class EhrHelpV2 {
     let inputs = dialog.inputs
     inputs.createdDate = moment().format()
     if (dbDialog) console.log('save dialog data into ', tableKey)
-    let asLoadedPageData = this.getAsLoadedPageData()
+    let asLoadedPageData = this.getMergedPageData()
     let table = asLoadedPageData[tableKey]
     if (!table) {
       table = []
@@ -375,7 +327,7 @@ export default class EhrHelpV2 {
   clearTable (tableKey) {
     const pageKey = this.pageKey
     if (dbDialog) console.log('clearTable for table ', tableKey)
-    let asLoadedPageData = this.getAsLoadedPageData()
+    let asLoadedPageData = this.getMergedPageData()
     asLoadedPageData[tableKey] = []
     // Prepare a payload to tell the API which property inside the assignment data to change
     let payload = {
@@ -426,16 +378,25 @@ export default class EhrHelpV2 {
     return dialog ? dialog.inputs : []
   }
 
-  _dialogEvent (tableKey, open) {
+  isViewOnly (tableKey) {
+    let dialog = this.tableFormMap[tableKey]
+    return dialog ? dialog.viewOnly : []
+  }
+
+  _dialogEvent (tableKey, open, data) {
     if (dbDialog) console.log('EhrHelpV2 _dialogEvent', tableKey, open)
     let dialog = this.tableFormMap[tableKey]
     dialog.active = open
+    dialog.viewOnly = !!data
     this._clearDialogInputs(dialog)
+    if (data) {
+      dialog.inputs = { ...data }
+    }
     let eData = { key: tableKey, value: open }
     let channel = this.getDialogEventChannel(tableKey)
     Vue.nextTick(function () {
       // Send an event on our transmission channel
-      // with a payload containing this false
+      // with a payload containing the open flag
       // console.log('emit event', eData, 'on', channel)
       EventBus.$emit(channel, eData)
     })
@@ -540,27 +501,18 @@ export default class EhrHelpV2 {
   async resetFormData (childrenKeys) {
     const { pageKey } = this
     const ehrSeed = StoreHelper.getSeedEhrData()
-    const asLoadedPageData = this.getAsLoadedPageData()
-    // console.log('EhrHelper resetFormData childrenKeys', childrenKeys)
-    // console.log('EhrHelper resetFormData pageKey', pageKey)
-    // console.log('EhrHelper resetFormData ehrSeed', ehrSeed)
-    // console.log('EhrHelper resetFormData asLoadedPageData', asLoadedPageData)
+    const asLoadedPageData = this.getMergedPageData()
     if (childrenKeys) {
       childrenKeys.map(ck => {
-        const asSeed = ehrSeed[ck] ? ehrSeed[ck] : ''
-        asLoadedPageData[ck] = asSeed
+        asLoadedPageData[ck] = ehrSeed[ck] ? ehrSeed[ck] : ''
       })
     }
-    
     let payload = {
       pageKey,
       value: asLoadedPageData
     }
-    // console.log('EhrHelper reset form data side effect is to save this', payload)
     await this._saveData(payload)
     return undefined
-  
-
   }
 
   /**
@@ -568,7 +520,7 @@ export default class EhrHelpV2 {
    */
   savePageFormEdit () {
     let payload = this.pageFormData
-    const asLoadedPageData = this.getAsLoadedPageData()
+    const asLoadedPageData = this.getMergedPageData()
     const mergedValues = {
       ...asLoadedPageData,
       ...payload.value
@@ -607,8 +559,6 @@ export default class EhrHelpV2 {
   the Vuex ehrData module will broadcast a ACTIVITY_DATA_EVENT event. (see _setActivityData)
   This event says there is new data including page data.
 
-  TODO see if I need a similar event when the instructor selects another student see _setCurrentStudentData
-
   This helper class is listening for ACTIVITY_DATA_EVENT.
   I'm going to try letting the handler for this event broadcast a PAGE_DATA_REFRESH_EVENT event because that
   event is broadcast by many other actions. Such as seed data list changes, tab changes, instructor to to ehr, etc.
@@ -619,10 +569,6 @@ export default class EhrHelpV2 {
 
   The page components (page form, page table, elements, etc) will listen for this PAGE_DATA_READY_EVENT event
   and they will, in turn, pull fresh data for display.
-
-  Formerly the TABLE_DATA_REFRESH_EVENT event was also broadcast after the page data was ready.  The table components
-  responded by updating their data.  Now these table components will use the PAGE_DATA_READY_EVENT event
-
    */
   _setupEventHandlers () {
     const _this = this
