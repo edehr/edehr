@@ -4,8 +4,8 @@
       ui-button(v-on:buttonClicked="showDialog") {{ tableDef.addButtonText }}
     div
       h2(v-show="tableDef.label") {{tableDef.label}}
-      ehr-table-vertical(v-if="isVertical", :ehrHelp="ehrHelp", :tableDef="tableDef")
-      ehr-table-stacked(v-if="isStacked", :ehrHelp="ehrHelp", :tableDef="tableDef")
+      ehr-table-vertical(v-if="isVertical", :ehrHelp="ehrHelp", :tableDef="tableDef", @view-report='showReport')
+      ehr-table-stacked(v-if="isStacked", :ehrHelp="ehrHelp", :tableDef="tableDef", @view-report='showReport')
     ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDef", :errorList="errorList" )
     div(v-if="hasData", style="text-align: right;") <!-- put the clear button on the far right side -->
       ui-button(v-on:buttonClicked="clearAllData", v-bind:secondary="true") Clear all table data
@@ -17,10 +17,10 @@
 import EhrDialogForm from './EhrDialogForm.vue'
 import EhrTableStacked from './EhrTableStacked'
 import EhrTableVertical from './EhrTableVertical'
-import UiButton from '../../../app/ui/UiButton.vue'
-import UiConfirm from '../../../app/ui/UiConfirm'
-import EventBus from '../../../helpers/event-bus'
-import { SHOW_TABLE_DIALOG_EVENT, PAGE_DATA_READY_EVENT } from '../../../helpers/event-bus'
+import UiButton from '@/app/ui/UiButton.vue'
+import UiConfirm from '@/app/ui/UiConfirm'
+import EventBus from '@/helpers/event-bus'
+import { SHOW_TABLE_DIALOG_EVENT, PAGE_DATA_READY_EVENT } from '@/helpers/event-bus'
 import MarHelper from '../mar/mar-helper'
 
 const TEXT = {
@@ -78,6 +78,15 @@ export default {
     showDialog: function () {
       // console.log('EhrPageTable showDialog ', this.tableDef)
       this.ehrHelp.showDialog(this.tableKey)
+    },
+    showReport: function (row) {
+      const tableDef = this.tableDef
+      const tableKey = tableDef.tableKey
+      const pageKey = this.ehrHelp.getPageKey()
+      const pageData = this.ehrHelp.getMergedPageData(pageKey)
+      const tableData = pageData[tableKey] || []
+      const rowData = tableData[row]
+      this.ehrHelp.showReport(tableKey, rowData)
     },
     clearAllData () {
       this.$refs.confirmDialog.showDialog(TEXT.TITLE, TEXT.MSG)

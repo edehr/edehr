@@ -9,12 +9,12 @@
       @save="saveDialog", 
       v-bind:errors="errorList", 
       :hasFooterContent="true"
+      :useSave="!isViewOnly"
       :disableSave="disableSave"
     )
       h3(slot="header") {{ tableDef.addButtonText }}
-      div tableKey {{ tableKey}}
       div(slot="body", class="ehr-page-content")
-        ehr-group(v-for="group in groups", :key="group.gIndex", :group="group", :ehrHelp="ehrHelp")
+        ehr-group(v-for="group in groups", :key="group.gIndex", :group="group", :ehrHelp="ehrHelp", :viewOnly='isViewOnly')
       div(slot="footer-content", class="checkbox-wrapper", v-if="acknowledgeSignature")
         label
           input(class="checkbox", type="checkbox", v-model="ackCaseStudyData")
@@ -52,12 +52,16 @@ export default {
     ehrOnlyDemo () {
       return EhrOnlyDemo.isActiveEhrOnlyDemo()
     },
+    isViewOnly () {
+      return this.ehrHelp.isViewOnly(this.tableKey)
+    },
     tableKey () {
       return this.tableDef.tableKey
     },
     groups () {
       return this.tableDef.form ? this.tableDef.form.ehr_groups : []
     },
+    // TODO add acknowledgement signature to the flow of each form both table and page form
     acknowledgeSignature () {
       return CaseContext.getPageTableShowSignature(this.ehrHelp.pageKey, this.tableKey)
     },
@@ -66,7 +70,7 @@ export default {
         // disable save until the user has acknowledged / confirmed signature
         return !this.ackCaseStudyData
       } else {
-        return false
+        return this.isViewOnly
       }
     },
     ackText () {

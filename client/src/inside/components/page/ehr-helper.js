@@ -37,7 +37,7 @@ export default class EhrHelpV2 {
     let tables = this.getPageTableDefs()
     tables.forEach((tableDef) => {
       const tableKey = tableDef.tableKey
-      this.tableFormMap[tableKey] = { tableKey: tableKey, tableDef: tableDef, inputs: {}, errorList: [], active: false }
+      this.tableFormMap[tableKey] = { tableKey: tableKey, tableDef: tableDef, inputs: {}, errorList: [], active: false, viewOnly: false }
     })
     this._setupEventHandlers()
   }
@@ -226,12 +226,14 @@ export default class EhrHelpV2 {
         tableData.forEach ( (row) => {
           combined.push(row)
         })
-
+        /*
+        combined contains a row with table header information and then a row for each data row.
+        transposed will contain a row for each element in the table. Each element will contain
+         */
         if (dbTable) console.log('EhrHelpV2 combined', combined)
         let transpose = combined[0].map((col, i) => combined.map(row => row[i]))
         if (dbTable) console.log('EhrHelpV2 transpose', transpose)
         tableForm.transposedColumns = transpose
-
         let len = tableData[0] ? tableData[0].length : -1
         if (dbTable) console.log('EhrHelpV2 length of row of table data', len, rowTemplate.length)
         if (dbTable) console.log('EhrHelpV2._loadTableData load tableForm', tableForm)
@@ -280,6 +282,10 @@ export default class EhrHelpV2 {
   showDialog (tableKey) {
     this._dialogEvent(tableKey, true)
   }
+  showReport (tableKey, data) {
+    this._dialogEvent(tableKey, true, data)
+  }
+
 
   cancelDialog () {
     const dialog = this._getActiveTableDialog()
@@ -372,11 +378,20 @@ export default class EhrHelpV2 {
     return dialog ? dialog.inputs : []
   }
 
-  _dialogEvent (tableKey, open) {
+  isViewOnly (tableKey) {
+    let dialog = this.tableFormMap[tableKey]
+    return dialog ? dialog.viewOnly : []
+  }
+
+  _dialogEvent (tableKey, open, data) {
     if (dbDialog) console.log('EhrHelpV2 _dialogEvent', tableKey, open)
     let dialog = this.tableFormMap[tableKey]
     dialog.active = open
+    dialog.viewOnly = !!data
     this._clearDialogInputs(dialog)
+    if (data) {
+      dialog.inputs = { ...data }
+    }
     let eData = { key: tableKey, value: open }
     let channel = this.getDialogEventChannel(tableKey)
     Vue.nextTick(function () {

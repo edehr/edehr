@@ -4,10 +4,13 @@
     div(v-else)
       table.table_vertical
         tbody
-          tr(v-for="column in transposedColumns", :class="tableColumnCss(column)")
+          tr(v-for="(column, colIndex) in transposedColumns", :class="tableColumnCss(column)")
             td(:class="transposeLabelCss(column)")
               span(v-html="transposeLabel(column)")
-            td(v-for="cell in transposeData(column)", :class="transposeValueCss(cell)")
+            td(v-for="(cell, index) in transposeData(column)", :class="transposeValueCss(cell)")
+              ui-button(v-if="colIndex === 0",v-on:buttonClicked="$emit('view-report',index)")
+                span View &nbsp;
+                fas-icon(icon="file-pdf")
               div(v-for="cPart in cell.stack")
                 ehr-table-element(v-if="!!cPart.value", :cell="cPart")
 </template>
@@ -15,10 +18,11 @@
 <script>
 import EhrTableCommon from './EhrTableCommon'
 import EhrTableElement from './EhrTableElement'
+import UiButton from '@/app/ui/UiButton'
 
 export default {
   extends: EhrTableCommon,
-  components: { EhrTableElement },
+  components: { EhrTableElement, UiButton },
   inject: [ 'pageDataKey', 'tableKey'],
   data: function () {
     return {

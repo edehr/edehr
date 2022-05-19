@@ -30,7 +30,12 @@ input,
 textarea {
   display: inline-block;
 }
-
+.form_label {
+  font-weight: bold;
+  &::after {
+    content: ":"
+  }
+}
 .checkbox_label,
 .radio_label {
   display: inline;

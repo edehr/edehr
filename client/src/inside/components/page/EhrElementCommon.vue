@@ -33,7 +33,8 @@ export default {
   },
   props: {
     elementKey: { type: String },
-    ehrHelp: { type: Object }
+    ehrHelp: { type: Object },
+    viewOnly: { type: Boolean, default: false}
   },
   computed: {
     element () {
@@ -77,13 +78,11 @@ export default {
           }
         }
       }
-
       if (this.showSignature) {
         // make the record header read only if the case context feature is enabled and there is case context data
         // and the field is part of the record header
         disable = true
       }
-
       return disable
     }
   },
