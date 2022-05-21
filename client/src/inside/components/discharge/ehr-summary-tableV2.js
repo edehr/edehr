@@ -85,7 +85,6 @@ export default class EhrSummaryHelpV2 {
         result[key] = def.customGetters[key] ? def.customGetters[key](key, data) : data[key]
         if(debug) console.log('EhrSummaryHelpV2 tableData: key data result', key, data, result)
       })
-      console.log('EhrSummaryHelpV2 tableData:', data, result)
       return result
     })
     if(debug) console.log('EhrSummaryHelpV2 tableData: after map ', tableData)

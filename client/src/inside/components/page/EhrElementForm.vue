@@ -14,7 +14,7 @@
       ehr-element-patient(:element="element", :elementKey="elementKey", :ehrHelp="ehrHelp")
 
     div(v-else-if="isType('ehrFile')")
-      ehr-element-file(:elementKey="elementKey", :ehrHelp="ehrHelp")
+      ehr-element-file(:elementKey="elementKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
 
     div(v-else-if="isType('calculatedValue')", class="computed_wrapper")
       ehr-element-calculated(:element="element", :ehrHelp="ehrHelp" )
@@ -51,13 +51,13 @@
     div(v-else-if="isType('lookahead')", class="text_input_wrapper")
       ehr-page-form-label(:element="element", css="text_input_wrapper")
       ehr-element-lookup(
-        v-if="viewOnly",
+        v-if="!viewOnly"
         :disabled="disabled",
         :lookaheadKey="element.lookaheadKey",
         @selected="(selected) => inputVal = selected",
         :inputVal="inputVal"
       )
-      div(v-if="viewOnly") {{ inputVal }}
+      div(v-else) {{ inputValu }}
 
     div(v-else-if="isType('visitDay')", class="select_wrapper")
       ehr-page-form-label(:element="element", css="select_label")

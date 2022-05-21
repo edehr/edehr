@@ -1,7 +1,5 @@
 <template lang="pug">
   div
-    div(v-if='ehrOnlyDemo')
-      ui-agree(ref="aggreeDialog")
     app-dialog(
       :isModal="true",
       ref="theDialog",
@@ -23,20 +21,16 @@
 </template>
 
 <script>
-import AppDialog from '../../../app/components/AppDialogShell'
-import UiAgree from '@/app/ui/UiAgree'
+import AppDialog from '@/app/components/AppDialogShell'
+import EhrGroup from '@/inside/components/page/EhrGroup'
 import CaseContext from '@/helpers/case-context'
-import EhrGroup from './EhrGroup'
-import EventBus from '../../../helpers/event-bus'
+import EventBus from '@/helpers/event-bus'
 import EhrOnlyDemo from '@/helpers/ehr-only-demo'
-const debug = false
 
 export default {
-  name: 'EhrDialogForm',
   components: {
     EhrGroup,
-    AppDialog,
-    UiAgree
+    AppDialog
   },
   data: function () {
     return {
@@ -83,7 +77,6 @@ export default {
     featureCaseContext () {
       return CaseContext.isCaseContextFeature()
     }
-
   },
   methods: {
     cssFromDefs: function (element) {
@@ -94,31 +87,11 @@ export default {
       this.errorList = []
     },
     saveDialog: function () {
-      // TODO Fix the EHR Only demo defects on table save
-      const msg = 'This EHR demonstration is a feature introduced in May 2022. \n' +
-        'This demo has two defects that impact will ' +
-        'your experience. First, after save the your new data does not appear. Simply, select another EHR page and ' +
-        'come back to see your list. Second, the base seed case data is duplicated. This message will be removed ' +
-        'as soon as the defects are resolved.'
-      let errs = this.ehrHelp.saveDialog()
-      if (errs) {
-        this.errorList = errs
-      } else {
-        this.errorList = []
-        // only display if there are no errors
-        const shownOnce = localStorage.getItem('EhrOnlyTemporaryAdvisory')
-        // console.log('EhrOnlyTemporaryAdvisory', shownOnce)
-        if (!shownOnce) {
-          this.$refs.aggreeDialog.showDialog('Advisory', msg)
-          localStorage.setItem('EhrOnlyTemporaryAdvisory', true)
-        }
-      }
+      this.errorList = this.ehrHelp.saveDialog() || []
       this.ackReqHeader = false
     },
     receiveShowHideEvent (eData) {
       if(eData.value) {
-        if (debug) console.log('EhrDialogForm rcv show hide', this.tableKey)
-        if (debug) console.log('EhrDialogForm rcv show hide', this.tableKey)
         this.$refs.theDialog.onOpen()
       } else {
         this.$refs.theDialog.onClose()
@@ -130,11 +103,8 @@ export default {
   },
   mounted: function () {
     const _this = this
-    // console.log('mount dialog', this.pageDataKey)
     let ch = this.ehrHelp.getDialogEventChannel(this.tableKey)
-    // console.log('EhrDialogForm add listener', ch)
     this.eventHandler = function (eData) {
-      // console.log('EhrDialogForm receiveShowHideEvent', ch)
       _this.receiveShowHideEvent(eData)
     }
     EventBus.$on(ch, this.eventHandler)
@@ -142,13 +112,9 @@ export default {
   beforeDestroy: function () {
     let ch = this.ehrHelp.getDialogEventChannel(this.tableKey)
     if (this.eventHandler) {
-      // console.log('beforeDestroy, remove listener', ch)
       EventBus.$off(ch, this.eventHandler)
     }
   }
 }
 </script>
 
-<style lang="scss">
-//@import '../../scss/definitions';
-</style>

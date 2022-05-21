@@ -7,16 +7,13 @@
       div
         div(v-text-to-html="ehrOnlyDemoText.explanation")
       div(class="columns is-centered")
-        ui-button(v-on:buttonClicked="gotoDemo()", title='Enter the EHR') Enter the EHR
+        ui-button(v-on:buttonClicked="gotoDemo()", title='Enter the EHR') {{ ehrOnlyDemoText.enterEHRButtonLabel }}
       div &nbsp;
       div
         div(v-text-to-html="ehrOnlyDemoText.after")
 
     div(v-else)
-      div You are not logged in to see the demo
-      div Click &nbsp;
-        ui-link(:name="'home'") here
-        span &nbsp; to return to the main home page.
+      p {{ ehrOnlyDemoText.noAccess }}
 
 </template>
 

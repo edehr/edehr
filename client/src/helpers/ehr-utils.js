@@ -5,7 +5,6 @@ import EhrDefs from './ehr-defs-grid'
 import { Text } from './ehr-text'
 import validFilename  from 'valid-filename'
 import StoreHelper from './store-helper'
-import EhrOnlyDemo from '@/helpers/ehr-only-demo'
 // import filenamify from 'filenamify'
 
 const debug = false
@@ -137,8 +136,9 @@ export function composeAxiosResponseError (error, msg = '') {
 
 export function decoupleObject (obj) {
   if (obj) {
+    // This is the recommended way to clone a simple object in ES6.
+    // Note that all ehr data objects are simple. No methods. No circular references
     let str = JSON.stringify(obj)
-    // console.log('EhrUtil decouple object ', str)
     return JSON.parse(str)
   }
   return obj
@@ -341,46 +341,11 @@ export function downArrayToCsvFile (filename, array) {
  * @return {*}
  */
 export function prepareAssignmentPageDataForSave (aPage) {
-  if(debug) console.log('EhrUtil prepareAssignmentPageDataForSave', JSON.stringify(aPage, null, 2))
+  if(debug) console.log('EhrUtil prepareAssignmentPageDataForSave', decoupleObject(aPage))
   let cleanValue = removeEmptyProperties(aPage)
   cleanValue = ehrRemoveMarkedSeed(cleanValue)
+  if(debug) console.log('EhrUtil cleanValue', decoupleObject(cleanValue))
   return cleanValue
-}
-
-export function getMergedData (state, getters, rootState, rootGetters) {
-  console.log('ehrDataStore mergedData start merging here')
-  let type = ''
-  let mData, studentAssignmentData
-  const ehrOnly = EhrOnlyDemo.isActiveEhrOnlyDemo()
-  const isInstructor = StoreHelper.isInstructor()
-  let ehrSeedData = decoupleObject(StoreHelper.getSeedEhrData() || {})
-  if (StoreHelper.isSeedEditing()) {
-    type = 'Seed Editing'
-    mData = ehrSeedData
-  } else if (ehrOnly) {
-    type = 'EHR Only demo'
-    ehrSeedData = decoupleObject(EhrOnlyDemo.getEhrOnlySeedData())
-    studentAssignmentData = EhrOnlyDemo.getEhrOnlyUserData()
-  } else if (isInstructor) {
-    type = 'Instructor wants student data'
-    studentAssignmentData = StoreHelper.getCurrentEvaluationStudentAssignmentData()
-  } else {
-    type = 'Student merged data'
-    studentAssignmentData = StoreHelper.getStudentAssignmentData()
-    // mark all elements in the page arrays to allow us to strip the seed data out before saving
-    ehrSeedData = ehrMarkSeed(ehrSeedData)
-  }
-  if (debug) console.log('EhrData type: ' + type, studentAssignmentData)
-  if (studentAssignmentData) {
-    studentAssignmentData = decoupleObject(studentAssignmentData)
-    mData = ehrMergeEhrData(ehrSeedData, studentAssignmentData)
-    if (debug) {
-      console.log('EhrData seed  ', ehrSeedData)
-      console.log('EhrData data  ', studentAssignmentData)
-      console.log('EhrData merged', mData)
-    }
-  }
-  return mData || {}
 }
 
 export function ehrMergeEhrData (one, two) {

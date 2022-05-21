@@ -40,7 +40,7 @@ export default {
 @import '../../scss/definitions'; 
 
 .button {
-  width: 100%;
+  width: 99%;
   margin-bottom: 2px !important;
 }
 </style>

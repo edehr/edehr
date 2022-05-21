@@ -5,18 +5,22 @@
       div(class="inline")
         ehr-file-link(v-if="inputVal.fName", :ehrFile="inputVal", :alink="false")
       div(class="inline select-file")
-        ui-button(v-on:buttonClicked="showSelectDialog", v-bind:disabled="disabled", secondary, title="Select a file") {{ buttonLabel }}
+        ui-button(v-on:buttonClicked="showSelectDialog", v-bind:disabled="disabled || viewOnly", secondary, title="Select a file") {{ buttonLabel }}
     file-select-dialog(ref="fileSelectDialog", @fileSelected="fileSelected")
+    ui-agree(ref="ehrOnlyDialog")
 </template>
 
 <script>
 import EhrElementCommon from './EhrElementCommon'
-import EventBus from '../../../helpers/event-bus'
 import EhrFileLink from '@/inside/components/EhrFileLink'
 import FileSelectDialog from '@/outside/components/FileSelectDialog'
+import UiAgree from '@/app/ui/UiAgree'
 import UiButton from '@/app/ui/UiButton'
-import { isImageFile } from '../../../helpers/ehr-utils'
-import { FORM_INPUT_EVENT } from '../../../helpers/event-bus'
+import EventBus from '@/helpers/event-bus'
+import EhrOnlyDemo from '@/helpers/ehr-only-demo'
+import { isImageFile } from '@/helpers/ehr-utils'
+import { FORM_INPUT_EVENT } from '@/helpers/event-bus'
+import { ehrOnlyDemoText } from '@/appText'
 
 let db = false
 /*
@@ -28,7 +32,7 @@ let db = false
  */
 
 export default {
-  components: { EhrFileLink, FileSelectDialog, UiButton },
+  components: { EhrFileLink, FileSelectDialog, UiAgree, UiButton },
   extends: EhrElementCommon,
   inject: [ 'pageDataKey' ],
   props: {
@@ -49,7 +53,13 @@ export default {
       this.inputVal = file
     },
     showSelectDialog () {
-      this.$refs.fileSelectDialog.showDialog()
+      if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
+        const msg = ehrOnlyDemoText.fileDialogMessage
+        const title = ehrOnlyDemoText.fileDialogTitle
+        this.$refs.ehrOnlyDialog.showDialog(title, msg)
+      } else {
+        this.$refs.fileSelectDialog.showDialog()
+      }
     },
     receiveEvent (eData) {
       let pageDataKey = this.pageDataKey

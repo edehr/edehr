@@ -1,7 +1,7 @@
 <template lang="pug">
   div
     ui-button(v-on:buttonClicked="showDialog",v-bind:secondary="true")
-      span Private notes for {{userName}}
+      span Private notes for you {{userName}}
 
     app-dialog(:isModal="false", ref="theDialog", @cancel="cancelDialog", @save="saveDialog")
       h2(slot="header") These private notes are for you {{userName}}
@@ -14,6 +14,7 @@
 import AppDialog from '../../app/components/AppDialogShell'
 import UiButton from '../../app/ui/UiButton.vue'
 import StoreHelper from '../../helpers/store-helper'
+import EhrOnlyDemo from '@/helpers/ehr-only-demo'
 
 export default {
   components: {
@@ -33,7 +34,12 @@ export default {
   },
   methods: {
     resetNotes: function () {
-      let sp = StoreHelper.getStudentScratchData()
+      let sp = ''
+      if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
+        sp = EhrOnlyDemo.ehrOnlyScratch()
+      } else {
+        sp = StoreHelper.getStudentScratchData()
+      }
       // console.log('EhrScratchPad reset with existing ', sp)
       this.theNotes = sp
     },
@@ -48,7 +54,12 @@ export default {
     saveDialog: function () {
       this.$refs.theDialog.onClose()
       // console.log('EhrScratchPad saving ', this.theNotes)
-      this.$store.dispatch('activityDataStore/sendScratchData', this.theNotes)
+      if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
+        EhrOnlyDemo.ehrOnlyScratchSave(this.theNotes)
+      } else {
+        this.$store.dispatch('activityDataStore/sendScratchData', this.theNotes)
+      }
+
     }
   }
 }
@@ -56,9 +67,9 @@ export default {
 
 <style lang="scss" scoped>
 
-button {
-  width: 100%;
-  margin-bottom: 2px !important;
+.button {
+  width: 99%;
+  margin-bottom: 5px !important;
 }
 
 textarea {

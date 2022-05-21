@@ -1,6 +1,11 @@
 import store from '@/store'
-
 class EhrOnlyDemoInner {
+  ehrOnlyScratch () {
+    return store.getters['ehrOnlyDemoStore/ehrOnlyScratch']
+  }
+  ehrOnlyScratchSave (text) {
+    store.dispatch('ehrOnlyDemoStore/saveScratch', text)
+  }
   isActiveEhrOnlyDemo () {
     return store.getters['ehrOnlyDemoStore/isActiveEhrOnlyDemo']
   }

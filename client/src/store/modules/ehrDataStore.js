@@ -58,6 +58,7 @@ const getters = {
       // base already set above
     } else if (getters.ehrOnly) {
       baseLevelData = decoupleObject(rootGetters['ehrOnlyDemoStore/ehrOnlyDataSeed'])
+      baseLevelData = ehrMarkSeed(baseLevelData)
     } else if (InstoreHelper.instoreIsInstructor(rootState)) {
       // base already set above
     } else {
@@ -83,7 +84,7 @@ const getters = {
     }
     if (debug) console.log('EhrData type: ' + type, secondLevelData)
     if (secondLevelData) {
-      mData = ehrMergeEhrData(baseLevelData, secondLevelData)
+      mData = decoupleObject(ehrMergeEhrData(baseLevelData, secondLevelData))
       if (debug) {
         console.log('EhrData base  ', baseLevelData)
         console.log('EhrData second  ', secondLevelData)

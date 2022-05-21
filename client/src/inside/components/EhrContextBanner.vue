@@ -1,17 +1,20 @@
 <template lang="pug">
-  div(v-if="showStudent")
-    ehr-context-student
-  div(v-else)
-    div(class="EhrContextBanner EhrPanelContent")
-      div(class="EhrPanelContent_Inner")
-        div(class="context-header columns", v-on:click="toggleShow")
-            h3(class="header-item", :title="title") {{ title }}
-            div(class="icon-group")
-              fas-icon(icon="plus", v-show="!show") 
-              fas-icon(icon="minus", v-show="show")
-        div(v-show="show")
-          ehr-context-instructor(v-if="(showInstructor)")
-          ehr-context-developer(v-else-if="showSeeding")
+  div
+    div(v-if='isEhrOnlyDemo', class="EhrContextBanner")
+      div(class="EhrPanelContent") {{ehrOnlyDemoText.ehrContextBannerTitle}}
+    div(v-else-if="showStudent")
+      ehr-context-student
+    div(v-else)
+      div(class="EhrContextBanner EhrPanelContent")
+        div(class="EhrPanelContent_Inner")
+          div(class="context-header columns", v-on:click="toggleShow")
+              h3(class="header-item", :title="title") {{ title }}
+              div(class="icon-group")
+                fas-icon(icon="plus", v-show="!show")
+                fas-icon(icon="minus", v-show="show")
+          div(v-show="show")
+            ehr-context-instructor(v-if="(showInstructor)")
+            ehr-context-developer(v-else-if="showSeeding")
 </template>
 
 <script>
@@ -19,6 +22,8 @@ import EhrContextInstructor from './EhrContextInstructor'
 import EhrContextStudent from './EhrContextStudent'
 import EhrContextDeveloper from './EhrContextDeveloper'
 import StoreHelper from '../../helpers/store-helper'
+import EhrOnlyDemo from '@/helpers/ehr-only-demo'
+import { ehrOnlyDemoText } from '@/appText'
 
 export default {
   name: 'EhrContextBanner',
@@ -27,10 +32,14 @@ export default {
     return {
       show: false,
       indicator: '+',
-      activity: {}
+      activity: {},
+      ehrOnlyDemoText: ehrOnlyDemoText
     }
   },
   computed: {
+    isEhrOnlyDemo () {
+      return EhrOnlyDemo.isActiveEhrOnlyDemo()
+    },
     title () {
       return StoreHelper.isSeedEditing() ? 'Edit seed' :StoreHelper.getCourseTitle()
     },

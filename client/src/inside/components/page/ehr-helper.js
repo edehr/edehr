@@ -355,6 +355,7 @@ export default class EhrHelpV2 {
           this._loadPageData()
         })
     } else if (ehrOnly) {
+      payload.value = prepareAssignmentPageDataForSave(payload.value)
       return EhrOnlyDemo.saveEhrOnlyUserData(payload.pageKey, payload.value)
     } else {
       return Promise.reject(Text.FUNCTION_OUT_OF_CONTEXT('_saveData'))
