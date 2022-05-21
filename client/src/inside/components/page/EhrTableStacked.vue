@@ -1,10 +1,12 @@
 <template lang="pug">
   div
+    //div TABLE STACKED
     div(class="no-data" v-if="!hasData") There are no records or reports for this patient.
     div(v-else)
       table.table_horizontal
         thead
           tr
+            th &nbsp;
             th(v-for="tCell in tableForm.rowTemplate")
               span(v-html="tCell.tableLabel", :class="tableColumnCss(tCell)")
         tbody

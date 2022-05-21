@@ -10,7 +10,7 @@ export const appText = {
   },
   "resources": {
     "title": "About the EdEHR and Resources",
-    "body": (host) => `The EdEHR is a <a href=\"https://bccampus.ca/\">BCcampus</a> project funded by the British Columbia Ministry of Advanced Education, Skills and Training. Here is a link to the <a href=\"https://bccampus.ca/2018/01/23/bccampus-launches-the-educational-electronic-health-record-system-project-in-b-c/\">BCcampus announcement</a> and you can read more about the announcement in this BCcampus <a href=\"https://bccampus.ca/2020/01/07/an-education-in-electronic-health-records/\">blog post</a>.  The EdEHR project requirements are based on this <a href=\"https://edehr.org/assets/EdEHR_Env_Scan_June%204_2018-Published.pdf\">Environmental Scan Report</a> published June 4, 2018. And the project was directed by a stakeholder group from the British Columbia Institute of Technology (<a href=\"https://www.bcit.ca/\">BCIT</a>), the University of British Columbia (<a href=\"https://www.ubc.ca/\">UBC</a>), and the University of Victoria (<a href=\"https://www.uvic.ca/\">UVic</a>)\nTo learn more see<ul><li> * <a href=\"https://edehr.github.io/edehr/\">the EdEHR documentation site</a> </li><li> * <a href=\"https://github.com/edehr/edehr\">the EdEHR open source code repository on GitHub</a> </li><li> * <a href=\"https://www.youtube.com/channel/UCVlhKFf-VHqp3JAY3TDIemw\">some videos on YouTube that demonstrate how the EdEHR works</a> </li></ul>\nIf you need further help or have a question about the EdEHR then send an email to <a href=\"mailto:info@edehr.org\">info@edehr.org</a>`
+    "body": (host) => `The EdEHR is a <a href=\"https://bccampus.ca/\">BCcampus</a> project funded by the British Columbia Ministry of Advanced Education, Skills and Training. Here is a link to the <a href=\"https://bccampus.ca/2018/01/23/bccampus-launches-the-educational-electronic-health-record-system-project-in-b-c/\">BCcampus announcement</a> and you can read more about the announcement in this BCcampus <a href=\"https://bccampus.ca/2020/01/07/an-education-in-electronic-health-records/\">blog post</a>.  The EdEHR project requirements are based on this <a href=\"https://edehr.org/assets/EdEHR_Env_Scan_June%204_2018-Published.pdf\">Environmental Scan Report</a> published June 4, 2018. And the project was directed by a stakeholder group from the British Columbia Institute of Technology (<a href=\"https://www.bcit.ca/\">BCIT</a>), the University of British Columbia (<a href=\"https://www.ubc.ca/\">UBC</a>), and the University of Victoria (<a href=\"https://www.uvic.ca/\">UVic</a>).\nTo learn more see<ul><li> * <a href=\"https://edehr.github.io/edehr/\">the EdEHR documentation site</a> </li><li> * <a href=\"https://github.com/edehr/edehr\">the EdEHR open source code repository on GitHub</a> </li><li> * <a href=\"https://www.youtube.com/channel/UCVlhKFf-VHqp3JAY3TDIemw\">some videos on YouTube that demonstrate how the EdEHR works</a> </li></ul>\nIf you need further help or have a question about the EdEHR then send an email to <a href=\"mailto:info@edehr.org\">info@edehr.org</a>`
   },
   "related": {
     "title": "Related resources",
@@ -83,8 +83,44 @@ export const ehrOnlyDemoText = {
   'Post-secondary programs can adapt the system to accommodate their educational needs. Faculty can adapt the case studies to accommodate their learning objectives.\n' +
     'The button below will allow you to see the EHR side of the EdEHR. Of course, this is just half of the application because the EdEHR also supports faculty as they educate their students and develop course content.  If you wish to learn more about the whole application then please contact <a href=\"mailto:info@edehr.org\">info@edehr.org</a>. ',
   explanation:
-    'When you enter the EHR you will see a sample case study that is based on the open text-book ' +
-    '"Health Case Studies - Toward Closing the Healthcare Communication Gap" ' +
+    'When you enter the EHR you will see a sample case study that is based on the open text-book ',
+  after:'In the full EdEHR the student is given support with information about the assigned task and they ' +
+    'are expected to submit their completed work for review. ' +
+    'The faculty can then review and comment on the work and even send ' +
+    'the work back to the student for refinement. The evaluation notes can later be transfered to the' +
+    'institutions learning management system.',
+  inEhrActivityInfo:
+    'In this EHR you are seeing a sample case study that is based on the open text-book ',
+  activityDialogMessage: 'In the full EdEHR this dialog will explain the tasks the student must complete and provide' +
+    'background information.  In this demo, you are tasked with reviewing the patient\'s chart ' +
+    'and composing a progress note with your assessment. </br>\n' +
+    'Other typical activities include adding a new set of vital sign data, or conducting any of the ' +
+    'many assessments, or attending to an wound or incision, or administrating a medication, ' +
+    'or preparing the patient for discharge, or prescribing a medication, or ...',
+  activityDialogTitle: 'Assignment details',
+  fileDialogTitle: 'File Selection',
+  fileDialogMessage: 'This EHR only demo version does not support files. In the full EdEHR the EHR user ' +
+    'will not see this message and will instead see a dialog that allows them to select from a set of ' +
+    'files previously uploaded to the system by the course content creator. ' +
+    'These files can include PDF and image files.  The workflow starts with the content creator who ' +
+    'finds or creates a file to support a scenario. They upload this file into an area on the server ' +
+    'reserved for the learning institution. These files then can be selected for inclusion in an ' +
+    'assessment. ',
+  submitDialogMessage: 'In the full EdEHR students complete their work and submit it for review by their ' +
+    'instructor. The instructor can view the student\'s work in the EHR context and leave ' +
+    'evaluation comments for the student to consider. These ' +
+    'evaluation comments can also be transferred to the institution\'s learning ' +
+    'management system for course grading.',
+  submitDialogTitle: 'Student Submit',
+  enterEHRButtonLabel: 'Enter the EHR',
+  noAccess: 'You are already logged in and using the EdEHR either from your learning management system ' +
+    'or via the full EdEHR demonstration. You can not also try the EHR only demo. ',
+  ehrContextBannerTitle: 'EHR Only Demonstration View',
+  navPanelSubmitButton: 'Submit',
+  navPanelActivityButton: 'Activity Details'
+}
+
+const _common =     '"Health Case Studies - Toward Closing the Healthcare Communication Gap" ' +
     'by:  Glynda Rees, Rob Kruger, Janet Morrison. ' +
     'See: page 31 Case Study #2 in https://pressbooks.bccampus.ca/healthcasestudies/ \n' +
     'In this case the patient has COPD that is exacerbated due to community acquired pneumonia. ' +
@@ -92,13 +128,10 @@ export const ehrOnlyDemoText = {
     'The focus for this assignment is help the student complement their assessment and monitoring skills ' +
     'with accurate and careful recording within an electronic health record system. ' +
     'Imagine that you are a nursing student your second or third years of study. Your task is to review ' +
-    'the patients current condition and prepare a progress note for the attending physician. \n',
-  after:'In the full EdEHR the student is given support with information about the assigned task and they ' +
-    'are expected to submit their completed work for review. ' +
-    'The faculty can then review and comment on the work and even send ' +
-    'the work back to the student for refinement. The evaluation notes can later be transfered to the' +
-    'institutions learning management system.'
-}
+    'the patients current condition and prepare a progress note for the attending physician. \n'
+
+ehrOnlyDemoText.explanation += _common
+ehrOnlyDemoText.inEhrActivityInfo += _common
 
 export const edEhrValues = [
   {

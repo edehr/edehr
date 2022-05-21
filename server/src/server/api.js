@@ -112,6 +112,10 @@ export function apiMiddle (app, config) {
   cc.setSharedControllers(lcc)
   demo.setSharedControllers(lcc)
 
+  const justCors = [
+    cors(corsOptions)
+  ]
+
   const middleWare = [
     cors(corsOptions),
     validatorMiddlewareWrapper(authUtil)
@@ -167,7 +171,7 @@ export function apiMiddle (app, config) {
       api.use('/feedback', middleWare, fc.route())
       api.use('/files', middleWare, fileC.route())
       api.use('/consumers', middleWare, cc.route())
-      api.use('/lookahead', middleWare, look.route())
+      api.use('/lookahead', justCors, look.route())
       api.use('/users', middleWare, uc.route())
       api.use('/visits', middleWare, vc.route())
       api.use('/seed-data', middleWare, sd.route())
@@ -181,7 +185,7 @@ export function apiMiddle (app, config) {
       api.use('/api/consumers', middleWare, cc.route())
       api.use('/api/feedback', middleWare, fc.route())
       api.use('/api/files', middleWare, fileC.route())
-      api.use('/api/lookahead', middleWare, look.route())
+      api.use('/api/lookahead', justCors, look.route())
       api.use('/api/users', middleWare, uc.route())
       api.use('/api/visits', middleWare, vc.route())
       api.use('/api/seed-data', middleWare, sd.route())

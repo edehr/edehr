@@ -3,7 +3,7 @@
     app-dialog(:isModal="true", ref="theDialog", :useSave="false", @cancel="cancelDialog", cancelButtonLabel="OK")
       h2(slot="header") {{ title }}
       div(slot="body")
-        p {{ text }}
+        p(v-text-to-html='text')
   
 </template>
 

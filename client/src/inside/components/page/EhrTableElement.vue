@@ -8,7 +8,7 @@
 <script>
 import moment from 'moment'
 import EhrFileLink from '@/inside/components/EhrFileLink'
-import { formatDateStr } from '../../../helpers/ehr-utils'
+import { formatDateStr } from '@/helpers/ehr-utils'
 
 export default {
   components: { EhrFileLink },

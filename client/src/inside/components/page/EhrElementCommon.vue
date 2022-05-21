@@ -127,7 +127,7 @@ export default {
             let vt = value
             if (typeof value === 'string') {
               vt = value.replace(re, '$1')
-              console.log(`${value} --> ${vt}`)
+              // console.log(`${value} --> ${vt}`)
             }
             return vt
           }

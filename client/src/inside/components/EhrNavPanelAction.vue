@@ -104,10 +104,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/definitions'; 
-
+@import '../../scss/definitions';
 .button {
-  width: 100%;
+  width: 99%;
   margin-bottom: 2px !important;
 }
 </style>
