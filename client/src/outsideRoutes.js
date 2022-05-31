@@ -2,6 +2,13 @@ export function outside () {
 
   return [
     {
+      path: '/about',
+      name: 'about',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/About.vue'),
+      meta: { layout: 'outside', label: 'About', zone: 'public' }
+    },
+    {
       path: '/help',
       name: 'help',
       component: () =>
@@ -14,6 +21,13 @@ export function outside () {
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Privacy.vue'),
       meta: { layout: 'outside', label: 'Privacy', zone: 'public' }
+    },
+    {
+      path: '/terms',
+      name: 'terms',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Terms.vue'),
+      meta: { layout: 'outside', label: 'Terms', zone: 'public' }
     },
     {
       path: '/assignments',

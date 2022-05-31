@@ -1,18 +1,34 @@
 <template lang="pug">
   footer
-    div(class="wrapper")
-      div Application version {{ appVersion }}
-    div(class="wrapper")
-      p Except where otherwise noted, content on this site is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a>.
+    div(class="columns")
+      div(class="column", :class='classMain')
+        div <a href="https://github.com/edehr/edehr"> EdEHR Github repository </a>
+        div Content on this site is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a> except where otherwise noted.
+        div EdEHR software is licensed under <a href="https://github.com/edehr/edehr/blob/master/LICENSE">GNU Affero General Public License v3.0</a>
+        div Application version {{ appVersion }}
+      div(v-if="showEdEhrOrg", class="column is-2")
+        div &nbsp;
+      div(v-if="showEdEhrOrg", class="column is-4")
+        ed-ehr-org-footer
 </template>
 
 <script>
 import StoreHelper from '../../helpers/store-helper'
-
+import EdEhrOrgFooter from '@/app/edehr-org/EdEhrOrgFooter'
+import edherorg from '@/app/edehr-org/ed-ehr-org'
 export default {
+  components: {
+    EdEhrOrgFooter
+  },
   computed: {
     appVersion () {
       return StoreHelper.getAppVersion()
+    },
+    classMain () {
+      return this.showEdEhrOrg ? 'is-6' : 'is-12'
+    },
+    showEdEhrOrg () {
+      return edherorg.isEdEhrOrg()
     },
   }
 }
@@ -20,22 +36,4 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/definitions';
-footer {
-  background: $toolbar-background-color;
-  color: $toolbar-color;
-  padding: 20px;
-  text-align: center;
-  p {
-    color: $white;
-    margin-bottom: 0;
-  }
-  a {
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: underline;
-    &:hover {
-      color: rgba(255, 255, 255, 1);
-      transition: 350ms ease-out;
-    }
-  }
-}
 </style>

@@ -14,23 +14,6 @@
     section(class="no-container features features-dark")
       ed-ehr-values
 
-    //section(class="container features features-light")
-
-    section(class="container features features-light", id="resources")
-      div(class="content")
-        h2(class="title") {{ appText.resources.title }}
-        div(v-text-to-html.noAutoLink="appResourceBody")
-
-    section(class="container features features-dark")
-      div(class="content")
-        h2(class="title") {{appText.related.title }}
-        div(v-text-to-html.noAutoLink="appText.related.body")
-
-    section(class="container features features-light")
-      div(class="content")
-        h2(class="title") {{appText.privacy.title }}
-        div(v-text-to-html.noAutoLink="appPrivacyBody")
-
     section(class="no-container")
       div(class="content")
         input(type="checkbox", v-model="activateDemoMode", class="is-pulled-right")
@@ -59,9 +42,6 @@ export default {
     }
   },
   computed: {
-    isDemo () { return StoreHelper.isDemoMode()  },
-    appPrivacyBody () { return this.appText.privacy.body(window.location.origin) },
-    appResourceBody () { return this.appText.resources.body(window.location.origin) }
   },
   methods: {
   },
@@ -120,13 +100,16 @@ export default {
     color: #fff;
   }
 
+  .hero {
+    border-top: 8px solid #ff5555;
+  }
   .hero-body {
     flex-grow: 1;
     flex-shrink: 0;
     padding: 3rem 1.5rem;
   }
   .hero-body .title {
-    color: hsl(192,17%,99%) !important;
+    color: #fff;
   }
 
   .hero-body .demo-access {
