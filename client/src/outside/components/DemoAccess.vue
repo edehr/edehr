@@ -1,6 +1,10 @@
 <template lang="pug">
   div(class="content")
     div
+      div(v-if="showEhrOnlyDemoLink")
+        ui-button(class="demoButton",@buttonClicked="gotoEhrOnly", :title='tip1') EHR only demonstration
+        div &nbsp;
+    div
       div(class="columns", v-if="isInstructor")
         div(class="column is-8") You are logged in as an instructor.  &nbsp;
           ui-link(:name="'instructor'") Go to your course lists.
@@ -16,9 +20,10 @@
         div You are already logged into the demonstration. &nbsp;
           ui-link(:name="'demo'") Click here to return to the demonstration page.
       div(v-else class="demoLogin")
-        ui-button(class="",@buttonClicked="demoLoginConfirm") Try out the EdEHR within a demonstration learning management system
+        ui-button(class="demoButton",@buttonClicked="demoLoginConfirm", :title='tip2') Full EdEHR demonstration
     div(v-else).
-      Coming soon!  The EdEHR will have a demonstration version. Contact <a href="mailto:info@edehr.org">info@edehr.org</a> for more information.
+      There is a full demonstration mode that shows how the EdEHR works with learning management systems.
+      Contact <a href="mailto:info@edehr.org">info@edehr.org</a> for more information.
     ui-confirm(class="confirmDialog",ref="confirmDemoDialog", @confirm="proceedDemoToolConsumerCreation", htmlBody, saveLabel="Continue")
 
 </template>
@@ -39,13 +44,16 @@ export default {
   },
   data () {
     return {
+      tip1: 'See what a medical student will experience when using the EdEHR. Includes a sample patient case study.',
+      tip2: 'See how the EdEHR works within a mocked up learning management system. You can log in either as faculty or as a student. Faculty can configure the EdEHR, create course content and see their class lists and evaluate student work.'
     }
   },
   computed: {
     demoFeatureFlag () { return StoreHelper.getDemoFeatureFlag() },
     isDemo () { return StoreHelper.isDemoMode()  },
     isStudent () { return StoreHelper.isStudent() },
-    isInstructor () { return StoreHelper.isInstructor() }
+    isInstructor () { return StoreHelper.isInstructor() },
+    showEhrOnlyDemoLink () { return !this.isDemo },
   },
   methods: {
     demoLoginConfirm () {
@@ -55,6 +63,9 @@ export default {
       await StoreHelper.logUserOutOfEdEHR()
       // refresh this page
       this.$router.go(0)
+    },
+    gotoEhrOnly () {
+      this.$router.push('ehrOnlyDemo')
     },
     proceedDemoToolConsumerCreation () {
       const demoHelper = new DemoHelper()
@@ -75,6 +86,13 @@ export default {
     color: $grey80;
   }
 
+  .demoButton {
+    //box-shadow: 2px 2px 2px 2px  #DC143C;
+    box-shadow: 2px 2px 2px 2px  $brand-primary-hover;
+    //border: 1px solid #ff5555;
+    background-color: $toolbar-background-color;
+    font-size: 1.25rem;
+  }
   a {
     color: white;
     font-weight: bold;

@@ -23,11 +23,13 @@ h1 {
 h2 {
 	font-size: 24px;
 	margin-bottom: .625em;
+	margin-top: .625em;
 }
 
 h3, .h3 {
 	font-size: 20px;
 	margin-bottom: .5em;
+	margin-top: .5em;
 }
 
 h4 {
@@ -40,12 +42,28 @@ p {
 	max-width: 60rem;
 }
 
+blockquote {
+}
+
+.quote_wrapper {
+	margin-left: 2rem;
+	margin-bottom: 1rem;
+	max-width: 50rem;
+	font-size: 18px;
+
+	blockquote {
+		font-family: "Times New Roman";
+	}
+	.quote_source::before {
+		content: '—'
+	}
+}
 .outside-layout {
 	a {
 		font-size: 18px;
 		text-decoration: underline;
 	}
-	p {
+	p, blockquote {
 		font-size: 18px;
 	}
 }

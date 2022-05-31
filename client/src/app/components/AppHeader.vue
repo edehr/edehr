@@ -6,10 +6,8 @@
         div(class="navList")
           div(class="navItem navItemShort")
             router-link(:to="{ name: 'home' }", class="navLink app-title") EdEHR
-          div(v-if="showEhrOnlyDemoLink", class="navItem navItemShort")
-            router-link(:to="{ name: 'ehrOnlyDemo' }", class="navLink") EHR Demo
           div(class="navItem navItemShort navItemEnd")
-            router-link(:to="{ name: `help` }", class="navLink") About
+            router-link(:to="{ name: `about` }", class="navLink") About
           div(class="navItem", v-if="lmsName")
             span Return to: &nbsp;
             a(:href="lmsUrl", class="navLink") {{lmsName}}
@@ -152,11 +150,11 @@ header {
   background: $toolbar-background-color;
   color: $toolbar-color;
   .navLink {
-    color: rgba(255, 255, 255, 0.8);
+    color: white;
     &:focus,
     &:hover,
     &.is-active {
-      color: rgba(255, 255, 255, 1);
+      color: rgba(255, 255, 255, 0.7);
     }
   }
 }
@@ -221,7 +219,7 @@ header {
   .navLink {
     text-decoration: none;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     &:focus,
     &:hover,
     &.is-active {
