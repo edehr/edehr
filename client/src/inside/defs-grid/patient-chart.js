@@ -55,13 +55,14 @@ export default function () {
           fqn: 'progressNotes.note'
         }
       ],
-      generated: '2022-05-17T22:18:33-07:00',
+      generated: '2022-05-30T17:37:34-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
           hasRecHeader: false,
+          label: 'Progress notes',
           addButtonText: 'Add an encounter note',
           ehr_list: [
             {
@@ -84,11 +85,12 @@ export default function () {
           ],
           form: {
             elementKey: 'table',
+            label: 'Progress notes',
             addButtonText: 'Add an encounter note',
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group45',
+                elementKey: 'ehr_group1',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -99,7 +101,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group46',
+                elementKey: 'ehr_group2',
                 formCss: 'grid-left-to-right-1',
                 gIndex: '2',
                 gChildren: [
@@ -219,13 +221,14 @@ export default function () {
           fqn: 'carePlan.status'
         }
       ],
-      generated: '2022-05-17T22:18:33-07:00',
+      generated: '2022-05-30T17:37:34-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
           hasRecHeader: false,
+          label: 'Care plan',
           addButtonText: 'Add a care plan',
           ehr_list: [
             {
@@ -276,11 +279,12 @@ export default function () {
           ],
           form: {
             elementKey: 'table',
+            label: 'Care plan',
             addButtonText: 'Add a care plan',
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group47',
+                elementKey: 'ehr_group3',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -291,7 +295,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group48',
+                elementKey: 'ehr_group4',
                 gIndex: '2',
                 gChildren: [
                   'clinical',
@@ -381,13 +385,14 @@ export default function () {
           fqn: 'consults.comments'
         }
       ],
-      generated: '2022-05-17T22:18:33-07:00',
+      generated: '2022-05-30T17:37:34-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
           hasRecHeader: false,
+          label: 'Consults',
           addButtonText: 'Add a consulttion report',
           ehr_list: [
             {
@@ -417,11 +422,12 @@ export default function () {
           ],
           form: {
             elementKey: 'table',
+            label: 'Consults',
             addButtonText: 'Add a consulttion report',
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group49',
+                elementKey: 'ehr_group5',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -432,7 +438,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group50',
+                elementKey: 'ehr_group6',
                 gIndex: '2',
                 gChildren: [
                   'consultReport',
@@ -516,13 +522,14 @@ export default function () {
           fqn: 'labResults.comments'
         }
       ],
-      generated: '2022-05-17T22:18:33-07:00',
+      generated: '2022-05-30T17:37:34-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
           hasRecHeader: false,
+          label: 'Laboratory reports',
           addButtonText: 'Add a laboratory report',
           ehr_list: [
             {
@@ -552,11 +559,12 @@ export default function () {
           ],
           form: {
             elementKey: 'table',
+            label: 'Laboratory reports',
             addButtonText: 'Add a laboratory report',
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group51',
+                elementKey: 'ehr_group7',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -567,7 +575,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group52',
+                elementKey: 'ehr_group8',
                 gIndex: '2',
                 gChildren: [
                   'laboratoryReport',
@@ -651,13 +659,14 @@ export default function () {
           fqn: 'medicalImaging.comments'
         }
       ],
-      generated: '2022-05-17T22:18:33-07:00',
+      generated: '2022-05-30T17:37:34-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
           hasRecHeader: false,
+          label: 'Medical imaging',
           addButtonText: 'Add a report or image',
           ehr_list: [
             {
@@ -687,11 +696,12 @@ export default function () {
           ],
           form: {
             elementKey: 'table',
+            label: 'Medical imaging',
             addButtonText: 'Add a report or image',
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group53',
+                elementKey: 'ehr_group9',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -702,7 +712,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group54',
+                elementKey: 'ehr_group10',
                 gIndex: '2',
                 gChildren: [
                   'laboratoryReport',
@@ -786,13 +796,14 @@ export default function () {
           fqn: 'operationReports.comments'
         }
       ],
-      generated: '2022-05-17T22:18:33-07:00',
+      generated: '2022-05-30T17:37:34-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
           hasRecHeader: false,
+          label: 'Operative and anaesthesia records',
           addButtonText: 'Add a report',
           ehr_list: [
             {
@@ -822,11 +833,12 @@ export default function () {
           ],
           form: {
             elementKey: 'table',
+            label: 'Operative and anaesthesia records',
             addButtonText: 'Add a report',
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group55',
+                elementKey: 'ehr_group11',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -837,7 +849,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group56',
+                elementKey: 'ehr_group12',
                 gIndex: '2',
                 gChildren: [
                   'laboratoryReport',
@@ -952,13 +964,69 @@ export default function () {
           fqn: 'hematology.wbc'
         },
         {
+          elementKey: 'wbc-interp',
+          formIndex: '1',
+          inputType: 'select',
+          label: 'Interpretation',
+          options: [
+            {
+              key: 'low',
+              text: 'low'
+            },
+            {
+              key: 'normal',
+              text: 'normal'
+            },
+            {
+              key: 'high',
+              text: 'high'
+            }
+          ],
+          tableColumn: '8',
+          fqn: 'hematology.wbc-interp'
+        },
+        {
+          elementKey: 'aSpacer',
+          formIndex: '1',
+          inputType: 'spacer',
+          fqn: 'hematology.aSpacer'
+        },
+        {
           elementKey: 'rbc',
           formIndex: '1',
           inputType: 'text',
           label: 'RBC',
           suffix: '10^12/L',
-          tableColumn: '8',
+          tableColumn: '9',
           fqn: 'hematology.rbc'
+        },
+        {
+          elementKey: 'rbc-interp',
+          formIndex: '1',
+          inputType: 'select',
+          label: 'Interpretation',
+          options: [
+            {
+              key: 'low',
+              text: 'low'
+            },
+            {
+              key: 'normal',
+              text: 'normal'
+            },
+            {
+              key: 'high',
+              text: 'high'
+            }
+          ],
+          tableColumn: '10',
+          fqn: 'hematology.rbc-interp'
+        },
+        {
+          elementKey: 'aSpacer',
+          formIndex: '1',
+          inputType: 'spacer',
+          fqn: 'hematology.aSpacer'
         },
         {
           elementKey: 'hgb',
@@ -966,8 +1034,36 @@ export default function () {
           inputType: 'text',
           label: 'HGB',
           suffix: 'g/L',
-          tableColumn: '9',
+          tableColumn: '10',
           fqn: 'hematology.hgb'
+        },
+        {
+          elementKey: 'hgb-interp',
+          formIndex: '1',
+          inputType: 'select',
+          label: 'Interpretation',
+          options: [
+            {
+              key: 'low',
+              text: 'low'
+            },
+            {
+              key: 'normal',
+              text: 'normal'
+            },
+            {
+              key: 'high',
+              text: 'high'
+            }
+          ],
+          tableColumn: '11',
+          fqn: 'hematology.hgb-interp'
+        },
+        {
+          elementKey: 'aSpacer',
+          formIndex: '1',
+          inputType: 'spacer',
+          fqn: 'hematology.aSpacer'
         },
         {
           elementKey: 'HCT',
@@ -975,8 +1071,36 @@ export default function () {
           inputType: 'text',
           label: 'HCT',
           suffix: 'L/L',
-          tableColumn: '10',
+          tableColumn: '11',
           fqn: 'hematology.HCT'
+        },
+        {
+          elementKey: 'HCT-interp',
+          formIndex: '1',
+          inputType: 'select',
+          label: 'Interpretation',
+          options: [
+            {
+              key: 'low',
+              text: 'low'
+            },
+            {
+              key: 'normal',
+              text: 'normal'
+            },
+            {
+              key: 'high',
+              text: 'high'
+            }
+          ],
+          tableColumn: '12',
+          fqn: 'hematology.HCT-interp'
+        },
+        {
+          elementKey: 'aSpacer',
+          formIndex: '1',
+          inputType: 'spacer',
+          fqn: 'hematology.aSpacer'
         },
         {
           elementKey: 'MCV',
@@ -984,8 +1108,36 @@ export default function () {
           inputType: 'text',
           label: 'MCV',
           suffix: 'fL',
-          tableColumn: '11',
+          tableColumn: '12',
           fqn: 'hematology.MCV'
+        },
+        {
+          elementKey: 'MCV-interp',
+          formIndex: '1',
+          inputType: 'select',
+          label: 'Interpretation',
+          options: [
+            {
+              key: 'low',
+              text: 'low'
+            },
+            {
+              key: 'normal',
+              text: 'normal'
+            },
+            {
+              key: 'high',
+              text: 'high'
+            }
+          ],
+          tableColumn: '13',
+          fqn: 'hematology.MCV-interp'
+        },
+        {
+          elementKey: 'aSpacer',
+          formIndex: '1',
+          inputType: 'spacer',
+          fqn: 'hematology.aSpacer'
         },
         {
           elementKey: 'MCH',
@@ -993,8 +1145,36 @@ export default function () {
           inputType: 'text',
           label: 'MCH',
           suffix: 'pg',
-          tableColumn: '12',
+          tableColumn: '13',
           fqn: 'hematology.MCH'
+        },
+        {
+          elementKey: 'MCH-interp',
+          formIndex: '1',
+          inputType: 'select',
+          label: 'Interpretation',
+          options: [
+            {
+              key: 'low',
+              text: 'low'
+            },
+            {
+              key: 'normal',
+              text: 'normal'
+            },
+            {
+              key: 'high',
+              text: 'high'
+            }
+          ],
+          tableColumn: '14',
+          fqn: 'hematology.MCH-interp'
+        },
+        {
+          elementKey: 'aSpacer',
+          formIndex: '1',
+          inputType: 'spacer',
+          fqn: 'hematology.aSpacer'
         },
         {
           elementKey: 'MCHC',
@@ -1002,8 +1182,36 @@ export default function () {
           inputType: 'text',
           label: 'MCHC',
           suffix: 'g/L',
-          tableColumn: '13',
+          tableColumn: '14',
           fqn: 'hematology.MCHC'
+        },
+        {
+          elementKey: 'MCHC-interp',
+          formIndex: '1',
+          inputType: 'select',
+          label: 'Interpretation',
+          options: [
+            {
+              key: 'low',
+              text: 'low'
+            },
+            {
+              key: 'normal',
+              text: 'normal'
+            },
+            {
+              key: 'high',
+              text: 'high'
+            }
+          ],
+          tableColumn: '15',
+          fqn: 'hematology.MCHC-interp'
+        },
+        {
+          elementKey: 'aSpacer',
+          formIndex: '1',
+          inputType: 'spacer',
+          fqn: 'hematology.aSpacer'
         },
         {
           elementKey: 'RDW',
@@ -1011,8 +1219,36 @@ export default function () {
           inputType: 'text',
           label: 'RDW',
           suffix: '%',
-          tableColumn: '14',
+          tableColumn: '15',
           fqn: 'hematology.RDW'
+        },
+        {
+          elementKey: 'RDW-interp',
+          formIndex: '1',
+          inputType: 'select',
+          label: 'Interpretation',
+          options: [
+            {
+              key: 'low',
+              text: 'low'
+            },
+            {
+              key: 'normal',
+              text: 'normal'
+            },
+            {
+              key: 'high',
+              text: 'high'
+            }
+          ],
+          tableColumn: '16',
+          fqn: 'hematology.RDW-interp'
+        },
+        {
+          elementKey: 'aSpacer',
+          formIndex: '1',
+          inputType: 'spacer',
+          fqn: 'hematology.aSpacer'
         },
         {
           elementKey: 'PLT',
@@ -1020,8 +1256,36 @@ export default function () {
           inputType: 'text',
           label: 'PLT',
           suffix: '10^9/L',
-          tableColumn: '15',
+          tableColumn: '16',
           fqn: 'hematology.PLT'
+        },
+        {
+          elementKey: 'PLT-interp',
+          formIndex: '1',
+          inputType: 'select',
+          label: 'Interpretation',
+          options: [
+            {
+              key: 'low',
+              text: 'low'
+            },
+            {
+              key: 'normal',
+              text: 'normal'
+            },
+            {
+              key: 'high',
+              text: 'high'
+            }
+          ],
+          tableColumn: '17',
+          fqn: 'hematology.PLT-interp'
+        },
+        {
+          elementKey: 'aSpacer',
+          formIndex: '1',
+          inputType: 'spacer',
+          fqn: 'hematology.aSpacer'
         },
         {
           elementKey: 'MPV',
@@ -1029,15 +1293,43 @@ export default function () {
           inputType: 'text',
           label: 'MPV',
           suffix: 'fL',
-          tableColumn: '16',
+          tableColumn: '17',
           fqn: 'hematology.MPV'
+        },
+        {
+          elementKey: 'MPV-interp',
+          formIndex: '1',
+          inputType: 'select',
+          label: 'Interpretation',
+          options: [
+            {
+              key: 'low',
+              text: 'low'
+            },
+            {
+              key: 'normal',
+              text: 'normal'
+            },
+            {
+              key: 'high',
+              text: 'high'
+            }
+          ],
+          tableColumn: '18',
+          fqn: 'hematology.MPV-interp'
+        },
+        {
+          elementKey: 'aSpacer',
+          formIndex: '1',
+          inputType: 'spacer',
+          fqn: 'hematology.aSpacer'
         },
         {
           elementKey: 'comments',
           formIndex: '1',
           inputType: 'textarea',
           label: 'Comments',
-          tableColumn: '17',
+          tableColumn: '18',
           fqn: 'hematology.comments'
         },
         {
@@ -1121,9 +1413,9 @@ export default function () {
         {
           elementKey: 'bloodAnalysis',
           formIndex: '2',
-          inputType: 'form_label',
-          label: 'Insert blood analysis here',
-          suffix: '10^9/L',
+          embedRef: 'hematology.tableCbcAnalysis',
+          inputType: 'ehr_embedded',
+          label: 'CBC Analysis',
           tableColumn: '7',
           fqn: 'hematology.bloodAnalysis'
         },
@@ -1405,7 +1697,7 @@ export default function () {
         {
           elementKey: 'pltComment',
           formIndex: '2',
-          inputType: 'textarea',
+          inputType: 'text',
           label: 'Comment',
           tableColumn: '42',
           fqn: 'hematology.pltComment'
@@ -1549,12 +1841,12 @@ export default function () {
         {
           elementKey: 'cellCntNRBCs',
           formIndex: '2',
-          helperText: 'ucleated red blood cells',
+          helperText: 'nucleated red blood cells',
           inputType: 'text',
           label: 'NRBCs',
           tableColumn: '57',
           fqn: 'hematology.cellCntNRBCs',
-          helperHtml: '<p>ucleated red blood cells</p>'
+          helperHtml: '<p>nucleated red blood cells</p>'
         },
         {
           elementKey: 'wbcmHypersegmentedNeutrophils',
@@ -1790,19 +2082,22 @@ export default function () {
           elementKey: 'explain',
           formIndex: '2',
           inputType: 'textarea',
-          label: 'Explain',
+          label: 'Reason',
           tableColumn: '73',
           fqn: 'hematology.explain'
         }
       ],
-      generated: '2022-05-17T22:18:33-07:00',
+      generated: '2022-05-30T17:37:34-07:00',
       pageElements: {
-        tableAnalysis: {
-          elementKey: 'tableAnalysis',
-          tableKey: 'tableAnalysis',
+        tableCbcAnalysis: {
+          elementKey: 'tableCbcAnalysis',
+          tableKey: 'tableCbcAnalysis',
           isTable: true,
           hasRecHeader: false,
+          label: 'CBC analysis',
           addButtonText: 'Add a CBC Report',
+          tableAction: 'pbf-review',
+          tableActionLabel: 'PBF Review',
           ehr_list: [
             {
               label: 'Identification',
@@ -1853,71 +2148,87 @@ export default function () {
             {
               ehr_list_index: '8',
               items: [
-                'rbc'
+                'wbc-interp'
               ]
             },
             {
               ehr_list_index: '9',
               items: [
-                'hgb'
+                'rbc'
               ]
             },
             {
               ehr_list_index: '10',
               items: [
-                'HCT'
+                'rbc-interp',
+                'hgb'
               ]
             },
             {
               ehr_list_index: '11',
               items: [
-                'MCV'
+                'hgb-interp',
+                'HCT'
               ]
             },
             {
               ehr_list_index: '12',
               items: [
-                'MCH'
+                'HCT-interp',
+                'MCV'
               ]
             },
             {
               ehr_list_index: '13',
               items: [
-                'MCHC'
+                'MCV-interp',
+                'MCH'
               ]
             },
             {
               ehr_list_index: '14',
               items: [
-                'RDW'
+                'MCH-interp',
+                'MCHC'
               ]
             },
             {
               ehr_list_index: '15',
               items: [
-                'PLT'
+                'MCHC-interp',
+                'RDW'
               ]
             },
             {
               ehr_list_index: '16',
               items: [
-                'MPV'
+                'RDW-interp',
+                'PLT'
               ]
             },
             {
               ehr_list_index: '17',
               items: [
+                'PLT-interp',
+                'MPV'
+              ]
+            },
+            {
+              ehr_list_index: '18',
+              items: [
+                'MPV-interp',
                 'comments'
               ]
             }
           ],
           form: {
-            elementKey: 'tableAnalysis',
+            elementKey: 'tableCbcAnalysis',
+            label: 'CBC analysis',
             addButtonText: 'Add a CBC Report',
-            formKey: 'tableAnalysis',
+            formKey: 'tableCbcAnalysis',
             ehr_groups: [
               {
-                elementKey: 'ehr_group57',
+                elementKey: 'ehr_group13',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -1928,7 +2239,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group58',
+                elementKey: 'ehr_group14',
                 gIndex: '2',
                 gChildren: [
                   'patientName',
@@ -1939,24 +2250,44 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group59',
+                elementKey: 'ehr_group15',
                 label: 'Analysis',
                 gIndex: '3',
                 gChildren: [
                   'wbc',
+                  'wbc-interp',
+                  'aSpacer',
                   'rbc',
+                  'rbc-interp',
+                  'aSpacer',
                   'hgb',
+                  'hgb-interp',
+                  'aSpacer',
                   'HCT',
+                  'HCT-interp',
+                  'aSpacer',
                   'MCV',
+                  'MCV-interp',
+                  'aSpacer',
                   'MCH',
+                  'MCH-interp',
+                  'aSpacer',
                   'MCHC',
+                  'MCHC-interp',
+                  'aSpacer',
                   'RDW',
+                  'RDW-interp',
+                  'aSpacer',
                   'PLT',
-                  'MPV'
+                  'PLT-interp',
+                  'aSpacer',
+                  'MPV',
+                  'MPV-interp',
+                  'aSpacer'
                 ]
               },
               {
-                elementKey: 'ehr_group60',
+                elementKey: 'ehr_group16',
                 gIndex: '4',
                 gChildren: [
                   'comments'
@@ -1974,25 +2305,36 @@ export default function () {
               dateOfTest: '',
               timeOfTest: '',
               wbc: '',
+              'wbc-interp': '',
               rbc: '',
+              'rbc-interp': '',
               hgb: '',
+              'hgb-interp': '',
               HCT: '',
+              'HCT-interp': '',
               MCV: '',
+              'MCV-interp': '',
               MCH: '',
+              'MCH-interp': '',
               MCHC: '',
+              'MCHC-interp': '',
               RDW: '',
+              'RDW-interp': '',
               PLT: '',
+              'PLT-interp': '',
               MPV: '',
+              'MPV-interp': '',
               comments: ''
             }
           }
         },
-        tableReview: {
-          elementKey: 'tableReview',
-          tableKey: 'tableReview',
+        tablePbfReview: {
+          elementKey: 'tablePbfReview',
+          tableKey: 'tablePbfReview',
           isTable: true,
           hasRecHeader: false,
-          addButtonText: 'Add a PBF report',
+          label: 'PBF Review',
+          addButtonText: 'NONE',
           ehr_list: [
             {
               label: 'Identification',
@@ -2442,12 +2784,13 @@ export default function () {
             }
           ],
           form: {
-            elementKey: 'tableReview',
-            addButtonText: 'Add a PBF report',
-            formKey: 'tableReview',
+            elementKey: 'tablePbfReview',
+            label: 'PBF Review',
+            addButtonText: 'NONE',
+            formKey: 'tablePbfReview',
             ehr_groups: [
               {
-                elementKey: 'ehr_group61',
+                elementKey: 'ehr_group17',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [
@@ -2458,7 +2801,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group62',
+                elementKey: 'ehr_group18',
                 gIndex: '2',
                 gChildren: [
                   'patientName',
@@ -2469,15 +2812,15 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group63',
-                label: 'Analysis',
+                elementKey: 'ehr_group19',
+                label: 'CBC Analysis',
                 gIndex: '3',
                 gChildren: [
                   'bloodAnalysis'
                 ]
               },
               {
-                elementKey: 'ehr_group64',
+                elementKey: 'ehr_group20',
                 label: 'Actions',
                 gIndex: '4',
                 gChildren: [
@@ -2487,7 +2830,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group65',
+                elementKey: 'ehr_group21',
                 label: 'WBC Estimate',
                 gIndex: '5',
                 gChildren: [
@@ -2510,7 +2853,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group66',
+                elementKey: 'ehr_group22',
                 label: 'PLT Estimate',
                 gIndex: '6',
                 gChildren: [
@@ -2534,7 +2877,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group67',
+                elementKey: 'ehr_group23',
                 label: 'WBC Differential',
                 gIndex: '7',
                 gChildren: [
@@ -2555,7 +2898,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group68',
+                elementKey: 'ehr_group24',
                 label: 'White Cell Morphology',
                 gIndex: '8',
                 gChildren: [
@@ -2566,7 +2909,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group69',
+                elementKey: 'ehr_group25',
                 label: 'Red Cell Morphology',
                 gIndex: '9',
                 gChildren: [
@@ -2589,7 +2932,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group70',
+                elementKey: 'ehr_group26',
                 gIndex: '10',
                 gChildren: [
                   'mcvMchcInterpretation',
@@ -2597,7 +2940,7 @@ export default function () {
                 ]
               },
               {
-                elementKey: 'ehr_group71',
+                elementKey: 'ehr_group27',
                 gIndex: '11',
                 gChildren: [
                   'referralToHema',
@@ -2615,6 +2958,7 @@ export default function () {
               dateOfBirth: '',
               dateOfReview: '',
               timeOfReview: '',
+              bloodAnalysis: '',
               actionsRequired: '',
               actionsTaken: '',
               scanComments: '',

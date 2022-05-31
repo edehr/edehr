@@ -11,4 +11,4 @@ node gen_defs/index.js
 cp generated/ehrDefs/*.js ../client/src/inside/defs-grid/
 
 # clean up generated files
-rm generated/ehrDefs/*.js
+#rm generated/ehrDefs/*.js

@@ -4,12 +4,12 @@
       ui-button(v-on:buttonClicked="showDialog") {{ tableDef.addButtonText }}
     div
       h2(v-show="tableDef.label") {{tableDef.label}}
-      ehr-table-vertical(v-if="isVertical", :ehrHelp="ehrHelp", :tableDef="tableDef", @view-report='showReport')
-      ehr-table-stacked(v-if="isStacked", :ehrHelp="ehrHelp", :tableDef="tableDef", @view-report='showReport')
+      ehr-table-vertical(v-if="isVertical", :ehrHelp="ehrHelp", :tableDef="tableDef")
+      ehr-table-stacked(v-if="isStacked", :ehrHelp="ehrHelp", :tableDef="tableDef")
     ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDef", :errorList="errorList" )
     div(v-if="hasData", style="text-align: right;") <!-- put the clear button on the far right side -->
-      ui-button(v-on:buttonClicked="clearAllData", v-bind:secondary="true") Clear all table data
-    ui-confirm(ref="confirmDialog", v-on:confirm="proceedClearAllData")
+      ui-button(v-on:buttonClicked="clearAllData", v-bind:secondary="true") Clear your {{tableDef.label}} data
+    ui-confirm(ref="confirmDialog", v-on:confirm="proceedClearAllData", saveLabel='Yes')
 
 </template>
 
@@ -20,14 +20,8 @@ import EhrTableVertical from './EhrTableVertical'
 import UiButton from '@/app/ui/UiButton.vue'
 import UiConfirm from '@/app/ui/UiConfirm'
 import EventBus from '@/helpers/event-bus'
-import { SHOW_TABLE_DIALOG_EVENT, PAGE_DATA_READY_EVENT } from '@/helpers/event-bus'
+import { SHOW_TABLE_DIALOG_EVENT, PAGE_DATA_READY_EVENT, VIEW_REPORT_EVENT } from '@/helpers/event-bus'
 import MarHelper from '../mar/mar-helper'
-
-const TEXT = {
-  TITLE:  'Clear table',
-  MSG: 'Are you sure you want to delete all the data in the table? This can not be undone.'
-}
-
 
 export default {
   components: {
@@ -52,7 +46,8 @@ export default {
       isPageElement: false,
       isTableElement: true,
       tableKey: this.tableKey,
-      formKey: undefined
+      formKey: undefined,
+      isEmbedded: false
     }
   },
   computed: {
@@ -68,7 +63,7 @@ export default {
       return ! this.isVertical
     },
     showTableAddButton () {
-      return this.ehrHelp.showTableAddButton()
+      return this.ehrHelp.showTableAddButton() && this.tableDef.addButtonText !== 'NONE'
     },
     errorList () {
       return this.ehrHelp.getErrorList(this.tableKey)
@@ -79,16 +74,11 @@ export default {
       // console.log('EhrPageTable showDialog ', this.tableDef)
       this.ehrHelp.showDialog(this.tableKey)
     },
-    showReport: function (row) {
-      const tableDef = this.tableDef
-      const tableKey = tableDef.tableKey
-      const pageKey = this.ehrHelp.getPageKey()
-      const pageData = this.ehrHelp.getMergedPageData(pageKey)
-      const tableData = pageData[tableKey] || []
-      const rowData = tableData[row]
-      this.ehrHelp.showReport(tableKey, rowData)
-    },
     clearAllData () {
+      const TEXT = {
+        TITLE:  'Clear ' + this.tableDef.label + ' data',
+        MSG: 'This action will clear the data you have added to this table. Are you sure you want to delete your data in the table? This can not be undone.'
+      }
       this.$refs.confirmDialog.showDialog(TEXT.TITLE, TEXT.MSG)
     },
     proceedClearAllData () {
@@ -108,10 +98,14 @@ export default {
     this.showEventHandler = function () {
       _this.showDialog()
     }
-    EventBus.$on(SHOW_TABLE_DIALOG_EVENT, this.showEventHandler)
     this.refreshEventHandler = function () {
       _this.refresh()
     }
+    this.viewReportEventHandler = function (pageKey, tableKey, rowIndex) {
+      _this.ehrHelp.showReport(pageKey, tableKey, rowIndex)
+    }
+    EventBus.$on(SHOW_TABLE_DIALOG_EVENT, this.showEventHandler)
+    EventBus.$on(VIEW_REPORT_EVENT, this.viewReportEventHandler)
     EventBus.$on(PAGE_DATA_READY_EVENT, this.refreshEventHandler)
   },
   beforeDestroy: function () {
@@ -121,6 +115,10 @@ export default {
     if (this.refreshEventHandler) {
       EventBus.$off(PAGE_DATA_READY_EVENT, this.refreshEventHandler)
     }
+    if (this.viewReportEventHandler) {
+      EventBus.$off(VIEW_REPORT_EVENT, this.viewReportEventHandler)
+    }
+
   }
 }
 </script>

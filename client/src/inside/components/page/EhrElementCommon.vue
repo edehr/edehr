@@ -1,13 +1,11 @@
-
 <script>
 import EhrPageFormLabel from './EhrPageFormLabel.vue'
 import EhrDependent from './EhrDependent.vue'
-import EhrDefs from '../../../helpers/ehr-defs-grid'
-import EhrTypes from '../../../helpers/ehr-types'
-import CaseContext from '../../../helpers/case-context'
-import UiInfo from '../../../app/ui/UiInfo'
-import EventBus from '../../../helpers/event-bus'
-import { PAGE_DATA_READY_EVENT, FORM_INPUT_EVENT } from '../../../helpers/event-bus'
+import EhrDefs from '@/helpers/ehr-defs-grid'
+import EhrTypes from '@/helpers/ehr-types'
+import CaseContext from '@/helpers/case-context'
+import UiInfo from '@/app/ui/UiInfo'
+import EventBus, { FORM_INPUT_EVENT, PAGE_DATA_READY_EVENT } from '@/helpers/event-bus'
 
 const DEPENDENT_PROPS = EhrTypes.dependentOn
 
@@ -21,7 +19,7 @@ export default {
     EhrPageFormLabel,
     UiInfo
   },
-  inject: ['pageDataKey', 'isPageElement', 'isTableElement', 'tableKey', 'formKey'],
+  inject: ['pageDataKey', 'isPageElement', 'isTableElement', 'tableKey', 'formKey', 'isEmbedded'],
   data: function () {
     return {
       dialogIsOpen: false,
@@ -34,7 +32,7 @@ export default {
   props: {
     elementKey: { type: String },
     ehrHelp: { type: Object },
-    viewOnly: { type: Boolean, default: false}
+    viewOnly: { type: Boolean, default: false }
   },
   computed: {
     element () {
@@ -122,7 +120,7 @@ export default {
         if (this.inputType === EhrTypes.dataInputTypes.visitDay) {
           // From earlier EHR records the admissionDay field and perhaps other fields may
           // have "Day x" content. The field now requires the visit day, a number 0,1,2,3,4
-          function transform ( value ) {
+          function transform (value) {
             let re = /\D*(\d*).*/
             let vt = value
             if (typeof value === 'string') {
@@ -131,6 +129,7 @@ export default {
             }
             return vt
           }
+
           // samples of transform. All produce just 03
           // transform('Day 03 fe 45-23')
           // transform('03 fe')
@@ -140,7 +139,7 @@ export default {
 
           let vt = transform(value)
           if (vt !== value) {
-            if(process.env.NODE_ENV !== 'production') {
+            if (process.env.NODE_ENV !== 'production') {
               console.log(`In EhrElementCommon transforming visitDay from "${value} to "${vt}"`)
               // TODO
               console.log('TODO Create a more general way to transform ehr content when structure changes')
@@ -150,21 +149,37 @@ export default {
         }
         if (dbPage || dbInputs) console.log('EhrCommon page data is ready', this.elementKey, value)
         this.setInitialValue(value)
-      } catch(err) {
+      } catch (err) {
         console.error('Refresh element on page', err.message)
       }
     },
-    dialogEvent (open) {
+    dialogEvent (open, options) {
       if (dbDialog) console.log('EhrCommon dialog opened or closed', this.elementKey, open)
       this.dialogIsOpen = open
       if (open) {
-        let inputs = this.ehrHelp.getDialogInputs(this.tableKey)
-        let initialValue = inputs[this.elementKey]
-        if (dbDialog || dbInputs) console.log('EhrCommon key has value', this.key, initialValue)
-        this.setInitialValue(initialValue)
-        if (this.showSignature) {
-          const v = this.assignmentCaseContext[this.key]
-          this.setInitialValue(v)
+        if (this.isEmbedded) {
+          let inputs = options.inputs
+          let initialValue = inputs[this.elementKey]
+          this.setInitialValue(initialValue)
+        } else {
+          let inputs = this.ehrHelp.getDialogInputs(this.tableKey)
+          let initialValue = inputs[this.elementKey]
+          if (dbDialog || dbInputs) console.log('EhrCommon key has value', this.key, initialValue)
+          this.setInitialValue(initialValue)
+          if (this.showSignature) {
+            const v = this.assignmentCaseContext[this.key]
+            this.setInitialValue(v)
+          }
+          if (this.inputType === EhrTypes.dataInputTypes.ehr_embedded) {
+            const refValue = this.element.embedRef + '.' + options.tableActionRowIndex
+            // console.log('dialogEvent SET embedded value', this.$options.name, initialValue, refValue)
+            // store this value into the active inputs area to be saved along with other data, if the dialog save is invoked.
+            this.sendInputEvent(refValue)
+            // the element receiving this event may not be a EhrElementEmbedded
+            if (this.setEmbeddedGroupData) {
+              this.setEmbeddedGroupData(refValue)
+            }
+          }
         }
       }
     },
@@ -183,12 +198,13 @@ export default {
       }
       if (this.isTableElement) {
         this.dialogEventHandler = function (eData) {
-          _this.dialogEvent(eData.value)
+          _this.dialogEvent(eData.value, eData.options)
         }
         this.dialogEventKey = this.ehrHelp.getDialogEventChannel(this.tableKey)
+        // console.log('ehr common listen on channel', this.dialogEventKey)
         EventBus.$on(this.dialogEventKey, this.dialogEventHandler)
       }
-    },
+    }
   },
   mounted: function () {
     this.setupCommon()
@@ -202,6 +218,7 @@ export default {
       EventBus.$off(PAGE_DATA_READY_EVENT, this.pageRefreshEventHandler)
     }
     if (this.dialogEventHandler) {
+      console.log('ehr common stop list on ', this.dialogEventKey)
       EventBus.$off(this.dialogEventKey, this.dialogEventHandler)
     }
   },
@@ -222,15 +239,23 @@ export default {
       if (this.isTableElement && this.dialogIsOpen) {
         this.sendInputEvent(val)
       }
-    },
+    }
   }
 }
 </script>
-<style lang="scss">
-@import '../../../scss/definitions';
+<style lang='scss'>
+@import '@/scss/definitions';
+
 .check-label {
   display: inline;
+  label {
+    width: auto;
+  }
+  label::after {
+    content: "" !important;
+  }
 }
+
 .assetLink a {
   color: $grey60;
   display: block;
@@ -246,10 +271,12 @@ export default {
     margin-right: 5px;
   }
 }
+
 .suffix,
 .text-input {
   display: inline-block;
 }
+
 .suffix {
   position: absolute;
   margin-left: 5px;

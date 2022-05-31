@@ -13,9 +13,10 @@ import EhrSubGroup from './EhrSubGroup'
 import EhrElementForm from './EhrElementForm'
 import EhrDefs from '../../../helpers/ehr-defs-grid'
 import EhrDependent from './EhrDependent.vue'
+import EhrTypes from '@/helpers/ehr-types'
 
 export default {
-  name: 'EhrPageForm',
+  name: 'EhrGroup',
   extends: EhrDependent,
   components: {
     EhrSubGroup,
@@ -57,6 +58,9 @@ export default {
       if (typeof elementKey === 'string') {
         let element = EhrDefs.getPageChildElement(this.pageDataKey, elementKey)
         if (!element) console.error('Why no element for key ', elementKey)
+        if (element.inputType === EhrTypes.ehr_embedded) {
+          return 'embedded-data'
+        }
         return element.formCss
       }
       return ''

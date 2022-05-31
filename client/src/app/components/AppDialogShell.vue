@@ -175,6 +175,7 @@ export default {
 }
 .dialog-content {
   min-width: 700px;
+  max-width: 70rem;
   min-height: 40vh;
   max-height: 90vh;
   overflow-y: auto;

@@ -34,7 +34,7 @@ export default class EhrHelpV2 {
     this.$store.commit('system/setCurrentPageKey', pageKey)
     this.pageFormData = { pageKey: pageKey }
     this.tableFormMap = {}
-    let tables = this.getPageTableDefs()
+    const tables = this.getPageTableDefs()
     tables.forEach((tableDef) => {
       const tableKey = tableDef.tableKey
       this.tableFormMap[tableKey] = { tableKey: tableKey, tableDef: tableDef, inputs: {}, errorList: [], active: false, viewOnly: false }
@@ -97,13 +97,10 @@ export default class EhrHelpV2 {
 
   /**
    * Show or don't show page edit controls or table open dialog buttons.
-   * Currently the rule is simply "is the user a student" but this will need to
-   * be changed if there is a need to let instructors "do the assignment" or
-   * if we want to let the application be the place to edit seed data.
-   * @return {*}fat
+   * @returns {boolean}
    */
   showTableAddButton () {
-    return this._showControl('hasTable') || this._showControl('hasGridTable')
+    return this._showControl('hasGridTable')
   }
 
   _canEdit () {
@@ -206,7 +203,8 @@ export default class EhrHelpV2 {
             Object.values(dataRow).forEach((templateCell) => {
               if (dbTable) console.log('EhrHelpV2 templateCell', templateCell)
               templateCell.stack.forEach((cell) => {
-                cell.value = dbRow[cell.key] || ''
+                let val = dbRow[cell.key] === 0 ? '0' : dbRow[cell.key]
+                cell.value = val || ''
                 cell.tableCss = templateCell.tableCss
               })
             })
@@ -268,6 +266,19 @@ export default class EhrHelpV2 {
     } // else use what is already in this.pageFormData.value
   }
 
+  /**
+   * Parses the reference in the element definition and uses that to
+   * @param element
+   * @returns {{groups: (*|*[])}}
+   */
+  getEmbeddedData ( element ) {
+    const ref = element.embedRef
+    const [pageKey, tableKey] = ref.split('.')
+    const pageTables = EhrDefs.getPageTables(pageKey)
+    const refTable = pageTables.find( element => element.tableKey === tableKey)
+    const groups = refTable.form ? refTable.form.ehr_groups : []
+    return { groups: groups }
+  }
   getMergedPageData (aPageKey) {
     let pageKey = aPageKey || this.pageKey
     return StoreHelper.getMergedPageData(pageKey)
@@ -279,18 +290,23 @@ export default class EhrHelpV2 {
 
   /* ********************* DIALOG  */
 
-  showDialog (tableKey) {
-    this._dialogEvent(tableKey, true)
+  showDialog (tableKey, options = {}) {
+    this._dialogEvent(tableKey, true, options)
   }
-  showReport (tableKey, data) {
-    this._dialogEvent(tableKey, true, data)
+  showReport (pageKey, tableKey, rowIndex) {
+    const rowData = this.getTableRowData(pageKey, tableKey, rowIndex)
+    this._dialogEvent(tableKey, true, { data:rowData, viewOnly: true})
   }
 
+  getTableRowData (pageKey, tableKey, rowIndex) {
+    const pageData = this.getMergedPageData(pageKey)
+    const tableData = pageData[tableKey] || []
+    return tableData[rowIndex]
+  }
 
   cancelDialog () {
     const dialog = this._getActiveTableDialog()
     const tableKey = dialog.tableKey
-    if (dbDialog) console.log('cancel dialog (indexed by tableKey)', tableKey)
     this._dialogEvent(tableKey, false)
   }
 
@@ -384,16 +400,24 @@ export default class EhrHelpV2 {
     return dialog ? dialog.viewOnly : []
   }
 
-  _dialogEvent (tableKey, open, data) {
+  /**
+   * Cause the associated dialog to open.
+   * If options contains data then the dialog is to open in view only mode and display the data.
+   * @param tableKey
+   * @param open
+   * @param options { data | viewOnly | tableActionRowIndex}
+   * @private
+   */
+  _dialogEvent (tableKey, open, options = {}) {
     if (dbDialog) console.log('EhrHelpV2 _dialogEvent', tableKey, open)
     let dialog = this.tableFormMap[tableKey]
     dialog.active = open
-    dialog.viewOnly = !!data
+    dialog.viewOnly = options.viewOnly
     this._clearDialogInputs(dialog)
-    if (data) {
-      dialog.inputs = { ...data }
+    if (options.data) {
+      dialog.inputs = { ...options.data }
     }
-    let eData = { key: tableKey, value: open }
+    let eData = { key: tableKey, value: open, options: options }
     let channel = this.getDialogEventChannel(tableKey)
     Vue.nextTick(function () {
       // Send an event on our transmission channel

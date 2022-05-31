@@ -31,6 +31,7 @@ const pageChildElementProperties = [
   'dependentOn',
   { sKey: 'fN', dKey: 'formIndex'},
   'formCss',
+  'embedRef',
   'formOption',
   'helperText',
   'helperHtml',
@@ -40,8 +41,9 @@ const pageChildElementProperties = [
   'options',
   'passToFunction',
   { sKey: 'rN', dKey: 'rIndex'},
-  'specialProperties',
   'suffix',
+  'tableAction',
+  'tableActionLabel',
   'tableColumn',
   'tableCss',
   'tableLabel',
@@ -186,6 +188,8 @@ class RawInputToDef {
       hasRecHeader,
       label: entry.label,
       addButtonText: entry.addButtonText,
+      tableAction: entry.tableAction,
+      tableActionLabel: entry.tableActionLabel,
       ehr_list: {},
       form: form,
     }
@@ -238,7 +242,6 @@ class RawInputToDef {
     pageChild.fqn = this._makeFQN(page, entry)
     rawHelper._prepareDropDownOptions(entry, pageChild)
     rawHelper._prepareHelperText(entry, pageChild)
-    rawHelper._prepareSpecialProperties(entry, pageChild, page)
     // *********** place page child in page
     page.pageChildren.push(pageChild)
 

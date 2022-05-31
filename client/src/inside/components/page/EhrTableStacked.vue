@@ -1,18 +1,23 @@
 <template lang="pug">
   div
-    //div TABLE STACKED
+    //div TABLE STACKED page: {{ pageDataKey}}, table: {{ tableKey }}
     div(class="no-data" v-if="!hasData") There are no records or reports for this patient.
     div(v-else)
       table.table_horizontal
         thead
           tr
+            th(v-if="tableDef.tableAction") &nbsp;
             th &nbsp;
             th(v-for="tCell in tableForm.rowTemplate")
               span(v-html="tCell.tableLabel", :class="tableColumnCss(tCell)")
         tbody
           tr(v-for="(dRow, index) in tableData")
+            td(v-if="tableDef.tableAction")
+              ui-button(v-on:buttonClicked="tableAction(tableDef,index)")
+                span {{ tableDef.tableActionLabel }} &nbsp;
+                fas-icon(icon="notes-medical")
             td
-              ui-button(v-on:buttonClicked="$emit('view-report',index)")
+              ui-button(v-on:buttonClicked="viewReport(pageDataKey, tableKey, index)")
                 span View &nbsp;
                 fas-icon(icon="file-pdf")
             td(v-for="cell in dRow", class="cell.tableCss")
@@ -55,9 +60,13 @@ export default {
       this.tableForm = {}
       this.tableData = []
       this.tableForm = this.ehrHelp.getTable(this.tableKey)
+      this.tableForm.rowTemplate.length = Math.min(10,this.tableForm.rowTemplate.length)
       this.tableData = this.tableForm.tableData
+      // this.tableData[0].length = Math.min(10,this.tableData[0].length)
       if (debug) console.log('EhrTableStacked this.tableForm', this.tableForm)
       if (debug) console.log('EhrTableStacked this.tableData', this.tableData)
+      console.log('EhrTableStacked this.tableData', JSON.stringify(this.tableData.length))
+      console.log('EhrTableStacked this.tableData', JSON.stringify(this.tableData[0].length))
     }
   },
 

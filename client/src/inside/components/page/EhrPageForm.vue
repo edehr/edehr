@@ -44,7 +44,8 @@ export default {
       isPageElement: true,
       isTableElement: false,
       tableKey: undefined,
-      formKey: this.formKey
+      formKey: this.formKey,
+      isEmbedded: false
     }
   },
   data: function () {

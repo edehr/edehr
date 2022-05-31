@@ -32,6 +32,7 @@ textarea {
 }
 .form_label {
   font-weight: bold;
+  width: 8rem;
   &::after {
     content: ":"
   }
@@ -112,12 +113,18 @@ input:disabled, textarea:disabled, select:disabled, checkbox:disabled, radio:dis
   flex: 2 0 15rem;
 }
 
+.embedded-data {
+  width: 50rem;
+}
 .vdp-datepicker * {
   width: 100%
 }
 
-.text_input_wrapper, .textarea_wrapper, .select_wrapper, .date_wrapper {
+.text_input_wrapper, .textarea_wrapper, .select_wrapper, .date_wrapper, .checkset_wrapper {
   position: relative;
+  display: flex;
+  align-content: space-between
+
 }
 
 .checkbox_wrapper {

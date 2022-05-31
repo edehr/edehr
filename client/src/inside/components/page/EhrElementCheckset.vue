@@ -1,11 +1,11 @@
 <template lang="pug">
   div(class="checkset_wrapper")
-    div checkset viewOnly {{ viewOnly }}
     ehr-page-form-label(:element="element", css="checkset_label")
-    div(v-for="option in checkOptions")
-      label
-        input(class="checkbox", type="checkbox",  v-bind:disabled="disabled || viewOnly", :value="option.prop", v-model="checkValues")
-        span {{ option.text}}
+    div(class="checkset_list")
+      div(v-for="option in checkOptions")
+        label
+          input(class="checkbox", type="checkbox",  v-bind:disabled="disabled || viewOnly", :value="option.prop", v-model="checkValues")
+          span {{ option.text}}
     //div(style="display:none") computedInitialValue {{computedInitialValue}}
 </template>
 
@@ -84,4 +84,11 @@ export default {
   }
 }
 </script>
+<style lang='scss'>
+@import '@/scss/definitions';
 
+.checkset_list {
+  display: flex;
+  flex-direction: column;
+}
+</style>

@@ -23,6 +23,7 @@ class EhrOnlyDemoInner {
   }
   saveEhrOnlyUserData (pageKey, newPageValue) {
     const payload = {pageKey, value: newPageValue}
+    console.log('saveEhrOnlyUserData:', JSON.stringify(newPageValue))
     return store.dispatch('ehrOnlyDemoStore/ehrOnlyDataUpdate', payload)
   }
 }
