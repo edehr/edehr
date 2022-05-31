@@ -2,8 +2,7 @@
 <script>
 import moment from 'moment'
 import { formatDateStr } from '@/helpers/ehr-utils'
-import EventBus from '@/helpers/event-bus'
-import { PAGE_DATA_READY_EVENT } from '@/helpers/event-bus'
+import EventBus, { PAGE_DATA_READY_EVENT, TABLE_ACTION_EVENT, VIEW_REPORT_EVENT } from '@/helpers/event-bus'
 
 export default {
   components: {
@@ -33,6 +32,12 @@ export default {
       }
       return value
     },
+    tableAction: function (tableDef, index) {
+      EventBus.$emit(TABLE_ACTION_EVENT, tableDef, index)
+    },
+    viewReport (pageKey, tableKey, rowIndex) {
+      EventBus.$emit(VIEW_REPORT_EVENT, pageKey, tableKey, rowIndex)
+    }
   },
   mounted: function () {
     const _this = this

@@ -15,6 +15,9 @@ export const PAGE_FORM_INPUT_EVENT = 'PAGE_FORM_INPUT_EVENT'
 export const FORM_INPUT_EVENT = 'FORM_INPUT_EVENT'
 export const PAGE_DATA_READY_EVENT = 'PAGE_DATA_READY_EVENT'
 
+export const TABLE_ACTION_EVENT = 'TABLE_ACTION_EVENT'
+export const VIEW_REPORT_EVENT = 'VIEW_REPORT_EVENT'
+
 const EventBus = new Vue()
 export default EventBus
 
@@ -35,5 +38,11 @@ if(showKeyEvents) {
   })
   EventBus.$on(PAGE_DATA_READY_EVENT, function () {
     console.log('PAGE_DATA_READY_EVENT')
+  })
+  EventBus.$on(TABLE_ACTION_EVENT, function (tableDef, index) {
+    console.log('TABLE_ACTION_EVENT', tableDef, index)
+  })
+  EventBus.$on(VIEW_REPORT_EVENT, function (pageKey, tableKey, index) {
+    console.log('VIEW_REPORT_EVENT', pageKey, tableKey, index)
   })
 }

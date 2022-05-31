@@ -116,6 +116,9 @@ export default {
   &__content {
     padding: 0;
     min-height: $contentMinHeight;
+    // set a ht so the inner ehr panel scrolls vertically.
+    // without this the whole body scrolls by default and this "default' sometimes can become off
+    height: 100vh;
     margin: 0;
     overflow-y: auto;
     overflow-x: auto;

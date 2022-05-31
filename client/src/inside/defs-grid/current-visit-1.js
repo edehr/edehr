@@ -145,7 +145,7 @@ export default function () {
           fqn: 'visit.transferOutTime'
         }
       ],
-      generated: '2022-05-06T10:17:27-07:00',
+      generated: '2022-05-24T08:58:40-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -179,6 +179,7 @@ export default function () {
           tableKey: 'table',
           isTable: true,
           hasRecHeader: false,
+          label: 'Patient Location',
           addButtonText: 'Add a patient location',
           ehr_list: [
             {
@@ -215,6 +216,7 @@ export default function () {
           ],
           form: {
             elementKey: 'table',
+            label: 'Patient Location',
             addButtonText: 'Add a patient location',
             formKey: 'table',
             ehr_groups: [
@@ -544,13 +546,14 @@ export default function () {
           fqn: 'vitals.cvp'
         }
       ],
-      generated: '2022-05-06T10:17:27-07:00',
+      generated: '2022-05-24T08:58:40-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
           hasRecHeader: false,
+          label: 'Vital signs',
           addButtonText: 'Add vital signs',
           ehr_list: [
             {
@@ -675,6 +678,7 @@ export default function () {
           ],
           form: {
             elementKey: 'table',
+            label: 'Vital signs',
             addButtonText: 'Add vital signs',
             formOption: 'transpose',
             formKey: 'table',
@@ -803,13 +807,14 @@ export default function () {
           fqn: 'fluidBalance.fluidOut'
         }
       ],
-      generated: '2022-05-06T10:17:27-07:00',
+      generated: '2022-05-24T08:58:40-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
           hasRecHeader: false,
+          label: 'Fluid balance',
           addButtonText: 'Add a fluid in/out record',
           ehr_list: [
             {
@@ -839,6 +844,7 @@ export default function () {
           ],
           form: {
             elementKey: 'table',
+            label: 'Fluid balance',
             addButtonText: 'Add a fluid in/out record',
             formKey: 'table',
             ehr_groups: [
@@ -1720,13 +1726,14 @@ export default function () {
           fqn: 'neurological.strokeAssessmentCalculation'
         }
       ],
-      generated: '2022-05-06T10:17:27-07:00',
+      generated: '2022-05-24T08:58:40-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
           hasRecHeader: false,
+          label: 'Neurological assessment',
           addButtonText: 'Add a neurological assessment',
           ehr_list: [
             {
@@ -1952,6 +1959,7 @@ export default function () {
           ],
           form: {
             elementKey: 'table',
+            label: 'Neurological assessment',
             addButtonText: 'Add a neurological assessment',
             formOption: 'transpose',
             formKey: 'table',
@@ -2499,13 +2507,14 @@ export default function () {
           fqn: 'respiratory.generalComments'
         }
       ],
-      generated: '2022-05-06T10:17:27-07:00',
+      generated: '2022-05-24T08:58:40-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
           hasRecHeader: false,
+          label: 'Respiratory assessment',
           addButtonText: 'Add a respiratory assessment',
           ehr_list: [
             {
@@ -2622,6 +2631,7 @@ export default function () {
           ],
           form: {
             elementKey: 'table',
+            label: 'Respiratory assessment',
             addButtonText: 'Add a respiratory assessment',
             formOption: 'transpose',
             formKey: 'table',
@@ -3278,13 +3288,14 @@ export default function () {
           fqn: 'cardiovascular.comments'
         }
       ],
-      generated: '2022-05-06T10:17:27-07:00',
+      generated: '2022-05-24T08:58:40-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
           hasRecHeader: false,
+          label: 'Cardiovascular assessment',
           addButtonText: 'Add a cardiovascular assessment',
           ehr_list: [
             {
@@ -3450,6 +3461,7 @@ export default function () {
           ],
           form: {
             elementKey: 'table',
+            label: 'Cardiovascular assessment',
             addButtonText: 'Add a cardiovascular assessment',
             formOption: 'transpose',
             formKey: 'table',
@@ -4002,13 +4014,14 @@ export default function () {
           fqn: 'gastrointestinal.comments'
         }
       ],
-      generated: '2022-05-06T10:17:27-07:00',
+      generated: '2022-05-24T08:58:40-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
           hasRecHeader: false,
+          label: 'Gastrointestinal assessment',
           addButtonText: 'Add a gastrointestinal assessment',
           ehr_list: [
             {
@@ -4160,6 +4173,7 @@ export default function () {
           ],
           form: {
             elementKey: 'table',
+            label: 'Gastrointestinal assessment',
             addButtonText: 'Add a gastrointestinal assessment',
             formOption: 'transpose',
             formKey: 'table',

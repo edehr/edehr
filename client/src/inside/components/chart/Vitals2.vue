@@ -53,7 +53,8 @@ export default {
       isPageElement: false,
       isTableElement: true,
       tableKey: this.tableKey,
-      formKey: undefined
+      formKey: undefined,
+      isEmbedded: false
     }
   },
   computed: {

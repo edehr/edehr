@@ -7,11 +7,15 @@
         tbody
           tr(v-for="(column, colIndex) in transposedColumns", :class="tableColumnCss(column)")
             td(:class="transposeLabelCss(column)")
+              div(v-if="colIndex === 0", style="min-height:3rem;") &nbsp;
               span(v-html="transposeLabel(column)")
             td(v-for="(cell, index) in transposeData(column)", :class="transposeValueCss(cell)")
-              ui-button(v-if="colIndex === 0",v-on:buttonClicked="$emit('view-report',index)")
+              ui-button(v-if="colIndex === 0",v-on:buttonClicked="viewReport(pageDataKey, tableKey, index)")
                 span View &nbsp;
                 fas-icon(icon="file-pdf")
+              ui-button(v-if="tableDef.tableAction && colIndex === 0",v-on:buttonClicked="tableAction(tableDef,index)")
+                span {{ tableDef.tableActionLabel }} &nbsp;
+                fas-icon(icon="notes-medical")
               div(v-for="cPart in cell.stack")
                 ehr-table-element(v-if="!!cPart.value", :cell="cPart")
 </template>

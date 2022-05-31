@@ -320,13 +320,14 @@ export default function () {
           fqn: 'labRequisitions.histologyLocation'
         }
       ],
-      generated: '2022-05-05T17:05:01-07:00',
+      generated: '2022-05-24T09:04:19-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
           tableKey: 'table',
           isTable: true,
           hasRecHeader: false,
+          label: 'Lab requisitions',
           addButtonText: 'Add a lab requisition assessment',
           ehr_list: [
             {
@@ -438,11 +439,12 @@ export default function () {
           ],
           form: {
             elementKey: 'table',
+            label: 'Lab requisitions',
             addButtonText: 'Add a lab requisition assessment',
             formKey: 'table',
             ehr_groups: [
               {
-                elementKey: 'ehr_group112',
+                elementKey: 'ehr_group72',
                 formCss: 'record-header',
                 gIndex: '1',
                 gChildren: [

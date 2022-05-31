@@ -1,7 +1,11 @@
 import EventBus, { ACTIVITY_DATA_EVENT } from '@/helpers/event-bus'
 import { decoupleObject } from '@/helpers/ehr-utils'
 
-const demoSeed = require('@/erin-johns-seed-day2-end.json')
+const prodSeed = require('@/erin-johns-seed-day2-end.json')
+const devSeed = require('@/dev-ehr-only-seed.json')
+
+const demoSeed = process.env.NODE_ENV === 'production' ? prodSeed : devSeed
+
 const state = {
   isActive: false,
   ehrOnlyEhr: {},
@@ -51,6 +55,7 @@ const mutations = {
     const asIs = decoupleObject(state.ehrOnlyEhr)
     asIs[pageKey] = value
     state.ehrOnlyEhr = asIs
+    console.log(JSON.stringify(asIs))
     EventBus.$emit(ACTIVITY_DATA_EVENT)
   }
 }

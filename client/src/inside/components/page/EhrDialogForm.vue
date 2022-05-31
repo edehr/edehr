@@ -10,7 +10,7 @@
       :useSave="!isViewOnly"
       :disableSave="disableSave"
     )
-      h3(slot="header") {{ tableDef.addButtonText }}
+      h3(slot="header") {{ formLabel }}
       div(slot="body", class="ehr-page-content")
         ehr-group(v-for="group in groups", :key="group.gIndex", :group="group", :ehrHelp="ehrHelp", :viewOnly='isViewOnly')
       div(slot="footer-content", class="checkbox-wrapper", v-if="acknowledgeSignature")
@@ -43,6 +43,9 @@ export default {
     tableDef: { type: Object },
   },
   computed: {
+    formLabel () {
+      return this.tableDef.label || this.tableDef.addButtonText
+    },
     ehrOnlyDemo () {
       return EhrOnlyDemo.isActiveEhrOnlyDemo()
     },
@@ -91,6 +94,13 @@ export default {
       this.ackReqHeader = false
     },
     receiveShowHideEvent (eData) {
+      if (eData.isEmbedded) {
+        /*
+        When a portion of the dialog form is used as an embedded form fragment we want to be
+        sure to not open the underlying dialog that would normally contain that fragment.
+         */
+        return
+      }
       if(eData.value) {
         this.$refs.theDialog.onOpen()
       } else {

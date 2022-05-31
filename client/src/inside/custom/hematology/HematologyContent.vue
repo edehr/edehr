@@ -1,22 +1,18 @@
 // Custom EHR Vue component
 <template lang="pug">
-  div()
-    ehr-panel-header {{ pageDef.pageTitle }}
-    ehr-panel-content
-      div(class="region ehr-page-content")
-        ehr-page-table(:tableDef="tableDef[0]", :ehrHelp="ehrHelp")
-        ehr-page-table(:tableDef="tableDef[1]", :ehrHelp="ehrHelp")
+  ehr-panel-content
+    ehr-page-table(:tableDef="tableCbc", :ehrHelp="ehrHelp")
+    ehr-page-table(:tableDef="tablePbf", :ehrHelp="ehrHelp")
 </template>
 
 <script>
-import EhrPanelHeader from '@/inside/components/page/EhrPanelHeader.vue'
 import EhrPanelContent from '@/inside/components/page/EhrPanelContent.vue'
 import EhrPageTable from '@/inside/components/page/EhrPageTable'
 import EhrDefs from '@/helpers/ehr-defs-grid'
+import EventBus, { TABLE_ACTION_EVENT } from '@/helpers/event-bus'
 
 export default {
   components: {
-    EhrPanelHeader,
     EhrPanelContent,
     EhrPageTable
   },
@@ -31,6 +27,11 @@ export default {
   provide () {
     return {
       pageDataKey: this.pageDataKey,
+      isPageElement: false,
+      isTableElement: true,
+      tableKey: this.tableKey,
+      formKey: undefined,
+      isEmbedded: false
     }
   },
   computed: {
@@ -38,12 +39,26 @@ export default {
       return this.ehrHelp.getPageDef(this.pageDataKey)
     },
     tableDef () {
-      let tables = EhrDefs.getPageTables(this.pageDataKey)
-      // console.log('Vitals2 looking at tables', tables)
-      return tables
+      return EhrDefs.getPageTables(this.pageDataKey)
     },
-
+    tableCbc () { return this.tableDef[0]},
+    tablePbf () { return this.tableDef[1]},
+  },
+  mounted: function () {
+    const _this = this
+    this.showEventHandler = function (tableDef, index) {
+      const tablePbf = _this.tablePbf
+      const tableKey = tablePbf.tableKey
+      _this.ehrHelp.showDialog(tableKey, {tableActionRowIndex: index})
+    }
+    EventBus.$on(TABLE_ACTION_EVENT, this.showEventHandler)
+  },
+  beforeDestroy: function () {
+    if (this.showEventHandler) {
+      EventBus.$off(TABLE_ACTION_EVENT, this.showEventHandler)
+    }
   }
+
 }
 </script>
 

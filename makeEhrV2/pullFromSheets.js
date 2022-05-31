@@ -1,5 +1,4 @@
 // https://developers.google.com/sheets/api/quickstart/nodejs
-
 const fs = require('fs')
 const readline = require('readline')
 const { google } = require('googleapis')
@@ -16,19 +15,19 @@ const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 const TOKEN_PATH = '.token.json'
 
 
-// inputType	pRef	Label	Comments	elementKey	pN	fN	gN	sgN	formCss	formOption	tableLabel	tableColumn	tableCss	addButtonText	dependentOn	Default_value	Options	Suffix	Mandatory	Validation	assetBase	assetName	helperText	passToFunction
-// inputType	pRef	Label	Comments	elementKey	pN	fN	gN	sgN	formCss	formOption	tableLabel	tableColumn	tableCss	addButtonText	dependentOn	Default_value	Options	Suffix	Mandatory	Validation	assetBase	assetName	helperText	passToFunction
+// inputType	pRef	Label	Comments	elementKey	pN	fN	gN	sgN	formCss	formOption	tableLabel	tableColumn	tableCss	addButtonText	dependentOn	Default_value	Options	Suffix	Mandatory	Validation	assetBase	assetName	helperText	passToFunction tableAction tableActionLabel
 
 function getSheets(auth) {
   const sheets = google.sheets({ version: 'v4', auth })
+  const RANGE = '!AF2:BG300'
   getSheet(sheets, INPUT_SPREADSHEET_ID, 'pages!I2:N100', 'raw_data/inside-pages.txt')
-  getSheet(sheets, INPUT_SPREADSHEET_ID, 'External!AC2:BA300', 'raw_data/external-resources.txt')
-  getSheet(sheets, INPUT_SPREADSHEET_ID, 'pProfile!AC2:BA300', 'raw_data/patient-profile.txt')
-  getSheet(sheets, INPUT_SPREADSHEET_ID, 'pChart!AC2:BA300', 'raw_data/patient-chart.txt')
-  getSheet(sheets, INPUT_SPREADSHEET_ID, 'TestPage!AC2:BA300', 'raw_data/test-page.txt')
-  getSheet(sheets, INPUT_SPREADSHEET_ID, 'CV-1!AC2:BA300', 'raw_data/current-visit-1.txt')
-  getSheet(sheets, INPUT_SPREADSHEET_ID, 'CV-2!AC2:BA300', 'raw_data/current-visit-2.txt')
-  getSheet(sheets, INPUT_SPREADSHEET_ID, 'CV-3!AC2:BA300', 'raw_data/current-visit-3.txt')
+  getSheet(sheets, INPUT_SPREADSHEET_ID, 'External'+RANGE, 'raw_data/external-resources.txt')
+  getSheet(sheets, INPUT_SPREADSHEET_ID, 'pProfile'+RANGE, 'raw_data/patient-profile.txt')
+  getSheet(sheets, INPUT_SPREADSHEET_ID, 'pChart'+RANGE, 'raw_data/patient-chart.txt')
+  getSheet(sheets, INPUT_SPREADSHEET_ID, 'TestPage'+RANGE, 'raw_data/test-page.txt')
+  getSheet(sheets, INPUT_SPREADSHEET_ID, 'CV-1'+RANGE, 'raw_data/current-visit-1.txt')
+  getSheet(sheets, INPUT_SPREADSHEET_ID, 'CV-2'+RANGE, 'raw_data/current-visit-2.txt')
+  getSheet(sheets, INPUT_SPREADSHEET_ID, 'CV-3'+RANGE, 'raw_data/current-visit-3.txt')
 }
 
 function getSheet(sheets, sheetId, range, fName) {
@@ -36,7 +35,13 @@ function getSheet(sheets, sheetId, range, fName) {
     spreadsheetId: sheetId,
     range: range
   }, (err, res) => {
-    if (err) return console.error('API get sheet ', range, fName, ' error: ', err)
+    if (err) {
+      console.error('API get sheet ', range, fName, ' error: ', err)
+      if (err.message.includes('invalid_grant')) {
+        console.error('Google access expired. Delete .token.json. Rerun and use provided link to get new token.')
+      }
+      throw new Error(err)
+    }
     const rows = res.data.values
     if (rows.length) {
       const data = []

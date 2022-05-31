@@ -422,7 +422,7 @@ export default function () {
           fqn: 'demographics.decisionMakerPhone'
         }
       ],
-      generated: '2022-05-05T17:05:01-07:00',
+      generated: '2022-05-24T09:04:19-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -505,7 +505,7 @@ export default function () {
           fqn: 'allergies.text'
         }
       ],
-      generated: '2022-05-05T17:05:01-07:00',
+      generated: '2022-05-24T09:04:19-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -540,7 +540,7 @@ export default function () {
           fqn: 'medical.history'
         }
       ],
-      generated: '2022-05-05T17:05:01-07:00',
+      generated: '2022-05-24T09:04:19-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -742,7 +742,7 @@ export default function () {
           fqn: 'psychosocial.spacer13'
         }
       ],
-      generated: '2022-05-05T17:05:01-07:00',
+      generated: '2022-05-24T09:04:19-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -864,7 +864,7 @@ export default function () {
           fqn: 'surgical.comments'
         }
       ],
-      generated: '2022-05-05T17:05:01-07:00',
+      generated: '2022-05-24T09:04:19-07:00',
       pageElements: {
         pastSurgery: {
           elementKey: 'pastSurgery',
@@ -1207,7 +1207,7 @@ export default function () {
           fqn: 'immunization.spacer25'
         }
       ],
-      generated: '2022-05-05T17:05:01-07:00',
+      generated: '2022-05-24T09:04:19-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -1269,7 +1269,7 @@ export default function () {
           fqn: 'familyHistory.history'
         }
       ],
-      generated: '2022-05-05T17:05:01-07:00',
+      generated: '2022-05-24T09:04:19-07:00',
       pageElements: {
         pageForm: {
           elementKey: 'pageForm',
@@ -1312,13 +1312,14 @@ export default function () {
           fqn: 'careTeam.profession'
         }
       ],
-      generated: '2022-05-05T17:05:01-07:00',
+      generated: '2022-05-24T09:04:19-07:00',
       pageElements: {
         teams: {
           elementKey: 'teams',
           tableKey: 'teams',
           isTable: true,
           hasRecHeader: false,
+          label: 'Care team',
           addButtonText: 'Add a care team member',
           ehr_list: [
             {
@@ -1336,6 +1337,7 @@ export default function () {
           ],
           form: {
             elementKey: 'teams',
+            label: 'Care team',
             addButtonText: 'Add a care team member',
             formKey: 'teams',
             ehr_groups: [
@@ -1428,13 +1430,14 @@ export default function () {
           fqn: 'pastAppointments.diagnosis'
         }
       ],
-      generated: '2022-05-05T17:05:01-07:00',
+      generated: '2022-05-24T09:04:19-07:00',
       pageElements: {
         encounters: {
           elementKey: 'encounters',
           tableKey: 'encounters',
           isTable: true,
           hasRecHeader: false,
+          label: 'Past encounters',
           addButtonText: 'Add a past appointment',
           ehr_list: [
             {
@@ -1464,6 +1467,7 @@ export default function () {
           ],
           form: {
             elementKey: 'encounters',
+            label: 'Past encounters',
             addButtonText: 'Add a past appointment',
             formKey: 'encounters',
             ehr_groups: [
@@ -1491,6 +1495,7 @@ export default function () {
           tableKey: 'outpatientAppointments',
           isTable: true,
           hasRecHeader: false,
+          label: 'Past outpatient appointments',
           addButtonText: 'Add an outpatient appointment',
           ehr_list: [
             {
@@ -1520,6 +1525,7 @@ export default function () {
           ],
           form: {
             elementKey: 'outpatientAppointments',
+            label: 'Past outpatient appointments',
             addButtonText: 'Add an outpatient appointment',
             formKey: 'outpatientAppointments',
             ehr_groups: [
