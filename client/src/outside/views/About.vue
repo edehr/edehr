@@ -37,7 +37,7 @@
 
     hr
 
-    ed-ehr-org
+    ed-ehr-org-about
 
     hr
 
@@ -65,7 +65,7 @@ import AppQuote from '@/app/components/AppQuote'
 import AppRef from '@/app/components/AppRef'
 import AppSourceList from '@/app/components/AppSourceList'
 import AppTextWithRefs from '@/app/components/AppTextWithRefs'
-import EdEhrOrg from '@/app/edehr-org/EdEhrOrg'
+import EdEhrOrgAbout from '@/app/edehr-org/EdEhrOrgAbout'
 import { appText, helpText } from '@/appText'
 import StoreHelper from '@/helpers/store-helper'
 import { textToHtml } from '@/directives/text-to-html'
@@ -82,7 +82,7 @@ function msToTime (ms) {
 }
 
 export default {
-  components: { AppQuote, AppRef, AppSourceList, AppTextWithRefs, EdEhrOrg },
+  components: { AppQuote, AppRef, AppSourceList, AppTextWithRefs, EdEhrOrgAbout },
   data () {
     return {
       appText: appText,

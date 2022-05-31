@@ -20,6 +20,8 @@
     div <a href="https://edehr.org/privacy">Privacy policy</a>
     div <a href="https://edehr.org/termds">Terms and conditions</a>
     div Contact: <a href="mailto:info@edehr.org">info@edehr.org</a>
+    div
+      router-link(:to="{ name: `edehrDetails` }") edehr.org technical details
 
 </template>
 

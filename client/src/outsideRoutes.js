@@ -16,6 +16,13 @@ export function outside () {
       meta: { layout: 'outside', label: 'Help', zone: 'public' }
     },
     {
+      path: '/edehrDetails',
+      name: 'edehrDetails',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './app/edehr-org/EdEhrOrgDetails'),
+      meta: { layout: 'outside', label: 'edehrDetails', zone: 'public' }
+    },
+    {
       path: '/privacy',
       name: 'privacy',
       component: () =>
