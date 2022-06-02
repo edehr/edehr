@@ -17,3 +17,43 @@ footer {
     }
   }
 }
+
+.wrap-items-spaced {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.wrap-items-left {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+}
+
+.wrap-items-center {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.wrap-items-space-between {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.item-12 {
+  width: 12%;
+  padding-left: 5px;
+}
+.item-25 {
+  width: 25%;
+  padding-left: 5px;
+}
+.item-50 {
+  width: 50%;
+  padding-left: 5px;
+}
+.item-center {
+  margin: auto;
+}

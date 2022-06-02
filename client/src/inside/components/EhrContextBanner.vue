@@ -1,50 +1,37 @@
 <template lang="pug">
-  div
-    div(v-if='isEhrOnlyDemo', class="EhrContextBanner")
-      div(class="EhrPanelContent") {{ehrOnlyDemoText.ehrContextBannerTitle}}
-    div(v-else-if="showStudent")
-      ehr-context-student
+  div(class="EhrContextBanner")
+    div(v-if='isEhrOnlyDemo')
+      div {{ehrOnlyDemoText.ehrContextBannerTitle}}
     div(v-else)
-      div(class="EhrContextBanner EhrPanelContent")
-        div(class="EhrPanelContent_Inner")
-          div(class="context-header columns", v-on:click="toggleShow")
-              h3(class="header-item", :title="title") {{ title }}
-              div(class="icon-group")
-                fas-icon(icon="plus", v-show="!show")
-                fas-icon(icon="minus", v-show="show")
-          div(v-show="show")
-            ehr-context-instructor(v-if="(showInstructor)")
-            ehr-context-developer(v-else-if="showSeeding")
+      ehr-context-banner-header(@showChanged="(showVal) => show = showVal")
+      div(v-show="show")
+        ehr-context-instructor(v-if="(showInstructor)")
+        ehr-context-developer(v-else-if="showSeeding")
+        ehr-context-student(v-else-if="showStudent")
 </template>
 
 <script>
 import EhrContextInstructor from './EhrContextInstructor'
 import EhrContextStudent from './EhrContextStudent'
 import EhrContextDeveloper from './EhrContextDeveloper'
+import EhrContextBannerHeader from '@/inside/components/EhrContextBannerHeader'
+import UiLink from '@/app/ui/UiLink'
 import StoreHelper from '../../helpers/store-helper'
 import EhrOnlyDemo from '@/helpers/ehr-only-demo'
 import { ehrOnlyDemoText } from '@/appText'
 
 export default {
   name: 'EhrContextBanner',
-  components: { EhrContextInstructor, EhrContextStudent, EhrContextDeveloper },
+  components: { EhrContextBannerHeader, EhrContextInstructor, EhrContextStudent, EhrContextDeveloper, UiLink },
   data: function () {
     return {
       show: false,
-      indicator: '+',
-      activity: {},
       ehrOnlyDemoText: ehrOnlyDemoText
     }
   },
   computed: {
     isEhrOnlyDemo () {
       return EhrOnlyDemo.isActiveEhrOnlyDemo()
-    },
-    title () {
-      return StoreHelper.isSeedEditing() ? 'Edit seed' :StoreHelper.getCourseTitle()
-    },
-    panelInfo () {
-      return StoreHelper.getPanelData()
     },
     showStudent () {
       return StoreHelper.isStudent()
@@ -54,12 +41,6 @@ export default {
     },
     showSeeding () {
       return StoreHelper.isSeedEditing()
-    },
-  },
-  methods: {
-    toggleShow: function () {
-      this.show = !this.show
-      this.indicator = this.show ? '-' : '+'
     },
   },
   mounted: function () {
@@ -74,23 +55,7 @@ export default {
 @import '../../scss/definitions';
 
 .EhrContextBanner {
-  padding: 0;
-  border-top: 1px solid black;
-  .header-column {
-    padding: 0; // override bulma column padding
-  }
-}
-
-.EhrPanelContent {
-  border-bottom: 1px solid $grey20;
-  padding: 1rem;
-}
-
-.context-header {
-  cursor: pointer;
-}
-
-h3.header-item {
-  margin-bottom: 0;
+  padding: 0 1rem;
+  border-top: 1px solid $grey40;
 }
 </style>

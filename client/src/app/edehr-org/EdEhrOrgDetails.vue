@@ -18,7 +18,6 @@
 </template>
 
 <script>
-import edherorg from '@/app/edehr-org/ed-ehr-org'
 import { EdOrgText } from '@/app/edehr-org/ed-ehr-org-text'
 
 export default {

@@ -11,6 +11,11 @@ export const demoPersonae = [
   },
   {
     id: 2,
+    name: 'Carly Dixon',
+    role: 'student'
+  },
+  {
+    id: 3,
     name: 'Juliet Seton',
     role: 'student'
   },
@@ -19,9 +24,4 @@ export const demoPersonae = [
     name: 'Roxanne Snow',
     role: 'student'
   },
-  {
-    id: 4,
-    name: 'Carly Dixon',
-    role: 'student'
-  }
 ]

@@ -1,83 +1,66 @@
 <template lang="pug">
-  div(class="classlist", v-if="isReadonly")
-    div(class="classlist_content columns")
-      div(class="is-8 column") You are currently viewing 
-        b {{ panelInfo.activityTitle }}
-        span  in read only mode.
-    div
-        router-link(to="/instructor") Go back to courses page
-  div(class="classlist", v-show="showClassList", v-else)
-    div(class="classlist_content columns")
-      div(class="is-4 column")
-        div(class="textField") Course: {{ panelInfo.courseTitle}}
-        div(class="textField") Activity: {{ panelInfo.activityTitle}}
-          ui-info(:title="panelInfo.activityTitle", :text="panelInfo.activityDescription")
-        div(class="textField") Assignment: {{ panelInfo.assignmentName}}
-          ui-info(:title="panelInfo.assignmentName", :text="panelInfo.assignmentDescription")
-      div(class="is-4 column")
-        div(class="textField") Student: {{ panelInfo.studentName }}
-        div(class="textField") Student's last visit: {{ formatTime(panelInfo.lastVisitDate) }}
-        div Activity is {{ panelInfo.closed ? "CLOSED " : "OPEN "}} to students
+  div
+    div(v-show="displayControlBar", class='wrap-items-spaced')
+      div(class="item-50 item-center") Evaluating: {{ panelInfo.studentName}} (last visit: {{ panelInfo.lastVisitDate | formatDateTime }})
+      div(class="item-25") Student {{currentIndex}} of {{listLen}}
+      div(class="item-25 item-center")
+        ui-link(:name="'classList'") Return to class list
+    div(v-show="!displayControlBar")
+      div(class="wrap-items-space-between instructor-context")
+        div(class="action-save wrap-items-left")
+          ui-button(v-on:buttonClicked="previousStudent()", :disabled="!enablePrev", title='Previous student')
+            fas-icon(icon="angle-left", class='icon-item2')
+          ui-button(v-on:buttonClicked="resetNotes", :disabled="!canSave", title='Reset note')
+            fas-icon(icon="undo", class='icon-item3')
+          ui-button(v-on:buttonClicked="saveNotes", :disabled="!canSave", title='Save note')
+            fas-icon(icon="check", class='icon-item1')
+          ui-button(v-on:buttonClicked="nextStudent ()", :disabled="!enableNext", title='Next student')
+            fas-icon(icon="angle-right", class='icon-item2')
+        div(class="action-activity")
+          EhrContextActivityInfo
 
-      div(class="is-4 column")
-        div(class="columns is-pulled-right")
-          div {{currentIndex}} of {{listLen}}
-          ui-button(v-on:buttonClicked="handleConfirmNavigation('previous')", class="is-pulled-right is-light", :disabled="!enablePrev")
-            fas-icon(icon="angle-left", class="icon-left")
-            span Previous
-          ui-button(v-on:buttonClicked="handleConfirmNavigation('next')", class="is-pulled-right is-light", :disabled="!enableNext")
-            span Next &nbsp;
-            fas-icon(icon="angle-right", class="icon-left")
-    div(class="textField") Evaluation notes
-    ehr-evaluation-input(
-      ref="evaluationNoteComponent", 
-      :enableNext="enableNext", 
-      :shouldConfirmNavigation="shouldConfirmNavigation"
-      :navigation="navigation"
-      @saveNext="nextStudent", 
-      @proceedNavigation="handleProceedNavigation"
-    )
+      ehr-evaluation-input(ref="evaluationNoteComponent", class=" instructor-context", @hasNewDataChanged='evaluationNotesChanged')
+
 </template>
 
 <script>
 import UiButton from '../../app/ui/UiButton'
+import UiConfirm from '@/app/ui/UiConfirm'
 import UiInfo from '../../app/ui/UiInfo'
 import UiLink from '../../app/ui/UiLink'
 import EhrEvaluationInput from './EhrEvaluationInput'
-import { formatTimeStr } from '../../helpers/ehr-utils'
+import EhrContextActivityInfo from '@/inside/components/EhrContextActivityInfo'
 import StoreHelper from '../../helpers/store-helper'
 
 export default {
-  name: 'EhrClassListNav',
-  components: { UiLink, UiButton, EhrEvaluationInput, UiInfo },
+  components: { EhrEvaluationInput, EhrContextActivityInfo, UiButton, UiConfirm, UiInfo, UiLink, },
   data: function () {
     return {
       shouldConfirmNavigation: false,
-      navigation: ''
+      navigation: '',
+      hasNewData: false,
+      asStored: '',
+      proceed: false,
+      confirmStep: '',
+      next: null
     }
   },
   props: {
-    isReadonly: {
-      type: Boolean,
-      default: false
-    }
+    displayControlBar: { type: Boolean }
   },
   computed: {
-    panelInfo () {
-      return StoreHelper.getPanelData()
+    canSave () {
+      return this.hasNewData
     },
     classList () {
       let list = StoreHelper.getClassList()
-      if(!this.panelInfo.closed) {
+      if (!this.panelInfo.closed) {
         // Filter the class list to only show records for students who have submitted their work
         list = list.filter(sv => {
           return sv.activityData.submitted
         })
       }
       return list
-    },
-    showClassList () {
-      return true
     },
     currentIndex () {
       let elem = this.findCurrent()
@@ -87,22 +70,35 @@ export default {
       return this.classList.length
     },
     enablePrev () {
+      if (this.hasNewData) return false
       let elem = this.findCurrent()
       return elem.index > 0
     },
     enableNext () {
+      if (this.hasNewData) return false
+      return this.hasNext
+    },
+    hasNext () {
       let elem = this.findCurrent()
       return elem.index + 1 < this.listLen
-    }
+    },
+    panelInfo () {
+      return StoreHelper.getPanelData()
+    },
+    enableActions () {
+      return this.theNotes !== this.asStored
+    },
+    disableNext () {
+      return !(this.enableActions && this.enableNext)
+    },
   },
   methods: {
-    formatTime ( dStr ) {
-      return formatTimeStr(dStr)
-    },
     findCurrent () {
       let list = this.classList
       let id = StoreHelper.getCurrentEvaluationStudentId()
-      return list.find(function (elem) { return elem._id === id }) || {}
+      return list.find(function (elem) {
+        return elem._id === id
+      }) || {}
     },
     previousStudent () {
       let elem = this.findCurrent()
@@ -120,91 +116,38 @@ export default {
         this.changeStudent(sv)
       }
     },
-    changeStudent (sv) { StoreHelper.changeStudentForInstructor( sv._id ) },
-    handleConfirmNavigation (type) {
-      this.navigation = type
-      this.shouldConfirmNavigation = true
+    changeStudent (sv) {
+      StoreHelper.changeStudentForInstructor(sv._id)
     },
-    handleProceedNavigation () {
-      if(this.navigation === 'previous') {
-        this.previousStudent()
-      } else if (this.navigation === 'next'){
-        this.nextStudent()
-      }
-      this.shouldConfirmNavigation = false
-      this.navigation = ''
+    resetNotes () {
+      this.$refs.evaluationNoteComponent.resetNotes()
+    },
+    saveNotes () {
+      this.$refs.evaluationNoteComponent.saveNotes()
+      // if (this.hasNext) {
+      //   this.nextStudent()
+      // }
+    },
+    evaluationNotesChanged (state) {
+      this.hasNewData = state
     }
-  },
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 @import '../../scss/definitions';
-
-.classlist_nav_item.column {
-  padding-right: 0;
+.action-save, .action-next {
+  flex: 1 0 20%;
 }
 
-.classlist_content.columns .column:last-child {
-  padding-right: 0;
+.icon-item1 {
+  font-size: 1.6rem;
 }
-
-.classlist {
-
-  .textField {
-    max-width: 30rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .classlist_nav_item {
-    overflow: hidden;
-    button {
-      width: 5rem;
-    }
-  }
-  
-  .classlist_counter {
-    max-width: 5rem;
-  }
-
-  &_classlist &__navItem {
-    &:not(:first-child) {
-      margin-left: 1.5em;
-      &::before {
-        margin-right: 0.5em;
-      }
-    }
-  }
-
-  $indicatorColor: $brand-primary;
-  .indicator {
-    display: flex;
-    flex-direction: row;
-  }
-  .indicator-label {
-    flex: 0 1 auto;
-    margin-right: 5px;
-  }
-  .indicator-shape {
-    flex: 0 0 20px;
-    width: 20px;
-    height: 20px;
-    border: 1px solid $grey80;
-    margin-top: 10px;
-  }
-  .indicate-assignment-data {
-    // square
-  }
-  .indicate-evaluation-notes {
-    border-radius: 50%; // circle
-  }
-  .has-assignment-data {
-    background: $indicatorColor;
-  }
-  .has-evaluation-notes {
-    background: $indicatorColor;
-  }
+.icon-item2 {
+  font-size: 1.8rem;
+}
+.icon-item1 {
+  font-size: 1.5rem;
 }
 </style>

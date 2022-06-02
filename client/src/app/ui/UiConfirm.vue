@@ -74,7 +74,7 @@ export default {
 .ui-confirm {
 }
 .confirm-body {
-  max-width: 800px
+  max-width: 60rem
 }
 .confirm-body a {
   color: blue !important;

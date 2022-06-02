@@ -8,13 +8,10 @@
             router-link(:to="{ name: 'home' }", class="navLink app-title") EdEHR
           div(class="navItem navItemShort navItemEnd")
             router-link(:to="{ name: `about` }", class="navLink") About
-          div(class="navItem", v-if="lmsName")
-            span Return to: &nbsp;
-            a(:href="lmsUrl", class="navLink") {{lmsName}}
-          //div(v-if="isStudent", class="navItem")
-          //  router-link(:to="{ name: `ehr` }", class="navLink") Learning Object
+          div(v-if="isStudent", class="navItem")
+            router-link(:to="{ name: `ehr` }", class="navLink") EHR Activity
           div(v-if="isDemo", class="navItem")
-            div(class="navLink activationItem",
+            div(class="navLink demoLink activationItem",
               @keydown.enter="toggleShowDemoSubmenu()",
               @keydown.esc="hideDemoMenu()",
               tabindex=0,
@@ -37,6 +34,10 @@
             router-link(:to="{ name: `developEhrData` }", class="navLink") Seed Data
           div(class="navItem")
             router-link(:to="{ name: `fileList` }", class="navLink") Files
+          div(class="navItem", v-if="lmsName")
+            span Return to: &nbsp;
+            a(:href="lmsUrl", class="navLink") {{lmsName}}
+
     ui-confirm(class="confirmDialog",ref="confirmDialog", @confirm="demoLogOut", save-label="Logout")
 </template>
 <script>
@@ -151,11 +152,16 @@ header {
   color: $toolbar-color;
   .navLink {
     color: white;
+    font-weight: bold;
+    font-size: 1.6rem;
     &:focus,
     &:hover,
     &.is-active {
       color: rgba(255, 255, 255, 0.7);
     }
+  }
+  .demoLink {
+    font-size: 1.2rem;
   }
 }
 .secondMenu {
@@ -163,6 +169,8 @@ header {
   color: $black;
   .navLink {
     color: $black;
+    font-weight: bold;
+    font-size: 1.2rem;
     &:focus,
     &:hover,
     &.is-active {
@@ -175,14 +183,14 @@ header {
 .topMenu {
   padding: 10px 20px;
   .navItem {
-    padding: 5px 30px 15px 0;
+    padding: 0 30px 0 0;
   }
   .push {
     margin-left: 100px;
   }
 }
 .secondMenu {
-  padding: 5px 20px;
+  padding: 0safe 20px;
   .navItem {
     padding: 5px 30px 15px 0;
   }
@@ -218,8 +226,6 @@ header {
 
   .navLink {
     text-decoration: none;
-    font-weight: bold;
-    font-size: 1.6rem;
     &:focus,
     &:hover,
     &.is-active {

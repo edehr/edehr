@@ -1,20 +1,33 @@
 <template lang="pug">
-  div(class="contextStudent")
-    div(v-if="showContext", class="EhrContextBanner")
+  div
+    div(v-show="displayControlBar", class='wrap-items-space-between')
+      div(class="item-25 item-center") Activity: {{ panelInfo.activityTitle}}
+      div(class="item-12 item-center")
+        ehr-student-submit
+      div(class="item-25 item-center")
+        ehr-visit-day-time-control
+      div(class="item-25 item-center")
+        div(v-if="lmsName")
+          span Return to: &nbsp;
+          a(:href="lmsUrl", class="navLink") {{lmsName}}
+
+    div(v-show="!displayControlBar", class='wrap-items-space-between')
       div(class="EhrPanelContent")
-        h3 {{ panelInfo.courseTitle}} - {{ panelInfo.assignmentName}}
-        div(v-if="isClosed") Activity closed as of {{ closedDate | formatDateTime }}
-        div Student: {{ userName }}
-        div Evaluation: {{ evaluationNotes }}
+        div(v-show="isSentBack")  Sent back for edits
+        div                       Evaluation: {{evaluationText}}
+      EhrContextActivityInfo
 </template>
 
 <script>
-import UiInfo from '../../app/ui/UiInfo'
-import StoreHelper from '../../helpers/store-helper'
+import EhrVisitDayTimeControl from '@/inside/components/EhrVisitDayTimeControl'
+import EhrStudentSubmit from '@/inside/components/EhrStudentSubmit'
+import EhrContextActivityInfo from '@/inside/components/EhrContextActivityInfo'
+import UiInfo from '@/app/ui/UiInfo'
+import StoreHelper from '@/helpers/store-helper'
 export default {
-  name: 'EhrContextStudent',
-  components: { UiInfo },
+  components: { EhrContextActivityInfo, EhrStudentSubmit, EhrVisitDayTimeControl, UiInfo },
   computed: {
+    evaluationText ()   { return !this.isEvaluated ? 'Not yet submitted' : (this.showEvalNotes ? this.evaluationNotes : 'Not yet evaluated')},
     userName ()         { return this.panelInfo.userName },
     scratchData ()      { return this.panelInfo.scratchData },
     submitted ()        { return this.panelInfo.submitted },
@@ -23,8 +36,14 @@ export default {
     closedDate ()       { return this.panelInfo.closedDate },
     isEvaluated ()      { return this.panelInfo.evaluated },
     evaluationNotes ()  { return this.panelInfo.evaluationData },
-    panelInfo ()        { return StoreHelper.getPanelData(this) },
-    showContext ()      { return this.isEvaluated || this.isClosed || this.isSentBack }
+    showEvalNotes ()    { return this.isEvaluated || this.isClosed || this.isSentBack },
+    panelInfo ()        { return StoreHelper.getPanelData() },
+    lmsUrl ()           { return StoreHelper.lmsUrl()  },
+    lmsName ()          { return StoreHelper.lmsName() },
+
+  },
+  props: {
+    displayControlBar: { type: Boolean }
   },
   methods: {}
 }
