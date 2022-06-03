@@ -16,7 +16,12 @@
   { "path": "", "routeName": "ehrOnlyDemo", "zone": "demo"},
 
   { "path": "", "routeName": "demo", "zone": "demo"},
-  { "path": "", "routeName": "demo-course", "zone": "demo"}
+  { "path": "", "routeName": "demo-course", "zone": "demo"},
 
-  { "path": "", "routeName": "privacy", "zone": "public"}
+  { "path": "", "routeName": "privacy", "zone": "public"},
+  { "path": "", "routeName": "terms", "zone": "public"},
+  { "path": "", "routeName": "edehrDetails", "zone": "public", "componentName": "EdEhrOrgDetails",
+    "label": "edehrDetails"
+  }
+
 ]

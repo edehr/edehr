@@ -66,7 +66,7 @@ import AppRef from '@/app/components/AppRef'
 import AppSourceList from '@/app/components/AppSourceList'
 import AppTextWithRefs from '@/app/components/AppTextWithRefs'
 import EdEhrOrgAbout from '@/app/edehr-org/EdEhrOrgAbout'
-import { appText, helpText } from '@/appText'
+import { appText } from '@/appText'
 import StoreHelper from '@/helpers/store-helper'
 import { textToHtml } from '@/directives/text-to-html'
 
@@ -86,7 +86,6 @@ export default {
   data () {
     return {
       appText: appText,
-      helpText: helpText,
       metrics: { title: 'EdEHR' },
       showMetrics: false
     }

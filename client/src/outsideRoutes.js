@@ -16,27 +16,6 @@ export function outside () {
       meta: { layout: 'outside', label: 'Help', zone: 'public' }
     },
     {
-      path: '/edehrDetails',
-      name: 'edehrDetails',
-      component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './app/edehr-org/EdEhrOrgDetails'),
-      meta: { layout: 'outside', label: 'edehrDetails', zone: 'public' }
-    },
-    {
-      path: '/privacy',
-      name: 'privacy',
-      component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Privacy.vue'),
-      meta: { layout: 'outside', label: 'Privacy', zone: 'public' }
-    },
-    {
-      path: '/terms',
-      name: 'terms',
-      component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Terms.vue'),
-      meta: { layout: 'outside', label: 'Terms', zone: 'public' }
-    },
-    {
       path: '/assignments',
       name: 'assignments',
       component: () =>
@@ -119,6 +98,27 @@ export function outside () {
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/DemoCourse.vue'),
       meta: { layout: 'outside', label: 'Demo Course', zone: 'demo' }
+    },
+    {
+      path: '/privacy',
+      name: 'privacy',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Privacy.vue'),
+      meta: { layout: 'outside', label: 'Privacy', zone: 'public' }
+    },
+    {
+      path: '/terms',
+      name: 'terms',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Terms.vue'),
+      meta: { layout: 'outside', label: 'Terms', zone: 'public' }
+    },
+    {
+      path: '/edehrDetails',
+      name: 'edehrDetails',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/EdEhrOrgDetails.vue'),
+      meta: { layout: 'outside', label: 'edehrDetails', zone: 'public' }
     }
   ]
 }
