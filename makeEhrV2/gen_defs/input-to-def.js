@@ -25,6 +25,7 @@ const pageChildElementProperties = [
   'addButtonText',
   'assetBase',
   'assetName',
+  'calculationType',
   { sKey: 'cN', dKey: 'cIndex'},
   'dataCaseStudy',
   'defaultValue',

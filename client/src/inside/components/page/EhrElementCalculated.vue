@@ -29,7 +29,8 @@ export default {
       let pageDataKey = this.pageDataKey
       let elementKey = this.element.elementKey
       if (db) console.log('EhrCalculated rcv FORM_INPUT_EVENT', eData, pageDataKey, elementKey)
-      let value = ehrCalculateProperty(pageDataKey, elementKey, this.ehrHelp)
+      let srcValues = this.ehrHelp.getActiveData()
+      let value = ehrCalculateProperty(pageDataKey, elementKey, srcValues)
       if (db) console.log('EhrComputedValue ', elementKey, value)
       // put value into the inputs so the dialog save can preserve the result
       this.ehrHelp.stashActiveData(elementKey, value)

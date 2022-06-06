@@ -1,3 +1,5 @@
+import EhrDefs from '../ehr-defs-grid'
+
 const should = require('should')
 import EhrDefsGrid from '../ehr-defs-grid'
 
@@ -7,6 +9,91 @@ const PAGE_TABLE_KEY = 'biopsychosocial'
 // console.log('pageKeys >> ', pageKeys)
 // console.log('pageKeys >> ', pageKeys.map(k => EhrDefsGrid.getPageDefinition(k) ))
 const elemKey = 'text'
+
+describe ('testing calculation supports', () =>{
+
+  it('wbcEstimate has product calculationType', done => {
+    const pageDataKey = 'hematology'
+    const filterValue = 'wbcEstimate'
+    const filterKey = 'elementKey'
+    const desiredProperty = 'calculationType'
+    const result = EhrDefs.getChildElements(pageDataKey, filterKey, filterValue, desiredProperty)
+    should.exists(result)
+    result.length.should.equal(1)
+    result[0].should.equal('product')
+    done()
+  })
+  it('wbcLowRange has multiplyBy(0.75) calculationType', done => {
+    const pageDataKey = 'hematology'
+    const filterValue = 'wbcLowRange'
+    const filterKey = 'elementKey'
+    const desiredProperty = 'calculationType'
+    const result = EhrDefs.getChildElements(pageDataKey, filterKey, filterValue, desiredProperty)
+    should.exists(result)
+    result.length.should.equal(1)
+    result[0].should.equal('multiplyBy(0.75)')
+    done()
+  })
+  it('wbcAverage has average calculationType', done => {
+    const pageDataKey = 'hematology'
+    const filterValue = 'wbcAverage'
+    const filterKey = 'elementKey'
+    const desiredProperty = 'calculationType'
+    const result = EhrDefs.getChildElements(pageDataKey, filterKey, filterValue, desiredProperty)
+    should.exists(result)
+    result.length.should.equal(1)
+    result[0].should.equal('average')
+    done()
+  })
+
+  it('wbcAverage has 10 sources', done => {
+    const pageDataKey = 'hematology'
+    const filterValue = 'wbcAverage'
+    const filterKey = 'passToFunction'
+    const desiredProperty = 'elementKey'
+    const result = EhrDefs.getChildElements(pageDataKey, filterKey, filterValue, desiredProperty)
+    // console.log(result)
+    should.exists(result)
+    result.length.should.equal(10)
+    result[0].should.equal('wbc-1')
+    done()
+  })
+  it('wbcLowRange has 2 sources', done => {
+    const pageDataKey = 'hematology'
+    const filterValue = 'wbcLowRange'
+    const filterKey = 'passToFunction'
+    const desiredProperty = 'elementKey'
+    const result = EhrDefs.getChildElements(pageDataKey, filterKey, filterValue, desiredProperty)
+    // console.log(result)
+    should.exists(result)
+    result.length.should.equal(1)
+    result[0].should.equal('wbcEstimate')
+    done()
+  })
+})
+
+describe ('Important demographic elements', () => {
+  it('get phn', done => {
+    const pageDataKey = 'demographics'
+    const filterValue = 'phn'
+    const filterKey = 'elementKey'
+    const result = EhrDefs.getChildElements(pageDataKey, filterKey, filterValue)
+    should.exists(result)
+    result.length.should.equal(1)
+    // console.log(result)
+    done()
+  })
+  it('get dob', done => {
+    const pageDataKey = 'demographics'
+    const filterValue = 'dateOfBirth'
+    const filterKey = 'elementKey'
+    const result = EhrDefs.getChildElements(pageDataKey, filterKey, filterValue)
+    should.exists(result)
+    result.length.should.equal(1)
+    // console.log(result)
+    done()
+  })
+})
 
 describe('testing ehr-defs-grid', () => {
   it('getPageDefinition', done => {
@@ -49,14 +136,6 @@ describe('testing ehr-defs-grid', () => {
     should.exist(table)
     table.should.have.property('tableKey').which.is.a.String()
     table.tableKey.should.equal(tableKey)
-    done()
-  })
-
-  it('getChildElements', done => {
-    const filterKey = 'pageElements'
-    const result = EhrDefsGrid.getChildElements(DEFAULT_KEY, filterKey)
-    should.exists(result)
-    result.length.should.be.greaterThan(0)
     done()
   })
 

@@ -105,6 +105,10 @@ export function isImageFile (fName) {
   return /jpeg|jpg|png|gif|tiff|tif|bmp/.test(fext)
 }
 
+export function isString (possibleStr) {
+  return Object.prototype.toString.call(possibleStr) === '[object String]'
+}
+
 export function formatDateStr (dateStrFromDb) {
   return moment(dateStrFromDb).format('DD MMM YYYY')
 }
