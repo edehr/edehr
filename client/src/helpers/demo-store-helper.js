@@ -18,13 +18,15 @@ export default class DemoStoreHelper {
   }
 
   demoLogout (token) {
-    const apiUrl = StoreHelper.apiUrlGet()
-    const url = `${apiUrl}/demo/logout`
-    if(debugDH) console.log('DH logout',apiUrl)
-    return axios.post(url)
-      .catch(err => {
-        console.log('demoHelper error', err)
-      })
+    console.log('V1.1.16-hotfix disable demo logout')
+    return Promise.resolve()
+    // const apiUrl = StoreHelper.apiUrlGet()
+    // const url = `${apiUrl}/demo/logout`
+    // if(debugDH) console.log('DH logout',apiUrl)
+    // return axios.post(url)
+    //   .catch(err => {
+    //     console.log('demoHelper error', err)
+    //   })
   }
 
   dhLoadDemoData (token) {

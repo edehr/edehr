@@ -13,19 +13,13 @@
         div(style="display:none") Is developing content: {{ isDevelopingContent }} developContent: {{ developContent }}
         input(type="checkbox", id="develop-content", v-model="developContent" )
         label(for="develop-content") Course designer functionality
-      div(v-show="showingSpecial")
-        ehr-special
       app-footer
-      //div(style="text-align: right; margin-top: 5px",)
-      //  label D
-      //    input(class="checkbox", type="checkbox", v-model="showingSpecial")
 
 </template>
 
 <script>
 import AppHeader from '../../app/components/AppHeader.vue'
 import AppFooter from '../../app/components/AppFooter.vue'
-import EhrSpecial from '../../inside/components/EhrSpecial.vue'
 import StoreHelper from '../../helpers/store-helper'
 import UiLink from '../../app/ui/UiLink.vue'
 import UiSpinner from '../../app/ui/UiSpinner'
@@ -35,7 +29,6 @@ export default {
   components: {
     AppFooter,
     AppHeader,
-    EhrSpecial,
     UiLink,
     UiSpinner
   },
@@ -55,9 +48,6 @@ export default {
       // console.log('LayoutOutside watch isDeving isDevelopingContent', this.isDevelopingContent)
       this.developContent = this.isDevelopingContent
     },
-    showingSpecial: function (flag) {
-      StoreHelper.setShowAdvanced(flag)
-    }
   },
   computed: {
     isDevelopingContent () {
