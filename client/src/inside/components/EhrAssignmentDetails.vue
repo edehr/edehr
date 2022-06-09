@@ -19,7 +19,6 @@ import UiButton from '../../app/ui/UiButton.vue'
 import AppDialog from '../../app/components/AppDialogShell.vue'
 
 export default {
-  name: 'EhrNavPanelAction',
   components: {
     EhrAssignmentDetails,
     UiButton,

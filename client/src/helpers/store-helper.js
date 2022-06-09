@@ -382,7 +382,7 @@ class StoreHelperWorker {
     }
     if (this.isInstructor()) {
       let ces = this.getCurrentEvaluationStudentVisit()
-      data.studentName = ces.userName
+      data.studentName = ces.user.fullName
       data.lastVisitDate = ces.lastVisitDate
       data.currentEvaluationStudent = ces
       if(pDebug) console.log('SH getPanelData currentEvaluationStudent', ces)

@@ -85,7 +85,7 @@ export default {
 }
 </script>
 <style lang='scss'>
-@import '@/scss/definitions';
+@import '../../../scss/definitions';
 
 .checkset_list {
   display: flex;

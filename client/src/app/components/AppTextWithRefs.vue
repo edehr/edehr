@@ -1,7 +1,7 @@
 <template lang='pug'>
   div
     p {{text}} &nbsp;
-      app-ref(v-for='r in references', :reference='r')
+      app-ref(v-for='r in references', :key="r", :reference='r')
         span &nbsp;
 </template>
 

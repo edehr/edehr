@@ -3,6 +3,7 @@ import pageDefs from '../../inside/defs-grid/index'
 import { inputTypes, dependentOn } from '../ehr-types'
 import EhrDefs from '../ehr-defs-grid'
 import ehrValidations from '../../inside/components/page/ehr-validations'
+import { isString, validNumberStr } from '@/helpers/ehr-utils'
 const should = require('should')
 
 const keys = Object.keys(pageDefs)
@@ -57,17 +58,47 @@ describe('page-definitions tests', () => {
 
   it('passToFunction Element Exists and has Options array', () => {
     pageChildren.filter(pc => !!pc.passToFunction).map(pc => {
-      const elementKey = pc.passToFunction
-      const elements = EhrDefs.findPageChildrenElement(elementKey)
-      elements.length.should.be.greaterThan(0)
-      pc.options.length.should.be.greaterThan(1)
-      // Sometimes the element is already split by the generator.
-      // pc.options.map(option => {
-      //   const split = option.key.split('=')
-      //   const [ first, second ] = split
-      //   should.exist(first)
-      //   should.exist(second)
-      // })
+      const passToFunctionKey = pc.passToFunction
+      let elementKeys = [ passToFunctionKey]
+      /*
+      passToF elements contain either a single id or a string of the form '[ id1. id2 ]'
+       */
+      if(passToFunctionKey.includes('[')) {
+        // second form .. split into an array
+        elementKeys =passToFunctionKey.replace(/(\[|])/g, '').trim().split(',').map( m => m.trim())
+      }
+      // console.log('elementKeys', elementKeys)
+      elementKeys.map(elementKey => {
+        const elements = EhrDefs.findPageChildrenElement(elementKey)
+        should.exist(elements)
+        elements.should.be.a.Array()
+        elements.length.should.be.greaterThan(0)
+        if (pc.inputType === 'select') {
+          should.exist(pc.options)
+          pc.options.should.be.a.Array()
+          // console.log('------------------------- pc.options is', pc.options)
+          pc.options.length.should.be.greaterThan(0)
+          pc.options.map(option => {
+            // console.log('------------------------- option is', option)
+            if (isString(option.key) && option.key.includes('=')) {
+              const [val, text] = option.key.split('=')
+              // console.log('val,text', val, text)
+              should.exist(val)
+              should.exist(text)
+              validNumberStr(val).should.be.True()
+            } else {
+              // the select option is already a key/value pair
+              validNumberStr(option.key).should.be.True()
+            }
+          })
+        } else {
+          const validInputType = pc.inputType === 'text'
+            || pc.inputType === 'text'
+            || pc.inputType === 'number'
+            || pc.inputType === 'calculatedValue'
+          validInputType.should.be.True(`invalid input type ${pc.inputType}`)
+        }
+      })
     })
   })
 

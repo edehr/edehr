@@ -87,12 +87,11 @@
 </template>
 
 <script>
-import { appText, helpText } from '@/appText'
+import { appText } from '@/appText'
 export default {
   data () {
     return {
       appText: appText,
-      helpText: helpText,
       domain: 'edehr.org'
     }
   }

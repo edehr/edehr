@@ -1,58 +1,31 @@
 <template lang="pug">
-  div
-    div(class="ehr-eval-input")
-      div(class="evaluation-notes")
-        textarea(v-model="theNotes")
-      div(class="evaluation-controls")
-        ui-button(v-on:buttonClicked="cancelEvaluationNotes", :disabled="!enableActions", v-bind:secondary="true") Cancel
-        ui-button(v-on:buttonClicked="saveEvaluationNotes('saveNext')", :disabled="disableNext", class="is-pulled-right")  Save and next student
-        ui-button(v-on:buttonClicked="saveEvaluationNotes('saved')", :disabled="!enableActions", class="is-pulled-right")  Save
-        ui-button(v-on:buttonClicked="gotoClassList()", :secondary="true") Return to class list
-    ui-confirm(ref="confirmDialog", @confirm="handleConfirm", @abort="handleReset", @cancel="handleReset" set-footer)
+  div(class="ehr-eval-input")
+    div(class="evaluation-notes")
+      textarea(v-model="theNotes")
+    ehr-evaluation-confirm(
+      ref='evaluationConfirmDialog',
+      @cancelPageLeave='cancelPageLeave',
+      @confirmPageLeave='confirmPageLeave'
+      )
+
 </template>
 
 <script>
-import UiButton from '../../app/ui/UiButton'
-import UiConfirm from '../../app/ui/UiConfirm'
 import StoreHelper from '../../helpers/store-helper'
-
-const HEADER = 'Your evaluation notes have not been saved'
-const TEXT = 'Would you like to...?'
-const CONFIRM =  {
-  beforeRouteLeave: 'Save and Continue',
-  previous: 'Save and previous',
-  next: 'Save and Next',
-}
-const CANCEL = 'Discard notes and continue'
-const LEAVE_PROMPT = 'Your evaluation notes have not been saved'
+import EhrEvaluationConfirm from '@/inside/components/EhrEvaluationConfirm'
+import { LEAVE_PROMPT } from '@/inside/components/page/ehr-helper'
 
 export default {
-  name: 'EhrEvaluationInput',
-  components: {
-    UiButton,
-    UiConfirm 
-  },
+  components: { EhrEvaluationConfirm },
   data: function () {
     return {
       theNotes: '',
       asStored: '',
-      proceed: false,
-      confirmStep: '',
-      next: null
     }
-  },
-  
-  props: {
-    enableNext: { type: Boolean },
-    shouldConfirmNavigation: {type: Boolean},
-    navigation: { type: String }
   },
   computed: {
     enableActions () {
       return this.theNotes !== this.asStored
-    },
-    disableNext () {
-      return !(this.enableActions && this.enableNext)
     },
     asStoredEvaluationNotes () {
       return StoreHelper.getEvaluationNotes()
@@ -65,128 +38,80 @@ export default {
       )
     }
   },
-  mounted: function (){ 
-    this.loadDialog()
-  },
-
-  created () {
-    this._setupEventHandlers()
-  },
-
-  beforeRouteLeave : function (to, from, next) {
-    console.log('beforeRouteLeave EhrEvaluationInput')
-    if(to.meta.layout !== 'inside' && this.hasNewData) {
-      this.confirmStep = 'beforeRouteLeave'
-      this.next = next
-      this.showConfirmationDialog()
-    } else {
-      next(true)
-    }
-  },
-
-  beforeDestroy () {
-    this._takeDownEventHandlers()
-  },
-
-  watch: {
-    asStoredEvaluationNotes: function (newData) {
-      // console.log('EhrEvaluationInput watched')
-      this.setNotes(newData)
-    },
-
-    shouldConfirmNavigation: function (shouldConfirm) {
-      if(shouldConfirm && this.hasNewData) {
-        this.confirmStep = 'navigation'
-        this.showConfirmationDialog()
-      } else {
-        this.$emit('proceedNavigation')
-      }
-    },  
-  },
   methods: {
-    gotoClassList: function () {
-      this.$router.push('/classList')
-    },
     setNotes (data) {
       this.theNotes = data
       this.asStored = data
     },
-    loadDialog: function () {
+    initialize: function () {
       /* restore the data to what is in the db. */
       this.setNotes(StoreHelper.getEvaluationNotes())
     },
-    cancelEvaluationNotes: function () {
-      this.loadDialog() // reset the data for next time
-      this.$emit('canceled')
+    resetNotes: function () {
+      this.initialize() // reset the data for next time
     },
-    saveEvaluationNotes: function (event) {
-      if (event) {
-        return StoreHelper.saveEvaluationNotes(this.theNotes).then(() => {
-          this.loadDialog()
-          this.$emit(event)
-        })
-      } else {
-        return StoreHelper.saveEvaluationNotes(this.theNotes)
-          .then(() => {
-            this.loadDialog()
-          })
-      }
-      
+    saveNotes: async function () {
+      return await StoreHelper.saveEvaluationNotes(this.theNotes).then(() => {
+        this.initialize()
+      })
     },
-
-    beforeUnloadListener (event) {
-      console.log('beforeUnloadListen')
-      let e = event || window.event
+    beforePageUnload (event) {
+      console.log('beforePageUnload')
       if (this.hasNewData) {
-        e.preventDefault()
-        e.returnValue = LEAVE_PROMPT
+        event.preventDefault()
+        event.returnValue = LEAVE_PROMPT
       }
     },
-
-
-    _setupEventHandlers () {
-      const _this = this
-      this.windowUnloadHandler = function (eData) {
-        _this.beforeUnloadListener(eData)
+    beforeRouteChange () {
+      if (this.hasNewData) {
+        this.$refs.evaluationConfirmDialog.showDialog()
       }
-      window.addEventListener('beforeunload', this.windowUnloadHandler)
-    },  
+    },
+    cancelPageLeave () {
+      // do nothing
+    },
+    confirmPageLeave () {
+      this.next(true)
+    },
+  },
+  mounted: function (){
+    this.initialize()
+    console.log('To Do add in route guard for when user edits notes and then tries to leave')
+    // the guard below doesn't work because guards only work on the component that
+    // is routed.
 
-    _takeDownEventHandlers (pageKey) {
+  },
+  created () {
+    const _this = this
+    this.windowUnloadHandler = function (eData) {
+      _this.beforePageUnload(eData)
+    }
+    window.addEventListener('beforeunload', this.windowUnloadHandler)
+  },
+  beforeDestroy () {
+    if (this.windowUnloadHandler) {
       window.removeEventListener('beforeunload', this.windowUnloadHandler)
+    }
+  },
+  beforeRouteLeave (to, from, next) {
+    console.log('beforeRouteLeave EhrEvaluationInput')
+    const answer = window.confirm('Do you really want to leave? you have unsaved changes!')
+    if (!answer) return false
+    if(to.meta.layout !== 'inside' && this.hasNewData) {
+      this.next = next
+      this.beforeRouteChange()
+    } else {
+      next(true)
+    }
+  },
+  watch: {
+    asStoredEvaluationNotes: function (newData) {
+      this.setNotes(newData)
     },
-
-    handleReset () {
-      if(this.confirmStep === 'navigation') {
-        this.$emit('proceedNavigation')
-      } else if (this.confirmStep === 'beforeRouteLeave') {
-        this.next(true)
-      }
-      this.proceed = false
-      this.confirmStep = ''
-      this.setNotes('')
-    },
-
-    showConfirmationDialog () {
-      const key =  this.confirmStep === 'navigation' ? this.navigation : this.confirmStep     
-      this.$refs.confirmDialog.showDialog(HEADER, TEXT, CONFIRM[key], CANCEL)
-    },
-
-    async handleConfirm () {
-      await this.saveEvaluationNotes()
-      switch(this.confirmStep) {
-      case 'beforeRouteLeave':
-        this.next(true)
-        break
-      case 'navigation':
-        this.$emit('proceedNavigation')
-        break
-      default:
-        this.saveEvaluationNotes('saved')
-      }
+    hasNewData: function (state) {
+      this.$emit('hasNewDataChanged', state)
     },
   }
-  
 }
 </script>
 
@@ -202,7 +127,7 @@ export default {
     textarea {
       width: 100%;
       height: 4rem;
-      margin-bottom: 1em;
+      margin-bottom: 0;
     }
   }
 }

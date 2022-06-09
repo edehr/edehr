@@ -1,5 +1,6 @@
 import EhrTypes from './ehr-types'
 import pageDefs from '../inside/defs-grid/index'
+import { isString } from '@/helpers/ehr-utils'
 
 const keys = Object.keys(pageDefs)
 
@@ -44,9 +45,11 @@ class EhrDefsWorker {
 
   getChildElements (pageKey, filterKey, filterValue, desiredProperty) {
     let pd = this.getPageDefinition(pageKey)
-    let children = pd.pageChildren.filter( ch => ch[filterKey] === filterValue)
+    let children = pd.pageChildren.filter( ch => isString(ch[filterKey]) ? ch[filterKey].includes(filterValue) : false)
+    // if (children.length > 0) console.log('getChildElements children ', desiredProperty, JSON.parse(JSON.stringify(children)))
     if(desiredProperty){
       children = children.map( ch => ch[desiredProperty])
+      // if (children.length > 0) console.log('getChildElements desiredProperty ', desiredProperty, JSON.parse(JSON.stringify(children)))
     }
     return children
   }

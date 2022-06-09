@@ -71,7 +71,7 @@ const mutations = {
     state.sysMessage = msg
   },
   setApiError: (state, error) => {
-    if (error) {
+    if (error && process.env.NODE_ENV !== 'test') {
       console.error('System api error:', error)
     }
     state.apiError = error

@@ -15,11 +15,11 @@ const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 const TOKEN_PATH = '.token.json'
 
 
-// inputType	pRef	Label	Comments	elementKey	pN	fN	gN	sgN	formCss	formOption	tableLabel	tableColumn	tableCss	addButtonText	dependentOn	Default_value	Options	Suffix	Mandatory	Validation	assetBase	assetName	helperText	passToFunction tableAction tableActionLabel
+// inputType	pRef	Label	Comments	elementKey	pN	fN	gN	sgN	formCss	formOption	tableLabel	tableColumn	tableCss	addButtonText	dependentOn	Default_value	Options	Suffix	Mandatory	Validation	assetBase	assetName	helperText passToFunction calculationType tableAction tableActionLabel
 
 function getSheets(auth) {
   const sheets = google.sheets({ version: 'v4', auth })
-  const RANGE = '!AF2:BG300'
+  const RANGE = '!AG2:BI300'
   getSheet(sheets, INPUT_SPREADSHEET_ID, 'pages!I2:N100', 'raw_data/inside-pages.txt')
   getSheet(sheets, INPUT_SPREADSHEET_ID, 'External'+RANGE, 'raw_data/external-resources.txt')
   getSheet(sheets, INPUT_SPREADSHEET_ID, 'pProfile'+RANGE, 'raw_data/patient-profile.txt')

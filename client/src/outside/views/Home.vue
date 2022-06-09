@@ -101,7 +101,7 @@ export default {
   }
 
   .hero {
-    border-top: 8px solid #ff5555;
+    border-top: 2px solid #ff5555;
   }
   .hero-body {
     flex-grow: 1;

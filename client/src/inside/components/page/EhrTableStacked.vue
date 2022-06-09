@@ -8,20 +8,20 @@
           tr
             th(v-if="tableDef.tableAction") &nbsp;
             th &nbsp;
-            th(v-for="tCell in tableForm.rowTemplate")
+            th(v-for="(tCell, cIndex) in tableForm.rowTemplate", :key='cIndex')
               span(v-html="tCell.tableLabel", :class="tableColumnCss(tCell)")
         tbody
-          tr(v-for="(dRow, index) in tableData")
+          tr(v-for="(dRow, rIndex) in tableData", :key='rIndex')
             td(v-if="tableDef.tableAction")
-              ui-button(v-on:buttonClicked="tableAction(tableDef,index)")
+              ui-button(v-on:buttonClicked="tableAction(tableDef,rIndex)")
                 span {{ tableDef.tableActionLabel }} &nbsp;
                 fas-icon(icon="notes-medical")
             td
-              ui-button(v-on:buttonClicked="viewReport(pageDataKey, tableKey, index)")
+              ui-button(v-on:buttonClicked="viewReport(pageDataKey, tableKey, rIndex)")
                 span View &nbsp;
                 fas-icon(icon="file-pdf")
-            td(v-for="cell in dRow", class="cell.tableCss")
-              ehr-table-element(v-for="cPart in cell.stack",v-if="!!cPart.value", :cell="cPart")
+            td(v-for="(cell, cIndex) in dRow", :key="cIndex", class="cell.tableCss")
+              ehr-table-element(v-for="(cPart, pIndex) in cell.stack",v-if="!!cPart.value", :key='pIndex', :cell="cPart")
 </template>
 
 <script>

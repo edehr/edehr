@@ -14,7 +14,11 @@
     "test:unit": "vue-cli-service test:unit",
     "test:updateSnapshots": "vue-cli-service test:unit -- -u",
     "test:it": "npm run test:unit -t src/inside/components/chart/charting.spec.js",
-    "test:one": "npm run test:unit --trace-warnings -t src/helpers/test/store-helper.spec.js"
+    "test:one": "npm run test:unit --trace-warnings -t src/helpers/test/page-defs.spec.js",
+    "test:one:cov": "npm run test:cov --trace-warnings -t src/helpers/test/page-defs.spec.js | egrep 'ehr-defs|validations'",
+    "test:calcs": "npm run test:unit --trace-warnings -t src/helpers/test/ehr-calcs.spec.js",
+    "test:calcs:cov": "npm run test:cov --trace-warnings -t src/helpers/test/ehr-calcs.spec.js | egrep 'ehr-calcs'",
+    "test:defgrid": "npm run test:unit --trace-warnings -t src/helpers/test/ehr-defs-grid.spec.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",

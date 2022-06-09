@@ -2,6 +2,11 @@
  * @jest-environment jsdom
  */
 import axios from 'axios'
+import * as ehrUtils from '../ehr-utils'
+import { Text } from '../ehr-text'
+import { createFile } from './testHelper'
+import { prepareAxiosResponse } from './axios-mock-helper'
+import { isString, validNumberStr } from '../ehr-utils'
 const should = require('should')
 const mockData = require('./mockData.json')
 const { ehrUtilsData } = mockData
@@ -15,12 +20,51 @@ function getOne () {
 function getTwo () {
   return ehrUtilsData.pageTwo
 }
-// import should from 'should'
-import * as ehrUtils from '../ehr-utils'
-import { Text } from '../ehr-text'
-import { createFile } from './testHelper'
-import { prepareAxiosResponse } from './axios-mock-helper'
 //
+
+describe(' testing validNumberStr', () => {
+  it ('a simple number', () => {
+    let val = 88
+    let result = validNumberStr(val)
+    should.exist(result)
+    result.should.equal(true)
+  })
+  it ('a simple number in string', () => {
+    let val = '88'
+    let result = validNumberStr(val)
+    should.exist(result)
+    result.should.equal(true)
+  })
+  it ('invalid number in string', () => {
+    let val = 'f88'
+    let result = validNumberStr(val)
+    should.exist(result)
+    result.should.equal(false)
+  })
+})
+
+describe( 'testing isString', () => {
+  it('test valid strings', () => {
+    let str = 'foobar'
+    let result = isString(str)
+    should.exist(result)
+    result.should.equal(true)
+  })
+  it('test valid String object strings', () => {
+    let str = new String('bar,foo')
+    let result = isString(str)
+    should.exist(result)
+    result.should.equal(true)
+  })
+})
+describe('Testing non string values', () => {
+  it('test invalid number literal', () => {
+    let str = 88
+    let result = isString(str)
+    should.exist(result)
+    result.should.equal(false)
+  })
+})
 describe('Test seed marking', () => {
 
   it('Remove Empty Properties', () => {

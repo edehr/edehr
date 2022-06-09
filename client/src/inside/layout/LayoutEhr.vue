@@ -3,13 +3,13 @@
     div(class="ehr_layout__wrapper app")
       ui-spinner(:loading="isLoading")
       app-header
+      // the area for instructors to grade students, seed editors to see infor about the see and students to see their evaluations
+      ehr-context-banner
       main(class="ehr_layout__main")
         div(class="ehr_layout__nav bigger-screens")
           ehr-nav-panel
         div(class="ehr_layout__content")
           div(class="ehr_layout__content_banner")
-            // the area for instructors to grade students, seed editors to see infor about the see and students to see their evaluations
-            ehr-context-banner
             div(class="ehr_layout__content_banner_content")
               // banner with patient information
               ehr-banner

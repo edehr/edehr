@@ -55,7 +55,7 @@ export default function () {
           fqn: 'progressNotes.note'
         }
       ],
-      generated: '2022-05-30T17:37:34-07:00',
+      generated: '2022-06-05T20:28:46-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -221,7 +221,7 @@ export default function () {
           fqn: 'carePlan.status'
         }
       ],
-      generated: '2022-05-30T17:37:34-07:00',
+      generated: '2022-06-05T20:28:46-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -385,7 +385,7 @@ export default function () {
           fqn: 'consults.comments'
         }
       ],
-      generated: '2022-05-30T17:37:34-07:00',
+      generated: '2022-06-05T20:28:46-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -522,7 +522,7 @@ export default function () {
           fqn: 'labResults.comments'
         }
       ],
-      generated: '2022-05-30T17:37:34-07:00',
+      generated: '2022-06-05T20:28:46-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -659,7 +659,7 @@ export default function () {
           fqn: 'medicalImaging.comments'
         }
       ],
-      generated: '2022-05-30T17:37:34-07:00',
+      generated: '2022-06-05T20:28:46-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -796,7 +796,7 @@ export default function () {
           fqn: 'operationReports.comments'
         }
       ],
-      generated: '2022-05-30T17:37:34-07:00',
+      generated: '2022-06-05T20:28:46-07:00',
       pageElements: {
         table: {
           elementKey: 'table',
@@ -1449,119 +1449,137 @@ export default function () {
         {
           elementKey: 'wbc-1',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'number',
           label: 'WBC - 1',
+          passToFunction: 'wbcAverage',
           tableColumn: '11',
           fqn: 'hematology.wbc-1'
         },
         {
           elementKey: 'wbc-2',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'number',
           label: 'WBC - 2',
+          passToFunction: 'wbcAverage',
           tableColumn: '12',
           fqn: 'hematology.wbc-2'
         },
         {
           elementKey: 'wbc-3',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'number',
           label: 'WBC - 3',
+          passToFunction: 'wbcAverage',
           tableColumn: '13',
           fqn: 'hematology.wbc-3'
         },
         {
           elementKey: 'wbc-4',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'number',
           label: 'WBC - 4',
+          passToFunction: 'wbcAverage',
           tableColumn: '14',
           fqn: 'hematology.wbc-4'
         },
         {
           elementKey: 'wbc-5',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'number',
           label: 'WBC - 5',
+          passToFunction: 'wbcAverage',
           tableColumn: '15',
           fqn: 'hematology.wbc-5'
         },
         {
           elementKey: 'wbc-6',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'number',
           label: 'WBC - 6',
+          passToFunction: 'wbcAverage',
           tableColumn: '16',
           fqn: 'hematology.wbc-6'
         },
         {
           elementKey: 'wbc-7',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'number',
           label: 'WBC - 7',
+          passToFunction: 'wbcAverage',
           tableColumn: '17',
           fqn: 'hematology.wbc-7'
         },
         {
           elementKey: 'wbc-8',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'number',
           label: 'WBC - 8',
+          passToFunction: 'wbcAverage',
           tableColumn: '18',
           fqn: 'hematology.wbc-8'
         },
         {
           elementKey: 'wbc-9',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'number',
           label: 'WBC - 9',
+          passToFunction: 'wbcAverage',
           tableColumn: '19',
           fqn: 'hematology.wbc-9'
         },
         {
           elementKey: 'wbc-10',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'number',
           label: 'WBC - 10',
+          passToFunction: 'wbcAverage',
           tableColumn: '20',
           fqn: 'hematology.wbc-10'
         },
         {
-          elementKey: 'wcbAverage',
-          formIndex: '2',
-          inputType: 'text',
-          label: 'Average',
-          tableColumn: '21',
-          fqn: 'hematology.wcbAverage'
-        },
-        {
           elementKey: 'wbcFieldFactor',
+          defaultValue: '1',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'number',
           label: 'Field Factor',
-          tableColumn: '22',
+          passToFunction: 'wbcEstimate',
+          tableColumn: '21',
           fqn: 'hematology.wbcFieldFactor'
         },
         {
-          elementKey: 'wbcEstimate',
+          elementKey: 'wbcAverage',
+          calculationType: 'average',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'calculatedValue',
+          label: 'Average',
+          passToFunction: 'wbcEstimate',
+          tableColumn: '22',
+          fqn: 'hematology.wbcAverage'
+        },
+        {
+          elementKey: 'wbcEstimate',
+          calculationType: 'product',
+          formIndex: '2',
+          inputType: 'calculatedValue',
           label: 'WBC estimate',
+          passToFunction: '[wbcLowRange, wbcHighRange]',
           tableColumn: '23',
           fqn: 'hematology.wbcEstimate'
         },
         {
           elementKey: 'wbcLowRange',
+          calculationType: 'multiplyBy(0.75)',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'calculatedValue',
           label: 'Low range',
           tableColumn: '24',
           fqn: 'hematology.wbcLowRange'
         },
         {
           elementKey: 'wbcHighRange',
+          calculationType: 'multiplyBy(1.25)',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'calculatedValue',
           label: 'High range',
           tableColumn: '25',
           fqn: 'hematology.wbcHighRange'
@@ -1577,120 +1595,138 @@ export default function () {
         {
           elementKey: 'plt-1',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'number',
           label: 'PLT - 1',
+          passToFunction: 'pltAverage',
           tableColumn: '27',
           fqn: 'hematology.plt-1'
         },
         {
           elementKey: 'plt-2',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'number',
           label: 'PLT - 2',
+          passToFunction: 'pltAverage',
           tableColumn: '28',
           fqn: 'hematology.plt-2'
         },
         {
           elementKey: 'plt-3',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'number',
           label: 'PLT - 3',
+          passToFunction: 'pltAverage',
           tableColumn: '29',
           fqn: 'hematology.plt-3'
         },
         {
           elementKey: 'plt-4',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'number',
           label: 'PLT - 4',
+          passToFunction: 'pltAverage',
           tableColumn: '30',
           fqn: 'hematology.plt-4'
         },
         {
           elementKey: 'plt-5',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'number',
           label: 'PLT - 5',
+          passToFunction: 'pltAverage',
           tableColumn: '31',
           fqn: 'hematology.plt-5'
         },
         {
           elementKey: 'plt-6',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'number',
           label: 'PLT - 6',
+          passToFunction: 'pltAverage',
           tableColumn: '32',
           fqn: 'hematology.plt-6'
         },
         {
           elementKey: 'plt-7',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'number',
           label: 'PLT - 7',
+          passToFunction: 'pltAverage',
           tableColumn: '33',
           fqn: 'hematology.plt-7'
         },
         {
           elementKey: 'plt-8',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'number',
           label: 'PLT - 8',
+          passToFunction: 'pltAverage',
           tableColumn: '34',
           fqn: 'hematology.plt-8'
         },
         {
           elementKey: 'plt-9',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'number',
           label: 'PLT - 9',
+          passToFunction: 'pltAverage',
           tableColumn: '35',
           fqn: 'hematology.plt-9'
         },
         {
           elementKey: 'plt-10',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'number',
           label: 'PLT - 10',
+          passToFunction: 'pltAverage',
           tableColumn: '36',
           fqn: 'hematology.plt-10'
         },
         {
-          elementKey: 'pltAverage',
-          formIndex: '2',
-          inputType: 'text',
-          label: 'Average',
-          tableColumn: '37',
-          fqn: 'hematology.pltAverage'
-        },
-        {
           elementKey: 'pltFieldFactor',
+          defaultValue: '1',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'number',
           label: 'Field Factor',
-          tableColumn: '38',
+          passToFunction: 'pltEstimate',
+          tableColumn: '37',
           fqn: 'hematology.pltFieldFactor'
         },
         {
-          elementKey: 'pltEstimate',
+          elementKey: 'pltAverage',
+          calculationType: 'average',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'calculatedValue',
+          label: 'Average',
+          passToFunction: 'pltEstimate',
+          tableColumn: '38',
+          fqn: 'hematology.pltAverage'
+        },
+        {
+          elementKey: 'pltEstimate',
+          calculationType: 'product',
+          formIndex: '2',
+          inputType: 'calculatedValue',
           label: 'PLT estimate',
+          passToFunction: '[pltLowRange, pltHighRange]',
           tableColumn: '39',
           fqn: 'hematology.pltEstimate'
         },
         {
           elementKey: 'pltLowRange',
+          calculationType: 'multiplyBy(0.75)',
           formIndex: '2',
-          inputType: 'text',
-          label: 'Range',
+          inputType: 'calculatedValue',
+          label: 'Low range',
           tableColumn: '40',
           fqn: 'hematology.pltLowRange'
         },
         {
           elementKey: 'pltHighRange',
+          calculationType: 'multiplyBy(1.25)',
           formIndex: '2',
-          inputType: 'text',
-          label: 'Computed rage',
+          inputType: 'calculatedValue',
+          label: 'High range',
           tableColumn: '41',
           fqn: 'hematology.pltHighRange'
         },
@@ -1735,114 +1771,125 @@ export default function () {
         {
           elementKey: 'cellCntSegmentedNeutrophil',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'number',
           label: 'Segmented Neutrophil',
+          passToFunction: 'cellCntTotal',
           tableColumn: '44',
           fqn: 'hematology.cellCntSegmentedNeutrophil'
         },
         {
           elementKey: 'cellCntBandCells',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'number',
           label: 'Band Cells',
+          passToFunction: 'cellCntTotal',
           tableColumn: '45',
           fqn: 'hematology.cellCntBandCells'
         },
         {
           elementKey: 'cellCntLymph',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'number',
           label: 'Lymph',
+          passToFunction: 'cellCntTotal',
           tableColumn: '46',
           fqn: 'hematology.cellCntLymph'
         },
         {
           elementKey: 'cellCntMono',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'number',
           label: 'Mono',
+          passToFunction: 'cellCntTotal',
           tableColumn: '47',
           fqn: 'hematology.cellCntMono'
         },
         {
           elementKey: 'cellCntEosin',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'number',
           label: 'Eosin',
+          passToFunction: 'cellCntTotal',
           tableColumn: '48',
           fqn: 'hematology.cellCntEosin'
         },
         {
           elementKey: 'cellCntBaso',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'number',
           label: 'Baso',
+          passToFunction: 'cellCntTotal',
           tableColumn: '49',
           fqn: 'hematology.cellCntBaso'
         },
         {
           elementKey: 'cellCntMeta',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'number',
           label: 'Meta',
+          passToFunction: 'cellCntTotal',
           tableColumn: '50',
           fqn: 'hematology.cellCntMeta'
         },
         {
           elementKey: 'cellCntMyelo',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'number',
           label: 'Myelo',
+          passToFunction: 'cellCntTotal',
           tableColumn: '51',
           fqn: 'hematology.cellCntMyelo'
         },
         {
           elementKey: 'cellCntPromyelo',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'number',
           label: 'Promyelo',
+          passToFunction: 'cellCntTotal',
           tableColumn: '52',
           fqn: 'hematology.cellCntPromyelo'
         },
         {
           elementKey: 'cellCntBlast',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'number',
           label: 'Blast',
+          passToFunction: 'cellCntTotal',
           tableColumn: '53',
           fqn: 'hematology.cellCntBlast'
         },
         {
           elementKey: 'cellCntReactiveLymphs',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'number',
           label: 'Reactive Lymphs',
+          passToFunction: 'cellCntTotal',
           tableColumn: '54',
           fqn: 'hematology.cellCntReactiveLymphs'
         },
         {
           elementKey: 'cellCntOther',
           formIndex: '2',
-          inputType: 'text',
+          inputType: 'number',
           label: 'Other',
+          passToFunction: 'cellCntTotal',
           tableColumn: '55',
           fqn: 'hematology.cellCntOther'
         },
         {
           elementKey: 'cellCntTotal',
+          calculationType: 'sum',
           formIndex: '2',
-          helperText: 'sum of all above except NRBCs',
           inputType: 'calculatedValue',
           label: 'Total',
           tableColumn: '56',
-          fqn: 'hematology.cellCntTotal',
-          helperHtml: '<p>sum of all above except NRBCs</p>'
+          fqn: 'hematology.cellCntTotal'
         },
         {
           elementKey: 'cellCntNRBCs',
           formIndex: '2',
           helperText: 'nucleated red blood cells',
-          inputType: 'text',
+          inputType: 'number',
           label: 'NRBCs',
           tableColumn: '57',
           fqn: 'hematology.cellCntNRBCs',
@@ -2087,7 +2134,7 @@ export default function () {
           fqn: 'hematology.explain'
         }
       ],
-      generated: '2022-05-30T17:37:34-07:00',
+      generated: '2022-06-05T20:28:46-07:00',
       pageElements: {
         tableCbcAnalysis: {
           elementKey: 'tableCbcAnalysis',
@@ -2463,13 +2510,13 @@ export default function () {
             {
               ehr_list_index: '21',
               items: [
-                'wcbAverage'
+                'wbcFieldFactor'
               ]
             },
             {
               ehr_list_index: '22',
               items: [
-                'wbcFieldFactor'
+                'wbcAverage'
               ]
             },
             {
@@ -2559,13 +2606,13 @@ export default function () {
             {
               ehr_list_index: '37',
               items: [
-                'pltAverage'
+                'pltFieldFactor'
               ]
             },
             {
               ehr_list_index: '38',
               items: [
-                'pltFieldFactor'
+                'pltAverage'
               ]
             },
             {
@@ -2844,8 +2891,8 @@ export default function () {
                   'wbc-8',
                   'wbc-9',
                   'wbc-10',
-                  'wcbAverage',
                   'wbcFieldFactor',
+                  'wbcAverage',
                   'wbcEstimate',
                   'wbcLowRange',
                   'wbcHighRange',
@@ -2867,8 +2914,8 @@ export default function () {
                   'plt-8',
                   'plt-9',
                   'plt-10',
-                  'pltAverage',
                   'pltFieldFactor',
+                  'pltAverage',
                   'pltEstimate',
                   'pltLowRange',
                   'pltHighRange',
@@ -2972,8 +3019,8 @@ export default function () {
               'wbc-8': '',
               'wbc-9': '',
               'wbc-10': '',
-              wcbAverage: '',
-              wbcFieldFactor: '',
+              wbcFieldFactor: '1',
+              wbcAverage: '',
               wbcEstimate: '',
               wbcLowRange: '',
               wbcHighRange: '',
@@ -2988,8 +3035,8 @@ export default function () {
               'plt-8': '',
               'plt-9': '',
               'plt-10': '',
+              pltFieldFactor: '1',
               pltAverage: '',
-              pltFieldFactor: '',
               pltEstimate: '',
               pltLowRange: '',
               pltHighRange: '',

@@ -5,7 +5,8 @@
         fas-icon(class="info-icon", icon="info-circle")
     app-dialog(:isModal="false", ref="theDialog", :useSave="false", @cancel="cancelDialog")
       h2(slot="header") {{ title }}
-      div(slot="body", v-html="content")
+      div(slot="body")
+        p(v-html="content")
   
 </template>
 
