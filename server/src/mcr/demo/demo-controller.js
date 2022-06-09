@@ -232,6 +232,11 @@ export default class DemoController {
 
     router.post('/logout', validatorMiddleware, (req, res) => {
       if (debugDC) debug('DemoController logout', req.authPayload)
+      // TODO fix
+      // The authPayload consumer key contains the most recent consumer key the user has used to
+      // log in with. THIS MAY BE THE MAIN CONSUMER.  Instead we must find a way to send
+      // the actual demo consumer.  AND we should change the 'delete' action to a safer 'flag for delete'
+      // action. Do the actual delete in an out-of-band clean up routine (scheduled weekly?)
       this.deleteDemoData(req.authPayload.consumerKey)
         .then( () => {
           if (debugDC) debug('DemoController logout, return 200')

@@ -86,7 +86,7 @@ const actions = {
     if (token) {
       if (debugDS) console.log('demoStore logout t', token)
       return _getHelper().demoLogout(token)
-        .then(res => {
+        .then(() => {
           if (debugDS) console.log('demoStore logout server side done. Next clear localstorage')
           _clearDemo()
           commit('setDemoData', {})

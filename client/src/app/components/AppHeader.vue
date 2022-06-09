@@ -93,7 +93,10 @@ export default {
     },
     async demoLogOut () {
       console.log('AH demo logout')
+      // TODO code smell in the following.  Why have two methods to log out?
+      // StoreHelper.demoLogout() send logout to server
       await StoreHelper.demoLogout()
+      // StoreHelper.logUserOutOfEdEHR() clears local storage of demo data (the demo db)
       StoreHelper.logUserOutOfEdEHR()
       console.log('AH demo logout go home')
       // this.$router.go(0)
