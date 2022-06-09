@@ -20,7 +20,9 @@
 
   { "path": "", "routeName": "privacy", "zone": "public"},
   { "path": "", "routeName": "terms", "zone": "public"},
-  { "path": "", "routeName": "edehrDetails", "zone": "public", "componentName": "EdEhrOrgDetails",
+  { "path": "", "routeName": "edehrDetails", "zone": "public",
+    "componentName": "EdEhrOrgDetails",
+    "componentFolder": "./app/edehr-org",
     "label": "edehrDetails"
   }
 

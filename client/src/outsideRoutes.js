@@ -117,7 +117,7 @@ export function outside () {
       path: '/edehrDetails',
       name: 'edehrDetails',
       component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/EdEhrOrgDetails.vue'),
+        import(/* webpackChunkName: "chunk-[request][index]" */ './app/edehr-org/EdEhrOrgDetails.vue'),
       meta: { layout: 'outside', label: 'edehrDetails', zone: 'public' }
     }
   ]

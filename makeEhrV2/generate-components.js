@@ -84,7 +84,7 @@ function flushDefs (defs, forInside) {
       def.componentPath = def.generateComponent === 'custom' ? './inside/custom' : './inside/views'
       def.zone = 'ehr'
     } else {
-      def.componentPath = './outside/views'
+      def.componentPath = def.componentFolder ? def.componentFolder : './outside/views'
     }
   })
 }
