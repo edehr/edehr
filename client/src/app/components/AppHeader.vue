@@ -193,7 +193,7 @@ header {
   }
 }
 .secondMenu {
-  padding: 0safe 20px;
+  padding: 0 20px;
   .navItem {
     padding: 5px 30px 15px 0;
   }
@@ -211,15 +211,6 @@ header {
   flex-flow: row wrap;
   align-items: center;
 }
-
-/* Small screens */
-@media all and (max-width: 500px) {
-  .navList {
-    /* On small screens, we are no longer using row direction but column */
-    flex-direction: column;
-  }
-}
-
 
 /* Other */
 .apphdr {
@@ -252,8 +243,6 @@ header {
   .activationItem {
     cursor: pointer;
   }
-
-
   .activationContent {
     min-height: 5rem;
     border-radius: 5px;
@@ -285,6 +274,23 @@ header {
     }
 }
 
+/* Small screens */
+@media all and (max-width: 500px) {
+  .navList {
+    align-items: flex-start;
+    /* On small screens, we are no longer using row direction but column */
+    //flex-direction: column;
+  }
+  .navItem {
+    max-width: inherit;
+  }
+  .navItemEnd {
+    margin-right: inherit;
+  }
+  .secondMenu .navItem {
+    padding: 5px 5px;
+  }
+}
 @media screen and (max-width: 500px){
   .activationContent {
     // This was created so that the Demo dropdown menu wouldn't overflow the
@@ -292,7 +298,11 @@ header {
     max-width: 34vw;
     padding: 0.5rem;
   }
-
+  .topMenu {
+    .navLink {
+      font-size: 0.8rem;
+    }
+  }
 }
 }
 

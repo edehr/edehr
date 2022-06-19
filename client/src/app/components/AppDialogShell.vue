@@ -173,6 +173,7 @@ export default {
   flex-flow: row wrap;
   flex: 1 100%;
 }
+
 .dialog-content {
   min-width: 700px;
   max-width: 70rem;
@@ -182,6 +183,15 @@ export default {
   overflow-x: auto;
 }
 
+@media screen and (max-width: 500px) {
+  .dialog-wrapper {
+    min-width: inherit;
+  }
+  .dialog-content {
+    min-width: inherit;
+    max-width: inherit;
+  }
+}
 .dialog-body {
   padding: 0.25rem 2rem;
   background-color: $grey03;
