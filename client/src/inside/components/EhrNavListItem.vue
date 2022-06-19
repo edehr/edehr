@@ -86,6 +86,12 @@ export default {
 .indicator {
   justify-content: flex-end;
 }
+/* Small screens */
+@media all and (max-width: 500px) {
+  .indicator {
+    float: right;
+  }
+}
 
 .column {
   padding: 0;

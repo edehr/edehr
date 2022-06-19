@@ -57,3 +57,18 @@ footer {
 .item-center {
   margin: auto;
 }
+
+/* Small screens */
+@media all and (max-width: 500px) {
+  .wrap-items-space-between {
+    flex-flow: row;
+  }
+  .item-12,
+  .item-25,
+  .item-50 {
+    width: inherit;
+  }
+  .item-center {
+    margin: inherit;
+  }
+}
