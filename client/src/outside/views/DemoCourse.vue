@@ -124,6 +124,13 @@ export default {
   }
 }
 
+@media screen and (max-width: 500px) {
+  .aside {
+    .aside-section {
+      margin-bottom: 0.5rem;
+    }
+  }
+}
 section {
   margin-bottom: 0.5rem;
 }
