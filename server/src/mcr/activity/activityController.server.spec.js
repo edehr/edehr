@@ -30,9 +30,9 @@ describe(`${typeName} controller testing`, function () {
 
   let theConsumer
   let theAssignment
-  it('Create a tool consumer for testing ', function (done) {
+  it('Create a tool consumer for testing activity', function (done) {
     Helper
-      .createConsumer()
+      .createSampleConsumer()
       .then(doc => {
         theConsumer = doc
         return Helper.createAssignment()

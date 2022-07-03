@@ -77,7 +77,7 @@ describe(_factorTypeName('making server calls'), () => {
         should.exist(res)
         should.exist(res.body)
         assignments = res.body.assignments
-        console.log('pfa', assignments)
+        // console.log('properly fetches assignments', assignments)
         // should.exist(assignments[0])
       })
       .catch(err => {

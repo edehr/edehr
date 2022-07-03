@@ -2,13 +2,13 @@ import { ParameterError } from '../common/errors'
 import BaseController from '../common/base'
 import { Text }  from '../../config/text'
 import Consumer from '../consumer/consumer'
-import SeedDataController from '../seed/seedData-controller'
 import {ok, fail} from '../common/utils'
 import { isAdmin } from '../../helpers/middleware'
+import { assignment1, assignment2, wound1 } from '../../resources/assignment-defs'
+import { ej0SeedDef, ej2SeedDef, wound1SeedDef } from '../../resources/assignment-defs'
 
 const debugCC = false
 const debug = require('debug')('server')
-const seedDataController = new SeedDataController()
 
 export default class ConsumerController extends BaseController {
   constructor () {
@@ -53,7 +53,7 @@ export default class ConsumerController extends BaseController {
         theConsumer = toolConsumer
         const seedDef = Object.assign({}, seedData, { toolConsumer: theConsumer._id })
         if (debugCC) debug('ConsumerController created tool', theConsumer._id, ' create seed next ', seedDef)
-        return seedDataController.create(seedDef)
+        return this.comCon.seedController.create(seedDef)
       })
       .then( () => {
         return theConsumer
@@ -100,7 +100,39 @@ export default class ConsumerController extends BaseController {
       })
   }
 
-  
+  async addLearningObject (seedDef, assignmentDef,  tcId) {
+    const seedDefTooled = Object.assign({}, seedDef, { toolConsumer:  tcId })
+    const assignmentDefTooled = Object.assign({}, assignmentDef, { toolConsumer:  tcId })
+    const theSeed = await  this.comCon.seedController.create(seedDefTooled)
+    await this.comCon.assignmentController.createAssignment(assignmentDefTooled, theSeed._id)
+  }
+
+  async createToolConsumerWithSeeds (oauth_consumer_key, oauth_consumer_secret) {
+    if (!oauth_consumer_key || !oauth_consumer_secret) {
+      throw new ParameterError(Text.SYSTEM_REQUIRE_KEY_AND_SECRET)
+    }
+    const defaultSeed = {
+      toolConsumer: '',
+      name: Text.DEFAULT_SEED_NAME,
+      description: Text.DEFAULT_SEED_DESCRIPTION,
+      version: '1',
+      isDefault: true,
+      ehrData: {}
+    }
+    const consumerDef = {
+      oauth_consumer_key: oauth_consumer_key,
+      oauth_consumer_secret: oauth_consumer_secret,
+      is_primary: true
+    }
+    const toolConsumer = await this.model.create(consumerDef)
+    const tcId = toolConsumer._id
+    defaultSeed.toolConsumer = tcId
+    await this.comCon.seedController.create(defaultSeed)
+    await this.addLearningObject(ej0SeedDef, assignment1,  tcId)
+    await this.addLearningObject(ej2SeedDef, assignment2,  tcId)
+    await this.addLearningObject(wound1SeedDef, wound1  ,  tcId)
+  }
+
   route () {
     const adminMiddleware = [
       isAdmin
@@ -112,11 +144,9 @@ export default class ConsumerController extends BaseController {
       if (!req.body) {
         throw new ParameterError(Text.SYSTEM_REQUIRE_REQUEST_BODY)
       }
-      const def = {
-        oauth_consumer_key: req.body.oauth_consumer_key,
-        oauth_consumer_secret: req.body.oauth_consumer_secret
-      }
-      this.createToolConsumer(def)
+      const key = req.body.oauth_consumer_key
+      const secret = req.body.oauth_consumer_secret
+      this.createToolConsumerWithSeeds(key, secret)
         .then(ok(res))
         .then(null, fail(res))
     })

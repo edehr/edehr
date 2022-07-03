@@ -26,9 +26,9 @@ describe(`${typeName} controller testing`, function () {
   let theUser
   let visitId
 
-  it('Create a tool consumer for testing ', function (done) {
+  it('Create a tool consumer for testing consumers with assignment, user and activity', function (done) {
     Helper
-      .createConsumer()
+      .createSampleConsumer()
       .then(doc => {
         should.exist(doc,'consumer')
         theConsumer = doc
@@ -87,6 +87,15 @@ describe(`${typeName} controller testing`, function () {
     m.should.have.property('findVisit')
     m.findVisit(visitId)
     done()
+  })
+
+  it(`${typeName} test method findUserVisitList`, async function () {
+    let m = new VisitController()
+    m.should.have.property('findUserVisitList')
+    let list = await m.findUserVisitList(theUser._id)
+    should.exist(list)
+    list.should.be.Array()
+    list.length.should.equals(1)
   })
 
 })

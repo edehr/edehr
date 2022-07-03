@@ -21,9 +21,9 @@ describe(`${typeName} mongoose schema testing`, function () {
 
   let theConsumer
   let theAssignment
-  it('Create a tool consumer for testing ', function (done) {
+  it('Create a tool consumer for testing create assignment ', function (done) {
     Helper
-      .createConsumer()
+      .createSampleConsumer()
       .then(doc => {
         theConsumer = doc
         return Helper.createAssignment()
@@ -31,6 +31,10 @@ describe(`${typeName} mongoose schema testing`, function () {
       .then(doc => {
         theAssignment = doc
         done()
+      })
+      .catch(err => {
+        console.error(err)
+        should.not.exist(err)
       })
   })
 

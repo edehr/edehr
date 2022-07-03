@@ -1,4 +1,11 @@
 
+const ej0Seed = require('../../resources/erin-johns-seed-day0-mid.json')
+const ej2Seed = require('../../resources/erin-johns-seed-day2-end.json')
+const wound1Seed = require('../../resources/wound-case-1.json')
+
+const _common =     '"Health Case Studies - Toward Closing the Healthcare Communication Gap" ' +
+  'by:  Glynda Rees, Rob Kruger, Janet Morrison. '
+
 export const assignment1 = {
   externalId: 'demoAssignment1',
   persona: 'Jason',
@@ -6,11 +13,20 @@ export const assignment1 = {
   time: '08:00',
   day : 0,
   description: 'This demonstration assignment is based on Case Study #1.\n' +
-  'In this case the patient has chronic obstructive pulmonary disease (COPD) with a history of asthma. The interprofessional collaboration is role modelled between nursing, medical radiology, medical laboratory, and healthcare workers in the emergency department. ' +
+  'In this case the patient has chronic obstructive pulmonary disease (COPD) with a history of asthma.' +
+    ' The interprofessional collaboration is role modelled between nursing, medical radiology, medical laboratory, and healthcare workers in the emergency department. ' +
   'The focus for this assignment is help the student complement their assessment and monitoring skills with accurate and careful recording within an electronic health record system.',
   resource_link_title: 'Demonstration Assignment #1: COPD'
 }
-
+export const ej0SeedDef = {
+  toolConsumer: '',
+  name: 'Erin Johns - CS#1 - Day 0 19:30',
+  description: _common +
+    ' Based on Case Study #1.' +
+    ' In this case the patient has chronic obstructive pulmonary disease (COPD) with a history of asthma.',
+  version: '1',
+  ehrData: ej0Seed
+}
 export const assignment2 = {
   externalId: 'demoAssignment2',
   persona: 'Jason',
@@ -21,8 +37,16 @@ export const assignment2 = {
   'The focus for this assignment is help the student complement their assessment and monitoring skills with accurate and careful recording within an electronic health record system.',
   resource_link_title: 'Demonstration Assignment #2: Pneumonia'
 }
-
-
+export const ej2SeedDef = {
+  toolConsumer: '',
+  name: 'Erin Johns - CS#2 - Day 1 18:00',
+  description: _common +
+    'See: page 31 Case Study #2 in https://pressbooks.bccampus.ca/healthcasestudies/ \n' +
+    'In this case the patient has chronic obstructive pulmonary disease (COPD) that is exacerbated due to community acquired pneumonia. ' +
+    'The patient in this case study has a complicated health history.',
+  version: '1',
+  ehrData: ej2Seed
+}
 export const wound1 = {
   externalId: 'wound1',
   persona: 'Lori',
@@ -36,4 +60,11 @@ export const wound1 = {
   ' Do you want a care plan review?' +
   ' Do you have a concern about offloading when the patient is in different positions (e.g., lying in bed, sitting)?',
   resource_link_title: 'Wound Monitoring Assignment'
+}
+export const wound1SeedDef = {
+  toolConsumer: '',
+  name: 'George Henry - Age 75 - Wound Care',
+  description: 'George Henry is in the hospital (Day 0 12:00) and a wound assessment order has been issued for a stage 4 pressure injury',
+  version: '1',
+  ehrData: wound1Seed
 }
