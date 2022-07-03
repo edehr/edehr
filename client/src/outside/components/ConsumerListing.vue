@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(:class="$options.name")
+  div(class="consumer-listing")
     h1 LTI Consumers
     div
       ui-button(v-on:buttonClicked="showCreateDialog") Create a new consumer
@@ -8,30 +8,37 @@
       thead
         tr
           th Name
+          th Name
+          th Name
           th Key
-          th Family code
           th LTI version
+          th Is Primary
+          th Tool Software Version
           th Description
-          th GUID
           th Created / Updated
+          th GUID
       tbody
         tr(v-for="item in consumerListing", :class="rowClass(item)")
-          td {{ item.tool_consumer_instance_name }}
+          td
+            div
+              router-link(:to="{ name:'admin-consumer', params: { id: item._id }}") Details
+          td
+            ui-button(v-on:buttonClicked="showEditDialog", :value="item._id")
+              fas-icon(icon="edit") Edit consumer properties
+          td
+            div {{ item.tool_consumer_instance_name }}
+            div {{ item._id }}
           td
             div {{ item.oauth_consumer_key}}
             div {{ item.oauth_consumer_secret}}
           td {{ item.lti_version}}
+          td {{ item.is_primary === true ? 'Primary' : item.is_primary === false ? 'Demo' : 'Unknown'}}
           td {{ item.tool_consumer_info_version}}
           td {{ item.tool_consumer_instance_description}}
-          td {{ item.tool_consumer_instance_guid}}
           td
             div {{ item.createDate}}
             div {{ item.lastUpdateDate}}
-          td
-            router-link(:to="{ name:'users', params: { id: item._id }}") Users
-          td
-            ui-button(v-on:buttonClicked="showEditDialog", :value="item._id")
-              fas-icon(icon="edit") Edit consumer properties
+          td {{ item.tool_consumer_instance_guid}}
     consumer-dialog(ref="theDialog")
 </template>
 
@@ -45,10 +52,10 @@ tool_consumer_instance_description
 tool_consumer_instance_guid
 tool_consumer_instance_name
    */
-import UiButton from '../../app/ui/UiButton.vue'
-import UiLink from '../../app/ui/UiLink.vue'
-import StoreHelper from '../../helpers/store-helper'
-import ConsumerDialog from './ConsumerDialog'
+import UiButton from '@/app/ui/UiButton.vue'
+import UiLink from '@/app/ui/UiLink.vue'
+import StoreHelper from '@/helpers/store-helper'
+import ConsumerDialog from '@/outside/components/ConsumerDialog'
 
 export default {
   name: 'ConsumerListing',
@@ -88,3 +95,11 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+//@import '@/../scss/definitions';
+.table {
+  max-width: 90vw;
+  overflow-x: auto;
+  display: block;
+}
+</style>

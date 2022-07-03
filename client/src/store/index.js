@@ -17,6 +17,7 @@ import seedListStore from './modules/seedListStore'
 import system from './modules/system'
 import userStore from './modules/userStore'
 import visit from './modules/visit'
+import visitList from './modules/visitList'
 // import createLogger from 'vuex/dist/logger'
 
 Vue.use(Vuex)
@@ -42,6 +43,7 @@ export default new Vuex.Store({
     system,
     userStore,
     visit,
+    visitList,
   },
   strict: debug,
   // Uncomment to enable a log of all storage transistions

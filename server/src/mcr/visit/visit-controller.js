@@ -7,7 +7,7 @@ import mongoose from 'mongoose'
 import { SystemError } from '../common/errors'
 import { ObjectId as ObjectID } from 'mongodb'
 
-const debug = require('debug')('server')
+// const debug = require('debug')('server')
 function debugvc (msg) {
   // if (true)
   //   debug('VisitController: ' + msg)

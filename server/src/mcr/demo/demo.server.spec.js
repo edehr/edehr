@@ -13,7 +13,7 @@ const BASE = '/api/demo'
 const _factorTypeName = (description = '') => `${typeName} - ${description}`
 
 describe(_factorTypeName('making server calls'), () => {
-  let app, demoToken, demoData, assignments
+  let app, demoToken, demoData
   before(function (done) {
     helper.beforeTestAppAndDbDrop(ehrApp, configuration, mongoose)
       .then( () => {

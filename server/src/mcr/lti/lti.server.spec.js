@@ -99,12 +99,10 @@ describe('LTI controller testing', function () {
     helper.afterTestsCloseDb(mongoose).then(() => done() )
   })
 
-  let theConsumer = undefined
   it('Create a tool consumer for testing LTI', function (done) {
     let consumerDef = Helper.createConsumerDef(oauth_consumer_key[0], oauth_consumer_secret[0])
     let seedDef = Helper.createConsumerSeedDef()
     Helper.createConsumer(consumerDef, seedDef).then(doc => {
-      theConsumer = doc
       // console.log('created a tool consumer for testing', doc)
       done()
     })

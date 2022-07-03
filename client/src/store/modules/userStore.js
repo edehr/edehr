@@ -53,8 +53,8 @@ const actions = {
       return user
     })
   },
-  loadUsers (context) {
-    let url = ''
+  loadUsers (context, toolId) {
+    let url = 'consumer/' + toolId
     return InstoreHelper.getRequest(context, API, url).then(response => {
       let list = response.data.users
       if(debug) console.log('loadUsers response.data', list)

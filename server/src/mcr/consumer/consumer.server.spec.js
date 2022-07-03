@@ -8,7 +8,6 @@ const ehrApp = new EhrApp()
 const helper = new Helper()
 const mongoose = require('mongoose')
 const should = require('should')
-const TYPE = 'Consumer'
 const logError = require('debug')('error')
 
 const tokenData = Helper.sampleTokenData()
