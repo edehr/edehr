@@ -5,6 +5,7 @@ const Schema = new mongoose.Schema({
   oauth_consumer_key: { type: String, required: [true, 'Require consumer key'], unique: true },
   oauth_consumer_secret: { type: String, required: [true, 'Require consumer secret'] },
   lti_version: {type: String},
+  is_primary: { type: Boolean, required: [ true, 'Must specify if consumer is primary or not']},
   tool_consumer_info_product_family_code: {type: String},
   tool_consumer_info_version: {type: String},
   tool_consumer_instance_description: {type: String},

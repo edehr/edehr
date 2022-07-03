@@ -99,11 +99,22 @@ describe('LTI controller testing', function () {
     helper.afterTestsCloseDb(mongoose).then(() => done() )
   })
 
-  it('Create a tool consumer for testing ', function (done) {
-    Helper.createConsumer(oauth_consumer_key[0], oauth_consumer_secret[0]).then(doc => {
-      // theConsumer = doc
+  it('Create a tool consumer for testing LTI', function (done) {
+    let consumerDef = Helper.createConsumerDef(oauth_consumer_key[0], oauth_consumer_secret[0])
+    let seedDef = Helper.createConsumerSeedDef()
+    Helper.createConsumer(consumerDef, seedDef).then(doc => {
+      // console.log('created a tool consumer for testing', doc)
       done()
     })
+  })
+
+  it('Retrieve created tool consumer for testing ', async () => {
+    let tc = await Helper.getConsumer(oauth_consumer_key[0])
+    should.exist(tc)
+    tc.should.have.property('is_primary')
+    tc.is_primary.should.equal(false)
+    tc.should.have.property('tool_consumer_info_product_family_code')
+    tc.tool_consumer_info_product_family_code.should.equal('Test')
   })
 
   it('Create an initial seed for consumer', function (done) {
@@ -180,8 +191,6 @@ describe('LTI controller testing', function () {
     let result = ltiController.validateLti(ltiData, makeErrCB(done, 'ParameterError', Text.EdEHR_REQUIRES_USER))
     result.should.be.false
   })
-
-
   it('do a lti strategyVerify', () => {
     let externalId = 'test_assignment_id_1'
     let ltiData = makeLtiData(0, externalId)
@@ -272,12 +281,33 @@ describe('LTI controller testing', function () {
           })
       })
       .catch(err => {
-        debug('Error 1 .... ', err.name, err.message)
+        debug('Expected Error 1 .... ', err.name, err.message)
         should.exist(err)
         err.should.have.property('name')
         err.name.should.equal('ParameterError')
         err.message.should.equal('Invalid Signature')
       })
+  })
+
+  it('lti tool changes', async () => {
+    let externalId = 'test_assignment_id_1'
+    let ltiData = makeLtiData(0, externalId, /* as instructor */ true)
+    ltiData.resource_link_title = 'Test assignment'
+    ltiData.tool_consumer_info_product_family_code = 'Before'
+    let req = makeReq(ltiData)
+    await strategyVerify(ltiController, req)
+    await ltiController._postLtiChain(req).catch(err => { should.not.exist(err) })
+    should.exist(req.toolConsumer)
+    req.toolConsumer.tool_consumer_info_product_family_code.should.equal('Before')
+    // second round
+    ltiData = makeLtiData(0, externalId, /* as instructor */ true)
+    ltiData.resource_link_title = 'Test assignment'
+    ltiData.tool_consumer_info_product_family_code = 'After'
+    req = makeReq(ltiData)
+    await strategyVerify(ltiController, req)
+    await ltiController._postLtiChain(req).catch(err => { should.not.exist(err) })
+    should.exist(req.toolConsumer)
+    req.toolConsumer.tool_consumer_info_product_family_code.should.equal('After')
   })
 
 })

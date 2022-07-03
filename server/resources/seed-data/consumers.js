@@ -1,15 +1,21 @@
 'use strict'
-
 import mongoose from 'mongoose'
 import ConsumerController from '../../src/mcr/consumer/consumer-controller'
-
+import SeedDataController from '../../src/mcr/seed/seedData-controller'
 const Consumer = mongoose.model('Consumer')
 const {ltiVersions} = require('../../src/mcr/lti/lti-defs')
 const KEY = 'edehrkey'
 const SECRET = 'edehrsecret'
 const debug = require('debug')('server')
 const cc = new ConsumerController()
+const sd = new SeedDataController()
 
+const lcc = {
+  seedController: sd,
+}
+cc.setSharedControllers(lcc)
+
+// To Do, refactor in a named function and export that.
 module.exports = function () {
   return new Promise(function (resolve, reject) {
     debug('Running application consumer seeding')
@@ -18,6 +24,7 @@ module.exports = function () {
         const def = {
           oauth_consumer_key: KEY,
           oauth_consumer_secret: SECRET,
+          is_primary: true,
           lti_version: ltiVersions()[0],
           tool_consumer_info_product_family_code: 'EdEHR',
           tool_consumer_info_version: 'moodle',

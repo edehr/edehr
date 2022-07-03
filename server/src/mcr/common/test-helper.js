@@ -7,6 +7,22 @@ import Visit from '../visit/visit'
 import Role from '../roles/roles'
 import AuthUtil from './auth-util'
 import mongoose from 'mongoose'
+import ActivityController from '../activity/activity-controller'
+import AssignmentController from '../assignment/assignment-controller'
+import FilesController from '../files/files-controller'
+import VisitController from '../visit/visit-controller'
+import UserController from '../user/user-controller'
+import SeedDataController from '../seed/seedData-controller'
+import applicationConfiguration from '../../config/config'
+const configuration = applicationConfiguration('test')
+
+const act = new ActivityController()
+const as = new AssignmentController(configuration)
+const fileC = new FilesController(configuration)
+const vc = new VisitController()
+const uc = new UserController(configuration)
+const sd = new SeedDataController()
+
 
 const ObjectID = require('mongodb').ObjectId
 const { ltiVersions, LTI_BASIC } = require('../lti/lti-defs')
@@ -16,6 +32,17 @@ console.log('TH: mongoose.connection.readyState', mongoose.connection.readyState
 const authUtil = new AuthUtil({ authTokenSecret: 'defaultTokenSecretForJWT' })
 
 const consumerController = new ConsumerController()
+const lcc = {
+  activityController: act,
+  assignmentController: as,
+  authUtil,
+  filesController: fileC,
+  consumerController: consumerController,
+  seedController: sd,
+  userController: uc,
+  visitController: vc
+}
+consumerController.setSharedControllers(lcc)
 
 // process.on('unhandledRejection', function (error, promise) {
 //   console.error('TH: UNHANDLED REJECTION', error.stack)
@@ -153,7 +180,8 @@ export default class Helper {
       tool_consumer_info_product_family_code: 'Test',
       tool_consumer_info_version: '0.0',
       tool_consumer_instance_description: 'For unit testing',
-      tool_consumer_instance_guid: 'Unique id'
+      tool_consumer_instance_guid: 'Unique id',
+      is_primary: false,
     }
   }
 
@@ -173,7 +201,12 @@ export default class Helper {
       context_id: 'some context id',
       custom_assignment: Default.custom_assignment,
       tool_consumer_instance_name: Default.tool_consumer_instance_name,
-      launch_presentation_return_url: Default.launch_presentation_return_url
+      launch_presentation_return_url: Default.launch_presentation_return_url,
+      tool_consumer_info_product_family_code: 'Test',
+      tool_consumer_info_version: '0.0',
+      tool_consumer_instance_description: 'For unit testing',
+      tool_consumer_instance_guid: 'Unique id',
+
     }
   }
 
@@ -211,8 +244,11 @@ export default class Helper {
     return tokenData
   }
 
-  static createConsumer  (oauth_consumer_key, oauth_consumer_secret) {
-    const seedDef = {
+  static createConsumerDef  (oauth_consumer_key, oauth_consumer_secret) {
+    return Helper.sampleConsumerSpec(oauth_consumer_key, oauth_consumer_secret)
+  }
+  static createConsumerSeedDef () {
+    return {
       toolConsumer: '',
       name: 'Test seed',
       description: 'A seed for unit testing',
@@ -220,8 +256,19 @@ export default class Helper {
       isDefault: true,
       ehrData: {}
     }
-    return consumerController.createWithSeed(Helper.sampleConsumerSpec(oauth_consumer_key, oauth_consumer_secret), seedDef)
   }
+  static createConsumer  (consumerDef, seedDef) {
+    return consumerController.createWithSeed(consumerDef, seedDef)
+  }
+  static async createSampleConsumer () {
+    let consumerDef = Helper.createConsumerDef('key1','secret1')
+    let seedDef = Helper.createConsumerSeedDef()
+    return await Helper.createConsumer(consumerDef, seedDef)
+  }
+  static getConsumer ( oauth_consumer_key ) {
+    return consumerController.findOneConsumerByKey(oauth_consumer_key)
+  }
+
 
   static createUser (consumer, user_id) {
     should.exist(consumer)

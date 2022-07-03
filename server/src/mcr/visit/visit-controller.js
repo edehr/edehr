@@ -3,16 +3,27 @@ import BaseController from '../common/base'
 import Visit from './visit'
 import ActivityData from '../activity-data/activity-data'
 import Role from '../roles/roles'
+import mongoose from 'mongoose'
+import { SystemError } from '../common/errors'
+import { ObjectId as ObjectID } from 'mongodb'
 
-const debug = require('debug')('server')
+// const debug = require('debug')('server')
 function debugvc (msg) {
-  if (true)
-    debug('VisitController: ' + msg)
+  // if (true)
+  //   debug('VisitController: ' + msg)
 }
 
 export default class VisitController extends BaseController {
   constructor () {
     super(Visit, '_id')
+  }
+
+  findUserVisitList (userId) {
+    if (!mongoose.Types.ObjectId.isValid(userId)) {
+      throw new SystemError('Invalid user id used to retrieve visit records')
+    }
+    let filter = {user: new ObjectID(userId)}
+    return this.model.find(filter)
   }
 
   findVisit (id) {
@@ -105,6 +116,12 @@ export default class VisitController extends BaseController {
     router.get('/flushed/:key', (req, res) => {
       this
         .findVisit(req.params.key)
+        .then(ok(res))
+        .then(null, fail(res))
+    })
+    router.get('/user/:key', (req, res) => {
+      this
+        .findUserVisitList(req.params.key)
         .then(ok(res))
         .then(null, fail(res))
     })

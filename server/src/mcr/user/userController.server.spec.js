@@ -28,9 +28,9 @@ describe(`${typeName} controller testing`, function () {
 
   let theConsumer
 
-  it('Create a tool consumer for testing ', function (done) {
+  it('Create a tool consumer for testing user', function (done) {
     Helper
-      .createConsumer()
+      .createSampleConsumer()
       .then(doc => {
         theConsumer = doc
         debug('have consumer', doc)

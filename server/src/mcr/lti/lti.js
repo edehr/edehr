@@ -3,6 +3,7 @@ import Role from '../roles/roles'
 import { ParameterError, AssignmentMismatchError, SystemError } from '../common/errors'
 import { Text } from '../../config/text'
 import { ltiVersions, LTI_BASIC } from './lti-defs'
+import { DEMO_CONSUMER_FAMILY_CODE} from '../demo/demo-controller'
 
 const debug = require('debug')('server')
 const debugFine = false
@@ -229,9 +230,11 @@ export default class LTIController {
     })
   }
 
-  updateToolConsumer (req) {
+  async updateToolConsumer (req) {
     const ltiData = req.ltiData
     const toolConsumer = req.toolConsumer
+    debug('updateToolConsumer toolConsumer ', toolConsumer)
+    debug('updateToolConsumer vs ltiData ', ltiData)
     if (
       toolConsumer.tool_consumer_instance_guid !== ltiData.tool_consumer_instance_guid ||
       toolConsumer.tool_consumer_instance_name !== ltiData.tool_consumer_instance_name ||
@@ -247,8 +250,16 @@ export default class LTIController {
       toolConsumer.tool_consumer_instance_guid = ltiData.tool_consumer_instance_guid
       toolConsumer.tool_consumer_instance_name = ltiData.tool_consumer_instance_name
       toolConsumer.tool_consumer_instance_description = ltiData.tool_consumer_instance_description
-      debug('updateToolConsumer update tool consumer record ') // + JSON.stringify(toolConsumer))
-      return toolConsumer.save()
+      // is_primary is now required field. If the previous creation of the consumer did not have this field set
+      // the save below will fail. So we must make sure the is_primary field contains a boolean value.
+      // The Demo consumers all shared the same family code.
+      if (toolConsumer.is_primary === undefined) {
+        toolConsumer.is_primary= toolConsumer.tool_consumer_info_product_family_code === DEMO_CONSUMER_FAMILY_CODE
+      }
+      debug('updateToolConsumer update tool consumer record ', toolConsumer)
+      await toolConsumer.save()
+      req.toolConsumer = await this.consumerController.findOneConsumerByKey(toolConsumer.oauth_consumer_key)
+      debug('updateToolConsumer update req ', req.toolConsumer)
     } else {
       if (debugFine) debug('tool consumer is up to date ')
       return Promise.resolve()
@@ -369,35 +380,23 @@ export default class LTIController {
       throw new SystemError(err)
     }
   }
-
-  _postLtiChain (req) {
+  
+  async _postLtiChain (req) {
     const _this = this
     const db = false
-    return Promise.resolve()
-      .then(() => {
-        if (db) console.log('Do update tool')
-        return _this.updateToolConsumer(req)
-      })
-      .then(() => {
-        if (db) console.log('Do updateOutcomeManagement')
-        return _this.updateOutcomeManagement(req)
-      })
-      .then(() => {
-        if (db) console.log('Do locateAssignment')
-        return _this.locateAssignment(req)
-      })
-      .then(() => {
-        if (db) console.log('Do update activity')
-        return _this.updateActivity(req)
-      })
-      .then(() => {
-        if (db) console.log('Do updateVisit')
-        return _this.updateVisit(req)
-      })
-      .then(() => {
-        if (db) console.log('Do composeLtiNextUrl')
-        return _this.composeLtiNextUrl(req)
-      })
+    if (db) console.log('Do update tool')
+    await _this.updateToolConsumer(req)
+    if (db) console.log('Do updateOutcomeManagement')
+    await _this.updateOutcomeManagement(req)
+    if (db) console.log('Do locateAssignment')
+    await _this.locateAssignment(req)
+    if (db) console.log('Do update activity')
+    await _this.updateActivity(req)
+    if (db) console.log('Do updateVisit')
+    await _this.updateVisit(req)
+    if (db) console.log('Do composeLtiNextUrl')
+    await _this.composeLtiNextUrl(req)
+    return req
   }
 
   route () {

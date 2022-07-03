@@ -8,7 +8,6 @@ const ehrApp = new EhrApp()
 const helper = new Helper()
 const mongoose = require('mongoose')
 const should = require('should')
-const TYPE = 'Consumer'
 const logError = require('debug')('error')
 
 const tokenData = Helper.sampleTokenData()
@@ -19,11 +18,9 @@ describe('Consumer mongoose schema testing', function () {
   before(function (done) {
     helper.beforeTestDbDrop(done, mongoose)
   })
-
   after(function (done) {
     helper.afterTestsCloseDb(mongoose).then(() => done() )
   })
-
   it('Consumer should be invalid if key and secret Are empty', function (done) {
     var m = new Consumer()
     m.validate(function (err) {
@@ -31,9 +28,7 @@ describe('Consumer mongoose schema testing', function () {
       done()
     })
   })
-
   let consumerSpec = Helper.sampleConsumerSpec()
-
   it('Consumner can save one ', function (done) {
     const model = new Consumer(consumerSpec)
     model
@@ -51,6 +46,10 @@ describe('Consumer mongoose schema testing', function () {
       should.exist(doc)
       should.not.exist(err)
       doc.lti_version.should.equal(consumerSpec.lti_version)
+      doc.tool_consumer_info_product_family_code.should.equal(consumerSpec.tool_consumer_info_product_family_code)
+      doc.tool_consumer_info_version.should.equal(consumerSpec.tool_consumer_info_version)
+      doc.tool_consumer_instance_description.should.equal(consumerSpec.tool_consumer_instance_description)
+      doc.tool_consumer_instance_guid.should.equal(consumerSpec.tool_consumer_instance_guid)
       done()
     }).catch(e => {
       logError(`Consumer can find one error: ${e}`)
@@ -58,7 +57,7 @@ describe('Consumer mongoose schema testing', function () {
   })
 })
 
-describe(`Make server calls on ${TYPE}`, function () {
+describe('Make server calls on Consumer', function () {
   let theApp
   before(function (done) {
     helper.beforeTestAppAndDbDrop(ehrApp, configuration, mongoose)
@@ -66,9 +65,18 @@ describe(`Make server calls on ${TYPE}`, function () {
         theApp = ehrApp.application
         done()
       })
+      .catch( err => {
+        console.error('should not error', err)
+        should.not.exist(err)
+        done()
+      })
   })
   after(function (done) {
     helper.afterTestsCloseDb(mongoose).then(() => done() )
+      .catch( err => {
+        console.error('should not error', err)
+        done()
+      })
   })
 
   it('Admin create tool without auth', function () {

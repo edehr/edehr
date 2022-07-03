@@ -52,6 +52,7 @@ function doIntegrations () {
   return checkIntegration('consumers', false)
     .then(go => {
       if (go) {
+        // To Do, refactor consumers.js into a named function and use that.
         return require('../../../resources/seed-data/consumers')(true)
       }
     })
@@ -72,6 +73,7 @@ function doIntegrations () {
     })
 
 }
+// To Do refactor into named function
 export default function (forceSeeding) {
   let f = forceSeeding ? forceSeeding : FORCE
   return Promise.resolve()

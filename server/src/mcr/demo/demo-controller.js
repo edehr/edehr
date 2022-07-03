@@ -3,11 +3,8 @@ import axios from 'axios'
 import qs from 'qs'
 import { demoPersonae } from '../../helpers/demo-personae'
 import { demoLimiter, validatorMiddlewareWrapper } from '../../helpers/middleware'
-import { assignment1, assignment2, wound1 } from './assignment-defs'
-
-const ej0Seed = require('../../../resources/erin-johns-seed-day0-mid.json')
-const ej2Seed = require('../../../resources/erin-johns-seed-day2-end.json')
-const wound1Seed = require('../../../resources/wound-case-1.json')
+import { assignment1, assignment2, wound1 } from '../../resources/assignment-defs'
+import { ej0Seed, ej2Seed, wound1Seed } from '../../resources/assignment-defs'
 
 const {ltiVersions} = require('../../mcr/lti/lti-defs')
 const HMAC_SHA1 = require('ims-lti/src/hmac-sha1')
@@ -16,9 +13,11 @@ const debugDC = true
 const debug = require('debug')('server')
 const logError = require('debug')('error')
 
+export const   DEMO_CONSUMER_FAMILY_CODE = 'EdEHR Demo'
+
 const consumerBaseDef = {
   lti_version: ltiVersions()[0],
-  tool_consumer_info_product_family_code: 'EdEHR Demo',
+  tool_consumer_info_product_family_code: DEMO_CONSUMER_FAMILY_CODE,
   tool_consumer_info_version: 'ehrdemo',
   tool_consumer_instance_description: 'Virtual LMS for demonstration',
   tool_consumer_instance_guid: 'Demo-EdEHR',
@@ -73,6 +72,7 @@ export default class DemoController {
     theId = 'Demo-' + Date.now() + '-' + theId
     if (debugDC) debug('DemoController create tool. Create tool with this id:', theId)
     const consumerDef = Object.assign({}, consumerBaseDef, {  oauth_consumer_key: theId, oauth_consumer_secret: theId })
+    consumerDef.is_primary = false
     let toolC
     this.comCon.consumerController.createToolConsumer(consumerDef)
       .then((toolConsumer) => {
