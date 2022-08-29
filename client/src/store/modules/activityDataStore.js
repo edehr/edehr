@@ -7,7 +7,7 @@ import { Text } from '@/helpers/ehr-text'
 const API = 'activity-data'
 const OBJ = 'activitydata'
 const NAME = 'ActivityDataStore'
-const debug = false
+const debug = true
 
 const state = {
   dataStore: {}
@@ -38,16 +38,6 @@ const getters = {
     if (debug) console.log(NAME + ' get submitted', prop)
     return prop
   },
-  sentBack: state => {
-    let prop =  state.dataStore.sentBack || false
-    if (debug) console.log(NAME + ' get sentBack', prop)
-    return prop
-  },
-  evaluated: state => {
-    let prop =  state.dataStore.evaluated || false
-    if (debug) console.log(NAME + ' get evaluated', prop)
-    return prop
-  },
   evaluationData: state => {
     let prop =  state.dataStore.evaluationData
     if (debug) console.log(NAME + ' get evaluationData', prop)
@@ -71,10 +61,6 @@ const actions = {
   sendEvaluationNotes (context, data) {return _sendHelper(context, 'evaluation-data', data)},
 
   sendSubmitted (context, data) {return _sendHelper(context, 'submitted', data)},
-
-  sendBack (context, data) {return _sendHelper(context, 'sentBack', data)},
-
-  sendEvaluated (context, data) {return _sendHelper(context, 'evaluated', data)},
 
   sendAssignmentDataUpdate (context, payload) {
     // Update the contents of the activityData.assignmentData.

@@ -13,8 +13,9 @@ export default {
   name: 'App',
   components: {},
   methods: {
-    // for the data load method that has been here in App.vue since the beginning go to
-    // the new helper PageController
+    handleResize () {
+      this.$store.commit('system/setSmallWindow', window.innerWidth <= 500 )
+    }
   },
   computed: {
     layout () {
@@ -30,7 +31,14 @@ export default {
       }
       return css.join(' ')
     },
-  }
+  },
+  created () {
+    window.addEventListener('resize', this.handleResize)
+    this.handleResize()
+  },
+  destroyed () {
+    window.removeEventListener('resize', this.handleResize)
+  },
 }
 </script>
 

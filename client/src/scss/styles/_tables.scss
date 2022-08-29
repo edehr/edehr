@@ -1,31 +1,39 @@
 table,
 .table {
-  margin-bottom: 2em;
-  th {
-    border-bottom: 2px solid $grey20;
-    font-size: 1.25em;
-    padding: 0.5em 0.5em 0.5em 0;
+  border-collapse: collapse;
+  //border: 2px solid $grey40;
+  letter-spacing: 1px;
+
+  td, th {
+    border: 1px solid $table-border-colour;
+    padding: 5px;
   }
+  th {
+    background-color: $table-header-colour;
+  }
+
   th,
   .content table thead th,
   .column_label {
     color: $grey60;
     font-size: 1em;
   }
-  tr {
-    border-bottom: 1px solid $grey20;
-    font-size: $bodyFontSize;
-  }
-  th, td {
-    padding: 0.5em 1em 0.5em 0;
 
-    &:last-child,
-    &.actions {
-      padding-right: 0;
-    }
-  }
   &.table_horizontal {
     width: 100%;
+    tr:nth-child(odd) td {
+      background-color: $table-row-odd
+      pre {
+        background-color: $table-row-odd
+      }
+    }
+
+    tr:nth-child(even) td {
+      background-color: $table-row-even;
+      pre {
+        background-color: $table-row-even
+      }
+    }
   }
   .table_vertical {
     -webkit-box-flex: 1;
@@ -33,6 +41,13 @@ table,
     flex: 1 0 auto;
     overflow-x: auto;
     width: 100%;
+    td:nth-child(odd) td {
+      background-color: $table-row-odd
+    }
+
+    td:nth-child(even) td {
+      background-color: $table-row-even;
+    }
   }
   .column_label {
     max-width: 10rem;

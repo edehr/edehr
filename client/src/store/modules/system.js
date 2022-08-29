@@ -3,23 +3,31 @@ import InstoreHelper from '@/store/modules/instoreHelper'
 // import StoreHelper from '@/helpers/store-helper'
 
 const state = {
-  apiData: {},
-  isSeeding: false,
   _isLoading: false,
-  isEditing: false,
-  currentPageKey: '',
-  loadingCnt: 0,
+  apiData: {},
   apiError: '',
+  caseContextFeature: false,
+  currentPageKey: '',
+  isEditing: false,
+  isSeeding: false,
+  loadingCnt: 0,
+  pageTitle: '',
+  pageIcon: undefined,
+  outsideShowButtonLabels: false,
+  smallWindow: false,
   sysMessage: '',
-  caseContextFeature: false
 }
 
 const getters = {
   apiData: state => state.apiData,
-  isLoading: state => state._isLoading,
-  caseContextFeature: state => state.caseContextFeature,
   apiError: state => state.apiError,
-  sysMessage: state => state.sysMessage
+  caseContextFeature: state => state.caseContextFeature,
+  isLoading: state => state._isLoading,
+  isSmallWindow: state => state.smallWindow,
+  outsideShowButtonLabels: state => state.outsideShowButtonLabels,
+  pageIcon: state => state.pageIcon,
+  pageTitle: state => state.pageTitle,
+  sysMessage: state => state.sysMessage,
 }
 
 const actions = {
@@ -39,6 +47,10 @@ const actions = {
       // console.log('System store get data:', rData)
       return rData
     })
+  },
+  setOutsideShowButtonLabels ({ commit }, value) {
+    console.log('set show', value)
+    commit('setOutsideShowButtonLabels', value)
   }
 }
 
@@ -61,6 +73,12 @@ const mutations = {
   setEditing: (state, isEditing) => {
     state.isEditing = isEditing
   },
+  setPageIcon: ( state, pageIcon) => {
+    state.pageIcon = pageIcon
+  },
+  setPageTitle: ( state, pageTitle) => {
+    state.pageTitle = pageTitle
+  },
   setSeeding: (state, isSeeding) => {
     state.isSeeding = isSeeding
   },
@@ -79,7 +97,14 @@ const mutations = {
   setCaseContext: (state, value) => {
     state.caseContextFeature = value
     localStorage.setItem('CaseContextFeature', value)
-  }
+  },
+  setSmallWindow: (state, value) => {
+    state.smallWindow = value
+  },
+  setOutsideShowButtonLabels: (state, value) => {
+    console.log('mutation show', value)
+    state.outsideShowButtonLabels = value
+  },
 }
 
 export default {

@@ -64,18 +64,6 @@ describe('Testing evalHelper', () => {
     activityData.submitted.should.equal(false)
   })
 
-  it('markEvaluated', async () => {
-    await _prepareChangeStudent()
-    const studentVisit = Object.assign({}, {activityData: mockData.activityData}, { _id: studentVisitId })
-    should.doesNotThrow(async () => {
-      const result = await evalHelper.markEvaluated(studentVisit)
-      result.length.should.be.greaterThan(0)
-      result.should.equal(classes)
-      const activityData = StoreHelper.getActivityData()
-      activityData.evaluated.should.equal(!mockData.activityData.evaluated)
-    })
-  })
-
   it('closeActivity', async () => {
     const ac = Object.assign({}, activity, { closed: true })
     await _prepareChangeStudent(false, ac)

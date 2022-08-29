@@ -9,8 +9,6 @@ import StoreHelper from './store-helper'
  *
  * - The current student's position in the list is the current index.
  *
- * Provide list filtering, all, submitted, unevaluated (submitted yet not marked as evaluated)
- *
  */
 class EvalHelperWorker {
 
@@ -18,52 +16,22 @@ class EvalHelperWorker {
     // console.log('EvalHelper forceSubmit sv', studentVisit)
     return this.changeStudent(studentVisit._id)
       .then(() => {
-        return StoreHelper.forceSubmitAssignment(true)
+        return StoreHelper.studentSubmitsAssignment(true)
       })
       .then(() => {
         return StoreHelper.dispatchLoadClassList()
       })
   }
 
-  unsubmit (studentVisit) {
-    // TODO now set activityData
-    // console.log('EvalHelper unsubmit sv', studentVisit)
+  instructorUnsubmitsAssignment (studentVisit) {
     return this.changeStudent(studentVisit._id)
       .then(() => {
-        return StoreHelper.instructorReturnsAssignment()
+        return StoreHelper.instructorUnsubmitsAssignment()
       })
       .then(() => {
         return StoreHelper.dispatchLoadClassList()
       })
   }
-  markEvaluated (studentVisit) {
-    // TODO now set activityData
-    return this.changeStudent(studentVisit._id)
-      .then(() => {
-        const newState = ! studentVisit.activityData.evaluated
-        // console.log('EvalHelper markEvaluated ', newState)
-        return StoreHelper.instructorMarksWorkEvaluated(newState)
-      })
-      .then(() => {
-        return StoreHelper.dispatchLoadClassList()
-      })
-  }
-
-  closeActivity (activityId) {
-    return StoreHelper.closeActivity(activityId)
-      .then(() => {
-        return StoreHelper.loadAsCurrentActivity(activityId)
-      })
-  }
-
-  openActivity (activityId) {
-    return StoreHelper.openActivity(activityId)
-      .then(() => {
-        return StoreHelper.loadAsCurrentActivity(activityId)
-      })
-  }
-
-
   goToEhr (studentVisit, customRouter = router) {
     // Assumes the activity and assignment and seed are all in place.
     // switch to the EHR with the current student's information loaded

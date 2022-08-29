@@ -26,7 +26,6 @@ export function createRootState () {
 }
 export function createActivityData (index=0) {
   return {
-    evaluated: false,
     submitted: false,
     scratchData: undefined,
     assignmentData: STUDENT_DATA[index]

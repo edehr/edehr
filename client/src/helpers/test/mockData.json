@@ -19,7 +19,6 @@
   "activityData": {
     "_id": "activityData",
     "submitted": false,
-    "evaluated": false,
     "toolConsumer": "5eb2b706df6c04d3212355da",
     "visit": "5eb2bf6edf6c04d3212355e2",
     "createDate": "2020-05-06T13:45:18.332Z",

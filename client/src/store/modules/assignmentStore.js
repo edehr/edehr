@@ -1,44 +1,42 @@
-import InstoreHelper from './instoreHelper'
-import StoreHelper from '../../helpers/store-helper'
-import { Text } from '../../helpers/ehr-text'
+import InstoreHelper from '@/store/modules/instoreHelper'
+import StoreHelper from '@/helpers/store-helper'
+import { Text } from '@/helpers/ehr-text'
+import sKeys from '@/helpers/session-keys'
+
 const API = 'assignments'
 const NAME = 'AssignmentStore'
 const OBJ = 'assignment'
 const debug = false
 
 const state = {
-  dataStore: {}
+  learningObject: {},
+  learningObjectId: ''
 }
 
 const getters = {
-  id: state => {
-    return state.dataStore._id
+  learningObjectId: state => {
+    return state.learningObjectId
+  },
+  assignment: state => {
+    return state.learningObject
+  },
+  learningObject: state => {
+    return state.learningObject
   },
   seedDataId: state => {
-    let prop =  state.dataStore.seedDataId
-    if(debug) console.log(NAME + ' get seedDataId', prop)
-    return prop
-  },
-  assignmentName: state => { return state.dataStore.name },
-  assignmentDescription:  state => { return state.dataStore.description },
-  assignment: state => {
-    return state.dataStore
+    return state.learningObject.seedDataId
   },
   assignmentCaseContext: state => {
-    const { persona, time, day, profession } = state.dataStore
+    const { persona, time, day, profession } = state.learningObject
     // persona key is changed to 'name' to match structure of recHeader in the EHR page definitions.
     return { name: persona, time, day, profession }  
   }
-  // TODO add last update field to model in server
-  // lastUpdateDate: state => {
-  //   let prop =  state.dataStore.lastUpdateDate
-  //   console.log(NAME + ' get lastUpdateDate', prop)
-  //   return prop
-  // },
-
 }
 
 const actions = {
+  initialize: function ({ commit }) {
+    commit('initialize')
+  },
   load ({dispatch, commit}, id) {
     return dispatch('get',id).then( (results) => {
       if(debug) console.log(NAME + ' loaded ', results)
@@ -58,9 +56,26 @@ const actions = {
       return results
     })
   },
-  delete (context, id) {
-    const url = `/${id}`
+  activityUsingLearningObjectCount (context, id) {
+    let url = 'activityCount/' + id
+    return InstoreHelper.getRequest(context, API, url).then(response => {
+      let results = response.data
+      // console.log('activityCount', id, results)
+      return results
+    })
+  },
+  deleteUnused (context, id) {
+    let url = 'unused/' + id
+    console.log('send request to delete unused', url)
     return InstoreHelper.deleteRequest(context, API, url)
+      .then(response => {
+        if (debug) console.log('delete response >>', response)
+        return response.data
+      })
+
+  },
+  delete (context, id) {
+    return InstoreHelper.deleteRequest(context, API, id)
       .then(response => {
         if (debug) console.log('delete response >>', response)
         return response.data
@@ -69,8 +84,17 @@ const actions = {
 }
 
 const mutations = {
+  initialize: function (state) {
+    const learningObjectId = localStorage.getItem(sKeys.LOBJ_ID)
+    if (learningObjectId) {
+      state.learningObjectId = learningObjectId
+    }
+  },
   set: (state, assignment) => {
-    state.dataStore = assignment
+    state.learningObject = assignment
+    const learningObjectId = assignment ? assignment._id : ''
+    localStorage.setItem(sKeys.LOBJ_ID, learningObjectId)
+    state.learningObjectId = learningObjectId
   }
 }
 

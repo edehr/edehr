@@ -1,7 +1,7 @@
 <script>
 import EhrDefs from '../../../helpers/ehr-defs-grid'
 import EventBus from '../../../helpers/event-bus'
-import EhrTypes from '../../../helpers/ehr-types'
+import EhrTypes from '@/inside/defs-grid/ehr-types'
 
 const PROPS = EhrTypes.dependentOn
 const UI_TYPES = EhrTypes.inputTypes

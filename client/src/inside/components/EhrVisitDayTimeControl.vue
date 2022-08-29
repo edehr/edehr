@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(v-show="false")
+  div
     div(v-if="editVisitDayTime", class="wrap-items-right")
       div(class='visit-day-area wrap-items-right')
         select(v-model="visitDay", class='visit-day-edit')
@@ -22,7 +22,7 @@ export default {
     return {
       editVisitDayTime : false,
       visitDay: 0,
-      visitTime: '09:00'
+      visitTime: '0900'
     }
   },
   computed: {
@@ -30,8 +30,8 @@ export default {
       const ts = []
       for(let i = 0; i < 24; i++) {
         let h = (i < 10 ? '0'+i : i)
-        ts.push(h + ':00')
-        ts.push(h + ':30')
+        ts.push(h + '00')
+        ts.push(h + '30')
       }
       return ts
     }

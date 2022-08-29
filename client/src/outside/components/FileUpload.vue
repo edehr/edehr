@@ -1,10 +1,7 @@
 <template lang="pug">
   div
     div(v-if="authorized")
-      div(v-show="!hasFiles && !uploadedFile", class="intro-text").
-        Upload data files that you want to use in EHR cases (seeds). For example, upload x-rays, lab reports and other medical images or PDF files.
-        Then when course content designers are working on a case study they can use these files in the EHR records.
-        The maximum file size is {{ filesize(ehrMaxFileSize) }} and you can upload both images and PDF files.
+      div(v-show="!hasFiles && !uploadedFile", class="intro-text") {{ text.DIALOG_TEXT(filesize(ehrMaxFileSize)) }}
       file-input(v-show="!hasFiles", ref="inputFile", @file="handleFileChange", :buttonLabel="addFileButtonText")
       div(v-show="hasFiles")
         div(v-for="(file) in files", :key="file.id", class="columns")
@@ -51,6 +48,7 @@
     div(v-else)  You are not authorized to upload files.
 </template>
 <script>
+import { Text } from '@/helpers/ehr-text'
 import moment from 'moment'
 import filesize from 'filesize'
 import FileInput from '@/outside/components/FileInput'
@@ -94,7 +92,8 @@ export default {
       ehrMaxFileSize: 0,
       isImage: false,
       iptc: {},
-      exif: {}
+      exif: {},
+      text: Text.FILES_PAGE,
     }
   },
   computed: {

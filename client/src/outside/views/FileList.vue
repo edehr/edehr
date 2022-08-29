@@ -1,16 +1,11 @@
 <template lang="pug">
   div
-    h1 EHR Files
+    // h1 EHR Files
     div(class="intro")
-      p.
-        Files can be uploaded to the EdEHR server and later used within the EHR pages, where ever a normal file upload
-        action would appear.  Say, for example, on the Laboratory Reports or the Medical Imaging pages.
-      p.
-        As a course designer (someone who creates course content) you will upload files here and then navigate
-        to the EHR seed data and edit the EHR content.  When you go to pages like Laboratory Reports and click
-        to add a record you will be able to select a file from those listed below.
-    div(class="controls")
-      ui-button(v-on:buttonClicked="openDialog") Add EHR File
+      p {{ text.P1 }}
+      p {{ text.P2 }}
+    div(class="controls showing-labels")
+      ui-button(v-on:buttonClicked="openDialog") {{text.ADD_LABEL}}
     div
       file-list
     app-dialog(
@@ -20,11 +15,12 @@
       cancelButtonLabel="Done",
       @cancel="cancelDialog"
     )
-      h2(slot="header") Add EHR Files
+      h2(slot="header") {{text.ADD_TITLE}}
       div(slot="body")
         file-upload
 </template>
 <script>
+import { Text } from '@/helpers/ehr-text'
 import AppDialog from '@/app/components/AppDialogShell.vue'
 import FileList from '@/outside/components/FileList'
 import UiButton from '@/app/ui/UiButton'
@@ -34,6 +30,11 @@ import StoreHelper from '@/helpers/store-helper'
 export default {
   components: {
     AppDialog, FileList, FileUpload, UiButton
+  },
+  data () {
+    return {
+      text: Text.FILES_PAGE
+    }
   },
   methods: {
     fileSelected ( file ) {

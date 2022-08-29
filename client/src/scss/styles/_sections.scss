@@ -59,7 +59,7 @@ footer {
 }
 
 /* Small screens */
-@media all and (max-width: 500px) {
+@media all and (max-width: $main-width-threshold1) {
   .wrap-items-space-between {
     flex-flow: row;
   }

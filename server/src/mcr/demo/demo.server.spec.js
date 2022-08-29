@@ -89,6 +89,7 @@ describe(_factorTypeName('making server calls'), () => {
 
   it(_factorTypeName('Set demo data'), (done) => {
     let assignment = {name: 'unittestassignment', externalId:'foobar'}
+    let activity = {resource_link_title: 'unittestActivity'}
     const data = Object.assign({},{ toolConsumerKey: demoData.toolConsumerKey, toolConsumerId: demoData.toolConsumerId}, demoData.personaList[0])
     const [ given, family ] = data.name.split(' ')
     let theKey = data.toolConsumerKey
@@ -113,7 +114,7 @@ describe(_factorTypeName('making server calls'), () => {
       oauth_timestamp: Math.round(Date.now() / 1000),
       oauth_version: 'x.y',
       roles: data.role,
-      resource_link_title: assignment.name,
+      resource_link_title: activity.resource_link_title,
       resource_link_id: assignment.externalId,
       tool_consumer_instance_guid: theKey,
       tool_consumer_instance_name: 'Demo',
@@ -139,7 +140,9 @@ describe(_factorTypeName('making server calls'), () => {
         done()
       })
       .catch(err => {
+        console.error('should not exisit error', err)
         should.not.exist(err)
+        done()
       })
 
   })

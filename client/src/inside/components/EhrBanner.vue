@@ -1,47 +1,55 @@
 <template lang="pug">
-  div( class="EhrBanner EhrPanelContent")
-    div( class="EhrBanner_Inner EhrPanelContent_Inner")
-      div( class="columns EhrBanner__content grid-left-to-right-3")
-        div( class="column EhrBanner__content_row--1")
-          ul
-            li 
-              b {{ patientData.patientName }}
-            li Date of birth: &nbsp;
-              b {{ patientData.dateOfBirth }}
-            li Age: &nbsp;
-              b {{ patientData.personAge }}
-            li Gender: &nbsp;
-              b {{ patientData.gender }}
-            li Weight: &nbsp;
-              b {{ patientData.weight }}
-        div( class="column EhrBanner__content_row--2")
-          ul
-            li Code status: &nbsp;
-              b {{ patientData.codeStatus }}
-            li PHN: &nbsp;
-              b {{ patientData.phn }}
-            li  MRN: &nbsp;
-              b {{ patientData.mrn }}
-            li MRP: &nbsp;
-              b {{ patientData.mrp }}
-            li MRP phone: &nbsp;
-              b {{ patientData.mrpPhone}}
-        div( class="column EhrBanner__content_row--3")
-          ul
-            li Admitting diagnosis: &nbsp;
-              b {{ patientData.diagnosis }}
-            li Allergies: &nbsp;
-              b {{ patientData.allergies }}
-            li Location: &nbsp;
-              b {{ patientData.location }}
-            //li Isolation precautions: &nbsp;
-            //  b none
+  div(class="ehr-banner")
+    div(class="short-top")
+      div {{ patientData.patientName }}
+      div {{ patientData.diagnosis }}
+      a(@click="showDetails = !showDetails") {{showDetails ? 'show less' : 'show more'}}
+
+    div(v-if="showDetails", class='banner-content' )
+      div(class="kv")
+        div DoB:
+        div {{ patientData.dateOfBirth }} ({{ patientData.personAge }} yrs)
+      div(class="kv")
+        div PHN:
+        div {{ patientData.phn }}
+      div(class="kv")
+        div Gender:
+        div {{ patientData.gender }}
+      div(class="kv")
+        div Weight:
+        div {{ patientData.weight }}
+      div(class="kv")
+        div Code status:
+        div {{ patientData.codeStatus }}
+      div(class="kv")
+        div Location:
+        div {{ patientData.location }}
+      div(class="kv")
+        div Allergies:
+        div {{ patientData.allergies }}
+      div(class="kv")
+        div MRN:
+        div {{ patientData.mrn }}
+      div(class="kv")
+        div MRP:
+        div {{ patientData.mrp }}
+      div(class="kv")
+        div MRP phone:
+        div {{ patientData.mrpPhone}}
+
+    //li Isolation precautions:
+    //  b none
 </template>
 
 <script>
 import EhrPatient from '@/inside/components/page/ehr-patient'
-
 export default {
+  components: { },
+  data () {
+    return {
+      showDetails: false
+    }
+  },
   computed: {
     patientData () { return EhrPatient.patientData() },
   }
@@ -50,20 +58,51 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/definitions';
+$key: 5rem;
 
-.EhrBanner {
-  &__content {
-    color: $grey60;
-    & li {
-      margin-bottom: 4px;
+.ehr-banner {
+  color: $grey90;
+  border-top: 3px solid $brand-primary-dark;
+  border-right: 1px solid $brand-primary-dark;
+  border-bottom: 1px solid $brand-primary-dark;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+.short-top {
+  display: flex;
+  flex-flow: row;
+  gap: 2rem;
+  padding-left: 2rem;
+}
+.banner-content {
+  .kv {
+    display: grid;
+    grid-template-columns: minmax($key, 1fr) minmax(15rem, 1fr);
+    border-bottom: 1px solid $grey40;
+  }
+  .kv div:nth-child(1) {
+    width: 30%;
+  }
+  .kv div:nth-child(2) {
+    width: 70%;
+  }
+}
+.kv div:nth-child(1) {
+  background: $grey20;
+  text-align: right;
+  padding-right: 5px;
+}
+.kv div:nth-child(2) {
+  background: $grey20;
+  padding-left: 5px;
+  font-weight: bold;
+  word-wrap: anywhere;
+}
+@media screen and (max-width: $main-width-threshold3) {
+  .banner-content {
+    .kv div:nth-child(1) {
+      width: inherit;
     }
-  }
-  &__content_row--1, &__content_row--2 {
-    padding: 0 2em .5em 0;
-  }
-  &__content_row--3 {
-    /*padding: 0 0 .5em 0;*/
-    padding: 0 2em .5em 0;
   }
 }
 </style>

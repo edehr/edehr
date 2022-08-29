@@ -7,7 +7,7 @@
         div(class="ehr-group-wrapper grid-left-to-right-2")
           div(class="form-element")
             div(class="text_input_wrapper")
-              input(class="input text-input", type="text", v-model="value", v-validate="fileNameValidate")
+              input(class="input text-input", type="text", v-model="safeFileName", v-validate="fileNameValidate")
               span(class="suffix") {{ extension }}
 </template>
 
@@ -23,8 +23,8 @@ export default {
   },
   data: function () {
     return {
-      value: '',
-      extension: '.csv'
+      extension: '.csv',
+      safeFileName: ''
     }
   },
   props: {
@@ -36,8 +36,8 @@ export default {
   computed: {
     fileNameValidate () {
       let m
-      if (this.value.trim().length === 0) m = 'A filename is required'
-      if (!m  && !isValidFilename(this.value)) m =  'The filename is invalid'
+      if (this.safeFileName.trim().length === 0) m = 'A filename is required'
+      if (!m  && !isValidFilename(this.safeFileName)) m =  'The filename is invalid'
       return m
     },
     disableSave () {
@@ -46,6 +46,7 @@ export default {
   },
   methods: {
     showDialog: function () {
+      this.safeFileName = makeSafeFileName(this.filename)
       this.$refs.theDialog.onOpen()
     },
     closeIt: function () {
@@ -57,16 +58,10 @@ export default {
     },
     confirmDialog: function () {
       this.closeIt()
-      let fn = this.value + this.extension
+      let fn = this.safeFileName + this.extension
       this.$emit(CONFIRM_EVENT, fn)
     }
   },
-  watch: {
-    filename: function () {
-      let fn = this.filename || ''
-      this.value = makeSafeFileName(fn)
-    }
-  }
 }
 </script>
 

@@ -1,19 +1,17 @@
 <template lang="pug">
   div(class="ehr-page")
-    ehr-panel-header {{ pageDef.pageTitle }}
     hematology-content(:pageDataKey="pageDataKey", :ehrHelp="ehrHelp")
     ehr-page-footer(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
 </template>
 
 <script>
-import EhrPanelHeader from '@/inside/components/page/EhrPanelHeader.vue'
 import EhrPageFooter from '../components/page/EhrPageFooter'
 import EhrHelpV2 from '../components/page/ehr-helper'
 import HematologyContent from '@/inside/custom/hematology/HematologyContent'
 import EhrDefs from '@/helpers/ehr-defs-grid'
 
 export default {
-  components: { EhrPanelHeader, EhrPageFooter, HematologyContent },
+  components: { EhrPageFooter, HematologyContent },
   data: function () {
     return {
       pageDataKey: 'hematology',

@@ -85,6 +85,31 @@ const getters = {
     if (debug) console.log('EhrData type: ' + type, secondLevelData)
     if (secondLevelData) {
       mData = decoupleObject(ehrMergeEhrData(baseLevelData, secondLevelData))
+      mData.meta = {}
+      const start = {visitDay: 0, visitTime: '0000'}
+      let baseMeta = baseLevelData.meta || {simTime: start}
+      let secondMeta = secondLevelData.meta || {simTime: start}
+      let baseTime = parseInt(baseMeta.simTime.visitTime)
+      let secondTime = parseInt(secondMeta.simTime.visitTime)
+      let baseDay = baseMeta.simTime.visitDay
+      let secondDay = secondMeta.simTime.visitDay
+      if (secondDay === 0 && secondTime === 0) {
+        // secondLevelData.meta.simTime  may have zero values if the ehr data is empty or has no time stamped records
+        mData.meta.simTime = baseMeta.simTime
+      } else if (baseDay > secondDay || ( baseDay === secondDay && baseTime > secondTime ) ) {
+        console.log('Error in data. Seed simulation time is after activity\'s simulation time. This should never happen')
+      } else {
+        let vDay = baseDay
+        let mTime = baseTime
+        if (baseDay === secondDay) {
+          mTime = secondTime
+        } else {
+          vDay = secondDay
+          mTime = secondTime
+        }
+        let vTime = '' + mTime // convert to string
+        mData.meta = { simTime: { visitDay: vDay, visitTime: vTime.padStart(4,'0')}}
+      }
       if (debug) {
         console.log('EhrData base  ', baseLevelData)
         console.log('EhrData second  ', secondLevelData)

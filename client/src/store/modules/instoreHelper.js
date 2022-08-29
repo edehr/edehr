@@ -41,6 +41,7 @@ class InstoreHelperWorker {
   putRequest (context, api, url, bodyData) {
     url = this.composeUrl(context, api, url)
     if(debug) console.log('PUT to this url', url)
+    if(debug) console.log('with this data "', bodyData, '"')
     StoreHelper.setLoading(context, true)
     return new Promise((resolve, reject) => {
       axios
@@ -61,6 +62,7 @@ class InstoreHelperWorker {
   postRequest (context, api, url, bodyData) {
     url = this.composeUrl(context, api, url)
     if(debug) console.log('POST to this url', url)
+    if(debug) console.log('POST with this data "', bodyData, '"')
     StoreHelper.setLoading(context, true)
     return new Promise((resolve, reject) => {
       axios
@@ -120,7 +122,6 @@ class InstoreHelperWorker {
           if(debug) console.log('Error ', api, '>> ', error)
           // let msg = `Failed GET to ${url} with error: ${error.message}`
           let msg = composeAxiosResponseError(error, 'Get failed: ')
-          console.log('catch', msg)
           StoreHelper.setApiError(msg)
           reject(msg)
         })

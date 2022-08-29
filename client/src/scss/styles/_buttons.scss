@@ -1,75 +1,119 @@
 @import '../definitions';
+button,
+.button {
+  font-family: $bodyFontFamily;
+  transition: all 0.3s;
+}
 
-
+/***** default button style for whole app (e.g. inside EHR) ****/
 button,
 .button,
 .button.is-primary {
   background-color: $brand-primary;
-  font-family: $bodyFontFamily;
-  font-size: $bodyFontSize;
-  //margin-bottom: 2em;
-  padding: 0.3rem 1rem;
-
   &:hover {
     background-color: $brand-primary-hover;
-    transition-duration: 0.3s;
-    transition-property: background-color;
-  }
-
-  &:disabled {
-    background-color: $grey40;
-    color: $white;
-    cursor: default;
   }
 }
 
-.button.is-danger {
-  background-color: $red;
-  border: 1px solid $white;
-  box-sizing: border-box;
-  color: $white;
-  font-family: $bodyFontFamily;
-  font-size: $bodyFontSize;
-  //margin-bottom: 2em;
-  padding: 0.3rem 1rem;
+/* .is-primary is, by default, included in the following*/
+.outside-layout button,
+.outside-layout .button{
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 0.2rem 0.4rem 0.2rem 0.4rem;
+  height: 2.2rem;
+  min-width: 2.8rem;
+  background-color: $grey10;
+  color: $brand-primary;
+  border: 1px solid $grey60;
+
 }
 
-.button.is-light,
-button.is-light {
+/* .is-primary is, by default, included in the following*/
+.ehr_layout button,
+.ehr_layout .button{
+  height: 2rem;
+  background-color: $brand-highlight;
+  color:  $white;
+  border: none;
+}
+
+/*****  when buttons show labels reduce font size  ******/
+.showing-labels button,
+.showing-labels .button,
+.dialog-wrapper button,
+.dialog-wrapper .button {
+  font-size: 1rem;
+}
+
+
+/*****  is-light overrides  ******/
+button.is-light,
+.button.is-light, {
   background-color: $white;
   border: 1px solid $brand-primary;
-  box-sizing: border-box;
   color: $brand-primary;
-  font-family: $bodyFontFamily;
-  font-size: $bodyFontSize;
-  //margin-bottom: 2em;
-  padding: 0.3rem 1rem;
-
+  & .fa {
+    color: $brand-primary;
+  }
   &:hover {
     background-color: $white;
     border: 1px solid $brand-primary-hover;
     color: $brand-primary-hover;
     transition-duration: 0.3s;
+    & .fa {
+      color: $brand-primary-hover;
+    }
   }
+}
 
+/*****  is-danger overrides  ******/
+button.is-danger,
+.button.is-danger {
+  background-color: $white;
+  border: 1px solid $red;
+  color: $red;
+  & .fa {
+    color: $red;
+  }
+  &:hover {
+    background-color: $white;
+    border: 1px solid $brand-primary-hover;
+    color: $brand-primary-hover;
+    transition-duration: 0.3s;
+    & .fa {
+      color: $brand-primary-hover;
+    }
+  }
+}
+
+/*****  disabled overrides  ******/
+button,
+.button,
+.button.is-danger,
+.button.is-primary,
+.button.is-light {
   &:disabled {
-    background-color: $grey40;
-    color: $white;
-    cursor: default;
+    background-color: $grey10;
+    border-color: $grey60;
+    color: $grey60;
+    cursor: not-allowed;
+    .fa {
+      color: $grey60;
+    }
   }
 }
 
-button + button {
-  margin-left: $buttonRowLeftMargin;
-}
-
-/* Small screens */
-@media all and (max-width: 500px) {
-  button + button {
-    margin-left: 0;
-  }
-  button {
-    display: block !important;
-    margin-bottom: $buttonRowLeftMargin;
-  }
-}
+// TODO remove this and let the pages handle layout
+//button + button {
+//  margin-left: $buttonRowLeftMargin;
+//}
+///* Small screens */
+//@media screen and (max-width: $main-width-threshold1) {
+//  button + button {
+//    margin-left: 0;
+//  }
+//  button {
+//    margin-bottom: 5px;
+//  }
+//}

@@ -1,8 +1,6 @@
-import EhrTypes from './ehr-types'
-import pageDefs from '../inside/defs-grid/index'
+import EhrTypes from '@/inside/defs-grid/ehr-types'
+import pageDefs from '../inside/defs-grid/ehr-page-defs'
 import { isString } from '@/helpers/ehr-utils'
-
-const keys = Object.keys(pageDefs)
 
 const PROPS = EhrTypes.elementProperties
 
@@ -12,6 +10,12 @@ class EhrDefsWorker {
     // console.log('construct V2 defs', this.pageDefs)
   }
 
+  findRecHdrVisitDayChild (pageKey) {
+    let pd = this.getPageDefinition(pageKey)
+    let list = pd.pageChildren.filter(ch => ch.recHeader && ch.inputType === EhrTypes.dataInputTypes.visitDay)
+    return list[0]
+  }
+
   getPageDefinition (pageKey) {
     let pd =  this.pageDefs[pageKey]
     // console.log('EhrDefsGrid getPageDef', pageKey, pd)
@@ -19,6 +23,7 @@ class EhrDefsWorker {
   }
   getAllPageKeys () {
     let pageKeys = Object.keys(this.pageDefs)
+    // Note, that in the definitions the meta field does not exist. It only exists in an Ehr Data record
     pageKeys.sort()
     return pageKeys
   }

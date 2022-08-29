@@ -13,7 +13,6 @@ main()
 
 function main () {
   generateInsidePageDefs()
-  outside()
 }
 
 /**
@@ -44,14 +43,6 @@ function generateInsidePageDefs () {
   })
 }
 
-
-function outside () {
-  const outsideDefs = require('./raw_data/outsideDefs')
-  flushDefs(outsideDefs)
-  var outfilename = pathUtil.join(destRouteFiles, 'outsideRoutes.js')
-  makeRoutes(outsideDefs, 'outside', outfilename)
-}
-
 function inside () {
   const insideDefs = require('./generated/ehrDefs/inside-pages')()
   // go through the definitions and compute properties as needed.
@@ -73,7 +64,7 @@ function flushDefs (defs, forInside) {
   defs.forEach(def => {
     def.componentName = def.componentName ? def.componentName : camelcase(def.routeName, { pascalCase: true })
     def.dataName = camelcase(def.routeName)
-    def.routeName = def.routeName
+    // def.routeName = def.routeName
     def.fullPath = def.path + '/' + def.routeName
     def.title = def.title || splitCamelCase(def.componentName)
     def.label = def.label || def.title

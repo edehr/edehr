@@ -1,6 +1,7 @@
 import InstoreHelper from './instoreHelper'
 import sKeys from '../../helpers/session-keys'
 import StoreHelper from '../../helpers/store-helper'
+import SeedModel from '@/outside/models/SeedModel'
 const API = 'seed-data'
 const debugSL = false
 
@@ -10,20 +11,27 @@ const debugSL = false
 export const state = {
   seedDataList: [],
   sSeedId: '',
-  sSeedContent: {}
+  seedModel : {}
 }
 
 export const getters = {
-  seedContent: state => { return state.sSeedContent  },
+  seedContent: state => { return state.seedModel.seed || {}  },
+  seedModel: state => { return state.seedModel },
 
-  seedEhrData: state => { return state.sSeedContent.ehrData || {} },
+  seedEhrData: state => {
+    const edm = state.seedModel.ehrDataModel
+    return edm && edm.ehrData ? edm.ehrData : undefined
+  },
 
   list: state => { return state.seedDataList },
   
-  seedId: state => state.sSeedId || localStorage.getItem(sKeys.SEED_ID)
+  seedId: state => state.sSeedId
 }
 
 const actions = {
+  initialize: function ({ commit }) {
+    commit('initialize')
+  },
 
   deleteSeed (context, id) {
     const url = `/${id}`
@@ -38,6 +46,7 @@ const actions = {
   /**
    * Load a seed record and set seed id as current seed
    * @param context
+   * @param seedId
    * @return {*}
    */
   loadSeedContent (context, seedId) {
@@ -59,7 +68,14 @@ const actions = {
    * @return {*}
    */
   loadSeeds (context) {
-    let url = 'consumer/' + StoreHelper.toolConsumerId()
+    let consumerId = StoreHelper.toolConsumerId()
+    if (!consumerId) {
+      // this can happen if you visit the Seed Lists page and then refresh the page. No worries. Load will happen later.
+      console.log('seedListStore. Will not load seeds at this time because the consumer id is not yet set up.')
+      return
+    }
+    // console.log('seedListStore. Fetch seed list')
+    let url = 'consumer/' + consumerId
     return InstoreHelper.getRequest(context, API, url).then(response => {
       let list = response.data.seeddata
       if (!list) {
@@ -84,7 +100,7 @@ const actions = {
       if(debugSL) console.log('SeedList after create seed:', results.data )
       return context.commit('_setSeedId', results.data._id)
     })
-      .then(results => {
+      .then( () => {
         if(debugSL) console.log('SeedList after seed create. Now loadSeeds')
         return context.dispatch('loadSeeds')
       })
@@ -110,7 +126,7 @@ const actions = {
     let url = id
     if(debugSL) console.log('SeedList update seed', url, payload)
     return InstoreHelper.putRequest(context, API, url, payload)
-      .then(results => {
+      .then( () => {
         // let resultsData = results.data
         if(debugSL) console.log('SeedList after seed update loadSeeds')
         return context.dispatch('loadSeeds')
@@ -138,7 +154,7 @@ const actions = {
     let url = 'updateSeedEhrProperty/' + id
     if(debugSL) console.log('SeedList updateSeedEhrProperty url, payload', url, payload)
     return InstoreHelper.putRequest(context, API, url, payload)
-      .then(results => {
+      .then(() => {
         if(debugSL) console.log('SeedList after ehrData update loadSeeds')
         return context.dispatch('loadSeeds')
       })
@@ -160,7 +176,7 @@ const actions = {
     let url = 'updateSeedEhrData/' + payload.id
     if(debugSL) console.log('SeedList updateSeedEhrData', url, payload.ehrData)
     return InstoreHelper.putRequest(context, API, url, payload.ehrData)
-      .then(results => {
+      .then( () => {
         if(debugSL) console.log('SeedList after seed replace ehr data reload seed list')
         return context.dispatch('loadSeeds')
       })
@@ -175,14 +191,21 @@ const actions = {
 }
 
 export const mutations = {
+  initialize: function (state) {
+    // if stored get the activityId. Once it is in place a page load can request the activity data
+    const sSeedId = localStorage.getItem(sKeys.SEED_ID)
+    if (sSeedId) {
+      state.sSeedId = sSeedId
+    }
+  },
   _setSeedId: (state, seedId) => {
     if(debugSL) console.log('SeedList set seed id and stash in session store', seedId)
     localStorage.setItem(sKeys.SEED_ID, seedId)
     state.sSeedId = seedId
   },
   _setSeedContent: (state, value) => {
-    // console.log('SeedList setting seed content ', value)
-    state.sSeedContent = value
+    // state.sSeedContent = value
+    state.seedModel = new SeedModel(value)
   },
   _setSeedDataList: (state, list) => {
     state.seedDataList = list

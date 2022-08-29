@@ -28,7 +28,41 @@ function main () {
       console.log('GenerateEhr Error parsing content of timestamp tracking file')
     }
   }
-  sourceFiles.forEach(fName => convertFile(fName, timeStamps))
+  let pages = {}
+  sourceFiles.forEach(fName => {
+    let pgs = convertFile(fName, timeStamps)
+    if (pgs) {
+      pages = Object.assign(pgs, pages)
+    }
+  })
+  // sort the definitions
+  const pkeys = Object.keys(pages)
+  const pa = []
+  pkeys.forEach(pk => {
+    pa.push(pages[pk])
+  })
+  pa.sort((a,b) => {
+    return a.pIndex - b.pIndex
+  })
+  pages = {}
+  pa.forEach( pdef => {
+    pages[pdef.pageDataKey] = pdef
+  })
+  // push the results into the client side source file
+  // step one: convert to string and clean up
+  let results = JSON.stringify(pages, null, 2)
+  results = results.replace(/'/g, '\\\'')
+  results = results.replace(/"/g, '\'')
+  results = _fixBooleans(results)
+  // wrap defs into a function
+  const modDef = []
+  // modDef.push('/* eslint-disable quotes */')
+  modDef.push('const DEFS = ' + results)
+  modDef.push('export default DEFS')
+  // write to destination file in client source code
+  const fDest = pathUtil.join(destination, 'ehr-page-defs') + '.js'
+  console.log('write file ', fDest)
+  fs.writeFileSync(fDest, modDef.join('\n'))
   fs.writeFileSync(hashMapFile, JSON.stringify(timeStamps, null, 2))
 }
 
@@ -37,32 +71,17 @@ function convertFile (fName, hashMap) {
   let contents = fs.readFileSync(fSrc, 'utf8')
   let hash = md5Hex(contents)
   let previousHash = hashMap[fName]
-  if (hash != previousHash) {
+  let results
+  if (hash !== previousHash) {
     let stats = fs.statSync(fSrc)
     let lastModifiedTime = stats.mtime
     console.log('GenerateEhr convert file. Process', fName)
-    processFile(contents, fName, lastModifiedTime)
+    results = getDefinitions(contents, lastModifiedTime)
     hashMap[fName] = hash
   } else {
     console.log('GenerateEhr convert file. Skip', fName)
   }
-}
-
-function processFile (contents, fName, lastModifiedTime) {
-  // console.log('transform file ', fName)
-  var pages = getDefinitions(contents, lastModifiedTime)
-  var results = JSON.stringify(pages, null, 2)
-  results = results.replace(/'/g, '\\\'')
-  results = results.replace(/"/g, '\'')
-  results = _fixBooleans(results)
-  var modDef = []
-  // modDef.push('/* eslint-disable quotes */')
-  modDef.push('export default function () {')
-  modDef.push('  return ' + results)
-  modDef.push('}')
-  let fDest = pathUtil.join(destination, fName) + '.js'
-  console.log('write file ', fDest)
-  fs.writeFileSync(fDest, modDef.join('\n'))
+  return results
 }
 
 function _fixBooleans (contents) {

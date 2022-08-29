@@ -3,6 +3,8 @@ import qs from 'qs'
 import StoreHelper from '@/helpers/store-helper'
 
 const debugDH = false
+// match the same version as in the server side demo-controller.js
+const DEMO_CONSUMER_FAMILY_CODE = 'EdEHR Demo'
 
 export default class DemoStoreHelper {
   createToolConsumer () {
@@ -17,17 +19,25 @@ export default class DemoStoreHelper {
     return axios.post(url, { id })
   }
 
-  demoLogout (token) {
-    console.log('V1.1.16-hotfix disable demo logout')
-    // hot fix is to not send the logout request to the server
-    return Promise.resolve()
-    // const apiUrl = StoreHelper.apiUrlGet()
-    // const url = `${apiUrl}/demo/logout`
-    // if(debugDH) console.log('DH logout',apiUrl)
-    // return axios.post(url)
-    //   .catch(err => {
-    //     console.log('demoHelper error', err)
-    //   })
+  demoLogout (token, consumerId) {
+    const apiUrl = StoreHelper.apiUrlGet()
+    const url = `${apiUrl}/demo/logout`
+    const options = {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/x-www-form-urlencoded',
+        Authorization: `Bearer ${token}`
+      },
+      data: qs.stringify({ toolConsumerId: consumerId}),
+      url,
+    }
+    return axios(options)
+      .then(res => {
+        return Promise.resolve(res.data)
+      }).catch(err => {
+        // extract the error data provided by the api
+        return Promise.reject(err.response.data)
+      })
   }
 
   dhLoadDemoData (token) {
@@ -53,7 +63,7 @@ export default class DemoStoreHelper {
   submitPersona (token, submitData) {
     const apiUrl = StoreHelper.apiUrlGet()
     const url = `${apiUrl}/demo/set`
-    const {assignmentName, assignmentDescription, externalId, personaName, personaEmail, personaRole, returnUrl, toolKey, secret} = submitData
+    const {resource_link_title, resource_link_description, externalId, personaName, personaEmail, personaRole, returnUrl, toolKey, secret} = submitData
     const [ given, family ] = personaName.split(' ')
     let theKey = toolKey
     let theSecret = secret
@@ -78,14 +88,16 @@ export default class DemoStoreHelper {
       oauth_signature_method: 'HMAC-SHA1',
       oauth_timestamp: Math.round(Date.now() / 1000),
       roles: personaRole,
-      resource_link_title: assignmentName,
-      resource_link_description: assignmentDescription,
+      resource_link_title: resource_link_title,
+      resource_link_description: resource_link_description,
       resource_link_id: externalId,
-      tool_consumer_instance_guid: theKey,
-      tool_consumer_instance_name: 'Demo Learning Management System',
-      tool_consumer_info_version: 'x',
-      tool_consumer_info_product_family_code:'EdEHR LMS Demo',
-      tool_consumer_instance_description: 'EdEHR provided demonstration LTI tool',
+      // match tool_consumer properties to match server side demo-controller.js
+      // the match is not important yet keeps the db consistent
+      tool_consumer_info_product_family_code: DEMO_CONSUMER_FAMILY_CODE,
+      tool_consumer_info_version: 'ehrdemo',
+      tool_consumer_instance_description: 'Virtual LMS for demonstration',
+      tool_consumer_instance_guid: 'Demo-EdEHR-'+theKey,
+      tool_consumer_instance_name: 'EdEHR Demo',
       user_id: userId,
     }
     if(debugDH) console.log('DH submitPersona', ltiData, apiUrl)

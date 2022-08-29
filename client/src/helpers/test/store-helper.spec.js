@@ -1088,7 +1088,7 @@ describe.skip('Demonstration related', () => {
       const persona = mockData.demoData.personaList[0]
       const { assignment, demoData } = mockData
       const submitData = {
-        assignmentName: assignment.name,
+        resource_link_title: assignment.name,
         externalId: assignment.externalId,
         personaName: persona.name,
         personaEmail: persona.email,

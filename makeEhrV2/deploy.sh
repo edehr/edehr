@@ -4,39 +4,80 @@
 set -e
 set -o pipefail
 
+function usage() {
+    echo "Usage $0 "
+    cat <<-____HERE
+    This script will generate the EHR page definitions based on the definitions extracted from the master
+    spreadsheet.
+
+    Options are
+    -nl --npLint for no linting
+    -np --nopull for no pull from the spreadsheet
+    -a --all to ignore hashmap and rebuild all pages
+____HERE
+    exit 1
+}
+
 LINT=true
+PULL=true
+ALL=false
 for i in "$@"
 do
 echo i: $i
 case $i in
-    --lint)
-    LINT=true
+    --all)
+    ALL=true
     shift
     ;;
-    -l)
-    LINT=true
+    -a)
+    ALL=true
+    shift
+    ;;
+    --nopull)
+    PULL=false
+    shift
+    ;;
+    -np)
+    PULL=false
+    shift
+    ;;
+    --noLint)
+    LINT=false
+    shift
+    ;;
+    -nl)
+    LINT=false
     shift
     ;;
     *)
-    echo unknown option $i. Options are -l --lint for Lint
-    exit 1
+    echo unknown option $i.
+    usage
     # unknown option
     ;;
 esac
 done
 
-node pullFromSheets.js
+if [[ "$ALL" == "true" ]]
+then
+  rm -f hashMapFile.json
+fi
+
+if [[ "$NOPULL" == "true" ]]
+then
+  node pullFromSheets.js
+fi
 
 mkdir -p generated/vue
 mkdir -p generated/ehrDefs
 ./generateComponents.sh
 ./generateEhrDefs.sh
+./copy-common-src.sh
 
 if [[ "$LINT" == "true" ]]
 then
   echo Linting client files, including newly generated files.
-  cd ../client
-  npm run lint
+  cd ../client &&  npm run lint
+  cd ../server &&  npm run lint
 fi
 
 

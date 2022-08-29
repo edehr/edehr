@@ -10,10 +10,10 @@ complete for a period of time.
  */
 const Schema = new mongoose.Schema({
   toolConsumer: {type: ObjectId, ref: 'Consumer', required: true },
-  // TODO rename externalId to learningObjectId
+  // externalId is the learningObjectId
   externalId: {type: String, required: true},
-  name: { type: String, required: true},
-  description: { type: String },
+  name: { type: String, required: true},  // resource_link_title
+  description: { type: String }, // resource_link_description
   ehrRoutePath: { type: String },
   // These fields refer to the assignment persona and their information. This is needed in order to acknowledge
   // who was responsible for providing information on some contexts (digital signing). 

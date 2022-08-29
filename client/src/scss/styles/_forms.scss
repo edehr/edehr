@@ -31,7 +31,7 @@ textarea {
   display: inline-block;
 }
 .form_label {
-  font-weight: bold;
+  //font-weight: bold;
   width: 8rem;
   &::after {
     content: ":"
@@ -187,6 +187,7 @@ select, .select {
 
 .cardio-assessment,
 .record-header,
+.ehr-banner-grid,
 .grid-left-to-right-1,
 .grid-left-to-right-2,
 .grid-left-to-right-3,
@@ -232,7 +233,7 @@ select, .select {
 
 
 /* Small screens */
-@media all and (max-width: 500px) {
+@media all and (max-width: $main-width-threshold1) {
   .grid-left-to-right-2 {
     grid-template-columns: repeat(1, 1fr);
   }

@@ -2,7 +2,7 @@ import { Router } from 'express'
 import moment from 'moment'
 import cors from 'cors'
 // To Do refactor dbSeeder to export named function
-import dbSeeder from '../config/lib/dbSeeder'
+import dbSeeder from '../db/dbSeeder'
 import { AssignmentMismatchError } from '../mcr/common/errors'
 import {
   validatorMiddlewareWrapper,
@@ -20,7 +20,6 @@ import ConsumerController from '../mcr/consumer/consumer-controller'
 import DemoController from '../mcr/demo/demo-controller'
 import FeedbackController from '../mcr/feedback/feedback-controller'
 import FilesController from '../mcr/files/files-controller'
-import IntegrationController from '../mcr/integration/integration-controller'
 import LookaheadController from '../mcr/lookahead/lookahead-controller'
 import LTIController from '../mcr/lti/lti'
 import MetricController, { metricMiddle } from '../mcr/metric/metric-controller'
@@ -92,7 +91,6 @@ export function apiMiddle (app, config) {
   const uc = new UserController(config)
   const sd = new SeedDataController()
   const lti = new LTIController(config)
-  const ic = new IntegrationController()
   const pc = new PlaygroundController()
   const demo = new DemoController(config)
   const metric = new MetricController(config)
@@ -112,6 +110,7 @@ export function apiMiddle (app, config) {
   lti.setSharedControllers(lcc)
   cc.setSharedControllers(lcc)
   demo.setSharedControllers(lcc)
+  act.setSharedControllers(lcc)
 
   const justCors = [
     cors(corsOptions)
@@ -139,6 +138,7 @@ export function apiMiddle (app, config) {
   return Promise.resolve()
     .then(() => {
       if (config.seedDB) {
+        console.log('Warning:  Database seeding is turned on')
         debug('seeding is enabled')
         return dbSeeder()
       }
@@ -152,9 +152,7 @@ export function apiMiddle (app, config) {
     .then(cc.initializeApp(config.defaultConsumerKey))
     .then(() => {
       const api = Router()
-      // for local and dev only
-      api.use('/integrations', adminMiddleware, ic.route())
-      // Admin playground, for localhost-only tests  
+      // Admin playground, for localhost-only tests
       api.use('/playground', localhostOnlyAdminMiddleware, pc.route())
       // External API
       api.use('/launch_lti', lti.route())
@@ -239,7 +237,7 @@ export function apiError (app, config) {
   }
 
   function errorHandler (err, req, res, next) {
-    debug('API errorHandler ', err.message, err.status, err.errorData, res.status)
+    // debug('API errorHandler ', err.message, err.status, err.errorData, res.status)
     let status = err.status || 500
     let errorData = err.errorData || {}
     let json =  {message: err.message, status: status, errorData: JSON.stringify(errorData)}

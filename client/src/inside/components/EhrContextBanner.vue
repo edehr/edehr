@@ -1,19 +1,12 @@
 <template lang="pug">
-  div(class="EhrContextBanner")
+  div(class="ehr-context-banner")
     div(v-if='isEhrOnlyDemo')
       div {{ehrOnlyDemoText.ehrContextBannerTitle}}
     div(v-else)
       ehr-context-banner-header(@showChanged="(showVal) => show = showVal")
-      div(v-show="show")
-        ehr-context-instructor(v-if="(showInstructor)")
-        ehr-context-developer(v-else-if="showSeeding")
-        ehr-context-student(v-else-if="showStudent")
 </template>
 
 <script>
-import EhrContextInstructor from './EhrContextInstructor'
-import EhrContextStudent from './EhrContextStudent'
-import EhrContextDeveloper from './EhrContextDeveloper'
 import EhrContextBannerHeader from '@/inside/components/EhrContextBannerHeader'
 import UiLink from '@/app/ui/UiLink'
 import StoreHelper from '../../helpers/store-helper'
@@ -22,7 +15,7 @@ import { ehrOnlyDemoText } from '@/appText'
 
 export default {
   name: 'EhrContextBanner',
-  components: { EhrContextBannerHeader, EhrContextInstructor, EhrContextStudent, EhrContextDeveloper, UiLink },
+  components: { EhrContextBannerHeader, UiLink },
   data: function () {
     return {
       show: false,
@@ -53,8 +46,8 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/definitions';
-
-.EhrContextBanner {
+.ehr-context-banner {
+  background-color: $brand-primary-light;
   padding: 0 1rem;
   border-top: 1px solid $grey40;
 }

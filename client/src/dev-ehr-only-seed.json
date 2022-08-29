@@ -77,7 +77,7 @@
       "table": []
     },
     "allergies": {
-      "hasNoAllergies": "TRUE"
+      "checkbox": "TRUE"
     },
     "surgical": {
       "pastSurgery": [

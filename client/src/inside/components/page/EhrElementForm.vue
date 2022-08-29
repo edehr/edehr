@@ -73,21 +73,8 @@
       ehr-page-form-label(:element="element", css="textarea_label")
       textarea(class="ehr-page-form-textarea", :disabled="disabled || viewOnly", :name="elementKey", v-model="inputVal")
 
-    div(v-else-if="isType('visitDay')", class="select_wrapper")
-      ehr-page-form-label(:element="element", css="select_label")
-      div(v-if="!viewOnly", class="select")
-        select(:name="elementKey", :disabled="disabled", v-model="inputVal", v-on:change="dependentUIEvent()")
-          option(value="")
-          option(v-for="option in [0,1,2,3,4]", :key="option", :value="option") {{ option}}
-      div(v-if="viewOnly") {{ inputVal }}
-
-    div(v-else-if="isType('visitTime')", class="select_wrapper")
-      ehr-page-form-label(:element="element", css="select_label")
-      div(v-if="!viewOnly", class="select")
-        select(:name="elementKey", :disabled="disabled", v-model="inputVal", v-on:change="dependentUIEvent()")
-          option(value="")
-          option(v-for="option in timeSeries", :key="option", :value="option") {{ option}}
-      div(v-if="viewOnly") {{ inputVal }}
+    div(v-else-if="isType(dataTypes.visitDay) || isType(dataTypes.visitTime)" )
+      ehr-element-sim-time(:element="element", :elementKey="elementKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
 
     div(v-else) ELSE: {{inputType}} {{label}}
 
@@ -103,12 +90,14 @@ import EhrElementFile from './EhrElementFile'
 import EhrElementPatient from '@/inside/components/page/EhrElementPatient'
 import EhrElementLookup from './EhrElementLookup.vue'
 import UiInfo from '@/app/ui/UiInfo'
-import EhrTypes from '@/helpers/ehr-types'
+import EhrTypes from '@/inside/defs-grid/ehr-types'
+import EhrElementSimTime from '@/inside/components/page/EhrElementSimTime'
 
 export default {
   name: 'EhrElementForm',
   extends: EhrElementCommon,
   components: {
+    EhrElementSimTime,
     EhrElementCalculated,
     EhrElementCheckset,
     EhrElementEmbedded,
@@ -120,15 +109,6 @@ export default {
   props: {},
   computed: {
     dataTypes () { return EhrTypes.dataInputTypes },
-    timeSeries () {
-      const ts = []
-      for(let i = 0; i < 24; i++) {
-        let h = (i < 10 ? '0'+i : i)
-        ts.push(h + ':00')
-        ts.push(h + ':30')
-      }
-      return ts
-    }
   },
   methods: {}
 }

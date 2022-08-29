@@ -1,34 +1,42 @@
 /* ****************** COLOUR ****************** */
-
-$brand-primary: #3396FF;
-$brand-primary-hover: darken( $brand-primary, 20% );
+// matches color in new icon
+$brand-color: #273890;
+$brand-highlight: #1CA7E1;
+$brand-highlight-red: #EC1C24;
+$brand-primary: $brand-color;
+$brand-primary-hover: $brand-highlight;
 $brand-primary-dark: #051F54;
 $brand-primary-light: #e8f2fd;
 
 $white: #FFF;
-$grey03: #F7F9FA;
-$grey10: #E8EBED;
-$greyWarn: #EFEBED;
-$grey20: #CBCED1;
-$grey40: #858B94;
-$grey60: #4F545C;
-$grey70: #383C45;
-$grey80: #22262E;
-$black: #151A24;
-
-$red: #B8000C;
+$grey03: hsl(0, 0%, 97%);
+$grey10: hsl(0, 0%, 90%);
+$grey15: hsl(0, 0%, 85%);
+$grey20: hsl(0, 0%, 80%);
+$grey22: hsl(0, 0%, 78%);
+$grey25: hsl(0, 0%, 75%);
+$grey30: hsl(0, 0%, 70%);
+$grey40: hsl(0, 0%, 60%);
+$grey50: hsl(0, 0%, 50%);
+$grey60: hsl(0, 0%, 40%);
+$grey70: hsl(0, 0%, 30%);
+$grey80: hsl(0, 0%, 20%);
+$grey90: hsl(0, 0%, 10%);
+$black: black;
+$greyWarn: $grey10;
+$red: $brand-highlight-red;
 $green-light: #7ED321;
 $green: #8dd03e;
-$blue: #3396FF;
+$blue: $brand-highlight;
 
-
+$table-row-even: rgb(235,235,235);
+$table-row-odd: rgb(250,250,250);
+$table-header-colour: $grey20;
+$table-border-colour: $grey40;
 
 /* ****************** TYPOGRAPHY ****************** */
-
 $bodyFontFamily: 'Source Sans Pro', sans-serif;
 $bodyFontSize: 16px;
-
-
 
 /* ****************** NAVIGATION ****************** */
 
@@ -41,22 +49,16 @@ $nav-level1: $grey80;
 $nav-level2: $grey70;
 $nav-level3: $grey60;
 $nav-color-level1: $white;
-$nav-color-level2: $grey20;
-$nav-color-level3: $grey20;
-
-
+$nav-color-level2: $white;
+$nav-color-level3: $white;
 
 /* ****************** MESSAGING ****************** */
-
 $info: $blue;
 $success: $green;
 $error: $red;
-
 $system-message-text: $white;
-
 $context-banner-background-color: $brand-primary-light;
 $context-banner-color: $grey80;
-
 $dialog-header-background: $white;
 $dialog-header-content-color: $grey70;
 $dialog-wrapper-background-color: $white;
@@ -82,45 +84,14 @@ $o-colours: (
   border: 1px solid map-get($o-colours, $index);
 }
 
-
-
 /* ****************** DIMENSIONS ****************** */
 
-$mediaQueryIpadLandscape: "only screen and (max-width : 1024px)";
-$mediaQueryIpadPortrait: "only screen and (max-width : 768px)";
+$dialog-width-threshold: 700px;
+$main-width-threshold1: 500px;
+$main-width-threshold2: 650px;
+$main-width-threshold3: 900px;
 
-$ehrPanelHeight: 80px;
-$contentMinHeight: 700px;
-
-$navMaxWidth: 340px;
-$navMinWidth: 235px;
-$pageWidth: 2000px;
-$panelContentPadding: 0.5rem 1rem;
-//$panelHeaderPadding: 0 2rem 0;
-$panelHeaderPadding: 0;
-$panelMarginLeft: 0;
-$contentWidth: $pageWidth - $navMinWidth;
-$contentWidthInner: 980px;
-
-$navMinWidthSmall: 187px;
-$navMaxWidthSmall: 200px;
-$pageWidthSmall: 1024px;
-$panelContentPaddingSmall: 0.5rem;
-$panelHeaderPaddingSmall: 0.5rem;
-$panelMarginLeftSmall: 3px;
-$contentWidthSmall: $pageWidthSmall - $navMinWidthSmall;
-$contentWidthInnerSmall: $contentWidthSmall - 10;
-
-$navMaxWidthSmallest: 187px;
-$navMinWidthSmallest: 160px;
-$pageWidthSmallest: 768px;
-$panelContentPaddingSmallest: 3px;
-$panelHeaderPaddingSmallest: 0.5rem;
-$panelMarginLeftSmallest: 5px;
-$contentWidthSmallest: $pageWidthSmallest - $navMaxWidthSmallest;
-$contentWidthInnerSmallest: $contentWidthSmallest - 3px;
-
-$buttonRowLeftMargin: 15px;
+$buttonRowLeftMargin: 5px;
 
 /* ****************** WRAPPER ****************** */
 

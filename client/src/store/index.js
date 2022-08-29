@@ -5,7 +5,6 @@ import activityDataStore from './modules/activityDataStore'
 import authStore from './modules/authStore'
 import assignmentStore from './modules/assignmentStore'
 import assignmentListStore from './modules/assignmentListStore'
-import consumerListStore from './modules/consumerListStore'
 import classListStore from './modules/classListStore'
 import consumerStore from './modules/consumerStore'
 import demoStore from './modules/demoStore'
@@ -33,7 +32,6 @@ export default new Vuex.Store({
     assignmentStore,
     classListStore,
     consumerStore,
-    consumerListStore,
     demoStore,
     ehrDataStore,
     ehrOnlyDemoStore,
@@ -52,8 +50,12 @@ export default new Vuex.Store({
 
 export function initializeStore (store) {
   // console.log('Initialize vuex modules')
+  store.dispatch('activityStore/initialize')
+  store.dispatch('assignmentStore/initialize')
   store.dispatch('authStore/initialize')
   store.dispatch('demoStore/initialize')
+  store.dispatch('instructor/initialize')
   store.dispatch('system/initialize')
+  store.dispatch('seedListStore/initialize')
   store.dispatch('visit/initialize')
 }

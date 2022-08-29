@@ -36,9 +36,12 @@ export function getSchedule (medOrders) {
     ), 
     ...typicalDay.filter(d => 
       isTimeValid(d.hour24)).sort((a,b) => {
-      const aTime = moment(a.hour24, 'HH:mm')
-      const bTime = moment(b.hour24, 'HH:mm')
-      return aTime.diff(bTime)
+      const aTime = Number.parseInt(a.hour24)
+      const bTime = Number.parseInt(b.hour24)
+      // const aTime = moment(a.hour24, 'HH:mm')
+      // const bTime = moment(b.hour24, 'HH:mm')
+      // return aTime.diff(bTime)
+      return aTime - bTime
     })
   ]
 }

@@ -1,11 +1,11 @@
 /* eslint-disable quote-props,quotes */
 
-const commonTitle = "EdEHR - a Canadian, open source, educational electronic health record system."
+const commonTitle = "Canadian, open source, educational electronic health record system"
 
 export const appText = {
   heroText: {
     title: commonTitle,
-    subTitle: "Student focused, simulated case studies, laddered case studies, with decision supports and customizable.",
+    subTitle: "Student focused, simulated case studies, laddered case studies, with decision supports and customizable",
     introText: "EdEHR is short for Educational Electronic Health Record. It is an educational tool designed for medical education programs that seek a Canadian system that is focused on the student experience. EdEHR is suitable for all health care programs including, but not limited to, nursing, medicine, pharmacy, physiotherapy and more. EdEHR can be connected with many learning management systems including Moodle, Canvas, Blackboard, and other <a href=\"https://www.imsglobal.org/activity/learning-tools-interoperability\">LTI</a> compliant learning systems. Faculty can customize the course content and can share content with other institutions. ",
   },
 
@@ -114,9 +114,18 @@ export const appText = {
 }
 
 export const demoText = {
+  courseTitle: 'Sample Course - Intro to EHR',
+  personaLabel: 'Demo Persona',
+  roleLabel: 'Demo Role',
+  selectUserLabel: 'Select a user',
+  lmsTitle: 'Demonstration LMS',
+  lmsHint: 'A LMS is a learning management system such as Moodle, Brightspace, D2L and etc.',
+  switchRoleExplain: 'When you click on an activity this \'instructor\' will become a \'student\' same as how Moodle allows users to switch roles.',
+  switchRoleLabel: 'Change to another persona',
+  switchRoleSegmentTitle: 'Switch role:',
   title: 'Mock Demonstration - Log In',
-  intro: 'This is a mock log in page.  Think of this page as the place instructors and students log into their school\'s ' +
-    'Learning Management System (LMS). Here you can "log in" as a student or instructor and try out a sample course that ' +
+  intro: 'This is a simulated log in page that represents your school\'s ' +
+    'Learning Management System (LMS) log in page. Here you can "log in" as a student or instructor and try out a sample course that ' +
     'uses the EdEHR.',
   explanation:
 '\nIn real life your LMS course content creators will work with the EdEHR administrator to create connections between' +
@@ -134,9 +143,9 @@ export const demoText = {
     ' Use the Demo menu item on the top banner to leave the demonstration. ' +
     ' When you leave the demonstration all of your demonstration data is reset.' +
     ' Remember this instance of the EdEHR is a prototype and so the admin of this instance may need to reset the system at any time.',
-  lmsAside:
-    ' To the right is a one-page learning management system with preconfigured assignments ready to connect with the EdEHR. Some of these' +
-    ' sample assignments are based on the open text-book <a href="https://pressbooks.bccampus.ca/healthcasestudies/">Health Case Studies - Toward Closing the Healthcare Communication Gap</a> by:  Glynda Rees, Rob Kruger, Janet Morrison.',
+  lmsAside: 'To the right is a simple one-page learning management system with sample activities each preconfigured to connect with ' +
+    ' a learning object inside the EdEHR. Some of those learning objects are ' +
+    ' based on the open text-book <a href="https://pressbooks.bccampus.ca/healthcasestudies/">Health Case Studies - Toward Closing the Healthcare Communication Gap</a> by:  Glynda Rees, Rob Kruger, Janet Morrison.',
   login: {
     title: 'Welcome to your personal EdEHR playground',
     body: 'This is a sandbox area for you to explore the EdEHR and how it works with learning management systems such as Moodle, Brightspace, etc. This demonstration mode is only meant for short term explorations. If you create any course content you need to keep then be sure to download a copy. Contact mailto:info@edehr.org if you have any questions or need help.\n'

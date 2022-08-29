@@ -39,6 +39,9 @@ const getters = {
   demoTokenData: function (state) {
     return state.demoData
   },
+  toolConsumerId: function (state) {
+    return state.demoData ? state.demoData.toolConsumerId : undefined
+  },
   demoAssignment: function (state) {
     return state.assignment
   },
@@ -81,11 +84,12 @@ const actions = {
         return Promise.reject(err)
       })
   },
-  demoLogout: function ({ commit }) {
+  demoLogout: function ({ commit, getters }) {
+    const tid = getters.toolConsumerId
     const token = _getDemoToken()
-    if (token) {
-      if (debugDS) console.log('demoStore logout t', token)
-      return _getHelper().demoLogout(token)
+    if (token && tid) {
+      if (debugDS) console.log('demoStore logout tool id ', tid)
+      return _getHelper().demoLogout(token, tid)
         .then(() => {
           if (debugDS) console.log('demoStore logout server side done. Next clear localstorage')
           _clearDemo()

@@ -1,43 +1,37 @@
 <template lang='pug'>
   div
     app-dialog(:isModal="true", ref="theDialog", @cancel="cancelDialog", @save="saveDialog", :disableSave="disableSave", :errors="errors")
-      h2(slot="header") Edit Learning Management System External Tool
+      h2(slot="header") Edit demo LMS activity
       div(slot="body")
-        div(class="columns")
-          div(class="column is-3")
-            span Activity Name
-            ui-info(title="Activity Name", :text="documentation.assignmentName")
-          div(class="column is-4")
-            input(class="input text-input", type="text", v-model="submitData.assignmentName", v-validate="nameValidate")
-        div(class="columns")
-          div(class="column is-3")
-            span Activity Description
-            ui-info(title="Activity Description", :text="documentation.assignmentName")
-          div(class="column is-9")
-            textarea( v-model="submitData.assignmentDescription")
-        div(class="columns")
-          div(class="column is-3")
-            span Learning Object Id
-            ui-info(title="Learning Object Id", :text="documentation.externalId")
-          div(class="column is-4")
+        div(class="config-data-block")
+          ui-info(title="Activity Name", :text="documentation.resource_link_title")
+          div LMS Activity Name
+          div
+            input(class="input text-input", type="text", v-model="submitData.resource_link_title", v-validate="nameValidate")
+        div(class="config-data-block")
+          ui-info(title="Activity Description", :text="documentation.resource_link_description")
+          div Activity Description
+          div
+            textarea( v-model="submitData.resource_link_description")
+        div(class="config-data-block")
+          ui-info(title="Learning Object Id", :text="documentation.externalId")
+          div Custom parameter
+          div
             input(class="input text-input", type="text", v-model="submitData.externalId", v-validate="externalValidate")
-        div(class="columns")
-          div(class="column is-3")
-            span Consumer key
-            ui-info(title="Consumer key", :text="documentation.consumerKey")
-          div(class="column is-4")
+        div(class="config-data-block")
+          ui-info(title="Consumer key", :text="documentation.consumerKey")
+          div Consumer key
+          div
             input(class="input text-input", type="text", v-model="submitData.consumerKey", v-validate="cKeyValidate")
-        div(class="columns")
-          div(class="column is-3")
-            span Consumer secret
-            ui-info(title="Consumer secret", :text="documentation.consumerSecret")
-          div(class="column is-4")
+        div(class="config-data-block")
+          ui-info(title="Consumer secret", :text="documentation.consumerSecret")
+          div Consumer secret
+          div
             input(class="input text-input", type="text", v-model="submitData.consumerSecret", v-validate="cSecretValidate")
-        div(class="columns")
-          div(class="column is-3")
-            span Tool URL
-            ui-info(title="Tool Url", :text="documentation.toolUrl")
-          div(class="column is-4")
+        div(class="config-data-block")
+          ui-info(title="Tool Url", :text="documentation.toolUrl")
+          div Tool URL
+          div
             input(class="input text-input", type="text", v-model="submitData.toolUrl" disabled)
 </template>
 
@@ -57,9 +51,9 @@ export default {
   data () {
     return {
       submitData: {
-        assignmentName: '',
+        resource_link_title: '',
         externalId: '',
-        assignmentDescription: '',
+        resource_link_description: '',
         consumerKey: '',
         consumerSecret: '',
         toolUrl: ''
@@ -69,24 +63,27 @@ export default {
   components: { AppDialog, UiInfo },
   computed: {
     documentation () { return {
-      assignmentName: 'The assignment name appears in both the learning management system and in the educational EHR',
+      resource_link_title: 'The activity name says what this activity is for. It is sent by the LMS to the EdEHR' +
+        ' and will be shown to the student along with the name and description of the learning object.  ',
+      resource_link_description: 'The description can provide context and guidance for the student to complete the ' +
+        ' activity in the EdEHR. ',
       consumerSecret: 'The tool consumer secret, like the tool consumer key, is arranged between the EdEHR administrator ' +
         ' and the learning management system support team.',
-      consumerKey: 'The tool consumer key is used to identify the learning institution on the EdEHR server. ' +
-        'For this demo mode the key and secret are unique to you while you are in the demo mode. '+
-        'In normal use the key and secret are set up between the EdEHR administrator and the ' +
-        'course creation team at each learning institution. In this demonstration mode you can try modifying the key and/or the secret. ' +
-        'This will break the connection yet you can explore how this error condition will appear to you and your users.',
+      consumerKey: 'The tool consumer key identifies the learning institution on the EdEHR server. ' +
+        ' For this demo mode the key and secret are unique to you while you are in the demo mode. '+
+        ' In normal use the key and secret are set up between the EdEHR administrator and the ' +
+        ' course creation team at each learning institution. In this demonstration mode you can try modifying the key and/or the secret. ' +
+        ' This will break the connection yet you can explore how this error condition will appear to you and your users.',
       externalId: 'This is the id of the EdEHR learning object. The person who configures the external tool in the learning' +
         ' management will enter "assignment=' +  this.submitData.externalId + '"',
-      toolUrl: 'The tool url is the address of the LTI end point on the EdEHR server. In this demonstration mode this url is fixed and is ' +
-        'shown here to demonstrate what it looks like.  This url is composed of the domain name of your EdEHR server plus "api/launch_lti". ' +
-        'LTI stands for Learning Tools Interoperability and this is the way your LMS (learning management system such as Moodle or D2L) communicates ' +
-        'with content providers, like the EdEHR.'
+      toolUrl: 'The tool url is the connect to EdEHR address. In this demonstration mode this url is fixed and is ' +
+        ' shown here to demonstrate what it looks like.  This url is composed of the domain name of your EdEHR server plus "api/launch_lti". ' +
+        ' This connection point uses the LTI standard. LTI stands for Learning Tools Interoperability and this is the way your LMS (learning management system such as Moodle or D2L) communicates ' +
+        ' with content providers, like the EdEHR.'
     }
     },
     nameValidate () {
-      return this.submitData.assignmentName.trim() ? undefined : ERRORS.NAME_REQUIRED
+      return this.submitData.resource_link_title.trim() ? undefined : ERRORS.NAME_REQUIRED
     },
     cKeyValidate () {
       return this.submitData.consumerKey.trim() ? undefined : ERRORS.CONSUMER_KEY
@@ -133,3 +130,11 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+@import '../../scss/definitions';
+.config-data-block {
+  display: grid;
+  grid-template-columns: 2rem 0.3fr 1fr;
+  margin-bottom: 0.5rem;
+}
+</style>

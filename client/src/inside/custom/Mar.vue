@@ -1,14 +1,12 @@
 // Custom page for MAR
 <template lang="pug">
   div(class="ehr-page")
-    ehr-panel-header {{ pageDef.pageTitle }}
     ehr-panel-content
       mar-tabs(:ehrHelp="ehrHelp")
     ehr-page-footer(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
 </template>
 
 <script>
-import EhrPanelHeader from '../components/page/EhrPanelHeader.vue'
 import EhrPanelContent from '../components/page/EhrPanelContent.vue'
 import EhrPageFooter from '../components/page/EhrPageFooter'
 import EhrHelp from '../components/page/ehr-helper'
@@ -18,7 +16,6 @@ import EhrDefs from '../../helpers/ehr-defs-grid'
 export default {
   name: 'Mar',
   components: {
-    EhrPanelHeader,
     EhrPanelContent,
     MarTabs,
     EhrPageFooter

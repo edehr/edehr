@@ -24,6 +24,8 @@
     "componentName": "EdEhrOrgDetails",
     "componentFolder": "./app/edehr-org",
     "label": "edehrDetails"
-  }
+  },
+  { "path": "", "routeName": "dev-area", "zone": "dev" }
+
 
 ]

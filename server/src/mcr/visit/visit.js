@@ -18,6 +18,7 @@ const VisitSchema = new mongoose.Schema({
   activity: {type: ObjectId, ref: 'Activity', required: true},
   assignment: {type: ObjectId, ref: 'Assignment', required: true},
   activityData: {type: ObjectId, ref: 'ActivityData'},
+  // ToDo it appears assignmentId is not used. Verify and remove.
   assignmentId: {type: String},
   isStudent: {type: Boolean, default: false},
   isInstructor: {type: Boolean, default: false},

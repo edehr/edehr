@@ -1,5 +1,5 @@
 <template lang="pug">
-  div
+  div(class='ehr-table-stacked')
     //div TABLE STACKED page: {{ pageDataKey}}, table: {{ tableKey }}
     div(class="no-data" v-if="!hasData") There are no records or reports for this patient.
     div(v-else)
@@ -63,13 +63,25 @@ export default {
       this.tableForm.rowTemplate.length = Math.min(10,this.tableForm.rowTemplate.length)
       this.tableData = this.tableForm.tableData
       // this.tableData[0].length = Math.min(10,this.tableData[0].length)
-      if (debug) console.log('EhrTableStacked this.tableForm', this.tableForm)
-      if (debug) console.log('EhrTableStacked this.tableData', this.tableData)
-      console.log('EhrTableStacked this.tableData', JSON.stringify(this.tableData.length))
-      console.log('EhrTableStacked this.tableData', JSON.stringify(this.tableData[0].length))
+      if (debug) {
+        console.log('EhrTableStacked this.tableForm', this.tableForm)
+        console.log('EhrTableStacked this.tableData', this.tableData)
+        console.log('EhrTableStacked length', JSON.stringify(this.tableData.length))
+        if ( this.tableData.length > 0 ) {
+          console.log('EhrTableStacked [0].length]', JSON.stringify(this.tableData[0].length))
+        }
+      }
     }
   },
 
 }
 </script>
 
+<style>
+/* the ehr content has overflow hidden yet tables may be big ...*/
+.ehr-table-stacked {
+  overflow-x: auto;
+}
+</style>
+
+</style>

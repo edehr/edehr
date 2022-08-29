@@ -43,6 +43,11 @@ Import styles
 @import '../scss/styles/tables';
 @import '../scss/styles/buttons';
 @import '../scss/styles/sections';
+@import '../scss/styles/outside';
+
+* {
+  box-sizing: border-box;
+}
 
 button:focus {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5) !important;
@@ -56,6 +61,7 @@ a:focus {
 For lack of a better place ...
 Define the styles for the left hand side components in the EHR
  */
+$panelContentPadding: 0.5rem 1rem;
 .EhrPanelContent {
   padding: $panelContentPadding;
 }
@@ -72,4 +78,17 @@ Define the styles for the left hand side components in the EHR
 
 .selected {
   background-color: $brand-primary-light;
+}
+
+.smaller-than-900 {
+  display: none  !important;
+}
+
+@media screen and (max-width: $main-width-threshold3) {
+  .smaller-than-900 {
+    display: inherit !important;
+  }
+  .bigger-screens-900 {
+    display: none !important;
+  }
 }

@@ -1,4 +1,4 @@
-import EhrTypes from '../../client/src/helpers/ehr-types'
+import EhrTypes from '../source/ehr-types'
 import EhrShortForms from './ehr-short-forms'
 
 const rawHelper = require('./helps')
@@ -154,7 +154,6 @@ class RawInputToDef {
     let pKey = entry.pN
     if (dbug) console.log('Page:', pKey)
     let page = rawHelper._transferProperties(entry, pageProperties)
-    page.isV2 = true
     page.pageChildren = []
     page.pageElementsByNumber = {}
     groups[pKey] = page

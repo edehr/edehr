@@ -13,13 +13,22 @@ export default class ActivityController extends BaseController {
   constructor () {
     super(Activity, '_id')
   }
+  setSharedControllers (cc) {
+    this.comCon = cc
+  }
 
-  closeActivity (id, direction) {
-    return this.baseFindOneQuery(id).then(activity => {
+  closeOpenActivity (id, direction) {
+    return this.baseFindOneQuery(id).then(async (activity) => {
       if (activity) {
+        const aId = activity._id
         const closing = direction === 'close'
-        activity.closedDate = closing ? Date.now() : null
-        activity.closed = closing
+        const visits = await Visit.find({activity: aId}, {activityData:true})
+        const data = { value: closing}
+        visits.forEach( async (v) => {
+          this.comCon.activityDataController.assignmentSubmitted(v.activityData, data)
+        })
+        // activity.closedDate = closing ? Date.now() : null
+        // activity.closed = closing
         return activity.save()
       }
     })
@@ -133,14 +142,14 @@ export default class ActivityController extends BaseController {
     // PUT
     router.put('/close-activity/:key', (req, res) => {
       this
-        .closeActivity(req.params.key, 'close')
+        .closeOpenActivity(req.params.key, 'close')
         .then(ok(res))
         .then(null, fail(res))
     })
 
     router.put('/open-activity/:key', (req, res) => {
       this
-        .closeActivity(req.params.key, 'open')
+        .closeOpenActivity(req.params.key, 'open')
         .then(ok(res))
         .then(null, fail(res))
     })

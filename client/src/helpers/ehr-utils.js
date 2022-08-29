@@ -3,14 +3,16 @@ import camelcase from 'camelcase'
 import { saveAs } from 'file-saver'
 import EhrDefs from './ehr-defs-grid'
 import { Text } from './ehr-text'
-import validFilename  from 'valid-filename'
+import validFilename from 'valid-filename'
 import StoreHelper from './store-helper'
+import EhrTypes from '@/inside/defs-grid/ehr-types'
 // import filenamify from 'filenamify'
 
 const debug = false
 const debugErrs = false
 
 const mJSON = 'json', mTEXT = 'text', mCSV = 'csv'
+
 function _saveAs (stringData, fileName, mediaType) {
   let type
   switch (mediaType) {
@@ -25,7 +27,7 @@ function _saveAs (stringData, fileName, mediaType) {
     type = 'text/plain;charset=utf-8'
     break
   }
-  let blob = new Blob([stringData], {type: type})
+  let blob = new Blob([stringData], { type: type })
   /*
   https://github.com/eligrey/FileSaver.js
   Firefox dialog will include the text "from: blob:".  This is a defect with FF only.  https://github.com/eligrey/FileSaver.js/issues/101
@@ -38,7 +40,6 @@ export function makeSafeFileName (filename) {
   return filename
   // return filenamify(filename)
 }
-
 
 export function getIncomingParams () {
   let search = window.location.search.substring(1)
@@ -57,7 +58,17 @@ export function getIncomingParams () {
  * @return {boolean}
  */
 export function validTimeStr (text) {
-  return /^(0[0-9]|1[0-9]|2[0-3]):([0-5][0-9])$/.test(text)
+  return /^(0[0-9]|1[0-9]|2[0-3])([0-5][0-9])$/.test(text)
+}
+
+/**
+ * convert visit time to military format
+ * @param text
+ * @return {boolean}
+ */
+export function convertTimeStr (text) {
+  let time = text ? text.replace(/:/g, '') : text
+  return Number.parseInt(time)
 }
 
 /**
@@ -77,7 +88,7 @@ export function validDayStr (text) {
 export function validNumberStr (str) {
   // These are a few of the exceptions which isNaN can return false for... 
   // as it has been noted here: https://stackoverflow.com/questions/175739/built-in-way-in-javascript-to-check-if-a-string-is-a-valid-number
-  if (str === false || str === ' ' || str === '') 
+  if (str === false || str === ' ' || str === '')
     return false
   return !isNaN(str)
 }
@@ -93,10 +104,10 @@ export function validRangeStr (str, min, max) {
   try {
     const number = parseInt(str)
     return number >= min && number <= max
-  } catch(err) { 
+  } catch (err) {
     if (debugErrs) console.log('isIntegerInRange threw', err)
     return false
-  }  
+  }
 }
 
 export function isImageFile (fName) {
@@ -118,7 +129,7 @@ export function formatTimeStr (dateStrFromDb) {
 }
 
 export function composeAxiosResponseError (error, msg = '') {
-  if (! error.response ) {
+  if (!error.response) {
     msg += ' Error: ' + JSON.stringify(error)
     console.error('composeAxiosResponseError without error.response: ', msg)
     return msg
@@ -130,11 +141,11 @@ export function composeAxiosResponseError (error, msg = '') {
     if (res.data.message)
       msg += ' ' + res.data.message
     else
-      msg += ' ' + res.data
+      msg += ' ' + JSON.stringify(res.data)
   } else {
     msg += ' ' + error.message
   }
-  // console.error('composeAxiosResponseError', msg)
+  console.error('composeAxiosResponseError "', msg, '" "', res.data, '"')
   return msg
 }
 
@@ -162,7 +173,7 @@ export function removeEmptyProperties (obj) {
  * @return {Promise<any>}
  */
 export function readFile (file) {
-  return new Promise( (resolve) => {
+  return new Promise((resolve) => {
     const reader = new FileReader()
     reader.onload = (function (event) {
       let contents = event.target.result
@@ -237,51 +248,51 @@ export function validateSeedFileContents (dataAsString) {
     parsedData = JSON.parse(dataAsString)
   } catch (err) {
     console.log('EhrUtil validateSeedFileContents: failed to parse seed data', err)
-    return { invalidMsg: err.message}
+    return { invalidMsg: err.message }
   }
   if (!parsedData.license) {
-    return { invalidMsg: Text.SEED_MUST_HAVE_LICENSE}
+    return { invalidMsg: Text.SEED_MUST_HAVE_LICENSE }
   }
   if (!parsedData.license.includes(Text.LICENSE_TEXT)) {
     return { invalidMsg: Text.LICENSE_MUST_BE }
   }
   if (!parsedData.ehrData) {
-    return { invalidMsg: Text.SEED_MUST_HAVE_EHRDATA}
+    return { invalidMsg: Text.SEED_MUST_HAVE_EHRDATA }
   }
   let keys = Object.keys(parsedData.ehrData)
   // console.log('keys', keys)
-  if(!keys || keys.length === 0) {
-    return { invalidMsg: Text.EHRDATA_CAN_NOT_BE_EMPTY}
+  if (!keys || keys.length === 0) {
+    return { invalidMsg: Text.EHRDATA_CAN_NOT_BE_EMPTY }
   }
   let badKeys = []
-  keys.forEach( key => {
-    let found = pageKeys.find( pKey => pKey === key)
-    if(!found) {
+  keys.forEach(key => {
+    let found = pageKeys.find(pKey => pKey === key)
+    if (!found) {
       badKeys.push(key)
     }
   })
-  if(badKeys.length > 0) {
+  if (badKeys.length > 0) {
     let extras = badKeys.join(', ')
-    return { invalidMsg: Text.EHRDATA_HAS_INVALID_PAGES(extras)}
+    return { invalidMsg: Text.EHRDATA_HAS_INVALID_PAGES(extras) }
   }
   return { seedObj: parsedData }
 }
 
 /**
- * 
+ *
  * @param component to access the $store
- * @param seedId 
+ * @param seedId
  * @param contents from reading a seed data file
  * @return {Promise<any>}
  */
 export function importSeedData (component, seedId, contents) {
-  return new Promise( (resolve, reject) => {
-    let {seedObj, invalidMsg} = validateSeedFileContents(contents)
+  return new Promise((resolve, reject) => {
+    let { seedObj, invalidMsg } = validateSeedFileContents(contents)
     if (invalidMsg) {
       console.log('EhrUtil importSeedData invalidMsg', invalidMsg)
       return reject(invalidMsg)
     }
-    if(debug) console.log('EhrUtil importSeedData seedObj', seedObj)
+    if (debug) console.log('EhrUtil importSeedData seedObj', seedObj)
     resolve(StoreHelper.updateSeedEhrData(seedId, seedObj.ehrData))
   })
 }
@@ -304,14 +315,35 @@ export function downloadSeedToFile (seedId, sSeedContent, ehrData) {
     version: ver,
     fileName: fName
   }
-  data = JSON.stringify(data,null,2)
-  if(debug) console.log('EhrUtil Download seed to ', fName, ehrData)
+  data = JSON.stringify(data, null, 2)
+  if (debug) console.log('EhrUtil Download seed to ', fName, ehrData)
+  _saveAs(data, fName, mJSON)
+}
+
+export function downloadLearningObjectToFile (learningObject) {
+  let lastUpdate = formatDateStr(learningObject.lastUpdateDate)
+  let name = learningObject.name
+  let ver = learningObject.version
+  let fName = camelcase(name)
+    + (ver ? '_' + ver : '')
+    + '_' + lastUpdate
+    + '.json'
+  let data = {
+    id: learningObject._id,
+    license: Text.LICENSE_FULL_TEXT,
+    description: learningObject.description,
+    name: name,
+    version: ver,
+    fileName: fName
+  }
+  data = JSON.stringify(data, null, 2)
+  if (debug) console.log('EhrUtil Download learning object to ', fName)
   _saveAs(data, fName, mJSON)
 }
 
 export function downObjectToFile (fileName, object) {
-  let data = JSON.stringify(object,null,2)
-  if(debug) console.log('EhrUtil Download object to file ', fileName, data)
+  let data = JSON.stringify(object, null, 2)
+  if (debug) console.log('EhrUtil Download object to file ', fileName, data)
   _saveAs(data, fileName, mJSON)
 }
 
@@ -321,9 +353,9 @@ export function isValidFilename (filename) {
 
 export function arrayToCsv (array) {
   let csv = []
-  array.forEach( line => {
+  array.forEach(line => {
     let row = []
-    line.forEach( e => {
+    line.forEach(e => {
       row.push(`"${e}"`)
     })
     csv.push(row.join(','))
@@ -336,7 +368,6 @@ export function downArrayToCsvFile (filename, array) {
   _saveAs(data, filename, mCSV)
 }
 
-
 /**
  * prepareAssignmentPageDataForSave does two things
  * 1. It removes empty properties
@@ -345,10 +376,10 @@ export function downArrayToCsvFile (filename, array) {
  * @return {*}
  */
 export function prepareAssignmentPageDataForSave (aPage) {
-  if(debug) console.log('EhrUtil prepareAssignmentPageDataForSave', decoupleObject(aPage))
+  if (debug) console.log('EhrUtil prepareAssignmentPageDataForSave', decoupleObject(aPage))
   let cleanValue = removeEmptyProperties(aPage)
   cleanValue = ehrRemoveMarkedSeed(cleanValue)
-  if(debug) console.log('EhrUtil cleanValue', decoupleObject(cleanValue))
+  if (debug) console.log('EhrUtil cleanValue', decoupleObject(cleanValue))
   return cleanValue
 }
 

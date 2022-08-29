@@ -1,91 +1,51 @@
-import InstoreHelper from './instoreHelper'
-import StoreHelper from '../../helpers/store-helper'
-import { Text } from '../../helpers/ehr-text'
+import InstoreHelper from '@/store/modules/instoreHelper'
+import StoreHelper from '@/helpers/store-helper'
+import { Text } from '@/helpers/ehr-text'
 const API = 'activities'
 const OBJ = 'activity'
-const NAME = 'ActivityStore'
-const debug = false
 
 const state = {
-  dataStore: {},
+  activity: {},
+  activityId: ''
 }
 
 const getters = {
-  id: state => {
-    let prop =  state.dataStore._id
-    if(debug) console.log(NAME + ' get activityDataId', prop)
-    return prop
-  },
-  courseTitle: state => {
-    let prop =  state.dataStore.context_title
-    if(debug) console.log(NAME + ' get courseTitle', prop)
-    return prop
-  },
-  activityId: state => {
-    let prop =  state.dataStore._id
-    if(debug) console.log(NAME + ' get dataStore._id', prop)
-    return prop
-  },
-  activityTitle: state => {
-    let prop =  state.dataStore.resource_link_title
-    if(debug) console.log(NAME + ' get activityTitle', prop)
-    return prop
-  },
-  activityDescription: state => {
-    let prop =  state.dataStore.resource_link_description
-    if(debug) console.log(NAME + ' get activityDescription', prop)
-    return prop
-  },
-  closed: state => {
-    let prop =  state.dataStore.closed
-    if(debug) console.log(NAME + ' get dataStore.closed', prop)
-    return prop
-  },
-  closedDate: state => {
-    let prop =  state.dataStore.closedDate
-    if(debug) console.log(NAME + ' get dataStore.closedDate', prop)
-    return prop
-  }
+  activity: state => state.activity,
+  courseTitle: state => state.activity.context_title,
+  activityId: state => state.activityId,
+  activityTitle: state => state.activity.resource_link_title,
+  activityDescription: state => state.activity.resource_link_description,
 }
 
 const actions = {
+  initialize: function ({ commit }) {
+    commit('initialize')
+  },
   close ({dispatch, commit}, id) {
     let url = 'close-activity/' + id
-    let payload = { url:url, data: { }}
+    let payload = { url: url, data: {} }
     return dispatch('put', payload)
-      .then( (results) => {
-        if(debug) console.log(NAME + ' loaded ', results)
-        commit('set', results)
-        return results
-      })
   },
   open ({dispatch, commit}, id) {
     let url = 'open-activity/' + id
-    let payload = { url:url, data: { }}
+    let payload = { url: url, data: {} }
     return dispatch('put', payload)
+  },
+
+  loadAsCurrentActivity ({dispatch, commit}, id) {
+    return dispatch('get',id)
       .then( (results) => {
-        if(debug) console.log(NAME + ' loaded ', results)
         commit('set', results)
         return results
       })
   },
 
-  load ({dispatch, commit}, id) {
-    // at this time the switch to aactivityctivity and class list component both invoke this load.
-    // commit the new id now so the class list component uses the latest as set by the switch assignment
-    return dispatch('get',id)
-      .then( (results) => {
-        if(debug) console.log(NAME + ' loaded ', results)
-        commit('set', results)
-        return results
-      })
-  },
   get (context, id) {
     let url = 'get/' + id
     return InstoreHelper.getRequest(context, API, url).then(response => {
       let results = response.data[OBJ]
       if (!results) {
-        let msg = Text.GET_ACTIVITY_STORE_ERROR(NAME, id)
+        let msg = Text.GET_ACTIVITY_STORE_ERROR(id)
         StoreHelper.setApiError(msg)
         return
       }
@@ -103,9 +63,21 @@ const actions = {
   },
 }
 
+const ACTIVITY_LOCAL_STORE ='ACTIVITY_LOCAL_STORE'
 const mutations = {
+  initialize: function (state) {
+    // if stored get the activityId. Once it is in place a page load can request the activity data
+    const activityId = localStorage.getItem(ACTIVITY_LOCAL_STORE)
+    if (activityId) {
+      state.activityId = activityId
+    }
+  },
   set: (state, data) => {
-    state.dataStore = data
+    // transfer the db id to the field we use
+    state.activityId = data._id
+    // This id needs to survive a browser refresh
+    localStorage.setItem(ACTIVITY_LOCAL_STORE, state.activityId)
+    state.activity = data
   },
 
 }
