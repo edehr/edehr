@@ -19,8 +19,6 @@ const ActivityDataSchema = new mongoose.Schema({
   evaluationData: {type: Object}, //place for instructor to mark the work
   scratchData: {type: Object}, // place for student to add notes
   submitted: { type: Boolean, default: false},
-  evaluated: { type: Boolean, default: false},
-  sentBack: { type: Boolean, default: false},
   createDate: {type: Date, default: Date.now},
   lastDate: {type: Date, default: Date.now},
 }, {

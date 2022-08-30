@@ -8,6 +8,7 @@ import { prepareAxiosResponse, createCompoundGetResponse  } from './axios-mock-h
 import mockData from './mockData.json'
 import StoreHelper from '../store-helper'
 import { commonBeforeEach } from './testHelper'
+import EventBus, { PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
 
 jest.mock('axios')
 
@@ -19,7 +20,6 @@ const refreshToken = 'testRefreshToken'
 
 const _beforeEach = async () => {
   commonBeforeEach()
-  pageController.hasLoadedData = false
   const { demoData } = mockData
   return prepareAxiosResponse('post', { 
     visitId: mockData.visit._id, 
@@ -40,33 +40,49 @@ const _createRouteObject = (isDemo = false) => {
   return {
     query: { apiUrl: 'testApiUrl', token: refreshToken },
     name: isDemo ? 'demo' : 'notDemo',
-    meta: { zone: 'demo' }
+    meta: { zone: 'demo', label: 'testPageChange' }
   }
+}
+
+function testpg (route, done) {
+  let refreshCnt = 0
+  EventBus.$on(PAGE_DATA_REFRESH_EVENT, () => {
+    refreshCnt++
+    refreshCnt.should.equal(1, 'should only call page refresh once')
+    const title = StoreHelper.getPageTitle()
+    // console.log('compare expected title')
+    should.exist(title)
+    title.should.equal(route.meta.label)
+    done()
+  })
 }
 
 describe('page-controller tests', () => {
   beforeEach((done) => {
     _beforeEach().then(() => done())
   })
-
-  it('onPageChange [demo use-case]', async () => {
+  afterEach( () => {
+    EventBus.$off()
+  })
+  it('onPageChange [demo use-case]', (done) => {
+    const route = _createRouteObject(true)
+    testpg(route, done)
     should.doesNotThrow(async () => {
-      const route = _createRouteObject(true)
       await pageController.onPageChange(route)
-      pageController.hasLoadedData.should.equal(true)
     })
+    // console.log('page controller on page change has not thrown', pageController)
   })
 
-  it('onPageChange [standard use-case]', async () => {
+  it('onPageChange [standard use-case]', (done) => {
+    const route = _createRouteObject()
+    testpg(route, done)
     should.doesNotThrow(async () => {
-      const route = _createRouteObject()
       await pageController.onPageChange(route)
-      pageController.hasLoadedData.should.equal(true)
     })
   })
 })
 
-describe.skip('test load demo', () => {
+describe('test load demo', () => {
   // TODO fix this to load the demo token into the demo store. LocaStorage will not work any more
   it.skip('_loadData (demo UC)', done => {
     localStorage.setItem(sKeys.DEMO_TOKEN, 'demoToken')
@@ -94,7 +110,6 @@ describe('test load demo', () => {
   it('_loadAuth', done => {
     should.doesNotThrow(async () => {
       await pageController._loadAuth(refreshToken)
-      pageController.hasLoadedData.should.equal(false)
       await pageController._loadAuth(null, token)
       done()
     })
@@ -129,7 +144,9 @@ describe('test load demo', () => {
     call.length.should.equal(1)
     call[0].should.equal('/')
     apiError.should.equal('Test Error. System Error')
-    StoreHelper.isLoading().should.equal(false)
-    done()
+    setTimeout(() => {
+      StoreHelper.isLoading().should.equal(false)
+      done()
+    }, 50)
   })
 })

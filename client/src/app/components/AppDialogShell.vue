@@ -2,7 +2,7 @@
   transition(name="dialog")
     div(v-show="showingDialog")
       div(:class="modalClass")
-      div(class="dialog-wrapper", :class="{ dragActive: moused }", ref="theDialog", v-bind:style="{ top: top + 'px', left: left + 'px'}")
+      div(class="dialog-wrapper", :class="{ dragActive: moused }", ref="theDialog", :style="{ top: top + 'px', left: left + 'px'}")
         div(class="dialog-drag-bar", v-dragged="onDragged")
         div(class="dialog-content")
           div(class="dialog-header")
@@ -20,7 +20,7 @@
           div(class="dialog-footer columns")
             div(class="column is-8")
               div(v-show="errors.length", class="error-color")
-                span {{ errorDirections }}
+                span {{ errorDirections }} &nbsp;
                 span {{ errors.join(', ') }}
 
               div(class="dialog-footer-content")
@@ -135,7 +135,7 @@ export default {
       let ww = window.innerWidth
       let wh = window.innerHeight
       let mx = (ww - ew) / 2
-      let my = (wh - eh) / 2
+      let my = (wh - eh) / 8
       my = Math.max(my, 5) // don't let top disappear
       // console.log('The Dialog w', ww, ew, mx, d)
       // console.log('The Dialog h', wh, eh, my, d)
@@ -143,7 +143,7 @@ export default {
       this.top = my
       let db = this.$refs.theDialogBody
       let dbh = db.clientHeight
-      this.showTopButtons = dbh > 500
+      this.showTopButtons = dbh > 200
     }
   },
   mounted () {
@@ -168,25 +168,26 @@ export default {
 .dialog-wrapper {
   position: fixed;
   /*   For top and see the data properties. For width only set the min and let the content decide the rest */
-  min-width: 700px;
+  min-width: $dialog-width-threshold;
   display: flex;
   flex-flow: row wrap;
   flex: 1 100%;
 }
 
+@media screen and (max-width: $dialog-width-threshold){
+  .dialog-wrapper{
+    min-width: inherit;
+    max-width: inherit;
+  }
+}
 .dialog-content {
-  min-width: 700px;
+  min-width: $dialog-width-threshold;
   max-width: 70rem;
-  min-height: 40vh;
   max-height: 90vh;
   overflow-y: auto;
   overflow-x: auto;
 }
-
-@media screen and (max-width: 500px) {
-  .dialog-wrapper {
-    min-width: inherit;
-  }
+@media screen and (max-width: $dialog-width-threshold){
   .dialog-content {
     min-width: inherit;
     max-width: inherit;
@@ -194,17 +195,10 @@ export default {
 }
 .dialog-body {
   padding: 0.25rem 2rem;
+  margin-bottom: 0;
   background-color: $grey03;
-}
-
-@media screen and (max-width: 500px){
-  .dialog-wrapper{
-    min-width: 100vw;
-  }
-  .dialog-body {
-    padding: 1rem;
-    margin-bottom: 1rem;
-  }
+  font-size: 1rem;
+  font-weight: normal;
 }
 
 /* Layout inside dialog footer */
@@ -227,7 +221,6 @@ export default {
     width: 10px;
   }
 }
-
 .dialog-wrapper {
   z-index: 999;
   background-color: $dialog-wrapper-background-color;
@@ -236,7 +229,6 @@ export default {
   box-sizing: border-box;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
-
 .dragActive {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
@@ -251,7 +243,6 @@ export default {
   height: 1em;
   cursor: move;
 }
-
 .dialog-header, .dialog-footer {
   background-color: $grey03;
 }
@@ -261,12 +252,9 @@ export default {
 .dialog-footer {
   padding: 1em 2em 1em 2em;
 }
-
-
 .error-color {
   color: red;
 }
-
 /* **********
 Cursors
 */

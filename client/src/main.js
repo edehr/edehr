@@ -30,6 +30,7 @@ Vue.component('outside-layout', outsideLayout)
 Vue.component('inside-layout', insideLayout)
 
 router.afterEach((to, from) => {
+  // console.log('main.js hook on page changes')
   PageController.onPageChange(to)
 })
 

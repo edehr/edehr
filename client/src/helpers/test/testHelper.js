@@ -52,7 +52,7 @@ export const setAssignmentListingMocks = (payload = mockData.assignmentListing) 
 
 export const setConsumerListingMocks = (payload = mockData.consumerListing) => {
   const key = 'setConsumersListing'
-  store.commit(`consumerListStore/${key}`, payload)
+  store.commit(`consumerStore/${key}`, payload)
 }
 
 export const setSeedDataMocks = (payload = mockData.seedData) => {

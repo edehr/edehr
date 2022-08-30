@@ -2,6 +2,7 @@ import moment from 'moment'
 import { ok, fail } from '../common/utils'
 import BaseController from '../common/base'
 import ActivityData from './activity-data'
+import { updateEhrDataMeta } from '../../ehr-definitions/ehr-def-utils'
 
 const debug = require('debug')('server')
 
@@ -11,35 +12,45 @@ export default class ActivityDataController extends BaseController {
   }
 
   /**
-   *
+   * place date into the ehr data's page element
    * @param id
-   * @param data
+   * @param dataPayload
        let data = {
         property: 'progressNotes',
         value: activityData.assignmentData.progressNotes || []
    * @return {*}
    * @see updateSeedEhrProperty in seedData-controller
    */
-  updateAssignmentData (id, data) {
-    const propertyName = data.propertyName
-    const value = data.value
-    // place date into the ehr data's page element
-    value.lastUpdate = moment().format()
-    // debug(`ActivityData update ${id} assignmentData[${data.propertyName}] with data:`)
-    // debug(JSON.stringify(value))
+  updateAssignmentData (id, dataPayload) {
+    // debug('ActivityData updateAssignmentData '+ id +' ehrData with data: ' + JSON.stringify(dataPayload))
     return this.baseFindOneQuery(id).then(activityData => {
       if (activityData) {
-        if (!activityData.assignmentData) {
-          activityData.assignmentData = {}
-        }
-        // set last update date into the overall activity data record.
-        activityData.lastDate = Date.now()
-        activityData.assignmentData[propertyName] = value
-        // tell the db to see a change on this subfield
-        activityData.markModified('assignmentData')
-        return activityData.save()
+        const propertyName = dataPayload.propertyName
+        const value = dataPayload.value
+        value.lastUpdate = moment().format()
+        let ehrData = activityData.assignmentData || {}
+        ehrData[propertyName] = value
+        return this._updateEhrData(activityData, ehrData)
       }
     })
+  }
+
+  updateAssignmentEhrData (id, ehrData) {
+    // debug('ActivityData updateAssignmentData '+ id +' ehrData with data: ' + JSON.stringify(ehrData))
+    return this.baseFindOneQuery(id).then(activityData => {
+      if (activityData) {
+        return this._updateEhrData(activityData, ehrData)
+      }
+    })
+  }
+
+  _updateEhrData (activityData, ehrData) {
+    updateEhrDataMeta(ehrData)
+    activityData.lastDate = Date.now()
+    activityData.assignmentData = ehrData
+    // tell the db to see a change on this subfield
+    activityData.markModified('assignmentData')
+    return activityData.save()
   }
 
   /**
@@ -80,32 +91,15 @@ export default class ActivityDataController extends BaseController {
       }
     })
   }
-
-  helperBoolVal (id, property, value, isStudentAction) {
+  
+  assignmentSubmitted (id, data) {
+    let value = data.value === true
     return this.baseFindOneQuery(id).then(activityData => {
       if (activityData) {
-        if (isStudentAction) {
-          activityData.lastDate = Date.now()
-        }
-        activityData[property] = value
+        activityData.submitted = value
         return activityData.save()
       }
     })
-  }
-
-  assignmentSubmitted (id, data) {
-    let value = data.value === true
-    return this.helperBoolVal(id, 'submitted', value, true)
-  }
-
-  assignmentEvaluated (id, data) {
-    let value = data.value === true
-    return this.helperBoolVal(id, 'evaluated', value, false)
-  }
-
-  assignmentSentBack (id, data) {
-    let value = data.value === true
-    return this.helperBoolVal(id, 'sentBack', value, false)
   }
 
   route () {
@@ -114,20 +108,6 @@ export default class ActivityDataController extends BaseController {
       const id = req.params.key
       const data = req.body
       this.assignmentSubmitted(id, data)
-        .then(ok(res))
-        .then(null, fail(res))
-    })
-    router.put('/sentBack/:key/', (req, res) => {
-      const id = req.params.key
-      const data = req.body
-      this.assignmentSentBack(id, data)
-        .then(ok(res))
-        .then(null, fail(res))
-    })
-    router.put('/evaluated/:key/', (req, res) => {
-      const id = req.params.key
-      const data = req.body
-      this.assignmentEvaluated(id, data)
         .then(ok(res))
         .then(null, fail(res))
     })

@@ -1,7 +1,6 @@
 <template lang="pug">
   div
-    ui-button(v-on:buttonClicked="showDialog")
-      span Activity details
+    div(v-on:click="showDialog()") Activity details
 
     app-dialog-shell(
       :isModal="true",
@@ -17,7 +16,6 @@
           p {{ panelInfo.activityDescription }}
         div() Assignment: {{ panelInfo.assignmentName}}
           p {{ panelInfo.assignmentDescription }}
-        div Activity is {{ panelInfo.closed ? "closed " : "open "}} to students
 </template>
 
 <script>
@@ -26,7 +24,6 @@ import UiButton from '@/app/ui/UiButton'
 import StoreHelper from '../../helpers/store-helper'
 
 export default {
-  name: 'EhrClassListNav',
   components: { AppDialogShell, UiButton },
   computed: {
     panelInfo () {
@@ -35,10 +32,12 @@ export default {
   },
   methods: {
     showDialog: function () {
+      console.log('showDialog')
       this.$refs.theDialog.onOpen()
     },
     cancelDialog: function () {
       this.$refs.theDialog.onClose()
+      this.$emit('clicked')
     },
   }
 }
@@ -46,4 +45,5 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/definitions';
+
 </style>

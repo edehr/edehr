@@ -1,17 +1,16 @@
 <template lang="pug">
-  div
-    div(v-if="showNavAction", title='End your work and send to your instructor to evaluate.')
+  div(class='student-submit')
+    div(v-if="showSubmit", title='End your work and send to your instructor to evaluate.')
       ui-button(v-on:buttonClicked="npButtonClicked", :disabled="disableNavAction") Submit
-    div(v-else)
-      div {{ afterSubmitText }}
-    ui-confirm(ref="confirmDialog", v-on:confirm="proceed")
+    div(v-else, class='status-message') {{ statusMessage }}
+    ui-confirm(ref="confirmDialog", v-on:confirm="proceed", saveLabel='Submit')
     ui-agree(ref="successDialog", v-on:confirm="finishedAction")
     app-dialog(
       :isModal="true",
       ref="submitFeedback",
       :useSave="true",
       saveButtonLabel="Submit Feedback",
-      cancelButtonLabel="Cancel",
+      cancelButtonLabel="Skip",
       @save="submitFeedback"
       @cancel="finishedAction"
       )
@@ -31,9 +30,9 @@ import { postFeedback } from '@/helpers/feedback'
 import { Text } from '@/helpers/ehr-text'
 
 const FEEDBACK_TITLE = 'Optional Feedback Form'
-const FEEDBACK_BODY = 'Your assignment has been submitted successfully.  Before you leave, '+
-  ' we hope you will share your thoughts and suggestions about this Educational Electronic Health Record System.' +
-  ' Providing feedback is optional and totally anonymous but very much appreciated.'
+const FEEDBACK_BODY = 'Your assignment is submitted. Before you go, '+
+  ' can you please give us your thoughts and suggestions about the EdEHR.' +
+  ' This is completely anonymous and optional yet your comments will help us improve this application.'
 const SUBMITTED_TEXT = 'Your assignment is now submitted. Will now return you back to your learning management system.'
 /*
 Collect student feedback, completely anonymous and voluntary, after work is submitted.
@@ -55,15 +54,11 @@ export default {
     }
   },
   computed: {
-    afterSubmitText () {
-      const panelInfo = StoreHelper.getPanelData()
-      return panelInfo.evaluated ? 'Evaluated': 'Pending Evaluation'
+    showSubmit () {
+      return !StoreHelper.isSubmitted()
     },
-    hasSubmitted () {
-      return StoreHelper.isStudent() && StoreHelper.isSubmitted()
-    },
-    showNavAction () {
-      return !StoreHelper.getActivityIsClosed() && !StoreHelper.isSubmitted()
+    statusMessage () {
+      return StoreHelper.isSubmitted(this) ? Text.IS_SUBMITTED : ''
     },
     disableNavAction () {
       return this.$store.state.system.isEditing
@@ -97,3 +92,19 @@ export default {
   },
 }
 </script>
+<style lang="scss" scoped>
+.student-submit {
+  display: flex;
+  flex-direction: row;
+  div {
+    margin-right: 5px;
+  }
+}
+.status-message {
+  font-size: 1.2rem;
+  font-weight: normal;
+}
+button {
+  min-width: 5rem;
+}
+</style>

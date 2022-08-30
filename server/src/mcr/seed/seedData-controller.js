@@ -5,11 +5,28 @@ import SeedData from './seed-data'
 import { Text }  from '../../config/text'
 import { NotAllowedError } from '../common/errors'
 import {ok, fail} from '../common/utils'
+import { updateAllVisitTime, updateEhrDataMeta } from '../../ehr-definitions/ehr-def-utils'
+import EhrDefs from '../../ehr-definitions/ehr-page-defs'
 const debug = require('debug')('server')
+const logError = require('debug')('error')
 
 export default class SeedDataController extends BaseController {
   constructor () {
     super(SeedData, '_id')
+  }
+
+  /**
+   * Override base method to ensure the ehr meta is updated
+   * @param data
+   * @returns {*}
+   */
+  create (data) {
+    updateEhrDataMeta(data.ehrData)
+    // seeds can be uploaded from files. Or created by the server with an older resource
+    // update visitTime to be sure it is ok
+    // Once created we depend on the client to only store '0000' formated visit times.
+    updateAllVisitTime(data.ehrData, EhrDefs)
+    return super.create(data)
   }
 
   /**
@@ -33,13 +50,9 @@ export default class SeedDataController extends BaseController {
         if (model.isDefault) {
           throw new NotAllowedError(Text.SEED_NOT_ALLOWED_TO_EDIT_DEFAULT)
         }
-        if (!model.ehrData) {
-          model.ehrData = {}
-        }
-        model.lastUpdateDate = Date.now()
-        model.ehrData[propertyName] = value
-        model.markModified('ehrData')
-        return model.save()
+        let data = model.ehrData || {}
+        data[propertyName] = value
+        this._updateSeed(model, data)
       }
     })
   }
@@ -52,22 +65,32 @@ export default class SeedDataController extends BaseController {
    * @return {*} updated doc
    */
   updateSeedEhrData (id, data) {
-    debug('SeedData updateSeedEhrData '+ id +' ehrData with data: ' + JSON.stringify(data))
+    // debug('SeedData updateSeedEhrData '+ id +' ehrData with data: ' + JSON.stringify(data))
     return this.baseFindOneQuery(id).then(model => {
-      debug('updateSeedEhrData search ' + model ? 'ok' : 'fail')
+      // debug('updateSeedEhrData search ' + model ? 'ok' : 'fail')
       if (model) {
         if (model.isDefault) {
           throw new NotAllowedError(Text.SEED_NOT_ALLOWED_TO_EDIT_DEFAULT)
         }
-        model.lastUpdateDate = Date.now()
-        model.ehrData = data
-        model.markModified('ehrData')
-        return model.save()
+        this._updateSeed(model, data)
       }
     })
   }
 
+  _updateSeed (model, data) {
+    updateEhrDataMeta(data)
+    model.lastUpdateDate = Date.now()
+    model.ehrData = data
+    model.markModified('ehrData')
+    return model.save()
+  }
+
   deleteSeed (id) {
+    if(!id || id === 'undefined') {
+      const msg = 'Must provide seed id to delete'
+      logError(msg)
+      throw new NotAllowedError(msg)
+    }
     console.log('Delete seed if there are no assignments using it', id)
     return Assignment.find ( {seedDataId: id})
       .then ( (assignments) => {
@@ -102,9 +125,10 @@ export default class SeedDataController extends BaseController {
     })
 
     router.delete('/:key', (req, res) => {
-      console.log('delete seed data', req.params)
+      const seedId = req.params.key
+      debug('Delete seed api endpoint with id: ', seedId)
       this
-        .deleteSeed(req.params.key)
+        .deleteSeed(seedId)
         .then(ok(res))
         .then(null, fail(res))
     })

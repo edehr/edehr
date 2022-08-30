@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="outside-layout")
+  div(class="outside-layout", :class='cssClass')
     ui-spinner(:loading="isLoading")
     slot(name="outside-header", class="outside-header")
       app-header
@@ -9,10 +9,7 @@
             div(class="section")
               slot
         slot(name="outside-footer", class="outside-footer")
-      div(v-if="isDeveloper")
-        div(style="display:none") Is developing content: {{ isDevelopingContent }} developContent: {{ developContent }}
-        input(type="checkbox", id="develop-content", v-model="developContent" )
-        label(for="develop-content") Course designer functionality
+      // div Consumer: {{ lmsName }}
       app-footer
 
 </template>
@@ -23,7 +20,6 @@ import AppFooter from '../../app/components/AppFooter.vue'
 import StoreHelper from '../../helpers/store-helper'
 import UiLink from '../../app/ui/UiLink.vue'
 import UiSpinner from '../../app/ui/UiSpinner'
-
 export default {
   name: 'LayoutOutside',
   components: {
@@ -34,36 +30,19 @@ export default {
   },
   data: function () {
     return {
-      showingSpecial: false,
-      developContent: false
     }
   },
-  watch: {
-    developContent: function () {
-      // when the model changes due to user action in the UI or in the next method update the store
-      // console.log('LayoutOutside watch isDeving developContent', this.developContent)
-      StoreHelper.setIsDevelopingContent( this.developContent)
-    },
-    isDevelopingContent: function () {
-      // console.log('LayoutOutside watch isDeving isDevelopingContent', this.isDevelopingContent)
-      this.developContent = this.isDevelopingContent
-    },
-  },
   computed: {
-    isDevelopingContent () {
-      return StoreHelper.isDevelopingContent()
-    },
-    isDeveloper () {
-      return StoreHelper.isDeveloper()
+    showLabels () { return StoreHelper.isOutsideShowButtonLabels() },
+    cssClass () {
+      // if showing labels then apply a class on the layout to be used by buttons
+      return this.showLabels ? 'showing-labels' : ''
     },
     isLoading () {
       return StoreHelper.isLoading()
-    }
+    },
+    lmsName ()          { return StoreHelper.lmsName() }
   },
-  mounted: function () {
-    // console.log('LayoutOutside mounted, isDeving isDevelopingContent', typeof this.isDevelopingContent)
-    this.developContent = this.isDevelopingContent
-  }
 }
 </script>
 

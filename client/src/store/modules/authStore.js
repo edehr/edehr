@@ -34,6 +34,7 @@ const actions = {
     return authHelper.getData(authToken)
       .then(res => {
         const { data } = res
+        // console.log('fetch auth token data', data)
         return commit('setAuthData', data)
       })
   },

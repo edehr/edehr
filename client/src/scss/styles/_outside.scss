@@ -1,0 +1,94 @@
+@import '../definitions';
+.action-section {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  > div,
+  > button,
+  > .button {
+    margin-right: 8px;
+    margin-bottom: 8px;
+  }
+}
+
+.list-card {
+  border: 1.5px solid #051F54;
+  border-radius: 10px;
+}
+.list-actions {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: end;
+  padding: 10px;
+}
+.list-actions > * {
+  margin: 3px;
+}
+.list-element {
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.list-item-container {
+  display: grid;
+  grid-template-columns: 2fr minmax(30rem, 1fr);
+}
+.list-item-name {
+  font-weight: bold;
+  font-size: 1.5rem;
+  grid-column: 1;
+}
+.list-item-actions {
+  grid-column: 2;
+}
+
+@media screen and (max-width: $main-width-threshold2){
+  .list-item-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dropdownWindow {
+  border-radius: 5px;
+  border: 1px solid $grey60;
+  padding: 1rem;
+  background-color: $white;
+  color: $grey80;
+}
+
+.details-container {
+  padding: 1rem;
+}
+//.details-title {
+//  font-weight: bold;
+//}
+.details-row {
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  padding: 5px;
+}
+.details-name {
+  text-align: right;
+  margin-right: 8px;
+  font-size: 18px;
+  &::after{
+    content: ':';
+  }
+}
+.details-value {
+  font-size: 18px;
+}
+.details-action-bar {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  margin-bottom: 1rem;
+}
+.with-title {
+  grid-template-columns: 1fr 2fr 1fr;
+}
+@media all and (max-width: $main-width-threshold2) {
+  .details-action-bar {
+    display: flex;
+    flex-flow: column;
+  }
+}

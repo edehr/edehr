@@ -47,9 +47,6 @@
     "genitourinary": {
       "table": [
         {
-          "createdDate": "2019-05-22T16:56:30-07:00"
-        },
-        {
           "name": "Jason",
           "day": "0",
           "time": "19:30",
@@ -70,11 +67,8 @@
         }
       ]
     },
-    "medicationOrders": {
-      "table": []
-    },
     "allergies": {
-      "hasNoAllergies": "TRUE"
+      "checkbox": "TRUE"
     },
     "surgical": {
       "pastSurgery": [

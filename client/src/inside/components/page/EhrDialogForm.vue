@@ -5,7 +5,8 @@
       ref="theDialog",
       @cancel="cancelDialog", 
       @save="saveDialog", 
-      v-bind:errors="errorList", 
+      v-bind:errors="errorList",
+      :cancelButtonLabel="isViewOnly ? 'Close' : 'Cancel'",
       :hasFooterContent="true"
       :useSave="!isViewOnly"
       :disableSave="disableSave"

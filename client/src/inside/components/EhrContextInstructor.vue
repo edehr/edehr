@@ -1,11 +1,11 @@
 <template lang="pug">
   div
-    div(v-show="displayControlBar", class='wrap-items-spaced')
-      div(class="item-50 item-center") Evaluating: {{ panelInfo.studentName}} (last visit: {{ panelInfo.lastVisitDate | formatDateTime }})
+    div(class='wrap-items-spaced')
+      div(class="item-50 cb-item") Evaluating: {{ panelInfo.studentName}} (last visit: {{ panelInfo.lastVisitDate | formatDateTime }})
       div(class="item-25") Student {{currentIndex}} of {{listLen}}
-      div(class="item-25 item-center")
+      div(class="item-25 cb-item")
         ui-link(:name="'classList'") Return to class list
-    div(v-show="!displayControlBar")
+    div
       div(class="wrap-items-space-between instructor-context")
         div(class="action-save wrap-items-left")
           ui-button(v-on:buttonClicked="previousStudent()", :disabled="!enablePrev", title='Previous student')
@@ -19,7 +19,10 @@
         div(class="action-activity")
           EhrContextActivityInfo
 
-      ehr-evaluation-input(ref="evaluationNoteComponent", class=" instructor-context", @hasNewDataChanged='evaluationNotesChanged')
+      ehr-evaluation-input(
+        ref="evaluationNoteComponent",
+        class=" instructor-context",
+        @hasNewDataChanged='evaluationNotesChanged')
 
 </template>
 
@@ -53,14 +56,7 @@ export default {
       return this.hasNewData
     },
     classList () {
-      let list = StoreHelper.getClassList()
-      if (!this.panelInfo.closed) {
-        // Filter the class list to only show records for students who have submitted their work
-        list = list.filter(sv => {
-          return sv.activityData.submitted
-        })
-      }
-      return list
+      return StoreHelper.getClassList()
     },
     currentIndex () {
       let elem = this.findCurrent()
@@ -140,7 +136,9 @@ export default {
 .action-save, .action-next {
   flex: 1 0 20%;
 }
-
+.instructor-context {
+  padding-bottom: 12px;
+}
 .icon-item1 {
   font-size: 1.6rem;
 }
@@ -149,5 +147,12 @@ export default {
 }
 .icon-item1 {
   font-size: 1.5rem;
+}
+@media screen and (max-width: $main-width-threshold1){
+  .cb-item {
+    overflow: hidden;
+    height: 2.6rem;
+    min-width: 6rem;
+  }
 }
 </style>

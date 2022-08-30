@@ -21,12 +21,11 @@ export default {
   display: flex;
   flex-direction: row;
 }
-
 .item-label {
-  width: 3rem;
+  min-width: 3rem;
   text-align: end;
 }
 .item-value {
-  max-height: 1.8rem;
+  //max-height: 1.8rem;
 }
 </style>

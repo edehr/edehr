@@ -1,13 +1,11 @@
 <template lang="pug">
   div(class="ehr-page")
-    ehr-panel-header {{ pageDef.pageTitle }}
     ehr-panel-content
       ehr-page-element(v-for="element in pageElements", :key="element.pageDataKey", :element="element", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
     ehr-page-footer(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
 </template>
 
 <script>
-import EhrPanelHeader from './EhrPanelHeader.vue'
 import EhrPanelContent from './EhrPanelContent.vue'
 import EhrPageElement from './EhrPageElement'
 import EhrPageFooter from './EhrPageFooter'
@@ -53,7 +51,6 @@ is broadcast and captured with the change. The change is then pushed into the pa
  */
 export default {
   components: {
-    EhrPanelHeader,
     EhrPanelContent,
     EhrPageFooter,
     EhrPageElement

@@ -1,7 +1,6 @@
 // Custom page for Discharge Summary
 <template lang="pug">
   div()
-    ehr-panel-header {{ pageDef.pageTitle }}
     ehr-panel-content
       ehr-page-element(:key="leadElement.pageDataKey", :element="leadElement", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
       div(v-for="key in summaries")
@@ -12,7 +11,6 @@
 </template>
 
 <script>
-import EhrPanelHeader from '../page/EhrPanelHeader.vue'
 import EhrPanelContent from '../page/EhrPanelContent.vue'
 import EhrPageElement from '../page/EhrPageElement'
 import EhrDefs from '../../../helpers/ehr-defs-grid'
@@ -22,7 +20,6 @@ import { ESK_Referrals, ESK_LabReqs, ESK_Procedures, ESK_DischargeProcedures, ES
 export default {
   components: {
     EhrSummaryTable,
-    EhrPanelHeader,
     EhrPanelContent,
     EhrPageElement
   },

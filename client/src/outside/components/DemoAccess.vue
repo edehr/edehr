@@ -1,13 +1,15 @@
 <template lang="pug">
   div(class="content")
-    div
+    div(class="enter-demo-buttons")
       div(v-if="showEhrOnlyDemoLink")
         ui-button(class="demoButton",@buttonClicked="gotoEhrOnly", :title='tip1') EHR only demonstration
-        div &nbsp;
+        //div &nbsp;
+      div(v-if="demoFeatureFlag && !isDemo")
+        ui-button(class="demoButton",@buttonClicked="demoLoginConfirm", :title='tip2') Full EdEHR demonstration
     div
       div(class="columns", v-if="isInstructor")
         div(class="column is-8") You are logged in as an instructor.  &nbsp;
-          ui-link(:name="'instructor'") Go to your course lists.
+          ui-link(:name="'courses'") Go to your course lists.
         div(class="column is-4")
           ui-button(@buttonClicked="logoutUser") Sign out as instructor
       div(class="columns", v-if="isStudent")
@@ -19,8 +21,8 @@
       div(v-if="isDemo")
         div You are already logged into the demonstration. &nbsp;
           ui-link(:name="'demo'") Click here to return to the demonstration page.
-      div(v-else class="demoLogin")
-        ui-button(class="demoButton",@buttonClicked="demoLoginConfirm", :title='tip2') Full EdEHR demonstration
+      //div(v-else class="demoLogin")
+      //  ui-button(class="demoButton",@buttonClicked="demoLoginConfirm", :title='tip2') Full EdEHR demonstration
     div(v-else).
       There is a full demonstration mode that shows how the EdEHR works with learning management systems.
       Contact <a href="mailto:info@edehr.org">info@edehr.org</a> for more information.
@@ -86,12 +88,20 @@ export default {
     color: $grey80;
   }
 
+  .enter-demo-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
   .demoButton {
-    //box-shadow: 2px 2px 2px 2px  #DC143C;
-    box-shadow: 2px 2px 2px 2px  $brand-primary-hover;
-    //border: 1px solid #ff5555;
+    ////box-shadow: 2px 2px 2px 2px  #DC143C;
+    //box-shadow: 2px 2px 2px 2px  $brand-primary-hover;
+    ////border: 1px solid #ff5555;
     background-color: $toolbar-background-color;
-    font-size: 1.25rem;
+    color: white;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    padding: 1.5rem 1rem;
   }
   a {
     color: white;

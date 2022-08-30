@@ -4,10 +4,10 @@ import InstoreHelper from '../store/modules/instoreHelper'
 
 const debugDC = false
 
-export function demoGoToEhr (toolKey, toolSecret, personaName, role, assignmentName, assignmentDescription, externalId, returnUrl) {
+export function demoGoToEhr (toolKey, toolSecret, personaName, role, resource_link_title, resource_link_description, externalId, returnUrl) {
   const submitData = {
-    assignmentName: assignmentName,
-    assignmentDescription: assignmentDescription,
+    resource_link_title: resource_link_title,
+    resource_link_description: resource_link_description,
     externalId: externalId,
     personaName: personaName,
     personaRole: role,
@@ -75,5 +75,19 @@ export default class DemoHelper {
         }
         return list
       })
+  }
+  async loadActivities () {
+    const token = StoreHelper.getDemoToken()
+    const apiUrl = StoreHelper.apiUrlGet()
+    const url = `${apiUrl}/demo/demo-activities`
+    const options = {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+      url,
+    }
+    const response = await axios(options)
+    return response
   }
 }

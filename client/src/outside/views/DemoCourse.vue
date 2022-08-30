@@ -1,52 +1,56 @@
 <template lang="pug">
-  div(class="content")
+  div(class="demo-course-content")
     section(class="columns")
-
       div(class="column is-3 aside")
-        div(class="aside-section")
-          div Demo Persona: {{ demoPersona.name }}
-          div Demo Role: {{ demoPersona.role}}
-          div(v-if='demoPersona.role === "instructor"') Switch role: &nbsp;
+        div(class="aside-section showing-labels")
+          div {{demoText.personaLabel}}: {{ demoPersona.name }}
+          div {{demoText.roleLabel}}: {{ demoPersona.role}}
+          div(v-if='demoPersona.role === "instructor"') {{demoText.switchRoleSegmentTitle}} &nbsp;
             label
               input(class="checkbox", type="checkbox", v-model="asStudent")
               span as student
-            div(v-if='asStudent') When you click on an activity this 'instructor' will become a 'student' same as how Moodle allows users to switch roles.
+            div(v-if='asStudent') {{demoText.switchRoleExplain}}
           div
-            ui-button(v-on:buttonClicked="gotoChangeCharacter()", :secondary="true", title='Change to another persona') Change to another persona
-
+            ui-button(v-on:buttonClicked="gotoChangeCharacter()",
+              :secondary="true",
+              :title='demoText.switchRoleLabel') {{ demoText.switchRoleLabel }}
         div(class="aside-section", v-text-to-html.noAutoLink="demoText.lmsAside")
       div(class="column is-8 is-offset-1 is-centered")
         div(class="columns")
           div(class="column is-11")
-            h2 Demonstration Learning Management System
-            h3 Sample Course - Intro to EHR
+            h2 {{demoText.lmsTitle}}
+              ui-info(:title="demoText.lmsTitle", :text="demoText.lmsHint")
+            h3 {{demoText.courseTitle}}
           div(class="column is-1")
             ui-button(v-on:buttonClicked="editMode = !editMode", :class="editButtonClass", title='Edit activity configuration')
-              fas-icon(icon="pen")
-        section(v-for="assignment in assignments", :key="`des-${assignment.externalId}`")
-          demo-course-activity(:assignment="assignment", :switch-role="asStudent", :edit-mode='editMode')
+              fas-icon(:icon="appIcons.edit")
+        section(v-for="activity in activities", :key="`des-${activity.resource_link_title}`")
+          demo-course-activity(:activity="activity", :switch-role="asStudent", :edit-mode='editMode')
           hr
 </template>
 
 <script>
-import StoreHelper from '../../helpers/store-helper'
+import { APP_ICONS } from '@/helpers/app-icons'
+import StoreHelper from '@/helpers/store-helper'
 import DemoCourseActivity from '@/outside/views/DemoCourseActivity'
-import DemoHelper from '../../helpers/demo-helper'
-import UiButton from '../../app/ui/UiButton'
-import EventBus from '../../helpers/event-bus'
-import { PAGE_DATA_READY_EVENT } from '../../helpers/event-bus'
+import DemoHelper from '@/helpers/demo-helper'
+import UiButton from '@/app/ui/UiButton'
+import UiInfo from '@/app/ui/UiInfo'
+import EventBus from '@/helpers/event-bus'
+import { PAGE_DATA_READY_EVENT } from '@/helpers/event-bus'
 import { demoText } from '@/appText'
 
 const debugDC = false
 
 export default {
   components: {
-    UiButton, DemoCourseActivity
+    UiButton, UiInfo, DemoCourseActivity
   },
   data () {
     return {
+      appIcons: APP_ICONS,
       asStudent: false,
-      assignments: [],
+      activities: [],
       demoText: demoText,
       editMode: false
     }
@@ -76,11 +80,12 @@ export default {
     gotoChangeCharacter: function () {
       this.$router.push('/demo')
     },
-    loadAssignments: function () {
+    loadActivities: function () {
       const demoHelper = new DemoHelper()
-      demoHelper.loadAssignments()
-        .then((list) => {
-          this.assignments = list
+      demoHelper.loadActivities()
+        .then((response) => {
+          if (debugDC) console.log('load acts', response)
+          this.activities = response.data.activities
         })
     }
   },
@@ -89,22 +94,22 @@ export default {
       if (debugDC) console.log('go to home because the user is not in the demo mode')
       return this.$router.push('/')
     }
-    const p = StoreHelper.getDemoPersona()
-    if (!p || !p.name) {
-      if (debugDC) console.log('Go to the demo change persona page')
-      // return this.$router.push('demo')
-    }
+    // const p = StoreHelper.getDemoPersona()
+    // if (!p || !p.name) {
+    //   if (debugDC) console.log('Go to the demo change persona page')
+    //   // return this.$router.push('demo')
+    // }
     const _this = this
     this.refreshEventHandler = function () {
       if (debugDC) console.log('Demo LMS PAGE_DATA_READY_EVENT')
-      _this.loadAssignments()
+      _this.loadActivities()
     }
     EventBus.$on(PAGE_DATA_READY_EVENT, this.refreshEventHandler)
-    _this.loadAssignments()
+    _this.loadActivities()
   },
   beforeDestroy: function () {
     if (this.refreshEventHandler) {
-      EventBus.$off(PAGE_DATA_READY_EVENT, this.loadAssignments)
+      EventBus.$off(PAGE_DATA_READY_EVENT, this.refreshEventHandler)
     }
   }
 
@@ -114,8 +119,8 @@ export default {
 <style lang="scss" scoped>
 @import '../../scss/definitions';
 
-.content {
-  font-size: 1.2rem;
+.demo-course-content {
+  //font-size: 1.2rem;
 }
 
 .aside {
@@ -124,7 +129,7 @@ export default {
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: $main-width-threshold1){
   .aside {
     .aside-section {
       margin-bottom: 0.5rem;

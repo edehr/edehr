@@ -1,7 +1,6 @@
 // Custom EHR Vue component
 <template lang="pug">
   div()
-    ehr-panel-header {{ pageDef.pageTitle }}
     ehr-panel-content
       div(class="region ehr-page-content")
         tabs
@@ -15,7 +14,6 @@
 </template>
 
 <script>
-import EhrPanelHeader from '@/inside/components/page/EhrPanelHeader.vue'
 import EhrPanelContent from '@/inside/components/page/EhrPanelContent.vue'
 import EhrPageTable from '@/inside/components/page/EhrPageTable'
 import EhrDefs from '@/helpers/ehr-defs-grid'
@@ -24,7 +22,6 @@ import Tab from '@/inside/components/Tab.vue'
 
 export default {
   components: {
-    EhrPanelHeader,
     EhrPanelContent,
     EhrPageTable,
     Tabs, Tab

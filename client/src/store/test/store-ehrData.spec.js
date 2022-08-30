@@ -12,7 +12,7 @@ activity and assignmet data.
 describe.skip('Test activityDataStore module', () => {
   it('store _setActivityData', () => {
     store.commit('activityDataStore/_setActivityData', activityData())
-    let data = store.getters['assignmentStore/assignmentData']
+    let data = store.getters['activityDataStore/assignmentData']
     should.exist(data)
     data.should.have.property('demographics')
   })

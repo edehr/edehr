@@ -570,24 +570,6 @@ describe('assignment tests', () => {
     })
   })
 
-  it('getAssignmentName', done => {
-    should.doesNotThrow(() => {
-      const name = StoreHelper.getAssignmentName()
-      should.exist(name)
-      name.should.equal(mockData.assignment.name)
-      done()
-    })
-  })
-
-  it('getAssignmentDescription', done => {
-    should.doesNotThrow(() => {
-      const description = StoreHelper.getAssignmentDescription()
-      should.exist(description)
-      description.should.equal(mockData.assignment.description)
-      done()
-    })
-  })
-
   it('getAssignment', async () => {
     should.doesNotThrow(async () => {
       const assignment = mockData.assignment
@@ -1088,7 +1070,7 @@ describe.skip('Demonstration related', () => {
       const persona = mockData.demoData.personaList[0]
       const { assignment, demoData } = mockData
       const submitData = {
-        assignmentName: assignment.name,
+        resource_link_title: assignment.name,
         externalId: assignment.externalId,
         personaName: persona.name,
         personaEmail: persona.email,

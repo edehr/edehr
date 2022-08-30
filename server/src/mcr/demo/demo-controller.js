@@ -3,18 +3,18 @@ import axios from 'axios'
 import qs from 'qs'
 import { demoPersonae } from '../../helpers/demo-personae'
 import { demoLimiter, validatorMiddlewareWrapper } from '../../helpers/middleware'
-import { assignment1, assignment2, wound1 } from '../../resources/assignment-defs'
-import { ej0Seed, ej2Seed, wound1Seed } from '../../resources/assignment-defs'
-
+import { activity1, activity2, activity3 } from '../../resources/assignment-defs'
+import { fail, ok } from '../common/utils'
+import Consumer from '../consumer/consumer'
+const ObjectID = require('mongodb').ObjectId
 const {ltiVersions} = require('../../mcr/lti/lti-defs')
 const HMAC_SHA1 = require('ims-lti/src/hmac-sha1')
-
 const debugDC = true
 const debug = require('debug')('server')
 const logError = require('debug')('error')
 
+// match the same version as in the client side demo-store-helper.js
 export const   DEMO_CONSUMER_FAMILY_CODE = 'EdEHR Demo'
-
 const consumerBaseDef = {
   lti_version: ltiVersions()[0],
   tool_consumer_info_product_family_code: DEMO_CONSUMER_FAMILY_CODE,
@@ -44,24 +44,22 @@ export default class DemoController {
     this.comCon = cc
   }
 
-  addSample (theSeed, assignmentData, toolC) {
-    Promise.resolve().then(() => {
-      const data = theSeed
-      if (debugDC) debug('DemoController create', data.name)
-      const aSeed = Object.assign({}, seedTemplate, { toolConsumer: toolC._id })
-      aSeed.name = data.name
-      aSeed.description = data.description
-      aSeed.ehrData = data.ehrData
-      return this.comCon.seedController.create(aSeed)
-    })
-      .then((seed) => {
-        if (debugDC) debug('DemoController create assignment')
-        const ass = Object.assign({}, assignmentData, { toolConsumer: toolC })
-        return this.comCon.assignmentController.createAssignment(ass, seed._id)
-      })
+  async addSample (activity, toolC) {
+    const theSeed = activity.seedDef
+    const assignmentData = activity.learningObject
+    const data = theSeed
+    if (debugDC) debug('DemoController create', data.name)
+    const aSeed = Object.assign({}, seedTemplate, { toolConsumer: toolC._id })
+    aSeed.name = data.name
+    aSeed.description = data.description
+    aSeed.ehrData = data.ehrData
+    let seed = await this.comCon.seedController.create(aSeed)
+    const ass = Object.assign({}, assignmentData, { toolConsumer: toolC })
+    if (debugDC) debug('DemoController create assignment', ass.title)
+    await this.comCon.assignmentController.createAssignment(ass, seed._id)
   }
 
-  _createDemoToolConsumer (req, res, next) {
+  async _createDemoToolConsumer (req, res, next) {
     let theId = req.body.id
     if (debugDC) debug('DemoController create tool. Call provided this id:', theId)
     if (!theId) {
@@ -71,52 +69,50 @@ export default class DemoController {
     }
     theId = 'Demo-' + Date.now() + '-' + theId
     if (debugDC) debug('DemoController create tool. Create tool with this id:', theId)
-    const consumerDef = Object.assign({}, consumerBaseDef, {  oauth_consumer_key: theId, oauth_consumer_secret: theId })
+    const consumerDef = Object.assign({}, consumerBaseDef, { oauth_consumer_key: theId, oauth_consumer_secret: theId })
     consumerDef.is_primary = false
-    let toolC
-    this.comCon.consumerController.createToolConsumer(consumerDef)
-      .then((toolConsumer) => {
-        toolC = toolConsumer
-        if (debugDC) debug('DemoController tool consumer ready', toolC)
-      })
-      .then(() => {
-        return this.addSample(ej0Seed, assignment1, toolC)
-      })
-      .then(() => {
-        return this.addSample(ej2Seed, assignment2, toolC)
-      })
-      .then(() => {
-        return this.addSample(wound1Seed, wound1  , toolC)
-      })
-      .then(() => {
-        if (debugDC) debug('DemoController generate token')
-        try {
-          const demoData = {
-            toolConsumerKey: theId,
-            toolConsumerId: toolC._id,
-            personaList: demoPersonae
-          }
-          const demoToken = this.comCon.authUtil.createToken({demoData: demoData})
-          if (debugDC) debug('DemoController _createDemoToolConsumer generated token')
-          res.status(200).json({demoToken})
-        } catch (err) {
-          logError('DemoController _createDemoToolConsumer ERROR ', err)
-          res.status(500).send(err)
-        }
-      })
+    let toolC = await this.comCon.consumerController.createToolConsumer(consumerDef)
+    if (debugDC) debug('DemoController tool consumer ready', toolC)
+    await this.addSample(activity1, toolC)
+    await this.addSample(activity2, toolC)
+    await this.addSample(activity3, toolC)
+    if (debugDC) debug('DemoController generate token')
+    const demoData = {
+      toolConsumerKey: theId,
+      toolConsumerId: toolC._id,
+      personaList: demoPersonae
+    }
+    try {
+      const demoToken = this.comCon.authUtil.createToken({ demoData: demoData })
+      if (debugDC) debug('DemoController _createDemoToolConsumer generated token')
+      res.status(200).json({ demoToken })
+    } catch (err) {
+      logError('DemoController _createDemoToolConsumer ERROR ', err)
+      res.status(500).send(err)
+    }
   }
 
+  listDemoActivities () {
+    const response = { activities: [
+      activity1, activity2, activity3
+    ]}
+    return Promise.resolve(response)
+  }
 
-  deleteDemoData (consumerKey) {
-    let toolConsumer
-    debug('deleteDemoData consumer along with all of its data: ' + consumerKey)
-    return this.comCon.consumerController.findOneConsumerByKey(consumerKey)
-      .then((tc) => {
-        if (!tc) {
-          throw new Error('Attempt to clean up a demo consumer that does not exist ' + consumerKey)
+  deleteDemoData (toolConsumerId) {
+    const query = {_id: new ObjectID(toolConsumerId)}
+    debug('deleteDemoData query:          ', query)
+    return Consumer.find(query)
+      .then((tcList) => {
+        if (!tcList || tcList.length == 0) {
+          throw new Error('Attempt to clean up a demo consumer that does not exist ' + toolConsumerId)
+        }
+        const tc = tcList[0]
+        if (tc.is_primary) {
+          throw new Error('Attempt to clean a non-demo consumer ' + toolConsumerId)
         }
         debug('Ready to remove a demo consumer along with all of its data: ' + tc.tool_consumer_instance_name)
-        toolConsumer = tc._id
+        let toolConsumer = tc._id
         let promises = []
         promises.push(this.comCon.visitController.clearConsumer(toolConsumer))
         promises.push(this.comCon.activityController.clearConsumer(toolConsumer))
@@ -150,7 +146,7 @@ export default class DemoController {
         res.status(200).json({refreshToken: _results.data.refreshToken, url: _results.data.url})
       })
       .catch(err => {
-        logError(`DC.submitLtiData caught >> ${err.message}`)
+        logError(`Demo Controller submitLtiData caught >> ${err.message}`)
         let { status, data } = err.response
         // console.log('DC.submitLtiData', data)
         res.status(status).send(data)
@@ -230,14 +226,17 @@ export default class DemoController {
       res.status(200).json(req.authPayload)
     )
 
+    router.get('/demo-activities/', (req, res) => {
+      this
+        .listDemoActivities()
+        .then(ok(res))
+        .then(null, fail(res))
+    })
+
     router.post('/logout', validatorMiddleware, (req, res) => {
-      if (debugDC) debug('DemoController logout', req.authPayload)
-      // TODO fix
-      // The authPayload consumer key contains the most recent consumer key the user has used to
-      // log in with. THIS MAY BE THE MAIN CONSUMER.  Instead we must find a way to send
-      // the actual demo consumer.  AND we should change the 'delete' action to a safer 'flag for delete'
-      // action. Do the actual delete in an out-of-band clean up routine (scheduled weekly?)
-      this.deleteDemoData(req.authPayload.consumerKey)
+      const { toolConsumerId } = qs.parse(req.body)
+      debug('DemoController POST logout toolConsumerId', toolConsumerId)
+      this.deleteDemoData(toolConsumerId)
         .then( () => {
           if (debugDC) debug('DemoController logout, return 200')
           res.status(200).send('success')

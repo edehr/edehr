@@ -36,20 +36,7 @@ export default {
         StoreHelper.setSystemMessage('')
     },
     updateSystemMessage () {
-      let msg = ''
-      if (StoreHelper.isStudent(this)) {
-        if (StoreHelper.isSubmitted(this)) {
-          msg = Text.STUDENT_HAS_SUBMITTED
-        } else if (StoreHelper.getActivityIsClosed(this)) {
-          msg = Text.ACTIVITY_IS_CLOSED
-        }
-      }
-      // uncomment to set a test api error
-      // StoreHelper.setApiError('This a test api error message')
-      // uncomment one of these msgs to set a test system message
-      // msg = Text.STUDENT_HAS_SUBMITTED
-      // msg = Text.STUDENT_INTRO
-      // msg = Text.ASSIGNMENT_HAS_BEEN_EVALUATED
+      const msg =  (StoreHelper.isStudent(this) && StoreHelper.isSubmitted(this)) ? Text.IS_SUBMITTED : ''
       StoreHelper.setSystemMessage(msg)
     }
 

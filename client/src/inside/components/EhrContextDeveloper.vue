@@ -1,5 +1,6 @@
 <template lang="pug">
   div(class="contextDeveloper")
+    div CAN DELETE THIS COMPONENT
     div(class="columns")
       div(class="column is-2") Description:
       div(class="column is-10") {{ seedInfo.description}}

@@ -2,7 +2,7 @@ import moment from 'moment'
 import Vue from 'vue'
 import router from '@/router'
 import EhrOnlyDemo from '@/helpers/ehr-only-demo'
-import EhrTypes from '@/helpers/ehr-types'
+import EhrTypes from '@/inside/defs-grid/ehr-types'
 import EventBus, {
   ACTIVITY_DATA_EVENT,
   FORM_INPUT_EVENT,
@@ -91,9 +91,6 @@ export default class EhrHelpV2 {
     return StoreHelper.isSubmitted()
   }
 
-  _isActivityOpen () {
-    return !StoreHelper.getActivityIsClosed()
-  }
 
   /**
    * Show or don't show page edit controls or table open dialog buttons.
@@ -108,7 +105,7 @@ export default class EhrHelpV2 {
       // the instructor is evaluating student work. Do not allow edit of content.
       return false
     }
-    let studentCanEdit = this._isActivityOpen() && this._isStudent() && !this._isSubmitted()
+    let studentCanEdit = this._isStudent() && !this._isSubmitted()
     let devContent = this._isDevelopingContent()
     let ehrOnly = EhrOnlyDemo.isActiveEhrOnlyDemo()
     return studentCanEdit || devContent || ehrOnly
@@ -130,13 +127,7 @@ export default class EhrHelpV2 {
   }
 
   canEditForm (formKey) {
-    let result = this._canEdit() && !this.isEditing()
-    // if (result && !this.isEditing()) {
-    //   let pfd = this.pageFormData
-    //   result = pfd.formKey === undefined
-    //   if (dbPageForm) console.log('canEditForm', formKey, result)
-    // }
-    return result
+    return this._canEdit() && !this.isEditing()
   }
 
   isEditing () {
@@ -380,8 +371,7 @@ export default class EhrHelpV2 {
 
   getDialogEventChannel (dialogKey) {
     const DIALOG_SHOW_HIDE_EVENT_KEY = 'modal:'
-    let channel = DIALOG_SHOW_HIDE_EVENT_KEY + dialogKey
-    return channel
+    return DIALOG_SHOW_HIDE_EVENT_KEY + dialogKey
   }
 
   getErrorList (tableKey) {

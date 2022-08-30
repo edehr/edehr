@@ -1,4 +1,4 @@
-import EhrTypes from '../../client/src/helpers/ehr-types'
+import EhrTypes from '../source/ehr-types'
 
 const Defs = {
   recordHeader: [

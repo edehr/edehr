@@ -41,7 +41,7 @@ function defaultConfig (env) {
     ehrMaxFileSize: process.env.EHR_MAX_FILE_SIZE || 1024 * 1024 * 5,
     ehrFileTypeRE: /jpeg|jpg|png|gif|tiff|tif|bmp|pdf|json|txt|text/,
     ehrFileTypes: 'jpeg,jpg,png,gif,tiff,tif,bmp,pdf,json,txt,text',
-    seedDB: process.env.SEED_DB || true,
+    seedDB: process.env.SEED_DB !== 'false', // defaults to true
     database: {
       name: process.env.MONGODB_NAME || 'edehr-dev',
       host: process.env.MONGODB_HOST || 'localhost',
@@ -52,8 +52,7 @@ function defaultConfig (env) {
         useNewUrlParser: true,
         useCreateIndex: true,
         useUnifiedTopology: true
-      },
-      debug: process.env.MONGODB_DEBUG || false
+      }
     },
     defaultConsumerKey: process.env.DEFAULT_CONSUMER_KEY || 'edehrkey',
     ehr: {

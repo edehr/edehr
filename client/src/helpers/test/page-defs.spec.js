@@ -1,6 +1,6 @@
-import pageDefs from '../../inside/defs-grid/index'
+import pageDefs from '../../inside/defs-grid/ehr-page-defs'
 
-import { inputTypes, dependentOn } from '../ehr-types'
+import { inputTypes, dependentOn } from '@/inside/defs-grid/ehr-types'
 import EhrDefs from '../ehr-defs-grid'
 import ehrValidations from '../../inside/components/page/ehr-validations'
 import { isString, validNumberStr } from '@/helpers/ehr-utils'

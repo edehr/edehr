@@ -8,7 +8,7 @@
       ehr-table-stacked(v-if="isStacked", :ehrHelp="ehrHelp", :tableDef="tableDef")
     ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDef", :errorList="errorList" )
     div(v-if="hasData", style="text-align: right;") <!-- put the clear button on the far right side -->
-      ui-button(v-on:buttonClicked="clearAllData", v-bind:secondary="true") Clear your {{tableDef.label}} data
+      ui-button(class="reset-button",v-on:buttonClicked="clearAllData", v-bind:secondary="true") Reset your {{tableDef.label}} data
     ui-confirm(ref="confirmDialog", v-on:confirm="proceedClearAllData", saveLabel='Yes')
 
 </template>
@@ -124,4 +124,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.reset-button {
+  margin-top: 1.5rem;
+}
 </style>

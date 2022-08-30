@@ -87,7 +87,7 @@ export default {
   justify-content: flex-end;
 }
 /* Small screens */
-@media all and (max-width: 500px) {
+@media screen and (max-width: $main-width-threshold1) {
   .indicator {
     float: right;
   }
@@ -99,7 +99,12 @@ export default {
 .linkElement.columns:last-child {
   margin-bottom: 0;
 }
-
+.linkElement:hover {
+  background-color: $nav-active;
+}
+a:hover {
+  color: #ffffff;
+}
 .EhrNavListItem {
   margin-top: 1px;
   &__level1,
@@ -190,7 +195,7 @@ export default {
     color: $green;
   }
 
-  @media screen and (max-width: 500px){
+  @media screen and (max-width: $main-width-threshold1){
     .circle {
       margin-top: -18px;
     }

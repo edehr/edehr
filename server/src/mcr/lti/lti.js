@@ -130,7 +130,8 @@ export default class LTIController {
           if (!toolConsumer) {
             let message = Text.EdEHR_UNKNOWN_KEY(consumerKey)
             debug('strategyVerify ' + message)
-            return callback(_this._createParameterError(ltiData, message))
+            callback(_this._createParameterError(ltiData, message))
+            return Promise.reject(message)
           }
           req.toolConsumer = toolConsumer
           return toolConsumer
@@ -150,7 +151,8 @@ export default class LTIController {
           provider.valid_request(_req, function (err, isValid) {
             if (err) {
               debug('strategyVerify lti provider verify send error: ' + err.message)
-              return callback(_this._createParameterError(req.ltiData, err.message), null)
+              callback(_this._createParameterError(req.ltiData, err.message), null)
+              return Promise.reject(err.message)
             }
             // let userId = ltiData['user_id']
             // debug('strategyVerify find userId: ' + userId + ' consumer: ' + consumerKey)
@@ -158,6 +160,10 @@ export default class LTIController {
               callback(null, user)
             })
           })
+        })
+        .catch ((err) => {
+          logError('strategyVerify then.catch authentication error: ' + err)
+          callback(_this._createSystemError(req.ltiData, err), null)
         })
     } catch (err) {
       logError('strategyVerify authentication error: ' + err.message)
@@ -288,12 +294,15 @@ export default class LTIController {
             throw this._createAssignmentMismatchError(req.ltiData, msg)
           }
           let ltiData = req.ltiData
-          let title = ltiData.resource_link_title
+          // to do adjust learning object title so it is not exactly the same as lms activity
+          let title = 'Learning Object for LMS activity: ' + ltiData.resource_link_title
+          let description = 'LMS activity description: ' + ltiData.resource_link_description
           // Get the default description for assignments from config.
           // The resource_link_description is used to describe the activity and using it for the
           // assignment too is confusing.
           let aAssignment = {
-            resource_link_title: title,
+            title: title,
+            description: description,
             externalId: externalId,
             toolConsumer: toolConsumer
           }
@@ -350,7 +359,7 @@ export default class LTIController {
 
     if (visit.isInstructor) {
       if (debugFine) debug('Route to instructor page ')// + JSON.stringify(req.ltiData, null, 2))
-      route = '/instructor'
+      route = '/lms-activity?activityId=' + visit.activity._id
     }
 
     try {

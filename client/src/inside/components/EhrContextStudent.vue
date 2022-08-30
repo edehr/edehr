@@ -1,60 +1,67 @@
 <template lang="pug">
   div
-    div(v-show="displayControlBar", class='wrap-items-space-between')
-      div(class="item-25 item-center") Activity: {{ panelInfo.activityTitle}}
-      div(class="item-12 item-center")
+    div(class='ehr-context-student')
+      div(class="cb-item")
+        div(class="activity")  {{pageTitle}}
+      div(class="cb-item cb-right")
+        ehr-sim-time(:ehr-data="md")
         ehr-student-submit
-      div(class="item-25 item-center")
-        ehr-visit-day-time-control
-      div(class="item-25 item-center")
-        div(v-if="lmsName")
-          span Return to: &nbsp;
-          a(:href="lmsUrl", class="navLink") {{lmsName}}
-
-    div(v-show="!displayControlBar", class='wrap-items-space-between')
-      div(class="EhrPanelContent")
-        div(v-show="isSentBack")  Sent back for edits
-        div                       Evaluation: {{evaluationText}}
-      EhrContextActivityInfo
+        ehr-student-other-dropdown
+          div Student tools
 </template>
 
 <script>
-import EhrVisitDayTimeControl from '@/inside/components/EhrVisitDayTimeControl'
+import EhrStudentOtherDropdown from '@/inside/components/EhrStudentOtherDropdown'
 import EhrStudentSubmit from '@/inside/components/EhrStudentSubmit'
-import EhrContextActivityInfo from '@/inside/components/EhrContextActivityInfo'
-import UiInfo from '@/app/ui/UiInfo'
 import StoreHelper from '@/helpers/store-helper'
+import EhrSimTime from '@/inside/components/EhrSimTime'
 export default {
-  components: { EhrContextActivityInfo, EhrStudentSubmit, EhrVisitDayTimeControl, UiInfo },
+  components: { EhrSimTime, EhrStudentOtherDropdown, EhrStudentSubmit },
+  data () {
+    return {
+    }
+  },
   computed: {
-    evaluationText ()   { return !this.isEvaluated ? 'Not yet submitted' : (this.showEvalNotes ? this.evaluationNotes : 'Not yet evaluated')},
-    userName ()         { return this.panelInfo.userName },
-    scratchData ()      { return this.panelInfo.scratchData },
-    submitted ()        { return this.panelInfo.submitted },
-    isClosed ()         { return this.panelInfo.closed },
-    isSentBack ()       { return this.panelInfo.sentBack },
-    closedDate ()       { return this.panelInfo.closedDate },
-    isEvaluated ()      { return this.panelInfo.evaluated },
-    evaluationNotes ()  { return this.panelInfo.evaluationData },
-    showEvalNotes ()    { return this.isEvaluated || this.isClosed || this.isSentBack },
-    panelInfo ()        { return StoreHelper.getPanelData() },
-    lmsUrl ()           { return StoreHelper.lmsUrl()  },
-    lmsName ()          { return StoreHelper.lmsName() },
-
+    md () { return StoreHelper.getMergedData() },
+    pageTitle ()        { return StoreHelper.getPageTitle() },
   },
-  props: {
-    displayControlBar: { type: Boolean }
-  },
-  methods: {}
+  methods: {
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 @import '../../scss/definitions';
-.contextStudent {
-  background-color: inherit;
+.ehr-context-student {
+  display: grid;
+  /* activity name, submit button, other dropdown menu */
+  grid-template-columns: 1fr 3fr;;
+  height: 2.5rem;
+  div {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 2px;
+  }
+  .cb-right {
+    justify-content: flex-end;
+    gap: 15px;
+    padding-right: 2rem;
+    display: flex;
+    flex-flow: row;
+  }
 }
-  .contextStudent_content {
-    margin: 0 0 1rem 2rem;
+@media screen and (max-width: $main-width-threshold1){
+  .ehr-context-student {
+    /* activity name, submit button, other dropdown menu */
+    grid-template-columns: 1fr 4fr;
+    div {
+      font-weight: normal;
+      font-size: 0.9rem;
+    }
+  }
+  .titleBarLabel {
+    font-size: 0.9rem;
+    padding-right: 0;
+  }
 }
 </style>

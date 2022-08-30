@@ -2,14 +2,14 @@
 @import "../definitions";
 
 body, button, input, select, textarea {
-  color: $grey80;
-  font-family: $bodyFontFamily; 
+  color: $black;
+  font-family: $bodyFontFamily;
   font-size: $bodyFontSize;
   line-height: 1.4;
 }
 
 h1, h2, h3, .h3, h4, h5, h6 {
-	color: $grey70;
+	color: $grey90;
 	font-family: $bodyFontFamily;
 	font-weight: bold;
 	line-height: 1.2;
@@ -37,7 +37,7 @@ h4 {
 }
 
 p {
-	color: $grey80;
+	color: $black;
 	margin-bottom: 1em;
 	max-width: 60rem;
 }

@@ -3,18 +3,17 @@
     div(class="ehr_layout__wrapper app")
       ui-spinner(:loading="isLoading")
       app-header
-      // the area for instructors to grade students, seed editors to see infor about the see and students to see their evaluations
+      // ehr-context-banner lets instructors grade students, seed editors see seed info and students see their evaluations
       ehr-context-banner
       main(class="ehr_layout__main")
-        div(class="ehr_layout__nav bigger-screens")
+        div(class="ehr_layout__nav bigger-screens-900")
           ehr-nav-panel
         div(class="ehr_layout__content")
           div(class="ehr_layout__content_banner")
-            div(class="ehr_layout__content_banner_content")
-              // banner with patient information
-              ehr-banner
+            // banner with patient information
+            ehr-banner
           div(class="ehr_layout__content_page")
-            div(class="mobile-only")
+            div(class="smaller-than-900")
               span(style="text-align: left; margin-left: 1em")
                 fas-icon(icon="bars", @click="showingNavPanel = !showingNavPanel")
                 transition(name="hamburger-action")
@@ -86,62 +85,93 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/definitions';
-.ehr_layout {
+$contentMinHeight: 700px;
 
-  background-color: $grey60;
+/* layout */
+.ehr_layout {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  margin: 1px;
-  &__main {
-    color: $grey80;
-    background-color: $white;
+  .ehr_layout__main {
     display: flex;
-    overflow: hidden;
-    margin-top: auto;
-    margin-bottom: 1rem;
   }
-  &__main_content {
+  .ehr_layout__content {
     flex:initial;
     width: 75%;
   }
-  &__nav {
-    padding: 0;
+  .ehr_layout__nav {
     min-height: $contentMinHeight;
-    margin: 0;
-    overflow-y: auto;
     flex:none;
     width: 25%;
   }
-  &__content {
-    padding: 0;
+  .ehr_layout__content {
     min-height: $contentMinHeight;
     // set a ht so the inner ehr panel scrolls vertically.
     // without this the whole body scrolls by default and this "default' sometimes can become off
     height: 100vh;
-    margin: 0;
-    overflow-y: auto;
-    overflow-x: auto;
-  }
-  &__content_banner {
-    background-color: $grey10;
-    color: $grey60;
-    padding: 0;
-    margin-left: $panelMarginLeft;
-  }
-  &__content_banner_content {
-    padding: 0;
-    //max-width: 80%;
-  }
-  &__content_page {
-    padding: 0;
-    //width: 100%;
-    margin-left: $panelMarginLeft;
   }
 }
 
-.mobile-only {
-  display: none;
+/*
+  Borders and margins to illustrate page layout. Add ehr_structure to the ehr_layout
+  element to see borders and margins to mark out the page structure.
+ */
+.ehr_structure {
+  //border: 3px solid $border1;
+  .ehr_layout__main {
+    border: 3px dashed $border2;
+    margin: 2px;
+  }
+  .ehr_layout__nav {
+    border: 3px dashed $border3;
+    margin: 2px;
+  }
+  .ehr_layout__content {
+    border: 3px solid $border2;
+    margin: 2px;
+  }
+  .ehr_layout__content_banner {
+    border: 3px solid $border4;
+    margin: 2px;
+  }
+  .ehr_layout__content_page {
+    border: 3px solid $border6;
+    margin: 2px;
+  }
+  footer {
+    border: 3px solid $border2;
+    margin: 2px;
+  }
+}
+
+/* Padding and margins and overflow*/
+.ehr_layout {
+  margin: 1px;
+  .ehr_layout__main {
+    overflow: hidden;
+    margin-top: auto;
+    margin-bottom: 1rem;
+  }
+  .ehr_layout__nav {
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+  }
+  .ehr_layout__content {
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .ehr_layout__content_banner {
+    padding: 0;
+    margin-left: 0;
+    overflow: hidden;
+  }
+  .ehr_layout__content_page {
+    padding: 0;
+    margin-left: 0;
+  }
 }
 
 .app {
@@ -171,21 +201,32 @@ Desktop Between 1024px and 1215px
 Widescreen Between 1216px and 1407px
 FullHD 1408px and above
  */
-@media screen and (max-width: 900px) {
-  .mobile-only {
-    display: block;
-  }
-  .bigger-screens {
-    display: none;
+@media screen and (max-width: $main-width-threshold3) {
+  //.bigger-screens-900 {
+  .ehr_layout {
+    .ehr_layout__content {
+      width: 100%;
+    }
   }
 }
-
 .hamburger-action-enter-active, .hamburger-action-leave-active  {
   transition: opacity .15s;
 }
-
 .hamburger-action-enter, .hamburger-action-leave-to {
   opacity: 0;
+}
+
+/* colours */
+.ehr_layout {
+  //background-color: $grey60;
+  //.ehr_layout__main {
+  //  color: $grey80;
+  //  background-color: $white;
+  //}
+  .ehr_layout__content_banner {
+    background-color: $grey20;
+    color: $grey60;
+  }
 }
 
 

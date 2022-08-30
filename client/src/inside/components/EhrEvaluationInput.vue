@@ -1,13 +1,12 @@
 <template lang="pug">
   div(class="ehr-eval-input")
     div(class="evaluation-notes")
-      textarea(v-model="theNotes")
+      textarea(v-model="theNotes", :disabled='disabled')
     ehr-evaluation-confirm(
       ref='evaluationConfirmDialog',
       @cancelPageLeave='cancelPageLeave',
       @confirmPageLeave='confirmPageLeave'
       )
-
 </template>
 
 <script>
@@ -22,6 +21,9 @@ export default {
       theNotes: '',
       asStored: '',
     }
+  },
+  props: {
+    disabled: {type: Boolean}
   },
   computed: {
     enableActions () {
@@ -117,18 +119,10 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/definitions';
-
-.ehr-eval-input {
-  color: $white;
-  width: 100%;
-
-  .evaluation-notes {
-    width: 100%;
-    textarea {
-      width: 100%;
-      height: 4rem;
-      margin-bottom: 0;
-    }
+.evaluation-notes {
+  textarea {
+    max-width: 60rem;
+    height: 4rem;
   }
 }
 </style>

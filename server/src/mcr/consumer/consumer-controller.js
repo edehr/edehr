@@ -1,14 +1,20 @@
-import { ParameterError } from '../common/errors'
+import { NotAllowedError, ParameterError, SystemError } from '../common/errors'
 import BaseController from '../common/base'
 import { Text }  from '../../config/text'
 import Consumer from '../consumer/consumer'
 import {ok, fail} from '../common/utils'
 import { isAdmin } from '../../helpers/middleware'
-import { assignment1, assignment2, wound1 } from '../../resources/assignment-defs'
-import { ej0SeedDef, ej2SeedDef, wound1SeedDef } from '../../resources/assignment-defs'
-
+import { activity1, activity2, activity3 } from '../../resources/assignment-defs'
+import Visit from '../visit/visit'
+import Activity from '../activity/activity'
+import Assignment from '../assignment/assignment'
+import SeedData from '../seed/seed-data'
+import User from '../user/user'
+// const ObjectID = mongoose.Schema.Types.ObjectId
+const ObjectID = require('mongodb').ObjectID
 const debugCC = false
 const debug = require('debug')('server')
+const logError = require('debug')('error')
 
 export default class ConsumerController extends BaseController {
   constructor () {
@@ -89,18 +95,60 @@ export default class ConsumerController extends BaseController {
   }
 
   read (id) {
-    let self = this
     return this.baseFindOneQuery(id)
       .select('-oauth_consumer_secret')
       .then((modelInstance) => {
-        console.log('read(id)  ', id, 'this.modelName', this.modelName, 'modelInstance', modelInstance, 'populate', self.populate)
+        // console.log('read(id)  ', id, 'this.modelName', this.modelName, 'modelInstance', modelInstance, 'populate', self.populate)
         var response = {}
         response[this.modelName] = modelInstance
         return response
       })
   }
+  async getDetails (id, authPayload) {
+    if (!id || id === 'undefined') {
+      throw new ParameterError(Text.REQUIRES_CONSUMER_ID)
+    }
+    if (authPayload.toolConsumerId !== id) {
+      logError('Attempt to get details about a consumer the user is not authorized to see. User can access', authPayload.toolConsumerId,'. Requested to see', id)
+      throw new NotAllowedError(Text.NOT_AUTH_TO_SEE_CONSUMER)
+    }
+    if (!authPayload.isInstructor) {
+      throw new NotAllowedError(Text.MUST_BE_INSTRUCTOR)
+    }
+    // use the .lean() option to get a plain object we can add properties to
+    let consumer = await this.baseFindOneQuery(id).lean()
+    try {
+      let consumerId = new ObjectID(consumer._id)
+      let visits = await Visit.find({ toolConsumer: consumerId })
+      consumer.visitCount = visits.length
+      let visitStudents = visits.filter(v => v.isStudent)
+      let visitInstructors = visits.filter(v => v.isInstructor)
+      consumer.visitStudentCount = visitStudents.length
+      consumer.lastStudentVisit = visitStudents.sort((a, b) => b.lastVisitDate - a.lastVisitDate)[0].lastVisitDate
+      consumer.visitInstructorCount = visitInstructors.length
+      consumer.lastInstructorVisit = visitInstructors.sort((a, b) => b.lastVisitDate - a.lastVisitDate)[0].lastVisitDate
+      let activities = await Activity.find({ toolConsumer: consumerId })
+      consumer.activityCount = activities.length
+      let assignments = await Assignment.find({ toolConsumer: consumerId })
+      consumer.assignmentCount = assignments.length
+      let seeds = await SeedData.find({ toolConsumer: consumerId })
+      consumer.seedCount = seeds.length
+      let users = await User.find({ toolConsumer: consumerId }, {fullName: 1})
+      users.sort((a,b) => a.fullName.localeCompare(b.fullName))
+      consumer.users = users
+    } catch( err) {
+      logError(err)
+      throw new SystemError('Encountered problem getting consumer details. ' + err.message)
+    }
 
-  async addLearningObject (seedDef, assignmentDef,  tcId) {
+    let response = {}
+    response[this.modelName] = consumer
+    return response
+  }
+
+  async addLearningObject (activity,  tcId) {
+    const seedDef = activity.seedDef
+    const assignmentDef = activity.learningObject
     const seedDefTooled = Object.assign({}, seedDef, { toolConsumer:  tcId })
     const assignmentDefTooled = Object.assign({}, assignmentDef, { toolConsumer:  tcId })
     const theSeed = await  this.comCon.seedController.create(seedDefTooled)
@@ -128,9 +176,9 @@ export default class ConsumerController extends BaseController {
     const tcId = toolConsumer._id
     defaultSeed.toolConsumer = tcId
     await this.comCon.seedController.create(defaultSeed)
-    await this.addLearningObject(ej0SeedDef, assignment1,  tcId)
-    await this.addLearningObject(ej2SeedDef, assignment2,  tcId)
-    await this.addLearningObject(wound1SeedDef, wound1  ,  tcId)
+    await this.addLearningObject(activity1,  tcId)
+    await this.addLearningObject(activity2,  tcId)
+    await this.addLearningObject(activity3,  tcId)
   }
 
   route () {
@@ -151,6 +199,12 @@ export default class ConsumerController extends BaseController {
         .then(null, fail(res))
     })
 
+    router.get('/get/:key/details', (req, res) => {
+      this
+        .getDetails(req.params.key, req.authPayload)
+        .then(ok(res))
+        .then(null, fail(res))
+    })
     return router
   }
 

@@ -32,9 +32,7 @@ export default {
     imageFiles () { return StoreHelper.getFileListImages() },
     otherFiles () { return StoreHelper.getFileListOther() },
     authorized () {
-      // TODO add check for is instructor too
-      const authData = StoreHelper.getAuthData()
-      return !!authData
+      return StoreHelper.isDevelopingContent()
     },
   },
   methods: {

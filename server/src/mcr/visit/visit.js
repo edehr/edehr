@@ -18,7 +18,6 @@ const VisitSchema = new mongoose.Schema({
   activity: {type: ObjectId, ref: 'Activity', required: true},
   assignment: {type: ObjectId, ref: 'Assignment', required: true},
   activityData: {type: ObjectId, ref: 'ActivityData'},
-  assignmentId: {type: String},
   isStudent: {type: Boolean, default: false},
   isInstructor: {type: Boolean, default: false},
   isDeveloper: {type: Boolean, default: false},
