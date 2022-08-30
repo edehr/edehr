@@ -23,7 +23,6 @@ export default {
     items () {
       const menuItems = [
       ]
-      // TODO add simulation time
       menuItems.push( {
         label: MENU_TEXT.COURSES_LABEL,
         toolTip: MENU_TEXT.COURSES_TOOLTIP,

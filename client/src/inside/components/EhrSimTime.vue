@@ -5,7 +5,7 @@
 <script>
 export default {
   props: {
-    ehrData: { type: Object }
+    ehrData: { type: Object, default () { return {} } }
   },
   computed: {
     meta () { return this.ehrData.meta || {} },

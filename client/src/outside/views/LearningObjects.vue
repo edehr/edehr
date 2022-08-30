@@ -40,6 +40,7 @@ export default {
       const fromRoute = this.$route.query.learningObjectId
       const fromStore = this.$store.getters['assignmentStore/learningObjectId']
       const learningObjectId = fromRoute ? fromRoute : fromStore
+      await this.$store.dispatch('instructor/loadCourses')
       await this.$store.dispatch('seedListStore/loadSeeds')
       await this.$store.dispatch('assignmentListStore/loadAssignmentsWithCounts')
       if (learningObjectId) {

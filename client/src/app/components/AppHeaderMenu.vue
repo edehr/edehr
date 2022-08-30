@@ -11,6 +11,7 @@
         router-link(v-if="isDemo", :to="{ name: `demo` }",
           class="navLink") Demonstration
     div(class="app-header-bottom")
+      // styling -- coloured line
       div(class="app-header-bottom-left")
       div(class="app-header-bottom-right")
 </template>

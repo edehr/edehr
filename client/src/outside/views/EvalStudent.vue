@@ -132,10 +132,7 @@ export default {
       const fromRoute = this.$route.query.visitId
       const fromStore = this.$store.getters['instructor/currentEvaluationStudentId']
       const visitId = fromRoute ? fromRoute : fromStore
-      if (debug) console.log('Ev loading student visit from', fromRoute ? 'route' : 'store')
-      if (debug) console.log('Ev loadInstructorWithStudent', this.activityId)
-      await StoreHelper.loadInstructorWithStudent2()
-      if (debug) console.log('Ev changeStudentForInstructor', visitId)
+      await StoreHelper.loadClassList()
       await StoreHelper.changeStudentForInstructor(visitId)
     },
   },

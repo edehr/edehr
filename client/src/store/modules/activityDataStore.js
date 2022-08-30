@@ -7,7 +7,7 @@ import { Text } from '@/helpers/ehr-text'
 const API = 'activity-data'
 const OBJ = 'activitydata'
 const NAME = 'ActivityDataStore'
-const debug = true
+const debug = false
 
 const state = {
   dataStore: {}

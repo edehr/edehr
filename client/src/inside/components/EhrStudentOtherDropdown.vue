@@ -24,7 +24,6 @@ export default {
   computed: {
     items () {
       return [
-        // TODO add simulation time
         {
           label: 'Activity information',
           toolTip: 'See details about the assigned activity.',
@@ -53,7 +52,7 @@ export default {
   methods: {
     async demoLogOut () {
       await StoreHelper.demoLogout()
-      // StoreHelper.logUserOutOfEdEHR() clears local storage of demo data (the demo db)
+      // the next line clears local storage of demo data (the demo db)
       await StoreHelper.logUserOutOfEdEHR()
       this.$router.push('/')
     },

@@ -23,7 +23,7 @@ export default {
     },
     lmsUrl ()  { return StoreHelper.lmsUrl()  },
     lmsName () { return StoreHelper.lmsName() },
-    body ()   { return 'You have not yet submitted your work. Are you sure you wish to exit the EdEHR and return to your school\'s learning management system?'},
+    body ()   { return 'Your work is not yet submitted. Are you sure you wish to exit the EdEHR and return to your school\'s learning management system?'},
     title ()   { return `Exit the EdEHR and return to ${this.lmsName}`}
   },
   methods: {

@@ -16,14 +16,16 @@
             fas-icon(class="fa", :icon="appIcons.seed")
             span &nbsp; {{ lObj.seedDataObj.name }}
       div(class="details-row")
-        div(class="details-name") {{text.ACTIVITIES
+        div(class="details-name") {{text.ACTIVITIES}}
         div(class="details-value") Used by {{actCount > 0 ? actCount : 'no'}} {{ actCount > 1 ? 'activities' : 'activity' }}
+          div(v-if='actCount > 0 && lmsActivities') You can access these activities
+          div(v-if='actCount > 0 && !lmsActivities') You can not access any activities
           div(v-for="act in lmsActivities", :key="act._id")
             ui-link(:name="'lms-activity'", :query="{activityId: act._id}")
               fas-icon(class="fa", :icon="appIcons.activity")
               span &nbsp; {{act.resource_link_title}}
       div(class="details-row")
-        div(class="details-name") {{text.Dates}}
+        div(class="details-name") {{text.DATES}}
         div(class="details-value") Created on {{ lObj.createDate | formatDateTime }}. Last modified on {{ lObj.lastUpdateDate | formatDateTime }}
       div(class="details-row")
         div(class="details-name") {{text.EXTERNAL}}
@@ -67,7 +69,9 @@ export default {
     lmsActivities () {
       return StoreHelper.lmsActivitiesUsingLearningObject(this.lObj._id)
     },
-    actCount () { return this.lObj.activityCount }
+    actCount () {
+      return this.lObj.activityCount
+    }
   },
   methods: {
     truncate (input, lim) {

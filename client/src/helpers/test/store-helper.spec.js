@@ -570,24 +570,6 @@ describe('assignment tests', () => {
     })
   })
 
-  it('getAssignmentName', done => {
-    should.doesNotThrow(() => {
-      const name = StoreHelper.getAssignmentName()
-      should.exist(name)
-      name.should.equal(mockData.assignment.name)
-      done()
-    })
-  })
-
-  it('getAssignmentDescription', done => {
-    should.doesNotThrow(() => {
-      const description = StoreHelper.getAssignmentDescription()
-      should.exist(description)
-      description.should.equal(mockData.assignment.description)
-      done()
-    })
-  })
-
   it('getAssignment', async () => {
     should.doesNotThrow(async () => {
       const assignment = mockData.assignment

@@ -185,7 +185,6 @@ The LTI service provides a token in the query. We send this back to our preconfi
     if (StoreHelper.isSeedEditing()) {
       await StoreHelper.loadSeedEditor()
     } else if (StoreHelper.isInstructor()) {
-      // await StoreHelper.loadInstructor2()
       await StoreHelper.loadCommon() // loads user and consumer
     } else if (StoreHelper.isStudent()) {
       await StoreHelper.loadStudent2()

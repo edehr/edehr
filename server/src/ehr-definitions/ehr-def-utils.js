@@ -69,7 +69,7 @@ export function updateAllVisitTime (eData,pageDefs) {
 }
 
 /*
-  * Utility to process a EHR data object and find the simulation time; the largest visit day and tiome
+  * Utility to process a EHR data object and find the simulation time; the largest visit day and time
 
 currentDay = 0
 currentTime = 0000

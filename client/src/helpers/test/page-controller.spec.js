@@ -58,14 +58,6 @@ function testpg (route, done) {
     done()
   })
 }
-// other tests to add
-
-// console.log('document.title',document.title)
-// StoreHelper.setSeedEditId(seedEditId)
-// EhrOnlyDemo.setActiveEhrActive(true)
-// EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
-// EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
-
 
 describe('page-controller tests', () => {
   beforeEach((done) => {

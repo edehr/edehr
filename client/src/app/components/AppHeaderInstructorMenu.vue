@@ -14,6 +14,7 @@ export default {
   computed: {
     showItems () { return ! StoreHelper.isSmallWindow() },
     pageIcon () {
+      // icon comes from route meta data
       let icon = StoreHelper.getPageIcon()
       icon = icon && icon.length > 0 ? icon : undefined
       return icon

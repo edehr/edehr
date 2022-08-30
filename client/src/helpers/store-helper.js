@@ -259,8 +259,6 @@ class StoreHelperWorker {
    *  **********   Assignments  / Learning Objects **************
    */
   getAssignmentId () { return this._getAssignmentProperty('learningObjectId') }
-  // getAssignmentName () { return this._getAssignmentProperty('name')
-  // getAssignmentDescription () { return this._getAssignmentProperty('assignmentDescription') }
   getAssignment (id) { return this._dispatchAssignment('get', id) }
   deleteAssignment (id) { return this._dispatchAssignment('delete', id)}
   deleteAssignmentUnused (id) { return this._dispatchAssignment('deleteUnused', id)}
@@ -273,7 +271,6 @@ class StoreHelperWorker {
   }
   // returns promise that resolves to assignment list
   async updateAssignment (component, assignmentId, assignmentData) {
-    // console.log('SH Assignment update ', assignmentId, assignmentData)
     let dataIdPlusPayload = { id: assignmentId, payload: assignmentData }
     await this._dispatchAssignmentList('updateAssignment', dataIdPlusPayload)
     return this._dispatchAssignment('load', assignmentId)
@@ -447,19 +444,13 @@ class StoreHelperWorker {
     return result
   }
 
-  async loadInstructorWithStudent2 () {
+  async loadClassList () {
     let activityId = this.getActivityId()
     let result = {}
     if (!activityId) {
       console.error('Can\'t find a current activity id')
-      return result
     }
-    // result.activity = await this.loadAsCurrentActivity(activityId)
-    // result.assignment = await this.loadAssignment(theActivity.assignment)
     await this.dispatchLoadClassList()
-    // result.seedId = StoreHelper.getAssignmentSeedId()
-    // await this.loadSeed(result.seedId)
-    return result
   }
 
   async fetchAndStoreAuthToken (refreshToken) {

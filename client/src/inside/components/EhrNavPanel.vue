@@ -35,13 +35,4 @@ export default {
   display: flex;
   flex-direction: column;
 }
-//.action-group {
-//  padding: 15px;
-//}
-//.button {
-//  width: 99%;
-//  border-radius: 4px;
-//  margin: 2px;
-//}
-
 </style>
