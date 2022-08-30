@@ -6,7 +6,6 @@ import { routeIsEHR }  from '@/router'
 import { setAuthHeader } from '@/helpers/axios-helper'
 import { PAGE_DATA_REFRESH_EVENT, PAGE_DATA_READY_EVENT } from '@/helpers/event-bus'
 import { Text } from '@/helpers/ehr-text'
-import EhrDataModel from '@/outside/models/EhrDataModel'
 
 const dbApp = false
 

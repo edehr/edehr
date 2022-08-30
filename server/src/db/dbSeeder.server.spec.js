@@ -1,11 +1,11 @@
 var should = require('should')
 const mongoose = require('mongoose')
-import dbSeeder from '../config/lib/dbSeeder'
+import dbSeeder from '../db/dbSeeder'
 // load the seed data model into mongoose ...
-require('./seed-data')
+require('../mcr/seed/seed-data')
 
-import IntegrationController from '../integration/integration-controller'
-import Helper from '../common/test-helper'
+import IntegrationController from '../mcr/integration/integration-controller'
+import Helper from '../mcr/common/test-helper'
 
 const debug = require('debug')('server')
 const logError = require('debug')('error')

@@ -283,10 +283,9 @@ const ehrData = {
 }
 
 describe( 'utils work', () => {
-  let pages, pageList
+  let pages
   before(function () {
     pages = new Pages(pageDefs)
-    pageList = pages.pageList
   })
   it('page form elements', () => {
     const page = pages.findPage('visit')

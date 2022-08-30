@@ -139,32 +139,3 @@ function _visitTimeInEhrData (ehrData) {
   mTime = mTime.padStart(4,'0')
   return { visitDay: vDay, visitTime: mTime }
 }
-
-function transformVisitTime (ehrData) {
-  const pages = new Pages(ehrData)
-  pages.pageList.forEach( page => {
-    if (page.hasData && page.hasTable) {
-      let pageDef = page.pageDef
-      let timeChildren = pageDef.filterPageChildrenByInputType(EhrTypes.inputTypes.visitTime)
-    }
-  })
-  Object.keys(EhrDefs).forEach(pageKey => {
-    const ehrPageData = ehrData[pageKey]
-    if (ehrPageData) {
-      if (pgDef.hasGridTable && vTimeDef && vDayDef) {
-        // find the tables ...
-        const pgElemKeys = Object.keys(pgDef.pageElements)
-        pgElemKeys.forEach(pgElemKey => {
-          // get the forms and tables for the pgElemKey
-          const pgElementDef = pgDef.pageElements[pgElemKey]
-          // the element is either a form or a table
-          if (pgElementDef.isTable && ehrPageData[pgElemKey]) {
-            // .. found table now get the table data and iterate over each row
-            ehrPageData[pgElemKey].forEach(row => {
-            })
-          }
-        })
-      }
-    }
-  })
-}

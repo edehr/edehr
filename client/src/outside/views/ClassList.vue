@@ -15,9 +15,6 @@
 
 <script>
 import StoreHelper from '@/helpers/store-helper'
-import EvalHelper from '@/helpers/eval-helper'
-import { downArrayToCsvFile, formatTimeStr } from '@/helpers/ehr-utils'
-import { Text } from '@/helpers/ehr-text'
 import UiLink from '@/app/ui/UiLink.vue'
 import ClassListItem from '@/outside/components/lms-activity/ClassListItem'
 import ActivityActions from '@/outside/components/lms-activity/ActivityActions'

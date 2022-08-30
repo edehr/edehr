@@ -70,10 +70,9 @@ describe('Ehr Page Definitions', function () {
 })
 
 describe('Ehr Page Form fields', function () {
-  let pages, pageList
+  let pages
   before(function () {
     pages = new Pages(pageDefs)
-    pageList = pages.pageList
   })
   it('page tables', () => {
     const key = 'visit'
@@ -85,10 +84,9 @@ describe('Ehr Page Form fields', function () {
 })
 
 describe.skip('Ehr Data', function () {
-  let pages, pageList
+  let pages
   before(function () {
     pages = new Pages(pageDefs)
-    pageList = pages.pageList
   })
   it('page has data', () => {
     const pageList = pages.pageList

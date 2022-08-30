@@ -1,4 +1,3 @@
-const moment = require('moment')
 const ONCE_A_DAY_MEDS = 'OD'
 
 

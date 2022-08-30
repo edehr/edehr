@@ -4,7 +4,6 @@ import EhrDefs from './ehr-page-defs'
 const EhrDataModel = require('../ehr-definitions/EhrDataModel')
 
 const should = require('should')
-const PK = 'neurological'
 const ehrData = {
   visit: {
     admissionDay: 'Day 0',
@@ -78,7 +77,7 @@ describe ( ' convert functions', () => {
     r.should.equal(e)
   }
   it ('convertTimeStr', () => {
-    let r, v, e
+    let r, v
     r = convertTimeStr()
     should.not.exist(r)
     testIt('','')
@@ -96,7 +95,7 @@ describe ( ' convertTimeStrToMilTime', () => {
     r.should.equal(e)
   }
   it ('convertTimeStrToMilTime', () => {
-    let r, v, e
+    let r, v
     r = convertTimeStrToMilTime()
     should.not.exist(r)
     testIt('','')

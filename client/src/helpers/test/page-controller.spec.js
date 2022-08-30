@@ -8,9 +8,7 @@ import { prepareAxiosResponse, createCompoundGetResponse  } from './axios-mock-h
 import mockData from './mockData.json'
 import StoreHelper from '../store-helper'
 import { commonBeforeEach } from './testHelper'
-import EhrOnlyDemo from '@/helpers/ehr-only-demo'
 import EventBus, { PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
-import store from '@/store'
 
 jest.mock('axios')
 

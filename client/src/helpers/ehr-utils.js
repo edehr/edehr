@@ -5,8 +5,6 @@ import EhrDefs from './ehr-defs-grid'
 import { Text } from './ehr-text'
 import validFilename from 'valid-filename'
 import StoreHelper from './store-helper'
-import EhrTypes from '@/inside/defs-grid/ehr-types'
-// import filenamify from 'filenamify'
 
 const debug = false
 const debugErrs = false

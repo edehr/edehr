@@ -28,12 +28,10 @@ import { PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
 import StoreHelper from '@/helpers/store-helper'
 import EvalHelper from '@/helpers/eval-helper'
 import { downArrayToCsvFile, formatTimeStr } from '@/helpers/ehr-utils'
-import { Text } from '@/helpers/ehr-text'
 import UiButton from '@/app/ui/UiButton.vue'
 import UiLink from '@/app/ui/UiLink.vue'
 import SeedStructural from '@/outside/components/seed-struct/SeedStructural'
 import StudentEvalControl from '@/outside/components/lms-activity/StudentEvalControl'
-const debug = true
 export default {
   components: { StudentEvalControl, SeedStructural, UiButton, UiLink  },
   data () {

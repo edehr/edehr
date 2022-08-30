@@ -6,7 +6,6 @@ import {ok, fail} from '../common/utils'
 import { isAdmin } from '../../helpers/middleware'
 import { activity1, activity2, activity3 } from '../../resources/assignment-defs'
 import Visit from '../visit/visit'
-import mongoose from 'mongoose'
 import Activity from '../activity/activity'
 import Assignment from '../assignment/assignment'
 import SeedData from '../seed/seed-data'
@@ -96,7 +95,6 @@ export default class ConsumerController extends BaseController {
   }
 
   read (id) {
-    let self = this
     return this.baseFindOneQuery(id)
       .select('-oauth_consumer_secret')
       .then((modelInstance) => {

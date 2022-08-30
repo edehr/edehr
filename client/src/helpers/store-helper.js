@@ -446,7 +446,6 @@ class StoreHelperWorker {
 
   async loadClassList () {
     let activityId = this.getActivityId()
-    let result = {}
     if (!activityId) {
       console.error('Can\'t find a current activity id')
     }

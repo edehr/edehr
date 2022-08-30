@@ -6,7 +6,7 @@ import dbSeeder from '../db/dbSeeder'
 import { AssignmentMismatchError } from '../mcr/common/errors'
 import {
   validatorMiddlewareWrapper,
-  adminLimiter,
+  // adminLimiter,
   localhostOnly,
   isAdmin
 } from '../helpers/middleware'
@@ -120,12 +120,12 @@ export function apiMiddle (app, config) {
     cors(corsOptions),
     validatorMiddlewareWrapper(authUtil)
   ]
-  const adminMiddleware = [
-    cors(corsOptions),
-    adminLimiter,
-    validatorMiddlewareWrapper(authUtil),
-    isAdmin
-  ]
+  // const adminMiddleware = [
+  //   cors(corsOptions),
+  //   adminLimiter,
+  //   validatorMiddlewareWrapper(authUtil),
+  //   isAdmin
+  // ]
 
   const localhostOnlyAdminMiddleware = [
     cors(corsOptions),

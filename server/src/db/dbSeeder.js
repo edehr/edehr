@@ -20,13 +20,6 @@ if (DROP_SCHEMAS) {
   dropSchemas(DROP_SCHEMAS)
 }
 
-// =========================================================================
-//
-// This will force all integrations if set to true
-//
-// =========================================================================
-var FORCE = false
-
 // -------------------------------------------------------------------------
 //
 // check if the database seeding was performed, can override
