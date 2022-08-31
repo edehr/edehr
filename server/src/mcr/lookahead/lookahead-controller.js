@@ -1,7 +1,7 @@
 import {ok, fail} from '../common/utils'
 import { Router } from 'express'
 import { Text } from '../../config/text'
-const MEDICATIONS = require('../../../resources/medicationsList.json')
+const MEDICATIONS = require('../../resources/medicationsList.json')
 
 export default class LookaheadController {
 
