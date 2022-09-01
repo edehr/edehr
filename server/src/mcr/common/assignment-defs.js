@@ -1,7 +1,7 @@
 
-const ej0Seed = require('./erin-johns-seed-day0-mid.json')
-const ej2Seed = require('./erin-johns-seed-day2-end.json')
-const wound1Seed = require('./wound-case-1.json')
+const ej0Seed = require('../../resources/erin-johns-seed-day0-mid.json')
+const ej2Seed = require('../../resources/erin-johns-seed-day2-end.json')
+const wound1Seed = require('../../resources/wound-case-1.json')
 
 const _common =     '"Health Case Studies - Toward Closing the Healthcare Communication Gap" ' +
   'by:  Glynda Rees, Rob Kruger, Janet Morrison. '

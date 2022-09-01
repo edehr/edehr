@@ -3,7 +3,7 @@ import axios from 'axios'
 import qs from 'qs'
 import { demoPersonae } from '../../helpers/demo-personae'
 import { demoLimiter, validatorMiddlewareWrapper } from '../../helpers/middleware'
-import { activity1, activity2, activity3 } from '../../resources/assignment-defs'
+import { activity1, activity2, activity3 } from '../common/assignment-defs'
 import { fail, ok } from '../common/utils'
 import Consumer from '../consumer/consumer'
 const ObjectID = require('mongodb').ObjectId

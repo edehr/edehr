@@ -9,12 +9,7 @@ import Helper from '../mcr/common/test-helper'
 
 const debug = require('debug')('server')
 const logError = require('debug')('error')
-
 const IntegrationModel = new IntegrationController()
-
-// import fs from 'fs'
-
-// require('../../src/models/seed-data')
 const helper = new Helper()
 
 /* global describe it */
