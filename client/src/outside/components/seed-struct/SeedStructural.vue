@@ -20,7 +20,7 @@
       seed-pages(
         :pageKey="activePageKey",
         :pageDef="pageDef",
-        :pageSeedData='pageSeedData(activePageKey)')
+        :pageSeedData='pageSeedData')
 </template>
 
 <script>
@@ -45,6 +45,10 @@ export default {
     seedEhrData () { return this.ehrData.ehrData },
     pageDef () { return this.activePageKey ? EhrDefs.getPageDefinition(this.activePageKey) : {}},
     pageTitle () { return this.pageDef ? this.pageDef.pageTitle : 'Select a page from the menu'},
+    pageSeedData (  ) {
+      const pkey = this.activePageKey
+      return pkey ? this.ehrData[pkey] : {}
+    },
   },
   watch: {
     ehrData: function () {
@@ -55,9 +59,6 @@ export default {
     selectPage ( key ) {
       this.activePageKey = key
       this.showingNavPanel = false
-    },
-    pageSeedData ( pkey ) {
-      return pkey ? this.ehrData[pkey] : {}
     },
     setInitialPage () {
       const data = this.ehrData
