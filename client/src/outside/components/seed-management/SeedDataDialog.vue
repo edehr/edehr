@@ -108,6 +108,7 @@ export default {
       let result = []
       if (this.uploadSeed.ehrData) {
         result = Object.keys(this.uploadSeed.ehrData)
+        result = result.filter( k => k !== 'meta')
       }
       return result.join(', ')
     },

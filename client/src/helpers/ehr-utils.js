@@ -265,7 +265,7 @@ export function validateSeedFileContents (dataAsString) {
   let badKeys = []
   keys.forEach(key => {
     let found = pageKeys.find(pKey => pKey === key)
-    if (!found) {
+    if (!found && key !== 'meta') {
       badKeys.push(key)
     }
   })

@@ -88,7 +88,8 @@ export default {
     seedDataListFiltered () {
       return this.seedDataList.filter( sv => {
         const pageNames = sv.pageNames
-        return pageNames.filter( pn => this.selectedPages.includes(pn)).length > 0
+        // allow for seed with no pages (an empty seed) as well as all seeds that match the selected pages
+        return pageNames.length === 0 || (pageNames.filter(pn => this.selectedPages.includes(pn)).length > 0)
       })
     },
     showIds () { return this.isAdmin },
