@@ -3,12 +3,10 @@
     div(class="short-top")
       div {{ patientData.patientName }}
       div {{ patientData.diagnosis }}
+      div DoB: {{ patientData.dateOfBirth }} ({{ patientData.personAge }} yrs)
       a(@click="showDetails = !showDetails") {{showDetails ? 'show less' : 'show more'}}
 
     div(v-if="showDetails", class='banner-content' )
-      div(class="kv")
-        div DoB:
-        div {{ patientData.dateOfBirth }} ({{ patientData.personAge }} yrs)
       div(class="kv")
         div PHN:
         div {{ patientData.phn }}
