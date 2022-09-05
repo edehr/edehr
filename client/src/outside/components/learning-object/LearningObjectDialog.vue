@@ -83,7 +83,7 @@ export default {
       return this.assignmentName.trim() ? undefined :  ERRORS.NAME_REQUIRED
     },
     timeValidate () {
-      if (this.time && this.time.length > 0) {
+      if (this.showPersona && this.time && this.time.length > 0) {
         return validTimeStr(this.time) ? null : ERRORS.INVALID_TIME
       }
       return null
