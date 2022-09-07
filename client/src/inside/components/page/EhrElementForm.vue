@@ -25,7 +25,7 @@
         div(v-if="viewOnly") {{ inputVal }}
         ui-info(class="column is-2", title="Time since", text="Describe when this happened prior to the current visit. e.g. '4 years ago'")
 
-    div(v-else-if="isType(dataTypes.ehrDOB) || isType(dataTypes.ehrPHN) || isType(dataTypes.ehrPatientName) || isType(dataTypes.ehrLocation)" )
+    div(v-else-if="isPatientData" )
       ehr-element-patient(:element="element", :elementKey="elementKey", :ehrHelp="ehrHelp")
 
     div(v-else-if="isType('ehrFile')")
@@ -47,6 +47,9 @@
       )
       div(v-else) {{ inputVal }}
 
+    div(v-else-if="isType('mainDOB')")
+      ehr-element-birth-date(:elementKey="elementKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
+
     div(v-else-if="isType('number')", class="text_input_wrapper")
       ehr-page-form-label(:element="element", css="text_label")
       input(v-if="!viewOnly", class="input text-input", type="number", :disabled="disabled", :name="elementKey", v-model="inputVal")
@@ -63,7 +66,7 @@
     div(v-else-if="isType('spacer')", class="label_wrapper") <!--class="spacer"-->
       div &nbsp;
 
-    div(v-else-if="isType('text')", class="text_input_wrapper")
+    div(v-else-if="isType('text') || isType('personAge')", class="text_input_wrapper")
       ehr-page-form-label(:element="element", css="text_label")
       input(v-if="!viewOnly", class="input text-input", :disabled="disabled", :name="elementKey", v-model="inputVal")
       div(v-if="viewOnly") {{ inputVal }}
@@ -92,11 +95,13 @@ import EhrElementLookup from './EhrElementLookup.vue'
 import UiInfo from '@/app/ui/UiInfo'
 import EhrTypes from '@/inside/defs-grid/ehr-types'
 import EhrElementSimTime from '@/inside/components/page/EhrElementSimTime'
+import EhrElementBirthDate from '@/inside/components/page/EhrElementBirthDate'
 
 export default {
   name: 'EhrElementForm',
   extends: EhrElementCommon,
   components: {
+    EhrElementBirthDate,
     EhrElementSimTime,
     EhrElementCalculated,
     EhrElementCheckset,
@@ -109,6 +114,12 @@ export default {
   props: {},
   computed: {
     dataTypes () { return EhrTypes.dataInputTypes },
+    isPatientData () {
+      const dataTypes = this.dataTypes
+      return this.isType(dataTypes.ehrDOB) ||
+        this.isType(dataTypes.ehrPHN) ||
+        this.isType(dataTypes.ehrPatientName) ||
+        this.isType(dataTypes.ehrLocation) }
   },
   methods: {}
 }

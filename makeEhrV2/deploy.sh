@@ -62,7 +62,7 @@ then
   rm -f hashMapFile.json
 fi
 
-if [[ "$NOPULL" == "true" ]]
+if [[ "$PULL" == "true" ]]
 then
   node pullFromSheets.js
 fi

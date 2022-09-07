@@ -9,10 +9,10 @@ node gen_defs/index.js
 
 # place the generated content into the client
 cp generated/ehrDefs/ehr-page-defs.js ../client/src/inside/defs-grid/
-cp generated/ehrDefs/ehr-page-defs.js ../server/resources/ehr-defintions/
+cp generated/ehrDefs/ehr-page-defs.js ../server/src/ehr-definitions/
 
 cp source/ehr-types.js ../client/src/inside/defs-grid/
-cp source/ehr-types.js ../server/resources/ehr-defintions/
+cp source/ehr-types.js ../server/src/ehr-definitions/
 
 # clean up generated files
 #rm generated/ehrDefs/*.js
