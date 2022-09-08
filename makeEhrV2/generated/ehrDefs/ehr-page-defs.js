@@ -11046,7 +11046,7 @@ const DEFS = {
         'isPageForm': true,
         'ehr_groups': [
           {
-            'elementKey': 'ehr_group140',
+            'elementKey': 'ehr_group159',
             'gIndex': '1',
             'gChildren': [
               {
@@ -11146,7 +11146,7 @@ const DEFS = {
         'isPageForm': true,
         'ehr_groups': [
           {
-            'elementKey': 'ehr_group141',
+            'elementKey': 'ehr_group160',
             'gIndex': '1',
             'gChildren': [
               'snomed',
@@ -11350,7 +11350,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group142',
+              'elementKey': 'ehr_group161',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -11361,7 +11361,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group143',
+              'elementKey': 'ehr_group162',
               'gIndex': '2',
               'gChildren': [
                 'icd10',
@@ -11525,7 +11525,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group144',
+              'elementKey': 'ehr_group163',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -11536,7 +11536,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group145',
+              'elementKey': 'ehr_group164',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '2',
               'gChildren': [
@@ -11719,7 +11719,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group146',
+              'elementKey': 'ehr_group165',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -11730,7 +11730,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group147',
+              'elementKey': 'ehr_group166',
               'gIndex': '2',
               'gChildren': [
                 'clinicalCategory',
@@ -12068,11 +12068,11 @@ const DEFS = {
         'fqn': 'testPage.textDateDate'
       },
       {
-        'elementKey': 'spacer152',
+        'elementKey': 'spacer171',
         'formIndex': '3',
         'inputType': 'spacer',
         'label': 'TextDate',
-        'fqn': 'testPage.spacer152'
+        'fqn': 'testPage.spacer171'
       },
       {
         'elementKey': 'name',
@@ -12097,7 +12097,7 @@ const DEFS = {
         'isPageForm': true,
         'ehr_groups': [
           {
-            'elementKey': 'ehr_group148',
+            'elementKey': 'ehr_group167',
             'label': 'A group label',
             'gIndex': '1',
             'gChildren': [
@@ -12114,7 +12114,7 @@ const DEFS = {
             ]
           },
           {
-            'elementKey': 'ehr_group149',
+            'elementKey': 'ehr_group168',
             'label': 'Second group',
             'gIndex': '2',
             'gChildren': [
@@ -12182,7 +12182,7 @@ const DEFS = {
           'formKey': 'table1',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group150',
+              'elementKey': 'ehr_group169',
               'label': 'Group 1',
               'gIndex': '1',
               'gChildren': [
@@ -12204,7 +12204,7 @@ const DEFS = {
         'isPageForm': true,
         'ehr_groups': [
           {
-            'elementKey': 'ehr_group151',
+            'elementKey': 'ehr_group170',
             'label': 'A group label',
             'gIndex': '1',
             'gChildren': [
@@ -12214,7 +12214,7 @@ const DEFS = {
               'time',
               'textDate',
               'textDateDate',
-              'spacer152',
+              'spacer171',
               'name',
               'place'
             ]
@@ -12548,13 +12548,13 @@ const DEFS = {
         'fqn': 'testTable.cd1Date'
       },
       {
-        'elementKey': 'spacer158',
+        'elementKey': 'spacer177',
         'formIndex': '2',
         'inputType': 'spacer',
         'label': 'C D 1',
         'tableColumn': '2',
         'tableLabel': 'Chk 1',
-        'fqn': 'testTable.spacer158'
+        'fqn': 'testTable.spacer177'
       },
       {
         'elementKey': 'cd2',
@@ -12576,13 +12576,13 @@ const DEFS = {
         'fqn': 'testTable.cd2Date'
       },
       {
-        'elementKey': 'spacer159',
+        'elementKey': 'spacer178',
         'formIndex': '2',
         'inputType': 'spacer',
         'label': 'C D 2',
         'tableColumn': '3',
         'tableLabel': 'Chk 2',
-        'fqn': 'testTable.spacer159'
+        'fqn': 'testTable.spacer178'
       },
       {
         'elementKey': 'td1',
@@ -12603,13 +12603,13 @@ const DEFS = {
         'fqn': 'testTable.td1Date'
       },
       {
-        'elementKey': 'spacer160',
+        'elementKey': 'spacer179',
         'formIndex': '2',
         'inputType': 'spacer',
         'label': 'TextDate',
         'tableColumn': '4',
         'tableLabel': 'Txt 1',
-        'fqn': 'testTable.spacer160'
+        'fqn': 'testTable.spacer179'
       },
       {
         'elementKey': 'referralName',
@@ -12923,7 +12923,7 @@ const DEFS = {
           'formKey': 'table1',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group153',
+              'elementKey': 'ehr_group172',
               'label': 'Group 1',
               'gIndex': '1',
               'gChildren': [
@@ -12939,7 +12939,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group154',
+              'elementKey': 'ehr_group173',
               'gIndex': '2',
               'gChildren': [
                 {
@@ -12974,7 +12974,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group155',
+              'elementKey': 'ehr_group174',
               'formCss': 'full-width',
               'gIndex': '3',
               'gChildren': [
@@ -13025,7 +13025,7 @@ const DEFS = {
             'items': [
               'cd1',
               'cd1Date',
-              'spacer158'
+              'spacer177'
             ]
           },
           {
@@ -13034,7 +13034,7 @@ const DEFS = {
             'items': [
               'cd2',
               'cd2Date',
-              'spacer159'
+              'spacer178'
             ]
           },
           {
@@ -13043,7 +13043,7 @@ const DEFS = {
             'items': [
               'td1',
               'td1Date',
-              'spacer160'
+              'spacer179'
             ]
           },
           {
@@ -13077,7 +13077,7 @@ const DEFS = {
           'formKey': 'stacked',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group156',
+              'elementKey': 'ehr_group175',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -13088,22 +13088,22 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group157',
+              'elementKey': 'ehr_group176',
               'gIndex': '2',
               'gChildren': [
                 'cd1',
                 'cd1Date',
-                'spacer158',
+                'spacer177',
                 'cd2',
                 'cd2Date',
-                'spacer159',
+                'spacer178',
                 'td1',
                 'td1Date',
-                'spacer160'
+                'spacer179'
               ]
             },
             {
-              'elementKey': 'ehr_group161',
+              'elementKey': 'ehr_group180',
               'gIndex': '3',
               'gChildren': [
                 'referralName',
@@ -16097,11 +16097,13 @@ const DEFS = {
       {
         'elementKey': 'wbc',
         'formIndex': '1',
+        'helperText': 'White blood cell count',
         'inputType': 'text',
         'label': 'WBC',
         'suffix': '10^9/L',
         'tableColumn': '7',
-        'fqn': 'hematology.wbc'
+        'fqn': 'hematology.wbc',
+        'helperHtml': '<p>White blood cell count</p>'
       },
       {
         'elementKey': 'wbc-interp',
@@ -16145,7 +16147,6 @@ const DEFS = {
       {
         'elementKey': 'rbc-interp',
         'formIndex': '1',
-        'helperText': 'Hemoglobin',
         'inputType': 'select',
         'label': 'Interpretation',
         'options': [
@@ -16163,32 +16164,28 @@ const DEFS = {
           }
         ],
         'tableColumn': '10',
-        'fqn': 'hematology.rbc-interp',
-        'helperHtml': '<p>Hemoglobin</p>'
+        'fqn': 'hematology.rbc-interp'
       },
       {
         'elementKey': 'aSpacer',
         'formIndex': '1',
-        'helperText': 'Hematocrit',
         'inputType': 'spacer',
-        'fqn': 'hematology.aSpacer',
-        'helperHtml': '<p>Hematocrit</p>'
+        'fqn': 'hematology.aSpacer'
       },
       {
         'elementKey': 'hgb',
         'formIndex': '1',
-        'helperText': 'Mean Cell Volume',
+        'helperText': 'Hemoglobin',
         'inputType': 'text',
         'label': 'HGB',
         'suffix': 'g/L',
         'tableColumn': '10',
         'fqn': 'hematology.hgb',
-        'helperHtml': '<p>Mean Cell Volume</p>'
+        'helperHtml': '<p>Hemoglobin</p>'
       },
       {
         'elementKey': 'hgb-interp',
         'formIndex': '1',
-        'helperText': 'Mean Cell Hemoglobin',
         'inputType': 'select',
         'label': 'Interpretation',
         'options': [
@@ -16206,32 +16203,28 @@ const DEFS = {
           }
         ],
         'tableColumn': '11',
-        'fqn': 'hematology.hgb-interp',
-        'helperHtml': '<p>Mean Cell Hemoglobin</p>'
+        'fqn': 'hematology.hgb-interp'
       },
       {
         'elementKey': 'aSpacer',
         'formIndex': '1',
-        'helperText': 'Mean Cell Hemoglobin Concentration',
         'inputType': 'spacer',
-        'fqn': 'hematology.aSpacer',
-        'helperHtml': '<p>Mean Cell Hemoglobin Concentration</p>'
+        'fqn': 'hematology.aSpacer'
       },
       {
         'elementKey': 'HCT',
         'formIndex': '1',
-        'helperText': 'White blood cell count',
+        'helperText': 'Hematocrit',
         'inputType': 'text',
         'label': 'HCT',
         'suffix': 'L/L',
         'tableColumn': '11',
         'fqn': 'hematology.HCT',
-        'helperHtml': '<p>White blood cell count</p>'
+        'helperHtml': '<p>Hematocrit</p>'
       },
       {
         'elementKey': 'HCT-interp',
         'formIndex': '1',
-        'helperText': 'Platelet Count',
         'inputType': 'select',
         'label': 'Interpretation',
         'options': [
@@ -16249,25 +16242,24 @@ const DEFS = {
           }
         ],
         'tableColumn': '12',
-        'fqn': 'hematology.HCT-interp',
-        'helperHtml': '<p>Platelet Count</p>'
+        'fqn': 'hematology.HCT-interp'
       },
       {
         'elementKey': 'aSpacer',
         'formIndex': '1',
-        'helperText': 'Mean Platelet Volume',
         'inputType': 'spacer',
-        'fqn': 'hematology.aSpacer',
-        'helperHtml': '<p>Mean Platelet Volume</p>'
+        'fqn': 'hematology.aSpacer'
       },
       {
         'elementKey': 'MCV',
         'formIndex': '1',
+        'helperText': 'Mean Cell Volume',
         'inputType': 'text',
         'label': 'MCV',
         'suffix': 'fL',
         'tableColumn': '12',
-        'fqn': 'hematology.MCV'
+        'fqn': 'hematology.MCV',
+        'helperHtml': '<p>Mean Cell Volume</p>'
       },
       {
         'elementKey': 'MCV-interp',
@@ -16300,11 +16292,13 @@ const DEFS = {
       {
         'elementKey': 'MCH',
         'formIndex': '1',
+        'helperText': 'Mean Cell Hemoglobin',
         'inputType': 'text',
         'label': 'MCH',
         'suffix': 'pg',
         'tableColumn': '13',
-        'fqn': 'hematology.MCH'
+        'fqn': 'hematology.MCH',
+        'helperHtml': '<p>Mean Cell Hemoglobin</p>'
       },
       {
         'elementKey': 'MCH-interp',
@@ -16337,11 +16331,13 @@ const DEFS = {
       {
         'elementKey': 'MCHC',
         'formIndex': '1',
+        'helperText': 'Mean Cell Hemoglobin Concentration',
         'inputType': 'text',
         'label': 'MCHC',
         'suffix': 'g/L',
         'tableColumn': '14',
-        'fqn': 'hematology.MCHC'
+        'fqn': 'hematology.MCHC',
+        'helperHtml': '<p>Mean Cell Hemoglobin Concentration</p>'
       },
       {
         'elementKey': 'MCHC-interp',
@@ -16374,11 +16370,13 @@ const DEFS = {
       {
         'elementKey': 'RDW',
         'formIndex': '1',
+        'helperText': 'Red Cell Distribution Width CV',
         'inputType': 'text',
         'label': 'RDW',
         'suffix': '%',
         'tableColumn': '15',
-        'fqn': 'hematology.RDW'
+        'fqn': 'hematology.RDW',
+        'helperHtml': '<p>Red Cell Distribution Width CV</p>'
       },
       {
         'elementKey': 'RDW-interp',
@@ -16411,11 +16409,13 @@ const DEFS = {
       {
         'elementKey': 'PLT',
         'formIndex': '1',
+        'helperText': 'Platelet Count',
         'inputType': 'text',
         'label': 'PLT',
         'suffix': '10^9/L',
         'tableColumn': '16',
-        'fqn': 'hematology.PLT'
+        'fqn': 'hematology.PLT',
+        'helperHtml': '<p>Platelet Count</p>'
       },
       {
         'elementKey': 'PLT-interp',
@@ -16448,11 +16448,13 @@ const DEFS = {
       {
         'elementKey': 'MPV',
         'formIndex': '1',
+        'helperText': 'Mean Platelet Volume',
         'inputType': 'text',
         'label': 'MPV',
         'suffix': 'fL',
         'tableColumn': '17',
-        'fqn': 'hematology.MPV'
+        'fqn': 'hematology.MPV',
+        'helperHtml': '<p>Mean Platelet Volume</p>'
       },
       {
         'elementKey': 'MPV-interp',
@@ -16486,7 +16488,7 @@ const DEFS = {
         'elementKey': 'comments',
         'formIndex': '1',
         'inputType': 'textarea',
-        'label': 'Comments',
+        'label': 'CBC Comments',
         'tableColumn': '18',
         'fqn': 'hematology.comments'
       },
@@ -16897,30 +16899,46 @@ const DEFS = {
         'fqn': 'hematology.pltComment'
       },
       {
+        'elementKey': 'pltNormalMorphology',
+        'formIndex': '2',
+        'inputType': 'checkbox',
+        'label': 'Normal',
+        'tableColumn': '43',
+        'fqn': 'hematology.pltNormalMorphology'
+      },
+      {
+        'elementKey': 'pltAbnormalMorphology',
+        'formIndex': '2',
+        'inputType': 'checkbox',
+        'label': 'Abnormal',
+        'tableColumn': '1',
+        'fqn': 'hematology.pltAbnormalMorphology'
+      },
+      {
         'elementKey': 'pltMorphology',
         'formIndex': '2',
         'inputType': 'checkset',
-        'label': 'PLT morphology (shape of platelets)',
+        'label': 'Type',
         'options': [
           {
-            'key': 'normal',
-            'text': 'normal'
+            'key': 'Hypogranular',
+            'text': 'Hypogranular'
           },
           {
-            'key': 'large platelets',
-            'text': 'large platelets'
+            'key': 'Large or Giant Forms',
+            'text': 'Large or Giant Forms'
           },
           {
-            'key': 'giant forms',
-            'text': 'giant forms'
+            'key': 'Megakaryocytic Fragments',
+            'text': 'Megakaryocytic Fragments'
           },
           {
-            'key': 'platelets clump',
-            'text': 'platelets clump'
+            'key': 'Platelet Clumps',
+            'text': 'Platelet Clumps'
           },
           {
-            'key': 'platelets satellitism',
-            'text': 'platelets satellitism'
+            'key': 'Platelet Satellitism Dysplastic',
+            'text': 'Platelet Satellitism Dysplastic'
           }
         ],
         'tableColumn': '43',
@@ -17054,92 +17072,12 @@ const DEFS = {
         'helperHtml': '<p>nucleated red blood cells</p>'
       },
       {
-        'elementKey': 'wbcmHypersegmentedNeutrophils',
-        'formIndex': '2',
-        'inputType': 'checkbox',
-        'label': 'Hypersegmented Neutrophils',
-        'tableColumn': '58',
-        'fqn': 'hematology.wbcmHypersegmentedNeutrophils'
-      },
-      {
-        'elementKey': 'wbcmImmatureCells',
-        'formIndex': '2',
-        'inputType': 'checkbox',
-        'label': 'Immature Cells',
-        'tableColumn': '59',
-        'fqn': 'hematology.wbcmImmatureCells'
-      },
-      {
-        'elementKey': 'wbcmToxicGranulation',
-        'formIndex': '2',
-        'inputType': 'checkbox',
-        'label': 'Toxic Granulation',
-        'tableColumn': '60',
-        'fqn': 'hematology.wbcmToxicGranulation'
-      },
-      {
-        'elementKey': 'wbcmToxicVacuoles',
-        'formIndex': '2',
-        'inputType': 'checkbox',
-        'label': 'Toxic Vacuoles',
-        'tableColumn': '61',
-        'fqn': 'hematology.wbcmToxicVacuoles'
-      },
-      {
-        'elementKey': 'rcmNormal',
+        'elementKey': 'wbcmNormalMorphology',
         'formIndex': '2',
         'inputType': 'checkbox',
         'label': 'Normal',
-        'tableColumn': '62',
-        'fqn': 'hematology.rcmNormal'
-      },
-      {
-        'elementKey': 'rcmConsistent',
-        'formIndex': '2',
-        'inputType': 'checkbox',
-        'label': 'Consistent with indices',
-        'tableColumn': '59',
-        'fqn': 'hematology.rcmConsistent'
-      },
-      {
-        'elementKey': 'rcmConSpace',
-        'formIndex': '2',
-        'inputType': 'spacer',
-        'fqn': 'hematology.rcmConSpace'
-      },
-      {
-        'elementKey': 'rcmMicrocytic',
-        'formIndex': '2',
-        'inputType': 'checkbox',
-        'label': 'Microcytic',
-        'tableColumn': '60',
-        'fqn': 'hematology.rcmMicrocytic'
-      },
-      {
-        'elementKey': 'rcmMicrocyticGrading',
-        'formIndex': '2',
-        'inputType': 'select',
-        'label': 'Microcytic Grading',
-        'options': [
-          {
-            'key': '1+',
-            'text': '1+'
-          },
-          {
-            'key': '2+',
-            'text': '2+'
-          },
-          {
-            'key': '3+',
-            'text': '3+'
-          },
-          {
-            'key': '4+',
-            'text': '4+'
-          }
-        ],
-        'tableColumn': '61',
-        'fqn': 'hematology.rcmMicrocyticGrading'
+        'tableColumn': '58',
+        'fqn': 'hematology.wbcmNormalMorphology'
       },
       {
         'elementKey': 'rcmMicroSpace',
@@ -17148,58 +17086,132 @@ const DEFS = {
         'fqn': 'hematology.rcmMicroSpace'
       },
       {
-        'elementKey': 'rcmHypochromia',
+        'elementKey': 'rcmMicroSpace',
+        'formIndex': '2',
+        'inputType': 'spacer',
+        'fqn': 'hematology.rcmMicroSpace'
+      },
+      {
+        'elementKey': 'wbcmAbnormalMorphology',
         'formIndex': '2',
         'inputType': 'checkbox',
-        'label': 'Hypochromia',
+        'label': 'Abnormal',
+        'tableColumn': '59',
+        'fqn': 'hematology.wbcmAbnormalMorphology'
+      },
+      {
+        'elementKey': 'wbcmAbnormalTypeMorphology',
+        'formIndex': '2',
+        'inputType': 'checkset',
+        'label': 'Type',
+        'options': [
+          {
+            'key': 'Abnormal Lymphocytes',
+            'text': 'Abnormal Lymphocytes'
+          },
+          {
+            'key': 'Auer Rods',
+            'text': 'Auer Rods'
+          },
+          {
+            'key': 'Hairy Cells',
+            'text': 'Hairy Cells'
+          },
+          {
+            'key': 'Hypersegmented Neutrophils',
+            'text': 'Hypersegmented Neutrophils'
+          },
+          {
+            'key': 'Immature Cells',
+            'text': 'Immature Cells'
+          },
+          {
+            'key': 'Increased Reactive Lymphocytes',
+            'text': 'Increased Reactive Lymphocytes'
+          },
+          {
+            'key': 'Necrobiotic Cells',
+            'text': 'Necrobiotic Cells'
+          },
+          {
+            'key': 'Pelger-Hut Cells',
+            'text': 'Pelger-Hut Cells'
+          }
+        ],
+        'tableColumn': '60',
+        'fqn': 'hematology.wbcmAbnormalTypeMorphology'
+      },
+      {
+        'elementKey': 'rcmMicroSpace',
+        'formIndex': '2',
+        'inputType': 'spacer',
+        'fqn': 'hematology.rcmMicroSpace'
+      },
+      {
+        'elementKey': 'wbcmToxicMorphology',
+        'formIndex': '2',
+        'inputType': 'checkbox',
+        'label': 'Toxic Signs',
+        'tableColumn': '61',
+        'fqn': 'hematology.wbcmToxicMorphology'
+      },
+      {
+        'elementKey': 'wbcmToxicTypeMorphology',
+        'formIndex': '2',
+        'inputType': 'checkset',
+        'label': 'Type',
+        'options': [
+          {
+            'key': 'Dhle Bodies',
+            'text': 'Dhle Bodies'
+          },
+          {
+            'key': 'Toxic Granules',
+            'text': 'Toxic Granules'
+          },
+          {
+            'key': 'Toxic Vacuoles',
+            'text': 'Toxic Vacuoles'
+          }
+        ],
         'tableColumn': '62',
-        'fqn': 'hematology.rcmHypochromia'
+        'fqn': 'hematology.wbcmToxicTypeMorphology'
       },
       {
-        'elementKey': 'rcmHypochromiaGrading',
+        'elementKey': 'rcmNormal',
         'formIndex': '2',
-        'inputType': 'select',
-        'label': 'Hypochromia Grading',
-        'options': [
-          {
-            'key': '1+',
-            'text': '1+'
-          },
-          {
-            'key': '2+',
-            'text': '2+'
-          },
-          {
-            'key': '3+',
-            'text': '3+'
-          },
-          {
-            'key': '4+',
-            'text': '4+'
-          }
-        ],
+        'inputType': 'checkbox',
+        'label': 'Normal',
         'tableColumn': '63',
-        'fqn': 'hematology.rcmHypochromiaGrading'
+        'fqn': 'hematology.rcmNormal'
       },
       {
-        'elementKey': 'rcmHypoSpace',
-        'formIndex': '2',
-        'inputType': 'spacer',
-        'fqn': 'hematology.rcmHypoSpace'
-      },
-      {
-        'elementKey': 'rcmMacrocytic',
+        'elementKey': 'rcmConsistent',
         'formIndex': '2',
         'inputType': 'checkbox',
-        'label': 'Macrocytic',
+        'label': 'Consistent with indices',
         'tableColumn': '64',
-        'fqn': 'hematology.rcmMacrocytic'
+        'fqn': 'hematology.rcmConsistent'
       },
       {
-        'elementKey': 'rcmMacrocyticGrading',
+        'elementKey': 'spacer139',
+        'formIndex': '2',
+        'inputType': 'spacer',
+        'fqn': 'hematology.spacer139'
+      },
+      {
+        'elementKey': 'rcmAcanthocytes',
+        'formIndex': '2',
+        'inputType': 'checkbox',
+        'label': 'Acanthocytes',
+        'tableColumn': '65',
+        'fqn': 'hematology.rcmAcanthocytes'
+      },
+      {
+        'elementKey': 'rcmAcanthocytesGrading',
         'formIndex': '2',
         'inputType': 'select',
-        'label': 'Macrocytic Grading',
+        'label': 'Grading',
         'options': [
           {
             'key': '1+',
@@ -17218,29 +17230,489 @@ const DEFS = {
             'text': '4+'
           }
         ],
-        'tableColumn': '65',
-        'fqn': 'hematology.rcmMacrocyticGrading'
+        'tableColumn': '66',
+        'fqn': 'hematology.rcmAcanthocytesGrading'
       },
       {
-        'elementKey': 'rcmRouleauxSpace',
+        'elementKey': 'spacer140',
         'formIndex': '2',
         'inputType': 'spacer',
-        'fqn': 'hematology.rcmRouleauxSpace'
+        'fqn': 'hematology.spacer140'
       },
       {
-        'elementKey': 'rcmRouleaux',
+        'elementKey': 'rcmCodocytes',
         'formIndex': '2',
         'inputType': 'checkbox',
-        'label': 'Rouleaux',
-        'tableColumn': '66',
-        'fqn': 'hematology.rcmRouleaux'
+        'label': 'Codocytes (Target Cells)',
+        'tableColumn': '67',
+        'fqn': 'hematology.rcmCodocytes'
+      },
+      {
+        'elementKey': 'rcmCodocytesGrading',
+        'formIndex': '2',
+        'inputType': 'select',
+        'label': 'Grading',
+        'options': [
+          {
+            'key': '1+',
+            'text': '1+'
+          },
+          {
+            'key': '2+',
+            'text': '2+'
+          },
+          {
+            'key': '3+',
+            'text': '3+'
+          },
+          {
+            'key': '4+',
+            'text': '4+'
+          }
+        ],
+        'tableColumn': '68',
+        'fqn': 'hematology.rcmCodocytesGrading'
+      },
+      {
+        'elementKey': 'spacer141',
+        'formIndex': '2',
+        'inputType': 'spacer',
+        'fqn': 'hematology.spacer141'
+      },
+      {
+        'elementKey': 'rcmDacryocytes',
+        'formIndex': '2',
+        'inputType': 'checkbox',
+        'label': 'Dacryocytes (Tear Drop Cells)',
+        'tableColumn': '69',
+        'fqn': 'hematology.rcmDacryocytes'
+      },
+      {
+        'elementKey': 'rcmDacryocytesGrading',
+        'formIndex': '2',
+        'inputType': 'select',
+        'label': 'Grading',
+        'options': [
+          {
+            'key': '1+',
+            'text': '1+'
+          },
+          {
+            'key': '2+',
+            'text': '2+'
+          },
+          {
+            'key': '3+',
+            'text': '3+'
+          },
+          {
+            'key': '4+',
+            'text': '4+'
+          }
+        ],
+        'tableColumn': '70',
+        'fqn': 'hematology.rcmDacryocytesGrading'
+      },
+      {
+        'elementKey': 'spacer142',
+        'formIndex': '2',
+        'inputType': 'spacer',
+        'fqn': 'hematology.spacer142'
+      },
+      {
+        'elementKey': 'rcmDrepanocytes',
+        'formIndex': '2',
+        'inputType': 'checkbox',
+        'label': 'Drepanocytes (Sickle Cells)',
+        'tableColumn': '71',
+        'fqn': 'hematology.rcmDrepanocytes'
+      },
+      {
+        'elementKey': 'rcmDrepanocytesGrading',
+        'formIndex': '2',
+        'inputType': 'select',
+        'label': 'Grading',
+        'options': [
+          {
+            'key': '1+',
+            'text': '1+'
+          },
+          {
+            'key': '2+',
+            'text': '2+'
+          },
+          {
+            'key': '3+',
+            'text': '3+'
+          },
+          {
+            'key': '4+',
+            'text': '4+'
+          }
+        ],
+        'tableColumn': '72',
+        'fqn': 'hematology.rcmDrepanocytesGrading'
+      },
+      {
+        'elementKey': 'spacer143',
+        'formIndex': '2',
+        'inputType': 'spacer',
+        'fqn': 'hematology.spacer143'
+      },
+      {
+        'elementKey': 'rcmEchinocytes',
+        'formIndex': '2',
+        'inputType': 'checkbox',
+        'label': 'Echinocytes (Burr Cells)',
+        'tableColumn': '73',
+        'fqn': 'hematology.rcmEchinocytes'
+      },
+      {
+        'elementKey': 'rcmEchinocytesGrading',
+        'formIndex': '2',
+        'inputType': 'select',
+        'label': 'Grading',
+        'options': [
+          {
+            'key': '1+',
+            'text': '1+'
+          },
+          {
+            'key': '2+',
+            'text': '2+'
+          },
+          {
+            'key': '3+',
+            'text': '3+'
+          },
+          {
+            'key': '4+',
+            'text': '4+'
+          }
+        ],
+        'tableColumn': '74',
+        'fqn': 'hematology.rcmEchinocytesGrading'
+      },
+      {
+        'elementKey': 'spacer144',
+        'formIndex': '2',
+        'inputType': 'spacer',
+        'fqn': 'hematology.spacer144'
+      },
+      {
+        'elementKey': 'rcmOvalocytes',
+        'formIndex': '2',
+        'inputType': 'checkbox',
+        'label': 'Elliptocytes/Ovalocytes',
+        'tableColumn': '75',
+        'fqn': 'hematology.rcmOvalocytes'
+      },
+      {
+        'elementKey': 'rcmOvalocytesGrading',
+        'formIndex': '2',
+        'inputType': 'select',
+        'label': 'Grading',
+        'options': [
+          {
+            'key': '1+',
+            'text': '1+'
+          },
+          {
+            'key': '2+',
+            'text': '2+'
+          },
+          {
+            'key': '3+',
+            'text': '3+'
+          },
+          {
+            'key': '4+',
+            'text': '4+'
+          }
+        ],
+        'tableColumn': '76',
+        'fqn': 'hematology.rcmOvalocytesGrading'
+      },
+      {
+        'elementKey': 'spacer145',
+        'formIndex': '2',
+        'inputType': 'spacer',
+        'fqn': 'hematology.spacer145'
+      },
+      {
+        'elementKey': 'rcmMacroOvalocytes',
+        'formIndex': '2',
+        'inputType': 'checkbox',
+        'label': 'Macro-ovalocytes',
+        'tableColumn': '77',
+        'fqn': 'hematology.rcmMacroOvalocytes'
+      },
+      {
+        'elementKey': 'rcmMacroOvalocytesGrading',
+        'formIndex': '2',
+        'inputType': 'select',
+        'label': 'Grading',
+        'options': [
+          {
+            'key': '1+',
+            'text': '1+'
+          },
+          {
+            'key': '2+',
+            'text': '2+'
+          },
+          {
+            'key': '3+',
+            'text': '3+'
+          },
+          {
+            'key': '4+',
+            'text': '4+'
+          }
+        ],
+        'tableColumn': '78',
+        'fqn': 'hematology.rcmMacroOvalocytesGrading'
+      },
+      {
+        'elementKey': 'spacer146',
+        'formIndex': '2',
+        'inputType': 'spacer',
+        'fqn': 'hematology.spacer146'
+      },
+      {
+        'elementKey': 'rcmStomatocytes',
+        'formIndex': '2',
+        'inputType': 'checkbox',
+        'label': 'Stomatocytes',
+        'tableColumn': '79',
+        'fqn': 'hematology.rcmStomatocytes'
+      },
+      {
+        'elementKey': 'rcmStomatocytesGrading',
+        'formIndex': '2',
+        'inputType': 'select',
+        'label': 'Grading',
+        'options': [
+          {
+            'key': '1+',
+            'text': '1+'
+          },
+          {
+            'key': '2+',
+            'text': '2+'
+          },
+          {
+            'key': '3+',
+            'text': '3+'
+          },
+          {
+            'key': '4+',
+            'text': '4+'
+          }
+        ],
+        'tableColumn': '80',
+        'fqn': 'hematology.rcmStomatocytesGrading'
+      },
+      {
+        'elementKey': 'spacer147',
+        'formIndex': '2',
+        'inputType': 'spacer',
+        'fqn': 'hematology.spacer147'
+      },
+      {
+        'elementKey': 'rcmSpherocytes',
+        'formIndex': '2',
+        'inputType': 'checkbox',
+        'label': 'Spherocytes',
+        'tableColumn': '81',
+        'fqn': 'hematology.rcmSpherocytes'
+      },
+      {
+        'elementKey': 'rcmSpherocytesGrading',
+        'formIndex': '2',
+        'inputType': 'select',
+        'label': 'Grading',
+        'options': [
+          {
+            'key': '1+',
+            'text': '1+'
+          },
+          {
+            'key': '2+',
+            'text': '2+'
+          },
+          {
+            'key': '3+',
+            'text': '3+'
+          },
+          {
+            'key': '4+',
+            'text': '4+'
+          }
+        ],
+        'tableColumn': '82',
+        'fqn': 'hematology.rcmSpherocytesGrading'
+      },
+      {
+        'elementKey': 'spacer148',
+        'formIndex': '2',
+        'inputType': 'spacer',
+        'fqn': 'hematology.spacer148'
+      },
+      {
+        'elementKey': 'rcmICC',
+        'formIndex': '2',
+        'inputType': 'checkbox',
+        'label': 'Irregularly Contracted Cells (ICC)',
+        'tableColumn': '82',
+        'fqn': 'hematology.rcmICC'
+      },
+      {
+        'elementKey': 'spacer149',
+        'formIndex': '2',
+        'inputType': 'spacer',
+        'fqn': 'hematology.spacer149'
+      },
+      {
+        'elementKey': 'spacer150',
+        'formIndex': '2',
+        'inputType': 'spacer',
+        'fqn': 'hematology.spacer150'
+      },
+      {
+        'elementKey': 'rcmICCBite',
+        'formIndex': '2',
+        'inputType': 'checkbox',
+        'label': 'Bite Cells',
+        'tableColumn': '83',
+        'fqn': 'hematology.rcmICCBite'
+      },
+      {
+        'elementKey': 'rcmICCBiteGrading',
+        'formIndex': '2',
+        'inputType': 'select',
+        'label': 'Grading',
+        'options': [
+          {
+            'key': '1+',
+            'text': '1+'
+          },
+          {
+            'key': '2+',
+            'text': '2+'
+          },
+          {
+            'key': '3+',
+            'text': '3+'
+          },
+          {
+            'key': '4+',
+            'text': '4+'
+          }
+        ],
+        'tableColumn': '84',
+        'fqn': 'hematology.rcmICCBiteGrading'
+      },
+      {
+        'elementKey': 'spacer151',
+        'formIndex': '2',
+        'inputType': 'spacer',
+        'fqn': 'hematology.spacer151'
+      },
+      {
+        'elementKey': 'rcmICCHelmut',
+        'formIndex': '2',
+        'inputType': 'checkbox',
+        'label': 'Helmet Cells',
+        'tableColumn': '85',
+        'fqn': 'hematology.rcmICCHelmut'
+      },
+      {
+        'elementKey': 'rcmICCHelmutGrading',
+        'formIndex': '2',
+        'inputType': 'select',
+        'label': 'Grading',
+        'options': [
+          {
+            'key': '1+',
+            'text': '1+'
+          },
+          {
+            'key': '2+',
+            'text': '2+'
+          },
+          {
+            'key': '3+',
+            'text': '3+'
+          },
+          {
+            'key': '4+',
+            'text': '4+'
+          }
+        ],
+        'tableColumn': '86',
+        'fqn': 'hematology.rcmICCHelmutGrading'
+      },
+      {
+        'elementKey': 'spacer152',
+        'formIndex': '2',
+        'inputType': 'spacer',
+        'fqn': 'hematology.spacer152'
+      },
+      {
+        'elementKey': 'rcmICCSchistocytes',
+        'formIndex': '2',
+        'inputType': 'checkbox',
+        'label': 'Schistocytes',
+        'tableColumn': '87',
+        'fqn': 'hematology.rcmICCSchistocytes'
+      },
+      {
+        'elementKey': 'rcmICCSchistocytesGrading',
+        'formIndex': '2',
+        'inputType': 'select',
+        'label': 'Grading',
+        'options': [
+          {
+            'key': '1+',
+            'text': '1+'
+          },
+          {
+            'key': '2+',
+            'text': '2+'
+          },
+          {
+            'key': '3+',
+            'text': '3+'
+          },
+          {
+            'key': '4+',
+            'text': '4+'
+          }
+        ],
+        'tableColumn': '88',
+        'fqn': 'hematology.rcmICCSchistocytesGrading'
+      },
+      {
+        'elementKey': 'spacer153',
+        'formIndex': '2',
+        'inputType': 'spacer',
+        'fqn': 'hematology.spacer153'
+      },
+      {
+        'elementKey': 'rcmBasophilicStippling',
+        'formIndex': '2',
+        'inputType': 'checkbox',
+        'label': 'Coarse Basophilic Stippling',
+        'tableColumn': '89',
+        'fqn': 'hematology.rcmBasophilicStippling'
       },
       {
         'elementKey': 'rcmHowellJollyBodies',
         'formIndex': '2',
         'inputType': 'checkbox',
         'label': 'Howell-Jolly Bodies',
-        'tableColumn': '67',
+        'tableColumn': '90',
         'fqn': 'hematology.rcmHowellJollyBodies'
       },
       {
@@ -17248,7 +17720,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'checkbox',
         'label': 'Pappenheimer Bodies',
-        'tableColumn': '68',
+        'tableColumn': '91',
         'fqn': 'hematology.rcmPappenheimerBodies'
       },
       {
@@ -17256,31 +17728,57 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'checkbox',
         'label': 'Malaria',
-        'tableColumn': '69',
+        'tableColumn': '92',
         'fqn': 'hematology.rcmMalaria'
       },
       {
-        'elementKey': 'mcvMchcInterpretation',
+        'elementKey': 'rcmMalariaType',
         'formIndex': '2',
-        'inputType': 'textarea',
-        'label': 'MCV/MCHC Interpretation',
-        'tableColumn': '70',
-        'fqn': 'hematology.mcvMchcInterpretation'
+        'inputType': 'checkset',
+        'label': 'Type',
+        'options': [
+          {
+            'key': 'Gametocyte',
+            'text': 'Gametocyte'
+          },
+          {
+            'key': 'Ring Form/Trophozoite',
+            'text': 'Ring Form/Trophozoite'
+          },
+          {
+            'key': 'Schizont',
+            'text': 'Schizont'
+          }
+        ],
+        'tableColumn': '93',
+        'fqn': 'hematology.rcmMalariaType'
       },
       {
         'elementKey': 'rbcComments',
         'formIndex': '2',
         'inputType': 'textarea',
         'label': 'RBC comments',
-        'tableColumn': '71',
+        'tableColumn': '93',
         'fqn': 'hematology.rbcComments'
+      },
+      {
+        'elementKey': 'spacer156',
+        'formIndex': '2',
+        'inputType': 'spacer',
+        'fqn': 'hematology.spacer156'
+      },
+      {
+        'elementKey': 'spacer157',
+        'formIndex': '2',
+        'inputType': 'spacer',
+        'fqn': 'hematology.spacer157'
       },
       {
         'elementKey': 'referralToHema',
         'formIndex': '2',
         'inputType': 'checkbox',
         'label': 'Referral to hematopathologist',
-        'tableColumn': '72',
+        'tableColumn': '94',
         'fqn': 'hematology.referralToHema'
       },
       {
@@ -17288,7 +17786,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'textarea',
         'label': 'Reason for referral',
-        'tableColumn': '73',
+        'tableColumn': '95',
         'fqn': 'hematology.explain'
       }
     ],
@@ -17547,7 +18045,8 @@ const DEFS = {
               'name',
               'profession',
               'day',
-              'time'
+              'time',
+              'pltAbnormalMorphology'
             ]
           },
           {
@@ -17799,6 +18298,7 @@ const DEFS = {
           {
             'ehr_list_index': '43',
             'items': [
+              'pltNormalMorphology',
               'pltMorphology'
             ]
           },
@@ -17889,99 +18389,229 @@ const DEFS = {
           {
             'ehr_list_index': '58',
             'items': [
-              'wbcmHypersegmentedNeutrophils'
+              'wbcmNormalMorphology'
             ]
           },
           {
             'ehr_list_index': '59',
             'items': [
-              'wbcmImmatureCells',
-              'rcmConsistent'
+              'wbcmAbnormalMorphology'
             ]
           },
           {
             'ehr_list_index': '60',
             'items': [
-              'wbcmToxicGranulation',
-              'rcmMicrocytic'
+              'wbcmAbnormalTypeMorphology'
             ]
           },
           {
             'ehr_list_index': '61',
             'items': [
-              'wbcmToxicVacuoles',
-              'rcmMicrocyticGrading'
+              'wbcmToxicMorphology'
             ]
           },
           {
             'ehr_list_index': '62',
             'items': [
-              'rcmNormal',
-              'rcmHypochromia'
+              'wbcmToxicTypeMorphology'
             ]
           },
           {
             'ehr_list_index': '63',
             'items': [
-              'rcmHypochromiaGrading'
+              'rcmNormal'
             ]
           },
           {
             'ehr_list_index': '64',
             'items': [
-              'rcmMacrocytic'
+              'rcmConsistent'
             ]
           },
           {
             'ehr_list_index': '65',
             'items': [
-              'rcmMacrocyticGrading'
+              'rcmAcanthocytes'
             ]
           },
           {
             'ehr_list_index': '66',
             'items': [
-              'rcmRouleaux'
+              'rcmAcanthocytesGrading'
             ]
           },
           {
             'ehr_list_index': '67',
             'items': [
-              'rcmHowellJollyBodies'
+              'rcmCodocytes'
             ]
           },
           {
             'ehr_list_index': '68',
             'items': [
-              'rcmPappenheimerBodies'
+              'rcmCodocytesGrading'
             ]
           },
           {
             'ehr_list_index': '69',
             'items': [
-              'rcmMalaria'
+              'rcmDacryocytes'
             ]
           },
           {
             'ehr_list_index': '70',
             'items': [
-              'mcvMchcInterpretation'
+              'rcmDacryocytesGrading'
             ]
           },
           {
             'ehr_list_index': '71',
             'items': [
-              'rbcComments'
+              'rcmDrepanocytes'
             ]
           },
           {
             'ehr_list_index': '72',
             'items': [
-              'referralToHema'
+              'rcmDrepanocytesGrading'
             ]
           },
           {
             'ehr_list_index': '73',
+            'items': [
+              'rcmEchinocytes'
+            ]
+          },
+          {
+            'ehr_list_index': '74',
+            'items': [
+              'rcmEchinocytesGrading'
+            ]
+          },
+          {
+            'ehr_list_index': '75',
+            'items': [
+              'rcmOvalocytes'
+            ]
+          },
+          {
+            'ehr_list_index': '76',
+            'items': [
+              'rcmOvalocytesGrading'
+            ]
+          },
+          {
+            'ehr_list_index': '77',
+            'items': [
+              'rcmMacroOvalocytes'
+            ]
+          },
+          {
+            'ehr_list_index': '78',
+            'items': [
+              'rcmMacroOvalocytesGrading'
+            ]
+          },
+          {
+            'ehr_list_index': '79',
+            'items': [
+              'rcmStomatocytes'
+            ]
+          },
+          {
+            'ehr_list_index': '80',
+            'items': [
+              'rcmStomatocytesGrading'
+            ]
+          },
+          {
+            'ehr_list_index': '81',
+            'items': [
+              'rcmSpherocytes'
+            ]
+          },
+          {
+            'ehr_list_index': '82',
+            'items': [
+              'rcmSpherocytesGrading',
+              'rcmICC'
+            ]
+          },
+          {
+            'ehr_list_index': '83',
+            'items': [
+              'rcmICCBite'
+            ]
+          },
+          {
+            'ehr_list_index': '84',
+            'items': [
+              'rcmICCBiteGrading'
+            ]
+          },
+          {
+            'ehr_list_index': '85',
+            'items': [
+              'rcmICCHelmut'
+            ]
+          },
+          {
+            'ehr_list_index': '86',
+            'items': [
+              'rcmICCHelmutGrading'
+            ]
+          },
+          {
+            'ehr_list_index': '87',
+            'items': [
+              'rcmICCSchistocytes'
+            ]
+          },
+          {
+            'ehr_list_index': '88',
+            'items': [
+              'rcmICCSchistocytesGrading'
+            ]
+          },
+          {
+            'ehr_list_index': '89',
+            'items': [
+              'rcmBasophilicStippling'
+            ]
+          },
+          {
+            'ehr_list_index': '90',
+            'items': [
+              'rcmHowellJollyBodies'
+            ]
+          },
+          {
+            'ehr_list_index': '91',
+            'items': [
+              'rcmPappenheimerBodies'
+            ]
+          },
+          {
+            'ehr_list_index': '92',
+            'items': [
+              'rcmMalaria'
+            ]
+          },
+          {
+            'ehr_list_index': '93',
+            'items': [
+              'rcmMalariaType',
+              'rbcComments'
+            ]
+          },
+          {
+            'ehr_list_index': '94',
+            'items': [
+              'referralToHema'
+            ]
+          },
+          {
+            'ehr_list_index': '95',
             'items': [
               'explain'
             ]
@@ -18076,14 +18706,23 @@ const DEFS = {
                 'pltEstimate',
                 'pltLowRange',
                 'pltHighRange',
-                'pltComment',
-                'pltMorphology'
+                'pltComment'
               ]
             },
             {
               'elementKey': 'ehr_group135',
-              'label': 'WBC Differential',
+              'label': 'PLT morphology (shape of platelets)',
               'gIndex': '7',
+              'gChildren': [
+                'pltNormalMorphology',
+                'pltAbnormalMorphology',
+                'pltMorphology'
+              ]
+            },
+            {
+              'elementKey': 'ehr_group136',
+              'label': 'WBC Differential',
+              'gIndex': '8',
               'gChildren': [
                 'cellCntSegmentedNeutrophil',
                 'cellCntBandCells',
@@ -18102,50 +18741,93 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group136',
-              'label': 'White Cell Morphology',
-              'gIndex': '8',
-              'gChildren': [
-                'wbcmHypersegmentedNeutrophils',
-                'wbcmImmatureCells',
-                'wbcmToxicGranulation',
-                'wbcmToxicVacuoles'
-              ]
-            },
-            {
               'elementKey': 'ehr_group137',
-              'label': 'Red Cell Morphology',
+              'label': 'White Cell Morphology',
               'gIndex': '9',
               'gChildren': [
-                'rcmNormal',
-                'rcmConsistent',
-                'rcmConSpace',
-                'rcmMicrocytic',
-                'rcmMicrocyticGrading',
+                'wbcmNormalMorphology',
                 'rcmMicroSpace',
-                'rcmHypochromia',
-                'rcmHypochromiaGrading',
-                'rcmHypoSpace',
-                'rcmMacrocytic',
-                'rcmMacrocyticGrading',
-                'rcmRouleauxSpace',
-                'rcmRouleaux',
-                'rcmHowellJollyBodies',
-                'rcmPappenheimerBodies',
-                'rcmMalaria'
+                'rcmMicroSpace',
+                'wbcmAbnormalMorphology',
+                'wbcmAbnormalTypeMorphology',
+                'rcmMicroSpace',
+                'wbcmToxicMorphology',
+                'wbcmToxicTypeMorphology'
               ]
             },
             {
               'elementKey': 'ehr_group138',
+              'label': 'Red Cell Morphology',
               'gIndex': '10',
               'gChildren': [
-                'mcvMchcInterpretation',
-                'rbcComments'
+                'rcmNormal',
+                'rcmConsistent',
+                'spacer139',
+                'rcmAcanthocytes',
+                'rcmAcanthocytesGrading',
+                'spacer140',
+                'rcmCodocytes',
+                'rcmCodocytesGrading',
+                'spacer141',
+                'rcmDacryocytes',
+                'rcmDacryocytesGrading',
+                'spacer142',
+                'rcmDrepanocytes',
+                'rcmDrepanocytesGrading',
+                'spacer143',
+                'rcmEchinocytes',
+                'rcmEchinocytesGrading',
+                'spacer144',
+                'rcmOvalocytes',
+                'rcmOvalocytesGrading',
+                'spacer145',
+                'rcmMacroOvalocytes',
+                'rcmMacroOvalocytesGrading',
+                'spacer146',
+                'rcmStomatocytes',
+                'rcmStomatocytesGrading',
+                'spacer147',
+                'rcmSpherocytes',
+                'rcmSpherocytesGrading',
+                'spacer148',
+                'rcmICC',
+                'spacer149',
+                'spacer150',
+                'rcmICCBite',
+                'rcmICCBiteGrading',
+                'spacer151',
+                'rcmICCHelmut',
+                'rcmICCHelmutGrading',
+                'spacer152',
+                'rcmICCSchistocytes',
+                'rcmICCSchistocytesGrading',
+                'spacer153'
               ]
             },
             {
-              'elementKey': 'ehr_group139',
+              'elementKey': 'ehr_group154',
+              'label': 'RBC Inclusions',
               'gIndex': '11',
+              'gChildren': [
+                'rcmBasophilicStippling',
+                'rcmHowellJollyBodies',
+                'rcmPappenheimerBodies',
+                'rcmMalaria',
+                'rcmMalariaType'
+              ]
+            },
+            {
+              'elementKey': 'ehr_group155',
+              'gIndex': '12',
+              'gChildren': [
+                'rbcComments',
+                'spacer156',
+                'spacer157'
+              ]
+            },
+            {
+              'elementKey': 'ehr_group158',
+              'gIndex': '13',
               'gChildren': [
                 'referralToHema',
                 'explain'
@@ -18198,6 +18880,8 @@ const DEFS = {
             'pltLowRange': '',
             'pltHighRange': '',
             'pltComment': '',
+            'pltNormalMorphology': '',
+            'pltAbnormalMorphology': '',
             'pltMorphology': '',
             'cellCntSegmentedNeutrophil': '',
             'cellCntBandCells': '',
@@ -18213,23 +18897,43 @@ const DEFS = {
             'cellCntOther': '',
             'cellCntTotal': '',
             'cellCntNRBCs': '',
-            'wbcmHypersegmentedNeutrophils': '',
-            'wbcmImmatureCells': '',
-            'wbcmToxicGranulation': '',
-            'wbcmToxicVacuoles': '',
+            'wbcmNormalMorphology': '',
+            'wbcmAbnormalMorphology': '',
+            'wbcmAbnormalTypeMorphology': '',
+            'wbcmToxicMorphology': '',
+            'wbcmToxicTypeMorphology': '',
             'rcmNormal': '',
             'rcmConsistent': '',
-            'rcmMicrocytic': '',
-            'rcmMicrocyticGrading': '',
-            'rcmHypochromia': '',
-            'rcmHypochromiaGrading': '',
-            'rcmMacrocytic': '',
-            'rcmMacrocyticGrading': '',
-            'rcmRouleaux': '',
+            'rcmAcanthocytes': '',
+            'rcmAcanthocytesGrading': '',
+            'rcmCodocytes': '',
+            'rcmCodocytesGrading': '',
+            'rcmDacryocytes': '',
+            'rcmDacryocytesGrading': '',
+            'rcmDrepanocytes': '',
+            'rcmDrepanocytesGrading': '',
+            'rcmEchinocytes': '',
+            'rcmEchinocytesGrading': '',
+            'rcmOvalocytes': '',
+            'rcmOvalocytesGrading': '',
+            'rcmMacroOvalocytes': '',
+            'rcmMacroOvalocytesGrading': '',
+            'rcmStomatocytes': '',
+            'rcmStomatocytesGrading': '',
+            'rcmSpherocytes': '',
+            'rcmSpherocytesGrading': '',
+            'rcmICC': '',
+            'rcmICCBite': '',
+            'rcmICCBiteGrading': '',
+            'rcmICCHelmut': '',
+            'rcmICCHelmutGrading': '',
+            'rcmICCSchistocytes': '',
+            'rcmICCSchistocytesGrading': '',
+            'rcmBasophilicStippling': '',
             'rcmHowellJollyBodies': '',
             'rcmPappenheimerBodies': '',
             'rcmMalaria': '',
-            'mcvMchcInterpretation': '',
+            'rcmMalariaType': '',
             'rbcComments': '',
             'referralToHema': '',
             'explain': ''
