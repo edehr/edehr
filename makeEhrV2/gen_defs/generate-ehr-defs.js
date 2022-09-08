@@ -72,7 +72,7 @@ function convertFile (fName, hashMap) {
   let hash = md5Hex(contents)
   let previousHash = hashMap[fName]
   let results
-  if (hash !== previousHash) {
+  if (true || hash !== previousHash) {
     let stats = fs.statSync(fSrc)
     let lastModifiedTime = stats.mtime
     console.log('GenerateEhr convert file. Process', fName)
