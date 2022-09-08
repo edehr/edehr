@@ -7,31 +7,24 @@
 
 <script>
 import EhrElementCommon from './EhrElementCommon'
+const dbug = true
 export default {
   extends: EhrElementCommon,
-  // for props, etc see EhrCommonElement
-  data () {
-    return {
-    }
-  },
   methods: {
     setDependentValue (value) {
-      console.log('DobElement setDependentValue', this.elementKey, value, this.inputVal)
+      if(dbug) console.log('DobElement setDependentValue', this.elementKey, value, this.inputVal)
       if (value) {
         const now = new Date()
+        const dob = new Date(this.inputVal)
+        const isAfter = dob.getMonth() > now.getMonth() || dob.getMonth() === now.getMonth() && dob.getDay() > now.getDay()
         let nyr = now.getFullYear()
-        console.log('DobElement nyr', nyr)
         nyr = nyr - value
-        console.log('DobElement nyr', nyr)
-        const asD = new Date(this.inputVal)
-        asD.setFullYear(nyr)
-        this.inputVal = asD.toISOString().split('T')[0]
-        console.log('DobElement inputVal', this.inputVal)
+        nyr += isAfter ? -1 : 0
+        dob.setFullYear(nyr)
+        this.inputVal = dob.toISOString().split('T')[0]
+        if(dbug) console.log('DobElement inputVal', this.inputVal)
       }
-      // super.setDependentValue(value)
     },
   }
 }
 </script>
-<style lang='scss'>
-</style>
