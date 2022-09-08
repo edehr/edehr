@@ -1,3 +1,6 @@
+/**
+ * WARNING Do not edit this code unless you are working in the makeEhr common_src directory.  Use the copy script to deployr to both server and client
+ */
 /*
 Define constants for EHR definition field names
  */
@@ -13,7 +16,7 @@ const EhrTypes = {
     mandatory: 'mandatory',
     dataCaseStudy: 'dataCaseStudy'
   },
-  inputTypes: {
+  inputTypes: { // becomes the field that holds all types. See below
   },
   dataInputTypes: {
     checkbox: 'checkbox',
@@ -21,13 +24,15 @@ const EhrTypes = {
     calculatedValue: 'calculatedValue',
     checkset: 'checkset',
     date: 'date',
-    ehrDOB: 'ehrDOB', // date of birth
+    ehrDOB: 'ehrDOB', // date of birth copied from demographics page
     ehrPHN: 'ehrPHN',
     ehrPatientName: 'ehrPatientName',
     ehrLocation: 'ehrLocation',
     // day: 'day',
     ehrFile: 'ehrFile',
     ehr_embedded: 'ehr_embedded',
+    mainDOB: 'mainDOB', // main edit field on demographics page. Year is computed base on dependant age field.
+    personAge: 'personAge',
     text: 'text',
     textarea: 'textarea',
     // time: 'time',
@@ -41,10 +46,12 @@ const EhrTypes = {
     splitKeyValueOn: '=',
     prefix: 'dependent:',
     type: {
+      age: 'age',
       check: 'check',
       select: 'select',
     },
     action: {
+      age: 'age',
       disable: 'disable',
       visible: 'visble'
     }

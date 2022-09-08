@@ -2,7 +2,7 @@
 import EhrDefs from '../../../helpers/ehr-defs-grid'
 import EventBus from '../../../helpers/event-bus'
 import EhrTypes from '@/inside/defs-grid/ehr-types'
-
+const dbug = false
 const PROPS = EhrTypes.dependentOn
 const UI_TYPES = EhrTypes.inputTypes
 /*
@@ -31,7 +31,7 @@ export default {
   computed: {
     isEventSource () {
       const type = this.inputType
-      return type === UI_TYPES.select || type === UI_TYPES.checkbox
+      return type === UI_TYPES.select || type === UI_TYPES.checkbox || type === UI_TYPES.personAge
     },
     dependentOn () {
       return this.element ? this.element.dependentOn : (this.group ? this.group.dependentOn : undefined)
@@ -40,12 +40,12 @@ export default {
   methods: {
     setInitialDependentValue () {
       if(this.isEventSource) {
-        // console.log('setInitialDependentValue', this.elementKey)
+        if (dbug) console.log('eDep setInitialDependentValue inputType, elementKey', this.inputType, this.elementKey)
         this.dependentUIEvent()
       }
     },
     setDependentValue (value) {
-      // console.log('setDependentValue', this.elementKey, value, this.dependentDef)
+      if (dbug) console.log('eDep setDependentValue', this.elementKey, value, this.dependentDef)
       this.dependentOnValue = value
     },
     dependentUIEvent () {
@@ -53,19 +53,21 @@ export default {
       if(channel) {
         const eData = {key: this.elementKey, value: this.inputVal}
         this.$nextTick(function () {
-          // console.log('Send an event on our transmission channel with a payload containing this component\'s value', eData, channel)
+          if (dbug) console.log('eDep Send an event on our transmission channel '+channel+' with a payload containing this component\'s value', eData, channel)
           EventBus.$emit(channel, eData)
         })
       }
     },
     _dReceiveEvent (eData) {
+      if (dbug) console.log('eDep _dReceiveEvent', eData)
       // we're receiving an event transmitted by another instance of this component
       // it has sent a message on the channel this component listens on.
-      // console.log(`On channel ${this.dChannel} from key ${eData.key} got hit? ${eData.value}`)
+      // if (dbug) console.log(`On channel ${this.dChannel} from key ${eData.key} got hit? ${eData.value}`)
       this.setDependentValue(eData.value)
     },
     _dReceiveSetup () {
       this.dChannel = PROPS.prefix + this.dependentDef.key
+      if (dbug) console.log('eDep _dReceiveSetup dChannel', this.dChannel)
       this.dependentEventHandler = (eData) => { this._dReceiveEvent(eData) }
       EventBus.$on(this.dChannel, this.dependentEventHandler)
     },
@@ -96,8 +98,9 @@ export default {
     },
     dependentPropertySetUp () {
       if (this.dependentOn) {
-        // console.log('do we have dependentOn and element', this.dependentOn, this.elementKey)
+        if (dbug) console.log('eDep do we have dependentOn and element', this.dependentOn, this.elementKey)
         this.dependentDef = this._dependentKeys(this.dependentOn)
+        if (dbug) console.log('eDep dependentDef', this.dependentDef)
         if (this.dependentDef.key) {
           this._dReceiveSetup()
           this.dependentOnValue = EhrDefs.getDefaultValue(this.pageDataKey, this.dependentDef.key)

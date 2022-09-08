@@ -53,53 +53,53 @@ Complete}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehrDOB}	eCell	{Label: DOB}	{Comments: get this from demographics}	{elementKey: dateOfBirth}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 4}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: visitDay}	eCell	{Label: Date of test}	{Comments: day selector}	{elementKey: dateOfTest}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 5}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: visitTime}	eCell	{Label: Time of test}	{Comments: time selector}	{elementKey: timeOfTest}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 6}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	{Label: Analysis}	eCell	eCell	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: WBC}	eCell	{elementKey: wbc}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 7}	eCell	eCell	eCell	eCell	eCell	{Suffix: 10^9/L}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	{Label: Automated analyzer}	eCell	eCell	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: WBC}	eCell	{elementKey: wbc}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 7}	eCell	eCell	eCell	eCell	eCell	{Suffix: 10^9/L}	eCell	eCell	eCell	eCell	#REF!	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Interpretation}	eCell	{elementKey: wbc-interp}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 8}	eCell	eCell	eCell	eCell	"{Options: low
 normal
 high}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: spacer}	eCell	eCell	eCell	{elementKey: aSpacer}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: RBC}	eCell	{elementKey: rbc}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 9}	eCell	eCell	eCell	eCell	eCell	{Suffix: 10^12/L}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: RBC}	eCell	{elementKey: rbc}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 9}	eCell	eCell	eCell	eCell	eCell	{Suffix: 10^12/L}	eCell	eCell	eCell	eCell	{helperText: Red blood cell count}	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Interpretation}	eCell	{elementKey: rbc-interp}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 10}	eCell	eCell	eCell	eCell	"{Options: low
 normal
-high}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: spacer}	eCell	eCell	eCell	{elementKey: aSpacer}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: HGB}	eCell	{elementKey: hgb}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 10}	eCell	eCell	eCell	eCell	eCell	{Suffix: g/L}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+high}"	eCell	eCell	eCell	eCell	eCell	{helperText: Hemoglobin}	eCell	eCell	eCell	eCell	eCell
+{inputType: spacer}	eCell	eCell	eCell	{elementKey: aSpacer}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: Hematocrit}	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: HGB}	eCell	{elementKey: hgb}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 10}	eCell	eCell	eCell	eCell	eCell	{Suffix: g/L}	eCell	eCell	eCell	eCell	{helperText: Mean Cell Volume}	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Interpretation}	eCell	{elementKey: hgb-interp}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 11}	eCell	eCell	eCell	eCell	"{Options: low
 normal
-high}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: spacer}	eCell	eCell	eCell	{elementKey: aSpacer}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: HCT}	eCell	{elementKey: HCT}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 11}	eCell	eCell	eCell	eCell	eCell	{Suffix: L/L}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+high}"	eCell	eCell	eCell	eCell	eCell	{helperText: Mean Cell Hemoglobin}	eCell	eCell	eCell	eCell	eCell
+{inputType: spacer}	eCell	eCell	eCell	{elementKey: aSpacer}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: Mean Cell Hemoglobin Concentration}	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: HCT}	eCell	{elementKey: HCT}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 11}	eCell	eCell	eCell	eCell	eCell	{Suffix: L/L}	eCell	eCell	eCell	eCell	{helperText: White blood cell count}	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Interpretation}	eCell	{elementKey: HCT-interp}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 12}	eCell	eCell	eCell	eCell	"{Options: low
 normal
-high}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: spacer}	eCell	eCell	eCell	{elementKey: aSpacer}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: MCV}	eCell	{elementKey: MCV}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 12}	eCell	eCell	eCell	eCell	eCell	{Suffix: fL}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+high}"	eCell	eCell	eCell	eCell	eCell	{helperText: Platelet Count}	eCell	eCell	eCell	eCell	eCell
+{inputType: spacer}	eCell	eCell	eCell	{elementKey: aSpacer}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: Mean Platelet Volume}	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: MCV}	eCell	{elementKey: MCV}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 12}	eCell	eCell	eCell	eCell	eCell	{Suffix: fL}	eCell	eCell	eCell	eCell	#REF!	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Interpretation}	eCell	{elementKey: MCV-interp}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 13}	eCell	eCell	eCell	eCell	"{Options: low
 normal
-high}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: spacer}	eCell	eCell	eCell	{elementKey: aSpacer}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: MCH}	eCell	{elementKey: MCH}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 13}	eCell	eCell	eCell	eCell	eCell	{Suffix: pg}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+high}"	eCell	eCell	eCell	eCell	eCell	#REF!	eCell	eCell	eCell	eCell	eCell
+{inputType: spacer}	eCell	eCell	eCell	{elementKey: aSpacer}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	#REF!	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: MCH}	eCell	{elementKey: MCH}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 13}	eCell	eCell	eCell	eCell	eCell	{Suffix: pg}	eCell	eCell	eCell	eCell	#REF!	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Interpretation}	eCell	{elementKey: MCH-interp}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 14}	eCell	eCell	eCell	eCell	"{Options: low
 normal
-high}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: spacer}	eCell	eCell	eCell	{elementKey: aSpacer}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: MCHC}	eCell	{elementKey: MCHC}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 14}	eCell	eCell	eCell	eCell	eCell	{Suffix: g/L}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+high}"	eCell	eCell	eCell	eCell	eCell	#REF!	eCell	eCell	eCell	eCell	eCell
+{inputType: spacer}	eCell	eCell	eCell	{elementKey: aSpacer}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	#REF!	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: MCHC}	eCell	{elementKey: MCHC}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 14}	eCell	eCell	eCell	eCell	eCell	{Suffix: g/L}	eCell	eCell	eCell	eCell	#REF!	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Interpretation}	eCell	{elementKey: MCHC-interp}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 15}	eCell	eCell	eCell	eCell	"{Options: low
 normal
-high}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: spacer}	eCell	eCell	eCell	{elementKey: aSpacer}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: RDW}	eCell	{elementKey: RDW}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 15}	eCell	eCell	eCell	eCell	eCell	{Suffix: %}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+high}"	eCell	eCell	eCell	eCell	eCell	#REF!	eCell	eCell	eCell	eCell	eCell
+{inputType: spacer}	eCell	eCell	eCell	{elementKey: aSpacer}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	#REF!	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: RDW}	eCell	{elementKey: RDW}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 15}	eCell	eCell	eCell	eCell	eCell	{Suffix: %}	eCell	eCell	eCell	eCell	#REF!	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Interpretation}	eCell	{elementKey: RDW-interp}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 16}	eCell	eCell	eCell	eCell	"{Options: low
 normal
-high}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: spacer}	eCell	eCell	eCell	{elementKey: aSpacer}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: PLT}	eCell	{elementKey: PLT}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 16}	eCell	eCell	eCell	eCell	eCell	{Suffix: 10^9/L}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+high}"	eCell	eCell	eCell	eCell	eCell	#REF!	eCell	eCell	eCell	eCell	eCell
+{inputType: spacer}	eCell	eCell	eCell	{elementKey: aSpacer}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	#REF!	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: PLT}	eCell	{elementKey: PLT}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 16}	eCell	eCell	eCell	eCell	eCell	{Suffix: 10^9/L}	eCell	eCell	eCell	eCell	#REF!	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Interpretation}	eCell	{elementKey: PLT-interp}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 17}	eCell	eCell	eCell	eCell	"{Options: low
 normal
-high}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+high}"	eCell	eCell	eCell	eCell	eCell	#REF!	eCell	eCell	eCell	eCell	eCell
 {inputType: spacer}	eCell	eCell	eCell	{elementKey: aSpacer}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: MPV}	eCell	{elementKey: MPV}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 17}	eCell	eCell	eCell	eCell	eCell	{Suffix: fL}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: MPV}	eCell	{elementKey: MPV}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 17}	eCell	eCell	eCell	eCell	eCell	{Suffix: fL}	eCell	eCell	eCell	eCell	#REF!	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Interpretation}	eCell	{elementKey: MPV-interp}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 18}	eCell	eCell	eCell	eCell	"{Options: low
 normal
 high}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
@@ -132,12 +132,12 @@ high}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: number}	eCell	{Label: WBC - 8}	eCell	{elementKey: wbc-8}	{pN: 43}	{fN: 2}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 18}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: wbcAverage}	eCell	eCell	eCell	eCell
 {inputType: number}	eCell	{Label: WBC - 9}	eCell	{elementKey: wbc-9}	{pN: 43}	{fN: 2}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 19}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: wbcAverage}	eCell	eCell	eCell	eCell
 {inputType: number}	eCell	{Label: WBC - 10}	eCell	{elementKey: wbc-10}	{pN: 43}	{fN: 2}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 20}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: wbcAverage}	eCell	eCell	eCell	eCell
-{inputType: number}	eCell	{Label: Field Factor}	eCell	{elementKey: wbcFieldFactor}	{pN: 43}	{fN: 2}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 21}	eCell	eCell	eCell	{Default_value: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: wbcEstimate}	eCell	eCell	eCell	eCell
-{inputType: calculatedValue}	eCell	{Label: Average}	{Comments: <compute the average of the above>}	{elementKey: wbcAverage}	{pN: 43}	{fN: 2}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 22}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: wbcEstimate}	{calculationType: average}	eCell	eCell	eCell
+{inputType: number}	eCell	{Label: WBC field factor}	eCell	{elementKey: wbcFieldFactor}	{pN: 43}	{fN: 2}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 21}	eCell	eCell	eCell	{Default_value: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: wbcEstimate}	eCell	eCell	eCell	eCell
+{inputType: calculatedValue}	eCell	{Label: WBC average}	{Comments: <compute the average of the above>}	{elementKey: wbcAverage}	{pN: 43}	{fN: 2}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 22}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: wbcEstimate}	{calculationType: average}	eCell	eCell	eCell
 {inputType: calculatedValue}	eCell	{Label: WBC estimate}	{Comments: <compute average * field factor>}	{elementKey: wbcEstimate}	{pN: 43}	{fN: 2}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 23}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: [wbcLowRange, wbcHighRange]}	{calculationType: product}	eCell	eCell	eCell
-{inputType: calculatedValue}	eCell	{Label: Low range}	{Comments: <compute:  (WCB * (0.75)>}	{elementKey: wbcLowRange}	{pN: 43}	{fN: 2}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 24}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{calculationType: multiplyBy(0.75)}	eCell	eCell	eCell
-{inputType: calculatedValue}	eCell	{Label: High range}	{Comments: <compute:  WCB * (1.25) ) >}	{elementKey: wbcHighRange}	{pN: 43}	{fN: 2}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 25}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{calculationType: multiplyBy(1.25)}	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Comment}	eCell	{elementKey: wbcComment}	{pN: 43}	{fN: 2}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 26}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: calculatedValue}	eCell	{Label: WBC estimate range (low)}	{Comments: <compute:  (WCB * (0.75)>}	{elementKey: wbcLowRange}	{pN: 43}	{fN: 2}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 24}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{calculationType: multiplyBy(0.75)}	eCell	eCell	eCell
+{inputType: calculatedValue}	eCell	{Label: WBC estimate range (high)}	{Comments: <compute:  WCB * (1.25) ) >}	{elementKey: wbcHighRange}	{pN: 43}	{fN: 2}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 25}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{calculationType: multiplyBy(1.25)}	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: WBC comment}	eCell	{elementKey: wbcComment}	{pN: 43}	{fN: 2}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 26}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	{Label: PLT Estimate}	eCell	eCell	{pN: 43}	{fN: 2}	{gN: 6}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: number}	eCell	{Label: PLT - 1}	eCell	{elementKey: plt-1}	{pN: 43}	{fN: 2}	{gN: 6}	{sgN: }	eCell	eCell	eCell	{tableColumn: 27}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: pltAverage}	eCell	eCell	eCell	eCell
 {inputType: number}	eCell	{Label: PLT - 2}	eCell	{elementKey: plt-2}	{pN: 43}	{fN: 2}	{gN: 6}	{sgN: }	eCell	eCell	eCell	{tableColumn: 28}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: pltAverage}	eCell	eCell	eCell	eCell
@@ -149,12 +149,12 @@ high}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: number}	eCell	{Label: PLT - 8}	eCell	{elementKey: plt-8}	{pN: 43}	{fN: 2}	{gN: 6}	{sgN: }	eCell	eCell	eCell	{tableColumn: 34}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: pltAverage}	eCell	eCell	eCell	eCell
 {inputType: number}	eCell	{Label: PLT - 9}	eCell	{elementKey: plt-9}	{pN: 43}	{fN: 2}	{gN: 6}	{sgN: }	eCell	eCell	eCell	{tableColumn: 35}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: pltAverage}	eCell	eCell	eCell	eCell
 {inputType: number}	eCell	{Label: PLT - 10}	eCell	{elementKey: plt-10}	{pN: 43}	{fN: 2}	{gN: 6}	{sgN: }	eCell	eCell	eCell	{tableColumn: 36}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: pltAverage}	eCell	eCell	eCell	eCell
-{inputType: number}	eCell	{Label: Field Factor}	{Comments: default for PLT can be found and used}	{elementKey: pltFieldFactor}	{pN: 43}	{fN: 2}	{gN: 6}	{sgN: }	eCell	eCell	eCell	{tableColumn: 37}	eCell	eCell	eCell	{Default_value: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: pltEstimate}	eCell	eCell	eCell	eCell
-{inputType: calculatedValue}	eCell	{Label: Average}	{Comments: <compute the average of the above>}	{elementKey: pltAverage}	{pN: 43}	{fN: 2}	{gN: 6}	{sgN: }	eCell	eCell	eCell	{tableColumn: 38}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: pltEstimate}	{calculationType: average}	eCell	eCell	eCell
+{inputType: number}	eCell	{Label: PLT field factor}	{Comments: default for PLT can be found and used}	{elementKey: pltFieldFactor}	{pN: 43}	{fN: 2}	{gN: 6}	{sgN: }	eCell	eCell	eCell	{tableColumn: 37}	eCell	eCell	eCell	{Default_value: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: pltEstimate}	eCell	eCell	eCell	eCell
+{inputType: calculatedValue}	eCell	{Label: PLT average}	{Comments: <compute the average of the above>}	{elementKey: pltAverage}	{pN: 43}	{fN: 2}	{gN: 6}	{sgN: }	eCell	eCell	eCell	{tableColumn: 38}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: pltEstimate}	{calculationType: average}	eCell	eCell	eCell
 {inputType: calculatedValue}	eCell	{Label: PLT estimate}	{Comments: <compute average * field factor>}	{elementKey: pltEstimate}	{pN: 43}	{fN: 2}	{gN: 6}	{sgN: }	eCell	eCell	eCell	{tableColumn: 39}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: [pltLowRange, pltHighRange]}	{calculationType: product}	eCell	eCell	eCell
-{inputType: calculatedValue}	eCell	{Label: Low range}	{Comments: <compute:  (PLT * (0.75)>}	{elementKey: pltLowRange}	{pN: 43}	{fN: 2}	{gN: 6}	{sgN: }	eCell	eCell	eCell	{tableColumn: 40}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{calculationType: multiplyBy(0.75)}	eCell	eCell	eCell
-{inputType: calculatedValue}	eCell	{Label: High range}	{Comments: <compute:  PLT * (1.25) ) >}	{elementKey: pltHighRange}	{pN: 43}	{fN: 2}	{gN: 6}	{sgN: }	eCell	eCell	eCell	{tableColumn: 41}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{calculationType: multiplyBy(1.25)}	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Comment}	eCell	{elementKey: pltComment}	{pN: 43}	{fN: 2}	{gN: 6}	{sgN: }	eCell	eCell	eCell	{tableColumn: 42}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: calculatedValue}	eCell	{Label: PLT estimate range (low)}	{Comments: <compute:  (PLT * (0.75)>}	{elementKey: pltLowRange}	{pN: 43}	{fN: 2}	{gN: 6}	{sgN: }	eCell	eCell	eCell	{tableColumn: 40}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{calculationType: multiplyBy(0.75)}	eCell	eCell	eCell
+{inputType: calculatedValue}	eCell	{Label: PLT estimate range (high)}	{Comments: <compute:  PLT * (1.25) ) >}	{elementKey: pltHighRange}	{pN: 43}	{fN: 2}	{gN: 6}	{sgN: }	eCell	eCell	eCell	{tableColumn: 41}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{calculationType: multiplyBy(1.25)}	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: PLT comment}	eCell	{elementKey: pltComment}	{pN: 43}	{fN: 2}	{gN: 6}	{sgN: }	eCell	eCell	eCell	{tableColumn: 42}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: checkset}	eCell	{Label: PLT morphology (shape of platelets)}	{Comments: Currently in SRP a drop down multi-select. Also SRP shows a grading dropdown selection with options that are not applicable. Can be replaced with a set of checkboxes. Above holds true for other morphology entries below.}	{elementKey: pltMorphology}	{pN: 43}	{fN: 2}	{gN: 6}	{sgN: }	eCell	eCell	eCell	{tableColumn: 43}	eCell	eCell	eCell	eCell	"{Options: normal
 large platelets
 giant forms
@@ -208,7 +208,7 @@ platelets satellitism}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eC
 {inputType: checkbox}	eCell	{Label: Malaria}	eCell	{elementKey: rcmMalaria}	{pN: 43}	{fN: 2}	{gN: 9}	{sgN: }	eCell	eCell	eCell	{tableColumn: 69}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 43}	{fN: 2}	{gN: 10}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: textarea}	eCell	{Label: MCV/MCHC Interpretation}	eCell	{elementKey: mcvMchcInterpretation}	{pN: 43}	{fN: 2}	{gN: 10}	{sgN: }	eCell	eCell	eCell	{tableColumn: 70}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: textarea}	eCell	{Label: Red blood cell comments}	eCell	{elementKey: rbcComments}	{pN: 43}	{fN: 2}	{gN: 10}	{sgN: }	eCell	eCell	eCell	{tableColumn: 71}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: textarea}	eCell	{Label: RBC comments}	eCell	{elementKey: rbcComments}	{pN: 43}	{fN: 2}	{gN: 10}	{sgN: }	eCell	eCell	eCell	{tableColumn: 71}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 43}	{fN: 2}	{gN: 11}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: checkbox}	eCell	{Label: Referral to hematopathologist}	{Comments: yes/no}	{elementKey: referralToHema}	{pN: 43}	{fN: 2}	{gN: 11}	{sgN: }	eCell	eCell	eCell	{tableColumn: 72}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: textarea}	eCell	{Label: Reason}	eCell	{elementKey: explain}	{pN: 43}	{fN: 2}	{gN: 11}	{sgN: }	eCell	eCell	eCell	{tableColumn: 73}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: textarea}	eCell	{Label: Reason for referral}	eCell	{elementKey: explain}	{pN: 43}	{fN: 2}	{gN: 11}	{sgN: }	eCell	eCell	eCell	{tableColumn: 73}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell

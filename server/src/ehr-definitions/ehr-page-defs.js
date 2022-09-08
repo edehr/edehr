@@ -36,15 +36,16 @@ const DEFS = {
       },
       {
         elementKey: 'dateOfBirth',
+        dependentOn: 'age:personAge',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'mainDOB',
         label: 'Date of birth',
         fqn: 'demographics.dateOfBirth'
       },
       {
         elementKey: 'personAge',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'personAge',
         label: 'Age',
         fqn: 'demographics.personAge'
       },
@@ -420,7 +421,6 @@ const DEFS = {
         fqn: 'demographics.decisionMakerPhone'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       pageForm: {
         elementKey: 'pageForm',
@@ -502,7 +502,6 @@ const DEFS = {
         fqn: 'allergies.text'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       pageForm: {
         elementKey: 'pageForm',
@@ -536,7 +535,6 @@ const DEFS = {
         fqn: 'medical.history'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       pageForm: {
         elementKey: 'pageForm',
@@ -737,7 +735,6 @@ const DEFS = {
         fqn: 'psychosocial.spacer13'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       pageForm: {
         elementKey: 'pageForm',
@@ -858,7 +855,6 @@ const DEFS = {
         fqn: 'surgical.comments'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       pastSurgery: {
         elementKey: 'pastSurgery',
@@ -1200,7 +1196,6 @@ const DEFS = {
         fqn: 'immunization.spacer25'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       pageForm: {
         elementKey: 'pageForm',
@@ -1261,7 +1256,6 @@ const DEFS = {
         fqn: 'familyHistory.history'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       pageForm: {
         elementKey: 'pageForm',
@@ -1303,7 +1297,6 @@ const DEFS = {
         fqn: 'careTeam.profession'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       teams: {
         elementKey: 'teams',
@@ -1420,7 +1413,6 @@ const DEFS = {
         fqn: 'pastAppointments.diagnosis'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       encounters: {
         elementKey: 'encounters',
@@ -1684,7 +1676,6 @@ const DEFS = {
         fqn: 'visit.transferOutTime'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       pageForm: {
         elementKey: 'pageForm',
@@ -2084,7 +2075,6 @@ const DEFS = {
         fqn: 'vitals.cvp'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       table: {
         elementKey: 'table',
@@ -2344,7 +2334,6 @@ const DEFS = {
         fqn: 'fluidBalance.fluidOut'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       table: {
         elementKey: 'table',
@@ -3264,7 +3253,6 @@ const DEFS = {
         fqn: 'neurological.strokeAssessmentCalculation'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       table: {
         elementKey: 'table',
@@ -4044,7 +4032,6 @@ const DEFS = {
         fqn: 'respiratory.generalComments'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       table: {
         elementKey: 'table',
@@ -4824,7 +4811,6 @@ const DEFS = {
         fqn: 'cardiovascular.comments'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       table: {
         elementKey: 'table',
@@ -5549,7 +5535,6 @@ const DEFS = {
         fqn: 'gastrointestinal.comments'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       table: {
         elementKey: 'table',
@@ -6261,7 +6246,6 @@ const DEFS = {
         fqn: 'genitourinary.comments'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       table: {
         elementKey: 'table',
@@ -6863,7 +6847,6 @@ const DEFS = {
         fqn: 'musculoskeletal.comments'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       table: {
         elementKey: 'table',
@@ -7241,7 +7224,6 @@ const DEFS = {
         fqn: 'pain.comments'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       table: {
         elementKey: 'table',
@@ -7819,7 +7801,6 @@ const DEFS = {
         fqn: 'biopsychosocial.generalComments'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       table: {
         elementKey: 'table',
@@ -8207,7 +8188,6 @@ const DEFS = {
         fqn: 'nonmedOrders.comment'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       table: {
         elementKey: 'table',
@@ -8420,7 +8400,6 @@ const DEFS = {
         fqn: 'referrals.status'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       table: {
         elementKey: 'table',
@@ -8840,7 +8819,6 @@ const DEFS = {
         fqn: 'labRequisitions.histologyLocation'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       table: {
         elementKey: 'table',
@@ -9335,7 +9313,6 @@ const DEFS = {
         fqn: 'medicationOrders.notes'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       table: {
         elementKey: 'table',
@@ -9713,7 +9690,6 @@ const DEFS = {
         helperHtml: '<p>Enter time delivered or say if not delivered.</p>'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       table: {
         elementKey: 'table',
@@ -9978,7 +9954,6 @@ const DEFS = {
         fqn: 'dischargeSummary.leavingBy'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       pageForm: {
         elementKey: 'pageForm',
@@ -10048,7 +10023,6 @@ const DEFS = {
         fqn: 'billing.paymentType'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       pageForm: {
         elementKey: 'pageForm',
@@ -10120,7 +10094,6 @@ const DEFS = {
         fqn: 'progressNotes.note'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       table: {
         elementKey: 'table',
@@ -10285,7 +10258,6 @@ const DEFS = {
         fqn: 'carePlan.status'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       table: {
         elementKey: 'table',
@@ -10448,7 +10420,6 @@ const DEFS = {
         fqn: 'consults.comments'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       table: {
         elementKey: 'table',
@@ -10584,7 +10555,6 @@ const DEFS = {
         fqn: 'labResults.comments'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       table: {
         elementKey: 'table',
@@ -10720,7 +10690,6 @@ const DEFS = {
         fqn: 'medicalImaging.comments'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       table: {
         elementKey: 'table',
@@ -10856,7 +10825,6 @@ const DEFS = {
         fqn: 'operationReports.comments'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       table: {
         elementKey: 'table',
@@ -11071,7 +11039,6 @@ const DEFS = {
         fqn: 'assessmentTools.medication1_1'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       pageForm: {
         elementKey: 'pageForm',
@@ -11172,7 +11139,6 @@ const DEFS = {
         fqn: 'codeLookup.icf'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       pageForm: {
         elementKey: 'pageForm',
@@ -11315,7 +11281,6 @@ const DEFS = {
         fqn: 'diagnosticCodes.cluster'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       table: {
         elementKey: 'table',
@@ -11505,7 +11470,6 @@ const DEFS = {
         fqn: 'interventionCodes.extent'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       table: {
         elementKey: 'table',
@@ -11693,7 +11657,6 @@ const DEFS = {
         fqn: 'caseMixGroup.analysis'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       table: {
         elementKey: 'table',
@@ -12126,7 +12089,6 @@ const DEFS = {
         fqn: 'testPage.place'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       form1: {
         elementKey: 'form1',
@@ -12842,7 +12804,6 @@ const DEFS = {
         fqn: 'testTable.stat'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       table1: {
         elementKey: 'table1',
@@ -15235,7 +15196,6 @@ const DEFS = {
         fqn: 'integumentaryAssessment.woundAssessmentComments'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       tableIncision: {
         elementKey: 'tableIncision',
@@ -16174,15 +16134,18 @@ const DEFS = {
       {
         elementKey: 'rbc',
         formIndex: '1',
+        helperText: 'Red blood cell count',
         inputType: 'text',
         label: 'RBC',
         suffix: '10^12/L',
         tableColumn: '9',
-        fqn: 'hematology.rbc'
+        fqn: 'hematology.rbc',
+        helperHtml: '<p>Red blood cell count</p>'
       },
       {
         elementKey: 'rbc-interp',
         formIndex: '1',
+        helperText: 'Hemoglobin',
         inputType: 'select',
         label: 'Interpretation',
         options: [
@@ -16200,26 +16163,32 @@ const DEFS = {
           }
         ],
         tableColumn: '10',
-        fqn: 'hematology.rbc-interp'
+        fqn: 'hematology.rbc-interp',
+        helperHtml: '<p>Hemoglobin</p>'
       },
       {
         elementKey: 'aSpacer',
         formIndex: '1',
+        helperText: 'Hematocrit',
         inputType: 'spacer',
-        fqn: 'hematology.aSpacer'
+        fqn: 'hematology.aSpacer',
+        helperHtml: '<p>Hematocrit</p>'
       },
       {
         elementKey: 'hgb',
         formIndex: '1',
+        helperText: 'Mean Cell Volume',
         inputType: 'text',
         label: 'HGB',
         suffix: 'g/L',
         tableColumn: '10',
-        fqn: 'hematology.hgb'
+        fqn: 'hematology.hgb',
+        helperHtml: '<p>Mean Cell Volume</p>'
       },
       {
         elementKey: 'hgb-interp',
         formIndex: '1',
+        helperText: 'Mean Cell Hemoglobin',
         inputType: 'select',
         label: 'Interpretation',
         options: [
@@ -16237,26 +16206,32 @@ const DEFS = {
           }
         ],
         tableColumn: '11',
-        fqn: 'hematology.hgb-interp'
+        fqn: 'hematology.hgb-interp',
+        helperHtml: '<p>Mean Cell Hemoglobin</p>'
       },
       {
         elementKey: 'aSpacer',
         formIndex: '1',
+        helperText: 'Mean Cell Hemoglobin Concentration',
         inputType: 'spacer',
-        fqn: 'hematology.aSpacer'
+        fqn: 'hematology.aSpacer',
+        helperHtml: '<p>Mean Cell Hemoglobin Concentration</p>'
       },
       {
         elementKey: 'HCT',
         formIndex: '1',
+        helperText: 'White blood cell count',
         inputType: 'text',
         label: 'HCT',
         suffix: 'L/L',
         tableColumn: '11',
-        fqn: 'hematology.HCT'
+        fqn: 'hematology.HCT',
+        helperHtml: '<p>White blood cell count</p>'
       },
       {
         elementKey: 'HCT-interp',
         formIndex: '1',
+        helperText: 'Platelet Count',
         inputType: 'select',
         label: 'Interpretation',
         options: [
@@ -16274,13 +16249,16 @@ const DEFS = {
           }
         ],
         tableColumn: '12',
-        fqn: 'hematology.HCT-interp'
+        fqn: 'hematology.HCT-interp',
+        helperHtml: '<p>Platelet Count</p>'
       },
       {
         elementKey: 'aSpacer',
         formIndex: '1',
+        helperText: 'Mean Platelet Volume',
         inputType: 'spacer',
-        fqn: 'hematology.aSpacer'
+        fqn: 'hematology.aSpacer',
+        helperHtml: '<p>Mean Platelet Volume</p>'
       },
       {
         elementKey: 'MCV',
@@ -16721,7 +16699,7 @@ const DEFS = {
         defaultValue: '1',
         formIndex: '2',
         inputType: 'number',
-        label: 'Field Factor',
+        label: 'WBC field factor',
         passToFunction: 'wbcEstimate',
         tableColumn: '21',
         fqn: 'hematology.wbcFieldFactor'
@@ -16731,7 +16709,7 @@ const DEFS = {
         calculationType: 'average',
         formIndex: '2',
         inputType: 'calculatedValue',
-        label: 'Average',
+        label: 'WBC average',
         passToFunction: 'wbcEstimate',
         tableColumn: '22',
         fqn: 'hematology.wbcAverage'
@@ -16751,7 +16729,7 @@ const DEFS = {
         calculationType: 'multiplyBy(0.75)',
         formIndex: '2',
         inputType: 'calculatedValue',
-        label: 'Low range',
+        label: 'WBC estimate range (low)',
         tableColumn: '24',
         fqn: 'hematology.wbcLowRange'
       },
@@ -16760,7 +16738,7 @@ const DEFS = {
         calculationType: 'multiplyBy(1.25)',
         formIndex: '2',
         inputType: 'calculatedValue',
-        label: 'High range',
+        label: 'WBC estimate range (high)',
         tableColumn: '25',
         fqn: 'hematology.wbcHighRange'
       },
@@ -16768,7 +16746,7 @@ const DEFS = {
         elementKey: 'wbcComment',
         formIndex: '2',
         inputType: 'text',
-        label: 'Comment',
+        label: 'WBC comment',
         tableColumn: '26',
         fqn: 'hematology.wbcComment'
       },
@@ -16867,7 +16845,7 @@ const DEFS = {
         defaultValue: '1',
         formIndex: '2',
         inputType: 'number',
-        label: 'Field Factor',
+        label: 'PLT field factor',
         passToFunction: 'pltEstimate',
         tableColumn: '37',
         fqn: 'hematology.pltFieldFactor'
@@ -16877,7 +16855,7 @@ const DEFS = {
         calculationType: 'average',
         formIndex: '2',
         inputType: 'calculatedValue',
-        label: 'Average',
+        label: 'PLT average',
         passToFunction: 'pltEstimate',
         tableColumn: '38',
         fqn: 'hematology.pltAverage'
@@ -16897,7 +16875,7 @@ const DEFS = {
         calculationType: 'multiplyBy(0.75)',
         formIndex: '2',
         inputType: 'calculatedValue',
-        label: 'Low range',
+        label: 'PLT estimate range (low)',
         tableColumn: '40',
         fqn: 'hematology.pltLowRange'
       },
@@ -16906,7 +16884,7 @@ const DEFS = {
         calculationType: 'multiplyBy(1.25)',
         formIndex: '2',
         inputType: 'calculatedValue',
-        label: 'High range',
+        label: 'PLT estimate range (high)',
         tableColumn: '41',
         fqn: 'hematology.pltHighRange'
       },
@@ -16914,7 +16892,7 @@ const DEFS = {
         elementKey: 'pltComment',
         formIndex: '2',
         inputType: 'text',
-        label: 'Comment',
+        label: 'PLT comment',
         tableColumn: '42',
         fqn: 'hematology.pltComment'
       },
@@ -17293,7 +17271,7 @@ const DEFS = {
         elementKey: 'rbcComments',
         formIndex: '2',
         inputType: 'textarea',
-        label: 'Red blood cell comments',
+        label: 'RBC comments',
         tableColumn: '71',
         fqn: 'hematology.rbcComments'
       },
@@ -17309,12 +17287,11 @@ const DEFS = {
         elementKey: 'explain',
         formIndex: '2',
         inputType: 'textarea',
-        label: 'Reason',
+        label: 'Reason for referral',
         tableColumn: '73',
         fqn: 'hematology.explain'
       }
     ],
-    generated: '2022-06-09T05:33:39-07:00',
     pageElements: {
       tableCbcAnalysis: {
         elementKey: 'tableCbcAnalysis',
@@ -17478,7 +17455,7 @@ const DEFS = {
             },
             {
               elementKey: 'ehr_group127',
-              label: 'Analysis',
+              label: 'Automated analyzer',
               gIndex: '3',
               gChildren: [
                 'wbc',
