@@ -286,7 +286,7 @@ class RawInputToDef {
     let pages2 = {}
     Object.values(pages).forEach(page1 => {
       let page2 = rawHelper._transferProperties(page1, pageProperties2)
-      page2.generated = moment.utc(lastModifiedTime).local().format()
+      // page2.generated = moment.utc(lastModifiedTime).local().format()
       page2.pageElements = this._toForms(page1)
       pages2[page2.pageDataKey] = page2
     })

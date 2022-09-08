@@ -3,9 +3,13 @@ const fs = require('fs')
 const readline = require('readline')
 const { google } = require('googleapis')
 
+// Previous version
 // https://docs.google.com/spreadsheets/d/1CkEc1dmeV4tqck_at1ERaW25zspMt1n7q0lFPRCnP1I/edit#gid=1524198205
+// const INPUT_SPREADSHEET_ID = '1CkEc1dmeV4tqck_at1ERaW25zspMt1n7q0lFPRCnP1I'
 
-const INPUT_SPREADSHEET_ID = '1CkEc1dmeV4tqck_at1ERaW25zspMt1n7q0lFPRCnP1I'
+// New file created 2022-09-07
+// https://docs.google.com/spreadsheets/d/1U84ij1SNHCZgR0kSGJcFNQT4uIsVIJkZU4WDNM2QC_g/edit#gid=0
+const INPUT_SPREADSHEET_ID = '1U84ij1SNHCZgR0kSGJcFNQT4uIsVIJkZU4WDNM2QC_g'
 
 // If modifying these scopes, delete token.json.
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
