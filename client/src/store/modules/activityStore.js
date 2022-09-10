@@ -73,7 +73,7 @@ const mutations = {
     }
   },
   set: (state, data) => {
-    console.log('activityStore set data', data)
+    // console.log('activityStore set data', data)
     // transfer the db id to the field we use
     state.activityId = data._id
     // This id needs to survive a browser refresh

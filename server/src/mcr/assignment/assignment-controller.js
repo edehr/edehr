@@ -87,7 +87,7 @@ export default class AssignmentController extends BaseController {
     assignmentsList.forEach( assignment => {
       const temp = JSON.parse(JSON.stringify(assignment))
       const countable = activities.filter( activity => {
-        return activity.assignment.toString() === assignment._id.toString()
+        return activity.assignment && activity.assignment.toString() === assignment._id.toString()
       })
       temp.activityCount = countable.length
       results.push(temp)

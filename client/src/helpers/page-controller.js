@@ -21,7 +21,7 @@ class NoAssignmentLinked extends Error {
     this.visitInfo = visitInfo
   }
 }
-const dbApp = true
+const dbApp = false
 
 /**
  * There is just one instance of PageController owned by the main.js entry point.
@@ -133,12 +133,6 @@ The LTI service provides a token in the query. We send this back to our preconfi
         return Promise.resolve()
       }
     }
-    if (route.name === UNLINKED_ACTIVITY_ROUTE_NAME) {
-      if (dbApp) console.log('Do nothing but emit the PAGE_DATA_REFRESH_EVENT in page change handler on entry to unlinked activity page.')
-      EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
-      return Promise.resolve()
-    }
-
     if (!isUser) {
       if (dbApp) console.log('db_loadData set up EHR ONLY only demo and ' +
         ' emit PAGE_DATA_REFRESH_EVENT then' +
@@ -152,6 +146,11 @@ The LTI service provides a token in the query. We send this back to our preconfi
     //  Will now do the LTI auth. This results in a lot of data from the server and this data will be
     // be pushed into the storage.s
     await this._loadAuth(refreshToken, authToken)
+    if (route.name === UNLINKED_ACTIVITY_ROUTE_NAME) {
+      if (dbApp) console.log('Do nothing but emit the PAGE_DATA_REFRESH_EVENT in page change handler on entry to unlinked activity page.')
+      EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
+      return Promise.resolve()
+    }
     let visitId = this._getVisitId()
     await this._loadEhr(visitId)
     EventBus.$emit(PAGE_DATA_REFRESH_EVENT)

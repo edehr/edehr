@@ -8,7 +8,8 @@
     div(v-if="!isStudent")
       p.
         The activity you selected, in your learning management system, is not yet linked to a learning object.
-        Please select a learning object from the list below for this activity
+        Please select a learning object from the list below and connect it to this activity.  You must do this before
+        any student needs to use this activity.
 
     h2 Activity Context
     p Course: {{ activity.context_title }}
@@ -17,7 +18,10 @@
 
     div(v-if="!isStudent")
       h2 List of Learning Objects
-      
+      div(class="details-container")
+        div(v-for="item in assignmentsListing", class="list-card list-element")
+          learning-object-select-item(:id="item._id", :lObj='item', :activity='activity')
+
 
     div(style="display:none")
       div context_label {{ activity.context_label }}
@@ -29,18 +33,25 @@
 <script>
 import OutsideCommon from '@/outside/views/OutsideCommon'
 import StoreHelper from '@/helpers/store-helper'
+import LearningObjectSelectItem from '@/outside/components/learning-object/LearningObjectSelectItem'
 
 export default {
+  components: { LearningObjectSelectItem  },
   extends: OutsideCommon,
   computed: {
     activity () { return this.$store.getters['activityStore/activity']},
-    isStudent () { return StoreHelper.isStudent()}
+    isStudent () { return StoreHelper.isStudent()},
+    assignmentsListing () {
+      return this.$store.getters['assignmentListStore/list']
+    },
   },
+
   methods: {
     async loadComponent () {
       const activityId = this.$route.query.activityId
-      console.log('UnlinkedActivity load activity', activityId)
-      const activity = await this.$store.dispatch('activityStore/loadAsCurrentActivity', activityId)
+      await this.$store.dispatch('activityStore/loadAsCurrentActivity', activityId)
+      await this.$store.dispatch('seedListStore/loadSeeds')
+      await this.$store.dispatch('assignmentListStore/loadAssignmentsWithCounts')
     },
   },
 

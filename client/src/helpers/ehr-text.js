@@ -190,7 +190,6 @@ export const Text = {
     LOBJ: 'Learning object',
     DESCRIPTION: 'Description',
     DATES: 'Dates',
-    EXTERNAL: 'External key',
     SEED: 'Case study',
     USED: 'Used by',
     USED_VAL: (cnt) => `${cnt} activities`,
