@@ -102,13 +102,13 @@ export default {
       const returnUrl = window.location.origin + this.$route.path // come back to this LMS page
       const sd = this.submitData
       const key = sd.consumerKey
-      const externalId = sd.externalId
+      let resource_link_id = sd.resource_link_title.toLowerCase().replace(' ','')
       const resource_link_title = sd.resource_link_title
       const resource_link_description = sd.resource_link_description
       const secret = sd.consumerSecret
       const name = this.demoPersonaName
       const role = this.demoPersonaRole
-      demoGoToEhr(key, secret, name, role, resource_link_title, resource_link_description, externalId, returnUrl)
+      demoGoToEhr(key, secret, name, role, resource_link_title, resource_link_description, resource_link_id, returnUrl)
     },
     showEditDialog: function (event) {
       this.$refs.theDialog.showDialog(this.submitData, () => {

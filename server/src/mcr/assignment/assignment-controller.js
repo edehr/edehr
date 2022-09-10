@@ -24,11 +24,6 @@ export default class AssignmentController extends BaseController {
     this.defaultAssignmentDescription = config.ehr.defaultAssignmentDescription
   }
 
-  _composeQuery (externalId, toolConsumerId) {
-    return {$and: [{externalId: externalId}, {toolConsumer: toolConsumerId}]}
-
-  }
-
   delete (assignmentId) {
     if (debugAC) debug('Assignment. delete')
     if (!assignmentId) {
@@ -117,16 +112,6 @@ export default class AssignmentController extends BaseController {
     response[this.modelName] = temp
     return response
   }
-  /* *****
-  TODO ... verify the next two methods are needed and working
-   */
-  locateAssignmentForStudent (externalId, toolConsumerId) {
-    // let externalId = ltiData.custom_assignment
-    let query = this._composeQuery(externalId, toolConsumerId)
-    if (debugAC) debug('Assignment. search for ' + JSON.stringify(query))
-    return this.findOne(query)
-  }
-
   /**
    * Create a learning object / assignment.
    * These are wrappers for case studies (seeds) which set out the learning objectives and the
@@ -140,28 +125,17 @@ export default class AssignmentController extends BaseController {
    * @returns {Promise<*>}
    */
   createAssignment (data, seedId=undefined) {
-    // console.log('creating assignment with data >> ', data)
-    const { 
-      externalId,
+    const {
       title,
       description,
-      persona, 
-      profession, 
-      day, 
-      time,
       toolConsumer
     } = data
-    if (!externalId) {
-      logError(Text.ASSIGNMENT_REQUIRE_EXTERNAL_ID(toolConsumer.oauth_consumer_key, toolConsumer._id), data)
-      throw new SystemError(Text.ASSIGNMENT_REQUIRE_EXTERNAL_ID(toolConsumer.oauth_consumer_key, toolConsumer._id))
-    }
     if (!title) {
       logError(Text.ASSIGNMENT_REQUIRE_RESOURCE(toolConsumer.oauth_consumer_key, toolConsumer._id), data)
       throw new SystemError(Text.ASSIGNMENT_REQUIRE_RESOURCE(toolConsumer.oauth_consumer_key, toolConsumer._id))
     }
     if (!description) {
       logError('Creating an assignment with no description. This is not an error. It is just unusual', data)
-      // throw new SystemError(Text.ASSIGNMENT_REQUIRE_RESOURCE(toolConsumer.oauth_consumer_key, toolConsumer._id))
     }
     const query = {toolConsumer: toolConsumer._id}
     if (seedId) {
@@ -174,40 +148,14 @@ export default class AssignmentController extends BaseController {
         }
         const data = {
           toolConsumer: toolConsumer._id,
-          externalId: externalId,
           name: title,
           description: description || this.defaultAssignmentDescription,
-          ehrRoutePath: '',
-          persona, 
-          profession, 
-          day: day || 0, 
-          time,
           seedDataId: seed._id
         }
         if (debugAC) debug('Assignment. create from def', data.name)
         return this.create(data)
       })
   }
-
-  /*
-{  
-   "roles":"Instructor",
-   "context_id":"4",
-   "context_label":"EdEhr Poc",
-   "context_title":"A Proof of Concept Course",
-   "resource_link_title":"Poc EdEhr Assignment 1",
-   "resource_link_description":"POC assignment 1. No description available because this is just a POC",
-   "resource_link_id":"1",
-   "context_type":"CourseSection",
-   "lis_course_section_sourcedid":"9876",
-   "custom_assignment":"assignment1",
-   "custom_poc":"true",
-   "custom_POC":"true",
-}
-    var externalId = req.ltiData.custom_assignment
-    req.externalId = externalId
-
- */
 
   route () {
     const router = super.route()
@@ -244,13 +192,6 @@ export default class AssignmentController extends BaseController {
           return req.status(500).send(err)
           // fail(res)
         })
-    })
-    router.get('/consumer/:tool/externalId/:key', (req, res) => {
-      console.log('locateAssignmentForStudent(req.params.key, req.params.tool)', req.params.key, req.params.tool)
-      this
-        .locateAssignmentForStudent(req.params.key, req.params.tool)
-        .then(ok(res))
-        .then(null, fail(res))
     })
     return router
   }

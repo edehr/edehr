@@ -247,23 +247,3 @@ export function apiError (app, config) {
     // res.render('server-errors/error',json)
   }
 }
-
-// TODO can remove setupCors
-// eslint-disable-next-line no-unused-vars
-function setupCors (config) {
-  // From https://expressjs.com/en/resources/middleware/cors.html
-  const allowedList = [] // 'http://localhost:28000', 'http://localhost:27000']
-  allowedList.push(config.clientUrl)
-  allowedList.push(config.apiUrl)
-  debug('Setup CORS with allowedList:', allowedList)
-  return function (req, callback) {
-    let corsOptions
-    if (allowedList.indexOf(req.header('Origin')) !== -1) {
-      corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
-    } else {
-      console.log('CORS request rejected for req.path', req.path, 'req.header', req.header('Origin'))
-      corsOptions = { origin: false } // disable CORS for this request
-    }
-    callback(null, corsOptions) // callback expects two parameters: error and options
-  }
-}

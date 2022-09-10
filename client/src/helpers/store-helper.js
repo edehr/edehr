@@ -406,13 +406,14 @@ class StoreHelperWorker {
     // visitInfo.activityData and .activity and .assignment are all ids
     if (debugSH) console.log('SH loadStudent2 visitInfo.activity', visitInfo.activity)
     await this.loadCommon()
-    await this._dispatchActivityData('load', visitInfo.activityData)
-    //TODO seems like load current activity is called twice for student, see loadCommon above.
-    await this.loadAsCurrentActivity(visitInfo.activity)
-    await this.loadAssignment(visitInfo.assignment)
-    let seedId = this.getAssignmentSeedId()
-    if(debugSH) console.log('SH loadStudent2 seedId', seedId)
-    await this.loadSeed(seedId)
+    if (visitInfo.assignment) {
+      await this._dispatchActivityData('load', visitInfo.activityData)
+      await this.loadAsCurrentActivity(visitInfo.activity)
+      await this.loadAssignment(visitInfo.assignment)
+      let seedId = this.getAssignmentSeedId()
+      if (debugSH) console.log('SH loadStudent2 seedId', seedId)
+      await this.loadSeed(seedId)
+    }
   }
 
   async loadInstructor2 () {

@@ -63,13 +63,12 @@ export default class DemoStoreHelper {
   submitPersona (token, submitData) {
     const apiUrl = StoreHelper.apiUrlGet()
     const url = `${apiUrl}/demo/set`
-    const {resource_link_title, resource_link_description, externalId, personaName, personaEmail, personaRole, returnUrl, toolKey, secret} = submitData
+    const {resource_link_title, resource_link_description, resource_link_id, personaName, personaEmail, personaRole, returnUrl, toolKey, secret} = submitData
     const [ given, family ] = personaName.split(' ')
     let theKey = toolKey
     let theSecret = secret
     let userId = theKey.slice(-5) + family + '-' + given
     const ltiData = {
-      custom_assignment: externalId,
       custom_is_demo: true,
       context_id: 'Demo-Course',
       context_label: 'Mock EdEHR Demonstration Course',
@@ -90,7 +89,7 @@ export default class DemoStoreHelper {
       roles: personaRole,
       resource_link_title: resource_link_title,
       resource_link_description: resource_link_description,
-      resource_link_id: externalId,
+      resource_link_id: resource_link_id,
       // match tool_consumer properties to match server side demo-controller.js
       // the match is not important yet keeps the db consistent
       tool_consumer_info_product_family_code: DEMO_CONSUMER_FAMILY_CODE,

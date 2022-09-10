@@ -26,7 +26,7 @@ export default class VisitController extends BaseController {
     return this.model.find(filter)
       .populate('activity', 'context_label context_title resource_link_title closed')
       .populate('activityData', 'submitted evaluationData assignmentData') // assignmentData
-      .populate('assignment', 'externalId name seedDataId')
+      .populate('assignment', 'name seedDataId')
       .populate('user', 'givenName familyName fullName emailPrimary')
   }
 
@@ -48,11 +48,10 @@ export default class VisitController extends BaseController {
    * @param user
    * @param toolConsumer
    * @param activity
-   * @param assignment
    * @param ltiData
    * @return {*}
    */
-  updateCreateVisit (user, toolConsumer, activity, assignment, ltiData) {
+  updateCreateVisit (user, toolConsumer, activity, /* assignment, */ ltiData) {
     let role = new Role(ltiData.roles)
     let filter = {
       $and: [
@@ -80,7 +79,6 @@ export default class VisitController extends BaseController {
             user: user._id,
             userName: user.fullName,
             activity: activity._id,
-            assignment: assignment._id,
             role: role.asText(),
             isStudent: role.isStudent,
             isInstructor: role.isInstructor,
@@ -99,8 +97,7 @@ export default class VisitController extends BaseController {
               debugvc('Create activity data for the visit')
               return ActivityData.create({
                 toolConsumer: toolConsumer._id,
-                visit: visit._id,
-                seedData: assignment.seedData
+                visit: visit._id
               })
             })
             .then((activityData) => {

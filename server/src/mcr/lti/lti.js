@@ -200,10 +200,6 @@ export default class LTIController {
     if (!ltiData['context_id']) {
       return invalid(Text.EdEHR_REQUIRES_CONTEXT)
     }
-    if (!ltiData['custom_assignment']) {
-      callback(_this._createAssignmentMismatchError(ltiData, Text.EdEHR_REQUIRES_CUSTOM))
-      return false
-    }
     return true
   }
 
@@ -277,58 +273,15 @@ export default class LTIController {
     // see models/outcomes.js
   }
 
-  locateAssignment (req) {
-    const _this = this
-    let externalId = req.ltiData.custom_assignment
-    req.externalId = externalId
-    let role = new Role(req.ltiData.roles)
-    let toolConsumer = req.toolConsumer
-    let toolConsumerId = toolConsumer._id
-    debug('locateAssignment with toolConsumerId, externalId', toolConsumerId, externalId)
-    return this.assignmentController.locateAssignmentForStudent(externalId, toolConsumerId)
-      .then(assignment => {
-        if (!assignment) {
-          if (role.isStudent) {
-            let msg = Text.EdEHR_ASSIGNMENT_MISMATCH(toolConsumer.oauth_consumer_key, externalId)
-            debug('locateAssignment not found for student role return error: ' + msg)
-            throw this._createAssignmentMismatchError(req.ltiData, msg)
-          }
-          let ltiData = req.ltiData
-          // to do adjust learning object title so it is not exactly the same as lms activity
-          let title = 'Learning Object for LMS activity: ' + ltiData.resource_link_title
-          let description = 'LMS activity description: ' + ltiData.resource_link_description
-          // Get the default description for assignments from config.
-          // The resource_link_description is used to describe the activity and using it for the
-          // assignment too is confusing.
-          let aAssignment = {
-            title: title,
-            description: description,
-            externalId: externalId,
-            toolConsumer: toolConsumer
-          }
-          debug('locateAssignment not found so create', aAssignment)
-          return _this.assignmentController.createAssignment(aAssignment)
-        }
-        return assignment
-      })
-      .then(assignment => {
-        req.assignment = assignment
-      })
-  }
-
   updateActivity (req, results) {
-    debug('updateActivity ' + JSON.stringify(req.assignment))
-    if (req.assignment) {
-      if (debugFine) debug('updateActivity with assignment')
-      return this.activityController.updateCreateActivity(
-        req.ltiData,
-        req.toolConsumer._id,
-        req.assignment
-      ).then(activity => {
-        if (debugFine) debug('store the activity in the req')
-        req.activity = activity
-      })
-    }
+    if (debugFine) debug('updateActivity with assignment')
+    return this.activityController.updateCreateActivity(
+      req.ltiData,
+      req.toolConsumer._id
+    ).then(activity => {
+      if (debugFine) debug('store the activity in the req')
+      req.activity = activity
+    })
   }
 
   updateVisit (req) {
@@ -338,7 +291,6 @@ export default class LTIController {
         req.user,
         req.toolConsumer,
         req.activity,
-        req.assignment,
         req.ltiData
       ).then(visit => {
         req.visit = visit
@@ -352,16 +304,11 @@ export default class LTIController {
       throw new SystemError(Text.EdEHR_MISSING_VISIT(toolConsumer.oauth_consumer_key, toolConsumer._id) )
     }
     let visit = req.visit
-    // ehrRoutePath is intended to allow a learning object (assignment) designate the starting page in the EHR
-    // although this may not be desired from a teaching point of view because most real ehr systems
-    // always start at the beginning.
-    let route = req.assignment.ehrRoutePath || '/ehr'
-
+    let route = '/ehr'
     if (visit.isInstructor) {
       if (debugFine) debug('Route to instructor page ')// + JSON.stringify(req.ltiData, null, 2))
       route = '/lms-activity?activityId=' + visit.activity._id
     }
-
     try {
       const tokenData = {
         consumerKey: visit.consumerKey,
@@ -395,10 +342,6 @@ export default class LTIController {
     const db = false
     if (db) console.log('Do update tool')
     await _this.updateToolConsumer(req)
-    if (db) console.log('Do updateOutcomeManagement')
-    await _this.updateOutcomeManagement(req)
-    if (db) console.log('Do locateAssignment')
-    await _this.locateAssignment(req)
     if (db) console.log('Do update activity')
     await _this.updateActivity(req)
     if (db) console.log('Do updateVisit')

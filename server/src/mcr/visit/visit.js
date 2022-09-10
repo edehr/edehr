@@ -16,7 +16,7 @@ const VisitSchema = new mongoose.Schema({
   /* include user name only to help a dev trace information through the db */
   // userName: { type: String },
   activity: {type: ObjectId, ref: 'Activity', required: true},
-  assignment: {type: ObjectId, ref: 'Assignment', required: true},
+  assignment: {type: ObjectId, ref: 'Assignment'},
   activityData: {type: ObjectId, ref: 'ActivityData'},
   isStudent: {type: Boolean, default: false},
   isInstructor: {type: Boolean, default: false},

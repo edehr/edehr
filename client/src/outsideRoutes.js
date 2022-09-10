@@ -2,6 +2,8 @@ import { APP_ICONS } from '@/helpers/app-icons'
 import { Text } from '@/helpers/ehr-text'
 const NAMES = Text.ROUTE_NAMES
 
+const UNLINKED_ACTIVITY_ROUTE_NAME = 'unlinked-activity'
+
 export function outside () {
 
   return [
@@ -165,6 +167,13 @@ export function outside () {
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Terms.vue'),
       meta: { layout: 'outside', label: 'Terms', zone: 'public' }
+    },
+    {
+      path: '/unlinked-activity',
+      name: UNLINKED_ACTIVITY_ROUTE_NAME,
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/UnlinkedActivity.vue'),
+      meta: { layout: 'outside', label: 'Unlinked Activity', zone: 'public' }
     },
     {
       path: '/edehrDetails',

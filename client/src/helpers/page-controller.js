@@ -5,9 +5,23 @@ import router from '@/router'
 import { routeIsEHR }  from '@/router'
 import { setAuthHeader } from '@/helpers/axios-helper'
 import { PAGE_DATA_REFRESH_EVENT, PAGE_DATA_READY_EVENT } from '@/helpers/event-bus'
+import { UNLINKED_ACTIVITY_ROUTE_NAME } from '@/outsideRoutes'
 import { Text } from '@/helpers/ehr-text'
+import store from '@/store'
 
-const dbApp = false
+const NO_ASSIGNMENT_ERROR = 'NoAssignmentLinked'
+
+const NO_ASSIGNMENT_MESSAGE = 'Instructor must link learning object to activity before a student can access the activity'
+
+class NoAssignmentLinked extends Error {
+  constructor (visitInfo) {
+    super(NO_ASSIGNMENT_MESSAGE)
+    this.type = NO_ASSIGNMENT_ERROR
+    this.message = NO_ASSIGNMENT_MESSAGE
+    this.visitInfo = visitInfo
+  }
+}
+const dbApp = true
 
 /**
  * There is just one instance of PageController owned by the main.js entry point.
@@ -74,10 +88,16 @@ class PageControllerInner {
       await this._loadData(route)
     }
     catch(err) {
-      console.log('Caught error page change load data block', err)
       StoreHelper.setLoading(null, false)
-      await router.push('/')
-      StoreHelper.setApiError(err + '. System Error')
+      if (err.type === NO_ASSIGNMENT_ERROR) {
+        const activity = err.visitInfo.activity
+        console.log('NO_ASSIGNMENT_ERROR',activity)
+        await router.push({ name: UNLINKED_ACTIVITY_ROUTE_NAME, query: { activityId: activity } })
+      } else {
+        console.log('Caught error page change load data block', err)
+        await router.push('/')
+        StoreHelper.setApiError(err + '. System Error')
+      }
     }
   }
 
@@ -102,19 +122,25 @@ The LTI service provides a token in the query. We send this back to our preconfi
     EhrOnlyDemo.setActiveEhrActive(false)
     if (isDemo) {
       // set up demo and RETURN from function
-      if (dbApp) console.log('_loadData load demo data')
+      if (dbApp) console.log('db_loadData load demo data')
       const ddata = await StoreHelper.loadDemoData()
       if (dbApp) console.log('loadDemoData done', ddata)
       if (!isUser) {
-        if (dbApp) console.log('_loadData user is not yet visiting ' +
+        if (dbApp) console.log('db_loadData user is not yet visiting ' +
           ' the EHR pages so page load is complete. ' +
           ' emit PAGE_DATA_READY_EVENT')
         EventBus.$emit(PAGE_DATA_READY_EVENT)
         return Promise.resolve()
       }
     }
+    if (route.name === UNLINKED_ACTIVITY_ROUTE_NAME) {
+      if (dbApp) console.log('Do nothing but emit the PAGE_DATA_REFRESH_EVENT in page change handler on entry to unlinked activity page.')
+      EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
+      return Promise.resolve()
+    }
+
     if (!isUser) {
-      if (dbApp) console.log('_loadData set up EHR ONLY only demo and ' +
+      if (dbApp) console.log('db_loadData set up EHR ONLY only demo and ' +
         ' emit PAGE_DATA_REFRESH_EVENT then' +
         ' RETURN from function ')
       EhrOnlyDemo.setActiveEhrActive(true)
@@ -122,13 +148,18 @@ The LTI service provides a token in the query. We send this back to our preconfi
       return Promise.resolve()
     }
     // not full ehr demo and page is loading for an LTI user....
-    if (dbApp) console.log('_loadData load user authorization data')
+    if (dbApp) console.log('db_loadData load user authorization data')
     //  Will now do the LTI auth. This results in a lot of data from the server and this data will be
     // be pushed into the storage.s
     await this._loadAuth(refreshToken, authToken)
     let visitId = this._getVisitId()
     await this._loadEhr(visitId)
     EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
+    let visitInfo = store.state.visit.sVisitData || {}
+    if (!visitInfo.assignment) {
+      console.log('Reject no assignment',visitInfo)
+      return Promise.reject(new NoAssignmentLinked(visitInfo))
+    }
     return Promise.resolve()
   }
 
@@ -200,11 +231,6 @@ The LTI service provides a token in the query. We send this back to our preconfi
     return payload.visitId
   }
 
-  handleError (err, customRouter = router) {
-    StoreHelper.setLoading(null, false)
-    customRouter.push('/')
-    StoreHelper.setApiError(err + '. System Error')
-  }
 }
 const PageController = new PageControllerInner()
 export default PageController

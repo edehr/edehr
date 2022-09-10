@@ -38,6 +38,7 @@ const actions = {
     commit('initialize')
   },
   load ({dispatch, commit}, id) {
+    if(debug) console.log(NAME + ' load id ', id)
     return dispatch('get',id).then( (results) => {
       if(debug) console.log(NAME + ' loaded ', results)
       commit('set', results)
@@ -46,6 +47,7 @@ const actions = {
   },
   get (context, id) {
     let url = 'get/' + id
+    if(debug) console.log(NAME + ' get url ', url)
     return InstoreHelper.getRequest(context, API, url).then(response => {
       let results = response.data[OBJ]
       if (!results) {

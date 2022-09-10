@@ -2,7 +2,7 @@ import InstoreHelper from '@/store/modules/instoreHelper'
 import StoreHelper from '@/helpers/store-helper'
 import { Text } from '@/helpers/ehr-text'
 const API = 'assignments'
-const debug = false
+const debug = true
 
 const state = {
   assignmentsListing: [],

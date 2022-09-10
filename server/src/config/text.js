@@ -20,9 +20,6 @@ export const Text = {
   EdEHR_REQUIRES_CONTEXT: 'EdEHR requires the LTI tool consumer to provide a resource context_id',
   EdEHR_REQUIRES_CUSTOM : 'EdEHR requires the LTI tool consumer provides "assignment=learning object id"',
   EdEHR_UNKNOWN_KEY: (consumerKey) => `Unsupported consumer key ${consumerKey}`,
-
-  EdEHR_ASSIGNMENT_MISMATCH: (key, externalId) => `Could not locate learning object with id '${externalId}' for LTI consumer '${key}'. Ask your school to configure the EdEHR learning object.`,
-
   EdEHR_MISSING_VISIT: (key, id) => `Missing visit while preparing to redirect for tool consumer ${key} - ${id}`,
 
   ASSIGNMENT_MISSING_SEED: (key, id) => `Could not find any EHR seed data object for tool consumer ${key} - ${id}`,
