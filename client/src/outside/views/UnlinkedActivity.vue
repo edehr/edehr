@@ -5,11 +5,19 @@
       p.
         The activity you selected, in your learning management system, is not yet linked to a learning object, here in the EdEHR.
         Please contact your course instructor and ask them to select a learning object for this activity.
+    div(v-if="!isStudent")
+      p.
+        The activity you selected, in your learning management system, is not yet linked to a learning object.
+        Please select a learning object from the list below for this activity
 
-    h2 Context
-    div Course: {{ activity.context_title }}
-    div Activity: {{ activity.resource_link_title }}
-    div Description: {{ activity.resource_link_description }}
+    h2 Activity Context
+    p Course: {{ activity.context_title }}
+    p Activity: {{ activity.resource_link_title }}
+    p Description: {{ activity.resource_link_description }}
+
+    div(v-if="!isStudent")
+      h2 List of Learning Objects
+      
 
     div(style="display:none")
       div context_label {{ activity.context_label }}

@@ -2,7 +2,7 @@ import { APP_ICONS } from '@/helpers/app-icons'
 import { Text } from '@/helpers/ehr-text'
 const NAMES = Text.ROUTE_NAMES
 
-const UNLINKED_ACTIVITY_ROUTE_NAME = 'unlinked-activity'
+export const UNLINKED_ACTIVITY_ROUTE_NAME = 'unlinked-activity'
 
 export function outside () {
 
