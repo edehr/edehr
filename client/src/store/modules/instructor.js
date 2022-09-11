@@ -15,7 +15,7 @@ const getters = {
    Each record contains a populated ActivityData (student's work) (EdEHR) Assignment and User
    return Visit.find({ $and: [ {isStudent: true }, {activity: _id} ] })
    .populate('activityData', 'submitted assignmentData evaluationData')
-   .populate('assignment', 'externalId name description seedDataId ehrRoutePath')
+   .populate('assignment', 'name description seedDataId')
    .populate('user', 'givenName familyName fullName emailPrimary')
    .select('userName lastVisitDate')
    .then((visits) => {

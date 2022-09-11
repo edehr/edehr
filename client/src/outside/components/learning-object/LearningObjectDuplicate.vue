@@ -59,7 +59,6 @@ export default {
         })
       delete duplicate._id
       let nonce = Math.random().toString(32).slice(-7)
-      duplicate.externalId = duplicate.externalId + '_' + nonce
       await StoreHelper.createAssignment(duplicate)
         .then( () => this.$emit('newLearningObject' ))
         .catch(error => {

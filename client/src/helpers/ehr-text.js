@@ -168,16 +168,6 @@ export const Text = {
       INVALID_TIME: 'Please, enter a valid 24hrs time'
     },
     LABELS: {
-      DAY: 'Case study day',
-      DAY_TP: 'Day 0,1,2,3,...',
-      TIME: 'Case study time',
-      TIME_TP: '24 hour time',
-      PROFESSION: 'Profession',
-      PROFESSION_TP: 'The profession of the simulation health care provider character.',
-      SIM_DATA_TITLE: 'Simulation settings',
-      SIM_DATA_TIP: 'The persona and date/time for the current state of the simulation',
-      PERSONA: 'Persona',
-      PERSONA_TP: 'The simulation health care provider character\'s name',
       DESCRIPTION: 'Description',
       SEED_OBJ: 'Case study',
       SEED_OBJ_TP: '',

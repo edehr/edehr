@@ -23,9 +23,6 @@
         div(class="details-value").
           Created on {{ learningObject.createDate | formatDateTime }}.
           Last modified on {{ learningObject.lastUpdateDate | formatDateTime }}.
-      div(v-show="isDevelopingContent", class="details-row")
-        div(class="details-name") {{ text.EXTERNAL }}
-        div(class="details-value") {{learningObject.externalId}}
 </template>
 
 <script>

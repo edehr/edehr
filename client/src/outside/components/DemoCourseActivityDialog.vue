@@ -14,11 +14,6 @@
           div
             textarea( v-model="submitData.resource_link_description")
         div(class="config-data-block")
-          ui-info(title="Learning Object Id", :text="documentation.externalId")
-          div Custom parameter
-          div
-            input(class="input text-input", type="text", v-model="submitData.externalId", v-validate="externalValidate")
-        div(class="config-data-block")
           ui-info(title="Consumer key", :text="documentation.consumerKey")
           div Consumer key
           div
@@ -52,7 +47,6 @@ export default {
     return {
       submitData: {
         resource_link_title: '',
-        externalId: '',
         resource_link_description: '',
         consumerKey: '',
         consumerSecret: '',
@@ -74,8 +68,6 @@ export default {
         ' In normal use the key and secret are set up between the EdEHR administrator and the ' +
         ' course creation team at each learning institution. In this demonstration mode you can try modifying the key and/or the secret. ' +
         ' This will break the connection yet you can explore how this error condition will appear to you and your users.',
-      externalId: 'This is the id of the EdEHR learning object. The person who configures the external tool in the learning' +
-        ' management will enter "assignment=' +  this.submitData.externalId + '"',
       toolUrl: 'The tool url is the connect to EdEHR address. In this demonstration mode this url is fixed and is ' +
         ' shown here to demonstrate what it looks like.  This url is composed of the domain name of your EdEHR server plus "api/launch_lti". ' +
         ' This connection point uses the LTI standard. LTI stands for Learning Tools Interoperability and this is the way your LMS (learning management system such as Moodle or D2L) communicates ' +
@@ -91,18 +83,8 @@ export default {
     cSecretValidate () {
       return this.submitData.consumerSecret.trim() ? undefined : ERRORS.CONSUMER_SECRET
     },
-    externalValidate () {
-      if (!this.submitData.externalId) {
-        return ERRORS.ID_REQUIRED
-      }
-      let re = /^[0-9a-zA-Z\-_\.]*$/
-      if (!this.submitData.externalId.match(re)) {
-        return ERRORS.ID_PATTERN
-      }
-      return undefined
-    },
     errors () {
-      const errMsgs = this.nameValidate || this.externalValidate || this.cKeyValidate || this.cSecretValidate
+      const errMsgs = this.nameValidate || this.cKeyValidate || this.cSecretValidate
       return errMsgs ? [errMsgs] : []
     },
     hasErrors () {

@@ -7,11 +7,6 @@ const _common =     '"Health Case Studies - Toward Closing the Healthcare Commun
   'by:  Glynda Rees, Rob Kruger, Janet Morrison. '
 
 const assignment1 = {
-  // externalId: 'demoAssignment1',
-  // persona: 'Jason',
-  // profession: 'Nurse',
-  // time: '08:00',
-  // day : 0,
   title: 'Demonstration Assignment #1: COPD',
   description: 'This learning object/assignment is based on Case Study #1.\n' +
     ' In this case the patient has chronic obstructive pulmonary disease (COPD) with a history of asthma.' +
@@ -30,11 +25,6 @@ const ej0SeedDef = {
   ehrData: ej0Seed.ehrData
 }
 const assignment2 = {
-  // externalId: 'demoAssignment2',
-  // persona: 'Jason',
-  // profession: 'Nurse',
-  // time: '08:00',
-  // day: 3,
   description: 'This learning object/assignment is based on Case Study #2.\n ' +
     ' In this case the patient condition of COPD is exacerbation due to community acquired pneumonia. ' +
     ' The patient in this case study has a complicated health history.' +
@@ -55,11 +45,6 @@ const ej2SeedDef = {
   ehrData: ej2Seed.ehrData
 }
 const assignment3 = {
-  // externalId: 'wound1',
-  // persona: 'Lori',
-  // profession: 'Nurse',
-  // time: '11:00',
-  // day: 0,
   description: 'This is a demonstration assignment illustrating how wounds (or incisions) can be monitored within the EdEHR.\n' +
   '•\tWrite a Progress Note: (What is important for your colleagues to know about this patient\'s pressure injury? ' +
     'What do other Health Care Professionals need to know?)\n' +

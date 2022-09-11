@@ -141,24 +141,6 @@ export default class Helper {
     }
   }
 
-  // static sampleAssignmentSpec (seedDataId, externalId, consumer) {
-  //   // if empty use something that works and ObjectID
-  //   let consumerId = consumer ? consumer._id : new ObjectID('56955ca46063c5600627f393')
-  //   seedDataId = seedDataId || '56955ca46063c5600627f393'
-  //   if(typeof  seedDataId === 'string') {
-  //     seedDataId = new ObjectID(seedDataId)
-  //   }
-  //   return {
-  //     toolConsumer: consumerId,
-  //     externalId: externalId || '59',
-  //     name: 'test assignment',
-  //     description: 'an assignment',
-  //     // ehrRoutePath: '/ehr/path',
-  //     // ehrRouteName: 'pathName',
-  //     seedDataId: seedDataId
-  //   }
-  // }
-
   static sampleUserSpec (consumer, user_id) {
     let consumerId = consumer ? consumer._id : new ObjectID('56955ca46063c5600627f393')
     let consumerKey = consumer ? consumer.oauth_consumer_key : 'sampleKey'
@@ -280,13 +262,6 @@ export default class Helper {
     const model = new Visit(visitSpec)
     return model.save()
   }
-
-  // static createAssignment (externalId, seedId, consumer) {
-  //   externalId = externalId || '59'
-  //   seedId = seedId || '56955ca46063c5600627f393'
-  //   const model = new Assignment(Helper.sampleAssignmentSpec(seedId,externalId, consumer))
-  //   return model.save()
-  // }
 
   static createActivity (consumer, assignment) {
     const model = new Activity(Helper.sampleActivity(consumer, assignment))

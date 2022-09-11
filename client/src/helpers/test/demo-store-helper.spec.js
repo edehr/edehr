@@ -34,8 +34,7 @@ describe.skip('demoHelper tests', () => {
     const { assignment, demoData } = mockData
     const submitData = {
       resource_link_title: assignment.name,
-      externalId: assignment.externalId, 
-      personaName: persona.name, 
+      personaName: persona.name,
       personaEmail: persona.email, 
       personaRole: persona.role, 
       returnUrl: 'returnUrl', 
