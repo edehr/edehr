@@ -18,13 +18,23 @@
         Please select a learning object from the list below and connect it to this activity.  You must do this before
         any student needs to use this activity.
 
-    h2 Activity Information
-    p Course: {{ activity.context_title }}
-    p Activity: {{ activity.resource_link_title }}
-    p Description: {{ activity.resource_link_description }}
+    div(class='row-flow')
+      p Activity: {{ activity.resource_link_title }}
+      span &nbsp;
+      a(@click="showDetails = !showDetails") {{showDetails ? 'show less' : 'details ...'}}
+    div(v-if="showDetails", class='activity-details')
+      p Course: {{ activity.context_title }}
+      p Activity: {{ activity.resource_link_title }}
+      p Description: {{ activity.resource_link_description }}
 
     div(v-if="!isStudent")
-      h2 List of Learning Objects
+      learning-object-dialog(ref="theDialog")
+      div(class='row-flow')
+        h3 Select a learning object below or
+        ui-button(v-on:buttonClicked="showCreateDialog",
+            :title='text.createLearningObjectTip')
+          fas-icon(class="fa", :icon="appIcons.new")
+          span &nbsp; {{text.createLearningObjectBL}}
       div(class="details-container")
         div(v-for="item in assignmentsListing", class="list-card list-element")
           learning-object-select-item(:id="item._id", :lObj='item', :activity='activity')
@@ -41,10 +51,21 @@
 import OutsideCommon from '@/outside/views/OutsideCommon'
 import StoreHelper from '@/helpers/store-helper'
 import LearningObjectSelectItem from '@/outside/components/learning-object/LearningObjectSelectItem'
+import LearningObjectDialog from '@/outside/components/learning-object/LearningObjectDialog'
 import UiButton from '@/app/ui/UiButton'
-
+import LearningObjectDelete from '@/outside/components/learning-object/LearningObjectDelete'
+const TEXT = {
+  createLearningObjectTip:'Create a new learning object',
+  createLearningObjectBL: 'Create new',
+}
 export default {
-  components: { UiButton, LearningObjectSelectItem  },
+  data () {
+    return {
+      showDetails: false,
+      text: TEXT,
+    }
+  },
+  components: { LearningObjectDelete, LearningObjectDialog, LearningObjectSelectItem,  UiButton  },
   extends: OutsideCommon,
   computed: {
     activity () { return this.$store.getters['activityStore/activity']},
@@ -63,7 +84,10 @@ export default {
       await this.$store.dispatch('seedListStore/loadSeeds')
       await this.$store.dispatch('assignmentListStore/loadAssignmentsWithCounts')
     },
-    exit () { StoreHelper.exitToLms() }
+    exit () { StoreHelper.exitToLms() },
+    showCreateDialog: function () {
+      this.$refs.theDialog.showDialog()
+    },
   },
 
 }
@@ -74,5 +98,23 @@ export default {
 
 .outside-view {
   margin: 2rem;
+}
+button, .button {
+  font-size: 1rem;
+}
+.activity-details {
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+  p {
+    margin-bottom: 5px;
+  }
+}
+.details-container {
+  padding: 0;
+}
+.row-flow {
+  display: flex;
+  flex-flow: row;
+  gap: 1rem;
 }
 </style>

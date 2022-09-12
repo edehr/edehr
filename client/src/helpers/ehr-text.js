@@ -162,9 +162,7 @@ export const Text = {
     ERRORS: {
       ID_IN_USE: (id) => `The learning object id ${id} is already in use. The id is case insensitive so upper and lower case letters are consider the same.`,
       NAME_REQUIRED: 'Learning object name is required',
-      ID_REQUIRED: 'Learning object id is required',
-      ID_PATTERN: 'Learning object id needs to contain letters, numbers, periods, hyphens or underscores',
-      SEED_REQUIRED: 'Learning object seed data is required',
+      SEED_REQUIRED: 'Must select a case study for this learning object.',
       INVALID_TIME: 'Please, enter a valid 24hrs time'
     },
     LABELS: {

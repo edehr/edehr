@@ -4,7 +4,7 @@
       div(class="list-item-name") {{lObj.name}} &nbsp;
         a(@click="showMore = !showMore; $emit('selectLObj', lObj)") {{showMore ? 'show less' : 'show more'}}
       div(class="list-item-actions")
-        ui-button(v-on:buttonClicked="selectLearningObject(lObj)", class='link-button') Connect this to activity
+        ui-button(v-on:buttonClicked="selectLearningObject(lObj)", class='link-button') Connect to activity
         ui-confirm(ref="confirmDialog", saveLabel="Connect", v-on:confirm="proceed(lObj)", html-body=true)
     div(v-if="showMore")
       div(class="details-row")
@@ -99,6 +99,6 @@ export default {
 <style lang='scss' scoped>
 .link-button {
   font-size: 1rem;
-  font-weight: normal;
+  //font-weight: normal;
 }
 </style>

@@ -38,8 +38,6 @@ const ERRORS = {
   NAME_REQUIRED: 'Activity name is required',
   CONSUMER_KEY: 'Must provide a consumer key',
   CONSUMER_SECRET: 'Must provide a consumer secret',
-  ID_REQUIRED: 'Learning object id is required',
-  ID_PATTERN: 'Only letters, numbers, periods, hyphens or underscores can be used in a learning object id'
 }
 
 export default {
