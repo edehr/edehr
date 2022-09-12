@@ -248,7 +248,6 @@ class StoreHelperWorker {
    */
   async _toggleActivity (activityId, direction) {
     await this._dispatchActivity(direction, activityId)
-    await StoreHelper.loadAsCurrentActivity(activityId)
     await StoreHelper.loadInstructorWithStudent()
   }
 

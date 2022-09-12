@@ -5,7 +5,7 @@
         a(@click="showMore = !showMore; $emit('selectLObj', lObj)") {{showMore ? 'show less' : 'show more'}}
       div(class="list-item-actions")
         ui-button(v-on:buttonClicked="selectLearningObject(lObj)", class='link-button') Connect this to activity
-        ui-confirm(ref="confirmDialog", saveLabel="Connect", v-on:confirm="proceed", html-body=true)
+        ui-confirm(ref="confirmDialog", saveLabel="Connect", v-on:confirm="proceed(lObj)", html-body=true)
     div(v-if="showMore")
       div(class="details-row")
         div(class="details-name") {{text.DESCRIPTION}}
@@ -83,8 +83,13 @@ export default {
       const title ='Confirm connection'
       this.$refs.confirmDialog.showDialog(title, body)
     },
-    proceed () {
-      console.log('To do establish link')
+    async proceed (lObj) {
+      const activity = this.activity._id
+      const payload = { activity: activity, assignment: lObj._id }
+      // console.log('establish link',payload)
+      await this.$store.dispatch('activityStore/linkAssignment', payload)
+      // take the instructor to activity page for the acitivity they just made a link to.
+      await this.$router.push({ name: 'lms-activity', query: { activityId: activity } })
     },
     truncate (input, lim) {
       return input.length > lim ? `${input.substring(0, lim)}...` : input }

@@ -9,14 +9,14 @@ import { UNLINKED_ACTIVITY_ROUTE_NAME } from '@/outsideRoutes'
 import { Text } from '@/helpers/ehr-text'
 import store from '@/store'
 
-const NO_ASSIGNMENT_ERROR = 'NoAssignmentLinked'
+const NO_ASSIGNMENT_LINKED = 'NoAssignmentLinked'
 
 const NO_ASSIGNMENT_MESSAGE = 'Instructor must link learning object to activity before a student can access the activity'
 
 class NoAssignmentLinked extends Error {
   constructor (visitInfo) {
     super(NO_ASSIGNMENT_MESSAGE)
-    this.type = NO_ASSIGNMENT_ERROR
+    this.type = NO_ASSIGNMENT_LINKED
     this.message = NO_ASSIGNMENT_MESSAGE
     this.visitInfo = visitInfo
   }
@@ -89,9 +89,8 @@ class PageControllerInner {
     }
     catch(err) {
       StoreHelper.setLoading(null, false)
-      if (err.type === NO_ASSIGNMENT_ERROR) {
+      if (err.type === NO_ASSIGNMENT_LINKED) {
         const activity = err.visitInfo.activity
-        console.log('NO_ASSIGNMENT_ERROR',activity)
         await router.push({ name: UNLINKED_ACTIVITY_ROUTE_NAME, query: { activityId: activity } })
       } else {
         console.log('Caught error page change load data block', err)
@@ -155,8 +154,10 @@ The LTI service provides a token in the query. We send this back to our preconfi
     await this._loadEhr(visitId)
     EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
     let visitInfo = store.state.visit.sVisitData || {}
-    if (!visitInfo.assignment) {
-      console.log('Reject no assignment',visitInfo)
+    await StoreHelper.loadAsCurrentActivity(visitInfo.activity)
+    let activity = store.getters['activityStore/activity']
+    if (!activity.assignment) {
+      console.log('Reject no assignment',activity)
       return Promise.reject(new NoAssignmentLinked(visitInfo))
     }
     return Promise.resolve()
