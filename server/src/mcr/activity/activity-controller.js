@@ -33,7 +33,15 @@ export default class ActivityController extends BaseController {
       }
     })
   }
-
+  linkAssignment (id, assignmentId) {
+    debug('linkAssignment  activity:', id, 'assignment:', assignmentId)
+    return this.baseFindOneQuery(id).then(async (activity) => {
+      if (activity) {
+        activity.assignment = assignmentId
+        return activity.save()
+      }
+    })
+  }
   /**
    * Called by the LTI controller when a user comes to this system.
    *
@@ -132,18 +140,26 @@ export default class ActivityController extends BaseController {
     })
 
     // PUT
+    // open and close toggle the submit state of all visit records for this activity.
     router.put('/close-activity/:key', (req, res) => {
       this
         .closeOpenActivity(req.params.key, 'close')
         .then(ok(res))
         .then(null, fail(res))
     })
-
     router.put('/open-activity/:key', (req, res) => {
       this
         .closeOpenActivity(req.params.key, 'open')
         .then(ok(res))
         .then(null, fail(res))
+    })
+    router.put('/link-assignment/:id/', (req, res) => {
+      let id = req.params.id
+      let assignmentId = req.body.assignmentId
+      debug('router path link-assignment req.params:', req.params, 'req.body:', req.body)
+      this.linkAssignment(id, assignmentId)
+        .then(ok(res))
+        .catch(fail(res))
     })
 
     return router

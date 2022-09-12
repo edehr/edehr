@@ -21,6 +21,7 @@ const actions = {
   initialize: function ({ commit }) {
     commit('initialize')
   },
+  // open and close toggle the submit state of all visit records for this activity.
   close ({dispatch, commit}, id) {
     let url = 'close-activity/' + id
     let payload = { url: url, data: {} }
@@ -31,8 +32,17 @@ const actions = {
     let payload = { url: url, data: {} }
     return dispatch('put', payload)
   },
+  linkAssignment ({dispatch, commit}, payload) {
+    const {activity, assignment} = payload
+    // console.log('activityStore.linkAssignment activity, assignment', activity, assignment)
+    let url = 'link-assignment/' + activity
+    let data = { url: url, data: {assignmentId: assignment} }
+    // console.log('activityStore.linkAssignment data:', data)
+    return dispatch('put', data)
+  },
 
   loadAsCurrentActivity ({dispatch, commit}, id) {
+    // console.log('activityStore.loadAsCurrentActivity')
     return dispatch('get',id)
       .then( (results) => {
         commit('set', results)
@@ -53,6 +63,7 @@ const actions = {
     })
   },
   put (context, payload) {
+    // console.log('activityStore put payload', payload)
     let url = payload.url
     let data = payload.data
     return InstoreHelper.putRequest(context, API, url, data).then(response => {
