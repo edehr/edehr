@@ -39,10 +39,8 @@ export default {
         {
           label: 'Exit to LMS',
           toolTip: 'Return to your school\'s learning management system',
-          callback: async () => {
-            const url = StoreHelper.lmsUrl()
-            await StoreHelper.logUserOutOfEdEHR()
-            window.location = url
+          callback: () => {
+            StoreHelper.exitToLms()
           },
           icon: 'sign-out-alt'
         }

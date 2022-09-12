@@ -3,7 +3,8 @@
     h1 Unlinked Activity
     div(v-if="isStudent")
       p.
-        The activity you selected, in your learning management system, is not yet linked to a learning object, here in the EdEHR.
+        The activity you selected, in your learning management system ({{consumer.tool_consumer_instance_name}}), is
+        not yet linked to a learning object, here in the EdEHR.
         Please contact your course instructor and ask them to select a learning object for this activity.
     div(v-if="!isStudent")
       p.
@@ -11,7 +12,7 @@
         Please select a learning object from the list below and connect it to this activity.  You must do this before
         any student needs to use this activity.
 
-    h2 Activity Context
+    h2 Activity Information
     p Course: {{ activity.context_title }}
     p Activity: {{ activity.resource_link_title }}
     p Description: {{ activity.resource_link_description }}
@@ -40,6 +41,7 @@ export default {
   extends: OutsideCommon,
   computed: {
     activity () { return this.$store.getters['activityStore/activity']},
+    consumer () { return this.$store.getters['consumerStore/consumer']},
     isStudent () { return StoreHelper.isStudent()},
     assignmentsListing () {
       return this.$store.getters['assignmentListStore/list']

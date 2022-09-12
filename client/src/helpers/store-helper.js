@@ -403,16 +403,17 @@ class StoreHelperWorker {
   async loadStudent2 () {
     let visitInfo = store.state.visit.sVisitData || {}
     // visitInfo.activityData and .activity and .assignment are all ids
+    if (debugSH) console.log('SH loadStudent2 visitInfo', visitInfo)
     if (debugSH) console.log('SH loadStudent2 visitInfo.activity', visitInfo.activity)
-    await this.loadCommon()
-    if (visitInfo.assignment) {
-      await this._dispatchActivityData('load', visitInfo.activityData)
-      await this.loadAsCurrentActivity(visitInfo.activity)
-      await this.loadAssignment(visitInfo.assignment)
+    await this.loadCommon() // tool and user
+    const activity = await this.loadAsCurrentActivity(visitInfo.activity)
+    await this._dispatchActivityData('load', visitInfo.activityData)
+    if (activity.assignment) {
+      await this.loadAssignment(activity.assignment)
       let seedId = this.getAssignmentSeedId()
       if (debugSH) console.log('SH loadStudent2 seedId', seedId)
       await this.loadSeed(seedId)
-    }
+    } // else page controller will send the student to the unlinked activity page
   }
 
   async loadInstructor2 () {
@@ -484,6 +485,12 @@ class StoreHelperWorker {
     await this._dispatchAuthStore('logOutUser')
     await this._dispatchVisit('clearVisitData')
     await this.clearConsumer()
+  }
+
+  async exitToLms () {
+    const url = StoreHelper.lmsUrl()
+    await StoreHelper.logUserOutOfEdEHR()
+    window.location = url
   }
 
 

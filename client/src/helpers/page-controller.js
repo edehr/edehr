@@ -74,7 +74,7 @@ class PageControllerInner {
       if (dbApp) console.log('User coming in via LTI. userType',userType)
     }
     else if (routeIsEHR(route)) {
-      if (dbApp) console.log('In app page change.')
+      if (dbApp) console.log('In app page change for EHR page.')
     } else {
       if (dbApp) console.log('User not in the EHR so clear any active seed editing ids')
       StoreHelper.setSeedEditId('')
@@ -175,6 +175,7 @@ The LTI service provides a token in the query. We send this back to our preconfi
       // get the consumer id as authed and load it
       await StoreHelper.loadConsumer(StoreHelper.getAuthdConsumerId())
       StoreHelper.setLoading(null, false)
+      if (dbApp) console.log('_loadAuth. done')
       // }
     } else {
       if (dbApp) console.log('_loadAuth. User can not proceed. There is no refresh nor previous auth token.')
@@ -210,6 +211,7 @@ The LTI service provides a token in the query. We send this back to our preconfi
   }
 
   async _loadEhr (visitId) {
+    if (dbApp) console.log('_loadEhr begin visitId:', visitId)
     StoreHelper.setLoading(null, true)
     await StoreHelper.loadVisitRecord(visitId)
     if (StoreHelper.isSeedEditing()) {
@@ -220,6 +222,7 @@ The LTI service provides a token in the query. We send this back to our preconfi
       await StoreHelper.loadStudent2()
     }
     StoreHelper.setLoading(null, false)
+    if (dbApp) console.log('_loadEhr end')
   }
 
 

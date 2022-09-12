@@ -99,17 +99,20 @@ export default class AssignmentController extends BaseController {
 
   // override the method that GET uses to add in the activity count
   async read (id) {
+    if (debugAC) debug('Assignment. read id: ', id)
     let modelInstance = await this.baseFindOneQuery(id)
+    if (debugAC) debug('Assignment. read modelInstance: ', modelInstance)
     const thisId = modelInstance._id.toString()
     const query = {toolConsumer: modelInstance.toolConsumer}
     const activities = await Activity.find(query)
     const countable = activities.filter( activity => {
-      return activity.assignment.toString() === thisId
+      return activity.assignment && activity.assignment.toString() === thisId
     })
     const temp = JSON.parse(JSON.stringify(modelInstance))
     temp.activityCount = countable.length
     let response = {}
     response[this.modelName] = temp
+    if (debugAC) debug('Assignment. read response: ', response)
     return response
   }
   /**
