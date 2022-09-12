@@ -13,17 +13,12 @@ const VisitSchema = new mongoose.Schema({
   consumerKey: { type: String },
   role: { type: String, default: 'student' },
   user: {type: ObjectId, ref: 'User', required: true},
-  /* include user name only to help a dev trace information through the db */
-  // userName: { type: String },
   activity: {type: ObjectId, ref: 'Activity', required: true},
-  assignment: {type: ObjectId, ref: 'Assignment'},
   activityData: {type: ObjectId, ref: 'ActivityData'},
   isStudent: {type: Boolean, default: false},
   isInstructor: {type: Boolean, default: false},
   isDeveloper: {type: Boolean, default: false},
   returnUrl: {type: String},
-  /* Track the lti information that creates this visit to help resolve issues between LMS and EdEHR*/
-  // ltiData: [ { type: String } ],
   createDate: {type: Date, default: Date.now},
   lastVisitDate: {type: Date, default: Date.now}
 })

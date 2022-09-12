@@ -24,16 +24,14 @@ export default class VisitController extends BaseController {
     }
     let filter = {user: new ObjectID(userId)}
     return this.model.find(filter)
-      .populate('activity', 'context_label context_title resource_link_title closed')
-      .populate('activityData', 'submitted evaluationData assignmentData') // assignmentData
-      .populate('assignment', 'name seedDataId')
+      .populate('activity')
+      .populate('activityData')
       .populate('user', 'givenName familyName fullName emailPrimary')
   }
 
   findVisit (id) {
     return this.baseFindOneQuery(id)
       .populate('activity')
-      .populate('assignment')
       .populate('toolConsumer', {
         tool_consumer_instance_name: 1,
         tool_consumer_instance_description: 1,
