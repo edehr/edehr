@@ -26,7 +26,9 @@
               ui-button(:disabled="!isFormValid", @buttonClicked="submitDemoAccess")
                 span Login to Demo LMS
       div
-        div(v-text-to-html="demoText.explanation")
+        div(v-for="part in demoText.explanation")
+          h4(v-if="part.title") {{ part.title }}
+          div(v-text-to-html="part.body")
       ui-confirm(
         class="confirmDialog",
         ref="confirmDialog",
