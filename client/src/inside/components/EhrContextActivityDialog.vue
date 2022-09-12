@@ -10,11 +10,19 @@
     div(slot="body")
       div(class='dialog-content')
         div(v-if='!panelInfo.closed') {{ panelInfo.submitted ? "You have submitted your work. " : "Submit your work when you are ready"}}
-        div Instructor comments: {{ panelInfo.evaluationData }}
-        div() Course: {{ panelInfo.courseTitle}}
-        div() Activity: {{ panelInfo.activityTitle}}
+        div
+          span(class='fld-label') Instructor comments:
+          span {{ panelInfo.evaluationData ? panelInfo.evaluationData : 'No comments yet.' }}
+        div()
+          span(class='fld-label') Course:
+          span {{ panelInfo.courseTitle}}
+        div()
+          span(class='fld-label') Activity:
+          span {{ panelInfo.activityTitle}}
           p {{ panelInfo.activityDescription }}
-        div() Assignment: {{ panelInfo.assignmentName}}
+        div
+          span(class='fld-label') Learning Object:
+          span {{ panelInfo.assignmentName}}
           p {{ panelInfo.assignmentDescription }}
 </template>
 
@@ -47,5 +55,10 @@ export default {
 @import '../../scss/definitions';
 .dialog-content div {
   margin-bottom: 5px;
+}
+.fld-label {
+  font-weight: bold;
+  display: inline-block;
+  min-width: 10rem;
 }
 </style>

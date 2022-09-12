@@ -3,9 +3,15 @@
     h1 Unlinked Activity
     div(v-if="isStudent")
       p.
-        The activity you selected, in your learning management system ({{consumer.tool_consumer_instance_name}}), is
+        The activity you selected, in your learning management system ({{lmsName}}), is
         not yet linked to a learning object, here in the EdEHR.
         Please contact your course instructor and ask them to select a learning object for this activity.
+      div
+        ui-button(v-on:buttonClicked="exit()",
+          :title="returnToLmsText")
+          fas-icon(class="fa", :icon="appIcons.exitToLms")
+          span &nbsp; {{returnToLmsText}}
+
     div(v-if="!isStudent")
       p.
         The activity you selected, in your learning management system, is not yet linked to a learning object.
@@ -35,19 +41,21 @@
 import OutsideCommon from '@/outside/views/OutsideCommon'
 import StoreHelper from '@/helpers/store-helper'
 import LearningObjectSelectItem from '@/outside/components/learning-object/LearningObjectSelectItem'
+import UiButton from '@/app/ui/UiButton'
 
 export default {
-  components: { LearningObjectSelectItem  },
+  components: { UiButton, LearningObjectSelectItem  },
   extends: OutsideCommon,
   computed: {
     activity () { return this.$store.getters['activityStore/activity']},
     consumer () { return this.$store.getters['consumerStore/consumer']},
+    lmsName () { return this.consumer.tool_consumer_instance_name},
     isStudent () { return StoreHelper.isStudent()},
     assignmentsListing () {
       return this.$store.getters['assignmentListStore/list']
     },
+    returnToLmsText () { return 'Return to ' + this.lmsName}
   },
-
   methods: {
     async loadComponent () {
       const activityId = this.$route.query.activityId
@@ -55,6 +63,7 @@ export default {
       await this.$store.dispatch('seedListStore/loadSeeds')
       await this.$store.dispatch('assignmentListStore/loadAssignmentsWithCounts')
     },
+    exit () { StoreHelper.exitToLms() }
   },
 
 }

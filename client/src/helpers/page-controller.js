@@ -42,7 +42,7 @@ class PageControllerInner {
     StoreHelper.setPageTitle(route.meta.label)
     StoreHelper.setPageIcon(route.meta.icon)
     const {seedEditId, evaluatingStudent, lti} = route.query || {}
-    if (dbApp) console.log('query', seedEditId, evaluatingStudent, lti)
+    if (dbApp) console.log('onPageChange from route.query --> seedEditId, evaluatingStudent, lti', seedEditId, evaluatingStudent, lti)
     /*
     First we make adjustments.
     If Seed Editing then user is a content designer is coming from the Seeds pages.
@@ -85,6 +85,10 @@ class PageControllerInner {
           ' whether the user came from an LMS or from the demo')
         await StoreHelper.logUserOutOfEdEHR()
       }
+      // call into the api to get and store in memory api data, which includes page title
+      await StoreHelper.loadApiData()
+      document.title = StoreHelper.getAppTitle ()
+      if (dbApp) console.log('api data fetch: document title is', document.title)
       await this._loadData(route)
     }
     catch(err) {
@@ -101,10 +105,6 @@ class PageControllerInner {
   }
 
   async _loadData (route) {
-    // If there is a demo token in local memory then the user is using the full demo mode
-    // Note there is now a just ehr demo load below and that is not a full demo mode.
-    const demoToken = StoreHelper.getDemoToken()
-    const isDemo = !!demoToken
     /*
 The LTI service provides a token in the query. We send this back to our preconfigured api server to verify the incoming request and to get the actual token this client will use.  This two step token verification process makes sure the incoming request is from the expected api server and no-where else.
     */
@@ -113,51 +113,43 @@ The LTI service provides a token in the query. We send this back to our preconfi
     const authToken = StoreHelper.getAuthToken()
     // if we have either token then we have an LTI user who wants into the app.
     const isUser = refreshToken || authToken
-    // call into the api to get and store in memory api data, which includes page title
-    await StoreHelper.loadApiData()
-    document.title = StoreHelper.getAppTitle ()
-    if (dbApp) console.log('api data fetch: document title is', document.title)
     // assume page load is for real work and not the ehr only demo
     EhrOnlyDemo.setActiveEhrActive(false)
-    if (isDemo) {
+    // If there is a demo token in local memory then the user is using the full demo mode
+    // Note there is now a just ehr demo load below and that is not a full demo mode.
+    if (!!StoreHelper.getDemoToken()) {
       // set up demo and RETURN from function
-      if (dbApp) console.log('db_loadData load demo data')
-      const ddata = await StoreHelper.loadDemoData()
-      if (dbApp) console.log('loadDemoData done', ddata)
+      await StoreHelper.loadDemoData()
       if (!isUser) {
-        if (dbApp) console.log('db_loadData user is not yet visiting ' +
-          ' the EHR pages so page load is complete. ' +
-          ' emit PAGE_DATA_READY_EVENT')
         EventBus.$emit(PAGE_DATA_READY_EVENT)
         return Promise.resolve()
       }
     }
     if (!isUser) {
-      if (dbApp) console.log('db_loadData set up EHR ONLY only demo and ' +
-        ' emit PAGE_DATA_REFRESH_EVENT then' +
-        ' RETURN from function ')
       EhrOnlyDemo.setActiveEhrActive(true)
       EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
       return Promise.resolve()
     }
-    // not full ehr demo and page is loading for an LTI user....
     if (dbApp) console.log('db_loadData load user authorization data')
     //  Will now do the LTI auth. This results in a lot of data from the server and this data will be
     // be pushed into the storage.s
     await this._loadAuth(refreshToken, authToken)
+
+    let visitId = this._getVisitId()
+    await StoreHelper.loadVisitRecord(visitId)
+
     if (route.name === UNLINKED_ACTIVITY_ROUTE_NAME) {
       if (dbApp) console.log('Do nothing but emit the PAGE_DATA_REFRESH_EVENT in page change handler on entry to unlinked activity page.')
       EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
       return Promise.resolve()
     }
-    let visitId = this._getVisitId()
-    await this._loadEhr(visitId)
+    await this._loadEhr()
     EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
     let visitInfo = store.state.visit.sVisitData || {}
     await StoreHelper.loadAsCurrentActivity(visitInfo.activity)
     let activity = store.getters['activityStore/activity']
     if (!activity.assignment) {
-      console.log('Reject no assignment',activity)
+      // console.log('Reject no assignment',activity)
       return Promise.reject(new NoAssignmentLinked(visitInfo))
     }
     return Promise.resolve()
@@ -210,10 +202,9 @@ The LTI service provides a token in the query. We send this back to our preconfi
     StoreHelper.setLoading(null, false)
   }
 
-  async _loadEhr (visitId) {
-    if (dbApp) console.log('_loadEhr begin visitId:', visitId)
+  async _loadEhr () {
+    if (dbApp) console.log('_loadEhr begin')
     StoreHelper.setLoading(null, true)
-    await StoreHelper.loadVisitRecord(visitId)
     if (StoreHelper.isSeedEditing()) {
       await StoreHelper.loadSeedEditor()
     } else if (StoreHelper.isInstructor()) {
