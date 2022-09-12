@@ -406,6 +406,7 @@ class StoreHelperWorker {
     if (debugSH) console.log('SH loadStudent2 visitInfo', visitInfo)
     if (debugSH) console.log('SH loadStudent2 visitInfo.activity', visitInfo.activity)
     await this.loadCommon() // tool and user
+    StoreHelper.setIsDevelopingContent( false )
     const activity = await this.loadAsCurrentActivity(visitInfo.activity)
     await this._dispatchActivityData('load', visitInfo.activityData)
     if (activity.assignment) {
