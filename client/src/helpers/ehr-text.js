@@ -52,7 +52,7 @@ export const Text = {
   SUBMITTED: 'Submitted',
 
   // class list per student actions
-  EVALUATE_TIP: 'Evaluated the student\'s work. This button is enabled once the student\'s work is ' +
+  EVALUATE_TIP: 'Evaluate the student\'s work. This button is enabled once the student\'s work is ' +
     'submitted',
   EVALUATE_BL: 'Evaluate',
   EVAL_IN_EHR_TIP: 'View and evaluate the student\'s work in the EHR context.',
@@ -75,7 +75,7 @@ export const Text = {
     STUDENTS_VAL: (total, submitted) => `${total} participating and ${submitted} with submitted work`,
   },
   CLASS_LIST_PAGE: {
-    EVALUATION: 'Evaluation',
+    EVALUATION: 'Evaluation notes',
     INDEX: 'Index',
     SUBMITTED: 'Submitted',
     STATUS: 'Status',

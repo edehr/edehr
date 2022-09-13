@@ -44,8 +44,7 @@ export default {
     },
     classList () {
       let list = StoreHelper.getClassList()
-      // for development make the class list large
-      // TODO remove this for development hack
+      // for development you can make the class list large by setting hack to true
       const hackABigList = false
       if (hackABigList) {
         list = [...list, ...list,]
@@ -54,7 +53,7 @@ export default {
         list = [...list, ...list,]
         list = [...list, ...list,]
       }
-      return list
+      return list.sort((a,b) => a.user.fullName.localeCompare(b.user.fullName))
     },
     showLabels () { return StoreHelper.isOutsideShowButtonLabels() },
   },
