@@ -7,7 +7,8 @@
       activity-actions
 
     div(class="classlist-body")
-      div(v-for="(studentVisit) in classList", class="list-card list-element", :class="rowClass(studentVisit)")
+      div(v-if="classList.length===0") No students have attempted this activity.
+      div(v-else, v-for="(studentVisit) in classList", class="list-card list-element", :class="rowClass(studentVisit)")
         class-list-item(
           @selectedStudent="changeStudent(studentVisit)",
           :studentVisit="studentVisit")
@@ -61,6 +62,10 @@ export default {
     rowClass: function (sv) {
       let selected = sv._id === StoreHelper.getCurrentEvaluationStudentId()
       return selected ? 'selected' : ''
+    },
+    changeStudent (sv) {
+      if (debug) console.log('CL changeStudentForInstructor', sv._id)
+      StoreHelper.changeStudentForInstructor(sv._id)
     },
     async loadComponent () {
       /*

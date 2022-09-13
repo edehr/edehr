@@ -408,8 +408,10 @@ class StoreHelperWorker {
     await this.loadCommon() // tool and user
     StoreHelper.setIsDevelopingContent( false )
     const activity = await this.loadAsCurrentActivity(visitInfo.activity)
-    await this._dispatchActivityData('load', visitInfo.activityData)
     if (activity.assignment) {
+      // only when the activity has an assignment(learning object) can the visit have any activity data
+      if (debugSH) console.log('get activity data based on visitInfo', visitInfo)
+      await this._dispatchActivityData('load', visitInfo.activityData)
       await this.loadAssignment(activity.assignment)
       let seedId = this.getAssignmentSeedId()
       if (debugSH) console.log('SH loadStudent2 seedId', seedId)

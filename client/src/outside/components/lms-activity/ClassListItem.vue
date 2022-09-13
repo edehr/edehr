@@ -21,7 +21,7 @@
         div(class="details-value") {{ statusText() }}
       div(class="details-row")
         div(class="details-name") {{text.LOBJ}}
-        div(class="details-value") {{ studentVisit.assignment.name }}
+        div(class="details-value") {{ assignment.name }}
 </template>
 
 <script>
@@ -45,6 +45,7 @@ export default {
   computed: {
     studentName () { return this.studentVisit.user.fullName },
     activityData () { return this.studentVisit.activityData},
+    assignment () { return this.$store.getters['assignmentStore/assignment']},
     evaluationNotes () {
       let txt = this.activityData.evaluationData || ''
       const lim = 100
