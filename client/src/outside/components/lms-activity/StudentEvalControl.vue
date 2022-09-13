@@ -14,7 +14,13 @@
       h3 {{student.user.fullName}} ({{ currentIndex }} of {{ listLen }}) {{statusText}}
 
       div
-        class-list-actions(class="list-item-actions", :studentVisit='student', :evaluating='true')
+        class-list-actions(
+          class="list-item-actions",
+          :studentVisit='student',
+          :evaluating='true',
+          :hide-eval-ehr='inEhr',
+          :hide-eval-raw='!inEhr'
+        )
     ehr-evaluation-input(
       ref="evaluationNoteComponent",
       :disabled='!submitted',
@@ -49,6 +55,9 @@ export default {
     return {
       hasNewData: false,
     }
+  },
+  props: {
+    inEhr: { type: Boolean, default: false },
   },
   computed: {
     temp () {
@@ -149,7 +158,11 @@ export default {
       }
     },
     changeStudent (sv) {
-      this.$router.push({ name: 'eval-student', query: { visitId: sv._id } })
+      if (this.inEhr) {
+        StoreHelper.changeStudentForInstructor(sv._id)
+      } else {
+        this.$router.push({ name: 'eval-student', query: { visitId: sv._id } })
+      }
     },
     resetNotes () {
       this.$refs.confirmDialog.showDialog('Confirm', 'Confirm reset the evaluation notes.')

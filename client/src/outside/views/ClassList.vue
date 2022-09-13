@@ -44,6 +44,7 @@ export default {
     },
     classList () {
       let list = StoreHelper.getClassList()
+      list = list.slice() // make a copy so we can sort the list
       // for development you can make the class list large by setting hack to true
       const hackABigList = false
       if (hackABigList) {
