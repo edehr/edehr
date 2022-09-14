@@ -21,7 +21,6 @@
 <script>
 import AppDialog from '@/app/components/AppDialogShell'
 import StoreHelper from '@/helpers/store-helper'
-import { validTimeStr } from '@/helpers/ehr-utils'
 import { Text, TextLearningObjects } from '@/helpers/ehr-text'
 const TITLES = Text.LOBJ_DIALOG.TITLES
 const ERRORS = Text.LOBJ_DIALOG.ERRORS
@@ -82,7 +81,6 @@ export default {
     },
     showDialog (assignmentData) {
       this.clearInputs()
-      let assList = StoreHelper.getAssignmentsList()
       if (assignmentData) {
         this.actionType = EDIT_ACTION
         this.assignmentName = assignmentData.name

@@ -6,8 +6,6 @@ import Model from './assignment'
 
 const typeName = 'Assignment'
 
-const logError = require('debug')('error')
-
 /* global describe it */
 describe(`${typeName} mongoose schema testing`, function () {
   before(function (done) {

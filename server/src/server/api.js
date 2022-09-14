@@ -1,5 +1,4 @@
 import { Router } from 'express'
-import moment from 'moment'
 import cors from 'cors'
 // To Do refactor dbSeeder to export named function
 import dbSeeder from '../db/dbSeeder'

@@ -58,7 +58,6 @@ export default {
           lastUpdateDate: new Date()
         })
       delete duplicate._id
-      let nonce = Math.random().toString(32).slice(-7)
       await StoreHelper.createAssignment(duplicate)
         .then( () => this.$emit('newLearningObject' ))
         .catch(error => {

@@ -1065,7 +1065,6 @@ describe.skip('Demonstration related', () => {
 
   it.skip('submitPersona', async () => {
     should.doesNotThrow(async () => {
-      const persona = mockData.demoData.personaList[0]
       const { assignment, demoData } = mockData
       const submitData = {
         resource_link_title: assignment.name,

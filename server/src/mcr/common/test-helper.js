@@ -1,6 +1,5 @@
 import supertest from 'supertest'
 import ConsumerController from '../consumer/consumer-controller'
-import Assignment from '../assignment/assignment'
 import User from '../user/user'
 import Activity from '../activity/activity'
 import Visit from '../visit/visit'

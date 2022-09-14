@@ -2,7 +2,6 @@ import BaseController from '../common/base'
 import Visit from '../visit/visit'
 import Activity from './activity'
 import {ok, fail} from '../common/utils'
-import { Text } from '../../config/text'
 const debug = require('debug')('server')
 const debugAC = false
 /*
