@@ -3,25 +3,11 @@
     div(class="list-item-container")
       div
         span(class="list-item-name") {{studentName}} &nbsp;
-        span ({{statusText()}}) &nbsp;
-        a(@click="showMore = !showMore; $emit('selectedStudent')") {{showMore ? 'show less' : 'show more'}}
+        span ({{statusText()}}. Index: {{ studentVisit.index +1 }})
       class-list-actions(class="list-item-actions", :studentVisit='studentVisit')
       div(class="details-row")
         div(class="details-name") {{text.EVALUATION}}
         div(class="details-value") {{ evaluationNotes }}
-    div(v-if="showMore")
-      div(class="details-row")
-        div(class="details-name") {{text.INDEX}}
-        div(class="details-value") {{ studentVisit.index +1 }}
-      div(class="details-row")
-        div(class="details-name") {{text.SUBMITTED}}
-        div(class="details-value") {{ lastSubmitted() }}
-      div(class="details-row")
-        div(class="details-name") {{text.STATUS}}
-        div(class="details-value") {{ statusText() }}
-      div(class="details-row")
-        div(class="details-name") {{text.LOBJ}}
-        div(class="details-value") {{ studentVisit.assignment.name }}
 </template>
 
 <script>
@@ -45,6 +31,7 @@ export default {
   computed: {
     studentName () { return this.studentVisit.user.fullName },
     activityData () { return this.studentVisit.activityData},
+    assignment () { return this.$store.getters['assignmentStore/assignment']},
     evaluationNotes () {
       let txt = this.activityData.evaluationData || ''
       const lim = 100

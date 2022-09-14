@@ -137,16 +137,4 @@ describe('test load demo', () => {
     })
   })
 
-  it('handleError', done => {
-    pageController.handleError('Test Error', router)
-    const apiError = StoreHelper._getSystemProperty('apiError')
-    const [call] = router.push.mock.calls
-    call.length.should.equal(1)
-    call[0].should.equal('/')
-    apiError.should.equal('Test Error. System Error')
-    setTimeout(() => {
-      StoreHelper.isLoading().should.equal(false)
-      done()
-    }, 50)
-  })
 })

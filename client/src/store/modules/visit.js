@@ -9,7 +9,7 @@ const state = {
   sVisitData: {},
   topLevelMenu: '',
   _seedEditId: '',
-  _isDevelopingContent: true, // enable, by default, the ability to create content if user is an instructor
+  _isDevelopingContent: false, // disable, by default, This sets the ability to create content if user is an instructor
   _isReadOnlyInstructor: false
 }
 

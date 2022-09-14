@@ -30,42 +30,24 @@
   "assignment": {
     "_id": "assignmentId",
     "toolConsumer": "5eb2b706df6c04d3212355d9",
-    "externalId": "testAssignment",
     "name": "Test Assignment",
     "description": "This a default test assignment",
-    "ehrRoutePath": "",
     "seedDataId": "5eb2b706df6c04d3212355db",
-    "persona": "Jason",
-    "profession": "Doctor",
-    "time": "08:00",
-    "day": "0"
   },
   "assignmentListing": [
     {
       "_id": "assignmentId",
       "toolConsumer": "5eb2b706df6c04d3212355d9",
-      "externalId": "testAssignment",
       "name": "Test Assignment",
       "description": "This a default test assignment",
-      "ehrRoutePath": "",
       "seedDataId": "5eb2b706df6c04d3212355db",
-      "persona": "Jason",
-      "profession": "Doctor",
-      "time": "08:00",
-      "day": "12:00"
     },
     {
       "_id": "assignmentId2",
       "toolConsumer": "5eb2b706df6c04d3212355d9",
-      "externalId": "testAssignment2",
       "name": "Test Assignment2",
       "description": "This a second test assignment",
-      "ehrRoutePath": "",
       "seedDataId": "5eb2b706df6c04d3212355db",
-      "persona": "Jason",
-      "profession": "Doctor",
-      "time": "08:00",
-      "day": "12:00"
     }
   ],
   "authData": {

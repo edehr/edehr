@@ -23,9 +23,6 @@
         div(class="details-value").
           Created on {{ learningObject.createDate | formatDateTime }}.
           Last modified on {{ learningObject.lastUpdateDate | formatDateTime }}.
-      div(v-show="isDevelopingContent", class="details-row")
-        div(class="details-name") {{ text.EXTERNAL }}
-        div(class="details-value") {{learningObject.externalId}}
 </template>
 
 <script>
@@ -115,8 +112,6 @@ export default {
       await this.$store.dispatch('assignmentListStore/loadAssignmentsWithCounts')
       // load seeds for the edit LObj dialog. The user will need to select from the available seeds
       await this.$store.dispatch('seedListStore/loadSeeds')
-      const visit = await this.$store.getters['visit/visitData']
-      await this.$store.dispatch('activityStore/loadAsCurrentActivity', visit.activity)
       await this.$store.dispatch('assignmentStore/load', learningObjectId)
       const seedId = this.assignment.seedDataId
       await this.$store.dispatch('seedListStore/loadSeedContent', seedId)

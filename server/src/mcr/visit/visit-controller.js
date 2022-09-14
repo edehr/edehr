@@ -24,16 +24,14 @@ export default class VisitController extends BaseController {
     }
     let filter = {user: new ObjectID(userId)}
     return this.model.find(filter)
-      .populate('activity', 'context_label context_title resource_link_title closed')
-      .populate('activityData', 'submitted evaluationData assignmentData') // assignmentData
-      .populate('assignment', 'externalId name seedDataId')
+      .populate('activity')
+      .populate('activityData')
       .populate('user', 'givenName familyName fullName emailPrimary')
   }
 
   findVisit (id) {
     return this.baseFindOneQuery(id)
       .populate('activity')
-      .populate('assignment')
       .populate('toolConsumer', {
         tool_consumer_instance_name: 1,
         tool_consumer_instance_description: 1,
@@ -48,11 +46,10 @@ export default class VisitController extends BaseController {
    * @param user
    * @param toolConsumer
    * @param activity
-   * @param assignment
    * @param ltiData
    * @return {*}
    */
-  updateCreateVisit (user, toolConsumer, activity, assignment, ltiData) {
+  updateCreateVisit (user, toolConsumer, activity, /* assignment, */ ltiData) {
     let role = new Role(ltiData.roles)
     let filter = {
       $and: [
@@ -80,7 +77,6 @@ export default class VisitController extends BaseController {
             user: user._id,
             userName: user.fullName,
             activity: activity._id,
-            assignment: assignment._id,
             role: role.asText(),
             isStudent: role.isStudent,
             isInstructor: role.isInstructor,
@@ -99,8 +95,7 @@ export default class VisitController extends BaseController {
               debugvc('Create activity data for the visit')
               return ActivityData.create({
                 toolConsumer: toolConsumer._id,
-                visit: visit._id,
-                seedData: assignment.seedData
+                visit: visit._id
               })
             })
             .then((activityData) => {

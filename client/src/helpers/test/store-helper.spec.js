@@ -632,10 +632,8 @@ describe('assignment tests', () => {
     const newAssignment = {
       _id: 'newAssignmentId',
       toolConsumer: '5eb2b706df6c04d3212355d9',
-      externalId: 'newAssignment',
       name: 'New test assignment',
       description: 'This a new test assignment',
-      ehrRoutePath: '',
       seedDataId: '5eb2b706df6c04d3212355db'
     }
     const assignments = [...mockData.assignmentListing, newAssignment]
@@ -1067,14 +1065,9 @@ describe.skip('Demonstration related', () => {
 
   it.skip('submitPersona', async () => {
     should.doesNotThrow(async () => {
-      const persona = mockData.demoData.personaList[0]
       const { assignment, demoData } = mockData
       const submitData = {
         resource_link_title: assignment.name,
-        externalId: assignment.externalId,
-        personaName: persona.name,
-        personaEmail: persona.email,
-        personaRole: persona.role,
         returnUrl: 'returnUrl',
         toolKey: demoData.toolConsumerKey
       }

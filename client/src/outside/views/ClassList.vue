@@ -7,7 +7,8 @@
       activity-actions
 
     div(class="classlist-body")
-      div(v-for="(studentVisit) in classList", class="list-card list-element", :class="rowClass(studentVisit)")
+      div(v-if="classList.length===0") No students have attempted this activity.
+      div(v-else, v-for="(studentVisit) in classList", class="list-card list-element", :class="rowClass(studentVisit)")
         class-list-item(
           @selectedStudent="changeStudent(studentVisit)",
           :studentVisit="studentVisit")
@@ -43,8 +44,8 @@ export default {
     },
     classList () {
       let list = StoreHelper.getClassList()
-      // for development make the class list large
-      // TODO remove this for development hack
+      list = list.slice() // make a copy so we can sort the list
+      // for development you can make the class list large by setting hack to true
       const hackABigList = false
       if (hackABigList) {
         list = [...list, ...list,]
@@ -53,7 +54,7 @@ export default {
         list = [...list, ...list,]
         list = [...list, ...list,]
       }
-      return list
+      return list.sort((a,b) => a.user.fullName.localeCompare(b.user.fullName))
     },
     showLabels () { return StoreHelper.isOutsideShowButtonLabels() },
   },
@@ -61,6 +62,10 @@ export default {
     rowClass: function (sv) {
       let selected = sv._id === StoreHelper.getCurrentEvaluationStudentId()
       return selected ? 'selected' : ''
+    },
+    changeStudent (sv) {
+      if (debug) console.log('CL changeStudentForInstructor', sv._id)
+      StoreHelper.changeStudentForInstructor(sv._id)
     },
     async loadComponent () {
       /*

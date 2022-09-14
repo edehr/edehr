@@ -52,7 +52,7 @@ export const Text = {
   SUBMITTED: 'Submitted',
 
   // class list per student actions
-  EVALUATE_TIP: 'Evaluated the student\'s work. This button is enabled once the student\'s work is ' +
+  EVALUATE_TIP: 'Evaluate the student\'s work. This button is enabled once the student\'s work is ' +
     'submitted',
   EVALUATE_BL: 'Evaluate',
   EVAL_IN_EHR_TIP: 'View and evaluate the student\'s work in the EHR context.',
@@ -75,7 +75,7 @@ export const Text = {
     STUDENTS_VAL: (total, submitted) => `${total} participating and ${submitted} with submitted work`,
   },
   CLASS_LIST_PAGE: {
-    EVALUATION: 'Evaluation',
+    EVALUATION: 'Evaluation notes',
     INDEX: 'Index',
     SUBMITTED: 'Submitted',
     STATUS: 'Status',
@@ -162,22 +162,10 @@ export const Text = {
     ERRORS: {
       ID_IN_USE: (id) => `The learning object id ${id} is already in use. The id is case insensitive so upper and lower case letters are consider the same.`,
       NAME_REQUIRED: 'Learning object name is required',
-      ID_REQUIRED: 'Learning object id is required',
-      ID_PATTERN: 'Learning object id needs to contain letters, numbers, periods, hyphens or underscores',
-      SEED_REQUIRED: 'Learning object seed data is required',
+      SEED_REQUIRED: 'Must select a case study for this learning object.',
       INVALID_TIME: 'Please, enter a valid 24hrs time'
     },
     LABELS: {
-      DAY: 'Case study day',
-      DAY_TP: 'Day 0,1,2,3,...',
-      TIME: 'Case study time',
-      TIME_TP: '24 hour time',
-      PROFESSION: 'Profession',
-      PROFESSION_TP: 'The profession of the simulation health care provider character.',
-      SIM_DATA_TITLE: 'Simulation settings',
-      SIM_DATA_TIP: 'The persona and date/time for the current state of the simulation',
-      PERSONA: 'Persona',
-      PERSONA_TP: 'The simulation health care provider character\'s name',
       DESCRIPTION: 'Description',
       SEED_OBJ: 'Case study',
       SEED_OBJ_TP: '',
@@ -190,7 +178,6 @@ export const Text = {
     LOBJ: 'Learning object',
     DESCRIPTION: 'Description',
     DATES: 'Dates',
-    EXTERNAL: 'External key',
     SEED: 'Case study',
     USED: 'Used by',
     USED_VAL: (cnt) => `${cnt} activities`,

@@ -15,7 +15,7 @@ const getters = {
    Each record contains a populated ActivityData (student's work) (EdEHR) Assignment and User
    return Visit.find({ $and: [ {isStudent: true }, {activity: _id} ] })
    .populate('activityData', 'submitted assignmentData evaluationData')
-   .populate('assignment', 'externalId name description seedDataId ehrRoutePath')
+   .populate('assignment', 'name description seedDataId')
    .populate('user', 'givenName familyName fullName emailPrimary')
    .select('userName lastVisitDate')
    .then((visits) => {
@@ -118,6 +118,7 @@ const mutations = {
     // if stored get the activityId. Once it is in place a page load can request the activity data
     const currentEvaluationStudentId = localStorage.getItem(INSTRUCTOR_LOCAL_STORE)
     if (currentEvaluationStudentId) {
+      if(debug) console.log(NAME + 'initialize and load current evaluation student id from local storage', currentEvaluationStudentId)
       state.sCurrentEvaluationStudentId = currentEvaluationStudentId
     }
   },
@@ -126,6 +127,7 @@ const mutations = {
   setCourses: (state, list) => { state.sCourses = list  },
 
   setCurrentEvaluationStudentId: (state, id) => {
+    if(debug) console.log(NAME + 'setCurrentEvaluationStudentId', id)
     localStorage.setItem(INSTRUCTOR_LOCAL_STORE, id)
     state.sCurrentEvaluationStudentId = id
   }

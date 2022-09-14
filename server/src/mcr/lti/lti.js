@@ -200,10 +200,6 @@ export default class LTIController {
     if (!ltiData['context_id']) {
       return invalid(Text.EdEHR_REQUIRES_CONTEXT)
     }
-    if (!ltiData['custom_assignment']) {
-      callback(_this._createAssignmentMismatchError(ltiData, Text.EdEHR_REQUIRES_CUSTOM))
-      return false
-    }
     return true
   }
 
@@ -239,8 +235,8 @@ export default class LTIController {
   async updateToolConsumer (req) {
     const ltiData = req.ltiData
     const toolConsumer = req.toolConsumer
-    debug('updateToolConsumer toolConsumer ', toolConsumer)
-    debug('updateToolConsumer vs ltiData ', ltiData)
+    if (debugFine) debug('updateToolConsumer toolConsumer ', toolConsumer)
+    if (debugFine) debug('updateToolConsumer vs ltiData ', ltiData)
     if (
       toolConsumer.tool_consumer_instance_guid !== ltiData.tool_consumer_instance_guid ||
       toolConsumer.tool_consumer_instance_name !== ltiData.tool_consumer_instance_name ||
@@ -248,7 +244,8 @@ export default class LTIController {
         ltiData.tool_consumer_info_product_family_code ||
       toolConsumer.tool_consumer_instance_description !== ltiData.tool_consumer_instance_description
     ) {
-      debug('updateToolConsumer starting with ' + toolConsumer)
+      debug('updateToolConsumer toolConsumer ')
+      if (debugFine) debug('updateToolConsumer starting with ' + toolConsumer)
       toolConsumer.lti_version = ltiData.lti_version
       toolConsumer.tool_consumer_info_product_family_code =
         ltiData.tool_consumer_info_product_family_code
@@ -262,10 +259,10 @@ export default class LTIController {
       if (toolConsumer.is_primary === undefined) {
         toolConsumer.is_primary= toolConsumer.tool_consumer_info_product_family_code === DEMO_CONSUMER_FAMILY_CODE
       }
-      debug('updateToolConsumer update tool consumer record ', toolConsumer)
+      if (debugFine) debug('updateToolConsumer update tool consumer record ', toolConsumer)
       await toolConsumer.save()
       req.toolConsumer = await this.consumerController.findOneConsumerByKey(toolConsumer.oauth_consumer_key)
-      debug('updateToolConsumer update req ', req.toolConsumer)
+      if (debugFine) debug('updateToolConsumer update req ', req.toolConsumer)
     } else {
       if (debugFine) debug('tool consumer is up to date ')
       return Promise.resolve()
@@ -277,58 +274,15 @@ export default class LTIController {
     // see models/outcomes.js
   }
 
-  locateAssignment (req) {
-    const _this = this
-    let externalId = req.ltiData.custom_assignment
-    req.externalId = externalId
-    let role = new Role(req.ltiData.roles)
-    let toolConsumer = req.toolConsumer
-    let toolConsumerId = toolConsumer._id
-    debug('locateAssignment with toolConsumerId, externalId', toolConsumerId, externalId)
-    return this.assignmentController.locateAssignmentForStudent(externalId, toolConsumerId)
-      .then(assignment => {
-        if (!assignment) {
-          if (role.isStudent) {
-            let msg = Text.EdEHR_ASSIGNMENT_MISMATCH(toolConsumer.oauth_consumer_key, externalId)
-            debug('locateAssignment not found for student role return error: ' + msg)
-            throw this._createAssignmentMismatchError(req.ltiData, msg)
-          }
-          let ltiData = req.ltiData
-          // to do adjust learning object title so it is not exactly the same as lms activity
-          let title = 'Learning Object for LMS activity: ' + ltiData.resource_link_title
-          let description = 'LMS activity description: ' + ltiData.resource_link_description
-          // Get the default description for assignments from config.
-          // The resource_link_description is used to describe the activity and using it for the
-          // assignment too is confusing.
-          let aAssignment = {
-            title: title,
-            description: description,
-            externalId: externalId,
-            toolConsumer: toolConsumer
-          }
-          debug('locateAssignment not found so create', aAssignment)
-          return _this.assignmentController.createAssignment(aAssignment)
-        }
-        return assignment
-      })
-      .then(assignment => {
-        req.assignment = assignment
-      })
-  }
-
   updateActivity (req, results) {
-    debug('updateActivity ' + JSON.stringify(req.assignment))
-    if (req.assignment) {
-      if (debugFine) debug('updateActivity with assignment')
-      return this.activityController.updateCreateActivity(
-        req.ltiData,
-        req.toolConsumer._id,
-        req.assignment
-      ).then(activity => {
-        if (debugFine) debug('store the activity in the req')
-        req.activity = activity
-      })
-    }
+    if (debugFine) debug('updateActivity with assignment')
+    return this.activityController.updateCreateActivity(
+      req.ltiData,
+      req.toolConsumer._id
+    ).then(activity => {
+      if (debugFine) debug('store the activity in the req')
+      req.activity = activity
+    })
   }
 
   updateVisit (req) {
@@ -338,7 +292,6 @@ export default class LTIController {
         req.user,
         req.toolConsumer,
         req.activity,
-        req.assignment,
         req.ltiData
       ).then(visit => {
         req.visit = visit
@@ -352,16 +305,11 @@ export default class LTIController {
       throw new SystemError(Text.EdEHR_MISSING_VISIT(toolConsumer.oauth_consumer_key, toolConsumer._id) )
     }
     let visit = req.visit
-    // ehrRoutePath is intended to allow a learning object (assignment) designate the starting page in the EHR
-    // although this may not be desired from a teaching point of view because most real ehr systems
-    // always start at the beginning.
-    let route = req.assignment.ehrRoutePath || '/ehr'
-
+    let route = '/ehr'
     if (visit.isInstructor) {
       if (debugFine) debug('Route to instructor page ')// + JSON.stringify(req.ltiData, null, 2))
       route = '/lms-activity?activityId=' + visit.activity._id
     }
-
     try {
       const tokenData = {
         consumerKey: visit.consumerKey,
@@ -395,10 +343,6 @@ export default class LTIController {
     const db = false
     if (db) console.log('Do update tool')
     await _this.updateToolConsumer(req)
-    if (db) console.log('Do updateOutcomeManagement')
-    await _this.updateOutcomeManagement(req)
-    if (db) console.log('Do locateAssignment')
-    await _this.locateAssignment(req)
     if (db) console.log('Do update activity')
     await _this.updateActivity(req)
     if (db) console.log('Do updateVisit')
@@ -420,7 +364,7 @@ export default class LTIController {
         .then((req) => {
           let url = req.ltiNextUrl
           const refreshToken = req.refreshToken
-          debug(`LTI ready to redirect to the ehr "${url}"`)
+          debug('LTI ready to redirect to the ehr')
           // When the demo-controller redirects to LTI and this LTI controller uses redirect (note that is a
           // POST sending a POST that would redirect) the redict results in a 404 error.
           // So, instead return to the demo controller enough information to get into the ehr

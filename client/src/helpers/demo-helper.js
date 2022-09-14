@@ -4,11 +4,11 @@ import InstoreHelper from '../store/modules/instoreHelper'
 
 const debugDC = false
 
-export function demoGoToEhr (toolKey, toolSecret, personaName, role, resource_link_title, resource_link_description, externalId, returnUrl) {
+export function demoGoToEhr (toolKey, toolSecret, personaName, role, resource_link_title, resource_link_description, resource_link_id, returnUrl) {
   const submitData = {
     resource_link_title: resource_link_title,
     resource_link_description: resource_link_description,
-    externalId: externalId,
+    resource_link_id: resource_link_id,
     personaName: personaName,
     personaRole: role,
     returnUrl: returnUrl,

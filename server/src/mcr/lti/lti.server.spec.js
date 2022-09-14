@@ -62,7 +62,7 @@ function makeReq (ltiData) {
   return req
 }
 
-function makeLtiData (consumerKeyIndex, externalId, asInstructor) {
+function makeLtiData (consumerKeyIndex, asInstructor) {
   let ltiData = Helper.sampleValidLtiData()
   if (asInstructor) {
     ltiData.roles = 'instructor'
@@ -75,7 +75,6 @@ function makeLtiData (consumerKeyIndex, externalId, asInstructor) {
     oauth_signature_method: 'HMAC-SHA1',
     oauth_timestamp: Math.round(Date.now() / 1000),
     oauth_nonce: Date.now() + Math.random() * 100,
-    custom_assignment: externalId
   })
   return ltiData
 }
@@ -192,8 +191,7 @@ describe('LTI controller testing', function () {
     result.should.be.false
   })
   it('do a lti strategyVerify', () => {
-    let externalId = 'test_assignment_id_1'
-    let ltiData = makeLtiData(0, externalId)
+    let ltiData = makeLtiData(0)
     let req = makeReq(ltiData)
     return strategyVerify(ltiController, req)
       .then((req) => {
@@ -220,8 +218,7 @@ describe('LTI controller testing', function () {
   })
 
   it('lti _postLtiChain verify fail on assignment mismatch ', function () {
-    let externalId = 'test_assignment_id_2'
-    let req = makeReq(makeLtiData(0, externalId))
+    let req = makeReq(makeLtiData(0))
     return strategyVerify(ltiController, req)
       .then((req) => {
         return ltiController._postLtiChain(req)
@@ -237,8 +234,7 @@ describe('LTI controller testing', function () {
   })
 
   it('lti _postLtiChain verify assignment', function () {
-    let externalId = 'test_assignment_id_1'
-    let ltiData = makeLtiData(0, externalId, /* as instructor */ true)
+    let ltiData = makeLtiData(0, /* as instructor */ true)
     ltiData.resource_link_title = 'Test assignment'
     let req = makeReq(ltiData)
     return strategyVerify(ltiController, req)
@@ -261,8 +257,7 @@ describe('LTI controller testing', function () {
   })
 
   it('lti _postLtiChain verify wrong secret', function () {
-    let externalId = 'test_assignment_id_1'
-    let ltiData = makeLtiData(0, externalId, /* as instructor */ true)
+    let ltiData = makeLtiData(0, /* as instructor */ true)
     ltiData.resource_link_title = 'Test assignment'
     ltiData.oauth_consumer_secret = 'wrong secret'
     let req = makeReq(ltiData)
@@ -290,8 +285,7 @@ describe('LTI controller testing', function () {
   })
 
   it('lti tool changes', async () => {
-    let externalId = 'test_assignment_id_1'
-    let ltiData = makeLtiData(0, externalId, /* as instructor */ true)
+    let ltiData = makeLtiData(0, /* as instructor */ true)
     ltiData.resource_link_title = 'Test assignment'
     ltiData.tool_consumer_info_product_family_code = 'Before'
     let req = makeReq(ltiData)
@@ -300,7 +294,7 @@ describe('LTI controller testing', function () {
     should.exist(req.toolConsumer)
     req.toolConsumer.tool_consumer_info_product_family_code.should.equal('Before')
     // second round
-    ltiData = makeLtiData(0, externalId, /* as instructor */ true)
+    ltiData = makeLtiData(0, /* as instructor */ true)
     ltiData.resource_link_title = 'Test assignment'
     ltiData.tool_consumer_info_product_family_code = 'After'
     req = makeReq(ltiData)

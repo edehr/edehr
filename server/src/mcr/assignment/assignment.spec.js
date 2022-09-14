@@ -6,8 +6,6 @@ import Model from './assignment'
 
 const typeName = 'Assignment'
 
-const logError = require('debug')('error')
-
 /* global describe it */
 describe(`${typeName} mongoose schema testing`, function () {
   before(function (done) {
@@ -27,27 +25,13 @@ describe(`${typeName} mongoose schema testing`, function () {
     })
   })
 
-  let key
   let data = Helper.sampleAssignmentSpec()
   it(`${typeName} can save one`, function (done) {
-    key = data.externalId
     const newUser = new Model(data)
     newUser
       .save()
       .then(() => {
         done()
       })
-  })
-
-  it(`${typeName} can find one`, function (done) {
-    Model.findOne({ externalId: key }, function (err, doc) {
-      // debug('results', doc)
-      should.not.exist(err)
-      should.exist(doc)
-      doc.should.have.property('seedDataId')
-      done()
-    }).catch(e => {
-      logError('find one error', e)
-    })
   })
 })

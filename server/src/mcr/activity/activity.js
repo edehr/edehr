@@ -24,7 +24,7 @@ const Schema = new mongoose.Schema({
   context_type: {type: String}, // ltiData.context_type,
   resource_link_title: {type: String}, // ltiData.resource_link_title,
   resource_link_description: {type: String}, // ltiData.resource_link_description,
-  assignment: {type: ObjectId, ref: 'Assignment'}, // ltiData.custom_assignment,
+  assignment: {type: ObjectId, ref: 'Assignment'}, // empty until instructor links assignment to activity
   // closed: {type: Boolean, default: false},
   createDate: {type: Date, default: Date.now},
   // closedDate: {type: Date},

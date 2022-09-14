@@ -28,6 +28,7 @@ function defaultConfig (env) {
     apiHost: process.env.DOMAIN || 'localhost',
     apiPort: process.env.API_PORT || 27000,
     apiUrl: '',
+    apiLogFile: process.env.API_LOG_FILES_DIRECTORY || 'api-logs',
     clientPort: process.env.CLIENT_PORT || 28000,
     clientHost: process.env.DOMAIN || 'localhost',
     clientUrl: '',

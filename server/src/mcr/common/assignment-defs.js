@@ -7,11 +7,6 @@ const _common =     '"Health Case Studies - Toward Closing the Healthcare Commun
   'by:  Glynda Rees, Rob Kruger, Janet Morrison. '
 
 const assignment1 = {
-  externalId: 'demoAssignment1',
-  persona: 'Jason',
-  profession: 'Nurse',
-  time: '08:00',
-  day : 0,
   title: 'Demonstration Assignment #1: COPD',
   description: 'This learning object/assignment is based on Case Study #1.\n' +
     ' In this case the patient has chronic obstructive pulmonary disease (COPD) with a history of asthma.' +
@@ -30,11 +25,6 @@ const ej0SeedDef = {
   ehrData: ej0Seed.ehrData
 }
 const assignment2 = {
-  externalId: 'demoAssignment2',
-  persona: 'Jason',
-  profession: 'Nurse',
-  time: '08:00',
-  day: 3,
   description: 'This learning object/assignment is based on Case Study #2.\n ' +
     ' In this case the patient condition of COPD is exacerbation due to community acquired pneumonia. ' +
     ' The patient in this case study has a complicated health history.' +
@@ -55,11 +45,6 @@ const ej2SeedDef = {
   ehrData: ej2Seed.ehrData
 }
 const assignment3 = {
-  externalId: 'wound1',
-  persona: 'Lori',
-  profession: 'Nurse',
-  time: '11:00',
-  day: 0,
   description: 'This is a demonstration assignment illustrating how wounds (or incisions) can be monitored within the EdEHR.\n' +
   '•\tWrite a Progress Note: (What is important for your colleagues to know about this patient\'s pressure injury? ' +
     'What do other Health Care Professionals need to know?)\n' +
@@ -82,8 +67,8 @@ export const activity1 = {
   seedDef: ej0SeedDef,
   resource_link_title: `Demo activity for "${assignment1.title}"`,
   resource_link_description: 'This demonstration activity uses the ' +
-    ` "${assignment1.title}" learning object, located in this demo instance of the EdEHR` +
-    ' This activity\'s learning object is based on Case Study #1 ' +
+    ` "${assignment1.title}" learning object, located in this demo instance of the EdEHR.` +
+    ' This activity\'s learning object is based on Case Study #1. ' +
     ' See: Case Study #1 in https://pressbooks.bccampus.ca/healthcasestudies/' +
     '',
 }
@@ -92,9 +77,8 @@ export const activity2 = {
   seedDef: ej2SeedDef,
   resource_link_title: `Sample activity to launch "${assignment2.title}"`,
   resource_link_description: 'This demonstration activity uses the ' +
-    ` "${assignment2.title}" learning object, located in this demo instance of the EdEHR` +
-    ' This activity\'s learning object is based on Case Study #2 at the end of Day 1 of the patient\'s stay. ' +
-    ' (This is the second day as Day 0 is the first day).' +
+    ` "${assignment2.title}" learning object, located in this demo instance of the EdEHR.` +
+    ' This activity\'s learning object is based on Case Study #2 at the end of the patient\'s stay. ' +
     ' See: Case Study #2 in https://pressbooks.bccampus.ca/healthcasestudies/' +
     ''
 }
@@ -104,6 +88,6 @@ export const activity3 = {
   seedDef: wound1SeedDef,
   resource_link_title: `Sample activity to launch "${assignment3.title}"`,
   resource_link_description: 'This demonstration activity uses the ' +
-    ` "${assignment3.title}" learning object, located in this demo instance of the EdEHR` +
+    ` "${assignment3.title}" learning object, located in this demo instance of the EdEHR.` +
     ' This activity\'s learning object is a case study devised to illustrate the Integumentary and Wound Care module in the EdEHR ',
 }

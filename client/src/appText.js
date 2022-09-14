@@ -6,7 +6,9 @@ export const appText = {
   heroText: {
     title: commonTitle,
     subTitle: "Student focused, simulated case studies, laddered case studies, with decision supports and customizable",
-    introText: "EdEHR is short for Educational Electronic Health Record. It is an educational tool designed for medical education programs that seek a Canadian system that is focused on the student experience. EdEHR is suitable for all health care programs including, but not limited to, nursing, medicine, pharmacy, physiotherapy and more. EdEHR can be connected with many learning management systems including Moodle, Canvas, Blackboard, and other <a href=\"https://www.imsglobal.org/activity/learning-tools-interoperability\">LTI</a> compliant learning systems. Faculty can customize the course content and can share content with other institutions. ",
+    introText: "EdEHR is short for Educational Electronic Health Record. It is an educational tool designed for medical education programs that seek a Canadian system that is focused on the student experience. EdEHR is suitable for all health care programs including, but not limited to, nursing, medicine, pharmacy, physiotherapy and more. " +
+      "EdEHR can be connected with many learning management systems including Moodle, Canvas, Blackboard, D2L, and other <a href=\"https://www.imsglobal.org/activity/learning-tools-interoperability\">LTI</a> compliant learning systems. " +
+      "Faculty can customize the course content to suit. ",
   },
 
   about: {
@@ -123,26 +125,66 @@ export const demoText = {
   switchRoleExplain: 'When you click on an activity this \'instructor\' will become a \'student\' same as how Moodle allows users to switch roles.',
   switchRoleLabel: 'Change to another persona',
   switchRoleSegmentTitle: 'Switch role:',
-  title: 'Mock Demonstration - Log In',
-  intro: 'This is a simulated log in page that represents your school\'s ' +
-    'Learning Management System (LMS) log in page. Here you can "log in" as a student or instructor and try out a sample course that ' +
-    'uses the EdEHR.',
-  explanation:
-'\nIn real life your LMS course content creators will work with the EdEHR administrator to create connections between' +
-    ' the learning objects in the EdEHR and your LMS. ' +
-    ' For now, you can log into this demonstration to see a fictitious course with sample assignments that use the EdEHR. ' +
-    ' We suggest you first log in as one or more of the mock students.  ' +
-    ' Try the assignments. Send your work in for evaluation.\n ' +
-    ' Then log in as an instructor and review the work your "students" have done.\n' +
-    ' As an instructor you can also customize the learning objects and case study data. ' +
-    ' To do this log in as an instructor and go to one of the assignments. ' +
-    ' Then go to the Learning Objects tab and explore how you can modify the instructions given to the students. ' +
-    ' Or go deeper and modify the EHR case study content.\n' +
-    ' If you do edit the EHR seeds and you want to keep your work be sure to download your seed.' +
-    ' Reach out to mailto:info@edehr.org if you have questions.' +
-    ' Use the Demo menu item on the top banner to leave the demonstration. ' +
-    ' When you leave the demonstration all of your demonstration data is reset.' +
-    ' Remember this instance of the EdEHR is a prototype and so the admin of this instance may need to reset the system at any time.',
+  title: 'Demonstration - "Log In" Page',
+  intro: 'Here you can "log in", as a student or instructor, to a simulated learning management system (LMS) and try out a sample course that ' +
+    'uses the EdEHR. ' +
+    ' Once you log in you will see a sample course with three activities, each set to use the EdEHR. ' +
+    ' In the real world, your school\'s lead instructors will create course content that will use a special connector that will' +
+    ' open the EdEHR.'
+  ,
+
+  explanation: [
+    {
+      title: ' ',
+      body:     'In the real world, the LMS and EdEHR administrators work together and create a special ' +
+      ' LTI connector (See https://www.imsgloba.org/activity/learning-tools-interoperability )' +
+      ' With this connector your lead instructors can create EdEHR activities simply by using it.' +
+      ' The EdEHR has some sample case studies to get you started. You will see these samples in this demonstration.' +
+      ' Lead instructors can create new case studies, in your instance of EdEHR, to suit your educational needs. You can experiment' +
+      ' and create content in this demonstration.  You can even save the content you create and later import it into your EdEHR instance.'
+    },
+    {
+      title: 'Step 1',
+      body: ' When an EdEHR activity is created in your LMS it is not yet associated with a case study, what the EdEHR calls a Learning Object. ' +
+      ' It is essential that at least one instructor use every new EdEHR activity at least once to make the association in the EdEHR. ' +
+      ' This is just like setting up a connection to an online 3rd party text book. At first the connection is to the online system. ' +
+      ' You will next want to select a page within the book for the activity. '
+    }, {
+      title: 'If a student access the activity first ...',
+      body: ' If a student selects an EdEHR activity before an instructor has made the connection the student will be asked to contact an ' +
+      ' instructor to make the association.  It is best to always have an instructor use all EdEHR activities to make the association' +
+      ' with an existing learning object or make a new one.  Go ahead. Log into the demonstration as a student and try an activity. See' +
+      ' what your students might see. '
+    },
+    {
+      title: 'Step 2',
+      body: ' After an instructor has made the connection with an EdEHR learning object the activity is ready for the class. ' +
+        ' Try this demonstration using one or more of the student logins.  Do some work in the EHR ' +
+        ' and submit it for evaluation.'
+    },
+    {
+      title: 'Evaluating student work',
+      body: ' Then log in as an instructor and review the work your "students" have done. Give your students feedback on ' +
+        'what they have submitted. Unlock the submission so the student can resume working. Or block / unblock the entire class. ' +
+        'You can review the student\'s work in the EHR system or see a condensed view that shows just their work.'
+    },
+    {
+      title: 'Creating content',
+      body: ' As an instructor you can also customize the learning objects and case study data. ' +
+        ' To do this log in as an instructor using one of the EdEHR activities in your LMS. ' +
+        ' Then use the "Instructors tools" menu and select "Course designer mode" to elevate your permissions from just "instructor" to "content creator".' +
+        ' Use the same menu to navigate to the Learning Objects or Case Studies tabs.  Explore how you can modify the instructions given to the students. ' +
+        ' Or go deeper and modify the EHR case study content.\n' +
+        ' If you do edit the EHR case studies and you want to preserve your work then be sure to use the download button.'
+    },
+    {
+      title: 'Exit',
+      body: '' +
+        ' Use the Demo menu item on the top banner to leave the demonstration. ' +
+        ' When you leave the demonstration all of your demonstration data is reset.' +
+        ' Reach out to mailto:info@edehr.org if you have questions.',
+    }
+  ],
   lmsAside: 'To the right is a simple one-page learning management system with sample activities each preconfigured to connect with ' +
     ' a learning object inside the EdEHR. Some of those learning objects are ' +
     ' based on the open text-book <a href="https://pressbooks.bccampus.ca/healthcasestudies/">Health Case Studies - Toward Closing the Healthcare Communication Gap</a> by:  Glynda Rees, Rob Kruger, Janet Morrison.',

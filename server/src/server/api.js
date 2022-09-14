@@ -1,5 +1,4 @@
 import { Router } from 'express'
-import moment from 'moment'
 import cors from 'cors'
 // To Do refactor dbSeeder to export named function
 import dbSeeder from '../db/dbSeeder'
@@ -28,6 +27,7 @@ import SeedDataController from '../mcr/seed/seedData-controller'
 import UserController from '../mcr/user/user-controller.js'
 import VisitController from '../mcr/visit/visit-controller'
 import UtilController from '../mcr/util/util-controller'
+import { apiTrace } from './trace-api'
 // Sessions and session cookies
 // express-session stores session data here on the server and only puts session id in the cookie
 const session = require('express-session')
@@ -48,28 +48,23 @@ export function apiMiddle (app, config) {
   }
   app.sessionStore = new FileStore(fileStoreOptions)
 
-  app.use(
-    session({
-      genid: req => {
-        // debug('Inside the session middleware req.sessionID ' + req.sessionID)
-        let guid = uuidv4()
-        // debug('------------------ SESSION genid ' + guid)
-        return guid
-      },
-      cookie: config.cookieSettings,
-      name: 'EdEhr.cookie',
-      store: app.sessionStore,
-      secret: config.cookieSecret,
-      resave: false,
-      saveUninitialized: false
-    })
-  )
-  if (config.traceApiCalls) {
-    app.use(function (req, res, next) {
-      debug(moment().format('YYYY/MM/DD, h:mm:ss.SSS a'), req.method, ' Url:', req.url)
-      next()
-    })
-  }
+  app.use(session({
+    genid: req => {
+      // debug('Inside the session middleware req.sessionID ' + req.sessionID)
+      let guid = uuidv4()
+      // debug('------------------ SESSION genid ' + guid)
+      return guid
+    },
+    cookie: config.cookieSettings,
+    name: 'EdEhr.cookie',
+    store: app.sessionStore,
+    secret: config.cookieSecret,
+    resave: false,
+    saveUninitialized: false
+  }))
+
+  apiTrace(app, config)
+
   app.use(metricMiddle)
 
   // const corsOptions = setupCors(config)
@@ -245,25 +240,5 @@ export function apiError (app, config) {
     res.status(status).json(json)
     // Returning a rendered html page is awkward for ajax clients. Return json and let the client decide how to format it.
     // res.render('server-errors/error',json)
-  }
-}
-
-// TODO can remove setupCors
-// eslint-disable-next-line no-unused-vars
-function setupCors (config) {
-  // From https://expressjs.com/en/resources/middleware/cors.html
-  const allowedList = [] // 'http://localhost:28000', 'http://localhost:27000']
-  allowedList.push(config.clientUrl)
-  allowedList.push(config.apiUrl)
-  debug('Setup CORS with allowedList:', allowedList)
-  return function (req, callback) {
-    let corsOptions
-    if (allowedList.indexOf(req.header('Origin')) !== -1) {
-      corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
-    } else {
-      console.log('CORS request rejected for req.path', req.path, 'req.header', req.header('Origin'))
-      corsOptions = { origin: false } // disable CORS for this request
-    }
-    callback(null, corsOptions) // callback expects two parameters: error and options
   }
 }

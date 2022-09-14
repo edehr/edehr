@@ -88,14 +88,13 @@ describe(_factorTypeName('making server calls'), () => {
   })
 
   it(_factorTypeName('Set demo data'), (done) => {
-    let assignment = {name: 'unittestassignment', externalId:'foobar'}
+    let assignment = {name: 'unittestassignment'}
     let activity = {resource_link_title: 'unittestActivity'}
     const data = Object.assign({},{ toolConsumerKey: demoData.toolConsumerKey, toolConsumerId: demoData.toolConsumerId}, demoData.personaList[0])
     const [ given, family ] = data.name.split(' ')
     let theKey = data.toolConsumerKey
     let userId = theKey.slice(-5) + family + '-' + given
     const ltiData = {
-      custom_assignment: assignment.externalId,
       context_id: 'Demo-Course',
       context_label: 'L-' + assignment.name,
       context_title: 'T-' + assignment.name,
@@ -115,7 +114,7 @@ describe(_factorTypeName('making server calls'), () => {
       oauth_version: 'x.y',
       roles: data.role,
       resource_link_title: activity.resource_link_title,
-      resource_link_id: assignment.externalId,
+      resource_link_id: activity.resource_link_title.replace(' ','_'),
       tool_consumer_instance_guid: theKey,
       tool_consumer_instance_name: 'Demo',
       tool_consumer_info_version: 'x',

@@ -38,3 +38,4 @@ server/src/config/admin-password\.txt
 temp/**
 server/lib/**
 server/build/**
+server/api-logs/**

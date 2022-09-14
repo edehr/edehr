@@ -3,7 +3,9 @@
     div(class="list-item-container")
       div(class="list-item-name") {{lObj.name}} &nbsp;
         a(@click="showMore = !showMore; $emit('selectLObj', lObj)") {{showMore ? 'show less' : 'show more'}}
-      learning-object-actions(class="list-item-actions", :learningObject='lObj')
+      div(class="list-item-actions")
+        ui-button(v-on:buttonClicked="selectLearningObject(lObj)", class='link-button') Connect to activity
+        ui-confirm(ref="confirmDialog", saveLabel="Connect", v-on:confirm="proceed(lObj)", html-body=true)
     div(v-if="showMore")
       div(class="details-row")
         div(class="details-name") {{text.DESCRIPTION}}
@@ -21,7 +23,7 @@
           div(v-if='actCount > 0 && lmsActivities') You can access these activities
           div(v-if='actCount > 0 && !lmsActivities') You can not access any activities
           div(v-for="act in lmsActivities", :key="act._id")
-            ui-link(:name="'lms-activity'", :query="{activityId: act._id}")
+            div
               fas-icon(class="fa", :icon="appIcons.activity")
               span &nbsp; {{act.resource_link_title}}
       div(class="details-row")
@@ -34,10 +36,9 @@
       div(class="details-row")
         div(class="details-name") {{text.SEED}}
         div(class="details-value")
-          ui-link(:name="'seed-view'", :query="{seedId: lObj.seedDataId}")
+          div
             fas-icon(class="fa", :icon="appIcons.seed")
             span &nbsp; {{ lObj.seedDataObj.name }}
-      //div(class="") {{truncate(lObj.description, 180)}}
 </template>
 
 <script>
@@ -47,8 +48,11 @@ import UiButton from '@/app/ui/UiButton.vue'
 import StoreHelper from '@/helpers/store-helper'
 import UiLink from '@/app/ui/UiLink'
 import { Text } from '@/helpers/ehr-text'
+import UiConfirm from '@/app/ui/UiConfirm'
+import { textToHtml} from '@/directives/text-to-html'
+
 export default {
-  components: { LearningObjectActions, UiLink,  UiButton, },
+  components: { UiConfirm, LearningObjectActions, UiLink,  UiButton, },
   data () {
     return {
       appIcons: APP_ICONS,
@@ -58,6 +62,7 @@ export default {
   },
   inject: ['isAdmin'],
   props: {
+    activity: { type: Object },
     lObj: { type: Object },
     showIds: { type: Boolean }
   },
@@ -71,8 +76,29 @@ export default {
     }
   },
   methods: {
+    selectLearningObject (lObj) {
+      const body = textToHtml('Confirm you wish to connect "' + lObj.name
+        + '"\nto the activity "' + this.activity.resource_link_title + '".' +
+        '\nThis can not be undone.')
+      const title ='Confirm connection'
+      this.$refs.confirmDialog.showDialog(title, body)
+    },
+    async proceed (lObj) {
+      const activity = this.activity._id
+      const payload = { activity: activity, assignment: lObj._id }
+      // console.log('establish link',payload)
+      await this.$store.dispatch('activityStore/linkAssignment', payload)
+      // take the instructor to activity page for the acitivity they just made a link to.
+      await this.$router.push({ name: 'lms-activity', query: { activityId: activity } })
+    },
     truncate (input, lim) {
       return input.length > lim ? `${input.substring(0, lim)}...` : input }
   }
 }
 </script>
+<style lang='scss' scoped>
+.link-button {
+  font-size: 1rem;
+  //font-weight: normal;
+}
+</style>

@@ -2,7 +2,6 @@ import BaseController from '../common/base'
 import Visit from '../visit/visit'
 import Activity from './activity'
 import {ok, fail} from '../common/utils'
-import { Text } from '../../config/text'
 const debug = require('debug')('server')
 const debugAC = false
 /*
@@ -33,7 +32,15 @@ export default class ActivityController extends BaseController {
       }
     })
   }
-
+  linkAssignment (id, assignmentId) {
+    debug('linkAssignment  activity:', id, 'assignment:', assignmentId)
+    return this.baseFindOneQuery(id).then(async (activity) => {
+      if (activity) {
+        activity.assignment = assignmentId
+        return activity.save()
+      }
+    })
+  }
   /**
    * Called by the LTI controller when a user comes to this system.
    *
@@ -42,7 +49,7 @@ export default class ActivityController extends BaseController {
    * @param assignment
    * @return {Promise<any>}
    */
-  updateCreateActivity (ltiData, toolConsumerId, assignment) {
+  updateCreateActivity (ltiData, toolConsumerId) {
     const _this = this
     if (debugAC) debug('updateCreateActivity search for existing activity ' + ltiData.resource_link_id)
     return new Promise(function (resolve, reject) {
@@ -51,17 +58,9 @@ export default class ActivityController extends BaseController {
         .then((activity) => {
           if (activity) {
             activity.lastDate = Date.now()
-            if (!activity.assignment.equals(assignment._id)) {
-            // console.log('was ', activity.assignment, 'seeking', assignment._id)
-              const msg = Text.CHANGE_ACTIVITY_ASSIGNMENT
-              if (debugAC) debug('updateCreateActivity ' + msg)
-              activity.assignment = assignment._id
-            }
-            if (debugAC) debug('updateCreateActivity update activity ' + activity._id)
             return _this._updateHelper(activity, data)
           } else {
             data.toolConsumer = toolConsumerId
-            data.assignment = assignment._id
             if (debugAC) debug('updateCreateActivity create activity')
             return _this._createHelper(activity, data)
           }
@@ -75,7 +74,7 @@ export default class ActivityController extends BaseController {
   listClassList (_id) {
     return Visit.find({ $and: [ {isStudent: true }, {activity: _id} ] })
       .populate('activityData', 'submitted evaluated assignmentData evaluationData')
-      .populate('assignment', 'externalId name description seedDataId ehrRoutePath')
+      .populate('assignment', 'name description seedDataId')
       .populate('user', 'givenName familyName fullName user_id')
       .select('userName lastVisitDate')
       .then((visits) => {
@@ -140,18 +139,26 @@ export default class ActivityController extends BaseController {
     })
 
     // PUT
+    // open and close toggle the submit state of all visit records for this activity.
     router.put('/close-activity/:key', (req, res) => {
       this
         .closeOpenActivity(req.params.key, 'close')
         .then(ok(res))
         .then(null, fail(res))
     })
-
     router.put('/open-activity/:key', (req, res) => {
       this
         .closeOpenActivity(req.params.key, 'open')
         .then(ok(res))
         .then(null, fail(res))
+    })
+    router.put('/link-assignment/:id/', (req, res) => {
+      let id = req.params.id
+      let assignmentId = req.body.assignmentId
+      debug('router path link-assignment req.params:', req.params, 'req.body:', req.body)
+      this.linkAssignment(id, assignmentId)
+        .then(ok(res))
+        .catch(fail(res))
     })
 
     return router

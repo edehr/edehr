@@ -24,10 +24,6 @@
             div(class="field-head") Tool Url
             div(class="") {{submitData.toolUrl}}
           div(class="config-data-block")
-            ui-info(title='Custom parameter', text='Custom parameter is required because it selects the learning object (assignment, simulation) on the EdEHR. It must have the form "assignment=<id of the EdEHR learning object>". This property can be confusing because its had various names. Currently, in the EdEHR, this identifies a learning object. In the past these were called Assignments. Some might call them Simulation or even Case Study. They are the object that is the simulation the student will interact with.')
-            div(class="field-head") Custom parameter
-            div(class="") assignment={{submitData.externalId}}
-          div(class="config-data-block")
             ui-info(title='Consumer key', text="This is the key needed to identify this LMS to the EdEHR. This key and its associated secret are used to identify this LMS to the EdEHR and the secret is used to encrypt the request. Both of these are arranged between the EdEHR and the LMS administrators.")
             div(class="field-head") Consumer key
             div(class="") {{submitData.consumerKey}}
@@ -88,7 +84,6 @@ export default {
       this.submitData = {
         resource_link_title: this.resource_link_title,
         resource_link_description: this.resource_link_description,
-        externalId: this.activity.learningObject.externalId,
         consumerKey: this.toolConsumerKey,
         consumerSecret: this.toolConsumerKey,
         toolUrl: StoreHelper.apiUrlGet() + 'api/launch_lti'
@@ -102,13 +97,13 @@ export default {
       const returnUrl = window.location.origin + this.$route.path // come back to this LMS page
       const sd = this.submitData
       const key = sd.consumerKey
-      const externalId = sd.externalId
+      let resource_link_id = sd.resource_link_title.toLowerCase().replace(' ','')
       const resource_link_title = sd.resource_link_title
       const resource_link_description = sd.resource_link_description
       const secret = sd.consumerSecret
       const name = this.demoPersonaName
       const role = this.demoPersonaRole
-      demoGoToEhr(key, secret, name, role, resource_link_title, resource_link_description, externalId, returnUrl)
+      demoGoToEhr(key, secret, name, role, resource_link_title, resource_link_description, resource_link_id, returnUrl)
     },
     showEditDialog: function (event) {
       this.$refs.theDialog.showDialog(this.submitData, () => {

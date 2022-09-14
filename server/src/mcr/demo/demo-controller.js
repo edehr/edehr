@@ -47,12 +47,11 @@ export default class DemoController {
   async addSample (activity, toolC) {
     const theSeed = activity.seedDef
     const assignmentData = activity.learningObject
-    const data = theSeed
-    if (debugDC) debug('DemoController create', data.name)
+    if (debugDC) debug('DemoController create', theSeed.name)
     const aSeed = Object.assign({}, seedTemplate, { toolConsumer: toolC._id })
-    aSeed.name = data.name
-    aSeed.description = data.description
-    aSeed.ehrData = data.ehrData
+    aSeed.name = theSeed.name
+    aSeed.description = theSeed.description
+    aSeed.ehrData = theSeed.ehrData
     let seed = await this.comCon.seedController.create(aSeed)
     const ass = Object.assign({}, assignmentData, { toolConsumer: toolC })
     if (debugDC) debug('DemoController create assignment', ass.title)

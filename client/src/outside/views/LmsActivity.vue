@@ -111,8 +111,9 @@ export default {
       const fromStore = this.$store.getters['activityStore/activityId']
       const activityId = fromRoute ? fromRoute : fromStore
       const activity = await this.$store.dispatch('activityStore/loadAsCurrentActivity', activityId)
-      // await StoreHelper.loadAssignment(activity.assignment)
-      await this.$store.dispatch('assignmentStore/load', activity.assignment)
+      if (activity.assignment) {
+        await this.$store.dispatch('assignmentStore/load', activity.assignment)
+      }
       await this.$store.dispatch('instructor/loadClassList')
 
     },

@@ -1,6 +1,6 @@
 <template lang="pug">
   div(class="context-header")
-    ehr-context-instructor(v-if="showInstructor")
+    student-eval-control(v-if="showInstructor", inEhr=true)
     ehr-context-student(v-if="showStudent")
     div(v-else-if="showDeveloper", class='seed-context')
       div(class="item-seed-name") Seed name:
@@ -12,12 +12,12 @@
 
 <script>
 import AppSeedDeveloperDropdown from '@/app/components/AppSeedDeveloperDropdown'
-import EhrContextInstructor from '@/inside/components/EhrContextInstructor'
 import EhrContextStudent from '@/inside/components/EhrContextStudent'
 import StoreHelper from '../../helpers/store-helper'
 import EhrSimTime from '@/inside/components/EhrSimTime'
+import StudentEvalControl from '@/outside/components/lms-activity/StudentEvalControl'
 export default {
-  components: { EhrSimTime, AppSeedDeveloperDropdown, EhrContextInstructor, EhrContextStudent },
+  components: { StudentEvalControl, EhrSimTime, AppSeedDeveloperDropdown, EhrContextStudent },
   computed: {
     seedInfo () {
       return StoreHelper.getSeedContent()

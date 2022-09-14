@@ -1,6 +1,6 @@
 <template lang="pug">
   div(class="action-section")
-    div
+    div(v-if="!hideEvalRaw")
       ui-button(
         v-on:buttonClicked="goToEvaluation()",
         :disabled="!isSubmitted"
@@ -8,7 +8,7 @@
       )
         fas-icon(class='fa', :icon='appIcons.rawEhr')
         span(v-if="showLabels") &nbsp; {{text.EVALUATE_BL}}
-    div
+    div(v-if="!hideEvalEhr")
       ui-button(
         v-on:buttonClicked="goToEhr()",
         :disabled="!isSubmitted",
@@ -51,7 +51,9 @@ export default {
     }
   },
   props: {
-    studentVisit: {type: Object}
+    studentVisit: {type: Object},
+    hideEvalEhr: { type: Boolean, default: false },
+    hideEvalRaw: { type: Boolean, default: false }
   },
   computed: {
     activityData () { return this.studentVisit.activityData},
