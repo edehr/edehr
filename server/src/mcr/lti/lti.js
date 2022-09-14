@@ -235,8 +235,8 @@ export default class LTIController {
   async updateToolConsumer (req) {
     const ltiData = req.ltiData
     const toolConsumer = req.toolConsumer
-    debug('updateToolConsumer toolConsumer ', toolConsumer)
-    debug('updateToolConsumer vs ltiData ', ltiData)
+    if (debugFine) debug('updateToolConsumer toolConsumer ', toolConsumer)
+    if (debugFine) debug('updateToolConsumer vs ltiData ', ltiData)
     if (
       toolConsumer.tool_consumer_instance_guid !== ltiData.tool_consumer_instance_guid ||
       toolConsumer.tool_consumer_instance_name !== ltiData.tool_consumer_instance_name ||
@@ -244,7 +244,8 @@ export default class LTIController {
         ltiData.tool_consumer_info_product_family_code ||
       toolConsumer.tool_consumer_instance_description !== ltiData.tool_consumer_instance_description
     ) {
-      debug('updateToolConsumer starting with ' + toolConsumer)
+      debug('updateToolConsumer toolConsumer ')
+      if (debugFine) debug('updateToolConsumer starting with ' + toolConsumer)
       toolConsumer.lti_version = ltiData.lti_version
       toolConsumer.tool_consumer_info_product_family_code =
         ltiData.tool_consumer_info_product_family_code
@@ -258,10 +259,10 @@ export default class LTIController {
       if (toolConsumer.is_primary === undefined) {
         toolConsumer.is_primary= toolConsumer.tool_consumer_info_product_family_code === DEMO_CONSUMER_FAMILY_CODE
       }
-      debug('updateToolConsumer update tool consumer record ', toolConsumer)
+      if (debugFine) debug('updateToolConsumer update tool consumer record ', toolConsumer)
       await toolConsumer.save()
       req.toolConsumer = await this.consumerController.findOneConsumerByKey(toolConsumer.oauth_consumer_key)
-      debug('updateToolConsumer update req ', req.toolConsumer)
+      if (debugFine) debug('updateToolConsumer update req ', req.toolConsumer)
     } else {
       if (debugFine) debug('tool consumer is up to date ')
       return Promise.resolve()
@@ -363,7 +364,7 @@ export default class LTIController {
         .then((req) => {
           let url = req.ltiNextUrl
           const refreshToken = req.refreshToken
-          debug(`LTI ready to redirect to the ehr "${url}"`)
+          debug('LTI ready to redirect to the ehr')
           // When the demo-controller redirects to LTI and this LTI controller uses redirect (note that is a
           // POST sending a POST that would redirect) the redict results in a 404 error.
           // So, instead return to the demo controller enough information to get into the ehr

@@ -108,7 +108,7 @@ export default class AuthController {
       try {
         const result = this.authUtil.validateToken(refreshToken)
         const { token } = result
-        debug('tokenValidated >> ', token)
+        // debug('tokenValidated >> ', token)
         res.status(200).json({token})
       } catch(err) {
         logError('validate token threw >> ', err.message)

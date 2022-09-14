@@ -13,7 +13,7 @@ import pluralize from 'pluralize'
 
 const debug = require('debug')('server')
 const logError = require('debug')('error')
-const debugAC = true
+const debugAC = false
 
 const sd = new SeedDataController()
 

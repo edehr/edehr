@@ -28,6 +28,7 @@ import SeedDataController from '../mcr/seed/seedData-controller'
 import UserController from '../mcr/user/user-controller.js'
 import VisitController from '../mcr/visit/visit-controller'
 import UtilController from '../mcr/util/util-controller'
+import { apiTrace } from './trace-api'
 // Sessions and session cookies
 // express-session stores session data here on the server and only puts session id in the cookie
 const session = require('express-session')
@@ -48,28 +49,23 @@ export function apiMiddle (app, config) {
   }
   app.sessionStore = new FileStore(fileStoreOptions)
 
-  app.use(
-    session({
-      genid: req => {
-        // debug('Inside the session middleware req.sessionID ' + req.sessionID)
-        let guid = uuidv4()
-        // debug('------------------ SESSION genid ' + guid)
-        return guid
-      },
-      cookie: config.cookieSettings,
-      name: 'EdEhr.cookie',
-      store: app.sessionStore,
-      secret: config.cookieSecret,
-      resave: false,
-      saveUninitialized: false
-    })
-  )
-  if (config.traceApiCalls) {
-    app.use(function (req, res, next) {
-      debug(moment().format('YYYY/MM/DD, h:mm:ss.SSS a'), req.method, ' Url:', req.url)
-      next()
-    })
-  }
+  app.use(session({
+    genid: req => {
+      // debug('Inside the session middleware req.sessionID ' + req.sessionID)
+      let guid = uuidv4()
+      // debug('------------------ SESSION genid ' + guid)
+      return guid
+    },
+    cookie: config.cookieSettings,
+    name: 'EdEhr.cookie',
+    store: app.sessionStore,
+    secret: config.cookieSecret,
+    resave: false,
+    saveUninitialized: false
+  }))
+
+  apiTrace(app, config)
+
   app.use(metricMiddle)
 
   // const corsOptions = setupCors(config)
