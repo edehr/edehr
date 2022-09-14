@@ -59,6 +59,8 @@ export default {
           lastUpdateDate: new Date()
         })
       delete seed._id
+      // if user duplicated the default seed we need to make sure the copy isn't kept as the default.
+      seed.isDefault = false
       await StoreHelper.createSeed(this, seed)
         .then( () => this.$emit('newSeed' ))
         .catch(error => {
