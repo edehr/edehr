@@ -3,10 +3,9 @@ const mongoose = require('mongoose')
 import Helper from '../common/test-helper'
 const helper = new Helper()
 import Model from './activity-data'
+import { logError} from '../../helpers/log-error'
 
 const typeName = 'ActivityData'
-
-const logError = require('debug')('error')
 
 /* global describe it */
 describe(`${typeName} mongoose schema testing`, function () {

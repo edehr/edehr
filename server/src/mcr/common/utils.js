@@ -1,4 +1,4 @@
-const logError = require('debug')('error')
+import { logError} from '../../helpers/log-error'
 /*
 the ok and fail functions are used in route controllers. See for example base.js
 */

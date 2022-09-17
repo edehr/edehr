@@ -1,7 +1,6 @@
 import { Router } from 'express'
 const HMAC_SHA1 = require('ims-lti/src/hmac-sha1')
-
-const logError = require('debug')('error')
+import { logError} from '../../helpers/log-error'
 const debug = require('debug')('server')
 
 export default class PlaygroundController {

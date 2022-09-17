@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 import Helper from '../common/test-helper'
 const helper = new Helper()
 import Model from './activity'
-const logError = require('debug')('error')
+import { logError} from '../../helpers/log-error'
 
 const typeName = 'Activity'
 // const collectionName = 'activties'

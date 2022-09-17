@@ -2,9 +2,9 @@ import { Router } from 'express'
 import { getAdminPassword, generateAdminPassword } from '../../helpers/admin'
 import { adminLimiter } from '../../helpers/middleware'
 import { Text } from '../../config/text'
-
+import { logError} from '../../helpers/log-error'
 const debug = require('debug')('server')
-const logError = require('debug')('error')
+
 let debugAC = true
 
 export default class AuthController {
@@ -111,7 +111,7 @@ export default class AuthController {
         // debug('tokenValidated >> ', token)
         res.status(200).json({token})
       } catch(err) {
-        logError('validate token threw >> ', err.message)
+        debug('A user token expired ')
         // This arguably returns 401 in this case. As the validateToken can throw if the token has expired,
         // which is a use case of the refresh token.
         res.status(401).send(Text.EXPIRED_TOKEN)

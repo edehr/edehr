@@ -6,9 +6,9 @@ import fs  from 'fs'
 import filesize from 'filesize'
 // import filenamify from 'filenamify'
 import Consumer from '../consumer/consumer'
-
+import { logError} from '../../helpers/log-error'
 const debug = require('debug')('server')
-const logError = require('debug')('error')
+
 //export for testing
 export const formElementNameForFileUpload = 'ehrFile' // client to use this name for the file input element
 

@@ -7,8 +7,8 @@ import { NotAllowedError } from '../common/errors'
 import {ok, fail} from '../common/utils'
 import { updateAllVisitTime, updateEhrDataMeta } from '../../ehr-definitions/ehr-def-utils'
 import EhrDefs from '../../ehr-definitions/ehr-page-defs'
+import { logError} from '../../helpers/log-error'
 const debug = require('debug')('server')
-const logError = require('debug')('error')
 
 export default class SeedDataController extends BaseController {
   constructor () {
@@ -43,7 +43,7 @@ export default class SeedDataController extends BaseController {
     // place date into the ehr data's page element
     value.lastUpdate = moment().format()
     debug(`SeedData updateSeedEhrProperty ${id} ehrData[${data.propertyName}] with data:`)
-    debug('updateSeedEhrProperty ' + JSON.stringify(value))
+    // debug('updateSeedEhrProperty ' + JSON.stringify(value))
     return this.baseFindOneQuery(id).then(model => {
       debug('updateSeedEhrProperty search ' + model ? 'ok' : 'fail')
       if (model) {

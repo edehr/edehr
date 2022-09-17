@@ -2,13 +2,13 @@ import Consumer from './consumer'
 import EhrApp from '../../server/app'
 import Helper from '../common/test-helper'
 import applicationConfiguration from '../../config/config'
+import { logError} from '../../helpers/log-error'
 const configuration = applicationConfiguration('test')
 const BASE = '/consumers'
 const ehrApp = new EhrApp()
 const helper = new Helper()
 const mongoose = require('mongoose')
 const should = require('should')
-const logError = require('debug')('error')
 
 const tokenData = Helper.sampleTokenData()
 const adminToken = Helper.generateToken(tokenData, true)

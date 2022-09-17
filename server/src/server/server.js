@@ -3,7 +3,7 @@ import EhrApp from './app.js'
 import applicationConfiguration from '../config/config.js'
 const configuration = applicationConfiguration(process.env.NODE_ENV)
 
-const ehrApp = new EhrApp()
+const ehrApp = new EhrApp(configuration)
 ehrApp.setup(configuration)
   .then(() => {
     const app = ehrApp.application

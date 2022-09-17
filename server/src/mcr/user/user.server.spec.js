@@ -2,8 +2,8 @@ const should = require('should')
 const mongoose = require('mongoose')
 import User from './user'
 import Helper from '../common/test-helper'
+import { logError} from '../../helpers/log-error'
 const helper = new Helper()
-const logError = require('debug')('error')
 console.log('USS: mongoose.connection.readyState', mongoose.connection.readyState)
 
 /* global describe it */

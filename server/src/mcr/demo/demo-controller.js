@@ -11,7 +11,7 @@ const {ltiVersions} = require('../../mcr/lti/lti-defs')
 const HMAC_SHA1 = require('ims-lti/src/hmac-sha1')
 const debugDC = true
 const debug = require('debug')('server')
-const logError = require('debug')('error')
+import { logError} from '../../helpers/log-error'
 
 // match the same version as in the client side demo-store-helper.js
 export const   DEMO_CONSUMER_FAMILY_CODE = 'EdEHR Demo'

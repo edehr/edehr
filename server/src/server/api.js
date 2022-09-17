@@ -21,7 +21,7 @@ import FeedbackController from '../mcr/feedback/feedback-controller'
 import FilesController from '../mcr/files/files-controller'
 import LookaheadController from '../mcr/lookahead/lookahead-controller'
 import LTIController from '../mcr/lti/lti'
-import MetricController, { metricMiddle } from '../mcr/metric/metric-controller'
+import MetricController  from '../mcr/metric/metric-controller'
 import PlaygroundController from '../mcr/playground/playground-controller'
 import SeedDataController from '../mcr/seed/seedData-controller'
 import UserController from '../mcr/user/user-controller.js'
@@ -36,7 +36,7 @@ const FileStore = require('session-file-store')(session)
 import { v4 as uuidv4 } from 'uuid'
 
 const debug = require('debug')('server')
-const logError = require('debug')('error')
+import { logError} from '../helpers/log-error'
 
 export function apiMiddle (app, config) {
   const fileStoreOptions = {}
@@ -64,8 +64,6 @@ export function apiMiddle (app, config) {
   }))
 
   apiTrace(app, config)
-
-  app.use(metricMiddle)
 
   // const corsOptions = setupCors(config)
   const corsOptions = {
@@ -235,10 +233,10 @@ export function apiError (app, config) {
     // debug('API errorHandler ', err.message, err.status, err.errorData, res.status)
     let status = err.status || 500
     let errorData = err.errorData || {}
+    // The Sentry error id is attached to `res.sentry` if sentry is active
+    errorData.sentry = res.sentry
     let json =  {message: err.message, status: status, errorData: JSON.stringify(errorData)}
     debug('API errorHandler json', json)
     res.status(status).json(json)
-    // Returning a rendered html page is awkward for ajax clients. Return json and let the client decide how to format it.
-    // res.render('server-errors/error',json)
   }
 }

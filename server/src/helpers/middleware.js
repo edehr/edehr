@@ -2,7 +2,7 @@ import { Text } from '../config/text'
 
 const rateLimit = require('express-rate-limit')
 const debug = require('debug')('server')
-const logError = require('debug')('error')
+import { logError} from '../helpers/log-error'
 
 const debugMW = false
 
@@ -78,5 +78,11 @@ export const adminLimiter = rateLimit({
 export const demoLimiter = rateLimit({
   windowMs: 10 * 60 * 1000,
   max: DEMO_MAX_REQUEST_LIMIT,
+  message: Text.TOO_MANY_REQUESTS_ERROR
+})
+
+export const sentryDebugLimiter = rateLimit({
+  windowMs: 10 * 60 * 1000,
+  max: 5,
   message: Text.TOO_MANY_REQUESTS_ERROR
 })
