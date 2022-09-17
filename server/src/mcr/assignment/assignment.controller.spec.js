@@ -3,13 +3,12 @@ const mongoose = require('mongoose')
 import AssignmentController from './assignment-controller'
 import Helper from '../common/test-helper'
 import applicationConfiguration from '../../config/config'
+import { logError} from '../../helpers/log-error'
 const configuration = applicationConfiguration('test')
 const helper = new Helper()
 
 const typeName = 'AssignmentController'
 const modelName = 'Assignment'
-
-const logError = require('debug')('error')
 
 function makeAssignmentController () {
   return new AssignmentController(configuration)

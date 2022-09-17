@@ -36,7 +36,7 @@ const FileStore = require('session-file-store')(session)
 import { v4 as uuidv4 } from 'uuid'
 
 const debug = require('debug')('server')
-const logError = require('debug')('error')
+import { logError} from '../helpers/log-error'
 
 export function apiMiddle (app, config) {
   const fileStoreOptions = {}
@@ -235,10 +235,10 @@ export function apiError (app, config) {
     // debug('API errorHandler ', err.message, err.status, err.errorData, res.status)
     let status = err.status || 500
     let errorData = err.errorData || {}
+    // The Sentry error id is attached to `res.sentry` if sentry is active
+    errorData.sentry = res.sentry
     let json =  {message: err.message, status: status, errorData: JSON.stringify(errorData)}
     debug('API errorHandler json', json)
     res.status(status).json(json)
-    // Returning a rendered html page is awkward for ajax clients. Return json and let the client decide how to format it.
-    // res.render('server-errors/error',json)
   }
 }

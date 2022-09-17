@@ -12,7 +12,7 @@ import { isAdmin } from '../../helpers/middleware'
 import pluralize from 'pluralize'
 
 const debug = require('debug')('server')
-const logError = require('debug')('error')
+import { logError} from '../../helpers/log-error'
 const debugAC = false
 
 const sd = new SeedDataController()

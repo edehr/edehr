@@ -2,7 +2,8 @@ import  *  as  winston  from  'winston'
 import  'winston-daily-rotate-file'
 import path from 'path'
 
-const logError = require('debug')('error')
+import { logError } from '../helpers/log-error'
+
 const responseTime = require('response-time')
 const uaParser = require('ua-parser-js')
 const trace = require('debug')('trace')
@@ -32,7 +33,8 @@ export function apiTrace (app, config) {
       if (req.method !== 'OPTIONS') {
         const ts = Date.now()
         const tsStr = (new Date(ts)).toISOString()
-        const key = (req.method + req.baseUrl).toLowerCase()
+        const url = req.baseUrl || req.url
+        const key = (req.method + url).toLowerCase()
           .replace(/[:.]/g, '')
           .replace(/\//g, '_')
         const elapsedMs = Math.round(time * 10) / 10
@@ -42,7 +44,8 @@ export function apiTrace (app, config) {
           elapsedMs: elapsedMs,
           status: res.statusCode,
         }
-        rec.origin = req.headers['origin']
+        let origin = req.headers['origin'] || req.url
+        rec.origin = origin
         if (req.method === 'GET') {
           rec.params = isNotEmpty(req.params) ? req.params : undefined
           rec.query = isNotEmpty(req.query) ? req.query : undefined

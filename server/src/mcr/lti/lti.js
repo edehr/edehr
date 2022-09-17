@@ -4,10 +4,10 @@ import { ParameterError, AssignmentMismatchError, SystemError } from '../common/
 import { Text } from '../../config/text'
 import { ltiVersions, LTI_BASIC } from './lti-defs'
 import { DEMO_CONSUMER_FAMILY_CODE} from '../demo/demo-controller'
+import { logError} from '../../helpers/log-error'
 
 const debug = require('debug')('server')
 const debugFine = false
-const logError = require('debug')('error')
 
 const CustomStrategy = require('passport-custom')
 const lti = require('ims-lti')

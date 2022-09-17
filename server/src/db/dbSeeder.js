@@ -4,7 +4,7 @@ import dbCreateInitalSimMetaData from './dbSimulationMeta'
 import dbConvertTimeValues from './dbSimulationTime'
 const IntegrationModel = new IntegrationController()
 const debug = require('debug')('server')
-const logError = require('debug')('error')
+import { logError} from '../helpers/log-error'
 import dropSchemas from './dropschemas'
 
 // =========================================================================

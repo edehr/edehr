@@ -3,8 +3,8 @@ const mongoose = require('mongoose')
 import Helper from '../common/test-helper'
 const helper = new Helper()
 import VisitController from './visit-controller'
+import { logError} from '../../helpers/log-error'
 // import Model from '../../models/user'
-const logError = require('debug')('error')
 const typeName = 'VisitController'
 // const modelName = 'Visit'
 

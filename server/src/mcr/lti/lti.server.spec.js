@@ -13,10 +13,11 @@ import SeedDataController from '../seed/seedData-controller'
 import LTIController from './lti'
 import Helper from '../common/test-helper'
 import applicationConfiguration from '../../config/config'
+import { logError} from '../../helpers/log-error'
 const configuration = applicationConfiguration('test')
 
 const debug = require('debug')('testing')
-const logError = require('debug')('error')
+
 const helper = new Helper()
 const act = new ActivityController()
 const as = new AssignmentController(configuration)

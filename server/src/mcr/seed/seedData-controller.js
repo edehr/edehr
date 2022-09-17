@@ -7,8 +7,8 @@ import { NotAllowedError } from '../common/errors'
 import {ok, fail} from '../common/utils'
 import { updateAllVisitTime, updateEhrDataMeta } from '../../ehr-definitions/ehr-def-utils'
 import EhrDefs from '../../ehr-definitions/ehr-page-defs'
+import { logError} from '../../helpers/log-error'
 const debug = require('debug')('server')
-const logError = require('debug')('error')
 
 export default class SeedDataController extends BaseController {
   constructor () {

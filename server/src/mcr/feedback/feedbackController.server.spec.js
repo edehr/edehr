@@ -3,12 +3,11 @@ const mongoose = require('mongoose')
 import FeedbackController from './feedback-controller'
 import Helper from '../common/test-helper'
 import applicationConfiguration from '../../config/config'
+import { logError} from '../../helpers/log-error'
 const configuration = applicationConfiguration('test')
 const helper = new Helper()
 const typeName = 'FeedbackController'
 const modelName = 'Feedback'
-
-const logError = require('debug')('error')
 
 function makeController () {
   return new FeedbackController(configuration)

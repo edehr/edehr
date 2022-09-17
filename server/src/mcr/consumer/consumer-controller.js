@@ -14,7 +14,7 @@ import User from '../user/user'
 const ObjectID = require('mongodb').ObjectID
 const debugCC = false
 const debug = require('debug')('server')
-const logError = require('debug')('error')
+import { logError} from '../../helpers/log-error'
 
 export default class ConsumerController extends BaseController {
   constructor () {

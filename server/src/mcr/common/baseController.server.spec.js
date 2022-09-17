@@ -4,13 +4,13 @@ const ObjectID = require('mongodb').ObjectId
 import BaseController from './base'
 import Model from '../seed/seed-data'
 import Helper from '../common/test-helper'
+import { logError} from '../../helpers/log-error'
 const helper = new Helper()
 
 const typeName = 'BaseController'
 const modelName = 'Seed'
 
 const debug = require('debug')('server')
-const logError = require('debug')('error')
 // Use following to leave results in test database for inspection
 // helper.setClear(false)
 

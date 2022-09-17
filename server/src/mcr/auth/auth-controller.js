@@ -2,9 +2,9 @@ import { Router } from 'express'
 import { getAdminPassword, generateAdminPassword } from '../../helpers/admin'
 import { adminLimiter } from '../../helpers/middleware'
 import { Text } from '../../config/text'
-
+import { logError} from '../../helpers/log-error'
 const debug = require('debug')('server')
-const logError = require('debug')('error')
+
 let debugAC = true
 
 export default class AuthController {

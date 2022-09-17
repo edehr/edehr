@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 import { getDbUri } from '../config/config'
 const debug = require('debug')('server')
-const logError = require('debug')('error')
+import { logError} from '../helpers/log-error'
 
 export default function (config) {
   return new Promise((resolve, reject) => {

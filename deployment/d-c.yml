@@ -47,6 +47,7 @@ services:
       - PROXY_PASS_HOST
       - SCHEME
       - SERVER_PORT
+      - SENTRY_DSN
       - START_ARG
     depends_on:
      - mongo_service

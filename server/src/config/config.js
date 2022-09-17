@@ -2,12 +2,21 @@
 import { Text } from './text'
 import moment from 'moment'
 import { version } from 'process'
-
+import { logError} from '../helpers/log-error'
 const debug = require('debug')('server')
 const details = require('debug')('details')
-const logError = require('debug')('error')
 
-debug(`Node Version: ${version}`)
+if (version.includes('v14')) {
+  debug(`Node Version: ${version}`)
+} else {
+  logError('Unexpected version of Node is active ', version)
+}
+
+if ( process.env.SENTRY_DSN ) {
+  debug('SENTRY DSN', process.env.SENTRY_DSN)
+} else {
+  debug('SENTRY NOT ACTIVE')
+}
 
 const DEFAULT_COOKIE_SECRET = 'this is the secret for the session cookie'
 
@@ -61,7 +70,8 @@ function defaultConfig (env) {
     },
     sessionTTL: process.env.TIME_TO_LIVE || 3600,
     sessionPath: process.env.SESSION_DIR || '.session',
-    favicon: process.env.FAVICON || 'favicon.ico'
+    favicon: process.env.FAVICON || 'favicon.ico',
+    sentryDsn: process.env.SENTRY_DSN
   }
 }
 
@@ -190,3 +200,5 @@ export default function applicationConfiguration (env) {
   details('configuration %s', asStringForLog(cfg))
   return cfg
 }
+
+export const configuration = applicationConfiguration(process.env.NODE_ENV)

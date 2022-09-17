@@ -10,9 +10,8 @@ import Visit from '../visit/visit'
 import { Text } from '../../config/text'
 import rateLimit from 'express-rate-limit'
 import { ParameterError } from '../common/errors'
-
+import { logError} from '../../helpers/log-error'
 const debug = require('debug')('server')
-const logError = require('debug')('error')
 
 const MODELS = [Activity, ActivityData, Assignment, SeedData, User, Visit]
 const MODEL_NAMES = ['Activity', 'ActivityData', 'Assignment', 'SeedData', 'User', 'Visit']
