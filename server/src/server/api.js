@@ -21,7 +21,7 @@ import FeedbackController from '../mcr/feedback/feedback-controller'
 import FilesController from '../mcr/files/files-controller'
 import LookaheadController from '../mcr/lookahead/lookahead-controller'
 import LTIController from '../mcr/lti/lti'
-import MetricController, { metricMiddle } from '../mcr/metric/metric-controller'
+import MetricController  from '../mcr/metric/metric-controller'
 import PlaygroundController from '../mcr/playground/playground-controller'
 import SeedDataController from '../mcr/seed/seedData-controller'
 import UserController from '../mcr/user/user-controller.js'
@@ -64,8 +64,6 @@ export function apiMiddle (app, config) {
   }))
 
   apiTrace(app, config)
-
-  app.use(metricMiddle)
 
   // const corsOptions = setupCors(config)
   const corsOptions = {
