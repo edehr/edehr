@@ -8,7 +8,6 @@ const metricData = {
 
 export default class MetricController {
   constructor (config) {
-    console.log('MetricController', config)
     metricData.host = config.apiHost
     metricData.version = config.appVersion
     metricData.appTitle = config.appTitle

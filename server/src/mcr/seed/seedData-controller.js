@@ -43,7 +43,7 @@ export default class SeedDataController extends BaseController {
     // place date into the ehr data's page element
     value.lastUpdate = moment().format()
     debug(`SeedData updateSeedEhrProperty ${id} ehrData[${data.propertyName}] with data:`)
-    debug('updateSeedEhrProperty ' + JSON.stringify(value))
+    // debug('updateSeedEhrProperty ' + JSON.stringify(value))
     return this.baseFindOneQuery(id).then(model => {
       debug('updateSeedEhrProperty search ' + model ? 'ok' : 'fail')
       if (model) {

@@ -65,10 +65,13 @@ function composeData (req, statusCode, time) {
   rec.origin = req.headers['origin'] || req.url
   rec.params = isNotEmpty(req.params) ? req.params : undefined
   rec.query = isNotEmpty(req.query) ? req.query : undefined
-  if (isNotEmpty(req.body)) {
+
+  // do not send student EHR data to the trace log
+  if (key !== 'put_api_seed-data' && isNotEmpty(req.body)) {
     rec.body = Object.assign({}, req.body)
     // console.log('-=-=-=-=-=-=-=-=-')
     // console.log(JSON.stringify(rec.body,null,2))
+    // do not send sensitive information to the trace log
     delete rec.body.refreshToken
     delete rec.body.oauth_consumer_secret
     delete rec.body.oauth_signature
