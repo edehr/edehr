@@ -11,14 +11,25 @@ import { logError } from '../helpers/log-error'
 const debug = require('debug')('server')
 const helmet = require('helmet')
 
+function sentryEnvironment (config) {
+  let url = config.domain
+  if (url.includes('localhost')) {
+    url = 'localhost'
+  } else {
+    url = url.replace(/https+:\/\//,'').replace(/\./g,'_')
+  }
+  return url
+}
+
 export default class EhrApp {
   constructor (config) {
     const app = this.app = express()
     if (config.sentryDsn) {
-      debug('Sentry set environment to ', config.domain)
+      const sentryEnv = sentryEnvironment (config)
+      debug('Sentry set environment to ', sentryEnv)
       Sentry.init({
         dsn: config.sentryDsn,
-        environment: config.domain,
+        environment: sentryEnv,
         integrations: [
           // enable HTTP calls tracing
           new Sentry.Integrations.Http({ tracing: true }),
