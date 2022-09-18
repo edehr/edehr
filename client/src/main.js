@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
+import * as Sentry from '@sentry/vue'
+import { BrowserTracing } from '@sentry/tracing'
 import router from './router'
 import store from './store'
 import { initializeStore } from './store'
@@ -32,6 +34,22 @@ Vue.component('inside-layout', insideLayout)
 router.afterEach((to, from) => {
   // console.log('main.js hook on page changes')
   PageController.onPageChange(to)
+})
+
+Sentry.init({
+  Vue,
+  dsn: 'https://c2ed6617d7bd4518ae5e0cea8827cb9d@o1411884.ingest.sentry.io/6750589',
+  integrations: [
+    new BrowserTracing({
+      routingInstrumentation: Sentry.vueRouterInstrumentation(router),
+      // default value of tracingOrigins is ['localhost', /^\//].
+      tracingOrigins: ['localhost', 'edehr.org', /^\//],
+    }),
+  ],
+  // Set tracesSampleRate to 1.0 to capture 100%
+  // of transactions for performance monitoring.
+  // We recommend adjusting this value in production
+  tracesSampleRate: 1.0,
 })
 
 /*
