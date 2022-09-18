@@ -4,7 +4,6 @@ import moment from 'moment'
 import { version } from 'process'
 import { logError} from '../helpers/log-error'
 const debug = require('debug')('server')
-const details = require('debug')('details')
 
 if (version.includes('v14')) {
   debug(`Node Version: ${version}`)
@@ -71,7 +70,7 @@ function defaultConfig (env) {
     sessionTTL: process.env.TIME_TO_LIVE || 3600,
     sessionPath: process.env.SESSION_DIR || '.session',
     favicon: process.env.FAVICON || 'favicon.ico',
-    sentryDsn: process.env.SENTRY_DSN
+    sentryDsn: process.env.SENTRY_DSN || 'https://cab9cdff46224d679f1cb5d9a24c643d@o1411884.ingest.sentry.io/6756187',
   }
 }
 
@@ -185,10 +184,11 @@ function asStringForLog (configuration) {
   tmp.database.password = 'sanitizedFor2'
   tmp.cookieSecret = 'sanitized cookie secret'
   tmp.authTokenSecret = 'sanitized auth token'
+  tmp.adminPassword = 'sanitized'
   return JSON.stringify(tmp, null, 2)
 }
 
-export default function applicationConfiguration (env) {
+function applicationConfiguration (env) {
   validateEnvironmentVariable(env)
   debug('set up config for this environment:', env)
   const dCfg = defaultConfig(env)
@@ -197,7 +197,7 @@ export default function applicationConfiguration (env) {
       : developConfig(dCfg)
   cfg.clientUrl = composeUrl(cfg.scheme, cfg.domain, cfg.clientPort)
   cfg.apiUrl = composeUrl(cfg.scheme, cfg.apiHost, cfg.apiPort, 'api')
-  details('configuration %s', asStringForLog(cfg))
+  debug('configuration %s', asStringForLog(cfg))
   return cfg
 }
 

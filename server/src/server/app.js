@@ -2,7 +2,6 @@ import express from 'express'
 import * as Sentry from '@sentry/node'
 import * as Tracing from '@sentry/tracing'
 import { CaptureConsole as CaptureConsoleIntegration } from '@sentry/integrations'
-
 import bodyParser from 'body-parser'
 import db from './db'
 import { apiMiddle, apiError } from './api.js'
@@ -16,6 +15,7 @@ export default class EhrApp {
   constructor (config) {
     const app = this.app = express()
     if (config.sentryDsn) {
+      debug('Sentry set environment to ', config.domain)
       Sentry.init({
         dsn: config.sentryDsn,
         environment: config.domain,
