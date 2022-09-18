@@ -81,6 +81,16 @@ class StoreHelperWorker {
     // console.log('apiUrlGet', url)
     return url
   }
+  sentryEnvironment () {
+    let url = window.location.origin
+    if (url.includes('localhost')) {
+      url = 'localhost'
+    } else {
+      url = url.replace(/https+:\/\//,'').replace(/\./g,'_')
+    }
+    console.log('sentryEnvironment', url)
+    return url
+  }
 
   isReadOnlyInstructor () { return this._getVisitProperty('isReadOnlyInstructor')}
   setIsReadOnlyInstructor (isReadonly = false) { return store.commit('visit/setIsReadOnlyInstructor', isReadonly)}

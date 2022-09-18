@@ -16,6 +16,7 @@ import PageController from './helpers/page-controller'
 Import the global style sheet
  */
 import './scss/styles.scss'
+import StoreHelper from '@/helpers/store-helper'
 
 
 
@@ -39,7 +40,7 @@ router.afterEach((to, from) => {
 Sentry.init({
   Vue,
   dsn: 'https://c2ed6617d7bd4518ae5e0cea8827cb9d@o1411884.ingest.sentry.io/6750589',
-  environment: process.env.VUE_APP_ROOT_API,
+  environment: StoreHelper.sentryEnvironment(),
   integrations: [
     new BrowserTracing({
       routingInstrumentation: Sentry.vueRouterInstrumentation(router),
