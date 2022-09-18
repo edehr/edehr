@@ -39,6 +39,7 @@ router.afterEach((to, from) => {
 Sentry.init({
   Vue,
   dsn: 'https://c2ed6617d7bd4518ae5e0cea8827cb9d@o1411884.ingest.sentry.io/6750589',
+  environment: process.env.VUE_APP_ROOT_API,
   integrations: [
     new BrowserTracing({
       routingInstrumentation: Sentry.vueRouterInstrumentation(router),
