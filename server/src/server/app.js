@@ -70,7 +70,7 @@ export default class EhrApp {
         debug('api middle is set up next set up the final routing')
         app.use('/', api)
         if (config.sentryDsn) {
-          app.get('/debug-sentry/:type', sentryDebugLimiter, (req, res) => {
+          app.get('/api/debug-sentry/:type', sentryDebugLimiter, (req, res) => {
             const { type } = req.params
             console.log('Sentry debug api end point has type', type, req.params)
             if (type === 'console') {

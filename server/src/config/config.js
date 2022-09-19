@@ -11,12 +11,6 @@ if (version.includes('v14')) {
   logError('Unexpected version of Node is active ', version)
 }
 
-if ( process.env.SENTRY_DSN ) {
-  debug('SENTRY DSN', process.env.SENTRY_DSN)
-} else {
-  debug('SENTRY NOT ACTIVE')
-}
-
 const DEFAULT_COOKIE_SECRET = 'this is the secret for the session cookie'
 
 // console.log('config.js process.env', process.env)
