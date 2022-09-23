@@ -82,6 +82,9 @@ const getters = {
     } else {
       type = 'Student merged data'
     }
+    if (!baseLevelData.meta || !baseLevelData.meta.simTime) {
+      console.error('EhrData get merged.  baseLevelData.meta ', baseLevelData.meta)
+    }
     if (debug) console.log('EhrData type: ' + type, secondLevelData)
     if (secondLevelData) {
       mData = decoupleObject(ehrMergeEhrData(baseLevelData, secondLevelData))
@@ -97,7 +100,8 @@ const getters = {
         // secondLevelData.meta.simTime  may have zero values if the ehr data is empty or has no time stamped records
         mData.meta.simTime = baseMeta.simTime
       } else if (baseDay > secondDay || ( baseDay === secondDay && baseTime > secondTime ) ) {
-        console.log('Error in data. Seed simulation time is after activity\'s simulation time. This should never happen')
+        console.log('Error in data. Seed simulation time is after activity\'s simulation time. This should never happen. baseLevelData.meta',
+          baseLevelData.meta, 'secondLevelData.meta', secondLevelData.meta)
       } else {
         let vDay = baseDay
         let mTime = baseTime
