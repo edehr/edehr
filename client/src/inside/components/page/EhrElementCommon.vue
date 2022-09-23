@@ -218,7 +218,7 @@ export default {
       EventBus.$off(PAGE_DATA_READY_EVENT, this.pageRefreshEventHandler)
     }
     if (this.dialogEventHandler) {
-      console.log('ehr common stop list on ', this.dialogEventKey)
+      // console.log('beforeDestroy EhrElementCommon dialogEventHandler ', this.dialogEventKey)
       EventBus.$off(this.dialogEventKey, this.dialogEventHandler)
     }
   },
