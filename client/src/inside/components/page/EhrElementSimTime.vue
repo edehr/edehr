@@ -74,9 +74,6 @@ export default {
     },
     metaSimTime () {
       let data = StoreHelper.getMergedData()
-      if(!data.meta.simTime) {
-        console.error('Tracing root cause of missing meta.simTime. Merged Data:', JSON.stringify(data))
-      }
       return data.meta.simTime
     },
     simulationDay () { return this.metaSimTime.visitDay }, // the current computed day of the simulation

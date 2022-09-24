@@ -50,7 +50,11 @@ const getters = {
     } else {
       secondLevelData = rootGetters['activityDataStore/assignmentData'] || {}
     }
-    return secondLevelData ? decoupleObject(secondLevelData) : undefined
+    if ( secondLevelData ) {
+      secondLevelData.meta = secondLevelData.meta || { simTime: { visitDay: 0, visitTime: '0000' } }
+      secondLevelData = decoupleObject(secondLevelData)
+    }
+    return secondLevelData
   },
   baseLevel: (state, getters, rootState, rootGetters) => {
     let baseLevelData = decoupleObject(rootGetters['seedListStore/seedEhrData'] || {})
@@ -65,6 +69,7 @@ const getters = {
       // type = 'Student merged data'
       baseLevelData = ehrMarkSeed(baseLevelData)
     }
+    baseLevelData.meta = baseLevelData.meta || {simTime: {visitDay: 0, visitTime: '0000'}}
     return baseLevelData
   },
   mergedData: (state, getters, rootState, rootGetters) => {
@@ -81,9 +86,6 @@ const getters = {
       type = 'Instructor wants student data'
     } else {
       type = 'Student merged data'
-    }
-    if (!baseLevelData.meta || !baseLevelData.meta.simTime) {
-      console.error('EhrData get merged.  baseLevelData.meta ', baseLevelData.meta)
     }
     if (debug) console.log('EhrData type: ' + type, secondLevelData)
     if (secondLevelData) {

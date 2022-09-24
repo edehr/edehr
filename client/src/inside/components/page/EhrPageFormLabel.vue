@@ -2,6 +2,7 @@
   div(:class="css", v-if="showLabel")
     label(v-html="label", :for="forElement", class="form_label")
     ui-info(v-if="helperText", :title="label", :html="helperHtml", :text="helperText")
+    span(v-if="helperText") &nbsp; &nbsp;
 </template>
 
 <script>

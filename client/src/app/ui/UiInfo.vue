@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(:class="$options.name", class='showing-labels')
+  div(class="UiInfo showing-labels")
     span(:title="text")
       button(class="info-button", v-on:click="buttonClicked")
         fas-icon(class="info-icon", icon="info-circle")

@@ -1,5 +1,6 @@
 import EhrDefs from '@/helpers/ehr-defs-grid'
-import { isString, validNumberStr } from '@/helpers/ehr-utils'
+import { isObject, isString, validNumberStr } from '@/helpers/ehr-utils'
+import StoreHelper from '@/helpers/store-helper'
 
 // export for testing
 export function extractComboValue (src)  {
@@ -27,9 +28,21 @@ export function extractMultiplyByFactor ( input ) {
   return parseFloat(factor)
 }
 
+function isEmbeddedRef ( ref ) {
+  return ref.split('.').length === 3
+}
+
+function getEmbeddedDataRow ( ref ) {
+  const mData = StoreHelper.getMergedData()
+  const [pageKey, tableKey, row] = ref.split('.')
+  const pg = mData[pageKey]
+  const tbl = pg[tableKey]
+  return tbl[row]
+}
+
 export function ehrCalculateProperty (pageDataKey, targetKey, srcValues) {
   let temp = EhrDefs.getChildElements(pageDataKey, 'elementKey', targetKey, 'calculationType')
-  // console.log(pageDataKey, targetKey, temp)
+  // console.log('pageDataKey, targetKey', pageDataKey, targetKey)
   let calculationType = temp[0]
   if (!calculationType) {
     let msg = `Ehr calc unexpected could not find calculationType for key ${targetKey}`
@@ -49,19 +62,21 @@ export function ehrCalculateProperty (pageDataKey, targetKey, srcValues) {
   let values = []
   srcKeys.forEach(key => {
     let srcVal = srcValues[key]
+    // console.log('srcKey, srcVal, calculationType', key, srcVal, calculationType)
     if(srcVal) {
       if (isString(srcVal) && srcVal.includes('=')) {
         values.push(extractComboValue(srcVal))
       } else if (validNumberStr(srcVal)) {
         values.push(Number(srcVal))
+      } else if (isString(srcVal) && isEmbeddedRef(srcVal)) {
+        let rowData = getEmbeddedDataRow(srcVal)
+        values.push(rowData)
       } else {
         let msg = `Ehr calc found unexpected value type for key ${targetKey}, value found: ${srcVal}`
         console.log('ecp', msg)
         throw new Error(msg)
       }
     } else {
-      // let msg = `Ehr calc missing source value for key ${key} in ${JSON.stringify(srcValues)}`
-      // console.log('ecp', msg)
       // do nothing .. it is ok to not yet have a value for one of the sources
     }
   })
@@ -86,6 +101,23 @@ export function ehrCalculateProperty (pageDataKey, targetKey, srcValues) {
     case 'product':
       result = values.reduce((a, b) => a * b, 1)
       break
+    case 'wbcAbs':
+      // console.log('process wbcAbs values', values)
+      if ( values.length === 2) {
+        let wbc, factor
+        if ( isObject(values[0])) {
+          wbc = values[0]['wbc']
+          factor = values[1]
+        } else {
+          factor = values[0]
+          wbc = values[1]['wbc']
+        }
+        // console.log('wbc factor',wbc, factor)
+        result = wbc * factor
+      }
+      break
+    default:
+      throw new Error('Unexpected calculation type ' + calculationType)
     }
   }
   return Math.round(result * 10) / 10

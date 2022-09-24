@@ -257,19 +257,6 @@ export default class EhrHelpV2 {
     } // else use what is already in this.pageFormData.value
   }
 
-  /**
-   * Parses the reference in the element definition and uses that to
-   * @param element
-   * @returns {{groups: (*|*[])}}
-   */
-  getEmbeddedData ( element ) {
-    const ref = element.embedRef
-    const [pageKey, tableKey] = ref.split('.')
-    const pageTables = EhrDefs.getPageTables(pageKey)
-    const refTable = pageTables.find( element => element.tableKey === tableKey)
-    const groups = refTable.form ? refTable.form.ehr_groups : []
-    return { groups: groups }
-  }
   getMergedPageData (aPageKey) {
     let pageKey = aPageKey || this.pageKey
     return StoreHelper.getMergedPageData(pageKey)
