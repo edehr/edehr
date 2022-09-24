@@ -10,7 +10,8 @@ class RawHelper {
 
   _prepareContent(contents, mlFields) {
     let c = contents
-    c = this._zapGremlins(c)
+    // Remove the zapGremlins. We need to accommodate special characters and we no longer are doing copy paste from excel.
+    // c = this._zapGremlins(c)
     c = this._fixEmptyCells(c)
     c = this._fixTabs(c)
     mlFields.forEach(hdr => {

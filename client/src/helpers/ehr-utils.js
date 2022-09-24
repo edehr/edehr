@@ -114,6 +114,16 @@ export function isImageFile (fName) {
   return /jpeg|jpg|png|gif|tiff|tif|bmp/.test(fext)
 }
 
+/**
+ * All objects (with the exception of objects created with Object.create(null)) will have a constructor property. Objects created without the explicit use of a constructor function (i.e. the object and array literals) will have a constructor property that points to the Fundamental Object constructor type for that object.
+ *
+ * @param possibleObj
+ * @returns {boolean}
+ */
+export function isObject ( possibleObj ) {
+  return possibleObj && possibleObj.constructor.name === 'Object'
+}
+
 export function isString (possibleStr) {
   return Object.prototype.toString.call(possibleStr) === '[object String]'
 }

@@ -7504,6 +7504,7 @@ const DEFS = {
       {
         elementKey: 'domesticViolence',
         formIndex: '1',
+        formCss: 'form_label_long',
         inputType: 'select',
         label: 'From our experience in the hospital, we know that domestic violence can be a problem. Is this a factor in your life?',
         options: [
@@ -7527,6 +7528,7 @@ const DEFS = {
       {
         elementKey: 'requestContact',
         formIndex: '1',
+        formCss: 'form_label_long',
         inputType: 'select',
         label: 'Would you like to speak to a social worker?',
         options: [
@@ -7570,6 +7572,7 @@ const DEFS = {
       {
         elementKey: 'hygieneComments',
         formIndex: '1',
+        formCss: 'grid-span-2-columns',
         inputType: 'textarea',
         label: 'Hygiene comments',
         tableColumn: '5',
@@ -7971,7 +7974,7 @@ const DEFS = {
             },
             {
               elementKey: 'ehr_group93',
-              formCss: 'section-divider',
+              formCss: 'section-divider grid-left-to-right-2',
               gIndex: '2',
               gChildren: [
                 'domesticViolence',
@@ -7989,7 +7992,7 @@ const DEFS = {
             },
             {
               elementKey: 'ehr_group95',
-              formCss: 'section-divider',
+              formCss: 'section-divider grid-left-to-right-2',
               gIndex: '4',
               gChildren: [
                 'behaviour',
@@ -11046,7 +11049,7 @@ const DEFS = {
         isPageForm: true,
         ehr_groups: [
           {
-            elementKey: 'ehr_group159',
+            elementKey: 'ehr_group148',
             gIndex: '1',
             gChildren: [
               {
@@ -11146,7 +11149,7 @@ const DEFS = {
         isPageForm: true,
         ehr_groups: [
           {
-            elementKey: 'ehr_group160',
+            elementKey: 'ehr_group149',
             gIndex: '1',
             gChildren: [
               'snomed',
@@ -11350,7 +11353,7 @@ const DEFS = {
           formKey: 'table',
           ehr_groups: [
             {
-              elementKey: 'ehr_group161',
+              elementKey: 'ehr_group150',
               formCss: 'record-header',
               gIndex: '1',
               gChildren: [
@@ -11361,7 +11364,7 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group162',
+              elementKey: 'ehr_group151',
               gIndex: '2',
               gChildren: [
                 'icd10',
@@ -11525,7 +11528,7 @@ const DEFS = {
           formKey: 'table',
           ehr_groups: [
             {
-              elementKey: 'ehr_group163',
+              elementKey: 'ehr_group152',
               formCss: 'record-header',
               gIndex: '1',
               gChildren: [
@@ -11536,7 +11539,7 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group164',
+              elementKey: 'ehr_group153',
               formCss: 'grid-left-to-right-1',
               gIndex: '2',
               gChildren: [
@@ -11719,7 +11722,7 @@ const DEFS = {
           formKey: 'table',
           ehr_groups: [
             {
-              elementKey: 'ehr_group165',
+              elementKey: 'ehr_group154',
               formCss: 'record-header',
               gIndex: '1',
               gChildren: [
@@ -11730,7 +11733,7 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group166',
+              elementKey: 'ehr_group155',
               gIndex: '2',
               gChildren: [
                 'clinicalCategory',
@@ -12068,11 +12071,11 @@ const DEFS = {
         fqn: 'testPage.textDateDate'
       },
       {
-        elementKey: 'spacer171',
+        elementKey: 'spacer160',
         formIndex: '3',
         inputType: 'spacer',
         label: 'TextDate',
-        fqn: 'testPage.spacer171'
+        fqn: 'testPage.spacer160'
       },
       {
         elementKey: 'name',
@@ -12097,7 +12100,7 @@ const DEFS = {
         isPageForm: true,
         ehr_groups: [
           {
-            elementKey: 'ehr_group167',
+            elementKey: 'ehr_group156',
             label: 'A group label',
             gIndex: '1',
             gChildren: [
@@ -12114,7 +12117,7 @@ const DEFS = {
             ]
           },
           {
-            elementKey: 'ehr_group168',
+            elementKey: 'ehr_group157',
             label: 'Second group',
             gIndex: '2',
             gChildren: [
@@ -12182,7 +12185,7 @@ const DEFS = {
           formKey: 'table1',
           ehr_groups: [
             {
-              elementKey: 'ehr_group169',
+              elementKey: 'ehr_group158',
               label: 'Group 1',
               gIndex: '1',
               gChildren: [
@@ -12204,7 +12207,7 @@ const DEFS = {
         isPageForm: true,
         ehr_groups: [
           {
-            elementKey: 'ehr_group170',
+            elementKey: 'ehr_group159',
             label: 'A group label',
             gIndex: '1',
             gChildren: [
@@ -12214,7 +12217,7 @@ const DEFS = {
               'time',
               'textDate',
               'textDateDate',
-              'spacer171',
+              'spacer160',
               'name',
               'place'
             ]
@@ -12548,13 +12551,13 @@ const DEFS = {
         fqn: 'testTable.cd1Date'
       },
       {
-        elementKey: 'spacer177',
+        elementKey: 'spacer166',
         formIndex: '2',
         inputType: 'spacer',
         label: 'C D 1',
         tableColumn: '2',
         tableLabel: 'Chk 1',
-        fqn: 'testTable.spacer177'
+        fqn: 'testTable.spacer166'
       },
       {
         elementKey: 'cd2',
@@ -12576,13 +12579,13 @@ const DEFS = {
         fqn: 'testTable.cd2Date'
       },
       {
-        elementKey: 'spacer178',
+        elementKey: 'spacer167',
         formIndex: '2',
         inputType: 'spacer',
         label: 'C D 2',
         tableColumn: '3',
         tableLabel: 'Chk 2',
-        fqn: 'testTable.spacer178'
+        fqn: 'testTable.spacer167'
       },
       {
         elementKey: 'td1',
@@ -12603,13 +12606,13 @@ const DEFS = {
         fqn: 'testTable.td1Date'
       },
       {
-        elementKey: 'spacer179',
+        elementKey: 'spacer168',
         formIndex: '2',
         inputType: 'spacer',
         label: 'TextDate',
         tableColumn: '4',
         tableLabel: 'Txt 1',
-        fqn: 'testTable.spacer179'
+        fqn: 'testTable.spacer168'
       },
       {
         elementKey: 'referralName',
@@ -12923,7 +12926,7 @@ const DEFS = {
           formKey: 'table1',
           ehr_groups: [
             {
-              elementKey: 'ehr_group172',
+              elementKey: 'ehr_group161',
               label: 'Group 1',
               gIndex: '1',
               gChildren: [
@@ -12939,7 +12942,7 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group173',
+              elementKey: 'ehr_group162',
               gIndex: '2',
               gChildren: [
                 {
@@ -12974,7 +12977,7 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group174',
+              elementKey: 'ehr_group163',
               formCss: 'full-width',
               gIndex: '3',
               gChildren: [
@@ -13025,7 +13028,7 @@ const DEFS = {
             items: [
               'cd1',
               'cd1Date',
-              'spacer177'
+              'spacer166'
             ]
           },
           {
@@ -13034,7 +13037,7 @@ const DEFS = {
             items: [
               'cd2',
               'cd2Date',
-              'spacer178'
+              'spacer167'
             ]
           },
           {
@@ -13043,7 +13046,7 @@ const DEFS = {
             items: [
               'td1',
               'td1Date',
-              'spacer179'
+              'spacer168'
             ]
           },
           {
@@ -13077,7 +13080,7 @@ const DEFS = {
           formKey: 'stacked',
           ehr_groups: [
             {
-              elementKey: 'ehr_group175',
+              elementKey: 'ehr_group164',
               formCss: 'record-header',
               gIndex: '1',
               gChildren: [
@@ -13088,22 +13091,22 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group176',
+              elementKey: 'ehr_group165',
               gIndex: '2',
               gChildren: [
                 'cd1',
                 'cd1Date',
-                'spacer177',
+                'spacer166',
                 'cd2',
                 'cd2Date',
-                'spacer178',
+                'spacer167',
                 'td1',
                 'td1Date',
-                'spacer179'
+                'spacer168'
               ]
             },
             {
-              elementKey: 'ehr_group180',
+              elementKey: 'ehr_group169',
               gIndex: '3',
               gChildren: [
                 'referralName',
@@ -13779,7 +13782,7 @@ const DEFS = {
       {
         elementKey: 'stageType',
         formIndex: '3',
-        helperText: 'Pressure Injury Stage 1 Intact skin with localized nonblanchable erythema; darkly pigmented skin may not show visible blanching but will appear different than the colour of surrounding skin.\nPressure Injury Stage 2 Partial thickness wound presenting as a shallow open ulcer with a red / pink wound bed, slough may be present but does not obscure the depth of tissue loss; may also present as an intact or open/ruptured serum-filled or serosanguineous filled blister.\nPressure Injury Stage 3 Full thickness wound; subcutaneous tissue may be visible but bone, tendon and muscle are not exposed; may include undermining and/or sinus tracks; slough or eschar may be present but does not obscure the depth of tissue loss.\nPressure Injury Stage 4 Full thickness wound with exposed bone, tendon or muscle; often includes undermining and/or sinus tracks; slough or eschar may be present on some parts of the wound bed but does not obscure the depth of tissue loss.\nPressure Injury Unstageable  A wound in which the wound bed is covered by sufficient slough and / or eschar to preclude staging.\nPressure Injury Deep Tissue Injury  A localized purple or maroon area of intact skin or a blood filled blister that occur when underlying soft tissue is damaged from friction or shear.\nSurgical Wounds Secondary intention: Incision has dehisced and surgical closure is not possible; wounds must heal by granulation\nSkin Tear: Skin tears are the result of trauma caused by shearing, friction, or blunt force to the skin. Consider risk factors (i.e.: advanced age, immobility, inadequate hydration/nutrition, falls)\nAbscess: A local collection of purulent and/or sanguineous drainage that may be incised and drained.\nBurn: Tissue loss/damage as a result from thermal, chemical, electrical, and radiation sources.\nVenous Ulcer: Caused by venous insufficiency due to valve dysfunction, complete or partial blockage of the deep veins, and / or failure of the calf muscle pump.\nArterial Ulcer: Caused by a disruption to arterial blood flow leading to moderate / severe tissue ischemia.\nMixed Arterial/Venous Ulcer: Caused by both venous insufficiency and disrupted arterial blood flow.\nDiabetic/Neuropathic Ulcers: A result of neuropathy, structural foot changes, and/or altered blood flow related to diabetes mellitus (or alcoholism, renal failure, HIV, late stage syphilis, trauma and surgery).\n',
+        helperText: 'Pressure Injury Stage 1– Intact skin with localized nonblanchable erythema; darkly pigmented skin may not show visible blanching but will appear different than the colour of surrounding skin.\nPressure Injury Stage 2– Partial thickness wound presenting as a shallow open ulcer with a red / pink wound bed, slough may be present but does not obscure the depth of tissue loss; may also present as an intact or open/ruptured serum-filled or serosanguineous filled blister.\nPressure Injury Stage 3– Full thickness wound; subcutaneous tissue may be visible but bone, tendon and muscle are not exposed; may include undermining and/or sinus tracks; slough or eschar may be present but does not obscure the depth of tissue loss.\nPressure Injury Stage 4– Full thickness wound with exposed bone, tendon or muscle; often includes undermining and/or sinus tracks; slough or eschar may be present on some parts of the wound bed but does not obscure the depth of tissue loss.\nPressure Injury Unstageable – A wound in which the wound bed is covered by sufficient slough and / or eschar to preclude staging.\nPressure Injury Deep Tissue Injury – A localized purple or maroon area of intact skin or a blood filled blister that occur when underlying soft tissue is damaged from friction or shear.\nSurgical Wounds Secondary intention: Incision has dehisced and surgical closure is not possible; wounds must heal by granulation\nSkin Tear: Skin tears are the result of trauma caused by shearing, friction, or blunt force to the skin. Consider risk factors (i.e.: advanced age, immobility, inadequate hydration/nutrition, falls)\nAbscess: A local collection of purulent and/or sanguineous drainage that may be incised and drained.\nBurn: Tissue loss/damage as a result from thermal, chemical, electrical, and radiation sources.\nVenous Ulcer: Caused by venous insufficiency due to valve dysfunction, complete or partial blockage of the deep veins, and / or failure of the calf muscle pump.\nArterial Ulcer: Caused by a disruption to arterial blood flow leading to moderate / severe tissue ischemia.\nMixed Arterial/Venous Ulcer: Caused by both venous insufficiency and disrupted arterial blood flow.\nDiabetic/Neuropathic Ulcers: A result of neuropathy, structural foot changes, and/or altered blood flow related to diabetes mellitus (or alcoholism, renal failure, HIV, late stage syphilis, trauma and surgery).\n',
         inputType: 'checkset',
         label: 'Wound Etiology/Type',
         options: [
@@ -13847,7 +13850,7 @@ const DEFS = {
         tableColumn: '5',
         tableLabel: 'Wound Etiology/Type',
         fqn: 'integumentaryAssessment.stageType',
-        helperHtml: '<p>Pressure Injury Stage 1 Intact skin with localized nonblanchable erythema; darkly pigmented skin may not show visible blanching but will appear different than the colour of surrounding skin.</p>\n<p>Pressure Injury Stage 2 Partial thickness wound presenting as a shallow open ulcer with a red / pink wound bed, slough may be present but does not obscure the depth of tissue loss; may also present as an intact or open/ruptured serum-filled or serosanguineous filled blister.</p>\n<p>Pressure Injury Stage 3 Full thickness wound; subcutaneous tissue may be visible but bone, tendon and muscle are not exposed; may include undermining and/or sinus tracks; slough or eschar may be present but does not obscure the depth of tissue loss.</p>\n<p>Pressure Injury Stage 4 Full thickness wound with exposed bone, tendon or muscle; often includes undermining and/or sinus tracks; slough or eschar may be present on some parts of the wound bed but does not obscure the depth of tissue loss.</p>\n<p>Pressure Injury Unstageable  A wound in which the wound bed is covered by sufficient slough and / or eschar to preclude staging.</p>\n<p>Pressure Injury Deep Tissue Injury  A localized purple or maroon area of intact skin or a blood filled blister that occur when underlying soft tissue is damaged from friction or shear.</p>\n<p>Surgical Wounds Secondary intention: Incision has dehisced and surgical closure is not possible; wounds must heal by granulation</p>\n<p>Skin Tear: Skin tears are the result of trauma caused by shearing, friction, or blunt force to the skin. Consider risk factors (i.e.: advanced age, immobility, inadequate hydration/nutrition, falls)</p>\n<p>Abscess: A local collection of purulent and/or sanguineous drainage that may be incised and drained.</p>\n<p>Burn: Tissue loss/damage as a result from thermal, chemical, electrical, and radiation sources.</p>\n<p>Venous Ulcer: Caused by venous insufficiency due to valve dysfunction, complete or partial blockage of the deep veins, and / or failure of the calf muscle pump.</p>\n<p>Arterial Ulcer: Caused by a disruption to arterial blood flow leading to moderate / severe tissue ischemia.</p>\n<p>Mixed Arterial/Venous Ulcer: Caused by both venous insufficiency and disrupted arterial blood flow.</p>\n<p>Diabetic/Neuropathic Ulcers: A result of neuropathy, structural foot changes, and/or altered blood flow related to diabetes mellitus (or alcoholism, renal failure, HIV, late stage syphilis, trauma and surgery).</p>\n<p></p>'
+        helperHtml: '<p>Pressure Injury Stage 1– Intact skin with localized nonblanchable erythema; darkly pigmented skin may not show visible blanching but will appear different than the colour of surrounding skin.</p>\n<p>Pressure Injury Stage 2– Partial thickness wound presenting as a shallow open ulcer with a red / pink wound bed, slough may be present but does not obscure the depth of tissue loss; may also present as an intact or open/ruptured serum-filled or serosanguineous filled blister.</p>\n<p>Pressure Injury Stage 3– Full thickness wound; subcutaneous tissue may be visible but bone, tendon and muscle are not exposed; may include undermining and/or sinus tracks; slough or eschar may be present but does not obscure the depth of tissue loss.</p>\n<p>Pressure Injury Stage 4– Full thickness wound with exposed bone, tendon or muscle; often includes undermining and/or sinus tracks; slough or eschar may be present on some parts of the wound bed but does not obscure the depth of tissue loss.</p>\n<p>Pressure Injury Unstageable – A wound in which the wound bed is covered by sufficient slough and / or eschar to preclude staging.</p>\n<p>Pressure Injury Deep Tissue Injury – A localized purple or maroon area of intact skin or a blood filled blister that occur when underlying soft tissue is damaged from friction or shear.</p>\n<p>Surgical Wounds Secondary intention: Incision has dehisced and surgical closure is not possible; wounds must heal by granulation</p>\n<p>Skin Tear: Skin tears are the result of trauma caused by shearing, friction, or blunt force to the skin. Consider risk factors (i.e.: advanced age, immobility, inadequate hydration/nutrition, falls)</p>\n<p>Abscess: A local collection of purulent and/or sanguineous drainage that may be incised and drained.</p>\n<p>Burn: Tissue loss/damage as a result from thermal, chemical, electrical, and radiation sources.</p>\n<p>Venous Ulcer: Caused by venous insufficiency due to valve dysfunction, complete or partial blockage of the deep veins, and / or failure of the calf muscle pump.</p>\n<p>Arterial Ulcer: Caused by a disruption to arterial blood flow leading to moderate / severe tissue ischemia.</p>\n<p>Mixed Arterial/Venous Ulcer: Caused by both venous insufficiency and disrupted arterial blood flow.</p>\n<p>Diabetic/Neuropathic Ulcers: A result of neuropathy, structural foot changes, and/or altered blood flow related to diabetes mellitus (or alcoholism, renal failure, HIV, late stage syphilis, trauma and surgery).</p>\n<p></p>'
       },
       {
         elementKey: 'stageOther',
@@ -15029,7 +15032,7 @@ const DEFS = {
       {
         elementKey: 'woundEdge',
         formIndex: '4',
-        helperText: 'Wound Edge: The perimeter of the wound\nDiffuse: Not well defined, indistinct, difficult to clearly define wound outline\nDemarcated: Well defined, distinct, easy to clearly define wound outline\nAttached: Edge appears flush with wound bed or as a sloping edge\nNot attached: Edge appears as a cliff\nEpithelializing: New, pink to purple, shiny migrating tissue\nRolled: Epithelial wound edge of a cavity wound which rolls under\n\n',
+        helperText: 'Wound Edge: The perimeter of the wound\nDiffuse: Not well defined, indistinct, difficult to clearly define wound outline\nDemarcated: Well defined, distinct, easy to clearly define wound outline\nAttached: Edge appears flush with wound bed or as a “sloping” edge\nNot attached: Edge appears as a “cliff”\nEpithelializing: New, pink to purple, shiny migrating tissue\nRolled: Epithelial wound edge of a cavity wound which rolls under\n\n',
         inputType: 'checkset',
         label: 'Wound edge',
         options: [
@@ -15065,7 +15068,7 @@ const DEFS = {
         tableColumn: '31',
         tableLabel: 'Wound edge',
         fqn: 'integumentaryAssessment.woundEdge',
-        helperHtml: '<p>Wound Edge: The perimeter of the wound</p>\n<p>Diffuse: Not well defined, indistinct, difficult to clearly define wound outline</p>\n<p>Demarcated: Well defined, distinct, easy to clearly define wound outline</p>\n<p>Attached: Edge appears flush with wound bed or as a sloping edge</p>\n<p>Not attached: Edge appears as a cliff</p>\n<p>Epithelializing: New, pink to purple, shiny migrating tissue</p>\n<p>Rolled: Epithelial wound edge of a cavity wound which rolls under</p>\n<p></p>\n<p></p>'
+        helperHtml: '<p>Wound Edge: The perimeter of the wound</p>\n<p>Diffuse: Not well defined, indistinct, difficult to clearly define wound outline</p>\n<p>Demarcated: Well defined, distinct, easy to clearly define wound outline</p>\n<p>Attached: Edge appears flush with wound bed or as a “sloping” edge</p>\n<p>Not attached: Edge appears as a “cliff”</p>\n<p>Epithelializing: New, pink to purple, shiny migrating tissue</p>\n<p>Rolled: Epithelial wound edge of a cavity wound which rolls under</p>\n<p></p>\n<p></p>'
       },
       {
         elementKey: 'periWoundSkin',
@@ -16098,10 +16101,12 @@ const DEFS = {
         elementKey: 'wbc',
         formIndex: '1',
         helperText: 'White blood cell count',
-        inputType: 'text',
+        inputType: 'number',
         label: 'WBC',
+        mandatory: true,
         suffix: '10^9/L',
         tableColumn: '7',
+        validation: 'numeric',
         fqn: 'hematology.wbc',
         helperHtml: '<p>White blood cell count</p>'
       },
@@ -16137,10 +16142,11 @@ const DEFS = {
         elementKey: 'rbc',
         formIndex: '1',
         helperText: 'Red blood cell count',
-        inputType: 'text',
+        inputType: 'number',
         label: 'RBC',
         suffix: '10^12/L',
         tableColumn: '9',
+        validation: 'numeric',
         fqn: 'hematology.rbc',
         helperHtml: '<p>Red blood cell count</p>'
       },
@@ -16176,10 +16182,11 @@ const DEFS = {
         elementKey: 'hgb',
         formIndex: '1',
         helperText: 'Hemoglobin',
-        inputType: 'text',
+        inputType: 'number',
         label: 'HGB',
         suffix: 'g/L',
         tableColumn: '10',
+        validation: 'numeric',
         fqn: 'hematology.hgb',
         helperHtml: '<p>Hemoglobin</p>'
       },
@@ -16215,10 +16222,11 @@ const DEFS = {
         elementKey: 'HCT',
         formIndex: '1',
         helperText: 'Hematocrit',
-        inputType: 'text',
+        inputType: 'number',
         label: 'HCT',
         suffix: 'L/L',
         tableColumn: '11',
+        validation: 'numeric',
         fqn: 'hematology.HCT',
         helperHtml: '<p>Hematocrit</p>'
       },
@@ -16254,10 +16262,11 @@ const DEFS = {
         elementKey: 'MCV',
         formIndex: '1',
         helperText: 'Mean Cell Volume',
-        inputType: 'text',
+        inputType: 'number',
         label: 'MCV',
         suffix: 'fL',
         tableColumn: '12',
+        validation: 'numeric',
         fqn: 'hematology.MCV',
         helperHtml: '<p>Mean Cell Volume</p>'
       },
@@ -16293,10 +16302,11 @@ const DEFS = {
         elementKey: 'MCH',
         formIndex: '1',
         helperText: 'Mean Cell Hemoglobin',
-        inputType: 'text',
+        inputType: 'number',
         label: 'MCH',
         suffix: 'pg',
         tableColumn: '13',
+        validation: 'numeric',
         fqn: 'hematology.MCH',
         helperHtml: '<p>Mean Cell Hemoglobin</p>'
       },
@@ -16332,10 +16342,11 @@ const DEFS = {
         elementKey: 'MCHC',
         formIndex: '1',
         helperText: 'Mean Cell Hemoglobin Concentration',
-        inputType: 'text',
+        inputType: 'number',
         label: 'MCHC',
         suffix: 'g/L',
         tableColumn: '14',
+        validation: 'numeric',
         fqn: 'hematology.MCHC',
         helperHtml: '<p>Mean Cell Hemoglobin Concentration</p>'
       },
@@ -16371,10 +16382,11 @@ const DEFS = {
         elementKey: 'RDW',
         formIndex: '1',
         helperText: 'Red Cell Distribution Width CV',
-        inputType: 'text',
+        inputType: 'number',
         label: 'RDW',
         suffix: '%',
         tableColumn: '15',
+        validation: 'numeric',
         fqn: 'hematology.RDW',
         helperHtml: '<p>Red Cell Distribution Width CV</p>'
       },
@@ -16410,10 +16422,11 @@ const DEFS = {
         elementKey: 'PLT',
         formIndex: '1',
         helperText: 'Platelet Count',
-        inputType: 'text',
+        inputType: 'number',
         label: 'PLT',
         suffix: '10^9/L',
         tableColumn: '16',
+        validation: 'numeric',
         fqn: 'hematology.PLT',
         helperHtml: '<p>Platelet Count</p>'
       },
@@ -16449,10 +16462,11 @@ const DEFS = {
         elementKey: 'MPV',
         formIndex: '1',
         helperText: 'Mean Platelet Volume',
-        inputType: 'text',
+        inputType: 'number',
         label: 'MPV',
         suffix: 'fL',
         tableColumn: '17',
+        validation: 'numeric',
         fqn: 'hematology.MPV',
         helperHtml: '<p>Mean Platelet Volume</p>'
       },
@@ -16487,6 +16501,7 @@ const DEFS = {
       {
         elementKey: 'comments',
         formIndex: '1',
+        formCss: 'grid-span-2-columns',
         inputType: 'textarea',
         label: 'CBC Comments',
         tableColumn: '18',
@@ -16576,6 +16591,7 @@ const DEFS = {
         embedRef: 'hematology.tableCbcAnalysis',
         inputType: 'ehr_embedded',
         label: 'CBC Analysis',
+        passToFunction: '[cellCntSegNeutrophilAbs, cellCntBandCellsAbs, cellCntLymphAbs, cellCntMonoAbs, cellCntEosinAbs, cellCntBasoAbs, cellCntMetaAbs, cellCntMyeloAbs, cellCntPromyeloAbs, cellCntBlastAbs, cellCntReactiveLymphsAbs, cellCntOtherAbs]',
         tableColumn: '7',
         fqn: 'hematology.bloodAnalysis'
       },
@@ -16591,6 +16607,7 @@ const DEFS = {
       {
         elementKey: 'actionsTaken',
         formIndex: '2',
+        formCss: 'grid-span-2-columns',
         inputType: 'textarea',
         label: 'Actions taken',
         suffix: '10^12/L',
@@ -16600,6 +16617,7 @@ const DEFS = {
       {
         elementKey: 'scanComments',
         formIndex: '2',
+        formCss: 'grid-span-2-columns',
         inputType: 'textarea',
         label: 'Scan comments',
         suffix: '10^12/L',
@@ -16747,6 +16765,7 @@ const DEFS = {
       {
         elementKey: 'wbcComment',
         formIndex: '2',
+        formCss: 'grid-span-2-columns',
         inputType: 'text',
         label: 'WBC comment',
         tableColumn: '26',
@@ -16893,6 +16912,7 @@ const DEFS = {
       {
         elementKey: 'pltComment',
         formIndex: '2',
+        formCss: 'grid-span-2-columns',
         inputType: 'text',
         label: 'PLT comment',
         tableColumn: '42',
@@ -16911,12 +16931,13 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Abnormal',
-        tableColumn: '1',
+        tableColumn: '44',
         fqn: 'hematology.pltAbnormalMorphology'
       },
       {
         elementKey: 'pltMorphology',
         formIndex: '2',
+        formCss: 'form_label_short',
         inputType: 'checkset',
         label: 'Type',
         options: [
@@ -16937,120 +16958,246 @@ const DEFS = {
             text: 'Platelet Clumps'
           },
           {
-            key: 'Platelet Satellitism Dysplastic',
-            text: 'Platelet Satellitism Dysplastic'
+            key: 'Platelet Satellitism',
+            text: 'Platelet Satellitism'
+          },
+          {
+            key: 'Dysplastic',
+            text: 'Dysplastic'
           }
         ],
-        tableColumn: '43',
+        tableColumn: '45',
         fqn: 'hematology.pltMorphology'
       },
       {
-        elementKey: 'cellCntSegmentedNeutrophil',
+        elementKey: 'cellCntSegNeutrophil',
         formIndex: '2',
         inputType: 'number',
         label: 'Segmented Neutrophil',
-        passToFunction: 'cellCntTotal',
-        tableColumn: '44',
-        fqn: 'hematology.cellCntSegmentedNeutrophil'
+        passToFunction: '[ cellCntTotal cellCntSegNeutrophilAbs]',
+        tableColumn: '46',
+        fqn: 'hematology.cellCntSegNeutrophil'
+      },
+      {
+        elementKey: 'cellCntSegNeutrophilAbs',
+        calculationType: 'wbcAbs',
+        formIndex: '2',
+        inputType: 'calculatedValue',
+        label: 'Segmented Neutrophil Abs',
+        tableColumn: '47',
+        fqn: 'hematology.cellCntSegNeutrophilAbs'
       },
       {
         elementKey: 'cellCntBandCells',
         formIndex: '2',
         inputType: 'number',
         label: 'Band Cells',
-        passToFunction: 'cellCntTotal',
-        tableColumn: '45',
+        passToFunction: '[ cellCntTotal cellCntBandCellsAbs ]',
+        tableColumn: '48',
         fqn: 'hematology.cellCntBandCells'
+      },
+      {
+        elementKey: 'cellCntBandCellsAbs',
+        calculationType: 'wbcAbs',
+        formIndex: '2',
+        inputType: 'calculatedValue',
+        label: 'Band Cells Abs',
+        tableColumn: '49',
+        fqn: 'hematology.cellCntBandCellsAbs'
       },
       {
         elementKey: 'cellCntLymph',
         formIndex: '2',
         inputType: 'number',
         label: 'Lymph',
-        passToFunction: 'cellCntTotal',
-        tableColumn: '46',
+        passToFunction: '[ cellCntTotal cellCntLymphAbs ]',
+        tableColumn: '50',
         fqn: 'hematology.cellCntLymph'
+      },
+      {
+        elementKey: 'cellCntLymphAbs',
+        calculationType: 'wbcAbs',
+        formIndex: '2',
+        inputType: 'calculatedValue',
+        label: 'Lymph Abs',
+        tableColumn: '51',
+        fqn: 'hematology.cellCntLymphAbs'
       },
       {
         elementKey: 'cellCntMono',
         formIndex: '2',
         inputType: 'number',
         label: 'Mono',
-        passToFunction: 'cellCntTotal',
-        tableColumn: '47',
+        passToFunction: '[ cellCntTotal cellCntMonoAbs ]',
+        tableColumn: '52',
         fqn: 'hematology.cellCntMono'
+      },
+      {
+        elementKey: 'cellCntMonoAbs',
+        calculationType: 'wbcAbs',
+        formIndex: '2',
+        inputType: 'calculatedValue',
+        label: 'Mono Abs',
+        tableColumn: '53',
+        fqn: 'hematology.cellCntMonoAbs'
       },
       {
         elementKey: 'cellCntEosin',
         formIndex: '2',
         inputType: 'number',
         label: 'Eosin',
-        passToFunction: 'cellCntTotal',
-        tableColumn: '48',
+        passToFunction: '[ cellCntTotal cellCntEosinAbs ]',
+        tableColumn: '54',
         fqn: 'hematology.cellCntEosin'
+      },
+      {
+        elementKey: 'cellCntEosinAbs',
+        calculationType: 'wbcAbs',
+        formIndex: '2',
+        inputType: 'calculatedValue',
+        label: 'Eosin Abs',
+        tableColumn: '55',
+        fqn: 'hematology.cellCntEosinAbs'
       },
       {
         elementKey: 'cellCntBaso',
         formIndex: '2',
         inputType: 'number',
         label: 'Baso',
-        passToFunction: 'cellCntTotal',
-        tableColumn: '49',
+        passToFunction: '[ cellCntTotal cellCntBasoAbs ]',
+        tableColumn: '56',
         fqn: 'hematology.cellCntBaso'
+      },
+      {
+        elementKey: 'cellCntBasoAbs',
+        calculationType: 'wbcAbs',
+        formIndex: '2',
+        inputType: 'calculatedValue',
+        label: 'Baso Abs',
+        tableColumn: '57',
+        fqn: 'hematology.cellCntBasoAbs'
       },
       {
         elementKey: 'cellCntMeta',
         formIndex: '2',
         inputType: 'number',
         label: 'Meta',
-        passToFunction: 'cellCntTotal',
-        tableColumn: '50',
+        passToFunction: '[ cellCntTotal cellCntMetaAbs ]',
+        tableColumn: '58',
         fqn: 'hematology.cellCntMeta'
+      },
+      {
+        elementKey: 'cellCntMetaAbs',
+        calculationType: 'wbcAbs',
+        formIndex: '2',
+        inputType: 'calculatedValue',
+        label: 'Meta Abs',
+        tableColumn: '59',
+        fqn: 'hematology.cellCntMetaAbs'
       },
       {
         elementKey: 'cellCntMyelo',
         formIndex: '2',
         inputType: 'number',
         label: 'Myelo',
-        passToFunction: 'cellCntTotal',
-        tableColumn: '51',
+        passToFunction: '[ cellCntTotal cellCntMyeloAbs ]',
+        tableColumn: '60',
         fqn: 'hematology.cellCntMyelo'
+      },
+      {
+        elementKey: 'cellCntMyeloAbs',
+        calculationType: 'wbcAbs',
+        formIndex: '2',
+        inputType: 'calculatedValue',
+        label: 'Myelo Abs',
+        tableColumn: '61',
+        fqn: 'hematology.cellCntMyeloAbs'
       },
       {
         elementKey: 'cellCntPromyelo',
         formIndex: '2',
         inputType: 'number',
         label: 'Promyelo',
-        passToFunction: 'cellCntTotal',
-        tableColumn: '52',
+        passToFunction: '[ cellCntTotal cellCntPromyeloAbs ]',
+        tableColumn: '62',
         fqn: 'hematology.cellCntPromyelo'
+      },
+      {
+        elementKey: 'cellCntPromyeloAbs',
+        calculationType: 'wbcAbs',
+        formIndex: '2',
+        inputType: 'calculatedValue',
+        label: 'Promyelo Abs',
+        tableColumn: '63',
+        fqn: 'hematology.cellCntPromyeloAbs'
       },
       {
         elementKey: 'cellCntBlast',
         formIndex: '2',
         inputType: 'number',
         label: 'Blast',
-        passToFunction: 'cellCntTotal',
-        tableColumn: '53',
+        passToFunction: '[ cellCntTotal cellCntBlastAbs ]',
+        tableColumn: '64',
         fqn: 'hematology.cellCntBlast'
+      },
+      {
+        elementKey: 'cellCntBlastAbs',
+        calculationType: 'wbcAbs',
+        formIndex: '2',
+        inputType: 'calculatedValue',
+        label: 'Blast Abs',
+        tableColumn: '65',
+        fqn: 'hematology.cellCntBlastAbs'
       },
       {
         elementKey: 'cellCntReactiveLymphs',
         formIndex: '2',
         inputType: 'number',
         label: 'Reactive Lymphs',
-        passToFunction: 'cellCntTotal',
-        tableColumn: '54',
+        passToFunction: '[ cellCntTotal cellCntReactiveLymphsAbs ]',
+        tableColumn: '66',
         fqn: 'hematology.cellCntReactiveLymphs'
+      },
+      {
+        elementKey: 'cellCntReactiveLymphsAbs',
+        calculationType: 'wbcAbs',
+        formIndex: '2',
+        inputType: 'calculatedValue',
+        label: 'Reactive Lymphs Abs',
+        tableColumn: '67',
+        fqn: 'hematology.cellCntReactiveLymphsAbs'
       },
       {
         elementKey: 'cellCntOther',
         formIndex: '2',
         inputType: 'number',
         label: 'Other',
-        passToFunction: 'cellCntTotal',
-        tableColumn: '55',
+        passToFunction: '[ cellCntTotal cellCntOtherAbs ]',
+        tableColumn: '68',
         fqn: 'hematology.cellCntOther'
+      },
+      {
+        elementKey: 'cellCntOtherAbs',
+        calculationType: 'wbcAbs',
+        formIndex: '2',
+        inputType: 'calculatedValue',
+        label: 'Other Abs',
+        tableColumn: '69',
+        fqn: 'hematology.cellCntOtherAbs'
+      },
+      {
+        elementKey: 'spacer137',
+        formIndex: '2',
+        inputType: 'spacer',
+        fqn: 'hematology.spacer137'
+      },
+      {
+        elementKey: 'cellCntOtherSpecify',
+        formIndex: '2',
+        inputType: 'text',
+        label: 'Specify',
+        tableColumn: '70',
+        fqn: 'hematology.cellCntOtherSpecify'
       },
       {
         elementKey: 'cellCntTotal',
@@ -17058,7 +17205,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'calculatedValue',
         label: 'Total',
-        tableColumn: '56',
+        tableColumn: '71',
         fqn: 'hematology.cellCntTotal'
       },
       {
@@ -17067,7 +17214,7 @@ const DEFS = {
         helperText: 'nucleated red blood cells',
         inputType: 'number',
         label: 'NRBCs',
-        tableColumn: '57',
+        tableColumn: '72',
         fqn: 'hematology.cellCntNRBCs',
         helperHtml: '<p>nucleated red blood cells</p>'
       },
@@ -17076,7 +17223,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Normal',
-        tableColumn: '58',
+        tableColumn: '73',
         fqn: 'hematology.wbcmNormalMorphology'
       },
       {
@@ -17096,12 +17243,13 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Abnormal',
-        tableColumn: '59',
+        tableColumn: '74',
         fqn: 'hematology.wbcmAbnormalMorphology'
       },
       {
         elementKey: 'wbcmAbnormalTypeMorphology',
         formIndex: '2',
+        formCss: 'form_label_short',
         inputType: 'checkset',
         label: 'Type',
         options: [
@@ -17134,11 +17282,11 @@ const DEFS = {
             text: 'Necrobiotic Cells'
           },
           {
-            key: 'Pelger-Hut Cells',
-            text: 'Pelger-Hut Cells'
+            key: 'Pelger-Huët Cells',
+            text: 'Pelger-Huët Cells'
           }
         ],
-        tableColumn: '60',
+        tableColumn: '75',
         fqn: 'hematology.wbcmAbnormalTypeMorphology'
       },
       {
@@ -17152,18 +17300,19 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Toxic Signs',
-        tableColumn: '61',
+        tableColumn: '76',
         fqn: 'hematology.wbcmToxicMorphology'
       },
       {
         elementKey: 'wbcmToxicTypeMorphology',
         formIndex: '2',
+        formCss: 'form_label_short',
         inputType: 'checkset',
         label: 'Type',
         options: [
           {
-            key: 'Dhle Bodies',
-            text: 'Dhle Bodies'
+            key: 'Döhle Bodies',
+            text: 'Döhle Bodies'
           },
           {
             key: 'Toxic Granules',
@@ -17174,7 +17323,7 @@ const DEFS = {
             text: 'Toxic Vacuoles'
           }
         ],
-        tableColumn: '62',
+        tableColumn: '77',
         fqn: 'hematology.wbcmToxicTypeMorphology'
       },
       {
@@ -17182,56 +17331,8 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Normal',
-        tableColumn: '63',
+        tableColumn: '78',
         fqn: 'hematology.rcmNormal'
-      },
-      {
-        elementKey: 'rcmConsistent',
-        formIndex: '2',
-        inputType: 'checkbox',
-        label: 'Consistent with indices',
-        tableColumn: '64',
-        fqn: 'hematology.rcmConsistent'
-      },
-      {
-        elementKey: 'spacer139',
-        formIndex: '2',
-        inputType: 'spacer',
-        fqn: 'hematology.spacer139'
-      },
-      {
-        elementKey: 'rcmAcanthocytes',
-        formIndex: '2',
-        inputType: 'checkbox',
-        label: 'Acanthocytes',
-        tableColumn: '65',
-        fqn: 'hematology.rcmAcanthocytes'
-      },
-      {
-        elementKey: 'rcmAcanthocytesGrading',
-        formIndex: '2',
-        inputType: 'select',
-        label: 'Grading',
-        options: [
-          {
-            key: '1+',
-            text: '1+'
-          },
-          {
-            key: '2+',
-            text: '2+'
-          },
-          {
-            key: '3+',
-            text: '3+'
-          },
-          {
-            key: '4+',
-            text: '4+'
-          }
-        ],
-        tableColumn: '66',
-        fqn: 'hematology.rcmAcanthocytesGrading'
       },
       {
         elementKey: 'spacer140',
@@ -17240,38 +17341,12 @@ const DEFS = {
         fqn: 'hematology.spacer140'
       },
       {
-        elementKey: 'rcmCodocytes',
+        elementKey: 'rcmConsistent',
         formIndex: '2',
         inputType: 'checkbox',
-        label: 'Codocytes (Target Cells)',
-        tableColumn: '67',
-        fqn: 'hematology.rcmCodocytes'
-      },
-      {
-        elementKey: 'rcmCodocytesGrading',
-        formIndex: '2',
-        inputType: 'select',
-        label: 'Grading',
-        options: [
-          {
-            key: '1+',
-            text: '1+'
-          },
-          {
-            key: '2+',
-            text: '2+'
-          },
-          {
-            key: '3+',
-            text: '3+'
-          },
-          {
-            key: '4+',
-            text: '4+'
-          }
-        ],
-        tableColumn: '68',
-        fqn: 'hematology.rcmCodocytesGrading'
+        label: 'Consistent with indices',
+        tableColumn: '79',
+        fqn: 'hematology.rcmConsistent'
       },
       {
         elementKey: 'spacer141',
@@ -17280,18 +17355,19 @@ const DEFS = {
         fqn: 'hematology.spacer141'
       },
       {
-        elementKey: 'rcmDacryocytes',
+        elementKey: 'rcmAcanthocytes',
         formIndex: '2',
         inputType: 'checkbox',
-        label: 'Dacryocytes (Tear Drop Cells)',
-        tableColumn: '69',
-        fqn: 'hematology.rcmDacryocytes'
+        label: 'Acanthocytes',
+        tableColumn: '80',
+        fqn: 'hematology.rcmAcanthocytes'
       },
       {
-        elementKey: 'rcmDacryocytesGrading',
+        elementKey: 'rcmAcanthocytesGrading',
         formIndex: '2',
+        formCss: 'form_label_long',
         inputType: 'select',
-        label: 'Grading',
+        label: 'Acanthocytes grading',
         options: [
           {
             key: '1+',
@@ -17310,28 +17386,93 @@ const DEFS = {
             text: '4+'
           }
         ],
-        tableColumn: '70',
-        fqn: 'hematology.rcmDacryocytesGrading'
+        tableColumn: '81',
+        fqn: 'hematology.rcmAcanthocytesGrading'
       },
       {
-        elementKey: 'spacer142',
+        elementKey: 'rcmCodocytes',
         formIndex: '2',
-        inputType: 'spacer',
-        fqn: 'hematology.spacer142'
+        inputType: 'checkbox',
+        label: 'Codocytes (Target Cells)',
+        tableColumn: '82',
+        fqn: 'hematology.rcmCodocytes'
+      },
+      {
+        elementKey: 'rcmCodocytesGrading',
+        formIndex: '2',
+        formCss: 'form_label_long',
+        inputType: 'select',
+        label: 'Codocytes (Target Cells) grading',
+        options: [
+          {
+            key: '1+',
+            text: '1+'
+          },
+          {
+            key: '2+',
+            text: '2+'
+          },
+          {
+            key: '3+',
+            text: '3+'
+          },
+          {
+            key: '4+',
+            text: '4+'
+          }
+        ],
+        tableColumn: '83',
+        fqn: 'hematology.rcmCodocytesGrading'
+      },
+      {
+        elementKey: 'rcmDacryocytes',
+        formIndex: '2',
+        inputType: 'checkbox',
+        label: 'Dacryocytes (Tear Drop Cells)',
+        tableColumn: '84',
+        fqn: 'hematology.rcmDacryocytes'
+      },
+      {
+        elementKey: 'rcmDacryocytesGrading',
+        formIndex: '2',
+        formCss: 'form_label_long',
+        inputType: 'select',
+        label: 'Dacryocytes (Tear Drop Cells) grading',
+        options: [
+          {
+            key: '1+',
+            text: '1+'
+          },
+          {
+            key: '2+',
+            text: '2+'
+          },
+          {
+            key: '3+',
+            text: '3+'
+          },
+          {
+            key: '4+',
+            text: '4+'
+          }
+        ],
+        tableColumn: '85',
+        fqn: 'hematology.rcmDacryocytesGrading'
       },
       {
         elementKey: 'rcmDrepanocytes',
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Drepanocytes (Sickle Cells)',
-        tableColumn: '71',
+        tableColumn: '86',
         fqn: 'hematology.rcmDrepanocytes'
       },
       {
         elementKey: 'rcmDrepanocytesGrading',
         formIndex: '2',
+        formCss: 'form_label_long',
         inputType: 'select',
-        label: 'Grading',
+        label: 'Drepanocytes (Sickle Cells) grading',
         options: [
           {
             key: '1+',
@@ -17350,28 +17491,23 @@ const DEFS = {
             text: '4+'
           }
         ],
-        tableColumn: '72',
+        tableColumn: '87',
         fqn: 'hematology.rcmDrepanocytesGrading'
-      },
-      {
-        elementKey: 'spacer143',
-        formIndex: '2',
-        inputType: 'spacer',
-        fqn: 'hematology.spacer143'
       },
       {
         elementKey: 'rcmEchinocytes',
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Echinocytes (Burr Cells)',
-        tableColumn: '73',
+        tableColumn: '88',
         fqn: 'hematology.rcmEchinocytes'
       },
       {
         elementKey: 'rcmEchinocytesGrading',
         formIndex: '2',
+        formCss: 'form_label_long',
         inputType: 'select',
-        label: 'Grading',
+        label: 'Echinocytes (Burr Cells) grading',
         options: [
           {
             key: '1+',
@@ -17390,28 +17526,23 @@ const DEFS = {
             text: '4+'
           }
         ],
-        tableColumn: '74',
+        tableColumn: '89',
         fqn: 'hematology.rcmEchinocytesGrading'
-      },
-      {
-        elementKey: 'spacer144',
-        formIndex: '2',
-        inputType: 'spacer',
-        fqn: 'hematology.spacer144'
       },
       {
         elementKey: 'rcmOvalocytes',
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Elliptocytes/Ovalocytes',
-        tableColumn: '75',
+        tableColumn: '90',
         fqn: 'hematology.rcmOvalocytes'
       },
       {
         elementKey: 'rcmOvalocytesGrading',
         formIndex: '2',
+        formCss: 'form_label_long',
         inputType: 'select',
-        label: 'Grading',
+        label: 'Elliptocytes/Ovalocytes grading',
         options: [
           {
             key: '1+',
@@ -17430,28 +17561,23 @@ const DEFS = {
             text: '4+'
           }
         ],
-        tableColumn: '76',
+        tableColumn: '91',
         fqn: 'hematology.rcmOvalocytesGrading'
-      },
-      {
-        elementKey: 'spacer145',
-        formIndex: '2',
-        inputType: 'spacer',
-        fqn: 'hematology.spacer145'
       },
       {
         elementKey: 'rcmMacroOvalocytes',
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Macro-ovalocytes',
-        tableColumn: '77',
+        tableColumn: '92',
         fqn: 'hematology.rcmMacroOvalocytes'
       },
       {
         elementKey: 'rcmMacroOvalocytesGrading',
         formIndex: '2',
+        formCss: 'form_label_long',
         inputType: 'select',
-        label: 'Grading',
+        label: 'Macro-ovalocytes grading',
         options: [
           {
             key: '1+',
@@ -17470,28 +17596,23 @@ const DEFS = {
             text: '4+'
           }
         ],
-        tableColumn: '78',
+        tableColumn: '93',
         fqn: 'hematology.rcmMacroOvalocytesGrading'
-      },
-      {
-        elementKey: 'spacer146',
-        formIndex: '2',
-        inputType: 'spacer',
-        fqn: 'hematology.spacer146'
       },
       {
         elementKey: 'rcmStomatocytes',
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Stomatocytes',
-        tableColumn: '79',
+        tableColumn: '94',
         fqn: 'hematology.rcmStomatocytes'
       },
       {
         elementKey: 'rcmStomatocytesGrading',
         formIndex: '2',
+        formCss: 'form_label_long',
         inputType: 'select',
-        label: 'Grading',
+        label: 'Stomatocytes grading',
         options: [
           {
             key: '1+',
@@ -17510,28 +17631,23 @@ const DEFS = {
             text: '4+'
           }
         ],
-        tableColumn: '80',
+        tableColumn: '95',
         fqn: 'hematology.rcmStomatocytesGrading'
-      },
-      {
-        elementKey: 'spacer147',
-        formIndex: '2',
-        inputType: 'spacer',
-        fqn: 'hematology.spacer147'
       },
       {
         elementKey: 'rcmSpherocytes',
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Spherocytes',
-        tableColumn: '81',
+        tableColumn: '96',
         fqn: 'hematology.rcmSpherocytes'
       },
       {
         elementKey: 'rcmSpherocytesGrading',
         formIndex: '2',
+        formCss: 'form_label_long',
         inputType: 'select',
-        label: 'Grading',
+        label: 'Spherocytes grading',
         options: [
           {
             key: '1+',
@@ -17550,48 +17666,38 @@ const DEFS = {
             text: '4+'
           }
         ],
-        tableColumn: '82',
+        tableColumn: '97',
         fqn: 'hematology.rcmSpherocytesGrading'
-      },
-      {
-        elementKey: 'spacer148',
-        formIndex: '2',
-        inputType: 'spacer',
-        fqn: 'hematology.spacer148'
       },
       {
         elementKey: 'rcmICC',
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Irregularly Contracted Cells (ICC)',
-        tableColumn: '82',
+        tableColumn: '98',
         fqn: 'hematology.rcmICC'
       },
       {
-        elementKey: 'spacer149',
+        elementKey: 'spacer142',
         formIndex: '2',
         inputType: 'spacer',
-        fqn: 'hematology.spacer149'
-      },
-      {
-        elementKey: 'spacer150',
-        formIndex: '2',
-        inputType: 'spacer',
-        fqn: 'hematology.spacer150'
+        label: 'Irregularly Contracted Cells (ICC) grading',
+        fqn: 'hematology.spacer142'
       },
       {
         elementKey: 'rcmICCBite',
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Bite Cells',
-        tableColumn: '83',
+        tableColumn: '99',
         fqn: 'hematology.rcmICCBite'
       },
       {
         elementKey: 'rcmICCBiteGrading',
         formIndex: '2',
+        formCss: 'form_label_long',
         inputType: 'select',
-        label: 'Grading',
+        label: 'Bite Cells grading',
         options: [
           {
             key: '1+',
@@ -17610,28 +17716,23 @@ const DEFS = {
             text: '4+'
           }
         ],
-        tableColumn: '84',
+        tableColumn: '100',
         fqn: 'hematology.rcmICCBiteGrading'
-      },
-      {
-        elementKey: 'spacer151',
-        formIndex: '2',
-        inputType: 'spacer',
-        fqn: 'hematology.spacer151'
       },
       {
         elementKey: 'rcmICCHelmut',
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Helmet Cells',
-        tableColumn: '85',
+        tableColumn: '101',
         fqn: 'hematology.rcmICCHelmut'
       },
       {
         elementKey: 'rcmICCHelmutGrading',
         formIndex: '2',
+        formCss: 'form_label_long',
         inputType: 'select',
-        label: 'Grading',
+        label: 'Helmet Cells grading',
         options: [
           {
             key: '1+',
@@ -17650,26 +17751,21 @@ const DEFS = {
             text: '4+'
           }
         ],
-        tableColumn: '86',
+        tableColumn: '102',
         fqn: 'hematology.rcmICCHelmutGrading'
-      },
-      {
-        elementKey: 'spacer152',
-        formIndex: '2',
-        inputType: 'spacer',
-        fqn: 'hematology.spacer152'
       },
       {
         elementKey: 'rcmICCSchistocytes',
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Schistocytes',
-        tableColumn: '87',
+        tableColumn: '103',
         fqn: 'hematology.rcmICCSchistocytes'
       },
       {
         elementKey: 'rcmICCSchistocytesGrading',
         formIndex: '2',
+        formCss: 'form_label_long',
         inputType: 'select',
         label: 'Grading',
         options: [
@@ -17690,21 +17786,15 @@ const DEFS = {
             text: '4+'
           }
         ],
-        tableColumn: '88',
+        tableColumn: '104',
         fqn: 'hematology.rcmICCSchistocytesGrading'
-      },
-      {
-        elementKey: 'spacer153',
-        formIndex: '2',
-        inputType: 'spacer',
-        fqn: 'hematology.spacer153'
       },
       {
         elementKey: 'rcmBasophilicStippling',
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Coarse Basophilic Stippling',
-        tableColumn: '89',
+        tableColumn: '105',
         fqn: 'hematology.rcmBasophilicStippling'
       },
       {
@@ -17712,7 +17802,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Howell-Jolly Bodies',
-        tableColumn: '90',
+        tableColumn: '106',
         fqn: 'hematology.rcmHowellJollyBodies'
       },
       {
@@ -17720,7 +17810,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Pappenheimer Bodies',
-        tableColumn: '91',
+        tableColumn: '107',
         fqn: 'hematology.rcmPappenheimerBodies'
       },
       {
@@ -17728,12 +17818,13 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Malaria',
-        tableColumn: '92',
+        tableColumn: '108',
         fqn: 'hematology.rcmMalaria'
       },
       {
         elementKey: 'rcmMalariaType',
         formIndex: '2',
+        formCss: 'form_label_short',
         inputType: 'checkset',
         label: 'Type',
         options: [
@@ -17750,7 +17841,7 @@ const DEFS = {
             text: 'Schizont'
           }
         ],
-        tableColumn: '93',
+        tableColumn: '109',
         fqn: 'hematology.rcmMalariaType'
       },
       {
@@ -17758,27 +17849,27 @@ const DEFS = {
         formIndex: '2',
         inputType: 'textarea',
         label: 'RBC comments',
-        tableColumn: '93',
+        tableColumn: '109',
         fqn: 'hematology.rbcComments'
       },
       {
-        elementKey: 'spacer156',
+        elementKey: 'spacer145',
         formIndex: '2',
         inputType: 'spacer',
-        fqn: 'hematology.spacer156'
+        fqn: 'hematology.spacer145'
       },
       {
-        elementKey: 'spacer157',
+        elementKey: 'spacer146',
         formIndex: '2',
         inputType: 'spacer',
-        fqn: 'hematology.spacer157'
+        fqn: 'hematology.spacer146'
       },
       {
         elementKey: 'referralToHema',
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Referral to hematopathologist',
-        tableColumn: '94',
+        tableColumn: '110',
         fqn: 'hematology.referralToHema'
       },
       {
@@ -17786,7 +17877,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'textarea',
         label: 'Reason for referral',
-        tableColumn: '95',
+        tableColumn: '111',
         fqn: 'hematology.explain'
       }
     ],
@@ -18045,8 +18136,7 @@ const DEFS = {
               'name',
               'profession',
               'day',
-              'time',
-              'pltAbnormalMorphology'
+              'time'
             ]
           },
           {
@@ -18298,320 +18388,414 @@ const DEFS = {
           {
             ehr_list_index: '43',
             items: [
-              'pltNormalMorphology',
-              'pltMorphology'
+              'pltNormalMorphology'
             ]
           },
           {
             ehr_list_index: '44',
             items: [
-              'cellCntSegmentedNeutrophil'
+              'pltAbnormalMorphology'
             ]
           },
           {
             ehr_list_index: '45',
             items: [
-              'cellCntBandCells'
+              'pltMorphology'
             ]
           },
           {
             ehr_list_index: '46',
             items: [
-              'cellCntLymph'
+              'cellCntSegNeutrophil'
             ]
           },
           {
             ehr_list_index: '47',
             items: [
-              'cellCntMono'
+              'cellCntSegNeutrophilAbs'
             ]
           },
           {
             ehr_list_index: '48',
             items: [
-              'cellCntEosin'
+              'cellCntBandCells'
             ]
           },
           {
             ehr_list_index: '49',
             items: [
-              'cellCntBaso'
+              'cellCntBandCellsAbs'
             ]
           },
           {
             ehr_list_index: '50',
             items: [
-              'cellCntMeta'
+              'cellCntLymph'
             ]
           },
           {
             ehr_list_index: '51',
             items: [
-              'cellCntMyelo'
+              'cellCntLymphAbs'
             ]
           },
           {
             ehr_list_index: '52',
             items: [
-              'cellCntPromyelo'
+              'cellCntMono'
             ]
           },
           {
             ehr_list_index: '53',
             items: [
-              'cellCntBlast'
+              'cellCntMonoAbs'
             ]
           },
           {
             ehr_list_index: '54',
             items: [
-              'cellCntReactiveLymphs'
+              'cellCntEosin'
             ]
           },
           {
             ehr_list_index: '55',
             items: [
-              'cellCntOther'
+              'cellCntEosinAbs'
             ]
           },
           {
             ehr_list_index: '56',
             items: [
-              'cellCntTotal'
+              'cellCntBaso'
             ]
           },
           {
             ehr_list_index: '57',
             items: [
-              'cellCntNRBCs'
+              'cellCntBasoAbs'
             ]
           },
           {
             ehr_list_index: '58',
             items: [
-              'wbcmNormalMorphology'
+              'cellCntMeta'
             ]
           },
           {
             ehr_list_index: '59',
             items: [
-              'wbcmAbnormalMorphology'
+              'cellCntMetaAbs'
             ]
           },
           {
             ehr_list_index: '60',
             items: [
-              'wbcmAbnormalTypeMorphology'
+              'cellCntMyelo'
             ]
           },
           {
             ehr_list_index: '61',
             items: [
-              'wbcmToxicMorphology'
+              'cellCntMyeloAbs'
             ]
           },
           {
             ehr_list_index: '62',
             items: [
-              'wbcmToxicTypeMorphology'
+              'cellCntPromyelo'
             ]
           },
           {
             ehr_list_index: '63',
             items: [
-              'rcmNormal'
+              'cellCntPromyeloAbs'
             ]
           },
           {
             ehr_list_index: '64',
             items: [
-              'rcmConsistent'
+              'cellCntBlast'
             ]
           },
           {
             ehr_list_index: '65',
             items: [
-              'rcmAcanthocytes'
+              'cellCntBlastAbs'
             ]
           },
           {
             ehr_list_index: '66',
             items: [
-              'rcmAcanthocytesGrading'
+              'cellCntReactiveLymphs'
             ]
           },
           {
             ehr_list_index: '67',
             items: [
-              'rcmCodocytes'
+              'cellCntReactiveLymphsAbs'
             ]
           },
           {
             ehr_list_index: '68',
             items: [
-              'rcmCodocytesGrading'
+              'cellCntOther'
             ]
           },
           {
             ehr_list_index: '69',
             items: [
-              'rcmDacryocytes'
+              'cellCntOtherAbs'
             ]
           },
           {
             ehr_list_index: '70',
             items: [
-              'rcmDacryocytesGrading'
+              'cellCntOtherSpecify'
             ]
           },
           {
             ehr_list_index: '71',
             items: [
-              'rcmDrepanocytes'
+              'cellCntTotal'
             ]
           },
           {
             ehr_list_index: '72',
             items: [
-              'rcmDrepanocytesGrading'
+              'cellCntNRBCs'
             ]
           },
           {
             ehr_list_index: '73',
             items: [
-              'rcmEchinocytes'
+              'wbcmNormalMorphology'
             ]
           },
           {
             ehr_list_index: '74',
             items: [
-              'rcmEchinocytesGrading'
+              'wbcmAbnormalMorphology'
             ]
           },
           {
             ehr_list_index: '75',
             items: [
-              'rcmOvalocytes'
+              'wbcmAbnormalTypeMorphology'
             ]
           },
           {
             ehr_list_index: '76',
             items: [
-              'rcmOvalocytesGrading'
+              'wbcmToxicMorphology'
             ]
           },
           {
             ehr_list_index: '77',
             items: [
-              'rcmMacroOvalocytes'
+              'wbcmToxicTypeMorphology'
             ]
           },
           {
             ehr_list_index: '78',
             items: [
-              'rcmMacroOvalocytesGrading'
+              'rcmNormal'
             ]
           },
           {
             ehr_list_index: '79',
             items: [
-              'rcmStomatocytes'
+              'rcmConsistent'
             ]
           },
           {
             ehr_list_index: '80',
             items: [
-              'rcmStomatocytesGrading'
+              'rcmAcanthocytes'
             ]
           },
           {
             ehr_list_index: '81',
             items: [
-              'rcmSpherocytes'
+              'rcmAcanthocytesGrading'
             ]
           },
           {
             ehr_list_index: '82',
             items: [
-              'rcmSpherocytesGrading',
-              'rcmICC'
+              'rcmCodocytes'
             ]
           },
           {
             ehr_list_index: '83',
             items: [
-              'rcmICCBite'
+              'rcmCodocytesGrading'
             ]
           },
           {
             ehr_list_index: '84',
             items: [
-              'rcmICCBiteGrading'
+              'rcmDacryocytes'
             ]
           },
           {
             ehr_list_index: '85',
             items: [
-              'rcmICCHelmut'
+              'rcmDacryocytesGrading'
             ]
           },
           {
             ehr_list_index: '86',
             items: [
-              'rcmICCHelmutGrading'
+              'rcmDrepanocytes'
             ]
           },
           {
             ehr_list_index: '87',
             items: [
-              'rcmICCSchistocytes'
+              'rcmDrepanocytesGrading'
             ]
           },
           {
             ehr_list_index: '88',
             items: [
-              'rcmICCSchistocytesGrading'
+              'rcmEchinocytes'
             ]
           },
           {
             ehr_list_index: '89',
             items: [
-              'rcmBasophilicStippling'
+              'rcmEchinocytesGrading'
             ]
           },
           {
             ehr_list_index: '90',
             items: [
-              'rcmHowellJollyBodies'
+              'rcmOvalocytes'
             ]
           },
           {
             ehr_list_index: '91',
             items: [
-              'rcmPappenheimerBodies'
+              'rcmOvalocytesGrading'
             ]
           },
           {
             ehr_list_index: '92',
             items: [
-              'rcmMalaria'
+              'rcmMacroOvalocytes'
             ]
           },
           {
             ehr_list_index: '93',
+            items: [
+              'rcmMacroOvalocytesGrading'
+            ]
+          },
+          {
+            ehr_list_index: '94',
+            items: [
+              'rcmStomatocytes'
+            ]
+          },
+          {
+            ehr_list_index: '95',
+            items: [
+              'rcmStomatocytesGrading'
+            ]
+          },
+          {
+            ehr_list_index: '96',
+            items: [
+              'rcmSpherocytes'
+            ]
+          },
+          {
+            ehr_list_index: '97',
+            items: [
+              'rcmSpherocytesGrading'
+            ]
+          },
+          {
+            ehr_list_index: '98',
+            items: [
+              'rcmICC'
+            ]
+          },
+          {
+            ehr_list_index: '99',
+            items: [
+              'rcmICCBite'
+            ]
+          },
+          {
+            ehr_list_index: '100',
+            items: [
+              'rcmICCBiteGrading'
+            ]
+          },
+          {
+            ehr_list_index: '101',
+            items: [
+              'rcmICCHelmut'
+            ]
+          },
+          {
+            ehr_list_index: '102',
+            items: [
+              'rcmICCHelmutGrading'
+            ]
+          },
+          {
+            ehr_list_index: '103',
+            items: [
+              'rcmICCSchistocytes'
+            ]
+          },
+          {
+            ehr_list_index: '104',
+            items: [
+              'rcmICCSchistocytesGrading'
+            ]
+          },
+          {
+            ehr_list_index: '105',
+            items: [
+              'rcmBasophilicStippling'
+            ]
+          },
+          {
+            ehr_list_index: '106',
+            items: [
+              'rcmHowellJollyBodies'
+            ]
+          },
+          {
+            ehr_list_index: '107',
+            items: [
+              'rcmPappenheimerBodies'
+            ]
+          },
+          {
+            ehr_list_index: '108',
+            items: [
+              'rcmMalaria'
+            ]
+          },
+          {
+            ehr_list_index: '109',
             items: [
               'rcmMalariaType',
               'rbcComments'
             ]
           },
           {
-            ehr_list_index: '94',
+            ehr_list_index: '110',
             items: [
               'referralToHema'
             ]
           },
           {
-            ehr_list_index: '95',
+            ehr_list_index: '111',
             items: [
               'explain'
             ]
@@ -18648,6 +18832,7 @@ const DEFS = {
             {
               elementKey: 'ehr_group131',
               label: 'CBC Analysis',
+              formCss: 'grid-left-to-right-1',
               gIndex: '3',
               gChildren: [
                 'bloodAnalysis'
@@ -18656,6 +18841,7 @@ const DEFS = {
             {
               elementKey: 'ehr_group132',
               label: 'Actions',
+              formCss: 'grid-left-to-right-1',
               gIndex: '4',
               gChildren: [
                 'actionsRequired',
@@ -18712,6 +18898,7 @@ const DEFS = {
             {
               elementKey: 'ehr_group135',
               label: 'PLT morphology (shape of platelets)',
+              formCss: 'grid-left-to-right-1',
               gIndex: '7',
               gChildren: [
                 'pltNormalMorphology',
@@ -18722,26 +18909,41 @@ const DEFS = {
             {
               elementKey: 'ehr_group136',
               label: 'WBC Differential',
+              formCss: 'grid-left-to-right-2',
               gIndex: '8',
               gChildren: [
-                'cellCntSegmentedNeutrophil',
+                'cellCntSegNeutrophil',
+                'cellCntSegNeutrophilAbs',
                 'cellCntBandCells',
+                'cellCntBandCellsAbs',
                 'cellCntLymph',
+                'cellCntLymphAbs',
                 'cellCntMono',
+                'cellCntMonoAbs',
                 'cellCntEosin',
+                'cellCntEosinAbs',
                 'cellCntBaso',
+                'cellCntBasoAbs',
                 'cellCntMeta',
+                'cellCntMetaAbs',
                 'cellCntMyelo',
+                'cellCntMyeloAbs',
                 'cellCntPromyelo',
+                'cellCntPromyeloAbs',
                 'cellCntBlast',
+                'cellCntBlastAbs',
                 'cellCntReactiveLymphs',
+                'cellCntReactiveLymphsAbs',
                 'cellCntOther',
+                'cellCntOtherAbs',
+                'spacer137',
+                'cellCntOtherSpecify',
                 'cellCntTotal',
                 'cellCntNRBCs'
               ]
             },
             {
-              elementKey: 'ehr_group137',
+              elementKey: 'ehr_group138',
               label: 'White Cell Morphology',
               gIndex: '9',
               gChildren: [
@@ -18756,57 +18958,47 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group138',
+              elementKey: 'ehr_group139',
               label: 'Red Cell Morphology',
+              formCss: 'grid-left-to-right-2',
               gIndex: '10',
               gChildren: [
                 'rcmNormal',
+                'spacer140',
                 'rcmConsistent',
-                'spacer139',
+                'spacer141',
                 'rcmAcanthocytes',
                 'rcmAcanthocytesGrading',
-                'spacer140',
                 'rcmCodocytes',
                 'rcmCodocytesGrading',
-                'spacer141',
                 'rcmDacryocytes',
                 'rcmDacryocytesGrading',
-                'spacer142',
                 'rcmDrepanocytes',
                 'rcmDrepanocytesGrading',
-                'spacer143',
                 'rcmEchinocytes',
                 'rcmEchinocytesGrading',
-                'spacer144',
                 'rcmOvalocytes',
                 'rcmOvalocytesGrading',
-                'spacer145',
                 'rcmMacroOvalocytes',
                 'rcmMacroOvalocytesGrading',
-                'spacer146',
                 'rcmStomatocytes',
                 'rcmStomatocytesGrading',
-                'spacer147',
                 'rcmSpherocytes',
                 'rcmSpherocytesGrading',
-                'spacer148',
                 'rcmICC',
-                'spacer149',
-                'spacer150',
+                'spacer142',
                 'rcmICCBite',
                 'rcmICCBiteGrading',
-                'spacer151',
                 'rcmICCHelmut',
                 'rcmICCHelmutGrading',
-                'spacer152',
                 'rcmICCSchistocytes',
-                'rcmICCSchistocytesGrading',
-                'spacer153'
+                'rcmICCSchistocytesGrading'
               ]
             },
             {
-              elementKey: 'ehr_group154',
+              elementKey: 'ehr_group143',
               label: 'RBC Inclusions',
+              formCss: 'grid-left-to-right-2',
               gIndex: '11',
               gChildren: [
                 'rcmBasophilicStippling',
@@ -18817,16 +19009,18 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group155',
+              elementKey: 'ehr_group144',
+              formCss: 'grid-left-to-right-1',
               gIndex: '12',
               gChildren: [
                 'rbcComments',
-                'spacer156',
-                'spacer157'
+                'spacer145',
+                'spacer146'
               ]
             },
             {
-              elementKey: 'ehr_group158',
+              elementKey: 'ehr_group147',
+              formCss: 'grid-left-to-right-1',
               gIndex: '13',
               gChildren: [
                 'referralToHema',
@@ -18883,18 +19077,31 @@ const DEFS = {
             pltNormalMorphology: '',
             pltAbnormalMorphology: '',
             pltMorphology: '',
-            cellCntSegmentedNeutrophil: '',
+            cellCntSegNeutrophil: '',
+            cellCntSegNeutrophilAbs: '',
             cellCntBandCells: '',
+            cellCntBandCellsAbs: '',
             cellCntLymph: '',
+            cellCntLymphAbs: '',
             cellCntMono: '',
+            cellCntMonoAbs: '',
             cellCntEosin: '',
+            cellCntEosinAbs: '',
             cellCntBaso: '',
+            cellCntBasoAbs: '',
             cellCntMeta: '',
+            cellCntMetaAbs: '',
             cellCntMyelo: '',
+            cellCntMyeloAbs: '',
             cellCntPromyelo: '',
+            cellCntPromyeloAbs: '',
             cellCntBlast: '',
+            cellCntBlastAbs: '',
             cellCntReactiveLymphs: '',
+            cellCntReactiveLymphsAbs: '',
             cellCntOther: '',
+            cellCntOtherAbs: '',
+            cellCntOtherSpecify: '',
             cellCntTotal: '',
             cellCntNRBCs: '',
             wbcmNormalMorphology: '',

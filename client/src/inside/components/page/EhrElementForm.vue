@@ -50,10 +50,11 @@
     div(v-else-if="isType('mainDOB')")
       ehr-element-birth-date(:elementKey="elementKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
 
-    div(v-else-if="isType('number')", class="text_input_wrapper")
+    div(v-else-if="isType('number') || isType('personAge')", class="text_input_wrapper")
       ehr-page-form-label(:element="element", css="text_label")
-      input(v-if="!viewOnly", class="input text-input", type="number", :disabled="disabled", :name="elementKey", v-model="inputVal")
+      input(v-if="!viewOnly", class="input numb-input", type="number", :disabled="disabled", :name="elementKey", v-model="inputVal")
       div(v-if="viewOnly") {{ inputVal }}
+      span(class="suffix") {{suffix }}
 
     div(v-else-if="isType('select')", class="select_wrapper")
       ehr-page-form-label(:element="element", css="select_label")
@@ -66,7 +67,7 @@
     div(v-else-if="isType('spacer')", class="label_wrapper") <!--class="spacer"-->
       div &nbsp;
 
-    div(v-else-if="isType('text') || isType('personAge')", class="text_input_wrapper")
+    div(v-else-if="isType('text')", class="text_input_wrapper")
       ehr-page-form-label(:element="element", css="text_label")
       input(v-if="!viewOnly", class="input text-input", :disabled="disabled", :name="elementKey", v-model="inputVal")
       div(v-if="viewOnly") {{ inputVal }}

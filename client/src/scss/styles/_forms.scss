@@ -31,10 +31,19 @@ textarea {
   display: inline-block;
 }
 .form_label {
-  //font-weight: bold;
   width: 8rem;
   &::after {
     content: ":"
+  }
+}
+.form_label_short {
+  .form_label {
+    width: 4rem;
+  }
+}
+.form_label_long {
+  .form_label {
+    width: 20rem;
   }
 }
 .checkbox_label,
@@ -114,7 +123,9 @@ input:disabled, textarea:disabled, select:disabled, checkbox:disabled, radio:dis
 }
 
 .embedded-data {
-  width: 50rem;
+  border: 1px dashed;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 .vdp-datepicker * {
   width: 100%

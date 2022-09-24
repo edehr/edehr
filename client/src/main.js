@@ -37,23 +37,25 @@ router.afterEach((to, from) => {
   PageController.onPageChange(to)
 })
 
-Sentry.init({
-  Vue,
-  dsn: 'https://c2ed6617d7bd4518ae5e0cea8827cb9d@o1411884.ingest.sentry.io/6750589',
-  environment: StoreHelper.sentryEnvironment(),
-  integrations: [
-    new BrowserTracing({
-      routingInstrumentation: Sentry.vueRouterInstrumentation(router),
-      // default value of tracingOrigins is ['localhost', /^\//].
-      tracingOrigins: ['localhost', 'edehr.org', /^\//],
-    }),
-  ],
-  // Set tracesSampleRate to 1.0 to capture 100%
-  // of transactions for performance monitoring.
-  // We recommend adjusting this value in production
-  tracesSampleRate: 1.0,
-})
-
+if (!window.location.origin.includes('localhost')) {
+  //only install Sentry on non-localhost
+  Sentry.init({
+    Vue,
+    dsn: 'https://c2ed6617d7bd4518ae5e0cea8827cb9d@o1411884.ingest.sentry.io/6750589',
+    environment: StoreHelper.sentryEnvironment(),
+    integrations: [
+      new BrowserTracing({
+        routingInstrumentation: Sentry.vueRouterInstrumentation(router),
+        // default value of tracingOrigins is ['localhost', /^\//].
+        tracingOrigins: ['localhost', 'edehr.org', /^\//],
+      }),
+    ],
+    // Set tracesSampleRate to 1.0 to capture 100%
+    // of transactions for performance monitoring.
+    // We recommend adjusting this value in production
+    tracesSampleRate: 1.0,
+  })
+}
 /*
 Create the root Vue component.
  */
