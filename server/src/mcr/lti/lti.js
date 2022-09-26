@@ -115,7 +115,7 @@ export default class LTIController {
     const _this = this
     // It is necessary to use a different _req for validation in case
     // one is using postman
-    const _req = this._postmanFormat(req) 
+    const _req = this._postmanFormat(req)
     if (!_this.validateLti(_req.body, callback)) {
       return
     }
@@ -321,7 +321,7 @@ export default class LTIController {
       debug('LTI create token with', tokenData)
       const token = this.authUtil.createToken(tokenData)
       const refreshToken = this.authUtil.createRefreshToken(token)
-      let ltiQuery = 'lti=' + (visit.isInstructor ? 'instructor' : (visit.isStudent ? 'student' : 'unknown'))
+      let ltiQuery = 'lti=' + (visit.isInstructor ? 'instructor' : 'student')
       req.refreshToken = refreshToken
       let url = this.config.clientUrl + route + `?${ltiQuery}&token=${refreshToken}`
       if (req.errors.length > 0) {
@@ -337,7 +337,7 @@ export default class LTIController {
       throw new SystemError(err)
     }
   }
-  
+
   async _postLtiChain (req) {
     const _this = this
     const db = false
@@ -388,7 +388,7 @@ export default class LTIController {
       try {
         let signer = new HMAC_SHA1()
         const oauth_signature = signer.build_signature(
-          req, 
+          req,
           req.body,
           req.body.oauth_consumer_secret
         )
@@ -399,7 +399,7 @@ export default class LTIController {
       }
     }
   }
-  
+
   _extractLtiData (props, src, dest) {
     dest = dest || {}
     props.forEach( p => dest[p] = src[p])
@@ -435,10 +435,10 @@ export default class LTIController {
 
   /**
    * @method _postmanFormat
-   * @param {*} req 
+   * @param {*} req
    * @description Formats and return a new _req object, in case the request is coming from postman.
    * This happens since postman needs an API call so that the request is signed and, therefore the request needs to be
-   * equal for both of the requests, which is difficult. Therefore, this method assigns an _req object passed to the body 
+   * equal for both of the requests, which is difficult. Therefore, this method assigns an _req object passed to the body
    * which reflects the same value as used in the other method. If the request is not from postman's user-agent,
    * then it returns the original _req.
    */
@@ -450,7 +450,7 @@ export default class LTIController {
       delete req.body._req
       _req.body = req.body.body
       return _req
-    } 
+    }
     return req
   }
 
