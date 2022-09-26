@@ -9,6 +9,9 @@ WORKDIR /usr/src/app
 # copy both the package.json and the package-lock.json
 COPY package*.json ./
 
+# Force git to use https and not git protocol. Need this for the lti module
+RUN git config --global url."https://github.com/".insteadOf ssh://git@github.com/
+
 # Install based on the package-lock.json file contents....
 RUN npm ci
 
