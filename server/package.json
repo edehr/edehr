@@ -12,7 +12,7 @@
     "generate-password": "node src/server/generate-password.js",
     "lint": "eslint --fix 'src/**/*.js'",
     "scale-test": "node test/scale-testing.js",
-    "start": "NODE_ENV=development DEBUG='trace, server, error' nodemon -r dotenv/config --exec babel-node src/index.js",
+    "start": "NODE_ENV=development DEBUG='server, error' nodemon -r dotenv/config --exec babel-node src/index.js",
     "start:lti": "NODE_ENV=development DEBUG='lti, server, error' nodemon -r dotenv/config --exec babel-node src/index.js",
     "start:detailed": "NODE_ENV=development DEBUG='trace, server, error, details' nodemon -r dotenv/config --exec babel-node src/index.js",
     "start:prod": "NODE_ENV=production DEBUG='server, error' node build/index.js",

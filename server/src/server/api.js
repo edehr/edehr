@@ -49,6 +49,7 @@ export function apiMiddle (app, config) {
   app.sessionStore = new FileStore(fileStoreOptions)
 
   app.use(session({
+    // TODO Remove the session and cookie stuff because it is not used
     genid: req => {
       // debug('Inside the session middleware req.sessionID ' + req.sessionID)
       let guid = uuidv4()
