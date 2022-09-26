@@ -1,13 +1,16 @@
-// import moment from 'moment'
 import { Router } from 'express'
 import { API_EVENT_BUS, API_CALL_EVENT } from '../../server/trace-api'
 import { logError} from '../../helpers/log-error'
+import Monitor from './monitor'
+import System from './system'
 
 const metricData = {
 }
 
 export default class MetricController {
   constructor (config) {
+    this.monitor = new Monitor()
+    this.system = new System()
     metricData.host = config.apiHost
     metricData.version = config.appVersion
     metricData.appTitle = config.appTitle
@@ -19,8 +22,10 @@ export default class MetricController {
     metricData.runTime = 0
     metricData.maxApi = ''
     metricData.points = {}
+    metricData.monitor = {}
     API_EVENT_BUS.on(API_CALL_EVENT, (rec) => {
       try {
+        this.monitor.apiEvent(rec)
         this.recordApi(rec)
       } catch (err) {
         logError(err)
@@ -28,7 +33,9 @@ export default class MetricController {
     })
   }
 
-  getMetrics () {
+  async getMetrics () {
+    metricData.monitor = this.monitor.getData()
+    metricData.system = await this.system.getData()
     return Promise.resolve(metricData)
   }
 
@@ -41,7 +48,7 @@ export default class MetricController {
           res.json(data)
         })
         .catch(error => {
-          message = 'Unknown error:' + error.name + ' ' + error.message
+          let message = 'Unknown error:' + error.name + ' ' + error.message
           console.error('Metric get api end point fail unknown error return 500.', message)
           res.status(500).send(message) // .end(message)
         })
@@ -66,7 +73,7 @@ export default class MetricController {
         slowInf: [],
       }
     }
-    this.recordApiCall(key, rec, N)
+    this._recordApiCall(key, rec, N)
     metricData.maxApi = this.findMax(metricData.points)
     metricData.last= Date.now()
     metricData.lastDate= (new Date()).toISOString()
@@ -87,32 +94,32 @@ export default class MetricController {
     return {maxKey: mk, maxElapsed: mx }
   }
 
-  recordApiCall (key, rec, N) {
+  _recordApiCall (key, rec, N) {
     const pt = metricData.points[key]
     const lastN = pt.lastN
-    this.addRec(lastN, rec, N)
-    let sum = lastN.length === 1 ? lastN[0].elapsedMs : lastN.reduce((a, b) => {
+    this._addRec(lastN, rec, N)
+    pt.sum = lastN.length === 1 ? lastN[0].elapsedMs : lastN.reduce((a, b) => {
       return a.elapsedMs + b.elapsedMs
     })
-    pt.avg = sum / lastN.length
+    pt.avg = Math.round(pt.sum / lastN.length)
     const ts = rec.elapsedMs
     if (ts <= 50) {
       pt.cnt50++
     } else if (ts <= 200) {
       pt.cnt200++
-      this.addRec(pt.slow200, rec, N)
+      this._addRec(pt.slow200, rec, N)
     } else {
       pt.cntInf++
-      this.addRec(pt.slowInf, rec, N)
+      this._addRec(pt.slowInf, rec, N)
     }
     pt.cnt++
-    if (ts > pt.max) {
+    if (ts >= pt.max) {
       pt.max = ts
       pt.maxRec = rec
     }
   }
 
-  addRec (lastN, rec, N) {
+  _addRec (lastN, rec, N) {
     lastN.push(rec)
     if (lastN.length > N) {
       lastN.shift()

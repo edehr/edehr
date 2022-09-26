@@ -54,7 +54,7 @@ function composeData (req, statusCode, time) {
   const key = (req.method + url).toLowerCase()
     .replace(/[:.]/g, '')
     .replace(/\//g, '_')
-  const elapsedMs = Math.round(time * 10) / 10
+  const elapsedMs = Math.round(time)
   const rec = {
     key: key,
     ts: ts,
