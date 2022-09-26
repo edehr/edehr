@@ -17315,12 +17315,12 @@ const DEFS = {
             'text': 'Döhle Bodies'
           },
           {
-            'key': 'Toxic Granules',
-            'text': 'Toxic Granules'
+            'key': 'Toxic Granulation',
+            'text': 'Toxic Granulation'
           },
           {
-            'key': 'Toxic Vacuoles',
-            'text': 'Toxic Vacuoles'
+            'key': 'Toxic Vacuolation',
+            'text': 'Toxic Vacuolation'
           }
         ],
         'tableColumn': '77',
@@ -18998,7 +18998,6 @@ const DEFS = {
             {
               'elementKey': 'ehr_group143',
               'label': 'RBC Inclusions',
-              'formCss': 'grid-left-to-right-2',
               'gIndex': '11',
               'gChildren': [
                 'rcmBasophilicStippling',

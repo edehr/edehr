@@ -107,9 +107,9 @@ export function ehrCalculateProperty (pageDataKey, targetKey, srcValues) {
         let wbc, factor
         if ( isObject(values[0])) {
           wbc = values[0]['wbc']
-          factor = values[1]
+          factor = values[1] /100
         } else {
-          factor = values[0]
+          factor = values[0] /100
           wbc = values[1]['wbc']
         }
         // console.log('wbc factor',wbc, factor)
