@@ -7,6 +7,7 @@ import { DEMO_CONSUMER_FAMILY_CODE} from '../demo/demo-controller'
 import { logError} from '../../helpers/log-error'
 
 const debug = require('debug')('server')
+const logLti = require('debug')('lti')
 const debugFine = false
 
 const CustomStrategy = require('passport-custom')
@@ -117,12 +118,14 @@ export default class LTIController {
     // one is using postman
     const _req = this._postmanFormat(req)
     if (!_this.validateLti(_req.body, callback)) {
+      logLti('LTI validation failed on',  _req.body)
       return
     }
     // store the LTI data for further processing after setting up the user
     const ltiData = (req.ltiData = _req.body)
+    logLti(ltiData)
     try {
-      var consumerKey = ltiData['oauth_consumer_key']
+      const consumerKey = ltiData['oauth_consumer_key']
       debug('strategyVerify find consumer by key ' + consumerKey)
       _this.consumerController.findOneConsumerByKey(consumerKey)
         .then(toolConsumer => {
@@ -137,17 +140,13 @@ export default class LTIController {
           return toolConsumer
         })
         .then(() => {
-          let debugLtiValidation = false
-          let withDetailsCallback = undefined
-          if (debugLtiValidation) {
-            withDetailsCallback = function (details) {
-              debug('LTI. Here are the details used to create the signature', details)
-            }
-          }
+          const withDetailsCallback = logLti.enabled ? function (details) {
+            logLti('LTI. Here are the details used to create the signature', details)
+          } : undefined
           let secret = req.toolConsumer.oauth_consumer_secret
           debug('strategyVerify secret', secret)
           let provider = new lti.Provider(ltiData, secret, null, null, withDetailsCallback)
-          if (debugFine) debug('strategyVerify validate msg with provider')
+          logLti('strategyVerify validate msg with provider')
           provider.valid_request(_req, function (err, isValid) {
             if (err) {
               debug('strategyVerify lti provider verify send error: ' + err.message)
