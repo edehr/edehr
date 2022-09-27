@@ -158,7 +158,6 @@ export default {
       this.dialogIsOpen = open
       if (open) {
         if (this.isEmbedded) {
-          let inputs = options.inputs
           let inputs = options.inputs ? options.inputs : options.data
           if (inputs) {
             let initialValue = inputs[this.elementKey]
