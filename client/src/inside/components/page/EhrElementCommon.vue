@@ -158,9 +158,13 @@ export default {
       this.dialogIsOpen = open
       if (open) {
         if (this.isEmbedded) {
-          let inputs = options.inputs
-          let initialValue = inputs[this.elementKey]
-          this.setInitialValue(initialValue)
+          let inputs = options.inputs ? options.inputs : options.data
+          if (inputs) {
+            let initialValue = inputs[this.elementKey]
+            this.setInitialValue(initialValue)
+          } else {
+            console.log('inputs TODO fix no inputs here ', options, this.elementKey)
+          }
         } else {
           let inputs = this.ehrHelp.getDialogInputs(this.tableKey)
           let initialValue = inputs[this.elementKey]

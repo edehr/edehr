@@ -49,7 +49,7 @@ export default class MarHelper {
   clearAllData () {
     let marTableKey = this.getMarTableKey()
     let asLoadedPageData = this.getEhrData_MarPageData()
-    
+
     asLoadedPageData[marTableKey] = []
     let payload = {
       pageKey: MAR_PAGE_KEY,
@@ -90,12 +90,8 @@ export default class MarHelper {
     try {
       let marsPageDef = this.getPageDef_Mar()
       let table
-      if (marsPageDef.isV2) {
-        // the mars page has one table element
-        table = marsPageDef.pageElements.table
-      } else {
-        table = marsPageDef.tables[0]
-      }
+      // the mars page has one table element
+      table = marsPageDef.pageElements.table
       key = table.tableKey
     } catch (err) {
       StoreHelper.setApiError(err)
