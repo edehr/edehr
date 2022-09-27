@@ -64,7 +64,7 @@ export default {
       let sdList = StoreHelper.getSeedDataList(this)
       return sdList.map(sd => {
         return { id: sd._id, name: sd.name }
-      })
+      }).sort( (a,b) => a.name.localeCompare(b.name))
     },
     hasAdvanced () {
       return this.actionType === EDIT_ACTION
