@@ -156,7 +156,7 @@ export default {
     dialogEvent (open, options) {
       if (dbDialog) console.log('EhrCommon dialog opened or closed', this.elementKey, open)
       this.dialogIsOpen = open
-      if (open && !options.viewOnly) {
+      if (open) {
         if (this.isEmbedded) {
           let inputs = options.inputs ? options.inputs : options.data
           if (inputs) {
