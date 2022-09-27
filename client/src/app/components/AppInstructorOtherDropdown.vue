@@ -26,37 +26,37 @@ export default {
       menuItems.push( {
         label: MENU_TEXT.COURSES_LABEL,
         toolTip: MENU_TEXT.COURSES_TOOLTIP,
-        callback: () => { this.$router.push('/courses') },
+        callback: () => { this.navigate('/courses') },
         icon: APP_ICONS.course
       })
       menuItems.push( {
         label: MENU_TEXT.ACTIVITIES,
         toolTip: MENU_TEXT.ACTIVITIES_TOOLTIP,
-        callback: () => { this.$router.push('/lms-activity') },
+        callback: () => { this.navigate('/lms-activity') },
         icon: APP_ICONS.activity
       })
       menuItems.push( {
         label: MENU_TEXT.LOBJ_LABEL,
         toolTip: MENU_TEXT.LOBJ_TOOLTIP,
-        callback: () => { this.$router.push('/learning-objects') },
+        callback: () => { this.navigate('/learning-objects') },
         icon: APP_ICONS.lobj
       })
       menuItems.push( {
         label: MENU_TEXT.SEED_LIST_LABEL,
         toolTip: MENU_TEXT.SEED_LIST_TOOLTIP,
-        callback: () => { this.$router.push('/seed-list') },
+        callback: () => { this.navigate('/seed-list') },
         icon: APP_ICONS.seed
       })
       menuItems.push( {
         label: MENU_TEXT.FILE_LABEL,
         toolTip: MENU_TEXT.FILE_TOOLTIP,
-        callback: () => { this.$router.push('/fileList') },
+        callback: () => { this.navigate('/fileList') },
         icon: APP_ICONS.file
       })
       menuItems.push( {
         label: MENU_TEXT.LMS_LABEL,
         toolTip: MENU_TEXT.LMS_TOOLTIP,
-        callback: () => { this.$router.push({ name: 'consumer', query: { consumerId: StoreHelper.consumerId() } }) },
+        callback: () => { this.navigate({ name: 'consumer', query: { consumerId: StoreHelper.consumerId() } }) },
         icon: APP_ICONS.consumer
       })
       menuItems.push( {
@@ -82,6 +82,14 @@ export default {
       return menuItems
     },
   },
+  methods: {
+    navigate (path) {
+      // prevent Vue's NavigationDuplicated
+      if (this.$route.path !== path) {
+        this.$router.push(path)
+      }
+    }
+  }
 }
 </script>
 
