@@ -16424,6 +16424,7 @@ const DEFS = {
         helperText: 'Platelet Count',
         inputType: 'number',
         label: 'PLT',
+        mandatory: true,
         suffix: '10^9/L',
         tableColumn: '16',
         validation: 'numeric',
@@ -16591,7 +16592,7 @@ const DEFS = {
         embedRef: 'hematology.tableCbcAnalysis',
         inputType: 'ehr_embedded',
         label: 'CBC Analysis',
-        passToFunction: '[cellCntSegNeutrophilAbs, cellCntBandCellsAbs, cellCntLymphAbs, cellCntMonoAbs, cellCntEosinAbs, cellCntBasoAbs, cellCntMetaAbs, cellCntMyeloAbs, cellCntPromyeloAbs, cellCntBlastAbs, cellCntReactiveLymphsAbs, cellCntOtherAbs]',
+        passToFunction: '[wbcAnalysis, pltAnalysis, cellCntSegNeutrophilAbs, cellCntBandCellsAbs, cellCntLymphAbs, cellCntMonoAbs, cellCntEosinAbs, cellCntBasoAbs, cellCntMetaAbs, cellCntMyeloAbs, cellCntPromyeloAbs, cellCntBlastAbs, cellCntReactiveLymphsAbs, cellCntOtherAbs]',
         tableColumn: '7',
         fqn: 'hematology.bloodAnalysis'
       },
@@ -16740,17 +16741,26 @@ const DEFS = {
         formIndex: '2',
         inputType: 'calculatedValue',
         label: 'WBC estimate',
-        passToFunction: '[wbcLowRange, wbcHighRange]',
         tableColumn: '23',
         fqn: 'hematology.wbcEstimate'
+      },
+      {
+        elementKey: 'wbcAnalysis',
+        calculationType: 'embedValue(hematology,tableCbcAnalysis,wbc)',
+        formIndex: '2',
+        inputType: 'calculatedValue',
+        label: 'WBC analysis',
+        passToFunction: '[wbcLowRange, wbcHighRange]',
+        tableColumn: '24',
+        fqn: 'hematology.wbcAnalysis'
       },
       {
         elementKey: 'wbcLowRange',
         calculationType: 'multiplyBy(0.75)',
         formIndex: '2',
         inputType: 'calculatedValue',
-        label: 'WBC estimate range (low)',
-        tableColumn: '24',
+        label: 'WBC acceptable range (low)',
+        tableColumn: '25',
         fqn: 'hematology.wbcLowRange'
       },
       {
@@ -16758,8 +16768,8 @@ const DEFS = {
         calculationType: 'multiplyBy(1.25)',
         formIndex: '2',
         inputType: 'calculatedValue',
-        label: 'WBC estimate range (high)',
-        tableColumn: '25',
+        label: 'WBC acceptable range (high)',
+        tableColumn: '26',
         fqn: 'hematology.wbcHighRange'
       },
       {
@@ -16768,7 +16778,7 @@ const DEFS = {
         formCss: 'grid-span-2-columns',
         inputType: 'text',
         label: 'WBC comment',
-        tableColumn: '26',
+        tableColumn: '27',
         fqn: 'hematology.wbcComment'
       },
       {
@@ -16777,7 +16787,7 @@ const DEFS = {
         inputType: 'number',
         label: 'PLT - 1',
         passToFunction: 'pltAverage',
-        tableColumn: '27',
+        tableColumn: '28',
         fqn: 'hematology.plt-1'
       },
       {
@@ -16786,7 +16796,7 @@ const DEFS = {
         inputType: 'number',
         label: 'PLT - 2',
         passToFunction: 'pltAverage',
-        tableColumn: '28',
+        tableColumn: '29',
         fqn: 'hematology.plt-2'
       },
       {
@@ -16795,7 +16805,7 @@ const DEFS = {
         inputType: 'number',
         label: 'PLT - 3',
         passToFunction: 'pltAverage',
-        tableColumn: '29',
+        tableColumn: '30',
         fqn: 'hematology.plt-3'
       },
       {
@@ -16804,7 +16814,7 @@ const DEFS = {
         inputType: 'number',
         label: 'PLT - 4',
         passToFunction: 'pltAverage',
-        tableColumn: '30',
+        tableColumn: '31',
         fqn: 'hematology.plt-4'
       },
       {
@@ -16813,7 +16823,7 @@ const DEFS = {
         inputType: 'number',
         label: 'PLT - 5',
         passToFunction: 'pltAverage',
-        tableColumn: '31',
+        tableColumn: '32',
         fqn: 'hematology.plt-5'
       },
       {
@@ -16822,7 +16832,7 @@ const DEFS = {
         inputType: 'number',
         label: 'PLT - 6',
         passToFunction: 'pltAverage',
-        tableColumn: '32',
+        tableColumn: '33',
         fqn: 'hematology.plt-6'
       },
       {
@@ -16831,7 +16841,7 @@ const DEFS = {
         inputType: 'number',
         label: 'PLT - 7',
         passToFunction: 'pltAverage',
-        tableColumn: '33',
+        tableColumn: '34',
         fqn: 'hematology.plt-7'
       },
       {
@@ -16840,7 +16850,7 @@ const DEFS = {
         inputType: 'number',
         label: 'PLT - 8',
         passToFunction: 'pltAverage',
-        tableColumn: '34',
+        tableColumn: '35',
         fqn: 'hematology.plt-8'
       },
       {
@@ -16849,7 +16859,7 @@ const DEFS = {
         inputType: 'number',
         label: 'PLT - 9',
         passToFunction: 'pltAverage',
-        tableColumn: '35',
+        tableColumn: '36',
         fqn: 'hematology.plt-9'
       },
       {
@@ -16858,7 +16868,7 @@ const DEFS = {
         inputType: 'number',
         label: 'PLT - 10',
         passToFunction: 'pltAverage',
-        tableColumn: '36',
+        tableColumn: '37',
         fqn: 'hematology.plt-10'
       },
       {
@@ -16868,7 +16878,7 @@ const DEFS = {
         inputType: 'number',
         label: 'PLT field factor',
         passToFunction: 'pltEstimate',
-        tableColumn: '37',
+        tableColumn: '38',
         fqn: 'hematology.pltFieldFactor'
       },
       {
@@ -16878,7 +16888,7 @@ const DEFS = {
         inputType: 'calculatedValue',
         label: 'PLT average',
         passToFunction: 'pltEstimate',
-        tableColumn: '38',
+        tableColumn: '39',
         fqn: 'hematology.pltAverage'
       },
       {
@@ -16887,17 +16897,26 @@ const DEFS = {
         formIndex: '2',
         inputType: 'calculatedValue',
         label: 'PLT estimate',
-        passToFunction: '[pltLowRange, pltHighRange]',
-        tableColumn: '39',
+        tableColumn: '40',
         fqn: 'hematology.pltEstimate'
+      },
+      {
+        elementKey: 'pltAnalysis',
+        calculationType: 'embedValue(hematology,tableCbcAnalysis,PLT)',
+        formIndex: '2',
+        inputType: 'calculatedValue',
+        label: 'PLT analysis',
+        passToFunction: '[pltLowRange, pltHighRange]',
+        tableColumn: '41',
+        fqn: 'hematology.pltAnalysis'
       },
       {
         elementKey: 'pltLowRange',
         calculationType: 'multiplyBy(0.75)',
         formIndex: '2',
         inputType: 'calculatedValue',
-        label: 'PLT estimate range (low)',
-        tableColumn: '40',
+        label: 'PLT acceptable range (low)',
+        tableColumn: '42',
         fqn: 'hematology.pltLowRange'
       },
       {
@@ -16905,8 +16924,8 @@ const DEFS = {
         calculationType: 'multiplyBy(1.25)',
         formIndex: '2',
         inputType: 'calculatedValue',
-        label: 'PLT estimate range (high)',
-        tableColumn: '41',
+        label: 'PLT acceptable range (high)',
+        tableColumn: '43',
         fqn: 'hematology.pltHighRange'
       },
       {
@@ -16915,7 +16934,7 @@ const DEFS = {
         formCss: 'grid-span-2-columns',
         inputType: 'text',
         label: 'PLT comment',
-        tableColumn: '42',
+        tableColumn: '44',
         fqn: 'hematology.pltComment'
       },
       {
@@ -16923,7 +16942,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Normal',
-        tableColumn: '43',
+        tableColumn: '45',
         fqn: 'hematology.pltNormalMorphology'
       },
       {
@@ -16931,7 +16950,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Abnormal',
-        tableColumn: '44',
+        tableColumn: '46',
         fqn: 'hematology.pltAbnormalMorphology'
       },
       {
@@ -16966,7 +16985,7 @@ const DEFS = {
             text: 'Dysplastic'
           }
         ],
-        tableColumn: '45',
+        tableColumn: '47',
         fqn: 'hematology.pltMorphology'
       },
       {
@@ -16975,7 +16994,7 @@ const DEFS = {
         inputType: 'number',
         label: 'Segmented Neutrophil',
         passToFunction: '[ cellCntTotal cellCntSegNeutrophilAbs]',
-        tableColumn: '46',
+        tableColumn: '48',
         fqn: 'hematology.cellCntSegNeutrophil'
       },
       {
@@ -16984,7 +17003,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'calculatedValue',
         label: 'Segmented Neutrophil Abs',
-        tableColumn: '47',
+        tableColumn: '49',
         fqn: 'hematology.cellCntSegNeutrophilAbs'
       },
       {
@@ -16993,7 +17012,7 @@ const DEFS = {
         inputType: 'number',
         label: 'Band Cells',
         passToFunction: '[ cellCntTotal cellCntBandCellsAbs ]',
-        tableColumn: '48',
+        tableColumn: '50',
         fqn: 'hematology.cellCntBandCells'
       },
       {
@@ -17002,7 +17021,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'calculatedValue',
         label: 'Band Cells Abs',
-        tableColumn: '49',
+        tableColumn: '51',
         fqn: 'hematology.cellCntBandCellsAbs'
       },
       {
@@ -17011,7 +17030,7 @@ const DEFS = {
         inputType: 'number',
         label: 'Lymph',
         passToFunction: '[ cellCntTotal cellCntLymphAbs ]',
-        tableColumn: '50',
+        tableColumn: '52',
         fqn: 'hematology.cellCntLymph'
       },
       {
@@ -17020,7 +17039,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'calculatedValue',
         label: 'Lymph Abs',
-        tableColumn: '51',
+        tableColumn: '53',
         fqn: 'hematology.cellCntLymphAbs'
       },
       {
@@ -17029,7 +17048,7 @@ const DEFS = {
         inputType: 'number',
         label: 'Mono',
         passToFunction: '[ cellCntTotal cellCntMonoAbs ]',
-        tableColumn: '52',
+        tableColumn: '54',
         fqn: 'hematology.cellCntMono'
       },
       {
@@ -17038,7 +17057,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'calculatedValue',
         label: 'Mono Abs',
-        tableColumn: '53',
+        tableColumn: '55',
         fqn: 'hematology.cellCntMonoAbs'
       },
       {
@@ -17047,7 +17066,7 @@ const DEFS = {
         inputType: 'number',
         label: 'Eosin',
         passToFunction: '[ cellCntTotal cellCntEosinAbs ]',
-        tableColumn: '54',
+        tableColumn: '56',
         fqn: 'hematology.cellCntEosin'
       },
       {
@@ -17056,7 +17075,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'calculatedValue',
         label: 'Eosin Abs',
-        tableColumn: '55',
+        tableColumn: '57',
         fqn: 'hematology.cellCntEosinAbs'
       },
       {
@@ -17065,7 +17084,7 @@ const DEFS = {
         inputType: 'number',
         label: 'Baso',
         passToFunction: '[ cellCntTotal cellCntBasoAbs ]',
-        tableColumn: '56',
+        tableColumn: '58',
         fqn: 'hematology.cellCntBaso'
       },
       {
@@ -17074,7 +17093,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'calculatedValue',
         label: 'Baso Abs',
-        tableColumn: '57',
+        tableColumn: '59',
         fqn: 'hematology.cellCntBasoAbs'
       },
       {
@@ -17083,7 +17102,7 @@ const DEFS = {
         inputType: 'number',
         label: 'Meta',
         passToFunction: '[ cellCntTotal cellCntMetaAbs ]',
-        tableColumn: '58',
+        tableColumn: '60',
         fqn: 'hematology.cellCntMeta'
       },
       {
@@ -17092,7 +17111,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'calculatedValue',
         label: 'Meta Abs',
-        tableColumn: '59',
+        tableColumn: '61',
         fqn: 'hematology.cellCntMetaAbs'
       },
       {
@@ -17101,7 +17120,7 @@ const DEFS = {
         inputType: 'number',
         label: 'Myelo',
         passToFunction: '[ cellCntTotal cellCntMyeloAbs ]',
-        tableColumn: '60',
+        tableColumn: '62',
         fqn: 'hematology.cellCntMyelo'
       },
       {
@@ -17110,7 +17129,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'calculatedValue',
         label: 'Myelo Abs',
-        tableColumn: '61',
+        tableColumn: '63',
         fqn: 'hematology.cellCntMyeloAbs'
       },
       {
@@ -17119,7 +17138,7 @@ const DEFS = {
         inputType: 'number',
         label: 'Promyelo',
         passToFunction: '[ cellCntTotal cellCntPromyeloAbs ]',
-        tableColumn: '62',
+        tableColumn: '64',
         fqn: 'hematology.cellCntPromyelo'
       },
       {
@@ -17128,7 +17147,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'calculatedValue',
         label: 'Promyelo Abs',
-        tableColumn: '63',
+        tableColumn: '65',
         fqn: 'hematology.cellCntPromyeloAbs'
       },
       {
@@ -17137,7 +17156,7 @@ const DEFS = {
         inputType: 'number',
         label: 'Blast',
         passToFunction: '[ cellCntTotal cellCntBlastAbs ]',
-        tableColumn: '64',
+        tableColumn: '66',
         fqn: 'hematology.cellCntBlast'
       },
       {
@@ -17146,7 +17165,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'calculatedValue',
         label: 'Blast Abs',
-        tableColumn: '65',
+        tableColumn: '67',
         fqn: 'hematology.cellCntBlastAbs'
       },
       {
@@ -17155,7 +17174,7 @@ const DEFS = {
         inputType: 'number',
         label: 'Reactive Lymphs',
         passToFunction: '[ cellCntTotal cellCntReactiveLymphsAbs ]',
-        tableColumn: '66',
+        tableColumn: '68',
         fqn: 'hematology.cellCntReactiveLymphs'
       },
       {
@@ -17164,7 +17183,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'calculatedValue',
         label: 'Reactive Lymphs Abs',
-        tableColumn: '67',
+        tableColumn: '69',
         fqn: 'hematology.cellCntReactiveLymphsAbs'
       },
       {
@@ -17173,7 +17192,7 @@ const DEFS = {
         inputType: 'number',
         label: 'Other',
         passToFunction: '[ cellCntTotal cellCntOtherAbs ]',
-        tableColumn: '68',
+        tableColumn: '70',
         fqn: 'hematology.cellCntOther'
       },
       {
@@ -17182,7 +17201,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'calculatedValue',
         label: 'Other Abs',
-        tableColumn: '69',
+        tableColumn: '71',
         fqn: 'hematology.cellCntOtherAbs'
       },
       {
@@ -17196,7 +17215,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'text',
         label: 'Specify',
-        tableColumn: '70',
+        tableColumn: '72',
         fqn: 'hematology.cellCntOtherSpecify'
       },
       {
@@ -17205,7 +17224,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'calculatedValue',
         label: 'Total',
-        tableColumn: '71',
+        tableColumn: '73',
         fqn: 'hematology.cellCntTotal'
       },
       {
@@ -17214,7 +17233,7 @@ const DEFS = {
         helperText: 'nucleated red blood cells',
         inputType: 'number',
         label: 'NRBCs',
-        tableColumn: '72',
+        tableColumn: '74',
         fqn: 'hematology.cellCntNRBCs',
         helperHtml: '<p>nucleated red blood cells</p>'
       },
@@ -17223,7 +17242,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Normal',
-        tableColumn: '73',
+        tableColumn: '75',
         fqn: 'hematology.wbcmNormalMorphology'
       },
       {
@@ -17243,7 +17262,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Abnormal',
-        tableColumn: '74',
+        tableColumn: '76',
         fqn: 'hematology.wbcmAbnormalMorphology'
       },
       {
@@ -17286,7 +17305,7 @@ const DEFS = {
             text: 'Pelger-Huët Cells'
           }
         ],
-        tableColumn: '75',
+        tableColumn: '77',
         fqn: 'hematology.wbcmAbnormalTypeMorphology'
       },
       {
@@ -17300,7 +17319,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Toxic Signs',
-        tableColumn: '76',
+        tableColumn: '78',
         fqn: 'hematology.wbcmToxicMorphology'
       },
       {
@@ -17323,7 +17342,7 @@ const DEFS = {
             text: 'Toxic Vacuolation'
           }
         ],
-        tableColumn: '77',
+        tableColumn: '79',
         fqn: 'hematology.wbcmToxicTypeMorphology'
       },
       {
@@ -17331,7 +17350,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Normal',
-        tableColumn: '78',
+        tableColumn: '80',
         fqn: 'hematology.rcmNormal'
       },
       {
@@ -17345,7 +17364,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Consistent with indices',
-        tableColumn: '79',
+        tableColumn: '81',
         fqn: 'hematology.rcmConsistent'
       },
       {
@@ -17359,7 +17378,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Acanthocytes',
-        tableColumn: '80',
+        tableColumn: '82',
         fqn: 'hematology.rcmAcanthocytes'
       },
       {
@@ -17386,7 +17405,7 @@ const DEFS = {
             text: '4+'
           }
         ],
-        tableColumn: '81',
+        tableColumn: '83',
         fqn: 'hematology.rcmAcanthocytesGrading'
       },
       {
@@ -17394,7 +17413,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Codocytes (Target Cells)',
-        tableColumn: '82',
+        tableColumn: '84',
         fqn: 'hematology.rcmCodocytes'
       },
       {
@@ -17421,7 +17440,7 @@ const DEFS = {
             text: '4+'
           }
         ],
-        tableColumn: '83',
+        tableColumn: '85',
         fqn: 'hematology.rcmCodocytesGrading'
       },
       {
@@ -17429,7 +17448,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Dacryocytes (Tear Drop Cells)',
-        tableColumn: '84',
+        tableColumn: '86',
         fqn: 'hematology.rcmDacryocytes'
       },
       {
@@ -17456,7 +17475,7 @@ const DEFS = {
             text: '4+'
           }
         ],
-        tableColumn: '85',
+        tableColumn: '87',
         fqn: 'hematology.rcmDacryocytesGrading'
       },
       {
@@ -17464,7 +17483,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Drepanocytes (Sickle Cells)',
-        tableColumn: '86',
+        tableColumn: '88',
         fqn: 'hematology.rcmDrepanocytes'
       },
       {
@@ -17491,7 +17510,7 @@ const DEFS = {
             text: '4+'
           }
         ],
-        tableColumn: '87',
+        tableColumn: '89',
         fqn: 'hematology.rcmDrepanocytesGrading'
       },
       {
@@ -17499,7 +17518,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Echinocytes (Burr Cells)',
-        tableColumn: '88',
+        tableColumn: '90',
         fqn: 'hematology.rcmEchinocytes'
       },
       {
@@ -17526,7 +17545,7 @@ const DEFS = {
             text: '4+'
           }
         ],
-        tableColumn: '89',
+        tableColumn: '91',
         fqn: 'hematology.rcmEchinocytesGrading'
       },
       {
@@ -17534,7 +17553,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Elliptocytes/Ovalocytes',
-        tableColumn: '90',
+        tableColumn: '92',
         fqn: 'hematology.rcmOvalocytes'
       },
       {
@@ -17561,7 +17580,7 @@ const DEFS = {
             text: '4+'
           }
         ],
-        tableColumn: '91',
+        tableColumn: '93',
         fqn: 'hematology.rcmOvalocytesGrading'
       },
       {
@@ -17569,7 +17588,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Macro-ovalocytes',
-        tableColumn: '92',
+        tableColumn: '94',
         fqn: 'hematology.rcmMacroOvalocytes'
       },
       {
@@ -17596,7 +17615,7 @@ const DEFS = {
             text: '4+'
           }
         ],
-        tableColumn: '93',
+        tableColumn: '95',
         fqn: 'hematology.rcmMacroOvalocytesGrading'
       },
       {
@@ -17604,7 +17623,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Stomatocytes',
-        tableColumn: '94',
+        tableColumn: '96',
         fqn: 'hematology.rcmStomatocytes'
       },
       {
@@ -17631,7 +17650,7 @@ const DEFS = {
             text: '4+'
           }
         ],
-        tableColumn: '95',
+        tableColumn: '97',
         fqn: 'hematology.rcmStomatocytesGrading'
       },
       {
@@ -17639,7 +17658,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Spherocytes',
-        tableColumn: '96',
+        tableColumn: '98',
         fqn: 'hematology.rcmSpherocytes'
       },
       {
@@ -17666,7 +17685,7 @@ const DEFS = {
             text: '4+'
           }
         ],
-        tableColumn: '97',
+        tableColumn: '99',
         fqn: 'hematology.rcmSpherocytesGrading'
       },
       {
@@ -17674,7 +17693,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Irregularly Contracted Cells (ICC)',
-        tableColumn: '98',
+        tableColumn: '100',
         fqn: 'hematology.rcmICC'
       },
       {
@@ -17689,7 +17708,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Bite Cells',
-        tableColumn: '99',
+        tableColumn: '101',
         fqn: 'hematology.rcmICCBite'
       },
       {
@@ -17716,7 +17735,7 @@ const DEFS = {
             text: '4+'
           }
         ],
-        tableColumn: '100',
+        tableColumn: '102',
         fqn: 'hematology.rcmICCBiteGrading'
       },
       {
@@ -17724,7 +17743,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Helmet Cells',
-        tableColumn: '101',
+        tableColumn: '103',
         fqn: 'hematology.rcmICCHelmut'
       },
       {
@@ -17751,7 +17770,7 @@ const DEFS = {
             text: '4+'
           }
         ],
-        tableColumn: '102',
+        tableColumn: '104',
         fqn: 'hematology.rcmICCHelmutGrading'
       },
       {
@@ -17759,7 +17778,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Schistocytes',
-        tableColumn: '103',
+        tableColumn: '105',
         fqn: 'hematology.rcmICCSchistocytes'
       },
       {
@@ -17786,7 +17805,7 @@ const DEFS = {
             text: '4+'
           }
         ],
-        tableColumn: '104',
+        tableColumn: '106',
         fqn: 'hematology.rcmICCSchistocytesGrading'
       },
       {
@@ -17794,7 +17813,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Coarse Basophilic Stippling',
-        tableColumn: '105',
+        tableColumn: '107',
         fqn: 'hematology.rcmBasophilicStippling'
       },
       {
@@ -17802,7 +17821,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Howell-Jolly Bodies',
-        tableColumn: '106',
+        tableColumn: '108',
         fqn: 'hematology.rcmHowellJollyBodies'
       },
       {
@@ -17810,7 +17829,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Pappenheimer Bodies',
-        tableColumn: '107',
+        tableColumn: '109',
         fqn: 'hematology.rcmPappenheimerBodies'
       },
       {
@@ -17818,7 +17837,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Malaria',
-        tableColumn: '108',
+        tableColumn: '110',
         fqn: 'hematology.rcmMalaria'
       },
       {
@@ -17841,7 +17860,7 @@ const DEFS = {
             text: 'Schizont'
           }
         ],
-        tableColumn: '109',
+        tableColumn: '111',
         fqn: 'hematology.rcmMalariaType'
       },
       {
@@ -17849,7 +17868,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'textarea',
         label: 'RBC comments',
-        tableColumn: '109',
+        tableColumn: '111',
         fqn: 'hematology.rbcComments'
       },
       {
@@ -17869,7 +17888,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Referral to hematopathologist',
-        tableColumn: '110',
+        tableColumn: '112',
         fqn: 'hematology.referralToHema'
       },
       {
@@ -17877,7 +17896,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'textarea',
         label: 'Reason for referral',
-        tableColumn: '111',
+        tableColumn: '113',
         fqn: 'hematology.explain'
       }
     ],
@@ -18274,528 +18293,540 @@ const DEFS = {
           {
             ehr_list_index: '24',
             items: [
-              'wbcLowRange'
+              'wbcAnalysis'
             ]
           },
           {
             ehr_list_index: '25',
             items: [
-              'wbcHighRange'
+              'wbcLowRange'
             ]
           },
           {
             ehr_list_index: '26',
             items: [
-              'wbcComment'
+              'wbcHighRange'
             ]
           },
           {
             ehr_list_index: '27',
             items: [
-              'plt-1'
+              'wbcComment'
             ]
           },
           {
             ehr_list_index: '28',
             items: [
-              'plt-2'
+              'plt-1'
             ]
           },
           {
             ehr_list_index: '29',
             items: [
-              'plt-3'
+              'plt-2'
             ]
           },
           {
             ehr_list_index: '30',
             items: [
-              'plt-4'
+              'plt-3'
             ]
           },
           {
             ehr_list_index: '31',
             items: [
-              'plt-5'
+              'plt-4'
             ]
           },
           {
             ehr_list_index: '32',
             items: [
-              'plt-6'
+              'plt-5'
             ]
           },
           {
             ehr_list_index: '33',
             items: [
-              'plt-7'
+              'plt-6'
             ]
           },
           {
             ehr_list_index: '34',
             items: [
-              'plt-8'
+              'plt-7'
             ]
           },
           {
             ehr_list_index: '35',
             items: [
-              'plt-9'
+              'plt-8'
             ]
           },
           {
             ehr_list_index: '36',
             items: [
-              'plt-10'
+              'plt-9'
             ]
           },
           {
             ehr_list_index: '37',
             items: [
-              'pltFieldFactor'
+              'plt-10'
             ]
           },
           {
             ehr_list_index: '38',
             items: [
-              'pltAverage'
+              'pltFieldFactor'
             ]
           },
           {
             ehr_list_index: '39',
             items: [
-              'pltEstimate'
+              'pltAverage'
             ]
           },
           {
             ehr_list_index: '40',
             items: [
-              'pltLowRange'
+              'pltEstimate'
             ]
           },
           {
             ehr_list_index: '41',
             items: [
-              'pltHighRange'
+              'pltAnalysis'
             ]
           },
           {
             ehr_list_index: '42',
             items: [
-              'pltComment'
+              'pltLowRange'
             ]
           },
           {
             ehr_list_index: '43',
             items: [
-              'pltNormalMorphology'
+              'pltHighRange'
             ]
           },
           {
             ehr_list_index: '44',
             items: [
-              'pltAbnormalMorphology'
+              'pltComment'
             ]
           },
           {
             ehr_list_index: '45',
             items: [
-              'pltMorphology'
+              'pltNormalMorphology'
             ]
           },
           {
             ehr_list_index: '46',
             items: [
-              'cellCntSegNeutrophil'
+              'pltAbnormalMorphology'
             ]
           },
           {
             ehr_list_index: '47',
             items: [
-              'cellCntSegNeutrophilAbs'
+              'pltMorphology'
             ]
           },
           {
             ehr_list_index: '48',
             items: [
-              'cellCntBandCells'
+              'cellCntSegNeutrophil'
             ]
           },
           {
             ehr_list_index: '49',
             items: [
-              'cellCntBandCellsAbs'
+              'cellCntSegNeutrophilAbs'
             ]
           },
           {
             ehr_list_index: '50',
             items: [
-              'cellCntLymph'
+              'cellCntBandCells'
             ]
           },
           {
             ehr_list_index: '51',
             items: [
-              'cellCntLymphAbs'
+              'cellCntBandCellsAbs'
             ]
           },
           {
             ehr_list_index: '52',
             items: [
-              'cellCntMono'
+              'cellCntLymph'
             ]
           },
           {
             ehr_list_index: '53',
             items: [
-              'cellCntMonoAbs'
+              'cellCntLymphAbs'
             ]
           },
           {
             ehr_list_index: '54',
             items: [
-              'cellCntEosin'
+              'cellCntMono'
             ]
           },
           {
             ehr_list_index: '55',
             items: [
-              'cellCntEosinAbs'
+              'cellCntMonoAbs'
             ]
           },
           {
             ehr_list_index: '56',
             items: [
-              'cellCntBaso'
+              'cellCntEosin'
             ]
           },
           {
             ehr_list_index: '57',
             items: [
-              'cellCntBasoAbs'
+              'cellCntEosinAbs'
             ]
           },
           {
             ehr_list_index: '58',
             items: [
-              'cellCntMeta'
+              'cellCntBaso'
             ]
           },
           {
             ehr_list_index: '59',
             items: [
-              'cellCntMetaAbs'
+              'cellCntBasoAbs'
             ]
           },
           {
             ehr_list_index: '60',
             items: [
-              'cellCntMyelo'
+              'cellCntMeta'
             ]
           },
           {
             ehr_list_index: '61',
             items: [
-              'cellCntMyeloAbs'
+              'cellCntMetaAbs'
             ]
           },
           {
             ehr_list_index: '62',
             items: [
-              'cellCntPromyelo'
+              'cellCntMyelo'
             ]
           },
           {
             ehr_list_index: '63',
             items: [
-              'cellCntPromyeloAbs'
+              'cellCntMyeloAbs'
             ]
           },
           {
             ehr_list_index: '64',
             items: [
-              'cellCntBlast'
+              'cellCntPromyelo'
             ]
           },
           {
             ehr_list_index: '65',
             items: [
-              'cellCntBlastAbs'
+              'cellCntPromyeloAbs'
             ]
           },
           {
             ehr_list_index: '66',
             items: [
-              'cellCntReactiveLymphs'
+              'cellCntBlast'
             ]
           },
           {
             ehr_list_index: '67',
             items: [
-              'cellCntReactiveLymphsAbs'
+              'cellCntBlastAbs'
             ]
           },
           {
             ehr_list_index: '68',
             items: [
-              'cellCntOther'
+              'cellCntReactiveLymphs'
             ]
           },
           {
             ehr_list_index: '69',
             items: [
-              'cellCntOtherAbs'
+              'cellCntReactiveLymphsAbs'
             ]
           },
           {
             ehr_list_index: '70',
             items: [
-              'cellCntOtherSpecify'
+              'cellCntOther'
             ]
           },
           {
             ehr_list_index: '71',
             items: [
-              'cellCntTotal'
+              'cellCntOtherAbs'
             ]
           },
           {
             ehr_list_index: '72',
             items: [
-              'cellCntNRBCs'
+              'cellCntOtherSpecify'
             ]
           },
           {
             ehr_list_index: '73',
             items: [
-              'wbcmNormalMorphology'
+              'cellCntTotal'
             ]
           },
           {
             ehr_list_index: '74',
             items: [
-              'wbcmAbnormalMorphology'
+              'cellCntNRBCs'
             ]
           },
           {
             ehr_list_index: '75',
             items: [
-              'wbcmAbnormalTypeMorphology'
+              'wbcmNormalMorphology'
             ]
           },
           {
             ehr_list_index: '76',
             items: [
-              'wbcmToxicMorphology'
+              'wbcmAbnormalMorphology'
             ]
           },
           {
             ehr_list_index: '77',
             items: [
-              'wbcmToxicTypeMorphology'
+              'wbcmAbnormalTypeMorphology'
             ]
           },
           {
             ehr_list_index: '78',
             items: [
-              'rcmNormal'
+              'wbcmToxicMorphology'
             ]
           },
           {
             ehr_list_index: '79',
             items: [
-              'rcmConsistent'
+              'wbcmToxicTypeMorphology'
             ]
           },
           {
             ehr_list_index: '80',
             items: [
-              'rcmAcanthocytes'
+              'rcmNormal'
             ]
           },
           {
             ehr_list_index: '81',
             items: [
-              'rcmAcanthocytesGrading'
+              'rcmConsistent'
             ]
           },
           {
             ehr_list_index: '82',
             items: [
-              'rcmCodocytes'
+              'rcmAcanthocytes'
             ]
           },
           {
             ehr_list_index: '83',
             items: [
-              'rcmCodocytesGrading'
+              'rcmAcanthocytesGrading'
             ]
           },
           {
             ehr_list_index: '84',
             items: [
-              'rcmDacryocytes'
+              'rcmCodocytes'
             ]
           },
           {
             ehr_list_index: '85',
             items: [
-              'rcmDacryocytesGrading'
+              'rcmCodocytesGrading'
             ]
           },
           {
             ehr_list_index: '86',
             items: [
-              'rcmDrepanocytes'
+              'rcmDacryocytes'
             ]
           },
           {
             ehr_list_index: '87',
             items: [
-              'rcmDrepanocytesGrading'
+              'rcmDacryocytesGrading'
             ]
           },
           {
             ehr_list_index: '88',
             items: [
-              'rcmEchinocytes'
+              'rcmDrepanocytes'
             ]
           },
           {
             ehr_list_index: '89',
             items: [
-              'rcmEchinocytesGrading'
+              'rcmDrepanocytesGrading'
             ]
           },
           {
             ehr_list_index: '90',
             items: [
-              'rcmOvalocytes'
+              'rcmEchinocytes'
             ]
           },
           {
             ehr_list_index: '91',
             items: [
-              'rcmOvalocytesGrading'
+              'rcmEchinocytesGrading'
             ]
           },
           {
             ehr_list_index: '92',
             items: [
-              'rcmMacroOvalocytes'
+              'rcmOvalocytes'
             ]
           },
           {
             ehr_list_index: '93',
             items: [
-              'rcmMacroOvalocytesGrading'
+              'rcmOvalocytesGrading'
             ]
           },
           {
             ehr_list_index: '94',
             items: [
-              'rcmStomatocytes'
+              'rcmMacroOvalocytes'
             ]
           },
           {
             ehr_list_index: '95',
             items: [
-              'rcmStomatocytesGrading'
+              'rcmMacroOvalocytesGrading'
             ]
           },
           {
             ehr_list_index: '96',
             items: [
-              'rcmSpherocytes'
+              'rcmStomatocytes'
             ]
           },
           {
             ehr_list_index: '97',
             items: [
-              'rcmSpherocytesGrading'
+              'rcmStomatocytesGrading'
             ]
           },
           {
             ehr_list_index: '98',
             items: [
-              'rcmICC'
+              'rcmSpherocytes'
             ]
           },
           {
             ehr_list_index: '99',
             items: [
-              'rcmICCBite'
+              'rcmSpherocytesGrading'
             ]
           },
           {
             ehr_list_index: '100',
             items: [
-              'rcmICCBiteGrading'
+              'rcmICC'
             ]
           },
           {
             ehr_list_index: '101',
             items: [
-              'rcmICCHelmut'
+              'rcmICCBite'
             ]
           },
           {
             ehr_list_index: '102',
             items: [
-              'rcmICCHelmutGrading'
+              'rcmICCBiteGrading'
             ]
           },
           {
             ehr_list_index: '103',
             items: [
-              'rcmICCSchistocytes'
+              'rcmICCHelmut'
             ]
           },
           {
             ehr_list_index: '104',
             items: [
-              'rcmICCSchistocytesGrading'
+              'rcmICCHelmutGrading'
             ]
           },
           {
             ehr_list_index: '105',
             items: [
-              'rcmBasophilicStippling'
+              'rcmICCSchistocytes'
             ]
           },
           {
             ehr_list_index: '106',
             items: [
-              'rcmHowellJollyBodies'
+              'rcmICCSchistocytesGrading'
             ]
           },
           {
             ehr_list_index: '107',
             items: [
-              'rcmPappenheimerBodies'
+              'rcmBasophilicStippling'
             ]
           },
           {
             ehr_list_index: '108',
             items: [
-              'rcmMalaria'
+              'rcmHowellJollyBodies'
             ]
           },
           {
             ehr_list_index: '109',
+            items: [
+              'rcmPappenheimerBodies'
+            ]
+          },
+          {
+            ehr_list_index: '110',
+            items: [
+              'rcmMalaria'
+            ]
+          },
+          {
+            ehr_list_index: '111',
             items: [
               'rcmMalariaType',
               'rbcComments'
             ]
           },
           {
-            ehr_list_index: '110',
+            ehr_list_index: '112',
             items: [
               'referralToHema'
             ]
           },
           {
-            ehr_list_index: '111',
+            ehr_list_index: '113',
             items: [
               'explain'
             ]
@@ -18852,6 +18883,7 @@ const DEFS = {
             {
               elementKey: 'ehr_group133',
               label: 'WBC Estimate',
+              formCss: 'grid-left-to-right-4',
               gIndex: '5',
               gChildren: [
                 'wbc-1',
@@ -18867,6 +18899,7 @@ const DEFS = {
                 'wbcFieldFactor',
                 'wbcAverage',
                 'wbcEstimate',
+                'wbcAnalysis',
                 'wbcLowRange',
                 'wbcHighRange',
                 'wbcComment'
@@ -18875,6 +18908,7 @@ const DEFS = {
             {
               elementKey: 'ehr_group134',
               label: 'PLT Estimate',
+              formCss: 'grid-left-to-right-4',
               gIndex: '6',
               gChildren: [
                 'plt-1',
@@ -18890,6 +18924,7 @@ const DEFS = {
                 'pltFieldFactor',
                 'pltAverage',
                 'pltEstimate',
+                'pltAnalysis',
                 'pltLowRange',
                 'pltHighRange',
                 'pltComment'
@@ -18897,7 +18932,7 @@ const DEFS = {
             },
             {
               elementKey: 'ehr_group135',
-              label: 'PLT morphology (shape of platelets)',
+              label: 'PLT morphology',
               formCss: 'grid-left-to-right-1',
               gIndex: '7',
               gChildren: [
@@ -19054,6 +19089,7 @@ const DEFS = {
             wbcFieldFactor: '1.8',
             wbcAverage: '',
             wbcEstimate: '',
+            wbcAnalysis: '',
             wbcLowRange: '',
             wbcHighRange: '',
             wbcComment: '',
@@ -19070,6 +19106,7 @@ const DEFS = {
             pltFieldFactor: '11.1',
             pltAverage: '',
             pltEstimate: '',
+            pltAnalysis: '',
             pltLowRange: '',
             pltHighRange: '',
             pltComment: '',
