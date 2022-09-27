@@ -99,7 +99,8 @@ export function ehrCalculateProperty (pageDataKey, targetKey, srcValues) {
       // console.log('calculationType average',targetKey, result, values)
       break
     case 'product':
-      result = values.reduce((a, b) => a * b, 1)
+      // product value is 0 until there are at least two values
+      result = values.length >= 2 ? values.reduce((a, b) => a * b, 1) : 0
       break
     case 'wbcAbs':
       // console.log('process wbcAbs values', values)
