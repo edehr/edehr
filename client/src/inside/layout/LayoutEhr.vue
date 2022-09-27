@@ -91,6 +91,7 @@ $contentMinHeight: 700px;
 .ehr_layout {
   height: 100vh;
   display: flex;
+  overflow-y: auto;
   flex-direction: column;
   .ehr_layout__main {
     display: flex;

@@ -28,6 +28,25 @@ export function extractMultiplyByFactor ( input ) {
   return parseFloat(factor)
 }
 
+export function extractEmbedValueReferences ( input ) {
+  // embedValue(hematology,tableCbcAnalysis,wbc)
+  // embedValue(hematology,tableCbcAnalysis,PLT)
+  const regExp = /embedValue\((.+),(.+),(.+)\)/
+  let result
+  if (input.includes('embedValue')) {
+    const match = input.match(regExp)
+    if (match && match[1]) {
+      result = {
+        pageRef: match[1],
+        tableRef: match[2],
+        cellRef: match[3],
+      }
+    }
+  }
+  return result
+}
+
+
 function isEmbeddedRef ( ref ) {
   return ref.split('.').length === 3
 }
@@ -55,7 +74,7 @@ export function ehrCalculateProperty (pageDataKey, targetKey, srcValues) {
   let desiredSourceProperty = 'elementKey'
   let srcKeys = EhrDefs.getChildElements(pageDataKey, sourceFieldToMatchOn, targetKey, desiredSourceProperty)
   if (srcKeys.length === 0) {
-    let msg = `Ehr calc unexpected empty set of source keys for key ${targetKey}`
+    let msg = `Ehr calc unexpected empty set of source keys for key ${targetKey} and calc type ${calculationType}`
     console.log('ecp', msg)
     throw new Error(msg)
   }
@@ -71,6 +90,7 @@ export function ehrCalculateProperty (pageDataKey, targetKey, srcValues) {
       } else if (isString(srcVal) && isEmbeddedRef(srcVal)) {
         let rowData = getEmbeddedDataRow(srcVal)
         values.push(rowData)
+        // console.log('srcKey, srcVal, calculationType', key, srcVal, calculationType)
       } else {
         let msg = `Ehr calc found unexpected value type for key ${targetKey}, value found: ${srcVal}`
         console.log('ecp', msg)
@@ -88,6 +108,9 @@ export function ehrCalculateProperty (pageDataKey, targetKey, srcValues) {
       result = values.reduce((a,b) => a + b * factor, 0)
       // console.log('multiplyBy', result)
     }
+  } else if (calculationType.includes('embedValue')) {
+    const refs = extractEmbedValueReferences(calculationType)
+    result = values[0] ? values[0][refs.cellRef] : undefined
   } else {
     switch (calculationType) {
     case 'sum':
@@ -99,7 +122,8 @@ export function ehrCalculateProperty (pageDataKey, targetKey, srcValues) {
       // console.log('calculationType average',targetKey, result, values)
       break
     case 'product':
-      result = values.reduce((a, b) => a * b, 1)
+      // product value is 0 until there are at least two values
+      result = values.length >= 2 ? values.reduce((a, b) => a * b, 1) : 0
       break
     case 'wbcAbs':
       // console.log('process wbcAbs values', values)

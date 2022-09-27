@@ -156,14 +156,14 @@ export default {
     dialogEvent (open, options) {
       if (dbDialog) console.log('EhrCommon dialog opened or closed', this.elementKey, open)
       this.dialogIsOpen = open
-      if (open) {
+      if (open && !options.viewOnly) {
         if (this.isEmbedded) {
           let inputs = options.inputs ? options.inputs : options.data
           if (inputs) {
             let initialValue = inputs[this.elementKey]
             this.setInitialValue(initialValue)
           } else {
-            console.log('inputs TODO fix no inputs here ', options, this.elementKey)
+            // console.log('inputs TODO fix no inputs here ', options, this.elementKey)
           }
         } else {
           let inputs = this.ehrHelp.getDialogInputs(this.tableKey)
@@ -175,13 +175,17 @@ export default {
             this.setInitialValue(v)
           }
           if (this.inputType === EhrTypes.dataInputTypes.ehr_embedded) {
-            const refValue = this.element.embedRef + '.' + options.tableActionRowIndex
-            // console.log('dialogEvent SET embedded value', this.$options.name, initialValue, refValue)
-            // store this value into the active inputs area to be saved along with other data, if the dialog save is invoked.
-            this.sendInputEvent(refValue)
-            // the element receiving this event may not be a EhrElementEmbedded
-            if (this.setEmbeddedGroupData) {
-              this.setEmbeddedGroupData(refValue)
+            if( options.viewOnly ) {
+              console.log('what happens if we skip sending input event on embedded ')
+            } else {
+              const refValue = this.element.embedRef + '.' + options.tableActionRowIndex
+              // console.log('dialogEvent SET embedded value', this.$options.name, initialValue, refValue)
+              // store this value into the active inputs area to be saved along with other data, if the dialog save is invoked.
+              this.sendInputEvent(refValue)
+              // the element receiving this event may not be a EhrElementEmbedded
+              if (this.setEmbeddedGroupData) {
+                this.setEmbeddedGroupData(refValue)
+              }
             }
           }
         }
