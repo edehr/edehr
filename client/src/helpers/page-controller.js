@@ -97,9 +97,10 @@ class PageControllerInner {
         const activity = err.visitInfo.activity
         await router.push({ name: UNLINKED_ACTIVITY_ROUTE_NAME, query: { activityId: activity } })
       } else {
-        console.log('Caught error page change load data block', err)
-        await router.push('/')
+        console.error('Caught error page change load data block', err)
         StoreHelper.setApiError(err + '. System Error')
+        // send a timestamp in query to prevent NavigationDuplication error from vue router.
+        await router.push({ name: 'home', query: { ts: Date.now() } })
       }
     }
   }
