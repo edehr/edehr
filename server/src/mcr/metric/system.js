@@ -34,7 +34,7 @@ export default class System {
     this.ts = Date.now()
     const freememPercentage = Math.round( 1000 * os.freemem() / os.totalmem()) / 10
     const loadAvg15 = os.loadavg()[2]
-    const usage = Math.round(loadAvg15 / this.info.cpusCount * 100)
+    const usage = Math.round(loadAvg15 / this.info.cpusCount * 1000) / 10
     this.samples.push({ts: this.ts, usage: usage, freeMemPc: freememPercentage})
     if (this.samples.length > this.sampleSize) {
       this.samples.shift()
