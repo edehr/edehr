@@ -16749,7 +16749,7 @@ const DEFS = {
         'calculationType': 'embedValue(hematology,tableCbcAnalysis,wbc)',
         'formIndex': '2',
         'inputType': 'calculatedValue',
-        'label': 'WBC analysis',
+        'label': 'WBC count',
         'passToFunction': '[wbcLowRange, wbcHighRange]',
         'tableColumn': '24',
         'fqn': 'hematology.wbcAnalysis'
@@ -16905,7 +16905,7 @@ const DEFS = {
         'calculationType': 'embedValue(hematology,tableCbcAnalysis,PLT)',
         'formIndex': '2',
         'inputType': 'calculatedValue',
-        'label': 'PLT analysis',
+        'label': 'PLT count',
         'passToFunction': '[pltLowRange, pltHighRange]',
         'tableColumn': '41',
         'fqn': 'hematology.pltAnalysis'
