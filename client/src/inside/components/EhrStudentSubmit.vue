@@ -37,7 +37,7 @@ const SUBMITTED_TEXT = 'Your assignment is now submitted. Will now return you ba
 /*
 Collect student feedback, completely anonymous and voluntary, after work is submitted.
  */
-const COLLECT_FEEDBACK = true
+const COLLECT_FEEDBACK = false
 
 export default {
   components: {
@@ -76,7 +76,10 @@ export default {
             this.$refs.submitFeedback.onOpen()
           } else {
           // show confirmation. Next step is finishedAction
-            this.$refs.successDialog.showDialog('Submitted', SUBMITTED_TEXT)
+            let text = 'Your assignment has been submitted. Click OK to return to your learning management system. '
+            text += ' name: '  + StoreHelper.lmsName()
+            text += ' url:  ' + StoreHelper.lmsUrl()
+            this.$refs.successDialog.showDialog('Submitted', text)
           }
         })
     },

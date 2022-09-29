@@ -38,7 +38,7 @@ export default {
         },
         {
           label: 'Exit to LMS',
-          toolTip: 'Return to your school\'s learning management system',
+          toolTip: 'Return to your school\'s learning management system. ' + StoreHelper.lmsName() + ' ' + StoreHelper.lmsUrl(),
           callback: () => {
             StoreHelper.exitToLms()
           },
