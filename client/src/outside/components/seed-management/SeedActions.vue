@@ -3,7 +3,7 @@
     div(v-if="showDetails")
       ui-button(v-on:buttonClicked="gotoSeedView",
         :title="text.DETAILS_TP")
-        fas-icon(class="fa", icon="cog")
+        fas-icon(class="fa", :icon="appIcons.itemDetails")
         span(v-if="showLabels") &nbsp; {{text.DETAILS}}
     div
       ui-button(v-on:buttonClicked="viewEhrCondensed",

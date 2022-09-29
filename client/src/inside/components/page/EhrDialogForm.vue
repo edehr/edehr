@@ -1,10 +1,10 @@
 <template lang="pug">
   div
     app-dialog(
-      :isModal="true",
+      :isModal="!isViewOnly",
       ref="theDialog",
-      @cancel="cancelDialog", 
-      @save="saveDialog", 
+      @cancel="cancelDialog",
+      @save="saveDialog",
       v-bind:errors="errorList",
       :cancelButtonLabel="isViewOnly ? 'Close' : 'Cancel'",
       :hasFooterContent="true"
