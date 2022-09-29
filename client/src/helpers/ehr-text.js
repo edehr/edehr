@@ -12,7 +12,6 @@ export const Text = {
   MISSING_API_URL: 'This system requires the URL to the API',
   MISSING_AUTH_TOKEN: 'You need to be authenticated to view this',
   PARAMETERS_ERROR: 'Parameters Error',
-  RETURN_TO: (lmsName) => `Return to ${lmsName}`,
   SEED_MUST_HAVE_LICENSE: 'Seed data must have a valid licence',
   SEED_MUST_HAVE_EHRDATA: 'Seed data must have EHR data (the ehrData property)',
   SEND_FOR_EVAL: 'Send for evaluation',
