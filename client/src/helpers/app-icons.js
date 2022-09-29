@@ -13,6 +13,7 @@ export const APP_ICONS = {
   file: 'notes-medical',
   filter: 'filter',
   forceSubmit: 'lock',
+  itemDetails: 'cog',
   retractSubmit: 'unlock',
   list: 'list',
   lobj: 'book-open',

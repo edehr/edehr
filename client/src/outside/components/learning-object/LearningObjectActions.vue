@@ -3,7 +3,7 @@
     div(class="action-section")
       ui-button(v-if="showDetails", v-on:buttonClicked="gotoLearningObjectView",
         :title="text.DETAILS_TP")
-        fas-icon(class="fa", :icon="appIcons.view")
+        fas-icon(class="fa", :icon="appIcons.itemDetails")
         span(v-if="showLabels") &nbsp; {{text.DETAILS}}
       ui-button(v-if="canDo", v-on:buttonClicked="showEditDialog",
         :title="text.PROPERTIES_TP")
