@@ -32,8 +32,8 @@ export const Text = {
   // AuthController
   EXPIRED_ADMIN: 'The password you\'ve entered is no longer valid. Please, try again. If the problem persists, please, contact an administrator',
   // the following message MUST contain the word expired for clients to correctly handle a browser refresh when an expired refresh token is in the URL
-  EXPIRED_TOKEN: 'The token has expired. Please, try again!',
-  INVALID_TOKEN: 'Invalid token. Please, check with an administrator if your password is still valid!',
+  EXPIRED_TOKEN: 'The session has expired. Please return to your LMS and try again.',
+  INVALID_TOKEN: 'Invalid token. Please, return to your learning management system and retry the activity link that brought you to the EdEHR',
   NOT_PERMITTED: 'You don\'t have permission to view this',
   REQUIRED_ADMIN: 'A password and the token are required',
   SYS_ERROR: 'There was a problem validating the token. If it persists, please contact an administrator',
@@ -56,7 +56,7 @@ export const Text = {
   TOO_MANY_REQUESTS_ERROR: 'Too many requests triggered. Please, try again later!',
 
   // Base errors
-  INVALID_BASE_ID: (id) => `Invalid id: ${id}`,
+  INVALID_BASE_ID: (id, model) => `Invalid id: ${id} for ${model}`,
 
   /* for Files */
   EXPECTED_FIELD: (fld) => {return `Expected field to be ${fld}` },

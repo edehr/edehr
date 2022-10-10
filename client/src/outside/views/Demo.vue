@@ -81,8 +81,6 @@ export default {
       this.$refs.confirmDialog.showDialog(demoText.logout.title, demoText.logout.body)
     },
     async demoLogOut () {
-      await StoreHelper.demoLogout()
-      // the next line clears local storage of demo data (the demo db)
       await StoreHelper.logUserOutOfEdEHR()
       this.$router.push('/')
     },

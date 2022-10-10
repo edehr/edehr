@@ -74,7 +74,7 @@ const actions = {
   },
 }
 
-const ACTIVITY_LOCAL_STORE ='ACTIVITY_LOCAL_STORE'
+const ACTIVITY_LOCAL_STORE ='activityId'
 const mutations = {
   initialize: function (state) {
     // if stored get the activityId. Once it is in place a page load can request the activity data

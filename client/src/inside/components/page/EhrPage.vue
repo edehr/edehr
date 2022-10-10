@@ -90,7 +90,7 @@ export default {
 
 .section-divider {
     border-bottom: 1px solid $grey40;
-    margin-bottom: 2em;
-    padding-bottom: 2em;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
 }
 </style>

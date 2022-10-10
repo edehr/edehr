@@ -1,6 +1,7 @@
-import authHelper from '../../helpers/auth-helper'
-import { setAuthHeader } from '../../helpers/axios-helper'
-
+import authHelper from '@/helpers/auth-helper'
+import { setAuthHeader } from '@/helpers/axios-helper'
+const hashToken = authHelper.hashToken
+const logAuth = false
 const state = {
   authData: {},
   token: undefined
@@ -21,20 +22,24 @@ const getters = {
 const actions = {
   logOutUser: function ({commit}) {
     commit('setToken', undefined)
+    commit('setAuthData', {})
   },
   fetchAndStoreAuthToken: function ({ commit }, { refreshToken }) {
+    if(logAuth) console.log('fetchAndStoreAuthToken refreshToken', hashToken(refreshToken))
     return authHelper.getToken(refreshToken)
       .then(res => {
         const { token } = res.data
+        if(logAuth) console.log('fetchAndStoreAuthToken token', hashToken(token))
         commit('setToken', token)
         return token
       })
   },
   fetchData: function ({commit}, { authToken }) {
+    if(logAuth) console.log('fetchData refreshToken', hashToken(authToken))
     return authHelper.getData(authToken)
       .then(res => {
         const { data } = res
-        // console.log('fetch auth token data', data)
+        if(logAuth) console.log('fetchData data', data)
         return commit('setAuthData', data)
       })
   },
@@ -84,11 +89,13 @@ const AUTH_TOKEN_KEY = 'authToken'
 const mutations = {
   initialize: function (state) {
     state.token = localStorage.getItem(AUTH_TOKEN_KEY)
+    if(logAuth) console.log('authStore initialize with ', hashToken(state.token))
   },
   setAuthData: function (none, data) {
     state.authData = data
   },
   setToken: function (none, token) {
+    if(logAuth) console.log('authStore setToken', hashToken(token))
     state.token = token
     if (token) {
       localStorage.setItem(AUTH_TOKEN_KEY, token)

@@ -14,7 +14,7 @@ let routes = [
     name: 'home',
     component: () =>
       import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Home'),
-    meta: { layout: 'home', public: true }
+    meta: { layout: 'home', label: 'Home', zone: 'public' }
   },
   {
     path: '/ehr', name: 'ehr', redirect: '/ehr/patient/demographics'
@@ -29,7 +29,8 @@ routes = routes.concat(inside())
 routes.push({
   path: '*',
   component: () =>
-    import(/* webpackChunkName: "notfound" */ './outside/components/PageNotFound.vue')
+    import(/* webpackChunkName: "notfound" */ './outside/components/PageNotFound.vue'),
+  meta: { layout: 'outside', label: 'Page Not Found', zone: 'public' }
 })
 
 

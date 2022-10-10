@@ -1,6 +1,6 @@
 <template lang="pug">
   header(class="apphdr")
-    //system-message
+    system-message
     app-header-menu
     app-header-instructor-menu(v-if='showInstructor')
 </template>

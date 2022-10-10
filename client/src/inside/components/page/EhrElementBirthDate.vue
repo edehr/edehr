@@ -1,5 +1,5 @@
 <template lang="pug">
-  div
+  div(class="text_input_wrapper")
     ehr-page-form-label(:element="element", css="text_label")
     input(v-if="!viewOnly", class="input text-input", :disabled="disabled", :name="elementKey", v-model="inputVal")
     div(v-if="viewOnly") {{ inputVal }}

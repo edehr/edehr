@@ -37,12 +37,11 @@ export default class EhrApp {
           new Tracing.Integrations.Express({ app }),
           new CaptureConsoleIntegration({ levels: ['error', 'assert'] })
         ],
+        release: 'server-edehr@' + process.env.npm_package_version,
         // Set tracesSampleRate to 1.0 to capture 100%
         // of transactions for performance monitoring.
         // We recommend adjusting this value in production
-        tracesSampleRate: 1.0,
-        // or pull from params
-        // tracesSampleRate: parseFloat(params.SENTRY_TRACES_SAMPLE_RATE),
+        tracesSampleRate: config.sentryTraceRate,
       })
     }
   }

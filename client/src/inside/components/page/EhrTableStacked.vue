@@ -60,9 +60,7 @@ export default {
       this.tableForm = {}
       this.tableData = []
       this.tableForm = this.ehrHelp.getTable(this.tableKey)
-      if (this.tableForm.rowTemplate) {
-        this.tableForm.rowTemplate.length = Math.min(10, this.tableForm.rowTemplate.length)
-      } else {
+      if (!this.tableForm.rowTemplate) {
         console.error('this.tableForm.rowTemplate is not defined for tableKey', this.tableKey, ' pageDataKey', this.pageDataKey, 'this.tableForm', this.tableForm)
       }
       this.tableData = this.tableForm.tableData

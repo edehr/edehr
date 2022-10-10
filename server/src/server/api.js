@@ -112,20 +112,14 @@ export function apiMiddle (app, config) {
 
   const middleWare = [
     cors(corsOptions),
-    validatorMiddlewareWrapper(authUtil)
+    validatorMiddlewareWrapper(lcc)
   ]
-  // const adminMiddleware = [
-  //   cors(corsOptions),
-  //   adminLimiter,
-  //   validatorMiddlewareWrapper(authUtil),
-  //   isAdmin
-  // ]
 
   const localhostOnlyAdminMiddleware = [
     cors(corsOptions),
     localhostOnly,
     // adminLimiter,
-    validatorMiddlewareWrapper(authUtil),
+    validatorMiddlewareWrapper(lcc),
     isAdmin
   ]
 
@@ -211,12 +205,12 @@ export function apiError (app, config) {
   app.use(logErrors)
   app.use(clientErrorHandler)
   app.use(errorHandler)
-  
+
   function logErrors (err, req, res, next) {
     logError(`EdEHR server error name: "${err.name}" message: "${err.message}" on path: ${req.path}`)
     next(err)
   }
-  
+
   function clientErrorHandler (err, req, res, next) {
     // import {AssignmentMismatchError, ParameterError, SystemError} from '../utils/errors'
     if (err.name === AssignmentMismatchError.NAME()) {

@@ -12,8 +12,10 @@ if (version.includes('v14')) {
 }
 
 const DEFAULT_COOKIE_SECRET = 'this is the secret for the session cookie'
-
-// console.log('config.js process.env', process.env)
+// specify how long an authentication token should live.  For time examples see https://github.com/vercel/ms
+const DEFAULT_TOKEN_LIFE = process.env.NODE_ENV === 'production' ? '1d' : '10m'
+console.log('config.js DEFAULT_TOKEN_LIFE', DEFAULT_TOKEN_LIFE)
+console.log('config.js process.env.NODE_ENV', process.env.NODE_ENV)
 
 ///////////////// DEFAULT CONFIG
 function defaultConfig (env) {
@@ -37,6 +39,7 @@ function defaultConfig (env) {
     domain: process.env.DOMAIN || 'localhost',
     serverPort: process.env.SERVER_PORT || 27000,
     authTokenSecret: process.env.AUTH_TOKEN_SECRET || 'defaultTokenSecretForJWT',
+    authTokenLives:  process.env.AUTH_TOKEN_LIFETIME || DEFAULT_TOKEN_LIFE,
     cookieSecret: process.env.COOKIE_SECRET || DEFAULT_COOKIE_SECRET,
     cookieSettings: cookieSettings(),
     ehrFilesDirectory: process.env.EHR_FILES_DIRECTORY || 'files-ehr',
@@ -64,7 +67,10 @@ function defaultConfig (env) {
     sessionTTL: process.env.TIME_TO_LIVE || 3600,
     sessionPath: process.env.SESSION_DIR || '.session',
     favicon: process.env.FAVICON || 'favicon.ico',
-    sentryDsn: process.env.SENTRY_DSN || 'https://cab9cdff46224d679f1cb5d9a24c643d@o1411884.ingest.sentry.io/6756187',
+    sentryDsn: process.env.SENTRY_DSN,
+    // Use this hard coded value on a temporary basis on localhost. you do this to test sentry
+    // sentryDsn: 'https://cab9cdff46224d679f1cb5d9a24c643d@o1411884.ingest.sentry.io/6756187',
+    sentryTraceRate: process.env.SENTRY_TRACES_SAMPLE_RATE || 0.7, // default to 70%
   }
 }
 

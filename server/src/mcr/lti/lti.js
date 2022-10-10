@@ -204,30 +204,30 @@ export default class LTIController {
 
   _findCreateUser (toolConsumer, ltiData) {
     const _this = this
+    let userDate = {
+      user_id: ltiData.user_id,
+      givenName: ltiData.lis_person_name_given,
+      familyName: ltiData.lis_person_name_family,
+      fullName: ltiData.lis_person_name_full,
+      consumerKey: toolConsumer.oauth_consumer_key,
+      toolConsumer: toolConsumer._id
+    }
+    logLti('_findCreateUser ltiData user data ', JSON.stringify(userDate, null, 2))
     return this.userController.findOne({
       $and: [{ user_id: ltiData.user_id }, { toolConsumer: toolConsumer._id }]
     }).then((foundUser, r) => {
       if (foundUser) {
+        logLti('_findCreateUser found user', foundUser)
         if (debugFine) debug('Found user ' + foundUser._id)
         // will update the user record later
         return foundUser
       }
-      debug('Create user ' + ltiData.user_id + JSON.stringify(ltiData, null, 2))
-      let user = {
-        user_id: ltiData.user_id,
-        givenName: ltiData.lis_person_name_given,
-        familyName: ltiData.lis_person_name_family,
-        fullName: ltiData.lis_person_name_full,
-        // emailPrimary: ltiData.lis_person_contact_email_primary,
-        // ltiData: [JSON.stringify(ltiData)],
-        consumerKey: toolConsumer.oauth_consumer_key,
-        toolConsumer: toolConsumer._id
-      }
-      return _this.userController.create(user).then((newUser, r) => {
-        // create returns a structure with the new user inside
-        debug('created new user ' + newUser._id)
-        return newUser
-      })
+      return _this.userController.create(userDate)
+        .then((newUser, r) => {
+          // create returns a structure with the new user inside
+          logLti('A new user has been created', newUser._id)
+          return newUser
+        })
     })
   }
 
@@ -264,6 +264,28 @@ export default class LTIController {
       if (debugFine) debug('updateToolConsumer update req ', req.toolConsumer)
     } else {
       if (debugFine) debug('tool consumer is up to date ')
+      return Promise.resolve()
+    }
+  }
+
+  async updateUser (req) {
+    const ltiData = req.ltiData
+    const user = req.user
+    if (debugFine) debug('updateUser user ', user)
+    if (debugFine) debug('updateUser vs ltiData ', ltiData)
+    if (
+      user.givenName !== ltiData.lis_person_name_given ||
+      user.familyName !== ltiData.lis_person_name_family ||
+      user.fullName !== ltiData.lis_person_name_full
+    ) {
+      user.givenName = ltiData.lis_person_name_given
+      user.familyName = ltiData.lis_person_name_family
+      user.fullName = ltiData.lis_person_name_full
+      if (debugFine) debug('update user ', user)
+      await user.save()
+      const response = await this.userController.read(user._id)
+      req.user = response.user
+      if (debugFine) debug('update user req.user', req.user)
       return Promise.resolve()
     }
   }
@@ -305,9 +327,16 @@ export default class LTIController {
     }
     let visit = req.visit
     let route = '/ehr'
+    let params = []
+    // the DemoController adds a flag to the lti data
+    if (req.ltiData.isDemoLti) {
+      // pass this flag onto the client
+      params.push('isDemoLti=true')
+    }
     if (visit.isInstructor) {
       if (debugFine) debug('Route to instructor page ')// + JSON.stringify(req.ltiData, null, 2))
-      route = '/lms-activity?activityId=' + visit.activity._id
+      route = '/lms-activity'
+      params.push('activityId=' + visit.activity._id)
     }
     try {
       const tokenData = {
@@ -320,12 +349,16 @@ export default class LTIController {
       debug('LTI create token with', tokenData)
       const token = this.authUtil.createToken(tokenData)
       const refreshToken = this.authUtil.createRefreshToken(token)
-      let ltiQuery = 'lti=' + (visit.isInstructor ? 'instructor' : 'student')
+      params.push('lti=' + (visit.isInstructor ? 'instructor' : 'student'))
+      params.push('token='+ refreshToken)
       req.refreshToken = refreshToken
-      let url = this.config.clientUrl + route + `?${ltiQuery}&token=${refreshToken}`
       if (req.errors.length > 0) {
         let errs = req.errors.join('-')
-        url += '&error=' + errs
+        params.push('error=' + errs)
+      }
+      let url = this.config.clientUrl + route
+      if (params.length> 0) {
+        url += '?' + params.join('&')
       }
       if (debugFine) debug(`LTI redirect url is "${url}`)
       req.ltiNextUrl = url
@@ -342,6 +375,8 @@ export default class LTIController {
     const db = false
     if (db) console.log('Do update tool')
     await _this.updateToolConsumer(req)
+    if (db) console.log('Do update user')
+    await _this.updateUser(req)
     if (db) console.log('Do update activity')
     await _this.updateActivity(req)
     if (db) console.log('Do updateVisit')

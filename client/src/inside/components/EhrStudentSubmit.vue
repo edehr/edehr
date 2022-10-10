@@ -33,7 +33,6 @@ const FEEDBACK_TITLE = 'Optional Feedback Form'
 const FEEDBACK_BODY = 'Your assignment is submitted. Before you go, '+
   ' can you please give us your thoughts and suggestions about the EdEHR.' +
   ' This is completely anonymous and optional yet your comments will help us improve this application.'
-const SUBMITTED_TEXT = 'Your assignment is now submitted. Will now return you back to your learning management system.'
 /*
 Collect student feedback, completely anonymous and voluntary, after work is submitted.
  */
