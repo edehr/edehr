@@ -82,7 +82,9 @@ export default class DemoController {
       personaList: demoPersonae
     }
     try {
-      const demoToken = this.comCon.authUtil.createToken({ demoData: demoData })
+      // the demo token contains information about the demo system.  it doesn't need to
+      // any expiry since its not a user log in control its just information.
+      const demoToken = this.comCon.authUtil.createToken({ demoData: demoData }, undefined /* no expiry */)
       if (debugDC) debug('DemoController _createDemoToolConsumer generated token')
       res.status(200).json({ demoToken })
     } catch (err) {
@@ -103,7 +105,7 @@ export default class DemoController {
     debug('deleteDemoData query:          ', query)
     return Consumer.find(query)
       .then((tcList) => {
-        if (!tcList || tcList.length == 0) {
+        if (!tcList || tcList.length === 0) {
           throw new Error('Attempt to clean up a demo consumer that does not exist ' + toolConsumerId)
         }
         const tc = tcList[0]
@@ -137,7 +139,15 @@ export default class DemoController {
   submitLTIData (req, res) {
     const {host} = req.headers
     const {ltiData} = qs.parse(req.body)
-    // console.log('ltidata', ltiData, req.body)
+    /*
+    * NOTE We set a boolean in the lti data to pass this to the lti controller.  When it composes
+    * the url that goes to the application we add this flag to the query.  The client can then
+    * know that this LTI request is from a demo.
+    * Note we don't give any of the standard lti fields a double meaning. E.g. we don't depend on,
+    * for example, the fact that tool_consumer_info_version will contain edehrdemo. Using an
+    * explicit field lets another coder follow the chain.  See lit next.
+     */
+    ltiData.isDemoLti = true
     const signedRequest = this._signAndPrepareLTIRequest(ltiData, host)
     return axios.post(signedRequest.url, signedRequest.body)
       .then((_results) => {
@@ -201,7 +211,7 @@ export default class DemoController {
   }
 
   route () {
-    const validatorMiddleware = [validatorMiddlewareWrapper(this.comCon.authUtil)]
+    const validatorMiddleware = [validatorMiddlewareWrapper(this.comCon)]
     const router = new Router()
 
     /**
@@ -220,10 +230,10 @@ export default class DemoController {
      * (the data returned from the /demo route).
      *
      */
-    router.get('/fetch', validatorMiddleware, (req, res) =>
+    router.get('/fetch', validatorMiddleware, (req, res) => {
       // The result of authentication is the parsed token. Return this parsed token as the demo data.
       res.status(200).json(req.authPayload)
-    )
+    })
 
     router.get('/demo-activities/', (req, res) => {
       this

@@ -84,7 +84,7 @@ export function validDayStr (text) {
  * @return {boolean}
  */
 export function validNumberStr (str) {
-  // These are a few of the exceptions which isNaN can return false for... 
+  // These are a few of the exceptions which isNaN can return false for...
   // as it has been noted here: https://stackoverflow.com/questions/175739/built-in-way-in-javascript-to-check-if-a-string-is-a-valid-number
   if (str === false || str === ' ' || str === '')
     return false
@@ -138,8 +138,10 @@ export function formatTimeStr (dateStrFromDb) {
 
 export function composeAxiosResponseError (error, msg = '') {
   if (!error.response) {
-    msg += ' Error: ' + JSON.stringify(error)
-    console.error('composeAxiosResponseError without error.response: ', msg)
+    if(error.message === 'Network Error') {
+      return 'EdEHR API server is not available. Either you have network issues or the server is down.'
+    }
+    msg += ' Error: "' + error.message + '"'
     return msg
   }
   const res = error.response

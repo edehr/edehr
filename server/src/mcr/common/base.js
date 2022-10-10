@@ -43,7 +43,9 @@ export default class BaseController {
 
   baseFilter (id) {
     if (!mongoose.Types.ObjectId.isValid(id)) {
-      throw new SystemError(Text.INVALID_BASE_ID)
+      let ee = new Error('baseFilter here')
+      console.log(ee)
+      throw new SystemError(Text.INVALID_BASE_ID(id, this.modelName))
     }
     var filter = {}
     filter[this.key] = id
@@ -55,6 +57,16 @@ export default class BaseController {
     let query = this.model.findOne(filter)
     // console.log('baseFindOneQuery for ', filter, 'query', query)
     return query
+  }
+
+  /**
+   * findOneById is a wrapper around the more obscurely name 'baseFindOneQuery. It is also an async
+   * method that returns the results of awaiting on baseFindOneQuery.
+   * @param id
+   * @returns {Promise<*>}
+   */
+  async findOneById (id) {
+    return await this.baseFindOneQuery(id)
   }
 
   read (id) {

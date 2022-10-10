@@ -2,12 +2,12 @@ import EventBus from '@/helpers/event-bus'
 import EhrOnlyDemo from '@/helpers/ehr-only-demo'
 import StoreHelper from '@/helpers/store-helper'
 import router from '@/router'
-import { routeIsEHR }  from '@/router'
 import { setAuthHeader } from '@/helpers/axios-helper'
 import { PAGE_DATA_REFRESH_EVENT, PAGE_DATA_READY_EVENT } from '@/helpers/event-bus'
-import { UNLINKED_ACTIVITY_ROUTE_NAME } from '@/outsideRoutes'
+import { ERROR_ROUTE_NAME, UNLINKED_ACTIVITY_ROUTE_NAME, ZONE_DEMO, ZONE_PUBLIC } from '@/outsideRoutes'
 import { Text } from '@/helpers/ehr-text'
 import store from '@/store'
+import authHelper from '@/helpers/auth-helper'
 
 const NO_ASSIGNMENT_LINKED = 'NoAssignmentLinked'
 
@@ -38,174 +38,117 @@ class PageControllerInner {
    * @return {Promise<unknown>}
    */
   async onPageChange (route) {
-    if (dbApp) console.log('onPageChange route.meta', route.meta)
-    StoreHelper.setPageTitle(route.meta.label)
-    StoreHelper.setPageIcon(route.meta.icon)
-    const {seedEditId, evaluatingStudent, lti} = route.query || {}
-    if (dbApp) console.log('onPageChange from route.query --> seedEditId, evaluatingStudent, lti', seedEditId, evaluatingStudent, lti)
-    /*
-    First we make adjustments.
-    If Seed Editing then user is a content designer is coming from the Seeds pages.
-    If Eval Student then user is an instructor and is going to view ehr pages to see student's work.
-    If LIT then user is a student arriving here from a LTI consumer.
-    Otherwise;
-      user is navigating around the EHR pages or
-      user is not in ehr section.
-     */
-    if(seedEditId) {
-      // New approach to be sure seed editor can refresh their browser while editing a see.
-      if (dbApp) console.log('User is editing seed. Stash state for possible page refresh', seedEditId)
-      StoreHelper.setSeedEditId(seedEditId)
-    }
-    else if (evaluatingStudent) {
-      /*
-      The use of query parameters is new and changes the approach we can take to managing the
-      flow of page loading.  At this point the focus is to use the query parameters to load
-      seed for seed editing. Later can refactor the management of instructor and student visits
-       */
-      StoreHelper.setSeedEditId('')
-      if (dbApp) console.log('User is an instructor evaluatingStudent >> ', evaluatingStudent)
-    }
-    else if (lti) {
-      const userType = lti
-      // lti holds 'student', 'instructor' , or 'unknown'
-      // lti comes from the server (see lti controller)
-      StoreHelper.setSeedEditId('')
-      if (dbApp) console.log('User coming in via LTI. userType',userType)
-    }
-    else if (routeIsEHR(route)) {
-      if (dbApp) console.log('In app page change for EHR page.')
-    } else {
-      if (dbApp) console.log('User not in the EHR so clear any active seed editing ids')
-      StoreHelper.setSeedEditId('')
-    }
-    try {
-      if (route.name === 'demo') {
-        if (dbApp) console.log('going to demo page. Log the user out" of EHR' +
-          ' whether the user came from an LMS or from the demo')
-        await StoreHelper.logUserOutOfEdEHR()
-      }
+    // console.log('on page', route.name)
+    // console.log('onPageChange localStorage', localStorage)
+    // console.log('onPageChange route.meta', route.meta)
+    // console.log('onPageChange route.query', route.query)
+    const { meta: routeMeta, name: routeName, query: routeQuery } = route
+    const { zone: routeZone } = routeMeta
+    const { isDemoLti } = routeQuery
+    const { seedEditId, token: refreshToken} = routeQuery
+    let haveDemoToken = !!StoreHelper.getDemoToken()
+
+    {
+      const { label, icon } = routeMeta
+      StoreHelper.setPageTitle(label)
+      StoreHelper.setPageIcon(icon)
       // call into the api to get and store in memory api data, which includes page title
       await StoreHelper.loadApiData()
-      document.title = StoreHelper.getAppTitle ()
-      if (dbApp) console.log('api data fetch: document title is', document.title)
-      await this._loadData(route)
+      document.title = StoreHelper.getAppTitle()
     }
-    catch(err) {
-      StoreHelper.setLoading(null, false)
+    if (routeZone === ZONE_PUBLIC) {
+      console.log('on a public page', routeName)
+      return
+    }
+    try {
+      StoreHelper.setLoading(null, true)
+      if (refreshToken) {
+        if (haveDemoToken && !isDemoLti) {
+          // we are here because a demo session is active and the incoming lti request is not from that demo
+          // the incoming request is coming from an actual LMS.
+          // before processing the refresh token clear away any demo that is active.
+          if (dbApp) console.log('onPageChange refreshToken have demo token and this is not a demo refresh token')
+          // TODO.  Alert the user and offer to keep the demo data and stop the LTI log in.
+          await StoreHelper.logUserOutOfEdEHR()
+          haveDemoToken = !!StoreHelper.getDemoToken()
+        }
+        // The LTI service provides a token in the query. We send this back to our preconfigured api
+        // server to verify the incoming request and to get the actual token this
+        // client will use. This two step token verification process makes sure the incoming request
+        // is from the expected api server and no-where else.
+        if (dbApp) console.log('_loadAuth refresh token', authHelper.hashToken(refreshToken))
+        await StoreHelper.fetchAndStoreAuthToken(refreshToken)
+        // fetch throws if token is expired or invalid
+      }
+
+      const authToken = StoreHelper.getAuthToken()
+      if (authToken) {
+        if (dbApp) console.log('_loadAuth. We have an existing auth token. Get the auth data....')
+        // must set auth header before invoking fetch. The fetch is an authenticated post
+        setAuthHeader(authToken)
+        await StoreHelper.fetchTokenData(authToken)
+      } else {
+        EhrOnlyDemo.setActiveEhrActive(true)
+        EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
+        return false
+      }
+      EhrOnlyDemo.setActiveEhrActive(false)
+
+      StoreHelper.setSeedEditId('')
+      if (seedEditId) {
+        StoreHelper.setSeedEditId(seedEditId)
+      }
+
+      if (haveDemoToken) {
+        if (dbApp) console.log('onPageChange loadDemoData')
+        await StoreHelper.loadDemoData()
+      }
+      if (routeZone === ZONE_DEMO) {
+        console.log('on a Demo page', routeName)
+        return
+      }
+
+      if (authToken) {
+        if (dbApp) console.log('onPageChange is authed so load data')
+        await this._loadData(routeName === UNLINKED_ACTIVITY_ROUTE_NAME)
+      }
+      if (authToken) {
+        if (dbApp) console.log('onPageChange is authed and data loaded to trigger page ready event')
+        EventBus.$emit(PAGE_DATA_READY_EVENT)
+      }
+    } catch (err) {
+      // console.error('PageController error', err)
       if (err.type === NO_ASSIGNMENT_LINKED) {
         const activity = err.visitInfo.activity
         await router.push({ name: UNLINKED_ACTIVITY_ROUTE_NAME, query: { activityId: activity } })
       } else {
-        console.error('Caught error page change load data block', err)
-        StoreHelper.setApiError(err + '. System Error')
-        // send a timestamp in query to prevent NavigationDuplication error from vue router.
-        await router.push({ name: 'home', query: { ts: Date.now() } })
+        let msg = err.message
+        console.log('PageController err.response', err.response)
+        if (err.response) {
+          const { data, statusText } = err.response
+          msg += '. ' + statusText
+          msg += '. ' + data
+        }
+        StoreHelper.setApiError(msg)
+        if (routeZone !== ZONE_PUBLIC && routeName !== ERROR_ROUTE_NAME) {
+          console.log('going to error page')
+          await router.push({ name: ERROR_ROUTE_NAME })
+        }
       }
+    } finally {
+      StoreHelper.setLoading(null, false)
     }
   }
 
-  async _loadData (route) {
-    /*
-The LTI service provides a token in the query. We send this back to our preconfigured api server to verify the incoming request and to get the actual token this client will use.  This two step token verification process makes sure the incoming request is from the expected api server and no-where else.
-    */
-    const refreshToken = route.query.token
-    // if there is no token in the query then use any stashed token.
-    const authToken = StoreHelper.getAuthToken()
-    // if we have either token then we have an LTI user who wants into the app.
-    const isUser = refreshToken || authToken
-    // assume page load is for real work and not the ehr only demo
-    EhrOnlyDemo.setActiveEhrActive(false)
-    // If there is a demo token in local memory then the user is using the full demo mode
-    // Note there is now a just ehr demo load below and that is not a full demo mode.
-    if (!!StoreHelper.getDemoToken()) {
-      // set up demo and RETURN from function
-      await StoreHelper.loadDemoData()
-      if (!isUser) {
-        EventBus.$emit(PAGE_DATA_READY_EVENT)
-        return Promise.resolve()
-      }
-    }
-    if (!isUser) {
-      EhrOnlyDemo.setActiveEhrActive(true)
-      EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
-      return Promise.resolve()
-    }
-    if (dbApp) console.log('db_loadData load user authorization data')
-    //  Will now do the LTI auth. This results in a lot of data from the server and this data will be
-    // be pushed into the storage.s
-    await this._loadAuth(refreshToken, authToken)
-
+  async _loadData (routeIsUnlinkedPage) {
+    // await StoreHelper.loadConsumer(StoreHelper.getAuthdConsumerId())
     let visitId = this._getVisitId()
     await StoreHelper.loadVisitRecord(visitId)
-
-    if (route.name === UNLINKED_ACTIVITY_ROUTE_NAME) {
+    if (routeIsUnlinkedPage) {
       if (dbApp) console.log('Do nothing but emit the PAGE_DATA_REFRESH_EVENT in page change handler on entry to unlinked activity page.')
       EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
       return Promise.resolve()
     }
-    await this._loadEhr()
-    EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
-    let visitInfo = store.state.visit.sVisitData || {}
-    await StoreHelper.loadAsCurrentActivity(visitInfo.activity)
-    let activity = store.getters['activityStore/activity']
-    if (!activity.assignment) {
-      // console.log('Reject no assignment',activity)
-      return Promise.reject(new NoAssignmentLinked(visitInfo))
-    }
-    return Promise.resolve()
-  }
-
-  async _loadAuth (refreshToken, authToken) {
-    if (refreshToken) {
-      if (dbApp) console.log('_loadAuth refresh token fetch')
-      await this._ltiAccess(refreshToken, authToken)
-    } else if (authToken) {
-      if (dbApp) console.log('_loadAuth. User is refreshing their browser. We have an existing auth token. Get the auth data....')
-      StoreHelper.setLoading(null, true)
-      setAuthHeader(authToken)
-      await StoreHelper.fetchTokenData(authToken)
-      // get the consumer id as authed and load it
-      await StoreHelper.loadConsumer(StoreHelper.getAuthdConsumerId())
-      StoreHelper.setLoading(null, false)
-      if (dbApp) console.log('_loadAuth. done')
-      // }
-    } else {
-      if (dbApp) console.log('_loadAuth. User can not proceed. There is no refresh nor previous auth token.')
-      throw new Error(Text.PARAMETERS_ERROR)
-    }
-  }
-
-  async _ltiAccess (refreshToken, authToken) {
-    StoreHelper.setLoading(null, true)
-    if (dbApp) console.log('_ltiAccess take the refresh, convert to auth token. Store the new token.')
-    let token = await StoreHelper.fetchAndStoreAuthToken(refreshToken)
-    if (!token) {
-      if (dbApp) console.log('_ltiAccess the refresh token failed. Perhaps this is a SYSTEM ERROR?')
-      throw new Error(Text.EXPIRED_REFRESH_TOKEN)
-    }
-    /* ******** NEW CONNECTION SUCCEEDED *************  */
-    try {
-      if (dbApp) console.log('_ltiAccess take the new token, get the server to validate and provide the data inside. Store the data')
-      await StoreHelper.fetchTokenData(token)
-    }
-    catch (err) {
-      console.error('PageController error', err)
-      if (err.response.status === 401 && err.response.data.toLowerCase().includes('expired') && !!authToken) {
-        if (dbApp) console.log('_ltiAccess the refresh token expired but we have a previous auth token (user is refreshing browser).')
-        setAuthHeader(authToken)
-        await StoreHelper.fetchTokenData(authToken)
-      } else {
-        if (dbApp) console.log('_ltiAccess refresh token is expired and there is no previous token. User can not proceed.')
-        throw new Error(Text.EXPIRED_TOKEN(err))
-      }
-    }
-    StoreHelper.setLoading(null, false)
-  }
-
-  async _loadEhr () {
-    if (dbApp) console.log('_loadEhr begin')
-    StoreHelper.setLoading(null, true)
     if (StoreHelper.isSeedEditing()) {
       await StoreHelper.loadSeedEditor()
     } else if (StoreHelper.isInstructor()) {
@@ -213,13 +156,18 @@ The LTI service provides a token in the query. We send this back to our preconfi
     } else if (StoreHelper.isStudent()) {
       await StoreHelper.loadStudent2()
     }
-    StoreHelper.setLoading(null, false)
-    if (dbApp) console.log('_loadEhr end')
+    EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
+    let visitInfo = store.state.visit.sVisitData || {}
+    await StoreHelper.loadAsCurrentActivity(visitInfo.activity)
+    let activity = store.getters['activityStore/activity']
+    if (!activity.assignment) {
+      return Promise.reject(new NoAssignmentLinked(visitInfo))
+    }
   }
-
 
   _getVisitId () {
     let payload = StoreHelper.getAuthData()
+    // console.log('getvisit data from auth payload', payload.visitId,  payload.isInstructor)
     if (!(payload && payload.visitId)) {
       throw new Error(Text.TOKEN_FETCHING_ERROR)
     }

@@ -8,9 +8,9 @@ const mockData = require('./mockData.json')
 const axiosMockHelper = require('./axios-mock-helper')
 jest.mock('axios')
 /**
- * 
+ *
  * Calling needed helper methods
- * 
+ *
  */
 
 const pageKey = testHelper.getPageKeys[0]
@@ -21,7 +21,7 @@ const _beforeEach = () => {
 
 // clear
 describe('General testing', () => {
-  
+
   beforeEach(() => _beforeEach())
 
   it('getMergedPageData', done => {
@@ -54,7 +54,7 @@ describe('General testing', () => {
       const tc = StoreHelper.toolConsumerId()
       should.exist(tc)
       tc.should.be.type('string')
-      tc.should.equal(mockData.consumer._id)  
+      tc.should.equal(mockData.consumer._id)
       done()
     })
   })
@@ -234,7 +234,7 @@ describe('General testing', () => {
       done()
     })
   })
- 
+
   it('isLoading', done => {
     should.doesNotThrow(() => {
       const isLoading = StoreHelper.isLoading()
@@ -295,7 +295,7 @@ describe('classList / instructor tests', () => {
       done()
     })
   })
-  
+
   it('getCurrentEvaluationStudentId', done => {
     should.doesNotThrow(() => {
       const studentEvalId = 'currentEvaluationStudentId'
@@ -307,7 +307,7 @@ describe('classList / instructor tests', () => {
       done()
     })
   })
-  
+
   it('getCurrentEvaluationStudentVisit', done => {
     should.doesNotThrow(() => {
       const studentEvalId = StoreHelper.getCurrentEvaluationStudentId()
@@ -328,7 +328,7 @@ describe('classList / instructor tests', () => {
       done()
     })
   })
-  
+
   it('studentSubmitsAssignment', async () => {
     should.doesNotThrow(async () => {
       const submit = !mockData.activityData.submitted
@@ -419,7 +419,7 @@ describe('classList / instructor tests', () => {
       usedActivity.should.not.be.empty()
       testHelper.setActivityDataMocks(found.activityData)
       await axiosMockHelper.prepareAxiosResponse('get', { activitydata: found.activityData })
-      await StoreHelper.changeStudentForInstructor(_id) 
+      await StoreHelper.changeStudentForInstructor(_id)
       const result = StoreHelper.getActivityData()
       // const result = StoreHelper.getActivityData()
       should.exist(result)
@@ -558,7 +558,7 @@ describe('activity tests', () => {
 
 // clear
 describe('assignment tests', () => {
-  
+
   beforeEach(() => _beforeEach())
 
   it('getAssignmentId', done => {
@@ -611,8 +611,8 @@ describe('assignment tests', () => {
 
   it('updateAssignment', async () => {
     const updatedAssignment = Object.assign(
-      {}, 
-      mockData.assignment, 
+      {},
+      mockData.assignment,
       { name: 'updated assignment name' }
     )
     const assignments = [
@@ -704,7 +704,7 @@ describe('LMS/LTI consumers tests', () => {
       done()
     })
   })
-  
+
   it('loadConsumersList', async () => {
     should.doesNotThrow(async () => {
       const { consumerListing } = mockData
@@ -1080,13 +1080,6 @@ describe.skip('Demonstration related', () => {
 
   it.skip('submitAcceptsTerms', done => {
     should.doesNotThrow(() => StoreHelper.submitAcceptsTerms(true))
-    done()
-  })
-
-  it.skip('getDemoAcceptTerms', done => {
-    const accept = StoreHelper.getDemoAcceptTerms()
-    should.exist(accept)
-    accept.should.equal(true)
     done()
   })
 

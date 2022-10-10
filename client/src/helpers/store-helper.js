@@ -494,15 +494,24 @@ class StoreHelperWorker {
     return this._getAuthStore('token')
   }
 
-  async logUserOutOfEdEHR () {
+  async logUserOutOfEdEHR (clearDemo=true) {
+    const dt = StoreHelper.getDemoToken()
+    if (clearDemo && dt) {
+      console.log('logout user demoLogout dt', dt)
+      await this._dispatchDemoStore('demoLogout')
+    }
+    console.log('logout user logOutUser')
     await this._dispatchAuthStore('logOutUser')
+    console.log('logout user clearVisitData')
     await this._dispatchVisit('clearVisitData')
+    console.log('logout user clearConsumer')
     await this.clearConsumer()
   }
 
   async exitToLms () {
     const url = StoreHelper.lmsUrl()
-    await StoreHelper.logUserOutOfEdEHR()
+    const clearDemo = false
+    await StoreHelper.logUserOutOfEdEHR(clearDemo)
     window.location = url
   }
 
@@ -516,11 +525,6 @@ class StoreHelperWorker {
 
   createDemoToolConsumer () {
     return this._dispatchDemoStore('createToolConsumer')
-  }
-
-  async demoLogout (toolConsumerId) {
-    // log out of any ehr session too
-    return await this._dispatchDemoStore('demoLogout', toolConsumerId)
   }
 
   async loadDemoData () {
@@ -568,9 +572,6 @@ class StoreHelperWorker {
     return this._dispatchDemoStore('submitPersona', submitData)
   }
 
-  getDemoAcceptTerms () {
-    return this._getDemoStorage('agreesWithTerms')
-  }
   submitAcceptsTerms (accepts) {
     return this._dispatchDemoStore('acceptsTerms', { accepts  })
   }

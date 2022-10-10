@@ -10,6 +10,9 @@
         div &nbsp;
       div(v-if="showEdEhrOrg", class="column is-4")
         ed-ehr-org-footer
+    div(class="column")
+      div {{ apiData.appTitle }}
+      div {{ authData.timeRemaining }}
 </template>
 
 <script>
@@ -21,6 +24,8 @@ export default {
     EdEhrOrgFooter
   },
   computed: {
+    apiData () { return StoreHelper.getApiData()   },
+    authData () { return StoreHelper.getAuthData() },
     appVersion () {
       return StoreHelper.getAppVersion()
     },

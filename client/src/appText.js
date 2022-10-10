@@ -185,7 +185,7 @@ export const demoText = {
         ' Reach out to mailto:info@edehr.org if you have questions.',
     }
   ],
-  lmsAside: 'To the right is a simple one-page learning management system with sample activities each preconfigured to connect with ' +
+  lmsAside: 'To the right is a simple one-page learning management system with sample activities each ready to be connected with ' +
     ' a learning object inside the EdEHR. Some of those learning objects are ' +
     ' based on the open text-book <a href="https://pressbooks.bccampus.ca/healthcasestudies/">Health Case Studies - Toward Closing the Healthcare Communication Gap</a> by:  Glynda Rees, Rob Kruger, Janet Morrison.',
   login: {
@@ -220,8 +220,7 @@ export const ehrOnlyDemoText = {
     'files previously uploaded to the system by the course content creator. ' +
     'These files can include PDF and image files.  The workflow starts with the content creator who ' +
     'finds or creates a file to support a scenario. They upload this file into an area on the server ' +
-    'reserved for the learning institution. These files then can be selected for inclusion in an ' +
-    'assessment. ',
+    'reserved for the learning institution. Then students or course content creators can select a file for inclusion here.',
   submitDialogMessage: 'In the full EdEHR students complete their work and submit it for review by their ' +
     'instructor. The instructor can view the student\'s work in the EHR context and leave ' +
     'evaluation comments for the student to consider. These ' +

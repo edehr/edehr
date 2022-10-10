@@ -3,10 +3,6 @@
     app-dropdown(:items="items")
       template(#dropdownTitle)
         slot
-    ui-confirm(class="confirmDialog",
-      ref="confirmDialog",
-      @confirm="demoLogOut",
-      save-label="Logout")
     ehr-context-activity-dialog(ref='activityDialog')
     ehr-scratch-pad-dialog(ref='scratchPad')
 </template>
@@ -47,20 +43,9 @@ export default {
       ]
     },
   },
-  methods: {
-    async demoLogOut () {
-      await StoreHelper.demoLogout()
-      // the next line clears local storage of demo data (the demo db)
-      await StoreHelper.logUserOutOfEdEHR()
-      this.$router.push('/')
-    },
-  }
 }
 </script>
 
 <style lang='scss' scoped>
 @import '../../scss/definitions';
-.confirmDialog {
-  color: $grey80;
-}
 </style>

@@ -1,8 +1,7 @@
 <template lang='pug'>
-  div
-    h2 Page Not Found
-    div URL: {{ location }}
-    div This URL does not match any pages on this site
+  div(class="outside-view")
+    h1 Error
+    div {{ apiError }}
     what-to-do-instructions
 </template>
 
@@ -11,13 +10,8 @@ import WhatToDoInstructions from '@/outside/components/WhatToDoInstructions'
 export default {
   components: { WhatToDoInstructions },
   computed: {
-    location () {
-      return window.location
-    }
+    apiError () { return this.$store.state.system.apiError }
   }
 }
+
 </script>
-
-<style scoped>
-
-</style>

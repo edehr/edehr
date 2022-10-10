@@ -21,7 +21,7 @@ export const Text = {
 
   // Authentication
   EXPIRED_REFRESH_TOKEN: 'Refresh token is expired',
-  EXPIRED_TOKEN: (err) => `The token has expired. Please, try again! \n ${err}`,
+  EXPIRED_TOKEN: 'Your session has expired. Please return to your LMS and try again.',
   INVALID_TOKEN: (err) => `Invalid token \n ${err}`,
   REQUIRE_AUTHENTICATION: 'You need to be properly authenticated to do this',
   TOKEN_FETCHING_ERROR: 'Error when fetching token data',

@@ -1,7 +1,7 @@
 import InstoreHelper from '@/store/modules/instoreHelper'
 // import { Text } from '@/helpers/ehr-text'
 // import StoreHelper from '@/helpers/store-helper'
-
+const trace = false
 const state = {
   _isLoading: false,
   apiData: {},
@@ -13,7 +13,7 @@ const state = {
   loadingCnt: 0,
   pageTitle: '',
   pageIcon: undefined,
-  outsideShowButtonLabels: false,
+  outsideShowButtonLabels: true,
   smallWindow: false,
   sysMessage: '',
 }
@@ -49,7 +49,7 @@ const actions = {
     })
   },
   setOutsideShowButtonLabels ({ commit }, value) {
-    console.log('set show', value)
+    if (trace) console.log('set show', value)
     commit('setOutsideShowButtonLabels', value)
   }
 }
@@ -57,18 +57,22 @@ const actions = {
 const mutations = {
   initialize: function (state) {
     state.caseContextFeature = localStorage.getItem('CaseContextFeature') === 'true'
+    state.outsideShowButtonLabels = localStorage.getItem('ShowButtonLabels') === 'true'
   },
   setApiData: (state, apiData) => {
     // console.log('System store set ApiData: ', apiData)
     state.apiData = apiData
   },
   setLoading: (state, isLoading) => {
+    if (trace) console.log('system loading counter', isLoading)
     if (isLoading) {
       state.loadingCnt++
     } else {
       state.loadingCnt--
     }
     state._isLoading = state.loadingCnt > 0
+    if (trace) console.log('system loading state.loadingCnt', state.loadingCnt)
+    if (trace) console.log('system loading state._isLoading', state._isLoading)
   },
   setEditing: (state, isEditing) => {
     state.isEditing = isEditing
@@ -90,7 +94,7 @@ const mutations = {
   },
   setApiError: (state, error) => {
     if (error && process.env.NODE_ENV !== 'test') {
-      console.error('System api error:', error)
+      console.error('System setApiError:', error)
     }
     state.apiError = error
   },
@@ -103,6 +107,7 @@ const mutations = {
   },
   setOutsideShowButtonLabels: (state, value) => {
     console.log('mutation show', value)
+    localStorage.setItem('ShowButtonLabels', value)
     state.outsideShowButtonLabels = value
   },
 }

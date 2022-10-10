@@ -2,43 +2,54 @@ import { Text } from '../config/text'
 
 const rateLimit = require('express-rate-limit')
 const debug = require('debug')('server')
+const logAuth = require('debug')('auth')
 import { logError} from '../helpers/log-error'
 
 const debugMW = false
 
 const ADMIN_MAX_REQUEST_LIMIT = 5
 const DEMO_MAX_REQUEST_LIMIT = 5
-if(debugMW) debug('validatorMiddlewareWrapper ADMIN_MAX_REQUEST_LIMIT', ADMIN_MAX_REQUEST_LIMIT)
-if(debugMW) debug('validatorMiddlewareWrapper DEMO_MAX_REQUEST_LIMIT', DEMO_MAX_REQUEST_LIMIT)
+logAuth('validatorMiddlewareWrapper ADMIN_MAX_REQUEST_LIMIT', ADMIN_MAX_REQUEST_LIMIT)
+logAuth('validatorMiddlewareWrapper DEMO_MAX_REQUEST_LIMIT', DEMO_MAX_REQUEST_LIMIT)
 
 /**
  *
- * @param authUtil
+ * @param commonControllers has the authUtil and the visitController
  * @return Function(req, res, next) If req's auth header contains a valid token then place the parsed data into reg.authPayload
  */
-export const validatorMiddlewareWrapper = (authUtil) => {
-  return (req, res, next) => {
+export const validatorMiddlewareWrapper = (commonControllers) => {
+  const { authUtil, visitController } = commonControllers
+  return async (req, res, next) => {
     if (req && req.headers.authorization) {
-      if (debugMW) debug('validatorMiddlewareWrapper has header')
+      logAuth('validatorMiddlewareWrapper has header')
       try {
-        const result = authUtil.authenticate(req.headers.authorization)
-        const { visitId, demoData } = result
-        if (debugMW) debug('validatorMiddlewareWrapper has result? ', !!result, 'has demoData?', !!demoData)
-        if (visitId || demoData) {
-          if (debugMW) debug('validatorMiddlewareWrapper onto next')
-          req.authPayload = result
+        const tokenData = authUtil.authenticate(req.headers.authorization)
+        logAuth('validatorMiddlewareWrapper authenticate result ', authUtil.hashToken(tokenData))
+        const { visitId, demoData } = tokenData
+        // don't just verify the token.  Also verify the token contains a visitId that still exists.
+        const visit = visitId ? await visitController.findOneById(visitId) : undefined
+        if (debugMW && visitId) debug('validatorMiddlewareWrapper has visit', visitId, visit)
+        if (debugMW && demoData) debug('validatorMiddlewareWrapper has demoData.', demoData)
+        if (visit || demoData) {
+          req.authPayload = tokenData
           next()
         } else {
-          logError('validatorMiddleware', Text.INVALID_TOKEN)
+          debug('validatorMiddleware', Text.INVALID_TOKEN)
           res.status(401).send(Text.INVALID_TOKEN)
         }
       } catch (err) {
-        logError('validatorMiddleware caught ', err.message)
-        res.status(401).send(err)
+        debug('validatorMiddleware jwt validate threw ', err.message)
+        if (err.name === 'TokenExpiredError') {
+          logAuth('validatorMiddleware jwt has expired ')
+          res.status(401).send(Text.EXPIRED_TOKEN)
+        } else {
+          logError('validatorMiddleware jwt verify threw error ', err)
+          res.status(400).send(err)
+        }
       }
     } else {
       logError('validatorMiddleware no auth header ', req.originalUrl)
-      res.status(401).send('A token is required')
+      res.status(400).send('Authorization token is required')
     }
   }
 }
@@ -46,10 +57,10 @@ export const validatorMiddlewareWrapper = (authUtil) => {
 export const isAdmin = (req, res, next) => {
   const { authPayload } = req
   debug('authPayload >> ', authPayload)
-  if (debugMW) debug('validatorMiddlewareWrapper isAdmin  authPayload:', authPayload)
+  logAuth('validatorMiddlewareWrapper isAdmin  authPayload:', authPayload)
   if (authPayload) {
     if (authPayload.isAdmin) {
-      if (debugMW) debug('validatorMiddlewareWrapper isAdmin  pass test')
+      logAuth('validatorMiddlewareWrapper isAdmin  pass test')
       next()
     } else {
       logError('isAdmin not authorized')
