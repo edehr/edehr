@@ -3,10 +3,10 @@
     h1 About the EdEHR and edehr.org SaaS
     div
       ui-link(name="aboutSaaS")
-        span aboutSaaS
+        span Click here to learn about the edehr.org software as a service (SaaS)
     div
       ui-link(name="aboutEdEHR")
-        span aboutEdEHR
+        span Click here to learn more abou the EdEHR project
 
 </template>
 
