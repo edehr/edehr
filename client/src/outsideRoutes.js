@@ -23,6 +23,20 @@ export function outside () {
       meta: { layout: 'outside', label: NAMES.ABOUT, zone: ZONE_PUBLIC }
     },
     {
+      path: '/aboutEdEHR',
+      name: 'aboutEdEHR',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/AboutEdEHR.vue'),
+      meta: { layout: 'outside', label: NAMES.ABOUT_EDEHR, zone: ZONE_PUBLIC }
+    },
+    {
+      path: '/aboutSaaS',
+      name: 'aboutSaaS',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/AboutSaaS.vue'),
+      meta: { layout: 'outside', label: NAMES.ABOUT_SASS, zone: ZONE_PUBLIC }
+    },
+    {
       path: '/error',
       name: 'error',
       component: () =>

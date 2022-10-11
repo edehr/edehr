@@ -186,6 +186,8 @@ export const Text = {
     ADMIN_DASH: 'Admin dashboard',
     ADMIN_CONSUMER: 'Admin consumer',
     ABOUT: 'About',
+    ABOUT_EDEHR: 'About the EdEHR Project',
+    ABOUT_SASS: 'About the edehr.org SaaS',
     ACTIVITY: 'Activity',
     CLASS_LIST: 'Class list',
     CONSUMER: 'Consumer',
