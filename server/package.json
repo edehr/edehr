@@ -14,6 +14,7 @@
     "scale-test": "node test/scale-testing.js",
     "start": "NODE_ENV=development DEBUG='server, error' nodemon -r dotenv/config --exec babel-node src/index.js",
     "start:auth": "NODE_ENV=development DEBUG_COLORS=no DEBUG='auth, trace, server, error' nodemon -r dotenv/config --exec babel-node src/index.js",
+    "start:auth:lti": "NODE_ENV=development DEBUG_COLORS=no DEBUG='auth, lti, trace, server, error' nodemon -r dotenv/config --exec babel-node src/index.js",
     "start:lti": "NODE_ENV=development DEBUG_COLORS=no DEBUG='lti, server, error' nodemon -r dotenv/config --exec babel-node src/index.js",
     "start:detailed": "NODE_ENV=development DEBUG_COLORS=no DEBUG='trace, lti, server, error, details' nodemon -r dotenv/config --exec babel-node src/index.js",
     "start:prod": "NODE_ENV=production DEBUG='server, error' node build/index.js",

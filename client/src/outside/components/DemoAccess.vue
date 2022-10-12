@@ -20,9 +20,9 @@
             //div &nbsp;
           div(v-if="demoFeatureFlag && !isDemo")
             ui-button(@buttonClicked="demoLoginConfirm", :title='tip2') Full EdEHR demonstration
-      div(v-else).
-        There is a full demonstration mode that shows how the EdEHR works with learning management systems.
-        Contact <a href="mailto:info@edehr.org">info@edehr.org</a> for more information.
+          div(v-else).
+            There is a full demonstration mode that shows how the EdEHR works with learning management systems.
+            Contact <a href="mailto:info@edehr.org">info@edehr.org</a> for more information.
     ui-confirm(class="confirmDialog",ref="confirmDemoDialog", @confirm="proceedDemoToolConsumerCreation", htmlBody, saveLabel="Continue")
 
 </template>

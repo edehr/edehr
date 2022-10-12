@@ -78,8 +78,8 @@ export default {
   methods: {
     selectLearningObject (lObj) {
       const body = textToHtml('Confirm you wish to connect "' + lObj.name
-        + '"\nto the activity "' + this.activity.resource_link_title + '".' +
-        '\nThis can not be undone.')
+        + '" to the activity "' + this.activity.resource_link_title + '".' +
+        '\nThis can not be undone. If you make a mistake then create a new activity in your LMS as try again.')
       const title ='Confirm connection'
       this.$refs.confirmDialog.showDialog(title, body)
     },

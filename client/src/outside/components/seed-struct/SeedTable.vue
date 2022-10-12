@@ -6,7 +6,7 @@
         th(v-for="col in columns", v-text-to-html='col.label')
       tr(v-for="row in pageSeedData[pageElement.tableKey]")
         td(v-for="(d, index) in rowData(row)")
-          pre(v-if='columns[index].inputType === "textarea"')
+          pre(v-if='columns[index].inputType === "textarea"') {{d}}
           span(v-else) {{d}}
     div(v-show='!hasData') No data in this table.
 
