@@ -43,18 +43,7 @@ export default {
       return this.$store.getters['assignmentStore/assignment']
     },
     classList () {
-      let list = StoreHelper.getClassList()
-      list = list.slice() // make a copy so we can sort the list
-      // for development you can make the class list large by setting hack to true
-      const hackABigList = false
-      if (hackABigList) {
-        list = [...list, ...list,]
-        list = [...list, ...list,]
-        list = [...list, ...list,]
-        list = [...list, ...list,]
-        list = [...list, ...list,]
-      }
-      return list.sort((a,b) => a.user.fullName.localeCompare(b.user.fullName))
+      return StoreHelper.getClassList()
     },
     showLabels () { return StoreHelper.isOutsideShowButtonLabels() },
   },

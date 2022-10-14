@@ -122,7 +122,14 @@ const mutations = {
       state.sCurrentEvaluationStudentId = currentEvaluationStudentId
     }
   },
-  setClassList: (state, list) => { state.sClassList = list  },
+  setClassList: (state, list) => {
+    list = list.slice() // make a copy so we can sort the list
+    list.sort((a,b) => a.user.fullName.localeCompare(b.user.fullName))
+    for(let i = 0; i< list.length; i++) {
+      list[i].index = i
+    }
+    state.sClassList = list
+  },
 
   setCourses: (state, list) => { state.sCourses = list  },
 
