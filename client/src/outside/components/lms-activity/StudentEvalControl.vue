@@ -90,16 +90,21 @@ export default {
     },
     enablePrev () {
       if (this.hasNewData) return false
-      let elem = this.findCurrent()
-      return elem.index > 0
+      return this.hasPrev
     },
     enableNext () {
       if (this.hasNewData) return false
       return this.hasNext
     },
     hasNext () {
-      let elem = this.findCurrent()
-      return elem.index + 1 < this.listLen
+      let index = this.findCurrentIndex()
+      index++
+      return index < this.classList.length
+    },
+    hasPrev () {
+      let index = this.findCurrentIndex()
+      index--
+      return index >= 0
     },
     isClosed () {
       return this.activity.closed
@@ -141,17 +146,21 @@ export default {
         return elem._id === id
       }) || {}
     },
+    findCurrentIndex () {
+      const elem = this.findCurrent()
+      return this.classList.findIndex(e => e === elem)
+    },
     previousStudent () {
-      let elem = this.findCurrent()
-      let index = elem.index - 1
+      let index = this.findCurrentIndex()
+      index--
       if (index >= 0) {
         let sv = this.classList[index]
         this.changeStudent(sv)
       }
     },
     nextStudent () {
-      let elem = this.findCurrent()
-      let index = elem.index + 1
+      let index = this.findCurrentIndex()
+      index++
       if (index < this.classList.length) {
         let sv = this.classList[index]
         this.changeStudent(sv)

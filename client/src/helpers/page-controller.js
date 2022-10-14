@@ -4,7 +4,7 @@ import StoreHelper from '@/helpers/store-helper'
 import router from '@/router'
 import { setAuthHeader } from '@/helpers/axios-helper'
 import { PAGE_DATA_REFRESH_EVENT, PAGE_DATA_READY_EVENT } from '@/helpers/event-bus'
-import { ERROR_ROUTE_NAME, UNLINKED_ACTIVITY_ROUTE_NAME, ZONE_DEMO, ZONE_PUBLIC } from '@/outsideRoutes'
+import { ERROR_ROUTE_NAME, UNLINKED_ACTIVITY_ROUTE_NAME, ZONE_DEMO, ZONE_EHR, ZONE_PUBLIC } from '@/outsideRoutes'
 import { Text } from '@/helpers/ehr-text'
 import store from '@/store'
 import authHelper from '@/helpers/auth-helper'
@@ -94,7 +94,13 @@ class PageControllerInner {
       }
       EhrOnlyDemo.setActiveEhrActive(false)
 
-      StoreHelper.setSeedEditId('')
+      if (routeZone != ZONE_EHR) {
+        // clear the current seed id unless current page is an ehr page.
+        // the current seed id determines the "isSeedEditing" flag that is used to show hide elements.
+        // when the zone is ehr, and there was a seed id set by the code below, then the user
+        // is editing the seed
+        StoreHelper.setSeedEditId('')
+      }
       if (seedEditId) {
         StoreHelper.setSeedEditId(seedEditId)
       }

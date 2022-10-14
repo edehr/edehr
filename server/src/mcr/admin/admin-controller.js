@@ -67,7 +67,7 @@ export default class adminController {
       debug('adminController -- auth >> ', authorization)
       try {
         const result = this.authUtil.authenticate(authorization)
-        debug('adminController -- authenticate result >> ', result)
+        // debug('adminController -- authenticate result >> ', result)
         if (result.isAdmin) {
           debug('adminController -- success')
           return res.status(200).send(/*success*/)
