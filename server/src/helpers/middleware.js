@@ -21,10 +21,10 @@ export const validatorMiddlewareWrapper = (commonControllers) => {
   const { authUtil, visitController } = commonControllers
   return async (req, res, next) => {
     if (req && req.headers.authorization) {
-      logAuth('validatorMiddlewareWrapper has header')
+      // logAuth('validatorMiddlewareWrapper has header')
       try {
         const tokenData = authUtil.authenticate(req.headers.authorization)
-        logAuth('validatorMiddlewareWrapper authenticate result ', authUtil.hashToken(tokenData))
+        // logAuth('validatorMiddlewareWrapper authenticate result ', authUtil.hashToken(tokenData))
         const { visitId, demoData } = tokenData
         // don't just verify the token.  Also verify the token contains a visitId that still exists.
         const visit = visitId ? await visitController.findOneById(visitId) : undefined

@@ -11,7 +11,6 @@ logAuth('process.env.NODE_ENV', process.env.NODE_ENV)
 export default class AuthUtil {
   constructor (config) {
     this.tokenSecret = config.authTokenSecret
-    this.tokenLives = config.authTokenLives
     logAuth('authUtils -- tokenSecret', this.tokenSecret)
   }
 
@@ -41,11 +40,11 @@ export default class AuthUtil {
    */
   authenticate (token) {
     const sliced = token.replace('Bearer ', '')
-    logAuth('authController -- authenticate bearer token', this.hashToken(sliced))
+    // logAuth('authController -- authenticate bearer token', this.hashToken(sliced))
     return this.validateToken(sliced)
   }
 
-  createToken (data, expiry = this.tokenLives) {
+  createToken (data, expiry) {
     const options = expiry ?  { expiresIn: expiry } : undefined
     logAuth.enabled ? logAuth('authController -- createToken', options, data) : debug('authUtils -- createToken')
     const token = jwt.sign(data, this.tokenSecret, options)

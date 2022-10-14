@@ -347,7 +347,7 @@ export default class LTIController {
         visitId: visit._id
       }
       debug('LTI create token with', tokenData)
-      const token = this.authUtil.createToken(tokenData)
+      const token = this.authUtil.createToken(tokenData, this.config.authTokenLives)
       const refreshToken = this.authUtil.createRefreshToken(token)
       params.push('lti=' + (visit.isInstructor ? 'instructor' : 'student'))
       params.push('token='+ refreshToken)
