@@ -26,21 +26,21 @@ export default {
         {
           title: 'EdEHR Project',
           icon: 'heartbeat',
-          text: 'The EdEHR project is an essential tool for healthcare education',
+          text: 'An essential tool for healthcare education',
           label: 'EdEHR',
           dest: 'aboutEdEHR'
         },
         {
-          title: 'edehr.org SaaS',
+          title: 'Services',
           image: '/assets/images/edehr.org-icon.png',
           text: 'Easy to get started thanks to the edehr.org software as a service (SaaS)',
           label: 'SaaS',
           dest: 'aboutSaaS'
         },
         {
-          title: 'Collaborations',
+          title: 'Collaboration',
           image: '/assets/images/edehr-collaboration.png',
-          text: 'Collaborations between learning institutions and the edehr.org service have extended the EdEHR project',
+          text: 'Healthcare educational institutions and the edehr.org service are adding to the EdEHR project',
           label: 'Collaboration',
           dest: 'aboutCollaboration'
         }

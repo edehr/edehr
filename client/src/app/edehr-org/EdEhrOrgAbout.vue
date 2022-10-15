@@ -1,20 +1,22 @@
 <template lang="pug">
   div(v-show="showEdEhrOrg")
     h2 About the edehr.org service
-    div(v-text-to-html="edehrText.intro")
-    div(v-text-to-html="edehrText.intro2")
+    div
+      p(v-text-to-html="edehrText.option1")
+    div
+      p(v-text-to-html="edehrText.option2")
 
     ul
-      li Training a core team of faculty:,
+      li Training your core team of faculty how to
         ul
-          li How to use the EdEHR with a class list and evaluate student work,
-          li How to create course content,
-          li How to make connections between the school's learning management system and EdEHR,
-      li Any assistance needed to comply with an institution's privacy policies, including the creation of a privacy impact assessments,
-      li Assisting the school's learning and teaching center with faculty support, as needed.
-      li Assisting the IT department to verify that the edehr.org servers are set up to be robust and secure and to assure the IT team that they will not need to do anything to support this service.,
-      li Provide a dedicated domain and server for each school, with its own database and web services.,
-      li With the guidance of faculty and the EdEHR community continue to make enhancements to the open source EdEHR project that will benefit everyone that uses the application.
+          li use the EdEHR with a class list and evaluate student work
+          li create course content
+          li connect the EdEHR to your school's learning management system
+      li Assist with any privacy policies, including the creation of a privacy impact assessments
+      li Assist your learning and teaching center with faculty support
+      li Demonstrate to your IT department that they have nothing to do
+      li Provide your school with a dedicated domain and secure server
+      li Collaborate to enhance the open source EdEHR project so together we can benefit everyone that uses the application.
 
     h3 Documents specific to the edehr.org services
     div <a href="https://edehr.org/privacy">Privacy policy</a>
@@ -29,8 +31,8 @@
 import edherorg from '@/app/edehr-org/ed-ehr-org'
 
 const edehrText = {
-  intro: 'The EdEHR application is open source which means anyone can take the software, set up a server and run the EdEHR system. The setup is fairly typical of any web application yet the difficulty, for learning institutions, is finding the IT staff to be administrators.  If a school does wish to operate the EdEHR they are welcome to contact the main EdEHR developer for assistance. Send an email to mailto:info@edehr.org',
-  intro2: 'The second way is to use the services of https://edehr.org. This approach is the quickest and easiest way to bring EdEHR into the classroom. The annual subscription fee is affordable and includes all the support you will need. The flat fee includes the following services, ',
+  option1: 'Option 1. Since the project is open source anyone can view and use the software as they wish. Have your IT department assign a resource to learn how to set up this fairly typical web application. It\'s not difficult to run, it just requires a quarter-full-time-equivalent IT staff member. For assistance send an email to mailto:info@edehr.org',
+  option2: 'With option 2 you can get started very quickly and without IT staff with the services of https://edehr.org. This approach is the quickest and easiest way to bring EdEHR into the classroom. The annual subscription fee is affordable and includes all the support you will need. The flat fee includes the following services, ',
 }
 
 export default {

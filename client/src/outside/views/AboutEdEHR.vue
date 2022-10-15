@@ -1,6 +1,16 @@
 <template lang='pug'>
   div(class="outside-view")
-    h1 About the EdEHR
+    h1 The EdEHR Project
+
+    div(v-text-to-html.noAutoLink="appText.heroText.what")
+
+    app-quote(:def="quotes.mbridge")
+    app-quote(:def="quotes.chillary")
+    app-quote(:def="quotes.sonja")
+
+    div(v-text-to-html.noAutoLink="appText.heroText.goal")
+
+
     div(v-text-to-html.noAutoLink="appText.heroText.introText")
 
     h2 Introduction

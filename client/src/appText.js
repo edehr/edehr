@@ -6,7 +6,9 @@ export const appText = {
   heroText: {
     title: commonTitle,
     subTitle: "Student focused, simulated case studies, laddered case studies, with decision supports and customizable",
-    introText: "EdEHR is short for Educational Electronic Health Record. It is an educational tool designed for medical education programs that seek a Canadian system that is focused on the student experience. EdEHR is suitable for all health care programs including, but not limited to, nursing, medicine, pharmacy, physiotherapy and more. " +
+    goal: 'The EdEHR project goal is to let pedagogy drive the technology and not the other way around.',
+    what: 'EdEHR is short for Educational Electronic Health Record.',
+    introText: "EdEHR an essential educational tool designed for medical education programs that seek a Canadian system that is focused on the student experience. EdEHR is suitable for all health care programs including, but not limited to, nursing, medicine, pharmacy, physiotherapy and more. " +
       "EdEHR can be connected with many learning management systems including Moodle, Canvas, Blackboard, D2L, and other <a href=\"https://www.imsglobal.org/activity/learning-tools-interoperability\">LTI</a> compliant learning systems. " +
       "Faculty can customize the course content to suit. ",
   },
@@ -71,7 +73,18 @@ export const appText = {
       source: 'Jason Min, lecturer, Faculty of Pharmaceutical Sciences, University of British Columbia',
       reference: '3'
     },
-
+    mbridge: {
+      text: 'It\’s not an overstatement to say that this tool will transform the way we teach and learn in the School of Health Sciences.',
+      source: 'Michele Bridge, Instructional Development Consultant, Learning & Teaching Centre, BCIT'
+    },
+    chillary: {
+      text: 'EdEHR has presented the Selkirk School of Health and Human Services (HHS) with an open-source and customizable learning platform to better prepare students for digital literacy and competency in health care informatics in the professional setting. Students  have been exposed to learning activities focused on data collection and documentation. Selkirk has been able to incrementally rollout EdEHR in alignment with nursing curriculum at a pace that is comfortable for faculty and students, without an imperative to  adopt a complete homework suite with contextually irrelevant content from a large publisher.',
+      source: ' Chris Hillary RN, BSN, M.Ed.HSE, Selkirk College School of Nursing'
+    },
+    sonja: {
+      text: 'The EdEHR program is an excellent Electronic Health Record simulation program. It incorporates all facets of medicine – Nursing, Pharmacy, Laboratory, and even Medical Imaging…Students find the system very user friendly and intuitive…Bryan takes our feedback and can customize exactly what we are looking for.',
+      source: 'Sonja Turnbull, Instructor, Hematology, Medical Laboratory Science, BCIT'
+    },
     rees: {
       text: 'By providing students with the ability to learn how to use EHRs in the classroom setting, they will ultimately be able to spend more time with their patients in the clinical setting. Students need to learn how to work with anything that’s technologically foreign to them. The first few times students work with an automatic blood pressure cuff or IV pump, they spend more time focused on the technology instead of the patient, but as they use it more, it becomes easier for them to interact with their patients at the same time. The EdEHR project helps them understand the implications and impact of EHRs before they’re in contact with patients.',
       source: 'Glynda Rees, faculty in the Bachelor of Science program at the British Columbia Institute of Technology',
