@@ -30,6 +30,13 @@ export function outside () {
       meta: { layout: 'outside', label: NAMES.ABOUT_EDEHR, zone: ZONE_PUBLIC }
     },
     {
+      path: '/aboutCollaborations',
+      name: 'aboutCollaborations',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/AboutCollaborations.vue'),
+      meta: { layout: 'outside', label: 'Current Collaborations', zone: ZONE_PUBLIC }
+    },
+    {
       path: '/aboutSaaS',
       name: 'aboutSaaS',
       component: () =>
