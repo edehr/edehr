@@ -112,7 +112,7 @@ export default {
   .app-header {
     .navLink {
       font-weight: bold;
-      font-size: 0.9rem;
+      font-size: 1.3rem;
     }
   }
 }
