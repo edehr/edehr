@@ -124,17 +124,27 @@ export default class FileController {
 
   async _validateRequest (req, res, next) {
     const id = (req.authPayload ? req.authPayload.toolConsumerId : req.params.consumer)
-    const dirName = await this._convertIdToKey(id)
+    let dirName = filesCommon
+    if (id && id != 'undefined') {
+      dirName = await this._convertIdToKey(id)
+        .catch(() => {
+          logError('File validation no consumer id')
+          const error = new Error(Text.INVALID_CONSUMER_ID)
+          error.status = 400 // Bad Request
+          next(error)
+          return false
+        })
+    }
     debug(`File _validateRequest consumer id ${id} leads to key '${dirName}'`)
     if (!dirName) {
-      logError('File upload - found badRequestError ', req.badRequestError)
+      logError('File upload - found badRequestError ', req.badRequestError ? req.badRequestError.message : '')
       const error = new Error(Text.INVALID_AUTH_CONSUMER)
       error.status = 400 // Bad Request
       next(error)
       return false
     }
     req.dirName = dirName
-    req.consumerDirectory = path.join(this.ehrFilesDirectory, dirName)
+    req.consumerDirectory = id ? path.join(this.ehrFilesDirectory, dirName) : dirName
     return true
   }
 
