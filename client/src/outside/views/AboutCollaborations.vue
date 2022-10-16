@@ -1,27 +1,56 @@
 <template lang="pug">
-  div(class='main-with-side-content')
-    div
-      h2 Collaborations to extend the EdEHR
-      div
-        p.
-          Over the past few years, with the collaboration of medical and pedagogical experts we have added many new charting modules.
-          This year we plan on adding more.
-          Below are links to descriptions about the larger projects we undertook or are planning for this year.  Besides this list we have made many many smaller adjustments to the EHR record pages and forms in our quest to be medically correct with a pedagogical focus.
-      collab-list
-    div
-      h2 Collaborators
-      img(class="img", width="300", src='/assets/images/edehr-collaboration.png', alt='Collaborators')
+  div
+    h2 Collaborations to extend the EdEHR
 
-      ul
-        li Aurora College
-        li BC Institute of Technology - BCIT
-        li College of the Rockies
-        li Camosun
-        li Selkirk College
-        li Seneca
-        li University of BC - UBC
-        li University of Victoria - UVic
+    div
+      p.
+        Over the past few years, with the collaboration of medical and pedagogical experts we have added many new charting modules.
+        This year we plan on adding more.
+        Here are some example of the larger modules yet there have been many fine detail enhancements as well.
+    ul
+      li
+        a(href="#wound") Wound and incision care
+      li
+        a(href="#hematology") Hematology
+      li
+        a(href="#planned") Planned laboratory modules
+      li
+        a(href="#pharmtech") Planned pharmacy technician support
 
+
+
+    hr
+    h3(id='wound') Wound and Incision
+    p.
+      In 2020, the EdEHR team worked with members from the BC Provincial Nursing Skin and Wound Committee, on the development and evaluation of a standardized skin and wound assessment module. The completed module mirrors the nursing documentation requirements used across all BC Provincial Health Authorities.
+    p The project included the development of a sample case study and with sample assignment that illustrates best practices and encourages documentation that considers what other Health Care Professionals need to know.
+    a(href='/ehr/current/assessments/integumentary-assessment')
+      img(src='/assets/images/woundCareModule.png', alt='woundCareModule', width='50%')
+
+    hr
+    h3(id='hematology') Hematology
+    p.
+      This year, lead instructors in the BCIT Medical Laboratory Science Hematology team worked with Bryan to replaced their aging simulation tool with a new module which allows the student hematology technologist to work in a simulated lab information system. Over the course of this year approximately 300 case studies will be created in the EdEHR, each with a complete blood count (CBC) analysis and persona demographics.
+    p.
+      The students will complete a peripheral blood film (PBF) review for each and document their results in the EdEHR.  The instructors provide personal feedback to each student within the EdEHR and, sometimes, allow the student to try the exercise again to develop competency.
+    app-quote(:def="appText.quotes.sonja")
+
+    hr
+    h3(id='planned') Planned laboratory modules
+    p.
+      With BCIT we plan on adding more lab information system modules for chemistry, histology and microbiology. Plus we'll gradually create a look and feel that is more suited to the laboratory information systems typical of this healthcare profession.
+
+    hr
+    h3(id='pharmtech') Planned pharmacy technician support
+    p.
+      With Selkirk College we plan on augmenting and correcting the medication orders and medication administration (MAR) modules.
+    ul
+      li Add vitamins to complement the medication list
+      li Best Possible Medication History (BPMH) section
+      li Make adjustments to the prescribing and administration of scheduled and PRN medications
+      li Introduce a two step process where a pharmtech creates the medication order and a pharmacist verifies the order
+      li Allow for drugs that are not on formulary (patient's own medication)
+      li Extend the allergies chart with a list of medications that the patient can be allergic to.  Include opioids, ACE inhibitors and antibiotics
 
 
 </template>
@@ -29,8 +58,6 @@
 <script>
 import { appText } from '@/appText'
 import AppQuote from '@/app/components/AppQuote'
-import UiLink from '@/app/ui/UiLink'
-import CollabList from '@/outside/views/collaborations/collabList'
 const edehrText = {
   intro: '',
   examples: [
@@ -42,7 +69,7 @@ const edehrText = {
 }
 
 export default {
-  components: { CollabList, UiLink, AppQuote },
+  components: { AppQuote },
   data () {
     return {
       appText: appText,
@@ -62,11 +89,17 @@ export default {
 <style lang="scss" scoped>
 @import '../../scss/definitions';
 
+.system-info h3 {
+  color: #b5b5b5;
+}
 ul {
-  margin-left: 0;
+  margin-left: 2rem;
   font-size: 18px;
 }
 li {
+  list-style-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='3' height='13' viewBox='-1 -1 2 2'><circle r='1' /></svg>");
   max-width: 60rem;
+
 }
+
 </style>
