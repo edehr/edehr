@@ -24,7 +24,9 @@
     p.
       In 2020, the EdEHR team worked with members from the BC Provincial Nursing Skin and Wound Committee, on the development and evaluation of a standardized skin and wound assessment module. The completed module mirrors the nursing documentation requirements used across all BC Provincial Health Authorities.
     p The project included the development of a sample case study and with sample assignment that illustrates best practices and encourages documentation that considers what other Health Care Professionals need to know.
-    a(href='/ehr/current/assessments/integumentary-assessment')
+    p.
+      Click this image to see the sample case study in the EHR. Be sure to select the Wound tab!
+    a(href='/ehr/current/assessments/integumentary-assessment?demoOnlyKey=wound')
       img(src='/assets/images/woundCareModule.png', alt='woundCareModule', width='50%')
 
     hr
