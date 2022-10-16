@@ -23,6 +23,8 @@
           div(v-else).
             There is a full demonstration mode that shows how the EdEHR works with learning management systems.
             Contact <a href="mailto:info@edehr.org">info@edehr.org</a> for more information.
+      div
+        a(href="#introText") Learn more ...
     ui-confirm(class="confirmDialog",ref="confirmDemoDialog", @confirm="proceedDemoToolConsumerCreation", htmlBody, saveLabel="Continue")
 
 </template>

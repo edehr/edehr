@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="outside-view home")
+  div(id="home", class="outside-view home")
     section(class="hero is-info is-medium is-bold")
       div(class="hero-body")
         div(class="container has-text-centered")
@@ -8,10 +8,10 @@
           h2(class="subtitle", style='font-size:1.7rem') {{ appText.heroText.subTitle }}
           demo-access(class="demo-access")
 
-    section(class="container features features-light")
+    section(id="introText", class="container features features-light")
       div(class="content", v-text-to-html.noAutoLink="appText.heroText.introText")
 
-    section(class="no-container features features-dark")
+    section(id="ehrValues", class="no-container features features-dark")
       ed-ehr-values
 
     section(class="no-container")
