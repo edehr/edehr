@@ -34,7 +34,7 @@ export default {
           title: 'Services',
           image: '/assets/images/edehr.org-icon.png',
           text: 'Easy to get started thanks to the edehr.org software as a service (SaaS)',
-          label: 'SaaS',
+          label: 'Services',
           dest: 'aboutSaaS'
         },
         {
@@ -42,7 +42,7 @@ export default {
           image: '/assets/images/edehr-collaboration.png',
           text: 'Healthcare educational institutions and the edehr.org service are adding to the EdEHR project',
           label: 'Collaboration',
-          dest: 'aboutCollaboration'
+          dest: 'aboutCollaborations'
         }
       ],
     }
