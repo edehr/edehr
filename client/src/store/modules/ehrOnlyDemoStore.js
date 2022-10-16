@@ -1,17 +1,13 @@
 import EventBus, { ACTIVITY_DATA_EVENT } from '@/helpers/event-bus'
 import { decoupleObject } from '@/helpers/ehr-utils'
 
-const prodSeed = require('@/demos/erin-johns-seed-day2-end.json')
+const erin2Seed = require('@/demos/erin-johns-seed-day2-end.json')
 const woundSeed = require('@/demos/wound-case-1.json')
-
-const devSeed = require('@/demos/dev-ehr-only-seed.json')
-
-const demoSeed = process.env.NODE_ENV === 'production' ? prodSeed : devSeed
 
 const state = {
   isActive: false,
   ehrOnlyEhr: {},
-  ehrOnlySeed: woundSeed.ehrData,
+  ehrOnlySeed: erin2Seed.ehrData,
   ehrOnlyScratch: ''
 }
 
@@ -43,7 +39,7 @@ const actions = {
     context.commit('setEhrOnlyScratch', text)
   },
   selectCaseStudy (context, key)  {
-    context.commit('selectCase', key)
+    context.commit('selectCaseStudy', key)
   }
 }
 
@@ -63,11 +59,13 @@ const mutations = {
     console.log(JSON.stringify(asIs))
     EventBus.$emit(ACTIVITY_DATA_EVENT)
   },
-  selectCase: (state, key) => {
-    if (key === 'erin') {
-
+  selectCaseStudy: (state, key) => {
+    // default to the erin johns day 2 case
+    state.ehrOnlySeed = erin2Seed.ehrData
+    if (key === 'wound') {
+      state.ehrOnlySeed = woundSeed.ehrData
+      console.log('ehr only demo set seed to ', key, woundSeed)
     }
-
   }
 }
 
