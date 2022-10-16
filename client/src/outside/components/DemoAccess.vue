@@ -132,8 +132,14 @@ export default {
   }
 
   .enter-demo-buttons {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
+  }
+  @media only screen and (min-width : 1025px) {
+    .enter-demo-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
   }
 
   .button {

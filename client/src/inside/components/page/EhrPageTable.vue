@@ -8,7 +8,9 @@
       ehr-table-stacked(v-if="isStacked", :ehrHelp="ehrHelp", :tableDef="tableDef")
     ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDef", :errorList="errorList" )
     div(v-if="hasData", style="text-align: right;") <!-- put the clear button on the far right side -->
-      ui-button(class="reset-button",v-on:buttonClicked="clearAllData", v-bind:secondary="true") Reset your {{tableDef.label}} data
+      ui-button(class="reset-button",v-on:buttonClicked="clearAllData",
+        :title="resetToolTip",
+        v-bind:secondary="true") Reset
     ui-confirm(ref="confirmDialog", v-on:confirm="proceedClearAllData", saveLabel='Yes')
 
 </template>
@@ -54,6 +56,9 @@ export default {
     tableKey () {
       return this.tableDef.tableKey
     },
+    resetToolTip () {
+      return `Reset your ${this.tableDef.label} data`
+    },
     isVertical () {
       let isVert = this.tableDef.form.formOption === 'transpose'
       // console.log('EhrPageTable is table vertical? ', isVert,  this.tableDef.form.formOption)
@@ -85,7 +90,7 @@ export default {
       console.log('EhrPageTable clearAllData ', this.tableDef)
       this.ehrHelp.clearTable(this.tableKey)
       const helper = new MarHelper(this.ehrHelp)
-      helper.triggerActionByPageKey()      
+      helper.triggerActionByPageKey()
     },
     refresh () {
       let tableForm = this.ehrHelp.getTable(this.tableKey)

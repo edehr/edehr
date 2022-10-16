@@ -140,10 +140,5 @@ export default {
 
 <style lang='scss' scoped>
 @import '../../scss/definitions';
-.outside-view {
-  margin: 2rem;
-}
-.system-info {
-  margin-top: 2rem;
-}
+
 </style>

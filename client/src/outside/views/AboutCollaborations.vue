@@ -27,8 +27,7 @@
     p.
       Click this image to see the sample case study in the EHR. Be sure to select the Wound tab!
     a(href='/ehr/current/assessments/integumentary-assessment?demoOnlyKey=wound')
-      img(src='/assets/images/woundCareModule.png', alt='woundCareModule', width='50%')
-
+      img(src='/assets/images/woundCareModule.png', alt='woundCareModule', class="screenshot")
     hr
     h3(id='hematology') Hematology
     p.
@@ -101,7 +100,13 @@ ul {
 li {
   list-style-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='3' height='13' viewBox='-1 -1 2 2'><circle r='1' /></svg>");
   max-width: 60rem;
-
 }
-
+.screenshot {
+  width: 100%;
+}
+@media screen and (min-width: $main-width-threshold3){
+  .screenshot {
+    width: 50%;
+  }
+}
 </style>

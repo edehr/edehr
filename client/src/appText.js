@@ -5,12 +5,13 @@ const commonTitle = "Canadian, open source, educational electronic health record
 export const appText = {
   heroText: {
     title: commonTitle,
-    subTitle: "Student focused, simulated case studies, laddered case studies, with decision supports and customizable",
+    subTitle: "Student focused, customizable simulated case studies, that can be laddered, with decision supports",
     goal: 'The EdEHR project goal is to let pedagogy drive the technology and not the other way around.',
     what: 'EdEHR is short for Educational Electronic Health Record.',
-    introText: "EdEHR an essential educational tool designed for medical education programs that seek a Canadian system that is focused on the student experience. EdEHR is suitable for all health care programs including, but not limited to, nursing, medicine, pharmacy, physiotherapy and more. " +
+    introText: "EdEHR is an essential educational tool designed for medical education programs that seek a Canadian system that is focused on the student experience. EdEHR is suitable for all health care programs including, but not limited to, nursing, medicine, pharmacy, physiotherapy and more. " +
+      "Students find the EdEHR easy to use and intuitive. "+
       "EdEHR can be connected with many learning management systems including Moodle, Canvas, Blackboard, D2L, and other <a href=\"https://www.imsglobal.org/activity/learning-tools-interoperability\">LTI</a> compliant learning systems. " +
-      "Faculty can customize the course content to suit. ",
+      "Instructors can customize the course content to suit and provide guidance to students while evaluating their work. ",
   },
 
   about: {
@@ -213,8 +214,8 @@ export const demoText = {
 
 export const ehrOnlyDemoText = {
   title: 'Try the EHR side of the EdEHR',
-  intro_0: 'Electronic Health Records (EHRs) are a key part of patient care today. EdEHR is a Canadian, open-source software system designed to help students learn the essential skills interdisciplinary communication within an EHR. The EdEHR software was developed with input from health educators from institutions across British Columbia and it’s now available for use throughout Canada.  Training students on educational EHRs provides a safe environment where students can learn the importance of interdisciplinary communication without endangering patient safety. Post-secondary health programs can adapt the system to accommodate their educational needs. Faculty can adapt the case studies to specific learning objectives. The button below will allow you to see how the EHR side of the EdEHR is used by students. Of course, this is just half of the application, because the EdEHR also supports faculty as they educate their students and develop course content.  If you wish to learn more about the whole application then please contact mailto:info@edehr.org. ',
-  intro: 'The button below will allow you to see how the EHR side of the EdEHR is used by students. This is just half of the application, because the EdEHR also supports faculty as they educate their students and develop course content.  If you wish to learn more about the whole application then please contact mailto:info@edehr.org. ',
+  intro_0: 'Electronic Health Records (EHRs) are a key part of patient care today. EdEHR is a Canadian, open-source software system designed to help students learn the essential skills interdisciplinary communication within an EHR. The EdEHR software was developed with input from health educators from institutions across British Columbia and it’s now available for use throughout Canada.  Training students on educational EHRs provides a safe environment where students can learn the importance of interdisciplinary communication without endangering patient safety. Post-secondary health programs can adapt the system to accommodate their educational needs. Faculty can adapt the case studies to specific learning objectives. The button below will allow you to see how the EHR side of the EdEHR is used by students. Of course, this is just half of the application, because the EdEHR also supports faculty as they develop course content and then support their student\'s education.  If you wish to learn more about the whole application then please contact mailto:info@edehr.org. ',
+  intro: 'The button below will allow you to see how the EHR side of the EdEHR is used by students. This is just half of the application, because the EdEHR also supports faculty as they develop course content and then support their student\'s education.  If you wish to learn more about the whole application then please contact mailto:info@edehr.org. ',
   explanation:
     'When you enter the EHR you will see a sample case study that is based on the open text-book ',
   after:

@@ -69,9 +69,16 @@ $key: 5rem;
 .short-top {
   display: flex;
   flex-flow: row;
-  gap: 2rem;
-  padding-left: 2rem;
+  gap: 1rem;
+  padding-left: 1rem;
 }
+@media screen and (min-width: $main-width-threshold3) {
+  .short-top {
+    gap: 2rem;
+    padding-left: 2rem;
+  }
+}
+
 .banner-content {
   .kv {
     display: grid;

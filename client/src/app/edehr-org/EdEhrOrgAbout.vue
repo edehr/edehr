@@ -1,10 +1,9 @@
 <template lang="pug">
   div(v-show="showEdEhrOrg")
     h2 About the edehr.org service
-    div
-      p(v-text-to-html="edehrText.option1")
-    div
-      p(v-text-to-html="edehrText.option2")
+    p How can you get the EdEHR into your healthcare educational program?
+    p(v-text-to-html="edehrText.option1")
+    p(v-text-to-html="edehrText.option2")
 
     ul
       li Training your core team of faculty how to
@@ -31,8 +30,8 @@
 import edherorg from '@/app/edehr-org/ed-ehr-org'
 
 const edehrText = {
-  option1: 'Option 1. Since the project is open source anyone can view and use the software as they wish. Have your IT department assign a resource to learn how to set up this fairly typical web application. It\'s not difficult to run, it just requires a quarter-full-time-equivalent IT staff member. For assistance send an email to mailto:info@edehr.org',
-  option2: 'With option 2 you can get started very quickly and without IT staff with the services of https://edehr.org. This approach is the quickest and easiest way to bring EdEHR into the classroom. The annual subscription fee is affordable and includes all the support you will need. The flat fee includes the following services, ',
+  option1: 'Option 1. Since the project is open source anyone can view and use the software as they wish. Your IT department can learn how to set up this fairly typical web application that is not too difficult to run. For assistance send an email to mailto:info@edehr.org',
+  option2: 'Option 2. does not require IT staff because you can use the services of https://edehr.org. This is the quickest and easiest way to bring EdEHR into the classroom. The annual subscription fee is affordable and includes all the support you will need. Including: ',
 }
 
 export default {
@@ -58,13 +57,23 @@ export default {
   color: #b5b5b5;
 }
 ul {
-  margin-left: 2rem;
+  /* to reset font size to paragraph text size. Not sure why this is needed. */
+  /* ToDo look into global ul styling */
   font-size: 18px;
 }
 li {
   list-style-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='3' height='13' viewBox='-1 -1 2 2'><circle r='1' /></svg>");
   max-width: 60rem;
-
 }
+ul {
+  margin-left: 2rem;
+}
+@media screen and (max-width: $main-width-threshold3){
+  ul {
+    margin-left: 1rem;
+  }
+}
+
+
 
 </style>

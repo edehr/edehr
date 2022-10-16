@@ -1,7 +1,7 @@
 <template lang='pug'>
   div(class="outside-view")
-    h1 About the EdEHR and edehr.org SaaS
-    section(class="no-container features features-dark")
+    h1 About the EdEHR, Services and Collaboration
+    div(class="features features-dark")
       div(class="valueCards")
         div(class="valueCard", v-for='v in abouts', :key='v.title')
           div(class="card is-shady")
@@ -59,9 +59,6 @@ export default {
 
 <style lang='scss' scoped>
 @import '../../scss/definitions';
-.outside-view {
-  margin: 2rem;
-}
 .features {
   padding: 1.5rem;
 }
