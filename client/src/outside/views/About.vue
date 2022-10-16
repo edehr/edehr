@@ -79,12 +79,6 @@ export default {
   margin-left: auto;
   margin-right: auto;
   justify-content: center;
-  @media only screen and (min-width : 1025px) {
-    width: 1024px;
-  }
-  @media only screen and (min-width : 1440px) {
-    width: 1340px;
-  }
 }
 .valueCard {
   //margin-bottom: 1rem;
