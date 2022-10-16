@@ -6,7 +6,7 @@
         div(class="valueCard", v-for='v in abouts', :key='v.title')
           div(class="card is-shady")
             div(class="card-image has-text-centered")
-              img(v-if="v.image", class="img", :src='v.image', :alt='v.image')
+              img(v-if="v.image", class="img", width="300", :src='v.image', :alt='v.image')
               fas-icon(v-if="v.icon", class="fa", :icon="v.icon")
             div(class="card-content")
               h2 {{ v.title }}
@@ -33,6 +33,7 @@ export default {
         {
           title: 'Services',
           image: '/assets/images/edehr.org-icon.png',
+          imageWidth: 300,
           text: 'Easy to get started thanks to the edehr.org software as a service (SaaS)',
           label: 'Services',
           dest: 'aboutSaaS'
