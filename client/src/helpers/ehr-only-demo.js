@@ -26,6 +26,10 @@ class EhrOnlyDemoInner {
     console.log('saveEhrOnlyUserData:', JSON.stringify(newPageValue))
     return store.dispatch('ehrOnlyDemoStore/ehrOnlyDataUpdate', payload)
   }
+
+  selectCaseStudy (demoKey) {
+    return store.dispatch('ehrOnlyDemoStore/selectCaseStudy', demoKey)
+  }
 }
 
 const EhrOnlyDemo = new EhrOnlyDemoInner()

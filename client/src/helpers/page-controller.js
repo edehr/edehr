@@ -45,6 +45,7 @@ class PageControllerInner {
     const { meta: routeMeta, name: routeName, query: routeQuery } = route
     const { zone: routeZone } = routeMeta
     const { isDemoLti } = routeQuery
+    const { demoOnlyKey } = routeQuery
     const { seedEditId, token: refreshToken} = routeQuery
     let haveDemoToken = !!StoreHelper.getDemoToken()
 
@@ -89,6 +90,9 @@ class PageControllerInner {
         await StoreHelper.fetchTokenData(authToken)
       } else {
         EhrOnlyDemo.setActiveEhrActive(true)
+        if (demoOnlyKey) {
+          await EhrOnlyDemo.selectCaseStudy(demoOnlyKey)
+        }
         EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
         return false
       }
