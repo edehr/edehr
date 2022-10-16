@@ -1,0 +1,286 @@
+{
+  "id": "5f4fdb890eaee2247fa53b61",
+  "license": "This work is licensed under a Creative Commons Attribution 4.0 International License. See http://creativecommons.org/licenses/by/4.0/",
+  "ehrData": {
+    "allergies": {
+      "checkbox": false,
+      "text": "Penicillin",
+      "lastUpdate": "2020-09-02T10:53:50-07:00"
+    },
+    "medical": {
+      "history": "Right Hemiparesis secondary to Stroke (2 months ago); Pressure Injury Stage 4 (started 2 months ago); Diabetes Type II",
+      "lastUpdate": "2020-08-31T21:31:31+00:00"
+    },
+    "psychosocial": {
+      "exercise": true,
+      "exerciseText": "Limited Mobility",
+      "lastUpdate": "2020-08-31T21:32:49+00:00"
+    },
+    "careTeam": {
+      "teams": [
+        {
+          "name": "Lori",
+          "profession": "Registered Nurse ",
+          "createdDate": "2020-08-31T14:33:36-07:00"
+        },
+        {
+          "name": "Miho",
+          "profession": "Registered Dietitian ",
+          "createdDate": "2020-08-31T14:33:36-07:00"
+        },
+        {
+          "name": "William",
+          "profession": "Occupational Therapist ",
+          "createdDate": "2020-08-31T14:33:54-07:00"
+        },
+        {
+          "name": "Shannon",
+          "profession": "Nurse Specialized in Wound, Ostomy, & Continence",
+          "createdDate": "2020-08-31T14:34:21-07:00"
+        }
+      ],
+      "lastUpdate": "2020-08-31T21:34:21+00:00"
+    },
+    "visit": {
+      "admissionDay": "0",
+      "admissionTime": "10:30 ",
+      "status": "Admitted",
+      "consentForTreatment": true,
+      "consentForBlood": true,
+      "diagnosis": "Pneumonia ",
+      "lastUpdate": "2020-08-31T21:36:31+00:00",
+      "table": [
+        {
+          "location": "Medical Unit",
+          "transferInDay": "0",
+          "transferInTime": "10:30",
+          "createdDate": "2020-08-31T14:36:31-07:00"
+        }
+      ]
+    },
+    "neurological": {
+      "table": [
+        {
+          "name": "Lori",
+          "profession": "RN",
+          "day": "0",
+          "time": "11:00",
+          "alert": "drowsy",
+          "eyeOpening": "3 = To sound",
+          "verbalResponse": "5 = Oriented",
+          "bestMotorResponse": "6 = Obeys commands",
+          "glasgowCalculation": 14,
+          "loss": "No",
+          "levelOfConciousness": "0 = Alert; keenly responsive",
+          "levelOfConciousnessQuestions": "0 = Answers two questions correctly",
+          "levelOfConciousnessCommands": "0 = Performs both tasks correctly",
+          "motorLeftArm": "0 = No drift",
+          "motorRightArm": "2 = Some effort against gravity",
+          "motorLeftLeg": "0 = No drift",
+          "motorRightLeg": "2 = Some effort against gravity",
+          "limbAtaxia": "1 = Present in one limb",
+          "bestGaze": "0 = Normal",
+          "visual": "0 = No visual loss",
+          "facialPalsy": "1 = Minor paralysis",
+          "sensory": "1 = Mild-to-moderate sensory loss",
+          "bestLanguage": "0 = No aphasia; normal",
+          "dysarthria": "0 = Normal",
+          "extinctionAndInattention": "0 = No abnormality",
+          "strokeAssessmentCalculation": 7,
+          "createdDate": "2020-08-31T14:40:11-07:00"
+        }
+      ],
+      "lastUpdate": "2020-08-31T21:40:11+00:00"
+    },
+    "respiratory": {
+      "table": [
+        {
+          "name": "Lori",
+          "profession": "RN",
+          "day": "0",
+          "time": "11:00",
+          "airway": "patent",
+          "oxygenTherapy": "Nasal Prongs ",
+          "flowRate": "3",
+          "lul": "Normal",
+          "rul": "Normal",
+          "rml": "Crackles",
+          "lll": "Crackles",
+          "rll": "Crackles",
+          "respiratoryRhythm": "Regular",
+          "respiratoryDepth": "Shallow",
+          "cough": "Productive",
+          "sputumColour": "Yellow-green",
+          "createdDate": "2020-08-31T14:45:55-07:00"
+        }
+      ],
+      "lastUpdate": "2020-08-31T21:45:55+00:00"
+    },
+    "cardiovascular": {
+      "table": [
+        {
+          "name": "Lori",
+          "profession": "RN",
+          "day": "0",
+          "time": "11:00",
+          "pulse": "Regular",
+          "skinAppearance": "Normal",
+          "capRefillLeftHand": "Normal < 3 seconds",
+          "temperatureRightHand": "Warm",
+          "peripheralEdemaRightHand": "No",
+          "nailBedColourRightHand": "Pink",
+          "capRefillRightHand": "Normal < 3 seconds",
+          "temperatureLeftHand": "Warm",
+          "peripheralEdemaLeftHand": "No",
+          "nailBedColourLeftHand": "Pink",
+          "capRefillRightFoot": "Normal < 3 seconds",
+          "temperatureRightFoot": "Warm",
+          "peripheralEdemaRightFoot": "No",
+          "nailBedColourRightFoot": "Pink",
+          "capRefillLeftFoot": "Normal < 3 seconds",
+          "temperatureLeftFoot": "Warm",
+          "peripheralEdemaLeftFoot": "No",
+          "nailBedColourLeftFoot": "Pink",
+          "createdDate": "2020-08-31T14:50:16-07:00"
+        }
+      ],
+      "lastUpdate": "2020-08-31T21:50:16+00:00"
+    },
+    "gastrointestinal": {
+      "table": [
+        {
+          "name": "Lori",
+          "profession": "RN",
+          "day": "0",
+          "time": "11:00",
+          "bowel": "normal",
+          "bSounds": "luq,ruq,llq,rlq",
+          "condition": "soft",
+          "pain": "No",
+          "emesisPresent": "None",
+          "eating": "Regular",
+          "lastBm": "-1",
+          "createdDate": "2020-08-31T14:51:25-07:00"
+        }
+      ],
+      "lastUpdate": "2020-08-31T21:51:25+00:00"
+    },
+    "genitourinary": {
+      "table": [
+        {
+          "name": "Lori",
+          "profession": "RN",
+          "day": "0",
+          "time": "11:00",
+          "urinaryGroup1": "none",
+          "lastVoidedDay": "0",
+          "colour": "Pale yellow",
+          "consistency": "Clear",
+          "diaper": "Yes",
+          "toilettingMethod": "indwellingCatheter",
+          "foley": "Yes",
+          "foleyType": "Foley",
+          "lastChange": "0",
+          "comments": "Urinary Catheter inserted in Emergency Department as toileting activity increased shortness of breath. ",
+          "createdDate": "2020-08-31T14:59:32-07:00"
+        }
+      ],
+      "lastUpdate": "2020-08-31T21:59:33+00:00"
+    },
+    "musculoskeletal": {
+      "table": [
+        {
+          "comments": "Patient has been staying in bed as increased activity increases shortness of breath.",
+          "createdDate": "2020-08-31T15:03:19-07:00"
+        }
+      ],
+      "lastUpdate": "2020-08-31T22:03:19+00:00"
+    },
+    "integumentaryAssessment": {
+      "tableWound": [
+        {
+          "name": "Lori",
+          "profession": "RN",
+          "day": "0",
+          "time": "12:00",
+          "woundLocation": "Buttock",
+          "woundLabel": "Wound A",
+          "woundDayOnset": "2 months ago",
+          "stageType": "pressureInjuryStage4",
+          "goalOfCare": "To heal",
+          "woundBedCalculation": 0,
+          "woundProfileImage": {
+            "fName": "Stage_IV_Pressure_Injury.png"
+          },
+          "createdDate": "2020-08-31T15:07:17-07:00"
+        }
+      ],
+      "lastUpdate": "2020-08-31T22:17:34+00:00",
+      "tableWoundAssessment": [
+        {
+          "name": "Lori",
+          "profession": "RN",
+          "day": "0",
+          "time": "12:00",
+          "woundLabel": "Wound A",
+          "length": "11.5cm",
+          "width": "7cm",
+          "depth": "3cm",
+          "underminingDepth1": "2.5cm",
+          "underminingDepthLocation1A": "11",
+          "underminingDepthLocation1B": "4",
+          "slough": "20",
+          "notVisible": "10",
+          "other": "70",
+          "woundBedCalculation": 100,
+          "exudateAmount": "large",
+          "exudateType": "serous,sanginous",
+          "odour": "No",
+          "woundEdge": "nonAttached (edgeAppearsAsACliff),rolled (curledUnder)",
+          "periWoundSkin": "intact",
+          "woundPain": "2",
+          "packingOut": "1",
+          "packinIn": "1",
+          "treatmentComplete": "Yes",
+          "createdDate": "2020-08-31T15:17:34-07:00"
+        }
+      ]
+    },
+    "nonmedOrders": {
+      "table": [
+        {
+          "name": "Shannon",
+          "profession": "RN, NSWOC",
+          "day": "0",
+          "time": "12:00",
+          "order": "Wound Management",
+          "orderedBy": "Shannon",
+          "reason": "Pressure Injury Stage 4",
+          "status": "Ordered",
+          "comment": "Treatment of Pressure Injury Stage 4:\n1. Cleanse wound with normal saline\n2. Lightly pack wound with hydrofiber packing\n3. Cover wound with absorptive cover dressing\n4. Change once a day\n\nPressure Injury Prevention:\n1. Please send referral for Physiotherapist consult\n2. Please send referral for Registered Dietitian Consult (re: increase protein intake for wound healing)\n3. Please order therapeutic support mattress (re: pressure redistribution)\n4. Please support patient in frequent turning (at least every two hours)\n",
+          "createdDate": "2020-08-31T15:24:36-07:00"
+        }
+      ],
+      "lastUpdate": "2020-08-31T22:24:37+00:00"
+    },
+    "demographics": {
+      "givenName": "George",
+      "familyName": "Henry",
+      "personAge": "75",
+      "dateOfBirth": "May 15 1945",
+      "weight": "76",
+      "gender": "Male",
+      "martialStatus": "Married",
+      "languagePrimary": "English",
+      "streetAddress": "Some street",
+      "city": "Somewhere",
+      "phn": "123456",
+      "mrn": "987654",
+      "lastUpdate": "2020-09-02T10:53:05-07:00"
+    }
+  },
+  "description": "Assessment and Treatment of a person with Stage IV Pressure Injury.",
+  "name": "Wound: Pressure Injury",
+  "version": "1",
+  "fileName": "wound:PressureInjury_1_02 Sep 2020.json"
+}

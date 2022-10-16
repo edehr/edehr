@@ -9,8 +9,8 @@
       div(class="columns is-centered")
         ui-button(v-on:buttonClicked="gotoDemo()", title='Enter the EHR') {{ ehrOnlyDemoText.enterEHRButtonLabel }}
       div &nbsp;
-      div
-        div(v-text-to-html="ehrOnlyDemoText.after")
+      //div
+      //  div(v-text-to-html="ehrOnlyDemoText.after")
 
     div(v-else)
       p {{ ehrOnlyDemoText.noAccess }}

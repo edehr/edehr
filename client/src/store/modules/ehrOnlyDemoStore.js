@@ -1,15 +1,17 @@
 import EventBus, { ACTIVITY_DATA_EVENT } from '@/helpers/event-bus'
 import { decoupleObject } from '@/helpers/ehr-utils'
 
-const prodSeed = require('@/erin-johns-seed-day2-end.json')
-const devSeed = require('@/dev-ehr-only-seed.json')
+const prodSeed = require('@/demos/erin-johns-seed-day2-end.json')
+const woundSeed = require('@/demos/wound-case-1.json')
+
+const devSeed = require('@/demos/dev-ehr-only-seed.json')
 
 const demoSeed = process.env.NODE_ENV === 'production' ? prodSeed : devSeed
 
 const state = {
   isActive: false,
   ehrOnlyEhr: {},
-  ehrOnlySeed: demoSeed.ehrData,
+  ehrOnlySeed: woundSeed.ehrData,
   ehrOnlyScratch: ''
 }
 
@@ -39,6 +41,9 @@ const actions = {
   },
   saveScratch (context, text) {
     context.commit('setEhrOnlyScratch', text)
+  },
+  selectCaseStudy (context, key)  {
+    context.commit('selectCase', key)
   }
 }
 
@@ -57,6 +62,12 @@ const mutations = {
     state.ehrOnlyEhr = asIs
     console.log(JSON.stringify(asIs))
     EventBus.$emit(ACTIVITY_DATA_EVENT)
+  },
+  selectCase: (state, key) => {
+    if (key === 'erin') {
+
+    }
+
   }
 }
 
