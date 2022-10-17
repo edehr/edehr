@@ -1,6 +1,11 @@
 <template lang="pug">
   div(v-show="showEdEhrOrg")
-    h2 About the edehr.org service
+
+    h1 The edehr.org service
+
+    app-quote(:def='quotes.kirsten')
+
+    h2 How to use the edehr.org service
     p How can you get the EdEHR into your healthcare educational program?
     p(v-text-to-html="edehrText.option1")
     p(v-text-to-html="edehrText.option2")
@@ -28,22 +33,31 @@
 
 <script>
 import edherorg from '@/app/edehr-org/ed-ehr-org'
+import AppQuote from '@/app/components/AppQuote'
+import { appText } from '@/appText'
 
 const edehrText = {
-  option1: 'Option 1. Since the project is open source anyone can view and use the software as they wish. Your IT department can learn how to set up this fairly typical web application that is not too difficult to run. For assistance send an email to mailto:info@edehr.org',
-  option2: 'Option 2. does not require IT staff because you can use the services of https://edehr.org. This is the quickest and easiest way to bring EdEHR into the classroom. The annual subscription fee is affordable and includes all the support you will need. Including: ',
+  option1: '<b>Option 1.</b> host the application yourself using the EdEHR project open source (free) license. ' +
+    ' Your IT department can learn how to set up this fairly typical web application that is relatively easy to run.' +
+    ' For assistance send an email to mailto:info@edehr.org',
+  option2: '<b>Option 2.</b> get set up quickly using the services of https://edehr.org. ' +
+    ' This is the easiest way to bring EdEHR in healthcare education. ' +
+    ' The annual subscription fee is affordable and includes all the support you will need. Including: ',
 }
 
 export default {
+  components: { AppQuote },
+  data () {
+    return {
+      appText: appText,
+      edehrText: edehrText
+    }
+  },
   computed: {
     showEdEhrOrg () {
       return edherorg.isEdEhrOrg()
     },
-  },
-  data () {
-    return {
-      edehrText: edehrText
-    }
+    quotes () { return appText.quotes },
   },
   methods: {
   },

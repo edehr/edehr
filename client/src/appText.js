@@ -64,6 +64,10 @@ export const appText = {
   },
 
   quotes: {
+    kirsten: {
+      text: 'At Seneca College, we will use the <a href="edehr.org">edehr.org</a> service to integrate the EdEHR into our nursing programs in class, lab, and simulation. EdEHR will allow our students to understand electronic charting, practice documentation, and incorporate it into real-time learning during simulation. In addition, the program allows faculty to review student charting through their LMS system, creating several different learning and assignment opportunities for students.',
+      source: 'Kristen Riberdy,  RN, BScN, MEd, CHSE, DNP (ip), Simulation Coordinator, Seneca'
+    },
     shaykewich: {
       text: 'Educators have been looking for a project like this for over a decade, so it was a big success for BCcampus to get involved and help build this learning tool, working with the steering committee to bring it to a state where it has broader potential for considerable growth.',
       source: 'David Shaykewich, Manager, DevOps at BCcampus',
@@ -83,7 +87,7 @@ export const appText = {
       source: ' Chris Hillary RN, BSN, M.Ed.HSE, Selkirk College School of Nursing'
     },
     sonja: {
-      text: 'The EdEHR program is an excellent Electronic Health Record simulation program. It incorporates all facets of medicine – Nursing, Pharmacy, Laboratory, and even Medical Imaging…Students find the system very user friendly and intuitive…Bryan takes our feedback and can customize exactly what we are looking for.',
+      text: 'The EdEHR program is an excellent Electronic Health Record simulation program. It incorporates all facets of medicine – Nursing, Pharmacy, Laboratory, and even Medical Imaging…Students find the system very user friendly and intuitive…Bryan (edehr.org) takes our feedback and can customize exactly what we are looking for.',
       source: 'Sonja Turnbull, Instructor, Hematology, Medical Laboratory Science, BCIT'
     },
     rees: {
