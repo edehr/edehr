@@ -3,6 +3,7 @@ import { decoupleObject } from '@/helpers/ehr-utils'
 
 const erin2Seed = require('@/demos/erin-johns-seed-day2-end.json')
 const woundSeed = require('@/demos/wound-case-1.json')
+const pbfCase = require('@/demos/pbf-jackson.json')
 
 const state = {
   isActive: false,
@@ -64,7 +65,9 @@ const mutations = {
     state.ehrOnlySeed = erin2Seed.ehrData
     if (key === 'wound') {
       state.ehrOnlySeed = woundSeed.ehrData
-      console.log('ehr only demo set seed to ', key, woundSeed)
+    }
+    if (key === 'pbf') {
+      state.ehrOnlySeed = pbfCase.ehrData
     }
   }
 }

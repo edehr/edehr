@@ -32,6 +32,11 @@
       The students will complete a peripheral blood film (PBF) review for each and document their results in the EdEHR.  The instructors provide personal feedback to each student within the EdEHR and, sometimes, allow the student to try the exercise again to develop competency.
     app-quote(:def="appText.quotes.sonja")
 
+    p.
+      Click this image to see the sample case study in the EHR.
+    a(href='/ehr/chart/reports/hematology?demoOnlyKey=pbf')
+      img(src='/assets/images/pbf-review.png', alt='PBF Review module', class="screenshot")
+
     hr
     h3(id='planned') Planned laboratory modules
     p.
