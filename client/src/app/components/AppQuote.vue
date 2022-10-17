@@ -1,6 +1,6 @@
 <template lang='pug'>
   div(class="quote_wrapper")
-    blockquote {{text}}
+    blockquote(class="quote", v-text-to-html="text")
     div(class="quote_source") {{source}} &nbsp;
       app-ref(:reference="reference")
 </template>
@@ -22,6 +22,9 @@ export default {
 
 <style lang='scss' scoped>
 @import '../../scss/definitions';
-
-
+.quote {
+  font-style: italic;
+  font-weight: bold;
+  color: #232323;
+}
 </style>
