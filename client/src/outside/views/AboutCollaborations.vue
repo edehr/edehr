@@ -1,7 +1,6 @@
 <template lang="pug">
   div
     h2 Collaborations to extend the EdEHR
-
     div
       p.
         Over the past few years, with the collaboration of medical and pedagogical experts we have added many new charting modules.
@@ -16,9 +15,6 @@
         a(href="#planned") Planned laboratory modules
       li
         a(href="#pharmtech") Planned pharmacy technician support
-
-
-
     hr
     h3(id='wound') Wound and Incision
     p.
@@ -52,8 +48,6 @@
       li Introduce a two step process where a pharmtech creates the medication order and a pharmacist verifies the order
       li Allow for drugs that are not on formulary (patient's own medication)
       li Extend the allergies chart with a list of medications that the patient can be allergic to.  Include opioids, ACE inhibitors and antibiotics
-
-
 </template>
 
 <script>
