@@ -92,3 +92,23 @@ $panelContentPadding: 0.5rem 1rem;
     display: none !important;
   }
 }
+
+/* for about pages that show images of the ehr for collaborations */
+.screenshot {
+  width: 100%;
+}
+@media screen and (min-width: $main-width-threshold3){
+  .screenshot {
+    //width: 50%;
+  }
+}
+
+.main-with-side-content {
+  display: block;
+}
+@media screen and (min-width: $main-width-threshold3){
+  .main-with-side-content {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+  }
+}

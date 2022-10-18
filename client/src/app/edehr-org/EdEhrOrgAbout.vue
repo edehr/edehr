@@ -29,6 +29,13 @@
     div
       router-link(:to="{ name: `edehrDetails` }") edehr.org technical details
 
+    h3 Contacts
+    p.
+      The original EdEHR developer, Bryan Gilbert, has started the edehr.org service as a means to keep
+      the EdEHR project going. In September 2108, Bryan was selected by the key stakeholders to be the
+      application architect and developer. When the original project funding ended Bryan worked with stakeholders
+      (mainly BCIT) to fund specific project development yet the key goal of bring this project to the classroom
+      was not happening. So Bryan started edehr.org, the EdEHR software as a service.
 </template>
 
 <script>
