@@ -5,11 +5,12 @@
         router-link(:to="{ name: 'home' }", class="navLink")
           img(src="/edehr-Logo.png", class='brand-image')
       div(class="side-menu")
-        router-link(:to="{ name: `about` }",
-          class="navLink") About
-        router-link(v-if="isStudent", :to="{ name: `ehr` }", class="navLink") EHR Activity
-        router-link(v-if="isDemo", :to="{ name: `demo` }",
-          class="navLink") Demonstration
+        router-link(:to="{ name: `aboutEdEHR` }", class="navLink") Project
+        router-link(:to="{ name: `aboutSaaS` }", class="navLink") Services
+        router-link(:to="{ name: `aboutCollaborations` }", class="navLink") Collaborations
+        router-link(:to="{ name: `about` }", class="navLink") About
+        router-link(v-if="isStudent", :to="{ name: `ehr` }", class="navLink") Activity
+        router-link(v-if="isDemo", :to="{ name: `demo` }", class="navLink") Demonstration
     div(class="app-header-bottom")
       // styling -- coloured line
       div(class="app-header-bottom-left")

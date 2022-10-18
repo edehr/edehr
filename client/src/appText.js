@@ -6,7 +6,7 @@ export const appText = {
   heroText: {
     title: commonTitle,
     subTitle: "Student focused, customizable simulated case studies, that can be laddered, with decision supports",
-    goal: 'The EdEHR project goal is to let pedagogy drive the technology and not the other way around.',
+    goal: 'A key EdEHR project goal is to let pedagogy drive the technology and not the other way around.',
     what: 'EdEHR is short for Educational Electronic Health Record.',
     introText: "EdEHR is an essential educational tool designed for medical education programs that seek a Canadian system that is focused on the student experience. EdEHR is suitable for all health care programs including, but not limited to, nursing, medicine, pharmacy, physiotherapy and more. " +
       "Students find the EdEHR easy to use and intuitive. "+
@@ -21,7 +21,10 @@ export const appText = {
     },
 
     intro2: {
-      text: 'The EdEHR project requirements came from the "Environmental Scan Report" published June 4, 2018 and the project was directed by a stakeholder group from the British Columbia Institute of Technology, the University of British Columbia, and the University of Victoria. Extensive usability studies and UI design was completed before software development started September 19, 2018',
+      text: 'The EdEHR project requirements came from the "Environmental Scan Report" published June 4, 2018 and the project was directed by a stakeholder group from the British Columbia Institute of Technology, the University of British Columbia, and the University of Victoria. ' +
+        ' Extensive usability studies and UI design was completed before software development started September 19, 2018. ' +
+        ' Bryan Gilbert was hired in September 2018 for a 6 month contract to architect and build a prototype. This was successful ' +
+        ' and Bryan received another small contract to continue the work and bring it into the classroom. ',
       references: ['9', '10', '11', '12']
     },
 
@@ -36,7 +39,8 @@ export const appText = {
     },
 
     introEdEhrOrg: {
-      text: 'After the completion of the BCcampus project the original technical architect and developer continued extending the applications and offered the EdEHR as a service. Guidance and funding for these works have come from ' +
+      text: 'After the completion of the BCcampus project the original technical architect and developer, Bryan Gilbert, ' +
+        'continued extending the applications and offered the EdEHR as a service. Guidance and funding for these works have come from ' +
         'the BC Institute of Technology (BCIT), ' +
         'the University of BC (UBC), ' +
         'the University of Victoria (UVic), ' +

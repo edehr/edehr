@@ -37,6 +37,34 @@ export function outside () {
       meta: { layout: 'outside', label: 'Current Collaborations', zone: ZONE_PUBLIC }
     },
     {
+      path: '/collaborationChemHistology',
+      name: 'collaborationChemHistology',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/collaborations/ChemHistology-BCIT'),
+      meta: { layout: 'outside', label: 'Collaboration chemistry and histology', zone: ZONE_PUBLIC }
+    },
+    {
+      path: '/collaborationHematology',
+      name: 'collaborationHematology',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/collaborations/Hematology-BCIT'),
+      meta: { layout: 'outside', label: 'Collaboration hematology', zone: ZONE_PUBLIC }
+    },
+    {
+      path: '/collaborationPharmTech',
+      name: 'collaborationPharmTech',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/collaborations/PharmTech-Selkirk'),
+      meta: { layout: 'outside', label: 'Collaboration PharmTech', zone: ZONE_PUBLIC }
+    },
+    {
+      path: '/collaborationWound',
+      name: 'collaborationWound',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/collaborations/WoundCare'),
+      meta: { layout: 'outside', label: 'Collaboration wound care', zone: ZONE_PUBLIC }
+    },
+    {
       path: '/aboutSaaS',
       name: 'aboutSaaS',
       component: () =>
