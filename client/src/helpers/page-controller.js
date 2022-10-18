@@ -61,6 +61,15 @@ class PageControllerInner {
       // console.log('on a public page', routeName)
       return
     }
+    if (demoOnlyKey) {
+      EhrOnlyDemo.setActiveEhrActive(true)
+      await EhrOnlyDemo.selectCaseStudy(demoOnlyKey)
+      EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
+      console.log('loaded demo only ', demoOnlyKey)
+      return
+    }
+    EhrOnlyDemo.setActiveEhrActive(false)
+
     try {
       StoreHelper.setLoading(null, true)
       if (refreshToken) {
@@ -88,15 +97,7 @@ class PageControllerInner {
         // must set auth header before invoking fetch. The fetch is an authenticated post
         setAuthHeader(authToken)
         await StoreHelper.fetchTokenData(authToken)
-      } else {
-        EhrOnlyDemo.setActiveEhrActive(true)
-        if (demoOnlyKey) {
-          await EhrOnlyDemo.selectCaseStudy(demoOnlyKey)
-        }
-        EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
-        return false
       }
-      EhrOnlyDemo.setActiveEhrActive(false)
 
       if (routeZone != ZONE_EHR) {
         // clear the current seed id unless current page is an ehr page.
