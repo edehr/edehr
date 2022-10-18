@@ -39,7 +39,9 @@ export default {
   },
   methods: {
     gotoDemo: function () {
-      this.$router.push('/ehr')
+      // this.$router.push('/ehr')
+      this.$router.push({ path: '/ehr', query: { demoOnlyKey: 'erin2Seed' } })
+
     }
   },
 }

@@ -61,13 +61,14 @@ const mutations = {
     EventBus.$emit(ACTIVITY_DATA_EVENT)
   },
   selectCaseStudy: (state, key) => {
-    // default to the erin johns day 2 case
-    state.ehrOnlySeed = erin2Seed.ehrData
     if (key === 'wound') {
       state.ehrOnlySeed = woundSeed.ehrData
-    }
-    if (key === 'pbf') {
+    } else  if (key === 'pbf') {
       state.ehrOnlySeed = pbfCase.ehrData
+    } else {
+      // erin2Seed
+      // default to the erin johns day 2 case
+      state.ehrOnlySeed = erin2Seed.ehrData
     }
   }
 }
