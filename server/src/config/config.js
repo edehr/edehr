@@ -13,7 +13,7 @@ if (version.includes('v14')) {
 
 const DEFAULT_COOKIE_SECRET = 'this is the secret for the session cookie'
 // specify how long an authentication token should live.  For time examples see https://github.com/vercel/ms
-const DEFAULT_TOKEN_LIFE = process.env.NODE_ENV === 'production' ? '1d' : '10m'
+const DEFAULT_TOKEN_LIFE = process.env.NODE_ENV === 'production' ? '10d' : '10d'
 console.log('config.js DEFAULT_TOKEN_LIFE', DEFAULT_TOKEN_LIFE)
 console.log('config.js process.env.NODE_ENV', process.env.NODE_ENV)
 
