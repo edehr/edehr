@@ -4,7 +4,14 @@ import StoreHelper from '@/helpers/store-helper'
 import router from '@/router'
 import { setAuthHeader } from '@/helpers/axios-helper'
 import { PAGE_DATA_REFRESH_EVENT, PAGE_DATA_READY_EVENT } from '@/helpers/event-bus'
-import { ERROR_ROUTE_NAME, UNLINKED_ACTIVITY_ROUTE_NAME, ZONE_DEMO, ZONE_EHR, ZONE_PUBLIC } from '@/outsideRoutes'
+import {
+  ERROR_ROUTE_NAME,
+  UNLINKED_ACTIVITY_ROUTE_NAME,
+  ZONE_DEMO,
+  ZONE_EHR,
+  ZONE_LMS,
+  ZONE_PUBLIC
+} from '@/outsideRoutes'
 import { Text } from '@/helpers/ehr-text'
 import store from '@/store'
 import authHelper from '@/helpers/auth-helper'
@@ -44,9 +51,12 @@ class PageControllerInner {
     // console.log('onPageChange route.query', route.query)
     const { meta: routeMeta, name: routeName, query: routeQuery } = route
     const { zone: routeZone } = routeMeta
-    const { isDemoLti } = routeQuery
-    const { demoOnlyKey } = routeQuery
-    const { seedEditId, token: refreshToken} = routeQuery
+    const {
+      isDemoLti,
+      demoOnlyKey,
+      seedEditId,
+      token: refreshToken
+    } = routeQuery
     let haveDemoToken = !!StoreHelper.getDemoToken()
 
     {
@@ -58,21 +68,31 @@ class PageControllerInner {
       document.title = StoreHelper.getAppTitle()
     }
     if (routeZone === ZONE_PUBLIC) {
-      // console.log('on a public page', routeName)
+      console.log('on a public page', routeName)
       return
     }
+    if (routeZone === ZONE_LMS) {
+      console.log('on a lms page', routeName)
+      return
+    }
+
     if (demoOnlyKey) {
-      EhrOnlyDemo.setActiveEhrActive(true)
+      // user has select something that is loading the ehr only demo.
+      // The query string says which case study to display.
+      // See the last sections of this page change handler for the case a user has
+      // entered the ehr demo is has paged to another ehr page
       await EhrOnlyDemo.selectCaseStudy(demoOnlyKey)
+      // console.log('loaded demo only ', demoOnlyKey)
       EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
-      console.log('loaded demo only ', demoOnlyKey)
       return
     }
-    EhrOnlyDemo.setActiveEhrActive(false)
 
     try {
       StoreHelper.setLoading(null, true)
       if (refreshToken) {
+        // If user is arriving via LTI then ehr demo is over ...
+        await EhrOnlyDemo.clearEhrOnly()
+
         if (haveDemoToken && !isDemoLti) {
           // we are here because a demo session is active and the incoming lti request is not from that demo
           // the incoming request is coming from an actual LMS.
@@ -91,6 +111,7 @@ class PageControllerInner {
         // fetch throws if token is expired or invalid
       }
 
+      // get authToken here and not before the above section that works with the refresh token.
       const authToken = StoreHelper.getAuthToken()
       if (authToken) {
         if (dbApp) console.log('_loadAuth. We have an existing auth token. Get the auth data....')
@@ -99,7 +120,10 @@ class PageControllerInner {
         await StoreHelper.fetchTokenData(authToken)
       }
 
-      if (routeZone != ZONE_EHR) {
+      if (routeZone !== ZONE_EHR) {
+        // If user has left the ehr zone then ehr only demo is over
+        await EhrOnlyDemo.clearEhrOnly()
+
         // clear the current seed id unless current page is an ehr page.
         // the current seed id determines the "isSeedEditing" flag that is used to show hide elements.
         // when the zone is ehr, and there was a seed id set by the code below, then the user
@@ -116,16 +140,21 @@ class PageControllerInner {
       }
       if (routeZone === ZONE_DEMO) {
         console.log('on a Demo page', routeName)
+        // nothing else needs to be done in this page change handler
         return
       }
 
       if (authToken) {
         if (dbApp) console.log('onPageChange is authed so load data')
         await this._loadData(routeName === UNLINKED_ACTIVITY_ROUTE_NAME)
-      }
-      if (authToken) {
-        if (dbApp) console.log('onPageChange is authed and data loaded to trigger page ready event')
         EventBus.$emit(PAGE_DATA_READY_EVENT)
+      }
+      if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
+        // the ehr only demo is active
+        // (which means neither the full demo nor full application are active
+        // and the user has changed to another ehr page
+        // console.log('ehr only PAGE_DATA_REFRESH_EVENT')
+        EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
       }
     } catch (err) {
       // console.error('PageController error', err)

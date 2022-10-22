@@ -202,7 +202,7 @@ export function outside () {
       name: 'ehrOnlyDemo',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/EhrOnlyDemo.vue'),
-      meta: { layout: 'outside', label: 'Ehr Only Demo', zone: ZONE_DEMO }
+      meta: { layout: 'outside', label: 'Ehr Only Demo', zone: ZONE_PUBLIC }
     },
     {
       path: '/demo',

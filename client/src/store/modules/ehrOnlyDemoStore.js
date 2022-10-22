@@ -6,15 +6,14 @@ const woundSeed = require('@/demos/wound-case-1.json')
 const pbfCase = require('@/demos/pbf-jackson.json')
 
 const state = {
-  isActive: false,
   ehrOnlyEhr: {},
-  ehrOnlySeed: erin2Seed.ehrData,
+  ehrOnlySeed: undefined,
   ehrOnlyScratch: ''
 }
 
 const getters = {
   isActiveEhrOnlyDemo: function (state) {
-    return state.isActive
+    return !!state.ehrOnlySeed
   },
   ehrOnlyData (state) {
     return state.ehrOnlyEhr
@@ -27,12 +26,6 @@ const getters = {
   }
 }
 const actions = {
-  activateEhrOnlyDemo (context) {
-    context.commit('setEhrOnlyDemoActive', true)
-  },
-  deactivateEhrOnlyDemo (context) {
-    context.commit('setEhrOnlyDemoActive', false)
-  },
   ehrOnlyDataUpdate (context, payload) {
     context.commit('setEhrData', payload)
   },
@@ -48,16 +41,13 @@ const mutations = {
   setEhrOnlyScratch: (state, text) => {
     state.ehrOnlyScratch = text
   },
-  setEhrOnlyDemoActive: (state, flag) => {
-    state.isActive = flag
-  },
   setEhrData: (state, payload) => {
     const { pageKey, value } = payload
     // To trigger Vue's reactivity on complex object we replace the existing with a new object
     const asIs = decoupleObject(state.ehrOnlyEhr)
     asIs[pageKey] = value
     state.ehrOnlyEhr = asIs
-    console.log(JSON.stringify(asIs))
+    // console.log('setEhrData', JSON.stringify(asIs))
     EventBus.$emit(ACTIVITY_DATA_EVENT)
   },
   selectCaseStudy: (state, key) => {
@@ -65,11 +55,12 @@ const mutations = {
       state.ehrOnlySeed = woundSeed.ehrData
     } else  if (key === 'pbf') {
       state.ehrOnlySeed = pbfCase.ehrData
-    } else {
-      // erin2Seed
-      // default to the erin johns day 2 case
+    } else  if (key === 'erin2Seed') {
       state.ehrOnlySeed = erin2Seed.ehrData
+    } else {
+      state.ehrOnlySeed = undefined
     }
+    // console.log('selectCaseStudy state.ehrOnlySeed = ', state.ehrOnlySeed)
   }
 }
 
