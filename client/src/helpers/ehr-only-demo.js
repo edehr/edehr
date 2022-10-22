@@ -4,16 +4,10 @@ class EhrOnlyDemoInner {
     return store.getters['ehrOnlyDemoStore/ehrOnlyScratch']
   }
   ehrOnlyScratchSave (text) {
-    store.dispatch('ehrOnlyDemoStore/saveScratch', text)
+    return store.dispatch('ehrOnlyDemoStore/saveScratch', text)
   }
   isActiveEhrOnlyDemo () {
     return store.getters['ehrOnlyDemoStore/isActiveEhrOnlyDemo']
-  }
-  setActiveEhrActive (flag) {
-    if(flag)
-      store.dispatch('ehrOnlyDemoStore/activateEhrOnlyDemo')
-    else
-      store.dispatch('ehrOnlyDemoStore/deactivateEhrOnlyDemo')
   }
   getEhrOnlySeedData () {
     return store.getters['ehrOnlyDemoStore/ehrOnlyDataSeed']
@@ -27,6 +21,9 @@ class EhrOnlyDemoInner {
     return store.dispatch('ehrOnlyDemoStore/ehrOnlyDataUpdate', payload)
   }
 
+  clearEhrOnly () {
+    return store.dispatch('ehrOnlyDemoStore/selectCaseStudy', undefined)
+  }
   selectCaseStudy (demoKey) {
     return store.dispatch('ehrOnlyDemoStore/selectCaseStudy', demoKey)
   }
