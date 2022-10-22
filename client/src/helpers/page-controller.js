@@ -68,7 +68,7 @@ class PageControllerInner {
       document.title = StoreHelper.getAppTitle()
     }
     if (routeZone === ZONE_PUBLIC) {
-      // console.log('on a public page', routeName)
+      console.log('on a public page', routeName)
       return
     }
     
