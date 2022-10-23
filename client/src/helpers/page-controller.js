@@ -71,11 +71,7 @@ class PageControllerInner {
       console.log('on a public page', routeName)
       return
     }
-    if (routeZone === ZONE_LMS) {
-      console.log('on a lms page', routeName)
-      return
-    }
-
+    
     if (demoOnlyKey) {
       // user has select something that is loading the ehr only demo.
       // The query string says which case study to display.
