@@ -33,18 +33,13 @@ export function getSchedule (medOrders) {
     ),
     ...typicalDay.filter(d =>
       isTimeValid(d.hour24)).sort((a,b) => {
-      const aTime = Number.parseInt(a.hour24)
-      const bTime = Number.parseInt(b.hour24)
-      // const aTime = moment(a.hour24, 'HH:mm')
-      // const bTime = moment(b.hour24, 'HH:mm')
-      // return aTime.diff(bTime)
-      return aTime - bTime
+      return a.hour24 - b.hour24
     })
   ]
 }
 
 export function isTimeValid (time) {
-  return (/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/.test(time))
+  return (/^([0-1]?[0-9]|2[0-3])[0-5][0-9]$/.test(time))
 }
 
 

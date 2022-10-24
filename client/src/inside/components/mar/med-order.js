@@ -7,16 +7,16 @@ const PRN_KEYS =[]
 for (let i = 1; i <= 6; i++) {
   PRN_KEYS.push(`prn${i}`)
 }
-// This list of keys with schedules must be kept in sync with the schedule 
+// This list of keys with schedules must be kept in sync with the schedule
 // dropdown options shown on the Medications page.
 export class ScheduleOptions {
   static OPTIONS = {
-    'BID / Q12H' : ['08:00','20:00'],
-    TID: ['08:00', '16:00', '22:00'],
-    Q8H: ['06:00','14:00', '22:00'],
-    QID: ['08:00','12:00', '17:00', '22:00'],
-    Q6H: ['06:00', '12:00', '18:00', '22:00', '02:00'],
-    Q4H: ['06:00', '10:00', '14:00', '18:00', '22:00', '02:00']
+    'BID / Q12H' : ['0800','2000'],
+    TID: ['0800', '1600', '2200'],
+    Q8H: ['0600','1400', '2200'],
+    QID: ['0800','1200', '1700', '2200'],
+    Q6H: ['0600', '1200', '1800', '2200', '0200'],
+    Q4H: ['0600', '1000', '1400', '1800', '2200', '0200']
   }
 
   static getKeys () {
