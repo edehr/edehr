@@ -7,6 +7,10 @@
         span Download Data
 
       ehr-sim-time(:ehr-data="md")
+      ui-button(v-on:buttonClicked="downloadEhrOnlyData")
+        fas-icon(class="fa", :icon="appIcons.download")
+        span Download Data
+
     div(v-else)
       ehr-context-banner-header(@showChanged="(showVal) => show = showVal")
 </template>
@@ -24,7 +28,7 @@ import { downloadEhrOnlyToFile } from '@/helpers/ehr-utils'
 
 export default {
   name: 'EhrContextBanner',
-  components: { EhrContextBannerHeader, UiButton, UiLink },
+  components: { UiButton, EhrSimTime, EhrContextBannerHeader, UiLink },
   data: function () {
     return {
       show: false,
