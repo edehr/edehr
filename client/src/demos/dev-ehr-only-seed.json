@@ -74,7 +74,51 @@
       ]
     },
     "medicationOrders": {
-      "table": []
+      "table": [
+        {
+          "name": "Leah",
+          "profession": "PharmTech",
+          "day": 0,
+          "time": "0900",
+          "medication": "med  Q6H",
+          "dose": "80mg",
+          "route": "Oral",
+          "administration": "sched",
+          "scheduled": "q6h",
+          "createdDate": "2022-10-24T10:20:25-04:00"
+        },
+        {
+          "name": "Leah",
+          "profession": "PharmTech",
+          "day": 0,
+          "time": "0900",
+          "medication": "something q6h",
+          "dose": "80mg",
+          "route": "Oral",
+          "administration": "sched",
+          "scheduled": "q6h",
+          "createdDate": "2022-10-24T10:20:25-04:00"
+        },
+        {
+          "name": "Leah",
+          "profession": "PharmTech",
+          "medication": "another thing BID",
+          "dose": "81mg",
+          "route": "Oral",
+          "administration": "sched",
+          "scheduled": "BID / q12h"
+        },
+        {
+          "name": "Leah",
+          "profession": "PharmTech",
+          "medication": "aspirin BID",
+          "dose": "81mg",
+          "route": "Oral",
+          "administration": "sched",
+          "scheduled": "BID / q12h"
+        }
+      ],
+      "lastUpdate": "2022-10-24T10:21:32-04:00"
     },
     "allergies": {
       "checkbox": "TRUE"
@@ -531,60 +575,6 @@
       "dischargeDay": "Day 1",
       "dischargeTime": "08:00",
       "dischargedTo": "Home"
-    },
-    "billing": {
-      "msp": "MSP",
-      "thirdParty": false,
-      "federal": false
-    },
-    "diagnosticCodes": {
-      "table": [
-        {
-          "name": "Pat",
-          "day": "6",
-          "time": "10:15",
-          "condition": "COPD",
-          "code": "J44.9",
-          "type": "M",
-          "createdDate": "2019-05-30T23:11:12-07:00"
-        },
-        {
-          "name": "Pat",
-          "day": "6",
-          "time": "10:15",
-          "condition": "COPD",
-          "code": "Z86.42",
-          "type": "3",
-          "createdDate": "2019-05-30T23:11:44-07:00"
-        },
-        {
-          "name": "Pat",
-          "day": "6",
-          "time": "10:15",
-          "condition": "COPD",
-          "code": "I10",
-          "type": "3",
-          "createdDate": "2019-05-30T23:12:04-07:00"
-        }
-      ]
-    },
-    "interventionCodes": {
-      "table": [
-        {
-          "name": "Pat",
-          "day": "6",
-          "time": "10:15",
-          "intervention": "3.GY.10.VA",
-          "createdDate": "2019-05-30T23:12:40-07:00"
-        },
-        {
-          "name": "Pat",
-          "day": "6",
-          "time": "10:15",
-          "intervention": "2.GZ.21.EA",
-          "createdDate": "2019-05-30T23:12:59-07:00"
-        }
-      ]
     }
   },
   "description": "This EHR Seed is based on a case from 'Health Case Studies - Toward Closing the Healthcare Communication Gap'. This EHR seed reflects a point during a patient's Day 2 stay in the hospital ",

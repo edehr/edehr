@@ -10,10 +10,11 @@
           h4 Medication order
         div(class="column mar-column")
           h4 Administration
-      div(class="periodsList", v-for="period in todaysSchedule", :key="period.hour24")
+      div(class="periodsList", v-for="period in todaysSchedule", :key="period.key")
         div(class="columns")
           div(class="column period-column")
             p {{ period.hour24 }}
+            p(v-if="period.isOverDue", class='overdue') Overdue
           div(class="column med-order-column")
             med-list(:medsList="period.medList")
           div(class="column mar-column")
@@ -114,4 +115,9 @@ export default {
   margin-bottom: 2em;
   padding-bottom: 2em;
 }
+
+.overdue {
+  color: $brand-highlight-red;
+}
+
 </style>

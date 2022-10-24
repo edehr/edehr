@@ -47,6 +47,7 @@ const mutations = {
     const asIs = decoupleObject(state.ehrOnlyEhr)
     asIs[pageKey] = value
     state.ehrOnlyEhr = asIs
+    updateEhrDataMeta(state.ehrOnlyEhr)
     // console.log('setEhrData', JSON.stringify(asIs))
     EventBus.$emit(ACTIVITY_DATA_EVENT)
   },
@@ -59,6 +60,9 @@ const mutations = {
       state.ehrOnlySeed = erin2Seed.ehrData
     } else {
       state.ehrOnlySeed = undefined
+    }
+    if(state.ehrOnlySeed) {
+      updateEhrDataMeta(state.ehrOnlySeed)
     }
     // console.log('selectCaseStudy state.ehrOnlySeed = ', state.ehrOnlySeed)
   }

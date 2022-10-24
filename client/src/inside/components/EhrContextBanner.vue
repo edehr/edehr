@@ -6,6 +6,7 @@
         fas-icon(class="fa", :icon="appIcons.download")
         span Download Data
 
+      ehr-sim-time(:ehr-data="md")
     div(v-else)
       ehr-context-banner-header(@showChanged="(showVal) => show = showVal")
 </template>
@@ -18,6 +19,7 @@ import StoreHelper from '@/helpers/store-helper'
 import EhrOnlyDemo from '@/helpers/ehr-only-demo'
 import { APP_ICONS } from '@/helpers/app-icons'
 import { ehrOnlyDemoText } from '@/appText'
+import EhrSimTime from '@/inside/components/EhrSimTime'
 import { downloadEhrOnlyToFile } from '@/helpers/ehr-utils'
 
 export default {
@@ -31,6 +33,7 @@ export default {
     }
   },
   computed: {
+    md () { return StoreHelper.getMergedData() },
     isEhrOnlyDemo () {
       return EhrOnlyDemo.isActiveEhrOnlyDemo()
     },
