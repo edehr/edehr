@@ -1,6 +1,5 @@
 <template lang='pug'>
   div(class="seed-table")
-    h2 {{ pageElement.label }}
     table(v-show="hasData", class="table_horizontal")
       tr
         th(v-for="col in columns", v-text-to-html='col.label')
