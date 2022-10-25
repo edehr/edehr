@@ -11,7 +11,7 @@
       div Open source code <a href="https://github.com/edehr/edehr"> EdEHR Github repository </a>
       div Content on this site is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a> except where otherwise noted.
       div EdEHR software is licensed under <a href="https://github.com/edehr/edehr/blob/master/LICENSE">GNU Affero General Public License v3.0</a>
-      div Application version {{ appVersion }}
+      div Application version {{ appVersion }}.   Version release notes here: <a href="https://github.com/edehr/edehr/wiki/Version-release-notes">https://github.com/edehr/edehr/wiki/Version-release-notes</a>
     div(class="footer-section", v-if="showEdEhrOrg")
       ed-ehr-org-footer
     div(class="footer-section")

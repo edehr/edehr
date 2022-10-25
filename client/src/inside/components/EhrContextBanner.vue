@@ -2,10 +2,6 @@
   div(class="ehr-context-banner")
     div(v-if='isEhrOnlyDemo')
       div {{ehrOnlyDemoText.ehrContextBannerTitle}}
-      ui-button(v-on:buttonClicked="downloadEhrOnlyData")
-        fas-icon(class="fa", :icon="appIcons.download")
-        span Download Data
-
       ehr-sim-time(:ehr-data="md")
       ui-button(v-on:buttonClicked="downloadEhrOnlyData")
         fas-icon(class="fa", :icon="appIcons.download")
