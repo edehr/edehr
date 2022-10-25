@@ -1,5 +1,6 @@
 import EventBus, { ACTIVITY_DATA_EVENT } from '@/helpers/event-bus'
 import { decoupleObject } from '@/helpers/ehr-utils'
+import { updateEhrDataMeta } from '../../../../server/src/ehr-definitions/ehr-def-utils'
 
 const erin2Seed = require('@/demos/erin-johns-seed-day2-end.json')
 const woundSeed = require('@/demos/wound-case-1.json')
