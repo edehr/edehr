@@ -1,11 +1,16 @@
 <template lang='pug'>
   div
-    div
-      seed-list-link(:seed-id='seedId')
-    div
-      ui-link(:name="'seed-view'", :query="{seedId: seedId}")
-        fas-icon(class="fa", :icon="appIcons.seed")
-        span &nbsp; {{seedObject.name}}
+    div(class="top-bar")
+      div(class="link-bar")
+        div
+          seed-list-link(:seed-id='seedId')
+        div
+          ui-link(:name="'seed-view'", :query="{seedId: seedId}")
+            fas-icon(class="fa", :icon="appIcons.seed")
+            span &nbsp; {{seedObject.name}}
+      div
+        div(v-text-to-html="seedObject.description")
+
     seed-structural(:ehrData='seedObject.ehrData', class='structural-container card selected ')
 </template>
 
@@ -57,5 +62,9 @@ export default {
   > div {
     margin-bottom: 5px;
   }
+}
+.link-bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 </style>
