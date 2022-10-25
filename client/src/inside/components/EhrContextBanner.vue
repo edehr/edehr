@@ -16,14 +16,13 @@ import UiButton from '@/app/ui/UiButton'
 import UiLink from '@/app/ui/UiLink'
 import StoreHelper from '@/helpers/store-helper'
 import EhrOnlyDemo from '@/helpers/ehr-only-demo'
-import EhrSimTime from '@/inside/components/EhrSimTime'
 import { APP_ICONS } from '@/helpers/app-icons'
 import { ehrOnlyDemoText } from '@/appText'
 import { downloadEhrOnlyToFile } from '@/helpers/ehr-utils'
 
 export default {
   name: 'EhrContextBanner',
-  components: { EhrContextBannerHeader, UiLink },
+  components: { EhrContextBannerHeader, UiButton, UiLink },
   data: function () {
     return {
       show: false,
