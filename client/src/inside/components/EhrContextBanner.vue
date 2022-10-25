@@ -2,16 +2,24 @@
   div(class="ehr-context-banner")
     div(v-if='isEhrOnlyDemo')
       div {{ehrOnlyDemoText.ehrContextBannerTitle}}
+      ui-button(v-on:buttonClicked="downloadEhrOnlyData")
+        fas-icon(class="fa", :icon="appIcons.download")
+        span Download Data
+
     div(v-else)
       ehr-context-banner-header(@showChanged="(showVal) => show = showVal")
 </template>
 
 <script>
 import EhrContextBannerHeader from '@/inside/components/EhrContextBannerHeader'
+import UiButton from '@/app/ui/UiButton'
 import UiLink from '@/app/ui/UiLink'
-import StoreHelper from '../../helpers/store-helper'
+import StoreHelper from '@/helpers/store-helper'
 import EhrOnlyDemo from '@/helpers/ehr-only-demo'
+import EhrSimTime from '@/inside/components/EhrSimTime'
+import { APP_ICONS } from '@/helpers/app-icons'
 import { ehrOnlyDemoText } from '@/appText'
+import { downloadEhrOnlyToFile } from '@/helpers/ehr-utils'
 
 export default {
   name: 'EhrContextBanner',
@@ -19,6 +27,7 @@ export default {
   data: function () {
     return {
       show: false,
+      appIcons: APP_ICONS,
       ehrOnlyDemoText: ehrOnlyDemoText
     }
   },
@@ -35,6 +44,12 @@ export default {
     showSeeding () {
       return StoreHelper.isSeedEditing()
     },
+  },
+  methods: {
+    downloadEhrOnlyData () {
+      let data = StoreHelper.getMergedData()//.ehrData
+      downloadEhrOnlyToFile(data)
+    }
   },
   mounted: function () {
     if (StoreHelper.isInstructor(this)){

@@ -330,6 +330,24 @@ export function downloadSeedToFile (seedId, sSeedContent, ehrData) {
   _saveAs(data, fName, mJSON)
 }
 
+export function downloadEhrOnlyToFile ( ehrData) {
+  let lastUpdate = (new Date()).toISOString()
+  let name = 'EHR Data'
+  let desc = 'EHR data created in the EdEHR.  See https://edehr.org'
+  let fName = 'EhrOnlyData'
+    + '_' + lastUpdate
+    + '.json'
+  let data = {
+    license: Text.LICENSE_FULL_TEXT,
+    ehrData: ehrData,
+    description: desc,
+    name: name,
+    fileName: fName
+  }
+  data = JSON.stringify(data, null, 2)
+  if (debug) console.log('EhrUtil Download EHR only to ', fName, ehrData)
+  _saveAs(data, fName, mJSON)
+}
 export function downloadLearningObjectToFile (learningObject) {
   let lastUpdate = formatDateStr(learningObject.lastUpdateDate)
   let name = learningObject.name
