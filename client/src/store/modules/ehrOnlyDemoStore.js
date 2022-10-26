@@ -1,6 +1,6 @@
 import EventBus, { ACTIVITY_DATA_EVENT } from '@/helpers/event-bus'
 import { decoupleObject } from '@/helpers/ehr-utils'
-import { updateEhrDataMeta } from '../../../../server/src/ehr-definitions/ehr-def-utils'
+import EhrDataModel from '@/ehr-definitions/EhrDataModel'
 
 const devSeed = require('@/demos/dev-ehr-only-seed.json')
 const erin2Seed = require('@/demos/erin-johns-seed-day2-end.json')
@@ -66,7 +66,7 @@ const mutations = {
       state.ehrOnlySeed = undefined
     }
     if(state.ehrOnlySeed) {
-      updateEhrDataMeta(state.ehrOnlySeed)
+      EhrDataModel.updateEhrDataMeta(state.ehrOnlySeed)
     }
     // console.log('selectCaseStudy state.ehrOnlySeed = ', state.ehrOnlySeed)
   }

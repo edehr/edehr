@@ -2,7 +2,7 @@ import moment from 'moment'
 import { ok, fail } from '../common/utils'
 import BaseController from '../common/base'
 import ActivityData from './activity-data'
-import { updateEhrDataMeta } from '../../ehr-definitions/ehr-def-utils'
+import EhrDataModel from './../../ehr-definitions/EhrDataModel'
 
 const debug = require('debug')('server')
 
@@ -45,7 +45,7 @@ export default class ActivityDataController extends BaseController {
   }
 
   _updateEhrData (activityData, ehrData) {
-    updateEhrDataMeta(ehrData)
+    EhrDataModel.updateEhrDataMeta(ehrData)
     activityData.lastDate = Date.now()
     activityData.assignmentData = ehrData
     // tell the db to see a change on this subfield
@@ -91,7 +91,7 @@ export default class ActivityDataController extends BaseController {
       }
     })
   }
-  
+
   assignmentSubmitted (id, data) {
     let value = data.value === true
     return this.baseFindOneQuery(id).then(activityData => {
