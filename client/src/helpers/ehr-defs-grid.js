@@ -1,5 +1,5 @@
-import EhrTypes from '@/inside/defs-grid/ehr-types'
-import pageDefs from '../inside/defs-grid/ehr-page-defs'
+import EhrTypes from '@/ehr-definitions/ehr-types'
+import pageDefs from '@/ehr-definitions/ehr-page-defs'
 import { isString } from '@/helpers/ehr-utils'
 
 const PROPS = EhrTypes.elementProperties

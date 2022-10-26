@@ -2,7 +2,7 @@ import moment from 'moment'
 import Vue from 'vue'
 import router from '@/router'
 import EhrOnlyDemo from '@/helpers/ehr-only-demo'
-import EhrTypes from '@/inside/defs-grid/ehr-types'
+import EhrTypes from '@/ehr-definitions/ehr-types'
 import EventBus, {
   ACTIVITY_DATA_EVENT,
   FORM_INPUT_EVENT,
@@ -317,7 +317,7 @@ export default class EhrHelpV2 {
     })
     return undefined
   }
-  
+
   clearTable (tableKey) {
     const pageKey = this.pageKey
     if (dbDialog) console.log('clearTable for table ', tableKey)

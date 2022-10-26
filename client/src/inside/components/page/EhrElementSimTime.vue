@@ -10,7 +10,7 @@
 
 <script>
 import EhrDefs from '@/helpers/ehr-defs-grid'
-import EhrTypes from '@/inside/defs-grid/ehr-types'
+import EhrTypes from '@/ehr-definitions/ehr-types'
 import EhrElementCommon from '@/inside/components/page/EhrElementCommon'
 import EhrPageFormLabel from '@/inside/components/page/EhrPageFormLabel'
 import StoreHelper from '@/helpers/store-helper'

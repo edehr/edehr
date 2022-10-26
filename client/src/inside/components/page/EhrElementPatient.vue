@@ -7,7 +7,7 @@
 
 <script>
 import EhrPatient from '@/inside/components/page/ehr-patient'
-import EhrTypes from '@/inside/defs-grid/ehr-types'
+import EhrTypes from '@/ehr-definitions/ehr-types'
 const DATA_INPUT_TYPES = EhrTypes.dataInputTypes
 
 export default {

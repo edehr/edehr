@@ -13,7 +13,7 @@ import EhrSubGroup from './EhrSubGroup'
 import EhrElementForm from './EhrElementForm'
 import EhrDefs from '../../../helpers/ehr-defs-grid'
 import EhrDependent from './EhrDependent.vue'
-import EhrTypes from '@/inside/defs-grid/ehr-types'
+import EhrTypes from '@/ehr-definitions/ehr-types'
 
 export default {
   name: 'EhrGroup',
