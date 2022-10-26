@@ -1,5 +1,5 @@
 import EhrDefs from '@/helpers/ehr-defs-grid'
-import EhrDataModel from '@/outside/models/EhrDataModel'
+import EhrDataModel from '@/ehr-definitions/EhrDataModel'
 
 export default class SeedModel {
   constructor (seedData) {
