@@ -1,3 +1,5 @@
+// noinspection DuplicatedCode
+
 import { Pages } from './ehr-models'
 import EhrDataModel from '../ehr-definitions/EhrDataModel'
 

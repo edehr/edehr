@@ -1,3 +1,5 @@
+// noinspection DuplicatedCode
+
 import EhrDefs from '../ehr-definitions/ehr-page-defs'
 import EhrTypes from '../ehr-definitions/ehr-types'
 import { convertTimeStr} from './ehr-def-utils'
@@ -6,7 +8,7 @@ import { convertTimeStr} from './ehr-def-utils'
  * WARNING Do not edit this code unless you are working in the makeEhr common_src directory.  Use the copy script to deployr to both server and client
  */
 
-class EhrDataModel {
+export default class EhrDataModel {
   constructor (ehrData) {
     this._ehrData = ehrData
   }
@@ -65,7 +67,7 @@ class EhrDataModel {
   }
 }
 
-module.exports = EhrDataModel
+// module.exports = EhrDataModel
 
 
 /*
