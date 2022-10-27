@@ -57,7 +57,10 @@ const actions = {
 const mutations = {
   initialize: function (state) {
     state.caseContextFeature = localStorage.getItem('CaseContextFeature') === 'true'
-    state.outsideShowButtonLabels = localStorage.getItem('ShowButtonLabels') === 'true'
+    const storedShow = localStorage.getItem('ShowButtonLabels')
+    if (storedShow) {
+      state.outsideShowButtonLabels = storedShow === 'true'
+    }
   },
   setApiData: (state, apiData) => {
     // console.log('System store set ApiData: ', apiData)
