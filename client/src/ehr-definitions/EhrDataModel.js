@@ -1,6 +1,6 @@
-const EhrDefs = require('./ehr-page-defs')
-const EhrTypes = require('./ehr-types')
-const { convertTimeStr } = require('./ehr-def-utils')
+import EhrDefs from '../ehr-definitions/ehr-page-defs'
+import EhrTypes from '../ehr-definitions/ehr-types'
+import { convertTimeStr} from './ehr-def-utils'
 
 /**
  * WARNING Do not edit this code unless you are working in the makeEhr common_src directory.  Use the copy script to deployr to both server and client
@@ -118,12 +118,12 @@ function _visitTimeInEhrData (ehrData) {
             ehrPageData[pgElemKey].forEach(row => {
               const day = Number.parseInt(row[vDayDef.elementKey])
               const time = convertTimeStr(row[vTimeDef.elementKey])
-              if (day > vDay) {
+              if (!isNaN(day) && day > vDay) {
                 vDay = day
-                vTime = time
+                vTime = time ? time : vTime
                 // console.log('up the day ', vDay, vTime, pageKey, pgElemKey)
               } else {
-                if (time > vTime ) {
+                if (time && time > vTime ) {
                   vTime = time > vTime ? time : vTime
                   // console.log('up the time ', vDay, vTime, pageKey, pgElemKey)
                 }
