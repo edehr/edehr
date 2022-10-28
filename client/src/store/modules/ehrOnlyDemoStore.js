@@ -49,7 +49,7 @@ const mutations = {
     const asIs = decoupleObject(state.ehrOnlyEhr)
     asIs[pageKey] = value
     state.ehrOnlyEhr = asIs
-    updateEhrDataMeta(state.ehrOnlyEhr)
+    EhrDataModel.updateEhrDataMeta(state.ehrOnlyEhr)
     // console.log('setEhrData', JSON.stringify(asIs))
     EventBus.$emit(ACTIVITY_DATA_EVENT)
   },
