@@ -3,6 +3,20 @@
 import { Pages } from './ehr-models'
 import EhrDataModel from '../ehr-definitions/EhrDataModel'
 
+export function computeDateOfBirth (ageValue, demographicsDoB) {
+  let dateStr
+  if (ageValue) {
+    const now = new Date()
+    const dob = new Date()
+    const isAfter = dob.getMonth() > now.getMonth() || dob.getMonth() === now.getMonth() && dob.getDay() > now.getDay()
+    let nyr = now.getFullYear()
+    nyr = nyr - ageValue
+    nyr += isAfter ? -1 : 0
+    dob.setFullYear(nyr)
+    dateStr = dob.toISOString().split('T')[0]
+  }
+  return dateStr
+}
 
 // The ehr time values may be stored as 00:00
 export function convertTimeStr (text) {
