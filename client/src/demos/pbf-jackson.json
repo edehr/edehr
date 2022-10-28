@@ -19,8 +19,10 @@
     "hematology": {
       "tableCbcAnalysis": [
         {
+          "name": "Jason",
+          "profession": "Phlebotomist",
           "day": 0,
-          "time": "0000",
+          "time": "0900",
           "wbc": "6.6",
           "wbc-interp": "normal",
           "rbc": "4.47",
@@ -68,8 +70,10 @@
       "lastUpdate": "2022-10-17T18:30:00+00:00",
       "tablePbfReview": [
         {
+          "name": "Haley",
+          "profession": "Medical Technologist",
           "day": 0,
-          "time": "0000",
+          "time": "1100",
           "bloodAnalysis": "hematology.tableCbcAnalysis.0",
           "scanComments": "Normal Slide Scan",
           "wbc-1": "3",
