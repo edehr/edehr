@@ -4,8 +4,21 @@ import store from './store'
 
 Vue.use(Router)
 
+export const UNLINKED_ACTIVITY_ROUTE_NAME = 'unlinked-activity'
+export const ERROR_ROUTE_NAME = 'error'
+export const ZONE_ADMIN = 'admin'
+export const ZONE_PUBLIC = 'public'
+export const ZONE_DEMO = 'demo'
+export const ZONE_LMS = 'lms'
+// ehr zone is only use in the inside routes. The inside
+// route file is generated
+export const ZONE_EHR = 'ehr'
+
 export function routeIsEHR (route) {
   return route.meta.zone === 'ehr'
+}
+export function routeIsPublic (route) {
+  return route.meta.zone === ZONE_PUBLIC
 }
 
 let routes = [

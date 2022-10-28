@@ -21,7 +21,7 @@ console.log('config.js process.env.NODE_ENV', process.env.NODE_ENV)
 function defaultConfig (env) {
   return {
     adminPassword: process.env.ADMIN_PWORD,
-    appVersion: process.env.APP_VERSION,
+    appVersion: process.env.APP_VERSION || 'local dev',
     apiToken: process.env.API_TOKEN,
     appTitle: process.env.APP_TITLE || 'Dev-Edehr',
     isDevelop: true,

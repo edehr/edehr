@@ -10,7 +10,7 @@ import {
   ZONE_DEMO,
   ZONE_EHR,
   ZONE_PUBLIC
-} from '@/outsideRoutes'
+} from '@/router'
 import { Text } from '@/helpers/ehr-text'
 import store from '@/store'
 import authHelper from '@/helpers/auth-helper'
