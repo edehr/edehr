@@ -1,14 +1,16 @@
 import StoreHelper from '@/helpers/store-helper'
+import { computeDateOfBirth } from '@/ehr-definitions/ehr-def-utils'
 
 class EhrPatientC {
   patientData () {
     let data = StoreHelper.getMergedData()
     const demographics = this._demographics(data)
     const visitDetails = this._visitDetails(data)
+    let dateStr = computeDateOfBirth(demographics.personAge, demographics.dateOfBirth)
     const result = {}
     result.allergies = this._allergies(data)
     result.codeStatus = demographics.codeStatus
-    result.dateOfBirth = demographics.dateOfBirth
+    result.dateOfBirth = dateStr
     result.diagnosis = visitDetails.diagnosis
     result.gender = demographics.gender
     result.mrn = demographics.mrn

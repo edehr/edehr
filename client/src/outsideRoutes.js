@@ -2,15 +2,13 @@ import { APP_ICONS } from '@/helpers/app-icons'
 import { Text } from '@/helpers/ehr-text'
 const NAMES = Text.ROUTE_NAMES
 
-export const UNLINKED_ACTIVITY_ROUTE_NAME = 'unlinked-activity'
-export const ERROR_ROUTE_NAME = 'error'
-export const ZONE_ADMIN = 'admin'
-export const ZONE_PUBLIC = 'public'
-export const ZONE_DEMO = 'demo'
-export const ZONE_LMS = 'lms'
-// ehr zone is only use in the inside routes. The inside
-// route file is generated
-export const ZONE_EHR = 'ehr'
+import {
+  UNLINKED_ACTIVITY_ROUTE_NAME,
+  ZONE_ADMIN,
+  ZONE_DEMO,
+  ZONE_LMS,
+  ZONE_PUBLIC
+} from '@/router'
 
 export function outside () {
 

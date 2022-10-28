@@ -9,9 +9,8 @@ import {
   UNLINKED_ACTIVITY_ROUTE_NAME,
   ZONE_DEMO,
   ZONE_EHR,
-  ZONE_LMS,
   ZONE_PUBLIC
-} from '@/outsideRoutes'
+} from '@/router'
 import { Text } from '@/helpers/ehr-text'
 import store from '@/store'
 import authHelper from '@/helpers/auth-helper'
@@ -71,7 +70,7 @@ class PageControllerInner {
       console.log('on a public page', routeName)
       return
     }
-    
+
     if (demoOnlyKey) {
       // user has select something that is loading the ehr only demo.
       // The query string says which case study to display.

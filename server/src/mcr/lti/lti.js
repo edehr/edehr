@@ -112,12 +112,11 @@ export default class LTIController {
    * @param req
    * @param callback
    */
-  strategyVerify (req, callback) {
-    const _this = this
+  async strategyVerify (req, callback) {
     // It is necessary to use a different _req for validation in case
     // one is using postman
     const _req = this._postmanFormat(req)
-    if (!_this.validateLti(_req.body, callback)) {
+    if (!this.validateLti(_req.body, callback)) {
       logLti('LTI validation failed on',  _req.body)
       return
     }
@@ -127,46 +126,38 @@ export default class LTIController {
     try {
       const consumerKey = ltiData['oauth_consumer_key']
       debug('strategyVerify find consumer by key ' + consumerKey)
-      _this.consumerController.findOneConsumerByKey(consumerKey)
-        .then(toolConsumer => {
-          // Grave error to not have found a tool consumer
-          if (!toolConsumer) {
-            let message = Text.EdEHR_UNKNOWN_KEY(consumerKey)
-            debug('strategyVerify ' + message)
-            callback(_this._createParameterError(ltiData, message))
-            return Promise.reject(message)
-          }
-          req.toolConsumer = toolConsumer
-          return toolConsumer
+      const toolConsumer = await this.consumerController.findOneConsumerByKey(consumerKey)
+      // Grave error to not have found a tool consumer
+      if (!toolConsumer) {
+        let message = Text.EdEHR_UNKNOWN_KEY(consumerKey)
+        logError('strategyVerify no consumer' + message)
+        callback(this._createParameterError(ltiData, message))
+        return
+      }
+      req.toolConsumer = toolConsumer
+      const withDetailsCallback = logLti.enabled ? function (details) {
+        logLti('LTI. Here are the details used to create the signature', details)
+      } : undefined
+      let secret = req.toolConsumer.oauth_consumer_secret
+      debug('strategyVerify secret', secret)
+      let provider = new lti.Provider(ltiData, secret, null, null, withDetailsCallback)
+      logLti('strategyVerify validate msg with provider')
+      provider.valid_request(_req,  async (err, isValid) => {
+        if (err) {
+          logError('strategyVerify invalid lti request ' + err.message)
+          callback(this._createParameterError(req.ltiData, err.message), null)
+          return
+        }
+        // let userId = ltiData['user_id']
+        // debug('strategyVerify find userId: ' + userId + ' consumer: ' + consumerKey)
+        await this._findCreateUser(req.toolConsumer, ltiData).then(user => {
+          logLti('strategyVerify verified and found userId: ', user)
+          callback(null, user)
         })
-        .then(() => {
-          const withDetailsCallback = logLti.enabled ? function (details) {
-            logLti('LTI. Here are the details used to create the signature', details)
-          } : undefined
-          let secret = req.toolConsumer.oauth_consumer_secret
-          debug('strategyVerify secret', secret)
-          let provider = new lti.Provider(ltiData, secret, null, null, withDetailsCallback)
-          logLti('strategyVerify validate msg with provider')
-          provider.valid_request(_req, function (err, isValid) {
-            if (err) {
-              debug('strategyVerify lti provider verify send error: ' + err.message)
-              callback(_this._createParameterError(req.ltiData, err.message), null)
-              return Promise.reject(err.message)
-            }
-            // let userId = ltiData['user_id']
-            // debug('strategyVerify find userId: ' + userId + ' consumer: ' + consumerKey)
-            _this._findCreateUser(req.toolConsumer, ltiData).then(user => {
-              callback(null, user)
-            })
-          })
-        })
-        .catch ((err) => {
-          logError('strategyVerify then.catch authentication error: ' + err)
-          callback(_this._createSystemError(req.ltiData, err), null)
-        })
+      })
     } catch (err) {
       logError('strategyVerify authentication error: ' + err.message)
-      callback(_this._createSystemError(req.ltiData, err.message), null)
+      callback(this._createSystemError(req.ltiData, err.message), null)
     }
   }
 

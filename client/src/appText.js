@@ -223,13 +223,11 @@ export const demoText = {
 export const ehrOnlyDemoText = {
   title: 'Try the EHR side of the EdEHR',
   intro_0: 'Electronic Health Records (EHRs) are a key part of patient care today. EdEHR is a Canadian, open-source software system designed to help students learn the essential skills interdisciplinary communication within an EHR. The EdEHR software was developed with input from health educators from institutions across British Columbia and it’s now available for use throughout Canada.  Training students on educational EHRs provides a safe environment where students can learn the importance of interdisciplinary communication without endangering patient safety. Post-secondary health programs can adapt the system to accommodate their educational needs. Faculty can adapt the case studies to specific learning objectives. The button below will allow you to see how the EHR side of the EdEHR is used by students. Of course, this is just half of the application, because the EdEHR also supports faculty as they develop course content and then support their student\'s education.  If you wish to learn more about the whole application then please contact mailto:info@edehr.org. ',
-  intro: 'The button below will allow you to see how the EHR side of the EdEHR is used by students. This is just half of the application, because the EdEHR also supports faculty as they develop course content and then support their student\'s education.  If you wish to learn more about the whole application then please contact mailto:info@edehr.org. ',
+  intro: 'Below you can try the EHR and see various case studies. This part of the EdEHR is used by learners, as they complete their assignments, and by course content creators.  The EdEHR also helps faculty evaluate and support their students, and it helps educators manage and develop their course content. If you wish to learn more about the whole application then please contact mailto:info@edehr.org. ',
   explanation:
     'When you enter the EHR you will see a sample case study that is based on the open text-book ',
   after:
     'In the full EdEHR the student is given support with information about the assigned task and they are expected to submit their completed work for review. The faculty can then review and comment on the work and even send the work back to the student for refinement. The evaluation notes can later be transferred to the institutions learning management system.',
-  inEhrActivityInfo:
-    'In this EHR you are seeing a sample case study that is based on the open text-book ',
   activityDialogMessage: 'In the full EdEHR this dialog will explain the tasks the student must complete and provide' +
     'background information.  In this demo, you are tasked with reviewing the patient\'s chart ' +
     'and composing a progress note with your assessment. </br>\n' +
@@ -264,7 +262,6 @@ const _common =     '"Health Case Studies - Toward Closing the Healthcare Commun
     'In this case the patient has chronic obstructive pulmonary disease (COPD) that is exacerbated due to community acquired pneumonia. The patient in this case study has a complicated health history. The focus for this assignment is help the student complement their assessment and monitoring skills with accurate and careful recording within an electronic health record system. Imagine that you are a nursing student your second or third year of study. Your task is to review the patients current condition and prepare a progress note for the attending physician.'
 
 ehrOnlyDemoText.explanation += _common
-ehrOnlyDemoText.inEhrActivityInfo += _common
 
 export const edEhrValues = [
   {

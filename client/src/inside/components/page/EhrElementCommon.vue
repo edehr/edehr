@@ -2,7 +2,7 @@
 import EhrPageFormLabel from './EhrPageFormLabel.vue'
 import EhrDependent from './EhrDependent.vue'
 import EhrDefs from '@/helpers/ehr-defs-grid'
-import EhrTypes from '@/inside/defs-grid/ehr-types'
+import EhrTypes from '@/ehr-definitions/ehr-types'
 import CaseContext from '@/helpers/case-context'
 import UiInfo from '@/app/ui/UiInfo'
 import EventBus, { FORM_INPUT_EVENT, PAGE_DATA_READY_EVENT } from '@/helpers/event-bus'

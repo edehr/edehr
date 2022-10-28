@@ -1,14 +1,13 @@
 <template lang="pug">
   div
     div(class="app-header")
-      div
-        router-link(:to="{ name: 'home' }", class="navLink")
-          img(src="/edehr-Logo.png", class='brand-image')
+      router-link(:to="{ name: 'home' }", class="navLink")
+        img(src="/edehr-Logo.png", class='brand-image', alt='EdEHR')
       div(class="side-menu")
-        router-link(:to="{ name: `aboutEdEHR` }", class="navLink") Project
-        router-link(:to="{ name: `aboutSaaS` }", class="navLink") Services
-        router-link(:to="{ name: `aboutCollaborations` }", class="navLink") Collaborations
-        router-link(:to="{ name: `about` }", class="navLink") About
+        router-link(v-if="fullAbout", :to="{ name: `aboutEdEHR` }", class="navLink") Project
+        router-link(v-if="fullAbout", :to="{ name: `aboutSaaS` }", class="navLink") Services
+        router-link(v-if="fullAbout", :to="{ name: `aboutCollaborations` }", class="navLink") Collaborations
+        router-link(v-if="!fullAbout", :to="{ name: `about` }", class="navLink") About
         router-link(v-if="isStudent", :to="{ name: `ehr` }", class="navLink") Activity
         router-link(v-if="isDemo", :to="{ name: `demo` }", class="navLink") Demonstration
     div(class="app-header-bottom")
@@ -18,10 +17,11 @@
 </template>
 <script>
 import StoreHelper from '@/helpers/store-helper'
-
+import { routeIsPublic } from '@/router'
 export default {
   components: { },
   computed: {
+    fullAbout () { return routeIsPublic(this.$route) },
     isDemo () {
       return StoreHelper.isDemoMode()
     },
@@ -99,6 +99,13 @@ export default {
 }
 
 /* Small screens */
+@media screen and (max-width: $main-width-threshold1) {
+  .side-menu {
+    margin: 0;
+    gap: 0;
+    flex-flow: column;
+  }
+}
 @media screen and (max-width: $main-width-threshold3){
   .brand-image {
     height: 1.5rem;

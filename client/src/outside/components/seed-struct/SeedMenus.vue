@@ -26,13 +26,14 @@ export default {
     },
     collectChildren ( top ) {
       let children = top.children
+      // each child may be a menu sub-group
       for(let i = 0; i < children.length; i++) {
         let child = children[i]
         if(child.children.length > 0) {
           children = [...children, ...child.children]
         }
       }
-      return children
+      return children.sort( (a,b) => a.name.localeCompare(b.name))
     },
     pageSeedData ( pkey ) {
       return pkey ? this.seedEhrData[pkey] : {}

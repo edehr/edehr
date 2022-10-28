@@ -5,6 +5,7 @@
       div(v-for="(activity, index) in course.activities")
         ui-link(:name="'lms-activity'", :query="{activityId: activity._id}")
           span {{ activity.resource_link_title }}
+          span / {{ activity.assignment.name }}
 </template>
 
 <script>

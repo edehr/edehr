@@ -1,26 +1,24 @@
 <template lang="pug">
   div(v-show="showEdEhrOrg")
-    div <a href="https://edehr.org">edehr.org</a>
-    div <a href="https://edehr.org/privacy">privacy policy</a>
-    div <a href="mailto:info@edehr.org">info@edehr.org</a>
-
+    a(href="https://edehr.org", target="_blank") edehr.org
+    a(href="https://edehr.org/privacy", target="_blank") privacy policy
+    a(href="mailto:info@edehr.org", target="_blank") info@edehr.org
 </template>
 
 <script>
-// import { Text } from '../../helpers/ehr-text'
 import edherorg from '@/app/edehr-org/ed-ehr-org'
 export default {
   computed: {
     showEdEhrOrg () {
-      return edherorg.isEdEhrOrg()
+      return true || edherorg.isEdEhrOrg()
     },
-  },
-  methods: {
   },
 }
 </script>
-
 <style lang="scss" scoped>
 @import '../../scss/definitions';
-
+div {
+  display: flex;
+  flex-direction: column;
+}
 </style>

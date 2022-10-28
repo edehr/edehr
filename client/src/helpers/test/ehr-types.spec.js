@@ -1,5 +1,5 @@
 const should = require('should')
-import EhrTypes from '@/inside/defs-grid/ehr-types'
+import EhrTypes from '@/ehr-definitions/ehr-types'
 // const EhrTypes = require('../ehr-types')
 
 

@@ -1,21 +1,21 @@
+import StoreHelper from '@/helpers/store-helper'
+
 const ONCE_A_DAY_MEDS = 'OD'
 
 
 export function getSchedule (medOrders) {
-  let schedules = {}
+  let schedules = []
   medOrders = medOrders || []
   medOrders.forEach(mo => {
     let times = mo.scheduleTimes
     times.forEach( t => {
-      let aSchedule = schedules[t]
-      if (!aSchedule) {
-        schedules[t] = aSchedule = {
-          hour24: t,
-          hasMar: false,
-          marRecord: {},
-          medList: []
-        }
-      } 
+      let aSchedule = {
+        hour24: t,
+        key: t + mo.medication,
+        hasMar: false,
+        marRecord: {},
+        medList: []
+      }
       let reduced = {
         medication: mo.medication,
         route: mo.route,
@@ -23,30 +23,23 @@ export function getSchedule (medOrders) {
         reason: mo.reason
       }
       aSchedule.medList.push(reduced)
+      schedules.push(aSchedule)
     })
   })
-  let typicalDay = []
-  Object.keys(schedules).forEach( k => {
-    typicalDay.push(schedules[k])
-  })
+  let typicalDay = schedules
   return [
-    ...typicalDay.filter(d => 
+    ...typicalDay.filter(d =>
       String(d.hour24).toUpperCase() === ONCE_A_DAY_MEDS
-    ), 
-    ...typicalDay.filter(d => 
+    ),
+    ...typicalDay.filter(d =>
       isTimeValid(d.hour24)).sort((a,b) => {
-      const aTime = Number.parseInt(a.hour24)
-      const bTime = Number.parseInt(b.hour24)
-      // const aTime = moment(a.hour24, 'HH:mm')
-      // const bTime = moment(b.hour24, 'HH:mm')
-      // return aTime.diff(bTime)
-      return aTime - bTime
+      return a.hour24 - b.hour24
     })
   ]
 }
 
-export function isTimeValid (time) { 
-  return (/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/.test(time))
+export function isTimeValid (time) {
+  return (/^([0-1]?[0-9]|2[0-3])[0-5][0-9]$/.test(time))
 }
 
 
@@ -61,7 +54,10 @@ export default class MarToday {
       console.log('getTodaysSchedule marRecords', marRecords)
       console.log('getTodaysSchedule medOrders', medOrders)
     }
-    this._cDay = 0
+    let data = StoreHelper.getMergedData()
+    let simTime = data.meta.simTime
+    this._cDay = simTime.visitDay
+    console.log('construct MarToday with cDay', simTime)
     let aDaySchedule = getSchedule(medOrders)
     if (db) console.log('marToday aDaySchedule >> ', aDaySchedule)
 
@@ -69,6 +65,11 @@ export default class MarToday {
       if(db) console.log('getTodaysSchedule: Done. There are no scheduled medications.')
       return aDaySchedule
     }
+
+    aDaySchedule.forEach( pk => {
+      console.log('pk.hour24 < simTime.visitTime',pk.hour24, simTime.visitTime)
+      pk.isOverDue = pk.hour24 < simTime.visitTime
+    })
 
     if(!marRecords || marRecords.length === 0) {
       if(db) console.log('getTodaysSchedule: Done. There are no MAR records.')
@@ -80,7 +81,7 @@ export default class MarToday {
       this._cDay = Math.max(this._cDay, mar.day)
     })
     // MAR Records filtered to the cDay
-    let marRecsFiltered = marRecords.filter( mar => 
+    let marRecsFiltered = marRecords.filter( mar =>
       mar.day === this._cDay
     )
     //
@@ -95,13 +96,10 @@ export default class MarToday {
     // returns, a comparison has been added so that it doesn't break
     //  the view with a error like "Cannot read marRecord of null"
     marRecsFiltered.forEach( mar =>  {
-      const pk = aDaySchedule.find( pk => 
+      const pk = aDaySchedule.find( pk =>
         pk.hour24 === mar.scheduledTime
       )
       if(mar.scheduledTime && pk) {
-        let pk = aDaySchedule.find( pk => 
-          pk.hour24 === mar.scheduledTime
-        )
         pk.marRecord = mar
         pk.hasMar = true
       }

@@ -94,7 +94,7 @@ import EhrElementFile from './EhrElementFile'
 import EhrElementPatient from '@/inside/components/page/EhrElementPatient'
 import EhrElementLookup from './EhrElementLookup.vue'
 import UiInfo from '@/app/ui/UiInfo'
-import EhrTypes from '@/inside/defs-grid/ehr-types'
+import EhrTypes from '@/ehr-definitions/ehr-types'
 import EhrElementSimTime from '@/inside/components/page/EhrElementSimTime'
 import EhrElementBirthDate from '@/inside/components/page/EhrElementBirthDate'
 

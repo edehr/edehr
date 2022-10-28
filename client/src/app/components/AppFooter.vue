@@ -2,16 +2,20 @@
   footer
     div(class="footer-section")
       div(class="about-list") About
+        span &nbsp; the &nbsp;
         ui-link(name="aboutEdEHR")
-          span the EdEHR project
+          span EdEHR project
+        span , &nbsp; the &nbsp;
         ui-link(name="aboutSaaS")
           span edehr.org services
+        span , &nbsp; and &nbsp;
         ui-link(name="aboutCollaborations")
-          span Collaboration
-      div Open source code <a href="https://github.com/edehr/edehr"> EdEHR Github repository </a>
-      div Content on this site is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a> except where otherwise noted.
-      div EdEHR software is licensed under <a href="https://github.com/edehr/edehr/blob/master/LICENSE">GNU Affero General Public License v3.0</a>
-      div Application version {{ appVersion }}
+          span collaborations
+      div Open source code <a href="https://github.com/edehr/edehr" target="_blank"> EdEHR github repository </a>
+      div Content on this site is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons Attribution 4.0 International License</a> except where otherwise noted.
+      div EdEHR software is licensed under <a href="https://github.com/edehr/edehr/blob/master/LICENSE" target="_blank">GNU Affero General Public License v3.0</a>
+      div Application version: {{ appVersion }}.
+      a(href="https://github.com/edehr/edehr/wiki/Version-release-notes",  target="_blank") Version release notes.
     div(class="footer-section", v-if="showEdEhrOrg")
       ed-ehr-org-footer
     div(class="footer-section")
@@ -53,7 +57,7 @@ footer {
 
   .about-list > a{
     display: inline-block;
-    margin-left: 3rem;
+
   }
   a {
     color: white;

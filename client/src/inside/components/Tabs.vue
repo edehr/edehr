@@ -50,7 +50,7 @@ export default {
   }
 
   a {
-    border-bottom: 6px solid #fff;
+    border-bottom: 6px solid $grey20;
     color: $grey40;
     justify-content: left;
     margin-bottom: 0;
