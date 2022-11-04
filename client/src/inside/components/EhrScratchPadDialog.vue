@@ -3,8 +3,7 @@
     app-dialog(:isModal="false", ref="theDialog", @cancel="cancelDialog", @save="saveDialog")
       h2(slot="header") These private notes are for you {{userName}}
       div(slot="body")
-        div
-          textarea(v-model="theNotes")
+        textarea(v-model="theNotes")
 </template>
 
 <script>
@@ -60,7 +59,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 textarea {
+  width: 100%;
   height: 15rem;
 }
+
 </style>

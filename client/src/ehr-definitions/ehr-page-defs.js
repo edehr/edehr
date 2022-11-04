@@ -2067,7 +2067,7 @@ const DEFS = {
       {
         elementKey: 'cvp',
         formIndex: '1',
-        inputType: 'number',
+        inputType: 'text',
         label: 'CVP',
         tableColumn: '16',
         tableLabel: 'CVP (Central Venous Pressure)',

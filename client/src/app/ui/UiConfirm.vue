@@ -1,14 +1,14 @@
 <template lang="pug">
   div(class="ui-confirm")
     app-dialog(
-      ref="theDialog", 
-      :isModal="true", 
+      ref="theDialog",
+      :isModal="true",
       :saveButtonLabel="saveLabel",
       :cancelButtonLabel="cancel",
-      @save="confirmDialog", 
+      @save="confirmDialog",
       @cancel="cancelDialog"
       )
-      h2(slot="header") {{ title }}
+      h3(slot="header") {{ title }}
       div(slot="body")
         div(class="confirm-body", v-if="htmlBody", v-text-to-html="text")
         div(v-else, class="confirm-body") {{ text }}

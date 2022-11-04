@@ -11,8 +11,7 @@
         ref="fileInput",
         @change="$emit('file', $event.target.files)"
       )
-      span(class="file-cta")
-        span(class="file-label button is-primary") {{buttonLabel}}
+      span(class="file-label button is-primary") {{buttonLabel}}
 </template>
 <script>
 export default {

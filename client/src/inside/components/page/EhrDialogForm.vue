@@ -20,7 +20,7 @@
 <script>
 import AppDialog from '@/app/components/AppDialogShell'
 import EhrGroup from '@/inside/components/page/EhrGroup'
-import EventBus from '@/helpers/event-bus'
+import EventBus, { FORM_INPUT_EVENT } from '@/helpers/event-bus'
 import EhrOnlyDemo from '@/helpers/ehr-only-demo'
 
 export default {
@@ -28,10 +28,10 @@ export default {
     EhrGroup,
     AppDialog
   },
+  inject: ['pageDataKey', 'isEmbedded'],
   data: function () {
     return {
       errorList: [],
-      ackCaseStudyData: false // has the user acknowledged the reqHeader?, that is, confirmed the checkbox
     }
   },
   props: {
@@ -55,7 +55,7 @@ export default {
       return this.tableDef.form ? this.tableDef.form.ehr_groups : []
     },
     disableSave () {
-      return this.isViewOnly
+      return this.isViewOnly || this.errorList.length > 0
     },
   },
   methods: {
@@ -83,6 +83,21 @@ export default {
         this.$refs.theDialog.onClose()
       }
     },
+    processInputChangeEvent (eData) {
+      let pageDataKey = this.pageDataKey
+      let embedded = this.isEmbedded
+      let srcValues = this.ehrHelp.getActiveData()
+      this.errorList = this.ehrHelp.validateDialog() || []
+    },
+    receiveInputChangeEvent (eData) {
+      if (!this.isViewOnly) {
+        console.log('receiveInputChangeEvent')
+        if (this.changeTimeoutId) {
+          clearTimeout(this.changeTimeoutId)
+        }
+        this.changeTimeoutId = setTimeout(() => this.processInputChangeEvent(eData), 500)
+      }
+    },
   },
   mounted: function () {
     const _this = this
@@ -91,11 +106,19 @@ export default {
       _this.receiveShowHideEvent(eData)
     }
     EventBus.$on(ch, this.eventHandler)
+    this.inputChangeEventHandler = function (eData) {
+      _this.receiveInputChangeEvent(eData)
+    }
+    EventBus.$on(FORM_INPUT_EVENT, this.inputChangeEventHandler)
+
   },
   beforeDestroy: function () {
     let ch = this.ehrHelp.getDialogEventChannel(this.tableKey)
     if (this.eventHandler) {
       EventBus.$off(ch, this.eventHandler)
+    }
+    if (this.inputChangeEventHandler) {
+      EventBus.$off(FORM_INPUT_EVENT, this.inputChangeEventHandler)
     }
   }
 }

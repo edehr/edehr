@@ -4,7 +4,7 @@
     div(class="checkset_list")
       div(v-for="option in checkOptions")
         label
-          input(class="checkbox", type="checkbox",  v-bind:disabled="disabled || viewOnly", :value="option.prop", v-model="checkValues")
+          input(class="checkbox", type="checkbox", :disabled="disabled || viewOnly", :value="option.prop", v-model="checkValues")
           span {{ option.text}}
     //div(style="display:none") computedInitialValue {{computedInitialValue}}
 </template>
@@ -14,6 +14,7 @@ import EhrElementCommon from './EhrElementCommon'
 import StoreHelper from '@/helpers/store-helper'
 import camelcase from 'camelcase'
 import { Text } from '@/helpers/ehr-text'
+import { isString } from '@/helpers/ehr-utils'
 
 const debug = false
 
@@ -53,13 +54,15 @@ export default {
       return result
     },
     setInitialValue (value) {
-      // console.log('checkset override setInitialValue')
+      // console.log('checkset override setInitialValue value:',value, this.elementKey)
       this.checkValues = []
-      if (value) {
+      if (isString(value)) {
         let props = value.split(',')
         props.forEach( p => {
           this.checkValues.push(p)
         })
+      } else {
+        console.log('What is wrong? attempt to set checkset initial value with this: ', value, 'key:', this.elementKey)
       }
     },
     setup () {
