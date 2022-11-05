@@ -58,7 +58,8 @@ Simple face mask
 Rebreathing face mask
 Optiflow}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Flow rate}	eCell	{elementKey: flowRate}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Flow rate}	{tableColumn: 15}	eCell	eCell	eCell	eCell	eCell	{Suffix: /lpm}	eCell	{Validation: numeric}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: CVP}	eCell	{elementKey: cvp}	{pN: 11}	{fN: 1}	{gN: 2}	eCell	eCell	eCell	{tableLabel: CVP (Central Venous Pressure)}	{tableColumn: 16}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Validation: cvp}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Blood sugar}	eCell	{elementKey: bloodSugar}	{pN: 11}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Blood sugar}	{tableColumn: 16}	eCell	eCell	eCell	eCell	eCell	{Suffix: mmol/L}	eCell	{Validation: numeric}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: CVP}	eCell	{elementKey: cvp}	{pN: 11}	{fN: 1}	{gN: 2}	eCell	eCell	eCell	{tableLabel: CVP (Central Venous Pressure)}	{tableColumn: 17}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Validation: cvp}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: page}	{pRef: 16}	{Label: Fluid balance}	eCell	{elementKey: fluidBalance}	{pN: 12}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: table_form}	eCell	{Label: Fluid balance}	eCell	{elementKey: table}	{pN: 12}	{fN: 1}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	{addButtonText: Add a fluid in/out record}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 12}	{fN: 1}	{gN: 1}	{sgN: }	{formCss: record-header}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell

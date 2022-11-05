@@ -38,6 +38,9 @@ export default {
     bloodPressure () {
       return this.vitalsModel.getBloodPressure(this.vitals)
     },
+    bloodSugar () {
+      return this.vitalsModel.getBloodSugar(this.vitals)
+    },
     oxygen () {
       return this.vitalsModel.getOxygen(this.vitals)
     },
@@ -49,7 +52,7 @@ export default {
     },
     shouldScale () {
       return !(
-        navigator.userAgent.includes('AppleWebKit') 
+        navigator.userAgent.includes('AppleWebKit')
         && navigator.vendor === 'Apple Computer, Inc.'
       )
     }
@@ -90,24 +93,28 @@ export default {
       vitalChart.drawChart(this.temperatures, y, ht)
       y += ht + space
 
+      space = 60
+      ht = 250
+      vitalChart.drawChart(this.bloodSugar, y, ht)
+      y += ht + space
+
       space = 10
-      y += space
       ht = 250
       vitalChart.drawChart(this.cvp, y, ht)
+      y += ht + space
 
       space = 60
       ht = 250
-      y += ht + space
       vitalChart.drawChart(this.respiratory, y, ht)
       y += ht + space
 
       space = 20
       ht = 80
-      y += space
       vitalChart.drawChart(this.oxygen, y, ht)
+      y += ht + space
 
       vitalChart.drawYLine(y)
-      y += 0 
+      y += 0
       ht = 50
       vitalChart.drawChart(this.dates, y, ht)
 

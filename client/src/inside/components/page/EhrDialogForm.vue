@@ -84,9 +84,9 @@ export default {
       }
     },
     processInputChangeEvent (eData) {
-      let pageDataKey = this.pageDataKey
-      let embedded = this.isEmbedded
-      let srcValues = this.ehrHelp.getActiveData()
+      // let pageDataKey = this.pageDataKey
+      // let embedded = this.isEmbedded
+      // let srcValues = this.ehrHelp.getActiveData()
       this.errorList = this.ehrHelp.validateDialog() || []
     },
     receiveInputChangeEvent (eData) {

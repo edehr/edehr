@@ -2065,11 +2065,22 @@ const DEFS = {
         fqn: 'vitals.flowRate'
       },
       {
+        elementKey: 'bloodSugar',
+        formIndex: '1',
+        inputType: 'text',
+        label: 'Blood sugar',
+        suffix: 'mmol/L',
+        tableColumn: '16',
+        tableLabel: 'Blood sugar',
+        validation: 'numeric',
+        fqn: 'vitals.bloodSugar'
+      },
+      {
         elementKey: 'cvp',
         formIndex: '1',
         inputType: 'text',
         label: 'CVP',
-        tableColumn: '16',
+        tableColumn: '17',
         tableLabel: 'CVP (Central Venous Pressure)',
         validation: 'cvp',
         fqn: 'vitals.cvp'
@@ -2197,8 +2208,15 @@ const DEFS = {
             ]
           },
           {
-            label: 'CVP (Central Venous Pressure)',
+            label: 'Blood sugar',
             ehr_list_index: '16',
+            items: [
+              'bloodSugar'
+            ]
+          },
+          {
+            label: 'CVP (Central Venous Pressure)',
+            ehr_list_index: '17',
             items: [
               'cvp'
             ]
@@ -2244,6 +2262,7 @@ const DEFS = {
                 'oxygenSaturation',
                 'oxygenMode',
                 'flowRate',
+                'bloodSugar',
                 'cvp'
               ]
             }
@@ -2265,6 +2284,7 @@ const DEFS = {
             oxygenSaturation: '',
             oxygenMode: '',
             flowRate: '',
+            bloodSugar: '',
             cvp: ''
           }
         }
