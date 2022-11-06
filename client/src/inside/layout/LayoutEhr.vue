@@ -30,7 +30,6 @@ import EhrBanner from '../components/EhrBanner.vue'
 import EhrContextBanner from '../components/EhrContextBanner'
 import UiSpinner from '../../app/ui/UiSpinner'
 import StoreHelper from '../../helpers/store-helper'
-import CaseContext from '../../helpers/case-context'
 
 export default {
   name: 'LayoutEhr',
@@ -43,11 +42,9 @@ export default {
     UiSpinner
   },
   data: function () {
-    const featureCaseContext = CaseContext.isCaseContextFeature()
     return {
       showingSpecial: false,
       showingNavPanel: false,
-      featureCaseContext
     }
   },
   computed: {
@@ -63,18 +60,14 @@ export default {
       StoreHelper.setShowAdvanced(flag)
     },
 
-    featureCaseContext: function (val) {
-      CaseContext.setFeature(val)
-    },
-
     $route: function (curr, prev) {
       if (curr !== prev && this.showingNavPanel) {
         const currArray = curr.path.split('/')
         const prevArray = prev.path.split('/')
-        // The third item in the path array contains information about the 
-        // page, which was making the navigation awkward on mobile devices. 
+        // The third item in the path array contains information about the
+        // page, which was making the navigation awkward on mobile devices.
         // By implementing this, we assure that the navPanel will only be hidden
-        // if the current path is within the same group as the previous one. 
+        // if the current path is within the same group as the previous one.
         if (currArray[2] === prevArray[2])
           this.showingNavPanel = false
       }
@@ -91,7 +84,7 @@ $contentMinHeight: 700px;
 .ehr_layout {
   height: 100vh;
   display: flex;
-  overflow-y: auto;
+  //overflow-y: auto;
   flex-direction: column;
   .ehr_layout__main {
     display: flex;

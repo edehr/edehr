@@ -7,6 +7,7 @@ const vitalRanges = {
   pulseRate: { min: 30, max: 140, normal: { adult: [59, 99] } },
   respiratory: { min: 6, max: 42 },
   temperature: { min: 35, max: 40 },
+  bloodSugar: { min: 1, max: 11, normal: [4.1, 5.9] },
   cvp: { min: 0, max: 20 }
 }
 
@@ -67,7 +68,7 @@ export default class VitalModel {
     let values = table.map(element => {
       let day = element.day || 'x'
       let time = element.time || 'xx'
-      return `Day ${day}\n${time}:00`
+      return `Day ${day}\n${time}`
     })
     let chartData = {
       chartType: POINT_TYPES.TEXT,
@@ -168,7 +169,7 @@ export default class VitalModel {
         scalePoints: [
           { spv: 225 },
           { spv: 200 },
-          { spv: 175 },          
+          { spv: 175 },
           { spv: 150, dotted: [2, 6] },
           { spv: 125, dotted: [2, 6] },
           { spv: 100, lw: 2, dotted: [2, 6] },
@@ -177,8 +178,6 @@ export default class VitalModel {
           { spv: 25 },
         ]
       },
-
-
       gridX: {
         steps: v1.length
       },
@@ -204,6 +203,53 @@ export default class VitalModel {
     return chartData
   }
 
+  getBloodSugar (table) {
+    let min = vitalRanges.bloodSugar.min
+    let max = vitalRanges.bloodSugar.max
+    const values = table.map(el => {
+      const v = el.bloodSugar
+      let pt = { value: v }
+      pt.pointFillColour = v > 7.7 || v < 4.1 ? 'red' : undefined
+      return pt
+    })
+    const steps = [...Array(max + 1).keys()]
+    let scalePoints = []
+    steps.map(item => {
+      if(item >= min)
+        scalePoints.push({ spv: item })
+    })
+    return {
+      label: 'Blood glucose mmol/L',
+      dMin: min,
+      dMax: max,
+      gridY: {
+        scalePoints: [
+          { spv: 11, clr: 'red' },
+          { spv: 10, clr: 'red' },
+          { spv: 9, clr: 'red' },
+          { spv: 7.8, clr: 'red' },
+          { spv: 7, clr: 'rgb(200,100,100)' },
+          { spv: 6.5, clr: 'rgb(200,100,100)' },
+          { spv: 5.7, clr: 'rgb(200,100,100)' },
+          { spv: 5.0, dotted: [2, 6] },
+          { spv: 4.1, dotted: [2, 6] },
+          { spv: 2.8, clr: 'red' },
+          { spv: 2, clr: 'red' },
+          { spv: 1, clr: 'red' },
+        ]
+      },
+      gridX: {
+        steps: values.length
+      },
+      dataSet: [
+        {
+          pointStyle: POINT_TYPES.POINT,
+          values
+        }
+      ]
+    }
+  }
+
   getRespiratory (table) {
     let min = vitalRanges.respiratory.min
     let max = vitalRanges.respiratory.max
@@ -219,7 +265,7 @@ export default class VitalModel {
         scalePoints: [
           { spv: 42 },
           { spv: 38 },
-          { spv: 34 },          
+          { spv: 34 },
           { spv: 30 },
           { spv: 26 },
           { spv: 22 },
@@ -253,6 +299,7 @@ export default class VitalModel {
     })
     let chartData = {
       label: 'Oxygen saturation',
+      chartType: POINT_TYPES.TEXT,
       noYAxisGrid: true,
       noYAxisLabel: false,
       gridY: {
@@ -263,6 +310,7 @@ export default class VitalModel {
       },
       dataSet: [
         {
+          pointStyle: POINT_TYPES.TEXT,
           values: values
         }
       ]
@@ -279,7 +327,7 @@ export default class VitalModel {
     steps.map(item => {
       // Potential enhancement: only get item if item % 3 === 0
       if(item >= min)
-        scalePoints.push({ spv: item }) 
+        scalePoints.push({ spv: item })
     })
     const chartData = {
       label: 'CVP (Central Venous Pressure)',

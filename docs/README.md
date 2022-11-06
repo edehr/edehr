@@ -1,53 +1,68 @@
 # Introduction to the EdEHR
-The Educational Electronic Health Record application is a [BCcampus](https://bccampus.ca) [open-source](/developer/contributors.md) project funded by the Ministry of Advanced Education, Skills and Training. 
+The EdEHR (Educational Electronic Health Record) is a platform for educational healthcare programs to base their teaching within a working simulated electronic health record system.  Visit [https://edehr.org](https://edehr.org) to learn more about the benefits of using the EdEHR in your healthcare education.
 
-The EdEHR simulates the interaction a nurse, doctor, pharmacist or other medical practitioner would have using a professional EHR system. An alternative name for EHR is electronic medical record (EMR) system.
+The EdEHR is focused on the student experience.  It's a simulated EHR and each student user has their own workspace separate from others. Instructors are able to both create case studies and review student's work.
 
-A stakeholder group comprised of stakeholders from 
-the British Columbia Institute of Technology (<a href="https://www.bcit.ca/">BCIT</a>), 
-the University of British Columbia (<a href="https://www.ubc.ca/">UBC</a>), 
-and the University of Victoria (<a href="https://www.uvic.ca/">UVic</a>
-formed to research and develop the requirements that were used as a foundation for the project. The goal of that stakeholder group and this project was to build a pilot-ready, "minimum viable product" to give students access to an EHR system in classrooms before they work in a professional setting.
-
-- [GitHub repository](https://github.com/edehr/edehr)
-- [BCcampus announcement](https://bccampus.ca/2018/01/23/bccampus-launches-the-educational-electronic-health-record-system-project-in-b-c/)
-
-The three main ways people interact with the EdEHR are; as a student learning about how best use an electronic health record system in clinical situations, as an instructor in a health teaching environment, or as an administrator of the learning management system for a health education insitition that wishes to use an instance of the EdEHR. 
-
-All these interactions start in a learning management system (an LMS). Some typical learning management systems include
+The EdEHR works with LTI compliant learning management systems (LMS).  For example, 
 [Moodle](https://moodle.org/),
 [Canvas](https://www.canvaslms.com/),
 [Blackboard](https://www.blackboard.com), and
 [D2L](https://www.d2l.com/).
-All of these learning management systems support a standard method of using external content provided by another application that is called LTI. You can read more about this in the [LMS Admin](/lms-admin) section of this documentation. 
 
-All students and instructors log into their LMS and view their course work.  If their LMS is configured to use the EdEHR then they will be able to access the EdEHR and complete their course work.  The EdEHR can only be accessed via an LMS connection.  So, the LMS provides the user authentication and authorization (e.g. student or instructor)
+Most users of the EdEHR are either students or instructors. Two other important roles are the EdEHR administrator and the education institution's LMS administrator.  All users access the EdEHR via their LMS. The LMS provides user authentication and authorization.
 
-## The EdEHR instance
+## Getting Started - How to explore the EdEHR
 
-There are two ways a learning institution can access the EdEHR. The first is to take advantage of the open source nature of this project and run the EdEHR application on internal servers. This approach requires intensive effort from your institution's IT team, but it does mean that all data in the application remains within the control of your institution. To learn more about this approach see the open source repository [here](https://github.com/edehr/edehr).
+There are three ways to explore what the EdEHR is.
+1. In an EHR only demonstration mode
+2. In a full EdEHR demonstration mode.
+3. With an instance of EdEHR in combination with an LMS
 
-The second way to use EdEHR is through a shared service operated outside the institution. The original developer of EdEHR offers this software as a not for profit service at
-[edehr.org](https://edehr.org). To learn more about how your learning institution can use this service please email <a href="mailto:info@edehr.org">info@edehr.org</a>.
-Click [here](https://edehr.org/privacy) to read the <strong>privacy policy</strong> for the edehr.org service.
+### EHR only demonstration mode
 
-By using a shared service several learning instutions can share the cost of operation as well as share ideas for best peda  gogical practices.
+If you are just curious or want to use the EdEHR to develop a potential case study you can jump into the EHR only demonstration. Just go to [https://edehr.org](https://edehr.org) and select "EHR only demonstration button".  In that demonstration mode you can
+- explore some sample case studies
+- edit any case study (e.g. chart some medical assessment or otherwise use an EHR)
+- save a copy of your edits (download)
 
+Soon you will also be able to
+- load a case study you may have
+- create a new (empty) case study.
 
-### Assignment configuration and management
+These two features may appear in v2.0.9 or shortly afterwards.
 
-The EdEHR system is split into two parts: the EHR and everything else. "Everything else" includes the screens used by admins to configure the system as well as instructors for evaluating student work. These screens, often referred to collectively as the dashboard, is the entry point to the EdEHR for the instructor and course designer.
+### Full EdEHR demonstration
 
-After a course designer has configured an assignment in the EdEHR, an instructor can view each respective course, assignment and list of students that have logged into the EdEHR from their dashboard. They can also manage evaluation notes for each student.
+The full demonstration lets you try a complete LMS and EdEHR system. Contact
+[info@edehr.org](mailto:info@edehr.org) for a personal demonstration. 
 
-[Learn about EdEHR configuration](/configuration/)
+The Full Demo includes 
+- Simulated log into a mock LMS as one of two instructor persona or three student persona
+- LMS LTI activities
+- Establishing connections between the LMS activity and an EdEHR Learning Object
+- Class list management for instructors including how to review student's work and communicate with your students.
+- Student interactions with the EHR. This is the same as the EHR only demonstration mentioned above plus, 
+  - ability to submit completed work
+  - add personal notes into a personal scratch pad
+  - etc
+- Instructors management of course content.  More about this below.
 
-### Electronic health record 
+## Using an EdEHR instance
 
-The EHR screens are made up of forms and prepopulated patient data and reports. It represents a professional EHR that has been made generic and scaled back to best serve curriculum purposes. It is where students complete an assignment and where instructors view student work and make evaluation notes. 
+There are two ways a learning institution can use the EdEHR project. 
 
-[Learn about EHR configuration](/developer/inside-generator/)
+**Option 1.** is to host the application yourself using the EdEHR project open source (free) license. Your IT department can learn how to set up this fairly typical web application that is relatively easy to run. 
 
-## Continuing development
+**Option 2.** is to use the services provided by [https://edehr.org](https://edehr.org). This is the easiest way to bring EdEHR in healthcare education.
 
-There are many opportunities to add new features and functionality to the EdEHR. For a current list of issues we're tackling, see our [GitHub project board](https://github.com/edehr/edehr/projects/2).
+You can read more about these options here: [https://edehr.org/aboutSaaS](https://edehr.org/aboutSaaS)
+
+## Getting Started 
+
+1. Once you have your EdEHR instance available the next step is for the EdEHR administrator to help the LMS administrator to create a LTI connection tool for the EdEHR.  This is a simple task that produces a tool that instructors can then use in any course. In Moodle this tool is called an "External Tool".  See [LMS admin guide](/lms-admin)
+
+2. Then lead instructors can begin to base their healthcare course content inside a simulated EHR.  See the [course designer guide](/course-designer/).
+
+3. Next students can learn their profession within a working EHR and submit their work for instructor comment and evaluation. See the [student guide](/student/).
+
+4. Instructors can review the learner's work within the EdEHR and provide comments for evaluation and to educate the student. See the [instructor guide](/instructor/).

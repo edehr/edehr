@@ -2,37 +2,35 @@
   transition(name="dialog")
     div(v-show="showingDialog")
       div(:class="modalClass")
-      div(class="dialog-wrapper", :class="{ dragActive: moused }", ref="theDialog", :style="{ top: top + 'px', left: left + 'px'}")
-        div(class="dialog-drag-bar", v-dragged="onDragged")
-        div(class="dialog-content")
-          div(class="dialog-header")
-            div(class="columns")
-              div(class="column", :class="{ 'is-8': showTopButtons}")
-                slot(name="header") default header
-              div(v-if="showTopButtons", class="column is-4 button-area")
-                ui-button(v-on:buttonClicked="$emit('cancel')", v-bind:secondary="true")
-                  slot(name="cancel-button") {{ cancelButtonLabel }}
-                ui-button(v-on:buttonClicked="$emit('save')", v-show="useSave", :disabled="disableSave")
-                  slot(name="save-button") {{ saveButtonLabel }}
-            //ui-close(v-on:close="$emit('cancel')")
-          div(class="dialog-body", ref="theDialogBody",)
-            slot(name="body") default body
-          div(class="dialog-footer columns")
-            div(class="column is-8")
-              div(v-show="errors.length", class="error-color")
-                span {{ errorDirections }} &nbsp;
-                span {{ errors.join(', ') }}
-
-              div(class="dialog-footer-content")
-                slot(name="footer-content")
-            div(class="column is-4 button-area")
+      div(class="dialog-wrapper",
+        :class="{ dragActive: moused }",
+        ref="theDialog",
+        :style="{ top: top + 'px', left: left + 'px'}")
+        // header
+        div(class="dialog-header", v-dragged="onDragged")
+          // header title with buttons
+          div(class="dialog-header-title")
+            div
+              slot(name="header") default header
+            div(class="dialog-header-buttons")
               ui-button(v-on:buttonClicked="$emit('cancel')", v-bind:secondary="true")
                 slot(name="cancel-button") {{ cancelButtonLabel }}
-              div(class="dialog-footer-button-space", v-show="useSave")
-              ui-button(v-on:buttonClicked="$emit('save')", v-show="useSave", :disabled="disableSave")
-                slot(name="save-button") {{ saveButtonLabel }}
-      div(v-if="showingDialog", style="display:none")
-        div(data-test-id="AppDialog.dialog.is.open") This div used for unit testing.
+              div(v-show="useSave")
+                span &nbsp;
+                ui-button(v-on:buttonClicked="$emit('save')", :disabled="disableSave")
+                  slot(name="save-button") {{ saveButtonLabel }}
+          // header important content from outter container
+          div
+            slot(name="footer-content")
+        // main body
+        div(class="dialog-body", ref="theDialogBody",)
+          slot(name="body") default body
+        div(class='dialog-footer')
+          // header error list
+          div(v-show="errors.length", class="error-color")
+            span Correct the following:
+            span(v-for="err in errors", :key="err") &nbsp;&nbsp;&nbsp; {{err}},
+
 </template>
 
 <script>
@@ -55,10 +53,6 @@ export default {
     cancelButtonLabel: {
       type: String,
       default: 'Cancel'
-    },
-    errorDirections: {
-      type: String,
-      default: 'Correct the following:'
     },
     errors: {
       type: Array,
@@ -141,9 +135,9 @@ export default {
       // console.log('The Dialog h', wh, eh, my, d)
       this.left = mx
       this.top = my
-      let db = this.$refs.theDialogBody
-      let dbh = db.clientHeight
-      this.showTopButtons = dbh > 200
+      // let db = this.$refs.theDialogBody
+      // let dbh = db.clientHeight
+      // this.showTopButtons = dbh > 200
     }
   },
   mounted () {
@@ -166,12 +160,67 @@ export default {
 }
 
 .dialog-wrapper {
+  z-index: 999;
   position: fixed;
   /*   For top and see the data properties. For width only set the min and let the content decide the rest */
   min-width: $dialog-width-threshold;
+  max-width: 70rem;
+  max-height: 90%;
   display: flex;
   flex-flow: row wrap;
   flex: 1 100%;
+  font-size: 1rem;
+  font-weight: normal;
+  background-color: $dialog-wrapper-background-color;
+  border: 1px solid $grey40;
+  border-radius: 5px;
+  box-sizing: border-box;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.dialog-body {
+  padding: 1rem;
+  margin-bottom: 0;
+  max-height: calc(90vh - 6rem);
+  width: 100%;
+  border-bottom: 1px solid #2d2d2d;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.dialog-footer {
+  height: 3rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  overflow-y: auto;
+}
+.dialog-header{
+  width: 100%;
+  max-height: 3rem;
+  overflow-y: hidden;
+  background-color: $grey03;
+  border-bottom: 1px solid $grey30;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  margin-bottom: 1rem;
+  touch-action: none;
+  cursor: move;
+}
+
+::v-deep(.dialog-header h2),
+::v-deep(.dialog-header h3){
+  margin: 0;
+}
+
+.dialog-header-title {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+@media screen and (max-width: $main-width-threshold1){
+  .dialog-header-title {
+    display: flex;
+    flex-direction: column;
+  }
+  .dialog-header {
+    max-height: 6rem;
+  }
 }
 
 @media screen and (max-width: $dialog-width-threshold){
@@ -179,114 +228,24 @@ export default {
     min-width: inherit;
     max-width: inherit;
   }
-}
-.dialog-content {
-  min-width: $dialog-width-threshold;
-  max-width: 70rem;
-  max-height: 90vh;
-  overflow-y: auto;
-  overflow-x: auto;
-}
-@media screen and (max-width: $dialog-width-threshold){
   .dialog-content {
     min-width: inherit;
     max-width: inherit;
   }
 }
-.dialog-body {
-  padding: 0.25rem 2rem;
-  margin-bottom: 0;
-  background-color: $grey03;
-  font-size: 1rem;
-  font-weight: normal;
-}
 
-/* Layout inside dialog footer */
-.dialog-footer {
-  align-items: flex-end;
-  .dialog-footer-content {
-    flex-grow: 1;
-    button,
-    .button {
-      margin-bottom: 0;
-    }
-  }
-  .dialog-footer-errors {
-    /*margin-left: 5px;*/
-    display: inline-block;
-    max-width: 62%;
-  }
-  .dialog-footer-button-space {
-    display: inline-block;
-    width: 10px;
-  }
-}
-.dialog-wrapper {
-  z-index: 999;
-  background-color: $dialog-wrapper-background-color;
-  border: 1px solid $grey40;
-  border-radius: 5px;
-  box-sizing: border-box;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-}
 .dragActive {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  cursor: pointer;
 }
-.button-area {
-  display: flex;
-  justify-content: flex-end;
-}
-.dialog-drag-bar {
-  touch-action: none;
-  background-color: $grey40;
-  width: 100%;
-  height: 1em;
-  cursor: move;
-}
-.dialog-header, .dialog-footer {
-  background-color: $grey03;
-}
-.dialog-header, .dialog-footer {
-  padding: 0.25em 2em 1em 2em;
-}
-.dialog-footer {
-  padding: 1em 2em 1em 2em;
-}
+
 .error-color {
   color: red;
 }
-/* **********
-Cursors
-*/
-.n-resize {
-  cursor: n-resize;
-}
-.e-resize {
-  cursor: e-resize;
-}
-.s-resize {
-  cursor: s-resize;
-}
-.w-resize {
-  cursor: w-resize;
-}
-.ns-resize {
-  cursor: ns-resize;
-}
-.ew-resize {
-  cursor: ew-resize;
-}
-.ne-resize {
-  cursor: ne-resize;
-}
-.nw-resize {
-  cursor: nw-resize;
-}
-.se-resize {
-  cursor: se-resize;
-}
-.sw-resize {
-  cursor: sw-resize;
+
+.dialog-header-buttons {
+  display: flex;
+  justify-content: flex-end;
 }
 
 /* *******
@@ -311,22 +270,19 @@ Cursors
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
-</style>
 
-<style>
-  /*  
-    This is needed in order to fix potential conflicts which may occur
-      when setting the parent element's position to fixed in child components
-      that have display: flex set. It has been set in a separated style tag
-      so that this style is accessible to the body's scope
-  */
-  .is-modal {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
-    width: 100%
-  }
-  
+/*
+  This is needed in order to fix potential conflicts which may occur
+    when setting the parent element's position to fixed in child components
+    that have display: flex set. It has been set in a separated style tag
+    so that this style is accessible to the body's scope
+*/
+.is-modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 100%
+}
 </style>

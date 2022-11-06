@@ -1,69 +1,92 @@
 <template lang="pug">
   div
-    app-dialog(:isModal="true", ref="theDialog", @cancel="closeDialog", @save="saveDialog")
-      h2(slot="header") Add a record of medication administration
+    app-dialog(
+      :isModal="true",
+      ref="theDialog",
+      :errors="errorList",
+      @cancel="closeDialog",
+      @save="saveDialog",
+      :disableSave="disableSave")
+
+      h3(slot="header") Add a record of medication administration
       div(slot="body")
         div
-          div(class="ehr-group-wrapper grid-left-to-right-1")
-            h3 Day {{currentDay}} - {{activePeriod.hour24}}
-            med-list(:medsList="activePeriod.medList")
-          div(class="ehr-group-wrapper grid-left-to-right-2")
-            div(class="form-element")
-              div(class="text_input_wrapper")
-                label Administered by
-                input(class="input", type="text", v-model="who")
-            div(class="ehrdfe")
-              div(class="text_input_wrapper")
-                label Administered time
-                input(class="input", type="text", v-model="when")
-          div(class="ehr-group-wrapper grid-left-to-right-1")
-            div(class="form-element")
+          h3 Day {{currentDay}} - {{scheduledTime}}
+          //med-order(:medOrder='medOrder')
+          div(class="data-entry")
+            div(class='label-value')
+              label Medication:
+              div
+                div {{ medOrder.medication }} {{ medOrder.dose }}
+                div {{ medOrder.route }} &nbsp; {{ medOrder.reason }}
+            div(class='label-value')
+              div Instructions:
+              div {{ medOrder.instructions }}
+
+          div(class="data-entry")
+            div(class="label-value")
+              label Administered by
+              input(class="input", type="text", v-model="who", @input="validate")
+            div(class="label-value")
+              label Administered time
+              input(class="input", type="text", v-model="when", @input="validate")
+            div(class="label-value")
               label Comment
-              div(class="input-element input-element-full")
-                textarea(class="textarea",v-model="comment")
-          div(v-show="errorMessageList.length > 0", class="errorMessageList")
-            li(v-for="error in errorMessageList") {{ error }}
+              textarea(v-model="comment", v-on:change="validate()")
 </template>
 
 <script>
-import AppDialog from '../../../app/components/AppDialogShell'
-import UiButton from '../../../app/ui/UiButton'
-import MedList from './MedList'
+import AppDialog from '@/app/components/AppDialogShell'
+import UiButton from '@/app/ui/UiButton'
 import MarEntity from './mar-entity'
+import MedOrder from '@/inside/components/mar/MedOrder'
 
 export default {
   name: 'MarDialog',
   components: {
+    MedOrder,
     UiButton,
     AppDialog,
-    MedList
   },
   data () {
     return {
       who: '',
       when: '',
       comment: '',
-      errorMessageList: [],
-      activePeriod: { name: '', medsList: [] }
+      errorList: [],
+      scheduledTime: '',
+      medOrder: {}
     }
   },
   props: {
     marHelper: { type: Object },
     currentDay: { type: Number }
   },
+  computed: {
+    disableSave () {
+      return this.errorList.length > 0
+    },
+  },
   methods: {
-    openMarDialog (period) {
+    openMarDialog (period, medOrder) {
       this.comment = this.when = this.who = ''
-      this.activePeriod = period
+      this.medOrder = period ? period.medList[0] : medOrder
+      // console.log('open mar', JSON.stringify(this.medOrder))
+      this.scheduledTime = period ? period.hour24 : ''
       this.$refs.theDialog.onOpen()
+      this.validate()
     },
     closeDialog: function () {
       this.$refs.theDialog.onClose()
     },
+    validate: function () {
+      let mar = new MarEntity(this.who, this.currentDay, this.when, this.comment, this.scheduledTime, this.medOrder)
+      this.errorList = mar.validate()
+    },
     saveDialog: function () {
-      let mar = new MarEntity(this.who, this.currentDay, this.when, this.comment, this.activePeriod)
-      this.errorMessageList = mar.validate()
-      if(this.errorMessageList.length > 0) {
+      let mar = new MarEntity(this.who, this.currentDay, this.when, this.comment, this.scheduledTime, this.medOrder)
+      this.errorList = mar.validate()
+      if(this.errorList.length > 0) {
         return
       }
       this.$emit('saveMar', mar)
@@ -74,8 +97,8 @@ export default {
 
 <style scoped>
 
-h3 {
-  margin-bottom: 0;
+.data-entry {
+  width: 50rem;
 }
 
 </style>

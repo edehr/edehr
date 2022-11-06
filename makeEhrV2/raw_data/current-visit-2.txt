@@ -608,15 +608,16 @@ Subcutaneous}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 prn := PRN (as needed)
 once := Once
 stat := Stat
-od := OD (Once a Day)}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	eCell	eCell	{elementKey: schedGroup}	{pN: 25}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	{dependentOn: visble:administration=sched}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+od := OD (Once a Day)
+set := Set times}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	eCell	{elementKey: schedGroup}	{pN: 25}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	{dependentOn: visble:administration=sched,prn}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Scheduled}	eCell	{elementKey: scheduled}	{pN: 25}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Scheduled}	{tableColumn: 9}	eCell	eCell	eCell	eCell	"{Options: BID / q12h
 TID
 q8h
 QID
 q6h
 q4h}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	eCell	eCell	{elementKey: prnGroup}	{pN: 25}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	{dependentOn: visble:administration=prn}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	eCell	{elementKey: prnGroup}	{pN: 25}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	{dependentOn: visble:administration=set}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: PRN 1}	eCell	{elementKey: prn1}	{pN: 25}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 10}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Validation: time24}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: PRN 2}	eCell	{elementKey: prn2}	{pN: 25}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 11}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Validation: time24}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: PRN 3}	eCell	{elementKey: prn3}	{pN: 25}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 12}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Validation: time24}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell

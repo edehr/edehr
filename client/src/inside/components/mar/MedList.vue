@@ -1,11 +1,13 @@
 <template lang="pug">
   ul
     li(class="medList", v-for="med in medsList")
-      div {{ med.medication }} {{ med.route }} {{ med.reason }}
+      med-order(:medOrder='med')
 </template>
 
 <script>
+import MedOrder from '@/inside/components/mar/MedOrder'
 export default {
+  components: { MedOrder },
   props: {
     medsList: { type: Array }
   },
@@ -15,7 +17,6 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../../scss/definitions';
-
 ul {
   margin-left: 0;
   margin-top: 0;

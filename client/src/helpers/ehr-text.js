@@ -110,7 +110,7 @@ export const Text = {
 `
   },
   INSTRUCTOR_TOOLS: {
-    ACTIVITIES: 'Activities',
+    ACTIVITIES: 'Activity',
     ACTIVITIES_TOOLTIP: 'See the current activity and access the class list and learning object.',
     COURSES_LABEL: 'Courses',
     COURSES_TOOLTIP: 'See all your courses and their activities',

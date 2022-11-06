@@ -73,6 +73,9 @@ export default {
     },
     _dependentKeys (given) {
       /*
+        visble:administration=sched,prn
+        visble:administration=set
+        visble:administration=once
         Here we split the given definition into parts. The expected structure is
         (visible|disable):key[=refValue]
         The first part is the action. Does this dependancy control visibility or enabled.
@@ -83,12 +86,12 @@ export default {
       key = given
       if (key) {
         const parts = key.split(PROPS.splitActionKeyOn)
-        action = parts[0]
-        key = parts[1]
+        action = parts[0] // e.g. visible
+        key = parts[1] // e.g. administration=sched,prn
         if (key.includes(PROPS.splitKeyValueOn)) {
           const kv = key.split(PROPS.splitKeyValueOn)
-          key = kv[0]
-          refValue = kv[1]
+          key = kv[0] // e.g. administration
+          refValue = kv[1] // e.g. sched,prn
           type = PROPS.type.select
         } else {
           type = PROPS.type.check

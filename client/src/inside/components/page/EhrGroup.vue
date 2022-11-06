@@ -38,7 +38,7 @@ export default {
       let visible = true
       // console.log('EhrGroup visible?', this.dependentDef, this.dependentOnValue)
       if(this.dependentDef && this.dependentDef.refValue) {
-        visible = this.dependentDef.refValue === this.dependentOnValue
+        visible = this.dependentDef.refValue.includes(this.dependentOnValue)
       }
       return visible
     },

@@ -3,7 +3,6 @@ import EhrPageFormLabel from './EhrPageFormLabel.vue'
 import EhrDependent from './EhrDependent.vue'
 import EhrDefs from '@/helpers/ehr-defs-grid'
 import EhrTypes from '@/ehr-definitions/ehr-types'
-import CaseContext from '@/helpers/case-context'
 import UiInfo from '@/app/ui/UiInfo'
 import EventBus, { FORM_INPUT_EVENT, PAGE_DATA_READY_EVENT } from '@/helpers/event-bus'
 
@@ -56,12 +55,6 @@ export default {
     isEditing () {
       return this.ehrHelp.isEditing()
     },
-    assignmentCaseContext () {
-      return CaseContext.getAssignmentCaseContext()
-    },
-    showSignature () {
-      return CaseContext.getPageTableShowSignature(this.pageDataKey, this.tableKey)
-    },
     disabled () {
       let disable = false
       if (this.isPageElement) {
@@ -75,11 +68,6 @@ export default {
             this.setInitialValue('')
           }
         }
-      }
-      if (this.showSignature) {
-        // make the record header read only if the case context feature is enabled and there is case context data
-        // and the field is part of the record header
-        disable = true
       }
       return disable
     }
@@ -170,10 +158,6 @@ export default {
           let initialValue = inputs[this.elementKey]
           if (dbDialog || dbInputs) console.log('EhrCommon key has value', this.key, initialValue)
           this.setInitialValue(initialValue)
-          if (this.showSignature) {
-            const v = this.assignmentCaseContext[this.key]
-            this.setInitialValue(v)
-          }
           if (this.inputType === EhrTypes.dataInputTypes.ehr_embedded) {
             if( options.viewOnly ) {
               console.log('what happens if we skip sending input event on embedded ')

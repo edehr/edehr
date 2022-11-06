@@ -9,7 +9,7 @@ import EventBus, {
   PAGE_DATA_READY_EVENT,
   PAGE_DATA_REFRESH_EVENT
 } from '@/helpers/event-bus'
-import { formatTimeStr, prepareAssignmentPageDataForSave } from '@/helpers/ehr-utils'
+import { formatTimeStr, isString, prepareAssignmentPageDataForSave } from '@/helpers/ehr-utils'
 import EhrDefs from '@/helpers/ehr-defs-grid'
 import StoreHelper from '@/helpers/store-helper'
 import validations from './ehr-validations'
@@ -298,7 +298,7 @@ export default class EhrHelpV2 {
     if (dbDialog) console.log('EhrHelpV2 saveDialog for page/table', pageKey, tableKey)
     let inputs = dialog.inputs
     inputs.createdDate = moment().format()
-    if (dbDialog) console.log('save dialog data into ', tableKey)
+    if (dbDialog) console.log('save dialog data', inputs, 'into ', tableKey)
     let asLoadedPageData = this.getMergedPageData()
     let table = asLoadedPageData[tableKey]
     if (!table) {
@@ -453,7 +453,7 @@ export default class EhrHelpV2 {
       const validator = this._validator(eDef)
       const mandatory = eDef[PROPS.mandatory]
       let value = inputs[eKey]
-      value = (value && typeof value === 'string') ? value.trim() : value
+      value = isString(value) ? value.trim() : value
       if (dbDialog) console.log('EhrHelpV2 validate:', eKey, value, 'eDef:', eDef)
       if (mandatory && !value ) {
         const msg = label + ' is required'
@@ -469,6 +469,12 @@ export default class EhrHelpV2 {
       }
     })
     return dialog.errorList.length === 0
+  }
+  validateDialog () {
+    const dialog = this._getActiveTableDialog()
+    if (!this._validateInputs(dialog)) {
+      return dialog.errorList
+    }
   }
 
   /* ********************* FORM  */

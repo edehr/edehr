@@ -38,6 +38,10 @@ export default {
   inserted (el, binding, vnode) {
     if (!document) return
     function onPointerStart (evt) {
+      if(evt.button !== 0) {
+        // only activate on the primary mouse
+        return
+      }
       if (deets) console.log('onPointerStart', el, evt, evt.touches)
       const { clientX, clientY } = getLoc(evt)
       innerUtil.addEventListeners(document, POINTER_LEAVE_EVENTS, onPointerLeave)

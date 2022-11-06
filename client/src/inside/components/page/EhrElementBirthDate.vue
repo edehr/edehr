@@ -9,7 +9,7 @@
 import EhrElementCommon from './EhrElementCommon'
 import { computeDateOfBirth } from '@/ehr-definitions/ehr-def-utils'
 
-const dbug = true
+const dbug = false
 
 export default {
   extends: EhrElementCommon,

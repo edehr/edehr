@@ -1,72 +1,74 @@
-# Working with seed data
+# Working with Case Studies
 
-> [Seeds](../shared/definitions.html#seed) are not shared with other institution's LMS. Each LMS, or more precisely, each LTI tool consumer, has its own namespace within the database. Every seed, assignment, activity, user, etc is unique to each tool consumer. To share seed data across institutions you can download, share and then upload a seed.
-
-
-> One seed is often used by many assignments. Just as one assignment is often used by many activities.
-
-## Accessing seed data
-
-To gain access to 'Manage seed data' navigate to the assignments page and click on the course designer functionality checkbox at the bottom left of the page. Click on the "Manage seed data" button that appears under the page title to view the seeds available in your system. (Note that each LMS has its own separate list).
-
-![1]
-
-## Default seed
-
-Each [tool consumer](../shared/definitions.html#tool-consumer) is automatically linked to an empty, default seed when a LMS user first activates a link. It cannot be modified and it is recommended to relink the assignment to a different seed.
-
-## Seed properties
-
-**Seed name:** A short, descriptive and unique name.
-
-**Description:** Information that will be shared with students. This is added onto the activity description entered by the LMS admnin.
-
-**Version:** Optional value to distinguish different versions of the seed. May be useful for documentation. The EdEHR prototype provides this field but does nothing with it. 
-
-**Pages with seed data:** Lists the EHR pages that contain at least one piece of data within the respective seed.
-
-**Assignments using this seed:** Lists the assignments using the respective seed.
-
-![2] 
-
-## View/edit seed
-
-Use the view/edit seed button to view the EHR and add/edit data in the seed. If changes are needed to the fields or options in lists, contact your [developer to edit the input spreadsheet](../developer/inside-generator/#input-spreadsheet). 
-
-### Work around
-
-The default case study data appears in the EHR but it is not saved into the seed. To save the default Erin Johns data into the seed:
-- visit each page desired to be in the seed
-- click the edit form button 
-- click the save button
-- the data on that page is then added into the seed.
-
-This is a prototype kludge that later versions ought to improve on.
+> One Case Study is often used by many Learning Objects. Just as one Learning Object can be used by many Activities.
+> 
+> A Case Study provides the EHR simulation data.  This is for a single simulated patient during an encounter in a hospital.
+> 
+> Case Studies have also been called Seeds. So if you encounter the term "seed" think "case study". The term "seed" will be phased out over time.
 
 
-## Edit description
+## Accessing Case Studies
 
-Use the Edit description button to edit the seed name, version and description. 
-![3]
+Each Learning Object has a link that takes a user directly to the linked Case Study.
+
+From the Instructor tools menu select Case Studies to go to the Case Studies list page.
+
+Each EdEHR instance has one default Case Study that is empty. This Case Study does not appear on the list page.
 
 
-## Download
+## Editing a Case Study
 
-The download button saves the seed data in a text file with structured data. The structure conforms to the [JSON](http://www.json.org/) standard. Use this feature to backup your data, or share it with another course or even institution. 
+Use the ![3] button to modify the properties of a Case Study.
 
-Do not edit the contents unless you know what you are doing. For example, editing some field data might not work if the field is expecting one of a list of particular option values.
+**Name:** A short, descriptive name.
 
-The file contains this license: *This work is licensed under a Creative Commons Attribution 4.0 International License. See http://creativecommons.org/licenses/by/4.0/*
+**Description:** Information that will be shared with other instructors to help them understand what this Case Study is about.
+
+**Version:** Optional value to distinguish different versions of the Case Study. This may be useful for your documentation. 
+
+**Contributors:** Optional list of instructors who helped create this Case Study.
+
+The ![1] button lets you, *optionally*, import a Case Study JSON file that you may have saved from before or obtained by sharing case studies with others. 
+
+> *The "Upload seed" button is poorly placed and can be confusing to new users. This problem will be addressed soon.  If you find this button confusing then you are not alone.*
+
+Use the upload seed button to select a file from your computer that contains a case study (json file extension) that you or someone else saved and shared. This upload imports the EHR contents from the json file. 
+
+> *Another confusing user interface appears when you upload a seed. The dialog shows too much information about the imported case study*
  
-## Upload
 
-Use the upload button to import a previously downloaded seed file. Use this feature after renaming a downloaded seed to duplicate it in the system.
+## Download (Save) a Case Study
 
-## Assign a seed to an assignment
+Use the ![7] button to save a Case Study. The saved file contains structured text that you can read. The structure conforms to the [JSON](http://www.json.org/) standard. It is good practice to save your case studies as backups and to share with others. 
 
-Remember to link the seeds you want to use to their respective assignments from the assignment page. Students are now able to enter the system to complete their assignments.
+*Do not edit the contents of a saved case study unless you know what you are doing.*
+
+Each saved Case Study file will contain this license: *This work is licensed under a Creative Commons Attribution 4.0 International License. See http://creativecommons.org/licenses/by/4.0/*
+
+> *You can remove Creative Commons license if you wish.* 
 
 
-[1]: ../images/edehr-seed-list.png "EdEHR seed list"
-[2]: ../images/edehr-seed-controls.png "Seed edit controls"
-[3]: ../images/edehr-seed-edit-props.png "Edit seed properties"
+## Viewing Metadata for a Case Studies
+
+Each Case Study has metadata, as well as EHR content. This metadata includes the properties mentioned above and
+
+**EHR statistics:** List of the EHR pages that are in the EHR data.
+
+**Learning Objects using this seed:** Says how many Learning Objects are using this Case Study
+
+## Viewing the EHR content
+
+Both Instructor and Content Creator users can view the EHR data in the "Condensed View" with the ![5] button.  This condensed view shows you just the data in the EHR without all the EHR charting UI.
+
+## Editing the EHR content
+
+Only Content Creator users can edit the EHR case study data in the EHR pages with the ![6] button. This launches the EHR with the case study data and lets you contribute more to the chart. Like a student user you will be able to modify the content of forms and add new assessments to tables. If you need to make other types of modifications then contact your EdEHR administrator for help.
+
+
+[1]: ../images/upload-seed-button.png "Upload seed"
+[2]: ../images/duplicate-button.png "Duplicate"
+[3]: ../images/properties-button.png "Properties"
+[4]: ../images/activity-lobj-seed.png "Activity, Learning Object, Case Study"
+[5]: ../images/view-data-button.png "View case study"
+[6]: ../images/edit-in-ehr-button.png "Edit in EHR"
+[7]: ../images/download-button.png "Download"

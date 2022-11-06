@@ -5,12 +5,8 @@
 </template>
 
 <script>
-import MedList from './MedList'
 export default {
   name: 'MarRecord',
-  components: {
-    MedList
-  },
   props: {
     record: { type: Object },
   },

@@ -1,46 +1,46 @@
 <template lang="pug">
   div(class="mar-today-content")
+    div PRN Medications
+      div(v-for="(prn, index) in prnMedications", :key="index", class='prn-med')
+        div
+          ui-button(v-on:buttonClicked="openPRNMarDialog(prn)", v-bind:secondary="true") PRN MAR
+        med-order(:medOrder='prn')
+    hr
     div(v-if="todaysSchedule.length === 0")
-      h4 No medications ordered
+      h4 No scheduled medications ordered
     div(v-else)
-      div(class="columns")
-        div(class="column period-column")
-          h4 Time
-        div(class="column med-order-column")
-          h4 Medication order
-        div(class="column mar-column")
-          h4 Administration
-      div(class="periodsList", v-for="period in todaysSchedule", :key="period.key")
-        div(class="columns")
-          div(class="column period-column")
-            p
-              span {{ period.hour24 }}
-              span(v-if="period.isOverDue", class='overdue') &nbsp; Overdue
-          div(class="column med-order-column")
-            med-list(:medsList="period.medList")
-          div(class="column mar-column")
-            div(v-show="showButton(period)")
-              ui-button(v-on:buttonClicked="openMarDialog(period)", v-bind:secondary="true") Add MAR
-            div(v-show="period.hasMar")
-              mar-record(:record="period.marRecord")
-      mar-dialog(ref="refMarDialog", :currentDay="currentDay", v-on:saveMar="saveMar")
-      div(style="display:none") refreshData: {{refreshData}}
+      div(class="today-row")
+        h4 Time
+        h4 Administration
+        h4 Medication order
+      div(class="today-row", v-for="period in todaysSchedule", :key="period.key")
+        div
+          span {{ period.hour24 }}
+          span(v-if="period.isOverDue && !period.hasMar", class='overdue') &nbsp; Overdue
+        div
+          div(v-show="showButton(period)")
+            ui-button(v-on:buttonClicked="openMarDialog(period)", v-bind:secondary="true") Add MAR
+          div(v-show="period.hasMar")
+            mar-record(:record="period.marRecord")
+        med-order(:medOrder='period.medList[0]')
+    mar-dialog(ref="refMarDialog", :currentDay="currentDay", v-on:saveMar="saveMar")
+    div(style="display:none") refreshData: {{refreshData}}
 </template>
 
 <script>
 import EventBus from '@/helpers/event-bus'
-import { PAGE_DATA_REFRESH_EVENT } from '../../../helpers/event-bus'
-import MedList from './MedList'
-import UiButton from '../../../app/ui/UiButton'
+import { PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
+import UiButton from '@/app/ui/UiButton'
 import MarRecord from './MarRecord'
 import MarDialog from './MarDialog'
 import MarHelper from './mar-helper'
+import MedOrder from '@/inside/components/mar/MedOrder'
 
 export default {
   name: 'MarTodayContent',
   components: {
+    MedOrder,
     UiButton,
-    MedList,
     MarDialog,
     MarRecord
   },
@@ -48,6 +48,7 @@ export default {
     return {
       showMarDialog: false,
       todaysSchedule: [],
+      prnMedications: [],
       currentDay: 0
     }
   },
@@ -57,15 +58,17 @@ export default {
   },
   computed: {
     refreshData () {
-      // See EhrPageForm for more on why we have currentData
       this.refresh()
-      // console.log('MarTodayContent refreshData', this.schedule)
+      // console.log('MarTodayContent refreshData', this.todaysSchedule)
       return this.todaysSchedule
     },
   },
   methods: {
     openMarDialog (period) {
       this.$refs.refMarDialog.openMarDialog(period)
+    },
+    openPRNMarDialog (medOrder) {
+      this.$refs.refMarDialog.openMarDialog(undefined,medOrder)
     },
     showButton (period) {
       return this.ehrHelp.showTableAddButton() && !period.hasMar
@@ -81,6 +84,7 @@ export default {
         let help = new MarHelper(this.ehrHelp)
         let marToday = this.marToday
         this.todaysSchedule = marToday.getTodaysSchedule(help.marRecords, help.theMedOrders)
+        this.prnMedications = marToday.getPRNs(help.theMedOrders)
         this.currentDay = marToday.getCurrentDay()
 
       }
@@ -105,18 +109,21 @@ export default {
 <style lang="scss" scoped>
 @import '../../../scss/definitions';
 .mar-today-content {
-  /*border: 1px solid red;*/
+  //border: 1px solid red;
 }
-
-.period-column {
-  flex: 0 0 20%;
+.today-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 3fr;
+  border-bottom: 1px solid $grey40;
+  padding: 1rem;
+}
+.prn-med {
+  display: grid;
+  grid-template-columns: 0.5fr 3fr;
 }
 .periodsList {
-  border-bottom: 1px solid $grey40;
 }
-
 .overdue {
   color: $brand-highlight-red;
 }
-
 </style>

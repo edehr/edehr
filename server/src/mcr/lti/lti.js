@@ -47,7 +47,7 @@ let PROPS_CONTEXT = [
   'context_type',
   'custom_assignment',
   'launch_presentation_return_url',
-  'lis_course_section_sourcedid',
+  // 'lis_course_section_sourcedid',
   'resource_link_description',
   'resource_link_id',
   'resource_link_title',

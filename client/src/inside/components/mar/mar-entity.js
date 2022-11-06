@@ -2,8 +2,8 @@ import { validTimeStr, validDayStr } from '../../../helpers/ehr-utils'
 import MedOrder from './med-order'
 
 
-const ERR_WHO = 'Must provide who administered'
-const ERR_WHEN = 'Time must be 24:00 hour format'
+const ERR_WHO = 'Must say who administered the medication'
+const ERR_WHEN = 'Time must be 2400 hour format'
 const ERR_DAY = 'Day must be one of 0,1,2,3,...'
 const ERR_EMPTY_MEDS = 'Medication list can not be empty'
 const DEFAULT_TIME = '0000'
@@ -19,30 +19,33 @@ when,
 medication
  */
 export default class MarEntity {
-  constructor (whoOrObj, ...[day, when, comment, period = {}]) {
+  constructor (whoOrObj, ...[day, actualTime, comment, scheduledTime, medOrder = {}]) {
     this._data = {}
     if (typeof whoOrObj ==='string') { // from dialog
       // console.log('MarEntity create from dialog arguments')
       this._data.whoAdministered = whoOrObj
       this._data.day = day
-      this._data.actualTime = when
+      this._data.actualTime = actualTime
       this._data.comment = comment
-      this._data.scheduledTime = period.hour24
-      this._period = period
-      this._data.medications = period.medList
+      this._data.scheduledTime = scheduledTime
+      this._medOrder = medOrder
+      this._data.medications = [this._medOrder]
       // period.medList.map(ml => ml.asObjectForApi())
-      
+
     } else if (typeof whoOrObj === 'object') { // from database
-      // console.log('MarEntity create from object', whoOrObj)
+      // console.log('MarEntity create from object', JSON.stringify(whoOrObj))
       this._data = whoOrObj._data ? whoOrObj._data : whoOrObj
       this._data.medications = this._data.medications.map( mo => new MedOrder(mo))
-      // console.log('MarEntity  this._data.medications', this._data.medications)
+      // console.log('MarEntity  this._data.medications', JSON.stringify(this._data.medications))
     }
   }
 
   asObjectForApi () {
     let obj = Object.assign({},this._data)
-    let medsList = this._period && this._period.medList ? this._period.medList : []
+    let medsList = []
+    if (this._medOrder) {
+      medsList.push(this._medOrder)
+    }
     obj.medications = medsList
     return obj
   }

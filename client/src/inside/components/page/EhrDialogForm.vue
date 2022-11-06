@@ -14,18 +14,13 @@
       h3(slot="header") {{ formLabel }}
       div(slot="body", class="ehr-page-content")
         ehr-group(v-for="group in groups", :key="group.gIndex", :group="group", :ehrHelp="ehrHelp", :viewOnly='isViewOnly')
-      div(slot="footer-content", class="checkbox-wrapper", v-if="acknowledgeSignature")
-        label
-          input(class="checkbox", type="checkbox", v-model="ackCaseStudyData")
-          span {{ ackText }}
       span(slot="save-button") Create and close
 </template>
 
 <script>
 import AppDialog from '@/app/components/AppDialogShell'
 import EhrGroup from '@/inside/components/page/EhrGroup'
-import CaseContext from '@/helpers/case-context'
-import EventBus from '@/helpers/event-bus'
+import EventBus, { FORM_INPUT_EVENT } from '@/helpers/event-bus'
 import EhrOnlyDemo from '@/helpers/ehr-only-demo'
 
 export default {
@@ -33,10 +28,10 @@ export default {
     EhrGroup,
     AppDialog
   },
+  inject: ['pageDataKey', 'isEmbedded'],
   data: function () {
     return {
       errorList: [],
-      ackCaseStudyData: false // has the user acknowledged the reqHeader?, that is, confirmed the checkbox
     }
   },
   props: {
@@ -59,28 +54,9 @@ export default {
     groups () {
       return this.tableDef.form ? this.tableDef.form.ehr_groups : []
     },
-    // TODO add acknowledgement signature to the flow of each form both table and page form
-    acknowledgeSignature () {
-      return CaseContext.getPageTableShowSignature(this.ehrHelp.pageKey, this.tableKey)
-    },
     disableSave () {
-      if (this.acknowledgeSignature) {
-        // disable save until the user has acknowledged / confirmed signature
-        return !this.ackCaseStudyData
-      } else {
-        return this.isViewOnly
-      }
+      return this.isViewOnly || this.errorList.length > 0
     },
-    ackText () {
-      const persona = this.getCaseStudyData()
-      return `I, ${persona.profession} ${persona.name}, certify the above information is correct. Day: ${persona.day} Time: ${persona.time}`
-    },
-    assignmentHasCaseContext () {
-      return CaseContext. assignmentHasCaseContext()
-    },
-    featureCaseContext () {
-      return CaseContext.isCaseContextFeature()
-    }
   },
   methods: {
     cssFromDefs: function (element) {
@@ -92,7 +68,6 @@ export default {
     },
     saveDialog: function () {
       this.errorList = this.ehrHelp.saveDialog() || []
-      this.ackReqHeader = false
     },
     receiveShowHideEvent (eData) {
       if (eData.isEmbedded) {
@@ -108,9 +83,21 @@ export default {
         this.$refs.theDialog.onClose()
       }
     },
-    getCaseStudyData () {
-      return CaseContext.getAssignmentCaseContext()
-    }
+    processInputChangeEvent (eData) {
+      // let pageDataKey = this.pageDataKey
+      // let embedded = this.isEmbedded
+      // let srcValues = this.ehrHelp.getActiveData()
+      this.errorList = this.ehrHelp.validateDialog() || []
+    },
+    receiveInputChangeEvent (eData) {
+      if (!this.isViewOnly) {
+        // console.log('receiveInputChangeEvent')
+        if (this.changeTimeoutId) {
+          clearTimeout(this.changeTimeoutId)
+        }
+        this.changeTimeoutId = setTimeout(() => this.processInputChangeEvent(eData), 500)
+      }
+    },
   },
   mounted: function () {
     const _this = this
@@ -119,11 +106,19 @@ export default {
       _this.receiveShowHideEvent(eData)
     }
     EventBus.$on(ch, this.eventHandler)
+    this.inputChangeEventHandler = function (eData) {
+      _this.receiveInputChangeEvent(eData)
+    }
+    EventBus.$on(FORM_INPUT_EVENT, this.inputChangeEventHandler)
+
   },
   beforeDestroy: function () {
     let ch = this.ehrHelp.getDialogEventChannel(this.tableKey)
     if (this.eventHandler) {
       EventBus.$off(ch, this.eventHandler)
+    }
+    if (this.inputChangeEventHandler) {
+      EventBus.$off(FORM_INPUT_EVENT, this.inputChangeEventHandler)
     }
   }
 }

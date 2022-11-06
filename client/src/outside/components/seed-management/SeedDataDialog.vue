@@ -1,10 +1,10 @@
 <template lang="pug">
   div(id="seedDataList", class="seedData-list")
     app-dialog(
-      :isModal="true", 
-      ref="theDialog",  
-      @cancel="cancelDialog", 
-      @save="saveDialog", 
+      :isModal="true",
+      ref="theDialog",
+      @cancel="cancelDialog",
+      @save="saveDialog",
       :disableSave="disableSave",
       has-left-button
     )
@@ -48,8 +48,7 @@
                 ref="fileUploadInput",
                 @change="setFile"
               )
-              span(class="file-cta")
-                span(class="file-label button is-primary")  {{ hasUploadSeed ? 'Change File' : 'Upload Seed' }}
+              span(class="file-label button is-primary")  {{ hasUploadSeed ? 'Change File' : 'Optional: Import case study json file.' }}
 </template>
 
 <script>

@@ -9,14 +9,24 @@
             h4 Medication order
           th(v-for="(cell, index) in tableHeader", :class="tdStyle(cell, index, tableHeader)")
             div Day {{cell.value.day}} - {{cell.value.actualTime}}
-            div {{cell.value.scheduledTime}}
-            div {{cell.value.whoAdministered}}
-            div {{cell.value.comment}}
 
         tbody
           tr(v-for="row in tableBody")
             td(v-for="(cell, index) in row", :class="tdStyle(cell, index, row)")
-              div(:class="marCellStyle(cell, index, row)") {{marCellContent(cell)}}
+              div(v-if="cell.type ==='medOrder'")
+                div {{cell.value.medication}}
+                div {{cell.value.dose}}
+                div {{cell.value.route}}
+                div {{cell.value.reason}}
+                div {{cell.value.instructions}}
+                div {{cell.value.administration}}
+                div {{cell.value.scheduleKey}}
+              div(v-if="cell.type ==='mar'")
+                div {{cell.value.scheduledTime}}
+                div {{cell.value.actualTime}}
+                div {{cell.value.whoAdministered}}
+                div {{cell.value.comment}}
+
 </template>
 
 <script>
@@ -46,12 +56,6 @@ export default {
     ehrHelp: { type: Object }
   },
   methods: {
-    marCellContent (cell) {
-      return this.marSummary.marCellContent(cell)
-    },
-    marCellStyle (cell, index, row) {
-      return this.marSummary.marCellStyle(cell)
-    },
     tdStyle (cell, index, row) {
       // We want to put a break between the days so find when the day changes.
       // This assumes the sort order is largest (newest) day is first.
