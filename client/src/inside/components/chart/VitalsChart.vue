@@ -11,7 +11,7 @@
 import VitalChart from './vitalChart'
 
 const yAxisWidth = 75
-const canvasHeight = 1450
+const canvasHeight = 1700
 const canvasWidth = 8200
 
 export default {
@@ -98,7 +98,7 @@ export default {
       vitalChart.drawChart(this.bloodSugar, y, ht)
       y += ht + space
 
-      space = 10
+      space = 60
       ht = 250
       vitalChart.drawChart(this.cvp, y, ht)
       y += ht + space
