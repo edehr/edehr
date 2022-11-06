@@ -92,9 +92,9 @@ export function ehrCalculateProperty (pageDataKey, targetKey, srcValues) {
         values.push(rowData)
         // console.log('srcKey, srcVal, calculationType', key, srcVal, calculationType)
       } else {
-        let msg = `Ehr calc found unexpected value type for key ${targetKey}, value found: ${srcVal}`
-        console.log('ecp', msg)
-        throw new Error(msg)
+        // do nothing with faulty input
+        // let msg = `Ehr calc found unexpected value type for key ${targetKey}, value found: ${srcVal}`
+        // console.log('validating source values', msg)
       }
     } else {
       // do nothing .. it is ok to not yet have a value for one of the sources

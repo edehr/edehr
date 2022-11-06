@@ -16656,6 +16656,7 @@ const DEFS = {
         'label': 'WBC - 1',
         'passToFunction': 'wbcAverage',
         'tableColumn': '11',
+        'validation': 'numeric',
         'fqn': 'hematology.wbc-1'
       },
       {
@@ -16665,6 +16666,7 @@ const DEFS = {
         'label': 'WBC - 2',
         'passToFunction': 'wbcAverage',
         'tableColumn': '12',
+        'validation': 'numeric',
         'fqn': 'hematology.wbc-2'
       },
       {
@@ -16674,6 +16676,7 @@ const DEFS = {
         'label': 'WBC - 3',
         'passToFunction': 'wbcAverage',
         'tableColumn': '13',
+        'validation': 'numeric',
         'fqn': 'hematology.wbc-3'
       },
       {
@@ -16683,6 +16686,7 @@ const DEFS = {
         'label': 'WBC - 4',
         'passToFunction': 'wbcAverage',
         'tableColumn': '14',
+        'validation': 'numeric',
         'fqn': 'hematology.wbc-4'
       },
       {
@@ -16692,6 +16696,7 @@ const DEFS = {
         'label': 'WBC - 5',
         'passToFunction': 'wbcAverage',
         'tableColumn': '15',
+        'validation': 'numeric',
         'fqn': 'hematology.wbc-5'
       },
       {
@@ -16701,6 +16706,7 @@ const DEFS = {
         'label': 'WBC - 6',
         'passToFunction': 'wbcAverage',
         'tableColumn': '16',
+        'validation': 'numeric',
         'fqn': 'hematology.wbc-6'
       },
       {
@@ -16710,6 +16716,7 @@ const DEFS = {
         'label': 'WBC - 7',
         'passToFunction': 'wbcAverage',
         'tableColumn': '17',
+        'validation': 'numeric',
         'fqn': 'hematology.wbc-7'
       },
       {
@@ -16719,6 +16726,7 @@ const DEFS = {
         'label': 'WBC - 8',
         'passToFunction': 'wbcAverage',
         'tableColumn': '18',
+        'validation': 'numeric',
         'fqn': 'hematology.wbc-8'
       },
       {
@@ -16728,6 +16736,7 @@ const DEFS = {
         'label': 'WBC - 9',
         'passToFunction': 'wbcAverage',
         'tableColumn': '19',
+        'validation': 'numeric',
         'fqn': 'hematology.wbc-9'
       },
       {
@@ -16737,6 +16746,7 @@ const DEFS = {
         'label': 'WBC - 10',
         'passToFunction': 'wbcAverage',
         'tableColumn': '20',
+        'validation': 'numeric',
         'fqn': 'hematology.wbc-10'
       },
       {
@@ -16747,6 +16757,7 @@ const DEFS = {
         'label': 'WBC field factor',
         'passToFunction': 'wbcEstimate',
         'tableColumn': '21',
+        'validation': 'numeric',
         'fqn': 'hematology.wbcFieldFactor'
       },
       {
@@ -16757,6 +16768,7 @@ const DEFS = {
         'label': 'WBC average',
         'passToFunction': 'wbcEstimate',
         'tableColumn': '22',
+        'validation': 'numeric',
         'fqn': 'hematology.wbcAverage'
       },
       {
@@ -16766,6 +16778,7 @@ const DEFS = {
         'inputType': 'calculatedValue',
         'label': 'WBC estimate',
         'tableColumn': '23',
+        'validation': 'numeric',
         'fqn': 'hematology.wbcEstimate'
       },
       {
@@ -16776,6 +16789,7 @@ const DEFS = {
         'label': 'WBC count',
         'passToFunction': '[wbcLowRange, wbcHighRange]',
         'tableColumn': '24',
+        'validation': 'numeric',
         'fqn': 'hematology.wbcAnalysis'
       },
       {
@@ -16785,6 +16799,7 @@ const DEFS = {
         'inputType': 'calculatedValue',
         'label': 'WBC acceptable range (low)',
         'tableColumn': '25',
+        'validation': 'numeric',
         'fqn': 'hematology.wbcLowRange'
       },
       {
@@ -16794,6 +16809,7 @@ const DEFS = {
         'inputType': 'calculatedValue',
         'label': 'WBC acceptable range (high)',
         'tableColumn': '26',
+        'validation': 'numeric',
         'fqn': 'hematology.wbcHighRange'
       },
       {
@@ -16812,6 +16828,7 @@ const DEFS = {
         'label': 'PLT - 1',
         'passToFunction': 'pltAverage',
         'tableColumn': '28',
+        'validation': 'numeric',
         'fqn': 'hematology.plt-1'
       },
       {
@@ -16821,6 +16838,7 @@ const DEFS = {
         'label': 'PLT - 2',
         'passToFunction': 'pltAverage',
         'tableColumn': '29',
+        'validation': 'numeric',
         'fqn': 'hematology.plt-2'
       },
       {
@@ -16830,6 +16848,7 @@ const DEFS = {
         'label': 'PLT - 3',
         'passToFunction': 'pltAverage',
         'tableColumn': '30',
+        'validation': 'numeric',
         'fqn': 'hematology.plt-3'
       },
       {
@@ -16839,6 +16858,7 @@ const DEFS = {
         'label': 'PLT - 4',
         'passToFunction': 'pltAverage',
         'tableColumn': '31',
+        'validation': 'numeric',
         'fqn': 'hematology.plt-4'
       },
       {
@@ -16848,6 +16868,7 @@ const DEFS = {
         'label': 'PLT - 5',
         'passToFunction': 'pltAverage',
         'tableColumn': '32',
+        'validation': 'numeric',
         'fqn': 'hematology.plt-5'
       },
       {
@@ -16857,6 +16878,7 @@ const DEFS = {
         'label': 'PLT - 6',
         'passToFunction': 'pltAverage',
         'tableColumn': '33',
+        'validation': 'numeric',
         'fqn': 'hematology.plt-6'
       },
       {
@@ -16866,6 +16888,7 @@ const DEFS = {
         'label': 'PLT - 7',
         'passToFunction': 'pltAverage',
         'tableColumn': '34',
+        'validation': 'numeric',
         'fqn': 'hematology.plt-7'
       },
       {
@@ -16875,6 +16898,7 @@ const DEFS = {
         'label': 'PLT - 8',
         'passToFunction': 'pltAverage',
         'tableColumn': '35',
+        'validation': 'numeric',
         'fqn': 'hematology.plt-8'
       },
       {
@@ -16884,6 +16908,7 @@ const DEFS = {
         'label': 'PLT - 9',
         'passToFunction': 'pltAverage',
         'tableColumn': '36',
+        'validation': 'numeric',
         'fqn': 'hematology.plt-9'
       },
       {
@@ -16893,6 +16918,7 @@ const DEFS = {
         'label': 'PLT - 10',
         'passToFunction': 'pltAverage',
         'tableColumn': '37',
+        'validation': 'numeric',
         'fqn': 'hematology.plt-10'
       },
       {
@@ -16903,6 +16929,7 @@ const DEFS = {
         'label': 'PLT field factor',
         'passToFunction': 'pltEstimate',
         'tableColumn': '38',
+        'validation': 'numeric',
         'fqn': 'hematology.pltFieldFactor'
       },
       {
@@ -16913,6 +16940,7 @@ const DEFS = {
         'label': 'PLT average',
         'passToFunction': 'pltEstimate',
         'tableColumn': '39',
+        'validation': 'numeric',
         'fqn': 'hematology.pltAverage'
       },
       {
@@ -16922,6 +16950,7 @@ const DEFS = {
         'inputType': 'calculatedValue',
         'label': 'PLT estimate',
         'tableColumn': '40',
+        'validation': 'numeric',
         'fqn': 'hematology.pltEstimate'
       },
       {
@@ -16932,6 +16961,7 @@ const DEFS = {
         'label': 'PLT count',
         'passToFunction': '[pltLowRange, pltHighRange]',
         'tableColumn': '41',
+        'validation': 'numeric',
         'fqn': 'hematology.pltAnalysis'
       },
       {
@@ -16941,6 +16971,7 @@ const DEFS = {
         'inputType': 'calculatedValue',
         'label': 'PLT acceptable range (low)',
         'tableColumn': '42',
+        'validation': 'numeric',
         'fqn': 'hematology.pltLowRange'
       },
       {
@@ -16950,6 +16981,7 @@ const DEFS = {
         'inputType': 'calculatedValue',
         'label': 'PLT acceptable range (high)',
         'tableColumn': '43',
+        'validation': 'numeric',
         'fqn': 'hematology.pltHighRange'
       },
       {
@@ -17019,6 +17051,7 @@ const DEFS = {
         'label': 'Segmented Neutrophil',
         'passToFunction': '[ cellCntTotal cellCntSegNeutrophilAbs]',
         'tableColumn': '48',
+        'validation': 'numeric',
         'fqn': 'hematology.cellCntSegNeutrophil'
       },
       {
@@ -17028,6 +17061,7 @@ const DEFS = {
         'inputType': 'calculatedValue',
         'label': 'Segmented Neutrophil Abs',
         'tableColumn': '49',
+        'validation': 'numeric',
         'fqn': 'hematology.cellCntSegNeutrophilAbs'
       },
       {
@@ -17037,6 +17071,7 @@ const DEFS = {
         'label': 'Band Cells',
         'passToFunction': '[ cellCntTotal cellCntBandCellsAbs ]',
         'tableColumn': '50',
+        'validation': 'numeric',
         'fqn': 'hematology.cellCntBandCells'
       },
       {
@@ -17046,6 +17081,7 @@ const DEFS = {
         'inputType': 'calculatedValue',
         'label': 'Band Cells Abs',
         'tableColumn': '51',
+        'validation': 'numeric',
         'fqn': 'hematology.cellCntBandCellsAbs'
       },
       {
@@ -17055,6 +17091,7 @@ const DEFS = {
         'label': 'Lymph',
         'passToFunction': '[ cellCntTotal cellCntLymphAbs ]',
         'tableColumn': '52',
+        'validation': 'numeric',
         'fqn': 'hematology.cellCntLymph'
       },
       {
@@ -17064,6 +17101,7 @@ const DEFS = {
         'inputType': 'calculatedValue',
         'label': 'Lymph Abs',
         'tableColumn': '53',
+        'validation': 'numeric',
         'fqn': 'hematology.cellCntLymphAbs'
       },
       {
@@ -17073,6 +17111,7 @@ const DEFS = {
         'label': 'Mono',
         'passToFunction': '[ cellCntTotal cellCntMonoAbs ]',
         'tableColumn': '54',
+        'validation': 'numeric',
         'fqn': 'hematology.cellCntMono'
       },
       {
@@ -17082,6 +17121,7 @@ const DEFS = {
         'inputType': 'calculatedValue',
         'label': 'Mono Abs',
         'tableColumn': '55',
+        'validation': 'numeric',
         'fqn': 'hematology.cellCntMonoAbs'
       },
       {
@@ -17091,6 +17131,7 @@ const DEFS = {
         'label': 'Eosin',
         'passToFunction': '[ cellCntTotal cellCntEosinAbs ]',
         'tableColumn': '56',
+        'validation': 'numeric',
         'fqn': 'hematology.cellCntEosin'
       },
       {
@@ -17100,6 +17141,7 @@ const DEFS = {
         'inputType': 'calculatedValue',
         'label': 'Eosin Abs',
         'tableColumn': '57',
+        'validation': 'numeric',
         'fqn': 'hematology.cellCntEosinAbs'
       },
       {
@@ -17109,6 +17151,7 @@ const DEFS = {
         'label': 'Baso',
         'passToFunction': '[ cellCntTotal cellCntBasoAbs ]',
         'tableColumn': '58',
+        'validation': 'numeric',
         'fqn': 'hematology.cellCntBaso'
       },
       {
@@ -17118,6 +17161,7 @@ const DEFS = {
         'inputType': 'calculatedValue',
         'label': 'Baso Abs',
         'tableColumn': '59',
+        'validation': 'numeric',
         'fqn': 'hematology.cellCntBasoAbs'
       },
       {
@@ -17127,6 +17171,7 @@ const DEFS = {
         'label': 'Meta',
         'passToFunction': '[ cellCntTotal cellCntMetaAbs ]',
         'tableColumn': '60',
+        'validation': 'numeric',
         'fqn': 'hematology.cellCntMeta'
       },
       {
@@ -17136,6 +17181,7 @@ const DEFS = {
         'inputType': 'calculatedValue',
         'label': 'Meta Abs',
         'tableColumn': '61',
+        'validation': 'numeric',
         'fqn': 'hematology.cellCntMetaAbs'
       },
       {
@@ -17145,6 +17191,7 @@ const DEFS = {
         'label': 'Myelo',
         'passToFunction': '[ cellCntTotal cellCntMyeloAbs ]',
         'tableColumn': '62',
+        'validation': 'numeric',
         'fqn': 'hematology.cellCntMyelo'
       },
       {
@@ -17154,6 +17201,7 @@ const DEFS = {
         'inputType': 'calculatedValue',
         'label': 'Myelo Abs',
         'tableColumn': '63',
+        'validation': 'numeric',
         'fqn': 'hematology.cellCntMyeloAbs'
       },
       {
@@ -17163,6 +17211,7 @@ const DEFS = {
         'label': 'Promyelo',
         'passToFunction': '[ cellCntTotal cellCntPromyeloAbs ]',
         'tableColumn': '64',
+        'validation': 'numeric',
         'fqn': 'hematology.cellCntPromyelo'
       },
       {
@@ -17172,6 +17221,7 @@ const DEFS = {
         'inputType': 'calculatedValue',
         'label': 'Promyelo Abs',
         'tableColumn': '65',
+        'validation': 'numeric',
         'fqn': 'hematology.cellCntPromyeloAbs'
       },
       {
@@ -17181,6 +17231,7 @@ const DEFS = {
         'label': 'Blast',
         'passToFunction': '[ cellCntTotal cellCntBlastAbs ]',
         'tableColumn': '66',
+        'validation': 'numeric',
         'fqn': 'hematology.cellCntBlast'
       },
       {
@@ -17190,6 +17241,7 @@ const DEFS = {
         'inputType': 'calculatedValue',
         'label': 'Blast Abs',
         'tableColumn': '67',
+        'validation': 'numeric',
         'fqn': 'hematology.cellCntBlastAbs'
       },
       {
@@ -17199,6 +17251,7 @@ const DEFS = {
         'label': 'Reactive Lymphs',
         'passToFunction': '[ cellCntTotal cellCntReactiveLymphsAbs ]',
         'tableColumn': '68',
+        'validation': 'numeric',
         'fqn': 'hematology.cellCntReactiveLymphs'
       },
       {
@@ -17208,6 +17261,7 @@ const DEFS = {
         'inputType': 'calculatedValue',
         'label': 'Reactive Lymphs Abs',
         'tableColumn': '69',
+        'validation': 'numeric',
         'fqn': 'hematology.cellCntReactiveLymphsAbs'
       },
       {
@@ -17217,6 +17271,7 @@ const DEFS = {
         'label': 'Other',
         'passToFunction': '[ cellCntTotal cellCntOtherAbs ]',
         'tableColumn': '70',
+        'validation': 'numeric',
         'fqn': 'hematology.cellCntOther'
       },
       {
@@ -17226,6 +17281,7 @@ const DEFS = {
         'inputType': 'calculatedValue',
         'label': 'Other Abs',
         'tableColumn': '71',
+        'validation': 'numeric',
         'fqn': 'hematology.cellCntOtherAbs'
       },
       {

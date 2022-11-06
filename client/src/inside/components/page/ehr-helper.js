@@ -298,7 +298,7 @@ export default class EhrHelpV2 {
     if (dbDialog) console.log('EhrHelpV2 saveDialog for page/table', pageKey, tableKey)
     let inputs = dialog.inputs
     inputs.createdDate = moment().format()
-    if (dbDialog) console.log('save dialog data into ', tableKey)
+    if (dbDialog) console.log('save dialog data', inputs, 'into ', tableKey)
     let asLoadedPageData = this.getMergedPageData()
     let table = asLoadedPageData[tableKey]
     if (!table) {
