@@ -91,7 +91,7 @@ export default {
     },
     receiveInputChangeEvent (eData) {
       if (!this.isViewOnly) {
-        console.log('receiveInputChangeEvent')
+        // console.log('receiveInputChangeEvent')
         if (this.changeTimeoutId) {
           clearTimeout(this.changeTimeoutId)
         }
