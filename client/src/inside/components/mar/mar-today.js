@@ -16,13 +16,7 @@ export function getSchedule (medOrders) {
         marRecord: {},
         medList: []
       }
-      let reduced = {
-        medication: mo.medication,
-        route: mo.route,
-        dose: mo.dose,
-        reason: mo.reason
-      }
-      aSchedule.medList.push(reduced)
+      aSchedule.medList.push(mo)
       schedules.push(aSchedule)
     })
   })
@@ -57,7 +51,7 @@ export default class MarToday {
     let data = StoreHelper.getMergedData()
     let simTime = data.meta.simTime
     this._cDay = simTime.visitDay
-    console.log('construct MarToday with cDay', simTime)
+    // console.log('construct MarToday with cDay', simTime)
     let aDaySchedule = getSchedule(medOrders)
     if (db) console.log('marToday aDaySchedule >> ', aDaySchedule)
 
@@ -67,7 +61,7 @@ export default class MarToday {
     }
 
     aDaySchedule.forEach( pk => {
-      console.log('pk.hour24 < simTime.visitTime',pk.hour24, simTime.visitTime)
+      // console.log('pk.hour24 < simTime.visitTime',pk.hour24, simTime.visitTime)
       pk.isOverDue = pk.hour24 < simTime.visitTime
     })
 
@@ -120,6 +114,13 @@ export default class MarToday {
       })
     }
     return aDaySchedule
+  }
+
+  getPRNs (medOrders) {
+    medOrders = medOrders || []
+    return medOrders.filter(mo => {
+      return mo.administration.toUpperCase() === 'PRN'
+    })
   }
 
   getCurrentDay () { return this._cDay }

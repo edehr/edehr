@@ -2,53 +2,197 @@
   "id": "5d6786b88d19fb14c0994a5f",
   "license": "This work is licensed under a Creative Commons Attribution 4.0 International License. See http://creativecommons.org/licenses/by/4.0/",
   "ehrData": {
+    "allergies": {
+      "checkbox": "TRUE"
+    },
+    "biopsychosocial": {
+      "table": [
+        {
+          "name": "Jason",
+          "profession": "RN",
+          "day": "0",
+          "time": "19:30",
+          "domesticViolence": "No",
+          "requestContact": "No",
+          "hygieneGrooming": "Good",
+          "calm": true,
+          "none": true,
+          "suicidal": "None",
+          "homicidal": "None",
+          "speech": "Clear and coherent",
+          "supportPerson": "Thomas (Son)",
+          "securityPolicePresent": "No",
+          "createdDate": "2019-05-30T22:48:02-07:00",
+          "isFromSeed": true
+        }
+      ]
+    },
+    "cardiovascular": {
+      "table": [
+        {
+          "name": "Jason",
+          "profession": "RN",
+          "day": "0",
+          "time": "19:30",
+          "pulse": "Regular",
+          "skinAppearance": "Normal",
+          "capRefillRightHand": "Normal < 3 seconds",
+          "capRefillLeftHand": "Normal < 3 seconds",
+          "capRefillRightFoot": "Normal < 3 seconds",
+          "capRefillLeftFoot": "Normal < 3 seconds",
+          "temperatureRightHand": "Warm",
+          "temperatureLeftHand": "Warm",
+          "temperatureRightFoot": "Warm",
+          "temperatureLeftFoot": "Warm",
+          "peripheralEdemaRightHand": "No",
+          "peripheralEdemaLeftHand": "No",
+          "peripheralEdemaRightFoot": "No",
+          "peripheralEdemaLeftFoot": "No",
+          "nailBedColourRightHand": "Pink",
+          "nailBedColourLeftHand": "Pink",
+          "nailBedColourRightFoot": "Pink",
+          "nailBedColourLeftFoot": "Pink",
+          "createdDate": "2019-05-30T22:37:16-07:00",
+          "isFromSeed": true
+        }
+      ]
+    },
+    "careTeam": {
+      "teams": [
+        {
+          "name": "Dr. Singh",
+          "profession": "Physician",
+          "createdDate": "2019-05-30T09:39:52-07:00",
+          "isFromSeed": true
+        },
+        {
+          "name": "Jackie",
+          "profession": "RN",
+          "createdDate": "2019-05-30T09:40:00-07:00",
+          "isFromSeed": true
+        },
+        {
+          "name": "Jason",
+          "profession": "RN",
+          "createdDate": "2019-05-30T09:40:07-07:00",
+          "isFromSeed": true
+        },
+        {
+          "name": "Alexa",
+          "profession": "Med lab technician",
+          "createdDate": "2019-05-30T09:40:19-07:00",
+          "isFromSeed": true
+        },
+        {
+          "name": "Gurpreet",
+          "profession": "Med radiographer",
+          "createdDate": "2019-05-30T09:40:39-07:00",
+          "isFromSeed": true
+        },
+        {
+          "name": "Matt",
+          "profession": "Respiratory therapist",
+          "createdDate": "2019-05-30T09:40:54-07:00",
+          "isFromSeed": true
+        },
+        {
+          "name": "Dr. Notley",
+          "profession": "Physician",
+          "createdDate": "2019-05-30T09:41:09-07:00",
+          "isFromSeed": true
+        },
+        {
+          "name": "Serge",
+          "profession": "Med radiographer",
+          "createdDate": "2019-05-30T09:41:23-07:00",
+          "isFromSeed": true
+        },
+        {
+          "name": "Trache",
+          "profession": "RN",
+          "createdDate": "2019-05-30T09:41:37-07:00",
+          "isFromSeed": true
+        },
+        {
+          "name": "Dr. Hunicutt",
+          "profession": "Physician",
+          "createdDate": "2019-05-30T09:41:50-07:00",
+          "isFromSeed": true
+        },
+        {
+          "name": "Jim",
+          "profession": "RN",
+          "createdDate": "2019-05-30T09:41:59-07:00",
+          "isFromSeed": true
+        },
+        {
+          "name": "Gladys",
+          "profession": "physiotherapy student",
+          "createdDate": "2019-05-30T09:42:14-07:00",
+          "isFromSeed": true
+        },
+        {
+          "name": "Herman",
+          "profession": "Repiratory therapist",
+          "createdDate": "2019-05-30T09:42:39-07:00",
+          "isFromSeed": true
+        }
+      ]
+    },
     "demographics": {
-      "familyName": "Johns",
-      "givenName": "Erin",
-      "preferredName": "Erin",
-      "dateOfBirth": "09-SEP-1948",
-      "personAge": "74",
-      "gender": "Female",
-      "martialStatus": "Widowed",
-      "languagePrimary": "English",
-      "indigenousIdentifyAs": "No",
-      "streetAddress": "402 Willow St.",
       "city": "Vancouver",
       "country": "Canada",
-      "postalCode": "V3F 9R2",
-      "noAddress": false,
-      "phoneNumber": "(778) 555-2947",
-      "occupationStudent": "Retired",
-      "phn": "94561234",
-      "nextOfKinName": "Thomas Johns",
-      "nextOfKinRelationship": "Son",
-      "nextOfKinPhone": "604-555-9865",
+      "dateOfBirth": "09-SEP-1948",
       "decisionMakerName": "Thomas Johns",
-      "decisionMakerRelationship": "Child",
       "decisionMakerPhone": "604-555-9865",
-      "weight": "49",
-      "height": "185"
+      "decisionMakerRelationship": "Child",
+      "familyName": "Johns",
+      "gender": "Female",
+      "givenName": "Erin",
+      "height": "185",
+      "indigenousIdentifyAs": "No",
+      "languagePrimary": "English",
+      "martialStatus": "Widowed",
+      "nextOfKinName": "Thomas Johns",
+      "nextOfKinPhone": "604-555-9865",
+      "nextOfKinRelationship": "Son",
+      "noAddress": false,
+      "occupationStudent": "Retired",
+      "personAge": "74",
+      "phn": "94561234",
+      "phoneNumber": "(778) 555-2947",
+      "postalCode": "V3F 9R2",
+      "preferredName": "Erin",
+      "streetAddress": "402 Willow St.",
+      "weight": "49"
     },
-    "hematology":{
-      "tableCbcAnalysis":[
-        {"name":"Jason","profession":"Nurse","day":0,"time":"00:00","dateOfTest":0,"timeOfTest":"00:00","wbc":"8","rbc":"8","hgb":"8","HCT":"8","MCV":"8","MCH":"8","MCHC":"8","RDW":"8","PLT":"8","MPV":"8","comments":"8's","cellCntTotal":0},
-        {"name":"Amelia","profession":"Nurse","day":0,"time":"01:00","dateOfTest":0,"timeOfTest":"01:00","wbc":"7","rbc":"11","hgb":"12","HCT":"12","MCV":"14","MCH":"3","MCHC":"6","RDW":"8","PLT":"8","MPV":"8","comments":"mixed","cellCntTotal":0}],
-      "tablePbfReview":[{"name":"Jason","profession":"Nurse","day":1,"time":"01:30","dateOfReview":1,"timeOfReview":"01:30","bloodAnalysis":"hematology.tableCbcAnalysis.1","actionsRequired":true,"actionsTaken":"foo","scanComments":"bar","wbc-1":"55","wbc-2":"55","wbc-3":"55","wbc-4":"54","wbc-5":"55","wbc-6":"56","wbc-7":"57","wbc-8":"58","wbc-9":"59","wbc-10":"50","cellCntTotal":0,"rcmMicrocytic":true,"rcmMicrocyticGrading":"1+","rcmHypochromia":true,"rcmHypochromiaGrading":"2+","createdDate":"2022-05-23T12:45:33-07:00"}]
+    "dischargeSummary": {
+      "clinicalSummary": "Patient arrived with chronic COPD in acute form\nPreviously diagnosed with hypertension\nDeveloped bilateral gram positive cocci pneumonia\nTreated with intravenous antibiotics and responded well",
+      "dischargeDay": "Day 1",
+      "dischargeTime": "08:00",
+      "dischargedTo": "Home"
     },
-    "psychosocial": {
-      "history": "Feels down when she thinks about her lower financial status and her advancing age, and how she is becoming more forgetful and less energetic. Often feels alone and worries about falling and not being able to alert anyone to come to her rescue. Driving is becoming hard for her.",
-      "diet": "Regular",
-      "livingSituation": "Son lives with her in her house",
-      "employmentSchool": "Retired hairdresser",
-      "hobbies": "Bingo, Netflix, playing Solitaire and Scrabble with friends on her iPad",
-      "exercise": true,
-      "exerciseFrequency": "< 1 day/week",
-      "caffeineUse": true,
-      "caffeineUseFrequency": "1-2 cups/day",
-      "tobaccoUse": true,
-      "tobaccoUseFrequency": "History of smoking",
-      "alcoholUse": true,
-      "alcoholUseFrequency": "Social"
+    "gastrointestinal": {
+      "table": [
+        {
+          "name": "Jason",
+          "profession": "RN",
+          "day": "0",
+          "time": "19:30",
+          "soft": true,
+          "pain": "No",
+          "eating": "Regular",
+          "lastBm": "Yesterday",
+          "stoolColour": "Brown",
+          "stoolSource": "As per patient observed",
+          "bsLUQ": true,
+          "bsRUQ": true,
+          "bsLLQ": true,
+          "bsRLQ": true,
+          "createdDate": "2019-05-30T22:38:55-07:00",
+          "isFromSeed": true
+        }
+      ]
     },
     "genitourinary": {
       "table": [
@@ -69,11 +213,208 @@
           "gravida": "5",
           "para": "4",
           "livingChildren": "4",
-          "createdDate": "2019-05-30T22:40:29-07:00"
+          "createdDate": "2019-05-30T22:40:29-07:00",
+          "isFromSeed": true
+        }
+      ]
+    },
+    "hematology": {
+      "tableCbcAnalysis": [
+        {
+          "name": "Jason",
+          "profession": "Nurse",
+          "day": 0,
+          "time": "00:00",
+          "dateOfTest": 0,
+          "timeOfTest": "00:00",
+          "wbc": "8",
+          "rbc": "8",
+          "hgb": "8",
+          "HCT": "8",
+          "MCV": "8",
+          "MCH": "8",
+          "MCHC": "8",
+          "RDW": "8",
+          "PLT": "8",
+          "MPV": "8",
+          "comments": "8's",
+          "cellCntTotal": 0,
+          "isFromSeed": true
+        },
+        {
+          "name": "Amelia",
+          "profession": "Nurse",
+          "day": 0,
+          "time": "01:00",
+          "dateOfTest": 0,
+          "timeOfTest": "01:00",
+          "wbc": "7",
+          "rbc": "11",
+          "hgb": "12",
+          "HCT": "12",
+          "MCV": "14",
+          "MCH": "3",
+          "MCHC": "6",
+          "RDW": "8",
+          "PLT": "8",
+          "MPV": "8",
+          "comments": "mixed",
+          "cellCntTotal": 0,
+          "isFromSeed": true
+        }
+      ],
+      "tablePbfReview": [
+        {
+          "name": "Jason",
+          "profession": "Nurse",
+          "day": 1,
+          "time": "01:30",
+          "dateOfReview": 1,
+          "timeOfReview": "01:30",
+          "bloodAnalysis": "hematology.tableCbcAnalysis.1",
+          "actionsRequired": true,
+          "actionsTaken": "foo",
+          "scanComments": "bar",
+          "wbc-1": "55",
+          "wbc-2": "55",
+          "wbc-3": "55",
+          "wbc-4": "54",
+          "wbc-5": "55",
+          "wbc-6": "56",
+          "wbc-7": "57",
+          "wbc-8": "58",
+          "wbc-9": "59",
+          "wbc-10": "50",
+          "cellCntTotal": 0,
+          "rcmMicrocytic": true,
+          "rcmMicrocyticGrading": "1+",
+          "rcmHypochromia": true,
+          "rcmHypochromiaGrading": "2+",
+          "createdDate": "2022-05-23T12:45:33-07:00",
+          "isFromSeed": true
+        }
+      ]
+    },
+    "medAdminRec": {
+      "table": [
+        {
+          "whoAdministered": "Jean",
+          "day": 1,
+          "actualTime": "0900",
+          "scheduledTime": "0200",
+          "medications": [
+            {
+              "_data": {
+                "medication": "med  Q6H",
+                "route": "Oral",
+                "reason": "some reason here"
+              },
+              "_scheduleTimes": []
+            }
+          ],
+          "isFromSeed": true
+        },
+        {
+          "whoAdministered": "Jean",
+          "day": 1,
+          "actualTime": "0230",
+          "scheduledTime": "0200",
+          "medications": [
+            {
+              "_data": {
+                "medication": "something q6h",
+                "route": "Oral"
+              },
+              "_scheduleTimes": []
+            }
+          ],
+          "isFromSeed": true
+        },
+        {
+          "whoAdministered": "Jean",
+          "day": 1,
+          "actualTime": "0210",
+          "comment": "This is the MAR comment field",
+          "scheduledTime": "0200",
+          "medications": [
+            {
+              "_data": {
+                "medication": "something q6h",
+                "route": "Oral"
+              },
+              "_scheduleTimes": []
+            }
+          ]
+        },
+        {
+          "whoAdministered": "Foo",
+          "day": 1,
+          "actualTime": "0230",
+          "comment": "Gave patient something q6h",
+          "scheduledTime": "0200",
+          "medications": [
+            {
+              "_data": {
+                "medication": "something q6h",
+                "route": "Oral"
+              },
+              "_scheduleTimes": []
+            }
+          ]
+        },
+        {
+          "whoAdministered": "Foo",
+          "day": 1,
+          "actualTime": "0801",
+          "comment": "another thing given",
+          "scheduledTime": "0800",
+          "medications": [
+            {
+              "_data": {
+                "medication": "another thing BID",
+                "route": "Oral"
+              },
+              "_scheduleTimes": []
+            }
+          ]
+        },
+        {
+          "whoAdministered": "Foo",
+          "day": 1,
+          "actualTime": "0755",
+          "comment": "some reason needed",
+          "scheduledTime": "0600",
+          "medications": [
+            {
+              "_data": {
+                "medication": "med  Q6H",
+                "route": "Oral",
+                "reason": "some reason here"
+              },
+              "_scheduleTimes": []
+            }
+          ]
+        },
+        {
+          "whoAdministered": "Foo",
+          "day": 1,
+          "actualTime": "0759",
+          "comment": "pained to say it",
+          "scheduledTime": "0800",
+          "medications": [
+            {
+              "_data": {
+                "medication": "aspirin BID",
+                "route": "Oral"
+              },
+              "_scheduleTimes": []
+            }
+          ]
         }
       ]
     },
     "medicationOrders": {
+      "lastUpdate": "2022-10-24T10:21:32-04:00",
       "table": [
         {
           "name": "Leah",
@@ -85,19 +426,36 @@
           "route": "Oral",
           "administration": "sched",
           "scheduled": "q6h",
-          "createdDate": "2022-10-24T10:20:25-04:00"
+          "reason": "some reason here",
+          "instructions": "special instructions here",
+          "createdDate": "2022-10-24T10:20:25-04:00",
+          "isFromSeed": true
         },
         {
           "name": "Leah",
           "profession": "PharmTech",
           "day": 0,
           "time": "0900",
-          "medication": "something q6h",
+          "medication": "Lisinopril",
+          "dose": "10mg",
+          "route": "Oral",
+          "administration": "od",
+          "isFromSeed": true
+        },
+        {
+          "name": "Leah",
+          "profession": "PharmTech",
+          "day": 0,
+          "time": "0910",
+          "medication": "something PRN",
           "dose": "80mg",
           "route": "Oral",
-          "administration": "sched",
+          "administration": "prn",
           "scheduled": "q6h",
-          "createdDate": "2022-10-24T10:20:25-04:00"
+          "reason": "for pain",
+          "instructions": "special instructions here",
+          "createdDate": "2022-10-24T10:20:25-04:00",
+          "isFromSeed": true
         },
         {
           "name": "Leah",
@@ -106,218 +464,35 @@
           "dose": "81mg",
           "route": "Oral",
           "administration": "sched",
-          "scheduled": "BID / q12h"
-        },
-        {
-          "name": "Leah",
-          "profession": "PharmTech",
-          "medication": "aspirin BID",
-          "dose": "81mg",
-          "route": "Oral",
-          "administration": "sched",
-          "scheduled": "BID / q12h"
-        }
-      ],
-      "lastUpdate": "2022-10-24T10:21:32-04:00"
-    },
-    "allergies": {
-      "checkbox": "TRUE"
-    },
-    "surgical": {
-      "pastSurgery": [
-        {
-          "physician": "Dr. Henley",
-          "procedure": "Cesarean section",
-          "timeSince": "48 years",
-          "createdDate": "2019-05-30T09:36:55-07:00"
-        }
-      ],
-      "previous": []
-    },
-    "careTeam": {
-      "teams": [
-        {
-          "name": "Dr. Singh",
-          "profession": "Physician",
-          "createdDate": "2019-05-30T09:39:52-07:00"
-        },
-        {
-          "name": "Jackie",
-          "profession": "RN",
-          "createdDate": "2019-05-30T09:40:00-07:00"
-        },
-        {
-          "name": "Jason",
-          "profession": "RN",
-          "createdDate": "2019-05-30T09:40:07-07:00"
-        },
-        {
-          "name": "Alexa",
-          "profession": "Med lab technician",
-          "createdDate": "2019-05-30T09:40:19-07:00"
-        },
-        {
-          "name": "Gurpreet",
-          "profession": "Med radiographer",
-          "createdDate": "2019-05-30T09:40:39-07:00"
-        },
-        {
-          "name": "Matt",
-          "profession": "Respiratory therapist",
-          "createdDate": "2019-05-30T09:40:54-07:00"
-        },
-        {
-          "name": "Dr. Notley",
-          "profession": "Physician",
-          "createdDate": "2019-05-30T09:41:09-07:00"
-        },
-        {
-          "name": "Serge",
-          "profession": "Med radiographer",
-          "createdDate": "2019-05-30T09:41:23-07:00"
-        },
-        {
-          "name": "Trache",
-          "profession": "RN",
-          "createdDate": "2019-05-30T09:41:37-07:00"
-        },
-        {
-          "name": "Dr. Hunicutt",
-          "profession": "Physician",
-          "createdDate": "2019-05-30T09:41:50-07:00"
-        },
-        {
-          "name": "Jim",
-          "profession": "RN",
-          "createdDate": "2019-05-30T09:41:59-07:00"
-        },
-        {
-          "name": "Gladys",
-          "profession": "physiotherapy student",
-          "createdDate": "2019-05-30T09:42:14-07:00"
-        },
-        {
-          "name": "Herman",
-          "profession": "Repiratory therapist",
-          "createdDate": "2019-05-30T09:42:39-07:00"
+          "scheduled": "BID / q12h",
+          "isFromSeed": true
         }
       ]
     },
-    "pastAppointments": {
-      "encounters": [],
-      "outpatientAppointments": [
-        {
-          "appointmentDate": "1 week ago",
-          "site": "Clinic",
-          "reasonForVisit": "Shortness of breath x 24 hours",
-          "diagnosis": "COPD",
-          "createdDate": "2019-05-30T09:43:19-07:00"
-        }
-      ]
+    "meta": {
+      "simTime": {
+        "visitDay": 1,
+        "visitTime": "2000"
+      }
     },
-    "vitals": {
+    "musculoskeletal": {
       "table": [
         {
           "name": "Jason",
           "profession": "RN",
-          "entryDay": "1",
-          "entryTime": "18:00",
-          "day": "1",
-          "time": "18:00",
-          "temperature": "36.5",
-          "source": "Axilla",
-          "strength": "Peripheral",
-          "rate": "96",
-          "rhythm": "Regular",
-          "systolic": "180",
-          "diastolic": "90",
-          "patientPosition": "Supine",
-          "respirationRate": "28",
-          "oxygenSaturation": "85%",
-          "oxygenMode": "Optiflow",
-          "createdDate": "2019-05-30T10:18:43-07:00"
-        },
-        {
-          "name": "Jason",
-          "profession": "RN",
-          "entryDay": "1",
-          "entryTime": "07:00",
-          "day": "1",
-          "time": "07:00",
-          "temperature": "36.5",
-          "source": "Axilla",
-          "strength": "Peripheral",
-          "rate": "90",
-          "rhythm": "Regular",
-          "systolic": "165",
-          "diastolic": "90",
-          "patientPosition": "Supine",
-          "respirationRate": "24",
-          "oxygenSaturation": "90%",
-          "oxygenMode": "Nasal prongs",
-          "flowRate": "5",
-          "createdDate": "2019-05-30T10:04:20-07:00"
-        },
-        {
-          "name": "Jason",
-          "profession": "RN",
-          "entryDay": "1",
-          "entryTime": "02:00",
-          "day": "1",
-          "time": "02:00",
-          "temperature": "36.5",
-          "source": "Axilla",
-          "strength": "Peripheral",
-          "rate": "86",
-          "rhythm": "Regular",
-          "systolic": "160",
-          "diastolic": "90",
-          "patientPosition": "Supine",
-          "respirationRate": "22",
-          "oxygenSaturation": "90%",
-          "oxygenMode": "Nasal prongs",
-          "createdDate": "2019-05-30T09:57:51-07:00",
-          "flowRate": "2L"
-        },
-        {
-          "name": "Jason",
-          "profession": "RN",
-          "entryDay": "0",
-          "entryTime": "20:00",
           "day": "0",
-          "time": "20:00",
-          "temperature": "36.4",
-          "source": "Axilla",
-          "strength": "Peripheral",
-          "rate": "92",
-          "rhythm": "Regular",
-          "systolic": "170",
-          "diastolic": "90",
-          "patientPosition": "Supine",
-          "respirationRate": "26",
-          "oxygenSaturation": "84%",
-          "oxygenMode": "Room air",
-          "createdDate": "2019-05-30T09:56:14-07:00"
-        },
-        {
-          "name": "Jason",
-          "profession": "RN",
-          "entryDay": "0",
-          "entryTime": "18:00",
-          "day": "0",
-          "time": "18:00",
-          "temperature": "36.5",
-          "source": "Axilla",
-          "strength": "Peripheral",
-          "rate": "96",
-          "rhythm": "Regular",
-          "systolic": "180",
-          "diastolic": "90",
-          "patientPosition": "Sitting",
-          "respirationRate": "28",
-          "oxygenSaturation": "85%",
-          "oxygenMode": "Room air",
-          "createdDate": "2019-05-30T09:53:32-07:00"
+          "time": "19:30",
+          "swelling": "Absent",
+          "pain": "Absent",
+          "deformity": "Absent",
+          "movement": "Normal",
+          "sensation": "Present",
+          "pulse": "Moderate",
+          "colour": "Flesh",
+          "temp": "Warm",
+          "useOfAmbulatoryAid": "No",
+          "createdDate": "2019-05-30T22:41:28-07:00",
+          "isFromSeed": true
         }
       ]
     },
@@ -356,23 +531,129 @@
           "dysarthria": "0 = Normal",
           "extinctionAndInattention": "0 = No abnormality",
           "strokeAssessmentCalculation": 0,
-          "createdDate": "2019-05-30T21:50:42-07:00"
+          "createdDate": "2019-05-30T21:50:42-07:00",
+          "isFromSeed": true
         }
       ]
     },
-    "visit": {
+    "nonmedOrders": {
       "table": [
         {
-          "location": "Emergency room",
-          "createdDate": "2019-05-30T23:21:10-07:00"
+          "name": "Dr. Singh",
+          "profession": "Physician",
+          "day": "0",
+          "time": "20:00",
+          "order": "Chest xray",
+          "orderedBy": "Dr. Singh",
+          "dayOfReferral": "0",
+          "startDay": "0",
+          "startTime": "20:00",
+          "status": "Ordered",
+          "createdDate": "2019-05-30T22:50:10-07:00",
+          "isFromSeed": true
+        },
+        {
+          "name": "Dr. Singh",
+          "profession": "Physician",
+          "day": "0",
+          "time": "20:00",
+          "order": "ABG",
+          "orderedBy": "Dr. Singh",
+          "dayOfReferral": "0",
+          "startDay": "0",
+          "startTime": "20:00",
+          "status": "Ordered",
+          "createdDate": "2019-05-30T22:50:45-07:00",
+          "isFromSeed": true
+        },
+        {
+          "name": "Dr. Singh",
+          "profession": "Physician",
+          "day": "0",
+          "time": "20:00",
+          "order": "CBC, electrolytes, BUN, creatine",
+          "orderedBy": "Dr. Singh",
+          "dayOfReferral": "0",
+          "startDay": "0",
+          "startTime": "20:00",
+          "status": "Ordered",
+          "createdDate": "2019-05-30T22:51:21-07:00",
+          "isFromSeed": true
+        },
+        {
+          "name": "Dr. Singh",
+          "profession": "Physician",
+          "day": "0",
+          "time": "20:00",
+          "order": "Spirometry",
+          "orderedBy": "Dr. Singh",
+          "dayOfReferral": "0",
+          "startDay": "0",
+          "startTime": "20:00",
+          "status": "Ordered",
+          "createdDate": "2019-05-30T22:51:50-07:00",
+          "isFromSeed": true
         }
-      ],
-      "admissionDay": "0",
-      "admissionTime": "06:00",
-      "consentForTreatment": "TRUE",
-      "consentForBlood": "TRUE",
-      "diagnosis": "COPD\nShortness of breath\nDizzy",
-      "status": "Admitted"
+      ]
+    },
+    "pain": {
+      "table": [
+        {
+          "name": "Jason",
+          "day": "0",
+          "time": "19:30",
+          "painScale": "0",
+          "respiratoryRate": "28",
+          "profession": "RN",
+          "createdDate": "2019-05-30T22:42:51-07:00",
+          "isFromSeed": true
+        }
+      ]
+    },
+    "pastAppointments": {
+      "encounters": [],
+      "outpatientAppointments": [
+        {
+          "appointmentDate": "1 week ago",
+          "site": "Clinic",
+          "reasonForVisit": "Shortness of breath x 24 hours",
+          "diagnosis": "COPD",
+          "createdDate": "2019-05-30T09:43:19-07:00",
+          "isFromSeed": true
+        }
+      ]
+    },
+    "psychosocial": {
+      "alcoholUse": true,
+      "alcoholUseFrequency": "Social",
+      "caffeineUse": true,
+      "caffeineUseFrequency": "1-2 cups/day",
+      "diet": "Regular",
+      "employmentSchool": "Retired hairdresser",
+      "exercise": true,
+      "exerciseFrequency": "< 1 day/week",
+      "history": "Feels down when she thinks about her lower financial status and her advancing age, and how she is becoming more forgetful and less energetic. Often feels alone and worries about falling and not being able to alert anyone to come to her rescue. Driving is becoming hard for her.",
+      "hobbies": "Bingo, Netflix, playing Solitaire and Scrabble with friends on her iPad",
+      "livingSituation": "Son lives with her in her house",
+      "tobaccoUse": true,
+      "tobaccoUseFrequency": "History of smoking"
+    },
+    "referrals": {
+      "table": [
+        {
+          "name": "Dr. Singh",
+          "profession": "Physician",
+          "day": "0",
+          "time": "19:30",
+          "referralName": "Matt",
+          "referralProfession": "Resp therapy",
+          "appointmentDate": "One week",
+          "appointmentTime": "20:00",
+          "status": "Active",
+          "createdDate": "2019-05-30T22:52:30-07:00",
+          "isFromSeed": true
+        }
+      ]
     },
     "respiratory": {
       "table": [
@@ -390,191 +671,148 @@
           "respiratoryRhythm": "Regular",
           "respiratoryDepth": "Shallow",
           "cough": "No",
-          "createdDate": "2019-05-30T22:32:42-07:00"
+          "createdDate": "2019-05-30T22:32:42-07:00",
+          "isFromSeed": true
         }
       ]
     },
-    "cardiovascular": {
+    "surgical": {
+      "pastSurgery": [
+        {
+          "physician": "Dr. Henley",
+          "procedure": "Cesarean section",
+          "timeSince": "48 years",
+          "createdDate": "2019-05-30T09:36:55-07:00",
+          "isFromSeed": true
+        }
+      ],
+      "previous": []
+    },
+    "visit": {
+      "admissionDay": "0",
+      "admissionTime": "06:00",
+      "consentForBlood": "TRUE",
+      "consentForTreatment": "TRUE",
+      "diagnosis": "COPD\nShortness of breath\nDizzy",
+      "status": "Admitted",
+      "table": [
+        {
+          "location": "Emergency room",
+          "createdDate": "2019-05-30T23:21:10-07:00",
+          "isFromSeed": true
+        }
+      ]
+    },
+    "vitals": {
       "table": [
         {
           "name": "Jason",
           "profession": "RN",
-          "day": "0",
-          "time": "19:30",
-          "pulse": "Regular",
-          "skinAppearance": "Normal",
-          "capRefillRightHand": "Normal < 3 seconds",
-          "capRefillLeftHand": "Normal < 3 seconds",
-          "capRefillRightFoot": "Normal < 3 seconds",
-          "capRefillLeftFoot": "Normal < 3 seconds",
-          "temperatureRightHand": "Warm",
-          "temperatureLeftHand": "Warm",
-          "temperatureRightFoot": "Warm",
-          "temperatureLeftFoot": "Warm",
-          "peripheralEdemaRightHand": "No",
-          "peripheralEdemaLeftHand": "No",
-          "peripheralEdemaRightFoot": "No",
-          "peripheralEdemaLeftFoot": "No",
-          "nailBedColourRightHand": "Pink",
-          "nailBedColourLeftHand": "Pink",
-          "nailBedColourRightFoot": "Pink",
-          "nailBedColourLeftFoot": "Pink",
-          "createdDate": "2019-05-30T22:37:16-07:00"
-        }
-      ]
-    },
-    "gastrointestinal": {
-      "table": [
-        {
-          "name": "Jason",
-          "profession": "RN",
-          "day": "0",
-          "time": "19:30",
-          "soft": true,
-          "pain": "No",
-          "eating": "Regular",
-          "lastBm": "Yesterday",
-          "stoolColour": "Brown",
-          "stoolSource": "As per patient observed",
-          "bsLUQ": true,
-          "bsRUQ": true,
-          "bsLLQ": true,
-          "bsRLQ": true,
-          "createdDate": "2019-05-30T22:38:55-07:00"
-        }
-      ]
-    },
-    "musculoskeletal": {
-      "table": [
-        {
-          "name": "Jason",
-          "profession": "RN",
-          "day": "0",
-          "time": "19:30",
-          "swelling": "Absent",
-          "pain": "Absent",
-          "deformity": "Absent",
-          "movement": "Normal",
-          "sensation": "Present",
-          "pulse": "Moderate",
-          "colour": "Flesh",
-          "temp": "Warm",
-          "useOfAmbulatoryAid": "No",
-          "createdDate": "2019-05-30T22:41:28-07:00"
-        }
-      ]
-    },
-    "pain": {
-      "table": [
-        {
-          "name": "Jason",
-          "day": "0",
-          "time": "19:30",
-          "painScale": "0",
-          "respiratoryRate": "28",
-          "profession": "RN",
-          "createdDate": "2019-05-30T22:42:51-07:00"
-        }
-      ]
-    },
-    "biopsychosocial": {
-      "table": [
-        {
-          "name": "Jason",
-          "profession": "RN",
-          "day": "0",
-          "time": "19:30",
-          "domesticViolence": "No",
-          "requestContact": "No",
-          "hygieneGrooming": "Good",
-          "calm": true,
-          "none": true,
-          "suicidal": "None",
-          "homicidal": "None",
-          "speech": "Clear and coherent",
-          "supportPerson": "Thomas (Son)",
-          "securityPolicePresent": "No",
-          "createdDate": "2019-05-30T22:48:02-07:00"
-        }
-      ]
-    },
-    "nonmedOrders": {
-      "table": [
-        {
-          "name": "Dr. Singh",
-          "profession": "Physician",
-          "day": "0",
-          "time": "20:00",
-          "order": "Chest xray",
-          "orderedBy": "Dr. Singh",
-          "dayOfReferral": "0",
-          "startDay": "0",
-          "startTime": "20:00",
-          "status": "Ordered",
-          "createdDate": "2019-05-30T22:50:10-07:00"
+          "entryDay": "1",
+          "entryTime": "18:00",
+          "day": "1",
+          "time": "18:00",
+          "temperature": "36.5",
+          "source": "Axilla",
+          "strength": "Peripheral",
+          "rate": "96",
+          "rhythm": "Regular",
+          "systolic": "180",
+          "diastolic": "90",
+          "patientPosition": "Supine",
+          "respirationRate": "28",
+          "oxygenSaturation": "85%",
+          "oxygenMode": "Optiflow",
+          "createdDate": "2019-05-30T10:18:43-07:00",
+          "isFromSeed": true
         },
         {
-          "name": "Dr. Singh",
-          "profession": "Physician",
-          "day": "0",
-          "time": "20:00",
-          "order": "ABG",
-          "orderedBy": "Dr. Singh",
-          "dayOfReferral": "0",
-          "startDay": "0",
-          "startTime": "20:00",
-          "status": "Ordered",
-          "createdDate": "2019-05-30T22:50:45-07:00"
+          "name": "Jason",
+          "profession": "RN",
+          "entryDay": "1",
+          "entryTime": "07:00",
+          "day": "1",
+          "time": "07:00",
+          "temperature": "36.5",
+          "source": "Axilla",
+          "strength": "Peripheral",
+          "rate": "90",
+          "rhythm": "Regular",
+          "systolic": "165",
+          "diastolic": "90",
+          "patientPosition": "Supine",
+          "respirationRate": "24",
+          "oxygenSaturation": "90%",
+          "oxygenMode": "Nasal prongs",
+          "flowRate": "5",
+          "createdDate": "2019-05-30T10:04:20-07:00",
+          "isFromSeed": true
         },
         {
-          "name": "Dr. Singh",
-          "profession": "Physician",
-          "day": "0",
-          "time": "20:00",
-          "order": "CBC, electrolytes, BUN, creatine",
-          "orderedBy": "Dr. Singh",
-          "dayOfReferral": "0",
-          "startDay": "0",
-          "startTime": "20:00",
-          "status": "Ordered",
-          "createdDate": "2019-05-30T22:51:21-07:00"
+          "name": "Jason",
+          "profession": "RN",
+          "entryDay": "1",
+          "entryTime": "02:00",
+          "day": "1",
+          "time": "02:00",
+          "temperature": "36.5",
+          "source": "Axilla",
+          "strength": "Peripheral",
+          "rate": "86",
+          "rhythm": "Regular",
+          "systolic": "160",
+          "diastolic": "90",
+          "patientPosition": "Supine",
+          "respirationRate": "22",
+          "oxygenSaturation": "90%",
+          "oxygenMode": "Nasal prongs",
+          "createdDate": "2019-05-30T09:57:51-07:00",
+          "flowRate": "2L",
+          "isFromSeed": true
         },
         {
-          "name": "Dr. Singh",
-          "profession": "Physician",
+          "name": "Jason",
+          "profession": "RN",
+          "entryDay": "0",
+          "entryTime": "20:00",
           "day": "0",
           "time": "20:00",
-          "order": "Spirometry",
-          "orderedBy": "Dr. Singh",
-          "dayOfReferral": "0",
-          "startDay": "0",
-          "startTime": "20:00",
-          "status": "Ordered",
-          "createdDate": "2019-05-30T22:51:50-07:00"
-        }
-      ]
-    },
-    "referrals": {
-      "table": [
+          "temperature": "36.4",
+          "source": "Axilla",
+          "strength": "Peripheral",
+          "rate": "92",
+          "rhythm": "Regular",
+          "systolic": "170",
+          "diastolic": "90",
+          "patientPosition": "Supine",
+          "respirationRate": "26",
+          "oxygenSaturation": "84%",
+          "oxygenMode": "Room air",
+          "createdDate": "2019-05-30T09:56:14-07:00",
+          "isFromSeed": true
+        },
         {
-          "name": "Dr. Singh",
-          "profession": "Physician",
+          "name": "Jason",
+          "profession": "RN",
+          "entryDay": "0",
+          "entryTime": "18:00",
           "day": "0",
-          "time": "19:30",
-          "referralName": "Matt",
-          "referralProfession": "Resp therapy",
-          "appointmentDate": "One week",
-          "appointmentTime": "20:00",
-          "status": "Active",
-          "createdDate": "2019-05-30T22:52:30-07:00"
+          "time": "18:00",
+          "temperature": "36.5",
+          "source": "Axilla",
+          "strength": "Peripheral",
+          "rate": "96",
+          "rhythm": "Regular",
+          "systolic": "180",
+          "diastolic": "90",
+          "patientPosition": "Sitting",
+          "respirationRate": "28",
+          "oxygenSaturation": "85%",
+          "oxygenMode": "Room air",
+          "createdDate": "2019-05-30T09:53:32-07:00",
+          "isFromSeed": true
         }
       ]
-    },
-    "dischargeSummary": {
-      "clinicalSummary": "Patient arrived with chronic COPD in acute form\nPreviously diagnosed with hypertension\nDeveloped bilateral gram positive cocci pneumonia\nTreated with intravenous antibiotics and responded well",
-      "dischargeDay": "Day 1",
-      "dischargeTime": "08:00",
-      "dischargedTo": "Home"
     }
   },
   "description": "This EHR Seed is based on a case from 'Health Case Studies - Toward Closing the Healthcare Communication Gap'. This EHR seed reflects a point during a patient's Day 2 stay in the hospital ",

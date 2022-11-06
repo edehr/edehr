@@ -112,3 +112,13 @@ $panelContentPadding: 0.5rem 1rem;
     grid-template-columns: 3fr 1fr;
   }
 }
+
+.label-value {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  & > label:first-child,
+  & > div:first-child {
+    text-align: end;
+    margin-right: 10px;
+  }
+}

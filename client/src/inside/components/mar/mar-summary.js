@@ -4,12 +4,6 @@ export const MS = {
   KEY_MED_ORDER:'medOrder',
   KEY_EMPTY:'empty',
   KEY_MAR:'mar',
-  DISPLAYED_WHEN_MAR:'Administered',
-  DISPLAYED_WHEN_NO_MAR:'Not scheduled',
-  CSS_CLASS_MED:'medication',
-  CSS_CLASS_MAR:'administered',
-  CSS_CLASS_NO_MAR:'notApplicable'
-  
 }
 function _createElement (t, v) { return { type: t, value: v }}
 
@@ -58,34 +52,4 @@ export default class MarSummary {
 
   get tableHeader () {return this._header}
   get tableBody () { return this._body}
-
-  marCellContent (cell) {
-    let content = ''
-    let type = cell.type
-    let value = cell.value
-    if( type === MS.KEY_MED_ORDER) {
-      content = value.medication
-      content += value.route ? ', ' + value.route : ''
-      content += value.reason ? ', ' + value.reason : ''
-    } else if( type === MS.KEY_MAR) {
-      content = MS.DISPLAYED_WHEN_MAR
-    } else {
-      content = MS.DISPLAYED_WHEN_NO_MAR
-    }
-    return content
-  }
-  marCellStyle (cell) {
-    let style = ''
-    let type = cell.type
-    // console.log('marCellStyle', cell.type, cell.value)
-    if( type === MS.KEY_MED_ORDER) {
-      style = MS.CSS_CLASS_MED
-    } else if( type === MS.KEY_MAR) {
-      style = MS.CSS_CLASS_MAR
-    } else {
-      style = MS.CSS_CLASS_NO_MAR
-    }
-    return style
-  }
-
 }

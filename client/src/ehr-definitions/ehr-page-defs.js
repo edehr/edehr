@@ -9197,6 +9197,10 @@ const DEFS = {
           {
             key: 'od',
             text: 'OD (Once a Day)'
+          },
+          {
+            key: 'set',
+            text: 'Set times'
           }
         ],
         tableColumn: '7',
@@ -9502,7 +9506,7 @@ const DEFS = {
             },
             {
               elementKey: 'schedGroup',
-              dependentOn: 'visble:administration=sched',
+              dependentOn: 'visble:administration=sched,prn',
               gIndex: '4',
               gChildren: [
                 'scheduled'
@@ -9510,7 +9514,7 @@ const DEFS = {
             },
             {
               elementKey: 'prnGroup',
-              dependentOn: 'visble:administration=prn',
+              dependentOn: 'visble:administration=set',
               gIndex: '5',
               gChildren: [
                 'prn1',
