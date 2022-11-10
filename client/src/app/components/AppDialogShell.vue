@@ -1,11 +1,11 @@
 <template lang="pug">
   transition(name="dialog")
     div(v-show="showingDialog")
-      div(:class="modalClass")
+      div(:class="modalClass", :style="{ zIndex: modalZ }")
       div(class="dialog-wrapper",
         :class="{ dragActive: moused }",
         ref="theDialog",
-        :style="{ top: top + 'px', left: left + 'px'}")
+        :style="{ top: top + 'px', left: left + 'px', zIndex: modalD }")
         // header
         div(class="dialog-header", v-dragged="onDragged")
           // header title with buttons
@@ -78,7 +78,9 @@ export default {
       showingDialog: false,
       showTopButtons: false,
       top: 0,
-      left: 0
+      left: 0,
+      modalD: 901,
+      modalZ: 900,
     }
   },
   methods: {
@@ -141,6 +143,10 @@ export default {
     }
   },
   mounted () {
+    this.$store.dispatch('system/appDialogCountIncrement')
+    const cnt = this.$store.getters['system/appDialogCount']
+    this.modalD = cnt + 901
+    this.modalZ = cnt + 900
   }
 }
 </script>
@@ -211,7 +217,7 @@ export default {
 
 .dialog-header-title {
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 1fr 1fr;
 }
 @media screen and (max-width: $main-width-threshold1){
   .dialog-header-title {
