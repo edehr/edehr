@@ -7,7 +7,7 @@
 
 <script>
 import EhrPageFooter from '../components/page/EhrPageFooter'
-import EhrHelpV2 from '../components/page/ehr-helper'
+import EhrPageHelper from '../components/page/ehr-helper'
 import IntegumentaryContent from './integumentary/IntegumentaryContent'
 
 export default {
@@ -21,7 +21,7 @@ export default {
   computed: {
   },
   created () {
-    this.ehrHelp = new EhrHelpV2(this, this.$store, this.pageDataKey)
+    this.ehrHelp = new EhrPageHelper(this.pageDataKey)
   },
   // must declare beforeRouteLeave on the component that is routed
   beforeRouteLeave (to, from, next) {

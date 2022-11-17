@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 import should from 'should'
-import EhrHelpV2, { LEAVE_PROMPT } from '../ehr-helper'
+import EhrPageHelper, { LEAVE_PROMPT } from '../ehr-helper'
 import store from '../../../../store/index'
 import { getPageKeys } from '../../../../helpers/test/testHelper'
 
@@ -13,11 +13,11 @@ by a property on the visit record.
 TODO implement tests for both these contexts for the skipped tests.
  */
 // This constant must point to a pageKey index which contains one
-// or more table elements (which is required for fulfilling certain test cases for 
+// or more table elements (which is required for fulfilling certain test cases for
 // the current test's purpose)
 const CONTAINS_TABLE_ELEMENTS_INDEX = 3
 // This constant must point to a pageKey index which contains one
-// or more form elements (which is required for fulfilling certain test cases for the 
+// or more form elements (which is required for fulfilling certain test cases for the
 // current test's purpose)
 const CONTAINS_FORM_ELEMENTS_INDEX = 0
 
@@ -37,14 +37,14 @@ router.go = jest.fn()
 
 describe('ehr-helper tests', () => {
   describe('validation tests', () => {
-    beforeAll(() => ehrHelper = new EhrHelpV2(this, store, formPageKey))
+    beforeAll(() => ehrHelper = new EhrPageHelper(formPageKey))
     it('properly instantiates class', () => {
       should.exist(ehrHelper)
     })
   })
 
   describe('pageForm tests', () => {
-    beforeEach(() => ehrHelper = new EhrHelpV2(this, store, formPageKey))
+    beforeEach(() => ehrHelper = new EhrPageHelper(formPageKey))
     it('getPageKey', () => {
       const result = ehrHelper.getPageKey()
       should.exist(result)
@@ -64,7 +64,7 @@ describe('ehr-helper tests', () => {
       // since we're getting the page form elements, then one (or any, for instance)
       // item of the pageForms array, should contain the flag isPageForm true. By getting the first index,
       // we're assuring that the element has items and they are pageForms as properly required for the test...
-      // therefore, if an array, then pageForms must contain at list one element (at index 0) which is a pageForm 
+      // therefore, if an array, then pageForms must contain at list one element (at index 0) which is a pageForm
       // (using the isPageForm flag)
       const samplePageForm = pageForms[0]
       formKey = samplePageForm.formKey
@@ -74,9 +74,9 @@ describe('ehr-helper tests', () => {
   })
 
   describe('pageTableTests', () => {
-    beforeEach(() => ehrHelper = new EhrHelpV2(this, store, tablePageKey))
+    beforeEach(() => ehrHelper = new EhrPageHelper(tablePageKey))
     it('getPageTableDefs', () => {
-      ehrHelper = new EhrHelpV2(this, store, tablePageKey)
+      ehrHelper = new EhrPageHelper(tablePageKey)
       const pageTableDefs = ehrHelper.getPageTableDefs()
       should.exist(pageTableDefs)
       pageTableDefs.should.be.an.Array()
@@ -92,7 +92,7 @@ describe('ehr-helper tests', () => {
   })
 
   describe('general purpose tests', () => {
-    beforeAll(() => ehrHelper = new EhrHelpV2(this, store, tablePageKey))
+    beforeAll(() => ehrHelper = new EhrPageHelper(tablePageKey))
     it('getPageGeneratedDate', () => {
       const gen = ehrHelper.getPageGeneratedDate()
       should.exist(gen)
@@ -151,7 +151,7 @@ describe('ehr-helper tests', () => {
         should.exist(result)
       })
     })
-  
+
     it('showDialog', () => {
       should.doesNotThrow(() => ehrHelper.showDialog('table'))
     })
