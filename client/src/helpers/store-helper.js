@@ -61,11 +61,13 @@ class StoreHelperWorker {
   isInstructor () { return this._getVisitProperty('isInstructor') }
   isDeveloper () { return this._getVisitProperty('isDeveloper') }
   isStudent () { return this._getVisitProperty('isStudent') }
-
   getPageTitle () { return this._getSystemProperty('pageTitle')}
   setPageTitle (pageTitle) { return store.commit('system/setPageTitle', pageTitle)}
   getPageIcon () { return this._getSystemProperty('pageIcon')}
   setPageIcon (icon) { return store.commit('system/setPageIcon', icon)}
+  setCurrentPageKey (pageKey) { return store.commit('system/setCurrentPageKey', pageKey)}
+  isEditing () { return store.getters['system/isEditing']}
+  setEditingMode (flag) { return store.commit('system/setEditing', flag)}
   // isDemo see demo section
 
   /**
@@ -126,7 +128,6 @@ class StoreHelperWorker {
 
   setApiError (msg) {  store.commit('system/setApiError', msg, { root: true }) }
   setSystemMessage (msg) {  store.commit('system/setSystemMessage', msg, { root: true }) }
-  setSigning (val) { store.commit('system/setSigning', val) }
 
   isLoading () { return this._getSystemProperty('isLoading')}
   isSigning () { return this._getSystemProperty('isSigning') }

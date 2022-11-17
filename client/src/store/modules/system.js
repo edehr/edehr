@@ -22,6 +22,7 @@ const getters = {
   apiData: state => state.apiData,
   apiError: state => state.apiError,
   caseContextFeature: state => state.caseContextFeature,
+  isEditing: state => state.isEditing,
   isLoading: state => state._isLoading,
   isSmallWindow: state => state.smallWindow,
   outsideShowButtonLabels: state => state.outsideShowButtonLabels,
