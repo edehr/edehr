@@ -14,7 +14,7 @@
 
 <script>
 import EhrPage from '../components/page/EhrPage'
-import EhrHelpV2 from '../components/page/ehr-helper'
+import EhrPageHelper from '../components/page/ehr-helper'
 
 export default {
   name: 'Surgical',
@@ -28,7 +28,7 @@ export default {
   computed: {
   },
   created () {
-    this.ehrHelp = new EhrHelpV2(this, this.$store, this.pageDataKey)
+    this.ehrHelp = new EhrPageHelper(this.pageDataKey)
   },
   // must declare beforeRouteLeave on the component that is routed
   beforeRouteLeave (to, from, next) {

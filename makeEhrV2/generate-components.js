@@ -192,7 +192,7 @@ function makeVueFile (def, componentTemplate) {
     .replace(/{title}/g, def.title)
     .replace(/{label}/g, def.label)
     .replace(/{componentName}/g, def.componentName)
-    .replace(/{pageDataKey}/g, def.pageDataKey)
+    .replace(/{insertPageDataKey}/g, def.pageDataKey)
     .replace(/{redirect}/g, def.redirect)
     .replace(/{routeName}/g, def.routeName)
     .replace(/{path}/g, def.fullPath)

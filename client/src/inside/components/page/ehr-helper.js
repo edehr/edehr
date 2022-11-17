@@ -25,8 +25,8 @@ const dbTable = false
 const dbLeave = false
 
 
-export default class EhrHelpV2 {
-  constructor (component, store, pageKey) {
+export default class EhrPageHelper {
+  constructor (pageKey) {
     // console.log('Construct helper', pageKey)
     this.$store = store
     this.pageKey = pageKey
