@@ -9,14 +9,11 @@
     h2(slot="header") Activity
     div(slot="body")
       div(class='dialog-content')
-        div(v-if='!panelInfo.closed') {{ panelInfo.submitted ? "You have submitted your work. " : "Submit your work when you are ready"}}
+        div {{ panelInfo.submitted ? "You have submitted your work. " : "Submit your work when you are ready"}}
         div
-          span(class='fld-label') Instructor comments:
-          span {{ panelInfo.evaluationData ? panelInfo.evaluationData : 'No comments yet.' }}
-        div()
           span(class='fld-label') Course:
           span {{ panelInfo.courseTitle}}
-        div()
+        div
           span(class='fld-label') Activity:
           span {{ panelInfo.activityTitle}}
           p {{ panelInfo.activityDescription }}
