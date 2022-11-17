@@ -263,10 +263,6 @@ export default {
     margin-right: 5px;
   }
 }
-
-.numb-input {
-  width: 30%;
-}
 .suffix,
 .numb-input,
 .text-input {
