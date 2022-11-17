@@ -163,10 +163,10 @@ Not Applicable}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCe
 {inputType: ehr_group}	eCell	{Label: Peri-Incisional Skin}	eCell	{elementKey: periIncisionGroup}	{pN: 42}	{fN: 2}	{gN: 4}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: checkset}	eCell	{Label: Peri-Incisional Skin}	eCell	{elementKey: periIncisionSkin}	{pN: 42}	{fN: 2}	{gN: 4}	{sgN: }	eCell	eCell	eCell	{tableColumn: 8}	eCell	eCell	eCell	eCell	"{Options: Intact
 Macerated
-BlistersErythema less than 2cm
+Blisters Erythema less than 2cm
 Erythema greater than 2cm
 Induration less than 2cm
-Induration grater than 2cm
+Induration greater than 2cm
 Other}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Other}	eCell	{elementKey: periIncisionSkinOther}	{pN: 42}	{fN: 2}	{gN: 4}	{sgN: }	eCell	eCell	eCell	{tableColumn: 9}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: textarea}	eCell	{Label: Comments}	eCell	{elementKey: incisionStatusComments}	{pN: 42}	{fN: 2}	{gN: 4}	{sgN: }	eCell	eCell	{tableLabel: Comments}	{tableColumn: 10}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
