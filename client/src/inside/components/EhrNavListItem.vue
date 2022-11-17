@@ -153,18 +153,20 @@ a:hover {
   }
 
   &__link1 {
-    margin-left: 15px;
+    margin-left: 7px;
+    font-size: 1.5rem;
     & a {
       color: $nav-color-level3;
     }
   }
 
   &__link2 {
-    margin-left: 15px;
+    margin-left: 20px;
+    font-size: 1.2rem;
   }
 
   &__link3 {
-    margin-left: 30px;
+    margin-left: 35px;
   }
 
   .linkElement {
