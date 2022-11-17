@@ -446,13 +446,15 @@ export default class EhrPageHelper {
       const validator = this._validator(eDef)
       const mandatory = eDef[PROPS.mandatory]
       let value = inputs[eKey]
+      let valid = true
       value = isString(value) ? value.trim() : value
       if (dbDialog) console.log('EhrHelpV2 validate:', eKey, value, 'eDef:', eDef)
-      if (mandatory && !value ) {
+      if (mandatory && (value === undefined)) {
         const msg = label + ' is required'
         dialog.errorList.push(msg)
+        valid = false
       }
-      if (validator.func) {
+      if (valid && validator.func) {
         if (dbDialog) console.log('ehr helper validator', validator)
         let errMsg = validator.func(label, value, ...validator.arguments)
         if(errMsg) {

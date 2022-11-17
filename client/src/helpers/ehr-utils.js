@@ -74,8 +74,11 @@ export function convertTimeStr (text) {
  * @param text
  * @return {boolean}
  */
+export const VISIT_DAY_LIMIT = 19
 export function validDayStr (text) {
-  return validRangeStr(text, 0, 9) // /^([0-9]?)$/.test(text)
+  const isNum = validNumberStr(text)
+  const inRange = validRangeStr(text, 0, VISIT_DAY_LIMIT)
+  return isNum && inRange
 }
 
 /**
@@ -84,11 +87,9 @@ export function validDayStr (text) {
  * @return {boolean}
  */
 export function validNumberStr (str) {
-  // These are a few of the exceptions which isNaN can return false for...
-  // as it has been noted here: https://stackoverflow.com/questions/175739/built-in-way-in-javascript-to-check-if-a-string-is-a-valid-number
-  if (str === false || str === ' ' || str === '')
-    return false
-  return !isNaN(str)
+  // test the input is a number and nothing but a number
+  let isnum = /^\d+$/.test(str)
+  return isnum
 }
 
 /**

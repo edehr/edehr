@@ -564,13 +564,13 @@ No}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: record_header}	eCell	eCell	eCell	eCell	{pN: 22}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 22}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Order}	eCell	{elementKey: order}	{pN: 22}	{fN: 1}	{gN: 2}	{sgN: }	{formCss: grid-span-2-columns}	eCell	{tableLabel: Order}	{tableColumn: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Ordered by}	eCell	{elementKey: orderedBy}	{pN: 22}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Ordered by}	{tableColumn: 3}	eCell	eCell	eCell	eCell	eCell	eCell	{Mandatory: If order is filled, this is mandatory}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Ordered by}	{Comments: If order is filled, this is mandatory}	{elementKey: orderedBy}	{pN: 22}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Ordered by}	{tableColumn: 3}	eCell	eCell	eCell	eCell	eCell	eCell	{Mandatory: TRUE}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Reason}	eCell	{elementKey: reason}	{pN: 22}	{fN: 1}	{gN: 2}	{sgN: }	{formCss: grid-span-2-columns}	eCell	{tableLabel: Reason}	{tableColumn: 4}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Status}	eCell	{elementKey: status}	{pN: 22}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Status}	{tableColumn: 5}	eCell	eCell	eCell	eCell	"{Options: Ordered
 In process
 Cancelled
 Completed
-Discontinued}"	eCell	{Mandatory: ?}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+Discontinued}"	eCell	{Mandatory: TRUE}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 22}	{fN: 1}	{gN: 3}	{sgN: }	{formCss: grid-left-to-right-1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: textarea}	eCell	{Label: Comment}	eCell	{elementKey: comment}	{pN: 22}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Comment}	{tableColumn: 6}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: page}	{pRef: 28}	{Label: Referrals to other disciplines}	eCell	{elementKey: referrals}	{pN: 23}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
