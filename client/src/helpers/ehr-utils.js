@@ -88,7 +88,8 @@ export function validDayStr (text) {
  */
 export function validNumberStr (str) {
   // test the input is a number and nothing but a number
-  let isnum = /^\d+$/.test(str)
+  // decimal followed by optional decimals
+  let isnum = /^\d+(\.\d+)?$/.test(str)
   return isnum
 }
 

@@ -1,9 +1,9 @@
 <template lang="pug">
   div(class="EhrNavListItem")
     ui-link(:name="routeName(path)", :class="levelClass")
-      div(:class="linkClass", class="linkElement columns")
-        div(class="column") {{ linkLabel }}
-        div(class="column is-1 indicator")
+      div(:class="linkClass", class="linkElement")
+        div(class="linkLabel") {{ linkLabel }}
+        div(class="indicator")
           div(:class="dataIndicatorClass")
           div(v-if="level === 1")
             fas-icon(v-show="opened", class="fa top-level", icon="angle-right")
@@ -81,24 +81,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '../../scss/definitions';
+@import '../../scss/definitions';
 
+.linkElement {
+  display: flex;
+  justify-content: space-between;
+}
 .indicator {
-  justify-content: flex-end;
+  padding-top: 5px;
+  padding-right: 5px;
 }
 /* Small screens */
 @media screen and (max-width: $main-width-threshold1) {
   .indicator {
-    float: right;
+    padding-right: 0;
   }
 }
 
-.column {
-  padding: 0;
-}
-.linkElement.columns:last-child {
-  margin-bottom: 0;
-}
 .linkElement:hover {
   background-color: $nav-active;
 }
@@ -112,6 +111,8 @@ a:hover {
   &__level3 {
     display: flex;
     align-items: center;
+    padding-top: 2px;
+    padding-bottom: 2px;
   }
 
   &__level1,
@@ -124,90 +125,64 @@ a:hover {
     background-color: $nav-active;
     color: $white;
   }
-
   &__level1 {
     color: $nav-color-level1;
     background-color: $nav-level1;
-    font-size: 18px;
-    height: 40px;
+    font-size: 1.4rem;
     & a {
       color: $nav-color-level1;
     }
   }
-
   &__level2 {
     color: $nav-color-level2;
     background-color: $nav-level2;
-    min-height: 30px;
     & a {
     }
   }
-
   &__level3 {
     color: $nav-color-level3;
     background-color: $nav-level3;
-    min-height: 30px;
     & a {
       color: $nav-color-level3;
     }
   }
-
   &__link1 {
-    margin-left: 7px;
-    font-size: 1.5rem;
+    padding-left: 10px;
     & a {
       color: $nav-color-level3;
     }
   }
-
   &__link2 {
-    margin-left: 20px;
-    font-size: 1.2rem;
+    padding-left: 20px;
   }
-
   &__link3 {
-    margin-left: 35px;
+    padding-left: 35px;
   }
-
   .linkElement {
     width: 100%;
   }
-
   .linkLabel {
     width: 90%;
   }
-
+  @media screen and (max-width: $main-width-threshold1){
+    .linkElement {
+      // reduce on small screens to keep the green indicator from touching the edge
+      width: 95%;
+    }
+  }
   .circle {
     border-radius: 50%;
-    position: relative;
     height: 12px;
-    margin-top: 3px;
     width: 12px;
   }
-
   .empty-circle {
     border: 2px solid $green;
   }
-
   .green-circle {
     background: $green;
   }
-
   .top-level {
     color: $green;
-  }
-
-  @media screen and (max-width: $main-width-threshold1){
-    .circle {
-      margin-top: -18px;
-    }
-    .linkElement {
-      width: 90%;
-    }
-
-    .EhrNavListItem {
-      margin-top: -10px;
-    }
   }
 }
 </style>

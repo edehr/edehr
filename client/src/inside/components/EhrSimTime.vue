@@ -1,9 +1,12 @@
 <template lang='pug'>
-  div  Simulation time {{visitTime}} day {{visitDay}}
+  div  Current time {{visitTime}} day {{visitDay}} &nbsp;
+    ui-info(title="Simulation time", text="This is simulated visit day and time.")
 </template>
 
 <script>
+import UiInfo from '@/app/ui/UiInfo'
 export default {
+  components: { UiInfo },
   props: {
     ehrData: { type: Object, default () { return {} } }
   },

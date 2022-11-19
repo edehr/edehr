@@ -9,7 +9,7 @@
 <script>
 import EhrPanelContent from '../components/page/EhrPanelContent.vue'
 import EhrPageFooter from '../components/page/EhrPageFooter'
-import EhrHelp from '../components/page/ehr-helper'
+import EhrPageHelper from '../components/page/ehr-helper'
 import MarTabs from '../components/mar/MarTabs'
 import EhrDefs from '../../helpers/ehr-defs-grid'
 
@@ -38,7 +38,7 @@ export default {
     }
   },
   created () {
-    this.ehrHelp = new EhrHelp(this, this.$store, this.pageDataKey)
+    this.ehrHelp = new EhrPageHelper(this.pageDataKey)
   },
   beforeRouteLeave (to, from, next) {
     this.ehrHelp.beforeRouteLeave(to, from, next)

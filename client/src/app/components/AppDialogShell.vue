@@ -21,7 +21,7 @@
                   slot(name="save-button") {{ saveButtonLabel }}
           // header important content from outter container
           div
-            slot(name="footer-content")
+            slot(name="header-extra-content")
         // main body
         div(class="dialog-body", ref="theDialogBody",)
           slot(name="body") default body
@@ -200,7 +200,7 @@ export default {
 }
 .dialog-header{
   width: 100%;
-  max-height: 3rem;
+  max-height: 6rem;
   overflow-y: hidden;
   background-color: $grey03;
   border-bottom: 1px solid $grey30;
@@ -225,7 +225,7 @@ export default {
     flex-direction: column;
   }
   .dialog-header {
-    max-height: 6rem;
+    max-height: 12rem;
   }
 }
 
