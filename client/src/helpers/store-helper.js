@@ -406,6 +406,7 @@ class StoreHelperWorker {
 
   async loadCommon () {
     let visitInfo = store.state.visit.sVisitData || {}
+    if (debugSH) console.log('SH loadCommon visitInfo', visitInfo)
     // To do use the accessor to get consumer id
     await this.loadConsumer(visitInfo.toolConsumer)
     await this._dispatchUser('load', visitInfo.user)

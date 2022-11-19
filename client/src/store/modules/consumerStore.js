@@ -33,6 +33,7 @@ const getters = {
 
 const actions = {
   clearConsumer ({dispatch, commit} ) {
+    if(debug) console.log('clearConsumer')
     commit('setDataStore', { })
   },
   createConsumer (context, payload) {
@@ -121,6 +122,7 @@ const actions = {
 
 const mutations = {
   setDataStore: (state, consumer) => {
+    if(debug) console.log('setDataStore', consumer)
     state.consumer = consumer
   },
   setConsumersListing: (state, cData) => {
