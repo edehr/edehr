@@ -44,7 +44,7 @@ class EhrPatientC {
     return place
   }
   _lastFirstMiddle (d) {
-    const fn = d.familyName
+    const fn = d.familyName ? d.familyName.toUpperCase() : ''
     const gn = d.givenName
     const mn = d.middleName
     let np = []

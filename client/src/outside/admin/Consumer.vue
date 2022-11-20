@@ -4,6 +4,9 @@
       div &nbsp;
         // can put link to somewhere here
       div &nbsp;
+        ui-button(v-on:buttonClicked="downloadConsumer")
+          fas-icon(class="fa", :icon="appIcons.download")
+          span Download Data
         //can put actions here
     div(class="details-container card selected")
       div(class="details-row")
@@ -16,9 +19,9 @@
       div(class="details-row")
         div(class="details-name") {{text.KEY}}
         div(class="details-value") {{consumer.oauth_consumer_key}}
-      div(class="details-row")
-        div(class="details-name") {{text.SECRET}}
-        div(class="details-value") {{consumer.oauth_consumer_secret}}
+      //div(class="details-row")
+      //  div(class="details-name") {{text.SECRET}}
+      //  div(class="details-value") {{consumer.oauth_consumer_secret}}
       div(class="details-row", v-if='!consumer.is_primary')
         div(class="details-name") {{text.TYPE}}
         div(class="details-value") Demonstration consumer
@@ -40,18 +43,20 @@
           Created on {{ consumer.createDate | formatDateTime }}.
           Last modified on {{ consumer.lastUpdateDate | formatDateTime }}.
       div(class="details-row")
-        div(class="details-name") {{text.USERS}}
+        div(class="details-name") {{ isAdmin ? text.USERS: text.USER_COUNT }}
         div(class="details-value")
-          div(v-for="user in consumer.users") {{user.fullName}}
+          div(v-if='isAdmin')
+            div(v-for="user in users") {{user.fullName}}
+          div(v-else) {{ users.length }}
       div(class="details-row")
         div(class="details-name") {{text.VISITS_TOTAL}}
         div(class="details-value") {{consumer.visitCount}}
       div(class="details-row")
         div(class="details-name") {{text.VISITS_STUDENTS}}
-        div(class="details-value") Count: {{consumer.visitStudentCount}}.  Most recent visit: {{consumer.lastStudentVisit | formatDateTime}}.
+        div(class="details-value") {{consumer.visitStudentCount}}.  Most recent visit: {{consumer.lastStudentVisit | formatDateTime}}.
       div(class="details-row")
         div(class="details-name") {{text.VISITS_INSTRUCTORS}}
-        div(class="details-value") Count: {{consumer.visitInstructorCount}}. Most recent visit: {{consumer.lastInstructorVisit | formatDateTime}}.
+        div(class="details-value") {{consumer.visitInstructorCount}}. Most recent visit: {{consumer.lastInstructorVisit | formatDateTime}}.
       div(class="details-row")
         div(class="details-name") {{text.ACTIVITIES}}
         div(class="details-value") {{consumer.activityCount}}
@@ -61,34 +66,60 @@
       div(class="details-row")
         div(class="details-name") {{text.SEEDS}}
         div(class="details-value") {{consumer.seedCount}}
-      div(v-if='isAdmin', class="details-row")
-        div(class="details-name") Id:
+      div(class="details-row")
+        div(class="details-name") Id
         div(class="details-value") {{consumer._id}}
-      //div(class="details-row")
-      //  div(class="details-name") consumer:
-      //  div(class="details-value") {{consumer}}
+      div(class="details-row")
+        div(class="details-name") Return URL
+        div(class="details-value") {{visit.returnUrl}}
+      div(class="details-row")
+        div(class="details-name") Current visit id
+        div(class="details-value") {{visit._id}}
 </template>
 
 <script>
 import OutsideCommon from '@/outside/views/OutsideCommon'
-import { Text } from '@/helpers/ehr-text'
 import UiInfo from '@/app/ui/UiInfo'
+import UiButton from '@/app/ui/UiButton'
+import { APP_ICONS } from '@/helpers/app-icons'
+import { Text } from '@/helpers/ehr-text'
+import { downObjectToFile } from '@/helpers/ehr-utils'
 
 export default {
   extends: OutsideCommon,
-  components: { UiInfo  },
+  components: { UiButton, UiInfo  },
   data () {
     return {
       text: Text.CONSUMER_PAGE,
+      appIcons: APP_ICONS,
     }
   },
   computed: {
-    consumer () { return this.$store.getters['consumerStore/consumer']}
+    consumer () { return this.$store.getters['consumerStore/consumer']},
+    users () { return this.consumer.users || [] },
+    visit () { return this.$store.getters['visit/visitData']}
   },
   methods: {
+    downloadConsumer () {
+      const fName = 'EdEHR-Consumer' + this.consumer._id + '.json'
+      let data = JSON.parse(JSON.stringify(this.consumer))
+      data.returnUrl = this.visit.returnUrl
+      data.userCount = data.users.length
+      data.currentVisitId = this.visit._id
+      delete data.users
+      let sorted = {}
+      Object.keys(data).sort().forEach(k => {
+        sorted[k] = data[k]
+      })
+      data = JSON.stringify(sorted, null, 2)
+      // console.log('download to ', fName, data)
+      downObjectToFile(fName, data)
+    },
     async loadComponent () {
       const fromRoute = this.$route.query.consumerId
-      await this.$store.dispatch('consumerStore/loadDetails', fromRoute)
+      if (fromRoute) {
+        await this.$store.dispatch('consumerStore/loadDetails', fromRoute)
+      }
     }
   },
 }

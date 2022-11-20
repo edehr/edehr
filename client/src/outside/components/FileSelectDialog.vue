@@ -25,7 +25,7 @@
                 input(type="radio", name="files", :value="file", v-model="selectedFile")
                 ehr-file-link(:ehrFile="file", :alink="false")
 
-      div(slot="footer-content")
+      div(slot="header-extra-content")
         div(v-show="selectedFile.fName")  Selected: {{ selectedFile.fName }}
         div(v-show="errorMessage", class="error-msg") {{ errorMessage }}
 

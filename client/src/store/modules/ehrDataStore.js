@@ -25,9 +25,10 @@ const _hasAnyData = (obj) => { return _hasTables(obj) ? _doTablesHaveData(obj) :
 const _doTablesHaveData = (obj) => {
   let hasData = false
   const tableKeys = _getTables(obj)
-  if(tableKeys.length > 0) { 
+  if(tableKeys.length > 0) {
     tableKeys.map(key => {
-      if(obj[key] &&( obj[key] && obj[key].length > 0)) {
+      const table = obj[key]
+      if(table && table.length > 0) {
         hasData = true
       }
     })

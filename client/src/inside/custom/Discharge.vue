@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import EhrHelpV2 from '../components/page/ehr-helper'
+import EhrPageHelper from '../components/page/ehr-helper'
 import EhrPageFooter from '../components/page/EhrPageFooter'
 import DischargeV2 from '../components/discharge/DischargeV2'
 
@@ -30,7 +30,7 @@ export default {
   computed: {
   },
   created () {
-    this.ehrHelp = new EhrHelpV2(this, this.$store, this.pageDataKey)
+    this.ehrHelp = new EhrPageHelper(this.pageDataKey)
   },
   beforeRouteLeave (to, from, next) {
     this.ehrHelp.beforeRouteLeave(to, from, next)

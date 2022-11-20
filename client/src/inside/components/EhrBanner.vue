@@ -1,30 +1,24 @@
 <template lang="pug">
   div(class="ehr-banner")
     div(class="short-top")
-      div {{ patientData.patientName }}
-      div {{ patientData.diagnosis }}
-      div DoB: {{ patientData.dateOfBirth }} ({{ patientData.personAge }} yrs)
-      a(@click="showDetails = !showDetails") {{showDetails ? 'show less' : 'show more'}}
-
+      div(class="patient-data")
+        div(class='patient-name') {{ patientData.patientName }}
+        div PHN: {{ patientData.phn }}
+        div DoB: {{ patientData.dateOfBirth }} ({{ patientData.personAge }} yrs)
+        div Gender: {{ patientData.gender }}
+        div Code Status: {{ patientData.codeStatus ? patientData.codeStatus : 'N/A' }}
+        a(@click="showDetails = !showDetails") {{showDetails ? 'show less' : 'show more'}}
+      div(class="patient-data")
+        div Allergies: {{ patientData.allergies }}
+        div Diagnosis: {{ patientData.diagnosis }}
+        ehr-sim-time(:ehr-data="md")
     div(v-if="showDetails", class='banner-content' )
-      div(class="kv")
-        div PHN:
-        div {{ patientData.phn }}
-      div(class="kv")
-        div Gender:
-        div {{ patientData.gender }}
       div(class="kv")
         div Weight:
         div {{ patientData.weight }}
       div(class="kv")
-        div Code status:
-        div {{ patientData.codeStatus }}
-      div(class="kv")
         div Location:
         div {{ patientData.location }}
-      div(class="kv")
-        div Allergies:
-        div {{ patientData.allergies }}
       div(class="kv")
         div MRN:
         div {{ patientData.mrn }}
@@ -41,14 +35,17 @@
 
 <script>
 import EhrPatient from '@/inside/components/page/ehr-patient'
+import EhrSimTime from '@/inside/components/EhrSimTime'
+import StoreHelper from '@/helpers/store-helper'
 export default {
-  components: { },
+  components: { EhrSimTime },
   data () {
     return {
       showDetails: false
     }
   },
   computed: {
+    md () { return StoreHelper.getMergedData() },
     patientData () { return EhrPatient.patientData() },
   }
 }
@@ -58,6 +55,13 @@ export default {
 @import '../../scss/definitions';
 $key: 5rem;
 
+.patient-data {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  padding-left: 1rem;
+}
+
 .ehr-banner {
   color: $grey90;
   border-top: 3px solid $brand-primary-dark;
@@ -65,18 +69,6 @@ $key: 5rem;
   border-bottom: 1px solid $brand-primary-dark;
   padding-bottom: 5px;
   padding-top: 5px;
-}
-.short-top {
-  display: flex;
-  flex-flow: row;
-  gap: 1rem;
-  padding-left: 1rem;
-}
-@media screen and (min-width: $main-width-threshold3) {
-  .short-top {
-    gap: 2rem;
-    padding-left: 2rem;
-  }
 }
 
 .banner-content {

@@ -7,24 +7,29 @@ const Defs = {
       inputType: 'text',
       label: 'Name',
       tableLabel: 'Identification',
+      mandatory: true,
       recHeader: true
     },
     {
       elementKey: 'profession',
       inputType: 'text',
       label: 'Profession',
+      mandatory: true,
       recHeader: true
     },
     {
       elementKey: 'day',
       inputType: 'visitDay',
       label: 'Day',
+      mandatory: true,
+      validation: 'visitDay',
       recHeader: true
     },
     {
       elementKey: 'time',
       inputType: 'visitTime',
       label: 'Time',
+      mandatory: true,
       validation: 'time24',
       recHeader: true
     }

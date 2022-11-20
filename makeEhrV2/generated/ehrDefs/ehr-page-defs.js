@@ -743,6 +743,7 @@ const DEFS = {
         'ehr_groups': [
           {
             'elementKey': 'ehr_group6',
+            'formCss': 'grid-left-to-right-1',
             'gIndex': '1',
             'gChildren': [
               'history',
@@ -1142,58 +1143,92 @@ const DEFS = {
         'fqn': 'immunization.spacer22'
       },
       {
-        'elementKey': 'other1',
+        'elementKey': 'covid',
         'formIndex': '1',
-        'inputType': 'text',
-        'fqn': 'immunization.other1'
+        'inputType': 'checkbox',
+        'label': 'COVID-19',
+        'fqn': 'immunization.covid'
       },
       {
-        'elementKey': 'other1Date',
+        'elementKey': 'covidDate',
         'formIndex': '1',
+        'formOption': 'hideLabel',
         'inputType': 'date',
-        'fqn': 'immunization.other1Date'
+        'label': 'COVID-19',
+        'fqn': 'immunization.covidDate'
       },
       {
         'elementKey': 'spacer23',
         'formIndex': '1',
         'inputType': 'spacer',
+        'label': 'COVID-19',
         'fqn': 'immunization.spacer23'
       },
       {
-        'elementKey': 'other2',
+        'elementKey': 'other1',
         'formIndex': '1',
-        'inputType': 'text',
-        'fqn': 'immunization.other2'
+        'inputType': 'checkbox',
+        'label': 'Other',
+        'fqn': 'immunization.other1'
       },
       {
-        'elementKey': 'other2Date',
+        'elementKey': 'other1Date',
         'formIndex': '1',
+        'formOption': 'hideLabel',
         'inputType': 'date',
-        'fqn': 'immunization.other2Date'
+        'label': 'Other',
+        'fqn': 'immunization.other1Date'
       },
       {
         'elementKey': 'spacer24',
         'formIndex': '1',
         'inputType': 'spacer',
+        'label': 'Other',
         'fqn': 'immunization.spacer24'
       },
       {
-        'elementKey': 'other3',
+        'elementKey': 'other2',
         'formIndex': '1',
-        'inputType': 'text',
-        'fqn': 'immunization.other3'
+        'inputType': 'checkbox',
+        'label': 'Other',
+        'fqn': 'immunization.other2'
       },
       {
-        'elementKey': 'other3Date',
+        'elementKey': 'other2Date',
         'formIndex': '1',
+        'formOption': 'hideLabel',
         'inputType': 'date',
-        'fqn': 'immunization.other3Date'
+        'label': 'Other',
+        'fqn': 'immunization.other2Date'
       },
       {
         'elementKey': 'spacer25',
         'formIndex': '1',
         'inputType': 'spacer',
+        'label': 'Other',
         'fqn': 'immunization.spacer25'
+      },
+      {
+        'elementKey': 'other3',
+        'formIndex': '1',
+        'inputType': 'checkbox',
+        'label': 'Other',
+        'fqn': 'immunization.other3'
+      },
+      {
+        'elementKey': 'other3Date',
+        'formIndex': '1',
+        'formOption': 'hideLabel',
+        'inputType': 'date',
+        'label': 'Other',
+        'fqn': 'immunization.other3Date'
+      },
+      {
+        'elementKey': 'spacer26',
+        'formIndex': '1',
+        'inputType': 'spacer',
+        'label': 'Other',
+        'fqn': 'immunization.spacer26'
       }
     ],
     'pageElements': {
@@ -1227,15 +1262,18 @@ const DEFS = {
               'tetanus',
               'tetanusDate',
               'spacer22',
+              'covid',
+              'covidDate',
+              'spacer23',
               'other1',
               'other1Date',
-              'spacer23',
+              'spacer24',
               'other2',
               'other2Date',
-              'spacer24',
+              'spacer25',
               'other3',
               'other3Date',
-              'spacer25'
+              'spacer26'
             ]
           }
         ]
@@ -1263,7 +1301,7 @@ const DEFS = {
         'isPageForm': true,
         'ehr_groups': [
           {
-            'elementKey': 'ehr_group26',
+            'elementKey': 'ehr_group27',
             'formCss': 'grid-left-to-right-1',
             'gIndex': '1',
             'gChildren': [
@@ -1326,7 +1364,7 @@ const DEFS = {
           'formKey': 'teams',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group27',
+              'elementKey': 'ehr_group28',
               'gIndex': '1',
               'gChildren': [
                 'name',
@@ -1550,7 +1588,7 @@ const DEFS = {
       },
       {
         'elementKey': 'admissionTime',
-        'defaultValue': '0.375',
+        'defaultValue': '900',
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Admission time',
@@ -1619,7 +1657,6 @@ const DEFS = {
       },
       {
         'elementKey': 'diagnosis',
-        'dependentOn': 'disable:consentForBlood',
         'formIndex': '1',
         'inputType': 'textarea',
         'label': 'Physician admitting diagnosis',
@@ -1683,7 +1720,7 @@ const DEFS = {
         'isPageForm': true,
         'ehr_groups': [
           {
-            'elementKey': 'ehr_group28',
+            'elementKey': 'ehr_group29',
             'gIndex': '1',
             'gChildren': [
               'admissionDay',
@@ -1695,7 +1732,7 @@ const DEFS = {
             ]
           },
           {
-            'elementKey': 'ehr_group29',
+            'elementKey': 'ehr_group30',
             'formCss': 'grid-left-to-right-1',
             'gIndex': '2',
             'gChildren': [
@@ -1751,7 +1788,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group30',
+              'elementKey': 'ehr_group31',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '1',
               'gChildren': [
@@ -1759,7 +1796,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group31',
+              'elementKey': 'ehr_group32',
               'gIndex': '2',
               'gChildren': [
                 'transferInDay',
@@ -1792,6 +1829,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Name',
+        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
@@ -1802,6 +1840,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Profession',
+        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'vitals.profession'
@@ -1811,7 +1850,9 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
+        'mandatory': true,
         'tableColumn': '1',
+        'validation': 'visitDay',
         'recHeader': true,
         'fqn': 'vitals.day'
       },
@@ -1820,35 +1861,11 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
+        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'vitals.time'
-      },
-      {
-        'elementKey': 'day',
-        'formIndex': '1',
-        'inputType': 'text',
-        'label': 'Vital taken day',
-        'tableColumn': '2',
-        'tableLabel': 'Vital taken day',
-        'fqn': 'vitals.day'
-      },
-      {
-        'elementKey': 'time',
-        'formIndex': '1',
-        'inputType': 'text',
-        'label': 'Vital taken time',
-        'tableColumn': '3',
-        'tableCss': 'hr-table',
-        'tableLabel': 'Vital taken time',
-        'fqn': 'vitals.time'
-      },
-      {
-        'elementKey': 'spacer34',
-        'formIndex': '1',
-        'inputType': 'spacer',
-        'fqn': 'vitals.spacer34'
       },
       {
         'elementKey': 'systolic',
@@ -1856,7 +1873,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Systolic blood pressure',
-        'tableColumn': '4',
+        'tableColumn': '2',
         'tableLabel': 'Systolic blood pressure',
         'validation': 'numeric',
         'fqn': 'vitals.systolic'
@@ -1866,7 +1883,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Diastolic blood pressure',
-        'tableColumn': '5',
+        'tableColumn': '3',
         'tableLabel': 'Diastolic blood pressure',
         'validation': 'numeric',
         'fqn': 'vitals.diastolic'
@@ -1890,7 +1907,7 @@ const DEFS = {
             'text': 'Standing'
           }
         ],
-        'tableColumn': '6',
+        'tableColumn': '4',
         'tableCss': 'hr-table',
         'tableLabel': 'Patient position',
         'fqn': 'vitals.patientPosition'
@@ -1901,7 +1918,7 @@ const DEFS = {
         'inputType': 'text',
         'label': 'Temperature',
         'suffix': 'Celcius',
-        'tableColumn': '7',
+        'tableColumn': '5',
         'tableLabel': 'Temperature',
         'validation': 'numeric',
         'fqn': 'vitals.temperature'
@@ -1929,7 +1946,7 @@ const DEFS = {
             'text': 'Tympanic'
           }
         ],
-        'tableColumn': '8',
+        'tableColumn': '6',
         'tableCss': 'hr-table',
         'tableLabel': 'Source',
         'fqn': 'vitals.source'
@@ -1955,7 +1972,7 @@ const DEFS = {
             'text': 'Other'
           }
         ],
-        'tableColumn': '9',
+        'tableColumn': '7',
         'tableLabel': 'Pulse site',
         'fqn': 'vitals.strength'
       },
@@ -1964,7 +1981,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Pulse rate',
-        'tableColumn': '10',
+        'tableColumn': '8',
         'tableLabel': 'Pulse rate',
         'validation': 'numeric',
         'fqn': 'vitals.rate'
@@ -1984,7 +2001,7 @@ const DEFS = {
             'text': 'Irregular'
           }
         ],
-        'tableColumn': '11',
+        'tableColumn': '9',
         'tableCss': 'hr-table',
         'tableLabel': 'Pulse rhythm',
         'fqn': 'vitals.rhythm'
@@ -1994,7 +2011,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Respiration rate',
-        'tableColumn': '12',
+        'tableColumn': '10',
         'tableLabel': 'Respiration rate',
         'validation': 'numeric',
         'fqn': 'vitals.respirationRate'
@@ -2017,7 +2034,7 @@ const DEFS = {
         'inputType': 'text',
         'label': 'Oxygen saturation',
         'suffix': '%',
-        'tableColumn': '13',
+        'tableColumn': '11',
         'tableLabel': 'Oxygen saturation',
         'validation': 'numeric',
         'fqn': 'vitals.oxygenSaturation'
@@ -2049,7 +2066,7 @@ const DEFS = {
             'text': 'Optiflow'
           }
         ],
-        'tableColumn': '14',
+        'tableColumn': '12',
         'tableLabel': 'Oxygen mode',
         'fqn': 'vitals.oxygenMode'
       },
@@ -2059,7 +2076,7 @@ const DEFS = {
         'inputType': 'text',
         'label': 'Flow rate',
         'suffix': '/lpm',
-        'tableColumn': '15',
+        'tableColumn': '13',
         'tableLabel': 'Flow rate',
         'validation': 'numeric',
         'fqn': 'vitals.flowRate'
@@ -2070,7 +2087,7 @@ const DEFS = {
         'inputType': 'text',
         'label': 'Blood sugar',
         'suffix': 'mmol/L',
-        'tableColumn': '16',
+        'tableColumn': '14',
         'tableLabel': 'Blood sugar',
         'validation': 'numeric',
         'fqn': 'vitals.bloodSugar'
@@ -2080,7 +2097,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'CVP',
-        'tableColumn': '17',
+        'tableColumn': '15',
         'tableLabel': 'CVP (Central Venous Pressure)',
         'validation': 'cvp',
         'fqn': 'vitals.cvp'
@@ -2106,30 +2123,15 @@ const DEFS = {
             ]
           },
           {
-            'label': 'Vital taken day',
-            'ehr_list_index': '2',
-            'items': [
-              'day'
-            ]
-          },
-          {
-            'label': 'Vital taken time',
-            'tableCss': 'hr-table',
-            'ehr_list_index': '3',
-            'items': [
-              'time'
-            ]
-          },
-          {
             'label': 'Systolic blood pressure',
-            'ehr_list_index': '4',
+            'ehr_list_index': '2',
             'items': [
               'systolic'
             ]
           },
           {
             'label': 'Diastolic blood pressure',
-            'ehr_list_index': '5',
+            'ehr_list_index': '3',
             'items': [
               'diastolic'
             ]
@@ -2137,14 +2139,14 @@ const DEFS = {
           {
             'label': 'Patient position',
             'tableCss': 'hr-table',
-            'ehr_list_index': '6',
+            'ehr_list_index': '4',
             'items': [
               'patientPosition'
             ]
           },
           {
             'label': 'Temperature',
-            'ehr_list_index': '7',
+            'ehr_list_index': '5',
             'items': [
               'temperature'
             ]
@@ -2152,21 +2154,21 @@ const DEFS = {
           {
             'label': 'Source',
             'tableCss': 'hr-table',
-            'ehr_list_index': '8',
+            'ehr_list_index': '6',
             'items': [
               'source'
             ]
           },
           {
             'label': 'Pulse site',
-            'ehr_list_index': '9',
+            'ehr_list_index': '7',
             'items': [
               'strength'
             ]
           },
           {
             'label': 'Pulse rate',
-            'ehr_list_index': '10',
+            'ehr_list_index': '8',
             'items': [
               'rate'
             ]
@@ -2174,49 +2176,49 @@ const DEFS = {
           {
             'label': 'Pulse rhythm',
             'tableCss': 'hr-table',
-            'ehr_list_index': '11',
+            'ehr_list_index': '9',
             'items': [
               'rhythm'
             ]
           },
           {
             'label': 'Respiration rate',
-            'ehr_list_index': '12',
+            'ehr_list_index': '10',
             'items': [
               'respirationRate'
             ]
           },
           {
             'label': 'Oxygen saturation',
-            'ehr_list_index': '13',
+            'ehr_list_index': '11',
             'items': [
               'oxygenSaturation'
             ]
           },
           {
             'label': 'Oxygen mode',
-            'ehr_list_index': '14',
+            'ehr_list_index': '12',
             'items': [
               'oxygenMode'
             ]
           },
           {
             'label': 'Flow rate',
-            'ehr_list_index': '15',
+            'ehr_list_index': '13',
             'items': [
               'flowRate'
             ]
           },
           {
             'label': 'Blood sugar',
-            'ehr_list_index': '16',
+            'ehr_list_index': '14',
             'items': [
               'bloodSugar'
             ]
           },
           {
             'label': 'CVP (Central Venous Pressure)',
-            'ehr_list_index': '17',
+            'ehr_list_index': '15',
             'items': [
               'cvp'
             ]
@@ -2230,7 +2232,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group32',
+              'elementKey': 'ehr_group33',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -2241,12 +2243,9 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group33',
+              'elementKey': 'ehr_group34',
               'gIndex': '2',
               'gChildren': [
-                'day',
-                'time',
-                'spacer34',
                 'systolic',
                 'diastolic',
                 'patientPosition',
@@ -2302,6 +2301,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Name',
+        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
@@ -2312,6 +2312,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Profession',
+        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'fluidBalance.profession'
@@ -2321,7 +2322,9 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
+        'mandatory': true,
         'tableColumn': '1',
+        'validation': 'visitDay',
         'recHeader': true,
         'fqn': 'fluidBalance.day'
       },
@@ -2330,6 +2333,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
+        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
@@ -2437,6 +2441,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Name',
+        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
@@ -2447,6 +2452,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Profession',
+        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'neurological.profession'
@@ -2456,7 +2462,9 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
+        'mandatory': true,
         'tableColumn': '1',
+        'validation': 'visitDay',
         'recHeader': true,
         'fqn': 'neurological.day'
       },
@@ -2465,6 +2473,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
+        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
@@ -3654,6 +3663,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Name',
+        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
@@ -3664,6 +3674,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Profession',
+        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'respiratory.profession'
@@ -3673,7 +3684,9 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
+        'mandatory': true,
         'tableColumn': '1',
+        'validation': 'visitDay',
         'recHeader': true,
         'fqn': 'respiratory.day'
       },
@@ -3682,6 +3695,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
+        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
@@ -4273,6 +4287,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Name',
+        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
@@ -4283,6 +4298,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Profession',
+        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'cardiovascular.profession'
@@ -4292,7 +4308,9 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
+        'mandatory': true,
         'tableColumn': '1',
+        'validation': 'visitDay',
         'recHeader': true,
         'fqn': 'cardiovascular.day'
       },
@@ -4301,6 +4319,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
+        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
@@ -5108,6 +5127,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Name',
+        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
@@ -5118,6 +5138,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Profession',
+        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'gastrointestinal.profession'
@@ -5127,7 +5148,9 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
+        'mandatory': true,
         'tableColumn': '1',
+        'validation': 'visitDay',
         'recHeader': true,
         'fqn': 'gastrointestinal.day'
       },
@@ -5136,6 +5159,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
+        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
@@ -5833,6 +5857,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Name',
+        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
@@ -5843,6 +5868,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Profession',
+        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'genitourinary.profession'
@@ -5852,7 +5878,9 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
+        'mandatory': true,
         'tableColumn': '1',
+        'validation': 'visitDay',
         'recHeader': true,
         'fqn': 'genitourinary.day'
       },
@@ -5861,6 +5889,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
+        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
@@ -6579,6 +6608,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Name',
+        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
@@ -6589,6 +6619,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Profession',
+        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'musculoskeletal.profession'
@@ -6598,7 +6629,9 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
+        'mandatory': true,
         'tableColumn': '1',
+        'validation': 'visitDay',
         'recHeader': true,
         'fqn': 'musculoskeletal.day'
       },
@@ -6607,6 +6640,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
+        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
@@ -7041,6 +7075,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Name',
+        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
@@ -7051,6 +7086,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Profession',
+        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'pain.profession'
@@ -7060,7 +7096,9 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
+        'mandatory': true,
         'tableColumn': '1',
+        'validation': 'visitDay',
         'recHeader': true,
         'fqn': 'pain.day'
       },
@@ -7069,6 +7107,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
+        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
@@ -7488,6 +7527,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Name',
+        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
@@ -7498,6 +7538,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Profession',
+        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'biopsychosocial.profession'
@@ -7507,7 +7548,9 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
+        'mandatory': true,
         'tableColumn': '1',
+        'validation': 'visitDay',
         'recHeader': true,
         'fqn': 'biopsychosocial.day'
       },
@@ -7516,6 +7559,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
+        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
@@ -8106,6 +8150,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Name',
+        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
@@ -8116,6 +8161,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Profession',
+        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'nonmedOrders.profession'
@@ -8125,7 +8171,9 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
+        'mandatory': true,
         'tableColumn': '1',
+        'validation': 'visitDay',
         'recHeader': true,
         'fqn': 'nonmedOrders.day'
       },
@@ -8134,6 +8182,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
+        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
@@ -8154,7 +8203,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Ordered by',
-        'mandatory': 'If order is filled, this is mandatory',
+        'mandatory': true,
         'tableColumn': '3',
         'tableLabel': 'Ordered by',
         'fqn': 'nonmedOrders.orderedBy'
@@ -8174,7 +8223,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'select',
         'label': 'Status',
-        'mandatory': '?',
+        'mandatory': true,
         'options': [
           {
             'key': 'Ordered',
@@ -8328,6 +8377,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Name',
+        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
@@ -8338,6 +8388,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Profession',
+        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'referrals.profession'
@@ -8347,7 +8398,9 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
+        'mandatory': true,
         'tableColumn': '1',
+        'validation': 'visitDay',
         'recHeader': true,
         'fqn': 'referrals.day'
       },
@@ -8356,6 +8409,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
+        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
@@ -8534,6 +8588,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Name',
+        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
@@ -8544,6 +8599,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Profession',
+        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'labRequisitions.profession'
@@ -8553,7 +8609,9 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
+        'mandatory': true,
         'tableColumn': '1',
+        'validation': 'visitDay',
         'recHeader': true,
         'fqn': 'labRequisitions.day'
       },
@@ -8562,6 +8620,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
+        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
@@ -9053,6 +9112,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Name',
+        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
@@ -9063,6 +9123,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Profession',
+        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'medicationOrders.profession'
@@ -9072,7 +9133,9 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
+        'mandatory': true,
         'tableColumn': '1',
+        'validation': 'visitDay',
         'recHeader': true,
         'fqn': 'medicationOrders.day'
       },
@@ -9081,6 +9144,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
+        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
@@ -10078,6 +10142,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Name',
+        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
@@ -10088,6 +10153,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Profession',
+        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'progressNotes.profession'
@@ -10097,7 +10163,9 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
+        'mandatory': true,
         'tableColumn': '1',
+        'validation': 'visitDay',
         'recHeader': true,
         'fqn': 'progressNotes.day'
       },
@@ -10106,6 +10174,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
+        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
@@ -10196,6 +10265,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Name',
+        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
@@ -10206,6 +10276,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Profession',
+        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'carePlan.profession'
@@ -10215,7 +10286,9 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
+        'mandatory': true,
         'tableColumn': '1',
+        'validation': 'visitDay',
         'recHeader': true,
         'fqn': 'carePlan.day'
       },
@@ -10224,6 +10297,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
+        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
@@ -10395,6 +10469,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Name',
+        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
@@ -10405,6 +10480,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Profession',
+        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'consults.profession'
@@ -10414,7 +10490,9 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
+        'mandatory': true,
         'tableColumn': '1',
+        'validation': 'visitDay',
         'recHeader': true,
         'fqn': 'consults.day'
       },
@@ -10423,6 +10501,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
+        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
@@ -10530,6 +10609,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Name',
+        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
@@ -10540,6 +10620,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Profession',
+        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'labResults.profession'
@@ -10549,7 +10630,9 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
+        'mandatory': true,
         'tableColumn': '1',
+        'validation': 'visitDay',
         'recHeader': true,
         'fqn': 'labResults.day'
       },
@@ -10558,6 +10641,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
+        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
@@ -10665,6 +10749,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Name',
+        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
@@ -10675,6 +10760,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Profession',
+        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'medicalImaging.profession'
@@ -10684,7 +10770,9 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
+        'mandatory': true,
         'tableColumn': '1',
+        'validation': 'visitDay',
         'recHeader': true,
         'fqn': 'medicalImaging.day'
       },
@@ -10693,6 +10781,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
+        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
@@ -10800,6 +10889,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Name',
+        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
@@ -10810,6 +10900,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Profession',
+        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'operationReports.profession'
@@ -10819,7 +10910,9 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
+        'mandatory': true,
         'tableColumn': '1',
+        'validation': 'visitDay',
         'recHeader': true,
         'fqn': 'operationReports.day'
       },
@@ -10828,6 +10921,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
+        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
@@ -11195,6 +11289,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Name',
+        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
@@ -11205,6 +11300,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Profession',
+        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'diagnosticCodes.profession'
@@ -11214,7 +11310,9 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
+        'mandatory': true,
         'tableColumn': '1',
+        'validation': 'visitDay',
         'recHeader': true,
         'fqn': 'diagnosticCodes.day'
       },
@@ -11223,6 +11321,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
+        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
@@ -11427,6 +11526,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Name',
+        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
@@ -11437,6 +11537,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Profession',
+        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'interventionCodes.profession'
@@ -11446,7 +11547,9 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
+        'mandatory': true,
         'tableColumn': '1',
+        'validation': 'visitDay',
         'recHeader': true,
         'fqn': 'interventionCodes.day'
       },
@@ -11455,6 +11558,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
+        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
@@ -11605,6 +11709,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Name',
+        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
@@ -11615,6 +11720,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Profession',
+        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'caseMixGroup.profession'
@@ -11624,7 +11730,9 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
+        'mandatory': true,
         'tableColumn': '1',
+        'validation': 'visitDay',
         'recHeader': true,
         'fqn': 'caseMixGroup.day'
       },
@@ -11633,6 +11741,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
+        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
@@ -12051,6 +12160,7 @@ const DEFS = {
         'formIndex': '3',
         'inputType': 'text',
         'label': 'Name',
+        'mandatory': true,
         'tableLabel': 'Identification',
         'recHeader': true,
         'fqn': 'testPage.name'
@@ -12060,6 +12170,7 @@ const DEFS = {
         'formIndex': '3',
         'inputType': 'text',
         'label': 'Profession',
+        'mandatory': true,
         'recHeader': true,
         'fqn': 'testPage.profession'
       },
@@ -12068,6 +12179,8 @@ const DEFS = {
         'formIndex': '3',
         'inputType': 'visitDay',
         'label': 'Day',
+        'mandatory': true,
+        'validation': 'visitDay',
         'recHeader': true,
         'fqn': 'testPage.day'
       },
@@ -12076,6 +12189,7 @@ const DEFS = {
         'formIndex': '3',
         'inputType': 'visitTime',
         'label': 'Time',
+        'mandatory': true,
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'testPage.time'
@@ -12522,6 +12636,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'text',
         'label': 'Name',
+        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
@@ -12532,6 +12647,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'text',
         'label': 'Profession',
+        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'testTable.profession'
@@ -12541,7 +12657,9 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'visitDay',
         'label': 'Day',
+        'mandatory': true,
         'tableColumn': '1',
+        'validation': 'visitDay',
         'recHeader': true,
         'fqn': 'testTable.day'
       },
@@ -12550,6 +12668,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'visitTime',
         'label': 'Time',
+        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
@@ -13226,6 +13345,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Name',
+        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
@@ -13236,6 +13356,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Profession',
+        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'integumentaryAssessment.profession'
@@ -13245,7 +13366,9 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
+        'mandatory': true,
         'tableColumn': '1',
+        'validation': 'visitDay',
         'recHeader': true,
         'fqn': 'integumentaryAssessment.day'
       },
@@ -13254,6 +13377,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
+        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
@@ -13436,6 +13560,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'text',
         'label': 'Name',
+        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
@@ -13446,6 +13571,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'text',
         'label': 'Profession',
+        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'integumentaryAssessment.profession'
@@ -13455,7 +13581,9 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'visitDay',
         'label': 'Day',
+        'mandatory': true,
         'tableColumn': '1',
+        'validation': 'visitDay',
         'recHeader': true,
         'fqn': 'integumentaryAssessment.day'
       },
@@ -13464,6 +13592,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'visitTime',
         'label': 'Time',
+        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
@@ -13610,8 +13739,8 @@ const DEFS = {
             'text': 'Macerated'
           },
           {
-            'key': 'BlistersErythema less than 2cm',
-            'text': 'BlistersErythema less than 2cm'
+            'key': 'Blisters Erythema less than 2cm',
+            'text': 'Blisters Erythema less than 2cm'
           },
           {
             'key': 'Erythema greater than 2cm',
@@ -13622,8 +13751,8 @@ const DEFS = {
             'text': 'Induration less than 2cm'
           },
           {
-            'key': 'Induration grater than 2cm',
-            'text': 'Induration grater than 2cm'
+            'key': 'Induration greater than 2cm',
+            'text': 'Induration greater than 2cm'
           },
           {
             'key': 'Other',
@@ -13655,6 +13784,7 @@ const DEFS = {
         'formIndex': '3',
         'inputType': 'text',
         'label': 'Name',
+        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
@@ -13665,6 +13795,7 @@ const DEFS = {
         'formIndex': '3',
         'inputType': 'text',
         'label': 'Profession',
+        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'integumentaryAssessment.profession'
@@ -13674,7 +13805,9 @@ const DEFS = {
         'formIndex': '3',
         'inputType': 'visitDay',
         'label': 'Day',
+        'mandatory': true,
         'tableColumn': '1',
+        'validation': 'visitDay',
         'recHeader': true,
         'fqn': 'integumentaryAssessment.day'
       },
@@ -13683,6 +13816,7 @@ const DEFS = {
         'formIndex': '3',
         'inputType': 'visitTime',
         'label': 'Time',
+        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
@@ -13932,6 +14066,7 @@ const DEFS = {
         'formIndex': '4',
         'inputType': 'text',
         'label': 'Name',
+        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
@@ -13942,6 +14077,7 @@ const DEFS = {
         'formIndex': '4',
         'inputType': 'text',
         'label': 'Profession',
+        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'integumentaryAssessment.profession'
@@ -13951,7 +14087,9 @@ const DEFS = {
         'formIndex': '4',
         'inputType': 'visitDay',
         'label': 'Day',
+        'mandatory': true,
         'tableColumn': '1',
+        'validation': 'visitDay',
         'recHeader': true,
         'fqn': 'integumentaryAssessment.day'
       },
@@ -13960,6 +14098,7 @@ const DEFS = {
         'formIndex': '4',
         'inputType': 'visitTime',
         'label': 'Time',
+        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
@@ -16048,6 +16187,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Name',
+        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
@@ -16058,6 +16198,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Profession',
+        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'hematology.profession'
@@ -16067,7 +16208,9 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
+        'mandatory': true,
         'tableColumn': '1',
+        'validation': 'visitDay',
         'recHeader': true,
         'fqn': 'hematology.day'
       },
@@ -16076,6 +16219,7 @@ const DEFS = {
         'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
+        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,
@@ -16119,6 +16263,7 @@ const DEFS = {
         'inputType': 'visitTime',
         'label': 'Time of test',
         'tableColumn': '6',
+        'validation': 'time24',
         'fqn': 'hematology.timeOfTest'
       },
       {
@@ -16537,6 +16682,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'text',
         'label': 'Name',
+        'mandatory': true,
         'tableColumn': '1',
         'tableLabel': 'Identification',
         'recHeader': true,
@@ -16547,6 +16693,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'text',
         'label': 'Profession',
+        'mandatory': true,
         'tableColumn': '1',
         'recHeader': true,
         'fqn': 'hematology.profession'
@@ -16556,7 +16703,9 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'visitDay',
         'label': 'Day',
+        'mandatory': true,
         'tableColumn': '1',
+        'validation': 'visitDay',
         'recHeader': true,
         'fqn': 'hematology.day'
       },
@@ -16565,6 +16714,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'visitTime',
         'label': 'Time',
+        'mandatory': true,
         'tableColumn': '1',
         'validation': 'time24',
         'recHeader': true,

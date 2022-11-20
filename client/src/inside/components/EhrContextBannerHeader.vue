@@ -38,10 +38,9 @@ export default {
 <style lang="scss" scoped>
 @import '../../scss/definitions';
 .seed-context {
-  display: grid;
-  grid-template-columns: 2fr 2fr 1fr;
-  height: 3rem;
+  display: flex;
   padding-top: 1rem;
+  justify-content: space-between;
 }
 .seed-name{
   font-weight: bold;

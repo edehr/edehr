@@ -25,13 +25,11 @@ const dbTable = false
 const dbLeave = false
 
 
-export default class EhrHelpV2 {
-  constructor (component, store, pageKey) {
+export default class EhrPageHelper {
+  constructor (pageKey) {
     // console.log('Construct helper', pageKey)
-    this.$store = store
     this.pageKey = pageKey
-    // todo move the following into a helper
-    this.$store.commit('system/setCurrentPageKey', pageKey)
+    StoreHelper.setCurrentPageKey(pageKey)
     this.pageFormData = { pageKey: pageKey }
     this.tableFormMap = {}
     const tables = this.getPageTableDefs()
@@ -111,11 +109,6 @@ export default class EhrHelpV2 {
     return studentCanEdit || devContent || ehrOnly
   }
 
-  _setEditing (flag) {
-    // todo move the following into a helper
-    this.$store.commit('system/setEditing', flag)
-  }
-
   _showControl (prop) {
     let show = false
     if (this._canEdit()) {
@@ -131,7 +124,7 @@ export default class EhrHelpV2 {
   }
 
   isEditing () {
-    let sysVal =  this.$store.state.system.isEditing
+    let sysVal =  StoreHelper.isEditing()
     if (dbLeave) console.log('EhrHelpV2 isEditing ', sysVal)
     return sysVal
   }
@@ -453,13 +446,15 @@ export default class EhrHelpV2 {
       const validator = this._validator(eDef)
       const mandatory = eDef[PROPS.mandatory]
       let value = inputs[eKey]
+      let valid = true
       value = isString(value) ? value.trim() : value
       if (dbDialog) console.log('EhrHelpV2 validate:', eKey, value, 'eDef:', eDef)
-      if (mandatory && !value ) {
+      if (mandatory && (value === undefined)) {
         const msg = label + ' is required'
         dialog.errorList.push(msg)
+        valid = false
       }
-      if (validator.func) {
+      if (valid && validator.func) {
         if (dbDialog) console.log('ehr helper validator', validator)
         let errMsg = validator.func(label, value, ...validator.arguments)
         if(errMsg) {
@@ -489,7 +484,7 @@ export default class EhrHelpV2 {
       return
     }
     this._loadPageFormData(formKey)
-    this._setEditing(true)
+    StoreHelper.setEditingMode(true)
   }
 
   /**
@@ -498,7 +493,7 @@ export default class EhrHelpV2 {
   cancelEdit (customRouter = router) {
     if (dbPageForm) console.log('EhrHelperV2 cancelEdit', this.pageKey)
     this._resetPageFormData()
-    this._setEditing(false)
+    StoreHelper.setEditingMode(false)
     // To restore the data we do a full page load to get the same flow as happens when the user comes to this page.
     // This is a good solution here because we want to restore the data as it was found and
     // there are many ways a user can come to the page. As a student, as a seed editor or someday in demo mode.
@@ -533,9 +528,9 @@ export default class EhrHelpV2 {
       ...asLoadedPageData,
       ...payload.value
     }
+    StoreHelper.setEditingMode(false)
     payload.value = mergedValues
     if (dbPageForm) console.log('EhrHelperV2 savePageFormEdit', payload)
-    this._setEditing(false)
     this._saveData(payload)
   }
 

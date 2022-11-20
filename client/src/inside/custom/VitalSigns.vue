@@ -8,7 +8,7 @@
 <script>
 import VitalSignsV2 from '../components/chart/VitalSignsV2'
 import EhrPageFooter from '../components/page/EhrPageFooter'
-import EhrHelpV2 from '../components/page/ehr-helper'
+import EhrPageHelper from '../components/page/ehr-helper'
 
 export default {
   components: {
@@ -24,7 +24,7 @@ export default {
   computed: {
   },
   created () {
-    this.ehrHelp = new EhrHelpV2(this, this.$store, this.pageDataKey, this.uiProps)
+    this.ehrHelp = new EhrPageHelper(this.pageDataKey)
   }
 }
 </script>

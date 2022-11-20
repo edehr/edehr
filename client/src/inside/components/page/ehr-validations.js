@@ -1,4 +1,10 @@
-import { validTimeStr, validDayStr, validNumberStr, validRangeStr } from '../../../helpers/ehr-utils'
+import {
+  validTimeStr,
+  validDayStr,
+  validNumberStr,
+  validRangeStr,
+  VISIT_DAY_LIMIT
+} from '@/helpers/ehr-utils'
 
 /**
  * Export a dictionary of validators. Each key is the input type as set from the generated ehr definitions.
@@ -17,22 +23,20 @@ export default {
     if (time) {
       const valid = validTimeStr(time)
       if (!valid) {
-        return `${fieldName} must be a time value in 24 hour format; e.g. 08:45`
+        return `${fieldName} must be a time value in 24 hour format; e.g. 0845`
       }
     }
   },
   /**
-   * Day as in days in the hospital. Expect the value to be 0,1,2,...9
+   * Day as in days in the hospital. Expect the value to be 0,1,2,..., 19
    * @param fieldName: the name of the input field for error messages
    * @param value: the input value
    * @return {string} If valid return's nothing. Otherwise returns error message.
    */
-  day: function (fieldName, dayString) {
-    if (dayString) {
-      const valid = validDayStr(dayString)
-      if (!valid) {
-        return `${fieldName} must be a day number 0 to 9`
-      }
+  visitDay: function (fieldName, dayString) {
+    const valid = validDayStr(dayString)
+    if (!valid) {
+      return `${fieldName} must be a visit day (number) between 0 and ${VISIT_DAY_LIMIT}`
     }
   },
   numeric: function (fieldName, value) {
@@ -60,7 +64,7 @@ export default {
       }
       const isValidRange = validRangeStr(value, MIN_CVP_VALUE, MAX_CVP_VALUE)
       if (!isValidRange)
-        return `${fieldName} must be a positive number in the range of ${MIN_CVP_VALUE} to ${MAX_CVP_VALUE}` 
+        return `${fieldName} must be a positive number in the range of ${MIN_CVP_VALUE} to ${MAX_CVP_VALUE}`
     }
   },
   /**

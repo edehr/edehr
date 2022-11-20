@@ -2,9 +2,16 @@
   div(class="form-element")
     div(class="select_wrapper")
       ehr-page-form-label(:element="element", css="select_label")
-      div(v-if="!viewOnly", class="select")
-        select(:name="elementKey", :disabled="disabled", v-model="inputVal", v-on:change="dependentUIEvent()")
-          option(v-for="option in selectOptions", :key="option", :value="option") {{ option}}
+      div(v-if="!viewOnly")
+        div(v-if="!isTimeValue")
+          input(type="text", class="input numb-input", name="visitDay", list="dayList", :disabled="disabled", v-model="inputVal", v-on:change="dependentUIEvent()")
+          datalist(id="dayList")
+            option(v-for='t in daySeries', :key='t', :value='t')
+        div(v-if="isTimeValue")
+          input(type="text", class="input numb-input", name="visitTime", list="timeList", :disabled="disabled", v-model="inputVal", v-on:change="dependentUIEvent()")
+          datalist(id="timeList")
+            option(v-for='t in timeSeries', :key='t', :value='t')
+
       div(v-if="viewOnly") {{ inputVal }}
 </template>
 
@@ -42,6 +49,7 @@ export default {
       }
       return result
     },
+    isTimeValue () { return this.element.inputType === VISIT_TIME_TYPE },
     elementLabel () {
       let label = this.element.label
       if(this.element.recHeader) {
@@ -89,7 +97,7 @@ export default {
     timeSeries () {
       const ts = []
       let h, t
-      const restrictTimeSeries = this.element.recHeader && this.simulationDay === this.activeDayValue
+      const restrictTimeSeries = false //  this.element.recHeader && this.simulationDay === this.activeDayValue
       for(let i = 0; i < 24; i++) { // 24 hours
         h = (i < 10 ? '0' : '') + i // left pad with '0' if needed
         minIncr.forEach(incr => {

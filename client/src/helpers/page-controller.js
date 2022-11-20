@@ -176,7 +176,6 @@ class PageControllerInner {
   }
 
   async _loadData (routeIsUnlinkedPage) {
-    // await StoreHelper.loadConsumer(StoreHelper.getAuthdConsumerId())
     let visitId = this._getVisitId()
     await StoreHelper.loadVisitRecord(visitId)
     if (routeIsUnlinkedPage) {
@@ -184,18 +183,24 @@ class PageControllerInner {
       EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
       return Promise.resolve()
     }
-    if (StoreHelper.isSeedEditing()) {
-      await StoreHelper.loadSeedEditor()
-    } else if (StoreHelper.isInstructor()) {
+    if (StoreHelper.isInstructor()) {
+      if (dbApp) console.log('Instructor')
       await StoreHelper.loadCommon() // loads user and consumer
+      if (StoreHelper.isSeedEditing()) {
+        if (dbApp) console.log('seed editing')
+        await StoreHelper.loadSeedEditor()
+      }
     } else if (StoreHelper.isStudent()) {
+      if (dbApp) console.log('student')
       await StoreHelper.loadStudent2()
     }
     EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
     let visitInfo = store.state.visit.sVisitData || {}
+    if (dbApp) console.log('loadAsCurrentActivity',visitInfo.activity)
     await StoreHelper.loadAsCurrentActivity(visitInfo.activity)
     let activity = store.getters['activityStore/activity']
     if (!activity.assignment) {
+      if (dbApp) console.log('No assignment for activity', activity)
       return Promise.reject(new NoAssignmentLinked(visitInfo))
     }
   }

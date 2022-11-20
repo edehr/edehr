@@ -1,11 +1,11 @@
 <template lang="pug">
   transition(name="dialog")
     div(v-show="showingDialog")
-      div(:class="modalClass")
+      div(:class="modalClass", :style="{ zIndex: modalZ }")
       div(class="dialog-wrapper",
         :class="{ dragActive: moused }",
         ref="theDialog",
-        :style="{ top: top + 'px', left: left + 'px'}")
+        :style="{ top: top + 'px', left: left + 'px', zIndex: modalD }")
         // header
         div(class="dialog-header", v-dragged="onDragged")
           // header title with buttons
@@ -21,7 +21,7 @@
                   slot(name="save-button") {{ saveButtonLabel }}
           // header important content from outter container
           div
-            slot(name="footer-content")
+            slot(name="header-extra-content")
         // main body
         div(class="dialog-body", ref="theDialogBody",)
           slot(name="body") default body
@@ -78,7 +78,9 @@ export default {
       showingDialog: false,
       showTopButtons: false,
       top: 0,
-      left: 0
+      left: 0,
+      modalD: 901,
+      modalZ: 900,
     }
   },
   methods: {
@@ -141,6 +143,10 @@ export default {
     }
   },
   mounted () {
+    this.$store.dispatch('system/appDialogCountIncrement')
+    const cnt = this.$store.getters['system/appDialogCount']
+    this.modalD = cnt + 901
+    this.modalZ = cnt + 900
   }
 }
 </script>
@@ -194,7 +200,7 @@ export default {
 }
 .dialog-header{
   width: 100%;
-  max-height: 3rem;
+  max-height: 6rem;
   overflow-y: hidden;
   background-color: $grey03;
   border-bottom: 1px solid $grey30;
@@ -211,7 +217,7 @@ export default {
 
 .dialog-header-title {
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 1fr 1fr;
 }
 @media screen and (max-width: $main-width-threshold1){
   .dialog-header-title {
@@ -219,7 +225,7 @@ export default {
     flex-direction: column;
   }
   .dialog-header {
-    max-height: 6rem;
+    max-height: 12rem;
   }
 }
 

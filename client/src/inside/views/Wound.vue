@@ -7,14 +7,14 @@
       p Label: Wound
       p Data Key: wound
       p Component name: Wound
-      p Redirect: 
+      p Redirect:
       p Route name: wound
       p Full path: /ehr/current/assessments/wound
 </template>
 
 <script>
 import EhrPage from '../components/page/EhrPage'
-import EhrHelpV2 from '../components/page/ehr-helper'
+import EhrPageHelper from '../components/page/ehr-helper'
 
 export default {
   name: 'Wound',
@@ -28,7 +28,7 @@ export default {
   computed: {
   },
   created () {
-    this.ehrHelp = new EhrHelpV2(this, this.$store, this.pageDataKey)
+    this.ehrHelp = new EhrPageHelper(this.pageDataKey)
   },
   // must declare beforeRouteLeave on the component that is routed
   beforeRouteLeave (to, from, next) {

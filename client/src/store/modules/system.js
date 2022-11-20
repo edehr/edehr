@@ -6,6 +6,7 @@ const state = {
   _isLoading: false,
   apiData: {},
   apiError: '',
+  appDialogCount: 0,
   caseContextFeature: false,
   currentPageKey: '',
   isEditing: false,
@@ -21,7 +22,9 @@ const state = {
 const getters = {
   apiData: state => state.apiData,
   apiError: state => state.apiError,
+  appDialogCount: state => state.appDialogCount,
   caseContextFeature: state => state.caseContextFeature,
+  isEditing: state => state.isEditing,
   isLoading: state => state._isLoading,
   isSmallWindow: state => state.smallWindow,
   outsideShowButtonLabels: state => state.outsideShowButtonLabels,
@@ -31,6 +34,9 @@ const getters = {
 }
 
 const actions = {
+  appDialogCountIncrement: function ({commit}) {
+    commit('incrAppDialogCount')
+  },
   initialize: function ({ commit }) {
     commit('initialize')
   },
@@ -65,6 +71,9 @@ const mutations = {
   setApiData: (state, apiData) => {
     // console.log('System store set ApiData: ', apiData)
     state.apiData = apiData
+  },
+  incrAppDialogCount: (state) => {
+    state.appDialogCount++
   },
   setLoading: (state, isLoading) => {
     if (trace) console.log('system loading counter', isLoading)
