@@ -17,7 +17,7 @@ const assignment1 = {
 }
 const ej0SeedDef = {
   toolConsumer: '',
-  name: 'Erin Johns - CS#1 - Day 0 19:30',
+  name: 'Erin Johns - CS#1',
   description: _common +
     ' Based on Case Study #1.' +
     ' In this case the patient has chronic obstructive pulmonary disease (COPD) with a history of asthma.',
@@ -35,7 +35,7 @@ const assignment2 = {
 }
 const ej2SeedDef = {
   toolConsumer: '',
-  name: 'Erin Johns - CS#2 - Day 1 18:00',
+  name: 'Erin Johns - CS#2',
   description: _common +
     ' See: pages 31 up to 62 in Case Study #2 in https://pressbooks.bccampus.ca/healthcasestudies/ \n' +
     ' In this case the patient has chronic obstructive pulmonary disease (COPD) that is exacerbated due to community acquired pneumonia. ' +

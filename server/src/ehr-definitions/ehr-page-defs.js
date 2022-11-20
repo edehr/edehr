@@ -1550,7 +1550,7 @@ const DEFS = {
       },
       {
         elementKey: 'admissionTime',
-        defaultValue: '0.375',
+        defaultValue: '900',
         formIndex: '1',
         inputType: 'visitTime',
         label: 'Admission time',
@@ -1619,7 +1619,6 @@ const DEFS = {
       },
       {
         elementKey: 'diagnosis',
-        dependentOn: 'disable:consentForBlood',
         formIndex: '1',
         inputType: 'textarea',
         label: 'Physician admitting diagnosis',
@@ -16226,6 +16225,7 @@ const DEFS = {
         inputType: 'visitTime',
         label: 'Time of test',
         tableColumn: '6',
+        validation: 'time24',
         fqn: 'hematology.timeOfTest'
       },
       {
