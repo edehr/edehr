@@ -7,7 +7,7 @@ export function computeDateOfBirth (ageValue, demographicsDoB) {
   let dateStr
   if (ageValue) {
     const now = new Date()
-    const dob = new Date()
+    const dob = new Date(demographicsDoB)
     const isAfter = dob.getMonth() > now.getMonth() || dob.getMonth() === now.getMonth() && dob.getDay() > now.getDay()
     let nyr = now.getFullYear()
     nyr = nyr - ageValue

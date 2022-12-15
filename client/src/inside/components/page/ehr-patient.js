@@ -9,7 +9,7 @@ class EhrPatientC {
     let dateStr = computeDateOfBirth(demographics.personAge, demographics.dateOfBirth)
     const result = {}
     result.allergies = this._allergies(data)
-    result.codeStatus = demographics.codeStatus
+    result.codeStatus = visitDetails.codeStatus
     result.dateOfBirth = dateStr
     result.diagnosis = visitDetails.diagnosis
     result.gender = demographics.gender
