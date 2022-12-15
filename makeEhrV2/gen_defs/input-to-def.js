@@ -386,7 +386,7 @@ class RawInputToDef {
       if (dbug) console.log('Adding elementKey to entry ', entry)
       entry.elementKey = entry.inputType + ++missingKeyIndex
     }
-    assert(entry.pN, 'Why no page number for this entry?', entry)
+    assert(entry.pN, 'Why no page number for this entry? ' + JSON.stringify(entry))
     if(entry.inputType === PAGE_INPUT_TYPE) return
     assert(entry.fN, 'Why no form number for this entry?', entry)
     if(entry.inputType === PAGE_FORM) return

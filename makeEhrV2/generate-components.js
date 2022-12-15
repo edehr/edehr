@@ -155,10 +155,22 @@ function makeTree (defs, outfilename) {
   return tree
 }
 
+function sortSubTree(child) {
+  if (child && child.children && child.children.length > 0) {
+    child.children.sort( (a,b) => {
+      return a.def.menuIndex - b.def.menuIndex
+    })
+    child.children.forEach( c => sortSubTree(c))
+  }
+}
+
 function makeMenu (tree, outfilename) {
   var content = []
   content.push('[')
   var elements = []
+  tree.root.children.forEach((child) => {
+    sortSubTree(child)
+  })
   tree.root.children.forEach((c) => elements.push(JSON.stringify(c, null, 2)))
   content.push(elements.join(','))
   content.push(']')
