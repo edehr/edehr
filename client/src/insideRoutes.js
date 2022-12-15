@@ -350,6 +350,13 @@ export function inside () {
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/custom/Hematology.vue'),
       meta: { layout: 'inside', label: 'Hematology', topLevel: 'chart', zone: 'ehr' }
+    },
+    {
+      path: '/ehr/current/discharge-plan',
+      name: 'discharge-plan',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/DischargePlan.vue'),
+      meta: { layout: 'inside', label: 'Discharge plan', topLevel: 'current', zone: 'ehr' }
     }
   ]
 }

@@ -24,7 +24,7 @@ const TOKEN_PATH = '.token.json'
 function getSheets(auth) {
   const sheets = google.sheets({ version: 'v4', auth })
   const RANGE = '!AG2:BI300'
-  getSheet(sheets, INPUT_SPREADSHEET_ID, 'pages!I2:N100', 'raw_data/inside-pages.txt')
+  getSheet(sheets, INPUT_SPREADSHEET_ID, 'pages!J2:P100', 'raw_data/inside-pages.txt')
   getSheet(sheets, INPUT_SPREADSHEET_ID, 'External'+RANGE, 'raw_data/external-resources.txt')
   getSheet(sheets, INPUT_SPREADSHEET_ID, 'pProfile'+RANGE, 'raw_data/patient-profile.txt')
   getSheet(sheets, INPUT_SPREADSHEET_ID, 'pChart'+RANGE, 'raw_data/patient-chart.txt')

@@ -77,7 +77,7 @@ class PageControllerInner {
       // See the last sections of this page change handler for the case a user has
       // entered the ehr demo is has paged to another ehr page
       await EhrOnlyDemo.selectCaseStudy(demoOnlyKey)
-      // console.log('loaded demo only ', demoOnlyKey)
+      if(dbApp) console.log('loaded demo only ', demoOnlyKey)
       EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
       return
     }
@@ -145,6 +145,7 @@ class PageControllerInner {
         EventBus.$emit(PAGE_DATA_READY_EVENT)
       }
       if (EhrOnlyDemo.isActiveEhrOnlyDemo()) {
+        if(dbApp) console.log('the ehr only demo is active ')
         // the ehr only demo is active
         // (which means neither the full demo nor full application are active
         // and the user has changed to another ehr page

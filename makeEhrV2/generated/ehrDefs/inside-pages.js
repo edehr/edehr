@@ -4,7 +4,8 @@ module.exports = function () {
     'path': '/ehr',
     'routeName': 'patient',
     'label': 'Patient profile',
-    'redirect': 'demographics'
+    'redirect': 'demographics',
+    'menuIndex': '1'
   },
   {
     'path': '/ehr/patient',
@@ -12,7 +13,8 @@ module.exports = function () {
     'pageDataKey': 'demographics',
     'label': 'Demographics',
     'redirect': '',
-    'generateComponent': 'yes'
+    'generateComponent': 'yes',
+    'menuIndex': '2'
   },
   {
     'path': '/ehr/patient',
@@ -20,14 +22,16 @@ module.exports = function () {
     'pageDataKey': 'allergies',
     'label': 'Allergies',
     'redirect': '',
-    'generateComponent': 'yes'
+    'generateComponent': 'yes',
+    'menuIndex': '3'
   },
   {
     'path': '/ehr/patient',
     'routeName': 'history',
     'label': 'History',
     'redirect': 'medical',
-    'generateComponent': 'yes'
+    'generateComponent': 'yes',
+    'menuIndex': '4'
   },
   {
     'path': '/ehr/patient/history',
@@ -35,7 +39,8 @@ module.exports = function () {
     'pageDataKey': 'medical',
     'label': 'Medical history',
     'redirect': '',
-    'generateComponent': 'yes'
+    'generateComponent': 'yes',
+    'menuIndex': '5'
   },
   {
     'path': '/ehr/patient/history',
@@ -43,7 +48,8 @@ module.exports = function () {
     'pageDataKey': 'psychosocial',
     'label': 'Psychosocial history',
     'redirect': '',
-    'generateComponent': 'yes'
+    'generateComponent': 'yes',
+    'menuIndex': '6'
   },
   {
     'path': '/ehr/patient/history',
@@ -51,7 +57,8 @@ module.exports = function () {
     'pageDataKey': 'surgical',
     'label': 'Surgical history',
     'redirect': '',
-    'generateComponent': 'yes'
+    'generateComponent': 'yes',
+    'menuIndex': '7'
   },
   {
     'path': '/ehr/patient/history',
@@ -59,7 +66,8 @@ module.exports = function () {
     'pageDataKey': 'immunization',
     'label': 'Immunization history',
     'redirect': '',
-    'generateComponent': 'yes'
+    'generateComponent': 'yes',
+    'menuIndex': '8'
   },
   {
     'path': '/ehr/patient/history',
@@ -67,7 +75,8 @@ module.exports = function () {
     'pageDataKey': 'familyHistory',
     'label': 'Family history',
     'redirect': '',
-    'generateComponent': 'yes'
+    'generateComponent': 'yes',
+    'menuIndex': '9'
   },
   {
     'path': '/ehr/patient',
@@ -75,7 +84,8 @@ module.exports = function () {
     'pageDataKey': 'careTeam',
     'label': 'Care team',
     'redirect': '',
-    'generateComponent': 'yes'
+    'generateComponent': 'yes',
+    'menuIndex': '10'
   },
   {
     'path': '/ehr/patient',
@@ -83,13 +93,15 @@ module.exports = function () {
     'pageDataKey': 'pastAppointments',
     'label': 'Past appointments',
     'redirect': '',
-    'generateComponent': 'yes'
+    'generateComponent': 'yes',
+    'menuIndex': '11'
   },
   {
     'path': '/ehr',
     'routeName': 'current',
     'label': 'Current visit',
-    'redirect': 'visit-details'
+    'redirect': 'visit-details',
+    'menuIndex': '12'
   },
   {
     'path': '/ehr/current',
@@ -97,7 +109,8 @@ module.exports = function () {
     'pageDataKey': 'visit',
     'label': 'Visit details and location',
     'redirect': '',
-    'generateComponent': 'yes'
+    'generateComponent': 'yes',
+    'menuIndex': '13'
   },
   {
     'path': '/ehr/current',
@@ -105,20 +118,23 @@ module.exports = function () {
     'pageDataKey': 'vitals',
     'label': 'Vital signs',
     'redirect': '',
-    'generateComponent': 'custom'
+    'generateComponent': 'custom',
+    'menuIndex': '14'
   },
   {
     'path': '/ehr/current',
     'routeName': 'fluid-balance',
     'pageDataKey': 'fluidBalance',
     'label': 'Fluid balance',
-    'generateComponent': 'yes'
+    'generateComponent': 'yes',
+    'menuIndex': '15'
   },
   {
     'path': '/ehr/current',
     'routeName': 'assessments',
     'label': 'Assessments',
-    'redirect': 'neurological'
+    'redirect': 'neurological',
+    'menuIndex': '16'
   },
   {
     'path': '/ehr/current/assessments',
@@ -126,7 +142,8 @@ module.exports = function () {
     'pageDataKey': 'neurological',
     'label': 'Neurological assessment',
     'redirect': '',
-    'generateComponent': 'yes'
+    'generateComponent': 'yes',
+    'menuIndex': '17'
   },
   {
     'path': '/ehr/current/assessments',
@@ -134,7 +151,8 @@ module.exports = function () {
     'pageDataKey': 'respiratory',
     'label': 'Respiratory assessment',
     'redirect': '',
-    'generateComponent': 'yes'
+    'generateComponent': 'yes',
+    'menuIndex': '18'
   },
   {
     'path': '/ehr/current/assessments',
@@ -142,7 +160,8 @@ module.exports = function () {
     'pageDataKey': 'cardiovascular',
     'label': 'Cardiovascular assessment',
     'redirect': '',
-    'generateComponent': 'yes'
+    'generateComponent': 'yes',
+    'menuIndex': '19'
   },
   {
     'path': '/ehr/current/assessments',
@@ -150,7 +169,8 @@ module.exports = function () {
     'pageDataKey': 'gastrointestinal',
     'label': 'Gastrointestinal assessment',
     'redirect': '',
-    'generateComponent': 'yes'
+    'generateComponent': 'yes',
+    'menuIndex': '20'
   },
   {
     'path': '/ehr/current/assessments',
@@ -158,7 +178,8 @@ module.exports = function () {
     'pageDataKey': 'genitourinary',
     'label': 'Genitourinary assessment',
     'redirect': '',
-    'generateComponent': 'yes'
+    'generateComponent': 'yes',
+    'menuIndex': '21'
   },
   {
     'path': '/ehr/current/assessments',
@@ -166,7 +187,8 @@ module.exports = function () {
     'pageDataKey': 'musculoskeletal',
     'label': 'Musculoskeletal assessment',
     'redirect': '',
-    'generateComponent': 'yes'
+    'generateComponent': 'yes',
+    'menuIndex': '22'
   },
   {
     'path': '/ehr/current/assessments',
@@ -174,7 +196,8 @@ module.exports = function () {
     'pageDataKey': 'pain',
     'label': 'Pain assessment',
     'redirect': '',
-    'generateComponent': 'yes'
+    'generateComponent': 'yes',
+    'menuIndex': '23'
   },
   {
     'path': '/ehr/current/assessments',
@@ -182,13 +205,15 @@ module.exports = function () {
     'pageDataKey': 'biopsychosocial',
     'label': 'Biopsychosocial assessment',
     'redirect': '',
-    'generateComponent': 'yes'
+    'generateComponent': 'yes',
+    'menuIndex': '24'
   },
   {
     'path': '/ehr/current',
     'routeName': 'no-med',
     'label': 'Non-medication orders',
-    'redirect': 'no-med-orders'
+    'redirect': 'no-med-orders',
+    'menuIndex': '25'
   },
   {
     'path': '/ehr/current/no-med',
@@ -196,7 +221,8 @@ module.exports = function () {
     'pageDataKey': 'nonmedOrders',
     'label': 'Orders',
     'redirect': '',
-    'generateComponent': 'yes'
+    'generateComponent': 'yes',
+    'menuIndex': '26'
   },
   {
     'path': '/ehr/current/no-med',
@@ -204,7 +230,8 @@ module.exports = function () {
     'pageDataKey': 'referrals',
     'label': 'Referrals to other disciplines',
     'redirect': '',
-    'generateComponent': 'yes'
+    'generateComponent': 'yes',
+    'menuIndex': '27'
   },
   {
     'path': '/ehr/current/no-med',
@@ -212,7 +239,8 @@ module.exports = function () {
     'pageDataKey': 'labRequisitions',
     'label': 'Lab requisitions',
     'redirect': '',
-    'generateComponent': 'yes'
+    'generateComponent': 'yes',
+    'menuIndex': '28'
   },
   {
     'path': '/ehr/current',
@@ -220,7 +248,8 @@ module.exports = function () {
     'pageDataKey': 'medicationOrders',
     'label': 'Medication orders',
     'redirect': '',
-    'generateComponent': 'yes'
+    'generateComponent': 'yes',
+    'menuIndex': '29'
   },
   {
     'path': '/ehr/current',
@@ -228,7 +257,8 @@ module.exports = function () {
     'pageDataKey': 'medAdminRec',
     'label': 'Medication administration records',
     'redirect': '',
-    'generateComponent': 'custom'
+    'generateComponent': 'custom',
+    'menuIndex': '30'
   },
   {
     'path': '/ehr/current',
@@ -236,7 +266,8 @@ module.exports = function () {
     'pageDataKey': 'dischargeSummary',
     'label': 'Discharge summary',
     'redirect': '',
-    'generateComponent': 'custom'
+    'generateComponent': 'custom',
+    'menuIndex': '32'
   },
   {
     'path': '/ehr/current',
@@ -244,13 +275,15 @@ module.exports = function () {
     'pageDataKey': 'billing',
     'label': 'Billing',
     'redirect': '',
-    'generateComponent': 'yes'
+    'generateComponent': 'yes',
+    'menuIndex': '33'
   },
   {
     'path': '/ehr',
     'routeName': 'chart',
     'label': 'Patient chart',
-    'redirect': 'progress-notes'
+    'redirect': 'progress-notes',
+    'menuIndex': '34'
   },
   {
     'path': '/ehr/chart',
@@ -258,7 +291,8 @@ module.exports = function () {
     'pageDataKey': 'progressNotes',
     'label': 'Progress notes',
     'redirect': '',
-    'generateComponent': 'yes'
+    'generateComponent': 'yes',
+    'menuIndex': '35'
   },
   {
     'path': '/ehr/chart',
@@ -266,13 +300,15 @@ module.exports = function () {
     'pageDataKey': 'carePlan',
     'label': 'Interprofessional plan of care',
     'redirect': '',
-    'generateComponent': 'yes'
+    'generateComponent': 'yes',
+    'menuIndex': '36'
   },
   {
     'path': '/ehr/chart',
     'routeName': 'reports',
     'label': 'Reports and documents',
-    'redirect': 'consults'
+    'redirect': 'consults',
+    'menuIndex': '37'
   },
   {
     'path': '/ehr/chart/reports',
@@ -280,7 +316,8 @@ module.exports = function () {
     'pageDataKey': 'consults',
     'label': 'Consults',
     'redirect': '',
-    'generateComponent': 'yes'
+    'generateComponent': 'yes',
+    'menuIndex': '38'
   },
   {
     'path': '/ehr/chart/reports',
@@ -288,7 +325,8 @@ module.exports = function () {
     'pageDataKey': 'labResults',
     'label': 'Laboratory reports',
     'redirect': '',
-    'generateComponent': 'yes'
+    'generateComponent': 'yes',
+    'menuIndex': '39'
   },
   {
     'path': '/ehr/chart/reports',
@@ -296,7 +334,8 @@ module.exports = function () {
     'pageDataKey': 'medicalImaging',
     'label': 'Medical imaging',
     'redirect': '',
-    'generateComponent': 'yes'
+    'generateComponent': 'yes',
+    'menuIndex': '40'
   },
   {
     'path': '/ehr/chart/reports',
@@ -304,13 +343,15 @@ module.exports = function () {
     'pageDataKey': 'operationReports',
     'label': 'Operative and anaesthesia records',
     'redirect': '',
-    'generateComponent': 'yes'
+    'generateComponent': 'yes',
+    'menuIndex': '41'
   },
   {
     'path': '/ehr',
     'routeName': 'external',
     'label': 'External resources',
-    'redirect': 'assessment-tools'
+    'redirect': 'assessment-tools',
+    'menuIndex': '42'
   },
   {
     'path': '/ehr/external',
@@ -318,7 +359,8 @@ module.exports = function () {
     'pageDataKey': 'assessmentTools',
     'label': 'Standardized assessment tools',
     'redirect': '',
-    'generateComponent': 'yes'
+    'generateComponent': 'yes',
+    'menuIndex': '43'
   },
   {
     'path': '/ehr/external',
@@ -326,7 +368,8 @@ module.exports = function () {
     'pageDataKey': 'codeLookup',
     'label': 'Code lookup',
     'redirect': '',
-    'generateComponent': 'yes'
+    'generateComponent': 'yes',
+    'menuIndex': '44'
   },
   {
     'path': '/ehr/external',
@@ -334,7 +377,8 @@ module.exports = function () {
     'pageDataKey': 'diagnosticCodes',
     'label': 'Diagnostic codes (ICD-10)',
     'redirect': '',
-    'generateComponent': 'yes'
+    'generateComponent': 'yes',
+    'menuIndex': '45'
   },
   {
     'path': '/ehr/external',
@@ -342,7 +386,8 @@ module.exports = function () {
     'pageDataKey': 'interventionCodes',
     'label': 'Intervention codes',
     'redirect': '',
-    'generateComponent': 'yes'
+    'generateComponent': 'yes',
+    'menuIndex': '46'
   },
   {
     'path': '/ehr/external',
@@ -350,7 +395,8 @@ module.exports = function () {
     'pageDataKey': 'caseMixGroup',
     'label': 'Case mix group',
     'redirect': '',
-    'generateComponent': 'yes'
+    'generateComponent': 'yes',
+    'menuIndex': '47'
   },
   {
     'path': '/ehr/external',
@@ -358,7 +404,8 @@ module.exports = function () {
     'pageDataKey': 'testPage',
     'label': 'Test Page',
     'redirect': '',
-    'generateComponent': 'yes'
+    'generateComponent': 'yes',
+    'menuIndex': '48'
   },
   {
     'path': '/ehr/external',
@@ -366,7 +413,8 @@ module.exports = function () {
     'pageDataKey': 'testTable',
     'label': 'Test Table',
     'redirect': '',
-    'generateComponent': 'yes'
+    'generateComponent': 'yes',
+    'menuIndex': '49'
   },
   {
     'path': '/ehr/current/assessments',
@@ -374,7 +422,8 @@ module.exports = function () {
     'pageDataKey': 'integumentaryAssessment',
     'label': 'Integumentary assessment',
     'redirect': '',
-    'generateComponent': 'custom'
+    'generateComponent': 'custom',
+    'menuIndex': '50'
   },
   {
     'path': '/ehr/chart/reports',
@@ -382,7 +431,17 @@ module.exports = function () {
     'pageDataKey': 'hematology',
     'label': 'Hematology',
     'redirect': '',
-    'generateComponent': 'custom'
+    'generateComponent': 'custom',
+    'menuIndex': '51'
+  },
+  {
+    'path': '/ehr/current',
+    'routeName': 'discharge-plan',
+    'pageDataKey': 'dishargeplan',
+    'label': 'Discharge plan',
+    'redirect': '',
+    'generateComponent': 'yes',
+    'menuIndex': '31'
   }
 ]
 }

@@ -1656,11 +1656,25 @@ const DEFS = {
         fqn: 'visit.consentForBlood'
       },
       {
+        elementKey: 'codeStatus',
+        formIndex: '1',
+        inputType: 'text',
+        label: 'Code status',
+        fqn: 'visit.codeStatus'
+      },
+      {
         elementKey: 'diagnosis',
         formIndex: '1',
         inputType: 'textarea',
         label: 'Physician admitting diagnosis',
         fqn: 'visit.diagnosis'
+      },
+      {
+        elementKey: 'notes',
+        formIndex: '1',
+        inputType: 'textarea',
+        label: 'Admitting notes',
+        fqn: 'visit.notes'
       },
       {
         elementKey: 'location',
@@ -1728,7 +1742,8 @@ const DEFS = {
               'status',
               'locationLabel',
               'consentForTreatment',
-              'consentForBlood'
+              'consentForBlood',
+              'codeStatus'
             ]
           },
           {
@@ -1736,7 +1751,8 @@ const DEFS = {
             formCss: 'grid-left-to-right-1',
             gIndex: '2',
             gChildren: [
-              'diagnosis'
+              'diagnosis',
+              'notes'
             ]
           }
         ]
@@ -10567,7 +10583,7 @@ const DEFS = {
           formKey: 'table',
           ehr_groups: [
             {
-              elementKey: 'ehr_group117',
+              elementKey: 'ehr_group119',
               formCss: 'record-header',
               gIndex: '1',
               gChildren: [
@@ -10578,7 +10594,7 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group118',
+              elementKey: 'ehr_group120',
               gIndex: '2',
               gChildren: [
                 'consultReport',
@@ -10707,7 +10723,7 @@ const DEFS = {
           formKey: 'table',
           ehr_groups: [
             {
-              elementKey: 'ehr_group119',
+              elementKey: 'ehr_group121',
               formCss: 'record-header',
               gIndex: '1',
               gChildren: [
@@ -10718,7 +10734,7 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group120',
+              elementKey: 'ehr_group122',
               gIndex: '2',
               gChildren: [
                 'laboratoryReport',
@@ -10847,7 +10863,7 @@ const DEFS = {
           formKey: 'table',
           ehr_groups: [
             {
-              elementKey: 'ehr_group121',
+              elementKey: 'ehr_group123',
               formCss: 'record-header',
               gIndex: '1',
               gChildren: [
@@ -10858,7 +10874,7 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group122',
+              elementKey: 'ehr_group124',
               gIndex: '2',
               gChildren: [
                 'laboratoryReport',
@@ -10987,7 +11003,7 @@ const DEFS = {
           formKey: 'table',
           ehr_groups: [
             {
-              elementKey: 'ehr_group123',
+              elementKey: 'ehr_group125',
               formCss: 'record-header',
               gIndex: '1',
               gChildren: [
@@ -10998,7 +11014,7 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group124',
+              elementKey: 'ehr_group126',
               gIndex: '2',
               gChildren: [
                 'laboratoryReport',
@@ -11167,7 +11183,7 @@ const DEFS = {
         isPageForm: true,
         ehr_groups: [
           {
-            elementKey: 'ehr_group148',
+            elementKey: 'ehr_group150',
             gIndex: '1',
             gChildren: [
               {
@@ -11267,7 +11283,7 @@ const DEFS = {
         isPageForm: true,
         ehr_groups: [
           {
-            elementKey: 'ehr_group149',
+            elementKey: 'ehr_group151',
             gIndex: '1',
             gChildren: [
               'snomed',
@@ -11476,7 +11492,7 @@ const DEFS = {
           formKey: 'table',
           ehr_groups: [
             {
-              elementKey: 'ehr_group150',
+              elementKey: 'ehr_group152',
               formCss: 'record-header',
               gIndex: '1',
               gChildren: [
@@ -11487,7 +11503,7 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group151',
+              elementKey: 'ehr_group153',
               gIndex: '2',
               gChildren: [
                 'icd10',
@@ -11656,7 +11672,7 @@ const DEFS = {
           formKey: 'table',
           ehr_groups: [
             {
-              elementKey: 'ehr_group152',
+              elementKey: 'ehr_group154',
               formCss: 'record-header',
               gIndex: '1',
               gChildren: [
@@ -11667,7 +11683,7 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group153',
+              elementKey: 'ehr_group155',
               formCss: 'grid-left-to-right-1',
               gIndex: '2',
               gChildren: [
@@ -11855,7 +11871,7 @@ const DEFS = {
           formKey: 'table',
           ehr_groups: [
             {
-              elementKey: 'ehr_group154',
+              elementKey: 'ehr_group156',
               formCss: 'record-header',
               gIndex: '1',
               gChildren: [
@@ -11866,7 +11882,7 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group155',
+              elementKey: 'ehr_group157',
               gIndex: '2',
               gChildren: [
                 'clinicalCategory',
@@ -12209,11 +12225,11 @@ const DEFS = {
         fqn: 'testPage.textDateDate'
       },
       {
-        elementKey: 'spacer160',
+        elementKey: 'spacer162',
         formIndex: '3',
         inputType: 'spacer',
         label: 'TextDate',
-        fqn: 'testPage.spacer160'
+        fqn: 'testPage.spacer162'
       },
       {
         elementKey: 'name',
@@ -12238,7 +12254,7 @@ const DEFS = {
         isPageForm: true,
         ehr_groups: [
           {
-            elementKey: 'ehr_group156',
+            elementKey: 'ehr_group158',
             label: 'A group label',
             gIndex: '1',
             gChildren: [
@@ -12255,7 +12271,7 @@ const DEFS = {
             ]
           },
           {
-            elementKey: 'ehr_group157',
+            elementKey: 'ehr_group159',
             label: 'Second group',
             gIndex: '2',
             gChildren: [
@@ -12323,7 +12339,7 @@ const DEFS = {
           formKey: 'table1',
           ehr_groups: [
             {
-              elementKey: 'ehr_group158',
+              elementKey: 'ehr_group160',
               label: 'Group 1',
               gIndex: '1',
               gChildren: [
@@ -12345,7 +12361,7 @@ const DEFS = {
         isPageForm: true,
         ehr_groups: [
           {
-            elementKey: 'ehr_group159',
+            elementKey: 'ehr_group161',
             label: 'A group label',
             gIndex: '1',
             gChildren: [
@@ -12355,7 +12371,7 @@ const DEFS = {
               'time',
               'textDate',
               'textDateDate',
-              'spacer160',
+              'spacer162',
               'name',
               'place'
             ]
@@ -12694,13 +12710,13 @@ const DEFS = {
         fqn: 'testTable.cd1Date'
       },
       {
-        elementKey: 'spacer166',
+        elementKey: 'spacer168',
         formIndex: '2',
         inputType: 'spacer',
         label: 'C D 1',
         tableColumn: '2',
         tableLabel: 'Chk 1',
-        fqn: 'testTable.spacer166'
+        fqn: 'testTable.spacer168'
       },
       {
         elementKey: 'cd2',
@@ -12722,13 +12738,13 @@ const DEFS = {
         fqn: 'testTable.cd2Date'
       },
       {
-        elementKey: 'spacer167',
+        elementKey: 'spacer169',
         formIndex: '2',
         inputType: 'spacer',
         label: 'C D 2',
         tableColumn: '3',
         tableLabel: 'Chk 2',
-        fqn: 'testTable.spacer167'
+        fqn: 'testTable.spacer169'
       },
       {
         elementKey: 'td1',
@@ -12749,13 +12765,13 @@ const DEFS = {
         fqn: 'testTable.td1Date'
       },
       {
-        elementKey: 'spacer168',
+        elementKey: 'spacer170',
         formIndex: '2',
         inputType: 'spacer',
         label: 'TextDate',
         tableColumn: '4',
         tableLabel: 'Txt 1',
-        fqn: 'testTable.spacer168'
+        fqn: 'testTable.spacer170'
       },
       {
         elementKey: 'referralName',
@@ -13069,7 +13085,7 @@ const DEFS = {
           formKey: 'table1',
           ehr_groups: [
             {
-              elementKey: 'ehr_group161',
+              elementKey: 'ehr_group163',
               label: 'Group 1',
               gIndex: '1',
               gChildren: [
@@ -13085,7 +13101,7 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group162',
+              elementKey: 'ehr_group164',
               gIndex: '2',
               gChildren: [
                 {
@@ -13120,7 +13136,7 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group163',
+              elementKey: 'ehr_group165',
               formCss: 'full-width',
               gIndex: '3',
               gChildren: [
@@ -13171,7 +13187,7 @@ const DEFS = {
             items: [
               'cd1',
               'cd1Date',
-              'spacer166'
+              'spacer168'
             ]
           },
           {
@@ -13180,7 +13196,7 @@ const DEFS = {
             items: [
               'cd2',
               'cd2Date',
-              'spacer167'
+              'spacer169'
             ]
           },
           {
@@ -13189,7 +13205,7 @@ const DEFS = {
             items: [
               'td1',
               'td1Date',
-              'spacer168'
+              'spacer170'
             ]
           },
           {
@@ -13223,7 +13239,7 @@ const DEFS = {
           formKey: 'stacked',
           ehr_groups: [
             {
-              elementKey: 'ehr_group164',
+              elementKey: 'ehr_group166',
               formCss: 'record-header',
               gIndex: '1',
               gChildren: [
@@ -13234,22 +13250,22 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group165',
+              elementKey: 'ehr_group167',
               gIndex: '2',
               gChildren: [
                 'cd1',
                 'cd1Date',
-                'spacer166',
+                'spacer168',
                 'cd2',
                 'cd2Date',
-                'spacer167',
+                'spacer169',
                 'td1',
                 'td1Date',
-                'spacer168'
+                'spacer170'
               ]
             },
             {
-              elementKey: 'ehr_group169',
+              elementKey: 'ehr_group171',
               gIndex: '3',
               gChildren: [
                 'referralName',
@@ -17435,10 +17451,10 @@ const DEFS = {
         fqn: 'hematology.cellCntOtherAbs'
       },
       {
-        elementKey: 'spacer137',
+        elementKey: 'spacer139',
         formIndex: '2',
         inputType: 'spacer',
-        fqn: 'hematology.spacer137'
+        fqn: 'hematology.spacer139'
       },
       {
         elementKey: 'cellCntOtherSpecify',
@@ -17584,10 +17600,10 @@ const DEFS = {
         fqn: 'hematology.rcmNormal'
       },
       {
-        elementKey: 'spacer140',
+        elementKey: 'spacer142',
         formIndex: '2',
         inputType: 'spacer',
-        fqn: 'hematology.spacer140'
+        fqn: 'hematology.spacer142'
       },
       {
         elementKey: 'rcmConsistent',
@@ -17598,10 +17614,10 @@ const DEFS = {
         fqn: 'hematology.rcmConsistent'
       },
       {
-        elementKey: 'spacer141',
+        elementKey: 'spacer143',
         formIndex: '2',
         inputType: 'spacer',
-        fqn: 'hematology.spacer141'
+        fqn: 'hematology.spacer143'
       },
       {
         elementKey: 'rcmAcanthocytes',
@@ -17927,11 +17943,11 @@ const DEFS = {
         fqn: 'hematology.rcmICC'
       },
       {
-        elementKey: 'spacer142',
+        elementKey: 'spacer144',
         formIndex: '2',
         inputType: 'spacer',
         label: 'Irregularly Contracted Cells (ICC) grading',
-        fqn: 'hematology.spacer142'
+        fqn: 'hematology.spacer144'
       },
       {
         elementKey: 'rcmICCBite',
@@ -18102,16 +18118,16 @@ const DEFS = {
         fqn: 'hematology.rbcComments'
       },
       {
-        elementKey: 'spacer145',
+        elementKey: 'spacer147',
         formIndex: '2',
         inputType: 'spacer',
-        fqn: 'hematology.spacer145'
+        fqn: 'hematology.spacer147'
       },
       {
-        elementKey: 'spacer146',
+        elementKey: 'spacer148',
         formIndex: '2',
         inputType: 'spacer',
-        fqn: 'hematology.spacer146'
+        fqn: 'hematology.spacer148'
       },
       {
         elementKey: 'referralToHema',
@@ -18270,7 +18286,7 @@ const DEFS = {
           formKey: 'tableCbcAnalysis',
           ehr_groups: [
             {
-              elementKey: 'ehr_group125',
+              elementKey: 'ehr_group127',
               formCss: 'record-header',
               gIndex: '1',
               gChildren: [
@@ -18281,7 +18297,7 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group126',
+              elementKey: 'ehr_group128',
               gIndex: '2',
               gChildren: [
                 'patientName',
@@ -18292,7 +18308,7 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group127',
+              elementKey: 'ehr_group129',
               label: 'Automated analyzer',
               gIndex: '3',
               gChildren: [
@@ -18329,7 +18345,7 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group128',
+              elementKey: 'ehr_group130',
               gIndex: '4',
               gChildren: [
                 'comments'
@@ -19069,7 +19085,7 @@ const DEFS = {
           formKey: 'tablePbfReview',
           ehr_groups: [
             {
-              elementKey: 'ehr_group129',
+              elementKey: 'ehr_group131',
               formCss: 'record-header',
               gIndex: '1',
               gChildren: [
@@ -19080,7 +19096,7 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group130',
+              elementKey: 'ehr_group132',
               gIndex: '2',
               gChildren: [
                 'patientName',
@@ -19091,7 +19107,7 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group131',
+              elementKey: 'ehr_group133',
               label: 'CBC Analysis',
               formCss: 'grid-left-to-right-1',
               gIndex: '3',
@@ -19100,7 +19116,7 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group132',
+              elementKey: 'ehr_group134',
               label: 'Actions',
               formCss: 'grid-left-to-right-1',
               gIndex: '4',
@@ -19111,7 +19127,7 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group133',
+              elementKey: 'ehr_group135',
               label: 'WBC Estimate',
               formCss: 'grid-left-to-right-4',
               gIndex: '5',
@@ -19136,7 +19152,7 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group134',
+              elementKey: 'ehr_group136',
               label: 'PLT Estimate',
               formCss: 'grid-left-to-right-4',
               gIndex: '6',
@@ -19161,7 +19177,7 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group135',
+              elementKey: 'ehr_group137',
               label: 'PLT morphology',
               formCss: 'grid-left-to-right-1',
               gIndex: '7',
@@ -19172,7 +19188,7 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group136',
+              elementKey: 'ehr_group138',
               label: 'WBC Differential',
               formCss: 'grid-left-to-right-2',
               gIndex: '8',
@@ -19201,14 +19217,14 @@ const DEFS = {
                 'cellCntReactiveLymphsAbs',
                 'cellCntOther',
                 'cellCntOtherAbs',
-                'spacer137',
+                'spacer139',
                 'cellCntOtherSpecify',
                 'cellCntTotal',
                 'cellCntNRBCs'
               ]
             },
             {
-              elementKey: 'ehr_group138',
+              elementKey: 'ehr_group140',
               label: 'White Cell Morphology',
               gIndex: '9',
               gChildren: [
@@ -19223,15 +19239,15 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group139',
+              elementKey: 'ehr_group141',
               label: 'Red Cell Morphology',
               formCss: 'grid-left-to-right-2',
               gIndex: '10',
               gChildren: [
                 'rcmNormal',
-                'spacer140',
+                'spacer142',
                 'rcmConsistent',
-                'spacer141',
+                'spacer143',
                 'rcmAcanthocytes',
                 'rcmAcanthocytesGrading',
                 'rcmCodocytes',
@@ -19251,7 +19267,7 @@ const DEFS = {
                 'rcmSpherocytes',
                 'rcmSpherocytesGrading',
                 'rcmICC',
-                'spacer142',
+                'spacer144',
                 'rcmICCBite',
                 'rcmICCBiteGrading',
                 'rcmICCHelmut',
@@ -19261,7 +19277,7 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group143',
+              elementKey: 'ehr_group145',
               label: 'RBC Inclusions',
               gIndex: '11',
               gChildren: [
@@ -19273,17 +19289,17 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group144',
+              elementKey: 'ehr_group146',
               formCss: 'grid-left-to-right-1',
               gIndex: '12',
               gChildren: [
                 'rbcComments',
-                'spacer145',
-                'spacer146'
+                'spacer147',
+                'spacer148'
               ]
             },
             {
-              elementKey: 'ehr_group147',
+              elementKey: 'ehr_group149',
               formCss: 'grid-left-to-right-1',
               gIndex: '13',
               gChildren: [
@@ -19410,6 +19426,194 @@ const DEFS = {
             rbcComments: '',
             referralToHema: '',
             explain: ''
+          }
+        }
+      }
+    }
+  },
+  dishargeplan: {
+    pageDataKey: 'dishargeplan',
+    pageTitle: 'Discharge plan',
+    pIndex: '44',
+    hasGridTable: true,
+    pageChildren: [
+      {
+        elementKey: 'name',
+        formIndex: '1',
+        inputType: 'text',
+        label: 'Name',
+        mandatory: true,
+        tableColumn: '1',
+        tableLabel: 'Identification',
+        recHeader: true,
+        fqn: 'dishargeplan.name'
+      },
+      {
+        elementKey: 'profession',
+        formIndex: '1',
+        inputType: 'text',
+        label: 'Profession',
+        mandatory: true,
+        tableColumn: '1',
+        recHeader: true,
+        fqn: 'dishargeplan.profession'
+      },
+      {
+        elementKey: 'day',
+        formIndex: '1',
+        inputType: 'visitDay',
+        label: 'Day',
+        mandatory: true,
+        tableColumn: '1',
+        validation: 'visitDay',
+        recHeader: true,
+        fqn: 'dishargeplan.day'
+      },
+      {
+        elementKey: 'time',
+        formIndex: '1',
+        inputType: 'visitTime',
+        label: 'Time',
+        mandatory: true,
+        tableColumn: '1',
+        validation: 'time24',
+        recHeader: true,
+        fqn: 'dishargeplan.time'
+      },
+      {
+        elementKey: 'goal',
+        formIndex: '1',
+        inputType: 'text',
+        label: 'Goal',
+        tableColumn: '2',
+        tableLabel: 'Goal',
+        fqn: 'dishargeplan.goal'
+      },
+      {
+        elementKey: 'interventions',
+        formIndex: '1',
+        formCss: 'grid-span-3-columns',
+        inputType: 'textarea',
+        label: 'Intervention',
+        tableColumn: '3',
+        tableLabel: 'Intervention',
+        fqn: 'dishargeplan.interventions'
+      },
+      {
+        elementKey: 'evaluation',
+        formIndex: '1',
+        formCss: 'grid-span-3-columns',
+        inputType: 'textarea',
+        label: 'Evaluation of intervention',
+        tableColumn: '4',
+        tableLabel: 'Evaluation of intervention',
+        fqn: 'dishargeplan.evaluation'
+      },
+      {
+        elementKey: 'status',
+        formIndex: '1',
+        inputType: 'select',
+        label: 'Status',
+        options: [
+          {
+            key: 'In progress',
+            text: 'In progress'
+          },
+          {
+            key: 'Complete',
+            text: 'Complete'
+          }
+        ],
+        tableColumn: '5',
+        tableLabel: 'Status',
+        fqn: 'dishargeplan.status'
+      }
+    ],
+    pageElements: {
+      table: {
+        elementKey: 'table',
+        tableKey: 'table',
+        isTable: true,
+        hasRecHeader: false,
+        label: 'Discharge plan',
+        addButtonText: 'Add a discharge planning note',
+        ehr_list: [
+          {
+            label: 'Identification',
+            ehr_list_index: '1',
+            items: [
+              'name',
+              'profession',
+              'day',
+              'time'
+            ]
+          },
+          {
+            label: 'Goal',
+            ehr_list_index: '2',
+            items: [
+              'goal'
+            ]
+          },
+          {
+            label: 'Intervention',
+            ehr_list_index: '3',
+            items: [
+              'interventions'
+            ]
+          },
+          {
+            label: 'Evaluation of intervention',
+            ehr_list_index: '4',
+            items: [
+              'evaluation'
+            ]
+          },
+          {
+            label: 'Status',
+            ehr_list_index: '5',
+            items: [
+              'status'
+            ]
+          }
+        ],
+        form: {
+          elementKey: 'table',
+          label: 'Discharge plan',
+          addButtonText: 'Add a discharge planning note',
+          formKey: 'table',
+          ehr_groups: [
+            {
+              elementKey: 'ehr_group117',
+              formCss: 'record-header',
+              gIndex: '1',
+              gChildren: [
+                'name',
+                'profession',
+                'day',
+                'time'
+              ]
+            },
+            {
+              elementKey: 'ehr_group118',
+              gIndex: '2',
+              gChildren: [
+                'goal',
+                'interventions',
+                'evaluation',
+                'status'
+              ]
+            }
+          ],
+          ehr_data: {
+            name: '',
+            profession: '',
+            day: '',
+            time: '',
+            goal: '',
+            interventions: '',
+            evaluation: '',
+            status: ''
           }
         }
       }

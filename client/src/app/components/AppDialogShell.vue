@@ -187,7 +187,7 @@ export default {
 .dialog-body {
   padding: 1rem;
   margin-bottom: 0;
-  max-height: calc(90vh - 6rem);
+  max-height: calc(80vh - 6rem);
   width: 100%;
   border-bottom: 1px solid #2d2d2d;
   overflow-y: auto;

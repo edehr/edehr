@@ -335,6 +335,7 @@ export default class LTIController {
         isInstructor: visit.isInstructor,
         isStudent: visit.isStudent,
         toolConsumerId: req.toolConsumer._id,
+        userId: visit.user,
         visitId: visit._id
       }
       debug('LTI create token with', tokenData)

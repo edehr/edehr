@@ -68,8 +68,24 @@
       ]
     },
     "medicationOrders": {
-      "table": []
+      "table": [
+        {
+          "name": "Dr. Singh",
+          "profession": "Physician",
+          "day": 0,
+          "time": "1015",
+          "medication": "spiriva respimat",
+          "dose": "5 mcg",
+          "route": "Inhalation",
+          "administration": "once",
+          "instructions": "5 mcg (2 actuations; 2.5 mcg/actuation) inhaled PO qDay",
+          "reason": "PO",
+          "notes": "reduction of COPD exacerbations",
+          "createdDate": "2022-12-06T11:45:34-08:00"
+        }
+      ]
     },
+
     "allergies": {
       "checkbox": "TRUE"
     },
@@ -522,7 +538,7 @@
     },
     "dischargeSummary": {
       "clinicalSummary": "Patient arrived with chronic COPD in acute form\nPreviously diagnosed with hypertension\nDeveloped bilateral gram positive cocci pneumonia\nTreated with intravenous antibiotics and responded well",
-      "dischargeDay": "Day 1",
+      "dischargeDay": "Day 6",
       "dischargeTime": "08:00",
       "dischargedTo": "Home"
     },

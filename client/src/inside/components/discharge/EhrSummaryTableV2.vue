@@ -1,7 +1,8 @@
 <template lang="pug">
   div(class="ehr-summary-table")
     h2 {{summaryTitle}}
-    div(v-show="!hasData") Not applicable
+    div {{ description}}
+    div(v-show="!hasData") No records
     table(v-show="hasData")
       thead
         tr
@@ -28,6 +29,7 @@ export default {
       tableData: [],
       tableColumns: [],
       summaryTitle: 'placeholder title',
+      description: '',
       summary: {}
     }
   },
@@ -55,6 +57,7 @@ export default {
     load () {
       let helper = new EhrSummaryHelpV2(this.summaryKey, this.ehrHelp)
       this.summary = helper.getSummary()
+      this.description = this.summary.description
       this.tableColumns = this.summary.tableColumns
       this.tableData = this.summary.tableData
     }
