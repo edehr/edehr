@@ -467,7 +467,7 @@ export default class EhrPageHelper {
   }
   validateDialog () {
     const dialog = this._getActiveTableDialog()
-    if (!this._validateInputs(dialog)) {
+    if (dialog && !this._validateInputs(dialog)) {
       return dialog.errorList
     }
   }
