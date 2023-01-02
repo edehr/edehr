@@ -68,7 +68,7 @@
     "pug-plain-loader": "^1.1.0",
     "sass-loader": "^9.0.3",
     "should": "^13.2.3",
-    "vue-jest": "^3.0.7",
+    "vue-jest": "^4.0.1",
     "vue-template-compiler": "^2.6.14"
   }
 }
