@@ -17556,8 +17556,8 @@ const DEFS = {
             'text': 'Pelger-Huët Cells'
           },
           {
-            'key': 'Snudge Cells',
-            'text': 'Snudge Cells'
+            'key': 'Smudge Cells',
+            'text': 'Smudge Cells'
           }
         ],
         'tableColumn': '77',
@@ -17955,7 +17955,7 @@ const DEFS = {
         'elementKey': 'rcmICCGrading',
         'formIndex': '2',
         'formCss': 'form_label_long',
-        'inputType': 'spacer',
+        'inputType': 'select',
         'label': 'Irregularly Contracted Cells (ICC) grading',
         'options': [
           {
@@ -19447,6 +19447,7 @@ const DEFS = {
             'rcmSpherocytes': '',
             'rcmSpherocytesGrading': '',
             'rcmICC': '',
+            'rcmICCGrading': '',
             'rcmICCBite': '',
             'rcmICCBiteGrading': '',
             'rcmICCHelmut': '',
