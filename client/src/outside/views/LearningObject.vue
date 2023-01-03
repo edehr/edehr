@@ -1,8 +1,8 @@
 <template lang="pug">
   div
-    div(class="details-action-bar")
-      learning-object-list-link(:learningObjectId="learningObject._id")
-      learning-object-actions(:learningObject="learningObject", :showDetails='false')
+    div
+      zone-lms-page-banner
+        learning-object-actions(class="flow_across_last_item", :learningObject="learningObject", :showDetails='false')
     div(class="details-container card selected")
       div(class="details-row")
         div(class="details-name") {{ text.LOBJ }}
@@ -36,10 +36,11 @@ import LearningObjectListLink from '@/outside/components/learning-object/Learnin
 import LearningObjectActions from '@/outside/components/learning-object/LearningObjectActions'
 import OutsideCommon from '@/outside/views/OutsideCommon'
 import { Text } from '@/helpers/ehr-text'
+import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner'
 
 export default {
   extends: OutsideCommon,
-  components: { LearningObjectActions, LearningObjectListLink, UiButton, UiConfirm, UiLink },
+  components: { ZoneLmsPageBanner, LearningObjectActions, LearningObjectListLink, UiButton, UiConfirm, UiLink },
   data () {
     return {
       text: Text.LOBJ_PAGE,

@@ -34,6 +34,7 @@ export class ScheduleOptions {
   }
 }
 
+function _nonEmptyString (text) { return text && text.trim().length > 0 }
 
 /**
  * MedOrder holds a medication order as stored in the db plus it has a list
@@ -44,10 +45,10 @@ export default class MedOrder {
   constructor (medOrObj) {
     this._data = medOrObj && medOrObj._data ? medOrObj._data : medOrObj
     const medOrder = this._data
-    // console.log('_createSchedule is', medOrder)
+    // console.log('_createSchedule is', medOrObj, medOrder)
     let scheduleTimes = []
     const scheduleKey = medOrder.administration ? medOrder.administration.toUpperCase() : undefined
-    if(scheduleKey === SCHEDULED) {
+    if(scheduleKey === SCHEDULED && _nonEmptyString(medOrder.scheduled)) {
       try {
         scheduleTimes = ScheduleOptions.getSchedule(medOrder.scheduled)
       } catch(err) {

@@ -13,6 +13,7 @@ const state = {
   isSeeding: false,
   loadingCnt: 0,
   pageTitle: '',
+  pageZone: '',
   pageIcon: undefined,
   outsideShowButtonLabels: true,
   smallWindow: false,
@@ -26,10 +27,10 @@ const getters = {
   caseContextFeature: state => state.caseContextFeature,
   isEditing: state => state.isEditing,
   isLoading: state => state._isLoading,
-  isSmallWindow: state => state.smallWindow,
   outsideShowButtonLabels: state => state.outsideShowButtonLabels,
   pageIcon: state => state.pageIcon,
   pageTitle: state => state.pageTitle,
+  pageZone: state => state.pageZone,
   sysMessage: state => state.sysMessage,
 }
 
@@ -95,6 +96,9 @@ const mutations = {
   setPageTitle: ( state, pageTitle) => {
     state.pageTitle = pageTitle
   },
+  setPageZone: ( state, pageZone) => {
+    state.pageZone = pageZone
+  },
   setSeeding: (state, isSeeding) => {
     state.isSeeding = isSeeding
   },
@@ -118,7 +122,6 @@ const mutations = {
     state.smallWindow = value
   },
   setOutsideShowButtonLabels: (state, value) => {
-    console.log('mutation show', value)
     localStorage.setItem('ShowButtonLabels', value)
     state.outsideShowButtonLabels = value
   },

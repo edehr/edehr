@@ -89,7 +89,7 @@ export default {
 }
 .indicator {
   padding-top: 5px;
-  padding-right: 5px;
+  padding-right: 10px;
 }
 /* Small screens */
 @media screen and (max-width: $main-width-threshold1) {
@@ -147,22 +147,22 @@ a:hover {
     }
   }
   &__link1 {
-    padding-left: 10px;
+    padding-left: $ehr-layout-padding-left;
     & a {
       color: $nav-color-level3;
     }
   }
   &__link2 {
-    padding-left: 20px;
+    padding-left: $ehr-layout-padding-left-level2;
   }
   &__link3 {
-    padding-left: 35px;
+    padding-left: $ehr-layout-padding-left-level3;
   }
   .linkElement {
     width: 100%;
   }
   .linkLabel {
-    width: 90%;
+    width: 80%;
   }
   @media screen and (max-width: $main-width-threshold1){
     .linkElement {

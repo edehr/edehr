@@ -1,4 +1,3 @@
-import EventBus, { ACTIVITY_DATA_EVENT } from '@/helpers/event-bus'
 import { decoupleObject } from '@/helpers/ehr-utils'
 import EhrDataModel from '@/ehr-definitions/EhrDataModel'
 
@@ -50,8 +49,6 @@ const mutations = {
     asIs[pageKey] = value
     state.ehrOnlyEhr = asIs
     EhrDataModel.updateEhrDataMeta(state.ehrOnlyEhr)
-    // console.log('setEhrData', JSON.stringify(asIs))
-    EventBus.$emit(ACTIVITY_DATA_EVENT)
   },
   selectCaseStudy: (state, key) => {
     if (key === 'wound') {

@@ -3,7 +3,7 @@
     div(class="list-item-container")
       div(class="list-item-name") {{lObj.name}} &nbsp;
         a(@click="showMore = !showMore; $emit('selectLObj', lObj)") {{showMore ? 'show less' : 'show more'}}
-      div(class="list-item-actions")
+      div
         ui-button(v-on:buttonClicked="selectLearningObject(lObj)", class='link-button') Connect to activity
         ui-confirm(ref="confirmDialog", saveLabel="Connect", v-on:confirm="proceed(lObj)", html-body=true)
     div(v-if="showMore")

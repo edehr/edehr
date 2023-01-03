@@ -166,7 +166,7 @@ export default {
         description: this.description,
         contributors: this.contributors,
         ehrData: this.ehrData,
-        toolConsumer: StoreHelper.toolConsumerId(this)
+        toolConsumer: StoreHelper.getAuthdConsumerId()
       }
       this.$refs.theDialog.onClose()
       if (this.actionType === EDIT_ACTION) {

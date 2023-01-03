@@ -1,8 +1,6 @@
 <template lang='pug'>
   div
     app-dropdown(:items="items")
-      template(#dropdownTitle)
-        slot
     ehr-context-activity-dialog(ref='activityDialog')
     ehr-scratch-pad-dialog(ref='scratchPad')
     ui-agree(ref='evalNotes')

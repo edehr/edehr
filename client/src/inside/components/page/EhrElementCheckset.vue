@@ -30,7 +30,6 @@ export default {
   watch: {
     checkValues (val) {
       let newVal = val.filter( v => v.length > 0).join(',')
-      console.log('EhrCheckset input val changed', this.elementKey, val, newVal)
       if (debug) console.log('EhrCheckset input val changed', this.elementKey, newVal)
       if (this.isPageElement &&  this.isEditing) {
         // only broadcast if user is editing the form

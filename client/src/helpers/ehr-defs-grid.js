@@ -4,6 +4,9 @@ import { isString } from '@/helpers/ehr-utils'
 
 const PROPS = EhrTypes.elementProperties
 
+export const MAR_PAGE_KEY = 'medAdminRec'
+export const MED_ORDERS_PAGE_KEY = 'medicationOrders'
+
 class EhrDefsWorker {
   constructor () {
     this.pageDefs = pageDefs
@@ -21,6 +24,7 @@ class EhrDefsWorker {
     // console.log('EhrDefsGrid getPageDef', pageKey, pd)
     return pd
   }
+
   getAllPageKeys () {
     let pageKeys = Object.keys(this.pageDefs)
     // Note, that in the definitions the meta field does not exist. It only exists in an Ehr Data record
@@ -28,24 +32,10 @@ class EhrDefsWorker {
     return pageKeys
   }
 
-  getPageElements (pageKey) {
-    let pd = this.getPageDefinition(pageKey)
-    return pd.pageElements
-  }
-
-  getPageForms (pageKey) {
-    let elements = this.getPageElements(pageKey)
-    return Object.values(elements).filter( e => e.isPageForm)
-  }
-
-  getPageTables (pageKey) {
-    let elements = this.getPageElements(pageKey)
-    return Object.values(elements).filter( (e) => {return e.isTable})
-  }
-
-  getPageTable (pageKey, tableKey) {
-    let tbls = this.getPageTables(pageKey)
-    return tbls.find( t => t.tableKey === tableKey)
+  getAllPageChildren () {
+    const pc = []
+    keys.map(k => pageDefs[k].pageChildren).map(item => pc.push(...item))
+    return pc
   }
 
   getChildElements (pageKey, filterKey, filterValue, desiredProperty) {
@@ -59,6 +49,26 @@ class EhrDefsWorker {
     return children
   }
 
+  getDefaultValue (pageDataKey, elementKey) {
+    let dV = this.getPageChildProperty(pageDataKey, elementKey, PROPS.defaultValue) || ''
+    if (typeof dV === 'string') {
+      dV = (dV.toLowerCase() === 'true') ? true : ((dV.toLowerCase() === 'false') ? false : dV)
+    }
+    // console.log('EhrDefs.getDefaultValue', elementKey, dV)
+    return dV
+  }
+
+  getMedOrderScheduleTypes () {
+    let administration = this.getPageChildElement(MED_ORDERS_PAGE_KEY,'administration')
+    // console.log('get med sched', administration)
+    let options = administration.options
+    // console.log('get med sched options', options)
+    let scheduleTypes = {}
+    options.forEach(opt => scheduleTypes[opt.key] = opt.text)
+    // console.log('get med sched scheduleTypes', scheduleTypes)
+    return scheduleTypes
+  }
+
   getPageChildElement (pageKey, key) {
     let pd = this.getPageDefinition(pageKey)
     return pd.pageChildren.find(ch => ch[PROPS.elementKey] === key)
@@ -70,52 +80,25 @@ class EhrDefsWorker {
     return value
   }
 
-  getDefaultValue (pageDataKey, elementKey) {
-    let dV = this.getPageChildProperty(pageDataKey, elementKey, PROPS.defaultValue) || ''
-    if (typeof dV === 'string') {
-      dV = (dV.toLowerCase() === 'true') ? true : ((dV.toLowerCase() === 'false') ? false : dV)
-    }
-    // console.log('EhrDefs.getDefaultValue', elementKey, dV)
-    return dV
-  }
-
-  getDataCaseStudy (pageDataKey, elementKey) {
-    let dV = this.getPageChildProperty(pageDataKey, elementKey, PROPS.dataCaseStudy) || ''
-    return dV
-  }
-
-  getValidationRule (pageDataKey, elementKey) {
-    let dV = this.getPageChildProperty(pageDataKey, elementKey, PROPS.validation) || ''
-    return dV
-  }
-
-  getMandatoryRule (pageDataKey, elementKey) {
-    let dV = this.getPageChildProperty(pageDataKey, elementKey, PROPS.mandatory) || ''
-    return dV
-  }
-
-  getMedOrderSchedule  (pageKey) {
+  getPageElements (pageKey) {
     let pd = this.getPageDefinition(pageKey)
-    let medPeriods = pd.medSchedule
-    // console.log('getMedOrderSchedule', pageKey, medPeriods)
-    return medPeriods
+    return pd.pageElements
   }
 
-  getItemsFromKey (dataKey) {
-    return keys.filter(key => pageDefs[key].pageDataKey === dataKey)
+  getPageForms (pageKey) {
+    let elements = this.getPageElements(pageKey)
+    return Object.values(elements).filter( e => e.isPageForm)
   }
 
-  getAllPageChildren () {
-    const pc = []
-    keys.map(k => pageDefs[k].pageChildren).map(item => pc.push(...item))
-    return pc
+  getPageTable (pageKey, tableKey) {
+    let tbls = this.getPageTables(pageKey)
+    return tbls.find( t => t.tableKey === tableKey)
   }
 
-  findPageChildrenElement (elemKey) {
-    const pc = this.getAllPageChildren()
-    return pc.filter(c => c.elementKey === elemKey)
+  getPageTables (pageKey) {
+    let elements = this.getPageElements(pageKey)
+    return Object.values(elements).filter( (e) => {return e.isTable})
   }
-
 }
 const EhrDefs = new EhrDefsWorker()
 export default EhrDefs

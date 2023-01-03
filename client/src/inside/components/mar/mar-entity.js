@@ -1,9 +1,9 @@
-import { validTimeStr, validDayStr } from '../../../helpers/ehr-utils'
+import { validTimeStr, validDayStr } from '@/helpers/ehr-utils'
 import MedOrder from './med-order'
-
 
 const ERR_WHO = 'Must say who administered the medication'
 const ERR_WHEN = 'Time must be 2400 hour format'
+const ERR_DOSAGE = 'Must include dosage administered'
 const ERR_DAY = 'Day must be one of 0,1,2,3,...'
 const ERR_EMPTY_MEDS = 'Medication list can not be empty'
 const DEFAULT_TIME = '0000'
@@ -11,6 +11,7 @@ const DEFAULT_DAY = 0
 
 function validWho (text) { return text && text.trim().length > 0 }
 function validDay (text) { return (/^([0-9]+)$/.test(text))}
+function validDosage (text) { return text && text.trim().length > 0 }
 
 /*
 MAR record:
@@ -19,11 +20,12 @@ when,
 medication
  */
 export default class MarEntity {
-  constructor (whoOrObj, ...[day, actualTime, comment, scheduledTime, medOrder = {}]) {
+  constructor (whoOrObj, ...[day, actualTime, comment, scheduledTime, dosage, medOrder]) {
     this._data = {}
     if (typeof whoOrObj ==='string') { // from dialog
       // console.log('MarEntity create from dialog arguments')
       this._data.whoAdministered = whoOrObj
+      this._data.dosage = dosage
       this._data.day = day
       this._data.actualTime = actualTime
       this._data.comment = comment
@@ -57,6 +59,7 @@ export default class MarEntity {
   get actualTime () { return this._data.actualTime}
   get scheduledTime () { return this._data.scheduledTime}
   get comment () { return this._data.comment }
+  get dosage () { return this._data.dosage }
   get day () { return this._data.day}
   get medications () { return this._data.medications}
 
@@ -64,6 +67,9 @@ export default class MarEntity {
     let errMsgList = []
     if(!validWho(this.whoAdministered)) {
       errMsgList.push(ERR_WHO)
+    }
+    if(!validDosage(this.dosage)) {
+      errMsgList.push(ERR_DOSAGE)
     }
     if(!validDay(this.day)) {
       errMsgList.push(ERR_DAY)

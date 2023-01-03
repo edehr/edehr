@@ -2,22 +2,23 @@
 <script>
 import moment from 'moment'
 import { formatDateStr } from '@/helpers/ehr-utils'
-import EventBus, { PAGE_DATA_READY_EVENT, TABLE_ACTION_EVENT, VIEW_REPORT_EVENT } from '@/helpers/event-bus'
+import EventBus, { PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
+import { EDIT_DRAFT_ROW_EVENT, TABLE_ACTION_EVENT, VIEW_REPORT_EVENT } from '@/helpers/event-bus'
 
 export default {
   components: {
-  },
-  data: function () {
-    return {
-    }
   },
   inject: [ 'pageDataKey'],
   props: {
     ehrHelp: { type: Object },
     // the ehr helper loads fresh data into the table definition.
     tableDef: { type: Object },
+    cTableForm: { type: Object },
+    rowTemplate: { type: Array },
+    cTableData: { type: Array }
   },
   computed: {
+    hasData () { return this.cTableData.length > 0},
   },
   methods: {
     getCellCss: function (cell) {
@@ -35,6 +36,9 @@ export default {
     tableAction: function (tableDef, index) {
       EventBus.$emit(TABLE_ACTION_EVENT, tableDef, index)
     },
+    editDraft (pageKey, tableKey, rowIndex) {
+      EventBus.$emit(EDIT_DRAFT_ROW_EVENT, pageKey, tableKey, rowIndex)
+    },
     viewReport (pageKey, tableKey, rowIndex) {
       EventBus.$emit(VIEW_REPORT_EVENT, pageKey, tableKey, rowIndex)
     }
@@ -44,11 +48,11 @@ export default {
     this.refreshEventHandler = function () {
       _this.refresh()
     }
-    EventBus.$on(PAGE_DATA_READY_EVENT, this.refreshEventHandler)
+    EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
   },
   beforeDestroy: function () {
     if (this.refreshEventHandler) {
-      EventBus.$off(PAGE_DATA_READY_EVENT, this.refreshEventHandler)
+      EventBus.$off(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
     }
   }
 }

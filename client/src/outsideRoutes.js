@@ -88,48 +88,48 @@ export function outside () {
       name: 'classList',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/ClassList.vue'),
-      meta: { layout: 'outside', label: NAMES.CLASS_LIST, icon: APP_ICONS.activity, zone: ZONE_LMS }
+      meta: { layout: 'lms', label: NAMES.CLASS_LIST, icon: APP_ICONS.activity, zone: ZONE_LMS }
     },
     {
       path: '/consumer',
       name: 'consumer',
       component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/admin/Consumer.vue'),
-      meta: { layout: 'outside', label: NAMES.CONSUMER, icon: APP_ICONS.consumer, zone: ZONE_LMS }
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Consumer.vue'),
+      meta: { layout: 'lms', label: NAMES.CONSUMER, icon: APP_ICONS.consumer, zone: ZONE_LMS }
     },
     {
       path: '/courses',
       name: 'courses',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Courses.vue'),
-      meta: { layout: 'outside', label: 'Courses and Activities', icon: APP_ICONS.course, zone: ZONE_LMS }
+      meta: { layout: 'lms', label: 'Activities', icon: APP_ICONS.course, zone: ZONE_LMS }
     },
     {
       path: '/eval-student',
       name: 'eval-student',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/EvalStudent.vue'),
-      meta: { layout: 'outside', label: NAMES.COURSES, icon: APP_ICONS.rawEhr, zone: ZONE_LMS }
+      meta: { layout: 'lms', label: NAMES.COURSES, icon: APP_ICONS.rawEhr, zone: ZONE_LMS }
     },    {
       path: '/fileList',
       name: 'fileList',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/FileList.vue'),
-      meta: { layout: 'outside', label: NAMES.FILES, icon: APP_ICONS.file, zone: ZONE_LMS }
+      meta: { layout: 'lms', label: NAMES.FILES, icon: APP_ICONS.file, zone: ZONE_LMS }
     },
     {
       path: '/learning-objects',
       name: 'learning-objects',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/LearningObjects.vue'),
-      meta: { layout: 'outside', label: NAMES.LOBJS, icon: APP_ICONS.lobj, zone: ZONE_LMS }
+      meta: { layout: 'lms', label: NAMES.LOBJS, icon: APP_ICONS.lobj, zone: ZONE_LMS }
     },
     {
       path: '/learning-object',
       name: 'learning-object',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/LearningObject.vue'),
-      meta: { layout: 'outside', label: NAMES.LOBJ, icon: APP_ICONS.lobj, zone: ZONE_LMS }
+      meta: { layout: 'lms', label: NAMES.LOBJ, icon: APP_ICONS.lobj, zone: ZONE_LMS }
     },
 
     {
@@ -137,32 +137,32 @@ export function outside () {
       name: 'lms-activity',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/LmsActivity.vue'),
-      meta: { layout: 'outside', label: NAMES.ACTIVITY, icon: APP_ICONS.activity, zone: ZONE_LMS }
+      meta: { layout: 'lms', label: NAMES.ACTIVITY, icon: APP_ICONS.activity, zone: ZONE_LMS }
     },
     {
       path: '/seed-list',
       name: 'seed-list',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/SeedList.vue'),
-      meta: { layout: 'outside', label: NAMES.SEEDS, icon: APP_ICONS.seed, zone: ZONE_LMS }
+      meta: { layout: 'lms', label: NAMES.SEEDS, icon: APP_ICONS.seed, zone: ZONE_LMS }
     },
     {
       path: '/seed-view',
       name: 'seed-view',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/SeedView.vue'),
-      meta: { layout: 'outside', label: NAMES.SEED_VIEW, icon: APP_ICONS.seed, zone: ZONE_LMS }
+      meta: { layout: 'lms', label: NAMES.SEED_VIEW, icon: APP_ICONS.seed, zone: ZONE_LMS }
     },
     {
       path: '/seed-view-condensed',
       name: 'seed-view-condensed',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/SeedViewCondensed.vue'),
-      meta: { layout: 'outside', label: NAMES.SEED_CONDENSED, icon: APP_ICONS.seed, zone: ZONE_LMS }
+      meta: { layout: 'lms', label: NAMES.SEED_CONDENSED, icon: APP_ICONS.seed, zone: ZONE_LMS }
     },
     {
-      path: '/admin',
-      name: 'admin',
+      path: '/admin-login',
+      name: 'admin-login',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './outside/admin/Admin.vue'),
       meta: { layout: 'outside', label: NAMES.ADMIN, zone: ZONE_ADMIN }
@@ -235,14 +235,14 @@ export function outside () {
       name: UNLINKED_ACTIVITY_ROUTE_NAME,
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/UnlinkedActivity.vue'),
-      meta: { layout: 'outside', label: 'Unlinked Activity', zone: ZONE_LMS }
+      meta: { layout: 'lms', label: 'Unlinked Activity', zone: ZONE_LMS }
     },
     {
       path: '/edehrDetails',
       name: 'edehrDetails',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './app/edehr-org/EdEhrOrgDetails.vue'),
-      meta: { layout: 'outside', label: 'edehrDetails', zone: ZONE_LMS }
+      meta: { layout: 'outside', label: 'edehrDetails', zone: ZONE_PUBLIC }
     },
     {
       path: '/dev-area',

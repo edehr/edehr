@@ -3,7 +3,7 @@ import { Text } from '../config/text'
 const rateLimit = require('express-rate-limit')
 const debug = require('debug')('server')
 const logAuth = require('debug')('auth')
-import { logError} from '../helpers/log-error'
+import { logError} from './log-error'
 
 const debugMW = false
 
@@ -55,9 +55,8 @@ export const validatorMiddlewareWrapper = (commonControllers) => {
 }
 
 export const isAdmin = (req, res, next) => {
-  const { authPayload } = req
-  debug('authPayload >> ', authPayload)
-  logAuth('validatorMiddlewareWrapper isAdmin  authPayload:', authPayload)
+  const authPayload = req.authPayload
+  logAuth('middleware isAdmin  authPayload:', authPayload)
   if (authPayload) {
     if (authPayload.isAdmin) {
       logAuth('validatorMiddlewareWrapper isAdmin  pass test')

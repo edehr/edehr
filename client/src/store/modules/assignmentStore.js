@@ -29,13 +29,16 @@ const getters = {
   assignmentCaseContext: state => {
     const { persona, time, day, profession } = state.learningObject
     // persona key is changed to 'name' to match structure of recHeader in the EHR page definitions.
-    return { name: persona, time, day, profession }  
+    return { name: persona, time, day, profession }
   }
 }
 
 const actions = {
   initialize: function ({ commit }) {
     commit('initialize')
+  },
+  clearAssignment: function (context) {
+    context.commit('set', undefined)
   },
   load ({dispatch, commit}, id) {
     if(debug) console.log(NAME + ' load id ', id)
@@ -95,7 +98,11 @@ const mutations = {
   set: (state, assignment) => {
     state.learningObject = assignment
     const learningObjectId = assignment ? assignment._id : ''
-    localStorage.setItem(sKeys.LOBJ_ID, learningObjectId)
+    if (assignment) {
+      localStorage.setItem(sKeys.LOBJ_ID, learningObjectId)
+    } else {
+      localStorage.removeItem(sKeys.LOBJ_ID)
+    }
     state.learningObjectId = learningObjectId
   }
 }

@@ -2,42 +2,36 @@ import Vue from 'vue'
 /*
 TODO document all of the following events ....
  */
-export const ACTIVITY_DATA_EVENT = 'ACTIVITY_DATA_EVENT'
 export const PAGE_DATA_REFRESH_EVENT = 'PAGE_DATA_REFRESH_EVENT'
-export const SHOW_TABLE_DIALOG_EVENT = 'SHOW_TABLE_DIALOG_EVENT'
-export const MAR_PERIODS_EVENT = 'MAR_PERIODS_EVENT'
-
-// old and to be removed
-export const DIALOG_INPUT_EVENT = 'DIALOG_INPUT_EVENT'
-export const PAGE_FORM_INPUT_EVENT = 'PAGE_FORM_INPUT_EVENT'
-
-// new
 export const FORM_INPUT_EVENT = 'FORM_INPUT_EVENT'
-export const PAGE_DATA_READY_EVENT = 'PAGE_DATA_READY_EVENT'
-
 export const TABLE_ACTION_EVENT = 'TABLE_ACTION_EVENT'
 export const VIEW_REPORT_EVENT = 'VIEW_REPORT_EVENT'
-
-const EventBus = new Vue()
-export default EventBus
+export const EDIT_DRAFT_ROW_EVENT = 'EDIT_DRAFT_ROW_EVENT'
+export const PRACTITIONER = 'PRACTITIONER'
 
 const showKeyEvents = false
+const showEmits = false
+
+export class EventBus extends Vue {
+  // Override Vue's $emit to record all events in console.
+  $emit (event, ...args) {
+    if(showEmits) console.log('Emitting:', event, ...args)
+    return super.$emit(event, ...args)
+  }
+}
+
+export default new EventBus()
+
+// const EventBus = new Vue()
+// export default EventBus
+
 
 if(showKeyEvents) {
   EventBus.$on(PAGE_DATA_REFRESH_EVENT, function () {
     console.log('PAGE_DATA_REFRESH_EVENT')
   })
-  EventBus.$on(DIALOG_INPUT_EVENT, function () {
-    console.log('DIALOG_INPUT_EVENT')
-  })
-  EventBus.$on(PAGE_FORM_INPUT_EVENT, function () {
-    console.log('PAGE_FORM_INPUT_EVENT')
-  })
   EventBus.$on(FORM_INPUT_EVENT, function () {
     console.log('FORM_INPUT_EVENT')
-  })
-  EventBus.$on(PAGE_DATA_READY_EVENT, function () {
-    console.log('PAGE_DATA_READY_EVENT')
   })
   EventBus.$on(TABLE_ACTION_EVENT, function (tableDef, index) {
     console.log('TABLE_ACTION_EVENT', tableDef, index)

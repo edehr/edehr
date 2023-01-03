@@ -1,5 +1,5 @@
 <template lang='pug'>
-  div(class="outside-view")
+  div
     h1 The EdEHR Project
 
     div(v-text-to-html.noAutoLink="appText.heroText.what")

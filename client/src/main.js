@@ -8,10 +8,11 @@ import { initializeStore } from './store'
 import icons from './icons'
 import homeLayout from './app/layout/LayoutHome.vue'
 import outsideLayout from './outside/layout/LayoutOutside.vue'
+import lmsLayout from './outside/layout/LayoutLms.vue'
 import insideLayout from './inside/layout/LayoutEhr.vue'
 import directivesFilters from './helpers/directives-filters'
 import VueAutosuggest from 'vue-autosuggest'
-import PageController from './helpers/page-controller'
+import onPageChange from './helpers/page-controller'
 /*
 Import the global style sheet
  */
@@ -30,11 +31,14 @@ Vue.use(require('vue-moment'))
 Vue.use(VueAutosuggest)
 Vue.component('home-layout', homeLayout)
 Vue.component('outside-layout', outsideLayout)
+Vue.component('lms-layout', lmsLayout)
 Vue.component('inside-layout', insideLayout)
 
-router.afterEach((to, from) => {
-  // console.log('main.js hook on page changes')
-  PageController.onPageChange(to)
+router.afterEach(async (to, from) => {
+  let startTime = performance.now()
+  const perfStat = await onPageChange(to, from)
+  let elapsedTime = performance.now() - startTime
+  console.log('page change elapsed', elapsedTime, JSON.stringify(perfStat.elapsed))
 })
 
 if (!window.location.origin.includes('localhost')) {

@@ -1,9 +1,6 @@
 <template lang='pug'>
   div(ref="dropdownMenu", @keydown.esc="close",)
-    ui-button(v-on:buttonClicked="toggle")
-      fas-icon(class="fa", :icon="appIcons.filter")
-      fas-icon(class="fa", :icon="appIcons.ehrPage")
-      span(v-if="showLabels") &nbsp; Filter by page
+    zone-lms-button(@action="toggle", :icons='[appIcons.filter, appIcons.ehrPage]', title='Filter list by name of ehr page', text='Filter by page')
 
     multi-checkbox(
       v-show="show",
@@ -19,10 +16,11 @@ import AppDropdownItem from '@/app/components/app-dropdown/AppDropdownItem'
 import MultiCheckbox from '@/outside/components/multi-select/MultiCheckbox'
 import UiButton from '@/app/ui/UiButton'
 import StoreHelper from '@/helpers/store-helper'
+import ZoneLmsButton from '@/outside/components/ZoneLmsButton'
 
 const debug = true
 export default {
-  components: { MultiCheckbox, UiButton, AppShowHideIcon, AppDropdownItem },
+  components: { ZoneLmsButton, MultiCheckbox, UiButton, AppShowHideIcon, AppDropdownItem },
   props: {
     pages: {  // array of ehr page names
       type: Array,

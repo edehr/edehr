@@ -49,7 +49,7 @@ export default {
     this.showEventHandler = function (tableDef, index) {
       const tablePbf = _this.tablePbf
       const tableKey = tablePbf.tableKey
-      _this.ehrHelp.showDialog(tableKey, {tableActionRowIndex: index})
+      _this.ehrHelp.showDialogForTable(tableKey, {tableActionRowIndex: index})
     }
     EventBus.$on(TABLE_ACTION_EVENT, this.showEventHandler)
   },

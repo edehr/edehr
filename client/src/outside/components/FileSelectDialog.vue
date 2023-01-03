@@ -1,10 +1,10 @@
 <template lang="pug">
   div
     app-dialog(
-      :isModal="true", 
-      ref="theDialog",  
-      @cancel="cancelDialog", 
-      @save="saveDialog", 
+      :isModal="true",
+      ref="theDialog",
+      @cancel="cancelDialog",
+      @save="saveDialog",
       :disableSave="disableSave",
       :hasFooterContent="true",
       has-left-button
@@ -56,7 +56,7 @@ export default {
   methods: {
     showDialog (file) {
       this.selectedFile = {}
-      StoreHelper.refreshFileLists(StoreHelper.toolConsumerId())
+      StoreHelper.refreshFileLists(StoreHelper.getAuthdConsumerId())
       this.$refs.theDialog.onOpen()
     },
     cancelDialog: function () {

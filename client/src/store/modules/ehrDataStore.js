@@ -49,13 +49,13 @@ const getters = {
     } else if (InstoreHelper.instoreIsInstructor(rootState)) {
       secondLevelData = StoreHelper.getCurrentEvaluationStudentAssignmentData()
     } else {
-      secondLevelData = rootGetters['activityDataStore/assignmentData'] || {}
+      secondLevelData = rootGetters['activityDataStore/assignmentData']
     }
     if ( secondLevelData ) {
       secondLevelData.meta = secondLevelData.meta || { simTime: { visitDay: 0, visitTime: '0000' } }
       secondLevelData = decoupleObject(secondLevelData)
     }
-    return secondLevelData
+    return secondLevelData  || {}
   },
   baseLevel: (state, getters, rootState, rootGetters) => {
     let baseLevelData = decoupleObject(rootGetters['seedListStore/seedEhrData'] || {})

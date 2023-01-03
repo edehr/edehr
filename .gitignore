@@ -39,3 +39,5 @@ temp/**
 server/lib/**
 server/build/**
 server/api-logs/**
+server/logs-analytics/**
+server/logs-api/**

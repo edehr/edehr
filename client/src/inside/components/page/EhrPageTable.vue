@@ -4,8 +4,8 @@
       ui-button(v-on:buttonClicked="showDialog") {{ tableDef.addButtonText }}
     div
       h2(v-show="tableDef.label") {{tableDef.label}}
-      ehr-table-vertical(v-if="isVertical", :ehrHelp="ehrHelp", :tableDef="tableDef")
-      ehr-table-stacked(v-if="isStacked", :ehrHelp="ehrHelp", :tableDef="tableDef")
+      ehr-table-vertical(v-if="isVertical", :ehrHelp="ehrHelp", :tableDef="tableDef", :cTableForm='cTableForm', :cTableData='cTableData', :rowTemplate='rowTemplate')
+      ehr-table-stacked(v-if="isStacked", :ehrHelp="ehrHelp", :tableDef="tableDef", :cTableForm='cTableForm', :cTableData='cTableData', :rowTemplate='rowTemplate')
     ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDef", :errorList="errorList" )
     div(v-if="hasData", style="text-align: right;") <!-- put the clear button on the far right side -->
       ui-button(class="reset-button",v-on:buttonClicked="clearAllData",
@@ -21,9 +21,9 @@ import EhrTableStacked from './EhrTableStacked'
 import EhrTableVertical from './EhrTableVertical'
 import UiButton from '@/app/ui/UiButton.vue'
 import UiConfirm from '@/app/ui/UiConfirm'
-import EventBus from '@/helpers/event-bus'
-import { SHOW_TABLE_DIALOG_EVENT, PAGE_DATA_READY_EVENT, VIEW_REPORT_EVENT } from '@/helpers/event-bus'
+import EventBus, { EDIT_DRAFT_ROW_EVENT, PAGE_DATA_REFRESH_EVENT, VIEW_REPORT_EVENT } from '@/helpers/event-bus'
 import MarHelper from '../mar/mar-helper'
+import EhrDefs from '@/helpers/ehr-defs-grid'
 
 export default {
   components: {
@@ -35,7 +35,6 @@ export default {
   },
   data: function () {
     return {
-      hasData: false
     }
   },
   inject: [ 'pageDataKey'],
@@ -53,6 +52,53 @@ export default {
     }
   },
   computed: {
+    hasData () { return this.cTableData.length > 0},
+    cTableForm () { return this.ehrHelp.getTable(this.tableDef.tableKey) },
+    rowTemplate () {
+      let rowTemplate = []
+      this.tableDef.ehr_list.forEach(stack => {
+        let templateCell = {
+          stack: []
+        }
+        stack.items.forEach(cell => {
+          let cellDef = EhrDefs.getPageChildElement(this.pageDataKey, cell)
+          templateCell.stack.push({
+            key: cell,
+            inputType: cellDef.inputType
+          })
+          // column header .. use previous label if set else use special tableLabel value from Inputs else use element label
+          templateCell.tableLabel = templateCell.tableLabel || cellDef.tableLabel || cellDef.label
+          templateCell.tableCss = templateCell.tableCss || cellDef.tableCss
+        })
+        rowTemplate.push(templateCell)
+      })
+      return rowTemplate
+    },
+    cTableData () {
+      const tableKey = this.tableDef.tableKey
+      const thePageData = this.ehrHelp.getMergedPageData()
+      const dbData = thePageData[tableKey]
+      const tableData = []
+      const rowTemplate = this.rowTemplate
+      if (dbData) {
+        dbData.forEach((dbRow) => {
+          let dataRow = JSON.parse(JSON.stringify(rowTemplate)) // deep copy the array
+          Object.values(dataRow).forEach((templateCell) => {
+            templateCell.stack.forEach((cell) => {
+              let val = dbRow[cell.key] === 0 ? '0' : dbRow[cell.key]
+              cell.value = val || ''
+              cell.tableCss = templateCell.tableCss
+            })
+          })
+          if (dbRow.isDraft) {
+            dataRow.push({ isDraft: dbRow.isDraft })
+          }
+          tableData.push(dataRow)
+        })
+      }
+      return tableData
+    },
+
     tableKey () {
       return this.tableDef.tableKey
     },
@@ -77,7 +123,7 @@ export default {
   methods: {
     showDialog: function () {
       // console.log('EhrPageTable showDialog ', this.tableDef)
-      this.ehrHelp.showDialog(this.tableKey)
+      this.ehrHelp.showDialogForTable(this.tableKey, {})
     },
     clearAllData () {
       const TEXT = {
@@ -86,39 +132,37 @@ export default {
       }
       this.$refs.confirmDialog.showDialog(TEXT.TITLE, TEXT.MSG)
     },
-    proceedClearAllData () {
+    async proceedClearAllData () {
       console.log('EhrPageTable clearAllData ', this.tableDef)
-      this.ehrHelp.clearTable(this.tableKey)
+      await this.ehrHelp.clearTable(this.tableKey)
       const helper = new MarHelper(this.ehrHelp)
       helper.triggerActionByPageKey()
     },
     refresh () {
       let tableForm = this.ehrHelp.getTable(this.tableKey)
-      this.hasData = tableForm.hasData
-      // console.log('EhrPageTable refresh ', this.tableKey, tableForm)
     }
   },
   mounted: function () {
     const _this = this
-    this.showEventHandler = function () {
-      _this.showDialog()
-    }
     this.refreshEventHandler = function () {
       _this.refresh()
     }
     this.viewReportEventHandler = function (pageKey, tableKey, rowIndex) {
       _this.ehrHelp.showReport(pageKey, tableKey, rowIndex)
     }
-    EventBus.$on(SHOW_TABLE_DIALOG_EVENT, this.showEventHandler)
+    this.editDraftRowHandler = function (pageKey, tableKey, rowIndex) {
+      _this.ehrHelp.editDraftRow(pageKey, tableKey, rowIndex)
+    }
     EventBus.$on(VIEW_REPORT_EVENT, this.viewReportEventHandler)
-    EventBus.$on(PAGE_DATA_READY_EVENT, this.refreshEventHandler)
+    EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
+    EventBus.$on(EDIT_DRAFT_ROW_EVENT, this.editDraftRowHandler)
   },
   beforeDestroy: function () {
-    if (this.showEventHandler) {
-      EventBus.$off(SHOW_TABLE_DIALOG_EVENT, this.showEventHandler)
+    if (this.editDraftRowHandler) {
+      EventBus.$off(EDIT_DRAFT_ROW_EVENT, this.editDraftRowHandler)
     }
     if (this.refreshEventHandler) {
-      EventBus.$off(PAGE_DATA_READY_EVENT, this.refreshEventHandler)
+      EventBus.$off(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
     }
     if (this.viewReportEventHandler) {
       EventBus.$off(VIEW_REPORT_EVENT, this.viewReportEventHandler)

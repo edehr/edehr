@@ -1,10 +1,7 @@
 <template lang="pug">
   div
-    div(class="details-action-bar")
-      ui-link(:name="'courses'", :query="{activityId: activityId}")
-        fas-icon(class="fa", :icon="appIcons.course")
-        span &nbsp; {{ textRoutes.COURSES}}
-      //activity-actions
+    div(class="flow_across")
+      zone-lms-page-name
     div(class="details-container card selected")
       div(class="details-row")
         div(class="details-name") {{ text.ACTIVITY_LABEL}}
@@ -27,9 +24,6 @@
             fas-icon(class='fa', :icon='appIcons.activity')
             span &nbsp; {{text.CLASS_LIST_BTN}}
       div(class="details-row")
-        div(class="details-name") {{text.STATUS}}
-        div(class="details-value") {{activity.closed ? "Closed" : "Open" }}
-      div(class="details-row")
         div(class="details-name") {{text.DATES}}
         div(class="details-value") {{text.DATES_VAL(createDate, lastUpdate) }}
       div(class="details-row")
@@ -51,9 +45,11 @@ import { formatTimeStr} from '@/helpers/ehr-utils'
 import UiLink from '@/app/ui/UiLink'
 import ActivityActions from '@/outside/components/lms-activity/ActivityActions'
 import OutsideCommon from '@/outside/views/OutsideCommon'
+import ZoneLmsPageName from '@/outside/components/ZoneLmsPageName'
 export default {
   extends: OutsideCommon,
   components: {
+    ZoneLmsPageName,
     ActivityActions,
     UiLink
   },
@@ -110,7 +106,8 @@ export default {
       const fromRoute = this.$route.query.activityId
       const fromStore = this.$store.getters['activityStore/activityId']
       const activityId = fromRoute ? fromRoute : fromStore
-      const activity = await this.$store.dispatch('activityStore/loadAsCurrentActivity', activityId)
+      await this.$store.dispatch('activityStore/setActivityId', activityId)
+      const activity = await this.$store.dispatch('activityStore/loadCurrentActivity')
       if (activity.assignment) {
         await this.$store.dispatch('assignmentStore/load', activity.assignment)
       }

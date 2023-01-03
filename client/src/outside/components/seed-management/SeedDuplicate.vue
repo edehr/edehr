@@ -1,9 +1,7 @@
 <template lang="pug">
   div
-    ui-button(v-on:buttonClicked="duplicateSeed(seed)", :title="`Make a copy of ${seed.name}`")
-      fas-icon(class="fa", :icon="appIcons.copy")
-      span(v-if="showLabels") &nbsp; Duplicate
-
+    zone-lms-button(@action="duplicateSeed(seed)", :icon='appIcons.copy',
+      :title="`Make a copy of ${seed.name}`", text='Duplicate')
     ui-confirm(
       ref="confirmDialog",
       @confirm="confirmSeedDuplication",
@@ -16,16 +14,16 @@
 
 <script>
 import { APP_ICONS } from '@/helpers/app-icons'
-import UiButton from '@/app/ui/UiButton.vue'
 import UiConfirm from '@/app/ui/UiConfirm.vue'
 import StoreHelper from '@/helpers/store-helper'
+import ZoneLmsButton from '@/outside/components/ZoneLmsButton'
 const DUPLICATE = {
   TITLE : (name) => `Confirm duplication of ${name}`,
   DESCRIPTION: (name) => `Are you sure you want to duplicate ${name}?`,
 }
 export default {
   components: {
-    UiButton,
+    ZoneLmsButton,
     UiConfirm
   },
   data () {
@@ -52,7 +50,7 @@ export default {
       )
     },
     async confirmSeedDuplication () {
-      const seed = Object.assign({}, 
+      const seed = Object.assign({},
         this.seed, {
           name: `COPY OF ${this.seed.name}`,
           createDate: new Date(),

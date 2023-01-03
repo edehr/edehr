@@ -25,9 +25,6 @@ export default {
       this.isAdmin = await StoreHelper.adminValidate()
       this.loadComponent()
     },
-    redirectAdminLogin () {
-      this.$router.push('/admin')
-    }
   },
   created: function () {
     // Wait for App to load auth before loading this component
@@ -35,7 +32,9 @@ export default {
       StoreHelper.setApiError('MUST DEFINE LOAD COMPONENT METHOD FOR THIS PAGE')
       return
     }
-    this.refreshEventHandler = () => { this.loadBase() }
+    this.refreshEventHandler = () => {
+      this.loadBase().catch((err) => console.error('Load base catch promise rejections', err))
+    }
     EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
   },
   beforeDestroy: function () {

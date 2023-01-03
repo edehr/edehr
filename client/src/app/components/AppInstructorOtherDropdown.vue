@@ -1,8 +1,6 @@
 <template lang='pug'>
   div
     app-dropdown(:items="items")
-      template(#dropdownTitle)
-        div(class='titleBarLabel') Instructor tools
     ehr-context-activity-dialog(ref='activityDialog')
 </template>
 <script>
@@ -62,7 +60,7 @@ export default {
       menuItems.push( {
         label: MENU_TEXT.EXIT_LABEL,
         toolTip: MENU_TEXT.EXIT_TOOLTIP,
-        callback: () => { window.location = StoreHelper.lmsUrl() },
+        callback: () => { StoreHelper.exitToLms() },
         icon: APP_ICONS.exitToLms
       })
       menuItems.push( {

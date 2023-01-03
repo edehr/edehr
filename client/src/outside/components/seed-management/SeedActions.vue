@@ -1,50 +1,29 @@
 <template lang='pug'>
-  div(class="action-section")
-    div(v-if="showDetails")
-      ui-button(v-on:buttonClicked="gotoSeedView",
-        :title="text.DETAILS_TP")
-        fas-icon(class="fa", :icon="appIcons.itemDetails")
-        span(v-if="showLabels") &nbsp; {{text.DETAILS}}
-    div
-      ui-button(v-on:buttonClicked="viewEhrCondensed",
-        :title="text.VIEW_TP")
-        fas-icon(class="fa", :icon="appIcons.view")
-        span(v-if="showLabels") &nbsp; {{text.VIEW}}
-    div(v-if="canDo")
-      ui-button(v-on:buttonClicked="gotoEhrWithSeed",
-        :title="text.EDIT_TP")
-        fas-icon(class="fa", :icon="appIcons.edit")
-        span(v-if="showLabels") &nbsp; {{text.EDIT}}
-    div(v-if="canDo")
-      ui-button(v-on:buttonClicked="showEditDialog",
-        :title="text.PROPERTIES_TP")
-        fas-icon(class="fa", :icon="appIcons.configure")
-        span(v-if="showLabels") &nbsp; {{text.PROPERTIES}}
-    seed-duplicate(v-if="canDo", :seed='seed', @newSeed='seedDuplicated()')
-    div
-      ui-button(v-on:buttonClicked="downloadSeed",
-        :title="text.DOWNLOAD_TP")
-        fas-icon(class="fa", :icon="appIcons.download")
-        span(v-if="showLabels") &nbsp; {{text.DOWNLOAD}}
-    seed-delete(v-if="canDo"
-      :disabled="assignmentList.length > 0",
-      :seed='seed',
-      @seedDeleted='seedDeleted')
+  div
+    div(class="flow_across flow_across_right flow_wrap menu_space_across")
+      zone-lms-button(v-if="!hideCondensed", @action="viewEhrCondensed", :icon='appIcons.view', :title='text.VIEW_TP', :text='text.VIEW')
+      zone-lms-button(v-if="canDo", @action="gotoEhrWithSeed", :icon='appIcons.edit', :title='text.EDIT_TP', :text='text.EDIT')
+      zone-lms-button(v-if="canDo", @action="showEditDialog", :icon='appIcons.configure', :title='text.PROPERTIES_TP', :text='text.PROPERTIES')
+      seed-duplicate(v-if="canDo", :seed='seed', @newSeed='seedDuplicated()')
+      zone-lms-button(@action="downloadSeed", :icon='appIcons.download', :title='text.DOWNLOAD_TP', :text='text.DOWNLOAD')
+      seed-delete(v-if="canDo"
+        :disabled="assignmentList.length > 0",
+        :seed='seed',
+        @seedDeleted='seedDeleted')
     seed-data-dialog(ref="theDialog")
 </template>
 
 <script>
 import { APP_ICONS } from '@/helpers/app-icons'
 import { Text } from '@/helpers/ehr-text'
-import UiLink from '@/app/ui/UiLink'
 import StoreHelper from '@/helpers/store-helper'
 import SeedDuplicate from '@/outside/components/seed-management/SeedDuplicate'
-import UiButton from '@/app/ui/UiButton'
 import SeedDelete from '@/outside/components/seed-management/SeedDelete'
 import SeedDataDialog from '@/outside/components/seed-management/SeedDataDialog'
 import { downloadSeedToFile } from '@/helpers/ehr-utils'
+import ZoneLmsButton from '@/outside/components/ZoneLmsButton'
 export default {
-  components: { SeedDataDialog, SeedDelete, UiButton, SeedDuplicate, UiLink },
+  components: { ZoneLmsButton, SeedDataDialog, SeedDelete, SeedDuplicate },
   data () {
     return {
       appIcons: APP_ICONS,
@@ -53,7 +32,7 @@ export default {
   },
   props: {
     seed: {type: Object},
-    showDetails: {type: Boolean, default: true}
+    hideCondensed: {type: Boolean, default: false}
   },
   computed: {
     canDo () { return StoreHelper.isDevelopingContent() },
@@ -73,9 +52,6 @@ export default {
       let data = sSeedContent.ehrData
 
       downloadSeedToFile(seedId, sSeedContent, data)
-    },
-    gotoSeedView () {
-      this.$router.push({ name: 'seed-view', query: { seedId: this.seedId } })
     },
     gotoEhrWithSeed () {
       this.$router.push({ name: 'ehr', query: { seedEditId: this.seedId } })

@@ -65,7 +65,7 @@ const wound1SeedDef = {
 export const activity1 = {
   learningObject: assignment1,
   seedDef: ej0SeedDef,
-  resource_link_title: `Demo activity for "${assignment1.title}"`,
+  resource_link_title: `${assignment1.title} - Activity`,
   resource_link_description: 'This demonstration activity uses the ' +
     ` "${assignment1.title}" learning object, located in this demo instance of the EdEHR.` +
     ' This activity\'s learning object is based on Case Study #1. ' +
@@ -75,7 +75,7 @@ export const activity1 = {
 export const activity2 = {
   learningObject: assignment2,
   seedDef: ej2SeedDef,
-  resource_link_title: `Sample activity to launch "${assignment2.title}"`,
+  resource_link_title: `${assignment2.title} - Activity`,
   resource_link_description: 'This demonstration activity uses the ' +
     ` "${assignment2.title}" learning object, located in this demo instance of the EdEHR.` +
     ' This activity\'s learning object is based on Case Study #2 at the end of the patient\'s stay. ' +
@@ -86,7 +86,7 @@ export const activity2 = {
 export const activity3 = {
   learningObject: assignment3,
   seedDef: wound1SeedDef,
-  resource_link_title: `Sample activity to launch "${assignment3.title}"`,
+  resource_link_title: `${assignment3.title} - Activity`,
   resource_link_description: 'This demonstration activity uses the ' +
     ` "${assignment3.title}" learning object, located in this demo instance of the EdEHR.` +
     ' This activity\'s learning object is a case study devised to illustrate the Integumentary and Wound Care module in the EdEHR ',

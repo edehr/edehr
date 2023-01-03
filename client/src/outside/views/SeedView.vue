@@ -1,8 +1,7 @@
 <template lang='pug'>
   div
-    div(class="details-action-bar")
-      seed-list-link(:seed-id='seedId')
-      seed-actions(:seed="seed", :showDetails='false')
+    zone-lms-page-banner
+      seed-actions(class="flow_across_last_item", :seed="seed")
     div(class="details-container card selected")
       div(class="details-row")
         div(class="details-name") {{ text.SEED_LABEL }}
@@ -50,9 +49,10 @@ import SeedListLink from '@/outside/components/seed-management/SeedListLink'
 import SeedDelete from '@/outside/components/seed-management/SeedDelete'
 import SeedDataDialog from '@/outside/components/seed-management/SeedDataDialog'
 import OutsideCommon from '@/outside/views/OutsideCommon'
+import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner'
 export default {
   extends: OutsideCommon,
-  components: { SeedActions, SeedDataDialog, SeedListLink, SeedDelete, UiButton, SeedDuplicate, SeedStructural, UiLink },
+  components: { ZoneLmsPageBanner, SeedActions, SeedDataDialog, SeedListLink, SeedDelete, UiButton, SeedDuplicate, SeedStructural, UiLink },
   data () {
     return {
       appIcons: APP_ICONS,
@@ -117,21 +117,3 @@ export default {
   },
 }
 </script>
-
-<style scoped lang='scss'>
-@import '../../scss/definitions';
-.seed-view-header {
-  max-width: 60rem;
-  > div {
-    margin-bottom: 5px;
-  }
-}
-
-.action-section {
-  display: flex;
-  flex-flow: row;
-  div {
-    margin-right: 5px;
-  }
-}
-</style>

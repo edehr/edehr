@@ -1,8 +1,10 @@
 <template lang="pug">
   div
-    ui-button(v-on:buttonClicked="deleteLearningObject", :disabled='disabled', :title="title")
-      fas-icon(class="fa", :icon="appIcons.trash")
-      span(v-if="showLabels") &nbsp; {{text.DELETE}}
+    zone-lms-button(@action="deleteLearningObject",
+      :title="title",
+      :disabled='disabled',
+      :icon='appIcons.trash',
+      :text='text.DELETE')
     ui-confirm(
       ref="confirmDialog",
       @confirm="confirmLearningObjectDeletion",
@@ -19,9 +21,11 @@ import UiButton from '@/app/ui/UiButton.vue'
 import UiConfirm from '@/app/ui/UiConfirm.vue'
 import StoreHelper from '@/helpers/store-helper'
 import { Text } from '@/helpers/ehr-text'
+import ZoneLmsButton from '@/outside/components/ZoneLmsButton'
 const TEXT = Text.LOBJ_ACTIONS.DELETE_CONFIRM
 export default {
   components: {
+    ZoneLmsButton,
     UiButton,
     UiConfirm
   },

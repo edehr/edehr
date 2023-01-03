@@ -144,16 +144,17 @@ export default {
     setInitialValue (value) {
       // save the given initial value to test for inclusion in the generated time series.
       this.initialVal = value
-      if(this.element.recHeader) {
-        if (this.element.inputType === VISIT_TIME_TYPE) {
-          this.inputVal = this.simulationTime
-        }
-        if (this.element.inputType === VISIT_DAY_TYPE) {
-          this.inputVal = this.simulationDay
-        }
-      } else {
-        this.inputVal = value
-      }
+      // if(this.element.recHeader) {
+      //   if (this.element.inputType === VISIT_TIME_TYPE) {
+      //     this.inputVal = this.simulationTime
+      //   }
+      //   if (this.element.inputType === VISIT_DAY_TYPE) {
+      //     this.inputVal = this.simulationDay
+      //     console.log('set day init value', this.simulationDay, value)
+      //   }
+      // } else {
+      this.inputVal = value
+      // }
     },
   },
   created () {

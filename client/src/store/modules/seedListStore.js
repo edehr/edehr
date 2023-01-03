@@ -24,7 +24,7 @@ export const getters = {
   },
 
   list: state => { return state.seedDataList },
-  
+
   seedId: state => state.sSeedId
 }
 
@@ -32,7 +32,9 @@ const actions = {
   initialize: function ({ commit }) {
     commit('initialize')
   },
-
+  clearSeedData (context) {
+    context.commit('_setSeedId', undefined)
+  },
   deleteSeed (context, id) {
     const url = `/${id}`
     if (debugSL) console.log('Seed list store. Delete url >>', url)
@@ -50,13 +52,13 @@ const actions = {
    * @return {*}
    */
   loadSeedContent (context, seedId) {
-    if(debugSL) console.log('SeedList loadSeedContent stash seed id', seedId)
+    if(debugSL) console.log('SeedList load seed content stash seed id', seedId)
     context.commit('_setSeedId', seedId)
     let url =  'get/' + seedId
-    if(debugSL) console.log('SeedList loadSeedContent from url', url)
+    if(debugSL) console.log('SeedList load seed content from url', url)
     return InstoreHelper.getRequest(context, API, url).then(response => {
       let sd = response.data.seeddata
-      if(debugSL) console.log('SeedList loadSeedContent sd >>', sd)
+      if(debugSL) console.log('SeedList load seed content sd >>', sd)
       context.commit('_setSeedContent', sd)
     })
   },
@@ -68,7 +70,7 @@ const actions = {
    * @return {*}
    */
   loadSeeds (context) {
-    let consumerId = StoreHelper.toolConsumerId()
+    let consumerId = StoreHelper.getAuthdConsumerId()
     if (!consumerId) {
       // this can happen if you visit the Seed Lists page and then refresh the page. No worries. Load will happen later.
       console.log('seedListStore. Will not load seeds at this time because the consumer id is not yet set up.')
@@ -133,12 +135,22 @@ const actions = {
       })
       .then(() => {
         if (context.state.sSeedId) {
-          if(debugSL) console.log('SeedList after seed update loadSeedContent')
+          if(debugSL) console.log('SeedList after seed update load seed content')
           return context.dispatch('loadSeedContent', context.state.sSeedId)
         }
       })
   },
 
+  async sendSeedEhrDataDraft (context, payload) {
+    // push new EHR data into the seed, without progress bars,
+    // receive the server response with the new seed
+    // stash in the store
+    // emit event to refresh table data
+    let id = context.state.sSeedId
+    let url = 'updateSeedEhrProperty/' + id
+    const sd = await InstoreHelper.putRequestSilent(context, API, url, payload)
+    await context.commit('_setSeedContent', sd.data)
+  },
   /**
    * support saving partial data inside the seed's ehr data
    * @param context
@@ -160,7 +172,7 @@ const actions = {
       })
       .then(() => {
         if (context.state.sSeedId) {
-          if(debugSL) console.log('SeedList after ehrData update loadSeedContent context.state.sSeedId', context.state.sSeedId)
+          if(debugSL) console.log('SeedList after ehrData update load seed content context.state.sSeedId', context.state.sSeedId)
           return context.dispatch('loadSeedContent', context.state.sSeedId)
         }
       })
@@ -200,8 +212,13 @@ export const mutations = {
   },
   _setSeedId: (state, seedId) => {
     if(debugSL) console.log('SeedList set seed id and stash in session store', seedId)
-    localStorage.setItem(sKeys.SEED_ID, seedId)
-    state.sSeedId = seedId
+    if (seedId) {
+      localStorage.setItem(sKeys.SEED_ID, seedId)
+      state.sSeedId = seedId
+    } else {
+      localStorage.removeItem(sKeys.SEED_ID)
+      state.sSeedId = ''
+    }
   },
   _setSeedContent: (state, value) => {
     // state.sSeedContent = value

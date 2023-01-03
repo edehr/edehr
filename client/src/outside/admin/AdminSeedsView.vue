@@ -41,9 +41,8 @@ export default {
       if (this.isAdmin) {
         await StoreHelper.loadConsumer(this.consumerId)
         await StoreHelper.loadAssignmentAndSeedLists()
-      } else {
-        this.redirectAdminLogin()
       }
+      // else page controller has already redirected to login
     }
   },
 }

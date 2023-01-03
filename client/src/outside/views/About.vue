@@ -1,5 +1,5 @@
 <template lang='pug'>
-  div(class="outside-view")
+  div
     h1 About the EdEHR, Services and Collaboration
     div(class="features features-dark")
       div(class="valueCards")

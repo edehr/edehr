@@ -4,7 +4,7 @@
       ref="theDialog",
       :isModal="true",
       :saveButtonLabel="saveLabel",
-      :cancelButtonLabel="cancel",
+      :cancelButtonLabel="cancelLabel",
       @save="confirmDialog",
       @cancel="cancelDialog"
       )
@@ -33,24 +33,18 @@ export default {
     return {
       title: DEFAULT_TITLE,
       text: DEFAULT_TEXT,
-      save: SAVE_BUTTON_LABEL,
-      cancel: CANCEL_BUTTON_LABEL
     }
   },
   props: {
     htmlBody: { type: Boolean, default: false },
-    setFooter: {type: Boolean, default: false},
-    saveLabel: { type: String, default: SAVE_BUTTON_LABEL }
+    saveLabel: { type: String, default: SAVE_BUTTON_LABEL },
+    cancelLabel: { type: String, default: CANCEL_BUTTON_LABEL }
   },
 
   methods: {
-    showDialog: function (title, msg, save = SAVE_BUTTON_LABEL, cancel = CANCEL_BUTTON_LABEL) {
+    showDialog: function (title, msg) {
       this.title = title  || this.title
       this.text = msg || this.text
-      if(this.setFooter) {
-        this.save = save
-        this.cancel = cancel
-      }
       this.$refs.theDialog.onOpen()
     },
     closeIt: function () {

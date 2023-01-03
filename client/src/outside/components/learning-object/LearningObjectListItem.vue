@@ -1,10 +1,12 @@
 <template lang="pug">
   div
-    div(class="list-item-container")
-      div(class="list-item-name") {{lObj.name}} &nbsp;
-        a(@click="showMore = !showMore; $emit('selectLObj', lObj)") {{showMore ? 'show less' : 'show more'}}
-      learning-object-actions(class="list-item-actions", :learningObject='lObj')
+    div(class="flow_across")
+      div(class="list-item-name")
+        ui-link(:name="'learning-object'",  :query='{ learningObjectId: this.lObj._id }' )
+          span(class='clickable') {{lObj.name}}
+      learning-object-actions(class="flow_across_last_item", :learningObject='lObj')
     div(v-if="showMore")
+      a(@click="showMore = !showMore; $emit('selectLObj', lObj)") {{showMore ? 'show less' : 'show more'}}
       div(class="details-row")
         div(class="details-name") {{text.DESCRIPTION}}
         div(class="details-value")
@@ -24,16 +26,17 @@
             ui-link(:name="'lms-activity'", :query="{activityId: act._id}")
               fas-icon(class="fa", :icon="appIcons.activity")
               span &nbsp; {{act.resource_link_title}}
-      div(class="details-row")
+      div(class="details-row")  
         div(class="details-name") {{text.DATES}}
         div(class="details-value") Created on {{ lObj.createDate | formatDateTime }}. Last modified on {{ lObj.lastUpdateDate | formatDateTime }}
       div(v-if="isAdmin", class="details-row")
         div(class="details-name") Id
         div(class="details-value") {{ lObj._id }}
     div(v-if="!showMore")
-      div(class="details-row")
-        div(class="details-name") {{text.SEED}}
-        div(class="details-value")
+      div(class="details-row flow_across content_space_across")
+        a(@click="showMore = !showMore; $emit('selectLObj', lObj)") {{showMore ? 'show less' : 'show more'}}
+        div
+          span {{text.SEED}}: &nbsp;
           ui-link(:name="'seed-view'", :query="{seedId: lObj.seedDataId}")
             fas-icon(class="fa", :icon="appIcons.seed")
             span &nbsp; {{ lObj.seedDataObj.name }}

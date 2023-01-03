@@ -1,5 +1,5 @@
 <template lang="pug">
-  div 
+  div
     div(class="ehr-page-form")
       h2(class="headerClass")
       div(style="display:inline") {{ form.label }}
@@ -11,7 +11,7 @@
       ehr-group(v-for="group in groups", :key="group.gIndex", :group="group", :ehrHelp="ehrHelp")
       div(v-if="canEdit", class="resetFormButton")
         ui-button(
-          v-on:buttonClicked="promptConfirmDialog", 
+          v-on:buttonClicked="promptConfirmDialog",
           v-bind:secondary="true",
           :disabled="ehrHelp.isEditingForm(formKey)"
         ) Reset form data
@@ -71,10 +71,6 @@ export default {
     },
   },
   methods: {
-    cssFromDefs: function (element) {
-      return element.formCss ? element.formCss : 'noClass'
-    },
-
     promptConfirmDialog : function () {
       this.$refs.confirmDialog.showDialog(TEXT.TITLE, TEXT.MSG)
     },

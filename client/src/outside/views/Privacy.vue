@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="outside-view")
+  div
     h1 Privacy Policy
     p Last updated:  Jan 14, 2023 (see change list below)
     p Previous update: May 4, 2022
@@ -118,7 +118,5 @@ export default {
 <style lang="scss" scoped>
 @import '../../scss/definitions';
 
-.outside-view {
-  margin: 2rem;
-}
+
 </style>

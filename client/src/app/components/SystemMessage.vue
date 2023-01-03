@@ -6,7 +6,6 @@
 
 <script>
 import UiClose from '../ui/UiClose'
-import { Text } from '../../helpers/ehr-text'
 import StoreHelper from '../../helpers/store-helper'
 import EventBus from '../../helpers/event-bus'
 import { PAGE_DATA_REFRESH_EVENT } from '../../helpers/event-bus'
@@ -36,7 +35,7 @@ export default {
         StoreHelper.setSystemMessage('')
     },
     updateSystemMessage () {
-      const msg =  (StoreHelper.isStudent(this) && StoreHelper.isSubmitted(this)) ? Text.IS_SUBMITTED : ''
+      const msg = ''
       StoreHelper.setSystemMessage(msg)
     }
 

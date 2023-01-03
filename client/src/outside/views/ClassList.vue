@@ -1,17 +1,12 @@
 <template lang="pug">
   div
-    div(class="details-action-bar")
-      ui-link(:name="'lms-activity'", :query="{activityId: activityId}")
-        fas-icon(class="fa", :icon="appIcons.activity")
-        span &nbsp; Return to: {{ activityName }}
-      activity-actions
+    zone-lms-page-banner
+      activity-actions(class="flow_across_last_item")
 
     div(class="classlist-body")
       div(v-if="classList.length===0") No students have attempted this activity.
       div(v-else, v-for="(studentVisit) in classList", class="list-card list-element", :class="rowClass(studentVisit)")
-        class-list-item(
-          @selectedStudent="changeStudent(studentVisit)",
-          :studentVisit="studentVisit")
+        class-list-item(:studentVisit="studentVisit")
 </template>
 
 <script>
@@ -20,11 +15,13 @@ import UiLink from '@/app/ui/UiLink.vue'
 import ClassListItem from '@/outside/components/lms-activity/ClassListItem'
 import ActivityActions from '@/outside/components/lms-activity/ActivityActions'
 import OutsideCommon from '@/outside/views/OutsideCommon'
+import ZoneLmsPageName from '@/outside/components/ZoneLmsPageName'
+import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner'
 
 const debug = false
 export default {
   extends: OutsideCommon,
-  components: { ActivityActions, UiLink, ClassListItem  },
+  components: { ZoneLmsPageBanner, ZoneLmsPageName, ActivityActions, UiLink, ClassListItem  },
   data () {
     return {
     }
@@ -52,16 +49,12 @@ export default {
       let selected = sv._id === StoreHelper.getCurrentEvaluationStudentId()
       return selected ? 'selected' : ''
     },
-    changeStudent (sv) {
-      if (debug) console.log('CL changeStudentForInstructor', sv._id)
-      StoreHelper.changeStudentForInstructor(sv._id)
-    },
     async loadComponent () {
       /*
        */
       if (debug) console.log('CL loadComponent', this.activityId)
       try {
-        await StoreHelper.loadAsCurrentActivity(this.activityId)
+        await StoreHelper.loadCurrentActivity()
         if (debug) console.log('CL loadComponent loadInstructorWithStudent', this.activityId)
         let result = await StoreHelper.loadInstructorWithStudent()
         if (result) {

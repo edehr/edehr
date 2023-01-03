@@ -36,15 +36,15 @@ function getAssignmentViaApi (context, url) {
 
 const actions = {
   getAssignments (context) {
-    let url = 'consumer/' + StoreHelper.toolConsumerId()
+    let url = 'consumer/' + StoreHelper.getAuthdConsumerId()
     return getAssignmentViaApi(context, url)
   },
   getAssignmentsWithCounts (context) {
-    let url = 'withActivityCount/' + StoreHelper.toolConsumerId()
+    let url = 'withActivityCount/' + StoreHelper.getAuthdConsumerId()
     return getAssignmentViaApi(context, url)
   },
 
-  
+
   async loadAssignments (context) {
     const { dispatch, commit } = context
     const list = await dispatch('getAssignments', context)

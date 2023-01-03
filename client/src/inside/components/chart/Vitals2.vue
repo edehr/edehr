@@ -18,8 +18,7 @@ import UiButton from '../../../app/ui/UiButton.vue'
 import VitalsChart from './VitalsChart'
 import VitalModel from './vitalModel'
 import EhrDefs from '../../../helpers/ehr-defs-grid'
-import EventBus from '../../../helpers/event-bus'
-import { PAGE_DATA_READY_EVENT } from '../../../helpers/event-bus'
+import EventBus, { PAGE_DATA_REFRESH_EVENT } from '../../../helpers/event-bus'
 import EhrDialogForm from '../page/EhrDialogForm.vue'
 import EhrPageTable from '../page/EhrPageTable'
 
@@ -79,9 +78,7 @@ export default {
   methods: {
     showDialog () {
       // console.log('Vitals Chart tab showDialogHandler ', this.dialogInputs)
-      this.ehrHelp.showDialog(this.tableKey)
-      // this.ehrHelp.showDialog(this.tableDef, this.dialogInputs)
-      // EventBus.$emit(SHOW_TABLE_DIALOG_EVENT)
+      this.ehrHelp.showDialogForTable(this.tableKey, {})
     },
     refresh () {
       this.tableForm = this.ehrHelp.getTable(this.tableKey)
@@ -105,11 +102,11 @@ export default {
       // console.log('Vitals PAGE_DATA_REFRESH_EVENT')
       _this.refresh()
     }
-    EventBus.$on(PAGE_DATA_READY_EVENT, this.refreshEventHandler)
+    EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
   },
   beforeDestroy: function () {
     if (this.refreshEventHandler) {
-      EventBus.$off(PAGE_DATA_READY_EVENT, this.refreshEventHandler)
+      EventBus.$off(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
     }
   }
 }

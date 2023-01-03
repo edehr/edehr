@@ -1843,7 +1843,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -1854,7 +1854,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -2124,7 +2124,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Vital signs',
         addButtonText: 'Add vital signs',
         ehr_list: [
@@ -2315,7 +2315,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -2326,7 +2326,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -2379,7 +2379,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Fluid balance',
         addButtonText: 'Add a fluid in/out record',
         ehr_list: [
@@ -2455,7 +2455,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -2466,7 +2466,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -3304,7 +3304,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Neurological assessment',
         addButtonText: 'Add a neurological assessment',
         ehr_list: [
@@ -3678,7 +3678,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -3689,7 +3689,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -4088,7 +4088,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Respiratory assessment',
         addButtonText: 'Add a respiratory assessment',
         ehr_list: [
@@ -4302,7 +4302,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -4313,7 +4313,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -4872,7 +4872,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Cardiovascular assessment',
         addButtonText: 'Add a cardiovascular assessment',
         ehr_list: [
@@ -5142,7 +5142,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -5153,7 +5153,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -5601,7 +5601,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Gastrointestinal assessment',
         addButtonText: 'Add a gastrointestinal assessment',
         ehr_list: [
@@ -5872,7 +5872,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -5883,7 +5883,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -6317,7 +6317,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Genitourinary assessment',
         addButtonText: 'Add a genitourinary assessment',
         ehr_list: [
@@ -6623,7 +6623,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -6634,7 +6634,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -6923,7 +6923,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Musculoskeletal assessment',
         addButtonText: 'Add a musculoskeletal assessment',
         ehr_list: [
@@ -7090,7 +7090,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -7101,7 +7101,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -7305,7 +7305,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Pain assessment',
         addButtonText: 'Add a pain assessment',
         ehr_list: [
@@ -7542,7 +7542,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -7553,7 +7553,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -7890,7 +7890,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Biopsychosocial assessment',
         addButtonText: 'Add a biopsychosocial assessment',
         ehr_list: [
@@ -8165,7 +8165,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -8176,7 +8176,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -8282,7 +8282,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Nonmedical orders',
         addButtonText: 'Add an order',
         ehr_list: [
@@ -8392,7 +8392,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -8403,7 +8403,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -8499,7 +8499,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Referrals',
         addButtonText: 'Add a referral',
         ehr_list: [
@@ -8603,7 +8603,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -8614,7 +8614,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -8923,7 +8923,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Lab requisitions',
         addButtonText: 'Add a lab requisition assessment',
         ehr_list: [
@@ -9127,7 +9127,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -9138,7 +9138,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -9426,7 +9426,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Medication orders',
         addButtonText: 'Add a medication order',
         ehr_list: [
@@ -10157,7 +10157,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -10168,7 +10168,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -10212,7 +10212,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Progress notes',
         addButtonText: 'Add an encounter note',
         ehr_list: [
@@ -10280,7 +10280,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -10291,7 +10291,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -10381,7 +10381,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Care plan',
         addButtonText: 'Add a care plan',
         ehr_list: [
@@ -10484,7 +10484,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -10495,7 +10495,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -10548,7 +10548,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Consults',
         addButtonText: 'Add a consulttion report',
         ehr_list: [
@@ -10624,7 +10624,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -10635,7 +10635,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -10688,7 +10688,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Laboratory reports',
         addButtonText: 'Add a laboratory report',
         ehr_list: [
@@ -10764,7 +10764,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -10775,7 +10775,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -10828,7 +10828,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Medical imaging',
         addButtonText: 'Add a report or image',
         ehr_list: [
@@ -10904,7 +10904,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -10915,7 +10915,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -10968,7 +10968,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Operative and anaesthesia records',
         addButtonText: 'Add a report',
         ehr_list: [
@@ -11304,7 +11304,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -11315,7 +11315,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -11429,7 +11429,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Diagnostic codes (ICD-10)',
         addButtonText: 'Add a diagnostic code',
         ehr_list: [
@@ -11541,7 +11541,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -11552,7 +11552,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -11623,7 +11623,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Intervention codes',
         addButtonText: 'Add an intervention code',
         ehr_list: [
@@ -11724,7 +11724,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -11735,7 +11735,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -11815,7 +11815,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Case mix group',
         addButtonText: 'Add a case mix group',
         ehr_list: [
@@ -12175,7 +12175,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '3',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableLabel: 'Identification',
@@ -12185,7 +12185,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '3',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         recHeader: true,
@@ -12314,7 +12314,7 @@ const DEFS = {
         elementKey: 'table1',
         tableKey: 'table1',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Test table 1',
         addButtonText: 'Add a row to the test table',
         ehr_list: [
@@ -12651,7 +12651,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '2',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -12662,7 +12662,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '2',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -12972,7 +12972,7 @@ const DEFS = {
         elementKey: 'table1',
         tableKey: 'table1',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Test table 1',
         addButtonText: 'Add a row to the test table',
         ehr_list: [
@@ -13168,7 +13168,7 @@ const DEFS = {
         elementKey: 'stacked',
         tableKey: 'stacked',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Stacked table',
         addButtonText: 'Add a stacked row',
         ehr_list: [
@@ -13360,7 +13360,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -13371,7 +13371,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -13575,7 +13575,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '2',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -13586,7 +13586,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '2',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -13799,7 +13799,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '3',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -13810,7 +13810,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '3',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -14081,7 +14081,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '4',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -14092,7 +14092,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '4',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -15384,7 +15384,7 @@ const DEFS = {
         elementKey: 'tableIncision',
         tableKey: 'tableIncision',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Incision profile',
         addButtonText: 'Add an incision profile',
         ehr_list: [
@@ -15493,7 +15493,7 @@ const DEFS = {
         elementKey: 'tableIncisionAssessment',
         tableKey: 'tableIncisionAssessment',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Incision assessment',
         addButtonText: 'Add an incision assessment',
         ehr_list: [
@@ -15636,7 +15636,7 @@ const DEFS = {
         elementKey: 'tableWound',
         tableKey: 'tableWound',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Wound profile',
         addButtonText: 'Add a wound profile',
         ehr_list: [
@@ -15767,7 +15767,7 @@ const DEFS = {
         elementKey: 'tableWoundAssessment',
         tableKey: 'tableWoundAssessment',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Wound assessment',
         addButtonText: 'Add a wound assessment',
         ehr_list: [
@@ -16202,7 +16202,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -16213,7 +16213,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -16697,7 +16697,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '2',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -16708,7 +16708,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '2',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -18180,7 +18180,7 @@ const DEFS = {
         elementKey: 'tableCbcAnalysis',
         tableKey: 'tableCbcAnalysis',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'CBC analysis',
         addButtonText: 'Add a CBC Report',
         tableAction: 'pbf-review',
@@ -18419,7 +18419,7 @@ const DEFS = {
         elementKey: 'tablePbfReview',
         tableKey: 'tablePbfReview',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'PBF Review',
         addButtonText: 'NONE',
         ehr_list: [
@@ -19476,7 +19476,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -19487,7 +19487,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -19570,7 +19570,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Discharge plan',
         addButtonText: 'Add a discharge planning note',
         ehr_list: [

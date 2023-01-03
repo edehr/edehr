@@ -4,6 +4,18 @@ const hashToken = authHelper.hashToken
 const logAuth = false
 const state = {
   authData: {},
+  /* SAMPLE AUTH DATA
+consumerKey: "Demo-1669931569151-raq4aak"
+exp: 1670860112
+iat:
+isInstructor: false
+isStudent: true
+secondsRemaining: 863762
+timeRemaining: "239 hours, 56 minutes, 2 seconds"
+toolConsumerId: "63892231dbdd588b73d48771"
+userId: from visit.user,
+visitId: "638a1e50dbdd588b73d48bb2"
+  */
   token: undefined
 }
 
@@ -16,7 +28,20 @@ const getters = {
   },
   consumerId: state => {
     return state.authData.toolConsumerId
-  }
+  },
+  isInstructor: state => {
+    return state.authData.isInstructor
+  },
+  isStudent: state => {
+    return state.authData.isStudent
+  },
+  visitId: state => {
+    return state.authData.visitId
+  },
+  userId: state => {
+    return state.authData.userId
+  },
+
 }
 
 const actions = {
@@ -35,11 +60,11 @@ const actions = {
       })
   },
   fetchData: function ({commit}, { authToken }) {
-    if(logAuth) console.log('fetchData refreshToken', hashToken(authToken))
+    if(logAuth) console.log('fetchData authToken', hashToken(authToken))
     return authHelper.getData(authToken)
       .then(res => {
         const { data } = res
-        if(logAuth) console.log('fetchData data', data)
+        if(logAuth) console.log('fetchData authToken -> data', data)
         return commit('setAuthData', data)
       })
   },

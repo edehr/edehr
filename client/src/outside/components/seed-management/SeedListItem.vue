@@ -1,10 +1,12 @@
 <template lang="pug">
   div
-    div(class="list-item-container")
-      div(class="list-item-name") {{seed.name}} &nbsp;
-        a(@click="showMore = !showMore; $emit('selectSeed', seed)") {{showMore ? 'show less' : 'show more'}}
-      seed-actions(class="list-item-actions", :seed='seed')
+    div(class="flow_across")
+      div(class="list-item-name")
+        ui-link(:name="'seed-view'",  :query='{ seedId: seedModel.id }' )
+          span(class='clickable') {{seed.name}}
+      seed-actions(class="flow_across_last_item", :seed='seed')
     div(v-if="showMore")
+      a(@click="showMore = !showMore; $emit('selectSeed', seed)") {{showMore ? 'show less' : 'show more'}}
       div(class="details-row")
         div(class="details-name") {{text.DESCRIPTION}}
         div(class="details-value")
@@ -30,6 +32,7 @@
         div(class="details-name") Id
         div(class="details-value") {{ seed._id }}
     div(v-if="!showMore")
+      a(@click="showMore = !showMore; $emit('selectSeed', seed)") {{showMore ? 'show less' : 'show more'}}
       div(class="") {{truncate(seed.description, 180)}}
 </template>
 
@@ -41,9 +44,10 @@ import StoreHelper from '@/helpers/store-helper'
 import SeedActions from '@/outside/components/seed-management/SeedActions'
 import { Text } from '@/helpers/ehr-text'
 import SeedModel from '@/outside/models/SeedModel'
+import UiLink from '@/app/ui/UiLink'
 
 export default {
-  components: { SeedActions, SeedDelete, SeedDuplicate, UiButton, },
+  components: { UiLink, SeedActions, SeedDelete, SeedDuplicate, UiButton, },
   data () {
     return {
       text: Text.SEED_VIEW_PAGE,

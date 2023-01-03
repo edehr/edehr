@@ -39,15 +39,16 @@ export default {
     }
   },
   props: {
+    // ehrData is undefined if the student submitted no work at all
     ehrData: { type: Object }
   },
   computed: {
-    seedEhrData () { return this.ehrData.ehrData },
+    seedEhrData () { return this.ehrData ? this.ehrData.ehrData : {}},
     pageDef () { return this.activePageKey ? EhrDefs.getPageDefinition(this.activePageKey) : {}},
     pageTitle () { return this.pageDef ? this.pageDef.pageTitle : 'Select a page from the menu'},
     pageSeedData (  ) {
       const pkey = this.activePageKey
-      return pkey ? this.ehrData[pkey] : {}
+      return this.ehrData ? (pkey ? this.ehrData[pkey] : {}) : {}
     },
   },
   watch: {

@@ -1,7 +1,7 @@
 <template lang="pug">
   div(class='student-submit')
     div(v-if="showSubmit", title='End your work and send to your instructor to evaluate.')
-      ui-button(v-on:buttonClicked="npButtonClicked", :disabled="disableNavAction") Submit
+      ui-button(v-on:buttonClicked="npButtonClicked", :disabled="disableNavAction") Submit Activity
     div(v-else, class='status-message') {{ statusMessage }}
     ui-confirm(ref="confirmDialog", v-on:confirm="proceed", saveLabel='Submit')
     ui-agree(ref="successDialog", v-on:confirm="finishedAction")
@@ -84,11 +84,11 @@ export default {
     },
     finishedAction () {
       // student is finished with their activity. take them back to the lms
-      window.location = StoreHelper.lmsUrl()
+      StoreHelper.exitToLms()
     },
     submitFeedback () {
       postFeedback(this.feedbackContent).then( () => {
-        window.location = StoreHelper.lmsUrl()
+        StoreHelper.exitToLms()
       })
     }
   },

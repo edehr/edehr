@@ -16,7 +16,6 @@ Pages with zone DEMO are stateless.
 
 - EdEHR application pages are in the LTI state
 - Users always arrive via an LTI call from an LMS.
-- Inside the LTI state there are three zones: EHR and LMS and ADMIN
 - The LMS makes an LTI post to an EdEHR server. 
 - If the post message is valid the server redirects to the client side with a ```token``` in the query string. 
 - The client sends this token to the as-configured api server for validation. (The prevents spoofing the client with any old token). 
@@ -47,17 +46,50 @@ sequenceDiagram
 ```
 
 
-At this point the user is inside the LTI state. 
-```mermaid
-stateDiagram-v2
-   LTI : LTI  (This is the EdEHR application)
-   V : Validate token
-    [*] --> V : refresh token
-    V --> LTI : auth token
-```
-
+At this point the user is inside the LTI state.
 The LTI state has two sub-states that can exist at the same time: Full-Demo and SeedEditing
 
+```mermaid
+graph TD
+    A[Page change] --> |isDemoLti <br> seedEditId| B{is public?}
+    B --> |yes| Return
+    B --> |no| C{demoOnlyKey?}
+    C -->|yes| D(Select case study)
+    D --> Return
+    C -->|no| E{refreshToken?}
+    E --> |no| AT
+    E -->|yes| F(clear EHR only)
+    F --> DD{haveDemoToken <br> && !isDemoLti}
+    DD --> |yes| LD(Log out of demo)
+    LD --> FT
+    DD --> |no| FT(fetchAndStoreAuthToken)
+    FT --> AT(getAuthToken)
+    AT --> HT{authToken?}
+    HT --> |yes| FD(Fetch token data)
+    HT --> |non| NZE
+    FD --> NZE{Zone is <br> outside EHR?}
+    NZE --> |yes| RNZ(clear EHR only && clear seedEditId)
+    NZE --> |no| SSI
+    RNZ --> SSI{seedEditId?}
+    SSI --> |no| HDT
+    SSI --> |yes| SSIS(set seed id)
+    SSIS --> HDT{haveDemoToken?}
+    HDT --> |yes| LDD(loadDemoData)
+    LDD --> DZ
+    HDT --> |no| DZ{in demo zone?}
+    DZ --> |yes| Return
+    DZ --> |no| ATT{authToken?}
+    ATT --> |yes| LAD(Load application data)
+    ATT --> |no| EONLY{Is active<br>ehr only demo?}
+    LAD --> Return
+    EONLY --> |no| Return
+    EONLY --> |yes| PR(Page refresh)
+    PR --> Return
+
+```
+
+
+https://mermaid.live/edit#pako:eNp1VNtu2kAQ_ZXpPkSORKJwT1GVysmCiIpIBH6pSx823gFbgV1kr6MSw793L3bAtOEJn5k5Z-bM7hYkkhzJgKxSto0hoAsB-uf_emYrhChmYoW_4erqDvZJRnEjJyqBby_pHWSIfMgT9cj3cF8kGWzzl3USfT84hntXtMNsDzNUeSpquJB7eCi4JnwS690P3FV1Dybuyqg3xzVGCiKWIWQq57tLl0QtySmtKzOswyLFZYpZHMhXFBXt8CjrByeQUxp50RpZCsPxDKTup5QZ2SJKi5i9oRneUrrxLy7gy4cjpQilJ0NPqDeRK5C5ArkEM2nJOnFZo6BeZFobBd4SVRT7gs-VTNHPlRujaiiwuX7grVCdB30XHAcFqyLV9OPgpLER9UZGBJSdhjPFLutpQoo9TMNhKeoa1N9FKAWCXrV1QE-WJRyNaZWOzjld-zQ889W45pDj6bk8KzU-zOePDtUUFtVAcSyp5DR6rBnT4Ay1TeivuZehsoqQVHIGdnbRoL7eD89oUNsm9daScZNGj45Nyu3R8KzIdETDIhF28_CujauIafjJ1agC7pD-Z40aPG3JNyeMcWDbrb54TCWyts2PbHsrnqaTn8VjBixSyRuaBWKcuqWYDisJTfrP3bK1R6pPQran55lnH47yCpadPM9qnKRBNphuWML1u1OYlAVRMW5wQQb6L2fp64IsxEHnaQvkfCciMlBpjg2Sb_WASBOmn6sNGSzZOtPolgkyKMgfMmi129edm07na6vfa7e6zXaD7DTavb1u95r9m-5tv3nTb_YPDfIupSZoXndv2z0d6vV73W6v1WlZttAGjeThL66pjPM
 
 #### Full-demo 
 - The LTI entry query contains the ```isDemoLti=true``` flag along with the initial refresh token.
@@ -76,10 +108,7 @@ stateDiagram-v2
     P --> FullDemo : press Enter Full Demo button
     state FullDemo {
         [*] --> LTIDemo : ?token=xxx <br/> isDemo=true
-        state LTIDemo {
-            [*] --> FullDemo : ?isDemo=true
-        }
-    } 
+    }     
 ```
 
 ```mermaid
@@ -87,37 +116,21 @@ stateDiagram-v2
    P : Public home page
    DM : Demo login page   
    LTI : LTI
-    [*] --> P
-    P --> DM
-    DM --> LTI
-    state LTI {
-      [*] --> Foo
-    }
+   [*] --> P
+   P --> DM
+   DM --> LTI   
 ```
 
-broken
+Demo token validation
 ```mermaid
-stateDiagram-v2 
-    P : Public home page
-    [*] --> P
-    P --> FullDemo : press Enter Full Demo button
-    state FullDemo {
-        [*] --> LTIDemo : ?token=xxx <br/> isDemo=true
-        state LTIDemo {
-            [*] --> FullDemo : ?isDemo=true
-        }
-    } 
-```
-
-```mermaid
-sequenceDiagram  
+sequenceDiagram
    participant A as EdEHR API
    participant C as Home page
    participant D as Demo LMS page
    participant L as Application page    
    participant PC as Client Page-Change
-   C -->> D
-   D -->> L
+   C -->> D : page change
+   D -->> L : 
    L -->>+ PC : page-change event  <br/> ?token=xxx&isDemoLti=true
    PC -->>+ A : verify token please
    A -->>- PC : new authToken
@@ -126,6 +139,8 @@ sequenceDiagram
       PC -->> PC : enter LTI state <br/> load application data from api <br/> load demo data from API
       PC -->>- PC : present EdEHR app to user
    end
+
+
 ```
 
 - If LTI + Full-Demo is active when a new LTI entry happens then the application logs the user out of Full-Demo (removes both in memory and on server data).

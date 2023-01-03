@@ -1,5 +1,6 @@
 <template lang="pug">
   div
+    zone-lms-page-name
     div(v-for="course in courses")
       h2 Course: {{ course.label }} (Id: {{ course.id }})
       div(v-for="(activity, index) in course.activities")
@@ -11,9 +12,11 @@
 <script>
 import UiLink from '@/app/ui/UiLink'
 import OutsideCommon from '@/outside/views/OutsideCommon'
+import ZoneLmsPageName from '@/outside/components/ZoneLmsPageName'
 export default {
   extends: OutsideCommon,
   components: {
+    ZoneLmsPageName,
     UiLink
   },
   computed: {

@@ -9,6 +9,7 @@ class EhrPatientC {
     let dateStr = computeDateOfBirth(demographics.personAge, demographics.dateOfBirth)
     const result = {}
     result.allergies = this._allergies(data)
+    result.careTeam = this._careTeam(data)
     result.codeStatus = visitDetails.codeStatus
     result.dateOfBirth = dateStr
     result.diagnosis = visitDetails.diagnosis
@@ -32,6 +33,10 @@ class EhrPatientC {
   }
   _demographics (data) {
     let asStored = data.demographics || {}
+    return JSON.parse(JSON.stringify(asStored))
+  }
+  _careTeam (data) {
+    let asStored = data.careTeam ? data.careTeam.teams : []
     return JSON.parse(JSON.stringify(asStored))
   }
   _location (visitDetails) {

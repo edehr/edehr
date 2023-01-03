@@ -22,6 +22,28 @@ export default class LookaheadController {
     return undefined
   }
 
+  lookupMedsv2 (term) {
+    return new Promise( (resolve, reject) => {
+      let results = []
+      if(!term) {
+        results = MEDICATIONS.splice(0, this.limitCnt)
+      } else {
+        const upperCase = term.toUpperCase()
+        let cnt = 0
+        MEDICATIONS.forEach(med => {
+          if (med.medication.includes(upperCase)) {
+            cnt++
+            if (cnt < this.limitCnt) {
+              results.push(med)
+            }
+          }
+        })
+      }
+      // console.log('lookupMedsv2', term, results.length)
+      resolve(results)
+    })
+  }
+
   lookupMeds (term) {
     return new Promise( (resolve, reject) => {
       let err = this.validateTerm(term)
@@ -49,6 +71,12 @@ export default class LookaheadController {
     router.get('/medications/:term', (req, res) => {
       this
         .lookupMeds(req.params.term)
+        .then(ok(res))
+        .then(null, fail(res))
+    })
+    router.get('/medicationsv2/:term?', (req, res) => {
+      this
+        .lookupMedsv2(req.params.term)
         .then(ok(res))
         .then(null, fail(res))
     })

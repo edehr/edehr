@@ -184,12 +184,12 @@ export default class EhrSummaryHelpV2 {
 function completeFilter (element) {
   let status = element.status
   status = status ? status.toLocaleLowerCase() : status
-  return status === 'complete'
+  return status === 'completed'
 }
 function notCompleteFilter (element) {
   let status = element.status
   status = status ? status.toLocaleLowerCase() : status
-  return status !== 'complete' && status !== 'cancelled'
+  return status !== 'completed' && status !== 'cancelled'
 }
 
 function allFilter (element) { return true }

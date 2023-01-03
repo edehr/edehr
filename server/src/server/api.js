@@ -11,7 +11,6 @@ import {
 } from '../helpers/middleware'
 import ActivityController from '../mcr/activity/activity-controller'
 import ActivityDataController from '../mcr/activity-data/activity-data-controller'
-import AdminController from '../mcr/admin/admin-controller'
 import AssignmentController from '../mcr/assignment/assignment-controller'
 import AuthController from '../mcr/auth/auth-controller'
 import AuthUtil from '../mcr/common/auth-util'
@@ -72,11 +71,10 @@ export function apiMiddle (app, config) {
   }
   debug('corsOptions', corsOptions)
   const authUtil = new AuthUtil(config)
-  const admin = new AdminController(authUtil)
   const act = new ActivityController()
   const acc = new ActivityDataController()
   const as = new AssignmentController(config)
-  const auth = new AuthController(authUtil)
+  const auth = new AuthController(config)
   const fc = new FeedbackController(config)
   const fileC = new FilesController(config)
   const look = new LookaheadController()
@@ -101,6 +99,7 @@ export function apiMiddle (app, config) {
     userController: uc,
     visitController: vc
   }
+  auth.setSharedControllers(lcc)
   lti.setSharedControllers(lcc)
   cc.setSharedControllers(lcc)
   demo.setSharedControllers(lcc)
@@ -108,6 +107,9 @@ export function apiMiddle (app, config) {
 
   const justCors = [
     cors(corsOptions)
+  ]
+  const allCors = [
+    cors()
   ]
 
   const middleWare = [
@@ -158,7 +160,7 @@ export function apiMiddle (app, config) {
       api.use('/feedback', middleWare, fc.route())
       api.use('/files', middleWare, fileC.route())
       api.use('/consumers', middleWare, cc.route())
-      api.use('/lookahead', justCors, look.route())
+      api.use('/lookahead', allCors, look.route())
       api.use('/users', middleWare, uc.route())
       api.use('/visits', middleWare, vc.route())
       api.use('/seed-data', middleWare, sd.route())
@@ -172,12 +174,11 @@ export function apiMiddle (app, config) {
       api.use('/api/consumers', middleWare, cc.route())
       api.use('/api/feedback', middleWare, fc.route())
       api.use('/api/files', middleWare, fileC.route())
-      api.use('/api/lookahead', justCors, look.route())
+      api.use('/api/lookahead', allCors, look.route())
       api.use('/api/users', middleWare, uc.route())
       api.use('/api/visits', middleWare, vc.route())
       api.use('/api/seed-data', middleWare, sd.route())
       api.use('/api/auth', cors(corsOptions), auth.route())
-      api.use('/api/admin', cors(corsOptions), admin.route())
       api.use('/api/home', cors(corsOptions), homeRoute(config))
 
       return api

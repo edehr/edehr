@@ -38,6 +38,13 @@ class InstoreHelperWorker {
   //   return this.upsert(context, 'put', api, url, bodyData, config)
   // }
 
+  async putRequestSilent (context, api, url, bodyData) {
+    url = this.composeUrl(context, api, url)
+    // console.log('PUT silent to this url', url)
+    // console.log('with silent this data "', bodyData, '"')
+    return await axios.put(url, bodyData)
+  }
+
   putRequest (context, api, url, bodyData) {
     url = this.composeUrl(context, api, url)
     if(debug) console.log('PUT to this url', url)

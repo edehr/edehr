@@ -1,6 +1,6 @@
 <template lang="pug">
-  div(class="ehr-banner")
-    div(class="short-top")
+  div
+    div
       div(class="patient-data")
         div(class='patient-name') {{ patientData.patientName }}
         div PHN: {{ patientData.phn }}
@@ -59,18 +59,7 @@ $key: 5rem;
   display: flex;
   flex-direction: row;
   gap: 1rem;
-  padding-left: 1rem;
 }
-
-.ehr-banner {
-  color: $grey90;
-  border-top: 3px solid $brand-primary-dark;
-  border-right: 1px solid $brand-primary-dark;
-  border-bottom: 1px solid $brand-primary-dark;
-  padding-bottom: 5px;
-  padding-top: 5px;
-}
-
 .banner-content {
   .kv {
     display: grid;

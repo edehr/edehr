@@ -1,19 +1,15 @@
 <template lang='pug'>
   div
-    div(class="action-section")
-      ui-button(v-if="showDetails", v-on:buttonClicked="gotoLearningObjectView",
-        :title="text.DETAILS_TP")
-        fas-icon(class="fa", :icon="appIcons.itemDetails")
-        span(v-if="showLabels") &nbsp; {{text.DETAILS}}
-      ui-button(v-if="canDo", v-on:buttonClicked="showEditDialog",
-        :title="text.PROPERTIES_TP")
-        fas-icon(class="fa", :icon="appIcons.configure")
-        span(v-if="showLabels") &nbsp; {{text.PROPERTIES}}
+    div(class="flow_across flow_across_right flow_wrap menu_space_across")
+      zone-lms-button(v-if="canDo", @action="showEditDialog",
+          :title="text.PROPERTIES_TP",
+          :icon='appIcons.configure',
+          :text='text.PROPERTIES')
       learningObject-duplicate(v-if="canDo", :learningObject='learningObject', @newLearningObject='learningObjectDuplicated')
-      ui-button(v-on:buttonClicked="downloadLearningObject",
-        :title="text.DOWNLOAD_TP")
-        fas-icon(class="fa", :icon="appIcons.download")
-        span(v-if="showLabels") &nbsp; {{text.DOWNLOAD}}
+      zone-lms-button(@action="downloadLearningObject",
+        :title="text.DOWNLOAD_TP",
+        :icon='appIcons.download',
+        :text='text.DOWNLOAD')
       learningObject-delete(v-if="canDo"
         :disabled="activityCount > 0",
         :learningObject='learningObject',
@@ -26,18 +22,18 @@ import { APP_ICONS } from '@/helpers/app-icons'
 import UiLink from '@/app/ui/UiLink'
 import StoreHelper from '@/helpers/store-helper'
 import LearningObjectDuplicate from '@/outside/components/learning-object/LearningObjectDuplicate'
-import UiButton from '@/app/ui/UiButton'
 import LearningObjectDelete from '@/outside/components/learning-object/LearningObjectDelete'
 import LearningObjectDialog from '@/outside/components/learning-object/LearningObjectDialog'
 import { downloadLearningObjectToFile } from '@/helpers/ehr-utils'
 import { Text } from '@/helpers/ehr-text'
+import ZoneLmsButton from '@/outside/components/ZoneLmsButton'
 // const CONFIRM_DELETION_TEXT = {
 //   title: 'Confirm deletion of learning object?',
 //   description: (name) => `Deleting ${name} will also delete all the data related to it.`
 // }
 
 export default {
-  components: { LearningObjectDialog, LearningObjectDelete, UiButton, LearningObjectDuplicate, UiLink },
+  components: { ZoneLmsButton, LearningObjectDialog, LearningObjectDelete, LearningObjectDuplicate, UiLink },
   data () {
     return {
       appIcons: APP_ICONS,
@@ -54,7 +50,6 @@ export default {
     activityList () {
       return StoreHelper.lmsActivitiesUsingLearningObject(this.learningObject._id)
     },
-    showLabels () { return StoreHelper.isOutsideShowButtonLabels() },
     learningObjectId () { return this.learningObject._id}
   },
   methods: {

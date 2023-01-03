@@ -33,19 +33,8 @@ class EvalHelperWorker {
       })
   }
   goToEhr (studentVisit, customRouter = router) {
-    // Assumes the activity and assignment and seed are all in place.
-    // switch to the EHR with the current student's information loaded
-
-    // The customRouter parameter is being passed in order to satisfy some 
-    // testing / mocking needs. 
-    // In short, during the tests, a mocked router can be passed and, if it's not passed, it 
-    // falls back to the imported router. Please refer to this function's unit test for more 
-    // information on how the mocking of the router is implemented.
-    return this.changeStudent(studentVisit._id)
-      .then( () => {
-        // Go to the EHR with current student
-        customRouter.push({ name: 'ehr', query: { evaluatingStudent: true, studentId: studentVisit._id } })
-      })
+    // The customRouter parameter is used by unit tests. Default to normal router
+    customRouter.push({ name: 'ehr', query: { studentId: studentVisit._id } })
   }
 
   changeStudent (studentVisitId) {

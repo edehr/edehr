@@ -5,7 +5,7 @@
       @keydown.esc="close",
       tabindex=0 )
       slot(class='titleBarLabel', name="dropdownTitle") &nbsp;
-      fas-icon(class="fa", icon="bars")
+      fas-icon(class="fa bars", icon="bars")
     div(v-show="showDropdown", class='dropdownWindow', ref='dropdownMenu')
       app-dropdown-item(v-for="item in items", :key='item.label', :itemDef='item', @dropdownEvent='dropdownEvent')
 </template>
@@ -92,13 +92,13 @@ export default {
 <style lang='scss' scoped>
 @import '../../../scss/definitions';
 .fa {
-  height: 1.25em;
+  height: 1.5em;
   color: $brand-primary;
   padding-left: 5px;
 }
 .titleBar {
-  display: grid;
-  grid-template-columns: 1fr 1rem;
+  display: flex;
+  //grid-template-columns: 1fr 1rem;
   line-height: 1.25rem;
   cursor: pointer;
   text-align: right;

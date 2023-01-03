@@ -14,11 +14,7 @@ export default {
   methods: {
     // outside common invokes loadComponent on page change
     loadComponent: function () {
-      if (this.isAdmin) {
-        // do nothing
-      } else {
-        this.redirectAdminLogin()
-      }
+      // do nothing
     }
   }
 }

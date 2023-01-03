@@ -53,7 +53,7 @@ export default class SeedDataController extends BaseController {
         }
         let data = model.ehrData || {}
         data[propertyName] = value
-        this._updateSeed(model, data)
+        return this._updateSeed(model, data)
       }
     })
   }

@@ -7,6 +7,7 @@ $brand-primary: $brand-color;
 $brand-primary-hover: $brand-highlight;
 $brand-primary-dark: #051F54;
 $brand-primary-light: #e8f2fd;
+$table-draft-colour: hsla(42, 100%, 50%, 0.5);
 
 $white: #FFF;
 $grey03: hsl(0, 0%, 97%);
@@ -67,7 +68,7 @@ $dialog-wrapper-color: $grey40;
 $border-width: 5px;
 $border1: blue;
 $border2: red;
-$border3: darkorange;
+$border3: #1CA7E1;
 $border4: green;
 $border5: purple;
 $border6: mediumvioletred;
@@ -92,6 +93,13 @@ $main-width-threshold2: 650px;
 $main-width-threshold3: 900px;
 
 $buttonRowLeftMargin: 5px;
+
+/*
+
+ */
+$ehr-layout-padding-left: 10px;
+$ehr-layout-padding-left_level2: 20px;
+$ehr-layout-padding-left_level3: 30px;
 
 /* ****************** WRAPPER ****************** */
 

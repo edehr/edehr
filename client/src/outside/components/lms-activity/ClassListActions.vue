@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="action-section")
+  div(class="flow_across flow_wrap", :class='css')
     div(v-if="!hideEvalRaw")
       ui-button(
         v-on:buttonClicked="goToEvaluation()",
@@ -52,6 +52,7 @@ export default {
   },
   props: {
     studentVisit: {type: Object},
+    evaluating: { type: Boolean, default: false },
     hideEvalEhr: { type: Boolean, default: false },
     hideEvalRaw: { type: Boolean, default: false }
   },
@@ -60,6 +61,7 @@ export default {
     studentVisitId ( ) { return this.studentVisit._id },
     showLabels () { return StoreHelper.isOutsideShowButtonLabels() },
     isSubmitted () { return this.activityData.submitted },
+    css () { return this.evaluating ? ' ': 'flow_across flow_across_right menu_space_across' }
   },
   methods: {
     // evaluation
@@ -78,3 +80,9 @@ export default {
   },
 }
 </script>
+<style scoped lang='scss'>
+@import "../../../scss/definitions";
+.button {
+  margin-bottom: 5px;
+}
+</style>

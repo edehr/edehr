@@ -1,6 +1,6 @@
 <template lang='pug'>
   div
-    div(class="action-section")
+    div(class="flow_across flow_across_right flow_wrap menu_space_across")
       ui-button(v-on:buttonClicked="confirmOpen", title="Allow all students to work on the assignment.")
         fas-icon(class="icon-right", :icon="appIcons.retractSubmit")
         span(v-if="showLabels") &nbsp; All students can edit
@@ -15,11 +15,11 @@
       )
         fas-icon(class="icon-right", :icon="appIcons.download")
         span(v-if="showLabels") &nbsp; {{text.downloadButtonLabel}}
-      ui-save-as-prompt(data-test-id="ClassList.prompt.saveAs",
-        ref="promptDialog",
-        :title="text.saveEvaluationTip",
-        :message="promptMessage",
-        :filename="downloadFileName", v-on:confirm="proceedDownloard")
+    ui-save-as-prompt(data-test-id="ClassList.prompt.saveAs",
+      ref="promptDialog",
+      :title="text.saveEvaluationTip",
+      :message="promptMessage",
+      :filename="downloadFileName", v-on:confirm="proceedDownloard")
     ui-confirm(ref="confirmOpen", v-on:confirm="openAll", saveLabel='Confirm')
     ui-confirm(ref="confirmClose", v-on:confirm="closeAll", saveLabel='Confirm')
 

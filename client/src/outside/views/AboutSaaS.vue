@@ -1,5 +1,5 @@
 <template lang='pug'>
-  div(class="outside-view")
+  div
     ed-ehr-org-about
 </template>
 

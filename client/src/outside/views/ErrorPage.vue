@@ -1,5 +1,5 @@
 <template lang='pug'>
-  div(class="outside-view")
+  div
     h1 Error
     div {{ apiError }}
     what-to-do-instructions

@@ -44,7 +44,8 @@ Import styles
 @import '../scss/styles/buttons';
 @import '../scss/styles/sections';
 @import '../scss/styles/outside';
-
+//@import '@bryan-gilbert/typeahead-standalone/dist/basic.css';
+@import 'typeahead-standalone/dist/basic.css';
 * {
   box-sizing: border-box;
 }
@@ -56,6 +57,30 @@ a:focus {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5) !important;
 }
 
+.app-header {
+  background: white;
+  color: $brand-primary;
+  .navLink {
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: $brand-primary;
+    // prevent vue router from applying box shadow when route is a match
+    border: none !important;
+    box-shadow: none !important;
+    &:focus,
+    &:hover,
+    &.is-active {
+      color: $brand-highlight;
+    }
+  }
+  .router-link-exact-active,
+  .router-link-active {
+    color: $brand-highlight;
+  }
+  a {
+    text-decoration: none;
+  }
+}
 
 /*
 For lack of a better place ...
@@ -83,7 +108,6 @@ $panelContentPadding: 0.5rem 1rem;
 .smaller-than-900 {
   display: none  !important;
 }
-
 @media screen and (max-width: $main-width-threshold3) {
   .smaller-than-900 {
     display: inherit !important;
@@ -92,6 +116,22 @@ $panelContentPadding: 0.5rem 1rem;
     display: none !important;
   }
 }
+
+.smaller-than-threshold1 {
+  display: none  !important;
+}
+.bigger-than-threshold1 {
+  display: inherit !important;
+}
+@media screen and (max-width: $main-width-threshold1) {
+  .smaller-than-threshold1 {
+    display: inherit !important;
+  }
+  .bigger-than-threshold1 {
+    display: none !important;
+  }
+}
+
 
 /* for about pages that show images of the ehr for collaborations */
 .screenshot {
@@ -121,4 +161,58 @@ $panelContentPadding: 0.5rem 1rem;
     text-align: end;
     margin-right: 10px;
   }
+}
+
+footer {
+  flex-shrink: 0;
+}
+
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+.flex_stick_bottom {
+  flex-shrink: 0;
+}
+
+.inline {
+  display: flex;
+  flex-direction: row;
+}
+.flow_down {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+}
+.flow_across {
+  display: flex;
+  flex-direction: row;
+}
+.flow_wrap{
+  flex-wrap: wrap;
+}
+.menu_space_across {
+  gap: 8px;
+}
+.content_space_across {
+  gap: 3rem;
+}
+.flow_across_last_item {
+  margin-left: auto;
+}
+.flow_across_right {
+  justify-content: end;
+}
+
+/* bars for menu */
+.bars {
+  height: 1.5em;
+  color: $brand-primary;
+  padding-left: 5px;
+}
+
+.clickable {
+  cursor: pointer;
 }

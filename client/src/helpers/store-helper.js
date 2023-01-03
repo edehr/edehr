@@ -1,10 +1,9 @@
 import store from '../store'
 import { removeEmptyProperties } from './ehr-utils'
 import sKeys from './session-keys'
+import { ZONE_ADMIN, ZONE_DEMO, ZONE_EHR, ZONE_LMS, ZONE_PUBLIC } from '@/router'
 
 const debugSH = false
-
-// TODO refactor this class See https://github.com/BCcampus/edehr/issues/760
 
 /*
 https://softwareengineering.stackexchange.com/a/247277/346750
@@ -14,15 +13,15 @@ commonly used operations and attempted to make them reusable by lumping them tog
 The above describes the StoreHelper to a "t".  With Vuex though it is difficult to group and encapsulate meaning
 in something that makes sense.  This EdEHR application will benefit from the Vue3 composition api.
 Hopefully one day this helper will be replaced with useful groupings.
+
+TODO refactor this class See https://github.com/edehr/edehr/issues/760
  */
 
 class StoreHelperWorker {
 
   getMergedPageData (pageKey) { return store.getters['ehrDataStore/mergedDataForPageKey'](pageKey) }
 
-  getMergedData () {
-    return store.getters['ehrDataStore/mergedData']
-  }
+  getMergedData () { return store.getters['ehrDataStore/mergedData']  }
 
   getHasDataForPagesList () { return store.getters['ehrDataStore/hasDataForPagesList'] }
 
@@ -53,21 +52,28 @@ class StoreHelperWorker {
   async _dispatchUser (key, payload) { return await store.dispatch('userStore/' + key, payload)}
 
   /* **********   General  ************** */
-  toolConsumerId () { return store.getters['consumerStore/consumerId']}
   getAuthdConsumerId () { return this._getAuthStore('consumerId') }
+  toolConsumerId () { return store.getters['consumerStore/consumerId']}
+  isInstructor () { return store.getters['authStore/isInstructor'] }
+  isStudent () { return store.getters['authStore/isStudent'] }
+
   userId () { return this._getUserProperty('userId') }
   fullName () { return this._getUserProperty('fullName') }
   lmsUrl () { return this._getVisitProperty('returnUrl') }
-  isInstructor () { return this._getVisitProperty('isInstructor') }
   isDeveloper () { return this._getVisitProperty('isDeveloper') }
-  isStudent () { return this._getVisitProperty('isStudent') }
   getPageTitle () { return this._getSystemProperty('pageTitle')}
   setPageTitle (pageTitle) { return store.commit('system/setPageTitle', pageTitle)}
+  setPageZone (pageZone) { return store.commit('system/setPageZone', pageZone)}
   getPageIcon () { return this._getSystemProperty('pageIcon')}
   setPageIcon (icon) { return store.commit('system/setPageIcon', icon)}
   setCurrentPageKey (pageKey) { return store.commit('system/setCurrentPageKey', pageKey)}
   isEditing () { return store.getters['system/isEditing']}
   setEditingMode (flag) { return store.commit('system/setEditing', flag)}
+  inZoneAdmin () { return store.getters['system/pageZone'] === ZONE_ADMIN}
+  inZoneDemo () { return store.getters['system/pageZone'] === ZONE_DEMO}
+  inZoneEHR () { return store.getters['system/pageZone'] === ZONE_EHR}
+  inZoneLMS () { return store.getters['system/pageZone'] === ZONE_LMS}
+  inZonePublic () { return store.getters['system/pageZone'] === ZONE_PUBLIC}
   // isDemo see demo section
 
   /**
@@ -95,7 +101,6 @@ class StoreHelperWorker {
   }
 
   isReadOnlyInstructor () { return this._getVisitProperty('isReadOnlyInstructor')}
-  setIsReadOnlyInstructor (isReadonly = false) { return store.commit('visit/setIsReadOnlyInstructor', isReadonly)}
 
   isDevelopingContent () { return this._getVisitProperty('isDevelopingContent')  }
   setIsDevelopingContent (state) { store.commit('visit/setIsDevelopingContent', state) }
@@ -110,7 +115,9 @@ class StoreHelperWorker {
   getActivityData () { return this._getActivityDataProperty('activityData')}
 
   sendAssignmentDataUpdate (payload) {return this._dispatchActivityData('sendAssignmentDataUpdate', payload)}
+  sendAssignmentDataDraft (payload) {return this._dispatchActivityData('sendAssignmentDataDraft', payload)}
 
+  isLoading () { return this._getSystemProperty('isLoading')}
   // TODO remove context in all calls to this method
   setLoading (context, value) {
     if (value > 0) {
@@ -124,28 +131,13 @@ class StoreHelperWorker {
 
     }
   }
-  setShowAdvanced (value) { store.commit('system/setShowingAdvanced', value) }
-
   setApiError (msg) {  store.commit('system/setApiError', msg, { root: true }) }
   setSystemMessage (msg) {  store.commit('system/setSystemMessage', msg, { root: true }) }
-
-  isLoading () { return this._getSystemProperty('isLoading')}
-  isSigning () { return this._getSystemProperty('isSigning') }
-
-  isSmallWindow () { return this._getSystemProperty('isSmallWindow') }
 
   isOutsideShowButtonLabels () { return this._getSystemProperty('outsideShowButtonLabels') }
   setOutsideShowButtonLabels (value) { return this._dispatchSystem('setOutsideShowButtonLabels', value) }
 
-  /*
-   * **********   Class List  **************
-   */
-
-  getClassListForActivity ( activityId) {
-    return this._dispatchClassList('getClassList', activityId)
-  }
-
-  /*
+  /* **********
    * **********   File List  **************
    */
 
@@ -166,11 +158,13 @@ class StoreHelperWorker {
   addFileToList (payload) { return this._dispatchFileList('addFileToList', payload)}
 
 
-  /*
-  * **********   Instructor  **************
-  */
+  /* **********
+   * **********   Instructor  **************
+   */
 
   getClassList () { return this._getInstructorProperty('list') }
+  async getClassListForActivity ( activityId) { return await this._dispatchClassList('getClassList', activityId) }
+  getCourseList () { return store.state.instructor.sCourses || [] }
 
   dispatchLoadClassList ( ) { return this._dispatchInstructor('loadClassList' )  }
 
@@ -185,6 +179,14 @@ class StoreHelperWorker {
 
   // when instructor forces submitted state so they can evaluate the work
   forceSubmitAssignment () { return this._dispatchActivityData('sendSubmitted', true)}
+
+  async loadClassList () {
+    let activityId = this.getActivityId()
+    if (!activityId) {
+      console.error('Can\'t find a current activity id')
+    }
+    await this.dispatchLoadClassList()
+  }
 
   // when the student submits their work.
   studentSubmitsAssignment (submitted) {
@@ -202,9 +204,9 @@ class StoreHelperWorker {
   // When instructor saves their evaluation notes.
   saveEvaluationNotes (evalNotes ) { return this._dispatchActivityData('sendEvaluationNotes', evalNotes) }
 
-  /*
-  * **********   Activity  **************
-  */
+  /* **********
+   * **********   Activity  **************
+   */
 
   getActivityId () { return this._getActivityProperty('activityId') }
 
@@ -230,19 +232,9 @@ class StoreHelperWorker {
     })
     return list
   }
-  /**
-   * Make API call to get activity
-   * @param activityId
-   * @return {*}
-   */
-  dispatchLoadActivity ( activityId) { return this._dispatchActivity('get', activityId) }
 
-  /**
-   * Make API call to load activity AND make this one the active one
-   * @param activityId
-   * @return {*}
-   */
-  async loadAsCurrentActivity (activityId) { return await this._dispatchActivity('loadAsCurrentActivity', activityId) }
+  async setActivityId (activityId) { return await this._dispatchActivity('setActivityId', activityId) }
+  async loadCurrentActivity () { return await this._dispatchActivity('loadCurrentActivity') }
 
   async closeActivity (activityId) {
     await this._toggleActivity(activityId, 'close')
@@ -262,11 +254,8 @@ class StoreHelperWorker {
     await StoreHelper.loadInstructorWithStudent()
   }
 
-
-  getCourseList () { return store.state.instructor.sCourses || [] }
-
-  /**
-   *  **********   Assignments  / Learning Objects **************
+  /* **********
+   * **********   Assignments  / Learning Objects **************
    */
   getAssignmentId () { return this._getAssignmentProperty('learningObjectId') }
   getAssignment (id) { return this._dispatchAssignment('get', id) }
@@ -293,7 +282,10 @@ class StoreHelperWorker {
   }
   getAssignmentsList () { return this._getAssignmentListProperty('list') }
 
-  /* **********   Seed Data  ************** */
+
+  /* **********
+   * **********   Seed Data  / Case Studies **************
+   */
   isSeedEditing () { return this._getVisitProperty('isSeedEditing')  }
   setSeedEditId (id) { store.commit('visit/setSeedEditId', id) }
   getSeedEditId (id) { return this._getVisitProperty('seedEditId')  }
@@ -322,6 +314,9 @@ class StoreHelperWorker {
     return this._dispatchSeedListProperty('updateSeedEhrData', payload)
   }
 
+  sendSeedEhrDataDraft (payload ) {
+    return this._dispatchSeedListProperty('sendSeedEhrDataDraft', payload)
+  }
   updateSeedEhrProperty (propertyName, value ) {
     let payload = {
       propertyName: propertyName,
@@ -339,7 +334,9 @@ class StoreHelperWorker {
     await this.loadSeed(this.getSeedEditId())
   }
 
-  /* ************* LMS LTI Consumers   */
+  /* **********
+   * **********   LMS LTI Consumers    **************
+   */
   lmsName () { return store.getters['consumerStore/lmsName'] }
   consumerId () { return store.getters['consumerStore/consumerId'] }
 
@@ -354,15 +351,27 @@ class StoreHelperWorker {
     return store.dispatch('consumerStore/updateConsumer', dataIdPlusPayload)
   }
 
-  /* ************* Admin related   */
+  /* **********
+   * **********   Admin related    **************
+   */
 
   getUsersList () { return this._getUserProperty('list') }
   loadUsersList (consumerId) { return this._dispatchUser('loadUsers', consumerId) }
+  adminLogin (adminPassword) { return this._dispatchAuthStore('adminLogin', { adminPassword }) }
 
-  /* ************* EHR Context   */
+  async adminValidate () {
+    const r = await this._dispatchAuthStore('adminValidate')
+    return r.isAdmin
+  }
+
+  /**
+   *  EHR context information
+   * @returns {{courseTitle, submitted, activityTitle, evaluationData, assignmentDescription, activityDescription, userName, assignmentName}}
+   */
   getPanelData () {
     const pDebug = false
-    let assignment = this._getAssignmentProperty('assignment')
+    // the assignment may not be set for a brief moment as the student is returning to the LMS
+    let assignment = this._getAssignmentProperty('assignment') || {}
     if(pDebug) console.log('SH getPanelData assignment', assignment)
     // const sentBack = this.isSentBack()
     let data = {
@@ -389,13 +398,9 @@ class StoreHelperWorker {
     return data
   }
 
-  /* **********   Loading and Restoring  ************** */
-  async loadVisitRecord (visitId) {
-    if (debugSH) console.log('SH loadVisitRecord dispatch the load visit information', visitId)
-    localStorage.setItem(sKeys.VISIT_ID, visitId)
-    await this._dispatchVisit('loadVisit2', visitId)
-  }
-
+  /* **********
+   * **********   API    **************
+   */
   async loadApiData () {
     if (debugSH) console.log('Load API data')
     return this._dispatchSystem('loadApiSystem')
@@ -404,38 +409,41 @@ class StoreHelperWorker {
   getAppTitle () { return this.getApiData().appTitle  }
   getAppVersion () { return this.getApiData().appVersion  }
 
+  /* **********
+   * **********   Loading data  **************
+   */
+
+  async loadVisitRecord (visitId) {
+    if (debugSH) console.log('SH loadVisitRecord dispatch the load visit information', visitId)
+    await this._dispatchVisit('loadVisit2', visitId)
+  }
+
+  /**
+   * Loads the consumer, user and visit data based on authorization token data
+   * @returns {Promise<void>}
+   */
   async loadCommon () {
-    let visitInfo = store.state.visit.sVisitData || {}
-    if (debugSH) console.log('SH loadCommon visitInfo', visitInfo)
-    // To do use the accessor to get consumer id
-    await this.loadConsumer(visitInfo.toolConsumer)
-    await this._dispatchUser('load', visitInfo.user)
+    const toolConsumerId = store.getters['authStore/consumerId']
+    await this.loadConsumer(toolConsumerId)
+    const userId = store.getters['authStore/userId']
+    await this._dispatchUser('load', userId)
+    let visitId = store.getters['authStore/visitId']
+    await StoreHelper.loadVisitRecord(visitId)
   }
 
-  async loadStudent2 () {
-    let visitInfo = store.state.visit.sVisitData || {}
-    // visitInfo.activityData and .activity and .assignment are all ids
-    if (debugSH) console.log('SH loadStudent2 visitInfo', visitInfo)
-    if (debugSH) console.log('SH loadStudent2 visitInfo.activity', visitInfo.activity)
-    await this.loadCommon() // tool and user
-    StoreHelper.setIsDevelopingContent( false )
-    const activity = await this.loadAsCurrentActivity(visitInfo.activity)
-    if (activity.assignment) {
-      // only when the activity has an assignment(learning object) can the visit have any activity data
-      if (debugSH) console.log('get activity data based on visitInfo', visitInfo)
-      await this._dispatchActivityData('load', visitInfo.activityData)
-      await this.loadAssignment(activity.assignment)
-      let seedId = this.getAssignmentSeedId()
-      if (debugSH) console.log('SH loadStudent2 seedId', seedId)
-      await this.loadSeed(seedId)
-    } // else page controller will send the student to the unlinked activity page
-  }
-
-  async loadInstructor2 () {
-    await this.loadCommon()
-    await this._dispatchInstructor('loadCourses')
-    if(debugSH) console.log('SH loadInstructor2 load and restore instructor')
-  }
+  // async loadStudent2 () {
+  //   const activity = await this.loadCurrentActivity()
+  //   if (activity.assignment) {
+  //     // only when the activity has an assignment(learning object) can the visit have any activity data
+  //     let visitInfo = store.state.visit.sVisitData || {}
+  //     if (debugSH) console.log('get activity data based on visitInfo', visitInfo)
+  //     await this._dispatchActivityData('loadActivityData', visitInfo.activityData)
+  //     await this.loadAssignment(activity.assignment)
+  //     let seedId = this.getAssignmentSeedId()
+  //     if (debugSH) console.log('SH loadStudent2 seedId', seedId)
+  //     await this.loadSeed(seedId)
+  //   } // else page controller will send the student to the unlinked activity page
+  // }
 
   async loadInstructorWithStudent () {
     if(debugSH) console.log('SH loadInstructorWithStudent')
@@ -446,7 +454,7 @@ class StoreHelperWorker {
       return result
     }
     if(debugSH) console.log('SH loadInstructorWithStudent activityId', activityId)
-    let theActivity = await this.loadAsCurrentActivity(activityId)
+    let theActivity = await this.loadCurrentActivity()
     result.activity = theActivity
     if(debugSH) console.log('SH loadInstructorWithStudent theActivity', theActivity)
     let theAssignment = await this.loadAssignment(theActivity.assignment)
@@ -460,13 +468,9 @@ class StoreHelperWorker {
     return result
   }
 
-  async loadClassList () {
-    let activityId = this.getActivityId()
-    if (!activityId) {
-      console.error('Can\'t find a current activity id')
-    }
-    await this.dispatchLoadClassList()
-  }
+  /* **********
+   * **********   Authorization related    **************
+   */
 
   async fetchAndStoreAuthToken (refreshToken) {
     return await this._dispatchAuthStore('fetchAndStoreAuthToken', { refreshToken })
@@ -474,15 +478,6 @@ class StoreHelperWorker {
 
   async fetchTokenData (authToken = this.getAuthToken()) {
     return await this._dispatchAuthStore('fetchData', {authToken})
-  }
-
-  adminLogin (adminPassword) {
-    return this._dispatchAuthStore('adminLogin', { adminPassword })
-  }
-
-  async adminValidate () {
-    const r = await this._dispatchAuthStore('adminValidate')
-    return r.isAdmin
   }
 
   getAuthData () {
@@ -499,14 +494,14 @@ class StoreHelperWorker {
   async logUserOutOfEdEHR (clearDemo=true) {
     const dt = StoreHelper.getDemoToken()
     if (clearDemo && dt) {
-      console.log('logout user demoLogout dt', dt)
       await this._dispatchDemoStore('demoLogout')
     }
-    console.log('logout user logOutUser')
+    await this._dispatchAssignment('clearAssignment')
     await this._dispatchAuthStore('logOutUser')
-    console.log('logout user clearVisitData')
     await this._dispatchVisit('clearVisitData')
-    console.log('logout user clearConsumer')
+    await this._dispatchSeedListProperty('clearSeedData')
+    await this._dispatchActivity(('clearActivity'))
+    await this._dispatchInstructor('clearInstructor')
     await this.clearConsumer()
   }
 
@@ -518,9 +513,9 @@ class StoreHelperWorker {
   }
 
 
-  /*
-  * **********   Demonstration related  **************
-  */
+  /* **********
+   * **********   Demonstration related  **************
+   */
 
   _getDemoStorage (key) { return store.getters['demoStore/'+ key] }
   _dispatchDemoStore (key, payload) { return store.dispatch(`demoStore/${key}`, payload) }
@@ -554,13 +549,8 @@ class StoreHelperWorker {
     return this._getDemoStorage('demoTokenData')
   }
 
-  isDemoMode () {
-    return this._getDemoStorage('isDemo')
-  }
-
-  setDemoToken (demoToken) {
-    return this._dispatchDemoStore('setDemoToken', demoToken)
-  }
+  isDemoMode () { return this._getDemoStorage('isDemo')}
+  setDemoToken (demoToken) { return this._dispatchDemoStore('setDemoToken', demoToken) }
 
   setDemoPersona (demoPersona) {
     return this._dispatchDemoStore('setDemoPersona', demoPersona)

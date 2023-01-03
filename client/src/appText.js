@@ -137,6 +137,11 @@ export const appText = {
   },
 }
 
+export const ehrText = {
+  medicationPlaceholder: 'Medication',
+  practitionerPlaceholder: 'Care team member',
+  professionPlaceholder: 'Profession'
+}
 export const demoText = {
   courseTitle: 'Sample Course - Intro to EHR',
   personaLabel: 'Demo Persona',

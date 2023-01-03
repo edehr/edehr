@@ -23,16 +23,12 @@ export default class UserController extends BaseController {
         .then(visits => {
           let courses = []
           const promiseList = visits.map(visit => {
-            console.log('visit', visit)
             const activityId = visit.activity
-            console.log('find activityId', activityId)
             return Activity.findById(activityId)
               .populate('assignment', 'name description seedDataId')
               .then(activity => {
-                console.log('as found activity', activity)
                 let cId = activity.context_id
                 let course = courses.find(c => c.id === cId)
-                console.log('course', course)
                 if (!course) {
                   course = {
                     id: cId,
@@ -40,14 +36,12 @@ export default class UserController extends BaseController {
                     label: activity.context_label,
                     activities: []
                   }
-                  console.log('course', course)
                   courses.push(course)
                 }
                 course.activities.push(activity)
               })
           })
           Promise.all(promiseList).then(() => {
-            console.log('return all the courses', courses)
             resolve({ courses: courses })
           })
         })

@@ -18,11 +18,11 @@ button,
 /* .is-primary is, by default, included in the following*/
 .outside-layout button,
 .outside-layout .button{
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: bold;
   padding: 0.2rem 0.4rem 0.2rem 0.4rem;
   height: 2.2rem;
-  min-width: 2.8rem;
+  //min-width: 2.8rem;
   background-color: $grey10;
   color: $brand-primary;
   border: 1px solid $grey60;
@@ -38,13 +38,24 @@ button,
   border: none;
 }
 
-/*****  when buttons show labels reduce font size  ******/
-.showing-labels button,
-.showing-labels .button,
-.dialog-wrapper button,
-.dialog-wrapper .button {
+/* .is-primary is, by default, included in the following*/
+.app-header button,
+.app-header .button{
+  height: 1.6rem;
   font-size: 1rem;
+  background-color: $brand-highlight;
+  color:  $white;
+  border: none;
 }
+
+/*****  when buttons show labels reduce font size  ******/
+// stopped adjusting size. Just keep same size because transistion is visually disruptive
+//.showing-labels button,
+//.showing-labels .button,
+//.dialog-wrapper button,
+//.dialog-wrapper .button {
+//  font-size: 1rem;
+//}
 
 
 /*****  is-light overrides  ******/

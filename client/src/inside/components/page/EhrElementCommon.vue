@@ -4,7 +4,7 @@ import EhrDependent from './EhrDependent.vue'
 import EhrDefs from '@/helpers/ehr-defs-grid'
 import EhrTypes from '@/ehr-definitions/ehr-types'
 import UiInfo from '@/app/ui/UiInfo'
-import EventBus, { FORM_INPUT_EVENT, PAGE_DATA_READY_EVENT } from '@/helpers/event-bus'
+import EventBus, { FORM_INPUT_EVENT, PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
 
 const DEPENDENT_PROPS = EhrTypes.dependentOn
 
@@ -90,13 +90,14 @@ export default {
       return name
     },
     setInitialValue (value) {
+      if (dbInputs) console.log('EhrCommon set initial value ', value, this.elementKey)
       this.inputVal = value
       // invoke setInitialDependentValue after inputVal is set
       this.setInitialDependentValue()
     },
     sendInputEvent (val) {
       if (dbInputs) console.log('EhrCommon broadcast PAGE_FORM_INPUT_EVENT ', val, this.elementKey)
-      EventBus.$emit(FORM_INPUT_EVENT, { value: val, element: this.element })
+      EventBus.$emit(FORM_INPUT_EVENT, { value: val, element: this.element, tableKey: this.tableKey })
     },
     refreshPage () {
       try {
@@ -151,12 +152,12 @@ export default {
             let initialValue = inputs[this.elementKey]
             this.setInitialValue(initialValue)
           } else {
-            // console.log('inputs TODO fix no inputs here ', options, this.elementKey)
+            console.log('inputs TODO fix no inputs here ', options, this.elementKey)
           }
         } else {
           let inputs = this.ehrHelp.getDialogInputs(this.tableKey)
           let initialValue = inputs[this.elementKey]
-          if (dbDialog || dbInputs) console.log('EhrCommon key has value', this.key, initialValue)
+          if (dbDialog || dbInputs) console.log('EhrCommon dialog input for key has value:', this.key, initialValue)
           this.setInitialValue(initialValue)
           if (this.inputType === EhrTypes.dataInputTypes.ehr_embedded) {
             if( options.viewOnly ) {
@@ -186,7 +187,7 @@ export default {
         this.pageRefreshEventHandler = function () {
           _this.refreshPage()
         }
-        EventBus.$on(PAGE_DATA_READY_EVENT, this.pageRefreshEventHandler)
+        EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.pageRefreshEventHandler)
       }
       if (this.isTableElement) {
         this.dialogEventHandler = function (eData) {
@@ -207,7 +208,7 @@ export default {
   },
   beforeDestroy: function () {
     if (this.pageRefreshEventHandler) {
-      EventBus.$off(PAGE_DATA_READY_EVENT, this.pageRefreshEventHandler)
+      EventBus.$off(PAGE_DATA_REFRESH_EVENT, this.pageRefreshEventHandler)
     }
     if (this.dialogEventHandler) {
       // console.log('beforeDestroy EhrElementCommon dialogEventHandler ', this.dialogEventKey)
