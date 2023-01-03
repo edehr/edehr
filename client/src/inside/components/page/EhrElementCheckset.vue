@@ -11,10 +11,7 @@
 
 <script>
 import EhrElementCommon from './EhrElementCommon'
-import StoreHelper from '@/helpers/store-helper'
-import camelcase from 'camelcase'
-import { Text } from '@/helpers/ehr-text'
-import { isString } from '@/helpers/ehr-utils'
+import EhrCheckset from '@/ehr-definitions/ehr-checkset'
 
 const debug = false
 
@@ -29,7 +26,7 @@ export default {
   },
   watch: {
     checkValues (val) {
-      let newVal = val.filter( v => v.length > 0).join(',')
+      const newVal = EhrCheckset.modelChange(val)
       if (debug) console.log('EhrCheckset input val changed', this.elementKey, newVal)
       if (this.isPageElement &&  this.isEditing) {
         // only broadcast if user is editing the form
@@ -43,46 +40,14 @@ export default {
     }
   },
   methods: {
-    validate () {
-      // used by this.setup
-      let result = true
-      let opts = this.options
-      if(!opts || opts.length === 0) {
-        StoreHelper.setApiError(Text.IS_INVALID_CHECKSET(this.key))
-        result = false
-      }
-      return result
-    },
     setInitialValue (value) {
       // console.log('checkset override setInitialValue value:',value, this.elementKey)
-      this.checkValues = []
-      if (isString(value)) {
-        let props = value.split(',')
-        props.forEach( p => {
-          this.checkValues.push(p)
-        })
-      } else {
-        console.log('What is wrong? attempt to set checkset initial value with this: ', value, 'key:', this.elementKey)
-      }
+      this.checkValues = EhrCheckset.dbValueToCheckSet(value)
     },
     setup () {
       // called from EhrCommon.mount
       // console.log('setup checkset', this.elementKey, this.element, this.options)
-      if (this.validate()) {
-        this.checkOptions = []
-        let prop,text
-        this.options.forEach(opt => {
-          [prop, text] = opt.text.split('=')
-          if (!text) {
-            text = prop
-            prop = camelcase(prop)
-          }
-          this.checkOptions.push({
-            prop: prop,
-            text: text
-          })
-        })
-      }
+      this.checkOptions = EhrCheckset.optionsToChecklist(this.options)
     }
   }
 }

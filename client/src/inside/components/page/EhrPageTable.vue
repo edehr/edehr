@@ -24,6 +24,9 @@ import UiConfirm from '@/app/ui/UiConfirm'
 import EventBus, { EDIT_DRAFT_ROW_EVENT, PAGE_DATA_REFRESH_EVENT, VIEW_REPORT_EVENT } from '@/helpers/event-bus'
 import MarHelper from '../mar/mar-helper'
 import EhrDefs from '@/helpers/ehr-defs-grid'
+import EhrTypes from '@/ehr-definitions/ehr-types'
+import decamelize from 'decamelize'
+import EhrCheckset from '@/ehr-definitions/ehr-checkset'
 
 export default {
   components: {
@@ -75,6 +78,7 @@ export default {
       return rowTemplate
     },
     cTableData () {
+      const pageDataKey = this.pageDataKey
       const tableKey = this.tableDef.tableKey
       const thePageData = this.ehrHelp.getMergedPageData()
       const dbData = thePageData[tableKey]
@@ -86,6 +90,9 @@ export default {
           Object.values(dataRow).forEach((templateCell) => {
             templateCell.stack.forEach((cell) => {
               let val = dbRow[cell.key] === 0 ? '0' : dbRow[cell.key]
+              if (cell.inputType === EhrTypes.dataInputTypes.checkset) {
+                val = EhrCheckset.makeHuman(val, pageDataKey, cell)
+              }
               cell.value = val || ''
               cell.tableCss = templateCell.tableCss
             })
