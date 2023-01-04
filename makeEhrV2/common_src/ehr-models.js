@@ -1,7 +1,7 @@
 /**
  * WARNING Do not edit this code unless you are working in the makeEhr common_src directory.  Use the copy script to deployr to both server and client
  */
-export class Pages {
+export class EhrPages {
   constructor (ehrDefinitions) {
     this.ehrDefintions = ehrDefinitions
     this._pages = Object.keys(ehrDefinitions).map(pageKey => {

@@ -1,5 +1,5 @@
 import { convertTimeStr, convertTimeStrToMilTime, updateAllVisitTime, updateEhrDataMeta } from './ehr-def-utils'
-import { Pages } from './ehr-models'
+import { EhrPages } from './ehr-models'
 import EhrDefs from './ehr-page-defs'
 const EhrDataModel = require('../ehr-definitions/EhrDataModel')
 
@@ -130,7 +130,7 @@ describe( 'utils work', () => {
     const pageDefs = EhrDefs
     const eData = ehrData
     const model = new EhrDataModel(eData)
-    const pages = new Pages(pageDefs)
+    const pages = new EhrPages(pageDefs)
     const pageList = pages.pageList
     pageList.forEach(page => {
       const pageKey = page.pageKey

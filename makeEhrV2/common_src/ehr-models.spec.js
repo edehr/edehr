@@ -2,7 +2,7 @@
  * WARNING Do not edit this code unless you are working in the makeEhr common_src directory.  Use the copy script to deployr to both server and client
  */
 import EhrDefs from './ehr-page-defs'
-import { Pages, PageDef} from './ehr-models'
+import { EhrPages, PageDef} from './ehr-models'
 const should = require('should')
 
 const pageDefs = EhrDefs
@@ -14,7 +14,7 @@ const case1PageCount = 42
 
 describe('Ehr Page', function () {
   it('pages has page list', () => {
-    const pages = new Pages(pageDefs)
+    const pages = new EhrPages(pageDefs)
     pages.should.have.property('pageList')
     should(pages.pageList).be.an.Array()
     const pageList = pages.pageList
@@ -28,7 +28,7 @@ describe('Ehr Page', function () {
 describe('Ehr Page Definitions', function () {
   let pages
   before(function () {
-    pages = new Pages(pageDefs)
+    pages = new EhrPages(pageDefs)
   })
   it( 'find page by key', () => {
     // the 'visit' page has both tables and form
@@ -72,7 +72,7 @@ describe('Ehr Page Definitions', function () {
 describe('Ehr Page Form fields', function () {
   let pages
   before(function () {
-    pages = new Pages(pageDefs)
+    pages = new EhrPages(pageDefs)
   })
   it('page tables', () => {
     const key = 'visit'
@@ -86,7 +86,7 @@ describe('Ehr Page Form fields', function () {
 describe.skip('Ehr Data', function () {
   let pages
   before(function () {
-    pages = new Pages(pageDefs)
+    pages = new EhrPages(pageDefs)
   })
   it('page has data', () => {
     const pageList = pages.pageList
@@ -111,7 +111,7 @@ describe.skip('Ehr Data', function () {
     const samples = [ case1, case2, case3]
     const expectedPgCnt = [17,22,14]
     samples.forEach( (sample, index) => {
-      const pages = new Pages(pageDefs)
+      const pages = new EhrPages(pageDefs)
       const pageList = pages.pagesWithData
       should(pageList.length).be.equal(expectedPgCnt[index])
     })

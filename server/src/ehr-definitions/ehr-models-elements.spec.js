@@ -1,5 +1,5 @@
 import { convertTimeStrToMilTime, updateAllVisitTime } from './ehr-def-utils'
-import { Pages, PageChildElement } from './ehr-models'
+import { EhrPages, PageChildElement } from './ehr-models'
 const should = require('should')
 const pageDefs = {
   visit: {
@@ -285,7 +285,7 @@ const ehrData = {
 describe( 'utils work', () => {
   let pages
   before(function () {
-    pages = new Pages(pageDefs)
+    pages = new EhrPages(pageDefs)
   })
   it('page form elements', () => {
     const page = pages.findPage('visit')

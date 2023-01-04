@@ -25,7 +25,6 @@ import EventBus, { EDIT_DRAFT_ROW_EVENT, PAGE_DATA_REFRESH_EVENT, VIEW_REPORT_EV
 import MarHelper from '../mar/mar-helper'
 import EhrDefs from '@/helpers/ehr-defs-grid'
 import EhrTypes from '@/ehr-definitions/ehr-types'
-import decamelize from 'decamelize'
 import EhrCheckset from '@/ehr-definitions/ehr-checkset'
 
 export default {
