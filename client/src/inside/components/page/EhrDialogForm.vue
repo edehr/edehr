@@ -6,7 +6,7 @@
       @cancel="cancelDialog",
       @save="saveDialog",
       v-bind:errors="errorList",
-      :cancelButtonLabel="isViewOnly ? 'Close' : 'Cancel'",
+      :cancelButtonLabel="cancelButtonText",
       :hasFooterContent="true"
       :useSave="!isViewOnly"
       :disableSave="disableSave"
@@ -16,8 +16,8 @@
       div(slot="body")
         ehr-group(v-for="group in groups", :key="group.gIndex", :group="group", :ehrHelp="ehrHelp", :viewOnly='isViewOnly')
       span(slot="save-button") Save
-    ui-confirm(ref="confirmCancelDialog", @confirm="cancelConfirmed", saveLabel='Confirm cancel', cancel-label='Return to edit' )
-    ui-confirm(ref="confirmSaveDialog", @confirm="saveConfirmed", @abort="saveDraft", saveLabel='Confirm this assessment is correct', cancel-label='Save as draft' )
+    ui-confirm(ref="confirmCancelDialog", @confirm="cancelConfirmed", :saveLabel='ehrText.cancelDialogExitDialogLabel', :cancel-label='ehrText.cancelDialogReturnToEditLabel' )
+    ui-confirm(ref="confirmSaveDialog", @confirm="saveConfirmed", @abort="saveDraft", :saveLabel='ehrText.saveDialogButtonLabel', :cancel-label='ehrText.saveDialogAsDraftButtonLabel' )
 </template>
 
 <script>
@@ -27,6 +27,7 @@ import EventBus, { FORM_INPUT_EVENT, PAGE_DATA_REFRESH_EVENT } from '@/helpers/e
 import EhrOnlyDemo from '@/helpers/ehr-only-demo'
 import UiConfirm from '@/app/ui/UiConfirm'
 import EhrDialogPatientBanner from '@/inside/components/page/EhrDialogPatientBanner'
+import { ehrText } from '@/appText'
 
 export default {
   components: {
@@ -38,6 +39,7 @@ export default {
   inject: ['pageDataKey', 'isEmbedded'],
   data: function () {
     return {
+      ehrText,
       errorList: [],
     }
   },
@@ -46,6 +48,7 @@ export default {
     tableDef: { type: Object },
   },
   computed: {
+    cancelButtonText () { return this.isViewOnly ? ehrText.ehrDialogCancelButtonViewOnly : ehrText.ehrDialogCancelButtonVEdit },
     formLabel () {
       return this.tableDef.label || this.tableDef.addButtonText
     },
@@ -135,7 +138,9 @@ export default {
     },
     saveDialog: function () {
       if (this.hasRecHeader) {
-        this.$refs.confirmSaveDialog.showDialog('Confirm save', 'Do you want to save this assessment or save your work as a draft?')
+        const { name, profession, day, time } = this.ehrHelp.activeTableDialogRecordHeader()
+        const msg = ehrText.saveDialogVerifyMessage(name, profession, day, time)
+        this.$refs.confirmSaveDialog.showDialog(ehrText.saveDialogVerifyTitle, msg)
       } else {
         this.saveConfirmed()
       }

@@ -138,9 +138,17 @@ export const appText = {
 }
 
 export const ehrText = {
+  cancelDialogReturnToEditLabel: 'Return to edit',
+  cancelDialogExitDialogLabel: 'Confirm cancel',
+  ehrDialogCancelButtonViewOnly: 'Close',
+  ehrDialogCancelButtonVEdit: 'Cancel',
   medicationPlaceholder: 'Medication',
   practitionerPlaceholder: 'Care team member',
-  professionPlaceholder: 'Profession'
+  professionPlaceholder: 'Profession',
+  saveDialogAsDraftButtonLabel: 'Save as draft',
+  saveDialogButtonLabel:'Verify this assessment is correct',
+  saveDialogVerifyMessage: (name, profession, day, time) => `${name} (${profession}) verifies this record is correct and complete. Record date ${day} ${time}.  Or save as draft`,
+  saveDialogVerifyTitle: 'Verify'
 }
 export const demoText = {
   courseTitle: 'Sample Course - Intro to EHR',

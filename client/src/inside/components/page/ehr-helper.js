@@ -207,6 +207,18 @@ export default class EhrPageHelper {
     const dialog = this._getActiveTableDialog()
     return dialog && dialog.tableDef.hasRecHeader
   }
+  activeTableDialogRecordHeader () {
+    const results = {}
+    const dialog = this._getActiveTableDialog()
+    if (dialog.tableDef.hasRecHeader) {
+      const { name, profession, day, time } = dialog.inputs
+      results.name = name
+      results.profession = profession
+      results.day = day
+      results.time = time
+    }
+    return results
+  }
   /**
    * Begin editing a page form
    */
