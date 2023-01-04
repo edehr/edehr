@@ -37,9 +37,9 @@ export function convertTimeStrToMilTime (text) {
   return result
 }
 
-export function updateAllVisitTime (eData,pageDefs) {
+export function updateAllVisitTime (eData) {
   const model = new EhrDataModel(eData)
-  const pages = new EhrPages(pageDefs)
+  const pages = new EhrPages()
   const pageList = pages.pageList
   pageList.forEach(page => {
     const pageKey = page.pageKey

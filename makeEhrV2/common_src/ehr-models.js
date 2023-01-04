@@ -1,10 +1,12 @@
+import EhrDefs from './ehr-page-defs'
+
 /**
  * WARNING Do not edit this code unless you are working in the makeEhr common_src directory.  Use the copy script to deployr to both server and client
  */
 export class EhrPages {
-  constructor (ehrDefinitions) {
-    this.ehrDefintions = ehrDefinitions
-    this._pages = Object.keys(ehrDefinitions).map(pageKey => {
+  constructor () {
+    this.ehrDefintions = EhrDefs
+    this._pages = Object.keys(EhrDefs).map(pageKey => {
       const pgDef = this.ehrDefintions[pageKey]
       return new PageDef(pgDef)
     })

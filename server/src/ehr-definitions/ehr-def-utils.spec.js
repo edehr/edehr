@@ -167,7 +167,7 @@ describe( 'utils work', () => {
   it ('update visit times with util', () => {
     const pageDefs = EhrDefs
     let eData = ehrData
-    eData = updateAllVisitTime(eData, pageDefs)
+    eData = updateAllVisitTime(eData)
     const model = new EhrDataModel(eData)
     let tData = model.getPageTableData('visit', 'table')
     tData[0].transferInTime.should.equal('0030')
