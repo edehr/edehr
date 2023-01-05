@@ -7,10 +7,10 @@ const should = require('should')
 
 const pageDefs = EhrDefs
 
-let case1 = require('../resources/erin-johns-seed-day0-mid.json')
-let case2 = require('../resources/erin-johns-seed-day2-end.json')
-let case3 = require('../resources/wound-case-1.json')
-const case1PageCount = 43
+let case1 = require('../../resources/erin-johns-seed-day0-mid.json')
+let case2 = require('../../resources/erin-johns-seed-day2-end.json')
+let case3 = require('../../resources/wound-case-1.json')
+const case1PageCount = 42
 
 describe('Ehr Page', function () {
   it('pages has page list', () => {

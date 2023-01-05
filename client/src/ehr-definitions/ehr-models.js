@@ -1,19 +1,43 @@
+/**
+ * WARNING Only edit this code if you are working on the makeEhrV2 copy.
+ * See ./makeEhrV2/copy-common-src.sh to distribute to both server and client
+ */
+// noinspection DuplicatedCode
 import EhrDefs from './ehr-page-defs'
 
-/**
- * WARNING Do not edit this code unless you are working in the makeEhr common_src directory.  Use the copy script to deployr to both server and client
- */
 export class EhrPages {
   constructor () {
     this.ehrDefintions = EhrDefs
-    this._pages = Object.keys(EhrDefs).map(pageKey => {
+    this.pageKeyList = Object.keys(EhrDefs)
+    this._pages = this.pageKeyList.map(pageKey => {
       const pgDef = this.ehrDefintions[pageKey]
       return new PageDef(pgDef)
     })
   }
+
   get pageList () { return this._pages }
+
   getPagesWithData (ehrModel) { return this._pages.filter( pg => ehrModel.hasData(pg.pageKey))}
+
   findPage (key) { return this._pages.find( pg => pg.pageKey === key)}
+
+  ehrPagesStats (ehrData) {
+    let stats = {meta: { count: 0, draftRows: 0 }}
+    this.pageList.forEach( ehrPage => {
+      const pageKey = ehrPage.pageKey
+      const pageData = ehrData[pageKey]
+      const pgStats = ehrPage.ehrPageStats(pageData)
+      if (pgStats.hasData) {
+        stats[pageKey] = pgStats
+        stats.meta.count++
+        if (pgStats.hasDraft) {
+          stats.meta.draftRows++
+        }
+      }
+    })
+    return stats
+  }
+
 }
 
 export class PageDef {
@@ -35,6 +59,41 @@ export class PageDef {
   get pageForms () { return this.formElements }
   get pageTables () { return this.tableElements }
   get pageChildren () { return this.pgChildren}
+
+  ehrPageStats (pageData) {
+    let pgStats = {hasData: false}
+    if (pageData) {
+      const pageTableKeys = this.pageTables.map(pt => pt.key)
+      if (pageTableKeys.length > 0) {
+        pgStats.tables = {}
+        for (let i = 0; i < pageTableKeys.length; i++) {
+          const key = pageTableKeys[i]
+          const tData = pageData[key]
+          if (tData && tData.length > 0) {
+            pgStats.hasData = true
+            pgStats.tables[key] = { rows: tData.length }
+            tData.forEach(row => {
+              if (row.isDraft) {
+                pgStats.hasDraft = true
+              }
+            })
+            break
+          }
+        }
+      }
+      if (!pgStats.hasData) {
+        const pKeys = this.pageChildren.map(c => c.elementKey)
+        const clone = cloneNotEmptyProperties(pageData, pKeys)
+        if (objectHasContent(clone)) {
+          pgStats.hasData = true
+        }
+      }
+      if (pgStats.hasData) {
+        pgStats.lastUpdate = pageData.lastUpdate
+      }
+    }
+    return pgStats
+  }
   filterPageChildrenByInputType (inputType) {
     return this.pageChildren.filter( pg => pg.inputType === inputType)
   }
@@ -102,4 +161,21 @@ export class PageChildElement {
   get elementKey () { return this.def.elementKey }
   get inputType () { return this.def.inputType }
   get isRecHdrFld () { return this.def.recHeader }
+}
+
+function cloneNotEmptyProperties (obj, pKeys) {
+  const clone = {}
+  pKeys.forEach(k => {
+    const val = obj[k]
+    if (val === undefined || val === null || val === '' || Array.isArray(val)) {
+      // do nothing
+    } else {
+      clone[k] = val
+    }
+  })
+  return clone
+}
+
+function objectHasContent ( obj ) {
+  return JSON.stringify(obj).trim().length > 0
 }

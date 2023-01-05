@@ -2,3 +2,4 @@
 
 cp common_src/*.js ../client/src/ehr-definitions
 cp common_src/*.js ../server/src/ehr-definitions
+#cp common_src/*.js ../ehr-workspace/ehr-definitions

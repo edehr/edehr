@@ -1,0 +1,105 @@
+{
+  "id": "63b5e4c9ae6925198bbe6fdd",
+  "license": "This work is licensed under a Creative Commons Attribution 4.0 International License. See http://creativecommons.org/licenses/by/4.0/",
+  "ehrData": {
+    "meta": {
+      "simTime": {
+        "visitDay": 0,
+        "visitTime": "0000"
+      }
+    },
+    "demographics": {
+      "givenName": "first",
+      "familyName": "last",
+      "lastUpdate": "2023-01-04T12:44:20-08:00"
+    },
+    "careTeam": {
+      "teams": [
+        {
+          "name": "Care",
+          "profession": "Team",
+          "createdDate": "2023-01-04T12:44:32-08:00"
+        }
+      ],
+      "lastUpdate": "2023-01-04T12:44:32-08:00"
+    },
+    "pastAppointments": {
+      "encounters": [
+        {
+          "encounterDate": "yesterday",
+          "site": "troubles",
+          "diagnosis": "far away",
+          "createdDate": "2023-01-04T12:44:55-08:00"
+        }
+      ],
+      "lastUpdate": "2023-01-04T12:45:27-08:00",
+      "outpatientAppointments": [
+        {
+          "appointmentDate": "ayer",
+          "site": "ciudad",
+          "reasonForVisit": "problemas",
+          "diagnosis": "politicos",
+          "createdDate": "2023-01-04T12:45:27-08:00"
+        }
+      ]
+    },
+    "neurological": {
+      "table": [
+        {
+          "name": "Care",
+          "profession": "Team",
+          "day": "1",
+          "time": "1234",
+          "alert": "alert,confused",
+          "eyeOpening": "",
+          "verbalResponse": "",
+          "bestMotorResponse": "",
+          "glasgowCalculation": 0,
+          "loss": "",
+          "duration": "",
+          "leftPupilSize": "",
+          "leftPupilResponseToLight": "",
+          "rightPupilSize": "",
+          "rightPupilResponseToLight": "",
+          "bothPupils": "",
+          "comments": "",
+          "levelOfConciousness": "",
+          "levelOfConciousnessQuestions": "",
+          "levelOfConciousnessCommands": "",
+          "motorLeftArm": "",
+          "motorRightArm": "",
+          "motorLeftLeg": "",
+          "motorRightLeg": "",
+          "limbAtaxia": "",
+          "bestGaze": "",
+          "visual": "",
+          "facialPalsy": "",
+          "sensory": "",
+          "bestLanguage": "",
+          "dysarthria": "",
+          "extinctionAndInattention": "",
+          "strokeAssessmentCalculation": 0,
+          "createdDate": "2023-01-04T14:26:43-08:00",
+          "isDraft": "isDraft"
+        }
+      ],
+      "lastUpdate": "2023-01-04T14:26:43-08:00"
+    },
+    "medical": {
+      "lastUpdate": "2023-01-04T15:28:11-08:00"
+    },
+    "visit": {
+      "table": [],
+      "admissionDay": "Day 0",
+      "admissionTime": "06:00",
+      "consentForTreatment": "TRUE",
+      "consentForBlood": "TRUE",
+      "diagnosis": "COPD\nShortness of breath\nDizzy",
+      "status": "Admitted"
+    }
+  },
+  "description": "",
+  "name": "simple",
+  "version": "1.0",
+  "fileName": "simple_1.0_04 Jan 2023.json"
+}
