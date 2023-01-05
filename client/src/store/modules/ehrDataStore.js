@@ -2,6 +2,7 @@ import InstoreHelper from './instoreHelper'
 import { decoupleObject, ehrMergeEhrData, ehrMarkSeed } from '@/helpers/ehr-utils'
 import EhrDefs from '@/helpers/ehr-defs-grid'
 import StoreHelper from '@/helpers/store-helper'
+import { EhrPages } from '@/ehr-definitions/ehr-models'
 
 const debug = false
 
@@ -126,38 +127,25 @@ const getters = {
     return mData || {}
   },
   hasDataForPagesList (state, getters, rootState, rootGetters) {
+    const hasD = (stats, pageKey) => stats[pageKey] && stats[pageKey].hasData
     const pageKeys = EhrDefs.getAllPageKeys()
     const baseLevelData = getters.baseLevel
     const secondLevelData = getters.secondLevel || {}
     const mergedData = getters.mergedData
     let results = {}
+    const ehrPages = new EhrPages()
+    const statsSeed = ehrPages.ehrPagesStats(baseLevelData)
+    const statsStudent = ehrPages.ehrPagesStats(secondLevelData)
+    const statsMerged = ehrPages.ehrPagesStats(mergedData)
     pageKeys.forEach( pagekey => {
-      const mergedDatum = mergedData[pagekey]
-      const seedDatum = baseLevelData[pagekey]
-      const studentDatum = secondLevelData[pagekey]
-      const combinedObject = Object.assign({}, mergedDatum, seedDatum, studentDatum)
-      let hasMerged, hasSeed, hasStudent
-      if (_hasOnlyTables(combinedObject)) {
-        hasMerged = _doTablesHaveData(mergedDatum)
-        hasSeed = _doTablesHaveData(seedDatum)
-        hasStudent =  _doTablesHaveData(studentDatum)
-      } else if (_hasTables(combinedObject)) {
-        hasMerged = _hasAnyData(mergedDatum)
-        hasSeed = _hasAnyData(seedDatum)
-        hasStudent = _hasAnyData(studentDatum)
-      } else {
-        hasMerged =  !!mergedDatum
-        hasSeed =  !!seedDatum
-        hasStudent =  !!studentDatum
-      }
       results[pagekey] = {
         pagekey: pagekey,
-        hasMerged: hasMerged,
-        hasSeed: hasSeed,
-        hasStudent: hasStudent
+        hasMerged: hasD(statsMerged, pagekey),
+        hasSeed: hasD(statsSeed, pagekey),
+        hasStudent:  hasD(statsStudent, pagekey),
       }
     })
-    if (debug) console.log('EhrData hasDataForPagesList results', results)
+    // console.log('hasDataForPagesListV2', JSON.stringify(results))
     return results
   },
   mergedDataForPageKey (state, getters, rootState) {

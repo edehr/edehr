@@ -177,5 +177,5 @@ function cloneNotEmptyProperties (obj, pKeys) {
 }
 
 function objectHasContent ( obj ) {
-  return JSON.stringify(obj).trim().length > 0
+  return JSON.stringify(obj).trim().length > 2 // /i.e. does not equal {}
 }
