@@ -29,6 +29,7 @@ export default {
       // - hasSeed (data),
       // - hasStudent (student data) and
       // - hasMerged (any data)
+      // - draftMerged, draftSeed, and draftStudent if page has a draft record
       let k = this.path.pageDataKey
       let d = this.pageDataList()[k]
       if (!d) {
@@ -41,13 +42,18 @@ export default {
       let colour = ''
       const NEW_INFO = 'circle green-circle'
       const SEED_INFO = 'circle empty-circle'
+      const NEW_DRAFT = 'circle draft-circle'
+      const SEED_DRAFT = 'circle empty-draft-circle'
       const NONE = ''
       let isSeedEditing = StoreHelper.isSeedEditing()
       let hd = this.pageInfo
       if (isSeedEditing) {
-        colour = hd.hasSeed ? NEW_INFO : NONE
+        colour = hd.draftSeed ? NEW_DRAFT :
+          hd.hasSeed ? NEW_INFO : NONE
       } else {
-        colour = hd.hasStudent ? NEW_INFO : hd.hasSeed ? SEED_INFO : NONE
+        colour = hd.draftStudent ? NEW_DRAFT :
+          hd.hasStudent ? NEW_INFO :
+            hd.hasSeed ? SEED_INFO : NONE
       }
       return colour
     },
@@ -180,6 +186,12 @@ a:hover {
   }
   .green-circle {
     background: $green;
+  }
+  .empty-draft-circle {
+    border: 2px solid $nav-draft-colour;
+  }
+  .draft-circle {
+    background: $nav-draft-colour;
   }
   .top-level {
     color: $green;

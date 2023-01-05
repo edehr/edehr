@@ -127,7 +127,8 @@ const getters = {
     return mData || {}
   },
   hasDataForPagesList (state, getters, rootState, rootGetters) {
-    const hasD = (stats, pageKey) => stats[pageKey] && stats[pageKey].hasData
+    const hasData = (stats, pageKey) => stats[pageKey] && stats[pageKey].hasData
+    const hasDraft = (stats, pageKey) => stats[pageKey] && stats[pageKey].hasDraft
     const pageKeys = EhrDefs.getAllPageKeys()
     const baseLevelData = getters.baseLevel
     const secondLevelData = getters.secondLevel || {}
@@ -140,9 +141,12 @@ const getters = {
     pageKeys.forEach( pagekey => {
       results[pagekey] = {
         pagekey: pagekey,
-        hasMerged: hasD(statsMerged, pagekey),
-        hasSeed: hasD(statsSeed, pagekey),
-        hasStudent:  hasD(statsStudent, pagekey),
+        hasMerged: hasData(statsMerged, pagekey),
+        hasSeed: hasData(statsSeed, pagekey),
+        hasStudent:  hasData(statsStudent, pagekey),
+        draftMerged: hasDraft(statsMerged, pagekey),
+        draftSeed: hasDraft(statsSeed, pagekey),
+        draftStudent:  hasDraft(statsStudent, pagekey),
       }
     })
     // console.log('hasDataForPagesListV2', JSON.stringify(results))
