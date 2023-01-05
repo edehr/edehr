@@ -11,7 +11,7 @@
           fas-icon(:icon="appIcons.menu", @click="showingNavPanel = !showingNavPanel")
           span &nbsp; {{pageTitle}}
         transition(name="hamburger-action")
-          seed-menus-mini(v-if="showingNavPanel",
+          seed-menus(v-if="showingNavPanel",
             @selectPage="selectPage",
             :activePageKey='activePageKey',
             :ehrData='ehrData')
@@ -30,7 +30,7 @@ import SeedMenusMini from '@/outside/components/seed-struct/SeedMenusMini'
 import EhrDefs from '@/helpers/ehr-defs-grid'
 import { APP_ICONS } from '@/helpers/app-icons'
 export default {
-  components: { SeedPages, SeedMenus, SeedMenusMini },
+  components: { SeedPages, SeedMenus },
   data () {
     return {
       appIcons: APP_ICONS,

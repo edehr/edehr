@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import { EhrPages } from '@/ehr-definitions/ehr-models'
 export default {
   props: {
     activePageKey: { type: String },
@@ -19,10 +20,15 @@ export default {
   computed: {
     seedEhrData () { return this.ehrData || {} },
     menuList () {  return require('@/menuList.json')  },
+    pageStats () {
+      const ehrPages = new EhrPages()
+      return ehrPages.ehrPagesStats(this.seedEhrData)
+    }
+
   },
   methods: {
     pageHasData ( pkey ) {
-      return pkey &&  !!this.pageSeedData(pkey)
+      return this.pageStats[pkey] && this.pageStats[pkey].hasData
     },
     collectChildren ( top ) {
       let children = top.children
