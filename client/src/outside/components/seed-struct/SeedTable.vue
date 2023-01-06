@@ -4,7 +4,7 @@
       tr
         th(v-for="col in columns", v-text-to-html='col.label')
       tr(v-for="row in pageSeedData[pageElement.tableKey]")
-        td(v-for="(d, index) in rowData(row)")
+        td(v-for="(d, index) in rowData(row)", :class="{draft: rowIsDraft(row)}" )
           pre(v-if='columns[index].inputType === "textarea"') {{d}}
           span(v-else) {{d}}
     div(v-show='!hasData') No data in this table.
@@ -51,16 +51,25 @@ export default {
         row.push(val)
       }
       return row
+    },
+    rowIsDraft ( seedRow ) {
+      console.log(seedRow)
+      return seedRow.isDraft
     }
   }
 }
 </script>
 
 <style scoped lang='scss'>
-.seed-table {
-}
+@import "../../../scss/definitions";
+
 .table_horizontal {
   display: block;
   overflow-x: auto;
 }
+.draft {
+  background-color: $table-draft-colour !important;
+  color: black;
+}
+
 </style>
