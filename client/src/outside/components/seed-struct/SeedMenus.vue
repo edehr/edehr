@@ -4,9 +4,9 @@
       div(class='ehrData-group-label') {{menuGroup.label}}
       div(class='ehrData-page-container')
         div(v-for='ch1 in collectChildren(menuGroup)')
-          div(v-show='pageHasData(ch1.pageDataKey)',
+          div(
             class='ehrData-page-selector',
-            :class="{active: activePageKey === ch1.pageDataKey}",
+            :class="childCss(ch1.pageDataKey)",
             v-on:click="selectPage(ch1.pageDataKey)") {{ch1.label}}
 </template>
 
@@ -27,8 +27,17 @@ export default {
 
   },
   methods: {
+    childCss ( pkey ) {
+      return {
+        active: pkey === this.activePageKey,
+        draft: this.pageHasDraft(pkey)
+      }
+    },
     pageHasData ( pkey ) {
       return this.pageStats[pkey] && this.pageStats[pkey].hasData
+    },
+    pageHasDraft ( pkey ) {
+      return this.pageStats[pkey] && this.pageStats[pkey].hasDraft
     },
     collectChildren ( top ) {
       let children = top.children
@@ -39,6 +48,7 @@ export default {
           children = [...children, ...child.children]
         }
       }
+      children = children.filter( ch => this.pageHasData(ch.pageDataKey))
       return children.sort( (a,b) => a.name.localeCompare(b.name))
     },
     pageSeedData ( pkey ) {
@@ -95,5 +105,9 @@ $active-clr: $brand-primary-dark;
 .active {
   background-color: $active-clr;
   box-shadow: 1px 1px 2px white;
+}
+.draft {
+  background-color: $table-draft-colour !important;
+  color: black;
 }
 </style>
