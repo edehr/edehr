@@ -59,6 +59,7 @@ export class PageDef {
   get pageForms () { return this.formElements }
   get pageTables () { return this.tableElements }
   get pageChildren () { return this.pgChildren}
+  get pageTitle () { return this.pageTitle }
 
   ehrPageStats (pageData) {
     let pgStats = {hasData: false}

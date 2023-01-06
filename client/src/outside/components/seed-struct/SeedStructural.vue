@@ -26,7 +26,6 @@
 <script>
 import SeedPages from '@/outside/components/seed-struct/SeedPages'
 import SeedMenus from '@/outside/components/seed-struct/SeedMenus'
-import SeedMenusMini from '@/outside/components/seed-struct/SeedMenusMini'
 import EhrDefs from '@/helpers/ehr-defs-grid'
 import { APP_ICONS } from '@/helpers/app-icons'
 export default {
