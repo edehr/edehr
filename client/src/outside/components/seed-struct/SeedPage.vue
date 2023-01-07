@@ -1,7 +1,20 @@
 <template lang='pug'>
   div(class="seed-page")
     div(v-if='pageElement.isTable')
-      seed-table(
+      div(class="flow_across")
+        zone-lms-button(@action="tableOrientation = !tableOrientation"
+          class="flow_across_last_item"
+          :title="`Rotate the table ${tableOrientation ? 'vertical' : 'horizontal'}`",
+          :icon='appIcons.table',
+          :icon-class='{rotatedIcon: tableOrientation}',
+          text="")
+      seed-table-horiz(v-show='tableOrientation',
+        :pageKey="pageKey",
+        :pageChildren="pageChildren",
+        :pageElement='pageElement',
+        :pageSeedData='pageSeedData'
+      )
+      seed-table-vert(v-show='!tableOrientation',
         :pageKey="pageKey",
         :pageChildren="pageChildren",
         :pageElement='pageElement',
@@ -17,10 +30,19 @@
 
 <script>
 import EhrDefs from '@/helpers/ehr-defs-grid'
+import { APP_ICONS } from '@/helpers/app-icons'
 import SeedFormElement from '@/outside/components/seed-struct/SeedFormElement'
-import SeedTable from '@/outside/components/seed-struct/SeedTable'
+import SeedTableVert from '@/outside/components/seed-struct/SeedTableVert'
+import ZoneLmsButton from '@/outside/components/ZoneLmsButton'
+import SeedTableHoriz from '@/outside/components/seed-struct/SeedTableHoriz'
 export default {
-  components: { SeedFormElement, SeedTable },
+  components: { SeedTableHoriz, ZoneLmsButton, SeedFormElement, SeedTableVert },
+  data () {
+    return {
+      tableOrientation: false,
+      appIcons: APP_ICONS
+    }
+  },
   props: {
     pageKey: { type: String },
     pageChildren: { type: Array },
@@ -39,6 +61,12 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.rotatedIcon {
+  transform: rotate(270deg);
+}
+</style>
 
 <style lang="scss" scoped>
 .seed-page{

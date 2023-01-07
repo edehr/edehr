@@ -3,7 +3,7 @@
     v-on:buttonClicked="$emit('action')",
     :disabled='disabled',
     :title="title")
-    fas-icon(v-for='icon in iconList', :key="icon", class="fa", :icon="icon")
+    fas-icon(v-for='icon in iconList', :key="icon", class="fa", :icon="icon", :class='iconClass')
     span(v-if="showLabels") &nbsp; {{text}}
 </template>
 
@@ -20,6 +20,7 @@ export default {
   props: {
     disabled: { type: Boolean },
     icon: {type: String},
+    iconClass: {type: String, default: ''},
     icons: {type: Array},
     text: {type: String},
     title: {type: String}
