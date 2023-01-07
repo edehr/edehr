@@ -8,35 +8,6 @@ const debug = false
 
 const state = {}
 
-const _getTables = (obj = {}) => {
-  return Object.keys(obj).filter(o => o.includes('table') || o.includes('stacked'))
-}
-
-const _hasOnlyTables = (obj) => {
-  const tableLength = _getTables(obj).length
-  // flakey way to see if the objects on this page are only tables
-  const objectLength = Object.keys(obj).filter(k => k !== 'lastUpdate').length
-  return tableLength > 0 && objectLength === tableLength
-}
-
-const _hasTables = (obj) => { return _getTables(obj).length > 0 }
-
-const _hasAnyData = (obj) => { return _hasTables(obj) ? _doTablesHaveData(obj) : !! obj }
-
-const _doTablesHaveData = (obj) => {
-  let hasData = false
-  const tableKeys = _getTables(obj)
-  if(tableKeys.length > 0) {
-    tableKeys.map(key => {
-      const table = obj[key]
-      if(table && table.length > 0) {
-        hasData = true
-      }
-    })
-  }
-  return hasData
-}
-
 const getters = {
   ehrOnly: (state, getters, rootState, rootGetters) => {
     return rootGetters['ehrOnlyDemoStore/isActiveEhrOnlyDemo']
@@ -126,7 +97,7 @@ const getters = {
     }
     return mData || {}
   },
-  hasDataForPagesList (state, getters, rootState, rootGetters) {
+  hasDataForPagesList (state, getters) {
     const hasData = (stats, pageKey) => stats[pageKey] && stats[pageKey].hasData
     const hasDraft = (stats, pageKey) => stats[pageKey] && stats[pageKey].hasDraft
     const pageKeys = EhrDefs.getAllPageKeys()

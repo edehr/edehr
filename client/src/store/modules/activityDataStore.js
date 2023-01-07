@@ -1,6 +1,7 @@
 import InstoreHelper from './instoreHelper'
 import StoreHelper from '../../helpers/store-helper'
 import { Text } from '@/helpers/ehr-text'
+import { EhrPages } from '@/ehr-definitions/ehr-models'
 
 const API = 'activity-data'
 const OBJ = 'activitydata'
@@ -19,6 +20,12 @@ const getters = {
     let prop =  state.dataStore.assignmentData || {}
     if (debug) console.log(NAME + ' get assignmentData', prop)
     return prop
+  },
+  hasDraftRows: state => {
+    let assignmentData =  state.dataStore.assignmentData || {}
+    const ehrPages = new EhrPages()
+    const statsSeed = ehrPages.ehrPagesStats(assignmentData)
+    return statsSeed.meta.draftRows > 0
   },
   lastUpdateDate: state => {
     // unlike other models this one's update field is called lastDate

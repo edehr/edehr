@@ -110,6 +110,7 @@ class StoreHelperWorker {
   isSubmitted () { return this._getActivityDataProperty('submitted') }
   // isSentBack () { return this._getActivityDataProperty('sentBack') }
   getStudentAssignmentData () { return this._getActivityDataProperty('assignmentData')}
+  getStudentAssignmentDataHasDraftRows () { return this._getActivityDataProperty('hasDraftRows')}
   getStudentScratchData () { return this._getActivityDataProperty('scratchData')}
   getEvaluationNotes () { return this._getActivityDataProperty('evaluationData')   }
   getActivityData () { return this._getActivityDataProperty('activityData')}

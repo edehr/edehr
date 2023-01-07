@@ -1,5 +1,5 @@
 <template lang="pug">
-  button(v-on:click="buttonClicked", :class="classObject", :disabled="disabled")
+  button(v-on:click="buttonClicked", :class="classObject", :disabled="disabled", :title='title')
     slot
 </template>
 
@@ -7,6 +7,7 @@
 export default {
   props: {
     value: { type: String },
+    title: { type: String, default: ''},
     secondary: {
       type: Boolean
     },
@@ -21,7 +22,7 @@ export default {
       let def = {
         button: true
       }
-      
+
       if (this.secondary) {
         def['is-light'] = true
       } else if (this.danger) {

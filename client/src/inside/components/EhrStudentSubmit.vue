@@ -1,7 +1,12 @@
 <template lang="pug">
   div(class='student-submit')
     div(v-if="showSubmit", title='End your work and send to your instructor to evaluate.')
-      ui-button(v-on:buttonClicked="npButtonClicked", :disabled="disableNavAction") Submit Activity
+      ui-button(
+        v-on:buttonClicked="npButtonClicked",
+        :class='{draft : hasDraft}',
+        :title='submitButtonTip',
+        :disabled="disableNavAction"
+        ) Submit Activity
     div(v-else, class='status-message') {{ statusMessage }}
     ui-confirm(ref="confirmDialog", v-on:confirm="proceed", saveLabel='Submit')
     ui-agree(ref="successDialog", v-on:confirm="finishedAction")
@@ -33,6 +38,7 @@ const FEEDBACK_TITLE = 'Optional Feedback Form'
 const FEEDBACK_BODY = 'Your assignment is submitted. Before you go, '+
   ' can you please give us your thoughts and suggestions about the EdEHR.' +
   ' This is completely anonymous and optional yet your comments will help us improve this application.'
+const BUTTON_WARN = 'Warning. Your work contains draft rows'
 /*
 Collect student feedback, completely anonymous and voluntary, after work is submitted.
  */
@@ -53,9 +59,11 @@ export default {
     }
   },
   computed: {
+    hasDraft () { return StoreHelper.getStudentAssignmentDataHasDraftRows() },
     showSubmit () {
       return !StoreHelper.isSubmitted()
     },
+    submitButtonTip () { return this.hasDraft ? BUTTON_WARN : ''},
     statusMessage () {
       return StoreHelper.isSubmitted(this) ? Text.IS_SUBMITTED : ''
     },
@@ -95,6 +103,11 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@import "../../scss/definitions";
+.draft {
+  background-color: $table-draft-colour !important;
+  color: black !important;
+}
 .student-submit {
   display: flex;
   flex-direction: row;
