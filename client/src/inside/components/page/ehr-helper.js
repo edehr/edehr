@@ -323,6 +323,7 @@ export default class EhrPageHelper {
   }
   async saveDialogDraft () {
     const dialog = this._getActiveTableDialog()
+    if (!dialog ) return // this can happen when called by the setTimeout after dialog is closed
     const pageKey = this.pageKey
     const tableKey = dialog.tableKey
     if (dbDraft) console.log('save draft', pageKey, tableKey, JSON.stringify(dialog.inputs))

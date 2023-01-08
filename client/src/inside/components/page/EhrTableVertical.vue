@@ -101,10 +101,3 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
-@import '../../../scss/definitions';
-.draftRow td {
-  background-color: aliceblue !important;
-}
-
-</style>

@@ -31,7 +31,6 @@
 import EhrTableCommon from './EhrTableCommon'
 import EhrTableElement from './EhrTableElement'
 import UiButton from '@/app/ui/UiButton'
-const debug = false
 
 export default {
   extends: EhrTableCommon,
@@ -65,9 +64,6 @@ export default {
 /* the ehr content has overflow hidden yet tables may be big ...*/
 .ehr-table-stacked {
   overflow-x: auto;
-}
-.draftRow td {
-  background-color: aliceblue !important;
 }
 </style>
 

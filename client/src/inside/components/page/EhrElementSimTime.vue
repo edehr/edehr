@@ -21,6 +21,7 @@ import EhrTypes from '@/ehr-definitions/ehr-types'
 import EhrElementCommon from '@/inside/components/page/EhrElementCommon'
 import EhrPageFormLabel from '@/inside/components/page/EhrPageFormLabel'
 import StoreHelper from '@/helpers/store-helper'
+import { ehrText } from '@/appText'
 const VISIT_DAY_TYPE = EhrTypes.dataInputTypes.visitDay
 const VISIT_TIME_TYPE = EhrTypes.dataInputTypes.visitTime
 const MAX_DAY = 10
@@ -50,35 +51,18 @@ export default {
       return result
     },
     isTimeValue () { return this.element.inputType === VISIT_TIME_TYPE },
+    isDayValue () { return this.element.inputType === VISIT_DAY_TYPE },
     elementLabel () {
       let label = this.element.label
       if(this.element.recHeader) {
-        if (this.element.inputType === VISIT_TIME_TYPE) {
+        if (this.isTimeValue) {
           label = 'Record time'
         }
-        if (this.element.inputType === VISIT_DAY_TYPE) {
+        if (this.isDayValue) {
           label = 'Record day'
         }
       }
       return label
-    },
-    helperText () {
-      let helperText = this.element.helperText
-      if(this.element.recHeader) {
-        let d = { type: '' }
-        if (this.element.inputType === VISIT_TIME_TYPE) {
-          d.type = 'time of day'
-        }
-        if (this.element.inputType === VISIT_DAY_TYPE) {
-          d.type = 'visit day'
-        }
-        let ht = []
-        ht.push(`This is the ${d.type} for this record. A real EHR provides this automatically but in a simulation you need to provide the ${d.type} the \'user\' is making this record.`)
-        ht.push('The current simulation time is calculated based on these record headers.')
-        ht.push('To be consistent you can only set the time to be equal or later than the simulation time.')
-        helperText = ht.join(' ')
-      }
-      return helperText
     },
     metaSimTime () {
       let data = StoreHelper.getMergedData()
@@ -122,19 +106,19 @@ export default {
       return ts
     },
     selectOptions () {
-      if (this.element.inputType === VISIT_TIME_TYPE) {
+      if (this.isTimeValue) {
         return this.timeSeries
       }
-      if (this.element.inputType === VISIT_DAY_TYPE) {
+      if (this.isDayValue) {
         return this.daySeries
       }
       return []
     },
     listId () {
-      if (this.element.inputType === VISIT_TIME_TYPE) {
+      if (this.isTimeValue) {
         return 'SimTime'
       }
-      if (this.element.inputType === VISIT_DAY_TYPE) {
+      if (this.isDayValue) {
         return 'SimDay'
       }
       return []
@@ -144,23 +128,13 @@ export default {
     setInitialValue (value) {
       // save the given initial value to test for inclusion in the generated time series.
       this.initialVal = value
-      // if(this.element.recHeader) {
-      //   if (this.element.inputType === VISIT_TIME_TYPE) {
-      //     this.inputVal = this.simulationTime
-      //   }
-      //   if (this.element.inputType === VISIT_DAY_TYPE) {
-      //     this.inputVal = this.simulationDay
-      //     console.log('set day init value', this.simulationDay, value)
-      //   }
-      // } else {
       this.inputVal = value
-      // }
     },
   },
   created () {
     // set label and helper text for all rec header sim time fields to the same. Overrides the definitions for consistency.
     // This is not done in the definition generation because that would duplicate the lengthy helper text across all elements.
-    this.element.helperText = this.helperText
+    this.element.helperText = this.isDayValue ? ehrText.simDayAndTimeHelperText : undefined
     this.element.label = this.elementLabel
   }
 }

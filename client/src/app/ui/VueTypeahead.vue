@@ -47,7 +47,6 @@ export default {
         // console.log('vth display cb: ', item)
         return item.label ? item.label : item
       }
-      console.log('source', JSON.stringify(this.source))
       const config = {
         className: 'ehr-typeahead',
         display: displayCb,

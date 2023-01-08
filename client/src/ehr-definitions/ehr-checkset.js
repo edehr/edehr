@@ -25,7 +25,10 @@ export default class EhrCheckset {
     const options = element.options
     // console.log('options', JSON.stringify(options))
     // TODO match values to original text in options to recover display text
-    if (!val) return val
+    if (typeof val !== 'string') {
+      if (val !== undefined) console.log('TODO Ehr checkset. Handle legacy seeds with boolean values', elementKey, val)
+      return val
+    }
     const parts = val.split(',')
     const human = parts.map(p => decamelize(p, { separator: ' ' }))
     return human.join(', ')

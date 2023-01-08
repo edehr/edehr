@@ -138,6 +138,8 @@ export const appText = {
 }
 
 export const ehrText = {
+  simDayAndTimeHelperText: 'A real EHR provides the record day and time automatically but in a simulation you need to ' +
+    ' provide these to reflect when the \'user\' is making the record.',
   cancelDialogReturnToEditLabel: 'Return to edit',
   cancelDialogExitDialogLabel: 'Confirm cancel',
   ehrDialogCancelButtonViewOnly: 'Close',
