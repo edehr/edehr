@@ -20,7 +20,7 @@ export default {
   props: {
     disabled: { type: Boolean },
     icon: {type: String},
-    iconClass: {type: String, default: ''},
+    iconClass: {type: Object, default: undefined},
     icons: {type: Array},
     text: {type: String},
     title: {type: String}

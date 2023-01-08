@@ -192,13 +192,12 @@ export default class EhrPageHelper {
     if (dialog && dialog.inputs) {
       const values = decoupleObject(dialog.inputs)
       // {"day":0,"time":"1930","oxygenTherapy":"xd","createdDate":"2022-12-17T20:17:09-08:00","isDraft":"isDraft"}
-      delete values.day
-      delete values.time
+      // delete values.day
+      // delete values.time
       delete values.createdDate
       delete values.isDraft
       let reduced = removeEmptyProperties(values)
       reduced = JSON.stringify(reduced)
-      // console.log('table dialog\'s data is ', reduced)
       return reduced.length > 2
     }
     return false

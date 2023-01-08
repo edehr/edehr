@@ -1,11 +1,11 @@
 <template lang="pug">
-  div(class="content")
+  div
     tabs
       tab(name="Graph V2", :selected="true")
         div(v-show="showTableAddButton")
           ui-button(v-on:buttonClicked="showDialog") {{ tableDef.addButtonText }}
         vitals-chart(v-bind:vitals="tableData", v-bind:vitalsModel="vitalsModel")
-        ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDef", :inputs="dialogInputs", :errorList="errorList" )
+        ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDef", :errorList="errorList" )
       tab(name="Chart V2")
         ehr-page-table(:tableDef="tableDef", :ehrHelp="ehrHelp")
 
@@ -38,7 +38,6 @@ export default {
       vitals: {
         table: []
       },
-      dialogInputs: {},
       vitalsModel: {}
     }
   },
@@ -77,7 +76,6 @@ export default {
   },
   methods: {
     showDialog () {
-      // console.log('Vitals Chart tab showDialogHandler ', this.dialogInputs)
       this.ehrHelp.showDialogForTable(this.tableKey, {})
     },
     refresh () {
@@ -86,9 +84,8 @@ export default {
       let pageKey = this.ehrHelp.getPageKey()
       // console.log('Vitals2 refresh for page table key', pageKey, tableKey)
       let pageData = this.ehrHelp.getMergedPageData(pageKey)
-      let tableData = pageData[tableKey] || []
       // store the current data into local data property for display
-      this.tableData = tableData
+      this.tableData = pageData[tableKey] || []
       // console.log('Vitals page and table data', pageData, this.tableData)
       this.tableData.reverse()
     }

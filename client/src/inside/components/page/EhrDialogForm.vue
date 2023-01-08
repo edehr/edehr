@@ -71,7 +71,20 @@ export default {
       return this.tableDef.form ? this.tableDef.form.ehr_groups : []
     },
     disableSave () {
-      return this.isViewOnly || this.errorList.length > 0 || !this.hasData
+      let canSave
+      if (this.isViewOnly) {
+        canSave = true
+      } else {
+        canSave = this.errorList.length === 0 && this.hasData
+        if (canSave && this.hasRecHeader) {
+          const { name, profession, day, time } = this.ehrHelp.activeTableDialogRecordHeader()
+          canSave = name.length > 0 &&
+            profession.length > 0 &&
+            day.length > 0 &&
+            time.length > 0
+        }
+      }
+      return !canSave
     },
   },
   methods: {
@@ -83,7 +96,11 @@ export default {
       if (this.isViewOnly || !this.hasData) {
         this.closeDialog()
       } else {
-        this.$refs.confirmCancelDialog.showDialog('Confirm cancel', 'Do you want to close and not save a draft?')
+        if (this.hasRecHeader) {
+          this.$refs.confirmCancelDialog.showDialog('Confirm cancel', 'Do you want to close and not save a draft?')
+        } else {
+          this.closeDialog()
+        }
       }
     },
     cancelConfirmed: async function () {

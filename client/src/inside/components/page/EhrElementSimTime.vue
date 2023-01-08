@@ -127,7 +127,6 @@ export default {
   methods: {
     setInitialValue (value) {
       // save the given initial value to test for inclusion in the generated time series.
-      console.log('set initial value', value)
       this.initialVal = '' + value
       this.inputVal = '' + value
     },
