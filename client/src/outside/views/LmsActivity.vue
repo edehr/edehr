@@ -18,6 +18,12 @@
               fas-icon(class='fa', :icon='appIcons.lobj')
               span &nbsp; {{ assignment.name }}
       div(class="details-row")
+        div(class="details-name") {{text.CASE_STUDY}}
+        div(class="details-value")
+          ui-link(name="seed-view", :query="{seedId: seedDataId}")
+            fas-icon(class='fa', :icon='appIcons.seed')
+            span &nbsp; {{ seed.name }}
+      div(class="details-row")
         div(class="details-name") {{text.CLASS_LIST}}
         div(class="details-value")
           ui-link(:name="'classList'", :query="{activityId: activityId}")
@@ -81,6 +87,10 @@ export default {
     createDate () {
       return formatTimeStr(this.activity.createDate)
     },
+    seed () {
+      return this.$store.getters['seedListStore/seedContent']
+    },
+    seedDataId () { return this.assignment.seedDataId}
   },
   methods: {
     /*
@@ -110,6 +120,8 @@ export default {
       const activity = await this.$store.dispatch('activityStore/loadCurrentActivity')
       if (activity.assignment) {
         await this.$store.dispatch('assignmentStore/load', activity.assignment)
+        const seedId = this.assignment.seedDataId
+        await this.$store.dispatch('seedListStore/loadSeedContent', seedId)
       }
       await this.$store.dispatch('instructor/loadClassList')
 

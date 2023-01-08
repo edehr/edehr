@@ -66,6 +66,7 @@ export const Text = {
     DESCRIPTION: 'Description',
     DATES: 'Dates',
     DATES_VAL: (c,l) => `Created on ${c}. Last modified on ${l} `,
+    CASE_STUDY: 'Case study',
     CLASS_LIST: 'Class list',
     CLASS_LIST_BTN: 'Go to the class list',
     LOBJ: 'Learning object',
