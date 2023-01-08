@@ -462,18 +462,16 @@ export default class EhrPageHelper {
     // now set the open/close state flag....
     dialog.active = open
     dialog.viewOnly = options.viewOnly
+    if(open && hasRecHeader) {
+      // push in the current sim day/time
+      const { visitDay, visitTime } = StoreHelper.getMergedData().meta.simTime
+      // console.log('sim time', visitDay, visitTime)
+      dialog.inputs['day'] = ''+ visitDay
+      dialog.inputs['time'] = ''+ visitTime
+    }
     if (options.data) {
-      if(hasRecHeader) {
-        // push in the current sim day/time
-        const { visitDay, visitTime } = StoreHelper.getMergedData().meta.simTime
-        console.log('sim time', visitDay, visitTime)
-        dialog.inputs['day'] = visitDay
-        dialog.inputs['time'] = visitTime
-      }
       // may override the sim day/time here if previously set to something else
       dialog.inputs = { ...options.data }
-      console.log('dialog.inputs[\'day\']', dialog.inputs['day'])
-      console.log('dialog.inputs[\'time\']', dialog.inputs['time'])
     }
     // End by sending out the "i'm opened/closed event"
     let eData = { key: tableKey, value: open, options: options }

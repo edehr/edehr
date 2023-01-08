@@ -68,13 +68,13 @@ export default {
       let data = StoreHelper.getMergedData()
       return data.meta.simTime
     },
-    simulationDay () { return this.metaSimTime.visitDay }, // the current computed day of the simulation
-    simulationTime () { return this.metaSimTime.visitTime },
+    simulationDay () { return '' + this.metaSimTime.visitDay }, // the current computed day of the simulation
+    simulationTime () { return '' + this.metaSimTime.visitTime },
     daySeries () {
       const ds = []
       const start = this.element.recHeader ? this.simulationDay : 0
       for(let i = start; i < MAX_DAY ; i++) {
-        ds.push(i)
+        ds.push('' + i)
       }
       return ds
     },
@@ -91,7 +91,7 @@ export default {
               ts.push(t)
             }
           } else { // else the user is working with a day beyond the simulation day
-            ts.push(t) // so add all time values into the time series
+            ts.push('' + t) // so add all time values into the time series
           }
         })
       }
@@ -127,8 +127,9 @@ export default {
   methods: {
     setInitialValue (value) {
       // save the given initial value to test for inclusion in the generated time series.
-      this.initialVal = value
-      this.inputVal = value
+      console.log('set initial value', value)
+      this.initialVal = '' + value
+      this.inputVal = '' + value
     },
   },
   created () {
