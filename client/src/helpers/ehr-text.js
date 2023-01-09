@@ -71,8 +71,7 @@ export const Text = {
     CLASS_LIST_BTN: 'Go to the class list',
     LOBJ: 'Learning object',
     STATUS: 'Status',
-    STUDENTS: 'Number of students',
-    STUDENTS_VAL: (total, submitted) => `${total} participating and ${submitted} with submitted work`,
+    STUDENTS_VAL: (total, submitted) => `${total} students participating and ${submitted} students with submitted work`,
   },
   CLASS_LIST_PAGE: {
     EVALUATION: 'Evaluation notes',

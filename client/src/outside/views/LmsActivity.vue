@@ -29,13 +29,10 @@
           ui-link(:name="'classList'", :query="{activityId: activityId}")
             fas-icon(class='fa', :icon='appIcons.activity')
             span &nbsp; {{text.CLASS_LIST_BTN}}
+          span &nbsp; {{text.STUDENTS_VAL(classList.length, classSubmittedList.length)}}
       div(class="details-row")
         div(class="details-name") {{text.DATES}}
         div(class="details-value") {{text.DATES_VAL(createDate, lastUpdate) }}
-      div(class="details-row")
-        div(class="details-name") {{text.STUDENTS}}
-        div(class="details-value")
-          span {{text.STUDENTS_VAL(classList.length, classSubmittedList.length)}}
 
     div(v-show='false')
       div activityId {{ activityId }}

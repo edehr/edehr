@@ -4,7 +4,10 @@
       div(class="list-item-name")
         ui-link(:name="'seed-view'",  :query='{ seedId: seedModel.id }' )
           span(class='clickable') {{seed.name}}
-      seed-actions(class="flow_across_last_item", :seed='seed')
+      div(class="flow_across_last_item")
+        div(class="flow_across")
+          a(class="show-more", @click="showMore = !showMore") {{showMore ? 'show less' : 'show more'}}
+          seed-actions(:seed='seed')
     div(v-if="hasDraftReports", class="draftStyle")
       div(class="details-row")
         div(class="details-name") WARNING
@@ -14,7 +17,6 @@
           Edit this case study in the EHR and complete the reports (or remove them)
 
     div(v-if="showMore")
-      a(@click="showMore = !showMore; $emit('selectSeed', seed)") {{showMore ? 'show less' : 'show more'}}
       div(class="details-row")
         div(class="details-name") {{text.DESCRIPTION}}
         div(class="details-value")
@@ -32,7 +34,9 @@
           span(v-for='pgn in pageNamesWithContent', :key='pgn') &nbsp; {{ pgn }}
       div(class="details-row")
         div(class="details-name") {{text.LOBJ_LABEL}}
-        div(class="details-value") {{text.LOBJ_VALUE(loCount)}}
+        div(class="details-value")
+          div(v-for="lobj in assignmentList")
+            router-link(:to="{ name:'learning-object', query: { learningObjectId: lobj._id }}") {{lobj.name}}
       div(class="details-row")
         div(class="details-name") {{text.DATES}}
         div(class="details-value") Created on {{ seed.createDate | formatDateTime }}. Last modified on {{ seed.lastUpdateDate | formatDateTime }}
@@ -40,7 +44,6 @@
         div(class="details-name") Id
         div(class="details-value") {{ seed._id }}
     div(v-if="!showMore")
-      a(@click="showMore = !showMore; $emit('selectSeed', seed)") {{showMore ? 'show less' : 'show more'}}
       div(class="") {{truncate(seed.description, 180)}}
 </template>
 
@@ -74,6 +77,9 @@ export default {
     showIds: { type: Boolean }
   },
   computed: {
+    assignmentList: function () {
+      return StoreHelper.getAssignmentsList().filter(a => a.seedDataId === this.seedModel.id)
+    },
     canDo () { return StoreHelper.isDevelopingContent() },
     idLength () { return '62bdb422ae8dc820982a2d86'.length },
     loCount () { return this.assignmentList().length },
@@ -95,9 +101,6 @@ export default {
 
   },
   methods: {
-    assignmentList: function () {
-      return StoreHelper.getAssignmentsList().filter(a => a.seedDataId === this.seedModel.id)
-    },
     truncate (input, lim) {
       return input.length > lim ? `${input.substring(0, lim)}...` : input }
   }
@@ -107,5 +110,9 @@ export default {
 @import '../../../scss/definitions';
 .draftStyle {
   background-color: $table-draft-colour;
+}
+.show-more {
+  display: inline-block;
+  margin-right: 1rem;
 }
 </style>

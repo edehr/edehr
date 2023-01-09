@@ -12,8 +12,13 @@
         div(class="details-value")
           div(v-text-to-html="learningObject.description")
       div(class="details-row")
-        div(class="details-name") {{ text.USED }}
-        div(class="details-value") {{ text.USED_VAL(learningObject.activityCount) }}
+        div(class="details-name") {{text.USED}}
+        div(class="details-value")
+          div(v-for="act in accessibleActivities", :key="act._id")
+            ui-link(:name="'lms-activity'", :query="{activityId: act._id}")
+              fas-icon(class="fa", :icon="appIcons.activity")
+              span &nbsp; {{act.resource_link_title}}
+          div(v-if="unreachableActivityCount > 0 ") {{unreachableActivityText}}
       div(class="details-row")
         div(class="details-name") {{ text.SEED }}
         div(class="details-value")
@@ -51,6 +56,28 @@ export default {
     }
   },
   computed: {
+    accessibleActivities () {
+      return StoreHelper.lmsActivitiesUsingLearningObject(this.learningObject._id)
+    },
+    unreachableActivityCount () {
+      return this.learningObject.activityCount - this.accessibleActivities.length
+    },
+    unreachableActivityText () {
+      let txt = ''
+      const cnt = this.unreachableActivityCount
+      const hasAccessibleActivities = this.accessibleActivities.length > 0
+      if (this.unreachableActivityCount > 0) {
+        if (hasAccessibleActivities) {
+          txt = `Plus ${cnt} other activities that you do not have permission to access.`
+        } else {
+          txt = `${cnt} activities that you do not have permission to access.`
+        }
+      }
+      return txt
+    },
+    actCount () {
+      return this.learningObject.activityCount
+    },
     activity () {
       return this.$store.getters['activityStore/activity']
     },

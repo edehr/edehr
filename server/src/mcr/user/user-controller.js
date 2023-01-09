@@ -61,9 +61,10 @@ export default class UserController extends BaseController {
                 let course = courses.find(c => c.id === cId)
                 if (!course) {
                   course = {
-                    id: cId,
-                    name: activity.context_title,
+                    id: activity.context_id,
                     label: activity.context_label,
+                    name: activity.context_title,
+                    type: activity.context_type,
                     activities: []
                   }
                   courses.push(course)

@@ -102,7 +102,7 @@ export function outside () {
       name: 'courses',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/Courses.vue'),
-      meta: { layout: 'lms', label: 'Activities', icon: APP_ICONS.course, zone: ZONE_LMS }
+      meta: { layout: 'lms', label: 'My Activities', icon: APP_ICONS.course, zone: ZONE_LMS }
     },
     {
       path: '/eval-student',

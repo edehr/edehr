@@ -4,9 +4,11 @@
       div(class="list-item-name")
         ui-link(:name="'learning-object'",  :query='{ learningObjectId: this.lObj._id }' )
           span(class='clickable') {{lObj.name}}
-      learning-object-actions(class="flow_across_last_item", :learningObject='lObj')
+      div(class="flow_across_last_item")
+        div(class="flow_across")
+          a(class="show-more", @click="showMore = !showMore") {{showMore ? 'show less' : 'show more'}}
+          learning-object-actions(:learningObject='lObj')
     div(v-if="showMore")
-      a(@click="showMore = !showMore; $emit('selectLObj', lObj)") {{showMore ? 'show less' : 'show more'}}
       div(class="details-row")
         div(class="details-name") {{text.DESCRIPTION}}
         div(class="details-value")
@@ -19,14 +21,13 @@
             span &nbsp; {{ lObj.seedDataObj.name }}
       div(class="details-row")
         div(class="details-name") {{text.ACTIVITIES}}
-        div(class="details-value") Used by {{actCount > 0 ? actCount : 'no'}} {{ actCount > 1 ? 'activities' : 'activity' }}
-          div(v-if='actCount > 0 && lmsActivities') You can access these activities
-          div(v-if='actCount > 0 && !lmsActivities') You can not access any activities
-          div(v-for="act in lmsActivities", :key="act._id")
+        div(class="details-value")
+          div(v-for="act in accessibleActivities", :key="act._id")
             ui-link(:name="'lms-activity'", :query="{activityId: act._id}")
               fas-icon(class="fa", :icon="appIcons.activity")
               span &nbsp; {{act.resource_link_title}}
-      div(class="details-row")  
+          div(v-if="unreachableActivityCount > 0 ") {{unreachableActivityText}}
+      div(class="details-row")
         div(class="details-name") {{text.DATES}}
         div(class="details-value") Created on {{ lObj.createDate | formatDateTime }}. Last modified on {{ lObj.lastUpdateDate | formatDateTime }}
       div(v-if="isAdmin", class="details-row")
@@ -34,7 +35,6 @@
         div(class="details-value") {{ lObj._id }}
     div(v-if="!showMore")
       div(class="details-row flow_across content_space_across")
-        a(@click="showMore = !showMore; $emit('selectLObj', lObj)") {{showMore ? 'show less' : 'show more'}}
         div
           span {{text.SEED}}: &nbsp;
           ui-link(:name="'seed-view'", :query="{seedId: lObj.seedDataId}")
@@ -66,8 +66,24 @@ export default {
   },
   computed: {
     canDo () { return StoreHelper.isDevelopingContent() },
-    lmsActivities () {
+    accessibleActivities () {
       return StoreHelper.lmsActivitiesUsingLearningObject(this.lObj._id)
+    },
+    unreachableActivityCount () {
+      return this.lObj.activityCount - this.accessibleActivities.length
+    },
+    unreachableActivityText () {
+      let txt = ''
+      const cnt = this.unreachableActivityCount
+      const hasAccessibleActivities = this.accessibleActivities.length > 0
+      if (this.unreachableActivityCount > 0) {
+        if (hasAccessibleActivities) {
+          txt = `Plus ${cnt} other activities that you do not have permission to access.`
+        } else {
+          txt = `${cnt} activities that you do not have permission to access.`
+        }
+      }
+      return txt
     },
     actCount () {
       return this.lObj.activityCount
@@ -79,3 +95,11 @@ export default {
   }
 }
 </script>
+
+<style lang='scss' scoped >
+@import '../../../scss/definitions';
+.show-more {
+  display: inline-block;
+  margin-right: 1rem;
+}
+</style>

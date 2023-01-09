@@ -228,7 +228,7 @@ class StoreHelperWorker {
     let list = []
     let courses = this.getCourseList()
     courses.forEach(course => {
-      let clist = course.activities.filter( a => a.assignment === lObjId)
+      let clist = course.activities.filter( a => a.assignment._id === lObjId)
       list = [...list, ...clist]
     })
     return list

@@ -29,7 +29,7 @@
           span(v-for='pgn in pageNamesWithContent', :key='pgn') &nbsp; {{ pgn }}
       div(class="details-row")
         div(class="details-name") {{text.LOBJ_LABEL}}
-        div(class="details-value") {{text.LOBJ_VALUE(loCount)}}
+        div(class="details-value")
           div(v-for="lobj in assignmentList")
             router-link(:to="{ name:'learning-object', query: { learningObjectId: lobj._id }}") {{lobj.name}}
       div(class="details-row")
