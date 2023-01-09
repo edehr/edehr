@@ -10,6 +10,7 @@ export const APP_ICONS = {
   edit: 'edit',
   ehrPage: 'book-medical',
   exitToLms: 'sign-out-alt',
+  externalLink: 'external-link-alt',
   file: 'notes-medical',
   filter: 'filter',
   forceSubmit: 'lock',

@@ -194,7 +194,7 @@ footer {
   flex-wrap: wrap;
 }
 .menu_space_across {
-  gap: 8px;
+  gap: 1.5rem;
 }
 .content_space_across {
   gap: 3rem;
@@ -213,6 +213,13 @@ footer {
   padding-left: 5px;
 }
 
+.external-link-icon {
+  height: 0.7rem;
+  display: inline-block;
+  position: relative;
+  top: -3px;
+  margin-left: 3px;
+}
 .clickable {
   cursor: pointer;
 }

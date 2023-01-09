@@ -3,13 +3,12 @@
     div(class="app-header flow_across")
       router-link(:to="{ name: 'home' }", class="navLink")
         img(src="/edehr-Logo.png", class='brand-image', alt='EdEHR')
-      div(class="flow_across_last_item side-menu")
+      div(class="flow_across menu_space_across flow_across_last_item side-menu")
+        app-header-documentation-menu
         app-header-public-menu(v-if="!isStudent && !isInstructor && isPublic")
         app-header-student-menu(v-if="isStudent")
         app-header-instructor-menu(v-if="isInstructor")
         router-link(v-if="isDemo", :to="{ name: `demo` }", class="navLink") Demonstration
-        //span(v-if="activityId") activityId {{ activityId }} &nbsp;
-        //span(v-if="seedEditId") seedEditId {{ seedEditId }} &nbsp;
     // app styling -- coloured line under header
     div(class="app-header-bottom")
       div(class="app-header-bottom-left")
@@ -20,16 +19,14 @@ import StoreHelper from '@/helpers/store-helper'
 import AppHeaderPublicMenu from '@/app/components/AppHeaderPublicMenu'
 import AppHeaderStudentMenu from '@/app/components/AppHeaderStudentMenu'
 import AppHeaderInstructorMenu from '@/app/components/AppHeaderInstructorMenu'
+import AppHeaderDocumentationMenu from '@/app/components/AppHeaderDocumentationMenu'
 export default {
-  components: { AppHeaderInstructorMenu, AppHeaderStudentMenu, AppHeaderPublicMenu },
+  components: { AppHeaderDocumentationMenu, AppHeaderInstructorMenu, AppHeaderStudentMenu, AppHeaderPublicMenu },
   computed: {
     isPublic () { return StoreHelper.inZonePublic() },
     isDemo () { return StoreHelper.inZoneDemo() },
     isStudent () { return StoreHelper.isStudent()  },
     isInstructor () { return StoreHelper.isInstructor() },
-
-    activityId () { return StoreHelper.getActivityId()},
-    seedEditId () { return StoreHelper.getSeedEditId()}
   },
   methods: { }
 }
