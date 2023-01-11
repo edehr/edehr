@@ -6,20 +6,51 @@
 
 All access to the EdEHR is through your school's learning management system (LMS). You start by logging into your LMS and navigate to your course. You will see many activities to complete and some of these may launch the EdEHR with a case study for you to work with.
 
-## Student tools
-
-Near the top right side you will see a Student tools menu.
-
 ![1]
+
+The main parts of your student's view of the EdEHR include
+
+- Application menu banner
+- EHR content
+
+## Application banner
+
+![2]
+
+- Access documentation:  brings you to this page of the documentation.
+- Return to your activity: brings you back to the EHR content pages.
+- Submit your activity to your instructor: see below.
+- Tools menu: see below
+
+## Submit Activity
+
+When you are ready to submit your work for evaluation by your instructor then use the ```Submit Activity``` button. 
+When you do this your instructor can view and evaluate your work.
+Once your work is "submitted" you can no longer make changes to the EHR content. 
+Your instructor may also close off the activity for you or for the whole class. 
+And they can also send the activity back to you so you can do more work.
+
+When you submit your work the EdEHR will send you back to your LMS. (Same as if you use the ```Tools``` menu and  ```Exit to LMS```.)
+
+## Student tools menu
+The ```Tools``` menu lets you access information about the activity, 
+see any evaluation comments your instructor may have left for you, 
+work with a scratch pad for taking notes, and
+to return back to your learning management system (LMS)
+
+![3]
+
+### Instructor's comments
+
+Once you have submitted your work your instructor may provide evaluation comments. Use this menu item to view these comments.
 
 ### Activity information
 
-Select Activity Information from the Student tools to see details about the current activity.
-![3]
+Select Activity Information from the student ```Tools``` menu to see details about the current activity.
 
-**Instructor comments**. If your instructor has reviewed your work they may have left some comments. This is where you can see them.
+![4]
 
-> This is an awkward part of the EdEHR UI because it is not easy for a student to find these comments. Perhaps someday the EdEHR will provide a page for students to review all their past activities and this page could show the instructor's comments.
+
 
 **Course** This is the name of the course from your LMS.
 
@@ -36,22 +67,9 @@ You have a private scratch pad for taking notes as you work. The text you see he
 
 This is a link that takes you back to your LMS.  (It uses a URL that your LMS gave to the EdEHR when you clicked the link in your LMS.)
 
-## Top banner bar
-
-The top banner includes the EHR page name, simulation time, submit button or status and the student tools menu.  
-![2]
-
-It also has the EHR important information section. You can expand this section to see more.
-
-> This EHR information banner will someday show diagnosis and allergies. 
 
 
-## Submit
-
-When you have completed the work assigned to you then press the 'Submit' button. This will allow your instructor to view and evaluate your work.  When your work is "submitted" then you can no longer make changes to the EHR content.
-
-Your instructor may also close off the activity for any further work for you or for the whole class.
-
-[1]: ../images/student-tools.png "Student tools"
-[2]: ../images/student-top-banner.png "Student top banner"
-[3]: ../images/student-activity-dialog.png "Activity dialog"
+[1]: ../images/student-main-ehr-page.png "Main page"
+[2]: ../images/student-application-banner.png "Student top banner"
+[3]: ../images/student-tools.png "Student tools menu"
+[4]: ../images/student-activity-dialog.png "Activity dialog"

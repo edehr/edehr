@@ -1,29 +1,92 @@
 # Instructors and the class list
 
-## Workflow
+This section of the documentation is meant for healthcare educators who conduct classes and simulations with students. This section describes how an instructor can view an EdEHR activity and review their student's work.  
 
-When a student first clicks on the activity link, in their LMS, they will see the linked base case study in the EHR. At this moment the student is added to the EdEHR Activity's class list.  The student can work in the EHR, leave and return via the link in the LMS, and eventually "submit" their work.  Once their work is marked as "submitted" the student can no longer modify their EHR work. 
+> Effective health record documentation is much more than just *entering data*. First there is the need to learn about critical decision-making based on the evidence. Evidence which comes directly from the patient but also from the electronic health records. These records can be complex and lengthy.  As well, healthcare students need to develop communication skills that support the care team who is helping the patient. Developing these skills requires guidance from faculty and practice on the part of the student. Practice within the safety of the simulation setting.
 
-Any instructor who has access to the LMS activity can also click the LMS activity link. The first time they do this the EdEHR will add them to the list of instructors who can see the Activity's class list.  
+## Terminology
 
-Instructors can "un-submit" or "unlock" any student's work so that the student can redo or resume their work in the EHR. And instructors can unlock or lock the entire class list.
+**Learning Management System (LMS)**
+: Any healthcare educational institution that uses a learning management system to deliver course content and manage teacher/learner interactions can use the EdEHR.  Sample LMS systems include Brightspace, Blackboard, Canvas, D2L, Moodle and more.
+
+
+**LMS Activity**
+: A learning management system course contains many links to activities; which may include quizzes, readings, videos, or connections to the EdEhr
+
+**EdEHR Activity**
+: Any LMS Activity link that connects to the EdEHR will connect to a single EdEHR Activity. This contains the student class list and connects to a single EdEHR Learning Object.  The EdEHR Activity is automatically created the first time an LMS user clicks on an LMS Activity that uses the EdEHR.  After that every LMS user who clicks on that link sees the same EdEHR Activity.
+
+**EdEHR Learning Object**
+: Each activity needs to have a set of learning objectives.  The EdEHR Learning Object is a reusable component of the EdEHR that is created by your school's course content creation team. They will set up the Learning Object to contain a description of the learning objectives, and a link to an EdEHR Case Study.  They will also establish the link between the EdEHR Activity and the EdEHR Learning Object. (See the Course designer guide.)
+
+**EdEHR Case Study**
+: Any number of EdEHR Learning Objects may wish to use the same simulated patient data.  This is why the EHR data is placed in another reusable component called the EdEHR Case Study. Think of this as a snapshot of a EHR database, focused on a particular patient at a particular point of time in their hospital stay.
+
+
+## Class lists and students
+
+> Prerequisites. The following assumes that your LMS admin and course content creation teams have set up your course with EdEHR activities and they have made the first connection to the EdEHR.  See more in the LMS Admin and Course designer guides.
+
+All users access the EdEHR from their learning management system (LMS).  The LMS provides the authentication and authorization, which means, the LMS says whether a user is a student or instructor.  When student users access the EdEHR they are added into the class list for the EdEHR Activity.  Instructor users can see this class list as well as they can view the EdEHR Learning Object and Case Study.  
+
+Student users only see the EHR pages that will display the snapshot of the EHR database, called the Case Study. The student can work in the EHR, leave and return via the link in the LMS, and eventually "submit" their work.  Once they submit their work they can no longer make changes. The instructor can now see what the student has done. 
+
+> See the Student and Electronic Health Record sections for more information about the EHR pages and their use.
+
+## Instructor's activity page
+
+When instructors access the EdEHR they start on the EdEHR Activity page
+![3]
+
+This page has three main sections: the application banner, the navigation section on the left and the main content. 
+
+The application banner has a link to this page of the documentation.  It also has a ```Activity``` link that links to the main EdEHR Activity page. 
+The third item in the banner is a menu button that contains the same items as appear in the navigation section.
+
+The navigation section is describe in another part of this documentation.  See [Instructor tool guide](../instructor-tools) 
+
+The main content displays the name and description that comes from the LMS Activity.  The content also has links to the LMS Learning Object and Case Study.  The content also links to the class list.
 
 ## Evaluating assignments
 
-Only when a student's work is "submitted" / "locked"  can an instructors review and comment on the student's work. 
+Instructors can assess the class list via the Activity page.
+![4]
 
-A student's work can be evaluated by selecting either of the ![2] buttons. The 'Evaluate' button will show the student's work in the condensed view, without any base case data. The 'Eval in EHR' button will show the student's work in the EHR with base case data. There will be a green dot on the left side navigation panel for each page that has student data.
+Only when a student's work is "submitted" can an instructor review and comment on the student's work. Students normally submit their work but instructors can toggle the submission status on a per student or whole classlist basis. The status of all students can be set with the "All students can edit" and "Force all submissions" buttons.  Instructors can toggle the status for a particular student with the "Force submission" and "Send back" buttons.
+![5]
 
-A persistent evaluation panel is located at the top of the page. It has a notes section plus the ability to save edits to the notes, progress forward or backward in the class list, select to view the student's work in the EHR or condensed view. 
+A student's work can be evaluated by selecting either of the ![2] buttons. The 'Evaluate' button will show the student's work in the condensed view, without any base case data. The 'Eval in EHR' button will show the student's work in the EHR with base case data.
+
+In both views the instructor can see a persistent evaluation panel. It has a notes section plus the ability to save edits to the notes, and to progress forward or backward in the class list.
+![7]
+This panel also lets the instructor force the submission state with ```Force submission``` or let the student continue their work with the ```Send back``` button.  There is also a button to switch between the two evaluation modes: ```Eval in EHR``` or ```Evaluate```. 
+
+
+### Evaluation in the EHR
+While evaluating the student work in the EHR the instructor sees both the student's work and the base case study.  Look at the navigation panel. When a page has data that the student enter you will see a solid green dot. If the green circle is empty then that page has data from the Case Study. If the dot is red then the page has a [draft](/ehr/#draft-reports-and-verifying-correctness) record. This normally means the student started to document some assessment and did not verify the report was complete and correct.  
+![6]
+
+
+### Evaluation in condensed view
+
+The condensed view shows just the work submitted by the student.  The pages with tables also shows a button that you can use to toggle the table orientation to/from horizontal/vertical.  Again if the student started an assessment and did not verify it then the [draft](/ehr/#draft-reports-and-verifying-correctness) record will appear with an amber colour. 
+![8]
 
 ## Importing evaluation notes into the LMS
 
 > This process is awkward yet doable on a small scale. Ideally, EdEHR will someday be LTI 1.3 compliant and will be able to push evaluation information into the LMS without the following workaround.
 
+From the Activity page select the link to the class list. Then select the ```Download evaluation notes``` to download a CSV file, named after the Activity, containing the class list with evaluation notes. This file includes: givenName, familyName, lms_user_id, and instructor's evaluation notes.
+![1]
 
-From the Activity page select the link to the class list. Then select ![1] to download a CSV file, named after the Activity, containing the class list with evaluation notes. This file includes: givenName, familyName, lms_user_id, feedback: *Activity name*
 
 Check you LMS manual for instructions on importing this CSV file into the grade book.
 
 [1]: ../images/download-evaluation-button.png "Download evaluation notes"
 [2]: ../images/evaluation-buttons.png "Evaluation buttons"
+[3]: ../images/instructor-activity.png "Instructor activity page"
+[4]: ../images/instructor-classlist.png "Class list"
+[5]: ../images/instructor-sumit-all.png "Submit all"
+[6]: ../images/instructor-ehr-nav.png "EHR Navigation"
+[7]: ../images/instructor-evaluation-panel.png "Evaluation panel"
+[8]: ../images/instructor-condensed.png "Condensed view"

@@ -1,24 +1,32 @@
-# Instructor tools - Components of the EdEHR
+# Instructor tools and navigation
 
-The menu in the top right banner provides the instructor user with access to EdEHR pages and settings.  One of the most important items in this menu is the one that lets you, as an instructor, self elevate your role to be a content creator.  When you are a content creator you will see many more actions, and you will be able to both create and manage both Learning Objects and Case Studies.
-   
+Instructors and course content creators can navigate the learning management side of the EdEHR with either the sidebar navigation or the application banner's menu button.  Both present the same options
+
+![2]
+
 ![1]
 
-## Courses
+## Course designer mode
 
-The Courses page lists all the courses you have accessed via a link in your LMS. Each instructor sees only the courses they have accessed via the LMS.  Under each Course is a list of Activities for that course. 
+Instructors can self promote themselves to the role of "content creator".  With this role, users can create and manage Learning Objects and Case Studies. When you are a content creator you will see many more actions on the Learning Objects and Case Studies pages. To become a content creator check the ```Course designer mode``` checkbox either in the sidebar navigation or in the application banner's menu.
+
+![4]
+
+## My activities
+
+The ```My activities``` link takes you to a page that lists all the courses and activities you have access too. Note that, you only have access to an activity if you have previously clicked on the activity in your LMS.  Having access to activities means you have access to the activity's class list and the student's work.  On the ```My activies``` page you can select any activity which means you do not need to return to the LMS to select a different activity.
 
 ## Activity
 
-The Activity page presents the information that came from the LMS; the activity link text and description. This page is where you can access the class list and the learning object.
+The ```Activity``` page shows information about the activity you have selected (either via a link in your LMS or via the ```My activities``` page).  This page shows the activity name and description which is the information provided by the LMS. This activity page is where you can access the class list, the learning object, and the case study linked by the learning object. For more about this page see the [Instructor guide](../instructor/README.md)
 
-## Learning Objects
+## Learning objects
 
-Learning Objects presents a case study and one or more learning objectives.  Learning Objects can be reused by many Activities, especially across semesters.   
+The ```Learning objects``` link takes you to the Learning Objects page. Here you can see every learning object in the instance of EdEHR.  For more about this page see [Learning objects](./learning-objects.md) 
 
-## Case Studies
+## Case studies
 
-A Case Study is the electronic chart data that represents a point in time during a simulated patient stay in a hospital. 
+The ```Case studies``` link takes you to the Case Studies page. Instructors can see all the case studies in the EdEHR instance. For more about this page see [Case studies](./case-studies.md)
 
 ## Files
 
@@ -32,12 +40,10 @@ This page provides information about your LMS as seen by the EdEHR.
 
 This menu item takes you, the user, back to your LMS.
 
-## Course designer mode
-
-Instructors can self promote their role to "content creator".  With this role, users can create and manage Learning Objects and Case Studies.
-
 ## Hide button labels
 
-This menu item toggles the display of labels in the buttons. With text hidden the display is more compact and most useful on smaller displays.
+This checkbox item toggles the display of labels in the buttons. With text hidden the display is more compact and more useful on smaller displays.
 
 [1]: ../images/instructor-tools.png "Instructor tools"
+[2]: ../images/instructor-navigation.png "Instructor navigation"
+[4]: ../images/instructor-cc-checkbox.png
