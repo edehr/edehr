@@ -20,12 +20,12 @@ export default {
     linkText () {
       let text = 'Documentation'
       if (this.isStudent) {
-        text = 'Student\'s Guide'
+        text = 'Students guide'
       }
       if (this.isDevelopingContent) {
-        text = 'Creator\'s Guide'
+        text = 'Creators guide'
       } else if (this.isInstructor) {
-        text = 'Instructor\'s Guide'
+        text = 'Instructors guide'
       }
       return text
     },

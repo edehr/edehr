@@ -74,12 +74,12 @@ $key: 5rem;
   }
 }
 .kv div:nth-child(1) {
-  background: $grey20;
+  //background: $grey20;
   text-align: right;
   padding-right: 5px;
 }
 .kv div:nth-child(2) {
-  background: $grey20;
+  //background: $grey20;
   padding-left: 5px;
   font-weight: bold;
   word-wrap: anywhere;
