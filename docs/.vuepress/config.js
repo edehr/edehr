@@ -74,7 +74,6 @@ module.exports = {
       //     '/developer/devop/',
       //     '/developer/devop/technical-architecture.md',
       //     '/developer/devop/deploy.md',
-      //     '/developer/inside/',
       //     '/developer/inside-generator/',
       //     '/developer/inside-generator/ehr-defs-pages.md',
       //     '/developer/inside-generator/ehr-defs-keys.md',

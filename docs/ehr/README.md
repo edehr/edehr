@@ -61,7 +61,7 @@ near the top of the page. Press this and start to edit.
 
 At the bottom right side of the page there is a ````Reset form data```` button.  This resets the form to either
 1. The base case data if you are a student working on an activity or
-2. The default values for the form (mostly empty)
+2. The default values for the form (mostly empty) if you are a lead instructor and are working on the case study.
 
 
 
