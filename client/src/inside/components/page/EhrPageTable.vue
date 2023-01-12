@@ -8,7 +8,7 @@
       ehr-table-stacked(v-if="isStacked", :ehrHelp="ehrHelp", :tableDef="tableDef", :cTableForm='cTableForm', :cTableData='cTableData', :rowTemplate='rowTemplate')
     ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDef", :errorList="errorList" )
     div(v-if="hasData", style="text-align: right;") <!-- put the clear button on the far right side -->
-      ui-button(class="reset-button",v-on:buttonClicked="clearAllData",
+      ui-button(class="reset-button", v-on:buttonClicked="clearAllData",
         :title="resetToolTip",
         v-bind:secondary="true") Reset
     ui-confirm(ref="confirmDialog", v-on:confirm="proceedClearAllData", saveLabel='Yes')
@@ -21,7 +21,7 @@ import EhrTableStacked from './EhrTableStacked'
 import EhrTableVertical from './EhrTableVertical'
 import UiButton from '@/app/ui/UiButton.vue'
 import UiConfirm from '@/app/ui/UiConfirm'
-import EventBus, { EDIT_DRAFT_ROW_EVENT, PAGE_DATA_REFRESH_EVENT, VIEW_REPORT_EVENT } from '@/helpers/event-bus'
+import EventBus, { EDIT_DRAFT_ROW_EVENT, VIEW_REPORT_EVENT } from '@/helpers/event-bus'
 import MarHelper from '../mar/mar-helper'
 import EhrDefs from '@/helpers/ehr-defs-grid'
 import EhrTypes from '@/ehr-definitions/ehr-types'
@@ -144,15 +144,9 @@ export default {
       const helper = new MarHelper(this.ehrHelp)
       helper.triggerActionByPageKey()
     },
-    refresh () {
-      let tableForm = this.ehrHelp.getTable(this.tableKey)
-    }
   },
   mounted: function () {
     const _this = this
-    this.refreshEventHandler = function () {
-      _this.refresh()
-    }
     this.viewReportEventHandler = function (pageKey, tableKey, rowIndex) {
       _this.ehrHelp.showReport(pageKey, tableKey, rowIndex)
     }
@@ -160,20 +154,15 @@ export default {
       _this.ehrHelp.editDraftRow(pageKey, tableKey, rowIndex)
     }
     EventBus.$on(VIEW_REPORT_EVENT, this.viewReportEventHandler)
-    EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
     EventBus.$on(EDIT_DRAFT_ROW_EVENT, this.editDraftRowHandler)
   },
   beforeDestroy: function () {
     if (this.editDraftRowHandler) {
       EventBus.$off(EDIT_DRAFT_ROW_EVENT, this.editDraftRowHandler)
     }
-    if (this.refreshEventHandler) {
-      EventBus.$off(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
-    }
     if (this.viewReportEventHandler) {
       EventBus.$off(VIEW_REPORT_EVENT, this.viewReportEventHandler)
     }
-
   }
 }
 </script>

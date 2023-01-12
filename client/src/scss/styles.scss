@@ -44,8 +44,8 @@ Import styles
 @import '../scss/styles/buttons';
 @import '../scss/styles/sections';
 @import '../scss/styles/outside';
-//@import '@bryan-gilbert/typeahead-standalone/dist/basic.css';
-@import 'typeahead-standalone/dist/basic.css';
+@import '@bryan-gilbert/typeahead-standalone/dist/basic.css';
+
 * {
   box-sizing: border-box;
 }

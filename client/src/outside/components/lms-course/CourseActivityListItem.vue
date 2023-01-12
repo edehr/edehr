@@ -49,7 +49,6 @@
 
 <script>
 import { APP_ICONS } from '@/helpers/app-icons'
-import StoreHelper from '@/helpers/store-helper'
 import UiLink from '@/app/ui/UiLink'
 import { Text } from '@/helpers/ehr-text'
 export default {

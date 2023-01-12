@@ -43,7 +43,7 @@ export default {
       const NEW_INFO = 'circle green-circle'
       const SEED_INFO = 'circle empty-circle'
       const NEW_DRAFT = 'circle draft-circle'
-      const SEED_DRAFT = 'circle empty-draft-circle'
+      // const SEED_DRAFT = 'circle empty-draft-circle'
       const NONE = ''
       let isSeedEditing = StoreHelper.isSeedEditing()
       let hd = this.pageInfo

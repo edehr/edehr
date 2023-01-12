@@ -12,8 +12,7 @@
       )
 </template>
 <script>
-// import typeahead from '@bryan-gilbert/typeahead-standalone'
-import typeahead from 'typeahead-standalone'
+import typeahead from '@bryan-gilbert/typeahead-standalone'
 
 export default {
   props: {
