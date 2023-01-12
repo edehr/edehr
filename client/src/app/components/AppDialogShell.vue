@@ -36,6 +36,7 @@
 <script>
 import UiClose from '../ui/UiClose'
 import UiButton from '../ui/UiButton'
+
 export default {
   name: 'AppDialog',
   components: {
@@ -105,7 +106,7 @@ export default {
     },
     onOpen () {
       if (this.isModal) {
-        // console.log('FREEZEEEEEEE')
+        // add is-modal class to body to prevent the background from scrolling.  See .is-modal css in main styles.css
         document.body.className += ' is-modal'
       }
       // wait a tick and then reset size. This accounts for the rendering engine to completely populate the dialog
@@ -119,8 +120,7 @@ export default {
       this.showingDialog = false
       if (this.isModal) {
         // console.log('UN -- FREEZEEEEEEE')
-        const replacedClass = document.body.className.replace(' is-modal', '')
-        document.body.className = replacedClass
+        document.body.className = document.body.className.replace(' is-modal', '')
       }
     },
     reset () {
@@ -277,18 +277,4 @@ export default {
   transform: scale(1.1);
 }
 
-/*
-  This is needed in order to fix potential conflicts which may occur
-    when setting the parent element's position to fixed in child components
-    that have display: flex set. It has been set in a separated style tag
-    so that this style is accessible to the body's scope
-*/
-.is-modal {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-  width: 100%
-}
 </style>
