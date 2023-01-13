@@ -348,27 +348,6 @@ export default class EhrPageHelper {
       return StoreHelper.sendSeedEhrDataDraft(payload)
     }
   }
-  // async _saveData (payload) {
-  //   let ehrOnly = EhrOnlyDemo.isActiveEhrOnlyDemo()
-  //   let isStudent = this._isStudent()
-  //   let isSeedEditing = StoreHelper.isSeedEditing()
-  //   if (isStudent) {
-  //     if (dbDialog) console.log('saving assignment data', payload)
-  //     payload.propertyName = payload.pageKey
-  //     payload.value = prepareAssignmentPageDataForSave(payload.value)
-  //     await StoreHelper.sendAssignmentDataUpdate(payload)
-  //   } else if (isSeedEditing) {
-  //     if (dbDialog) console.log('saving seed ehr data', payload.pageKey, JSON.stringify(payload.value))
-  //     await StoreHelper.updateSeedEhrProperty(payload.pageKey, payload.value)
-  //     await this._loadPageData()
-  //   } else if (ehrOnly) {
-  //     payload.value = prepareAssignmentPageDataForSave(payload.value)
-  //     await EhrOnlyDemo.saveEhrOnlyUserData(payload.pageKey, payload.value)
-  //   } else {
-  //     return Promise.reject(Text.FUNCTION_OUT_OF_CONTEXT('_saveData'))
-  //   }
-  //   EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
-  // }
   _saveData (pageKey, dataToSave) {
     if (this._isStudent()) {
       let payload = {
@@ -453,14 +432,20 @@ export default class EhrPageHelper {
   _dialogEvent (tableKey, open, options) {
     if (dbDialog) console.log('EhrHelpV2 dialog event', tableKey, open, JSON.stringify(options))
     let dialog = this.tableFormMap[tableKey]
-    let hasRecHeader = dialog.tableDef.hasRecHeader
-    // whichever way we are going mark the dialog as closed so that the clearDialogInputs doesn't
-    // trigger FORM_INPUT_EVENT as each input is cleared
-    dialog.active = false
-    this._clearDialogInputs(dialog)
-    // now set the open/close state flag....
-    dialog.active = open
     dialog.viewOnly = options.viewOnly
+    let hasRecHeader = dialog.tableDef.hasRecHeader
+    /*
+    See EhrElementCommon.dialogEvent. See the setInitialValue call.  Normally, all changes to
+    a dialog input triggers a FORM_INPUT_EVENT which now also triggers a save to draft. But only
+    if the dialog is open.
+    Because we need to reset the dialog and load any previous values we must delay setting the
+    open flag until after initializing the dialog inputs so that we do not trigger the
+    FORM_INPUT_EVENT.
+    Set the dialog "open" flag to false for the initialization step.
+     */
+    dialog.active = false
+    dialog.errorList = []
+    this._clearDialogInputs(dialog)
     if(open && hasRecHeader) {
       // push in the current sim day/time
       const { visitDay, visitTime } = StoreHelper.getMergedData().meta.simTime
@@ -472,6 +457,8 @@ export default class EhrPageHelper {
       // may override the sim day/time here if previously set to something else
       dialog.inputs = { ...options.data }
     }
+    // NOW set the open/close state flag based on what is happening
+    dialog.active = open
     // End by sending out the "i'm opened/closed event"
     let eData = { key: tableKey, value: open, options: options }
     let channel = this.getDialogEventChannel(tableKey)

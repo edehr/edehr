@@ -128,21 +128,27 @@ export default {
       }
     },
     receiveInputChangeEvent (eData) {
-      const VALIDATION_TIMEOUT = 500
-      const SAVE_DRAFT_TIMEOUT = 5000
       if (!this.isViewOnly) {
-        // some pages have more than one table, each with a dialog. only respond to events for the right table
+        // some pages have more than one table, each with a dialog. Only respond to events for the right table
         if (eData.tableKey === this.tableKey) {
+
+          // Delay validation until input stream goes quiet for the timeout period
+          const VALIDATION_TIMEOUT = 500
           if (this.validationTimeoutId) {
             clearTimeout(this.validationTimeoutId)
           }
           this.validationTimeoutId = setTimeout(() => {
             this.errorList = this.ehrHelp.validateDialog() || []
           }, VALIDATION_TIMEOUT)
-          this.clearDraftTimeout()
-          this.saveDraftTimeoutId = setTimeout(() => {
-            this.ehrHelp.saveDialogDraft()
-          }, SAVE_DRAFT_TIMEOUT)
+
+          // Any input change sets up a draft save after timeout. Don't wait for quiet time.
+          const SAVE_DRAFT_TIMEOUT = 3000
+          if ( !this.saveDraftTimeoutId ) { // IF a save is pending then done else set up a delayed save
+            this.saveDraftTimeoutId = setTimeout(() => {
+              this.ehrHelp.saveDialogDraft()
+              this.saveDraftTimeoutId = undefined // reset so another save can be queued up
+            }, SAVE_DRAFT_TIMEOUT)
+          }
         }
       }
     },
