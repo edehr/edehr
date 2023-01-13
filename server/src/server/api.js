@@ -105,9 +105,9 @@ export function apiMiddle (app, config) {
   demo.setSharedControllers(lcc)
   act.setSharedControllers(lcc)
 
-  const justCors = [
-    cors(corsOptions)
-  ]
+  // const justCors = [
+  //   cors(corsOptions)
+  // ]
   const allCors = [
     cors()
   ]

@@ -6,7 +6,6 @@ import Activity from '../activity/activity'
 import { NotAllowedError, ParameterError } from '../common/errors'
 import { Text } from '../../config/text'
 import { logError } from '../../helpers/log-error'
-import SeedDataController from '../seed/seedData-controller'
 import SeedData from '../seed/seed-data'
 const ObjectID = require('mongodb').ObjectId
 const debug = require('debug')('server')

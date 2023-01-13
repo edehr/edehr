@@ -1,6 +1,7 @@
 import { convertTimeStr, convertTimeStrToMilTime, updateAllVisitTime, updateEhrDataMeta } from './ehr-def-utils'
 import { EhrPages } from './ehr-models'
 import EhrDefs from './ehr-page-defs'
+
 const EhrDataModel = require('../ehr-definitions/EhrDataModel')
 
 const should = require('should')
@@ -128,8 +129,7 @@ describe( 'utils work', () => {
   })
   it ('update visit times', () => {
     const pageDefs = EhrDefs
-    const eData = ehrData
-    const model = new EhrDataModel(eData)
+    const model = new EhrDataModel(ehrData)
     const pages = new EhrPages(pageDefs)
     const pageList = pages.pageList
     pageList.forEach(page => {
@@ -165,7 +165,7 @@ describe( 'utils work', () => {
     fData.should.equal('0600')
   })
   it ('update visit times with util', () => {
-    const pageDefs = EhrDefs
+    // const pageDefs = EhrDefs
     let eData = ehrData
     eData = updateAllVisitTime(eData)
     const model = new EhrDataModel(eData)
