@@ -55,13 +55,12 @@
       ehr-page-form-label(:element="element", css="text_input_wrapper")
       div(v-if="viewOnly") {{ inputVal }}
       div(v-if="!viewOnly")
-        div
-          ehr-element-medication(
-            :domId="_id",
-            :disabled="disabled",
-            @selected="(selected) => inputVal = selected",
-            :inputVal="inputVal"
-          )
+        ehr-element-medication(
+          :domId="_id",
+          :disabled="disabled",
+          @selected="(selected) => inputVal = selected",
+          :inputVal="inputVal"
+        )
 
     div(v-else-if="isType('mainDOB')")
       ehr-element-birth-date(:elementKey="elementKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
@@ -77,25 +76,23 @@
       ehr-page-form-label(:element="element", css="text_input_wrapper")
       div(v-if="viewOnly") {{ inputVal }}
       div(v-if="!viewOnly")
-        div
-          ehr-element-practitioner(
-            :domId="_id",
-            :disabled="disabled",
-            @selected="(selected) => inputVal = selected",
-            :inputVal="inputVal"
-          )
+        ehr-element-practitioner(
+          :domId="_id",
+          :disabled="disabled",
+          @selected="(selected) => inputVal = selected",
+          :inputVal="inputVal"
+        )
 
     div(v-else-if="isType('practitionerProfession')", class="text_input_wrapper")
       ehr-page-form-label(:element="element", css="text_input_wrapper")
       div(v-if="viewOnly") {{ inputVal }}
       div(v-if="!viewOnly")
-        div
-          ehr-element-profession(
-            :domId="_id",
-            :disabled="disabled",
-            @selected="(selected) => inputVal = selected",
-            :inputVal="inputVal"
-          )
+        ehr-element-profession(
+          :domId="_id",
+          :disabled="disabled",
+          @selected="(selected) => inputVal = selected",
+          :inputVal="inputVal"
+        )
 
     div(v-else-if="isType('select')", class="select_wrapper")
       ehr-page-form-label(:element="element", css="select_label")
@@ -118,10 +115,22 @@
       ehr-page-form-label(:element="element", css="textarea_label")
       textarea(class="ehr-page-form-textarea", :disabled="disabled || viewOnly", :name="elementKey", v-model="inputVal")
 
-    div(v-else-if="isType(dataTypes.visitDay) || isType(dataTypes.visitTime)" )
-      ehr-element-sim-time(:element="element", :elementKey="elementKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
+    div(v-else-if="isType(dataTypes.visitDay) || isType(dataTypes.visitTime)", class="select_wrapper")
+      ehr-page-form-label(:element="element", css="select_label")
+      div(v-if="viewOnly") {{ inputVal }}
+      div(v-if="!viewOnly")
+        ehr-element-sim-time(
+          :disabled="disabled",
+          :domId="_id",
+          :element="element",
+          :initalVal="initialVal"
+          :inputVal="inputVal",
+          @update="(value) => inputVal = value",
+        )
 
     div(v-else) ELSE: {{inputType}} {{label}}
+
+    //div eef inputVal {{inputVal}}
 
 </template>
 

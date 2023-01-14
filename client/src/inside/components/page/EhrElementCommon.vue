@@ -22,6 +22,7 @@ export default {
   data: function () {
     return {
       dialogIsOpen: false,
+      initialVal: '',
       inputVal: '',
       suffix: '',
       options: '',
@@ -92,6 +93,7 @@ export default {
     },
     setInitialValue (value) {
       if (dbInputs) console.log('EhrCommon set initial value ', value, this.elementKey)
+      this.initialVal = value
       this.inputVal = value
       // invoke setInitialDependentValue after inputVal is set
       this.setInitialDependentValue()
@@ -153,7 +155,7 @@ export default {
             let initialValue = inputs[this.elementKey]
             this.setInitialValue(initialValue)
           } else {
-            console.log('inputs TODO fix no inputs here ', options, this.elementKey)
+            // console.log('inputs TODO fix no inputs here ', options, this.elementKey)
           }
         } else {
           let inputs = this.ehrHelp.getDialogInputs(this.tableKey)
@@ -165,7 +167,10 @@ export default {
               console.log('what happens if we skip sending input event on embedded ')
             } else {
               const refValue = this.element.embedRef + '.' + options.tableActionRowIndex
-              // console.log('dialogEvent SET embedded value', this.$options.name, initialValue, refValue)
+              // console.log('dialogEvent SET embedded', this.$options.name)
+              // console.log('dialogEvent SET options', options)
+              // console.log('dialogEvent SET embedded initialValue', initialValue)
+              // console.log('dialogEvent SET embedded refValue', refValue)
               // store this value into the active inputs area to be saved along with other data, if the dialog save is invoked.
               this.sendInputEvent(refValue)
               // the element receiving this event may not be a EhrElementEmbedded
