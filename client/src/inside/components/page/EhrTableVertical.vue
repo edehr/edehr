@@ -12,7 +12,7 @@
               ui-button(v-if="!cell.isDraft && colIndex === 0", v-on:buttonClicked="viewReport(pageDataKey, tableKey, index)")
                 span View &nbsp;
                 fas-icon(icon="file-pdf")
-              ui-button(v-if="tableDef.tableAction && colIndex === 0", v-on:buttonClicked="tableAction(tableDef,index)")
+              ui-button(v-if="!cell.isDraft && tableDef.tableAction && colIndex === 0", v-on:buttonClicked="tableAction(tableDef,index)")
                 span {{ tableDef.tableActionLabel }} &nbsp;
                 fas-icon(icon="notes-medical")
               ui-button(v-if="cell.isDraft && colIndex === 0", v-on:buttonClicked="editDraft(pageDataKey, tableKey, index)")

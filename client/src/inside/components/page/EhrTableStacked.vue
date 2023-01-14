@@ -13,9 +13,10 @@
         tbody
           tr(v-for="(dRow, rIndex) in cTableData", :key='rIndex', :class='{draftRow : isDraft(dRow) }')
             td(v-if="tableDef.tableAction")
-              ui-button(v-on:buttonClicked="tableAction(tableDef,rIndex)")
-                span {{ tableDef.tableActionLabel }} &nbsp;
-                fas-icon(icon="notes-medical")
+              div(v-if="!isDraft(dRow)")
+                ui-button(v-on:buttonClicked="tableAction(tableDef,rIndex)")
+                  span {{ tableDef.tableActionLabel }} &nbsp;
+                  fas-icon(icon="notes-medical")
             td
               ui-button(v-if="!isDraft(dRow)", v-on:buttonClicked="viewReport(pageDataKey, tableKey, rIndex)")
                 span View &nbsp;
