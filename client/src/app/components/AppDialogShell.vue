@@ -107,6 +107,7 @@ export default {
     onOpen () {
       if (this.isModal) {
         // add is-modal class to body to prevent the background from scrolling.  See .is-modal css in main styles.css
+        // console.log('FREEZEEEEEEE')
         document.body.className += ' is-modal'
       }
       // wait a tick and then reset size. This accounts for the rendering engine to completely populate the dialog
@@ -118,10 +119,11 @@ export default {
     },
     onClose () {
       this.showingDialog = false
-      if (this.isModal) {
-        // console.log('UN -- FREEZEEEEEEE')
-        document.body.className = document.body.className.replace(' is-modal', '')
-      }
+      // if (this.isModal) {
+      // console.log('UN -- FREEZEEEEEEE')
+      // to be safer than sorry just remove modals on close and remove all too
+      document.body.className = document.body.className.replaceAll(' is-modal', '')
+      // }
     },
     reset () {
       // Set the top/left position based on window and dialog dimensions

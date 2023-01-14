@@ -46,11 +46,13 @@ export default {
         // console.log('vth display cb: ', item)
         return item.label ? item.label : item
       }
+      const input = document.getElementById(this.domId)
+      // console.log('VueTA dom input', input)
       const config = {
         className: 'ehr-typeahead',
         display: displayCb,
         highlight: true,
-        input: document.getElementById(this.domId),
+        input: input,
         limit: 100, // 100 happens to be the number of medications the lookahead-controller provides
         onSubmit (evt, suggestion) {
           if (suggestion) {

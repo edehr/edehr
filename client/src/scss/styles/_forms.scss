@@ -31,7 +31,9 @@ textarea {
   display: inline-block;
 }
 .form_label {
-  width: 8rem;
+  min-width: 7rem;
+  text-align: right;
+  padding-right: 5px;
   &::after {
     content: ":"
   }

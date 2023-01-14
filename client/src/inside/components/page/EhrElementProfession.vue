@@ -1,7 +1,7 @@
 <template lang="pug">
   vue-typeahead(
     :disabled="combinedDisabled",
-    domId="profession-lookahead",
+    :domId="_id",
     :placeholder="ehrText.professionPlaceholder",
     :source='profSource'
     :value="inputVal",
@@ -18,6 +18,7 @@ import { ehrText } from '@/appText'
 export default {
   components: { VueTypeahead },
   props: {
+    domId: { type: String },
     inputVal: { type: String },
     disabled: { type: Boolean }
   },
@@ -47,8 +48,9 @@ export default {
     },
   },
   methods: {
-    updateValue: function (data) {
-      this.$emit('selected', data)
+    updateValue: function (value) {
+      console.log('eeprof updateValue', value)
+      this.$emit('selected', value)
     },
     _dReceiveEvent (eData) {
       this.isFromProfession = eData.profession.length > 0

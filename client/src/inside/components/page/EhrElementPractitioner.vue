@@ -1,7 +1,7 @@
 <template lang="pug">
   vue-typeahead(
     :disabled="disabled",
-    domId="practitioner-lookahead",
+    :domId="_id",
     :placeholder="ehrText.practitionerPlaceholder",
     showOnFocus=true,
     :source='practSource'
@@ -24,6 +24,7 @@ export default {
     }
   },
   props: {
+    domId: { type: String },
     inputVal: { type: String },
     disabled: { type: Boolean }
   },
@@ -48,19 +49,24 @@ export default {
     },
   },
   methods: {
-    updateValue: function (value) {
-      // console.log('update value', value)
-      this.$emit('selected', value)
-    },
-  },
-  watch: {
-    inputVal: function (value) {
+    emitUpdatePractitioner (value) {
       const member = this.careTeam.find( e => e.name === value)
       const eData = {
         value: value,
         profession: member ? member.profession : ''
       }
       EventBus.$emit(PRACTITIONER, eData)
+    },
+    updateValue: function (value) {
+      console.log('eepract updateValue', value)
+      this.$emit('selected', value)
+      this.emitUpdatePractitioner(value)
+    },
+  },
+  watch: {
+    inputVal: function (value) {
+      console.log('eep watch inputVal', value)
+      this.emitUpdatePractitioner(value)
     }
   }
 }

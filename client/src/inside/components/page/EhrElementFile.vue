@@ -34,6 +34,7 @@ let db = false
 export default {
   components: { EhrFileLink, FileSelectDialog, UiAgree, UiButton },
   extends: EhrElementCommon,
+  // TODO pageDataKey is also injected by EhrElementCommon .. so remove the following and test
   inject: [ 'pageDataKey' ],
   props: {
   },

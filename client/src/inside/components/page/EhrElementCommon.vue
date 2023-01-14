@@ -37,6 +37,7 @@ export default {
     element () {
       return EhrDefs.getPageChildElement(this.pageDataKey, this.elementKey)
     },
+    _id () { return this.tableKey + '.' + this.element.fqn},
     inputId () {
       return this.elementKey + this.element.inputType
     },
@@ -243,6 +244,8 @@ export default {
   display: inline;
   label {
     width: auto;
+    text-align: left;
+    padding-right: 0;
   }
   label::after {
     content: "" !important;

@@ -76,9 +76,9 @@ export default {
         canSave = true
       } else {
         canSave = this.errorList.length === 0 && this.hasData
-        if (canSave && this.hasRecHeader) {
+        if (canSave && this.ehrHelp.activeTableDialogHasRecordHeader()) {
           const { name, profession, day, time } = this.ehrHelp.activeTableDialogRecordHeader()
-          canSave = name.length > 0 &&
+          canSave = name && name.length > 0 &&
             profession.length > 0 &&
             day.length > 0 &&
             time.length > 0

@@ -1,7 +1,7 @@
 <template lang="pug">
   vue-typeahead(
     :disabled="disabled",
-    domId="medication-lookahead",
+    :domId="domId",
     :placeholder="ehrText.medicationPlaceholder",
     :source='medSource'
     :value="inputVal",
@@ -22,6 +22,7 @@ export default {
     }
   },
   props: {
+    domId: { type: String },
     inputVal: { type: String },
     disabled: { type: Boolean }
   },

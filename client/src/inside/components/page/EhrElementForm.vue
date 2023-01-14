@@ -57,6 +57,7 @@
       div(v-if="!viewOnly")
         div
           ehr-element-medication(
+            :domId="_id",
             :disabled="disabled",
             @selected="(selected) => inputVal = selected",
             :inputVal="inputVal"
@@ -78,6 +79,7 @@
       div(v-if="!viewOnly")
         div
           ehr-element-practitioner(
+            :domId="_id",
             :disabled="disabled",
             @selected="(selected) => inputVal = selected",
             :inputVal="inputVal"
@@ -89,6 +91,7 @@
       div(v-if="!viewOnly")
         div
           ehr-element-profession(
+            :domId="_id",
             :disabled="disabled",
             @selected="(selected) => inputVal = selected",
             :inputVal="inputVal"
