@@ -68,48 +68,48 @@ high}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 normal
 high}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: spacer}	eCell	eCell	eCell	{elementKey: aSpacer}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: number}	eCell	{Label: HGB}	eCell	{elementKey: hgb}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 5}	eCell	eCell	eCell	eCell	eCell	{Suffix: g/L}	eCell	{Validation: numeric}	eCell	eCell	{helperText: Hemoglobin}	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Interpretation}	eCell	{elementKey: hgb-interp}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 6}	eCell	eCell	eCell	eCell	"{Options: low
+{inputType: number}	eCell	{Label: HGB}	eCell	{elementKey: hgb}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 6}	eCell	eCell	eCell	eCell	eCell	{Suffix: g/L}	eCell	{Validation: numeric}	eCell	eCell	{helperText: Hemoglobin}	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: Interpretation}	eCell	{elementKey: hgb-interp}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 7}	eCell	eCell	eCell	eCell	"{Options: low
 normal
 high}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: spacer}	eCell	eCell	eCell	{elementKey: aSpacer}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: number}	eCell	{Label: HCT}	eCell	{elementKey: HCT}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 6}	eCell	eCell	eCell	eCell	eCell	{Suffix: L/L}	eCell	{Validation: numeric}	eCell	eCell	{helperText: Hematocrit}	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Interpretation}	eCell	{elementKey: HCT-interp}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 7}	eCell	eCell	eCell	eCell	"{Options: low
+{inputType: number}	eCell	{Label: HCT}	eCell	{elementKey: HCT}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 8}	eCell	eCell	eCell	eCell	eCell	{Suffix: L/L}	eCell	{Validation: numeric}	eCell	eCell	{helperText: Hematocrit}	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: Interpretation}	eCell	{elementKey: HCT-interp}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 9}	eCell	eCell	eCell	eCell	"{Options: low
 normal
 high}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: spacer}	eCell	eCell	eCell	{elementKey: aSpacer}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: number}	eCell	{Label: MCV}	eCell	{elementKey: MCV}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 7}	eCell	eCell	eCell	eCell	eCell	{Suffix: fL}	eCell	{Validation: numeric}	eCell	eCell	{helperText: Mean Cell Volume}	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Interpretation}	eCell	{elementKey: MCV-interp}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 8}	eCell	eCell	eCell	eCell	"{Options: low
+{inputType: number}	eCell	{Label: MCV}	eCell	{elementKey: MCV}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 10}	eCell	eCell	eCell	eCell	eCell	{Suffix: fL}	eCell	{Validation: numeric}	eCell	eCell	{helperText: Mean Cell Volume}	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: Interpretation}	eCell	{elementKey: MCV-interp}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 11}	eCell	eCell	eCell	eCell	"{Options: low
 normal
 high}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: spacer}	eCell	eCell	eCell	{elementKey: aSpacer}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: number}	eCell	{Label: MCH}	eCell	{elementKey: MCH}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 8}	eCell	eCell	eCell	eCell	eCell	{Suffix: pg}	eCell	{Validation: numeric}	eCell	eCell	{helperText: Mean Cell Hemoglobin}	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Interpretation}	eCell	{elementKey: MCH-interp}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 9}	eCell	eCell	eCell	eCell	"{Options: low
+{inputType: number}	eCell	{Label: MCH}	eCell	{elementKey: MCH}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 12}	eCell	eCell	eCell	eCell	eCell	{Suffix: pg}	eCell	{Validation: numeric}	eCell	eCell	{helperText: Mean Cell Hemoglobin}	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: Interpretation}	eCell	{elementKey: MCH-interp}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 13}	eCell	eCell	eCell	eCell	"{Options: low
 normal
 high}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: spacer}	eCell	eCell	eCell	{elementKey: aSpacer}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: number}	eCell	{Label: MCHC}	eCell	{elementKey: MCHC}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 9}	eCell	eCell	eCell	eCell	eCell	{Suffix: g/L}	eCell	{Validation: numeric}	eCell	eCell	{helperText: Mean Cell Hemoglobin Concentration}	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Interpretation}	eCell	{elementKey: MCHC-interp}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 10}	eCell	eCell	eCell	eCell	"{Options: low
+{inputType: number}	eCell	{Label: MCHC}	eCell	{elementKey: MCHC}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 14}	eCell	eCell	eCell	eCell	eCell	{Suffix: g/L}	eCell	{Validation: numeric}	eCell	eCell	{helperText: Mean Cell Hemoglobin Concentration}	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: Interpretation}	eCell	{elementKey: MCHC-interp}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 15}	eCell	eCell	eCell	eCell	"{Options: low
 normal
 high}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: spacer}	eCell	eCell	eCell	{elementKey: aSpacer}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: number}	eCell	{Label: RDW}	eCell	{elementKey: RDW}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 10}	eCell	eCell	eCell	eCell	eCell	{Suffix: %}	eCell	{Validation: numeric}	eCell	eCell	{helperText: Red Cell Distribution Width CV}	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Interpretation}	eCell	{elementKey: RDW-interp}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 11}	eCell	eCell	eCell	eCell	"{Options: low
+{inputType: number}	eCell	{Label: RDW}	eCell	{elementKey: RDW}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 16}	eCell	eCell	eCell	eCell	eCell	{Suffix: %}	eCell	{Validation: numeric}	eCell	eCell	{helperText: Red Cell Distribution Width CV}	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: Interpretation}	eCell	{elementKey: RDW-interp}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 17}	eCell	eCell	eCell	eCell	"{Options: low
 normal
 high}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: spacer}	eCell	eCell	eCell	{elementKey: aSpacer}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: number}	eCell	{Label: PLT}	eCell	{elementKey: PLT}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 11}	eCell	eCell	eCell	eCell	eCell	{Suffix: 10^9/L}	{Mandatory: TRUE}	{Validation: numeric}	eCell	eCell	{helperText: Platelet Count}	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Interpretation}	eCell	{elementKey: PLT-interp}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 12}	eCell	eCell	eCell	eCell	"{Options: low
+{inputType: number}	eCell	{Label: PLT}	eCell	{elementKey: PLT}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 18}	eCell	eCell	eCell	eCell	eCell	{Suffix: 10^9/L}	{Mandatory: TRUE}	{Validation: numeric}	eCell	eCell	{helperText: Platelet Count}	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: Interpretation}	eCell	{elementKey: PLT-interp}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 19}	eCell	eCell	eCell	eCell	"{Options: low
 normal
 high}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: spacer}	eCell	eCell	eCell	{elementKey: aSpacer}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: number}	eCell	{Label: MPV}	eCell	{elementKey: MPV}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 12}	eCell	eCell	eCell	eCell	eCell	{Suffix: fL}	eCell	{Validation: numeric}	eCell	eCell	{helperText: Mean Platelet Volume}	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Interpretation}	eCell	{elementKey: MPV-interp}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 13}	eCell	eCell	eCell	eCell	"{Options: low
+{inputType: number}	eCell	{Label: MPV}	eCell	{elementKey: MPV}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 20}	eCell	eCell	eCell	eCell	eCell	{Suffix: fL}	eCell	{Validation: numeric}	eCell	eCell	{helperText: Mean Platelet Volume}	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: Interpretation}	eCell	{elementKey: MPV-interp}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 21}	eCell	eCell	eCell	eCell	"{Options: low
 normal
 high}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: spacer}	eCell	eCell	eCell	{elementKey: aSpacer}	{pN: 43}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: textarea}	eCell	{Label: CBC Comments}	eCell	{elementKey: comments}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	{formCss: grid-span-2-columns}	eCell	eCell	{tableColumn: 13}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: textarea}	eCell	{Label: CBC Comments}	eCell	{elementKey: comments}	{pN: 43}	{fN: 1}	{gN: 3}	{sgN: }	{formCss: grid-span-2-columns}	eCell	eCell	{tableColumn: 22}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: table_form}	eCell	{Label: PBF Review}	eCell	{elementKey: tablePbfReview}	{pN: 43}	{fN: 2}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	{addButtonText: NONE}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 43}	{fN: 2}	{gN: 1}	{sgN: }	{formCss: record-header}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: record_header}	eCell	eCell	eCell	eCell	{pN: 43}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
@@ -292,9 +292,9 @@ Toxic Vacuolation}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	
 Ring Form/Trophozoite
 Schizont}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 43}	{fN: 2}	{gN: 11}	{sgN: }	{formCss: grid-left-to-right-1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: textarea}	eCell	{Label: Internal RBC comments}	eCell	{elementKey: rbcComments}	{pN: 43}	{fN: 2}	{gN: 11}	{sgN: }	eCell	eCell	eCell	{tableColumn: 107}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: textarea}	eCell	{Label: Internal RBC comments}	eCell	{elementKey: rbcComments}	{pN: 43}	{fN: 2}	{gN: 11}	{sgN: }	eCell	eCell	eCell	{tableColumn: 108}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: spacer}	eCell	eCell	eCell	eCell	{pN: 43}	{fN: 2}	{gN: 11}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: spacer}	eCell	eCell	eCell	eCell	{pN: 43}	{fN: 2}	{gN: 11}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 43}	{fN: 2}	{gN: 12}	{sgN: }	{formCss: grid-left-to-right-1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkbox}	eCell	{Label: Referral to hematopathologist}	{Comments: yes/no}	{elementKey: referralToHema}	{pN: 43}	{fN: 2}	{gN: 12}	{sgN: }	eCell	eCell	eCell	{tableColumn: 108}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: textarea}	eCell	{Label: Reason for referral}	eCell	{elementKey: explain}	{pN: 43}	{fN: 2}	{gN: 12}	{sgN: }	eCell	eCell	eCell	{tableColumn: 109}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkbox}	eCell	{Label: Referral to hematopathologist}	{Comments: yes/no}	{elementKey: referralToHema}	{pN: 43}	{fN: 2}	{gN: 12}	{sgN: }	eCell	eCell	eCell	{tableColumn: 109}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: textarea}	eCell	{Label: Reason for referral}	eCell	{elementKey: explain}	{pN: 43}	{fN: 2}	{gN: 12}	{sgN: }	eCell	eCell	eCell	{tableColumn: 110}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell

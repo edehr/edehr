@@ -1,7 +1,7 @@
 <template lang="pug">
   vue-typeahead(
     :disabled="disabled",
-    :domId="_id",
+    :domId="domId",
     :placeholder="ehrText.practitionerPlaceholder",
     showOnFocus=true,
     :source='practSource'

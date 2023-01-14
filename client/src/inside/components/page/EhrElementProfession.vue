@@ -1,7 +1,7 @@
 <template lang="pug">
   vue-typeahead(
     :disabled="combinedDisabled",
-    :domId="_id",
+    :domId="domId",
     :placeholder="ehrText.professionPlaceholder",
     :source='profSource'
     :value="inputVal",

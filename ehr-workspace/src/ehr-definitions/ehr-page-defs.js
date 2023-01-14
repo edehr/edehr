@@ -16328,7 +16328,7 @@ const DEFS = {
         'inputType': 'number',
         'label': 'HGB',
         'suffix': 'g/L',
-        'tableColumn': '5',
+        'tableColumn': '6',
         'validation': 'numeric',
         'fqn': 'hematology.hgb',
         'helperHtml': '<p>Hemoglobin</p>'
@@ -16352,7 +16352,7 @@ const DEFS = {
             'text': 'high'
           }
         ],
-        'tableColumn': '6',
+        'tableColumn': '7',
         'fqn': 'hematology.hgb-interp'
       },
       {
@@ -16368,7 +16368,7 @@ const DEFS = {
         'inputType': 'number',
         'label': 'HCT',
         'suffix': 'L/L',
-        'tableColumn': '6',
+        'tableColumn': '8',
         'validation': 'numeric',
         'fqn': 'hematology.HCT',
         'helperHtml': '<p>Hematocrit</p>'
@@ -16392,7 +16392,7 @@ const DEFS = {
             'text': 'high'
           }
         ],
-        'tableColumn': '7',
+        'tableColumn': '9',
         'fqn': 'hematology.HCT-interp'
       },
       {
@@ -16408,7 +16408,7 @@ const DEFS = {
         'inputType': 'number',
         'label': 'MCV',
         'suffix': 'fL',
-        'tableColumn': '7',
+        'tableColumn': '10',
         'validation': 'numeric',
         'fqn': 'hematology.MCV',
         'helperHtml': '<p>Mean Cell Volume</p>'
@@ -16432,7 +16432,7 @@ const DEFS = {
             'text': 'high'
           }
         ],
-        'tableColumn': '8',
+        'tableColumn': '11',
         'fqn': 'hematology.MCV-interp'
       },
       {
@@ -16448,7 +16448,7 @@ const DEFS = {
         'inputType': 'number',
         'label': 'MCH',
         'suffix': 'pg',
-        'tableColumn': '8',
+        'tableColumn': '12',
         'validation': 'numeric',
         'fqn': 'hematology.MCH',
         'helperHtml': '<p>Mean Cell Hemoglobin</p>'
@@ -16472,7 +16472,7 @@ const DEFS = {
             'text': 'high'
           }
         ],
-        'tableColumn': '9',
+        'tableColumn': '13',
         'fqn': 'hematology.MCH-interp'
       },
       {
@@ -16488,7 +16488,7 @@ const DEFS = {
         'inputType': 'number',
         'label': 'MCHC',
         'suffix': 'g/L',
-        'tableColumn': '9',
+        'tableColumn': '14',
         'validation': 'numeric',
         'fqn': 'hematology.MCHC',
         'helperHtml': '<p>Mean Cell Hemoglobin Concentration</p>'
@@ -16512,7 +16512,7 @@ const DEFS = {
             'text': 'high'
           }
         ],
-        'tableColumn': '10',
+        'tableColumn': '15',
         'fqn': 'hematology.MCHC-interp'
       },
       {
@@ -16528,7 +16528,7 @@ const DEFS = {
         'inputType': 'number',
         'label': 'RDW',
         'suffix': '%',
-        'tableColumn': '10',
+        'tableColumn': '16',
         'validation': 'numeric',
         'fqn': 'hematology.RDW',
         'helperHtml': '<p>Red Cell Distribution Width CV</p>'
@@ -16552,7 +16552,7 @@ const DEFS = {
             'text': 'high'
           }
         ],
-        'tableColumn': '11',
+        'tableColumn': '17',
         'fqn': 'hematology.RDW-interp'
       },
       {
@@ -16569,7 +16569,7 @@ const DEFS = {
         'label': 'PLT',
         'mandatory': true,
         'suffix': '10^9/L',
-        'tableColumn': '11',
+        'tableColumn': '18',
         'validation': 'numeric',
         'fqn': 'hematology.PLT',
         'helperHtml': '<p>Platelet Count</p>'
@@ -16593,7 +16593,7 @@ const DEFS = {
             'text': 'high'
           }
         ],
-        'tableColumn': '12',
+        'tableColumn': '19',
         'fqn': 'hematology.PLT-interp'
       },
       {
@@ -16609,7 +16609,7 @@ const DEFS = {
         'inputType': 'number',
         'label': 'MPV',
         'suffix': 'fL',
-        'tableColumn': '12',
+        'tableColumn': '20',
         'validation': 'numeric',
         'fqn': 'hematology.MPV',
         'helperHtml': '<p>Mean Platelet Volume</p>'
@@ -16633,7 +16633,7 @@ const DEFS = {
             'text': 'high'
           }
         ],
-        'tableColumn': '13',
+        'tableColumn': '21',
         'fqn': 'hematology.MPV-interp'
       },
       {
@@ -16648,7 +16648,7 @@ const DEFS = {
         'formCss': 'grid-span-2-columns',
         'inputType': 'textarea',
         'label': 'CBC Comments',
-        'tableColumn': '13',
+        'tableColumn': '22',
         'fqn': 'hematology.comments'
       },
       {
@@ -18060,7 +18060,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'textarea',
         'label': 'Internal RBC comments',
-        'tableColumn': '107',
+        'tableColumn': '108',
         'fqn': 'hematology.rbcComments'
       },
       {
@@ -18080,7 +18080,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'checkbox',
         'label': 'Referral to hematopathologist',
-        'tableColumn': '108',
+        'tableColumn': '109',
         'fqn': 'hematology.referralToHema'
       },
       {
@@ -18088,7 +18088,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'textarea',
         'label': 'Reason for referral',
-        'tableColumn': '109',
+        'tableColumn': '110',
         'fqn': 'hematology.explain'
       }
     ],
@@ -18134,63 +18134,108 @@ const DEFS = {
           {
             'ehr_list_index': '5',
             'items': [
-              'rbc-interp',
-              'hgb'
+              'rbc-interp'
             ]
           },
           {
             'ehr_list_index': '6',
             'items': [
-              'hgb-interp',
-              'HCT'
+              'hgb'
             ]
           },
           {
             'ehr_list_index': '7',
             'items': [
-              'HCT-interp',
-              'MCV'
+              'hgb-interp'
             ]
           },
           {
             'ehr_list_index': '8',
             'items': [
-              'MCV-interp',
-              'MCH'
+              'HCT'
             ]
           },
           {
             'ehr_list_index': '9',
             'items': [
-              'MCH-interp',
-              'MCHC'
+              'HCT-interp'
             ]
           },
           {
             'ehr_list_index': '10',
             'items': [
-              'MCHC-interp',
-              'RDW'
+              'MCV'
             ]
           },
           {
             'ehr_list_index': '11',
             'items': [
-              'RDW-interp',
-              'PLT'
+              'MCV-interp'
             ]
           },
           {
             'ehr_list_index': '12',
             'items': [
-              'PLT-interp',
-              'MPV'
+              'MCH'
             ]
           },
           {
             'ehr_list_index': '13',
             'items': [
-              'MPV-interp',
+              'MCH-interp'
+            ]
+          },
+          {
+            'ehr_list_index': '14',
+            'items': [
+              'MCHC'
+            ]
+          },
+          {
+            'ehr_list_index': '15',
+            'items': [
+              'MCHC-interp'
+            ]
+          },
+          {
+            'ehr_list_index': '16',
+            'items': [
+              'RDW'
+            ]
+          },
+          {
+            'ehr_list_index': '17',
+            'items': [
+              'RDW-interp'
+            ]
+          },
+          {
+            'ehr_list_index': '18',
+            'items': [
+              'PLT'
+            ]
+          },
+          {
+            'ehr_list_index': '19',
+            'items': [
+              'PLT-interp'
+            ]
+          },
+          {
+            'ehr_list_index': '20',
+            'items': [
+              'MPV'
+            ]
+          },
+          {
+            'ehr_list_index': '21',
+            'items': [
+              'MPV-interp'
+            ]
+          },
+          {
+            'ehr_list_index': '22',
+            'items': [
               'comments'
             ]
           }
@@ -18937,18 +18982,23 @@ const DEFS = {
           {
             'ehr_list_index': '107',
             'items': [
-              'rcmMalariaType',
-              'rbcComments'
+              'rcmMalariaType'
             ]
           },
           {
             'ehr_list_index': '108',
             'items': [
-              'referralToHema'
+              'rbcComments'
             ]
           },
           {
             'ehr_list_index': '109',
+            'items': [
+              'referralToHema'
+            ]
+          },
+          {
+            'ehr_list_index': '110',
             'items': [
               'explain'
             ]
