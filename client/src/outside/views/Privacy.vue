@@ -1,8 +1,8 @@
 <template lang="pug">
   div(class="outside-view")
     h1 Privacy Policy
-    p Last updated: May 4, 2022 (see change list below)
-    p Previous update: October 28, 2021
+    p Last updated:  Jan 14, 2023 (see change list below)
+    p Previous update: May 4, 2022
 
     p
       | This EdEHR application is "open source" which means that anyone is free to run an instance of this software on their own servers. This document (“Privacy Policy”) explains the privacy rules only for the Services provided by &nbsp;
@@ -23,6 +23,8 @@
     p This Website also includes a Demonstration Service.  This is a mock up of a learning management system with sample users and it provides visitors to explore the Services without needing to be registered via a learning institution and without the need to enter any personal information.
 
     p By visiting our Website and using the Services, you confirm that you have read this Privacy Policy and agree to be bound by this Privacy Policy. If you disagree with the rules of this Privacy Policy, please do not use our Services.
+
+    p By Edehr Contact Person we mean the main contact person from edehr.org that your learning institution works with. This person will have provided your institution with contact information including email and cell phone.  From time to time your institution maybe notified of an alternative contact for short periods of time.
 
     h2 Information collected on our Website
 
@@ -76,13 +78,28 @@
 
     p This Privacy Policy may be modified and updated at any time, at our sole discretion, for any or no reason, and without notice. The date of the most current wording of the Privacy Policy is indicated at the top of the text. We ask all users to ensure that they are familiar with the most current wording of the Privacy Policy. The amendment of the Privacy Policy can be made simply by publishing the updated Privacy Policy on this Website. Updates of the Privacy Policy come into force as of the moment when they are published.
 
+    h2(id='privacy-breach-response-plan') Privacy Breach Response Plan
+
+    p Each learning institution that is using the services of edehr.org must provide edehr.org with contact information to be used when a data breach is suspected.
+
+    p If anyone suspects a privacy data breach they are to contact the Edehr Contact Person immediately.
+
+    li Edehr.org will immediately take steps to assess the situation and take corrective actions. These include, but are not limited to, containing the data breach by shutting down all edehr.org services and/or servers that are at risk.
+
+    li Edehr.org will immediately notify the contact the person(s) of each learning institution that may be affected. Maintaining transparency and cooperation are key to managing these types of situations.
+
+    li Edehr.org in conjunction with each learning institution will assess the risks, including potential harm to affected individuals and, where possible, will take action to remediate any risk of harm.
+
+    li Edehr.org will take all necessary corrective actions and restore any services or servers in a timely manner.
+
+    li Edehr.org will conduct a full review of the incident and determine steps to prevent a reoccurrence.
+
+    li Edehr.org will share the results of this review with all affected institutions.
+
     h2 Changes since previous policy
 
-    p Two changes to privacy policy
+    p Added section regarding Privacy Breach Response Plan
 
-    ol
-      li - Change "Access logs. As most websites on the internet" to "Like most websites on the internet"
-      li - Remove the line "At this time the Services also collect your email address as entered into your LMS.  This data is not used and a
 
 </template>
 
