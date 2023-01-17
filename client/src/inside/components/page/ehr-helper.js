@@ -385,9 +385,10 @@ export default class EhrPageHelper {
     let pageKey = this.pageKey
     let rowIndex = this.getTableDraftRowIndex(pageKey, tableKey)
     if (dbDraft) console.log('showDialogEvent draft row index', rowIndex)
-    if (rowIndex) {
+    if (rowIndex >= 0) {
       this.editDraftRow (pageKey, tableKey, rowIndex)
     } else {
+      // console.log('showDialogForTable', options)
       this._dialogEvent(tableKey, true, options)
     }
   }

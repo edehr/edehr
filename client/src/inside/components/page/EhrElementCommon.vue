@@ -145,7 +145,7 @@ export default {
         console.error('Refresh element on page', err.message)
       }
     },
-    dialogEvent (open, options) {
+    handleDialogEvent (open, options) {
       if (dbDialog) console.log('EhrCommon dialog opened or closed', this.elementKey, open)
       this.dialogIsOpen = open
       if (open) {
@@ -197,7 +197,7 @@ export default {
       }
       if (this.isTableElement) {
         this.dialogEventHandler = function (eData) {
-          _this.dialogEvent(eData.value, eData.options)
+          _this.handleDialogEvent(eData.value, eData.options)
         }
         this.dialogEventKey = this.ehrHelp.getDialogEventChannel(this.tableKey)
         // console.log('ehr common listen on channel', this.dialogEventKey)
