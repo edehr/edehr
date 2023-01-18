@@ -3,7 +3,8 @@
     app-header(class="sticky")
     main(class="flow_across outside-view")
       div(v-if="showSideNav", class="left_side bigger-screens-900 nav_divs")
-        zone-lms-nav
+        zone-lms-student-nav(v-if="isStudent")
+        zone-lms-nav(v-else)
       div(class="right_side")
         div(class="smaller-than-900")
           span(style="text-align: left; margin-left: 1em")
@@ -22,10 +23,12 @@ import StoreHelper from '../../helpers/store-helper'
 import { Text } from '@/helpers/ehr-text'
 import ZoneLmsNav from '@/outside/components/ZoneLmsNav'
 import { UNLINKED_ACTIVITY_ROUTE_NAME } from '@/router'
+import ZoneLmsStudentNav from '@/outside/components/ZoneLmsStudentNav'
 
 export default {
   name: 'LayoutOutside',
   components: {
+    ZoneLmsStudentNav,
     ZoneLmsNav,
     AppFooter,
     AppHeader,
@@ -38,6 +41,7 @@ export default {
     }
   },
   computed: {
+    isStudent () { return StoreHelper.isStudent() },
     inZoneLMS () { return StoreHelper.inZoneLMS() },
     showSideNav () { return this.inZoneLMS && this.$route.name !== UNLINKED_ACTIVITY_ROUTE_NAME },
     pageIcon () {

@@ -212,8 +212,14 @@ async  function onPageChange (toRoute, fromRoute) {
           }
         } else if (StoreHelper.isStudent()) {
           const fromZone = fromRoute.meta.zone
+          const toZone = toRoute.meta.zone
           if (fromZone === 'ehr') {
-            // console.log('page - change - ehr to ehr')
+            console.log('page - change from ehr')
+          } else if (toZone === 'ehr') {
+            // change from lms area to ehr
+            const activityId = toRoute.query.activityId
+            console.log('page - change to ehr', activityId)
+            await loadStudentActivity(activityId)
           } else {
             const activity = await StoreHelper.loadCurrentActivity()
             if (activity.assignment) {
@@ -258,6 +264,19 @@ async  function onPageChange (toRoute, fromRoute) {
   }
   return perfStat
   // EXIT
+}
+
+async function loadStudentActivity (activityId) {
+  // const fromRoute = this.$route.query.activityId
+  const fromStore = store.getters['activityStore/activityId']
+  const aId = activityId ? activityId : fromStore
+  await store.dispatch('activityStore/setActivityId', aId)
+  const activity = await store.dispatch('activityStore/loadCurrentActivity')
+  if (activity.assignment) {
+    const assignment = await store.dispatch('assignmentStore/load', activity.assignment)
+    const seedId = assignment.seedDataId
+    await store.dispatch('seedListStore/loadSeedContent', seedId)
+  }
 }
 
 export default  onPageChange

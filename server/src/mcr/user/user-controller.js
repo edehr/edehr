@@ -78,10 +78,58 @@ export default class UserController extends BaseController {
     })
   }
 
+  async listAsStudentCourses (id, req) {
+    if (!id || id === 'undefined') {
+      throw new ParameterError(Text.REQUIRES_USER_ID)
+    }
+    const authPayload = req.authPayload
+    if (authPayload.userId !== id) {
+      logError('Attempt to get student course list by user who is not authorized to see it')
+      throw new NotAllowedError(Text.NOT_AUTH_TO_SEE_USER_DATA)
+    }
+    if (!authPayload.isStudent) {
+      throw new NotAllowedError(Text.MUST_BE_STUDENT)
+    }
+    const visits = await Visit.find({ $and: [{ isStudent: true }, { user: new ObjectID(id) }] })
+      .populate('activityData')
+    const courses = []
+    for await (const visit of visits) {
+      const activityId = visit.activity
+      const activity = await Activity.findById(activityId)
+        .populate('assignment', 'name description seedDataId')
+        .populate('activityData')
+      const cId = activity.context_id
+      let course = courses.find(c => c.id === cId)
+      if (!course) {
+        course = {
+          id: activity.context_id,
+          label: activity.context_label,
+          name: activity.context_title,
+          type: activity.context_type,
+          courseActivities: []
+        }
+        courses.push(course)
+      }
+      const studentActivity = {
+        visit: visit,
+        activity: activity
+      }
+      course.courseActivities.push(studentActivity)
+    }
+    console.log('Return this course list', JSON.stringify(courses, null, 2))
+    return Promise.resolve({ courses: courses })
+  }
+
+
   route () {
     const router = super.route()
     router.get('/instructor/courses/:key', (req, res) => {
       this.listAsInstructorCourses(req.params.key, req)
+        .then(ok(res))
+        .then(null, fail(res))
+    })
+    router.get('/student/courses/:key', (req, res) => {
+      this.listAsStudentCourses(req.params.key, req)
         .then(ok(res))
         .then(null, fail(res))
     })

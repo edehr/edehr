@@ -161,6 +161,13 @@ export function outside () {
       meta: { layout: 'lms', label: NAMES.SEED_CONDENSED, icon: APP_ICONS.seed, zone: ZONE_LMS }
     },
     {
+      path: '/student-courses',
+      name: 'student-courses',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './outside/views/StudentCourses.vue'),
+      meta: { layout: 'lms', label: 'My Activities', icon: APP_ICONS.course, zone: ZONE_LMS }
+    },
+    {
       path: '/admin-login',
       name: 'admin-login',
       component: () =>

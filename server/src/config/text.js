@@ -8,6 +8,7 @@ export const Text = {
   SEED_NOT_ALLOWED_TO_EDIT_DEFAULT: 'Can not edit the default seed',
   SEED_IN_USE_NO_DELETE: 'Can not delete a seed that is used by a learning object',
   MUST_BE_INSTRUCTOR: 'Must be an instructor to get consumer details',
+  MUST_BE_STUDENT: 'Must be a student to get student course list',
   NOT_AUTH_TO_SEE_CONSUMER: 'You are not authorized to see the requested consumer',
   NOT_AUTH_TO_SEE_USER_DATA: 'You are not authorized to see the requested user',
   REQUIRES_CONSUMER_ID: 'Query requires a consumer id',

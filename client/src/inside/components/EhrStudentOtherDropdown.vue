@@ -8,23 +8,30 @@
 
 <script>
 import AppDropdown from '@/app/components/app-dropdown/AppDropdown'
+import { APP_ICONS } from '@/helpers/app-icons'
 import EhrScratchPadDialog from '@/inside/components/EhrScratchPadDialog'
 import EhrContextActivityDialog from '@/inside/components/EhrContextActivityDialog'
 import StoreHelper from '@/helpers/store-helper'
 import UiAgree from '@/app/ui/UiAgree'
+import { Text } from '@/helpers/ehr-text'
 export default {
   components: {
     UiAgree,
     AppDropdown, EhrContextActivityDialog, EhrScratchPadDialog
   },
+  data: function () {
+    return {
+      appIcons: APP_ICONS
+    }
+  },
   computed: {
     items () {
       return [
         {
-          label: 'Instructor\'s comments',
-          toolTip: 'See what your instructor has said about your work.',
-          callback: () => this.$refs.evalNotes.showDialog('Instructor comments', this.evalNotes),
-          icon: 'chalkboard-teacher'
+          label: 'My activities',
+          toolTip: 'See list of all my EdEHR activities.',
+          callback: () => this.$router.push('/student-courses'),
+          icon: this.appIcons.course
         },
         {
           label: 'Activity information',

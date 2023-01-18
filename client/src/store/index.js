@@ -13,6 +13,7 @@ import ehrOnlyDemoStore from '@/store/modules/ehrOnlyDemoStore'
 import fileListStore from './modules/fileListStore'
 import instructor from './modules/instructor'
 import seedListStore from './modules/seedListStore'
+import student from '@/store/modules/student'
 import system from './modules/system'
 import userStore from './modules/userStore'
 import visit from './modules/visit'
@@ -38,6 +39,7 @@ export default new Vuex.Store({
     fileListStore,
     instructor,
     seedListStore,
+    student,
     system,
     userStore,
     visit,
