@@ -11,7 +11,6 @@
 <script>
 import EhrTypes from '@/ehr-definitions/ehr-types'
 import StoreHelper from '@/helpers/store-helper'
-import { ehrText } from '@/appText'
 const VISIT_DAY_TYPE = EhrTypes.dataInputTypes.visitDay
 const VISIT_TIME_TYPE = EhrTypes.dataInputTypes.visitTime
 const MAX_DAY = 10

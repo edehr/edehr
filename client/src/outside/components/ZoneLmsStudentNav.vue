@@ -38,7 +38,7 @@ export default {
       // router-link(:to="{ name: `ehr` }", class="navLink") Activity
     },
     gotoCourses () {
-      this.navigate('/courses')
+      this.navigate('/student-courses')
     },
     navigate (path) {
       // prevent Vue's NavigationDuplicated

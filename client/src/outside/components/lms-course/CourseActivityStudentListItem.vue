@@ -13,7 +13,9 @@
             span &nbsp; {{ assignment.name }}
 
       div(class="flow_across_last_item")
-        a(@click="showMore = !showMore") {{showMore ? 'show less' : 'show more'}}
+        div(class="flow_across menu_space_across")
+          a(@click="showMore = !showMore") {{showMore ? 'show less' : 'show more'}}
+          ui-button(@buttonClicked="goToEhr") Go to EHR
 
     div(v-show="showMore")
 
@@ -27,24 +29,30 @@
         div(class="details-name") Feedback
         div(class="details-value", v-text-to-html="activityData.evaluationData")
 
-      div(class="details-row", v-if='activityData.scratchData')
+      div(class="details-row", v-if='scratchData')
         div(class="details-name") Private notes
-        div(class="details-value", v-text-to-html="activityData.scratchData")
+        div(class="details-value", v-text-to-html="scratchData")
+
+      div(class="flow_across")
+        div(class="flow_across_last_item")
+          a(@click="showMore = !showMore") {{showMore ? 'show less' : 'show more'}}
+
 
     div(v-show="!showMore")
 
-      div(class="details-row")
+      div(class="flow_across")
         div(class="details-name") Feedback
         div(class="details-value", v-text-to-html="activityData.evaluationData")
+        div(class="flow_across_last_item") {{ submitted ? 'Submitted' : 'Open to edit' }}
 
 </template>
 
 <script>
 import { APP_ICONS } from '@/helpers/app-icons'
-import UiLink from '@/app/ui/UiLink'
 import { Text } from '@/helpers/ehr-text'
+import UiButton from '@/app/ui/UiButton'
 export default {
-  components: { UiLink, },
+  components: { UiButton },
   data () {
     return {
       appIcons: APP_ICONS,
@@ -59,9 +67,16 @@ export default {
   computed: {
     activity () { return this.data.activity },
     activityData () { return this.data.activityData },
-    assignment () { return this.data.assignment }
+    assignment () { return this.data.assignment },
+    scratchData () { return this.data.activityData.scratchData },
+    submitted () { return this.activityData.submitted },
+    visit () { return this.data.visit },
+    visitId () { return this.visit._id }
   },
   methods: {
+    goToEhr () {
+      this.$router.push({ name: 'ehr', query: { visitId: this.visitId } })
+    },
     truncate (input, lim) {
       return input.length > lim ? `${input.substring(0, lim)}...` : input }
   }

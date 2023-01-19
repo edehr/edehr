@@ -414,37 +414,38 @@ class StoreHelperWorker {
    * **********   Loading data  **************
    */
 
-  async loadVisitRecord (visitId) {
-    if (debugSH) console.log('SH loadVisitRecord dispatch the load visit information', visitId)
-    await this._dispatchVisit('loadVisit2', visitId)
+  async loadVisitRecord () {
+    if (debugSH) console.log('SH loadVisitRecord dispatch the load visit information')
+    await this._dispatchVisit('loadVisitRecord')
+  }
+  async setVisitId (visitId) {
+    if (debugSH) console.log('SH setVisitId dispatch the load visit id', visitId)
+    await this._dispatchVisit('setVisitId', visitId)
+  }
+  async getVisitId () {
+    if (debugSH) console.log('SH getVisitId')
+    return await this._getVisitProperty('visitId')
   }
 
   /**
-   * Loads the consumer, user and visit data based on authorization token data
+   * Loads the consumer, user and visit data based on authorization token data.
+   * If optionalVisitId is present then sets the current visit id and uses this for loading
+   * @param optionalVisitId
    * @returns {Promise<void>}
    */
-  async loadCommon () {
+  async loadCommon (optionalVisitId) {
     const toolConsumerId = store.getters['authStore/consumerId']
     await this.loadConsumer(toolConsumerId)
+    // Load the user based on auth message
     const userId = store.getters['authStore/userId']
     await this._dispatchUser('load', userId)
-    let visitId = store.getters['authStore/visitId']
-    await StoreHelper.loadVisitRecord(visitId)
+    // load the visit record (assignment, activity, activityData, etc)
+    // store.getters['authStore/visitId'] is the visit id from the auth message. This always exists to get here.
+    // store.getters['visit/visitId'] is the previously saved visit id
+    let visitId = optionalVisitId || store.getters['visit/visitId'] || store.getters['authStore/visitId']
+    await StoreHelper.setVisitId(visitId) //note this stores the visit id to survive page changes and browser refresh
+    await StoreHelper.loadVisitRecord()
   }
-
-  // async loadStudent2 () {
-  //   const activity = await this.loadCurrentActivity()
-  //   if (activity.assignment) {
-  //     // only when the activity has an assignment(learning object) can the visit have any activity data
-  //     let visitInfo = store.state.visit.sVisitData || {}
-  //     if (debugSH) console.log('get activity data based on visitInfo', visitInfo)
-  //     await this._dispatchActivityData('loadActivityData', visitInfo.activityData)
-  //     await this.loadAssignment(activity.assignment)
-  //     let seedId = this.getAssignmentSeedId()
-  //     if (debugSH) console.log('SH loadStudent2 seedId', seedId)
-  //     await this.loadSeed(seedId)
-  //   } // else page controller will send the student to the unlinked activity page
-  // }
 
   async loadInstructorWithStudent () {
     if(debugSH) console.log('SH loadInstructorWithStudent')

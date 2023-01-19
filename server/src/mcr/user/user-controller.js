@@ -110,6 +110,7 @@ export default class UserController extends BaseController {
           createDate: '2023-01-18T03:32:01.855Z',
           evaluationData: 'Instructor says this about the student\'s work.',
           lastDate: '2023-01-19T00:04:22.939Z',
+          scratchData: 'Some notes',
           submitted: true,
           toolConsumer: 'abcdeff4ad5dec5106ff71a3',
           visit: 'abcde318492371857a129de',
@@ -203,13 +204,7 @@ export default class UserController extends BaseController {
         .then(ok(res))
         .then(null, fail(res))
     })
-    /*
-    router.get('/asStudent/:key', (req, res) => {
-      this.listActivitiesAsStudent(req.params.key)
-        .then(ok(res))
-        .then(null, fail(res))
-    })
-    */
+
     return router
   }
 }

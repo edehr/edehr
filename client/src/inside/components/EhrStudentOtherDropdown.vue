@@ -13,7 +13,6 @@ import EhrScratchPadDialog from '@/inside/components/EhrScratchPadDialog'
 import EhrContextActivityDialog from '@/inside/components/EhrContextActivityDialog'
 import StoreHelper from '@/helpers/store-helper'
 import UiAgree from '@/app/ui/UiAgree'
-import { Text } from '@/helpers/ehr-text'
 export default {
   components: {
     UiAgree,
