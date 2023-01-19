@@ -12,12 +12,12 @@
         div(class="details-name") Type
         div(class="details-value") {{ course.type }}
       div(
-        v-for="(activity, index) in course.activities",
-        :key="activity._id",
+        v-for="(data, index) in course.courseActivities",
+        :key="data.visit._id",
         class="list-card list-element",
-        :class="rowClass(course)"
+        :class="rowClass(data)"
         )
-        course-activity-student-list-item(:id="activity._id", :activity='activity')
+        course-activity-student-list-item(:data='data')
 </template>
 
 <script>
@@ -39,9 +39,10 @@ export default {
   },
   methods: {
     rowClass: function (item) {
-      let selected = item._id === this.$route.query.activityId
-      let classString = selected ? 'selected ' : ''
-      return `${classString}`
+      // let selected = item._id === this.$route.query.activityId
+      // let classString = selected ? 'selected ' : ''
+      // return `${classString}`
+      return ''
     },
     async loadComponent () {
       await this.$store.dispatch('student/loadCourses')

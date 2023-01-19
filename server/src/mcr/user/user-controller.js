@@ -1,12 +1,13 @@
 import BaseController from '../common/base'
 import User from './user'
 import Visit from '../visit/visit'
-import { ok, fail } from '../common/utils'
+import { fail, ok } from '../common/utils'
 import Activity from '../activity/activity'
 import { NotAllowedError, ParameterError } from '../common/errors'
 import { Text } from '../../config/text'
 import { logError } from '../../helpers/log-error'
 import SeedData from '../seed/seed-data'
+
 const ObjectID = require('mongodb').ObjectId
 const debug = require('debug')('server')
 
@@ -15,6 +16,7 @@ export default class UserController extends BaseController {
     super(User, '_id')
     this.config = config
   }
+
   /*
   listAsInstructorCourses will collect all visits the current user has made with the role of instructor.
   For each visit get the activity and associated assignment information. Collect all into a course collection.
@@ -33,7 +35,7 @@ export default class UserController extends BaseController {
       throw new NotAllowedError(Text.MUST_BE_INSTRUCTOR)
     }
     const consumerId = authPayload.toolConsumerId
-    let seedList = await SeedData.find({ toolConsumer: consumerId }, {name: true})
+    let seedList = await SeedData.find({ toolConsumer: consumerId }, { name: true })
     // normalize to convert ObjectId to strings for comparison
     seedList = JSON.parse(JSON.stringify(seedList))
 
@@ -52,7 +54,7 @@ export default class UserController extends BaseController {
                 activity = JSON.parse(JSON.stringify(activity))
                 const assignment = activity.assignment
                 const sId = assignment.seedDataId
-                const seed = seedList.find( item => item._id === sId )
+                const seed = seedList.find(item => item._id === sId)
                 activity['caseStudy'] = seed
 
                 // group by course
@@ -78,6 +80,69 @@ export default class UserController extends BaseController {
     })
   }
 
+  /**
+   * Support student user getting all their courses etc.  The structure returned looks like this.
+   list = [
+   {
+    id: 'Demo-Course',
+    label: 'Mock EdEHR Demonstration Course',
+    name: 'Mock EdEHR Demonstration Course',
+    type: 'Demonstration',
+    courseActivities: [
+      {
+        visit: {
+          _id: 'abcde318492371857a129de',
+          activity: 'abcde238492371857a129ab',
+          activityData: 'abcde318492371857a129e0',
+          consumerKey: 'Demo-1673801716740-dop5vpc',
+          createDate: '2023-01-18T03:32:01.846Z',
+          isDeveloper: false,
+          isInstructor: false,
+          isStudent: true,
+          lastVisitDate: '2023-01-18T03:32:38.435Z',
+          returnUrl: 'http://localhost:28000/demo-course',
+          role: 'student',
+          toolConsumer: 'abcdeff4ad5dec5106ff71a3',
+          user: '63c43005ad5dec5106ff71f5',
+        },
+        activityData: {
+          _id: 'abcde318492371857a129e0',
+          createDate: '2023-01-18T03:32:01.855Z',
+          evaluationData: 'Instructor says this about the student\'s work.',
+          lastDate: '2023-01-19T00:04:22.939Z',
+          submitted: true,
+          toolConsumer: 'abcdeff4ad5dec5106ff71a3',
+          visit: 'abcde318492371857a129de',
+        },
+        activity: {
+          _id: 'abcde238492371857a129ab',
+          assignment: 'abcdeff4ad5dec5106ff71b2',
+          context_id: 'Demo-Course',
+          context_label: 'Demonstration Course',
+          context_title: 'Demonstration Course',
+          context_type: 'Demonstration',
+          createDate: '2023-01-18T03:31:47.001Z',
+          lastDate: '2023-01-18T03:31:47.001Z',
+          resource_link_description: 'This ....',
+          resource_link_id: 'lms-link-to-resource',
+          resource_link_title: 'title ....',
+          toolConsumer: 'abcdeff4ad5dec5106ff71a3',
+        },
+        assignment: {
+          _id: 'abcdeff4ad5dec5106ff71b2',
+          name: 'Demonstration Assignment #2: Pneumonia',
+          description: 'This ....',
+          seedDataId: 'abcdeff4ad5dec5106ff71af'
+        }
+      }
+    ]
+  }
+   ]
+
+   * @param id
+   * @param req
+   * @returns {Promise<{courses: *[]}>}
+   */
   async listAsStudentCourses (id, req) {
     if (!id || id === 'undefined') {
       throw new ParameterError(Text.REQUIRES_USER_ID)
@@ -112,11 +177,16 @@ export default class UserController extends BaseController {
       }
       const studentActivity = {
         visit: visit,
-        activity: activity
+        activityData: visit.activityData,
+        assignmentData: visit.activityData.assignmentData,
+        activity: activity,
+        assignment: activity.assignment
       }
+      studentActivity.visit.activityData = visit.activityData._id
+      studentActivity.activity.assignment = activity.assignment._id
       course.courseActivities.push(studentActivity)
     }
-    console.log('Return this course list', JSON.stringify(courses, null, 2))
+    // console.log('Return this course list', JSON.stringify(courses, null, 2))
     return Promise.resolve({ courses: courses })
   }
 
