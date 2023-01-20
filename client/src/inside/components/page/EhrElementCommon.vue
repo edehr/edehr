@@ -100,7 +100,10 @@ export default {
     },
     sendInputEvent (val) {
       if (dbInputs) console.log('EhrCommon broadcast PAGE_FORM_INPUT_EVENT ', val, this.elementKey)
-      EventBus.$emit(FORM_INPUT_EVENT, { value: val, element: this.element, tableKey: this.tableKey })
+      if (this.isPageElement &&  this.isEditing || this.isTableElement && this.dialogIsOpen) {
+        // TODO consider changing dialogIsOpen flag to something we actively get from the open dialog.
+        EventBus.$emit(FORM_INPUT_EVENT, { value: val, element: this.element, tableKey: this.tableKey })
+      }
     },
     refreshPage () {
       try {
@@ -147,15 +150,31 @@ export default {
     },
     handleDialogEvent (open, options) {
       if (dbDialog) console.log('EhrCommon dialog opened or closed', this.elementKey, open)
+      /*
+      this.dialogIsOpen = open
+      Change this from a local value per element to an accessor on the single source of truth.
+      That source might best be put into a vuex store.
+       */
       this.dialogIsOpen = open
       if (open) {
+        // isEmbedded is provided by the parent. What is embedded? Document
         if (this.isEmbedded) {
+          /*
+          let inputs = options.inputs ? options.inputs : options.data
+          Change this. Data should not come from two different object types without a strong and clear need
+           */
           let inputs = options.inputs ? options.inputs : options.data
           if (inputs) {
+            /*
+            If this is an embedded item then it is read only and only reflects values ... so why the following two steps?
+             */
             let initialValue = inputs[this.elementKey]
-            this.setInitialValue(initialValue)
+            this.setInitialValue(initialValue) // setInitialValue will emit event to trigger items dependent on this item
           } else {
-            // console.log('inputs TODO fix no inputs here ', options, this.elementKey)
+            /**
+             * Document why there might not be inputs in the options.
+             */
+            console.log('inputs TODO fix no inputs here ', options, this.elementKey)
           }
         } else {
           let inputs = this.ehrHelp.getDialogInputs(this.tableKey)
@@ -166,12 +185,17 @@ export default {
             if( options.viewOnly ) {
               console.log('what happens if we skip sending input event on embedded ')
             } else {
+              /*
+              Why is the ref value being composed here and isn't in the input data?
+              Have seen many times the tableActionRowIndex is undefined. BAD
+               */
               const refValue = this.element.embedRef + '.' + options.tableActionRowIndex
               // console.log('dialogEvent SET embedded', this.$options.name)
               // console.log('dialogEvent SET options', options)
               // console.log('dialogEvent SET embedded initialValue', initialValue)
               // console.log('dialogEvent SET embedded refValue', refValue)
               // store this value into the active inputs area to be saved along with other data, if the dialog save is invoked.
+              // Why are we sending the FORM INPUT EVENT here? Why not from the watch?
               this.sendInputEvent(refValue)
               // the element receiving this event may not be a EhrElementEmbedded
               if (this.setEmbeddedGroupData) {
@@ -224,20 +248,7 @@ export default {
   watch: {
     inputVal (val) {
       if (dbInputs) console.log('EhrElement input val changed', this.elementKey, val)
-      if (this.isPageElement && this.isEditing) {
-        // only broadcast if user is editing the form
-        this.sendInputEvent(val)
-      }
-      if (dbInputs)
-        console.log(
-          'EhrElement this.isTableElement',
-          this.isTableElement,
-          'this.dialogIsOpen',
-          this.dialogIsOpen
-        )
-      if (this.isTableElement && this.dialogIsOpen) {
-        this.sendInputEvent(val)
-      }
+      this.sendInputEvent(val)
     }
   }
 }

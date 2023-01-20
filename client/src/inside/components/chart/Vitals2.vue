@@ -79,7 +79,6 @@ export default {
       this.ehrHelp.showDialogForTable(this.tableKey, {})
     },
     refresh () {
-      this.tableForm = this.ehrHelp.getTable(this.tableKey)
       let tableKey = this.tableDef.tableKey
       let pageKey = this.ehrHelp.getPageKey()
       // console.log('Vitals2 refresh for page table key', pageKey, tableKey)

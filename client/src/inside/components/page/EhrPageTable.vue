@@ -4,8 +4,26 @@
       ui-button(v-on:buttonClicked="showDialog") {{ tableDef.addButtonText }}
     div
       h2(v-show="tableDef.label") {{tableDef.label}}
-      ehr-table-vertical(v-if="isVertical", :ehrHelp="ehrHelp", :tableDef="tableDef", :cTableForm='cTableForm', :cTableData='cTableData', :rowTemplate='rowTemplate')
-      ehr-table-stacked(v-if="isStacked", :ehrHelp="ehrHelp", :tableDef="tableDef", :cTableForm='cTableForm', :cTableData='cTableData', :rowTemplate='rowTemplate')
+      ehr-table-vertical(
+        v-if="isVertical",
+        :ehrHelp="ehrHelp",
+        :tableDef="tableDef",
+        :cTableForm='cTableForm',
+        :cTableData='cTableData',
+        :rowTemplate='rowTemplate',
+        @editDraft='editDraft',
+        @viewReport='showReport'
+      )
+      ehr-table-stacked(
+        v-if="isStacked",
+        :ehrHelp="ehrHelp",
+        :tableDef="tableDef",
+        :cTableForm='cTableForm',
+        :cTableData='cTableData',
+        :rowTemplate='rowTemplate',
+        @editDraft='editDraft',
+        @viewReport='showReport'
+      )
     ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDef", :errorList="errorList" )
     div(v-if="hasData", style="text-align: right;") <!-- put the clear button on the far right side -->
       ui-button(class="reset-button", v-on:buttonClicked="clearAllData",
@@ -21,7 +39,6 @@ import EhrTableStacked from './EhrTableStacked'
 import EhrTableVertical from './EhrTableVertical'
 import UiButton from '@/app/ui/UiButton.vue'
 import UiConfirm from '@/app/ui/UiConfirm'
-import EventBus, { EDIT_DRAFT_ROW_EVENT, VIEW_REPORT_EVENT } from '@/helpers/event-bus'
 import MarHelper from '../mar/mar-helper'
 import EhrDefs from '@/helpers/ehr-defs-grid'
 import EhrTypes from '@/ehr-definitions/ehr-types'
@@ -55,7 +72,7 @@ export default {
   },
   computed: {
     hasData () { return this.cTableData.length > 0},
-    cTableForm () { return this.ehrHelp.getTable(this.tableDef.tableKey) },
+    cTableForm () { return this.ehrHelp.getTableForm(this.tableDef.tableKey) },
     rowTemplate () {
       let rowTemplate = []
       this.tableDef.ehr_list.forEach(stack => {
@@ -127,6 +144,13 @@ export default {
     }
   },
   methods: {
+    editDraft (pageKey, tableKey, rowIndex) {
+      this.ehrHelp.editDraftRow(pageKey, tableKey, rowIndex)
+    },
+    showReport (pageKey, tableKey, rowIndex) {
+      this.ehrHelp.showReport(pageKey, tableKey, rowIndex)
+    },
+
     showDialog: function () {
       // console.log('EhrPageTable showDialog ', this.tableDef)
       this.ehrHelp.showDialogForTable(this.tableKey, {})
@@ -145,25 +169,6 @@ export default {
       helper.triggerActionByPageKey()
     },
   },
-  mounted: function () {
-    const _this = this
-    this.viewReportEventHandler = function (pageKey, tableKey, rowIndex) {
-      _this.ehrHelp.showReport(pageKey, tableKey, rowIndex)
-    }
-    this.editDraftRowHandler = function (pageKey, tableKey, rowIndex) {
-      _this.ehrHelp.editDraftRow(pageKey, tableKey, rowIndex)
-    }
-    EventBus.$on(VIEW_REPORT_EVENT, this.viewReportEventHandler)
-    EventBus.$on(EDIT_DRAFT_ROW_EVENT, this.editDraftRowHandler)
-  },
-  beforeDestroy: function () {
-    if (this.editDraftRowHandler) {
-      EventBus.$off(EDIT_DRAFT_ROW_EVENT, this.editDraftRowHandler)
-    }
-    if (this.viewReportEventHandler) {
-      EventBus.$off(VIEW_REPORT_EVENT, this.viewReportEventHandler)
-    }
-  }
 }
 </script>
 

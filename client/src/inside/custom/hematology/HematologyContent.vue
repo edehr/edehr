@@ -46,10 +46,12 @@ export default {
   },
   mounted: function () {
     const _this = this
-    this.showEventHandler = function (tableDef, index) {
-      const tablePbf = _this.tablePbf
-      const tableKey = tablePbf.tableKey
-      _this.ehrHelp.showDialogForTable(tableKey, {tableActionRowIndex: index})
+    /*
+    TABLE_ACTION_EVENT comes from a table inside one of the page tables.
+    It is used to open a dialog on another table based on the contents of the source table.
+     */
+    this.showEventHandler = function (sourceTableKey, targetTableKey, sourceRowIndex) {
+      _this.ehrHelp.tableActionRequest(sourceTableKey, targetTableKey, sourceRowIndex)
     }
     EventBus.$on(TABLE_ACTION_EVENT, this.showEventHandler)
   },

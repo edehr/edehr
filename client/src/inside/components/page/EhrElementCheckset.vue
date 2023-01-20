@@ -28,15 +28,7 @@ export default {
     checkValues (val) {
       const newVal = EhrCheckset.modelChange(val)
       if (debug) console.log('EhrCheckset input val changed', this.elementKey, newVal)
-      if (this.isPageElement &&  this.isEditing) {
-        // only broadcast if user is editing the form
-        if (debug) console.log('EhrCheckset send input event')
-        this.sendInputEvent(newVal)
-      }
-      if (this.isTableElement && this.dialogIsOpen) {
-        if (debug) console.log('EhrCheckset send input event')
-        this.sendInputEvent(newVal)
-      }
+      this.sendInputEvent(newVal)
     }
   },
   methods: {

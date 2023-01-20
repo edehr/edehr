@@ -3,7 +3,7 @@
 import moment from 'moment'
 import { formatDateStr } from '@/helpers/ehr-utils'
 import EventBus, { PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
-import { EDIT_DRAFT_ROW_EVENT, TABLE_ACTION_EVENT, VIEW_REPORT_EVENT } from '@/helpers/event-bus'
+import { TABLE_ACTION_EVENT } from '@/helpers/event-bus'
 
 export default {
   components: {
@@ -33,14 +33,16 @@ export default {
       }
       return value
     },
-    tableAction: function (tableDef, index) {
-      EventBus.$emit(TABLE_ACTION_EVENT, tableDef, index)
+    tableAction: function (sourceTableKey, targetTableKey, sourceRowIndex) {
+      EventBus.$emit(TABLE_ACTION_EVENT, sourceTableKey, targetTableKey, sourceRowIndex)
     },
     editDraft (pageKey, tableKey, rowIndex) {
-      EventBus.$emit(EDIT_DRAFT_ROW_EVENT, pageKey, tableKey, rowIndex)
+      console.log('edit draft', pageKey, tableKey, rowIndex)
+      this.$emit('editDraft', pageKey, tableKey, rowIndex)
     },
     viewReport (pageKey, tableKey, rowIndex) {
-      EventBus.$emit(VIEW_REPORT_EVENT, pageKey, tableKey, rowIndex)
+      // console.log('view report', pageKey, tableKey, rowIndex)
+      this.$emit('viewReport', pageKey, tableKey, rowIndex)
     }
   },
   mounted: function () {

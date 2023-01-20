@@ -84,7 +84,7 @@ describe('ehr-helper tests', () => {
 
     it('getTable', () => {
       const key = 'table'
-      const table = ehrHelper.getTable(key)
+      const table = ehrHelper.getTableForm(key)
       should.exist(table)
       table.tableDef.isTable.should.equal(true)
     })

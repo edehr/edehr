@@ -14,7 +14,7 @@
           tr(v-for="(dRow, rIndex) in cTableData", :key='rIndex', :class='{draftRow : isDraft(dRow) }')
             td(v-if="tableDef.tableAction")
               div(v-if="!isDraft(dRow)")
-                ui-button(v-on:buttonClicked="tableAction(tableDef,rIndex)")
+                ui-button(v-on:buttonClicked="tableAction(tableDef.tableKey, tableDef.tableAction, rIndex)")
                   span {{ tableDef.tableActionLabel }} &nbsp;
                   fas-icon(icon="notes-medical")
             td

@@ -425,6 +425,8 @@ export default class EhrPageHelper {
   /*
    * Cause the associated dialog to open.
    * If options contains data then the dialog is to open in view only mode and display the data.
+   * This is an event handler for the dialog open/close event
+   *
    * @param tableKey
    * @param open
    * @param options { data | viewOnly | tableActionRowIndex}
@@ -445,6 +447,17 @@ export default class EhrPageHelper {
     Set the dialog "open" flag to false for the initialization step.
      */
     dialog.active = false
+    /*
+     * begin here.  this is where the dialog is opened and needs to be initialized based on the content
+     * if viewing or editing draft, or initialized with form defaults if a new record.
+     * Could use this flow ...
+     * be sure form input update events are not going to fire
+     * set to defaults
+     * set simTime
+     * if there is data then load it
+     * then turn on form input updates
+     *
+     */
     dialog.errorList = []
     this._clearDialogInputs(dialog)
     if(open && hasRecHeader) {
@@ -464,8 +477,16 @@ export default class EhrPageHelper {
     let eData = { key: tableKey, value: open, options: options }
     let channel = this.getDialogEventChannel(tableKey)
     Vue.nextTick(function () {
-      // Send an event on our transmission channel
-      // with a payload containing the open flag
+      /* Send an event on our transmission channel
+       with a payload containing the open flag
+       This is picked up by each form element (see EhrElementCommon)
+
+       Also in the EhrDialogForm (see receiveShowHideEvent). This is used to call the "open"
+       event on embedded forms so they get loaded.  this.$refs.theDialog.onOpen()
+       Might be better to not reused the open event here?
+
+       This event on channel is also EMITTED by the EhrElementEmbedded when setEmbeddedGroupData() is invoked
+      */
       if (dbDraft) console.log('emit event on', channel, ' data:', JSON.stringify(eData))
       EventBus.$emit(channel, eData)
     })

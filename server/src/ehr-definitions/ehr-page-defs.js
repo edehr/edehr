@@ -18100,7 +18100,7 @@ const DEFS = {
         hasRecHeader: true,
         label: 'CBC analysis',
         addButtonText: 'Add a CBC Report',
-        tableAction: 'pbf-review',
+        tableAction: 'tablePbfReview',
         tableActionLabel: 'PBF Review',
         ehr_list: [
           {
