@@ -14,7 +14,9 @@ export default class EhrCheckset {
         results.push(p)
       })
     } else {
-      console.log('What is wrong? attempt to set checkset initial value with this: ', value)
+      if (value !== undefined) {
+        console.log('What is wrong? attempt to set checkset initial value with this: ', value)
+      }
     }
     return results
   }

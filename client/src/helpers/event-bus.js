@@ -14,7 +14,7 @@ export class EventBus extends Vue {
       if (event.includes('dependent')) {
         // console.log('Emitting:', event, ...args)
       } else if (event === FORM_INPUT_EVENT) {
-        const { element, tableKey, value } = args[0]
+        // const { element, tableKey, value } = args[0]
         // console.log('Emitting:', event, tableKey, element.elementKey, value )
       } else {
         console.log('Emitting:', event, ...args)

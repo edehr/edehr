@@ -53,6 +53,24 @@ export class EhrPages {
     return stats
   }
 
+  /**
+   * 1. Find the page
+   * 2. Find the page's table
+   * 3  Filter the table's elements to those with the a value in the given property
+   * @param pageKey
+   * @param tableKey
+   * @param property
+   * @returns {undefined}
+   */
+  findTableElementsByInputType (pageKey, tableKey, inputType) {
+    const page = this.findPage(pageKey)
+    const pageTable = page.getPageTable(tableKey)
+    let embList
+    if (pageTable) {
+      embList = pageTable.filterPageElementChildrenByInputType(inputType)
+    }
+    return embList
+  }
 }
 
 export class PageDef {
@@ -130,7 +148,7 @@ export class PageDef {
 export class PageElement /* Form or Table */{
   constructor (pgElementDef, pageChildrenDefs) {
     this.pgElementDef = pgElementDef
-    this._childrenDefs = pageChildrenDefs
+    this._pageChildElements = pageChildrenDefs
     this._children = []
   }
   get elementKey () { return this.pgElementDef.elementKey }
@@ -140,11 +158,11 @@ export class PageElement /* Form or Table */{
   get hasRecHeader () { return this.pgElementDef.hasRecHeader}
   _setupChildren (cKeys) {
     this._children = cKeys.map( key => {
-      const ch = this._childrenDefs.find(pg => pg.elementKey === key)
-      return new PageChildElement(ch)
+      return this._pageChildElements.find(pg => pg.elementKey === key)
     })
   }
   get children () { return this._children}
+
   filterPageElementChildrenByInputType (inputType) {
     return this.children.filter( pg => pg.inputType === inputType)
   }
@@ -186,7 +204,7 @@ export class PageChildElement {
   get elementKey () { return this.def.elementKey }
   get inputType () { return this.def.inputType }
   get isRecHdrFld () { return this.def.recHeader }
-  getProperty (propKey) { return this.def[propKey]}
+  getProperty (propKey) { return this.def[propKey] }
 }
 
 function cloneNotEmptyProperties (obj, pKeys) {

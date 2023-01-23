@@ -4,7 +4,6 @@
  */
 // noinspection DuplicatedCode
 import EhrDefs from './ehr-page-defs'
-import EhrTypes from '@/ehr-definitions/ehr-types'
 
 export class EhrPages {
   constructor () {
