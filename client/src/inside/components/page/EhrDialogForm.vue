@@ -79,9 +79,9 @@ export default {
         if (canSave && this.ehrHelp.activeTableDialogHasRecordHeader()) {
           const { name, profession, day, time } = this.ehrHelp.activeTableDialogRecordHeader()
           canSave = name && name.length > 0 &&
-            profession.length > 0 &&
-            day.length > 0 &&
-            time.length > 0
+            profession && profession.length > 0 &&
+            day && day.length > 0 &&
+            time && time.length > 0
         }
       }
       return !canSave
@@ -121,7 +121,7 @@ export default {
          */
         return
       }
-      if(eData.value) {
+      if(eData.open) {
         this.$refs.theDialog.onOpen()
       } else {
         this.$refs.theDialog.onClose()
@@ -177,11 +177,10 @@ export default {
   },
   mounted: function () {
     const _this = this
-    let ch = this.ehrHelp.getDialogEventChannel(this.tableKey)
     this.eventHandler = function (eData) {
       _this.receiveShowHideEvent(eData)
     }
-    EventBus.$on(ch, this.eventHandler)
+    EventBus.$on(this.ehrHelp.getDialogEventChannel(this.tableKey), this.eventHandler)
     this.inputChangeEventHandler = function (eData) {
       _this.receiveInputChangeEvent(eData)
     }
@@ -189,9 +188,8 @@ export default {
 
   },
   beforeDestroy: function () {
-    let ch = this.ehrHelp.getDialogEventChannel(this.tableKey)
     if (this.eventHandler) {
-      EventBus.$off(ch, this.eventHandler)
+      EventBus.$off(this.ehrHelp.getDialogEventChannel(this.tableKey), this.eventHandler)
     }
     if (this.inputChangeEventHandler) {
       EventBus.$off(FORM_INPUT_EVENT, this.inputChangeEventHandler)

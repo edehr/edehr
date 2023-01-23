@@ -75,8 +75,10 @@ const getters = {
         // secondLevelData.meta.simTime  may have zero values if the ehr data is empty or has no time stamped records
         mData.meta.simTime = baseMeta.simTime
       } else if (baseDay > secondDay || ( baseDay === secondDay && baseTime > secondTime ) ) {
-        console.log('Error in data. Seed simulation time is after activity\'s simulation time. This should never happen. baseLevelData.meta',
-          baseLevelData.meta, 'secondLevelData.meta', secondLevelData.meta)
+        console.log('Weird data. Case study simTime is after student\'s simTime. Case study time:',
+          baseLevelData.meta.simTime, 'student simTime:', secondLevelData.meta.simTime)
+        // use the later time ...
+        mData.meta.simTime = baseMeta.simTime
       } else {
         let vDay = baseDay
         let mTime = baseTime
@@ -95,7 +97,7 @@ const getters = {
         console.log('EhrData merged', mData)
       }
     }
-    return mData || {}
+    return mData || {meta:{}}
   },
   hasDataForPagesList (state, getters) {
     const hasData = (stats, pageKey) => stats[pageKey] && stats[pageKey].hasData

@@ -1,7 +1,7 @@
 <template lang="pug">
   div(class="ehr-page-table")
     div(v-if="showTableAddButton")
-      ui-button(v-on:buttonClicked="showDialog") {{ tableDef.addButtonText }}
+      ui-button(v-on:buttonClicked="showDialog") {{ buttonLabel }}
     div
       h2(v-show="tableDef.label") {{tableDef.label}}
       ehr-table-vertical(
@@ -43,6 +43,8 @@ import MarHelper from '../mar/mar-helper'
 import EhrDefs from '@/helpers/ehr-defs-grid'
 import EhrTypes from '@/ehr-definitions/ehr-types'
 import EhrCheckset from '@/ehr-definitions/ehr-checkset'
+import EhrData from '@/inside/components/page/ehr-data'
+import EhrTableDraft from '@/inside/components/page/ehr-table-draft'
 
 export default {
   components: {
@@ -71,7 +73,9 @@ export default {
     }
   },
   computed: {
+    buttonLabel () { return this.hasDraft ? 'Resume editing' : this.tableDef.addButtonText},
     hasData () { return this.cTableData.length > 0},
+    hasDraft () { return EhrTableDraft.getTableDraftRowIndex(this.pageDataKey, this.tableKey) > -1 },
     cTableForm () { return this.ehrHelp.getTableForm(this.tableDef.tableKey) },
     rowTemplate () {
       let rowTemplate = []
@@ -96,7 +100,7 @@ export default {
     cTableData () {
       const pageDataKey = this.pageDataKey
       const tableKey = this.tableDef.tableKey
-      const thePageData = this.ehrHelp.getMergedPageData()
+      const thePageData = EhrData.getMergedPageData(pageDataKey)
       const dbData = thePageData[tableKey]
       const tableData = []
       const rowTemplate = this.rowTemplate
@@ -153,7 +157,7 @@ export default {
 
     showDialog: function () {
       // console.log('EhrPageTable showDialog ', this.tableDef)
-      this.ehrHelp.showDialogForTable(this.tableKey, {})
+      this.ehrHelp.showDialogForTable(this.pageDataKey, this.tableKey, {})
     },
     clearAllData () {
       const TEXT = {

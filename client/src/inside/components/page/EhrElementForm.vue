@@ -35,7 +35,7 @@
       ehr-element-file(:elementKey="elementKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
 
     div(v-else-if="isType('ehr_embedded')")
-      ehr-element-embedded(:elementKey="elementKey", :ehrHelp="ehrHelp")
+      ehr-element-embedded(:elementKey="elementKey", :ehrHelp="ehrHelp", :inputVal="inputVal")
 
     hr(v-else-if="isType('horizontal')")
 

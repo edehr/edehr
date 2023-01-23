@@ -53,7 +53,7 @@ export default {
     },
     metaSimTime () {
       let data = StoreHelper.getMergedData()
-      return data.meta.simTime
+      return data.meta.simTime || {}
     },
     simulationDay () { return '' + this.metaSimTime.visitDay }, // the current computed day of the simulation
     simulationTime () { return '' + this.metaSimTime.visitTime },

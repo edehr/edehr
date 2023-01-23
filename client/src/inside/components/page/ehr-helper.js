@@ -15,6 +15,9 @@ import EhrDefs from '@/helpers/ehr-defs-grid'
 import StoreHelper from '@/helpers/store-helper'
 import validations from './ehr-validations'
 import store from '@/store'
+import EhrData from '@/inside/components/page/ehr-data'
+import EhrTableDraft from '@/inside/components/page/ehr-table-draft'
+import EhrTableActions from '@/inside/components/page/ehr-table-actions'
 
 export const LEAVE_PROMPT = 'If you leave before saving, your changes will be lost.'
 
@@ -69,13 +72,10 @@ export default class EhrPageHelper {
     return dialog ? dialog.errorList : []
   }
   getLastPageDataUpdateDate () {
-    let data = this.getMergedPageData()
+    let data = EhrData.getMergedPageData()
     return data ? this.formatDate(data.lastUpdate) : ''
   }
-  getMergedPageData (aPageKey) {
-    let pageKey = aPageKey || this.pageKey
-    return StoreHelper.getMergedPageData(pageKey)
-  }
+
   getPageDef () { return EhrDefs.getPageDefinition(this.pageKey) }
   getPageErrors () {
     return []
@@ -86,20 +86,7 @@ export default class EhrPageHelper {
   }
   getPageKey () { return this.pageKey }
   getPageTableDefs () { return EhrDefs.getPageTables(this.pageKey) }
-  getTable (tableKey) { return this.tableFormMap[tableKey]}
-  getTableDraftRowIndex (pageKey, tableKey) {
-    const pageData = this.getMergedPageData(pageKey)
-    const tableData = pageData[tableKey] || []
-    // console.log('checking for draft row in tableKey, tableData ', tableKey, tableData.length)
-    return tableData.findIndex((row) => {
-      return Object.keys(row).find(e => e === 'isDraft')
-    })
-  }
-  getTableRowData (pageKey, tableKey, rowIndex) {
-    const pageData = this.getMergedPageData(pageKey)
-    const tableData = pageData[tableKey] || []
-    return tableData[rowIndex]
-  }
+  getTableForm (tableKey) { return this.tableFormMap[tableKey]}
 
   _canEdit () {
     if(StoreHelper.isInstructor() && !StoreHelper.isSeedEditing()) {
@@ -131,7 +118,7 @@ export default class EhrPageHelper {
     if(!committing) {
       dialogValues.isDraft = 'isDraft' // mark the data as draft
     }
-    let asLoadedPageData = this.getMergedPageData(pageKey)
+    let asLoadedPageData = EhrData.getMergedPageData(pageKey)
     let table = asLoadedPageData[tableKey]
     if (!table) {
       table = []
@@ -151,7 +138,7 @@ export default class EhrPageHelper {
     return asLoadedPageData
   }
   _loadPageFormData (formKey) {
-    let asLoadedData = this.getMergedPageData()
+    let asLoadedData = EhrData.getMergedPageData()
     this.pageFormData.cacheData = JSON.stringify(asLoadedData)
     this.pageFormData.formKey = formKey
     /*
@@ -248,7 +235,7 @@ export default class EhrPageHelper {
   }
   async clearTable (tableKey) {
     const pageKey = this.pageKey
-    let asLoadedPageData = this.getMergedPageData(pageKey)
+    let asLoadedPageData = EhrData.getMergedPageData(pageKey)
     asLoadedPageData[tableKey] = [] // clears the data by loading an empty array
     let dataToSave = this._prepareTableSaveData(pageKey, asLoadedPageData)
     await this._saveData(pageKey, dataToSave)
@@ -257,12 +244,6 @@ export default class EhrPageHelper {
     const dialog = this._getActiveTableDialog()
     const tableKey = dialog.tableKey
     this._dialogEvent(tableKey, false, {})
-  }
-  editDraftRow (pageKey, tableKey, rowIndex) {
-    const rowData = this.getTableRowData(pageKey, tableKey, rowIndex)
-    const options = { data: rowData }
-    if (dbDraft) console.log('Edit draft row on table', pageKey, tableKey, rowIndex, options)
-    this._dialogEvent(tableKey, true, options)
   }
   formatDate (d) {
     return formatTimeStr(d)
@@ -286,23 +267,17 @@ export default class EhrPageHelper {
     return dialog ? dialog.viewOnly : []
   }
   async removeDraftRow () {
-    const dialog = this._getActiveTableDialog()
     const pageKey = this.pageKey
-    const tableKey = dialog.tableKey
-    let asLoadedPageData = this.getMergedPageData(pageKey)
-    let table = asLoadedPageData[tableKey]
-    // find the row with draft data or
-    const previousRow = table.findIndex(row => !!row.isDraft)
-    if (previousRow >= 0) {
-      table.splice(previousRow, 1)
-    }
-    let dataToSave = this._prepareTableSaveData(pageKey, asLoadedPageData)
+    const activeDialog = this._getActiveTableDialog()
+    const tableKey = activeDialog.tableKey
+    let revisedData = EhrTableDraft.removeDraftRow(pageKey, tableKey)
+    let dataToSave = this._prepareTableSaveData(pageKey, revisedData)
     await this._saveData(pageKey, dataToSave)
   }
   async resetFormData (childrenKeys) {
     const { pageKey } = this
     const ehrSeed = StoreHelper.getSeedEhrData()
-    const asLoadedPageData = this.getMergedPageData()
+    const asLoadedPageData = EhrData.getMergedPageData()
     if (childrenKeys) {
       childrenKeys.map(ck => {
         asLoadedPageData[ck] = ehrSeed[ck] ? ehrSeed[ck] : ''
@@ -361,9 +336,53 @@ export default class EhrPageHelper {
       return StoreHelper.updateSeedEhrProperty(pageKey, dataToSave)
     }
   }
+
+  /**
+   * Entry point to show the form dialog for a page table element.
+   * @param pageKey
+   * @param tableKey
+   * @param options
+   */
+  showDialogForTable (pageKey, tableKey, options) {
+    /*
+    Options from regular EhrPageTable has empty options.
+    Options from table action can have two forms
+      const options = {
+          tableAction: true,
+          pageKey: pageKey,
+          sourceTableKey: sourceTableKey,
+          sourceRowIndex: sourceRowIndex,
+          targetTableKey: targetTableKey
+        }
+    1. tableActionDraftRowIndex: draftRowIndex
+          OR
+    2. plus  embedRefValue: embedRefValue,
+    In case (1.) transform the row index into row data for the draft row
+    In case (2.) just pass the options on through to the dialog event handler.
+     */
+    let rowIndex = -1
+    if (options.tableAction) {
+      if (options.tableActionDraftRowIndex >= 0) {
+        rowIndex = options.tableActionDraftRowIndex
+      }
+      // else just pass on the options with embedRefValue
+      // do not set row index because there is no previous draft
+    } else {
+      // else EhrPageTable show dialog action
+      // Check for existing draft row ...
+      rowIndex = EhrTableDraft.getTableDraftRowIndex(pageKey, tableKey)
+    }
+    if (rowIndex >= 0) {
+      // either table action resume edit or regular resume edit
+      // Also see ehr-helper.editDraftRow
+      EhrTableDraft.addEditDraftRowOptions(options, pageKey, tableKey, rowIndex)
+    }
+    console.log('invoke _dialogEvent ', JSON.stringify(options))
+    this._dialogEvent(tableKey, true, options)
+  }
   savePageFormEdit () {
     let payload = this.pageFormData
-    const asLoadedPageData = this.getMergedPageData()
+    const asLoadedPageData = EhrData.getMergedPageData()
     const mergedValues = {
       ...asLoadedPageData,
       ...payload.value
@@ -372,26 +391,24 @@ export default class EhrPageHelper {
     let dataToSave = this._prepareTableSaveData(this.pageKey, mergedValues)
     this._saveData(this.pageKey, dataToSave)
   }
+  editDraftRow (pageKey, tableKey, rowIndex) {
+    // Also see ehr-helper.showDialogForTable where there is a draft row index found
+    const options = {}
+    EhrTableDraft.addEditDraftRowOptions(options, pageKey, tableKey, rowIndex)
+    // results:  options = { draftRowData: rowData, draftRowIndex: rowIndex }
+    this._dialogEvent(tableKey, true, options)
+  }
   showReport (pageKey, tableKey, rowIndex) {
-    const rowData = this.getTableRowData(pageKey, tableKey, rowIndex)
-    const options = { data: rowData, viewOnly: true}
+    const rowData = EhrData.getTableRowData(pageKey, tableKey, rowIndex)
+    const options = { viewOnlyData: rowData, viewOnly: true}
     if (dbDraft) console.log('Show view only row', pageKey, tableKey, rowIndex, options)
+    // console.log('Show view only row', pageKey, tableKey, rowIndex, options)
     this._dialogEvent(tableKey, true, options)
   }
   showTableAddButton () {
     return this._showControl('hasGridTable')
   }
-  showDialogForTable (tableKey, options) {
-    let pageKey = this.pageKey
-    let rowIndex = this.getTableDraftRowIndex(pageKey, tableKey)
-    if (dbDraft) console.log('showDialogEvent draft row index', rowIndex)
-    if (rowIndex >= 0) {
-      this.editDraftRow (pageKey, tableKey, rowIndex)
-    } else {
-      // console.log('showDialogForTable', options)
-      this._dialogEvent(tableKey, true, options)
-    }
-  }
+
   stashActiveData (elementKey, value) {
     try {
       let data = this.getActiveData()
@@ -429,13 +446,20 @@ export default class EhrPageHelper {
    *
    * @param tableKey
    * @param open
-   * @param options { data | viewOnly | tableActionRowIndex}
+   * @param options ....
+   * From table action can have two forms
+   * 1. options = { embedRefValue: embedRefValue, ... }
+   * If the table row is draft then ...
+   * 2. options = { draftRowData: rowData, draftRowIndex: index }
+   * 3. options = { viewOnlyData: rowData, viewOnly: true}
    * @private
    */
   _dialogEvent (tableKey, open, options) {
+    options.open = open
     if (dbDialog) console.log('EhrHelpV2 dialog event', tableKey, open, JSON.stringify(options))
     let dialog = this.tableFormMap[tableKey]
     dialog.viewOnly = options.viewOnly
+    dialog.activeOptions = options
     let hasRecHeader = dialog.tableDef.hasRecHeader
     /*
     See EhrElementCommon.dialogEvent. See the setInitialValue call.  Normally, all changes to
@@ -450,45 +474,58 @@ export default class EhrPageHelper {
     /*
      * begin here.  this is where the dialog is opened and needs to be initialized based on the content
      * if viewing or editing draft, or initialized with form defaults if a new record.
-     * Could use this flow ...
+     * Will use this flow ...
      * be sure form input update events are not going to fire
      * set to defaults
      * set simTime
      * if there is data then load it
      * then turn on form input updates
-     *
      */
     dialog.errorList = []
     this._clearDialogInputs(dialog)
     if(open && hasRecHeader) {
       // push in the current sim day/time
-      const { visitDay, visitTime } = StoreHelper.getMergedData().meta.simTime
+      const mData = StoreHelper.getMergedData()
+      // console.log('mData', mData)
+      const { visitDay, visitTime } = mData.meta.simTime
       // console.log('sim time', visitDay, visitTime)
       dialog.inputs['day'] = ''+ visitDay
       dialog.inputs['time'] = ''+ visitTime
     }
-    if (options.data) {
+    if (options.draftRowData) {
       // may override the sim day/time here if previously set to something else
-      dialog.inputs = { ...options.data }
+      dialog.inputs = { ...options.draftRowData }
+    }
+    if (options.viewOnlyData) {
+      console.log('data from request to view a record', options.viewOnlyData)
+      // may override the sim day/time here if previously set to something else
+      dialog.inputs = { ...options.viewOnlyData }
+    }
+
+    if (open && options.embedRefValue) {
+      const srcElemKey = EhrTableActions.getTableActionTargetElementKey(options.pageKey, options.sourceTableKey, options.targetTableKey)
+      console.log('Setup dialog for embedded ref. Source element key', srcElemKey)
+      console.log('options.embedRefValue', options.embedRefValue)
+      dialog.inputs[srcElemKey] = options.embedRefValue
     }
     // NOW set the open/close state flag based on what is happening
     dialog.active = open
     // End by sending out the "i'm opened/closed event"
-    let eData = { key: tableKey, value: open, options: options }
-    let channel = this.getDialogEventChannel(tableKey)
+    let eData = Object.assign({ key: tableKey, open: open}, options )
+    /* Send an event on our transmission channel
+     with a payload containing the open flag
+     This is picked up by each form element (see EhrElementCommon)
+
+     Also in the EhrDialogForm (see receiveShowHideEvent). This is used to call the "open"
+     event on embedded forms so they get loaded.  this.$refs.theDialog.onOpen()
+     Might be better to not reused the open event here?
+
+     This event on channel is also EMITTED by the EhrElementEmbedded when setEmbeddedGroupData() is invoked
+    */
+    const _this = this
     Vue.nextTick(function () {
-      /* Send an event on our transmission channel
-       with a payload containing the open flag
-       This is picked up by each form element (see EhrElementCommon)
-
-       Also in the EhrDialogForm (see receiveShowHideEvent). This is used to call the "open"
-       event on embedded forms so they get loaded.  this.$refs.theDialog.onOpen()
-       Might be better to not reused the open event here?
-
-       This event on channel is also EMITTED by the EhrElementEmbedded when setEmbeddedGroupData() is invoked
-      */
-      if (dbDraft) console.log('emit event on', channel, ' data:', JSON.stringify(eData))
-      EventBus.$emit(channel, eData)
+      console.log('send emit getDialogEventChannel event with eData', JSON.stringify(eData))
+      EventBus.$emit(_this.getDialogEventChannel(tableKey), eData)
     })
   }
   _clearDialogInputs (dialog) {

@@ -4,6 +4,7 @@ import moment from 'moment'
 import { formatDateStr } from '@/helpers/ehr-utils'
 import EventBus, { PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
 import { TABLE_ACTION_EVENT } from '@/helpers/event-bus'
+import StoreHelper from '@/helpers/store-helper'
 
 export default {
   components: {
@@ -19,6 +20,8 @@ export default {
   },
   computed: {
     hasData () { return this.cTableData.length > 0},
+    isSubmitted () { return StoreHelper.isSubmitted() },
+    showTableAction () { return this.tableDef.tableAction && !this.isSubmitted }
   },
   methods: {
     getCellCss: function (cell) {
@@ -33,15 +36,14 @@ export default {
       }
       return value
     },
-    tableAction: function (sourceTableKey, targetTableKey, sourceRowIndex) {
-      EventBus.$emit(TABLE_ACTION_EVENT, sourceTableKey, targetTableKey, sourceRowIndex)
+    tableAction: function (sourceTableKey, sourceRowIndex, targetTableKey) {
+      EventBus.$emit(TABLE_ACTION_EVENT, sourceTableKey, sourceRowIndex, targetTableKey)
     },
     editDraft (pageKey, tableKey, rowIndex) {
       console.log('edit draft', pageKey, tableKey, rowIndex)
       this.$emit('editDraft', pageKey, tableKey, rowIndex)
     },
     viewReport (pageKey, tableKey, rowIndex) {
-      // console.log('view report', pageKey, tableKey, rowIndex)
       this.$emit('viewReport', pageKey, tableKey, rowIndex)
     }
   },

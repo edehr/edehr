@@ -65,7 +65,7 @@ export default {
     },
     submitButtonTip () { return this.hasDraft ? BUTTON_WARN : ''},
     statusMessage () {
-      return StoreHelper.isSubmitted(this) ? Text.IS_SUBMITTED : ''
+      return StoreHelper.isSubmitted() ? Text.IS_SUBMITTED : ''
     },
     disableNavAction () {
       return this.$store.state.system.isEditing

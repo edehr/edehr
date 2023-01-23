@@ -10,6 +10,7 @@ import EhrPanelContent from '@/inside/components/page/EhrPanelContent.vue'
 import EhrPageTable from '@/inside/components/page/EhrPageTable'
 import EhrDefs from '@/helpers/ehr-defs-grid'
 import EventBus, { TABLE_ACTION_EVENT } from '@/helpers/event-bus'
+import EhrTableActions from '@/inside/components/page/ehr-table-actions'
 
 export default {
   components: {
@@ -46,12 +47,29 @@ export default {
   },
   mounted: function () {
     const _this = this
+    const pageDataKey = this.pageDataKey
     /*
     TABLE_ACTION_EVENT comes from a table inside one of the page tables.
     It is used to open a dialog on another table based on the contents of the source table.
      */
-    this.showEventHandler = function (sourceTableKey, targetTableKey, sourceRowIndex) {
-      _this.ehrHelp.tableActionRequest(sourceTableKey, targetTableKey, sourceRowIndex)
+    this.showEventHandler = function (sourceTableKey, sourceRowIndex, targetTableKey) {
+      const options = EhrTableActions.getTableActionRequestOptions(
+        pageDataKey, sourceTableKey, sourceRowIndex, targetTableKey)
+      /*
+        const options = {
+          tableAction: true,
+          pageKey: pageKey,
+          sourceTableKey: sourceTableKey,
+          sourceRowIndex: sourceRowIndex,
+          targetTableKey: targetTableKey
+        }
+      PLUS
+        tableActionDraftRowIndex: draftRowIndex
+      OR
+        embedRefValue: embedRefValue,
+       */
+      console.log('invoke shorDialogForTable', JSON.stringify(options))
+      _this.ehrHelp.showDialogForTable(pageDataKey, targetTableKey, options)
     }
     EventBus.$on(TABLE_ACTION_EVENT, this.showEventHandler)
   },

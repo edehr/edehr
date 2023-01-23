@@ -13,12 +13,12 @@
                 span View &nbsp;
                 fas-icon(icon="file-pdf")
               ui-button(
-                  v-if="!cell.isDraft && tableDef.tableAction && colIndex === 0",
+                  v-if="!cell.isDraft && showTableAction && colIndex === 0",
                   v-on:buttonClicked="tableAction(tableDef.tableKey, tableDef.tableAction, index)"
                   )
                 span {{ tableDef.tableActionLabel }} &nbsp;
                 fas-icon(icon="notes-medical")
-              ui-button(v-if="cell.isDraft && colIndex === 0", v-on:buttonClicked="editDraft(pageDataKey, tableKey, index)")
+              ui-button(v-if="cell.isDraft && colIndex === 0 && !isSubmitted", v-on:buttonClicked="editDraft(pageDataKey, tableKey, index)")
                 span Edit &nbsp;
                 fas-icon(icon="edit")
               div(v-for="cPart in cell.stack")

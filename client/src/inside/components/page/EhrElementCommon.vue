@@ -5,6 +5,7 @@ import EhrDefs from '@/helpers/ehr-defs-grid'
 import EhrTypes from '@/ehr-definitions/ehr-types'
 import UiInfo from '@/app/ui/UiInfo'
 import EventBus, { FORM_INPUT_EVENT, PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
+import EhrData from '@/inside/components/page/ehr-data'
 
 const DEPENDENT_PROPS = EhrTypes.dependentOn
 
@@ -107,7 +108,7 @@ export default {
     },
     refreshPage () {
       try {
-        let pageData = this.ehrHelp.getMergedPageData()
+        let pageData = EhrData.getMergedPageData(this.pageDataKey)
         let value = pageData[this.elementKey]
 
         let defVal = EhrDefs.getDefaultValue(this.pageDataKey, this.elementKey)
@@ -148,56 +149,55 @@ export default {
         console.error('Refresh element on page', err.message)
       }
     },
-    handleDialogEvent (open, options) {
-      if (dbDialog) console.log('EhrCommon dialog opened or closed', this.elementKey, open)
+    handleDialogEvent (options) {
+      const open = options.open
+      // console.log('EEC dialog event. eKey:', this.elementKey,', options:', JSON.stringify(options))
       /*
       this.dialogIsOpen = open
-      Change this from a local value per element to an accessor on the single source of truth.
-      That source might best be put into a vuex store.
+      TODO Change this.dialogIsOpen from a local value per element to an accessor on the single source of truth.
+      This might be accomplished by passing the dialog into the event instead of the options.
        */
       this.dialogIsOpen = open
-      if (open) {
-        // isEmbedded is provided by the parent. What is embedded? Document
-        if (this.isEmbedded) {
-          /*
+      if (!open) {
+        console.log('EEC If closing (not open) then just return')
+        return
+      }
+      // isEmbedded is provided by the parent.
+      if (this.isEmbedded) {
+        /*
           let inputs = options.inputs ? options.inputs : options.data
           Change this. Data should not come from two different object types without a strong and clear need
            */
-          let inputs = options.inputs ? options.inputs : options.data
-          if (inputs) {
-            /*
+        let inputs = options.inputs ? options.inputs : options.data
+        // console.log('EEC handleDialogEvent. is embedded', inputs)
+        if (inputs) {
+          /*
             If this is an embedded item then it is read only and only reflects values ... so why the following two steps?
              */
-            let initialValue = inputs[this.elementKey]
-            this.setInitialValue(initialValue) // setInitialValue will emit event to trigger items dependent on this item
-          } else {
-            /**
+          let initialValue = inputs[this.elementKey]
+          this.setInitialValue(initialValue) // setInitialValue will emit event to trigger items dependent on this item
+        } else {
+          /**
              * Document why there might not be inputs in the options.
              */
-            console.log('inputs TODO fix no inputs here ', options, this.elementKey)
-          }
-        } else {
-          let inputs = this.ehrHelp.getDialogInputs(this.tableKey)
-          let initialValue = inputs[this.elementKey]
-          if (dbDialog || dbInputs) console.log('EhrCommon dialog input for key has value:', this.key, initialValue)
-          this.setInitialValue(initialValue)
-          if (this.inputType === EhrTypes.dataInputTypes.ehr_embedded) {
-            if( options.viewOnly ) {
-              console.log('what happens if we skip sending input event on embedded ')
-            } else {
-              /*
-              Why is the ref value being composed here and isn't in the input data?
-              Have seen many times the tableActionRowIndex is undefined. BAD
-               */
-              const refValue = this.element.embedRef + '.' + options.tableActionRowIndex
-              // console.log('dialogEvent SET embedded', this.$options.name)
-              // console.log('dialogEvent SET options', options)
-              // console.log('dialogEvent SET embedded initialValue', initialValue)
-              // console.log('dialogEvent SET embedded refValue', refValue)
+          // console.log('inputs TODO fix no inputs here ', options, this.elementKey)
+        }
+      } else {
+        let inputs = this.ehrHelp.getDialogInputs(this.tableKey)
+        let initialValue = inputs[this.elementKey]
+        if (dbDialog || dbInputs) console.log('EhrCommon dialog input for key has value:', this.key, initialValue)
+        this.setInitialValue(initialValue)
+        if (this.inputType === EhrTypes.dataInputTypes.ehr_embedded) {
+          if( options.viewOnly ) {
+            console.log('EEC what happens if we skip sending input event on embedded ')
+          } else {
+            const refValue = options.embedRefValue
+            // console.log('EEC set embedded refValue', refValue)
+            if (refValue) {
               // store this value into the active inputs area to be saved along with other data, if the dialog save is invoked.
               // Why are we sending the FORM INPUT EVENT here? Why not from the watch?
               this.sendInputEvent(refValue)
-              // the element receiving this event may not be a EhrElementEmbedded
+              // If the element receiving this event is a EhrElementEmbedded ...
               if (this.setEmbeddedGroupData) {
                 this.setEmbeddedGroupData(refValue)
               }
@@ -221,11 +221,9 @@ export default {
       }
       if (this.isTableElement) {
         this.dialogEventHandler = function (eData) {
-          _this.handleDialogEvent(eData.value, eData.options)
+          _this.handleDialogEvent(eData)
         }
-        this.dialogEventKey = this.ehrHelp.getDialogEventChannel(this.tableKey)
-        // console.log('ehr common listen on channel', this.dialogEventKey)
-        EventBus.$on(this.dialogEventKey, this.dialogEventHandler)
+        EventBus.$on(this.ehrHelp.getDialogEventChannel(this.tableKey), this.dialogEventHandler)
       }
     }
   },
@@ -241,8 +239,7 @@ export default {
       EventBus.$off(PAGE_DATA_REFRESH_EVENT, this.pageRefreshEventHandler)
     }
     if (this.dialogEventHandler) {
-      // console.log('beforeDestroy EhrElementCommon dialogEventHandler ', this.dialogEventKey)
-      EventBus.$off(this.dialogEventKey, this.dialogEventHandler)
+      EventBus.$off(this.ehrHelp.getDialogEventChannel(this.tableKey), this.dialogEventHandler)
     }
   },
   watch: {

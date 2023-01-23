@@ -21,6 +21,7 @@ import EhrDefs from '../../../helpers/ehr-defs-grid'
 import EventBus, { PAGE_DATA_REFRESH_EVENT } from '../../../helpers/event-bus'
 import EhrDialogForm from '../page/EhrDialogForm.vue'
 import EhrPageTable from '../page/EhrPageTable'
+import EhrData from '@/inside/components/page/ehr-data'
 
 export default {
   components: {
@@ -76,13 +77,13 @@ export default {
   },
   methods: {
     showDialog () {
-      this.ehrHelp.showDialogForTable(this.tableKey, {})
+      this.ehrHelp.showDialogForTable(this.pageDataKey, this.tableKey, {})
     },
     refresh () {
       let tableKey = this.tableDef.tableKey
       let pageKey = this.ehrHelp.getPageKey()
       // console.log('Vitals2 refresh for page table key', pageKey, tableKey)
-      let pageData = this.ehrHelp.getMergedPageData(pageKey)
+      let pageData = EhrData.getMergedPageData(pageKey)
       // store the current data into local data property for display
       this.tableData = pageData[tableKey] || []
       // console.log('Vitals page and table data', pageData, this.tableData)
