@@ -21,7 +21,7 @@
               ui-button(v-if="!isDraft(dRow)", v-on:buttonClicked="viewReport(pageDataKey, tableKey, rIndex)")
                 span View &nbsp;
                 fas-icon(icon="file-pdf")
-              ui-button(v-if="isDraft(dRow) && !isSubmitted", v-on:buttonClicked="editDraft(pageDataKey, tableKey, rIndex)")
+              ui-button(v-if="isDraft(dRow) && canEdit", v-on:buttonClicked="editDraft(pageDataKey, tableKey, rIndex)")
                 span Edit &nbsp;
                 fas-icon(icon="edit")
             td(v-for="(cell, cIndex) in dRow", :key="cIndex", class="cell.tableCss",  v-if="!!cell.stack")
@@ -38,6 +38,11 @@ export default {
   extends: EhrTableCommon,
   components: { EhrTableElement, UiButton },
   inject: [ 'pageDataKey', 'tableKey'],
+  computed: {
+    canEdit () {
+      return this.ehrHelp._canEdit()
+    },
+  },
   methods: {
     tableActionLabel (rowIndex) {
       return EhrTableActions.getTableActionLabel(this.pageDataKey, this.tableDef, rowIndex)

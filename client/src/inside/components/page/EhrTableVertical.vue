@@ -18,7 +18,7 @@
                   )
                 span {{ tableDef.tableActionLabel }} &nbsp;
                 fas-icon(icon="notes-medical")
-              ui-button(v-if="cell.isDraft && colIndex === 0 && !isSubmitted", v-on:buttonClicked="editDraft(pageDataKey, tableKey, index)")
+              ui-button(v-if="cell.isDraft && colIndex === 0 && canEdit", v-on:buttonClicked="editDraft(pageDataKey, tableKey, index)")
                 span Edit &nbsp;
                 fas-icon(icon="edit")
               div(v-for="cPart in cell.stack")
@@ -40,6 +40,9 @@ export default {
     }
   },
   computed: {
+    canEdit () {
+      return this.ehrHelp._canEdit()
+    },
     draftColumnIndex () {
       let inx = -1
       this.cTableData.forEach ( (row, index) => {
