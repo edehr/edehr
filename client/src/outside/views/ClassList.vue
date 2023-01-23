@@ -3,6 +3,17 @@
     zone-lms-page-banner
       activity-actions(class="flow_across_last_item")
 
+    div(class="details-container card selected")
+      div(class="details-row")
+        div(class="details-name") {{ text.ACTIVITY_LABEL}}
+        div(class="details-value")
+          div(v-text-to-html="activity.resource_link_title")
+      div(class="details-row")
+        div(class="details-name") {{text.LOBJ}}
+        div(class="details-value")
+          fas-icon(class='fa', :icon='appIcons.lobj')
+          span &nbsp; {{ assignment.name }}
+
     div(class="classlist-body")
       div(v-if="classList.length===0") No students have attempted this activity.
       div(v-else, v-for="(studentVisit) in classList", class="list-card list-element", :class="rowClass(studentVisit)")
@@ -17,6 +28,7 @@ import ActivityActions from '@/outside/components/lms-activity/ActivityActions'
 import OutsideCommon from '@/outside/views/OutsideCommon'
 import ZoneLmsPageName from '@/outside/components/ZoneLmsPageName'
 import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner'
+import { Text } from '@/helpers/ehr-text'
 
 const debug = false
 export default {
@@ -24,6 +36,7 @@ export default {
   components: { ZoneLmsPageBanner, ZoneLmsPageName, ActivityActions, UiLink, ClassListItem  },
   data () {
     return {
+      text: Text.ACTIVITY_PAGE,
     }
   },
   computed: {
