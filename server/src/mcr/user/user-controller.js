@@ -74,6 +74,13 @@ export default class UserController extends BaseController {
               })
           })
           Promise.all(promiseList).then(() => {
+            courses.forEach(course => {
+              course.activities.sort( ( a, b ) => {
+                let t1 = a.resource_link_title || ''
+                let t2 = b.resource_link_title || ''
+                return t1.localeCompare(t2)
+              })
+            })
             resolve({ courses: courses })
           })
         })
