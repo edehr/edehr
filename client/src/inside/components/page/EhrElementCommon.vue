@@ -159,7 +159,7 @@ export default {
        */
       this.dialogIsOpen = open
       if (!open) {
-        console.log('EEC If closing (not open) then just return')
+        // console.log('EEC If closing (not open) then just return')
         return
       }
       // isEmbedded is provided by the parent.

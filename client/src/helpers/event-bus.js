@@ -5,7 +5,7 @@ export const FORM_INPUT_EVENT = 'FORM_INPUT_EVENT'
 export const TABLE_ACTION_EVENT = 'TABLE_ACTION_EVENT'
 export const PRACTITIONER = 'PRACTITIONER'
 
-const showEmits = true
+const showEmits = false
 
 export class EventBus extends Vue {
   // Override Vue's $emit to record all events in console.

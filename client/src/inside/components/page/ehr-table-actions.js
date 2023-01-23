@@ -115,7 +115,7 @@ export default class EhrTableActions {
       const embedRefValue = this.getTableActionGetRef(pageKey, sourceTableKey, sourceRowIndex)
       options.embedRefValue = embedRefValue
     }
-    console.log('gtaro', JSON.stringify(options))
+    // console.log('gtaro', JSON.stringify(options))
     return options
   }
 

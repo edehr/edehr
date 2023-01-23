@@ -124,8 +124,9 @@ export default class EhrPageHelper {
       table = []
       asLoadedPageData[tableKey] = table
     }
-    // find the row with draft data or
-    const previousRow = table.findIndex(row => !!row.isDraft)
+    // Use the row marked as draft when the dialog opened
+    const previousRow = dialog.options.draftRowIndex
+    // console.log('inject data previousRow', previousRow)
     if (previousRow >= 0) {
       if ( committing ) {
         delete dialogValues.isDraft
@@ -134,6 +135,8 @@ export default class EhrPageHelper {
     } else {
       // or push a new row of data
       table.push(dialogValues)
+      dialog.options.draftRowIndex = table.length - 1
+      // console.log('after creating a new row use that for future saves', dialog.options.draftRowIndex)
     }
     return asLoadedPageData
   }
@@ -377,7 +380,7 @@ export default class EhrPageHelper {
       // Also see ehr-helper.editDraftRow
       EhrTableDraft.addEditDraftRowOptions(options, pageKey, tableKey, rowIndex)
     }
-    console.log('invoke _dialogEvent ', JSON.stringify(options))
+    // console.log('invoke _dialogEvent ', JSON.stringify(options))
     this._dialogEvent(tableKey, true, options)
   }
   savePageFormEdit () {
@@ -457,9 +460,12 @@ export default class EhrPageHelper {
   _dialogEvent (tableKey, open, options) {
     options.open = open
     if (dbDialog) console.log('EhrHelpV2 dialog event', tableKey, open, JSON.stringify(options))
+    // Get the dialog object for the target table
     let dialog = this.tableFormMap[tableKey]
+    // stash all the options. The important option is any draft row index for the save operation to
+    // reinsert the row in the correct location
+    dialog.options = options
     dialog.viewOnly = options.viewOnly
-    dialog.activeOptions = options
     let hasRecHeader = dialog.tableDef.hasRecHeader
     /*
     See EhrElementCommon.dialogEvent. See the setInitialValue call.  Normally, all changes to
@@ -524,7 +530,7 @@ export default class EhrPageHelper {
     */
     const _this = this
     Vue.nextTick(function () {
-      console.log('send emit getDialogEventChannel event with eData', JSON.stringify(eData))
+      // console.log('send emit getDialogEventChannel event with eData', JSON.stringify(eData))
       EventBus.$emit(_this.getDialogEventChannel(tableKey), eData)
     })
   }

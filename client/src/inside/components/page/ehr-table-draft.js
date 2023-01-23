@@ -5,7 +5,7 @@ export default class EhrTableDraft {
     const rowData = EhrData.getTableRowData(pageKey, tableKey, rowIndex)
     options.draftRowData = rowData
     options.draftRowIndex= rowIndex
-    console.log('Edit draft row on table', pageKey, tableKey, rowIndex, options)
+    // console.log('Edit draft row on table', pageKey, tableKey, rowIndex, options)
   }
 
   /**

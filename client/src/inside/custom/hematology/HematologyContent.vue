@@ -68,7 +68,7 @@ export default {
       OR
         embedRefValue: embedRefValue,
        */
-      console.log('invoke shorDialogForTable', JSON.stringify(options))
+      // console.log('invoke shorDialogForTable', JSON.stringify(options))
       _this.ehrHelp.showDialogForTable(pageDataKey, targetTableKey, options)
     }
     EventBus.$on(TABLE_ACTION_EVENT, this.showEventHandler)
