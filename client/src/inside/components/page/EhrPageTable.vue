@@ -25,7 +25,7 @@
         @viewReport='showReport'
       )
     ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDef", :errorList="errorList" )
-    div(v-if="hasData", style="text-align: right;") <!-- put the clear button on the far right side -->
+    div(v-if="canResetTableData", style="text-align: right;") <!-- put the clear button on the far right side -->
       ui-button(class="reset-button", v-on:buttonClicked="clearAllData",
         :title="resetToolTip",
         v-bind:secondary="true") Reset
@@ -74,6 +74,7 @@ export default {
   },
   computed: {
     buttonLabel () { return this.hasDraft ? 'Resume editing' : this.tableDef.addButtonText},
+    canResetTableData () { return this.hasData &&  this.ehrHelp.canResetTableData() },
     hasData () { return this.cTableData.length > 0},
     hasDraft () { return EhrTableDraft.getTableDraftRowIndex(this.pageDataKey, this.tableKey) > -1 },
     cTableForm () { return this.ehrHelp.getTableForm(this.tableDef.tableKey) },

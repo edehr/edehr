@@ -223,6 +223,9 @@ export default class EhrPageHelper {
   canEditForm () {
     return this._canEdit() && !this.isEditing()
   }
+  canResetTableData () {
+    return this._canEdit()
+  }
   /**
    * Cancel the edit on a page form. Restore values from the database.
    */
