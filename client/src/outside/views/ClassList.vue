@@ -7,12 +7,15 @@
       div(class="details-row")
         div(class="details-name") {{ text.ACTIVITY_LABEL}}
         div(class="details-value")
-          div(v-text-to-html="activity.resource_link_title")
+          ui-link(:name="'lms-activity'", :query="{activityId: activity._id}")
+            fas-icon(class="fa", :icon="appIcons.activity")
+            span &nbsp; {{activity.resource_link_title}}
       div(class="details-row")
         div(class="details-name") {{text.LOBJ}}
         div(class="details-value")
-          fas-icon(class='fa', :icon='appIcons.lobj')
-          span &nbsp; {{ assignment.name }}
+          ui-link(:name="'learning-object'", :query="{learningObjectId: assignment._id}")
+            fas-icon(class='fa', :icon='appIcons.lobj')
+            span &nbsp; {{ assignment.name }}
 
     div(class="classlist-body")
       div(v-if="classList.length===0") No students have attempted this activity.
@@ -67,14 +70,26 @@ export default {
        */
       if (debug) console.log('CL loadComponent', this.activityId)
       try {
-        await StoreHelper.loadCurrentActivity()
-        if (debug) console.log('CL loadComponent loadInstructorWithStudent', this.activityId)
-        let result = await StoreHelper.loadInstructorWithStudent()
-        if (result) {
-          if (debug) console.log('CL results', result)
-        } else {
-          console.error('CL loadComponent no results', this.activityId)
+        const fromRoute = this.$route.query.activityId
+        const fromStore = this.$store.getters['activityStore/activityId']
+        const activityId = fromRoute ? fromRoute : fromStore
+        await this.$store.dispatch('activityStore/setActivityId', activityId)
+        const activity = await this.$store.dispatch('activityStore/loadCurrentActivity')
+        if (activity.assignment) {
+          await this.$store.dispatch('assignmentStore/load', activity.assignment)
+          const seedId = this.assignment.seedDataId
+          await this.$store.dispatch('seedListStore/loadSeedContent', seedId)
         }
+        await this.$store.dispatch('instructor/loadClassList')
+
+        // await StoreHelper.loadCurrentActivity()
+        // if (debug) console.log('CL loadComponent loadInstructorWithStudent', this.activityId)
+        // let result = await StoreHelper.loadInstructorWithStudent()
+        // if (result) {
+        //   if (debug) console.log('CL results', result)
+        // } else {
+        //   console.error('CL loadComponent no results', this.activityId)
+        // }
       } catch(error){
         console.error('CL loadComponent failed', error)
       }

@@ -40,6 +40,12 @@
             fas-icon(class='fa', :icon='appIcons.lobj')
             span &nbsp; {{ activity.assignment.name }}
       div(class="details-row")
+        div(class="details-name") {{text.CLASS_LIST}}
+        div(class="details-value")
+          ui-link(:name="'classList'", :query="{activityId: activity._id}")
+            fas-icon(class='fa', :icon='appIcons.activity')
+            span &nbsp; {{text.CLASS_LIST_BTN}}
+      div(class="details-row")
         div(class="details-name") {{text.CASE_STUDY}}
         div(class="details-value")
           ui-link(name="seed-view", :query="{seedId: activity.caseStudy._id}")

@@ -12,6 +12,13 @@
         div(class="details-value")
           div(v-text-to-html="activity.resource_link_description")
       div(class="details-row")
+        div(class="details-name") {{text.CLASS_LIST}}
+        div(class="details-value")
+          ui-link(:name="'classList'", :query="{activityId: activityId}")
+            fas-icon(class='fa', :icon='appIcons.activity')
+            span &nbsp; {{text.CLASS_LIST_BTN}}
+          span &nbsp; {{text.STUDENTS_VAL(classList.length, classSubmittedList.length)}}
+      div(class="details-row")
           div(class="details-name") {{text.LOBJ}}
           div(class="details-value")
             ui-link(:name="'learning-object'", :query="{learningObjectId: assignment._id}")
@@ -23,13 +30,6 @@
           ui-link(name="seed-view", :query="{seedId: seedDataId}")
             fas-icon(class='fa', :icon='appIcons.seed')
             span &nbsp; {{ seed.name }}
-      div(class="details-row")
-        div(class="details-name") {{text.CLASS_LIST}}
-        div(class="details-value")
-          ui-link(:name="'classList'", :query="{activityId: activityId}")
-            fas-icon(class='fa', :icon='appIcons.activity')
-            span &nbsp; {{text.CLASS_LIST_BTN}}
-          span &nbsp; {{text.STUDENTS_VAL(classList.length, classSubmittedList.length)}}
       div(class="details-row")
         div(class="details-name") {{text.DATES}}
         div(class="details-value") {{text.DATES_VAL(createDate, lastUpdate) }}

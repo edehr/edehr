@@ -12,6 +12,10 @@
         div(class="details-value")
           div(v-text-to-html="learningObject.description")
       div(class="details-row")
+        div(class="details-name") {{ text.SEED }}
+        div(class="details-value")
+          ui-link(:name="'seed-view'", :params="{seedId: learningObject.seedDataId}") {{ seed.name }}
+      div(class="details-row")
         div(class="details-name") {{text.USED}}
         div(class="details-value")
           div(v-for="act in accessibleActivities", :key="act._id")
@@ -19,10 +23,6 @@
               fas-icon(class="fa", :icon="appIcons.activity")
               span &nbsp; {{act.resource_link_title}}
           div(v-if="unreachableActivityCount > 0 ") {{unreachableActivityText}}
-      div(class="details-row")
-        div(class="details-name") {{ text.SEED }}
-        div(class="details-value")
-          ui-link(:name="'seed-view'", :params="{seedId: learningObject.seedDataId}") {{ seed.name }}
       div(class="details-row")
         div(class="details-name") {{ text.DATES }}
         div(class="details-value").
