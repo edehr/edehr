@@ -104,7 +104,7 @@ const mutations = {
   },
   setActivity: (state, activity) => {
     if(state.activityId !== activity._id) {
-      throw new Error('System failure. The give activity has a different id then expected.')
+      throw new Error('System failure. The given activity has a different id then expected.')
     }
     state.activity = activity
   },

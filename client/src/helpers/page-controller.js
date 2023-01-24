@@ -220,6 +220,8 @@ async  function onPageChange (toRoute, fromRoute) {
           if (fromZone === 'ehr') {
             console.log('page - change from ehr')
           } else {
+            const activityId = store.getters['visit/activityId']
+            await StoreHelper.setActivityId(activityId)
             const activity = await StoreHelper.loadCurrentActivity()
             if (activity.assignment) {
               // only when the activity has an assignment(learning object) can the visit have any activity data

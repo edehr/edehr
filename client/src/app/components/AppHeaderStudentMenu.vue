@@ -15,9 +15,14 @@ export default {
     activity () { return this.$store.getters['activityStore/activity'] || {} },
     assignment () { return this.$store.getters['assignmentStore/assignment'] || {} },
     inZoneEHR () { return StoreHelper.inZoneEHR()  },
-    tooltip () { return this.activity.resource_link_title + ' / ' + this.assignment.name }
+    tooltip () { return this.activity.resource_link_title + ' / ' + this.assignment.name },
+    visitId () { return this.$store.getters['visit/visitId']}
   },
-  methods: { }
+  methods: {
+    goToEhr () {
+      this.$router.push({ name: 'ehr', query: { visitId: this.visitId } })
+    },
+  }
 }
 </script>
 
