@@ -111,7 +111,6 @@ export class PageDef {
                 pgStats.hasDraft = true
               }
             })
-            break
           }
         }
       }
