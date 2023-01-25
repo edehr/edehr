@@ -2,15 +2,9 @@
   div
     div(class="flow_across")
 
-      div(class="details-row")
-        div(class="details-name") {{ text.ACTIVITY_LABEL}}
-        div(class="details-value")
-          div
-            fas-icon(class="fa", :icon="appIcons.activity")
-            span &nbsp; {{activity.resource_link_title}}
-          div
-            fas-icon(class='fa', :icon='appIcons.lobj')
-            span &nbsp; {{ assignment.name }}
+      div
+        fas-icon(class="fa", :icon="appIcons.lobj")
+        span &nbsp; {{activity.resource_link_title}} / {{ assignment.name }}
 
       div(class="flow_across_last_item")
         div(class="flow_across menu_space_across")

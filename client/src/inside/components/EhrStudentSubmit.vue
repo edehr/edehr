@@ -38,7 +38,7 @@ const FEEDBACK_TITLE = 'Optional Feedback Form'
 const FEEDBACK_BODY = 'Your assignment is submitted. Before you go, '+
   ' can you please give us your thoughts and suggestions about the EdEHR.' +
   ' This is completely anonymous and optional yet your comments will help us improve this application.'
-const BUTTON_WARN = 'Warning. Your work contains draft rows'
+const BUTTON_WARN = 'Warning. Your work contains draft reports'
 /*
 Collect student feedback, completely anonymous and voluntary, after work is submitted.
  */
@@ -83,16 +83,14 @@ export default {
             this.$refs.submitFeedback.onOpen()
           } else {
           // show confirmation. Next step is finishedAction
-            let text = 'Your assignment has been submitted. Click OK to return to your learning management system. '
-            text += ' name: '  + StoreHelper.lmsName()
-            text += ' url:  ' + StoreHelper.lmsUrl()
+            let text = 'Your assignment has been submitted. Click OK to go to your "My Activities" dashboard.'
             this.$refs.successDialog.showDialog('Submitted', text)
           }
         })
     },
     finishedAction () {
       // student is finished with their activity. take them back to the lms
-      StoreHelper.exitToLms()
+      this.$router.push('/student-courses')
     },
     submitFeedback () {
       postFeedback(this.feedbackContent).then( () => {

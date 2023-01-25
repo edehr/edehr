@@ -5,12 +5,12 @@
       div(class="details-row")
         div(class="details-name course-title") Course
         div(class="details-value course-title") {{ course.name }}
-      div(class="details-row")
-        div(class="details-name") Id
-        div(class="details-value") {{ course.id }}
-      div(class="details-row")
-        div(class="details-name") Type
-        div(class="details-value") {{ course.type }}
+      //div(class="details-row")
+      //  div(class="details-name") Id
+      //  div(class="details-value") {{ course.id }}
+      //div(class="details-row")
+      //  div(class="details-name") Type
+      //  div(class="details-value") {{ course.type }}
       div(
         v-for="(data, index) in course.courseActivities",
         :key="data.visit._id",
