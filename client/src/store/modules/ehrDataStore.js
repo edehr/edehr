@@ -2,39 +2,11 @@ import InstoreHelper from './instoreHelper'
 import { decoupleObject, ehrMergeEhrData, ehrMarkSeed } from '@/helpers/ehr-utils'
 import EhrDefs from '@/helpers/ehr-defs-grid'
 import StoreHelper from '@/helpers/store-helper'
+import { EhrPages } from '@/ehr-definitions/ehr-models'
 
 const debug = false
 
 const state = {}
-
-const _getTables = (obj = {}) => {
-  return Object.keys(obj).filter(o => o.includes('table') || o.includes('stacked'))
-}
-
-const _hasOnlyTables = (obj) => {
-  const tableLength = _getTables(obj).length
-  // flakey way to see if the objects on this page are only tables
-  const objectLength = Object.keys(obj).filter(k => k !== 'lastUpdate').length
-  return tableLength > 0 && objectLength === tableLength
-}
-
-const _hasTables = (obj) => { return _getTables(obj).length > 0 }
-
-const _hasAnyData = (obj) => { return _hasTables(obj) ? _doTablesHaveData(obj) : !! obj }
-
-const _doTablesHaveData = (obj) => {
-  let hasData = false
-  const tableKeys = _getTables(obj)
-  if(tableKeys.length > 0) {
-    tableKeys.map(key => {
-      const table = obj[key]
-      if(table && table.length > 0) {
-        hasData = true
-      }
-    })
-  }
-  return hasData
-}
 
 const getters = {
   ehrOnly: (state, getters, rootState, rootGetters) => {
@@ -49,13 +21,13 @@ const getters = {
     } else if (InstoreHelper.instoreIsInstructor(rootState)) {
       secondLevelData = StoreHelper.getCurrentEvaluationStudentAssignmentData()
     } else {
-      secondLevelData = rootGetters['activityDataStore/assignmentData'] || {}
+      secondLevelData = rootGetters['activityDataStore/assignmentData']
     }
     if ( secondLevelData ) {
       secondLevelData.meta = secondLevelData.meta || { simTime: { visitDay: 0, visitTime: '0000' } }
       secondLevelData = decoupleObject(secondLevelData)
     }
-    return secondLevelData
+    return secondLevelData  || {}
   },
   baseLevel: (state, getters, rootState, rootGetters) => {
     let baseLevelData = decoupleObject(rootGetters['seedListStore/seedEhrData'] || {})
@@ -103,8 +75,10 @@ const getters = {
         // secondLevelData.meta.simTime  may have zero values if the ehr data is empty or has no time stamped records
         mData.meta.simTime = baseMeta.simTime
       } else if (baseDay > secondDay || ( baseDay === secondDay && baseTime > secondTime ) ) {
-        console.log('Error in data. Seed simulation time is after activity\'s simulation time. This should never happen. baseLevelData.meta',
-          baseLevelData.meta, 'secondLevelData.meta', secondLevelData.meta)
+        console.log('Weird data. Case study simTime is after student\'s simTime. Case study time:',
+          baseLevelData.meta.simTime, 'student simTime:', secondLevelData.meta.simTime)
+        // use the later time ...
+        mData.meta.simTime = baseMeta.simTime
       } else {
         let vDay = baseDay
         let mTime = baseTime
@@ -123,41 +97,32 @@ const getters = {
         console.log('EhrData merged', mData)
       }
     }
-    return mData || {}
+    return mData || {meta:{}}
   },
-  hasDataForPagesList (state, getters, rootState, rootGetters) {
+  hasDataForPagesList (state, getters) {
+    const hasData = (stats, pageKey) => stats[pageKey] && stats[pageKey].hasData
+    const hasDraft = (stats, pageKey) => stats[pageKey] && stats[pageKey].hasDraft
     const pageKeys = EhrDefs.getAllPageKeys()
     const baseLevelData = getters.baseLevel
     const secondLevelData = getters.secondLevel || {}
     const mergedData = getters.mergedData
     let results = {}
+    const ehrPages = new EhrPages()
+    const statsSeed = ehrPages.ehrPagesStats(baseLevelData)
+    const statsStudent = ehrPages.ehrPagesStats(secondLevelData)
+    const statsMerged = ehrPages.ehrPagesStats(mergedData)
     pageKeys.forEach( pagekey => {
-      const mergedDatum = mergedData[pagekey]
-      const seedDatum = baseLevelData[pagekey]
-      const studentDatum = secondLevelData[pagekey]
-      const combinedObject = Object.assign({}, mergedDatum, seedDatum, studentDatum)
-      let hasMerged, hasSeed, hasStudent
-      if (_hasOnlyTables(combinedObject)) {
-        hasMerged = _doTablesHaveData(mergedDatum)
-        hasSeed = _doTablesHaveData(seedDatum)
-        hasStudent =  _doTablesHaveData(studentDatum)
-      } else if (_hasTables(combinedObject)) {
-        hasMerged = _hasAnyData(mergedDatum)
-        hasSeed = _hasAnyData(seedDatum)
-        hasStudent = _hasAnyData(studentDatum)
-      } else {
-        hasMerged =  !!mergedDatum
-        hasSeed =  !!seedDatum
-        hasStudent =  !!studentDatum
-      }
       results[pagekey] = {
         pagekey: pagekey,
-        hasMerged: hasMerged,
-        hasSeed: hasSeed,
-        hasStudent: hasStudent
+        hasMerged: hasData(statsMerged, pagekey),
+        hasSeed: hasData(statsSeed, pagekey),
+        hasStudent:  hasData(statsStudent, pagekey),
+        draftMerged: hasDraft(statsMerged, pagekey),
+        draftSeed: hasDraft(statsSeed, pagekey),
+        draftStudent:  hasDraft(statsStudent, pagekey),
       }
     })
-    if (debug) console.log('EhrData hasDataForPagesList results', results)
+    // console.log('hasDataForPagesListV2', JSON.stringify(results))
     return results
   },
   mergedDataForPageKey (state, getters, rootState) {

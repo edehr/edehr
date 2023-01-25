@@ -43,9 +43,7 @@ import UiLink from '@/app/ui/UiLink.vue'
 import UiAgree from '@/app/ui/UiAgree.vue'
 import UiConfirm from '@/app/ui/UiConfirm.vue'
 import StoreHelper from '@/helpers/store-helper'
-import EventBus from '@/helpers/event-bus'
 import { downloadSeedToFile, downObjectToFile } from '@/helpers/ehr-utils'
-import { PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
 
 const DUPLICATE = {
   TITLE : (name) => `Confirm duplication of ${name}`,
@@ -131,9 +129,7 @@ export default {
       // Here is where the user starts editing a seed.
       return StoreHelper.loadSeed(sv._id)
         .then(() => {
-          // console.log('route to demographics page with seed', this.seedId)
           _this.$router.push({ name: 'ehr', query: { seedEditId: this.seedId } })
-          EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
         })
     },
     showEditDialog (sv) {
@@ -163,13 +159,13 @@ export default {
       delete sv.lastUpdateDate
       this.duplicatingSeed = sv
       this.$refs.confirmDialog.showDialog(
-        DUPLICATE.TITLE(sv.name), 
-        DUPLICATE.DESCRIPTION(sv.name), 
+        DUPLICATE.TITLE(sv.name),
+        DUPLICATE.DESCRIPTION(sv.name),
         'Confirm'
       )
     },
     async confirmSeedDuplication () {
-      const seed = Object.assign({}, 
+      const seed = Object.assign({},
         this.duplicatingSeed, {
           name: `COPY OF ${this.duplicatingSeed.name}`,
           createDate: new Date(),

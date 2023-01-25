@@ -9,6 +9,7 @@ class EhrPatientC {
     let dateStr = computeDateOfBirth(demographics.personAge, demographics.dateOfBirth)
     const result = {}
     result.allergies = this._allergies(data)
+    result.careTeam = this._careTeam(data)
     result.codeStatus = visitDetails.codeStatus
     result.dateOfBirth = dateStr
     result.diagnosis = visitDetails.diagnosis
@@ -26,12 +27,16 @@ class EhrPatientC {
   _allergies (data) {
     let asStored = data.allergies || {}
     let pageData = JSON.parse(JSON.stringify(asStored))
-    const keyToCheckbox = 'checkbox'
-    const keyToAllergyList = 'text'
-    return (pageData[keyToCheckbox]) ? 'None' : pageData[keyToAllergyList]
+    const hasSome = pageData['checkbox'] === 'TRUE'
+    const content = pageData['text']
+    return hasSome ? content : 'None'
   }
   _demographics (data) {
     let asStored = data.demographics || {}
+    return JSON.parse(JSON.stringify(asStored))
+  }
+  _careTeam (data) {
+    let asStored = data.careTeam ? data.careTeam.teams : []
     return JSON.parse(JSON.stringify(asStored))
   }
   _location (visitDetails) {

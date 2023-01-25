@@ -1,6 +1,5 @@
 import ActivityDataController from '../mcr/activity-data/activity-data-controller'
 import SeedDataController from '../mcr/seed/seedData-controller'
-import EhrDefs from '../ehr-definitions/ehr-page-defs'
 import { updateAllVisitTime } from '../ehr-definitions/ehr-def-utils'
 const debug = require('debug')('server')
 const adc = new ActivityDataController()
@@ -9,7 +8,7 @@ const seedController = new SeedDataController()
 function convert (ehrData) {
   if (ehrData) {
     // console.log('convert ehrdata', ehrData)
-    ehrData = updateAllVisitTime(ehrData, EhrDefs)
+    ehrData = updateAllVisitTime(ehrData)
   }
   return ehrData
 }

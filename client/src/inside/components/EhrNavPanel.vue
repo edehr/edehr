@@ -30,8 +30,6 @@ export default {
 .ehr-panel {
   background-color: $nav-background-medium;
   border-radius: 0;
-  height: 98vh;
-  overflow-y: scroll;
   display: flex;
   flex-direction: column;
 }

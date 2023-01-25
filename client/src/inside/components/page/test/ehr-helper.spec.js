@@ -2,8 +2,8 @@
  * @jest-environment jsdom
  */
 import should from 'should'
-import EhrPageHelper, { LEAVE_PROMPT } from '../ehr-helper'
 import { getPageKeys } from '@/helpers/test/testHelper'
+import EhrPageHelper, { LEAVE_PROMPT } from '../ehr-helper'
 
 /* ************** Important note ****
 Several tests below are skipped because the invoke the helper._saveData method out of a valida context.
@@ -84,7 +84,7 @@ describe('ehr-helper tests', () => {
 
     it('getTable', () => {
       const key = 'table'
-      const table = ehrHelper.getTable(key)
+      const table = ehrHelper.getTableForm(key)
       should.exist(table)
       table.tableDef.isTable.should.equal(true)
     })

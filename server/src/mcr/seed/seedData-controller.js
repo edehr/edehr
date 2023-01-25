@@ -6,7 +6,6 @@ import { Text }  from '../../config/text'
 import { NotAllowedError } from '../common/errors'
 import {ok, fail} from '../common/utils'
 import { updateAllVisitTime } from '../../ehr-definitions/ehr-def-utils'
-import EhrDefs from '../../ehr-definitions/ehr-page-defs'
 import { logError} from '../../helpers/log-error'
 import EhrDataModel from '../../ehr-definitions/EhrDataModel'
 const debug = require('debug')('server')
@@ -26,7 +25,7 @@ export default class SeedDataController extends BaseController {
     // seeds can be uploaded from files. Or created by the server with an older resource
     // update visitTime to be sure it is ok
     // Once created we depend on the client to only store '0000' formated visit times.
-    updateAllVisitTime(data.ehrData, EhrDefs)
+    updateAllVisitTime(data.ehrData)
     return super.create(data)
   }
 
@@ -53,7 +52,7 @@ export default class SeedDataController extends BaseController {
         }
         let data = model.ehrData || {}
         data[propertyName] = value
-        this._updateSeed(model, data)
+        return this._updateSeed(model, data)
       }
     })
   }

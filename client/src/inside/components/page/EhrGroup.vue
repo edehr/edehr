@@ -45,7 +45,7 @@ export default {
     groupClass () {
       let css = this.group.formCss
       const theDefault = 'grid-left-to-right-3'
-      if (css && !css.includes('grid')) {
+      if (css && !css.includes('grid') && css !== 'record-header') {
         css += ' ' + theDefault
       } else if (!css) {
         css = theDefault

@@ -1,11 +1,11 @@
 <template lang="pug">
-  div(class="content")
+  div
     tabs
       tab(name="Graph V2", :selected="true")
         div(v-show="showTableAddButton")
           ui-button(v-on:buttonClicked="showDialog") {{ tableDef.addButtonText }}
         vitals-chart(v-bind:vitals="tableData", v-bind:vitalsModel="vitalsModel")
-        ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDef", :inputs="dialogInputs", :errorList="errorList" )
+        ehr-dialog-form(:ehrHelp="ehrHelp", :tableDef="tableDef", :errorList="errorList" )
       tab(name="Chart V2")
         ehr-page-table(:tableDef="tableDef", :ehrHelp="ehrHelp")
 
@@ -18,10 +18,10 @@ import UiButton from '../../../app/ui/UiButton.vue'
 import VitalsChart from './VitalsChart'
 import VitalModel from './vitalModel'
 import EhrDefs from '../../../helpers/ehr-defs-grid'
-import EventBus from '../../../helpers/event-bus'
-import { PAGE_DATA_READY_EVENT } from '../../../helpers/event-bus'
+import EventBus, { PAGE_DATA_REFRESH_EVENT } from '../../../helpers/event-bus'
 import EhrDialogForm from '../page/EhrDialogForm.vue'
 import EhrPageTable from '../page/EhrPageTable'
+import EhrData from '@/inside/components/page/ehr-data'
 
 export default {
   components: {
@@ -39,7 +39,6 @@ export default {
       vitals: {
         table: []
       },
-      dialogInputs: {},
       vitalsModel: {}
     }
   },
@@ -78,20 +77,15 @@ export default {
   },
   methods: {
     showDialog () {
-      // console.log('Vitals Chart tab showDialogHandler ', this.dialogInputs)
-      this.ehrHelp.showDialog(this.tableKey)
-      // this.ehrHelp.showDialog(this.tableDef, this.dialogInputs)
-      // EventBus.$emit(SHOW_TABLE_DIALOG_EVENT)
+      this.ehrHelp.showDialogForTable(this.pageDataKey, this.tableKey, {})
     },
     refresh () {
-      this.tableForm = this.ehrHelp.getTable(this.tableKey)
       let tableKey = this.tableDef.tableKey
       let pageKey = this.ehrHelp.getPageKey()
       // console.log('Vitals2 refresh for page table key', pageKey, tableKey)
-      let pageData = this.ehrHelp.getMergedPageData(pageKey)
-      let tableData = pageData[tableKey] || []
+      let pageData = EhrData.getMergedPageData(pageKey)
       // store the current data into local data property for display
-      this.tableData = tableData
+      this.tableData = pageData[tableKey] || []
       // console.log('Vitals page and table data', pageData, this.tableData)
       this.tableData.reverse()
     }
@@ -105,11 +99,11 @@ export default {
       // console.log('Vitals PAGE_DATA_REFRESH_EVENT')
       _this.refresh()
     }
-    EventBus.$on(PAGE_DATA_READY_EVENT, this.refreshEventHandler)
+    EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
   },
   beforeDestroy: function () {
     if (this.refreshEventHandler) {
-      EventBus.$off(PAGE_DATA_READY_EVENT, this.refreshEventHandler)
+      EventBus.$off(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
     }
   }
 }

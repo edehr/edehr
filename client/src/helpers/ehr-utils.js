@@ -1,10 +1,10 @@
 import moment from 'moment'
 import camelcase from 'camelcase'
 import { saveAs } from 'file-saver'
-import EhrDefs from './ehr-defs-grid'
-import { Text } from './ehr-text'
+import EhrDefs from '@/helpers/ehr-defs-grid'
+import { Text } from '@/helpers/ehr-text'
 import validFilename from 'valid-filename'
-import StoreHelper from './store-helper'
+import StoreHelper from '@/helpers/store-helper'
 
 const debug = false
 const debugErrs = false
@@ -402,7 +402,7 @@ export function downArrayToCsvFile (filename, array) {
  * prepareAssignmentPageDataForSave does two things
  * 1. It removes empty properties
  * 2. It removes marked seed data (array elements)
- * @param data
+ * @param aPage
  * @return {*}
  */
 export function prepareAssignmentPageDataForSave (aPage) {

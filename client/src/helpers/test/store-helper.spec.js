@@ -135,14 +135,6 @@ describe('General testing', () => {
     })
   })
 
-  /*
-    The read only mode has been temporarily removed
-   */
-  it.skip('setIsReadOnlyInstructor', done => {
-    should.doesNotThrow(() => StoreHelper.setIsReadOnlyInstructor(true))
-    done()
-  })
-
   it.skip('isReadOnlyInstructor', done => {
     should.doesNotThrow(() => {
       const isReadOnlyInstructor = StoreHelper.isReadOnlyInstructor()
@@ -495,27 +487,6 @@ describe('activity tests', () => {
       should.exist(cnt)
       cnt.should.be.greaterThan(0)
       done()
-    })
-  })
-
-  it('dispatchLoadActivity', async () => {
-    should.doesNotThrow(async () => {
-      await axiosMockHelper.prepareAxiosResponse('get', { activity: mockData.activity })
-      const result = await StoreHelper.dispatchLoadActivity(mockData.activity._id)
-      should.exist(result)
-      result.should.equal(mockData.activity)
-    })
-  })
-
-  it('loadAsCurrentActivity', async () => {
-    should.doesNotThrow(async () => {
-      await axiosMockHelper.prepareAxiosResponse('get', { activity: mockData.activity })
-      const result = await StoreHelper.dispatchLoadActivity(mockData.activity._id)
-      should.exist(result)
-      result.should.equal(mockData.activity)
-      const currentActivityId = StoreHelper.getActivityId()
-      should.exist(currentActivityId)
-      currentActivityId.should.equal(mockData.activity._id)
     })
   })
 
@@ -905,57 +876,32 @@ describe.skip('Compound loading function tests', () => {
     })
   })
 
-  it('loadStudent2', async () => {
-    await axiosMockHelper.createCompoundGetResponse()
-    should.doesNotThrow(async () => {
-      await StoreHelper.loadStudent2()
-      const activityId = StoreHelper.getActivityId()
-      const activityData = StoreHelper.getActivityData()
-      const assignment = await StoreHelper.getAssignment()
-      const assignments = StoreHelper.getAssignmentsList()
-      const consumer = StoreHelper._getConsumerProperty('consumer')
-      const user = StoreHelper._getUserProperty('user')
-      const seedData = StoreHelper.getSeedDataList()
-      should.exist(activityId,'a')
-      should.exist(activityData,'b')
-      should.exist(assignment,'c')
-      should.exist(assignments,'d')
-      should.exist(consumer,'e')
-      should.exist(user,'u')
-      activityId.should.equal(mockData.activity._id)
-      activityData.should.equal(mockData.activityData)
-      assignment.should.equal(mockData.assignment)
-      assignments.should.equal(mockData.assignmentListing)
-      consumer.should.equal(mockData.consumer)
-      user.should.equal(mockData.user)
-      JSON.stringify(seedData).should.equal(JSON.stringify(mockData.seedDataList))
-    })
-  })
-
-  // todo unskip --- some problem getting the assignment store
-  it.skip('loadInstructor2', async () => {
-    await axiosMockHelper.createCompoundGetResponse()
-    should.doesNotThrow(async () => {
-      await StoreHelper.loadInstructor2()
-      const activityId = StoreHelper.getActivityId()
-      const assignments = StoreHelper.getAssignmentsList()
-      const consumer = StoreHelper._getConsumerProperty('consumer')
-      const courses = testHelper.dispatchGetter('instructor/sCourses')
-      const user = StoreHelper._getUserProperty('user')
-      const seedData = StoreHelper.getSeedDataList()
-      should.exist(activityId)
-      should.exist(assignments)
-      should.exist(consumer)
-      should.exist(courses)
-      should.exist(user)
-      activityId.should.equal(mockData.activity._id)
-      assignments.should.equal(mockData.assignmentListing)
-      consumer.should.equal(mockData.consumer)
-      courses.should.equal(mockData.courses)
-      user.should.equal(mockData.user)
-      JSON.stringify(seedData).should.equal(JSON.stringify(mockData.seedDataList))
-    })
-  })
+  // it('loadStudent2', async () => {
+  //   await axiosMockHelper.createCompoundGetResponse()
+  //   should.doesNotThrow(async () => {
+  //     await StoreHelper.loadStudent2()
+  //     const activityId = StoreHelper.getActivityId()
+  //     const activityData = StoreHelper.getActivityData()
+  //     const assignment = await StoreHelper.getAssignment()
+  //     const assignments = StoreHelper.getAssignmentsList()
+  //     const consumer = StoreHelper._getConsumerProperty('consumer')
+  //     const user = StoreHelper._getUserProperty('user')
+  //     const seedData = StoreHelper.getSeedDataList()
+  //     should.exist(activityId,'a')
+  //     should.exist(activityData,'b')
+  //     should.exist(assignment,'c')
+  //     should.exist(assignments,'d')
+  //     should.exist(consumer,'e')
+  //     should.exist(user,'u')
+  //     activityId.should.equal(mockData.activity._id)
+  //     activityData.should.equal(mockData.activityData)
+  //     assignment.should.equal(mockData.assignment)
+  //     assignments.should.equal(mockData.assignmentListing)
+  //     consumer.should.equal(mockData.consumer)
+  //     user.should.equal(mockData.user)
+  //     JSON.stringify(seedData).should.equal(JSON.stringify(mockData.seedDataList))
+  //   })
+  // })
 
   it.skip('loadInstructorWithStudent', async () => {
     should.doesNotThrow(async () => {

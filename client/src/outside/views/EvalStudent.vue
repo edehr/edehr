@@ -1,13 +1,15 @@
 <template lang="pug">
   div
     // Evaluate a student page
-    div(class="details-action-bar")
-      ui-link(:name="'lms-activity'", :query="{activityId: activityId}")
-        fas-icon(class="fa", :icon="appIcons.activity")
-        span &nbsp; Return to {{ activityName }}
+    div(class="flow_across menu_space_across details-container")
       ui-link(:name="'classList'", :query="{activityId: activityId}")
         fas-icon(class="fa", :icon="appIcons.activity")
         span &nbsp; Return to: class list
+      div
+        span {{ activity.resource_link_title }}
+        span &nbsp; / &nbsp;
+        span {{ assignment.name }}
+
 
     div(class="details-container card selected")
       student-eval-control
@@ -23,8 +25,6 @@
 
 <script>
 import { APP_ICONS } from '@/helpers/app-icons'
-import EventBus from '@/helpers/event-bus'
-import { PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
 import StoreHelper from '@/helpers/store-helper'
 import EvalHelper from '@/helpers/eval-helper'
 import { downArrayToCsvFile, formatTimeStr } from '@/helpers/ehr-utils'
@@ -32,7 +32,9 @@ import UiButton from '@/app/ui/UiButton.vue'
 import UiLink from '@/app/ui/UiLink.vue'
 import SeedStructural from '@/outside/components/seed-struct/SeedStructural'
 import StudentEvalControl from '@/outside/components/lms-activity/StudentEvalControl'
+import OutsideCommon from '@/outside/views/OutsideCommon'
 export default {
+  extends: OutsideCommon,
   components: { StudentEvalControl, SeedStructural, UiButton, UiLink  },
   data () {
     return {
@@ -112,12 +114,6 @@ export default {
       return EvalHelper.goToEhr(studentVisit)
     },
     changeStudent (sv) { StoreHelper.changeStudentForInstructor(sv._id) },
-    downloadEvaluations () {
-      this.$refs.promptDialog.showDialog(this.promptTitle, this.promptMessage, this.promptLabel)
-    },
-    closeDialog () {
-      this.$refs.promptDialog.cancelDialog()
-    },
     proceed (filename) {
       let data = []
       data.push(['givenName', 'familyName', 'lms_user_id','feedback: ' + this.activityName])
@@ -134,14 +130,5 @@ export default {
       await StoreHelper.changeStudentForInstructor(visitId)
     },
   },
-  created: function () {
-    this.refreshEventHandler = () => { this.loadComponent() }
-    EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
-  },
-  beforeDestroy: function () {
-    if (this.refreshEventHandler) {
-      EventBus.$off(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
-    }
-  },  
 }
 </script>

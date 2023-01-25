@@ -4,7 +4,7 @@ const Defs = {
   recordHeader: [
     {
       elementKey: 'name',
-      inputType: 'text',
+      inputType: 'practitionerName',
       label: 'Name',
       tableLabel: 'Identification',
       mandatory: true,
@@ -12,7 +12,7 @@ const Defs = {
     },
     {
       elementKey: 'profession',
-      inputType: 'text',
+      inputType: 'practitionerProfession',
       label: 'Profession',
       mandatory: true,
       recHeader: true
@@ -32,7 +32,12 @@ const Defs = {
       mandatory: true,
       validation: 'time24',
       recHeader: true
-    }
+    },
+    // {
+      // elementKey: 'recordConfirm',
+      // inputType: 'recordConfirm',
+      // recHeader: true
+    // }
   ],
 
   checkBoxTextSpacer: [
@@ -69,7 +74,6 @@ class EhrShortFormHelper {
   }
 
   recHdr (entry, postEntries) {
-    // console.log('preprocess record header ', entry)
     let toAdd = JSON.parse(JSON.stringify(Defs.recordHeader))
     toAdd.forEach((e) => {
       e.pN = entry.pN

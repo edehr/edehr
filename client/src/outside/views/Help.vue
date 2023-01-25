@@ -1,5 +1,5 @@
 <template lang='pug'>
-  div(class="outside-view")
+  div
     h1 Help page
     div This page content is now visible on the &nbsp;
       router-link(:to="{ name: `about` }") about page

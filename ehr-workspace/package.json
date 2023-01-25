@@ -1,0 +1,33 @@
+{
+  "name": "ehr-workspace",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "nonscripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:nm": "npx babel-node src/index.js",
+    "build": "npm run clean && npm run build-babel && npm run build-resources",
+    "build-babel": "babel -d ./build ./src/index.js -s",
+    "start:dev": "nodemon --exec babel-node src/index.js"
+  },
+  "scripts": {
+    "build-resources": "cp -R ./src/resources ./build",
+    "bb": "npm run clean && npx babel src --out-dir build",
+    "clean": "rm -rf build && mkdir build",
+    "start": "npm run bb && npm run build-resources && npm run start:run",
+    "start:run": "node build/index.js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/cli": "^7.20.7",
+    "@babel/core": "^7.20.12",
+    "@babel/node": "^7.20.7",
+    "@babel/plugin-transform-runtime": "^7.19.6",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/register": "^7.16.0",
+    "@babel/runtime": "^7.20.7",
+    "eslint": "^8.4.1",
+    "nodemon": "^2.0.20"
+  }
+}

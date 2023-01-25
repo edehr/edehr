@@ -1,9 +1,14 @@
 <template lang='pug'>
   div
-    div(class="details-action-bar")
-      seed-list-link(:seed-id='seedId')
-      seed-actions(:seed="seed", :showDetails='false')
-    div(class="details-container card selected")
+    zone-lms-page-banner
+      seed-actions(class="flow_across_last_item", :seed="seed")
+    div(class="details-container card selected", :class='{ draftStyle: hasDraftReports }')
+      div(v-if="hasDraftReports", class="details-row")
+        div(class="details-name") WARNING
+        div(class="details-value").
+          This case study contains draft EHR reports. These must be saved as verified reports
+          before using this case study with a student assignment.
+          Edit this case study in the EHR and complete the reports (or remove them)
       div(class="details-row")
         div(class="details-name") {{ text.SEED_LABEL }}
         div(class="details-value") {{seed.name}}
@@ -20,11 +25,11 @@
       div(class="details-row")
         div(class="details-name") {{ text.STATS }}
         div(class="details-value")
-          span {{text.STATS_VALUE(ehrPages.length)}}:
-          span &nbsp; {{ ehrPagesText }}
+          span {{text.STATS_VALUE(pageCount)}}:
+          span(v-for='pgn in pageNamesWithContent', :key='pgn') &nbsp; {{ pgn }}
       div(class="details-row")
         div(class="details-name") {{text.LOBJ_LABEL}}
-        div(class="details-value") {{text.LOBJ_VALUE(loCount)}}
+        div(class="details-value")
           div(v-for="lobj in assignmentList")
             router-link(:to="{ name:'learning-object', query: { learningObjectId: lobj._id }}") {{lobj.name}}
       div(class="details-row")
@@ -50,34 +55,46 @@ import SeedListLink from '@/outside/components/seed-management/SeedListLink'
 import SeedDelete from '@/outside/components/seed-management/SeedDelete'
 import SeedDataDialog from '@/outside/components/seed-management/SeedDataDialog'
 import OutsideCommon from '@/outside/views/OutsideCommon'
+import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner'
+import { EhrPages } from '@/ehr-definitions/ehr-models'
+
 export default {
   extends: OutsideCommon,
-  components: { SeedActions, SeedDataDialog, SeedListLink, SeedDelete, UiButton, SeedDuplicate, SeedStructural, UiLink },
+  components: { ZoneLmsPageBanner, SeedActions, SeedDataDialog, SeedListLink, SeedDelete, UiButton, SeedDuplicate, SeedStructural, UiLink },
   data () {
     return {
       appIcons: APP_ICONS,
+      ehrPages: new EhrPages(),
       text: Text.SEED_VIEW_PAGE
     }
   },
   computed: {
     showIds () { return this.isAdmin },
     canDo () { return StoreHelper.isDevelopingContent() },
+    hasDraftRows () { return this.statsMeta.draftRows },
     assignmentList: function () {
       const seedId = this.seed._id
       let assList = StoreHelper.getAssignmentsList()
       return assList.filter(a => a.seedDataId === seedId)
     },
     loCount () { return this.assignmentList.length  },
-    ehrPages ( ) { return this.seedModel.pageNames || []},
-    ehrPagesText () { return this.ehrPages.join(', ') },
-    seedModel () {
-      return this.$store.getters['seedListStore/seedModel']
+    hasDraftReports () { return this.statsMeta.draftRows && this.statsMeta.draftRows > 0 },
+    pageCount () { return this.pageNamesWithContent.length },
+    pageNamesWithContent () {
+      // statsKeys contains all the pages with content plus some other fields like meta
+      const statsKeys = Object.keys(this.seedStats)
+      // pageList contains all the ehr page definitions
+      const pageList = this.ehrPages.pageList
+      const withContent = pageList.filter(pg => statsKeys.includes(pg.pageKey))
+      console.log ('withContent', withContent)
+      console.log( withContent[0] ? withContent[0].pageTitle : '' )
+      return withContent.map( pg => pg.pageTitle).sort()
     },
-    seed () {
-      return this.$store.getters['seedListStore/seedContent']
-    },
-    seedId () { return this.seedModel.id}
-
+    seed () { return this.$store.getters['seedListStore/seedContent'] },
+    seedId () { return this.seedModel.id},
+    seedModel () { return this.$store.getters['seedListStore/seedModel'] },
+    seedStats () { return this.seed.ehrData ? this.ehrPages.ehrPagesStats(this.seed.ehrData) : {} },
+    statsMeta ( ) { return this.seedStats.meta || {}}
   },
   methods: {
     downloadSeed () {
@@ -118,20 +135,9 @@ export default {
 }
 </script>
 
-<style scoped lang='scss'>
+<style lang='scss' scoped>
 @import '../../scss/definitions';
-.seed-view-header {
-  max-width: 60rem;
-  > div {
-    margin-bottom: 5px;
-  }
-}
-
-.action-section {
-  display: flex;
-  flex-flow: row;
-  div {
-    margin-right: 5px;
-  }
+.draftStyle {
+  background-color: $table-draft-colour;
 }
 </style>

@@ -1,7 +1,12 @@
 <template lang="pug">
   div(class='student-submit')
     div(v-if="showSubmit", title='End your work and send to your instructor to evaluate.')
-      ui-button(v-on:buttonClicked="npButtonClicked", :disabled="disableNavAction") Submit
+      ui-button(
+        v-on:buttonClicked="npButtonClicked",
+        :class='{draft : hasDraft}',
+        :title='submitButtonTip',
+        :disabled="disableNavAction"
+        ) Submit Activity
     div(v-else, class='status-message') {{ statusMessage }}
     ui-confirm(ref="confirmDialog", v-on:confirm="proceed", saveLabel='Submit')
     ui-agree(ref="successDialog", v-on:confirm="finishedAction")
@@ -33,6 +38,7 @@ const FEEDBACK_TITLE = 'Optional Feedback Form'
 const FEEDBACK_BODY = 'Your assignment is submitted. Before you go, '+
   ' can you please give us your thoughts and suggestions about the EdEHR.' +
   ' This is completely anonymous and optional yet your comments will help us improve this application.'
+const BUTTON_WARN = 'Warning. Your work contains draft reports'
 /*
 Collect student feedback, completely anonymous and voluntary, after work is submitted.
  */
@@ -53,11 +59,13 @@ export default {
     }
   },
   computed: {
+    hasDraft () { return StoreHelper.getStudentAssignmentDataHasDraftRows() },
     showSubmit () {
       return !StoreHelper.isSubmitted()
     },
+    submitButtonTip () { return this.hasDraft ? BUTTON_WARN : ''},
     statusMessage () {
-      return StoreHelper.isSubmitted(this) ? Text.IS_SUBMITTED : ''
+      return StoreHelper.isSubmitted() ? Text.IS_SUBMITTED : ''
     },
     disableNavAction () {
       return this.$store.state.system.isEditing
@@ -75,26 +83,29 @@ export default {
             this.$refs.submitFeedback.onOpen()
           } else {
           // show confirmation. Next step is finishedAction
-            let text = 'Your assignment has been submitted. Click OK to return to your learning management system. '
-            text += ' name: '  + StoreHelper.lmsName()
-            text += ' url:  ' + StoreHelper.lmsUrl()
+            let text = 'Your assignment has been submitted. Click OK to go to your "My Activities" dashboard.'
             this.$refs.successDialog.showDialog('Submitted', text)
           }
         })
     },
     finishedAction () {
       // student is finished with their activity. take them back to the lms
-      window.location = StoreHelper.lmsUrl()
+      this.$router.push('/student-courses')
     },
     submitFeedback () {
       postFeedback(this.feedbackContent).then( () => {
-        window.location = StoreHelper.lmsUrl()
+        StoreHelper.exitToLms()
       })
     }
   },
 }
 </script>
 <style lang="scss" scoped>
+@import "../../scss/definitions";
+.draft {
+  background-color: $table-draft-colour !important;
+  color: black !important;
+}
 .student-submit {
   display: flex;
   flex-direction: row;

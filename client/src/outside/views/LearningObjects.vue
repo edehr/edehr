@@ -1,27 +1,25 @@
 <template lang="pug">
   div
-    div(class="details-action-bar")
-      div &nbsp;
-      learning-objects-actions
-    div(class="details-container")
+    zone-lms-page-banner
+      learning-objects-actions(class="flow_across_last_item")
+    div
       div(v-for="item in assignmentsListing", class="list-card list-element", :class="rowClass(item)")
         learning-object-list-item(:id="item._id", :lObj='item')
 </template>
 
 <script>
-import UiButton from '@/app/ui/UiButton.vue'
 import StoreHelper from '@/helpers/store-helper'
 import LearningObjectListItem from '@/outside/components/learning-object/LearningObjectListItem'
 import OutsideCommon from '@/outside/views/OutsideCommon'
-import LearningObjectActions from '@/outside/components/learning-object/LearningObjectActions'
 import LearningObjectsActions from '@/outside/components/learning-object/LearningObjectsActions'
+import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner'
 export default {
   extends: OutsideCommon,
   data () {
     return {
     }
   },
-  components: { LearningObjectsActions, LearningObjectActions, LearningObjectListItem, UiButton },
+  components: { ZoneLmsPageBanner, LearningObjectsActions, LearningObjectListItem },
   computed: {
     canDo () {
       return StoreHelper.isDevelopingContent()

@@ -2,9 +2,8 @@ import StoreHelper from '../../../helpers/store-helper'
 import MedOrder from './med-order'
 import MarEntity from './mar-entity'
 import EhrDefs from '../../../helpers/ehr-defs-grid'
-
-export const MAR_PAGE_KEY = 'medAdminRec'
-export const MED_ORDERS_PAGE_KEY = 'medicationOrders'
+import { MED_ORDERS_PAGE_KEY, MAR_PAGE_KEY} from '@/helpers/ehr-defs-grid'
+import EhrData from '@/inside/components/page/ehr-data'
 
 const debug = false
 
@@ -18,7 +17,7 @@ export default class MarHelper {
 
   refreshMarData () {
     // console.log('mar-helper refreshMarData')
-    this.pageData = this.ehrHelp.getMergedPageData(MED_ORDERS_PAGE_KEY)
+    this.pageData = EhrData.getMergedPageData(MED_ORDERS_PAGE_KEY)
     if (debug) console.log('mar-helper refreshMarData', this.pageData)
     if (!this.pageData || !this.pageData.table) {
       if (debug) console.log('helper call to refreshMarData before system is set up. There will be another call in a sec')
@@ -43,7 +42,7 @@ export default class MarHelper {
    * @return {*}
    */
   getEhrData_MarPageData () {
-    return this.ehrHelp.getMergedPageData(MAR_PAGE_KEY)
+    return EhrData.getMergedPageData(MAR_PAGE_KEY)
   }
 
   clearAllData () {
@@ -106,18 +105,14 @@ export default class MarHelper {
    * @return {*}
    */
   saveMarDialog (aMarEntity) {
-    let marTableKey = this.getMarTableKey()
     let asLoadedPageData = this.getEhrData_MarPageData()
+    let marTableKey = this.getMarTableKey()
     let table = asLoadedPageData[marTableKey] || []
     let aMar = aMarEntity.asObjectForApi()
-    // console.log('saveMarDialog key:', marTableKey, ', ', aMar)
     table.push(aMar)
     asLoadedPageData[marTableKey] = table
-    let payload = {
-      pageKey: MAR_PAGE_KEY,
-      value: asLoadedPageData
-    }
-    return this.ehrHelp._saveData(payload)
+    // console.log('saveMarDialog', asLoadedPageData)
+    return this.ehrHelp._saveData(MAR_PAGE_KEY, asLoadedPageData)
   }
 
   triggerActionByPageKey () {

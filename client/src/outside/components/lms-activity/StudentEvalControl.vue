@@ -1,31 +1,32 @@
 <template lang='pug'>
   div
-    div(class='sev-actions')
-      div(class="eval-controls")
-        ui-button(v-on:buttonClicked="previousStudent()", :disabled="!enablePrev", title='Previous student')
-          fas-icon(icon="angle-left", class='fa')
-        ui-button(v-on:buttonClicked="resetNotes", :disabled="!canSave", title='Reset note')
-          fas-icon(icon="undo", class='fa')
-        ui-button(v-on:buttonClicked="saveNotes", :disabled="!canSave", title='Save note')
-          fas-icon(icon="check", class='fa')
-        ui-button(v-on:buttonClicked="nextStudent ()", :disabled="!enableNext", title='Next student')
-          fas-icon(icon="angle-right", class='fa')
-
-      h3 {{student.user.fullName}} ({{ currentIndex }} of {{ listLen }}) {{statusText}}
-
+    div(class="eval-space")
       div
+        h3 {{student.user.fullName}}
+        div ({{ currentIndex }} of {{ listLen }})
+        div {{statusText}}
+      ehr-evaluation-input(
+        ref="evaluationNoteComponent",
+        :disabled='!submitted',
+        class="eval-input",
+        @hasNewDataChanged='evaluationNotesChanged')
+      div
+        div(class="eval-controls")
+          ui-button(v-on:buttonClicked="previousStudent()", :disabled="!enablePrev", title='Previous student')
+            fas-icon(icon="angle-left", class='fa')
+          ui-button(v-on:buttonClicked="resetNotes", :disabled="!canSave", title='Reset note')
+            fas-icon(icon="undo", class='fa')
+          ui-button(v-on:buttonClicked="saveNotes", :disabled="!canSave", title='Save note')
+            fas-icon(icon="check", class='fa')
+          ui-button(v-on:buttonClicked="nextStudent ()", :disabled="!enableNext", title='Next student')
+            fas-icon(icon="angle-right", class='fa')
         class-list-actions(
-          class="list-item-actions",
           :studentVisit='student',
           :evaluating='true',
           :hide-eval-ehr='inEhr',
           :hide-eval-raw='!inEhr'
         )
-    ehr-evaluation-input(
-      ref="evaluationNoteComponent",
-      :disabled='!submitted',
-      class="",
-      @hasNewDataChanged='evaluationNotesChanged')
+
     ui-confirm(class="confirmDialog",
       ref="confirmDialog",
       @confirm="resetNotesConfirmed",
@@ -43,6 +44,7 @@
 
 <script>
 import StoreHelper from '@/helpers/store-helper'
+import EvalHelper from '@/helpers/eval-helper'
 import EhrEvaluationInput from '@/inside/components/EhrEvaluationInput'
 import UiButton from '@/app/ui/UiButton'
 import ClassListActions from '@/outside/components/lms-activity/ClassListActions'
@@ -168,7 +170,7 @@ export default {
     },
     changeStudent (sv) {
       if (this.inEhr) {
-        StoreHelper.changeStudentForInstructor(sv._id)
+        EvalHelper.goToEhr(sv)
       } else {
         this.$router.push({ name: 'eval-student', query: { visitId: sv._id } })
       }
@@ -195,21 +197,11 @@ export default {
 
 <style scoped lang='scss'>
 @import "../../../scss/definitions";
-.sev-actions {
+.eval-space {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-
-  h3 {
-    margin-top: 0;
-  }
+  grid-template-columns: 0.5fr 4fr 1fr;
 }
-.eval-controls button {
-  margin-right: 5px;
+.eval-controls {
+  margin-bottom: 5px;
 }
-@media screen and (max-width: $main-width-threshold2){
-  .sev-actions {
-    grid-template-columns: 1fr;
-  }
-}
-
 </style>

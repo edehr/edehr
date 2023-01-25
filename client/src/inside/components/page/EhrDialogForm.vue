@@ -6,47 +6,40 @@
       @cancel="cancelDialog",
       @save="saveDialog",
       v-bind:errors="errorList",
-      :cancelButtonLabel="isViewOnly ? 'Close' : 'Cancel'",
+      :cancelButtonLabel="cancelButtonText",
       :hasFooterContent="true"
       :useSave="!isViewOnly"
       :disableSave="disableSave"
     )
-      div(slot="header-extra-content")
-        div(class="patient-data")
-          div(class='patient-name') {{ patientData.patientName }}
-          div PHN: {{ patientData.phn }}
-          div DoB: {{ patientData.dateOfBirth }} ({{ patientData.personAge }} yrs)
-          div Gender: {{ patientData.gender }}
-        div(class="patient-data")
-          div Code Status: {{ patientData.codeStatus ? patientData.codeStatus : 'N/A' }}
-          div Allergies: {{ patientData.allergies }}
-          div Diagnosis: {{ patientData.diagnosis }}
-          ehr-sim-time(:ehr-data="md")
-
+      ehr-dialog-patient-banner(slot="header-extra-content")
       h3(slot="header") {{ formLabel }}
-      div(slot="body", class="ehr-page-content")
+      div(slot="body")
         ehr-group(v-for="group in groups", :key="group.gIndex", :group="group", :ehrHelp="ehrHelp", :viewOnly='isViewOnly')
-      span(slot="save-button") Create and close
+      span(slot="save-button") Save
+    ui-confirm(ref="confirmCancelDialog", @confirm="cancelConfirmed", :saveLabel='ehrText.cancelDialogExitDialogLabel', :cancel-label='ehrText.cancelDialogReturnToEditLabel' )
+    ui-confirm(ref="confirmSaveDialog", @confirm="saveConfirmed", @abort="saveDraft", :saveLabel='ehrText.saveDialogButtonLabel', :cancel-label='ehrText.saveDialogAsDraftButtonLabel' )
 </template>
 
 <script>
 import AppDialog from '@/app/components/AppDialogShell'
 import EhrGroup from '@/inside/components/page/EhrGroup'
-import EventBus, { FORM_INPUT_EVENT } from '@/helpers/event-bus'
+import EventBus, { FORM_INPUT_EVENT, PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
 import EhrOnlyDemo from '@/helpers/ehr-only-demo'
-import EhrPatient from '@/inside/components/page/ehr-patient'
-import EhrSimTime from '@/inside/components/EhrSimTime'
-import StoreHelper from '@/helpers/store-helper'
+import UiConfirm from '@/app/ui/UiConfirm'
+import EhrDialogPatientBanner from '@/inside/components/page/EhrDialogPatientBanner'
+import { ehrText } from '@/appText'
 
 export default {
   components: {
-    EhrSimTime,
+    EhrDialogPatientBanner,
+    UiConfirm,
     EhrGroup,
     AppDialog
   },
   inject: ['pageDataKey', 'isEmbedded'],
   data: function () {
     return {
+      ehrText,
       errorList: [],
     }
   },
@@ -55,13 +48,18 @@ export default {
     tableDef: { type: Object },
   },
   computed: {
-    md () { return StoreHelper.getMergedData() },
-    patientData () { return EhrPatient.patientData() },
+    cancelButtonText () { return this.isViewOnly ? ehrText.ehrDialogCancelButtonViewOnly : ehrText.ehrDialogCancelButtonVEdit },
     formLabel () {
       return this.tableDef.label || this.tableDef.addButtonText
     },
     ehrOnlyDemo () {
       return EhrOnlyDemo.isActiveEhrOnlyDemo()
+    },
+    hasData () {
+      return this.ehrHelp.activeTableDialogHasData()
+    },
+    hasRecHeader () {
+      return this.ehrHelp.activeTableDialogHasRecordHeader()
     },
     isViewOnly () {
       return this.ehrHelp.isViewOnly(this.tableKey)
@@ -73,19 +71,47 @@ export default {
       return this.tableDef.form ? this.tableDef.form.ehr_groups : []
     },
     disableSave () {
-      return this.isViewOnly || this.errorList.length > 0
+      let canSave
+      if (this.isViewOnly) {
+        canSave = true
+      } else {
+        canSave = this.errorList.length === 0 && this.hasData
+        if (canSave && this.ehrHelp.activeTableDialogHasRecordHeader()) {
+          const { name, profession, day, time } = this.ehrHelp.activeTableDialogRecordHeader()
+          canSave = name && name.length > 0 &&
+            profession && profession.length > 0 &&
+            day && day.length > 0 &&
+            time && time.length > 0
+        }
+      }
+      return !canSave
     },
   },
   methods: {
-    cssFromDefs: function (element) {
-      return element.formCss ? element.formCss : undefined
+    closeDialog () {
+      EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
+      this.ehrHelp.closeDialog()
     },
     cancelDialog: function () {
-      this.ehrHelp.cancelDialog()
+      if (this.isViewOnly || !this.hasData) {
+        this.closeDialog()
+      } else {
+        if (this.hasRecHeader) {
+          this.$refs.confirmCancelDialog.showDialog('Confirm cancel', 'Do you want to close and not save a draft?')
+        } else {
+          this.closeDialog()
+        }
+      }
+    },
+    cancelConfirmed: async function () {
+      await this.ehrHelp.removeDraftRow()
+      this.closeDialog()
       this.errorList = []
     },
-    saveDialog: function () {
-      this.errorList = this.ehrHelp.saveDialog() || []
+    clearDraftTimeout () {
+      if (this.saveDraftTimeoutId) {
+        clearTimeout(this.saveDraftTimeoutId)
+      }
     },
     receiveShowHideEvent (eData) {
       if (eData.isEmbedded) {
@@ -95,35 +121,66 @@ export default {
          */
         return
       }
-      if(eData.value) {
+      if(eData.open) {
         this.$refs.theDialog.onOpen()
       } else {
         this.$refs.theDialog.onClose()
       }
     },
-    processInputChangeEvent (eData) {
-      // let pageDataKey = this.pageDataKey
-      // let embedded = this.isEmbedded
-      // let srcValues = this.ehrHelp.getActiveData()
-      this.errorList = this.ehrHelp.validateDialog() || []
-    },
     receiveInputChangeEvent (eData) {
       if (!this.isViewOnly) {
-        // console.log('receiveInputChangeEvent')
-        if (this.changeTimeoutId) {
-          clearTimeout(this.changeTimeoutId)
+        // some pages have more than one table, each with a dialog. Only respond to events for the right table
+        if (eData.tableKey === this.tableKey) {
+
+          // Delay validation until input stream goes quiet for the timeout period
+          const VALIDATION_TIMEOUT = 500
+          if (this.validationTimeoutId) {
+            clearTimeout(this.validationTimeoutId)
+          }
+          this.validationTimeoutId = setTimeout(() => {
+            this.errorList = this.ehrHelp.validateDialog() || []
+          }, VALIDATION_TIMEOUT)
+
+          // Any input change sets up a draft save after timeout. Don't wait for quiet time.
+          const SAVE_DRAFT_TIMEOUT = 3000
+          if ( !this.saveDraftTimeoutId ) { // IF a save is pending then done else set up a delayed save
+            this.saveDraftTimeoutId = setTimeout(() => {
+              this.ehrHelp.saveDialogDraft()
+              this.saveDraftTimeoutId = undefined // reset so another save can be queued up
+            }, SAVE_DRAFT_TIMEOUT)
+          }
         }
-        this.changeTimeoutId = setTimeout(() => this.processInputChangeEvent(eData), 500)
       }
+    },
+    saveConfirmed: async function () {
+      // note that save is disabled if there are errors or there is no data
+      // If there is a pending draft save then just cancel it.
+      this.clearDraftTimeout()
+      await this.ehrHelp.saveDialogData()
+      this.closeDialog()
+    },
+    saveDialog: function () {
+      if (this.hasRecHeader) {
+        const { name, profession, day, time } = this.ehrHelp.activeTableDialogRecordHeader()
+        const msg = ehrText.saveDialogVerifyMessage(name, profession, day, time)
+        this.$refs.confirmSaveDialog.showDialog(ehrText.saveDialogVerifyTitle, msg)
+      } else {
+        this.saveConfirmed()
+      }
+    },
+    saveDraft: async function () {
+      this.clearDraftTimeout()
+      await this.ehrHelp.saveDialogDraft()
+      // else draft is already saved. Just need to close the dialog
+      this.closeDialog()
     },
   },
   mounted: function () {
     const _this = this
-    let ch = this.ehrHelp.getDialogEventChannel(this.tableKey)
     this.eventHandler = function (eData) {
       _this.receiveShowHideEvent(eData)
     }
-    EventBus.$on(ch, this.eventHandler)
+    EventBus.$on(this.ehrHelp.getDialogEventChannel(this.tableKey), this.eventHandler)
     this.inputChangeEventHandler = function (eData) {
       _this.receiveInputChangeEvent(eData)
     }
@@ -131,9 +188,8 @@ export default {
 
   },
   beforeDestroy: function () {
-    let ch = this.ehrHelp.getDialogEventChannel(this.tableKey)
     if (this.eventHandler) {
-      EventBus.$off(ch, this.eventHandler)
+      EventBus.$off(this.ehrHelp.getDialogEventChannel(this.tableKey), this.eventHandler)
     }
     if (this.inputChangeEventHandler) {
       EventBus.$off(FORM_INPUT_EVENT, this.inputChangeEventHandler)
@@ -141,18 +197,3 @@ export default {
   }
 }
 </script>
-
-
-<style lang="scss" scoped>
-@import '../../../scss/definitions';
-
-.patient-name {
-  font-weight: bold;
-}
-.patient-data {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-}
-
-</style>

@@ -1,8 +1,8 @@
 <template lang="pug">
   div
-    div(class="details-action-bar")
-      learning-object-list-link(:learningObjectId="learningObject._id")
-      learning-object-actions(:learningObject="learningObject", :showDetails='false')
+    div
+      zone-lms-page-banner
+        learning-object-actions(class="flow_across_last_item", :learningObject="learningObject", :showDetails='false')
     div(class="details-container card selected")
       div(class="details-row")
         div(class="details-name") {{ text.LOBJ }}
@@ -12,12 +12,17 @@
         div(class="details-value")
           div(v-text-to-html="learningObject.description")
       div(class="details-row")
-        div(class="details-name") {{ text.USED }}
-        div(class="details-value") {{ text.USED_VAL(learningObject.activityCount) }}
-      div(class="details-row")
         div(class="details-name") {{ text.SEED }}
         div(class="details-value")
           ui-link(:name="'seed-view'", :params="{seedId: learningObject.seedDataId}") {{ seed.name }}
+      div(class="details-row")
+        div(class="details-name") {{text.USED}}
+        div(class="details-value")
+          div(v-for="act in accessibleActivities", :key="act._id")
+            ui-link(:name="'lms-activity'", :query="{activityId: act._id}")
+              fas-icon(class="fa", :icon="appIcons.activity")
+              span &nbsp; {{act.resource_link_title}}
+          div(v-if="unreachableActivityCount > 0 ") {{unreachableActivityText}}
       div(class="details-row")
         div(class="details-name") {{ text.DATES }}
         div(class="details-value").
@@ -36,10 +41,11 @@ import LearningObjectListLink from '@/outside/components/learning-object/Learnin
 import LearningObjectActions from '@/outside/components/learning-object/LearningObjectActions'
 import OutsideCommon from '@/outside/views/OutsideCommon'
 import { Text } from '@/helpers/ehr-text'
+import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner'
 
 export default {
   extends: OutsideCommon,
-  components: { LearningObjectActions, LearningObjectListLink, UiButton, UiConfirm, UiLink },
+  components: { ZoneLmsPageBanner, LearningObjectActions, LearningObjectListLink, UiButton, UiConfirm, UiLink },
   data () {
     return {
       text: Text.LOBJ_PAGE,
@@ -50,6 +56,28 @@ export default {
     }
   },
   computed: {
+    accessibleActivities () {
+      return StoreHelper.lmsActivitiesUsingLearningObject(this.learningObject._id)
+    },
+    unreachableActivityCount () {
+      return this.learningObject.activityCount - this.accessibleActivities.length
+    },
+    unreachableActivityText () {
+      let txt = ''
+      const cnt = this.unreachableActivityCount
+      const hasAccessibleActivities = this.accessibleActivities.length > 0
+      if (this.unreachableActivityCount > 0) {
+        if (hasAccessibleActivities) {
+          txt = `Plus ${cnt} other activities that you do not have permission to access.`
+        } else {
+          txt = `${cnt} activities that you do not have permission to access.`
+        }
+      }
+      return txt
+    },
+    actCount () {
+      return this.learningObject.activityCount
+    },
     activity () {
       return this.$store.getters['activityStore/activity']
     },

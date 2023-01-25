@@ -1,18 +1,13 @@
 <template lang="pug">
   div
-    div(v-if="authorized")
-      div(v-show="hasFiles", class="list-body")
-        h2 Images
-        div(class="list-images-container")
-          div(v-for="file in imageFiles", class="list-element image-element")
-            ehr-file-link(:ehrFile="file")
-        h2 Files
-        div(class="list-files-container")
-          div(v-for="file in otherFiles", class="list-element")
-            ehr-file-link(:ehrFile="file")
-
-      div(v-show="errorMessage", class="error-msg") {{ errorMessage }}
-    div(v-else)  You are not authorized to upload files.
+    h2 Images
+    div(class="list-images-container")
+      div(v-for="file in imageFiles", class="list-element image-element")
+        ehr-file-link(:ehrFile="file")
+    h2 Files
+    div(class="list-files-container")
+      div(v-for="file in otherFiles", class="list-element")
+        ehr-file-link(:ehrFile="file")
 </template>
 <script>
 import StoreHelper from '@/helpers/store-helper'
@@ -28,15 +23,11 @@ export default {
   },
   computed: {
     hasFiles () { return this.imageFiles.length > 0 || this.otherFiles.length > 0},
-    errorMessage () { return StoreHelper.getFileListErrorMessage() },
     imageFiles () { return StoreHelper.getFileListImages() },
     otherFiles () { return StoreHelper.getFileListOther() },
-    authorized () {
-      return StoreHelper.isDevelopingContent()
-    },
   },
   methods: {
-    refresh () { StoreHelper.refreshFileLists(StoreHelper.toolConsumerId()) }
+    refresh () { StoreHelper.refreshFileLists(StoreHelper.getAuthdConsumerId()) }
   },
   mounted: function () {
     const _this = this

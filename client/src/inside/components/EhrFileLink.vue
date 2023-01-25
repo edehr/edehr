@@ -22,7 +22,7 @@ export default {
     name ()  { return this.ehrFile ? this.ehrFile.fName : '' },
     url () {
       const apiUrl = StoreHelper.apiUrlGet()
-      const consumerId = StoreHelper.toolConsumerId()
+      const consumerId = StoreHelper.getAuthdConsumerId()
       // https://edehr.org/api/files/public/Morse-Fall-Scale-score.png/consumer/5f4824e9e2e063001e4b43a6
       return apiUrl + '/files/public/' + this.name + '/consumer/' + consumerId
     }

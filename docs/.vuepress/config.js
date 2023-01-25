@@ -21,10 +21,33 @@ module.exports = {
         path: '/',
       },
       {
-        title: "LMS Admin",
-        path: '/lms-admin/',
+        title: "Student guide",
+        path: '/student/',
         children: [
-          '/lms-admin/',
+          '/student/',
+        ]
+      },
+      {
+        title: "Electronic health records",
+        path: '/ehr/',
+        children: [
+          '/ehr/',
+        ]
+      },
+      {
+        title: "Instructor guide",
+        path: '/instructor/',
+        children: [
+          '/instructor/',
+        ]
+      },
+      {
+        title: "Instructor tools and navigation",
+        path: '/instructor-tools/',
+        children: [
+          '/instructor-tools/',
+          '/instructor-tools/learning-objects',
+          '/instructor-tools/case-studies',
         ]
       },
       {
@@ -37,21 +60,10 @@ module.exports = {
         ]
       },
       {
-        title: "Instructor tools guide",
-        path: '/instructor-tools/',
-      },
-      {
-        title: "Instructor guide",
-        path: '/instructor/',
+        title: "LMS Admin",
+        path: '/lms-admin/',
         children: [
-          '/instructor/',
-        ]
-      },
-      {
-        title: "Student guide",
-        path: '/student/',
-        children: [
-          '/student/',
+          '/lms-admin/',
         ]
       },
       // {
@@ -62,7 +74,6 @@ module.exports = {
       //     '/developer/devop/',
       //     '/developer/devop/technical-architecture.md',
       //     '/developer/devop/deploy.md',
-      //     '/developer/inside/',
       //     '/developer/inside-generator/',
       //     '/developer/inside-generator/ehr-defs-pages.md',
       //     '/developer/inside-generator/ehr-defs-keys.md',

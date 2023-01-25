@@ -1,6 +1,6 @@
 // noinspection DuplicatedCode
 
-import { Pages } from './ehr-models'
+import { EhrPages } from './ehr-models'
 import EhrDataModel from '../ehr-definitions/EhrDataModel'
 
 export function computeDateOfBirth (ageValue, demographicsDoB) {
@@ -37,9 +37,9 @@ export function convertTimeStrToMilTime (text) {
   return result
 }
 
-export function updateAllVisitTime (eData,pageDefs) {
+export function updateAllVisitTime (eData) {
   const model = new EhrDataModel(eData)
-  const pages = new Pages(pageDefs)
+  const pages = new EhrPages()
   const pageList = pages.pageList
   pageList.forEach(page => {
     const pageKey = page.pageKey

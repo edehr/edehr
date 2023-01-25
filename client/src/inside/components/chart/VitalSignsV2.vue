@@ -2,7 +2,7 @@
 <template lang="pug">
   div()
     ehr-panel-content
-      div(class="region ehr-page-content")
+      div(class="region")
         vitals2(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
 </template>
 

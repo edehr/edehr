@@ -36,14 +36,14 @@ class AuthHelper {
   adminLogin (adminPass) {
     if (debugA) console.log('AuthHelper adminLogin ')
     const apiUrl = StoreHelper.apiUrlGet()
-    const url = `${apiUrl}/admin`
+    const url = `${apiUrl}/auth/admin`
     return axios.post(url, {adminPass})
   }
 
   adminValidate () {
     if (debugA) console.log('AuthHelper adminValidate ')
     const apiUrl = StoreHelper.apiUrlGet()
-    const url = `${apiUrl}/admin/validate`
+    const url = `${apiUrl}/auth/admin/validate`
     return axios.post(url)
   }
 }

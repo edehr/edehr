@@ -1,7 +1,7 @@
 <template lang="pug">
   div
     h1 LTI Consumers
-    div(class='showing-labels details-action-bar')
+    div(class='showing-labels flow_across')
       div
         ui-button(v-on:buttonClicked="showCreateDialog") Create a new consumer
         ui-button(v-on:buttonClicked="loadComponent") Refresh list
@@ -94,9 +94,8 @@ export default {
     loadComponent: function () {
       if (this.isAdmin) {
         StoreHelper.loadConsumerList()
-      } else {
-        this.redirectAdminLogin()
       }
+      // else page controller has already redirected to login
     }
   },
 }

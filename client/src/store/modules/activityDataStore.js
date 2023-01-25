@@ -1,8 +1,7 @@
 import InstoreHelper from './instoreHelper'
 import StoreHelper from '../../helpers/store-helper'
-import EventBus from '../../helpers/event-bus'
-import { ACTIVITY_DATA_EVENT } from '@/helpers/event-bus'
 import { Text } from '@/helpers/ehr-text'
+import { EhrPages } from '@/ehr-definitions/ehr-models'
 
 const API = 'activity-data'
 const OBJ = 'activitydata'
@@ -14,13 +13,19 @@ const state = {
 }
 
 function _sendHelper (context, parameter, data) {
-  return context.dispatch('send', { parameter: parameter, data: data })
+  return context.dispatch('sendActivityData', { parameter: parameter, data: data })
 }
 const getters = {
   assignmentData: state => {
     let prop =  state.dataStore.assignmentData || {}
     if (debug) console.log(NAME + ' get assignmentData', prop)
     return prop
+  },
+  hasDraftRows: state => {
+    let assignmentData =  state.dataStore.assignmentData || {}
+    const ehrPages = new EhrPages()
+    const statsSeed = ehrPages.ehrPagesStats(assignmentData)
+    return statsSeed.meta.draftRows > 0
   },
   lastUpdateDate: state => {
     // unlike other models this one's update field is called lastDate
@@ -72,27 +77,37 @@ const actions = {
     let adi = context.state.dataStore._id
     let url = `assignment-data/${adi}`
     if (debug) console.log(NAME+ ' sendAssignmentDataUpdate', payload)
-    return context.dispatch('put', {url: url, data: payload })
+    return context.dispatch('putActiveData', {url: url, data: payload })
   },
 
-  send (context, payload) {
+  sendActivityData (context, payload) {
     let activityDataId = context.state.dataStore._id
     let data = payload.data
     let parameter = payload.parameter
     let url = `${parameter}/${activityDataId}`
     if (debug) console.log(NAME+ ' ActivityData send ', url, data)
-    return context.dispatch('put', { url:url, data: { value: data }})
+    return context.dispatch('putActiveData', { url:url, data: { value: data }})
   },
-  load (context, id) {
+  sendAssignmentDataDraft (context, payload) {
+    // console.log('sendAssignmentDataDraft',payload)
+    let adi = context.state.dataStore._id
+    let url = `assignment-data/${adi}`
+    if (debug) console.log(NAME+ ' sendAssignmentDataUpdate', payload)
+    return context.dispatch('putActiveDataSilent', {url: url, data: payload })
+  },
+  loadActivityData (context, id) {
     id = id || context.state.dataStore._id
-    if (!id) {console.error(NAME + ' can not get activityData from null id '); return }
-    return context.dispatch('get',id)
+    if (!id) {
+      console.error(NAME + ' can not get activityData from null id ')
+      return
+    }
+    return context.dispatch('getActivityData',id)
       .then( (results) => {
         if (debug) console.log(NAME + ' loaded ', results)
         return context.commit('set', results)
       })
   },
-  get (context, id) {
+  getActivityData (context, id) {
     let url = 'get/' + id
     return InstoreHelper.getRequest(context, API, url).then(response => {
       let results = response.data[OBJ]
@@ -104,7 +119,7 @@ const actions = {
       return results
     })
   },
-  put (context, payload) {
+  putActiveData (context, payload) {
     let url = payload.url
     let data = payload.data
     return InstoreHelper.putRequest(context, API, url, data).then(response => {
@@ -114,13 +129,22 @@ const actions = {
       return results
     })
   },
+  putActiveDataSilent (context, payload) {
+    let url = payload.url
+    let data = payload.data
+    return InstoreHelper.putRequestSilent(context, API, url, data).then(response => {
+      let results = response.data
+      // console.log(NAME+ ' put', response.data)
+      context.commit('set', results)
+      return results
+    })
+  }
 }
 
 const mutations = {
   set: (state, data) => {
     if(debug) console.log(NAME+ ' set data', data)
     state.dataStore = data
-    EventBus.$emit(ACTIVITY_DATA_EVENT)
   }
 }
 

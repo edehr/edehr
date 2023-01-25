@@ -3,32 +3,36 @@ const API = 'visits'
 const debug = false
 const IS_CONTENT_EDITING = 'isContentEditor'
 const SEED_EDIT_ID = 'seedEditId'
-const IS_READONLY_INSTRUCTOR = 'isReadOnlyInstructor'
+const VISIT_ID = 'visitId'
 
 const state = {
   sVisitData: {},
+  _visitId: undefined,
   topLevelMenu: '',
   _seedEditId: '',
   _isDevelopingContent: false, // disable, by default, This sets the ability to create content if user is an instructor
-  _isReadOnlyInstructor: false
 }
 
 const getters = {
-  isInstructor: state => {
-    return state.sVisitData.isInstructor
+  activityId: state => {
+    return state.sVisitData.activity
   },
-  isDeveloper: state => {
-    return state.sVisitData.isDeveloper
+  activityDataId: state => {
+    return state.sVisitData.activityData
   },
-  isStudent: state => {
-    return state.sVisitData.isStudent
-  },
+  // isDeveloper: state => {
+  // the isDeveloper field is the same as isInstructor see lti on server
+  //   return state.sVisitData.isDeveloper
+  // },
   isDevelopingContent: state => {
     return state._isDevelopingContent
   },
   isSeedEditing: state => {
     if (debug) console.log('isSeedEditing',state._seedEditId)
     return state._seedEditId && state._seedEditId.length > 0
+  },
+  role: state => {
+    return state.sVisitData.role
   },
   seedEditId: state => {
     return state._seedEditId
@@ -38,12 +42,10 @@ const getters = {
   },
   lastUpdateDate: state => {
     // unlike other models this one's update field is called lastVisitDate
-    return state.dataStore.lastVisitDate
+    return state.sVisitData.lastVisitDate
   },
-  isReadOnlyInstructor: state => {
-    return state._isReadOnlyInstructor
-  },
-  visitData: state => state.sVisitData
+  visitData: state => state.sVisitData,
+  visitId: state => state._visitId
 }
 
 const actions = {
@@ -52,20 +54,29 @@ const actions = {
   },
   clearVisitData (context) {
     context.commit('setVisitData', {})
+    context.commit('setVisitId', undefined)
+    context.commit('setSeedEditId', undefined)
+    localStorage.removeItem(IS_CONTENT_EDITING)
   },
-  loadVisit2 (context, visitId) {
+  setVisitId (context, vId) {
+    console.log('Set visit id', vId)
+    context.commit('setVisitId', vId)
+  },
+  loadVisitRecord (context) {
+    const visitId = context.getters.visitId
+    if (!visitId) {
+      console.error('Visit error loading record. Must set visitId first!')
+      return
+    }
     let url = 'get/' + visitId
-    if(debug) console.log('loadVisit api call ', url)
+    if (debug) console.log('loadVisit api call ', url)
     return InstoreHelper.getRequest(context, API, url).then(response => {
-      if(debug) console.log('loadVisit what is the response? ', response.data)
-      let visitInfo = response.data
-      if (!visitInfo || ! visitInfo.visit) {
-        console.error('ERROR No visit information for ' + visitId)
-        return
-        // return invalid('ERROR No visit information for ' + visitId)
+      let visit = response.data ? response.data.visit : undefined
+      if (!visit) {
+        throw new Error('ERROR No visit information for ' + visitId)
       }
-      if(debug) console.log('loadVisit what is the visitInfo? ', visitInfo.visit)
-      context.commit('setVisitData', visitInfo.visit)
+      if (debug) console.log('loadVisit what is the visitInfo? ', visit)
+      context.commit('setVisitData', visit)
     })
   }
 }
@@ -73,8 +84,8 @@ const actions = {
 const mutations = {
   initialize: function (state) {
     state._isDevelopingContent = localStorage.getItem(IS_CONTENT_EDITING) === 'true'
-    state._isReadOnlyInstructor = localStorage.getItem(IS_READONLY_INSTRUCTOR) === 'true'
     state._seedEditId = localStorage.getItem(SEED_EDIT_ID)
+    state._visitId = localStorage.getItem(VISIT_ID)
   },
   setSeedEditId: (state, value) => {
     if(debug) console.log('setSeedEditing ', value)
@@ -96,14 +107,20 @@ const mutations = {
     if(debug) console.log('visit store setVisitData ', info)
     state.sVisitData = info
   },
+  setVisitId: (state, id) => {
+    if(debug) console.log('setVisitId ', id)
+    // This value needs to survive a browser refresh so make the source of truth the session storage
+    if (id) {
+      localStorage.setItem(VISIT_ID, id)
+    } else {
+      localStorage.removeItem(VISIT_ID)
+    }
+    state._visitId = id
+  },
   topLevelMenu: (state, top) => {
     if(debug) console.log('visit store top level menu ' + (top ? top : 'empty'))
     state.topLevelMenu = top
   },
-  setIsReadOnlyInstructor: (state, val) => {
-    localStorage.setItem(IS_READONLY_INSTRUCTOR, val)
-    state._isReadOnlyInstructor = value
-  }
 }
 
 export default {

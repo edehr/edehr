@@ -1,9 +1,9 @@
 <template lang="pug">
   div
-    ui-button(v-on:buttonClicked="duplicateLearningObject", :title="text.COPY_TP(learningObject.name)")
-      fas-icon(class="fa", :icon="appIcons.copy")
-      span(v-if="showLabels") &nbsp; {{text.COPY}}
-
+    zone-lms-button(@action="duplicateLearningObject",
+      :title="text.COPY_TP(learningObject.name)",
+      :icon='appIcons.copy',
+      :text='text.COPY')
     ui-confirm(
       ref="confirmDialog",
       @confirm="confirmLearningObjectDuplication",
@@ -16,14 +16,14 @@
 
 <script>
 import { APP_ICONS } from '@/helpers/app-icons'
-import UiButton from '@/app/ui/UiButton.vue'
 import UiConfirm from '@/app/ui/UiConfirm.vue'
 import StoreHelper from '@/helpers/store-helper'
 import { Text } from '@/helpers/ehr-text'
+import ZoneLmsButton from '@/outside/components/ZoneLmsButton'
 const DUPLICATE = Text.LOBJ_ACTIONS.DUPLICATE_CONFIRM
 export default {
   components: {
-    UiButton,
+    ZoneLmsButton,
     UiConfirm
   },
   data () {

@@ -2,7 +2,7 @@
 <template lang="pug">
   div()
     ehr-panel-content
-      div(class="region ehr-page-content")
+      div(class="region")
         tabs
           tab(name="Incision", :selected="true")
             ehr-page-table(:tableDef="tableDef[0]", :ehrHelp="ehrHelp")

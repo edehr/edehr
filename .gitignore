@@ -37,5 +37,7 @@ server/deleted/**
 server/src/config/admin-password\.txt
 temp/**
 server/lib/**
-server/build/**
+**/build/**
 server/api-logs/**
+server/logs-analytics/**
+server/logs-api/**

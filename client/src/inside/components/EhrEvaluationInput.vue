@@ -1,7 +1,7 @@
 <template lang="pug">
   div(class="ehr-eval-input")
     div(class="evaluation-notes")
-      textarea(v-model="theNotes", :disabled='disabled')
+      textarea(v-model="theNotes", rows="6", :disabled='disabled')
     ehr-evaluation-confirm(
       ref='evaluationConfirmDialog',
       @cancelPageLeave='cancelPageLeave',
@@ -34,8 +34,8 @@ export default {
     },
     hasNewData () {
       return (
-        this.theNotes && 
-        this.theNotes.length > 0 && 
+        this.theNotes &&
+        this.theNotes.length > 0 &&
         this.theNotes !== this.asStoredEvaluationNotes
       )
     }
@@ -122,7 +122,7 @@ export default {
 .evaluation-notes {
   textarea {
     max-width: 60rem;
-    height: 4rem;
+    height: auto;
   }
 }
 </style>

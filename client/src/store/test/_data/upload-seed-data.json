@@ -76,7 +76,7 @@
       },
       "medicationOrders":{
         "table":[
-  
+
         ]
       },
       "allergies":{
@@ -92,7 +92,7 @@
           }
         ],
         "previous":[
-  
+
         ]
       },
       "careTeam":{
@@ -159,7 +159,7 @@
           },
           {
             "name":"Herman",
-            "profession":"Repiratory therapist",
+            "profession":"Respiratory therapist",
             "createdDate":"2019-05-30T09:42:39-07:00"
           }
         ]
@@ -183,12 +183,12 @@
       },
       "vitals":{
         "table":[
-  
+
         ]
       },
       "neurological":{
         "table":[
-  
+
         ]
       },
       "visit":{

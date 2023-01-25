@@ -29,6 +29,7 @@ export default {
       // - hasSeed (data),
       // - hasStudent (student data) and
       // - hasMerged (any data)
+      // - draftMerged, draftSeed, and draftStudent if page has a draft record
       let k = this.path.pageDataKey
       let d = this.pageDataList()[k]
       if (!d) {
@@ -41,13 +42,18 @@ export default {
       let colour = ''
       const NEW_INFO = 'circle green-circle'
       const SEED_INFO = 'circle empty-circle'
+      const NEW_DRAFT = 'circle draft-circle'
+      // const SEED_DRAFT = 'circle empty-draft-circle'
       const NONE = ''
       let isSeedEditing = StoreHelper.isSeedEditing()
       let hd = this.pageInfo
       if (isSeedEditing) {
-        colour = hd.hasSeed ? NEW_INFO : NONE
+        colour = hd.draftSeed ? NEW_DRAFT :
+          hd.hasSeed ? NEW_INFO : NONE
       } else {
-        colour = hd.hasStudent ? NEW_INFO : hd.hasSeed ? SEED_INFO : NONE
+        colour = hd.draftStudent ? NEW_DRAFT :
+          hd.hasStudent ? NEW_INFO :
+            hd.hasSeed ? SEED_INFO : NONE
       }
       return colour
     },
@@ -89,7 +95,7 @@ export default {
 }
 .indicator {
   padding-top: 5px;
-  padding-right: 5px;
+  padding-right: 10px;
 }
 /* Small screens */
 @media screen and (max-width: $main-width-threshold1) {
@@ -147,22 +153,22 @@ a:hover {
     }
   }
   &__link1 {
-    padding-left: 10px;
+    padding-left: $ehr-layout-padding-left;
     & a {
       color: $nav-color-level3;
     }
   }
   &__link2 {
-    padding-left: 20px;
+    padding-left: $ehr-layout-padding-left-level2;
   }
   &__link3 {
-    padding-left: 35px;
+    padding-left: $ehr-layout-padding-left-level3;
   }
   .linkElement {
     width: 100%;
   }
   .linkLabel {
-    width: 90%;
+    width: 80%;
   }
   @media screen and (max-width: $main-width-threshold1){
     .linkElement {
@@ -180,6 +186,12 @@ a:hover {
   }
   .green-circle {
     background: $green;
+  }
+  .empty-draft-circle {
+    border: 2px solid $nav-draft-colour;
+  }
+  .draft-circle {
+    background: $nav-draft-colour;
   }
   .top-level {
     color: $green;

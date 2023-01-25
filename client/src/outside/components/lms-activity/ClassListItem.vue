@@ -1,13 +1,10 @@
 <template lang="pug">
-  div
-    div(class="list-item-container")
-      div
-        span(class="list-item-name") {{studentName}} &nbsp;
-        span ({{statusText()}}. Index: {{ studentVisit.index +1 }})
-      class-list-actions(class="list-item-actions", :studentVisit='studentVisit')
-      div(class="details-row")
-        div(class="details-name") {{text.EVALUATION}}
-        div(class="details-value") {{ evaluationNotes }}
+  div(class="list-item-container")
+    div(class="list-item-name") {{studentName}} &nbsp;
+    class-list-actions(:studentVisit='studentVisit')
+    div(class="flow_across")
+      div(class="details-name") {{text.EVALUATION}}
+      div(class="details-value") {{ evaluationNotes }}
 </template>
 
 <script>
@@ -54,10 +51,3 @@ export default {
   },
 }
 </script>
-
-<style lang='scss' scoped>
-//.list-item-container {
-//  display: grid;
-//  grid-template-columns: 2fr 2fr minmax(30rem, 1fr);
-//}
-</style>

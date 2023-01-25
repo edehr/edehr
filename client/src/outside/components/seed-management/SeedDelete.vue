@@ -1,8 +1,6 @@
 <template lang="pug">
   div(class="outside-action")
-    ui-button(v-on:buttonClicked="deleteSeed(seed)", :disabled='disabled', :title="title", class="outside-action")
-      fas-icon(class="fa", :icon="appIcons.trash")
-      span(v-if="showLabels") &nbsp; Delete
+    zone-lms-button(@action="deleteSeed(seed)", :disabled='disabled', :icon='appIcons.trash', :title='title', text='Delete')
     ui-confirm(
       ref="confirmDialog",
       @confirm="confirmSeedDeletion",
@@ -15,16 +13,16 @@
 
 <script>
 import { APP_ICONS } from '@/helpers/app-icons'
-import UiButton from '@/app/ui/UiButton.vue'
 import UiConfirm from '@/app/ui/UiConfirm.vue'
 import StoreHelper from '@/helpers/store-helper'
+import ZoneLmsButton from '@/outside/components/ZoneLmsButton'
 const TEXT = {
   TITLE : (name) => `Confirm deletion of ${name}`,
   DESCRIPTION: (name) => `Are you sure you want to delete ${name}?`,
 }
 export default {
   components: {
-    UiButton,
+    ZoneLmsButton,
     UiConfirm
   },
   data () {

@@ -118,16 +118,18 @@ function _visitTimeInEhrData (ehrData) {
           if (pgElementDef.isTable && ehrPageData[pgElemKey]) {
             // .. found table now get the table data and iterate over each row
             ehrPageData[pgElemKey].forEach(row => {
-              const day = Number.parseInt(row[vDayDef.elementKey])
-              const time = convertTimeStr(row[vTimeDef.elementKey])
-              if (!isNaN(day) && day > vDay) {
-                vDay = day
-                vTime = time ? time : vTime
-                // console.log('up the day ', vDay, vTime, pageKey, pgElemKey)
-              } else {
-                if (time && time > vTime ) {
-                  vTime = time > vTime ? time : vTime
-                  // console.log('up the time ', vDay, vTime, pageKey, pgElemKey)
+              if(!row.isDraft) {
+                const day = Number.parseInt(row[vDayDef.elementKey])
+                const time = convertTimeStr(row[vTimeDef.elementKey])
+                if (!isNaN(day) && day > vDay) {
+                  vDay = day
+                  vTime = time ? time : vTime
+                  // console.log('up the day ', vDay, vTime, pageKey, pgElemKey)
+                } else {
+                  if (time && time > vTime) {
+                    vTime = time > vTime ? time : vTime
+                    // console.log('up the time ', vDay, vTime, pageKey, pgElemKey)
+                  }
                 }
               }
             })

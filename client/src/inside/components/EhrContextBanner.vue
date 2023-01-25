@@ -2,7 +2,6 @@
   div(class="ehr-context-banner")
     div(v-if='isEhrOnlyDemo')
       div {{ehrOnlyDemoText.ehrContextBannerTitle}}
-      ehr-sim-time(:ehr-data="md")
       ui-button(v-on:buttonClicked="downloadEhrOnlyData")
         fas-icon(class="fa", :icon="appIcons.download")
         span Download Data
@@ -33,6 +32,9 @@ export default {
     }
   },
   computed: {
+    activity () {
+      return this.$store.getters['activityStore/activity']
+    },
     md () { return StoreHelper.getMergedData() },
     isEhrOnlyDemo () {
       return EhrOnlyDemo.isActiveEhrOnlyDemo()
@@ -65,7 +67,7 @@ export default {
 @import '../../scss/definitions';
 .ehr-context-banner {
   background-color: $brand-primary-light;
-  padding: 0 1rem;
+  padding: 0 $ehr-layout-padding-left;
   border-top: 1px solid $grey40;
 }
 </style>

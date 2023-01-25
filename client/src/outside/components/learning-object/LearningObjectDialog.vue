@@ -102,7 +102,7 @@ export default {
         name: this.assignmentName,
         description: this.description,
         seedDataId: sId,
-        toolConsumer: StoreHelper.toolConsumerId(this),
+        toolConsumer: StoreHelper.getAuthdConsumerId(),
       }
       console.log('save learning object', aAssignment)
       this.$refs.theDialog.onClose()

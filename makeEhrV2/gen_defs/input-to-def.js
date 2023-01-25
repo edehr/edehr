@@ -308,6 +308,10 @@ class RawInputToDef {
         let groups = _this._objToArray(element.ehr_groups, _aGroup)
         element.ehr_groups = groups
       } else if (element.isTable) {
+        let child = page1.pageChildren.find( (ch) => { return ch.recHeader })
+        if (child) {
+          element.hasRecHeader = true
+        }
         //console.log('Convert ehrGroups', element.form.ehr_groups)
         let groups = _this._objToArray(element.form.ehr_groups, _aGroup)
         element.form.ehr_groups = groups
@@ -346,7 +350,7 @@ class RawInputToDef {
     })
     form.ehr_data = data
   }
-  
+
   _objToArray (obj, middle) {
     // convert obj to array and optionally perform addition work via the middle function
     let array = []
@@ -368,7 +372,7 @@ class RawInputToDef {
 
   _validateEntry (entry) {
     if (DATA_INPUT_TYPES.indexOf(entry.inputType) >= 0) {
-      assert(entry.elementKey, 'Must have element key for input types', entry)
+      assert(entry.elementKey, 'Must have element key for input types ' + entry)
     } else if (NONDATA_INPUT_TYPES.indexOf(entry.inputType) >= 0) {
       // OK
     } else if (STRUCT_INPUT_TYPES.indexOf(entry.inputType) >= 0) {
@@ -379,7 +383,6 @@ class RawInputToDef {
       assert(false, 'This entry ' + JSON.stringify(entry)+  ' has an unsupported inputType')
     }
     if(entry.inputType === TABLE_FORM && !entry.elementKey) {
-
       assert(false, 'Tables must have element key ' +  JSON.stringify(entry))
     }
     if (!entry.elementKey) {

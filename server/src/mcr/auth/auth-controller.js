@@ -1,14 +1,17 @@
 import { Router } from 'express'
-import { getAdminPassword, generateAdminPassword } from '../../helpers/admin'
+import { getAdminPassword } from '../../helpers/admin'
 import { adminLimiter } from '../../helpers/middleware'
 import { Text } from '../../config/text'
 import { logError} from '../../helpers/log-error'
 const logAuth = require('debug')('auth')
+const debug = require('debug')('server')
 
 export default class AuthController {
-
-  constructor (authUtil) {
-    this.authUtil = authUtil
+  constructor (config) {
+    this.config = config
+  }
+  setSharedControllers (cc) {
+    this.authUtil = cc.authUtil
   }
 
   /**
@@ -37,22 +40,18 @@ export default class AuthController {
     } else {
       logAuth(`_adminLogin >> adminPass: '${adminPass}' adminToken: '${adminToken}'`)
       try {
-        if (adminToken) {
-          if (adminPass === adminToken) {
-            const payload = this.authenticate(authorization)
-            const adminPayload = Object.assign({}, payload, { adminPassword : adminPass})
-            const newToken = this.createToken(adminPayload)
-            return res.status(200).json({token: newToken})
-          } else {
-            return res.status(401).send(Text.EXPIRED_ADMIN)
-          }
-        } else {
-          generateAdminPassword()
-          return res.status(201).send('The password has been created')
+        if (adminToken && adminPass === adminToken) {
+          const payload = this.authUtil.authenticate(authorization)
+          const adminPayload = Object.assign({}, payload, { isAdmin : true})
+          const newToken = this.authUtil.createToken(adminPayload /* no exp because token has one already*/)
+          return res.status(200).json({token: newToken})
         }
+        // else
+        return res.status(401).send(Text.EXPIRED_ADMIN)
       }
       catch (err) {
-        logError('_adminLogin threw', err)
+        // can be "normal" if authorization token has expired
+        logAuth('_adminLogin threw', err)
         return res.status(401).send(Text.EXPIRED_ADMIN)
       }
     }
@@ -63,24 +62,20 @@ export default class AuthController {
     logAuth('req.headers >> ', req.headers)
     logAuth('_adminValidate', authorization)
     if (authorization) {
-      logAuth('auth >> ', authorization)
       try {
-        const result = this.authenticate(authorization)
-        logAuth('result >> ', result)
-        if (result.adminPassword) {
-          const adminPassword = getAdminPassword()
-          if (result.adminPassword === adminPassword) {
-            return res.status(200).send(/*success*/)
-          }
-          return res.status(401).send(Text.INVALID_TOKEN)
+        const result = this.authUtil.authenticate(authorization)
+        logAuth('_adminValidate result >> ', result)
+        if (result.isAdmin) {
+          return res.status(200).send(/*success*/)
         }
+        debug('admin validate FAIL with non-admin token')
         return res.status(403).send(Text.NOT_PERMITTED)
-
       } catch (err) {
-        return res.status(500).send(err)
+        debug('admin validate FAIL invalid token', err.message)
+        return res.status(401).send(err.message)
       }
-
     } else {
+      debug('admin validate FAIL without auth header')
       return res.status(401).send(Text.TOKEN_REQUIRED)
     }
   }

@@ -35,10 +35,8 @@ export default {
         await StoreHelper.loadConsumer(this.consumerId)
         await StoreHelper.loadAssignmentAndSeedLists()
         await StoreHelper.loadUsersList(this.consumerId)
-
-      } else {
-        this.redirectAdminLogin()
       }
+      // else page controller has already redirected to login
     }
   },
 }

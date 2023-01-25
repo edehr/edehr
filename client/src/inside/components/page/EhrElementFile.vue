@@ -3,7 +3,7 @@
     ehr-page-form-label(:element="element", css="ehrFile_label")
     div(class="file-element")
       div(class="inline")
-        ehr-file-link(v-if="inputVal.fName", :ehrFile="inputVal", :alink="false")
+        ehr-file-link(v-if="inputVal && inputVal.fName", :ehrFile="inputVal", :alink="false")
       div(class="inline select-file")
         ui-button(v-on:buttonClicked="showSelectDialog", v-bind:disabled="disabled || viewOnly", secondary, title="Select a file") {{ buttonLabel }}
     file-select-dialog(ref="fileSelectDialog", @fileSelected="fileSelected")
@@ -34,6 +34,7 @@ let db = false
 export default {
   components: { EhrFileLink, FileSelectDialog, UiAgree, UiButton },
   extends: EhrElementCommon,
+  // TODO pageDataKey is also injected by EhrElementCommon .. so remove the following and test
   inject: [ 'pageDataKey' ],
   props: {
   },

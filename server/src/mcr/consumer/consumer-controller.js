@@ -4,6 +4,7 @@ import { Text }  from '../../config/text'
 import Consumer from '../consumer/consumer'
 import {ok, fail} from '../common/utils'
 import { isAdmin } from '../../helpers/middleware'
+import { isAdminRequest } from '../../helpers/admin'
 import { activity1, activity2, activity3 } from '../common/assignment-defs'
 import Visit from '../visit/visit'
 import Activity from '../activity/activity'
@@ -104,10 +105,11 @@ export default class ConsumerController extends BaseController {
         return response
       })
   }
-  async getDetails (id, authPayload) {
+  async getDetails (id, req) {
     if (!id || id === 'undefined') {
       throw new ParameterError(Text.REQUIRES_CONSUMER_ID)
     }
+    const authPayload = req.authPayload
     if (authPayload.toolConsumerId !== id) {
       logError('Attempt to get details about a consumer the user is not authorized to see. User can access', authPayload.toolConsumerId,'. Requested to see', id)
       throw new NotAllowedError(Text.NOT_AUTH_TO_SEE_CONSUMER)
@@ -115,6 +117,7 @@ export default class ConsumerController extends BaseController {
     if (!authPayload.isInstructor) {
       throw new NotAllowedError(Text.MUST_BE_INSTRUCTOR)
     }
+    const isAdmin = isAdminRequest(req)
     // use the .lean() option to get a plain object we can add properties to
     let consumer = await this.baseFindOneQuery(id).lean()
     try {
@@ -124,9 +127,20 @@ export default class ConsumerController extends BaseController {
       let visitStudents = visits.filter(v => v.isStudent)
       let visitInstructors = visits.filter(v => v.isInstructor)
       consumer.visitStudentCount = visitStudents.length
-      consumer.lastStudentVisit = visitStudents.sort((a, b) => b.lastVisitDate - a.lastVisitDate)[0].lastVisitDate
+      consumer.lastStudentVisit = ''
+      consumer.lastStudentReturnUrl = ''
+      // console.log('visitStudents',JSON.stringify(visitStudents, null ,2))
+      if (visitStudents.length > 0) {
+        let mostRecent = visitStudents.sort((a, b) => b.lastVisitDate - a.lastVisitDate)[0]
+        consumer.lastStudentVisit = mostRecent.lastVisitDate
+        consumer.lastStudentReturnUrl = mostRecent.returnUrl
+      }
       consumer.visitInstructorCount = visitInstructors.length
-      consumer.lastInstructorVisit = visitInstructors.sort((a, b) => b.lastVisitDate - a.lastVisitDate)[0].lastVisitDate
+      if ( visitInstructors.length > 0) {
+        let mostRecent = visitInstructors.sort((a, b) => b.lastVisitDate - a.lastVisitDate)[0]
+        consumer.lastInstructorVisit = mostRecent.lastVisitDate
+        consumer.lastInstructorReturnUrl = mostRecent.returnUrl
+      }
       let activities = await Activity.find({ toolConsumer: consumerId })
       consumer.activityCount = activities.length
       let assignments = await Assignment.find({ toolConsumer: consumerId })
@@ -134,8 +148,11 @@ export default class ConsumerController extends BaseController {
       let seeds = await SeedData.find({ toolConsumer: consumerId })
       consumer.seedCount = seeds.length
       let users = await User.find({ toolConsumer: consumerId }, {fullName: 1})
-      users.sort((a,b) => a.fullName.localeCompare(b.fullName))
-      consumer.users = users
+      consumer.userCount = users.length
+      if (isAdmin) {
+        users.sort((a, b) => a.fullName.localeCompare(b.fullName))
+        consumer.users = users
+      }
     } catch( err) {
       logError(err)
       throw new SystemError('Encountered problem getting consumer details. ' + err.message)
@@ -201,7 +218,7 @@ export default class ConsumerController extends BaseController {
 
     router.get('/get/:key/details', (req, res) => {
       this
-        .getDetails(req.params.key, req.authPayload)
+        .getDetails(req.params.key, req)
         .then(ok(res))
         .then(null, fail(res))
     })

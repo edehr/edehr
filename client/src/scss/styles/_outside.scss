@@ -1,28 +1,12 @@
 @import '../definitions';
-.action-section {
-  display: flex;
-  flex-flow: row;
-  flex-wrap: wrap;
-  > div,
-  > button,
-  > .button {
-    margin-right: 8px;
-    margin-bottom: 8px;
-  }
+
+.outside-view {
+  margin: 2rem;
 }
 
 .list-card {
   border: 1.5px solid #051F54;
   border-radius: 10px;
-}
-.list-actions {
-  display: grid;
-  grid-auto-flow: column;
-  justify-content: end;
-  padding: 10px;
-}
-.list-actions > * {
-  margin: 3px;
 }
 .list-element {
   padding: 1rem 1.5rem;
@@ -37,9 +21,6 @@
   font-weight: bold;
   font-size: 1.5rem;
   grid-column: 1;
-}
-.list-item-actions {
-  grid-column: 2;
 }
 
 @media screen and (max-width: $main-width-threshold2){
@@ -59,12 +40,9 @@
 .details-container {
   padding: 1rem;
 }
-//.details-title {
-//  font-weight: bold;
-//}
 .details-row {
   display: grid;
-  grid-template-columns: 2fr 6fr;
+  grid-template-columns: 1fr 6fr;
   padding: 5px;
 }
 .details-name {
@@ -79,16 +57,8 @@
   font-size: 18px;
 }
 .details-action-bar {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
   margin-bottom: 1rem;
 }
 .with-title {
   grid-template-columns: 1fr 2fr 1fr;
-}
-@media all and (max-width: $main-width-threshold2) {
-  .details-action-bar {
-    display: flex;
-    flex-flow: column;
-  }
 }

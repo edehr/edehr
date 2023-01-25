@@ -1,3 +1,22 @@
+.tableLabelElement {
+  background-color: $table-header-colour;
+}
+.tableValueElementOdd {
+  background-color: $table-row-odd;
+  pre {
+    background-color: $table-row-odd;
+  }
+}
+
+.draftRow,
+.draftRow td {
+  background-color: $table-draft-colour !important;
+}
+.draftTableElem {
+  background-color: $table-draft-colour !important;
+}
+
+
 table,
 .table {
   border-collapse: collapse;
@@ -22,16 +41,16 @@ table,
   &.table_horizontal {
     width: 100%;
     tr:nth-child(odd) td {
-      background-color: $table-row-odd
+      background-color: $table-row-odd;
       pre {
-        background-color: $table-row-odd
+        background-color: $table-row-odd;
       }
     }
 
     tr:nth-child(even) td {
       background-color: $table-row-even;
       pre {
-        background-color: $table-row-even
+        background-color: $table-row-even;
       }
     }
   }

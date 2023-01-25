@@ -1,6 +1,6 @@
 <template lang="pug">
-  div(class="outside-view")
-    h1 Unlinked Activity
+  div
+    h1 Activity Needs To Be Linked
     div(v-if="isStudent")
       p.
         The activity you selected, in your learning management system ({{lmsName}}), is
@@ -80,7 +80,8 @@ export default {
   methods: {
     async loadComponent () {
       const activityId = this.$route.query.activityId
-      await this.$store.dispatch('activityStore/loadAsCurrentActivity', activityId)
+      await this.$store.dispatch('activityStore/setActivityId', activityId)
+      await this.$store.dispatch('activityStore/loadCurrentActivity')
       await this.$store.dispatch('seedListStore/loadSeeds')
       await this.$store.dispatch('assignmentListStore/loadAssignmentsWithCounts')
     },
@@ -96,9 +97,6 @@ export default {
 <style lang="scss" scoped>
 @import '../../scss/definitions';
 
-.outside-view {
-  margin: 2rem;
-}
 button, .button {
   font-size: 1rem;
 }

@@ -1,5 +1,6 @@
 <template lang='pug'>
   div(class="embedded-data")
+    div eeemb inputval: {{ inputVal }}
     ehr-group(v-for="group in groups", :key="group.gIndex", :group="group", :ehrHelp="ehrHelp", viewOnly=true)
 </template>
 
@@ -8,9 +9,10 @@ import Vue from 'vue'
 import EventBus from '@/helpers/event-bus'
 import EhrDefs from '@/helpers/ehr-defs-grid'
 import EhrElementCommon from '@/inside/components/page/EhrElementCommon'
+import EhrData from '@/inside/components/page/ehr-data'
 
 export default {
-  name: 'EhrElementEmbedded',
+  name: 'EhrElementEmbedded', // need to declare name
   components: {
     // dynamic import because this is a recursive inclusion. If we use the normal import at the script level we get
     // Unknown custom element: <ehr-group> - did you register the component correctly? For recursive components, make sure to provide the "name" option.
@@ -73,12 +75,12 @@ export default {
       this.refRow = refValue.split('.')[2]
       // we could use the refValue to get the refPage and/or the refTable but we have these from properties
       // Get the data from the page's table's row
-      const rowData = this.ehrHelp.getTableRowData(this.refPage, this.refTable, this.refRow)
-      // this.tableRowData = rowData
+      const rowData = EhrData.getTableRowData(this.refPage, this.refTable, this.refRow)
       const options = {}
       // stuff the data from the source table row into the inputs. This will be picked up
       // when the channel event is emitted for the referenced table
       options.inputs = rowData
+      options.open = true
       // tell the form fragment to not allow edits
       options.viewOnly = true
       let eData = {}
@@ -91,11 +93,14 @@ export default {
       // eData.tableKey=this.refTable
       // sending true in the value to indicate this is a dialog open event.  Later another event
       // is emitted when the dialog is to be closed. In that case we send a value with false.
-      eData.value = true
-      eData.options = options
-      let channel = this.ehrHelp.getDialogEventChannel(this.refTable)
+      // eData.open = true
+      eData = Object.assign(eData, options)
+      const _this = this
+      // console.log('segd emit channel',
+      //   _this.ehrHelp.getDialogEventChannel(_this.refTable),
+      //   'eData:', JSON.stringify(eData))
       Vue.nextTick(function () {
-        EventBus.$emit(channel, eData)
+        EventBus.$emit(_this.ehrHelp.getDialogEventChannel(_this.refTable), eData)
       })
     }
   }}

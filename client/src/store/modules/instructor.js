@@ -50,13 +50,16 @@ const actions = {
   initialize: function ({ commit }) {
     commit('initialize')
   },
+  clearInstructor: function (context) {
+    context.commit('setCurrentEvaluationStudentId', undefined)
+  },
   changeCurrentEvaluationStudentId: (context, currentId) => {
     if (debug) { console.log(NAME + 'change current evaluation student id to ', currentId)}
     context.commit('setCurrentEvaluationStudentId', currentId)
     let sv = context.getters.currentEvaluationStudent
     let adId = sv.activityData._id
     if(debug) console.log(NAME + 'currentEvaluationStudent activityData._id',adId)
-    return context.dispatch('activityDataStore/load', adId, {root:true})
+    return context.dispatch('activityDataStore/loadActivityData', adId, {root:true})
   },
 
   saveEvaluationNotes (context, payload) {
@@ -135,7 +138,11 @@ const mutations = {
 
   setCurrentEvaluationStudentId: (state, id) => {
     if(debug) console.log(NAME + 'setCurrentEvaluationStudentId', id)
-    localStorage.setItem(INSTRUCTOR_LOCAL_STORE, id)
+    if (id) {
+      localStorage.setItem(INSTRUCTOR_LOCAL_STORE, id)
+    } else {
+      localStorage.removeItem(INSTRUCTOR_LOCAL_STORE)
+    }
     state.sCurrentEvaluationStudentId = id
   }
 }

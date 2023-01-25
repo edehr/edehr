@@ -10,6 +10,7 @@ export const APP_ICONS = {
   edit: 'edit',
   ehrPage: 'book-medical',
   exitToLms: 'sign-out-alt',
+  externalLink: 'external-link-alt',
   file: 'notes-medical',
   filter: 'filter',
   forceSubmit: 'lock',
@@ -22,6 +23,7 @@ export const APP_ICONS = {
   seed: 'hand-holding-medical',
   returnToSeedList: 'list',
   rawEhr: 'th-large',
+  table: 'table',
   tags: 'tag', // for filtering by tag applied to an object
   trash: 'trash',
   undo: 'undo',

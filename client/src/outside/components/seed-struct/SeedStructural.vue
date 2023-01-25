@@ -11,7 +11,7 @@
           fas-icon(:icon="appIcons.menu", @click="showingNavPanel = !showingNavPanel")
           span &nbsp; {{pageTitle}}
         transition(name="hamburger-action")
-          seed-menus-mini(v-if="showingNavPanel",
+          seed-menus(v-if="showingNavPanel",
             @selectPage="selectPage",
             :activePageKey='activePageKey',
             :ehrData='ehrData')
@@ -26,11 +26,10 @@
 <script>
 import SeedPages from '@/outside/components/seed-struct/SeedPages'
 import SeedMenus from '@/outside/components/seed-struct/SeedMenus'
-import SeedMenusMini from '@/outside/components/seed-struct/SeedMenusMini'
 import EhrDefs from '@/helpers/ehr-defs-grid'
 import { APP_ICONS } from '@/helpers/app-icons'
 export default {
-  components: { SeedPages, SeedMenus, SeedMenusMini },
+  components: { SeedPages, SeedMenus },
   data () {
     return {
       appIcons: APP_ICONS,
@@ -39,15 +38,16 @@ export default {
     }
   },
   props: {
+    // ehrData is undefined if the student submitted no work at all
     ehrData: { type: Object }
   },
   computed: {
-    seedEhrData () { return this.ehrData.ehrData },
+    seedEhrData () { return this.ehrData ? this.ehrData.ehrData : {}},
     pageDef () { return this.activePageKey ? EhrDefs.getPageDefinition(this.activePageKey) : {}},
     pageTitle () { return this.pageDef ? this.pageDef.pageTitle : 'Select a page from the menu'},
     pageSeedData (  ) {
       const pkey = this.activePageKey
-      return pkey ? this.ehrData[pkey] : {}
+      return this.ehrData ? (pkey ? this.ehrData[pkey] : {}) : {}
     },
   },
   watch: {

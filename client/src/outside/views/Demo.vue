@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="columns is-centered showing-labels")
+  div(class="demo_page showing-labels")
     section(v-if="canAccessDemo", class="content")
       div(style="display: flex;")
         h2(class="has-text-centered") {{ demoText.title }}
@@ -96,14 +96,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .content {
-    font-size: 1.2rem;
-      max-width: 1024px;
-      margin-left: auto;
-      margin-right: auto;
-  }
-  select {
-    width: 15rem;
-  }
-
+@import '../../scss/definitions';
+.content {
+  font-size: 1.2rem;
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+}
+select {
+  width: 15rem;
+}
+.demo_page{
+  padding-left: $ehr-layout-padding-left;
+}
 </style>

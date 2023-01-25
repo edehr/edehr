@@ -1,9 +1,9 @@
 <template lang="pug">
-  div(class="secondMenu")
-    div(v-if='pageIcon', class='outer-page-title')
-      fas-icon( class='fa', :icon='pageIcon')
-      span  &nbsp; {{pageTitle}}
-    div(v-else,, class='outer-page-title') {{ pageTitle }}
+  div(class="flow_across menu_space_across")
+    div(class="flow_across menu_space_across bigger-than-threshold1")
+      router-link(v-if='showSeeding', :to="{ name: 'seed-view', query: { seedId: seedInfo._id } }", class="navLink") Return to case study: {{ seedInfo.name }}
+      router-link(v-else, :to="{ name: `lms-activity` }", class="navLink", :title='tooltip') Activity
+
     app-instructor-other-dropdown
 </template>
 <script>
@@ -12,23 +12,19 @@ import StoreHelper from '@/helpers/store-helper'
 export default {
   components: { AppInstructorOtherDropdown },
   computed: {
-    showItems () { return ! StoreHelper.isSmallWindow() },
-    pageIcon () {
-      // icon comes from route meta data
-      let icon = StoreHelper.getPageIcon()
-      icon = icon && icon.length > 0 ? icon : undefined
-      return icon
-    },
-    pageTitle () { return StoreHelper.getPageTitle() }
+    activity () { return this.$store.getters['activityStore/activity'] || {} },
+    assignment () { return this.$store.getters['assignmentStore/assignment'] || {} },
+    showInstructor () { return StoreHelper.isInstructor() && !StoreHelper.isSeedEditing()},
+    showSeeding () { return StoreHelper.inZoneEHR() && StoreHelper.isSeedEditing() },
+    seedInfo () { return StoreHelper.getSeedContent() },
+    tooltip () { return this.activity.resource_link_title + ' / ' + this.assignment.name }
   },
 }
 </script>
 <style lang="scss" scoped>
 @import '../../scss/definitions';
 .secondMenu {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  padding: 10px 20px;
+  display: flex;
 }
 /* Menu colours */
 .secondMenu {

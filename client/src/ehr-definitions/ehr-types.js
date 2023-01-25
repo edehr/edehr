@@ -33,6 +33,8 @@ const EhrTypes = {
     ehr_embedded: 'ehr_embedded',
     mainDOB: 'mainDOB', // main edit field on demographics page. Year is computed base on dependant age field.
     personAge: 'personAge',
+    practitionerName: 'practitionerName',
+    practitionerProfession: 'practitionerProfession',
     text: 'text',
     textarea: 'textarea',
     // time: 'time',
@@ -57,6 +59,7 @@ const EhrTypes = {
     }
   },
   nondataInputType: {
+    // recordConfirm: 'recordConfirm', // confirm button and message for EHR dialogs
     form_label: 'form_label',
     assetLink: 'assetLink',
     spacer: 'spacer',

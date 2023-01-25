@@ -11,15 +11,18 @@ const state = {
 
 const getters = {
   activity: state => state.activity,
-  courseTitle: state => state.activity.context_title,
   activityId: state => state.activityId,
   activityTitle: state => state.activity.resource_link_title,
   activityDescription: state => state.activity.resource_link_description,
+  courseTitle: state => state.activity.context_title,
 }
 
 const actions = {
   initialize: function ({ commit }) {
     commit('initialize')
+  },
+  clearActivity: function (context) {
+    context.commit('setActivityId', undefined)
   },
   // open and close toggle the submit state of all visit records for this activity.
   close ({dispatch, commit}, id) {
@@ -40,12 +43,17 @@ const actions = {
     // console.log('activityStore.linkAssignment data:', data)
     return dispatch('put', data)
   },
-
-  loadAsCurrentActivity ({dispatch, commit}, id) {
-    // console.log('activityStore.loadAsCurrentActivity')
+  setActivityId (context, id) {
+    context.commit('setActivityId', id)
+  },
+  loadCurrentActivity ({dispatch, commit, state}) {
+    const id = state.activityId
+    if(!id || id.length===0) {
+      throw new Error('System failure. Can not load the current activity because no activity id has been set')
+    }
     return dispatch('get',id)
       .then( (results) => {
-        commit('set', results)
+        commit('setActivity', results)
         return results
       })
   },
@@ -68,7 +76,7 @@ const actions = {
     let data = payload.data
     return InstoreHelper.putRequest(context, API, url, data).then(response => {
       let results = response.data
-      context.commit('set', results)
+      context.commit('setActivity', results)
       return results
     })
   },
@@ -83,14 +91,33 @@ const mutations = {
       state.activityId = activityId
     }
   },
-  set: (state, data) => {
-    // console.log('activityStore set data', data)
-    // transfer the db id to the field we use
-    state.activityId = data._id
-    // This id needs to survive a browser refresh
-    localStorage.setItem(ACTIVITY_LOCAL_STORE, state.activityId)
-    state.activity = data
+  setActivityId: (state, id) => {
+    if (id) {
+      state.activityId = id
+      // This id needs to survive a browser refresh
+      localStorage.setItem(ACTIVITY_LOCAL_STORE, state.activityId)
+    } else {
+      state.activityId = ''
+      // This id needs to survive a browser refresh
+      localStorage.removeItem(ACTIVITY_LOCAL_STORE)
+    }
   },
+  setActivity: (state, activity) => {
+    if(state.activityId !== activity._id) {
+      throw new Error('System failure. The given activity has a different id then expected.')
+    }
+    state.activity = activity
+  },
+
+  // set: (state, data) => {
+  //   console.log('activityStore MAKE THIS GO OBSOLETE set')
+  //   // console.log('activityStore set data', data)
+  //   // transfer the db id to the field we use
+  //   state.activityId = data._id
+  //   // This id needs to survive a browser refresh
+  //   localStorage.setItem(ACTIVITY_LOCAL_STORE, state.activityId)
+  //   state.activity = data
+  // },
 
 }
 

@@ -7,7 +7,6 @@
         ehr-sim-time(:ehr-data="md")
         ehr-student-submit
         ehr-student-other-dropdown
-          div Student tools
 </template>
 
 <script>

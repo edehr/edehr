@@ -36,8 +36,7 @@ import DemoCourseActivity from '@/outside/views/DemoCourseActivity'
 import DemoHelper from '@/helpers/demo-helper'
 import UiButton from '@/app/ui/UiButton'
 import UiInfo from '@/app/ui/UiInfo'
-import EventBus from '@/helpers/event-bus'
-import { PAGE_DATA_READY_EVENT } from '@/helpers/event-bus'
+import EventBus, { PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
 import { demoText } from '@/appText'
 
 const debugDC = false
@@ -90,15 +89,15 @@ export default {
     // }
     const _this = this
     this.refreshEventHandler = function () {
-      if (debugDC) console.log('Demo LMS PAGE_DATA_READY_EVENT')
+      if (debugDC) console.log('Demo LMS PAGE_DATA_REFRESH_EVENT')
       _this.loadActivities()
     }
-    EventBus.$on(PAGE_DATA_READY_EVENT, this.refreshEventHandler)
+    EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
     _this.loadActivities()
   },
   beforeDestroy: function () {
     if (this.refreshEventHandler) {
-      EventBus.$off(PAGE_DATA_READY_EVENT, this.refreshEventHandler)
+      EventBus.$off(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
     }
   }
 
@@ -115,6 +114,7 @@ export default {
 .aside {
   .aside-section {
     margin-bottom: 3rem;
+    padding-left: $ehr-layout-padding-left;
   }
 }
 

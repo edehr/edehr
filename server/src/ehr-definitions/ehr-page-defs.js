@@ -1684,7 +1684,6 @@ const DEFS = {
         label: 'Patient location',
         mandatory: true,
         tableColumn: '1',
-        tableCss: 'hr-table',
         fqn: 'visit.location',
         helperHtml: '<p>hospital, ward #, room #, home, out patient clinic</p>'
       },
@@ -1766,7 +1765,6 @@ const DEFS = {
         addButtonText: 'Add a patient location',
         ehr_list: [
           {
-            tableCss: 'hr-table',
             ehr_list_index: '1',
             items: [
               'location'
@@ -1843,7 +1841,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -1854,7 +1852,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -2124,7 +2122,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Vital signs',
         addButtonText: 'Add vital signs',
         ehr_list: [
@@ -2315,7 +2313,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -2326,7 +2324,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -2379,7 +2377,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Fluid balance',
         addButtonText: 'Add a fluid in/out record',
         ehr_list: [
@@ -2455,7 +2453,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -2466,7 +2464,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -3304,7 +3302,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Neurological assessment',
         addButtonText: 'Add a neurological assessment',
         ehr_list: [
@@ -3678,7 +3676,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -3689,7 +3687,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -4088,7 +4086,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Respiratory assessment',
         addButtonText: 'Add a respiratory assessment',
         ehr_list: [
@@ -4302,7 +4300,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -4313,7 +4311,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -4872,7 +4870,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Cardiovascular assessment',
         addButtonText: 'Add a cardiovascular assessment',
         ehr_list: [
@@ -5142,7 +5140,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -5153,7 +5151,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -5601,7 +5599,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Gastrointestinal assessment',
         addButtonText: 'Add a gastrointestinal assessment',
         ehr_list: [
@@ -5872,7 +5870,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -5883,7 +5881,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -6317,7 +6315,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Genitourinary assessment',
         addButtonText: 'Add a genitourinary assessment',
         ehr_list: [
@@ -6623,7 +6621,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -6634,7 +6632,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -6923,7 +6921,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Musculoskeletal assessment',
         addButtonText: 'Add a musculoskeletal assessment',
         ehr_list: [
@@ -7090,7 +7088,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -7101,7 +7099,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -7305,7 +7303,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Pain assessment',
         addButtonText: 'Add a pain assessment',
         ehr_list: [
@@ -7542,7 +7540,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -7553,7 +7551,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -7890,7 +7888,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Biopsychosocial assessment',
         addButtonText: 'Add a biopsychosocial assessment',
         ehr_list: [
@@ -8165,7 +8163,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -8176,7 +8174,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -8282,7 +8280,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Nonmedical orders',
         addButtonText: 'Add an order',
         ehr_list: [
@@ -8392,7 +8390,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -8403,7 +8401,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -8499,7 +8497,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Referrals',
         addButtonText: 'Add a referral',
         ehr_list: [
@@ -8603,7 +8601,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -8614,7 +8612,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -8923,7 +8921,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Lab requisitions',
         addButtonText: 'Add a lab requisition assessment',
         ehr_list: [
@@ -9127,7 +9125,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -9138,7 +9136,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -9426,7 +9424,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Medication orders',
         addButtonText: 'Add a medication order',
         ehr_list: [
@@ -10157,7 +10155,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -10168,7 +10166,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -10212,7 +10210,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Progress notes',
         addButtonText: 'Add an encounter note',
         ehr_list: [
@@ -10280,7 +10278,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -10291,7 +10289,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -10381,7 +10379,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Care plan',
         addButtonText: 'Add a care plan',
         ehr_list: [
@@ -10484,7 +10482,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -10495,7 +10493,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -10548,7 +10546,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Consults',
         addButtonText: 'Add a consulttion report',
         ehr_list: [
@@ -10624,7 +10622,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -10635,7 +10633,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -10688,7 +10686,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Laboratory reports',
         addButtonText: 'Add a laboratory report',
         ehr_list: [
@@ -10764,7 +10762,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -10775,7 +10773,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -10828,7 +10826,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Medical imaging',
         addButtonText: 'Add a report or image',
         ehr_list: [
@@ -10904,7 +10902,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -10915,7 +10913,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -10968,7 +10966,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Operative and anaesthesia records',
         addButtonText: 'Add a report',
         ehr_list: [
@@ -11184,7 +11182,7 @@ const DEFS = {
         isPageForm: true,
         ehr_groups: [
           {
-            elementKey: 'ehr_group149',
+            elementKey: 'ehr_group147',
             gIndex: '1',
             gChildren: [
               {
@@ -11284,7 +11282,7 @@ const DEFS = {
         isPageForm: true,
         ehr_groups: [
           {
-            elementKey: 'ehr_group150',
+            elementKey: 'ehr_group148',
             gIndex: '1',
             gChildren: [
               'snomed',
@@ -11304,7 +11302,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -11315,7 +11313,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -11429,7 +11427,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Diagnostic codes (ICD-10)',
         addButtonText: 'Add a diagnostic code',
         ehr_list: [
@@ -11493,7 +11491,7 @@ const DEFS = {
           formKey: 'table',
           ehr_groups: [
             {
-              elementKey: 'ehr_group151',
+              elementKey: 'ehr_group149',
               formCss: 'record-header',
               gIndex: '1',
               gChildren: [
@@ -11504,7 +11502,7 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group152',
+              elementKey: 'ehr_group150',
               gIndex: '2',
               gChildren: [
                 'icd10',
@@ -11541,7 +11539,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -11552,7 +11550,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -11623,7 +11621,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Intervention codes',
         addButtonText: 'Add an intervention code',
         ehr_list: [
@@ -11673,7 +11671,7 @@ const DEFS = {
           formKey: 'table',
           ehr_groups: [
             {
-              elementKey: 'ehr_group153',
+              elementKey: 'ehr_group151',
               formCss: 'record-header',
               gIndex: '1',
               gChildren: [
@@ -11684,7 +11682,7 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group154',
+              elementKey: 'ehr_group152',
               formCss: 'grid-left-to-right-1',
               gIndex: '2',
               gChildren: [
@@ -11724,7 +11722,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -11735,7 +11733,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -11815,7 +11813,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Case mix group',
         addButtonText: 'Add a case mix group',
         ehr_list: [
@@ -11872,7 +11870,7 @@ const DEFS = {
           formKey: 'table',
           ehr_groups: [
             {
-              elementKey: 'ehr_group155',
+              elementKey: 'ehr_group153',
               formCss: 'record-header',
               gIndex: '1',
               gChildren: [
@@ -11883,7 +11881,7 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group156',
+              elementKey: 'ehr_group154',
               gIndex: '2',
               gChildren: [
                 'clinicalCategory',
@@ -12175,7 +12173,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '3',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableLabel: 'Identification',
@@ -12185,7 +12183,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '3',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         recHeader: true,
@@ -12226,11 +12224,11 @@ const DEFS = {
         fqn: 'testPage.textDateDate'
       },
       {
-        elementKey: 'spacer161',
+        elementKey: 'spacer159',
         formIndex: '3',
         inputType: 'spacer',
         label: 'TextDate',
-        fqn: 'testPage.spacer161'
+        fqn: 'testPage.spacer159'
       },
       {
         elementKey: 'name',
@@ -12255,7 +12253,7 @@ const DEFS = {
         isPageForm: true,
         ehr_groups: [
           {
-            elementKey: 'ehr_group157',
+            elementKey: 'ehr_group155',
             label: 'A group label',
             gIndex: '1',
             gChildren: [
@@ -12272,7 +12270,7 @@ const DEFS = {
             ]
           },
           {
-            elementKey: 'ehr_group158',
+            elementKey: 'ehr_group156',
             label: 'Second group',
             gIndex: '2',
             gChildren: [
@@ -12314,7 +12312,7 @@ const DEFS = {
         elementKey: 'table1',
         tableKey: 'table1',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Test table 1',
         addButtonText: 'Add a row to the test table',
         ehr_list: [
@@ -12340,7 +12338,7 @@ const DEFS = {
           formKey: 'table1',
           ehr_groups: [
             {
-              elementKey: 'ehr_group159',
+              elementKey: 'ehr_group157',
               label: 'Group 1',
               gIndex: '1',
               gChildren: [
@@ -12362,7 +12360,7 @@ const DEFS = {
         isPageForm: true,
         ehr_groups: [
           {
-            elementKey: 'ehr_group160',
+            elementKey: 'ehr_group158',
             label: 'A group label',
             gIndex: '1',
             gChildren: [
@@ -12372,7 +12370,7 @@ const DEFS = {
               'time',
               'textDate',
               'textDateDate',
-              'spacer161',
+              'spacer159',
               'name',
               'place'
             ]
@@ -12651,7 +12649,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '2',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -12662,7 +12660,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '2',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -12711,13 +12709,13 @@ const DEFS = {
         fqn: 'testTable.cd1Date'
       },
       {
-        elementKey: 'spacer167',
+        elementKey: 'spacer165',
         formIndex: '2',
         inputType: 'spacer',
         label: 'C D 1',
         tableColumn: '2',
         tableLabel: 'Chk 1',
-        fqn: 'testTable.spacer167'
+        fqn: 'testTable.spacer165'
       },
       {
         elementKey: 'cd2',
@@ -12739,13 +12737,13 @@ const DEFS = {
         fqn: 'testTable.cd2Date'
       },
       {
-        elementKey: 'spacer168',
+        elementKey: 'spacer166',
         formIndex: '2',
         inputType: 'spacer',
         label: 'C D 2',
         tableColumn: '3',
         tableLabel: 'Chk 2',
-        fqn: 'testTable.spacer168'
+        fqn: 'testTable.spacer166'
       },
       {
         elementKey: 'td1',
@@ -12766,13 +12764,13 @@ const DEFS = {
         fqn: 'testTable.td1Date'
       },
       {
-        elementKey: 'spacer169',
+        elementKey: 'spacer167',
         formIndex: '2',
         inputType: 'spacer',
         label: 'TextDate',
         tableColumn: '4',
         tableLabel: 'Txt 1',
-        fqn: 'testTable.spacer169'
+        fqn: 'testTable.spacer167'
       },
       {
         elementKey: 'referralName',
@@ -12972,7 +12970,7 @@ const DEFS = {
         elementKey: 'table1',
         tableKey: 'table1',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Test table 1',
         addButtonText: 'Add a row to the test table',
         ehr_list: [
@@ -13086,7 +13084,7 @@ const DEFS = {
           formKey: 'table1',
           ehr_groups: [
             {
-              elementKey: 'ehr_group162',
+              elementKey: 'ehr_group160',
               label: 'Group 1',
               gIndex: '1',
               gChildren: [
@@ -13102,7 +13100,7 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group163',
+              elementKey: 'ehr_group161',
               gIndex: '2',
               gChildren: [
                 {
@@ -13137,7 +13135,7 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group164',
+              elementKey: 'ehr_group162',
               formCss: 'full-width',
               gIndex: '3',
               gChildren: [
@@ -13168,7 +13166,7 @@ const DEFS = {
         elementKey: 'stacked',
         tableKey: 'stacked',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Stacked table',
         addButtonText: 'Add a stacked row',
         ehr_list: [
@@ -13188,7 +13186,7 @@ const DEFS = {
             items: [
               'cd1',
               'cd1Date',
-              'spacer167'
+              'spacer165'
             ]
           },
           {
@@ -13197,7 +13195,7 @@ const DEFS = {
             items: [
               'cd2',
               'cd2Date',
-              'spacer168'
+              'spacer166'
             ]
           },
           {
@@ -13206,7 +13204,7 @@ const DEFS = {
             items: [
               'td1',
               'td1Date',
-              'spacer169'
+              'spacer167'
             ]
           },
           {
@@ -13240,7 +13238,7 @@ const DEFS = {
           formKey: 'stacked',
           ehr_groups: [
             {
-              elementKey: 'ehr_group165',
+              elementKey: 'ehr_group163',
               formCss: 'record-header',
               gIndex: '1',
               gChildren: [
@@ -13251,22 +13249,22 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group166',
+              elementKey: 'ehr_group164',
               gIndex: '2',
               gChildren: [
                 'cd1',
                 'cd1Date',
-                'spacer167',
+                'spacer165',
                 'cd2',
                 'cd2Date',
-                'spacer168',
+                'spacer166',
                 'td1',
                 'td1Date',
-                'spacer169'
+                'spacer167'
               ]
             },
             {
-              elementKey: 'ehr_group170',
+              elementKey: 'ehr_group168',
               gIndex: '3',
               gChildren: [
                 'referralName',
@@ -13360,7 +13358,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -13371,7 +13369,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -13575,7 +13573,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '2',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -13586,7 +13584,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '2',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -13799,7 +13797,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '3',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -13810,7 +13808,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '3',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -14081,7 +14079,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '4',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -14092,7 +14090,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '4',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -15384,7 +15382,7 @@ const DEFS = {
         elementKey: 'tableIncision',
         tableKey: 'tableIncision',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Incision profile',
         addButtonText: 'Add an incision profile',
         ehr_list: [
@@ -15493,7 +15491,7 @@ const DEFS = {
         elementKey: 'tableIncisionAssessment',
         tableKey: 'tableIncisionAssessment',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Incision assessment',
         addButtonText: 'Add an incision assessment',
         ehr_list: [
@@ -15636,7 +15634,7 @@ const DEFS = {
         elementKey: 'tableWound',
         tableKey: 'tableWound',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Wound profile',
         addButtonText: 'Add a wound profile',
         ehr_list: [
@@ -15767,7 +15765,7 @@ const DEFS = {
         elementKey: 'tableWoundAssessment',
         tableKey: 'tableWoundAssessment',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Wound assessment',
         addButtonText: 'Add a wound assessment',
         ehr_list: [
@@ -16202,7 +16200,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -16213,7 +16211,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -16243,47 +16241,6 @@ const DEFS = {
         fqn: 'hematology.time'
       },
       {
-        elementKey: 'patientName',
-        formIndex: '1',
-        inputType: 'ehrPatientName',
-        label: 'Patient Name',
-        tableColumn: '2',
-        fqn: 'hematology.patientName'
-      },
-      {
-        elementKey: 'patientHealthNumber',
-        formIndex: '1',
-        inputType: 'ehrPHN',
-        label: 'PHN',
-        tableColumn: '3',
-        fqn: 'hematology.patientHealthNumber'
-      },
-      {
-        elementKey: 'dateOfBirth',
-        formIndex: '1',
-        inputType: 'ehrDOB',
-        label: 'DOB',
-        tableColumn: '4',
-        fqn: 'hematology.dateOfBirth'
-      },
-      {
-        elementKey: 'dateOfTest',
-        formIndex: '1',
-        inputType: 'visitDay',
-        label: 'Date of test',
-        tableColumn: '5',
-        fqn: 'hematology.dateOfTest'
-      },
-      {
-        elementKey: 'timeOfTest',
-        formIndex: '1',
-        inputType: 'visitTime',
-        label: 'Time of test',
-        tableColumn: '6',
-        validation: 'time24',
-        fqn: 'hematology.timeOfTest'
-      },
-      {
         elementKey: 'wbc',
         formIndex: '1',
         helperText: 'White blood cell count',
@@ -16291,7 +16248,7 @@ const DEFS = {
         label: 'WBC',
         mandatory: true,
         suffix: '10^9/L',
-        tableColumn: '7',
+        tableColumn: '2',
         validation: 'numeric',
         fqn: 'hematology.wbc',
         helperHtml: '<p>White blood cell count</p>'
@@ -16315,7 +16272,7 @@ const DEFS = {
             text: 'high'
           }
         ],
-        tableColumn: '8',
+        tableColumn: '3',
         fqn: 'hematology.wbc-interp'
       },
       {
@@ -16331,7 +16288,7 @@ const DEFS = {
         inputType: 'number',
         label: 'RBC',
         suffix: '10^12/L',
-        tableColumn: '9',
+        tableColumn: '4',
         validation: 'numeric',
         fqn: 'hematology.rbc',
         helperHtml: '<p>Red blood cell count</p>'
@@ -16355,7 +16312,7 @@ const DEFS = {
             text: 'high'
           }
         ],
-        tableColumn: '10',
+        tableColumn: '5',
         fqn: 'hematology.rbc-interp'
       },
       {
@@ -16371,7 +16328,7 @@ const DEFS = {
         inputType: 'number',
         label: 'HGB',
         suffix: 'g/L',
-        tableColumn: '10',
+        tableColumn: '6',
         validation: 'numeric',
         fqn: 'hematology.hgb',
         helperHtml: '<p>Hemoglobin</p>'
@@ -16395,7 +16352,7 @@ const DEFS = {
             text: 'high'
           }
         ],
-        tableColumn: '11',
+        tableColumn: '7',
         fqn: 'hematology.hgb-interp'
       },
       {
@@ -16411,7 +16368,7 @@ const DEFS = {
         inputType: 'number',
         label: 'HCT',
         suffix: 'L/L',
-        tableColumn: '11',
+        tableColumn: '8',
         validation: 'numeric',
         fqn: 'hematology.HCT',
         helperHtml: '<p>Hematocrit</p>'
@@ -16435,7 +16392,7 @@ const DEFS = {
             text: 'high'
           }
         ],
-        tableColumn: '12',
+        tableColumn: '9',
         fqn: 'hematology.HCT-interp'
       },
       {
@@ -16451,7 +16408,7 @@ const DEFS = {
         inputType: 'number',
         label: 'MCV',
         suffix: 'fL',
-        tableColumn: '12',
+        tableColumn: '10',
         validation: 'numeric',
         fqn: 'hematology.MCV',
         helperHtml: '<p>Mean Cell Volume</p>'
@@ -16475,7 +16432,7 @@ const DEFS = {
             text: 'high'
           }
         ],
-        tableColumn: '13',
+        tableColumn: '11',
         fqn: 'hematology.MCV-interp'
       },
       {
@@ -16491,7 +16448,7 @@ const DEFS = {
         inputType: 'number',
         label: 'MCH',
         suffix: 'pg',
-        tableColumn: '13',
+        tableColumn: '12',
         validation: 'numeric',
         fqn: 'hematology.MCH',
         helperHtml: '<p>Mean Cell Hemoglobin</p>'
@@ -16515,7 +16472,7 @@ const DEFS = {
             text: 'high'
           }
         ],
-        tableColumn: '14',
+        tableColumn: '13',
         fqn: 'hematology.MCH-interp'
       },
       {
@@ -16571,7 +16528,7 @@ const DEFS = {
         inputType: 'number',
         label: 'RDW',
         suffix: '%',
-        tableColumn: '15',
+        tableColumn: '16',
         validation: 'numeric',
         fqn: 'hematology.RDW',
         helperHtml: '<p>Red Cell Distribution Width CV</p>'
@@ -16595,7 +16552,7 @@ const DEFS = {
             text: 'high'
           }
         ],
-        tableColumn: '16',
+        tableColumn: '17',
         fqn: 'hematology.RDW-interp'
       },
       {
@@ -16612,7 +16569,7 @@ const DEFS = {
         label: 'PLT',
         mandatory: true,
         suffix: '10^9/L',
-        tableColumn: '16',
+        tableColumn: '18',
         validation: 'numeric',
         fqn: 'hematology.PLT',
         helperHtml: '<p>Platelet Count</p>'
@@ -16636,7 +16593,7 @@ const DEFS = {
             text: 'high'
           }
         ],
-        tableColumn: '17',
+        tableColumn: '19',
         fqn: 'hematology.PLT-interp'
       },
       {
@@ -16652,7 +16609,7 @@ const DEFS = {
         inputType: 'number',
         label: 'MPV',
         suffix: 'fL',
-        tableColumn: '17',
+        tableColumn: '20',
         validation: 'numeric',
         fqn: 'hematology.MPV',
         helperHtml: '<p>Mean Platelet Volume</p>'
@@ -16676,7 +16633,7 @@ const DEFS = {
             text: 'high'
           }
         ],
-        tableColumn: '18',
+        tableColumn: '21',
         fqn: 'hematology.MPV-interp'
       },
       {
@@ -16691,13 +16648,13 @@ const DEFS = {
         formCss: 'grid-span-2-columns',
         inputType: 'textarea',
         label: 'CBC Comments',
-        tableColumn: '18',
+        tableColumn: '22',
         fqn: 'hematology.comments'
       },
       {
         elementKey: 'name',
         formIndex: '2',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -16708,7 +16665,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '2',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -16738,53 +16695,13 @@ const DEFS = {
         fqn: 'hematology.time'
       },
       {
-        elementKey: 'patientName',
-        formIndex: '2',
-        inputType: 'ehrPatientName',
-        label: 'Patient Name',
-        tableColumn: '2',
-        fqn: 'hematology.patientName'
-      },
-      {
-        elementKey: 'patientHealthNumber',
-        formIndex: '2',
-        inputType: 'ehrPHN',
-        label: 'PHN',
-        tableColumn: '3',
-        fqn: 'hematology.patientHealthNumber'
-      },
-      {
-        elementKey: 'dateOfBirth',
-        formIndex: '2',
-        inputType: 'ehrDOB',
-        label: 'DOB',
-        tableColumn: '4',
-        fqn: 'hematology.dateOfBirth'
-      },
-      {
-        elementKey: 'dateOfReview',
-        formIndex: '2',
-        inputType: 'visitDay',
-        label: 'Date of review',
-        tableColumn: '5',
-        fqn: 'hematology.dateOfReview'
-      },
-      {
-        elementKey: 'timeOfReview',
-        formIndex: '2',
-        inputType: 'visitTime',
-        label: 'Time of review',
-        tableColumn: '6',
-        fqn: 'hematology.timeOfReview'
-      },
-      {
         elementKey: 'bloodAnalysis',
         formIndex: '2',
         embedRef: 'hematology.tableCbcAnalysis',
         inputType: 'ehr_embedded',
         label: 'CBC Analysis',
         passToFunction: '[wbcAnalysis, pltAnalysis, cellCntSegNeutrophilAbs, cellCntBandCellsAbs, cellCntLymphAbs, cellCntMonoAbs, cellCntEosinAbs, cellCntBasoAbs, cellCntMetaAbs, cellCntMyeloAbs, cellCntPromyeloAbs, cellCntBlastAbs, cellCntReactiveLymphsAbs, cellCntOtherAbs]',
-        tableColumn: '7',
+        tableColumn: '2',
         fqn: 'hematology.bloodAnalysis'
       },
       {
@@ -16793,7 +16710,7 @@ const DEFS = {
         inputType: 'checkbox',
         label: 'Actions required',
         suffix: '10^9/L',
-        tableColumn: '8',
+        tableColumn: '3',
         fqn: 'hematology.actionsRequired'
       },
       {
@@ -16803,7 +16720,7 @@ const DEFS = {
         inputType: 'textarea',
         label: 'Actions taken',
         suffix: '10^12/L',
-        tableColumn: '9',
+        tableColumn: '4',
         fqn: 'hematology.actionsTaken'
       },
       {
@@ -16813,7 +16730,7 @@ const DEFS = {
         inputType: 'textarea',
         label: 'Scan comments',
         suffix: '10^12/L',
-        tableColumn: '10',
+        tableColumn: '5',
         fqn: 'hematology.scanComments'
       },
       {
@@ -16822,7 +16739,7 @@ const DEFS = {
         inputType: 'number',
         label: 'WBC - 1',
         passToFunction: 'wbcAverage',
-        tableColumn: '11',
+        tableColumn: '6',
         validation: 'numeric',
         fqn: 'hematology.wbc-1'
       },
@@ -16832,7 +16749,7 @@ const DEFS = {
         inputType: 'number',
         label: 'WBC - 2',
         passToFunction: 'wbcAverage',
-        tableColumn: '12',
+        tableColumn: '7',
         validation: 'numeric',
         fqn: 'hematology.wbc-2'
       },
@@ -16842,7 +16759,7 @@ const DEFS = {
         inputType: 'number',
         label: 'WBC - 3',
         passToFunction: 'wbcAverage',
-        tableColumn: '13',
+        tableColumn: '8',
         validation: 'numeric',
         fqn: 'hematology.wbc-3'
       },
@@ -16852,7 +16769,7 @@ const DEFS = {
         inputType: 'number',
         label: 'WBC - 4',
         passToFunction: 'wbcAverage',
-        tableColumn: '14',
+        tableColumn: '9',
         validation: 'numeric',
         fqn: 'hematology.wbc-4'
       },
@@ -16862,7 +16779,7 @@ const DEFS = {
         inputType: 'number',
         label: 'WBC - 5',
         passToFunction: 'wbcAverage',
-        tableColumn: '15',
+        tableColumn: '10',
         validation: 'numeric',
         fqn: 'hematology.wbc-5'
       },
@@ -16872,7 +16789,7 @@ const DEFS = {
         inputType: 'number',
         label: 'WBC - 6',
         passToFunction: 'wbcAverage',
-        tableColumn: '16',
+        tableColumn: '11',
         validation: 'numeric',
         fqn: 'hematology.wbc-6'
       },
@@ -16882,7 +16799,7 @@ const DEFS = {
         inputType: 'number',
         label: 'WBC - 7',
         passToFunction: 'wbcAverage',
-        tableColumn: '17',
+        tableColumn: '12',
         validation: 'numeric',
         fqn: 'hematology.wbc-7'
       },
@@ -16892,7 +16809,7 @@ const DEFS = {
         inputType: 'number',
         label: 'WBC - 8',
         passToFunction: 'wbcAverage',
-        tableColumn: '18',
+        tableColumn: '13',
         validation: 'numeric',
         fqn: 'hematology.wbc-8'
       },
@@ -16902,7 +16819,7 @@ const DEFS = {
         inputType: 'number',
         label: 'WBC - 9',
         passToFunction: 'wbcAverage',
-        tableColumn: '19',
+        tableColumn: '14',
         validation: 'numeric',
         fqn: 'hematology.wbc-9'
       },
@@ -16912,7 +16829,7 @@ const DEFS = {
         inputType: 'number',
         label: 'WBC - 10',
         passToFunction: 'wbcAverage',
-        tableColumn: '20',
+        tableColumn: '15',
         validation: 'numeric',
         fqn: 'hematology.wbc-10'
       },
@@ -16923,7 +16840,7 @@ const DEFS = {
         inputType: 'number',
         label: 'WBC field factor',
         passToFunction: 'wbcEstimate',
-        tableColumn: '21',
+        tableColumn: '16',
         validation: 'numeric',
         fqn: 'hematology.wbcFieldFactor'
       },
@@ -16934,7 +16851,7 @@ const DEFS = {
         inputType: 'calculatedValue',
         label: 'WBC average',
         passToFunction: 'wbcEstimate',
-        tableColumn: '22',
+        tableColumn: '17',
         validation: 'numeric',
         fqn: 'hematology.wbcAverage'
       },
@@ -16944,7 +16861,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'calculatedValue',
         label: 'WBC estimate',
-        tableColumn: '23',
+        tableColumn: '18',
         validation: 'numeric',
         fqn: 'hematology.wbcEstimate'
       },
@@ -16955,7 +16872,7 @@ const DEFS = {
         inputType: 'calculatedValue',
         label: 'WBC count',
         passToFunction: '[wbcLowRange, wbcHighRange]',
-        tableColumn: '24',
+        tableColumn: '19',
         validation: 'numeric',
         fqn: 'hematology.wbcAnalysis'
       },
@@ -16965,7 +16882,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'calculatedValue',
         label: 'WBC acceptable range (low)',
-        tableColumn: '25',
+        tableColumn: '20',
         validation: 'numeric',
         fqn: 'hematology.wbcLowRange'
       },
@@ -16975,7 +16892,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'calculatedValue',
         label: 'WBC acceptable range (high)',
-        tableColumn: '26',
+        tableColumn: '21',
         validation: 'numeric',
         fqn: 'hematology.wbcHighRange'
       },
@@ -16985,7 +16902,7 @@ const DEFS = {
         formCss: 'grid-span-2-columns',
         inputType: 'text',
         label: 'Internal WBC comment',
-        tableColumn: '27',
+        tableColumn: '22',
         fqn: 'hematology.wbcComment'
       },
       {
@@ -16994,7 +16911,7 @@ const DEFS = {
         inputType: 'number',
         label: 'PLT - 1',
         passToFunction: 'pltAverage',
-        tableColumn: '28',
+        tableColumn: '23',
         validation: 'numeric',
         fqn: 'hematology.plt-1'
       },
@@ -17004,7 +16921,7 @@ const DEFS = {
         inputType: 'number',
         label: 'PLT - 2',
         passToFunction: 'pltAverage',
-        tableColumn: '29',
+        tableColumn: '24',
         validation: 'numeric',
         fqn: 'hematology.plt-2'
       },
@@ -17014,7 +16931,7 @@ const DEFS = {
         inputType: 'number',
         label: 'PLT - 3',
         passToFunction: 'pltAverage',
-        tableColumn: '30',
+        tableColumn: '25',
         validation: 'numeric',
         fqn: 'hematology.plt-3'
       },
@@ -17024,7 +16941,7 @@ const DEFS = {
         inputType: 'number',
         label: 'PLT - 4',
         passToFunction: 'pltAverage',
-        tableColumn: '31',
+        tableColumn: '26',
         validation: 'numeric',
         fqn: 'hematology.plt-4'
       },
@@ -17034,7 +16951,7 @@ const DEFS = {
         inputType: 'number',
         label: 'PLT - 5',
         passToFunction: 'pltAverage',
-        tableColumn: '32',
+        tableColumn: '27',
         validation: 'numeric',
         fqn: 'hematology.plt-5'
       },
@@ -17044,7 +16961,7 @@ const DEFS = {
         inputType: 'number',
         label: 'PLT - 6',
         passToFunction: 'pltAverage',
-        tableColumn: '33',
+        tableColumn: '28',
         validation: 'numeric',
         fqn: 'hematology.plt-6'
       },
@@ -17054,7 +16971,7 @@ const DEFS = {
         inputType: 'number',
         label: 'PLT - 7',
         passToFunction: 'pltAverage',
-        tableColumn: '34',
+        tableColumn: '29',
         validation: 'numeric',
         fqn: 'hematology.plt-7'
       },
@@ -17064,7 +16981,7 @@ const DEFS = {
         inputType: 'number',
         label: 'PLT - 8',
         passToFunction: 'pltAverage',
-        tableColumn: '35',
+        tableColumn: '30',
         validation: 'numeric',
         fqn: 'hematology.plt-8'
       },
@@ -17074,7 +16991,7 @@ const DEFS = {
         inputType: 'number',
         label: 'PLT - 9',
         passToFunction: 'pltAverage',
-        tableColumn: '36',
+        tableColumn: '31',
         validation: 'numeric',
         fqn: 'hematology.plt-9'
       },
@@ -17084,7 +17001,7 @@ const DEFS = {
         inputType: 'number',
         label: 'PLT - 10',
         passToFunction: 'pltAverage',
-        tableColumn: '37',
+        tableColumn: '32',
         validation: 'numeric',
         fqn: 'hematology.plt-10'
       },
@@ -17095,7 +17012,7 @@ const DEFS = {
         inputType: 'number',
         label: 'PLT field factor',
         passToFunction: 'pltEstimate',
-        tableColumn: '38',
+        tableColumn: '33',
         validation: 'numeric',
         fqn: 'hematology.pltFieldFactor'
       },
@@ -17106,7 +17023,7 @@ const DEFS = {
         inputType: 'calculatedValue',
         label: 'PLT average',
         passToFunction: 'pltEstimate',
-        tableColumn: '39',
+        tableColumn: '34',
         validation: 'numeric',
         fqn: 'hematology.pltAverage'
       },
@@ -17116,7 +17033,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'calculatedValue',
         label: 'PLT estimate',
-        tableColumn: '40',
+        tableColumn: '35',
         validation: 'numeric',
         fqn: 'hematology.pltEstimate'
       },
@@ -17127,7 +17044,7 @@ const DEFS = {
         inputType: 'calculatedValue',
         label: 'PLT count',
         passToFunction: '[pltLowRange, pltHighRange]',
-        tableColumn: '41',
+        tableColumn: '36',
         validation: 'numeric',
         fqn: 'hematology.pltAnalysis'
       },
@@ -17137,7 +17054,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'calculatedValue',
         label: 'PLT acceptable range (low)',
-        tableColumn: '42',
+        tableColumn: '37',
         validation: 'numeric',
         fqn: 'hematology.pltLowRange'
       },
@@ -17147,7 +17064,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'calculatedValue',
         label: 'PLT acceptable range (high)',
-        tableColumn: '43',
+        tableColumn: '38',
         validation: 'numeric',
         fqn: 'hematology.pltHighRange'
       },
@@ -17157,7 +17074,7 @@ const DEFS = {
         formCss: 'grid-span-2-columns',
         inputType: 'text',
         label: 'Internal PLT comment',
-        tableColumn: '44',
+        tableColumn: '39',
         fqn: 'hematology.pltComment'
       },
       {
@@ -17165,7 +17082,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Normal',
-        tableColumn: '45',
+        tableColumn: '40',
         fqn: 'hematology.pltNormalMorphology'
       },
       {
@@ -17173,7 +17090,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Abnormal',
-        tableColumn: '46',
+        tableColumn: '41',
         fqn: 'hematology.pltAbnormalMorphology'
       },
       {
@@ -17208,7 +17125,7 @@ const DEFS = {
             text: 'Dysplastic'
           }
         ],
-        tableColumn: '47',
+        tableColumn: '42',
         fqn: 'hematology.pltMorphology'
       },
       {
@@ -17217,7 +17134,7 @@ const DEFS = {
         inputType: 'number',
         label: 'Segmented Neutrophil',
         passToFunction: '[ cellCntTotal cellCntSegNeutrophilAbs]',
-        tableColumn: '48',
+        tableColumn: '43',
         validation: 'numeric',
         fqn: 'hematology.cellCntSegNeutrophil'
       },
@@ -17227,7 +17144,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'calculatedValue',
         label: 'Segmented Neutrophil Abs',
-        tableColumn: '49',
+        tableColumn: '44',
         validation: 'numeric',
         fqn: 'hematology.cellCntSegNeutrophilAbs'
       },
@@ -17237,7 +17154,7 @@ const DEFS = {
         inputType: 'number',
         label: 'Band Cells',
         passToFunction: '[ cellCntTotal cellCntBandCellsAbs ]',
-        tableColumn: '50',
+        tableColumn: '45',
         validation: 'numeric',
         fqn: 'hematology.cellCntBandCells'
       },
@@ -17247,7 +17164,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'calculatedValue',
         label: 'Band Cells Abs',
-        tableColumn: '51',
+        tableColumn: '46',
         validation: 'numeric',
         fqn: 'hematology.cellCntBandCellsAbs'
       },
@@ -17257,7 +17174,7 @@ const DEFS = {
         inputType: 'number',
         label: 'Lymph',
         passToFunction: '[ cellCntTotal cellCntLymphAbs ]',
-        tableColumn: '52',
+        tableColumn: '47',
         validation: 'numeric',
         fqn: 'hematology.cellCntLymph'
       },
@@ -17267,7 +17184,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'calculatedValue',
         label: 'Lymph Abs',
-        tableColumn: '53',
+        tableColumn: '48',
         validation: 'numeric',
         fqn: 'hematology.cellCntLymphAbs'
       },
@@ -17277,7 +17194,7 @@ const DEFS = {
         inputType: 'number',
         label: 'Mono',
         passToFunction: '[ cellCntTotal cellCntMonoAbs ]',
-        tableColumn: '54',
+        tableColumn: '49',
         validation: 'numeric',
         fqn: 'hematology.cellCntMono'
       },
@@ -17287,7 +17204,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'calculatedValue',
         label: 'Mono Abs',
-        tableColumn: '55',
+        tableColumn: '50',
         validation: 'numeric',
         fqn: 'hematology.cellCntMonoAbs'
       },
@@ -17297,7 +17214,7 @@ const DEFS = {
         inputType: 'number',
         label: 'Eosin',
         passToFunction: '[ cellCntTotal cellCntEosinAbs ]',
-        tableColumn: '56',
+        tableColumn: '51',
         validation: 'numeric',
         fqn: 'hematology.cellCntEosin'
       },
@@ -17307,7 +17224,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'calculatedValue',
         label: 'Eosin Abs',
-        tableColumn: '57',
+        tableColumn: '52',
         validation: 'numeric',
         fqn: 'hematology.cellCntEosinAbs'
       },
@@ -17317,7 +17234,7 @@ const DEFS = {
         inputType: 'number',
         label: 'Baso',
         passToFunction: '[ cellCntTotal cellCntBasoAbs ]',
-        tableColumn: '58',
+        tableColumn: '53',
         validation: 'numeric',
         fqn: 'hematology.cellCntBaso'
       },
@@ -17327,7 +17244,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'calculatedValue',
         label: 'Baso Abs',
-        tableColumn: '59',
+        tableColumn: '54',
         validation: 'numeric',
         fqn: 'hematology.cellCntBasoAbs'
       },
@@ -17337,7 +17254,7 @@ const DEFS = {
         inputType: 'number',
         label: 'Meta',
         passToFunction: '[ cellCntTotal cellCntMetaAbs ]',
-        tableColumn: '60',
+        tableColumn: '55',
         validation: 'numeric',
         fqn: 'hematology.cellCntMeta'
       },
@@ -17347,7 +17264,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'calculatedValue',
         label: 'Meta Abs',
-        tableColumn: '61',
+        tableColumn: '56',
         validation: 'numeric',
         fqn: 'hematology.cellCntMetaAbs'
       },
@@ -17357,7 +17274,7 @@ const DEFS = {
         inputType: 'number',
         label: 'Myelo',
         passToFunction: '[ cellCntTotal cellCntMyeloAbs ]',
-        tableColumn: '62',
+        tableColumn: '57',
         validation: 'numeric',
         fqn: 'hematology.cellCntMyelo'
       },
@@ -17367,7 +17284,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'calculatedValue',
         label: 'Myelo Abs',
-        tableColumn: '63',
+        tableColumn: '58',
         validation: 'numeric',
         fqn: 'hematology.cellCntMyeloAbs'
       },
@@ -17377,7 +17294,7 @@ const DEFS = {
         inputType: 'number',
         label: 'Promyelo',
         passToFunction: '[ cellCntTotal cellCntPromyeloAbs ]',
-        tableColumn: '64',
+        tableColumn: '59',
         validation: 'numeric',
         fqn: 'hematology.cellCntPromyelo'
       },
@@ -17387,7 +17304,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'calculatedValue',
         label: 'Promyelo Abs',
-        tableColumn: '65',
+        tableColumn: '60',
         validation: 'numeric',
         fqn: 'hematology.cellCntPromyeloAbs'
       },
@@ -17397,7 +17314,7 @@ const DEFS = {
         inputType: 'number',
         label: 'Blast',
         passToFunction: '[ cellCntTotal cellCntBlastAbs ]',
-        tableColumn: '66',
+        tableColumn: '61',
         validation: 'numeric',
         fqn: 'hematology.cellCntBlast'
       },
@@ -17407,7 +17324,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'calculatedValue',
         label: 'Blast Abs',
-        tableColumn: '67',
+        tableColumn: '62',
         validation: 'numeric',
         fqn: 'hematology.cellCntBlastAbs'
       },
@@ -17417,7 +17334,7 @@ const DEFS = {
         inputType: 'number',
         label: 'Reactive Lymphs',
         passToFunction: '[ cellCntTotal cellCntReactiveLymphsAbs ]',
-        tableColumn: '68',
+        tableColumn: '63',
         validation: 'numeric',
         fqn: 'hematology.cellCntReactiveLymphs'
       },
@@ -17427,7 +17344,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'calculatedValue',
         label: 'Reactive Lymphs Abs',
-        tableColumn: '69',
+        tableColumn: '64',
         validation: 'numeric',
         fqn: 'hematology.cellCntReactiveLymphsAbs'
       },
@@ -17437,7 +17354,7 @@ const DEFS = {
         inputType: 'number',
         label: 'Other',
         passToFunction: '[ cellCntTotal cellCntOtherAbs ]',
-        tableColumn: '70',
+        tableColumn: '65',
         validation: 'numeric',
         fqn: 'hematology.cellCntOther'
       },
@@ -17447,22 +17364,22 @@ const DEFS = {
         formIndex: '2',
         inputType: 'calculatedValue',
         label: 'Other Abs',
-        tableColumn: '71',
+        tableColumn: '66',
         validation: 'numeric',
         fqn: 'hematology.cellCntOtherAbs'
       },
       {
-        elementKey: 'spacer139',
+        elementKey: 'spacer137',
         formIndex: '2',
         inputType: 'spacer',
-        fqn: 'hematology.spacer139'
+        fqn: 'hematology.spacer137'
       },
       {
         elementKey: 'cellCntOtherSpecify',
         formIndex: '2',
         inputType: 'text',
         label: 'Specify',
-        tableColumn: '72',
+        tableColumn: '67',
         fqn: 'hematology.cellCntOtherSpecify'
       },
       {
@@ -17471,7 +17388,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'calculatedValue',
         label: 'Total',
-        tableColumn: '73',
+        tableColumn: '68',
         fqn: 'hematology.cellCntTotal'
       },
       {
@@ -17480,7 +17397,7 @@ const DEFS = {
         helperText: 'nucleated red blood cells',
         inputType: 'number',
         label: 'NRBCs',
-        tableColumn: '74',
+        tableColumn: '69',
         fqn: 'hematology.cellCntNRBCs',
         helperHtml: '<p>nucleated red blood cells</p>'
       },
@@ -17489,7 +17406,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Normal',
-        tableColumn: '75',
+        tableColumn: '70',
         fqn: 'hematology.wbcmNormalMorphology'
       },
       {
@@ -17509,7 +17426,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Abnormal',
-        tableColumn: '76',
+        tableColumn: '71',
         fqn: 'hematology.wbcmAbnormalMorphology'
       },
       {
@@ -17560,7 +17477,7 @@ const DEFS = {
             text: 'Smudge Cells'
           }
         ],
-        tableColumn: '77',
+        tableColumn: '72',
         fqn: 'hematology.wbcmAbnormalTypeMorphology'
       },
       {
@@ -17574,7 +17491,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Toxic Signs',
-        tableColumn: '78',
+        tableColumn: '73',
         fqn: 'hematology.wbcmToxicMorphology'
       },
       {
@@ -17597,7 +17514,7 @@ const DEFS = {
             text: 'Toxic Vacuolation'
           }
         ],
-        tableColumn: '79',
+        tableColumn: '74',
         fqn: 'hematology.wbcmToxicTypeMorphology'
       },
       {
@@ -17605,35 +17522,35 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Normal',
-        tableColumn: '80',
+        tableColumn: '75',
         fqn: 'hematology.rcmNormal'
       },
       {
-        elementKey: 'spacer142',
+        elementKey: 'spacer140',
         formIndex: '2',
         inputType: 'spacer',
-        fqn: 'hematology.spacer142'
+        fqn: 'hematology.spacer140'
       },
       {
         elementKey: 'rcmConsistent',
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Consistent with indices',
-        tableColumn: '81',
+        tableColumn: '76',
         fqn: 'hematology.rcmConsistent'
       },
       {
-        elementKey: 'spacer143',
+        elementKey: 'spacer141',
         formIndex: '2',
         inputType: 'spacer',
-        fqn: 'hematology.spacer143'
+        fqn: 'hematology.spacer141'
       },
       {
         elementKey: 'rcmAcanthocytes',
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Acanthocytes',
-        tableColumn: '82',
+        tableColumn: '77',
         fqn: 'hematology.rcmAcanthocytes'
       },
       {
@@ -17660,7 +17577,7 @@ const DEFS = {
             text: '4+'
           }
         ],
-        tableColumn: '83',
+        tableColumn: '78',
         fqn: 'hematology.rcmAcanthocytesGrading'
       },
       {
@@ -17668,7 +17585,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Codocytes (Target Cells)',
-        tableColumn: '84',
+        tableColumn: '79',
         fqn: 'hematology.rcmCodocytes'
       },
       {
@@ -17695,7 +17612,7 @@ const DEFS = {
             text: '4+'
           }
         ],
-        tableColumn: '85',
+        tableColumn: '80',
         fqn: 'hematology.rcmCodocytesGrading'
       },
       {
@@ -17703,7 +17620,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Dacryocytes (Tear Drop Cells)',
-        tableColumn: '86',
+        tableColumn: '81',
         fqn: 'hematology.rcmDacryocytes'
       },
       {
@@ -17730,7 +17647,7 @@ const DEFS = {
             text: '4+'
           }
         ],
-        tableColumn: '87',
+        tableColumn: '82',
         fqn: 'hematology.rcmDacryocytesGrading'
       },
       {
@@ -17738,7 +17655,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Drepanocytes (Sickle Cells)',
-        tableColumn: '88',
+        tableColumn: '83',
         fqn: 'hematology.rcmDrepanocytes'
       },
       {
@@ -17765,7 +17682,7 @@ const DEFS = {
             text: '4+'
           }
         ],
-        tableColumn: '89',
+        tableColumn: '84',
         fqn: 'hematology.rcmDrepanocytesGrading'
       },
       {
@@ -17773,7 +17690,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Echinocytes (Burr Cells)',
-        tableColumn: '90',
+        tableColumn: '85',
         fqn: 'hematology.rcmEchinocytes'
       },
       {
@@ -17800,7 +17717,7 @@ const DEFS = {
             text: '4+'
           }
         ],
-        tableColumn: '91',
+        tableColumn: '86',
         fqn: 'hematology.rcmEchinocytesGrading'
       },
       {
@@ -17808,7 +17725,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Elliptocytes/Ovalocytes',
-        tableColumn: '92',
+        tableColumn: '87',
         fqn: 'hematology.rcmOvalocytes'
       },
       {
@@ -17835,7 +17752,7 @@ const DEFS = {
             text: '4+'
           }
         ],
-        tableColumn: '93',
+        tableColumn: '88',
         fqn: 'hematology.rcmOvalocytesGrading'
       },
       {
@@ -17843,7 +17760,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Macro-ovalocytes',
-        tableColumn: '94',
+        tableColumn: '89',
         fqn: 'hematology.rcmMacroOvalocytes'
       },
       {
@@ -17870,7 +17787,7 @@ const DEFS = {
             text: '4+'
           }
         ],
-        tableColumn: '95',
+        tableColumn: '90',
         fqn: 'hematology.rcmMacroOvalocytesGrading'
       },
       {
@@ -17878,7 +17795,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Stomatocytes',
-        tableColumn: '96',
+        tableColumn: '91',
         fqn: 'hematology.rcmStomatocytes'
       },
       {
@@ -17905,7 +17822,7 @@ const DEFS = {
             text: '4+'
           }
         ],
-        tableColumn: '97',
+        tableColumn: '92',
         fqn: 'hematology.rcmStomatocytesGrading'
       },
       {
@@ -17913,7 +17830,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Spherocytes',
-        tableColumn: '98',
+        tableColumn: '93',
         fqn: 'hematology.rcmSpherocytes'
       },
       {
@@ -17940,7 +17857,7 @@ const DEFS = {
             text: '4+'
           }
         ],
-        tableColumn: '99',
+        tableColumn: '94',
         fqn: 'hematology.rcmSpherocytesGrading'
       },
       {
@@ -17948,7 +17865,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Irregularly Contracted Cells (ICC)',
-        tableColumn: '100',
+        tableColumn: '95',
         fqn: 'hematology.rcmICC'
       },
       {
@@ -17975,7 +17892,7 @@ const DEFS = {
             text: '4+'
           }
         ],
-        tableColumn: '101',
+        tableColumn: '96',
         fqn: 'hematology.rcmICCGrading'
       },
       {
@@ -17983,7 +17900,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Bite Cells',
-        tableColumn: '102',
+        tableColumn: '97',
         fqn: 'hematology.rcmICCBite'
       },
       {
@@ -18010,7 +17927,7 @@ const DEFS = {
             text: '4+'
           }
         ],
-        tableColumn: '103',
+        tableColumn: '98',
         fqn: 'hematology.rcmICCBiteGrading'
       },
       {
@@ -18018,7 +17935,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Helmet Cells',
-        tableColumn: '104',
+        tableColumn: '99',
         fqn: 'hematology.rcmICCHelmut'
       },
       {
@@ -18045,7 +17962,7 @@ const DEFS = {
             text: '4+'
           }
         ],
-        tableColumn: '105',
+        tableColumn: '100',
         fqn: 'hematology.rcmICCHelmutGrading'
       },
       {
@@ -18053,7 +17970,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Schistocytes',
-        tableColumn: '106',
+        tableColumn: '101',
         fqn: 'hematology.rcmICCSchistocytes'
       },
       {
@@ -18080,7 +17997,7 @@ const DEFS = {
             text: '4+'
           }
         ],
-        tableColumn: '107',
+        tableColumn: '102',
         fqn: 'hematology.rcmICCSchistocytesGrading'
       },
       {
@@ -18088,7 +18005,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Coarse Basophilic Stippling',
-        tableColumn: '108',
+        tableColumn: '103',
         fqn: 'hematology.rcmBasophilicStippling'
       },
       {
@@ -18096,7 +18013,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Howell-Jolly Bodies',
-        tableColumn: '109',
+        tableColumn: '104',
         fqn: 'hematology.rcmHowellJollyBodies'
       },
       {
@@ -18104,7 +18021,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Pappenheimer Bodies',
-        tableColumn: '110',
+        tableColumn: '105',
         fqn: 'hematology.rcmPappenheimerBodies'
       },
       {
@@ -18112,7 +18029,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Malaria',
-        tableColumn: '111',
+        tableColumn: '106',
         fqn: 'hematology.rcmMalaria'
       },
       {
@@ -18135,7 +18052,7 @@ const DEFS = {
             text: 'Schizont'
           }
         ],
-        tableColumn: '112',
+        tableColumn: '107',
         fqn: 'hematology.rcmMalariaType'
       },
       {
@@ -18143,27 +18060,27 @@ const DEFS = {
         formIndex: '2',
         inputType: 'textarea',
         label: 'Internal RBC comments',
-        tableColumn: '112',
+        tableColumn: '108',
         fqn: 'hematology.rbcComments'
       },
       {
-        elementKey: 'spacer146',
+        elementKey: 'spacer144',
         formIndex: '2',
         inputType: 'spacer',
-        fqn: 'hematology.spacer146'
+        fqn: 'hematology.spacer144'
       },
       {
-        elementKey: 'spacer147',
+        elementKey: 'spacer145',
         formIndex: '2',
         inputType: 'spacer',
-        fqn: 'hematology.spacer147'
+        fqn: 'hematology.spacer145'
       },
       {
         elementKey: 'referralToHema',
         formIndex: '2',
         inputType: 'checkbox',
         label: 'Referral to hematopathologist',
-        tableColumn: '113',
+        tableColumn: '109',
         fqn: 'hematology.referralToHema'
       },
       {
@@ -18171,7 +18088,7 @@ const DEFS = {
         formIndex: '2',
         inputType: 'textarea',
         label: 'Reason for referral',
-        tableColumn: '114',
+        tableColumn: '110',
         fqn: 'hematology.explain'
       }
     ],
@@ -18180,10 +18097,10 @@ const DEFS = {
         elementKey: 'tableCbcAnalysis',
         tableKey: 'tableCbcAnalysis',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'CBC analysis',
         addButtonText: 'Add a CBC Report',
-        tableAction: 'pbf-review',
+        tableAction: 'tablePbfReview',
         tableActionLabel: 'PBF Review',
         ehr_list: [
           {
@@ -18199,111 +18116,126 @@ const DEFS = {
           {
             ehr_list_index: '2',
             items: [
-              'patientName'
+              'wbc'
             ]
           },
           {
             ehr_list_index: '3',
             items: [
-              'patientHealthNumber'
+              'wbc-interp'
             ]
           },
           {
             ehr_list_index: '4',
             items: [
-              'dateOfBirth'
+              'rbc'
             ]
           },
           {
             ehr_list_index: '5',
             items: [
-              'dateOfTest'
+              'rbc-interp'
             ]
           },
           {
             ehr_list_index: '6',
             items: [
-              'timeOfTest'
+              'hgb'
             ]
           },
           {
             ehr_list_index: '7',
             items: [
-              'wbc'
+              'hgb-interp'
             ]
           },
           {
             ehr_list_index: '8',
             items: [
-              'wbc-interp'
+              'HCT'
             ]
           },
           {
             ehr_list_index: '9',
             items: [
-              'rbc'
+              'HCT-interp'
             ]
           },
           {
             ehr_list_index: '10',
             items: [
-              'rbc-interp',
-              'hgb'
+              'MCV'
             ]
           },
           {
             ehr_list_index: '11',
             items: [
-              'hgb-interp',
-              'HCT'
+              'MCV-interp'
             ]
           },
           {
             ehr_list_index: '12',
             items: [
-              'HCT-interp',
-              'MCV'
+              'MCH'
             ]
           },
           {
             ehr_list_index: '13',
             items: [
-              'MCV-interp',
-              'MCH'
+              'MCH-interp'
             ]
           },
           {
             ehr_list_index: '14',
             items: [
-              'MCH-interp',
               'MCHC'
             ]
           },
           {
             ehr_list_index: '15',
             items: [
-              'MCHC-interp',
-              'RDW'
+              'MCHC-interp'
             ]
           },
           {
             ehr_list_index: '16',
             items: [
-              'RDW-interp',
-              'PLT'
+              'RDW'
             ]
           },
           {
             ehr_list_index: '17',
             items: [
-              'PLT-interp',
-              'MPV'
+              'RDW-interp'
             ]
           },
           {
             ehr_list_index: '18',
             items: [
-              'MPV-interp',
+              'PLT'
+            ]
+          },
+          {
+            ehr_list_index: '19',
+            items: [
+              'PLT-interp'
+            ]
+          },
+          {
+            ehr_list_index: '20',
+            items: [
+              'MPV'
+            ]
+          },
+          {
+            ehr_list_index: '21',
+            items: [
+              'MPV-interp'
+            ]
+          },
+          {
+            ehr_list_index: '22',
+            items: [
               'comments'
             ]
           }
@@ -18327,19 +18259,8 @@ const DEFS = {
             },
             {
               elementKey: 'ehr_group128',
-              gIndex: '2',
-              gChildren: [
-                'patientName',
-                'patientHealthNumber',
-                'dateOfBirth',
-                'dateOfTest',
-                'timeOfTest'
-              ]
-            },
-            {
-              elementKey: 'ehr_group129',
               label: 'Automated analyzer',
-              gIndex: '3',
+              gIndex: '2',
               gChildren: [
                 'wbc',
                 'wbc-interp',
@@ -18374,8 +18295,8 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group130',
-              gIndex: '4',
+              elementKey: 'ehr_group129',
+              gIndex: '3',
               gChildren: [
                 'comments'
               ]
@@ -18386,11 +18307,6 @@ const DEFS = {
             profession: '',
             day: '',
             time: '',
-            patientName: '',
-            patientHealthNumber: '',
-            dateOfBirth: '',
-            dateOfTest: '',
-            timeOfTest: '',
             wbc: '',
             'wbc-interp': '',
             rbc: '',
@@ -18419,7 +18335,7 @@ const DEFS = {
         elementKey: 'tablePbfReview',
         tableKey: 'tablePbfReview',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'PBF Review',
         addButtonText: 'NONE',
         ehr_list: [
@@ -18436,678 +18352,653 @@ const DEFS = {
           {
             ehr_list_index: '2',
             items: [
-              'patientName'
+              'bloodAnalysis'
             ]
           },
           {
             ehr_list_index: '3',
             items: [
-              'patientHealthNumber'
+              'actionsRequired'
             ]
           },
           {
             ehr_list_index: '4',
             items: [
-              'dateOfBirth'
+              'actionsTaken'
             ]
           },
           {
             ehr_list_index: '5',
             items: [
-              'dateOfReview'
+              'scanComments'
             ]
           },
           {
             ehr_list_index: '6',
             items: [
-              'timeOfReview'
+              'wbc-1'
             ]
           },
           {
             ehr_list_index: '7',
             items: [
-              'bloodAnalysis'
+              'wbc-2'
             ]
           },
           {
             ehr_list_index: '8',
             items: [
-              'actionsRequired'
+              'wbc-3'
             ]
           },
           {
             ehr_list_index: '9',
             items: [
-              'actionsTaken'
+              'wbc-4'
             ]
           },
           {
             ehr_list_index: '10',
             items: [
-              'scanComments'
+              'wbc-5'
             ]
           },
           {
             ehr_list_index: '11',
             items: [
-              'wbc-1'
+              'wbc-6'
             ]
           },
           {
             ehr_list_index: '12',
             items: [
-              'wbc-2'
+              'wbc-7'
             ]
           },
           {
             ehr_list_index: '13',
             items: [
-              'wbc-3'
+              'wbc-8'
             ]
           },
           {
             ehr_list_index: '14',
             items: [
-              'wbc-4'
+              'wbc-9'
             ]
           },
           {
             ehr_list_index: '15',
             items: [
-              'wbc-5'
+              'wbc-10'
             ]
           },
           {
             ehr_list_index: '16',
             items: [
-              'wbc-6'
+              'wbcFieldFactor'
             ]
           },
           {
             ehr_list_index: '17',
             items: [
-              'wbc-7'
+              'wbcAverage'
             ]
           },
           {
             ehr_list_index: '18',
             items: [
-              'wbc-8'
+              'wbcEstimate'
             ]
           },
           {
             ehr_list_index: '19',
             items: [
-              'wbc-9'
+              'wbcAnalysis'
             ]
           },
           {
             ehr_list_index: '20',
             items: [
-              'wbc-10'
+              'wbcLowRange'
             ]
           },
           {
             ehr_list_index: '21',
             items: [
-              'wbcFieldFactor'
+              'wbcHighRange'
             ]
           },
           {
             ehr_list_index: '22',
             items: [
-              'wbcAverage'
+              'wbcComment'
             ]
           },
           {
             ehr_list_index: '23',
             items: [
-              'wbcEstimate'
+              'plt-1'
             ]
           },
           {
             ehr_list_index: '24',
             items: [
-              'wbcAnalysis'
+              'plt-2'
             ]
           },
           {
             ehr_list_index: '25',
             items: [
-              'wbcLowRange'
+              'plt-3'
             ]
           },
           {
             ehr_list_index: '26',
             items: [
-              'wbcHighRange'
+              'plt-4'
             ]
           },
           {
             ehr_list_index: '27',
             items: [
-              'wbcComment'
+              'plt-5'
             ]
           },
           {
             ehr_list_index: '28',
             items: [
-              'plt-1'
+              'plt-6'
             ]
           },
           {
             ehr_list_index: '29',
             items: [
-              'plt-2'
+              'plt-7'
             ]
           },
           {
             ehr_list_index: '30',
             items: [
-              'plt-3'
+              'plt-8'
             ]
           },
           {
             ehr_list_index: '31',
             items: [
-              'plt-4'
+              'plt-9'
             ]
           },
           {
             ehr_list_index: '32',
             items: [
-              'plt-5'
+              'plt-10'
             ]
           },
           {
             ehr_list_index: '33',
             items: [
-              'plt-6'
+              'pltFieldFactor'
             ]
           },
           {
             ehr_list_index: '34',
             items: [
-              'plt-7'
+              'pltAverage'
             ]
           },
           {
             ehr_list_index: '35',
             items: [
-              'plt-8'
+              'pltEstimate'
             ]
           },
           {
             ehr_list_index: '36',
             items: [
-              'plt-9'
+              'pltAnalysis'
             ]
           },
           {
             ehr_list_index: '37',
             items: [
-              'plt-10'
+              'pltLowRange'
             ]
           },
           {
             ehr_list_index: '38',
             items: [
-              'pltFieldFactor'
+              'pltHighRange'
             ]
           },
           {
             ehr_list_index: '39',
             items: [
-              'pltAverage'
+              'pltComment'
             ]
           },
           {
             ehr_list_index: '40',
             items: [
-              'pltEstimate'
+              'pltNormalMorphology'
             ]
           },
           {
             ehr_list_index: '41',
             items: [
-              'pltAnalysis'
+              'pltAbnormalMorphology'
             ]
           },
           {
             ehr_list_index: '42',
             items: [
-              'pltLowRange'
+              'pltMorphology'
             ]
           },
           {
             ehr_list_index: '43',
             items: [
-              'pltHighRange'
+              'cellCntSegNeutrophil'
             ]
           },
           {
             ehr_list_index: '44',
             items: [
-              'pltComment'
+              'cellCntSegNeutrophilAbs'
             ]
           },
           {
             ehr_list_index: '45',
             items: [
-              'pltNormalMorphology'
+              'cellCntBandCells'
             ]
           },
           {
             ehr_list_index: '46',
             items: [
-              'pltAbnormalMorphology'
+              'cellCntBandCellsAbs'
             ]
           },
           {
             ehr_list_index: '47',
             items: [
-              'pltMorphology'
+              'cellCntLymph'
             ]
           },
           {
             ehr_list_index: '48',
             items: [
-              'cellCntSegNeutrophil'
+              'cellCntLymphAbs'
             ]
           },
           {
             ehr_list_index: '49',
             items: [
-              'cellCntSegNeutrophilAbs'
+              'cellCntMono'
             ]
           },
           {
             ehr_list_index: '50',
             items: [
-              'cellCntBandCells'
+              'cellCntMonoAbs'
             ]
           },
           {
             ehr_list_index: '51',
             items: [
-              'cellCntBandCellsAbs'
+              'cellCntEosin'
             ]
           },
           {
             ehr_list_index: '52',
             items: [
-              'cellCntLymph'
+              'cellCntEosinAbs'
             ]
           },
           {
             ehr_list_index: '53',
             items: [
-              'cellCntLymphAbs'
+              'cellCntBaso'
             ]
           },
           {
             ehr_list_index: '54',
             items: [
-              'cellCntMono'
+              'cellCntBasoAbs'
             ]
           },
           {
             ehr_list_index: '55',
             items: [
-              'cellCntMonoAbs'
+              'cellCntMeta'
             ]
           },
           {
             ehr_list_index: '56',
             items: [
-              'cellCntEosin'
+              'cellCntMetaAbs'
             ]
           },
           {
             ehr_list_index: '57',
             items: [
-              'cellCntEosinAbs'
+              'cellCntMyelo'
             ]
           },
           {
             ehr_list_index: '58',
             items: [
-              'cellCntBaso'
+              'cellCntMyeloAbs'
             ]
           },
           {
             ehr_list_index: '59',
             items: [
-              'cellCntBasoAbs'
+              'cellCntPromyelo'
             ]
           },
           {
             ehr_list_index: '60',
             items: [
-              'cellCntMeta'
+              'cellCntPromyeloAbs'
             ]
           },
           {
             ehr_list_index: '61',
             items: [
-              'cellCntMetaAbs'
+              'cellCntBlast'
             ]
           },
           {
             ehr_list_index: '62',
             items: [
-              'cellCntMyelo'
+              'cellCntBlastAbs'
             ]
           },
           {
             ehr_list_index: '63',
             items: [
-              'cellCntMyeloAbs'
+              'cellCntReactiveLymphs'
             ]
           },
           {
             ehr_list_index: '64',
             items: [
-              'cellCntPromyelo'
+              'cellCntReactiveLymphsAbs'
             ]
           },
           {
             ehr_list_index: '65',
             items: [
-              'cellCntPromyeloAbs'
+              'cellCntOther'
             ]
           },
           {
             ehr_list_index: '66',
             items: [
-              'cellCntBlast'
+              'cellCntOtherAbs'
             ]
           },
           {
             ehr_list_index: '67',
             items: [
-              'cellCntBlastAbs'
+              'cellCntOtherSpecify'
             ]
           },
           {
             ehr_list_index: '68',
             items: [
-              'cellCntReactiveLymphs'
+              'cellCntTotal'
             ]
           },
           {
             ehr_list_index: '69',
             items: [
-              'cellCntReactiveLymphsAbs'
+              'cellCntNRBCs'
             ]
           },
           {
             ehr_list_index: '70',
             items: [
-              'cellCntOther'
+              'wbcmNormalMorphology'
             ]
           },
           {
             ehr_list_index: '71',
             items: [
-              'cellCntOtherAbs'
+              'wbcmAbnormalMorphology'
             ]
           },
           {
             ehr_list_index: '72',
             items: [
-              'cellCntOtherSpecify'
+              'wbcmAbnormalTypeMorphology'
             ]
           },
           {
             ehr_list_index: '73',
             items: [
-              'cellCntTotal'
+              'wbcmToxicMorphology'
             ]
           },
           {
             ehr_list_index: '74',
             items: [
-              'cellCntNRBCs'
+              'wbcmToxicTypeMorphology'
             ]
           },
           {
             ehr_list_index: '75',
             items: [
-              'wbcmNormalMorphology'
+              'rcmNormal'
             ]
           },
           {
             ehr_list_index: '76',
             items: [
-              'wbcmAbnormalMorphology'
+              'rcmConsistent'
             ]
           },
           {
             ehr_list_index: '77',
             items: [
-              'wbcmAbnormalTypeMorphology'
+              'rcmAcanthocytes'
             ]
           },
           {
             ehr_list_index: '78',
             items: [
-              'wbcmToxicMorphology'
+              'rcmAcanthocytesGrading'
             ]
           },
           {
             ehr_list_index: '79',
             items: [
-              'wbcmToxicTypeMorphology'
+              'rcmCodocytes'
             ]
           },
           {
             ehr_list_index: '80',
             items: [
-              'rcmNormal'
+              'rcmCodocytesGrading'
             ]
           },
           {
             ehr_list_index: '81',
             items: [
-              'rcmConsistent'
+              'rcmDacryocytes'
             ]
           },
           {
             ehr_list_index: '82',
             items: [
-              'rcmAcanthocytes'
+              'rcmDacryocytesGrading'
             ]
           },
           {
             ehr_list_index: '83',
             items: [
-              'rcmAcanthocytesGrading'
+              'rcmDrepanocytes'
             ]
           },
           {
             ehr_list_index: '84',
             items: [
-              'rcmCodocytes'
+              'rcmDrepanocytesGrading'
             ]
           },
           {
             ehr_list_index: '85',
             items: [
-              'rcmCodocytesGrading'
+              'rcmEchinocytes'
             ]
           },
           {
             ehr_list_index: '86',
             items: [
-              'rcmDacryocytes'
+              'rcmEchinocytesGrading'
             ]
           },
           {
             ehr_list_index: '87',
             items: [
-              'rcmDacryocytesGrading'
+              'rcmOvalocytes'
             ]
           },
           {
             ehr_list_index: '88',
             items: [
-              'rcmDrepanocytes'
+              'rcmOvalocytesGrading'
             ]
           },
           {
             ehr_list_index: '89',
             items: [
-              'rcmDrepanocytesGrading'
+              'rcmMacroOvalocytes'
             ]
           },
           {
             ehr_list_index: '90',
             items: [
-              'rcmEchinocytes'
+              'rcmMacroOvalocytesGrading'
             ]
           },
           {
             ehr_list_index: '91',
             items: [
-              'rcmEchinocytesGrading'
+              'rcmStomatocytes'
             ]
           },
           {
             ehr_list_index: '92',
             items: [
-              'rcmOvalocytes'
+              'rcmStomatocytesGrading'
             ]
           },
           {
             ehr_list_index: '93',
             items: [
-              'rcmOvalocytesGrading'
+              'rcmSpherocytes'
             ]
           },
           {
             ehr_list_index: '94',
             items: [
-              'rcmMacroOvalocytes'
+              'rcmSpherocytesGrading'
             ]
           },
           {
             ehr_list_index: '95',
             items: [
-              'rcmMacroOvalocytesGrading'
+              'rcmICC'
             ]
           },
           {
             ehr_list_index: '96',
             items: [
-              'rcmStomatocytes'
+              'rcmICCGrading'
             ]
           },
           {
             ehr_list_index: '97',
             items: [
-              'rcmStomatocytesGrading'
+              'rcmICCBite'
             ]
           },
           {
             ehr_list_index: '98',
             items: [
-              'rcmSpherocytes'
+              'rcmICCBiteGrading'
             ]
           },
           {
             ehr_list_index: '99',
             items: [
-              'rcmSpherocytesGrading'
+              'rcmICCHelmut'
             ]
           },
           {
             ehr_list_index: '100',
             items: [
-              'rcmICC'
+              'rcmICCHelmutGrading'
             ]
           },
           {
             ehr_list_index: '101',
             items: [
-              'rcmICCGrading'
+              'rcmICCSchistocytes'
             ]
           },
           {
             ehr_list_index: '102',
             items: [
-              'rcmICCBite'
+              'rcmICCSchistocytesGrading'
             ]
           },
           {
             ehr_list_index: '103',
             items: [
-              'rcmICCBiteGrading'
+              'rcmBasophilicStippling'
             ]
           },
           {
             ehr_list_index: '104',
             items: [
-              'rcmICCHelmut'
+              'rcmHowellJollyBodies'
             ]
           },
           {
             ehr_list_index: '105',
             items: [
-              'rcmICCHelmutGrading'
+              'rcmPappenheimerBodies'
             ]
           },
           {
             ehr_list_index: '106',
             items: [
-              'rcmICCSchistocytes'
+              'rcmMalaria'
             ]
           },
           {
             ehr_list_index: '107',
             items: [
-              'rcmICCSchistocytesGrading'
+              'rcmMalariaType'
             ]
           },
           {
             ehr_list_index: '108',
             items: [
-              'rcmBasophilicStippling'
+              'rbcComments'
             ]
           },
           {
             ehr_list_index: '109',
             items: [
-              'rcmHowellJollyBodies'
-            ]
-          },
-          {
-            ehr_list_index: '110',
-            items: [
-              'rcmPappenheimerBodies'
-            ]
-          },
-          {
-            ehr_list_index: '111',
-            items: [
-              'rcmMalaria'
-            ]
-          },
-          {
-            ehr_list_index: '112',
-            items: [
-              'rcmMalariaType',
-              'rbcComments'
-            ]
-          },
-          {
-            ehr_list_index: '113',
-            items: [
               'referralToHema'
             ]
           },
           {
-            ehr_list_index: '114',
+            ehr_list_index: '110',
             items: [
               'explain'
             ]
@@ -19120,7 +19011,7 @@ const DEFS = {
           formKey: 'tablePbfReview',
           ehr_groups: [
             {
-              elementKey: 'ehr_group131',
+              elementKey: 'ehr_group130',
               formCss: 'record-header',
               gIndex: '1',
               gChildren: [
@@ -19131,30 +19022,19 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group132',
-              gIndex: '2',
-              gChildren: [
-                'patientName',
-                'patientHealthNumber',
-                'dateOfBirth',
-                'dateOfReview',
-                'timeOfReview'
-              ]
-            },
-            {
-              elementKey: 'ehr_group133',
+              elementKey: 'ehr_group131',
               label: 'CBC Analysis',
               formCss: 'grid-left-to-right-1',
-              gIndex: '3',
+              gIndex: '2',
               gChildren: [
                 'bloodAnalysis'
               ]
             },
             {
-              elementKey: 'ehr_group134',
+              elementKey: 'ehr_group132',
               label: 'Actions',
               formCss: 'grid-left-to-right-1',
-              gIndex: '4',
+              gIndex: '3',
               gChildren: [
                 'actionsRequired',
                 'actionsTaken',
@@ -19162,10 +19042,10 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group135',
+              elementKey: 'ehr_group133',
               label: 'WBC Estimate',
               formCss: 'grid-left-to-right-4',
-              gIndex: '5',
+              gIndex: '4',
               gChildren: [
                 'wbc-1',
                 'wbc-2',
@@ -19187,10 +19067,10 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group136',
+              elementKey: 'ehr_group134',
               label: 'PLT Estimate',
               formCss: 'grid-left-to-right-4',
-              gIndex: '6',
+              gIndex: '5',
               gChildren: [
                 'plt-1',
                 'plt-2',
@@ -19212,10 +19092,10 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group137',
+              elementKey: 'ehr_group135',
               label: 'PLT morphology',
               formCss: 'grid-left-to-right-1',
-              gIndex: '7',
+              gIndex: '6',
               gChildren: [
                 'pltNormalMorphology',
                 'pltAbnormalMorphology',
@@ -19223,10 +19103,10 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group138',
+              elementKey: 'ehr_group136',
               label: 'WBC Differential',
               formCss: 'grid-left-to-right-2',
-              gIndex: '8',
+              gIndex: '7',
               gChildren: [
                 'cellCntSegNeutrophil',
                 'cellCntSegNeutrophilAbs',
@@ -19252,16 +19132,16 @@ const DEFS = {
                 'cellCntReactiveLymphsAbs',
                 'cellCntOther',
                 'cellCntOtherAbs',
-                'spacer139',
+                'spacer137',
                 'cellCntOtherSpecify',
                 'cellCntTotal',
                 'cellCntNRBCs'
               ]
             },
             {
-              elementKey: 'ehr_group140',
+              elementKey: 'ehr_group138',
               label: 'White Cell Morphology',
-              gIndex: '9',
+              gIndex: '8',
               gChildren: [
                 'wbcmNormalMorphology',
                 'rcmMicroSpace',
@@ -19274,15 +19154,15 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group141',
+              elementKey: 'ehr_group139',
               label: 'Red Cell Morphology',
               formCss: 'grid-left-to-right-2',
-              gIndex: '10',
+              gIndex: '9',
               gChildren: [
                 'rcmNormal',
-                'spacer142',
+                'spacer140',
                 'rcmConsistent',
-                'spacer143',
+                'spacer141',
                 'rcmAcanthocytes',
                 'rcmAcanthocytesGrading',
                 'rcmCodocytes',
@@ -19312,9 +19192,9 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group144',
+              elementKey: 'ehr_group142',
               label: 'RBC Inclusions',
-              gIndex: '11',
+              gIndex: '10',
               gChildren: [
                 'rcmBasophilicStippling',
                 'rcmHowellJollyBodies',
@@ -19324,19 +19204,19 @@ const DEFS = {
               ]
             },
             {
-              elementKey: 'ehr_group145',
+              elementKey: 'ehr_group143',
               formCss: 'grid-left-to-right-1',
-              gIndex: '12',
+              gIndex: '11',
               gChildren: [
                 'rbcComments',
-                'spacer146',
-                'spacer147'
+                'spacer144',
+                'spacer145'
               ]
             },
             {
-              elementKey: 'ehr_group148',
+              elementKey: 'ehr_group146',
               formCss: 'grid-left-to-right-1',
-              gIndex: '13',
+              gIndex: '12',
               gChildren: [
                 'referralToHema',
                 'explain'
@@ -19348,11 +19228,6 @@ const DEFS = {
             profession: '',
             day: '',
             time: '',
-            patientName: '',
-            patientHealthNumber: '',
-            dateOfBirth: '',
-            dateOfReview: '',
-            timeOfReview: '',
             bloodAnalysis: '',
             actionsRequired: '',
             actionsTaken: '',
@@ -19476,7 +19351,7 @@ const DEFS = {
       {
         elementKey: 'name',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerName',
         label: 'Name',
         mandatory: true,
         tableColumn: '1',
@@ -19487,7 +19362,7 @@ const DEFS = {
       {
         elementKey: 'profession',
         formIndex: '1',
-        inputType: 'text',
+        inputType: 'practitionerProfession',
         label: 'Profession',
         mandatory: true,
         tableColumn: '1',
@@ -19570,7 +19445,7 @@ const DEFS = {
         elementKey: 'table',
         tableKey: 'table',
         isTable: true,
-        hasRecHeader: false,
+        hasRecHeader: true,
         label: 'Discharge plan',
         addButtonText: 'Add a discharge planning note',
         ehr_list: [

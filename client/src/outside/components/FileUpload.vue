@@ -140,7 +140,7 @@ export default {
       } else {
         newFile.error = 'Not a valid file type'
       }
-      const url = StoreHelper.apiUrlGet() + '/files/public/exists/' + newFile.name + '/consumer/' + StoreHelper.toolConsumerId()
+      const url = StoreHelper.apiUrlGet() + '/files/public/exists/' + newFile.name + '/consumer/' + StoreHelper.getAuthdConsumerId()
       const res = await fetch(url)
       const data = await res.json()
       if (data.exists) {
@@ -174,7 +174,7 @@ export default {
         console.log('percentCompleted', percentCompleted)
       }
       const file = this.files[0]
-      const consumerId = StoreHelper.toolConsumerId()
+      const consumerId = StoreHelper.getAuthdConsumerId()
       StoreHelper.addFileToList({ file, onUploadProgress, consumerId, usePut})
         .finally( () => {
           this.cancelFile()

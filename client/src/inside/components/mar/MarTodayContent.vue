@@ -23,7 +23,7 @@
           div(v-show="period.hasMar")
             mar-record(:record="period.marRecord")
         med-order(:medOrder='period.medList[0]')
-    mar-dialog(ref="refMarDialog", :currentDay="currentDay", v-on:saveMar="saveMar")
+    mar-dialog(ref="refMarDialog", :currentDay="currentDay", @saveMar="saveMar")
     div(style="display:none") refreshData: {{refreshData}}
 </template>
 

@@ -31,7 +31,9 @@ textarea {
   display: inline-block;
 }
 .form_label {
-  width: 8rem;
+  min-width: 7rem;
+  text-align: right;
+  padding-right: 5px;
   &::after {
     content: ":"
   }
@@ -196,6 +198,12 @@ select, .select {
   text-align: center;
 }
 
+.record-header {
+  border-bottom: 1px solid $grey20;
+  margin-bottom: 2.5em;
+  padding-bottom: .75em;
+}
+
 .cardio-assessment,
 .record-header,
 .ehr-banner-grid,
@@ -210,6 +218,16 @@ select, .select {
   margin-bottom: 1rem;
 }
 
+.record-header {
+  grid-template-columns: repeat(4, 1fr);
+  //.form_label {
+  //  width: 6rem;
+  //}
+  //.select_wrapper {
+  //  width: 12rem;
+  //}
+}
+
 .grid-left-to-right-1 {
   grid-template-columns: 1fr;
 }
@@ -222,7 +240,7 @@ select, .select {
   grid-template-columns: repeat(3, 1fr);
 }
 
-.record-header, .grid-left-to-right-4 {
+.grid-left-to-right-4 {
   grid-template-columns: repeat(4, 1fr);
 }
 

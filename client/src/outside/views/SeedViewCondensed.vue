@@ -1,17 +1,13 @@
 <template lang='pug'>
   div
-    div(class="top-bar")
-      div(class="link-bar")
-        div
-          seed-list-link(:seed-id='seedId')
-        div
-          ui-link(:name="'seed-view'", :query="{seedId: seedId}")
-            fas-icon(class="fa", :icon="appIcons.seed")
-            span &nbsp; {{seedObject.name}}
-      div
-        div(v-text-to-html="seedObject.description")
+    zone-lms-page-banner
+      seed-actions(class="flow_across_last_item", :seed="seed", :hideCondensed='true')
+    div(class="details-container card selected")
+      ui-link(:name="'seed-view'",  :query='{ seedId: seedId }' )
+        span(class='clickable') {{seed.name}}
+      div(v-text-to-html="seed.description")
 
-    seed-structural(:ehrData='seedObject.ehrData', class='structural-container card selected ')
+    seed-structural(:ehrData='seed.ehrData', class='structural-container card selected ')
 </template>
 
 <script>
@@ -21,9 +17,11 @@ import UiLink from '@/app/ui/UiLink'
 import StoreHelper from '@/helpers/store-helper'
 import SeedListLink from '@/outside/components/seed-management/SeedListLink'
 import OutsideCommon from '@/outside/views/OutsideCommon'
+import ZoneLmsPageBanner from '@/outside/components/ZoneLmsPageBanner'
+import SeedActions from '@/outside/components/seed-management/SeedActions'
 export default {
   extends: OutsideCommon,
-  components: { SeedListLink, SeedStructural, UiLink },
+  components: { SeedActions, ZoneLmsPageBanner, SeedListLink, SeedStructural, UiLink },
   data () {
     return {
       appIcons: APP_ICONS,
@@ -31,11 +29,11 @@ export default {
   },
   computed: {
     seedId () {
-      return this.seedObject._id
+      return this.seed._id
     },
-    seedObject () {
+    seed () {
       return this.$store.getters['seedListStore/seedContent']
-    }
+    },
   },
   methods: {
     loadComponent () {

@@ -82,12 +82,6 @@ export default {
 <style lang="scss">
 @import '../../../scss/definitions';
 
-.record-header {
-    border-bottom: 1px solid $grey20;
-    margin-bottom: 2.5em;
-    padding-bottom: .75em;
-}
-
 .section-divider {
     border-bottom: 1px solid $grey40;
     margin-bottom: 0.5rem;
