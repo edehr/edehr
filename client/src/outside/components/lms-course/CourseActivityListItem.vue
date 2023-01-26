@@ -18,27 +18,27 @@
       div(class="details-row")
         div(class="details-name") {{text.LOBJ}}
         div(class="details-value")
-          ui-link(:name="'learning-object'", :query="{learningObjectId: activity.assignment._id}")
+          ui-link(:name="'learning-object'", :query="{learningObjectId: assignment._id}")
             fas-icon(class='fa', :icon='appIcons.lobj')
-            span &nbsp; {{ activity.assignment.name }}
+            span &nbsp; {{ assignment.name }}
       div(class="details-row")
         div(class="details-name") {{text.DESCRIPTION}}
         div(class="details-value")
-          div(v-text-to-html="activity.assignment.description")
+          div(v-text-to-html="assignment.description")
       // Case study
       div(class="details-row")
         div(class="details-name") {{text.CASE_STUDY}}
         div(class="details-value")
-          ui-link(name="seed-view", :query="{seedId: activity.caseStudy._id}")
+          ui-link(name="seed-view", :query="{seedId: caseStudy._id}")
             fas-icon(class='fa', :icon='appIcons.seed')
-            span &nbsp; {{ activity.caseStudy.name }}
+            span &nbsp; {{ caseStudy.name }}
     div(v-show="!showMore")
       div(class="details-row")
         div(class="details-name") {{text.LOBJ}}
         div(class="details-value")
-          ui-link(:name="'learning-object'", :query="{learningObjectId: activity.assignment._id}")
+          ui-link(:name="'learning-object'", :query="{learningObjectId: assignment._id}")
             fas-icon(class='fa', :icon='appIcons.lobj')
-            span &nbsp; {{ activity.assignment.name }}
+            span &nbsp; {{ assignment.name }}
       div(class="details-row")
         div(class="details-name") {{text.CLASS_LIST}}
         div(class="details-value")
@@ -48,9 +48,9 @@
       div(class="details-row")
         div(class="details-name") {{text.CASE_STUDY}}
         div(class="details-value")
-          ui-link(name="seed-view", :query="{seedId: activity.caseStudy._id}")
+          ui-link(name="seed-view", :query="{seedId: caseStudy._id}")
             fas-icon(class='fa', :icon='appIcons.seed')
-            span &nbsp; {{ activity.caseStudy.name }}
+            span &nbsp; {{ caseStudy.name }}
 </template>
 
 <script>
@@ -72,6 +72,8 @@ export default {
     showIds: { type: Boolean }
   },
   computed: {
+    assignment () { return this.activity.assignment || {} },
+    caseStudy () { return this.activity.caseStudy || {} }
   },
   methods: {
     truncate (input, lim) {

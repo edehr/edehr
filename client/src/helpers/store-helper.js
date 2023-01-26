@@ -442,7 +442,10 @@ class StoreHelperWorker {
     // load the visit record (assignment, activity, activityData, etc)
     // store.getters['authStore/visitId'] is the visit id from the auth message. This always exists to get here.
     // store.getters['visit/visitId'] is the previously saved visit id
-    let visitId = optionalVisitId || store.getters['visit/visitId'] || store.getters['authStore/visitId']
+    const storedVisit = store.getters['visit/visitId']
+    const authVisit = store.getters['authStore/visitId']
+    console.log('loadCommon optionalVisitId, storedVisit, authVisit', optionalVisitId, storedVisit, authVisit)
+    let visitId = optionalVisitId || storedVisit || authVisit
     await StoreHelper.setVisitId(visitId) //note this stores the visit id to survive page changes and browser refresh
     await StoreHelper.loadVisitRecord()
   }

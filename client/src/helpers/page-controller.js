@@ -12,7 +12,7 @@ import {
 import store from '@/store'
 import authHelper from '@/helpers/auth-helper'
 
-const dbApp = false
+const dbApp = true
 
 /**
    * onPageChange is invoked from main.js whenever a route has changed.
@@ -99,6 +99,8 @@ async  function onPageChange (toRoute, fromRoute) {
       if (dbApp) console.log('_loadAuth refresh token', authHelper.hashToken(refreshToken))
       await StoreHelper.fetchAndStoreAuthToken(refreshToken)
       // fetch throws if token is expired or invalid
+      if (dbApp) console.log('on new auth we need to clear out previous visit id')
+      await StoreHelper.setVisitId()
     }
     perfStat.elapsed.refreshToken = performance.now() - perfStat.start.refreshToken
 
@@ -190,6 +192,7 @@ async  function onPageChange (toRoute, fromRoute) {
         if (dbApp) console.log('onPageChange first time using the new auth token. activityId', activityId)
         await StoreHelper.setActivityId(activityId)
         let activity = await StoreHelper.loadCurrentActivity()
+        console.log('loaded current activity', activity)
         if (!activity.assignment) {
           if (dbApp) console.log('No assignment for activity', activity)
           await router.push({ name: UNLINKED_ACTIVITY_ROUTE_NAME, query: { activityId: activityId } })
