@@ -61,7 +61,8 @@ export default {
   computed: {
     activity () { return this.data.activity },
     activityData () { return this.data.activityData },
-    assignment () { return this.data.assignment },
+    // rarely the activity may still lack a link to an assignement. it is "unlinked"
+    assignment () { return this.data.assignment || {}},
     scratchData () { return this.data.activityData.scratchData },
     submitted () { return this.activityData.submitted },
     visit () { return this.data.visit },

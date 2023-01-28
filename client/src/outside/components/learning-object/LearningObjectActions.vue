@@ -47,9 +47,6 @@ export default {
   computed: {
     activityCount () { return this.learningObject.activityCount},
     canDo () { return StoreHelper.isDevelopingContent() },
-    activityList () {
-      return StoreHelper.lmsActivitiesUsingLearningObject(this.learningObject._id)
-    },
     learningObjectId () { return this.learningObject._id}
   },
   methods: {

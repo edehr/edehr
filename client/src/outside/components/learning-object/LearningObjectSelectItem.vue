@@ -4,7 +4,7 @@
       div(class="list-item-name") {{lObj.name}} &nbsp;
         a(@click="showMore = !showMore") {{showMore ? 'show less' : 'show more'}}
       div
-        ui-button(v-on:buttonClicked="selectLearningObject(lObj)", class='link-button') Connect to activity
+        ui-button(v-on:buttonClicked="selectLearningObject(lObj)", class='link-button') Connect to this activity
         ui-confirm(ref="confirmDialog", saveLabel="Connect", v-on:confirm="proceed(lObj)", html-body=true)
     div(v-if="showMore")
       div(class="details-row")

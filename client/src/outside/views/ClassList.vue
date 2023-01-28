@@ -13,10 +13,11 @@
       div(class="details-row")
         div(class="details-name") {{text.LOBJ}}
         div(class="details-value")
-          ui-link(:name="'learning-object'", :query="{learningObjectId: assignment._id}")
-            fas-icon(class='fa', :icon='appIcons.lobj')
-            span &nbsp; {{ assignment.name }}
-
+          div(v-if='hasLinkedLearningObject')
+            ui-link(:name="'learning-object'", :query="{learningObjectId: assignment._id}")
+              fas-icon(class='fa', :icon='appIcons.lobj')
+              span &nbsp; {{ assignment.name }}
+          div(v-else) No learning object is linked to this activity
     div(class="classlist-body")
       div(v-if="classList.length===0") No students have attempted this activity.
       div(v-else, v-for="(studentVisit) in classList", class="list-card list-element", :class="rowClass(studentVisit)")
@@ -53,11 +54,12 @@ export default {
       return this.activity.resource_link_title
     },
     assignment () {
-      return this.$store.getters['assignmentStore/assignment']
+      return this.$store.getters['assignmentStore/assignment'] || {}
     },
     classList () {
       return StoreHelper.getClassList()
     },
+    hasLinkedLearningObject () { return this.activity.assignment },
     showLabels () { return StoreHelper.isOutsideShowButtonLabels() },
   },
   methods: {

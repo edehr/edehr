@@ -53,10 +53,11 @@ export default class UserController extends BaseController {
                 // decouple from mongoose so we can add in case study
                 activity = JSON.parse(JSON.stringify(activity))
                 const assignment = activity.assignment
-                const sId = assignment.seedDataId
-                const seed = seedList.find(item => item._id === sId)
-                activity['caseStudy'] = seed
-
+                if (assignment) {
+                  const sId = assignment.seedDataId
+                  const seed = seedList.find(item => item._id === sId)
+                  activity['caseStudy'] = seed
+                }
                 // group by course
                 let cId = activity.context_id
                 let course = courses.find(c => c.id === cId)
@@ -186,12 +187,12 @@ export default class UserController extends BaseController {
       const studentActivity = {
         visit: visit,
         activityData: visit.activityData,
-        assignmentData: visit.activityData.assignmentData,
+        assignmentData: visit.activityData ? visit.activityData.assignmentData : undefined,
         activity: activity,
         assignment: activity.assignment
       }
-      studentActivity.visit.activityData = visit.activityData._id
-      studentActivity.activity.assignment = activity.assignment._id
+      visit.activityData ? studentActivity.visit.activityData = visit.activityData._id : null
+      activity.assignment ? studentActivity.activity.assignment = activity.assignment._id : null
       course.courseActivities.push(studentActivity)
     }
     // console.log('Return this course list', JSON.stringify(courses, null, 2))

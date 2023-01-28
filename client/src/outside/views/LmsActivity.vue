@@ -21,10 +21,16 @@
       div(class="details-row")
           div(class="details-name") {{text.LOBJ}}
           div(class="details-value")
-            ui-link(:name="'learning-object'", :query="{learningObjectId: assignment._id}")
-              fas-icon(class='fa', :icon='appIcons.lobj')
-              span &nbsp; {{ assignment.name }}
-      div(class="details-row")
+            div(v-if='hasLinkedLearningObject')
+              ui-link(:name="'learning-object'", :query="{learningObjectId: assignment._id}")
+                fas-icon(class='fa', :icon='appIcons.lobj')
+                span &nbsp; {{ assignment.name }}
+            div(v-else)
+              div No learning object is linked to this activity
+              ui-button(v-on:buttonClicked='goToUnlinked')
+                slot(name="save-button") Connect learning object to this activity.
+
+      div(class="details-row", v-if='hasLinkedLearningObject')
         div(class="details-name") {{text.CASE_STUDY}}
         div(class="details-value")
           ui-link(name="seed-view", :query="{seedId: seedDataId}")
@@ -49,9 +55,12 @@ import UiLink from '@/app/ui/UiLink'
 import ActivityActions from '@/outside/components/lms-activity/ActivityActions'
 import OutsideCommon from '@/outside/views/OutsideCommon'
 import ZoneLmsPageName from '@/outside/components/ZoneLmsPageName'
+import { UNLINKED_ACTIVITY_ROUTE_NAME } from '@/router'
+import UiButton from '@/app/ui/UiButton.vue'
 export default {
   extends: OutsideCommon,
   components: {
+    UiButton,
     ZoneLmsPageName,
     ActivityActions,
     UiLink
@@ -70,7 +79,7 @@ export default {
       return this.$store.getters['activityStore/activityId']
     },
     assignment () {
-      return this.$store.getters['assignmentStore/assignment']
+      return this.$store.getters['assignmentStore/assignment' || {}]
     },
     classList () {
       return this.$store.getters['instructor/list']
@@ -78,18 +87,22 @@ export default {
     classSubmittedList () {
       return this.classList.filter(sv => sv.activityData.submitted)
     },
-    lastUpdate () {
-      return formatTimeStr(this.activity.lastDate)
-    },
     createDate () {
       return formatTimeStr(this.activity.createDate)
     },
-    seed () {
-      return this.$store.getters['seedListStore/seedContent']
+    hasLinkedLearningObject () { return this.activity.assignment },
+    lastUpdate () {
+      return formatTimeStr(this.activity.lastDate)
     },
-    seedDataId () { return this.assignment.seedDataId}
+    seed () {
+      return this.$store.getters['seedListStore/seedContent'] || {}
+    },
+    seedDataId () { return this.hasLinkedLearningObject ? this.assignment.seedDataId : undefined}
   },
   methods: {
+    goToUnlinked () {
+      this.$router.push({ name: UNLINKED_ACTIVITY_ROUTE_NAME, query: { activityId: this.activityId } })
+    },
     /*
     LmsActivity is THE landing place for all instructor users. The LTI process brings all
     instructors here. In the url will be the expected activityId. Also the user will have beeb
@@ -119,9 +132,11 @@ export default {
         await this.$store.dispatch('assignmentStore/load', activity.assignment)
         const seedId = this.assignment.seedDataId
         await this.$store.dispatch('seedListStore/loadSeedContent', seedId)
+      } else {
+        console.log('no linked learning object so clear away any previously loaded assignement')
+        await this.$store.dispatch('assignmentStore/clearAssignment')
       }
       await this.$store.dispatch('instructor/loadClassList')
-
     },
   },
 }

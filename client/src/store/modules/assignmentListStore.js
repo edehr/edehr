@@ -45,6 +45,8 @@ const actions = {
   },
 
 
+  // TODO  remove the following and replace with the loadAssignmentsWithCounts
+  // because the create and update use the following but most other parts of the system use the with counts
   async loadAssignments (context) {
     const { dispatch, commit } = context
     const list = await dispatch('getAssignments', context)
