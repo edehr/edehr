@@ -212,23 +212,12 @@ class StoreHelperWorker {
   getActivityId () { return this._getActivityProperty('activityId') }
 
   getActivityTitle () { return this._getActivityProperty('activityTitle') }
-
   getActivityDescription () { return this._getActivityProperty('activityDescription') }
-
-  activitiesUsingAssignmentCount (assignmentId) {
-    let cnt = 0
-    let courses = this.getCourseList()
-    courses.forEach(course => {
-      course.activities.forEach( a => cnt += a.assignment === assignmentId ? 1 : 0)
-    })
-    return cnt
-  }
-
   lmsActivitiesUsingLearningObject (lObjId) {
     let list = []
     let courses = this.getCourseList()
     courses.forEach(course => {
-      let clist = course.activities.filter( a => a.assignment._id === lObjId)
+      let clist = course.activities.filter( a => a.assignment && a.assignment._id === lObjId)
       list = [...list, ...clist]
     })
     return list

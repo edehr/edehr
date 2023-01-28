@@ -16,7 +16,7 @@
       p.
         The activity you selected, in your learning management system, is not yet linked to a learning object.
         Please select a learning object from the list below and connect it to this activity.  You must do this before
-        any student needs to use this activity.
+        any student can use this activity.
 
     div(class='row-flow')
       p Activity: {{ activity.resource_link_title }}
