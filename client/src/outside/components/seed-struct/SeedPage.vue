@@ -2,7 +2,7 @@
   div(class="seed-page")
     div(v-if='pageElement.isTable')
       div(class="flow_across")
-        zone-lms-button(@action="tableOrientation = !tableOrientation"
+        zone-lms-button(@action="toggleTableOrientation"
           class="flow_across_last_item"
           :title="`Rotate the table ${tableOrientation ? 'vertical' : 'horizontal'}`",
           :icon='appIcons.table',
@@ -39,7 +39,6 @@ export default {
   components: { SeedTableHoriz, ZoneLmsButton, SeedFormElement, SeedTableVert },
   data () {
     return {
-      tableOrientation: false,
       appIcons: APP_ICONS
     }
   },
@@ -50,6 +49,7 @@ export default {
     pageSeedData: { type: Object }
   },
   computed: {
+    tableOrientation () { return this.$store.getters['system/condensedTableVertical']},
   },
   methods: {
     getElement (eKey) {
@@ -57,6 +57,10 @@ export default {
     },
     getSeedData (eKey) {
       return this.pageSeedData[eKey]
+    },
+    toggleTableOrientation () {
+      const value = this.tableOrientation
+      this.$store.dispatch('system/setCondensedTableVertical', !value)
     }
   }
 }

@@ -9,6 +9,7 @@ const state = {
   appDialogCount: 0,
   caseContextFeature: false,
   currentPageKey: '',
+  condensedTableVertical: false, // false = horizontal, See SeedPage.
   isEditing: false,
   isSeeding: false,
   loadingCnt: 0,
@@ -25,6 +26,7 @@ const getters = {
   apiError: state => state.apiError,
   appDialogCount: state => state.appDialogCount,
   caseContextFeature: state => state.caseContextFeature,
+  condensedTableVertical: state => state.condensedTableVertical,
   isEditing: state => state.isEditing,
   isLoading: state => state._isLoading,
   outsideShowButtonLabels: state => state.outsideShowButtonLabels,
@@ -58,12 +60,16 @@ const actions = {
   setOutsideShowButtonLabels ({ commit }, value) {
     if (trace) console.log('set show', value)
     commit('setOutsideShowButtonLabels', value)
+  },
+  setCondensedTableVertical ( {commit}, value) {
+    commit('setCondensedTableVertical', value)
   }
 }
 
 const mutations = {
   initialize: function (state) {
     state.caseContextFeature = localStorage.getItem('CaseContextFeature') === 'true'
+    state.condensedTableVertical = localStorage.getItem('CondensedTableVertical') === 'true'
     const storedShow = localStorage.getItem('ShowButtonLabels')
     if (storedShow) {
       state.outsideShowButtonLabels = storedShow === 'true'
@@ -75,6 +81,10 @@ const mutations = {
   },
   incrAppDialogCount: (state) => {
     state.appDialogCount++
+  },
+  setCondensedTableVertical: (state, value) => {
+    localStorage.setItem('CondensedTableVertical', value)
+    state.condensedTableVertical = value
   },
   setLoading: (state, isLoading) => {
     if (trace) console.log('system loading counter', isLoading)
