@@ -33,7 +33,6 @@
     "axios": "^0.21.4",
     "bulma": "^0.9.3",
     "core-js": "^3.8.3",
-    "decamelize": "^6.0.0",
     "exif-js": "^2.3.0",
     "file-saver": "^2.0.5",
     "filesize": "^8.0.7",
