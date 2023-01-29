@@ -1,9 +1,44 @@
 import camelcase from 'camelcase'
-import decamelize from 'decamelize'
+// import decamelize from 'decamelize'
 import StoreHelper from '@/helpers/store-helper'
 import { isString } from '@/helpers/ehr-utils'
 import { Text } from '@/helpers/ehr-text'
 import EhrDefs from '@/helpers/ehr-defs-grid'
+
+
+function decamelize (
+  text,
+  {
+    separator = '_',
+  } = {},
+) {
+  if (!(typeof text === 'string' && typeof separator === 'string')) {
+    throw new TypeError(
+      'The `text` and `separator` arguments should be of type `string`',
+    )
+  }
+
+  const replacement = `$1${separator}$2`
+
+  // Split lowercase sequences followed by uppercase character.
+  // `dataForUSACounties` → `data_For_USACounties`
+  // `myURLstring → `my_URLstring`
+  const decamelized = text.replace(
+    /([\p{Lowercase_Letter}\d])(\p{Uppercase_Letter})/gu,
+    replacement,
+  )
+
+  // Split multiple uppercase characters followed by one or more lowercase characters.
+  // `my_URLstring` → `my_ur_lstring`
+  return decamelized
+    .replace(
+      /(\p{Uppercase_Letter})(\p{Uppercase_Letter}\p{Lowercase_Letter}+)/gu,
+      replacement,
+    )
+    .toLowerCase()
+}
+
+
 
 export default class EhrCheckset {
   static dbValueToCheckSet (value) {
