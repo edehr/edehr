@@ -2,15 +2,20 @@
   div(class="outside-layout flow_down", :class='cssClass')
     app-header(class="sticky")
     main(class="flow_across outside-view")
-      div(v-if="showSideNav", class="left_side bigger-screens-900 nav_divs")
-        zone-lms-student-nav(v-if="isStudent")
-        zone-lms-nav(v-else)
-      div(class="right_side")
+      div(v-if="showSideNav", class="left_side bigger-screens-900", :class='{left_side_small: lgScreenNavCollapsed}')
+        div(class="lmsNavPanel lgScrnNavPanel")
+          div(class="flow_across collapse-button")
+            button(class="flow_across_last_item", v-on:click="toggleCollapseNavPanel")
+              fas-icon(class="fa", :icon='lgScreenNavCollapsed ? "angle-right" : "angle-left" ')
+          zone-lms-student-nav(v-if="isStudent", :icons-only='lgScreenNavCollapsed')
+          zone-lms-nav(v-else, :icons-only='lgScreenNavCollapsed')
+      div(class="right_side", :class='{right_side_large: lgScreenNavCollapsed}')
         div(class="smaller-than-900")
           span(style="text-align: left; margin-left: 1em")
-            fas-icon(class="fa bars", icon="bars", @click="showingNavPanel = !showingNavPanel")
-            transition(name="hamburger-action")
-              zone-lms-nav(v-if="showingNavPanel")
+            fas-icon(class="fa bars", icon="bars", @click="smScrnShowNav = !smScrnShowNav")
+            div(:class="{smScrnShowNav: smScrnShowNav}", class="lmsNavPanel lmsNavPanelSmallScreen smScrnHideNav")
+              zone-lms-student-nav(v-if="isStudent")
+              zone-lms-nav(v-else)
         slot
     app-footer
 </template>
@@ -35,7 +40,8 @@ export default {
   },
   data: function () {
     return {
-      showingNavPanel: false,
+      smScrnShowNav: false,
+      lgScreenNavCollapsed: false,
       navText: Text.INSTRUCTOR_TOOLS,
       appIcons: APP_ICONS
     }
@@ -59,6 +65,7 @@ export default {
     lmsName ()          { return StoreHelper.lmsName() }
   },
   methods: {
+    toggleCollapseNavPanel () { this.lgScreenNavCollapsed = !this.lgScreenNavCollapsed },
     gotoActivity () { this.navigate('/lms-activity') },
     gotoCourses () { this.navigate('/courses') },
     gotoFiles () { this.navigate('/fileList') },
@@ -74,15 +81,16 @@ export default {
   },
   watch: {
     $route: function (curr, prev) {
-      if (curr !== prev && this.showingNavPanel) {
+      if (curr !== prev && this.smScrnShowNav) {
         const currArray = curr.path.split('/')
         const prevArray = prev.path.split('/')
+        console.log('currArray[2] === prevArray[2]', currArray[2], prevArray[2])
         // The third item in the path array contains information about the
         // page, which was making the navigation awkward on mobile devices.
         // By implementing this, we assure that the navPanel will only be hidden
         // if the current path is within the same group as the previous one.
         if (currArray[2] === prevArray[2])
-          this.showingNavPanel = false
+          this.smScrnShowNav = false
       }
     }
   }
@@ -101,12 +109,21 @@ main {
 }
 .right_side {
   width: 76%;
+  margin-left: 1rem;
+}
+.left_side_small {
+  width: 2.5rem !important;
+}
+.right_side_large {
+  width: 94% !important;
 }
 @media screen and (max-width: $main-width-threshold3) {
   .flow_across {
     flex-direction: column;
   }
-  .left_side,
+  .left_side {
+    width: auto;
+  }
   .right_side {
     width: 100%;
   }
@@ -115,19 +132,38 @@ main {
 .outside-main {
   padding: 1.5rem;
 }
-.nav_divs {
-  margin: 1rem;
+
+.collapse-button {
+  margin-bottom: 1rem;
 }
-.nav_divs > div {
-  cursor: pointer;
-  .fa {
-    display: inline-block;
-    margin-right: 1rem;
-    width: 2rem;
-  }
+.collapse-button button {
+  box-shadow: none;
+  border-radius: 3px;
+  margin-right: 5px;
+  margin-top: 5px;
+  width: 1.75rem;
+  border-color: rgba(0, 0, 0, 0.2)
 }
-.nv-item {
-  display: inline-block;
-  padding-right: 1rem;
+.collapse-button button:focus {
+  box-shadow: none !important;
 }
+.collapse-button button:hover {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5) !important;
+}
+
+.lmsNavPanel {
+  background-color: $grey10;
+  transition: .3s width ease-in-out;
+}
+.lgScrnNavPanel {
+  height: 100vh;
+}
+.smScrnShowNav {
+  height: auto !important;
+}
+.smScrnHideNav {
+  height: 0;
+  overflow: hidden;
+}
+
 </style>

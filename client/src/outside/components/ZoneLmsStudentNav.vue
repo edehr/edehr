@@ -1,18 +1,16 @@
 <template lang="pug">
-  div(class="nav_divs")
-    div(@click="gotoCourses")
+  div(id='nav-menu', :class='{ iconsOnly: iconsOnly }')
+    button(@click="gotoCourses", :title='navText.COURSES_LABEL')
       fas-icon(class="fa", :icon="appIcons.course")
-      span {{navText.COURSES_LABEL}}
-    div(@click="gotoActivity")
+      span(v-show='!iconsOnly') {{navText.COURSES_LABEL}}
+    button(@click="gotoActivity", :title='navText.ACTIVITIES')
       fas-icon(class="fa", :icon="appIcons.activity")
-      span {{navText.ACTIVITIES}}
+      span(v-show='!iconsOnly') {{navText.ACTIVITIES}}
     hr
-    div(@click="exitToLms")
+    button(@click="exitToLms", :title='navText.EXIT_LABEL')
       fas-icon(class="fa", :icon="appIcons.exitToLms")
-      span {{navText.EXIT_LABEL}}
-
+      span(v-show='!iconsOnly') {{navText.EXIT_LABEL}}
     hr
-
 </template>
 
 <script>
@@ -21,6 +19,9 @@ import StoreHelper from '../../helpers/store-helper'
 import { Text } from '@/helpers/ehr-text'
 export default {
   components: {},
+  props: {
+    iconsOnly: { type: Boolean }
+  },
   data: function () {
     return {
       navText: Text.INSTRUCTOR_TOOLS,
@@ -53,15 +54,21 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/definitions';
-.nav_divs {
-  margin: 1rem;
+.iconsOnly button {
+  width: 2rem;
 }
-.nav_divs > div {
-  cursor: pointer;
+#nav-menu button {
+  display: block;
+  border: none;
+  margin-bottom: 0.5rem;
+  &:hover {
+    box-shadow: 2px 2px 5px $grey20
+  }
   .fa {
     display: inline-block;
     margin-right: 1rem;
     width: 2rem;
   }
 }
+
 </style>
