@@ -7,16 +7,31 @@
           :activePageKey='activePageKey',
           :ehrData='ehrData')
       div(class="smaller-than-900")
+        div(class="flow_across")
+          zone-lms-button(@action="toggleTableOrientation"
+            class="flow_across_last_item mr5"
+            :title="`Rotate the table ${tableOrientation ? 'vertical' : 'horizontal'}`",
+            :icon='appIcons.table',
+            :icon-class='{rotatedIcon: tableOrientation}',
+            text="")
         h2(class="smaller-than-900")
           fas-icon(:icon="appIcons.menu", @click="showingNavPanel = !showingNavPanel")
           span &nbsp; {{pageTitle}}
+
         transition(name="hamburger-action")
           seed-menus(v-if="showingNavPanel",
             @selectPage="selectPage",
             :activePageKey='activePageKey',
             :ehrData='ehrData')
     div(class="ehrData-details")
-      h2(class="bigger-screens-900") {{pageTitle}}
+      div(class="flow_across")
+        h2(class="bigger-screens-900") {{pageTitle}}
+        zone-lms-button(@action="toggleTableOrientation"
+          class="flow_across_last_item mr5"
+          :title="`Rotate the table ${tableOrientation ? 'vertical' : 'horizontal'}`",
+          :icon='appIcons.table',
+          :icon-class='{rotatedIcon: tableOrientation}',
+          text="")
       seed-pages(
         :pageKey="activePageKey",
         :pageDef="pageDef",
@@ -28,8 +43,9 @@ import SeedPages from '@/outside/components/seed-struct/SeedPages'
 import SeedMenus from '@/outside/components/seed-struct/SeedMenus'
 import EhrDefs from '@/helpers/ehr-defs-grid'
 import { APP_ICONS } from '@/helpers/app-icons'
+import ZoneLmsButton from '@/outside/components/ZoneLmsButton.vue'
 export default {
-  components: { SeedPages, SeedMenus },
+  components: { ZoneLmsButton, SeedPages, SeedMenus },
   data () {
     return {
       appIcons: APP_ICONS,
@@ -49,11 +65,7 @@ export default {
       const pkey = this.activePageKey
       return this.ehrData ? (pkey ? this.ehrData[pkey] : {}) : {}
     },
-  },
-  watch: {
-    ehrData: function () {
-      this.setInitialPage()
-    }
+    tableOrientation () { return this.$store.getters['system/condensedTableVertical']},
   },
   methods: {
     selectPage ( key ) {
@@ -72,6 +84,15 @@ export default {
         console.log('ehrData structure without data. Why?')
       }
     },
+    toggleTableOrientation () {
+      const value = this.tableOrientation
+      this.$store.dispatch('system/setCondensedTableVertical', !value)
+    }
+  },
+  watch: {
+    ehrData: function () {
+      this.setInitialPage()
+    }
   },
 }
 </script>
