@@ -46,7 +46,6 @@ export default {
   data: function () {
     return {
       smScrnShowNav: false,
-      lgScreenNavCollapsed: false,
       navText: Text.INSTRUCTOR_TOOLS,
       appIcons: APP_ICONS
     }
@@ -67,10 +66,14 @@ export default {
       // if showing labels then apply a class on the layout to be used by buttons
       return this.showLabels ? 'showing-labels' : ''
     },
-    lmsName ()          { return StoreHelper.lmsName() }
+    lmsName ()          { return StoreHelper.lmsName() },
+    lgScreenNavCollapsed () { return this.$store.getters['system/lmsNavCollapsed']},
   },
   methods: {
-    toggleCollapseNavPanel () { this.lgScreenNavCollapsed = !this.lgScreenNavCollapsed },
+    toggleCollapseNavPanel () {
+      const value = this.lgScreenNavCollapsed
+      this.$store.dispatch('system/setLmsNavCollapsed', !value)
+    },
     gotoActivity () { this.navigate('/lms-activity') },
     gotoCourses () { this.navigate('/courses') },
     gotoFiles () { this.navigate('/fileList') },

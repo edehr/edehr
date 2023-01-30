@@ -9,6 +9,7 @@ const state = {
   appDialogCount: 0,
   caseContextFeature: false,
   currentPageKey: '',
+  lmsNavCollapsed: false,
   condensedTableVertical: false, // false = horizontal, See SeedPage.
   isEditing: false,
   isSeeding: false,
@@ -29,6 +30,7 @@ const getters = {
   condensedTableVertical: state => state.condensedTableVertical,
   isEditing: state => state.isEditing,
   isLoading: state => state._isLoading,
+  lmsNavCollapsed: state => state.lmsNavCollapsed,
   outsideShowButtonLabels: state => state.outsideShowButtonLabels,
   pageIcon: state => state.pageIcon,
   pageTitle: state => state.pageTitle,
@@ -61,6 +63,10 @@ const actions = {
     if (trace) console.log('set show', value)
     commit('setOutsideShowButtonLabels', value)
   },
+  setLmsNavCollapsed ( {commit}, value) {
+    console.log('setLmsNavCollapsed', value)
+    commit('setLmsNavCollapsed', value)
+  },
   setCondensedTableVertical ( {commit}, value) {
     commit('setCondensedTableVertical', value)
   }
@@ -70,6 +76,7 @@ const mutations = {
   initialize: function (state) {
     state.caseContextFeature = localStorage.getItem('CaseContextFeature') === 'true'
     state.condensedTableVertical = localStorage.getItem('CondensedTableVertical') === 'true'
+    state.lmsNavCollapsed = localStorage.getItem('LmsNavCollapsed') === 'true'
     const storedShow = localStorage.getItem('ShowButtonLabels')
     if (storedShow) {
       state.outsideShowButtonLabels = storedShow === 'true'
@@ -81,6 +88,10 @@ const mutations = {
   },
   incrAppDialogCount: (state) => {
     state.appDialogCount++
+  },
+  setLmsNavCollapsed: (state, value) => {
+    localStorage.setItem('LmsNavCollapsed', value)
+    state.lmsNavCollapsed = value
   },
   setCondensedTableVertical: (state, value) => {
     localStorage.setItem('CondensedTableVertical', value)
