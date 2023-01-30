@@ -1,39 +1,38 @@
 <template lang="pug">
-  div(class="nav_divs")
-    div(@click="gotoCourses")
+  div(id='nav-menu', :class='{ iconsOnly: iconsOnly }')
+    button(@click="gotoCourses", :title='navText.COURSES_LABEL')
       fas-icon(class="fa", :icon="appIcons.course")
-      span {{navText.COURSES_LABEL}}
-    div(@click="gotoActivity")
+      span(v-show='!iconsOnly') {{navText.COURSES_LABEL}}
+    button(@click="gotoActivity", :title='navText.ACTIVITIES')
       fas-icon(class="fa", :icon="appIcons.activity")
-      span {{navText.ACTIVITIES}}
-    div(@click="gotoLObj")
+      span(v-show='!iconsOnly') {{navText.ACTIVITIES}}
+    button(@click="gotoLObj", :title='navText.LOBJ_LABEL')
       fas-icon(class="fa", :icon="appIcons.lobj")
-      span {{navText.LOBJ_LABEL}}
-    div(@click="gotoSeeds")
+      span(v-show='!iconsOnly') {{navText.LOBJ_LABEL}}
+    button(@click="gotoSeeds", :title='navText.SEED_LIST_LABEL')
       fas-icon(class="fa", :icon="appIcons.seed")
-      span {{navText.SEED_LIST_LABEL}}
-    div(@click="gotoFiles")
+      span(v-show='!iconsOnly') {{navText.SEED_LIST_LABEL}}
+    button(@click="gotoFiles", :title='navText.FILE_LABEL')
       fas-icon(class="fa", :icon="appIcons.file")
-      span {{navText.FILE_LABEL}}
-    div(@click="gotoLms")
+      span(v-show='!iconsOnly') {{navText.FILE_LABEL}}
+    button(@click="gotoLms", :title='navText.LMS_LABEL')
       fas-icon(class="fa", :icon="appIcons.consumer")
-      span {{navText.LMS_LABEL}}
+      span(v-show='!iconsOnly') {{navText.LMS_LABEL}}
+    div(v-show='!iconsOnly')
+      hr
+      div(class="clickable")
+        input(type="checkbox", id="creator", @input="setDevContent",
+          :checked="isDevelopingContent")
+        label(for='creator') {{navText.DESIGNER_MODE_LABEL}}
+      div(class="clickable")
+        input(type="checkbox", id="showLabels", @input="setOutsideLabels",
+          :checked="isOutsideShowButtonLabels")
+        label(for='showLabels') {{navText.SHOW_BUTTON_LABELS(this.isOutsideShowButtonLabels)}}
     hr
-    div(class="clickable")
-      input(type="checkbox", id="creator", @input="setDevContent",
-        :checked="isDevelopingContent")
-      label(for='creator') {{navText.DESIGNER_MODE_LABEL}}
-    div(class="clickable")
-      input(type="checkbox", id="showLabels", @input="setOutsideLabels",
-        :checked="isOutsideShowButtonLabels")
-      label(for='showLabels') {{navText.SHOW_BUTTON_LABELS(this.isOutsideShowButtonLabels)}}
-    hr
-    div(@click="exitToLms")
+    button(@click="exitToLms", :title='navText.EXIT_LABEL')
       fas-icon(class="fa", :icon="appIcons.exitToLms")
-      span {{navText.EXIT_LABEL}}
-
+      span(v-show='!iconsOnly') {{navText.EXIT_LABEL}}
     hr
-
 </template>
 
 <script>
@@ -42,6 +41,9 @@ import StoreHelper from '../../helpers/store-helper'
 import { Text } from '@/helpers/ehr-text'
 export default {
   components: {},
+  props: {
+    iconsOnly: { type: Boolean }
+  },
   data: function () {
     return {
       navText: Text.INSTRUCTOR_TOOLS,
@@ -97,15 +99,25 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/definitions';
-.nav_divs {
-  margin: 1rem;
+.iconsOnly button {
+  width: 2rem;
 }
-.nav_divs > div {
-  cursor: pointer;
+#nav-menu button {
+  display: block;
+  background-color: $grey03;
+  border: none;
+  margin-bottom: 0.5rem;
+  &:hover {
+    box-shadow: 2px 2px 5px $grey20
+  }
   .fa {
     display: inline-block;
     margin-right: 1rem;
     width: 2rem;
   }
+}
+.clickable {
+  margin-left: 0.75rem;
+  margin-bottom: 1rem;
 }
 </style>
