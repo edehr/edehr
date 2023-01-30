@@ -2,24 +2,26 @@
   div(class="seed-page")
     div(v-if='pageElement.isTable')
       div(class="flow_across")
-        zone-lms-button(@action="toggleTableOrientation"
-          class="flow_across_last_item"
-          :title="`Rotate the table ${tableOrientation ? 'vertical' : 'horizontal'}`",
-          :icon='appIcons.table',
-          :icon-class='{rotatedIcon: tableOrientation}',
+        div {{ pageElement.label }}
+        zone-lms-button(@action="tableCollapsed = !tableCollapsed"
+          class="flow_across_last_item mr5"
+          title="Collapse the table",
+          :icon='tableCollapsed ? "chevron-down" : "chevron-up"',
           text="")
-      seed-table-horiz(v-show='tableOrientation',
-        :pageKey="pageKey",
-        :pageChildren="pageChildren",
-        :pageElement='pageElement',
-        :pageSeedData='pageSeedData'
-      )
-      seed-table-vert(v-show='!tableOrientation',
-        :pageKey="pageKey",
-        :pageChildren="pageChildren",
-        :pageElement='pageElement',
-        :pageSeedData='pageSeedData'
-      )
+      transition(name="fade" mode="out-in")
+        div(v-show="!tableCollapsed")
+          seed-table-horiz(v-show='tableOrientation',
+            :pageKey="pageKey",
+            :pageChildren="pageChildren",
+            :pageElement='pageElement',
+            :pageSeedData='pageSeedData'
+          )
+          seed-table-vert(v-show='!tableOrientation',
+            :pageKey="pageKey",
+            :pageChildren="pageChildren",
+            :pageElement='pageElement',
+            :pageSeedData='pageSeedData'
+          )
     div(v-if='pageElement.isPageForm')
       div(v-for='group in pageElement.ehr_groups')
         div(v-for='child in group.gChildren')
@@ -39,7 +41,8 @@ export default {
   components: { SeedTableHoriz, ZoneLmsButton, SeedFormElement, SeedTableVert },
   data () {
     return {
-      appIcons: APP_ICONS
+      appIcons: APP_ICONS,
+      tableCollapsed: false
     }
   },
   props: {
@@ -58,10 +61,6 @@ export default {
     getSeedData (eKey) {
       return this.pageSeedData[eKey]
     },
-    toggleTableOrientation () {
-      const value = this.tableOrientation
-      this.$store.dispatch('system/setCondensedTableVertical', !value)
-    }
   }
 }
 </script>
@@ -76,4 +75,14 @@ export default {
 .seed-page{
   margin-bottom: 3rem;
 }
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .3s
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0
+}
+
 </style>

@@ -118,3 +118,7 @@ $o-wrapper-sizes: (
   padding-left: 0;
   max-width: map-get($o-wrapper-sizes, $size);
 }
+
+.mr5 {
+  margin-right: 5px
+}
