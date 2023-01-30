@@ -5,8 +5,11 @@
       div(v-if="showSideNav", class="left_side bigger-screens-900", :class='{left_side_small: lgScreenNavCollapsed}')
         div(class="lmsNavPanel lgScrnNavPanel")
           div(class="flow_across collapse-button")
-            button(class="flow_across_last_item", v-on:click="toggleCollapseNavPanel")
-              fas-icon(class="fa", :icon='lgScreenNavCollapsed ? "angle-right" : "angle-left" ')
+            zone-lms-button(
+              class="flow_across_last_item",
+              @action="toggleCollapseNavPanel",
+              :icon='lgScreenNavCollapsed ? "angle-right" : "angle-left" '
+            )
           zone-lms-student-nav(v-if="isStudent", :icons-only='lgScreenNavCollapsed')
           zone-lms-nav(v-else, :icons-only='lgScreenNavCollapsed')
       div(class="right_side", :class='{right_side_large: lgScreenNavCollapsed}')
@@ -29,10 +32,12 @@ import { Text } from '@/helpers/ehr-text'
 import ZoneLmsNav from '@/outside/components/ZoneLmsNav'
 import { UNLINKED_ACTIVITY_ROUTE_NAME } from '@/router'
 import ZoneLmsStudentNav from '@/outside/components/ZoneLmsStudentNav'
+import ZoneLmsButton from '@/outside/components/ZoneLmsButton.vue'
 
 export default {
   name: 'LayoutOutside',
   components: {
+    ZoneLmsButton,
     ZoneLmsStudentNav,
     ZoneLmsNav,
     AppFooter,
@@ -137,6 +142,8 @@ main {
   margin-bottom: 1rem;
 }
 .collapse-button button {
+  background-color: $grey20;
+  color: $brand-primary;
   box-shadow: none;
   border-radius: 3px;
   margin-right: 5px;
@@ -145,6 +152,8 @@ main {
   border-color: rgba(0, 0, 0, 0.2)
 }
 .collapse-button button:focus {
+  background-color: $grey20;
+  color: $brand-primary;
   box-shadow: none !important;
 }
 .collapse-button button:hover {
@@ -152,9 +161,10 @@ main {
 }
 
 .lmsNavPanel {
-  background-color: $grey10;
+  background-color: $grey03;
   transition: .3s width ease-in-out;
 }
+
 .lgScrnNavPanel {
   height: 100vh;
 }
