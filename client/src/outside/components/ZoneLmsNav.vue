@@ -99,11 +99,9 @@ export default {
 
 <style lang="scss" scoped>
 @import '../../scss/definitions';
-
 .iconsOnly button {
   width: 2rem;
 }
-
 #nav-menu button {
   display: block;
   background-color: $grey03;

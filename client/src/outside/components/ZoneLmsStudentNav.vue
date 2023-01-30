@@ -59,6 +59,7 @@ export default {
 }
 #nav-menu button {
   display: block;
+  background-color: $grey03;
   border: none;
   margin-bottom: 0.5rem;
   &:hover {
