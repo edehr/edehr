@@ -1,5 +1,5 @@
 
-import EhrDefs from  '../../../helpers/ehr-defs-grid'
+import EhrDefs from  '../../../ehr-definitions/ehr-defs-grid'
 import StoreHelper from  '../../../helpers/store-helper'
 
 export const ESK_Medications = 'Discharge Rx'

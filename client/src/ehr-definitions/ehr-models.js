@@ -32,7 +32,7 @@ export class EhrPages {
 
   get pageList () { return this._pages }
 
-  getPagesWithData (ehrModel) { return this._pages.filter( pg => ehrModel.hasData(pg.pageKey))}
+  // getPagesWithData (ehrModel) { return this._pages.filter( pg => ehrModel.hasData(pg.pageKey))}
 
   findPage (key) { return this._pages.find( pg => pg.pageKey === key)}
 
@@ -111,6 +111,7 @@ export class PageDef {
                 pgStats.hasDraft = true
               }
             })
+            break
           }
         }
       }

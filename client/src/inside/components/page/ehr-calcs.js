@@ -1,4 +1,4 @@
-import EhrDefs from '@/helpers/ehr-defs-grid'
+import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 import { isObject, isString, validNumberStr } from '@/helpers/ehr-utils'
 import StoreHelper from '@/helpers/store-helper'
 

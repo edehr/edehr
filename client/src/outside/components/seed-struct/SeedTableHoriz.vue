@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import EhrDefs from '@/helpers/ehr-defs-grid'
+import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 export default {
   props: {
     pageKey: { type: String },

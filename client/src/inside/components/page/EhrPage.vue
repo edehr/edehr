@@ -9,7 +9,7 @@
 import EhrPanelContent from './EhrPanelContent.vue'
 import EhrPageElement from './EhrPageElement'
 import EhrPageFooter from './EhrPageFooter'
-import EhrDefs from '../../../helpers/ehr-defs-grid'
+import EhrDefs from '../../../ehr-definitions/ehr-defs-grid'
 
 /*
 # EhrPage

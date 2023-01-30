@@ -7,7 +7,7 @@
 <script>
 import Vue from 'vue'
 import EventBus from '@/helpers/event-bus'
-import EhrDefs from '@/helpers/ehr-defs-grid'
+import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 import EhrElementCommon from '@/inside/components/page/EhrElementCommon'
 import EhrData from '@/inside/components/page/ehr-data'
 

@@ -41,7 +41,7 @@
 <script>
 import SeedPages from '@/outside/components/seed-struct/SeedPages'
 import SeedMenus from '@/outside/components/seed-struct/SeedMenus'
-import EhrDefs from '@/helpers/ehr-defs-grid'
+import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 import { APP_ICONS } from '@/helpers/app-icons'
 import ZoneLmsButton from '@/outside/components/ZoneLmsButton.vue'
 export default {

@@ -11,7 +11,7 @@
 <script>
 import EhrSubGroup from './EhrSubGroup'
 import EhrElementForm from './EhrElementForm'
-import EhrDefs from '../../../helpers/ehr-defs-grid'
+import EhrDefs from '../../../ehr-definitions/ehr-defs-grid'
 import EhrDependent from './EhrDependent.vue'
 import EhrTypes from '@/ehr-definitions/ehr-types'
 

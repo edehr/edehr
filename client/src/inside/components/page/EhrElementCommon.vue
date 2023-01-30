@@ -1,7 +1,7 @@
 <script>
 import EhrPageFormLabel from './EhrPageFormLabel.vue'
 import EhrDependent from './EhrDependent.vue'
-import EhrDefs from '@/helpers/ehr-defs-grid'
+import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 import EhrTypes from '@/ehr-definitions/ehr-types'
 import UiInfo from '@/app/ui/UiInfo'
 import EventBus, { FORM_INPUT_EVENT, PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'

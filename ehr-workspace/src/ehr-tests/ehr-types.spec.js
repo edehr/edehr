@@ -1,7 +1,5 @@
 const should = require('should')
-import EhrTypes from '@/ehr-definitions/ehr-types'
-// const EhrTypes = require('../ehr-types')
-
+import EhrTypes from '../ehr-definitions/ehr-types'
 
 describe('ehr-types test | testing properties', () => {
   it('has PROPS', () => {

@@ -4,20 +4,24 @@
   "description": "",
   "main": "index.js",
   "nonscripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start:nm": "npx babel-node src/index.js",
     "build": "npm run clean && npm run build-babel && npm run build-resources",
     "build-babel": "babel -d ./build ./src/index.js -s",
     "start:dev": "nodemon --exec babel-node src/index.js"
   },
   "scripts": {
-    "build-resources": "cp -R ./src/resources ./build",
-    "bb": "npm run clean && npx babel src --out-dir build",
+    "build:resources": "mkdir -p build/resources && cp src/resources/* build/resources",
+    "bb": "npm run clean && npm run build:resources && npx babel src --out-dir build",
     "clean": "rm -rf build && mkdir build",
     "start": "npm run bb && npm run build-resources && npm run start:run",
-    "start:run": "node build/index.js"
+    "start:run": "node build/index.js",
+    "test": "npm run bb && node_modules/.bin/mocha --recursive --sort --bail 'build/**/*.spec.js'",
+    "test:all": "npm run bb && node_modules/.bin/mocha --recursive --sort 'build/**/*.spec.js'",
+    "test:cov": "npm run bb && nyc -x '**/*.spec.js' node_modules/.bin/mocha --recursive --sort --bail  'build/**/*.spec.js'"
   },
-  "dependencies": {},
+  "dependencies": {
+    "nyc": "^15.1.0"
+  },
   "devDependencies": {
     "@babel/cli": "^7.20.7",
     "@babel/core": "^7.20.12",
@@ -27,7 +31,11 @@
     "@babel/preset-env": "^7.20.2",
     "@babel/register": "^7.16.0",
     "@babel/runtime": "^7.20.7",
+    "camelcase": "^6.2.1",
+    "chai": "^4.3.4",
     "eslint": "^8.4.1",
-    "nodemon": "^2.0.20"
+    "mocha": "^9.1.3",
+    "nodemon": "^2.0.20",
+    "should": "^13.2.3"
   }
 }

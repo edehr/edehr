@@ -1,5 +1,4 @@
 #!/bin/bash
 
-cp common_src/*.js ../client/src/ehr-definitions
-cp common_src/*.js ../server/src/ehr-definitions
-#cp common_src/*.js ../ehr-workspace/ehr-definitions
+cp ../ehr-workspace/src/ehr-definitions/*.js ../client/src/ehr-definitions
+cp ../ehr-workspace/src/ehr-definitions/*.js ../server/src/ehr-definitions

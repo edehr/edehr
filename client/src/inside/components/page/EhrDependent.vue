@@ -1,5 +1,5 @@
 <script>
-import EhrDefs from '../../../helpers/ehr-defs-grid'
+import EhrDefs from '../../../ehr-definitions/ehr-defs-grid'
 import EventBus from '../../../helpers/event-bus'
 import EhrTypes from '@/ehr-definitions/ehr-types'
 const dbug = false

@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import EhrDefs from '@/helpers/ehr-defs-grid'
+import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 import { APP_ICONS } from '@/helpers/app-icons'
 import SeedFormElement from '@/outside/components/seed-struct/SeedFormElement'
 import SeedTableVert from '@/outside/components/seed-struct/SeedTableVert'

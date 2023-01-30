@@ -1,0 +1,354 @@
+{
+  "id": "5d6786b88d19fb14c0994a5f",
+  "license": "This work is licensed under a Creative Commons Attribution 4.0 International License. See http://creativecommons.org/licenses/by/4.0/",
+  "ehrData": {
+    "demographics": {
+      "familyName": "Johns",
+      "givenName": "Erin",
+      "preferredName": "Erin",
+      "dateOfBirth": "09-SEP-1945",
+      "personAge": "74",
+      "gender": "Female",
+      "martialStatus": "Widowed",
+      "languagePrimary": "English",
+      "indigenousIdentifyAs": "No",
+      "streetAddress": "402 Willow St.",
+      "city": "Vancouver",
+      "country": "Canada",
+      "postalCode": "V3F 9R2",
+      "noAddress": false,
+      "phoneNumber": "(778) 555-2947",
+      "occupationStudent": "Retired",
+      "phn": "12345678",
+      "nextOfKinName": "Thomas Johns",
+      "nextOfKinRelationship": "Son",
+      "nextOfKinPhone": "604-555-9865",
+      "decisionMakerName": "Thomas Johns",
+      "decisionMakerRelationship": "Child",
+      "decisionMakerPhone": "604-555-9865",
+      "weight": "49",
+      "height": "185"
+    },
+    "psychosocial": {
+      "history": "Feels down when she thinks about her lower financial status and her advancing age, and how she is becoming more forgetful and less energetic. Often feels alone and worries about falling and not being able to alert anyone to come to her rescue. Driving is becoming hard for her.",
+      "diet": "Regular",
+      "livingSituation": "Son lives with her in her house",
+      "employmentSchool": "Retired hairdresser",
+      "hobbies": "Bingo, Netflix, playing Solitaire and Scrabble with friends on her iPad",
+      "exercise": true,
+      "exerciseFrequency": "< 1 day/week",
+      "caffeineUse": true,
+      "caffeineUseFrequency": "1-2 cups/day",
+      "tobaccoUse": true,
+      "tobaccoUseFrequency": "History of smoking",
+      "alcoholUse": true,
+      "alcoholUseFrequency": "Social"
+    },
+    "genitourinary": {
+      "table": [
+        {
+          "name": "Jason",
+          "day": "0",
+          "time": "19:30",
+          "none": true,
+          "lastVoidedDay": "0",
+          "lastVoidedTime": "16:00",
+          "colour": "Pale yellow",
+          "consistency": "Clear",
+          "diaper": "No",
+          "foley": "No",
+          "profession": "RN",
+          "pelvicPain": "No",
+          "pregnant": "No",
+          "gravida": "5",
+          "para": "4",
+          "livingChildren": "4",
+          "createdDate": "2019-05-30T22:40:29-07:00"
+        }
+      ]
+    },
+    "allergies": {
+      "checkbox": "TRUE"
+    },
+    "surgical": {
+      "pastSurgery": [
+        {
+          "physician": "Dr. Henley",
+          "procedure": "Cesarean section",
+          "timeSince": "48 years",
+          "createdDate": "2019-05-30T09:36:55-07:00"
+        }
+      ],
+      "previous": []
+    },
+    "careTeam": {
+      "teams": [
+        {
+          "name": "Dr. Singh",
+          "profession": "Physician",
+          "createdDate": "2019-05-30T09:39:52-07:00"
+        },
+        {
+          "name": "Jackie",
+          "profession": "RN",
+          "createdDate": "2019-05-30T09:40:00-07:00"
+        },
+        {
+          "name": "Jason",
+          "profession": "RN",
+          "createdDate": "2019-05-30T09:40:07-07:00"
+        },
+        {
+          "name": "Alexa",
+          "profession": "Med lab technician",
+          "createdDate": "2019-05-30T09:40:19-07:00"
+        },
+        {
+          "name": "Gurpreet",
+          "profession": "Med radiographer",
+          "createdDate": "2019-05-30T09:40:39-07:00"
+        },
+        {
+          "name": "Matt",
+          "profession": "Respiratory therapist",
+          "createdDate": "2019-05-30T09:40:54-07:00"
+        },
+        {
+          "name": "Dr. Notley",
+          "profession": "Physician",
+          "createdDate": "2019-05-30T09:41:09-07:00"
+        },
+        {
+          "name": "Serge",
+          "profession": "Med radiographer",
+          "createdDate": "2019-05-30T09:41:23-07:00"
+        },
+        {
+          "name": "Trache",
+          "profession": "RN",
+          "createdDate": "2019-05-30T09:41:37-07:00"
+        },
+        {
+          "name": "Dr. Hunicutt",
+          "profession": "Physician",
+          "createdDate": "2019-05-30T09:41:50-07:00"
+        },
+        {
+          "name": "Jim",
+          "profession": "RN",
+          "createdDate": "2019-05-30T09:41:59-07:00"
+        },
+        {
+          "name": "Gladys",
+          "profession": "physiotherapy student",
+          "createdDate": "2019-05-30T09:42:14-07:00"
+        },
+        {
+          "name": "Herman",
+          "profession": "Respiratory therapist",
+          "createdDate": "2019-05-30T09:42:39-07:00"
+        }
+      ]
+    },
+    "pastAppointments": {
+      "encounters": [],
+      "outpatientAppointments": [
+        {
+          "appointmentDate": "1 week ago",
+          "site": "Clinic",
+          "reasonForVisit": "Shortness of breath x 24 hours",
+          "diagnosis": "COPD",
+          "createdDate": "2019-05-30T09:43:19-07:00"
+        }
+      ]
+    },
+    "vitals": {
+      "table": []
+    },
+    "neurological": {
+      "table": [
+        {
+          "name": "Jason",
+          "profession": "RN",
+          "day": "0",
+          "time": "19:30",
+          "alert": true,
+          "oriented": true,
+          "eyeOpening": "4 = Spontaneous",
+          "verbalResponse": "5 = Oriented",
+          "bestMotorResponse": "6 = Obeys commands",
+          "glasgowCalculation": 15,
+          "loss": "No",
+          "leftPupilSize": "2",
+          "leftPupilResponseToLight": "Brisk",
+          "rightPupilSize": "2",
+          "rightPupilResponseToLight": "Brisk",
+          "bothPupils": "Equal",
+          "levelOfConciousness": "0 = Alert; keenly responsive",
+          "levelOfConciousnessQuestions": "0 = Answers two questions correctly",
+          "levelOfConciousnessCommands": "0 = Performs both tasks correctly",
+          "motorLeftArm": "0 = No drift",
+          "motorRightArm": "0 = No drift",
+          "motorLeftLeg": "0 = No drift",
+          "motorRightLeg": "0 = No drift",
+          "limbAtaxia": "0 = Absent",
+          "bestGaze": "0 = Normal",
+          "visual": "0 = No visual loss",
+          "facialPalsy": "0 = Normal symmetric movements",
+          "sensory": "0 = Normal; no sensory loss",
+          "bestLanguage": "0 = No aphasia; normal",
+          "dysarthria": "0 = Normal",
+          "extinctionAndInattention": "0 = No abnormality",
+          "strokeAssessmentCalculation": 0,
+          "createdDate": "2019-05-30T21:50:42-07:00"
+        }
+      ]
+    },
+    "visit": {
+      "table": [
+        {
+          "location": "Emergency room",
+          "createdDate": "2019-05-30T23:21:10-07:00"
+        }
+      ],
+      "admissionDay": "Day 0",
+      "admissionTime": "06:00",
+      "consentForTreatment": "TRUE",
+      "consentForBlood": "TRUE",
+      "diagnosis": "COPD\nShortness of breath\nDizzy",
+      "status": "Admitted"
+    },
+    "respiratory": {
+      "table": [
+        {
+          "name": "Jason",
+          "profession": "RN",
+          "day": "0",
+          "time": "19:30",
+          "patent": true,
+          "lul": "Normal",
+          "rul": "Normal",
+          "rml": "Deceased",
+          "lll": "Deceased",
+          "rll": "Deceased",
+          "respiratoryRhythm": "Regular",
+          "respiratoryDepth": "Shallow",
+          "cough": "No",
+          "createdDate": "2019-05-30T22:32:42-07:00"
+        }
+      ]
+    },
+    "cardiovascular": {
+      "table": [
+        {
+          "name": "Jason",
+          "profession": "RN",
+          "day": "0",
+          "time": "19:30",
+          "pulse": "Regular",
+          "skinAppearance": "Normal",
+          "capRefillRightHand": "Normal < 3 seconds",
+          "capRefillLeftHand": "Normal < 3 seconds",
+          "capRefillRightFoot": "Normal < 3 seconds",
+          "capRefillLeftFoot": "Normal < 3 seconds",
+          "temperatureRightHand": "Warm",
+          "temperatureLeftHand": "Warm",
+          "temperatureRightFoot": "Warm",
+          "temperatureLeftFoot": "Warm",
+          "peripheralEdemaRightHand": "No",
+          "peripheralEdemaLeftHand": "No",
+          "peripheralEdemaRightFoot": "No",
+          "peripheralEdemaLeftFoot": "No",
+          "nailBedColourRightHand": "Pink",
+          "nailBedColourLeftHand": "Pink",
+          "nailBedColourRightFoot": "Pink",
+          "nailBedColourLeftFoot": "Pink",
+          "createdDate": "2019-05-30T22:37:16-07:00"
+        }
+      ]
+    },
+    "gastrointestinal": {
+      "table": [
+        {
+          "name": "Jason",
+          "profession": "RN",
+          "day": "0",
+          "time": "19:30",
+          "soft": true,
+          "pain": "No",
+          "eating": "Regular",
+          "lastBm": "Yesterday",
+          "stoolColour": "Brown",
+          "stoolSource": "As per patient observed",
+          "bsLUQ": true,
+          "bsRUQ": true,
+          "bsLLQ": true,
+          "bsRLQ": true,
+          "createdDate": "2019-05-30T22:38:55-07:00"
+        }
+      ]
+    },
+    "musculoskeletal": {
+      "table": [
+        {
+          "name": "Jason",
+          "profession": "RN",
+          "day": "0",
+          "time": "19:30",
+          "swelling": "Absent",
+          "pain": "Absent",
+          "deformity": "Absent",
+          "movement": "Normal",
+          "sensation": "Present",
+          "pulse": "Moderate",
+          "colour": "Flesh",
+          "temp": "Warm",
+          "useOfAmbulatoryAid": "No",
+          "createdDate": "2019-05-30T22:41:28-07:00"
+        }
+      ]
+    },
+    "pain": {
+      "table": [
+        {
+          "name": "Jason",
+          "day": "0",
+          "time": "19:30",
+          "painScale": "0",
+          "respiratoryRate": "28",
+          "profession": "RN",
+          "createdDate": "2019-05-30T22:42:51-07:00"
+        }
+      ]
+    },
+    "biopsychosocial": {
+      "table": [
+        {
+          "name": "Jason",
+          "profession": "RN",
+          "day": "0",
+          "time": "19:30",
+          "domesticViolence": "No",
+          "requestContact": "No",
+          "hygieneGrooming": "Good",
+          "calm": true,
+          "none": true,
+          "suicidal": "None",
+          "homicidal": "None",
+          "speech": "Clear and coherent",
+          "supportPerson": "Thomas (Son)",
+          "securityPolicePresent": "No",
+          "createdDate": "2019-05-30T22:48:02-07:00"
+        }
+      ]
+    },
+    "billing": {
+      "msp": "MSP",
+      "thirdParty": false,
+      "federal": false
+    }
+  },
+  "description": "This EHR Seed is based on a case from 'Health Case Studies - Toward Closing the Healthcare Communication Gap'. This EHR seed reflects the initial period of a patient's stay in the hospital ",
+  "name": "Erin Johns Day 0",
+  "version": "1.0"
+}

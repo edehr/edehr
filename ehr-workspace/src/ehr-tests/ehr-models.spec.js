@@ -1,8 +1,8 @@
 /**
  * WARNING Do not edit this code unless you are working in the makeEhr common_src directory.  Use the copy script to deployr to both server and client
  */
-import EhrDefs from './ehr-page-defs'
-import { EhrPages, PageDef} from './ehr-models'
+import EhrDefs from '../ehr-definitions/ehr-page-defs'
+import { EhrPages, PageDef} from '../ehr-definitions/ehr-models'
 const should = require('should')
 
 const pageDefs = EhrDefs
@@ -10,7 +10,7 @@ const pageDefs = EhrDefs
 let case1 = require('../resources/erin-johns-seed-day0-mid.json')
 let case2 = require('../resources/erin-johns-seed-day2-end.json')
 let case3 = require('../resources/wound-case-1.json')
-const case1PageCount = 43
+const case1PageCount = 43 - 2 // take two off because 2 pages are skipped
 
 describe('Ehr Page', function () {
   it('pages has page list', () => {
@@ -80,40 +80,5 @@ describe('Ehr Page Form fields', function () {
     const vTables = page.pageTables
     vTables.should.be.instanceof(Array)
     vTables.length.should.equal(1)
-  })
-})
-
-describe.skip('Ehr Data', function () {
-  let pages
-  before(function () {
-    pages = new EhrPages(pageDefs)
-  })
-  it('page has data', () => {
-    const pageList = pages.pageList
-    const page = pageList[0]
-    page.pageKey.should.equal('demographics')
-    page.should.have.property('pageData')
-    const pageData = page.pageData
-    should.exist(pageData)
-    pageData.should.be.instanceof(EhrPageData)
-    pageData.should.have.property('ehrData')
-    const ehrData = pageData.ehrData
-    should.exist(ehrData)
-  })
-  it('pagelist can return list of pages with data', () => {
-    pages.should.have.property('pagesWithData')
-    const pagesWithData = pages.pagesWithData
-    should.exist(pagesWithData)
-    pagesWithData.should.be.instanceof(Array)
-    pagesWithData.length.should.equal(17)
-  })
-  it('various pages with data', () => {
-    const samples = [ case1, case2, case3]
-    const expectedPgCnt = [17,22,14]
-    samples.forEach( (sample, index) => {
-      const pages = new EhrPages(pageDefs)
-      const pageList = pages.pagesWithData
-      should(pageList.length).be.equal(expectedPgCnt[index])
-    })
   })
 })

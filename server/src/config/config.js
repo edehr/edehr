@@ -5,6 +5,7 @@ import { version } from 'process'
 import { logError} from '../helpers/log-error'
 const debug = require('debug')('server')
 
+// allow transition to v18 (skip v16)
 if (version.includes('v14') || version.includes('v18')) {
   debug(`Node Version: ${version}`)
 } else {

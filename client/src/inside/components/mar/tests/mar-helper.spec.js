@@ -1,7 +1,7 @@
 import should from 'should'
 import MarHelper, { MAR_PAGE_KEY, MED_ORDERS_PAGE_KEY } from '../mar-helper'
 import { getMedOrders, getMarRecords } from './mar-test-helper'
-import EhrDefs from '../../../../helpers/ehr-defs-grid'
+import EhrDefs from '../../../../ehr-definitions/ehr-defs-grid'
 import MarEntity from '../mar-entity'
 import MedOrder from '../med-order'
 
@@ -20,8 +20,8 @@ const asLoadedObj = Object.assign({}, {
   [MAR_PAGE_KEY]: { pageElements, table: marRecords }
 })
 
-const noMarLoaded = Object.assign({}, asLoadedObj, { 
-  [MAR_PAGE_KEY]: { pageElements, table: [] } 
+const noMarLoaded = Object.assign({}, asLoadedObj, {
+  [MAR_PAGE_KEY]: { pageElements, table: [] }
 })
 
 const getAsLoaded = (key) => {
@@ -46,13 +46,13 @@ describe('mar-helper tests', () => {
         should.exist(marHelper)
       })
     })
-  
+
     it('refreshMarData', () => {
       should.doesNotThrow(() => {
         marHelper.refreshMarData()
       })
     })
-  
+
     it('getEhrData_Orders', () => {
       should.doesNotThrow(() => {
         marHelper.getEhrData_Orders()
@@ -61,7 +61,7 @@ describe('mar-helper tests', () => {
         theMedOrders.should.eql(classMedOrders)
       })
     })
-  
+
     it('getEhrData_MarRecords', () => {
       should.doesNotThrow(() => {
         marHelper.getEhrData_MarRecords()
@@ -70,7 +70,7 @@ describe('mar-helper tests', () => {
         records.should.eql(classMarRecords)
       })
     })
-  
+
     it('getEhrData_MarPageData', () => {
       should.doesNotThrow(() => {
         const result = marHelper.getEhrData_MarPageData()
@@ -78,15 +78,15 @@ describe('mar-helper tests', () => {
         result.table.should.eql(marRecords)
       })
     })
-  
+
     it('clearAllData', () => {
       should.doesNotThrow(() => {
         marHelper.clearAllData()
         const calls = mockedEhrHelper._saveData.mock.calls
-        calls.length.should.equal(1)   
+        calls.length.should.equal(1)
       })
     })
-  
+
     it('getPageDef_Mar', () => {
       should.doesNotThrow(() => {
         const pageDef = EhrDefs.getPageDefinition(MAR_PAGE_KEY)
@@ -95,7 +95,7 @@ describe('mar-helper tests', () => {
         result.should.eql(pageDef)
       })
     })
-  
+
     it('getMarTableKey', () => {
       should.doesNotThrow(() => {
         const pageKey = mockedEhrHelper.getMergedPageData(MAR_PAGE_KEY).pageElements.table.tableKey
@@ -103,7 +103,7 @@ describe('mar-helper tests', () => {
         result.should.equal(pageKey)
       })
     })
-  
+
     it('saveMarDialog', () => {
       should.doesNotThrow(() => {
         const newMarRecord = new MarEntity({
@@ -118,7 +118,7 @@ describe('mar-helper tests', () => {
         mockedEhrHelper._saveData.mock.calls.length.should.equal(2)
       })
     })
-  
+
     it('triggerActionByPageKey', () => {
       should.doesNotThrow(() => {
         marHelper.triggerActionByPageKey()
@@ -139,13 +139,13 @@ describe('mar-helper tests', () => {
         should.exist(marHelper)
       })
     })
-  
+
     it('refreshMarData', () => {
       should.doesNotThrow(() => {
         marHelper.refreshMarData()
       })
     })
-  
+
     it('getEhrData_Orders', () => {
       should.doesNotThrow(() => {
         marHelper.getEhrData_Orders()
@@ -154,7 +154,7 @@ describe('mar-helper tests', () => {
         theMedOrders.should.eql(classMedOrders)
       })
     })
-  
+
     it('getEhrData_MarRecords', () => {
       should.doesNotThrow(() => {
         marHelper.getEhrData_MarRecords()
@@ -163,22 +163,22 @@ describe('mar-helper tests', () => {
         records.length.should.equal(0)
       })
     })
-  
+
     it('getEhrData_MarPageData', () => {
       should.doesNotThrow(() => {
         const result = marHelper.getEhrData_MarPageData()
         result.table.length.should.eql(0)
       })
     })
-  
+
     it('clearAllData', () => {
       should.doesNotThrow(() => {
         marHelper.clearAllData()
         const calls = mockedEhrHelper._saveData.mock.calls
-        calls.length.should.equal(2)   
+        calls.length.should.equal(2)
       })
     })
-  
+
     it('getPageDef_Mar', () => {
       should.doesNotThrow(() => {
         const pageDef = EhrDefs.getPageDefinition(MAR_PAGE_KEY)
@@ -186,7 +186,7 @@ describe('mar-helper tests', () => {
         result.should.eql(pageDef)
       })
     })
-  
+
     it('getMarTableKey', () => {
       should.doesNotThrow(() => {
         const pageKey = mockedEhrHelper.getMergedPageData(MAR_PAGE_KEY).pageElements.table.tableKey
@@ -194,7 +194,7 @@ describe('mar-helper tests', () => {
         result.should.equal(pageKey)
       })
     })
-  
+
     it('saveMarDialog', () => {
       should.doesNotThrow(() => {
         const newMarRecord = new MarEntity({
@@ -209,7 +209,7 @@ describe('mar-helper tests', () => {
         mockedEhrHelper._saveData.mock.calls.length.should.equal(2)
       })
     })
-  
+
     it('triggerActionByPageKey', () => {
       should.doesNotThrow(() => {
         marHelper.triggerActionByPageKey()

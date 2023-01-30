@@ -1,8 +1,8 @@
 import StoreHelper from '../../../helpers/store-helper'
 import MedOrder from './med-order'
 import MarEntity from './mar-entity'
-import EhrDefs from '../../../helpers/ehr-defs-grid'
-import { MED_ORDERS_PAGE_KEY, MAR_PAGE_KEY} from '@/helpers/ehr-defs-grid'
+import EhrDefs from '../../../ehr-definitions/ehr-defs-grid'
+import { MED_ORDERS_PAGE_KEY, MAR_PAGE_KEY} from '@/ehr-definitions/ehr-defs-grid'
 import EhrData from '@/inside/components/page/ehr-data'
 
 const debug = false
