@@ -35,15 +35,15 @@ describe('optionsToChecklist tests', function () {
   it ('optionsToChecklist', () => {
     const options = [
       {
-        key: 'R&M',
+        key: 'r&m',
         text: 'R&M'
       },
       {
-        key: 'Urine electrolytes',
+        key: 'urineElectrolytes',
         text: 'Urine electrolytes'
       },
       {
-        key: 'Urine creatinine',
+        key: 'urineCreatinine',
         text: 'Urine creatinine'
       }
     ]
@@ -55,7 +55,11 @@ describe('optionsToChecklist tests', function () {
     const checkOptions = EhrCheckset.optionsToChecklist(options)
     should.exist(checkOptions)
     Array.isArray(checkOptions).should.equal(true)
+    checkOptions.length.should.equal(3)
     checkOptions[0].should.have.property('prop')
     checkOptions[0].prop.should.equal(expected[0].prop)
+    checkOptions[1].prop.should.equal(expected[1].prop)
+    checkOptions[2].prop.should.equal(expected[2].prop)
+
   })
 })

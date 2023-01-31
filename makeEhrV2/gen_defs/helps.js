@@ -74,6 +74,10 @@ class RawHelper {
             //after github issue #1068 was fixed we should not see checkset options with :=
             console.error('ERROR CHECKSET WITH :=', dest.fqn)
           }
+          kv = text.split('=')
+          if (kv.length === 2) {
+            console.log('CHECKSET WITH =', dest.fqn)
+          }
           return { key: key, text: text }
         })
 
