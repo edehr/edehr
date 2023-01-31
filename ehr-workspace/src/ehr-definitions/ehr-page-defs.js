@@ -13961,63 +13961,63 @@ const DEFS = {
         'label': 'Wound Etiology/Type',
         'options': [
           {
-            'key': 'stage1',
+            'key': 'Pressure Injury Stage 1',
             'text': 'Pressure Injury Stage 1'
           },
           {
-            'key': 'stage2',
+            'key': 'Pressure Injury Stage 2',
             'text': 'Pressure Injury Stage 2'
           },
           {
-            'key': 'stage3',
+            'key': 'Pressure Injury Stage 3',
             'text': 'Pressure Injury Stage 3'
           },
           {
-            'key': 'stage4',
+            'key': 'Pressure Injury Stage 4',
             'text': 'Pressure Injury Stage 4'
           },
           {
-            'key': 'unstageable',
+            'key': 'Pressure Injury Unstageable',
             'text': 'Pressure Injury Unstageable'
           },
           {
-            'key': 'deep',
+            'key': 'Pressure Injury Deep Tissue Injury',
             'text': 'Pressure Injury Deep Tissue Injury'
           },
           {
-            'key': 'surgical',
+            'key': 'Surgical Secondary Intent',
             'text': 'Surgical Secondary Intent'
           },
           {
-            'key': 'tear',
+            'key': 'Skin Tear',
             'text': 'Skin Tear'
           },
           {
-            'key': 'abscess',
+            'key': 'Abscess',
             'text': 'Abscess'
           },
           {
-            'key': 'burn',
+            'key': 'Burn',
             'text': 'Burn'
           },
           {
-            'key': 'venous',
+            'key': 'Venous Ulcer',
             'text': 'Venous Ulcer'
           },
           {
-            'key': 'arterial',
+            'key': 'Arterial Ulcer',
             'text': 'Arterial Ulcer'
           },
           {
-            'key': 'mixedUlcer',
+            'key': 'Mixed Venous/Arterial Ulcer',
             'text': 'Mixed Venous/Arterial Ulcer'
           },
           {
-            'key': 'diabetic',
+            'key': 'Diabetic/Neuropathic Ulcer',
             'text': 'Diabetic/Neuropathic Ulcer'
           },
           {
-            'key': 'other',
+            'key': 'Other',
             'text': 'Other'
           }
         ],
