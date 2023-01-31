@@ -21,6 +21,8 @@
     div(class="footer-section")
       div {{ apiData.appTitle }}
       div {{ authData.timeRemaining }}
+    div(class="error-testing")
+      button(@click="throwError")  error testing
 </template>
 
 <script>
@@ -45,6 +47,11 @@ export default {
     showEdEhrOrg () {
       return edherorg.isEdEhrOrg()
     },
+  },
+  methods: {
+    throwError () {
+      throw new Error('Sentry Error')
+    }
   }
 }
 </script>
@@ -65,5 +72,9 @@ footer {
   .footer-section {
     margin-bottom: 1rem;
   }
+}
+.error-testing button {
+  background-color: transparent;
+  color: black
 }
 </style>
