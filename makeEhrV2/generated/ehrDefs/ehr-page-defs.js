@@ -1,3 +1,4 @@
+/* eslint-disable */
 const DEFS = {
   'demographics': {
     'pageDataKey': 'demographics',

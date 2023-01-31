@@ -56,7 +56,7 @@ function main () {
   results = _fixBooleans(results)
   // wrap defs into a function
   const modDef = []
-  // modDef.push('/* eslint-disable quotes */')
+  modDef.push('/* eslint-disable */')
   modDef.push('const DEFS = ' + results)
   modDef.push('export default DEFS')
   // write to destination file in client source code

@@ -50,6 +50,18 @@ export default class EhrCheckset {
    *  prop: {type: string},
    *  text: {type: string}
    *  }
+   *
+   *  The options are from the generated page definitions. They are an array of objects with
+   *  properties 'key' and 'text'.  The 'key' property is (unfortunately) not used.
+   *  The 'text' property becomes the database value (i.e. the effective key) unless
+   *  the text contains an equal sign '='. In which case the text is split and the first
+   *  part is used as the key.
+   *  In either kay the effective key, which is stored as 'prop', is converted to camel case.
+   *  Sample options
+   *            {
+   *             'key': 'check1=check option 1',
+   *             'text': 'check1=check option 1'
+   *           },
    * @param options
    * @returns {*[ { prop: {type: string}, text: {type: string}}]}
    */
