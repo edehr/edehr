@@ -45,6 +45,7 @@ import EhrTypes from '@/ehr-definitions/ehr-types'
 import EhrCheckset from '@/ehr-definitions/ehr-checkset'
 import EhrData from '@/inside/components/page/ehr-data'
 import EhrTableDraft from '@/inside/components/page/ehr-table-draft'
+import StoreHelper from '@/helpers/store-helper'
 
 export default {
   components: {
@@ -112,7 +113,12 @@ export default {
             templateCell.stack.forEach((cell) => {
               let val = dbRow[cell.key] === 0 ? '0' : dbRow[cell.key]
               if (cell.inputType === EhrTypes.dataInputTypes.checkset) {
-                val = EhrCheckset.makeHuman(val, pageDataKey, cell)
+                try {
+                  val = EhrCheckset.makeHuman(val, pageDataKey, cell.key)
+                } catch (err) {
+                  // TODO Remove this try catch and let main.js global handler manage. Wait until new checkset work is tried and true even in production
+                  StoreHelper.setApiError(err.message)
+                }
               }
               cell.value = val || ''
               cell.tableCss = templateCell.tableCss

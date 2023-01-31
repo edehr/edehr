@@ -26,9 +26,31 @@ describe('checkSetToDbValue tests', function () {
 
 describe('makeHuman tests', function () {
   it ('makeHuman', () => {
-    const results = EhrCheckset.makeHuman('mixedUlcer', 'integumentaryAssessment', {key: 'stageType'})
-    // console.log('make human', results)
+    const results = EhrCheckset.makeHuman('diabetic/neuropathicUlcer', 'integumentaryAssessment', 'stageType')
   })
+  it ('invalid val', (done) => {
+    should.throws( () => {
+      EhrCheckset.makeHuman('diabetic', 'integumentaryAssessment', 'stageType')
+    }, (err) => {
+      should.exist(err)
+      should.exist(err.message)
+      console.log(err.message)
+      err.message.includes('Could not match').should.equal(true)
+      done()
+    })
+  })
+  it ('empty string val', (done) => {
+    should.throws( () => {
+      EhrCheckset.makeHuman('', 'integumentaryAssessment', 'stageType')
+    }, (err) => {
+      should.exist(err)
+      should.exist(err.message)
+      // console.log(err.message)
+      err.message.includes('empty string').should.equal(true)
+      done()
+    })
+  })
+
 })
 
 describe('optionsToChecklist tests', function () {

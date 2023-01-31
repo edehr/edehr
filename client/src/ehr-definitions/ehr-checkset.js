@@ -1,5 +1,6 @@
-import { isString, decamelize } from './common-utils'
+import { isString } from './common-utils'
 import EhrDefs from './ehr-defs-grid'
+import EhrTypes from './ehr-types'
 
 export default class EhrCheckset {
   static dbValueToCheckSet (value) {
@@ -22,22 +23,40 @@ export default class EhrCheckset {
     return val.filter( v => v.length > 0).join(',')
   }
 
-  static makeHuman (val, pageDataKey, cell) {
+  static makeHuman (val, pageDataKey, elementKey) {
     let results
-    const elementKey = cell.key
+    const PK =  pageDataKey + '.' + elementKey
     const element = EhrDefs.getPageChildElement(pageDataKey, elementKey)
-    // eslint-disable-next-line no-unused-vars
+    if (!element) {
+      const errMsg = 'Asked to make checkset text for page or element that does not exist. ' + PK
+      throw new Error(errMsg)
+    }
+    if ( element.inputType !== EhrTypes.dataInputTypes.checkset || !element.options) {
+      const errMsg = 'Asked to make checkset text for element that is not a checkset. ' + PK
+      throw new Error(errMsg)
+    }
     const options = element.options
-    // console.log('options', JSON.stringify(options))
-    // TODO match values to original text in options to recover display text
     if (typeof val !== 'string') {
-      if (val !== undefined) console.log('TODO Ehr checkset. Handle legacy seeds with boolean values', elementKey, val)
+      if (val !== undefined) {
+        console.log('TODO Ehr checkset. Handle legacy seeds with boolean values', val, PK)
+      }
       return val
     }
+    if ( val === '') {
+      const errMsg = 'Asked to make empty string into a checkset option. ' + PK
+      throw new Error(errMsg)
+    }
     const parts = val.split(',')
-    const human = parts.map(p => decamelize(p, { separator: ' ' }))
+    const human = parts.map(p => {
+      const fnd = options.find( opt => opt.key === p )
+      if (!fnd) {
+        const errMsg = 'Could not match checkset for option "' + p + '" from value "' + val +
+          '". ' + PK + ' ' + JSON.stringify(options)
+        throw new Error(errMsg)
+      }
+      return fnd.text
+    })
     results = human.join(', ')
-    // console.log(`made human '${val}'`, results)
     return results
   }
 
