@@ -5258,28 +5258,28 @@ const DEFS = {
         'label': 'Abdomen',
         'options': [
           {
-            'key': 'soft=soft',
-            'text': 'soft=Soft'
+            'key': 'soft',
+            'text': 'Soft'
           },
           {
-            'key': 'tender=tender',
-            'text': 'tender=Tender'
+            'key': 'tender',
+            'text': 'Tender'
           },
           {
-            'key': 'rigid=rigid',
-            'text': 'rigid=Rigid'
+            'key': 'rigid',
+            'text': 'Rigid'
           },
           {
-            'key': 'guarding=guarding',
-            'text': 'guarding=Guarding'
+            'key': 'guarding',
+            'text': 'Guarding'
           },
           {
-            'key': 'distended=distended',
-            'text': 'distended=Distended'
+            'key': 'distended',
+            'text': 'Distended'
           },
           {
-            'key': 'scars=scars',
-            'text': 'scars=Scars'
+            'key': 'scars',
+            'text': 'Scars'
           }
         ],
         'tableColumn': '4',
@@ -12032,26 +12032,26 @@ const DEFS = {
       },
       {
         'elementKey': 'pcheckset',
-        'defaultValue': 'check1,all',
+        'defaultValue': 'check_option_1,all',
         'formIndex': '1',
         'inputType': 'checkset',
         'label': 'checkset',
         'options': [
           {
-            'key': 'check1=checkOption1',
-            'text': 'check1=check option 1'
+            'key': 'checkOption1',
+            'text': 'check option 1'
           },
           {
-            'key': 'check2=checkOption2',
-            'text': 'check2=check option 2'
+            'key': 'checkOption2',
+            'text': 'check option 2'
           },
           {
-            'key': 'other=anotherOption',
-            'text': 'other=another option'
+            'key': 'anotherOption',
+            'text': 'another option'
           },
           {
-            'key': 'all=allOptionsAreSelectable',
-            'text': 'all=all options are selectable'
+            'key': 'allOptionsAreSelectable',
+            'text': 'all options are selectable'
           }
         ],
         'fqn': 'testPage.pcheckset'

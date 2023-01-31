@@ -17,10 +17,10 @@
 {inputType: ehrFile}	eCell	{Label: A File}	eCell	{elementKey: aFile}	{pN: 40}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	{Label: Second group}	eCell	eCell	{pN: 40}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_subgroup}	eCell	{Label: subgroup 1}	eCell	{elementKey: subgroup1}	{pN: 40}	{fN: 1}	{gN: 2}	{sgN: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkset}	eCell	{Label: checkset}	eCell	{elementKey: pcheckset}	{pN: 40}	{fN: 1}	{gN: 2}	{sgN: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Default_value: check1,all}	"{Options: check1=check option 1
-check2=check option 2
-other=another option
-all=all options are selectable}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkset}	eCell	{Label: checkset}	eCell	{elementKey: pcheckset}	{pN: 40}	{fN: 1}	{gN: 2}	{sgN: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Default_value: check_option_1,all}	"{Options: check option 1
+check option 2
+another option
+all options are selectable}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_subgroup}	eCell	{Label: subgroup 2}	eCell	{elementKey: subgroup2}	{pN: 40}	{fN: 1}	{gN: 2}	{sgN: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: visitDay}	eCell	{Label: Day}	eCell	{elementKey: dayValue}	{pN: 40}	{fN: 1}	{gN: 2}	{sgN: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Mandatory: TRUE}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: visitTime}	eCell	{Label: Time}	eCell	{elementKey: timeValue}	{pN: 40}	{fN: 1}	{gN: 2}	{sgN: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{Mandatory: TRUE}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
