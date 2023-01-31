@@ -9,7 +9,7 @@ describe ( ' ehr checkset', () => {
 })
 
 describe('dbValueToCheckSet tests', function () {
-  it ('modelChange', () => {
+  it ('dbValueToCheckSet', () => {
     const checkOptions = EhrCheckset.dbValueToCheckSet('foo,bar')
     should.exist(checkOptions)
     Array.isArray(checkOptions).should.equal(true)
@@ -17,10 +17,10 @@ describe('dbValueToCheckSet tests', function () {
   })
 })
 
-describe('modelChange tests', function () {
-  it ('modelChange', () => {
-    EhrCheckset.modelChange(['foo','bar']).should.equal('foo,bar')
-    EhrCheckset.modelChange(['foo','','bar']).should.equal('foo,bar')
+describe('checkSetToDbValue tests', function () {
+  it ('checkSetToDbValue', () => {
+    EhrCheckset.checkSetToDbValue(['foo','bar']).should.equal('foo,bar')
+    EhrCheckset.checkSetToDbValue(['foo','','bar']).should.equal('foo,bar')
   })
 })
 

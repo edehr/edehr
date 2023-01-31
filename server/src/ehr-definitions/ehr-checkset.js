@@ -15,7 +15,17 @@ export default class EhrCheckset {
     }
     return results
   }
+  /**
+   *
+   * @param val Array of camelCase props created in optionsToCheckList
+   * @returns Array converted to csv string (no spaces)
+   */
+  static checkSetToDbValue (val) {
+    return val.filter( v => v.length > 0).join(',')
+  }
+
   static makeHuman (val, pageDataKey, cell) {
+    let results
     const elementKey = cell.key
     const element = EhrDefs.getPageChildElement(pageDataKey, elementKey)
     // eslint-disable-next-line no-unused-vars
@@ -28,18 +38,21 @@ export default class EhrCheckset {
     }
     const parts = val.split(',')
     const human = parts.map(p => decamelize(p, { separator: ' ' }))
-    const results = human.join(', ')
-    console.log(`made human '${val}'`, results)
+    results = human.join(', ')
+    // console.log(`made human '${val}'`, results)
     return results
   }
+
+
   /**
-   *
-   * @param val Array of camelCase props created in optionsToCheckList
-   * @returns Array converted to csv string (no spaces)
+   * Provide array of check set options for the UI. Each element is structured as
+   * {
+   *  prop: {type: string},
+   *  text: {type: string}
+   *  }
+   * @param options
+   * @returns {*[ { prop: {type: string}, text: {type: string}}]}
    */
-  static modelChange (val) {
-    return val.filter( v => v.length > 0).join(',')
-  }
   static optionsToChecklist (options) {
     const checkOptions = []
     let prop, text
