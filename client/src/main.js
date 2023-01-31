@@ -18,9 +18,6 @@ Import the global style sheet
  */
 import './scss/styles.scss'
 import StoreHelper from '@/helpers/store-helper'
-
-
-
 /*
 Configure Vue
  */
@@ -33,6 +30,23 @@ Vue.component('home-layout', homeLayout)
 Vue.component('outside-layout', outsideLayout)
 Vue.component('lms-layout', lmsLayout)
 Vue.component('inside-layout', insideLayout)
+
+/**
+ * Global catch for errors that are thrown during Vue processing. For example, the main Vue render
+ * process has no other central way to catch and record errors.
+ *
+ * This handler prints a message to the error console. Sentry is configured to create an event
+ * on every time the error console is used.
+ *
+ * @param err - the error object that got thrown
+ * @param vm
+ * @param info - where in the Vue world did the error happen. In a lifecylce event? during render?
+ */
+Vue.config.errorHandler = function (err, vm, info)  {
+  const msg = '[Global Error Handler]: Error in (' + info + '): (' + err.message + ')'
+  console.error(msg)
+  // Sentry.captureMessage(msg,data)
+}
 
 router.afterEach(async (to, from) => {
   let startTime = performance.now()
@@ -57,7 +71,7 @@ if (!window.location.origin.includes('localhost')) {
     // Set tracesSampleRate to 1.0 to capture 100%
     // of transactions for performance monitoring.
     // We recommend adjusting this value in production
-    tracesSampleRate: 0.7,
+    tracesSampleRate: 0.05,
   })
 }
 /*

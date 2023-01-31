@@ -5,7 +5,7 @@ import { version } from 'process'
 import { logError} from '../helpers/log-error'
 const debug = require('debug')('server')
 
-if (version.includes('v14')) {
+if (version.includes('v14') || version.includes('v18')) {
   debug(`Node Version: ${version}`)
 } else {
   logError('Unexpected version of Node is active ', version)
@@ -70,7 +70,7 @@ function defaultConfig (env) {
     sentryDsn: process.env.SENTRY_DSN,
     // Use this hard coded value on a temporary basis on localhost. you do this to test sentry
     // sentryDsn: 'https://cab9cdff46224d679f1cb5d9a24c643d@o1411884.ingest.sentry.io/6756187',
-    sentryTraceRate: process.env.SENTRY_TRACES_SAMPLE_RATE || 0.7, // default to 70%
+    sentryTraceRate: process.env.SENTRY_TRACES_SAMPLE_RATE || 0.05, // default to 5%
   }
 }
 
