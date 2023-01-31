@@ -75,7 +75,7 @@ export default {
     setInitialPage () {
       const data = this.ehrData
       if (data) {
-        const keys = Object.keys(data)
+        const keys = Object.keys(data).filter( k => k !== 'meta')
         if (keys.length > 0) {
           const key = keys.includes('demographics') ? 'demographics' : keys[0]
           this.selectPage(key)
