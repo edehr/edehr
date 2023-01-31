@@ -23,8 +23,10 @@ export default {
   data () {
     return {
       checkValues: [],
-      checkOptions: []
     }
+  },
+  computed : {
+    checkOptions () { return EhrCheckset.optionsToChecklist(this.options) }
   },
   watch: {
     checkValues (val) {
@@ -39,14 +41,6 @@ export default {
       this.checkValues = EhrCheckset.dbValueToCheckSet(value)
     },
     setup () {
-      // called from EhrCommon.mount
-      // console.log('setup checkset', this.elementKey, this.element, this.options)
-      const options = this.options
-      if (!options || options.length === 0) {
-        StoreHelper.setApiError(Text.IS_INVALID_CHECKSET(this.elementKey))
-        return
-      }
-      this.checkOptions = EhrCheckset.optionsToChecklist(options)
     }
   }
 }

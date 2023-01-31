@@ -73,7 +73,9 @@ export default {
         }
       }
       return disable
-    }
+    },
+    options () { return this.element.options },
+    suffix () { return this.element.suffix }
   },
   methods: {
     isType (type) {
@@ -215,9 +217,6 @@ export default {
       }
     },
     setupCommon () {
-      const element = this.element
-      this.suffix = element.suffix
-      this.options = element.options
     },
     setupEventHandlers () {
       const _this = this
