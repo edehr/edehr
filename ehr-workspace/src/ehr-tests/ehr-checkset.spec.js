@@ -40,13 +40,11 @@ describe('makeHuman tests', function () {
     })
   })
   it ('empty string val', (done) => {
-    should.throws( () => {
-      EhrCheckset.makeHuman('', 'integumentaryAssessment', 'stageType')
+    should.doesNotThrow( () => {
+      EhrCheckset.makeHuman('', 'integumentaryAssessment', 'stageType').should.equal('')
+      done()
     }, (err) => {
-      should.exist(err)
-      should.exist(err.message)
-      // console.log(err.message)
-      err.message.includes('empty string').should.equal(true)
+      should.not.exist(err)
       done()
     })
   })

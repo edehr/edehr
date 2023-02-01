@@ -433,7 +433,7 @@ class StoreHelperWorker {
     // store.getters['visit/visitId'] is the previously saved visit id
     const storedVisit = store.getters['visit/visitId']
     const authVisit = store.getters['authStore/visitId']
-    console.log('loadCommon optionalVisitId, storedVisit, authVisit', optionalVisitId, storedVisit, authVisit)
+    // console.log('loadCommon optionalVisitId, storedVisit, authVisit', optionalVisitId, storedVisit, authVisit)
     let visitId = optionalVisitId || storedVisit || authVisit
     await StoreHelper.setVisitId(visitId) //note this stores the visit id to survive page changes and browser refresh
     await StoreHelper.loadVisitRecord()

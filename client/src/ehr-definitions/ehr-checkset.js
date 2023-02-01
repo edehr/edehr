@@ -43,8 +43,7 @@ export default class EhrCheckset {
       return val
     }
     if ( val === '') {
-      const errMsg = 'Asked to make empty string into a checkset option. ' + PK
-      throw new Error(errMsg)
+      return val // empty string is okay
     }
     const parts = val.split(',')
     const human = parts.map(p => {

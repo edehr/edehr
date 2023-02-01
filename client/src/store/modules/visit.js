@@ -59,7 +59,7 @@ const actions = {
     localStorage.removeItem(IS_CONTENT_EDITING)
   },
   setVisitId (context, vId) {
-    console.log('Set visit id', vId)
+    // console.log('Set visit id', vId)
     context.commit('setVisitId', vId)
   },
   loadVisitRecord (context) {

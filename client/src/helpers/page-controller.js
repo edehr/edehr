@@ -12,7 +12,7 @@ import {
 import store from '@/store'
 import authHelper from '@/helpers/auth-helper'
 
-const dbApp = true
+const dbApp = false
 
 /**
    * onPageChange is invoked from main.js whenever a route has changed.
@@ -174,7 +174,7 @@ async  function onPageChange (toRoute, fromRoute) {
 
     // If a student is coming from the My Activities page then the query has the intended visitId
     const optionalVisitId = toRoute.query.visitId
-    console.log('optionalVisitId',optionalVisitId)
+    // console.log('optionalVisitId',optionalVisitId)
 
     if (authToken) {
       if (dbApp) console.log('onPageChange is authed so load data')
