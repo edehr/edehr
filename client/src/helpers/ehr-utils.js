@@ -1,7 +1,7 @@
 import moment from 'moment'
 import camelcase from 'camelcase'
 import { saveAs } from 'file-saver'
-import EhrDefs from '@/helpers/ehr-defs-grid'
+import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 import { Text } from '@/helpers/ehr-text'
 import validFilename from 'valid-filename'
 import StoreHelper from '@/helpers/store-helper'

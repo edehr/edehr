@@ -16,7 +16,7 @@
 <script>
 import EhrPanelContent from '@/inside/components/page/EhrPanelContent.vue'
 import EhrPageTable from '@/inside/components/page/EhrPageTable'
-import EhrDefs from '@/helpers/ehr-defs-grid'
+import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 import Tabs from '@/inside/components/Tabs.vue'
 import Tab from '@/inside/components/Tab.vue'
 

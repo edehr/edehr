@@ -3,17 +3,64 @@
 import { EhrPages } from './ehr-models'
 import EhrDataModel from '../ehr-definitions/EhrDataModel'
 
-export function computeDateOfBirth (ageValue, demographicsDoB) {
+export function validateAgeValue ( age) {
+  const ageValue = Number.parseInt(age)
+  return 0 <= ageValue && ageValue <= 150
+}
+
+export function extractMonth (dateStr) {
+  let results
+  // getMonth and getDate use local time so make sure the dateStr has a fixed time
+  dateStr += dateStr.includes('T') ? '' : 'T00:00'
+  const dt = new Date(dateStr)
+  if (dt.toString() !== 'Invalid Date') {
+    results = dt.getMonth() + 1
+  }
+  return results
+}
+export function extractDay (dateStr) {
+  let results
+  // getMonth and getDate use local time so make sure the dateStr has a fixed time
+  dateStr += dateStr.includes('T') ? '' : 'T00:00'
+  // console.log('dateStr',dateStr)
+  const dt = new Date(dateStr)
+  if (dt.toString() !== 'Invalid Date') {
+    results = dt.getDate()
+  }
+  return results
+}
+
+
+/**
+ *
+ * Calculates the year by taking today's year and subtracting
+ * the ageValue but adjusting if today date is after the given dob.
+ * Then use the given dob for the month and day.
+ *
+ * @param ageValue { string } number of years e.g. 10 or 75 or 105
+ * @param demographicsDoB  {string} Date entered by user. '2000-01-01T00:00'
+ * @param now { Date } Only need this for testing.
+ * @returns {string} Birth date of person. Returns undefined on invalid inputs
+ */
+export function computeDateOfBirth (ageValue, demographicsDoB, now = new Date()) {
   let dateStr
-  if (ageValue) {
-    const now = new Date()
+  if (validateAgeValue(ageValue)) {
     const dob = new Date(demographicsDoB)
-    const isAfter = dob.getMonth() > now.getMonth() || dob.getMonth() === now.getMonth() && dob.getDay() > now.getDay()
-    let nyr = now.getFullYear()
-    nyr = nyr - ageValue
-    nyr += isAfter ? -1 : 0
-    dob.setFullYear(nyr)
-    dateStr = dob.toISOString().split('T')[0]
+    if (dob.toString() === 'Invalid Date') {
+      console.log('cdob invalid demographicsDoB', demographicsDoB)
+      dateStr = demographicsDoB
+    } else {
+      console.log('dob', JSON.stringify(dob))
+      const isAfter = dob.getMonth() > now.getMonth() || dob.getMonth() === now.getMonth() && dob.getDay() > now.getDay()
+      let nyr = now.getFullYear()
+      nyr = nyr - ageValue
+      nyr += isAfter ? -1 : 0
+      dob.setFullYear(nyr)
+      dateStr = dob.toISOString().split('T')[0]
+      // console.log('cdob dateStr', dateStr)
+    }
+  } else {
+    // console.log('cdob invalid ageValue', ageValue)
   }
   return dateStr
 }

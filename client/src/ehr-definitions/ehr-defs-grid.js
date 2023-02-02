@@ -1,6 +1,6 @@
-import EhrTypes from '@/ehr-definitions/ehr-types'
-import pageDefs from '@/ehr-definitions/ehr-page-defs'
-import { isString } from '@/helpers/ehr-utils'
+import EhrTypes from './ehr-types'
+import pageDefs from './ehr-page-defs'
+import { isString } from './common-utils'
 
 const PROPS = EhrTypes.elementProperties
 

@@ -11,7 +11,7 @@ import EhrPanelContent from '../components/page/EhrPanelContent.vue'
 import EhrPageFooter from '../components/page/EhrPageFooter'
 import EhrPageHelper from '../components/page/ehr-helper'
 import MarTabs from '../components/mar/MarTabs'
-import EhrDefs from '../../helpers/ehr-defs-grid'
+import EhrDefs from '../../ehr-definitions/ehr-defs-grid'
 
 export default {
   name: 'Mar',

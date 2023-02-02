@@ -13,7 +13,7 @@
 <script>
 import EhrPanelContent from '../page/EhrPanelContent.vue'
 import EhrPageElement from '../page/EhrPageElement'
-import EhrDefs from '../../../helpers/ehr-defs-grid'
+import EhrDefs from '../../../ehr-definitions/ehr-defs-grid'
 import EhrSummaryTable from './EhrSummaryTableV2'
 import { ESK_Referrals, ESK_LabReqs, ESK_Procedures, ESK_DischargeProcedures, ESK_Medications, ESK_MARS } from './ehr-summary-tableV2'
 

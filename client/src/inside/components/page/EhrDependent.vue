@@ -1,5 +1,5 @@
 <script>
-import EhrDefs from '../../../helpers/ehr-defs-grid'
+import EhrDefs from '../../../ehr-definitions/ehr-defs-grid'
 import EventBus from '../../../helpers/event-bus'
 import EhrTypes from '@/ehr-definitions/ehr-types'
 const dbug = false
@@ -93,6 +93,8 @@ export default {
           key = kv[0] // e.g. administration
           refValue = kv[1] // e.g. sched,prn
           type = PROPS.type.select
+        } else if (PROPS.action.age === action) {
+          type = PROPS.type.age
         } else {
           type = PROPS.type.check
         }

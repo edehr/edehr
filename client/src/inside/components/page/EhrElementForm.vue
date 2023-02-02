@@ -1,5 +1,5 @@
 <template lang='pug'>
-  div(class="form-element")
+  div(class="form-element", :class='{invalidElement : !validData}')
     div(v-if="isType('form_label')")
       div(v-html="label", class='form_label_wrapper')
 
@@ -38,18 +38,6 @@
       ehr-element-embedded(:elementKey="elementKey", :ehrHelp="ehrHelp", :inputVal="inputVal")
 
     hr(v-else-if="isType('horizontal')")
-
-    // this look ahead has been replaced. See below
-    //div(v-else-if="isType('lookahead')", class="text_input_wrapper")
-    //  ehr-page-form-label(:element="element", css="text_input_wrapper")
-    //  ehr-element-lookup(
-    //    v-if="!viewOnly"
-    //    :disabled="disabled",
-    //    @selected="(selected) => inputVal = selected",
-    //    :inputVal="inputVal"
-    //  )
-    //  div(v-else) {{ inputVal }}
-
     // type lookahead should have been named 'medication'
     div(v-else-if="isType('lookahead')", class="text_input_wrapper")
       ehr-page-form-label(:element="element", css="text_input_wrapper")
@@ -63,7 +51,13 @@
         )
 
     div(v-else-if="isType('mainDOB')")
-      ehr-element-birth-date(:elementKey="elementKey", :ehrHelp="ehrHelp", :viewOnly='viewOnly')
+      ehr-element-birth-date(
+        :elementKey="elementKey",
+        :ehrHelp="ehrHelp",
+        :viewOnly='viewOnly',
+        :containerInputValue="inputVal"
+        @update="dobUpdate"
+        )
 
     div(v-else-if="isType('number') || isType('personAge')", class="text_input_wrapper")
       ehr-page-form-label(:element="element", css="text_label")
@@ -130,7 +124,8 @@
 
     div(v-else) ELSE: {{inputType}} {{label}}
 
-    //div eef inputVal {{inputVal}}
+    //div eef {{elementKey}} '{{inputVal}}'
+    //div {{ validData ? 'ok': 'bad' }} ddv {{dependentOnValue}}
 
 </template>
 
@@ -178,6 +173,19 @@ export default {
         this.isType(dataTypes.ehrPatientName) ||
         this.isType(dataTypes.ehrLocation) }
   },
-  methods: {}
+  methods: {
+    dobUpdate (update) {
+      console.log('EhrElementForm update', update)
+      this.internalSetInputValue(update)
+    }
+  }
 }
 </script>
+
+<style lang='scss' scoped>
+@import '@/scss/definitions';
+
+.invalidElement {
+  border: 1px $error solid
+}
+</style>

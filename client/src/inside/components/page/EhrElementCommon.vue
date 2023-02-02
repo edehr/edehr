@@ -1,11 +1,12 @@
 <script>
 import EhrPageFormLabel from './EhrPageFormLabel.vue'
 import EhrDependent from './EhrDependent.vue'
-import EhrDefs from '@/helpers/ehr-defs-grid'
+import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 import EhrTypes from '@/ehr-definitions/ehr-types'
 import UiInfo from '@/app/ui/UiInfo'
 import EventBus, { FORM_INPUT_EVENT, PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
 import EhrData from '@/inside/components/page/ehr-data'
+import { validateAgeValue } from '@/ehr-definitions/ehr-def-utils'
 
 const DEPENDENT_PROPS = EhrTypes.dependentOn
 
@@ -25,8 +26,7 @@ export default {
       dialogIsOpen: false,
       initialVal: '',
       inputVal: '',
-      suffix: '',
-      options: '',
+      validData: true,
       assignment: {}
     }
   },
@@ -92,6 +92,10 @@ export default {
       }
       return name
     },
+    internalSetInputValue (val) {
+      // this should trigger the watch ...
+      this.inputVal = val
+    },
     setInitialValue (value) {
       if (dbInputs) console.log('EhrCommon set initial value ', value, this.elementKey)
       this.initialVal = value
@@ -101,9 +105,13 @@ export default {
     },
     sendInputEvent (val) {
       if (dbInputs) console.log('EhrCommon broadcast PAGE_FORM_INPUT_EVENT ', val, this.elementKey)
+      // notify the dependents that they have a new value to use
+      this.dependentUIEvent()
       if (this.isPageElement &&  this.isEditing || this.isTableElement && this.dialogIsOpen) {
         // TODO consider changing dialogIsOpen flag to something we actively get from the open dialog.
         EventBus.$emit(FORM_INPUT_EVENT, { value: val, element: this.element, tableKey: this.tableKey })
+      } else {
+        // do nothing.  This happens on load when setIntialValue is used.
       }
     },
     refreshPage () {
@@ -146,7 +154,7 @@ export default {
         if (dbPage || dbInputs) console.log('EhrCommon page data is ready', this.elementKey, value)
         this.setInitialValue(value)
       } catch (err) {
-        console.error('Refresh element on page', err.message)
+        console.error('Refresh element on page', err)
       }
     },
     handleDialogEvent (options) {
@@ -225,6 +233,16 @@ export default {
         }
         EventBus.$on(this.ehrHelp.getDialogEventChannel(this.tableKey), this.dialogEventHandler)
       }
+    },
+    /**
+     * When the element's value changes we can validate it.
+     * @param newVal
+     */
+    validateSelf (newVal) {
+      this.validData = true
+      if (this.inputType === EhrTypes.dataInputTypes.personAge) {
+        this.validData = validateAgeValue(newVal)
+      }
     }
   },
   mounted: function () {
@@ -245,6 +263,8 @@ export default {
   watch: {
     inputVal (val) {
       if (dbInputs) console.log('EhrElement input val changed', this.elementKey, val)
+      console.log('EhrElement input val changed', this.elementKey, val, this.inputVal)
+      this.validateSelf(val)
       this.sendInputEvent(val)
     }
   }

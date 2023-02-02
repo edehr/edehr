@@ -1,7 +1,7 @@
 //import store from '../../store'
 // import store from '../__mock__/mock-store'
 jest.mock('../../store')
-import EhrDefs from '@/helpers/ehr-defs-grid'
+import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 import ehrDataStore from '../modules/ehrDataStore'
 // import { mutations as dMutations, state as dState, getters as dGetters} from '../modules/ehrDataStore'
 import seedListStore from '../modules/seedListStore'

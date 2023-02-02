@@ -12,6 +12,8 @@
 <script>
 import EhrElementCommon from './EhrElementCommon'
 import EhrCheckset from '@/ehr-definitions/ehr-checkset'
+import StoreHelper from '@/helpers/store-helper'
+import { Text } from '@/helpers/ehr-text'
 
 const debug = false
 
@@ -39,7 +41,12 @@ export default {
     setup () {
       // called from EhrCommon.mount
       // console.log('setup checkset', this.elementKey, this.element, this.options)
-      this.checkOptions = EhrCheckset.optionsToChecklist(this.options)
+      const options = this.options
+      if (!options || options.length === 0) {
+        StoreHelper.setApiError(Text.IS_INVALID_CHECKSET(this.elementKey))
+        return
+      }
+      this.checkOptions = EhrCheckset.optionsToChecklist(options)
     }
   }
 }

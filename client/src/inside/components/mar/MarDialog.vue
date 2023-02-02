@@ -58,7 +58,7 @@
 
 <script>
 import AppDialog from '@/app/components/AppDialogShell'
-import EhrDefs from '@/helpers/ehr-defs-grid'
+import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 import UiButton from '@/app/ui/UiButton'
 import MarEntity from './mar-entity'
 import MedOrder from '@/inside/components/mar/MedOrder'

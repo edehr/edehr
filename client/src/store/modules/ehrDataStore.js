@@ -1,6 +1,6 @@
 import InstoreHelper from './instoreHelper'
 import { decoupleObject, ehrMergeEhrData, ehrMarkSeed } from '@/helpers/ehr-utils'
-import EhrDefs from '@/helpers/ehr-defs-grid'
+import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 import StoreHelper from '@/helpers/store-helper'
 import { EhrPages } from '@/ehr-definitions/ehr-models'
 

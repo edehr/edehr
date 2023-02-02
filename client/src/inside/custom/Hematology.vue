@@ -8,7 +8,7 @@
 import EhrPageFooter from '../components/page/EhrPageFooter'
 import EhrPageHelper from '../components/page/ehr-helper'
 import HematologyContent from '@/inside/custom/hematology/HematologyContent'
-import EhrDefs from '@/helpers/ehr-defs-grid'
+import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 
 export default {
   components: { EhrPageFooter, HematologyContent },

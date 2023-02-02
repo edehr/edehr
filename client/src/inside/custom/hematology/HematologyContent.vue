@@ -8,7 +8,7 @@
 <script>
 import EhrPanelContent from '@/inside/components/page/EhrPanelContent.vue'
 import EhrPageTable from '@/inside/components/page/EhrPageTable'
-import EhrDefs from '@/helpers/ehr-defs-grid'
+import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 import EventBus, { TABLE_ACTION_EVENT } from '@/helpers/event-bus'
 import EhrTableActions from '@/inside/components/page/ehr-table-actions'
 
