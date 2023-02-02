@@ -75,6 +75,8 @@ mkdir -p generated/ehrDefs
 
 if [[ "$LINT" == "true" ]]
 then
+  echo Run tests on EHR workspace
+  cd ../ehr-workspace && npm run test
   echo Linting client files, including newly generated files.
   cd ../client &&  npm run lint
   cd ../server &&  npm run lint

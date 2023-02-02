@@ -197,21 +197,21 @@ Wound C
 Wound D}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: visitDay}	eCell	{Label: Wound day of onset}	eCell	{elementKey: woundDayOnset}	{pN: 42}	{fN: 3}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Wound day of onset}	{tableColumn: 4}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	{elementKey: woundTypeGroup}	{pN: 42}	{fN: 3}	{gN: 3}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkset}	eCell	{Label: Wound Etiology/Type}	{Comments: other is not yet working in the app}	{elementKey: stageType}	{pN: 42}	{fN: 3}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Wound Etiology/Type}	{tableColumn: 5}	eCell	eCell	eCell	eCell	"{Options: stage1:=Pressure Injury Stage 1
-stage2:=Pressure Injury Stage 2
-stage3:=Pressure Injury Stage 3
-stage4:=Pressure Injury Stage 4
-unstageable:=Pressure Injury Unstageable
-deep:=Pressure Injury Deep Tissue Injury
-surgical:=Surgical Secondary Intent
-tear:=Skin Tear
-abscess:=Abscess
-burn:=Burn
-venous:=Venous Ulcer
-arterial:=Arterial Ulcer
-mixedUlcer:=Mixed Venous/Arterial Ulcer
-diabetic:=Diabetic/Neuropathic Ulcer
-other:=Other}"	eCell	eCell	eCell	eCell	eCell	"{helperText: Pressure Injury Stage 1– Intact skin with localized nonblanchable erythema; darkly pigmented skin may not show visible blanching but will appear different than the colour of surrounding skin.
+{inputType: checkset}	eCell	{Label: Wound Etiology/Type}	{Comments: other is not yet working in the app}	{elementKey: stageType}	{pN: 42}	{fN: 3}	{gN: 3}	{sgN: }	eCell	eCell	{tableLabel: Wound Etiology/Type}	{tableColumn: 5}	eCell	eCell	eCell	eCell	"{Options: Pressure Injury Stage 1
+Pressure Injury Stage 2
+Pressure Injury Stage 3
+Pressure Injury Stage 4
+Pressure Injury Unstageable
+Pressure Injury Deep Tissue Injury
+Surgical Secondary Intent
+Skin Tear
+Abscess
+Burn
+Venous Ulcer
+Arterial Ulcer
+Mixed Venous/Arterial Ulcer
+Diabetic/Neuropathic Ulcer
+Other}"	eCell	eCell	eCell	eCell	eCell	"{helperText: Pressure Injury Stage 1– Intact skin with localized nonblanchable erythema; darkly pigmented skin may not show visible blanching but will appear different than the colour of surrounding skin.
 Pressure Injury Stage 2– Partial thickness wound presenting as a shallow open ulcer with a red / pink wound bed, slough may be present but does not obscure the depth of tissue loss; may also present as an intact or open/ruptured serum-filled or serosanguineous filled blister.
 Pressure Injury Stage 3– Full thickness wound; subcutaneous tissue may be visible but bone, tendon and muscle are not exposed; may include undermining and/or sinus tracks; slough or eschar may be present but does not obscure the depth of tissue loss.
 Pressure Injury Stage 4– Full thickness wound with exposed bone, tendon or muscle; often includes undermining and/or sinus tracks; slough or eschar may be present on some parts of the wound bed but does not obscure the depth of tissue loss.

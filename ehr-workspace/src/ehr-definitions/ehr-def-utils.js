@@ -50,7 +50,7 @@ export function computeDateOfBirth (ageValue, demographicsDoB, now = new Date())
       console.log('cdob invalid demographicsDoB', demographicsDoB)
       dateStr = demographicsDoB
     } else {
-      console.log('dob', JSON.stringify(dob))
+      // console.log('dob', JSON.stringify(dob))
       const isAfter = dob.getMonth() > now.getMonth() || dob.getMonth() === now.getMonth() && dob.getDay() > now.getDay()
       let nyr = now.getFullYear()
       nyr = nyr - ageValue

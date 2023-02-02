@@ -12,8 +12,6 @@
 <script>
 import EhrElementCommon from './EhrElementCommon'
 import EhrCheckset from '@/ehr-definitions/ehr-checkset'
-import StoreHelper from '@/helpers/store-helper'
-import { Text } from '@/helpers/ehr-text'
 
 const debug = false
 
@@ -23,30 +21,29 @@ export default {
   data () {
     return {
       checkValues: [],
-      checkOptions: []
     }
+  },
+  computed : {
+    checkOptions () { return EhrCheckset.optionsToChecklist(this.options) }
   },
   watch: {
     checkValues (val) {
-      const newVal = EhrCheckset.modelChange(val)
+      // val is an array of option props  e.g. [ "retentionSutures", "surgiGlue", "staples", "sutures", "steriStrip" ]
+      const newVal = EhrCheckset.checkSetToDbValue(val)
+      /*
+      newVal is a csv string with the keys (prop) from the checkOptions. For example
+      "pressureInjuryStage3,pressureInjuryStage4,pressureInjuryUnstageable,pressureInjuryDeepTissueInjury"
+       */
       if (debug) console.log('EhrCheckset input val changed', this.elementKey, newVal)
       this.sendInputEvent(newVal)
     }
   },
   methods: {
     setInitialValue (value) {
-      // console.log('checkset override setInitialValue value:',value, this.elementKey)
+      // Take the db stored value (csv string) and convert to array of strings
       this.checkValues = EhrCheckset.dbValueToCheckSet(value)
     },
     setup () {
-      // called from EhrCommon.mount
-      // console.log('setup checkset', this.elementKey, this.element, this.options)
-      const options = this.options
-      if (!options || options.length === 0) {
-        StoreHelper.setApiError(Text.IS_INVALID_CHECKSET(this.elementKey))
-        return
-      }
-      this.checkOptions = EhrCheckset.optionsToChecklist(options)
     }
   }
 }

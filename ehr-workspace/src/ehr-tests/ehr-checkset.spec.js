@@ -9,7 +9,7 @@ describe ( ' ehr checkset', () => {
 })
 
 describe('dbValueToCheckSet tests', function () {
-  it ('modelChange', () => {
+  it ('dbValueToCheckSet', () => {
     const checkOptions = EhrCheckset.dbValueToCheckSet('foo,bar')
     should.exist(checkOptions)
     Array.isArray(checkOptions).should.equal(true)
@@ -17,33 +17,53 @@ describe('dbValueToCheckSet tests', function () {
   })
 })
 
-describe('modelChange tests', function () {
-  it ('modelChange', () => {
-    EhrCheckset.modelChange(['foo','bar']).should.equal('foo,bar')
-    EhrCheckset.modelChange(['foo','','bar']).should.equal('foo,bar')
+describe('checkSetToDbValue tests', function () {
+  it ('checkSetToDbValue', () => {
+    EhrCheckset.checkSetToDbValue(['foo','bar']).should.equal('foo,bar')
+    EhrCheckset.checkSetToDbValue(['foo','','bar']).should.equal('foo,bar')
   })
 })
 
 describe('makeHuman tests', function () {
   it ('makeHuman', () => {
-    const results = EhrCheckset.makeHuman('mixedUlcer', 'integumentaryAssessment', {key: 'stageType'})
-    // console.log('make human', results)
+    const results = EhrCheckset.makeHuman('diabetic/neuropathicUlcer', 'integumentaryAssessment', 'stageType')
   })
+  it ('invalid val', (done) => {
+    should.throws( () => {
+      EhrCheckset.makeHuman('diabetic', 'integumentaryAssessment', 'stageType')
+    }, (err) => {
+      should.exist(err)
+      should.exist(err.message)
+      console.log(err.message)
+      err.message.includes('Could not match').should.equal(true)
+      done()
+    })
+  })
+  it ('empty string val', (done) => {
+    should.doesNotThrow( () => {
+      EhrCheckset.makeHuman('', 'integumentaryAssessment', 'stageType').should.equal('')
+      done()
+    }, (err) => {
+      should.not.exist(err)
+      done()
+    })
+  })
+
 })
 
 describe('optionsToChecklist tests', function () {
   it ('optionsToChecklist', () => {
     const options = [
       {
-        key: 'R&M',
+        key: 'r&m',
         text: 'R&M'
       },
       {
-        key: 'Urine electrolytes',
+        key: 'urineElectrolytes',
         text: 'Urine electrolytes'
       },
       {
-        key: 'Urine creatinine',
+        key: 'urineCreatinine',
         text: 'Urine creatinine'
       }
     ]
@@ -55,7 +75,11 @@ describe('optionsToChecklist tests', function () {
     const checkOptions = EhrCheckset.optionsToChecklist(options)
     should.exist(checkOptions)
     Array.isArray(checkOptions).should.equal(true)
+    checkOptions.length.should.equal(3)
     checkOptions[0].should.have.property('prop')
     checkOptions[0].prop.should.equal(expected[0].prop)
+    checkOptions[1].prop.should.equal(expected[1].prop)
+    checkOptions[2].prop.should.equal(expected[2].prop)
+
   })
 })

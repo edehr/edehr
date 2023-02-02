@@ -1,3 +1,4 @@
+/* eslint-disable */
 const DEFS = {
   'demographics': {
     'pageDataKey': 'demographics',
@@ -2501,31 +2502,31 @@ const DEFS = {
         'label': 'Status',
         'options': [
           {
-            'key': 'Alert',
+            'key': 'alert',
             'text': 'Alert'
           },
           {
-            'key': 'Oriented',
+            'key': 'oriented',
             'text': 'Oriented'
           },
           {
-            'key': 'Confused',
+            'key': 'confused',
             'text': 'Confused'
           },
           {
-            'key': 'Drowsy',
+            'key': 'drowsy',
             'text': 'Drowsy'
           },
           {
-            'key': 'Unresponsive',
+            'key': 'unresponsive',
             'text': 'Unresponsive'
           },
           {
-            'key': 'Dizziness',
+            'key': 'dizziness',
             'text': 'Dizziness'
           },
           {
-            'key': 'Blurred vision',
+            'key': 'blurredVision',
             'text': 'Blurred vision'
           }
         ],
@@ -3723,19 +3724,19 @@ const DEFS = {
         'label': 'Airway',
         'options': [
           {
-            'key': 'Patent',
+            'key': 'patent',
             'text': 'Patent'
           },
           {
-            'key': 'Obstructed',
+            'key': 'obstructed',
             'text': 'Obstructed'
           },
           {
-            'key': 'Oral endotracheal tube',
+            'key': 'oralEndotrachealTube',
             'text': 'Oral endotracheal tube'
           },
           {
-            'key': 'Other',
+            'key': 'other',
             'text': 'Other'
           }
         ],
@@ -5187,23 +5188,23 @@ const DEFS = {
         'label': 'Bowel',
         'options': [
           {
-            'key': 'Normal',
+            'key': 'normal',
             'text': 'Normal'
           },
           {
-            'key': 'Constipation',
+            'key': 'constipation',
             'text': 'Constipation'
           },
           {
-            'key': 'Diarrhea',
+            'key': 'diarrhea',
             'text': 'Diarrhea'
           },
           {
-            'key': 'Melena',
+            'key': 'melena',
             'text': 'Melena'
           },
           {
-            'key': 'Incontinent',
+            'key': 'incontinent',
             'text': 'Incontinent'
           }
         ],
@@ -5218,31 +5219,31 @@ const DEFS = {
         'label': 'Bowel sounds',
         'options': [
           {
-            'key': 'None',
+            'key': 'none',
             'text': 'None'
           },
           {
-            'key': 'LUQ',
+            'key': 'luq',
             'text': 'LUQ'
           },
           {
-            'key': 'RUQ',
+            'key': 'ruq',
             'text': 'RUQ'
           },
           {
-            'key': 'LLQ',
+            'key': 'llq',
             'text': 'LLQ'
           },
           {
-            'key': 'RLQ',
+            'key': 'rlq',
             'text': 'RLQ'
           },
           {
-            'key': 'Hypoactive',
+            'key': 'hypoactive',
             'text': 'Hypoactive'
           },
           {
-            'key': 'Hyperactive',
+            'key': 'hyperactive',
             'text': 'Hyperactive'
           }
         ],
@@ -5257,28 +5258,28 @@ const DEFS = {
         'label': 'Abdomen',
         'options': [
           {
-            'key': 'soft=Soft',
-            'text': 'soft=Soft'
+            'key': 'soft',
+            'text': 'Soft'
           },
           {
-            'key': 'tender=Tender',
-            'text': 'tender=Tender'
+            'key': 'tender',
+            'text': 'Tender'
           },
           {
-            'key': 'rigid=Rigid',
-            'text': 'rigid=Rigid'
+            'key': 'rigid',
+            'text': 'Rigid'
           },
           {
-            'key': 'guarding=Guarding',
-            'text': 'guarding=Guarding'
+            'key': 'guarding',
+            'text': 'Guarding'
           },
           {
-            'key': 'distended=Distended',
-            'text': 'distended=Distended'
+            'key': 'distended',
+            'text': 'Distended'
           },
           {
-            'key': 'scars=Scars',
-            'text': 'scars=Scars'
+            'key': 'scars',
+            'text': 'Scars'
           }
         ],
         'tableColumn': '4',
@@ -5917,35 +5918,35 @@ const DEFS = {
         'label': 'Urinary symptoms',
         'options': [
           {
-            'key': 'None',
+            'key': 'none',
             'text': 'None'
           },
           {
-            'key': 'Increased frequency',
+            'key': 'increasedFrequency',
             'text': 'Increased frequency'
           },
           {
-            'key': 'Dysuria',
+            'key': 'dysuria',
             'text': 'Dysuria'
           },
           {
-            'key': 'Hermaturia',
+            'key': 'hermaturia',
             'text': 'Hermaturia'
           },
           {
-            'key': 'Oliguria',
+            'key': 'oliguria',
             'text': 'Oliguria'
           },
           {
-            'key': 'Incontinence',
+            'key': 'incontinence',
             'text': 'Incontinence'
           },
           {
-            'key': 'Retention',
+            'key': 'retention',
             'text': 'Retention'
           },
           {
-            'key': 'Distention',
+            'key': 'distention',
             'text': 'Distention'
           }
         ],
@@ -6057,35 +6058,35 @@ const DEFS = {
         'label': 'Toiletting method',
         'options': [
           {
-            'key': 'Bedpan',
+            'key': 'bedpan',
             'text': 'Bedpan'
           },
           {
-            'key': 'Comode',
+            'key': 'comode',
             'text': 'Comode'
           },
           {
-            'key': 'Urinal',
+            'key': 'urinal',
             'text': 'Urinal'
           },
           {
-            'key': 'Help to the toilet',
+            'key': 'helpToTheToilet',
             'text': 'Help to the toilet'
           },
           {
-            'key': 'Brief',
+            'key': 'brief',
             'text': 'Brief'
           },
           {
-            'key': 'Mesh pant/pad',
+            'key': 'meshPant/pad',
             'text': 'Mesh pant/pad'
           },
           {
-            'key': 'Clean intermittent catheter',
+            'key': 'cleanIntermittentCatheter',
             'text': 'Clean intermittent catheter'
           },
           {
-            'key': 'Indwelling catheter',
+            'key': 'indwellingCatheter',
             'text': 'Indwelling catheter'
           }
         ],
@@ -6218,11 +6219,11 @@ const DEFS = {
         'label': 'Discharge',
         'options': [
           {
-            'key': 'Discharge',
+            'key': 'discharge',
             'text': 'Discharge'
           },
           {
-            'key': 'Bleeding',
+            'key': 'bleeding',
             'text': 'Bleeding'
           }
         ],
@@ -7666,31 +7667,31 @@ const DEFS = {
         'label': 'Behaviour',
         'options': [
           {
-            'key': 'Calm',
+            'key': 'calm',
             'text': 'Calm'
           },
           {
-            'key': 'Cooperative',
+            'key': 'cooperative',
             'text': 'Cooperative'
           },
           {
-            'key': 'Agitated',
+            'key': 'agitated',
             'text': 'Agitated'
           },
           {
-            'key': 'Flat affect',
+            'key': 'flatAffect',
             'text': 'Flat affect'
           },
           {
-            'key': 'Threatening',
+            'key': 'threatening',
             'text': 'Threatening'
           },
           {
-            'key': 'Physically agressive',
+            'key': 'physicallyAgressive',
             'text': 'Physically agressive'
           },
           {
-            'key': 'Uncommunicative',
+            'key': 'uncommunicative',
             'text': 'Uncommunicative'
           }
         ],
@@ -7706,19 +7707,19 @@ const DEFS = {
         'label': 'Hallucinations',
         'options': [
           {
-            'key': 'None',
+            'key': 'none',
             'text': 'None'
           },
           {
-            'key': 'Visual',
+            'key': 'visual',
             'text': 'Visual'
           },
           {
-            'key': 'Auditory',
+            'key': 'auditory',
             'text': 'Auditory'
           },
           {
-            'key': 'Olafactory',
+            'key': 'olafactory',
             'text': 'Olafactory'
           }
         ],
@@ -8696,15 +8697,15 @@ const DEFS = {
         'label': 'Hematology',
         'options': [
           {
-            'key': 'CBC',
+            'key': 'cbc',
             'text': 'CBC'
           },
           {
-            'key': 'CBC with differential',
+            'key': 'cbcWithDifferential',
             'text': 'CBC with differential'
           },
           {
-            'key': 'Hemoglobin A1-C',
+            'key': 'hemoglobinA1C',
             'text': 'Hemoglobin A1-C'
           }
         ],
@@ -8718,27 +8719,27 @@ const DEFS = {
         'label': 'Electrolytes',
         'options': [
           {
-            'key': 'K',
+            'key': 'k',
             'text': 'K'
           },
           {
-            'key': 'Na',
+            'key': 'na',
             'text': 'Na'
           },
           {
-            'key': 'Chloride',
+            'key': 'chloride',
             'text': 'Chloride'
           },
           {
-            'key': 'Bicarbonate',
+            'key': 'bicarbonate',
             'text': 'Bicarbonate'
           },
           {
-            'key': 'Calcium',
+            'key': 'calcium',
             'text': 'Calcium'
           },
           {
-            'key': 'Ionized Calcium',
+            'key': 'ionizedCalcium',
             'text': 'Ionized Calcium'
           }
         ],
@@ -8752,15 +8753,15 @@ const DEFS = {
         'label': 'Blood Gas',
         'options': [
           {
-            'key': 'Arterial blood gas',
+            'key': 'arterialBloodGas',
             'text': 'Arterial blood gas'
           },
           {
-            'key': 'Venous blood gas',
+            'key': 'venousBloodGas',
             'text': 'Venous blood gas'
           },
           {
-            'key': 'Fetal cord blood gas',
+            'key': 'fetalCordBloodGas',
             'text': 'Fetal cord blood gas'
           }
         ],
@@ -8774,11 +8775,11 @@ const DEFS = {
         'label': 'Renal Profile',
         'options': [
           {
-            'key': 'BUN',
+            'key': 'bun',
             'text': 'BUN'
           },
           {
-            'key': 'Creatinine',
+            'key': 'creatinine',
             'text': 'Creatinine'
           }
         ],
@@ -8792,23 +8793,23 @@ const DEFS = {
         'label': 'Liver Function',
         'options': [
           {
-            'key': 'AST',
+            'key': 'ast',
             'text': 'AST'
           },
           {
-            'key': 'GGT',
+            'key': 'ggt',
             'text': 'GGT'
           },
           {
-            'key': 'ALT',
+            'key': 'alt',
             'text': 'ALT'
           },
           {
-            'key': 'Total Birilubin',
+            'key': 'totalBirilubin',
             'text': 'Total Birilubin'
           },
           {
-            'key': 'Direct Birilubin',
+            'key': 'directBirilubin',
             'text': 'Direct Birilubin'
           }
         ],
@@ -8822,15 +8823,15 @@ const DEFS = {
         'label': 'Urine Analysis',
         'options': [
           {
-            'key': 'R&M',
+            'key': 'r&m',
             'text': 'R&M'
           },
           {
-            'key': 'Urine electrolytes',
+            'key': 'urineElectrolytes',
             'text': 'Urine electrolytes'
           },
           {
-            'key': 'Urine creatinine',
+            'key': 'urineCreatinine',
             'text': 'Urine creatinine'
           }
         ],
@@ -10114,15 +10115,15 @@ const DEFS = {
         'label': 'Payment type',
         'options': [
           {
-            'key': 'MSP',
+            'key': 'msp',
             'text': 'MSP'
           },
           {
-            'key': 'Third party',
+            'key': 'thirdParty',
             'text': 'Third party'
           },
           {
-            'key': 'Federal',
+            'key': 'federal',
             'text': 'Federal'
           }
         ],
@@ -12031,26 +12032,26 @@ const DEFS = {
       },
       {
         'elementKey': 'pcheckset',
-        'defaultValue': 'check1,all',
+        'defaultValue': 'check_option_1,all',
         'formIndex': '1',
         'inputType': 'checkset',
         'label': 'checkset',
         'options': [
           {
-            'key': 'check1=check option 1',
-            'text': 'check1=check option 1'
+            'key': 'checkOption1',
+            'text': 'check option 1'
           },
           {
-            'key': 'check2=check option 2',
-            'text': 'check2=check option 2'
+            'key': 'checkOption2',
+            'text': 'check option 2'
           },
           {
-            'key': 'other=another option',
-            'text': 'other=another option'
+            'key': 'anotherOption',
+            'text': 'another option'
           },
           {
-            'key': 'all=all options are selectable',
-            'text': 'all=all options are selectable'
+            'key': 'allOptionsAreSelectable',
+            'text': 'all options are selectable'
           }
         ],
         'fqn': 'testPage.pcheckset'
@@ -12513,19 +12514,19 @@ const DEFS = {
         'label': 'checkset',
         'options': [
           {
-            'key': 'check1=check option 1',
+            'key': 'check1=checkOption1',
             'text': 'check1=check option 1'
           },
           {
-            'key': 'check2=check option 2',
+            'key': 'check2=checkOption2',
             'text': 'check2=check option 2'
           },
           {
-            'key': 'other=another option',
+            'key': 'other=anotherOption',
             'text': 'other=another option'
           },
           {
-            'key': 'all=all options are selectable',
+            'key': 'all=allOptionsAreSelectable',
             'text': 'all=all options are selectable'
           }
         ],
@@ -13527,27 +13528,27 @@ const DEFS = {
         'label': 'Closure Method',
         'options': [
           {
-            'key': 'Sutures',
+            'key': 'sutures',
             'text': 'Sutures'
           },
           {
-            'key': 'Staples',
+            'key': 'staples',
             'text': 'Staples'
           },
           {
-            'key': 'Retention Sutures',
+            'key': 'retentionSutures',
             'text': 'Retention Sutures'
           },
           {
-            'key': 'SurgiGlue',
+            'key': 'surgiGlue',
             'text': 'SurgiGlue'
           },
           {
-            'key': 'Steri-Strip',
+            'key': 'steriStrip',
             'text': 'Steri-Strip'
           },
           {
-            'key': 'Not Applicable',
+            'key': 'notApplicable',
             'text': 'Not Applicable'
           }
         ],
@@ -13690,19 +13691,19 @@ const DEFS = {
         'label': 'Exudate Amount',
         'options': [
           {
-            'key': 'None',
+            'key': 'none',
             'text': 'None'
           },
           {
-            'key': 'Small',
+            'key': 'small',
             'text': 'Small'
           },
           {
-            'key': 'Moderate',
+            'key': 'moderate',
             'text': 'Moderate'
           },
           {
-            'key': 'Large',
+            'key': 'large',
             'text': 'Large'
           }
         ],
@@ -13716,23 +13717,23 @@ const DEFS = {
         'label': 'Exudate Type',
         'options': [
           {
-            'key': 'Serous',
+            'key': 'serous',
             'text': 'Serous'
           },
           {
-            'key': 'Sanguineous',
+            'key': 'sanguineous',
             'text': 'Sanguineous'
           },
           {
-            'key': 'Purulent',
+            'key': 'purulent',
             'text': 'Purulent'
           },
           {
-            'key': 'Other',
+            'key': 'other',
             'text': 'Other'
           },
           {
-            'key': 'Not Applicable',
+            'key': 'notApplicable',
             'text': 'Not Applicable'
           }
         ],
@@ -13746,31 +13747,31 @@ const DEFS = {
         'label': 'Peri-Incisional Skin',
         'options': [
           {
-            'key': 'Intact',
+            'key': 'intact',
             'text': 'Intact'
           },
           {
-            'key': 'Macerated',
+            'key': 'macerated',
             'text': 'Macerated'
           },
           {
-            'key': 'Blisters Erythema less than 2cm',
+            'key': 'blistersErythemaLessThan2Cm',
             'text': 'Blisters Erythema less than 2cm'
           },
           {
-            'key': 'Erythema greater than 2cm',
+            'key': 'erythemaGreaterThan2Cm',
             'text': 'Erythema greater than 2cm'
           },
           {
-            'key': 'Induration less than 2cm',
+            'key': 'indurationLessThan2Cm',
             'text': 'Induration less than 2cm'
           },
           {
-            'key': 'Induration greater than 2cm',
+            'key': 'indurationGreaterThan2Cm',
             'text': 'Induration greater than 2cm'
           },
           {
-            'key': 'Other',
+            'key': 'other',
             'text': 'Other'
           }
         ],
@@ -13960,35 +13961,35 @@ const DEFS = {
         'label': 'Wound Etiology/Type',
         'options': [
           {
-            'key': 'stage1',
+            'key': 'pressureInjuryStage1',
             'text': 'Pressure Injury Stage 1'
           },
           {
-            'key': 'stage2',
+            'key': 'pressureInjuryStage2',
             'text': 'Pressure Injury Stage 2'
           },
           {
-            'key': 'stage3',
+            'key': 'pressureInjuryStage3',
             'text': 'Pressure Injury Stage 3'
           },
           {
-            'key': 'stage4',
+            'key': 'pressureInjuryStage4',
             'text': 'Pressure Injury Stage 4'
           },
           {
-            'key': 'unstageable',
+            'key': 'pressureInjuryUnstageable',
             'text': 'Pressure Injury Unstageable'
           },
           {
-            'key': 'deep',
+            'key': 'pressureInjuryDeepTissueInjury',
             'text': 'Pressure Injury Deep Tissue Injury'
           },
           {
-            'key': 'surgical',
+            'key': 'surgicalSecondaryIntent',
             'text': 'Surgical Secondary Intent'
           },
           {
-            'key': 'tear',
+            'key': 'skinTear',
             'text': 'Skin Tear'
           },
           {
@@ -14000,19 +14001,19 @@ const DEFS = {
             'text': 'Burn'
           },
           {
-            'key': 'venous',
+            'key': 'venousUlcer',
             'text': 'Venous Ulcer'
           },
           {
-            'key': 'arterial',
+            'key': 'arterialUlcer',
             'text': 'Arterial Ulcer'
           },
           {
-            'key': 'mixedUlcer',
+            'key': 'mixedVenous/arterialUlcer',
             'text': 'Mixed Venous/Arterial Ulcer'
           },
           {
-            'key': 'diabetic',
+            'key': 'diabetic/neuropathicUlcer',
             'text': 'Diabetic/Neuropathic Ulcer'
           },
           {
@@ -15168,19 +15169,19 @@ const DEFS = {
         'label': 'Exudate type',
         'options': [
           {
-            'key': 'Serous',
+            'key': 'serous',
             'text': 'Serous'
           },
           {
-            'key': 'Sanguineous',
+            'key': 'sanguineous',
             'text': 'Sanguineous'
           },
           {
-            'key': 'Purulent',
+            'key': 'purulent',
             'text': 'Purulent'
           },
           {
-            'key': 'Other',
+            'key': 'other',
             'text': 'Other'
           }
         ],
@@ -15215,27 +15216,27 @@ const DEFS = {
         'label': 'Wound edge',
         'options': [
           {
-            'key': 'Diffuse',
+            'key': 'diffuse',
             'text': 'Diffuse'
           },
           {
-            'key': 'Demarcated',
+            'key': 'demarcated',
             'text': 'Demarcated'
           },
           {
-            'key': 'Attached',
+            'key': 'attached',
             'text': 'Attached'
           },
           {
-            'key': 'Not attached',
+            'key': 'notAttached',
             'text': 'Not attached'
           },
           {
-            'key': 'Epithelialization',
+            'key': 'epithelialization',
             'text': 'Epithelialization'
           },
           {
-            'key': 'Rolled',
+            'key': 'rolled',
             'text': 'Rolled'
           },
           {
@@ -15256,43 +15257,43 @@ const DEFS = {
         'label': 'Peri-wound skin',
         'options': [
           {
-            'key': 'Intact',
+            'key': 'intact',
             'text': 'Intact'
           },
           {
-            'key': 'Fragile',
+            'key': 'fragile',
             'text': 'Fragile'
           },
           {
-            'key': 'Macerated',
+            'key': 'macerated',
             'text': 'Macerated'
           },
           {
-            'key': 'Excoriated/Denuded',
+            'key': 'excoriated/denuded',
             'text': 'Excoriated/Denuded'
           },
           {
-            'key': 'Erythema (2cm or less)',
+            'key': 'erythema (2CmOrLess)',
             'text': 'Erythema (2cm or less)'
           },
           {
-            'key': 'Indurated (2cm or less)',
+            'key': 'indurated (2CmOrLess)',
             'text': 'Indurated (2cm or less)'
           },
           {
-            'key': 'Indurated (greater than 2cm)',
+            'key': 'indurated (greaterThan2Cm)',
             'text': 'Indurated (greater than 2cm)'
           },
           {
-            'key': 'Erythema (greater than 2cm)',
+            'key': 'erythema (greaterThan2Cm)',
             'text': 'Erythema (greater than 2cm)'
           },
           {
-            'key': 'Increased Warmth',
+            'key': 'increasedWarmth',
             'text': 'Increased Warmth'
           },
           {
-            'key': 'Other',
+            'key': 'other',
             'text': 'Other'
           },
           {
@@ -17101,27 +17102,27 @@ const DEFS = {
         'label': 'Type',
         'options': [
           {
-            'key': 'Hypogranular',
+            'key': 'hypogranular',
             'text': 'Hypogranular'
           },
           {
-            'key': 'Large or Giant Forms',
+            'key': 'largeOrGiantForms',
             'text': 'Large or Giant Forms'
           },
           {
-            'key': 'Megakaryocytic Fragments',
+            'key': 'megakaryocyticFragments',
             'text': 'Megakaryocytic Fragments'
           },
           {
-            'key': 'Platelet Clumps',
+            'key': 'plateletClumps',
             'text': 'Platelet Clumps'
           },
           {
-            'key': 'Platelet Satellitism',
+            'key': 'plateletSatellitism',
             'text': 'Platelet Satellitism'
           },
           {
-            'key': 'Dysplastic',
+            'key': 'dysplastic',
             'text': 'Dysplastic'
           }
         ],
@@ -17437,43 +17438,43 @@ const DEFS = {
         'label': 'Type',
         'options': [
           {
-            'key': 'Abnormal Lymphocytes',
+            'key': 'abnormalLymphocytes',
             'text': 'Abnormal Lymphocytes'
           },
           {
-            'key': 'Auer Rods',
+            'key': 'auerRods',
             'text': 'Auer Rods'
           },
           {
-            'key': 'Dysplastic Cells',
+            'key': 'dysplasticCells',
             'text': 'Dysplastic Cells'
           },
           {
-            'key': 'Hairy Cells',
+            'key': 'hairyCells',
             'text': 'Hairy Cells'
           },
           {
-            'key': 'Hypersegmented Neutrophils',
+            'key': 'hypersegmentedNeutrophils',
             'text': 'Hypersegmented Neutrophils'
           },
           {
-            'key': 'Immature Cells',
+            'key': 'immatureCells',
             'text': 'Immature Cells'
           },
           {
-            'key': 'Increased Reactive Lymphocytes',
+            'key': 'increasedReactiveLymphocytes',
             'text': 'Increased Reactive Lymphocytes'
           },
           {
-            'key': 'Necrobiotic Cells',
+            'key': 'necrobioticCells',
             'text': 'Necrobiotic Cells'
           },
           {
-            'key': 'Pelger-Huët Cells',
+            'key': 'pelgerHuëtCells',
             'text': 'Pelger-Huët Cells'
           },
           {
-            'key': 'Smudge Cells',
+            'key': 'smudgeCells',
             'text': 'Smudge Cells'
           }
         ],
@@ -17502,15 +17503,15 @@ const DEFS = {
         'label': 'Type',
         'options': [
           {
-            'key': 'Döhle Bodies',
+            'key': 'döhleBodies',
             'text': 'Döhle Bodies'
           },
           {
-            'key': 'Toxic Granulation',
+            'key': 'toxicGranulation',
             'text': 'Toxic Granulation'
           },
           {
-            'key': 'Toxic Vacuolation',
+            'key': 'toxicVacuolation',
             'text': 'Toxic Vacuolation'
           }
         ],
@@ -18040,15 +18041,15 @@ const DEFS = {
         'label': 'Type',
         'options': [
           {
-            'key': 'Gametocyte',
+            'key': 'gametocyte',
             'text': 'Gametocyte'
           },
           {
-            'key': 'Ring Form/Trophozoite',
+            'key': 'ringForm/trophozoite',
             'text': 'Ring Form/Trophozoite'
           },
           {
-            'key': 'Schizont',
+            'key': 'schizont',
             'text': 'Schizont'
           }
         ],

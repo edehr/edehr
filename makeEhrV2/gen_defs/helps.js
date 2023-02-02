@@ -1,4 +1,5 @@
 'use strict'
+import EhrTypes from '../source/ehr-types'
 const assert = require('assert').strict
 const camelCase = require('camelcase')
 
@@ -61,18 +62,39 @@ class RawHelper {
   _prepareDropDownOptions(src,dest) {
     // 1. Split options for drop down inputs ...
     if (src.options) {
-      let parts = src.options.split(nlSep)
-      dest.options = parts.map(p => {
-        let key = p
-        let text = p
-        // 2. Split on '=', if present use the sub-parts otherwise key and text are the same
-        let kv = p.split(':=')
-        if(kv.length === 2) {
-          key = kv[0].trim()
-          text= kv[1].trim()
-        }
-        return { key: key, text: text }
-      })
+      if (EhrTypes.inputTypes.checkset === src.inputType) {
+        let parts = src.options.split(nlSep)
+        dest.options = parts.map(p => {
+          // github issue #1068 make the key match db values
+          let key = camelCase(p)
+          let text = p
+          // 2. Split on '=', if present use the sub-parts otherwise key and text are the same
+          let kv = p.split(':=')
+          if (kv.length === 2) {
+            //after github issue #1068 was fixed we should not see checkset options with :=
+            console.error('ERROR CHECKSET WITH :=', dest.fqn)
+          }
+          kv = text.split('=')
+          if (kv.length === 2) {
+            console.log('CHECKSET WITH =', dest.fqn)
+          }
+          return { key: key, text: text }
+        })
+
+      } else {
+        let parts = src.options.split(nlSep)
+        dest.options = parts.map(p => {
+          let key = p
+          let text = p
+          // 2. Split on '=', if present use the sub-parts otherwise key and text are the same
+          let kv = p.split(':=')
+          if (kv.length === 2) {
+            key = kv[0].trim()
+            text = kv[1].trim()
+          }
+          return { key: key, text: text }
+        })
+      }
     }
   }
 
