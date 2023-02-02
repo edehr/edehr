@@ -58,7 +58,7 @@
     "ims-lti": "git+https://github.com/bryan-gilbert/ims-lti.git",
     "jsonwebtoken": "^9.0.0",
     "moment": "^2.29.4",
-    "mongoose": "^5.13.14",
+    "mongoose": "^5.13.15",
     "mongoose-unique-validator": "^2.0.3",
     "multer": "^1.4.4",
     "nanoid": "^3.1.31",
