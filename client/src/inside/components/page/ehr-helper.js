@@ -291,6 +291,8 @@ export default class EhrPageHelper {
     }
     let dataToSave = this._prepareTableSaveData(pageKey, asLoadedPageData)
     await this._saveData(pageKey, dataToSave)
+    // tell everyone to reset based on current (no empty) data
+    EventBus.$emit(PAGE_DATA_REFRESH_EVENT)
     return undefined
   }
   async saveDialogData () {
@@ -419,7 +421,7 @@ export default class EhrPageHelper {
     try {
       let data = this.getActiveData()
       data[elementKey] = value
-      if (dbPageForm) console.log('EhrHelpV2 FORM_INPUT_EVENT stash ', elementKey, value)
+      if (dbPageForm) console.log('EhrHelpV2 FORM_INPUT_EVENT stash ', elementKey, value, JSON.stringify(data))
     } catch (err) {
       StoreHelper.setApiError(err)
     }

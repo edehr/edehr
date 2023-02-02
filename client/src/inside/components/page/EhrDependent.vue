@@ -93,6 +93,8 @@ export default {
           key = kv[0] // e.g. administration
           refValue = kv[1] // e.g. sched,prn
           type = PROPS.type.select
+        } else if (PROPS.action.age === action) {
+          type = PROPS.type.age
         } else {
           type = PROPS.type.check
         }

@@ -45,6 +45,9 @@ Vue.component('inside-layout', insideLayout)
 Vue.config.errorHandler = function (err, vm, info)  {
   const msg = '[Global Error Handler]: Error in (' + info + '): (' + err.message + ')'
   console.error(msg)
+  if (window.location.origin.includes('localhost')) {
+    console.error(err)
+  }
   // Sentry.captureMessage(msg,data)
 }
 

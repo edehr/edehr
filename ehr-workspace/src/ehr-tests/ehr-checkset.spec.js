@@ -13,7 +13,7 @@ describe('dbValueToCheckSet tests', function () {
     const checkOptions = EhrCheckset.dbValueToCheckSet('foo,bar')
     should.exist(checkOptions)
     Array.isArray(checkOptions).should.equal(true)
-    console.log(checkOptions)
+    // console.log(checkOptions)
   })
 })
 
@@ -27,7 +27,7 @@ describe('modelChange tests', function () {
 describe('makeHuman tests', function () {
   it ('makeHuman', () => {
     const results = EhrCheckset.makeHuman('mixedUlcer', 'integumentaryAssessment', {key: 'stageType'})
-    console.log('make human', results)
+    // console.log('make human', results)
   })
 })
 
