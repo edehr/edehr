@@ -1,4 +1,4 @@
-FROM node:14
+FROM node:18
 # Node 14 is currently 14.18.3
 # the node:14 image installs npm 6.14.15.
 
