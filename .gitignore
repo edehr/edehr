@@ -23,6 +23,7 @@ client/tests/e2e/reports/
 database/backup/dump/**
 database/dbdata/**
 database/data/**
+database/docker-dev/**
 docs/.vuepress/dist/**
 ehr/dev/**
 ehr/dist/**
