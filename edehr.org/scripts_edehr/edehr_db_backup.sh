@@ -1,17 +1,21 @@
 #!/usr/bin/env bash
 set -e
-# dbName = edehr-prod
 
 : "${fName:=$1}"
 if [[ -z "${fName}" ]]; then
-    echo Usage $0 fName dbName
+    echo Usage $0 fName
+    echo Must provide a name for the new backup file.
     exit
 fi
 
-# Read in env file to get db password
-. /opt/edehr/project/deployment/.env
+# Read the site specific env file to get db password and db location
+. /opt/edehr/project/deployment/.env.site
 if [[ -z "$MONGODB_PWORD" ]]; then
-    echo Must provide the /opt/edehr/project/deployment/.env file with MONGODB_PWORD
+    echo Must provide the /opt/edehr/project/deployment/.env.site file with MONGODB_PWORD
+    exit
+fi
+if [[ -z "$VOLUME_STORAGE" ]]; then
+    echo Must provide the /opt/edehr/project/deployment/.env.site file with VOLUME_STORAGE
     exit
 fi
 
@@ -25,10 +29,11 @@ if [[ -z "$ddb" ]]; then
     exit
 fi
 
+# Location withing the docker container
 dArchive="/data/backups/${fName}"
-sArchive="/opt/edehr/project/database/backups/${fName}"
-#arc="/data/backups/edehr-prod-db-$(date +"%Y%m%dT%H%M").gz"
+# Location in the file system.
+sArchive="${VOLUME_STORAGE}/database/backups/${fName}"
 
 docker exec $ddb mongodump --db $dbName --authenticationDatabase admin -u root --archive=$dArchive --gzip --password=$MONGODB_PWORD
-echo "back up file ${sArchive}"
+echo "The new back up file is ${sArchive}"
 ls -al $sArchive
