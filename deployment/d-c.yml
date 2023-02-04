@@ -74,5 +74,6 @@ services:
       - "${MONGODB_PORT}:${MONGODB_PORT}"
     command: mongod --port ${MONGODB_PORT}
     volumes:
-      - "${MONGODB_DATA}:/data/db"
-      - "../database/backups:/data/backups"
+      - "../database/scripts:/data/scripts"
+      - "${VOLUME_STORAGE}/data:/data/db"
+      - "${VOLUME_STORAGE}/backups:/data/backups"

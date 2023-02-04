@@ -91,22 +91,25 @@ npm run dev:stop
 To run a "production" instance you check out the code as above and have the prerequisite tools installed.
 You have run the 'npm run install' set up script.
 
-Step 0. Set up the secrets
+Step 0. Set up the site specific environment
 ```
+cd /your/development/area
 cd deployment
-cp sample.secrets .env.secrets
-vi .env.secrets
+cp sample.env.site .env.site
+vi .env.site
 ```
 
 
-Step 1. Build the client vue project.
+Step 1. Build and publish the client vue project.
 ```
-# in project root
-npm run build
+cd /your/development/area
+cd client
+npm run both
 ```
 
-Step 2. Start the components, each in their own docker container.
+Step 2. Start the docker system
 ```
+cd /your/development/area
 cd deployment
 # to build the containers and start attached to see debug logs
 npm run prod:build
@@ -141,43 +144,35 @@ Copy the data from the furthest right-hand columns into the raw data file in the
 Run the following command:
 ```
 cd makeEhrV2
-./deploy.sh --lint
+./deploy.sh
 ```
-Pro-tip: The ```--lint``` option can be replaced with ```-l```. 
-
-You must use this lint option before submitting files. If you are 
-making changes to view locally in multiple steps, you can shorten the time it takes to run the command by leaving ```lint``` out of the command. 
-
-Please remember to run the script with lint when you are done and ready to submit your code.
+If you are making changes to view locally in multiple steps, you can shorten the time it takes to run the command  ```./deply.sh --noLint``` . 
 
 ## Backing Up and Restoring the Database
 
-The MongoDB database is running in a Docker container and you need to be inside this container to run the 
-database backup tools.  We have a npm script to make this step easy.
+The MongoDB database is running in a Docker container, and you need to be inside this container to run the database backup tools.  We have a npm script to make this step easy.
 ```
 npm run shell:mongo
 ```
-Restore and backup scripts are located in the /data directory. Data files are
-placed in a docker volume, so after you create a backup you can exit the docker container and
-find the backup on your machine in `database/backup/dump`).
+Restore and backup scripts are located in the /data/scripts directory, inside the docker container and in the  `$../database/scripts` outside the container.
+
 Inside the Mongo Shell, run:
  ```
- cd data/
+ cd data/scripts
  ```
-
-```bash
-
-tar -czvf edehr.org-2022-02-24.tar.gz /data/dump
-```
-
-To run the backup script is in `./backup.sh` and
-all the dump data will be placed in `data/dump/` (`database/backup/dump` outside of the container) 
+Run the backup script `./backup.sh` and all the dump data will be placed in `data/dump/`  
 
 A restore script, `./restore.sh`  restores based on the contents in the `dump/`. 
 
 ``Note``: It might be needed to change the permissions of the script files to be able to execute them.
 ```
 chmod +x *.sh 
+```
+
+You may wish to tar zip the results
+```bash
+
+tar -czvf edehr.org-2022-02-24.tar.gz /data/dump
 ```
 
 
@@ -216,8 +211,7 @@ npm run prod:run
 
 # Security notes
 
-This section of the readme is incomplete. This project needs more notes here about all the steps taken that provide
-this robust and secure application.
+See https://edehr.org/edehrDetails
 
 ## User authentication comes from the LMS
 The EdEHR does not have any means (intentional) to register new users. All users gain access to the application via their
