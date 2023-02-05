@@ -32,7 +32,7 @@ fi
 # Location withing the docker container
 dArchive="/data/backups/${fName}"
 # Location in the file system.
-sArchive="${VOLUME_STORAGE}/database/backups/${fName}"
+sArchive="${VOLUME_STORAGE}/backups/${fName}"
 
 docker exec $ddb mongodump --db $dbName --authenticationDatabase admin -u root --archive=$dArchive --gzip --password=$MONGODB_PWORD
 echo "The new back up file is ${sArchive}"
