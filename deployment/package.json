@@ -1,8 +1,10 @@
 {
   "scripts": {
-    "version": "node version-prep.js >> .env",
-    "env.dev": "cat dev.env .env.site > .env && npm run version",
-    "env.prod": "cat prod.env .env.site > .env && npm run version",
+    "env.check": "node env-check.js",
+    "env.common": "npm run env.version && npm run env.check",
+    "env.dev": "cat dev.env .env.site > .env && npm run env.common",
+    "env.prod": "cat prod.env .env.site > .env && npm run env.common",
+    "env.version": "node version-prep.js >> .env",
     "wip:dev:build": "npm run env.dev && docker-compose -f d-c.yml up --build",
     "wip:dev:run": "npm run env.dev  && docker-compose -f d-c.yml up -d",
     "wip:dev:stop": "docker-compose -f d-c.yml down",
