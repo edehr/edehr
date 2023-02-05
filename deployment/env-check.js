@@ -5,19 +5,19 @@ const envContents = fs.readFileSync(eFile, 'utf-8')
 const envLines = envContents.split('\n').sort()
 
 const toCheck = [
-  'API_PORT',
-  'API_TOKEN',
-  'APP_TITLE',
-  'APP_VERSION',
-  'AUTH_TOKEN_SECRET',
-  'COOKIE_SECRET',
-  'DOMAIN',
-  'START_ARG',
-  'MONGODB_HOST',
-  'MONGODB_PORT',
-  'MONGODB_PWORD',
-  'MONGODB_USER',
-  'VOLUME_STORAGE',
+  'API_PORT=',
+  'API_TOKEN=',
+  'APP_TITLE=',
+  'APP_VERSION=',
+  'AUTH_TOKEN_SECRET=',
+  'COOKIE_SECRET=',
+  'DOMAIN=',
+  'START_ARG=',
+  'MONGODB_HOST=',
+  'MONGODB_PORT=',
+  'MONGODB_PWORD=',
+  'MONGODB_USER=',
+  'VOLUME_STORAGE=/',
 ]
 
 // main ....
@@ -34,7 +34,7 @@ if (globalValid) {
 // ... end main
 
 function testExists(key) {
-  const regexp = new RegExp('^' + key + '=', 'g')
+  const regexp = new RegExp('^' + key, 'g')
   const matches = envLines.filter(ev => null !== ev.match(regexp))
   // console.log(key, matches)
   let isValid = Array.isArray(matches) && matches.length === 1
