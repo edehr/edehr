@@ -72,7 +72,7 @@ export default class EhrPageHelper {
     return dialog ? dialog.errorList : []
   }
   getLastPageDataUpdateDate () {
-    let data = EhrData.getMergedPageData()
+    let data = EhrData.getMergedPageData(this.pageKey)
     return data ? this.formatDate(data.lastUpdate) : ''
   }
 
@@ -141,7 +141,7 @@ export default class EhrPageHelper {
     return asLoadedPageData
   }
   _loadPageFormData (formKey) {
-    let asLoadedData = EhrData.getMergedPageData()
+    let asLoadedData = EhrData.getMergedPageData(this.pageKey)
     this.pageFormData.cacheData = JSON.stringify(asLoadedData)
     this.pageFormData.formKey = formKey
     /*
@@ -283,7 +283,7 @@ export default class EhrPageHelper {
   async resetFormData (childrenKeys) {
     const { pageKey } = this
     const ehrSeed = StoreHelper.getSeedEhrData()
-    const asLoadedPageData = EhrData.getMergedPageData()
+    const asLoadedPageData = EhrData.getMergedPageData(this.pageKey)
     if (childrenKeys) {
       childrenKeys.map(ck => {
         asLoadedPageData[ck] = ehrSeed[ck] ? ehrSeed[ck] : ''
@@ -390,7 +390,7 @@ export default class EhrPageHelper {
   }
   savePageFormEdit () {
     let payload = this.pageFormData
-    const asLoadedPageData = EhrData.getMergedPageData()
+    const asLoadedPageData = EhrData.getMergedPageData(this.pageKey)
     const mergedValues = {
       ...asLoadedPageData,
       ...payload.value

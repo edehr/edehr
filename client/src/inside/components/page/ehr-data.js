@@ -5,6 +5,7 @@ export default class EhrData {
     return StoreHelper.getMergedData()
   }
   static getMergedPageData (pageKey) {
+    if(!pageKey) throw new Error('Must specify page key to getMergedPageData')
     return this.getMergedData()[pageKey] || {}
   }
   static getMergedTableData (pageKey, tableKey) {
