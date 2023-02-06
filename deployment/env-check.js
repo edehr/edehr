@@ -17,12 +17,25 @@ const toCheck = [
   'MONGODB_PORT=',
   'MONGODB_PWORD=',
   'MONGODB_USER=',
-  'VOLUME_STORAGE=/',
+  'NODE_ENV='
 ]
 
 // main ....
 let globalValid = true
-toCheck.forEach( v => testExists(v) )
+toCheck.forEach( v => globalValid = globalValid && testExists(v, true) )
+
+if (testExists('NODE_ENV=production')) {
+  console.log('production')
+  globalValid = globalValid && testExists('VOLUME_STORAGE=/')
+} else if (testExists('NODE_ENV=development')) {
+  console.log('development')
+  globalValid = globalValid && testExists('VOLUME_STORAGE=')
+} else {
+  console.log('Unexpected value in NODE_ENV')
+  globalValid = false
+}
+
+
 if (globalValid) {
   console.log('Env check success')
 } else {
@@ -33,15 +46,15 @@ if (globalValid) {
 }
 // ... end main
 
-function testExists(key) {
+function testExists(key, verbose) {
   const regexp = new RegExp('^' + key, 'g')
   const matches = envLines.filter(ev => null !== ev.match(regexp))
   // console.log(key, matches)
   let isValid = Array.isArray(matches) && matches.length === 1
-  if (!isValid) {
+  if (!isValid && verbose) {
     console.log('Environment variable check FAIL --- ', key, '---- FAILED')
     if (matches === null) console.log( key, 'is undefined')
     else if (matches.length > 1) console.log( key, 'is defined more than once')
-    globalValid = false
   }
+  return isValid
 }
