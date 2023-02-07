@@ -305,7 +305,7 @@ export function importSeedData (component, seedId, contents) {
       return reject(invalidMsg)
     }
     if (debug) console.log('EhrUtil importSeedData seedObj', seedObj)
-    resolve(StoreHelper.updateSeedEhrData(seedId, seedObj.ehrData))
+    resolve(StoreHelper.importSeedEhrData(seedId, seedObj.ehrData))
   })
 }
 

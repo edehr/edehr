@@ -296,12 +296,12 @@ class StoreHelperWorker {
     return this._dispatchSeedListProperty('updateSeedItem', dataIdPlusPayload)
   }
 
-  updateSeedEhrData (seedId, ehrData) {
+  importSeedEhrData (seedId, ehrData) {
     let payload = {
       id: seedId,
       ehrData: ehrData
     }
-    return this._dispatchSeedListProperty('updateSeedEhrData', payload)
+    return this._dispatchSeedListProperty('importSeedEhrData', payload)
   }
 
   sendSeedEhrDataDraft (payload ) {

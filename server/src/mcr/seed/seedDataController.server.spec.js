@@ -68,14 +68,14 @@ describe(`${typeName} controller testing`, function () {
 
 
   it(`${typeName} update all the ehr data`, function (done) {
-    controller.should.have.property('updateSeedEhrData')
+    controller.should.have.property('importSeedEhrData')
     should.exist(seedObj)
     seedObj.should.have.property('_id')
     let id = seedObj._id
     let newEhrData = {
       someProperty: 'someValue'
     }
-    controller.updateSeedEhrData(id,newEhrData)
+    controller.importSeedEhrData(id,newEhrData)
       .then( (resultDoc) => {
         should.exist(resultDoc)
         resultDoc.should.have.property('ehrData')

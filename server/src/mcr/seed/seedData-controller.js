@@ -116,7 +116,7 @@ export default class SeedDataController extends BaseController {
         .then(ok(res))
         .catch(fail(res))
     })
-    router.put('/updateSeedEhrData/:key/', (req, res) => {
+    router.put('/importSeedEhrData/:key/', (req, res) => {
       let id = req.params.key
       let data = req.body
       this.updateSeedEhrData(id, data)
