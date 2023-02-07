@@ -1,0 +1,62 @@
+{
+  "vitals": {
+    "table": [
+      {
+        "name": "Jason",
+        "profession": "RN",
+        "entryDay": "1",
+        "entryTime": "18:00",
+        "day": "1",
+        "time": "1800",
+        "temperature": "36.5",
+        "createdDate": "2019-05-30T10:18:43-07:00"
+      },
+      {
+        "name": "Jason",
+        "profession": "RN",
+        "entryDay": "1",
+        "entryTime": "07:00",
+        "day": "1",
+        "time": "0700",
+        "temperature": "36.5",
+        "createdDate": "2019-05-30T10:04:20-07:00"
+      }
+    ]
+  },
+  "visit": {
+    "table": [
+      {
+        "location": "Emergency room",
+        "createdDate": "2019-05-30T23:21:10-07:00"
+      }
+    ],
+    "admissionDay": "Day 0",
+    "admissionTime": "0600",
+    "consentForTreatment": "TRUE",
+    "consentForBlood": "TRUE",
+    "diagnosis": "COPD\nShortness of breath\nDizzy",
+    "status": "Admitted"
+  },
+  "dischargeSummary": {
+    "clinicalSummary": "Patient arrived with chronic COPD in acute form\nPreviously diagnosed with hypertension\nDeveloped bilateral gram positive cocci pneumonia\nTreated with intravenous antibiotics and responded well",
+    "dischargeDay": "Day 1",
+    "dischargeTime": "0800",
+    "dischargedTo": "Home"
+  },
+  "diagnosticCodes": {
+    "table": [
+      {
+        "name": "Pat",
+        "day": "1",
+        "time": "1015",
+        "condition": "COPD",
+        "code": "J44.9",
+        "type": "M",
+        "createdDate": "2019-05-30T23:11:12-07:00"
+      }
+    ]
+  },
+  "meta": {
+    "ehrVersion": "ev2.1"
+  }
+}

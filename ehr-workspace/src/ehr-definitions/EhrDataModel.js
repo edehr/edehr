@@ -77,6 +77,8 @@ export default class EhrDataModel {
   static updateEhrDataToLatestFormat (ehrData) {
     const ehrDataModel = new EhrDataModel(ehrData)
     ehrData = updateAllVisitTime(ehrDataModel)
+    ehrData.meta = ehrData.meta || {}
+    ehrData.meta.ehrVersion = 'ev2.1'
     // metadata is updated when saved
     // ehrData = EhrDataModel.updateEhrDataV2_1_6(ehrData)
     return ehrData
