@@ -16,21 +16,46 @@ export default class SeedDataController extends BaseController {
   }
 
   /**
+   * Perform updates on the ehrData to transform older versions of an ehr data record into the latest
+   * version.  This is performed whenever a new seed is created or the client is importing a file.
+   * @param ehrData
+   * @private
+   */
+  _updateEhrDataToLatestFormat (ehrData) {
+    if(ehrData) {
+      debug('SeedData update ehr format', Object.keys(ehrData).length, 'pages incl meta')
+      EhrDataModel.updateEhrDataMeta(ehrData)
+      // seeds can be uploaded from files. Or created by the server with an older resource
+      // update visitTime to be sure it is ok
+      // Once created we depend on the client to only store '0000' formated visit times.
+      updateAllVisitTime(ehrData)
+    }
+    else {
+      debug('SeedData update ehr format without ehr data. Curious?')
+    }
+  }
+
+  /**
    * Override base method to ensure the ehr meta is updated
    * @param data
+   *       let seedData = {
+   *         name: this.name,
+   *         version: this.version,
+   *         description: this.description,
+   *         contributors: this.contributors,
+   *         ehrData: this.ehrData,
+   *         toolConsumer: StoreHelper.getAuthdConsumerId()
+   *       }
    * @returns {*}
    */
   create (data) {
-    EhrDataModel.updateEhrDataMeta(data.ehrData)
-    // seeds can be uploaded from files. Or created by the server with an older resource
-    // update visitTime to be sure it is ok
-    // Once created we depend on the client to only store '0000' formated visit times.
-    updateAllVisitTime(data.ehrData)
+    debug('SeedData. Create seed with', JSON.stringify(data))
+    this._updateEhrDataToLatestFormat(data.ehrData)
     return super.create(data)
   }
 
   /**
-   * Update a property inside the EHR seed data.
+   * Update a property inside the EHR seed data.  Invoked when client saves data while user is editing a seed.
    * Also see updateSeedEhrData
    * @param id of the seed db doc
    * @param data containing propertyName and value
@@ -52,35 +77,42 @@ export default class SeedDataController extends BaseController {
         }
         let data = model.ehrData || {}
         data[propertyName] = value
-        return this._updateSeed(model, data)
+        return this._saveSeedEhrData(model, data)
       }
     })
   }
 
   /**
-   * Update the entire ehr seed data
+   * Update the entire ehr seed data.
+   * 1. This is invoked when the client imports EHRdata from a file.
+   * 2. This is used by the database seeding to update existing seed records.
+   * IN BOTH CASES, we wish to update the content to the latest EHR format
    * Also see updateSeedEhrProperty
    * @param id of the seed db doc
-   * @param data containing propertyName and value
    * @return {*} updated doc
    */
   updateSeedEhrData (id, data) {
-    // debug('SeedData updateSeedEhrData '+ id +' ehrData with data: ' + JSON.stringify(data))
     return this.baseFindOneQuery(id).then(model => {
+      debug('SeedData updateSeedEhrData ', id, model ? 'found' : 'fail')
+      // debug('SeedData updateSeedEhrData with data: ' + JSON.stringify(data))
       // debug('updateSeedEhrData search ' + model ? 'ok' : 'fail')
       if (model) {
         if (model.isDefault) {
           throw new NotAllowedError(Text.SEED_NOT_ALLOWED_TO_EDIT_DEFAULT)
         }
-        this._updateSeed(model, data)
+        this._updateEhrDataToLatestFormat(data)
+        this._saveSeedEhrData(model, data)
       }
     })
   }
 
-  _updateSeed (model, data) {
-    EhrDataModel.updateEhrDataMeta(data)
+  _saveSeedEhrData (model, ehrData) {
+    // Be sure both the seed and activity-data controllers do similar things when they save
+    // ehr data. For example, they both update the metadata
+    EhrDataModel.updateEhrDataMeta(ehrData)
     model.lastUpdateDate = Date.now()
-    model.ehrData = data
+    model.ehrData = ehrData
+    // tell the db to see a change on this subfield
     model.markModified('ehrData')
     return model.save()
   }
@@ -110,6 +142,7 @@ export default class SeedDataController extends BaseController {
   route () {
     const router = super.route()
     router.put('/updateSeedEhrProperty/:key/', (req, res) => {
+      debug('SeedController API updateSeedEhrProperty')
       let id = req.params.key
       let data = req.body
       this.updateSeedEhrProperty(id, data)

@@ -21,7 +21,7 @@ export default class ActivityDataController extends BaseController {
    * @return {*}
    * @see updateSeedEhrProperty in seedData-controller
    */
-  updateAssignmentData (id, dataPayload) {
+  putAssignmentData (id, dataPayload) {
     // debug('ActivityData updateAssignmentData '+ id +' ehrData with data: ' + JSON.stringify(dataPayload))
     return this.baseFindOneQuery(id).then(activityData => {
       if (activityData) {
@@ -30,7 +30,7 @@ export default class ActivityDataController extends BaseController {
         value.lastUpdate = moment().format()
         let ehrData = activityData.assignmentData || {}
         ehrData[propertyName] = value
-        return this._updateEhrData(activityData, ehrData)
+        return this._saveEhrData(activityData, ehrData)
       }
     })
   }
@@ -39,12 +39,14 @@ export default class ActivityDataController extends BaseController {
     // debug('ActivityData updateAssignmentData '+ id +' ehrData with data: ' + JSON.stringify(ehrData))
     return this.baseFindOneQuery(id).then(activityData => {
       if (activityData) {
-        return this._updateEhrData(activityData, ehrData)
+        return this._saveEhrData(activityData, ehrData)
       }
     })
   }
 
-  _updateEhrData (activityData, ehrData) {
+  _saveEhrData (activityData, ehrData) {
+    // Be sure both the seed and activity-data controllers do similar things when they save
+    // ehr data. For example, they both update the metadata
     EhrDataModel.updateEhrDataMeta(ehrData)
     activityData.lastDate = Date.now()
     activityData.assignmentData = ehrData
@@ -114,7 +116,7 @@ export default class ActivityDataController extends BaseController {
     router.put('/assignment-data/:key/', (req, res) => {
       const id = req.params.key
       const data = req.body
-      this.updateAssignmentData(id, data)
+      this.putAssignmentData(id, data)
         .then(ok(res))
         .then(null, fail(res))
     })
