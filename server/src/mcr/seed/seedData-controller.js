@@ -5,7 +5,6 @@ import SeedData from './seed-data'
 import { Text }  from '../../config/text'
 import { NotAllowedError } from '../common/errors'
 import {ok, fail} from '../common/utils'
-import { updateAllVisitTime } from '../../ehr-definitions/ehr-def-utils'
 import { logError} from '../../helpers/log-error'
 import EhrDataModel from '../../ehr-definitions/EhrDataModel'
 const debug = require('debug')('server')
@@ -13,26 +12,6 @@ const debug = require('debug')('server')
 export default class SeedDataController extends BaseController {
   constructor () {
     super(SeedData, '_id')
-  }
-
-  /**
-   * Perform updates on the ehrData to transform older versions of an ehr data record into the latest
-   * version.  This is performed whenever a new seed is created or the client is importing a file.
-   * @param ehrData
-   * @private
-   */
-  _updateEhrDataToLatestFormat (ehrData) {
-    if(ehrData) {
-      debug('SeedData update ehr format', Object.keys(ehrData).length, 'pages incl meta')
-      // the ehr metadata is updated in _saveSeedEhrData
-
-      // update visitTime to be sure it is ok
-      // Once created we depend on the client to only store '0000' formated visit times.
-      updateAllVisitTime(ehrData)
-    }
-    else {
-      debug('SeedData update ehr format without ehr data. Curious?')
-    }
   }
 
   /**
@@ -50,7 +29,7 @@ export default class SeedDataController extends BaseController {
    */
   create (data) {
     debug('SeedData. Create seed with', JSON.stringify(data))
-    this._updateEhrDataToLatestFormat(data.ehrData)
+    EhrDataModel.updateEhrDataToLatestFormat(data.ehrData)
     return super.create(data)
   }
 
@@ -93,7 +72,7 @@ export default class SeedDataController extends BaseController {
     return model.save()
   }
   updateAndSaveSeedEhrData (id, ehrData) {
-    this._updateEhrDataToLatestFormat(ehrData)
+    EhrDataModel.updateEhrDataToLatestFormat(ehrData)
     return this.baseFindOneQuery(id).then(model => {
       this._saveSeedEhrData(model, ehrData)
     })
