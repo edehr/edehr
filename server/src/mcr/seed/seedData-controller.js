@@ -24,8 +24,8 @@ export default class SeedDataController extends BaseController {
   _updateEhrDataToLatestFormat (ehrData) {
     if(ehrData) {
       debug('SeedData update ehr format', Object.keys(ehrData).length, 'pages incl meta')
-      EhrDataModel.updateEhrDataMeta(ehrData)
-      // seeds can be uploaded from files. Or created by the server with an older resource
+      // the ehr metadata is updated in _saveSeedEhrData
+
       // update visitTime to be sure it is ok
       // Once created we depend on the client to only store '0000' formated visit times.
       updateAllVisitTime(ehrData)
@@ -56,52 +56,28 @@ export default class SeedDataController extends BaseController {
 
   /**
    * Update a property inside the EHR seed data.  Invoked when client saves data while user is editing a seed.
-   * Also see updateSeedEhrData
+   * Also see saveSeedEhrData
    * @param id of the seed db doc
-   * @param data containing propertyName and value
+   * @param payload containing propertyName and the new element of ehrData in the value field
    * @return {*} updated doc
    * @see updateAssignmentData in activity-data-controller
    */
-  updateSeedEhrProperty (id, data) {
-    let propertyName = data.propertyName
-    let value = data.value
-    // place date into the ehr data's page element
-    value.lastUpdate = moment().format()
-    debug(`SeedData updateSeedEhrProperty ${id} ehrData[${data.propertyName}] with data:`)
-    // debug('updateSeedEhrProperty ' + JSON.stringify(value))
+  updateSeedEhrProperty (id, payload) {
+    let propertyName = payload.propertyName
+    let value = payload.value
     return this.baseFindOneQuery(id).then(model => {
-      debug('updateSeedEhrProperty search ' + model ? 'ok' : 'fail')
+      debug('upsehrprop search ' + model ? 'ok' : 'fail')
       if (model) {
         if (model.isDefault) {
           throw new NotAllowedError(Text.SEED_NOT_ALLOWED_TO_EDIT_DEFAULT)
         }
-        let data = model.ehrData || {}
-        data[propertyName] = value
-        return this._saveSeedEhrData(model, data)
-      }
-    })
-  }
-
-  /**
-   * Update the entire ehr seed data.
-   * 1. This is invoked when the client imports EHRdata from a file.
-   * 2. This is used by the database seeding to update existing seed records.
-   * IN BOTH CASES, we wish to update the content to the latest EHR format
-   * Also see updateSeedEhrProperty
-   * @param id of the seed db doc
-   * @return {*} updated doc
-   */
-  updateSeedEhrData (id, data) {
-    return this.baseFindOneQuery(id).then(model => {
-      debug('SeedData updateSeedEhrData ', id, model ? 'found' : 'fail')
-      // debug('SeedData updateSeedEhrData with data: ' + JSON.stringify(data))
-      // debug('updateSeedEhrData search ' + model ? 'ok' : 'fail')
-      if (model) {
-        if (model.isDefault) {
-          throw new NotAllowedError(Text.SEED_NOT_ALLOWED_TO_EDIT_DEFAULT)
-        }
-        this._updateEhrDataToLatestFormat(data)
-        this._saveSeedEhrData(model, data)
+        let ehrData = model.ehrData || {}
+        value.lastUpdate = moment().format()
+        // place date into the ehr data's page element
+        ehrData[propertyName] = value
+        debug(`SeedData upsehrprop ${id} ehrData[${propertyName}] with data:`)
+        // debug('upsehrprop ' + JSON.stringify(value))
+        return this._saveSeedEhrData(model, ehrData)
       }
     })
   }
@@ -115,6 +91,12 @@ export default class SeedDataController extends BaseController {
     // tell the db to see a change on this subfield
     model.markModified('ehrData')
     return model.save()
+  }
+  updateAndSaveSeedEhrData (id, ehrData) {
+    this._updateEhrDataToLatestFormat(ehrData)
+    return this.baseFindOneQuery(id).then(model => {
+      this._saveSeedEhrData(model, ehrData)
+    })
   }
 
   deleteSeed (id) {
@@ -152,7 +134,7 @@ export default class SeedDataController extends BaseController {
     router.put('/importSeedEhrData/:key/', (req, res) => {
       let id = req.params.key
       let data = req.body
-      this.updateSeedEhrData(id, data)
+      this.updateAndSaveSeedEhrData(id, data)
         .then(ok(res))
         .catch(fail(res))
     })

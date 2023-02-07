@@ -35,7 +35,7 @@ export default class ActivityDataController extends BaseController {
     })
   }
 
-  updateAssignmentEhrData (id, ehrData) {
+  updateAndSaveAssignmentEhrData (id, ehrData) {
     // debug('ActivityData updateAssignmentData '+ id +' ehrData with data: ' + JSON.stringify(ehrData))
     return this.baseFindOneQuery(id).then(activityData => {
       if (activityData) {

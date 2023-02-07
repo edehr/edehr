@@ -4,7 +4,6 @@ const IntegrationModel = new IntegrationController()
 const debug = require('debug')('server')
 import { logError} from '../helpers/log-error'
 import dropSchemas from './dropschemas'
-import { updateAllVisitTime } from '../ehr-definitions/ehr-def-utils'
 import ActivityDataController from '../mcr/activity-data/activity-data-controller'
 import SeedDataController from '../mcr/seed/seedData-controller'
 const activityDataController = new ActivityDataController()
@@ -86,19 +85,12 @@ async function updateAllEhrData () {
   await _updateActivityData()
   await _updateSeeds()
 }
-function convert (ehrData) {
-  if (ehrData) {
-    // console.log('convert ehrdata', ehrData)
-    ehrData = updateAllVisitTime(ehrData)
-  }
-  return ehrData
-}
 
 async function _updateActivityData () {
   debug('dbSeeder. For each activity update the EHR data to the latest version.')
   const list = await activityDataController.list({},{assignmentData: true})
   list.activitydata.forEach(ad => {
-    activityDataController.updateAssignmentEhrData(ad._id, ad.assignmentData)
+    activityDataController.updateAndSaveAssignmentEhrData(ad._id, ad.assignmentData)
   })
 }
 
@@ -107,7 +99,7 @@ async function _updateSeeds () {
   const list = await seedController.list({}, {isDefault: true, ehrData: true})
   list.seeddata.forEach(seed => {
     if (!seed.isDefault) {
-      seedController.updateSeedEhrData(seed._id, seed.ehrData)
+      seedController.updateAndSaveSeedEhrData(seed._id, seed.ehrData)
     }
   })
 }
