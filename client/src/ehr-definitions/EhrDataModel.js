@@ -2,7 +2,8 @@
 
 import EhrDefs from '../ehr-definitions/ehr-page-defs'
 import EhrTypes from '../ehr-definitions/ehr-types'
-import { convertTimeStr} from './ehr-def-utils'
+import { convertTimeStr } from './ehr-def-utils'
+import { updateV2_1_6 } from './ehr-V2_1_6'
 
 /**
  * WARNING Do not edit this code unless you are working in the makeEhr common_src directory.  Use the copy script to deployr to both server and client
@@ -64,6 +65,22 @@ export default class EhrDataModel {
       meta.simTime = _visitTimeInEhrData(ehrData)
       ehrData.meta = meta
     }
+    return ehrData
+  }
+
+  static updateEhrDataV2_1_6 (ehrData) {
+    let results
+    if (ehrData) {
+      // console.log('updateEhrDataV2_1_6')
+      results = updateV2_1_6(ehrData)
+    }
+    return results
+  }
+
+  static updateEhrDataToLatestFormat (ehrData) {
+    ehrData = EhrDataModel.updateEhrDataMeta(ehrData)
+    ehrData = EhrDataModel.updateEhrDataV2_1_6(ehrData)
+    return ehrData
   }
 }
 
