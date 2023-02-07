@@ -3,6 +3,7 @@ import { ok, fail } from '../common/utils'
 import BaseController from '../common/base'
 import ActivityData from './activity-data'
 import EhrDataModel from './../../ehr-definitions/EhrDataModel'
+import activityData from './activity-data'
 
 const debug = require('debug')('server')
 
@@ -37,6 +38,11 @@ export default class ActivityDataController extends BaseController {
 
   updateAndSaveAssignmentEhrData (id, ehrData) {
     // debug('ActivityData updateAssignmentData '+ id +' ehrData with data: ' + JSON.stringify(ehrData))
+    if (!ehrData) {
+      return Promise.resolve()
+    }
+    ehrData = EhrDataModel.updateEhrDataToLatestFormat(ehrData)
+    // console.log('updateAndSaveAssignmentEhrData', ehrData)
     return this.baseFindOneQuery(id).then(activityData => {
       if (activityData) {
         return this._saveEhrData(activityData, ehrData)

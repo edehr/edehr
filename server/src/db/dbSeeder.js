@@ -95,7 +95,7 @@ async function _updateActivityData () {
 }
 
 async function _updateSeeds () {
-  debug('dbSeeder. For each seed (case study) update the EHR to the latest version')
+  // debug('dbSeeder. For each seed (case study) update the EHR to the latest version')
   const list = await seedController.list({}, {isDefault: true, ehrData: true})
   list.seeddata.forEach(seed => {
     if (!seed.isDefault) {

@@ -64,7 +64,10 @@ export default class SeedDataController extends BaseController {
   _saveSeedEhrData (model, ehrData) {
     // Be sure both the seed and activity-data controllers do similar things when they save
     // ehr data. For example, they both update the metadata
+    // console.log('ehrData.meta before', ehrData ? ehrData.meta : '---')
     EhrDataModel.updateEhrDataMeta(ehrData)
+    // console.log('ehrData.meta after ', ehrData ? ehrData.meta : '---')
+    // console.log('model', model)
     model.lastUpdateDate = Date.now()
     model.ehrData = ehrData
     // tell the db to see a change on this subfield
@@ -72,7 +75,8 @@ export default class SeedDataController extends BaseController {
     return model.save()
   }
   updateAndSaveSeedEhrData (id, ehrData) {
-    EhrDataModel.updateEhrDataToLatestFormat(ehrData)
+    ehrData = EhrDataModel.updateEhrDataToLatestFormat(ehrData)
+    // console.log('updateAndSaveSeedEhrData', ehrData)
     return this.baseFindOneQuery(id).then(model => {
       this._saveSeedEhrData(model, ehrData)
     })
