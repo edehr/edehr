@@ -1,7 +1,7 @@
 // noinspection DuplicatedCode
 
 import { EhrPages } from './ehr-models'
-import EhrDataModel from '../ehr-definitions/EhrDataModel'
+import EhrDataModel from './EhrDataModel'
 
 export function validateAgeValue ( age) {
   const ageValue = Number.parseInt(age)
@@ -91,6 +91,7 @@ export function updateAllVisitTime (eData) {
   pageList.forEach(page => {
     const pageKey = page.pageKey
     if (model.hasData(pageKey)) {
+      // pChildren is an [PageChildElement]
       const pChildren = page.pageChildren.filter(c => c.inputType === 'visitTime')
       pChildren.forEach(c => {
         let d = model.getPageFormData(pageKey, c.elementKey)
@@ -99,6 +100,7 @@ export function updateAllVisitTime (eData) {
           model.updatePageFormData(pageKey, c.elementKey, val)
         }
       })
+      // pageTables is a  [ PageTable ]
       page.pageTables.forEach(table => {
         const children = table.children
         const timeChildren = children.filter(c => c.inputType === 'visitTime')

@@ -1,8 +1,9 @@
 /**
  * WARNING Do not edit this code unless you are working in the makeEhr common_src directory.  Use the copy script to deployr to both server and client
  */
+import EhrDataModel from '../ehr-definitions/EhrDataModel'
 const should = require('should')
-const EhrDataModel = require('../ehr-definitions/EhrDataModel')
+
 const ehrData = {
   visit: {
     admissionDay: 'Day 0',

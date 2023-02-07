@@ -87,9 +87,21 @@ export class PageDef {
   }
   get hasTable () { return this.tableElements.length > 0}
   get hasForm () { return this.formElements.length > 0}
+
+  /**
+   *
+   * @returns [PageChildElement]
+   */
+  get pageChildren () { return this.pgChildren}
+
   get pageDef () { return this._pageDef }
   get pageKey () { return this._pageDef.pageDataKey}
   get pageForms () { return this.formElements }
+
+  /**
+   *
+   * @returns [ PageTable ]
+   */
   get pageTables () { return this.tableElements }
   get pageChildren () { return this.pgChildren}
   get pageTitle () { return this._pageDef.pageTitle }
