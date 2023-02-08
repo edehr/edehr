@@ -9,14 +9,21 @@ import { updateAllVisitTime, visitTimeInEhrData } from './ehr-data-model-utils'
 export default class EhrDataModel {
   constructor (ehrData) {
     this._ehrData = ehrData
+    this.updateEhrDataToLatestFormat()
   }
-  get ehrData () { return this._ehrData}
-  set ehrData (ed) { this._ehrData = ed}
+
+  get ehrData () {
+    return this._ehrData
+  }
+
+  set ehrData (ed) {
+    this._ehrData = ed
+  }
 
   get pageKeys () {
     let keys = Object.keys(this._ehrData)
     let inx = keys.indexOf('meta')
-    if (inx > -1 ) {
+    if (inx > -1) {
       keys.splice(inx, 1)
     }
     return keys
@@ -25,6 +32,19 @@ export default class EhrDataModel {
   get simTime () {
     const meta = this._ehrData.meta || {}
     return meta.simTime
+  }
+
+  get metaEhrVersion () {
+    const meta = this._ehrData.meta || {}
+    const v = /^ev(\d+)\.(\d+)\.(\d+)$/.exec(meta.ehrVersion)
+    if (v === null) {
+      return null
+    }
+    return {
+      major: v[1],
+      minor: v[2],
+      patch: v[3]
+    }
   }
 
   getPageData (pageKey) {
@@ -56,6 +76,13 @@ export default class EhrDataModel {
     this._ehrData[pageKey][tableKey] = targetData
   }
 
+  updateDataTo2_1_0 () {
+    const ehrData = updateAllVisitTime(this)
+    ehrData.meta = this._ehrData.meta || {}
+    ehrData.meta.ehrVersion = 'ev2.1.0'
+    this.ehrData = ehrData
+  }
+
   static updateEhrDataMeta (ehrData) {
     if (ehrData) {
       const meta = ehrData.meta || {}
@@ -65,22 +92,10 @@ export default class EhrDataModel {
     return ehrData
   }
 
-  // static updateEhrDataV2_1_6 (ehrData) {
-  //   let results
-  //   if (ehrData) {
-  //     // console.log('updateEhrDataV2_1_6')
-  //     results = updateV2_1_6(ehrData)
-  //   }
-  //   return results
-  // }
-
-  static updateEhrDataToLatestFormat (ehrData) {
-    const ehrDataModel = new EhrDataModel(ehrData)
-    ehrData = updateAllVisitTime(ehrDataModel)
-    ehrData.meta = ehrData.meta || {}
-    ehrData.meta.ehrVersion = 'ev2.1'
-    // metadata is updated when saved
-    // ehrData = EhrDataModel.updateEhrDataV2_1_6(ehrData)
-    return ehrData
+  updateEhrDataToLatestFormat () {
+    const version = this.metaEhrVersion
+    if (!version) {
+      this.updateDataTo2_1_0()
+    }
   }
 }

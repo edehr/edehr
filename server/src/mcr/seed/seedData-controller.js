@@ -29,7 +29,7 @@ export default class SeedDataController extends BaseController {
    */
   create (data) {
     debug('SeedData. Create seed with', JSON.stringify(data))
-    EhrDataModel.updateEhrDataToLatestFormat(data.ehrData)
+    data.ehrData = EhrDataModel.updateEhrDataToLatestFormat(data.ehrData)
     return super.create(data)
   }
 

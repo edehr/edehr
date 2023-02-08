@@ -3,7 +3,6 @@ import { ok, fail } from '../common/utils'
 import BaseController from '../common/base'
 import ActivityData from './activity-data'
 import EhrDataModel from './../../ehr-definitions/EhrDataModel'
-import activityData from './activity-data'
 
 const debug = require('debug')('server')
 
