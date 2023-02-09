@@ -18,7 +18,7 @@ cc.setSharedControllers(lcc)
 async function dbCreateConsumers () {
   return new Promise(function (resolve, reject) {
     debug('Running application consumer seeding. Warning this deletes all existing consumers.')
-    Consumer.deleteMany()
+    return Consumer.deleteMany()
       .then(() => {
         const def = {
           oauth_consumer_key: KEY,
@@ -44,6 +44,9 @@ async function dbCreateConsumers () {
           .then((response, reject) => {
             // console.log('save results', response, reject)
             resolve()
+          })
+          .catch( err => {
+            reject(err)
           })
       })
   })

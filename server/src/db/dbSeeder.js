@@ -77,30 +77,34 @@ async function doIntegrations () {
   /**
    * Iterate over the entire db any collection that contains ehr data. E.g. seeds and activity-data
    */
+  debug('dbSeeder. updateAllEhrData')
   await updateAllEhrData()
   debug('dbSeeder. DONE')
 }
 
-async function updateAllEhrData () {
+export async function updateAllEhrData () {
   await _updateActivityData()
   await _updateSeeds()
 }
 
+const dbg = false
 async function _updateActivityData () {
   debug('dbSeeder. For each activity update the EHR data to the latest version.')
-  const list = await activityDataController.list({},{assignmentData: true})
-  list.activitydata.forEach(ad => {
-    activityDataController.updateAndSaveAssignmentEhrData(ad._id, ad.assignmentData)
-  })
+  const activityDataList = await activityDataController.list({assignmentData: { $exists: true} },{assignmentData: true})
+  const list = activityDataList.activitydata
+  for ( const ad of list) {
+    if (dbg) console.log('------------- actd', ad)
+    await activityDataController.updateAndSaveAssignmentEhrData(ad._id, ad.assignmentData)
+  }
 }
 
 async function _updateSeeds () {
-  // debug('dbSeeder. For each seed (case study) update the EHR to the latest version')
-  const list = await seedController.list({}, {isDefault: true, ehrData: true})
-  list.seeddata.forEach(seed => {
-    if (!seed.isDefault) {
-      seedController.updateAndSaveSeedEhrData(seed._id, seed.ehrData)
-    }
-  })
+  debug('dbSeeder. For each seed (case study) update the EHR to the latest version')
+  const seedDataList = await seedController.list({isDefault: false}, {name: true, ehrData: true})
+  const list = seedDataList.seeddata
+  for ( const seed of list) {
+    if (dbg) console.log('------------- seed', seed)
+    await seedController.updateAndSaveSeedEhrData(seed._id, seed.ehrData)
+  }
 }
 

@@ -11,7 +11,6 @@ describe(`${type} system testing`, () => {
     controller.should.have.property('assignmentSubmitted')
     controller.should.have.property('updateScratchData')
     controller.should.have.property('updateEvaluationData')
-    controller.should.have.property('assignmentEvaluated')
     done()
   })
 

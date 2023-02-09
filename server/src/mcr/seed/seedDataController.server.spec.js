@@ -67,7 +67,8 @@ describe(`${typeName} controller testing`, function () {
   })
 
 
-  it(`${typeName} update all the ehr data`, function (done) {
+  // importSeedEhrData no longer exists
+  it.skip(`${typeName} update all the ehr data`, function (done) {
     controller.should.have.property('importSeedEhrData')
     should.exist(seedObj)
     seedObj.should.have.property('_id')

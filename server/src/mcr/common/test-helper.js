@@ -1,7 +1,8 @@
-import supertest from 'supertest'
+// import supertest from 'supertest'
 import ConsumerController from '../consumer/consumer-controller'
 import User from '../user/user'
 import Activity from '../activity/activity'
+import Assignment from '../assignment/assignment'
 import Visit from '../visit/visit'
 import Role from '../roles/roles'
 import AuthUtil from './auth-util'
@@ -12,8 +13,10 @@ import FilesController from '../files/files-controller'
 import VisitController from '../visit/visit-controller'
 import UserController from '../user/user-controller'
 import SeedDataController from '../seed/seedData-controller'
-import applicationConfiguration from '../../config/config'
+import { applicationConfiguration, getDbUri } from '../../config/config'
 const configuration = applicationConfiguration('test')
+let dburi = getDbUri(configuration)
+let dbConfig = configuration.database
 
 const act = new ActivityController()
 const as = new AssignmentController(configuration)
@@ -61,11 +64,11 @@ let Default = {
   seedData: {foo:'bar'}
 }
 
-let options = {
-  useNewUrlParser: true,
-  // useCreateIndex: true,
-  useUnifiedTopology: true
-}
+// let options = {
+//   useNewUrlParser: true,
+//   useCreateIndex: true,
+//   useUnifiedTopology: true
+// }
 
 export default class Helper {
   constructor () {
@@ -76,17 +79,29 @@ export default class Helper {
   }
 
   async beforeTestDbDrop (done, mongoose) {
-    const uri = 'mongodb://localhost:27018/unittest'
+    // const uri = 'mongodb://localhost:27018/unittest'
+    // const uri = 'mongodb://localhost:27017/unittest'
     const dbug = false
     if (dbug) console.log('TH: beforeTestDbDrop: mongoose.connection.readyState', mongoose.connection.readyState)
     return mongoose.disconnect()
       .then( async () => {
-        if (dbug) console.log('TH: before hook after disconnect', uri)
-        await mongoose.connect(uri, options)
-        if (dbug) console.log('TH: before hook connected', uri)
-        await mongoose.connection.dropDatabase()
-        if (dbug) console.log('TH: before hook done', uri)
-        done()
+        if (dbug) console.log('TH: disconnected', dburi)
+        mongoose.connect(dburi, dbConfig.options)
+          .then ( async () => {
+            if (dbug) console.log('TH: connected', dburi)
+            await mongoose.connection.dropDatabase()
+            if (dbug) console.log('TH: database dropped', dburi)
+            if (dbug) console.log('TH: done', dburi)
+            done()
+          })
+          .catch(err => {
+            console.error('connection failed:', err)
+            process.exit(1)
+          })
+      })
+      .catch(err => {
+        console.error('disconnect failed:', err)
+        process.exit(1)
       })
   }
 
@@ -121,6 +136,24 @@ export default class Helper {
     }
   }
 
+  static sampleAssignmentSpec (seedDataId, externalId) {
+    // if empty use something that works and ObjectID
+    seedDataId = seedDataId || '56955ca46063c5600627f393'
+    let consumer = new ObjectID('56955ca46063c5600627f393')
+
+    if(typeof  seedDataId === 'string') {
+      seedDataId = new ObjectID(seedDataId)
+    }
+    return {
+      toolConsumer: consumer,
+      externalId: externalId || '59',
+      name: 'test assignment',
+      description: 'an assignment',
+      ehrRoutePath: '/ehr/path',
+      ehrRouteName: 'pathName',
+      seedDataId: seedDataId
+    }
+  }
   /**
    * Generates a random ObjectId
    * @return {*}
@@ -220,7 +253,8 @@ export default class Helper {
       isInstructor: false,
       isStudent: false,
       toolConsumerId: consumerId,
-      visitId: visitId
+      visitId: visitId,
+      demoData: {}
     }
     return tokenData
   }
@@ -267,27 +301,33 @@ export default class Helper {
     return model.save()
   }
 
-  static getUrlAuth (app, url, adminToken) {
-    return supertest(app)
-      .post(url)
-      .set({ Authorization: 'Bearer ' + adminToken })
+  static createAssignment (consumer, assignment) {
+    let data = Helper.sampleAssignmentSpec()
+    const model = new Assignment(data)
+    return model.save()
   }
 
-  static adminLogin (app, url, adminPass, token) {
-    return supertest(app)
-      .post(url)
-      .send({ adminPass })
-      .set({ authorization: `Bearer ${token}`, 'Content-Type': 'application/json', Accept : 'application/json' })
-  }
+  // static getUrlAuth (app, url, adminToken) {
+  //   return supertest(app)
+  //     .post(url)
+  //     .set({ Authorization: 'Bearer ' + adminToken })
+  // }
 
-  static postUrlAuth (app, url, token, theData) {
-    return supertest(app)
-      .post(url)
-      .send(theData)
-      .set({ Authorization: 'Bearer ' + token })
-      .set('Content-Type', 'application/json')
-      .set('Accept', 'application/json')
-  }
+  // static adminLogin (app, url, adminPass, token) {
+  //   return supertest(app)
+  //     .post(url)
+  //     .send({ adminPass })
+  //     .set({ authorization: `Bearer ${token}`, 'Content-Type': 'application/json', Accept : 'application/json' })
+  // }
+  //
+  // static postUrlAuth (app, url, token, theData) {
+  //   return supertest(app)
+  //     .post(url)
+  //     .send(theData)
+  //     .set({ Authorization: 'Bearer ' + token })
+  //     .set('Content-Type', 'application/json')
+  //     .set('Accept', 'application/json')
+  // }
 
   static consoleRes (res) {
     console.log('TH: res.headers', res.headers)
@@ -300,7 +340,7 @@ export default class Helper {
     if (isAdmin) {
       const adminPayload = Object.assign({}, tokenData, { isAdmin : true})
       return authUtil.createToken(adminPayload)
-    } 
+    }
     return authUtil.createToken(tokenData)
   }
 

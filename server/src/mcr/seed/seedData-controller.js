@@ -29,7 +29,9 @@ export default class SeedDataController extends BaseController {
    */
   create (data) {
     debug('SeedData. Create seed with', JSON.stringify(data))
-    data.ehrData = EhrDataModel.updateEhrDataToLatestFormat(data.ehrData)
+    // put the data into an EhrDataModel to get the data transformed to the latest version, if needed
+    const ehrDataModel = new EhrDataModel(data.ehrData)
+    data.ehrData = ehrDataModel.ehrData
     return super.create(data)
   }
 
@@ -67,7 +69,6 @@ export default class SeedDataController extends BaseController {
     // console.log('ehrData.meta before', ehrData ? ehrData.meta : '---')
     EhrDataModel.updateEhrDataMeta(ehrData)
     // console.log('ehrData.meta after ', ehrData ? ehrData.meta : '---')
-    // console.log('model', model)
     model.lastUpdateDate = Date.now()
     model.ehrData = ehrData
     // tell the db to see a change on this subfield
@@ -75,10 +76,13 @@ export default class SeedDataController extends BaseController {
     return model.save()
   }
   updateAndSaveSeedEhrData (id, ehrData) {
-    ehrData = EhrDataModel.updateEhrDataToLatestFormat(ehrData)
+    // put the data into an EhrDataModel to get the data transformed to the latest version, if needed
+    const ehrDataModel = new EhrDataModel(ehrData)
+    ehrData = ehrDataModel.ehrData
     // console.log('updateAndSaveSeedEhrData', ehrData)
+    //return the inner promise to be sure the caller gets the result
     return this.baseFindOneQuery(id).then(model => {
-      this._saveSeedEhrData(model, ehrData)
+      return this._saveSeedEhrData(model, ehrData)
     })
   }
 

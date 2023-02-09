@@ -40,7 +40,9 @@ export default class ActivityDataController extends BaseController {
     if (!ehrData) {
       return Promise.resolve()
     }
-    ehrData = EhrDataModel.updateEhrDataToLatestFormat(ehrData)
+    // put the data into an EhrDataModel to get the data transformed to the latest version, if needed
+    const ehrDataModel = new EhrDataModel(ehrData)
+    ehrData = ehrDataModel.ehrData
     // console.log('updateAndSaveAssignmentEhrData', ehrData)
     return this.baseFindOneQuery(id).then(activityData => {
       if (activityData) {

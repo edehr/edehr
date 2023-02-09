@@ -2,7 +2,7 @@ var should = require('should')
 const mongoose = require('mongoose')
 import FeedbackController from './feedback-controller'
 import Helper from '../common/test-helper'
-import applicationConfiguration from '../../config/config'
+import { applicationConfiguration } from '../../config/config'
 import { logError} from '../../helpers/log-error'
 const configuration = applicationConfiguration('test')
 const helper = new Helper()

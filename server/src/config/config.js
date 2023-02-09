@@ -1,16 +1,8 @@
 'use strict'
 import { Text } from './text'
 import moment from 'moment'
-import { version } from 'process'
 import { logError} from '../helpers/log-error'
 const debug = require('debug')('server')
-
-// allow transition to v18 (skip v16)
-if (version.includes('v14') || version.includes('v18')) {
-  debug(`Node Version: ${version}`)
-} else {
-  logError('Unexpected version of Node is active ', version)
-}
 
 const DEFAULT_COOKIE_SECRET = 'this is the secret for the session cookie'
 // specify how long an authentication token should live.  For time examples see https://github.com/vercel/ms
@@ -175,6 +167,7 @@ function validateEnvironmentVariable (env) {
   }
 }
 
+// eslint-disable-next-line no-unused-vars
 function asStringForLog (configuration) {
   let tmp = {}
   try {
@@ -189,16 +182,17 @@ function asStringForLog (configuration) {
   return JSON.stringify(tmp, null, 2)
 }
 
-function applicationConfiguration (env) {
+export function applicationConfiguration (env) {
   validateEnvironmentVariable(env)
   debug('set up config for this environment:', env)
   const dCfg = defaultConfig(env)
+  // console.log('DEFAULT CONFIG', dCfg)
   const cfg = env === 'production' ? productionConfig(dCfg)
     : env === 'test' ? testConfig(dCfg)
       : developConfig(dCfg)
   cfg.clientUrl = composeUrl(cfg.scheme, cfg.domain, cfg.clientPort)
   cfg.apiUrl = composeUrl(cfg.scheme, cfg.apiHost, cfg.apiPort, 'api')
-  debug('configuration %s', asStringForLog(cfg))
+  // debug('configuration %s', asStringForLog(cfg))
   return cfg
 }
 

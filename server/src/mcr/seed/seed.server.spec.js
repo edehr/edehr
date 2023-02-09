@@ -3,11 +3,10 @@ const mongoose = require('mongoose')
 const ObjectID = require('mongodb').ObjectId
 import Helper from '../common/test-helper'
 const helper = new Helper()
-import Model from './seed-data'
+import SeedData from './seed-data'
 
-const typeName = 'SeedData'
 /* global describe it */
-describe(`${typeName} mongoose schema testing`, function () {
+describe('SeedData mongoose schema testing', function () {
   before(function (done) {
     helper.beforeTestDbDrop(done, mongoose)
   })
@@ -15,8 +14,8 @@ describe(`${typeName} mongoose schema testing`, function () {
     helper.afterTestsCloseDb(mongoose).then(() => done() )
   })
 
-  it(`${typeName} create without name is not allowed`, function (done) {
-    let m = new Model()
+  it('SeedData create without name is not allowed', function (done) {
+    let m = new SeedData()
     m.validate(function (err) {
       // debug('Expect error: ', err)
       should.exist(err)
@@ -31,11 +30,11 @@ describe(`${typeName} mongoose schema testing`, function () {
     ehrData: {foo: 'bar'}
   }
 
-  it(`${typeName} can save one`, function (done) {
-    const newUser = new Model(sampleData)
+  it('SeedData can save one', function (done) {
+    const newUser = new SeedData(sampleData)
     newUser.save()
       .then(() => {
-        Model.findOne({name: '1234'}, function (err, doc) {
+        SeedData.findOne({name: '1234'}, function (err, doc) {
           // debug('results', doc)
           should.exist(doc)
           should.not.exist(err)

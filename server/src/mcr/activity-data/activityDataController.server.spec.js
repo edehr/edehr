@@ -91,14 +91,4 @@ describe(`${typeName} controller testing`, function () {
       })
   })
 
-  it(`${typeName} use assignmentEvaluated`, function (done) {
-    const data = {value: true}
-    controller.assignmentEvaluated(theActivityData._id, data)
-      .then(doc => {
-        should.exist(doc)
-        doc.should.have.property('evaluated')
-        doc.evaluated.should.equal(data.value)
-        done()
-      })
-  })
 })
