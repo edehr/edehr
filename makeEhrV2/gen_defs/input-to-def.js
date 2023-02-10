@@ -164,6 +164,7 @@ class RawInputToDef {
     let fKey = entry.fN
     let form = rawHelper._transferProperties(entry, formProperties)
     form.elementKey = entry.elementKey
+    form.pageElementIndex = fKey
     form.pageKey = page.pageKey
     form.formKey = entry.elementKey
     form.isPageForm = true
@@ -182,6 +183,7 @@ class RawInputToDef {
     const hasRecHeader = EhrShortForms.validateRecHeader(entry)
     let table = {
       elementKey: entry.elementKey,
+      pageElementIndex: fKey,
       pageKey: page.pageKey,
       tableKey: entry.elementKey,
       isTable: true,

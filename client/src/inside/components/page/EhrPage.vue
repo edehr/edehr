@@ -1,7 +1,12 @@
 <template lang="pug">
   div(class="ehr-page")
     ehr-panel-content
-      ehr-page-element(v-for="element in pageElements", :key="element.pageDataKey", :element="element", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
+      div(v-if="useTabs")
+        tabs
+          tab(class='tabContainer', :name="element.label", v-for="(element, index) in pageElements", :key="element.elementKey",  :selected="index===0")
+            ehr-page-element(:element="element", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
+      div(v-else)
+        ehr-page-element(v-for="element in pageElements", :key="element.pageDataKey", :element="element", :ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
     ehr-page-footer(:ehrHelp="ehrHelp", :pageDataKey="pageDataKey")
 </template>
 
@@ -10,6 +15,8 @@ import EhrPanelContent from './EhrPanelContent.vue'
 import EhrPageElement from './EhrPageElement'
 import EhrPageFooter from './EhrPageFooter'
 import EhrDefs from '../../../ehr-definitions/ehr-defs-grid'
+import Tabs from '../Tabs'
+import Tab from '../Tab'
 
 /*
 # EhrPage
@@ -51,6 +58,8 @@ is broadcast and captured with the change. The change is then pushed into the pa
  */
 export default {
   components: {
+    Tabs,
+    Tab,
     EhrPanelContent,
     EhrPageFooter,
     EhrPageElement
@@ -73,15 +82,22 @@ export default {
       return EhrDefs.getPageDefinition(this.pageDataKey)
     },
     pageElements () {
-      return EhrDefs.getPageElements(this.pageDataKey)
+      // convert the object into an array and then sort based on the defined index.
+      // pageElementIndex is the value under column fN in the inputs worksheet
+      const pElems = EhrDefs.getPageElements(this.pageDataKey)
+      return Object.keys(pElems).map((k) => pElems[k]).sort( (a,b) => a.pageElementIndex - b.pageElementIndex)
     },
+    useTabs () {
+      return this.pageElements.length > 1
+    }
   }
 }
 </script>
 
 <style lang="scss">
 @import '../../../scss/definitions';
-
+.tabContainer {
+}
 .section-divider {
     border-bottom: 1px solid $grey40;
     margin-bottom: 0.5rem;

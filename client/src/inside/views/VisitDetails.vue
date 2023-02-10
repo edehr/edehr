@@ -4,7 +4,7 @@
     ehr-page(:pageDataKey="pageDataKey", :ehrHelp="ehrHelp")
     div(style="display:none")
       p This Visit Details page is generated.
-      p Label: Visit details and location
+      p Label: Admission, diagnosis, location
       p Data Key: visit
       p Component name: VisitDetails
       p Redirect: 

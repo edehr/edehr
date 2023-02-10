@@ -80,6 +80,11 @@ class EhrDefsWorker {
     return value
   }
 
+  /**
+   * Returns an object. Elements are keyed using the page element key.
+   * @param pageKey
+   * @returns {*}
+   */
   getPageElements (pageKey) {
     let pd = this.getPageDefinition(pageKey)
     return pd.pageElements
