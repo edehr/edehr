@@ -56,5 +56,5 @@ jobs:
         working-directory: server
       - run: npm run lint -- --no-fix
         working-directory: server
-      - run: npm run test:system
+      - run: npm run test
         working-directory: server
