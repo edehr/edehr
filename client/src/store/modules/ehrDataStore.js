@@ -61,24 +61,28 @@ const getters = {
       type = 'Student merged data'
     }
     if (debug) console.log('EhrData type: ' + type, secondLevelData)
+
+    console.log('baseLevelData', baseLevelData)
     if (secondLevelData) {
       mData = decoupleObject(ehrMergeEhrData(baseLevelData, secondLevelData))
       mData.meta = {}
       const start = {visitDay: 0, visitTime: '0000'}
-      let baseMeta = baseLevelData.meta || {simTime: start}
-      let secondMeta = secondLevelData.meta || {simTime: start}
-      let baseTime = parseInt(baseMeta.simTime.visitTime)
-      let secondTime = parseInt(secondMeta.simTime.visitTime)
-      let baseDay = baseMeta.simTime.visitDay
-      let secondDay = secondMeta.simTime.visitDay
+      let baseMeta = baseLevelData.meta || {}
+      let secondMeta = secondLevelData.meta || {}
+      let baseMetaSimTime = baseMeta.simTime ||  start
+      let secondMetaSimTime = secondMeta.simTime || start
+      let baseTime = parseInt(baseMetaSimTime.visitTime)
+      let secondTime = parseInt(secondMetaSimTime.visitTime)
+      let baseDay = baseMetaSimTime.visitDay
+      let secondDay = secondMetaSimTime.visitDay
       if (secondDay === 0 && secondTime === 0) {
         // secondLevelData.meta.simTime  may have zero values if the ehr data is empty or has no time stamped records
-        mData.meta.simTime = baseMeta.simTime
+        mData.meta.simTime = baseMetaSimTime
       } else if (baseDay > secondDay || ( baseDay === secondDay && baseTime > secondTime ) ) {
         console.log('Weird data. Case study simTime is after student\'s simTime. Case study time:',
-          baseLevelData.meta.simTime, 'student simTime:', secondLevelData.meta.simTime)
+          baseLevelData.meta.simTime, 'student simTime:', secondMetaSimTime)
         // use the later time ...
-        mData.meta.simTime = baseMeta.simTime
+        mData.meta.simTime = baseMetaSimTime
       } else {
         let vDay = baseDay
         let mTime = baseTime

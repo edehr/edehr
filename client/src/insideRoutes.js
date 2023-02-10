@@ -90,7 +90,7 @@ export function inside () {
       name: 'visit-details',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/VisitDetails.vue'),
-      meta: { layout: 'inside', label: 'Visit details and location', topLevel: 'current', zone: 'ehr' }
+      meta: { layout: 'inside', label: 'Admission, diagnosis, location', topLevel: 'current', zone: 'ehr' }
     },
     {
       path: '/ehr/current/vital-signs',

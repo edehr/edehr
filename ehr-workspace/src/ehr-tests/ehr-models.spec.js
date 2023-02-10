@@ -46,7 +46,7 @@ describe('Ehr Page Definitions', function () {
     page.pageForms.length.should.equal(1)
     page.should.have.property('pageTables')
     page.pageTables.should.be.instanceof(Array)
-    page.pageTables.length.should.equal(1)
+    page.pageTables.length.should.equal(2)
   })
   it('get demographics', () => {
     const pageList = pages.pageList
@@ -79,6 +79,6 @@ describe('Ehr Page Form fields', function () {
     const page = pages.findPage(key)
     const vTables = page.pageTables
     vTables.should.be.instanceof(Array)
-    vTables.length.should.equal(1)
+    vTables.length.should.equal(2)
   })
 })
