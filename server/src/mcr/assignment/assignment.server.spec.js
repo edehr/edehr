@@ -1,3 +1,5 @@
+import Model from './assignment'
+
 const should = require('should')
 const request = require('supertest')
 const mongoose = require('mongoose')
@@ -162,6 +164,35 @@ describe.skip(`Make server calls on ${TYPE}`, function () {
       .end(function (err, res) {
         debug('Creating a second assignment with the same external id should not fail.', err, res.body)
         should.exist(res.body)
+        done()
+      })
+  })
+})
+
+describe('Assignment mongoose schema testing', function () {
+  before(function (done) {
+    helper.beforeTestDbDrop(done, mongoose)
+  })
+
+  after(function (done) {
+    helper.afterTestsCloseDb(mongoose).then(() => done() )
+  })
+
+  it('Assignment be invalid if params are empty', function (done) {
+    let m = new Model()
+    m.validate(function (err) {
+      // debug('Expect error: ', err)
+      should.exist(err)
+      done()
+    })
+  })
+
+  let data = Helper.sampleAssignmentSpec()
+  it('Assignment can save one', function (done) {
+    const newUser = new Model(data)
+    newUser
+      .save()
+      .then(() => {
         done()
       })
   })
