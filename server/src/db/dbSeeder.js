@@ -1,11 +1,14 @@
 import IntegrationController from '../mcr/integration/integration-controller'
 import dbCreateConsumers from './consumers'
-import dbCreateInitalSimMetaData from './dbSimulationMeta'
-import dbConvertTimeValues from './dbSimulationTime'
 const IntegrationModel = new IntegrationController()
 const debug = require('debug')('server')
 import { logError} from '../helpers/log-error'
 import dropSchemas from './dropschemas'
+import ActivityDataController from '../mcr/activity-data/activity-data-controller'
+import SeedDataController from '../mcr/seed/seedData-controller'
+const activityDataController = new ActivityDataController()
+const seedController = new SeedDataController()
+
 
 // =========================================================================
 //
@@ -43,25 +46,6 @@ function checkIntegration (name, override) {
   })
 }
 
-async function doIntegrations () {
-  debug('BEGIN integrations')
-  const doConsumer = await checkIntegration('consumers', false)
-  if (doConsumer) {
-    // warning -- this function deletes all existing consumers. Since this is seeding this never happens after the first time.
-    await dbCreateConsumers(true)
-  }
-  const doSimulationTime = await checkIntegration('simulationTime', true)
-  if (doSimulationTime) {
-    await dbConvertTimeValues()
-  }
-
-  const doSimMeta = await checkIntegration('simulationMeta', true)
-  if (false && doSimMeta) {
-    await dbCreateInitalSimMetaData()
-  }
-
-  debug('DONE integrations')
-}
 
 export default async function (forceSeeding = false) {
   if (forceSeeding) {
@@ -69,3 +53,58 @@ export default async function (forceSeeding = false) {
   }
   return await doIntegrations()
 }
+
+/**
+ * Integrations are database transformations (updates) that take place when the server starts.
+ * These operate over the data that is in the database.
+ * Transformations also need to be considered whenever a create or update happens IF the
+ * data used in those actions may have come from a source that was previously exported by the app.
+ *
+ * For example, seed (Case Studies) may come from a file.  Also the client side supports what is
+ * call Ehr-Only demonstration mode. This uses EHR data that may need to be transformed.
+ *
+ * @returns {Promise<void>}
+ */
+async function doIntegrations () {
+  debug('dbSeeder. BEGIN')
+  const doConsumer = await checkIntegration('consumers', false)
+  if (doConsumer) {
+    // warning -- this function deletes all existing consumers. Since this is seeding this never happens after the first time.
+    debug('dbSeeder. consumer')
+    await dbCreateConsumers(true)
+  }
+
+  /**
+   * Iterate over the entire db any collection that contains ehr data. E.g. seeds and activity-data
+   */
+  debug('dbSeeder. updateAllEhrData')
+  await updateAllEhrData()
+  debug('dbSeeder. DONE')
+}
+
+export async function updateAllEhrData () {
+  await _updateActivityData()
+  await _updateSeeds()
+}
+
+const dbg = false
+async function _updateActivityData () {
+  debug('dbSeeder. For each activity update the EHR data to the latest version.')
+  const activityDataList = await activityDataController.list({assignmentData: { $exists: true} },{assignmentData: true})
+  const list = activityDataList.activitydata
+  for ( const ad of list) {
+    if (dbg) console.log('------------- actd', ad)
+    await activityDataController.updateAndSaveAssignmentEhrData(ad._id, ad.assignmentData)
+  }
+}
+
+async function _updateSeeds () {
+  debug('dbSeeder. For each seed (case study) update the EHR to the latest version')
+  const seedDataList = await seedController.list({isDefault: false}, {name: true, ehrData: true})
+  const list = seedDataList.seeddata
+  for ( const seed of list) {
+    if (dbg) console.log('------------- seed', seed)
+    await seedController.updateAndSaveSeedEhrData(seed._id, seed.ehrData)
+  }
+}
+

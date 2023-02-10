@@ -72,11 +72,11 @@ export default class ConsumerController extends BaseController {
     return new Promise(function (resolve /* reject */) {
       _this.findOneConsumerByKey(KEY)
         .then((found) => {
-          debug('Initialize consumer and look for default '+ KEY)
+          debug('Consumer controller. App initialization. Look for consumer '+ KEY)
           if (found) {
-            debug('found default consumer'+ found.tool_consumer_instance_name)
+            debug('Consumer controller. Found default consumer'+ found.tool_consumer_instance_name)
           } else {
-            debug('No default found so create one')
+            debug('Consumer controller. No default found so need to create one')
           }
           resolve()
         })

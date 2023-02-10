@@ -5,7 +5,6 @@ import SeedData from './seed-data'
 import { Text }  from '../../config/text'
 import { NotAllowedError } from '../common/errors'
 import {ok, fail} from '../common/utils'
-import { updateAllVisitTime } from '../../ehr-definitions/ehr-def-utils'
 import { logError} from '../../helpers/log-error'
 import EhrDataModel from '../../ehr-definitions/EhrDataModel'
 const debug = require('debug')('server')
@@ -18,71 +17,73 @@ export default class SeedDataController extends BaseController {
   /**
    * Override base method to ensure the ehr meta is updated
    * @param data
+   *       let seedData = {
+   *         name: this.name,
+   *         version: this.version,
+   *         description: this.description,
+   *         contributors: this.contributors,
+   *         ehrData: this.ehrData,
+   *         toolConsumer: StoreHelper.getAuthdConsumerId()
+   *       }
    * @returns {*}
    */
   create (data) {
-    EhrDataModel.updateEhrDataMeta(data.ehrData)
-    // seeds can be uploaded from files. Or created by the server with an older resource
-    // update visitTime to be sure it is ok
-    // Once created we depend on the client to only store '0000' formated visit times.
-    updateAllVisitTime(data.ehrData)
+    debug('SeedData. Create seed with', JSON.stringify(data))
+    // put the data into an EhrDataModel to get the data transformed to the latest version, if needed
+    const ehrDataModel = new EhrDataModel(data.ehrData)
+    data.ehrData = ehrDataModel.ehrData
     return super.create(data)
   }
 
   /**
-   * Update a property inside the EHR seed data.
-   * Also see updateSeedEhrData
+   * Update a property inside the EHR seed data.  Invoked when client saves data while user is editing a seed.
+   * Also see saveSeedEhrData
    * @param id of the seed db doc
-   * @param data containing propertyName and value
+   * @param payload containing propertyName and the new element of ehrData in the value field
    * @return {*} updated doc
    * @see updateAssignmentData in activity-data-controller
    */
-  updateSeedEhrProperty (id, data) {
-    let propertyName = data.propertyName
-    let value = data.value
-    // place date into the ehr data's page element
-    value.lastUpdate = moment().format()
-    debug(`SeedData updateSeedEhrProperty ${id} ehrData[${data.propertyName}] with data:`)
-    // debug('updateSeedEhrProperty ' + JSON.stringify(value))
+  updateSeedEhrProperty (id, payload) {
+    let propertyName = payload.propertyName
+    let value = payload.value
     return this.baseFindOneQuery(id).then(model => {
-      debug('updateSeedEhrProperty search ' + model ? 'ok' : 'fail')
+      debug('upsehrprop search ' + model ? 'ok' : 'fail')
       if (model) {
         if (model.isDefault) {
           throw new NotAllowedError(Text.SEED_NOT_ALLOWED_TO_EDIT_DEFAULT)
         }
-        let data = model.ehrData || {}
-        data[propertyName] = value
-        return this._updateSeed(model, data)
+        let ehrData = model.ehrData || {}
+        value.lastUpdate = moment().format()
+        // place date into the ehr data's page element
+        ehrData[propertyName] = value
+        debug(`SeedData upsehrprop ${id} ehrData[${propertyName}] with data:`)
+        // debug('upsehrprop ' + JSON.stringify(value))
+        return this._saveSeedEhrData(model, ehrData)
       }
     })
   }
 
-  /**
-   * Update the entire ehr seed data
-   * Also see updateSeedEhrProperty
-   * @param id of the seed db doc
-   * @param data containing propertyName and value
-   * @return {*} updated doc
-   */
-  updateSeedEhrData (id, data) {
-    // debug('SeedData updateSeedEhrData '+ id +' ehrData with data: ' + JSON.stringify(data))
-    return this.baseFindOneQuery(id).then(model => {
-      // debug('updateSeedEhrData search ' + model ? 'ok' : 'fail')
-      if (model) {
-        if (model.isDefault) {
-          throw new NotAllowedError(Text.SEED_NOT_ALLOWED_TO_EDIT_DEFAULT)
-        }
-        this._updateSeed(model, data)
-      }
-    })
-  }
-
-  _updateSeed (model, data) {
-    EhrDataModel.updateEhrDataMeta(data)
+  _saveSeedEhrData (model, ehrData) {
+    // Be sure both the seed and activity-data controllers do similar things when they save
+    // ehr data. For example, they both update the metadata
+    // console.log('ehrData.meta before', ehrData ? ehrData.meta : '---')
+    EhrDataModel.updateEhrDataMeta(ehrData)
+    // console.log('ehrData.meta after ', ehrData ? ehrData.meta : '---')
     model.lastUpdateDate = Date.now()
-    model.ehrData = data
+    model.ehrData = ehrData
+    // tell the db to see a change on this subfield
     model.markModified('ehrData')
     return model.save()
+  }
+  updateAndSaveSeedEhrData (id, ehrData) {
+    // put the data into an EhrDataModel to get the data transformed to the latest version, if needed
+    const ehrDataModel = new EhrDataModel(ehrData)
+    ehrData = ehrDataModel.ehrData
+    // console.log('updateAndSaveSeedEhrData', ehrData)
+    //return the inner promise to be sure the caller gets the result
+    return this.baseFindOneQuery(id).then(model => {
+      return this._saveSeedEhrData(model, ehrData)
+    })
   }
 
   deleteSeed (id) {
@@ -110,16 +111,17 @@ export default class SeedDataController extends BaseController {
   route () {
     const router = super.route()
     router.put('/updateSeedEhrProperty/:key/', (req, res) => {
+      debug('SeedController API updateSeedEhrProperty')
       let id = req.params.key
       let data = req.body
       this.updateSeedEhrProperty(id, data)
         .then(ok(res))
         .catch(fail(res))
     })
-    router.put('/updateSeedEhrData/:key/', (req, res) => {
+    router.put('/importSeedEhrData/:key/', (req, res) => {
       let id = req.params.key
       let data = req.body
-      this.updateSeedEhrData(id, data)
+      this.updateAndSaveSeedEhrData(id, data)
         .then(ok(res))
         .catch(fail(res))
     })

@@ -56,13 +56,13 @@ describe(`${typeName} controller testing`, function () {
       })
   })
 
-  it(`${typeName} use updateAssignmentData`, function (done) {
+  it(`${typeName} use putAssignmentData`, function (done) {
     const data = {propertyName: 'someProp', value: { foo : 'bar'}}
-    controller.updateAssignmentData(theActivityData._id, data)
+    controller.putAssignmentData(theActivityData._id, data)
       .then(doc => {
         should.exist(doc)
         doc.should.have.property('assignmentData')
-        // debug('updateAssignmentData results:', doc.assignmentData)
+        // debug('putAssignmentData results:', doc.assignmentData)
         doc.assignmentData.should.have.property(data.propertyName)
         done()
       })
@@ -91,14 +91,4 @@ describe(`${typeName} controller testing`, function () {
       })
   })
 
-  it(`${typeName} use assignmentEvaluated`, function (done) {
-    const data = {value: true}
-    controller.assignmentEvaluated(theActivityData._id, data)
-      .then(doc => {
-        should.exist(doc)
-        doc.should.have.property('evaluated')
-        doc.evaluated.should.equal(data.value)
-        done()
-      })
-  })
 })

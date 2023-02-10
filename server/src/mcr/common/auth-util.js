@@ -1,7 +1,8 @@
 const jwt = require('jsonwebtoken')
 const debug = require('debug')('server')
 const logAuth = require('debug')('auth')
-
+// let Debug = require('debug')
+// Debug.enable('auth')
 
 // set to expire in 1 minute
 const REFRESH_TOKEN_EXPIRES_IN = process.env.NODE_ENV === 'production' ? '1m' : '10s'

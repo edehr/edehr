@@ -81,10 +81,10 @@ export default class BaseController {
       })
   }
 
-  list () {
+  list (filter={}, projection={}) {
     return this.model
-      .find({})
-      .limit(MAX_RESULTS)
+      .find(filter, projection)
+      // .limit(MAX_RESULTS)
       .then((modelInstances) => {
         var response = {}
         response[pluralize(this.modelName)] = modelInstances

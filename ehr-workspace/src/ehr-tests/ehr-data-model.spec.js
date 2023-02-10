@@ -1,6 +1,5 @@
-import { updateAllVisitTime } from '../ehr-definitions/ehr-def-utils'
-import EhrDefs from '../ehr-definitions/ehr-page-defs'
 import EhrDataModel from '../ehr-definitions/EhrDataModel'
+import { updateAllVisitTime } from '../ehr-definitions/ehr-data-model-utils'
 
 const should = require('should')
 const ehrData = {
@@ -71,11 +70,12 @@ const ehrData = {
 }
 
 describe( 'ehr-def-utils work', () => {
-  it('Update ehr data and get simTime', () => {
+  it('visitTimeInEhrData', () => {
     const model = new EhrDataModel(ehrData)
     should.exist(model)
     const data = model.ehrData
     should.exist(data)
+    // this tests visitTimeInEhrData indirectly
     EhrDataModel.updateEhrDataMeta(data)
     data.should.have.property('meta')
     data.meta.should.have.property('simTime')
@@ -85,11 +85,10 @@ describe( 'ehr-def-utils work', () => {
     data.meta.simTime.visitDay.should.equal(0)
   })
 
-  it ('update visit times with util', () => {
-    const pageDefs = EhrDefs
+  it ('updateAllVisitTime', () => {
     let eData = ehrData
-    eData = updateAllVisitTime(eData)
     const model = new EhrDataModel(eData)
+    eData = updateAllVisitTime(model)
     let tData = model.getPageTableData('visit', 'table')
     tData[0].transferInTime.should.equal('0030')
     tData = model.getPageTableData('neurological', 'table')

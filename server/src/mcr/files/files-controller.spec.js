@@ -4,7 +4,7 @@ import { formElementNameForFileUpload } from './files-controller'
 import { Text } from '../../config/text'
 import EhrApp from '../../server/app'
 import Helper from '../common/test-helper'
-import applicationConfiguration from '../../config/config'
+import { applicationConfiguration } from '../../config/config'
 
 const debug = require('debug')('server')
 const should = require('should')
@@ -16,9 +16,9 @@ tokenData.isInstructor = true
 const token = Helper.generateToken(tokenData)
 const url = BASE +'/upload'
 const dataDirectory = 'test-data'
-const ehrApp = new EhrApp()
-
 const configuration = applicationConfiguration('test')
+const ehrApp = new EhrApp(configuration)
+
 function shouldUpload (application, testFileName, done) {
   const testFilePath = path.join(__dirname, dataDirectory, testFileName)
   const expectedPath = path.join(configuration.ehrFilesDirectory, tokenData.toolConsumerId, testFileName)
@@ -121,7 +121,7 @@ describe.skip('Make server calls on files controller', function () {
         done()
       })
   })
-  
+
   it('File upload test file with all unsupported characters', function (done) {
     request(ehrApp.application)
       .post(url)
@@ -139,7 +139,7 @@ describe.skip('Make server calls on files controller', function () {
         done()
       })
   })
-  
+
   it('File upload testFileWithoutExtPath', function (done) {
     request(ehrApp.application)
       .post(url)
@@ -191,7 +191,7 @@ describe.skip('File upload with configuration changes', () => {
     const testFileSizeInBytes = fs.statSync(testFilePath)['size']
     configurationDelta.ehrMaxFileSize = testFileSizeInBytes - 1 // something smaller than the file
     debug('Set configuration to use max file size of ', configurationDelta.ehrMaxFileSize)
-    const ehrAppDelta = new EhrApp()
+    const ehrAppDelta = new EhrApp(configuration)
     ehrAppDelta
       .setup(configurationDelta)
       .then(() => {
@@ -212,7 +212,7 @@ describe.skip('File upload with configuration changes', () => {
     const configurationDelta = applicationConfiguration('test')
     delete configurationDelta.ehrFilesDirectory
 
-    const ehrAppDelta = new EhrApp()
+    const ehrAppDelta = new EhrApp(configuration)
     ehrAppDelta
       .setup(configurationDelta)
       .then(() => {
@@ -235,7 +235,7 @@ describe.skip('File upload with invalid auth', () => {
     const token = Helper.generateToken(tokenData)
 
     const configurationDelta = applicationConfiguration('test')
-    const ehrAppDelta = new EhrApp()
+    const ehrAppDelta = new EhrApp(configuration)
     ehrAppDelta
       .setup(configurationDelta)
       .then(() => {

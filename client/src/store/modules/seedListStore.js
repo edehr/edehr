@@ -184,9 +184,9 @@ const actions = {
    * @param payload { ehrData, id }
    * @return {*}
    */
-  updateSeedEhrData (context, payload) {
-    let url = 'updateSeedEhrData/' + payload.id
-    if(debugSL) console.log('SeedList updateSeedEhrData', url, payload.ehrData)
+  importSeedEhrData (context, payload) {
+    let url = 'importSeedEhrData/' + payload.id
+    if(debugSL) console.log('SeedList importSeedEhrData', url, payload.ehrData)
     return InstoreHelper.putRequest(context, API, url, payload.ehrData)
       .then( () => {
         if(debugSL) console.log('SeedList after seed replace ehr data reload seed list')

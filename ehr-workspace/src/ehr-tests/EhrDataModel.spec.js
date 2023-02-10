@@ -1,8 +1,9 @@
 /**
  * WARNING Do not edit this code unless you are working in the makeEhr common_src directory.  Use the copy script to deployr to both server and client
  */
+import EhrDataModel from '../ehr-definitions/EhrDataModel'
 const should = require('should')
-const EhrDataModel = require('../ehr-definitions/EhrDataModel')
+
 const ehrData = {
   visit: {
     admissionDay: 'Day 0',
@@ -55,7 +56,7 @@ describe( 'EhrDataModel', () => {
     data.should.have.property('admissionDay')
     data.admissionDay.should.equal('Day 0')
     data.should.have.property('admissionTime')
-    data.admissionTime.should.equal('06:00')
+    data.admissionTime.should.equal('0600')
     const result = JSON.stringify(data)
     const expected = JSON.stringify(ehrData.visit)
     const same = result.localeCompare(expected)
@@ -78,7 +79,7 @@ describe( 'EhrDataModel', () => {
     let data = model.getRowData(PK,'table', 0)
     data.should.be.instanceOf(Object)
     data.should.have.property('transferInTime')
-    data.transferInTime.should.equal('00:30')
+    data.transferInTime.should.equal('0030')
   })
   it('updatePageFormData', () => {
     model = new EhrDataModel(Object.assign({},ehrData))

@@ -28,13 +28,13 @@ describe('makeHuman tests', function () {
   it ('makeHuman', () => {
     const results = EhrCheckset.makeHuman('diabetic/neuropathicUlcer', 'integumentaryAssessment', 'stageType')
   })
-  it ('invalid val', (done) => {
+  it ('invalid val will not match for option diabetic', (done) => {
     should.throws( () => {
       EhrCheckset.makeHuman('diabetic', 'integumentaryAssessment', 'stageType')
     }, (err) => {
       should.exist(err)
       should.exist(err.message)
-      console.log(err.message)
+      console.log('Expected error message:\n', err.message)
       err.message.includes('Could not match').should.equal(true)
       done()
     })

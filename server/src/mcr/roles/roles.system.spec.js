@@ -9,11 +9,12 @@ describe(`${typeName} testing`, function () {
     let m = new Role()
     should.exist(m)
     m.should.have.property('isValid')
-    should.ok(!m.isValid)
+    m.isValid.should.equal(true)
     m.should.have.property('isInstructor')
     m.should.have.property('isStudent')
     m.should.have.property('isAdmin')
     m.should.have.property('isDeveloper')
+    m.isStudent.should.equal(true)
   })
 
   it(`${typeName} create student`, function () {
