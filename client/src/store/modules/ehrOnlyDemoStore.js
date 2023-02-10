@@ -51,20 +51,23 @@ const mutations = {
     EhrDataModel.updateEhrDataMeta(state.ehrOnlyEhr)
   },
   selectCaseStudy: (state, key) => {
+    let seed
     if (key === 'wound') {
-      state.ehrOnlySeed = woundSeed.ehrData
+      seed = woundSeed.ehrData
     } else  if (key === 'pbf') {
-      state.ehrOnlySeed = pbfCase.ehrData
+      seed = pbfCase.ehrData
     } else  if (key === 'erin2Seed') {
-      state.ehrOnlySeed = erin2Seed.ehrData
+      seed = erin2Seed.ehrData
     } else  if (key === 'devSeed') {
-      state.ehrOnlySeed = devSeed.ehrData
-    } else {
-      state.ehrOnlySeed = undefined
+      seed = devSeed.ehrData
     }
-    if(state.ehrOnlySeed) {
-      EhrDataModel.updateEhrDataMeta(state.ehrOnlySeed)
+    if(seed) {
+      // by putting the data into an EhrDataModel and then getting the data again we are
+      // sure to be getting the data transformed into the latest version
+      const ehrDataModel = new EhrDataModel(seed)
+      seed = ehrDataModel.ehrData
     }
+    state.ehrOnlySeed = seed
     // console.log('selectCaseStudy state.ehrOnlySeed = ', state.ehrOnlySeed)
   }
 }
