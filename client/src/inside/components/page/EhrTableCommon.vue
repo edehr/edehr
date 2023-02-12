@@ -46,18 +46,6 @@ export default {
     viewReport (pageKey, tableKey, rowIndex) {
       this.$emit('viewReport', pageKey, tableKey, rowIndex)
     }
-  },
-  mounted: function () {
-    const _this = this
-    this.refreshEventHandler = function () {
-      _this.refresh()
-    }
-    EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
-  },
-  beforeDestroy: function () {
-    if (this.refreshEventHandler) {
-      EventBus.$off(PAGE_DATA_REFRESH_EVENT, this.refreshEventHandler)
-    }
   }
 }
 </script>

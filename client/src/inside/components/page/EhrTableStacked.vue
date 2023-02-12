@@ -62,9 +62,6 @@ export default {
     tableColumnCss: function (stack) {
       return stack.tableCss
     },
-    refresh () {
-      // do nothing to do remove
-    },
   },
 
 }

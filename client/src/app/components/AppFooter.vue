@@ -21,7 +21,7 @@
     div(class="footer-section")
       div {{ apiData.appTitle }}
       div {{ authData.timeRemaining }}
-    div(class="error-testing")
+    div(v-if="isAdminZone", class="error-testing")
       button(@click="throwError")  error testing
 </template>
 
@@ -44,6 +44,7 @@ export default {
     classMain () {
       return this.showEdEhrOrg ? 'is-6' : 'is-12'
     },
+    isAdminZone () { return StoreHelper.inZoneAdmin() },
     showEdEhrOrg () {
       return edherorg.isEdEhrOrg()
     },
