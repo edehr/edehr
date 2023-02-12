@@ -9,3 +9,4 @@ services:
     volumes:
       - ./certbot/www/:/var/www/certbot/:rw
       - ./certbot/conf/:/etc/letsencrypt/:rw
+      - ../logs/:/var/log/letsencrypt/:rw
