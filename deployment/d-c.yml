@@ -15,10 +15,9 @@ services:
     ports:
       - "80:80"
       - "443:443"
-    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     volumes:
-      - ../client/published/:/usr/share/nginx/html
-      - ../logs/:/var/log/nginx/
+      - ../client/published/:/usr/share/nginx/html/:ro
+      - ../logs/:/var/log/nginx/:rw
   edehrapp:
     restart: unless-stopped
     build:
@@ -52,11 +51,11 @@ services:
     depends_on:
      - mongo_service
     volumes:
-      - "../server/src/:/usr/src/app/src/"
-      - "../server/resources/:/usr/src/app/resources/"
-      - "../server/api-logs/:/usr/src/app/api-logs/"
-      - "../server/files-common/:/usr/src/app/files-common/"
-      - "../server/files-ehr/:/usr/src/app/files-ehr/"
+      - ../server/src/:/usr/src/app/src/:ro
+      - ../server/resources/:/usr/src/app/resources/:ro
+      - ../server/api-logs/:/usr/src/app/api-logs/:rw
+      - ../server/files-common/:/usr/src/app/files-common/:ro
+      - ../server/files-ehr/:/usr/src/app/files-ehr/:rw
     entrypoint:
       - npm
       - run
