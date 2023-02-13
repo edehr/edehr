@@ -1,5 +1,5 @@
 // noinspection DuplicatedCode
-import { updateAllVisitTime, visitTimeInEhrData } from './ehr-data-model-utils'
+import { updateAllVisitTime, updateMedicationRoute, visitTimeInEhrData } from './ehr-data-model-utils'
 // import { updateV2_1_6 } from './ehr-V2_1_6'
 
 /**
@@ -83,6 +83,12 @@ export default class EhrDataModel {
     this.ehrData = ehrData
   }
 
+  updateDataTo2_1_1 () {
+    const ehrData = updateMedicationRoute(this)
+    ehrData.meta.ehrVersion = 'ev2.1.1'
+    this.ehrData = ehrData
+  }
+
   static updateEhrDataMeta (ehrData) {
     if (ehrData) {
       const meta = ehrData.meta || {}
@@ -93,9 +99,14 @@ export default class EhrDataModel {
   }
 
   updateEhrDataToLatestFormat () {
-    const version = this.metaEhrVersion
+    let version = this.metaEhrVersion
     if (!version) {
       this.updateDataTo2_1_0()
+      version = this.metaEhrVersion
+    }
+    if (version.major <= 2 && version.minor <= 1 && version.patch <= 0) {
+      this.updateDataTo2_1_1()
+      version = this.metaEhrVersion
     }
   }
 }

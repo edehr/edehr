@@ -5,6 +5,71 @@ import EhrTypes from '../ehr-definitions/ehr-types'
 import { convertTimeStr, convertTimeStrToMilTime } from './ehr-def-utils'
 import { EhrPages } from './ehr-models'
 
+export function updateAllVisitTime (ehrDataModel) {
+  const pages = new EhrPages()
+  const pageList = pages.pageList
+  pageList.forEach(page => {
+    const pageKey = page.pageKey
+    if (ehrDataModel.hasData(pageKey)) {
+      // pChildren is an [PageChildElement]
+      const pChildren = page.pageChildren.filter(c => c.inputType === 'visitTime')
+      pChildren.forEach(c => {
+        let d = ehrDataModel.getPageFormData(pageKey, c.elementKey)
+        if(d) {
+          let val = convertTimeStrToMilTime(d)
+          ehrDataModel.updatePageFormData(pageKey, c.elementKey, val)
+        }
+      })
+      // pageTables is a  [ PageTable ]
+      page.pageTables.forEach(table => {
+        const children = table.children
+        const timeChildren = children.filter(c => c.inputType === 'visitTime')
+        const tableKey = table.elementKey
+        const tableData = ehrDataModel.getPageTableData(pageKey, tableKey)
+        if (tableData) {
+          tableData.forEach((row, rowIndex) => {
+            timeChildren.forEach(timeChild => {
+              const k = timeChild.elementKey
+              let elemData = row[k]
+              if(elemData) {
+                let val = convertTimeStrToMilTime(elemData)
+                ehrDataModel.updateRowElem(pageKey, tableKey, rowIndex, k, val)
+              }
+            })
+          })
+        }
+      })
+    }
+  })
+  return ehrDataModel.ehrData
+}
+
+/**
+ * If any medication order was by "Inhalation" change it to "Inhaler"
+ *
+ * @param ehrDataModel
+ * @returns {*}
+ */
+export function updateMedicationRoute (ehrDataModel) {
+  const pageKey= 'medicationOrders'
+  const tableKey= 'table'
+  const elementKey = 'route'
+  const oldVal = 'Inhalation'
+  const newVal = 'Inhaler'
+  if (ehrDataModel.hasData(pageKey)) {
+    const tableData = ehrDataModel.getPageTableData(pageKey, tableKey)
+    if (tableData) {
+      tableData.forEach((row, rowIndex) => {
+        let elemData = row[elementKey]
+        if (elemData === oldVal) {
+          ehrDataModel.updateRowElem(pageKey, tableKey, rowIndex, elementKey, newVal)
+        }
+      })
+    }
+  }
+  return ehrDataModel.ehrData
+}
+
 /*   _visitTimeInEhrData
   * Utility to process a EHR data object and find the simulation time; the largest visit day and time
 currentDay = 0
@@ -78,43 +143,4 @@ export function visitTimeInEhrData (ehrData) {
   return { visitDay: vDay, visitTime: mTime }
 }
 
-
-export function updateAllVisitTime (ehrDataModel) {
-  const pages = new EhrPages()
-  const pageList = pages.pageList
-  pageList.forEach(page => {
-    const pageKey = page.pageKey
-    if (ehrDataModel.hasData(pageKey)) {
-      // pChildren is an [PageChildElement]
-      const pChildren = page.pageChildren.filter(c => c.inputType === 'visitTime')
-      pChildren.forEach(c => {
-        let d = ehrDataModel.getPageFormData(pageKey, c.elementKey)
-        if(d) {
-          let val = convertTimeStrToMilTime(d)
-          ehrDataModel.updatePageFormData(pageKey, c.elementKey, val)
-        }
-      })
-      // pageTables is a  [ PageTable ]
-      page.pageTables.forEach(table => {
-        const children = table.children
-        const timeChildren = children.filter(c => c.inputType === 'visitTime')
-        const tableKey = table.elementKey
-        const tableData = ehrDataModel.getPageTableData(pageKey, tableKey)
-        if (tableData) {
-          tableData.forEach((row, rowIndex) => {
-            timeChildren.forEach(timeChild => {
-              const k = timeChild.elementKey
-              let elemData = row[k]
-              if(elemData) {
-                let val = convertTimeStrToMilTime(elemData)
-                ehrDataModel.updateRowElem(pageKey, tableKey, rowIndex, k, val)
-              }
-            })
-          })
-        }
-      })
-    }
-  })
-  return ehrDataModel.ehrData
-}
 

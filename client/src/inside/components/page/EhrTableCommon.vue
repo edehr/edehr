@@ -2,7 +2,7 @@
 <script>
 import moment from 'moment'
 import { formatDateStr } from '@/helpers/ehr-utils'
-import EventBus, { PAGE_DATA_REFRESH_EVENT } from '@/helpers/event-bus'
+import EventBus from '@/helpers/event-bus'
 import { TABLE_ACTION_EVENT } from '@/helpers/event-bus'
 import StoreHelper from '@/helpers/store-helper'
 
