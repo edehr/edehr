@@ -148,7 +148,7 @@ export default {
             if (process.env.NODE_ENV !== 'production') {
               console.log(`In EhrElementCommon transforming visitDay from "${value} to "${vt}"`)
               // TODO
-              console.log('TODO Create a more general way to transform ehr content when structure changes')
+              console.log('TODO Create a more general way to transform ehr content when structure changes', this.element)
             }
             value = vt
           }

@@ -262,7 +262,10 @@ class StoreHelperWorker {
   async updateAssignment (component, assignmentId, assignmentData) {
     let dataIdPlusPayload = { id: assignmentId, payload: assignmentData }
     await this._dispatchAssignmentList('updateAssignment', dataIdPlusPayload)
-    return this._dispatchAssignment('load', assignmentId)
+    const assignment = await this._dispatchAssignment('load', assignmentId)
+    const seedId = assignment.seedDataId
+    await this._dispatchSeedListProperty('loadSeedContent', seedId)
+    return assignment
   }
   // returns promise that resolves to assignment list
   async createAssignment (assignmentData) {

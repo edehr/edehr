@@ -86,8 +86,8 @@ export default {
       // pageList contains all the ehr page definitions
       const pageList = this.ehrPages.pageList
       const withContent = pageList.filter(pg => statsKeys.includes(pg.pageKey))
-      console.log ('withContent', withContent)
-      console.log( withContent[0] ? withContent[0].pageTitle : '' )
+      // console.log ('withContent', withContent)
+      // console.log( withContent[0] ? withContent[0].pageTitle : '' )
       return withContent.map( pg => pg.pageTitle).sort()
     },
     seed () { return this.$store.getters['seedListStore/seedContent'] },

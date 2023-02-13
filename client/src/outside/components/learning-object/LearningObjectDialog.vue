@@ -104,7 +104,7 @@ export default {
         seedDataId: sId,
         toolConsumer: StoreHelper.getAuthdConsumerId(),
       }
-      console.log('save learning object', aAssignment)
+      // console.log('save learning object', aAssignment)
       this.$refs.theDialog.onClose()
       if (this.actionType === EDIT_ACTION) {
         return StoreHelper.updateAssignment(this, this.assignmentId, aAssignment)

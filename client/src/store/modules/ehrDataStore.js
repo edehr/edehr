@@ -62,7 +62,7 @@ const getters = {
     }
     if (debug) console.log('EhrData type: ' + type, secondLevelData)
 
-    console.log('baseLevelData', baseLevelData)
+    // console.log('baseLevelData', baseLevelData)
     if (secondLevelData) {
       mData = decoupleObject(ehrMergeEhrData(baseLevelData, secondLevelData))
       mData.meta = {}

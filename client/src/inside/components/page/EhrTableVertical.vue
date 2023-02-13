@@ -101,10 +101,6 @@ export default {
     },
     tableColumnCss: function (column) {
     },
-    refresh () {
-      console.log('TODO -- does refresh on table vertical ever get invoked? It\'s not needed so clean up')
-      // this.tableForm = this.ehrHelp.getTableForm(this.tableKey)
-    }
   }
 }
 </script>
