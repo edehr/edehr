@@ -9355,24 +9355,8 @@ const DEFS = {
             'text': 'Oral'
           },
           {
-            'key': 'Sublingual',
-            'text': 'Sublingual'
-          },
-          {
-            'key': 'Inhalation',
-            'text': 'Inhalation'
-          },
-          {
-            'key': 'Nasal',
-            'text': 'Nasal'
-          },
-          {
-            'key': 'Rectal',
-            'text': 'Rectal'
-          },
-          {
-            'key': 'Vaginal',
-            'text': 'Vaginal'
+            'key': 'Inhaler',
+            'text': 'Inhaler'
           },
           {
             'key': 'Intravenous',
@@ -9383,8 +9367,32 @@ const DEFS = {
             'text': 'Intramuscular'
           },
           {
+            'key': 'Nasal',
+            'text': 'Nasal'
+          },
+          {
+            'key': 'Nebulized',
+            'text': 'Nebulized'
+          },
+          {
             'key': 'Subcutaneous',
             'text': 'Subcutaneous'
+          },
+          {
+            'key': 'Sublingual',
+            'text': 'Sublingual'
+          },
+          {
+            'key': 'Rectal',
+            'text': 'Rectal'
+          },
+          {
+            'key': 'Topical',
+            'text': 'Topical'
+          },
+          {
+            'key': 'Vaginal',
+            'text': 'Vaginal'
           }
         ],
         'tableColumn': '4',

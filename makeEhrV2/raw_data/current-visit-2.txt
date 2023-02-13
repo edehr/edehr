@@ -593,14 +593,16 @@ Discharged}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: lookahead}	eCell	{Label: <a href="/assets/static-databases/drug.txt" target="_blank">Medication</a>}	eCell	{elementKey: medication}	{pN: 25}	{fN: 1}	{gN: 2}	{sgN: }	{formCss: grid-span-2-columns}	eCell	{tableLabel: Medication}	{tableColumn: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: Dose}	eCell	{elementKey: dose}	{pN: 25}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Dose}	{tableColumn: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: select}	eCell	{Label: Route}	eCell	{elementKey: route}	{pN: 25}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Route}	{tableColumn: 4}	eCell	eCell	eCell	eCell	"{Options: Oral
-Sublingual
-Inhalation
-Nasal
-Rectal
-Vaginal
+Inhaler
 Intravenous
 Intramuscular
-Subcutaneous}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+Nasal
+Nebulized
+Subcutaneous
+Sublingual
+Rectal
+Topical
+Vaginal}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: visitDay}	eCell	{Label: Start day}	eCell	{elementKey: startMeds}	{pN: 25}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: Start day}	{tableColumn: 5}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: visitDay}	eCell	{Label: End day}	eCell	{elementKey: endMeds}	{pN: 25}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	{tableLabel: End day}	{tableColumn: 6}	{tableCss: hr-table}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	{elementKey: adminGroup}	{pN: 25}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
