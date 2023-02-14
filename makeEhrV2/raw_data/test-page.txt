@@ -54,24 +54,24 @@ all options are selectable}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCe
 {inputType: checkbox}	eCell	{Label: checkbox}	eCell	{elementKey: pcheckbox}	{pN: 41}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	{tableLabel: A bool}	{tableColumn: 1}	eCell	eCell	eCell	{Default_value: TRUE}	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: a checkbox iinput}	eCell	eCell	eCell	eCell	eCell
 {inputType: text}	eCell	{Label: text}	eCell	{elementKey: defaultText}	{pN: 41}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	{tableLabel: Text}	{tableColumn: 3}	{tableCss: hr-table}	eCell	{dependentOn: disable:pcheckbox}	{Default_value: some default}	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: a text input}	eCell	eCell	eCell	eCell	eCell
 {inputType: assetLink}	eCell	{Label: assetLink}	eCell	{elementKey: e6}	{pN: 41}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{assetBase: standardized-assessment-tools}	{assetName: the-canadian-ed-triage-and-acuity-scale.gif}	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: select}	eCell	{elementKey: e7}	{pN: 41}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	{tableLabel: Selects}	{tableColumn: 5}	eCell	eCell	eCell	eCell	"{Options: 1=a choice 1
-2=b choice 1
-3=c choice 1}"	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: p-cValue1}	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: select}	eCell	{elementKey: e8}	{pN: 41}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 5}	eCell	eCell	eCell	eCell	"{Options: 1=a choice 2
-2=b choice 2
-3=c choice 2}"	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: p-cValue1}	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: select}	eCell	{elementKey: e7}	{pN: 41}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	{tableLabel: Selects}	{tableColumn: 5}	eCell	eCell	eCell	eCell	"{Options: 1:=a choice 1
+2:=b choice 1
+3:=c choice 1}"	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: p-cValue1}	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: select}	eCell	{elementKey: e8}	{pN: 41}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 5}	eCell	eCell	eCell	eCell	"{Options: 1:=a choice 2
+2:=b choice 2
+3:=c choice 2}"	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: p-cValue1}	eCell	eCell	eCell	eCell
 {inputType: calculatedValue}	eCell	{Label: calculatedValue}	eCell	{elementKey: p-cValue1}	{pN: 41}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 5}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: a calculated value based on the select 'pselect1' on this page}	eCell	{calculationType: sum}	eCell	eCell	eCell
 {inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 41}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_subgroup}	eCell	{Label: subgroup 1}	eCell	{elementKey: subgroup1}	{pN: 41}	{fN: 1}	{gN: 2}	{sgN: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkset}	eCell	{Label: checkset}	eCell	{elementKey: e10}	{pN: 41}	{fN: 1}	{gN: 2}	{sgN: 1}	eCell	eCell	{tableLabel: Set}	{tableColumn: 4}	eCell	eCell	eCell	{Default_value: check1,other}	"{Options: check1=check option 1
-check2=check option 2
-other=another option
-all=all options are selectable}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkset}	eCell	{Label: checkset}	eCell	{elementKey: e10}	{pN: 41}	{fN: 1}	{gN: 2}	{sgN: 1}	eCell	eCell	{tableLabel: Set}	{tableColumn: 4}	eCell	eCell	eCell	{Default_value: check1,other}	"{Options: check1:=check option 1
+check2:=check option 2
+other:=another option
+all:=all options are selectable}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: ehr_subgroup}	eCell	{Label: subgroup 2}	eCell	{elementKey: subgroup2}	{pN: 41}	{fN: 1}	{gN: 2}	{sgN: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: visitDay}	eCell	{Label: Day}	eCell	{elementKey: dayValue}	{pN: 41}	{fN: 1}	{gN: 2}	{sgN: 2}	eCell	eCell	{tableLabel: Day}	{tableColumn: 7}	eCell	eCell	eCell	eCell	eCell	eCell	{Mandatory: TRUE}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: visitTime}	eCell	{Label: Time}	eCell	{elementKey: timeValue}	{pN: 41}	{fN: 1}	{gN: 2}	{sgN: 2}	eCell	eCell	{tableLabel: Time}	{tableColumn: 8}	eCell	eCell	eCell	eCell	eCell	eCell	{Mandatory: TRUE}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: select}	eCell	{elementKey: forCalc}	{pN: 41}	{fN: 1}	{gN: 2}	{sgN: 2}	eCell	eCell	{tableLabel: Source}	{tableColumn: 9}	eCell	eCell	eCell	eCell	"{Options: 1 = Yes
-2 = No}"	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: p-cValue2}	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: select}	eCell	{elementKey: forCalc}	{pN: 41}	{fN: 1}	{gN: 2}	{sgN: 2}	eCell	eCell	{tableLabel: Source}	{tableColumn: 9}	eCell	eCell	eCell	eCell	"{Options: 1 := Yes
+2 := No}"	eCell	eCell	eCell	eCell	eCell	eCell	{passToFunction: p-cValue2}	eCell	eCell	eCell	eCell
 {inputType: calculatedValue}	eCell	{Label: calculatedValue}	eCell	{elementKey: p-cValue2}	{pN: 41}	{fN: 1}	{gN: 2}	{sgN: 2}	eCell	eCell	{tableLabel: Calculated}	{tableColumn: 10}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{calculationType: sum}	eCell	eCell	eCell
 {inputType: ehr_subgroup}	eCell	{Label: subgroup 3}	eCell	{elementKey: subgroup3}	{pN: 41}	{fN: 1}	{gN: 2}	{sgN: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
 {inputType: checkbox}	eCell	{Label: checkbox}	eCell	{elementKey: g4}	{pN: 41}	{fN: 1}	{gN: 2}	{sgN: 3}	eCell	eCell	{tableLabel: Bool}	{tableColumn: 12}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
