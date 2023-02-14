@@ -1,65 +1,65 @@
-{inputType: page}	{pRef: 29}	{Label: Lab requisitions}	eCell	{elementKey: labRequisitions}	{pN: 24}	{fN: }	{gN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: table_form}	eCell	{Label: Lab requisitions v1}	eCell	{elementKey: table}	{pN: 24}	{fN: 3}	{gN: }	eCell	eCell	eCell	eCell	eCell	eCell	{addButtonText: Add a lab requisition assessment}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 24}	{fN: 3}	{gN: 1}	{sgN: }	{formCss: record-header}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: record_header}	eCell	eCell	eCell	eCell	{pN: 24}	{fN: 3}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	{Label: Demographic}	eCell	{elementKey: demographics}	{pN: 24}	{fN: 3}	{gN: 2}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehrPatientName}	eCell	{Label: Patient Name}	{Comments: get this from demographics}	{elementKey: patientName}	{pN: 24}	{fN: 3}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehrPHN}	eCell	{Label: PHN}	{Comments: get this from demographics}	{elementKey: patientHealthNumber}	{pN: 24}	{fN: 3}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehrDOB}	eCell	{Label: DOB}	{Comments: get this from demographics}	{elementKey: dateOfBirth}	{pN: 24}	{fN: 3}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 4}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehrLocation}	eCell	{Label: Location}	{Comments: get this from location}	{elementKey: location}	{pN: 24}	{fN: 3}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 5}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: visitDay}	eCell	{Label: Date required}	{Comments: day selector}	{elementKey: dateRequired}	{pN: 24}	{fN: 3}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 6}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Reason test is required}	eCell	{elementKey: reason}	{pN: 24}	{fN: 3}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 7}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkset}	eCell	{Label: Hematology}	eCell	{elementKey: hematology}	{pN: 24}	{fN: 3}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 8}	eCell	eCell	eCell	eCell	"{Options: CBC
+{inputType: page}	{pRef: 29}	{Label: Lab requisitions}	eCell	{elementKey: labRequisitions}	{pN: 24}	{fN: }	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: table_form}	eCell	{Label: Lab requisitions v1}	eCell	{elementKey: table}	{pN: 24}	{fN: 1}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	{addButtonText: Add a lab requisition assessment}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 24}	{fN: 1}	{gN: 1}	{sgN: }	{formCss: record-header}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: record_header}	eCell	eCell	eCell	eCell	{pN: 24}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	{Label: Demographic}	eCell	{elementKey: demographics}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehrPatientName}	eCell	{Label: Patient Name}	{Comments: get this from demographics}	{elementKey: patientName}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehrPHN}	eCell	{Label: PHN}	{Comments: get this from demographics}	{elementKey: patientHealthNumber}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehrDOB}	eCell	{Label: DOB}	{Comments: get this from demographics}	{elementKey: dateOfBirth}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 4}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehrLocation}	eCell	{Label: Location}	{Comments: get this from location}	{elementKey: location}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 5}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: visitDay}	eCell	{Label: Date required}	{Comments: day selector}	{elementKey: dateRequired}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 6}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Reason test is required}	eCell	{elementKey: reason}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 7}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkset}	eCell	{Label: Hematology}	eCell	{elementKey: hematology}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 8}	eCell	eCell	eCell	eCell	"{Options: CBC
 CBC with differential
 Hemoglobin A1-C}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkset}	eCell	{Label: Electrolytes}	eCell	{elementKey: electrolytes}	{pN: 24}	{fN: 3}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 9}	eCell	eCell	eCell	eCell	"{Options: K
+{inputType: checkset}	eCell	{Label: Electrolytes}	eCell	{elementKey: electrolytes}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 9}	eCell	eCell	eCell	eCell	"{Options: K
 Na
 Chloride
 Bicarbonate
 Calcium
 Ionized Calcium}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkset}	eCell	{Label: Blood Gas}	eCell	{elementKey: bloodGas}	{pN: 24}	{fN: 3}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 10}	eCell	eCell	eCell	eCell	"{Options: Arterial blood gas
+{inputType: checkset}	eCell	{Label: Blood Gas}	eCell	{elementKey: bloodGas}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 10}	eCell	eCell	eCell	eCell	"{Options: Arterial blood gas
 Venous blood gas
 Fetal cord blood gas}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkset}	eCell	{Label: Renal Profile}	eCell	{elementKey: renalProfile}	{pN: 24}	{fN: 3}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 11}	eCell	eCell	eCell	eCell	"{Options: BUN
+{inputType: checkset}	eCell	{Label: Renal Profile}	eCell	{elementKey: renalProfile}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 11}	eCell	eCell	eCell	eCell	"{Options: BUN
 Creatinine}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkset}	eCell	{Label: Liver Function}	eCell	{elementKey: liverFunction}	{pN: 24}	{fN: 3}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 12}	eCell	eCell	eCell	eCell	"{Options: AST
+{inputType: checkset}	eCell	{Label: Liver Function}	eCell	{elementKey: liverFunction}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 12}	eCell	eCell	eCell	eCell	"{Options: AST
 GGT
 ALT
 Total Birilubin
 Direct Birilubin}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkset}	eCell	{Label: Urine Analysis}	eCell	{elementKey: urineAnalysis}	{pN: 24}	{fN: 3}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 13}	eCell	eCell	eCell	eCell	"{Options: R&M
+{inputType: checkset}	eCell	{Label: Urine Analysis}	eCell	{elementKey: urineAnalysis}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 13}	eCell	eCell	eCell	eCell	"{Options: R&M
 Urine electrolytes
 Urine creatinine}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	{Label: Microbiology}	eCell	{elementKey: microbiology}	{pN: 24}	{fN: 3}	{gN: 3}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Type of Culture}	eCell	{elementKey: microbiologyCulture}	{pN: 24}	{fN: 3}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 14}	eCell	eCell	eCell	eCell	"{Options: culture
+{inputType: ehr_group}	eCell	{Label: Microbiology}	eCell	{elementKey: microbiology}	{pN: 24}	{fN: 1}	{gN: 3}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: Type of Culture}	eCell	{elementKey: microbiologyCulture}	{pN: 24}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 14}	eCell	eCell	eCell	eCell	"{Options: culture
 senstitivity}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Location}	{Comments: `}	{elementKey: microbiologyLocation}	{pN: 24}	{fN: 3}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 15}	eCell	eCell	eCell	eCell	"{Options: Wound
+{inputType: select}	eCell	{Label: Location}	{Comments: `}	{elementKey: microbiologyLocation}	{pN: 24}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 15}	eCell	eCell	eCell	eCell	"{Options: Wound
 Sputum
 Blood
 Urine
 Stool}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	{Label: Histology}	eCell	{elementKey: histology}	{pN: 24}	{fN: 3}	{gN: 4}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Tissue Type}	eCell	{elementKey: histologyTissueType}	{pN: 24}	{fN: 3}	{gN: 4}	{sgN: }	eCell	eCell	eCell	{tableColumn: 16}	eCell	eCell	eCell	eCell	"{Options: Skin
+{inputType: ehr_group}	eCell	{Label: Histology}	eCell	{elementKey: histology}	{pN: 24}	{fN: 1}	{gN: 4}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: Tissue Type}	eCell	{elementKey: histologyTissueType}	{pN: 24}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	eCell	{tableColumn: 16}	eCell	eCell	eCell	eCell	"{Options: Skin
 Blood
 Organ}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Location}	{Comments: `}	{elementKey: histologyLocation}	{pN: 24}	{fN: 3}	{gN: 4}	{sgN: }	eCell	eCell	eCell	{tableColumn: 17}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: table_form}	eCell	{Label: Lab requisitions v2}	eCell	{elementKey: requisitions}	{pN: 24}	{fN: 1}	{gN: }	eCell	eCell	eCell	eCell	eCell	eCell	{addButtonText: Add a lab requisition assessment}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 24}	{fN: 1}	{gN: 1}	{sgN: }	{formCss: record-header}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: record_header}	eCell	eCell	eCell	eCell	{pN: 24}	{fN: 1}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	eCell	eCell	{elementKey: req_notice}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: form_label}	eCell	{Label: This lab requisition form is a prototype.}	eCell	{elementKey: req_noticeLabel}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	{formCss: grid-span-3-columns}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: This version of lab requisitions is under development. Use at your own risk. Recommend you continue to use the other v1 lab req for any work that you want to keep.  When this new lab req is ready all older versions will be converted to the new version.}	eCell	eCell	eCell	eCell	eCell
-{inputType: visitDay}	eCell	{Label: Date required}	{Comments: day selector}	{elementKey: req_dateRequired}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Reason test is required}	eCell	{elementKey: req_reason}	{pN: 24}	{fN: 1}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 24}	{fN: 1}	{gN: 3}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkset}	eCell	{Label: Hematology}	eCell	{elementKey: req_hematology}	{pN: 24}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 4}	eCell	eCell	eCell	eCell	"{Options: CBC:=CBC
+{inputType: text}	eCell	{Label: Location}	{Comments: `}	{elementKey: histologyLocation}	{pN: 24}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	eCell	{tableColumn: 17}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: table_form}	eCell	{Label: Lab requisitions v2}	eCell	{elementKey: requisitions}	{pN: 24}	{fN: 2}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	{addButtonText: Add a lab requisition assessment}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 24}	{fN: 2}	{gN: 1}	{sgN: }	{formCss: record-header}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: record_header}	eCell	eCell	eCell	eCell	{pN: 24}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	eCell	{elementKey: req_notice}	{pN: 24}	{fN: 2}	{gN: 2}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: form_label}	eCell	{Label: This lab requisition form is a prototype.}	eCell	{elementKey: req_noticeLabel}	{pN: 24}	{fN: 2}	{gN: 2}	{sgN: }	{formCss: grid-span-3-columns}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: This version of lab requisitions is under development. Use at your own risk. Recommend you continue to use the other v1 lab req for any work that you want to keep.  When this new lab req is ready all older versions will be converted to the new version.}	eCell	eCell	eCell	eCell	eCell
+{inputType: visitDay}	eCell	{Label: Date required}	{Comments: day selector}	{elementKey: req_dateRequired}	{pN: 24}	{fN: 2}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Reason test is required}	eCell	{elementKey: req_reason}	{pN: 24}	{fN: 2}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 24}	{fN: 2}	{gN: 3}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkset}	eCell	{Label: Hematology}	eCell	{elementKey: req_hematology}	{pN: 24}	{fN: 2}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 4}	eCell	eCell	eCell	eCell	"{Options: CBC:=CBC
 CBC_Diff:=CBC with differential
 ferritin:=Ferritin
 glucoseF:=Glucose fasting
 glucoseR:=Glucose random
 HbA1C:=Hemoglobin A1-C
 HTNT:=Troponin}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkset}	eCell	{Label: Electrolytes}	eCell	{elementKey: req_electrolytes}	{pN: 24}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 5}	eCell	eCell	eCell	eCell	"{Options: hco3:=Bicarbonate (HCO3)
+{inputType: checkset}	eCell	{Label: Electrolytes}	eCell	{elementKey: req_electrolytes}	{pN: 24}	{fN: 2}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 5}	eCell	eCell	eCell	eCell	"{Options: hco3:=Bicarbonate (HCO3)
 CA:=Calcium (Ca)
 Ca_Ion:=Calcium ionized
 chloride:=Chloride (Cl)
@@ -68,16 +68,16 @@ mg:=Magnesium (Mg)
 po4:=Phosphate (PO4)
 k:=Potassium (K)
 na:=Sodium (Na)}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkset}	eCell	{Label: Coagulation}	eCell	{elementKey: req_cogagulation}	{pN: 24}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 6}	eCell	eCell	eCell	eCell	"{Options: fib:=Fibrinogen
+{inputType: checkset}	eCell	{Label: Coagulation}	eCell	{elementKey: req_cogagulation}	{pN: 24}	{fN: 2}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 6}	eCell	eCell	eCell	eCell	"{Options: fib:=Fibrinogen
 ddim:=D-Dimer
 inr:=INR
 ptt:=PTT}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkset}	eCell	{Label: Blood Gas}	eCell	{elementKey: req_bloodGas}	{pN: 24}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 7}	eCell	eCell	eCell	eCell	"{Options: abg:=Arterial blood gas (ABG)
+{inputType: checkset}	eCell	{Label: Blood Gas}	eCell	{elementKey: req_bloodGas}	{pN: 24}	{fN: 2}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 7}	eCell	eCell	eCell	eCell	"{Options: abg:=Arterial blood gas (ABG)
 fcbg:=Venous blood gas (FCBG)
 vbg:=Fetal cord blood gas (VBG)}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkset}	eCell	{Label: Renal Profile}	eCell	{elementKey: req_renalProfile}	{pN: 24}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 8}	eCell	eCell	eCell	eCell	"{Options: bun:=Blood urea nitrogen (BUN)
+{inputType: checkset}	eCell	{Label: Renal Profile}	eCell	{elementKey: req_renalProfile}	{pN: 24}	{fN: 2}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 8}	eCell	eCell	eCell	eCell	"{Options: bun:=Blood urea nitrogen (BUN)
 cr:=Creatinine}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkset}	eCell	{Label: Liver Function}	eCell	{elementKey: req_liverFunction}	{pN: 24}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 9}	eCell	eCell	eCell	eCell	"{Options: alt:=Alanine transaminase (ALT)
+{inputType: checkset}	eCell	{Label: Liver Function}	eCell	{elementKey: req_liverFunction}	{pN: 24}	{fN: 2}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 9}	eCell	eCell	eCell	eCell	"{Options: alt:=Alanine transaminase (ALT)
 alp:=Alkaline phosphatase (ALP)
 ast:=Aspartate transferase (AST)
 bilirubinD:=Bilirubin direct
@@ -85,38 +85,38 @@ bilirubinT:=Bilirubin total
 ggt:=Gamma glutamyl transferase (GGT)
 ldh:=Lactate dehydrogenase (LDH)
 lipase:=Lipase}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkset}	eCell	{Label: Urine Analysis}	eCell	{elementKey: req_urineAnalysis}	{pN: 24}	{fN: 1}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 10}	eCell	eCell	eCell	eCell	"{Options: acr:= Albumin/creatinine ratio (ACR)
+{inputType: checkset}	eCell	{Label: Urine Analysis}	eCell	{elementKey: req_urineAnalysis}	{pN: 24}	{fN: 2}	{gN: 3}	{sgN: }	eCell	eCell	eCell	{tableColumn: 10}	eCell	eCell	eCell	eCell	"{Options: acr:= Albumin/creatinine ratio (ACR)
 rm:=Routine and microscopic (R&M(
 u_el:=Urine electrolytes
 u_cr:=Urine creatinine}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	{Label: Microbiology}	eCell	{elementKey: req_microbiology}	{pN: 24}	{fN: 1}	{gN: 4}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Type of Culture}	eCell	{elementKey: req_microbiologyCulture}	{pN: 24}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	eCell	{tableColumn: 11}	eCell	eCell	eCell	eCell	"{Options: culture
+{inputType: ehr_group}	eCell	{Label: Microbiology}	eCell	{elementKey: req_microbiology}	{pN: 24}	{fN: 2}	{gN: 4}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: Type of Culture}	eCell	{elementKey: req_microbiologyCulture}	{pN: 24}	{fN: 2}	{gN: 4}	{sgN: }	eCell	eCell	eCell	{tableColumn: 11}	eCell	eCell	eCell	eCell	"{Options: culture
 senstitivity}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Location}	{Comments: `}	{elementKey: req_microbiologyLocation}	{pN: 24}	{fN: 1}	{gN: 4}	{sgN: }	eCell	eCell	eCell	{tableColumn: 12}	eCell	eCell	eCell	eCell	"{Options: Wound
+{inputType: select}	eCell	{Label: Location}	{Comments: `}	{elementKey: req_microbiologyLocation}	{pN: 24}	{fN: 2}	{gN: 4}	{sgN: }	eCell	eCell	eCell	{tableColumn: 12}	eCell	eCell	eCell	eCell	"{Options: Wound
 Sputum
 Blood
 Urine
 Stool}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	{Label: Histology}	eCell	{elementKey: req_histology}	{pN: 24}	{fN: 1}	{gN: 5}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Tissue Type}	eCell	{elementKey: req_histologyTissueType}	{pN: 24}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 13}	eCell	eCell	eCell	eCell	"{Options: Skin
+{inputType: ehr_group}	eCell	{Label: Histology}	eCell	{elementKey: req_histology}	{pN: 24}	{fN: 2}	{gN: 5}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: Tissue Type}	eCell	{elementKey: req_histologyTissueType}	{pN: 24}	{fN: 2}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 13}	eCell	eCell	eCell	eCell	"{Options: Skin
 Blood
 Organ}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Location}	{Comments: `}	{elementKey: req_histologyLocation}	{pN: 24}	{fN: 1}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 14}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: table_form}	eCell	{Label: Medical Imaging}	eCell	{elementKey: med_image_req}	{pN: 24}	{fN: 2}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	{addButtonText: Add a lab requisition assessment}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 24}	{fN: 2}	{gN: 1}	{sgN: }	{formCss: record-header}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: record_header}	eCell	eCell	eCell	eCell	{pN: 24}	{fN: 2}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: ehr_group}	eCell	eCell	eCell	{elementKey: mi_notice}	{pN: 24}	{fN: 2}	{gN: 2}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: form_label}	eCell	{Label: This lab requisition form is a prototype.}	eCell	{elementKey: mi_noticeLabel}	{pN: 24}	{fN: 2}	{gN: 2}	{sgN: }	{formCss: grid-span-3-columns}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: This version of lab requisitions is under development. Use at your own risk. Recommend you continue to use the other v1 lab req for any work that you want to keep.  When this new lab req is ready all older versions will be converted to the new version.}	eCell	eCell	eCell	eCell	eCell
-{inputType: visitDay}	eCell	{Label: Date required}	{Comments: day selector}	{elementKey: mi_dateRequired}	{pN: 24}	{fN: 2}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: text}	eCell	{Label: Reason test is required}	eCell	{elementKey: mi_reason}	{pN: 24}	{fN: 2}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: spacer}	eCell	eCell	eCell	eCell	{pN: 24}	{fN: 2}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 4}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Type of diagnositc}	eCell	{elementKey: mi_type}	{pN: 24}	{fN: 2}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 5}	eCell	eCell	eCell	eCell	"{Options: cardioEcho:=Cardio Echo
+{inputType: text}	eCell	{Label: Location}	{Comments: `}	{elementKey: req_histologyLocation}	{pN: 24}	{fN: 2}	{gN: 5}	{sgN: }	eCell	eCell	eCell	{tableColumn: 14}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: table_form}	eCell	{Label: Medical Imaging}	eCell	{elementKey: med_image_req}	{pN: 24}	{fN: 3}	{gN: }	{sgN: }	eCell	eCell	eCell	eCell	eCell	{addButtonText: Add a lab requisition assessment}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	eCell	eCell	{pN: 24}	{fN: 3}	{gN: 1}	{sgN: }	{formCss: record-header}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: record_header}	eCell	eCell	eCell	eCell	{pN: 24}	{fN: 3}	{gN: 1}	{sgN: }	eCell	eCell	eCell	{tableColumn: 1}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: ehr_group}	eCell	eCell	eCell	{elementKey: mi_notice}	{pN: 24}	{fN: 3}	{gN: 2}	{sgN: }	{formCss: section-divider}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: form_label}	eCell	{Label: This lab requisition form is a prototype.}	eCell	{elementKey: mi_noticeLabel}	{pN: 24}	{fN: 3}	{gN: 2}	{sgN: }	{formCss: grid-span-3-columns}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	{helperText: This version of lab requisitions is under development. Use at your own risk. Recommend you continue to use the other v1 lab req for any work that you want to keep.  When this new lab req is ready all older versions will be converted to the new version.}	eCell	eCell	eCell	eCell	eCell
+{inputType: visitDay}	eCell	{Label: Date required}	{Comments: day selector}	{elementKey: mi_dateRequired}	{pN: 24}	{fN: 3}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 2}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: text}	eCell	{Label: Reason test is required}	eCell	{elementKey: mi_reason}	{pN: 24}	{fN: 3}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 3}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: spacer}	eCell	eCell	eCell	eCell	{pN: 24}	{fN: 3}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 4}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: select}	eCell	{Label: Type of diagnositc}	eCell	{elementKey: mi_type}	{pN: 24}	{fN: 3}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 5}	eCell	eCell	eCell	eCell	"{Options: cardioEcho:=Cardio Echo
 ct:=CT Scan
 ultraGen:=General Ultrasound
 mri:=MRI
 nuclear:=Nuclear Medicine
 xray:=X-ray}"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: select}	eCell	{Label: Location}	{Comments: `}	{elementKey: mi_Location}	{pN: 24}	{fN: 2}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 6}	eCell	eCell	eCell	eCell	"{Options: ab:=Abdomen
+{inputType: select}	eCell	{Label: Location}	{Comments: `}	{elementKey: mi_Location}	{pN: 24}	{fN: 3}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 6}	eCell	eCell	eCell	eCell	"{Options: ab:=Abdomen
 armL:=Arm left
 armR:=Arm right
 chest:=Chest
@@ -127,6 +127,6 @@ legL:=Leg left
 legR:=Leg right
 pelvis:=Pelvis
 }"	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: spacer}	eCell	eCell	eCell	eCell	{pN: 24}	{fN: 2}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 7}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: checkbox}	eCell	{Label: Is the test to be performed portably?}	eCell	{elementKey: mi_mobile}	{pN: 24}	{fN: 2}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 8}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
-{inputType: textarea}	eCell	{Label: Comments}	eCell	{elementKey: mi_comments}	{pN: 24}	{fN: 2}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 9}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: spacer}	eCell	eCell	eCell	eCell	{pN: 24}	{fN: 3}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 7}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: checkbox}	eCell	{Label: Is the test to be performed portably?}	eCell	{elementKey: mi_mobile}	{pN: 24}	{fN: 3}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 8}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell
+{inputType: textarea}	eCell	{Label: Comments}	eCell	{elementKey: mi_comments}	{pN: 24}	{fN: 3}	{gN: 2}	{sgN: }	eCell	eCell	eCell	{tableColumn: 9}	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell	eCell

@@ -9036,7 +9036,7 @@ const DEFS = {
     'pageChildren': [
       {
         'elementKey': 'name',
-        'formIndex': '3',
+        'formIndex': '1',
         'inputType': 'practitionerName',
         'label': 'Name',
         'mandatory': true,
@@ -9047,7 +9047,7 @@ const DEFS = {
       },
       {
         'elementKey': 'profession',
-        'formIndex': '3',
+        'formIndex': '1',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
         'mandatory': true,
@@ -9057,7 +9057,7 @@ const DEFS = {
       },
       {
         'elementKey': 'day',
-        'formIndex': '3',
+        'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Day',
         'mandatory': true,
@@ -9068,7 +9068,7 @@ const DEFS = {
       },
       {
         'elementKey': 'time',
-        'formIndex': '3',
+        'formIndex': '1',
         'inputType': 'visitTime',
         'label': 'Time',
         'mandatory': true,
@@ -9079,7 +9079,7 @@ const DEFS = {
       },
       {
         'elementKey': 'patientName',
-        'formIndex': '3',
+        'formIndex': '1',
         'inputType': 'ehrPatientName',
         'label': 'Patient Name',
         'tableColumn': '2',
@@ -9087,7 +9087,7 @@ const DEFS = {
       },
       {
         'elementKey': 'patientHealthNumber',
-        'formIndex': '3',
+        'formIndex': '1',
         'inputType': 'ehrPHN',
         'label': 'PHN',
         'tableColumn': '3',
@@ -9095,7 +9095,7 @@ const DEFS = {
       },
       {
         'elementKey': 'dateOfBirth',
-        'formIndex': '3',
+        'formIndex': '1',
         'inputType': 'ehrDOB',
         'label': 'DOB',
         'tableColumn': '4',
@@ -9103,7 +9103,7 @@ const DEFS = {
       },
       {
         'elementKey': 'location',
-        'formIndex': '3',
+        'formIndex': '1',
         'inputType': 'ehrLocation',
         'label': 'Location',
         'tableColumn': '5',
@@ -9111,7 +9111,7 @@ const DEFS = {
       },
       {
         'elementKey': 'dateRequired',
-        'formIndex': '3',
+        'formIndex': '1',
         'inputType': 'visitDay',
         'label': 'Date required',
         'tableColumn': '6',
@@ -9119,7 +9119,7 @@ const DEFS = {
       },
       {
         'elementKey': 'reason',
-        'formIndex': '3',
+        'formIndex': '1',
         'inputType': 'text',
         'label': 'Reason test is required',
         'tableColumn': '7',
@@ -9127,7 +9127,7 @@ const DEFS = {
       },
       {
         'elementKey': 'hematology',
-        'formIndex': '3',
+        'formIndex': '1',
         'inputType': 'checkset',
         'label': 'Hematology',
         'options': [
@@ -9149,7 +9149,7 @@ const DEFS = {
       },
       {
         'elementKey': 'electrolytes',
-        'formIndex': '3',
+        'formIndex': '1',
         'inputType': 'checkset',
         'label': 'Electrolytes',
         'options': [
@@ -9183,7 +9183,7 @@ const DEFS = {
       },
       {
         'elementKey': 'bloodGas',
-        'formIndex': '3',
+        'formIndex': '1',
         'inputType': 'checkset',
         'label': 'Blood Gas',
         'options': [
@@ -9205,7 +9205,7 @@ const DEFS = {
       },
       {
         'elementKey': 'renalProfile',
-        'formIndex': '3',
+        'formIndex': '1',
         'inputType': 'checkset',
         'label': 'Renal Profile',
         'options': [
@@ -9223,7 +9223,7 @@ const DEFS = {
       },
       {
         'elementKey': 'liverFunction',
-        'formIndex': '3',
+        'formIndex': '1',
         'inputType': 'checkset',
         'label': 'Liver Function',
         'options': [
@@ -9253,7 +9253,7 @@ const DEFS = {
       },
       {
         'elementKey': 'urineAnalysis',
-        'formIndex': '3',
+        'formIndex': '1',
         'inputType': 'checkset',
         'label': 'Urine Analysis',
         'options': [
@@ -9275,7 +9275,7 @@ const DEFS = {
       },
       {
         'elementKey': 'microbiologyCulture',
-        'formIndex': '3',
+        'formIndex': '1',
         'inputType': 'select',
         'label': 'Type of Culture',
         'options': [
@@ -9293,7 +9293,7 @@ const DEFS = {
       },
       {
         'elementKey': 'microbiologyLocation',
-        'formIndex': '3',
+        'formIndex': '1',
         'inputType': 'select',
         'label': 'Location',
         'options': [
@@ -9323,7 +9323,7 @@ const DEFS = {
       },
       {
         'elementKey': 'histologyTissueType',
-        'formIndex': '3',
+        'formIndex': '1',
         'inputType': 'select',
         'label': 'Tissue Type',
         'options': [
@@ -9345,7 +9345,7 @@ const DEFS = {
       },
       {
         'elementKey': 'histologyLocation',
-        'formIndex': '3',
+        'formIndex': '1',
         'inputType': 'text',
         'label': 'Location',
         'tableColumn': '17',
@@ -9353,7 +9353,7 @@ const DEFS = {
       },
       {
         'elementKey': 'name',
-        'formIndex': '1',
+        'formIndex': '2',
         'inputType': 'practitionerName',
         'label': 'Name',
         'mandatory': true,
@@ -9364,7 +9364,7 @@ const DEFS = {
       },
       {
         'elementKey': 'profession',
-        'formIndex': '1',
+        'formIndex': '2',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
         'mandatory': true,
@@ -9374,7 +9374,7 @@ const DEFS = {
       },
       {
         'elementKey': 'day',
-        'formIndex': '1',
+        'formIndex': '2',
         'inputType': 'visitDay',
         'label': 'Day',
         'mandatory': true,
@@ -9385,7 +9385,7 @@ const DEFS = {
       },
       {
         'elementKey': 'time',
-        'formIndex': '1',
+        'formIndex': '2',
         'inputType': 'visitTime',
         'label': 'Time',
         'mandatory': true,
@@ -9396,7 +9396,7 @@ const DEFS = {
       },
       {
         'elementKey': 'req_noticeLabel',
-        'formIndex': '1',
+        'formIndex': '2',
         'formCss': 'grid-span-3-columns',
         'helperText': 'This version of lab requisitions is under development. Use at your own risk. Recommend you continue to use the other v1 lab req for any work that you want to keep.  When this new lab req is ready all older versions will be converted to the new version.',
         'inputType': 'form_label',
@@ -9406,7 +9406,7 @@ const DEFS = {
       },
       {
         'elementKey': 'req_dateRequired',
-        'formIndex': '1',
+        'formIndex': '2',
         'inputType': 'visitDay',
         'label': 'Date required',
         'tableColumn': '2',
@@ -9414,7 +9414,7 @@ const DEFS = {
       },
       {
         'elementKey': 'req_reason',
-        'formIndex': '1',
+        'formIndex': '2',
         'inputType': 'text',
         'label': 'Reason test is required',
         'tableColumn': '3',
@@ -9422,7 +9422,7 @@ const DEFS = {
       },
       {
         'elementKey': 'req_hematology',
-        'formIndex': '1',
+        'formIndex': '2',
         'inputType': 'checkset',
         'label': 'Hematology',
         'options': [
@@ -9460,7 +9460,7 @@ const DEFS = {
       },
       {
         'elementKey': 'req_electrolytes',
-        'formIndex': '1',
+        'formIndex': '2',
         'inputType': 'checkset',
         'label': 'Electrolytes',
         'options': [
@@ -9506,7 +9506,7 @@ const DEFS = {
       },
       {
         'elementKey': 'req_cogagulation',
-        'formIndex': '1',
+        'formIndex': '2',
         'inputType': 'checkset',
         'label': 'Coagulation',
         'options': [
@@ -9532,7 +9532,7 @@ const DEFS = {
       },
       {
         'elementKey': 'req_bloodGas',
-        'formIndex': '1',
+        'formIndex': '2',
         'inputType': 'checkset',
         'label': 'Blood Gas',
         'options': [
@@ -9554,7 +9554,7 @@ const DEFS = {
       },
       {
         'elementKey': 'req_renalProfile',
-        'formIndex': '1',
+        'formIndex': '2',
         'inputType': 'checkset',
         'label': 'Renal Profile',
         'options': [
@@ -9572,7 +9572,7 @@ const DEFS = {
       },
       {
         'elementKey': 'req_liverFunction',
-        'formIndex': '1',
+        'formIndex': '2',
         'inputType': 'checkset',
         'label': 'Liver Function',
         'options': [
@@ -9614,7 +9614,7 @@ const DEFS = {
       },
       {
         'elementKey': 'req_urineAnalysis',
-        'formIndex': '1',
+        'formIndex': '2',
         'inputType': 'checkset',
         'label': 'Urine Analysis',
         'options': [
@@ -9640,7 +9640,7 @@ const DEFS = {
       },
       {
         'elementKey': 'req_microbiologyCulture',
-        'formIndex': '1',
+        'formIndex': '2',
         'inputType': 'select',
         'label': 'Type of Culture',
         'options': [
@@ -9658,7 +9658,7 @@ const DEFS = {
       },
       {
         'elementKey': 'req_microbiologyLocation',
-        'formIndex': '1',
+        'formIndex': '2',
         'inputType': 'select',
         'label': 'Location',
         'options': [
@@ -9688,7 +9688,7 @@ const DEFS = {
       },
       {
         'elementKey': 'req_histologyTissueType',
-        'formIndex': '1',
+        'formIndex': '2',
         'inputType': 'select',
         'label': 'Tissue Type',
         'options': [
@@ -9710,7 +9710,7 @@ const DEFS = {
       },
       {
         'elementKey': 'req_histologyLocation',
-        'formIndex': '1',
+        'formIndex': '2',
         'inputType': 'text',
         'label': 'Location',
         'tableColumn': '14',
@@ -9718,7 +9718,7 @@ const DEFS = {
       },
       {
         'elementKey': 'name',
-        'formIndex': '2',
+        'formIndex': '3',
         'inputType': 'practitionerName',
         'label': 'Name',
         'mandatory': true,
@@ -9729,7 +9729,7 @@ const DEFS = {
       },
       {
         'elementKey': 'profession',
-        'formIndex': '2',
+        'formIndex': '3',
         'inputType': 'practitionerProfession',
         'label': 'Profession',
         'mandatory': true,
@@ -9739,7 +9739,7 @@ const DEFS = {
       },
       {
         'elementKey': 'day',
-        'formIndex': '2',
+        'formIndex': '3',
         'inputType': 'visitDay',
         'label': 'Day',
         'mandatory': true,
@@ -9750,7 +9750,7 @@ const DEFS = {
       },
       {
         'elementKey': 'time',
-        'formIndex': '2',
+        'formIndex': '3',
         'inputType': 'visitTime',
         'label': 'Time',
         'mandatory': true,
@@ -9761,7 +9761,7 @@ const DEFS = {
       },
       {
         'elementKey': 'mi_noticeLabel',
-        'formIndex': '2',
+        'formIndex': '3',
         'formCss': 'grid-span-3-columns',
         'helperText': 'This version of lab requisitions is under development. Use at your own risk. Recommend you continue to use the other v1 lab req for any work that you want to keep.  When this new lab req is ready all older versions will be converted to the new version.',
         'inputType': 'form_label',
@@ -9771,7 +9771,7 @@ const DEFS = {
       },
       {
         'elementKey': 'mi_dateRequired',
-        'formIndex': '2',
+        'formIndex': '3',
         'inputType': 'visitDay',
         'label': 'Date required',
         'tableColumn': '2',
@@ -9779,7 +9779,7 @@ const DEFS = {
       },
       {
         'elementKey': 'mi_reason',
-        'formIndex': '2',
+        'formIndex': '3',
         'inputType': 'text',
         'label': 'Reason test is required',
         'tableColumn': '3',
@@ -9787,14 +9787,14 @@ const DEFS = {
       },
       {
         'elementKey': 'spacer123',
-        'formIndex': '2',
+        'formIndex': '3',
         'inputType': 'spacer',
         'tableColumn': '4',
         'fqn': 'labRequisitions.spacer123'
       },
       {
         'elementKey': 'mi_type',
-        'formIndex': '2',
+        'formIndex': '3',
         'inputType': 'select',
         'label': 'Type of diagnositc',
         'options': [
@@ -9828,7 +9828,7 @@ const DEFS = {
       },
       {
         'elementKey': 'mi_Location',
-        'formIndex': '2',
+        'formIndex': '3',
         'inputType': 'select',
         'label': 'Location',
         'options': [
@@ -9882,14 +9882,14 @@ const DEFS = {
       },
       {
         'elementKey': 'spacer124',
-        'formIndex': '2',
+        'formIndex': '3',
         'inputType': 'spacer',
         'tableColumn': '7',
         'fqn': 'labRequisitions.spacer124'
       },
       {
         'elementKey': 'mi_mobile',
-        'formIndex': '2',
+        'formIndex': '3',
         'inputType': 'checkbox',
         'label': 'Is the test to be performed portably?',
         'tableColumn': '8',
@@ -9897,7 +9897,7 @@ const DEFS = {
       },
       {
         'elementKey': 'mi_comments',
-        'formIndex': '2',
+        'formIndex': '3',
         'inputType': 'textarea',
         'label': 'Comments',
         'tableColumn': '9',
@@ -9905,306 +9905,9 @@ const DEFS = {
       }
     ],
     'pageElements': {
-      'requisitions': {
-        'elementKey': 'requisitions',
-        'pageElementIndex': '1',
-        'tableKey': 'requisitions',
-        'isTable': true,
-        'hasRecHeader': true,
-        'label': 'Lab requisitions v2',
-        'addButtonText': 'Add a lab requisition assessment',
-        'ehr_list': [
-          {
-            'label': 'Identification',
-            'ehr_list_index': '1',
-            'items': [
-              'name',
-              'profession',
-              'day',
-              'time'
-            ]
-          },
-          {
-            'ehr_list_index': '2',
-            'items': [
-              'req_dateRequired'
-            ]
-          },
-          {
-            'ehr_list_index': '3',
-            'items': [
-              'req_reason'
-            ]
-          },
-          {
-            'ehr_list_index': '4',
-            'items': [
-              'req_hematology'
-            ]
-          },
-          {
-            'ehr_list_index': '5',
-            'items': [
-              'req_electrolytes'
-            ]
-          },
-          {
-            'ehr_list_index': '6',
-            'items': [
-              'req_cogagulation'
-            ]
-          },
-          {
-            'ehr_list_index': '7',
-            'items': [
-              'req_bloodGas'
-            ]
-          },
-          {
-            'ehr_list_index': '8',
-            'items': [
-              'req_renalProfile'
-            ]
-          },
-          {
-            'ehr_list_index': '9',
-            'items': [
-              'req_liverFunction'
-            ]
-          },
-          {
-            'ehr_list_index': '10',
-            'items': [
-              'req_urineAnalysis'
-            ]
-          },
-          {
-            'ehr_list_index': '11',
-            'items': [
-              'req_microbiologyCulture'
-            ]
-          },
-          {
-            'ehr_list_index': '12',
-            'items': [
-              'req_microbiologyLocation'
-            ]
-          },
-          {
-            'ehr_list_index': '13',
-            'items': [
-              'req_histologyTissueType'
-            ]
-          },
-          {
-            'ehr_list_index': '14',
-            'items': [
-              'req_histologyLocation'
-            ]
-          }
-        ],
-        'form': {
-          'elementKey': 'requisitions',
-          'label': 'Lab requisitions v2',
-          'addButtonText': 'Add a lab requisition assessment',
-          'formKey': 'requisitions',
-          'ehr_groups': [
-            {
-              'elementKey': 'ehr_group120',
-              'formCss': 'record-header',
-              'gIndex': '1',
-              'gChildren': [
-                'name',
-                'profession',
-                'day',
-                'time'
-              ]
-            },
-            {
-              'elementKey': 'req_notice',
-              'formCss': 'section-divider',
-              'gIndex': '2',
-              'gChildren': [
-                'req_noticeLabel',
-                'req_dateRequired',
-                'req_reason'
-              ]
-            },
-            {
-              'elementKey': 'ehr_group121',
-              'formCss': 'section-divider',
-              'gIndex': '3',
-              'gChildren': [
-                'req_hematology',
-                'req_electrolytes',
-                'req_cogagulation',
-                'req_bloodGas',
-                'req_renalProfile',
-                'req_liverFunction',
-                'req_urineAnalysis'
-              ]
-            },
-            {
-              'elementKey': 'req_microbiology',
-              'label': 'Microbiology',
-              'formCss': 'section-divider',
-              'gIndex': '4',
-              'gChildren': [
-                'req_microbiologyCulture',
-                'req_microbiologyLocation'
-              ]
-            },
-            {
-              'elementKey': 'req_histology',
-              'label': 'Histology',
-              'formCss': 'section-divider',
-              'gIndex': '5',
-              'gChildren': [
-                'req_histologyTissueType',
-                'req_histologyLocation'
-              ]
-            }
-          ],
-          'ehr_data': {
-            'name': '',
-            'profession': '',
-            'day': '',
-            'time': '',
-            'req_dateRequired': '',
-            'req_reason': '',
-            'req_hematology': '',
-            'req_electrolytes': '',
-            'req_cogagulation': '',
-            'req_bloodGas': '',
-            'req_renalProfile': '',
-            'req_liverFunction': '',
-            'req_urineAnalysis': '',
-            'req_microbiologyCulture': '',
-            'req_microbiologyLocation': '',
-            'req_histologyTissueType': '',
-            'req_histologyLocation': ''
-          }
-        }
-      },
-      'med_image_req': {
-        'elementKey': 'med_image_req',
-        'pageElementIndex': '2',
-        'tableKey': 'med_image_req',
-        'isTable': true,
-        'hasRecHeader': true,
-        'label': 'Medical Imaging',
-        'addButtonText': 'Add a lab requisition assessment',
-        'ehr_list': [
-          {
-            'label': 'Identification',
-            'ehr_list_index': '1',
-            'items': [
-              'name',
-              'profession',
-              'day',
-              'time'
-            ]
-          },
-          {
-            'ehr_list_index': '2',
-            'items': [
-              'mi_dateRequired'
-            ]
-          },
-          {
-            'ehr_list_index': '3',
-            'items': [
-              'mi_reason'
-            ]
-          },
-          {
-            'ehr_list_index': '4',
-            'items': [
-              'spacer123'
-            ]
-          },
-          {
-            'ehr_list_index': '5',
-            'items': [
-              'mi_type'
-            ]
-          },
-          {
-            'ehr_list_index': '6',
-            'items': [
-              'mi_Location'
-            ]
-          },
-          {
-            'ehr_list_index': '7',
-            'items': [
-              'spacer124'
-            ]
-          },
-          {
-            'ehr_list_index': '8',
-            'items': [
-              'mi_mobile'
-            ]
-          },
-          {
-            'ehr_list_index': '9',
-            'items': [
-              'mi_comments'
-            ]
-          }
-        ],
-        'form': {
-          'elementKey': 'med_image_req',
-          'label': 'Medical Imaging',
-          'addButtonText': 'Add a lab requisition assessment',
-          'formKey': 'med_image_req',
-          'ehr_groups': [
-            {
-              'elementKey': 'ehr_group122',
-              'formCss': 'record-header',
-              'gIndex': '1',
-              'gChildren': [
-                'name',
-                'profession',
-                'day',
-                'time'
-              ]
-            },
-            {
-              'elementKey': 'mi_notice',
-              'formCss': 'section-divider',
-              'gIndex': '2',
-              'gChildren': [
-                'mi_noticeLabel',
-                'mi_dateRequired',
-                'mi_reason',
-                'spacer123',
-                'mi_type',
-                'mi_Location',
-                'spacer124',
-                'mi_mobile',
-                'mi_comments'
-              ]
-            }
-          ],
-          'ehr_data': {
-            'name': '',
-            'profession': '',
-            'day': '',
-            'time': '',
-            'mi_dateRequired': '',
-            'mi_reason': '',
-            'mi_type': '',
-            'mi_Location': '',
-            'mi_mobile': '',
-            'mi_comments': ''
-          }
-        }
-      },
       'table': {
         'elementKey': 'table',
-        'pageElementIndex': '3',
+        'pageElementIndex': '1',
         'tableKey': 'table',
         'isTable': true,
         'hasRecHeader': true,
@@ -10397,6 +10100,303 @@ const DEFS = {
             'microbiologyLocation': '',
             'histologyTissueType': '',
             'histologyLocation': ''
+          }
+        }
+      },
+      'requisitions': {
+        'elementKey': 'requisitions',
+        'pageElementIndex': '2',
+        'tableKey': 'requisitions',
+        'isTable': true,
+        'hasRecHeader': true,
+        'label': 'Lab requisitions v2',
+        'addButtonText': 'Add a lab requisition assessment',
+        'ehr_list': [
+          {
+            'label': 'Identification',
+            'ehr_list_index': '1',
+            'items': [
+              'name',
+              'profession',
+              'day',
+              'time'
+            ]
+          },
+          {
+            'ehr_list_index': '2',
+            'items': [
+              'req_dateRequired'
+            ]
+          },
+          {
+            'ehr_list_index': '3',
+            'items': [
+              'req_reason'
+            ]
+          },
+          {
+            'ehr_list_index': '4',
+            'items': [
+              'req_hematology'
+            ]
+          },
+          {
+            'ehr_list_index': '5',
+            'items': [
+              'req_electrolytes'
+            ]
+          },
+          {
+            'ehr_list_index': '6',
+            'items': [
+              'req_cogagulation'
+            ]
+          },
+          {
+            'ehr_list_index': '7',
+            'items': [
+              'req_bloodGas'
+            ]
+          },
+          {
+            'ehr_list_index': '8',
+            'items': [
+              'req_renalProfile'
+            ]
+          },
+          {
+            'ehr_list_index': '9',
+            'items': [
+              'req_liverFunction'
+            ]
+          },
+          {
+            'ehr_list_index': '10',
+            'items': [
+              'req_urineAnalysis'
+            ]
+          },
+          {
+            'ehr_list_index': '11',
+            'items': [
+              'req_microbiologyCulture'
+            ]
+          },
+          {
+            'ehr_list_index': '12',
+            'items': [
+              'req_microbiologyLocation'
+            ]
+          },
+          {
+            'ehr_list_index': '13',
+            'items': [
+              'req_histologyTissueType'
+            ]
+          },
+          {
+            'ehr_list_index': '14',
+            'items': [
+              'req_histologyLocation'
+            ]
+          }
+        ],
+        'form': {
+          'elementKey': 'requisitions',
+          'label': 'Lab requisitions v2',
+          'addButtonText': 'Add a lab requisition assessment',
+          'formKey': 'requisitions',
+          'ehr_groups': [
+            {
+              'elementKey': 'ehr_group120',
+              'formCss': 'record-header',
+              'gIndex': '1',
+              'gChildren': [
+                'name',
+                'profession',
+                'day',
+                'time'
+              ]
+            },
+            {
+              'elementKey': 'req_notice',
+              'formCss': 'section-divider',
+              'gIndex': '2',
+              'gChildren': [
+                'req_noticeLabel',
+                'req_dateRequired',
+                'req_reason'
+              ]
+            },
+            {
+              'elementKey': 'ehr_group121',
+              'formCss': 'section-divider',
+              'gIndex': '3',
+              'gChildren': [
+                'req_hematology',
+                'req_electrolytes',
+                'req_cogagulation',
+                'req_bloodGas',
+                'req_renalProfile',
+                'req_liverFunction',
+                'req_urineAnalysis'
+              ]
+            },
+            {
+              'elementKey': 'req_microbiology',
+              'label': 'Microbiology',
+              'formCss': 'section-divider',
+              'gIndex': '4',
+              'gChildren': [
+                'req_microbiologyCulture',
+                'req_microbiologyLocation'
+              ]
+            },
+            {
+              'elementKey': 'req_histology',
+              'label': 'Histology',
+              'formCss': 'section-divider',
+              'gIndex': '5',
+              'gChildren': [
+                'req_histologyTissueType',
+                'req_histologyLocation'
+              ]
+            }
+          ],
+          'ehr_data': {
+            'name': '',
+            'profession': '',
+            'day': '',
+            'time': '',
+            'req_dateRequired': '',
+            'req_reason': '',
+            'req_hematology': '',
+            'req_electrolytes': '',
+            'req_cogagulation': '',
+            'req_bloodGas': '',
+            'req_renalProfile': '',
+            'req_liverFunction': '',
+            'req_urineAnalysis': '',
+            'req_microbiologyCulture': '',
+            'req_microbiologyLocation': '',
+            'req_histologyTissueType': '',
+            'req_histologyLocation': ''
+          }
+        }
+      },
+      'med_image_req': {
+        'elementKey': 'med_image_req',
+        'pageElementIndex': '3',
+        'tableKey': 'med_image_req',
+        'isTable': true,
+        'hasRecHeader': true,
+        'label': 'Medical Imaging',
+        'addButtonText': 'Add a lab requisition assessment',
+        'ehr_list': [
+          {
+            'label': 'Identification',
+            'ehr_list_index': '1',
+            'items': [
+              'name',
+              'profession',
+              'day',
+              'time'
+            ]
+          },
+          {
+            'ehr_list_index': '2',
+            'items': [
+              'mi_dateRequired'
+            ]
+          },
+          {
+            'ehr_list_index': '3',
+            'items': [
+              'mi_reason'
+            ]
+          },
+          {
+            'ehr_list_index': '4',
+            'items': [
+              'spacer123'
+            ]
+          },
+          {
+            'ehr_list_index': '5',
+            'items': [
+              'mi_type'
+            ]
+          },
+          {
+            'ehr_list_index': '6',
+            'items': [
+              'mi_Location'
+            ]
+          },
+          {
+            'ehr_list_index': '7',
+            'items': [
+              'spacer124'
+            ]
+          },
+          {
+            'ehr_list_index': '8',
+            'items': [
+              'mi_mobile'
+            ]
+          },
+          {
+            'ehr_list_index': '9',
+            'items': [
+              'mi_comments'
+            ]
+          }
+        ],
+        'form': {
+          'elementKey': 'med_image_req',
+          'label': 'Medical Imaging',
+          'addButtonText': 'Add a lab requisition assessment',
+          'formKey': 'med_image_req',
+          'ehr_groups': [
+            {
+              'elementKey': 'ehr_group122',
+              'formCss': 'record-header',
+              'gIndex': '1',
+              'gChildren': [
+                'name',
+                'profession',
+                'day',
+                'time'
+              ]
+            },
+            {
+              'elementKey': 'mi_notice',
+              'formCss': 'section-divider',
+              'gIndex': '2',
+              'gChildren': [
+                'mi_noticeLabel',
+                'mi_dateRequired',
+                'mi_reason',
+                'spacer123',
+                'mi_type',
+                'mi_Location',
+                'spacer124',
+                'mi_mobile',
+                'mi_comments'
+              ]
+            }
+          ],
+          'ehr_data': {
+            'name': '',
+            'profession': '',
+            'day': '',
+            'time': '',
+            'mi_dateRequired': '',
+            'mi_reason': '',
+            'mi_type': '',
+            'mi_Location': '',
+            'mi_mobile': '',
+            'mi_comments': ''
           }
         }
       }

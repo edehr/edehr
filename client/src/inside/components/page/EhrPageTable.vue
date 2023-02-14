@@ -45,7 +45,6 @@ import EhrTypes from '@/ehr-definitions/ehr-types'
 import EhrCheckset from '@/ehr-definitions/ehr-checkset'
 import EhrData from '@/inside/components/page/ehr-data'
 import EhrTableDraft from '@/inside/components/page/ehr-table-draft'
-import StoreHelper from '@/helpers/store-helper'
 
 export default {
   components: {
