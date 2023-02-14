@@ -2,8 +2,9 @@
   "patient-profile": "0c7828a51523c921d4f23ffe6b9b664d",
   "current-visit-1": "8c45b06917d9d2b8ff04aa31c3b8ee4b",
   "current-visit-2": "78a9bf2e9b77526359f3a51388ed5b3e",
-  "current-visit-3": "c5a8d345a7a2b210d13adbffe847b9ef",
-  "patient-chart": "601d89d6aa7336be069fc591e4c143b8",
+  "current-visit-3": "6ebeb8348acd70e1ff671fc558f6dd67",
+  "patient-chart": "84bf82423f2af22ccc8be1dc7ebcecfb",
   "external-resources": "85b118fec4f961aa99d8e0e5f9371bfe",
-  "test-page": "73d3ffdfdc977a93e2cb0f0ba6bb5da9"
+  "test-page": "73d3ffdfdc977a93e2cb0f0ba6bb5da9",
+  "patient-chart-2": "f473be84434fd6ccc6534de3d641a8ba"
 }

@@ -102,20 +102,39 @@ class RawHelper {
     }
   }
 
-  _prepareHelperText(src, dest) {
-    if (src.helperText) {
-      let text = []
-      let html = []
-      let parts = src.helperText.split(nlSep)
+  _prepareMultilineHypertext(inputText) {
+    let html = []
+    if (inputText) {
+      let parts = inputText.split(nlSep)
       parts.forEach(p => {
-        text.push(p)
         html.push('<p>' + p + '</p>')
       })
-      dest.helperHtml = html.join('\n')
-      dest.helperText = text.join('\n')
     }
+    return html.join('\n')
+  }
+  _prepareMultilineText(inputText) {
+    let text = []
+    if (inputText) {
+      let parts = inputText.split(nlSep)
+      parts.forEach(p => {
+        text.push(p)
+      })
+    }
+    return text.join('\n')
   }
 
+  _prepareHelperText(src, dest) {
+    if (src.helperText) {
+      dest.helperHtml = this._prepareMultilineHypertext(src.helperText)
+      dest.helperText = this._prepareMultilineText(src.helperText)
+    }
+  }
+  _prepareSuffixText (src, dest) {
+    if (src.suffix) {
+      dest.suffixText = this._prepareMultilineHypertext(src.suffix)
+      dest.suffixHtml = this._prepareMultilineText(src.suffix)
+    }
+  }
   _transferProperties (src, propertyList) {
     let dest = {}
     propertyList.forEach(prop => {

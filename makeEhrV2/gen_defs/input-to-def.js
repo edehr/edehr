@@ -244,6 +244,7 @@ class RawInputToDef {
     pageChild.fqn = this._makeFQN(page, entry)
     rawHelper._prepareDropDownOptions(entry, pageChild)
     rawHelper._prepareHelperText(entry, pageChild)
+    rawHelper._prepareSuffixText(entry, pageChild)
     // *********** place page child in page
     page.pageChildren.push(pageChild)
 
