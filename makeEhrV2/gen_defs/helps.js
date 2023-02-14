@@ -147,6 +147,7 @@ class RawHelper {
 
   /**
    * Fields may have data that spans multiple lines.
+   * The target root must include its colon.  E.g. "Options:"  and "Suffix:"
    * Search the entire contents for "{ sometext followed by multiline content up to the closing }"
    * Replace with { sometext followed by the contents of each line surrounded by double quotes
    * For example the following ...

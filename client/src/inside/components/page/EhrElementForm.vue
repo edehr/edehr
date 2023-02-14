@@ -52,6 +52,13 @@
           :inputVal="inputVal"
         )
 
+    div(v-else-if="isType('lab_result')", class="lab_result_wrapper")
+      div(class="lab_result_element")
+        ehr-page-form-label(:element="element", css="lab_result_label")
+        input(v-if="!viewOnly", class="input text-input", :disabled="disabled", :name="elementKey", v-model="inputVal")
+        div(v-if="viewOnly") {{ inputVal }}
+        div(class="lab_result_suffix", v-text-to-html="element.suffixHtml")
+
     div(v-else-if="isType('mainDOB')")
       ehr-element-birth-date(
         :elementKey="elementKey",

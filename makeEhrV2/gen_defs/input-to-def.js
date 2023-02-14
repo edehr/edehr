@@ -85,14 +85,14 @@ const pageProperties2 = [
 // Fields may have data that spans multiple lines.
 // Replace linefeeds with a marker we can use to mark the end of each line.
 // **** !!!! Use labels as found in the inputs spreadsheet before they are converted to camelCase !!! ***
+// **** !!!! Include the : !!! ***
 const mlFields = [
   'Label:',
   'Options:',
   'Data_case_study:',
-  'Label:',
   'helperText:',
   'Notes:',
-  'Mandatory'
+  'Suffix:'
 ]
 
 /* To create unique keys for non-data items that are missing elementKey */
