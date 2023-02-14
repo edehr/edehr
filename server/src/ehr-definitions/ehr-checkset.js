@@ -23,7 +23,7 @@ export default class EhrCheckset {
     return val.filter( v => v.length > 0).join(',')
   }
 
-  static makeHuman (val, pageDataKey, elementKey) {
+  static makeHuman (inputValue, pageDataKey, elementKey) {
     let results
     const PK =  pageDataKey + '.' + elementKey
     const element = EhrDefs.getPageChildElement(pageDataKey, elementKey)
@@ -36,20 +36,20 @@ export default class EhrCheckset {
       throw new Error(errMsg)
     }
     const options = element.options
-    if (typeof val !== 'string') {
-      if (val !== undefined) {
-        console.log('TODO Ehr checkset. Handle legacy seeds with boolean values', val, PK)
+    if (typeof inputValue !== 'string') {
+      if (inputValue !== undefined) {
+        console.log('TODO Ehr checkset. Handle legacy seeds with boolean values', inputValue, PK)
       }
-      return val
+      return inputValue
     }
-    if ( val === '') {
-      return val // empty string is okay
+    if ( inputValue === '') {
+      return inputValue // empty string is okay
     }
-    const parts = val.split(',')
-    const human = parts.map(p => {
+    const inputParts = inputValue.split(',')
+    const human = inputParts.map(p => {
       const fnd = options.find( opt => opt.key === p )
       if (!fnd) {
-        const errMsg = 'Could not match checkset for option "' + p + '" from value "' + val +
+        const errMsg = 'Could not match checkset for option "' + p + '" from value "' + inputValue +
           '". ' + PK + ' ' + JSON.stringify(options)
         throw new Error(errMsg)
       }

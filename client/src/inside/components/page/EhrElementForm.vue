@@ -2,6 +2,8 @@
   div(class="form-element", :class='{invalidElement : !validData}')
     div(v-if="isType('form_label')")
       div(v-html="label", class='form_label_wrapper')
+      ui-info(v-if="helperText", :title="label", :html="helperHtml", :text="helperText")
+
 
     div(v-else-if="isType('assetLink')", class="assetLink")
       a(:href="assetUrl()", target="_blank")
@@ -138,13 +140,13 @@ import EhrElementEmbedded from '@/inside/components/page/EhrElementEmbedded'
 import EhrElementFile from './EhrElementFile'
 import EhrElementPatient from '@/inside/components/page/EhrElementPatient'
 import EhrElementLookup from './EhrElementLookup.vue'
-import UiInfo from '@/app/ui/UiInfo'
 import EhrTypes from '@/ehr-definitions/ehr-types'
 import EhrElementSimTime from '@/inside/components/page/EhrElementSimTime'
 import EhrElementBirthDate from '@/inside/components/page/EhrElementBirthDate'
 import EhrElementPractitioner from '@/inside/components/page/EhrElementPractitioner'
 import EhrElementProfession from '@/inside/components/page/EhrElementProfession'
 import EhrElementMedication from '@/inside/components/page/EhrElementMedication'
+import UiInfo from '@/app/ui/UiInfo'
 
 export default {
   name: 'EhrElementForm',

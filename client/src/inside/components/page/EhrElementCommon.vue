@@ -39,6 +39,8 @@ export default {
     element () {
       return EhrDefs.getPageChildElement(this.pageDataKey, this.elementKey)
     },
+    helperText () { return this.element.helperText },
+    helperHtml () { return this.element.helperHtml },
     _id () { return this.tableKey + '.' + this.element.fqn},
     inputId () {
       return this.elementKey + this.element.inputType
