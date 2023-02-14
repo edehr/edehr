@@ -111,16 +111,11 @@ export default {
           let dataRow = JSON.parse(JSON.stringify(rowTemplate)) // deep copy the array
           Object.values(dataRow).forEach((templateCell) => {
             templateCell.stack.forEach((cell) => {
-              let val = dbRow[cell.key] === 0 ? '0' : dbRow[cell.key]
+              let dbVal = dbRow[cell.key] === 0 ? '0' : dbRow[cell.key]
               if (cell.inputType === EhrTypes.dataInputTypes.checkset) {
-                try {
-                  val = EhrCheckset.makeHuman(val, pageDataKey, cell.key)
-                } catch (err) {
-                  // TODO Remove this try catch and let main.js global handler manage. Wait until new checkset work is tried and true even in production
-                  StoreHelper.setApiError(err.message)
-                }
+                dbVal = EhrCheckset.makeHuman(dbVal, pageDataKey, cell.key)
               }
-              cell.value = val || ''
+              cell.value = dbVal || ''
               cell.tableCss = templateCell.tableCss
             })
           })

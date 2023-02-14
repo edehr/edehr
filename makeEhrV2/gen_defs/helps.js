@@ -66,17 +66,21 @@ class RawHelper {
         let parts = src.options.split(nlSep)
         dest.options = parts.map(p => {
           // github issue #1068 make the key match db values
+          // As of ev2.1.1 can split on ':=', if present use the sub-parts otherwise key and text are the same
           let key = camelCase(p)
           let text = p
-          // 2. Split on '=', if present use the sub-parts otherwise key and text are the same
-          let kv = p.split(':=')
+          let kv
+          kv = p.split(':=')
           if (kv.length === 2) {
-            //after github issue #1068 was fixed we should not see checkset options with :=
-            console.error('ERROR CHECKSET WITH :=', dest.fqn)
-          }
-          kv = text.split('=')
-          if (kv.length === 2) {
-            console.log('CHECKSET WITH =', dest.fqn)
+            // after github issue #1068 was fixed we should not see checkset options with :=
+            // now wish to restore ability to define key/value pairs for checkset options
+            key = kv[0].trim()
+            text = kv[1].trim()
+          } else {
+            kv = text.split('=')
+            if (kv.length === 2) {
+              console.error('CHECKSET WITH =', dest.fqn)
+            }
           }
           return { key: key, text: text }
         })
