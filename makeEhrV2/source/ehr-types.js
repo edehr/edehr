@@ -31,6 +31,7 @@ const EhrTypes = {
     // day: 'day',
     ehrFile: 'ehrFile',
     ehr_embedded: 'ehr_embedded',
+    lab_result: 'lab_result', // lab result value with range in the options property
     mainDOB: 'mainDOB', // main edit field on demographics page. Year is computed base on dependant age field.
     personAge: 'personAge',
     practitionerName: 'practitionerName',

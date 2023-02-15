@@ -32,6 +32,7 @@ function getSheets(auth) {
   getSheet(sheets, INPUT_SPREADSHEET_ID, 'External'+RANGE, 'raw_data/external-resources.txt')
   getSheet(sheets, INPUT_SPREADSHEET_ID, 'pProfile'+RANGE, 'raw_data/patient-profile.txt')
   getSheet(sheets, INPUT_SPREADSHEET_ID, 'pChart'+RANGE, 'raw_data/patient-chart.txt')
+  getSheet(sheets, INPUT_SPREADSHEET_ID, 'pChart-2'+RANGE, 'raw_data/patient-chart-2.txt')
   getSheet(sheets, INPUT_SPREADSHEET_ID, 'TestPage'+RANGE, 'raw_data/test-page.txt')
   getSheet(sheets, INPUT_SPREADSHEET_ID, 'CV-1'+RANGE, 'raw_data/current-visit-1.txt')
   getSheet(sheets, INPUT_SPREADSHEET_ID, 'CV-2'+RANGE, 'raw_data/current-visit-2.txt')

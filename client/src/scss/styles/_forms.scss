@@ -137,9 +137,48 @@ input:disabled, textarea:disabled, select:disabled, checkbox:disabled, radio:dis
   position: relative;
   display: flex;
   align-content: space-between
-
 }
 
+.lab_result_wrapper {
+  /*
+   EHR dialog form element of input type lab_result. These contain a label, small text input for a number and
+   a "normal range" suffix.
+
+   The lab_result elements each have their own row in the form.
+   */
+  display: block;
+
+  input {
+    max-width: 8rem;
+  }
+
+  .lab_result_element {
+    display: flex;
+    flex-flow: row;
+  }
+
+  .lab_result_label {
+    display: inline-block;
+    label {
+      min-width: 20rem;
+      /* Drop the label a little to line up with text in the input. There is a better way to do this.*/
+      padding-top: 5px;
+    }
+  }
+  .lab_result_suffix {
+    display: inline-block;
+    margin-left: 5px;
+    /* pad the range to match label if there is just one line. Don't pad if multi-lined*/
+    p {
+      padding: 0;
+      margin: 0;
+    }
+    p:only-child {
+      padding-top: 5px;
+    }
+  }
+
+}
 .checkbox_wrapper {
     margin-bottom: .625em;
 }

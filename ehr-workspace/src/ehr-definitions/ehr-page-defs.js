@@ -56,7 +56,9 @@ const DEFS = {
         'inputType': 'text',
         'label': 'Height',
         'suffix': 'cm',
-        'fqn': 'demographics.height'
+        'fqn': 'demographics.height',
+        'suffixText': '<p>cm</p>',
+        'suffixHtml': 'cm'
       },
       {
         'elementKey': 'weight',
@@ -64,7 +66,9 @@ const DEFS = {
         'inputType': 'text',
         'label': 'Weight',
         'suffix': 'kg',
-        'fqn': 'demographics.weight'
+        'fqn': 'demographics.weight',
+        'suffixText': '<p>kg</p>',
+        'suffixHtml': 'kg'
       },
       {
         'elementKey': 'gender',
@@ -2082,7 +2086,9 @@ const DEFS = {
         'tableColumn': '5',
         'tableLabel': 'Temperature',
         'validation': 'numeric',
-        'fqn': 'vitals.temperature'
+        'fqn': 'vitals.temperature',
+        'suffixText': '<p>Celcius</p>',
+        'suffixHtml': 'Celcius'
       },
       {
         'elementKey': 'source',
@@ -2198,7 +2204,9 @@ const DEFS = {
         'tableColumn': '11',
         'tableLabel': 'Oxygen saturation',
         'validation': 'numeric',
-        'fqn': 'vitals.oxygenSaturation'
+        'fqn': 'vitals.oxygenSaturation',
+        'suffixText': '<p>%</p>',
+        'suffixHtml': '%'
       },
       {
         'elementKey': 'oxygenMode',
@@ -2240,7 +2248,9 @@ const DEFS = {
         'tableColumn': '13',
         'tableLabel': 'Flow rate',
         'validation': 'numeric',
-        'fqn': 'vitals.flowRate'
+        'fqn': 'vitals.flowRate',
+        'suffixText': '<p>/lpm</p>',
+        'suffixHtml': '/lpm'
       },
       {
         'elementKey': 'bloodSugar',
@@ -2251,7 +2261,9 @@ const DEFS = {
         'tableColumn': '14',
         'tableLabel': 'Blood sugar',
         'validation': 'numeric',
-        'fqn': 'vitals.bloodSugar'
+        'fqn': 'vitals.bloodSugar',
+        'suffixText': '<p>mmol/L</p>',
+        'suffixHtml': 'mmol/L'
       },
       {
         'elementKey': 'cvp',
@@ -3911,7 +3923,9 @@ const DEFS = {
         'tableColumn': '4',
         'tableCss': 'hr-table',
         'tableLabel': 'Flow rate',
-        'fqn': 'respiratory.flowRate'
+        'fqn': 'respiratory.flowRate',
+        'suffixText': '<p>/lpm</p>',
+        'suffixHtml': '/lpm'
       },
       {
         'elementKey': 'lul',
@@ -7300,7 +7314,9 @@ const DEFS = {
         'suffix': '/10',
         'tableColumn': '3',
         'tableLabel': 'Pain intensity (0-10)',
-        'fqn': 'pain.painScale'
+        'fqn': 'pain.painScale',
+        'suffixText': '<p>/10</p>',
+        'suffixHtml': '/10'
       },
       {
         'elementKey': 'respiratoryRate',
@@ -7310,7 +7326,9 @@ const DEFS = {
         'suffix': 'br/min',
         'tableColumn': '4',
         'tableLabel': 'Respiratory rate',
-        'fqn': 'pain.respiratoryRate'
+        'fqn': 'pain.respiratoryRate',
+        'suffixText': '<p>br/min</p>',
+        'suffixHtml': 'br/min'
       },
       {
         'elementKey': 'onset',
@@ -7385,7 +7403,9 @@ const DEFS = {
         'suffix': '/10',
         'tableColumn': '13',
         'tableLabel': 'Pain intensity (0-10)',
-        'fqn': 'pain.painScale'
+        'fqn': 'pain.painScale',
+        'suffixText': '<p>/10</p>',
+        'suffixHtml': '/10'
       },
       {
         'elementKey': 'respiratoryRate',
@@ -7395,7 +7415,9 @@ const DEFS = {
         'suffix': 'br/min',
         'tableColumn': '14',
         'tableLabel': 'Respiratory rate',
-        'fqn': 'pain.respiratoryRate'
+        'fqn': 'pain.respiratoryRate',
+        'suffixText': '<p>br/min</p>',
+        'suffixHtml': 'br/min'
       },
       {
         'elementKey': 'onset',
@@ -8527,7 +8549,9 @@ const DEFS = {
         'suffix': 'mL/24h',
         'tableColumn': '7',
         'tableLabel': 'mL/24h',
-        'fqn': 'nonmedOrders.diet_fluid_amount'
+        'fqn': 'nonmedOrders.diet_fluid_amount',
+        'suffixText': '<p>mL/24h</p>',
+        'suffixHtml': 'mL/24h'
       },
       {
         'elementKey': 'diet_other',
@@ -9624,7 +9648,7 @@ const DEFS = {
           },
           {
             'key': 'rm',
-            'text': 'Routine and microscopic (R&M('
+            'text': 'Routine and microscopic (R&M)'
           },
           {
             'key': 'u_el',
@@ -11981,6 +12005,745 @@ const DEFS = {
         'tableColumn': '3',
         'tableLabel': 'Comments',
         'fqn': 'labResults.comments'
+      },
+      {
+        'elementKey': 'name',
+        'formIndex': '2',
+        'inputType': 'practitionerName',
+        'label': 'Name',
+        'mandatory': true,
+        'tableColumn': '1',
+        'tableLabel': 'Identification',
+        'recHeader': true,
+        'fqn': 'labResults.name'
+      },
+      {
+        'elementKey': 'profession',
+        'formIndex': '2',
+        'inputType': 'practitionerProfession',
+        'label': 'Profession',
+        'mandatory': true,
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'labResults.profession'
+      },
+      {
+        'elementKey': 'day',
+        'formIndex': '2',
+        'inputType': 'visitDay',
+        'label': 'Day',
+        'mandatory': true,
+        'tableColumn': '1',
+        'validation': 'visitDay',
+        'recHeader': true,
+        'fqn': 'labResults.day'
+      },
+      {
+        'elementKey': 'time',
+        'formIndex': '2',
+        'inputType': 'visitTime',
+        'label': 'Time',
+        'mandatory': true,
+        'tableColumn': '1',
+        'validation': 'time24',
+        'recHeader': true,
+        'fqn': 'labResults.time'
+      },
+      {
+        'elementKey': 'lrh_HbA1C',
+        'formIndex': '2',
+        'inputType': 'lab_result',
+        'label': 'Hemoglobin A1-C',
+        'suffix': '4.8%–6.0%',
+        'tableColumn': '2',
+        'tableLabel': 'Hemoglobin A1-C',
+        'fqn': 'labResults.lrh_HbA1C',
+        'suffixText': '<p>4.8%–6.0%</p>',
+        'suffixHtml': '4.8%–6.0%'
+      },
+      {
+        'elementKey': 'lrh_Hgb',
+        'formIndex': '2',
+        'inputType': 'lab_result',
+        'label': 'Hemoglobin',
+        'suffix': '115-155 g/L',
+        'tableColumn': '3',
+        'tableLabel': 'Hemoglobin',
+        'fqn': 'labResults.lrh_Hgb',
+        'suffixText': '<p>115-155 g/L</p>',
+        'suffixHtml': '115-155 g/L'
+      },
+      {
+        'elementKey': 'lrh_hct',
+        'formIndex': '2',
+        'inputType': 'lab_result',
+        'label': 'Hematocrit',
+        'tableColumn': '4',
+        'fqn': 'labResults.lrh_hct'
+      },
+      {
+        'elementKey': 'lrh_platelets',
+        'formIndex': '2',
+        'inputType': 'lab_result',
+        'label': 'Platelets',
+        'suffix': '130-380 x 10^9 /L',
+        'tableColumn': '5',
+        'fqn': 'labResults.lrh_platelets',
+        'suffixText': '<p>130-380 x 10^9 /L</p>',
+        'suffixHtml': '130-380 x 10^9 /L'
+      },
+      {
+        'elementKey': 'lrh_rbc',
+        'formIndex': '2',
+        'inputType': 'lab_result',
+        'label': 'RBC',
+        'suffix': '3.50-5.00 x 10^12 /L',
+        'tableColumn': '6',
+        'fqn': 'labResults.lrh_rbc',
+        'suffixText': '<p>3.50-5.00 x 10^12 /L</p>',
+        'suffixHtml': '3.50-5.00 x 10^12 /L'
+      },
+      {
+        'elementKey': 'lrh_wbc',
+        'formIndex': '2',
+        'inputType': 'lab_result',
+        'label': 'WBC',
+        'suffix': '3.5–10.5 × 10^9/L',
+        'tableColumn': '7',
+        'fqn': 'labResults.lrh_wbc',
+        'suffixText': '<p>3.5–10.5 × 10^9/L</p>',
+        'suffixHtml': '3.5–10.5 × 10^9/L'
+      },
+      {
+        'elementKey': 'lrh_basophils',
+        'formIndex': '2',
+        'inputType': 'lab_result',
+        'label': 'Basophils',
+        'suffix': '0-0.1 x 10^9 /L',
+        'tableColumn': '8',
+        'fqn': 'labResults.lrh_basophils',
+        'suffixText': '<p>0-0.1 x 10^9 /L</p>',
+        'suffixHtml': '0-0.1 x 10^9 /L'
+      },
+      {
+        'elementKey': 'lrh_eosinophils',
+        'formIndex': '2',
+        'inputType': 'lab_result',
+        'label': 'Eosinophils',
+        'suffix': '0-0.5 x 10^9 /L',
+        'tableColumn': '9',
+        'fqn': 'labResults.lrh_eosinophils',
+        'suffixText': '<p>0-0.5 x 10^9 /L</p>',
+        'suffixHtml': '0-0.5 x 10^9 /L'
+      },
+      {
+        'elementKey': 'lrh_lymphocytes',
+        'formIndex': '2',
+        'inputType': 'lab_result',
+        'label': 'Lymphocytes',
+        'suffix': 'F: 0.8-3.3 x 10^9 /L-NL-M: 0.8–3.5 × 10^9/L',
+        'tableColumn': '10',
+        'fqn': 'labResults.lrh_lymphocytes',
+        'suffixText': '<p>F: 0.8-3.3 x 10^9 /L</p>\n<p>M: 0.8–3.5 × 10^9/L</p>',
+        'suffixHtml': 'F: 0.8-3.3 x 10^9 /L\nM: 0.8–3.5 × 10^9/L'
+      },
+      {
+        'elementKey': 'lrh_monocytes',
+        'formIndex': '2',
+        'inputType': 'lab_result',
+        'label': 'Monocytes',
+        'suffix': '0.1-1.0 x 10^9 /L',
+        'tableColumn': '11',
+        'fqn': 'labResults.lrh_monocytes',
+        'suffixText': '<p>0.1-1.0 x 10^9 /L</p>',
+        'suffixHtml': '0.1-1.0 x 10^9 /L'
+      },
+      {
+        'elementKey': 'lrh_neutrophils',
+        'formIndex': '2',
+        'inputType': 'lab_result',
+        'label': 'Neutrophils',
+        'suffix': '2.0-7.5 x 10^9 /L',
+        'tableColumn': '12',
+        'fqn': 'labResults.lrh_neutrophils',
+        'suffixText': '<p>2.0-7.5 x 10^9 /L</p>',
+        'suffixHtml': '2.0-7.5 x 10^9 /L'
+      },
+      {
+        'elementKey': 'lrh_HCO3',
+        'formIndex': '2',
+        'inputType': 'lab_result',
+        'label': 'Bicarbonate',
+        'suffix': '21–32 mmol/L',
+        'tableColumn': '13',
+        'fqn': 'labResults.lrh_HCO3',
+        'suffixText': '<p>21–32 mmol/L</p>',
+        'suffixHtml': '21–32 mmol/L'
+      },
+      {
+        'elementKey': 'lrh_Ca',
+        'formIndex': '2',
+        'inputType': 'lab_result',
+        'label': 'Calcium',
+        'suffix': '2.12–2.52 mmol/L',
+        'tableColumn': '14',
+        'fqn': 'labResults.lrh_Ca',
+        'suffixText': '<p>2.12–2.52 mmol/L</p>',
+        'suffixHtml': '2.12–2.52 mmol/L'
+      },
+      {
+        'elementKey': 'lrh_Ca_Ion',
+        'formIndex': '2',
+        'inputType': 'lab_result',
+        'label': 'Calcium Ionized',
+        'suffix': '1.14–1.28 mmol/L',
+        'tableColumn': '15',
+        'fqn': 'labResults.lrh_Ca_Ion',
+        'suffixText': '<p>1.14–1.28 mmol/L</p>',
+        'suffixHtml': '1.14–1.28 mmol/L'
+      },
+      {
+        'elementKey': 'lrh_chloride',
+        'formIndex': '2',
+        'inputType': 'lab_result',
+        'label': 'Chloride',
+        'tableColumn': '16',
+        'fqn': 'labResults.lrh_chloride'
+      },
+      {
+        'elementKey': 'lrh_ck',
+        'formIndex': '2',
+        'inputType': 'lab_result',
+        'label': 'Creatinine Kinase',
+        'tableColumn': '17',
+        'fqn': 'labResults.lrh_ck'
+      },
+      {
+        'elementKey': 'lrh_Mg',
+        'formIndex': '2',
+        'inputType': 'lab_result',
+        'label': 'Magnesium',
+        'suffix': '0.74–1.03 mmol/L',
+        'tableColumn': '18',
+        'fqn': 'labResults.lrh_Mg',
+        'suffixText': '<p>0.74–1.03 mmol/L</p>',
+        'suffixHtml': '0.74–1.03 mmol/L'
+      },
+      {
+        'elementKey': 'lrh_PO4',
+        'formIndex': '2',
+        'inputType': 'lab_result',
+        'label': 'Phosphate',
+        'suffix': '0.81–1.58 mmol/L',
+        'tableColumn': '19',
+        'fqn': 'labResults.lrh_PO4',
+        'suffixText': '<p>0.81–1.58 mmol/L</p>',
+        'suffixHtml': '0.81–1.58 mmol/L'
+      },
+      {
+        'elementKey': 'lrh_K',
+        'formIndex': '2',
+        'inputType': 'lab_result',
+        'label': 'Potassium',
+        'suffix': '3.5–5.1 mmol/L',
+        'tableColumn': '20',
+        'fqn': 'labResults.lrh_K',
+        'suffixText': '<p>3.5–5.1 mmol/L</p>',
+        'suffixHtml': '3.5–5.1 mmol/L'
+      },
+      {
+        'elementKey': 'lrh_Na',
+        'formIndex': '2',
+        'inputType': 'lab_result',
+        'label': 'Sodium',
+        'suffix': '136–146 mmol/L',
+        'tableColumn': '21',
+        'fqn': 'labResults.lrh_Na',
+        'suffixText': '<p>136–146 mmol/L</p>',
+        'suffixHtml': '136–146 mmol/L'
+      },
+      {
+        'elementKey': 'lrh_bun',
+        'formIndex': '2',
+        'inputType': 'lab_result',
+        'label': 'Blood Urea Nitrogen',
+        'suffix': 'F: 22–75 µmol/L-NL-M: 49–93 µmol/L',
+        'tableColumn': '22',
+        'fqn': 'labResults.lrh_bun',
+        'suffixText': '<p>F: 22–75 µmol/L</p>\n<p>M: 49–93 µmol/L</p>',
+        'suffixHtml': 'F: 22–75 µmol/L\nM: 49–93 µmol/L'
+      },
+      {
+        'elementKey': 'lrh_cr',
+        'formIndex': '2',
+        'inputType': 'lab_result',
+        'label': 'Creatinine',
+        'suffix': 'F: 22–75 µmol/L-NL-M: 49–93 µmol/L',
+        'tableColumn': '23',
+        'fqn': 'labResults.lrh_cr',
+        'suffixText': '<p>F: 22–75 µmol/L</p>\n<p>M: 49–93 µmol/L</p>',
+        'suffixHtml': 'F: 22–75 µmol/L\nM: 49–93 µmol/L'
+      },
+      {
+        'elementKey': 'lrh_alt',
+        'formIndex': '2',
+        'inputType': 'lab_result',
+        'label': 'Alanine transaminase (ALT)',
+        'suffix': '17–63 IU/L',
+        'tableColumn': '24',
+        'fqn': 'labResults.lrh_alt',
+        'suffixText': '<p>17–63 IU/L</p>',
+        'suffixHtml': '17–63 IU/L'
+      },
+      {
+        'elementKey': 'lrh_ast',
+        'formIndex': '2',
+        'inputType': 'lab_result',
+        'label': 'Aspartate transferase (AST)',
+        'suffix': '15–37 IU/L',
+        'tableColumn': '25',
+        'fqn': 'labResults.lrh_ast',
+        'suffixText': '<p>15–37 IU/L</p>',
+        'suffixHtml': '15–37 IU/L'
+      },
+      {
+        'elementKey': 'lrh_alp',
+        'formIndex': '2',
+        'inputType': 'lab_result',
+        'label': 'Alkaline phosphatase (ALP)',
+        'suffix': '50–136 IU/L',
+        'tableColumn': '26',
+        'fqn': 'labResults.lrh_alp',
+        'suffixText': '<p>50–136 IU/L</p>',
+        'suffixHtml': '50–136 IU/L'
+      },
+      {
+        'elementKey': 'lrh_bilirubinD',
+        'formIndex': '2',
+        'inputType': 'lab_result',
+        'label': 'Bilirubin direct',
+        'suffix': '2–9 µmol/L',
+        'tableColumn': '27',
+        'fqn': 'labResults.lrh_bilirubinD',
+        'suffixText': '<p>2–9 µmol/L</p>',
+        'suffixHtml': '2–9 µmol/L'
+      },
+      {
+        'elementKey': 'lrh_bilirubinT',
+        'formIndex': '2',
+        'inputType': 'lab_result',
+        'label': 'Bilirubin total',
+        'suffix': '3–17 µmol/L',
+        'tableColumn': '28',
+        'fqn': 'labResults.lrh_bilirubinT',
+        'suffixText': '<p>3–17 µmol/L</p>',
+        'suffixHtml': '3–17 µmol/L'
+      },
+      {
+        'elementKey': 'lrh_ggt',
+        'formIndex': '2',
+        'inputType': 'lab_result',
+        'label': 'Gamma glutamyl transferase (GGT)',
+        'suffix': 'F: 5.0–55.0 IU/L-NL-M: 15.0–85.0 IU/L',
+        'tableColumn': '29',
+        'fqn': 'labResults.lrh_ggt',
+        'suffixText': '<p>F: 5.0–55.0 IU/L</p>\n<p>M: 15.0–85.0 IU/L</p>',
+        'suffixHtml': 'F: 5.0–55.0 IU/L\nM: 15.0–85.0 IU/L'
+      },
+      {
+        'elementKey': 'lrh_ldh',
+        'formIndex': '2',
+        'inputType': 'lab_result',
+        'label': 'Lactate dehydrogenase (LDH)',
+        'suffix': '100–205 IU/L',
+        'tableColumn': '30',
+        'fqn': 'labResults.lrh_ldh',
+        'suffixText': '<p>100–205 IU/L</p>',
+        'suffixHtml': '100–205 IU/L'
+      },
+      {
+        'elementKey': 'lrh_lipase',
+        'formIndex': '2',
+        'inputType': 'lab_result',
+        'label': 'Lipase',
+        'suffix': '73–393 IU/L',
+        'tableColumn': '31',
+        'fqn': 'labResults.lrh_lipase',
+        'suffixText': '<p>73–393 IU/L</p>',
+        'suffixHtml': '73–393 IU/L'
+      },
+      {
+        'elementKey': 'lrh_abg_hco3',
+        'formIndex': '2',
+        'inputType': 'lab_result',
+        'label': 'Bicarbonate HCO3',
+        'suffix': '22–27 mmol/L',
+        'tableColumn': '32',
+        'fqn': 'labResults.lrh_abg_hco3',
+        'suffixText': '<p>22–27 mmol/L</p>',
+        'suffixHtml': '22–27 mmol/L'
+      },
+      {
+        'elementKey': 'lrh_abg_o2sat',
+        'formIndex': '2',
+        'inputType': 'lab_result',
+        'label': 'Oxygen saturation (O2Sat)',
+        'suffix': '96-100%',
+        'tableColumn': '33',
+        'fqn': 'labResults.lrh_abg_o2sat',
+        'suffixText': '<p>96-100%</p>',
+        'suffixHtml': '96-100%'
+      },
+      {
+        'elementKey': 'lrh_abg_pco2',
+        'formIndex': '2',
+        'inputType': 'lab_result',
+        'label': 'Partial pressure of carbon dioxide (PcO2)',
+        'suffix': '32–45 mm Hg',
+        'tableColumn': '34',
+        'fqn': 'labResults.lrh_abg_pco2',
+        'suffixText': '<p>32–45 mm Hg</p>',
+        'suffixHtml': '32–45 mm Hg'
+      },
+      {
+        'elementKey': 'lrh_po2',
+        'formIndex': '2',
+        'inputType': 'lab_result',
+        'label': 'Partial pressure of oxygen (PO2)',
+        'suffix': '83–116 mm Hg',
+        'tableColumn': '35',
+        'fqn': 'labResults.lrh_po2',
+        'suffixText': '<p>83–116 mm Hg</p>',
+        'suffixHtml': '83–116 mm Hg'
+      },
+      {
+        'elementKey': 'lrh_abg_ph',
+        'formIndex': '2',
+        'inputType': 'lab_result',
+        'label': 'ph',
+        'suffix': '7.38–7.46',
+        'tableColumn': '36',
+        'fqn': 'labResults.lrh_abg_ph',
+        'suffixText': '<p>7.38–7.46</p>',
+        'suffixHtml': '7.38–7.46'
+      },
+      {
+        'elementKey': 'lrh_bloodGroup',
+        'formIndex': '2',
+        'inputType': 'select',
+        'label': 'Blood group',
+        'options': [
+          {
+            'key': 'A-',
+            'text': 'A-'
+          },
+          {
+            'key': 'A+',
+            'text': 'A+'
+          },
+          {
+            'key': 'B-',
+            'text': 'B-'
+          },
+          {
+            'key': 'B+',
+            'text': 'B+'
+          },
+          {
+            'key': 'AB-',
+            'text': 'AB-'
+          },
+          {
+            'key': 'AB+',
+            'text': 'AB+'
+          },
+          {
+            'key': 'O-',
+            'text': 'O-'
+          },
+          {
+            'key': 'O+',
+            'text': 'O+'
+          }
+        ],
+        'tableColumn': '37',
+        'fqn': 'labResults.lrh_bloodGroup'
+      },
+      {
+        'elementKey': 'lrh_antibody',
+        'formIndex': '2',
+        'inputType': 'text',
+        'label': 'Antibody screen',
+        'tableColumn': '38',
+        'fqn': 'labResults.lrh_antibody'
+      },
+      {
+        'elementKey': 'name',
+        'formIndex': '3',
+        'inputType': 'practitionerName',
+        'label': 'Name',
+        'mandatory': true,
+        'tableColumn': '1',
+        'tableLabel': 'Identification',
+        'recHeader': true,
+        'fqn': 'labResults.name'
+      },
+      {
+        'elementKey': 'profession',
+        'formIndex': '3',
+        'inputType': 'practitionerProfession',
+        'label': 'Profession',
+        'mandatory': true,
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'labResults.profession'
+      },
+      {
+        'elementKey': 'day',
+        'formIndex': '3',
+        'inputType': 'visitDay',
+        'label': 'Day',
+        'mandatory': true,
+        'tableColumn': '1',
+        'validation': 'visitDay',
+        'recHeader': true,
+        'fqn': 'labResults.day'
+      },
+      {
+        'elementKey': 'time',
+        'formIndex': '3',
+        'inputType': 'visitTime',
+        'label': 'Time',
+        'mandatory': true,
+        'tableColumn': '1',
+        'validation': 'time24',
+        'recHeader': true,
+        'fqn': 'labResults.time'
+      },
+      {
+        'elementKey': 'lru_calrity',
+        'formIndex': '3',
+        'inputType': 'lab_result',
+        'label': 'Calrity',
+        'suffix': 'Normal: Clear',
+        'tableColumn': '2',
+        'fqn': 'labResults.lru_calrity',
+        'suffixText': '<p>Normal: Clear</p>',
+        'suffixHtml': 'Normal: Clear'
+      },
+      {
+        'elementKey': 'lru_colour',
+        'formIndex': '3',
+        'inputType': 'lab_result',
+        'label': 'Colour',
+        'suffix': 'Normal: Pale to dark yellow',
+        'tableColumn': '3',
+        'fqn': 'labResults.lru_colour',
+        'suffixText': '<p>Normal: Pale to dark yellow</p>',
+        'suffixHtml': 'Normal: Pale to dark yellow'
+      },
+      {
+        'elementKey': 'lru_ordour',
+        'formIndex': '3',
+        'inputType': 'lab_result',
+        'label': 'Ordour',
+        'suffix': 'Slightly \'nutty\' odour',
+        'tableColumn': '4',
+        'fqn': 'labResults.lru_ordour',
+        'suffixText': '<p>Slightly \'nutty\' odour</p>',
+        'suffixHtml': 'Slightly \'nutty\' odour'
+      },
+      {
+        'elementKey': 'lru_albumin',
+        'formIndex': '3',
+        'inputType': 'lab_result',
+        'label': 'Albumin',
+        'suffix': '< 30mg',
+        'tableColumn': '5',
+        'fqn': 'labResults.lru_albumin',
+        'suffixText': '<p>< 30mg</p>',
+        'suffixHtml': '< 30mg'
+      },
+      {
+        'elementKey': 'lru_acr',
+        'formIndex': '3',
+        'inputType': 'lab_result',
+        'label': 'Albumin to creatinine ratio',
+        'suffix': '≤ 2.0 g/mol Cr',
+        'tableColumn': '6',
+        'fqn': 'labResults.lru_acr',
+        'suffixText': '<p>≤ 2.0 g/mol Cr</p>',
+        'suffixHtml': '≤ 2.0 g/mol Cr'
+      },
+      {
+        'elementKey': 'lru_aldosterone',
+        'formIndex': '3',
+        'inputType': 'lab_result',
+        'label': 'Aldosterone',
+        'suffix': '13.9–52.6 nmol/24 hour',
+        'tableColumn': '7',
+        'fqn': 'labResults.lru_aldosterone',
+        'suffixText': '<p>13.9–52.6 nmol/24 hour</p>',
+        'suffixHtml': '13.9–52.6 nmol/24 hour'
+      },
+      {
+        'elementKey': 'lru_calcium',
+        'formIndex': '3',
+        'inputType': 'lab_result',
+        'label': 'Calcium',
+        'suffix': '< 6.2 mmol/d',
+        'tableColumn': '8',
+        'fqn': 'labResults.lru_calcium',
+        'suffixText': '<p>< 6.2 mmol/d</p>',
+        'suffixHtml': '< 6.2 mmol/d'
+      },
+      {
+        'elementKey': 'lru_catecholamines',
+        'formIndex': '3',
+        'inputType': 'lab_result',
+        'label': 'Catecholamines',
+        'suffix': '< 591 nmol/m2/24 hours',
+        'tableColumn': '9',
+        'fqn': 'labResults.lru_catecholamines',
+        'suffixText': '<p>< 591 nmol/m2/24 hours</p>',
+        'suffixHtml': '< 591 nmol/m2/24 hours'
+      },
+      {
+        'elementKey': 'lru_cortisol',
+        'formIndex': '3',
+        'inputType': 'lab_result',
+        'label': 'Cortisol',
+        'suffix': '< 248 nmol/24 hours',
+        'tableColumn': '10',
+        'fqn': 'labResults.lru_cortisol',
+        'suffixText': '<p>< 248 nmol/24 hours</p>',
+        'suffixHtml': '< 248 nmol/24 hours'
+      },
+      {
+        'elementKey': 'lru_glucose',
+        'formIndex': '3',
+        'inputType': 'lab_result',
+        'label': 'Glucose',
+        'suffix': '60–830 mcmol/L',
+        'tableColumn': '11',
+        'fqn': 'labResults.lru_glucose',
+        'suffixText': '<p>60–830 mcmol/L</p>',
+        'suffixHtml': '60–830 mcmol/L'
+      },
+      {
+        'elementKey': 'lru_ketones',
+        'formIndex': '3',
+        'inputType': 'lab_result',
+        'label': 'Ketones',
+        'suffix': 'none',
+        'tableColumn': '12',
+        'fqn': 'labResults.lru_ketones',
+        'suffixText': '<p>none</p>',
+        'suffixHtml': 'none'
+      },
+      {
+        'elementKey': 'lru_leukocyte',
+        'formIndex': '3',
+        'inputType': 'lab_result',
+        'label': 'Leukocyte esterase (WBC esterase)',
+        'tableColumn': '13',
+        'fqn': 'labResults.lru_leukocyte'
+      },
+      {
+        'elementKey': 'lru_nitrates',
+        'formIndex': '3',
+        'inputType': 'lab_result',
+        'label': 'Nitrates',
+        'tableColumn': '14',
+        'fqn': 'labResults.lru_nitrates'
+      },
+      {
+        'elementKey': 'lru_osmolality',
+        'formIndex': '3',
+        'inputType': 'lab_result',
+        'label': 'Osmolality',
+        'suffix': '38–1400 mOsm/kg H2O',
+        'tableColumn': '15',
+        'fqn': 'labResults.lru_osmolality',
+        'suffixText': '<p>38–1400 mOsm/kg H2O</p>',
+        'suffixHtml': '38–1400 mOsm/kg H2O'
+      },
+      {
+        'elementKey': 'lru_ph',
+        'formIndex': '3',
+        'inputType': 'lab_result',
+        'label': 'pH',
+        'suffix': '5.0–8.5',
+        'tableColumn': '16',
+        'fqn': 'labResults.lru_ph',
+        'suffixText': '<p>5.0–8.5</p>',
+        'suffixHtml': '5.0–8.5'
+      },
+      {
+        'elementKey': 'lru_phosphate',
+        'formIndex': '3',
+        'inputType': 'lab_result',
+        'label': 'Phosphate',
+        'suffix': 'Adult: 1.0-1.5 mmol/L-NL-Child: 1.3-2.3 mmol/L',
+        'tableColumn': '17',
+        'fqn': 'labResults.lru_phosphate',
+        'suffixText': '<p>Adult: 1.0-1.5 mmol/L</p>\n<p>Child: 1.3-2.3 mmol/L</p>',
+        'suffixHtml': 'Adult: 1.0-1.5 mmol/L\nChild: 1.3-2.3 mmol/L'
+      },
+      {
+        'elementKey': 'lru_protein',
+        'formIndex': '3',
+        'inputType': 'lab_result',
+        'label': 'Protein',
+        'suffix': 'None',
+        'tableColumn': '18',
+        'fqn': 'labResults.lru_protein',
+        'suffixText': '<p>None</p>',
+        'suffixHtml': 'None'
+      },
+      {
+        'elementKey': 'lru_sodium',
+        'formIndex': '3',
+        'inputType': 'lab_result',
+        'label': 'Sodium',
+        'suffix': '40-220 mmol/d',
+        'tableColumn': '19',
+        'fqn': 'labResults.lru_sodium',
+        'suffixText': '<p>40-220 mmol/d</p>',
+        'suffixHtml': '40-220 mmol/d'
+      },
+      {
+        'elementKey': 'lru_speccificGravity',
+        'formIndex': '3',
+        'inputType': 'lab_result',
+        'label': 'Speccific gravity',
+        'suffix': '1.005–1.030',
+        'tableColumn': '20',
+        'fqn': 'labResults.lru_speccificGravity',
+        'suffixText': '<p>1.005–1.030</p>',
+        'suffixHtml': '1.005–1.030'
+      },
+      {
+        'elementKey': 'lru_uricAcid',
+        'formIndex': '3',
+        'inputType': 'lab_result',
+        'label': 'Uric acid',
+        'suffix': '1.48–4.43 mmol/24 hours',
+        'tableColumn': '21',
+        'fqn': 'labResults.lru_uricAcid',
+        'suffixText': '<p>1.48–4.43 mmol/24 hours</p>',
+        'suffixHtml': '1.48–4.43 mmol/24 hours'
+      },
+      {
+        'elementKey': 'lru_urobilinogen',
+        'formIndex': '3',
+        'inputType': 'lab_result',
+        'label': 'Urobilinogen',
+        'suffix': '≤ 16.0 µmol/L',
+        'tableColumn': '22',
+        'fqn': 'labResults.lru_urobilinogen',
+        'suffixText': '<p>≤ 16.0 µmol/L</p>',
+        'suffixHtml': '≤ 16.0 µmol/L'
       }
     ],
     'pageElements': {
@@ -12025,7 +12788,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group133',
+              'elementKey': 'ehr_group157',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -12036,7 +12799,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group134',
+              'elementKey': 'ehr_group158',
               'gIndex': '2',
               'gChildren': [
                 'laboratoryReport',
@@ -12051,6 +12814,635 @@ const DEFS = {
             'time': '',
             'laboratoryReport': '',
             'comments': ''
+          }
+        }
+      },
+      'labResultHematology': {
+        'elementKey': 'labResultHematology',
+        'pageElementIndex': '2',
+        'tableKey': 'labResultHematology',
+        'isTable': true,
+        'hasRecHeader': true,
+        'label': 'Hematology',
+        'addButtonText': 'Create a hematology laboratory report',
+        'ehr_list': [
+          {
+            'label': 'Identification',
+            'ehr_list_index': '1',
+            'items': [
+              'name',
+              'profession',
+              'day',
+              'time'
+            ]
+          },
+          {
+            'label': 'Hemoglobin A1-C',
+            'ehr_list_index': '2',
+            'items': [
+              'lrh_HbA1C'
+            ]
+          },
+          {
+            'label': 'Hemoglobin',
+            'ehr_list_index': '3',
+            'items': [
+              'lrh_Hgb'
+            ]
+          },
+          {
+            'ehr_list_index': '4',
+            'items': [
+              'lrh_hct'
+            ]
+          },
+          {
+            'ehr_list_index': '5',
+            'items': [
+              'lrh_platelets'
+            ]
+          },
+          {
+            'ehr_list_index': '6',
+            'items': [
+              'lrh_rbc'
+            ]
+          },
+          {
+            'ehr_list_index': '7',
+            'items': [
+              'lrh_wbc'
+            ]
+          },
+          {
+            'ehr_list_index': '8',
+            'items': [
+              'lrh_basophils'
+            ]
+          },
+          {
+            'ehr_list_index': '9',
+            'items': [
+              'lrh_eosinophils'
+            ]
+          },
+          {
+            'ehr_list_index': '10',
+            'items': [
+              'lrh_lymphocytes'
+            ]
+          },
+          {
+            'ehr_list_index': '11',
+            'items': [
+              'lrh_monocytes'
+            ]
+          },
+          {
+            'ehr_list_index': '12',
+            'items': [
+              'lrh_neutrophils'
+            ]
+          },
+          {
+            'ehr_list_index': '13',
+            'items': [
+              'lrh_HCO3'
+            ]
+          },
+          {
+            'ehr_list_index': '14',
+            'items': [
+              'lrh_Ca'
+            ]
+          },
+          {
+            'ehr_list_index': '15',
+            'items': [
+              'lrh_Ca_Ion'
+            ]
+          },
+          {
+            'ehr_list_index': '16',
+            'items': [
+              'lrh_chloride'
+            ]
+          },
+          {
+            'ehr_list_index': '17',
+            'items': [
+              'lrh_ck'
+            ]
+          },
+          {
+            'ehr_list_index': '18',
+            'items': [
+              'lrh_Mg'
+            ]
+          },
+          {
+            'ehr_list_index': '19',
+            'items': [
+              'lrh_PO4'
+            ]
+          },
+          {
+            'ehr_list_index': '20',
+            'items': [
+              'lrh_K'
+            ]
+          },
+          {
+            'ehr_list_index': '21',
+            'items': [
+              'lrh_Na'
+            ]
+          },
+          {
+            'ehr_list_index': '22',
+            'items': [
+              'lrh_bun'
+            ]
+          },
+          {
+            'ehr_list_index': '23',
+            'items': [
+              'lrh_cr'
+            ]
+          },
+          {
+            'ehr_list_index': '24',
+            'items': [
+              'lrh_alt'
+            ]
+          },
+          {
+            'ehr_list_index': '25',
+            'items': [
+              'lrh_ast'
+            ]
+          },
+          {
+            'ehr_list_index': '26',
+            'items': [
+              'lrh_alp'
+            ]
+          },
+          {
+            'ehr_list_index': '27',
+            'items': [
+              'lrh_bilirubinD'
+            ]
+          },
+          {
+            'ehr_list_index': '28',
+            'items': [
+              'lrh_bilirubinT'
+            ]
+          },
+          {
+            'ehr_list_index': '29',
+            'items': [
+              'lrh_ggt'
+            ]
+          },
+          {
+            'ehr_list_index': '30',
+            'items': [
+              'lrh_ldh'
+            ]
+          },
+          {
+            'ehr_list_index': '31',
+            'items': [
+              'lrh_lipase'
+            ]
+          },
+          {
+            'ehr_list_index': '32',
+            'items': [
+              'lrh_abg_hco3'
+            ]
+          },
+          {
+            'ehr_list_index': '33',
+            'items': [
+              'lrh_abg_o2sat'
+            ]
+          },
+          {
+            'ehr_list_index': '34',
+            'items': [
+              'lrh_abg_pco2'
+            ]
+          },
+          {
+            'ehr_list_index': '35',
+            'items': [
+              'lrh_po2'
+            ]
+          },
+          {
+            'ehr_list_index': '36',
+            'items': [
+              'lrh_abg_ph'
+            ]
+          },
+          {
+            'ehr_list_index': '37',
+            'items': [
+              'lrh_bloodGroup'
+            ]
+          },
+          {
+            'ehr_list_index': '38',
+            'items': [
+              'lrh_antibody'
+            ]
+          }
+        ],
+        'form': {
+          'elementKey': 'labResultHematology',
+          'label': 'Hematology',
+          'addButtonText': 'Create a hematology laboratory report',
+          'formKey': 'labResultHematology',
+          'ehr_groups': [
+            {
+              'elementKey': 'ehr_group159',
+              'formCss': 'record-header',
+              'gIndex': '1',
+              'gChildren': [
+                'name',
+                'profession',
+                'day',
+                'time'
+              ]
+            },
+            {
+              'elementKey': 'ehr_group160',
+              'label': 'Hematology',
+              'formCss': 'grid-left-to-right-1',
+              'gIndex': '2',
+              'gChildren': [
+                'lrh_HbA1C',
+                'lrh_Hgb',
+                'lrh_hct',
+                'lrh_platelets',
+                'lrh_rbc',
+                'lrh_wbc'
+              ]
+            },
+            {
+              'elementKey': 'ehr_group161',
+              'label': 'WBC Types',
+              'formCss': 'grid-left-to-right-1',
+              'gIndex': '3',
+              'gChildren': [
+                'lrh_basophils',
+                'lrh_eosinophils',
+                'lrh_lymphocytes',
+                'lrh_monocytes',
+                'lrh_neutrophils'
+              ]
+            },
+            {
+              'elementKey': 'ehr_group162',
+              'label': 'Chemistry',
+              'formCss': 'grid-left-to-right-1',
+              'gIndex': '4',
+              'gChildren': [
+                'lrh_HCO3',
+                'lrh_Ca',
+                'lrh_Ca_Ion',
+                'lrh_chloride',
+                'lrh_ck',
+                'lrh_Mg',
+                'lrh_PO4',
+                'lrh_K',
+                'lrh_Na'
+              ]
+            },
+            {
+              'elementKey': 'ehr_group163',
+              'label': 'Renal Profile',
+              'formCss': 'grid-left-to-right-1',
+              'gIndex': '5',
+              'gChildren': [
+                'lrh_bun',
+                'lrh_cr'
+              ]
+            },
+            {
+              'elementKey': 'ehr_group164',
+              'label': 'Liver function',
+              'formCss': 'grid-left-to-right-1',
+              'gIndex': '6',
+              'gChildren': [
+                'lrh_alt',
+                'lrh_ast',
+                'lrh_alp',
+                'lrh_bilirubinD',
+                'lrh_bilirubinT',
+                'lrh_ggt',
+                'lrh_ldh',
+                'lrh_lipase'
+              ]
+            },
+            {
+              'elementKey': 'ehr_group165',
+              'label': 'Blood gast tests',
+              'formCss': 'grid-left-to-right-1',
+              'gIndex': '7',
+              'gChildren': [
+                'lrh_abg_hco3',
+                'lrh_abg_o2sat',
+                'lrh_abg_pco2',
+                'lrh_po2',
+                'lrh_abg_ph'
+              ]
+            },
+            {
+              'elementKey': 'ehr_group166',
+              'label': 'Group and screen',
+              'gIndex': '8',
+              'gChildren': [
+                'lrh_bloodGroup',
+                'lrh_antibody'
+              ]
+            }
+          ],
+          'ehr_data': {
+            'name': '',
+            'profession': '',
+            'day': '',
+            'time': '',
+            'lrh_HbA1C': '',
+            'lrh_Hgb': '',
+            'lrh_hct': '',
+            'lrh_platelets': '',
+            'lrh_rbc': '',
+            'lrh_wbc': '',
+            'lrh_basophils': '',
+            'lrh_eosinophils': '',
+            'lrh_lymphocytes': '',
+            'lrh_monocytes': '',
+            'lrh_neutrophils': '',
+            'lrh_HCO3': '',
+            'lrh_Ca': '',
+            'lrh_Ca_Ion': '',
+            'lrh_chloride': '',
+            'lrh_ck': '',
+            'lrh_Mg': '',
+            'lrh_PO4': '',
+            'lrh_K': '',
+            'lrh_Na': '',
+            'lrh_bun': '',
+            'lrh_cr': '',
+            'lrh_alt': '',
+            'lrh_ast': '',
+            'lrh_alp': '',
+            'lrh_bilirubinD': '',
+            'lrh_bilirubinT': '',
+            'lrh_ggt': '',
+            'lrh_ldh': '',
+            'lrh_lipase': '',
+            'lrh_abg_hco3': '',
+            'lrh_abg_o2sat': '',
+            'lrh_abg_pco2': '',
+            'lrh_po2': '',
+            'lrh_abg_ph': '',
+            'lrh_bloodGroup': '',
+            'lrh_antibody': ''
+          }
+        }
+      },
+      'labResultUrine': {
+        'elementKey': 'labResultUrine',
+        'pageElementIndex': '3',
+        'tableKey': 'labResultUrine',
+        'isTable': true,
+        'hasRecHeader': true,
+        'label': 'Urine analysis',
+        'addButtonText': 'Create a urinary laboratory report',
+        'ehr_list': [
+          {
+            'label': 'Identification',
+            'ehr_list_index': '1',
+            'items': [
+              'name',
+              'profession',
+              'day',
+              'time'
+            ]
+          },
+          {
+            'ehr_list_index': '2',
+            'items': [
+              'lru_calrity'
+            ]
+          },
+          {
+            'ehr_list_index': '3',
+            'items': [
+              'lru_colour'
+            ]
+          },
+          {
+            'ehr_list_index': '4',
+            'items': [
+              'lru_ordour'
+            ]
+          },
+          {
+            'ehr_list_index': '5',
+            'items': [
+              'lru_albumin'
+            ]
+          },
+          {
+            'ehr_list_index': '6',
+            'items': [
+              'lru_acr'
+            ]
+          },
+          {
+            'ehr_list_index': '7',
+            'items': [
+              'lru_aldosterone'
+            ]
+          },
+          {
+            'ehr_list_index': '8',
+            'items': [
+              'lru_calcium'
+            ]
+          },
+          {
+            'ehr_list_index': '9',
+            'items': [
+              'lru_catecholamines'
+            ]
+          },
+          {
+            'ehr_list_index': '10',
+            'items': [
+              'lru_cortisol'
+            ]
+          },
+          {
+            'ehr_list_index': '11',
+            'items': [
+              'lru_glucose'
+            ]
+          },
+          {
+            'ehr_list_index': '12',
+            'items': [
+              'lru_ketones'
+            ]
+          },
+          {
+            'ehr_list_index': '13',
+            'items': [
+              'lru_leukocyte'
+            ]
+          },
+          {
+            'ehr_list_index': '14',
+            'items': [
+              'lru_nitrates'
+            ]
+          },
+          {
+            'ehr_list_index': '15',
+            'items': [
+              'lru_osmolality'
+            ]
+          },
+          {
+            'ehr_list_index': '16',
+            'items': [
+              'lru_ph'
+            ]
+          },
+          {
+            'ehr_list_index': '17',
+            'items': [
+              'lru_phosphate'
+            ]
+          },
+          {
+            'ehr_list_index': '18',
+            'items': [
+              'lru_protein'
+            ]
+          },
+          {
+            'ehr_list_index': '19',
+            'items': [
+              'lru_sodium'
+            ]
+          },
+          {
+            'ehr_list_index': '20',
+            'items': [
+              'lru_speccificGravity'
+            ]
+          },
+          {
+            'ehr_list_index': '21',
+            'items': [
+              'lru_uricAcid'
+            ]
+          },
+          {
+            'ehr_list_index': '22',
+            'items': [
+              'lru_urobilinogen'
+            ]
+          }
+        ],
+        'form': {
+          'elementKey': 'labResultUrine',
+          'label': 'Urine analysis',
+          'addButtonText': 'Create a urinary laboratory report',
+          'formKey': 'labResultUrine',
+          'ehr_groups': [
+            {
+              'elementKey': 'ehr_group167',
+              'formCss': 'record-header',
+              'gIndex': '1',
+              'gChildren': [
+                'name',
+                'profession',
+                'day',
+                'time'
+              ]
+            },
+            {
+              'elementKey': 'ehr_group168',
+              'label': 'General',
+              'formCss': 'grid-left-to-right-1',
+              'gIndex': '2',
+              'gChildren': [
+                'lru_calrity',
+                'lru_colour',
+                'lru_ordour'
+              ]
+            },
+            {
+              'elementKey': 'ehr_group169',
+              'label': 'Chemistry',
+              'formCss': 'grid-left-to-right-1',
+              'gIndex': '3',
+              'gChildren': [
+                'lru_albumin',
+                'lru_acr',
+                'lru_aldosterone',
+                'lru_calcium',
+                'lru_catecholamines',
+                'lru_cortisol',
+                'lru_glucose',
+                'lru_ketones',
+                'lru_leukocyte',
+                'lru_nitrates',
+                'lru_osmolality',
+                'lru_ph',
+                'lru_phosphate',
+                'lru_protein',
+                'lru_sodium',
+                'lru_speccificGravity',
+                'lru_uricAcid',
+                'lru_urobilinogen'
+              ]
+            }
+          ],
+          'ehr_data': {
+            'name': '',
+            'profession': '',
+            'day': '',
+            'time': '',
+            'lru_calrity': '',
+            'lru_colour': '',
+            'lru_ordour': '',
+            'lru_albumin': '',
+            'lru_acr': '',
+            'lru_aldosterone': '',
+            'lru_calcium': '',
+            'lru_catecholamines': '',
+            'lru_cortisol': '',
+            'lru_glucose': '',
+            'lru_ketones': '',
+            'lru_leukocyte': '',
+            'lru_nitrates': '',
+            'lru_osmolality': '',
+            'lru_ph': '',
+            'lru_phosphate': '',
+            'lru_protein': '',
+            'lru_sodium': '',
+            'lru_speccificGravity': '',
+            'lru_uricAcid': '',
+            'lru_urobilinogen': ''
           }
         }
       }
@@ -12166,7 +13558,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group135',
+              'elementKey': 'ehr_group133',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -12177,7 +13569,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group136',
+              'elementKey': 'ehr_group134',
               'gIndex': '2',
               'gChildren': [
                 'laboratoryReport',
@@ -12307,7 +13699,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group137',
+              'elementKey': 'ehr_group135',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -12318,7 +13710,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group138',
+              'elementKey': 'ehr_group136',
               'gIndex': '2',
               'gChildren': [
                 'laboratoryReport',
@@ -12488,7 +13880,7 @@ const DEFS = {
         'isPageForm': true,
         'ehr_groups': [
           {
-            'elementKey': 'ehr_group159',
+            'elementKey': 'ehr_group170',
             'gIndex': '1',
             'gChildren': [
               {
@@ -12589,7 +13981,7 @@ const DEFS = {
         'isPageForm': true,
         'ehr_groups': [
           {
-            'elementKey': 'ehr_group160',
+            'elementKey': 'ehr_group171',
             'gIndex': '1',
             'gChildren': [
               'snomed',
@@ -12799,7 +14191,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group161',
+              'elementKey': 'ehr_group172',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -12810,7 +14202,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group162',
+              'elementKey': 'ehr_group173',
               'gIndex': '2',
               'gChildren': [
                 'icd10',
@@ -12980,7 +14372,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group163',
+              'elementKey': 'ehr_group174',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -12991,7 +14383,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group164',
+              'elementKey': 'ehr_group175',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '2',
               'gChildren': [
@@ -13180,7 +14572,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group165',
+              'elementKey': 'ehr_group176',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -13191,7 +14583,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group166',
+              'elementKey': 'ehr_group177',
               'gIndex': '2',
               'gChildren': [
                 'clinicalCategory',
@@ -13246,7 +14638,9 @@ const DEFS = {
         'label': 'weight',
         'mandatory': true,
         'suffix': 'lb',
-        'fqn': 'testPage.name'
+        'fqn': 'testPage.name',
+        'suffixText': '<p>lb</p>',
+        'suffixHtml': 'lb'
       },
       {
         'elementKey': 'pcheckbox',
@@ -13534,11 +14928,11 @@ const DEFS = {
         'fqn': 'testPage.textDateDate'
       },
       {
-        'elementKey': 'spacer171',
+        'elementKey': 'spacer182',
         'formIndex': '3',
         'inputType': 'spacer',
         'label': 'TextDate',
-        'fqn': 'testPage.spacer171'
+        'fqn': 'testPage.spacer182'
       },
       {
         'elementKey': 'name',
@@ -13564,7 +14958,7 @@ const DEFS = {
         'isPageForm': true,
         'ehr_groups': [
           {
-            'elementKey': 'ehr_group167',
+            'elementKey': 'ehr_group178',
             'label': 'A group label',
             'gIndex': '1',
             'gChildren': [
@@ -13581,7 +14975,7 @@ const DEFS = {
             ]
           },
           {
-            'elementKey': 'ehr_group168',
+            'elementKey': 'ehr_group179',
             'label': 'Second group',
             'gIndex': '2',
             'gChildren': [
@@ -13650,7 +15044,7 @@ const DEFS = {
           'formKey': 'table1',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group169',
+              'elementKey': 'ehr_group180',
               'label': 'Group 1',
               'gIndex': '1',
               'gChildren': [
@@ -13673,7 +15067,7 @@ const DEFS = {
         'isPageForm': true,
         'ehr_groups': [
           {
-            'elementKey': 'ehr_group170',
+            'elementKey': 'ehr_group181',
             'label': 'A group label',
             'gIndex': '1',
             'gChildren': [
@@ -13683,7 +15077,7 @@ const DEFS = {
               'time',
               'textDate',
               'textDateDate',
-              'spacer171',
+              'spacer182',
               'name',
               'place'
             ]
@@ -13723,7 +15117,9 @@ const DEFS = {
         'suffix': 'lb',
         'tableColumn': '2',
         'tableLabel': 'Wieght',
-        'fqn': 'testTable.weight'
+        'fqn': 'testTable.weight',
+        'suffixText': '<p>lb</p>',
+        'suffixHtml': 'lb'
       },
       {
         'elementKey': 'pcheckbox',
@@ -14022,13 +15418,13 @@ const DEFS = {
         'fqn': 'testTable.cd1Date'
       },
       {
-        'elementKey': 'spacer177',
+        'elementKey': 'spacer188',
         'formIndex': '2',
         'inputType': 'spacer',
         'label': 'C D 1',
         'tableColumn': '2',
         'tableLabel': 'Chk 1',
-        'fqn': 'testTable.spacer177'
+        'fqn': 'testTable.spacer188'
       },
       {
         'elementKey': 'cd2',
@@ -14050,13 +15446,13 @@ const DEFS = {
         'fqn': 'testTable.cd2Date'
       },
       {
-        'elementKey': 'spacer178',
+        'elementKey': 'spacer189',
         'formIndex': '2',
         'inputType': 'spacer',
         'label': 'C D 2',
         'tableColumn': '3',
         'tableLabel': 'Chk 2',
-        'fqn': 'testTable.spacer178'
+        'fqn': 'testTable.spacer189'
       },
       {
         'elementKey': 'td1',
@@ -14077,13 +15473,13 @@ const DEFS = {
         'fqn': 'testTable.td1Date'
       },
       {
-        'elementKey': 'spacer179',
+        'elementKey': 'spacer190',
         'formIndex': '2',
         'inputType': 'spacer',
         'label': 'TextDate',
         'tableColumn': '4',
         'tableLabel': 'Txt 1',
-        'fqn': 'testTable.spacer179'
+        'fqn': 'testTable.spacer190'
       },
       {
         'elementKey': 'referralName',
@@ -14398,7 +15794,7 @@ const DEFS = {
           'formKey': 'table1',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group172',
+              'elementKey': 'ehr_group183',
               'label': 'Group 1',
               'gIndex': '1',
               'gChildren': [
@@ -14414,7 +15810,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group173',
+              'elementKey': 'ehr_group184',
               'gIndex': '2',
               'gChildren': [
                 {
@@ -14449,7 +15845,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group174',
+              'elementKey': 'ehr_group185',
               'formCss': 'full-width',
               'gIndex': '3',
               'gChildren': [
@@ -14501,7 +15897,7 @@ const DEFS = {
             'items': [
               'cd1',
               'cd1Date',
-              'spacer177'
+              'spacer188'
             ]
           },
           {
@@ -14510,7 +15906,7 @@ const DEFS = {
             'items': [
               'cd2',
               'cd2Date',
-              'spacer178'
+              'spacer189'
             ]
           },
           {
@@ -14519,7 +15915,7 @@ const DEFS = {
             'items': [
               'td1',
               'td1Date',
-              'spacer179'
+              'spacer190'
             ]
           },
           {
@@ -14553,7 +15949,7 @@ const DEFS = {
           'formKey': 'stacked',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group175',
+              'elementKey': 'ehr_group186',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -14564,22 +15960,22 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group176',
+              'elementKey': 'ehr_group187',
               'gIndex': '2',
               'gChildren': [
                 'cd1',
                 'cd1Date',
-                'spacer177',
+                'spacer188',
                 'cd2',
                 'cd2Date',
-                'spacer178',
+                'spacer189',
                 'td1',
                 'td1Date',
-                'spacer179'
+                'spacer190'
               ]
             },
             {
-              'elementKey': 'ehr_group180',
+              'elementKey': 'ehr_group191',
               'gIndex': '3',
               'gChildren': [
                 'referralName',
@@ -16633,7 +18029,9 @@ const DEFS = {
         'tableLabel': 'Wound pain',
         'validation': 'range(0,10)',
         'fqn': 'integumentaryAssessment.woundPain',
-        'helperHtml': '<p>Scored from 10 point analogue Pain Scale</p>\n<p>See Pain Assessment for details</p>'
+        'helperHtml': '<p>Scored from 10 point analogue Pain Scale</p>\n<p>See Pain Assessment for details</p>',
+        'suffixText': '<p>/10</p>',
+        'suffixHtml': '/10'
       },
       {
         'elementKey': 'packingOut',
@@ -17571,7 +18969,9 @@ const DEFS = {
         'tableColumn': '2',
         'validation': 'numeric',
         'fqn': 'hematology.wbc',
-        'helperHtml': '<p>White blood cell count</p>'
+        'helperHtml': '<p>White blood cell count</p>',
+        'suffixText': '<p>10^9/L</p>',
+        'suffixHtml': '10^9/L'
       },
       {
         'elementKey': 'wbc-interp',
@@ -17611,7 +19011,9 @@ const DEFS = {
         'tableColumn': '4',
         'validation': 'numeric',
         'fqn': 'hematology.rbc',
-        'helperHtml': '<p>Red blood cell count</p>'
+        'helperHtml': '<p>Red blood cell count</p>',
+        'suffixText': '<p>10^12/L</p>',
+        'suffixHtml': '10^12/L'
       },
       {
         'elementKey': 'rbc-interp',
@@ -17651,7 +19053,9 @@ const DEFS = {
         'tableColumn': '6',
         'validation': 'numeric',
         'fqn': 'hematology.hgb',
-        'helperHtml': '<p>Hemoglobin</p>'
+        'helperHtml': '<p>Hemoglobin</p>',
+        'suffixText': '<p>g/L</p>',
+        'suffixHtml': 'g/L'
       },
       {
         'elementKey': 'hgb-interp',
@@ -17691,7 +19095,9 @@ const DEFS = {
         'tableColumn': '8',
         'validation': 'numeric',
         'fqn': 'hematology.HCT',
-        'helperHtml': '<p>Hematocrit</p>'
+        'helperHtml': '<p>Hematocrit</p>',
+        'suffixText': '<p>L/L</p>',
+        'suffixHtml': 'L/L'
       },
       {
         'elementKey': 'HCT-interp',
@@ -17731,7 +19137,9 @@ const DEFS = {
         'tableColumn': '10',
         'validation': 'numeric',
         'fqn': 'hematology.MCV',
-        'helperHtml': '<p>Mean Cell Volume</p>'
+        'helperHtml': '<p>Mean Cell Volume</p>',
+        'suffixText': '<p>fL</p>',
+        'suffixHtml': 'fL'
       },
       {
         'elementKey': 'MCV-interp',
@@ -17771,7 +19179,9 @@ const DEFS = {
         'tableColumn': '12',
         'validation': 'numeric',
         'fqn': 'hematology.MCH',
-        'helperHtml': '<p>Mean Cell Hemoglobin</p>'
+        'helperHtml': '<p>Mean Cell Hemoglobin</p>',
+        'suffixText': '<p>pg</p>',
+        'suffixHtml': 'pg'
       },
       {
         'elementKey': 'MCH-interp',
@@ -17811,7 +19221,9 @@ const DEFS = {
         'tableColumn': '14',
         'validation': 'numeric',
         'fqn': 'hematology.MCHC',
-        'helperHtml': '<p>Mean Cell Hemoglobin Concentration</p>'
+        'helperHtml': '<p>Mean Cell Hemoglobin Concentration</p>',
+        'suffixText': '<p>g/L</p>',
+        'suffixHtml': 'g/L'
       },
       {
         'elementKey': 'MCHC-interp',
@@ -17851,7 +19263,9 @@ const DEFS = {
         'tableColumn': '16',
         'validation': 'numeric',
         'fqn': 'hematology.RDW',
-        'helperHtml': '<p>Red Cell Distribution Width CV</p>'
+        'helperHtml': '<p>Red Cell Distribution Width CV</p>',
+        'suffixText': '<p>%</p>',
+        'suffixHtml': '%'
       },
       {
         'elementKey': 'RDW-interp',
@@ -17892,7 +19306,9 @@ const DEFS = {
         'tableColumn': '18',
         'validation': 'numeric',
         'fqn': 'hematology.PLT',
-        'helperHtml': '<p>Platelet Count</p>'
+        'helperHtml': '<p>Platelet Count</p>',
+        'suffixText': '<p>10^9/L</p>',
+        'suffixHtml': '10^9/L'
       },
       {
         'elementKey': 'PLT-interp',
@@ -17932,7 +19348,9 @@ const DEFS = {
         'tableColumn': '20',
         'validation': 'numeric',
         'fqn': 'hematology.MPV',
-        'helperHtml': '<p>Mean Platelet Volume</p>'
+        'helperHtml': '<p>Mean Platelet Volume</p>',
+        'suffixText': '<p>fL</p>',
+        'suffixHtml': 'fL'
       },
       {
         'elementKey': 'MPV-interp',
@@ -18031,7 +19449,9 @@ const DEFS = {
         'label': 'Actions required',
         'suffix': '10^9/L',
         'tableColumn': '3',
-        'fqn': 'hematology.actionsRequired'
+        'fqn': 'hematology.actionsRequired',
+        'suffixText': '<p>10^9/L</p>',
+        'suffixHtml': '10^9/L'
       },
       {
         'elementKey': 'actionsTaken',
@@ -18041,7 +19461,9 @@ const DEFS = {
         'label': 'Actions taken',
         'suffix': '10^12/L',
         'tableColumn': '4',
-        'fqn': 'hematology.actionsTaken'
+        'fqn': 'hematology.actionsTaken',
+        'suffixText': '<p>10^12/L</p>',
+        'suffixHtml': '10^12/L'
       },
       {
         'elementKey': 'scanComments',
@@ -18051,7 +19473,9 @@ const DEFS = {
         'label': 'Scan comments',
         'suffix': '10^12/L',
         'tableColumn': '5',
-        'fqn': 'hematology.scanComments'
+        'fqn': 'hematology.scanComments',
+        'suffixText': '<p>10^12/L</p>',
+        'suffixHtml': '10^12/L'
       },
       {
         'elementKey': 'wbc-1',
@@ -18689,10 +20113,10 @@ const DEFS = {
         'fqn': 'hematology.cellCntOtherAbs'
       },
       {
-        'elementKey': 'spacer149',
+        'elementKey': 'spacer147',
         'formIndex': '2',
         'inputType': 'spacer',
-        'fqn': 'hematology.spacer149'
+        'fqn': 'hematology.spacer147'
       },
       {
         'elementKey': 'cellCntOtherSpecify',
@@ -18846,10 +20270,10 @@ const DEFS = {
         'fqn': 'hematology.rcmNormal'
       },
       {
-        'elementKey': 'spacer152',
+        'elementKey': 'spacer150',
         'formIndex': '2',
         'inputType': 'spacer',
-        'fqn': 'hematology.spacer152'
+        'fqn': 'hematology.spacer150'
       },
       {
         'elementKey': 'rcmConsistent',
@@ -18860,10 +20284,10 @@ const DEFS = {
         'fqn': 'hematology.rcmConsistent'
       },
       {
-        'elementKey': 'spacer153',
+        'elementKey': 'spacer151',
         'formIndex': '2',
         'inputType': 'spacer',
-        'fqn': 'hematology.spacer153'
+        'fqn': 'hematology.spacer151'
       },
       {
         'elementKey': 'rcmAcanthocytes',
@@ -19384,16 +20808,16 @@ const DEFS = {
         'fqn': 'hematology.rbcComments'
       },
       {
-        'elementKey': 'spacer156',
+        'elementKey': 'spacer154',
         'formIndex': '2',
         'inputType': 'spacer',
-        'fqn': 'hematology.spacer156'
+        'fqn': 'hematology.spacer154'
       },
       {
-        'elementKey': 'spacer157',
+        'elementKey': 'spacer155',
         'formIndex': '2',
         'inputType': 'spacer',
-        'fqn': 'hematology.spacer157'
+        'fqn': 'hematology.spacer155'
       },
       {
         'elementKey': 'referralToHema',
@@ -19568,7 +20992,7 @@ const DEFS = {
           'formKey': 'tableCbcAnalysis',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group139',
+              'elementKey': 'ehr_group137',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -19579,7 +21003,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group140',
+              'elementKey': 'ehr_group138',
               'label': 'Automated analyzer',
               'gIndex': '2',
               'gChildren': [
@@ -19616,7 +21040,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group141',
+              'elementKey': 'ehr_group139',
               'gIndex': '3',
               'gChildren': [
                 'comments'
@@ -20333,7 +21757,7 @@ const DEFS = {
           'formKey': 'tablePbfReview',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group142',
+              'elementKey': 'ehr_group140',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
@@ -20344,7 +21768,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group143',
+              'elementKey': 'ehr_group141',
               'label': 'CBC Analysis',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '2',
@@ -20353,7 +21777,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group144',
+              'elementKey': 'ehr_group142',
               'label': 'Actions',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '3',
@@ -20364,7 +21788,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group145',
+              'elementKey': 'ehr_group143',
               'label': 'WBC Estimate',
               'formCss': 'grid-left-to-right-4',
               'gIndex': '4',
@@ -20389,7 +21813,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group146',
+              'elementKey': 'ehr_group144',
               'label': 'PLT Estimate',
               'formCss': 'grid-left-to-right-4',
               'gIndex': '5',
@@ -20414,7 +21838,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group147',
+              'elementKey': 'ehr_group145',
               'label': 'PLT morphology',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '6',
@@ -20425,7 +21849,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group148',
+              'elementKey': 'ehr_group146',
               'label': 'WBC Differential',
               'formCss': 'grid-left-to-right-2',
               'gIndex': '7',
@@ -20454,14 +21878,14 @@ const DEFS = {
                 'cellCntReactiveLymphsAbs',
                 'cellCntOther',
                 'cellCntOtherAbs',
-                'spacer149',
+                'spacer147',
                 'cellCntOtherSpecify',
                 'cellCntTotal',
                 'cellCntNRBCs'
               ]
             },
             {
-              'elementKey': 'ehr_group150',
+              'elementKey': 'ehr_group148',
               'label': 'White Cell Morphology',
               'gIndex': '8',
               'gChildren': [
@@ -20476,15 +21900,15 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group151',
+              'elementKey': 'ehr_group149',
               'label': 'Red Cell Morphology',
               'formCss': 'grid-left-to-right-2',
               'gIndex': '9',
               'gChildren': [
                 'rcmNormal',
-                'spacer152',
+                'spacer150',
                 'rcmConsistent',
-                'spacer153',
+                'spacer151',
                 'rcmAcanthocytes',
                 'rcmAcanthocytesGrading',
                 'rcmCodocytes',
@@ -20514,7 +21938,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group154',
+              'elementKey': 'ehr_group152',
               'label': 'RBC Inclusions',
               'gIndex': '10',
               'gChildren': [
@@ -20526,17 +21950,17 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group155',
+              'elementKey': 'ehr_group153',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '11',
               'gChildren': [
                 'rbcComments',
-                'spacer156',
-                'spacer157'
+                'spacer154',
+                'spacer155'
               ]
             },
             {
-              'elementKey': 'ehr_group158',
+              'elementKey': 'ehr_group156',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '12',
               'gChildren': [
