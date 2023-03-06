@@ -27,9 +27,9 @@ class EhrPatientC {
   _allergies (data) {
     let asStored = data.allergies || {}
     let pageData = JSON.parse(JSON.stringify(asStored))
-    const hasSome = pageData['checkbox'] === 'TRUE'
+    const hasNoKnown = pageData['checkbox']
     const content = pageData['text']
-    return hasSome ? content : 'None'
+    return hasNoKnown ? 'NKA' : content
   }
   _demographics (data) {
     let asStored = data.demographics || {}
