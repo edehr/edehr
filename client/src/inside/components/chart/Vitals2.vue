@@ -35,7 +35,7 @@ export default {
   data () {
     return {
       theData: {},
-      tableData: [],
+      // tableData: [],
       vitals: {
         table: []
       },
@@ -57,37 +57,32 @@ export default {
     }
   },
   computed: {
-    tableKey () {
-      return this.tableDef.tableKey
-    },
-    showTableAddButton () {
-      return this.ehrHelp.showTableAddButton()
-    },
-    uiProps () {
-      return this.ehrHelp.getPageDef(this.pageDataKey)
-    },
+    errorList () { return this.ehrHelp.getErrorList(this.tableKey)  },
+    pageData () { return EhrData.getMergedPageData(this.pageKey) },
+    pageKey () { return this.ehrHelp.getPageKey() },
+    showTableAddButton () { return this.ehrHelp.showTableAddButton() },
+    tableData () { return EhrData.getMergedTableData(this.pageKey, this.tableKey) },
     tableDef () {
       let tables = EhrDefs.getPageTables(this.pageDataKey)
       // console.log('Vitals2 looking at tables', tables)
       return tables[0]
     },
-    errorList () {
-      return this.ehrHelp.getErrorList(this.tableDef.tableKey)
-    }
+    tableKey () { return this.tableDef.tableKey },
+    uiProps () { return this.ehrHelp.getPageDef(this.pageDataKey) },
   },
   methods: {
     showDialog () {
       this.ehrHelp.showDialogForTable(this.pageDataKey, this.tableKey, {})
     },
     refresh () {
-      let tableKey = this.tableDef.tableKey
-      let pageKey = this.ehrHelp.getPageKey()
-      // console.log('Vitals2 refresh for page table key', pageKey, tableKey)
-      let pageData = EhrData.getMergedPageData(pageKey)
-      // store the current data into local data property for display
-      this.tableData = pageData[tableKey] || []
+      // let tableKey = this.tableDef.tableKey
+      // let pageKey = this.ehrHelp.getPageKey()
+      // // console.log('Vitals2 refresh for page table key', pageKey, tableKey)
+      // let pageData = EhrData.getMergedPageData(pageKey)
+      // // store the current data into local data property for display
+      // this.tableData = pageData[tableKey] || []
       // console.log('Vitals page and table data', pageData, this.tableData)
-      this.tableData.reverse()
+      // this.tableData.reverse()
     }
   },
   created: function () {

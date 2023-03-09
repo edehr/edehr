@@ -1,5 +1,5 @@
 
-import EhrDefs from  '../../../ehr-definitions/ehr-defs-grid'
+import EhrDefs, { MED_ORDERS_PAGE_KEY } from '../../../ehr-definitions/ehr-defs-grid'
 import StoreHelper from  '../../../helpers/store-helper'
 
 export const ESK_Medications = 'Discharge Rx'
@@ -107,7 +107,7 @@ export default class EhrSummaryHelpV2 {
     }
 
     defs[ESK_Medications] = {
-      pageKey: 'medicationOrders',
+      pageKey: MED_ORDERS_PAGE_KEY,
       description: 'Medication orders',
       tableKey: 'table',
       columnKeys: ['medication', 'route', 'administration', 'schedule', 'dose', 'reason', 'name', 'profession', 'instructions'],
