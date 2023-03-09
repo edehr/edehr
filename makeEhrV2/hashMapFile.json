@@ -1,10 +1,12 @@
 {
   "patient-profile": "0c7828a51523c921d4f23ffe6b9b664d",
-  "current-visit-1": "8c45b06917d9d2b8ff04aa31c3b8ee4b",
-  "current-visit-2": "78a9bf2e9b77526359f3a51388ed5b3e",
-  "current-visit-3": "6ebeb8348acd70e1ff671fc558f6dd67",
-  "patient-chart": "84bf82423f2af22ccc8be1dc7ebcecfb",
+  "current-visit-1": "a201ab98c1cee19d9b87f89c33e990dc",
+  "current-visit-2": "c8969572311f6f32fccbe2c9bc96545d",
+  "current-visit-3": "5f1aaaa0a32cc0936cdf7121c20cfb3a",
+  "current-mar": "4fd105f1e1d9143a742f2d91f147eaba",
+  "patient-chart": "a4bd201e53927af67689d4c03671d756",
+  "patient-chart-2": "ac653c00969b04e87641e66c3cb66047",
   "external-resources": "85b118fec4f961aa99d8e0e5f9371bfe",
   "test-page": "73d3ffdfdc977a93e2cb0f0ba6bb5da9",
-  "patient-chart-2": "f473be84434fd6ccc6534de3d641a8ba"
+  "med-lab": "82b76fe138dd28f7bead7f9639abf9e1"
 }
