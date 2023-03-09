@@ -14,16 +14,16 @@
 
 <script>
 import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
+import EhrData from '@/inside/components/page/ehr-data'
 export default {
   props: {
     pageKey: { type: String },
     pageChildren: { type: Array },
     pageElement: { type: Object },
-    pageSeedData: { type: Object }
   },
   computed: {
     tableData () {
-      return this.pageSeedData[this.pageElement.tableKey] || []
+      return EhrData.getMergedTableData(this.pageKey, this.pageElement.tableKey) || []
     },
     tableRowCount () { return this.tableData.length },
     hasData () {
@@ -50,12 +50,18 @@ export default {
   methods: {
     timestamp (index) {
       const row = this.tableData[index-1]
-      return row.name + ' ' + row.profession + ' ' + row.day + ' ' + row.time
+      const parts = []
+      row.name ? parts.push(row.name) : null
+      row.profession ? parts.push(row.profession + ',') : null
+      row.day ? parts.push('Sim time: ' + row.day) : null
+      row.time ? parts.push(' - ' + row.time) : null
+      return parts.join(' ')
     },
     fieldData (fieldDef, index) {
       const row = this.tableData[index-1]
       const elementKey = fieldDef.elementKey
-      return row[elementKey]
+      const v = row[elementKey]
+      return v ? v : ''
     },
     rowIsDraft ( index ) {
       const row = this.tableData[index-1]

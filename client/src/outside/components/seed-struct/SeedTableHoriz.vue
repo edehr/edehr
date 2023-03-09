@@ -3,7 +3,7 @@
     table(v-show="hasData", class="table_horizontal")
       tr
         th(v-for="col in columns", v-text-to-html='col.label')
-      tr(v-for="row in pageSeedData[pageElement.tableKey]")
+      tr(v-for="row in rows")
         td(v-for="(d, index) in rowData(row)", :class="{draft: rowIsDraft(row)}" )
           pre(v-if='columns[index].inputType === "textarea"') {{d}}
           span(v-else) {{d}}
@@ -13,16 +13,16 @@
 
 <script>
 import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
+import EhrData from '@/inside/components/page/ehr-data'
 export default {
   props: {
     pageKey: { type: String },
     pageChildren: { type: Array },
-    pageElement: { type: Object },
-    pageSeedData: { type: Object }
+    pageElement: { type: Object }
   },
   computed: {
     rows () {
-      return this.pageSeedData[this.pageElement.tableKey] || []
+      return EhrData.getMergedTableData(this.pageKey, this.pageElement.tableKey) || []
     },
     hasData () {
       return this.rows.length > 0
