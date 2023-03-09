@@ -3,6 +3,7 @@ import { decoupleObject, ehrMergeEhrData, ehrMarkSeed } from '@/helpers/ehr-util
 import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 import StoreHelper from '@/helpers/store-helper'
 import { EhrPages } from '@/ehr-definitions/ehr-models'
+import EhrDataModel from '@/ehr-definitions/EhrDataModel'
 
 const debug = false
 
@@ -24,8 +25,9 @@ const getters = {
       secondLevelData = rootGetters['activityDataStore/assignmentData']
     }
     if ( secondLevelData ) {
-      secondLevelData.meta = secondLevelData.meta || { simTime: { visitDay: 0, visitTime: '0000' } }
-      secondLevelData = decoupleObject(secondLevelData)
+      // place data into a model update meta data and transform model to latest version if needed
+      const model = new EhrDataModel(secondLevelData)
+      secondLevelData = model.ehrData
     }
     return secondLevelData  || {}
   },
@@ -42,7 +44,9 @@ const getters = {
       // type = 'Student merged data'
       baseLevelData = ehrMarkSeed(baseLevelData)
     }
-    baseLevelData.meta = baseLevelData.meta || {simTime: {visitDay: 0, visitTime: '0000'}}
+    // place data into a model update meta data and transform model to latest version if needed
+    const model = new EhrDataModel(baseLevelData)
+    baseLevelData = model.ehrData
     return baseLevelData
   },
   mergedData: (state, getters, rootState, rootGetters) => {
