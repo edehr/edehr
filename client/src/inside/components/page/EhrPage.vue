@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(class="ehr-page")
+  div
     ehr-panel-content
       div(v-if="useTabs")
         tabs

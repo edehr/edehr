@@ -1,6 +1,5 @@
 <template lang='pug'>
   div(class="embedded-data")
-    div eeemb inputval: {{ inputVal }}
     ehr-group(v-for="group in groups", :key="group.gIndex", :group="group", :ehrHelp="ehrHelp", viewOnly=true)
 </template>
 

@@ -71,10 +71,6 @@ export default class EhrPageHelper {
     let dialog = this.tableFormMap[tableKey]
     return dialog ? dialog.errorList : []
   }
-  getLastPageDataUpdateDate () {
-    let data = EhrData.getMergedPageData(this.pageKey)
-    return data ? this.formatDate(data.lastUpdate) : ''
-  }
 
   getPageDef () { return EhrDefs.getPageDefinition(this.pageKey) }
   getPageErrors () {

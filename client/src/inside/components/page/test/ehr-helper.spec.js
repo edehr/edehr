@@ -97,11 +97,6 @@ describe('ehr-helper tests', () => {
       should.exist(gen)
     })
 
-    it('getLastPageDataUpdateDate', () => {
-      const updated = ehrHelper.getLastPageDataUpdateDate()
-      should.exist(updated)
-    })
-
     it('getPageErrors', () => {
       ehrHelper.getPageErrors().length.should.equal(0)
     })

@@ -24,7 +24,10 @@ class StoreHelperWorker {
   getMergedData () { return store.getters['ehrDataStore/mergedData']  }
 
   getHasDataForPagesList () { return store.getters['ehrDataStore/hasDataForPagesList'] }
-
+  hasDataOnPage (pageKey) {
+    const pageList = this.getHasDataForPagesList()
+    return pageList[pageKey]
+  }
 
   /* **********   Internal  ************** */
   _getActivityDataProperty (key) { return store.getters['activityDataStore/' + key]}
