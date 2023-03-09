@@ -36,8 +36,8 @@ export default {
       }
       return value
     },
-    tableAction: function (sourceTableKey, sourceRowIndex, targetTableKey) {
-      EventBus.$emit(TABLE_ACTION_EVENT, sourceTableKey, sourceRowIndex, targetTableKey)
+    tableAction: function (tableDef, sourceRowIndex) {
+      EventBus.$emit(TABLE_ACTION_EVENT, tableDef, sourceRowIndex)
     },
     editDraft (pageKey, tableKey, rowIndex) {
       console.log('edit draft', pageKey, tableKey, rowIndex)

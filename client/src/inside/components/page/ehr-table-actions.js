@@ -3,46 +3,55 @@ import StoreHelper from '@/helpers/store-helper'
 import { ehrText } from '@/appText'
 import { EhrPages } from '@/ehr-definitions/ehr-models'
 import EhrData from '@/inside/components/page/ehr-data'
+import * as assert from 'assert'
 
 const ehrPages = new EhrPages()
 
 export default class EhrTableActions {
 
-  static getTableActionGetDraftRowIndex (pageKey, sourceTableKey, sourceRowIndex, targetTableKey) {
+  static getTableActionGetDraftRowIndex (tableDef, sourceRowIndex) {
+    const { taTargetTableKey, taSourcePageKey} = tableDef
     let targetDraftRowIndex = -1
-    const desiredRowValue = this.getTableActionGetRef(pageKey, sourceTableKey, sourceRowIndex)
-    const srcElemKey = this.getTableActionTargetElementKey(pageKey, sourceTableKey, targetTableKey)
+    const desiredRowValue = this.getTableActionGetRef(tableDef, sourceRowIndex)
+    const srcElemKey = this.getTableActionTargetElementKey(tableDef)
     if (!srcElemKey) {
-      StoreHelper.setApiError(ehrText.ERROR_IN_TABLE_ACTION_DEF(targetTableKey))
+      StoreHelper.setApiError(ehrText.ERROR_IN_TABLE_ACTION_DEF(JSON.stringify(tableDef)))
       return targetDraftRowIndex
     }
     const mData = StoreHelper.getMergedData()
-    const pData = mData[pageKey] || {}
-    const tData = pData[targetTableKey] || []
+    const pData = mData[taSourcePageKey] || {}
+    const tData = pData[taTargetTableKey] || []
     targetDraftRowIndex = tData.findIndex( row => row.isDraft && row[srcElemKey] === desiredRowValue )
     // console.log('targetDraftRowIndex', pageKey, sourceTableKey, sourceRowIndex, targetTableKey, targetDraftRowIndex)
     return targetDraftRowIndex
   }
 
-  static getTableActionGetRef (pageKey, sourceTableKey, sourceRowIndex) {
-    return pageKey + '.' + sourceTableKey + '.' + sourceRowIndex
+  static getTableActionGetRef (sendersTableDef, sourceRowIndex) {
+    const { taSourcePageKey, taSourceTableKey} = sendersTableDef
+    return taSourcePageKey + '.' + taSourceTableKey + '.' + sourceRowIndex
   }
 
-  static getTableActionLabel (pageKey, tableDef, sourceRowIndex) {
-    const targetTableKey = tableDef.tableAction
-    const sourceTableKey = tableDef.tableKey
-    const draftRowIndex = this.getTableActionGetDraftRowIndex(pageKey, sourceTableKey, sourceRowIndex, targetTableKey)
+  static getTableActionLabel (tableDef, sourceRowIndex) {
+    // console.log('getTableActionLabel', tableDef)
+    const draftRowIndex = this.getTableActionGetDraftRowIndex(tableDef, sourceRowIndex)
     return draftRowIndex >= 0 ? 'Resume' : tableDef.tableActionLabel
   }
 
-  static getTableActionTargetElementKey (pageKey, sourceTableKey, targetTableKey) {
+  static getTableActionTargetElementKey (tableDef) {
     const desiredInputType = EhrTypes.inputTypes.ehr_embedded
     const desiredProperty = EhrTypes.elementProperties.embedRef
-    const desiredPropertyValue = pageKey + '.' + sourceTableKey // e.g. 'hematology.tableCbcAnalysis'
+    const { taTargetPageKey, taTargetTableKey, taSourcePageKey, taSourceTableKey} = tableDef
+    const desiredPropertyValue = taSourcePageKey + '.' + taSourceTableKey // e.g. 'hematology.tableCbcAnalysis'
     // get list of elements, from the target table def, that have the desired input type
-    const embList = ehrPages.findTableElementsByInputType(pageKey, targetTableKey, desiredInputType)
+    assert.ok(taTargetPageKey, `getTableActionTargetElementKey has target page key ${taTargetPageKey}`)
+    const embList = ehrPages.findTableElementsByInputType(taTargetPageKey, taTargetTableKey, desiredInputType)
     // get element from list that has the desired property
     const tElem = embList.find(elem => elem.getProperty(desiredProperty) === desiredPropertyValue)
+    // console.log('------ desiredInputType', desiredInputType)
+    // console.log('------ desiredProperty', desiredProperty)
+    // console.log('------ taTargetPageKey, taTargetTableKey, taSourcePageKey, taSourceTableKey-----', taTargetPageKey, taTargetTableKey, taSourcePageKey, taSourceTableKey)
+    // console.log('------ embList', JSON.stringify(embList))
+    // console.log('------ tElem', JSON.stringify(tElem))
     // get the key for the element
     return tElem ? tElem.elementKey : undefined
   }
@@ -80,20 +89,15 @@ export default class EhrTableActions {
    * The process of loading that embedded data will also invoke the open form dialog with two flags set.
    * One to keep the embedded form view only and the second to indicate the form is "embedded".
    *
-   * @param sourceTableKey
-   * @param targetTableKey
+   * @param sendersTableDef
    * @param sourceRowIndex
    */
-  static getTableActionRequestOptions (pageKey, sourceTableKey, sourceRowIndex, targetTableKey) {
+  static getTableActionRequestOptions (sendersTableDef, sourceRowIndex) {
     const options = {
       tableAction: true,
-      pageKey: pageKey,
-      sourceTableKey: sourceTableKey,
-      sourceRowIndex: sourceRowIndex,
-      targetTableKey: targetTableKey
+      sendersTableDef: sendersTableDef
     }
-    const draftRowIndex = this.getTableActionGetDraftRowIndex(
-      pageKey, sourceTableKey, sourceRowIndex, targetTableKey)
+    const draftRowIndex = this.getTableActionGetDraftRowIndex(sendersTableDef, sourceRowIndex)
     if (draftRowIndex >= 0) {
       /*
       If we have a draft row then we are resuming editing, and we use the existing table data
@@ -112,7 +116,7 @@ export default class EhrTableActions {
       form <page key>.<source table key>.<source row index>
       The ehr_embedded element just needs the source row index to know where to retrieve the data from.
        */
-      const embedRefValue = this.getTableActionGetRef(pageKey, sourceTableKey, sourceRowIndex)
+      const embedRefValue = this.getTableActionGetRef(sendersTableDef, sourceRowIndex)
       options.embedRefValue = embedRefValue
     }
     // console.log('gtaro', JSON.stringify(options))

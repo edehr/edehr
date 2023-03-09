@@ -14,7 +14,7 @@
                 fas-icon(icon="file-pdf")
               ui-button(
                   v-if="!cell.isDraft && showTableAction && colIndex === 0",
-                  v-on:buttonClicked="tableAction(tableDef.tableKey, tableDef.tableAction, index)"
+                  v-on:buttonClicked="tableAction(tableDef, index)"
                   )
                 span {{ tableDef.tableActionLabel }} &nbsp;
                 fas-icon(icon="notes-medical")

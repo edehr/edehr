@@ -14,7 +14,7 @@
           tr(v-for="(dRow, rIndex) in cTableData", :key='rIndex', :class='{draftRow : isDraft(dRow) }')
             td(v-if="showTableAction")
               div(v-if='isDraft(dRow)') &nbsp;
-              ui-button(v-else, v-on:buttonClicked="tableAction(tableDef.tableKey, rIndex, tableDef.tableAction)")
+              ui-button(v-else, v-on:buttonClicked="tableAction(tableDef, rIndex)")
                 span {{ tableActionLabel(rIndex) }} &nbsp;
                 fas-icon(icon="notes-medical")
             td
@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     tableActionLabel (rowIndex) {
-      return EhrTableActions.getTableActionLabel(this.pageDataKey, this.tableDef, rowIndex)
+      return EhrTableActions.getTableActionLabel(this.tableDef, rowIndex)
     },
     isDraft (row) {
       let isDraft = false

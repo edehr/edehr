@@ -13,7 +13,7 @@ import {
 } from '@/helpers/ehr-utils'
 import EhrDefs from '@/ehr-definitions/ehr-defs-grid'
 import StoreHelper from '@/helpers/store-helper'
-import validations from './ehr-validations'
+import ehrValidations from '@/ehr-definitions/ehr-validations'
 import store from '@/store'
 import EhrData from '@/inside/components/page/ehr-data'
 import EhrTableDraft from '@/inside/components/page/ehr-table-draft'
@@ -348,19 +348,18 @@ export default class EhrPageHelper {
    * @param options
    */
   showDialogForTable (pageKey, tableKey, options) {
+    // console.log('SHOW', pageKey, tableKey, options)
     /*
     Options from regular EhrPageTable has empty options.
     Options from table action can have two forms
       const options = {
           tableAction: true,
-          pageKey: pageKey,
-          sourceTableKey: sourceTableKey,
-          sourceRowIndex: sourceRowIndex,
-          targetTableKey: targetTableKey
-        }
-    1. tableActionDraftRowIndex: draftRowIndex
-          OR
-    2. plus  embedRefValue: embedRefValue,
+          sendersTableDef: sendersTableDef
+          // either
+            tableActionDraftRowIndex: draftRowIndex
+          // OR
+            embedRefValue: embedRefValue
+          }
     In case (1.) transform the row index into row data for the draft row
     In case (2.) just pass the options on through to the dialog event handler.
      */
@@ -381,7 +380,6 @@ export default class EhrPageHelper {
       // Also see ehr-helper.editDraftRow
       EhrTableDraft.addEditDraftRowOptions(options, pageKey, tableKey, rowIndex)
     }
-    // console.log('invoke _dialogEvent ', JSON.stringify(options))
     this._dialogEvent(tableKey, true, options)
   }
   savePageFormEdit () {
@@ -510,9 +508,9 @@ export default class EhrPageHelper {
     }
 
     if (open && options.embedRefValue) {
-      const srcElemKey = EhrTableActions.getTableActionTargetElementKey(options.pageKey, options.sourceTableKey, options.targetTableKey)
-      console.log('Setup dialog for embedded ref. Source element key', srcElemKey)
-      console.log('options.embedRefValue', options.embedRefValue)
+      const srcElemKey = EhrTableActions.getTableActionTargetElementKey(options.sendersTableDef)
+      // console.log('Setup dialog for embedded ref. Source element key', srcElemKey)
+      // console.log('options.embedRefValue', options.embedRefValue)
       dialog.inputs[srcElemKey] = options.embedRefValue
     }
     // NOW set the open/close state flag based on what is happening
@@ -563,11 +561,11 @@ export default class EhrPageHelper {
       if (dbDialog) console.log('check vDef for functions parts', vDef)
       const parts = vDef.match(functionPattern)
       if (parts && parts.length >= 1 ) {
-        result.func = validations[parts[1]]
+        result.func = ehrValidations[parts[1]]
         let args = parts[2].split(',')
         result.arguments = args.map(n => parseInt(n))
       } else {
-        result.func = validations[vDef]
+        result.func = ehrValidations[vDef]
         result.arguments = []
       }
     }
