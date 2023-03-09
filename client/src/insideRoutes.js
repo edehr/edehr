@@ -345,18 +345,39 @@ export function inside () {
       meta: { layout: 'inside', label: 'Integumentary assessment', topLevel: 'current', zone: 'ehr' }
     },
     {
-      path: '/ehr/chart/reports/hematology',
-      name: 'hematology',
-      component: () =>
-        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/custom/Hematology.vue'),
-      meta: { layout: 'inside', label: 'Hematology', topLevel: 'chart', zone: 'ehr' }
-    },
-    {
       path: '/ehr/current/discharge-plan',
       name: 'discharge-plan',
       component: () =>
         import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/DischargePlan.vue'),
       meta: { layout: 'inside', label: 'Discharge plan', topLevel: 'current', zone: 'ehr' }
+    },
+    {
+      path: '/ehr/med-lab',
+      name: 'med-lab',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/views/MedLab.vue'),
+      meta: { layout: 'inside', label: 'Med Lab', topLevel: 'med-lab', zone: 'ehr' }
+    },
+    {
+      path: '/ehr/med-lab/hematology',
+      name: 'hematology',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/custom/Hematology.vue'),
+      meta: { layout: 'inside', label: 'Med Lab Hematology', topLevel: 'med-lab', zone: 'ehr' }
+    },
+    {
+      path: '/ehr/med-lab/medLabChemistry',
+      name: 'medLabChemistry',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/custom/UnderConstruction.vue'),
+      meta: { layout: 'inside', label: 'Med Lab Chemistry', topLevel: 'med-lab', zone: 'ehr' }
+    },
+    {
+      path: '/ehr/med-lab/med-lab-imaging',
+      name: 'med-lab-imaging',
+      component: () =>
+        import(/* webpackChunkName: "chunk-[request][index]" */ './inside/custom/UnderConstruction.vue'),
+      meta: { layout: 'inside', label: 'Med Lab Medical Imaging', topLevel: 'med-lab', zone: 'ehr' }
     }
   ]
 }
