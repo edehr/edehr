@@ -66,9 +66,7 @@ export default class SeedDataController extends BaseController {
   _saveSeedEhrData (model, ehrData) {
     // Be sure both the seed and activity-data controllers do similar things when they save
     // ehr data. For example, they both update the metadata
-    // console.log('ehrData.meta before', ehrData ? ehrData.meta : '---')
-    EhrDataModel.updateEhrDataMeta(ehrData)
-    // console.log('ehrData.meta after ', ehrData ? ehrData.meta : '---')
+    ehrData = (new EhrDataModel(ehrData)).ehrData
     model.lastUpdateDate = Date.now()
     model.ehrData = ehrData
     // tell the db to see a change on this subfield

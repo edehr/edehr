@@ -54,7 +54,7 @@ export default class ActivityDataController extends BaseController {
   _saveEhrData (activityData, ehrData) {
     // Be sure both the seed and activity-data controllers do similar things when they save
     // ehr data. For example, they both update the metadata
-    EhrDataModel.updateEhrDataMeta(ehrData)
+    ehrData = (new EhrDataModel(ehrData)).ehrData
     activityData.lastDate = Date.now()
     activityData.assignmentData = ehrData
     // tell the db to see a change on this subfield

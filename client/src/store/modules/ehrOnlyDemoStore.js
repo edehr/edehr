@@ -1,4 +1,3 @@
-import { decoupleObject } from '@/helpers/ehr-utils'
 import EhrDataModel from '@/ehr-definitions/EhrDataModel'
 
 const devSeed = require('@/demos/dev-ehr-only-seed.json')
@@ -45,10 +44,11 @@ const mutations = {
   setEhrData: (state, payload) => {
     const { pageKey, value } = payload
     // To trigger Vue's reactivity on complex object we replace the existing with a new object
-    const asIs = decoupleObject(state.ehrOnlyEhr)
+    // Place data into a model update meta data and transform model to latest version if needed
+    const ehrDataModel = new EhrDataModel(state.ehrOnlyEhr)
+    let asIs = ehrDataModel.ehrData
     asIs[pageKey] = value
     state.ehrOnlyEhr = asIs
-    EhrDataModel.updateEhrDataMeta(state.ehrOnlyEhr)
   },
   selectCaseStudy: (state, key) => {
     let seed
