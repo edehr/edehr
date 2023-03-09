@@ -1,11 +1,12 @@
 import EhrDataModel from '../ehr-definitions/EhrDataModel'
+import * as fs from 'fs'
 const should = require('should')
-const expectedEhr = require('../resources/old-visit-times-expected.json')
-const ehrWithOldTimeVals = require('../resources/old-visit-times-input.json')
 
 // use to create expected output during development
 // const fs = require('fs')
 describe( 'Updates with EhrDataModel', () => {
+  const expectedEhr = require('../resources/old-visit-times-expected.json')
+  const ehrWithOldTimeVals = require('../resources/old-visit-times-input.json')
 
   it('update pre-update data', () => {
     const model = new EhrDataModel(ehrWithOldTimeVals)
@@ -63,4 +64,46 @@ describe( 'EhrData meta version', () => {
     version.patch.should.be.greaterThanOrEqual(0)
   })
 
+})
+
+describe.skip ( 'medication orders ', () => {
+  const sampleMedOrd = require('../resources/sampleWithMedOrdersAndMars.json')
+  const expectedEhr = require('../resources/sampleWithMedOrdersAndMars-expected.json')
+
+  function compare (expected, actual) {
+    let expectedEhrStr = JSON.stringify(expected, null, 2)
+    let updatedStr = JSON.stringify(actual, null, 2)
+    // remove ids that have random generated values before comparing
+    const idRegExp = /"_id": ".*",/g
+    expectedEhrStr = expectedEhrStr.replaceAll(idRegExp, '')
+    updatedStr = updatedStr.replaceAll(idRegExp, '')
+    const medRegExp = /"medId": ".*",*/g
+    expectedEhrStr = expectedEhrStr.replaceAll(medRegExp, '')
+    updatedStr = updatedStr.replaceAll(medRegExp, '')
+    should(expectedEhrStr).be.equal(updatedStr)
+    return updatedStr
+  }
+
+  it ('basic update', () => {
+    let expected, actual, updatedStr
+    const model = new EhrDataModel(sampleMedOrd)
+    const updatedData = model.ehrData
+    const version = model.metaEhrVersion
+    should.exist(version)
+    version.major.should.be.greaterThanOrEqual(2)
+    version.minor.should.be.greaterThanOrEqual(1)
+    version.patch.should.be.greaterThanOrEqual(1)
+
+    // uncomment to create expected output during development
+    // updatedStr = JSON.stringify(updatedData, null, 2)
+    // fs.writeFileSync('./src/resources/sampleWithMedOrdersAndMars-expected.json', updatedStr)
+
+    expected = expectedEhr.medicationOrders.medicationOrdersTable
+    actual = updatedData.medicationOrders.medicationOrdersTable
+    updatedStr = compare(expected, actual)
+
+    expected = expectedEhr.medAdminRec.marRecords
+    actual = updatedData.medAdminRec.marRecords
+    updatedStr = compare(expected, actual)
+  })
 })

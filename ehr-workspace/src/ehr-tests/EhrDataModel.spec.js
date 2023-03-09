@@ -32,11 +32,46 @@ const ehrData = {
   }
 }
 
+const expected = {
+  visit: {
+    admissionDay: 'Day 0',
+    admissionTime: '0600',
+    diagnosis: 'COPD\nShortness of breath\nDizzy',
+    status: 'Admitted',
+    table: [
+      {
+        location: 'here',
+        transferInDay: 0,
+        transferInTime: '0030',
+        transferOutDay: 1,
+        transferOutTime: '0400',
+        createdDate: '2022-08-17T00:37:42-07:00'
+      },
+      {
+        location: 'there',
+        transferInDay: 1,
+        transferInTime: '2131',
+        transferOutDay: 2,
+        transferOutTime: '2332',
+        createdDate: '2022-08-17T00:37:42-07:00'
+      }
+    ],
+    lastUpdate: '2022-08-17T00:37:42-07:00'
+  },
+  meta: {
+    simTime: {
+      visitDay: 0,
+      visitTime: '0000'
+    },
+    ehrVersion: 'ev2.1.1'
+  }
+}
 const PK = 'visit'
 describe( 'EhrDataModel', () => {
   let model
   before(function () {
     model = new EhrDataModel(ehrData)
+    // console.log(JSON.stringify(model.ehrData,null,2))
   })
   it('EhrDataModel', () => {
     should.exist(model)
@@ -58,8 +93,10 @@ describe( 'EhrDataModel', () => {
     data.should.have.property('admissionTime')
     data.admissionTime.should.equal('0600')
     const result = JSON.stringify(data)
-    const expected = JSON.stringify(ehrData.visit)
-    const same = result.localeCompare(expected)
+    const expectedStr = JSON.stringify(expected.visit)
+    // console.log(result)
+    // console.log(expectedStr)
+    const same = result.localeCompare(expectedStr)
     same.should.equal(0)
   })
   it('form data', () => {
@@ -82,15 +119,15 @@ describe( 'EhrDataModel', () => {
     data.transferInTime.should.equal('0030')
   })
   it('updatePageFormData', () => {
-    model = new EhrDataModel(Object.assign({},ehrData))
-    model.updatePageFormData(PK, 'admissionTime', '0600')
-    model = new EhrDataModel(Object.assign({},model.ehrData))
+    model = new EhrDataModel(ehrData)
+    model.updatePageFormData(PK, 'admissionTime', '0634')
+    model = new EhrDataModel(model.ehrData)
     let data = model.getPageData(PK)
     data.should.have.property('admissionTime')
-    data.admissionTime.should.equal('0600')
+    data.admissionTime.should.equal('0634')
   })
   it('updateRowElem', () => {
-    model = new EhrDataModel(Object.assign({},ehrData))
+    model = new EhrDataModel(ehrData)
     model.updateRowElem(PK, 'table', 1,'transferInTime', '0030')
     model = new EhrDataModel(model.ehrData)
     let data = model.getRowData(PK,'table', 1)

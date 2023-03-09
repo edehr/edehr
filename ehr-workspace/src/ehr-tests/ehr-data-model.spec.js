@@ -76,7 +76,6 @@ describe( 'ehr-def-utils work', () => {
     const data = model.ehrData
     should.exist(data)
     // this tests visitTimeInEhrData indirectly
-    EhrDataModel.updateEhrDataMeta(data)
     data.should.have.property('meta')
     data.meta.should.have.property('simTime')
     data.meta.simTime.should.have.property('visitTime')

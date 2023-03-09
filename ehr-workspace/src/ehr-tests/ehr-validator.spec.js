@@ -1,4 +1,4 @@
-import validations from '../ehr-validations'
+import ehrValidations from '../ehr-definitions/ehr-validations'
 const should = require('should')
 
 
@@ -6,11 +6,11 @@ describe('Test EHR validator time24 ', () => {
   let vName = 'time24'
 
   it(`existence ${vName}`, () => {
-    should.exist(validations[vName])
+    should.exist(ehrValidations[vName])
   })
 
   it(`is function ${vName}`, (done) => {
-    const validator = validations[vName]
+    const validator = ehrValidations[vName]
     let aName = 'a field name'
     let aValue = 7
     should.doesNotThrow(() => {
@@ -20,17 +20,17 @@ describe('Test EHR validator time24 ', () => {
     })
   })
   it(`Valid times ${vName}`, () => {
-    const validator = validations[vName]
+    const validator = ehrValidations[vName]
     let aName = 'a field name'
-    let aValue = '07:55'
+    let aValue = '0755'
     let result = validator(aName, aValue)
     should.not.exist(result)
 
-    aValue = '00:00'
+    aValue = '0000'
     result = validator(aName, aValue)
     should.not.exist(result)
 
-    aValue = '23:59'
+    aValue = '2359'
     result = validator(aName, aValue)
     should.not.exist(result)
 
@@ -40,15 +40,15 @@ describe('Test EHR validator time24 ', () => {
 
   })
   it(`Invalid times ${vName}`, (done) => {
-    const validator = validations[vName]
+    const validator = ehrValidations[vName]
     let aName = 'a field name'
     let aValue = '7:55'
     let result = validator(aName, aValue)
     should.exist(result)
-    aValue = '00:70'
+    aValue = '0070'
     result = validator(aName, aValue)
     should.exist(result)
-    aValue = '24:00'
+    aValue = '2400'
     result = validator(aName, aValue)
     should.exist(result)
 
@@ -57,14 +57,14 @@ describe('Test EHR validator time24 ', () => {
 })
 
 describe('Test EHR validator day', () => {
-  let vName = 'day'
+  let vName = 'visitDay'
 
   it(`existence ${vName}`, () => {
-    should.exist(validations[vName])
+    should.exist(ehrValidations[vName])
   })
 
   it(`is function ${vName}`, (done) => {
-    const validator = validations[vName]
+    const validator = ehrValidations[vName]
     let aName = 'a field name'
     let aValue = 'foo'
     should.doesNotThrow(() => {
@@ -74,7 +74,7 @@ describe('Test EHR validator day', () => {
     })
   })
   it(`Valid times ${vName}`, () => {
-    const validator = validations[vName]
+    const validator = ehrValidations[vName]
     let aName = 'a field name'
     let aValue = '0'
     let result = validator(aName, aValue)
@@ -84,19 +84,19 @@ describe('Test EHR validator day', () => {
     result = validator(aName, aValue)
     should.not.exist(result)
 
-    // empty is valid
+    // empty is not valid
     aValue = ''
     result = validator(aName, aValue)
-    should.not.exist(result)
+    should.exist(result)
 
   })
   it(`Invalid times ${vName}`, () => {
-    const validator = validations[vName]
+    const validator = ehrValidations[vName]
     let aName = 'a field name'
     let aValue = '-1'
     let result = validator(aName, aValue)
     should.exist(result)
-    aValue = '10'
+    aValue = '20'
     result = validator(aName, aValue)
     should.exist(result)
     aValue = 'foo'
@@ -110,11 +110,11 @@ describe('Test EHR CVP', () => {
   let aName = 'A CVP value'
   let min = 0, max = 30 //these are the correct value but for testing they don't have to be
   it(`existence ${vName}`, () => {
-    should.exist(validations[vName])
+    should.exist(ehrValidations[vName])
   })
 
   it('Valid CVP values', (done) => {
-    const validator = validations[vName]
+    const validator = ehrValidations[vName]
     let aValue = '30' // a valid value for CVP
     should.doesNotThrow(() => {
       let result = validator(aName, aValue)
@@ -128,7 +128,7 @@ describe('Test EHR CVP', () => {
     })
   })
   it('Invalid CVP values', (done) => {
-    const validator = validations[vName]
+    const validator = ehrValidations[vName]
     let aValue = '31' // a valid value for CVP
     should.doesNotThrow(() => {
       let result = validator(aName, aValue)
@@ -151,11 +151,11 @@ describe('Test EHR range', () => {
   let min = 0, max = 10
 
   it(`existence ${vName}`, () => {
-    should.exist(validations[vName])
+    should.exist(ehrValidations[vName])
   })
 
   it('Valid range values', (done) => {
-    const validator = validations[vName]
+    const validator = ehrValidations[vName]
     let aValue = '3'
     should.doesNotThrow(() => {
       let result = validator(aName, aValue, min, max)
@@ -177,7 +177,7 @@ describe('Test EHR range', () => {
     })
   })
   it('Invalid range values', (done) => {
-    const validator = validations[vName]
+    const validator = ehrValidations[vName]
     let aValue = '11'
     should.doesNotThrow(() => {
       let result = validator(aName, aValue, min, max)

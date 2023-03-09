@@ -1,7 +1,9 @@
 import {
+  calculateMedicationConcentration,
+  calculateMedicationMaxDosage,
   convertTimeStr,
   convertTimeStrToMilTime, extractDay,
-  extractMonth,
+  extractMonth, medAdminTimes, processDependentOnChange,
   validateAgeValue
 } from '../ehr-definitions/ehr-def-utils'
 const should = require('should')
@@ -42,7 +44,6 @@ describe ( ' convert functions', () => {
   })
 })
 
-
 describe ( ' validateAgeValue', () => {
   it ('validateAgeValue invalid', () => {
     validateAgeValue('bad').should.equal(false)
@@ -78,5 +79,114 @@ describe ( ' extractDay', () => {
     extractDay('1990-01-01').should.equal(1)
     extractDay('1990-01-31').should.equal(31)
     extractDay('1990-03-09T00:00').should.equal(9)
+  })
+})
+
+describe ( ' med admin times', () => {
+  function testit (times, vals) {
+    should.exist(times)
+    true.should.equal(Array.isArray(times))
+    times.length.should.equal(vals.length)
+    for(let i = 0; i < vals.length; i++) {
+      times[i].should.equal(vals[i])
+    }
+  }
+  it('BID', () => {
+    const times = medAdminTimes('BID / Q12H')
+    testit(times,['0800','2000','','','',''])
+  })
+  it('TID', () => {
+    const times = medAdminTimes('TID')
+    testit(times,['0800', '1600', '2200','','',''])
+  })
+  it('Q8H', () => {
+    const times = medAdminTimes('Q8H')
+    testit(times, ['0600','1400', '2200','','',''])
+  })
+  it('QID', () => {
+    const times = medAdminTimes('QID')
+    testit(times, ['0800','1200', '1700', '2200','',''])
+  })
+  it('Q6H', () => {
+    const times = medAdminTimes('Q6H')
+    testit(times, ['0200', '0600', '1200', '1800', '2200', ''])
+  })
+  it('Q4H', () => {
+    const times = medAdminTimes('Q4H')
+    testit(times, ['0200', '0600', '1000', '1400', '1800', '2200'])
+  })
+
+})
+
+describe (' process dependent on change', () => {
+
+  it ('med schedule', () => {
+    const dependentDef = {type: 'onChange'}
+    const pageKey = 'medicationOrders'
+    let value, elementKey, result
+
+    value = 'Q4H'
+    elementKey = 'med_time1'
+    result = processDependentOnChange(dependentDef, value, pageKey, elementKey)
+    should.exist(result)
+    result.should.equal('0200')
+
+    value = 'Q4H'
+    elementKey = 'med_time3'
+    result = processDependentOnChange(dependentDef, value, pageKey, elementKey)
+    should.exist(result)
+    result.should.equal('1000')
+
+    value = 'Q8H'
+    elementKey = 'med_time1'
+    result = processDependentOnChange(dependentDef, value, pageKey, elementKey)
+    should.exist(result)
+    result.should.equal('0600')
+    elementKey = 'med_time6'
+    result = processDependentOnChange(dependentDef, value, pageKey, elementKey)
+    should.exist(result)
+    result.should.equal('')
+
+  })
+})
+
+describe.skip ( ' calculateMedicationConcentration', () => {
+  it ('valid', () => {
+    const srcValues = [ 10, 1000, 24, 'hrs']
+    let results
+    let expected
+    expected = 10/1000/24*60
+    results = calculateMedicationConcentration(srcValues)
+    should.exist(results)
+    console.log('-----------------', expected, results)
+    results.should.equal(expected)
+  })
+
+})
+
+describe ( ' calculateMedicationMaxDosage', () => {
+  it ('valid', () => {
+    const srcValues = {
+      med_dose: '200mg',
+      med_time1: '1222',
+      med_time2: '1222',
+      med_time3: '1222',
+    }
+    let results
+    results = calculateMedicationMaxDosage(srcValues)
+    should.exist(results)
+    results.should.equal('600 mg')
+  })
+  it ('valid', () => {
+    const srcValues = {
+      med_dose: '0.2mg',
+      med_time1: '1222',
+      med_time2: '1222',
+      med_time3: '1222',
+    }
+    let results
+    results = calculateMedicationMaxDosage(srcValues)
+    should.exist(results)
+    results.should.equal('0.6 mg')
   })
 })

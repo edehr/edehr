@@ -1,9 +1,7 @@
 import EhrDataModel from '../ehr-definitions/EhrDataModel'
 import should from 'should'
-import { updateMedicationRoute } from '../ehr-definitions/ehr-data-model-utils'
 import ehrInput from '../resources/ev2_1_1_input.json'
-import ehrWithOldTimeVals from '../resources/old-visit-times-input.json'
-import expectedEhr from '../resources/old-visit-times-expected.json'
+import { updateMedicationRoute } from '../ehr-definitions/med-definitions/med-ehrData-upgrade-utils'
 
 /*
 

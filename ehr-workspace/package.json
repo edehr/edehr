@@ -17,7 +17,8 @@
     "start:run": "node build/index.js",
     "test": "npm run bb && node_modules/.bin/mocha --recursive --sort --bail 'build/**/*.spec.js'",
     "test:all": "npm run bb && node_modules/.bin/mocha --recursive --sort 'build/**/*.spec.js'",
-    "test:cov": "npm run bb && nyc -x '**/*.spec.js' node_modules/.bin/mocha --recursive --sort --bail  'build/**/*.spec.js'"
+    "test:cov": "npm run bb && nyc -x '**/*.spec.js' node_modules/.bin/mocha --recursive --sort --bail  'build/**/*.spec.js'",
+    "test:mar": "npm run bb && node_modules/.bin/mocha 'build/ehr-tests/mar-timeline.spec.js'"
   },
   "dependencies": {
     "nyc": "^15.1.0"
