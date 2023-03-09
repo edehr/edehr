@@ -32,8 +32,6 @@ export class EhrPages {
 
   get pageList () { return this._pages }
 
-  // getPagesWithData (ehrModel) { return this._pages.filter( pg => ehrModel.hasData(pg.pageKey))}
-
   findPage (key) { return this._pages.find( pg => pg.pageKey === key)}
 
   ehrPagesStats (ehrData) {
@@ -62,12 +60,12 @@ export class EhrPages {
    * @param property
    * @returns {undefined}
    */
-  findTableElementsByInputType (pageKey, tableKey, inputType) {
+  findTableElementsByInputType (pageKey, tableKey, property) {
     const page = this.findPage(pageKey)
     const pageTable = page.getPageTable(tableKey)
     let embList
     if (pageTable) {
-      embList = pageTable.filterPageElementChildrenByInputType(inputType)
+      embList = pageTable.filterPageElementChildrenByInputType(property)
     }
     return embList
   }
@@ -103,7 +101,6 @@ export class PageDef {
    * @returns [ PageTable ]
    */
   get pageTables () { return this.tableElements }
-  get pageChildren () { return this.pgChildren}
   get pageTitle () { return this._pageDef.pageTitle }
 
   ehrPageStats (pageData) {
@@ -173,6 +170,11 @@ export class PageElement /* Form or Table */{
       return this._pageChildElements.find(pg => pg.elementKey === key)
     })
   }
+
+  /**
+   *
+   * @returns {[]|*} array of PageChildElement
+   */
   get children () { return this._children}
 
   filterPageElementChildrenByInputType (inputType) {

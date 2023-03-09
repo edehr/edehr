@@ -1,0 +1,605 @@
+{
+  "medicationOrders": {
+    "lastUpdate": "2023-02-21T05:19:03-08:00",
+    "table": [
+      {
+        "day": 0,
+        "time": "0000",
+        "medication": "metformin",
+        "dose": "500mg",
+        "route": "Oral",
+        "administration": "sched",
+        "scheduled": "BID / q12h",
+        "reason": "PO",
+        "createdDate": "2022-12-14T14:53:15-08:00"
+      },
+      {
+        "day": 0,
+        "time": "0000",
+        "medication": "metformin",
+        "dose": "500mg",
+        "route": "Oral",
+        "administration": "sched",
+        "scheduled": "BID / q12h",
+        "reason": "PO",
+        "createdDate": "2022-12-14T14:53:15-08:00"
+      },
+      {
+        "day": 0,
+        "time": "0000",
+        "medication": "ASA enteric coated",
+        "dose": "80mg",
+        "route": "Oral",
+        "administration": "od",
+        "createdDate": "2022-12-14T14:54:34-08:00"
+      },
+      {
+        "name": "Dr Gabriel",
+        "profession": "MD",
+        "day": "0",
+        "time": "0600",
+        "medication": "clopidogrel",
+        "dose": "75mg",
+        "route": "Oral",
+        "administration": "od",
+        "createdDate": "2022-12-14T14:56:04-08:00"
+      },
+      {
+        "name": "Dr Gabriel",
+        "profession": "MD",
+        "day": "0",
+        "medication": "ramipril",
+        "dose": "2.5mg",
+        "route": "Oral",
+        "administration": "sched",
+        "scheduled": "BID / q12h",
+        "createdDate": "2022-12-14T14:56:58-08:00"
+      },
+      {
+        "name": "Dr Gabriel",
+        "profession": "MD",
+        "day": "0",
+        "medication": "Heparin",
+        "route": "Intravenous",
+        "administration": "sched",
+        "createdDate": "2022-12-14T14:57:44-08:00"
+      },
+      {
+        "day": 0,
+        "medication": "Insulin",
+        "dose": "sliding scale",
+        "administration": "sched",
+        "scheduled": "TID",
+        "instructions": "See MD orders",
+        "createdDate": "2022-12-14T14:58:49-08:00"
+      },
+      {
+        "name": "Dr Gabriel",
+        "profession": "MD",
+        "day": "0",
+        "time": "0600",
+        "medication": "Nitroglycerin",
+        "dose": "spray 0.4mg",
+        "route": "Sublingual",
+        "administration": "prn",
+        "instructions": "q5min",
+        "reason": "for ischemic symptoms",
+        "notes": "If not resolved in 3 doses contact MD",
+        "createdDate": "2022-12-14T15:01:29-08:00"
+      },
+      {
+        "name": "Dr Gabriel",
+        "profession": "MD",
+        "day": "0",
+        "medication": "Morphine",
+        "dose": "1-5mg",
+        "route": "Intravenous",
+        "administration": "prn",
+        "instructions": "q5-15 min",
+        "reason": "for ongoing ischemic symptoms",
+        "createdDate": "2022-12-14T15:07:10-08:00"
+      },
+      {
+        "name": "Dr Gabriel",
+        "profession": "MD",
+        "day": "0",
+        "medication": "acetaminophen",
+        "dose": "325mg",
+        "route": "Oral",
+        "administration": "sched",
+        "scheduled": "q4h",
+        "reason": "for pain",
+        "createdDate": "2022-12-14T15:08:17-08:00"
+      }
+    ],
+    "medicationOrdersTable": [
+      {
+        "_id": "6jhfj2o",
+        "day": 0,
+        "time": "0000",
+        "med_timing": "sched",
+        "med_route": "Oral",
+        "med_dose": "500mg",
+        "med_scheduled": "BID / Q12H",
+        "createdDate": "2022-12-14T14:53:15-08:00",
+        "med_reason": "PO",
+        "med_medication": "metformin",
+        "med_time1": "0800",
+        "med_time2": "2000",
+        "med_time3": "",
+        "med_time4": "",
+        "med_time5": "",
+        "med_time6": "",
+        "med_prnMaxDosage": "1000 mg"
+      },
+      {
+        "_id": "g4sse3g",
+        "day": 0,
+        "time": "0000",
+        "med_timing": "sched",
+        "med_route": "Oral",
+        "med_dose": "500mg",
+        "med_scheduled": "BID / Q12H",
+        "createdDate": "2022-12-14T14:53:15-08:00",
+        "med_reason": "PO",
+        "med_medication": "metformin",
+        "med_time1": "0800",
+        "med_time2": "2000",
+        "med_time3": "",
+        "med_time4": "",
+        "med_time5": "",
+        "med_time6": "",
+        "med_prnMaxDosage": "1000 mg"
+      },
+      {
+        "_id": "3ourf17",
+        "day": 0,
+        "time": "0000",
+        "med_timing": "od",
+        "med_route": "Oral",
+        "med_dose": "80mg",
+        "med_scheduled": "",
+        "createdDate": "2022-12-14T14:54:34-08:00",
+        "med_medication": "ASA enteric coated",
+        "med_time1": "",
+        "med_time2": "",
+        "med_time3": "",
+        "med_time4": "",
+        "med_time5": "",
+        "med_time6": "",
+        "med_prnMaxDosage": "80mg"
+      },
+      {
+        "_id": "fbu30co",
+        "day": "0",
+        "time": "0600",
+        "name": "Dr Gabriel",
+        "profession": "MD",
+        "med_timing": "od",
+        "med_route": "Oral",
+        "med_dose": "75mg",
+        "med_scheduled": "",
+        "createdDate": "2022-12-14T14:56:04-08:00",
+        "med_medication": "clopidogrel",
+        "med_time1": "",
+        "med_time2": "",
+        "med_time3": "",
+        "med_time4": "",
+        "med_time5": "",
+        "med_time6": "",
+        "med_prnMaxDosage": "75mg"
+      },
+      {
+        "_id": "6q4c10i",
+        "day": "0",
+        "time": "0000",
+        "name": "Dr Gabriel",
+        "profession": "MD",
+        "med_timing": "sched",
+        "med_route": "Oral",
+        "med_dose": "2.5mg",
+        "med_scheduled": "BID / Q12H",
+        "createdDate": "2022-12-14T14:56:58-08:00",
+        "med_medication": "ramipril",
+        "med_time1": "0800",
+        "med_time2": "2000",
+        "med_time3": "",
+        "med_time4": "",
+        "med_time5": "",
+        "med_time6": "",
+        "med_prnMaxDosage": "5 mg"
+      },
+      {
+        "_id": "dlkosor",
+        "day": "0",
+        "time": "0000",
+        "name": "Dr Gabriel",
+        "profession": "MD",
+        "med_timing": "sched",
+        "med_route": "Intravenous",
+        "med_scheduled": "",
+        "createdDate": "2022-12-14T14:57:44-08:00",
+        "med_medication": "Heparin",
+        "med_time1": "",
+        "med_time2": "",
+        "med_time3": "",
+        "med_time4": "",
+        "med_time5": "",
+        "med_time6": "",
+        "med_prnMaxDosage": 0
+      },
+      {
+        "_id": "e2r6hvo",
+        "day": 0,
+        "time": "0000",
+        "med_timing": "sched",
+        "med_dose": "sliding scale",
+        "med_scheduled": "TID",
+        "createdDate": "2022-12-14T14:58:49-08:00",
+        "med_medication": "Insulin",
+        "med_time1": "0800",
+        "med_time2": "1600",
+        "med_time3": "2200",
+        "med_time4": "",
+        "med_time5": "",
+        "med_time6": "",
+        "med_prnMaxDosage": 0
+      },
+      {
+        "_id": "rpetoho",
+        "day": "0",
+        "time": "0600",
+        "name": "Dr Gabriel",
+        "profession": "MD",
+        "med_timing": "prn",
+        "med_route": "Sublingual",
+        "med_dose": "spray 0.4mg",
+        "med_scheduled": "",
+        "createdDate": "2022-12-14T15:01:29-08:00",
+        "med_reason": "for ischemic symptoms",
+        "med_medication": "Nitroglycerin",
+        "med_time1": "",
+        "med_time2": "",
+        "med_time3": "",
+        "med_time4": "",
+        "med_time5": "",
+        "med_time6": "",
+        "med_prnMaxDosage": "0 mg"
+      },
+      {
+        "_id": "oufm21g",
+        "day": "0",
+        "time": "0000",
+        "name": "Dr Gabriel",
+        "profession": "MD",
+        "med_timing": "prn",
+        "med_route": "Intravenous",
+        "med_dose": "1-5mg",
+        "med_scheduled": "",
+        "createdDate": "2022-12-14T15:07:10-08:00",
+        "med_reason": "for ongoing ischemic symptoms",
+        "med_medication": "Morphine",
+        "med_time1": "",
+        "med_time2": "",
+        "med_time3": "",
+        "med_time4": "",
+        "med_time5": "",
+        "med_time6": "",
+        "med_prnMaxDosage": "0 -5mg"
+      },
+      {
+        "_id": "e0ur4ii",
+        "day": "0",
+        "time": "0000",
+        "name": "Dr Gabriel",
+        "profession": "MD",
+        "med_timing": "sched",
+        "med_route": "Oral",
+        "med_dose": "325mg",
+        "med_scheduled": "Q4H",
+        "createdDate": "2022-12-14T15:08:17-08:00",
+        "med_reason": "for pain",
+        "med_medication": "acetaminophen",
+        "med_time1": "0200",
+        "med_time2": "0600",
+        "med_time3": "1000",
+        "med_time4": "1400",
+        "med_time5": "1800",
+        "med_time6": "2200",
+        "med_prnMaxDosage": "1950 mg"
+      }
+    ]
+  },
+  "medAdminRec": {
+    "lastUpdate": "2023-02-21T19:35:56-08:00",
+    "table": [
+      {
+        "whoAdministered": "Joyce",
+        "day": 0,
+        "actualTime": "1045",
+        "comment": "2mg",
+        "medications": [
+          {
+            "_data": {
+              "name": "Dr Gabriel",
+              "profession": "MD",
+              "day": "0",
+              "medication": "Morphine",
+              "dose": "1-5mg",
+              "route": "Intravenous",
+              "administration": "prn",
+              "instructions": "q5-15 min",
+              "reason": "for ongoing ischemic symptoms",
+              "createdDate": "2022-12-14T15:07:10-08:00"
+            },
+            "_scheduleTimes": [
+              "prn"
+            ]
+          }
+        ]
+      },
+      {
+        "whoAdministered": "Joyce",
+        "day": 0,
+        "actualTime": "1045",
+        "scheduledTime": "0200",
+        "comment": "This is a complete sample",
+        "dosage": "dose",
+        "medications": [
+          {
+            "_data": {
+              "name": "Dr Gabriel",
+              "profession": "MD",
+              "day": "0",
+              "medication": "acetaminophen",
+              "dose": "325mg",
+              "route": "Oral",
+              "instructions": "Doctor's instructions are in this field",
+              "notes": "some notes here",
+              "administration": "sched",
+              "scheduled": "q4h",
+              "reason": "for pain",
+              "createdDate": "2022-12-14T15:08:17-08:00"
+            },
+            "_scheduleTimes": [
+              "0600",
+              "1000",
+              "1400",
+              "1800",
+              "2200",
+              "0200"
+            ]
+          }
+        ]
+      },
+      {
+        "whoAdministered": "Bob",
+        "dosage": "80mg",
+        "day": 1,
+        "actualTime": "0912",
+        "scheduledTime": "od",
+        "medications": [
+          {
+            "_data": {
+              "day": 0,
+              "time": "0000",
+              "medication": "ASA enteric coated",
+              "dose": "80mg",
+              "route": "Oral",
+              "administration": "od",
+              "createdDate": "2022-12-14T14:54:34-08:00"
+            },
+            "_scheduleTimes": [
+              "od"
+            ]
+          }
+        ]
+      },
+      {
+        "whoAdministered": "George",
+        "dosage": "80mg",
+        "day": 1,
+        "actualTime": "0834",
+        "scheduledTime": "od",
+        "medications": [
+          {
+            "_data": {
+              "name": "Dr Gabriel",
+              "profession": "MD",
+              "day": "0",
+              "time": "0600",
+              "medication": "clopidogrel",
+              "dose": "75mg",
+              "route": "Oral",
+              "administration": "od",
+              "createdDate": "2022-12-14T14:56:04-08:00"
+            },
+            "_scheduleTimes": [
+              "od"
+            ]
+          }
+        ]
+      },
+      {
+        "whoAdministered": "G",
+        "dosage": "75mg",
+        "day": 1,
+        "actualTime": "0823",
+        "scheduledTime": "od",
+        "medications": [
+          {
+            "_data": {
+              "name": "Dr Gabriel",
+              "profession": "MD",
+              "day": "0",
+              "time": "0600",
+              "medication": "clopidogrel",
+              "dose": "75mg",
+              "route": "Oral",
+              "administration": "od",
+              "createdDate": "2022-12-14T14:56:04-08:00"
+            },
+            "_scheduleTimes": [
+              "od"
+            ]
+          }
+        ]
+      },
+      {
+        "whoAdministered": "Amelia",
+        "dosage": "325mg",
+        "day": 1,
+        "actualTime": "0230",
+        "scheduledTime": "0200",
+        "medications": [
+          {
+            "_data": {
+              "name": "Dr Gabriel",
+              "profession": "MD",
+              "day": "0",
+              "medication": "acetaminophen",
+              "dose": "325mg",
+              "route": "Oral",
+              "administration": "sched",
+              "scheduled": "q4h",
+              "reason": "for pain",
+              "createdDate": "2022-12-14T15:08:17-08:00"
+            },
+            "_scheduleTimes": [
+              "0600",
+              "1000",
+              "1400",
+              "1800",
+              "2200",
+              "0200"
+            ]
+          }
+        ]
+      },
+      {
+        "whoAdministered": "Amelia",
+        "dosage": "325mg",
+        "day": 1,
+        "actualTime": "0612",
+        "scheduledTime": "0600",
+        "medications": [
+          {
+            "_data": {
+              "name": "Dr Gabriel",
+              "profession": "MD",
+              "day": "0",
+              "medication": "acetaminophen",
+              "dose": "325mg",
+              "route": "Oral",
+              "administration": "sched",
+              "scheduled": "q4h",
+              "reason": "for pain",
+              "createdDate": "2022-12-14T15:08:17-08:00"
+            },
+            "_scheduleTimes": [
+              "0600",
+              "1000",
+              "1400",
+              "1800",
+              "2200",
+              "0200"
+            ]
+          }
+        ]
+      },
+      {
+        "whoAdministered": "Emma",
+        "dosage": "500mg",
+        "day": 1,
+        "actualTime": "0812",
+        "scheduledTime": "0800",
+        "medications": [
+          {
+            "_data": {
+              "day": 0,
+              "time": "0000",
+              "medication": "metformin",
+              "dose": "500mg",
+              "route": "Oral",
+              "administration": "sched",
+              "scheduled": "BID / q12h",
+              "reason": "PO",
+              "createdDate": "2022-12-14T14:53:15-08:00"
+            },
+            "_scheduleTimes": [
+              "0800",
+              "2000"
+            ]
+          }
+        ]
+      }
+    ],
+    "marRecords": [
+      {
+        "day": 0,
+        "time": "1045",
+        "name": "Joyce",
+        "profession": "",
+        "medId": "oufm21g",
+        "comments": "2mg"
+      },
+      {
+        "day": 0,
+        "time": "1045",
+        "name": "Joyce",
+        "profession": "",
+        "medId": "e0ur4ii",
+        "comments": "This is a complete sample"
+      },
+      {
+        "day": 1,
+        "time": "0912",
+        "name": "Bob",
+        "profession": "",
+        "medId": "3ourf17"
+      },
+      {
+        "day": 1,
+        "time": "0834",
+        "name": "George",
+        "profession": "",
+        "medId": "fbu30co"
+      },
+      {
+        "day": 1,
+        "time": "0823",
+        "name": "G",
+        "profession": "",
+        "medId": "fbu30co"
+      },
+      {
+        "day": 1,
+        "time": "0230",
+        "name": "Amelia",
+        "profession": "",
+        "medId": "e0ur4ii"
+      },
+      {
+        "day": 1,
+        "time": "0612",
+        "name": "Amelia",
+        "profession": "",
+        "medId": "e0ur4ii"
+      },
+      {
+        "day": 1,
+        "time": "0812",
+        "name": "Emma",
+        "profession": "",
+        "medId": "6jhfj2o"
+      }
+    ]
+  },
+  "meta": {
+    "simTime": {
+      "visitDay": 1,
+      "visitTime": "0600"
+    },
+    "ehrVersion": "ev2.1.2"
+  }
+}

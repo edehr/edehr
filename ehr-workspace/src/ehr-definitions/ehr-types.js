@@ -51,11 +51,15 @@ const EhrTypes = {
     type: {
       age: 'age',
       check: 'check',
+      echo: 'echo',
+      onChange: 'onChange',
       select: 'select',
     },
     action: {
       age: 'age',
       disable: 'disable',
+      echo: 'echo',
+      onChange: 'onChange',
       visible: 'visble'
     }
   },
@@ -86,7 +90,6 @@ const EhrTypes = {
 EhrTypes.inputTypes = Object.assign({},
   EhrTypes.structuralTypes,
   EhrTypes.dataInputTypes,
-  EhrTypes.dependantOn,
   EhrTypes.nondataInputType,
   EhrTypes.shortFormTypes
 )

@@ -1,6 +1,9 @@
 // noinspection DuplicatedCode
-import { updateAllVisitTime, updateMedicationRoute, visitTimeInEhrData } from './ehr-data-model-utils'
-// import { updateV2_1_6 } from './ehr-V2_1_6'
+import {  updateAllVisitTime,  visitTimeInEhrData} from './ehr-data-model-utils'
+import { decoupleObject } from './common-utils'
+import {
+  updateMedicationRoute
+} from './med-definitions/med-ehrData-upgrade-utils'
 
 /**
  * WARNING Do not edit this code unless you are working in the makeEhr common_src directory.  Use the copy script to deployr to both server and client
@@ -8,10 +11,21 @@ import { updateAllVisitTime, updateMedicationRoute, visitTimeInEhrData } from '.
 
 export default class EhrDataModel {
   constructor (ehrData) {
-    this._ehrData = ehrData
+    this.loadEhrData(ehrData)
+  }
+  loadEhrData (ehrData) {
+    // decouple so this constructor can be used inside a Vuex store (can't modify any of its data)
+    this._ehrData = decoupleObject(ehrData)
+    // updata meta including simTime
+    this._updateEhrDataMeta()
     this.updateEhrDataToLatestFormat()
   }
 
+  _updateEhrDataMeta () {
+    const meta = this._ehrData.meta || {}
+    meta.simTime = visitTimeInEhrData(this._ehrData)
+    this._ehrData.meta = meta
+  }
   get ehrData () {
     return this._ehrData
   }
@@ -29,6 +43,10 @@ export default class EhrDataModel {
     return keys
   }
 
+  /**
+   *
+   * @returns { visitDay: num, visitTime: milTime }
+   */
   get simTime () {
     const meta = this._ehrData.meta || {}
     return meta.simTime
@@ -47,10 +65,21 @@ export default class EhrDataModel {
     }
   }
 
+  /**
+   * Get raw ehr data for given page key
+   * @param pageKey
+   * @returns {*}
+   */
   getPageData (pageKey) {
     return this._ehrData[pageKey]
   }
 
+  /**
+   * Get a raw EHR data pageElement by elementKey
+   * @param pageKey
+   * @param elementKey
+   * @returns {*}
+   */
   getPageFormData (pageKey, elementKey) {
     return this.getPageData(pageKey)[elementKey]
   }
@@ -89,24 +118,19 @@ export default class EhrDataModel {
     this.ehrData = ehrData
   }
 
-  static updateEhrDataMeta (ehrData) {
-    if (ehrData) {
-      const meta = ehrData.meta || {}
-      meta.simTime = visitTimeInEhrData(ehrData)
-      ehrData.meta = meta
-    }
-    return ehrData
-  }
-
   updateEhrDataToLatestFormat () {
     let version = this.metaEhrVersion
     if (!version) {
       this.updateDataTo2_1_0()
       version = this.metaEhrVersion
     }
-    if (version.major <= 2 && version.minor <= 1 && version.patch <= 0) {
+    if (this._checkVer(2,1,0)) {
       this.updateDataTo2_1_1()
-      version = this.metaEhrVersion
     }
+  }
+
+  _checkVer (maj,min,pat) {
+    const version = this.metaEhrVersion
+    return version.major <= maj && version.minor <= min && version.patch <= pat
   }
 }

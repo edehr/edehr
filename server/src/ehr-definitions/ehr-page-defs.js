@@ -869,9 +869,9 @@ const DEFS = {
       'pastSurgery': {
         'elementKey': 'pastSurgery',
         'pageElementIndex': '1',
+        'pageKey': 'surgical',
         'tableKey': 'pastSurgery',
         'isTable': true,
-        'hasRecHeader': false,
         'label': 'Previous surgeries',
         'addButtonText': 'Add a previous surgery',
         'ehr_list': [
@@ -915,14 +915,19 @@ const DEFS = {
             'procedure': '',
             'timeSince': ''
           }
-        }
+        },
+        'tableChildren': [
+          'physician',
+          'procedure',
+          'timeSince'
+        ]
       },
       'previous': {
         'elementKey': 'previous',
         'pageElementIndex': '2',
+        'pageKey': 'surgical',
         'tableKey': 'previous',
         'isTable': true,
-        'hasRecHeader': false,
         'label': 'Previous appointments',
         'addButtonText': 'Add a previous appointment',
         'ehr_list': [
@@ -989,7 +994,14 @@ const DEFS = {
             'previousAdmissions': '',
             'comments': ''
           }
-        }
+        },
+        'tableChildren': [
+          'previousAdmissionsDate',
+          'with',
+          'details',
+          'previousAdmissions',
+          'comments'
+        ]
       }
     }
   },
@@ -1352,9 +1364,9 @@ const DEFS = {
       'teams': {
         'elementKey': 'teams',
         'pageElementIndex': '1',
+        'pageKey': 'careTeam',
         'tableKey': 'teams',
         'isTable': true,
-        'hasRecHeader': false,
         'label': 'Care team',
         'addButtonText': 'Add a care team member',
         'ehr_list': [
@@ -1390,7 +1402,11 @@ const DEFS = {
             'name': '',
             'profession': ''
           }
-        }
+        },
+        'tableChildren': [
+          'name',
+          'profession'
+        ]
       }
     }
   },
@@ -1469,9 +1485,9 @@ const DEFS = {
       'encounters': {
         'elementKey': 'encounters',
         'pageElementIndex': '1',
+        'pageKey': 'pastAppointments',
         'tableKey': 'encounters',
         'isTable': true,
-        'hasRecHeader': false,
         'label': 'Past encounters',
         'addButtonText': 'Add a past appointment',
         'ehr_list': [
@@ -1523,14 +1539,20 @@ const DEFS = {
             'diagnosis': '',
             'mrp': ''
           }
-        }
+        },
+        'tableChildren': [
+          'encounterDate',
+          'site',
+          'diagnosis',
+          'mrp'
+        ]
       },
       'outpatientAppointments': {
         'elementKey': 'outpatientAppointments',
         'pageElementIndex': '2',
+        'pageKey': 'pastAppointments',
         'tableKey': 'outpatientAppointments',
         'isTable': true,
-        'hasRecHeader': false,
         'label': 'Past outpatient appointments',
         'addButtonText': 'Add an outpatient appointment',
         'ehr_list': [
@@ -1582,7 +1604,13 @@ const DEFS = {
             'reasonForVisit': '',
             'diagnosis': ''
           }
-        }
+        },
+        'tableChildren': [
+          'appointmentDate',
+          'site',
+          'reasonForVisit',
+          'diagnosis'
+        ]
       }
     }
   },
@@ -1785,6 +1813,17 @@ const DEFS = {
         'fqn': 'visit.time'
       },
       {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '2',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'visit._id'
+      },
+      {
         'elementKey': 'diagnosisRecord',
         'formIndex': '2',
         'inputType': 'text',
@@ -1839,9 +1878,9 @@ const DEFS = {
       'diagnosisTable': {
         'elementKey': 'diagnosisTable',
         'pageElementIndex': '2',
+        'pageKey': 'visit',
         'tableKey': 'diagnosisTable',
         'isTable': true,
-        'hasRecHeader': true,
         'label': 'Diagnosis',
         'addButtonText': 'Add a diagnosis record',
         'ehr_list': [
@@ -1852,7 +1891,8 @@ const DEFS = {
               'name',
               'profession',
               'day',
-              'time'
+              'time',
+              '_id'
             ]
           },
           {
@@ -1884,7 +1924,8 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                '_id'
               ]
             },
             {
@@ -1901,17 +1942,28 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
+            '_id': '',
             'diagnosisRecord': '',
             'diagnosisDetails': ''
           }
-        }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'diagnosisRecord',
+          'diagnosisDetails'
+        ],
+        'hasRecHeader': true
       },
       'table': {
         'elementKey': 'table',
         'pageElementIndex': '3',
+        'pageKey': 'visit',
         'tableKey': 'table',
         'isTable': true,
-        'hasRecHeader': true,
         'label': 'Patient Location',
         'addButtonText': 'Add a patient location',
         'ehr_list': [
@@ -1979,7 +2031,14 @@ const DEFS = {
             'transferOutDay': '',
             'transferOutTime': ''
           }
-        }
+        },
+        'tableChildren': [
+          'location',
+          'transferInDay',
+          'transferInTime',
+          'transferOutDay',
+          'transferOutTime'
+        ]
       }
     }
   },
@@ -2031,6 +2090,17 @@ const DEFS = {
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'vitals.time'
+      },
+      {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '1',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'vitals._id'
       },
       {
         'elementKey': 'systolic',
@@ -2280,9 +2350,9 @@ const DEFS = {
       'table': {
         'elementKey': 'table',
         'pageElementIndex': '1',
+        'pageKey': 'vitals',
         'tableKey': 'table',
         'isTable': true,
-        'hasRecHeader': true,
         'label': 'Vital signs',
         'addButtonText': 'Add vital signs',
         'ehr_list': [
@@ -2293,7 +2363,8 @@ const DEFS = {
               'name',
               'profession',
               'day',
-              'time'
+              'time',
+              '_id'
             ]
           },
           {
@@ -2413,7 +2484,8 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                '_id'
               ]
             },
             {
@@ -2445,6 +2517,7 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
+            '_id': '',
             'systolic': '',
             'diastolic': '',
             'patientPosition': '',
@@ -2460,7 +2533,29 @@ const DEFS = {
             'bloodSugar': '',
             'cvp': ''
           }
-        }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'systolic',
+          'diastolic',
+          'patientPosition',
+          'temperature',
+          'source',
+          'strength',
+          'rate',
+          'rhythm',
+          'respirationRate',
+          'oxygenSaturation',
+          'oxygenMode',
+          'flowRate',
+          'bloodSugar',
+          'cvp'
+        ],
+        'hasRecHeader': true
       }
     }
   },
@@ -2514,6 +2609,17 @@ const DEFS = {
         'fqn': 'fluidBalance.time'
       },
       {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '1',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'fluidBalance._id'
+      },
+      {
         'elementKey': 'fluidIn',
         'formIndex': '1',
         'inputType': 'text',
@@ -2536,9 +2642,9 @@ const DEFS = {
       'table': {
         'elementKey': 'table',
         'pageElementIndex': '1',
+        'pageKey': 'fluidBalance',
         'tableKey': 'table',
         'isTable': true,
-        'hasRecHeader': true,
         'label': 'Fluid balance',
         'addButtonText': 'Add a fluid in/out record',
         'ehr_list': [
@@ -2549,7 +2655,8 @@ const DEFS = {
               'name',
               'profession',
               'day',
-              'time'
+              'time',
+              '_id'
             ]
           },
           {
@@ -2581,7 +2688,8 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                '_id'
               ]
             },
             {
@@ -2598,10 +2706,21 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
+            '_id': '',
             'fluidIn': '',
             'fluidOut': ''
           }
-        }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'fluidIn',
+          'fluidOut'
+        ],
+        'hasRecHeader': true
       }
     }
   },
@@ -2653,6 +2772,17 @@ const DEFS = {
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'neurological.time'
+      },
+      {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '1',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'neurological._id'
       },
       {
         'elementKey': 'alert',
@@ -3462,9 +3592,9 @@ const DEFS = {
       'table': {
         'elementKey': 'table',
         'pageElementIndex': '1',
+        'pageKey': 'neurological',
         'tableKey': 'table',
         'isTable': true,
-        'hasRecHeader': true,
         'label': 'Neurological assessment',
         'addButtonText': 'Add a neurological assessment',
         'ehr_list': [
@@ -3475,7 +3605,8 @@ const DEFS = {
               'name',
               'profession',
               'day',
-              'time'
+              'time',
+              '_id'
             ]
           },
           {
@@ -3704,7 +3835,8 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                '_id'
               ]
             },
             {
@@ -3795,6 +3927,7 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
+            '_id': '',
             'alert': '',
             'eyeOpening': '',
             'verbalResponse': '',
@@ -3825,7 +3958,44 @@ const DEFS = {
             'extinctionAndInattention': '',
             'strokeAssessmentCalculation': '0'
           }
-        }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'alert',
+          'eyeOpening',
+          'verbalResponse',
+          'bestMotorResponse',
+          'glasgowCalculation',
+          'loss',
+          'duration',
+          'leftPupilSize',
+          'leftPupilResponseToLight',
+          'rightPupilSize',
+          'rightPupilResponseToLight',
+          'bothPupils',
+          'comments',
+          'levelOfConciousness',
+          'levelOfConciousnessQuestions',
+          'levelOfConciousnessCommands',
+          'motorLeftArm',
+          'motorRightArm',
+          'motorLeftLeg',
+          'motorRightLeg',
+          'limbAtaxia',
+          'bestGaze',
+          'visual',
+          'facialPalsy',
+          'sensory',
+          'bestLanguage',
+          'dysarthria',
+          'extinctionAndInattention',
+          'strokeAssessmentCalculation'
+        ],
+        'hasRecHeader': true
       }
     }
   },
@@ -3877,6 +4047,17 @@ const DEFS = {
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'respiratory.time'
+      },
+      {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '1',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'respiratory._id'
       },
       {
         'elementKey': 'airway',
@@ -3990,16 +4171,16 @@ const DEFS = {
         'fqn': 'respiratory.rul'
       },
       {
-        'elementKey': 'aSpacer',
+        'elementKey': 'aSpacer1',
         'formIndex': '1',
         'inputType': 'spacer',
-        'fqn': 'respiratory.aSpacer'
+        'fqn': 'respiratory.aSpacer1'
       },
       {
-        'elementKey': 'aSpacer',
+        'elementKey': 'aSpacer2',
         'formIndex': '1',
         'inputType': 'spacer',
-        'fqn': 'respiratory.aSpacer'
+        'fqn': 'respiratory.aSpacer2'
       },
       {
         'elementKey': 'rml',
@@ -4102,10 +4283,10 @@ const DEFS = {
         'fqn': 'respiratory.rll'
       },
       {
-        'elementKey': 'aSpacer',
+        'elementKey': 'aSpacer3',
         'formIndex': '1',
         'inputType': 'spacer',
-        'fqn': 'respiratory.aSpacer'
+        'fqn': 'respiratory.aSpacer3'
       },
       {
         'elementKey': 'respiratoryRhythm',
@@ -4154,10 +4335,10 @@ const DEFS = {
         'fqn': 'respiratory.respiratoryDepth'
       },
       {
-        'elementKey': 'aSpacer',
+        'elementKey': 'aSpacer4',
         'formIndex': '1',
         'inputType': 'spacer',
-        'fqn': 'respiratory.aSpacer'
+        'fqn': 'respiratory.aSpacer4'
       },
       {
         'elementKey': 'cough',
@@ -4239,9 +4420,9 @@ const DEFS = {
         'elementKey': 'generalComments',
         'formIndex': '1',
         'inputType': 'textarea',
-        'label': 'General comments',
+        'label': 'Comments',
         'tableColumn': '15',
-        'tableLabel': 'General comments',
+        'tableLabel': 'Comments',
         'fqn': 'respiratory.generalComments'
       }
     ],
@@ -4249,9 +4430,9 @@ const DEFS = {
       'table': {
         'elementKey': 'table',
         'pageElementIndex': '1',
+        'pageKey': 'respiratory',
         'tableKey': 'table',
         'isTable': true,
-        'hasRecHeader': true,
         'label': 'Respiratory assessment',
         'addButtonText': 'Add a respiratory assessment',
         'ehr_list': [
@@ -4262,7 +4443,8 @@ const DEFS = {
               'name',
               'profession',
               'day',
-              'time'
+              'time',
+              '_id'
             ]
           },
           {
@@ -4360,7 +4542,7 @@ const DEFS = {
             ]
           },
           {
-            'label': 'General comments',
+            'label': 'Comments',
             'ehr_list_index': '15',
             'items': [
               'generalComments'
@@ -4382,7 +4564,8 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                '_id'
               ]
             },
             {
@@ -4401,13 +4584,13 @@ const DEFS = {
               'gChildren': [
                 'lul',
                 'rul',
-                'aSpacer',
-                'aSpacer',
+                'aSpacer1',
+                'aSpacer2',
                 'rml',
                 'aSpacer',
                 'lll',
                 'rll',
-                'aSpacer'
+                'aSpacer3'
               ]
             },
             {
@@ -4417,7 +4600,7 @@ const DEFS = {
               'gChildren': [
                 'respiratoryRhythm',
                 'respiratoryDepth',
-                'aSpacer',
+                'aSpacer4',
                 'cough',
                 'sputumColour',
                 'sputumComments'
@@ -4437,6 +4620,7 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
+            '_id': '',
             'airway': '',
             'oxygenTherapy': '',
             'flowRate': '',
@@ -4452,7 +4636,29 @@ const DEFS = {
             'sputumComments': '',
             'generalComments': ''
           }
-        }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'airway',
+          'oxygenTherapy',
+          'flowRate',
+          'lul',
+          'rul',
+          'rml',
+          'lll',
+          'rll',
+          'respiratoryRhythm',
+          'respiratoryDepth',
+          'cough',
+          'sputumColour',
+          'sputumComments',
+          'generalComments'
+        ],
+        'hasRecHeader': true
       }
     }
   },
@@ -4504,6 +4710,17 @@ const DEFS = {
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'cardiovascular.time'
+      },
+      {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '1',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'cardiovascular._id'
       },
       {
         'elementKey': 'pulse',
@@ -5034,9 +5251,9 @@ const DEFS = {
       'table': {
         'elementKey': 'table',
         'pageElementIndex': '1',
+        'pageKey': 'cardiovascular',
         'tableKey': 'table',
         'isTable': true,
-        'hasRecHeader': true,
         'label': 'Cardiovascular assessment',
         'addButtonText': 'Add a cardiovascular assessment',
         'ehr_list': [
@@ -5047,7 +5264,8 @@ const DEFS = {
               'name',
               'profession',
               'day',
-              'time'
+              'time',
+              '_id'
             ]
           },
           {
@@ -5216,7 +5434,8 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                '_id'
               ]
             },
             {
@@ -5273,6 +5492,7 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
+            '_id': '',
             'pulse': '',
             'skinAppearance': '',
             'capRefillLeftHand': '',
@@ -5293,7 +5513,34 @@ const DEFS = {
             'nailBedColourLeftFoot': '',
             'comments': ''
           }
-        }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'pulse',
+          'skinAppearance',
+          'capRefillLeftHand',
+          'temperatureRightHand',
+          'peripheralEdemaRightHand',
+          'nailBedColourRightHand',
+          'capRefillRightHand',
+          'temperatureLeftHand',
+          'peripheralEdemaLeftHand',
+          'nailBedColourLeftHand',
+          'capRefillRightFoot',
+          'temperatureRightFoot',
+          'peripheralEdemaRightFoot',
+          'nailBedColourRightFoot',
+          'capRefillLeftFoot',
+          'temperatureLeftFoot',
+          'peripheralEdemaLeftFoot',
+          'nailBedColourLeftFoot',
+          'comments'
+        ],
+        'hasRecHeader': true
       }
     }
   },
@@ -5345,6 +5592,17 @@ const DEFS = {
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'gastrointestinal.time'
+      },
+      {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '1',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'gastrointestinal._id'
       },
       {
         'elementKey': 'bowel',
@@ -5764,9 +6022,9 @@ const DEFS = {
       'table': {
         'elementKey': 'table',
         'pageElementIndex': '1',
+        'pageKey': 'gastrointestinal',
         'tableKey': 'table',
         'isTable': true,
-        'hasRecHeader': true,
         'label': 'Gastrointestinal assessment',
         'addButtonText': 'Add a gastrointestinal assessment',
         'ehr_list': [
@@ -5777,7 +6035,8 @@ const DEFS = {
               'name',
               'profession',
               'day',
-              'time'
+              'time',
+              '_id'
             ]
           },
           {
@@ -5932,7 +6191,8 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                '_id'
               ]
             },
             {
@@ -6004,6 +6264,7 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
+            '_id': '',
             'bowel': '',
             'bSounds': '',
             'condition': '',
@@ -6024,7 +6285,34 @@ const DEFS = {
             'stoolSource': '',
             'comments': ''
           }
-        }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'bowel',
+          'bSounds',
+          'condition',
+          'pain',
+          'emesisPresent',
+          'colour',
+          'description',
+          'amount',
+          'eating',
+          'reason',
+          'npoSinceDay',
+          'npoSinceTime',
+          'weightLoss',
+          'lastBm',
+          'stoolColour',
+          'stoolDescription',
+          'stoolAmount',
+          'stoolSource',
+          'comments'
+        ],
+        'hasRecHeader': true
       }
     }
   },
@@ -6076,6 +6364,17 @@ const DEFS = {
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'genitourinary.time'
+      },
+      {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '1',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'genitourinary._id'
       },
       {
         'elementKey': 'urinaryGroup1',
@@ -6481,9 +6780,9 @@ const DEFS = {
       'table': {
         'elementKey': 'table',
         'pageElementIndex': '1',
+        'pageKey': 'genitourinary',
         'tableKey': 'table',
         'isTable': true,
-        'hasRecHeader': true,
         'label': 'Genitourinary assessment',
         'addButtonText': 'Add a genitourinary assessment',
         'ehr_list': [
@@ -6494,7 +6793,8 @@ const DEFS = {
               'name',
               'profession',
               'day',
-              'time'
+              'time',
+              '_id'
             ]
           },
           {
@@ -6672,7 +6972,8 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                '_id'
               ]
             },
             {
@@ -6752,6 +7053,7 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
+            '_id': '',
             'urinaryGroup1': '',
             'lastVoidedDay': '',
             'lastVoidedTime': '',
@@ -6776,7 +7078,38 @@ const DEFS = {
             'livingChildren': '',
             'comments': ''
           }
-        }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'urinaryGroup1',
+          'lastVoidedDay',
+          'lastVoidedTime',
+          'colour',
+          'consistency',
+          'diaper',
+          'toilettingMethod',
+          'foley',
+          'foleyType',
+          'foleySize',
+          'lastChange',
+          'lastChangeTime',
+          'pelvicPain',
+          'location',
+          'pelvicPainSource',
+          'discharge',
+          'description',
+          'lastMenstrualPeriodDate',
+          'pregnant',
+          'gravida',
+          'para',
+          'livingChildren',
+          'comments'
+        ],
+        'hasRecHeader': true
       }
     }
   },
@@ -6828,6 +7161,17 @@ const DEFS = {
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'musculoskeletal.time'
+      },
+      {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '1',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'musculoskeletal._id'
       },
       {
         'elementKey': 'swelling',
@@ -7088,9 +7432,9 @@ const DEFS = {
       'table': {
         'elementKey': 'table',
         'pageElementIndex': '1',
+        'pageKey': 'musculoskeletal',
         'tableKey': 'table',
         'isTable': true,
-        'hasRecHeader': true,
         'label': 'Musculoskeletal assessment',
         'addButtonText': 'Add a musculoskeletal assessment',
         'ehr_list': [
@@ -7101,7 +7445,8 @@ const DEFS = {
               'name',
               'profession',
               'day',
-              'time'
+              'time',
+              '_id'
             ]
           },
           {
@@ -7198,7 +7543,8 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                '_id'
               ]
             },
             {
@@ -7232,6 +7578,7 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
+            '_id': '',
             'swelling': '',
             'pain': '',
             'deformity': '',
@@ -7244,7 +7591,26 @@ const DEFS = {
             'type': '',
             'comments': ''
           }
-        }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'swelling',
+          'pain',
+          'deformity',
+          'movement',
+          'sensation',
+          'pulse',
+          'colour',
+          'temp',
+          'useOfAmbulatoryAid',
+          'type',
+          'comments'
+        ],
+        'hasRecHeader': true
       }
     }
   },
@@ -7296,6 +7662,17 @@ const DEFS = {
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'pain.time'
+      },
+      {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '1',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'pain._id'
       },
       {
         'elementKey': 'location',
@@ -7387,101 +7764,101 @@ const DEFS = {
         'fqn': 'pain.comments'
       },
       {
-        'elementKey': 'location',
+        'elementKey': 'location2',
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Location',
         'tableColumn': '12',
         'tableLabel': 'Location',
-        'fqn': 'pain.location'
+        'fqn': 'pain.location2'
       },
       {
-        'elementKey': 'painScale',
+        'elementKey': 'painScale2',
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Pain intensity (0-10)',
         'suffix': '/10',
         'tableColumn': '13',
         'tableLabel': 'Pain intensity (0-10)',
-        'fqn': 'pain.painScale',
+        'fqn': 'pain.painScale2',
         'suffixText': '<p>/10</p>',
         'suffixHtml': '/10'
       },
       {
-        'elementKey': 'respiratoryRate',
+        'elementKey': 'respiratoryRate2',
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Respiratory rate',
         'suffix': 'br/min',
         'tableColumn': '14',
         'tableLabel': 'Respiratory rate',
-        'fqn': 'pain.respiratoryRate',
+        'fqn': 'pain.respiratoryRate2',
         'suffixText': '<p>br/min</p>',
         'suffixHtml': 'br/min'
       },
       {
-        'elementKey': 'onset',
+        'elementKey': 'onset2',
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Onset',
         'tableColumn': '15',
         'tableLabel': 'Onset',
-        'fqn': 'pain.onset'
+        'fqn': 'pain.onset2'
       },
       {
-        'elementKey': 'type',
+        'elementKey': 'type2',
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Type',
         'tableColumn': '16',
         'tableLabel': 'Type',
-        'fqn': 'pain.type'
+        'fqn': 'pain.type2'
       },
       {
-        'elementKey': 'alleviationAssociatedSymptoms',
+        'elementKey': 'alleviationAssociatedSymptoms2',
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Alleviation & associated symptoms',
         'tableColumn': '17',
         'tableLabel': 'Alleviation & associated symptoms',
-        'fqn': 'pain.alleviationAssociatedSymptoms'
+        'fqn': 'pain.alleviationAssociatedSymptoms2'
       },
       {
-        'elementKey': 'radiation',
+        'elementKey': 'radiation2',
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Radiation',
         'tableColumn': '18',
         'tableLabel': 'Radiation',
-        'fqn': 'pain.radiation'
+        'fqn': 'pain.radiation2'
       },
       {
-        'elementKey': 'precipitatingEvents',
+        'elementKey': 'precipitatingEvents2',
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Precipitating events',
         'tableColumn': '19',
         'tableCss': 'hr-table',
         'tableLabel': 'Precipitating events',
-        'fqn': 'pain.precipitatingEvents'
+        'fqn': 'pain.precipitatingEvents2'
       },
       {
-        'elementKey': 'comments',
+        'elementKey': 'comments2',
         'formIndex': '1',
         'inputType': 'textarea',
         'label': 'Comments',
         'tableColumn': '20',
         'tableLabel': 'Comments',
-        'fqn': 'pain.comments'
+        'fqn': 'pain.comments2'
       }
     ],
     'pageElements': {
       'table': {
         'elementKey': 'table',
         'pageElementIndex': '1',
+        'pageKey': 'pain',
         'tableKey': 'table',
         'isTable': true,
-        'hasRecHeader': true,
         'label': 'Pain assessment',
         'addButtonText': 'Add a pain assessment',
         'ehr_list': [
@@ -7492,7 +7869,8 @@ const DEFS = {
               'name',
               'profession',
               'day',
-              'time'
+              'time',
+              '_id'
             ]
           },
           {
@@ -7564,49 +7942,49 @@ const DEFS = {
             'label': 'Location',
             'ehr_list_index': '12',
             'items': [
-              'location'
+              'location2'
             ]
           },
           {
             'label': 'Pain intensity (0-10)',
             'ehr_list_index': '13',
             'items': [
-              'painScale'
+              'painScale2'
             ]
           },
           {
             'label': 'Respiratory rate',
             'ehr_list_index': '14',
             'items': [
-              'respiratoryRate'
+              'respiratoryRate2'
             ]
           },
           {
             'label': 'Onset',
             'ehr_list_index': '15',
             'items': [
-              'onset'
+              'onset2'
             ]
           },
           {
             'label': 'Type',
             'ehr_list_index': '16',
             'items': [
-              'type'
+              'type2'
             ]
           },
           {
             'label': 'Alleviation & associated symptoms',
             'ehr_list_index': '17',
             'items': [
-              'alleviationAssociatedSymptoms'
+              'alleviationAssociatedSymptoms2'
             ]
           },
           {
             'label': 'Radiation',
             'ehr_list_index': '18',
             'items': [
-              'radiation'
+              'radiation2'
             ]
           },
           {
@@ -7614,14 +7992,14 @@ const DEFS = {
             'tableCss': 'hr-table',
             'ehr_list_index': '19',
             'items': [
-              'precipitatingEvents'
+              'precipitatingEvents2'
             ]
           },
           {
             'label': 'Comments',
             'ehr_list_index': '20',
             'items': [
-              'comments'
+              'comments2'
             ]
           }
         ],
@@ -7640,7 +8018,8 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                '_id'
               ]
             },
             {
@@ -7671,14 +8050,14 @@ const DEFS = {
               'label': 'Secondary pain site',
               'gIndex': '4',
               'gChildren': [
-                'location',
-                'painScale',
-                'respiratoryRate',
-                'onset',
-                'type',
-                'alleviationAssociatedSymptoms',
-                'radiation',
-                'precipitatingEvents'
+                'location2',
+                'painScale2',
+                'respiratoryRate2',
+                'onset2',
+                'type2',
+                'alleviationAssociatedSymptoms2',
+                'radiation2',
+                'precipitatingEvents2'
               ]
             },
             {
@@ -7686,7 +8065,7 @@ const DEFS = {
               'formCss': 'grid-left-to-right-1',
               'gIndex': '5',
               'gChildren': [
-                'comments'
+                'comments2'
               ]
             }
           ],
@@ -7695,6 +8074,7 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
+            '_id': '',
             'location': '',
             'painScale': '',
             'respiratoryRate': '',
@@ -7703,9 +8083,44 @@ const DEFS = {
             'alleviationAssociatedSymptoms': '',
             'radiation': '',
             'precipitatingEvents': '',
-            'comments': ''
+            'comments': '',
+            'location2': '',
+            'painScale2': '',
+            'respiratoryRate2': '',
+            'onset2': '',
+            'type2': '',
+            'alleviationAssociatedSymptoms2': '',
+            'radiation2': '',
+            'precipitatingEvents2': '',
+            'comments2': ''
           }
-        }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'location',
+          'painScale',
+          'respiratoryRate',
+          'onset',
+          'type',
+          'alleviationAssociatedSymptoms',
+          'radiation',
+          'precipitatingEvents',
+          'comments',
+          'location2',
+          'painScale2',
+          'respiratoryRate2',
+          'onset2',
+          'type2',
+          'alleviationAssociatedSymptoms2',
+          'radiation2',
+          'precipitatingEvents2',
+          'comments2'
+        ],
+        'hasRecHeader': true
       }
     }
   },
@@ -7757,6 +8172,17 @@ const DEFS = {
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'biopsychosocial.time'
+      },
+      {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '1',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'biopsychosocial._id'
       },
       {
         'elementKey': 'domesticViolence',
@@ -8065,9 +8491,9 @@ const DEFS = {
       'table': {
         'elementKey': 'table',
         'pageElementIndex': '1',
+        'pageKey': 'biopsychosocial',
         'tableKey': 'table',
         'isTable': true,
-        'hasRecHeader': true,
         'label': 'Biopsychosocial assessment',
         'addButtonText': 'Add a biopsychosocial assessment',
         'ehr_list': [
@@ -8078,7 +8504,8 @@ const DEFS = {
               'name',
               'profession',
               'day',
-              'time'
+              'time',
+              '_id'
             ]
           },
           {
@@ -8227,7 +8654,8 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                '_id'
               ]
             },
             {
@@ -8310,6 +8738,7 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
+            '_id': '',
             'domesticViolence': '',
             'requestContact': '',
             'hygieneGrooming': '',
@@ -8329,7 +8758,33 @@ const DEFS = {
             'restraintComments': '',
             'generalComments': ''
           }
-        }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'domesticViolence',
+          'requestContact',
+          'hygieneGrooming',
+          'hygieneComments',
+          'behaviour',
+          'hallucinations',
+          'suicidal',
+          'homicidal',
+          'speech',
+          'supportPerson',
+          'supportComments',
+          'securityPolicePresent',
+          'securityComments',
+          'patientRestrained',
+          'restraintDay',
+          'restraintTime',
+          'restraintComments',
+          'generalComments'
+        ],
+        'hasRecHeader': true
       }
     }
   },
@@ -8381,6 +8836,17 @@ const DEFS = {
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'nonmedOrders.time'
+      },
+      {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '1',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'nonmedOrders._id'
       },
       {
         'elementKey': 'order',
@@ -8497,6 +8963,17 @@ const DEFS = {
         'fqn': 'nonmedOrders.time'
       },
       {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '2',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'nonmedOrders._id'
+      },
+      {
         'elementKey': 'diet_regular',
         'formIndex': '2',
         'inputType': 'checkbox',
@@ -8585,10 +9062,10 @@ const DEFS = {
       'table': {
         'elementKey': 'table',
         'pageElementIndex': '1',
+        'pageKey': 'nonmedOrders',
         'tableKey': 'table',
         'isTable': true,
-        'hasRecHeader': true,
-        'label': 'Nonmedical orders',
+        'label': 'Nonmedication orders',
         'addButtonText': 'Add an order',
         'ehr_list': [
           {
@@ -8598,7 +9075,8 @@ const DEFS = {
               'name',
               'profession',
               'day',
-              'time'
+              'time',
+              '_id'
             ]
           },
           {
@@ -8639,7 +9117,7 @@ const DEFS = {
         ],
         'form': {
           'elementKey': 'table',
-          'label': 'Nonmedical orders',
+          'label': 'Nonmedication orders',
           'addButtonText': 'Add an order',
           'formKey': 'table',
           'ehr_groups': [
@@ -8651,7 +9129,8 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                '_id'
               ]
             },
             {
@@ -8678,20 +9157,34 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
+            '_id': '',
             'order': '',
             'orderedBy': '',
             'reason': '',
             'status': '',
             'comment': ''
           }
-        }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'order',
+          'orderedBy',
+          'reason',
+          'status',
+          'comment'
+        ],
+        'hasRecHeader': true
       },
       'dietOrders': {
         'elementKey': 'dietOrders',
         'pageElementIndex': '2',
+        'pageKey': 'nonmedOrders',
         'tableKey': 'dietOrders',
         'isTable': true,
-        'hasRecHeader': true,
         'label': 'Diet',
         'addButtonText': 'Add a diet order',
         'ehr_list': [
@@ -8702,7 +9195,8 @@ const DEFS = {
               'name',
               'profession',
               'day',
-              'time'
+              'time',
+              '_id'
             ]
           },
           {
@@ -8783,7 +9277,8 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                '_id'
               ]
             },
             {
@@ -8826,6 +9321,7 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
+            '_id': '',
             'diet_regular': '',
             'diet_npo': '',
             'diet_heart': '',
@@ -8836,7 +9332,24 @@ const DEFS = {
             'diet_other_explain': '',
             'diet_comment': ''
           }
-        }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'diet_regular',
+          'diet_npo',
+          'diet_heart',
+          'diet_diabetic',
+          'diet_fluid',
+          'diet_fluid_amount',
+          'diet_other',
+          'diet_other_explain',
+          'diet_comment'
+        ],
+        'hasRecHeader': true
       }
     }
   },
@@ -8888,6 +9401,17 @@ const DEFS = {
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'referrals.time'
+      },
+      {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '1',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'referrals._id'
       },
       {
         'elementKey': 'referralName',
@@ -8955,9 +9479,9 @@ const DEFS = {
       'table': {
         'elementKey': 'table',
         'pageElementIndex': '1',
+        'pageKey': 'referrals',
         'tableKey': 'table',
         'isTable': true,
-        'hasRecHeader': true,
         'label': 'Referrals',
         'addButtonText': 'Add a referral',
         'ehr_list': [
@@ -8968,7 +9492,8 @@ const DEFS = {
               'name',
               'profession',
               'day',
-              'time'
+              'time',
+              '_id'
             ]
           },
           {
@@ -9021,7 +9546,8 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                '_id'
               ]
             },
             {
@@ -9042,13 +9568,27 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
+            '_id': '',
             'referralName': '',
             'referralProfession': '',
             'appointmentDate': '',
             'appointmentTime': '',
             'status': ''
           }
-        }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'referralName',
+          'referralProfession',
+          'appointmentDate',
+          'appointmentTime',
+          'status'
+        ],
+        'hasRecHeader': true
       }
     }
   },
@@ -9100,6 +9640,17 @@ const DEFS = {
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'labRequisitions.time'
+      },
+      {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '1',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'labRequisitions._id'
       },
       {
         'elementKey': 'patientName',
@@ -9419,6 +9970,17 @@ const DEFS = {
         'fqn': 'labRequisitions.time'
       },
       {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '2',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'labRequisitions._id'
+      },
+      {
         'elementKey': 'req_noticeLabel',
         'formIndex': '2',
         'formCss': 'grid-span-3-columns',
@@ -9473,14 +10035,50 @@ const DEFS = {
           {
             'key': 'HbA1C',
             'text': 'Hemoglobin A1-C'
-          },
-          {
-            'key': 'HTNT',
-            'text': 'Troponin'
           }
         ],
         'tableColumn': '4',
         'fqn': 'labRequisitions.req_hematology'
+      },
+      {
+        'elementKey': 'req_cardiac',
+        'formIndex': '2',
+        'inputType': 'checkset',
+        'label': 'Cardiac',
+        'options': [
+          {
+            'key': 'HTNT',
+            'text': 'Troponin (HTNT)'
+          }
+        ],
+        'tableColumn': '5',
+        'fqn': 'labRequisitions.req_cardiac'
+      },
+      {
+        'elementKey': 'req_cogagulation',
+        'formIndex': '2',
+        'inputType': 'checkset',
+        'label': 'Coagulation',
+        'options': [
+          {
+            'key': 'fib',
+            'text': 'Fibrinogen'
+          },
+          {
+            'key': 'ddim',
+            'text': 'D-Dimer'
+          },
+          {
+            'key': 'inr',
+            'text': 'International normalised ratio (INR)'
+          },
+          {
+            'key': 'ptt',
+            'text': 'Partial thromboplastin time (PTT)'
+          }
+        ],
+        'tableColumn': '6',
+        'fqn': 'labRequisitions.req_cogagulation'
       },
       {
         'elementKey': 'req_electrolytes',
@@ -9525,74 +10123,8 @@ const DEFS = {
             'text': 'Sodium (Na)'
           }
         ],
-        'tableColumn': '5',
-        'fqn': 'labRequisitions.req_electrolytes'
-      },
-      {
-        'elementKey': 'req_cogagulation',
-        'formIndex': '2',
-        'inputType': 'checkset',
-        'label': 'Coagulation',
-        'options': [
-          {
-            'key': 'fib',
-            'text': 'Fibrinogen'
-          },
-          {
-            'key': 'ddim',
-            'text': 'D-Dimer'
-          },
-          {
-            'key': 'inr',
-            'text': 'INR'
-          },
-          {
-            'key': 'ptt',
-            'text': 'PTT'
-          }
-        ],
-        'tableColumn': '6',
-        'fqn': 'labRequisitions.req_cogagulation'
-      },
-      {
-        'elementKey': 'req_bloodGas',
-        'formIndex': '2',
-        'inputType': 'checkset',
-        'label': 'Blood Gas',
-        'options': [
-          {
-            'key': 'abg',
-            'text': 'Arterial blood gas (ABG)'
-          },
-          {
-            'key': 'fcbg',
-            'text': 'Venous blood gas (FCBG)'
-          },
-          {
-            'key': 'vbg',
-            'text': 'Fetal cord blood gas (VBG)'
-          }
-        ],
         'tableColumn': '7',
-        'fqn': 'labRequisitions.req_bloodGas'
-      },
-      {
-        'elementKey': 'req_renalProfile',
-        'formIndex': '2',
-        'inputType': 'checkset',
-        'label': 'Renal Profile',
-        'options': [
-          {
-            'key': 'bun',
-            'text': 'Blood urea nitrogen (BUN)'
-          },
-          {
-            'key': 'cr',
-            'text': 'Creatinine'
-          }
-        ],
-        'tableColumn': '8',
-        'fqn': 'labRequisitions.req_renalProfile'
+        'fqn': 'labRequisitions.req_electrolytes'
       },
       {
         'elementKey': 'req_liverFunction',
@@ -9633,8 +10165,48 @@ const DEFS = {
             'text': 'Lipase'
           }
         ],
-        'tableColumn': '9',
+        'tableColumn': '8',
         'fqn': 'labRequisitions.req_liverFunction'
+      },
+      {
+        'elementKey': 'req_bloodGas',
+        'formIndex': '2',
+        'inputType': 'checkset',
+        'label': 'Blood Gas',
+        'options': [
+          {
+            'key': 'abg',
+            'text': 'Arterial blood gas (ABG)'
+          },
+          {
+            'key': 'fcbg',
+            'text': 'Venous blood gas (FCBG)'
+          },
+          {
+            'key': 'vbg',
+            'text': 'Fetal cord blood gas (VBG)'
+          }
+        ],
+        'tableColumn': '9',
+        'fqn': 'labRequisitions.req_bloodGas'
+      },
+      {
+        'elementKey': 'req_renalProfile',
+        'formIndex': '2',
+        'inputType': 'checkset',
+        'label': 'Renal Profile',
+        'options': [
+          {
+            'key': 'bun',
+            'text': 'Blood urea nitrogen (BUN)'
+          },
+          {
+            'key': 'cr',
+            'text': 'Creatinine'
+          }
+        ],
+        'tableColumn': '10',
+        'fqn': 'labRequisitions.req_renalProfile'
       },
       {
         'elementKey': 'req_urineAnalysis',
@@ -9659,86 +10231,17 @@ const DEFS = {
             'text': 'Urine creatinine'
           }
         ],
-        'tableColumn': '10',
+        'tableColumn': '11',
         'fqn': 'labRequisitions.req_urineAnalysis'
       },
       {
-        'elementKey': 'req_microbiologyCulture',
+        'elementKey': 'req_comments',
         'formIndex': '2',
-        'inputType': 'select',
-        'label': 'Type of Culture',
-        'options': [
-          {
-            'key': 'culture',
-            'text': 'culture'
-          },
-          {
-            'key': 'senstitivity',
-            'text': 'senstitivity'
-          }
-        ],
-        'tableColumn': '11',
-        'fqn': 'labRequisitions.req_microbiologyCulture'
-      },
-      {
-        'elementKey': 'req_microbiologyLocation',
-        'formIndex': '2',
-        'inputType': 'select',
-        'label': 'Location',
-        'options': [
-          {
-            'key': 'Wound',
-            'text': 'Wound'
-          },
-          {
-            'key': 'Sputum',
-            'text': 'Sputum'
-          },
-          {
-            'key': 'Blood',
-            'text': 'Blood'
-          },
-          {
-            'key': 'Urine',
-            'text': 'Urine'
-          },
-          {
-            'key': 'Stool',
-            'text': 'Stool'
-          }
-        ],
+        'inputType': 'textarea',
+        'label': 'Comments',
         'tableColumn': '12',
-        'fqn': 'labRequisitions.req_microbiologyLocation'
-      },
-      {
-        'elementKey': 'req_histologyTissueType',
-        'formIndex': '2',
-        'inputType': 'select',
-        'label': 'Tissue Type',
-        'options': [
-          {
-            'key': 'Skin',
-            'text': 'Skin'
-          },
-          {
-            'key': 'Blood',
-            'text': 'Blood'
-          },
-          {
-            'key': 'Organ',
-            'text': 'Organ'
-          }
-        ],
-        'tableColumn': '13',
-        'fqn': 'labRequisitions.req_histologyTissueType'
-      },
-      {
-        'elementKey': 'req_histologyLocation',
-        'formIndex': '2',
-        'inputType': 'text',
-        'label': 'Location',
-        'tableColumn': '14',
-        'fqn': 'labRequisitions.req_histologyLocation'
+        'tableLabel': 'Comments',
+        'fqn': 'labRequisitions.req_comments'
       },
       {
         'elementKey': 'name',
@@ -9784,8 +10287,137 @@ const DEFS = {
         'fqn': 'labRequisitions.time'
       },
       {
-        'elementKey': 'mi_noticeLabel',
+        'elementKey': '_id',
+        'calculationType': 'generateId',
         'formIndex': '3',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'labRequisitions._id'
+      },
+      {
+        'elementKey': 'histology_noticeLabel',
+        'formIndex': '3',
+        'formCss': 'grid-span-3-columns',
+        'helperText': 'This version of lab requisitions is under development. Use at your own risk. Recommend you continue to use the other v1 lab req for any work that you want to keep.  When this new lab req is ready all older versions will be converted to the new version.',
+        'inputType': 'form_label',
+        'label': 'This lab requisition form is a prototype.',
+        'fqn': 'labRequisitions.histology_noticeLabel',
+        'helperHtml': '<p>This version of lab requisitions is under development. Use at your own risk. Recommend you continue to use the other v1 lab req for any work that you want to keep.  When this new lab req is ready all older versions will be converted to the new version.</p>'
+      },
+      {
+        'elementKey': 'histology_dateRequired',
+        'formIndex': '3',
+        'inputType': 'visitDay',
+        'label': 'Date required',
+        'tableColumn': '2',
+        'fqn': 'labRequisitions.histology_dateRequired'
+      },
+      {
+        'elementKey': 'histology_reason',
+        'formIndex': '3',
+        'inputType': 'text',
+        'label': 'Reason test is required',
+        'tableColumn': '3',
+        'fqn': 'labRequisitions.histology_reason'
+      },
+      {
+        'elementKey': 'histology_type',
+        'formIndex': '3',
+        'inputType': 'select',
+        'label': 'Tissue Type',
+        'options': [
+          {
+            'key': 'blood',
+            'text': 'Blood'
+          },
+          {
+            'key': 'organ',
+            'text': 'Organ'
+          },
+          {
+            'key': 'skin',
+            'text': 'Skin'
+          }
+        ],
+        'tableColumn': '4',
+        'fqn': 'labRequisitions.histology_type'
+      },
+      {
+        'elementKey': 'histology_location',
+        'formIndex': '3',
+        'inputType': 'text',
+        'label': 'Location',
+        'tableColumn': '5',
+        'fqn': 'labRequisitions.histology_location'
+      },
+      {
+        'elementKey': 'histology_comments',
+        'formIndex': '3',
+        'inputType': 'textarea',
+        'label': 'Comments',
+        'tableColumn': '6',
+        'fqn': 'labRequisitions.histology_comments'
+      },
+      {
+        'elementKey': 'name',
+        'formIndex': '4',
+        'inputType': 'practitionerName',
+        'label': 'Name',
+        'mandatory': true,
+        'tableColumn': '1',
+        'tableLabel': 'Identification',
+        'recHeader': true,
+        'fqn': 'labRequisitions.name'
+      },
+      {
+        'elementKey': 'profession',
+        'formIndex': '4',
+        'inputType': 'practitionerProfession',
+        'label': 'Profession',
+        'mandatory': true,
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'labRequisitions.profession'
+      },
+      {
+        'elementKey': 'day',
+        'formIndex': '4',
+        'inputType': 'visitDay',
+        'label': 'Day',
+        'mandatory': true,
+        'tableColumn': '1',
+        'validation': 'visitDay',
+        'recHeader': true,
+        'fqn': 'labRequisitions.day'
+      },
+      {
+        'elementKey': 'time',
+        'formIndex': '4',
+        'inputType': 'visitTime',
+        'label': 'Time',
+        'mandatory': true,
+        'tableColumn': '1',
+        'validation': 'time24',
+        'recHeader': true,
+        'fqn': 'labRequisitions.time'
+      },
+      {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '4',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'labRequisitions._id'
+      },
+      {
+        'elementKey': 'mi_noticeLabel',
+        'formIndex': '4',
         'formCss': 'grid-span-3-columns',
         'helperText': 'This version of lab requisitions is under development. Use at your own risk. Recommend you continue to use the other v1 lab req for any work that you want to keep.  When this new lab req is ready all older versions will be converted to the new version.',
         'inputType': 'form_label',
@@ -9794,45 +10426,18 @@ const DEFS = {
         'helperHtml': '<p>This version of lab requisitions is under development. Use at your own risk. Recommend you continue to use the other v1 lab req for any work that you want to keep.  When this new lab req is ready all older versions will be converted to the new version.</p>'
       },
       {
-        'elementKey': 'mi_dateRequired',
-        'formIndex': '3',
-        'inputType': 'visitDay',
-        'label': 'Date required',
-        'tableColumn': '2',
-        'fqn': 'labRequisitions.mi_dateRequired'
-      },
-      {
-        'elementKey': 'mi_reason',
-        'formIndex': '3',
-        'inputType': 'text',
-        'label': 'Reason test is required',
-        'tableColumn': '3',
-        'fqn': 'labRequisitions.mi_reason'
-      },
-      {
-        'elementKey': 'spacer123',
-        'formIndex': '3',
-        'inputType': 'spacer',
-        'tableColumn': '4',
-        'fqn': 'labRequisitions.spacer123'
-      },
-      {
         'elementKey': 'mi_type',
-        'formIndex': '3',
+        'formIndex': '4',
         'inputType': 'select',
         'label': 'Type of diagnositc',
         'options': [
           {
-            'key': 'cardioEcho',
-            'text': 'Cardio Echo'
+            'key': 'ecg',
+            'text': 'Echo cardiogram'
           },
           {
             'key': 'ct',
-            'text': 'CT Scan'
-          },
-          {
-            'key': 'ultraGen',
-            'text': 'General Ultrasound'
+            'text': 'CT scan'
           },
           {
             'key': 'mri',
@@ -9840,20 +10445,40 @@ const DEFS = {
           },
           {
             'key': 'nuclear',
-            'text': 'Nuclear Medicine'
+            'text': 'Nuclear medicine'
+          },
+          {
+            'key': 'ultra',
+            'text': 'Ultrasound'
           },
           {
             'key': 'xray',
             'text': 'X-ray'
           }
         ],
-        'tableColumn': '5',
+        'tableColumn': '2',
         'fqn': 'labRequisitions.mi_type'
       },
       {
+        'elementKey': 'mi_dateRequired',
+        'formIndex': '4',
+        'inputType': 'visitDay',
+        'label': 'Date required',
+        'tableColumn': '3',
+        'fqn': 'labRequisitions.mi_dateRequired'
+      },
+      {
+        'elementKey': 'mi_reason',
+        'formIndex': '4',
+        'inputType': 'text',
+        'label': 'Reason test is required',
+        'tableColumn': '4',
+        'fqn': 'labRequisitions.mi_reason'
+      },
+      {
         'elementKey': 'mi_Location',
-        'formIndex': '3',
-        'inputType': 'select',
+        'formIndex': '4',
+        'inputType': 'checkset',
         'label': 'Location',
         'options': [
           {
@@ -9895,46 +10520,168 @@ const DEFS = {
           {
             'key': 'pelvis',
             'text': 'Pelvis'
-          },
-          {
-            'key': '',
-            'text': ''
           }
         ],
-        'tableColumn': '6',
+        'tableColumn': '5',
         'fqn': 'labRequisitions.mi_Location'
       },
       {
-        'elementKey': 'spacer124',
-        'formIndex': '3',
-        'inputType': 'spacer',
-        'tableColumn': '7',
-        'fqn': 'labRequisitions.spacer124'
-      },
-      {
         'elementKey': 'mi_mobile',
-        'formIndex': '3',
+        'formIndex': '4',
         'inputType': 'checkbox',
         'label': 'Is the test to be performed portably?',
-        'tableColumn': '8',
+        'tableColumn': '6',
         'fqn': 'labRequisitions.mi_mobile'
       },
       {
         'elementKey': 'mi_comments',
-        'formIndex': '3',
+        'formIndex': '4',
         'inputType': 'textarea',
         'label': 'Comments',
-        'tableColumn': '9',
+        'tableColumn': '7',
         'fqn': 'labRequisitions.mi_comments'
+      },
+      {
+        'elementKey': 'name',
+        'formIndex': '5',
+        'inputType': 'practitionerName',
+        'label': 'Name',
+        'mandatory': true,
+        'tableColumn': '1',
+        'tableLabel': 'Identification',
+        'recHeader': true,
+        'fqn': 'labRequisitions.name'
+      },
+      {
+        'elementKey': 'profession',
+        'formIndex': '5',
+        'inputType': 'practitionerProfession',
+        'label': 'Profession',
+        'mandatory': true,
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'labRequisitions.profession'
+      },
+      {
+        'elementKey': 'day',
+        'formIndex': '5',
+        'inputType': 'visitDay',
+        'label': 'Day',
+        'mandatory': true,
+        'tableColumn': '1',
+        'validation': 'visitDay',
+        'recHeader': true,
+        'fqn': 'labRequisitions.day'
+      },
+      {
+        'elementKey': 'time',
+        'formIndex': '5',
+        'inputType': 'visitTime',
+        'label': 'Time',
+        'mandatory': true,
+        'tableColumn': '1',
+        'validation': 'time24',
+        'recHeader': true,
+        'fqn': 'labRequisitions.time'
+      },
+      {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '5',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'labRequisitions._id'
+      },
+      {
+        'elementKey': 'micro_noticeLabel',
+        'formIndex': '5',
+        'formCss': 'grid-span-3-columns',
+        'helperText': 'This version of lab requisitions is under development. Use at your own risk. Recommend you continue to use the other v1 lab req for any work that you want to keep.  When this new lab req is ready all older versions will be converted to the new version.',
+        'inputType': 'form_label',
+        'label': 'This lab requisition form is a prototype.',
+        'fqn': 'labRequisitions.micro_noticeLabel',
+        'helperHtml': '<p>This version of lab requisitions is under development. Use at your own risk. Recommend you continue to use the other v1 lab req for any work that you want to keep.  When this new lab req is ready all older versions will be converted to the new version.</p>'
+      },
+      {
+        'elementKey': 'micro_dateRequired',
+        'formIndex': '5',
+        'inputType': 'visitDay',
+        'label': 'Date required',
+        'tableColumn': '2',
+        'fqn': 'labRequisitions.micro_dateRequired'
+      },
+      {
+        'elementKey': 'micro_reason',
+        'formIndex': '5',
+        'inputType': 'text',
+        'label': 'Reason test is required',
+        'tableColumn': '3',
+        'fqn': 'labRequisitions.micro_reason'
+      },
+      {
+        'elementKey': 'micro_culture',
+        'formIndex': '5',
+        'inputType': 'select',
+        'label': 'Type of Culture',
+        'options': [
+          {
+            'key': 'cs',
+            'text': 'culture and senstitivity'
+          }
+        ],
+        'tableColumn': '4',
+        'fqn': 'labRequisitions.micro_culture'
+      },
+      {
+        'elementKey': 'micro_location',
+        'formIndex': '5',
+        'inputType': 'select',
+        'label': 'Location',
+        'options': [
+          {
+            'key': 'blood',
+            'text': 'Blood'
+          },
+          {
+            'key': 'sputum',
+            'text': 'Sputum'
+          },
+          {
+            'key': 'stool',
+            'text': 'Stool'
+          },
+          {
+            'key': 'urine',
+            'text': 'Urine'
+          },
+          {
+            'key': 'wound',
+            'text': 'Wound'
+          }
+        ],
+        'tableColumn': '5',
+        'fqn': 'labRequisitions.micro_location'
+      },
+      {
+        'elementKey': 'micro_comments',
+        'formIndex': '5',
+        'inputType': 'textarea',
+        'label': 'Comments',
+        'tableColumn': '6',
+        'tableLabel': 'Comments',
+        'fqn': 'labRequisitions.micro_comments'
       }
     ],
     'pageElements': {
       'table': {
         'elementKey': 'table',
         'pageElementIndex': '1',
+        'pageKey': 'labRequisitions',
         'tableKey': 'table',
         'isTable': true,
-        'hasRecHeader': true,
         'label': 'Lab requisitions v1',
         'addButtonText': 'Add a lab requisition assessment',
         'ehr_list': [
@@ -9945,7 +10692,8 @@ const DEFS = {
               'name',
               'profession',
               'day',
-              'time'
+              'time',
+              '_id'
             ]
           },
           {
@@ -10052,14 +10800,15 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group119',
+              'elementKey': 'ehr_group115',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                '_id'
               ]
             },
             {
@@ -10108,6 +10857,7 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
+            '_id': '',
             'patientName': '',
             'patientHealthNumber': '',
             'dateOfBirth': '',
@@ -10125,16 +10875,40 @@ const DEFS = {
             'histologyTissueType': '',
             'histologyLocation': ''
           }
-        }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'patientName',
+          'patientHealthNumber',
+          'dateOfBirth',
+          'location',
+          'dateRequired',
+          'reason',
+          'hematology',
+          'electrolytes',
+          'bloodGas',
+          'renalProfile',
+          'liverFunction',
+          'urineAnalysis',
+          'microbiologyCulture',
+          'microbiologyLocation',
+          'histologyTissueType',
+          'histologyLocation'
+        ],
+        'hasRecHeader': true
       },
       'requisitions': {
         'elementKey': 'requisitions',
         'pageElementIndex': '2',
+        'pageKey': 'labRequisitions',
         'tableKey': 'requisitions',
         'isTable': true,
-        'hasRecHeader': true,
         'label': 'Lab requisitions v2',
-        'addButtonText': 'Add a lab requisition assessment',
+        'addButtonText': 'Add a lab requisition',
         'ehr_list': [
           {
             'label': 'Identification',
@@ -10143,7 +10917,8 @@ const DEFS = {
               'name',
               'profession',
               'day',
-              'time'
+              'time',
+              '_id'
             ]
           },
           {
@@ -10167,7 +10942,7 @@ const DEFS = {
           {
             'ehr_list_index': '5',
             'items': [
-              'req_electrolytes'
+              'req_cardiac'
             ]
           },
           {
@@ -10179,67 +10954,58 @@ const DEFS = {
           {
             'ehr_list_index': '7',
             'items': [
-              'req_bloodGas'
+              'req_electrolytes'
             ]
           },
           {
             'ehr_list_index': '8',
             'items': [
-              'req_renalProfile'
+              'req_liverFunction'
             ]
           },
           {
             'ehr_list_index': '9',
             'items': [
-              'req_liverFunction'
+              'req_bloodGas'
             ]
           },
           {
             'ehr_list_index': '10',
             'items': [
-              'req_urineAnalysis'
+              'req_renalProfile'
             ]
           },
           {
             'ehr_list_index': '11',
             'items': [
-              'req_microbiologyCulture'
+              'req_urineAnalysis'
             ]
           },
           {
+            'label': 'Comments',
             'ehr_list_index': '12',
             'items': [
-              'req_microbiologyLocation'
-            ]
-          },
-          {
-            'ehr_list_index': '13',
-            'items': [
-              'req_histologyTissueType'
-            ]
-          },
-          {
-            'ehr_list_index': '14',
-            'items': [
-              'req_histologyLocation'
+              'req_comments'
             ]
           }
         ],
         'form': {
           'elementKey': 'requisitions',
           'label': 'Lab requisitions v2',
-          'addButtonText': 'Add a lab requisition assessment',
+          'addButtonText': 'Add a lab requisition',
+          'formOption': 'transpose',
           'formKey': 'requisitions',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group120',
+              'elementKey': 'ehr_group116',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                '_id'
               ]
             },
             {
@@ -10253,37 +11019,26 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group121',
+              'elementKey': 'ehr_group117',
               'formCss': 'section-divider',
               'gIndex': '3',
               'gChildren': [
                 'req_hematology',
-                'req_electrolytes',
+                'req_cardiac',
                 'req_cogagulation',
+                'req_electrolytes',
+                'req_liverFunction',
                 'req_bloodGas',
                 'req_renalProfile',
-                'req_liverFunction',
                 'req_urineAnalysis'
               ]
             },
             {
-              'elementKey': 'req_microbiology',
-              'label': 'Microbiology',
-              'formCss': 'section-divider',
+              'elementKey': 'ehr_group118',
+              'formCss': 'grid-left-to-right-1',
               'gIndex': '4',
               'gChildren': [
-                'req_microbiologyCulture',
-                'req_microbiologyLocation'
-              ]
-            },
-            {
-              'elementKey': 'req_histology',
-              'label': 'Histology',
-              'formCss': 'section-divider',
-              'gIndex': '5',
-              'gChildren': [
-                'req_histologyTissueType',
-                'req_histologyLocation'
+                'req_comments'
               ]
             }
           ],
@@ -10292,30 +11047,48 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
+            '_id': '',
             'req_dateRequired': '',
             'req_reason': '',
             'req_hematology': '',
-            'req_electrolytes': '',
+            'req_cardiac': '',
             'req_cogagulation': '',
+            'req_electrolytes': '',
+            'req_liverFunction': '',
             'req_bloodGas': '',
             'req_renalProfile': '',
-            'req_liverFunction': '',
             'req_urineAnalysis': '',
-            'req_microbiologyCulture': '',
-            'req_microbiologyLocation': '',
-            'req_histologyTissueType': '',
-            'req_histologyLocation': ''
+            'req_comments': ''
           }
-        }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'req_dateRequired',
+          'req_reason',
+          'req_hematology',
+          'req_cardiac',
+          'req_cogagulation',
+          'req_electrolytes',
+          'req_liverFunction',
+          'req_bloodGas',
+          'req_renalProfile',
+          'req_urineAnalysis',
+          'req_comments'
+        ],
+        'hasRecHeader': true
       },
-      'med_image_req': {
-        'elementKey': 'med_image_req',
+      'histologyRequisitions': {
+        'elementKey': 'histologyRequisitions',
         'pageElementIndex': '3',
-        'tableKey': 'med_image_req',
+        'pageKey': 'labRequisitions',
+        'tableKey': 'histologyRequisitions',
         'isTable': true,
-        'hasRecHeader': true,
-        'label': 'Medical Imaging',
-        'addButtonText': 'Add a lab requisition assessment',
+        'label': 'Histology',
+        'addButtonText': 'Add a histology requisition',
         'ehr_list': [
           {
             'label': 'Identification',
@@ -10324,53 +11097,167 @@ const DEFS = {
               'name',
               'profession',
               'day',
-              'time'
+              'time',
+              '_id'
             ]
           },
           {
             'ehr_list_index': '2',
             'items': [
-              'mi_dateRequired'
+              'histology_dateRequired'
             ]
           },
           {
             'ehr_list_index': '3',
             'items': [
-              'mi_reason'
+              'histology_reason'
             ]
           },
           {
             'ehr_list_index': '4',
             'items': [
-              'spacer123'
+              'histology_type'
             ]
           },
           {
             'ehr_list_index': '5',
             'items': [
-              'mi_type'
+              'histology_location'
             ]
           },
           {
             'ehr_list_index': '6',
             'items': [
+              'histology_comments'
+            ]
+          }
+        ],
+        'form': {
+          'elementKey': 'histologyRequisitions',
+          'label': 'Histology',
+          'addButtonText': 'Add a histology requisition',
+          'formOption': 'transpose',
+          'formKey': 'histologyRequisitions',
+          'ehr_groups': [
+            {
+              'elementKey': 'ehr_group119',
+              'formCss': 'record-header',
+              'gIndex': '1',
+              'gChildren': [
+                'name',
+                'profession',
+                'day',
+                'time',
+                '_id'
+              ]
+            },
+            {
+              'elementKey': 'ehr_group120',
+              'formCss': 'section-divider',
+              'gIndex': '2',
+              'gChildren': [
+                'histology_noticeLabel',
+                'histology_dateRequired',
+                'histology_reason'
+              ]
+            },
+            {
+              'elementKey': 'ehr_group121',
+              'formCss': 'section-divider',
+              'gIndex': '3',
+              'gChildren': [
+                'histology_type',
+                'histology_location'
+              ]
+            },
+            {
+              'elementKey': 'ehr_group122',
+              'formCss': 'grid-left-to-right-1',
+              'gIndex': '4',
+              'gChildren': [
+                'histology_comments'
+              ]
+            }
+          ],
+          'ehr_data': {
+            'name': '',
+            'profession': '',
+            'day': '',
+            'time': '',
+            '_id': '',
+            'histology_dateRequired': '',
+            'histology_reason': '',
+            'histology_type': '',
+            'histology_location': '',
+            'histology_comments': ''
+          }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'histology_dateRequired',
+          'histology_reason',
+          'histology_type',
+          'histology_location',
+          'histology_comments'
+        ],
+        'hasRecHeader': true
+      },
+      'med_image_req': {
+        'elementKey': 'med_image_req',
+        'pageElementIndex': '4',
+        'pageKey': 'labRequisitions',
+        'tableKey': 'med_image_req',
+        'isTable': true,
+        'label': 'Medical Imaging',
+        'addButtonText': 'Add a medical imaging requisition',
+        'ehr_list': [
+          {
+            'label': 'Identification',
+            'ehr_list_index': '1',
+            'items': [
+              'name',
+              'profession',
+              'day',
+              'time',
+              '_id'
+            ]
+          },
+          {
+            'ehr_list_index': '2',
+            'items': [
+              'mi_type'
+            ]
+          },
+          {
+            'ehr_list_index': '3',
+            'items': [
+              'mi_dateRequired'
+            ]
+          },
+          {
+            'ehr_list_index': '4',
+            'items': [
+              'mi_reason'
+            ]
+          },
+          {
+            'ehr_list_index': '5',
+            'items': [
               'mi_Location'
             ]
           },
           {
-            'ehr_list_index': '7',
-            'items': [
-              'spacer124'
-            ]
-          },
-          {
-            'ehr_list_index': '8',
+            'ehr_list_index': '6',
             'items': [
               'mi_mobile'
             ]
           },
           {
-            'ehr_list_index': '9',
+            'ehr_list_index': '7',
             'items': [
               'mi_comments'
             ]
@@ -10379,18 +11266,20 @@ const DEFS = {
         'form': {
           'elementKey': 'med_image_req',
           'label': 'Medical Imaging',
-          'addButtonText': 'Add a lab requisition assessment',
+          'addButtonText': 'Add a medical imaging requisition',
+          'formOption': 'transpose',
           'formKey': 'med_image_req',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group122',
+              'elementKey': 'ehr_group123',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                '_id'
               ]
             },
             {
@@ -10399,13 +11288,25 @@ const DEFS = {
               'gIndex': '2',
               'gChildren': [
                 'mi_noticeLabel',
-                'mi_dateRequired',
-                'mi_reason',
-                'spacer123',
                 'mi_type',
+                'mi_dateRequired'
+              ]
+            },
+            {
+              'elementKey': 'ehr_group124',
+              'formCss': 'section-divider',
+              'gIndex': '3',
+              'gChildren': [
+                'mi_reason',
                 'mi_Location',
-                'spacer124',
-                'mi_mobile',
+                'mi_mobile'
+              ]
+            },
+            {
+              'elementKey': 'ehr_group125',
+              'formCss': 'grid-left-to-right-1',
+              'gIndex': '4',
+              'gChildren': [
                 'mi_comments'
               ]
             }
@@ -10415,14 +11316,155 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
+            '_id': '',
+            'mi_type': '',
             'mi_dateRequired': '',
             'mi_reason': '',
-            'mi_type': '',
             'mi_Location': '',
             'mi_mobile': '',
             'mi_comments': ''
           }
-        }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'mi_type',
+          'mi_dateRequired',
+          'mi_reason',
+          'mi_Location',
+          'mi_mobile',
+          'mi_comments'
+        ],
+        'hasRecHeader': true
+      },
+      'microRequisitions': {
+        'elementKey': 'microRequisitions',
+        'pageElementIndex': '5',
+        'pageKey': 'labRequisitions',
+        'tableKey': 'microRequisitions',
+        'isTable': true,
+        'label': 'Microbiology',
+        'addButtonText': 'Add a microbiology requisition',
+        'ehr_list': [
+          {
+            'label': 'Identification',
+            'ehr_list_index': '1',
+            'items': [
+              'name',
+              'profession',
+              'day',
+              'time',
+              '_id'
+            ]
+          },
+          {
+            'ehr_list_index': '2',
+            'items': [
+              'micro_dateRequired'
+            ]
+          },
+          {
+            'ehr_list_index': '3',
+            'items': [
+              'micro_reason'
+            ]
+          },
+          {
+            'ehr_list_index': '4',
+            'items': [
+              'micro_culture'
+            ]
+          },
+          {
+            'ehr_list_index': '5',
+            'items': [
+              'micro_location'
+            ]
+          },
+          {
+            'label': 'Comments',
+            'ehr_list_index': '6',
+            'items': [
+              'micro_comments'
+            ]
+          }
+        ],
+        'form': {
+          'elementKey': 'microRequisitions',
+          'label': 'Microbiology',
+          'addButtonText': 'Add a microbiology requisition',
+          'formOption': 'transpose',
+          'formKey': 'microRequisitions',
+          'ehr_groups': [
+            {
+              'elementKey': 'ehr_group126',
+              'formCss': 'record-header',
+              'gIndex': '1',
+              'gChildren': [
+                'name',
+                'profession',
+                'day',
+                'time',
+                '_id'
+              ]
+            },
+            {
+              'elementKey': 'ehr_group127',
+              'formCss': 'section-divider',
+              'gIndex': '2',
+              'gChildren': [
+                'micro_noticeLabel',
+                'micro_dateRequired',
+                'micro_reason'
+              ]
+            },
+            {
+              'elementKey': 'ehr_group128',
+              'formCss': 'section-divider',
+              'gIndex': '3',
+              'gChildren': [
+                'micro_culture',
+                'micro_location'
+              ]
+            },
+            {
+              'elementKey': 'ehr_group129',
+              'formCss': 'grid-left-to-right-1',
+              'gIndex': '4',
+              'gChildren': [
+                'micro_comments'
+              ]
+            }
+          ],
+          'ehr_data': {
+            'name': '',
+            'profession': '',
+            'day': '',
+            'time': '',
+            '_id': '',
+            'micro_dateRequired': '',
+            'micro_reason': '',
+            'micro_culture': '',
+            'micro_location': '',
+            'micro_comments': ''
+          }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'micro_dateRequired',
+          'micro_reason',
+          'micro_culture',
+          'micro_location',
+          'micro_comments'
+        ],
+        'hasRecHeader': true
       }
     }
   },
@@ -10474,6 +11516,17 @@ const DEFS = {
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'medicationOrders.time'
+      },
+      {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '1',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'medicationOrders._id'
       },
       {
         'elementKey': 'medication',
@@ -10735,17 +11788,603 @@ const DEFS = {
         'tableColumn': '18',
         'tableLabel': 'Notes',
         'fqn': 'medicationOrders.notes'
+      },
+      {
+        'elementKey': 'name',
+        'formIndex': '2',
+        'inputType': 'practitionerName',
+        'label': 'Name',
+        'mandatory': true,
+        'tableColumn': '1',
+        'tableLabel': 'Identification',
+        'recHeader': true,
+        'fqn': 'medicationOrders.name'
+      },
+      {
+        'elementKey': 'profession',
+        'formIndex': '2',
+        'inputType': 'practitionerProfession',
+        'label': 'Profession',
+        'mandatory': true,
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'medicationOrders.profession'
+      },
+      {
+        'elementKey': 'day',
+        'formIndex': '2',
+        'inputType': 'visitDay',
+        'label': 'Day',
+        'mandatory': true,
+        'tableColumn': '1',
+        'validation': 'visitDay',
+        'recHeader': true,
+        'fqn': 'medicationOrders.day'
+      },
+      {
+        'elementKey': 'time',
+        'formIndex': '2',
+        'inputType': 'visitTime',
+        'label': 'Time',
+        'mandatory': true,
+        'tableColumn': '1',
+        'validation': 'time24',
+        'recHeader': true,
+        'fqn': 'medicationOrders.time'
+      },
+      {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '2',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'medicationOrders._id'
+      },
+      {
+        'elementKey': 'med_noticeLabel',
+        'formIndex': '2',
+        'formCss': 'grid-span-3-columns',
+        'helperText': 'This version of lab requisitions is under development. Use at your own risk. Recommend you continue to use the other v1 lab req for any work that you want to keep.  When this new lab req is ready all older versions will be converted to the new version.',
+        'inputType': 'form_label',
+        'label': 'This new medication order form is a prototype.',
+        'fqn': 'medicationOrders.med_noticeLabel',
+        'helperHtml': '<p>This version of lab requisitions is under development. Use at your own risk. Recommend you continue to use the other v1 lab req for any work that you want to keep.  When this new lab req is ready all older versions will be converted to the new version.</p>'
+      },
+      {
+        'elementKey': 'med_timing',
+        'formIndex': '2',
+        'inputType': 'select',
+        'label': 'Timing',
+        'options': [
+          {
+            'key': 'cont',
+            'text': 'Continuous'
+          },
+          {
+            'key': 'od',
+            'text': 'OD (Once a Day)'
+          },
+          {
+            'key': 'once',
+            'text': 'Once'
+          },
+          {
+            'key': 'prn',
+            'text': 'PRN (as needed)'
+          },
+          {
+            'key': 'sched',
+            'text': 'Scheduled'
+          },
+          {
+            'key': 'set',
+            'text': 'Set times'
+          },
+          {
+            'key': 'stat',
+            'text': 'Stat'
+          }
+        ],
+        'tableColumn': '2',
+        'fqn': 'medicationOrders.med_timing'
+      },
+      {
+        'elementKey': 'med_route',
+        'formIndex': '2',
+        'inputType': 'select',
+        'label': 'Route',
+        'options': [
+          {
+            'key': 'oral',
+            'text': 'Oral'
+          },
+          {
+            'key': 'bucc',
+            'text': 'Buccal'
+          },
+          {
+            'key': 'cuta',
+            'text': 'Cutaneous'
+          },
+          {
+            'key': 'impl',
+            'text': 'Implant'
+          },
+          {
+            'key': 'inha',
+            'text': 'Inhalation'
+          },
+          {
+            'key': 'inje',
+            'text': 'Injection'
+          },
+          {
+            'key': 'nasa',
+            'text': 'Nasal'
+          },
+          {
+            'key': 'nebu',
+            'text': 'Nebulization'
+          },
+          {
+            'key': 'ocul',
+            'text': 'Ocular'
+          },
+          {
+            'key': 'otic',
+            'text': 'Otic'
+          },
+          {
+            'key': 'rect',
+            'text': 'Rectal'
+          },
+          {
+            'key': 'subl',
+            'text': 'Sublingual'
+          },
+          {
+            'key': 'tran',
+            'text': 'Transdermal'
+          },
+          {
+            'key': 'vagi',
+            'text': 'Vaginal'
+          }
+        ],
+        'tableColumn': '3',
+        'fqn': 'medicationOrders.med_route'
+      },
+      {
+        'elementKey': 'med_reason',
+        'formIndex': '2',
+        'formCss': 'grid-span-3-columns',
+        'inputType': 'text',
+        'label': 'Reason',
+        'tableColumn': '4',
+        'fqn': 'medicationOrders.med_reason'
+      },
+      {
+        'elementKey': 'med_injectionLocation',
+        'formIndex': '2',
+        'inputType': 'select',
+        'label': 'Injection location',
+        'options': [
+          {
+            'key': 'arte',
+            'text': 'Arterial'
+          },
+          {
+            'key': 'epid',
+            'text': 'Epidural'
+          },
+          {
+            'key': 'ramu',
+            'text': 'Intramuscular'
+          },
+          {
+            'key': 'raos',
+            'text': 'Intraosseous'
+          },
+          {
+            'key': 'rape',
+            'text': 'Intraperitoneal'
+          },
+          {
+            'key': 'rath',
+            'text': 'Intrathecal'
+          },
+          {
+            'key': 'rave',
+            'text': 'Intravenous'
+          },
+          {
+            'key': 'subc',
+            'text': 'Subcutaneous'
+          }
+        ],
+        'tableColumn': '5',
+        'fqn': 'medicationOrders.med_injectionLocation'
+      },
+      {
+        'elementKey': 'med_medication',
+        'formIndex': '2',
+        'helperText': 'For your reference, here is a link to the EdEHR medications table. <a href=\'/assets/static-databases/drug.txt\' target=\'_blank\'>Medications</a>. Source is <a href=\'https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/drug-product-database/what-data-extract-drug-product-database.html\' target=\'_blank\'>https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/drug-product-database/what-data-extract-drug-product-database.html</a>',
+        'inputType': 'lookahead',
+        'label': 'Medication',
+        'tableColumn': '6',
+        'tableLabel': 'Medication',
+        'fqn': 'medicationOrders.med_medication',
+        'helperHtml': '<p>For your reference, here is a link to the EdEHR medications table. <a href=\'/assets/static-databases/drug.txt\' target=\'_blank\'>Medications</a>. Source is <a href=\'https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/drug-product-database/what-data-extract-drug-product-database.html\' target=\'_blank\'>https://www.canada.ca/en/health-canada/services/drugs-health-products/drug-products/drug-product-database/what-data-extract-drug-product-database.html</a></p>'
+      },
+      {
+        'elementKey': 'med_dose',
+        'formIndex': '2',
+        'inputType': 'text',
+        'label': 'Dose',
+        'passToFunction': 'med_prnMaxDosage',
+        'tableColumn': '7',
+        'fqn': 'medicationOrders.med_dose'
+      },
+      {
+        'elementKey': 'med_scheduled',
+        'formIndex': '2',
+        'inputType': 'select',
+        'label': 'Scheduled',
+        'options': [
+          {
+            'key': 'BID / Q12H',
+            'text': 'BID / Q12H'
+          },
+          {
+            'key': 'TID',
+            'text': 'TID'
+          },
+          {
+            'key': 'Q8H',
+            'text': 'Q8H'
+          },
+          {
+            'key': 'QID',
+            'text': 'QID'
+          },
+          {
+            'key': 'Q6H',
+            'text': 'Q6H'
+          },
+          {
+            'key': 'Q4H',
+            'text': 'Q4H'
+          }
+        ],
+        'tableColumn': '8',
+        'fqn': 'medicationOrders.med_scheduled'
+      },
+      {
+        'elementKey': 'med_prnMaxDosage',
+        'calculationType': 'medMaxDosage',
+        'formIndex': '2',
+        'inputType': 'calculatedValue',
+        'label': 'Max dosage',
+        'tableColumn': '9',
+        'fqn': 'medicationOrders.med_prnMaxDosage'
+      },
+      {
+        'elementKey': 'med_time1',
+        'dependentOn': 'onChange:med_scheduled',
+        'formIndex': '2',
+        'inputType': 'text',
+        'label': 'Time 1',
+        'passToFunction': 'med_prnMaxDosage',
+        'tableColumn': '10',
+        'validation': 'time24',
+        'fqn': 'medicationOrders.med_time1'
+      },
+      {
+        'elementKey': 'med_time2',
+        'dependentOn': 'onChange:med_scheduled',
+        'formIndex': '2',
+        'inputType': 'text',
+        'label': 'Time 2',
+        'passToFunction': 'med_prnMaxDosage',
+        'tableColumn': '11',
+        'validation': 'time24',
+        'fqn': 'medicationOrders.med_time2'
+      },
+      {
+        'elementKey': 'med_time3',
+        'dependentOn': 'onChange:med_scheduled',
+        'formIndex': '2',
+        'inputType': 'text',
+        'label': 'Time 3',
+        'passToFunction': 'med_prnMaxDosage',
+        'tableColumn': '12',
+        'validation': 'time24',
+        'fqn': 'medicationOrders.med_time3'
+      },
+      {
+        'elementKey': 'med_time4',
+        'dependentOn': 'onChange:med_scheduled',
+        'formIndex': '2',
+        'inputType': 'text',
+        'label': 'Time 4',
+        'passToFunction': 'med_prnMaxDosage',
+        'tableColumn': '13',
+        'validation': 'time24',
+        'fqn': 'medicationOrders.med_time4'
+      },
+      {
+        'elementKey': 'med_time5',
+        'dependentOn': 'onChange:med_scheduled',
+        'formIndex': '2',
+        'inputType': 'text',
+        'label': 'Time 5',
+        'passToFunction': 'med_prnMaxDosage',
+        'tableColumn': '14',
+        'validation': 'time24',
+        'fqn': 'medicationOrders.med_time5'
+      },
+      {
+        'elementKey': 'med_time6',
+        'dependentOn': 'onChange:med_scheduled',
+        'formIndex': '2',
+        'inputType': 'text',
+        'label': 'Time 6',
+        'passToFunction': 'med_prnMaxDosage',
+        'tableColumn': '15',
+        'validation': 'time24',
+        'fqn': 'medicationOrders.med_time6'
+      },
+      {
+        'elementKey': 'form_label135',
+        'formIndex': '2',
+        'formCss': 'grid-span-2-columns',
+        'formOption': 'hideLabel',
+        'inputType': 'form_label',
+        'label': 'Initial dose of a medication in a volume of solution over time hours/minutes',
+        'tableColumn': '16',
+        'fqn': 'medicationOrders.form_label135'
+      },
+      {
+        'elementKey': 'med_c1_concentration',
+        'calculationType': 'medConcentration',
+        'formIndex': '2',
+        'inputType': 'calculatedValue',
+        'label': 'Concentration',
+        'suffix': 'mL/min',
+        'tableColumn': '17',
+        'fqn': 'medicationOrders.med_c1_concentration',
+        'suffixText': '<p>mL/min</p>',
+        'suffixHtml': 'mL/min'
+      },
+      {
+        'elementKey': 'med_c1_dose',
+        'formIndex': '2',
+        'inputType': 'text',
+        'label': 'Initial dose',
+        'passToFunction': 'med_c1_concentration',
+        'suffix': 'mL',
+        'tableColumn': '18',
+        'fqn': 'medicationOrders.med_c1_dose',
+        'suffixText': '<p>mL</p>',
+        'suffixHtml': 'mL'
+      },
+      {
+        'elementKey': 'med_c1_medication',
+        'dependentOn': 'echo:med_medication',
+        'formIndex': '2',
+        'inputType': 'text',
+        'label': 'Medication',
+        'tableColumn': '19',
+        'fqn': 'medicationOrders.med_c1_medication'
+      },
+      {
+        'elementKey': 'med_c1_volume',
+        'formIndex': '2',
+        'inputType': 'text',
+        'label': 'Volume',
+        'passToFunction': 'med_c1_concentration',
+        'suffix': 'mL',
+        'tableColumn': '20',
+        'fqn': 'medicationOrders.med_c1_volume',
+        'suffixText': '<p>mL</p>',
+        'suffixHtml': 'mL'
+      },
+      {
+        'elementKey': 'med_c1_solution',
+        'formIndex': '2',
+        'inputType': 'select',
+        'label': 'Solution',
+        'options': [
+          {
+            'key': 'd5w',
+            'text': 'D5W'
+          },
+          {
+            'key': 'd10w',
+            'text': 'D10W'
+          },
+          {
+            'key': 'half',
+            'text': 'Half normal saline'
+          },
+          {
+            'key': 'normal',
+            'text': 'Normal saline'
+          },
+          {
+            'key': 'sterile',
+            'text': 'Sterile water'
+          }
+        ],
+        'tableColumn': '21',
+        'fqn': 'medicationOrders.med_c1_solution'
+      },
+      {
+        'elementKey': 'med_c1_time',
+        'formIndex': '2',
+        'inputType': 'text',
+        'label': 'Time',
+        'passToFunction': 'med_c1_concentration',
+        'tableColumn': '22',
+        'fqn': 'medicationOrders.med_c1_time'
+      },
+      {
+        'elementKey': 'med_c1_timeUnits',
+        'formIndex': '2',
+        'inputType': 'select',
+        'label': 'Time units',
+        'options': [
+          {
+            'key': 'hrs',
+            'text': 'Hours'
+          },
+          {
+            'key': 'mins',
+            'text': 'Minutes'
+          }
+        ],
+        'passToFunction': 'med_c1_concentration',
+        'tableColumn': '23',
+        'fqn': 'medicationOrders.med_c1_timeUnits'
+      },
+      {
+        'elementKey': 'form_label136',
+        'formIndex': '2',
+        'formCss': 'grid-span-3-columns',
+        'formOption': 'hideLabel',
+        'inputType': 'form_label',
+        'label': 'Maintenance dose of a medication in a volume of solution over time hours/minutes',
+        'tableColumn': '24',
+        'fqn': 'medicationOrders.form_label136'
+      },
+      {
+        'elementKey': 'med_c2_concentration',
+        'calculationType': 'medConcentration',
+        'formIndex': '2',
+        'inputType': 'calculatedValue',
+        'label': 'Concentration',
+        'suffix': 'mL/min',
+        'tableColumn': '25',
+        'fqn': 'medicationOrders.med_c2_concentration',
+        'suffixText': '<p>mL/min</p>',
+        'suffixHtml': 'mL/min'
+      },
+      {
+        'elementKey': 'med_c2_dose',
+        'formIndex': '2',
+        'inputType': 'text',
+        'label': 'Maintenance dose',
+        'passToFunction': 'med_c2_concentration',
+        'suffix': 'mL',
+        'tableColumn': '26',
+        'fqn': 'medicationOrders.med_c2_dose',
+        'suffixText': '<p>mL</p>',
+        'suffixHtml': 'mL'
+      },
+      {
+        'elementKey': 'med_c2_medication',
+        'dependentOn': 'echo:med_medication',
+        'formIndex': '2',
+        'inputType': 'text',
+        'label': 'Medication',
+        'tableColumn': '27',
+        'fqn': 'medicationOrders.med_c2_medication'
+      },
+      {
+        'elementKey': 'med_c2_volume',
+        'formIndex': '2',
+        'inputType': 'text',
+        'label': 'Volume',
+        'passToFunction': 'med_c2_concentration',
+        'suffix': 'mL',
+        'tableColumn': '28',
+        'fqn': 'medicationOrders.med_c2_volume',
+        'suffixText': '<p>mL</p>',
+        'suffixHtml': 'mL'
+      },
+      {
+        'elementKey': 'med_c2_solution',
+        'formIndex': '2',
+        'inputType': 'select',
+        'label': 'Solution',
+        'options': [
+          {
+            'key': 'd5w',
+            'text': 'D5W'
+          },
+          {
+            'key': 'd10w',
+            'text': 'D10W'
+          },
+          {
+            'key': 'half',
+            'text': 'Half normal saline'
+          },
+          {
+            'key': 'normal',
+            'text': 'Normal saline'
+          },
+          {
+            'key': 'sterile',
+            'text': 'Sterile water'
+          }
+        ],
+        'tableColumn': '29',
+        'fqn': 'medicationOrders.med_c2_solution'
+      },
+      {
+        'elementKey': 'med_c2_time',
+        'formIndex': '2',
+        'inputType': 'text',
+        'label': 'Time',
+        'passToFunction': 'med_c2_concentration',
+        'tableColumn': '30',
+        'fqn': 'medicationOrders.med_c2_time'
+      },
+      {
+        'elementKey': 'med_c2_timeUnits',
+        'formIndex': '2',
+        'inputType': 'select',
+        'label': 'Time units',
+        'options': [
+          {
+            'key': 'hrs',
+            'text': 'Hours'
+          },
+          {
+            'key': 'mins',
+            'text': 'Minutes'
+          }
+        ],
+        'passToFunction': 'med_c2_concentration',
+        'tableColumn': '31',
+        'fqn': 'medicationOrders.med_c2_timeUnits'
+      },
+      {
+        'elementKey': 'med_instructions',
+        'formIndex': '2',
+        'inputType': 'textarea',
+        'label': 'Instructions',
+        'suffix': 'medAdminRec',
+        'tableColumn': '32',
+        'tableLabel': 'Instructions',
+        'fqn': 'medicationOrders.med_instructions',
+        'suffixText': '<p>medAdminRec</p>',
+        'suffixHtml': 'medAdminRec'
       }
     ],
     'pageElements': {
       'table': {
         'elementKey': 'table',
         'pageElementIndex': '1',
+        'pageKey': 'medicationOrders',
         'tableKey': 'table',
         'isTable': true,
-        'hasRecHeader': true,
-        'label': 'Medication orders',
-        'addButtonText': 'Add a medication order',
+        'label': 'Medication orders v1',
+        'addButtonText': 'Add a v1 medication order',
         'ehr_list': [
           {
             'label': 'Identification',
@@ -10754,7 +12393,8 @@ const DEFS = {
               'name',
               'profession',
               'day',
-              'time'
+              'time',
+              '_id'
             ]
           },
           {
@@ -10869,23 +12509,24 @@ const DEFS = {
         ],
         'form': {
           'elementKey': 'table',
-          'label': 'Medication orders',
-          'addButtonText': 'Add a medication order',
+          'label': 'Medication orders v1',
+          'addButtonText': 'Add a v1 medication order',
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group110',
+              'elementKey': 'ehr_group130',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                '_id'
               ]
             },
             {
-              'elementKey': 'ehr_group111',
+              'elementKey': 'ehr_group131',
               'gIndex': '2',
               'gChildren': [
                 'medication',
@@ -10940,7 +12581,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group112',
+              'elementKey': 'ehr_group132',
               'gIndex': '8',
               'gChildren': [
                 'instructions',
@@ -10954,6 +12595,7 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
+            '_id': '',
             'medication': '',
             'dose': '',
             'route': '',
@@ -10973,7 +12615,438 @@ const DEFS = {
             'reason': '',
             'notes': ''
           }
-        }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'medication',
+          'dose',
+          'route',
+          'startMeds',
+          'endMeds',
+          'administration',
+          'scheduled',
+          'prn1',
+          'prn2',
+          'prn3',
+          'prn4',
+          'prn5',
+          'prn6',
+          'once',
+          'stat',
+          'instructions',
+          'reason',
+          'notes'
+        ],
+        'hasRecHeader': true
+      },
+      'medicationOrdersTable': {
+        'elementKey': 'medicationOrdersTable',
+        'pageElementIndex': '2',
+        'pageKey': 'medicationOrders',
+        'tableKey': 'medicationOrdersTable',
+        'isTable': true,
+        'label': 'Medication orders v2',
+        'addButtonText': 'Add a v2 medication order',
+        'tableAction': 'medAdminRec.marTable',
+        'tableActionLabel': 'MAR',
+        'ehr_list': [
+          {
+            'label': 'Identification',
+            'ehr_list_index': '1',
+            'items': [
+              'name',
+              'profession',
+              'day',
+              'time',
+              '_id'
+            ]
+          },
+          {
+            'ehr_list_index': '2',
+            'items': [
+              'med_timing'
+            ]
+          },
+          {
+            'ehr_list_index': '3',
+            'items': [
+              'med_route'
+            ]
+          },
+          {
+            'ehr_list_index': '4',
+            'items': [
+              'med_reason'
+            ]
+          },
+          {
+            'ehr_list_index': '5',
+            'items': [
+              'med_injectionLocation'
+            ]
+          },
+          {
+            'label': 'Medication',
+            'ehr_list_index': '6',
+            'items': [
+              'med_medication'
+            ]
+          },
+          {
+            'ehr_list_index': '7',
+            'items': [
+              'med_dose'
+            ]
+          },
+          {
+            'ehr_list_index': '8',
+            'items': [
+              'med_scheduled'
+            ]
+          },
+          {
+            'ehr_list_index': '9',
+            'items': [
+              'med_prnMaxDosage'
+            ]
+          },
+          {
+            'ehr_list_index': '10',
+            'items': [
+              'med_time1'
+            ]
+          },
+          {
+            'ehr_list_index': '11',
+            'items': [
+              'med_time2'
+            ]
+          },
+          {
+            'ehr_list_index': '12',
+            'items': [
+              'med_time3'
+            ]
+          },
+          {
+            'ehr_list_index': '13',
+            'items': [
+              'med_time4'
+            ]
+          },
+          {
+            'ehr_list_index': '14',
+            'items': [
+              'med_time5'
+            ]
+          },
+          {
+            'ehr_list_index': '15',
+            'items': [
+              'med_time6'
+            ]
+          },
+          {
+            'ehr_list_index': '16',
+            'items': [
+              'form_label135'
+            ]
+          },
+          {
+            'ehr_list_index': '17',
+            'items': [
+              'med_c1_concentration'
+            ]
+          },
+          {
+            'ehr_list_index': '18',
+            'items': [
+              'med_c1_dose'
+            ]
+          },
+          {
+            'ehr_list_index': '19',
+            'items': [
+              'med_c1_medication'
+            ]
+          },
+          {
+            'ehr_list_index': '20',
+            'items': [
+              'med_c1_volume'
+            ]
+          },
+          {
+            'ehr_list_index': '21',
+            'items': [
+              'med_c1_solution'
+            ]
+          },
+          {
+            'ehr_list_index': '22',
+            'items': [
+              'med_c1_time'
+            ]
+          },
+          {
+            'ehr_list_index': '23',
+            'items': [
+              'med_c1_timeUnits'
+            ]
+          },
+          {
+            'ehr_list_index': '24',
+            'items': [
+              'form_label136'
+            ]
+          },
+          {
+            'ehr_list_index': '25',
+            'items': [
+              'med_c2_concentration'
+            ]
+          },
+          {
+            'ehr_list_index': '26',
+            'items': [
+              'med_c2_dose'
+            ]
+          },
+          {
+            'ehr_list_index': '27',
+            'items': [
+              'med_c2_medication'
+            ]
+          },
+          {
+            'ehr_list_index': '28',
+            'items': [
+              'med_c2_volume'
+            ]
+          },
+          {
+            'ehr_list_index': '29',
+            'items': [
+              'med_c2_solution'
+            ]
+          },
+          {
+            'ehr_list_index': '30',
+            'items': [
+              'med_c2_time'
+            ]
+          },
+          {
+            'ehr_list_index': '31',
+            'items': [
+              'med_c2_timeUnits'
+            ]
+          },
+          {
+            'label': 'Instructions',
+            'ehr_list_index': '32',
+            'items': [
+              'med_instructions'
+            ]
+          }
+        ],
+        'form': {
+          'elementKey': 'medicationOrdersTable',
+          'label': 'Medication orders v2',
+          'addButtonText': 'Add a v2 medication order',
+          'formKey': 'medicationOrdersTable',
+          'ehr_groups': [
+            {
+              'elementKey': 'ehr_group133',
+              'formCss': 'record-header',
+              'gIndex': '1',
+              'gChildren': [
+                'name',
+                'profession',
+                'day',
+                'time',
+                '_id'
+              ]
+            },
+            {
+              'elementKey': 'ehr_group134',
+              'formCss': 'section-divider',
+              'gIndex': '2',
+              'gChildren': [
+                'med_noticeLabel'
+              ]
+            },
+            {
+              'elementKey': 'med_group_main',
+              'gIndex': '3',
+              'gChildren': [
+                'med_timing',
+                'med_route',
+                'med_reason'
+              ]
+            },
+            {
+              'elementKey': 'med_group_inje',
+              'dependentOn': 'visble:med_route=inje',
+              'gIndex': '4',
+              'gChildren': [
+                'med_injectionLocation'
+              ]
+            },
+            {
+              'elementKey': 'med_group_non_continuous',
+              'dependentOn': 'visble:med_timing=od,once,prn,sched,set,stat',
+              'gIndex': '5',
+              'gChildren': [
+                'med_medication',
+                'med_dose'
+              ]
+            },
+            {
+              'elementKey': 'med_group_with_times',
+              'dependentOn': 'visble:med_timing=prn,sched,set',
+              'gIndex': '6',
+              'gChildren': [
+                'med_scheduled',
+                'med_prnMaxDosage'
+              ]
+            },
+            {
+              'elementKey': 'med_group_times',
+              'dependentOn': 'visble:med_timing=prn,sched,set',
+              'gIndex': '7',
+              'gChildren': [
+                'med_time1',
+                'med_time2',
+                'med_time3',
+                'med_time4',
+                'med_time5',
+                'med_time6'
+              ]
+            },
+            {
+              'elementKey': 'med_group_infusion_c1',
+              'dependentOn': 'visble:med_timing=cont',
+              'gIndex': '8',
+              'gChildren': [
+                'form_label135',
+                'med_c1_concentration',
+                'med_c1_dose',
+                'med_c1_medication',
+                'med_c1_volume',
+                'med_c1_solution',
+                'med_c1_time',
+                'med_c1_timeUnits'
+              ]
+            },
+            {
+              'elementKey': 'med_group_infusion_c2',
+              'dependentOn': 'visble:med_timing=cont',
+              'gIndex': '9',
+              'gChildren': [
+                'form_label136',
+                'med_c2_concentration',
+                'med_c2_dose',
+                'med_c2_medication',
+                'med_c2_volume',
+                'med_c2_solution',
+                'med_c2_time',
+                'med_c2_timeUnits'
+              ]
+            },
+            {
+              'elementKey': 'med_group_notes',
+              'formCss': 'grid-left-to-right-1',
+              'gIndex': '10',
+              'gChildren': [
+                'med_instructions'
+              ]
+            }
+          ],
+          'ehr_data': {
+            'name': '',
+            'profession': '',
+            'day': '',
+            'time': '',
+            '_id': '',
+            'med_timing': '',
+            'med_route': '',
+            'med_reason': '',
+            'med_injectionLocation': '',
+            'med_medication': '',
+            'med_dose': '',
+            'med_scheduled': '',
+            'med_prnMaxDosage': '',
+            'med_time1': '',
+            'med_time2': '',
+            'med_time3': '',
+            'med_time4': '',
+            'med_time5': '',
+            'med_time6': '',
+            'med_c1_concentration': '',
+            'med_c1_dose': '',
+            'med_c1_medication': '',
+            'med_c1_volume': '',
+            'med_c1_solution': '',
+            'med_c1_time': '',
+            'med_c1_timeUnits': '',
+            'med_c2_concentration': '',
+            'med_c2_dose': '',
+            'med_c2_medication': '',
+            'med_c2_volume': '',
+            'med_c2_solution': '',
+            'med_c2_time': '',
+            'med_c2_timeUnits': '',
+            'med_instructions': ''
+          }
+        },
+        'taTargetPageKey': 'medAdminRec',
+        'taTargetTableKey': 'marTable',
+        'taSourcePageKey': 'medicationOrders',
+        'taSourceTableKey': 'medicationOrdersTable',
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'med_timing',
+          'med_route',
+          'med_reason',
+          'med_injectionLocation',
+          'med_medication',
+          'med_dose',
+          'med_scheduled',
+          'med_prnMaxDosage',
+          'med_time1',
+          'med_time2',
+          'med_time3',
+          'med_time4',
+          'med_time5',
+          'med_time6',
+          'form_label135',
+          'med_c1_concentration',
+          'med_c1_dose',
+          'med_c1_medication',
+          'med_c1_volume',
+          'med_c1_solution',
+          'med_c1_time',
+          'med_c1_timeUnits',
+          'form_label136',
+          'med_c2_concentration',
+          'med_c2_dose',
+          'med_c2_medication',
+          'med_c2_volume',
+          'med_c2_solution',
+          'med_c2_time',
+          'med_c2_timeUnits',
+          'med_instructions'
+        ],
+        'hasRecHeader': true
       }
     }
   },
@@ -11095,13 +13168,13 @@ const DEFS = {
         'fqn': 'medAdminRec.administeredBy'
       },
       {
-        'elementKey': 'profession',
+        'elementKey': 'adminProfession',
         'formIndex': '1',
         'inputType': 'text',
         'label': 'Profession',
         'tableColumn': '8',
         'tableLabel': 'Profession',
-        'fqn': 'medAdminRec.profession'
+        'fqn': 'medAdminRec.adminProfession'
       },
       {
         'elementKey': 'administeredTime',
@@ -11113,15 +13186,290 @@ const DEFS = {
         'tableLabel': 'Administered time',
         'fqn': 'medAdminRec.administeredTime',
         'helperHtml': '<p>Enter time delivered or say if not delivered.</p>'
+      },
+      {
+        'elementKey': 'name',
+        'formIndex': '2',
+        'inputType': 'practitionerName',
+        'label': 'Name',
+        'mandatory': true,
+        'tableColumn': '1',
+        'tableLabel': 'Identification',
+        'recHeader': true,
+        'fqn': 'medAdminRec.name'
+      },
+      {
+        'elementKey': 'profession',
+        'formIndex': '2',
+        'inputType': 'practitionerProfession',
+        'label': 'Profession',
+        'mandatory': true,
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'medAdminRec.profession'
+      },
+      {
+        'elementKey': 'day',
+        'formIndex': '2',
+        'inputType': 'visitDay',
+        'label': 'Day',
+        'mandatory': true,
+        'tableColumn': '1',
+        'validation': 'visitDay',
+        'recHeader': true,
+        'fqn': 'medAdminRec.day'
+      },
+      {
+        'elementKey': 'time',
+        'formIndex': '2',
+        'inputType': 'visitTime',
+        'label': 'Time',
+        'mandatory': true,
+        'tableColumn': '1',
+        'validation': 'time24',
+        'recHeader': true,
+        'fqn': 'medAdminRec.time'
+      },
+      {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '2',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'medAdminRec._id'
+      },
+      {
+        'elementKey': 'med_order_embedded',
+        'formIndex': '2',
+        'embedRef': 'medicationOrders.medicationOrdersTable',
+        'inputType': 'ehr_embedded',
+        'passToFunction': '[mo_id mo_medication mo_timing mo_route mo_reason mo_dose mo_scheduled mo_prnMaxDosage]',
+        'tableColumn': '19',
+        'fqn': 'medAdminRec.med_order_embedded'
+      },
+      {
+        'elementKey': 'mo_id',
+        'calculationType': 'embedValue(medicationOrders,medicationOrdersTable, _id)',
+        'formIndex': '2',
+        'inputType': 'calculatedValue',
+        'label': 'Med order id',
+        'tableColumn': '2',
+        'fqn': 'medAdminRec.mo_id'
+      },
+      {
+        'elementKey': 'mo_medication',
+        'calculationType': 'embedValue(medicationOrders,medicationOrdersTable, med_medication)',
+        'formIndex': '2',
+        'inputType': 'calculatedValue',
+        'label': 'Medication',
+        'tableColumn': '3',
+        'fqn': 'medAdminRec.mo_medication'
+      },
+      {
+        'elementKey': 'mo_timing',
+        'calculationType': 'embedValue(medicationOrders,medicationOrdersTable, med_timing)',
+        'formIndex': '2',
+        'inputType': 'calculatedValue',
+        'label': 'Timing',
+        'tableColumn': '4',
+        'fqn': 'medAdminRec.mo_timing'
+      },
+      {
+        'elementKey': 'mo_route',
+        'calculationType': 'embedValue(medicationOrders,medicationOrdersTable, med_route)',
+        'formIndex': '2',
+        'inputType': 'calculatedValue',
+        'label': 'Route',
+        'tableColumn': '5',
+        'fqn': 'medAdminRec.mo_route'
+      },
+      {
+        'elementKey': 'mo_reason',
+        'calculationType': 'embedValue(medicationOrders,medicationOrdersTable, med_reason)',
+        'formIndex': '2',
+        'inputType': 'calculatedValue',
+        'label': 'Reason',
+        'tableColumn': '6',
+        'fqn': 'medAdminRec.mo_reason'
+      },
+      {
+        'elementKey': 'mo_dose',
+        'calculationType': 'embedValue(medicationOrders,medicationOrdersTable, med_dose)',
+        'formIndex': '2',
+        'inputType': 'calculatedValue',
+        'label': 'Dose prescribed',
+        'tableColumn': '7',
+        'fqn': 'medAdminRec.mo_dose'
+      },
+      {
+        'elementKey': 'mo_scheduled',
+        'calculationType': 'embedValue(medicationOrders,medicationOrdersTable, med_scheduled)',
+        'formIndex': '2',
+        'inputType': 'calculatedValue',
+        'label': 'Scheduled',
+        'tableColumn': '8',
+        'fqn': 'medAdminRec.mo_scheduled'
+      },
+      {
+        'elementKey': 'mo_prnMaxDosage',
+        'calculationType': 'embedValue(medicationOrders,medicationOrdersTable, med_prnMaxDosage)',
+        'formIndex': '2',
+        'inputType': 'calculatedValue',
+        'label': 'Max dosage',
+        'tableColumn': '9',
+        'fqn': 'medAdminRec.mo_prnMaxDosage'
+      },
+      {
+        'elementKey': 'dose',
+        'formIndex': '2',
+        'inputType': 'text',
+        'label': 'Dose administered',
+        'tableColumn': '10',
+        'fqn': 'medAdminRec.dose'
+      },
+      {
+        'elementKey': 'comments',
+        'formIndex': '2',
+        'inputType': 'textarea',
+        'label': 'Comments',
+        'tableColumn': '11',
+        'fqn': 'medAdminRec.comments'
+      },
+      {
+        'elementKey': 'mar_bag_action',
+        'formIndex': '2',
+        'inputType': 'select',
+        'label': 'Bag acton',
+        'options': [
+          {
+            'key': 'start',
+            'text': 'Bag start'
+          },
+          {
+            'key': 'pause',
+            'text': 'Pause'
+          },
+          {
+            'key': 'restart',
+            'text': 'Restart'
+          },
+          {
+            'key': 'change',
+            'text': 'Change'
+          },
+          {
+            'key': 'stop',
+            'text': 'Stop'
+          }
+        ],
+        'tableColumn': '12',
+        'fqn': 'medAdminRec.mar_bag_action'
+      },
+      {
+        'elementKey': 'mar_bag_number',
+        'formIndex': '2',
+        'inputType': 'text',
+        'label': 'Bag number',
+        'passToFunction': 'med_c2_concentration',
+        'suffix': 'mL',
+        'tableColumn': '13',
+        'fqn': 'medAdminRec.mar_bag_number',
+        'suffixText': '<p>mL</p>',
+        'suffixHtml': 'mL'
+      },
+      {
+        'elementKey': 'mar_volume',
+        'formIndex': '2',
+        'inputType': 'text',
+        'label': 'Volume',
+        'passToFunction': 'med_c2_concentration',
+        'suffix': 'mL',
+        'tableColumn': '14',
+        'fqn': 'medAdminRec.mar_volume',
+        'suffixText': '<p>mL</p>',
+        'suffixHtml': 'mL'
+      },
+      {
+        'elementKey': 'mar_solution',
+        'formIndex': '2',
+        'inputType': 'select',
+        'label': 'Solution',
+        'options': [
+          {
+            'key': 'd5w',
+            'text': 'D5W'
+          },
+          {
+            'key': 'd10w',
+            'text': 'D10W'
+          },
+          {
+            'key': 'half',
+            'text': 'Half normal saline'
+          },
+          {
+            'key': 'normal',
+            'text': 'Normal saline'
+          },
+          {
+            'key': 'sterile',
+            'text': 'Sterile water'
+          }
+        ],
+        'tableColumn': '15',
+        'fqn': 'medAdminRec.mar_solution'
+      },
+      {
+        'elementKey': 'mar_time',
+        'formIndex': '2',
+        'inputType': 'text',
+        'label': 'Time',
+        'passToFunction': 'med_c2_concentration',
+        'tableColumn': '16',
+        'fqn': 'medAdminRec.mar_time'
+      },
+      {
+        'elementKey': 'mar_timeUnits',
+        'formIndex': '2',
+        'inputType': 'select',
+        'label': 'Time units',
+        'options': [
+          {
+            'key': 'hrs',
+            'text': 'Hours'
+          },
+          {
+            'key': 'mins',
+            'text': 'Minutes'
+          }
+        ],
+        'passToFunction': 'med_c2_concentration',
+        'tableColumn': '17',
+        'fqn': 'medAdminRec.mar_timeUnits'
+      },
+      {
+        'elementKey': 'mar_concentration',
+        'calculationType': 'medConcentration',
+        'formIndex': '2',
+        'inputType': 'calculatedValue',
+        'label': 'Concentration',
+        'suffix': 'mL/min',
+        'tableColumn': '18',
+        'fqn': 'medAdminRec.mar_concentration',
+        'suffixText': '<p>mL/min</p>',
+        'suffixHtml': 'mL/min'
       }
     ],
     'pageElements': {
       'table': {
         'elementKey': 'table',
         'pageElementIndex': '1',
+        'pageKey': 'medAdminRec',
         'tableKey': 'table',
         'isTable': true,
-        'hasRecHeader': false,
         'label': 'Medication administration records',
         'addButtonText': 'Administered',
         'ehr_list': [
@@ -11178,7 +13526,7 @@ const DEFS = {
             'label': 'Profession',
             'ehr_list_index': '8',
             'items': [
-              'profession'
+              'adminProfession'
             ]
           },
           {
@@ -11197,7 +13545,7 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group113',
+              'elementKey': 'ehr_group137',
               'gIndex': '1',
               'gChildren': [
                 'medStatus',
@@ -11207,7 +13555,7 @@ const DEFS = {
                 'todayPlan',
                 'todayGiven',
                 'administeredBy',
-                'profession',
+                'adminProfession',
                 'administeredTime'
               ]
             }
@@ -11220,10 +13568,259 @@ const DEFS = {
             'todayPlan': '',
             'todayGiven': '',
             'administeredBy': '',
-            'profession': '',
+            'adminProfession': '',
             'administeredTime': ''
           }
-        }
+        },
+        'tableChildren': [
+          'medStatus',
+          'adminStatus',
+          'medication',
+          'route',
+          'todayPlan',
+          'todayGiven',
+          'administeredBy',
+          'adminProfession',
+          'administeredTime'
+        ]
+      },
+      'marTable': {
+        'elementKey': 'marTable',
+        'pageElementIndex': '2',
+        'pageKey': 'medAdminRec',
+        'tableKey': 'marTable',
+        'isTable': true,
+        'label': 'Medication administration records',
+        'addButtonText': 'Administered',
+        'ehr_list': [
+          {
+            'label': 'Identification',
+            'ehr_list_index': '1',
+            'items': [
+              'name',
+              'profession',
+              'day',
+              'time',
+              '_id'
+            ]
+          },
+          {
+            'ehr_list_index': '2',
+            'items': [
+              'mo_id'
+            ]
+          },
+          {
+            'ehr_list_index': '3',
+            'items': [
+              'mo_medication'
+            ]
+          },
+          {
+            'ehr_list_index': '4',
+            'items': [
+              'mo_timing'
+            ]
+          },
+          {
+            'ehr_list_index': '5',
+            'items': [
+              'mo_route'
+            ]
+          },
+          {
+            'ehr_list_index': '6',
+            'items': [
+              'mo_reason'
+            ]
+          },
+          {
+            'ehr_list_index': '7',
+            'items': [
+              'mo_dose'
+            ]
+          },
+          {
+            'ehr_list_index': '8',
+            'items': [
+              'mo_scheduled'
+            ]
+          },
+          {
+            'ehr_list_index': '9',
+            'items': [
+              'mo_prnMaxDosage'
+            ]
+          },
+          {
+            'ehr_list_index': '10',
+            'items': [
+              'dose'
+            ]
+          },
+          {
+            'ehr_list_index': '11',
+            'items': [
+              'comments'
+            ]
+          },
+          {
+            'ehr_list_index': '12',
+            'items': [
+              'mar_bag_action'
+            ]
+          },
+          {
+            'ehr_list_index': '13',
+            'items': [
+              'mar_bag_number'
+            ]
+          },
+          {
+            'ehr_list_index': '14',
+            'items': [
+              'mar_volume'
+            ]
+          },
+          {
+            'ehr_list_index': '15',
+            'items': [
+              'mar_solution'
+            ]
+          },
+          {
+            'ehr_list_index': '16',
+            'items': [
+              'mar_time'
+            ]
+          },
+          {
+            'ehr_list_index': '17',
+            'items': [
+              'mar_timeUnits'
+            ]
+          },
+          {
+            'ehr_list_index': '18',
+            'items': [
+              'mar_concentration'
+            ]
+          },
+          {
+            'ehr_list_index': '19',
+            'items': [
+              'med_order_embedded'
+            ]
+          }
+        ],
+        'form': {
+          'elementKey': 'marTable',
+          'label': 'Medication administration records',
+          'addButtonText': 'Administered',
+          'formOption': 'customCode',
+          'formKey': 'marTable',
+          'ehr_groups': [
+            {
+              'elementKey': 'ehr_group138',
+              'formCss': 'record-header',
+              'gIndex': '1',
+              'gChildren': [
+                'name',
+                'profession',
+                'day',
+                'time',
+                '_id'
+              ]
+            },
+            {
+              'elementKey': 'ehr_group139',
+              'formOption': 'hideGroup',
+              'gIndex': '2',
+              'gChildren': [
+                'med_order_embedded'
+              ]
+            },
+            {
+              'elementKey': 'ehr_group140',
+              'gIndex': '3',
+              'gChildren': [
+                'mo_id',
+                'mo_medication',
+                'mo_timing',
+                'mo_route',
+                'mo_reason',
+                'mo_dose',
+                'mo_scheduled',
+                'mo_prnMaxDosage',
+                'dose',
+                'comments',
+                'mar_bag_action',
+                'mar_bag_number',
+                'mar_volume',
+                'mar_solution',
+                'mar_time',
+                'mar_timeUnits',
+                'mar_concentration'
+              ]
+            },
+            {
+              'elementKey': 'ehr_group141',
+              'gIndex': '4',
+              'gChildren': []
+            }
+          ],
+          'ehr_data': {
+            'name': '',
+            'profession': '',
+            'day': '',
+            'time': '',
+            '_id': '',
+            'med_order_embedded': '',
+            'mo_id': '',
+            'mo_medication': '',
+            'mo_timing': '',
+            'mo_route': '',
+            'mo_reason': '',
+            'mo_dose': '',
+            'mo_scheduled': '',
+            'mo_prnMaxDosage': '',
+            'dose': '',
+            'comments': '',
+            'mar_bag_action': '',
+            'mar_bag_number': '',
+            'mar_volume': '',
+            'mar_solution': '',
+            'mar_time': '',
+            'mar_timeUnits': '',
+            'mar_concentration': ''
+          }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'med_order_embedded',
+          'mo_id',
+          'mo_medication',
+          'mo_timing',
+          'mo_route',
+          'mo_reason',
+          'mo_dose',
+          'mo_scheduled',
+          'mo_prnMaxDosage',
+          'dose',
+          'comments',
+          'mar_bag_action',
+          'mar_bag_number',
+          'mar_volume',
+          'mar_solution',
+          'mar_time',
+          'mar_timeUnits',
+          'mar_concentration'
+        ],
+        'hasRecHeader': true
       }
     }
   },
@@ -11279,10 +13876,10 @@ const DEFS = {
         'fqn': 'dischargeSummary.dischargingPhysician/np'
       },
       {
-        'elementKey': 'spacer115',
+        'elementKey': 'spacer111',
         'formIndex': '1',
         'inputType': 'spacer',
-        'fqn': 'dischargeSummary.spacer115'
+        'fqn': 'dischargeSummary.spacer111'
       },
       {
         'elementKey': 'clinicalSummary',
@@ -11307,10 +13904,10 @@ const DEFS = {
         'fqn': 'dischargeSummary.dischargeEducation'
       },
       {
-        'elementKey': 'spacer117',
+        'elementKey': 'spacer113',
         'formIndex': '2',
         'inputType': 'spacer',
-        'fqn': 'dischargeSummary.spacer117'
+        'fqn': 'dischargeSummary.spacer113'
       },
       {
         'elementKey': 'dischargeDay',
@@ -11388,12 +13985,12 @@ const DEFS = {
         'isPageForm': true,
         'ehr_groups': [
           {
-            'elementKey': 'ehr_group114',
+            'elementKey': 'ehr_group110',
             'gIndex': '1',
             'gChildren': [
               'admissionDay',
               'dischargingPhysician/np',
-              'spacer115',
+              'spacer111',
               'clinicalSummary'
             ]
           }
@@ -11406,12 +14003,12 @@ const DEFS = {
         'isPageForm': true,
         'ehr_groups': [
           {
-            'elementKey': 'ehr_group116',
+            'elementKey': 'ehr_group112',
             'gIndex': '1',
             'gChildren': [
               'dischargeDiagnosis',
               'dischargeEducation',
-              'spacer117',
+              'spacer113',
               'dischargeDay',
               'dischargeTime',
               'dischargedTo',
@@ -11459,7 +14056,7 @@ const DEFS = {
         'isPageForm': true,
         'ehr_groups': [
           {
-            'elementKey': 'ehr_group118',
+            'elementKey': 'ehr_group114',
             'gIndex': '1',
             'gChildren': [
               'paymentType'
@@ -11519,6 +14116,17 @@ const DEFS = {
         'fqn': 'progressNotes.time'
       },
       {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '1',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'progressNotes._id'
+      },
+      {
         'elementKey': 'note',
         'formIndex': '1',
         'inputType': 'textarea',
@@ -11532,9 +14140,9 @@ const DEFS = {
       'table': {
         'elementKey': 'table',
         'pageElementIndex': '1',
+        'pageKey': 'progressNotes',
         'tableKey': 'table',
         'isTable': true,
-        'hasRecHeader': true,
         'label': 'Progress notes',
         'addButtonText': 'Add an encounter note',
         'ehr_list': [
@@ -11545,7 +14153,8 @@ const DEFS = {
               'name',
               'profession',
               'day',
-              'time'
+              'time',
+              '_id'
             ]
           },
           {
@@ -11563,18 +14172,19 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group125',
+              'elementKey': 'ehr_group177',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                '_id'
               ]
             },
             {
-              'elementKey': 'ehr_group126',
+              'elementKey': 'ehr_group178',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '2',
               'gChildren': [
@@ -11587,9 +14197,19 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
+            '_id': '',
             'note': ''
           }
-        }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'note'
+        ],
+        'hasRecHeader': true
       }
     }
   },
@@ -11641,6 +14261,17 @@ const DEFS = {
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'carePlan.time'
+      },
+      {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '1',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'carePlan._id'
       },
       {
         'elementKey': 'clinical',
@@ -11702,9 +14333,9 @@ const DEFS = {
       'table': {
         'elementKey': 'table',
         'pageElementIndex': '1',
+        'pageKey': 'carePlan',
         'tableKey': 'table',
         'isTable': true,
-        'hasRecHeader': true,
         'label': 'Care plan',
         'addButtonText': 'Add a care plan',
         'ehr_list': [
@@ -11715,7 +14346,8 @@ const DEFS = {
               'name',
               'profession',
               'day',
-              'time'
+              'time',
+              '_id'
             ]
           },
           {
@@ -11761,18 +14393,19 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group127',
+              'elementKey': 'ehr_group179',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                '_id'
               ]
             },
             {
-              'elementKey': 'ehr_group128',
+              'elementKey': 'ehr_group180',
               'gIndex': '2',
               'gChildren': [
                 'clinical',
@@ -11788,13 +14421,27 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
+            '_id': '',
             'clinical': '',
             'goal': '',
             'interventions': '',
             'evaluation': '',
             'status': ''
           }
-        }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'clinical',
+          'goal',
+          'interventions',
+          'evaluation',
+          'status'
+        ],
+        'hasRecHeader': true
       }
     }
   },
@@ -11848,6 +14495,17 @@ const DEFS = {
         'fqn': 'consults.time'
       },
       {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '1',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'consults._id'
+      },
+      {
         'elementKey': 'consultReport',
         'formIndex': '1',
         'inputType': 'ehrFile',
@@ -11870,9 +14528,9 @@ const DEFS = {
       'table': {
         'elementKey': 'table',
         'pageElementIndex': '1',
+        'pageKey': 'consults',
         'tableKey': 'table',
         'isTable': true,
-        'hasRecHeader': true,
         'label': 'Consults',
         'addButtonText': 'Add a consulttion report',
         'ehr_list': [
@@ -11883,7 +14541,8 @@ const DEFS = {
               'name',
               'profession',
               'day',
-              'time'
+              'time',
+              '_id'
             ]
           },
           {
@@ -11908,18 +14567,19 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group131',
+              'elementKey': 'ehr_group183',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                '_id'
               ]
             },
             {
-              'elementKey': 'ehr_group132',
+              'elementKey': 'ehr_group184',
               'gIndex': '2',
               'gChildren': [
                 'consultReport',
@@ -11932,10 +14592,21 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
+            '_id': '',
             'consultReport': '',
             'comments': ''
           }
-        }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'consultReport',
+          'comments'
+        ],
+        'hasRecHeader': true
       }
     }
   },
@@ -11987,6 +14658,17 @@ const DEFS = {
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'labResults.time'
+      },
+      {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '1',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'labResults._id'
       },
       {
         'elementKey': 'laboratoryReport',
@@ -12050,6 +14732,17 @@ const DEFS = {
         'fqn': 'labResults.time'
       },
       {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '2',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'labResults._id'
+      },
+      {
         'elementKey': 'lrh_HbA1C',
         'formIndex': '2',
         'inputType': 'lab_result',
@@ -12078,8 +14771,11 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'lab_result',
         'label': 'Hematocrit',
+        'suffix': '0.42 – 0.52 L/L',
         'tableColumn': '4',
-        'fqn': 'labResults.lrh_hct'
+        'fqn': 'labResults.lrh_hct',
+        'suffixText': '<p>0.42 – 0.52 L/L</p>',
+        'suffixHtml': '0.42 – 0.52 L/L'
       },
       {
         'elementKey': 'lrh_platelets',
@@ -12170,12 +14866,66 @@ const DEFS = {
         'suffixHtml': '2.0-7.5 x 10^9 /L'
       },
       {
+        'elementKey': 'name',
+        'formIndex': '3',
+        'inputType': 'practitionerName',
+        'label': 'Name',
+        'mandatory': true,
+        'tableColumn': '1',
+        'tableLabel': 'Identification',
+        'recHeader': true,
+        'fqn': 'labResults.name'
+      },
+      {
+        'elementKey': 'profession',
+        'formIndex': '3',
+        'inputType': 'practitionerProfession',
+        'label': 'Profession',
+        'mandatory': true,
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'labResults.profession'
+      },
+      {
+        'elementKey': 'day',
+        'formIndex': '3',
+        'inputType': 'visitDay',
+        'label': 'Day',
+        'mandatory': true,
+        'tableColumn': '1',
+        'validation': 'visitDay',
+        'recHeader': true,
+        'fqn': 'labResults.day'
+      },
+      {
+        'elementKey': 'time',
+        'formIndex': '3',
+        'inputType': 'visitTime',
+        'label': 'Time',
+        'mandatory': true,
+        'tableColumn': '1',
+        'validation': 'time24',
+        'recHeader': true,
+        'fqn': 'labResults.time'
+      },
+      {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '3',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'labResults._id'
+      },
+      {
         'elementKey': 'lrh_HCO3',
         'formIndex': '2',
         'inputType': 'lab_result',
         'label': 'Bicarbonate',
         'suffix': '21–32 mmol/L',
-        'tableColumn': '13',
+        'tableColumn': '2',
         'fqn': 'labResults.lrh_HCO3',
         'suffixText': '<p>21–32 mmol/L</p>',
         'suffixHtml': '21–32 mmol/L'
@@ -12186,7 +14936,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Calcium',
         'suffix': '2.12–2.52 mmol/L',
-        'tableColumn': '14',
+        'tableColumn': '3',
         'fqn': 'labResults.lrh_Ca',
         'suffixText': '<p>2.12–2.52 mmol/L</p>',
         'suffixHtml': '2.12–2.52 mmol/L'
@@ -12197,7 +14947,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Calcium Ionized',
         'suffix': '1.14–1.28 mmol/L',
-        'tableColumn': '15',
+        'tableColumn': '4',
         'fqn': 'labResults.lrh_Ca_Ion',
         'suffixText': '<p>1.14–1.28 mmol/L</p>',
         'suffixHtml': '1.14–1.28 mmol/L'
@@ -12207,7 +14957,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'lab_result',
         'label': 'Chloride',
-        'tableColumn': '16',
+        'tableColumn': '5',
         'fqn': 'labResults.lrh_chloride'
       },
       {
@@ -12215,7 +14965,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'lab_result',
         'label': 'Creatinine Kinase',
-        'tableColumn': '17',
+        'tableColumn': '6',
         'fqn': 'labResults.lrh_ck'
       },
       {
@@ -12224,7 +14974,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Magnesium',
         'suffix': '0.74–1.03 mmol/L',
-        'tableColumn': '18',
+        'tableColumn': '7',
         'fqn': 'labResults.lrh_Mg',
         'suffixText': '<p>0.74–1.03 mmol/L</p>',
         'suffixHtml': '0.74–1.03 mmol/L'
@@ -12235,7 +14985,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Phosphate',
         'suffix': '0.81–1.58 mmol/L',
-        'tableColumn': '19',
+        'tableColumn': '8',
         'fqn': 'labResults.lrh_PO4',
         'suffixText': '<p>0.81–1.58 mmol/L</p>',
         'suffixHtml': '0.81–1.58 mmol/L'
@@ -12246,7 +14996,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Potassium',
         'suffix': '3.5–5.1 mmol/L',
-        'tableColumn': '20',
+        'tableColumn': '9',
         'fqn': 'labResults.lrh_K',
         'suffixText': '<p>3.5–5.1 mmol/L</p>',
         'suffixHtml': '3.5–5.1 mmol/L'
@@ -12257,7 +15007,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Sodium',
         'suffix': '136–146 mmol/L',
-        'tableColumn': '21',
+        'tableColumn': '10',
         'fqn': 'labResults.lrh_Na',
         'suffixText': '<p>136–146 mmol/L</p>',
         'suffixHtml': '136–146 mmol/L'
@@ -12268,7 +15018,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Blood Urea Nitrogen',
         'suffix': 'F: 22–75 µmol/L-NL-M: 49–93 µmol/L',
-        'tableColumn': '22',
+        'tableColumn': '11',
         'fqn': 'labResults.lrh_bun',
         'suffixText': '<p>F: 22–75 µmol/L</p>\n<p>M: 49–93 µmol/L</p>',
         'suffixHtml': 'F: 22–75 µmol/L\nM: 49–93 µmol/L'
@@ -12279,7 +15029,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Creatinine',
         'suffix': 'F: 22–75 µmol/L-NL-M: 49–93 µmol/L',
-        'tableColumn': '23',
+        'tableColumn': '12',
         'fqn': 'labResults.lrh_cr',
         'suffixText': '<p>F: 22–75 µmol/L</p>\n<p>M: 49–93 µmol/L</p>',
         'suffixHtml': 'F: 22–75 µmol/L\nM: 49–93 µmol/L'
@@ -12290,7 +15040,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Alanine transaminase (ALT)',
         'suffix': '17–63 IU/L',
-        'tableColumn': '24',
+        'tableColumn': '13',
         'fqn': 'labResults.lrh_alt',
         'suffixText': '<p>17–63 IU/L</p>',
         'suffixHtml': '17–63 IU/L'
@@ -12301,7 +15051,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Aspartate transferase (AST)',
         'suffix': '15–37 IU/L',
-        'tableColumn': '25',
+        'tableColumn': '14',
         'fqn': 'labResults.lrh_ast',
         'suffixText': '<p>15–37 IU/L</p>',
         'suffixHtml': '15–37 IU/L'
@@ -12312,7 +15062,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Alkaline phosphatase (ALP)',
         'suffix': '50–136 IU/L',
-        'tableColumn': '26',
+        'tableColumn': '15',
         'fqn': 'labResults.lrh_alp',
         'suffixText': '<p>50–136 IU/L</p>',
         'suffixHtml': '50–136 IU/L'
@@ -12323,7 +15073,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Bilirubin direct',
         'suffix': '2–9 µmol/L',
-        'tableColumn': '27',
+        'tableColumn': '16',
         'fqn': 'labResults.lrh_bilirubinD',
         'suffixText': '<p>2–9 µmol/L</p>',
         'suffixHtml': '2–9 µmol/L'
@@ -12334,7 +15084,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Bilirubin total',
         'suffix': '3–17 µmol/L',
-        'tableColumn': '28',
+        'tableColumn': '17',
         'fqn': 'labResults.lrh_bilirubinT',
         'suffixText': '<p>3–17 µmol/L</p>',
         'suffixHtml': '3–17 µmol/L'
@@ -12345,7 +15095,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Gamma glutamyl transferase (GGT)',
         'suffix': 'F: 5.0–55.0 IU/L-NL-M: 15.0–85.0 IU/L',
-        'tableColumn': '29',
+        'tableColumn': '18',
         'fqn': 'labResults.lrh_ggt',
         'suffixText': '<p>F: 5.0–55.0 IU/L</p>\n<p>M: 15.0–85.0 IU/L</p>',
         'suffixHtml': 'F: 5.0–55.0 IU/L\nM: 15.0–85.0 IU/L'
@@ -12356,7 +15106,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Lactate dehydrogenase (LDH)',
         'suffix': '100–205 IU/L',
-        'tableColumn': '30',
+        'tableColumn': '19',
         'fqn': 'labResults.lrh_ldh',
         'suffixText': '<p>100–205 IU/L</p>',
         'suffixHtml': '100–205 IU/L'
@@ -12367,7 +15117,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Lipase',
         'suffix': '73–393 IU/L',
-        'tableColumn': '31',
+        'tableColumn': '20',
         'fqn': 'labResults.lrh_lipase',
         'suffixText': '<p>73–393 IU/L</p>',
         'suffixHtml': '73–393 IU/L'
@@ -12378,7 +15128,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Bicarbonate HCO3',
         'suffix': '22–27 mmol/L',
-        'tableColumn': '32',
+        'tableColumn': '21',
         'fqn': 'labResults.lrh_abg_hco3',
         'suffixText': '<p>22–27 mmol/L</p>',
         'suffixHtml': '22–27 mmol/L'
@@ -12389,7 +15139,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Oxygen saturation (O2Sat)',
         'suffix': '96-100%',
-        'tableColumn': '33',
+        'tableColumn': '22',
         'fqn': 'labResults.lrh_abg_o2sat',
         'suffixText': '<p>96-100%</p>',
         'suffixHtml': '96-100%'
@@ -12400,7 +15150,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Partial pressure of carbon dioxide (PcO2)',
         'suffix': '32–45 mm Hg',
-        'tableColumn': '34',
+        'tableColumn': '23',
         'fqn': 'labResults.lrh_abg_pco2',
         'suffixText': '<p>32–45 mm Hg</p>',
         'suffixHtml': '32–45 mm Hg'
@@ -12411,7 +15161,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'Partial pressure of oxygen (PO2)',
         'suffix': '83–116 mm Hg',
-        'tableColumn': '35',
+        'tableColumn': '24',
         'fqn': 'labResults.lrh_po2',
         'suffixText': '<p>83–116 mm Hg</p>',
         'suffixHtml': '83–116 mm Hg'
@@ -12422,7 +15172,7 @@ const DEFS = {
         'inputType': 'lab_result',
         'label': 'ph',
         'suffix': '7.38–7.46',
-        'tableColumn': '36',
+        'tableColumn': '25',
         'fqn': 'labResults.lrh_abg_ph',
         'suffixText': '<p>7.38–7.46</p>',
         'suffixHtml': '7.38–7.46'
@@ -12466,15 +15216,15 @@ const DEFS = {
             'text': 'O+'
           }
         ],
-        'tableColumn': '37',
+        'tableColumn': '26',
         'fqn': 'labResults.lrh_bloodGroup'
       },
       {
         'elementKey': 'lrh_antibody',
         'formIndex': '2',
-        'inputType': 'text',
-        'label': 'Antibody screen',
-        'tableColumn': '38',
+        'inputType': 'checkbox',
+        'label': 'Antibody positive',
+        'tableColumn': '27',
         'fqn': 'labResults.lrh_antibody'
       },
       {
@@ -12519,6 +15269,17 @@ const DEFS = {
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'labResults.time'
+      },
+      {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '3',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'labResults._id'
       },
       {
         'elementKey': 'lru_calrity',
@@ -12750,9 +15511,9 @@ const DEFS = {
       'table': {
         'elementKey': 'table',
         'pageElementIndex': '1',
+        'pageKey': 'labResults',
         'tableKey': 'table',
         'isTable': true,
-        'hasRecHeader': true,
         'label': 'Laboratory reports',
         'addButtonText': 'Add a laboratory report',
         'ehr_list': [
@@ -12763,7 +15524,8 @@ const DEFS = {
               'name',
               'profession',
               'day',
-              'time'
+              'time',
+              '_id'
             ]
           },
           {
@@ -12788,18 +15550,19 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group157',
+              'elementKey': 'ehr_group189',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                '_id'
               ]
             },
             {
-              'elementKey': 'ehr_group158',
+              'elementKey': 'ehr_group190',
               'gIndex': '2',
               'gChildren': [
                 'laboratoryReport',
@@ -12812,17 +15575,28 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
+            '_id': '',
             'laboratoryReport': '',
             'comments': ''
           }
-        }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'laboratoryReport',
+          'comments'
+        ],
+        'hasRecHeader': true
       },
       'labResultHematology': {
         'elementKey': 'labResultHematology',
         'pageElementIndex': '2',
+        'pageKey': 'labResults',
         'tableKey': 'labResultHematology',
         'isTable': true,
-        'hasRecHeader': true,
         'label': 'Hematology',
         'addButtonText': 'Create a hematology laboratory report',
         'ehr_list': [
@@ -12833,229 +15607,175 @@ const DEFS = {
               'name',
               'profession',
               'day',
-              'time'
+              'time',
+              '_id'
             ]
           },
           {
             'label': 'Hemoglobin A1-C',
             'ehr_list_index': '2',
             'items': [
-              'lrh_HbA1C'
+              'lrh_HbA1C',
+              'lrh_HCO3'
             ]
           },
           {
             'label': 'Hemoglobin',
             'ehr_list_index': '3',
             'items': [
-              'lrh_Hgb'
+              'lrh_Hgb',
+              'lrh_Ca'
             ]
           },
           {
             'ehr_list_index': '4',
             'items': [
-              'lrh_hct'
+              'lrh_hct',
+              'lrh_Ca_Ion'
             ]
           },
           {
             'ehr_list_index': '5',
             'items': [
-              'lrh_platelets'
+              'lrh_platelets',
+              'lrh_chloride'
             ]
           },
           {
             'ehr_list_index': '6',
             'items': [
-              'lrh_rbc'
+              'lrh_rbc',
+              'lrh_ck'
             ]
           },
           {
             'ehr_list_index': '7',
             'items': [
-              'lrh_wbc'
+              'lrh_wbc',
+              'lrh_Mg'
             ]
           },
           {
             'ehr_list_index': '8',
             'items': [
-              'lrh_basophils'
+              'lrh_basophils',
+              'lrh_PO4'
             ]
           },
           {
             'ehr_list_index': '9',
             'items': [
-              'lrh_eosinophils'
+              'lrh_eosinophils',
+              'lrh_K'
             ]
           },
           {
             'ehr_list_index': '10',
             'items': [
-              'lrh_lymphocytes'
+              'lrh_lymphocytes',
+              'lrh_Na'
             ]
           },
           {
             'ehr_list_index': '11',
             'items': [
-              'lrh_monocytes'
+              'lrh_monocytes',
+              'lrh_bun'
             ]
           },
           {
             'ehr_list_index': '12',
             'items': [
-              'lrh_neutrophils'
+              'lrh_neutrophils',
+              'lrh_cr'
             ]
           },
           {
             'ehr_list_index': '13',
             'items': [
-              'lrh_HCO3'
+              'lrh_alt'
             ]
           },
           {
             'ehr_list_index': '14',
             'items': [
-              'lrh_Ca'
+              'lrh_ast'
             ]
           },
           {
             'ehr_list_index': '15',
             'items': [
-              'lrh_Ca_Ion'
+              'lrh_alp'
             ]
           },
           {
             'ehr_list_index': '16',
             'items': [
-              'lrh_chloride'
+              'lrh_bilirubinD'
             ]
           },
           {
             'ehr_list_index': '17',
             'items': [
-              'lrh_ck'
+              'lrh_bilirubinT'
             ]
           },
           {
             'ehr_list_index': '18',
             'items': [
-              'lrh_Mg'
+              'lrh_ggt'
             ]
           },
           {
             'ehr_list_index': '19',
             'items': [
-              'lrh_PO4'
+              'lrh_ldh'
             ]
           },
           {
             'ehr_list_index': '20',
             'items': [
-              'lrh_K'
+              'lrh_lipase'
             ]
           },
           {
             'ehr_list_index': '21',
             'items': [
-              'lrh_Na'
+              'lrh_abg_hco3'
             ]
           },
           {
             'ehr_list_index': '22',
             'items': [
-              'lrh_bun'
+              'lrh_abg_o2sat'
             ]
           },
           {
             'ehr_list_index': '23',
             'items': [
-              'lrh_cr'
+              'lrh_abg_pco2'
             ]
           },
           {
             'ehr_list_index': '24',
             'items': [
-              'lrh_alt'
+              'lrh_po2'
             ]
           },
           {
             'ehr_list_index': '25',
             'items': [
-              'lrh_ast'
+              'lrh_abg_ph'
             ]
           },
           {
             'ehr_list_index': '26',
             'items': [
-              'lrh_alp'
-            ]
-          },
-          {
-            'ehr_list_index': '27',
-            'items': [
-              'lrh_bilirubinD'
-            ]
-          },
-          {
-            'ehr_list_index': '28',
-            'items': [
-              'lrh_bilirubinT'
-            ]
-          },
-          {
-            'ehr_list_index': '29',
-            'items': [
-              'lrh_ggt'
-            ]
-          },
-          {
-            'ehr_list_index': '30',
-            'items': [
-              'lrh_ldh'
-            ]
-          },
-          {
-            'ehr_list_index': '31',
-            'items': [
-              'lrh_lipase'
-            ]
-          },
-          {
-            'ehr_list_index': '32',
-            'items': [
-              'lrh_abg_hco3'
-            ]
-          },
-          {
-            'ehr_list_index': '33',
-            'items': [
-              'lrh_abg_o2sat'
-            ]
-          },
-          {
-            'ehr_list_index': '34',
-            'items': [
-              'lrh_abg_pco2'
-            ]
-          },
-          {
-            'ehr_list_index': '35',
-            'items': [
-              'lrh_po2'
-            ]
-          },
-          {
-            'ehr_list_index': '36',
-            'items': [
-              'lrh_abg_ph'
-            ]
-          },
-          {
-            'ehr_list_index': '37',
-            'items': [
               'lrh_bloodGroup'
             ]
           },
           {
-            'ehr_list_index': '38',
+            'ehr_list_index': '27',
             'items': [
               'lrh_antibody'
             ]
@@ -13065,21 +15785,23 @@ const DEFS = {
           'elementKey': 'labResultHematology',
           'label': 'Hematology',
           'addButtonText': 'Create a hematology laboratory report',
+          'formOption': 'transpose',
           'formKey': 'labResultHematology',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group159',
+              'elementKey': 'ehr_group191',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                '_id'
               ]
             },
             {
-              'elementKey': 'ehr_group160',
+              'elementKey': 'ehr_group192',
               'label': 'Hematology',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '2',
@@ -13093,7 +15815,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group161',
+              'elementKey': 'ehr_group193',
               'label': 'WBC Types',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '3',
@@ -13106,7 +15828,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group162',
+              'elementKey': 'ehr_group195',
               'label': 'Chemistry',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '4',
@@ -13123,7 +15845,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group163',
+              'elementKey': 'ehr_group196',
               'label': 'Renal Profile',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '5',
@@ -13133,7 +15855,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group164',
+              'elementKey': 'ehr_group197',
               'label': 'Liver function',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '6',
@@ -13149,7 +15871,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group165',
+              'elementKey': 'ehr_group198',
               'label': 'Blood gast tests',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '7',
@@ -13162,7 +15884,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group166',
+              'elementKey': 'ehr_group199',
               'label': 'Group and screen',
               'gIndex': '8',
               'gChildren': [
@@ -13176,6 +15898,7 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
+            '_id': '',
             'lrh_HbA1C': '',
             'lrh_Hgb': '',
             'lrh_hct': '',
@@ -13214,14 +15937,59 @@ const DEFS = {
             'lrh_bloodGroup': '',
             'lrh_antibody': ''
           }
-        }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'lrh_HbA1C',
+          'lrh_Hgb',
+          'lrh_hct',
+          'lrh_platelets',
+          'lrh_rbc',
+          'lrh_wbc',
+          'lrh_basophils',
+          'lrh_eosinophils',
+          'lrh_lymphocytes',
+          'lrh_monocytes',
+          'lrh_neutrophils',
+          'lrh_HCO3',
+          'lrh_Ca',
+          'lrh_Ca_Ion',
+          'lrh_chloride',
+          'lrh_ck',
+          'lrh_Mg',
+          'lrh_PO4',
+          'lrh_K',
+          'lrh_Na',
+          'lrh_bun',
+          'lrh_cr',
+          'lrh_alt',
+          'lrh_ast',
+          'lrh_alp',
+          'lrh_bilirubinD',
+          'lrh_bilirubinT',
+          'lrh_ggt',
+          'lrh_ldh',
+          'lrh_lipase',
+          'lrh_abg_hco3',
+          'lrh_abg_o2sat',
+          'lrh_abg_pco2',
+          'lrh_po2',
+          'lrh_abg_ph',
+          'lrh_bloodGroup',
+          'lrh_antibody'
+        ],
+        'hasRecHeader': true
       },
       'labResultUrine': {
         'elementKey': 'labResultUrine',
         'pageElementIndex': '3',
+        'pageKey': 'labResults',
         'tableKey': 'labResultUrine',
         'isTable': true,
-        'hasRecHeader': true,
         'label': 'Urine analysis',
         'addButtonText': 'Create a urinary laboratory report',
         'ehr_list': [
@@ -13232,7 +16000,8 @@ const DEFS = {
               'name',
               'profession',
               'day',
-              'time'
+              'time',
+              '_id'
             ]
           },
           {
@@ -13366,21 +16135,23 @@ const DEFS = {
           'elementKey': 'labResultUrine',
           'label': 'Urine analysis',
           'addButtonText': 'Create a urinary laboratory report',
+          'formOption': 'transpose',
           'formKey': 'labResultUrine',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group167',
+              'elementKey': 'ehr_group200',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                '_id'
               ]
             },
             {
-              'elementKey': 'ehr_group168',
+              'elementKey': 'ehr_group201',
               'label': 'General',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '2',
@@ -13391,7 +16162,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group169',
+              'elementKey': 'ehr_group202',
               'label': 'Chemistry',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '3',
@@ -13422,6 +16193,7 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
+            '_id': '',
             'lru_calrity': '',
             'lru_colour': '',
             'lru_ordour': '',
@@ -13444,7 +16216,36 @@ const DEFS = {
             'lru_uricAcid': '',
             'lru_urobilinogen': ''
           }
-        }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'lru_calrity',
+          'lru_colour',
+          'lru_ordour',
+          'lru_albumin',
+          'lru_acr',
+          'lru_aldosterone',
+          'lru_calcium',
+          'lru_catecholamines',
+          'lru_cortisol',
+          'lru_glucose',
+          'lru_ketones',
+          'lru_leukocyte',
+          'lru_nitrates',
+          'lru_osmolality',
+          'lru_ph',
+          'lru_phosphate',
+          'lru_protein',
+          'lru_sodium',
+          'lru_speccificGravity',
+          'lru_uricAcid',
+          'lru_urobilinogen'
+        ],
+        'hasRecHeader': true
       }
     }
   },
@@ -13498,6 +16299,17 @@ const DEFS = {
         'fqn': 'medicalImaging.time'
       },
       {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '1',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'medicalImaging._id'
+      },
+      {
         'elementKey': 'laboratoryReport',
         'formIndex': '1',
         'inputType': 'ehrFile',
@@ -13520,9 +16332,9 @@ const DEFS = {
       'table': {
         'elementKey': 'table',
         'pageElementIndex': '1',
+        'pageKey': 'medicalImaging',
         'tableKey': 'table',
         'isTable': true,
-        'hasRecHeader': true,
         'label': 'Medical imaging',
         'addButtonText': 'Add a report or image',
         'ehr_list': [
@@ -13533,7 +16345,8 @@ const DEFS = {
               'name',
               'profession',
               'day',
-              'time'
+              'time',
+              '_id'
             ]
           },
           {
@@ -13558,18 +16371,19 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group133',
+              'elementKey': 'ehr_group185',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                '_id'
               ]
             },
             {
-              'elementKey': 'ehr_group134',
+              'elementKey': 'ehr_group186',
               'gIndex': '2',
               'gChildren': [
                 'laboratoryReport',
@@ -13582,10 +16396,21 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
+            '_id': '',
             'laboratoryReport': '',
             'comments': ''
           }
-        }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'laboratoryReport',
+          'comments'
+        ],
+        'hasRecHeader': true
       }
     }
   },
@@ -13639,6 +16464,17 @@ const DEFS = {
         'fqn': 'operationReports.time'
       },
       {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '1',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'operationReports._id'
+      },
+      {
         'elementKey': 'laboratoryReport',
         'formIndex': '1',
         'inputType': 'ehrFile',
@@ -13661,9 +16497,9 @@ const DEFS = {
       'table': {
         'elementKey': 'table',
         'pageElementIndex': '1',
+        'pageKey': 'operationReports',
         'tableKey': 'table',
         'isTable': true,
-        'hasRecHeader': true,
         'label': 'Operative and anaesthesia records',
         'addButtonText': 'Add a report',
         'ehr_list': [
@@ -13674,7 +16510,8 @@ const DEFS = {
               'name',
               'profession',
               'day',
-              'time'
+              'time',
+              '_id'
             ]
           },
           {
@@ -13699,18 +16536,19 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group135',
+              'elementKey': 'ehr_group187',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                '_id'
               ]
             },
             {
-              'elementKey': 'ehr_group136',
+              'elementKey': 'ehr_group188',
               'gIndex': '2',
               'gChildren': [
                 'laboratoryReport',
@@ -13723,10 +16561,21 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
+            '_id': '',
             'laboratoryReport': '',
             'comments': ''
           }
-        }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'laboratoryReport',
+          'comments'
+        ],
+        'hasRecHeader': true
       }
     }
   },
@@ -13880,7 +16729,7 @@ const DEFS = {
         'isPageForm': true,
         'ehr_groups': [
           {
-            'elementKey': 'ehr_group170',
+            'elementKey': 'ehr_group203',
             'gIndex': '1',
             'gChildren': [
               {
@@ -13981,7 +16830,7 @@ const DEFS = {
         'isPageForm': true,
         'ehr_groups': [
           {
-            'elementKey': 'ehr_group171',
+            'elementKey': 'ehr_group204',
             'gIndex': '1',
             'gChildren': [
               'snomed',
@@ -14040,6 +16889,17 @@ const DEFS = {
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'diagnosticCodes.time'
+      },
+      {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '1',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'diagnosticCodes._id'
       },
       {
         'elementKey': 'icd10',
@@ -14125,9 +16985,9 @@ const DEFS = {
       'table': {
         'elementKey': 'table',
         'pageElementIndex': '1',
+        'pageKey': 'diagnosticCodes',
         'tableKey': 'table',
         'isTable': true,
-        'hasRecHeader': true,
         'label': 'Diagnostic codes (ICD-10)',
         'addButtonText': 'Add a diagnostic code',
         'ehr_list': [
@@ -14138,7 +16998,8 @@ const DEFS = {
               'name',
               'profession',
               'day',
-              'time'
+              'time',
+              '_id'
             ]
           },
           {
@@ -14191,18 +17052,19 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group172',
+              'elementKey': 'ehr_group205',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                '_id'
               ]
             },
             {
-              'elementKey': 'ehr_group173',
+              'elementKey': 'ehr_group206',
               'gIndex': '2',
               'gChildren': [
                 'icd10',
@@ -14219,6 +17081,7 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
+            '_id': '',
             'icd10': '',
             'condition': '',
             'code': '',
@@ -14226,7 +17089,21 @@ const DEFS = {
             'prefix': '',
             'cluster': ''
           }
-        }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'icd10',
+          'condition',
+          'code',
+          'type',
+          'prefix',
+          'cluster'
+        ],
+        'hasRecHeader': true
       }
     }
   },
@@ -14280,6 +17157,17 @@ const DEFS = {
         'fqn': 'interventionCodes.time'
       },
       {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '1',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'interventionCodes._id'
+      },
+      {
         'elementKey': 'intervention',
         'formIndex': '1',
         'inputType': 'text',
@@ -14320,9 +17208,9 @@ const DEFS = {
       'table': {
         'elementKey': 'table',
         'pageElementIndex': '1',
+        'pageKey': 'interventionCodes',
         'tableKey': 'table',
         'isTable': true,
-        'hasRecHeader': true,
         'label': 'Intervention codes',
         'addButtonText': 'Add an intervention code',
         'ehr_list': [
@@ -14333,7 +17221,8 @@ const DEFS = {
               'name',
               'profession',
               'day',
-              'time'
+              'time',
+              '_id'
             ]
           },
           {
@@ -14372,18 +17261,19 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group174',
+              'elementKey': 'ehr_group207',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                '_id'
               ]
             },
             {
-              'elementKey': 'ehr_group175',
+              'elementKey': 'ehr_group208',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '2',
               'gChildren': [
@@ -14405,12 +17295,25 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
+            '_id': '',
             'intervention': '',
             'status': '',
             'laterally': '',
             'extent': ''
           }
-        }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'intervention',
+          'status',
+          'laterally',
+          'extent'
+        ],
+        'hasRecHeader': true
       }
     }
   },
@@ -14464,6 +17367,17 @@ const DEFS = {
         'fqn': 'caseMixGroup.time'
       },
       {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '1',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'caseMixGroup._id'
+      },
+      {
         'elementKey': 'clinicalCategory',
         'formIndex': '1',
         'inputType': 'text',
@@ -14513,9 +17427,9 @@ const DEFS = {
       'table': {
         'elementKey': 'table',
         'pageElementIndex': '1',
+        'pageKey': 'caseMixGroup',
         'tableKey': 'table',
         'isTable': true,
-        'hasRecHeader': true,
         'label': 'Case mix group',
         'addButtonText': 'Add a case mix group',
         'ehr_list': [
@@ -14526,7 +17440,8 @@ const DEFS = {
               'name',
               'profession',
               'day',
-              'time'
+              'time',
+              '_id'
             ]
           },
           {
@@ -14572,18 +17487,19 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group176',
+              'elementKey': 'ehr_group209',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                '_id'
               ]
             },
             {
-              'elementKey': 'ehr_group177',
+              'elementKey': 'ehr_group210',
               'gIndex': '2',
               'gChildren': [
                 'clinicalCategory',
@@ -14599,13 +17515,27 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
+            '_id': '',
             'clinicalCategory': '',
             'caseMixNumber': '',
             'resourceIntensity': '',
             'expectedStay': '',
             'analysis': ''
           }
-        }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'clinicalCategory',
+          'caseMixNumber',
+          'resourceIntensity',
+          'expectedStay',
+          'analysis'
+        ],
+        'hasRecHeader': true
       }
     }
   },
@@ -14914,6 +17844,16 @@ const DEFS = {
         'fqn': 'testPage.time'
       },
       {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '3',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'recHeader': true,
+        'fqn': 'testPage._id'
+      },
+      {
         'elementKey': 'textDate',
         'formIndex': '3',
         'inputType': 'text',
@@ -14928,11 +17868,11 @@ const DEFS = {
         'fqn': 'testPage.textDateDate'
       },
       {
-        'elementKey': 'spacer182',
+        'elementKey': 'spacer215',
         'formIndex': '3',
         'inputType': 'spacer',
         'label': 'TextDate',
-        'fqn': 'testPage.spacer182'
+        'fqn': 'testPage.spacer215'
       },
       {
         'elementKey': 'name',
@@ -14958,7 +17898,8 @@ const DEFS = {
         'isPageForm': true,
         'ehr_groups': [
           {
-            'elementKey': 'ehr_group178',
+            'elementKey': 'ehr_group211',
+            'formOption': '3',
             'label': 'A group label',
             'gIndex': '1',
             'gChildren': [
@@ -14975,7 +17916,7 @@ const DEFS = {
             ]
           },
           {
-            'elementKey': 'ehr_group179',
+            'elementKey': 'ehr_group212',
             'label': 'Second group',
             'gIndex': '2',
             'gChildren': [
@@ -15016,9 +17957,9 @@ const DEFS = {
       'table1': {
         'elementKey': 'table1',
         'pageElementIndex': '2',
+        'pageKey': 'testPage',
         'tableKey': 'table1',
         'isTable': true,
-        'hasRecHeader': true,
         'label': 'Test table 1',
         'addButtonText': 'Add a row to the test table',
         'ehr_list': [
@@ -15044,7 +17985,7 @@ const DEFS = {
           'formKey': 'table1',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group180',
+              'elementKey': 'ehr_group213',
               'label': 'Group 1',
               'gIndex': '1',
               'gChildren': [
@@ -15057,7 +17998,12 @@ const DEFS = {
             'name': '80',
             't2': ''
           }
-        }
+        },
+        'tableChildren': [
+          'name',
+          't2'
+        ],
+        'hasRecHeader': true
       },
       'form2': {
         'elementKey': 'form2',
@@ -15067,7 +18013,7 @@ const DEFS = {
         'isPageForm': true,
         'ehr_groups': [
           {
-            'elementKey': 'ehr_group181',
+            'elementKey': 'ehr_group214',
             'label': 'A group label',
             'gIndex': '1',
             'gChildren': [
@@ -15075,9 +18021,10 @@ const DEFS = {
               'profession',
               'day',
               'time',
+              '_id',
               'textDate',
               'textDateDate',
-              'spacer182',
+              'spacer215',
               'name',
               'place'
             ]
@@ -15399,6 +18346,17 @@ const DEFS = {
         'fqn': 'testTable.time'
       },
       {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '2',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'testTable._id'
+      },
+      {
         'elementKey': 'cd1',
         'formIndex': '2',
         'inputType': 'checkbox',
@@ -15418,13 +18376,13 @@ const DEFS = {
         'fqn': 'testTable.cd1Date'
       },
       {
-        'elementKey': 'spacer188',
+        'elementKey': 'spacer221',
         'formIndex': '2',
         'inputType': 'spacer',
         'label': 'C D 1',
         'tableColumn': '2',
         'tableLabel': 'Chk 1',
-        'fqn': 'testTable.spacer188'
+        'fqn': 'testTable.spacer221'
       },
       {
         'elementKey': 'cd2',
@@ -15446,13 +18404,13 @@ const DEFS = {
         'fqn': 'testTable.cd2Date'
       },
       {
-        'elementKey': 'spacer189',
+        'elementKey': 'spacer222',
         'formIndex': '2',
         'inputType': 'spacer',
         'label': 'C D 2',
         'tableColumn': '3',
         'tableLabel': 'Chk 2',
-        'fqn': 'testTable.spacer189'
+        'fqn': 'testTable.spacer222'
       },
       {
         'elementKey': 'td1',
@@ -15473,13 +18431,13 @@ const DEFS = {
         'fqn': 'testTable.td1Date'
       },
       {
-        'elementKey': 'spacer190',
+        'elementKey': 'spacer223',
         'formIndex': '2',
         'inputType': 'spacer',
         'label': 'TextDate',
         'tableColumn': '4',
         'tableLabel': 'Txt 1',
-        'fqn': 'testTable.spacer190'
+        'fqn': 'testTable.spacer223'
       },
       {
         'elementKey': 'referralName',
@@ -15678,9 +18636,9 @@ const DEFS = {
       'table1': {
         'elementKey': 'table1',
         'pageElementIndex': '1',
+        'pageKey': 'testTable',
         'tableKey': 'table1',
         'isTable': true,
-        'hasRecHeader': true,
         'label': 'Test table 1',
         'addButtonText': 'Add a row to the test table',
         'ehr_list': [
@@ -15794,7 +18752,7 @@ const DEFS = {
           'formKey': 'table1',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group183',
+              'elementKey': 'ehr_group216',
               'label': 'Group 1',
               'gIndex': '1',
               'gChildren': [
@@ -15810,7 +18768,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group184',
+              'elementKey': 'ehr_group217',
               'gIndex': '2',
               'gChildren': [
                 {
@@ -15845,7 +18803,8 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group185',
+              'elementKey': 'ehr_group218',
+              'formOption': '1',
               'formCss': 'full-width',
               'gIndex': '3',
               'gChildren': [
@@ -15870,14 +18829,32 @@ const DEFS = {
             'g9': '',
             'e11': ''
           }
-        }
+        },
+        'tableChildren': [
+          'weight',
+          'pcheckbox',
+          'defaultText',
+          'e7',
+          'e8',
+          'p-cValue1',
+          'e10',
+          'dayValue',
+          'timeValue',
+          'forCalc',
+          'p-cValue2',
+          'g4',
+          'g5',
+          'g6',
+          'g9',
+          'e11'
+        ]
       },
       'stacked': {
         'elementKey': 'stacked',
         'pageElementIndex': '2',
+        'pageKey': 'testTable',
         'tableKey': 'stacked',
         'isTable': true,
-        'hasRecHeader': true,
         'label': 'Stacked table',
         'addButtonText': 'Add a stacked row',
         'ehr_list': [
@@ -15888,7 +18865,8 @@ const DEFS = {
               'name',
               'profession',
               'day',
-              'time'
+              'time',
+              '_id'
             ]
           },
           {
@@ -15897,7 +18875,7 @@ const DEFS = {
             'items': [
               'cd1',
               'cd1Date',
-              'spacer188'
+              'spacer221'
             ]
           },
           {
@@ -15906,7 +18884,7 @@ const DEFS = {
             'items': [
               'cd2',
               'cd2Date',
-              'spacer189'
+              'spacer222'
             ]
           },
           {
@@ -15915,7 +18893,7 @@ const DEFS = {
             'items': [
               'td1',
               'td1Date',
-              'spacer190'
+              'spacer223'
             ]
           },
           {
@@ -15949,33 +18927,34 @@ const DEFS = {
           'formKey': 'stacked',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group186',
+              'elementKey': 'ehr_group219',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                '_id'
               ]
             },
             {
-              'elementKey': 'ehr_group187',
+              'elementKey': 'ehr_group220',
               'gIndex': '2',
               'gChildren': [
                 'cd1',
                 'cd1Date',
-                'spacer188',
+                'spacer221',
                 'cd2',
                 'cd2Date',
-                'spacer189',
+                'spacer222',
                 'td1',
                 'td1Date',
-                'spacer190'
+                'spacer223'
               ]
             },
             {
-              'elementKey': 'ehr_group191',
+              'elementKey': 'ehr_group224',
               'gIndex': '3',
               'gChildren': [
                 'referralName',
@@ -15992,6 +18971,7 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
+            '_id': '',
             'cd1': '',
             'cd1Date': '',
             'cd2': '',
@@ -16004,7 +18984,29 @@ const DEFS = {
             'appointmentTime': '',
             'status': ''
           }
-        }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'cd1',
+          'cd1Date',
+          'spacer221',
+          'cd2',
+          'cd2Date',
+          'spacer222',
+          'td1',
+          'td1Date',
+          'spacer223',
+          'referralName',
+          'referralProfession',
+          'appointmentDate',
+          'appointmentTime',
+          'status'
+        ],
+        'hasRecHeader': true
       },
       'form3': {
         'elementKey': 'form3',
@@ -16109,6 +19111,17 @@ const DEFS = {
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'integumentaryAssessment.time'
+      },
+      {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '1',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'integumentaryAssessment._id'
       },
       {
         'elementKey': 'incisionLabel',
@@ -16324,6 +19337,17 @@ const DEFS = {
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'integumentaryAssessment.time'
+      },
+      {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '2',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'integumentaryAssessment._id'
       },
       {
         'elementKey': 'incisionLabel',
@@ -16548,6 +19572,17 @@ const DEFS = {
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'integumentaryAssessment.time'
+      },
+      {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '3',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'integumentaryAssessment._id'
       },
       {
         'elementKey': 'woundLocation',
@@ -16830,6 +19865,17 @@ const DEFS = {
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'integumentaryAssessment.time'
+      },
+      {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '4',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'integumentaryAssessment._id'
       },
       {
         'elementKey': 'woundLabel',
@@ -18095,9 +21141,9 @@ const DEFS = {
       'tableIncision': {
         'elementKey': 'tableIncision',
         'pageElementIndex': '1',
+        'pageKey': 'integumentaryAssessment',
         'tableKey': 'tableIncision',
         'isTable': true,
-        'hasRecHeader': true,
         'label': 'Incision profile',
         'addButtonText': 'Add an incision profile',
         'ehr_list': [
@@ -18108,7 +21154,8 @@ const DEFS = {
               'name',
               'profession',
               'day',
-              'time'
+              'time',
+              '_id'
             ]
           },
           {
@@ -18168,7 +21215,8 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                '_id'
               ]
             },
             {
@@ -18192,6 +21240,7 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
+            '_id': '',
             'incisionLabel': '',
             'incisionLocation': '',
             'postOpDay': '',
@@ -18200,14 +21249,29 @@ const DEFS = {
             'incisionProfileImage': '',
             'incisionProfileComments': ''
           }
-        }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'incisionLabel',
+          'incisionLocation',
+          'postOpDay',
+          'opProcedure',
+          'closureMethod',
+          'incisionProfileImage',
+          'incisionProfileComments'
+        ],
+        'hasRecHeader': true
       },
       'tableIncisionAssessment': {
         'elementKey': 'tableIncisionAssessment',
         'pageElementIndex': '2',
+        'pageKey': 'integumentaryAssessment',
         'tableKey': 'tableIncisionAssessment',
         'isTable': true,
-        'hasRecHeader': true,
         'label': 'Incision assessment',
         'addButtonText': 'Add an incision assessment',
         'ehr_list': [
@@ -18218,7 +21282,8 @@ const DEFS = {
               'name',
               'profession',
               'day',
-              'time'
+              'time',
+              '_id'
             ]
           },
           {
@@ -18292,7 +21357,8 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                '_id'
               ]
             },
             {
@@ -18334,6 +21400,7 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
+            '_id': '',
             'incisionLabel': '',
             'incisionStatus': '',
             'incisionStatusImage': '',
@@ -18344,14 +21411,31 @@ const DEFS = {
             'periIncisionSkinOther': '',
             'incisionStatusComments': ''
           }
-        }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'incisionLabel',
+          'incisionStatus',
+          'incisionStatusImage',
+          'closureChanges',
+          'exudateAmount',
+          'exudateType',
+          'periIncisionSkin',
+          'periIncisionSkinOther',
+          'incisionStatusComments'
+        ],
+        'hasRecHeader': true
       },
       'tableWound': {
         'elementKey': 'tableWound',
         'pageElementIndex': '3',
+        'pageKey': 'integumentaryAssessment',
         'tableKey': 'tableWound',
         'isTable': true,
-        'hasRecHeader': true,
         'label': 'Wound profile',
         'addButtonText': 'Add a wound profile',
         'ehr_list': [
@@ -18362,7 +21446,8 @@ const DEFS = {
               'name',
               'profession',
               'day',
-              'time'
+              'time',
+              '_id'
             ]
           },
           {
@@ -18436,7 +21521,8 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                '_id'
               ]
             },
             {
@@ -18467,6 +21553,7 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
+            '_id': '',
             'woundLocation': '',
             'woundLabel': '',
             'woundDayOnset': '',
@@ -18476,14 +21563,30 @@ const DEFS = {
             'woundProfileImage': '',
             'woundProfileComments': ''
           }
-        }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'woundLocation',
+          'woundLabel',
+          'woundDayOnset',
+          'stageType',
+          'stageOther',
+          'goalOfCare',
+          'woundProfileImage',
+          'woundProfileComments'
+        ],
+        'hasRecHeader': true
       },
       'tableWoundAssessment': {
         'elementKey': 'tableWoundAssessment',
         'pageElementIndex': '4',
+        'pageKey': 'integumentaryAssessment',
         'tableKey': 'tableWoundAssessment',
         'isTable': true,
-        'hasRecHeader': true,
         'label': 'Wound assessment',
         'addButtonText': 'Add a wound assessment',
         'ehr_list': [
@@ -18495,6 +21598,7 @@ const DEFS = {
               'profession',
               'day',
               'time',
+              '_id',
               'woundAssessmentComments'
             ]
           },
@@ -18761,7 +21865,8 @@ const DEFS = {
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                '_id'
               ]
             },
             {
@@ -18868,6 +21973,7 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
+            '_id': '',
             'woundLabel': '',
             'woundAssessmentImage': '',
             'length': '',
@@ -18905,13 +22011,57 @@ const DEFS = {
             'treatmentComplete': '',
             'woundAssessmentComments': ''
           }
-        }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'woundLabel',
+          'woundAssessmentImage',
+          'length',
+          'width',
+          'depth',
+          'sinusDepth1',
+          'sinusDepthLocation1',
+          'sinusDepth2',
+          'sinusDepthLocation2',
+          'underminingDepth1',
+          'underminingDepthLocation1A',
+          'underminingDepthLocation1B',
+          'underminingDepth2',
+          'underminingDepthLocation2A',
+          'underminingDepthLocation2B',
+          'pinkred',
+          'granulation',
+          'nongranulated',
+          'slough',
+          'escharBoggy',
+          'escharStable',
+          'foreign',
+          'underlying',
+          'notVisible',
+          'other',
+          'woundBedCalculation',
+          'exudateAmount',
+          'exudateType',
+          'odour',
+          'woundEdge',
+          'periWoundSkin',
+          'woundPain',
+          'packingOut',
+          'packinIn',
+          'treatmentComplete',
+          'woundAssessmentComments'
+        ],
+        'hasRecHeader': true
       }
     }
   },
   'hematology': {
     'pageDataKey': 'hematology',
-    'pageTitle': 'Hematology',
+    'pageTitle': 'Med Lab Hematology',
     'pIndex': '43',
     'hasGridTable': true,
     'pageChildren': [
@@ -18959,6 +22109,17 @@ const DEFS = {
         'fqn': 'hematology.time'
       },
       {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '1',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'hematology._id'
+      },
+      {
         'elementKey': 'wbc',
         'formIndex': '1',
         'helperText': 'White blood cell count',
@@ -18996,10 +22157,10 @@ const DEFS = {
         'fqn': 'hematology.wbc-interp'
       },
       {
-        'elementKey': 'aSpacer',
+        'elementKey': 'spacer144',
         'formIndex': '1',
         'inputType': 'spacer',
-        'fqn': 'hematology.aSpacer'
+        'fqn': 'hematology.spacer144'
       },
       {
         'elementKey': 'rbc',
@@ -19038,10 +22199,10 @@ const DEFS = {
         'fqn': 'hematology.rbc-interp'
       },
       {
-        'elementKey': 'aSpacer',
+        'elementKey': 'spacer145',
         'formIndex': '1',
         'inputType': 'spacer',
-        'fqn': 'hematology.aSpacer'
+        'fqn': 'hematology.spacer145'
       },
       {
         'elementKey': 'hgb',
@@ -19080,10 +22241,10 @@ const DEFS = {
         'fqn': 'hematology.hgb-interp'
       },
       {
-        'elementKey': 'aSpacer',
+        'elementKey': 'spacer146',
         'formIndex': '1',
         'inputType': 'spacer',
-        'fqn': 'hematology.aSpacer'
+        'fqn': 'hematology.spacer146'
       },
       {
         'elementKey': 'HCT',
@@ -19122,10 +22283,10 @@ const DEFS = {
         'fqn': 'hematology.HCT-interp'
       },
       {
-        'elementKey': 'aSpacer',
+        'elementKey': 'spacer147',
         'formIndex': '1',
         'inputType': 'spacer',
-        'fqn': 'hematology.aSpacer'
+        'fqn': 'hematology.spacer147'
       },
       {
         'elementKey': 'MCV',
@@ -19164,10 +22325,10 @@ const DEFS = {
         'fqn': 'hematology.MCV-interp'
       },
       {
-        'elementKey': 'aSpacer',
+        'elementKey': 'spacer148',
         'formIndex': '1',
         'inputType': 'spacer',
-        'fqn': 'hematology.aSpacer'
+        'fqn': 'hematology.spacer148'
       },
       {
         'elementKey': 'MCH',
@@ -19206,10 +22367,10 @@ const DEFS = {
         'fqn': 'hematology.MCH-interp'
       },
       {
-        'elementKey': 'aSpacer',
+        'elementKey': 'spacer149',
         'formIndex': '1',
         'inputType': 'spacer',
-        'fqn': 'hematology.aSpacer'
+        'fqn': 'hematology.spacer149'
       },
       {
         'elementKey': 'MCHC',
@@ -19248,10 +22409,10 @@ const DEFS = {
         'fqn': 'hematology.MCHC-interp'
       },
       {
-        'elementKey': 'aSpacer',
+        'elementKey': 'spacer150',
         'formIndex': '1',
         'inputType': 'spacer',
-        'fqn': 'hematology.aSpacer'
+        'fqn': 'hematology.spacer150'
       },
       {
         'elementKey': 'RDW',
@@ -19290,10 +22451,10 @@ const DEFS = {
         'fqn': 'hematology.RDW-interp'
       },
       {
-        'elementKey': 'aSpacer',
+        'elementKey': 'spacer151',
         'formIndex': '1',
         'inputType': 'spacer',
-        'fqn': 'hematology.aSpacer'
+        'fqn': 'hematology.spacer151'
       },
       {
         'elementKey': 'PLT',
@@ -19333,10 +22494,10 @@ const DEFS = {
         'fqn': 'hematology.PLT-interp'
       },
       {
-        'elementKey': 'aSpacer',
+        'elementKey': 'spacer152',
         'formIndex': '1',
         'inputType': 'spacer',
-        'fqn': 'hematology.aSpacer'
+        'fqn': 'hematology.spacer152'
       },
       {
         'elementKey': 'MPV',
@@ -19375,10 +22536,10 @@ const DEFS = {
         'fqn': 'hematology.MPV-interp'
       },
       {
-        'elementKey': 'aSpacer',
+        'elementKey': 'spacer153',
         'formIndex': '1',
         'inputType': 'spacer',
-        'fqn': 'hematology.aSpacer'
+        'fqn': 'hematology.spacer153'
       },
       {
         'elementKey': 'comments',
@@ -19431,6 +22592,17 @@ const DEFS = {
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'hematology.time'
+      },
+      {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '2',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'hematology._id'
       },
       {
         'elementKey': 'bloodAnalysis',
@@ -20113,10 +23285,10 @@ const DEFS = {
         'fqn': 'hematology.cellCntOtherAbs'
       },
       {
-        'elementKey': 'spacer147',
+        'elementKey': 'spacer162',
         'formIndex': '2',
         'inputType': 'spacer',
-        'fqn': 'hematology.spacer147'
+        'fqn': 'hematology.spacer162'
       },
       {
         'elementKey': 'cellCntOtherSpecify',
@@ -20154,16 +23326,16 @@ const DEFS = {
         'fqn': 'hematology.wbcmNormalMorphology'
       },
       {
-        'elementKey': 'rcmMicroSpace',
+        'elementKey': 'spacer164',
         'formIndex': '2',
         'inputType': 'spacer',
-        'fqn': 'hematology.rcmMicroSpace'
+        'fqn': 'hematology.spacer164'
       },
       {
-        'elementKey': 'rcmMicroSpace',
+        'elementKey': 'spacer165',
         'formIndex': '2',
         'inputType': 'spacer',
-        'fqn': 'hematology.rcmMicroSpace'
+        'fqn': 'hematology.spacer165'
       },
       {
         'elementKey': 'wbcmAbnormalMorphology',
@@ -20225,10 +23397,10 @@ const DEFS = {
         'fqn': 'hematology.wbcmAbnormalTypeMorphology'
       },
       {
-        'elementKey': 'rcmMicroSpace',
+        'elementKey': 'spacer166',
         'formIndex': '2',
         'inputType': 'spacer',
-        'fqn': 'hematology.rcmMicroSpace'
+        'fqn': 'hematology.spacer166'
       },
       {
         'elementKey': 'wbcmToxicMorphology',
@@ -20270,10 +23442,10 @@ const DEFS = {
         'fqn': 'hematology.rcmNormal'
       },
       {
-        'elementKey': 'spacer150',
+        'elementKey': 'spacer168',
         'formIndex': '2',
         'inputType': 'spacer',
-        'fqn': 'hematology.spacer150'
+        'fqn': 'hematology.spacer168'
       },
       {
         'elementKey': 'rcmConsistent',
@@ -20284,10 +23456,10 @@ const DEFS = {
         'fqn': 'hematology.rcmConsistent'
       },
       {
-        'elementKey': 'spacer151',
+        'elementKey': 'spacer169',
         'formIndex': '2',
         'inputType': 'spacer',
-        'fqn': 'hematology.spacer151'
+        'fqn': 'hematology.spacer169'
       },
       {
         'elementKey': 'rcmAcanthocytes',
@@ -20808,16 +23980,16 @@ const DEFS = {
         'fqn': 'hematology.rbcComments'
       },
       {
-        'elementKey': 'spacer154',
+        'elementKey': 'spacer172',
         'formIndex': '2',
         'inputType': 'spacer',
-        'fqn': 'hematology.spacer154'
+        'fqn': 'hematology.spacer172'
       },
       {
-        'elementKey': 'spacer155',
+        'elementKey': 'spacer173',
         'formIndex': '2',
         'inputType': 'spacer',
-        'fqn': 'hematology.spacer155'
+        'fqn': 'hematology.spacer173'
       },
       {
         'elementKey': 'referralToHema',
@@ -20840,12 +24012,12 @@ const DEFS = {
       'tableCbcAnalysis': {
         'elementKey': 'tableCbcAnalysis',
         'pageElementIndex': '1',
+        'pageKey': 'hematology',
         'tableKey': 'tableCbcAnalysis',
         'isTable': true,
-        'hasRecHeader': true,
         'label': 'CBC analysis',
         'addButtonText': 'Add a CBC Report',
-        'tableAction': 'tablePbfReview',
+        'tableAction': 'hematology.tablePbfReview',
         'tableActionLabel': 'PBF Review',
         'ehr_list': [
           {
@@ -20855,7 +24027,8 @@ const DEFS = {
               'name',
               'profession',
               'day',
-              'time'
+              'time',
+              '_id'
             ]
           },
           {
@@ -20992,55 +24165,56 @@ const DEFS = {
           'formKey': 'tableCbcAnalysis',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group137',
+              'elementKey': 'ehr_group142',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                '_id'
               ]
             },
             {
-              'elementKey': 'ehr_group138',
+              'elementKey': 'ehr_group143',
               'label': 'Automated analyzer',
               'gIndex': '2',
               'gChildren': [
                 'wbc',
                 'wbc-interp',
-                'aSpacer',
+                'spacer144',
                 'rbc',
                 'rbc-interp',
-                'aSpacer',
+                'spacer145',
                 'hgb',
                 'hgb-interp',
-                'aSpacer',
+                'spacer146',
                 'HCT',
                 'HCT-interp',
-                'aSpacer',
+                'spacer147',
                 'MCV',
                 'MCV-interp',
-                'aSpacer',
+                'spacer148',
                 'MCH',
                 'MCH-interp',
-                'aSpacer',
+                'spacer149',
                 'MCHC',
                 'MCHC-interp',
-                'aSpacer',
+                'spacer150',
                 'RDW',
                 'RDW-interp',
-                'aSpacer',
+                'spacer151',
                 'PLT',
                 'PLT-interp',
-                'aSpacer',
+                'spacer152',
                 'MPV',
                 'MPV-interp',
-                'aSpacer'
+                'spacer153'
               ]
             },
             {
-              'elementKey': 'ehr_group139',
+              'elementKey': 'ehr_group154',
               'gIndex': '3',
               'gChildren': [
                 'comments'
@@ -21052,6 +24226,7 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
+            '_id': '',
             'wbc': '',
             'wbc-interp': '',
             'rbc': '',
@@ -21074,14 +24249,47 @@ const DEFS = {
             'MPV-interp': '',
             'comments': ''
           }
-        }
+        },
+        'taTargetPageKey': 'hematology',
+        'taTargetTableKey': 'tablePbfReview',
+        'taSourcePageKey': 'hematology',
+        'taSourceTableKey': 'tableCbcAnalysis',
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'wbc',
+          'wbc-interp',
+          'rbc',
+          'rbc-interp',
+          'hgb',
+          'hgb-interp',
+          'HCT',
+          'HCT-interp',
+          'MCV',
+          'MCV-interp',
+          'MCH',
+          'MCH-interp',
+          'MCHC',
+          'MCHC-interp',
+          'RDW',
+          'RDW-interp',
+          'PLT',
+          'PLT-interp',
+          'MPV',
+          'MPV-interp',
+          'comments'
+        ],
+        'hasRecHeader': true
       },
       'tablePbfReview': {
         'elementKey': 'tablePbfReview',
         'pageElementIndex': '2',
+        'pageKey': 'hematology',
         'tableKey': 'tablePbfReview',
         'isTable': true,
-        'hasRecHeader': true,
         'label': 'PBF Review',
         'addButtonText': 'NONE',
         'ehr_list': [
@@ -21092,7 +24300,8 @@ const DEFS = {
               'name',
               'profession',
               'day',
-              'time'
+              'time',
+              '_id'
             ]
           },
           {
@@ -21757,18 +24966,19 @@ const DEFS = {
           'formKey': 'tablePbfReview',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group140',
+              'elementKey': 'ehr_group155',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                '_id'
               ]
             },
             {
-              'elementKey': 'ehr_group141',
+              'elementKey': 'ehr_group156',
               'label': 'CBC Analysis',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '2',
@@ -21777,7 +24987,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group142',
+              'elementKey': 'ehr_group157',
               'label': 'Actions',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '3',
@@ -21788,7 +24998,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group143',
+              'elementKey': 'ehr_group158',
               'label': 'WBC Estimate',
               'formCss': 'grid-left-to-right-4',
               'gIndex': '4',
@@ -21813,7 +25023,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group144',
+              'elementKey': 'ehr_group159',
               'label': 'PLT Estimate',
               'formCss': 'grid-left-to-right-4',
               'gIndex': '5',
@@ -21838,7 +25048,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group145',
+              'elementKey': 'ehr_group160',
               'label': 'PLT morphology',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '6',
@@ -21849,7 +25059,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group146',
+              'elementKey': 'ehr_group161',
               'label': 'WBC Differential',
               'formCss': 'grid-left-to-right-2',
               'gIndex': '7',
@@ -21878,37 +25088,37 @@ const DEFS = {
                 'cellCntReactiveLymphsAbs',
                 'cellCntOther',
                 'cellCntOtherAbs',
-                'spacer147',
+                'spacer162',
                 'cellCntOtherSpecify',
                 'cellCntTotal',
                 'cellCntNRBCs'
               ]
             },
             {
-              'elementKey': 'ehr_group148',
+              'elementKey': 'ehr_group163',
               'label': 'White Cell Morphology',
               'gIndex': '8',
               'gChildren': [
                 'wbcmNormalMorphology',
-                'rcmMicroSpace',
-                'rcmMicroSpace',
+                'spacer164',
+                'spacer165',
                 'wbcmAbnormalMorphology',
                 'wbcmAbnormalTypeMorphology',
-                'rcmMicroSpace',
+                'spacer166',
                 'wbcmToxicMorphology',
                 'wbcmToxicTypeMorphology'
               ]
             },
             {
-              'elementKey': 'ehr_group149',
+              'elementKey': 'ehr_group167',
               'label': 'Red Cell Morphology',
               'formCss': 'grid-left-to-right-2',
               'gIndex': '9',
               'gChildren': [
                 'rcmNormal',
-                'spacer150',
+                'spacer168',
                 'rcmConsistent',
-                'spacer151',
+                'spacer169',
                 'rcmAcanthocytes',
                 'rcmAcanthocytesGrading',
                 'rcmCodocytes',
@@ -21938,7 +25148,7 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group152',
+              'elementKey': 'ehr_group170',
               'label': 'RBC Inclusions',
               'gIndex': '10',
               'gChildren': [
@@ -21950,17 +25160,17 @@ const DEFS = {
               ]
             },
             {
-              'elementKey': 'ehr_group153',
+              'elementKey': 'ehr_group171',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '11',
               'gChildren': [
                 'rbcComments',
-                'spacer154',
-                'spacer155'
+                'spacer172',
+                'spacer173'
               ]
             },
             {
-              'elementKey': 'ehr_group156',
+              'elementKey': 'ehr_group174',
               'formCss': 'grid-left-to-right-1',
               'gIndex': '12',
               'gChildren': [
@@ -21974,6 +25184,7 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
+            '_id': '',
             'bloodAnalysis': '',
             'actionsRequired': '',
             'actionsTaken': '',
@@ -22084,7 +25295,124 @@ const DEFS = {
             'referralToHema': '',
             'explain': ''
           }
-        }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'bloodAnalysis',
+          'actionsRequired',
+          'actionsTaken',
+          'scanComments',
+          'wbc-1',
+          'wbc-2',
+          'wbc-3',
+          'wbc-4',
+          'wbc-5',
+          'wbc-6',
+          'wbc-7',
+          'wbc-8',
+          'wbc-9',
+          'wbc-10',
+          'wbcFieldFactor',
+          'wbcAverage',
+          'wbcEstimate',
+          'wbcAnalysis',
+          'wbcLowRange',
+          'wbcHighRange',
+          'wbcComment',
+          'plt-1',
+          'plt-2',
+          'plt-3',
+          'plt-4',
+          'plt-5',
+          'plt-6',
+          'plt-7',
+          'plt-8',
+          'plt-9',
+          'plt-10',
+          'pltFieldFactor',
+          'pltAverage',
+          'pltEstimate',
+          'pltAnalysis',
+          'pltLowRange',
+          'pltHighRange',
+          'pltComment',
+          'pltNormalMorphology',
+          'pltAbnormalMorphology',
+          'pltMorphology',
+          'cellCntSegNeutrophil',
+          'cellCntSegNeutrophilAbs',
+          'cellCntBandCells',
+          'cellCntBandCellsAbs',
+          'cellCntLymph',
+          'cellCntLymphAbs',
+          'cellCntMono',
+          'cellCntMonoAbs',
+          'cellCntEosin',
+          'cellCntEosinAbs',
+          'cellCntBaso',
+          'cellCntBasoAbs',
+          'cellCntMeta',
+          'cellCntMetaAbs',
+          'cellCntMyelo',
+          'cellCntMyeloAbs',
+          'cellCntPromyelo',
+          'cellCntPromyeloAbs',
+          'cellCntBlast',
+          'cellCntBlastAbs',
+          'cellCntReactiveLymphs',
+          'cellCntReactiveLymphsAbs',
+          'cellCntOther',
+          'cellCntOtherAbs',
+          'cellCntOtherSpecify',
+          'cellCntTotal',
+          'cellCntNRBCs',
+          'wbcmNormalMorphology',
+          'wbcmAbnormalMorphology',
+          'wbcmAbnormalTypeMorphology',
+          'wbcmToxicMorphology',
+          'wbcmToxicTypeMorphology',
+          'rcmNormal',
+          'rcmConsistent',
+          'rcmAcanthocytes',
+          'rcmAcanthocytesGrading',
+          'rcmCodocytes',
+          'rcmCodocytesGrading',
+          'rcmDacryocytes',
+          'rcmDacryocytesGrading',
+          'rcmDrepanocytes',
+          'rcmDrepanocytesGrading',
+          'rcmEchinocytes',
+          'rcmEchinocytesGrading',
+          'rcmOvalocytes',
+          'rcmOvalocytesGrading',
+          'rcmMacroOvalocytes',
+          'rcmMacroOvalocytesGrading',
+          'rcmStomatocytes',
+          'rcmStomatocytesGrading',
+          'rcmSpherocytes',
+          'rcmSpherocytesGrading',
+          'rcmICC',
+          'rcmICCGrading',
+          'rcmICCBite',
+          'rcmICCBiteGrading',
+          'rcmICCHelmut',
+          'rcmICCHelmutGrading',
+          'rcmICCSchistocytes',
+          'rcmICCSchistocytesGrading',
+          'rcmBasophilicStippling',
+          'rcmHowellJollyBodies',
+          'rcmPappenheimerBodies',
+          'rcmMalaria',
+          'rcmMalariaType',
+          'rbcComments',
+          'referralToHema',
+          'explain'
+        ],
+        'hasRecHeader': true
       }
     }
   },
@@ -22136,6 +25464,17 @@ const DEFS = {
         'validation': 'time24',
         'recHeader': true,
         'fqn': 'dishargeplan.time'
+      },
+      {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '1',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'dishargeplan._id'
       },
       {
         'elementKey': 'goal',
@@ -22190,9 +25529,9 @@ const DEFS = {
       'table': {
         'elementKey': 'table',
         'pageElementIndex': '1',
+        'pageKey': 'dishargeplan',
         'tableKey': 'table',
         'isTable': true,
-        'hasRecHeader': true,
         'label': 'Discharge plan',
         'addButtonText': 'Add a discharge planning note',
         'ehr_list': [
@@ -22203,7 +25542,8 @@ const DEFS = {
               'name',
               'profession',
               'day',
-              'time'
+              'time',
+              '_id'
             ]
           },
           {
@@ -22242,18 +25582,19 @@ const DEFS = {
           'formKey': 'table',
           'ehr_groups': [
             {
-              'elementKey': 'ehr_group129',
+              'elementKey': 'ehr_group181',
               'formCss': 'record-header',
               'gIndex': '1',
               'gChildren': [
                 'name',
                 'profession',
                 'day',
-                'time'
+                'time',
+                '_id'
               ]
             },
             {
-              'elementKey': 'ehr_group130',
+              'elementKey': 'ehr_group182',
               'gIndex': '2',
               'gChildren': [
                 'goal',
@@ -22268,12 +25609,267 @@ const DEFS = {
             'profession': '',
             'day': '',
             'time': '',
+            '_id': '',
             'goal': '',
             'interventions': '',
             'evaluation': '',
             'status': ''
           }
-        }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id',
+          'goal',
+          'interventions',
+          'evaluation',
+          'status'
+        ],
+        'hasRecHeader': true
+      }
+    }
+  },
+  'medLabChemistry': {
+    'pageDataKey': 'medLabChemistry',
+    'pageTitle': 'Med Lab Chemistry',
+    'pIndex': '45',
+    'hasGridTable': true,
+    'pageChildren': [
+      {
+        'elementKey': 'name',
+        'formIndex': '1',
+        'inputType': 'practitionerName',
+        'label': 'Name',
+        'mandatory': true,
+        'tableColumn': '1',
+        'tableLabel': 'Identification',
+        'recHeader': true,
+        'fqn': 'medLabChemistry.name'
+      },
+      {
+        'elementKey': 'profession',
+        'formIndex': '1',
+        'inputType': 'practitionerProfession',
+        'label': 'Profession',
+        'mandatory': true,
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'medLabChemistry.profession'
+      },
+      {
+        'elementKey': 'day',
+        'formIndex': '1',
+        'inputType': 'visitDay',
+        'label': 'Day',
+        'mandatory': true,
+        'tableColumn': '1',
+        'validation': 'visitDay',
+        'recHeader': true,
+        'fqn': 'medLabChemistry.day'
+      },
+      {
+        'elementKey': 'time',
+        'formIndex': '1',
+        'inputType': 'visitTime',
+        'label': 'Time',
+        'mandatory': true,
+        'tableColumn': '1',
+        'validation': 'time24',
+        'recHeader': true,
+        'fqn': 'medLabChemistry.time'
+      },
+      {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '1',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'medLabChemistry._id'
+      }
+    ],
+    'pageElements': {
+      'tableChem': {
+        'elementKey': 'tableChem',
+        'pageElementIndex': '1',
+        'pageKey': 'medLabChemistry',
+        'tableKey': 'tableChem',
+        'isTable': true,
+        'label': 'Chemistry analysis',
+        'addButtonText': 'Create a chemistry lab report',
+        'ehr_list': [
+          {
+            'label': 'Identification',
+            'ehr_list_index': '1',
+            'items': [
+              'name',
+              'profession',
+              'day',
+              'time',
+              '_id'
+            ]
+          }
+        ],
+        'form': {
+          'elementKey': 'tableChem',
+          'label': 'Chemistry analysis',
+          'addButtonText': 'Create a chemistry lab report',
+          'formKey': 'tableChem',
+          'ehr_groups': [
+            {
+              'elementKey': 'ehr_group175',
+              'formCss': 'record-header',
+              'gIndex': '1',
+              'gChildren': [
+                'name',
+                'profession',
+                'day',
+                'time',
+                '_id'
+              ]
+            }
+          ],
+          'ehr_data': {
+            'name': '',
+            'profession': '',
+            'day': '',
+            'time': '',
+            '_id': ''
+          }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id'
+        ],
+        'hasRecHeader': true
+      }
+    }
+  },
+  'medLabImaging': {
+    'pageDataKey': 'medLabImaging',
+    'pageTitle': 'Med Lab Medical Imaging',
+    'pIndex': '46',
+    'hasGridTable': true,
+    'pageChildren': [
+      {
+        'elementKey': 'name',
+        'formIndex': '1',
+        'inputType': 'practitionerName',
+        'label': 'Name',
+        'mandatory': true,
+        'tableColumn': '1',
+        'tableLabel': 'Identification',
+        'recHeader': true,
+        'fqn': 'medLabImaging.name'
+      },
+      {
+        'elementKey': 'profession',
+        'formIndex': '1',
+        'inputType': 'practitionerProfession',
+        'label': 'Profession',
+        'mandatory': true,
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'medLabImaging.profession'
+      },
+      {
+        'elementKey': 'day',
+        'formIndex': '1',
+        'inputType': 'visitDay',
+        'label': 'Day',
+        'mandatory': true,
+        'tableColumn': '1',
+        'validation': 'visitDay',
+        'recHeader': true,
+        'fqn': 'medLabImaging.day'
+      },
+      {
+        'elementKey': 'time',
+        'formIndex': '1',
+        'inputType': 'visitTime',
+        'label': 'Time',
+        'mandatory': true,
+        'tableColumn': '1',
+        'validation': 'time24',
+        'recHeader': true,
+        'fqn': 'medLabImaging.time'
+      },
+      {
+        'elementKey': '_id',
+        'calculationType': 'generateId',
+        'formIndex': '1',
+        'formOption': 'hideElement',
+        'inputType': 'calculatedValue',
+        'label': 'Id',
+        'tableColumn': '1',
+        'recHeader': true,
+        'fqn': 'medLabImaging._id'
+      }
+    ],
+    'pageElements': {
+      'tableImages': {
+        'elementKey': 'tableImages',
+        'pageElementIndex': '1',
+        'pageKey': 'medLabImaging',
+        'tableKey': 'tableImages',
+        'isTable': true,
+        'label': 'Medical Imaging',
+        'addButtonText': 'Create a medical imaging report',
+        'ehr_list': [
+          {
+            'label': 'Identification',
+            'ehr_list_index': '1',
+            'items': [
+              'name',
+              'profession',
+              'day',
+              'time',
+              '_id'
+            ]
+          }
+        ],
+        'form': {
+          'elementKey': 'tableImages',
+          'label': 'Medical Imaging',
+          'addButtonText': 'Create a medical imaging report',
+          'formKey': 'tableImages',
+          'ehr_groups': [
+            {
+              'elementKey': 'ehr_group176',
+              'formCss': 'record-header',
+              'gIndex': '1',
+              'gChildren': [
+                'name',
+                'profession',
+                'day',
+                'time',
+                '_id'
+              ]
+            }
+          ],
+          'ehr_data': {
+            'name': '',
+            'profession': '',
+            'day': '',
+            'time': '',
+            '_id': ''
+          }
+        },
+        'tableChildren': [
+          'name',
+          'profession',
+          'day',
+          'time',
+          '_id'
+        ],
+        'hasRecHeader': true
       }
     }
   }

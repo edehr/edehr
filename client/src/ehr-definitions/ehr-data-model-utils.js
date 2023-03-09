@@ -44,32 +44,6 @@ export function updateAllVisitTime (ehrDataModel) {
   return ehrDataModel.ehrData
 }
 
-/**
- * If any medication order was by "Inhalation" change it to "Inhaler"
- *
- * @param ehrDataModel
- * @returns {*}
- */
-export function updateMedicationRoute (ehrDataModel) {
-  const pageKey= 'medicationOrders'
-  const tableKey= 'table'
-  const elementKey = 'route'
-  const oldVal = 'Inhalation'
-  const newVal = 'Inhaler'
-  if (ehrDataModel.hasData(pageKey)) {
-    const tableData = ehrDataModel.getPageTableData(pageKey, tableKey)
-    if (tableData) {
-      tableData.forEach((row, rowIndex) => {
-        let elemData = row[elementKey]
-        if (elemData === oldVal) {
-          ehrDataModel.updateRowElem(pageKey, tableKey, rowIndex, elementKey, newVal)
-        }
-      })
-    }
-  }
-  return ehrDataModel.ehrData
-}
-
 /*   _visitTimeInEhrData
   * Utility to process a EHR data object and find the simulation time; the largest visit day and time
 currentDay = 0
