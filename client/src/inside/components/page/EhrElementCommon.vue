@@ -41,6 +41,7 @@ export default {
     },
     helperText () { return this.element.helperText },
     helperHtml () { return this.element.helperHtml },
+    hideElement () { return (this.element.formOption === 'hideElement' && this.hideIfId)},
     _id () { return this.tableKey + '.' + this.element.fqn},
     inputId () {
       return this.elementKey + this.element.inputType
@@ -96,9 +97,9 @@ export default {
       }
       return name
     },
-    internalSetInputValue (val) {
+    internalSetInputValue (value) {
       // this should trigger the watch ...
-      this.inputVal = val
+      this.inputVal = value
     },
     setInitialValue (value) {
       if (dbInputs) console.log('EhrCommon set initial value ', value, this.elementKey)
@@ -222,12 +223,18 @@ export default {
     },
     setupEventHandlers () {
       const _this = this
+      if (EhrTypes.nondataInputType[this.inputType]) {
+        // skip setting up listeners on elements that don't change
+        return
+      }
+      // is the container a page?
       if (this.isPageElement) {
         this.pageRefreshEventHandler = function () {
           _this.refreshPage()
         }
         EventBus.$on(PAGE_DATA_REFRESH_EVENT, this.pageRefreshEventHandler)
       }
+      // is the container a table?
       if (this.isTableElement) {
         this.dialogEventHandler = function (eData) {
           _this.handleDialogEvent(eData)

@@ -1,5 +1,5 @@
 <template lang='pug'>
-  div(class="form-element", :class='{invalidElement : !validData}')
+  div(class="form-element", :class='{invalidElement : !validData, hiddenElement: hideElement}')
     div(v-if="isType('form_label')")
       div(v-html="label", class='form_label_wrapper')
       ui-info(v-if="helperText", :title="label", :html="helperHtml", :text="helperText")
@@ -196,5 +196,8 @@ export default {
 
 .invalidElement {
   border: 1px $error solid
+}
+.hiddenElement {
+  display: none;
 }
 </style>
