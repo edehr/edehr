@@ -75,7 +75,7 @@ export function ehrCalculateProperty (pageDataKey, targetKey, srcValues) {
   let desiredSourceProperty = 'elementKey'
   let srcKeys = EhrDefs.getChildElements(pageDataKey, sourceFieldToMatchOn, targetKey, desiredSourceProperty)
   // console.log('ehrval srcKeys', srcKeys)
-  const zeroParamTypes = ['medConcentration', 'generateId']
+  const zeroParamTypes = ['medConcentration']
   if (srcKeys.length === 0 && !zeroParamTypes.includes(calculationType)) {
     let msg = `Ehr calc unexpected empty set of source keys for key ${targetKey} and calc type ${calculationType}`
     console.log('ecp', msg)
@@ -125,10 +125,6 @@ export function ehrCalculateProperty (pageDataKey, targetKey, srcValues) {
     // console.log('---------- cal type embedValue srcValues:', srcValues)
     // console.log('---------- cal type embedValue values:', values)
     // console.log('---------- cal type embedValue refs, result:', refs, result)
-  } else if (calculationType.includes('generateId')) {
-    const previous = srcValues._id
-    result = previous || Math.random().toString(32).slice(-7)
-    isNumberResult = false
   } else if (calculationType.includes('medConcentration')) {
     result = calculateMedicationConcentration(values)
   } else if (calculationType.includes('medMaxDosage')) {

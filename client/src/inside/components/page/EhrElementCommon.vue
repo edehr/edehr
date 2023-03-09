@@ -36,12 +36,16 @@ export default {
     viewOnly: { type: Boolean, default: false }
   },
   computed: {
+    devEnv () { return process.env.NODE_ENV === 'development' },
+    elementIsId () { return this.element.inputType === EhrTypes.dataInputTypes.generatedId },
     element () {
       return EhrDefs.getPageChildElement(this.pageDataKey, this.elementKey)
     },
     helperText () { return this.element.helperText },
     helperHtml () { return this.element.helperHtml },
     hideElement () { return (this.element.formOption === 'hideElement' && this.hideIfId)},
+    hideIfId () { return this.elementIsId ? !this.devEnv : true },
+
     _id () { return this.tableKey + '.' + this.element.fqn},
     inputId () {
       return this.elementKey + this.element.inputType

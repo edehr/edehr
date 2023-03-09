@@ -35,8 +35,7 @@ const Defs = {
     },
     {
       elementKey: '_id',
-      inputType: 'calculatedValue',
-      calculationType: 'generateId',
+      inputType: EhrTypes.dataInputTypes.generatedId,
       formOption: 'hideElement',
       label: 'Id',
       recHeader: true
