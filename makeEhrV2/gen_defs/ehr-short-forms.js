@@ -1,4 +1,4 @@
-import EhrTypes from '../source/ehr-types'
+import EhrTypes from '../../ehr-workspace/src/ehr-definitions/ehr-types'
 
 const Defs = {
   recordHeader: [
@@ -31,6 +31,14 @@ const Defs = {
       label: 'Time',
       mandatory: true,
       validation: 'time24',
+      recHeader: true
+    },
+    {
+      elementKey: '_id',
+      inputType: 'calculatedValue',
+      calculationType: 'generateId',
+      formOption: 'hideElement',
+      label: 'Id',
       recHeader: true
     },
     // {

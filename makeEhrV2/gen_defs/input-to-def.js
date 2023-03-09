@@ -1,4 +1,4 @@
-import EhrTypes from '../source/ehr-types'
+import EhrTypes from '../../ehr-workspace/src/ehr-definitions/ehr-types'
 import EhrShortForms from './ehr-short-forms'
 
 const rawHelper = require('./helps')
@@ -55,6 +55,7 @@ const pageChildElementProperties = [
 const groupProperties = [
   'elementKey',
   'dependentOn',
+  'formOption',
   'label',
   'formCss',
 ]
@@ -101,7 +102,7 @@ let missingKeyIndex = 0
 class RawInputToDef {
   /**
    * Main entry point. Provide the raw text as extracted from the Inputs spreadsheet.
-   * Returns a object
+   * Returns an object
    * @param contents
    * @param lastModifiedTime
    * @returns {object}
@@ -179,21 +180,28 @@ class RawInputToDef {
     let form = rawHelper._transferProperties(entry, formProperties)
     form.formKey = entry.elementKey
     form.ehr_groups = {}
+    assert.ok(page.elementKey,'page for table has a key ' + JSON.stringify(page))
     assert.ok(form.addButtonText,'Need addButtonText property to set up the add button for table ')
-    const hasRecHeader = EhrShortForms.validateRecHeader(entry)
     let table = {
       elementKey: entry.elementKey,
       pageElementIndex: fKey,
-      pageKey: page.pageKey,
+      pageKey: page.elementKey,
       tableKey: entry.elementKey,
       isTable: true,
-      hasRecHeader,
       label: entry.label,
       addButtonText: entry.addButtonText,
       tableAction: entry.tableAction,
       tableActionLabel: entry.tableActionLabel,
       ehr_list: {},
       form: form,
+    }
+    if (entry.tableAction) {
+      // unit testing in ehr-workspace makes sure this field can be split and the parts are valid keys
+      const parts = entry.tableAction.split('.')
+      table.taTargetPageKey = parts[0]
+      table.taTargetTableKey = parts[1]
+      table.taSourcePageKey = page.elementKey
+      table.taSourceTableKey = entry.elementKey
     }
     page.hasGridTable = true
     page.pageElementsByNumber[fKey] = table
@@ -269,6 +277,10 @@ class RawInputToDef {
         console.log('WARNING', msg)
       }
       if (index && entry.elementKey) {
+        // collect all the elements (just keys) for the table
+        table.tableChildren = table.tableChildren || []
+        table.tableChildren.push(entry.elementKey)
+        // create the table stack definitions
         if (!table.ehr_list[index]) {
           // *********** make stack for table at this index
           table.ehr_list[index] = {
@@ -311,7 +323,9 @@ class RawInputToDef {
         let groups = _this._objToArray(element.ehr_groups, _aGroup)
         element.ehr_groups = groups
       } else if (element.isTable) {
-        let child = page1.pageChildren.find( (ch) => { return ch.recHeader })
+        // if a child of the table is from the record header group then the table is marked to have a rec header
+        const tblChildren = page1.pageChildren.filter ( ch => element.tableChildren.includes(ch.elementKey))
+        let child = tblChildren.find( (ch) => { return ch.recHeader })
         if (child) {
           element.hasRecHeader = true
         }
