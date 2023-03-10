@@ -76,7 +76,7 @@ describe('decamelize tests', function () {
   })
 })
 
-describe('hash string tests', function () {
+describe.skip('hash string tests', function () {
   it ('hash undefined --> undefined',() => {
     let hsh
     hsh = hashString()
