@@ -36,14 +36,9 @@ export default class ActivityDataController extends BaseController {
   }
 
   updateAndSaveAssignmentEhrData (id, ehrData) {
-    // debug('ActivityData updateAssignmentData '+ id +' ehrData with data: ' + JSON.stringify(ehrData))
     if (!ehrData) {
       return Promise.resolve()
     }
-    // put the data into an EhrDataModel to get the data transformed to the latest version, if needed
-    const ehrDataModel = new EhrDataModel(ehrData)
-    ehrData = ehrDataModel.ehrData
-    // console.log('updateAndSaveAssignmentEhrData', ehrData)
     return this.baseFindOneQuery(id).then(activityData => {
       if (activityData) {
         return this._saveEhrData(activityData, ehrData)
@@ -52,9 +47,7 @@ export default class ActivityDataController extends BaseController {
   }
 
   _saveEhrData (activityData, ehrData) {
-    // Be sure both the seed and activity-data controllers do similar things when they save
-    // ehr data. For example, they both update the metadata
-    ehrData = (new EhrDataModel(ehrData)).ehrData
+    ehrData = EhrDataModel.PrepareForDb(ehrData)
     activityData.lastDate = Date.now()
     activityData.assignmentData = ehrData
     // tell the db to see a change on this subfield
