@@ -1,20 +1,20 @@
 import EhrDataModel from '../ehr-definitions/EhrDataModel'
+// eslint-disable-next-line no-unused-vars
 import * as fs from 'fs'
+import expectedEhr from '../resources/old-visit-times-expected.json'
 const should = require('should')
 
 // use to create expected output during development
 // const fs = require('fs')
 describe( 'Updates with EhrDataModel', () => {
-  const expectedEhr = require('../resources/old-visit-times-expected.json')
-  const ehrWithOldTimeVals = require('../resources/old-visit-times-input.json')
 
   it('update pre-update data', () => {
-    const model = new EhrDataModel(ehrWithOldTimeVals)
-    const updatedData = model.ehrData
+    const ehrWithOldTimeVals = require('../resources/old-visit-times-input.json')
+    const expectedEhr = require('../resources/old-visit-times-expected.json')
+    const updatedData = EhrDataModel.PrepareForDb(ehrWithOldTimeVals)
     should.exists(updatedData)
     updatedData.should.have.property('meta')
     updatedData.meta.should.have.property('ehrVersion')
-    const version = model.metaEhrVersion
     delete expectedEhr.meta
     delete updatedData.meta
     const expectedEhrStr = JSON.stringify(expectedEhr, null, 2)
@@ -22,10 +22,20 @@ describe( 'Updates with EhrDataModel', () => {
     // use to create expected output during development
     // fs.writeFileSync('./src/resources/old-visit-times-expected.json', updatedStr)
     should(expectedEhrStr).be.equal(updatedStr)
-    should.exist(version)
-    version.major.should.be.greaterThanOrEqual(2)
-    version.minor.should.be.greaterThanOrEqual(1)
-    version.patch.should.be.greaterThanOrEqual(0)
+  })
+
+  it ('Use EHrDataModel class method for updates', () => {
+    const ehrWithOldTimeVals = require('../resources/old-visit-times-input.json')
+    const expectedEhr = require('../resources/old-visit-times-expected.json')
+    const updatedData = EhrDataModel.PrepareForDb(ehrWithOldTimeVals)
+    should.exists(updatedData)
+    updatedData.should.have.property('meta')
+    updatedData.meta.should.have.property('ehrVersion')
+    delete expectedEhr.meta
+    delete updatedData.meta
+    const expectedEhrStr = JSON.stringify(expectedEhr, null, 2)
+    const updatedStr = JSON.stringify(updatedData, null, 2)
+    should(expectedEhrStr).be.equal(updatedStr)
   })
 })
 

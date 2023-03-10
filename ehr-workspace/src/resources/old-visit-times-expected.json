@@ -9,7 +9,8 @@
         "day": "1",
         "time": "1800",
         "temperature": "36.5",
-        "createdDate": "2019-05-30T10:18:43-07:00"
+        "createdDate": "2019-05-30T10:18:43-07:00",
+        "_id": "vitals.table.0"
       },
       {
         "name": "Jason",
@@ -19,7 +20,8 @@
         "day": "1",
         "time": "0700",
         "temperature": "36.5",
-        "createdDate": "2019-05-30T10:04:20-07:00"
+        "createdDate": "2019-05-30T10:04:20-07:00",
+        "_id": "vitals.table.1"
       }
     ]
   },
@@ -52,11 +54,9 @@
         "condition": "COPD",
         "code": "J44.9",
         "type": "M",
-        "createdDate": "2019-05-30T23:11:12-07:00"
+        "createdDate": "2019-05-30T23:11:12-07:00",
+        "_id": "diagnosticCodes.table.0"
       }
     ]
-  },
-  "meta": {
-    "ehrVersion": "ev2.1"
   }
 }

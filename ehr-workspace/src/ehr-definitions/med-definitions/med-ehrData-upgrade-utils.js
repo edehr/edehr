@@ -17,7 +17,7 @@ export function updateMedicationRoute (ehrDataModel) {
       tableData.forEach((row, rowIndex) => {
         let elemData = row[elementKey]
         if (elemData === oldVal) {
-          ehrDataModel.updateRowElem(pageKey, tableKey, rowIndex, elementKey, newVal)
+          ehrDataModel._updateRowElem(pageKey, tableKey, rowIndex, elementKey, newVal)
         }
       })
     }

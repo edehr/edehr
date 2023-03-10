@@ -83,8 +83,8 @@ describe( 'EhrDataModel', () => {
     model.should.have.property('getPageTableData')
     model.should.have.property('getPageFormData')
     // getRowData
-    model.should.have.property('updatePageFormData')
-    model.should.have.property('updateRowElem')
+    model.should.have.property('_updatePageFormData')
+    model.should.have.property('_updateRowElem')
   })
   it('page data', () => {
     let data = model.getPageData(PK)
@@ -118,17 +118,17 @@ describe( 'EhrDataModel', () => {
     data.should.have.property('transferInTime')
     data.transferInTime.should.equal('0030')
   })
-  it('updatePageFormData', () => {
+  it('_updatePageFormData', () => {
     model = new EhrDataModel(ehrData)
-    model.updatePageFormData(PK, 'admissionTime', '0634')
+    model._updatePageFormData(PK, 'admissionTime', '0634')
     model = new EhrDataModel(model.ehrData)
     let data = model.getPageData(PK)
     data.should.have.property('admissionTime')
     data.admissionTime.should.equal('0634')
   })
-  it('updateRowElem', () => {
+  it('private _updateRowElem', () => {
     model = new EhrDataModel(ehrData)
-    model.updateRowElem(PK, 'table', 1,'transferInTime', '0030')
+    model._updateRowElem(PK, 'table', 1,'transferInTime', '0030')
     model = new EhrDataModel(model.ehrData)
     let data = model.getRowData(PK,'table', 1)
     data.should.be.instanceOf(Object)

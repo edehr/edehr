@@ -5,6 +5,31 @@ import EhrTypes from '../ehr-definitions/ehr-types'
 import { convertTimeStr, convertTimeStrToMilTime } from './ehr-def-utils'
 import { EhrPages } from './ehr-models'
 
+export function updateAllRecHeaderIds (ehrDataModel) {
+  const pages = new EhrPages()
+  const pageList = pages.pageList
+  pageList.forEach(page => {
+    const pageKey = page.pageKey
+    if (ehrDataModel.hasData(pageKey)) {
+      // pageTables is a  [ PageTable ]
+      page.pageTables.forEach(table => {
+        if (table.hasRecHeader) {
+          const tableKey = table.elementKey
+          const tableData = ehrDataModel.getPageTableData(pageKey, tableKey)
+          if (tableData) {
+            tableData.forEach((row, rowIndex) => {
+              if (!row._id) {
+                row._id = pageKey + '.' + tableKey + '.' + rowIndex
+              }
+            })
+          }
+        }
+      })
+    }
+  })
+  return ehrDataModel.ehrData
+}
+
 export function updateAllVisitTime (ehrDataModel) {
   const pages = new EhrPages()
   const pageList = pages.pageList
@@ -17,7 +42,7 @@ export function updateAllVisitTime (ehrDataModel) {
         let d = ehrDataModel.getPageFormData(pageKey, c.elementKey)
         if(d) {
           let val = convertTimeStrToMilTime(d)
-          ehrDataModel.updatePageFormData(pageKey, c.elementKey, val)
+          ehrDataModel._updatePageFormData(pageKey, c.elementKey, val)
         }
       })
       // pageTables is a  [ PageTable ]
@@ -33,7 +58,7 @@ export function updateAllVisitTime (ehrDataModel) {
               let elemData = row[k]
               if(elemData) {
                 let val = convertTimeStrToMilTime(elemData)
-                ehrDataModel.updateRowElem(pageKey, tableKey, rowIndex, k, val)
+                ehrDataModel._updateRowElem(pageKey, tableKey, rowIndex, k, val)
               }
             })
           })

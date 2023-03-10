@@ -1,3 +1,4 @@
+import crypto from 'crypto'
 
 const debugErrs = false
 
@@ -10,6 +11,14 @@ export function validTimeStr (text) {
   return /^(0[0-9]|1[0-9]|2[0-3])([0-5][0-9])$/.test(text)
 }
 
+export function hashString (input) {
+  if (!input) return
+  if (!isString(input)) return
+  if (input.length <= 40 ) return input
+  const hash = crypto.createHash('md5')
+  hash.update(input, 'utf8')
+  return hash.digest('hex')
+}
 
 /**
  * Test if the str is a valid "hospital stay day": a number between 0 and 9

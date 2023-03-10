@@ -1,0 +1,421 @@
+{
+  "demographics": {},
+  "allergies": {},
+  "medical": {},
+  "psychosocial": {},
+  "surgical": {},
+  "immunization": {},
+  "familyHistory": {},
+  "careTeam": {},
+  "pastAppointments": {},
+  "visit": {
+    "diagnosisTable": [
+      {
+        "name": "foo",
+        "_id": "pre existing id"
+      },
+      {
+        "name": "bar"
+      }
+    ]
+  },
+  "vitals": {
+    "table": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ]
+  },
+  "fluidBalance": {
+    "table": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ]
+  },
+  "neurological": {
+    "table": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ]
+  },
+  "respiratory": {
+    "table": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ]
+  },
+  "cardiovascular": {
+    "table": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ]
+  },
+  "gastrointestinal": {
+    "table": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ]
+  },
+  "genitourinary": {
+    "table": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ]
+  },
+  "musculoskeletal": {
+    "table": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ]
+  },
+  "pain": {
+    "table": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ]
+  },
+  "biopsychosocial": {
+    "table": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ]
+  },
+  "nonmedOrders": {
+    "table": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ],
+    "dietOrders": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ]
+  },
+  "referrals": {
+    "table": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ]
+  },
+  "labRequisitions": {
+    "table": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ],
+    "requisitions": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ],
+    "histologyRequisitions": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ],
+    "med_image_req": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ],
+    "microRequisitions": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ]
+  },
+  "medicationOrders": {
+    "table": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ],
+    "medicationOrdersTable": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ]
+  },
+  "medAdminRec": {
+    "marTable": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ]
+  },
+  "dischargeSummary": {},
+  "billing": {},
+  "progressNotes": {
+    "table": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ]
+  },
+  "carePlan": {
+    "table": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ]
+  },
+  "consults": {
+    "table": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ]
+  },
+  "labResults": {
+    "table": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ],
+    "labResultHematology": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ],
+    "labResultUrine": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ]
+  },
+  "medicalImaging": {
+    "table": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ]
+  },
+  "operationReports": {
+    "table": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ]
+  },
+  "codeLookup": {},
+  "diagnosticCodes": {
+    "table": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ]
+  },
+  "interventionCodes": {
+    "table": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ]
+  },
+  "caseMixGroup": {
+    "table": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ]
+  },
+  "testTable": {
+    "stacked": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ]
+  },
+  "integumentaryAssessment": {
+    "tableIncision": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ],
+    "tableIncisionAssessment": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ],
+    "tableWound": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ],
+    "tableWoundAssessment": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ]
+  },
+  "hematology": {
+    "tableCbcAnalysis": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ],
+    "tablePbfReview": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ]
+  },
+  "dishargeplan": {
+    "table": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ]
+  },
+  "medLabChemistry": {
+    "tableChem": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ]
+  },
+  "medLabImaging": {
+    "tableImages": [
+      {
+        "name": "foo"
+      },
+      {
+        "name": "bar"
+      }
+    ]
+  }
+}

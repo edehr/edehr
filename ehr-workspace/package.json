@@ -13,6 +13,7 @@
     "build:resources": "mkdir -p build/resources && cp src/resources/* build/resources",
     "bb": "npm run clean && npm run build:resources && npx babel src --out-dir build",
     "clean": "rm -rf build && mkdir build",
+    "lint": "eslint --fix 'src/ehr-definitions/**/*.js'",
     "start": "npm run bb && npm run build-resources && npm run start:run",
     "start:run": "node build/index.js",
     "test": "npm run bb && node_modules/.bin/mocha --recursive --sort --bail 'build/**/*.spec.js'",

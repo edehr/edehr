@@ -1,5 +1,5 @@
 // noinspection DuplicatedCode
-import {  updateAllVisitTime,  visitTimeInEhrData} from './ehr-data-model-utils'
+import { updateAllRecHeaderIds, updateAllVisitTime, visitTimeInEhrData } from './ehr-data-model-utils'
 import { decoupleObject } from './common-utils'
 import {
   updateMedicationRoute
@@ -10,6 +10,14 @@ import {
  */
 
 export default class EhrDataModel {
+  static PrepareForDb (ehrData) {
+    return EhrDataModel.UpdateIdsInModel(ehrData)
+  }
+  static UpdateIdsInModel (ehrData) {
+    const model = new EhrDataModel(ehrData)
+    return updateAllRecHeaderIds(model)
+  }
+
   constructor (ehrData) {
     this.loadEhrData(ehrData)
   }
@@ -29,10 +37,7 @@ export default class EhrDataModel {
   get ehrData () {
     return this._ehrData
   }
-
-  set ehrData (ed) {
-    this._ehrData = ed
-  }
+  //no set ehrData. Must load via constructor
 
   get pageKeys () {
     let keys = Object.keys(this._ehrData)
@@ -94,11 +99,26 @@ export default class EhrDataModel {
     return this.getPageData(pageKey)[tableKey][rowKey]
   }
 
-  updatePageFormData (pageKey, elementKey, value) {
+  /**
+   * Used by EhrDataModel supporting utils to perform updates
+   * @param pageKey
+   * @param elementKey
+   * @param value
+   */
+  _updatePageFormData (pageKey, elementKey, value) {
     const pg = this._ehrData[pageKey]
     pg[elementKey] = value
   }
-  updateRowElem ( pageKey, tableKey, rowIndex, elementKey, value) {
+
+  /**
+   * Used by EhrDataModel supporting utils to perform updates
+   * @param pageKey
+   * @param tableKey
+   * @param rowIndex
+   * @param elementKey
+   * @param value
+   */
+  _updateRowElem ( pageKey, tableKey, rowIndex, elementKey, value) {
     // extract the table data, update the value in the specified row and then replace table data in main data object
     const targetData = this._ehrData[pageKey][tableKey]
     targetData[rowIndex][elementKey] = value
@@ -109,13 +129,13 @@ export default class EhrDataModel {
     const ehrData = updateAllVisitTime(this)
     ehrData.meta = this._ehrData.meta || {}
     ehrData.meta.ehrVersion = 'ev2.1.0'
-    this.ehrData = ehrData
+    this._ehrData = ehrData
   }
 
   updateDataTo2_1_1 () {
     const ehrData = updateMedicationRoute(this)
     ehrData.meta.ehrVersion = 'ev2.1.1'
-    this.ehrData = ehrData
+    this._ehrData = ehrData
   }
 
   updateEhrDataToLatestFormat () {

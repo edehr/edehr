@@ -146,12 +146,6 @@ export class PageDef {
   getPageTable (tableKey) {
     return this.pageTables.find( tbl => tbl.elementKey === tableKey)
   }
-  updatePageFormData (ehrModel, elementKey, value) {
-    return ehrModel.updatePageFormData(this.pageKey, elementKey, value)
-  }
-  updateRowElem ( ehrModel, tableKey, rowIndex, elementKey, value) {
-    ehrModel.updateRowElem(this.pageKey,tableKey, rowIndex, elementKey, value)
-  }
 }
 
 export class PageElement /* Form or Table */{
