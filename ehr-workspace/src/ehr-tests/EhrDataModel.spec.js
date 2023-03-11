@@ -1,7 +1,7 @@
 /**
  * WARNING Do not edit this code unless you are working in the makeEhr common_src directory.  Use the copy script to deployr to both server and client
  */
-import EhrDataModel from '../ehr-definitions/EhrDataModel'
+import EhrDataModel, { CurrentEhrDataVerString } from '../ehr-definitions/EhrDataModel'
 const should = require('should')
 
 const ehrData = {
@@ -135,4 +135,41 @@ describe( 'EhrDataModel', () => {
     data.should.have.property('transferInTime')
     data.transferInTime.should.equal('0030')
   })
+})
+
+describe ('EhrDataModel class methods', () => {
+  it ('MetaEhrVersion', () => {
+    let e = {
+      meta: {
+        ehrVersion: 'ev2.8.1'
+      }
+    }
+    let ver = EhrDataModel.MetaEhrVersion(e)
+    ver.major.should.equal(2)
+    ver.minor.should.equal(8)
+    ver.patch.should.equal(1)
+  })
+
+  it ('CheckVer', () => {
+    let e
+    e = {
+      meta: {
+        simTime: {
+          visitDay: 0,
+          visitTime: '0000'
+        },
+        ehrVersion: 'ev2.1.1'
+      }
+    }
+    true.should.equal(EhrDataModel.CheckVer(e, 2, 1, 0), 'pre')
+    true.should.equal(EhrDataModel.CheckVer(e, 2, 1, 1), 'now')
+    false.should.equal(EhrDataModel.CheckVer(e, 2, 1, 2), 'after')
+  })
+
+  it ('IsUpToDate', () => {
+    let e = { meta: {} }
+    e.meta.ehrVersion = CurrentEhrDataVerString()
+    EhrDataModel.IsUpToDate(e).should.equal(true)
+  })
+
 })

@@ -20,7 +20,7 @@ client/published/**
 client/selenium-debug\.log
 client/test/e2e/**
 client/tests/e2e/reports/
-database/backup/dump/**
+database/backups/**
 database/dbdata/**
 database/data/**
 database/docker-dev/**

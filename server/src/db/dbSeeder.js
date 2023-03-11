@@ -6,6 +6,7 @@ import { logError} from '../helpers/log-error'
 import dropSchemas from './dropschemas'
 import ActivityDataController from '../mcr/activity-data/activity-data-controller'
 import SeedDataController from '../mcr/seed/seedData-controller'
+import EhrDataModel from '../ehr-definitions/EhrDataModel'
 const activityDataController = new ActivityDataController()
 const seedController = new SeedDataController()
 
@@ -77,9 +78,11 @@ async function doIntegrations () {
   /**
    * Iterate over the entire db any collection that contains ehr data. E.g. seeds and activity-data
    */
+  const start = performance.now()
   debug('dbSeeder. updateAllEhrData')
   await updateAllEhrData()
-  debug('dbSeeder. DONE')
+  const end = performance.now()
+  debug('dbSeeder. DONE.', Math.round(end - start), 'ms')
 }
 
 export async function updateAllEhrData () {
@@ -87,24 +90,33 @@ export async function updateAllEhrData () {
   await _updateSeeds()
 }
 
-const dbg = false
 async function _updateActivityData () {
-  debug('dbSeeder. For each activity update the EHR data to the latest version.')
+  const start = performance.now()
+  let cnt = 0
   const activityDataList = await activityDataController.list({assignmentData: { $exists: true} },{assignmentData: true})
   const list = activityDataList.activitydata
   for ( const ad of list) {
-    if (dbg) console.log('------------- actd', ad)
-    await activityDataController.updateAndSaveAssignmentEhrData(ad._id, ad.assignmentData)
+    if (!EhrDataModel.IsUpToDate(ad.assignmentData)) {
+      cnt++
+      await activityDataController.updateAndSaveAssignmentEhrData(ad._id, ad.assignmentData)
+    }
   }
+  const end = performance.now()
+  debug('dbSeeder. updated',   cnt, 'of', list.length, 'ActivityData records in', Math.round(end - start), 'ms')
 }
 
 async function _updateSeeds () {
-  debug('dbSeeder. For each seed (case study) update the EHR to the latest version')
+  const start = performance.now()
+  let cnt = 0
   const seedDataList = await seedController.list({isDefault: false}, {name: true, ehrData: true})
   const list = seedDataList.seeddata
   for ( const seed of list) {
-    if (dbg) console.log('------------- seed', seed)
-    await seedController.updateAndSaveSeedEhrData(seed._id, seed.ehrData)
+    if (!EhrDataModel.IsUpToDate(seed.ehrData)) {
+      cnt++
+      await seedController.updateAndSaveSeedEhrData(seed._id, seed.ehrData)
+    }
   }
+  const end = performance.now()
+  debug('dbSeeder. updated', cnt, 'of', list.length, 'Seed records in', Math.round(end - start), 'ms')
 }
 

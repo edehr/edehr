@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import fs from 'fs'
 
 var should = require('should')
@@ -5,7 +6,6 @@ const mongoose = require('mongoose')
 import Helper from '../common/test-helper'
 const helper = new Helper()
 import ActivityDataController from './activity-data-controller'
-import { EhrPages } from '../../ehr-definitions/ehr-models'
 const typeName = 'ActivityDataController'
 
 // Use following to leave results in test database for inspection

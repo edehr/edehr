@@ -48,15 +48,14 @@ describe( 'EhrData meta version', () => {
         ehrVersion: 'ev2.1.34'
       }
     }
-    const model = new EhrDataModel(ehrData)
-    const ver = model.metaEhrVersion
-    should.exist(ver)
-    ver.should.have.property('major')
-    ver.should.have.property('minor')
-    ver.should.have.property('patch')
-    ver.major.should.be.greaterThanOrEqual(2)
-    ver.minor.should.be.greaterThanOrEqual(1)
-    ver.patch.should.be.greaterThanOrEqual(0)
+    const version = EhrDataModel.MetaEhrVersion(ehrData)
+    should.exist(version)
+    version.should.have.property('major')
+    version.should.have.property('minor')
+    version.should.have.property('patch')
+    version.major.should.be.greaterThanOrEqual(2)
+    version.minor.should.be.greaterThanOrEqual(1)
+    version.patch.should.be.greaterThanOrEqual(0)
   })
 
   it('invalid version becomes valid', () => {
@@ -67,7 +66,7 @@ describe( 'EhrData meta version', () => {
       }
     }
     const model = new EhrDataModel(ehrData)
-    const version = model.metaEhrVersion
+    const version = model.ehrVersion
     should.exist(version)
     version.major.should.be.greaterThanOrEqual(2)
     version.minor.should.be.greaterThanOrEqual(1)

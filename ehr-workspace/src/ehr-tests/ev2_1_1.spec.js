@@ -36,16 +36,17 @@ describe( 'EhrData updates to ev2.1.1', () => {
     validate(updatedData)
   })
 
-  it('update to ev2.1.1', () => {
+  // update this test whenever the current version changes
+  it('test model updates to lastest which is currently ev2.2.0', () => {
     const model = new EhrDataModel(ehrInput)
     const updatedData = model.ehrData
     should.exists(updatedData)
     updatedData.should.have.property('meta')
     updatedData.meta.should.have.property('ehrVersion')
-    const version = model.metaEhrVersion
-    version.major.should.be.greaterThanOrEqual(2)
-    version.minor.should.be.greaterThanOrEqual(1)
-    version.patch.should.be.greaterThanOrEqual(1)
+    const version = model.ehrVersion
+    version.major.should.be.greaterThanOrEqual(2, 'version major 2')
+    version.minor.should.be.greaterThanOrEqual(2, 'version minor 2')
+    version.patch.should.be.greaterThanOrEqual(0, 'version patch 0')
     validate(updatedData)
   })
 })
