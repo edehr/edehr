@@ -23007,6 +23007,7 @@ const DEFS = {
         'formIndex': '2',
         'inputType': 'number',
         'label': 'Segmented Neutrophil',
+        'mandatory': true,
         'passToFunction': '[ cellCntTotal cellCntSegNeutrophilAbs]',
         'tableColumn': '43',
         'validation': 'numeric',
