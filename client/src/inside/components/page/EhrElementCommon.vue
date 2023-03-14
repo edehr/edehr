@@ -168,6 +168,8 @@ export default {
     },
     handleDialogEvent (options) {
       const open = options.open
+      const { key, tableAction, sendersTableDef, sourceRowId, tableActionDraftRowIndex, draftRowData, draftRowId } = options
+      console.log('EEC dialog event.', key, tableAction, sourceRowId, tableActionDraftRowIndex, draftRowId)
       // console.log('EEC dialog event. eKey:', this.elementKey,', options:', JSON.stringify(options))
       /*
       this.dialogIsOpen = open
@@ -176,17 +178,17 @@ export default {
        */
       this.dialogIsOpen = open
       if (!open) {
-        // console.log('EEC If closing (not open) then just return')
+        console.log('EEC If closing (not open) then just return')
         return
       }
-      // isEmbedded is provided by the parent.
+      console.log('isEmbedded is provided by the parent', this.isEmbedded)
       if (this.isEmbedded) {
         /*
           let inputs = options.inputs ? options.inputs : options.data
           Change this. Data should not come from two different object types without a strong and clear need
            */
         let inputs = options.inputs ? options.inputs : options.data
-        // console.log('EEC handleDialogEvent. is embedded', inputs)
+        console.log('EEC handleDialogEvent. is embedded', inputs)
         if (inputs) {
           /*
             If this is an embedded item then it is read only and only reflects values ... so why the following two steps?

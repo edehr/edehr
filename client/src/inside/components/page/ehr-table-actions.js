@@ -78,27 +78,29 @@ export default class EhrTableActions {
       sendersTableDef: sendersTableDef,
       sourceRowId: sourceRowId
     }
-    const draftRowIndex = this.getTableActionGetDraftRowIndex(sendersTableDef, sourceRowId)
-    if (draftRowIndex >= 0) {
-      /*
-      If we have a draft row then we are resuming editing, and we use the existing table data
-      to initialize the input fields
-       */
-      // options.draftRowIndex = draftRowIndex
-      options.tableActionDraftRowIndex = draftRowIndex
-    } else {
-      /*
-      No draft means we're starting fresh.
-      The source table definition has a property 'tableAction' that contains the target table key.
-      This all assumes the source and target are on the same page.
-      Inside the target table will be an element with type ehr_embedded
-      that wants to get the data from the source row.
-      The ehr_embedded element has a property 'embedRef' that is in the
-      form <page key>.<source table key>.<source row index>
-      The ehr_embedded element just needs the source row index to know where to retrieve the data from.
-       */
-      options.embedRefValue = sourceRowId
-    }
+    options.embedRefValue = sourceRowId
+
+    // const draftRowIndex = this.getTableActionGetDraftRowIndex(sendersTableDef, sourceRowId)
+    // if (draftRowIndex >= 0) {
+    //   /*
+    //   If we have a draft row then we are resuming editing, and we use the existing table data
+    //   to initialize the input fields
+    //    */
+    //   // options.draftRowIndex = draftRowIndex
+    //   options.tableActionDraftRowIndex = draftRowIndex
+    // } else {
+    //   /*
+    //   No draft means we're starting fresh.
+    //   The source table definition has a property 'tableAction' that contains the target table key.
+    //   This all assumes the source and target are on the same page.
+    //   Inside the target table will be an element with type ehr_embedded
+    //   that wants to get the data from the source row.
+    //   The ehr_embedded element has a property 'embedRef' that is in the
+    //   form <page key>.<source table key>.<source row index>
+    //   The ehr_embedded element just needs the source row index to know where to retrieve the data from.
+    //    */
+    //   options.embedRefValue = sourceRowId
+    // }
     // console.log('gtaro', JSON.stringify(options))
     return options
   }

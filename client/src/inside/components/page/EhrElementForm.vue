@@ -1,5 +1,6 @@
 <template lang='pug'>
   div(class="form-element", :class='{invalidElement : !validData, hiddenElement: hideElement}')
+    div IS THIS AN EMBEDDED {{isEmbedded}}
     div(v-if="isType('form_label')")
       div(v-html="label", class='form_label_wrapper')
       ui-info(v-if="helperText", :title="label", :html="helperHtml", :text="helperText")
@@ -38,6 +39,10 @@
 
     div(v-else-if="isType('ehr_embedded')")
       ehr-element-embedded(:elementKey="elementKey", :ehrHelp="ehrHelp", :inputVal="inputVal")
+
+    div(v-else-if="isType('generatedId')", class="text_input_wrapper")
+      ehr-page-form-label(:element="element", css="text_label")
+      div -- {{ inputVal }} --
 
     hr(v-else-if="isType('horizontal')")
     // type lookahead should have been named 'medication'
