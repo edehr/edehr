@@ -6,22 +6,20 @@ const Defs = {
       elementKey: 'name',
       inputType: 'practitionerName',
       label: 'Name',
+
       tableLabel: 'Identification',
-      mandatory: true,
       recHeader: true
     },
     {
       elementKey: 'profession',
       inputType: 'practitionerProfession',
       label: 'Profession',
-      mandatory: true,
       recHeader: true
     },
     {
       elementKey: 'day',
       inputType: 'visitDay',
       label: 'Day',
-      mandatory: true,
       validation: 'visitDay',
       recHeader: true
     },
@@ -29,22 +27,9 @@ const Defs = {
       elementKey: 'time',
       inputType: 'visitTime',
       label: 'Time',
-      mandatory: true,
       validation: 'time24',
       recHeader: true
-    },
-    {
-      elementKey: '_id',
-      inputType: EhrTypes.dataInputTypes.generatedId,
-      formOption: 'hideElement',
-      label: 'Id',
-      recHeader: true
-    },
-    // {
-      // elementKey: 'recordConfirm',
-      // inputType: 'recordConfirm',
-      // recHeader: true
-    // }
+    }
   ],
 
   checkBoxTextSpacer: [

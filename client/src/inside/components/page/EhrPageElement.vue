@@ -6,7 +6,6 @@
 </template>
 
 <script>
-import EhrDialogForm from './EhrDialogForm.vue'
 import EhrPageTable from './EhrPageTable'
 import EhrPageForm from './EhrPageForm'
 
@@ -14,8 +13,7 @@ import EhrPageForm from './EhrPageForm'
 export default {
   components: {
     EhrPageTable,
-    EhrPageForm,
-    EhrDialogForm
+    EhrPageForm
   },
   data: function () {
     return {

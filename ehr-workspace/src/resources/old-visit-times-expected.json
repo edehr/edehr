@@ -10,7 +10,7 @@
         "time": "1800",
         "temperature": "36.5",
         "createdDate": "2019-05-30T10:18:43-07:00",
-        "_id": "vitals.table.0"
+        "table_id": "vitals.table.0"
       },
       {
         "name": "Jason",
@@ -21,7 +21,7 @@
         "time": "0700",
         "temperature": "36.5",
         "createdDate": "2019-05-30T10:04:20-07:00",
-        "_id": "vitals.table.1"
+        "table_id": "vitals.table.1"
       }
     ]
   },
@@ -29,7 +29,8 @@
     "table": [
       {
         "location": "Emergency room",
-        "createdDate": "2019-05-30T23:21:10-07:00"
+        "createdDate": "2019-05-30T23:21:10-07:00",
+        "table_id": "visit.table.0"
       }
     ],
     "admissionDay": "Day 0",
@@ -55,7 +56,7 @@
         "code": "J44.9",
         "type": "M",
         "createdDate": "2019-05-30T23:11:12-07:00",
-        "_id": "diagnosticCodes.table.0"
+        "table_id": "diagnosticCodes.table.0"
       }
     ]
   }

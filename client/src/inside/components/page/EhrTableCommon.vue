@@ -36,15 +36,26 @@ export default {
       }
       return value
     },
-    tableAction: function (tableDef, sourceRowIndex) {
-      EventBus.$emit(TABLE_ACTION_EVENT, tableDef, sourceRowIndex)
+    getIdFromRow (dbRow) {
+      return this.getIdFromStack(dbRow[0])
     },
-    editDraft (pageKey, tableKey, rowIndex) {
-      console.log('edit draft', pageKey, tableKey, rowIndex)
-      this.$emit('editDraft', pageKey, tableKey, rowIndex)
+    getIdFromStack (cell) {
+      let id = ''
+      const stack = cell.stack || []
+      const idElement = stack.find( e => e.inputType === 'generatedId')
+      id = idElement ? idElement.value : ''
+      // console.log('getIdFromStack', cell, idElement, id)
+      return id
     },
-    viewReport (pageKey, tableKey, rowIndex) {
-      this.$emit('viewReport', pageKey, tableKey, rowIndex)
+    tableAction: function (sourceRowId) {
+      // console.log('TABLE ACTION EVENT EMIT', sourceRowId)
+      EventBus.$emit(TABLE_ACTION_EVENT, this.tableDef, sourceRowId)
+    },
+    editDraft (rowId) {
+      this.$emit('editDraft', rowId)
+    },
+    viewReport (rowId) {
+      this.$emit('viewReport', rowId)
     }
   }
 }

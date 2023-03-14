@@ -51,8 +51,9 @@ export default {
     TABLE_ACTION_EVENT comes from a table inside one of the page tables.
     It is used to open a dialog on another table based on the contents of the source table.
      */
-    this.showEventHandler = function (sendersTableDef, sourceRowIndex) {
-      const options = EhrTableActions.getTableActionRequestOptions(sendersTableDef, sourceRowIndex)
+    this.showEventHandler = function (sendersTableDef, sourceRowId) {
+      // console.log('invoke showEventHandler', sourceRowId, sendersTableDef)
+      const options = EhrTableActions.getTableActionRequestOptions(sendersTableDef, sourceRowId)
       // console.log('invoke shorDialogForTable', JSON.stringify(options))
       const { taTargetPageKey, taTargetTableKey } = sendersTableDef
       _this.ehrHelp.showDialogForTable(taTargetPageKey, taTargetTableKey, options)

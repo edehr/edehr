@@ -4,6 +4,7 @@ import EhrDefs from '../ehr-definitions/ehr-page-defs'
 import EhrTypes from '../ehr-definitions/ehr-types'
 import { convertTimeStr, convertTimeStrToMilTime } from './ehr-def-utils'
 import { EhrPages } from './ehr-models'
+import EhrDataModel from './EhrDataModel'
 
 export function updateAllRecHeaderIds (ehrDataModel) {
   const pages = new EhrPages()
@@ -13,16 +14,15 @@ export function updateAllRecHeaderIds (ehrDataModel) {
     if (ehrDataModel.hasData(pageKey)) {
       // pageTables is a  [ PageTable ]
       page.pageTables.forEach(table => {
-        if (table.hasRecHeader) {
-          const tableKey = table.elementKey
-          const tableData = ehrDataModel.getPageTableData(pageKey, tableKey)
-          if (tableData) {
-            tableData.forEach((row, rowIndex) => {
-              if (!row._id) {
-                row._id = pageKey + '.' + tableKey + '.' + rowIndex
-              }
-            })
-          }
+        const tableKey = table.elementKey
+        const idKey = tableKey + '_id'
+        const tableData = ehrDataModel.getPageTableData(pageKey, tableKey)
+        if (tableData) {
+          tableData.forEach((row, rowIndex) => {
+            if (!row[idKey]) {
+              row[idKey] = EhrDataModel.GenerateRowId(pageKey, tableKey, tableData)
+            }
+          })
         }
       })
     }

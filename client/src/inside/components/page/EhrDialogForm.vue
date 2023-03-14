@@ -76,13 +76,6 @@ export default {
         canSave = true
       } else {
         canSave = this.errorList.length === 0 && this.hasData
-        if (canSave && this.ehrHelp.activeTableDialogHasRecordHeader()) {
-          const { name, profession, day, time } = this.ehrHelp.activeTableDialogRecordHeader()
-          canSave = name && name.length > 0 &&
-            profession && profession.length > 0 &&
-            day && day.length > 0 &&
-            time && time.length > 0
-        }
       }
       return !canSave
     },
@@ -144,8 +137,9 @@ export default {
           // Any input change sets up a draft save after timeout. Don't wait for quiet time.
           const SAVE_DRAFT_TIMEOUT = 3000
           if ( !this.saveDraftTimeoutId ) { // IF a save is pending then done else set up a delayed save
-            this.saveDraftTimeoutId = setTimeout(() => {
-              this.ehrHelp.saveDialogDraft()
+            // console.log('input change set up timeout to save draft', eData, this.tableDef)
+            this.saveDraftTimeoutId = setTimeout(async () => {
+              await this.ehrHelp.saveDialogDraft()
               this.saveDraftTimeoutId = undefined // reset so another save can be queued up
             }, SAVE_DRAFT_TIMEOUT)
           }

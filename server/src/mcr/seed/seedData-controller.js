@@ -40,10 +40,11 @@ export default class SeedDataController extends BaseController {
    * Also see saveSeedEhrData
    * @param id of the seed db doc
    * @param payload containing propertyName and the new element of ehrData in the value field
+   * @param action - optional -- used for tracing changes to seed data. See traceApi
    * @return {*} updated doc
    * @see updateAssignmentData in activity-data-controller
    */
-  updateSeedEhrProperty (id, payload) {
+  updateSeedEhrProperty (id, payload, action) {
     let propertyName = payload.propertyName
     let value = payload.value
     return this.baseFindOneQuery(id).then(model => {
@@ -56,7 +57,7 @@ export default class SeedDataController extends BaseController {
         value.lastUpdate = moment().format()
         // place date into the ehr data's page element
         ehrData[propertyName] = value
-        debug(`SeedData upsehrprop ${id} ehrData[${propertyName}] with data:`)
+        debug(`SeedData upsehrprop action: ${action} id: ${id} ehrData[${propertyName}]:`, JSON.stringify(value))
         // debug('upsehrprop ' + JSON.stringify(value))
         return this._saveSeedEhrData(model, ehrData)
       }
@@ -100,11 +101,12 @@ export default class SeedDataController extends BaseController {
 
   route () {
     const router = super.route()
-    router.put('/updateSeedEhrProperty/:key/', (req, res) => {
+    router.put('/updateSeedEhrProperty/:key/:action', (req, res) => {
       debug('SeedController API updateSeedEhrProperty')
       let id = req.params.key
+      let action = req.params.action
       let data = req.body
-      this.updateSeedEhrProperty(id, data)
+      this.updateSeedEhrProperty(id, data, action)
         .then(ok(res))
         .catch(fail(res))
     })

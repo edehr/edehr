@@ -43,7 +43,7 @@ export function apiTrace (app, config) {
         API_EVENT_BUS.emit(API_CALL_EVENT, rec)
       }
     } catch (err) {
-      logError('Error in tracing', err.message)
+      logError('Error in tracing', err.message, err)
     }
   }))
 }
@@ -65,9 +65,12 @@ function composeData (req, statusCode, time) {
   rec.origin = req.headers['origin'] || req.url
   rec.params = isNotEmpty(req.params) ? req.params : undefined
   rec.query = isNotEmpty(req.query) ? req.query : undefined
+  // yes stash the visit id in the trace log.
+  // Need it to follow the actions on a student's work to ensure the student's work is preserved in the db as they entered it.
+  // The users are reporting strange events. To determine the cause after the fact we need this information.
+  rec.visitId = req.authPayload ? req.authPayload.visitId : undefined
 
-  // do not send student EHR data to the trace log
-  if (key !== 'put_api_seed-data' && isNotEmpty(req.body)) {
+  if (isNotEmpty(req.body)) {
     rec.body = Object.assign({}, req.body)
     // console.log('-=-=-=-=-=-=-=-=-')
     // console.log(JSON.stringify(rec.body,null,2))

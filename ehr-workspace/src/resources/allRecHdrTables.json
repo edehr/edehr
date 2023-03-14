@@ -12,7 +12,7 @@
     "diagnosisTable": [
       {
         "name": "foo",
-        "_id": "pre existing id"
+        "diagnosisTable_id": "pre existing id"
       },
       {
         "name": "bar"

@@ -2,38 +2,33 @@ import EhrTypes from '@/ehr-definitions/ehr-types'
 import StoreHelper from '@/helpers/store-helper'
 import { ehrText } from '@/appText'
 import { EhrPages } from '@/ehr-definitions/ehr-models'
-import EhrData from '@/inside/components/page/ehr-data'
 import * as assert from 'assert'
 
 const ehrPages = new EhrPages()
 
 export default class EhrTableActions {
 
-  static getTableActionGetDraftRowIndex (tableDef, sourceRowIndex) {
-    const { taTargetTableKey, taSourcePageKey} = tableDef
+  static getTableActionGetDraftRowIndex (tableDef, sourceRowId) {
+    const { taTargetPageKey, taTargetTableKey} = tableDef
     let targetDraftRowIndex = -1
-    const desiredRowValue = this.getTableActionGetRef(tableDef, sourceRowIndex)
+    const desiredRowValue = sourceRowId
     const srcElemKey = this.getTableActionTargetElementKey(tableDef)
     if (!srcElemKey) {
-      StoreHelper.setApiError(ehrText.ERROR_IN_TABLE_ACTION_DEF(JSON.stringify(tableDef)))
-      return targetDraftRowIndex
+      const msg = ehrText.ERROR_IN_TABLE_ACTION_DEF(JSON.stringify(tableDef))
+      StoreHelper.setApiError(msg)
+      throw new Error(msg)
     }
     const mData = StoreHelper.getMergedData()
-    const pData = mData[taSourcePageKey] || {}
+    const pData = mData[taTargetPageKey] || {}
     const tData = pData[taTargetTableKey] || []
     targetDraftRowIndex = tData.findIndex( row => row.isDraft && row[srcElemKey] === desiredRowValue )
-    // console.log('targetDraftRowIndex', pageKey, sourceTableKey, sourceRowIndex, targetTableKey, targetDraftRowIndex)
+    // console.log('getTableActionGetDraftRowIndex', sourceRowId, targetDraftRowIndex)
     return targetDraftRowIndex
   }
 
-  static getTableActionGetRef (sendersTableDef, sourceRowIndex) {
-    const { taSourcePageKey, taSourceTableKey} = sendersTableDef
-    return taSourcePageKey + '.' + taSourceTableKey + '.' + sourceRowIndex
-  }
-
-  static getTableActionLabel (tableDef, sourceRowIndex) {
+  static getTableActionLabel (tableDef, sourceRowId) {
     // console.log('getTableActionLabel', tableDef)
-    const draftRowIndex = this.getTableActionGetDraftRowIndex(tableDef, sourceRowIndex)
+    const draftRowIndex = this.getTableActionGetDraftRowIndex(tableDef, sourceRowId)
     return draftRowIndex >= 0 ? 'Resume' : tableDef.tableActionLabel
   }
 
@@ -57,21 +52,6 @@ export default class EhrTableActions {
   }
 
   /**
-   * Search the table data looking for a row marked with the isDraft flag. Return the index of
-   * that row or -1 if not found.
-   * @param pageKey
-   * @param tableKey
-   * @returns {number}
-   */
-  getTableDraftRowIndex (pageKey, tableKey) {
-    const tableData = EhrData.getMergedTableData(pageKey, tableKey)
-    // console.log('checking for draft row in tableKey, tableData ', tableKey, tableData.length)
-    return tableData.findIndex((row) => {
-      return Object.keys(row).find(e => e === 'isDraft')
-    })
-  }
-
-  /**
    * A source table's "tableAction" button has been pressed. That table emitted the TABLE_ACTION_EVENT
    * and the containing page (Hematology only at this time) caught the event and has now made
    * this tableActionRequest ? getTableActionRequestOptions ?.  One of two actions are taken....
@@ -90,14 +70,15 @@ export default class EhrTableActions {
    * One to keep the embedded form view only and the second to indicate the form is "embedded".
    *
    * @param sendersTableDef
-   * @param sourceRowIndex
+   * @param sourceRowId
    */
-  static getTableActionRequestOptions (sendersTableDef, sourceRowIndex) {
+  static getTableActionRequestOptions (sendersTableDef, sourceRowId) {
     const options = {
       tableAction: true,
-      sendersTableDef: sendersTableDef
+      sendersTableDef: sendersTableDef,
+      sourceRowId: sourceRowId
     }
-    const draftRowIndex = this.getTableActionGetDraftRowIndex(sendersTableDef, sourceRowIndex)
+    const draftRowIndex = this.getTableActionGetDraftRowIndex(sendersTableDef, sourceRowId)
     if (draftRowIndex >= 0) {
       /*
       If we have a draft row then we are resuming editing, and we use the existing table data
@@ -116,26 +97,10 @@ export default class EhrTableActions {
       form <page key>.<source table key>.<source row index>
       The ehr_embedded element just needs the source row index to know where to retrieve the data from.
        */
-      const embedRefValue = this.getTableActionGetRef(sendersTableDef, sourceRowIndex)
-      options.embedRefValue = embedRefValue
+      options.embedRefValue = sourceRowId
     }
     // console.log('gtaro', JSON.stringify(options))
     return options
   }
-
-  // async removeDraftRow () {
-  //   const dialog = this._getActiveTableDialog()
-  //   const pageKey = this.pageKey
-  //   const tableKey = dialog.tableKey
-  //   let asLoadedPageData = this.getMergedPageData(pageKey)
-  //   let table = asLoadedPageData[tableKey]
-  //   // find the row with draft data or
-  //   const previousRow = table.findIndex(row => !!row.isDraft)
-  //   if (previousRow >= 0) {
-  //     table.splice(previousRow, 1)
-  //   }
-  //   let dataToSave = this._prepareTableSaveData(pageKey, asLoadedPageData)
-  //   await this._saveData(pageKey, dataToSave)
-  // }
 
 }

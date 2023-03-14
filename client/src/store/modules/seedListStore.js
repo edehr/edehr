@@ -147,7 +147,7 @@ const actions = {
     // stash in the store
     // emit event to refresh table data
     let id = context.state.sSeedId
-    let url = 'updateSeedEhrProperty/' + id
+    let url = 'updateSeedEhrProperty/' + id +'/draft'
     const sd = await InstoreHelper.putRequestSilent(context, API, url, payload)
     await context.commit('_setSeedContent', sd.data)
   },
@@ -163,7 +163,7 @@ const actions = {
    */
   updateSeedEhrProperty (context, payload) {
     let id = context.state.sSeedId
-    let url = 'updateSeedEhrProperty/' + id
+    let url = 'updateSeedEhrProperty/' + id +'/save'
     if(debugSL) console.log('SeedList updateSeedEhrProperty url, payload', url, payload)
     return InstoreHelper.putRequest(context, API, url, payload)
       .then(() => {

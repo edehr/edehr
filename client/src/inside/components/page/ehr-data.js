@@ -1,4 +1,6 @@
 import StoreHelper from '@/helpers/store-helper'
+import { decoupleObject } from '@/ehr-definitions/common-utils'
+import EhrDataModel from '@/ehr-definitions/EhrDataModel'
 
 export default class EhrData {
   static getMergedData () {
@@ -16,8 +18,10 @@ export default class EhrData {
    * @returns {*|*[]}
    */
   static getMergedTableData (pageKey, tableKey) {
-    const pageData = this.getMergedPageData(pageKey)
-    let td = pageData[tableKey] || []
+    const pageData = this.getMergedPageData(pageKey) || {}
+    let td = pageData[tableKey]
+    // decouple the table data so we don't sort the underlying merged data
+    td = td ? decoupleObject(td) : []
     const sorter = (a, b ) => {
       const order = -1 // -1 to get new entries first
       if (!isFinite(a) && ! isFinite(b)) return 0
@@ -32,8 +36,10 @@ export default class EhrData {
     })
     return td
   }
-  static getTableRowData (pageKey, tableKey, rowIndex) {
+  static getTableRowData (rowId) {
+    const { pageKey, tableKey } = EhrDataModel.IdToParts(rowId)
+    const rowElementKey = tableKey + '_id'
     const tableData = this.getMergedTableData(pageKey, tableKey)
-    return tableData[rowIndex]
+    return tableData.find(row => 0 === rowId.localeCompare(row[rowElementKey]))
   }
 }

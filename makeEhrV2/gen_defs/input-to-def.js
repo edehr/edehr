@@ -277,9 +277,26 @@ class RawInputToDef {
         console.log('WARNING', msg)
       }
       if (index && entry.elementKey) {
-        // collect all the elements (just keys) for the table
-        table.tableChildren = table.tableChildren || []
+        const idElementId = table.elementKey +'_id'
+        if (!table.tableChildren) {
+          table.tableChildren = []
+          table.tableChildren.push(idElementId)
+          table.ehr_list[0] = {
+            label: 'Row id',
+            tableCss: 'row-id',
+            ehr_list_index: 0,
+            items: [idElementId]
+          }
+          const e = {}
+          e.elementKey = idElementId
+          e.inputType = 'generatedId'
+          e.tableColumn = 0
+          e.label = 'Row id'
+          e.tableCss = 'row-id'
+          page.pageChildren.push(e)
+        }
         table.tableChildren.push(entry.elementKey)
+        // collect all the elements (just keys) for the table
         // create the table stack definitions
         if (!table.ehr_list[index]) {
           // *********** make stack for table at this index

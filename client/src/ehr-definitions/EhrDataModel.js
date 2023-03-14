@@ -12,7 +12,7 @@ import {
 
 export const MAJOR = 2
 export const MINOR = 2 // bump to 2 because introduce _id to rec headers
-export const PATCH = 0
+export const PATCH = 1
 export const CurrentEhrDataVerString = function () {
   return 'ev' + MAJOR +
     '.' + MINOR +
@@ -35,17 +35,26 @@ export default class EhrDataModel {
     }
   }
 
-  static CheckVer (ehrData, maj,min,pat) {
+  static CheckVer (ehrData, maj, min, pat) {
     const version = EhrDataModel.MetaEhrVersion(ehrData)
     return version && version.major >= maj && version.minor >= min && version.patch >= pat
   }
-  static IsUpToDate (ehrData) { return EhrDataModel.CheckVer(ehrData,MAJOR,MINOR, PATCH) }
 
-  static PrepareForDb (ehrData) { return EhrDataModel.UpdateIdsInModel(ehrData)  }
+  static IsUpToDate (ehrData) {
+    return EhrDataModel.CheckVer(ehrData, MAJOR, MINOR, PATCH)
+  }
 
-  static UpdateIdsInModel (ehrData) { return updateAllRecHeaderIds(new EhrDataModel(ehrData)) }
+  static PrepareForDb (ehrData) {
+    return EhrDataModel.UpdateIdsInModel(ehrData)
+  }
 
-  constructor (ehrData) { this.loadEhrData(ehrData)  }
+  static UpdateIdsInModel (ehrData) {
+    return updateAllRecHeaderIds(new EhrDataModel(ehrData))
+  }
+
+  constructor (ehrData) {
+    this.loadEhrData(ehrData)
+  }
 
   loadEhrData (ehrData) {
     // decouple so this constructor can be used inside a Vuex store (can't modify any of its data)
@@ -60,7 +69,10 @@ export default class EhrDataModel {
     meta.simTime = visitTimeInEhrData(this._ehrData)
     this._ehrData.meta = meta
   }
-  get ehrData () {  return this._ehrData  }
+
+  get ehrData () {
+    return this._ehrData
+  }
 
   //no set ehrData. Must load via constructor
 
@@ -73,20 +85,26 @@ export default class EhrDataModel {
     return keys
   }
 
-  get ehrVersion () { return EhrDataModel.MetaEhrVersion(this._ehrData)}
+  get ehrVersion () {
+    return EhrDataModel.MetaEhrVersion(this._ehrData)
+  }
 
   /**
    *
    * @returns { visitDay: num, visitTime: milTime }
    */
-  get simTime () { return (this._ehrData.meta || {}).simTime }
+  get simTime () {
+    return (this._ehrData.meta || {}).simTime
+  }
 
   /**
    * Get raw ehr data for given page key
    * @param pageKey
    * @returns {*}
    */
-  getPageData (pageKey) { return this._ehrData[pageKey] }
+  getPageData (pageKey) {
+    return this._ehrData[pageKey]
+  }
 
   /**
    * Get a raw EHR data pageElement by elementKey
@@ -94,13 +112,21 @@ export default class EhrDataModel {
    * @param elementKey
    * @returns {*}
    */
-  getPageFormData (pageKey, elementKey) { return this.getPageData(pageKey)[elementKey] }
+  getPageFormData (pageKey, elementKey) {
+    return this.getPageData(pageKey)[elementKey]
+  }
 
-  hasData (pageKey) { return !!this.getPageData(pageKey) }
+  hasData (pageKey) {
+    return !!this.getPageData(pageKey)
+  }
 
-  getPageTableData (pageKey, tableKey) { return this.getPageData(pageKey)[tableKey] }
+  getPageTableData (pageKey, tableKey) {
+    return this.getPageData(pageKey)[tableKey]
+  }
 
-  getRowData (pageKey, tableKey, rowKey) { return this.getPageData(pageKey)[tableKey][rowKey] }
+  getRowData (pageKey, tableKey, rowKey) {
+    return this.getPageData(pageKey)[tableKey][rowKey]
+  }
 
   /**
    * Used by EhrDataModel supporting utils to perform updates
@@ -121,7 +147,7 @@ export default class EhrDataModel {
    * @param elementKey
    * @param value
    */
-  _updateRowElem ( pageKey, tableKey, rowIndex, elementKey, value) {
+  _updateRowElem (pageKey, tableKey, rowIndex, elementKey, value) {
     // extract the table data, update the value in the specified row and then replace table data in main data object
     const targetData = this._ehrData[pageKey][tableKey]
     targetData[rowIndex][elementKey] = value
@@ -140,20 +166,44 @@ export default class EhrDataModel {
     ehrData.meta.ehrVersion = 'ev2.1.1'
     this._ehrData = ehrData
   }
+
   updateDataTo2_2_0 () {
     const ehrData = updateAllRecHeaderIds(this)
     ehrData.meta.ehrVersion = 'ev2.2.0'
     this._ehrData = ehrData
   }
+
   updateEhrDataToLatestFormat () {
-    if (!EhrDataModel.CheckVer(this._ehrData,2,1,0)) {
+    if (!EhrDataModel.CheckVer(this._ehrData, 2, 1, 0)) {
       this.updateDataTo2_1_0()
     }
-    if (!EhrDataModel.CheckVer(this._ehrData,2,1,1)) {
+    if (!EhrDataModel.CheckVer(this._ehrData, 2, 1, 1)) {
       this.updateDataTo2_1_1()
     }
-    if (!EhrDataModel.CheckVer(this._ehrData,2,2,0)) {
+    if (!EhrDataModel.CheckVer(this._ehrData, 2, 2, 0)) {
       this.updateDataTo2_2_0()
     }
+  }
+
+  static GenerateRowId (pageKey, tableKey, asLoadedTableData) {
+    const baseKey = pageKey + '.' + tableKey + '.'
+    const idKey = tableKey +'_id'
+    let n = -1
+    for (let i = 0; i < asLoadedTableData.length; i++) {
+      let data = asLoadedTableData[i]
+      let id = data[idKey]
+      if (id) {
+        const p = id.split('.')
+        const np = Number.parseInt(p[2])
+        n = isNaN(np) ? n : Math.max(n, np)
+      }
+    }
+    n++
+    return baseKey + n
+  }
+
+  static IdToParts (rowId) {
+    let p = rowId ? rowId.split('.') : undefined
+    return p && p.length === 3 ? { pageKey: p[0], tableKey: p[1], rowIndex: p[2] } : undefined
   }
 }

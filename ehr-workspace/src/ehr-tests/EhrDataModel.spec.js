@@ -32,6 +32,31 @@ const ehrData = {
   }
 }
 
+const f = {
+  admissionDay: 'Day 0',
+  admissionTime: '0600',
+  diagnosis: 'COPD\nShortness of breath\nDizzy',
+  status: 'Admitted',
+  table: [{
+    location: 'here',
+    transferInDay: 0,
+    transferInTime: '0030',
+    transferOutDay: 1,
+    transferOutTime: '0400',
+    createdDate: '2022-08-17T00:37:42-07:00',
+    table_id: 'visit.table.0'
+  }, {
+    location: 'there',
+    transferInDay: 1,
+    transferInTime: '2131',
+    transferOutDay: 2,
+    transferOutTime: '2332',
+    createdDate: '2022-08-17T00:37:42-07:00',
+    table_id: 'visit.table.1'
+  }],
+  lastUpdate: '2022-08-17T00:37:42-07:00'
+}
+
 const expected = {
   visit: {
     admissionDay: 'Day 0',
@@ -45,7 +70,8 @@ const expected = {
         transferInTime: '0030',
         transferOutDay: 1,
         transferOutTime: '0400',
-        createdDate: '2022-08-17T00:37:42-07:00'
+        createdDate: '2022-08-17T00:37:42-07:00',
+        table_id: 'visit.table.0'
       },
       {
         location: 'there',
@@ -53,7 +79,8 @@ const expected = {
         transferInTime: '2131',
         transferOutDay: 2,
         transferOutTime: '2332',
-        createdDate: '2022-08-17T00:37:42-07:00'
+        createdDate: '2022-08-17T00:37:42-07:00',
+        table_id: 'visit.table.1'
       }
     ],
     lastUpdate: '2022-08-17T00:37:42-07:00'
@@ -94,10 +121,11 @@ describe( 'EhrDataModel', () => {
     data.admissionTime.should.equal('0600')
     const result = JSON.stringify(data)
     const expectedStr = JSON.stringify(expected.visit)
-    // console.log(result)
-    // console.log(expectedStr)
-    const same = result.localeCompare(expectedStr)
-    same.should.equal(0)
+    console.log(result)
+    console.log(expectedStr)
+    // const same = result.localeCompare(expectedStr)
+    result.should.equal(expectedStr)
+    // same.should.equal(0,expectedStr)
   })
   it('form data', () => {
     let data = model.getPageFormData(PK,'admissionDay')
@@ -173,3 +201,26 @@ describe ('EhrDataModel class methods', () => {
   })
 
 })
+
+describe ('GenerateRowId', () => {
+  it ('generate', () => {
+    let tbl = [
+      {t_id: 'p.t.1'},
+      {t_id: 'p.t.22'},
+      {t_id: 'p.t.12'},
+      {t_id: 'p.t.3'},
+      {t_id: 'p.t.4'},
+      {t_id: 'p.t.5'},
+    ]
+    let ver = EhrDataModel.GenerateRowId('p','t',tbl)
+    'p.t.23'.should.equal(ver)
+  })
+  it ('empty table', () => {
+    let tbl = [
+    ]
+    let ver = EhrDataModel.GenerateRowId('p','t',tbl)
+    'p.t.0'.should.equal(ver)
+  })
+
+})
+
